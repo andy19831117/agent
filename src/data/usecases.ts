@@ -3366,6 +3366,158 @@ export const usecases: UseCase[] = [
       "涉及未修复漏洞的 commit 不要写进公开稿",
     ],
   },
+  {
+    id: "157",
+    slug: "safe-daily-seo-fix-agent",
+    title: "每日安全级 SEO 修复自动化",
+    summary:
+      "按白名单每天自动做可回滚的小 SEO 修复（元描述、内链、图片 alt），改动进 PR 或草稿，人工合并。",
+    description:
+      "与整站巡检报告不同：本条把「已确认低风险」的修复做成日更流水线——例如补缺 meta、修正明显死链、补 alt。Agent 只改白名单路径，产出可回滚的 PR/草稿，并在飞书汇报变更摘要。禁止改写核心转化文案与大规模删改。不编造排名提升数字。",
+    categories: ["content", "efficiency"],
+    platforms: ["chatgpt", "claude", "n8n", "feishu"],
+    sourceUrl:
+      "https://www.developersdigest.tech/blog/codex-automations-recurring-engineering-work",
+    sourceLabel: "DevelopersDigest · 循环工程自动化",
+    upvotes: 79,
+    trending: false,
+    tags: ["SEO", "日更修复", "可回滚", "内容站", "飞书"],
+    howItWorks: [
+      "维护可自动修复的规则白名单与禁止改动目录",
+      "每日扫描并提交小修复 PR/草稿",
+      "飞书通知变更列表，人工合并或回滚",
+    ],
+    tips: [
+      "单日改动文件数设上限，避免「修复」变成大爆炸",
+      "与 153 巡检联动：只把巡检里标为「安全可自动」的项进白名单",
+    ],
+  },
+  {
+    id: "158",
+    slug: "micro-saas-three-hour-ship",
+    title: "三小时构建上线微型 SaaS",
+    summary:
+      "用编码 Agent 在数小时内搭出可演示的微型 SaaS：登录、一个核心功能与部署，先上线再迭代。",
+    description:
+      "独立开发者验证想法时，容易在脚手架上耗尽热情。限定范围（单一用户故事），让 Agent 生成最小前后端、基础鉴权与部署配置，先拿到可分享链接。支付与合规后置；不宣称真实收入数字。适合周末验证与作品集。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl:
+      "https://dev.to/willcheung/i-built-and-deployed-a-micro-saas-in-3-hours-heres-what-i-learned-cd6",
+    sourceLabel: "DEV.to · 3 小时微型 SaaS",
+    upvotes: 84,
+    trending: false,
+    tags: ["微型SaaS", "独立开发者", "快速上线", "MVP", "编码Agent"],
+    howItWorks: [
+      "写清唯一核心功能与非目标清单",
+      "Agent 生成可部署骨架并完成本地/云端试跑",
+      "发布演示链接，收集反馈后再扩支付与权限",
+    ],
+    tips: [
+      "三小时只做一条主路径，登录可用魔法链接或 OAuth 二选一",
+      "演示环境与生产密钥隔离，避免周末项目泄漏正式凭据",
+    ],
+  },
+  {
+    id: "159",
+    slug: "airline-fee-refund-email-finder",
+    title: "航司餐饮费报销邮件挖掘",
+    summary:
+      "在邮箱里找出可申请航司餐饮/延误相关报销的邮件与订单号，生成申请材料清单与话术草稿。",
+    description:
+      "出行后常忘记哪些航段可申补偿。Agent 检索邮箱中的航司通知与支付凭证，列出可能符合公开政策的条目，并整理申请入口、材料与中文话术；提交仍由用户完成。不保证一定获批；不教伪造行程。可把清单同步到飞书待办。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "n8n", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49619764",
+    sourceLabel: "Hacker News",
+    upvotes: 76,
+    trending: false,
+    tags: ["航司", "报销", "邮件挖掘", "生活办事", "出行"],
+    howItWorks: [
+      "按航司/关键词检索相关邮件与附件",
+      "生成候选清单与材料核对表",
+      "输出申请话术草稿，用户确认后自行提交",
+    ],
+    tips: [
+      "先核对航司公开政策时效，过期航班不要浪费时间",
+      "护照与银行卡信息只放本地清单，勿贴进群聊",
+    ],
+  },
+  {
+    id: "160",
+    slug: "billing-dispute-refund-agent",
+    title: "账单争议退款办理助手",
+    summary:
+      "针对错误扣款或未授权订阅，整理时间线、证据与客服/支付渠道争议话术，协助走完退款流程。",
+    description:
+      "与「订阅取消路径」不同：本条面向已经扣款、需要争议或退款的情况。Agent 帮你整理交易时间线、截图清单、商家客服与支付渠道话术；浏览器辅助仅导航，提交争议前必须人确认。不教恶意拒付；优先走商家协商。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "grok", "doubao"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49656053",
+    sourceLabel: "Hacker News",
+    upvotes: 77,
+    trending: false,
+    tags: ["账单争议", "退款", "扣款", "生活办事", "客服话术"],
+    howItWorks: [
+      "录入扣款记录与沟通历史，生成时间线",
+      "列出证据清单与分渠道话术（商家/支付/银行）",
+      "按步骤协助办理，关键提交需人工确认",
+    ],
+    tips: [
+      "先商家客服、再支付渠道、最后银行，减少误伤信用",
+      "所有回复保存工单号，便于升级",
+    ],
+  },
+  {
+    id: "161",
+    slug: "vet-charge-to-insurance-claim",
+    title: "宠物医疗费用整理成保险理赔材料",
+    summary:
+      "把宠物医院账单与病历摘要整理成保险理赔所需材料包与填写草稿，减少漏项退回。",
+    description:
+      "宠物险理赔常因材料不全被退回。Agent 读取账单/诊断摘要（用户上传），对照保单公开条款字段，生成材料清单、事件经过草稿与费用表；用户核对后自行提交保险公司。不编造诊断；不承诺一定赔付。可将材料包索引存飞书文档。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "doubao", "feishu"],
+    sourceUrl: "https://github.com/jagberg/Me.OpenClaw",
+    sourceLabel: "GitHub · Me.OpenClaw",
+    upvotes: 75,
+    trending: false,
+    tags: ["宠物险", "理赔", "账单整理", "生活办事", "材料包"],
+    howItWorks: [
+      "上传账单、病历摘要与保单关键页",
+      "抽取费用项并对照理赔字段生成材料清单",
+      "输出经过说明草稿，用户确认后提交保险公司",
+    ],
+    tips: [
+      "发票抬头与芯片号/病历号务必一致，否则易被拒",
+      "既往症相关表述让兽医原文为准，勿让模型改写诊断",
+    ],
+  },
+  {
+    id: "162",
+    slug: "web-research-subagent-delegate",
+    title: "编码 Agent 委派网页调研子代理",
+    summary:
+      "主编码 Agent 把查文档、比库、搜示例的工作委派给网页调研子代理，汇总后再继续写代码。",
+    description:
+      "编码时频繁打断去搜文档会丢上下文。主 Agent 将调研问题打包给子代理（浏览器/MCP），收回结构化笔记（链接、结论、取舍），再继续实现。适合选库、API 差异与迁移调研。引用必须带来源 URL；禁止编造不存在的 API。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl: "https://github.com/hanzili/comet-mcp",
+    sourceLabel: "GitHub · comet-mcp",
+    upvotes: 86,
+    trending: false,
+    tags: ["子代理", "网页调研", "编码Agent", "MCP", "效率"],
+    howItWorks: [
+      "主 Agent 列出待调研问题与验收标准",
+      "子代理检索并返回带来源的结构化笔记",
+      "主 Agent 基于笔记继续实现，关键依赖变更需人确认",
+    ],
+    tips: [
+      "调研笔记固定「结论/证据链接/未决问题」三栏",
+      "对许可证与安全公告单独开一项，避免只看功能忽略合规",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
