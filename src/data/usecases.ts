@@ -3810,6 +3810,158 @@ export const usecases: UseCase[] = [
       "每句关键结论旁强制挂引用 id，方便抽检",
     ],
   },
+  {
+    id: "175",
+    slug: "multi-tool-coding-agent-prs",
+    title: "跨工具用编码 Agent 多开可审 PR",
+    summary:
+      "在 Issue/CI/文档等多个工具间串联编码 Agent，批量开出可独立审阅的小 PR，加快交付。",
+    description:
+      "与「本地多会话并行改同一仓库」不同：本条强调跨工具编排（任务板、CI、审阅箱），把积压项切成可审小 PR。人只做合并裁决。适合独立开发与小团队清 backlog。不自动合并；不把无测试的大爆炸改动一次塞进一个 PR。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://x.com/ryancarson/status/2035746736803614981",
+    sourceLabel: "X 原帖",
+    upvotes: 84,
+    trending: false,
+    tags: ["多工具", "Pull Request", "编码Agent", "交付", "开发者"],
+    howItWorks: [
+      "从任务板拉取可自动化的小项并切分",
+      "Agent 跨工具取上下文、开分支并开 PR",
+      "CI 绿后进入人工审阅队列",
+    ],
+    tips: [
+      "单 PR 单主题，标题写清动机与风险",
+      "与本地并行会话约定文件所有权，避免互相覆盖",
+    ],
+  },
+  {
+    id: "176",
+    slug: "docs-ai-cli-tools-page-update",
+    title: "用 Agent 更新 AI CLI 工具文档页",
+    summary:
+      "对照最新 CLI 行为与帮助输出，自动刷新文档页中的命令、参数与示例，提交可审改动。",
+    description:
+      "AI CLI 迭代快，文档易过期。Agent 读取帮助输出与仓库示例，比对文档页，生成补丁式更新（新增旗标、废弃说明）。人审后合并。不编造未发布的命令；示例需可运行或标明伪代码。",
+    categories: ["content", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl: "https://thegroundtruth.substack.com/p/devin-first-impressions",
+    sourceLabel: "Substack · Agent 文档更新线索",
+    upvotes: 77,
+    trending: false,
+    tags: ["文档", "CLI", "AI工具", "内容", "开发者"],
+    howItWorks: [
+      "拉取 CLI 帮助/变更日志与现有文档",
+      "生成差异补丁与示例更新",
+      "开文档 PR，人工核对后发布",
+    ],
+    tips: [
+      "每个命令示例旁标注测试过的版本号",
+      "废弃命令保留「迁移到」链接，避免死胡同",
+    ],
+  },
+  {
+    id: "177",
+    slug: "growth-ad-variations-pull-data",
+    title: "生成广告变体并拉取投放数据",
+    summary:
+      "按卖点批量生成广告文案/创意变体，并拉取投放数据做成飞书周报，辅助增长迭代。",
+    description:
+      "增长同学需要「多变体 + 看数据」闭环。Agent 基于产品卖点生成合规文案变体，对接可读的投放数据导出，汇总到飞书表格/文档。不自动改预算；不编造花费与转化。素材二次发布注意版权。",
+    categories: ["content", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl:
+      "https://dev.to/danishashko/claude-code-for-growth-marketing-hell-yeah-i7i",
+    sourceLabel: "DEV.to · 增长营销实践",
+    upvotes: 81,
+    trending: false,
+    tags: ["广告变体", "投放数据", "增长", "飞书", "内容"],
+    howItWorks: [
+      "输入卖点、受众与禁词表，生成变体清单",
+      "拉取投放导出数据并对齐变体 id",
+      "输出飞书周报：头部创意、衰退创意、下步实验",
+    ],
+    tips: [
+      "变体命名带实验编号，方便和后台数据对齐",
+      "涉及医疗金融等行业先过合规词表再生成",
+    ],
+  },
+  {
+    id: "178",
+    slug: "meeting-app-from-prompt-ship",
+    title: "一句话提示构建并部署会议应用",
+    summary:
+      "用自然语言描述会议场景，让编码 Agent 生成可部署的轻量会议/预约应用原型并上线演示。",
+    description:
+      "适合快速验证「预约+提醒+简单日程」类想法。Agent 从提示生成最小前后端与部署配置，先出演示链接；登录与支付后置。与飞书会议纪要类用例不同：本条是从零搭应用壳。演示环境勿连生产日历密钥。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "doubao"],
+    sourceUrl: "https://x.com/socialwithaayan/status/1986663983777259839",
+    sourceLabel: "X 原帖",
+    upvotes: 78,
+    trending: false,
+    tags: ["会议应用", "提示即产品", "快速部署", "MVP", "编码Agent"],
+    howItWorks: [
+      "用一句话写清主路径与非目标",
+      "Agent 生成可运行原型并部署演示环境",
+      "收集反馈后再补权限、通知与正式域名",
+    ],
+    tips: [
+      "首版只做创建/加入/提醒三件事，拒绝功能堆叠",
+      "演示数据与真实用户日历隔离",
+    ],
+  },
+  {
+    id: "179",
+    slug: "solo-company-agent-departments",
+    title: "一人公司用多 Agent 部门运转",
+    summary:
+      "把内容、客服、研发等角色拆成常驻 Agent「部门」，用统一收件箱审批产出，支撑一人公司日常。",
+    description:
+      "独立创业者身兼多职。把重复角色变成带职责说明的 Agent，产出进入审批收件箱（可对接飞书），人只做决策与对外签字。与「后台邮件式审批」同构，但叙事聚焦一人公司部门划分。禁止无审批自动对外发公告或扣款。",
+    categories: ["efficiency", "content"],
+    platforms: ["chatgpt", "claude", "feishu", "n8n"],
+    sourceUrl:
+      "https://dev.to/setas/i-run-a-solo-company-with-ai-agent-departments-50nf",
+    sourceLabel: "DEV.to · 一人公司 Agent 部门",
+    upvotes: 83,
+    trending: false,
+    tags: ["一人公司", "多Agent", "部门", "审批", "效率"],
+    howItWorks: [
+      "定义各部门职责、工具权限与升级规则",
+      "各部门产出进入统一审批收件箱",
+      "人批准后执行发布/发送/合并",
+    ],
+    tips: [
+      "先开两个部门跑通，再扩展，避免编排过载",
+      "对外承诺类输出强制人工，内部草稿可自动",
+    ],
+  },
+  {
+    id: "180",
+    slug: "personal-assistant-repo-and-chores",
+    title: "个人助理兼顾仓库事务与生活杂事",
+    summary:
+      "同一个个人助理 Agent 既跟仓库 Issue/PR，也处理购物清单、提醒等生活杂事，统一收件与优先级。",
+    description:
+      "开发者的个人助理往往割裂成「代码」和「生活」两套。统一入口：早间摘要合并仓库待办与生活事项，按优先级排序；写代码类动作走分支闸门，生活类走确认后执行。可推飞书待办。不自动推送生产；不擅自下单支付。",
+    categories: ["efficiency", "life"],
+    platforms: ["chatgpt", "claude", "grok", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49766401",
+    sourceLabel: "Hacker News",
+    upvotes: 82,
+    trending: false,
+    tags: ["个人助理", "仓库", "生活杂事", "优先级", "效率"],
+    howItWorks: [
+      "连接仓库只读/有限写权限与生活清单源",
+      "生成统一优先级摘要",
+      "分通道执行：代码开 PR，生活项确认后勾办",
+    ],
+    tips: [
+      "两套权限分离：生活助理无权推 main",
+      "摘要控制在一屏，超出则只留 P0/P1",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
