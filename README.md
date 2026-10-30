@@ -27,6 +27,16 @@ npm run build
 npm start
 ```
 
+## 站点 URL（sitemap / robots）
+
+在 Vercel 项目环境变量中设置（Production，以及需要独立预览域名的 Preview）：
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://agent-usecases-cn.vercel.app
+```
+
+`src/app/sitemap.ts` 与 `src/app/robots.ts` 都通过 `src/lib/site-url.ts` 的 `getSiteUrl()` 取这个值。未设置时：生产构建（`NODE_ENV=production`，包括 Vercel）回退到 `https://agent-usecases-cn.vercel.app`；本地 `next dev` 回退到 `http://localhost:3000`。不要用 `VERCEL_URL` 当生产地址，那是单次部署的主机名，不是正式别名。
+
 ## 如何新增用例
 
 1. 编辑 `src/data/usecases.ts`，按现有对象追加一条（`slug` 全局唯一）。
