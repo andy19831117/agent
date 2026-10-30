@@ -59,6 +59,14 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.surface-card.sponsor-tier-featured {
+  border-color: rgba(129, 140, 248, 0.75);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 0 0 1px rgba(129, 140, 248, 0.35),
+    0 12px 40px -20px rgba(0, 0, 0, 0.65);
+}
+
 .surface-card-hover {
   transition:
     border-color 0.2s ease,

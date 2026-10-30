@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SponsorRecBadge } from "@/components/SponsorRecBadge";
 import { categories } from "@/data/categories";
 import { platforms } from "@/data/platforms";
-import type { UseCase } from "@/data/types";
+import { recForUseCase, sponsorRecsEnabled } from "@/data/sponsors";
+import type { Platform, UseCase } from "@/data/types";
 
 export function UseCaseCard({ usecase }: { usecase: UseCase }) {
   const [votes, setVotes] = useState(usecase.upvotes);
@@ -13,6 +15,8 @@ export function UseCaseCard({ usecase }: { usecase: UseCase }) {
 
   const cats = categories.filter((c) => usecase.categories.includes(c.slug));
   const plats = platforms.filter((p) => usecase.platforms.includes(p.slug));
+  const rec = sponsorRecsEnabled ? recForUseCase(usecase.slug) : undefined;
+  const visiblePlats = platformsForCard(plats, rec?.platform);
 
   function upvote() {
     if (voted) return;
@@ -88,16 +92,19 @@ export function UseCaseCard({ usecase }: { usecase: UseCase }) {
       </div>
 
       <div className="relative mt-3.5 flex flex-wrap gap-1.5">
-        {plats.slice(0, 5).map((p) => (
-          <span key={p.slug} className="badge-plat rounded-md px-2 py-0.5 text-xs">
-            {p.name}
+        {visiblePlats.map((p) => (
+          <span key={p.slug} className="inline-flex items-center gap-1">
+            <span className="badge-plat rounded-md px-2 py-0.5 text-xs">{p.name}</span>
+            {rec?.platform === p.slug ? (
+              <SponsorRecBadge tooltip={rec.tooltip} href={rec.href} />
+            ) : null}
           </span>
         ))}
-        {plats.length > 5 && (
+        {plats.length > 5 ? (
           <span className="badge-plat rounded-md px-2 py-0.5 text-xs">
             +{plats.length - 5}
           </span>
-        )}
+        ) : null}
       </div>
       <div className="relative mt-2 flex flex-wrap gap-1.5">
         {cats.map((c) => (
@@ -138,4 +145,13 @@ export function UseCaseCard({ usecase }: { usecase: UseCase }) {
       </div>
     </article>
   );
+}
+
+function platformsForCard(plats: Platform[], recPlatform?: string): Platform[] {
+  const limit = 5;
+  if (!recPlatform) return plats.slice(0, limit);
+  const index = plats.findIndex((item) => item.slug === recPlatform);
+  const picked = index >= 0 ? plats[index] : undefined;
+  if (!picked || index < limit) return plats.slice(0, limit);
+  return [...plats.slice(0, limit - 1), picked];
 }

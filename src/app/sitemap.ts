@@ -20,6 +20,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.4,
     },
+    {
+      url: `${base}/privacy`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: `${base}/disclaimer`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
     ...categories.map((c) => ({
       url: `${base}/category/${c.slug}`,
       lastModified: LAST_MODIFIED,
