@@ -4789,6 +4789,160 @@ export const usecases: UseCase[] = [
       "内容稿与客服回复共用产品事实表，避免两边口径不一致",
     ],
   },
+  {
+    id: "211",
+    slug: "downloads-folder-sort-summaries",
+    title: "下载文件夹自动分类并写摘要",
+    summary:
+      "把 Downloads 里散落文件按类型归档到子文件夹，并为每类写一页摘要；只整理本地目录，不擅自删除或上传云端。",
+    description:
+      "下载目录常堆满安装包、截图、合同 PDF 与临时压缩包，找文件靠滚动翻页。本条让 Agent 扫描本机 Downloads（或你指定的下载目录），按扩展名/内容线索分到「安装包」「文档」「图片」「压缩包」等子夹，并为每个子夹生成简短摘要（含数量、代表文件名、建议保留或清理线索）。结果可同步一份目录树摘要到飞书个人页便于检索。区别于桌面整理、PDF 归档入历：本条聚焦下载目录批量分类+文件夹级摘要，不做桌面图标重排，也不把文件写入日历。硬约束：默认只移动/复制到本机子目录，删除与清空回收站须人确认；不自动上传到网盘或外发；含身份证/银行卡号等敏感 PDF 仅本地处理并脱敏进摘要；路径与操作日志可回滚才执行批量移动。",
+    categories: ["efficiency", "life"],
+    platforms: ["claude", "chatgpt", "deepseek", "feishu"],
+    sourceUrl:
+      "https://wonderingaboutai.substack.com/p/i-tried-using-claude-cowork-to-organize",
+    sourceLabel: "Substack · Downloads 整理",
+    upvotes: 87,
+    trending: false,
+    tags: ["下载文件夹", "文件分类", "摘要", "本地整理", "删除须确认"],
+    howItWorks: [
+      "选定 Downloads（或自定义路径），约定分类规则与「只移不删」默认策略",
+      "Agent 扫描并归档到子文件夹，为每类输出数量与代表文件摘要",
+      "人核对摘要与样例路径后可选择性清理；敏感文件保持本地、摘要脱敏",
+    ],
+    tips: [
+      "先在「试跑子目录」复制一小批文件验证规则，再对整库执行",
+      "安装包与含密钥的配置文件单独建「勿摘要全文」规则，只记文件名与大小",
+    ],
+  },
+  {
+    id: "212",
+    slug: "interactive-html-lessons-for-students",
+    title: "按课文生成互动 HTML 教案",
+    summary:
+      "教师给出段落、词汇与学习目标，生成含翻转卡片与理解题的互动 HTML 单课；仅教案草稿，不自动发给学生。",
+    description:
+      "备课时常要把课文段落改成可点的翻转卡片、填空与理解题，手工做 HTML 费时。教师粘贴课文片段、核心词汇与本节目标后，Agent 生成单课互动 HTML：词汇翻转卡、段落理解选择题、简短自测与答案区，可本地下载预览或放进飞书备课文件夹。区别于在家教育多 Agent 运转、课程反馈改课：本条是「单课互动教材生成」，不是家庭教学后勤协同，也不是依据测验成绩改整门课。硬约束：输出为教案草稿，默认不向学生邮箱/班级群自动推送；不收录学生真实姓名与成绩；版权课文仅用教师有权使用的材料；答案区可折叠，课堂展示前由教师审一遍。",
+    categories: ["education"],
+    platforms: ["claude", "chatgpt", "doubao", "feishu"],
+    sourceUrl: "https://baseclasses.com/p/what-claude-code-can-teach-us-about",
+    sourceLabel: "baseclasses.com · 互动教案",
+    upvotes: 83,
+    trending: false,
+    tags: ["互动HTML", "教案", "翻转卡片", "理解题", "教师审后发"],
+    howItWorks: [
+      "粘贴课文段落、词汇表与本节学习目标，标明学段与难度",
+      "Agent 生成含翻转卡、选择题与自测的单课 HTML，附答案折叠区",
+      "教师本机预览修订后手动下发；系统不自动推班级群或学生邮箱",
+    ],
+    tips: [
+      "同一单元复用词汇库，避免每课 HTML 术语写法不一致",
+      "公开分享前去掉学校内网链接与班级花名册痕迹",
+    ],
+  },
+  {
+    id: "213",
+    slug: "tech-blog-draft-error-critique",
+    title: "技术博文草稿挑错校对",
+    summary:
+      "对磁盘上的技术博文草稿做技术事实与代码片段校对循环；只出修订意见，不代发 CMS。",
+    description:
+      "技术博文最怕 API 参数写错、版本号过时、示例代码跑不通。作者把本地 Markdown/草稿目录交给 Agent，按「事实—代码—链接」三轮挑错：核对库名与版本表述、检查代码块语法与常见坑、标出失效或可疑外链，输出带行号的修订清单与建议改写句。区别于热点 CMS 发稿、社媒选题、访谈改写：本条不做选题发现与发布，只做技术向校对闭环。硬约束：默认不登录 CMS、不自动发布；不把仓库私钥或生产配置贴进示例；对不确定的外部事实标「待核实」而非编造；修订以 diff/批注形式交还作者定稿。",
+    categories: ["content", "devtools"],
+    platforms: ["claude", "chatgpt", "deepseek", "grok"],
+    sourceUrl:
+      "https://dev.to/railsstudent/automating-devrel-how-i-use-gemini-cli-and-gemini-3-to-catch-bugs-in-my-blog-posts-3koo",
+    sourceLabel: "dev.to · 技术博文校对",
+    upvotes: 85,
+    trending: false,
+    tags: ["技术博文", "挑错", "代码校对", "修订清单", "不代发"],
+    howItWorks: [
+      "指定本地草稿文件与目标技术栈/版本范围",
+      "Agent 分轮检查事实表述、代码块与外链，输出带行号的问题清单",
+      "作者按清单改稿；发布仍在本人 CMS 手动完成",
+    ],
+    tips: [
+      "校对前提交「本文声称支持的版本表」，减少误报过时 API",
+      "示例命令默认用占位符代替真实密钥与账号 ID",
+    ],
+  },
+  {
+    id: "214",
+    slug: "refund-email-from-photo-receipt",
+    title: "凭照片与收据起草退货退款邮件",
+    summary:
+      "商品照片+邮箱收据对齐订单号与日期，起草退货退款邮件；人审后发，勿自动提交退款。",
+    description:
+      "退货时常要对照快递箱照片、订单号与邮件收据再写一封条理清楚的退款信。用户上传瑕疵/错发照片，并提供邮件中的收据或订单摘要，Agent 抽取订单号、购买日期、商品名与金额，核对照片说明与收据字段是否一致，再起草礼貌、要素齐全的退货退款邮件草稿（可进飞书待发）。区别于亚马逊订阅取消退款、账单争议：本条聚焦「实物退货场景下照片与收据对齐后起草」，不是订阅管理或卡账单争议。硬约束：邮件仅草稿，须人审后手动发送；禁止自动提交平台退款表单、自动点击「申请退款」或代填支付密码；不伪造未发生的损坏描述；收据中的完整卡号与身份信息脱敏后再写入正文。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl:
+      "https://www.chatprd.ai/how-i-ai/workflows/automate-product-returns-and-refunds-using-claude-cowork",
+    sourceLabel: "chatprd.ai · 退货退款草稿",
+    upvotes: 81,
+    trending: false,
+    tags: ["退货退款", "收据对齐", "邮件草稿", "人审后发", "勿自动提交"],
+    howItWorks: [
+      "上传商品照片与收据/订单邮件摘要，标注期望处理方式（退货/换货/仅退款）",
+      "Agent 对齐订单号、日期与金额，生成退款邮件草稿与核对表",
+      "人核对事实后手动发送；系统不自动提交平台退款、不代点申请按钮",
+    ],
+    tips: [
+      "草稿强制含「订单号、购买日期、问题简述、期望结果」四字段检查清单",
+      "照片说明只用可见事实，避免夸大损坏以免审核驳回",
+    ],
+  },
+  {
+    id: "215",
+    slug: "biz-trip-hotel-shortlist-sheet",
+    title: "出差酒店候选一键进表格",
+    summary:
+      "按价格与距离筛出差酒店，写入飞书表格短名单供审批；只做短名单，不自动下单付款。",
+    description:
+      "出差订房要在预算、距会场距离与评分之间反复比。给定城市、日期、预算上限与办公地点，Agent 汇总候选酒店的价位区间、通勤距离、取消政策要点，写入飞书多维表/表格短名单，方便同事或财务一眼对比后审批。区别于短途游规划、旅行邮件入历：本条是出差选酒店短名单进表，不是休闲行程，也不把行程自动写入日历。硬约束：只产出短名单与对比字段，禁止自动下单、自动付款或绑定公司卡；价格以当时公开页面为准并标注抓取时间；最终预订由人在差旅平台或官网完成；公司协议价与内部折扣不写入对外可转发表格。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl:
+      "https://app.therundown.ai/guides/use-claudes-chrome-extension-to-quickly-book-business-trips",
+    sourceLabel: "therundown.ai · 出差酒店短名单",
+    upvotes: 78,
+    trending: false,
+    tags: ["出差", "酒店短名单", "飞书表格", "价格距离", "不下单"],
+    howItWorks: [
+      "填写城市、入住离店日、预算、会场/办公室地址与必选字段",
+      "Agent 整理候选并写入飞书表格：价、距离、评分摘要、取消政策",
+      "审批人选定后由本人在差旅渠道下单；自动化流程止于短名单",
+    ],
+    tips: [
+      "表格加「抓取时间」列，避免隔夜比价时还用过期房价",
+      "默认勾选「可免费取消」筛选，降低改签差旅的沉没成本",
+    ],
+  },
+  {
+    id: "216",
+    slug: "calendar-guest-research-briefing",
+    title: "会前嘉宾调研推送到协作群",
+    summary:
+      "读取日历嘉宾名单，用公开网页做背景调研，会前短简报推飞书/企微；≠会议纪要，仅公开信息。",
+    description:
+      "重要会面前常要快速了解对方近期公开动态与角色背景。Agent 从日历事件读取嘉宾姓名/公司（或你粘贴的参会人列表），仅检索公开网页与官方简介，整理成一页会前简报：职位、近期公开言论/产品动态要点、可能相关的议题提示，推送到飞书或企微指定频道。区别于会议纪要、企微线程支持（139）：本条是会前背景简报，不是会后纪要，也不是客服/支持线程助手。硬约束：只用公开可访问信息，禁止爬取需登录的私密资料、禁止人肉非公开联系方式；简报默认内部频道，不自动群发外部嘉宾；涉及未证实传闻标「未核实」或省略；日历私密事件标题可脱敏后再推送。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude"],
+    sourceUrl: "https://www.xray.tech/post/ai-agent-zapier",
+    sourceLabel: "xray.tech · 会前嘉宾简报",
+    upvotes: 80,
+    trending: false,
+    tags: ["会前简报", "嘉宾调研", "飞书企微", "公开信息", "非纪要"],
+    howItWorks: [
+      "约定日历来源或粘贴参会人列表，指定飞书/企微推送频道",
+      "Agent 仅用公开来源整理一页背景简报与议题提示",
+      "会前推送到内部协作群；不生成会后纪要、不联系外部嘉宾",
+    ],
+    tips: [
+      "简报模板固定「来源链接」栏，方便会中一键核对原文",
+      "对内部敏感会议开启「仅推送组织者」模式，避免频道过宽泄露议题",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
