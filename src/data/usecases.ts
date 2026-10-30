@@ -3214,6 +3214,158 @@ export const usecases: UseCase[] = [
       "付费墙论文只用你有权访问的副本，勿让 Agent 绕过访问控制",
     ],
   },
+  {
+    id: "151",
+    slug: "hot-news-ai-cms-publish",
+    title: "热点新闻自动成稿并发布到博客 CMS",
+    summary:
+      "从 RSS/热点源生成中文草稿与 SEO 元数据，经人工过审后发布到博客或 CMS，并可在飞书通知结果。",
+    description:
+      "内容团队要追热点又怕事实错误。工作流拉取公开 RSS 或新闻线索，生成标题、摘要、正文骨架与 SEO 字段，先入「待审」而非直接公开；编辑核对事实与敏感表述后再一键发布。与「热点摘要日更」不同：本条目标是可发布的成稿进 CMS，不是内部速报。不编造未出现在源里的数据与引语。",
+    categories: ["content", "efficiency"],
+    platforms: ["n8n", "chatgpt", "claude", "feishu"],
+    sourceUrl:
+      "https://dev.to/grewup/automate-blog-publishing-with-n8n-ai-wordpress-full-workflowpublished-true-56cl",
+    sourceLabel: "DEV.to · n8n WordPress 工作流",
+    upvotes: 83,
+    trending: false,
+    tags: ["热点", "CMS", "成稿", "SEO", "内容创作"],
+    howItWorks: [
+      "订阅公开 RSS/热点源并去重选题",
+      "生成中文草稿与 SEO 元数据，进入待审队列",
+      "编辑通过后发布到 CMS，并可选飞书通知链接",
+    ],
+    tips: [
+      "政治、医疗、财经类默认人工必审，禁止全自动公开",
+      "正文注明信息来源链接，避免无出处断言",
+    ],
+  },
+  {
+    id: "152",
+    slug: "ai-qa-git-notes-persist",
+    title: "AI 问答摘要沉淀进 Git 笔记库",
+    summary:
+      "把有价值的 AI 问答整理成结构化笔记并提交到 Git 仓库，形成可检索、可回滚的个人知识库。",
+    description:
+      "聊天里的好答案容易淹没。Agent 将选定对话整理为 Markdown（问题、结论、步骤、注意事项），按主题目录提交到 Git；支持检索与版本对比。适合个人效率与轻度开发者笔记。默认不提交密钥与客户原文；敏感内容先脱敏。",
+    categories: ["efficiency", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50128580",
+    sourceLabel: "Hacker News",
+    upvotes: 78,
+    trending: false,
+    tags: ["Git", "笔记", "问答沉淀", "个人知识库", "效率"],
+    howItWorks: [
+      "标记值得保留的对话或粘贴问答原文",
+      "生成结构化 Markdown 并选择主题目录",
+      "提交到 Git 笔记库，可用日志查看历史版本",
+    ],
+    tips: [
+      "提交信息写清「主题+日期」，方便 git log 检索",
+      "仓库设私有，并在 pre-commit 扫描疑似密钥",
+    ],
+  },
+  {
+    id: "153",
+    slug: "seo-browse-audit-agent",
+    title: "浏览型 Agent 网站 SEO 巡检",
+    summary:
+      "用浏览型 Agent 抽查站点标题、描述、链接与核心页体验，输出可执行的 SEO 问题清单。",
+    description:
+      "独立站与内容站需要定期巡检，而不是只改商品标题。Agent 打开公开页面，检查 title/description、标题层级、死链、移动端可读性等，生成优先级清单推送到飞书。与「店铺 listing SEO 文案」不同：本条是整站/栏目级巡检报告。不做黑帽或伪造流量建议；不编造未测到的排名数字。",
+    categories: ["content", "efficiency"],
+    platforms: ["chatgpt", "claude", "n8n", "feishu"],
+    sourceUrl: "https://github.com/dannwaneri/seo-agent",
+    sourceLabel: "GitHub · seo-agent",
+    upvotes: 81,
+    trending: false,
+    tags: ["SEO", "巡检", "浏览Agent", "内容站", "飞书"],
+    howItWorks: [
+      "配置站点地图或重点 URL 列表",
+      "浏览型 Agent 抽样检查并记录问题",
+      "输出分级清单，推送飞书/文档供运营排期",
+    ],
+    tips: [
+      "先修高流量落地页，再铺全站，避免清单过长无人跟",
+      "对比上次报告做增量，只强调新增与未关闭项",
+    ],
+  },
+  {
+    id: "154",
+    slug: "lead-score-outreach-drafts",
+    title: "评分销售线索画像与外联草稿",
+    summary:
+      "根据公开信息为线索打分并生成中文外联草稿，推送到飞书/企微供销售编辑后发送。",
+    description:
+      "销售要在海量线索里找值得跟的。Agent 汇总公开公司/岗位信息，按拟合度打分，输出一页画像与可编辑外联邮件/企微话术；高分线索推送责任人。默认不自动群发；不编造对方未公开的营收与联系方式。与「竞品广告日研报」不同：对象是潜在客户线索而非广告素材。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude"],
+    sourceUrl: "https://cashandcache.substack.com/p/i-used-gemini-to-find-sales-leads",
+    sourceLabel: "Substack · 销售线索实践",
+    upvotes: 85,
+    trending: false,
+    tags: ["销售线索", "打分", "外联", "飞书", "企微"],
+    howItWorks: [
+      "导入线索名单与评分规则（行业、规模信号、岗位）",
+      "补充公开信息并生成画像与外联草稿",
+      "高分项推飞书/企微，销售编辑后人工发送",
+    ],
+    tips: [
+      "评分维度写进表格，方便复盘「高分却不成交」原因",
+      "外联遵守对方地区的营销合规与退订要求",
+    ],
+  },
+  {
+    id: "155",
+    slug: "pm-noncoder-feature-prototype",
+    title: "非编程产品经理用 Agent 原型功能",
+    summary:
+      "产品经理用自然语言描述需求，让编码 Agent 拉出可点击原型或演示页，便于评审与对齐。",
+    description:
+      "非编程 PM 常卡在「讲不清交互」。把用户故事与验收标准交给编码 Agent，生成最小可演示前端或流程原型，再拿去评审；工程正式排期仍由研发接手。强调可演示而非生产就绪：无真实密钥、无连生产库。适合职场协作与需求澄清。",
+    categories: ["career", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "doubao"],
+    sourceUrl: "https://amankhan1.substack.com/p/cursor-for-product-managers",
+    sourceLabel: "Substack · PM 用编码工具",
+    upvotes: 82,
+    trending: false,
+    tags: ["产品经理", "原型", "需求澄清", "职场", "非编程"],
+    howItWorks: [
+      "写清用户故事、主路径与非目标",
+      "Agent 生成可本地打开的演示原型",
+      "评审记录问题清单，再交研发正式实现",
+    ],
+    tips: [
+      "原型标注「仅演示」，避免干系人误当成上线范围",
+      "每次只原型一个主路径，防止范围爆炸",
+    ],
+  },
+  {
+    id: "156",
+    slug: "github-week-to-tech-blog",
+    title: "一周 GitHub 动态生成技术博文",
+    summary:
+      "汇总一周的提交与 PR 说明，生成可发布的技术博文草稿，经作者润色后发到博客或社区。",
+    description:
+      "独立开发者与开源维护者周更常断更。多 Agent 或工作流读取公开仓库的 commit/PR 摘要，整理成「本周做了什么、为什么、踩坑」中文草稿，作者补截图与观点后再发。不泄露私有仓库与未公开安全细节；不把自动生成稿冒充深度长文而不审。",
+    categories: ["content", "devtools"],
+    platforms: ["chatgpt", "claude", "n8n", "deepseek"],
+    sourceUrl:
+      "https://dev.to/yashksaini/i-built-a-3-agent-pipeline-that-turns-my-github-activity-into-weekly-blog-posts-on-notion-devto-1ndn",
+    sourceLabel: "DEV.to · GitHub 活动周更流水线",
+    upvotes: 80,
+    trending: false,
+    tags: ["GitHub", "技术博文", "周更", "独立开发者", "内容"],
+    howItWorks: [
+      "拉取本周公开 commit/PR 标题与说明",
+      "生成结构化博文草稿（进展/动机/下一步）",
+      "作者润色并发布，归档到笔记或 CMS",
+    ],
+    tips: [
+      "过滤 chore/依赖升级噪音，突出用户可见变化",
+      "涉及未修复漏洞的 commit 不要写进公开稿",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
