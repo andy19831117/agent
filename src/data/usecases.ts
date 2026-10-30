@@ -5436,6 +5436,158 @@ export const usecases: UseCase[] = [
       "危险操作设唤醒口令（如「确认迁移」），避免误听执行",
     ],
   },
+  {
+    id: "235",
+    slug: "shopify-price-stock-daily-tracker",
+    title: "每日盯 Shopify 店铺改价与库存变动",
+    summary:
+      "按日拉取公开商品 feed，盯竞品改价、库存与上下架；只做哨兵告警，不改自家店价。",
+    description:
+      "跨境与独立站运营常要盯对标 Shopify 店铺的货盘：谁降价、谁断货、谁上了新品，靠人工点店既慢又漏。用 n8n 定时拉取对方公开的 products.json 等可合法访问的商品 feed，Agent 对比昨日快照标出改价、库存阈值跨越与上下架，摘要推到飞书群或私聊，并可按 SKU 白名单过滤噪音；Claude/DeepSeek 负责把变动写成可读日报。区别于发票对库存采购单与差旅报销：本条是「竞品货盘价格库存哨兵」，不做进销存记账。硬约束：仅使用公开、合规的 feed/接口，不爬取违反 ToS 的私有接口或绕过访问控制；不自动改自家店铺价，禁止据此自动改售价、库存或促销规则；告警默认只读，下架/跟价动作须人确认；抓取频率与范围遵守站点合理使用边界，敏感密钥仅存本地编排器。",
+    categories: ["ecommerce"],
+    platforms: ["n8n", "feishu", "claude", "deepseek"],
+    sourceUrl:
+      "https://tools.openkrill.app/blog/shopify-products-json-price-tracker",
+    sourceLabel: "OpenKrill · Shopify products.json 盯价",
+    upvotes: 89,
+    trending: false,
+    tags: ["Shopify盯价", "库存哨兵", "竞品监控", "飞书日报", "不自动改价"],
+    howItWorks: [
+      "配置对标店铺公开 feed 与 SKU 白名单，约定飞书告警频道与日更节奏",
+      "n8n 拉取快照，Agent 对比改价/库存/上下架并生成日报摘要",
+      "人决定是否跟价或补货；系统不改自家店价、不碰私有接口",
+    ],
+    tips: [
+      "先只盯核心 SKU，避免全店变动刷屏淹没真信号",
+      "快照按「店铺+日期」存本地，便于回溯谁先动价",
+    ],
+  },
+  {
+    id: "236",
+    slug: "weekly-marketing-newsletter-agent",
+    title: "自动调研并起草每周营销 Newsletter",
+    summary:
+      "定时调研本周资讯，起草营销 Newsletter 与社媒脚本草稿；人审通过后再发送。",
+    description:
+      "品牌与独立开发者常要周更营销信，却卡在「选题调研+改稿+配社媒脚本」的重复劳动上。按周触发后，Agent 按选题清单检索公开资讯与自家产品动态，起草 Newsletter 正文、标题候选与配套短帖脚本，落入飞书待审文档或邮件草稿箱；n8n 负责定时与归档，Claude/ChatGPT 负责结构化改写与语气校准。区别于 Newsletter 效果看板、访谈改写稿与 SEO 博文发布：本条是「周更营销信」生产流水线，非数据看板或单篇 SEO。硬约束：成稿须人审后再发，禁止自动对订阅列表群发；不抄竞品 Newsletter 全文或大段原文，只允许公开事实摘要与原创改写；外链与宣称口径须人工核对；退订与隐私字段不得写入公开草稿外发。",
+    categories: ["content"],
+    platforms: ["claude", "n8n", "feishu", "chatgpt"],
+    sourceUrl:
+      "https://annikahelendi.substack.com/p/build-your-own-ai-newsletter-agent",
+    sourceLabel: "Annika Helendi · AI Newsletter Agent",
+    upvotes: 91,
+    trending: false,
+    tags: ["Newsletter", "周更营销", "资讯调研", "人审后发", "社媒脚本"],
+    howItWorks: [
+      "设定选题清单、信源范围、语气与飞书待审文档模板",
+      "周定时调研并起草 Newsletter 与配套短帖脚本入库",
+      "人审改稿确认后再发送；系统不自动群发、不粘贴竞品全文",
+    ],
+    tips: [
+      "每周固定「事实源+观点源」两栏，减少幻觉与口径漂移",
+      "待审文档强制「已核外链」勾选，未勾不得点发送",
+    ],
+  },
+  {
+    id: "237",
+    slug: "personal-agent-paperwork-lease-finance",
+    title: "医疗文书、财务梳理与续租交给个人 Agent",
+    summary:
+      "个人 Agent 梳理医疗文书、财务账单与续租材料并出待办清单；只整理草稿，不代诊不代交。",
+    description:
+      "一个人同时面对医院回执、保险理赔材料、账单对账与租约到期时，材料散落在邮箱、相册与聊天里，很容易漏交或交错版本。持久个人 Agent 接入邮件摘要、日历与本地文件目录后，按事项归类医疗文书字段、财务流水疑点与续租条款差异，生成待办清单、表单草稿与催办提醒，经微信或飞书私聊推送；复杂条款可再让 Claude 对照上一版租约标红变更。区别于 WHOOP 健康问答、差旅报销与家庭作业入历：本条是综合行政委派，非体征数据或出行收据。硬约束：输出明确非医嘱、非诊断，不得据此改用药或替代就诊；敏感医疗与财务数据默认本地或用户可控目录，禁止未授权外发群聊；不自动对外提交正式申请、理赔或续租网签，所有正式提交须人确认后亲自完成。",
+    categories: ["life", "efficiency"],
+    platforms: ["wechat", "feishu", "claude", "n8n"],
+    sourceUrl: "https://rettig.substack.com/p/tools-and-teammates-my-first-week",
+    sourceLabel: "rettig.substack · 与 AI Agent 共处一周",
+    upvotes: 88,
+    trending: false,
+    tags: ["个人Agent", "医疗文书", "财务梳理", "续租待办", "非医嘱"],
+    howItWorks: [
+      "约定本地/可控目录与微信/飞书私聊入口，导入邮件与材料文件夹",
+      "Agent 分类抽取字段，生成待办、表单草稿与条款变更标红",
+      "人确认后再自行提交正式申请；系统不做诊断、不自动外送正式件",
+    ],
+    tips: [
+      "医疗与财务分两个加密目录，避免混入日常聊天附件",
+      "待办强制「截止日期+材料版本号」，防止交旧版回执",
+    ],
+  },
+  {
+    id: "238",
+    slug: "exec-admin-email-bookkeeper-forms",
+    title: "高管行政：邮件草稿、会计答疑与保险表单",
+    summary:
+      "代拟拒邀与律师邮件、答会计问并预填保险经纪表；草稿须人发送，不擅自承诺财务数字。",
+    description:
+      "高管日程里常夹杂拒邀、律师函往来、会计追问与保险经纪表单，助理缺口时容易漏回或口径不一。在企微/飞书侧把邮件线程、日程冲突与表单字段交给 Agent：代拟礼貌拒邀与律师往来草稿、整理会计答疑要点、按租约与预算预填保险经纪表，并附引用片段供人核对；n8n 负责把待审草稿排队，Claude 统一语气与风险提示。区别于多 Agent 控制台与月末供应商发票打包：本条是高管桌面行政闭环，非舰队编排或月结归档。硬约束：邮件草稿须人发送，禁止自动外发；不擅自对外承诺财务数字、付款期限或法律立场；完整卡号、证件与合同密钥在摘要中脱敏；保险与法律表单提交前必须本人或授权人签字确认。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["wecom", "feishu", "claude", "n8n"],
+    sourceUrl: "https://www.platformer.news/openai-dots-agents-devday-2026/",
+    sourceLabel: "Platformer · OpenAI Dots Agents",
+    upvotes: 90,
+    trending: false,
+    tags: ["高管行政", "邮件草稿", "会计答疑", "保险表单", "人发邮件"],
+    howItWorks: [
+      "接入企微/飞书日程与待办，约定草稿队列与审批人",
+      "Agent 拟拒邀/律师邮件、会计答疑要点并预填保险表",
+      "人审改后亲自发送或提交；系统不自动外发、不承诺财务",
+    ],
+    tips: [
+      "拒邀模板区分「可改期/永久婉拒」，避免误伤重要关系",
+      "财务相关草稿强制高亮数字来源单元格，便于快速核对",
+    ],
+  },
+  {
+    id: "239",
+    slug: "student-problem-set-ai-annotations",
+    title: "用 AI 批注学生习题集辅助人工批改",
+    summary:
+      "对习题集生成批注与错因提示，辅助教师人工批改；人审终裁，去标识，不写入正式成绩。",
+    description:
+      "教师面对成叠习题集时，既要标对错，又要写针对性批注与共性错因，耗时且尺度易漂。把去标识后的习题扫描或电子卷交给 Agent，按题生成批注草稿、步骤缺口提示与班级错因摘要，写入飞书/企微待审表，供教师抽检修改后再发学生；Claude/ChatGPT 负责按参考答案与量规对齐措辞。区别于 Canvas 量规批改、手写作业扫描拆分与 HTML 教案：本条是习题批注试验流，非 LMS 拉取打分或扫描归档。硬约束：批注结果须人审终裁；作业须去标识后再入模型，禁止把学号姓名明文送入不可控外网；禁止未经教师确认写入正式成绩；疑似抄袭仅标「需人工复核」，不做自动处分或成绩锁定。",
+    categories: ["education"],
+    platforms: ["feishu", "wecom", "claude", "chatgpt"],
+    sourceUrl: "https://www.thedartmouth.com/article/2026/05/klee-claude-prof",
+    sourceLabel: "The Dartmouth · Claude 习题批注试验",
+    upvotes: 93,
+    trending: false,
+    tags: ["习题批注", "人审终裁", "去标识", "错因摘要", "辅助批改"],
+    howItWorks: [
+      "导入去标识习题与参考答案，约定待审表与抽检比例",
+      "Agent 按题生成批注草稿与班级错因摘要",
+      "教师终裁后再反馈学生；系统不写入正式成绩、不外发明文身份",
+    ],
+    tips: [
+      "批注前统一「学号哈希」映射表，教师端可还原、模型侧不可见",
+      "先小样本校准批注语气，再扩到全班避免过严或过松",
+    ],
+  },
+  {
+    id: "240",
+    slug: "car-dealer-quote-negotiate-agent",
+    title: "在车商间询价比价并自动议价买车",
+    summary:
+      "调研行情、询价比价并起草车商议价话术与报价对照表；人确认后再成交，不越权下单付款。",
+    description:
+      "买车时常要在多家经销商间询价、比配置与抬价博弈，信息散、话术累、容易被催签。Agent 先汇总公开行情与库存线索，生成询价表字段与议价目标区间，再按车商回复更新报价对照表，起草下一轮还价话术推到飞书/微信供人发送；n8n 可归档往来与截止提醒，Claude 负责口径一致与陷阱条款标红。区别于酒店短名单、差旅报销与订阅收据审计：本条是大额购车议价 Agent，非差旅或 SaaS 账单。硬约束：不越权下单、不自动付款；议价结果须人确认后再成交；不得擅自签署购车合同或授权扣款；身份证、银行卡与贷款材料仅存用户可控目录，禁止未授权外发；对外报价承诺以人发送的消息为准。",
+    categories: ["life"],
+    platforms: ["claude", "n8n", "feishu", "wechat"],
+    sourceUrl: "https://cloudship.co.uk/blog/ai-agent-bought-a-car/",
+    sourceLabel: "Cloudship · AI Agent 议价买车",
+    upvotes: 85,
+    trending: false,
+    tags: ["购车议价", "询价比价", "报价对照", "人确认成交", "不自动付款"],
+    howItWorks: [
+      "设定车型配置、预算上限与目标成交区间，建报价对照表",
+      "Agent 生成询价表与还价话术，跟踪各车商回复并标红陷阱条款",
+      "人确认最终报价后再自行下单付款；系统不越权下单、不自动扣款",
+    ],
+    tips: [
+      "把「落地价含什么」拆成必选/可选两列，避免口头优惠对不上票",
+      "设还价冷却时限，防止被「今日特价」话术逼签",
+    ],
+  },
 
 ];
 
