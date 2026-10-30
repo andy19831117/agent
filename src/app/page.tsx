@@ -1,4 +1,5 @@
 import { CategoryGrid } from "@/components/CategoryGrid";
+import { HomeFaq } from "@/components/HomeFaq";
 import { SearchFilters } from "@/components/SearchFilters";
 import { SubscribePlaceholder } from "@/components/SubscribePlaceholder";
 import { TrendingSection } from "@/components/TrendingSection";
@@ -58,7 +59,8 @@ export default function HomePage() {
         </div>
       </SearchFilters>
 
-      <div className="mt-10 sm:mt-12">
+      <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
+        <HomeFaq />
         <SubscribePlaceholder />
       </div>
     </div>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { categories } from "@/data/categories";
 import { platforms } from "@/data/platforms";
 import { getUseCaseBySlug, usecases } from "@/data/usecases";
+import { UsecaseFaq } from "@/components/UsecaseFaq";
 import { UseCaseActions } from "./UseCaseActions";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -110,6 +111,8 @@ export default async function UseCaseDetailPage({ params }: Props) {
           </span>
         ))}
       </section>
+
+      <UsecaseFaq slug={usecase.slug} />
     </div>
   );
 }
