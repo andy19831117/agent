@@ -2721,6 +2721,208 @@ export const usecases: UseCase[] = [
       "每个 PR 标题写清动机，方便额度周期后回看",
     ],
   },
+  {
+    id: "131",
+    slug: "pdf-form-fill-tool-calling-agent",
+    title: "用工具调用填写 PDF 表单",
+    summary:
+      "把证件信息、表格字段或表格数据交给带工具调用的 Agent，在浏览器或本地自动填入 PDF 表单并导出可核对稿。",
+    description:
+      "个人办事与小微企业常被「重复填同一套 PDF」卡住：报税附表、入职资料、保险申请、报名表。带工具调用的 Agent 读取结构化数据源（表格行、用户口述字段），定位 PDF 可填字段并写入，再导出供人工核对后提交。适合国内办事场景本地化：敏感字段默认脱敏预览，正式提交前必须人眼过一遍。不对标站正文做翻译，灵感来自公开讨论中的工具调用填表实践。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47995318",
+    sourceLabel: "Hacker News",
+    upvotes: 88,
+    trending: false,
+    tags: ["PDF", "表单", "工具调用", "个人效率", "生活办事"],
+    howItWorks: [
+      "准备结构化字段表（姓名、证件号、地址等）并标明必填项",
+      "Agent 用工具打开目标 PDF，按字段名映射写入并高亮未匹配项",
+      "导出草稿 PDF，人工核对后正式提交或盖章",
+    ],
+    tips: [
+      "身份证号、银行卡号等先用掩码预览，确认映射正确再写全量",
+      "遇到扫描版「假表单」先 OCR 成可填字段，或改走打印手填",
+    ],
+  },
+  {
+    id: "132",
+    slug: "invoice-extract-to-ledger-sheet",
+    title: "发票信息抽取并归档记账表",
+    summary:
+      "上传或转发发票/收据图片与 PDF，Agent 抽取金额、税号、品类后写入记账表，并在企微或飞书提醒待核销项。",
+    description:
+      "财务与行政重复劳动：每张开票要手工录入表格。自托管或工作流式 Agent 解析发票字段，写入飞书多维表格 / 企微文档表格 / 本地表格，并按规则打标签（差旅、办公、客户招待）。默认只写「待确认」行，人工核对后再过账；不自动发起付款。可与报销机器人衔接：群里丢图即建行。一手源为公开开源自动化仓库，正文为中文原创本地化。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "n8n"],
+    sourceUrl: "https://github.com/Fabiano225/ai-invoice-automation",
+    sourceLabel: "GitHub · ai-invoice-automation",
+    upvotes: 91,
+    trending: false,
+    tags: ["发票", "记账", "飞书", "企微", "企业自动化"],
+    howItWorks: [
+      "收集发票图片/PDF 到指定文件夹或群机器人收件箱",
+      "Agent 抽取开票方、金额、税额、日期、品类并校验合计",
+      "写入记账表「待确认」列，通知财务在飞书/企微核对后过账",
+    ],
+    tips: [
+      "先做税额合计校验，对不上的行强制人工，勿静默入账",
+      "客户名与税号可建别名表，减少 OCR 错字导致的重复供应商",
+    ],
+  },
+  {
+    id: "133",
+    slug: "support-ticket-triage-reply-draft",
+    title: "客服工单分拣与回复草稿",
+    summary:
+      "把客服邮箱或工单系统里的新单分拣优先级与类型，并起草可编辑的中文回复草稿，人工点发送。",
+    description:
+      "中小团队客服高峰时，分拣与套话回复占大量时间。Agent 读取工单正文与历史订单/知识库片段，输出：优先级、标签、建议接手角色，以及一版可改的中文回复。对接飞书/企微群可做「今日待回」播报。默认不自动外发；涉及退款、法务承诺必须人工。与「个人收件箱整理」不同，本条聚焦对外客服工单与知识库接地。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["feishu", "wecom", "claude", "chatgpt"],
+    sourceUrl: "https://github.com/nbashaw/claude-cs",
+    sourceLabel: "GitHub · claude-cs",
+    upvotes: 86,
+    trending: false,
+    tags: ["客服", "工单", "回复草稿", "企微", "飞书"],
+    howItWorks: [
+      "同步新工单与相关客户上下文（订单、上次对话摘要）",
+      "Agent 输出标签、优先级与中文回复草稿",
+      "客服在飞书/企微或工单台编辑后发送，并回写结案原因",
+    ],
+    tips: [
+      "把「禁止承诺清单」（免费延期、私下折扣等）写进系统提示",
+      "高情绪投诉单独队列，草稿仅作参考，必须真人接管",
+    ],
+  },
+  {
+    id: "134",
+    slug: "url-to-structured-notes-agent",
+    title: "任意链接转结构化笔记",
+    summary:
+      "丢进一篇文章或文档链接，Agent 抓取可读正文后生成标题、摘要、要点与行动项，写入飞书文档或 Notion。",
+    description:
+      "知识工作者收藏夹堆满却很少复盘。工作流式 Agent 拉取 URL 正文（去广告与导航），用模型抽出结构化字段：一句话摘要、三点论据、可执行下一步、相关人物/产品，再写入飞书云文档、多维表格或 Notion。适合个人效率与内容选题沉淀；付费墙与登录墙内容需用户自行粘贴正文，勿伪造抓取成功。灵感来自公开 n8n 社区工作流讨论，正文中文原创。",
+    categories: ["efficiency", "content"],
+    platforms: ["feishu", "n8n", "chatgpt", "claude"],
+    sourceUrl:
+      "https://community.n8n.io/t/turns-any-article-into-a-structured-notion-note/297566",
+    sourceLabel: "n8n Community",
+    upvotes: 84,
+    trending: false,
+    tags: ["链接", "笔记", "飞书文档", "Notion", "个人效率"],
+    howItWorks: [
+      "在机器人或表单提交 URL（或粘贴正文）",
+      "清洗可读正文并生成固定模板字段",
+      "写入飞书文档/多维表或 Notion，并可选推送到选题频道",
+    ],
+    tips: [
+      "模板固定「摘要/要点/行动项」三块，方便周回顾检索",
+      "对竞品与内部纪要加权限标签，避免公开空间误写",
+    ],
+  },
+  {
+    id: "135",
+    slug: "travel-email-to-calendar-agent",
+    title: "邮件行程识别写入日历",
+    summary:
+      "从机票、酒店、会议邀请邮件中抽出时间与地点，生成飞书/系统日历事件草稿，确认后再写入。",
+    description:
+      "出差与跨城会议邮件散落各处，漏加日历是常态。Agent 监控出行相关邮件（航司、酒店、会议平台），抽取出发/到达、时区、确认号与地址，生成日历草稿；用户在飞书日历或系统日历确认后落盘，并可附带「出发前提醒」。默认不自动改已有日程冲突，冲突时只告警。一手讨论见公开 HN 线程；飞书日历写入可对照开放平台日历接口做企业落地。",
+    categories: ["efficiency", "life"],
+    platforms: ["feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49949563",
+    sourceLabel: "Hacker News",
+    upvotes: 87,
+    trending: false,
+    tags: ["行程", "日历", "邮件", "飞书", "生活办事"],
+    howItWorks: [
+      "筛选含行程关键词的邮件并抽取结构化字段",
+      "生成日历草稿（含时区与地点），标出与现有日程的冲突",
+      "用户确认后写入飞书/系统日历并设提醒",
+    ],
+    tips: [
+      "时区按到达地而非收件箱本地时区解析，避免早晚差一小时",
+      "确认号可放描述字段，勿放公开可订阅日历标题",
+    ],
+  },
+  {
+    id: "136",
+    slug: "handwritten-appt-to-calendar-pdf",
+    title: "手写日程入历并归档 PDF",
+    summary:
+      "拍下手写日程本或便利贴，Agent 识别日期时间并写入日历，同时把原图归档为可检索 PDF。",
+    description:
+      "不少人仍用手写本管预约：医院、家校、线下拜访。拍照后由 Agent OCR 日期与事项，生成日历候选；确认后写入飞书或手机日历，原图打包进按月 PDF 归档，方便报销或复盘。识别不确定时标黄人工改，不臆造不存在的星期。适合生活办事与个人效率双场景。",
+    categories: ["life", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "doubao"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49627493",
+    sourceLabel: "Hacker News",
+    upvotes: 78,
+    trending: false,
+    tags: ["手写", "OCR", "日历", "归档", "生活办事"],
+    howItWorks: [
+      "拍照上传手写日程页",
+      "OCR 出候选事件列表，不确定项标黄",
+      "确认后写入日历，并将原图合并进当月归档 PDF",
+    ],
+    tips: [
+      "拍摄时保证日期数字清晰，避免反光导致「3/8」互认错",
+      "归档 PDF 按月命名，便于年底报销批量检索",
+    ],
+  },
+  {
+    id: "137",
+    slug: "daily-appt-voice-sms-reminder",
+    title: "预约语音与短信日提醒",
+    summary:
+      "按预约表每天自动触发语音或短信/企微提醒，降低到店爽约，适合诊所、教培与到店服务。",
+    description:
+      "到店服务行业痛点是爽约。基于 n8n 等自动化，Agent/工作流读取次日预约名单，在约定窗口发送短信、语音电话或企微/飞书应用消息提醒，并记录回执。内容模板需合规：明确身份、时间地点、取消方式；勿骚扰式多次拨打。国内落地可换运营商短信与企微客户联系能力，保留人工停用名单。一手源为 DEV 上公开的 n8n 提醒搭建文。",
+    categories: ["life", "efficiency"],
+    platforms: ["wecom", "feishu", "n8n", "chatgpt"],
+    sourceUrl:
+      "https://dev.to/sabbschow/automated-appointment-reminder-with-voice-call-and-sms-using-n8n-10bi",
+    sourceLabel: "DEV.to · n8n 提醒",
+    upvotes: 80,
+    trending: false,
+    tags: ["预约", "提醒", "短信", "企微", "生活办事"],
+    howItWorks: [
+      "维护预约表（顾客、时间、渠道偏好、退订标记）",
+      "每日定时生成提醒文案并经语音/短信/企微通道发出",
+      "记录送达与回复，异常单转人工回访",
+    ],
+    tips: [
+      "提供一键退订/勿再呼叫，避免营销式骚扰投诉",
+      "高峰前 24h + 2h 两档即可，过多提醒反而降信任",
+    ],
+  },
+  {
+    id: "138",
+    slug: "bg-agent-email-approval-inbox",
+    title: "后台 Agent 邮件式审批收件箱",
+    summary:
+      "让后台 Agent 跑长任务，完成件像未读邮件一样进审批收件箱，负责人批「合并/重做/丢弃」后再落库。",
+    description:
+      "企业自动化怕的是 Agent 静默改生产。模式是：后台任务跑完进入「未读」队列（邮件风格收件箱或飞书/企微审批卡片），展示摘要、风险与产物链接；人批准后才合并代码、发公告或改表。适合内容发布、数据回填、批量运营动作。默认拒绝无审批自动外发。灵感来自公开 HN 讨论的桌面后台 Agent + 审批收件箱形态，中文站按企业闸门叙事改写。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49713894",
+    sourceLabel: "Hacker News",
+    upvotes: 90,
+    trending: false,
+    tags: ["审批", "后台Agent", "收件箱", "飞书", "企微"],
+    howItWorks: [
+      "后台 Agent 完成任务后投递「未读」审批项（摘要+产物）",
+      "负责人在邮件式收件箱或飞书/企微卡片上选择通过/打回",
+      "通过后执行落库或发布；打回则带批注重跑",
+    ],
+    tips: [
+      "高风险动作（对外发送、删数据、改权限）强制两人批",
+      "审批卡片只放摘要与链接，勿把密钥贴进群消息",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
