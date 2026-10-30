@@ -4637,6 +4637,158 @@ export const usecases: UseCase[] = [
       "选题池按「可拍素材是否已有」排序，优先可落地的低成本角度",
     ],
   },
+  {
+    id: "205",
+    slug: "home-assistant-automations-agent",
+    title: "用编码 Agent 管家庭自动化",
+    summary:
+      "用编码 Agent 读写 Home Assistant 自动化与脚本：编排、排障、改 YAML/蓝图；改动须人确认后写入，不擅自控设备。",
+    description:
+      "家里灯、温控、安防规则越积越多，改一条自动化常要翻 YAML、查实体 ID、对照日志。本条聚焦 Home Assistant：Agent 在本地仓库/配置目录里梳理自动化与脚本，按场景起草或改写触发器与动作，对照失败日志定位实体缺失、时区错配、条件过严等问题，并给出可审 diff。结果可摘要进飞书家庭运维页。区别于日历入历、个人助理杂事与语音提醒：本条只管 HA 自动化编排与排障，不做通用日程或提醒。硬约束：任何写入 HA、重启集成或远程控设备须人确认；禁止在无人值守时开关门锁/安防/燃气相关实体；密钥与访问令牌不进对话明文；改动能回滚才合入。",
+    categories: ["life", "efficiency"],
+    platforms: ["claude", "chatgpt", "deepseek", "feishu"],
+    sourceUrl: "https://blog.beguelin.com/2026/04/claude-code-home-assistant/",
+    sourceLabel: "个人博客 · Home Assistant",
+    upvotes: 86,
+    trending: false,
+    tags: ["Home Assistant", "家庭自动化", "YAML编排", "排障", "改动人确认"],
+    howItWorks: [
+      "接入本地 HA 配置仓库或导出的自动化清单，标明可改实体范围",
+      "Agent 起草/修订自动化与脚本，对照日志给出排障说明与可审 diff",
+      "人核对后手动写入 HA 或合并配置；门锁/安防类实体默认只读",
+    ],
+    tips: [
+      "先在测试区或影子配置跑通，再合入生产 automations.yaml",
+      "为门锁、摄像头、燃气阀单独建「禁止自动执行」实体白名单的反面清单",
+    ],
+  },
+  {
+    id: "206",
+    slug: "interview-repurpose-content-pack",
+    title: "客户访谈改写成多形态内容",
+    summary:
+      "一次客户访谈产出博客、短帖与 newsletter 草稿包；人审后发，不做多平台自动分发。",
+    description:
+      "访谈录音/纪要往往只用一次，复用成本高。Agent 据转录或笔记抽出金句、痛点与可公开案例，改写成博客长文骨架、短帖要点与 newsletter 段落，打成「内容包」进飞书待审。区别于社媒热帖选题、GitHub 周动态成博文、热点新闻 CMS 发稿：本条是单次访谈→多形态改写，不是选题发现或 CMS 直发。也≠多平台自动分发——各渠道文案只生成草稿，不自动推送到公域。硬约束：对外发布须人审；客户未授权的姓名/数据脱敏；禁止伪造引用与效果数字；录音仅用本人有权处理的材料。",
+    categories: ["content", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "deepseek"],
+    sourceUrl: "https://aidecode.substack.com/p/building-a-content-repurposing-skill",
+    sourceLabel: "Substack · 访谈改写内容包",
+    upvotes: 82,
+    trending: false,
+    tags: ["客户访谈", "内容复用", "博客", "newsletter", "人审后发"],
+    howItWorks: [
+      "上传访谈转录/纪要，标注可公开段落与须脱敏字段",
+      "Agent 生成博客骨架、短帖要点与 newsletter 段落组成内容包",
+      "编辑在飞书审阅定稿后手动发布；系统不自动分发到各平台",
+    ],
+    tips: [
+      "内容包统一附「出处时间码/纪要段落」，方便核对原话",
+      "短帖与长文共用同一金句库，避免各渠道事实互相打架",
+    ],
+  },
+  {
+    id: "207",
+    slug: "newsletter-perf-dashboard-nocode",
+    title: "零代码搭 newsletter 效果看板",
+    summary:
+      "用 Agent+零代码把 newsletter 打开率/点击等指标拉成看板；只读汇总，不擅自改文案或名单。",
+    description:
+      "独立媒体与个人品牌常有发送平台数据，却缺一张能周看趋势的看板。Agent 协助对接导出 CSV/API（或 n8n 定时拉取），整理打开率、点击、退订与热门链接，生成飞书多维表或简易仪表盘字段与图表说明——重点是「搭看板看效果」，不是写稿发稿。区别于热点 CMS 发布、广告变体拉数、竞品广告日研报：本条盯自家 newsletter 效果面板，不做投放实验或竞品扫描。硬约束：默认只读指标；不自动改标题、不自动加减订阅者、不伪造打开/点击；对外分享报告前脱敏订阅者邮箱。",
+    categories: ["efficiency", "content"],
+    platforms: ["feishu", "n8n", "chatgpt", "claude"],
+    sourceUrl:
+      "https://futureinsidernews.substack.com/p/claude-code-changed-everything-heres",
+    sourceLabel: "Substack · newsletter 效果看板",
+    upvotes: 79,
+    trending: false,
+    tags: ["newsletter", "效果看板", "零代码", "飞书多维表", "只读汇总"],
+    howItWorks: [
+      "约定数据源（导出文件或只读 API）与指标字典：打开/点击/退订/热链",
+      "Agent 生成清洗规则、看板字段与 n8n/飞书同步草案并试跑样例",
+      "人确认字段映射后启用定时汇总；改文案与改名单仍在发送平台手动操作",
+    ],
+    tips: [
+      "首周只接「汇总表」，勿把原始收件人列表同步进共享看板",
+      "图表旁注明统计窗口与时区，避免跨周对比口径漂移",
+    ],
+  },
+  {
+    id: "208",
+    slug: "local-webapp-test-fix-one-session",
+    title: "同会话测本地 Web 应用并修错",
+    summary:
+      "同一会话里打开本地 Web 应用、复现报错并提交最小修复；不自动合并，密钥不进上下文。",
+    description:
+      "独立开发者本地联调常在「浏览器看错 → 切回编辑器改 → 再刷新」之间来回。本条把「测+修」收进同一会话：Agent 按检查清单点本地页面或读控制台/网络日志，复现前端/接口错误，定位到相关文件后给出最小补丁与复测步骤。区别于浏览器 Agent 工作日测评、SEO 浏览巡检、意图评审加测试：本条是本地 Web 应用同会话修错闭环，不是线上巡检或产品意图评审。硬约束：改动以可审 diff/PR 提交，不自动合并主干；生产密钥与 .env 不进提示词；破坏性操作（清库、删迁移）须人显式同意；仅连接本机或本人授权的开发环境。",
+    categories: ["devtools"],
+    platforms: ["claude", "chatgpt", "deepseek", "grok"],
+    sourceUrl: "https://www.test-lab.ai/blog/claude-code-chrome-extension-local-testing",
+    sourceLabel: "test-lab.ai · 本地联调",
+    upvotes: 88,
+    trending: false,
+    tags: ["本地联调", "Web应用", "同会话修错", "最小补丁", "不自动合并"],
+    howItWorks: [
+      "启动本地开发服务，约定可测路由与账号（无真实生产数据）",
+      "Agent 按清单复现问题，读日志/堆栈后提交最小修复与复测说明",
+      "人审 diff 并本地确认通过后再合并；会话无权推保护分支或清库",
+    ],
+    tips: [
+      "用固定「复现脚本/点击路径」模板，避免每次口头描述漂移",
+      "把含密钥的配置文件加入 Agent 忽略列表，只暴露脱敏后的报错片段",
+    ],
+  },
+  {
+    id: "209",
+    slug: "homeschool-family-ops-agents",
+    title: "家庭在家教育用多 Agent 运转",
+    summary:
+      "多 Agent 协同家庭在家教育：课表、作业检查与家务日程进飞书；对外通知与采购须家长确认。",
+    description:
+      "在家教育要把教学节奏、作业反馈与家庭后勤揉在一起。约定几个专职 Agent：课表/单元目标、作业批改草稿与学习材料清单、家务与接送日程，结果汇总到飞书家庭看板，家长一眼看到「今日学什么、谁欠交、家里还缺什么」。区别于个人助理杂事、预约提醒、旅行邮件入历：本条是家庭教学+后勤多 Agent 协同，不是单人杂事或旅行行程。硬约束：孩子对外消息、家校沟通与任何采购/付款须家长确认；不自动发布孩子照片或成绩到公域；学习评价仅草稿，最终反馈由家长定稿；敏感健康与身份信息最小化存储。",
+    categories: ["life", "education"],
+    platforms: ["feishu", "chatgpt", "claude", "doubao"],
+    sourceUrl:
+      "https://www.shippingskool.com/blog/mom-runs-family-5-ai-agents-homeschool-openclaw",
+    sourceLabel: "个人博客 · 在家教育多 Agent",
+    upvotes: 84,
+    trending: false,
+    tags: ["在家教育", "多Agent", "课表作业", "家庭看板", "家长确认"],
+    howItWorks: [
+      "设定学期目标、日课表模板与各 Agent 职责边界",
+      "教学/作业/后勤 Agent 分别产出当日计划、批改草稿与待办，写入飞书",
+      "家长审阅后执行通知与采购；孩子相关对外发送默认关闭自动执行",
+    ],
+    tips: [
+      "作业批改草稿只给家长可见频道，避免孩子未准备好就看到生硬评语",
+      "采购清单标注「可选/必需」，防止 Agent 把教具愿望单当成必买",
+    ],
+  },
+  {
+    id: "210",
+    slug: "smb-support-call-content-agents",
+    title: "小团队客服外呼与内容 Agent 套件",
+    summary:
+      "小团队一套客服草稿、外呼提纲与内容稿 Agent；企微/飞书落地，外呼与对外发送须人审。",
+    description:
+      "十几人团队常一人兼客服、回访与内容。本条提供可本地化到企微/飞书的 Agent 套件：工单/会话回复草稿、回访外呼提纲与话术要点、以及可复用的帮助中心/短内容稿，统一进待审队列。区别于工单分拣回复草稿（133）、企微线程支持（139）、CRM 填表外联（154）、流失扩容信号回复（170）：本条是小团队「客服+外呼提纲+内容」组合套件，不是单一工单流、线程助手、CRM 填表或流失信号触发。硬约束：外呼与任何对外发送须人审；禁止自动拨号连拨与自动群发；不编造承诺折扣或未核实的政策；客户隐私字段最小化，通话录音仅按公司合规保留。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["wecom", "feishu", "chatgpt", "claude"],
+    sourceUrl: "https://www.lindy.ai/case-study/seven-zero-ventures-b2lq1",
+    sourceLabel: "案例站 · 小团队 Agent 套件",
+    upvotes: 80,
+    trending: false,
+    tags: ["小团队", "客服草稿", "外呼提纲", "企微飞书", "人审外呼"],
+    howItWorks: [
+      "在企微/飞书配置客服、外呼、内容三类队列与可见范围",
+      "Agent 分别生成回复草稿、外呼提纲与内容稿，写入对应待审列表",
+      "负责人审阅后手动发送或外呼；系统不自动拨号、不自动群发",
+    ],
+    tips: [
+      "外呼提纲强制带「今日可承诺范围」字段，超出范围标红停发",
+      "内容稿与客服回复共用产品事实表，避免两边口径不一致",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
