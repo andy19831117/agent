@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="隐私政策" updated="YYYY-MM-DD">
+    <LegalPage title="隐私政策" updated="2026-10-30">
       <LegalSection title="我们可能收集的信息">
         <p>本站可能收集你在订阅时留下的邮箱，以及服务器产生的基础访问日志，例如访问时间和页面路径。</p>
       </LegalSection>

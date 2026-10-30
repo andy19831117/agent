@@ -125,7 +125,6 @@ export function SponsorsPage() {
             {siteContact.email}
           </a>
         </p>
-        <p className="mt-2 text-sm text-slate-300">电话：{siteContact.phone}</p>
         <p className="mt-2 text-sm text-slate-300">微信：{siteContact.wechat}</p>
         <a
           href={sponsorMailHref("赞助合作意向")}

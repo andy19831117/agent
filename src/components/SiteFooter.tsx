@@ -4,11 +4,9 @@ const linkClass = "text-sm text-slate-400 hover:text-indigo-300";
 
 function ContactSlots({
   email,
-  phone,
   wechat,
 }: {
   email: string;
-  phone: string;
   wechat: string;
 }) {
   return (
@@ -16,7 +14,6 @@ function ContactSlots({
       <a href={`mailto:${email}`} className={linkClass}>
         邮箱 {email}
       </a>
-      <span className="text-sm text-slate-400">电话 {phone}</span>
       <span className="text-sm text-slate-400">微信 {wechat}</span>
     </>
   );
@@ -24,11 +21,9 @@ function ContactSlots({
 
 export function SiteFooter({
   email,
-  phone,
   wechat,
 }: {
   email: string;
-  phone: string;
   wechat: string;
 }) {
   return (
@@ -58,11 +53,11 @@ export function SiteFooter({
               免责声明
             </Link>
             <span className="hidden sm:contents">
-              <ContactSlots email={email} phone={phone} wechat={wechat} />
+              <ContactSlots email={email} wechat={wechat} />
             </span>
           </nav>
           <p className="flex flex-wrap gap-x-4 gap-y-2 sm:hidden">
-            <ContactSlots email={email} phone={phone} wechat={wechat} />
+            <ContactSlots email={email} wechat={wechat} />
           </p>
           <p className="text-sm text-slate-600">
             后续分发：小红书 / 公众号 / B站 / 抖音 / 视频号 / 快手

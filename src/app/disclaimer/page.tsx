@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function DisclaimerPage() {
   return (
-    <LegalPage title="免责声明" updated="YYYY-MM-DD">
+    <LegalPage title="免责声明" updated="2026-10-30">
       <LegalSection title="内容性质">
         <p>
           本站用例由编辑整理，不是各平台或模型厂商的官方说明，也不代表官方认证或背书。

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export function LegalPage({
   title,
-  updated = "YYYY-MM-DD",
+  updated = "2026-10-30",
   children,
 }: {
   title: string;
