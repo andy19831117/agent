@@ -4112,6 +4112,158 @@ export const usecases: UseCase[] = [
       "把高影响标的设为人工必读，避免刷屏忽略",
     ],
   },
+  {
+    id: "187",
+    slug: "daily-social-trending-refs",
+    title: "每日社媒热帖汇总成选题参考",
+    summary:
+      "每日从公开热榜/RSS 抓取社媒热帖线索，去重归纳后写入飞书选题池，只作参考不抄原文。",
+    description:
+      "内容团队每天刷多平台热榜耗时且易漏。Agent 定时读取公开榜单或 RSS，提炼话题角度、受众信号与可延展钩子，整理成飞书选题参考卡。本地化时热帖可来自公开榜/RSS；输出进飞书选题池。勿盗用他人素材原文；引用仅作灵感索引，成稿须原创改写与事实核验。",
+    categories: ["content", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "deepseek"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47838224",
+    sourceLabel: "Hacker News",
+    upvotes: 84,
+    trending: false,
+    tags: ["社媒热帖", "选题池", "飞书", "内容灵感", "公开榜"],
+    howItWorks: [
+      "配置公开热榜/RSS 源与飞书选题文档模板",
+      "Agent 每日拉取、去重并生成带角度与风险提示的选题卡",
+      "编辑从选题池挑题，原创改写后再排期",
+    ],
+    tips: [
+      "每张卡标注来源链接与抓取时间，方便溯源",
+      "禁止粘贴热帖全文；只保留钩子词与自拟大纲",
+    ],
+  },
+  {
+    id: "188",
+    slug: "agent-code-keep-understanding",
+    title: "用 Agent 写码仍保持可工作理解",
+    summary:
+      "Agent 协助写码时每步留下可读摘要与决策日志，保证人随时能接手，禁止无注释大爆炸改动。",
+    description:
+      "Agent 写码快，但「黑盒大改」会让人失去对代码的工作理解。约定每轮改动附决策日志（为何改、影响面、回滚点）与可读摘要；单次 PR/提交保持小而可审。禁止无注释、无说明的大爆炸改动。目标是人机协作后仓库仍可被人独立维护与调试。",
+    categories: ["devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50158650",
+    sourceLabel: "Hacker News",
+    upvotes: 87,
+    trending: false,
+    tags: ["编码理解", "决策日志", "可接手", "小步提交", "开发者工具"],
+    howItWorks: [
+      "开工前约定摘要模板与单次改动范围上限",
+      "Agent 每步输出决策日志与可读 diff 说明后再改文件",
+      "人据日志抽查关键路径，确认理解后再合并",
+    ],
+    tips: [
+      "决策日志与代码同仓存放，便于日后接手",
+      "发现无注释大爆炸改动一律打回，拆成小步重做",
+    ],
+  },
+  {
+    id: "189",
+    slug: "leftover-quota-reviewable-prs",
+    title: "剩余 AI 额度换成可审 PR",
+    summary:
+      "额度将尽时让 Agent 批量开小而可审的 PR（测试补齐、文档、小重构），人不自动合并。",
+    description:
+      "订阅额度月底常有剩余。与其浪费，不如让 Agent 按 backlog 挑「低风险、可独立审」的小任务：补测、修类型、补文档、小范围清理，开成体积可控的 PR。强调额度将尽时批量开小可审 PR；不自动合并——每条须人审 diff 与 CI。避免把剩余额度砸成巨型不可审改动。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50073611",
+    sourceLabel: "Hacker News",
+    upvotes: 81,
+    trending: false,
+    tags: ["剩余额度", "可审PR", "小步改动", "不自动合并", "开发效率"],
+    howItWorks: [
+      "列出额度将尽时的候选小任务与单 PR 行数上限",
+      "Agent 按优先级批量开独立分支与可审 PR",
+      "人审 diff/CI 后手动合并，禁止自动合入",
+    ],
+    tips: [
+      "单 PR 聚焦一件事，方便快速否决或合入",
+      "额度策略写进脚本：低于阈值才启动批量开 PR",
+    ],
+  },
+  {
+    id: "190",
+    slug: "personal-finance-track-assistant",
+    title: "个人记账助理跟踪收支",
+    summary:
+      "个人记账助理整理账单分类、月度汇总与提醒；非投资建议，不荐股不下单。",
+    description:
+      "日常收支散落在短信、账单与表格里。Agent 协助导入或口述记账，自动分类、标异常支出、生成月度一览并推飞书提醒。本用例硬约束：非投资建议；不荐股、不下单、不预测收益；只整理账本、分类与提醒。敏感卡号脱敏后再接入会话。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "feishu", "deepseek"],
+    sourceUrl:
+      "https://adlrocha.substack.com/p/adlrocha-agents-will-make-code-and",
+    sourceLabel: "Substack · 个人财务助理线索",
+    upvotes: 78,
+    trending: false,
+    tags: ["个人记账", "收支跟踪", "非投资建议", "飞书提醒", "生活效率"],
+    howItWorks: [
+      "约定分类规则、提醒阈值与脱敏字段",
+      "Agent 整理收支条目并输出月度分类汇总",
+      "推送飞书提醒给人核对，不触发任何投资或下单动作",
+    ],
+    tips: [
+      "输出页眉固定「非投资建议；不荐股不下单」",
+      "只保留后四位或哈希标识，勿上传完整卡号/密码",
+    ],
+  },
+  {
+    id: "191",
+    slug: "learn-scripts-from-tools-folder",
+    title: "从 tools 文件夹学习个人脚本",
+    summary:
+      "Agent 扫描个人 scripts/tools 目录，归纳用法、参数与可复用片段，写入可检索笔记。",
+    description:
+      "个人工具目录常年堆脚本却少文档。Agent 只读扫描 scripts/tools，解析入口、依赖与典型调用，抽出可复用片段与「何时用」说明，写入笔记或本地知识库。适合把隐性习惯变成可交接资产。不执行未审脚本；密钥与环境变量只记占位名，不抄真实值。",
+    categories: ["efficiency", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://x.com/ttunguz/status/2011189040591319304",
+    sourceLabel: "X 原帖",
+    upvotes: 83,
+    trending: false,
+    tags: ["个人脚本", "tools目录", "用法归纳", "可复用片段", "开发笔记"],
+    howItWorks: [
+      "指定 scripts/tools 只读路径与笔记输出位置",
+      "Agent 扫描并生成「用途 / 用法 / 片段」卡片",
+      "人校对后归档，需要时按笔记复用或改写",
+    ],
+    tips: [
+      "先扫只读清单，确认无密钥明文再生成公开笔记",
+      "高频脚本单独标「推荐入口」，减少找错文件",
+    ],
+  },
+  {
+    id: "192",
+    slug: "data-clean-to-exec-summary",
+    title: "数据清洗到高管摘要的 Agent 流水线",
+    summary:
+      "Agent 流水线完成清洗→分析→飞书高管一页纸；不编造数字，敏感数据脱敏。",
+    description:
+      "业务方常卡在「表脏、分析散、高管要一页纸」。用 n8n/Agent 串起：清洗校验 → 约定指标分析 → 生成飞书高管摘要。全程引用可追溯数据源；不编造数字；身份证/手机号等敏感字段脱敏。人审数字与结论后再发高管群。适合周报/月报类固定节奏。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl:
+      "https://bronsonelliott.substack.com/p/i-built-a-complete-data-analysis",
+    sourceLabel: "Substack · 数据分析流水线",
+    upvotes: 89,
+    trending: false,
+    tags: ["数据清洗", "高管摘要", "飞书", "企业流水线", "脱敏"],
+    howItWorks: [
+      "接入原始表与清洗规则，跑校验并输出洁净数据集",
+      "按预定指标分析，生成带出处的结论草稿",
+      "渲染飞书高管一页纸，人核对数字后发布",
+    ],
+    tips: [
+      "摘要每个数字旁标注来源表与计算口径",
+      "流水线默认脱敏；未脱敏字段禁止进入对外文档",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
