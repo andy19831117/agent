@@ -4943,6 +4943,195 @@ export const usecases: UseCase[] = [
       "对内部敏感会议开启「仅推送组织者」模式，避免频道过宽泄露议题",
     ],
   },
+  {
+    id: "217",
+    slug: "kids-homework-due-dates-calendar",
+    title: "孩子作业与截止日期汇入日历",
+    summary:
+      "把各科作业与交截止时间整理进孩子专属日历并提前提醒；孩子数据默认本地、由家长掌控。",
+    description:
+      "小学到初中各科作业分散在家校群、纸质本与口头布置里，家长容易漏记某一科的交截止。家长把作业清单（拍照、粘贴或从群消息摘录）交给 Agent，抽取科目、任务名与截止日期，写入孩子专属日历事件，并按约定提前 N 小时/天提醒。可同步一份「本周作业一览」到飞书家长个人页便于全家查看。区别于在家教育多 Agent 运转、互动 HTML 教案：本条只做「作业清单→日历同步与提醒」，不做整套教学协同，也不生成课堂互动页。硬约束：孩子姓名、学校、成绩与作业正文默认仅存本机或家长可控目录，不上传公开网盘、不写入对外可转发频道；禁止自动联系老师或同学；日历标题可用脱敏昵称；删除/共享日历须家长确认；不把孩子真实证件号或定位轨迹写入事件备注。",
+    categories: ["education", "life"],
+    platforms: ["claude", "chatgpt", "doubao", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49796524",
+    sourceLabel: "HN · 作业截止日期入历",
+    upvotes: 88,
+    trending: false,
+    tags: [
+      "作业日历",
+      "截止日期",
+      "家校",
+      "本地隐私",
+      "家长可控",
+    ],
+    howItWorks: [
+      "家长提供本周作业清单（文字/截图摘录）与提醒提前量，指定孩子日历",
+      "Agent 抽取科目、任务与交截止，生成日历事件草案并附本周一览",
+      "家长核对后写入日历；孩子数据保持本地/家长可控，不对外群发",
+    ],
+    tips: [
+      "同一科目统一事件颜色，周末复习块单独标「可选」避免误当成硬截止",
+      "开启「仅家长可编辑」日历权限，孩子端只读提醒即可",
+    ],
+  },
+  {
+    id: "218",
+    slug: "grocery-cart-from-regular-list",
+    title: "按常购清单自动填购物车",
+    summary:
+      "用家庭常购表一键往网超购物车加货并标缺货替代；只填车，默认不自动结账付款。",
+    description:
+      "每周买米油蛋奶水果几乎是同一批 SKU，在 App 里反复点选浪费时间。把常购清单（表格或备忘录：品名、规格偏好、数量、备选品牌）交给 Agent，对照当前网超可购商品填入购物车，缺货时按备选规则推荐替代并标出差价。区别于冰箱剩菜食谱、退货退款草稿：本条不做菜谱推荐，也不办退款，只做「常购表→购物车」。硬约束：默认只加购到购物车并输出核对清单，禁止自动点击结算、禁止代填支付密码/绑卡付款、禁止静默下单；价格与库存以当时页面为准并标注抓取时间；最终下单须人在 App/网页确认；会员专享价与地址隐私不写入可外发摘要。",
+    categories: ["life", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl:
+      "https://christinasouch.com/blog/can-claude-automate-my-grocery-shopping",
+    sourceLabel: "christinasouch.com · 常购清单",
+    upvotes: 84,
+    trending: false,
+    tags: [
+      "常购清单",
+      "购物车",
+      "网超",
+      "缺货替代",
+      "不自动结账",
+    ],
+    howItWorks: [
+      "维护常购表（品名、规格、数量、备选品牌）并选定目标网超",
+      "Agent 按表加购，缺货按备选规则给出替代与差价，输出购物车核对单",
+      "人核对后在 App 手动结算；自动化止于购物车，不代付",
+    ],
+    tips: [
+      "常购表加「勿替代」列（如特定品牌奶粉），避免被低价货顶掉",
+      "周末大促前先试跑「只比价不加购」模式，确认规则再填车",
+    ],
+  },
+  {
+    id: "219",
+    slug: "ai-saas-subscription-receipt-audit",
+    title: "从邮件收据审计 AI 工具订阅",
+    summary:
+      "扫描邮箱收据列出 AI SaaS 订阅、标出重复与闲置线索；只盘点查重，不自动取消订阅。",
+    description:
+      "个人与小团队常同时开着多家大模型、绘图与写作 SaaS，邮件里收据散落，月底才发现重复付费。Agent 在授权邮箱范围内检索订阅/收据类邮件，抽出服务名、套餐档、扣款周期与金额，汇总成订阅台账，标出「同功能重叠」「长期无登录线索（若你提供使用记录）」与「即将续费」。结果可写入飞书表格便于复盘。区别于订阅取消与退款助手、账单争议：本条重心是盘点与查重，不是代办退订或卡单争议。硬约束：只产出台账与建议优先级，禁止自动取消订阅、禁止代点退订链接、禁止改绑支付方式；完整卡号与账单地址脱敏；本条不构成投资、理财或税务建议，是否续费由人决定；邮箱只读扫描，不转发收据到外部。",
+    categories: ["efficiency", "life"],
+    platforms: ["claude", "chatgpt", "deepseek", "feishu"],
+    sourceUrl: "https://www.mindstudio.ai/blog/meta-muse-ai-agent",
+    sourceLabel: "MindStudio · Muse 订阅审计",
+    upvotes: 86,
+    trending: false,
+    tags: [
+      "AI订阅",
+      "邮件收据",
+      "查重盘点",
+      "不自动取消",
+      "台账",
+    ],
+    howItWorks: [
+      "授权只读扫描订阅/收据邮件文件夹，或粘贴近期收据摘要",
+      "Agent 汇总服务名、金额、周期与重叠标记，输出续费日历与优先级建议",
+      "人决定保留/降级/手动退订；系统不自动取消任何订阅",
+    ],
+    tips: [
+      "台账加「上次实际使用日期」列（手工填），比单纯金额更能发现闲置",
+      "团队共享席位与个人席位分行记录，避免把公司卡和个人卡混算",
+    ],
+  },
+  {
+    id: "220",
+    slug: "sentry-bug-to-fix-pr",
+    title: "Sentry 报错一键开修复 PR",
+    summary:
+      "从 Sentry 报错做根因草稿并开修复 PR 供人审；不自动合并、不上生产。",
+    description:
+      "生产环境 Sentry 告警一来，独立开发者常要在堆栈、相关文件与复现步骤之间来回跳。给定 issue 链接或导出的事件摘要与仓库访问权限，Agent 归纳可能根因、起草最小修复补丁，并创建指向默认分支的修复 Pull Request，附复现说明与风险说明供审查。区别于 CI 失败归因、通用 PR 审查机群：本条从监控告警出发直达修复 PR，不是泛化的 CI 诊断流水线。硬约束：PR 仅供人审，禁止自动 merge、禁止直接推生产分支、禁止在无评审情况下部署；密钥、生产连接串与用户 PII 不得写入 PR 描述或测试夹具；高危改动（鉴权、支付、数据删除）必须标「需人工加强审」且默认不开自动合并开关。",
+    categories: ["devtools"],
+    platforms: ["claude", "chatgpt", "deepseek", "grok"],
+    sourceUrl:
+      "https://blog.sentry.io/seer-can-now-trigger-cursor-agents-to-fix-your-bugs",
+    sourceLabel: "Sentry Blog · Seer→Cursor",
+    upvotes: 90,
+    trending: false,
+    tags: [
+      "Sentry",
+      "修复PR",
+      "根因草稿",
+      "人审",
+      "不自动合并",
+    ],
+    howItWorks: [
+      "粘贴 Sentry issue 或事件摘要，绑定目标仓库与默认分支策略",
+      "Agent 分析堆栈、起草补丁并开 PR，写清复现与风险",
+      "开发者审查、补测后手动合并；禁止自动合入生产",
+    ],
+    tips: [
+      "PR 模板强制含「影响面 / 回滚方式 / 是否触及鉴权支付」三栏",
+      "先在复现分支跑最小失败用例，再让 Agent 改代码，减少空想补丁",
+    ],
+  },
+  {
+    id: "221",
+    slug: "sales-kb-im-bot-answers",
+    title: "销售知识库 IM 问答机器人",
+    summary:
+      "销售在企微/飞书提问，Bot 仅基于内部知识库作答；敏感价目可配置须审批后回。",
+    description:
+      "一线销售常在群里问「某版本含不含某功能」「标准交付周期」「合同模板哪一版」，翻网盘和旧群很慢。在企微或飞书部署问答 Bot：销售 @Bot 提问后，仅检索公司核准的产品说明、FAQ、流程与话术库作答，并附来源条目便于核对。区别于工单分拣、企微客服会话草稿、CRM 外联：本条服务内部销售答疑，不是对外客服草稿，也不自动写外联邮件。硬约束：答案范围严格限定已入库文档，知识库外问题回复「未收录请转产品/解决方案」而非编造；敏感价目、折扣底线、未公开路线图可设「须主管审批后可见」；禁止把客户名单、合同扫描件原文贴进群答案；日志可审计，默认不外发到个人微信。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude"],
+    sourceUrl:
+      "https://revengine.substack.com/p/paid-members-my-experience-with-zapier",
+    sourceLabel: "RevEngine · Zapier Slackbot",
+    upvotes: 82,
+    trending: false,
+    tags: [
+      "销售知识库",
+      "企微飞书",
+      "IM问答",
+      "范围限定",
+      "价目审批",
+    ],
+    howItWorks: [
+      "导入核准知识库并标记公开答 / 审批后答字段，接入企微或飞书机器人",
+      "销售在 IM 提问；Bot 检索作答并引用条目，敏感题走审批流",
+      "未收录问题转人工；不编造价格与未公开路线图",
+    ],
+    tips: [
+      "价目表变更日同步刷新向量库，并在答案脚注写「文档版本日期」",
+      "对「能否再便宜」类问题统一走审批模板，避免一线口头承诺踩线",
+    ],
+  },
+  {
+    id: "222",
+    slug: "youtube-thumbnail-ctr-ideas",
+    title: "按频道数据挑封面并给改版建议",
+    summary:
+      "结合频道分析对比高 CTR 封面特征，给出原创改版方向；只出建议，不出侵权搬运图、不伪造数据。",
+    description:
+      "创作者常凭感觉换缩略图，却说不清哪类构图、对比度与标题字数真正带来点击。连接或导入频道分析（公开或你有权导出的 CTR、展示次数与封面图），Agent 归纳高表现封面的共性（主体占比、文字层数、色相对比等），并针对指定视频给出若干原创改版方向与文案层级建议，可附简易线框说明。区别于多平台分发、技术博文挑错：本条专做缩略图效果复盘与改版建议，不做发稿与事实校对。硬约束：只输出文字/线框级建议与自有素材改法，禁止生成或提供可直接当作「搬运竞品封面」的成图；禁止伪造 CTR、展示量或编造未授权的竞品私有后台数据；引用公开对标时注明来源且不复制其商标图形；最终上传封面仍由创作者在平台后台手动完成。",
+    categories: ["content"],
+    platforms: ["chatgpt", "claude", "grok", "doubao"],
+    sourceUrl: "https://videostats.ai/blog/grok-bot-youtube-analytics",
+    sourceLabel: "VideoStats · YouTube 封面 CTR",
+    upvotes: 79,
+    trending: false,
+    tags: [
+      "YouTube封面",
+      "CTR复盘",
+      "改版建议",
+      "原创",
+      "不伪造数据",
+    ],
+    howItWorks: [
+      "导入有权访问的频道分析与待优化视频列表，标明风格边界",
+      "Agent 对比高 CTR 样本特征，输出原创改版方向与线框级说明",
+      "创作者自行制图上传；系统不产出侵权搬运封面、不编造指标",
+    ],
+    tips: [
+      "每次只改一个变量（主视觉或主文案）便于 A/B，避免一次大改说不清因果",
+      "建议稿标注「基于你导出数据的观察，非平台官方预测」以免误读成承诺涨幅",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
