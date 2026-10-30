@@ -3061,6 +3061,159 @@ export const usecases: UseCase[] = [
       "素材截图注意版权：内部研报可用，勿二次公开发布原创意",
     ],
   },
+  {
+    id: "145",
+    slug: "invoice-inventory-po-agent",
+    title: "发票对库存校验并生成采购单",
+    summary:
+      "核对进项发票与库存水位，缺货或低于安全库存时生成采购单草稿，推送到飞书/企微待批。",
+    description:
+      "仓储与采购常出现「票到了货不够」或重复下单。Agent 读取发票明细与库存表，校验品名/规格/数量，标出差异与低于安全库存的 SKU，并生成采购单草稿（供应商、数量、期望到货日）。默认不自动下单或付款；审批在飞书/企微完成后再同步。与「发票抽取记账」互补：本条偏进销存校验与采购触发。一手灵感来自公开 n8n/Agent 实践文，正文中文原创。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "n8n", "chatgpt"],
+    sourceUrl:
+      "https://dev.to/nova_gg/n8n-review-2026-i-used-it-for-8-months-to-build-ai-agents-honest-verdict-kif",
+    sourceLabel: "DEV.to · n8n Agent 实践",
+    upvotes: 84,
+    trending: false,
+    tags: ["发票", "库存", "采购单", "飞书", "企微"],
+    howItWorks: [
+      "同步进项发票行与库存/安全库存表",
+      "校验差异并列出需补货 SKU",
+      "生成采购单草稿推飞书/企微，人工批准后再下发供应商",
+    ],
+    tips: [
+      "SKU 别名表先建好，减少品名 OCR/简称导致的误报缺货",
+      "采购单金额超阈值必须双人批，防止 Agent 放大数量",
+    ],
+  },
+  {
+    id: "146",
+    slug: "voice-note-to-im-ticket-agent",
+    title: "语音备忘转企微飞书工单并复盘",
+    summary:
+      "把通勤或巡场时的语音备忘转写为结构化工单，推到企微/飞书，并在周末输出处理复盘。",
+    description:
+      "管理者口头交代多、事后难追溯。Agent 接收语音备忘，转写后抽取事项、责任人、截止日期与优先级，在企微或飞书创建任务/工单；周期结束汇总完成率与延误原因。默认创建前可预览；不自动 @ 全体。与「会议纪要待办」不同：本条入口是零散语音而非整场会议。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["wecom", "feishu", "chatgpt", "doubao"],
+    sourceUrl: "https://rumjahn.substack.com/p/the-complete-guide-to-openai-codex",
+    sourceLabel: "Substack · Codex 指南（语音/任务向线索）",
+    upvotes: 86,
+    trending: false,
+    tags: ["语音", "工单", "企微", "飞书", "复盘"],
+    howItWorks: [
+      "上传或转发语音备忘，完成转写与字段抽取",
+      "生成工单预览，确认后写入企微/飞书任务",
+      "周期汇总完成与逾期项，输出一页复盘",
+    ],
+    tips: [
+      "说话时带上「谁、什么时候、验收标准」三要素，转写质量显著提升",
+      "敏感人名与客户名可先用代号，工单可见范围再解敏",
+    ],
+  },
+  {
+    id: "147",
+    slug: "notes-vault-cli-summarize-agent",
+    title: "本地笔记库 CLI 汇总数月笔记",
+    summary:
+      "用 CLI Agent 扫描本地笔记库（Logseq/Obsidian 类），按主题汇总数月内容并生成回顾稿。",
+    description:
+      "笔记写得多、回顾少。在本地仓库目录运行 CLI Agent，按标签或时间窗检索，输出主题摘要、未闭环行动项与值得重读的条目，可再贴进飞书文档做周回顾。全程本地优先，不默认上传整库到公网。适合个人效率与学习积累。",
+    categories: ["efficiency", "education"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=48897407",
+    sourceLabel: "Hacker News",
+    upvotes: 79,
+    trending: false,
+    tags: ["笔记", "CLI", "回顾", "Obsidian", "个人效率"],
+    howItWorks: [
+      "指定笔记库路径与时间/标签过滤",
+      "Agent 只读扫描并聚类主题",
+      "输出回顾稿与行动项清单，可选同步到飞书文档",
+    ],
+    tips: [
+      "先用 `.gitignore` 排除日记私密目录再让 Agent 扫描",
+      "回顾稿固定模板：主题 / 进展 / 未完成，方便跨周对比",
+    ],
+  },
+  {
+    id: "148",
+    slug: "wecom-customer-session-triage-draft",
+    title: "企微客户会话分拣与回复草稿",
+    summary:
+      "对企业微信客户会话做意图分拣与优先级标注，并生成可编辑回复草稿，人工确认后发送。",
+    description:
+      "企微客户会话与邮箱工单不同：即时、口语、夹杂图片。Agent 读取会话线程，判断咨询/投诉/物流/商务意图，打优先级，并起草中文回复；高风险（退款、法律、舆情）强制转人工。与「企微 FAQ 自动应答」区分：本条是会话级分拣+草稿，而非侧边栏标准答案检索；与「邮箱工单分拣」区分入口为企微会话。灵感来自公开即时通讯客服 Agent 讨论，本地化到企微。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["wecom", "coze", "chatgpt", "deepseek"],
+    sourceUrl: "https://x.com/aiautomationexp/status/2110035889871257677",
+    sourceLabel: "X 原帖",
+    upvotes: 88,
+    trending: false,
+    tags: ["企微", "客户会话", "分拣", "回复草稿", "客服"],
+    howItWorks: [
+      "接入企微客户联系/会话存档许可范围内的消息",
+      "输出意图、优先级与回复草稿",
+      "坐席编辑发送，并回写标签与结案原因",
+    ],
+    tips: [
+      "会话存档与隐私合规先找法务确认范围与留存周期",
+      "禁止草稿里出现未备案的报价与「一定能退」表述",
+    ],
+  },
+  {
+    id: "149",
+    slug: "scheduled-recurring-agent-tasks",
+    title: "定时循环任务挂飞书企微提醒",
+    summary:
+      "把日报汇总、对账核对、目录清理等循环工作做成定时 Agent 任务，完成后在飞书/企微通知结果。",
+    description:
+      "团队里大量「每周五都要做」的琐事适合交给定时 Agent：拉数、对差异、生成摘要、清理过期草稿。任务按日历触发，产出写入约定文档，并在飞书/企微发送完成卡；失败则告警。与一次性聊天式委托不同：强调可调度、可观测、可停用。不自动对外发送客户邮件除非审批通过。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "n8n", "chatgpt"],
+    sourceUrl:
+      "https://aiblewmymind.substack.com/p/claude-cowork-scheduled-tasks-6-ways",
+    sourceLabel: "Substack · 定时任务实践",
+    upvotes: 87,
+    trending: false,
+    tags: ["定时任务", "循环工作", "飞书", "企微", "企业自动化"],
+    howItWorks: [
+      "登记循环任务：触发时间、输入源、成功标准",
+      "到点执行并写结果到文档/表格",
+      "向飞书/企微推送成功摘要或失败告警",
+    ],
+    tips: [
+      "每个任务设最大运行时长与重试上限，避免卡死占额度",
+      "变更生产数据的任务必须带「干跑」开关",
+    ],
+  },
+  {
+    id: "150",
+    slug: "personal-research-wiki-agent",
+    title: "论文文章搭建个人研究 Wiki",
+    summary:
+      "把论文与长文解析成互相链接的笔记卡片，逐步搭成个人研究 Wiki，支持问答检索。",
+    description:
+      "研究者与深度学习者需要可累积的知识网络，而不是一堆 PDF。Agent 读取论文/文章（本地文件或用户粘贴），抽出问题、方法、结论与待验证点，写入双向链接笔记（Obsidian 或飞书知识库），并维护主题索引。可对 Wiki 提问做综述草稿。不编造未出现在原文的实验数据；引用保留出处。",
+    categories: ["efficiency", "education"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl:
+      "https://github.com/rbarok/obsidian-cursor-knowledge-graph/blob/main/cursor-obsidian.md",
+    sourceLabel: "GitHub · Obsidian 知识图谱笔记",
+    upvotes: 80,
+    trending: false,
+    tags: ["研究 Wiki", "论文", "知识库", "笔记", "学习"],
+    howItWorks: [
+      "导入论文 PDF 或长文，抽取结构化卡片字段",
+      "写入带双链的笔记库并更新主题索引",
+      "按问题检索多篇卡片生成综述草稿，人工补引用",
+    ],
+    tips: [
+      "每张卡片强制保留原文出处与页码/段落，便于核对",
+      "付费墙论文只用你有权访问的副本，勿让 Agent 绕过访问控制",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
