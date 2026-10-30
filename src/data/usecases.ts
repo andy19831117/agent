@@ -5588,7 +5588,157 @@ export const usecases: UseCase[] = [
       "设还价冷却时限，防止被「今日特价」话术逼签",
     ],
   },
-
+  {
+    id: "241",
+    slug: "todoist-tasks-from-telegram",
+    title: "用 Telegram 消息把待办丢进 Todoist",
+    summary:
+      "聊天里随口丢一句，Agent 解析优先级与截止日写入 Todoist；也可落飞书任务，不擅自删他人待办。",
+    description:
+      "碎片待办常散落在 Telegram 私聊或群里，事后再抄进 Todoist 容易漏项、丢上下文与优先级。用 n8n 监听指定会话或关键词，Agent 抽取标题、优先级、标签与截止日，写入 Todoist，也可同步飞书/企微任务清单；微信侧可做同等轻量入口。Claude 负责消歧义、合并近似项并回聊确认提示，人可在聊天里一键改期或取消。区别于高管行政邮件草稿与个人文书委派：本条是轻量个人待办入口，不做正式外发、材料归类或合同级审批。硬约束：仅在授权会话写入本人任务；不擅自删除、改派或完成他人任务；群聊待办须带发起人标记；敏感备注默认私密，禁止未授权推到公开群；外部应用令牌仅存本地编排器，禁止写入对话日志明文。",
+    categories: ["efficiency"],
+    platforms: ["wechat", "feishu", "claude", "n8n"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47728484",
+    sourceLabel: "Hacker News · Telegram → Todoist",
+    upvotes: 87,
+    trending: false,
+    tags: ["Telegram待办", "Todoist", "聊天入任务", "飞书同步", "不删他人任务"],
+    howItWorks: [
+      "绑定授权 Telegram/微信会话与 Todoist 或飞书任务空间，约定关键词与默认清单",
+      "n8n 捕获消息，Agent 解析字段并写入任务，冲突时回聊确认",
+      "人可改期或取消；系统不删他人任务、不越权改派",
+    ],
+    tips: [
+      "群聊强制「@机器人+动作词」才入队，避免闲聊刷任务",
+      "同一句话 5 分钟内去重，防止连发造成重复条目",
+    ],
+  },
+  {
+    id: "242",
+    slug: "linkedin-job-fit-score-agent",
+    title: "对照画像给 LinkedIn 岗位打匹配分",
+    summary:
+      "按个人技能与经历给 LinkedIn/Boss 岗位打匹配分并标缺口；仅辅助决策，不自动投递。",
+    description:
+      "海投前最耗时的是逐条对照 JD 与自身画像：哪些硬技能命中、哪些缺口要补、哪些岗位其实方向不符。把公开岗位描述与本地维护的技能/项目经历画像交给 Agent，按维度打匹配分、列出证据句与缺口清单，并给出「可迁移经验」提示，摘要推到飞书或微信私聊；Claude/DeepSeek 负责口径一致与虚假夸大拦截。区别于简历谈薪辅导与高管行政邮件：本条只做岗位适配评分，不写对外简历终稿、不代谈薪、不做面试排期。硬约束：匹配分仅辅助、不自动投递；不代发申请、不擅自改简历对外；不批量骚扰招聘方或自动连发站内信；画像与联系方式默认本地，禁止未授权外发；评分不得冒充官方背书或保证录用。",
+    categories: ["career"],
+    platforms: ["claude", "feishu", "wechat", "deepseek"],
+    sourceUrl:
+      "https://automato.substack.com/p/claude-skills-job-analysis-linkedin-chrome-extension",
+    sourceLabel: "Automato · LinkedIn 岗位匹配分析",
+    upvotes: 92,
+    trending: false,
+    tags: ["岗位匹配分", "LinkedIn", "求职辅助", "缺口清单", "不自动投递"],
+    howItWorks: [
+      "维护本地技能/经历画像与目标岗位清单，约定飞书/微信报告模板",
+      "Agent 对照 JD 打分、标证据句与缺口，生成可读匹配报告",
+      "人决定是否投递；系统不代发申请、不擅自改简历对外",
+    ],
+    tips: [
+      "画像分「硬技能/项目证据/偏好」三栏，避免只靠关键词撞车",
+      "低分岗位默认折叠详情，先看高分短名单再细读",
+    ],
+  },
+  {
+    id: "243",
+    slug: "blog-post-to-animated-infographic",
+    title: "长文博文一键变成动效信息图",
+    summary:
+      "把已有长文博文压成可转发的动效信息图与封面长图素材包；不抄原文大段，发布须人审。",
+    description:
+      "公众号与小红书运营常要把长文二次分发成信息图或封面长图，人工提炼要点、分镜与排版很慢且易漏出处。Agent 读取授权博文，抽取论点、数据与步骤，生成信息图文案分层、动效分镜、配色与平台尺寸建议，经 Coze/扣子编排导出草稿；Claude/ChatGPT 压缩金句并标注数据来源，小红书侧仅作发布目标参考而非自动发帖。区别于周更营销 Newsletter 与 SEO 博文发布：本条是「成稿→视觉件」二次分发素材，不做多平台排期群发或订阅信投递。硬约束：不抄原文大段，只允许要点改写与数据引用并标注出处；成图与文案发布须人审；不得盗用他人插画/字体等商用授权未清资产；未公开或敏感数据不得入图外发。",
+    categories: ["content"],
+    platforms: ["claude", "coze", "xiaohongshu", "chatgpt"],
+    sourceUrl: "https://kimdoyal.substack.com/p/this-free-gemini-feature-is-my-new",
+    sourceLabel: "Kim Doyal · 博文转动效信息图",
+    upvotes: 90,
+    trending: false,
+    tags: ["动效信息图", "博文二次分发", "小红书封面", "人审发布", "要点改写"],
+    howItWorks: [
+      "导入已授权博文与品牌色/字体规范，选定信息图模板与平台尺寸",
+      "Agent 提炼要点、分镜与文案层，导出动效/长图草稿",
+      "人审改后自行发布；系统不粘贴原文大段、不自动上架",
+    ],
+    tips: [
+      "每图最多 5–7 个要点，超长文先拆系列再出图",
+      "数据条强制附「来源短注」，降低被指不实的风险",
+    ],
+  },
+  {
+    id: "244",
+    slug: "agent-checkout-and-order-tracking",
+    title: "Agent 代下单并跟踪物流状态",
+    summary:
+      "按预算比价写入购物车或出报价单，人确认支付后再跟物流；默认止于购物车，禁自动扣款。",
+    description:
+      "选品、比价、下单与查物流往往跨多个商城与客服会话，容易超预算、错规格或漏跟异常延误。Agent 按清单与预算上限检索公开商品页，生成比价表与推荐 SKU，并核对规格差异与运费口径，默认只写入购物车或报价草稿；支付须人在飞书/微信确认后亲自完成，随后 n8n 拉取物流节点并摘要延误、签收异常。Claude 负责规格对齐与陷阱条款提示。区别于 Shopify 竞品盯价库存哨兵：本条是「买+跟单」履约闭环，非货盘监控或自动跟价。硬约束：须人确认支付、不越权付款；默认止于购物车/报价，禁自动扣款；不得保存完整支付凭证或卡号对外转发；收货地址与订单号仅授权会话可见；退换货申请须人确认后发起。",
+    categories: ["ecommerce"],
+    platforms: ["n8n", "feishu", "claude", "wechat"],
+    sourceUrl: "https://rye.com/blog/openclaw-buy-anything-skill-agentic-checkout",
+    sourceLabel: "Rye · Agentic checkout / 下单追踪",
+    upvotes: 86,
+    trending: false,
+    tags: ["Agent代下单", "购物车确认", "物流跟踪", "人确认支付", "禁自动扣款"],
+    howItWorks: [
+      "设定商品清单、预算上限与授权商城，约定飞书/微信确认话术",
+      "Agent 比价并写入购物车或报价草稿，人确认后再支付",
+      "支付后跟踪物流节点与异常；系统不越权扣款、不自动退换",
+    ],
+    tips: [
+      "预算写成「含运费上限」，避免到手价击穿心理价位",
+      "物流异常只告警一次并附运单链接，减少刷屏",
+    ],
+  },
+  {
+    id: "245",
+    slug: "interactive-online-training-course",
+    title: "搭建并上线交互式在线培训课",
+    summary:
+      "从大纲生成交互式培训课页、测验题与部署预览草稿；不上架未审内容，学员数据须脱敏。",
+    description:
+      "企业内部培训与知识付费小课常卡在「大纲→课件→测验→上线」链条，多人改稿版本混乱、术语不统一。Agent 按学习目标生成章节大纲、交互练习、测验题与反馈话术，经 Coze/Dify 编排成可预览课包并落入飞书待审；Claude 统一术语、难度梯度与无障碍提示文案，并标出素材授权缺口供人补齐。区别于学生习题集批注与居家办学运维：本条偏课包生产与上线，非作业批改、成绩入册或家校日程。硬约束：不上架未审内容，正式发布须培训负责人确认；学员姓名、成绩与联系方式须脱敏后再入模型或导出报表；禁止把未授权内部资料塞进公开课；测验分数不自动写入人事考核，除非另行人工确认流程。",
+    categories: ["education"],
+    platforms: ["feishu", "coze", "claude", "dify"],
+    sourceUrl: "https://www.joinleland.com/library/a/manus-ai-agents",
+    sourceLabel: "Leland · Manus 交互式培训课",
+    upvotes: 88,
+    trending: false,
+    tags: ["在线培训", "交互课包", "测验草稿", "人审上架", "学员脱敏"],
+    howItWorks: [
+      "导入学习目标、受众与素材白名单，选定课包模板与飞书待审空间",
+      "Agent 生成大纲、交互练习与测验草稿并部署预览环境",
+      "负责人审改确认后再上架；系统不上架未审内容、导出须脱敏",
+    ],
+    tips: [
+      "每章强制「目标可观测行为」一句，避免只有概念堆砌",
+      "预览环境与正式环境密钥分离，防止误发测试题库",
+    ],
+  },
+  {
+    id: "246",
+    slug: "office-docs-read-edit-cli-agent",
+    title: "用 Agent 读写改 Word/Excel/PPT",
+    summary:
+      "批量读写改 Word/Excel/PPT：摘字段、改表、出汇报稿；改稿先出副本，外发须人确认。",
+    description:
+      "企微/飞书场景里周报附件、报价表与汇报 PPT 常要批量改字段、统一格式或抽取表格，手工点开极易覆盖正式版或把敏感附件误发出去。Agent 经本地/CLI 或受控目录读取 Office 三件套，按指令抽取字段、修订表格与生成幻灯片草稿，默认写入副本目录；n8n 可排队批处理，Claude 负责口径、版式与脱敏提示，结果回传到企微/飞书待审。区别于合同审阅与会议纪要：本条是文档格式层读写改能力，非法务条款裁定或会议纪实归档。硬约束：不擅自覆盖正式文档、不外泄敏感附件；改稿先出副本，外发须人确认；完整身份证号、银行卡与未脱敏客户名单禁止写入模型提示或外发草稿；宏与密钥仅在本地受控环境执行。",
+    categories: ["enterprise"],
+    platforms: ["wecom", "feishu", "claude", "n8n"],
+    sourceUrl: "https://github.com/iOfficeAI/OfficeCLI",
+    sourceLabel: "GitHub · OfficeCLI 办公套件 CLI",
+    upvotes: 91,
+    trending: false,
+    tags: ["Office读写改", "WordExcelPPT", "改稿副本", "企微飞书", "外发确认"],
+    howItWorks: [
+      "约定受控目录、副本命名规则与企微/飞书待审频道",
+      "Agent 读取源文件，按指令改字段/表格/幻灯片并写入副本",
+      "人审后再覆盖正式版或外发；系统不擅自覆盖、不外泄附件",
+    ],
+    tips: [
+      "正式目录只读挂载，写入一律走「_draft」后缀副本",
+      "批处理前先跑三份样例对照 diff，确认字段映射无误再全量",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
