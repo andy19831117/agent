@@ -5132,6 +5132,158 @@ export const usecases: UseCase[] = [
       "建议稿标注「基于你导出数据的观察，非平台官方预测」以免误读成承诺涨幅",
     ],
   },
+  {
+    id: "223",
+    slug: "meal-log-nutrition-telegram",
+    title: "聊天发餐食自动记营养",
+    summary:
+      "在微信/飞书发文字、语音或餐食照片，自动估热量与宏量并写入表格追踪目标；只记账不荐菜。",
+    description:
+      "减脂增肌或慢病饮食管理时，人常懒得打开记账 App，却习惯在聊天里随手说「午饭鸡胸花菜」或拍一盘菜。把微信/飞书（也可对接 Telegram 机器人）作为入口：文字、语音转写或餐食照片交给 Agent，识别食材与大致份量，估算热量与蛋白脂肪碳水，按日写入表格或飞书多维表，并对照你设定的目标给出当日进度。区别于冰箱剩菜食谱、常购清单填购物车：本条不做菜谱推荐与网购加购，只做「餐食记录→营养追踪」。硬约束：健康数据默认存本机或自建表，不向公开频道群发饮食细节；估算值仅供参考，不构成医疗营养处方，特殊疾病须遵医嘱；禁止自动下单保健品或代付外卖；照片中他人脸与住址背景应脱敏后再存。",
+    categories: ["life", "efficiency"],
+    platforms: ["wechat", "feishu", "claude", "n8n"],
+    sourceUrl:
+      "https://n8n.io/workflows/7756-nutrition-tracker-and-meal-logger-with-telegram-gemini-ai-and-google-sheets/",
+    sourceLabel: "n8n · Telegram 营养打卡",
+    upvotes: 87,
+    trending: false,
+    tags: ["营养打卡", "餐食记录", "热量宏量", "微信飞书", "不荐菜"],
+    howItWorks: [
+      "设定日热量/宏量目标，选定写入表格与聊天入口（微信/飞书等）",
+      "用餐后发文字、语音或照片；Agent 估营养并追加当日台账与进度",
+      "人可改份量校正；系统不荐菜、不代下单、不外发隐私饮食日志",
+    ],
+    tips: [
+      "固定碗碟拍照角度，份量估算更稳；调味油单独口述以免漏记",
+      "周末复盘只看「达标天数」与蛋白缺口，避免天天纠结单餐误差",
+    ],
+  },
+  {
+    id: "224",
+    slug: "teacher-homework-scan-split",
+    title: "手写作业扫描按人拆分建档",
+    summary:
+      "批量扫描手写作业，识姓名对照名册拆 PDF 并更新成绩表；只拆分建档，不自动打分对外发。",
+    description:
+      "班主任与科任常把一叠试卷一次扫成厚 PDF，再手工裁成「每人一档」极耗时。上传批量扫描件与班级名册后，Agent 识别卷面手写姓名（可辅以学号/座位号），按人裁切拆成单独 PDF/图片，写入飞书或企微云盘个人文件夹，并在成绩表登记「已交/缺页」状态。区别于孩子作业入历、互动 HTML 教案：本条服务教师侧「扫描→按人拆分建档」，不做家长日历提醒，也不生成课堂互动页。硬约束：学生姓名与成绩默认仅存校内可控目录，禁止未审批群发家长群或公开网盘；不得自动给卷面打分并作为正式成绩入库；缺页、重名须人工确认后再归档；禁止把未成年人证件照、家庭住址写入文件名或对外摘要。",
+    categories: ["education", "efficiency"],
+    platforms: ["feishu", "wecom", "claude", "chatgpt"],
+    sourceUrl: "https://mcpmarket.com/tools/skills/homework-grading-workflow",
+    sourceLabel: "mcpmarket · 作业批改工作流",
+    upvotes: 91,
+    trending: false,
+    tags: ["作业扫描", "按人拆分", "名册对照", "教师建档", "不自动打分"],
+    howItWorks: [
+      "导入班级名册与批量扫描 PDF，约定云盘目录与成绩表字段",
+      "Agent 识姓名拆卷、标缺页/重名待确认，生成个人档与交件状态",
+      "教师核对后归档；不自动打分、不未审批群发家长",
+    ],
+    tips: [
+      "名册预留「曾用名/别字」列，减少手写潦草误拆",
+      "扫描时统一方向与分辨率，封面空白页先剔除可显著降误识",
+    ],
+  },
+  {
+    id: "225",
+    slug: "seo-blog-draft-publish-agent",
+    title: "SEO 感知博文起草与发布",
+    summary:
+      "学作者文风、找 SEO 缺口并起草博文，审批通过后再发布；不擅自上线、不堆砌关键词。",
+    description:
+      "独立站点作者既要保持文风，又要覆盖检索缺口，选题与初稿常卡住。给定站点既有文章样本与目标关键词池，Agent 归纳文风特征，对比公开检索意图找出内容缺口，起草结构完整的博文（标题、摘要、小标题与内链建议），生成预览稿供人改。区别于热点自动发 WordPress、GitHub 周记成文、技术博文挑错：本条重心是「SEO 缺口→文风对齐起草→人审发布」，不是无审发稿或单纯挑错。硬约束：默认只产出草稿与发布清单，禁止未经审批直接推生产站点；禁止抄袭竞品全文或伪造引用数据；关键词自然融入，禁止无意义堆砌；涉及医疗金融法律等须人工合规审后再发；外链与联盟声明按站点规范由人确认。",
+    categories: ["content"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl: "https://chudi.dev/blog/openclaw-autonomous-blog-agent",
+    sourceLabel: "chudi.dev · OpenClaw 博文 Agent",
+    upvotes: 85,
+    trending: false,
+    tags: ["SEO缺口", "博文起草", "文风对齐", "人审发布", "不擅自上线"],
+    howItWorks: [
+      "导入代表作样例与关键词池，约定站点发布渠道与审批人",
+      "Agent 标出缺口、按文风起草并附内链/元描述建议",
+      "作者改稿审批后再发布；系统不擅自上线、不抄袭竞品",
+    ],
+    tips: [
+      "每篇只主攻 1 个主词 + 2 个相关词，避免一篇塞满互抢流量",
+      "发布清单强制勾「事实核对 / 图片版权 / 免责声明」三栏再点发",
+    ],
+  },
+  {
+    id: "226",
+    slug: "telegram-todo-calendar-weather",
+    title: "Telegram 待办日历天气助手",
+    summary:
+      "用轻量机器人管待办、日历与天气三件套；可落在微信/飞书，精简自托管，不接重型框架。",
+    description:
+      "个人不想上沉重 Agent 平台，只想在聊天里随口记待办、查今日日程与出门天气。以微信、飞书或自建 Telegram 机器人作入口：自然语言添加/完成待办，查询或写入个人日历事件，按城市拉取当日天气并在晨间摘要里一并给出。部署可走扣子 Coze 或轻量自托管脚本，避免重型编排框架。区别于 WhatsApp/语音助理全家桶、家庭共享日历：本条聚焦「待办+日历+天气」精简三件套与可自托管，不做语音全家场景与多成员家庭协同。硬约束：待办与行程默认私聊可见，禁止未确认广播到群或对外频道；位置仅用你设定的城市名，不持续追踪 GPS；禁止自动拨打电话或群发通讯录；第三方天气 API 密钥存本地环境变量，不写入聊天记录。",
+    categories: ["efficiency", "life"],
+    platforms: ["wechat", "feishu", "claude", "coze"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50198933",
+    sourceLabel: "HN · 自建 Telegram 助手",
+    upvotes: 83,
+    trending: false,
+    tags: ["待办", "日历", "天气", "轻量机器人", "自托管"],
+    howItWorks: [
+      "选定聊天入口与日历/天气数据源，配置城市与晨间摘要时间",
+      "对话添加待办、查改日程；Agent 汇总三件套回复",
+      "敏感行程仅私聊；不群发、不追踪实时定位",
+    ],
+    tips: [
+      "待办用「今晚前 / 周五前」这类相对时间，机器人再落成绝对截止",
+      "晨间摘要只含今日三项最紧待办，避免变成信息噪音",
+    ],
+  },
+  {
+    id: "227",
+    slug: "figma-mcp-build-homepage",
+    title: "Figma MCP 一键落地首页",
+    summary:
+      "经 MCP/导出把 Figma 设计接到编码 Agent，生成可审的首页代码；不上生产、不擅自改设计源文件。",
+    description:
+      "独立开发者常有完整 Figma 首页稿，却卡在切图与组件还原。通过 MCP 或设计导出把画板结构、样式 token 与资源交给编码 Agent，生成对齐设计的首页前端（布局、响应式断点、基础交互），并输出差异说明供对照。区别于落地页+广告投放、三小时 Micro-SaaS：本条聚焦「设计稿→可审代码落地」，不做投放素材生成与整站商业化脚手架。硬约束：生成代码仅进特性分支或本地预览，禁止未评审直接部署生产；禁止在无授权下改写 Figma 源文件或覆盖主画板；设计中的商标、摄影图须确认授权后再打包；密钥与生产环境变量不得写入示例仓库；上线前须人做视觉与无障碍抽检。",
+    categories: ["devtools", "content"],
+    platforms: ["claude", "chatgpt", "deepseek", "n8n"],
+    sourceUrl:
+      "https://designphilosophy.substack.com/p/getting-remarkable-results-quickly",
+    sourceLabel: "designphilosophy · Figma→Cursor",
+    upvotes: 89,
+    trending: false,
+    tags: ["Figma", "MCP", "首页落地", "设计转代码", "人审部署"],
+    howItWorks: [
+      "授权只读访问目标 Figma 首页画板或导出结构，指定代码仓库分支",
+      "Agent 还原布局与 token，提交预览构建与设计差异清单",
+      "开发者对照稿审阅合并；不擅自改设计源、不自动上生产",
+    ],
+    tips: [
+      "先锁定间距与字号 token 再生成，减少二次「看起来像但不齐」",
+      "移动端断点单独开一列验收清单，避免只过桌面视觉",
+    ],
+  },
+  {
+    id: "228",
+    slug: "vendor-invoices-bundle-accountant",
+    title: "月末供应商发票打包交会计",
+    summary:
+      "从 PDF 抽供应商/日期/金额/票号，按月打包装索引，审批后再交会计；不自动付款入账。",
+    description:
+      "小微财务月末常把邮箱与网盘里的供应商发票 PDF 翻出来，手工填表再打包给会计。定时或一键扫描指定目录/企微飞书收件：Agent 抽取供应商名、开票日期、价税合计与发票号码，按月生成压缩包与索引表（可含校验码摘要），推送到审批人；通过后再交会计或共享只读文件夹。区别于发票入账表、AI 订阅收据审计：本条聚焦「月末打包交付会计」，不是日常入账流水，也不做 SaaS 订阅查重。硬约束：只整理与打包，禁止自动付款、禁止代填网银或改供应商收款账户；完整纳税人识别号与银行账号在对外摘要中脱敏；审批未通过不得外发压缩包；本条不构成税务申报意见，抵扣与入账口径由会计最终判定。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["wecom", "feishu", "claude", "n8n"],
+    sourceUrl: "https://grokbot.dev/marketplace/invoice-hunter/",
+    sourceLabel: "grokbot.dev · Invoice Hunter",
+    upvotes: 86,
+    trending: false,
+    tags: ["供应商发票", "月末打包", "索引表", "企微飞书", "不自动付款"],
+    howItWorks: [
+      "指定发票目录与月份，约定索引字段与审批人（企微/飞书）",
+      "Agent 抽票面字段、生成月包与索引，提交审批",
+      "通过后交会计；系统不付款、不改收款账户、不代报税",
+    ],
+    tips: [
+      "索引加「票种/是否电子专票」列，会计分拣更快",
+      "重复票号自动标红，打包前人工剔除，避免一票两交",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
