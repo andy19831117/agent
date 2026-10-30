@@ -5284,6 +5284,159 @@ export const usecases: UseCase[] = [
       "重复票号自动标红，打包前人工剔除，避免一票两交",
     ],
   },
+  {
+    id: "229",
+    slug: "whoop-blood-lab-health-query",
+    title: "用两年运动手环与化验数据问答健康",
+    summary:
+      "把 WHOOP 等穿戴与化验 PDF 做成可问答健康库，查趋势对照指标；只解读数据，不做诊断开方。",
+    description:
+      "长期减脂、恢复训练或慢病随访时，人手里常有两年 WHOOP/运动手环导出，以及邮箱里陆续收到的化验 PDF，却很难对照「某段睡眠债是否与某指标同向变化」。导入穿戴导出与化验报告后，Agent 抽取关键指标与时间轴，支持自然语言问答趋势、区间对比与异常标红，并把私聊摘要落到微信或飞书，便于周末复盘；指标单位与参考区间可按报告页脚人工校对一次。区别于饮食打卡营养追踪：本条不做餐食记录与热量估算，聚焦「长期体征+化验→可问答查询」。硬约束：输出明确非医疗诊断、不构成医嘱；不自动联系医生或代约门诊；敏感健康数据默认本地/用户可控目录，不向群或公开频道外发；不得据此自动下单处方药、保健品或擅自改用药方案。",
+    categories: ["life", "efficiency"],
+    platforms: ["wechat", "feishu", "claude", "n8n"],
+    sourceUrl: "https://github.com/snigdhabanda/health-agent-claude-",
+    sourceLabel: "GitHub · WHOOP/化验 Health Agent",
+    upvotes: 88,
+    trending: false,
+    tags: ["健康问答", "穿戴数据", "化验PDF", "趋势对照", "非医嘱"],
+    howItWorks: [
+      "导入 WHOOP 等导出与化验 PDF，约定本地/自建库与问答入口（微信/飞书）",
+      "Agent 建时间轴指标库，回答趋势、对照与异常标红问题",
+      "人审后再分享摘要；系统不做诊断、不自动联系医生、不外发敏感数据",
+    ],
+    tips: [
+      "化验按「报告日+项目名」建主键，避免同项目多次复查串线",
+      "问答限定「描述趋势与对照」，不索要「该不该吃药」式结论",
+    ],
+  },
+  {
+    id: "230",
+    slug: "trip-receipts-expense-report",
+    title: "差旅收据一键生成报销单并分流文件",
+    summary:
+      "从差旅收据批量抽取字段生成报销明细表并按类分流归档；只整理提审，不自动提交付款。",
+    description:
+      "出差归来邮箱与相册里常堆几十张酒店、打车、餐饮与杂费收据，手工誊进报销表既慢又易漏票、串行程日。指定差旅文件夹或企微/飞书收件后，Agent 识别票面商户、日期、金额与币种，生成按行程日排序的报销明细表，并把原件按「交通/住宿/餐饮/其他」分流到云盘子目录，附校验清单与缺票提示，供人核对后提审。区别于月末供应商发票打包与发票入账表：本条是「出行收据→个人/项目报销单」，非供应商月结入账。硬约束：只生成报销稿与归档，禁止自动提交财务系统付款或代填网银；完整卡号与证件号在摘要中脱敏；审批人未确认前不得外发整包；票据真伪与合规口径由财务最终判定，本条不替代公司报销制度。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["wecom", "feishu", "claude", "n8n"],
+    sourceUrl: "https://ruben.substack.com/p/quit-chatgpt",
+    sourceLabel: "Ruben Hassid · 差旅报销 Cowork",
+    upvotes: 86,
+    trending: false,
+    tags: ["差旅报销", "收据分流", "报销单", "企微飞书", "不自动付款"],
+    howItWorks: [
+      "指定差旅收据目录与报销模板字段，约定审批人（企微/飞书）",
+      "Agent 抽票面字段、生成明细表并按类分流原件",
+      "人核对提审；系统不自动提交付款、不改收款账户",
+    ],
+    tips: [
+      "出行前约定「一程一文件夹」命名，回国后一键扫目录即可",
+      "外币票保留原币与当日汇率两列，财务复核更省事",
+    ],
+  },
+  {
+    id: "231",
+    slug: "canvas-grade-against-rubric",
+    title: "按量规从 Canvas 批量批改作业",
+    summary:
+      "对接 Canvas 拉取提交，按量规给建议分与评语草稿；人审确认后再入正式成绩。",
+    description:
+      "高校与培训教师在 Canvas 等 LMS 上面对成批电子提交，按 rubric 逐条打分并写个性化评语极耗时，还容易前后尺度不一。经 API 或导出拉取作业提交与量规后，Agent 对照各维度给出建议分、要点评语与共性错因摘要，写入飞书或企微待审表，供教师抽检修改后再回写。区别于手写作业扫描拆分、作业入历与 HTML 教案：本条是「LMS 提交→量规批改闭环」，不做扫描建档或家长日历提醒。硬约束：建议分与评语须人审后再入正式成绩；禁止未经教师确认直接写入成绩册定稿；学生作业与成绩仅存校内可控目录，禁止未审批外发；对疑似抄袭只标「需人工复核」，不做自动处分或通报。",
+    categories: ["education"],
+    platforms: ["feishu", "wecom", "claude", "chatgpt"],
+    sourceUrl:
+      "https://www.vitraag.com/2026/03/12/ai-assisted-grading-canvas-api-claude/",
+    sourceLabel: "vitraag.com · Canvas API 批改",
+    upvotes: 92,
+    trending: false,
+    tags: ["Canvas批改", "量规", "建议分", "人审成绩", "LMS"],
+    howItWorks: [
+      "授权只读拉取作业与量规，约定待审表与成绩回写权限",
+      "Agent 按维度给建议分与评语草稿，汇总共性错因",
+      "教师抽检确认后再写入成绩册；系统不擅自定稿成绩",
+    ],
+    tips: [
+      "先用一小班试跑校准量规措辞，再扩到全班",
+      "待审表强制「抽检比例」列，低于阈值不得批量确认",
+    ],
+  },
+  {
+    id: "232",
+    slug: "xiaohongshu-notes-to-skills",
+    title: "刷小红书笔记并蒸馏成可复用技能",
+    summary:
+      "检索小红书公开笔记并蒸馏成写作/运营技能包；只做摘要技能化，不自动发帖不抄原文。",
+    description:
+      "内容运营常要扫竞品小红书笔记找钩子、封面结构与转化话术，却容易陷入「收藏一堆、写稿时想不起来」。给定选题关键词与对标账号范围，Agent 检索公开笔记、读图文要点，蒸馏成可复用的写作/运营技能卡（结构模板、禁忌清单、转化节奏），写入本地或飞书技能库，供人改稿时按卡调用，并可按周增量刷新。区别于多平台分发与 SEO 博文起草：本条聚焦「竞品笔记调研→技能沉淀」，不做自动发帖与整站发布。硬约束：不自动发帖、不抄笔记原文；只做摘要与技能化改写，遵守平台与版权边界；禁止搬运他人配图与商标素材；账号 Cookie 与私信权限不得用于群发或爬取非公开内容；技能卡对外分享前须脱敏账号标识。",
+    categories: ["content", "efficiency"],
+    platforms: ["xiaohongshu", "claude", "deepseek", "coze"],
+    sourceUrl: "https://mcp.csdn.net/6a2e2a5610ee7a33f27cbaeb.html",
+    sourceLabel: "CSDN MCP · 小红书运营 Agent",
+    upvotes: 84,
+    trending: false,
+    tags: ["小红书", "笔记蒸馏", "技能包", "竞品调研", "不自动发帖"],
+    howItWorks: [
+      "设定选题关键词、对标账号与技能卡字段模板",
+      "Agent 检索公开笔记、提炼结构与话术模式写入技能库",
+      "运营按技能改稿；系统不发帖、不粘贴原文、不搬运配图",
+    ],
+    tips: [
+      "技能卡只保留「结构+禁忌+示例句式」，避免整段原文入库",
+      "每周限域刷新一次对标池，防止技能库被旧爆款带偏",
+    ],
+  },
+  {
+    id: "233",
+    slug: "notion-agents-control-plane",
+    title: "用 Notion 当多 Agent 舰队控制台",
+    summary:
+      "用飞书多维表/企微文档当控制面调度十余个 Agent；只编排运维，不越权改生产。",
+    description:
+      "独立开发或小团队常同时跑客服、销售线索、运维巡检等十余个 Agent，状态散落在聊天记录与脚本参数里，很难统一启停与查故障。以 Notion 工作区作控制面的思路，落地到飞书多维表或企微文档：把每个 Agent 的任务队列、健康状态、权限边界与启停开关做成控制台，编排器按表派活并回写执行日志。区别于单点客服或销售 Bot：本条是「多 Agent 编排与运维控制台」，不是单一对话机器人。硬约束：控制台默认只读生产配置，禁止越权改生产 Agent 的密钥、模型路由与对外通道；启停与权限变更须双人确认或审批流；执行日志脱敏后归档，不得把用户隐私原文写入公开页。",
+    categories: ["enterprise", "devtools"],
+    platforms: ["feishu", "wecom", "claude", "n8n"],
+    sourceUrl:
+      "https://dev.to/aws-heroes/i-turned-notion-into-a-control-plane-for-my-18-openclaw-ai-agents-5624",
+    sourceLabel: "DEV · Notion 控制 18 Agent",
+    upvotes: 90,
+    trending: false,
+    tags: ["多Agent", "控制台", "飞书多维表", "编排运维", "不越权"],
+    howItWorks: [
+      "在飞书多维表/企微文档建 Agent 清单、队列与权限边界字段",
+      "编排器按表派任务、回写状态与错误摘要",
+      "变更生产配置走审批；系统不擅自改密钥、模型与对外通道",
+    ],
+    tips: [
+      "每个 Agent 强制「最大并发+日预算」两列，防止失控刷量",
+      "控制台首页只露状态灯与待办数，细节进子表避免误点改配置",
+    ],
+  },
+  {
+    id: "234",
+    slug: "voice-debug-code-hands-free",
+    title: "语音免提调试代码",
+    summary:
+      "语音驱动编码 Agent 查错改代码，适合走路带娃时排障；只本地预览，不擅自远程推送。",
+    description:
+      "开发者有时双手被占——走路、带娃或做饭——却仍想继续排查报错、试小补丁。通过语音转写把「打开某文件、解释栈、试某改法」交给编码 Agent，在本地仓库查日志、提出修复建议并生成可审 diff；也可用飞书语音消息作入口，回复文字 diff 摘要。区别于同会话测本地 Web 与 Sentry 开修复 PR：本条强调「语音免提交互调试」，不是监控告警闭环或浏览器测站。硬约束：默认只在本地或特性分支改动，禁止擅自 push/force 远程或覆盖主分支；生产密钥不得读入语音会话；涉及删库、迁移与权限变更必须二次口头确认口令后再执行；语音原文默认本地可删，不上传公开频道。",
+    categories: ["devtools"],
+    platforms: ["claude", "chatgpt", "deepseek", "feishu"],
+    sourceUrl: "https://yberreby.com/posts/hands-free-claude-code/",
+    sourceLabel: "yberreby.com · 免提 Claude Code",
+    upvotes: 87,
+    trending: false,
+    tags: ["语音调试", "免提编程", "本地diff", "编码Agent", "不擅自推送"],
+    howItWorks: [
+      "选定仓库与语音入口，约定仅本地/特性分支可写",
+      "口述报错与意图；Agent 查代码、给修复建议与 diff",
+      "人确认后再提交；系统不擅自 push/force、不碰生产密钥",
+    ],
+    tips: [
+      "口述先报「文件路径+报错首行」，再讲期望行为，歧义更少",
+      "危险操作设唤醒口令（如「确认迁移」），避免误听执行",
+    ],
+  },
+
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
