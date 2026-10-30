@@ -5588,6 +5588,194 @@ export const usecases: UseCase[] = [
       "设还价冷却时限，防止被「今日特价」话术逼签",
     ],
   },
+  {
+    id: "259",
+    slug: "linkedin-tailored-job-apply",
+    title: "按简历匹配岗位并定制投递",
+    summary:
+      "对照简历在招聘站搜匹配岗、写求职信与填表草稿；投递须人确认，勿自动发简历/申请。",
+    description:
+      "海投 Boss 直聘、猎聘、智联时，同一份简历硬贴不同 JD，求职信千篇一律，填表又重复抄写教育与项目经历，耗时且易漏关键词。Agent 读取授权简历摘要与目标城市/职能，在招聘站检索匹配岗位，按 JD 定制求职信与填表字段草稿，经飞书待审表或微信私聊推送「拟投清单」；Claude 对齐关键词与敏感表述，n8n 可定时刷新新岗。区别于 HR 侧「语音初筛候选人」与「岗位匹配打分」只评分不投递：本条是求职者侧「搜岗→定制→提交草稿」。硬约束：投递须人确认；勿自动发简历/申请；禁止未确认批量点击投递或登录账号代发；敏感求职材料勿外泄，完整身份证号、薪资底线与未公开雇主评价不得写入外发提示或公开文档。",
+    categories: ["career"],
+    platforms: ["claude", "feishu", "wechat", "n8n"],
+    sourceUrl: "https://gosu.team/blog/automate-job-applications-with-ai",
+    sourceLabel: "Gosu Team · AI 定制投递求职",
+    upvotes: 91,
+    trending: false,
+    tags: [
+      "简历匹配",
+      "定制投递",
+      "Boss猎聘",
+      "人确认投递",
+      "勿自动发简历",
+    ],
+    howItWorks: [
+      "导入授权简历摘要与目标职能/城市，约定飞书拟投表与微信待审频道",
+      "Agent 检索匹配岗位，生成定制求职信与填表字段草稿并标风险词",
+      "人确认后再由本人点投递；系统勿自动发简历/申请，不越权登录招聘账号",
+    ],
+    tips: [
+      "每条拟投默认附「匹配点三句+需改一处」，方便快速否决或微调",
+      "敏感求职材料勿外泄：简历只存私密空间，外发草稿脱敏证件号与精确薪资",
+    ],
+  },
+  {
+    id: "260",
+    slug: "codebase-to-tech-docs",
+    title: "读代码库自动产出技术文档",
+    summary:
+      "Agent 探代码库生成 API/模块文档草稿，对标内部 Wiki；人审后再入库/公开。",
+    description:
+      "新同事入职或跨组对接时，内部 Wiki 常落后于仓库：接口签名改了、模块边界没人写，靠口头带教成本高。Agent 在授权仓库范围内浏览目录、入口与类型定义，经 Dify 编排，Claude/DeepSeek 产出 API 说明、模块职责与调用示例草稿，落入飞书文档待审队列。区别于「Git 动态成对外博文」传播向：本条是「代码理解→对内技术文档」，默认不发公众号或外网。硬约束：文档须人审后再入库/公开；勿未授权外泄私有仓库代码或密钥；禁止把 .env、私钥、内网域名与未脱敏日志片段写入可公开页；私有仓只读令牌不得写入外发提示。",
+    categories: ["devtools"],
+    platforms: ["claude", "deepseek", "dify", "feishu"],
+    sourceUrl: "https://buildwithfern.com/post/ai-assisted-technical-writer",
+    sourceLabel: "Fern · AI 辅助技术写作者",
+    upvotes: 85,
+    trending: false,
+    tags: [
+      "代码库文档",
+      "内部Wiki",
+      "API模块说明",
+      "人审入库",
+      "勿外泄密钥",
+    ],
+    howItWorks: [
+      "授权只读仓库范围与文档模板，绑定飞书待审 Wiki 空间",
+      "Agent 探目录与入口，生成 API/模块职责与示例草稿并标不确定处",
+      "人审后再入库或公开；系统不未授权外泄私有代码或密钥",
+    ],
+    tips: [
+      "先扫公开/半公开模块做试点，再开含鉴权与支付的路径，降低误泄风险",
+      "生成前跑密钥扫描清单，命中 .env/私钥立即跳过该文件并告警",
+    ],
+  },
+  {
+    id: "261",
+    slug: "pdf-form-autofill-saved-profile",
+    title: "用已存资料一键填 PDF 表格",
+    summary:
+      "用已存个人资料回填个税/社保/银行等 PDF 表；填表后须人审再提交，勿自动提交。",
+    description:
+      "入职、报销、个税年度汇算与社保银行开户常要反复填同类 PDF：姓名证件号、地址、银行账户抄来抄去，还易抄错。用户维护一份已存资料档案，Agent（Claude/ChatGPT）识别 PDF 可填字段并回填，草稿推送飞书或微信待审；对标国内个税/社保/银行 PDF 表，不做退订或发票流转。区别于「流媒体闲置退订」与「未发送发票审批稿」：本条是「通用 PDF 表单回填」，不点取消订阅、不发发票。硬约束：填表后须人审再提交；勿自动提交敏感表单；禁止未确认直连税务/银行提交口；完整证件号与银行卡号仅本地或私密空间可见，不得写入公开聊天与外发提示。",
+    categories: ["efficiency"],
+    platforms: ["claude", "chatgpt", "feishu", "wechat"],
+    sourceUrl: "https://daveswift.com/fill-pdfs-claude-code-skills/",
+    sourceLabel: "Dave Swift · Claude 填 PDF 表单",
+    upvotes: 89,
+    trending: false,
+    tags: [
+      "PDF填表",
+      "已存资料",
+      "个税社保",
+      "人审提交",
+      "勿自动提交",
+    ],
+    howItWorks: [
+      "维护已存资料档案并上传待填 PDF，约定飞书/微信待审频道",
+      "Agent 识别可填字段并回填，标出不确定与缺失项",
+      "人审校对后再由本人提交；系统勿自动提交敏感表单",
+    ],
+    tips: [
+      "档案分「可外发」与「仅本机」两档，证件号默认仅本机回填",
+      "提交前强制预览叠字层，确认未盖住签名区或只读条款",
+    ],
+  },
+  {
+    id: "262",
+    slug: "newsletter-to-daily-podcast",
+    title: "把订阅通讯汇总成每日播客简报",
+    summary:
+      "多源订阅通讯提炼要点合成晨间播客简报；仅做摘要，勿整篇朗读/公开分发原文。",
+    description:
+      "邮箱里堆着科技、产品与行业通讯，通勤没时间通读，剪藏又变成未读坟场。Agent 从授权邮件/阅读器拉取当日通讯，Claude 提炼要点与金句，经 Coze 合成可听的每日播客简报，推送微信或生成小红书「今日听什么」导语草稿；对标国内晨间播客/通勤听报习惯。区别于「语音备忘→职场动态」方向相反（文→音而非音→文），也不同于 Newsletter 长文写稿：本条是「多源通讯→摘要播客简报」。硬约束：仅做摘要播客简报，勿整篇朗读/公开分发受版权通讯原文；禁止把原文全文贴进公开播客或小红书；引用须短摘并保留来源标注。",
+    categories: ["content"],
+    platforms: ["claude", "coze", "xiaohongshu", "wechat"],
+    sourceUrl:
+      "https://ishyshkova.substack.com/p/claude-cowork-review-real-use-cases",
+    sourceLabel: "Ishyshkova · 通讯→晨间播客",
+    upvotes: 83,
+    trending: false,
+    tags: [
+      "订阅通讯",
+      "每日播客",
+      "晨间简报",
+      "仅摘要",
+      "勿朗读原文",
+    ],
+    howItWorks: [
+      "授权通讯源与时长上限，约定微信推送与小红书导语待审",
+      "Agent 提炼多源要点，合成摘要播客简报与来源列表",
+      "人可先听私享版；系统仅做摘要，不整篇朗读或公开分发原文",
+    ],
+    tips: [
+      "单期控制在 8–12 分钟，每封通讯最多 3 个要点，避免变成念报",
+      "公开导语只用自写摘要句，原文金句限短摘并附通讯名",
+    ],
+  },
+  {
+    id: "263",
+    slug: "price-target-auto-buy",
+    title: "盯到目标价自动下单复购",
+    summary:
+      "设目标价盯京东/淘宝同款，到价生成下单草稿；支付须人确认，不越权付款。",
+    description:
+      "日用品与数码配件常等促销，手动刷价易错过，到价提醒又常停在「告诉你一声」。用户设定 SKU、目标价与默认地址/规格，n8n 定时巡价，ChatGPT 归并同款与券后价，到价后生成下单草稿推送飞书/微信；对标国内京东、淘宝到价提醒+一键拍。区别于「多 Agent 搭店日更」店主侧与「拍照复购」识物入口，也不同于只告警不建单：本条是消费侧「到价→下单草稿」。硬约束：到价下单须人确认支付，不越权付款；禁止无人值守自动扣款或代填支付密码；支付凭据与完整卡号不得写入外发提示。",
+    categories: ["ecommerce"],
+    platforms: ["chatgpt", "n8n", "feishu", "wechat"],
+    sourceUrl:
+      "https://www.techlicious.com/blog/alexa-for-shopping-price-tracking-auto-buy/",
+    sourceLabel: "Techlicious · 到价自动购买",
+    upvotes: 94,
+    trending: false,
+    tags: [
+      "目标价",
+      "到价下单",
+      "京东淘宝",
+      "人确认支付",
+      "不越权付款",
+    ],
+    howItWorks: [
+      "设定 SKU、目标价、规格与通知频道，授权只读价格源",
+      "Agent 巡价并在到价时生成下单草稿与价差说明",
+      "人确认后再支付；系统不越权付款、不代填支付密码",
+    ],
+    tips: [
+      "目标价设「含券后到手价」并排除预售定金坑，避免假到价",
+      "单日自动建单上限与品类黑名单写死，防止误拍高客单价",
+    ],
+  },
+  {
+    id: "264",
+    slug: "whatsapp-tutor-booking",
+    title: "家教机构用聊天 Agent 预约排课",
+    summary:
+      "家长在微信对话里约试听、占课表；预约须机构/人确认，勿越权改课表或收费。",
+    description:
+      "教培前台微信被约课、改期、试听问询刷屏，手工对教师空档易撞车，家长又嫌表单冷冰冰。聊天 Agent 在微信/企微接待，收集年级科目、期望时段与试听意向，对照飞书课表给出可选档，经 n8n 写入待确认预约；对标国内微信教培排课小助手。区别于「纸笔数学逐步讲解」教学辅导向：本条是「预约排课运营」，不讲题、不代写作业。硬约束：预约须机构/人确认；勿越权改课表、收费或取消他人课时；禁止未确认锁定教师档期或代扣学费；学员联系方式仅机构受控空间可见。",
+    categories: ["education"],
+    platforms: ["wechat", "wecom", "feishu", "n8n"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47763262",
+    sourceLabel: "Hacker News · WhatsApp 家教预约",
+    upvotes: 81,
+    trending: false,
+    tags: [
+      "家教预约",
+      "微信排课",
+      "试听占档",
+      "机构确认",
+      "勿越权改课表",
+    ],
+    howItWorks: [
+      "接入微信/企微接待与飞书课表只读视图，约定确认人",
+      "Agent 收集意向并匹配空档，生成待确认预约卡",
+      "机构/人确认后再落课表；系统勿越权改课表、收费或取消他人课时",
+    ],
+    tips: [
+      "试听与正式课分泳道，试听默认短课时且需二次确认转正",
+      "改期请求只生成建议，不直接覆盖已确认档，避免误伤他人课时",
+    ],
+  },
 
 ];
 
