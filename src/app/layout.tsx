@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { SponsorBar } from "@/components/SponsorBar";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SponsorTopBar } from "@/components/SponsorTopBar";
+import { siteContact } from "@/data/contact";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,10 +58,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col text-slate-100">
-        <SponsorBar />
+        <SponsorTopBar />
         <Header />
         <main className="relative flex-1">{children}</main>
-        <Footer />
+        <SiteFooter email={siteContact.email} wechat={siteContact.wechat} />
       </body>
     </html>
   );
