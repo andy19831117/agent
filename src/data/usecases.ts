@@ -6,25 +6,17 @@ export const usecases: UseCase[] = [
     slug: "feishu-meeting-summary-agent",
     title: "飞书会议纪要自动生成与待办分发",
     summary: "基于飞书妙记转写生成结构化纪要与行动项，再经机器人按责任人推送（需人工确认后发送）。",
-    description:
-      "会后从飞书妙记取得转写文本，Agent 按模板输出决议、未决与「责任人 + 截止日」行动项；可通过自定义机器人或消息接口推送到群/私聊，并可写入多维表格。推送前默认人工确认，敏感会议先脱敏再外发。",
+    description: "妙记转写→决议/未决/责任人+截止日；机器人推送前默认人工确认；敏感会先脱敏。",
     categories: ["efficiency", "enterprise"],
     platforms: ["feishu", "tongyi", "deepseek"],
     sourceUrl:
-      "https://www.feishu.cn/hc/zh-CN/articles/787775611269-%E5%88%9B%E5%BB%BA-%E5%88%86%E4%BA%AB%E5%92%8C%E7%AE%A1%E7%90%86%E5%A6%99%E8%AE%B0%E7%89%87%E6%AE%B5",
+      "https://www.feishu.cn/hc/zh-CN/articles/787775611269-%E5%88%86%E4%BA%AB%E5%92%8C%E7%AE%A1%E7%90%86%E5%A6%99%E8%AE%B0%E7%89%87%E6%AE%B5",
     sourceLabel: "飞书帮助中心·妙记片段",
     upvotes: 286,
     trending: true,
     tags: ["会议", "纪要", "待办", "妙记"],
-    howItWorks: [
-      "会后导出或读取妙记文字记录（注意权限）",
-      "按模板生成纪要、决议与带截止日的行动项",
-      "人工确认后由机器人推送责任人并可选同步表格",
-    ],
-    tips: [
-      "统一会议命名便于归档；行动项必须有责任人与日期",
-      "对外分享优先用妙记片段，控制敏感信息范围",
-    ],
+    howItWorks: ["读妙记文字", "模板纪要+行动项", "确认后机器人推送/同步表格"],
+    tips: ["行动项必有人有期", "外发优先妙记片段控敏"],
   },
   {
     id: "2",
@@ -53,7 +45,7 @@ export const usecases: UseCase[] = [
     title: "小红书种草笔记批量选题与初稿",
     summary: "按品类与人群生成一周选题池、标题变体与正文骨架，并对照平台内容规范自检表述。",
     description:
-      "创作者或电商运营输入品类、人群与真实卖点后，Agent 输出可编辑的选题日历、标题变体与分段正文骨架（含配图提示）。文案默认避免绝对化承诺与功效夸大；发布前需人工核对事实与授权，并对照小红书商业内容审核常见红线做一次自检，再进入创作者中心发布。",
+      "输入品类/人群/真实卖点→选题日历+标题变体+正文骨架+配图提示；默认避绝对化与功效夸大；人工核对事实后对照审核红线自检再发。",
     categories: ["content", "ecommerce"],
     platforms: ["xiaohongshu", "doubao", "kimi"],
     sourceUrl:
@@ -62,15 +54,8 @@ export const usecases: UseCase[] = [
     upvotes: 312,
     trending: true,
     tags: ["种草", "选题", "文案", "合规自检"],
-    howItWorks: [
-      "收集品类、人群、真实体验点与禁说清单",
-      "生成一周选题池与多组标题/正文骨架",
-      "按审核规范扫描绝对化用语与功效表述，输出待人工确认列表",
-    ],
-    tips: [
-      "保留可核验的真实体验细节，拒绝编造测评数据",
-      "先小流量测标题；商单内容另遵合作审核流程",
-    ],
+    howItWorks: ["收集卖点与禁说清单", "生成选题/标题/骨架", "扫描绝对化用语出待确认列表"],
+    tips: ["不编造测评数据", "商单另遵合作审核"],
   },
   {
     id: "4",
@@ -99,7 +84,7 @@ export const usecases: UseCase[] = [
     title: "简历改写与模拟面试陪练",
     summary: "按目标 JD 做量化改写与 STAR 故事拆解，并进行中文模拟追问；严禁编造经历。",
     description:
-      "求职者提供真实简历与目标 JD 后，Agent 标出可量化改写点，并用 STAR（情境 Situation、任务 Task、行动 Action、结果 Result）把项目拆成可讲述故事，再以面试官角色多轮追问。STAR 仅作通用叙事方法，非某一公司求职教程。所有数字与职责必须来自用户已确认事实；找不到依据时只给提问清单，不补造经历。改写前后给出对照示例便于自检。",
+      "真实简历+JD→可量化改写+STAR（情境/任务/行动/结果）对照；面试官多轮追问。数字与职责须用户已确认；无依据只给提问清单不补造。正文保持方法中立，不当成 AWS 求职教程。",
     categories: ["career"],
     platforms: ["deepseek", "chatgpt", "kimi"],
     sourceUrl:
@@ -108,15 +93,8 @@ export const usecases: UseCase[] = [
     upvotes: 267,
     trending: true,
     tags: ["简历", "面试", "STAR", "求职"],
-    howItWorks: [
-      "解析简历与 JD，列出仅基于原文的缺口与亮点",
-      "输出改写建议与 STAR 对照（改前/改后），缺证据处标注「待用户补充」",
-      "模拟行为面试追问并点评结构，不新增虚构事迹",
-    ],
-    tips: [
-      "禁编造经历、职位与数据；不确定就写「待核实」",
-      "准备 6–8 个真实故事矩阵，避免一题一套话术",
-    ],
+    howItWorks: ["解析缺口亮点", "STAR 改前/改后（缺证据标待补充）", "模拟追问不新增虚构"],
+    tips: ["禁编造经历/数据", "准备 6–8 真实故事矩阵"],
   },
   {
     id: "6",
@@ -208,7 +186,7 @@ export const usecases: UseCase[] = [
     title: "代码审查与 PR 说明自动撰写",
     summary: "对 diff 做风险提示，并生成中文 PR/MR 描述与自测清单（GitHub / GitLab / Gitee 通用）。",
     description:
-      "开发者粘贴或链接 diff 后，Agent 从可读性、安全与边界条件给出意见，并套用团队模板生成中文变更说明与测试步骤。流程对齐主流拉取请求协作：GitHub Pull Request、GitLab Merge Request；在 Gitee 等国内托管上同样按「说明 + 自测」提交。敏感仓库先脱敏再喂给模型。",
+      "脱敏 diff→可读性/安全/边界意见+中文说明与自测。对齐 GitHub PR、GitLab MR（见 https://docs.gitlab.com/ee/user/project/merge_requests/）；Gitee 等同模板。",
     categories: ["devtools"],
     platforms: ["claude", "deepseek", "chatgpt"],
     sourceUrl:
@@ -217,15 +195,8 @@ export const usecases: UseCase[] = [
     upvotes: 274,
     trending: true,
     tags: ["Code Review", "PR", "MR", "工程效能"],
-    howItWorks: [
-      "读取脱敏后的 diff 与相关上下文/规范",
-      "输出风险分级与改进建议",
-      "生成中文 PR/MR 描述与自测清单",
-    ],
-    tips: [
-      "密钥、客户数据必须脱敏；把团队 lint/安全规则写入固定上下文",
-      "GitLab/Gitee 用户沿用同一说明模板即可，字段名随平台调整",
-    ],
+    howItWorks: ["读脱敏 diff", "风险分级", "中文 PR/MR+自测清单"],
+    tips: ["密钥脱敏", "GitLab/Gitee 改字段名即可"],
   },
   {
     id: "11",
@@ -253,8 +224,7 @@ export const usecases: UseCase[] = [
     slug: "short-video-script-agent",
     title: "短视频分镜脚本与口播稿生成",
     summary: "为抖音/视频号/快手生成 15–60 秒分镜、钩子与口播稿，并提示平台常见违规表达。",
-    description:
-      "创作者给出主题、时长与卖点，Agent 输出开头钩子、分镜表、口播稿与字幕要点，并按抖音规则中心常见限制标注需改写的夸张、引流、低质表述。脚本仅作拍摄提纲，成片需人工核对事实与素材版权后再发布。",
+    description: "主题+时长+卖点→钩子/分镜/口播/字幕；按规则中心标夸张/引流/低质表述；成片人工核事实与版权。",
     categories: ["content"],
     platforms: ["doubao", "kimi", "chatgpt"],
     sourceUrl: "https://www.douyin.com/rule/encyclopedia",
@@ -262,15 +232,8 @@ export const usecases: UseCase[] = [
     upvotes: 301,
     trending: true,
     tags: ["短视频", "脚本", "口播", "合规"],
-    howItWorks: [
-      "输入主题、时长档（15/30/60 秒）与平台",
-      "生成钩子、分镜、口播与字幕关键词",
-      "对照规则提示高风险表述并给出替换句",
-    ],
-    tips: [
-      "真实出镜优于纯读稿；勿用绝对化「第一/最」口播",
-      "同一脚本改多平台时单独检查站外引流话术",
-    ],
+    howItWorks: ["选时长档", "生成钩子分镜口播", "高风险表述替换句"],
+    tips: ["勿用「第一/最」口播", "改平台时单独查站外引流"],
   },
   {
     id: "13",
@@ -341,7 +304,7 @@ export const usecases: UseCase[] = [
     title: "用 Dify 搭建公司内部 Wiki 问答",
     summary: "在 Dify 配置知识库与引用展示，导入飞书/语雀文档，并设定回答必须带出处的评测点。",
     description:
-      "【定位：知识库搭建与评测，不做群内会话入口细节】IT/知识运营在 Dify 创建知识库，导入制度与流程文档，配置分段、检索与引用展示；上线前用固定问答题集做回归（命中率、拒答、幻觉）。群内 @ 查询与转人工见「飞书群内制度问答机器人」用例，本条不重复机器人接入步骤。",
+      "【仅知识库搭建/评测】导入制度文档、配置检索与引用；上线前固定题集回归。群内 @ 与转人工见 feishu-knowledge-qa-bot，本条不写机器人接入。",
     categories: ["devtools", "enterprise"],
     platforms: ["dify", "feishu", "deepseek"],
     sourceUrl: "https://docs.dify.ai/zh-hans/guides/knowledge-base/readme",
@@ -349,15 +312,8 @@ export const usecases: UseCase[] = [
     upvotes: 258,
     trending: true,
     tags: ["RAG", "知识库", "Dify", "评测"],
-    howItWorks: [
-      "按部门权限导入/同步文档到 Dify 知识库",
-      "配置检索、引用展示与拒答策略",
-      "用评测集回归：必须带引用、过期文档下线",
-    ],
-    tips: [
-      "答案强制附文档片段链接；无命中时明确说「未找到」",
-      "制度变更后同步更新知识库版本",
-    ],
+    howItWorks: ["按权限导入", "检索/引用/拒答", "评测集回归"],
+    tips: ["无命中明确「未找到」", "过期制度下线"],
   },
   {
     id: "17",
@@ -427,8 +383,7 @@ export const usecases: UseCase[] = [
     slug: "personal-inbox-triage",
     title: "个人邮箱智能分拣与回复草稿",
     summary: "结合邮箱过滤规则做紧急度分拣，并为常见请求生成回复草稿；默认不自动发送。",
-    description:
-      "个人效率场景：先用邮箱过滤规则（如 QQ 邮箱帮助中的过滤条件）把邮件分入标签/文件夹，再由 Agent 阅读主题与摘要，标出今日处理 / 可委派 / 可归档，并对会议邀请、发票类请求生成中文回复草稿。发送必须由用户确认；不对外部地址自动群发。",
+    description: "先用过滤规则粗分拣，再打紧急度并生成会议/发票类中文草稿；发送须用户确认。",
     categories: ["efficiency"],
     platforms: ["chatgpt", "claude", "grok"],
     sourceUrl: "https://help.mail.qq.com/detail?appid=2&s=filter&info=filter_create",
@@ -436,15 +391,8 @@ export const usecases: UseCase[] = [
     upvotes: 176,
     trending: false,
     tags: ["邮箱", "分拣", "草稿", "隐私"],
-    howItWorks: [
-      "配置过滤规则做粗分拣（发件人/关键词/文件夹）",
-      "Agent 对未读摘要打紧急度与行动建议",
-      "生成回复草稿，用户确认后再发送",
-    ],
-    tips: [
-      "禁止自动发送；敏感邮件只出要点不外泄正文到不可信渠道",
-      "重要联系人白名单优先人工处理",
-    ],
+    howItWorks: ["配过滤规则", "摘要打标", "草稿待确认"],
+    tips: ["禁止自动发送", "白名单优先人工"],
   },
   {
     id: "21",
@@ -662,7 +610,7 @@ export const usecases: UseCase[] = [
     title: "飞书群内制度问答机器人",
     summary: "在飞书群 @自定义机器人查询制度，低置信度转人工；知识库搭建见 Dify Wiki 条。",
     description:
-      "【定位：群内 @ 查询与转人工，不重复知识库搭建】制度内容已在知识库维护的前提下，于飞书群添加自定义机器人（webhook/应用机器人），员工 @Bot 提问后返回答案与文档链接；低置信度或敏感承诺类引导 HR/行政人工。知识库导入、分段与评测见「用 Dify 搭建公司内部 Wiki 问答」。",
+      "【仅群内 @ 与转人工】群内加自定义机器人，@ 后返回答案+链接；低置信度/承诺类转 HR。知识库导入与评测见 dify-rag-internal-wiki。",
     categories: ["enterprise"],
     platforms: ["feishu", "tongyi", "dify"],
     sourceUrl: "https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot",
@@ -670,12 +618,8 @@ export const usecases: UseCase[] = [
     upvotes: 182,
     trending: false,
     tags: ["群机器人", "制度", "问答", "转人工"],
-    howItWorks: [
-      "在目标群添加自定义机器人并限制可用群",
-      "@ 触发后检索知识库并回复（附链接）",
-      "低置信度/政策承诺类自动转人工话术",
-    ],
-    tips: ["制度变更发群公告；外群默认禁用", "机器人只回答已入库文档，不临场编造政策"],
+    howItWorks: ["加群机器人并限群", "@检索回复", "低置信度转人工"],
+    tips: ["外群禁用", "只答已入库文档"],
   },
   {
     id: "32",
@@ -2175,22 +2119,17 @@ export const usecases: UseCase[] = [
     slug: "cross-app-todo-evening-review",
     title: "跨 App 待办聚合晚间复盘",
     summary: "把飞书任务、日历未完成项与备忘草稿收成今晚 Top3 与风险提醒（默认只读聚合）。",
-    description:
-      "傍晚触发：从飞书任务（我负责的/看板）与日历拉取未完成事项，可粘贴微信备忘或其它清单文本；Agent 按截止日与影响面排出今晚 Top3、可延期项与风险一句评。默认只读聚合、不自动改任务状态；若写入飞书任务须用户确认。",
+    description: "傍晚从飞书任务看板/我负责的与日历拉取未完成，可粘贴其它清单；排 Top3 与风险。默认只读，回写须确认。",
     categories: ["efficiency"],
     platforms: ["feishu", "wechat", "deepseek"],
     sourceUrl:
       "https://www.feishu.cn/hc/zh-CN/articles/582035458116-%E4%BB%BB%E5%8A%A1%E7%9C%8B%E6%9D%BF%E8%A7%86%E5%9B%BE",
     sourceLabel: "飞书帮助中心·任务看板视图",
-    upvotes: 148,
+    upvotes: 115,
     trending: false,
     tags: ["待办", "复盘", "优先级", "只读聚合"],
-    howItWorks: [
-      "拉取飞书任务/看板与日历未完成项（可粘贴其它 App 清单）",
-      "按截止日与影响面排序，生成今晚 Top3 与风险",
-      "输出复盘卡；任何回写任务需用户确认",
-    ],
-    tips: ["默认只读；关闭自动写入开关", "跨工具字段先映射「标题/截止日/来源」三列"],
+    howItWorks: ["拉取任务/日历", "排序生成 Top3", "复盘卡（回写需确认）"],
+    tips: ["默认只读", "字段先映射标题/截止日/来源"],
   },
   {
     id: "104",
@@ -2198,21 +2137,17 @@ export const usecases: UseCase[] = [
     title: "群聊决策纪要一页纸",
     summary: "从导出的群聊记录提炼决议、未决与责任人，生成可转发一页纸。",
     description:
-      "将飞书单聊/群聊消息「导出到文档」后交给 Agent（或粘贴脱敏摘录），输出决议 / 待确认 / 责任人+截止日三分栏一页纸。企微侧仅在企业已合规授权会话能力时使用官方存档接口，个人勿私自爬取。导出与分析前需告知相关同事用途。",
+      "飞书「消息导出到文档」后交给 Agent；三分栏决议/待确认/责任人。企微仅合规授权存档时用官方能力。导出前告知同事用途。",
     categories: ["efficiency"],
     platforms: ["feishu", "wecom", "deepseek"],
     sourceUrl:
       "https://www.feishu.cn/hc/zh-CN/articles/158045525235-%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E5%AF%BC%E5%87%BA%E5%88%B0%E6%96%87%E6%A1%A3%E5%8A%9F%E8%83%BD",
     sourceLabel: "飞书帮助中心·消息导出到文档",
-    upvotes: 136,
+    upvotes: 118,
     trending: false,
     tags: ["群聊", "纪要", "决议", "隐私"],
-    howItWorks: [
-      "经当事人知悉后导出群聊消息到文档（或脱敏粘贴）",
-      "识别决议句、未决问题与疑似责任人",
-      "生成一页纸并标「待确认」项供会后回填",
-    ],
-    tips: ["保密模式/禁止转发消息无法导出，勿绕过", "一页纸默认仅组织内分享；外发先脱敏"],
+    howItWorks: ["知悉后导出", "识别决议/未决/责任人", "一页纸标待确认"],
+    tips: ["不绕过保密/禁转", "外发先脱敏"],
   },
   {
     id: "105",
@@ -2220,23 +2155,16 @@ export const usecases: UseCase[] = [
     title: "错误监控告警归类值班摘要",
     summary: "把 Sentry 等告警按服务与指纹聚类，输出值班中文摘要与建议排查顺序。",
     description:
-      "对接 Sentry Alerts（或同等监控 webhook）拉取新告警/升级事件，按 project、fingerprint、环境聚类去噪，生成值班中文摘要：影响面、是否回归、建议排查顺序与相关 Issue 链接。只做归类与说明，不自动重启、扩缩容或执行生产变更。",
+      "对接 Alerts/webhook，按 project/fingerprint/环境去噪；输出影响面、是否回归、排查顺序与 Issue 链接。只归类说明。",
     categories: ["devtools"],
     platforms: ["deepseek", "claude", "n8n"],
     sourceUrl: "https://docs.sentry.io/product/monitors-and-alerts/alerts/",
     sourceLabel: "Sentry Docs·Alerts",
-    upvotes: 161,
+    upvotes: 120,
     trending: false,
     tags: ["监控", "告警", "值班", "归类"],
-    howItWorks: [
-      "接收 Issue Alert 事件或导出近期告警列表",
-      "按服务/指纹/环境聚类并标升级与回归",
-      "输出中文值班摘要与排查顺序（含链接）",
-    ],
-    tips: [
-      "禁止自动重启生产或自动执行修复脚本",
-      "节流重复告警；摘要里区分「新问题 / 回归 / 噪声」",
-    ],
+    howItWorks: ["收告警", "聚类标升级/回归", "中文值班摘要"],
+    tips: ["禁止自动重启生产或自动修", "区分新问题/回归/噪声"],
   },
   {
     id: "106",
@@ -2244,23 +2172,16 @@ export const usecases: UseCase[] = [
     title: "依赖升级 Breaking Change 影响说明",
     summary: "对照 changelog 与锁文件，生成中文影响面、迁移清单与回归用例草稿。",
     description:
-      "输入计划升级的包名与目标版本（及当前锁文件片段），Agent 阅读该版本公开 changelog/Release，按 SemVer 区分 major breaking、minor 功能与 patch 修复，输出中文影响面、迁移步骤与回归用例草稿。每条 breaking 必须附可点击的版本/changelog 链接；区分 deprecation 与已删除 API。",
+      "输入包名与目标版本+锁文件片段；按 SemVer 区分 breaking/minor/patch；每条 breaking 附版本/changelog 链接。",
     categories: ["devtools"],
     platforms: ["deepseek", "claude", "chatgpt"],
     sourceUrl: "https://docs.npmjs.com/about-semantic-versioning/",
     sourceLabel: "npm Docs·语义化版本",
-    upvotes: 124,
+    upvotes: 122,
     trending: false,
     tags: ["依赖升级", "SemVer", "Breaking Change", "迁移"],
-    howItWorks: [
-      "读取当前版本、目标版本与锁文件范围",
-      "核对公开 changelog/Release，按 SemVer 归类变更",
-      "输出影响面、迁移清单与回归用例（均带来源链接）",
-    ],
-    tips: [
-      "无公开说明的变更标「待上游确认」，不猜测",
-      "参考 Keep a Changelog 分组：Added/Changed/Deprecated/Removed",
-    ],
+    howItWorks: ["读版本与锁文件", "核对公开 changelog", "影响面+迁移+回归（均带链接）"],
+    tips: ["无说明标待上游确认", "可参考 Keep a Changelog 分组"],
   },
   {
     id: "107",
@@ -2268,23 +2189,16 @@ export const usecases: UseCase[] = [
     title: "工单 SLA 超时预警与升级话术",
     summary: "按约定 SLA 扫描未关工单，分级催办并在多次超时后生成升级抄送话术。",
     description:
-      "【区别于「飞书审批超时催办」：面向客服/IT 服务台工单，而非 HR/财务审批流】对接飞书服务台或自建工单表，按响应/解决时限扫描未关单；首次温和提醒处理人，多次超时后生成升级抄送话术（主管/值班）。默认只出草稿或需确认后发送，不自动对外承诺时限赔偿。",
+      "【区别审批催办：面向客服/IT 服务台工单】对接飞书服务台或自建工单表；首次温和催办，多次超时升级抄送。默认草稿/确认后发，不自动对外承诺赔付。",
     categories: ["enterprise"],
     platforms: ["feishu", "wecom", "dingtalk"],
     sourceUrl: "https://open.feishu.cn/document/server-docs/helpdesk-v1/overview",
     sourceLabel: "飞书开放平台·服务台概述",
-    upvotes: 157,
+    upvotes: 125,
     trending: false,
     tags: ["工单", "SLA", "催办", "升级"],
-    howItWorks: [
-      "配置响应/解决 SLA 与工作日历",
-      "扫描未关单，计算剩余与超时时长",
-      "生成分级催办/升级话术，确认后再发送",
-    ],
-    tips: [
-      "与审批催办用例分流：本条=服务台工单",
-      "对外客户话术避免自动承诺赔付；升级抄送对内优先",
-    ],
+    howItWorks: ["配 SLA", "扫描未关单", "分级话术确认后发"],
+    tips: ["与审批催办分流", "对外勿自动承诺赔付"],
   },
 ];
 
