@@ -5436,6 +5436,194 @@ export const usecases: UseCase[] = [
       "危险操作设唤醒口令（如「确认迁移」），避免误听执行",
     ],
   },
+  {
+    id: "247",
+    slug: "credit-card-expenses-to-excel",
+    title: "信用卡账单自动抽费用写入 Excel",
+    summary:
+      "从信用卡/网银对账单识别商户与金额，写入 Excel 或飞书表；卡号脱敏，财务字段最小化。",
+    description:
+      "个人与小团队对账常要把信用卡 PDF/截图或网银导出逐条抄进 Excel，费时且易漏项、错类目与重复记账。Agent 读取授权账单文件，抽取交易日、商户、金额、币种与粗分类，写入本地 Excel 或飞书多维表，并在微信私聊推送月度摘要；n8n 可按月定时跑批，Claude 负责商户归一、类目建议与异常大额标注。区别于报销打包与高管行政邮件：本条是「账单→费用表」轻量财务整理，不做正式报销审批、对外付款或发票验真。硬约束：财务最小化、不外泄完整卡号（脱敏展示）；仅保留末四位与必要交易字段；账单原件与完整卡号禁止写入模型提示或外发群；汇总表默认私密空间，禁止未授权同步公开文档。",
+    categories: ["efficiency"],
+    platforms: ["claude", "n8n", "feishu", "wechat"],
+    sourceUrl:
+      "https://technicallycurious.substack.com/p/claude-code-for-business-users-getting",
+    sourceLabel: "Technically Curious · 账单费用进 Excel",
+    upvotes: 89,
+    trending: false,
+    tags: [
+      "信用卡账单",
+      "费用进表",
+      "卡号脱敏",
+      "飞书多维表",
+      "财务最小化",
+    ],
+    howItWorks: [
+      "导入授权账单文件与字段映射，约定 Excel/飞书表与微信摘要频道",
+      "Agent 抽取交易字段并脱敏卡号，写入费用表并标异常大额",
+      "人核对分类后归档；系统不外泄完整卡号、不扩写无关财务字段",
+    ],
+    tips: [
+      "导入前先删账单页眉完整卡号行，或强制掩码后再喂模型",
+      "商户映射表本地维护，减少「同一咖啡店多种写法」刷花分类",
+    ],
+  },
+  {
+    id: "248",
+    slug: "voice-candidate-screen-agent",
+    title: "语音 Agent 批量初筛候选人",
+    summary:
+      "语音 Agent 批量触达并初筛候选人，输出结构化评分与纪要；仅辅助，人审后推进。",
+    description:
+      "初级岗位海量投递时，电话/企微初筛占用招聘同学大量时间，口径不一还难沉淀。经授权名单与话术模板，语音 Agent 按时段触达候选人，采集意向、到岗、硬技能自述与薪资预期区间，生成结构化评分、录音摘要与风险标记，推送企微/飞书招聘群；n8n 编排排队与重试，Claude 统一评分维度并拦截诱导性提问。区别于求职者对照岗位打分与简历谈薪辅导：本条是招聘侧 sourcing+screen，不写对外 offer、不做终面排期。硬约束：仅辅助、人审后推进；勿自动拒信/发 offer；未授权不得外呼或群发；通话录音与联系方式仅存招聘受控空间；评分不得冒充录用决定或对候选人自动承诺。",
+    categories: ["career"],
+    platforms: ["wecom", "feishu", "claude", "n8n"],
+    sourceUrl: "https://www.thehirehub.ai/blog/voice-ai-killing-phone-screen-whats-next",
+    sourceLabel: "The Hire Hub · 语音初筛候选人",
+    upvotes: 91,
+    trending: false,
+    tags: [
+      "语音初筛",
+      "候选人sourcing",
+      "招聘辅助",
+      "人审推进",
+      "勿自动发offer",
+    ],
+    howItWorks: [
+      "导入授权候选人名单、话术与评分维度，绑定企微/飞书招聘频道",
+      "语音 Agent 按时段触达并采集意向与硬技能，生成评分与纪要",
+      "招聘同学人审后再推进；系统不自动拒信、不发 offer",
+    ],
+    tips: [
+      "外呼窗口避开深夜与法定节假日，并强制「可拒听」开场白",
+      "低分仅内部可见，禁止把原始评分原文转发给候选人",
+    ],
+  },
+  {
+    id: "249",
+    slug: "raw-footage-nl-video-edit",
+    title: "用自然语言把素材剪成成片",
+    summary:
+      "用自然语言描述目标成片，从原始素材剪出草稿时间线；成片发布须人审，不抄受版权素材。",
+    description:
+      "短视频与课程片头常堆着大量原始素材，按口令找镜头、对齐旁白与卡点很耗时，还容易误用未授权片源。创作者用自然语言描述目标成片（时长、节奏、字幕风格），Agent 在授权素材库内检索镜头、生成粗剪时间线、字幕草稿与 BGM 建议，经 Coze 导出可预览工程；Claude 压缩旁白并标出空镜/跳切风险，抖音/视频号仅作发布尺寸参考而非自动发帖。区别于博文转动效信息图与 Newsletter 写稿：本条是「成片剪辑」而非文案或静态视觉二次分发。硬约束：成片发布须人审、不抄受版权素材；仅使用自有或已获授权镜头与音乐；禁止从网上下载未授权片源入轨；字幕与封面文案不得含未审敏感声明。",
+    categories: ["content"],
+    platforms: ["claude", "coze", "douyin", "shipinhao"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47170174",
+    sourceLabel: "Hacker News · Cardboard 自然语言剪辑",
+    upvotes: 88,
+    trending: false,
+    tags: [
+      "自然语言剪辑",
+      "素材成片",
+      "短视频粗剪",
+      "人审发布",
+      "版权素材",
+    ],
+    howItWorks: [
+      "导入授权素材库与成片口令模板，选定时长、字幕与目标平台尺寸",
+      "Agent 检索镜头并生成粗剪时间线、字幕与 BGM 建议草稿",
+      "人审改后再导出发布；系统不自动上架、不引入未授权片源",
+    ],
+    tips: [
+      "口令写成「开场钩子+三段论据+结尾 CTA」，比只说「好看一点」更稳",
+      "音乐与字体走白名单库，避免临时搜网引入版权风险",
+    ],
+  },
+  {
+    id: "250",
+    slug: "amazon-buy-from-photo",
+    title: "拍包装照一键复购下单",
+    summary:
+      "对着耗材包装拍照检索同款，并生成购物车待付款草稿；人确认支付，不越权下单或付款。",
+    description:
+      "家居与办公耗材用完时常找不到原链接，对着包装盲搜又易买错规格或落入仿冒链接。用户拍包装或条码照片，Agent 识别品牌、规格与条码，在授权商城（含 Amazon 或国内淘宝/京东「拍立购」口径）检索同款与替补，输出比价表与购物车草稿，经飞书/微信确认后由人完成支付；n8n 可记录复购清单，Claude 核对规格差异并提示仿冒与超预算风险。区别于 Agent 代下单全链路跟物流与竞品盯价：本条聚焦「以图复购」入口，默认止于购物车。硬约束：人确认支付、不越权下单/付款；禁自动扣款；完整支付凭证与收货地址仅授权会话可见；不确定同款时只给候选、不擅自替用户下单。",
+    categories: ["ecommerce"],
+    platforms: ["claude", "n8n", "feishu", "wechat"],
+    sourceUrl: "https://news.ycombinator.com/item?id=45815103",
+    sourceLabel: "Hacker News · 拍照复购 Amazon",
+    upvotes: 85,
+    trending: false,
+    tags: [
+      "拍照复购",
+      "包装识图",
+      "购物车草稿",
+      "人确认支付",
+      "不越权下单",
+    ],
+    howItWorks: [
+      "绑定授权商城与飞书/微信确认话术，上传包装或条码照片",
+      "Agent 识别规格并生成同款/替补比价与购物车草稿",
+      "人确认后再支付；系统不越权下单、不自动扣款",
+    ],
+    tips: [
+      "拍照尽量含条码与净含量，降低「同品牌不同规格」误购",
+      "替补商品默认标红「非原款」，须二次确认才可加入购物车",
+    ],
+  },
+  {
+    id: "251",
+    slug: "canvas-lms-course-agent",
+    title: "在 LMS 里用 Agent 整理课程模块",
+    summary:
+      "在 Canvas 类 LMS 内批量改模块名、截止日期与课程页草稿；未审不公开，成绩须教师确认。",
+    description:
+      "学期初改模块命名、统一截止日期与课程页链接时，教师在 Canvas 类 LMS 里逐页点开极易漏改、版本混乱，还可能误对学生公开未定稿。Agent 读取授权课包结构，按规则批量重命名模块、调整日期、生成页面草稿与检查清单，经 Dify/Coze 落入飞书待审；Claude 统一术语与无障碍提示，并可对标超星/雨课堂等国内培训后台口径。区别于搭建交互式培训课与习题批注：本条是「已有课包的平台内整理」，非从零做课或作业批改入册。硬约束：不擅自对学生公开未审模块；成绩相关须教师确认；不得批量改动已发布成绩或未授权导出学员名单；正式对学生可见前须教师逐项点确认。",
+    categories: ["education"],
+    platforms: ["feishu", "claude", "dify", "coze"],
+    sourceUrl:
+      "https://www.instructure.com/resources/videos/why-youll-love-igniteai-agent",
+    sourceLabel: "Instructure · Canvas IgniteAI Agent",
+    upvotes: 84,
+    trending: false,
+    tags: [
+      "LMS整理",
+      "Canvas模块",
+      "截止日期批量",
+      "教师确认",
+      "未审不公开",
+    ],
+    howItWorks: [
+      "授权课包只读结构与改稿沙箱，约定飞书待审清单与命名规则",
+      "Agent 批量生成模块重命名、日期与页面草稿并标冲突项",
+      "教师确认后再对学生公开；系统不擅自公开未审模块、成绩须人确认",
+    ],
+    tips: [
+      "先在副本课包跑全量，确认无误再映射到正式课",
+      "成绩列默认只读，任何写入必须二次教师口令确认",
+    ],
+  },
+  {
+    id: "252",
+    slug: "office-groceries-from-slack",
+    title: "从协作群消息汇总办公采购下单",
+    summary:
+      "从企微/飞书群收集办公采购需求，汇总审批并生成购物车；须人确认下单，不越权付款。",
+    description:
+      "办公室零食、耗材与茶水间补给常散落在 Slack/企微/飞书群里，行政同学手工汇总易漏单、超预算或重复买。n8n 监听授权采购群关键词，Agent 抽取品名、数量、品牌偏好与紧急度，去重后生成采购清单与预算合计，走飞书/企微审批卡片，通过后写入购物车草稿供人下单；Claude 合并近似项并提示超预算与重复 SKU。区别于 Office 文档读写改与发票打包报销：本条是「IM 需求→办公物资下单」，非文档格式处理或票夹归档。硬约束：须人确认下单、不越权付款；默认止于购物车/审批通过态，禁自动扣款；收货地址与支付信息仅行政授权人可见；超预算项须单独加签后采购。",
+    categories: ["enterprise"],
+    platforms: ["wecom", "feishu", "n8n", "claude"],
+    sourceUrl: "https://nekuda.substack.com/p/we-connected-openclaw-with-instacart",
+    sourceLabel: "Nekuda · Slack → Instacart 办公采购",
+    upvotes: 87,
+    trending: false,
+    tags: [
+      "办公采购",
+      "群消息汇总",
+      "企微飞书",
+      "人确认下单",
+      "不越权付款",
+    ],
+    howItWorks: [
+      "绑定授权采购群、预算上限与审批人，约定关键词与默认品类",
+      "Agent 抽取需求并去重，生成清单与审批卡片，通过后写购物车草稿",
+      "行政确认后再下单支付；系统不越权付款、超预算须加签",
+    ],
+    tips: [
+      "群内强制「@采购机器人+品名+数量」格式，闲聊不入队",
+      "同一 SKU 24 小时合并计数，避免多人重复喊单",
+    ],
+  },
 
 ];
 
