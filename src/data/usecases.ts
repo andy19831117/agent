@@ -4264,6 +4264,193 @@ export const usecases: UseCase[] = [
       "流水线默认脱敏；未脱敏字段禁止进入对外文档",
     ],
   },
+  {
+    id: "193",
+    slug: "car-repair-triage-reply",
+    title: "汽修请求分拣并回复客户",
+    summary:
+      "企微/飞书接入汽修进线，Agent 分拣紧急度与车型故障标签，生成人审后回复草稿，不自动报价承诺。",
+    description:
+      "汽修门店或售后群里进线杂乱：救援、保养预约、零件询价、投诉混在一起。用 n8n/Agent 监听企微或飞书会话，按紧急度、车型、故障关键词分拣进待办队列，并起草礼貌、可核对的客户回复。本地化落在企微/飞书；草稿必须人审后再发。硬约束：勿自动报价或承诺交车时间、费用上限；价格与工期仅由人工确认后写入终稿。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["wecom", "feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl: "https://x.com/ho_lar_s/status/2109790708970438953",
+    sourceLabel: "X 原帖",
+    upvotes: 86,
+    trending: false,
+    tags: [
+      "汽修分拣",
+      "企微飞书",
+      "客户回复草稿",
+      "人审后发",
+      "勿自动报价",
+    ],
+    howItWorks: [
+      "配置企微/飞书进线源、分拣标签与回复草稿模板",
+      "Agent 标注紧急度与故障类型，生成待人审的回复草稿",
+      "坐席核对车况与排期后手动发送，系统不代报价格或工期",
+    ],
+    tips: [
+      "紧急救援类单独置顶并通知值班人，避免淹没在普通询价里",
+      "回复模板预留「价格/交车时间待确认」占位，禁止 Agent 填具体数字",
+    ],
+  },
+  {
+    id: "194",
+    slug: "sales-order-verify-email-draft",
+    title: "销售订单从核验到客户邮件草稿",
+    summary:
+      "销售订单经字段核验后生成客户确认邮件草稿；人确认再发，流水线不自动扣款。",
+    description:
+      "订单从下单到客户确认常卡在「字段漏填、邮件措辞不一致」。Agent/n8n 流水线先核验 SKU、数量、交期、收货信息与库存线索，通过后按模板起草客户确认邮件，推到飞书/企微待办。人核对无误后再发送。硬约束：核验→草稿邮件；人确认后发；不自动扣款、不触发支付或出库指令。异常订单标红并交回销售改单。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude", "n8n"],
+    sourceUrl: "https://x.com/rassailor/status/2108221352641741264",
+    sourceLabel: "X 原帖",
+    upvotes: 82,
+    trending: false,
+    tags: [
+      "销售订单",
+      "字段核验",
+      "邮件草稿",
+      "人确认后发",
+      "不自动扣款",
+    ],
+    howItWorks: [
+      "接入订单表与核验规则（必填项、库存/交期线索）",
+      "通过后生成带订单摘要的客户确认邮件草稿",
+      "销售在飞书/企微确认后手动发送；支付与出库仍走原流程",
+    ],
+    tips: [
+      "核验失败写清缺项清单，方便销售一次补齐",
+      "邮件草稿默认不含付款链接或扣款话术，避免误触发支付预期",
+    ],
+  },
+  {
+    id: "195",
+    slug: "browser-agents-workday-test",
+    title: "用真实工作日任务测评浏览器 Agent",
+    summary:
+      "用真实工作流对照测评浏览器 Agent，记录完成度与卡点，结果写入飞书；勿在生产账号乱点。",
+    description:
+      "宣传里的浏览器 Agent 难分高下。把本人真实工作日任务（填表、查后台、整理公开页）做成对照题，在隔离环境跑两款或多款 Agent，记录成功率、步数、卡点与人工干预次数，汇总进飞书测评表。强调真实工作流对照测评；结果进飞书。硬约束：勿在生产账号乱点——用测试账号/沙箱；涉及写操作须人确认；不保存生产 Cookie 到评测脚本。",
+    categories: ["efficiency", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl: "https://natesnewsletter.substack.com/p/i-threw-my-real-workday-at-two-ai",
+    sourceLabel: "Substack · 浏览器 Agent 测评",
+    upvotes: 88,
+    trending: false,
+    tags: [
+      "浏览器Agent",
+      "工作日测评",
+      "对照实验",
+      "飞书结果",
+      "沙箱账号",
+    ],
+    howItWorks: [
+      "选出若干可复现的真实任务与评分维度，准备测试账号",
+      "按同一脚本分别跑候选浏览器 Agent，记录完成度与卡点",
+      "汇总对照表写入飞书，团队讨论后再决定是否试点",
+    ],
+    tips: [
+      "每条任务写清「允许/禁止的写操作」，防止 Agent 误改生产数据",
+      "同一任务至少跑两轮，减少偶发网络波动对结论的干扰",
+    ],
+  },
+  {
+    id: "196",
+    slug: "youtube-cited-research-notes",
+    title: "把 YouTube 视频做成带引用的研究笔记",
+    summary:
+      "把 YouTube 视频提炼成带时间戳引用的研究笔记写入飞书；不抄字幕当原文发表。",
+    description:
+      "长视频调研耗时，口头观点又难回溯。Agent 基于字幕/章节生成结构化研究笔记：论点、证据、反方、可跟进问题，每条关键论断附时间戳引用，归档到飞书知识库。硬约束：时间戳引用；不抄字幕当原文发表——笔记用自己的话复述，公开成稿须二次原创与事实核验；版权素材勿整段转载。",
+    categories: ["content", "education"],
+    platforms: ["chatgpt", "claude", "kimi", "feishu"],
+    sourceUrl: "https://artemxtech.substack.com/p/notebooklm-has-a-knowledge-graph",
+    sourceLabel: "Substack · 视频研究笔记",
+    upvotes: 79,
+    trending: false,
+    tags: [
+      "YouTube",
+      "时间戳引用",
+      "研究笔记",
+      "飞书知识库",
+      "不抄字幕",
+    ],
+    howItWorks: [
+      "提供视频链接与笔记模板（论点/证据/时间戳字段）",
+      "Agent 提炼结构并给每条关键论断挂时间戳引用",
+      "人校对后写入飞书；对外发表前再做原创改写与核验",
+    ],
+    tips: [
+      "时间戳写成可点击格式（如 12:34），方便回看原片",
+      "笔记页眉固定「内部研究草稿；禁止整段字幕外发」",
+    ],
+  },
+  {
+    id: "197",
+    slug: "course-revise-from-evals",
+    title: "按学生评教反馈改课",
+    summary:
+      "脱敏学生评教后归纳主题，给出大纲与练习改写建议；教师人审后再发布新版课件。",
+    description:
+      "评教问卷往往又长又散，教师难系统改课。Agent 先对评教文本脱敏（去姓名/学号/可识别细节），聚类主题（节奏、难度、案例、作业负荷等），再输出大纲调整与练习改写建议，写入飞书改课草稿。硬约束：脱敏评教→改大纲/练习建议；人审后发布——不自动覆盖正式课件或成绩规则；个别攻击性言论单独标记不入公开摘要。",
+    categories: ["education", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "deepseek"],
+    sourceUrl: "https://practicespace.substack.com/p/using-claude-code-to-modernize-my",
+    sourceLabel: "Substack · 评教改课",
+    upvotes: 85,
+    trending: false,
+    tags: [
+      "学生评教",
+      "脱敏",
+      "大纲改写",
+      "练习建议",
+      "人审发布",
+    ],
+    howItWorks: [
+      "导入评教导出并跑脱敏与主题聚类",
+      "Agent 生成「保留/加强/删减」建议及对应练习改写草案",
+      "教师审阅后手动更新大纲与课件，再发布给学生",
+    ],
+    tips: [
+      "公开改课说明只写主题级反馈，不引用可识别原句",
+      "建议旁标注「依据评教条数/占比」，避免被单条极端意见带偏",
+    ],
+  },
+  {
+    id: "198",
+    slug: "migrate-legacy-product-stack",
+    title: "用编码 Agent 迁移遗留产品技术栈",
+    summary:
+      "编码 Agent 按模块开可审 PR 迁移遗留技术栈，保留回滚路径，禁止一次切全生产。",
+    description:
+      "遗留产品换栈风险大：依赖缠绕、测试薄、一次切换易出事。约定用编码 Agent 按模块拆迁移：每模块独立分支、可审 PR、配套测试与回滚说明；先影子流量或特性开关验证再逐步放量。硬约束：分模块可审 PR；有回滚；不一次切全生产。密钥与生产配置不进 Agent 上下文明文；关键路径必须人审 diff 与 CI。",
+    categories: ["devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl:
+      "https://dev.to/aws-builders/the-setup-is-the-strategy-how-i-orchestrated-a-product-migration-with-claude-code-b92",
+    sourceLabel: "DEV.to · 产品迁移实践",
+    upvotes: 90,
+    trending: false,
+    tags: [
+      "遗留迁移",
+      "分模块PR",
+      "回滚",
+      "编码Agent",
+      "不一次切全量",
+    ],
+    howItWorks: [
+      "盘点模块边界、依赖图与回滚策略，划定首批低风险模块",
+      "Agent 按模块生成迁移改动与测试，开独立可审 PR",
+      "人审合入后灰度/特性开关放量；异常立即回滚该模块",
+    ],
+    tips: [
+      "每个 PR 描述写清「回滚命令/开关」与影响面，方便值班",
+      "生产切换清单单独人工把关，Agent 不得直接操作生产发布按钮",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
