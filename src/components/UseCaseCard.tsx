@@ -5,17 +5,24 @@ import { useState } from "react";
 import { SponsorRecBadge } from "@/components/SponsorRecBadge";
 import { categories } from "@/data/categories";
 import { platforms } from "@/data/platforms";
-import { recForUseCase, sponsorRecsEnabled } from "@/data/sponsors";
+import { recForUseCase, SPONSOR_REC_ENABLED } from "@/data/sponsors";
 import type { Platform, UseCase } from "@/data/types";
 
-export function UseCaseCard({ usecase }: { usecase: UseCase }) {
+export function UseCaseCard({
+  usecase,
+  showSponsorRec = false,
+}: {
+  usecase: UseCase;
+  showSponsorRec?: boolean;
+}) {
   const [votes, setVotes] = useState(usecase.upvotes);
   const [voted, setVoted] = useState(false);
   const [shared, setShared] = useState(false);
 
   const cats = categories.filter((c) => usecase.categories.includes(c.slug));
   const plats = platforms.filter((p) => usecase.platforms.includes(p.slug));
-  const rec = sponsorRecsEnabled ? recForUseCase(usecase.slug) : undefined;
+  const rec =
+    showSponsorRec && SPONSOR_REC_ENABLED ? recForUseCase(usecase.slug) : undefined;
   const visiblePlats = platformsForCard(plats, rec?.platform);
 
   function upvote() {

@@ -61,7 +61,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SponsorTopBar />
         <Header />
         <main className="relative flex-1">{children}</main>
-        <SiteFooter email={siteContact.email} wechat={siteContact.wechat} />
+        <SiteFooter
+          email={siteContact.email}
+          phone={siteContact.phone}
+          wechat={siteContact.wechat}
+        />
       </body>
     </html>
   );

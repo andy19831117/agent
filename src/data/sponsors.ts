@@ -46,12 +46,15 @@ export interface SponsorRecPlacement {
 }
 
 /**
- * Soft placements. None are enabled: the 「荐」 badge stays off sitewide
- * until a placement is explicitly turned on. Cap is 5 usecases.
+ * Soft placements. None are enabled. Cap is 5 usecases.
  */
 export const sponsorRecPlacements: readonly SponsorRecPlacement[] = [];
 
-export const sponsorRecsEnabled = sponsorRecPlacements.some((item) => item.enabled);
+/** Sitewide 「荐」角标。默认关闭。 */
+export const SPONSOR_REC_ENABLED = false;
+
+export const sponsorRecsEnabled =
+  SPONSOR_REC_ENABLED && sponsorRecPlacements.some((item) => item.enabled);
 
 export interface SponsorTier {
   id: "explore" | "growth" | "partner";
@@ -68,7 +71,7 @@ export const sponsorTiers: readonly SponsorTier[] = [
     id: "explore",
     name: "探索",
     period: "2 周",
-    price: "¥1,500–3,000",
+    price: "¥1.5–3k",
     featured: false,
     mark: null,
     points: ["首页赞助条体验位", "赞助页 Logo 展示"],
@@ -77,7 +80,7 @@ export const sponsorTiers: readonly SponsorTier[] = [
     id: "growth",
     name: "成长",
     period: "1 月",
-    price: "¥5,000–8,000",
+    price: "¥5–8k",
     featured: true,
     mark: "推荐",
     points: [
@@ -90,7 +93,7 @@ export const sponsorTiers: readonly SponsorTier[] = [
     id: "partner",
     name: "伙伴",
     period: "1 季",
-    price: "¥15,000–25,000",
+    price: "¥15–25k",
     featured: false,
     mark: "季度",
     points: [
