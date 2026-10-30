@@ -3962,6 +3962,156 @@ export const usecases: UseCase[] = [
       "摘要控制在一屏，超出则只留 P0/P1",
     ],
   },
+  {
+    id: "181",
+    slug: "query-hn-arxiv-corpus",
+    title: "用自然语言查询 HN/arXiv/LessWrong 大规模语料",
+    summary:
+      "对 HN、arXiv、LessWrong 等本地或镜像语料用自然语言提问，快速检索论点、出处与相关讨论。",
+    description:
+      "研究与自学常卡在「知道大概在哪、却翻不动海量帖与论文」。Agent 对接已索引的公开语料（或自建检索层），用自然语言返回带出处的摘要与链接。适合文献调研与观点溯源。只读公开数据；不绕过站点条款批量抓取；不伪造引用。",
+    categories: ["education", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "kimi"],
+    sourceUrl: "https://news.ycombinator.com/item?id=46442245",
+    sourceLabel: "Hacker News",
+    upvotes: 86,
+    trending: false,
+    tags: ["语料检索", "自然语言查询", "arXiv", "Hacker News", "研究"],
+    howItWorks: [
+      "选定已授权的语料索引或本地检索层",
+      "用自然语言提问，Agent 返回带出处的片段与链接",
+      "人核对引用后再写入笔记或报告",
+    ],
+    tips: [
+      "问题尽量带时间范围与领域词，减少跑偏",
+      "重要结论必须点开原文核对，勿只信摘要",
+    ],
+  },
+  {
+    id: "182",
+    slug: "persistent-finance-research-agent",
+    title: "用持久化 Agent 做金融研究笔记",
+    summary:
+      "持久化 Agent 按主题持续收集公开财报与研报线索，整理成可审阅的飞书研究笔记，非投资建议。",
+    description:
+      "金融研究需要跨多日积累上下文。持久会话记住关注标的与问题清单，把公开公告、财报要点与争议点写入飞书文档，供人复核。本用例仅辅助笔记与信息整理，非投资建议；不荐股、不编造收益、不下单。敏感内部数据勿接入。",
+    categories: ["efficiency", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47766370",
+    sourceLabel: "Hacker News",
+    upvotes: 79,
+    trending: false,
+    tags: ["金融研究", "持久化Agent", "飞书笔记", "非投资建议", "效率"],
+    howItWorks: [
+      "设定关注主题、公开数据源与笔记模板",
+      "Agent 跨会话追加摘要并同步到飞书文档",
+      "人审阅标注可信度后再决定是否引用",
+    ],
+    tips: [
+      "每条笔记标明数据日期与来源链接",
+      "输出页眉固定写「非投资建议」，避免误用为荐股",
+    ],
+  },
+  {
+    id: "183",
+    slug: "company-dept-self-hosted-agents",
+    title: "自托管 Agent 跑公司部门任务",
+    summary:
+      "在自有基础设施上持久部署多 Agent，承接部门级例行任务，数据与进程留在公司边界内。",
+    description:
+      "与一人公司「多 Agent 扮演部门」叙事（见 id 179）不同：本条强调自托管部署——Agent 跑在公司自有机器/内网，持久进程处理工单、周报、知识库同步等部门任务，经飞书/企微通知人审。侧重基础设施与数据驻留，而非一人公司角色扮演。对外发送与权限变更须审批；密钥不落公有会话。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "n8n", "chatgpt", "claude"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49630606",
+    sourceLabel: "Hacker News",
+    upvotes: 88,
+    trending: false,
+    tags: ["自托管", "部门任务", "企业", "持久运行", "飞书企微"],
+    howItWorks: [
+      "在自有环境部署 Agent 运行时与任务队列",
+      "按部门接入只读/受限写工具与飞书企微通道",
+      "产出进审批队列，人确认后再执行对外动作",
+    ],
+    tips: [
+      "先跑只读汇总类任务，再逐步开放写权限",
+      "进程与密钥用隔离账号，便于审计与回收",
+    ],
+  },
+  {
+    id: "184",
+    slug: "cgroup-kill-coding-sessions",
+    title: "编码会话用 cgroup 结束即杀",
+    summary:
+      "每个编码 Agent 会话跑进独立 cgroup，会话结束即整组杀掉，回收资源并防止残留进程。",
+    description:
+      "编码 Agent 常拉起子进程、沙箱与临时服务，会话关了进程还在。把单次会话装进 Linux cgroup，结束时 kill 整组，隔离 CPU/内存并清残留。适合开发者本机或 CI 旁路的安全与资源治理。不替代正式容器编排；生产集群另走标准调度。",
+    categories: ["devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50136354",
+    sourceLabel: "Hacker News",
+    upvotes: 82,
+    trending: false,
+    tags: ["cgroup", "编码会话", "资源隔离", "进程清理", "开发者安全"],
+    howItWorks: [
+      "启动会话时创建独立 cgroup 并设资源上限",
+      "Agent 及其子进程均归入该组运行",
+      "会话结束或超时则 kill 整组并释放配额",
+    ],
+    tips: [
+      "超时与内存上限写进会话配置，避免默默拖垮机器",
+      "日志落组外目录，杀进程后仍可排查",
+    ],
+  },
+  {
+    id: "185",
+    slug: "autonomous-employee-like-agent",
+    title: "类员工自主 Agent 处理公司任务",
+    summary:
+      "赋予类员工职责的自主 Agent 认领公司任务并推进，对外发送、改权限与花钱必须过人审闸门。",
+    description:
+      "与 id 183「自托管部门编排/基础设施」不同：本条偏单 Agent 类员工自主执行——认领工单、跟进依赖、起草交付，在飞书/企微汇报进度。自主不等于无闸：对外发送、改权限、花钱必须审批。适合中小团队把重复运营交给「数字同事」，人只盯例外与签字。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "chatgpt", "claude", "n8n"],
+    sourceUrl: "https://news.ycombinator.com/item?id=47730086",
+    sourceLabel: "Hacker News",
+    upvotes: 85,
+    trending: false,
+    tags: ["类员工Agent", "自主执行", "审批闸门", "企业任务", "飞书企微"],
+    howItWorks: [
+      "定义职责范围、工具白名单与升级条件",
+      "Agent 自主推进任务并同步进度到飞书/企微",
+      "触及发送/权限/支付时暂停，等人批准再继续",
+    ],
+    tips: [
+      "白名单按最小权限开，默认拒绝一切对外副作用",
+      "每日产出一份「已做/待批/阻塞」三栏摘要给人扫",
+    ],
+  },
+  {
+    id: "186",
+    slug: "market-moves-chart-agent",
+    title: "在图表上调查市场波动与告警",
+    summary:
+      "对着行情图表用 Agent 排查异常波动与告警原因，整理给人看的说明；非投资建议，不自动下单。",
+    description:
+      "盯盘时告警一响需要快速「发生了什么」。Agent 结合图表区间、公开新闻与你标注的关注点，写出波动可能成因与待核清单，推飞书给人看。本用例非投资建议；不自动下单、不改仓位；告警只通知人，不下发交易指令。",
+    categories: ["efficiency", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49979793",
+    sourceLabel: "Hacker News",
+    upvotes: 80,
+    trending: false,
+    tags: ["市场波动", "图表分析", "告警", "非投资建议", "飞书"],
+    howItWorks: [
+      "选定图表区间与告警规则，Agent 拉取公开上下文",
+      "生成「可能原因 / 待核事实 / 无关项」结构化说明",
+      "推送飞书通知给人审阅，不触发交易动作",
+    ],
+    tips: [
+      "告警文案固定附「非投资建议、不自动下单」",
+      "把高影响标的设为人工必读，避免刷屏忽略",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
