@@ -3518,6 +3518,160 @@ export const usecases: UseCase[] = [
       "对许可证与安全公告单独开一项，避免只看功能忽略合规",
     ],
   },
+  {
+    id: "163",
+    slug: "autonomous-seo-page-loop",
+    title: "自主循环批量生成 SEO 落地页与小工具",
+    summary:
+      "按关键词清单循环生成落地页或小工具草稿，带基础 SEO 结构，人工抽检后再上线。",
+    description:
+      "与 SEO 巡检（找问题）和安全日修（小补丁）不同：本条是「批量生产」——给定主题词，Agent 循环产出页面骨架、标题层级与内链建议，进入草稿站；抽检通过再发布。需设数量上限与敏感词过滤，禁止生成医疗夸大与虚假评价。不编造流量与排名承诺。",
+    categories: ["content", "devtools"],
+    platforms: ["chatgpt", "claude", "n8n", "deepseek"],
+    sourceUrl:
+      "https://dev.to/profiterole/i-let-an-ai-agent-run-my-business-for-3-days-heres-what-happened-10gn",
+    sourceLabel: "DEV.to · Agent 跑业务实验",
+    upvotes: 78,
+    trending: false,
+    tags: ["SEO落地页", "批量生成", "自主循环", "内容", "独立开发"],
+    howItWorks: [
+      "准备关键词/意图清单与页面模板",
+      "Agent 循环生成草稿页并做基础 SEO 自检",
+      "人工抽检后发布，记录废弃与通过比例",
+    ],
+    tips: [
+      "每日生成上限写死，避免刷站被搜素引擎降权",
+      "模板强制「来源/更新日期」字段，减少空壳页",
+    ],
+  },
+  {
+    id: "164",
+    slug: "blog-aggregator-day-build",
+    title: "一日内构建并部署博客聚合站",
+    summary:
+      "用编码 Agent 在一天内从需求说明做出可访问的博客/资讯聚合站并完成部署。",
+    description:
+      "适合「有 RSS 源、缺产品壳」的个人或小队：把需求列表交给编码 Agent，生成抓取、列表页、详情与简单搜索，部署到静态或轻后端托管。版权上只聚合摘要+原文链接，不转载全文。强调可上线演示，而非完美设计系统。",
+    categories: ["devtools", "content"],
+    platforms: ["chatgpt", "claude", "deepseek", "n8n"],
+    sourceUrl:
+      "https://dev.to/wheeleruniverse/from-dusty-requirements-to-live-website-how-claude-code-built-my-blog-aggregator-in-a-single-day-3jbo",
+    sourceLabel: "DEV.to · 一日博客聚合站",
+    upvotes: 80,
+    trending: false,
+    tags: ["聚合站", "RSS", "一日上线", "编码Agent", "内容"],
+    howItWorks: [
+      "列出源、字段与非目标（不做的功能）",
+      "Agent 实现抓取与站点并完成本地验收",
+      "部署公网演示，补 robots/来源声明",
+    ],
+    tips: [
+      "每条内容保留原文链接与抓取时间，避免版权纠纷",
+      "源站失败要降级为空态，不要用过期缓存冒充新文",
+    ],
+  },
+  {
+    id: "165",
+    slug: "saas-cloud-migrate-agent",
+    title: "SaaS 基础设施迁移云厂商",
+    summary:
+      "在有流量的前提下，用编码 Agent 协助梳理依赖、改配置与校验清单，完成云厂商或区域迁移。",
+    description:
+      "迁移怕的是漏环境变量与静默流量丢失。Agent 帮助盘点服务、密钥引用、DNS 与健康检查，生成迁移步骤与回滚点；执行仍分阶段人工确认。适合独立 SaaS 与小团队。不编造「零停机」保证；关键切流前必须演练。进度可同步飞书。",
+    categories: ["devtools", "enterprise"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl:
+      "https://dev.to/anand_rathnas_d5b608cc3de/how-claude-code-helped-me-migrate-from-aws-to-digitalocean-in-4-hours-with-live-traffic-hmg",
+    sourceLabel: "DEV.to · 热迁移实践",
+    upvotes: 83,
+    trending: false,
+    tags: ["云迁移", "SaaS", "基础设施", "编码Agent", "回滚"],
+    howItWorks: [
+      "盘点服务依赖、密钥与数据面清单",
+      "生成分阶段迁移与校验脚本/检查表",
+      "灰度切流，失败按回滚点恢复并复盘",
+    ],
+    tips: [
+      "先迁只读副本与预发，再动主库与支付回调",
+      "DNS TTL 提前降低，给回滚留窗口",
+    ],
+  },
+  {
+    id: "166",
+    slug: "parallel-local-coding-sessions",
+    title: "本地并行多会话编码 Agent",
+    summary:
+      "在同一仓库开多个本地 Agent 会话并行改不同模块，用分支隔离与汇总审阅降低互相踩踏。",
+    description:
+      "单会话串行改大需求太慢。实践是按模块开并行本地会话，各自独立分支与测试；合并前做冲突与意图审阅。适合熟悉 Git 的开发者。需要明确文件所有权，避免两会话改同一核心文件。不替代 CI。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://news.ycombinator.com/item?id=49992657",
+    sourceLabel: "Hacker News",
+    upvotes: 87,
+    trending: false,
+    tags: ["并行Agent", "多会话", "分支隔离", "编码", "效率"],
+    howItWorks: [
+      "按模块切分任务并分配会话与分支",
+      "各会话独立实现并跑局部测试",
+      "汇总 PR，解决冲突后统一 CI 与人工审",
+    ],
+    tips: [
+      "共享接口文件只允许一个会话改，其他先 mock",
+      "会话数宁少勿多，超过三人审阅成本会反超",
+    ],
+  },
+  {
+    id: "167",
+    slug: "intent-review-agent-with-tests",
+    title: "对照用户意图的评审 Agent 加测试",
+    summary:
+      "让评审 Agent 对照原始用户意图检查 PR，并要求补齐关键路径测试后再合并。",
+    description:
+      "代码能跑不等于满足需求。评审 Agent 读取 Issue/产品说明与 diff，标出偏离意图、缺测试与风险点；未覆盖主路径测试则阻断合并建议。人仍做最终 Approve。可把结论贴到飞书/PR 评论。不编造未运行的测试结果。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl: "https://news.ycombinator.com/item?id=50124513",
+    sourceLabel: "Hacker News",
+    upvotes: 88,
+    trending: false,
+    tags: ["代码评审", "用户意图", "测试", "PR", "质量"],
+    howItWorks: [
+      "绑定 Issue/需求原文与 PR diff",
+      "Agent 输出意图符合度、缺口与测试建议",
+      "补测并通过 CI 后人工合并",
+    ],
+    tips: [
+      "把「非目标」写进 Issue，评审才不会误报漏做",
+      "对生成测试也做抽检，避免无断言的假测试",
+    ],
+  },
+  {
+    id: "168",
+    slug: "prospect-opportunity-summarizer",
+    title: "找潜客并汇总销售商机",
+    summary:
+      "多 Agent 工作流检索公开潜客信号，汇总成商机卡片推送到飞书/企微，供销售筛选跟进。",
+    description:
+      "增长与销售要的是「谁可能需要我们」的短清单，而不是漫无浏览。工作流组合公开网页/名录信号，生成公司简介、契合理由与建议话术卡片，推到飞书或企微；销售决定是否入库 CRM。不购买或泄露未授权个人隐私数据；不编造联系电话。与「线索打分外联」互补：本条偏发现与商机汇总。",
+    categories: ["enterprise", "efficiency"],
+    platforms: ["feishu", "wecom", "n8n", "chatgpt"],
+    sourceUrl:
+      "https://dev.to/inforeole/the-unstoppable-lead-generation-engine-a-multi-agent-ai-workflow-with-n8n-bright-data-4k3j",
+    sourceLabel: "DEV.to · 多 Agent 获客工作流",
+    upvotes: 84,
+    trending: false,
+    tags: ["潜客", "商机", "飞书", "企微", "销售"],
+    howItWorks: [
+      "配置行业/地区与契合规则",
+      "多 Agent 检索公开信号并生成商机卡片",
+      "推送飞书/企微，销售勾选后写入 CRM",
+    ],
+    tips: [
+      "卡片必须带来源链接，方便销售一分钟核验",
+      "排除已成交与黑名单域名，减少重复骚扰",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
