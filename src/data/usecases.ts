@@ -4451,6 +4451,192 @@ export const usecases: UseCase[] = [
       "生产切换清单单独人工把关，Agent 不得直接操作生产发布按钮",
     ],
   },
+  {
+    id: "199",
+    slug: "landing-page-ads-campaign",
+    title: "落地页上线并搭广告投放",
+    summary:
+      "从文案与结构到落地页上线，再搭 Google Ads 投放草案；人审发布，不自动改预算。",
+    description:
+      "营销常卡在「页还没稳就急着投」或「投了却无人盯转化」。本条走落地页+广告投放闭环：Agent 据产品卖点起草落地页结构与文案，用模板/静态站工具生成可预览页；同步产出 Google Ads 广告组、关键词与广告文案草案，以及转化事件与 UTM 清单。飞书待办汇总预览链接与投放检查表；n8n 可串「预览→人审→发布」状态。与 163（从工单规格出落地页）不同：本条强调页+投放一体闭环。硬约束：不自动改预算、不自动调价或扩词；上线与投放开关须人确认；禁止伪造点击/转化数据。",
+    categories: ["content", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "n8n"],
+    sourceUrl: "https://x.com/TheOneGroupAI/status/2108930755933913527",
+    sourceLabel: "X 原帖",
+    upvotes: 84,
+    trending: false,
+    tags: [
+      "落地页",
+      "Google Ads",
+      "投放草案",
+      "人审发布",
+      "不自动改预算",
+    ],
+    howItWorks: [
+      "输入卖点、受众与转化目标，生成落地页结构/文案与 Ads 投放草案",
+      "产出可预览页、广告组与 UTM/转化检查表，推入飞书待审",
+      "人核对合规与预算后手动发布落地页并开启投放；系统不改预算或自动扩词",
+    ],
+    tips: [
+      "首周只用「建议预算」占位，真正日预算由人写入广告后台",
+      "落地页主 CTA 与广告落地 URL、转化事件一一对照，避免错链",
+    ],
+  },
+  {
+    id: "200",
+    slug: "inbox-courses-budgets-assistant",
+    title: "收件箱与做课预算一并打理",
+    summary:
+      "个人同时打理收件箱、做课进度与支出预算：分拣草稿、课纲待办与预算提醒进飞书，付款须人确认。",
+    description:
+      "独立讲师或内容作者常一手回邮件、一手赶课、还要盯工具订阅与外包支出。Agent 把收件箱按「需回复/可归档/待跟进」分拣并起草回复；把做课任务拆成大纲、素材、发布节点；再对照预算表汇总本周支出与余额预警，统一写入飞书看板。与 138（邮件式审批收件箱）不同：本条是个人同时管课与预算，不是企业审批流。硬约束：对外邮件与任何付款/订阅变更须人确认；不自动扣款、不自动回复客户；预算数字以本人账本为准，Agent 只做汇总与提醒。",
+    categories: ["efficiency", "education"],
+    platforms: ["chatgpt", "claude", "feishu", "deepseek"],
+    sourceUrl: "https://michaelcrist.substack.com/p/claude-code",
+    sourceLabel: "Substack · 收件箱与课程预算",
+    upvotes: 81,
+    trending: false,
+    tags: [
+      "收件箱分拣",
+      "做课进度",
+      "预算提醒",
+      "飞书看板",
+      "付款人确认",
+    ],
+    howItWorks: [
+      "接入邮箱标签规则、课纲任务板与简易预算表",
+      "Agent 分拣邮件草稿、更新做课待办，并生成周支出/余额摘要",
+      "人在飞书审阅后手动发信与记账；付款与订阅变更仍本人操作",
+    ],
+    tips: [
+      "预算表固定「已承诺/已支出/剩余」三列，避免 Agent 混用计划数与实付数",
+      "客户询价类邮件单独标签，回复草稿禁止承诺未定价课包",
+    ],
+  },
+  {
+    id: "201",
+    slug: "freelance-website-outreach",
+    title: "自由职业接站外联",
+    summary:
+      "独立开发者/自由职业主动接建站单：筛线索、写个性化外联草稿，人审后发，不自动群发。",
+    description:
+      "接建站单靠冷启动时，难在「找对人」和「信不千篇一律」。Agent 据公开站点/招聘页/本地商户线索筛出可能需要改版或新建站的对象，提取业务一句话与可见痛点，再起草短、个性化的外联邮件或 LinkedIn 私信草稿，进飞书待发队列。与 154（线索评分）、170（CRM 填表）不同：本条是独立开发者主动接建站外联草稿，不是评分流水线或 CRM 字段填充。硬约束：人审后发；禁止自动群发、禁止伪造案例与客户评价；未公开邮箱勿爬取或购买名单。",
+    categories: ["efficiency", "career"],
+    platforms: ["chatgpt", "claude", "feishu", "deepseek"],
+    sourceUrl: "https://x.com/Chris_Wozniczek/status/2108253723558326629",
+    sourceLabel: "X 原帖",
+    upvotes: 78,
+    trending: false,
+    tags: [
+      "自由职业",
+      "建站外联",
+      "个性化草稿",
+      "人审后发",
+      "不自动群发",
+    ],
+    howItWorks: [
+      "设定目标行业与线索来源规则，生成可核对的潜在客户清单",
+      "按站点公开信息写个性化外联草稿，附可替换的作品集链接占位",
+      "人逐条审阅后手动发送；回复与报价另开跟进，不自动承诺工期价",
+    ],
+    tips: [
+      "每封草稿点名对方站点上一处具体问题（速度、移动端、表单），忌空泛推销",
+      "日发送上限由人手动控制，草稿队列默认关闭「一键全发」",
+    ],
+  },
+  {
+    id: "202",
+    slug: "fleet-ci-fix-ship-prs",
+    title: "工程 Bot 机群修 CI 并开 PR",
+    summary:
+      "多 Bot 机群专修 CI 失败：并行定位、修测例/脚本并开可审 PR，不自动合并。",
+    description:
+      "主干 CI 红灯堆积时，单人排队修测例效率低。约定一组工程 Bot：各自认领失败 job，拉取日志与相关 diff，尝试最小修复（测例、超时、依赖锁定、脆弱断言），每修一处开独立可审 PR 并附复现步骤与本地/CI 绿过说明。与 175（跨工具编排多 PR）、189（额度换可审 PR）不同：本条是多 Bot 机群专修 CI 失败。硬约束：不自动合并；密钥与生产凭据不进 Bot 上下文；破坏性改动（删测、跳过断言）须标红等人审；失败不可复现则只开诊断 issue，不瞎改。",
+    categories: ["devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "grok"],
+    sourceUrl: "https://x.com/XFreeze/status/2098448967294173482",
+    sourceLabel: "X 原帖",
+    upvotes: 87,
+    trending: false,
+    tags: [
+      "CI修复",
+      "Bot机群",
+      "可审PR",
+      "不自动合并",
+      "最小改动",
+    ],
+    howItWorks: [
+      "监听 CI 失败队列，按 job/包拆分给多个工程 Bot",
+      "各 Bot 据日志做最小修复并开带复现说明的可审 PR",
+      "人审 diff 与 CI 状态后手动合并；机群无权点合并或绕过保护分支",
+    ],
+    tips: [
+      "同一失败簇只派一个 Bot，避免重复开 PR 抢修同一测例",
+      "PR 模板强制勾选「未删测、未加 skip、未改生产密钥」自检项",
+    ],
+  },
+  {
+    id: "203",
+    slug: "research-paper-data-pipelines",
+    title: "为论文搭建数据管道与分析",
+    summary:
+      "为研究论文搭建可复现的数据管道与分析脚本，结果与图表进飞书；不编造实验结果。",
+    description:
+      "论文写作常卡在「数据清洗散落、分析步骤说不清」。Agent 协助搭可复现管道：原始数据清单、清洗规则、特征/聚合步骤、分析笔记本或脚本，以及图表与表格输出约定；全程写清依赖版本与随机种子，归档到仓库与飞书研究页。硬约束：可复现；不编造实验结果——仅基于用户提供或公开可核验数据跑分析；缺失数据标「未跑/待补」而非填假数；统计结论须人核对后再写入论文草稿。",
+    categories: ["education", "devtools"],
+    platforms: ["chatgpt", "claude", "deepseek", "feishu"],
+    sourceUrl: "https://yang3kc.substack.com/p/claude-code-is-secretly-an-excellent",
+    sourceLabel: "Substack · 论文数据管道",
+    upvotes: 83,
+    trending: false,
+    tags: [
+      "论文",
+      "数据管道",
+      "可复现",
+      "分析脚本",
+      "不编造结果",
+    ],
+    howItWorks: [
+      "明确研究问题、数据来源与可公开程度，列出管道阶段与输出物",
+      "Agent 生成清洗/分析脚本骨架、配置与运行说明，试跑后导出图表",
+      "人核对数值与图表后写入飞书/论文草稿；异常或缺数如实标注",
+    ],
+    tips: [
+      "每个图表旁保留「数据文件哈希/生成命令」，方便审稿与复现",
+      "禁止让 Agent「补全」未观测的单元格；缺测一律显式 NA",
+    ],
+  },
+  {
+    id: "204",
+    slug: "prep-sales-youtube-ideas",
+    title: "销售通话准备与 YouTube 选题调研",
+    summary:
+      "双线并行：会前销售简报 + YouTube 选题池调研；两类草稿均人审后再用。",
+    description:
+      "销售与内容常抢同一块时间：明天要通话，本周还要定视频选题。Agent 双线作业——会前据公开资料与 CRM 笔记整理客户背景、可能异议与提问清单成销售简报；同时扫描赛道热议与自家产品能力，产出 YouTube 选题池（标题候选、角度、素材缺口）。结果一并进飞书。硬约束：双线草稿人审；简报不编造客户未说过的承诺或竞品数据；选题不作假播放量/评论；对外邮件与视频脚本发布前须本人定稿。",
+    categories: ["content", "efficiency"],
+    platforms: ["feishu", "chatgpt", "claude", "deepseek"],
+    sourceUrl: "https://annikahelendi.substack.com/p/my-honest-lindy-ai-review-what-works",
+    sourceLabel: "Substack · 销售准备与选题",
+    upvotes: 76,
+    trending: false,
+    tags: [
+      "销售简报",
+      "YouTube选题",
+      "双线调研",
+      "飞书",
+      "草稿人审",
+    ],
+    howItWorks: [
+      "输入通话对象与内容栏目目标，分别跑会前简报与选题调研",
+      "输出客户背景/异议清单与选题池卡片，写入飞书双栏看板",
+      "销售与内容负责人各自审阅后使用；通话纪要与成片脚本另开人审",
+    ],
+    tips: [
+      "简报标明每条事实来源（官网/新闻/CRM 字段），无来源标「待核实」",
+      "选题池按「可拍素材是否已有」排序，优先可落地的低成本角度",
+    ],
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
