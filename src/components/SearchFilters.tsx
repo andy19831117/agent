@@ -10,6 +10,36 @@ import { UseCaseCard } from "./UseCaseCard";
 const fieldClass =
   "input-dark w-full rounded-xl px-3 py-2.5 text-sm sm:py-2";
 
+type SortKey = "trending" | "upvotes" | "newest";
+
+interface FilterState {
+  q: string;
+  category: CategorySlug | "";
+  platform: PlatformSlug | "";
+  sort: SortKey;
+}
+
+const defaultFilters: FilterState = {
+  q: "",
+  category: "",
+  platform: "",
+  sort: "trending",
+};
+
+/** Content filters only. Sort is not a filter for hide / 「已筛选」. */
+function hasContentFilter(state: FilterState) {
+  return Boolean(state.q.trim() || state.category || state.platform);
+}
+
+function sameFilters(a: FilterState, b: FilterState) {
+  return (
+    a.q === b.q &&
+    a.category === b.category &&
+    a.platform === b.platform &&
+    a.sort === b.sort
+  );
+}
+
 export function SearchFilters({
   hero,
   children,
@@ -17,24 +47,36 @@ export function SearchFilters({
   hero?: ReactNode;
   children?: ReactNode;
 }) {
-  const [q, setQ] = useState("");
-  const [category, setCategory] = useState<CategorySlug | "">("");
-  const [platform, setPlatform] = useState<PlatformSlug | "">("");
-  const [sort, setSort] = useState<"trending" | "upvotes" | "newest">("trending");
+  const [draft, setDraft] = useState<FilterState>(defaultFilters);
+  const [applied, setApplied] = useState<FilterState>(defaultFilters);
 
-  const results = useMemo(
-    () => filterUseCases({ q, category, platform, sort }),
-    [q, category, platform, sort]
-  );
+  const results = useMemo(() => filterUseCases(applied), [applied]);
 
-  const hasFilters = Boolean(q || category || platform);
+  const appliedHasContent = hasContentFilter(applied);
+  const showClear = hasContentFilter(draft) || appliedHasContent;
+  const draftDirty = !sameFilters(draft, applied);
+
+  function applyFilters() {
+    setApplied({ ...draft });
+  }
+
+  function clearFilters() {
+    setDraft(defaultFilters);
+    setApplied(defaultFilters);
+  }
 
   return (
     <div className="space-y-10 sm:space-y-12">
       <div className="space-y-4">
         {hero}
         <div id="usecases" className="scroll-mt-20">
-          <div className="surface-card rounded-2xl p-3 sm:p-4">
+          <form
+            className="surface-card rounded-2xl p-3 sm:p-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              applyFilters();
+            }}
+          >
             <div className="flex flex-col gap-2.5 sm:gap-3">
               <div>
                 <label className="sr-only" htmlFor="search">
@@ -42,8 +84,10 @@ export function SearchFilters({
                 </label>
                 <input
                   id="search"
-                  value={q}
-                  onChange={(e) => setQ(e.target.value)}
+                  value={draft.q}
+                  onChange={(e) =>
+                    setDraft((prev) => ({ ...prev, q: e.target.value }))
+                  }
                   placeholder="搜索用例：会议纪要、客服、小红书、简历…"
                   className={fieldClass}
                 />
@@ -58,9 +102,12 @@ export function SearchFilters({
                   </label>
                   <select
                     id="category"
-                    value={category}
+                    value={draft.category}
                     onChange={(e) =>
-                      setCategory(e.target.value as CategorySlug | "")
+                      setDraft((prev) => ({
+                        ...prev,
+                        category: e.target.value as CategorySlug | "",
+                      }))
                     }
                     aria-label="分类"
                     className={fieldClass}
@@ -82,9 +129,12 @@ export function SearchFilters({
                   </label>
                   <select
                     id="platform"
-                    value={platform}
+                    value={draft.platform}
                     onChange={(e) =>
-                      setPlatform(e.target.value as PlatformSlug | "")
+                      setDraft((prev) => ({
+                        ...prev,
+                        platform: e.target.value as PlatformSlug | "",
+                      }))
                     }
                     aria-label="Agent / 平台"
                     className={fieldClass}
@@ -106,11 +156,12 @@ export function SearchFilters({
                   </label>
                   <select
                     id="sort"
-                    value={sort}
+                    value={draft.sort}
                     onChange={(e) =>
-                      setSort(
-                        e.target.value as "trending" | "upvotes" | "newest"
-                      )
+                      setDraft((prev) => ({
+                        ...prev,
+                        sort: e.target.value as SortKey,
+                      }))
                     }
                     aria-label="排序"
                     className={fieldClass}
@@ -121,35 +172,48 @@ export function SearchFilters({
                   </select>
                 </div>
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm text-slate-400">
                   共{" "}
                   <span className="font-semibold text-slate-100">
                     {results.length}
                   </span>{" "}
                   个用例
-                  {hasFilters ? "（已筛选）" : ""}
+                  {appliedHasContent ? "（已筛选）" : ""}
                 </p>
-                {hasFilters && (
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                  {showClear && (
+                    <button
+                      type="button"
+                      onClick={clearFilters}
+                      className="order-2 text-xs text-indigo-300 hover:text-indigo-200 hover:underline sm:order-1"
+                    >
+                      清除筛选
+                    </button>
+                  )}
                   <button
-                    type="button"
-                    onClick={() => {
-                      setQ("");
-                      setCategory("");
-                      setPlatform("");
-                    }}
-                    className="text-xs text-indigo-300 hover:text-indigo-200 hover:underline"
+                    type="submit"
+                    className={`btn-primary order-1 w-full rounded-xl px-4 py-2.5 text-sm font-semibold sm:order-2 sm:w-auto ${
+                      draftDirty ? "ring-2 ring-amber-200/90" : ""
+                    }`}
                   >
-                    清除筛选
+                    应用筛选
                   </button>
-                )}
+                </div>
               </div>
+              {draftDirty && (
+                <p className="text-xs text-amber-200/90" role="status">
+                  条件已改，点「应用筛选」后更新列表
+                </p>
+              )}
             </div>
-          </div>
+          </form>
         </div>
       </div>
 
-      {children}
+      {/* Hide trending + category only after a content filter is applied.
+          Draft edits and sort-only applies keep these sections visible. */}
+      {!appliedHasContent && children}
 
       <section aria-label="用例列表" className="space-y-4">
         <div className="flex items-end justify-between gap-3">
@@ -157,7 +221,7 @@ export function SearchFilters({
             <h2 className="text-lg font-semibold tracking-tight text-slate-50">
               全部用例
             </h2>
-            <p className="text-sm text-slate-400">按上方条件实时筛选</p>
+            <p className="text-sm text-slate-400">按已应用的筛选条件显示</p>
           </div>
           <a
             href="#usecases"
