@@ -13630,6 +13630,453 @@ S3 前缀/是否搬迁：{{s3_layout}}
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "296",
+    slug: "k8s-service-endpoints-debug-checklist",
+    title: "K8s Service 无响应排障清单",
+    summary: "按 Service 是否存在、DNS、EndpointSlice 选择器、端口/NetworkPolicy 与 kube-proxy，生成 Service 访问无响应分层排障清单；不代改集群。",
+    description:
+      "面向独立开发者与平台工程：把「Pod 在跑但 Service 打不通」写成可对账步骤，区别于仅排 Pending Pod。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/",
+    sourceLabel: "Kubernetes Docs·Debug Services",
+    upvotes: 120,
+    trending: false,
+    tags: [
+      "Kubernetes",
+      "Service",
+      "EndpointSlice",
+      "DNS",
+      "排障",
+    ],
+    howItWorks: [
+      "粘贴 Service/Deployment YAML 摘要、kubectl get 现象与从集群内访问方式",
+      "Agent 按文档顺序输出：存在性→NetworkPolicy→DNS→IP→ports→EndpointSlice→Pod 直连→kube-proxy 提问清单",
+      "人工在集群执行核对；Agent 不代发 kubectl 写操作",
+    ],
+    tips: [
+      "EndpointSlice 的 ENDPOINTS 为 <none> 时先查 selector 与 Pod labels 是否同名同值",
+      "与 k8s-pending-pod-debug-brief 不同：本条是 Service 已创建后的连通性分层，不是调度 Pending",
+    ],
+    approach: `新装集群最常见的坑之一：Deployment 副本全绿，浏览器/下游却访问 Service 无响应——忘了建 Service、selector 打错、或 DNS/kube-proxy 半残。
+
+Kubernetes《Debug Services》说明：Service 工作异常时，可在集群内用交互 busybox Pod（或 kubectl exec）观察「Pod 视角」。建议先确认 Pod 本身在监听端口可用（直连 Pod IP:容器端口）。接着核对 Service 是否真的存在（未创建时按名访问会 DNS 失败）。创建后检查是否有 NetworkPolicy Ingress 影响目标 Pod。再测 DNS 名是否解析到 Service；若本 Service DNS 失败，可对照集群 DNS Service（如 kube-dns）是否可解析，必要时转排 DNS。DNS 正常后再测 Service ClusterIP；核对 spec.ports 是否包含访问端口、targetPort 是否对应 Pod、数值端口勿误写成字符串、命名端口是否与 Pod 声明同名、protocol 是否正确。随后用 \`kubectl get endpointslices -l kubernetes.io/service-name=...\` 确认 EndpointSlice 是否选中 Pod；ENDPOINTS 为 \`<none>\` 时检查 Service selector 与 Pod labels（常见笔误如 app= 与 run=）。仍不通则怀疑 Service 代理：多数集群用 kube-proxy，需确认节点上进程在跑、日志与 iptables/IPVS 同步；若集群不用 kube-proxy 则按其自有实现排查。本场景据此输出分层清单。禁止声称「已修复 Service」。`,
+    outcomes: [
+      "源未披露量化「平均定位耗时」；公开文只描述分层检查命令与常见误配。",
+      "能把「没建 Service / selector 空切片 / DNS / kube-proxy」拆开，避免一上来重装 CNI。",
+      "与 Pending Pod 排障边界清晰，值班话术可复用。",
+    ],
+    caveats: [
+      "不同发行版/无 kube-proxy 数据面（如部分 eBPF）步骤需替换，以集群实现为准。",
+      "文档示例镜像与端口仅作演示，须换成你的应用端口。",
+      "上面写的是文档排障路径，不是你的集群实时状态。",
+    ],
+    prompts: [
+      {
+        title: "Service 无响应分层清单",
+        body: `你是 Kubernetes Service 排障助手。只根据现象给核对清单，不要编造已修复。
+
+Service/工作负载摘要：{{workload_brief}}
+现象：{{symptom}}
+已执行命令输出摘要：{{kubectl_snippets}}
+
+输出 Markdown：
+1. 按文档顺序的检查层（存在性、NetworkPolicy、DNS、ClusterIP、ports、EndpointSlice、Pod 直连、kube-proxy）
+2. 每层要看的字段/命令提问
+3. selector 空切片的常见笔误提醒
+4. 值班群一句话
+禁止代跑写操作；禁止索要 kubeconfig。`,
+      },
+      {
+        title: "Service 连通性复盘提纲",
+        body: `Service 长时间无响应后已恢复或仍未恢复，请写复盘提纲。
+
+时间线：{{timeline}}
+最终根因（若已知）：{{root_cause}}
+变更：{{changes}}
+
+输出：
+1. 根因分层对照
+2. 证据清单
+3. 临时缓解
+4. 防再发（CI 校验 selector、冒烟 curl）
+不要伪造「集群已健康」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/",
+      label: "Kubernetes Documentation · Debug Services",
+      date: "2026-06-09",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "297",
+    slug: "stepfunctions-retry-catch-error-brief",
+    title: "Step Functions Retry/Catch 错误处理简报",
+    summary: "按内置错误名、States.ALL 限制、Retry/Catch 适用范围与不可重试 Runtime，生成状态机错误处理配置简报；不代改状态机定义。",
+    description:
+      "面向企业自动化与独立开发者：把「一失败整单挂掉」写成 Retry/Catch 对照清单，区别于 n8n Error workflow 或通用 Lambda 重试。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html",
+    sourceLabel: "AWS Docs·Handling errors in Step Functions workflows",
+    upvotes: 135,
+    trending: false,
+    tags: [
+      "Step Functions",
+      "Retry",
+      "Catch",
+      "错误处理",
+      "状态机",
+    ],
+    howItWorks: [
+      "粘贴状态机关键状态类型、已有 Retry/Catch 片段与失败错误名",
+      "Agent 输出：默认真失败含义、可 Catch 的状态、错误名对照、States.ALL/DataLimitExceeded/Runtime 注意点",
+      "人工改 ASL；Agent 不代部署状态机",
+    ],
+    tips: [
+      "States.ALL 须单独出现且抓不住 DataLimitExceeded 与 Runtime；Runtime 不可重试",
+      "与 n8n-workflow-error-handling-brief 不同：本条是 ASL Retry/Catch 与 States.* 错误名，不是 n8n Error Trigger",
+    ],
+    approach: `状态机默认「一处 Task 炸，整次执行失败」。业务要的是可重试的瞬时错误与可降级的业务错误，却常把 States.ALL 乱用或漏掉 Lambda 服务异常。
+
+AWS Step Functions《Handling errors in Step Functions workflows》说明：除 Pass、Wait 外，状态都可能运行时出错（定义问题如 Choice 无匹配、Task 失败如 Lambda 异常、瞬时网络分区等）。状态报错时默认失败整次执行；也可配置捕获错误、重试失败状态。Catcher 可用于 Task、Parallel、Map，但不能捕获顶层状态机执行失败；对预期可能失败的执行，可由调用方处理，或嵌套为子工作流在父流程捕获，或对 Standard 工作流监听 EventBridge 的 TIMED_OUT 再处置。错误以区分大小写的错误名标识；ASL 内置名以 \`States.\` 前缀开头，自定义名不得使用该前缀。须能处理 \`Lambda.ServiceException\` / \`Lambda.SdkClientException\` 等。\`States.ALL\` 为通配，须单独出现在 Catcher，且不能捕获终端错误 \`States.DataLimitExceeded\` 或 \`States.Runtime\`；后者可显式写在 ErrorEquals 中捕获/重试。\`States.Runtime\` 不可重试，且对 \`States.ALL\` 的 retry/catch 也抓不住。\`States.TaskFailed\` 在 retry/catch 中可作通配（除 \`States.Timeout\` 外）。Task/Parallel/Map 可含 Retry 数组（retrier，通常递增间隔）。未处理的 Lambda 历史上常报 \`Lambda.Unknown\`，较新运行时超时可能为 \`Sandbox.Timedout\`；匹配时建议同时考虑这些与 \`States.TaskFailed\`，或单独使用置于列表末尾的 \`States.ALL\`。本场景据此输出配置简报。禁止声称「已零失败」。`,
+    outcomes: [
+      "源未披露量化「重试后成功率」；公开文只描述错误名、Catch/Retry 范围与例外。",
+      "能避免「States.ALL 以为包打天下」却漏掉 Runtime/DataLimitExceeded。",
+      "与工作流产品（n8n）错误处理话术可区分。",
+    ],
+    caveats: [
+      "Express/Standard 与事件集成细节以当前配额与文档为准。",
+      "嵌套状态机超时时父级可能看到 TaskFailed 而非 Timeout，排障时注意映射。",
+      "上面写的是文档能力说明，不是你的执行历史统计。",
+    ],
+    prompts: [
+      {
+        title: "SFN Retry/Catch 配置简报",
+        body: `你是 Step Functions 错误处理助手。只根据 ASL 摘要给简报，不要编造已部署成功。
+
+状态机摘要：{{sfn_summary}}
+失败错误名样例：{{error_names}}
+现有 Retry/Catch：{{existing_handlers}}
+
+输出 Markdown：
+1. 默认真失败 vs 可配置点
+2. 错误名对照（含 ALL/DataLimitExceeded/Runtime/TaskFailed/Timeout 注意）
+3. 建议的 Retry/Catch 提问（仅建议，不直接改生产 JSON）
+4. Lambda 瞬时异常是否覆盖
+禁止代部署；禁止索要云密钥。`,
+      },
+      {
+        title: "状态机失败复盘提纲",
+        body: `Step Functions 执行失败且重试未达预期，请写复盘提纲。
+
+execution Arn/摘要：{{execution_brief}}
+错误输出：{{error_output}}
+时间线：{{timeline}}
+
+输出：
+1. 根因分层（未 Catch、ALL 限制、Runtime、超时映射）
+2. 证据
+3. 临时缓解
+4. 防再发
+不要伪造「已自动恢复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html",
+      label: "AWS Documentation · Handling errors in Step Functions workflows",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "298",
+    slug: "guardduty-finding-severity-triage",
+    title: "GuardDuty 发现项严重级别分诊",
+    summary: "按 Critical/High/Medium/Low 分值区间与处置建议，生成发现项严重级别分诊与升级清单；不代改检测器或抑制规则。",
+    description:
+      "面向安全运营与独立开发者：把「告警刷屏不知先处理谁」写成严重级别对照表，区别于日志完整性校验或通用 CVE 升级说明。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html",
+    sourceLabel: "AWS Docs·Severity levels of GuardDuty findings",
+    upvotes: 148,
+    trending: false,
+    tags: [
+      "GuardDuty",
+      "严重级别",
+      "安全告警",
+      "分诊",
+      "合规",
+    ],
+    howItWorks: [
+      "粘贴发现项类型、严重级别/分值、涉及资源与是否疑似样本",
+      "Agent 按 Critical→Low 输出优先序、推荐动作提问与证据保全提醒",
+      "人工在 GuardDuty 控制台处置；Agent 不代归档/抑制",
+    ],
+    tips: [
+      "同类型发现项可能因上下文严重级别不同；先看分值落在哪一档再套默认表",
+      "与 cloudtrail-log-integrity-self-check / ecr-image-scan-findings-triage 不同：本条是 GuardDuty 严重级别分诊，不是日志完整性或镜像 CVE 扫描",
+    ],
+    approach: `GuardDuty 一开，Medium 也能把值班群打爆。没有严重级别共识时，Critical 与「端口扫描 Low」会被同等转发。
+
+Amazon GuardDuty《Severity levels of GuardDuty findings》说明：每条发现项有严重级别与分值，反映环境潜在风险；分值在 1.0–10.0，越高风险越大，并划分为 Critical、High、Medium、Low。同一 finding 类型可能因上下文严重级别不同；默认同类型级别可查 active finding types 汇总表。Critical（9.0–10.0）：可能正在或刚发生攻击序列，IAM 凭证、S3 桶等资源或已失陷；建议优先分诊与修复，因可能属勒索链且随时升级。High（7.0–8.9）：相关资源（如 EC2 或 IAM 凭证）已失陷并被用于未授权目的；建议作优先级立即修复（清理/终止实例、轮换凭证等）。Medium（4.0–6.9）：偏离常态的可疑活动，视用例可能意味资源失陷；建议尽快调查，确认是否授权；无法解释则按失陷处理；审查时可考虑是否有人安装改变行为的软件、改动控制面（如安全组）、杀毒扫描、核对 IAM 权限是否需变更/轮换。Low（1.0–3.9）：未造成失陷的尝试性可疑活动（如端口扫描、失败入侵）；无立即必做动作，但值得记录，因可能有人在找弱点。本场景据此输出分诊清单。禁止声称「已确认失陷」。`,
+    outcomes: [
+      "源未披露量化「各严重级别平均 MTTR」；公开文只描述分值区间与建议处置方向。",
+      "值班可按 Critical/High 优先，减少 Low 噪音抢占。",
+      "与「样本发现项 / 测试账号脚本」场景可先口头隔离再升级。",
+    ],
+    caveats: [
+      "扩展威胁检测与各保护计划的细节字段以 finding 详情文档为准。",
+      "抑制规则与自动归档策略需另按管理文档配置，本条只覆盖严重级别语义。",
+      "上面写的是文档建议，不是你的账户告警统计。",
+    ],
+    prompts: [
+      {
+        title: "GuardDuty 严重级别分诊表",
+        body: `你是 GuardDuty 分诊助手。只根据发现项摘要分级建议，不要编造已隔离资源。
+
+发现项摘要：{{finding_summary}}
+严重级别/分值：{{severity}}
+资源：{{resources}}
+是否 [SAMPLE]/测试：{{is_sample}}
+
+输出 Markdown：
+1. 落在哪一档及文档建议动作
+2. 立刻要保全的证据提问
+3. 升级/可延后标准
+4. 值班群一句话
+禁止代改检测器；禁止索要云密钥。`,
+      },
+      {
+        title: "高危发现项应急提纲",
+        body: `出现 Critical/High GuardDuty 发现项，请写应急提纲。
+
+现象：{{symptom}}
+已做动作：{{actions}}
+时间线：{{timeline}}
+
+输出：
+1. 优先遏制面（凭证、实例、桶）仅建议
+2. 取证
+3. 沟通对象
+4. 防再发
+不要伪造「攻击已停止」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html",
+      label: "AWS Documentation · Severity levels of GuardDuty findings",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "299",
+    slug: "browser-csp-violation-triage",
+    title: "CSP 违规与 Report-Only 调优清单",
+    summary: "按 fetch 指令、Report-Only 试跑与 report-to/report-uri 上报，生成 CSP 违规分诊与上线前调优清单；不代改生产响应头。",
+    description:
+      "面向独立开发者与内容站点：把「上了 CSP 页面空白」写成可回滚的调优步骤，区别于混合内容或 SRI 哈希不匹配。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP",
+    sourceLabel: "MDN·Content Security Policy (CSP)",
+    upvotes: 160,
+    trending: false,
+    tags: [
+      "CSP",
+      "XSS",
+      "Content-Security-Policy",
+      "Report-Only",
+      "前端安全",
+    ],
+    howItWorks: [
+      "粘贴当前 CSP/Report-Only 头、违规报告样例与第三方脚本列表",
+      "Agent 输出：威胁模型提醒、default-src/script-src 提问、Report-Only 观察项、上报端点注意",
+      "人工改网关/元标签；Agent 不代发生产头",
+    ],
+    tips: [
+      "先 Content-Security-Policy-Report-Only 看违规再 enforce；CSP 不能替代输入消毒",
+      "与 browser-mixed-content-https-triage / browser-sri-hash-mismatch-triage 不同：本条是 CSP 指令与违规上报调优",
+    ],
+    approach: `活动页一加 CSP，统计脚本与编辑器内联脚本全灭——不是「安全变强了」，是没先在 Report-Only 把违规练出来。
+
+MDN《Content Security Policy (CSP)》说明：CSP 是站点向浏览器下发的一系列指令，限制页面代码可做之事；主要用例是控制文档允许加载的资源（尤其 JavaScript），作为 XSS 防御。可通过所有响应上的 \`Content-Security-Policy\` 响应头下发（不只主文档），也可用 \`<meta http-equiv>\`（对某些 CSR SPA 有用）。策略含 fetch 指令：如 script-src、style-src、img-src；\`default-src\` 为未显式列出的资源类型提供回退。可用 Report-Only 模式：不强制执行但把违规送到上报端点，也可用 \`Content-Security-Policy-Report-Only\` 测试未来策略而不真正部署。推荐用 Reporting API：在 Reporting-Endpoints 声明端点，并用 \`report-to\` 指定 CSP 上报目标；旧的 \`report-uri\` 仍可用但已弃用，在浏览器普及前可两者都声明。CSP 不是输入消毒的替代，应消毒并设置 CSP 做纵深防御；可限制外链脚本、内联脚本、事件处理器、\`javascript:\` URL 与 \`eval\` 等危险 API。本场景据此输出违规分诊与调优清单。禁止声称「XSS 已根除」。`,
+    outcomes: [
+      "源未披露量化「Report-Only 观察几天可 enforce」；公开文只描述指令、Report-Only 与上报方式。",
+      "上线门禁可勾选，减少「周五直接 enforce 导致白屏」。",
+      "与混合内容/SRI 问题可分流处理。",
+    ],
+    caveats: [
+      "各浏览器对 report-to / 指令支持度不同，以兼容表为准。",
+      "meta 方式无法使用某些仅响应头可用的能力，需对照文档。",
+      "上面写的是文档机制说明，不是你的站点违规统计。",
+    ],
+    prompts: [
+      {
+        title: "CSP Report-Only 调优清单",
+        body: `你是 CSP 调优助手。只根据策略与违规样例给清单，不要编造已切换 enforce。
+
+当前策略：{{csp_policy}}
+违规报告样例：{{violations}}
+第三方脚本列表：{{third_parties}}
+
+输出 Markdown：
+1. 可能撞到的指令（default-src/script-src 等）
+2. Report-Only 观察项与上报（report-to/report-uri）提醒
+3. 上 enforce 前门禁
+4. 与消毒/SRI/混合内容的边界
+禁止代改生产头；禁止索要服务器权限。`,
+      },
+      {
+        title: "CSP 导致白屏复盘提纲",
+        body: `启用 CSP 后页面功能异常，请写复盘提纲。
+
+现象：{{symptom}}
+策略与控制台：{{evidence}}
+时间线：{{timeline}}
+
+输出：
+1. 根因分层
+2. 临时缓解（Report-Only、放宽指令）仅建议
+3. 证据
+4. 防再发
+不要伪造「零违规」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP",
+      label: "MDN Web Docs · Content Security Policy (CSP)",
+      date: "2026-03-22",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "300",
+    slug: "n8n-webhook-auth-checklist",
+    title: "n8n Webhook 鉴权与试生产清单",
+    summary: "按 Test/Production URL、Basic/Header/JWT/User Auth 与 IP 允许列表，生成 Webhook 对外暴露前鉴权清单；不代发布工作流。",
+    description:
+      "面向独立开发者与自动化：把「Webhook URL 裸奔」写成可勾选加固清单，区别于通用 Webhook 验签失败分诊或 Error workflow。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+      "chatgpt",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/",
+    sourceLabel: "n8n Docs·Webhook node",
+    upvotes: 190,
+    trending: false,
+    tags: [
+      "n8n",
+      "Webhook",
+      "鉴权",
+      "自动化",
+      "安全",
+    ],
+    howItWorks: [
+      "粘贴 Webhook 用途、当前鉴权方式、是否已 publish、调用方类型",
+      "Agent 输出：Test vs Production 差异、鉴权选项对照、IP allowlist/Only Run If 提问、发布前核对",
+      "人工在 n8n 保存/发布；Agent 不代改凭证",
+    ],
+    tips: [
+      "Test URL 便于看数据；Production URL 在 publish 后注册，数据在 Executions 看而非编辑器",
+      "与 webhook-signature-verify-fail-triage / n8n-workflow-error-handling-brief 不同：本条是 n8n Webhook 节点鉴权与试生产，不是下游签名算法或 Error workflow",
+    ],
+    approach: `原型阶段把 n8n Webhook URL 贴进群，生产流量也打到同一地址且 Authentication=None——等于公开 RPC。
+
+n8n《Webhook》说明：节点提供 Test URL 与 Production URL 切换。Test：在 Listen for Test Event / Execute workflow（工作流未激活时）注册，调用后可在编辑器看到数据。Production：publish 工作流后注册；用生产 URL 时编辑器不展示数据，可在 Executions 查看。HTTP Method 与 Path 可配；Path 默认随机以避免冲突，也可手写含路由参数。支持鉴权：Basic auth、Header auth、JWT auth、n8n User Auth（OAuth2）、None；前三者见 Webhook credentials。User Auth 下仅本实例登录用户可调用，需带本实例签发的 OAuth2 bearer；默认可要求工作流执行权限，否则 403。无 token 时的浏览器/客户端行为由 OAuth2 Client（Auto-Detect / Bearer Token Only / Browser Virtual Client）控制。节点选项还包括 Allowed Origins（CORS）、IP(s) Allowlist、Ignore Bots、Only Run If（表达式为真才建执行；失败评估会放行并打日志）、Raw Body、响应码/头等。FAQ 明确可用鉴权与 IP allowlist 加固。本场景据此输出对外暴露前清单。禁止声称「已发布并加固」。`,
+    outcomes: [
+      "源未披露量化「未鉴权 Webhook 被扫次数」；公开文只描述 URL 模式、鉴权种类与节点选项。",
+      "发布前门禁可勾选，减少 Test/Production 用混。",
+      "与签名验签类事故话术可区分：先保证 n8n 侧鉴权档位。",
+    ],
+    caveats: [
+      "Cloud/自托管版本菜单与 OAuth2 细节可能差异，以当前文档为准。",
+      "HTML 响应 iframe 沙箱等安全行为（≥1.103.0）可能影响嵌入场景。",
+      "上面写的是文档能力说明，不是你的实例访问日志。",
+    ],
+    prompts: [
+      {
+        title: "Webhook 对外暴露前鉴权清单",
+        body: `你是 n8n Webhook 加固助手。只根据用途给清单，不要编造已 publish。
+
+用途：{{use_case}}
+当前鉴权：{{auth_mode}}
+是否已 publish：{{published}}
+调用方：{{caller_type}}
+
+输出 Markdown：
+1. Test vs Production 该用哪条 URL
+2. 鉴权选项推荐提问（Basic/Header/JWT/User Auth/None）
+3. IP allowlist / Only Run If / CORS 是否需要
+4. 发布前核对表
+禁止代改凭证；禁止索要 API Key。`,
+      },
+      {
+        title: "Webhook 滥用/误触发复盘提纲",
+        body: `Webhook 疑似被未授权调用或误触发，请写复盘提纲。
+
+现象：{{symptom}}
+鉴权与网络限制：{{controls}}
+时间线：{{timeline}}
+
+输出：
+1. 根因分层（None、URL 泄露、Test/Prod 混用、表达式放行）
+2. 证据（Executions）
+3. 临时缓解
+4. 防再发
+不要伪造「攻击者身份」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/",
+      label: "n8n Documentation · Webhook node",
+      date: "2026-10-28",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
