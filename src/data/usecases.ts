@@ -12738,6 +12738,451 @@ AWS IAM《Find unused AWS credentials》说明：为提高账号安全，应移�
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "286",
+    slug: "route53-dns-failover-health-checklist",
+    title: "DNS 故障转移健康检查判定表",
+    summary: "按端点检查/计算健康检查/告警流三类，说明全球探测聚合与 HTTP/TCP 时限，生成 DNS 故障转移是否该切流的判定表；不代改解析。",
+    description:
+      "面向独立开发者与 SRE：把 Route53/类 DNS 健康检查「为何判不健康」写成可对账清单，区别于负载均衡目标组健康检查。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html",
+    sourceLabel: "AWS Docs·How Route 53 determines whether a health check is healthy",
+    upvotes: 170,
+    trending: false,
+    tags: [
+      "Route53",
+      "DNS",
+      "故障转移",
+      "健康检查",
+      "高可用",
+    ],
+    howItWorks: [
+      "粘贴健康检查类型、间隔、失败阈值、探测路径与当前 DNS 记录策略",
+      "Agent 按端点/计算/告警流三类输出：判定逻辑对照、常见误判、切流前核对项",
+      "人工在 DNS/健康检查控制台验证；Agent 不代改记录权重",
+    ],
+    tips: [
+      "DNS 健康检查与 LB 目标健康是两层：边缘探测聚合阈值不同于目标组连续失败计数",
+      "与 alb-target-health-check-fail-triage 不同：本条是 DNS 故障转移侧如何判定 healthy/unhealthy",
+    ],
+    approach: `站点「半个地球打不开」时，值班常先查 LB，却忘了 DNS 故障转移本身用的是另一套全球探测与聚合规则。
+
+Amazon Route 53 文档说明：判定健康检查是否健康取决于类型。监控端点时，全球多地健康检查器按你选择的地点与间隔（10 或 30 秒）发请求；各地不互相协调，因此可能出现短时密集请求后短暂空窗。个体检查器看响应时延与连续失败阈值；Route 53 汇总后：超过约 18% 的检查器报健康则整体视为健康，≤18% 则不健康——该阈值旨在避免因部分网络隔离误判。HTTP/HTTPS 需在约 4 秒内建连且 2 秒内返回 2xx/3xx；TCP 需约 10 秒内建连；带字符串匹配时还须在随后窗口内于响应体前 5120 字节找到指定串。HTTPS 检查不校验证书是否过期/无效。另有监控其他健康检查的计算型，以及基于 CloudWatch 告警数据流（非告警状态本身）的检查；不支持跨账号告警。新检查在数据不足前默认视为健康（若反转状态则相反）。本场景据此输出判定表。禁止声称「已自动完成 DNS 切换」。`,
+    outcomes: [
+      "源未披露量化「故障转移平均切换耗时」；公开文只描述探测聚合阈值、协议时限与检查类型差异。",
+      "能把「DNS 判不健康」与「LB 目标全红」分开排查。",
+      "切流前有对照清单，减少因证书/字符串匹配配置误杀。",
+    ],
+    caveats: [
+      "各 DNS/GSLB 产品的健康判定阈值不同；本页作 Route 53 机制参考。",
+      "18% 等阈值可能随产品演进调整，以当前文档为准。",
+      "上面写的是文档能力说明，不是你的解析实时状态。",
+    ],
+    prompts: [
+      {
+        title: "DNS 健康检查判定对照表",
+        body: `你是 DNS 故障转移健康判定助手。只根据用户配置对照文档逻辑，不要编造已切换解析。
+
+健康检查配置：{{hc_config}}
+记录/故障转移策略：{{dns_policy}}
+现象：{{symptom}}
+
+输出 Markdown：
+1. 检查类型归类（端点/计算/告警流）与判定要点
+2. 可能误判（证书不校验、字符串匹配、数据不足默认健康、跨账号告警）
+3. 切流前核对清单
+4. 值班群一句话
+禁止声称已改 TTL 或权重；禁止索要云账号。`,
+      },
+      {
+        title: "误切流/未切流复盘提纲",
+        body: `DNS 故障转移行为与预期不符，请写复盘提纲。
+
+预期：{{expected}}
+实际：{{actual}}
+时间线：{{timeline}}
+
+输出：
+1. 可能根因分层（探测、聚合、记录策略、缓存 TTL）
+2. 证据要看什么
+3. 临时缓解
+4. 防再发
+不要伪造「全球已一致」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html",
+      label: "AWS Documentation · How Amazon Route 53 determines whether a health check is healthy",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "287",
+    slug: "waf-count-mode-false-positive-tune",
+    title: "WAF Count 模式误报调优清单",
+    summary: "按先预发环境再生产 Count 模式、托管规则组注意事项与变更传播延迟，生成上线前误报调优清单；不代改生产 Web ACL。",
+    description:
+      "面向独立开发者与安全运营：把 WAF「误杀正常用户」调优写成可执行步骤，区别于 API 限流事故与 Webhook 验签失败。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-testing.html",
+    sourceLabel: "AWS Docs·Testing and tuning your AWS WAF protections",
+    upvotes: 195,
+    trending: false,
+    tags: [
+      "WAF",
+      "误报",
+      "Count模式",
+      "Web ACL",
+      "调优",
+    ],
+    howItWorks: [
+      "粘贴拟上线规则/托管规则组、当前动作（Count/Block）、采样误报路径",
+      "Agent 输出：测试阶段清单、Count 观察项、例外/标签策略提问、上线门禁",
+      "人工在 WAF 控制台改动作；Agent 不代切换 Block",
+    ],
+    tips: [
+      "先 Count 看误报再 Block；一上来全 Block 等于给自己做压力测试",
+      "与 api-throttle-quota-incident-runbook / webhook-signature-verify-fail-triage 不同：本条是 WAF 规则误报调优",
+    ],
+    approach: `WAF 一开 Block，客服电话比攻击流量先到。根因往往不是「没规则」，而是没按 Count 模式把误报练出来就上生产。
+
+AWS WAF《Testing and tuning your AWS WAF protections》说明：建议在把变更应用到网站/应用流量前先测试调优；上生产流量前，先在预发/测试环境调到可接受影响，再对生产流量用 Count 模式测试调优，然后才启用实际阻断等动作。对他人托管的规则组（AWS Managed Rules、Marketplace、跨账号共享）须同时遵循提供方指引；Bot Control / ATP / ACFP 等另有专门部署文档。创建或变更 Web ACL 等资源后，传播到各存储区域可能需数秒到数分钟，期间可能出现短暂不一致（新建 ACL 暂不可关联、规则组在部分区域已生效、动作新旧并存、IP 集更新未全球一致等）。本场景据此输出误报调优清单。禁止声称「误报率已降为零」。`,
+    outcomes: [
+      "源未披露量化「Count 观察几天可上 Block」；公开文只描述测试顺序、Count 模式与传播延迟。",
+      "上线门禁可勾选，减少「周五傍晚直接 Block」。",
+      "托管规则组与自建规则的责任边界更清晰。",
+    ],
+    caveats: [
+      "各云 WAF/高防的「观察模式」名称不同；本页作 AWS WAF 机制参考。",
+      "传播延迟期间的短暂不一致可能造成排障困惑。",
+      "上面写的是文档能力说明，不是你的 Web ACL 误报统计。",
+    ],
+    prompts: [
+      {
+        title: "WAF 上线前误报调优清单",
+        body: `你是 WAF 误报调优助手。只根据用户规则计划给清单，不要编造已切换 Block。
+
+拟变更规则摘要：{{rule_plan}}
+当前环境（预发/生产）：{{env}}
+已知误报样例：{{false_positives}}
+
+输出 Markdown：
+1. 阶段建议（预发 → 生产 Count → 再启用动作）
+2. Count 期间要看的指标/日志字段提问
+3. 例外与标签策略提醒
+4. 传播延迟排障注意
+禁止声称已修改 Web ACL；禁止索要云密钥。`,
+      },
+      {
+        title: "误杀流量应急提纲",
+        body: `生产 WAF 疑似误杀正常用户，请写应急提纲。
+
+现象：{{symptom}}
+相关规则/规则组：{{rules}}
+已做动作：{{actions}}
+
+输出：
+1. 立刻缓解（改 Count、临时例外）仅建议
+2. 取证要点
+3. 回滚条件
+4. 防再发
+不要伪造「零误杀」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-testing.html",
+      label: "AWS Documentation · Testing and tuning your AWS WAF protections",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "288",
+    slug: "rds-point-in-time-restore-drill",
+    title: "关系库时间点恢复演练记录表",
+    summary: "按 PITR 新建实例、可恢复窗口、后台初始化与引擎特例，生成演练记录与验收项；不代在生产库执行恢复。",
+    description:
+      "面向独立开发者与 DBA/SRE：把「库要回到某分钟」写成演练表，区别于云盘快照恢复演练与 DTS 迁移 Runbook。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+    sourceLabel: "AWS Docs·Restoring a DB instance to a specified time for Amazon RDS",
+    upvotes: 219,
+    trending: false,
+    tags: [
+      "RDS",
+      "PITR",
+      "时间点恢复",
+      "演练",
+      "数据库",
+    ],
+    howItWorks: [
+      "说明源实例引擎、备份保留、目标时间、是否演练账号/演练 VPC",
+      "Agent 输出：演练步骤提纲、可恢复窗口核对、初始化期性能预期、验收 SQL 清单提问",
+      "人工在测试账号执行恢复；Agent 不连接生产库、不代删源实例",
+    ],
+    tips: [
+      "PITR 创建的是新实例，不会就地改源库；演练要单独标识符与清理预算",
+      "与 ecs-snapshot-restore-drill-checklist / dts-db-migration-runbook-draft 不同：本条是关系库时间点恢复演练",
+    ],
+    approach: `「误删表要回到五分钟前」靠的不是口头承诺，而是演练过 LatestRestorableTime 与新实例是否真能起来。
+
+Amazon RDS 时间点恢复文档说明：可将 DB 实例恢复到指定时间点，并创建新实例且不修改源实例；可选用默认或自定义 VPC 安全组。恢复完成后实例可用，但卷会在后台继续从 S3 加载数据块，此间功能可用、性能可能未满格，可用 DescribeDBInstances 中 StorageOperationStatus/PercentProgress 观察初始化。恢复实例默认关联默认参数组/选项组，可用 CLI/API 在恢复时指定自定义组；控制台可在恢复后修改。事务日志约每五分钟上传；LatestRestorableTime 可在 CLI/控制台自动化备份中查看；可在备份保留期内恢复。建议恢复到与源相近的实例规格/IOPS。部分引擎有特例（如 SQL Server 跨库事务一致性窗口、恢复模型变更可能打断日志链等）。不可在恢复时减小存储；增大存储通常至少 10%。本场景据此输出演练记录表。禁止声称「生产已恢复完成」。`,
+    outcomes: [
+      "源未披露量化「恢复要几分钟」；公开文只描述新建实例、可恢复时间字段与后台初始化。",
+      "演练有独立标识与清理项，减少演练实例变僵尸。",
+      "业务侧知道初始化期性能可能未满，避免误判失败。",
+    ],
+    caveats: [
+      "各云/自建库的 PITR 能力与日志上传频率不同；本页作 RDS 机制参考。",
+      "Aurora 集群恢复另有文档，勿与本实例级步骤混用。",
+      "上面写的是文档能力说明，不是你的库可恢复性证明。",
+    ],
+    prompts: [
+      {
+        title: "PITR 演练记录表",
+        body: `你是关系库时间点恢复演练助手。只根据用户环境生成演练表，不要编造已恢复成功。
+
+源实例信息：{{source_db}}
+目标恢复时间：{{target_time}}
+演练账号/网络：{{drill_env}}
+
+输出 Markdown：
+1. 演练前核对（保留期、LatestRestorableTime、规格、存储不可缩小）
+2. 步骤提纲与新实例命名建议
+3. 初始化期观察项与验收提问
+4. 演练后清理清单
+禁止连接串索要密码；禁止声称已在生产执行。`,
+      },
+      {
+        title: "误操作恢复决策提纲",
+        body: `疑似误删/误更新，需评估是否 PITR。
+
+事故描述：{{incident}}
+可接受数据损失窗口：{{rpo}}
+依赖应用：{{apps}}
+
+输出：
+1. 是否适合 PITR 的判断提问
+2. 恢复到新实例后的切流/回切风险
+3. 沟通稿要点
+4. 演练债务（若从未演练）
+不要伪造 RTO 数字。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+      label: "AWS Documentation · Restoring a DB instance to a specified time for Amazon RDS",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "289",
+    slug: "ecr-image-scan-findings-triage",
+    title: "容器镜像扫描发现项分诊",
+    summary: "按基础扫描与增强扫描差异、推送时/持续扫描与归档镜像限制，把 CVE 发现项分成须修/可延期/信息不足；不代重建镜像。",
+    description:
+      "面向独立开发者与平台安全：把镜像扫描结果变成可排期分诊包，区别于 CVE 升级影响说明与特性开关归档。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+    sourceLabel: "AWS Docs·Scan images for software vulnerabilities in Amazon ECR",
+    upvotes: 143,
+    trending: false,
+    tags: [
+      "ECR",
+      "镜像扫描",
+      "CVE",
+      "容器安全",
+      "分诊",
+    ],
+    howItWorks: [
+      "粘贴扫描类型（基础/增强）、发现项摘要（包名、严重级别）、镜像标签与是否生产在用",
+      "Agent 输出：须立即修 / 可排期 / 误报或不可利用嫌疑 / 信息不足，以及重建与例外流程提问",
+      "人工重建镜像或升级基础镜像；Agent 不推送镜像、不改仓库策略",
+    ],
+    tips: [
+      "切换增强/基础扫描会导致既有扫描配置需重设；归档镜像需先恢复才能扫",
+      "与 cve-advisory-upgrade-impact-brief 不同：本条是仓库镜像扫描发现项分诊，不是主机 CVE 升级说明",
+    ],
+    approach: `流水线亮起一排 Critical 时，不该默认「全停发版」，也不该默认「全忽略」。要先分清扫的是 OS 包还是语言包、是推送时一扫还是持续扫。
+
+Amazon ECR 镜像扫描文档说明：用于识别容器镜像中的软件漏洞，提供增强扫描与基础扫描。增强扫描与 Amazon Inspector 集成，可自动持续扫描仓库，覆盖操作系统与编程语言包漏洞；有新漏洞时结果会更新并向 EventBridge 发事件；频率含推送时扫描与持续扫描。基础扫描使用 AWS 原生技术与 CVE 库，主要面向操作系统漏洞；可配置推送时扫描或手动扫描并给出发现列表。注意：在增强与基础之间切换会导致先前建立的扫描不再可用，需重新设置（切回原类型后原扫描可再可用）。归档镜像无法扫描，须先恢复。新版基础扫描不再用 DescribeImages 的部分旧属性返回结果，应使用 DescribeImageScanFindings。本场景据此输出分诊包。禁止声称「镜像已无漏洞」。`,
+    outcomes: [
+      "源未披露量化「扫描后漏洞下降比例」；公开文只描述扫描类型、覆盖范围与频率选项。",
+      "发版门禁可按严重级别与是否在用镜像分层。",
+      "减少把语言包漏洞当成「只换 OS 基础镜像」就能清零的误判。",
+    ],
+    caveats: [
+      "各镜像仓库扫描器的严重级别与 CVE 源不同；本页作 ECR 机制参考。",
+      "发现项≠可利用；需结合网络暴露与权限模型。",
+      "上面写的是文档能力说明，不是你的仓库扫描报告。",
+    ],
+    prompts: [
+      {
+        title: "镜像扫描发现项分诊包",
+        body: `你是容器镜像扫描分诊助手。只根据用户粘贴的发现项分级，不要编造已修复。
+
+扫描类型与配置：{{scan_config}}
+发现项摘要：{{findings}}
+镜像用途：{{image_use}}
+
+输出 Markdown：
+1. 分级：须修后发版 / 可排期 / 信息不足
+2. 每类处理建议（重建、升级基础镜像、例外审批）
+3. 验证方式提问
+4. 给安全/研发的摘要
+禁止索要仓库密码；禁止声称已推送新镜像。`,
+      },
+      {
+        title: "扫描门禁策略草稿",
+        body: `请起草镜像扫描门禁策略讨论稿。
+
+仓库列表：{{repos}}
+现有 CI 门禁：{{ci_gates}}
+合规要求：{{compliance}}
+
+输出：
+1. 建议阻断级别与例外流程
+2. 基础 vs 增强扫描选型提问
+3. 持续扫描告警路由
+4. 90 天复盘指标（不编造当前数值）
+不要伪造合规认证。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+      label: "AWS Documentation · Scan images for software vulnerabilities in Amazon ECR",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "290",
+    slug: "eventbridge-archive-replay-checklist",
+    title: "事件总线归档回放检查表",
+    summary: "按归档回放时间窗、目标总线限制与规则筛选，生成回放前检查与幂等风险清单；不代启动生产回放。",
+    description:
+      "面向独立开发者与平台工程：把「丢事件后重放归档」写成可执行检查表，区别于死信队列毒丸分诊与 Webhook 验签。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-replay-archived-event.html",
+    sourceLabel: "AWS Docs·Creating replays of archived events in Amazon EventBridge",
+    upvotes: 182,
+    trending: false,
+    tags: [
+      "EventBridge",
+      "归档",
+      "事件回放",
+      "幂等",
+      "消息总线",
+    ],
+    howItWorks: [
+      "说明归档名、拟回放时间窗、目标规则子集、下游是否幂等",
+      "Agent 输出：回放前检查表、规则筛选建议、下游重复消费风险、观察指标",
+      "人工在事件总线控制台启动回放；Agent 不代 StartReplay",
+    ],
+    tips: [
+      "回放只回到发出事件的同一事件总线；先确认下游幂等再选 All rules",
+      "与 sqs-dlq-poison-message-triage / webhook-signature-verify-fail-triage 不同：本条是归档事件时间窗回放",
+    ],
+    approach: `补偿「漏处理的那一小时事件」时，最怕一键 Replay 到所有规则，把已经成功的下游再打一遍。
+
+Amazon EventBridge《Creating replays of archived events》说明：启动新回放时需指定要重发的事件时间范围，也可指定只发给特定规则。控制台可从 Archives 选归档后 Replay，或从 Replays 开始；填写名称与可选描述；Source 选择归档；目的地只能是发出这些事件的同一事件总线；Specify rules 可选 All rules 或指定规则；在 Replay time frame 设定起止日期时间与时区，仅该窗口内事件会被回放；然后 Start replay。亦可用 CLI start-replay。本场景据此输出回放检查表，强调幂等与规则子集。禁止声称「回放已全部成功消费」。`,
+    outcomes: [
+      "源未披露量化「回放完成耗时」；公开文只描述回放时间窗、同总线限制与规则筛选。",
+      "回放前有幂等与规则范围门禁，减少重复副作用。",
+      "值班沟通能说清「只重放某窗口到某几条规则」。",
+    ],
+    caveats: [
+      "各消息总线的「归档/重放」语义不同；本页作 EventBridge 机制参考。",
+      "下游无幂等时，回放可能造成重复下单/重复通知。",
+      "上面写的是文档能力说明，不是你的归档完整性证明。",
+    ],
+    prompts: [
+      {
+        title: "归档回放前检查表",
+        body: `你是事件归档回放助手。只根据用户计划生成检查表，不要编造已启动回放。
+
+归档与时间窗：{{archive_window}}
+拟选规则：{{rules}}
+下游幂等情况：{{idempotency}}
+
+输出 Markdown：
+1. 可否回放的门禁（同总线、窗口、规则子集）
+2. 重复消费风险分级
+3. 启动前核对清单与观察指标
+4. 回滚/停止条件提问
+禁止声称已 StartReplay；禁止索要云账号。`,
+      },
+      {
+        title: "回放副作用复盘提纲",
+        body: `回放后出现重复处理，请写复盘提纲。
+
+现象：{{symptom}}
+回放参数：{{replay_params}}
+已做动作：{{actions}}
+
+输出：
+1. 可能根因（All rules、窗口过大、下游无幂等）
+2. 证据
+3. 临时缓解
+4. 防再发（规则白名单、幂等键）
+不要伪造「已去重完成」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-replay-archived-event.html",
+      label: "AWS Documentation · Creating replays of archived events in Amazon EventBridge",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
