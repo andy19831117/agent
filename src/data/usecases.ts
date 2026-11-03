@@ -11401,6 +11401,452 @@ plan 或配置摘录：{{plan_text}}
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "271",
+    slug: "feature-flag-zombie-archive-audit",
+    title: "特性开关僵尸清理与归档审计",
+    summary: "对照开关列表、代码引用与流量线索，生成可归档/需保留/需人工确认清单与清理顺序；不直接改生产开关状态。",
+    description:
+      "面向独立开发者与平台工程：把长期未用的 Feature Flag 清成可执行的归档审计表，区别于「文档漂移周报」与「灰度回滚检查表」。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.launchdarkly.com/home/flags/archive",
+    sourceLabel: "LaunchDarkly Docs·Archiving and restoring flags",
+    upvotes: 176,
+    trending: false,
+    tags: [
+      "Feature Flag",
+      "僵尸开关",
+      "归档",
+      "Code References",
+      "技术债",
+    ],
+    howItWorks: [
+      "粘贴开关清单（名称、创建日、最近变更、是否临时期望）、代码引用扫描结果摘要与（可选）近窗流量/评估量",
+      "Agent 按「无代码引用 / 长期无流量 / 已全量默认且过观察期」等启发式输出：可归档候选、需保留理由、风险与建议顺序",
+      "人工在开关平台执行归档/删除；Agent 不持有管理密钥、不自动 archive",
+    ],
+    tips: [
+      "归档前先确认代码侧已移除引用；永久删除通常不可逆，务必二次确认",
+      "与 multi-env-config-drift-diff-brief / canary-release-rollback-checklist 不同：本条管的是开关生命周期债，不是 IaC 漂移或发布中回滚",
+    ],
+    approach: `开关最容易变成「永远临时」：功能已全量，flag 还在；或者代码里早就没有引用，控制台却挂着一排 zombie。本地化做法是让 Agent 当归档审计员：吃开关台账 + 代码引用/流量摘要，吐出可勾选清理表。
+
+LaunchDarkly 文档说明可对不再需要的 flag 执行 archive，并提供 Cleanup 等入口与 Archive checks；归档后可从归档列表查看与 restore；删除则是永久性操作，删除前应确认应用不再引用。本场景泛化为跨厂商开关审计：候选分级、依赖检查提问、建议归档顺序、给值班的一页说明。禁止在未提供证据时声称「已确认零引用」；禁止代点生产 Archive。`,
+    outcomes: [
+      "源未披露量化「可减少多少开关或事故」；公开文档说明归档、恢复与永久删除的操作边界。",
+      "技术债有可勾选清单，减少「不敢动开关」的口头拖延。",
+      "清理顺序与风险备注可复用到下一次季度审计。",
+    ],
+    caveats: [
+      "不同开关平台字段名与「可归档」判定不同；LaunchDarkly 页作生命周期机制参考。",
+      "代码引用扫描可能漏动态拼接的 key；无引用≠业务零依赖，关键支付/合规路径仍须人工确认。",
+      "上面写的是厂商文档能力说明，不是你账号的实时开关库存。",
+    ],
+    prompts: [
+      {
+        title: "僵尸开关归档审计表",
+        body: `你是 Feature Flag 归档审计助手。只根据用户提供的台账与扫描摘要分级，不要编造引用或流量数字。
+
+开关台账（CSV/列表）：{{flag_inventory}}
+代码引用扫描摘要：{{code_refs}}
+近窗流量/评估量（可空）：{{traffic}}
+团队规则（可空，如「全量>30天可归档」）：{{policy}}
+
+输出 Markdown：
+1. 分级表：可归档候选 / 需保留 / 信息不足需人工确认（每行含理由）
+2. 建议清理顺序（先低风险）
+3. 归档前检查提问（最多 8 个）
+4. 给工程周会的一页摘要
+禁止声称已在控制台 archive；禁止要求粘贴 SDK 密钥。`,
+      },
+      {
+        title: "归档后复盘与防再发",
+        body: `基于已执行的归档记录，写防再发规则草稿。
+
+已归档/删除列表：{{done}}
+踩坑（可空）：{{incidents}}
+
+输出：
+1. 命名与生命周期约定（临时/永久、owner、到期日）
+2. PR 检查项（新增 flag 必须带移除计划）
+3. 季度审计日历提醒文案
+4. 仍存疑开关的观察项
+不要伪造「零开关技术债」承诺。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.launchdarkly.com/home/flags/archive",
+      label: "LaunchDarkly Docs · Archiving and restoring flags",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "272",
+    slug: "webhook-signature-verify-fail-triage",
+    title: "Webhook 签名校验失败分诊",
+    summary: "根据验签失败日志与请求头，分诊密钥错配、算法/版本、证书拉取与 Topic/事件伪造嫌疑；只出排查清单，不代改生产密钥。",
+    description:
+      "面向独立开发者与企业自动化：把 Webhook/消息推送的签名校验失败翻译成可执行分诊表，区别于开通清单里的「Webhook 触发待办」。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html",
+    sourceLabel: "AWS Docs·Verifying the signatures of Amazon SNS messages",
+    upvotes: 203,
+    trending: false,
+    tags: [
+      "Webhook",
+      "签名校验",
+      "HMAC",
+      "SNS",
+      "安全分诊",
+    ],
+    howItWorks: [
+      "粘贴验签失败日志摘要（脱敏）、相关请求头字段名、所用算法/库与密钥轮换时间线（勿贴明文密钥）",
+      "Agent 输出：失败指纹分类、优先检查项（密钥/版本/证书 URL/TopicArn/重放）、临时缓解与回归测试提纲",
+      "人工在控制台轮换密钥或修代码；Agent 不代收 Webhook、不保存密钥",
+    ],
+    tips: [
+      "日志里只保留头名与校验结果，不要把 SigningCertURL 以外的敏感 token 全文贴进聊天",
+      "与 customer-onboarding-n8n-feishu-checklist 不同：本条是验签失败排障，不是开通时「收到事件就建待办」",
+    ],
+    approach: `Webhook 一报 \`signature mismatch\`，最常见三件事：密钥已轮换但接收端未更新、签的是原始 body 却验了被代理改过的 body、以及证书/签名版本搞错。本地化做法是先让 Agent 出分诊表，再动密钥。
+
+Amazon SNS 文档要求在处理消息前验证签名以防篡改与伪造；支持 SignatureVersion1（SHA1）与 SignatureVersion2（SHA256，推荐）；最佳实践包括用 HTTPS 拉取签名证书、确认证书由 SNS 签发且信任链有效、证书来自 SNS 签名 URL、勿盲信消息内嵌证书、拒绝意外 TopicArn，并可用官方 SDK 内置校验。本场景把这些原则泛化到常见 HMAC/非对称 Webhook：失败分类、检查顺序、安全缓解（先拒绝再放行）、回归用例。禁止编造「已通过验签」；禁止要求用户粘贴明文 webhook secret。`,
+    outcomes: [
+      "源未披露量化「平均多快修好验签」；公开文档规定必须验签及证书/版本/TopicArn 等最佳实践。",
+      "排障有统一顺序，减少盲目轮换密钥扩大故障面。",
+      "回归测试提纲可留给接收端 CI。",
+    ],
+    caveats: [
+      "各厂商头字段（如 X-Hub-Signature-256、Stripe-Signature）不同；SNS 页作消息签名机制参考。",
+      "反向代理改写 body/编码会导致「密钥正确仍失败」，需对照原始字节。",
+      "上面写的是 AWS 文档说明，不是你的订阅或证书健康诊断结果。",
+    ],
+    prompts: [
+      {
+        title: "验签失败分诊表",
+        body: `你是 Webhook 签名校验分诊助手。只根据用户提供的脱敏日志排查，不要索要或回显明文密钥。
+
+失败日志摘要：{{error_log}}
+请求头字段名（无密钥）：{{headers}}
+算法/库/签名版本：{{algo}}
+密钥轮换时间线（可空）：{{rotation}}
+预期 Topic/事件源：{{expected_source}}
+
+输出 Markdown：
+1. 失败定性：密钥错配 / body 被改写 / 算法或版本不一致 / 证书或信任链 / TopicArn 或来源不符 / 信息不足
+2. 按优先级的检查清单（每步要看什么证据）
+3. 临时缓解（拒绝、告警、旁路开关位置——仅建议，不代执行）
+4. 最小回归用例列表
+禁止输出示例真实密钥；禁止声称已验证通过。`,
+      },
+      {
+        title: "轮换密钥沟通与检查稿",
+        body: `计划轮换 Webhook 签名密钥，生成双端切换检查稿。
+
+当前方案：{{current}}
+目标方案：{{target}}
+发布窗口：{{window}}
+
+输出：
+1. 双密钥并存/切换步骤提纲
+2. 接收端与发送端各自检查项
+3. 回滚条件
+4. 给值班群的短消息模板
+提醒：密钥只在密钥库/环境变量配置，不要写入聊天记录。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html",
+      label: "AWS Documentation · Verifying the signatures of Amazon SNS messages",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "273",
+    slug: "oidc-sso-login-error-triage",
+    title: "OIDC/SSO 登录失败错误码分诊",
+    summary: "对照 IdP/STS 错误码与登录日志，生成根因候选、修复提纲与用户侧说明；不代改生产应用注册。",
+    description:
+      "面向独立开发者与企业 IT：把 OIDC/OAuth/SSO 登录失败从「打不开」变成可对照错误码的分诊包，区别于邮箱晨报或开通清单。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes",
+    sourceLabel: "Microsoft Learn·Entra authentication & authorization error codes",
+    upvotes: 158,
+    trending: false,
+    tags: [
+      "OIDC",
+      "SSO",
+      "AADSTS",
+      "登录失败",
+      "身份分诊",
+    ],
+    howItWorks: [
+      "粘贴错误码/错误页文案（如 AADSTS* / invalid_grant）、应用类型（Web/SPA/移动）、最近变更（回调 URI、密钥、条件访问）",
+      "Agent 对照公开错误码说明，输出：可能根因、要核对的配置项、给终端用户的白话说明、升级给 IdP 管理员的问题清单",
+      "人工在 Entra/IdP 控制台修改；Agent 不持有租户管理员权限",
+    ],
+    tips: [
+      "先区分「用户账号问题」与「应用注册/重定向配置问题」，避免全员重置密码",
+      "与 customer-onboarding-n8n-feishu-checklist 不同：本条是登录失败分诊，不是客户开通 Webhook 待办",
+    ],
+    approach: `SSO 一挂，业务方只说「登不进去」。值班需要的是把 AADSTS/OAuth 错误码翻译成「改 redirect URI 还是条件访问还是客户端密钥过期」。本地化做法是让 Agent 当错误码分诊员。
+
+Microsoft Learn《Microsoft Entra authentication & authorization error codes》汇总安全令牌服务返回的 AADSTS 等错误说明、修复建议与部分 workaround，并覆盖如 \`invalid_grant\`（授权码/刷新令牌/PKCE 等材料无效）、\`interaction_required\`（需要交互式再认证）等常见授权错误语义。本场景输出：错误指纹、根因候选、配置核对表、用户沟通稿、管理员升级问题。禁止编造租户特有策略结论；禁止指导绕过 MFA/条件访问合规控制。`,
+    outcomes: [
+      "源未披露量化「平均缩短多少分钟登录故障」；公开文档提供错误码含义与建议修复方向。",
+      "一线可用白话回复用户，减少重复截图来回。",
+      "升级工单带齐错误码与已核对项，缩短管理员定位时间。",
+    ],
+    caveats: [
+      "错误码目录会更新；以当前 Learn 页与租户实际策略为准。",
+      "同一文案在不同 IdP（Auth0/Okta/自建 OIDC）字段不同，需映射到本环境。",
+      "上面写的是 Microsoft 公开错误码说明，不是对你的租户健康诊断。",
+    ],
+    prompts: [
+      {
+        title: "OIDC/SSO 登录失败分诊",
+        body: `你是 OIDC/SSO 登录失败分诊助手。只根据用户提供的错误码与上下文分析，不要编造租户策略。
+
+错误码/原文：{{error}}
+应用类型与回调 URI（可脱敏）：{{app}}
+最近变更：{{changes}}
+影响范围（人数/环境）：{{blast_radius}}
+
+输出 Markdown：
+1. 错误指纹与公开文档中的含义复述（不确定则标「需对照官方码表」）
+2. 根因候选（按可能性）
+3. 配置核对清单（redirect URI、客户端密钥/证书、授权类型、logout URL、时钟偏移等）
+4. 给终端用户的白话说明（不暴露内部细节）
+5. 给 IdP 管理员的升级问题（最多 8 个）
+禁止指导关闭 MFA 来「快速修好」；禁止索要客户端密钥明文。`,
+      },
+      {
+        title: "修复后回归与对外说明",
+        body: `登录问题已处理，请写回归检查与对外说明草稿。
+
+根因结论：{{root_cause}}
+已做变更：{{fix}}
+
+输出：
+1. 回归用例（不同浏览器/设备/已登录会话）
+2. 给业务群的恢复通知
+3. 防再发（密钥到期提醒、回调 URI 变更评审）
+不要声称「永不复发」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes",
+      label: "Microsoft Learn · Microsoft Entra authentication & authorization error codes",
+      date: "2026-06-15",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "274",
+    slug: "log-pii-masking-policy-audit",
+    title: "日志 PII 脱敏与采样策略自检",
+    summary: "对照日志样例与脱敏/数据保护策略，检查证件号、密钥、卡号等敏感字段是否仍明文出站；只出审计表，不改生产策略。",
+    description:
+      "面向独立开发者与安全/平台岗：在日志出站与查询路径上做 PII/密钥脱敏自检，补齐「日志采样与脱敏」长尾。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html",
+    sourceLabel: "AWS Docs·Help protect sensitive log data with masking",
+    upvotes: 192,
+    trending: false,
+    tags: [
+      "PII",
+      "日志脱敏",
+      "数据保护",
+      "CloudWatch",
+      "采样",
+    ],
+    howItWorks: [
+      "粘贴已脱敏的日志样例（或字段名清单）、现行脱敏/保留/采样规则摘要、出站通道（查询、告警、订阅）",
+      "Agent 对照常见托管标识类型（证件、卡号、密钥、设备标识等）输出：风险字段表、策略缺口、采样是否放大泄露、修复优先级",
+      "人工在日志平台改策略；Agent 不代下发账户级策略、不索要真实证件号样本",
+    ],
+    tips: [
+      "送审前先人工打码；宁可贴字段名与假示例，也不要贴真实身份证/卡号",
+      "与 ecs-oom-killer-log-triage-agent 不同：本条关注敏感数据是否明文出站，不是 OOM 根因分诊",
+    ],
+    approach: `日志系统常在「先打全量方便排障」后忘记脱敏；采样若只抽样仍含明文 PII，合规风险一样在。本地化做法是让 Agent 做策略自检员：看样例结构 + 现行 masking/采样规则，找仍可能明文出站的字段。
+
+Amazon CloudWatch Logs 文档介绍可用数据保护策略在摄取时审计并掩码敏感数据；默认在 Insights、指标过滤器、订阅过滤器等出站点掩码，仅具备 \`logs:Unmask\` 的身份可看原文；支持账户级与日志组级策略叠加；托管数据标识覆盖凭证、金融信息、PII、PHI、设备标识等；策略生效后只影响之后摄取的事件；检测命中会发 \`LogEventsWithFindings\` 指标。本场景据此输出通用审计表与采样注意项。禁止用真实 PII 做「演示」；禁止声称已完成等保认证。`,
+    outcomes: [
+      "源未披露量化「可降低多少泄露事件」；公开文档说明掩码时机、出站点、权限与托管标识类别。",
+      "上线前能看到「哪些字段仍可能明文出现在告警/订阅」。",
+      "修复优先级表可交给平台迭代脱敏策略。",
+    ],
+    caveats: [
+      "策略生效前的历史事件不会被回溯掩码；历史导出需另做治理。",
+      "自定义业务标识（工号、内部订单号）可能不在托管列表，需自定义规则。",
+      "上面写的是 CloudWatch 能力说明，不是对你账户的合规审计结论。",
+    ],
+    prompts: [
+      {
+        title: "日志脱敏策略自检",
+        body: `你是日志 PII/密钥脱敏自检助手。用户只会提供字段名或已打码样例；若发现疑似真实敏感值，先要求用户打码再继续。
+
+日志样例或字段清单：{{samples}}
+现行脱敏/保留/采样规则：{{policy}}
+出站通道（查询/告警/订阅/导出）：{{egress}}
+
+输出 Markdown：
+1. 风险字段表：字段、敏感类型猜测、是否可能明文出站、证据
+2. 策略缺口（托管标识未覆盖 / 采样放大 / 历史未掩码）
+3. 修复优先级（P0–P2）与建议验证步骤
+4. 给安全评审的一页摘要
+禁止回显疑似真实证件号/卡号/密钥；禁止声称「已通过合规认证」。`,
+      },
+      {
+        title: "采样与告警文案脱敏改写",
+        body: `告警或工单模板可能打出敏感字段，请改写成脱敏版。
+
+原模板：{{template}}
+允许保留的字段：{{allowlist}}
+
+输出：
+1. 改写后模板
+2. 仍需人工确认的占位符
+3. 测试用例（用假数据）
+不要发明真实样例 PII。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html",
+      label: "AWS Documentation · Help protect sensitive log data with masking",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "275",
+    slug: "ecs-snapshot-restore-drill-checklist",
+    title: "云盘快照恢复演练记录表",
+    summary: "按快照回滚限制与前提条件，生成恢复演练步骤、记录表与复盘项；不自动对生产盘执行回滚。",
+    description:
+      "面向独立开发者与运维：把「有快照≠会恢复」落成可签字的演练记录，区别于数据库迁移 Runbook 与配置漂移摘要。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://help.aliyun.com/zh/ecs/user-guide/roll-back-a-disk-by-using-a-snapshot",
+    sourceLabel: "阿里云帮助中心·使用快照回滚云盘",
+    upvotes: 141,
+    trending: false,
+    tags: [
+      "快照",
+      "恢复演练",
+      "ECS",
+      "备份",
+      "Runbook",
+    ],
+    howItWorks: [
+      "提供演练范围（实例/云盘/快照 ID 可脱敏）、环境（生产旁路/测试机）、停机窗口与成功标准",
+      "Agent 按官方限制与前提条件生成演练步骤、检查表、记录字段与失败分支",
+      "人工在控制台执行；Agent 不操作云账号、不自动回滚生产云盘",
+    ],
+    tips: [
+      "优先在测试盘或快照新建盘上演练；对已挂载生产盘回滚通常需停机且不可当儿戏",
+      "与 dts-db-migration-runbook-draft 不同：本条是云盘快照级恢复演练，不是逻辑库 DTS 迁移",
+    ],
+    approach: `备份策略写在 PPT 上很漂亮，真要恢复时常卡在「快照不能打到那块盘」「换过系统盘」「实例没停机」。本地化做法是定期用 Agent 填《恢复演练记录表》，按厂商限制把步骤写死再动手。
+
+阿里云 ECS《使用快照回滚云盘》说明：仅支持将快照回滚至原云盘，不支持直接回滚到其他云盘（若需到其他盘可用快照新建云盘）；更换操作系统后，更换前的系统盘快照不能用于回滚更换后的系统盘；共享快照、复制快照不支持回滚；前提包括存在已创建完成的历史快照、原盘未释放、已挂载实例需先停止等。本场景据此输出演练步骤、记录表字段、失败分支与复盘问题。禁止在未授权时对生产盘执行回滚；禁止把演练记录写成「已保证 RTO」。`,
+    outcomes: [
+      "源未披露量化「可达到多少分钟 RTO」；公开文档列回滚限制、前提条件与替代恢复路径。",
+      "演练有统一记录表，方便审计抽查「是否真练过」。",
+      "失败分支（换过系统盘、盘已释放）提前暴露，避免事故当日才发现。",
+    ],
+    caveats: [
+      "回滚会覆盖云盘当前数据；演练环境与生产变更窗口必须分开。",
+      "跨账号/跨地域复制快照的恢复路径与「原盘回滚」不同，勿混用步骤。",
+      "上面写的是帮助中心操作说明，不是你账号的快照库存或演练合格证书。",
+    ],
+    prompts: [
+      {
+        title: "快照恢复演练检查表",
+        body: `你是云盘快照恢复演练助手。只根据用户提供的范围起草检查表，不要编造快照存在或回滚成功。
+
+演练范围（实例/盘/快照，可脱敏）：{{scope}}
+环境（测试/旁路/生产窗口）：{{env}}
+成功标准：{{success_criteria}}
+已知约束：{{constraints}}
+
+输出 Markdown：
+1. 前提条件核对（快照状态、原盘是否释放、是否需停机、是否换过操作系统）
+2. 逐步操作提纲（控制台操作用「人工执行」标注）
+3. 记录表字段（开始/结束时间、执行人、结果、证据链接占位）
+4. 失败分支（不能回滚到其他盘、共享/复制快照、换系统盘后等）
+5. 演练后清理与复盘问题
+禁止声称已回滚成功；禁止要求粘贴 AccessKey。`,
+      },
+      {
+        title: "演练复盘一页纸",
+        body: `根据演练记录写复盘一页纸。
+
+记录：{{record}}
+偏差与阻塞：{{issues}}
+
+输出：
+1. 事实时间线
+2. 与文档限制相关的发现
+3. 备份策略改进行（保留周期、测试频率、新建盘恢复演练）
+4. 下次演练建议日期与范围
+不要伪造合规达标结论。`,
+      },
+    ],
+    primarySource: {
+      url: "https://help.aliyun.com/zh/ecs/user-guide/roll-back-a-disk-by-using-a-snapshot",
+      label: "阿里云帮助中心 · 使用快照回滚云盘恢复云盘数据",
+      date: "2026-09-21",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
