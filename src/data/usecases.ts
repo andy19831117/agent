@@ -13183,6 +13183,453 @@ Amazon EventBridge《Creating replays of archived events》说明：启动新回
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "291",
+    slug: "n8n-workflow-error-handling-brief",
+    title: "n8n 工作流错误处理配置简报",
+    summary: "按 Error workflow、Error Trigger 载荷差异与 Stop and Error 强制失败，生成工作流失败可观测与告警接线简报；不代改生产工作流。",
+    description:
+      "面向独立开发者与自动化运维：把 n8n「跑挂了没人知道」写成可配置的错误处理清单，区别于通用 HTTP 重试或云厂商告警规则。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+      "chatgpt",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://docs.n8n.io/build/flow-logic/handle-errors-gracefully",
+    sourceLabel: "n8n Docs·Handle errors gracefully",
+    upvotes: 122,
+    trending: false,
+    tags: [
+      "n8n",
+      "工作流",
+      "错误处理",
+      "Error Trigger",
+      "自动化",
+    ],
+    howItWorks: [
+      "粘贴主流程触发方式、是否已设 Error workflow、失败现象与告警渠道",
+      "Agent 输出：Error workflow 接线步骤、触发节点失败 vs 中段失败的载荷差异、Stop and Error 适用提问",
+      "人工在 n8n 保存设置；Agent 不代改节点或凭证",
+    ],
+    tips: [
+      "Error workflow 必须以 Error Trigger 开头；可多主流程复用同一错误处理流",
+      "与 webhook-signature-verify-fail-triage / api-throttle-quota-incident-runbook 不同：本条是 n8n 执行失败的流程内错误处理，不是下游 HTTP/配额事故",
+    ],
+    approach: `自动化工作流最怕「半夜挂了，第二天客服先发现」。很多人只加重试，却没接 Error workflow，失败执行静默落库。
+
+n8n《Handle errors gracefully》说明：设计流逻辑时应考虑潜在错误并优雅处理；通过 Error workflow 可控制执行失败后的响应（例如发邮件或 Slack）。每个工作流可在 Workflow Settings 指定 Error workflow，失败时运行；该工作流必须以 Error Trigger 为第一个节点，且可被多个主流程复用。设置步骤：新建含 Error Trigger 的工作流并保存；在主流程 Options → Settings → Error workflow 选中后保存。Error Trigger 默认载荷含 execution（id/url/retryOf/error/lastNodeExecuted/mode）与 workflow（id/name）；execution.id 与 url 需执行已入库，若错误出在主流程触发节点则工作流未真正执行，这两项可能缺失；retryOf 仅当本次是失败重试时出现。触发节点失败时载荷形态不同：execution 信息更少，更多在 trigger.error（含 WorkflowActivationError 等）与 trigger.mode。亦可用 Stop and Error 节点在自定条件下强制失败以触发 Error workflow（常见失败另含节点配置错误、内存耗尽等）。调查时可看 Executions、把历史执行数据载入当前流，或启用 Log streaming。本场景据此输出配置简报。禁止声称「已自动接通告警」。`,
+    outcomes: [
+      "源未披露量化「接上 Error workflow 后平均发现时延」；公开文只描述设置步骤、载荷字段差异与 Stop and Error。",
+      "值班能区分「触发节点失败」与「中段节点失败」该看哪类字段。",
+      "有可勾选接线清单，减少「只有成功路径」。",
+    ],
+    caveats: [
+      "Cloud/自托管 n8n 版本与菜单文案可能略有差异，以当前文档为准。",
+      "Error workflow 本身失败不会无限递归替你兜底，需单独观测。",
+      "上面写的是文档能力说明，不是你的实例执行统计。",
+    ],
+    prompts: [
+      {
+        title: "n8n Error workflow 接线简报",
+        body: `你是 n8n 错误处理配置助手。只根据用户现状给接线简报，不要编造已改工作流。
+
+主流程摘要：{{workflow_summary}}
+是否已设 Error workflow：{{has_error_workflow}}
+失败现象：{{symptom}}
+告警渠道偏好：{{alert_channel}}
+
+输出 Markdown：
+1. 是否建议新建/复用 Error Handler（Error Trigger 开头）
+2. Settings 接线步骤核对
+3. 触发节点失败 vs 中段失败：载荷差异与排查提问
+4. 是否适合加 Stop and Error 的场景提问
+禁止声称已保存设置；禁止索要 API Key。`,
+      },
+      {
+        title: "失败执行复盘提纲",
+        body: `n8n 执行失败且告警未达预期，请写复盘提纲。
+
+execution 摘要：{{execution_brief}}
+Error workflow 行为：{{error_wf_behavior}}
+时间线：{{timeline}}
+
+输出：
+1. 可能根因分层（未接线、触发节点失败载荷、Error 流自身失败、未入库缺 id/url）
+2. 要在 Executions / Log streaming 看什么
+3. 临时缓解
+4. 防再发
+不要伪造「零失败」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.n8n.io/build/flow-logic/handle-errors-gracefully",
+      label: "n8n Documentation · Handle errors gracefully",
+      date: "2026-10-28",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "292",
+    slug: "wecom-app-message-send-fail-triage",
+    title: "企微应用消息发送失败分诊",
+    summary: "按可见范围/许可、频率限制、重复检查与部分失败字段，生成应用消息推送失败分诊表；不代发生产消息。",
+    description:
+      "面向企业自动化与独立开发者：把企微「接口返回 ok 但人没收到 / 全失败」写成可对账清单，区别于飞书邮件或通用 Webhook。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "wecom",
+      "chatgpt",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://developer.work.weixin.qq.com/document/path/90236",
+    sourceLabel: "企业微信开发者中心·发送应用消息",
+    upvotes: 150,
+    trending: false,
+    tags: [
+      "企业微信",
+      "应用消息",
+      "推送",
+      "可见范围",
+      "频率限制",
+    ],
+    howItWorks: [
+      "粘贴接口返回（errcode/invalid*）、接收人类型、应用可见范围说明与发送时段",
+      "Agent 按部分失败/全失败/限频丢弃/重复检查输出分诊与提问清单",
+      "人工在企微管理端与业务侧核对；Agent 不代调 message/send",
+    ],
+    tips: [
+      "返回 ok 仍可能带 invaliduser：部分人不可达，常见原因是不在应用可见范围",
+      "与 feishu-mail-* / webhook-signature-verify-fail-triage 不同：本条是企微应用消息发送接口的分诊",
+    ],
+    approach: `业务说「企微机器人没推到」，研发一看日志却是 errcode=0——其实无效接收人被塞进了 invaliduser，人照样收不到。
+
+企业微信《发送应用消息》说明：应用可经 POST \`https://qyapi.weixin.qq.com/cgi-bin/message/send\` 推送文本/图片/语音/视频/文件/文本卡片/图文/markdown/小程序通知/模板卡片等。touser/toparty/totag 可组合；touser 最多 1000 人，"@all" 向该应用全部成员发送且忽略部门/标签参数。返回示例可含 invaliduser、invalidparty、invalidtag、unlicenseduser、msgid；部分接收人无权限或不存在时发送仍执行，但返回无效部分——常见原因是接收人不在应用可见范围；权限含应用可见范围与基础接口权限，unlicenseduser 表示在可见范围内但无基础接口许可（含过期）。若全部接收人无权限或不存在则调用失败，errcode 为 81013。频率限制：每应用不可超过账号上限数×200 人次/天（一次发给 1000 人计 1000 人次）；每应用对同一成员不可超过 30 次/分钟、1000 次/小时，超过部分丢弃不下发。建议避开每小时 0 分与 30 分高峰调用。enable_duplicate_check 开启后，在 duplicate_check_interval（默认 1800 秒）内同样内容（请求 JSON）不会重复收到。本场景据此输出分诊表。禁止声称「已代发成功」。`,
+    outcomes: [
+      "源未披露量化「invaliduser 平均占比」；公开文只描述返回字段、81013、限频与重复检查。",
+      "能把「接口成功」与「成员实收」拆开对账。",
+      "限频与整点挤占有规避提醒，减少静默丢弃。",
+    ],
+    caveats: [
+      "第三方应用与自建应用的 agentid/授权获取路径不同，以当前文档为准。",
+      "限频丢弃可能无单独「已丢弃名单」回包，需结合业务侧对账。",
+      "上面写的是文档能力说明，不是你的企微租户实时配额。",
+    ],
+    prompts: [
+      {
+        title: "企微应用消息失败分诊表",
+        body: `你是企微应用消息分诊助手。只根据返回与配置提问，不要编造已发送成功。
+
+接口返回摘要：{{api_response}}
+接收人设定：{{audience}}
+应用可见范围说明：{{visible_scope}}
+发送时段：{{send_time}}
+
+输出 Markdown：
+1. 归类（部分无效 / 全失败 81013 / 疑似限频丢弃 / 重复检查未下发）
+2. 对照字段（invaliduser/party/tag、unlicenseduser、msgid）
+3. 管理端核对提问（可见范围、基础接口许可）
+4. 重试与避峰建议
+禁止代调 API；禁止索要 corpsecret。`,
+      },
+      {
+        title: "推送未达复盘提纲",
+        body: `业务反馈未收到企微应用消息，请写复盘提纲。
+
+预期接收人：{{expected}}
+实际返回：{{actual_response}}
+时间线：{{timeline}}
+
+输出：
+1. 根因分层（可见范围、许可、限频、重复检查、@all 范围误解）
+2. 证据要留什么
+3. 临时缓解
+4. 防再发
+不要伪造「全员已达」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.work.weixin.qq.com/document/path/90236",
+      label: "企业微信开发者中心 · 发送应用消息",
+      date: "2025-09-24",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "293",
+    slug: "browser-mixed-content-https-triage",
+    title: "页面混合内容 HTTPS 分诊",
+    summary: "按可升级/可拦截混合内容与混合下载风险，生成 HTTPS 站点资源明文加载分诊与修复清单；不代改线上资源。",
+    description:
+      "面向独立开发者与内容站点：把「锁图标没了 / 脚本被拦」写成对照 MDN 的分诊表，区别于证书过期或纯 CDN 缓存问题。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content",
+    sourceLabel: "MDN·Mixed content",
+    upvotes: 171,
+    trending: false,
+    tags: [
+      "HTTPS",
+      "混合内容",
+      "浏览器安全",
+      "前端",
+      "MDN",
+    ],
+    howItWorks: [
+      "粘贴页面 URL 方案、控制台混合内容告警原文、可疑资源 URL 列表",
+      "Agent 按 upgradable vs blockable、混合下载输出风险归类与修复提问",
+      "人工改模板/CDN；Agent 不代发生产静态资源",
+    ],
+    tips: [
+      "HTTPS 页再拉 HTTP 脚本/样式属高风险拦截类；图片音视频多被自动升级仍应改源",
+      "与 certificate-expiry / CDN 缓存类清单不同：本条是混合内容分类与修复，不是证书链本身",
+    ],
+    approach: `站点全站 HTTPS 后，编辑后台仍拼出 http:// 的旧图床——用户看到警告，关键脚本直接被拦，活动页「按钮没反应」。
+
+MDN《Mixed content》说明：若安全加载的页面还通过 HTTP 等非安全协议拉资源，即为混合内容；资源可被窃听或篡改，脚本尤其危险（可改页面任意方面），图片等亦可能被改成误导信息。Mixed downloads 指从安全上下文发起、却经非安全连接下载的资源，风险同类。应避免在网站中使用混合内容与混合下载。浏览器缓解方式：对图像/视频/音频的混合请求常自动从 HTTP 升级到 HTTPS，并拦截其他类型的非安全请求；默认也应拦截混合下载。规范将混合内容分为 upgradable content 与 blockable content：浏览器应自动升级前者请求、拦截后者，使安全上下文中内容要么经安全信道加载要么被拦。早期规范曾用 blockable / optionally blockable（主动混合内容如脚本与样式表可改页面其他部分，风险更高）。开发者控制台会提示升级或混合内容警告。本场景据此输出分诊与修复清单。禁止声称「全网已无混合内容」。`,
+    outcomes: [
+      "源未披露量化「自动升级成功率」；公开文只描述分类、浏览器缓解与应避免混用。",
+      "能把「图片被升级仍显示」与「脚本被拦功能挂」分开处理。",
+      "修复清单可对接模板/CMS 里的硬编码 http 链接。",
+    ],
+    caveats: [
+      "各浏览器对升级与拦截细节、版本差异以兼容表为准。",
+      "升级失败（目标无 HTTPS）仍会导致资源不可用。",
+      "上面写的是文档机制说明，不是你的站点实时扫描结果。",
+    ],
+    prompts: [
+      {
+        title: "混合内容分诊与修复清单",
+        body: `你是前端混合内容分诊助手。只根据告警与 URL 归类，不要编造已全站修复。
+
+页面 URL：{{page_url}}
+控制台告警原文：{{console_warnings}}
+可疑资源列表：{{resource_list}}
+
+输出 Markdown：
+1. 逐条归类（upgradable / blockable / mixed download）
+2. 用户可见影响猜测（仅基于类型，不编造数据）
+3. 修复提问（改 https、相对协议、CSP upgrade-insecure-requests 是否适用）
+4. 回归检查项
+禁止声称已改生产；禁止索要主机 SSH。`,
+      },
+      {
+        title: "活动页脚本被拦复盘提纲",
+        body: `HTTPS 活动页功能异常，疑似混合内容拦截，请写复盘提纲。
+
+现象：{{symptom}}
+资源与告警：{{evidence}}
+发布时间：{{ship_time}}
+
+输出：
+1. 根因分层（硬编码 http、第三方插件、邮件/富文本粘贴）
+2. 证据
+3. 临时缓解
+4. 防再发（编辑器校验、CI 扫 http://）
+不要伪造「零告警」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content",
+      label: "MDN Web Docs · Mixed content",
+      date: "2026-08-15",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "294",
+    slug: "browser-sri-hash-mismatch-triage",
+    title: "子资源完整性哈希不匹配分诊",
+    summary: "按 integrity 最强哈希选用、匹配失败网络错误与 crossorigin/CORS 要求，生成 CDN 脚本样式 SRI 失败分诊表；不代改线上标签。",
+    description:
+      "面向独立开发者与内容站点：把「CDN 脚本突然不执行」写成 SRI/CORS 对照清单，区别于混合内容或纯缓存刷新。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity",
+    sourceLabel: "MDN·Subresource Integrity",
+    upvotes: 184,
+    trending: false,
+    tags: [
+      "SRI",
+      "integrity",
+      "CDN",
+      "CORS",
+      "前端安全",
+    ],
+    howItWorks: [
+      "粘贴 script/link 标签（含 integrity/crossorigin）、CDN 是否刚发版、控制台错误",
+      "Agent 输出：哈希算法选用规则、不匹配→网络错误、缺 CORS/crossorigin 提问、发版对齐清单",
+      "人工更新哈希或回滚 CDN；Agent 不代改 HTML",
+    ],
+    tips: [
+      "CDN 静默替换文件内容而页面 integrity 未更新，浏览器会直接拒绝执行",
+      "与 browser-mixed-content-https-triage 不同：本条是 SRI 哈希/CORS，不是 http 资源混入 https 页",
+    ],
+    approach: `活动页引用了公共 CDN，供应方热更新同一 URL 的 JS——本地 integrity 还是旧哈希，浏览器直接当网络错误丢掉脚本，页面「像被挖空」。
+
+MDN《Subresource Integrity》说明：站点常把部分资源放在第三方 CDN；SRI 通过 integrity 属性让浏览器在执行脚本或应用样式前核对内容哈希。属性可含多个 sha384/sha512 等摘要；浏览器处理时，先在 integrity 给出的哈希中选取由最强哈希函数生成的那一组（由弱到强：SHA-256、SHA-384、SHA-512），例如同时有 SHA-256 与 SHA-384 则只用 SHA-384 并忽略更弱者；再按该函数计算资源内容哈希，与列出值比较——若匹配所列哈希之一（文档示例为匹配任一 SHA-512）则加载执行，否则返回网络错误。因带 integrity 的请求须走 CORS，标记中必须含 crossorigin（例如 anonymous）：默认从文档 HTML 加载资源是 no-cors，无法完成完整性校验所需。本场景据此输出哈希不匹配与 CORS 分诊表。禁止声称「CDN 已回滚」。`,
+    outcomes: [
+      "源未披露量化「SRI 失败导致的转化跌幅」；公开文只描述算法选用、匹配失败与 CORS/crossorigin。",
+      "发版清单可强制「改 CDN 文件必更 integrity」。",
+      "能区分「哈希过期」与「缺 crossorigin/CORS 头」。",
+    ],
+    caveats: [
+      "仅部分元素/资源类型支持 SRI；以当前 MDN 与浏览器实现为准。",
+      "多哈希列表时弱算法会被忽略，勿假设「写了 sha256 就一定参与判定」。",
+      "上面写的是文档机制说明，不是你的 CDN 文件实时哈希。",
+    ],
+    prompts: [
+      {
+        title: "SRI 失败分诊表",
+        body: `你是前端 SRI 分诊助手。只根据标签与错误归类，不要编造已更新哈希。
+
+标签原文：{{tag_html}}
+控制台错误：{{console_error}}
+CDN 是否刚变更：{{cdn_changed}}
+
+输出 Markdown：
+1. 最强哈希选用是否可能忽略了你以为在用的算法
+2. 不匹配 vs 缺 crossorigin/CORS 的分流提问
+3. 发版对齐清单（重新计算哈希、双写过渡、回滚）
+4. 验证步骤
+禁止代改生产 HTML；禁止索要服务器权限。`,
+      },
+      {
+        title: "CDN 热更新导致脚本失效复盘",
+        body: `第三方 CDN 资源疑似变更导致 SRI 失败，请写复盘提纲。
+
+现象：{{symptom}}
+integrity 值：{{integrity}}
+时间线：{{timeline}}
+
+输出：
+1. 根因分层
+2. 证据（本地算哈希 vs 线上字节）
+3. 临时缓解（自托管、钉版本 URL）
+4. 防再发
+不要伪造「供应方已确认」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity",
+      label: "MDN Web Docs · Subresource Integrity",
+      date: "2026-04-14",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "295",
+    slug: "cloudtrail-log-integrity-self-check",
+    title: "CloudTrail 日志完整性自检清单",
+    summary: "按摘要文件、区域密钥对、启用≠已校验与 CLI/自建校验边界，生成审计取证前日志完整性自检清单；不代跑生产校验。",
+    description:
+      "面向合规与安全运营：把「日志有没有被改过」写成可对账的完整性验证准备表，区别于单纯打开 CloudTrail 或查 API 错误。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html",
+    sourceLabel: "AWS Docs·Validating CloudTrail log file integrity",
+    upvotes: 206,
+    trending: false,
+    tags: [
+      "CloudTrail",
+      "日志完整性",
+      "合规",
+      "取证",
+      "SHA-256",
+    ],
+    howItWorks: [
+      "粘贴 trail 是否启用文件完整性验证、S3 位置、是否搬迁过日志、取证时间窗",
+      "Agent 输出：机制对照（摘要文件/签名）、启用与校验分工、CLI 适用边界、搬迁后自建工具提问",
+      "人工用 AWS CLI 或自有工具校验；Agent 不代访问账号",
+    ],
+    tips: [
+      "启用完整性验证只会开始投递 digest，并不会自动替你完成校验",
+      "与 cloudtrail-*-event-lookup 类「查谁做了什么」不同：本条是日志文件是否被篡改/删除的完整性自检",
+    ],
+    approach: `审计要证明「这段时间 API 记录没被改」，只打开事件历史不够——还得证明投递到 S3 的日志文件本身完整。
+
+AWS CloudTrail《Validating CloudTrail log file integrity》说明：可用日志文件完整性验证判断投递后文件是否被修改、删除或未改动；采用 SHA-256 哈希与 SHA-256 with RSA 数字签名，使篡改/伪造在计算上难以不被发现；可用 AWS CLI 在 CloudTrail 投递位置校验。启用后，CloudTrail 为每个日志文件生成哈希；每小时另投递引用上一小时日志并含各文件哈希的 digest 文件，并用公私钥对中的私钥签名；投递后可用公钥验 digest。各 AWS 区域使用不同密钥对。digest 与日志进同一 trail 关联的 S3 桶；多区域/多账号汇入同一桶时，对应 digest 也进该桶。digest 与日志分目录存放，便于细粒度安全策略且不打断现有日志处理。当前 digest 还可含上一 digest 的签名；当前 digest 的签名在 S3 对象元数据中。可将日志与 digest 长期存放于 S3 或 Glacier，并可用 S3 MFA Delete 增强 digest 安全。启用验证会使 CloudTrail 向桶投递 digest，但并不会校验文件完整性；校验需用 AWS CLI 或自建方案。CLI 校验的是 CloudTrail 投递的原始位置；若日志已搬到其他 S3 位置或别处，需自建校验工具。本场景据此输出取证前自检清单。禁止声称「已证明未被篡改」。`,
+    outcomes: [
+      "源未披露量化「校验一条 trail 平均耗时」；公开文只描述哈希/签名机制、启用与校验分工及搬迁限制。",
+      "审计前能确认「已启用」≠「已校验通过」。",
+      "搬迁日志场景会提前暴露需自建工具，避免临场踩空。",
+    ],
+    caveats: [
+      "未启用完整性验证的历史日志无法事后补出当时的 digest 链。",
+      "区域密钥对与 digest 结构细节以当前文档与 CLI 输出为准。",
+      "上面写的是文档能力说明，不是你的桶内校验结果。",
+    ],
+    prompts: [
+      {
+        title: "CloudTrail 完整性自检清单",
+        body: `你是 CloudTrail 日志完整性自检助手。只根据配置给准备清单，不要编造已校验通过。
+
+trail 配置摘要：{{trail_config}}
+S3 前缀/是否搬迁：{{s3_layout}}
+取证时间窗：{{time_window}}
+
+输出 Markdown：
+1. 机制核对（日志哈希、小时 digest、区域密钥对）
+2. 启用 vs 实际校验的分工提醒
+3. CLI 适用条件；若已搬迁则自建工具提问
+4. 取证前检查表（MFA Delete、digest 目录是否在）
+禁止声称已完成验证；禁止索要云密钥。`,
+      },
+      {
+        title: "疑似日志缺口取证提纲",
+        body: `怀疑某时间段 CloudTrail 日志被删或改，请写取证提纲。
+
+怀疑点：{{suspicion}}
+已有证据：{{evidence}}
+时间线：{{timeline}}
+
+输出：
+1. 完整性验证能/不能回答的问题
+2. 要保全的对象（日志、digest、对象元数据）
+3. 临时只读措施建议
+4. 对外表述注意（勿断言未做校验的结论）
+不要伪造「链完整」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html",
+      label: "AWS Documentation · Validating CloudTrail log file integrity",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
