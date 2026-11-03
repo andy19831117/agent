@@ -9241,6 +9241,380 @@ enrichment 时，Agent 只阅读用户给出的公开链接（个人主页、公
     },
   },
 
+  {
+    id: "246",
+    slug: "feishu-mail-quarantine-false-positive-rescue",
+    title: "飞书隔离区误伤邮件捞回与放行清单",
+    summary: "定期扫隔离区/疑似垃圾，标出像真业务的误伤候选，生成待人工放行清单，避免客户信沉底。",
+    description:
+      "与晨报拦截不同：本条不做收件箱噪音过滤，而是事后从隔离区捞回被误判的商务邮件。Agent 只读隔离区标题与摘要，输出「疑似误伤」待审表；放行/拒绝仍由有权限的人在管理后台点。",
+    categories: ["efficiency", "enterprise"],
+    platforms: ["feishu", "wecom", "n8n", "deepseek"],
+    sourceUrl:
+      "https://www.feishu.cn/hc/zh-CN/articles/037052327149-%E7%AE%A1%E7%90%86%E5%91%98%E7%AE%A1%E7%90%86%E9%9A%94%E7%A6%BB%E5%8C%BA",
+    sourceLabel: "飞书帮助中心·管理员管理隔离区",
+    upvotes: 168,
+    trending: false,
+    tags: ["隔离区", "误伤", "放行", "企业邮", "飞书"],
+    howItWorks: [
+      "按飞书隔离区能力，把命中流规则/疑似垃圾的邮件先入隔离，由审核人决定拦截或放行",
+      "定时只读隔离区列表（发件人、主题、入区原因摘要），Agent 标出疑似真实商务信",
+      "输出待放行/待拒绝双清单推企微或飞书；默认不代点放行",
+    ],
+    tips: [
+      "白名单域名与历史成交客户发件人优先进「疑似误伤」栏，但仍须人眼看原信",
+      "放行后若再次入区，把规则 ID 记进审计，避免反复误杀同一类合同/发票信",
+    ],
+    approach: `商务邮箱一开严过滤，客户报价、合同回复、支付回执有时会进隔离区，等人发现时已经隔了半天。本地化做法不是再写一套「晨报噪音拦截」，而是对准隔离区事后捞回：管理员按飞书《管理员管理隔离区》建隔离区，并用邮件流把可疑入站先送进隔离；具备审核权限的人再决定拦截或放行。
+
+Agent 侧只做只读扫描：拉取隔离区条目的时间、发件人、主题、触发原因摘要（不要自动下载可疑附件），按「已知客户域名 / 含合同发票关键词 / 内部别名互发」等启发式分成「疑似误伤待放行」「仍像垃圾待拒绝」「信息不足待打开原信」三栏，推到企微或飞书小群。放行按钮只给人点；Agent 禁止调用放行接口、禁止把隔离信直接改投收件箱。`,
+    outcomes: [
+      "源未披露量化「误伤捞回率」或「平均放行耗时」；公开文只描述管理员如何管理隔离区，并由审核人决定拦截或放行。",
+      "隔离区从「没人翻」变成「每日待放行/待拒绝双清单」，人仍掌握最终放行。",
+      "与晨报拦截分工清楚：一个管入箱前规则，一个管入区后误伤回溯。",
+    ],
+    caveats: [
+      "审核隔离区需要超级管理员或被授予隔离区审核权限的成员；个人邮箱无此能力时只能退回客户端垃圾箱人工翻。",
+      "疑似误伤不等于安全；含宏附件、改账号、催汇款的信即使像老客户也必须打开原信核验。",
+      "上面写的是帮助中心公开的隔离区管理能力，不是飞书公布的误杀率指标。",
+    ],
+    prompts: [
+      {
+        title: "隔离区误伤分拣",
+        body: `你是企业邮隔离区分拣助手。只根据给定列表判断，不要假装已放行邮件。
+
+隔离区条目（每行：时间｜发件人｜主题｜触发原因摘要）：
+{{quarantine_rows}}
+已知客户/合作域名（可空）：{{trusted_domains}}
+
+输出三栏：
+1. 疑似误伤待放行：最多 15 条，附一行理由（须引用主题或域名）。
+2. 仍像垃圾/仿冒待拒绝：附风险信号（如紧迫汇款、陌生短链）。
+3. 信息不足：须打开原信，禁止建议放行。
+
+规则：禁止输出「已放行」；禁止根据猜测补全未给出的正文；涉及付款/改账号一律进第 3 栏。`,
+      },
+      {
+        title: "放行审计备注草稿",
+        body: `为即将人工放行的条目写短审计备注，方便事后回溯。
+
+待放行条目：{{release_candidates}}
+操作人角色：{{operator_role}}
+
+每条输出：
+- 隔离条目 ID/时间
+- 放行理由（≤40 字）
+- 是否建议把发件域名加入白名单（是/否/待观察）
+- 随访：若 7 日内再次入区要记录的规则字段
+不要生成可直接调用的放行 API 请求。`,
+      },
+    ],
+    primarySource: {
+      url:
+        "https://www.feishu.cn/hc/zh-CN/articles/037052327149-%E7%AE%A1%E7%90%86%E5%91%98%E7%AE%A1%E7%90%86%E9%9A%94%E7%A6%BB%E5%8C%BA",
+      label: "飞书帮助中心 · 管理员管理隔离区",
+      date: "2025-07-31",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "247",
+    slug: "github-mobile-commute-ci-small-fix",
+    title: "通勤用 GitHub Mobile 看 CI 与改小问题",
+    summary: "地铁上用手机看 PR、失败 CI 摘要与行内评论，只处理小改动；大重构留回桌面。",
+    description:
+      "面向独立开发者在通勤碎片时间：用 GitHub Mobile 审阅 PR、在变更文件甚至未改行上留评，结合 Agent 把失败日志收成「能否手机上修」判断。默认不在手机上强合入主分支。",
+    categories: ["devtools", "efficiency"],
+    platforms: ["deepseek", "claude", "chatgpt", "n8n"],
+    sourceUrl:
+      "https://github.blog/changelog/2026-02-03-github-mobile-comment-on-unchanged-lines-in-pull-request-files/",
+    sourceLabel: "GitHub Changelog·Mobile 未改行评论",
+    upvotes: 192,
+    trending: false,
+    tags: ["GitHub Mobile", "CI", "通勤", "PR", "小修复"],
+    howItWorks: [
+      "手机打开失败 PR/Checks，把失败 job 日志关键片段贴给 Agent 做根因与「手机可修？」分级",
+      "在 GitHub Mobile 的 Files Changed 里对变更行或展开后的未改行留言/建议",
+      "仅合并文档/配置/单测小补丁；涉及迁移或密钥的改动标回桌面",
+    ],
+    tips: [
+      "先看 Checks 摘要再看 diff，避免在晃动车厢里钻长文件",
+      "评论里写清「建议改法」与「勿在手机合并」两句，方便回桌面接手",
+    ],
+    approach: `独立开发者最常见的碎片场景是：推完代码进地铁，CI 红了，但笔记本不在手上。做法是把「看」和「改」拆开：用 GitHub Mobile 打开对应 PR，查看 Checks 与文件 diff；需要在未改动的上下文里指出遗漏时，可按 Changelog 所述展开 diff 后在未改行留言或提建议，避免只能评变更行附近。
+
+Agent 负责把失败日志（或 Checks 摘要）收成三档：A 可在手机上改的小补丁（文案、断言、单测断言）、B 需要本地复现、C 可能是密钥/环境问题禁止手机操作。A 档才在 Mobile 上直接改文件或提建议；合并主分支、生产发布默认留回桌面。这与「语音空手调试」不同，焦点是官方移动端审阅与评论能力，而不是免提写代码。`,
+    outcomes: [
+      "源未披露量化「通勤修好 CI 的比例」；公开 Changelog 只说明可在 Mobile 变更文件中对未改行评论与建议。",
+      "失败 CI 从「回桌面再看」变成「路上先分拣能否手机小修」。",
+      "行内评论可覆盖展开后的未改上下文，减少「只看到 diff 片段」的误判。",
+    ],
+    caveats: [
+      "手机网络与屏幕不适合大范围重构、依赖升级或密钥轮换。",
+      "Copilot/Agent 评论仍须人工确认后再合入；Mobile 上的批准不等于已做本地测试。",
+      "上面写的是 GitHub Changelog 公开的 Mobile 评论能力，不是平台公布的通勤效率指标。",
+    ],
+    prompts: [
+      {
+        title: "CI 失败能否手机小修",
+        body: `你是通勤场景的 CI 分拣助手。根据失败日志判断能否在手机上处理，不要编造未出现的文件名。
+
+PR 标题/说明：{{pr_summary}}
+失败 job 名称：{{job_name}}
+日志摘录：{{ci_log_excerpt}}
+
+输出：
+1. 根因一句话（须引用日志原句）。
+2. 分级：A 手机可修小补丁 / B 需桌面复现 / C 环境或密钥问题禁止手机操作。
+3. 若为 A：给出≤10 行的建议改动要点（文件路径用日志中出现的）。
+4. 若为 B/C：列出回桌面的检查清单（最多 5 条）。
+禁止输出「已合并」；禁止要求粘贴生产密钥。`,
+      },
+      {
+        title: "Mobile 行评草稿",
+        body: `为 GitHub Mobile 上的一条行评写简短正文。
+
+文件路径：{{file_path}}
+相关代码摘录：{{code_excerpt}}
+我的意图：{{intent}}
+
+输出：
+- 评论正文（≤80 字，中文，指出问题与建议）
+- 是否适合用 suggestion 块（是/否；若是则给出替换片段）
+- 风险标记：可手机合入 / 须回桌面
+不要攻击作者；不要讨论与本文件无关的重构。`,
+      },
+    ],
+    primarySource: {
+      url:
+        "https://github.blog/changelog/2026-02-03-github-mobile-comment-on-unchanged-lines-in-pull-request-files/",
+      label: "GitHub Changelog · Mobile 未改行评论",
+      date: "2026-02-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "248",
+    slug: "ecs-oom-killer-log-triage-agent",
+    title: "云主机 OOM Killer 日志分诊与处置草稿",
+    summary: "进程突然没了时，先从内核 OOM 日志判断是全局内存、cgroup 还是节点不足，再生成升配/限流/清理草稿。",
+    description:
+      "独立开发者单机部署常见「进程消失」：用 Agent 解析 dmesg/消息日志里的 oom-killer 段，对照阿里云 Linux 文档的原因类型，输出只读分诊与建议；不自动重启或改 cgroup。",
+    categories: ["devtools", "enterprise"],
+    platforms: ["deepseek", "claude", "chatgpt", "n8n"],
+    sourceUrl:
+      "https://www.alibabacloud.com/help/zh/alinux/support/causes-of-and-solutions-to-the-issue-of-oom-killer-being-triggered",
+    sourceLabel: "阿里云帮助·OOM Killer 原因与方案",
+    upvotes: 145,
+    trending: false,
+    tags: ["OOM", "ECS", "内核日志", "cgroup", "分诊"],
+    howItWorks: [
+      "在实例上检索 oom-killer / killed process 相关内核日志片段",
+      "Agent 对照「cgroup / 父 cgroup / 全局 / 内存节点 / 碎片」类型做归类与依据引用",
+      "输出处置草稿（清理、调 limit、升配、整理内存），执行前人工确认",
+    ],
+    tips: [
+      "同时保存 OOM 时刻前后的 free -h 与 top 快照，避免只凭一段日志误判",
+      "容器场景先确认是容器 cgroup 限死还是整机内存打满，再决定升配对象",
+    ],
+    approach: `云主机上服务「突然退出」时，很多人先怪业务代码，其实内核可能已经 OOM Killer 杀过进程。做法是：先在 \`/var/log/messages\` 或 \`dmesg\` 里定位 \`oom-killer\`、\`killed as a result of limit\`、\`Mem-Info\` 等片段，把完整段贴给 Agent。
+
+Agent 按阿里云 Linux《出现 OOM Killer 的原因及解决方案》公开分类来归类——子/父 cgroup 触顶、实例全局内存不足、NUMA 节点内存不足、伙伴系统碎片导致分配失败等——并在答复里引用日志原句（例如 \`limit of /mm_test\` 对 cgroup，\`limit of host\` 对主机/节点）。输出只含「只读结论 + 建议命令草稿」；升配、改 \`memory.limit_in_bytes\`、执行 \`compact_memory\` 一律等人确认后再做。这与通用「部署日志摘要」不同，专门咬住 OOM Killer 语义。`,
+    outcomes: [
+      "源未披露量化「OOM 复发下降百分比」；公开文只描述 OOM Killer 的常见原因类型与处理思路。",
+      "进程消失事件从盲目重启，收成「类型归类 + 日志依据 + 待确认处置」。",
+      "能区分 cgroup 限死与整机内存不足，减少升错规格或乱改业务的概率。",
+    ],
+    caveats: [
+      "日志被轮转或未开持久化时可能找不到 OOM 现场，需先解决日志留存。",
+      "Agent 不能替代内核排查；NUMA/碎片场景仍需在机器上核 `buddyinfo` 等。",
+      "上面写的是阿里云帮助文档公开的原因与方案说明，不是云厂商的 SLA 或自动修复承诺。",
+    ],
+    prompts: [
+      {
+        title: "OOM 日志归类",
+        body: `你是 Linux OOM 分诊助手。只根据提供的内核日志归类，不要编造未出现的进程名。
+
+日志片段：
+{{oom_log}}
+实例备注（可空：容器/裸进程/规格）：{{host_notes}}
+
+输出：
+1. 是否确认为 OOM Killer（是/否/证据不足）。
+2. 类型：cgroup / 父 cgroup / 全局内存 / 内存节点 / 碎片化 / 无法判断。
+3. 依据：引用日志中的关键原句（含 limit of … 或 Mem-Info 要点）。
+4. 被杀进程候选（日志中出现的名字/ PID）。
+5. 下一步只读检查清单（最多 5 条）。
+禁止：声称已重启服务；禁止给出破坏性删盘命令。`,
+      },
+      {
+        title: "处置草稿待确认",
+        body: `基于已确认的 OOM 类型写处置草稿，所有动作默认「待人工确认」。
+
+类型：{{oom_type}}
+关键日志要点：{{oom_points}}
+业务约束：{{constraints}}
+
+输出分栏：
+- 立即可做的只读核对
+- 可能的配置调整（cgroup limit / 升配 / 内存整理）及风险
+- 不应在未备份时做的事
+每条命令用伪代码或完整命令均可，但必须标注「未执行」。`,
+      },
+    ],
+    primarySource: {
+      url:
+        "https://www.alibabacloud.com/help/zh/alinux/support/causes-of-and-solutions-to-the-issue-of-oom-killer-being-triggered",
+      label: "阿里云帮助 · OOM Killer 原因与方案",
+      date: "2026-09-04",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "249",
+    slug: "langsmith-agent-trace-error-spotcheck",
+    title: "生产 Agent Trace 抽检与错误归类",
+    summary: "从 LangSmith 等 trace 里抽失败 run，按工具超时、模型拒绝、解析失败归类，输出可回放的抽检报告。",
+    description:
+      "面向已上线的工具调用型 Agent：按 Tracing 接入后的 run/trace 做定期抽检，找出重复错误模式与高成本路径；只生成报告与待修清单，不自动改线上提示词。",
+    categories: ["devtools", "enterprise"],
+    platforms: ["claude", "deepseek", "chatgpt", "n8n"],
+    sourceUrl: "https://docs.langchain.com/langsmith/observability-quickstart",
+    sourceLabel: "LangSmith Docs·Tracing quickstart",
+    upvotes: 211,
+    trending: false,
+    tags: ["LangSmith", "trace", "抽检", "Agent", "可观测"],
+    howItWorks: [
+      "按 Tracing quickstart 为 Agent 接入 trace，确保工具调用与模型步都落入同一条 trace",
+      "定期导出或筛选失败/高延迟 run，交给 Agent 做错误归类与样例引用",
+      "输出抽检报告与「待改工具/提示词/超时」清单，变更走 PR，不直改生产",
+    ],
+    tips: [
+      "抽检先定时间窗与采样率，避免只看最新 3 条造成偏差",
+      "报告里必须带 trace/run 链接或 ID，方便人点开回放",
+    ],
+    approach: `Agent 上线后最难的不是「能不能跑」，而是工具超时、JSON 解析失败、模型拒答在生产里零散出现。做法是先按 LangSmith《Tracing quickstart》把助手请求打成可回放的 trace（输入、模型步、工具调用、最终输出落在同一条链路里），再在固定窗口抽失败或高耗时 run。
+
+分诊 Agent 只读这些 trace 摘要（可脱敏），输出：错误类型直方图、重复工具名、典型失败输入特征、以及「先修工具 schema / 先降超时 / 先改提示词」的优先级。它不直接改线上配置；修复通过仓库 PR 或配置回滚完成。这与笼统的「日志事故摘要」不同，对象是 Agent/工具调用级 trace，而不是普通 HTTP access log。`,
+    outcomes: [
+      "源未披露量化「抽检后故障率下降」；公开文只描述如何为 Agent 接入 tracing 并在 LangSmith 查看结果。",
+      "失败从「用户口头反馈」变成「带 run/trace 引用的错误归类表」。",
+      "高成本或重复失败的工具调用能被优先点名，便于排期。",
+    ],
+    caveats: [
+      "trace 可能含用户输入与工具参数，抽检前要脱敏并限制访问范围。",
+      "未接入 tracing 的旧路径看不到；先补齐埋点再谈抽检覆盖率。",
+      "上面写的是 LangSmith 公开的 Tracing 快速上手，不是厂商公布的 SLA 或自动修复能力。",
+    ],
+    prompts: [
+      {
+        title: "Trace 失败归类",
+        body: `你是 Agent 可观测抽检助手。只根据给定 trace/run 摘要归类，不要编造未提供的 span。
+
+时间窗：{{window}}
+失败 run 摘要列表（含 id、错误信息、工具名、耗时）：
+{{failed_runs}}
+
+输出：
+1. 错误类型表：工具超时 / 模型拒绝 / 输出解析失败 / 上游 4xx/5xx / 其他；每类计数。
+2. Top 重复工具或节点（名称｜次数｜代表 run id）。
+3. 每类给 1 条代表性原错误文案（引用输入）。
+4. 建议排查顺序（最多 5 步），标注「待人确认」。
+禁止声称已热更新提示词或已重启服务。`,
+      },
+      {
+        title: "抽检周报草稿",
+        body: `把归类结果写成一页周报，给值班开发看。
+
+归类结果：{{triage_result}}
+采样说明：{{sampling_notes}}
+
+结构：
+- 本周抽检范围与样本量
+- 关键发现（≤5 条，附 run id）
+- 建议修的 PR 标题草稿（≤3）
+- 仍未知、需补埋点的路径
+文末写「未改生产配置」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.langchain.com/langsmith/observability-quickstart",
+      label: "LangSmith Docs · Tracing quickstart",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "250",
+    slug: "appstore-reject-remediation-resubmit-checklist",
+    title: "应用商店拒审对照整改与重提清单",
+    summary: "拿到拒审邮件后，对照审核指南条款拆成可改项与证据，生成整改说明与重提检查表，远程推进但不代点提交。",
+    description:
+      "独立开发者常见远程场景：出差中收到 App Store 拒审。Agent 把 Rejection 理由映射到《App 审核指南》章节，输出代码/元数据/审核备注待办；最终 Archive 与提交仍由开发者本人确认。",
+    categories: ["devtools", "career"],
+    platforms: ["claude", "deepseek", "chatgpt", "feishu"],
+    sourceUrl: "https://developer.apple.com/app-store/review/guidelines/",
+    sourceLabel: "Apple Developer·App 审核指南",
+    upvotes: 159,
+    trending: false,
+    tags: ["App Store", "拒审", "整改", "重提", "独立开发"],
+    howItWorks: [
+      "粘贴拒审邮件全文与当前 App 版本说明，Agent 对齐指南相关条款编号",
+      "生成「代码改动 / 商店元数据 / 审核备注附件」三类待办与证据清单",
+      "人改完后用重提检查表自检，再亲自在 App Store Connect 提交",
+    ],
+    tips: [
+      "一次只回应本轮拒审点，勿在 Resolution Center 里展开无关功能辩论",
+      "若涉及账户登录审核，提前准备演示账号与二维码，写进审核备注",
+    ],
+    approach: `拒审邮件通常短、条款号却指向整章指南。远程整改时，先打开苹果《App 审核指南》（页内 Last Updated 可核），把拒审原文里的 Guideline 编号与描述逐条贴进 Agent。Agent 的任务是翻译成可执行清单：要改二进制的哪类行为、要改的商店截图/隐私文案、以及 Resolution Center 回复草稿——而不是替你辩解「竞品也这样」。
+
+输出按「必须改 / 建议补证据 / 可申诉但风险高」分层，并给出重提前检查表（版本号递增、构建号、隐私问卷、演示账号）。Agent 不登录 App Store Connect，不代为 Upload。国内安卓市场拒审可另用对应指南，本条一手源锚定苹果公开指南更新日期，便于独立开发者先把 iOS 路径跑通。`,
+    outcomes: [
+      "源未披露量化「一次重提通过率」；公开指南页只提供审核规则正文与 Last Updated 日期。",
+      "拒审从情绪化重打包，收成「条款对照 + 三类待办 + 重提检查表」。",
+      "Resolution Center 回复可附证据清单，减少来回追问。",
+    ],
+    caveats: [
+      "指南会更新；必须以当前页 Last Updated 与本轮邮件中的条款为准。",
+      "法律/医疗/金融类拒审可能需要牌照或法务意见，Agent 不能替代。",
+      "上面写的是苹果公开审核指南，不是「保证过审」的服务承诺。",
+    ],
+    prompts: [
+      {
+        title: "拒审条款对照表",
+        body: `你是 App 拒审整改助手。只根据拒审邮件与用户提供的指南摘录对照，不要编造未出现的 Guideline 编号。
+
+拒审邮件全文：
+{{rejection_email}}
+相关指南摘录（可空）：{{guideline_excerpts}}
+App 简述：{{app_blurb}}
+
+输出表格列：条款号｜拒审原句｜可能原因｜整改动作类型（代码/元数据/审核备注）｜优先级（必须/建议）｜验收证据。
+若邮件未给条款号，写「条款未写明」并列出需向审核团队确认的问题，禁止猜测具体编号。`,
+      },
+      {
+        title: "重提检查表与回复草稿",
+        body: `基于已确认的整改项，生成重提前检查表与 Resolution Center 回复草稿。
+
+已完成改动：{{done_changes}}
+仍未完成：{{pending_changes}}
+演示账号信息是否已备（是/否）：{{demo_ready}}
+
+输出：
+1. 重提检查表（勾选项）。
+2. 英文或中文回复草稿（简洁，逐条对应拒审点，附证据说明）。
+3. 若仍有未完成项：明确写「暂缓提交」及原因。
+禁止声称「已替你提交审核」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.apple.com/app-store/review/guidelines/",
+      label: "Apple Developer · App 审核指南",
+      date: "2026-10-16",
+      dateLabel: "指南更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
