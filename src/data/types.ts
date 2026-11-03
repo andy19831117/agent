@@ -41,6 +41,24 @@ export interface Platform {
   kind: "im" | "llm" | "social" | "builder";
 }
 
+/** One copyable prompt on the usecase detail page. */
+export interface UseCasePrompt {
+  title: string;
+  body: string;
+}
+
+/**
+ * Primary source for the narrative block.
+ * `date` is a calendar date (`YYYY-MM-DD`) attached to that source.
+ * `dateLabel` says what the date means, e.g. "文档更新" or "发布".
+ */
+export interface UseCasePrimarySource {
+  url: string;
+  label: string;
+  date: string;
+  dateLabel?: string;
+}
+
 export interface UseCase {
   id: string;
   slug: string;
@@ -56,4 +74,14 @@ export interface UseCase {
   tags: string[];
   howItWorks: string[];
   tips: string[];
+  /** 他们做了什么. Prose; a blank line starts a new paragraph. */
+  approach?: string;
+  /** 实际效果. One line per result. */
+  outcomes?: string[];
+  /** 值得知道. One line per caveat. */
+  caveats?: string[];
+  /** 可复制提示词. */
+  prompts?: UseCasePrompt[];
+  /** 一手来源 + 日期. Separate from the required header source. */
+  primarySource?: UseCasePrimarySource;
 }
