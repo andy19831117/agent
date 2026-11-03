@@ -10954,6 +10954,453 @@ Runbook：{{runbook}}
       dateLabel: "成文日期",
     },
   },
+  {
+    id: "266",
+    slug: "einvoice-expense-field-compliance-check",
+    title: "数电发票报销字段合规自检",
+    summary: "对照数电票票面要素与企业报销规则，检查号码位数、购销方、税额合计与红字情形提示；只出预检清单，不代提交报销。",
+    description:
+      "面向财务共享、行政与独立经营者：在粘贴报销单前，用 Agent 按数电票必填字段做合规字段自检，区别于发票 OCR 记账与钉钉填单助手。",
+    categories: [
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "feishu",
+      "dingtalk",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://www.gov.cn/zhengce/zhengceku/202411/content_6989164.htm",
+    sourceLabel: "中国政府网·税务总局公告2024年第11号（数电发票）",
+    upvotes: 167,
+    trending: false,
+    tags: [
+      "数电发票",
+      "报销",
+      "合规字段",
+      "红字发票",
+      "财务共享",
+    ],
+    howItWorks: [
+      "粘贴或上传数电票 PDF/XML 文本摘要与拟报销事由、费用科目规则",
+      "Agent 按公告列明的票面要素核对应填项、20 位号码结构、金额税额勾稽，并标红字/退货嫌疑",
+      "输出「可提交 / 需补材料 / 建议人工复核」清单；本人在报销系统提交，Agent 不调用网银或电子税局",
+    ],
+    tips: [
+      "与「发票抽取进记账表」不同：本条重点是字段合规与报销规则对照，不是生成台账行",
+      "专用发票抵扣用途确认仍须在税务数字账户由有权人操作，Agent 只提醒",
+    ],
+    approach: `报销被退回最常见的原因不是「不会填」，而是票面要素残缺、购销方抬头不一致，或蓝字票已发生退货却仍按蓝字入账。本地化做法是让 Agent 当「字段预检员」：吃数电票文本 + 公司报销科目规则，吐出可改的自检表。
+
+国家税务总局公告2024年第11号明确数电发票票面基本内容（发票名称、20 位发票号码、开票日期、购销方、项目、金额税额、价税合计、备注、开票人等），并规定号码结构与红字数电发票开具情形。本场景输出：字段齐全性表、号码长度/结构启发式检查、金额=数量×单价与价税合计勾稽、抬头与费用归属是否一致、是否触发「应开红字却仍报蓝字」嫌疑问题。禁止声称「已验真通过」，禁止预测能否抵扣成功。`,
+    outcomes: [
+      "源未披露量化「报销一次通过率提升百分之几」；公告只规定数电票要素、号码结构与红字流程。",
+      "提交前先看到缺字段与勾稽问题，减少财务来回退单。",
+      "红字/退货嫌疑被单独列出，避免把应冲红票据当蓝字报销。",
+    ],
+    caveats: [
+      "页内成文日期可核；具体行业特定业务标签（成品油、建筑服务等）细则以主管税务机关与平台提示为准。",
+      "Agent 不做全国增值税发票查验平台验真，也不替代会计审核。",
+      "上面写的是税务总局公告条文要点，不是某公司的报销 SOP 认证。",
+    ],
+    prompts: [
+      {
+        title: "数电票字段合规预检",
+        body: `你是数电发票报销字段预检助手。只根据用户提供的票面文本与报销规则检查，不要编造验真结果。
+
+票面文本/OCR：{{invoice_text}}
+报销事由与科目规则：{{policy}}
+购方期望抬头（可空）：{{buyer_name}}
+
+输出 Markdown：
+1. 要素齐全性表（对照：发票名称、号码、开票日期、购销方、项目、金额、税率/征收率、税额、合计、价税合计、备注、开票人；缺则标「未披露」）
+2. 号码启发式：是否约 20 位；第1-2位是否像年份后两位（不确定则写「需人工」）
+3. 金额税额勾稽问题列表
+4. 红字/退货/折让嫌疑问题（仅基于文本线索）
+5. 结论档：可提交草稿 / 需补材料 / 建议人工复核
+禁止写「已通过税务查验」；禁止指导逃避报销制度。`,
+      },
+      {
+        title: "退单意见对照改稿",
+        body: `财务已退回报销，请对照退单意见与票面，生成修改清单（仍不代提交）。
+
+退单意见：{{reject_reason}}
+原预检结果：{{precheck}}
+补充材料说明：{{extras}}
+
+输出：
+1. 逐条对照：已满足 / 仍缺 / 信息冲突
+2. 建议补充的附件类型（如行程单、合同页），不要编造已有附件
+3. 可粘贴给财务的说明草稿（中性语气）
+提醒：提交与用途确认须本人在系统操作。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.gov.cn/zhengce/zhengceku/202411/content_6989164.htm",
+      label: "中国政府网 · 国家税务总局关于推广应用全面数字化电子发票的公告（2024年第11号）",
+      date: "2024-11-12",
+      dateLabel: "成文日期",
+    },
+  },
+  {
+    id: "267",
+    slug: "api-throttle-quota-incident-runbook",
+    title: "API 限流/配额耗尽应急清单",
+    summary: "根据 Throttling/429 日志与调用面，生成退避、批量聚合、配额申请与降级开关检查表；不自动改生产配额。",
+    description:
+      "面向独立开发者与运维：把云厂商 API 流控报错翻译成可执行的应急 Runbook，区别于「用剩余 AI 额度刷 PR」。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://help.aliyun.com/zh/ecs/developer-reference/api-throttling",
+    sourceLabel: "阿里云帮助中心·ECS API 流量控制说明",
+    upvotes: 198,
+    trending: false,
+    tags: [
+      "API限流",
+      "Throttling",
+      "配额",
+      "退避",
+      "应急Runbook",
+    ],
+    howItWorks: [
+      "粘贴报错码/时间窗日志摘要、涉及的 API 与地域、当前调用方（脚本/控制台/Terraform）",
+      "Agent 输出：影响面、退避与批量聚合建议、是否像账号级流控、配额中心申请草稿、临时降级开关清单",
+      "人工在控制台/配额中心执行；Agent 不代提工单、不改密钥与 RAM 策略",
+    ],
+    tips: [
+      "先确认是单接口流控还是创建类资源额外限额，避免「全账号限流」误判",
+      "与 leftover-quota-reviewable-prs 不同：本条处理的是云 API/业务 API 流控，不是 AI coding 额度",
+    ],
+    approach: `半夜脚本刷爆 \`Throttling\` 时，最糟的是继续重试把窗口钉死。本地化做法是先让 Agent 写一页「限流应急清单」，再决定降速、聚合还是申请提额。
+
+阿里云 ECS 文档说明：API 按地域与接口分别流控；超限会报 \`Throttling\` 且请求不被正确处理；合理化建议包括请求聚合、状态检查间隔与反向退避，以及流控后以约 1 QPS 做可用性探测；创建类接口另有数量限制。本场景把这些原则泛化成跨云/自建 API 的应急表：错误指纹、影响业务、立即动作（停重试/降并发）、短中期修复、是否需要配额申请话术。禁止编造具体配额数字；禁止在未授权时调用生产 API。`,
+    outcomes: [
+      "源未披露量化「平均多快恢复」；公开文档只说明流控范围、错误码与合理化调用建议。",
+      "值班有统一检查表，减少「疯狂重试」加剧限流。",
+      "提额申请有理由草稿，方便走配额中心流程。",
+    ],
+    caveats: [
+      "不同产品配额维度不同；ECS 页仅作流控机制参考，其他云产品以各自文档为准。",
+      "控制台操作也可能占用同一流控，勿假设「改用控制台就能绕过」。",
+      "上面写的是帮助中心能力说明，不是你账号的实时配额快照。",
+    ],
+    prompts: [
+      {
+        title: "限流应急 Runbook 草稿",
+        body: `你是 API 限流应急助手。只根据用户提供的日志与调用面起草 Runbook，不要编造配额数值。
+
+错误摘要（码/消息/时间窗）：{{error_log}}
+涉及 API 与地域：{{apis}}
+调用方与并发估计：{{callers}}
+业务影响：{{impact}}
+
+输出 Markdown：
+1. 事件定性：疑似接口流控 / 账号配额 / 下游 429 / 信息不足
+2. 立即动作（停重试、降并发、熔断开关）
+3. 退避与聚合建议（固定间隔/反向退避/批量接口）
+4. 观察指标与恢复判定
+5. 是否需要申请提额：申请理由草稿（未知配额写「待查控制台」）
+禁止声称「已自动提额」；禁止要求粘贴 AccessKey。`,
+      },
+      {
+        title: "事后复盘与防再发清单",
+        body: `基于应急处置记录，写限流事后复盘提纲。
+
+处置记录：{{timeline}}
+根因假设：{{hypothesis}}
+
+输出：
+1. 时间线（仅基于记录）
+2. 根因候选与需验证的证据
+3. 代码/调度防再发项（队列、抖动、批量）
+4. 监控与告警建议（阈值、错误码）
+5. 给负责人的一页摘要
+不要伪造「零故障承诺」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://help.aliyun.com/zh/ecs/developer-reference/api-throttling",
+      label: "阿里云帮助中心 · 云服务器 ECS API 流量控制说明",
+      date: "2026-06-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "268",
+    slug: "canary-release-rollback-checklist",
+    title: "灰度发布回滚检查表",
+    summary: "按金丝雀/分批权重与观测指标，生成推进、暂停与回滚决策检查表及沟通稿；不直接改集群流量。",
+    description:
+      "面向独立开发者与平台工程：把灰度发布的推进/回滚条件写成可勾选清单，区别于 Vercel 部署日志摘要。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/use-kruise-rollout-to-perform-canary-releases-and-a-b-testing",
+    sourceLabel: "阿里云帮助中心·Kruise Rollout 灰度发布",
+    upvotes: 149,
+    trending: false,
+    tags: [
+      "灰度发布",
+      "金丝雀",
+      "回滚",
+      "Kruise Rollout",
+      "发布检查表",
+    ],
+    howItWorks: [
+      "提供当前 Rollout/Ingress 权重步骤、观测指标阈值与变更说明",
+      "Agent 生成每步「继续 / 暂停 / 回滚」检查项、回滚命令草稿位置与对外沟通稿",
+      "人工用 kubectl-kruise/控制台执行；Agent 不持有集群凭证、不自动 approve",
+    ],
+    tips: [
+      "先写清回滚触发条件（错误率、延迟、业务 KPI），再谈提高权重",
+      "与 vercel-deploy-log-digest 不同：本条是发布中的灰度决策表，不是部署日志排障摘要",
+    ],
+    approach: `灰度最怕两件事：指标变差还继续加流量，以及回滚时没人知道该改哪条 Ingress/Rollout。本地化做法是发布前用 Agent 填一张「推进/回滚检查表」，发布中只对照勾选。
+
+阿里云 ACK 文档介绍可用 Kruise Rollout 做金丝雀、A/B Testing 与分批发布：按步骤配置流量权重与实例比例，支持暂停等待人工确认（如 \`kubectl-kruise rollout approve\`），并可用 Prometheus 指标辅助自动分批。本场景输出：步骤表（权重/副本）、每步必看指标、继续与回滚条件、回滚后验证项、事故沟通三段式。禁止在未提供集群状态时声称「已回滚成功」。`,
+    outcomes: [
+      "源未披露量化「平均回滚耗时」；公开文档说明渐进式发布步骤、暂停与人工确认机制。",
+      "发布群对齐「什么情况下必须回滚」，减少口头临时决定。",
+      "回滚验证项可复用到下一次发布模板。",
+    ],
+    caveats: [
+      "需集群版本与组件前置条件满足文档要求；未安装 Kruise 时清单仍可作通用灰度表。",
+      "流量注解（Header/Cookie/Weight）优先级因 Ingress 实现而异，以集群实际控制器为准。",
+      "上面写的是 ACK/Kruise 帮助说明，不是你的集群变更记录。",
+    ],
+    prompts: [
+      {
+        title: "灰度推进与回滚检查表",
+        body: `你是灰度发布检查表助手。只根据用户提供的发布计划与指标起草，不要编造集群状态。
+
+服务与变更说明：{{change}}
+Rollout/权重步骤：{{steps}}
+观测指标与阈值：{{slos}}
+回滚方式（已知）：{{rollback_method}}
+
+输出 Markdown：
+1. 发布前检查（镜像、配置、特性开关、监控看板）
+2. 逐步检查表：步骤、预期流量、继续条件、暂停条件、回滚条件
+3. 回滚执行提纲（命令占位符用 {{cmd}}，不要伪造已执行）
+4. 回滚后验证清单
+5. 发布群一句话状态模板
+禁止声称已 approve 或已切换流量。`,
+      },
+      {
+        title: "灰度异常沟通稿",
+        body: `指标触碰阈值，需要暂停或回滚时的对内沟通稿。
+
+当前步骤：{{current_step}}
+异常现象：{{symptom}}
+已采取动作：{{actions}}
+
+输出：
+1. 给值班群的短消息（事实/影响/下一步）
+2. 给业务方的非技术说明
+3. 需要业务确认的问题（最多 5 个）
+不要指责个人；不要泄露客户隐私数据。`,
+      },
+    ],
+    primarySource: {
+      url: "https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/use-kruise-rollout-to-perform-canary-releases-and-a-b-testing",
+      label: "阿里云帮助中心 · 使用 Kruise Rollout 实现金丝雀/A/B Testing/蓝绿发布",
+      date: "2026-09-29",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "269",
+    slug: "multi-env-config-drift-diff-brief",
+    title: "多环境配置漂移对比摘要",
+    summary: "对比 Terraform plan/配置摘录与期望基线，生成漂移项分级、风险与对齐建议；不自动 apply。",
+    description:
+      "面向独立开发者与平台工程：把多环境（dev/stage/prod）配置差异收成可读摘要，补齐此前缺可核日的配置漂移长尾。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.hashicorp.com/terraform/cli/commands/plan",
+    sourceLabel: "HashiCorp Developer·terraform plan 命令参考",
+    upvotes: 181,
+    trending: false,
+    tags: [
+      "配置漂移",
+      "Terraform",
+      "多环境",
+      "plan",
+      "变更摘要",
+    ],
+    howItWorks: [
+      "粘贴脱敏后的 terraform plan 文本，或各环境关键配置片段与期望基线",
+      "Agent 归类 create/update/delete/replace，标出跨环境不一致与高风险项",
+      "人工审阅后再决定 apply 或改代码；Agent 不执行 apply、不读取 state 密钥",
+    ],
+    tips: [
+      "先脱敏资源 ID 与密钥，再贴 plan；摘要里保留资源类型与变更意图即可",
+      "文档漂移（docs vs code）另案；本条聚焦基础设施/应用配置在环境间的实质差异",
+    ],
+    approach: `「prod 怎么和 stage 又不一样了」往往发现在故障之后。本地化做法是定期把 plan 或配置 diff 丢给 Agent，先出一页漂移摘要，再决定是否对齐。
+
+HashiCorp \`terraform plan\` 文档说明：该命令生成执行计划，预览将对基础设施做出的变更，便于在 apply 前确认是否符合预期；也可用于发现配置与真实状态关系上的漂移与混淆。本场景输入脱敏 plan/配置摘录，输出：按资源类型聚类的变更表、跨环境不一致清单、建议先改代码还是先改环境、apply 前人工确认项。禁止把「No changes」说成「一定安全」；禁止要求上传完整 state 文件。`,
+    outcomes: [
+      "源未披露量化「可减少多少误 apply」；官方文档说明 plan 用于预览变更并帮助理解配置与真实状态关系。",
+      "评审者无需通读整份 plan 也能抓住高风险 replace/destroy。",
+      "环境对齐讨论有共同语言（漂移项分级）。",
+    ],
+    caveats: [
+      "plan 依赖本地 backend/凭证；本条只处理用户粘贴的文本，不代连远程 state。",
+      "部分 provider 的 force-new/replace 语义需对照资源文档，模型可能误判。",
+      "上面写的是 Terraform CLI 文档说明，不是你的云账号巡检报告。",
+    ],
+    prompts: [
+      {
+        title: "Plan/配置漂移摘要",
+        body: `你是多环境配置漂移分析助手。只根据用户粘贴的脱敏文本分析，不要编造未出现的资源。
+
+环境标签：{{envs}}
+期望基线说明：{{baseline}}
+plan 或配置摘录：{{plan_text}}
+
+输出 Markdown：
+1. 变更总览：create/update/delete/replace 计数（无法计数则写未披露）
+2. 高风险项表（destroy、replace、安全组/IAM/数据库类）
+3. 跨环境不一致列表
+4. 建议动作：改代码对齐 / 改环境对齐 / 需人工深挖
+5. apply 前确认问题清单
+禁止输出密钥；禁止声称已 apply。`,
+      },
+      {
+        title: "对齐 PR/变更说明草稿",
+        body: `基于漂移摘要，写一份准备提交的配置对齐说明草稿。
+
+漂移摘要：{{brief}}
+拟采取的对齐策略：{{strategy}}
+
+输出：
+1. 背景与范围
+2. 将修改的文件/模块（仅基于已知信息）
+3. 风险与回滚
+4. 验证步骤（plan 再人工 apply）
+不要生成伪造的 PR 链接或 commit hash。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.hashicorp.com/terraform/cli/commands/plan",
+      label: "HashiCorp Developer · terraform plan command reference",
+      date: "2026-09-14",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "270",
+    slug: "contract-renewal-diff-reminder-pack",
+    title: "合同续约提醒与条款差异对照",
+    summary: "汇总即将到期合同要点，生成续约提醒、新旧条款差异对照与谈判问题清单；不自动发起电子签。",
+    description:
+      "面向法务运营与业务负责人：用 Agent 做续约前的提醒包与条款 diff，区别于流失扩容客服回复草稿。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "feishu",
+      "dingtalk",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://support.fadada.com/d/1753310806751170561.html",
+    sourceLabel: "法大大帮助中心·已归档合同如何发起续签",
+    upvotes: 134,
+    trending: false,
+    tags: [
+      "合同续约",
+      "履约提醒",
+      "条款对照",
+      "电子签",
+      "法务运营",
+    ],
+    howItWorks: [
+      "导出或粘贴到期日、相对方、金额、关键条款摘要，以及拟续约稿/上一版差异点",
+      "Agent 生成提前提醒日程建议、条款差异表、谈判问题与续约沟通草稿",
+      "人工在电子签/合同系统发起续签；Agent 不代签、不发送给相对方",
+    ],
+    tips: [
+      "先完成归档与到期日设置，再谈一键续签；提醒包只解决「到期前对齐条款」",
+      "与 churn-expansion-signal-reply-draft 不同：本条输入是合同条款与到期台账，不是客服工单信号",
+    ],
+    approach: `续约窗口常在忙季被忘掉，等到期才发现价格、服务范围或自动续约条款已变。本地化做法是到期前 30/14/7 天用 Agent 出「续约提醒包」：该找谁、旧条款 vs 新稿差异、必须谈清的问题。
+
+法大大帮助中心说明：可对已归档合同批量设置到期时间、提前提醒天数与履约人员；到期前按履约设定通知处理人，并可在归档列表或履约监控中一键发起续签（进入创建签署任务）。本场景不代替产品内按钮，而是补「条款差异对照 + 沟通草稿」层：到期日历、差异表、风险问题、对内审批摘要、对外续约邮件/消息草稿。禁止伪造已签署状态；禁止给出法律效力结论。`,
+    outcomes: [
+      "源未披露量化「续约及时率」；帮助文档只说明到期提醒设置与一键发起续签入口。",
+      "业务与法务对齐差异点，减少「原样续签却条件已变」。",
+      "提醒节奏可落到日历/飞书任务，降低漏续约。",
+    ],
+    caveats: [
+      "须先完成合同归档；未归档合同可能无法走文档所述续签入口。",
+      "条款差异分析依赖用户提供的文本，扫描件质量差时需人工校对。",
+      "上面写的是法大大操作说明，不是对任何电子签平台的功能承诺，也不是法律意见。",
+    ],
+    prompts: [
+      {
+        title: "续约提醒包与条款 diff",
+        body: `你是合同续约准备助手。只根据用户提供的合同摘要与拟续约稿对照，不做法律结论。
+
+到期台账（相对方/到期日/金额/负责人）：{{renewal_board}}
+旧合同要点：{{old_terms}}
+拟续约稿/新报价要点：{{new_terms}}
+提前提醒策略偏好：{{reminder_pref}}
+
+输出 Markdown：
+1. 到期提醒日历建议（如 30/14/7 天）与通知对象角色
+2. 条款差异表：主题、旧、新、是否需谈判
+3. 高风险问题清单（自动续约、涨价、责任上限、数据与保密等——仅当文本出现时）
+4. 对内审批一页纸
+5. 对外续约沟通草稿（中性，不施压违法）
+禁止写「已具备法律效力」；禁止自动发给相对方。`,
+      },
+      {
+        title: "续约谈判问题清单",
+        body: `基于差异表，生成谈判会议的问题清单与记录模板。
+
+差异表：{{diff_table}}
+我方底线（可空）：{{walkaway}}
+
+输出：
+1. 会议目标与出席角色
+2. 必问问题（带期望答案类型：数字/是非/选项）
+3. 会议记录模板字段
+4. 会后待办（系统内发起续签的检查项，不代操作）
+提醒：签署与发送须有权人在合同系统完成。`,
+      },
+    ],
+    primarySource: {
+      url: "https://support.fadada.com/d/1753310806751170561.html",
+      label: "法大大帮助中心 · 已归档合同如何发起续签？",
+      date: "2026-01-30",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
