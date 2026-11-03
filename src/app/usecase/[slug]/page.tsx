@@ -6,6 +6,7 @@ import { platforms } from "@/data/platforms";
 import { getUseCaseBySlug, usecases } from "@/data/usecases";
 import { UsecaseFaq } from "@/components/UsecaseFaq";
 import { UseCaseActions } from "./UseCaseActions";
+import { UseCaseNarrative } from "./UseCaseNarrative";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -82,6 +83,14 @@ export default async function UseCaseDetailPage({ params }: Props) {
           {usecase.description}
         </p>
       </section>
+
+      <UseCaseNarrative
+        approach={usecase.approach}
+        outcomes={usecase.outcomes}
+        caveats={usecase.caveats}
+        prompts={usecase.prompts}
+        primarySource={usecase.primarySource}
+      />
 
       <section className="surface-card rounded-2xl p-6">
         <h2 className="text-base font-semibold text-slate-100">怎么做</h2>
