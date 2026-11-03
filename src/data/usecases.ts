@@ -9615,6 +9615,458 @@ App 简述：{{app_blurb}}
       dateLabel: "指南更新",
     },
   },
+  {
+    id: "251",
+    slug: "repo-adr-madr-memory-for-coding-agents",
+    title: "用仓库内 ADR/MEMORY 给编码 Agent 持久记忆",
+    summary: "把架构决策写成 MADR 风格 ADR，并维护 MEMORY 短文，让编码 Agent 跨会话读仓库记忆而非只靠聊天上下文。",
+    description:
+      "独立开发者与小团队常在新对话里重复解释「为何选这套库」。做法是在仓内用可版本化的 ADR（对标 MADR 模板）+ 一份短 MEMORY，Agent 开工前先读再改；不把密钥写入记忆文件。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "deepseek",
+      "chatgpt",
+      "n8n",
+    ],
+    sourceUrl: "https://github.com/adr/madr/releases/tag/4.0.0",
+    sourceLabel: "MADR Releases · 4.0.0",
+    upvotes: 177,
+    trending: false,
+    tags: [
+      "ADR",
+      "MADR",
+      "MEMORY",
+      "编码Agent",
+      "仓库记忆",
+    ],
+    howItWorks: [
+      "在 docs/adr 采用 MADR 风格模板记录 Context / Decision / Consequences",
+      "根目录或 docs 维护 MEMORY.md：当前约定、禁改区、常用命令（无密钥）",
+      "Agent 会话开始先读 MEMORY + 相关 ADR，再提改动；决策变更时开新 ADR 而非改历史结论 silently",
+    ],
+    tips: [
+      "一条 ADR 只钉一个决策；大翻盘用 supersedes 链指向旧文",
+      "MEMORY 控制在一两屏，细节链到 ADR 编号，避免变成第二份 README",
+    ],
+    approach: `编码 Agent 最容易「失忆」的不是语法，而是仓库里已经拍板的边界：为何不用某 ORM、测试必须走哪条命令、哪些目录禁止触碰。本地化做法是把决策写进 Git，而不是指望聊天窗口还开着。
+
+参考 MADR（Markdown Architectural Decision Records）发布的模板结构，在 docs/adr 下为每个重要决策建一篇短文：背景、可选方案、决定、后果。另维护一份薄薄的 MEMORY.md，只列「当前仍然有效」的约定与指向 ADR 的链接。Agent 接到任务时先读这两类文件，再改代码；若要推翻旧决策，新增 ADR 并更新 MEMORY，而不是在旧文件里静默改结论。这与「把问答摘要塞进 Git 笔记库」不同：焦点是架构决策可追溯，而不是会议纪要归档。密钥、令牌、客户数据一律不进 ADR/MEMORY。`,
+    outcomes: [
+      "源未披露量化「跨会话少问几次」；公开 Release 只说明 MADR 4.0.0 模板与结构更新。",
+      "新开 Agent 会话可先读仓内 MEMORY/ADR，减少重复解释技术选型。",
+      "决策变更有 supersede 痕迹，回滚讨论时有据可查。",
+    ],
+    caveats: [
+      "ADR 过期不更新会误导 Agent；合并大改前先扫 MEMORY 是否仍真。",
+      "模板字段要按团队裁剪，填空作文式 ADR 没人读等于没有。",
+      "上面写的是 MADR 开源模板发布信息，不是任何平台公布的「Agent 记忆命中率」。",
+    ],
+    prompts: [
+      {
+        title: "草稿一条 MADR 风格 ADR",
+        body: `你是仓库架构记录助手。根据材料起草一条 ADR，不要编造未给出的性能测试数字。
+
+议题：{{decision_topic}}
+背景摘录：{{context_excerpt}}
+候选方案（可空）：{{options}}
+倾向决定（可空）：{{preferred}}
+
+按 MADR 风格输出 Markdown：
+- Title
+- Status（Proposed）
+- Context
+- Decision Drivers
+- Considered Options
+- Decision Outcome
+- Consequences（正/负）
+规则：一条 ADR 只钉一个决策；禁止写入密钥、令牌、内网地址；若信息不足，Status 保持 Proposed 并列出待核实问题。`,
+      },
+      {
+        title: "更新 MEMORY 短文",
+        body: `根据新增/变更的 ADR，更新 MEMORY.md 草稿（薄文件）。
+
+现有 MEMORY：{{current_memory}}
+新增或变更 ADR 摘要：{{adr_summaries}}
+
+输出完整 MEMORY 草稿，含：
+1. 仍有效的约定（条目≤12）
+2. 明确废止/被 supersede 的条目
+3. 指向 ADR 文件名或编号的链接列表
+禁止把密钥、客户名单写入 MEMORY；细节过长时只留链接。`,
+      },
+    ],
+    primarySource: {
+      url: "https://github.com/adr/madr/releases/tag/4.0.0",
+      label: "GitHub · adr/madr Release 4.0.0",
+      date: "2024-09-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "252",
+    slug: "gov-rfp-tender-keypoints-extract",
+    title: "招标/RFP 文件要点抽取与应答提纲",
+    summary: "把招标文件/采购需求拆成资格、评分、交付与风险要点，生成应答提纲与缺项清单，投标策略仍由人定。",
+    description:
+      "面向要应标的小团队与供应商：Agent 只读招标/范本要点，输出结构化抽取表与应答提纲；不编造资质、不自动盖章投标。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "deepseek",
+      "kimi",
+      "feishu",
+      "n8n",
+    ],
+    sourceUrl: "https://www.bp.gov.cn/html/BPSZF/202606/0178157714006440.html",
+    sourceLabel: "北票市财政局·辽宁政府采购文件范本修订通知",
+    upvotes: 203,
+    trending: false,
+    tags: [
+      "招标",
+      "RFP",
+      "政府采购",
+      "要点抽取",
+      "应答提纲",
+    ],
+    howItWorks: [
+      "上传或粘贴招标公告/采购文件可公开段落（脱敏后）",
+      "Agent 抽取资格条件、评分办法、交付物、工期、异常低价与合规提示",
+      "输出应答提纲 + 缺项/待核实清单；报价与盖章提交仍由人完成",
+    ],
+    tips: [
+      "范本与具体项目文件不一致时，以项目文件为准并在表头标注版本日",
+      "涉及本国产品标准、暗标盲评等条款单独成栏，避免漏应答",
+    ],
+    approach: `应标最耗时的往往不是写漂亮话，而是先把几百页招标文件里的硬条件拆清楚：谁有资格、怎么打分、交什么、何时交、哪些表述会踩异常低价或合规红线。本地化做法是以公开采购范本与项目文件为输入，让 Agent 做「要点抽取 + 应答提纲」，而不是直接代写整本投标书。
+
+可参考各地财政部门对政府采购项目文件范本的修订说明（例如辽宁省对相关范本的修订通知所附政策指向），把资格、评分、交付、评审方式等栏位固化成检查表。Agent 输出：资格符合性对照、评分点映射、交付物清单、风险与缺项。人负责核对原件、补证与报价策略。这与写销售方案不同：对象是招标条款的可核抽取，禁止伪造证书编号或虚构过往业绩。`,
+    outcomes: [
+      "源未披露量化「应标中标率」或「节省工时」；公开通知只说明范本修订与政策落实要求。",
+      "招标长文收成资格/评分/交付/风险分栏表，便于多人分工核对。",
+      "缺项清单把「还缺什么证明」提前暴露，减少临交前翻车。",
+    ],
+    caveats: [
+      "范本≠具体项目文件；以采购人发布的当期招标文件为准。",
+      "Agent 不得编造资质、业绩或检测报告；不确定一律标待核实。",
+      "上面写的是公开范本修订通知信息，不是中标率或节时数据。",
+    ],
+    prompts: [
+      {
+        title: "招标要点分栏抽取",
+        body: `你是招标文件要点抽取助手。只根据给定文本抽取，不要编造未出现的分值或证书名。
+
+文件标题/编号：{{tender_title}}
+可公开段落摘录：{{tender_excerpt}}
+范本或政策备注（可空）：{{template_notes}}
+
+输出 Markdown 表或分节：
+1. 资格条件（硬性）
+2. 评分办法与分值（若未给出分值写「未披露」）
+3. 交付物与工期
+4. 评审方式相关提示（如暗标/远程异地等，仅当原文出现）
+5. 风险与合规提示（异常低价、本国产品标准等，仅当原文或备注出现）
+6. 信息不足待核实列表
+禁止给出「建议报多少钱」；禁止伪造证书。`,
+      },
+      {
+        title: "应答提纲与缺项清单",
+        body: `基于已抽取要点，写一份内部应答提纲（非正式投标书）。
+
+抽取结果：{{keypoints}}
+我方已知材料清单：{{our_materials}}
+
+输出：
+1. 应答章节提纲（对应评分/资格栏）
+2. 已齐材料 vs 缺项（每条缺项写需要谁在何时补）
+3. 必须人工复核的条款（最多 8 条）
+不要生成可直接提交的盖章页；不要虚构过往项目名称。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.bp.gov.cn/html/BPSZF/202606/0178157714006440.html",
+      label: "中国·北票 · 关于修订辽宁省政府采购项目有关文件范本的通知",
+      date: "2026-06-16",
+      dateLabel: "更新日期",
+    },
+  },
+  {
+    id: "253",
+    slug: "claude-code-terminal-pair-agent",
+    title: "终端里与 Agent 结对写代码与改仓库",
+    summary: "在本地终端用 CLI 编码 Agent 读仓、改文件、跑测试；大合并与推送仍由人确认。",
+    description:
+      "面向独立开发者的终端结对：用官方 CLI 编码 Agent 在仓库上下文中迭代修改；权限最小化，禁止把生产密钥塞进提示词。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "deepseek",
+      "chatgpt",
+      "n8n",
+    ],
+    sourceUrl: "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
+    sourceLabel: "Claude Code Releases · v2.1.317",
+    upvotes: 154,
+    trending: false,
+    tags: [
+      "终端",
+      "CLI",
+      "结对编程",
+      "Claude Code",
+      "本地仓库",
+    ],
+    howItWorks: [
+      "在项目根目录启动 CLI 编码 Agent，限定可写路径与可用命令",
+      "用自然语言描述目标；Agent 读相关文件、改代码、跑单测并回报 diff 摘要",
+      "人审 diff 后再 commit/push；涉及迁移、密钥、生产配置一律人工执行",
+    ],
+    tips: [
+      "先写清「完成定义」与「禁改目录」，减少 Agent 满仓库乱逛",
+      "长任务拆成可验证小步：红测→最小改→绿测→再重构",
+    ],
+    approach: `很多独立开发者真正的工作台是终端，而不是网页聊天框。做法是在仓库根目录用 CLI 形态的编码 Agent 结对：它能读当前树、改文件、跑你允许的测试命令，并把变更摘要打回终端，由你决定是否提交。
+
+以公开的 Claude Code 发行说明为能力锚点（版本在持续迭代，以你安装的版本为准），把会话目标写成可验证的完成定义：改哪个包、单测如何变绿、哪些路径只读。Agent 负责探索与起草补丁；git commit、force-push、生产发布默认保留给人。这与「手机上看 CI 小修」互补：本条强调桌面终端里的深度结对，而不是通勤碎片审阅。提示词与日志里不要粘贴生产密钥。`,
+    outcomes: [
+      "源未披露量化「结对吞吐」或「缺陷率」；公开 Release 只说明该版本变更内容。",
+      "终端内可完成读仓→改文件→跑测→看 diff 的闭环，提交仍由人点。",
+      "权限与禁改目录写进会话约定后，减少误改无关模块。",
+    ],
+    caveats: [
+      "CLI Agent 仍可能误改；关键路径加只读或先在分支上试。",
+      "网络与插件权限按最小原则；不要对整盘家目录开放写入。",
+      "上面写的是公开 Release 标签信息，不是官方公布的效率基准。",
+    ],
+    prompts: [
+      {
+        title: "终端结对任务卡",
+        body: `你是本地仓库里的结对编码助手。只在给定约束内工作，不要声称已 push。
+
+仓库目标：{{goal}}
+完成定义：{{done_definition}}
+可写路径：{{writable_paths}}
+禁改路径：{{readonly_paths}}
+允许命令：{{allowed_commands}}
+
+输出计划：
+1. 将读取的文件列表（最多 12）
+2. 拟改动要点（每点≤30 字）
+3. 验证命令顺序
+4. 风险（迁移/密钥/破坏性命令）
+若完成定义含糊，先列出澄清问题再改代码。禁止要求粘贴生产密钥。`,
+      },
+      {
+        title: "diff 审阅摘要",
+        body: `根据工作区 diff 与测试输出，写给人看的审阅摘要。
+
+diff 摘录：{{diff_excerpt}}
+测试输出：{{test_output}}
+原任务：{{goal}}
+
+输出：
+- 变更意图是否对齐任务（是/否+一句理由）
+- 高风险改动（若无写「无」）
+- 建议 commit message（≤72 字）
+- 下一步：可提交 / 需补测 / 需回滚某文件
+不要执行 git push；不要改写未给出的文件内容。`,
+      },
+    ],
+    primarySource: {
+      url: "https://github.com/anthropics/claude-code/releases/tag/v2.1.317",
+      label: "GitHub · anthropics/claude-code Release v2.1.317",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "254",
+    slug: "feishu-miaaji-demo-followup-pack",
+    title: "演示会妙记摘要与销售跟进包",
+    summary: "演示会后用妙记转写+要点，生成客户版纪要、内部待办与跟进邮件/IM 草稿，发送前人工确认。",
+    description:
+      "销售演示结束后：基于飞书妙记的录音/视频转写与纪要能力，让 Agent 整理对外摘要与对内跟进包；不自动群发、不编造客户承诺。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "feishu",
+      "wecom",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://www.feishu.cn/content/article/7578773484596153570",
+    sourceLabel: "飞书官网·飞书妙记介绍",
+    upvotes: 186,
+    trending: false,
+    tags: [
+      "妙记",
+      "演示会",
+      "销售跟进",
+      "会议纪要",
+      "飞书",
+    ],
+    howItWorks: [
+      "演示会录音/录屏导入或关联飞书妙记，得到转写与纪要底稿",
+      "Agent 区分「客户原话/需求」与「我方承诺」，生成对外摘要与对内待办",
+      "跟进邮件/企微草稿人工改完再发；未确认的承诺标黄",
+    ],
+    tips: [
+      "先标客户决策人与下一次约定时间，再写功能细节",
+      "把「未承诺但客户追问」单独成栏，避免写成已答应",
+    ],
+    approach: `演示会最怕开完就散：客户以为你答应了定制，销售以为只是「看看再说」。本地化做法是会后立刻基于飞书妙记的转写与纪要能力出一份「跟进包」：对外版只含已对齐的需求与下一步；对内版含待办主人、风险与未决问题。
+
+Agent 读妙记导出的文本（或纪要草稿），强制分栏：客户原话、明确需求、我方已承诺、未承诺、下一步会议。再起草一封跟进信与一条 IM 短讯，但默认不代发。这与「人脉 enrichment」或「竞品晨报」不同：对象是单次演示的销售闭环，强调承诺边界。涉及价格、交付日期、合规承诺必须人眼确认后再发出。`,
+    outcomes: [
+      "源未披露量化「演示后成交率」；公开文只介绍妙记转写与会议纪要能力。",
+      "会后数小时内可有客户版摘要 + 内部待办 + 跟进草稿三件套。",
+      "未承诺项被单独标出，降低「纪要写过头」的争议。",
+    ],
+    caveats: [
+      "转写会有错字与说话人误识别；人名、金额、日期必须对照原片。",
+      "不要把内部定价策略写进客户版摘要。",
+      "上面写的是飞书妙记产品介绍页信息，不是公布的销售转化指标。",
+    ],
+    prompts: [
+      {
+        title: "演示会跟进包分栏",
+        body: `你是销售演示会后的纪要助手。只根据转写/纪要摘录整理，不要编造客户未说出的预算。
+
+客户与场景：{{account_context}}
+妙记/转写摘录：{{miaaji_excerpt}}
+我方参会人：{{our_attendees}}
+
+输出：
+1. 客户原话要点（引用短句）
+2. 明确需求列表
+3. 我方已承诺（若摘录无承诺写「无」）
+4. 未承诺但被追问
+5. 下一步（时间/主人/动作）
+6. 风险与待核实
+禁止把猜测写成事实；禁止自动声称「已发送跟进」。`,
+      },
+      {
+        title: "跟进信与 IM 草稿",
+        body: `基于已确认的跟进包，写对外跟进草稿（待人工发送）。
+
+跟进包：{{followup_pack}}
+语气：{{tone}}
+渠道：邮件正文 + 企微/飞书短讯
+
+输出：
+- 邮件主题
+- 邮件正文（≤300 字，中文）
+- IM 短讯（≤80 字）
+- 发送前核对清单（金额/日期/承诺是否与跟进包一致）
+不要添加跟进包中不存在的折扣或上线日期。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.feishu.cn/content/article/7578773484596153570",
+      label: "飞书官网 · 飞书妙记：录音/视频转文字与会议纪要",
+      date: "2025-12-01",
+      dateLabel: "文章日期",
+    },
+  },
+  {
+    id: "255",
+    slug: "customer-onboarding-n8n-feishu-checklist",
+    title: "客户开通清单：Webhook 触发与飞书待办",
+    summary: "新客户签约或表单提交后，用 n8n Webhook 拉起开通清单，在飞书建待办与群通知；敏感权限开通仍人工点。",
+    description:
+      "企业客户开通自动化：以 n8n Webhook 接收开通事件，生成检查表并同步飞书；不绑死 Make，不自动发放生产超管。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "n8n",
+      "feishu",
+      "wecom",
+      "deepseek",
+    ],
+    sourceUrl: "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/",
+    sourceLabel: "n8n Docs · Webhook node",
+    upvotes: 139,
+    trending: false,
+    tags: [
+      "客户开通",
+      "onboarding",
+      "n8n",
+      "Webhook",
+      "飞书待办",
+    ],
+    howItWorks: [
+      "签约系统/表单 POST 到 n8n Webhook，带上客户 ID 与套餐字段",
+      "Agent/工作流生成开通检查表（租户、账号、权限、培训、首周回访）",
+      "飞书建任务或发群卡片；生产超管、计费变更等步骤仅人工确认后执行",
+    ],
+    tips: [
+      "Webhook 要校验签名或共享密钥，避免陌生人触发开通",
+      "检查表按套餐分支：试用与正式单的权限项分开",
+    ],
+    approach: `客户开通最容易漏步骤：租户建了、权限没开，或培训约了没人跟。本地化做法不绑死某一家 iPaaS 品牌，用 n8n 的 Webhook 节点接签约/表单事件，把「开通清单」跑成可审计流程，并在飞书里留下待办与群通知。
+
+事件进 Webhook 后，工作流调用 Agent（或固定模板）生成该套餐的检查表：创建租户、邀请管理员、配置 SSO/基础权限、导入样例数据、预约培训、D+7 回访。每一步状态写回表或飞书任务；涉及生产超管、发票抬头、数据删除的动作必须人点。这与员工入职清单不同：对象是付费客户租户开通，字段围绕套餐与客户成功，而不是 HR 入职材料。`,
+    outcomes: [
+      "源未披露量化「开通周期缩短几天」；公开文档只说明 Webhook 节点如何接收 HTTP 请求。",
+      "签约/表单事件可稳定触发同一套开通检查表，减少口口相传漏项。",
+      "高风险权限步骤留人工门禁，自动化只覆盖可逆或低风险准备项。",
+    ],
+    caveats: [
+      "Webhook URL 泄露会被刷单触发；务必鉴权并限流。",
+      "不要在 Webhook 载荷里传明文密码或身份证号。",
+      "上面写的是 n8n Webhook 文档更新信息，不是客户成功率指标。",
+    ],
+    prompts: [
+      {
+        title: "客户开通检查表生成",
+        body: `你是客户成功开通助手。根据事件字段生成检查表，不要假装已创建生产租户。
+
+客户名称：{{customer_name}}
+套餐：{{plan}}
+事件字段 JSON：{{event_payload}}
+标准步骤库（可空）：{{step_library}}
+
+输出有序检查表，每步含：
+- 步骤名
+- 主人角色（CS/实施/客户管理员）
+- 依赖
+- 是否允许自动执行（是/否；超管、计费、删数为否）
+- 完成定义
+若字段缺失，先列待补信息再给步骤。禁止生成真实密码。`,
+      },
+      {
+        title: "飞书待办/群通知草稿",
+        body: `把开通检查表转成飞书待办与群通知文案（待工作流发送）。
+
+检查表：{{checklist}}
+责任人映射：{{assignee_map}}
+群用途：开通作战群
+
+输出：
+1. 待办列表（标题≤40 字，截止日期规则，负责人）
+2. 群卡片摘要（≤120 字）
+3. 人工门禁步骤单独列出
+不要声明「已开通完成」；不要包含密钥。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/",
+      label: "n8n Docs · Webhook",
+      date: "2026-10-28",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
