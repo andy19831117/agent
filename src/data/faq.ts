@@ -3,7 +3,7 @@ import faqCopy from "./faq.json";
 /**
  * Authoritative FAQ copy is `faq.json`.
  * Home always renders `home` (3 items, all expanded).
- * Usecase pages render only the three slugs listed below.
+ * Usecase pages render only the slugs listed below.
  * Visible Q&A and FAQPage JSON-LD are both built from these arrays.
  */
 
@@ -14,7 +14,6 @@ export type FaqItem = {
 
 export const USECASE_FAQ_SLUGS = [
   "xiaohongshu-note-batch-agent",
-  "short-video-script-agent",
   "feishu-meeting-summary-agent",
 ] as const satisfies readonly (keyof typeof faqCopy.usecases)[];
 
@@ -22,7 +21,6 @@ export type UsecaseFaqSlug = (typeof USECASE_FAQ_SLUGS)[number];
 
 const EXPECTED_USECASE_COUNTS: Record<UsecaseFaqSlug, number> = {
   "xiaohongshu-note-batch-agent": 4,
-  "short-video-script-agent": 4,
   "feishu-meeting-summary-agent": 5,
 };
 
