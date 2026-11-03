@@ -11847,6 +11847,452 @@ Amazon CloudWatch Logs 文档介绍可用数据保护策略在摄取时审计并
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "276",
+    slug: "tls-cert-managed-renewal-runbook",
+    title: "TLS 证书托管续期与到期检查表",
+    summary: "对照证书是否符合自动续期资格、校验方式与多地域 ARN，生成到期前检查与失败处置清单；不代改 DNS/证书绑定。",
+    description:
+      "面向独立开发者与运维：把「证书快到期」变成可勾选的托管续期/手工续期检查表，区别于 CVE 升级说明与快照恢复演练。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html",
+    sourceLabel: "AWS Docs·Managed certificate renewal in ACM",
+    upvotes: 169,
+    trending: false,
+    tags: [
+      "TLS",
+      "证书续期",
+      "ACM",
+      "到期检查",
+      "HTTPS",
+    ],
+    howItWorks: [
+      "粘贴证书清单（域名、颁发/导入方式、绑定服务、校验类型 DNS/邮件、到期日、地域）",
+      "Agent 按「可自动续期 / 需人工 / 不合格」输出检查表、到期前动作与失败分支",
+      "人工在证书控制台/DNS 执行；Agent 不持有云账号、不改解析",
+    ],
+    tips: [
+      "导入证书与已过期证书通常不在托管自动续期范围，勿假设「平台会帮你续」",
+      "与 cve-advisory-upgrade-impact-brief / ecs-snapshot-restore-drill-checklist 不同：本条只管证书续期资格与到期动作",
+    ],
+    approach: `站点证书一过期就是全站红字。真正踩坑的往往不是「忘了日历」，而是以为托管会自动续、实际却是导入证书或未关联负载均衡。本地化做法是让 Agent 先做资格分诊，再写到期 Runbook。
+
+AWS Certificate Manager 文档说明：对 Amazon 颁发的 SSL/TLS 证书提供托管续期——DNS 校验时可自动续期，否则在临近到期时发邮件通知；自动续期资格取决于是否关联 ELB/CloudFront 等服务、是否导出过、是否为符合条件的私有证书等；导入证书、已过期证书、以及通过 Private CA IssueCertificate/ACME 客户端签发的证书等不在 ACM 托管续期范围；续期后 ARN 不变，且证书是区域资源，多地域需分别续期。本场景据此输出通用检查表。禁止声称「已自动续期成功」。`,
+    outcomes: [
+      "源未披露量化「可减少多少次证书过期事故」；公开文只描述托管续期资格、通知方式与区域独立性。",
+      "到期前有统一核对项，减少「以为会自动续」的误判。",
+      "多地域/导入证书分支被单独列出，方便排班。",
+    ],
+    caveats: [
+      "各云/CDN 的自动续期规则不同；ACM 页作托管续期机制参考。",
+      "邮件校验依赖能收到通知的邮箱；垃圾箱误伤需另查。",
+      "上面写的是 AWS 文档能力说明，不是你的证书库存健康报告。",
+    ],
+    prompts: [
+      {
+        title: "证书续期资格与到期检查表",
+        body: `你是 TLS 证书续期检查助手。只根据用户提供的证书台账分级，不要编造续期成功。
+
+证书台账：{{cert_inventory}}
+绑定服务与校验方式：{{bindings}}
+距到期天数：{{days_left}}
+
+输出 Markdown：
+1. 分级：疑似可自动续期 / 需人工续期或重新申请 / 信息不足
+2. 到期前 D-30/D-14/D-7 动作清单
+3. 失败分支（导入证、已过期、未关联服务、多地域漏续）
+4. 给值班群的提醒文案
+禁止声称已完成 DNS 校验或已续期；禁止索要私钥。`,
+      },
+      {
+        title: "续期失败复盘提纲",
+        body: `证书续期或校验失败，请写复盘提纲。
+
+现象：{{symptom}}
+证书类型与校验方式：{{cert_type}}
+已做动作：{{actions}}
+
+输出：
+1. 可能根因（校验失败/资格不符/区域遗漏/通知未达）
+2. 证据要看什么
+3. 临时缓解（备用证、切换监听）仅作建议
+4. 防再发（台账字段、告警）
+不要伪造「零中断」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html",
+      label: "AWS Documentation · Managed certificate renewal in AWS Certificate Manager",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "277",
+    slug: "secrets-manager-rotation-checklist",
+    title: "密钥/凭据轮换检查表",
+    summary: "按托管轮换、外部托管与 Lambda 轮换路径，生成双端更新顺序、回滚与验证清单；不代执行生产轮换。",
+    description:
+      "面向独立开发者与平台安全：把 Secrets/DB 密码轮换写成可执行检查表，区别于 Webhook 验签排障与 OIDC 登录分诊。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+    sourceLabel: "AWS Docs·Rotate AWS Secrets Manager secrets",
+    upvotes: 187,
+    trending: false,
+    tags: [
+      "密钥轮换",
+      "Secrets Manager",
+      "凭据",
+      "安全运营",
+      "Runbook",
+    ],
+    howItWorks: [
+      "说明密钥类型（DB/API/第三方）、当前轮换方式、消费方列表与窗口",
+      "Agent 输出：轮换路径选择提问、双端更新顺序、验证与回滚、沟通稿",
+      "人工在密钥平台/应用配置执行；Agent 不保存明文密钥",
+    ],
+    tips: [
+      "轮换=密钥库与下游服务两端都要更新；只改一边等于制造全站 401",
+      "与 webhook-signature-verify-fail-triage / oidc-sso-login-error-triage 不同：本条是计划内轮换检查表，不是验签/登录失败分诊",
+    ],
+    approach: `密钥轮换最怕「控制台显示成功，应用还在读旧值」。本地化做法是轮换前用 Agent 填一张双端检查表，明确谁先谁后、如何验证、如何回滚。
+
+AWS Secrets Manager 文档将轮换定义为周期性更新密钥，并且要同时更新密钥存储与数据库/服务中的凭据；可配置自动轮换，路径包括：托管轮换（多数托管密钥，由服务配置管理，不使用 Lambda）、托管外部密钥轮换（合作伙伴系统侧更新，亦无需 Lambda）、以及通过 Lambda 函数轮换其他类型密钥。本场景据此输出通用轮换检查表与验证项。禁止在对话中回显或索要明文密钥；禁止声称已完成生产轮换。`,
+    outcomes: [
+      "源未披露量化「轮换成功率或耗时」；公开文只描述轮换定义与托管/Lambda 等路径。",
+      "轮换窗口有双端顺序与验证点，减少半新旧凭据事故。",
+      "回滚条件可预先写进变更单。",
+    ],
+    caveats: [
+      "不同密钥类型的托管轮换支持范围以控制台/文档为准；本页为总述。",
+      "应用侧缓存旧密钥会导致轮换后仍失败，需纳入验证。",
+      "上面写的是 Secrets Manager 能力说明，不是你的密钥合规审计结论。",
+    ],
+    prompts: [
+      {
+        title: "凭据轮换检查表",
+        body: `你是密钥/凭据轮换检查表助手。不要索要或回显明文密钥，只用占位符。
+
+密钥类型与用途：{{secret_type}}
+消费方列表：{{consumers}}
+当前轮换方式（可空）：{{rotation_mode}}
+变更窗口：{{window}}
+
+输出 Markdown：
+1. 建议路径提问：托管轮换 / 外部托管 / Lambda/自建脚本 / 信息不足
+2. 双端更新顺序（密钥库 ↔ 下游）
+3. 验证清单（健康检查、登录/连接探测用假环境优先）
+4. 回滚条件与步骤提纲
+5. 变更群通知模板
+禁止输出示例真实密码；禁止声称已轮换成功。`,
+      },
+      {
+        title: "轮换失败分诊",
+        body: `轮换后出现认证失败，请分诊。
+
+错误摘要：{{errors}}
+时间线：{{timeline}}
+是否双端都已更新：{{both_sides}}
+
+输出：
+1. 根因候选（只更一端、缓存、权限、错误密钥版本）
+2. 立即缓解
+3. 需要收集的证据（无明文）
+4. 给值班的短消息
+不要要求粘贴 SecretString。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+      label: "AWS Documentation · Rotate AWS Secrets Manager secrets",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "278",
+    slug: "sqs-dlq-poison-message-triage",
+    title: "死信队列毒丸消息分诊",
+    summary: "根据 DLQ 堆积与消费失败日志，分诊毒丸、超时与 maxReceiveCount，生成隔离分析与 redrive 前检查表；不自动 redrive 生产队列。",
+    description:
+      "面向独立开发者与企业自动化：把死信队列里的失败消息变成可执行分诊包，区别于 API 限流应急与 Webhook 验签失败。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+    sourceLabel: "AWS Docs·Using dead-letter queues in Amazon SQS",
+    upvotes: 216,
+    trending: false,
+    tags: [
+      "DLQ",
+      "死信队列",
+      "毒丸消息",
+      "SQS",
+      "消息队列",
+    ],
+    howItWorks: [
+      "粘贴 DLQ 深度/样例消息摘要（脱敏）、源队列 maxReceiveCount、消费者超时与错误日志",
+      "Agent 输出：失败分类、是否像毒丸、分析步骤、redrive 前检查与告警建议",
+      "人工在控制台分析/redrive；Agent 不调用收发 API、不改队列策略",
+    ],
+    tips: [
+      "maxReceiveCount 过低会把偶发超时也打进 DLQ；先分清「真坏消息」与「来不及处理」",
+      "与 api-throttle-quota-incident-runbook 不同：本条是队列消费失败/毒丸，不是云 API 限流",
+    ],
+    approach: `DLQ 一涨，别急着全量 redrive——可能把毒丸消息重新砸回源队列。本地化做法是先让 Agent 做隔离分诊：看样例、重试次数与消费者日志，再决定修代码还是有限 redrive。
+
+Amazon SQS 文档说明：源队列可将未能成功处理的消息投递到死信队列以便调试；DLQ 须与源队列同账户同地域；进入 DLQ 后可查异常日志、分析消息内容、判断消费者是否时间不足，并可用 dead-letter queue redrive 移回；需先创建队列再配置为 DLQ；通过 redrive policy 的 maxReceiveCount 控制转入阈值；FIFO 场景若不能打乱顺序则应谨慎使用 DLQ。本场景输出通用毒丸分诊与 redrive 前检查表。禁止自动对生产队列执行 redrive。`,
+    outcomes: [
+      "源未披露量化「平均多快清空 DLQ」；公开文只描述 DLQ 用途、同区域约束、分析步骤与 maxReceiveCount/redrive。",
+      "值班先隔离分析，减少盲目 redrive 放大故障。",
+      "告警与 maxReceiveCount 调参有讨论提纲。",
+    ],
+    caveats: [
+      "其他消息中间件（RocketMQ/Kafka）的死信语义不同；SQS 页作机制参考。",
+      "消息体可能含 PII，分析前先脱敏。",
+      "上面写的是 SQS 开发者指南说明，不是你的队列实时积压诊断。",
+    ],
+    prompts: [
+      {
+        title: "DLQ 毒丸分诊表",
+        body: `你是死信队列分诊助手。只根据脱敏摘要分析，不要编造 redrive 结果。
+
+DLQ 深度与时间窗：{{depth}}
+样例消息摘要（已脱敏）：{{samples}}
+maxReceiveCount / 可见性超时：{{policy}}
+消费者错误日志：{{errors}}
+
+输出 Markdown：
+1. 分类：毒丸/契约不兼容 / 超时来不及处理 / 下游依赖故障 / 信息不足
+2. 优先检查项
+3. 是否建议 redrive：前提条件与批次策略（人工执行）
+4. 代码/配置修复候选
+5. 告警建议
+禁止声称已 redrive；禁止要求粘贴含密钥的完整消息体。`,
+      },
+      {
+        title: "redrive 前变更沟通稿",
+        body: `准备有限 redrive，写变更沟通稿。
+
+计划批次与过滤条件：{{plan}}
+残留风险：{{risks}}
+
+输出：
+1. 给值班群的短消息
+2. 回滚/暂停条件
+3. 成功判定指标
+不要承诺「零丢失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+      label: "AWS Documentation · Using dead-letter queues in Amazon SQS",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "279",
+    slug: "browser-cors-preflight-fail-triage",
+    title: "浏览器 CORS/预检失败分诊",
+    summary: "根据控制台 CORS 报错与请求方法/头，分诊简单请求与预检、Allow-Origin/凭证模式；只出修复清单，不代改生产网关。",
+    description:
+      "面向独立开发者与前端/BFF：把「Blocked by CORS policy」翻译成可执行分诊表，区别于 OIDC 登录错误码与 Webhook 签名失败。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+    sourceLabel: "MDN Web Docs·Cross-Origin Resource Sharing (CORS)",
+    upvotes: 152,
+    trending: false,
+    tags: [
+      "CORS",
+      "预检",
+      "Access-Control",
+      "前端排障",
+      "BFF",
+    ],
+    howItWorks: [
+      "粘贴浏览器控制台报错原文、请求方法/自定义头、是否带 cookie、前后端域名",
+      "Agent 判断更像简单请求还是预检失败，并列出服务端响应头核对项与最小复现",
+      "人工改 API 网关/后端 CORS 配置；Agent 不部署、不关浏览器安全策略",
+    ],
+    tips: [
+      "CORS 失败细节对 JS 不可见是预期行为；要以 Network 面板的 OPTIONS/实际响应头为准",
+      "与 oidc-sso-login-error-triage 不同：本条是浏览器跨源策略，不是 IdP 错误码",
+    ],
+    approach: `联调最常见的红字是 \`blocked by CORS policy\`。很多人一上来就 \`*\` 放行，却忽略预检、自定义头和 credentials。本地化做法是让 Agent 先分「简单请求还是 preflight」，再给响应头核对表。
+
+MDN《CORS》说明：跨源请求可能先发预检（preflight）以确认服务器允许实际请求；部分请求不触发预检（旧称 simple requests，现由 Fetch 规范定义）；服务器通过 \`Access-Control-Allow-Origin\` 等头决定是否与脚本共享响应；涉及 Cookie/HTTP 认证等 credentials 时有额外约束；出于安全，CORS 失败对 JavaScript 不可见具体细节。本场景输出分诊表与网关改配提纲。禁止建议「关闭浏览器同源策略」作为正式方案。`,
+    outcomes: [
+      "源未披露量化「平均多快修好 CORS」；公开文只描述预检、简单请求、允许源与凭证相关行为及错误对 JS 不可见。",
+      "前后端对齐要看的响应头，减少互相甩锅。",
+      "最小复现步骤可留给联调文档。",
+    ],
+    caveats: [
+      "CDN/API 网关可能剥离 OPTIONS；需在真正源站确认。",
+      "本地开发代理与生产 CORS 配置常不一致，勿只在本地验证。",
+      "上面写的是 MDN 规范说明，不是对你站点的安全审计。",
+    ],
+    prompts: [
+      {
+        title: "CORS/预检失败分诊",
+        body: `你是浏览器 CORS 分诊助手。只根据控制台与请求元数据排查，不要编造已生效的响应头。
+
+控制台报错：{{console_error}}
+方法/URL/自定义头：{{request}}
+是否 credentials/cookie：{{credentials}}
+前后端域名：{{origins}}
+
+输出 Markdown：
+1. 定性：简单请求被拒 / 预检失败 / 凭证模式不匹配 / 重定向丢头 / 信息不足
+2. 应核对的响应头清单（Allow-Origin/Methods/Headers/Credentials/Max-Age）
+3. 最小复现（curl OPTIONS + 实际请求提纲）
+4. 服务端改配建议（按优先级）
+禁止建议用户安装「允许跨域」不安全扩展作为生产方案；禁止声称已修复上线。`,
+      },
+      {
+        title: "联调说明给后端",
+        body: `把 CORS 需求写成给后端/网关的简短说明。
+
+前端源列表：{{allowed_origins}}
+需要的方法与头：{{methods_headers}}
+是否带 cookie：{{cookies}}
+
+输出：
+1. 期望响应头示例（占位符）
+2. 预检是否必须
+3. 测试用例 3 条
+4. 安全注意（不要随意 * + credentials）
+语气中性，便于贴进工单。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+      label: "MDN Web Docs · Cross-Origin Resource Sharing (CORS)",
+      date: "2026-10-28",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "280",
+    slug: "k8s-pending-pod-debug-brief",
+    title: "Kubernetes Pending Pod 调度分诊",
+    summary: "根据 Pending 原因与 describe 摘要，分诊资源不足、亲和/污点与 PVC，生成排查顺序与对外说明；不代改集群调度。",
+    description:
+      "面向独立开发者与平台工程：把 Pod 一直 Pending 收成可读分诊简报，区别于灰度回滚、OOM 日志与配置漂移。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
+    sourceLabel: "Kubernetes Docs·Debug Pods",
+    upvotes: 208,
+    trending: false,
+    tags: [
+      "Kubernetes",
+      "Pending",
+      "调度",
+      "排障",
+      "kubectl",
+    ],
+    howItWorks: [
+      "粘贴 `kubectl describe pod` / 事件摘要（可脱敏）、资源请求与节点池概况",
+      "Agent 输出：Pending 根因候选、检查顺序、临时缓解与给业务的说明",
+      "人工用 kubectl/控制台调整；Agent 不持有 kubeconfig、不自动扩容",
+    ],
+    tips: [
+      "先读 Events 里的 FailedScheduling 原因，再猜镜像或业务逻辑",
+      "与 canary-release-rollback-checklist / ecs-oom-killer-log-triage-agent 不同：本条是调度不上去，不是发布回滚或节点 OOM",
+    ],
+    approach: `Pod 一直 \`Pending\` 时，业务只看到「服务没起来」。值班需要把调度失败翻译成：CPU/内存不够、污点/亲和不匹配，还是 PVC 绑不上。本地化做法是让 Agent 吃 describe 摘要，吐分诊简报。
+
+Kubernetes 文档《Debug Pods》说明：若 Pod 卡在 Pending，表示无法被调度到节点，通常是因为某类资源不足以完成调度；应查看 \`kubectl describe\` 输出中的信息以定位原因。本场景在此基础上输出通用检查顺序（资源请求、节点选择/亲和、污点容忍、PVC/存储类、资源配额）与沟通稿。禁止在未提供集群状态时声称「已调度成功」。`,
+    outcomes: [
+      "源未披露量化「平均多快从 Pending 恢复」；公开文只描述 Pending 表示无法调度及应查看 describe 输出。",
+      "排障有固定顺序，减少盲目扩容。",
+      "给业务方的白话说明可复用。",
+    ],
+    caveats: [
+      "托管 Kubernetes（ACK/EKS 等）的节点组扩容入口不同，缓解步骤需本地化。",
+      "Pending 也可能来自准入控制器/配额，不只是 CPU 内存。",
+      "上面写的是 Kubernetes 官方调试说明，不是你的集群现场结论。",
+    ],
+    prompts: [
+      {
+        title: "Pending Pod 分诊简报",
+        body: `你是 Kubernetes Pending 分诊助手。只根据用户提供的 describe/事件摘要分析，不要编造集群容量。
+
+describe/事件摘要：{{describe}}
+资源 requests/limits：{{resources}}
+节点池/污点/亲和（已知）：{{scheduling}}
+
+输出 Markdown：
+1. 根因候选（资源不足 / 亲和污点 / PVC / 配额 / 信息不足）
+2. 检查顺序（每步看什么字段）
+3. 临时缓解建议（扩容、放宽调度、修 PVC——均标「人工执行」）
+4. 给业务的非技术说明
+禁止声称已调度成功；禁止要求粘贴完整 kubeconfig 或云密钥。`,
+      },
+      {
+        title: "恢复后复盘提纲",
+        body: `Pending 已解决，写短复盘。
+
+最终原因：{{root_cause}}
+处置：{{fix}}
+
+输出：
+1. 时间线
+2. 监测改进（Pending 时长告警）
+3. 容量/配额改进行
+4. 下次预防检查项
+不要伪造 SLO 达标声明。`,
+      },
+    ],
+    primarySource: {
+      url: "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
+      label: "Kubernetes Documentation · Debug Pods",
+      date: "2026-08-24",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
