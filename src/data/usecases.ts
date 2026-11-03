@@ -12293,6 +12293,451 @@ describe/事件摘要：{{describe}}
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "281",
+    slug: "s3-bucket-public-access-block-audit",
+    title: "对象存储公有访问阻断自检",
+    summary: "按账号/桶/接入点层级核对 Block Public Access 四项设置与最严组合，输出例外清单与整改优先级；不代改桶策略。",
+    description:
+      "面向独立开发者与企业安全运营：把「桶会不会被公网扫到」写成可勾选审计表，区别于密钥轮换与日志 PII 脱敏。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+    sourceLabel: "AWS Docs·Blocking public access to your Amazon S3 storage",
+    upvotes: 163,
+    trending: false,
+    tags: [
+      "S3",
+      "Block Public Access",
+      "公有访问",
+      "桶安全",
+      "审计",
+    ],
+    howItWorks: [
+      "粘贴账号/桶/接入点的 Block Public Access 开关与现有桶策略/ACL 摘要",
+      "Agent 按组织→账号→桶→接入点最严组合输出：已阻断 / 例外风险 / 信息不足",
+      "人工在对象存储控制台改设置；Agent 不持有云凭证、不代改策略",
+    ],
+    tips: [
+      "新桶默认常已阻断公有访问，但历史桶与组织策略覆盖关系才是审计重点",
+      "与 secrets-manager-rotation-checklist / log-pii-masking-policy-audit 不同：本条只管对象存储公有访问面",
+    ],
+    approach: `对象存储一旦误开公有读/写，扫描器比你先发现。常见误判是「桶策略写了 Deny」却忘了 ACL/接入点仍放行，或组织级阻断与桶级关闭谁更严搞不清。
+
+Amazon S3 Block Public Access 文档说明：可在组织、账号、桶与接入点层级配置阻断公有访问；提供四项独立设置，可任意组合；组织级则四项作为统一策略一并生效。评估请求时若组织/账号/桶/接入点设置不一致，S3 取最限制的组合；若某设置禁止该访问则拒绝请求。公有访问可通过 ACL、接入点策略、桶策略等授予；建议账号开启全部四项，组织多账号可配合 Organizations 策略。本场景据此输出通用自检表。禁止声称「已确认全账号无公有桶」。`,
+    outcomes: [
+      "源未披露量化「可减少多少次公有泄露」；公开文只描述多层级阻断、四项设置与最严组合求值。",
+      "例外桶与历史 ACL 被单独列出，方便排整改优先级。",
+      "组织策略与桶级冲突时可解释「为何看起来关了仍被挡」。",
+    ],
+    caveats: [
+      "各云对象存储的「防公有」开关名称不同；本页作 S3 BPA 机制参考。",
+      "合法的静态网站/公开素材桶可能需要受控例外，勿一刀切关停业务。",
+      "上面写的是文档能力说明，不是你的账号扫描报告。",
+    ],
+    prompts: [
+      {
+        title: "公有访问阻断审计表",
+        body: `你是对象存储公有访问审计助手。只根据用户提供的设置分级，不要编造已扫描全账号。
+
+账号/组织 BPA 设置：{{account_bpa}}
+桶与接入点清单：{{bucket_inventory}}
+已知例外业务：{{exceptions}}
+
+输出 Markdown：
+1. 分级：已充分阻断 / 存在公有风险例外 / 信息不足
+2. 按桶列出：四项设置推断、策略/ACL 冲突提示、优先级
+3. 整改建议顺序（先高敏桶）
+4. 给安全群的一句话摘要
+禁止声称已改控制台；禁止索要 Access Key。`,
+      },
+      {
+        title: "误开公有读应急提纲",
+        body: `疑似桶被公有可读，请写应急提纲。
+
+现象：{{symptom}}
+桶名与区域：{{bucket}}
+已做动作：{{actions}}
+
+输出：
+1. 立刻要核的控制面（BPA/策略/ACL/接入点）
+2. 临时缓解（开阻断、收紧策略）仅作建议
+3. 取证要点（访问日志、谁改过策略）
+4. 防再发（组织策略、变更审批）
+不要伪造「零泄露」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+      label: "AWS Documentation · Blocking public access to your Amazon S3 storage",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "282",
+    slug: "alb-target-health-check-fail-triage",
+    title: "负载均衡目标健康检查失败分诊",
+    summary: "按健康检查协议/路径/阈值与 fail-open 行为，把目标组异常分成配置误伤、实例真挂、全区全挂，输出分诊包；不代改监听。",
+    description:
+      "面向独立开发者与 SRE：把 ALB/类 ALB 目标组「全红」变成可执行分诊，区别于 API 限流事故与 K8s Pending 调度。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+    sourceLabel: "AWS Docs·Health checks for Application Load Balancer target groups",
+    upvotes: 194,
+    trending: false,
+    tags: [
+      "ALB",
+      "健康检查",
+      "目标组",
+      "负载均衡",
+      "排障",
+    ],
+    howItWorks: [
+      "粘贴目标组健康状态、检查路径/端口/协议、阈值与近期发布变更",
+      "Agent 输出：疑似配置误伤 / 后端真故障 / 全区 fail-open 风险 / 信息不足",
+      "人工在负载均衡与主机侧验证；Agent 不代切流量",
+    ],
+    tips: [
+      "健康检查失败不等于业务 API 失败：路径/状态码期望配错会「误杀」健康实例",
+      "与 api-throttle-quota-incident-runbook / k8s-pending-pod-debug-brief 不同：本条是 LB 目标健康分诊",
+    ],
+    approach: `负载均衡控制台一片红时，第一反应常是「机器挂了」，其实一半是健康检查路径改错、期望状态码过严，或安全组挡了检查端口。
+
+Application Load Balancer 目标组健康检查文档说明：LB 节点定期向已注册目标发健康检查，只向健康目标转发（在已启用的 AZ 内）；目标注册后需至少通过一次检查才算健康；检查结束后关闭该次连接。若目标组内注册目标全部不健康，负载均衡会 fail open——仍按算法把流量打到全部目标（不论健康状态）。健康检查不支持 WebSockets。可配置协议（HTTP/HTTPS）、端口、路径、间隔、不健康/健康连续阈值等；连续失败达到 UnhealthyThresholdCount 会摘流，连续成功达到 HealthyThresholdCount 会重新入流。注销目标会减少 HealthyHostCount 但不增加 UnhealthyHostCount。本场景据此输出分诊包。禁止声称「已自动摘流完成」。`,
+    outcomes: [
+      "源未披露量化「平均多快恢复健康主机数」；公开文只描述检查机制、阈值与全不健康时 fail-open。",
+      "配置误伤与真实后端故障被分开，减少盲目扩容。",
+      "全区全红时提示 fail-open 含义，避免误判「LB 已挡住坏节点」。",
+    ],
+    caveats: [
+      "各云/自建 LB 的健康检查字段名不同；本页作 ALB 机制参考。",
+      "fail-open 是保护可用性的行为，不是「已经修好」。",
+      "上面写的是文档能力说明，不是你的目标组实时诊断。",
+    ],
+    prompts: [
+      {
+        title: "目标健康失败分诊包",
+        body: `你是负载均衡目标健康分诊助手。只根据用户描述分级，不要编造已摘流成功。
+
+目标组状态摘要：{{tg_status}}
+健康检查配置：{{hc_settings}}
+近期变更：{{recent_changes}}
+
+输出 Markdown：
+1. 分级：配置误伤嫌疑 / 后端故障嫌疑 / 疑似全区 fail-open / 信息不足
+2. 要核对的证据（路径状态码、安全组、主机本地 curl、LB 原因码）
+3. 临时缓解建议（修路径、扩容、回滚发布）仅建议
+4. 值班群简报
+禁止声称已修改目标组；禁止索要云账号。`,
+      },
+      {
+        title: "健康检查配置变更评审",
+        body: `准备改健康检查，请写评审清单。
+
+拟改字段：{{proposed}}
+当前业务探活方式：{{probe}}
+流量高峰窗口：{{peak_window}}
+
+输出：
+1. 风险点（过严阈值、错误路径、HTTPS 证书、WebSocket）
+2. 灰度验证步骤
+3. 回滚条件
+4. 观测指标
+不要伪造「零中断」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+      label: "AWS Documentation · Health checks for Application Load Balancer target groups",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "283",
+    slug: "cloudfront-cache-invalidation-checklist",
+    title: "CDN 缓存失效与版本化发布检查表",
+    summary: "对照失效路径 vs 文件名版本化的取舍、费用与边缘残留，生成发布后刷新检查表；不代提交失效请求。",
+    description:
+      "面向独立开发者与前端/运维：把「发版后用户仍看到旧静态资源」写成可执行清单，区别于灰度回滚与特性开关归档。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html",
+    sourceLabel: "AWS Docs·Invalidate files to remove content",
+    upvotes: 217,
+    trending: false,
+    tags: [
+      "CDN",
+      "CloudFront",
+      "缓存失效",
+      "版本化",
+      "静态资源",
+    ],
+    howItWorks: [
+      "说明分发域名、变更路径、是否已用内容哈希文件名、是否必须立即刷新",
+      "Agent 输出：优先版本化 / 需要失效 / 混合策略，以及路径通配注意点与沟通稿",
+      "人工在 CDN 控制台提交失效或改对象键；Agent 不代付费失效",
+    ],
+    tips: [
+      "频繁发版优先文件名版本化；失效清不掉用户本地/公司代理缓存",
+      "与 canary-release-rollback-checklist / feature-flag-zombie-archive-audit 不同：本条只管边缘缓存刷新策略",
+    ],
+    approach: `前端发版后「我这边还是旧 CSS」是经典值班题。很多人第一反应是狂点 Invalidate，却忽略：浏览器与公司代理缓存不会因 CDN 失效而立刻更新，而且通配失效既贵又容易误伤。
+
+Amazon CloudFront 失效文档说明：若要在过期前从边缘缓存移除文件，可以失效该文件（下次请求回源取最新），或使用版本化文件名提供不同对象。若需频繁更新，文档更推荐版本化，原因包括：即使用户/代理本地仍缓存旧名也不影响新名；访问日志更好分析；可给不同用户不同版本；前进/回滚更简单；通常比付费失效更省。失效适合必须踢掉旧对象键的场景。本场景据此输出发布检查表。禁止声称「全球边缘已全部刷新完毕」。`,
+    outcomes: [
+      "源未披露量化「失效多久全球一致」；公开文只描述失效与版本化取舍及版本化优势。",
+      "发版沟通能说清「CDN 失效 ≠ 用户本地缓存已清」。",
+      "减少无必要的大范围 /* 失效费用与误伤。",
+    ],
+    caveats: [
+      "各 CDN 的失效 API/配额/计费不同；本页作 CloudFront 机制参考。",
+      "HTML 入口未版本化时，仍可能需要针对少量路径失效。",
+      "上面写的是文档能力说明，不是你的分发实时状态。",
+    ],
+    prompts: [
+      {
+        title: "静态资源发版刷新检查表",
+        body: `你是 CDN 缓存刷新助手。只根据用户发版信息给建议，不要编造失效已完成。
+
+变更文件/路径：{{changed_paths}}
+是否内容哈希文件名：{{hashed}}
+分发与环境：{{distribution}}
+
+输出 Markdown：
+1. 建议策略：仅版本化 / 精确路径失效 / 混合
+2. 若失效：路径列表、通配风险、费用提醒
+3. 验证步骤（不同地区 curl、缓存头）
+4. 给用户的说明话术（本地强刷）
+禁止声称已提交失效；禁止索要云账号。`,
+      },
+      {
+        title: "旧资源残留复盘提纲",
+        body: `发版后仍见旧资源，请写复盘提纲。
+
+现象：{{symptom}}
+已做失效/发版动作：{{actions}}
+缓存头样例：{{cache_headers}}
+
+输出：
+1. 可能层（源、边缘、浏览器、代理）
+2. 证据怎么取
+3. 临时缓解
+4. 防再发（哈希命名、短 TTL HTML）
+不要伪造「已全球一致」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html",
+      label: "AWS Documentation · Invalidate files to remove content",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "284",
+    slug: "lambda-concurrency-throttle-triage",
+    title: "函数并发预留与节流分诊",
+    summary: "按预留并发与预置并发差异，把超时/429/下游打满分成账号池争用、预留过小、预留过猛，输出分诊与估算提问；不代改生产并发。",
+    description:
+      "面向独立开发者与平台工程：把 Serverless「突然大量 Throttle」写成并发配置分诊，区别于 API 网关配额事故与 SQS 毒丸。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
+    sourceLabel: "AWS Docs·Configuring reserved concurrency for a Lambda function",
+    upvotes: 131,
+    trending: false,
+    tags: [
+      "Lambda",
+      "并发",
+      "Throttle",
+      "预留并发",
+      "冷启动",
+    ],
+    howItWorks: [
+      "粘贴函数名、并发指标/Throttle 曲线、是否设预留/预置、下游瓶颈（DB 连接等）",
+      "Agent 输出：账号共享池争用 / 预留上限过小 / 预留过大挤占他人 / 需预置降冷启动 / 信息不足",
+      "人工在函数配置调整；Agent 不代改并发数值",
+    ],
+    tips: [
+      "预留并发既保底也封顶：给关键函数预留会减少其他函数可用池",
+      "与 api-throttle-quota-incident-runbook / sqs-dlq-poison-message-triage 不同：本条是函数级并发与节流分诊",
+    ],
+    approach: `Serverless 一打满，表面是超时和重试风暴，根因经常是并发池：没预留被邻居挤爆，或预留太小自己打满，或预留太大把账号池抽干。
+
+AWS Lambda 预留并发文档说明：并发是函数正在处理的飞行中请求数。预留并发（reserved concurrency）为函数同时设定最大与最小可用并发实例数——预留后其他函数不能占用该配额；既可保证关键函数容量，也可限制并发以免压垮下游（如数据库连接）；配置预留并发本身通常不加收费用。预置并发（provisioned concurrency）则是预先初始化的执行环境，用于降低冷启动，适合对延迟敏感的交互式负载，并会产生额外费用；异步流水线往往不需要。另有事件源（如部分 MQ 映射）自带默认最大并发上限，设置预留/预置不一定改变这些上限。本场景据此输出分诊包。禁止声称「已消除全部 Throttle」。`,
+    outcomes: [
+      "源未披露量化「Throttle 下降百分之几」；公开文只描述预留/预置定义、用途与费用差异。",
+      "能把「函数节流」与「API 网关配额」分开排查。",
+      "调整前有提问清单，减少盲目把预留拉满。",
+    ],
+    caveats: [
+      "账号级并发配额与区域有关；本页不替代 Service Quotas 查询。",
+      "预置并发降冷启动但不解决业务逻辑慢或下游锁。",
+      "上面写的是文档能力说明，不是你的函数实时容量报告。",
+    ],
+    prompts: [
+      {
+        title: "函数并发节流分诊",
+        body: `你是 Serverless 并发分诊助手。只根据用户指标分级，不要编造已调高配额。
+
+现象与指标：{{metrics}}
+当前预留/预置设置：{{concurrency_config}}
+下游依赖：{{downstream}}
+
+输出 Markdown：
+1. 分级：共享池争用 / 预留过小 / 预留过大挤占 / 冷启动为主 / 信息不足
+2. 要看的控制台/指标项
+3. 调整建议与回滚条件（仅建议）
+4. 值班摘要
+禁止索要云密钥；禁止声称已修改并发。`,
+      },
+      {
+        title: "预留并发估算提问单",
+        body: `准备给函数设预留并发，请写估算前提问单。
+
+函数角色：{{role}}
+峰值 RPS/并发观测：{{peak}}
+同账号其他关键函数：{{siblings}}
+
+输出：
+1. 必问问题（峰值、持续时间、下游连接上限）
+2. 粗算思路（不编造具体配额数字结果）
+3. 风险（挤占、费用—若涉及预置）
+4. 验证计划
+不要伪造「保证零 Throttle」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
+      label: "AWS Documentation · Configuring reserved concurrency for a Lambda function",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "285",
+    slug: "iam-unused-access-key-audit",
+    title: "闲置访问密钥与控制台密码清理审计",
+    summary: "按凭证报告与最后使用时间，生成闲置访问密钥/控制台密码候选清单与停用/删除顺序；不代停用生产密钥。",
+    description:
+      "面向独立开发者与企业安全：把「离职账号/僵尸 AK」清理写成可审检查表，区别于 Secrets 轮换与对象存储公有访问阻断。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html",
+    sourceLabel: "AWS Docs·Find unused AWS credentials",
+    upvotes: 178,
+    trending: false,
+    tags: [
+      "IAM",
+      "Access Key",
+      "闲置凭证",
+      "凭证报告",
+      "安全审计",
+    ],
+    howItWorks: [
+      "粘贴凭证报告摘要或控制台「Access key last used / Console last sign-in」列导出",
+      "Agent 按组织定义的闲置窗口输出：建议停用 / 建议删除前确认 / 信息不足",
+      "人工在 IAM 执行停用或删除；Agent 不保存明文密钥、不代操作账号",
+    ],
+    tips: [
+      "闲置定义因组织而异；先停用观察再删除，比直接删更稳",
+      "与 secrets-manager-rotation-checklist / s3-bucket-public-access-block-audit 不同：本条是 IAM 用户凭证闲置清理",
+    ],
+    approach: `安全审计最怕「人走了密钥还在」。真正难的不是会不会删，而是如何用最后使用时间证明「闲置」，以及避免误杀仍在跑的自动化账号。
+
+AWS IAM《Find unused AWS credentials》说明：为提高账号安全，应移除不再需要的 IAM 用户凭证（控制台密码与访问密钥）；人员离职或不再需要访问时，应找到其凭证并确保失效——理想情况是删除，至少应改密或停用访问密钥。闲置通常指在指定时间窗口内未使用。控制台可查看 Console last sign-in、Access key last used，或下载凭证报告（含 password_last_used 等列）；也可用 CLI/API（如 list-users 的 PasswordLastUsed）。访问密钥「上次使用」可用于发现长期未编程访问的密钥。文档提醒历史上曾有密码最后使用数据缺口区间，若仅用密码最后使用做删除决策需调整评估窗口，或改用访问密钥最后使用信息。本场景据此输出清理审计表。禁止声称「已删除全部闲置密钥」。`,
+    outcomes: [
+      "源未披露量化「可降低多少凭证泄露面」；公开文只描述如何发现闲置密码/访问密钥与报告字段。",
+      "离职与自动化账号可分开策略（先停用再删）。",
+      "审计有统一闲置窗口与例外栏，减少口口相传。",
+    ],
+    caveats: [
+      "各云「用户 AK / 子用户」模型不同；本页作 IAM 机制参考。",
+      "服务账号可能「很久才跑一次」——闲置窗口要结合业务日历。",
+      "上面写的是文档能力说明，不是你的账号凭证扫描结果。",
+    ],
+    prompts: [
+      {
+        title: "闲置凭证清理审计表",
+        body: `你是 IAM 闲置凭证审计助手。只根据用户提供的报告分级，不要编造已停用密钥。
+
+凭证报告或列表示意：{{credential_report}}
+闲置窗口（天）：{{idle_days}}
+已知服务账号例外：{{exceptions}}
+
+输出 Markdown：
+1. 候选：建议停用 / 建议删除前再确认 / 例外保留 / 信息不足
+2. 每个候选的理由（最后使用、类型密码或 AK）
+3. 执行顺序与观察期建议
+4. 给安全负责人的摘要
+禁止索要 Secret Access Key；禁止声称已在控制台删除。`,
+      },
+      {
+        title: "误停用密钥应急提纲",
+        body: `疑似误停用了仍在使用的访问密钥，请写应急提纲。
+
+影响现象：{{symptom}}
+用户/密钥标识（无密钥明文）：{{key_id}}
+已做动作：{{actions}}
+
+输出：
+1. 立刻恢复路径（重新启用/轮换新密钥）
+2. 要通知的消费方
+3. 根因（闲置窗口过短、例外表缺失）
+4. 防再发
+不要伪造「零故障时间」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html",
+      label: "AWS Documentation · Find unused AWS credentials",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
