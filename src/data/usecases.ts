@@ -29728,6 +29728,456 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "476",
+    slug: "datadog-stream-router-ai-assisted-migration",
+    title: "Datadog：Claude+Cursor 测驱迁 Stream Router——估 45 分钟操作→约 1 秒，库费约 -90%",
+    summary: "团队；披露设计到生产约 3 个月（PoC 约 4 周）、估 45 分钟操作→约 1 秒（近 3000×）、数据集约 40× 缩小、库费约 -90%、蓝绿校验约每 30 秒；Claude+Cursor；不代你无人值守切生产路由。",
+    description:
+      "面向要把关键控制面迁到新存储却不敢放手代理的数据基础设施团队：把「人定 schema + 单方法测驱收敛 + 蓝绿对照」写成门禁，区别于 ECS→EKS harness 与 CVE 批准才开 PR。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.datadoghq.com/blog/engineering/ai-assisted-storage-migration/",
+    sourceLabel: "Datadog Engineering·Arnold Wakim 实践帖",
+    upvotes: 367,
+    trending: false,
+    tags: [
+      "Datadog",
+      "Claude",
+      "Cursor",
+      "迁移",
+      "测驱",
+    ],
+    howItWorks: [
+      "粘贴控制面/存储现状、接口边界与「绝不可盲切流量」清单",
+      "Agent 按实践帖输出：意图地图→单方法 stub/测驱循环→蓝绿对照门禁提纲",
+      "人工保留 schema 设计、SQL 性能与切流；Agent 不代你保证「必 3000× 或 -90% 库费」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-06-23T00:00:00.000Z → 2026-06-23；页内 Published Jun 23, 2026）：Datadog 工程师 Arnold Wakim 写 Stream Router（指标管线路由控制面）从 FoundationDB KV 迁到 PostgreSQL 写路径 + DuckDB 读快照。人先定关系型 schema；Claude/Cursor 做测驱实现，非自治写代码——每次给旧实现、新 schema、失败测试。三前提：Controller 接口可替换实现、端到端测套作通过判据、蓝绿双实例+校验服务对照。流程：Phase1 Claude 为关键函数写「为何存在」意图 markdown；Phase2 单方法 stub→跑测→窄提示迭代；Phase3 生产蓝绿，校验约每 30 秒比响应。披露：设计到生产约 3 个月（2025-12→2026-02），核心 PoC 约 4 周；估需约 45 分钟的大操作→约 1 秒（近 3000×）；路由数据集在 PostgreSQL 约 40× 缩小；整体延迟数量级下降；退役托管 FoundationDB 后数据库成本约 -90%；生产部署无事故。诚实：SQL 性能常正确但不最优（UNNEST/CTE/批处理需人教）；早期整页测输出烧 token。",
+      "与 devdosvid-21-ecs-eks-harness / henri-cve-migration-control-autopilot 不同：本条是指标路由控制面测驱换存储 + 蓝绿对照，不是 21 服务 ECS→EKS 脚本 harness 或 CVE 无写权限批准开 PR",
+    ],
+    approach: `Arnold Wakim（Datadog）在工程博客《How we migrated a live routing system using AI-assisted refactoring》（JSON-LD datePublished 2026-06-23T00:00:00.000Z → 2026-06-23）写明：Stream Router 的 KV 模型在关系语义与事务体积上触顶，需在不停生产流量下换到关系型存储。
+
+人先设计 schema 并选 PostgreSQL/DuckDB；再用 Claude 与 Cursor 做「旧实现 + 新 schema + 失败测试」的单方法测驱循环，意图文档降低换会话成本；蓝绿与约每 30 秒的校验服务给生产信心。披露估 45 分钟→约 1 秒、约 40× 数据缩小、库费约 -90%、约 3 个月窗。
+
+本场景据此输出「测驱迁关键控制面」提纲。禁止把近 3000× 或 -90% 写成任意迁移 SLA，或建议跳过人工 schema 与切流终审。`,
+    outcomes: [
+      "源披露设计到生产约 3 个月（PoC 约 4 周）、估 45 分钟操作→约 1 秒、数据集约 40× 缩小、库费约 -90%、蓝绿校验约每 30 秒、生产无事故等作者口径；属 Datadog 指标管线窗口，不可外推为你的控制面工期、性能倍数或「测驱必同比例降本」。",
+      "能把「人定架构/schema」与「代理啃方法翻译」拆开。",
+      "为整页测输出烧 token、正确但不优的 SQL，以及无测套时不宜放手代理提供提问清单。",
+    ],
+    caveats: [
+      "关键生产控制面案例；前提是模块化接口、强测套与蓝绿，缺一则风险陡升。",
+      "性能数字含作者口径「estimated / nearly」；非你仓对照实验。",
+      "上面写的是团队工程实践帖，不是 PostgreSQL/Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "控制面测驱换存储门禁",
+        body: `你是数据基础设施迁移顾问。只根据用户现状写门禁，不要编造已达到的加速倍数或降本比例。
+
+系统与流量敏感度：{{system}}
+现有存储与痛点：{{pain}}
+已有测套/蓝绿：{{gates}}
+不可盲切动作：{{no_cutover}}
+
+输出 Markdown：
+1. 人必须先完成的 schema/接口设计清单
+2. 「意图地图→单方法 stub→失败测→窄提示」循环表
+3. 生产对照校验最小信号
+4. 人必须终审的切流条件
+禁止声称「必 3000× 或 -90%」；禁止建议跳过失败测试判据。`,
+      },
+      {
+        title: "代理 SQL「结果对但很慢」复盘",
+        body: `测套绿但生产延迟/往返次数异常高。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺少批处理/UNNEST/CTE 示范，还是提示一次塞了过多上下文
+2. 最小修补（含如何把 EXPLAIN 反馈给模型）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多自治代理等于更优 SQL」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.datadoghq.com/blog/engineering/ai-assisted-storage-migration/",
+      label: "datadoghq.com/blog/engineering · How we migrated a live routing system using AI-assisted refactoring",
+      date: "2026-06-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "477",
+    slug: "codurance-timesheet-ai-60-to-3-days",
+    title: "Codurance：内部工时系统 AI 重建——估约 60 人日→近功能对等约 3 天",
+    summary: "团队；披露原估约 60 开发人日、单人约 3 天近功能对等、另估约 1 天收尾；Cursor+Claude Code+Codex；质量门对齐人写对照；不代你无人值守上生产。",
+    description:
+      "面向想验证「有护栏的 AI 交付」能否保质加速的工程负责人：把「人定架构与质量门 + 代理增量实现」写成门禁，区别于 Expo 大版本 Scout 升级与 Laravel 单会话换框。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.codurance.com/publications/case-study-ai-assisted-engineering-accelerates-software-delivery-without-compromising-quality",
+    sourceLabel: "Codurance·Alan Jackson 案例帖",
+    upvotes: 368,
+    trending: false,
+    tags: [
+      "Codurance",
+      "Cursor",
+      "Claude Code",
+      "工时系统",
+      "质量门",
+    ],
+    howItWorks: [
+      "粘贴目标系统范围、原估工期与「未完成不算生产」边界",
+      "Agent 按实践帖输出：功能清单拆分、本地质量门清单，以及人审增量提交节奏",
+      "人工保留架构与上线；Agent 不代你保证「任意内部系统必 60→3 或 >10×」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-24T11:35:07.000Z → 2026-03-24；页内亦标 24 Mar 2026 / Last updated: 24 Mar 2026）：Alan Jackson（Codurance）写内部实验——用 AI 辅助重建公司内部工时（timesheet）系统以求近功能对等（日历入时、活动/区域、用户与管理、业务规则、报表与流程）。原系统估约 60 开发人日（单人口径）；AI 辅助下单人约 3 天达到近功能对等，工程师另估约 1 天收尾才更接近生产；相对原估称超过一个数量级（>10×）。工具：Cursor 为中枢；Claude Code 做复杂多文件推理，OpenAI Codex 做自治功能生成；栈为 TypeScript 全栈、PostgreSQL、IaC 部署 AWS、CI/CD 与临时环境。三原则：为快反馈架构（端到端类型安全/自动测/静态分析/IaC）、本地质量门（类型/ lint /测/构建/端到端过了才算完）、先从旧仓抽出结构化功能清单再增量实现并由人审后提交。质量：相对人写对照版本，在安全漏洞、圈复杂度、技术债指标、测覆盖等多指标上称匹配或更好。作者强调当时尚未完全生产就绪。",
+      "与 hipcamp-expo54-new-arch-scout-upgrade / jonesrussell-laravel-waaseyaa-one-session 不同：本条是咨询公司内部工时系统重建实验与质量门，不是 Expo New Arch 升级或 Laravel 单会话换自研 PHP 框",
+    ],
+    approach: `Alan Jackson（Codurance）在《Case Study: AI Project Delivers 10x Speed Without Compromising Quality》（JSON-LD datePublished 2026-03-24T11:35:07.000Z → 2026-03-24）写明：团队用 Cursor + Claude Code + Codex，在人定架构与本地质量门下重建内部工时系统，检验 AI 能否在生产级标准下加速交付。
+
+做法是先抽功能清单、为代理提供快反馈环境，再增量实现并由工程师审提交；披露原估约 60 人日→约 3 天近对等、另约 1 天收尾，以及相对人写对照的质量对比口径。
+
+本场景据此输出「护栏内重建内部工具」提纲。禁止把 >10× 写成任意产品承诺，或建议跳过质量门与人审直接当生产。`,
+    outcomes: [
+      "源披露原估约 60 开发人日、约 3 天近功能对等、另估约 1 天收尾、>10× 加速口径，以及相对人写对照在安全/复杂度/技术债/覆盖等指标匹配或更好等作者口径；属单内部工时实验窗口，不可外推为你的产品工期、安全合规或「AI 必同比例加速」。",
+      "能把「人定架构与质量门」与「代理快速填功能」拆开。",
+      "为「近对等≠生产就绪」与缺少类型/测/IaC 时放大风险提供提问清单。",
+    ],
+    caveats: [
+      "公司案例文，文末含服务导流；事实以实验段落为准，需与营销句分开读。",
+      "约 3 天为近功能对等，作者明确尚未完全生产就绪。",
+      "上面写的是团队工程案例帖，不是 Cursor/AWS 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "内部系统 AI 重建实验门禁",
+        body: `你是工程效能教练。只根据用户范围写实验门禁，不要编造已达到的人日或倍数。
+
+系统与功能边界：{{scope}}
+原估工期：{{estimate}}
+质量门现状：{{gates}}
+
+输出 Markdown：
+1. 必须先抽出的功能清单模板
+2. 本地质量门最小集合
+3. 人审增量提交节奏
+4. 「近对等 vs 生产就绪」验收分界
+禁止声称「必 60→3」；禁止建议跳过测试与人审。`,
+      },
+      {
+        title: "三天「看起来齐了」但生产未就绪复盘",
+        body: `功能清单几乎打勾，但安全/运维/边缘规则仍缺。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像把原型当完工，还是质量门未覆盖该类风险
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多模型并行等于可跳过收尾日」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.codurance.com/publications/case-study-ai-assisted-engineering-accelerates-software-delivery-without-compromising-quality",
+      label: "codurance.com/publications · Case Study: AI Project Delivers 10x Speed Without Compromising Quality",
+      date: "2026-03-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "478",
+    slug: "chudi-polyphemus-36k-shadow-gate",
+    title: "Chudi：Claude Code 交易机器人 4247→36096 行——影子门拦住 8 个静默缺陷",
+    summary: "个人；披露 6 周首版 4000+ 行、四月口径 4247→36096 行；会话 token 约 10000→4200；月费约 $136（首月未优化约 $340）；生产错误率 1/6→1/40；影子门拦 8 缺陷；覆盖 41%→73%；不代你实盘无人值守。",
+    description:
+      "面向用编码代理养真实资金系统的独立开发者：把「分层上下文 + 双门校验 + 影子先于实盘」写成门禁，区别于 $13k 浪费模式解析与三代理日志计费失真。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/chudi_nnorukam/i-built-a-4000-line-production-trading-bot-with-claude-code-1l5p",
+    sourceLabel: "dev.to·chudi_nnorukam 实践帖",
+    upvotes: 369,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "交易机器人",
+      "影子部署",
+      "上下文",
+      "校验门",
+    ],
+    howItWorks: [
+      "粘贴现金/纸交易边界、仓规模与「绝不可盲推实盘」清单",
+      "Agent 按实践帖输出：三层上下文预算、Gate1/Gate2 清单，以及影子晋升条件",
+      "人工保留策略与资金开关；Agent 不代你保证「必 1/40 错误率或拦下全部静默缺陷」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-10T23:53:59Z → 2026-04-10；dateModified 2026-10-30；原发 chudi.dev）：Chudi Nnorukam 写 Polymarket 自治交易机器人 Polyphemus。首版约 6 周、4000+ 行；更新口径：2025-12 的 4,247 行→2026-04 的 36,096 行，两实例做 BTC/ETH/SOL/XRP 配对套利。痛点：第三周起常花约 20 分钟重讲上下文，首月 token 账单约 $340。五原则：①上下文当资源——常驻身份 <500 token、每会话任务 <1000、其余按需；会话均 token 约 10000→4200（称约 58% 降幅来自该系统）。②CLAUDE.md + Auto Memory 分工。③多文件先 /plan。④双门：Gate1 约 30 秒类型/ lint /测（称拦约 60% 错）；Gate2 六问人工清单；生产错误率 1/6→1/40。⑤会话结束预压缩交接（约 90 秒恢复）。后补第 6：影子先于实盘，dry-run 并行，门控 n_completed>=50 再晋升；影子门拦 8 个静默缺陷（例：set(\"BTC\") 变成字符集），称零触及实盘资金。另：测覆盖 41%→73%，自 Dec 起 uptime 99.2%，会话约 180→400+；持续 API 约 $136/月。",
+      "与 getburnd-13631-six-months-waste-patterns / jdevleon-three-agents-log-formats-hours-wrong 不同：本条是实盘交易仓的上下文分层与影子晋升门，不是六个月账单浪费模式或跨代理 usage 日志计费",
+    ],
+    approach: `Chudi Nnorukam 在 DEV《I Built a 36,000-Line Production Trading Bot With Claude Code》（JSON-LD datePublished 2026-04-10T23:53:59Z → 2026-04-10）写明：用 Claude Code 把真实资金交易机器人从约 4k 行养到约 36k 行时，真正救命的是系统——分层上下文、计划模式、双门校验与影子部署——而不是更长的提示词。
+
+他披露首月未优化约 $340、之后约 $136/月，错误率 1/6→1/40，影子门拦下 8 个静默缺陷。
+
+本场景据此输出「有资金风险的代理交付」提纲。禁止把 1/40 或零资金损失写成任意交易 SLA，或建议跳过影子门直接实盘。`,
+    outcomes: [
+      "源披露 4247→36096 行、会话 token 约 10000→4200、月费约 $136（首月未优化约 $340）、错误率 1/6→1/40、影子门 8 缺陷、覆盖 41%→73%、uptime 99.2% 等作者口径；属单人交易机器人窗口，不可外推为你的策略收益、风控或「同样门禁必同比例降错」。",
+      "能把「代理写得快」与「影子证据后再晋升」拆开。",
+      "为上下文膨胀、多文件无计划冲突，以及只过自动测不过六问清单提供提问清单。",
+    ],
+    caveats: [
+      "真实资金场景；作者自述凌晨排障，读者需自担合规与资金风险。",
+      "「更新 April 2026」与后续编辑并存；主表以文内对照表为准。",
+      "上面写的是个人实践帖，不是交易平台或 Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "有资金风险的代理双门+影子门禁",
+        body: `你是高风险系统交付教练。只根据用户边界写门禁，不要编造已达到的错误率或拦缺陷数。
+
+系统与资金边界：{{system}}
+现有自动检查：{{gate1}}
+不可实盘动作：{{no_live}}
+
+输出 Markdown：
+1. 三层上下文预算草案
+2. Gate1 自动检查与 Gate2 六问清单
+3. 影子实例晋升条件（含证据阈值）
+4. 人必须掌握的资金开关
+禁止声称「必 1/40」；禁止建议跳过影子直接实盘。`,
+      },
+      {
+        title: "测绿但影子行为异常复盘",
+        body: `单元测通过，影子实例却出现错误资产集合或静默逻辑漂移。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺影子证据门、计划模式跳过，还是上下文压缩丢决策
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多实盘流量等于更快收敛」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/chudi_nnorukam/i-built-a-4000-line-production-trading-bot-with-claude-code-1l5p",
+      label: "dev.to/chudi_nnorukam · I Built a 36,000-Line Production Trading Bot With Claude Code",
+      date: "2026-04-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "479",
+    slug: "netguru-full-agentic-backoffice-gates",
+    title: "Netguru：内部后台「生产应用零手写」——三层规则 + 四场景测 + 迁库事故改规则",
+    summary: "团队；披露生产应用代码均由代理提交（主 Claude Code，辅 Cursor）；七类静态 CI；测「远超一千」/约百文件；四强制场景；迁库曾拭状态后写入正向迁移禁令；不代你复制到强监管域。",
+    description:
+      "面向把整条增量交给代理、却要用规则与测把质量托住的产品工程团队：把「规则当产品 + 技能链产物交接 + 防御纵深」写成门禁，区别于四事故个人 CLAUDE.md 与 Token Tax 瘦身。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.netguru.com/blog/agentic-development-production-grade",
+    sourceLabel: "Netguru Blog·Łukasz Kosiorowski 实践帖",
+    upvotes: 370,
+    trending: false,
+    tags: [
+      "Netguru",
+      "Claude Code",
+      "AGENTS.md",
+      "测试门禁",
+      "Agentic",
+    ],
+    howItWorks: [
+      "粘贴内部工具风险等级、现有规则/CI，以及「人必须签字的阶段」",
+      "Agent 按实践帖输出：根规则/区域规则/技能链产物表，以及四场景测地板",
+      "人工保留 brief/计划签字与合并；Agent 不代你保证「零手写等于零事故」",
+    ],
+    tips: [
+      "源帖（页内/元数据 datePublished 2026-05-12，dateModified 2026-06-15；页眉 Updated Jun 15, 2026）：Łukasz Kosiorowski（Netguru）写内部后台全代理开发——生产应用代码不手写，每次提交/迁移/测试由代理产出，主 Claude Code、辅 Cursor；人仍写规则、工作流定义与 CI。早期事故：迁移脚本拭掉状态，因未规定「迁移必须可加且仅向前」；重建生产后把禁令写入活规则。三层：①根 AGENTS.md/CLAUDE.md 硬禁令；②.claude/rules/ 按 paths 分区；③技能链 brainstorm→plan→subagent 切片→独立 code review→finish，步步要前序产物。测试防御纵深：七个 CI 脚本（翻译/RBAC/迁移有效性/硬编码字符串/无障碍/API 契约/文档新鲜度）；单元+集成 Vitest 约百文件、套件「远超一千」测且故意不拿百分比覆盖当硬阈；真实库 Playwright API e2e；UI smoke。每变更至少四场景：成功/校验失败/鉴权拒绝/not-found。文档 freshness 检查；规则带日期/事故来源/负责人并归档。作者称方法仍在演进，且为内部工具校准，高利害域需加严。",
+      "与 michelfaure-4-incidents-claudemd-rules / michaelnash-claude-token-tax-lean-rebuild 不同：本条是团队全代理后台的规则三层+四场景测地板，不是个人 ERP 四事故根文件，也不是 Token Tax 瘦 CLAUDE.md",
+    ],
+    approach: `Łukasz Kosiorowski（Netguru）在《Agentic Development, Production-Grade》（datePublished 2026-05-12；Updated/dateModified 2026-06-15）写明：内部后台走全代理交付时，质量来自把规则当成版本化产品，并用技能链与防御纵深测把「看起来能跑」拦在合并前。
+
+迁库拭状态的事故被写进正向迁移硬规则；七类静态 CI、四强制场景与文档 freshness 组成地板。披露测套远超一千、约百个单测文件等口径。
+
+本场景据此输出「全代理增量的团队门禁」提纲。禁止把「零手写应用代码」写成可跳过人审，或直接套用到金融/医疗无加严。`,
+    outcomes: [
+      "源披露生产应用代码均由代理提交、七类静态 CI、测套远超一千（约百文件）、四强制场景、迁库拭状态后写入正向迁移禁令等作者口径；属 Netguru 内部后台窗口，不可外推为你的监管合规、事故率或「全代理必同等稳定」。",
+      "能把「规则/工作流当代码」与「应用功能由代理生成」拆开。",
+      "为百分比覆盖虚高、文档过期误导模型，以及高利害域需加第五层/双人审批提供提问清单。",
+    ],
+    caveats: [
+      "公司博客方法论文；部分表述定性多于对照实验。",
+      "作者明确方法仍在演进，且内部工具失败成本与强监管域不同。",
+      "上面写的是团队工程实践帖，不是 Claude Code 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "全代理后台规则三层门禁",
+        body: `你是代理交付方法教练。只根据用户团队现状写门禁，不要编造已达到的测数量或零事故。
+
+产品风险等级：{{risk}}
+现有规则/CI：{{current}}
+人必须签字点：{{human_gates}}
+
+输出 Markdown：
+1. 根禁令 / 区域 rules / 技能链产物表
+2. 四场景测地板如何挂合并门
+3. 事故→规则归档字段
+4. 明确不适用范围
+禁止声称「零手写等于可无人合并」；禁止建议弱化迁移正向约束。`,
+      },
+      {
+        title: "代理迁移拭库后的规则复盘",
+        body: `预发或生产因重建式迁移丢状态。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺哪条硬禁令或哪道 CI
+2. 最小修补（规则+检查脚本）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多子代理等于迁移更安全」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.netguru.com/blog/agentic-development-production-grade",
+      label: "netguru.com/blog · Agentic Development, Production-Grade: How We Approach Quality, Architecture, and Testing",
+      date: "2026-05-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "480",
+    slug: "lmoncany-vibe-code-distribution-wall",
+    title: "Loic：Vibe coding 把模板系统 2 天压到约 4 小时——接着 12 小时找 50 个经纪人",
+    summary: "个人；披露 Cursor+Claude 把约 2 天活做到约 4 小时；随后约 12 小时触达约 50 名经纪人以求打开；工时从约 70/30 构建/分发改为约 40/60；不代你保证获客。",
+    description:
+      "面向能快速出功能、却卡在获客的独立开发者：把「省下的构建时间强制回流分发」写成门禁，区别于在职一周产量实验与 SEO 半价写算。",
+    categories: [
+      "efficiency",
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/lmoncany/i-vibe-coded-my-saas-faster-than-ever-then-hit-the-real-wall-2ap9",
+    sourceLabel: "dev.to·lmoncany 实践帖",
+    upvotes: 371,
+    trending: false,
+    tags: [
+      "Vibe coding",
+      "Cursor",
+      "Claude",
+      "分发",
+      "独立开发",
+    ],
+    howItWorks: [
+      "粘贴本周功能与可触达客户名单，以及「发完代码不算完成」定义",
+      "Agent 按实践帖输出：构建/分发时间盒，以及窄众触达动作清单",
+      "人工保留话术与合规外联；Agent 不代你保证「4 小时功能必带来打开或付费」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-07T08:00:03Z → 2026-04-07）：Loic Moncany 写独立产品 ListingVid（房产营销视频生成）。当周用 Cursor + Claude 交付新视频模板系统：原先约 2 天工作约 4 小时完成；随后约 12 小时尝试让约 50 名房产经纪人真正打开产品。他重切时间：构建/分发从约 70%/30% → 约 40%/60%。具体动作：向活跃 Facebook 群约 20 名经纪人直接触达、试用注册邮件序列、一篇瞄准「AI video for real estate agents」的 SEO 文、一条约 90 秒 Loom 演示。结论：构建不再是稀缺优势，分发才是；窄众外联优于大而散的发帖。",
+      "与 emilywoods-ai-agents-one-week-at-work / cmaindron-claude-write-n8n-compute-seo 不同：本条是 indie 把省下的编码时间改投分发，不是在职一周提交行数实验或 SEO 写算半价流水线",
+    ],
+    approach: `Loic Moncany 在 DEV《I Vibe-Coded My SaaS Faster Than Ever — Then Hit the Real Wall》（JSON-LD datePublished 2026-04-07T08:00:03Z → 2026-04-07）写明：Cursor + Claude 把 ListingVid 模板系统从约 2 天压到约 4 小时后，真正的墙是分发——他接着花约 12 小时才推动约 50 名经纪人去打开产品。
+
+他把周时间盒改成约 40% 构建 / 60% 分发，并用群内窄众触达、邮件序列、SEO 与短 Loom 代替「等互联网发现你」。
+
+本场景据此输出「构建加速后的分发门禁」提纲。禁止把约 4 小时或 50 人触达写成获客 SLA，或建议用群发spam代替合规外联。`,
+    outcomes: [
+      "源披露约 2 天→约 4 小时完成模板系统、随后约 12 小时触达约 50 名经纪人、时间盒约 70/30→40/60，以及约 20 条群内触达/邮件序列/SEO/90 秒 Loom 等作者口径；属单人房产垂直窗口，不可外推为你的打开率、转化或「分发占比必 60%」。",
+      "能把「功能已上线」与「有人打开」拆成两个完成定义。",
+      "为只晒构建速度、零分发时间盒提供提问清单。",
+    ],
+    caveats: [
+      "个人 indie 叙事；无对照实验或收入数字。",
+      "外联渠道与当地广告/隐私规则因地区而异。",
+      "上面写的是个人实践帖，不是 Cursor 官文或获客课程宣发。",
+    ],
+    prompts: [
+      {
+        title: "构建加速后的分发时间盒",
+        body: `你是独立开发教练。只根据用户产品写时间盒，不要编造已达到的打开数或转化。
+
+产品与客群：{{product}}
+本周可交付功能：{{feature}}
+可触达名单规模：{{reach}}
+
+输出 Markdown：
+1. 构建 vs 分发小时分配
+2. 「代码合并 ≠ 完成」的完成定义
+3. 本周 3 个窄众触达动作
+4. 人工必须亲自发的信息
+禁止声称「必 4 小时交付或 50 人打开」；禁止建议违规群发。`,
+      },
+      {
+        title: "功能很快但没人打开复盘",
+        body: `模板/功能已上线，试用或打开接近零。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像零分发时间盒、触达过宽，还是演示资产缺失
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再 vibe 一个功能等于获客」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/lmoncany/i-vibe-coded-my-saas-faster-than-ever-then-hit-the-real-wall-2ap9",
+      label: "dev.to/lmoncany · I Vibe-Coded My SaaS Faster Than Ever — Then Hit the Real Wall",
+      date: "2026-04-07",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
