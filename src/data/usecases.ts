@@ -27937,6 +27937,457 @@ max-iterations：{{max_iter}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "456",
+    slug: "hipcamp-expo54-new-arch-scout-upgrade",
+    title: "Hipcamp：Expo 50→54 + New Arch——Scout/子代理把预估 2–3 月压到约数周",
+    summary: "团队移动端；披露 100+ 依赖约 40 须升、审计→分依赖子代理 PR、首轮约 3 天连升、New Arch 构建调试约一周、预估 2–3 月→约数周；不代你无人值守上架。",
+    description:
+      "面向 React Native/Expo 大版本+New Architecture 升级拖成季度项目的移动团队：把「架构索引→依赖审计库→单依赖子代理→EAS 构建门禁」写成门禁，区别于 Vaadin 一下午与 GCP 本地演示迁栈。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/expo/how-hipcamp-upgraded-expo-sdk-versions-with-claude-code-4jb0",
+    sourceLabel: "dev.to·Expo 转载·Hipcamp/Armaiz Adenwala 实践帖",
+    upvotes: 347,
+    trending: false,
+    tags: [
+      "Expo",
+      "React Native",
+      "New Architecture",
+      "依赖升级",
+      "子代理",
+    ],
+    howItWorks: [
+      "粘贴当前 Expo/RN 版本、目标 SDK、必须保留的原生依赖清单，以及是否强制 New Arch/16kb Android",
+      "Agent 按实践帖输出：架构索引命令、逐依赖审计表字段、子代理分派规则，以及 lint/tsc/bundle/EAS 门禁顺序",
+      "人工保留换库/删库决策与慢放量；Agent 不代你声称「升级必无新崩溃」或跳过员工 QA 党",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-22T16:59:21Z → 2026-07-22；原文亦刊于 expo.dev/blog）：Hipcamp 移动体验负责人 Armaiz Adenwala 写 New Architecture + Expo 54 升级。应用有 100+ 依赖，约 40 个需升级才能支持 New Arch；公司偏瘦，无法让工程师脱产做「两三个月」升级。内部代理 Scout（也可用纯 Claude Code + Expo upgrade skill）分四阶段：先花一天跑 /scout-document-architecture 索引仓；再审计 Expo 50→54（RN 0.73/React 18.2 → RN 0.81/React 19.1），强制读 changelog/issues/迁移指南，输出 per-dep notes + SQLite（含 new_arch_support、sixteenkb_support、upgrade/remove/swap）；人审后再派代理按依赖开 PR——首轮约 3 天不停升级，强调一依赖一子代理上下文；流程含 1–3 个尝试子代理、评审子代理、yarn lint/tsc/RN bundle、EAS iOS+Android 构建与 PR 说明。经验：New Arch 构建问题约花一周；整体从预估 2–3 个月压到约数周（「从一季到一个 sprint」）。上线用员工 QA 党 + iOS 先慢放再 Android；意外是除 New Arch 放大的高内存外无重大新错，总错误反而更少。",
+      "与 flowingcode-vaadin10-to-25-claude-afternoon / keith-townsend-gcp-local-migration-gap 不同：本条是消费级 RN/Expo 大版本+New Arch 依赖审计与分依赖子代理升级，不是 Java UI 框架一下午或云→本地演示迁栈",
+    ],
+    approach: `Armaiz Adenwala（Hipcamp）在 DEV 转载帖《How Hipcamp upgraded Expo SDK versions with Claude Code》（JSON-LD datePublished 2026-07-22T16:59:21Z → 2026-07-22）写明：真正吓人的不是 bump 版本号，而是 New Arch 下几十个过时原生库的兼容研究与冲突消解；他们有 100+ 依赖、约 40 个必须动，却挤不出工程师「脱产两三个月」。
+
+做法是先给代理一天架构索引，再按固定审计提示逐依赖出 notes+SQLite，人确认 upgrade/remove/swap（优先换成 Expo 模块，patch-package 垫底），再让子代理按「一依赖一上下文」开 PR，并用 lint/tsc/bundle/EAS 当硬门；首轮约 3 天连升，New Arch 构建另约一周，整体从预估 2–3 月收到约数周。
+
+上线仍走员工 QA 党与商店慢放。本场景据此输出「Expo/RN 大版本升级门禁」提纲。禁止把「数周」写成任意 App Store 无回归 SLA，或跳过人审直接合依赖删除。`,
+    outcomes: [
+      "源披露 100+ 依赖约 40 须升、审计→分依赖子代理、首轮约 3 天连升、New Arch 调试约一周、预估 2–3 月→约数周、以及 QA 党+慢放等作者口径；属单一消费 App 窗口，不可外推为你的商店评分、崩溃率或「Scout 必省一季」。",
+      "能把「整仓一次 bump」与「架构索引 + 逐依赖审计表 + 子代理 + EAS 门禁」拆开。",
+      "为无 16kb/New Arch 证据就换库、以及无人审删依赖提供提问清单。",
+    ],
+    caveats: [
+      "帖为 Expo 博客嘉宾文在 DEV 的转载；内部 Scout 与 Expo upgrade skill 可替换，流程仍依赖人审。",
+      "作者承认仍有抛光与个别需工程师深挖的 PR；慢放与监控仍是上线条件。",
+      "上面写的是 Hipcamp 团队实践帖，不是 Expo/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Expo/RN 大版本依赖审计简报",
+        body: `你是 React Native 升级顾问。只根据用户约束写审计提纲，不要编造已缩短的周数。
+
+当前：Expo {{from_sdk}} / RN {{from_rn}}
+目标：Expo {{to_sdk}} / RN {{to_rn}}
+是否强制 New Arch 与 16kb：{{flags}}
+依赖清单或 package.json 摘要：{{deps}}
+
+输出 Markdown：
+1. 架构索引应覆盖的目录与禁改区
+2. 逐依赖审计字段（含 new_arch/sixteenkb/swap 建议）与子代理分派（简单/中/极复杂）
+3. lint/tsc/bundle/EAS 门禁顺序
+4. 人必须确认的删库/换库决策
+禁止建议无人值守合入；禁止伪造「升级必无新崩溃」。`,
+      },
+      {
+        title: "New Arch 构建失败或升级后内存飙升复盘提纲",
+        body: `EAS/本地构建失败，或上线后内存明显高于旧架构。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺依赖笔记、缺单依赖上下文，还是缺构建/慢放门禁
+2. 最小修补与回滚
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多子代理等于更稳上架」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/expo/how-hipcamp-upgraded-expo-sdk-versions-with-claude-code-4jb0",
+      label: "dev.to/expo · How Hipcamp upgraded Expo SDK versions with Claude Code",
+      date: "2026-07-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "457",
+    slug: "jonesrussell-laravel-waaseyaa-one-session",
+    title: "Jones：单次 Claude Code 会话把 Laravel 应用迁到自研 PHP 框架——约 8 小时、148 测",
+    summary: "个人；披露单会话约 8 小时墙钟、3 个 Packagist 包（30/46/35 测）+ goformx-web（37 PHP 测等）合计 148 测全绿；结构完成但未宣称生产就绪。",
+    description:
+      "面向已有详细迁移规格、想用 TDD 反馈环驱动代理迁框架的独立开发者：把「先写规格 + 可验证技能流水线」写成门禁，区别于 SST→单体与产品迁移 setup 票。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/jonesrussell/i-migrated-a-laravel-app-to-a-custom-php-framework-in-one-claude-code-session-n3a",
+    sourceLabel: "dev.to·jonesrussell 实践帖",
+    upvotes: 348,
+    trending: false,
+    tags: [
+      "Laravel",
+      "PHP",
+      "TDD",
+      "Inertia",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴目标框架边界、已有迁移规格（路由/实体/API）、以及必须保留的外部系统（如 Go API HMAC）",
+      "Agent 按实践帖输出：包级 scaffold→红灯测试→实现→接线→全量验证的技能步骤，以及 Playwright/浏览器验收清单",
+      "人工保留生产密钥与 cutover；Agent 不代你声称「单会话等于可对客上线」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-23T23:30:22Z → 2026-03-23）：作者 jonesrussell（Russell Jones）把 GoFormX 前端从 Laravel 12 + Inertia v2 + Vue 3 迁到自研 Waaseyaa PHP 框架（Go API 仍管表单提交）。规格与三个新包（waaseyaa/inertia、auth、billing）原计划多会话，结果单次 Claude Code 会话约 8 小时墙钟完成：Inertia v3 适配 30 测、无外置库 TOTP 等的 auth 46 测、Stripe billing 35 测，以及 goformx-web（7 控制器、37 PHP 单测、28 Vue 页、24 shadcn-vue 目录、9 Twig SSR、5 MariaDB migration、6 服务 Docker Compose、GH Actions、Ansible）——合计 148 测。关键是可复用技能 laravel-to-waaseyaa：Scaffold→TDD→Wire→Verify→Deploy。硬坑：MariaDB 用户与框架 SQLite 实体层用 PDO UserRepository 旁路；Inertia v3 要 data-page=\"app\" 而非 v2 的 true；PHP-FPM 默认清环境须 clear_env=no 并用 getenv()。Playwright MCP 验过登录到仪表盘；作者明确：结构完成但未生产就绪（Form.io、Stripe webhook、资料更新 POST、Ansible vault、7 日信心期 cutover 仍待）。",
+      "与 khal-tessellai-serverless-to-monolith-claude / karthik-claude-setup-product-migration 不同：本条是个人表单 SaaS 从 Laravel 到自研 PHP 框架的单会话 TDD 迁栈，不是 SST 后端改单体或约 50 票产品迁移 setup",
+    ],
+    approach: `作者 jonesrussell 在 DEV《I Migrated a Laravel App to a Custom PHP Framework in One Claude Code Session》（JSON-LD datePublished 2026-03-23T23:30:22Z → 2026-03-23）写明：GoFormX 要 dogfood 自研 Waaseyaa，前端离开 Laravel 12/Inertia v2；真正前提不是「让模型自由发挥」，而是迁移设计文档已写清每条路由、实体字段与 API，再把 laravel-to-waaseyaa 技能收成可验证流水线。
+
+单会话约 8 小时产出 3 个已发 Packagist 的框架包与完整应用脚手架，合计 148 测全绿；调试靠读 Inertia v3 源码、FPM 环境与 MariaDB 旁路等具体坑，而不是空喊一键迁移。Playwright MCP 验了登录闭环，作者仍列出生产前清单。
+
+本场景据此输出「规格+TDD 技能迁框架」提纲。禁止把 148 测写成对客 SLA，或忽略作者「未生产就绪」声明。`,
+    outcomes: [
+      "源披露单会话约 8 小时、三包测试 30/46/35、应用侧 37 PHP 测等合计 148 测全绿、以及「结构完成但未生产就绪」等作者口径；属单一个人产品窗口，不可外推为你的上线质量、安全审计或「任意 Laravel 仓一天可换框架」。",
+      "能把「多会话边想边迁」与「先写规格 + 红灯测试反馈环 + 增量提交」拆开。",
+      "为把白屏当「框架不行」、以及未测 Stripe/webhook 就宣称可收款提供提问清单。",
+    ],
+    caveats: [
+      "作者明确剩余 Form.io、Stripe webhook、资料更新接线、vault 密钥与 7 日 cutover。",
+      "Waaseyaa 为作者自研框架；技能绑定其约定，不能直接当通用 Laravel 卸载器。",
+      "上面写的是 jonesrussell 个人实践帖，不是 Laravel/Inertia 官文。",
+    ],
+    prompts: [
+      {
+        title: "规格驱动的框架迁栈技能简报",
+        body: `你是 PHP 迁栈顾问。只根据用户已有规格写技能流水线，不要编造已通过的测试数。
+
+源栈：{{from_stack}}
+目标框架边界：{{to_stack}}
+规格摘要（路由/实体/API）：{{spec}}
+必须保留的外部系统：{{external}}
+
+输出 Markdown：
+1. 包/应用拆分与 Packagist/CI 边界
+2. Scaffold→红灯测试→实现→Wire→Verify 步骤与每步验收物
+3. 浏览器/E2E 最小清单
+4. 人必须保留的生产密钥与 cutover 决策
+禁止声称单会话等于可对客；禁止伪造「148 测保证」。`,
+      },
+      {
+        title: "迁栈后白屏或 HMAC 空密钥复盘提纲",
+        body: `页面白屏或与后端签名校验失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 协议字段（如 Inertia data-page）、进程环境继承，还是数据层旁路错误
+2. 最小修补与回归夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多测试文件等于生产就绪」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/jonesrussell/i-migrated-a-laravel-app-to-a-custom-php-framework-in-one-claude-code-session-n3a",
+      label: "dev.to/jonesrussell · I Migrated a Laravel App to a Custom PHP Framework in One Claude Code Session",
+      date: "2026-03-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "458",
+    slug: "attila-wordpress-astro-132-agents",
+    title: "Attila：WordPress→Astro 保 URL——1497 行 runbook、132 代理约 37 分钟校对",
+    summary: "个人博客；披露 44 文原 URL、132 代理/约 845 万 token/1221 工具调用/约 37 分钟、382 处润色、701 行验收、误在 100% 窗口再开 swarm 烧掉约 $70 超额；不代你无人值守切流。",
+    description:
+      "面向想甩掉插件税又怕丢搜索权重的个人站长：把「零断链契约 + 对抗式校对 swarm」写成门禁，区别于一天迁 16 站与两日重建删 API。",
+    categories: [
+      "content",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.cloudmigration.blog/wordpress-to-astro-migration-with-claude-code/",
+    sourceLabel: "cloudmigration.blog·Attila Macskasy 实践帖",
+    upvotes: 349,
+    trending: false,
+    tags: [
+      "WordPress",
+      "Astro",
+      "URL 守恒",
+      "多代理校对",
+      "静态站",
+    ],
+    howItWorks: [
+      "粘贴必须字节级保留的 URL 列表、媒体路径策略，以及旧站是否只读抽取",
+      "Agent 按实践帖输出：runbook 章节、Gutenberg 级转换边界、301/410 契约表，以及 verify/edit/recheck 对抗步骤",
+      "人工保留切流与 Search Console；Agent 不代你在额度已满时强开大规模 swarm",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-08-12T00:00:00.000Z → 2026-08-12；文内 12 August 2026）：Attila Macskasy 把运营近五年的 cloudmigration.blog 从 WordPress 6.8.5（Elementor 等十余插件、盘 15GB 仅余约 6GB）迁到静态 Astro 5。硬约束：44 篇根路径 trailing-slash URL 禁止靠重定向「凑合」；另保留 456 张原图（138.8MB）仍答 /wp-content/uploads/（全 uploads 树 5131 文件/464.2MB，多余衍生 301）、12 分类/61 标签、/feed/ 不 301、Yoast 同名 sitemap、meta 与历史浏览量基线。验收是 701 行 URL×状态契约（约九十 301、约五十故意 410），部署后脚本 curl 必须 exit 0。作者先写 1497 行 runbook（读者写明给 AI 会话或无上下文工程师），再由 Claude Code（文称 Anthropic Fable 5）只读 SFTP 抽取、Gutenberg block-walker 转 44 帖、nginx 遗留规则与验收。编辑校对用 ultracode：132 代理、8,453,167 tokens、1,221 tool calls、约 37 分钟墙钟、40 帖 382 处拼写语法修，且 recheck 驳回 edit 阶段静默压扁小标题。成本诚实：在 5 小时额度已 100% 时又拉 132 代理，约 $70 超额分钟级烧掉；按 API 牌价会超过整月订阅，但在 Claude Max 20× 上整次约一周配额的 20%。副产品：计数插件被机器人放大约 10.8×（自称 16276 实为约 207 真人）。旧 VM 备份 21191 文件/75 表后关机。",
+      "与 jeremy-keeshin-16-sites-linode-day-migrate / alex-cloudstar-32784-lines-two-day-rebuild 不同：本条是单博客 SEO URL 守恒 + 对抗式多代理校对，不是一天迁约 16 站或两日重建删 API",
+    ],
+    approach: `Attila Macskasy 在《Goodbye WordPress, Hello Astro: Migrating This Blog Without Breaking a Single URL》（JSON-LD datePublished 2026-08-12 → 2026-08-12）写明：离开 WordPress 容易，离开还不丢五年搜索权重才是项目；他把「重定向算失败」写进 runbook，用 701 行契约表锁住 44 文原 URL、媒体、分类标签、RSS 与 sitemap。
+
+执行面是人写 1497 行给 AI 的 runbook，Claude Code 只读抽取并做 Gutenberg 级转换；校对阶段 132 代理并行 verify/edit/recheck，约 37 分钟墙钟，且交叉审查抓住了单次顺序稿看不到的标题被压扁。他也记录了额度已满仍开 swarm 烧掉约 $70 超额的教训。
+
+本场景据此输出「零断链静态化」提纲。禁止把 132 代理写成任意 CMS 的免费一键迁移，或跳过 curl 契约表直接切 DNS。`,
+    outcomes: [
+      "源披露 44 文原 URL、132 代理/约 845 万 token/1221 工具调用/约 37 分钟、382 处润色、701 行验收、约 $70 超额教训、以及浏览量 10.8× 注水等作者口径；属单人博客窗口，不可外推为你的 SEO 排名、订阅留存或「ultracode 必省运维」。",
+      "能把「导出 HTML 再 301」与「字节级 URL 契约 + 对抗式 recheck」拆开。",
+      "为额度已满仍开大规模 swarm、以及把机器人浏览量当内容战略提供提问清单。",
+    ],
+    caveats: [
+      "文中模型名按作者写法保留；能力以当时订阅/配额为准，超额会真实扣费。",
+      "联系表单等动态点需接到真实端点，天真静态导出可能留下空 POST。",
+      "上面写的是 Attila 个人实践帖，不是 Astro/WordPress 官文。",
+    ],
+    prompts: [
+      {
+        title: "零断链静态化 runbook 简报",
+        body: `你是站点迁栈顾问。只根据用户约束写 runbook，不要编造已保住的排名。
+
+必须原样回答的 URL：{{urls}}
+媒体策略：{{media}}
+旧站访问方式（只读？）：{{access}}
+
+输出 Markdown：
+1. 抽取/转换/nginx 遗留/验收章节目录
+2. 701 行级 URL×状态契约应覆盖的类型（200/301/410/feed/sitemap）
+3. verify→edit→recheck 对抗步骤与人审点
+4. 切流前禁止事项（含配额检查）
+禁止建议靠批量 301 代替原 URL；禁止伪造「必不掉收录」。`,
+      },
+      {
+        title: "切流后断链或校对误伤文风复盘提纲",
+        body: `Search Console 出现 404，或校对改掉了作者口吻/小标题。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺契约 curl、缺 recheck，还是转换器用了朴素 HTML→Markdown
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多代理等于更好 SEO」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.cloudmigration.blog/wordpress-to-astro-migration-with-claude-code/",
+      label: "cloudmigration.blog · Goodbye WordPress, Hello Astro: Migrating This Blog Without Breaking a Single URL",
+      date: "2026-08-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "459",
+    slug: "henri-cve-migration-control-autopilot",
+    title: "Henri：给多语言遗产仓做 CVE/升级自动驾驶——代理无写权限、人点批准才开 PR",
+    summary: "个人开源+PetClinic 演示；披露扫描约 45 分钟/~$20、计划约 18 分钟/~$5、PR 约 6 分钟/~$2，184 组件/749 CVE/67 严重、10 波次；alpha，发现需人审。",
+    description:
+      "面向多仓多语言版本债与 CVE 跟不过来的平台/安全同事：把「只读扫描+分级器+无写凭证+人批才推 PR」写成门禁，区别于多仓代码审计 swarm 与依赖升级产品宣发。",
+    categories: [
+      "security",
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/henriaycard/new-cves-every-day-migrations-every-sprint-i-built-an-autopilot-for-both-3m2c",
+    sourceLabel: "dev.to·Henri Aycard 实践帖",
+    upvotes: 350,
+    trending: false,
+    tags: [
+      "CVE",
+      "依赖升级",
+      "无写凭证",
+      "PetClinic",
+      "安全门禁",
+    ],
+    howItWorks: [
+      "粘贴多模块 estate（仓/语言/depends_on）、审批角色，以及哪些门禁必须真实库/预发才能跑",
+      "Agent 按实践帖输出：scan→grade→plan→（沙箱证明）→人批后 CLI 开 PR 的权限边界与输出物",
+      "人工保留合并与生产密钥；Agent 不持写凭证，不代你声称 CVE 清单已权威",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-07T13:56:43Z → 2026-10-07）：Henri Aycard 开源 migration-control：Claude 代理跨仓找过时/漏洞、按模块依赖排序迁移波次并准备 PR，硬规则是代理永不持有写凭证，写入只在人批准后由本机 CLI 推送。演示把 Spring PetClinic 钉在 2018 左右：rest=Boot 1.5/Java 8，angular=Angular 6，infra=Python 3.6 + Oracle 19c 基线无 RU。真实跑数：scan 约 45 分钟一修订——184 组件（45 生产）、749 个影响生产的唯一 CVE（67 critical）、45 生产组件中 44 过时/18 EOL、目标版本 8 次构建仅 1 通过（失败编译/runtime 作为影响证据）；独立 grader 八准则先判 inventory 不完整，回灌后二次通过。plan 约 18 分钟：10 波次（库补丁→OS→JDK8→JDBC→Boot 1.5→2.7→…→Angular 大版本逐级）、44/44 过时生产件覆盖、10 个拒绝代人做的阻断决策；wave 4 在沙箱证明且作者用 git apply --check 复核。mig pr 4 约 6 分钟：ojdbc6→ojdbc8，8 门禁过、3 个需真库/预发的门禁如实标注未跑；代理停在 patch+pr.json，作者点 Approve & publish 后 CLI 才开 PR（一文三行）。等价 API 牌价约 $20+$5+$2；订阅会话 52 秒触顶后改为 checkpoint+mig resume。作者称 alpha，GitLab 真 MR 尚未实开，发现是带源声明的 claims。",
+      "与 davron-four-agents-77-projects-90-min 不同：本条是 CVE/版本债 estate 扫描与无写凭证升级自动驾驶，不是个人作品集多仓代码审计 swarm",
+    ],
+    approach: `Henri Aycard 在 DEV《New CVEs every day, migrations every sprint: I built an autopilot for both》（JSON-LD datePublished 2026-10-07T13:56:43Z → 2026-10-07）写明：多语言遗产仓的版本债无法靠人肉读 advisory 扩展，于是做 migration-control——代理可扫、可计划、可在沙箱证明补丁，但默认无写凭证，PR 只在人审 diff 后由本机 CLI 发出。
+
+PetClinic 钉旧版的演示给出可核对数字：约 45 分钟扫描得到 184 组件/749 CVE 量级图景，grader 抓住漏盘；约 18 分钟排出 10 波次；约 6 分钟准备并经一键批准打开 JDBC 驱动 PR，且诚实留下需真库的门禁。本地可用 Claude Code headless 代替托管额度，并做断点续跑。
+
+本场景据此输出「无写凭证的 CVE/升级自动驾驶」提纲。禁止把演示 CVE 数写成你生产暴露面，或让代理直接持有推仓 token。`,
+    outcomes: [
+      "源披露扫描约 45 分钟/~$20、计划约 18 分钟/~$5、PR 约 6 分钟/~$2、184 组件/749 CVE/67 严重、10 波次、以及代理无写凭证等作者口径；属公开 PetClinic 钉旧演示+alpha 工具窗口，不可外推为你的真实暴露面、合规签字或「自动驾驶可无人合并」。",
+      "能把「给代理仓库写权限让它自己升」与「只读扫描+分级器+人批 CLI 开 PR」拆开。",
+      "为把 UNVERIFIED 当权威、以及沙箱未跑门禁却宣称生产已验证提供提问清单。",
+    ],
+    caveats: [
+      "作者标明 alpha；提示词/schema 可能变；GitLab 真 MR 路径测过但未实开。",
+      "发现需官方源或标 UNVERIFIED，最终仍要人审。",
+      "上面写的是 Henri 个人实践帖，不是 CVE 官方通报或厂商补丁简报。",
+    ],
+    prompts: [
+      {
+        title: "无写凭证的多仓 CVE/升级简报",
+        body: `你是平台安全顾问。只根据用户 estate 写自动驾驶边界，不要编造已消除的 CVE 数。
+
+estate 模块与 depends_on：{{estate}}
+审批角色：{{approvers}}
+是否允许代理持有写凭证：{{write_creds}}（默认否）
+
+输出 Markdown：
+1. scan/grade/plan/pr 阶段输入输出与隔离（容器/密钥）
+2. 波次排序原则与「拒绝代人决策」清单
+3. 沙箱可证明 vs 必须预发的门禁标签规则
+4. 人批准后由本机 CLI 推送的步骤
+禁止建议给代理写权限；禁止伪造「扫描等于已修复」。`,
+      },
+      {
+        title: "扫描漏件或 PR 声称未跑门禁复盘提纲",
+        body: `分级器打回 inventory，或 PR 描述把未跑门禁写成已通过。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 grader、缺门禁标签，还是缺人读 diff
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更贵模型等于可自动合并」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/henriaycard/new-cves-every-day-migrations-every-sprint-i-built-an-autopilot-for-both-3m2c",
+      label: "dev.to/henriaycard · New CVEs every day, migrations every sprint: I built an autopilot for both",
+      date: "2026-10-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "460",
+    slug: "devdosvid-21-ecs-eks-harness",
+    title: "Serhii：21 服务 ECS→EKS 的 harness——脚本+AI+校验流水线，四工程师收官八季度",
+    summary: "团队平台工程；披露 21 仓雪花服务、四工程师、单层约十仓/人/日、十二层全跑流水线；强调 mutation 边界与 implement/validate 成对，跨仓关联仍靠人。",
+    description:
+      "面向多服务基础设施迁栈不能「一句 migrate」的平台团队：把「分层工作流 + 读写边界 + 并行会话报告」写成门禁，区别于产品迁移动真靠 setup 与并行票据编排。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://devdosvid.blog/2026/04/07/layers-made-it-universal.-harnesses-made-it-run/",
+    sourceLabel: "devDosvid·Serhii Vasylenko 实践帖",
+    upvotes: 351,
+    trending: false,
+    tags: [
+      "ECS",
+      "EKS",
+      "harness",
+      "多服务迁移",
+      "平台工程",
+    ],
+    howItWorks: [
+      "粘贴服务/仓列表、迁移层定义（如 OIDC/日志/CI/infra），以及每步允许 READ ONLY 还是 MAKES CHANGES",
+      "Agent 按实践帖输出：编号步骤工作流、确定性脚本 vs AI 发现步骤的切分，以及并行 worktree 报告+人审点",
+      "人工保留跨仓关联与合并；Agent 不代你对「一句 migrate this service」负责",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-07T00:00:00Z → 2026-04-07；Updated May 5, 2026）：Serhii Vasylenko（devDosvid）写八季度迁移收官波——21 个雪花服务 ECS→EKS。四工程师，目标大致「每层每人每天约十个仓」。层定义做什么（加 OIDC、换 logging appender、重写 CI、补 infra），但各仓怎么接线不同，纯脚本不够、纯「让 AI 迁服务」会得到 21 套不同错误。他们把 harness 当主工程产物：编号 markdown 步骤在隔离 Claude Code 会话按序跑，混用 Go/脚本确定性编辑与 AI 发现/适配，再校验；形状固定为 context→discovery→analysis→planning→implementation→validation→ship→report。六条约束：mutation 边界（READ ONLY / MAKES CHANGES / PLANNING ONLY）、意图锚定、领域脚注进提示、早退、显式推理门、关键层 implement/validate 拆成两条工作流。并行执行封装在 Claude Agent SDK 上：每仓独立 worktree+会话，工程师读十份报告而非手写十个 PR；十二层全走该流水线。提示与工具进共享仓当生产代码迭代。诚实：Helm values 等跨 Terraform/ECS task/应用的关联仍需人；未给每层都配 validate 时 QA/PREPROD 才兜住——作者后悔没从第一天成对建设。收官口径：层让工作可复用，harness 让 AI 可信，四工程师而非四十。",
+      "与 karthik-claude-setup-product-migration / day-implement-orchestrated-parallel-tickets 不同：本条是多服务基础设施分层 harness（脚本+AI+校验），不是产品迁移 setup 票或应用功能并行票据编排",
+    ],
+    approach: `Serhii Vasylenko 在 devDosvid《Harness Engineering: Layers Made It Universal》（JSON-LD datePublished 2026-04-07 → 2026-04-07）写明：21 个雪花服务的 ECS→EKS 收官波，既不能指望一条万能脚本，也不能对代理说「migrate this service」——后者会产出 21 套漂移实现，比什么都不做更糟。
+
+他们把 harness（有序提示流水线+mutation 边界+校验）当作主交付物，用 Claude Agent SDK 包装并行仓会话，让四工程师按层推进（约十仓/人/日量级目标），十二层跑完同一套机械。提示进共享仓像生产代码一样评审扩散。作者强调 implement/validate 成对是最高杠杆，且跨仓关联仍留在人侧。
+
+本场景据此输出「多服务迁移 harness」提纲。禁止把「四而非四十」写成任意组织编制承诺，或跳过校验层直接批量合 MR。`,
+    outcomes: [
+      "源披露 21 仓、四工程师、单层约十仓/人/日目标、十二层流水线、以及 mutation/validate 等作者口径；属单一平台团队八季度收官窗口，不可外推为你的变更失败率、工时或「有 harness 即可无人合入」。",
+      "能把「一句让 AI 迁服务」与「分层工作流 + 读写边界 + 并行报告人审」拆开。",
+      "为缺 validate 配对、以及跨仓 Helm/Terraform 关联仍丢给单仓代理提供提问清单。",
+    ],
+    caveats: [
+      "作者承认跨仓关联与部分层的校验覆盖不足，靠 QA/PREPROD 兜底。",
+      "文为系列续篇，方法论与工具细节分散在前后文。",
+      "上面写的是 Serhii 团队实践帖，不是 AWS/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多服务基础设施 harness 简报",
+        body: `你是平台迁栈顾问。只根据用户约束写 harness，不要编造已完成的仓数或人天。
+
+仓/服务列表：{{repos}}
+迁移层：{{layers}}
+并行度与人审点：{{parallelism}}
+
+输出 Markdown：
+1. 每层编号步骤（标 READ ONLY / MAKES CHANGES / PLANNING ONLY）
+2. 脚本确定性步骤 vs AI 发现步骤切分
+3. implement 与 validate 成对工作流
+4. 并行 worktree 报告字段与禁止合入条件
+禁止建议「一句 migrate this service」；禁止伪造「四工程师万能」。`,
+      },
+      {
+        title: "层完成后预发才爆或报告不一致复盘提纲",
+        body: `流水线报告全绿但预发失败，或两仓同层改法互相矛盾。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 validate 配对、缺跨仓关联，还是 mutation 边界被打破
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多并行会话等于更少回归」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://devdosvid.blog/2026/04/07/layers-made-it-universal.-harnesses-made-it-run/",
+      label: "devdosvid.blog · Harness Engineering: Layers Made It Universal",
+      date: "2026-04-07",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
