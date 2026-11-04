@@ -27491,6 +27491,452 @@ max-iterations：{{max_iter}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "451",
+    slug: "davron-four-agents-77-projects-90-min",
+    title: "Davron：四代理并行审计 77 个项目约 90 分钟——TaskList 预分配防抢单",
+    summary: "个人作品集审计+日班医疗 CRM；披露 77 任务/四 analyst/~90 分钟、60 卷宗、showcase22/supporting38/skip17、CRM 2208 提交中作者 962；不代你无人值守合入。",
+    description:
+      "面向想用多智能体扫仓却撞上抢任务写坏卷宗的独立开发者：把「lead 预分配 owner + 领域子代理契约」写成门禁，区别于并行票据编排与多会话治理产品。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/davron_yuldashev_0a91802f/four-agents-77-projects-90-minutes-the-multi-agent-claude-code-pattern-i-run-in-production-9pc",
+    sourceLabel: "dev.to·Davron Yuldashev 实践帖",
+    upvotes: 342,
+    trending: false,
+    tags: [
+      "多代理",
+      "TaskList",
+      "作品集审计",
+      "医疗 CRM",
+      "子代理契约",
+    ],
+    howItWorks: [
+      "粘贴要审计的仓/项目清单、并行分析员数量、以及哪些产出必须人审后才公开",
+      "Agent 按实践帖输出：TeamCreate+TaskList 预分配 owner、竞态复盘、以及生产版领域子代理交接契约",
+      "人工保留架构判断与合入；Agent 不代你声称抢任务已彻底不可能或卷宗可直接对外",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-05-29T12:03:02Z → 2026-05-29）：作者 Davron Yuldashev 用四个 Claude Code 代理并行审计自己多年写下的 77 个项目（物流 monorepo、半成品 starter、临床推理引擎、Telegram bot、可复用 SaaS 框架、两家创业、Rust 进程管理等），约 90 分钟完成。原语：TeamCreate+具名队友、SendMessage 协调、TaskList 的 owner 字段当原子锁。首日踩坑：队友空闲时抢最低 ID 无主任务→同一秒双人认领、后写覆盖先写卷宗；修复是 lead 把剩余任务预切成连续块（如 #33–43…）并事先写好 owner，跑完零碰撞。产出 60 份卷宗：22 showcase / 38 supporting / 17 skip（提交占比<10% 客户活、空脚手架等）。交叉发现：同一样板悄悄撑起四个产品；某医疗 CRM 提交 962/2208（表面元数据只约 700）。日班同模式跑在约 2,200 提交医疗 CRM：CLAUDE.md 定义 django-backend / advertiser-frontend / patient-frontend / linting 四子代理，后端改视图须报 endpoint/URL/响应形，前端先问再动手，lint 放链尾；作者自称 orchestrator 握架构、代理握 diff。公开卷宗 davr.dev/projects。",
+      "与 day-implement-orchestrated-parallel-tickets / ilya-gorban-15-claude-sessions-governance 不同：本条是个人仓批量代码级审计+TaskList 预分配，以及医疗 CRM 领域子代理契约，不是并行票编排器或一人多会话产品治理",
+    ],
+    approach: `Davron Yuldashev 在 DEV《Four agents, 77 projects, 90 minutes: the multi-agent Claude Code pattern I run in production》（JSON-LD datePublished 2026-05-29T12:03:02Z → 2026-05-29）写明：他要用代码级（不是 commit 摘要）审完自己多年堆下的 77 个项目，单代理会被上下文、串行读盘与「编排者埋进 diff」三堵墙拖死，于是拉起四个同模板 analyst 队友并行写卷宗，约 90 分钟收工。
+
+协调面是 Claude Code 的 TeamCreate/SendMessage + TaskList：每个任务用 owner 当锁。首日乐观抢单导致双人同写一卷宗；他改成 lead 预先按连续 ID 块写好 owner，再放swarm，后续零碰撞。产出 60 卷宗并打上 showcase/supporting/skip；交叉对照还纠正了某医疗 CRM「约 700→实际 962/2208」的贡献叙事。
+
+同一模式进日班约 2,200 提交医疗 CRM：四领域子代理 + 显式接口交接，lint 收尾，人握架构。本场景据此输出「预分配 owner 的审计 swarm」提纲。禁止建议跳过人审把卷宗当对外简历原文，或把 90 分钟写成任意 monorepo SLA。`,
+    outcomes: [
+      "源披露 77 任务/四代理/约 90 分钟、60 卷宗（22/38/17 标签）、医疗 CRM 962/2208 提交纠正、以及日班四子代理契约等作者口径；属单人作品集+单一日班仓窗口，不可外推为你的审计完备性、合入质量或「swarm 必无竞态」。",
+      "能把「让代理自己抢下一张票」与「lead 预切块写 owner + 领域交接契约」拆开。",
+      "为乐观抢单覆盖卷宗、以及把 skip 客户活误标 showcase 提供提问清单。",
+    ],
+    caveats: [
+      "作者强调 orchestrator（人）仍握架构；代理只持文件 diff。",
+      "公开卷宗站点与个人品牌用途绑定；对外陈述仍须人核。",
+      "上面写的是 Davron 个人实践帖，不是 Anthropic 多智能体官文。",
+    ],
+    prompts: [
+      {
+        title: "多仓审计 swarm 预分配简报",
+        body: `你是多智能体审计顾问。只根据用户约束写 TaskList 编排，不要编造已完成的分钟数。
+
+项目/仓清单：{{repos}}
+并行分析员数：{{n_agents}}
+对外公开前是否人审：{{human_gate}}
+
+输出 Markdown：
+1. TeamCreate/队友命名与统一 prompt 边界（代码级读，非只看 commit）
+2. lead 预切块写 owner 的规则与失败重跑
+3. 卷宗字段与 showcase/supporting/skip 标准
+4. 人必须保留的架构/对外叙事决策
+禁止建议无人值守把卷宗直接公开；禁止伪造「零竞态保证」。`,
+      },
+      {
+        title: "双代理抢同一任务写坏卷宗复盘提纲",
+        body: `发现两份卷宗互相覆盖或同任务双开。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺预分配 owner、缺空闲抢单禁令，还是缺写回校验
+2. 最小修复与验收夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多代理等于更快且更准」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/davron_yuldashev_0a91802f/four-agents-77-projects-90-minutes-the-multi-agent-claude-code-pattern-i-run-in-production-9pc",
+      label: "dev.to/davron_yuldashev_0a91802f · Four agents, 77 projects, 90 minutes: the multi-agent Claude Code pattern I run in production",
+      date: "2026-05-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "452",
+    slug: "achiya-34-workflows-typescript-claude",
+    title: "Achiya：删掉可视化自动化、用 Claude Code 把 34 条工作流改写成 TypeScript",
+    summary: "个人+客户日跑自动化；披露 34 条、内存约 1.4GB→~150MB（闲置~48MB）、吞吐约 1,167 workflows/s、单流开销~30ms、Caddy 热切无感；后记称客户侧又迁回 n8n。",
+    description:
+      "面向可视化画布越养越重、想用代码+git 管自动化的独立开发者：把「行为等价迁移 + 反向代理热切 + 诚实延迟边界」写成门禁，区别于 SST→单体与合同开票一下午。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "n8n",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/achiya-automation/i-deleted-my-no-code-automation-platform-and-rewrote-34-workflows-in-typescript-emh",
+    sourceLabel: "dev.to·achiya-automation 实践帖",
+    upvotes: 343,
+    trending: false,
+    tags: [
+      "n8n",
+      "TypeScript",
+      "DBOS",
+      "工作流迁移",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴现有自动化清单、是否必须行为等价、以及入站入口是否可用反向代理热切",
+      "Agent 按实践帖输出：模块化重写边界、对照验收、以及「LLM 延迟不随运行时变快」的诚实口径",
+      "人工保留客户可见行为与回滚；Agent 不代你声称删画布必降回复延迟或永久优于 n8n",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-02T11:20:45Z → 2026-07-02；文首 Update Oct 2026）：作者 achiya-automation 删除两年可视化（n8n）积累的 34 条日跑自动化——WhatsApp AI bot、FB/表单获客、PDF 报告、日历预约、CRM 同步、通知等——改写成 TypeScript，底座用 DBOS（普通 TS 工作流 + Postgres 耐久执行）。自报数字：内存约 1.4GB→约 150MB（约 10×），闲置约 48MB；吞吐约 1,167 workflows/s；单工作流开销约 30ms。诚实边界：对话 bot 的用户感知延迟仍由 LLM 决定，换运行时不会让回复「瞬间」；收益是服务器更轻、并发与基础设施成本。一人+Claude Code：理解原流程、改写、上线前捉虫、对照原行为验收；Caddy 反代保持 WhatsApp/webhook/表单同一入口，引擎中途切换客户端无感。文首更新：之后为客户工作又把这些流程迁回 n8n，因可视化编辑器赢了；正文教训仍成立。",
+      "与 khal-tessellai-serverless-to-monolith-claude / startupfinances-contract-to-invoice-afternoon 不同：本条是日跑自动化从可视化画布到代码耐久工作流的行为等价迁移，不是 SST 后端改单体或合同→发票应用",
+    ],
+    approach: `作者 achiya-automation 在 DEV《I Deleted My No-Code Automation Platform and Rewrote 34 Workflows in TypeScript》（JSON-LD datePublished 2026-07-02T11:20:45Z → 2026-07-02）写明：他并非否定 n8n，而是系统长大后开始「跟工具搏斗」——改一处要开浏览器在图里找节点；于是删除约两年的 34 条日跑自动化，改写成可组合的 TypeScript 模块，并落到 DBOS 这类带 Postgres 耐久执行的代码工作流上。
+
+披露的硬指标集中在资源与吞吐：内存约 1.4GB→约 150MB（闲置约 48MB）、约 1,167 workflows/s、单流开销约 30ms。他刻意拆穿营销话术：接大模型的 bot，用户等待仍由模型决定，换栈买不到「秒回」。
+
+迁移能由一人完成，是因为 Claude Code 协助理解旧自动化、改写、预发捉虫并对照验收；入站用 Caddy 固定原 endpoint，客户端无感换引擎。文首 Oct 2026 更新诚实写回：客户侧后来又迁回 n8n，因可视化编辑赢了。本场景据此输出「行为等价的自动化迁栈」提纲。禁止把内存下降写成回复延迟 SLA，或忽略作者已迁回 n8n 的后记。`,
+    outcomes: [
+      "源披露 34 条、内存约 1.4GB→~150MB（闲置~48MB）、约 1,167 workflows/s、~30ms 开销、Caddy 热切、以及 Oct 2026 又迁回 n8n 等作者口径；属单一自动化栈窗口，不可外推为你的回复延迟、客户满意度或「代码永久优于画布」。",
+      "能把「再加 worker 扛内存」与「代码模块+耐久执行+入口热切」拆开。",
+      "为把 LLM 等待误报成基础设施胜利、以及无对照验收的静默行为漂移提供提问清单。",
+    ],
+    caveats: [
+      "文首更新写明客户工作后来又迁回 n8n；选型随维护者画像而变。",
+      "文中含作者自动化服务站推广；数字以正文自测表为准。",
+      "上面写的是 achiya 个人实践帖，不是 n8n/DBOS 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "可视化→代码工作流迁栈简报",
+        body: `你是自动化迁栈顾问。只根据用户约束写迁移提纲，不要编造已下降的内存或延迟。
+
+现有流程清单：{{flows}}
+是否必须行为等价：{{parity}}
+入口能否反向代理热切：{{hot_cut}}
+
+输出 Markdown：
+1. 模块边界与耐久执行需求
+2. 逐条对照验收清单
+3. 热切/回滚步骤
+4. 人必须保留的客户可见行为决策
+禁止把 LLM 等待写成基础设施胜利；禁止伪造「迁栈必永久优于画布」。`,
+      },
+      {
+        title: "迁栈后回复没变快或行为漂移复盘提纲",
+        body: `内存降了但用户仍觉得慢，或某条通知行为与旧版不一致。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 瓶颈在 LLM、缺对照夹具，还是热切只换了入口
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更低内存等于更好体验」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/achiya-automation/i-deleted-my-no-code-automation-platform-and-rewrote-34-workflows-in-typescript-emh",
+      label: "dev.to/achiya-automation · I Deleted My No-Code Automation Platform and Rewrote 34 Workflows in TypeScript",
+      date: "2026-07-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "453",
+    slug: "blaze-git-hooks-cursor-context-memory",
+    title: "Blaze：用 git hook + n8n 给 Cursor 自动养 CONTEXT.md——提交即提炼耐久知识",
+    summary: "个人；披露 post-commit→webhook→Groq Llama 3.3→CONTEXT.md 并复制进 .cursor/rules；同问前后从教科书腔变引用提交理由；源未披露省时/费用数字。",
+    description:
+      "面向每次新开 Cursor 聊天都要重讲架构约定的开发者：把「提交差分提炼 + 规则目录自动加载」写成门禁，区别于 docs routines 看守与个人早报 cron。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "n8n",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/blaze_automates/how-i-automated-my-ai-coding-assistants-memory-using-git-hooks-and-n8n-jl4",
+    sourceLabel: "dev.to·blaze_automates 实践帖",
+    upvotes: 344,
+    trending: false,
+    tags: [
+      "Cursor",
+      "git hooks",
+      "CONTEXT.md",
+      "n8n",
+      "Groq",
+    ],
+    howItWorks: [
+      "粘贴仓库路径、是否允许 hook 外呼、以及哪些提交类型应跳过提炼",
+      "Agent 按实践帖输出：post-commit 载荷、n8n/模型提示（只加耐久知识）、以及写入 CONTEXT.md 与 .cursor/rules 的同步规则",
+      "人工保留密钥与敏感差分边界；Agent 不代你声称记忆文件可替代设计评审",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-08-12T09:01:12Z → 2026-08-12）：痛点是每次新开 Cursor 聊天都要重讲架构决策、约定与坑。做法：git post-commit hook 取 diff + 现有上下文文件，POST 到 webhook；n8n 调 Groq 上的 Llama 3.3（作者称图成本和速度），系统提示要求「只追加本提交揭示的耐久可复用知识，勿重复；若无则原样返回」；结果写回仓内 CONTEXT.md，并复制到 .cursor/rules/ 以便新聊天自动加载。自测：同一问题在解释设计决策的提交前后，从泛化教科书回答变为引用该提交的真实理由。踩坑：Windows 服务环境 PATH 与交互用户不同导致找不到 git；OneDrive 等云同步静默干扰写文件；把大段 AI 输出塞进命令行参数易撞长度限制，宜由代码直接写文件；n8n binary 不一定是简单 base64。文末有 Gumroad 可导入包推广。",
+      "与 persimmoq-claude-routines-docs-watcher / ji-ai-spoonai-newsletter-11-subs-cron 不同：本条是提交触发的编码助手记忆文件，不是官方文档 diff 日摘要或个人早报邮件",
+    ],
+    approach: `作者 blaze_automates 在 DEV《How I Automated My AI Coding Assistant's Memory Using Git Hooks and n8n》（JSON-LD datePublished 2026-08-12T09:01:12Z → 2026-08-12）写明：Cursor 能看见代码，却不知道「为什么这样建」；他不愿每个新聊天重讲一遍，于是让每次 commit 自动问一句——这次差分有没有值得长期记住的东西。
+
+链路很短：post-commit 抓 diff 与现有上下文 → webhook → n8n 调 Groq Llama 3.3，提示只追加耐久知识、无则原样返回 → 写 CONTEXT.md 并同步进 \`.cursor/rules/\`。他用前后对比同一问题展示效果：提交解释设计决策之后，回答开始引用真实理由而非教科书腔。
+
+工程摩擦集中在 Windows 服务环境、云同步写文件、CLI 参数长度与 n8n binary 形态。本场景据此输出「提交即养规则文件」提纲。禁止建议把密钥差分送进第三方模型，或把记忆文件写成可替代架构评审。`,
+    outcomes: [
+      "源披露 post-commit→n8n→Groq Llama 3.3→CONTEXT.md/.cursor/rules、以及同问前后回答从泛化变引用提交理由等作者口径；源未披露具体省时分钟或 API 费用，属单人仓库窗口，不可外推为你的上下文正确率或「自动记忆可替代文档」。",
+      "能把「每次聊天手工 @ 规则」与「提交触发追加耐久知识」拆开。",
+      "为把密钥写进 CONTEXT、以及 hook 在服务账户下找不到 git 提供提问清单。",
+    ],
+    caveats: [
+      "文末含 Gumroad 模板推广；机制以正文 hook+n8n 描述为准。",
+      "模型可能把短暂实现细节误标为「耐久知识」，需人偶尔修剪。",
+      "上面写的是 blaze 个人实践帖，不是 Cursor/n8n 官文。",
+    ],
+    prompts: [
+      {
+        title: "提交触发 CONTEXT 记忆最小简报",
+        body: `你是编码助手记忆系统设计顾问。只根据用户约束写 hook 回路，不要编造已节省的时间。
+
+仓库与规则目录：{{repo}}
+允许外呼的模型/区域：{{model}}
+应跳过的提交类型：{{skip}}
+
+输出 Markdown：
+1. post-commit 载荷字段
+2. 「只追加耐久知识」系统提示
+3. CONTEXT.md 与规则目录同步规则
+4. 禁止送出的密钥/PII 边界
+禁止建议上传生产密钥；禁止伪造「记忆文件等于设计正确」。`,
+      },
+      {
+        title: "CONTEXT 膨胀或泄露敏感差分复盘提纲",
+        body: `规则文件越来越长，或发现令牌/客户名进入 CONTEXT。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺跳过规则、缺脱敏，还是提示未禁止短暂细节
+2. 最小修补
+3. 下次验收标准
+4. 人工修剪清单
+不要伪造「自动记忆越多越好」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/blaze_automates/how-i-automated-my-ai-coding-assistants-memory-using-git-hooks-and-n8n-jl4",
+      label: "dev.to/blaze_automates · How I Automated My AI Coding Assistant's Memory Using Git Hooks and n8n",
+      date: "2026-08-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "454",
+    slug: "arqam-claude-opus-motion-html-playwright",
+    title: "Arqam：Claude Opus 写 HTML 帧函数做产品片——RTX 2050 约 0.3s/帧、先静帧再全片",
+    summary: "独立产品 Slabwatch；披露 Opus 不碰像素、Playwright+ffmpeg、v2 three.js@0.186、RTX 2050≈0.3s/帧@1080p、静帧评审约 4 轮、锐度分≥0.50；不代你一条提示出片。",
+    description:
+      "面向不会 After Effects、却要用编码代理出产品演示片的独立开发者：把「纯函数帧契约 + 形容词改数字 + 静帧评分循环」写成门禁，区别于 Marketing OS 与夜间作品集交付。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/arqamwd/how-i-make-motion-videos-with-claude-opus-55-the-full-setup-prompts-and-numbers-2g09",
+    sourceLabel: "dev.to·arqamwd 实践帖",
+    upvotes: 345,
+    trending: false,
+    tags: [
+      "动态设计",
+      "Playwright",
+      "three.js",
+      "ffmpeg",
+      "产品片",
+    ],
+    howItWorks: [
+      "粘贴产品真实 URL/素材、目标时长与 fps、以及是否禁止模型手绘 UI",
+      "Agent 按实践帖输出：renderAt(t) 契约、方向提示（数字替形容词）、静帧→评分→修 3 处最差的循环",
+      "人工保留品牌与终卡可读性验收；Agent 不代你声称一条提示可出可发布片",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-26T10:34:57Z → 2026-10-26）：作者 arqamwd 自称非动态设计师、没开过 AE，用 Claude Code + Opus 5.5 为 Slabwatch 做产品片。核心：模型只写程序（通常单 HTML），每帧是时间 t 的纯函数；Playwright 截帧、ffmpeg 拼 MP4；同输入同帧哈希一致。v1 扁平片作者嫌「正确但不想看」；v2 用 three.js 0.186 在笔记本 RTX 2050 上头less Chromium 渲染（电表 LCD、费率列、真站 iframe、镜像地板等），开 Vulkan/GPU 参数后约 0.3s/帧@1080p（含景深阴影）。代理在全片前做约 4 轮静帧检查。方向法：把 premium/snappy 等形容词换成粗糙度、帧数、阻尼比；禁止点名默认「太空海军蓝光晕粒子」。锐度：UI 文字不经 DOF；QA 脚本文字锐度分≥0.50（大字 0.60+）。音量混到约 -14 / -14.6 LUFS。强调真实产品页进 iframe，禁止模型捏造界面数字。",
+      "与 lukasz-fryc-marketing-os-49-slash-commands / reet-batra-tokenmaxxing-overnight-portfolio 不同：本条是编码式动态设计渲染契约与静帧评审，不是终端营销命令或夜间作品集 /goal",
+    ],
+    approach: `作者 arqamwd 在 DEV《How I make motion videos with Claude Opus 5.5 (the full setup, prompts and numbers)》（JSON-LD datePublished 2026-10-26T10:34:57Z → 2026-10-26）写明：Opus 从不碰像素——它写一个把每一帧建成时间纯函数的 HTML；Playwright 按帧截图，ffmpeg 编码。这样可复现、可改一个数字重渲，也能让模型先读静帧再改。
+
+他为 Slabwatch 先做了扁平 v1，自认无聊；再上 three.js 0.186 的 3D v2，并在 RTX 2050 笔记本上把 headless Chromium 打到 GPU，报约 0.3s/帧。真正耗时间的是「静帧→严评分→只修最差三处→2–4 轮」而不是一键出片；方向提示要把形容词换成可检数字，并点名禁止默认炫光模板。产品界面用真站 iframe，禁止模型手绘假 UI。本场景据此输出「可编程产品片」提纲。禁止建议跳过静帧验收直接发全片，或把 0.3s/帧写成任意场景保证。`,
+    outcomes: [
+      "源披露 Opus 写帧程序、Playwright+ffmpeg、v2 three.js@0.186、RTX 2050≈0.3s/帧@1080p、约 4 轮静帧、锐度阈值与 -14 LUFS 量级等作者口径；属单人产品片窗口，不可外推为你的出片时长、审美达标率或「一条提示必可发布」。",
+      "能把「再试视频大模型碰运气」与「纯函数帧契约 + 数字方向 + 静帧循环」拆开。",
+      "为假 UI 穿帮、以及 headless 默认真用 CPU 慢到不可用提供提问清单。",
+    ],
+    caveats: [
+      "作者承认社媒曾说 one-shot，但最终采用的是多轮后的 v2。",
+      "文中大量引用社区他人技巧；以作者本机数字与 Slabwatch 流程为准。",
+      "上面写的是 arqam 个人实践帖，不是 Anthropic/Adobe 官文或评测榜。",
+    ],
+    prompts: [
+      {
+        title: "可编程产品片渲染契约简报",
+        body: `你是编码式动态设计顾问。只根据用户约束写渲染契约，不要编造已渲染的秒数。
+
+产品真实 URL/素材：{{assets}}
+时长与 fps：{{timing}}
+是否禁止手绘 UI：{{ban_fake_ui}}
+
+输出 Markdown：
+1. renderAt(t) 契约与禁令（随机数/时钟/JPEG 帧）
+2. 方向提示：形容词→数字表
+3. 静帧帧号、评分维、修 3 处最差的循环
+4. 人必须看的全尺寸终卡/近景
+禁止建议模型捏造产品界面；禁止伪造「一条提示可发布」。`,
+      },
+      {
+        title: "全片好看但文字发糊或假 UI 穿帮复盘提纲",
+        body: `成片在手机上文字发灰，或演示数字与真站不符。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 文字进了 DOF、缺锐度闸，还是允许手绘 UI
+2. 最小契约修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更高分自评分等于可读」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/arqamwd/how-i-make-motion-videos-with-claude-opus-55-the-full-setup-prompts-and-numbers-2g09",
+      label: "dev.to/arqamwd · How I make motion videos with Claude Opus 5.5 (the full setup, prompts and numbers)",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "455",
+    slug: "cseeman-claude-noncoding-chats-10-weeks",
+    title: "Christine：回看十周非编码 Claude 聊天——真正省事的是追问到「你真正要做的事」",
+    summary: "个人；披露 2026-08-15→10-25 共 20 段聊天、Slack 追周约 23 分钟理出两笔欠回复、旅住/护眼/家务等桶；不代你医疗或消费决策。",
+    description:
+      "面向觉得 AI 只会写代码、想检查生活向聊天是否真省时间的人：把「先约束再追问目标」写成门禁，区别于财务技能链与合同开票自动化。",
+    categories: [
+      "life",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "kimi",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/cseeman/ai-for-everything-besides-coding-4hen",
+    sourceLabel: "dev.to·Christine Seeman 实践帖",
+    upvotes: 346,
+    trending: false,
+    tags: [
+      "个人效率",
+      "非编码",
+      "旅行规划",
+      "健康追踪",
+      "Slack 摘要",
+    ],
+    howItWorks: [
+      "粘贴一段生活向问题、硬约束（预算/过敏/日程）、以及哪些建议必须人核",
+      "Agent 按实践帖输出：先澄清真实目标的追问树、可执行清单、以及何时应改用系统闹钟/真人医生",
+      "人工保留医疗/消费/出行最终决策；Agent 不代你下单或保证健康结果",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-28T23:48:46Z → 2026-10-28；文内窗口 Aug 15–Oct 25, 2026）：作者 Christine Seeman（cseeman）白天用 Claude Code 写代码，却回看十周非编码 Claude 聊天共 20 段，想验证是否真省时间。桶：旅行（奥兰多家庭行程/打包/Epic Universe、落基山 Ruby 酒店、Boulder 徒步、帮妈妈找邮轮顾问）、健康（睑板腺功能障碍护理计划与手机日志）、食谱与怪问、家务与家庭、爱好志愿、以及非代码工作（追一周 Slack、行业诉讼摘要）。她认为最有用的对话会越过字面问题：香水价比延伸到调香师风格并买了 FragranceX 上两瓶（文中举例 Le Jardin de Monsieur Li 3.3oz $66.45 等）；猫粮异味计划先排查再添香，且模型会自我纠正净化器选型。Boulder 会议酒店约束：步行 eTown Hall≤20 分钟且<$750，住了推荐的 Basecamp；提醒海拔 5,430 英尺首日别爬 Sanitas。奥兰多早入园时间模型标明来自 TouringPlans（因官网页未加载）。Slack：先商量方法再跑，约 23 分钟得到仍欠回复的两条线程与草稿。模式：先给约束；最好的答案追到真正任务；模型有时会劝你用手机闹钟而非它来提醒。",
+      "与 georgii-motrenko-finance-17-skills-mcp / startupfinances-contract-to-invoice-afternoon 不同：本条是个人生活向聊天审计与追问模式，不是财务技能链或合同发票应用",
+    ],
+    approach: `Christine Seeman 在 DEV《AI for everything besides coding》（JSON-LD datePublished 2026-10-28T23:48:46Z → 2026-10-28）写明：编码向 AI 好描述——有仓、有票、有 diff；聊天向则常因问题太怪或太私才打开。她回看自约 2026-08-15 更新家庭行程起至约 10-25 的全部非编码对话，共 20 段，检查它们是省出了更好时间，还是喂了无目刷手机。
+
+短结论：最有帮助的聊天会越过你打出来的句子，问到你真正要完成的事——例如从「哪瓶香水更便宜」追到调香师风格清单，或在 Slack 追周前先共创方法，约 23 分钟只捞仍欠回复的线。她也记下模型的自我纠正（净化器选型）与边界意识（夜间提醒改用手机闹钟；海拔建议）。
+
+本场景据此输出「生活向约束+追问」提纲。禁止把文中护眼/旅行建议写成医疗或安全保证，或怂恿自动下单。`,
+    outcomes: [
+      "源披露约十周窗口 20 段聊天、旅行/健康/家务等桶、Slack 约 23 分钟理出两笔欠回复、以及若干可核对消费/住店例子等作者口径；属单人生活窗口，不可外推为你的省时量、健康结局或「非编码聊天必值得」。",
+      "能把「把聊天当搜索框」与「先给约束、再追真实任务」拆开。",
+      "为把模型建议当医嘱、以及无来源的景区开放时间提供提问清单。",
+    ],
+    caveats: [
+      "健康与旅行建议仅作者个人记录；就医/出行仍须专业与官方信息。",
+      "价格与酒店可用性会变；文中数字以当时对话为准。",
+      "上面写的是 Christine 个人实践帖，不是 Anthropic 官文或效率评测榜。",
+    ],
+    prompts: [
+      {
+        title: "生活向约束+追问最小简报",
+        body: `你是个人效率顾问。只根据用户约束给可执行建议，不要编造已节省的小时。
+
+问题：{{question}}
+硬约束：{{constraints}}
+必须人核的领域：{{human_gate}}
+
+输出 Markdown：
+1. 先澄清「真正要完成的事」的 3 个追问
+2. 带来源标注的选项表
+3. 可执行清单（含何时改用系统工具/真人专家）
+4. 不应自动化的决策
+禁止给出医疗诊断或自动下单；禁止伪造「必省时间」。`,
+      },
+      {
+        title: "聊天越帮越忙或建议过时复盘提纲",
+        body: `对话很长但没有行动，或按建议订到已失效信息。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺约束、缺来源、还是把聊天当无尽搜索
+2. 最小提问修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更长对话等于更好决定」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/cseeman/ai-for-everything-besides-coding-4hen",
+      label: "dev.to/cseeman · AI for everything besides coding",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
