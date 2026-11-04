@@ -18585,6 +18585,456 @@ Agent 最终消息摘录：{{final_message}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "351",
+    slug: "nick-tune-claude-hooks-workflow-engine",
+    title: "Nick Tune：用 Claude Code hooks 做可测工作流引擎",
+    summary: "对照个人实践：把规划→开发→评审→提交写成带状态机的 hooks 工作流，用 PreToolUse 禁非法操作、按态注入说明，并配合 agent teams 迭代重生；不代你声称已可靠、不外推吞吐。",
+    description:
+      "面向要在不可控仓也强制同一套流程的开发者：把「再写一篇 CLAUDE.md 希望它听话」写成可对账的引擎+持久化+钩子门禁，区别于 Kanban 派任务与自研 harness 契约。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://nick-tune.me/blog/2026-02-28-hook-driven-dev-workflows-with-claude-code/",
+    sourceLabel: "nick-tune.me·Nick Tune 实践帖",
+    upvotes: 242,
+    trending: false,
+    tags: [
+      "Claude Code hooks",
+      "工作流引擎",
+      "状态机",
+      "agent teams",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴目标流程阶段、是否控制 lint/CI、以及是否允许 agent teams 分角色",
+      "Agent 按实践帖输出：状态与合法迁移表→各态注入说明→PreToolUse 禁令→会话状态持久化提问清单",
+      "人工保留合并与「是否值得合入」；Agent 不代你宣称工作流已稳定、不声称覆盖率等于任务成功率",
+    ],
+    tips: [
+      "源帖关键：状态切换与禁操作走工作流公开 API，不要让 Agent 直接改状态文件",
+      "与 platypus-kanban-cron-agent-pipeline / mohit-agentforge-harness-contracts / flexcompute-agent-loop-mutate-gate 不同：本条是 Claude Code hooks + 可测状态机 + 按态注入 + teams 重生，不是看板派任务、自研 ToolResult harness，或库内 mutate/gate",
+    ],
+    approach: `Nick Tune 在《Hook-driven dev workflows with Claude Code》（页内日期 February 28, 2026 → 2026-02-28）写明：自己控仓时可把 lint、git hooks、评审步骤烘焙进流程并稳定受益；到遗留仓或无权改那些旋钮时，提示与 Markdown 流程常跑偏。解法落到 Claude Code hooks：用可编程、可测的工作流引擎做强护栏，并可选配合 agent teams 观察各角色。
+
+架构两块：工作流引擎 + 会话持久化，由 slash 命令启动。引擎拒绝非法迁移（例如不能从 planning 直跳 reviewing，须经 developing）；按态禁操作（例：developing 禁止 git commit，只在 reviewing 后的 committing 允许）。示例流程含 spawn 建 GitHub issue、developing/reviewing/committing、CodeRabbit、建 draft PR；迭代开始 RESPAWN 关掉旧 developer/reviewer 再开干净上下文。
+
+实现：把 SessionStart/PreToolUse/SubagentStart/TeammateIdle/SubagentStop 等钩到同一入口；SubagentStart 按当前态从 \`/states/*.md\` 注入程序说明，避免把整台状态机塞进系统提示；Agent 只能用 \`/…workflow transition <STATE>\` 改态。状态示例落盘为按 SESSION_ID 的 JSON（state/iteration/issue/branch/eventLog 等）。作者称追「无聊事自动办」约六个月，本方案在真实项目实验约一周——「还不能说可靠、也不能 100% 推荐」，但每次跑偏可加引擎逻辑约束。本场景据此输出「hooks 工作流」提纲。禁止建议用未测状态文件当生产门禁。`,
+    outcomes: [
+      "源披露约六个月探索、本 hooks 方案在真实项目约一周实验，以及「尚不可称可靠」的作者自述；属个人窗口经验，不可外推为你的合入吞吐或失败率。",
+      "能把「再写长一点的流程说明」与「可测状态机 + 钩子禁令 + 按态注入」拆开。",
+      "为非法迁移、developing 禁 commit、RESPAWN 清上下文提供提问清单。",
+    ],
+    caveats: [
+      "作者明确：尚未证明长期可靠，钩子接线仍偏底层与脆弱。",
+      "示例规则（CodeRabbit、禁 commit 时机）须按仓改造，不可照搬。",
+      "上面写的是个人博客实验，不是 Anthropic 官方工作流产品说明。",
+    ],
+    prompts: [
+      {
+        title: "Hooks 工作流引擎简报",
+        body: `你是 Claude Code 工作流设计助手。只根据用户约束写状态机提问清单，不要编造已上线。
+
+目标阶段：{{stages}}
+是否控制 CI/lint：{{owns_ci}}
+是否用 agent teams：{{use_teams}}
+必须禁止的工具/命令：{{banned_ops}}
+
+输出 Markdown：
+1. 状态名与合法迁移表
+2. 各态应注入的最短程序说明
+3. PreToolUse 禁令列表
+4. 人工验收「Agent 不能直改状态文件」的检查
+禁止声称工作流已可靠；禁止伪造覆盖率等于任务成功率。`,
+      },
+      {
+        title: "Agent 跳阶段排查提纲",
+        body: `Agent 从 planning 直接想开 PR，请写排查提纲。
+
+当前持久化状态摘录：{{state_json}}
+最近钩子事件：{{hook_events}}
+
+输出：
+1. 是缺迁移校验、缺 PreToolUse，还是说明未注入
+2. 最小补丁（引擎侧）
+3. 应加的无模型单测
+4. 人工确认清单
+不要伪造「以后不会再跳阶段」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://nick-tune.me/blog/2026-02-28-hook-driven-dev-workflows-with-claude-code/",
+      label: "nick-tune.me · Hook-driven dev workflows with Claude Code (Nick Tune)",
+      date: "2026-02-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "352",
+    slug: "claudelab-article-gate-done-when-pipeline",
+    title: "Claude Lab：一行 done-when + 文章门禁跑无人值守发布",
+    summary: "对照个人实践：四站日更约 16 篇，把「写完即推」改成 article_gate.py 可机检 done-when，五次重试封顶、基线对照与内链白名单；不代你无人值守发敏感稿、不外推转化。",
+    description:
+      "面向要规模化内容产出的独立开发者：把「定时让模型写一篇」写成可对账的机械门禁+停机条件，区别于邮件 eval 环与编码隐藏测。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://claudelab.net/en/articles/claude-code/claude-code-e2e-driven-1line-autonomous-loop-pipeline",
+    sourceLabel: "claudelab.net·作者实践帖",
+    upvotes: 243,
+    trending: false,
+    tags: [
+      "done-when",
+      "质量门禁",
+      "内容流水线",
+      "Claude Code",
+      "独立开发",
+    ],
+    howItWorks: [
+      "粘贴发布节奏、可机检的质量信号、以及五次失败后是否允许空跑停机",
+      "Agent 按实践帖输出：一行 done-when→门禁检查项→重试封顶与 halt 报告→基线/白名单提问清单",
+      "人工保留品牌主观判断与敏感表述终审；Agent 不代你跳过门禁推送、不声称转化已提升某%",
+    ],
+    tips: [
+      "源帖关键：done-when 必须压成机器可判的一行（脚本 exit 0），「写得好」不算结束条件",
+      "与 manifest-eval-loop-email-triage / unlearn-hidden-test-coding-agent-eval / seo-blog-draft-publish-agent 不同：本条是多站文章流水线的机械门禁+五次重生封顶+实用信号代替字数，不是邮件分诊环、编码隐藏测或通用 SEO 草稿发布",
+    ],
+    approach: `独立开发者（Claude Lab / Dolice Labs 系站点运营者）在《Hand Claude Code a One-Line Done-When…》（页眉 2026-05-29 → 2026-05-29）写明：自 2014 做应用、并行运营四个 AI 工程博客；流水线无人值守约三周后复盘。定时任务若只写「写一篇并 push」，会出现三种失败：声称已推但构建未拾取新 MDX；语气漂回模板开场/「Hope this helps」；缺 Helpful Content 类机械检查。
+
+解法是把 done-when 压成一行：\`article_gate.py\` 对 JA/EN MDX 返回 exit 0，且双语篇数对齐，付费文满足亮点与实用信号阈值。门禁机械检查模板开场/收尾、AI 说明腔标记、口语体、裸链、长度底线、实用信号类型与作者信号出现次数等。未过门则丢稿重生，最多五次；五次仍败则不推并写 halt。源披露三周内「坏文进生产」事故数为零，换来每月一两次「四次失败空跑」；篇均重试约 1.4（约 70%/23%/7% 落在第 1/2/≥3 次）。另加基线：看近五篇长度分布、近期违规史、内链白名单，称可再降约 0.4 次重试。付费文从硬字数改为六类实用信号至少三类后，平均长度约 7200→5400 字、付费转化约 0.8%→1.4%（作者窗口）。主观品味与 OGP 仍人手。本场景据此输出「文章 done-when」提纲。禁止建议对无法机检的品牌判断也无人值守直发。`,
+    outcomes: [
+      "源披露四站约日更 16 篇、三周无人值守窗口内坏文进生产为 0、篇均重试约 1.4，以及付费文转化约 0.8%→1.4% 等作者自报数字；属其站点窗口，不可外推为你的产量或转化。",
+      "能把「定时再写一篇」与「可机检 done-when + 五次封顶 + 停机报告」拆开。",
+      "为模板腔检测、内链白名单与基线对照提供提问清单。",
+    ],
+    caveats: [
+      "门禁只覆盖可机检项；「读起来诚实」仍须人眼。",
+      "转化与重试数字来自作者站点，换题材会漂。",
+      "上面写的是个人内容流水线复盘，不是某 CMS 官方文档。",
+    ],
+    prompts: [
+      {
+        title: "文章 done-when 门禁简报",
+        body: `你是内容流水线设计助手。只根据用户约束写门禁提问清单，不要编造已上线。
+
+站点与日更目标：{{sites_cadence}}
+可机检信号：{{machine_signals}}
+最大重生次数：{{max_retries}}
+是否双语成对：{{bilingual}}
+
+输出 Markdown：
+1. 一行 done-when 草案
+2. 门禁违规类别列表
+3. 五次失败后的 halt 行为
+4. 必须留人手的主观项
+禁止建议跳过门禁直推；禁止声称转化已达某%。`,
+      },
+      {
+        title: "声称已推但站点无文排查提纲",
+        body: `Agent 报告已写已推，线上却没有文章，请写排查提纲。
+
+仓库路径：{{repo}}
+构建拾取规则：{{build_pickup}}
+最近 commit：{{commit}}
+
+输出：
+1. 是门禁未跑、构建未拾取，还是路径/双语计数不齐
+2. 应写入 done-when 的检查
+3. 停机条件
+4. 人工确认清单
+不要伪造「已自动修复线上」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://claudelab.net/en/articles/claude-code/claude-code-e2e-driven-1line-autonomous-loop-pipeline",
+      label: "claudelab.net · Hand Claude Code a One-Line Done-When…",
+      date: "2026-05-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "353",
+    slug: "saagar-operator-os-hub-spokes-trust",
+    title: "Saagar：一人 Operator OS，把危险动作做成结构不可达",
+    summary: "对照个人实践：本地 SQLite 中枢+多辐条，默认只读、发信/写日历须人持确认令牌，新鲜度信封标陈旧；不代你开放远程面、不外推安全。",
+    description:
+      "面向要把生活与多 Agent 状态收回本机的个人运营者：把「相信模型会小心」写成可对账的形状信任，区别于多机控制面产品与晨报沉默规则。",
+    categories: [
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://saagarpatel.dev/writing/operator-os",
+    sourceLabel: "saagarpatel.dev·Saagar Patel 实践帖",
+    upvotes: 245,
+    trending: false,
+    tags: [
+      "本地优先",
+      "审批门禁",
+      "状态中枢",
+      "只读默认",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴现有 Agent/工具清单、哪些动作会出站（邮件/日历/支付）、以及是否接受 loopback-only",
+      "Agent 按实践帖输出：中枢状态切片所有权→默认只读面→准备/执行拆分与确认令牌→新鲜度信封提问清单",
+      "人工保留出站执行权与章程修订权；Agent 不持有可伪造的确认令牌、不声称架构已证明不可攻破",
+    ],
+    tips: [
+      "源帖关键句：助手起草，我发送——由接线强制，而不是靠有人记得小心",
+      "与 mainplane-control-plane-workers / claus-silence-morning-brief / hank-exec-coaching-agent-os 不同：本条是单机 hub/spokes + 危险动词结构不可达 + 新鲜度信封，不是多机 WireGuard 控制面、晨报沉默规则或教练 OS 产品",
+    ],
+    approach: `Saagar Patel 在《Building an operator OS for one》（页内 Field note · Jun 7, 2026 → 2026-06-07）写明：多仓、多工具 Agent 互忘、真收件箱与通知噪声叠加后，想在不把生活租给一堆 SaaS 面板的前提下本地运营。收敛形状是 hub and spokes：中心是 SQLite 状态脊，记录各 Agent 上次做了什么、交接、已交付与未关闭项；辐条含仓审计、桌面指挥舱、用确定性规则做紧急度的通知路由、需要人判断的控制面，以及仅在本地检查通过后外同步的输出层。各片只写自己拥有的状态切片。
+
+非协商：本地优先、数据不外泄；控制面绑 loopback，故意不从手机/他机可达。信任不靠「模型通常小心」：绝大多数暴露给 Agent 的面只读；出站动作（长期主要是发信，后来在书面章程下增加「从已接受计划物化日历事件」）拆成准备与执行——助手可起草/暂存，执行须人持助手拿不到、也不能伪造的确认令牌。草稿默认走本机 Ollama。中枢对源带新鲜度信封，源冷则大声降级，允许说「我现在其实不知道」。作者诚实注记：mint 对助手角色拒绝已在代码侧核对，但「不能伪造」仍假设操作者凭证不落入 Agent 之手，且其另一令牌门曾在类似边界被突破过。本场景据此输出「形状信任」提纲。禁止建议把不可撤销出站做成 Agent 默认可达。`,
+    outcomes: [
+      "源未披露省时百分比或安全事件计数，只给出 hub/spokes、只读默认、双出站人闸与新鲜度信封等结构叙事；属作者个人系统，不可外推为你的安全边界或效率。",
+      "能把「再叮嘱模型小心点」与「危险动词结构不可达 + 人持确认令牌」拆开。",
+      "为状态所有权、章程扩动词与陈旧源降级提供提问清单。",
+    ],
+    caveats: [
+      "结构声明不是定理；操作者凭证一旦进 Agent 面，令牌故事会塌。",
+      "loopback-only 故意放弃远程可达，换机场景要另设计。",
+      "上面写的是个人 field note，不是安全认证报告。",
+    ],
+    prompts: [
+      {
+        title: "Operator OS 形状信任简报",
+        body: `你是个人运营系统设计助手。只根据用户约束写信任边界提问清单，不要编造已上线。
+
+现有工具/Agent：{{tools}}
+出站动作清单：{{outbound_actions}}
+是否接受仅本机 loopback：{{loopback_only}}
+本地模型是否可用：{{local_model}}
+
+输出 Markdown：
+1. 中枢状态切片与所有权
+2. 默认只读 vs 须人闸的动词表
+3. 准备/执行拆分与令牌持有者
+4. 新鲜度信封降级行为
+禁止建议 Agent 默认可发不可撤销邮件；禁止声称架构已不可攻破。`,
+      },
+      {
+        title: "助手差点直发邮件复盘提纲",
+        body: `日志显示助手走到了接近发送的路径，请写复盘提纲。
+
+动作类型：{{action}}
+是否持有确认令牌：{{had_token}}
+调用角色：{{caller_role}}
+
+输出：
+1. 是接线缺口、角色门失效，还是凭证泄漏
+2. 最小结构补丁
+3. 应写入章程的句子
+4. 人工确认清单
+不要伪造「已证明永不直发」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://saagarpatel.dev/writing/operator-os",
+      label: "saagarpatel.dev · Building an operator OS for one (Saagar Patel)",
+      date: "2026-06-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "354",
+    slug: "kevin-welter-frieda-anton-inbox-invoices",
+    title: "Kevin Welter：收件箱 Frieda + 报价开票 Anton 分职审批",
+    summary: "对照个人实践：两名 AI「雇员」分管分拣/收据与报价发票，出站一律人审；禁止编造价格、收据只归档不入账；不代你自动寄发票、不外推省时。",
+    description:
+      "面向一人公司/顾问的财务行政：把「一个万能财务 Agent」写成可对账的分职+出站人闸，区别于通用发票抽取表与退款邮件助手。",
+    categories: [
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://kevinwelter.com/en/blog/ki-agent-buchhaltung-postfach",
+    sourceLabel: "kevinwelter.com·Kevin Welter 实践帖",
+    upvotes: 247,
+    trending: false,
+    tags: [
+      "收件箱分拣",
+      "报价发票",
+      "人审出站",
+      "小企业自动化",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴收件箱痛点、报价/发票是否同源价目表、以及哪些步骤可内部自动、哪些必须人发",
+      "Agent 按实践帖输出：两职边界表→类别与产物→禁止编造价/服务→出站审批矩阵提问清单",
+      "人工发送一切对客邮件与票据；Agent 不代你入账/报税、不声称已替代顾问软件",
+    ],
+    tips: [
+      "源帖表格口径：分拣与收据归档可内部自动；回复草稿、报价、发票、催款一律不经人批不得出站",
+      "与 invoice-extract-to-ledger-sheet / billing-dispute-refund-agent / sales-order-verify-email-draft 不同：本条是顾问业「收件箱雇员 + 报价开票雇员」分职与出站人闸实践，不是单据入账表、退款争议或订单核对草稿单条工具",
+    ],
+    approach: `Kevin Welter 在《AI Agent for Bookkeeping and Inbox》（页内 September 2, 2026，文内 Updated on September 20, 2026 → 以首发 2026-09-02）写明：日常收件箱混杂询价、项目追问、供应商票、会议提议与通讯；痛点是先分拣再行动。他拆成两名 Agent：Frieda 管收件箱——分类（客户询价/收据/会议/追问/其他）、建日历项、抓附件收据、起草回复或标「须本人处理」；Anton 管报价与发票——用价目表与旧报价当风格模板出草稿，金额逻辑跟作者规则，不临场发明行项目。
+
+典型一天：询价进门→Frieda 查范围与时间是否齐全，缺则起草追问供人改发→齐了交 Anton→Anton 出报价草稿→作者改完亲自发出。客户接受后 Anton 按同一行项目与金额起草发票。供应商附件票由 Frieda 抽金额/日期/发件方归档，异常高额加短注。硬规则：不编造价格与服务，缺信息就问；发票金额须精确来自已接受报价；Frieda 只归档收据，账户归属与税逻辑留给税务顾问与其软件，不替代 DATEV/Lexware。失败模式举例：会议回复若直发，可能因日历串项发错邀请；报价若照抄旧模板，可能把未谈妥的附加项带进新单——故对客出站逐封人审。本场景据此输出「分职财务行政」提纲。禁止建议 Agent 自动寄出发票或入账。`,
+    outcomes: [
+      "源未披露自动化后的小时数或错误率，只给出两职分工、出站人审表与两类失败模式叙事；属作者工作室实践，不可外推为你的财务 SLA 或省时。",
+      "能把「再做一个万能财务 Bot」与「分职 + 内部可自动 / 出站必人审」拆开。",
+      "为缺信息追问、报价不发明行项目、收据不入账提供提问清单。",
+    ],
+    caveats: [
+      "隐私与客户支付细节投喂范围是作者自用实践，不是法律意见。",
+      "具体邮箱供应商接线未在文中逐步展开，需按环境自核。",
+      "上面写的是个人顾问工作流，不是某财务 SaaS 官方指南。",
+    ],
+    prompts: [
+      {
+        title: "收件箱+开票分职简报",
+        body: `你是小企业行政 Agent 设计助手。只根据用户约束写分职提问清单，不要编造已上线。
+
+业务类型：{{biz_type}}
+收件箱来源：{{inbox}}
+价目表/旧报价是否可得：{{price_sources}}
+税务软件：{{tax_stack}}
+
+输出 Markdown：
+1. 两职（或一职起步）边界表
+2. 内部可自动 vs 出站必人审矩阵
+3. 禁止编造的字段列表
+4. 人工日审清单
+禁止建议自动寄出发票；禁止声称已替代税务顾问。`,
+      },
+      {
+        title: "旧附加项混进新报价复盘提纲",
+        body: `报价草稿里出现客户未要求的附加服务，请写复盘提纲。
+
+草稿行项目：{{line_items}}
+本次需求原话：{{request}}
+模板来源：{{template_source}}
+
+输出：
+1. 是模板照抄、缺逐项对照，还是价目表污染
+2. 应加的硬校验
+3. 出站前人工核对项
+4. 人工确认清单
+不要伪造「以后草稿必干净」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://kevinwelter.com/en/blog/ki-agent-buchhaltung-postfach",
+      label: "kevinwelter.com · AI Agent for Bookkeeping and Inbox (Kevin Welter)",
+      date: "2026-09-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "355",
+    slug: "spotify-honk-fleet-migration-agent",
+    title: "Spotify Honk：舰队迁移里用后台编码 Agent 补脚本死角",
+    summary: "对照团队实践：Fleetshift 做编排，Honk（Claude Agent SDK + 自研 harness，K8s 并发）改复杂迁移并跑多 OS CI；标准化与 Backstage MCP 同时服务人与 Agent；不代你无审合入、不外推迁移工期。",
+    description:
+      "面向平台/迁移团队：把「脚本扫全舰队」写成可对账的编排+LLM 改写+人看进度板，区别于本机并行 VM 与签名合入环。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint",
+    sourceLabel: "Spotify Engineering·团队实践帖",
+    upvotes: 250,
+    trending: false,
+    tags: [
+      "Fleet Management",
+      "后台编码 Agent",
+      "迁移",
+      "Backstage",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴迁移类型（依赖升级 vs API 替换）、是否已有舰队编排、以及 CI 是否能按组件验证",
+      "Agent 按实践帖输出：确定性脚本边界→Honk 适用任务→进度板字段→标准化/目录对 Agent 的反馈环提问清单",
+      "人工保留复杂架构与策略合入；Agent 不代你关闭人审、不声称某次迁移天数可复现到你的仓",
+    ],
+    tips: [
+      "源帖分工：Fleetshift 管目标识别/调度/进度，Honk 坐中间做复杂代码改写并用 CI 自证",
+      "与 fleet-ci-fix-ship-prs / anyrouter-agent-merge-deploy-loop / exe-six-months-agents-botd-vms 不同：本条是 Spotify 舰队规模迁移中「脚本编排 + 后台 Agent Honk + Backstage/Soundcheck 标准化」的团队案例，不是通用 CI 修 PR 流水、本机签名合入环或一次性 VM 并行半年实验",
+    ],
+    approach: `Spotify Engineering 在《Coding Is No Longer the Constraint…》（页内 Jun 3, 2026 → 2026-06-03）写明：生产代码增速远超工程师人数，迁移曾是最大挫败源。先做 Fleet Management / Fleetshift，用自动化对成百上千组件批量变更；文称迄今合并逾 250 万次自动维护 PR，绝大多数可自动合并。简单变更脚本好使，复杂改写（换 API、重构用法）在百万行与边角案例上把确定性脚本推到极限，于是做后台编码 Agent Honk：Claude + Agent SDK，包在自研 harness 里，部署在 Kubernetes 以并发会话；可调受信任工具并在多 OS CI 构建验证。
+
+Fleetshift 负责人看目标、调度与进度，Honk 做改写；文称最近一次后端 Java 迁移约三天，并由「数百团队、数周到数月」对照到「单人工程师数日」的叙事。工程师还可在 Slack @Honk 丢上下文等 PR。更早的技术收敛原则被重申：一致技术栈与模式让 Agent 更好用；碎片仓上表现更差。Backstage 目录与 Soundcheck/golden state、静态分析与 lint 同时给人与 Agent 即时反馈；能力经 MCP/CLI 暴露。采用侧披露约 99% 工程师每周用 AI 编码工具、94% 称更高效、PR 频率约 +76%。瓶颈转向人审与决策。本场景据此输出「舰队迁移 Agent」提纲。禁止建议对高风险变更关闭人审自动合入。`,
+    outcomes: [
+      "源披露逾 250 万次自动维护 PR、近期 Java 迁移约三天，以及约 99%/94%/+76% 等采用与 PR 频率叙事；属 Spotify 窗口统计，不可外推为你的迁移工期或生产力。",
+      "能把「再写更复杂的舰队脚本」与「编排板 + 后台 Agent + CI 自证 + 标准化反馈」拆开。",
+      "为复杂改写适用边界、进度可见性与 Agent 可读目录提供提问清单。",
+    ],
+    caveats: [
+      "自动合入主要针对维护类变更；复杂/架构决策仍要人。",
+      "一致性红利依赖多年平台投资，不是装一个 Agent 即得。",
+      "上面写的是公司工程演讲整理帖，不是可下载的 Honk 开源说明书。",
+    ],
+    prompts: [
+      {
+        title: "舰队迁移 Agent 简报",
+        body: `你是大规模迁移平台助手。只根据用户约束写分工提问清单，不要编造已上线。
+
+迁移类型：{{migration_type}}
+组件数量级：{{component_scale}}
+是否已有编排系统：{{has_orchestrator}}
+CI 验证能力：{{ci_matrix}}
+
+输出 Markdown：
+1. 应留在确定性脚本的变更
+2. 适合后台 Agent 的复杂改写特征
+3. 进度板最小字段
+4. 人审与自动合入边界
+禁止建议高风险变更无审合入；禁止声称迁移必在 N 天完成。`,
+      },
+      {
+        title: "脚本边角炸掉后的 Agent 接手提纲",
+        body: `确定性迁移脚本在一批组件失败，请写接手提纲。
+
+失败模式摘要：{{failure_modes}}
+已成功/失败计数：{{counts}}
+
+输出：
+1. 哪些失败可交后台 Agent 逐组件改
+2. 哪些必须先修标准/夹具
+3. 验证与回滚
+4. 人工确认清单
+不要伪造「Agent 已扫完全舰队」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint",
+      label: "Spotify Engineering · Coding Is No Longer the Constraint…",
+      date: "2026-06-03",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
