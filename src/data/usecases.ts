@@ -23468,6 +23468,449 @@ handoff 路径：{{handoff_path}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "406",
+    slug: "harry-guinness-claude-quickbooks-finance",
+    title: "Harry：受不了 QuickBooks——用 Claude Code 自建多币种财务看板",
+    summary: "对照自由撰稿多账户多币种：弃 €372/年 QuickBooks，自建开票+支出+净值看板；披露 Wise 入账匹配、SMTP 直发、FX 损益；不代你合规、不外推。",
+    description:
+      "面向被多币种入账/错配客户名拖住的一人经营者：把「迁就 SaaS 流程」写成可对账的自建开票匹配+可见消费羞耻板，区别于多语发票 API 批处理与会计多智能体总账。",
+    categories: [
+      "efficiency",
+      "life",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.harryguinness.com/blog/quickbooks-sucks",
+    sourceLabel: "harryguinness.com·Harry Guinness 个人实践帖",
+    upvotes: 297,
+    trending: false,
+    tags: [
+      "QuickBooks替代",
+      "多币种",
+      "自建财务",
+      "Claude Code",
+      "Wise匹配",
+    ],
+    howItWorks: [
+      "粘贴主要收支币种、账户（如 Wise/本地银行），以及是否必须保留官方会计导出",
+      "Agent 按实践帖输出：开票→入账匹配→支出归类→净值三柱提问清单",
+      "人工保留对账与报税；Agent 不代你声称自建账本已替代持牌会计",
+    ],
+    tips: [
+      "源帖：作者称当时 QuickBooks 方案约 €372/年；痛点是入账名（如 ZAPIER REF…）与发票客户对不上，一月可生出多个重复客户",
+      "与 robson-multilang-invoice-claude-api / soapbox-sheila-accounting-agents-md 不同：本条是个人多币种财务看板自建，不是多语发票 API 批处理或会计多智能体总账",
+    ],
+    approach: `Harry Guinness 在个人博客《QuickBooks sucks — so I built something for me》（JSON-LD Article datePublished 2026-04-12T09:49:02.592+00:00 → 2026-04-12；canonical harryguinness.com）写明：写作业务要多币种多账户开票，用了约四年 QuickBooks，觉得贵、别扭且功能过量；读到 Craig Mod 一周自建财务工具后，用 Claude Code（并提 Cursor）自建「对自己最好用」的财务看板。
+
+三根柱子：（1）业务开票、支出追踪与税备；（2）月度消费与储蓄总览（含伴侣 Hannah 收入支出，因多数财务联营）；（3）资产、负债与净值（按揭已还、eToro、将加养老金等）。开票侧：应用经 SMTP 直发发票；Wise 入账与发票匹配后标已付，并保留 FX 损益追踪——作者称这是少数喜欢过的 QuickBooks 能力。动机还包括「消费可见」的羞耻板（按揭/狗粮/保险 vs 酒吧/外卖）与旅行支出汇总（如哥本哈根周末、伦敦公差）。作者自称编码弱、十年以写作为主，但多币种对账「没有现成软件按他的方式工作」。本场景据此输出「自建多币种财务看板」提纲。禁止建议跳过报税合规或无人值守对外宣称已替代持牌会计软件。`,
+    outcomes: [
+      "源披露当时 QuickBooks 方案约 €372/年、多币种多账户痛点、SMTP 开票+Wise 匹配标已付、FX 损益与三柱看板等作者口径；属一人写作业务叙事，不可外推为你的节费率、对账准确度或税务合规性。",
+      "能把「迁就 SaaS 开票流程」与「自建匹配规则 + 可见消费/净值」拆开。",
+      "为入账名错配复制客户、旅行混账、以及误把自建当报税唯一来源提供提问清单。",
+    ],
+    caveats: [
+      "自建账本运维与备份责任在己；银行/税务规则因司法辖区而异。",
+      "源帖偏产品叙事，未给工程架构与测试覆盖硬表。",
+      "上面写的是 Harry 个人实践帖，不是 Intuit/QuickBooks 官文或竞品评测榜。",
+    ],
+    prompts: [
+      {
+        title: "多币种财务看板布置简报",
+        body: `你是一人经营者财务自动化顾问。只根据用户约束写提问清单，不要编造已上线自建账本。
+
+币种列表：{{currencies}}
+账户：{{accounts}}
+是否保留官方导出：{{official_export}}
+
+输出 Markdown：
+1. 开票→入账匹配最小字段
+2. 支出归类与旅行账边界
+3. 净值/储蓄可见性与人工对账节奏
+4. 报税/备份人工清单
+禁止建议无人值守报税申报；禁止声称可替代持牌会计。`,
+      },
+      {
+        title: "入账错配复盘提纲",
+        body: `发票客户名与银行入账描述对不上，系统复制出多个「同一客户」，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是匹配规则过宽、别名表缺失，还是人手跳过确认
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「匹配已永不错客」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.harryguinness.com/blog/quickbooks-sucks",
+      label: "harryguinness.com · QuickBooks sucks — so I built something for me",
+      date: "2026-04-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "407",
+    slug: "peter-sutarik-idoklad-mcp-invoices",
+    title: "Peter：给 Claude Code 接 iDoklad MCP——终端里开票、催款、看营收",
+    summary: "对照捷克咨询行政：自建 MCP 连 iDoklad；披露 15 工具四分域、OAuth 本机登录、先做未付清单再扩；不代你自动群发催款、不外推。",
+    description:
+      "面向每月点网页开票、查未付的独立顾问：把「再开一遍网表」写成可对账的本机 MCP 工具面，区别于多语发票 API 批处理与个人全量财务看板自建。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://petersutarik.com/blog/idoklad-mcp-server-claude-code/",
+    sourceLabel: "petersutarik.com·Peter Šutarík 个人实践帖",
+    upvotes: 298,
+    trending: false,
+    tags: [
+      "MCP",
+      "iDoklad",
+      "开票",
+      "OAuth",
+      "咨询行政",
+    ],
+    howItWorks: [
+      "粘贴开票系统（如 iDoklad/其他）、是否允许邮件发送发票，以及工时来源（粘贴/表格/GitHub）",
+      "Agent 按实践帖输出：工具四分域→OAuth 本机登录→月结提问清单",
+      "人工保留发送前核对与催款口吻；Agent 不代你声称账单已无人值守结清",
+    ],
+    tips: [
+      "源帖：15 个工具分开票/联系人/付款/分析；登录命令临时起本机 11470 接 OAuth，令牌存 ~/.idoklad-mcp/tokens.json，刷新留约 60 秒缓冲",
+      "与 robson-multilang-invoice-claude-api / harry-guinness-claude-quickbooks-finance 不同：本条是既有开票 SaaS 的 MCP 终端面，不是多语 API 批处理或整套财务看板替换",
+    ],
+    approach: `Peter Šutarík 在个人博客《Building an MCP Server So My AI Assistant Can Send Invoices》（页内 27 January 2026；JSON-LD datePublished 2026-01-27 → 2026-01-27；canonical petersutarik.com）写明：跑小型分析咨询，咨询之外每月要在 iDoklad 网页开票、发 PDF、查未付；日常开发已用 Claude Code，于是自建 MCP server，用自然语言驱动开票与营收查询。
+
+架构：Python + httpx + 官方 MCP Python SDK，stdio；模块含 server/config/auth/client 与 tools 下 invoices/contacts/payments/statistics。共披露 15 个工具、四域——开票（建/列/详/下 PDF/邮发，先拉默认模板再叠数据）、联系人、付款（已付/未付/逾期）、分析（按客户/月营收等）。鉴权：iDoklad OAuth2 授权码流对 CLI 别扭，故单独 \`idoklad-mcp-login\`：本机临时服 11470、浏览器授权、落盘 tokens，之后自动刷新。创建 流程例：「给 ACME 开 40 小时×€120、标准 VAT」→查客户→建票→「发送」。日常：月末贴工时批量建发；月中问未付；季度问分客户营收。学习点：工具描述比实现更费时；从「列未付」最小能力长出来，而非一次做满 15。下一步打算接 GitHub Issues/Projects 工时，一句「给一月所有客户开票」。本场景据此输出「开票 MCP」提纲。禁止建议无人值守群发催款或自动改账标记无核对。`,
+    outcomes: [
+      "源披露 15 工具四分域、OAuth 本机 11470 登录与约 60 秒刷新缓冲、先做未付清单再扩创建/分析，以及月末贴工时批量开票等作者口径；属一人咨询行政叙事，不可外推为你的回款天数、错票率或合规免责。",
+      "能把「每月点网页开票」与「本机 MCP + 人核发送」拆开。",
+      "为 OAuth 过期、工具描述含糊误调、以及误开自动催款提供提问清单。",
+    ],
+    caveats: [
+      "令牌与发票 API 在本机；泄露面要按密钥管。",
+      "工时仍靠人贴——源帖尚未接通任务系统自动汇总结账。",
+      "上面写的是 Peter 个人实践帖，不是 iDoklad/Anthropic 官文集成指南。",
+    ],
+    prompts: [
+      {
+        title: "开票 MCP 布置简报",
+        body: `你是独立顾问开票自动化顾问。只根据用户约束写提问清单，不要编造已上线 MCP。
+
+开票系统：{{system}}
+是否允许邮件发送：{{email_send}}
+工时来源：{{hours_source}}
+
+输出 Markdown：
+1. 工具四分域最小集（先未付）
+2. OAuth/令牌存放与刷新
+3. 建票→人核→发送门禁
+4. 人工对账清单
+禁止建议无人值守群发催款；禁止声称回款已自动化完成。`,
+      },
+      {
+        title: "误开/错发发票复盘提纲",
+        body: `Agent 建错客户或错 VAT 档并已触发发送，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是工具描述、缺人核门、还是模板覆盖错误
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「开票 MCP 已永不错票」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://petersutarik.com/blog/idoklad-mcp-server-claude-code/",
+      label: "petersutarik.com · Building an MCP Server So My AI Assistant Can Send Invoices",
+      date: "2026-01-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "408",
+    slug: "aaron-yong-automate-out-of-loop-orchestrator",
+    title: "Aaron：38 次交互里 55% 在说 proceed——自建编排器把自己移出环",
+    summary: "对照一人编码生命周期：五代理流水线+编排器；披露 38 次交互仅约 8% 是设计决策、约 12200 行/515 测、文档当接口暂停；不代你免审合入、不外推。",
+    description:
+      "面向总在回复「继续/好的」的建造者：把「人当油门」写成可对账的 Scout→Plan→Work→Review 编排与文档检查点，区别于关盖后台 Schwarm 与完成裁判 Stop 钩。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://site.aaronhsyong.com/posts/automating-yourself-out-of-the-loop/",
+    sourceLabel: "site.aaronhsyong.com·Aaron Yong 个人实践帖",
+    upvotes: 299,
+    trending: false,
+    tags: [
+      "编排器",
+      "context engineering",
+      "Scout/Planner/Worker",
+      "人在环上",
+      "TUI",
+    ],
+    howItWorks: [
+      "粘贴当前是否仍手动点 proceed、是否已有 /build 类流水线，以及必须暂停的决策类型",
+      "Agent 按实践帖输出：五代理职责→模型路由→文档接口暂停点提问清单",
+      "人工保留设计/范围/合并时机；Agent 不代你声称编排已可免审合入",
+    ],
+    tips: [
+      "源帖：完整 PR 生命周期统计 38 次交互——约 21%「proceed/yes」、约 21%「review until clean」、设计决策约 8%；编排器约 12200 行、515 测",
+      "与 dexter-schwarm-background-coding-agents / kenji-skills-completion-judge-gate 不同：本条是把协调剧场编掉、文档当人工接口，不是关盖后台节点或 Stop 钩完成裁判",
+    ],
+    approach: `Aaron Yong 在个人站《Automating Yourself Out of the Loop》（页内 3 May 2026；meta article:published_time 2026-05-03 → 2026-05-03；canonical site.aaronhsyong.com）写明：一月还是「人驾 AI 辅、逐行审」；四月末两天搭五代理流水线；五月初量完一整条 PR 生命周期后自建编排器，把自己从「环内」挪到「环上」。
+
+五代理：Scout（Haiku，代码库侦察，上下文压到约 2000 token）→ Planner（Sonnet）→ Worker（Sonnet，约 30 次工具调用上限、3 次重试）→ Reviewer（lint/类型/测/密扫）→ Tester（先失败测、突变校验）。工作流：\`/build\` 全链；\`/fix\` 跳过 Planner；\`/tdd\` 经 Tester 再 Worker。关键是代理间交接：下游只读上游压缩产物，而非整库。
+
+计量：三期 issue+一 PR 共 38 次交互——「proceed/yes/do it」8 次（21%），「review until clean/commit」8 次（21%），状态询问 5（13%），带判断指令 5（13%），设计决策仅 3（8%），无输入自治 8（21%）。评审轮次 #6→6 轮、#7→3、#8→2。编排器：TypeScript CLI+TUI，约 12200 行、515 测；解析 PR 计划、建 worktree、生成/校验/自审/开 PR/跟评论/侦测合并/解锁下一组、可中断恢复。模型路由：规划与评审用 Opus，实现与修复用 Sonnet。人机接口是文档而非终端日志——暂停时写上下文文件并通知，人在编辑器拍板。仍暂停：设计分歧、范围、优先级、复杂计划预审、合并时机。本场景据此输出「编排移出环」提纲。禁止建议取消设计/合并人闸或把 proceed 统计当生产力证明。`,
+    outcomes: [
+      "源披露 38 次交互中约 55% 为 proceed/固定口令类、设计决策约 8%、五代理+约 12200 行/515 测编排器、Scout 压约 2000 token 与 Worker 约 30 工具/3 重试等作者口径；属一人窗口计量，不可外推为你的吞吐、缺陷率或可免审比例。",
+      "能把「人当油门」与「文档检查点 + 机械步编排」拆开。",
+      "为无暂停直合、上下文膨胀、以及误把自治百分比当质量提供提问清单。",
+    ],
+    caveats: [
+      "作者强调须先手工跑熟再编排；跳步不可信。",
+      "worktree/编排自建有运维面；与后台集群产品不是同一题。",
+      "上面写的是 Aaron 个人实践帖，不是 Anthropic/Cursor 官文基准。",
+    ],
+    prompts: [
+      {
+        title: "移出环编排布置简报",
+        body: `你是编码编排顾问。只根据用户约束写提问清单，不要编造已上线编排器。
+
+是否仍手动 proceed：{{manual_proceed}}
+已有流水线：{{pipeline}}
+必须暂停的决策：{{pause_types}}
+
+输出 Markdown：
+1. Scout/Planner/Worker/Reviewer 最小职责
+2. 文档接口与通知暂停点
+3. 模型路由与工具上限
+4. 人工设计/合并清单
+禁止建议免审合入生产；禁止用 proceed 占比声称已 10x。`,
+      },
+      {
+        title: "协调剧场复盘提纲",
+        body: `会话里大半回复都是「继续」，真正设计决策极少，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺编排、检查点过密，还是验收标准未写成文件
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「编排已消除全部协调成本」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://site.aaronhsyong.com/posts/automating-yourself-out-of-the-loop/",
+      label: "site.aaronhsyong.com · Automating Yourself Out of the Loop",
+      date: "2026-05-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "409",
+    slug: "airwallex-airtest-claude-subagents-tests",
+    title: "Airwallex：Airtest 多子代理——集成测从约两周压到约两小时",
+    summary: "对照 Billing 工程：/airtest 编排生成·评审·调试·缺口分析；披露约 4000+ 集成测、撑约 50 API 上线、单测仍约 90%；不代你免维测、不外推。",
+    description:
+      "面向集成测跟不上发版的团队：把「每人自备提示写测」写成可对账的子代理分工+框架知识+自愈循环，区别于框架大迁双代理与公司全员开仓贡献。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://careers.airwallex.com/blog/using-claude-code-subagents/",
+    sourceLabel: "careers.airwallex.com·Airwallex 工程实践（转载）",
+    upvotes: 300,
+    trending: false,
+    tags: [
+      "Airtest",
+      "子代理",
+      "集成测试",
+      "自愈",
+      "/airtest",
+    ],
+    howItWorks: [
+      "粘贴目标服务/API 范围、现有单测门槛，以及是否已有内部测试框架约定",
+      "Agent 按实践帖输出：General+/airtest 分工→生成/评审/调试/缺口分析→知识库刷新提问清单",
+      "人工保留发布门禁与 flaky 裁定；Agent 不代你声称集成测已可无人值守免维护",
+    ],
+    tips: [
+      "源帖：单测硬门槛约 90%；Airtest 披露约 4000+ 集成测、协助约 50 个 API 安全上线；叙事「约两周→约两小时」",
+      "与 brex-cursor-dual-agent-micronaut-migration / epilot-non-engineers-claude-code-prs 不同：本条是计费域集成测多子代理平台，不是框架大迁双代理或非工程开仓贡献",
+    ],
+    approach: `Tiffany Lin 与 Chuang Han 代表 Airwallex 在 Careers 工程实践帖《From 2 weeks to 2 hours — cutting integration test time using Claude Code Subagents》（页内 23 December 2025；meta/JSON-LD datePublished 2025-12-23 → 2025-12-23；文称原载 Engineering blog；canonical careers.airwallex.com）写明：做 Airwallex Billing 时单测执行约 90% 覆盖，但集成测难写、脆、慢、难维，成为盲区；通用 IDE Agent 缺内部框架与一致方法，于是做 Airtest。
+
+入口：对 Claude Code 发 \`/airtest\`，General Agent 拆任务并委派。生成侧按 Happy/Unhappy/状态迁移/依赖/端到端等专员覆盖；维护侧有 Test Reviewer、Test Debugging、Existing Tests Analysis（Code Search/Read 找缺口、少重复）。提示含等价类/边界值等，以及 REST 幂等、鉴权、分页、过滤、错误码等配方，并强调从代码读真实业务流而非过期 PRD。工具：搜索、编辑、读文档、Bash——可写跑调闭环。知识库 Agent Memory 持续刷新业务流、API 依赖与近期变更影响，类比「测专用 CLAUDE.md」。披露结果叙事：约两周马拉松变约两小时冲刺；集成测覆盖全部 API 与最关键用户流；已交付约 4000+ 集成测并帮助约 50 个 API 上线。本场景据此输出「集成测子代理平台」提纲。禁止建议取消发布人审或把生成测当唯一质量证明。`,
+    outcomes: [
+      "源披露约 4000+ 集成测、协助约 50 API 上线、单测约 90% 门槛，以及「约两周→约两小时」等团队口径；属 Billing 窗口工程叙事，不可外推为你的缺陷逃逸率、CI 时长或全公司通用性。",
+      "能把「每人自备提示写测」与「子代理分工 + 框架知识 + 缺口分析」拆开。",
+      "为过期文档当唯一上下文、生成测脆红、以及误关人工发布门提供提问清单。",
+    ],
+    caveats: [
+      "文为 Part 1 成果叙事；编排细节与长期可维护性留待后续文。",
+      "自愈不等于免维护——flaky 与域变更仍要人定策略。",
+      "上面写的是公司工程实践转载帖，不是 Anthropic 官文评测。",
+    ],
+    prompts: [
+      {
+        title: "集成测子代理布置简报",
+        body: `你是集成测 Agent 平台顾问。只根据用户约束写提问清单，不要编造已上线 Airtest。
+
+API/服务范围：{{scope}}
+单测门槛：{{unit_gate}}
+内部测框架：{{framework}}
+
+输出 Markdown：
+1. /命令入口与专员分工
+2. 从代码而非过期 PRD 取上下文的规则
+3. 评审/调试/缺口分析闭环
+4. 发布与 flaky 人工清单
+禁止建议取消人审发布；禁止声称生成测已覆盖一切风险。`,
+      },
+      {
+        title: "集成测脆红复盘提纲",
+        body: `生成测在环境抖动下大片失败，团队失去信任，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是隔离/清理、第三方依赖，还是断言过贴实现细节
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「自愈测已永不 flaky」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://careers.airwallex.com/blog/using-claude-code-subagents/",
+      label: "careers.airwallex.com · From 2 weeks to 2 hours (Claude Code Subagents / Airtest)",
+      date: "2025-12-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "410",
+    slug: "epilot-non-engineers-claude-code-prs",
+    title: "epilot：全员开仓——60 天 629 合入，11 名非工程贡献 40 PR",
+    summary: "对照能源 B2B SaaS：Slack@Claude+沙箱+how-to-everything；披露 219 仓、预览环境、越权直推唤醒后只许开 PR；不代你无审上线、不外推。",
+    description:
+      "面向想让 PM/设计/客成直接改产品的团队：把「黑客日试用」写成可对账的沙箱开仓+预览+数据分级治理，区别于集成测子代理工厂与共享计划门发版。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/epilot/our-entire-company-ships-code-now-40-prs-from-non-engineers-in-60-days-jo5",
+    sourceLabel: "dev.to/epilot·Viljami Kuosmanen 团队实践帖",
+    upvotes: 301,
+    trending: false,
+    tags: [
+      "非工程贡献",
+      "Claude Code",
+      "沙箱",
+      "Slack代理",
+      "治理",
+    ],
+    howItWorks: [
+      "粘贴非工程角色范围、代码托管（GitLab/GitHub），以及是否已有每 PR 预览环境",
+      "Agent 按实践帖输出：沙箱镜像仓→Slack 频道→知识库/设计系统→合并权限与数据分级提问清单",
+      "人工保留架构评审与合入；Agent 不代你声称非工程改动能免审直上生产",
+    ],
+    tips: [
+      "源帖：60 天 629 合入 PR，其中 11 名非工程 40 PR；代码在 GitLab，用单 GitHub 仓引导浅拷 219 仓沙箱；曾有人绕 CI 直推，随后非工程/代理只开 PR、工程师审合并",
+      "与 airwallex-airtest-claude-subagents-tests / vincent-team-shared-claude-code-flow 不同：本条是全员开仓+治理，不是集成测工厂或团队共享计划门",
+    ],
+    approach: `Viljami Kuosmanen 代表 epilot（能源公司 B2B SaaS）在 DEV《Our Entire Company Ships Code Now. 40 PRs from Non-Engineers in 60 Days.》（页内 Posted on Apr 13，Edited Apr 14；JSON-LD/API published 2026-04-13T13:06:30Z → 2026-04-13；canonical dev.to/epilot）写明：二月向全公司开放代码库——PM、设计、项目、客成、支持拿到约 219 个仓与逾百万行生产代码，并用编码代理贡献。团队约 40+ 产品工程师、无工程经理/无专职平台组，已周部署 150+ 次；工程师日常已用 Claude Code/Codex/Cursor。
+
+基建：因 Claude/Codex 主连 GitHub、代码在 GitLab，做单 GitHub 引导仓浅拷全部仓以分钟级起沙箱。Slack \`#dev-squad-agents\`；三场各约一小时入职（设计/支持/GTM）。每 PR 自动预览链。知识库 how-to-everything 索引 API 模式、约定、CI/测、业务与 RFC。Volt UI 设计系统写入代理提示。用法：工程师 \`@Claude fix EPI-…\` 或跨仓审计/迁移；非工程用产品语言描述期望行为。生产告警频道第二天就加 Claude：一例批量打 ES 约 100 并行请求后，代理设计组织级队队列把峰值负载叙事降约 90%。非工程例：PM 做上传自动打标、消息相关 13 PR、时间序列透视；母语者清约 116 条德语翻译改进；设计师周末 vibecoding 改 Flow 命名提示。
+
+治理硬课：一名有完整 GitLab 推送权的非工程绕过 CI 部署到生产（无损伤）→立刻收紧：非工程与代理只开 PR，工程师审合并；沙箱执行、专用 bot、公共频道可见、触发人负责；后补三级数据分级（红黄绿）、连接器矩阵、注入意识与 EU AI Act/GDPR 映射。本场景据此输出「全员开仓治理」提纲。禁止建议给非工程直推生产或跳过工程师合入。`,
+    outcomes: [
+      "源披露 60 天 629 合入、11 名非工程贡献 40 PR、约 219 仓沙箱、周部署 150+、ES 峰值负载约降 90%、约 116 条德语翻译改进，以及绕 CI 直推唤醒后只开 PR 等团队口径；属 epilot 窗口叙事，不可外推为你的质量、合规或全员生产力。",
+      "能把「黑客日试用代理」与「预览+沙箱+合并权+数据分级」拆开。",
+      "为直推生产、私聊代理不可见、以及红类数据进提示提供提问清单。",
+    ],
+    caveats: [
+      "无审直推曾发生——权限必须先锁再开仓。",
+      "成效依赖预览环境与公司上下文索引；缺一则非工程贡献难落地。",
+      "上面写的是 epilot 团队实践帖，不是模型商官文或「人人免审工程师」承诺。",
+    ],
+    prompts: [
+      {
+        title: "全员开仓治理布置简报",
+        body: `你是工程效能与治理顾问。只根据用户约束写提问清单，不要编造已全员开仓。
+
+非工程角色：{{roles}}
+托管：{{vcs}}
+是否每 PR 预览：{{preview}}
+
+输出 Markdown：
+1. 沙箱/镜像与 Slack 可见性
+2. 知识库与设计系统最小集
+3. 合并权：谁开 PR、谁合入
+4. 红黄绿数据与人工清单
+禁止建议非工程直推生产；禁止声称质量可外推。`,
+      },
+      {
+        title: "越权直推复盘提纲",
+        body: `非工程或代理绕过 CI/评审进入生产（或差点），请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是推送权过宽、缺分支保护，还是私聊代理不可见
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「开仓已永不越权」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/epilot/our-entire-company-ships-code-now-40-prs-from-non-engineers-in-60-days-jo5",
+      label: "dev.to/epilot · Our Entire Company Ships Code Now (40 PRs from Non-Engineers)",
+      date: "2026-04-13",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
