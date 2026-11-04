@@ -23911,6 +23911,451 @@ API/服务范围：{{scope}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "411",
+    slug: "julian-epbcenter-claude-crm-no-dev",
+    title: "Julian：零开发背景——Claude Code 搭出 90+ 路由培训中心 CRM",
+    summary: "法国小培训中心联合创始人：弃 Salesforce/HubSpot，用终端+200 行宪法 markdown 自建 React/Firebase CRM；披露 90+ 路由、五 API、每 2–3 文件提交；不代你合规上线。",
+    description:
+      "面向懂业务不懂 React、又付不起 50–100K 外包的小服务商：把「终端口述需求」写成可约束的 CRM 自建路径，区别于电商财务看板与开票 MCP。",
+    categories: [
+      "efficiency",
+      "ecommerce",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://hackernoon.com/how-i-built-a-90-route-crm-with-claude-code-and-no-dev-background",
+    sourceLabel: "hackernoon.com·Julian (@epbcenter) 实践帖",
+    upvotes: 302,
+    trending: false,
+    tags: [
+      "CRM自建",
+      "无开发背景",
+      "Claude Code",
+      "Firebase",
+      "宪法markdown",
+    ],
+    howItWorks: [
+      "粘贴业务管道（候选人/伙伴/政府资助开票码）与必须保留的遗留库",
+      "Agent 按实践帖输出：路由清单、宪法约束、提交节奏与禁部署清单",
+      "人工保留外部 API/发信/生产库变更批准；Agent 不代你声称可替代持牌 CRM 合规",
+    ],
+    tips: [
+      "源帖：作者称此前未故意开过终端；机构报价约 50–100K、至少六个月；现栈 React+Firebase（Firestore/Auth/Hosting/Cloud Functions）与五外部 API",
+      "与 harry-guinness-claude-quickbooks-finance / peter-sutarik-idoklad-mcp-invoices 不同：本条是培训业务 CRM 全栈自建，不是多币种财务看板或开票 MCP",
+    ],
+    approach: `Julian（@epbcenter）在 HackerNoon《How I Built a 90-route CRM with Claude Code and No Dev Background》（JSON-LD datePublished 2026-03-11 → 2026-03-11；canonical hackernoon.com）写明：他是法国小型培训中心联合创始人，卖服务、管人、开票与合同，不是科技公司；2025 年前从未故意打开终端，却在约一年内用 Claude Code 搭出生产 CRM——90+ 路由、Firebase 后端、五类 API 集成。
+
+现成 CRM（Salesforce/HubSpot 等）都假设他在卖 SaaS 订阅或网店；他需要候选人管道、伙伴关系、带特定资助码的政府开票，以及与遗留学员库同步。外包报价约 50–100K、至少六个月，仍要把业务讲给外人听。于是开了终端。
+
+栈：前端 React；后端 Firebase（Firestore、Auth、Hosting、Cloud Functions）；外接电话、邮件活动、遗留同步等五 API。不用 VS Code/Copilot——在终端对 Claude Code 口述需求，它读文件、写代码、跑构建；有时用 Playwright 截图验收。真正管用的是一份 200+ 行 markdown「宪法」：改前必读哪些文件、哪些动作要显式批准（部署、改库、打外部 API）、绝对禁项（回滚提交、发真邮件、删生产数据）、命名与权限约定。另两条：每改 2–3 文件就提交；先读后写。大文件超约 50KB 易忘上下文；假 API/链式乱改靠宪法限「提交前最多改 3 文件」；外部服务硬拦，未打 yes 不出网。成果含营销模块 14 页、角色权限、拖拽看板、银行对账、四平台职位抓取、Google Indexing、Twilio 通话/SMS/WhatsApp、会议转写等——仍自称不太懂 JavaScript。本场景据此输出「无开发背景 CRM 自建」提纲。禁止建议无人值守对生产发信/部署，或声称可替代持牌 CRM 合规。`,
+    outcomes: [
+      "源披露 90+ 路由、五 API、200+ 行宪法、每 2–3 文件提交、大文件约 50KB 易失忆、外包约 50–100K/≥6 月等作者口径；属一人小培训中心叙事，不可外推为你的交付周期、缺陷率或合规免责。",
+      "能把「口述业务需求」与「宪法约束 + 构建验收 + 外部动作人工 yes」拆开。",
+      "为假 API、链式乱改、以及误把自建 CRM 当唯一合规系统提供提问清单。",
+    ],
+    caveats: [
+      "生产部署、发信、改库必须人工批准；源帖强调未打 yes 不出网。",
+      "作者自称仍不太懂 JS；维护与备份责任在己。",
+      "上面写的是 Julian 个人实践帖，不是 Salesforce/HubSpot 官文或 CRM 评测榜。",
+    ],
+    prompts: [
+      {
+        title: "无开发背景 CRM 宪法草稿",
+        body: `你是小服务商业务系统顾问。只根据用户约束写提问清单与宪法骨架，不要编造已上线 CRM。
+
+业务管道：{{pipeline}}
+遗留系统：{{legacy}}
+必须人工批准的动作：{{approvals}}
+
+输出 Markdown：
+1. 最小路由/实体清单
+2. 改前必读文件与「先读后写」规则
+3. 禁项（发信/部署/删生产）与 yes 门禁
+4. 每 2–3 文件提交与构建验收节奏
+禁止建议无人值守对生产发信或部署；禁止声称可替代持牌 CRM 合规。`,
+      },
+      {
+        title: "链式乱改复盘提纲",
+        body: `只想修一小处，Agent 却改了十来个文件，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺「提交前最多 N 文件」约束、缺先读后写，还是验收只信口头
+2. 最小门禁补丁
+3. 下次验收标准（构建/截图）
+4. 人工确认清单
+不要伪造「Agent 已永不错改」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://hackernoon.com/how-i-built-a-90-route-crm-with-claude-code-and-no-dev-background",
+      label: "hackernoon.com · How I Built a 90-route CRM with Claude Code and No Dev Background",
+      date: "2026-03-11",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "412",
+    slug: "mergify-claude-cross-system-support-investigator",
+    title: "Mergify：把 Claude 做成跨系统支持调查员——分诊约 10–15 分压到 2–5 分",
+    summary: "Mergify 工程：Git 子模块仓 + MCP（Sentry/Linear/Plain/Datadog）+ 只读 Postgres 斜杠命令；披露首通约 75%、全员采用、约一周 10 小时搭建；不代你无人值守关单。",
+    description:
+      "面向调查面散落在日志/错误/库/票务的 B2B 基建团队：把「五开标签页」写成可并行首通的调查仓，区别于 Slack 医疗 Canvas 与完成判定 Stop 钩。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://mergify.com/blog/how-we-turned-claude-into-a-cross-system-support-investigator",
+    sourceLabel: "mergify.com·Julian Maurin 团队工程实践",
+    upvotes: 303,
+    trending: false,
+    tags: [
+      "支持分诊",
+      "MCP",
+      "只读生产库",
+      "Claude Code",
+      "跨系统调查",
+    ],
+    howItWorks: [
+      "粘贴工单 URL 与必须接入的系统（日志/错误/票务/库）",
+      "Agent 按实践帖输出：调查仓布局、MCP 分层、并行 Wave 与人工校验点",
+      "人工保留写操作与关单；Agent 不代你声称首通假设可无人值守落地",
+    ],
+    tips: [
+      "源帖：单票原约 10–15 分钟专注；降为约 2–5 分钟后台时间；首通诊断约 75%（工程师最终回复与 Claude 初假设一致的比例）；团队采用 100%；搭建约 10 小时、一周内摊开；ROI 称数周内为正",
+      "与 frederic-elena-claude-chief-of-staff / kenji-skills-completion-judge-gate 不同：本条是跨 Datadog/Sentry/Postgres/Linear 的支持调查仓，不是多信箱幕僚或 Stop 完成判定",
+    ],
+    approach: `Julian Maurin 在 Mergify 博客《How We Turned Claude Into a Cross-System Support Investigator》（JSON-LD datePublished 2026-02-20T00:00:00.000Z → 2026-02-20；页内 February 20, 2026）写明：Mergify 作为 B2B 基建，每位工程师都参与支持；调查面碎在 Datadog 日志、Sentry 错误、只读生产 PostgreSQL、多仓源码、Linear 既有票与支持平台会话。旧流程开票→认客户 org→搜日志/Sentry→查库→看代码→查 Linear→拼时间线→起草回复，单票约 10–15 分钟专注，有时更久。
+
+他们没有再做一张内部看板，而是建了一个 GitHub 调查仓：公司仓以 Git 子模块挂在 src/；静态 .mcp.json 声明外部系统；mcp/ 放本地 MCP；斜杠命令封装生产 SQL；CLAUDE.md 写满支持 runbook。工程师跑 claude 后粘贴工单 URL，Claude 做首通调查、结构化时间线、根因假设与回复草稿，必要时提议/创建 Linear。
+
+MCP 两层：远程 HTTP（Sentry、Linear，厂商 OAuth）；本地 stdio 薄封装（Plain 支持平台、Datadog），Zod schema、无状态、环境变量鉴权。CLAUDE.md 强制并行：Wave 1 同时跑生产库 /pr-event-log、Linear、Sentry、Datadog；Wave 2 再看源码与 GitHub 状态。生产库硬边界为基建级只读，斜杠如 /pr-event-log 用模板 SQL 拼事件时间线/检查跑/队列/投机合并。可披露影响：首通诊断约 75%；团队采用 100%；搭建约 10 小时摊在一周；最大收益称是认知负荷——工程师审综合叙事而非五开标签。难点：自信错因（相关≠因果）；写操作不全自动批准，Linear 创建可能要操作员批准。本场景据此输出「跨系统支持调查仓」提纲。禁止建议无人值守写生产或自动关单。`,
+    outcomes: [
+      "源披露单票约 10–15→2–5 分钟后台、首通约 75%、采用 100%、搭建约 10 小时/一周、只读库与人工校验等团队口径；属 Mergify 窗口叙事，不可外推为你的 MTTR、误诊率或全公司通用性。",
+      "能把「五系统切标签」与「调查仓 + 并行 Wave + 综合叙事复核」拆开。",
+      "为自信错因、相关当因果、以及误开写权限提供提问清单。",
+    ],
+    caveats: [
+      "生产库须基建级只读；写操作与 Linear 创建勿全自动。",
+      "首通 75% 是「最终回复与初假设一致」的作者定义，不是独立审计。",
+      "上面写的是 Mergify 工程实践帖，不是 Anthropic/Datadog 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "跨系统支持调查仓布置简报",
+        body: `你是 B2B 支持工程顾问。只根据用户约束写提问清单，不要编造已上线调查仓。
+
+系统列表：{{systems}}
+是否允许写生产：{{write_prod}}
+工单入口：{{ticket_entry}}
+
+输出 Markdown：
+1. 调查仓最小布局（子模块/MCP/斜杠/CLAUDE.md）
+2. Wave 1 并行探针与 Wave 2 源码边界
+3. 只读库与人工批准写操作清单
+4. 首通假设验收标准
+禁止建议无人值守写生产或自动关单；禁止伪造 MTTR。`,
+      },
+      {
+        title: "自信错因复盘提纲",
+        body: `Agent 把 Sentry 错误与日志尖峰拼成「根因」，工程师后来发现只是相关。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺哪条交叉校验（时间窗/客户标签/既有 Linear）
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「首通已永不错因」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mergify.com/blog/how-we-turned-claude-into-a-cross-system-support-investigator",
+      label: "mergify.com · How We Turned Claude Into a Cross-System Support Investigator",
+      date: "2026-02-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "413",
+    slug: "chelle-honiker-claude-weekend-ops-batch",
+    title: "Chelle：一个周末——32k 图迁移、72 张坏图、60+ 站插件更新",
+    summary: "独立作者经营者：周末用 Claude Code 清多年积压；披露 32000 图迁 Photoprism、Ghost 审计修 72 坏图、60+ WP 插件免登仪表盘、Wix→WP 与课程迁移；不代你无人值守改生产。",
+    description:
+      "面向多站多资产、积压运维永远排不上的独立经营者：把「周末消防水管」写成可复盘的批量运维清单，区别于幕僚 OS 与单仓工具链迁移。",
+    categories: [
+      "efficiency",
+      "life",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://authorautomations.com/p/things-i-did-with-claude-code-this",
+    sourceLabel: "authorautomations.com·Chelle Honiker 实践帖",
+    upvotes: 304,
+    trending: false,
+    tags: [
+      "周末运维",
+      "多站WordPress",
+      "图像迁移",
+      "Claude Code",
+      "独立作者",
+    ],
+    howItWorks: [
+      "粘贴积压清单（图库/站点/DNS/云账单）与禁止无人值守的动作",
+      "Agent 按实践帖输出：批次顺序、验收点与给同事的邮件草稿边界",
+      "人工保留发送/关单/删云资源批准；Agent 不代你声称周末已永久清零债",
+    ],
+    tips: [
+      "源帖：作者称约完成三到四个月工作量；32000 图迁至 Photoprism 并经 ChelleBot 可搜；Ghost 审计发现并自动修 72 张坏图、其余出邮件给 Grace；60+ WordPress 站插件更新未登任一仪表盘；另含 Cloudflare DNS 清理、AWS 旧桶清理、Wix→WordPress、支持门户与 LearnDash→FluentCommunities 课程迁移",
+      "与 frederic-elena-claude-chief-of-staff / nir-nirops-pm-operating-system 不同：本条是周末批量运维清债，不是常驻幕僚或多信箱 OS",
+    ],
+    approach: `Chelle Honiker 在 Author Automations《Things I Did with Claude Code This Weekend》（JSON-LD datePublished 2026-02-02T18:46:03+00:00 → 2026-02-02；页内 Feb 02, 2026）写明：她一边跑多业务一边写书建软件；这个周末把 Claude Code「像消防水管」对准积压，自称完成约三到四个月工作量，周日晚清单长到记不全。
+
+可核批次包括：旧 WordPress 上约 32000 张图迁到 Photoprism，打标后经 ChelleBot 供 IAM 团队检索；对 Ghost 站全量审计，发现 72 张坏图——能自动修的修了，不能的标出并起草给 Grace 的具体手工说明邮件，她审后发送；自有/托管 60+ WordPress 站的插件更新邮件由 Claude Code 读取并更新，自称未登任一仪表盘；接 Cloudflare 审计域名记录并清理错配/过期项；清 AWS 上 2022 年起闲置桶以降费；整站 Wix→WordPress（含图、书 schema、链接、alt、SEO）；建 support.indieauthormagazine.com 并迁旧票，修底层问题后起草回复并关单；StorytellerOS beta 票：监邮件、修 bug、Telegram 通知用户确认——作者午饭时才得知；两门 LearnDash 课迁到 IndieAuthorTraining.com 的 FluentCommunities。动机是终于做那些永不紧急却总重要的维护。本场景据此输出「周末批量运维清债」提纲。禁止建议无人值守删云资源、群发客户或关生产单。`,
+    outcomes: [
+      "源披露约 32000 图迁移、72 坏图修复、60+ 站插件免登更新、以及 DNS/AWS/Wix→WP/课程迁移等作者口径；属一人多业务周末叙事，不可外推为你的站点数、SEO 恢复或账单降幅。",
+      "能把「多年积压运维」与「批次验收 + 人工审邮件/关单」拆开。",
+      "为误删云资源、插件误升、以及把「周末做完」当永久免维护提供提问清单。",
+    ],
+    caveats: [
+      "插件批量升级与删桶有破坏面；须备份与人工批准。",
+      "源帖是叙事清单，未给统一错误率硬表。",
+      "上面写的是 Chelle 个人实践帖，不是 WordPress/Ghost 官文或自动化评测榜。",
+    ],
+    prompts: [
+      {
+        title: "周末运维清债批次简报",
+        body: `你是独立站群运维顾问。只根据用户约束写批次清单，不要编造已完成迁移。
+
+积压项：{{backlog}}
+禁止无人值守：{{forbidden}}
+备份是否就绪：{{backup_ready}}
+
+输出 Markdown：
+1. 建议批次顺序（低风险→触客）
+2. 每批验收点
+3. 须人工审的邮件/关单边界
+4. 回滚与备份清单
+禁止建议无人值守删云资源或群发客户；禁止伪造「债已永久清零」。`,
+      },
+      {
+        title: "多站插件误升复盘提纲",
+        body: `批量更新插件后某站白屏或功能回退，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺备份、缺金丝雀站，还是缺人工抽检
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「批量更新已永不错升」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://authorautomations.com/p/things-i-did-with-claude-code-this",
+      label: "authorautomations.com · Things I Did with Claude Code This Weekend",
+      date: "2026-02-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "414",
+    slug: "sergio-azocar-oxlint-tsgo-monorepo-migrate",
+    title: "Sergio：Biome→oxlint + tsc→tsgo——单体质量管线约 29s 压到 1.25s",
+    summary: "DEV 实践：七应用/约 1670 TS 文件 monorepo；披露 lint 3.70→0.49s、typecheck 25.34→0.76s、合计约 23×；强调先量后迁与机械改适宜 Agent；不代你无人值守合入。",
+    description:
+      "面向质量管线 OOM、typecheck 拖 CI 的 monorepo 团队：把「迁工具链」写成可度量的 Agent 循环，区别于产品栈大迁与集成测子代理。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/sergioazoc/how-to-migrate-with-claude-code-and-not-die-trying-56gf",
+    sourceLabel: "dev.to·Sergio Azócar 实践帖",
+    upvotes: 305,
+    trending: false,
+    tags: [
+      "oxlint",
+      "tsgo",
+      "monorepo迁移",
+      "Claude Code",
+      "质量管线",
+    ],
+    howItWorks: [
+      "粘贴当前 lint/typecheck 基线秒数与文件规模",
+      "Agent 按实践帖输出：迁移步骤、规则对齐、CI/编辑器改动与度量表",
+      "人工保留合入与内存/缓存策略；Agent 不代你声称加速可外推到任意仓",
+    ],
+    tips: [
+      "源帖：7 个 Cloudflare Workers 应用、约 1670 TS 文件、pnpm workspaces；Biome+tsc 曾需 NODE_OPTIONS 8GB；tsc 单线程约 25s；迁后合计 29.04s→1.25s（约 23×）；oxlint PR 曾触 >700 文件",
+      "与 karthik-migrate-legacy-product-stack / airwallex-airtest-claude-subagents-tests 不同：本条是质量工具链（oxlint/tsgo）度量迁移，不是产品功能栈大迁或集成测子代理",
+    ],
+    approach: `Sergio Azócar 在 DEV（原文亦发于 sergioazocar.com）《How to migrate with Claude Code and not die trying》（API/JSON-LD published 2026-04-29 → 2026-04-29）写明：迁移曾是高量机械、低动机、无限期拖延的活；在 Claude Code 下，他归纳三条适合 Agent 的条件——高量机械改、可自动化的二进制反馈（lint/typecheck/test/build）、目标工具有迁移指南。
+
+案例一（团队现职 monorepo）：7 个 Cloudflare Workers 应用、约 1670 TypeScript 文件、pnpm workspaces；质量管线原用 Biome lint/format + tsc；Biome 与 tsc 曾需 NODE_OPTIONS='--max-old-space-size=8192' 防 CI OOM；tsc 单线程约 25 秒。迁到 oxlint+oxfmt：配 .oxlintrc.json（129 条活跃规则）与 .oxfmtrc.json，改 package.json 脚本、GitHub Actions 与编辑器；大量工作是按新规则改代码（多为 import 顺序等）。度量（作者表）：Biome 均 3.70s → oxlint Jan 1.04s → Mar 0.49s（分析文件更多）。再迁 tsgo（TypeScript 7 / Go 重写预览）：装 @typescript/native-preview，脚本从带 8GB 的 tsc 改为 tsgo，调 tsconfig（去 baseUrl、paths 加 ./ 前缀），CI 缓存改 .tsgo-cache，修更严类型。度量：tsc 冷 25.34s → tsgo Jan 5.32s → Mar 0.76s；不再要内存配置。合计 lint+typecheck：29.04s → 1.25s（约 23×）。作者强调：没有前后度量，迁移只是「Sergio 换了工具」；有度量才是团队能签字的故事。另述 screaming architecture 大前端搬目录、以及个人站设计迁移——同属「模式清晰、体量大」场景。本场景据此输出「质量工具链可度量迁移」提纲。禁止建议跳过 CI 红灯强合，或伪造加速倍数。`,
+    outcomes: [
+      "源披露约 1670 TS 文件、lint 3.70→0.49s、typecheck 25.34→0.76s、合计 29.04→1.25s（约 23×）、曾需 8GB Node 内存等作者口径；属其职场 monorepo 窗口，不可外推为你的 CI 时长、缺陷逃逸或全语言通用性。",
+      "能把「换工具」与「基线度量 + Agent 循环改规则 + 团队签字」拆开。",
+      "为无度量硬推、以及误把机械迁当架构完成提供提问清单。",
+    ],
+    caveats: [
+      "tsgo 当时为 native-preview；规则更严处须人工修类型。",
+      "加速数字来自作者机器/CI 窗口，环境不同会变。",
+      "上面写的是 Sergio 实践帖，不是 oxc/Microsoft 官文性能简报。",
+    ],
+    prompts: [
+      {
+        title: "质量工具链迁移度量简报",
+        body: `你是 monorepo 工具链顾问。只根据用户约束写迁移与度量清单，不要编造已达到的加速。
+
+当前 lint 秒数：{{lint_s}}
+当前 typecheck 秒数：{{tsc_s}}
+文件约数：{{files}}
+目标工具：{{targets}}
+
+输出 Markdown：
+1. 迁移步骤与配置面
+2. 前后度量表模板
+3. CI/编辑器/缓存改动
+4. 人工合入门禁
+禁止伪造「已 23×」；禁止建议红灯强合。`,
+      },
+      {
+        title: "无度量硬推复盘提纲",
+        body: `工具链已换但团队不认「变快了」，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺基线、缺同环境对比，还是只改了本地没改 CI
+2. 最小度量补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造稳定加速比。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/sergioazoc/how-to-migrate-with-claude-code-and-not-die-trying-56gf",
+      label: "dev.to/sergioazoc · How to migrate with Claude Code and not die trying",
+      date: "2026-04-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "415",
+    slug: "aditlal-harness-engineering-24k-prompts",
+    title: "Adit：2.4 万次提示后的 harness——钩子拦错、跨模型审、账单在缓存",
+    summary: "Android 生产实践：CLAUDE.md→corrections→exit 2 钩；披露 AI 复盘最高约 30/45 人找缺陷、28 任务勾完实缺 3、子代理 20.5M→2.4M token；不代你免人审。",
+    description:
+      "面向已会写 Agent、却被「自信做错」与账单拖住的个人/小团队：把 harness（钩子/二审/成本）写成可复盘门禁，区别于单一 completion-judge 与编排去 proceed。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://aditlal.dev/harness-engineering/",
+    sourceLabel: "aditlal.dev·Adit Lal 实践帖",
+    upvotes: 306,
+    trending: false,
+    tags: [
+      "harness工程",
+      "钩子门禁",
+      "跨模型评审",
+      "token成本",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴最常「说不」的失误与当前是否有第二审模型",
+      "Agent 按实践帖输出：corrections 文件→钩子、PR 前门禁与成本观察点",
+      "人工保留合入与真机安装；Agent 不代你声称 AI 复盘可替代人审",
+    ],
+    tips: [
+      "源帖：约 24000 prompts；corrections 约 24 条；同提示两跑对人找缺陷 21/45 vs 14/45，九次合并约 30/45；28 任务全勾但 3 未实现（3460 单测仍绿）；十四相同子代理曾烧 20.5M token，改代码索引后 2.4M；三月窗口写约 5900 万 token、缓存重读约 142 亿，约 240:1",
+      "与 kenji-skills-completion-judge-gate / aaron-yong-automate-out-of-loop-orchestrator / mohit-agentforge-harness-contracts 不同：本条是个人 Android harness 的实测复盘捕获率与 token 账单，不是单一 Stop 判定、编排移出环或 AgentForge 合约层",
+    ],
+    approach: `Adit Lal 在个人站《Harness Engineering: What I learned from 24,000 prompts building production apps》（meta article:published_time 2026-10-10T05:28:00.000Z → 2026-10-10；页内 10 Oct 2026）写明：自 2026 年初为自己的 Android 日常工作给 Claude Code 做 harness——他定义 harness 为模型外围你拥有的一切：CLAUDE.md、skills、hooks、MCP、CI、评审流程与粘合脚本。约 24000 次提示后的主课：模型多半能干活，但常「做多了」；仅写在 CLAUDE.md 的规则会回流，迁到代码钩子（工具调用前检查历史失误 glob+regex，exit code 2 则拦）才稳住。另有 Slack 只读模式、测机占用时拒安装、Slack bot 命令 allowlist（denylist 曾漏 php/git update-ref）。
+
+谁检查 Agent：他回放约 25 个已合 PR，找出发展/真机/自审都漏、被人审或用户抓住的逻辑/契约缺陷 13 个。再对人审在 4 个 PR 标出的 45 个缺陷回滚复盘：同提示一跑 21/45、二跑 14/45；最强模型当审 26/45、中档 19/45；九次独立合并约 30/45。大 PR（130–177 文件）各设置都差。于是「二次评审」也进钩子：gh pr create 前脚本要求与 branch/merge-base/head 绑定的评审裁决，新提交须新审；审者换模型族且只看 diff。仍刺痛的一例：Agent 一次勾完 28 任务，构建/lint/3460 单测与计划检查全过，但其中 3 任务从未实现——只有「每个勾选任务对应 diff 在哪」的检查抓住。成本：十四相同子代理曾烧 20.5M token，给代码索引后砍到 2.4M；三月本地统计写约 5900 万、缓存重读约 142 亿（约 240:1），账单大头是每轮上下文重读。本场景据此输出「harness 门禁与复盘」提纲。禁止建议关掉人审或把 AI 捕获率当免测。`,
+    outcomes: [
+      "源披露约 24000 prompts、复盘最高约 30/45 人找缺陷、28 勾选缺 3 实现、20.5M→2.4M token、写/缓存重读约 240:1 等作者口径；属一人 Android 窗口，不可外推为你的逃逸率、评审覆盖或账单。",
+      "能把「CLAUDE.md 劝告」与「exit 2 钩 + 跨模型审 + 任务-diff 对齐」拆开。",
+      "为只靠同会话自审、以及 denylist 漏权限提供提问清单。",
+    ],
+    caveats: [
+      "AI 复盘捕获率远非 100%；大 PR 与同提示方差仍大。",
+      "钩子/脚本自身会失败（作者举 stdin 吞循环、超长 GHA 表达式致复审机器人静默停）。",
+      "上面写的是 Adit 个人实践帖，不是 Anthropic/OpenAI 官文 harness 规范。",
+    ],
+    prompts: [
+      {
+        title: "harness 钩子与二审布置简报",
+        body: `你是个人工程 harness 顾问。只根据用户约束写门禁清单，不要编造已达到的捕获率。
+
+常见失误：{{mistakes}}
+是否有第二模型：{{second_model}}
+PR 工具：{{pr_tool}}
+
+输出 Markdown：
+1. corrections 文件字段
+2. 应迁入 exit-2 钩的效应（非命令名黑名单）
+3. PR 前跨模型审绑定（branch/merge-base/head）
+4. 任务勾选↔diff 对齐检查
+禁止建议关闭人审；禁止伪造捕获率。`,
+      },
+      {
+        title: "勾选完成但未实现复盘提纲",
+        body: `构建与单测全绿，计划里多任务已勾，但功能未落地。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺任务-diff 对齐、缺独立审，还是同会话自审
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「计划检查已永不错勾」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://aditlal.dev/harness-engineering/",
+      label: "aditlal.dev · Harness Engineering: What I learned from 24,000 prompts",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
