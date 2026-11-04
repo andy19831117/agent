@@ -20806,6 +20806,448 @@ Support Stack：首次试用即从 GitHub/Pylon/Sentry 等拉数、定位缺陷�
       dateLabel: "发布",
     },
   },
+  {
+    id: "376",
+    slug: "nofire-single-investigator-eval-cut",
+    title: "NOFire：删掉多智能体调查队，Eval 证明单调查员更准更便宜",
+    summary: "对照团队工程案例：多角色 RCA 改单 Agent+证据账本；披露无 K8s 工具时诊断约 1.5×、工具调用约 −49%、成本约 −60%、到诊断约 2.5× 更快；裁判加价约 93% 未提准；不代你零误诊、不外推。",
+    description:
+      "面向做根因调查/AI SRE 的工程团队：把「再加 planner/worker/judge」写成可对账的单环调查员+证据账本+日更 Eval，区别于 E2E QA Council 加席与自治 CI 贡献者。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.nofire.ai/blog/we-deleted-most-of-our-agents",
+    sourceLabel: "nofire.ai·NOFire 工程实践帖",
+    upvotes: 267,
+    trending: false,
+    tags: [
+      "根因调查",
+      "多智能体删减",
+      "Eval",
+      "SREGym",
+      "证据账本",
+    ],
+    howItWorks: [
+      "粘贴现有调查角色拆分、可用观测工具面，以及是否允许直接 Kubernetes API",
+      "Agent 按实践帖输出：单调查员环路与证据账本→配对 Eval 规则（同题同模型）→应删角色/裁判提问清单",
+      "人工保留发布与客户侧结论；Agent 不代你声称诊断率或成本已达标",
+    ],
+    tips: [
+      "源帖：在小集调参、大集（约 5×，含从未用于调参的题）复测；两侧同模型；失败调查也计入成本与时延",
+      "与 openobserve-council-e2e-qa-agents / clickhouse-groeneai-autonomous-contributor 不同：本条是 Eval 驱动的删多智能体 RCA，不是加席 E2E Council 或仓库自治修 CI",
+    ],
+    approach: `Panagiotis Moustafellos、George Skoumas、Alex Touloupis 等在 NOFire 工程博客《We deleted most of our agents. Our evals told us to.》（页内 Engineering 31 Oct 2026；JSON-LD datePublished 2026-10-31 → 2026-10-31）写明：约五个月前根因调查以多智能体跑——planner 读告警提假设 → 各 worker 分假设测工具 → evaluator 权衡 → writer 出报告；在基准上却最慢、最贵、最不准。团队改为「单 Agent + 同一上下文 + 证据账本（ledger of evidence）」，只在 Eval/基准允许处改架构。
+
+度量：SREGym（UIUC 独立基准，真实 K8s 应用注入故障；其 LLM 裁判非被测模型，作者用 Claude Sonnet 5 作裁判且禁止与被测模型同型号启动）；自有 trace 可重放证据；另有 RCAEval 等。比较纪律：小集 21 题调参、终比 105 题（其中 84 从未用于调参）；每题 3 次全计分、无 best-of-N；按题配对；两侧同为 Claude Sonnet 4.6；两种姿态——生产姿态（指标/日志/链路/变更史，经 Production Context Graph，无直接 K8s API）与带只读 K8s 工具姿态。结果口径（作者团队窗口）：无 K8s 工具时单调查员诊断约 1.5× 故障、工具调用约 −49%、单次调查成本约 −60%、到诊断中位约 2.5× 更快；有 K8s 工具时约 1.3× / −63% / −70% / 约 3.6×。加裁判曾把账单抬约 93% 且不准度上升——成本来自提示里错位文本块而非「裁判角色」本身。多数「感觉对」的点子输掉（近 9/10 拒答的严检、双调查员等）。换更小 Haiku 相对 Sonnet 诊断率损失 <5 点，作者强调结果来自架构与上下文图而非模型 alone。本场景据此输出「Eval 删多智能体调查员」提纲。禁止把 1.5×/60% 写成对你告警 SLA 的保证。`,
+    outcomes: [
+      "源披露无 K8s 工具时诊断约 1.5×、工具调用约 −49%、成本约 −60%、到诊断约 2.5× 更快，以及加裁判约 +93% 账单未提准等团队窗口数字；属 NOFire RCA/Eval 叙事，不可外推为你的误诊率或 on-call 成本。",
+      "能把「再加多智能体席位」与「单环调查员 + 证据账本 + 配对 Eval」拆开。",
+      "为裁判空烧、过严拒答与调参集泄漏提供提问清单。",
+    ],
+    caveats: [
+      "数字绑定 SREGym/作者 harness 与 Production Context Graph；换观测栈不可照搬倍数。",
+      "生产姿态故意不给直接 K8s API，工具面不同则结论可能翻转。",
+      "上面写的是可观测/AI SRE 产品团队工程博客，不是模型商官文简报。",
+    ],
+    prompts: [
+      {
+        title: "单调查员 Eval 删减简报",
+        body: `你是 AI SRE / 根因调查架构顾问。只根据用户约束写提问清单，不要编造已上线指标。
+
+现有角色拆分：{{roles}}
+工具面：{{tools}}
+是否允许直接集群 API：{{k8s_api}}
+
+输出 Markdown：
+1. 单调查员环路与证据账本字段
+2. 配对 Eval 协议（同题/同模型/全计失败）
+3. 应保留 vs 应删的角色与裁判
+4. 人工验收与回滚清单
+禁止声称诊断率已达标；禁止建议取消人审发布。`,
+      },
+      {
+        title: "裁判空烧账单复盘提纲",
+        body: `加了裁判后账单大涨但准确率未升，请写复盘提纲。
+
+成本前后：{{cost_before_after}}
+提示/编排摘录：{{prompt_excerpt}}
+
+输出：
+1. 是裁判本身、提示错位文本，还是重复工具环
+2. 最小可 A/B 的删减实验
+3. 成本列必看项
+4. 人工确认清单
+不要伪造「已自动省下 60%」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.nofire.ai/blog/we-deleted-most-of-our-agents",
+      label: "nofire.ai · We deleted most of our agents. Our evals told us to.",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "377",
+    slug: "chris-gmyr-hive-lead-codex-workers",
+    title: "Chris Gmyr：Hive 用一 Lead 编排 Claude Code / Codex Worker，本地 SQLite 交接",
+    summary: "对照个人开发实践：Lead 写 pad/todo，tmux Worker 可盯可介入；披露 1.7.0 一批 10 个 PR（Codex/Claude 各 5）且规划 Worker 只读；不代你吞吐、不外推。",
+    description:
+      "面向要在多仓并行开 Agent 又不想手抄 runbook 的独立开发者：把「再堆 subagent」写成可对账的 Lead+Worker+本地 SQLite 共享态，区别于 persistent fleet 与 hooks 工作流引擎。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://chrisgmyr.dev/blog/i-built-hive-to-run-claude-code-and-codex-workers-from-one-lead",
+    sourceLabel: "chrisgmyr.dev·Chris Gmyr 实践帖",
+    upvotes: 268,
+    trending: false,
+    tags: [
+      "Hive",
+      "Lead Worker",
+      "Claude Code",
+      "Codex",
+      "SQLite",
+    ],
+    howItWorks: [
+      "粘贴常用 harness（Claude Code/Codex）、是否需要跨项目总览，以及 Worker 是否允许改文件",
+      "Agent 按实践帖输出：Lead/Worker/queen 职责→pads/todos/leases 共享态→只读规划 Worker 与人审提问清单",
+      "人工保留合入与发布；Agent 不代你声称并行 PR 吞吐已达标",
+    ],
+    tips: [
+      "源帖：共享态在本地 SQLite；无后台 daemon；各会话自带 Hive MCP；wake 可在你打字时暂缓以免覆盖输入",
+      "与 nick-tune-claude-hooks-workflow-engine 不同：本条是每项目 Lead 编排可观察 Worker + pad/todo 交接（非 hooks 工作流引擎或常驻多席 fleets）",
+    ],
+    approach: `Chris Gmyr 在《I Built Hive to Run Claude Code and Codex Workers From One Lead》（页内 \`<time datetime="2026-10-06">\` October 6, 2026 → 2026-10-06）写明：曾在 Solo 等工具里跑 Agent 小队，后因「每仓手抄 runbook + hooks 仍不稳」自建 Hive——CLI + MCP：你只跟 Lead 会话；Lead 规划、把计划写入 pads、工作写入 todos，并在 tmux pane 拉起可观看/可键入的 Claude Code 或 Codex Worker；Worker 结束后 wake Lead 继续。协调态全在项目本地一份 SQLite（pads / todos+依赖 / KV / 会过期的 leases）；无独立后台守护进程，各 harness 会话跑自己的 Hive MCP 读写同一库。
+
+自 late July 起作者日用，并开源 npm \`@cmgmyr/hive\`。案例：1.7.0 一批 10 个 PR——Codex Worker 做 5、Claude 做 5，均在一 Claude Lead 下按 profile 审每条车道；最大改动由 Codex 规划写入 pad，Claude Worker 实现，再一 Claude Worker 按评审修补。偏好只读规划 Worker：可读代码写计划、不能改文件；为 hive.yml 全局默认（PR #22）时，规划 Worker 找出 Lead 计划漏项并也曾过度设计（锁文件/脆测），Lead 保留发现、删掉多余后合入。另有 queen：只读各注册项目、提示谁在等你/卡住/推进，可把活交给别项目 Lead 但不能乱写。明确只支持 Claude Code 与 Codex（靠 hooks 回报完工），其他 harness 故意不做。本场景据此输出「Lead+Worker 本地共享态」提纲。禁止建议无人值守自动合入主干。`,
+    outcomes: [
+      "源披露自 late July 日用、1.7.0 一批 10 个 PR（Codex/Claude 各 5）以及只读规划 Worker 揪出漏项并被 Lead 裁掉过度设计等作者窗口口径；属个人编排叙事，不可外推为你的并行吞吐或缺陷率。",
+      "能把「再堆 subagent/Agent Teams」与「Lead 编排 + pad/todo 共享态 + 可观察 Worker」拆开。",
+      "为跨项目失联、Worker 盖写输入与规划过度设计提供提问清单。",
+    ],
+    caveats: [
+      "依赖本机 Node/tmux/Claude Code；Codex 需在 hive.yml 显式 opt-in。",
+      "profile/runbook 仍要人 fork；默认 orchestration 不是即用生产制度。",
+      "上面写的是个人开源实践帖，不是 Anthropic/OpenAI 官文。",
+    ],
+    prompts: [
+      {
+        title: "Hive 式 Lead/Worker 编排简报",
+        body: `你是多 Agent 编排顾问。只根据用户约束写提问清单，不要编造已开源上线。
+
+harness：{{harnesses}}
+是否跨多仓：{{multi_repo}}
+Worker 可否改文件：{{workers_write}}
+
+输出 Markdown：
+1. Lead / Worker / queen 职责与禁止项
+2. pads、todos、leases 最小字段
+3. 只读规划 Worker 验收标准
+4. 人审合入清单
+禁止建议自动 merge；禁止声称吞吐已达标。`,
+      },
+      {
+        title: "规划过度设计复盘提纲",
+        body: `只读规划 Worker 提出锁文件与脆测，Lead 差点照单全收，请写复盘提纲。
+
+计划摘要：{{plan}}
+最终合入范围：{{shipped}}
+
+输出：
+1. 是 brief 缺「最小改动」、缺裁剪清单，还是无第二意见
+2. profile 最小补丁
+3. 下次规划验收标准
+4. 人工确认清单
+不要伪造「规划已永不再过度设计」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://chrisgmyr.dev/blog/i-built-hive-to-run-claude-code-and-codex-workers-from-one-lead",
+      label: "chrisgmyr.dev · I Built Hive to Run Claude Code and Codex Workers From One Lead",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "378",
+    slug: "jerad-claude-life-dashboard-app",
+    title: "Jerad：Claude 对话出规格 → Design → Code，自建生活仪表盘 App",
+    summary: "对照个人效率实践：手表语音入库；Today/Top3/例程分轨；披露规格→Claude Design→Claude Code，几天内上线 xCloud+Supabase；不代你省时、不外推。",
+    description:
+      "面向多领域生活信息进不去系统的个人用户：把「再拼五个效率 App」写成可对账的规格驱动自建仪表盘+低摩擦捕获，区别于 Markdown 域秘书与 n8n Personal OS。",
+    categories: [
+      "life",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://jeradhill.com/life-management-app-claude-code/",
+    sourceLabel: "jeradhill.com·Jerad Hill 实践帖",
+    upvotes: 269,
+    trending: false,
+    tags: [
+      "生活系统",
+      "语音捕获",
+      "Claude Code",
+      "Supabase",
+      "自建 App",
+    ],
+    howItWorks: [
+      "粘贴生活领域列表、捕获入口（手表/手机/桌面），以及是否自建托管",
+      "Agent 按实践帖输出：对话规格提纲→Today/例程/Resurfacing 信息架构→捕获→归类→人确认通知清单",
+      "人工保留日程与敏感操作；Agent 不代你声称已无人值守管好人生",
+    ],
+    tips: [
+      "源帖原则：录入摩擦过高会直接导致弃用；例程与任务分轨，避免「一锅待办」",
+      "与 rutger-muninn-markdown-domain-secretary / tobias-personal-os-n8n-claude-todoist 不同：本条是自建 Web 仪表盘+手表快捷指令捕获，不是 Claude Code Markdown 域剧本秘书或 n8n 晨报 OS",
+    ],
+    approach: `Jerad Hill 在《How I Manage My Entire Life with a Custom App I Built in Claude Code》（页内 June 29, 2026；JSON-LD datePublished 2026-06-29 → 2026-06-29）写明：长期在 Notion/Todoist/Obsidian 与多设备间切换，因 YouTube、客户站/营销、家庭等多领域无法被单一工具串起而反复弃用。他改用 Claude 对话让模型反问、推回不合理拼接，产出完整规格；再进 Claude Design 做页面/语音捕获流/领域与项目视图；最后把设计稿与规格带进 Claude Code 实现——从本地仪表盘到可在笔记本或 Apple Watch 触达的 Web 界面。托管：Node.js 在已有客户站同用的 xCloud，数据在 Supabase，站点加用户名密码认证。
+
+产品面强调低摩擦捕获：手表快捷指令录音→转写→AI 清洗口头语并自动归入领域/任务（例：明天下午 2 点换冰箱滤芯→Home）；手机可语音或文本；桌面有快捷键与全局搜索。Today 屏含 Top 3、只读接入的 Google Calendar、按到期排序的开放任务、项目久未触达的 Resurfacing、与任务分轨的例程（含时段与 streak）、以及 AI 无法归类时的 Needs Review Inbox。作者称有开发背景与 Claude Code 时「几天内建成并立即开用」。本场景据此输出「规格驱动生活仪表盘」提纲。禁止建议自动对外发信/付款或无人值守改他人日历。`,
+    outcomes: [
+      "源披露规格→Claude Design→Claude Code、xCloud+Supabase 托管，以及「几天内建成并开用」等作者窗口口径；属个人效率叙事，不可外推为你的省时比或坚持使用率。",
+      "能把「再拼五个效率 App」与「对话规格 + 自建仪表盘 + 手表捕获」拆开。",
+      "为录入摩擦、例程与任务混堆、AI 误归类提供提问清单。",
+    ],
+    caveats: [
+      "作者有开发背景；无基础时「几天上线」不可期待。",
+      "日历只读接入，任务真相在自建库——双源一致性需人维护。",
+      "上面写的是个人博客实践帖，不是 Claude/Supabase 官文。",
+    ],
+    prompts: [
+      {
+        title: "生活仪表盘规格简报",
+        body: `你是个人效率系统顾问。只根据用户约束写提问清单，不要编造已上线 App。
+
+生活领域：{{domains}}
+捕获入口：{{capture}}
+是否自建托管：{{self_host}}
+
+输出 Markdown：
+1. 对话规格提纲（领域/捕获/Today/例程）
+2. 例程与任务分轨规则
+3. Needs Review 与通知确认点
+4. 人工日审清单
+禁止建议无人值守对外发信或付款；禁止声称人生已全自动。`,
+      },
+      {
+        title: "误归类任务复盘提纲",
+        body: `语音捕获把家庭事归进客户项目，请写复盘提纲。
+
+原话转写：{{transcript}}
+错误归类：{{wrong_bucket}}
+
+输出：
+1. 是领域词表不足、缺确认通知，还是 Needs Review 未启用
+2. 清洗/路由提示最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「归类已永久正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://jeradhill.com/life-management-app-claude-code/",
+      label: "jeradhill.com · How I Manage My Entire Life with a Custom App I Built in Claude Code",
+      date: "2026-06-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "379",
+    slug: "alan-albert-dollar-day-sales-agents",
+    title: "Alan：Albert 十余单职能销售 Agent，人批触达，全期约 $15.85",
+    summary: "对照独立销售实践：评分/排日/写信分职；披露闭环约 $29,201、全期推理约 $15.85、对照租栈约 $460/月；触达人前必批；不代你成交、不外推。",
+    description:
+      "面向一人覆盖多市场的 B2B 销售：把「再租四件套 SaaS」写成可对账的单职能 Agent 劳动力+公司圣经/模板/纠错日志，区别于顾问获客阶段 Eval 与支持邮箱分类。",
+    categories: [
+      "ecommerce",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://alanscottencinas.com/meet-albert-multi-agent-sales-force/",
+    sourceLabel: "alanscottencinas.com·Alan Scott Encinas 实践帖",
+    upvotes: 270,
+    trending: false,
+    tags: [
+      "销售 Agent",
+      "HubSpot",
+      "成本优化",
+      "人批触达",
+      "多市场",
+    ],
+    howItWorks: [
+      "粘贴销售车道/语言、现有 CRM/邮箱，以及触达是否必须人批",
+      "Agent 按实践帖输出：单职能分工表→免费预检再付费模型→公司圣经/模板/learning log→人批清单",
+      "人工保留每封对外触达；Agent 不代你声称已超过竞品转化率",
+    ],
+    tips: [
+      "源帖：免费邮箱且无公司的线索先规则拦截，不确定的才进付费模型；触达真人的决策一律人批",
+      "与 tony-tong-crm-stage-evals / dominic-support-email-classify-escalate 不同：本条是自建多单职能销售劳动力+成本下探，不是获客阶段契约 Eval 或支持邮件分类升级",
+    ],
+    approach: `Alan Scott Encinas 在《I Built an AI Sales Team for Under $1 a Day…》（页内/JSON-LD 2026-06-11 → 2026-06-11）写明：一人做跨约 14 个国际市场、5 种语言的 B2B 销售；若租 CRM≈$150/月 + 获客≈$120 + 邮件助手≈$150 + 会前准备≈$40，合计约 $460/月且租完不拥有。他自建 Albert：命令行与 Web 仪表盘两入口，底层是约十余个单职能小 Agent（猎新、评分、排日、写信、读回复、记分、CRM 清洗等），HubSpot 存档、Outlook 邮件、Claude 推理；数据不离开其环境。无微调，靠公司圣经、车道×语言模板库、以及记录每次人工纠错的 learning log 接地。
+
+线索路径：入站后 grader 给车道（批发/B2B/活动/OEM/零售/伙伴等）、hot/warm/cold 与一句话理由；先跑免费检查，无公司的一次性邮箱不进付费模型。planner 把热/温与在谈单排进真实日历块。外发前起草供人批准。作者称首版单次跑集约 $15 即起疑并砍成本；全生命周期推理花费约 $15.85；标题/文中披露闭环成交约 $29,201，并对照 Salesforce/HubSpot 等租用 AI 叙事（属作者窗口比较，非第三方审计）。本场景据此输出「单职能销售 Agent 劳动力」提纲。禁止建议无人值守群发或自动改 CRM 成交字段。`,
+    outcomes: [
+      "源披露闭环约 $29,201、全期约 $15.85、对照租栈约 $460/月，以及十余单职能+人批触达等作者窗口数字；属一人 B2B 销售叙事，不可外推为你的成交额、回复率或相对 SaaS 的胜率。",
+      "能把「再租四件套」与「单职能 Agent + 圣经/模板/纠错日志 + 人批」拆开。",
+      "为付费模型空烧、口吻漂移与误触达提供提问清单。",
+    ],
+    caveats: [
+      "成交与「击败」口径来自作者自述窗口，非独立评测。",
+      "强依赖既有 HubSpot/Outlook 与人工批信纪律。",
+      "上面写的是个人实践帖，不是 Salesforce/HubSpot 官文或竞品评测榜。",
+    ],
+    prompts: [
+      {
+        title: "单职能销售 Agent 简报",
+        body: `你是一人 B2B 销售自动化顾问。只根据用户约束写提问清单，不要编造已成交。
+
+市场与语言：{{markets}}
+CRM/邮箱：{{stack}}
+触达是否人批：{{human_approve}}
+
+输出 Markdown：
+1. 单职能分工与禁止越权
+2. 免费预检→付费模型门槛
+3. 公司圣经/模板/learning log 最小集
+4. 人批触达清单
+禁止建议无人值守群发；禁止声称已超过某 SaaS 转化率。`,
+      },
+      {
+        title: "付费模型空烧复盘提纲",
+        body: `大量无效免费邮箱进了付费评分，请写复盘提纲。
+
+样本特征：{{samples}}
+当月模型账单：{{bill}}
+
+输出：
+1. 是预检规则失效、车道误标，还是缺 learning log 回写
+2. 规则最小补丁
+3. 下周成本验收
+4. 人工确认清单
+不要伪造「日成本已稳定低于 1 美元」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://alanscottencinas.com/meet-albert-multi-agent-sales-force/",
+      label: "alanscottencinas.com · I Built an AI Sales Team for Under $1 a Day",
+      date: "2026-06-11",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "380",
+    slug: "arize-alyx-todo-plan-context-tools",
+    title: "Arize Alyx：计划工具落盘 + LargeJson/jq，生产 Agent 调试四课",
+    summary: "对照团队工程案例：todo 四态计划外置；披露单次约 27 次 LLM 空转待办，及 LargeJson 后约 10 次定向工具调用可比十实验；不代你零幻觉、不外推。",
+    description:
+      "面向要把产品内助手送到生产的团队：把「再写长系统提示」写成可对账的计划工具+出带句柄的大数据工具面，区别于 Eval 删多智能体与 E2E Council。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://arize.com/blog/ai-agent-debugging-four-lessons-from-shipping-alyx-to-production/",
+    sourceLabel: "arize.com·Laurie Voss / Arize 工程实践帖",
+    upvotes: 271,
+    trending: false,
+    tags: [
+      "Alyx",
+      "计划工具",
+      "上下文工程",
+      "LargeJson",
+      "生产调试",
+    ],
+    howItWorks: [
+      "粘贴现有工具列表、是否已有待办/计划持久化，以及大数据结果如何回灌上下文",
+      "Agent 按实践帖输出：todo 四态与盘外计划注入→LargeJson/jq 句柄约定→评测代替 vibe-check 提问清单",
+      "人工保留发布与高危工具；Agent 不代你声称生产助手已稳定",
+    ],
+    tips: [
+      "源帖：计划不存在会话史里，而在盘上；每次 LLM 调用在系统提示后动态注入当前 PlanMessage",
+      "与 nofire-single-investigator-eval-cut / openobserve-council-e2e-qa-agents 不同：本条是产品内助手的计划外置+工具面减负，不是 RCA 删多智能体或 E2E 测 Council",
+    ],
+    approach: `Laurie Voss 在 Arize 博客《AI Agent Debugging: Four Lessons from Shipping Alyx to Production》（页内 February 2026；JSON-LD datePublished 2026-02-25 → 2026-02-25）写明：Alyx 是面向 Arize AX 的自然语言助手（查 trace 瓶颈、比实验、看 eval 跌点等），编排环调用产品工具。早期问题不是经典幻觉，而是注意力：多任务只做第一件就 spiral；finish 工具常过早调用；一次「总结多条 trace」会话里约 27 次 LLM 调用几乎都在重排自己的待办、原地打转。
+
+课 1：规则进代码——规划升格为可检查工具 \`todo_write\` / \`todo_update\` / \`todo_read\`，任务四态 pending/in_progress/completed/blocked；仅有 pending/completed 时缺「当前指针」，加 in_progress 后完成率立刻改善；blocked 允许等人输入。计划存在盘上而非会话史，每次调用在系统提示后注入当前 PlanMessage。课 2：上下文工程——大数据用 LargeJson：服务端存全量，上下文只给句柄与 \`jq()\` 提示；作者称可约 10 次定向工具调用替代一次撑爆上下文的倾倒，并取消「一次只比两实验」上限至可比十个。另强调小而可组合的工具面（Unix 风格）。课 3/4：生产不能靠 vibe-check；调试 Agent 本身也是 Agent 形问题（文内继续展开评测与工具设计）。本场景据此输出「计划外置 + 句柄化大数据」提纲。禁止把 27 或 10 写成对你产品的 SLA。`,
+    outcomes: [
+      "源披露约 27 次 LLM 空转重排待办、LargeJson/jq 后约 10 次定向调用可支持多实验比较，以及四态计划外置等团队窗口口径；属 Arize Alyx 叙事，不可外推为你的助手完成率或 token 账单。",
+      "能把「再加长系统提示」与「计划工具落盘 + 出带句柄工具」拆开。",
+      "为过早 finish、上下文被 JSON 淹没与 vibe-check 漏测提供提问清单。",
+    ],
+    caveats: [
+      "强依赖可观测平台工具语义；换产品面需重做句柄协议。",
+      "blocked/人在环设计不当会变成永久卡住。",
+      "上面写的是 Arize 工程博客一手案例，不是通用 Agent 框架官文。",
+    ],
+    prompts: [
+      {
+        title: "计划外置生产助手简报",
+        body: `你是生产 Agent 架构顾问。只根据用户约束写提问清单，不要编造已上线。
+
+助手任务类型：{{tasks}}
+工具列表：{{tools}}
+大数据是否回灌全文：{{dump_full}}
+
+输出 Markdown：
+1. todo 四态与盘外 PlanMessage 注入点
+2. LargeJson/句柄/查询工具约定
+3. finish/blocked 规则
+4. 发布前评测代替 vibe-check 的清单
+禁止声称完成率已达标；禁止建议取消人审高危工具。`,
+      },
+      {
+        title: "待办空转复盘提纲",
+        body: `助手反复改写待办却不调用业务工具，请写复盘提纲。
+
+轨迹摘要：{{trace}}
+调用次数：{{n_calls}}
+
+输出：
+1. 是缺 in_progress、计划埋在会话史，还是 finish 可过早触发
+2. 工具/注入最小补丁
+3. 回归评测用例
+4. 人工确认清单
+不要伪造「空转已自动消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://arize.com/blog/ai-agent-debugging-four-lessons-from-shipping-alyx-to-production/",
+      label: "arize.com · AI Agent Debugging: Four Lessons from Shipping Alyx to Production",
+      date: "2026-02-25",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
