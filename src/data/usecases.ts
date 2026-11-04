@@ -15426,6 +15426,456 @@ PlanetScale Docs《Connection strings》（Vitess/MySQL 路径，dateModified �
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "316",
+    slug: "auth0-actions-login-triggers-brief",
+    title: "Auth0 Actions 登录触发器扩展简报",
+    summary: "按 trigger 流水线、同步阻塞 vs 异步、Secret/依赖与绑定顺序，整理登录与身份流扩展简报；不代持 Dashboard Secret、不代部署生产 Action。",
+    description:
+      "面向独立开发者：把「在 Auth0 登录链路插入自定义逻辑」写成可对账步骤，区别于 Clerk 用户事件 Webhooks 与通用 OIDC 登录报错排查。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://auth0.com/docs/customize/actions/actions-overview",
+    sourceLabel: "Auth0 Docs·How Auth0 Actions Work",
+    upvotes: 132,
+    trending: false,
+    tags: [
+      "Auth0",
+      "Actions",
+      "登录触发器",
+      "OIDC",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴目标场景（登录后加 claim/重定向/外部校验等）、拟用 trigger、是否已有 Rules/Hooks 遗留，以及失败症状",
+      "Agent 按官方 How Auth0 Actions Work 要点输出：trigger 流水线→同步阻塞 vs 异步→Secret/依赖/版本与绑定顺序提问清单",
+      "人工在 Dashboard 创建/测试/Deploy 并挂到 Flow；Agent 不代写生产 Secret、不代 Deploy 到生产租户",
+    ],
+    tips: [
+      "Actions 是租户级、可版本化的 Node.js 函数；同一 trigger 可挂多个 Action，按放置顺序执行",
+      "与 clerk-webhooks-user-events-brief / oidc-sso-login-error-triage 不同：本条是 Auth0 平台内 trigger 扩展，不是出站用户事件 Webhook，也不是泛登录失败排查",
+    ],
+    approach: `独立产品用 Auth0 时，常见卡点是：想在发 token 前加自定义 claim 或外部校验，却分不清该挂哪个 trigger，或把本应异步的逻辑塞进同步路径拖垮登录。
+
+Auth0 Docs《How Auth0 Actions Work》（dateModified 可核）说明：Actions 是安全的、租户专属、可版本化的 Node.js 函数，在 Auth0 平台特定触发点（triggers）执行，用于用自定义逻辑扩展能力。可扩展的流程称为 trigger；trigger 分组代表 Auth0 旅程中某一节点的逻辑流水线。同一 trigger 可添加多个 Action，并按放置顺序执行。部分 trigger 同步执行并阻塞所在流，部分异步、在流外执行。文档按场景列出典型 trigger，例如注册登录中的 pre-user-registration（用户创建前，不适用于社交连接）、post-user-registration（创建后异步）、post-login（用户已认证但尚未签发 token）；以及 MFA 短信、密码重置、机器到机器等分组。可配合 Marketplace 集成做身份核验等。配套「写第一个 Action」路径强调：选 trigger→创建→加 Secret/依赖→Draft 测试→Deploy→挂到 Flow，并在 Tenant Logs 验收。本场景据此输出登录触发器扩展简报。禁止回显 Secret 或声称「生产 Action 已上线」。`,
+    outcomes: [
+      "源未披露量化「登录定制成功率」；公开文只描述 trigger 流水线、同步/异步差异与可扩展场景。",
+      "能把「挂错 trigger / 同步阻塞过久 / 与出站 Webhook 混淆」拆开。",
+      "为登录后加 claim、重定向或外部校验提供可落地的提问清单。",
+    ],
+    caveats: [
+      "各 trigger 的 event/api 对象与限制以对应 trigger 文档为准；本条一手源是机制总览。",
+      "部分 trigger 不适用于社交连接；迁移自 Rules/Hooks 时需对照官方迁移说明。",
+      "上面写的是产品机制，不是你租户下已部署 Action 列表。",
+    ],
+    prompts: [
+      {
+        title: "Auth0 Actions 触发器扩展简报",
+        body: `你是 Auth0 Actions 助手。只给登录/身份流扩展核对简报，不要编造已 Deploy 成功。
+
+目标行为：{{goal}}
+拟用/候选 trigger：{{trigger}}
+是否有 Rules/Hooks 遗留：{{legacy}}
+症状/约束：{{symptom}}
+
+输出 Markdown：
+1. 该行为更贴哪个 trigger
+2. 同步阻塞 vs 异步选择提问
+3. Secret/依赖/版本与绑定顺序
+4. Dashboard 测试与 Tenant Logs 验收
+禁止索要 Client Secret/Action Secret；禁止代 Deploy 生产。`,
+      },
+      {
+        title: "登录卡住/自定义逻辑未生效提纲",
+        body: `登录变慢或自定义 claim/重定向未生效，请写排查提纲。
+
+时间线：{{timeline}}
+已绑 trigger/Action 摘要：{{bound_actions}}
+日志摘要：{{logs}}
+
+输出：
+1. 是否绑错 trigger 或未 Deploy
+2. 同步 Action 是否超时/抛错阻断发 token
+3. 社交连接是否根本不跑该 trigger
+4. 下一步人工验证
+不要伪造「已全部修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://auth0.com/docs/customize/actions/actions-overview",
+      label: "Auth0 Documentation · How Auth0 Actions Work",
+      date: "2026-10-30",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "317",
+    slug: "clerk-organizations-rbac-brief",
+    title: "Clerk Organizations 多租户角色权限简报",
+    summary: "按 Organization/Active Organization、默认 Roles、Role Sets 与会话上下文，整理 B2B 多租户 RBAC 简报；不代改生产 Role、不代持密钥。",
+    description:
+      "面向独立开发者与轻量企业：把「用户多组织切换与角色鉴权」写成可对账步骤，区别于 Clerk 用户事件 Webhooks 与泛 OIDC 登录报错。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://clerk.com/docs/guides/organizations/overview",
+    sourceLabel: "Clerk Docs·Organizations",
+    upvotes: 155,
+    trending: false,
+    tags: [
+      "Clerk",
+      "Organizations",
+      "RBAC",
+      "多租户",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴应用是否 B2B 多工作区、现有成员模型、需要的默认/自定义角色，以及跨标签页串组织症状",
+      "Agent 按官方 Organizations 与 Roles and Permissions 要点输出：Org 模型→Active Organization→默认 Roles/Creator Role→会话上下文与多标签提问清单",
+      "人工在 Clerk Dashboard/SDK 配置；Agent 不代改生产 Role Set、不代持 API 密钥",
+    ],
+    tips: [
+      "Roles/Permissions 在应用级定义，再经 Role Sets 供给各 Organization；Active Organization 决定当前可见数据与权限",
+      "与 clerk-webhooks-user-events-brief 不同：本条是会话内多租户 RBAC 模型，不是用户生命周期出站 Webhook",
+    ],
+    approach: `做类 Slack/Linear 的多工作区产品时，常见卡点是：用户属于多个组织，却在后台请求里串用了错误的组织上下文，或默认把所有成员当成管理员。
+
+Clerk Docs《Organizations》（dateModified 可核）说明：Organizations 用于按 Roles 与 Permissions 分组用户，以构建多租户 B2B 应用；用户可属于多个 Organization，Clerk 在每个会话中提供 Organization 上下文（成员关系、Roles、Active Organization），据此控制展示数据与允许操作。Organization 位于 Clerk 应用内；Roles 与 Permissions 在应用级定义一次，作用于该应用下全部 Organization。用户当前查看的 Organization 称为 Active Organization，决定其可访问的组织数据及在该组织内的 Role/Permissions。用量以 Monthly Retained Organizations（MRO）计量；免费套餐在开发/生产有 MRO 上限。多浏览器标签下，各标签独立维护自己的 Active Organization；但会话 token cookie 是浏览器级单例，始终反映当前活动标签的 Active Organization，因此后台 fetch 若跨标签共享会话，可能读到「错误组织」的上下文。配套《Roles and Permissions》给出默认 Role：org:admin（完整系统权限）与 org:member（默认偏只读成员/账单等有限权限）；创建组织的用户会被赋 Creator Role（默认 org:admin），且用作 Creator Role 的 Role 不可直接删除。本场景据此输出多租户 RBAC 简报。禁止声称「生产 Role 已改好」或回显密钥。`,
+    outcomes: [
+      "源未披露量化「越权事件下降」；公开文只描述 Org 模型、Active Organization、默认 Roles 与多标签会话注意点。",
+      "能把「串组织上下文 / 全员 admin / 与用户 Webhook 同步壳混淆」拆开。",
+      "为 B2B 工作区切换与鉴权提供可落地的核对清单。",
+    ],
+    caveats: [
+      "MRO 与套餐限额以定价页为准；本条不解读计费报价。",
+      "自定义 Permission 命名与校验 API 以 Roles and Permissions 页为准。",
+      "上面写的是产品机制，不是你实例下现有 Organization 列表。",
+    ],
+    prompts: [
+      {
+        title: "Clerk Organizations RBAC 简报",
+        body: `你是 Clerk Organizations 助手。只给多租户角色权限核对简报，不要编造已配置完成。
+
+产品形态：{{product_shape}}
+成员是否多组织：{{multi_org}}
+需要的角色：{{roles_needed}}
+跨标签/后台请求症状：{{symptom}}
+
+输出 Markdown：
+1. Org / Active Organization 模型
+2. 默认 Roles 与 Creator Role 提问
+3. 多标签会话 cookie 注意点
+4. Dashboard/SDK 验收步骤
+禁止索要 Secret Key；禁止代改生产 Role Set。`,
+      },
+      {
+        title: "串组织/越权排查提纲",
+        body: `用户看到错误工作区数据或权限过大，请写排查提纲。
+
+复现步骤：{{repro}}
+当前 Active Organization 认知：{{active_org}}
+角色摘要：{{role_brief}}
+
+输出：
+1. 是否多标签导致会话 cookie 与 UI 不一致
+2. 是否误用 org:admin 作默认成员角色
+3. 后端是否未校验 Active Organization
+4. 下一步人工验证
+不要伪造「越权已消除」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://clerk.com/docs/guides/organizations/overview",
+      label: "Clerk Documentation · Organizations",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "318",
+    slug: "cloudflare-d1-sqlite-workers-brief",
+    title: "Cloudflare D1 SQLite 与 Workers 接入简报",
+    summary: "按托管 SQLite 语义、Workers/HTTP 访问、Time Travel 与只读副本，整理 D1 接入简报；不代持 API Token、不代删生产库。",
+    description:
+      "面向独立开发者：把「在 Workers 旁挂上 serverless SQL」写成可对账步骤，区别于 Cloudflare Workers Cron 与通用对象存储。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://developers.cloudflare.com/d1/",
+    sourceLabel: "Cloudflare Docs·D1 Overview",
+    upvotes: 172,
+    trending: false,
+    tags: [
+      "Cloudflare",
+      "D1",
+      "SQLite",
+      "Workers",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴是否已有 Workers/Pages 项目、数据模型规模、是否需要按租户分库，以及读写延迟/备份诉求",
+      "Agent 按官方 D1 Overview 要点输出：SQLite 语义与绑定→分库上限认知→Time Travel / 只读副本提问清单",
+      "人工按 Get started 建库与绑定；Agent 不代持账户 Token、不代执行生产 DROP",
+    ],
+    tips: [
+      "D1 是带 SQLite SQL 语义的托管 serverless 数据库，可从 Workers/Pages 与 HTTP API 访问，并支持按用户/租户/项目分库",
+      "与 cloudflare-workers-cron-trigger-brief 不同：本条是 SQL 存储面，不是定时触发 Worker",
+    ],
+    approach: `在 Cloudflare Workers 上做带持久状态的小应用时，常见卡点是：误把 KV/R2 当关系库用，或不知道备份与就近读该怎么选。
+
+Cloudflare Docs《D1》Overview（Last updated / dateModified 可核）说明：D1 是 Cloudflare 托管的 serverless 数据库，具备 SQLite 的 SQL 语义、内置灾难恢复，以及 Worker 与 HTTP API 访问。支持为用户、租户或项目创建分离的数据库；Workers Paid 计划含一定数量数据库，超出按库计月费，并另有查询与存储费用。可按 Get started 创建首个库、导入数据，并从 Workers 或 Pages 查询。特性包括：用 D1 Client API 执行兼容 SQLite 的 SQL；Time Travel 作为备份与时间点恢复方式，可恢复到过去 30 天内任一分钟；全球只读复制可通过只读副本降低读延迟并扩展读吞吐。相关产品指向 Workers 与 Pages。本场景据此输出 D1 接入简报。禁止回显 API Token 或声称「生产库已建好」。`,
+    outcomes: [
+      "源未披露量化「查询延迟下降」；公开文只描述 SQLite 语义、分库、Time Travel 与只读副本能力。",
+      "能把「该用 D1 却用了 KV / 无恢复预期 / 与 Cron Trigger 混淆」拆开。",
+      "为 Workers 旁路 SQL 提供可落地的选型与验收提问。",
+    ],
+    caveats: [
+      "具体定价、库数量上限与 SQL 限制以 Pricing/Limits 页为准；本条一手源是总览。",
+      "Time Travel 窗口与恢复操作以 Time Travel 专页为准。",
+      "上面写的是产品能力说明，不是你账户下现有 D1 列表。",
+    ],
+    prompts: [
+      {
+        title: "Cloudflare D1 接入简报",
+        body: `你是 Cloudflare D1 助手。只给 SQLite/Workers 接入核对简报，不要编造已建库成功。
+
+应用形态：{{app_shape}}
+是否按租户分库：{{per_tenant}}
+读写/备份诉求：{{needs}}
+现有 Workers/Pages：{{has_worker}}
+
+输出 Markdown：
+1. D1 vs KV/R2 选型提问
+2. 绑定与首迁步骤提纲
+3. Time Travel / 只读副本是否需要
+4. 非生产验收
+禁止索要 API Token；禁止代删生产数据库。`,
+      },
+      {
+        title: "D1 查询失败/恢复演练提纲",
+        body: `Workers 调 D1 报错或需要演练恢复，请写提纲。
+
+报错摘要：{{error}}
+是否刚改 schema：{{schema_changed}}
+恢复目标时间点：{{pitr_target}}
+
+输出：
+1. 绑定/权限/SQL 兼容性优先查什么
+2. Time Travel 适用边界
+3. 是否应先在副本/非生产验证
+4. 下一步人工操作
+不要伪造「已恢复到某分钟」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developers.cloudflare.com/d1/",
+      label: "Cloudflare Documentation · D1 Overview",
+      date: "2026-10-30",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "319",
+    slug: "supabase-storage-buckets-access-brief",
+    title: "Supabase Storage 存储桶与访问控制简报",
+    summary: "按桶类型、S3/REST/TUS、CDN 与默认拒绝+RLS 策略，整理对象存储接入简报；不代持 service role、不代改生产策略为全开。",
+    description:
+      "面向独立开发者：把「用户上传文件怎么存、怎么鉴权」写成可对账步骤，区别于 Supabase Database Webhooks 与泛 S3 连通性检查。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://supabase.com/docs/guides/storage",
+    sourceLabel: "Supabase Docs·Storage",
+    upvotes: 189,
+    trending: false,
+    tags: [
+      "Supabase",
+      "Storage",
+      "RLS",
+      "对象存储",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴文件类型/大小、是否需断点续传、公开读还是登录读，以及当前桶与策略摘要",
+      "Agent 按官方 Storage 总览与 Access Control 要点输出：桶类型→协议面→默认拒绝与 RLS 最小权限提问清单",
+      "人工在 Dashboard/SQL 配策略并试传；Agent 不代持 service role、不代把策略改成 true 全开到生产",
+    ],
+    tips: [
+      "Storage 默认不允许无 RLS 策略的上传；须在 storage.objects 上按操作授予策略，upsert 还需额外 SELECT/UPDATE",
+      "与 supabase-database-webhooks-brief 不同：本条是对象存储与访问策略，不是表事件出站 Webhook",
+    ],
+    approach: `应用要收用户头像、附件或导出文件时，常见卡点是：桶建了但上传 403，或为图省事把策略写成全开导致对象被扫库。
+
+Supabase Docs《Storage》（Updated / dateModified 可核）说明：Supabase Storage 用于管理任意大小文件，带细粒度访问控制与优化分发。关键能力包括多协议（S3 兼容、RESTful API、TUS 可恢复上传）、全球 CDN、即时图像优化，以及多种桶类型：Files（通用文件与直链/RLS）、Analytics（Iceberg 等分析场景）、Vector（向量与相似度检索）。配套《Access Control》强调 Storage 与 Postgres RLS 协同：默认在无策略时不允许上传；通过在 storage.objects 上创建策略按业务限制访问；不同操作所需策略不同，例如上传主要需 INSERT，使用 upsert 覆盖则还需 SELECT 与 UPDATE。文档示例从宽松 INSERT 策略收紧为仅 authenticated 且限定 bucket_id，并可进一步限制到桶内文件夹前缀。本场景据此输出存储桶与访问控制简报。禁止回显 service role 或声称「生产策略已收紧」。`,
+    outcomes: [
+      "源未披露量化「未授权访问下降」；公开文只描述桶类型、协议面与默认拒绝+RLS 模型。",
+      "能把「403 无策略 / 策略过宽 / 与 Database Webhooks 混淆」拆开。",
+      "为上传与读权限提供可落地的最小权限提问清单。",
+    ],
+    caveats: [
+      "Analytics/Vector 桶能力与定价以对应专页为准；本条一手源以 Storage 总览为主。",
+      "操作级策略细节以 Access Control 与 helper 函数文档为准。",
+      "上面写的是机制说明，不是你项目下现有桶与策略实况。",
+    ],
+    prompts: [
+      {
+        title: "Supabase Storage 接入简报",
+        body: `你是 Supabase Storage 助手。只给存储桶与访问控制核对简报，不要编造策略已生效。
+
+文件类型与大小：{{file_profile}}
+读权限模型：{{read_model}}
+是否需要可恢复上传：{{resumable}}
+现有桶/策略摘要：{{current}}
+
+输出 Markdown：
+1. 桶类型选择提问
+2. S3/REST/TUS 何时需要
+3. 默认拒绝与最小 RLS 策略提纲
+4. 非生产试传验收
+禁止索要 service role key；禁止建议生产策略 with check (true) 长期全开。`,
+      },
+      {
+        title: "上传 403/对象可被匿名读排查提纲",
+        body: `上传失败或怀疑对象可被未登录读取，请写排查提纲。
+
+HTTP 状态/报错：{{error}}
+桶是否 public：{{bucket_public}}
+相关策略摘要：{{policies}}
+
+输出：
+1. 是否缺少 INSERT/SELECT 策略
+2. upsert 是否缺 UPDATE
+3. public 桶与 RLS 组合风险
+4. 下一步人工验证
+不要伪造「已全部锁死」；不要索要密钥。`,
+      },
+    ],
+    primarySource: {
+      url: "https://supabase.com/docs/guides/storage",
+      label: "Supabase Documentation · Storage",
+      date: "2026-10-19",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "320",
+    slug: "fly-io-secrets-vault-brief",
+    title: "Fly.io Secrets 保险库与注入简报",
+    summary: "按加密 vault、运行时环境变量注入、set/--stage/list/unset 与部署权限风险，整理密钥配置简报；不代持明文 Secret、不代 unset 生产项。",
+    description:
+      "面向独立开发者：把「敏感值怎么进 Fly Machine」写成可对账步骤，区别于 fly deploy 发布流程与 Vercel 环境变量 Config/Secret。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://fly.io/docs/reference/secrets/",
+    sourceLabel: "Fly.io Docs·Secrets and Fly Apps",
+    upvotes: 209,
+    trending: false,
+    tags: [
+      "Fly.io",
+      "Secrets",
+      "环境变量",
+      "vault",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴应用名形态、要注入的变量名（勿贴值）、是否需延后滚动，以及是否与构建期密钥混淆",
+      "Agent 按官方 Secrets and Fly Apps 要点输出：vault 加密→启动注入→set 重启/--stage→list 仅摘要→部署者可读出风险提问清单",
+      "人工用 fly secrets 操作；Agent 不代保存明文、不代对生产 unset",
+    ],
+    tips: [
+      "fly secrets set 会更新该 App 下各 Machine（伴随重启与临时文件系统重置）；可用 --stage 只写入 vault、延后到下次启动/更新再生效",
+      "与 fly-io-deploy-machines-brief / vercel-env-vars-config-secret-brief 不同：本条是 Fly 应用级保险库注入，不是 deploy 策略，也不是 Vercel Env 面板",
+    ],
+    approach: `应用已经能 fly deploy，但数据库连接串仍写在镜像或聊天记录里——或 set 了 Secret 却马上全量重启打断流量。
+
+Fly.io Docs《Secrets and Fly Apps》（dateModified 可核）说明：可用 fly secrets 为 Fly App 指定密钥；敏感值经加密存入 vault，并在该 App 下每个 Machine（无论是否由 Fly Launch 管理）运行时作为环境变量可用。非敏感值也可放进 secrets，同样以环境变量注入。构建镜像所需密钥见 Build secrets，与运行时 secrets 分开。架构上：经 flyctl 设置时，值经 API 写入应用 vault；API 服务器只能加密、不能解密；密钥值不会被记录。启动 Machine 时平台向宿主机签发临时令牌，由主机上的 agent 解密并在启动时注入环境变量；销毁 Machine 后主机不再能访问这些密钥。文档警告：平台设计阻止经 flyctl/API 直接导出用户密钥，但应用代码仍能读环境变量——拥有部署权限的人可部署读 Secret 打日志或写入未加密存储的代码。工作流包括 fly secrets set（更新 Machine，导致重启与临时盘重置）、--stage（只更新 vault，延后到之后启动/更新的 Machine）、fly secrets list（显示名称与摘要/时间，不显示明文）以及 unset；并支持将密钥挂载为文件。本场景据此输出密钥配置简报。禁止回显明文 Secret 或声称「生产已轮换完成」。`,
+    outcomes: [
+      "源未披露量化「凭据泄漏下降」；公开文只描述 vault、注入时机、set/--stage 与部署者风险。",
+      "能把「明文进镜像 / set 触发意外重启 / 与 deploy 流程或 Vercel Env 混淆」拆开。",
+      "为运行时密钥轮换提供可落地的操作提问清单。",
+    ],
+    caveats: [
+      "Build secrets 与运行时 secrets 路径不同；构建期需求另见专页。",
+      "挂载为文件的具体语法以同页后续章节为准。",
+      "上面写的是产品机制，不是你 App 下现有 Secret 名称列表的值。",
+    ],
+    prompts: [
+      {
+        title: "Fly.io Secrets 配置简报",
+        body: `你是 Fly.io Secrets 助手。只给保险库与注入核对简报，不要编造已设置成功。
+
+应用/进程摘要：{{app_brief}}
+变量名列表（不要给值）：{{var_names}}
+是否希望延后滚动：{{defer_rollout}}
+是否构建期也需要：{{need_build_secret}}
+
+输出 Markdown：
+1. 运行时 secrets vs Build secrets
+2. set 重启影响 vs --stage
+3. list 可见信息与部署者风险
+4. 非生产验收步骤
+禁止索要或回显明文 Secret；禁止代 unset 生产项。`,
+      },
+      {
+        title: "Secret 轮换/泄漏应急提纲",
+        body: `需要轮换 DATABASE_URL 或怀疑 Secret 进入日志，请写应急提纲。
+
+动机：{{reason}}
+是否可接受重启：{{restart_ok}}
+暴露面摘要：{{exposure}}
+
+输出：
+1. 是否先 --stage 再滚动
+2. 是否立即 unset 旧名/改名
+3. 如何避免再经应用日志打出
+4. 人工验证顺序
+不要伪造「泄漏已消除」；不要索要明文。`,
+      },
+    ],
+    primarySource: {
+      url: "https://fly.io/docs/reference/secrets/",
+      label: "Fly.io Documentation · Secrets and Fly Apps",
+      date: "2026-10-15",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
