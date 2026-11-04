@@ -49,6 +49,12 @@ export const categories: Category[] = [
     description: "审批、知识库、客服与跨部门流程",
     icon: "🏢",
   },
+  {
+    slug: "security",
+    name: "安全防护",
+    description: "权限边界、提示注入与 Agent 出站控制",
+    icon: "🔒",
+  },
 ];
 
 export function getCategory(slug: string): Category | undefined {

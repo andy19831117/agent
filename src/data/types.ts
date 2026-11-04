@@ -6,7 +6,8 @@ export type CategorySlug =
   | "education"
   | "life"
   | "devtools"
-  | "enterprise";
+  | "enterprise"
+  | "security";
 
 export type PlatformSlug =
   | "wechat"
@@ -26,7 +27,8 @@ export type PlatformSlug =
   | "grok"
   | "coze"
   | "dify"
-  | "n8n";
+  | "n8n"
+  | "github";
 
 export interface Category {
   slug: CategorySlug;

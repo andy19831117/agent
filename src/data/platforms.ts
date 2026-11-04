@@ -19,6 +19,7 @@ export const platforms: Platform[] = [
   { slug: "coze", name: "扣子 Coze", kind: "builder" },
   { slug: "dify", name: "Dify", kind: "builder" },
   { slug: "n8n", name: "n8n", kind: "builder" },
+  { slug: "github", name: "GitHub", kind: "builder" },
 ];
 
 export function getPlatform(slug: string): Platform | undefined {
