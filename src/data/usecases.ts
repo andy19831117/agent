@@ -19481,6 +19481,450 @@ Copilot 计价变化后改 Claude Code，并采用 nWave 插件：七波 Discove
       dateLabel: "发布",
     },
   },
+  {
+    id: "361",
+    slug: "outside-sales-telegram-claude-sheets",
+    title: "外勤销售：Telegram+Claude 工具调用，Sheets 当轻量 CRM",
+    summary: "对照个人实践：车里用 Telegram 聊日历/Gmail/Sheets 管线；Gmail 草稿存记忆、承诺扫描与路线优化；不代你无人值守发客触达、不外推成交率。",
+    description:
+      "面向在停车场切 App 的外勤销售：把「再装一个 CRM」写成可对账的 tool-use+Sheets 管线+主动晨览，区别于独享支持邮箱分诊与收件发票分职。",
+    categories: [
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://dev.to/cpdelisiservicespng/how-i-built-an-ai-personal-assistant-for-outside-sales-with-claude-nodejs-and-telegram-1fna",
+    sourceLabel: "dev.to·cpdelisiservices-png 外勤销售实践帖",
+    upvotes: 252,
+    trending: false,
+    tags: [
+      "外勤销售",
+      "Telegram",
+      "Claude tool-use",
+      "Google Sheets CRM",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴当日行程渠道、邮件/日历账号边界，以及是否允许主动推送晨览与提醒",
+      "Agent 按实践帖输出：工具清单（日历/Gmail/Sheets/Contacts/路线）→ 记忆落点 → 承诺扫描与人审边界提问清单",
+      "人工保留报价答复与改约决策；Agent 不代你声称已提高成交率、不伪造已自动回客户",
+    ],
+    tips: [
+      "源帖关键：不写意图 if-else，用工具 JSON schema 让模型选型；Sheets 当可视化轻量 CRM",
+      "与 dominic-support-email-classify-escalate / kevin-welter-frieda-anton-inbox-invoices 不同：本条是外勤销售车机 Telegram+Sheets 管线，不是支持邮箱分类防火墙或收件发票分职",
+    ],
+    approach: `dev.to 作者 cpdelisiservices-png 在《How I Built an AI Personal Assistant for Outside Sales with Claude, Node.js, and Telegram》（JSON-LD datePublished 2026-03-24 → 2026-03-24）写明：外勤销售在预约间隙要同时看日历、回邮件、记 CRM、规划路线，常在四五个 App 间切换，漏记 follow-up。解法是单一聊天入口：Telegram（或 Web 聊天）→ Node.js/Express → Claude tool-use → Google Calendar/Gmail/Sheets/Contacts，另接 OpenRouteService 做路线。
+
+不写意图路由 if-else：工具以 JSON schema 声明，模型按话术选型，例如「Johnson Electric 回过报价吗」触发 search_email。Sheets 每行一线索（公司/联系人/状态/金额/下一步/备注），Claude 直读写。记忆用带特定标签的 Gmail 草稿存 JSON，启动加载、更新覆盖——零额外库。承诺扫描周期检查已发邮件里的「答应发送/跟进/约时间」表述并入跟踪表。日程满时按日历地址算驾驶顺序与耗时。定时任务推晨览、会前约 30 分钟提醒与周管线回顾。作者称典型对话约 90 秒完成原先约五分钟的切 App；运行数月后打包成可自托管模板。本场景据此输出「外勤销售 tool-use 管线」提纲。禁止建议无人值守自动向客户发报价或改约。`,
+    outcomes: [
+      "源披露约 90 秒对话对照原先约五分钟切 App、以及数月自用后打包模板的定性体验，未给成交率或省时百分比；属作者个人窗口，不可外推为你的线索转化或月费 ROI。",
+      "能把「再买一个外勤 CRM」与「Telegram 入口 + tool schema + Sheets 管线 + Gmail 草稿记忆」拆开。",
+      "为承诺扫描误报、Sheets 并发脏写与主动推送打扰提供提问清单。",
+    ],
+    caveats: [
+      "晨览/提醒会打扰；承诺扫描会漏或误提——系统不自动提高成交。",
+      "Gmail/Calendar/Sheets 权限面要按自己环境收紧；文非安全审计。",
+      "上面写的是个人 DEV 实践帖与可售模板叙事，不是 Telegram 或 Anthropic 官方产品文档。",
+    ],
+    prompts: [
+      {
+        title: "外勤销售 tool-use 简报",
+        body: `你是外勤销售助手设计顾问。只根据用户约束写提问清单，不要编造已上线。
+
+入口渠道：{{chat_channel}}
+日历/邮件：{{calendar_mail}}
+管线表：{{crm_sheet}}
+是否允许主动推送：{{allow_proactive}}
+
+输出 Markdown：
+1. 工具 schema 清单（读/写边界）
+2. 记忆落点选项与人可编辑要求
+3. 承诺扫描与改约/发客的人审闸
+4. 人工日审清单
+禁止建议无人值守自动发报价；禁止声称已提高成交率。`,
+      },
+      {
+        title: "Sheets 管线被写乱复盘提纲",
+        body: `用户反馈线索状态被助手写错行，请写复盘提纲。
+
+最近对话摘录：{{thread}}
+Sheets 列定义：{{columns}}
+
+输出：
+1. 是工具缺主键、并发写，还是提示未要求先读后写
+2. 最小修复（schema+确认步）
+3. 回滚脏行步骤
+4. 人工确认清单
+不要伪造「管线已自动洁净」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/cpdelisiservicespng/how-i-built-an-ai-personal-assistant-for-outside-sales-with-claude-nodejs-and-telegram-1fna",
+      label: "dev.to · How I Built an AI Personal Assistant for Outside Sales with Claude, Node.js, and Telegram",
+      date: "2026-03-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "362",
+    slug: "flux-run-budget-llm-router",
+    title: "Flux：按 Agent run 共享预算的自托管 LLM 路由",
+    summary: "对照个人实践：把计费单位从单请求改成 run ID；70/90/100 降级启发式与断路器；披露 n=7 粗测与路由表错排；不代你保证省 80%、不外推生产账单。",
+    description:
+      "面向 Agent 账单失控的独立开发者：把「再换一个按请求路由」写成可对账的 run 级预算+降级策略，区别于最便宜模型 CRM 路由器与平台账单仪表盘。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://flux-llm.com/blog/show-hn/",
+    sourceLabel: "flux-llm.com·Vandith BC Show HN 实践帖",
+    upvotes: 253,
+    trending: false,
+    tags: [
+      "LLM 路由",
+      "run 预算",
+      "Agent 成本",
+      "自托管代理",
+      "独立开发",
+    ],
+    howItWorks: [
+      "粘贴现有代理/网关、单次任务预算上限，以及触顶后要降级、硬停还是人审",
+      "Agent 按实践帖输出：run ID 传播点→质量地板→70/90/100 启发式→断路器提问清单",
+      "人工保留路由表对账与生产金钥边界；Agent 不代你声称已省下固定百分比账单",
+    ],
+    tips: [
+      "源帖诚实：n=7 只是健全性检查；独立审计已发现路由表两处错排",
+      "与 cheapest-model-router-crm-email / 纯 OpenRouter 账单盘不同：本条是 run 共享预算+随已花费变严的选模，不是单请求最便宜路由",
+    ],
+    approach: `Vandith BC 在《Show HN: Flux, a self-hosted LLM router with per-agent-run budgets》（页内 Published Sep 1, 2026；JSON-LD datePublished 2026-09-01 → 2026-09-01）写明：常见路由与成本控制按「单次请求」切；仪表盘只有可见性，硬表一到额度就掐。包装型调用难预判难度；Agent 会重试、生子 Agent，单请求看不到整段花费。Flux 把控制单位改成 run：同 run ID 的调用与子 Agent 共享预算，下一跳能花多少取决于本 run 已花多少。
+
+自托管、OpenAI 兼容代理。包装调用选「够用且更便宜」的模型；Agent run 则按剩余预算收紧。启发式：0–70% 常规路由，70% 起偏便宜，90% 激进省，100% 硬停——作者自认非最优，求反馈。路由表来自公开基准：先过任务质量地板，再按成本排序，预算越紧越成本敏感。作者披露：7 条 live agentic-eval 相对纯 Sonnet 4.6 基线成本约降 80–90% 且评估分接近，但明确 n=7 不配小数精度、不是统计显著基准；更大 fixture 结果因与路由表同源视为循环不作证据。更有用的实测：父 Agent+两子 Agent 天气/空气质量任务，21 步真实 HTTP/Mistral，run ID 贯穿，总花费 $0.04416；过程中修过 tool-message 与跨厂商 tool-call 格式；强制 OpenAI 失败时一跳切 Claude，连续五次失败后断路器绕开。独立审计指出两处错排（如推理与代码评审排序与公开分不符）。开源 tryflux 可试路由侧。本场景据此输出「run 级预算路由」提纲。禁止把 80–90% 写成对你账单的承诺。`,
+    outcomes: [
+      "源披露 n=7 约 80–90% 成本区间、$0.04416/21 步多 Agent 实测，以及路由表两处已知错排；属作者小样本窗口，不可外推为你的生产账单或质量 SLA。",
+      "能把「按请求选最便宜模型」与「run ID 共享预算 + 随已花费收紧 + 断路器」拆开。",
+      "为触顶策略（降级/硬停/人审）与跨厂商 tool-call 翻译故障提供提问清单。",
+    ],
+    caveats: [
+      "完整 Flux 付费未公开；tryflux 只覆盖路由演示侧。",
+      "路由表会错排；基准分不等于你的任务质量。",
+      "上面写的是作者 Show HN/工程博客，不是某云厂商官方计费文档。",
+    ],
+    prompts: [
+      {
+        title: "run 级预算路由简报",
+        body: `你是 Agent 成本治理助手。只根据用户约束写提问清单，不要编造已上线。
+
+现有网关：{{gateway}}
+单 run 预算：{{budget_usd}}
+触顶策略偏好：{{on_budget_exhaust}}
+质量地板：{{quality_floor}}
+
+输出 Markdown：
+1. run ID 如何传入父/子 Agent
+2. 降级档位表（可改启发式）
+3. 断路器与人工审批点
+4. 人工对账清单（路由表 vs 公开基准）
+禁止声称已为用户省下固定百分比；禁止建议把生产金钥绑到未审计代理。`,
+      },
+      {
+        title: "子 Agent 未继承预算复盘提纲",
+        body: `父任务预算未超，子 Agent 却打满高价模型，请写复盘提纲。
+
+调用日志摘录：{{logs}}
+期望 run ID：{{run_id}}
+
+输出：
+1. 是未传 run ID、子进程另开账户，还是路由忽略预算状态
+2. 最小修复
+3. 回归检查项
+4. 人工确认清单
+不要伪造「账单已自动冲正」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://flux-llm.com/blog/show-hn/",
+      label: "flux-llm.com · Show HN: Flux, a self-hosted LLM router with per-agent-run budgets",
+      date: "2026-09-01",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "363",
+    slug: "alejandro-newsletter-claude-code-pipeline",
+    title: "Alejandro：Claude Code 五段流水线，把周刊从数小时压到可编辑草稿",
+    summary: "对照咨询实践：三名温哥华客户用 Claude Code 跑选题排序→摘要→站外 HTML→订户同步→表现回看；一客户约 5h→45min 且仍人审；不代你无人群发、不外推打开率。",
+    description:
+      "面向周更 Newsletter 的独立作者/顾问：把「再雇写手」写成可对账的五段 Claude Code 管线+人审编辑，区别于晨报 OS 与演示证据流水线。",
+    categories: [
+      "efficiency",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://alejandroarce.com/blog/claude-code-newsletter-automation-workflow/",
+    sourceLabel: "alejandroarce.com·Alejandro Arce 实践帖",
+    upvotes: 254,
+    trending: false,
+    tags: [
+      "Newsletter",
+      "Claude Code",
+      "内容管线",
+      "独立顾问",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴周更栏目、信源边界、邮件平台，以及是否允许自动发信/订户 API 写入",
+      "Agent 按实践帖输出：五段步骤（选题排序→草稿→站外 HTML→订户同步→表现）与每段人审闸",
+      "人工保留选题勾选与最终发出；Agent 不代你声称打开率已提升",
+    ],
+    tips: [
+      "源披露一客户约 5 小时→约 45 分钟，且「每稿仍人审」——自动化的是研究与排版，不是无人值守群发",
+      "与 tobias-personal-os-n8n-morning-brief / simon-showboat-demo-evidence 不同：本条是周刊五段内容管线，不是晨报 OS 或演示证据",
+    ],
+    approach: `Alejandro Arce 在《How to Automate Newsletter Workflows with Claude Code》（页内 August 26, 2026；JSON-LD datePublished 2026-08-26 → 2026-08-26）写明：过去约六个月为三名温哥华客户（B2B SaaS 周刊、本地房产、双月思想领导力）搭 Newsletter 自动化；共性痛点是每期制作约 4–6 小时，导致燃尽或不稳定更新。
+
+他把流程拆成五段：① 选题/素材排序（脚本给候选并写入 Google Sheet，人勾选）；② 摘要与草稿（仍保留语气与个人观点的人审）；③ 在邮件平台外生成套模板的生产级 HTML，再一次粘贴；④ 订户同步（如表单→ConvertKit 分段，一例每日约 7AM 跑约 10 秒）；⑤ 发送后拉表现写入 Sheet 并做周摘要。作者强调编辑控制仍在人：一客户周产从约五小时降到约 45 分钟，但每稿仍编辑。本场景据此输出「Newsletter 五段 Claude Code 管线」提纲。禁止建议无人值守向全表发信或伪造打开率。`,
+    outcomes: [
+      "源披露三客户实践窗口、一客户约 5 小时→约 45 分钟且仍人审每稿，未给打开率或订阅增长百分比；属作者客户窗口，不可外推为你的邮件 ROI。",
+      "能把「再雇写手/在 Mailchimp 里手排 45 分钟」与「Sheet 选题 + 站外 HTML + 人审发出」拆开。",
+      "为信源越界、模板漂移与误同步订户提供提问清单。",
+    ],
+    caveats: [
+      "研究/摘要步会引入过时事实——发出前必须人审。",
+      "订户 API 与 HTML 兼容因 ESP 而异；文非某邮件平台官方指南。",
+      "上面写的是顾问个人实践帖，不是 Anthropic 或 ESP 官文。",
+    ],
+    prompts: [
+      {
+        title: "Newsletter 五段管线简报",
+        body: `你是 Newsletter 工作流顾问。只根据用户约束写提问清单，不要编造已上线。
+
+周更栏目：{{sections}}
+允许信源：{{allowed_sources}}
+邮件平台：{{esp}}
+是否允许自动发信：{{allow_send}}
+
+输出 Markdown：
+1. 五段步骤与每段人审闸
+2. Sheet/选题勾选与「Generate Draft」边界
+3. 站外 HTML 模板字段清单
+4. 人工发出前检查
+禁止建议无人值守群发；禁止声称已提高打开率。`,
+      },
+      {
+        title: "草稿引用过期数据复盘提纲",
+        body: `读者指出上期数据已过期，请写复盘提纲。
+
+问题段落：{{paragraph}}
+研究会话/脚本日志：{{research_log}}
+
+输出：
+1. 是信源过期、未二次核验，还是编辑轮跳过
+2. 最小修复（信源日期闸）
+3. 勘误与下期预防
+4. 人工确认清单
+不要伪造「数据已自动刷新」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://alejandroarce.com/blog/claude-code-newsletter-automation-workflow/",
+      label: "alejandroarce.com · How to Automate Newsletter Workflows with Claude Code",
+      date: "2026-08-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "364",
+    slug: "wes-sander-personal-agent-trifecta",
+    title: "Wes Sander：个人 Agent 三要素规则 + PreToolUse 硬闸",
+    summary: "对照个人实践：私有数据×不可信内容×出站通道「三要素」同任务禁止；规则是建议、hooks 才是执法；审计一次抓 28 项；不代你免疫越权、不外推合规认证。",
+    description:
+      "面向自建个人 Agent 的独立开发者：把「再加一层提示词护栏」写成可对账的三要素隔离+harness hooks 执法，区别于无入站架构、专业 Agent 波次与 Nick Tune hooks 工作流引擎。",
+    categories: [
+      "security",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://www.practicalsystems.io/blog/how-i-hardened-a-personal-ai-agent",
+    sourceLabel: "practicalsystems.io·Wes Sander 实践帖",
+    upvotes: 255,
+    trending: false,
+    tags: [
+      "个人 Agent",
+      "安全",
+      "三要素",
+      "PreToolUse hooks",
+      "提示注入",
+    ],
+    howItWorks: [
+      "粘贴 Agent 可触达的私有数据面、是否读取外站/邮件正文，以及是否有出站写权限",
+      "Agent 按实践帖输出：三要素组合表→须升格为 hook 的规则→高风险动作人审清单",
+      "人工保留密钥与出站确认；Agent 不代你声称已通过安全认证",
+    ],
+    tips: [
+      "源帖核心：任意两要素可同任务，三要素齐必须拆任务且出站等人审；「写在 md 里」不够，PreToolUse 才能硬否",
+      "与 windmill-no-ingress-agent / lighthouse-nwave / nick-tune-hooks 不同：本条是个人 Agent 三要素威胁模型+执法层，不是无入站、七波专业 Agent 或 hooks-as-workflow 引擎",
+    ],
+    approach: `Wes Sander（Practical Systems）在《How I Hardened a Personal AI Agent That Reads My Email, Files, and Desktop》（页内 September 7, 2026；JSON-LD datePublished 2026-09-07 → 2026-09-07）写明：给 Agent 邮箱/文件/屏幕后，真正危险是「同一会话读到攻击者写的内容，再代你出站」。他压成一条高空规则：私有数据、不可信内容、出站通道——任意两种同任务可接受，三种齐必须停止并拆分，出站步等人看。
+
+执法分四层：① 成文规则（SECURITY.md 来自一次抓住 28 个问题的审计；AGENTS.md 等）——必要但不够，因仍经模型决定是否遵守；② PreToolUse 类 hooks：工具真正执行前由脚本硬否，模型无投票权；③ 技能默认优先一等方，第三方先扫；④ 记忆来源与过期规则。文中点名四类注入形态（直接指令、编码载荷、拼写扰乱、角色扮演包装），并强调「读到的一律当数据不当命令」。本场景据此输出「个人 Agent 三要素硬化」提纲。禁止建议跳过人审绑定生产出站，或把本文当成合规认证。`,
+    outcomes: [
+      "源披露三要素规则、四层防御与一次审计抓住 28 项问题的定性实践，未给渗透通过率或合规证书；属作者个人安全窗口，不可外推为你的零事故或认证证明。",
+      "能把「再加一层 system prompt」与「三要素隔离 + hooks 硬否 + 出站人审」拆开。",
+      "为「读信+跟链+代发」同任务、确认疲劳与 hook 缺口提供提问清单。",
+    ],
+    caveats: [
+      "日志与 hook 输入可能含敏感元数据，需按自己隐私要求存放。",
+      "人审闸会被疲劳点击绕过——流程要考虑确认疲劳。",
+      "上面写的是个人工程实践帖，不是某云安全官文或认证标准。",
+    ],
+    prompts: [
+      {
+        title: "个人 Agent 三要素简报",
+        body: `你是个人 Agent 安全顾问。只根据用户约束写提问清单，不要编造已上线。
+
+私有数据面：{{private_data}}
+不可信输入源：{{untrusted_sources}}
+出站通道：{{outbound_channels}}
+现有 hooks：{{hooks}}
+
+输出 Markdown：
+1. 三要素组合表（允许/禁止/须拆任务）
+2. 须从「写在 md」升格为 PreToolUse 硬否的规则
+3. 出站人审清单
+4. 人工周审清单
+禁止声称已通过渗透或合规认证；禁止建议默认全开出站。`,
+      },
+      {
+        title: "三要素同任务越权复盘提纲",
+        body: `助手在同一任务中读了邮件链接并尝试代发，请写复盘提纲。
+
+任务日志摘录：{{logs}}
+当时规则/hooks：{{policy}}
+
+输出：
+1. 是规则仅写在 md、hook 未覆盖，还是人审被绕过
+2. 最小修复（拆任务+硬否）
+3. 撤销/致歉步骤
+4. 人工确认清单
+不要伪造「已自动撤回全部外发」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.practicalsystems.io/blog/how-i-hardened-a-personal-ai-agent",
+      label: "practicalsystems.io · How I Hardened a Personal AI Agent That Reads My Email, Files, and Desktop",
+      date: "2026-09-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "365",
+    slug: "clickhouse-groeneai-autonomous-contributor",
+    title: "ClickHouse：GroeneAI 自治贡献者，复现 CI 并跟人审合入",
+    summary: "对照团队工程案例：Nerve 上 7×24 复现失败、起草修复、跟 CI/评审；披露至约 2026-10 合并逾 3000 PR、三月窗口提交量第二；人不选活但人审合入；不代你无人合主干、不外推缺陷密度。",
+    description:
+      "面向想用 Agent 贡献开源/内部仓的团队：把「再雇实习生盯红建」写成可对账的自治调查+起草 PR+维护者评审，区别于演示证据流水线与无入站 Agent。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://clickhouse.com/blog/meet-groeneai-our-autonomous-contributor-to-clickhouse",
+    sourceLabel: "clickhouse.com·Engineering 案例",
+    upvotes: 256,
+    trending: false,
+    tags: [
+      "自主 Agent",
+      "CI",
+      "开源贡献",
+      "PR 人审",
+      "团队工程",
+    ],
+    howItWorks: [
+      "粘贴目标仓权限边界、CI 失败类型，以及是否允许 Agent 直接 push/自批",
+      "Agent 按实践帖输出：失败入队→隔离复现→PR 生命周期→维护者评审闸提问清单",
+      "人工保留合并按钮与密钥；Agent 不代你声称缺陷密度已下降",
+    ],
+    tips: [
+      "源帖：人选工作常由 Agent 自取；人的介入从 review 开始；后续改实现/rebase/回评审亦自治",
+      "与 simon-showboat-demo-evidence / lighthouse-nwave 不同：本条是仓库级自治 CI/缺陷贡献者，不是演示证据 CLI 或专业 Agent 七波",
+    ],
+    approach: `ClickHouse 工程博客《Meet GroeneAI: our autonomous contributor to ClickHouse》（作者 James Cunningham、Artem Brustovetskii、Alex Soffronow Pagonidis；页内 Oct 29, 2026；JSON-LD datePublished 2026-10-29 → 2026-10-29）写明：自 2026-03 起，仓库里「与你无关却让 CI 红」的调查常由 GroeneAI 承担——自治复现失败、写测与修复、开 PR，并跟 CI 与评审；Groene 荷兰语「绿」，目标是保持 CI 绿。首次 issue 约 3 月 25 日，约 72 分钟后首个 PR。
+
+运行时基于开源 Nerve（持久会话、记忆、工具、调度）；工作主要来自 CI、fuzzer 与用户报告，维护者也可用一条评论交办。人的介入通常从 review 开始：接受或改向。Agent 会回评审意见、改实现、rebase，并跨会话保留调查状态；记忆存根因、失败路径与评审反馈。至 2026-10，文称已向 ClickHouse 贡献逾 3000 个已合并 PR；截至 10 月 19 日的约三个月窗口，按 authored non-merge commits 排第二（仅次于 CTO Alexey Milovidov）。文中用 6 月 query condition cache 误记空区间等案例说明「看似 flaky、实则可稳复现」的调查价值。本场景据此输出「自治 CI 贡献者」提纲。禁止建议绕过 CODEOWNERS 或自动合并主干。`,
+    outcomes: [
+      "源披露逾 3000 已合并 PR、三月窗口提交量第二、首 issue 后约 72 分钟首 PR 等团队窗口数字，以及人审合入边界；属 ClickHouse 仓库窗口，不可外推为你的仓质量或人力节省。",
+      "能把「再雇实习生盯红建」与「隔离复现 + 起草 PR + 维护者评审」拆开。",
+      "为权限过宽、错误补丁扩散与自动合并风险提供提问清单。",
+    ],
+    caveats: [
+      "自治 Agent 可能提出看似过测但语义错误的补丁——人审不可省。",
+      "CI/密钥隔离与 Nerve 部署因仓而异；文非通用安全基线。",
+      "上面写的是团队 engineering case，不是产品功能官文简报堆砌。",
+    ],
+    prompts: [
+      {
+        title: "自治 CI 贡献者简报",
+        body: `你是工程效率顾问。只根据用户约束写提问清单，不要编造已上线。
+
+目标仓：{{repo}}
+Agent 权限：{{agent_perms}}
+合并策略：{{merge_policy}}
+
+输出 Markdown：
+1. 失败入队与复现环境边界
+2. 分支命名与禁 push 主干规则
+3. CODEOWNERS/人审闸
+4. 人工周审清单
+禁止建议自动合并主干；禁止声称缺陷密度已下降。`,
+      },
+      {
+        title: "错误 PR 合入复盘提纲",
+        body: `Agent 起草的 PR 被误合并导致回归，请写复盘提纲。
+
+PR 摘要：{{pr}}
+CI 当时状态：{{ci_status}}
+
+输出：
+1. 是测试缺口、人审疲劳，还是权限允许自批
+2. 最小修复与回滚
+3. 门禁加严项
+4. 人工确认清单
+不要伪造「回归已自动消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://clickhouse.com/blog/meet-groeneai-our-autonomous-contributor-to-clickhouse",
+      label: "clickhouse.com · Meet GroeneAI: our autonomous contributor to ClickHouse",
+      date: "2026-10-29",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
