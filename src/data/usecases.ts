@@ -23021,6 +23021,453 @@ MCP 权限：{{mcp}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "401",
+    slug: "max-mucko-saturday-handoff-blog-pr",
+    title: "Max：周六 06:00 起床前——Obsidian handoff 起草博客并开 PR",
+    summary: "对照一人多项目写作：日更 handoff 作料，周六 Claude Code Routine 开草稿 PR；披露约 12 次会话搭成、约 1/3 草稿不可用、审改约 5–15 分钟、未合并超 30 天自暂停；不代你产量、不外推。",
+    description:
+      "面向有全职/育儿日程却仍想公开写作的建造者：把「周六硬挤一篇」写成可对账的 launchd 预同步+反吹嘘规则+人手合并门禁，区别于 indie 晨间日跑 Schedule 与 MCP 机械发博客。",
+    categories: [
+      "content",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://mmucko.com/writing/saturday-content-engine",
+    sourceLabel: "mmucko.com·Max Mucko 个人实践帖",
+    upvotes: 292,
+    trending: false,
+    tags: [
+      "内容引擎",
+      "Obsidian handoff",
+      "Claude Code Routine",
+      "草稿 PR",
+      "人在环",
+    ],
+    howItWorks: [
+      "粘贴 handoff 路径约定、周六触发时刻，以及是否禁止自动部署/跨平台转发",
+      "Agent 按实践帖输出：日更 handoff→05:00 预同步→06:00 起草开 PR→反吹嘘与 30 天暂停提问清单",
+      "人工保留合并、改写与外发；Agent 不代你声称博客已无人值守连更",
+    ],
+    tips: [
+      "源帖：draft 旗默认 true；约三分之一草稿需重写或杀掉；积压未合并超 30 天则通知并自暂停",
+      "与 kanta-daily-indie-claude-schedule / scriptxeno-blog-mcp-claude-publish 不同：本条是周末从 handoff 开博客草稿 PR，不是晨间研发七步或人写正文+MCP 发布",
+    ],
+    approach: `Max Mucko 在个人博客《How my Saturday blog posts get written before I wake up》（页内 April 26, 2026；meta article:published_time 2026-04-26 → 2026-04-26；canonical mmucko.com）写明：周六 06:00 人还在睡，Mac 上 Claude Code Routine 读过去一周项目 handoff，就「本周实际做过的事」起草博文，并在 GitHub 开 PR；醒来咖啡前可见标题形如 Blog draft: <slug> 的待审改合并稿。整套约 12 次会话搭成。
+
+handoff 原为给「两天后的自己」留状态：落在 bambo/10_projects/<project>/handoffs/YY-MM-DD-HHMMSS-<topic>.md，含 frontmatter、已做/下一步、路径与当日失败；发现它几乎是现成博文料——口语、具体路径与决策、常被人跳过的 80% 细节。Routine 提示大意：从本周 handoff 抽一条线，按问题→试过→失败→奏效→教训写；禁句首「I built/shipped/launched」，标题禁 crushing it / shipped / building / journey；语气参考指定作者。
+
+日 05:00 launchd（约 14 行脚本）先把 Obsidian vault 最新 handoff rsync 进引擎仓、git pull、刷新项目状态后退出，避免 06:00 写作时再花时间拉状态。起草前读六源：近 7 日各项目 handoff、近 7 日 commit、Obsidian Now/Tasks/近会话、Claude Code 的 project_state/project_lessons、若有则 /last30days、以及当周 CLAUDE.md/skill 改动；周料稀薄则横向回看约 30 日写流程向主题。产出 content/blog/YYYY-MM-DD-<slug>.mdx、封面视觉 brief，以及 draft=true 的 PR（front matter/tags 预填）。作者手机早餐审、GitHub 网页改、翻 draft 旗再合并。踩坑：早期封面同质→双提示（封面 1.91:1 + 方形内嵌）写入 brief；PR 积压同角度重复→最旧未合并超 30 天则通知并自暂停、需人手恢复。成本：机=自有 Mac、Claude 计入 Max 包月增量约 0；上线后单篇审改约 5–15 分钟；约三分之一草稿不可用。明确不是自动发帖/自动转 LinkedIn·X。本场景据此输出「handoff→周六草稿 PR」提纲。禁止建议跳过合并门禁自动公开夸大宣传。`,
+    outcomes: [
+      "源披露约 12 次会话搭成、日 05:00 预同步+周六 06:00 开草稿 PR、约 1/3 草稿不可用、审改约 5–15 分钟、未合并超 30 天自暂停，以及非自动发帖等作者口径；属一人多项目写作叙事，不可外推为你的阅读量、SEO 或连更稳定性。",
+      "能把「周六硬挤一篇」与「日更 handoff 作料 + 反吹嘘规则 + 人手合并」拆开。",
+      "为封面同质、PR 积压同角度、以及误开 auto-deploy 提供提问清单。",
+    ],
+    caveats: [
+      "依赖本机 launchd 与习惯写 handoff；无会话笔记则引擎吃糠。",
+      "约三分之一草稿质量不够——人审不可省。",
+      "上面写的是 Max 个人实践帖，不是 Anthropic Routine 官文。",
+    ],
+    prompts: [
+      {
+        title: "handoff→博客草稿 PR 简报",
+        body: `你是一人写作自动化顾问。只根据用户约束写提问清单，不要编造已上线周六引擎。
+
+handoff 路径：{{handoff_path}}
+触发时刻：{{cron}}
+是否允许自动部署：{{auto_deploy}}
+
+输出 Markdown：
+1. handoff 最小字段与六源读取边界
+2. 反吹嘘规则与 draft PR 约定
+3. 积压暂停（如 30 天）与恢复门禁
+4. 人工审改/合并清单
+禁止建议无人值守公开发布；禁止声称产量可复现。`,
+      },
+      {
+        title: "草稿积压复盘提纲",
+        body: `Routine 连续开 PR 但未合并，新稿与旧稿同角度，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺暂停规则、源料未更新，还是人审队列断裂
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「内容引擎已永不撞车」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mmucko.com/writing/saturday-content-engine",
+      label: "mmucko.com · How my Saturday blog posts get written before I wake up",
+      date: "2026-04-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "402",
+    slug: "kenji-skills-completion-judge-gate",
+    title: "Kenji：kenji skills——「做完」由独立裁判说了算，Stop 钩拦半途",
+    summary: "对照一人多仓多工具：playbook + completion-judge + Stop 钩；披露 2.7.0 约 161 skills / 63 斜杠 / 6 子代理，三轮无进展放弃、清单 24h 未变忽略；不代你合入质量、不外推。",
+    description:
+      "面向 Agent 常半途或谎称完成的独立开发者：把「再催一句做完」写成可对账的完成条件+异体裁判+Stop 钩，区别于 skill 激活率沙箱评测与团队 Build/Gate/Ship 发版召回。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://kensaur.us/notes/kenji-skills/en/",
+    sourceLabel: "kensaur.us·Kenji Sakuramoto 个人实践帖",
+    upvotes: 293,
+    trending: false,
+    tags: [
+      "kenji skills",
+      "completion-judge",
+      "Stop hook",
+      "playbook",
+      "多工具",
+    ],
+    howItWorks: [
+      "粘贴使用的编码 Agent（Claude Code/Cursor/Codex/Gemini）、是否安装 Stop 钩，以及「完成」必须对照的计划/测例证据",
+      "Agent 按实践帖输出：五步 playbook→异体裁判 PASS/CONTINUE/BLOCKED→三轮放弃与 24h 僵清单提问清单",
+      "人工保留合入与发布；Agent 不代你声称假完成已根除",
+    ],
+    tips: [
+      "源帖：做事的 Agent 不得自裁「做完」；Codex/Gemini 装 skills/规则但无子代理与 Stop 钩",
+      "与 scott-skill-activation-daytona-evals / glide-slipstream-build-gate-ship 不同：本条是完成判定 playbook+Stop 钩，不是激活率沙箱评测或发版召回三门",
+    ],
+    approach: `Kenji Sakuramoto（ｋｅｎｓａｕｒｕｓ合同会社）在个人站实践帖《My agents kept saying “done” when they weren't, so I wrote the playbooks down》（页内 Published 2026.10.16；JSON-LD Article datePublished 2026-10-16 → 2026-10-16；dateModified 2026-11-02；canonical kensaur.us）写明：把活交给编码 Agent 后常半途停下，或口头「做完」其实没收尾；于是把步骤与「何谓做完」写成 playbook，逼 Agent 跟到尾——即 kenji skills（此处 skill=书面工作规程）。一人跑十余仓、跨多工具，希望发布/审计/修复套路一致。
+
+核心：做事的 Agent 不得自裁完成。completion-judge 是独立子代理，指令要求只裁判不改码，对照已批计划、diff 与新跑检查，答 PASS / CONTINUE / BLOCKED；缺证据即 CONTINUE。completion-gate.mjs 是 Stop 钩：仅在 complete-everything 或 burndown-full 跑时生效；清单仍有未关项则把 Agent 打回；连续三轮毫无关闭则放弃；清单 24 小时未变则忽略。钩装在 Claude Code 与 Cursor。playbook 统一五步。
+
+披露截至 2.7.0（2026-10-19）约 161 skills、63 斜杠命令、6 子代理；Claude Code 另有约 12 条自 Cursor 内置移植。自然语言如「修这个 bug 并交出去」会按描述匹配 skill；要指定就点名。安装：Node≥18，npx @kensaurus/skills --auto --dry-run 预览后再实装；--auto 探测本机工具。限制：Codex/Gemini 得 skills/规则但无子代理与 Stop 钩；部分规则偏 React/Next/Supabase；MIT（部分 Apache-2.0）。亦与开源报障工具 Mushi 串联：报告进修复跑、skills 带到 PR、人手合并。本场景据此输出「完成裁判门」提纲。禁止建议取消人手合入或把 PASS 当生产免审。`,
+    outcomes: [
+      "源披露 completion-judge 异体裁判、Stop 钩三轮放弃与 24h 僵清单忽略、2.7.0 约 161 skills / 63 斜杠 / 6 子代理，以及 Codex/Gemini 无 Stop 钩等作者口径；属一人多仓工具链叙事，不可外推为你的缺陷逃逸率、合入速度或跨栈通用性。",
+      "能把「再催一句做完」与「异体裁判 + Stop 钩 + 证据对照」拆开。",
+      "为自裁完成、钩未覆盖的工具、以及清单僵死空转提供提问清单。",
+    ],
+    caveats: [
+      "规则与示例偏作者 React/Next/Supabase 习惯，换栈需改写。",
+      "Stop 钩与子代理并非四工具齐备——Codex/Gemini 能力子集。",
+      "上面写的是 Kenji 个人开源实践帖，不是模型商官文评测。",
+    ],
+    prompts: [
+      {
+        title: "完成裁判门布置简报",
+        body: `你是编码 Agent 完成门禁顾问。只根据用户约束写提问清单，不要编造已安装 kenji skills。
+
+工具列表：{{tools}}
+是否装 Stop 钩：{{stop_hook}}
+完成证据：{{evidence}}
+
+输出 Markdown：
+1. playbook 五步最小字段
+2. 异体裁判 PASS/CONTINUE/BLOCKED 规则
+3. 三轮放弃与僵清单策略
+4. 人工合入清单
+禁止建议 Agent 自裁合入生产；禁止声称假完成已清零。`,
+      },
+      {
+        title: "假完成复盘提纲",
+        body: `Agent 声称完成但测例未跑、清单仍开，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺异体裁判、Stop 钩未触发，还是证据定义过宽
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「完成门已永不误放」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://kensaur.us/notes/kenji-skills/en/",
+      label: "kensaur.us · My agents kept saying “done” when they weren't",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "403",
+    slug: "dave-swift-claude-pdf-filler-skill",
+    title: "Dave：把重复填 PDF 收成 /pdf-filler skill——先读字段再回读校验",
+    summary: "对照自由职业/小业务表格：Claude Code 读可填字段、批量填、压平；披露同模板三人约三十秒、技能记住复用信息与分类追问；不代你合规、不外推。",
+    description:
+      "面向被 W-9/供应商表/理赔表点击地狱拖住的一人经营者：把「每会话重教一遍」写成可对账的读字段→填→回读→skill 固化，区别于多语发票 API 批处理与会计多智能体总账。",
+    categories: [
+      "efficiency",
+      "life",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://daveswift.com/fill-pdfs-claude-code-skills/",
+    sourceLabel: "daveswift.com·Dave Swift 个人实践帖",
+    upvotes: 294,
+    trending: false,
+    tags: [
+      "PDF 填表",
+      "Claude Code skill",
+      "W-9",
+      "批量",
+      "回读校验",
+    ],
+    howItWorks: [
+      "粘贴空白可填 PDF 类型、是否远程机（需同步）、以及是否允许记住姓名地址等复用字段",
+      "Agent 按实践帖输出：读字段清单→按名填入→回读校验→/pdf-filler 固化与扁平化提问清单",
+      "人工打开成品核对敏感号；Agent 不代你声称已满足税务/合规申报",
+    ],
+    tips: [
+      "源帖：优先要可填版本；扫描扁平 PDF 只能像素叠字，来回挪坐标很慢",
+      "与 robson-multilang-invoice-claude-api / soapbox-sheila-accounting-agents-md 不同：本条是个人可填表单 skill，不是多语发票或会计多智能体",
+    ],
+    approach: `Dave Swift 在个人站实践帖《Fill PDFs with Claude Code + Turn It Into a Skill》（页内 Mar 7, 2026；JSON-LD/meta article:published_time 2026-03-07 → 2026-03-07；canonical daveswift.com）写明：税表、供应商申请、保险理赔一类 PDF 在 Preview 里点选易漏项；客户一多更痛。做法是把空白表丢进目录，让 Claude Code 列出字段、按你给的数据填写并另存，再读回确认。
+
+示例以 IRS W-9：先 Read 列出 name/business/tax classification/address/SSN 或 EIN 等；再明确按字段名填充并 Save；再 Read 完成件核对。批量：同一模板一次给出多人名单，作者叙事同模板三人约三十秒级出多份到 ./completed/，全程不手点字段。远程机（如 Beelink）需先用 Syncthing/SCP/Remote 把文件同步到 Claude Code 工作目录。
+
+限制：无真实字段的扫描扁平 PDF 只能按像素叠字，常要「左移 10px / 字号 11」来回；作者建议先向对方要可填版。重复第三次「检查→匹配→追问→填写→压平」后，把流程写成 skill：/pdf-filler 一键跑通；技能可在首次后提议记住姓名地址等复用信息，后续只确认；不同表单字段名（First Name / Owner_First_Name / ParticipantFName）由技能对齐；无法自动填的字段按类分批问，最终输出锁定/压平 PDF 以免接收方错位。页内有赞助商区块与后续付费细拆——本条只用免费可见实践步骤与数字。本场景据此输出「PDF 填表 skill」提纲。禁止建议自动提交含伪造税号的申报或跳过人工核敏感字段。`,
+    outcomes: [
+      "源披露可填 PDF 读字段→按名填写→回读校验、同模板批量三人约三十秒级、以及 /pdf-filler 记住复用信息/分批追问/压平等作者口径；属个人表格自动化叙事，不可外推为你的申报合规、客户吞吐或远程同步可靠性。",
+      "能把「每会话重教填表」与「字段清单 + 回读 + skill 固化」拆开。",
+      "为扫描扁平 PDF 坐标拉扯、远程文件未同步、以及敏感号未人工复核提供提问清单。",
+    ],
+    caveats: [
+      "扁平/扫描件体验差；优先索取可填原件。",
+      "记住个人资料有隐私面——确认本地存储边界。",
+      "上面写的是 Dave 个人实践帖（页含赞助与付费续文），不是税务软件官文；数字以免费可见披露为准。",
+    ],
+    prompts: [
+      {
+        title: "PDF 填表 skill 简报",
+        body: `你是个人表格自动化顾问。只根据用户约束写提问清单，不要编造已上线 /pdf-filler。
+
+表单类型：{{form_type}}
+是否可填字段：{{fillable}}
+是否记住复用信息：{{remember}}
+
+输出 Markdown：
+1. 读字段→填写→回读最小步骤
+2. 批量目录与命名约定
+3. skill 固化与压平边界
+4. 人工核敏感字段清单
+禁止建议伪造税号或自动向政府门户提交；禁止声称已合规。`,
+      },
+      {
+        title: "错位/漏填复盘提纲",
+        body: `完成后接收方看到字段错位或漏填，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是扁平叠字、字段名未对齐，还是未回读/未压平
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「填表 skill 已零差错」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://daveswift.com/fill-pdfs-claude-code-skills/",
+      label: "daveswift.com · Fill PDFs with Claude Code + Turn It Into a Skill",
+      date: "2026-03-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "404",
+    slug: "brex-cursor-dual-agent-micronaut-migration",
+    title: "Brex：Cursor 双代理迁 Micronaut——一人月迁 180 服务，自称 32x",
+    summary: "对照企业框架大迁：生成代理开草稿 PR，校验代理盯 CI 最多自修 3 次；披露昔日 3 人一季约 50 服务 vs 后 1 人一月 180、人均约 32x、单服务成本约降 90%；不代你迁移 ROI、不外推。",
+    description:
+      "面向被框架升级拖死路线图的平台/基础团队：把「巨型万能迁移 Agent」写成可对账的双代理流水线+脚本/技能分工+三振出局与禁止自合入，区别于团队共享计划门与 Jira→特性环境六角色。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.brex.com/journal/agent-automations-for-big-migrations",
+    sourceLabel: "brex.com/journal·Brex 工程实践帖",
+    upvotes: 295,
+    trending: false,
+    tags: [
+      "Brex",
+      "Cursor 自托管",
+      "双代理",
+      "Micronaut 迁移",
+      "三振出局",
+    ],
+    howItWorks: [
+      "粘贴迁移范围（框架/服务数）、工单系统触发方式，以及自修次数上限与是否禁止自动合入",
+      "Agent 按实践帖输出：生成 vs 校验双代理→确定性脚本与 LLM 技能分工→三振与人审提问清单",
+      "人工保留合入与生产观测；Agent 不代你声称已达 32x 或成本降 90%",
+    ],
+    tips: [
+      "源帖：单巨提示+笔记本并行会幻觉并被睡眠断跑；测例/监控缺口会让「全绿」仍带运行时雷",
+      "与 vincent-team-shared-claude-code-flow / exante-codey-jira-feature-environment 不同：本条是框架大迁双代理流水线，不是共享插件计划门或六角色特性环境",
+    ],
+    approach: `Brex 工程在公司 Journal《Agent automations for big migrations: How we accelerated framework upgrades by 32x with Cursor》（JSON-LD Article datePublished 2026-07-22 → 2026-07-22；canonical brex.com/journal）写明：核心 Kotlin 框架 Micronaut 覆盖 500+ 微服务。第一轮（约 2025 中）三人专职一季，仅迁约 50 个 Micronaut 3→4，因 Bazel/OpenRewrite 不贴合、脚本只能改版本与 import，CI/部署/集成测与上下文相关改写仍靠人，后暂停。
+
+近一年后再启：先试「单一巨型 Agent」包揽改码+校验+修错，巨提示塞满边角——结果上下文过载幻觉、跳过校验门；且跑在笔记本连远程环境，睡眠/断网/开会即断环，人从调代码变成盯 AI。于是改成自托管 Cursor 自定义代理流水线，三点：①双代理——Linear 特定工单触发 PR Generation Agent（确定性脚本处理可预测语法 + LLM 做上下文重构，本地构建自修后开草稿 PR）；PR 打标后 Validation Agent 盯 CI、部署开发环境跑集成测，运行时/CI 错自动补丁，严格最多 3 次，系统性阻断则停并在 PR 评论交人。②混合——BUILD 翻转/依赖替换/YAML 等交给 buildozer 与 Python，Kotlin 源变换等进模块化 skills，瘦提示。③算力离开笔记本——专用节点、无头鉴权、内部 CLI 无交互。结果叙事：工程师傍晚可建约 20 张工单，次日看到待人审的草稿 PR；一人一个月迁 180 微服务，相对第一轮人均速度约 32x；相对专职工时，单服务迁移成本约降 90%。边界：禁止自动合入生产；不做跨框架万能提示；测例/监控缺口仍可能让「全绿」进生产后出细微运行时问题，文末在探观测 MCP/AI SRE 延伸。本场景据此输出「双代理大迁」提纲。禁止建议取消人审合入或无限自修烧预算。`,
+    outcomes: [
+      "源披露第一轮 3 人一季约 50 服务、后 1 人一月 180、人均约 32x、单服务成本约降 90%、校验自修上限 3 次且禁止自动合入等团队口径；属 Brex Micronaut 迁移叙事，不可外推为你的框架升级工期、缺陷率或财务 ROI。",
+      "能把「巨型万能 Agent」与「生成/校验双代理 + 脚本技能分工 + 三振」拆开。",
+      "为笔记本断跑、测例盲区漏运行时雷、以及无限自修烧钱提供提问清单。",
+    ],
+    caveats: [
+      "32x / 90% 为作者团队对照口径，非独立审计试验。",
+      "强绑定其 Micronaut/Bazel/Linear/自托管 Cursor 布局。",
+      "上面写的是 Brex Journal 工程实践，不是 Cursor 官文白皮书；生产仍需人审与观测。",
+    ],
+    prompts: [
+      {
+        title: "双代理迁移流水线简报",
+        body: `你是平台工程迁移顾问。只根据用户约束写提问清单，不要编造已达 32x。
+
+框架与服务规模：{{scope}}
+触发方式：{{trigger}}
+自修上限：{{attempts}}
+
+输出 Markdown：
+1. 生成 vs 校验代理分工
+2. 脚本/技能拆分原则
+3. 三振与人审合入门禁
+4. 观测与回滚提问清单
+禁止建议自动合入生产；禁止声称成本/速度数字可复现。`,
+      },
+      {
+        title: "全绿仍生产故障复盘提纲",
+        body: `迁移 PR 单测与集成测全绿，上线后出现细微运行时异常，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是测例缺口、校验代理范围不足，还是监控缺失
+2. 最小门禁补丁（含是否停迁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「双代理已消除全部运行时回归」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.brex.com/journal/agent-automations-for-big-migrations",
+      label: "brex.com/journal · Agent automations for big migrations (32x with Cursor)",
+      date: "2026-07-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "405",
+    slug: "dexter-schwarm-background-coding-agents",
+    title: "Dexter：Schwarm——关盖后仍跑的后台编码代理，worktree+手机可审",
+    summary: "对照小团队源到付：Linear/工单→节点 worktree 跑 Claude Code 开 PR；披露约 10s 收敛轮询、约 5min 扫冲突、Tailscale 预览与指令队列；刻意少推事件；不代你吞吐、不外推。",
+    description:
+      "面向关笔记本活就停、又不愿纯消防的小团队：把「终端里盯会话」写成可对账的 server/node+隔离 worktree+空闲时投喂指令，区别于共享插件计划门与框架大迁双代理。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://engineering.getdexter.co/2026/02/23/how-we-built-our-own-background-coding-agents",
+    sourceLabel: "engineering.getdexter.co·Dexter 工程实践帖",
+    upvotes: 296,
+    trending: false,
+    tags: [
+      "Schwarm",
+      "后台代理",
+      "git worktree",
+      "Linear",
+      "人在环",
+    ],
+    howItWorks: [
+      "粘贴工单来源（Linear/UI/定时）、节点类型，以及是否要求手机可开预览 URL",
+      "Agent 按实践帖输出：server/node 与 worktree 隔离→轮询收敛 vs 推事件→空闲 --resume 投喂与归档信号提问清单",
+      "人工保留合入；Agent 不代你声称夜间 PR 已免审可上",
+    ],
+    tips: [
+      "源帖：节点每约 10 秒问「该跑什么」做收敛，刻意不用主路径推事件；完成靠写归档信号文件",
+      "与 vincent-team-shared-claude-code-flow / brex-cursor-dual-agent-micronaut-migration 不同：本条是关盖后台编码+手机预览转向，不是共享计划门或框架大迁双代理",
+    ],
+    approach: `Vincent Garrigues 代表 Dexter（AI 源到付采购平台小团队）在工程博客《How We Built Our Own Background Coding Agents》（页内 February 23, 2026；meta/datetime 2026-02-23 → 2026-02-23；canonical engineering.getdexter.co）写明：日常已用 Claude Code 与 Codex，但关盖即停工。目标要异步默认、深嵌 Linear/定时、以及「环上的人」而非「键前的人」——手机也能看进度并追加指令。现成工具不齐，自建 Schwarm。
+
+结构：Rails 8 server（单 EC2，状态 SQLite，Litestream 每分钟复到 S3）管任务/项目/节点/排程；nodes（Mac 或 EC2）以 API key 注册，Ruby gem 轮询领任务。一任务一宇宙：自共享 clone 开 git worktree 到 ~/.schwarm/schwarm-<task-id>/；tmux 内跑带提示/skills/MCP 的 Claude Code；Tailscale 把应用曝成 https://schwarm-<task-id>.<tailnet>.ts.net 便于手机预览。同机可并行多任务互不踩文件。
+
+节点不做主路径 webhook：约每 10 秒问 server「该跑什么」并对齐本地；约每 30 秒心跳。作者称延迟换简单可靠，崩溃重启即再收敛。人从 Web UI 排队指令；节点见 Claude 空闲（hooks 写的 status.json）则杀 tmux 并以 --resume <session-id> "消息" 重开。GitHub 侧：约每 5 分钟扫合并冲突并下 rebase 指令；CI 失败/评审评论也可进同一 SessionDirective 管道（文中 CI 路径提及 webhook，但节点主循环仍是轮询）。任务来源：Linear 分配、Command Center UI、cron  recurring/shared agents；状态 draft→ready→claimed→archived，依赖用 TSort 防环。完成：Claude 写 $SCHWARM_ARCHIVE_SIGNAL，节点归档。GitHub token 每小时转、会话更长——节点约 10 秒刷新写入文件，git/gh 包装读文件。用途：小票开 PR、调研纪要、周一文档/无障碍审计等共享代理；主分支 CI 红也可自动派修复。本场景据此输出「后台编码代理」提纲。禁止建议取消人审合入或把预览 URL 暴露到公网无鉴权。`,
+    outcomes: [
+      "源披露 Schwarm server/node、每任务 worktree+Tailscale 预览、约 10s 收敛轮询与约 30s 心跳、约 5min 冲突扫描、空闲 --resume 投喂与归档信号文件等团队口径；属源到付小团队叙事，不可外推为你的 PR 吞吐、缺陷率或值守成本。",
+      "能把「终端盯会话」与「关盖节点 + 文件信号 + 人从手机转向」拆开。",
+      "为推事件丢单、token 过期中断长会话、以及预览链暴露面提供提问清单。",
+    ],
+    caveats: [
+      "自建 server/node/Tailscale 运维面不小；非开箱 SaaS。",
+      "文中个别 GitHub 事件仍走 webhook，但主控哲学是轮询收敛。",
+      "上面写的是 Dexter 工程实践帖，不是 Anthropic/Cursor 官文；作者强调人审仍在。",
+    ],
+    prompts: [
+      {
+        title: "后台编码代理布置简报",
+        body: `你是小团队后台代理顾问。只根据用户约束写提问清单，不要编造已上线 Schwarm。
+
+工单来源：{{sources}}
+节点类型：{{nodes}}
+是否手机预览：{{preview}}
+
+输出 Markdown：
+1. server/node 与 worktree 隔离
+2. 轮询收敛与心跳参数
+3. 空闲投喂与归档信号
+4. 人工合入与预览暴露面清单
+禁止建议公网裸奔预览或自动合入生产；禁止声称夜间 PR 免审。`,
+      },
+      {
+        title: "长会话中断复盘提纲",
+        body: `代理跑数小时后因凭证或节点重启丢掉上下文，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是 token 刷新、tmux/状态文件，还是任务未正确 claimed
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「后台代理已永不丢会话」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://engineering.getdexter.co/2026/02/23/how-we-built-our-own-background-coding-agents",
+      label: "engineering.getdexter.co · How We Built Our Own Background Coding Agents",
+      date: "2026-02-23",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
