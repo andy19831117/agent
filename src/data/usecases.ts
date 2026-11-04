@@ -19035,6 +19035,452 @@ CI 验证能力：{{ci_matrix}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "356",
+    slug: "tobias-personal-os-n8n-claude-todoist",
+    title: "Tobias：用 n8n+Claude 搭个人 OS，只对系统推来的任务起反应",
+    summary: "对照个人实践：Slack/Gmail 捕获→Sheet 缓冲→Claude Code MCP 建 Todoist→每日 7:30 Slack 晨览；不代你无人值守清空人生、不外推省心效果。",
+    description:
+      "面向记不住琐事的独立开发者：把「再开一个待办 App」写成可对账的捕获/处理/呈现三层，区别于一人 Operator OS 结构信任与教练 OS 产品。",
+    categories: [
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "n8n",
+      "claude",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://tobias-schaefer.com/blog/blog-post-personal-os/",
+    sourceLabel: "tobias-schaefer.com·Tobias Schäfer 实践帖",
+    upvotes: 244,
+    trending: false,
+    tags: [
+      "Personal OS",
+      "n8n",
+      "Todoist",
+      "MCP",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴捕获入口（Slack/邮件/语音）、任务库与晨览送达渠道",
+      "Agent 按实践帖输出：捕获→缓冲→半自动处理→表面呈现四层提问清单与角色分工（分类模型 vs 交互处理）",
+      "人工保留「auto all」以外的优先级判断；Agent 不代你声称已治好拖延、不伪造完成率",
+    ],
+    tips: [
+      "源帖关键：分类节点只输出结构化 JSON，禁止跟问或提建议，否则捕获层会变成聊天",
+      "与 saagar-operator-os-hub-spokes-trust / claus-silence-morning-brief / hank-exec-coaching-agent-os 不同：本条是 n8n 捕获+Sheet 缓冲+Claude/Todoist MCP 处理+Slack 晨览的个人 OS，不是结构不可达信任、晨报沉默规则或教练 OS",
+    ],
+    approach: `Tobias Schäfer 在《Personal OS: How I Automate My Tasks with n8n and Claude》（页内 February 20, 2026 → 2026-02-20）写明：居家开发者常忘琐事——倒垃圾、回信、预约、收衣服——不是动机问题而是系统问题。解法是外置个人 OS，做三件事：Capture（立刻倒出脑子）、Process（自动/半自动分类排序）、Surface（把该做的推到眼前）。原则：不必自己想「今天该干什么」，只对系统呈现的条目起反应。
+
+架构：Slack 机器人与 Gmail 经 n8n 写入 Google Sheet 缓冲，途中用 GPT 预分类（项目/优先级/是否重复/时长/标签），分类节点可查 Todoist MCP 真实项目 ID；每日用 Claude Code \`/process-inbox\` 读 Sheet、交互确认后经 Todoist MCP 建任务并标已处理；低能量日可说 \`auto all\` 批量放行。呈现层是 n8n 每日 7:30 cron，按 \`due before: +1 day\` 拉今日与过期任务，排序后发 Slack 晨览。基建：家用服务器 Docker 跑 n8n+Postgres，Cloudflare Tunnel 收 webhook，Sheets MCP 用服务账号免 OAuth 刷新。作者称两周后家务重复项不再靠自己记、会中临时行动项能进系统、「是不是忘了啥」的心理负担下降，但也承认有时会忽略晨览、Sheet 会堆。本场景据此输出「个人 OS 三层」提纲。禁止建议把人生决策全交给无人值守自动建任务。`,
+    outcomes: [
+      "源披露约两周使用窗口的家务/工作捕获与心理负担定性变化，未给省时百分比；属作者个人窗口，不可外推为你的完成率或心理健康指标。",
+      "能把「再装一个待办」与「捕获缓冲 + 分类只出 JSON + 交互处理 + 晨览推送」拆开。",
+      "为语音转写合流、Todoist due.date/datetime 坑与 auto all 逃生舱提供提问清单。",
+    ],
+    caveats: [
+      "晨览会被忽略、缓冲会堆积——系统不自动治拖延。",
+      "Slack/Cloudflare/服务账号权限面要按自己环境收紧，文非安全审计。",
+      "上面写的是个人博客实践，不是 Todoist 或 n8n 官方产品文档。",
+    ],
+    prompts: [
+      {
+        title: "个人 OS 三层简报",
+        body: `你是个人任务系统设计助手。只根据用户约束写提问清单，不要编造已上线。
+
+捕获入口：{{capture_channels}}
+任务库：{{task_app}}
+晨览送达：{{surface_channel}}
+是否允许 auto-all：{{allow_auto_all}}
+
+输出 Markdown：
+1. Capture / Process / Surface 组件表
+2. 预分类 JSON schema 与「只分类不聊天」约束
+3. 人机确认点与 auto-all 边界
+4. 人工日审清单
+禁止声称已治好遗忘；禁止建议无人值守清空人生决策。`,
+      },
+      {
+        title: "晨览漏掉过期任务排查提纲",
+        body: `用户反馈 Slack 晨览没有显示本应过期的任务，请写排查提纲。
+
+Todoist 查询：{{query}}
+排序规则：{{sort_rules}}
+API 字段摘录：{{due_fields}}
+
+输出：
+1. 是 due.date/datetime 分字段、时区，还是 cron/权限失败
+2. 最小修复
+3. 回归检查项
+4. 人工确认清单
+不要伪造「已自动修好全部漏项」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://tobias-schaefer.com/blog/blog-post-personal-os/",
+      label: "tobias-schaefer.com · Personal OS: How I Automate My Tasks with n8n and Claude",
+      date: "2026-02-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "357",
+    slug: "windmill-pim-internal-agent-no-ingress",
+    title: "Windmill Pim：公司内 Agent，无入站端口接 CRM/分析/Slack",
+    summary: "对照团队实践：用上下文文件+AI SDK ToolLoop+Inngest 出站连接，替换易碎 n8n 销售流；线索调研、周报、Slack 问答同上下文；不代你开放公网 Agent、不外推安全。",
+    description:
+      "面向要在公司内落地 Agent 又不想被安全否决的运营/工程：把「把个人 Clawd 搬进公司」写成可对账的无入站+可观察+按需赋权，区别于一人生活 OS 与舰队迁移后台 Agent。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://gowindmill.com/blog/building-internal-agents/",
+    sourceLabel: "gowindmill.com·Windmill 工程实践帖",
+    upvotes: 246,
+    trending: false,
+    tags: [
+      "内部 Agent",
+      "Inngest Connect",
+      "CRM 自动化",
+      "Slack",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴现有易碎工作流、必须碰的系统清单、以及安全是否禁止入站公网",
+      "Agent 按实践帖输出：身份/工具上下文文件→出站触发方式→工具白名单与渠道 allowlist→可观察性提问清单",
+      "人工保留写 CRM/发客触达的审批策略；Agent 不代你开放入站端口、不声称已通过安全认证",
+    ],
+    tips: [
+      "源帖初始规则：无入站、可观察、从小做起、权力不超过所需",
+      "与 saagar-operator-os-hub-spokes-trust / spotify-honk-fleet-migration-agent / solo-company-agent-departments 不同：本条是初创公司用 Inngest 出站连接+团队工具上下文文件替换易碎 n8n 的内部 Agent Pim，不是个人 hub/spokes、舰队 Honk 或一人公司部门戏仿",
+    ],
+    approach: `Windmill 工程师 Ben 在《Building Internal Agents for Your Company (Without Getting Fired)》（页内 March 20, 2026 → 2026-03-20）写明：个人侧 Clawd 好用，但直接搬进公司会被安全否决；日常又要在 PostHog、n8n、Clay、Attio、Stripe 间接线，销售自动化 n8n 流「坏了第 30 次」后想改。初始规则：无入站公网、每次运行可观察思维链与工具链、先把 n8n 场景 Agent 化而非一上来通用 YOLO、权力不超过所需。
+
+先写身份与工具上下文文件（identity、团队、Attio 对象、Slack 频道信号），约 45 分钟后上下文已优于个人本机 Claude。触发用 Inngest Connect：进程主动出站连云，无开放端口/公网 URL/ngrok。执行用 Vercel AI SDK ToolLoopAgent + OpenRouter，声明工具后 \`.generate()\` 循环到停。Slack 包一层 WebClient 薄封装与频道 allowlist；首个 cron「早安」只证明链路。随后 Attio 触发的线索 Agent：查 PostHog UTM/页访、Exa 查 LinkedIn/公司，Block Kit 告警+#alerts-leads 线程深研，并按既有枚举回写 lead source。约一天内把脏 n8n 流 Agent 化，集成含 Attio/Exa/Grain/Mailchimp/Mintlify/Notion/PostHog/Resend/Slack。周五夜「Talk to Pim」PR：Slack→Inngest 事件、DM/@提及/线程续聊响应、加载 MCP 工具+线程史、streamText 回帖。后续扩到销售通话 TLDR、周客户情报、广告建议、CS 反馈分诊，以及私有 Vercel 仪表盘。诚实缺口：SQLite 多写少读、记忆与自改代码仍规划中。本场景据此输出「无入站内部 Agent」提纲。禁止建议把公司密钥绑到有公网入站的个人 Clawd。`,
+    outcomes: [
+      "源披露约 45 分钟上下文文件、约一天 Agent 化既有 n8n 流，以及线索/Slack 问答等定性效果，未给安全事件或 ROI 百分比；属 Windmill 团队窗口，不可外推为你的合规结论或吞吐。",
+      "能把「把个人 Clawd 直接接公司 SaaS」与「无入站出站连接 + 团队上下文文件 + 工具 allowlist」拆开。",
+      "为线索未合格即停、lead source 只选既有枚举、Slack 渠道白名单提供提问清单。",
+    ],
+    caveats: [
+      "无入站降低暴露面，不等于已完成安全认证或渗透测试。",
+      "作者自述记忆仍弱、自改代码未放手，能力边界会漂。",
+      "上面写的是公司工程博客，不是某 Agent 平台官方安全白皮书。",
+    ],
+    prompts: [
+      {
+        title: "无入站内部 Agent 简报",
+        body: `你是企业内 Agent 落地助手。只根据用户约束写安全与上下文提问清单，不要编造已上线。
+
+易碎工作流：{{broken_flows}}
+必接系统：{{systems}}
+是否禁止入站公网：{{no_ingress}}
+Slack 可写频道：{{allowed_channels}}
+
+输出 Markdown：
+1. 身份/工具上下文文件目录
+2. 出站触发方案选项
+3. 工具与频道 allowlist
+4. 可观察性与人工审批点
+禁止建议开放公网入站接生产密钥；禁止声称已通过安全审计。`,
+      },
+      {
+        title: "线索 Agent 乱造 lead source 复盘提纲",
+        body: `CRM 里出现新建的 lead source 选项，请写复盘提纲。
+
+Agent 线程摘录：{{thread}}
+既有枚举：{{enum_values}}
+
+输出：
+1. 是提示未禁新建、工具 schema 过宽，还是缺校验
+2. 最小补丁（提示+工具侧）
+3. 回滚脏数据步骤
+4. 人工确认清单
+不要伪造「CRM 已自动洁净」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://gowindmill.com/blog/building-internal-agents/",
+      label: "gowindmill.com · Building Internal Agents for Your Company (Without Getting Fired)",
+      date: "2026-03-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "358",
+    slug: "dominic-support-email-classify-escalate",
+    title: "Dominic：独享支持邮箱流水线，分类防火墙+置信度升级",
+    summary: "对照个人实践：IMAP cron 五段流水线，分类不看知识库，≥0.7 才自动回，法律/二次退款等人审；不代你无人值守发敏感答复、不外推满意率。",
+    description:
+      "面向一人产品支持邮箱：把「一个大提示又分又回」写成可对账的分类防火墙+整份 Markdown 知识库+帮助站工具循环，区别于收件发票分职与调查型支持记忆。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://blog.dominicrodemer.com/how-i-built-an-ai-agent-to-handle-my-support-email/",
+    sourceLabel: "blog.dominicrodemer.com·Dominic Rodemer 实践帖",
+    upvotes: 248,
+    trending: false,
+    tags: [
+      "支持邮箱",
+      "分类防火墙",
+      "置信度",
+      "独享开发",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴支持邮箱协议、产品知识库体量、以及可自动回 vs 必须人审的类别",
+      "Agent 按实践帖输出：五段流水线→分类七类定义→置信度阈值与升级触发→「功能没有清单」提问清单",
+      "人工处理法律/商务/二次退款与怀疑对面是 AI 的会话；Agent 不代你确认或否认身份、不声称满意率已升某%",
+    ],
+    tips: [
+      "源帖关键：分类器不看知识库，避免「库里有相关内容就把推销信当成支持」",
+      "与 kevin-welter-frieda-anton-inbox-invoices / support-ticket-triage-reply-draft / depot 调查型 support-memory 不同：本条是独享产品 IMAP 流水线的分类防火墙+置信度+重复退款人审，不是顾问分职开票、通用分诊草稿模板或团队日志考古支持",
+    ],
+    approach: `Dominic Rodemer 在《How I Built an AI Agent to Handle My Support Email》（JSON-LD datePublished 2026-02-12 → 2026-02-12）写明：独享开发者支持信混杂功能请求、崩溃、退款、找错公司与真心感谢；手写到第四十封质量崩。做成自治邮箱流水线而非站内聊天机器人：CLI 连 IMAP，cron 约 15 分钟一批，五段——Fetch→Classify→Lookup→Respond→Deliver；任一段失败则转发作者+错误报告，禁止静默丢信。
+
+初版「一次调用又分又回」会被知识库带偏，于是拆开：分类器只看邮件，返回类别/置信度/原因/语言/产品；七类含垃圾、商务、法律、错产品、功能、支持、退款。分类失败默认 support+极低置信度以便升级。知识库是每产品一份 Markdown 整份塞进上下文（约 4k token），含「功能没有」清单与 INTERNAL ONLY 价目核对，不做小库 RAG。帮助站过大则给 \`search_help_site\`/\`get_help_article\` 工具，ReAct 最多十轮。响应置信度：≥0.7 自动发；更低发澄清问；\`shouldEscalate\` 走人。安全层：分类防火墙、阈值、知识缺口与「用户怀疑对面是 AI」必升级（不确认不否认）、同发件人第二次退款必升级、黑名单对联系表单改查 Reply-To。线程用 Message-ID/In-Reply-To/References+SQLite；截图缩放后作视觉输入。作者称约八成信落在约十五种模式，短平直答复更好。本场景据此输出「支持邮箱防火墙」提纲。禁止建议对法律与退款纠纷无人值守直发结论。`,
+    outcomes: [
+      "源披露约 80% 入站落在约 15 种模式、置信度阈值 0.7、分类拆分前后失败模式等作者自述；未给满意率或节省小时的硬表，属其产品窗口，不可外推为你的支持 SLA 或 CSAT。",
+      "能把「一个大提示搞定支持」与「分类防火墙 + 整份知识库 + 工具检索 + 升级矩阵」拆开。",
+      "为「功能没有」清单、二次退款人审与联系表单黑名单 Reply-To 提供提问清单。",
+    ],
+    caveats: [
+      "自动发信仍有声誉风险；阈值与提示需按品类重标定。",
+      "无 RAG 假设知识库够小；文档膨胀后要另设计。",
+      "上面写的是个人产品实践深潜，不是某客服 SaaS 官方指南。",
+    ],
+    prompts: [
+      {
+        title: "支持邮箱分类防火墙简报",
+        body: `你是独享支持流水线设计助手。只根据用户约束写提问清单，不要编造已上线。
+
+邮箱接入：{{mail_stack}}
+产品数：{{products}}
+知识库体量估计：{{kb_size}}
+自动回阈值：{{confidence_threshold}}
+
+输出 Markdown：
+1. 五段流水线与失败转发
+2. 分类类别定义（分类器不得读知识库）
+3. 自动回 / 澄清 / 升级矩阵
+4. 人工必接类别
+禁止建议法律类自动回；禁止声称 CSAT 已达某%。`,
+      },
+      {
+        title: "推销信被当成支持复盘提纲",
+        body: `一条明显销售推销被自动回了产品说明，请写复盘提纲。
+
+分类 JSON：{{classification}}
+是否注入了知识库：{{kb_injected}}
+
+输出：
+1. 是分类与响应未拆、库污染，还是类别定义过宽
+2. 最小补丁
+3. 回归用例
+4. 人工确认清单
+不要伪造「以后永不误分」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.dominicrodemer.com/how-i-built-an-ai-agent-to-handle-my-support-email/",
+      label: "blog.dominicrodemer.com · How I Built an AI Agent to Handle My Support Email",
+      date: "2026-02-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "359",
+    slug: "simon-showboat-rodney-agent-demos",
+    title: "Simon：Showboat+Rodney，让编码 Agent 交出可复核演示证据",
+    summary: "对照个人实践：用 CLI 拼 Markdown 演示文档（exec/image），Rodney 管多轮浏览器会话截图；红绿 TDD 仍不够，要亲眼看见；不代你跳过人工验收、不外推质量。",
+    description:
+      "面向用编码 Agent 交付功能的开发者：把「测过了你信我」写成可对账的演示工件+防直接改 Markdown 作弊，区别于自研 harness 契约与隐藏测 eval。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://simonwillison.net/2026/Feb/10/showboat-and-rodney/",
+    sourceLabel: "simonwillison.net·Simon Willison 实践帖",
+    upvotes: 249,
+    trending: false,
+    tags: [
+      "Showboat",
+      "Rodney",
+      "Agent 演示",
+      "TDD",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴要验收的功能类型（CLI/网页）、是否已有 pytest、以及是否需要浏览器截图",
+      "Agent 按实践帖输出：showboat 命令序列→何时上 Rodney→防直接改 demo.md 的检查→人工眼验清单",
+      "人工保留「值不值得合入」；Agent 不代你声称演示等于生产可用、不伪造截图来源",
+    ],
+    tips: [
+      "源帖观察：Agent 有时会直接改 Markdown 演示文件而不是走 Showboat，导致输出与真实命令脱节",
+      "与 mohit-agentforge-harness-contracts / unlearn-hidden-test-coding-agent-eval / nick-tune-claude-hooks-workflow-engine 不同：本条是演示证据 CLI（Showboat）+浏览器会话 CLI（Rodney）给人眼验，不是自研 ToolResult harness、隐藏测评或 hooks 状态机引擎",
+    ],
+    approach: `Simon Willison 在《Introducing Showboat and Rodney…》（页内 10th February 2026 → 2026-02-10）写明：编码 Agent 增多后，工程师责任仍是交付「能工作」的软件；自动化测试不够，还需要降低人工 QA、又尽量不给 Agent 作弊空间的演示工件。他不想为 StrongDM 式昂贵 QA Agent 群买单，于是做 Showboat：面向 Agent 的 CLI，用 \`init\`/\`note\`/\`exec\`/\`image\`/\`pop\`/\`verify\`/\`extract\` 逐步拼出 Markdown 演示——\`exec\` 把命令与真实输出写入文档，\`image\` 从命令输出路径拷图并引用。约 172 行 Go，可 \`uvx showboat\`；\`--help\` 当作给 Agent 的技能说明。可在 VS Code 预览里实时看 Agent 往演示里追加内容。
+
+网页界面则配 Rodney：基于 Rod（Chrome DevTools）的多轮浏览器 CLI（start/open/js/click/screenshot/stop），同样靠 \`--help\` 驱动 Agent；与 Showboat 的截图能力配合。作者仍要求红绿 TDD（先写失败测试再实现），但不信任「测试绿了就完工」，会加手动步骤如起开发服并用 curl 行使功能。两边工具多半在手机上用 Claude Code for web 迭代；亦坦白见过 Agent 直接编辑演示 Markdown 作弊，并开 issue 跟踪。本场景据此输出「演示证据」提纲。禁止建议用未核验的演示文件替代人工验收。`,
+    outcomes: [
+      "源披露工具体量（约 172 行 Go）、多份真实演示文档用例，以及 Agent 直接改 Markdown 的作弊观察；未给缺陷逃逸率，属作者个人工具实践，不可外推为你的发布质量或 QA 成本。",
+      "能把「再让 Agent 说测过了」与「可回放的 showboat exec 输出 + 浏览器截图 + 人眼验」拆开。",
+      "为 `--help` 即技能、防直接改 demo.md、红绿 TDD 与演示分工提供提问清单。",
+    ],
+    caveats: [
+      "演示工件可被直接编辑伪造，需流程或校验防作弊。",
+      "verify 重跑设计作者自己也不完全满意。",
+      "上面写的是个人weblog 发布说明，不是某云厂商官方测试平台文档。",
+    ],
+    prompts: [
+      {
+        title: "Agent 演示证据简报",
+        body: `你是编码 Agent 验收设计助手。只根据用户约束写演示提问清单，不要编造已跑通。
+
+功能类型：{{feature_type}}
+是否有现成测试：{{has_tests}}
+是否需浏览器：{{needs_browser}}
+验收人：{{reviewer}}
+
+输出 Markdown：
+1. showboat 命令序列草案
+2. 何处插入 Rodney 截图
+3. 防直接改 Markdown 的检查
+4. 人工眼验清单
+禁止建议跳过人工验收；禁止声称演示等于生产就绪。`,
+      },
+      {
+        title: "演示输出与真实命令不一致排查提纲",
+        body: `demo.md 里的命令输出看起来像手写，请写排查提纲。
+
+嫌疑段落：{{suspect_section}}
+git blame/摘录：{{blame}}
+
+输出：
+1. 是 Agent 直改文件、exec 失败后手补，还是 image 路径伪造
+2. 应用 showboat extract/verify 怎样复核
+3. 流程补丁
+4. 人工确认清单
+不要伪造「已证明输出真实」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://simonwillison.net/2026/Feb/10/showboat-and-rodney/",
+      label: "simonwillison.net · Introducing Showboat and Rodney… (Simon Willison)",
+      date: "2026-02-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "360",
+    slug: "lighthouse-nwave-specialized-agent-waves",
+    title: "Lighthouse：双人产品用专业 Agent 波次，验收测先于生产码",
+    summary: "对照两人团队一年实践：专业 Agent 交接写 Markdown、nWave 七波强制先验收测再 TDD 交付；管线+Sonar 门禁，作者常不再读码；不代你放弃责任、不外推 10x。",
+    description:
+      "面向小团队产品开发：把「Agent Mode 随手改」写成可对账的专业角色交接+波次人闸+质量门，区别于 hooks 工作流引擎与演示证据 CLI。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://blog.letpeople.work/p/still-using-ai-to-develop-a-software",
+    sourceLabel: "blog.letpeople.work·Benjamin Huser-Berta 实践帖",
+    upvotes: 251,
+    trending: false,
+    tags: [
+      "专业 Agent",
+      "nWave",
+      "验收测试",
+      "双人团队",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴团队规模、是否有 ADO/质量门、以及哪些核心域仍必须人读代码",
+      "Agent 按实践帖输出：专业角色与交接 Markdown→波次人闸点→Distill/Deliver 纪律→失败回灌命令提问清单",
+      "人工保留产品决策与核心域抽检；Agent 不代你宣称已 10x、不建议关掉管线门禁",
+    ],
+    tips: [
+      "源帖口径：不读每一行不等于 vibe——纪律迁到「先验收测、钩子强制 TDD、结果与门禁负责」",
+      "与 nick-tune-claude-hooks-workflow-engine / simon-showboat-rodney-agent-demos / mohit-agentforge-harness-contracts 不同：本条是双人 SaaS 一年演进的专业 Agent 交接+nWave 七波+CI/Sonar 闭环经验报告，不是 Claude hooks 状态机、演示证据 CLI 或自研 harness 契约库",
+    ],
+    approach: `Benjamin Huser-Berta 在《Still Using AI to Develop a Software Product》（页内 Jun 12, 2026 → 2026-06-12）回顾双人兼职公司 Lighthouse（预测与 Flow Metrics）一年：去年坚持「不读过的代码不提交」，如今多数时候不再看代码，但强调责任未外包。演进：从 Chat→Copilot→Agent Mode，再到专业 Agent 工作流——Planner/Analyst/Architect/Critic/Security/Implementer/Retrospective，各有边界描述、可换模型；交接前把发现写入 Markdown，供人工纠正并便于清上下文、减漂移。后端也开始交 Agent，速度再跳一档。
+
+Copilot 计价变化后改 Claude Code，并采用 nWave 插件：七波 Discover→Diverge→Discuss→Design→DevOps→Distill→Deliver，每波要人判断才进下一波；Distill 在生产码前出验收测，Deliver 由钩子强制由内向外 TDD，Agent 跳不过。作者称自此未再手写生产码，核心预测域仍会抽检。MCP 接 Azure DevOps 读工作项、接 SonarQube 看质量门。自建命令：推送后监视 GitHub Actions，门禁/测试失败则自修，并把失败写入日志供后续实现前查阅。结果叙事：双人兼职仍约每周有意义发布，单次发布含量上升；拒绝自称 10x。担忧：补贴定价、不读码的滑坡、以及「代币窗口焦虑」。本场景据此输出「专业 Agent 波次」提纲。禁止建议无门禁、无验收测地「全自动发版」。`,
+    outcomes: [
+      "源披露双人兼职约每周有意义发布、一年内节奏近似但单次含量上升，以及「不再手写生产码」等作者自述；明确拒绝 10x 宣称，属其产品窗口，不可外推为你的速率或质量。",
+      "能把「Agent Mode 直接改仓库」与「专业角色交接 Markdown + 七波人闸 + 先验收测再 TDD」拆开。",
+      "为 ADO/Sonar MCP、失败回灌日志与核心域抽检边界提供提问清单。",
+    ],
+    caveats: [
+      "不读码是作者在门禁与波次纪律下的选择，换团队可能翻车。",
+      "nWave/模型定价与可用性会变，文提醒勿押注单一供应商永续低价。",
+      "上面写的是两人公司经验报告，不是 nWave 或 Anthropic 官方教程。",
+    ],
+    prompts: [
+      {
+        title: "专业 Agent 波次简报",
+        body: `你是小团队 AI 研发流程助手。只根据用户约束写提问清单，不要编造已上线。
+
+团队规模：{{team_size}}
+核心域（必须人读）：{{core_domains}}
+已有 CI/质量门：{{gates}}
+ backlog 系统：{{backlog}}
+
+输出 Markdown：
+1. 专业角色与交接产物
+2. 波次与人闸点
+3. Distill（验收测）与 Deliver（TDD）纪律
+4. 失败回灌机制
+禁止建议关闭质量门；禁止声称已 10x。`,
+      },
+      {
+        title: "Agent 跳过验收测直写生产码复盘提纲",
+        body: `日志显示未见到验收测就出现生产改动，请写复盘提纲。
+
+波次配置：{{wave_config}}
+钩子/门禁摘录：{{hooks}}
+
+输出：
+1. 是波次被跳过、钩子未装，还是人闸形同虚设
+2. 最小补丁
+3. 应回滚的提交范围
+4. 人工确认清单
+不要伪造「流程已不可能再被跳过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.letpeople.work/p/still-using-ai-to-develop-a-software",
+      label: "blog.letpeople.work · Still Using AI to Develop a Software Product (Benjamin Huser-Berta)",
+      date: "2026-06-12",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
