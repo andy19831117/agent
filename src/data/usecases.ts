@@ -24801,6 +24801,453 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
       dateLabel: "发布",
     },
   },
+  {
+    id: "421",
+    slug: "carlos-infantes-skillpilot-green-tests-miss-checkout",
+    title: "Carlos：SkillPilot 上线——1,805 绿测没拦住真正要命的结账 bug",
+    summary: "约三周用 Claude Code 做出可收款产品；披露 1,805 单测全绿时结账已死数日、CSP/权益/标价三洞靠真卡自购发现；不代你用绿测代替浏览器付钱验收。",
+    description:
+      "面向 AI 代写电商结账、却把「测绿=可收钱」当真的独立开发者：把真实浏览器购买验收做成门禁，区别于 PR 一审风扇与垂直切片清会话。",
+    categories: [
+      "ecommerce",
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/carlosinfantes/i-shipped-a-paid-product-with-claude-code-1805-green-tests-didnt-catch-the-bug-that-mattered-bml",
+    sourceLabel: "dev.to·Carlos Infantes 实践帖",
+    upvotes: 312,
+    trending: false,
+    tags: [
+      "SkillPilot",
+      "结账验收",
+      "CSP",
+      "绿测陷阱",
+      "Stripe",
+    ],
+    howItWorks: [
+      "粘贴结账栈、权益规则与是否已有真实卡自购验收",
+      "Agent 按实践帖输出：规格精度、并发兑换上限测、以及「浏览器付钱」必做人审门",
+      "人工保留支付/权益最终验收；Agent 不代你声称单测全绿等于可收款上线",
+    ],
+    tips: [
+      "源帖：约三周；双 Next.js@Cloudflare Workers + Supabase + Stripe；24 可售项；1,805 单测/103 测文件对 306 源文件全绿时结账已死数日；三洞：CSP form-action 拦 Stripe 跳转、单课购买送整包权益、优惠校验前错价；并发兑换自测 40 同时对 cap10 须恰授 10；真卡自购发现",
+      "与 oleh-veheria-claude-pr-first-pass-review / denis-sirashev-nine-ai-sessions-vertical-slices 不同：本条是付费结账绿测陷阱+真卡验收，不是 PR 一审或垂直切片会话拆分",
+    ],
+    approach: `Carlos Infantes 在 DEV《I shipped a paid product with Claude Code. 1,805 green tests didn't catch the bug that mattered.》（JSON-LD/页内 datePublished 2026-09-01T14:48:57Z → 2026-09-01）写明：约三周用 Claude Code 与一套 workflow skills 做出 SkillPilot——两套跑在 Cloudflare Workers 上的 Next.js、Supabase 做鉴权与权益、Stripe 作商户、24 个可售项、真钱在流动。
+
+前约 80% 极快：schema、鉴权、内容管线、结账、webhook、权益「以天计而非周」。但长会话 token 账单残酷——作者称支付层一次深会话的花费超过他以往整月工具费；初期构建值回票价，小改则否。最大预测因子是事前能否精确陈述结果：「加优惠券」会产出看似合理却错的实现；必须写明礼物直写报名 vs 折扣走 Stripe promotion code、且须 webhook 确认支付后才消费，以及 100%-off 会话会落到 no_payment_required 等边界。并发兑换：论坛突发流量下，作者验证过「40 同时兑换、上限 10 须恰授 10」，并指出 Agent 常写竞态版。
+
+关键教训：上线日套件全绿、tsc 干净，但结账在生产已死数日。1,805 单测、103 测文件对 306 源文件——三洞无一能出现在单测里：(1) CSP 的 form-action 未放行 Stripe 跳转，「Continue to payment」在 Chromium 无反应、无异常、无失败测；(2) 仪表盘把整包送给只买单课的人——访问检查匹配了 pack 忽略了 course；(3) 四块购买屏之一在优惠校验前渲染而标错价。三洞均靠作者用真卡自购发现。本场景据此输出「绿测≠可收款」验收提纲。禁止建议用单测绿灯代替真实浏览器支付路径验收，或无人值守合入支付/权益改动。`,
+    outcomes: [
+      "源披露约三周交付、24 可售项、1,805 绿测时结账已死、CSP/整包权益/错价三洞靠真卡发现、以及支付层深会话贵过以往整月工具等作者口径；属一人付费产品窗口，不可外推为你的转化率、逃逸缺陷率或「AI 写结账免责」。",
+      "能把「测绿可上线」与「规格写清边界 + 并发上限证明 + 真卡浏览器自购」拆开。",
+      "为 CSP form-action 静默杀跳转、以及权益匹配粒度写错提供提问清单。",
+    ],
+    caveats: [
+      "支付与权益改动必须人在真实浏览器路径验收；单测绿不是充分条件。",
+      "作者强调小改上继续烧深会话往往不划算。",
+      "上面写的是 Carlos 个人实践帖，不是 Stripe/Cloudflare 官文或结账 SaaS 评测。",
+    ],
+    prompts: [
+      {
+        title: "付费结账真人验收简报",
+        body: `你是独立开发者结账顾问。只根据用户约束写验收门禁，不要编造已通过支付测试。
+
+产品：{{product}}
+支付商：{{psp}}
+权益规则：{{entitlement}}
+
+输出 Markdown：
+1. 必须写清的规格边界（优惠/礼物/webhook 结算态）
+2. 并发兑换或库存上限证明项
+3. 真卡/沙箱浏览器自购清单（含 CSP 跳转）
+4. 人必须保留的合入决策
+禁止建议用单测绿灯代替浏览器付钱验收；禁止伪造「结账已永不静默失败」。`,
+      },
+      {
+        title: "绿测结账已死复盘提纲",
+        body: `CI 全绿但生产「去支付」无反应或权益多送。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺浏览器路径、缺 CSP/权益粒度，还是标价时序
+2. 最小补丁与回归夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「单测已覆盖全部收款路径」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/carlosinfantes/i-shipped-a-paid-product-with-claude-code-1805-green-tests-didnt-catch-the-bug-that-mattered-bml",
+      label: "dev.to/carlosinfantes · I shipped a paid product with Claude Code. 1,805 green tests didn't catch the bug that mattered.",
+      date: "2026-09-01",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "422",
+    slug: "conor-gotzens-affiliate-ai-team-month-one",
+    title: "Conor：五代理跑联盟站满月——真赢 1 次、空报两次，营收 $7.26",
+    summary: "五站联盟组合上线排程代理四周后复盘；披露旗舰印象约 14→749/周、meta CTR 0.49%→2.16%、30 日 Amazon $7.26，以及假 404 与代理竞态；不代你无人值守发意见向内容。",
+    description:
+      "面向一人多站联盟、要把周更 SEO/发布做成可回滚实验的运营者：把可逆改自动、意见与发布留人，区别于内容捏造门博客管线与草稿客服。",
+    categories: [
+      "content",
+      "efficiency",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://conorgotzens.com/blog/ai-agent-team-month-one-report",
+    sourceLabel: "conorgotzens.com·Conor Gotzens 实践帖",
+    upvotes: 313,
+    trending: false,
+    tags: [
+      "联盟站",
+      "排程代理",
+      "SEO实验",
+      "可逆改",
+      "Discord汇报",
+    ],
+    howItWorks: [
+      "粘贴站点清单、可自动改动边界与必须人审的意见类内容",
+      "Agent 按实践帖输出：五角色周历、21 天对照实验、对站点潮流的相对评分门禁",
+      "人工保留意见向发布与冲突裁决；Agent 不代你声称流量曲线等于代理因果或可无人值守发推荐",
+    ],
+    tips: [
+      "源帖：代理团队约 2026-07-22 起；四周后 30 日 Amazon 收益 $7.26；MeowTested 周印象约 14→749；组合最佳搜索周 1,555 印象（+30% WoW）、23 点击（+64%）；首批实验里一条 meta 描述 CTR 0.49%→2.16%、点击 1→10（约 4.4×）；假阳性 404 连报四周实为审批/冲突积压；双代理竞态；发布前 56 商品富集核验 55/56",
+      "与 jared-smith-one-person-content-fabrication-gate / juste-thales-zerosuite-chatwoot-draft-only-support 不同：本条是多站联盟排程代理满月成绩单+可逆 SEO 实验，不是博客捏造门或客服草稿私密笔记",
+    ],
+    approach: `Conor Gotzens 在《My AI Team's First Report Card: One Real Win, Two Nulls, and $7.26》（JSON-LD/页内 datePublished 2026-08-17T23:45:00 → 2026-08-17；页内 August 17, 2026）写明：四周前（配套帖约 2026-07-22）他把五站 Tested 家族联盟组合交给五名周排程 Claude 代理（监听/分析/维护/写作/SEO），各有 git 内 playbook 与 Discord 汇报；本帖按承诺交数字——无论好坏。
+
+诚实底色：近 30 日 Amazon 收益合计 $7.26。旗舰 MeowTested 自约 4 月 27 日进索引，周印象从约 14 到约 749；组合刚录得最佳搜索周 1,555 印象（周环比约 +30%）与 23 点击（约 +64%）。但陡坡自约六月末已起，代理 7 月 22 日才上岗——作者写明代理继承了已在转的内容环，并未发明增长；改变的是曲线周围的作业：首次给 SEO 改动打分。
+
+SEO 铁律：标题/meta 变更必记基线，满 21 天再判；本周首批五实验到期。真赢一例：猫美容页 meta 描述改写，CTR 0.49%→2.16%、同量级排名下点击 1→10（约 4.4×）。两则空报：站内三链 24 天仅移 0.28 位视为噪声；另一则 CTR 1.89%→2.50% 看似赢，但全站同窗约 1.5×、该页仅约 1.3×，相对潮流落后——此后判决对照站点趋势。运维侧：发布前对队列草稿 56 个 Amazon 商品做 API 富集，55/56 核实；双代理并发曾在安全检查与部署间推进分支两次（未炸，因夹缝提交恰为已批工作）。「审批积压」部分实为冲突积压；产品精选页连报四周生产 404，实为误报——同时一篇好文相对精选中枢约 20:1 点击，预算改投文章。本场景据此输出「联盟排程代理满月复盘」提纲。禁止建议意见向内容无人值守发布，或把流量陡坡直接写成代理因果。`,
+    outcomes: [
+      "源披露 30 日 Amazon $7.26、旗舰周印象约 14→749、组合最佳周 1,555 印象/23 点击、meta CTR 0.49%→2.16%、55/56 商品核验、假 404 与竞态等作者口径；属早期联盟窗口，不可外推为你的联盟佣金、SEO 排名或「五代理=增长引擎」。",
+      "能把「代理上岗=流量陡坡因果」与「继承内容环 + 21 天对照实验 + 相对全站潮流打分」拆开。",
+      "为把绝对 CTR 上升当胜、以及审批队列与 git 冲突混为一谈提供提问清单。",
+    ],
+    caveats: [
+      "意见向推荐与发布须人审；仅可逆、内容中性改动可自动。",
+      "作者自带教育性免责：数字非保证；陡坡早于代理上岗。",
+      "上面写的是 Conor 个人实践帖，不是 Amazon Associates/Google Search Console 官文。",
+    ],
+    prompts: [
+      {
+        title: "多站联盟排程代理布置简报",
+        body: `你是一人多站联盟运营顾问。只根据用户约束写角色与门禁，不要编造佣金或排名。
+
+站点数：{{sites}}
+可自动改动：{{auto_ok}}
+必须人审：{{human_only}}
+
+输出 Markdown：
+1. 五类周历角色与 Discord/汇报字段
+2. 可逆改 vs 意见向草稿分支
+3. 21 天基线实验与相对全站潮流评分
+4. 发布前商品/链接核验
+禁止建议无人值守发布产品推荐；禁止伪造流量归因。`,
+      },
+      {
+        title: "绝对 CTR 上升实为输给潮流复盘提纲",
+        body: `某页 CTR 上升但低于全站同窗涨幅，曾被报成胜利。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺站点对照、缺 21 天窗口，还是样本过小
+2. 最小评分补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「SEO 代理已永相对打分正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://conorgotzens.com/blog/ai-agent-team-month-one-report",
+      label: "conorgotzens.com · My AI Team's First Report Card: One Real Win, Two Nulls, and $7.26",
+      date: "2026-08-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "423",
+    slug: "konde-rtk-claude-token-proxy-60pct",
+    title: "Konde：用 RTK 代理砍掉 Claude Code 约 60% token——$40/天→$14/天",
+    summary: "团队为舰队会话做 Rust 透明代理；披露日耗约 $40→$14、工具描述约占输入 42%、1 万会话无显著行为差；不代你为省钱关掉人审或伪造 SLA。",
+    description:
+      "面向 Agent 舰队输入 token 被工具 schema/噪声命令吃掉的团队：把懒加载工具定义+输出裁剪+文件 diff 缓存做成代理层，区别于 harness 账单叙事与技能正文瘦身。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://blog.konde.io/en/engineering/rtk",
+    sourceLabel: "blog.konde.io·Konde / Yoona Engineering 实践帖",
+    upvotes: 314,
+    trending: false,
+    tags: [
+      "RTK",
+      "token代理",
+      "懒工具定义",
+      "输出裁剪",
+      "diff缓存",
+    ],
+    howItWorks: [
+      "粘贴当前日耗/会话形态与不可接受的行为漂移风险",
+      "Agent 按实践帖输出：输入构成诊断→懒工具/命令过滤/读文件缓存的优先级与回归清单",
+      "人工保留是否上代理与行为对照；Agent 不代你声称省钱等于质量不变或可无人值守合入",
+    ],
+    tips: [
+      "源帖：约 $40/天→$14/天（约 60%）；曾预估年中可至约 $400/天；输入构成约 42% 工具描述、23% 重复文件、18% 冗长 git/grep、17% 其它；会话起约 4 万工具 token/轮；三项约省 30%/15%/12%；跨约 1 万会话 on/off 无显著完成率/轮次/CI 差；曾打断依赖「重读配置发现隐藏开关」的脆弱流；二进制约 3.2MB、约 4,200 LOC",
+      "与 aditlal-harness-engineering-24k-prompts / postman-devrel-claude-skills-token-audit 不同：本条是 API 前透明代理砍工具/命令/重读输入，不是长期 harness 捕获率账单或 DevRel SKILL.md 正文审计",
+    ],
+    approach: `Konde 工程（署名 Yoona Engineering）在 blog.konde.io《How we cut Claude Code token usage by 60% with RTK》（JSON-LD datePublished 2026-04-02T00:00:00Z → 2026-04-02）写明：约三个月前团队与 Agent 舰队日烧 Claude Code 约 $40；趋势陡，曾预估年中可到约 $400/天。他们上线计量、自建透明代理 RTK（Rust Token Killer），称日耗砍到约 $14、约 60% 输入 token 降幅，并开源。
+
+线上拆解颠覆直觉：输入并非主要花在「大文件一次读」或「超长推理」，而是约 42% 每轮系统提示里的工具描述、约 23% 刚发过又重发的文件内容、约 18% 代理其实只需两行的冗长 git/grep 输出、约 17% 其它。工具枚举 alone 会话起约 4 万 token，且每轮重送——十轮就是约 40 万工具描述 token。
+
+RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全 schema 并重送一次系统提示；约 80% 会话永不加载多数工具，单项平均约省 30% 输入；(2) 对约 80 条常见命令做输出裁剪（如 git status 均约 800 token→信息密集部约 30），约省 15%；(3) 会话内文件 diff 缓存，二读以 diff 代替全文（例 200 vs 4,000 token），读文件重会话约省 12%。合计舰队约 60% 输入降幅；不碰模型输出。对照约 1 万会话 on/off：完成率、轮次、过 CI、自评信心无统计显著差。例外：曾打断依赖「再读 200 行配置并『注意到』未请求隐藏开关」的脆弱内部流——diff 缓存把它收成「无变化」。实现约 4,200 LOC、编译约 3.2MB。本场景据此输出「Agent 输入代理瘦身」提纲。禁止建议为省 token 关闭人审或把代理层写成厂商 SLA。`,
+    outcomes: [
+      "源披露约 $40/天→$14/天、输入四类占比、三项优化约 30%/15%/12%、约 1 万会话无显著行为差、以及脆弱重读流被打断等团队口径；属 Konde 窗口计量，不可外推为你的账单、完成率或「代理层=零回归」。",
+      "能把「怪模型太贵」与「工具 schema/噪声命令/重复读文件在吃输入」拆开。",
+      "为依赖隐式重读发现配置的工作流、以及只优化输出不管输入提供提问清单。",
+    ],
+    caveats: [
+      "行为对照仍要人做；作者记录过缓存改变隐式重读假设的案例。",
+      "开源代理需自行评估与官方 CLI/SDK 的兼容与安全边界。",
+      "上面写的是 Konde 团队工程实践帖，不是 Anthropic 官文简报或通用省钱保证。",
+    ],
+    prompts: [
+      {
+        title: "Agent 输入 token 代理诊断简报",
+        body: `你是 Agent 成本工程顾问。只根据用户约束写诊断与改造优先级，不要编造已省百分比。
+
+日耗或会话形态：{{spend}}
+主要工具面：{{tools}}
+不可接受漂移：{{risks}}
+
+输出 Markdown：
+1. 输入构成假说（工具 schema/重复读/命令噪声）
+2. 懒定义、输出裁剪、文件缓存的优先级
+3. on/off 对照应看的完成率与 CI 指标
+4. 人必须保留的上线决策
+禁止建议为省钱关闭人审；禁止伪造「代理后行为零变化」。`,
+      },
+      {
+        title: "隐式重读配置被缓存打断复盘提纲",
+        body: `上了读文件 diff 缓存后，依赖「再读整文件发现隐藏开关」的流程失效。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 隐式约定 vs 显式工具
+2. 最小补丁（显式读取偏移/配置 API）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「缓存层已理解全部隐式约定」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.konde.io/en/engineering/rtk",
+      label: "blog.konde.io · How we cut Claude Code token usage by 60% with RTK",
+      date: "2026-04-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "424",
+    slug: "postman-devrel-claude-skills-token-audit",
+    title: "Postman DevRel：审计 19 个 Claude Code 技能——合并跑省约 1.33 万 token",
+    summary: "DevRel 插件跑编辑/Meetup/CFP 等 19 技能；披露无一声明 allowed-tools、最差单次约 1.14 万 token、合并跑省约 1.33 万且均分 6.5→9.5/12；不代你用估算当账单。",
+    description:
+      "面向技能正文塞满脚本、描述税打在每次会话上的内容/DevRel 团队：把 allowed-tools、短描述与 references/ 渐进披露做成审计清单，区别于 API 前透明代理与 harness 捕获率叙事。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://blog.postman.com/how-devrel-saves-thousands-of-tokens-per-claude-code-run/",
+    sourceLabel: "blog.postman.com·Quinton Wall / Postman DevRel 实践帖",
+    upvotes: 315,
+    trending: false,
+    tags: [
+      "Claude技能",
+      "allowed-tools",
+      "渐进披露",
+      "DevRel",
+      "token审计",
+    ],
+    howItWorks: [
+      "粘贴技能列表与是否已声明 allowed-tools/描述长度",
+      "Agent 按实践帖输出：三维成本（常驻描述/触发正文/运行时）审计表与 references/ 外置清单",
+      "人工保留工具白名单与发布；Agent 不代你把 4 字符/token 估算写成真实账单",
+    ],
+    tips: [
+      "源帖：19 技能；三维问题——皆无 allowed-tools、最差约 11,400 token/次、合并跑共省约 13,300 token（约 23%）≈当时定价约 $0.04；常驻描述 5,090→4,071 字符（约 −20%，约 255 token/会话）；meetup-calendar 曾 1,177 行/45.6KB；skillit 并行审计 <2 分钟；均分 6.5→9.5/12",
+      "与 konde-rtk-claude-token-proxy-60pct / aditlal-harness-engineering-24k-prompts 不同：本条是 DevRel 插件 SKILL.md 正文/权限审计，不是 Rust API 代理或长期 harness 捕获率账单",
+    ],
+    approach: `Quinton Wall（Postman）在 Postman Blog《How DevRel saves thousands of tokens per Claude Code run》（JSON-LD datePublished 2026-07-21T16:00:00+00:00 → 2026-07-21；页内 July 21, 2026）写明：DevRel 团队日常跑在 Claude Code 插件上——19 个技能覆盖写博客、WordPress 暂存、Reddit 竞品情绪、Meetup 日历、通讯、报名追踪、CFP 狩猎与整条编辑管线。插件跑了数月、输出可用，却无人量 token；结构化基准后发现三个普遍问题：19 个技能无一声明 allowed-tools；最差单技能约 11,400 token/次；修完后合并跑全部技能约省 13,300 token（文称当时定价约 4 美分）。
+
+成本三维：常驻——每技能 YAML 描述进每次会话系统提示，无论是否调用；触发——整份 SKILL.md 正文进上下文；运行时——工具输出与轮询叙述。另提醒 MCP 全量 schema 在急切加载客户端可达约 4–7 万 token（新版延迟加载可大幅对冲）。用 skillit 六维 0–2 分（满分 12）并行拉起 19 个评分代理，审计 <2 分钟。发现 1：工具作用域全员 0/2；补 allowed-tools 时还挖出三处权限错位（如 copyeditor 要写文件未授 Write）。发现 2：常驻描述合计 5,090→4,071 字符（约 −20%），约省 255 token/会话。发现 3：正文内嵌整段 Python 最重——meetup-calendar 约 1,177 行/45.6KB 含 5 脚本。修法：实现细节外置 references/，正文只留编排与指针；九技能抽出 15 个参考文件。表列前后 token（4 字符/token 经验）与均分 6.5→9.5/12。本场景据此输出「技能正文审计」提纲。禁止把经验估算写成会计账单，或建议扩大工具面「图省事」。`,
+    outcomes: [
+      "源披露 19 技能、合并跑约省 13,300 token（约 23%）、常驻描述约 −20%/约 255 token/会话、均分 6.5→9.5/12、审计 <2 分钟等团队口径；属 Postman DevRel 窗口与 4 字符/token 估算，不可外推为你的 API 账单或「技能越少越好」。",
+      "能把「输出还行就别动」与「常驻描述税 + 无 allowed-tools + 正文内嵌脚本」拆开。",
+      "为描述过薄被打回、以及异步轮询把中间态写满上下文提供提问清单。",
+    ],
+    caveats: [
+      "文内 token 多为文件体积经验估算，作者提醒以会话 /context /cost 为准。",
+      "美元节约在该队用量下很小；更关键的是上下文头寸。",
+      "上面写的是 Postman DevRel 实践帖，不是 Anthropic 官文或通用插件评测榜。",
+    ],
+    prompts: [
+      {
+        title: "Claude 技能包审计简报",
+        body: `你是 Agent 技能工程顾问。只根据用户约束写审计表，不要编造已省美元。
+
+技能列表：{{skills}}
+是否已有 allowed-tools：{{has_allowlist}}
+
+输出 Markdown：
+1. 常驻描述/触发正文/运行时三维检查
+2. allowed-tools 白名单草案
+3. 应外置到 references/ 的脚本与模板
+4. 人必须抽查的权限错位
+禁止建议「不加白名单让模型更自由」；禁止把字符估算写成真实账单。`,
+      },
+      {
+        title: "技能正文内嵌脚本过重复盘提纲",
+        body: `单技能 SKILL.md 动辄上千行 Python，每次触发都灌进上下文。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺渐进披露、缺步骤指针，还是描述税
+2. 最小 references/ 拆分
+3. 下次验收标准（/context 前后）
+4. 人工确认清单
+不要伪造「正文已永不超过阈值」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.postman.com/how-devrel-saves-thousands-of-tokens-per-claude-code-run/",
+      label: "blog.postman.com · How DevRel saves thousands of tokens per Claude Code run",
+      date: "2026-07-21",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "425",
+    slug: "rodik-keepard-family-finance-9-days",
+    title: "Rodion：9 天用 Agent 做出家庭财务自托管——日志里的 $2,700 与 446 条短提示",
+    summary: "多国账户家庭从月度 Excel 到 Keepard；披露 9 历日、446 提示（中位 26 词）、643 提交/659 测、API 等价约 $2,700 且约 72% 在重读上下文；不代你无人值守动真钱划转。",
+    description:
+      "面向要把多银行流水收成一家视图、又愿自托管的个人开发者：把短提示+人测手机+硬预算分类器写成节奏，区别于企业 QuickBooks MCP 与一人内容捏造门。",
+    categories: [
+      "life",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/rodik/i-built-a-self-hosted-family-finance-app-with-claude-code-in-9-days-heres-what-it-cost-and-what-i-2nl2",
+    sourceLabel: "dev.to·Rodion（rodik）实践帖",
+    upvotes: 316,
+    trending: false,
+    tags: [
+      "家庭财务",
+      "自托管",
+      "短提示",
+      "上下文成本",
+      "Keepard",
+    ],
+    howItWorks: [
+      "粘贴账户国别、是否自托管、以及分类不确定时是否允许聊天工具追问",
+      "Agent 按实践帖输出：九日节奏、短提示中位数目标、订阅 vs API 等价成本对照与运行硬预算",
+      "人工保留银行授权与资金动作；Agent 不代你声称可无人值守划转或伪造「$2,700 必花」",
+    ],
+    tips: [
+      "源帖：9 历日（约 9/11–19）；Codex 两日后退订限额改 Claude Code；日关注约 3–4 小时；446 提示、中位 26 词；643 commits、约 200 合并 PR、61 迁移、659 测；API 价约 $2,700（约 72% 重读上下文、约 13% 生成代码）；实付约 $100/月订阅；运行约 €10/月 VPS + 分类器硬预算 $10/月；不确定时 Telegram 追问；十并行 worktree 曾让索引约 16 万文件烫笔记本",
+      "与 harry-guinness-claude-quickbooks-finance / jared-smith-one-person-content-fabrication-gate 不同：本条是家庭多银行自托管 Keepard 九日账本，不是 QuickBooks 财务 Agent 或博客内容捏造门",
+    ],
+    approach: `Rodion（DEV：rodik；文称软件公司 CTO/联合创始人）在 DEV《I built a self-hosted family finance app with Claude Code in 9 days…》（JSON-LD/页内 datePublished 2026-10-21T17:25:53Z → 2026-10-21）写明：家庭多国多银行账户曾靠月度 Excel 晚会；九月他几乎只通过 Agent 做出自托管 Keepard（开源 github.com/sars/keepard，有可点演示），两月后仍与妻子每日使用。数字来自日志与 git，非回忆。
+
+九日历（约 9 月 11–19）：前两日 Codex 约 4,000 响应并吃掉两周订阅限额，自第三日改 Claude Code 扛完约 10,930 响应/七日。他本人做终端、配置、外部服务注册与每日约 3–4 小时关注；446 条提示、中位仅 26 词，常口述。产出：643 commits、约 200 合并 PR、61 库迁移、659 测。产品：拉取多国银行交易、算真实支出、分类、不确定时 Telegram 追问、资产统一币种。
+
+成本诚实账：若按 API 价约 $2,700，其中约 72% 花在模型重读代码库/文档/对话上下文，生成代码仅约 13%——故实践多在降上下文税。他实际付的是约 $100/月订阅（兼做他事）。运行约 €10/月共享 VPS、分类器 OpenAI 硬预算 $10/月（发送前预留）、开银行为自用免费。插曲：十个并行 git worktree 让 macOS 索引约 16 万文件导致笔记本发热，后加脚本治理。本场景据此输出「家庭财务自托管 Agent 节奏」提纲。禁止建议 Agent 无人值守发起真钱划转，或把 API 等价成本写成人人必付账单。`,
+    outcomes: [
+      "源披露 9 历日、446 提示（中位 26 词）、643 commits/659 测、API 等价约 $2,700（约 72% 上下文）、运行约 €10/月+$10/月分类预算等作者口径；属一家自托管窗口，不可外推为你的构建人日、订阅划算性或「Agent 可替你管全部家财」。",
+      "能把「一句『做个财务 App』」与「短提示中位 + 人测手机 + 订阅/API 成本分列」拆开。",
+      "为并行 worktree 拖垮本机索引、以及把重读上下文当成「写代码很贵」提供提问清单。",
+    ],
+    caveats: [
+      "银行连接与资金动作须人授权；分类不确定时作者用 Telegram 人答。",
+      "$2,700 是 API 等价对照，作者实付为订阅口径。",
+      "上面写的是 Rodion 个人实践帖，不是银行/开银行官文或理财产品推介。",
+    ],
+    prompts: [
+      {
+        title: "家庭财务自托管九日节奏简报",
+        body: `你是个人效率/自托管顾问。只根据用户约束写节奏与成本分列，不要编造已同步账户数。
+
+账户场景：{{accounts}}
+是否允许聊天追问分类：{{ask_chat}}
+预算上限：{{budget}}
+
+输出 Markdown：
+1. 短提示中位数与每日人测清单
+2. 订阅 vs API 等价成本如何分列记录
+3. 分类器硬预算与不确定时人答通道
+4. 人必须保留的银行授权/划转
+禁止建议无人值守真钱划转；禁止伪造「九日必可复现」。`,
+      },
+      {
+        title: "并行 worktree 烫笔记本复盘提纲",
+        body: `多个 Agent worktree 导致本机索引/风扇爆表。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 worktree 上限、缺忽略索引，还是 node_modules 被扫
+2. 最小治理脚本
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「并行越多越快且无成本」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/rodik/i-built-a-self-hosted-family-finance-app-with-claude-code-in-9-days-heres-what-it-cost-and-what-i-2nl2",
+      label: "dev.to/rodik · I built a self-hosted family finance app with Claude Code in 9 days…",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
