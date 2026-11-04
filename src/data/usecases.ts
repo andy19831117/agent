@@ -15876,6 +15876,455 @@ Fly.io Docs《Secrets and Fly Apps》（dateModified 可核）说明：可用 fl
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "321",
+    slug: "algolia-api-keys-acl-brief",
+    title: "Algolia API Keys 权限与 Secured Key 简报",
+    summary: "按 Admin/Search-only、ACL、限制项与 Main vs Secured Key，整理搜索密钥分级简报；不代持 Admin Key、不代撤销生产密钥。",
+    description:
+      "面向独立开发者：把「前端可搜但不被刮库/滥刷」写成可对账步骤，区别于泛 Secrets 轮换与站内 feature-flag 审计壳。",
+    categories: [
+      "devtools",
+      "ecommerce",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://www.algolia.com/doc/guides/security/api-keys",
+    sourceLabel: "Algolia Docs·API keys",
+    upvotes: 124,
+    trending: false,
+    tags: [
+      "Algolia",
+      "API Keys",
+      "ACL",
+      "搜索安全",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴应用形态（前端搜索/索引写入/移动端）、现用密钥类型认知，以及是否暴露 Admin 或未限流 Search-only",
+      "Agent 按官方 API keys 要点输出：预置密钥→暴露风险→ACL/限制→Main vs Secured→撤销/团队成员提问清单",
+      "人工在 Dashboard/API 创建或轮换；Agent 不回显 Admin Key、不代删生产 Main Key",
+    ],
+    tips: [
+      "Search-only 可进生产前端，但仍可能被刮库或刷请求；应用 Secured Key 做限流、索引范围与有效期等收紧",
+      "与 feature-flag-zombie-archive-audit / secrets-manager-rotation-checklist 不同：本条是 Algolia 搜索 ACL 与虚拟 Secured Key，不是通用密钥保险库或功能开关僵尸审计",
+    ],
+    approach: `独立站或 SaaS 把 Admin API key 写进前端、或只用默认 Search-only 却无索引/限流限制时，常见结果是索引被整库 browse，或账号被刷搜索打爆配额。
+
+Algolia Docs《API keys》（dateModified 可核）说明：API key 是账号、数据与索引设置的代码级访问凭证；预置最重要的是 Admin（须保密）与 Search-only（可搜全部应用索引，适合生产前端）。Search-only 暴露时，第三方可能刮取索引或灌入搜索请求；缓解方式包括：索引只放可公开数据，以及生成带限流、索引访问等限制的 Secured search-only key。创建密钥时可授予 ACL，例如 search、browse、addObject、deleteObject、listIndexes、deleteIndex、settings、editSettings、analytics、recommendation、usage、logs、seeUnretrievableAttributes。可选限制包括：可访问索引、每小时调用上限、每页最大记录数、有效期、HTTP referrers、强制查询参数、描述。密钥分 Main（长期、Dashboard/API 可管、应定期轮换）与 Secured（由 Main 派生的虚拟密钥，不可放宽基键限制，Dashboard 不可见，用 generateSecuredApiKey；适合大量用户临时权限或移动端避免硬编码）。撤销 Main 会使其派生 Secured 一并失效且即使恢复 Main 也不能恢复旧 Secured；团队成员入职会分配若干密钥，离职移除成员密钥，但成员手工创建的密钥需人工清理。本场景据此输出权限与 Secured Key 简报。禁止回显 Admin Key 或声称「生产密钥已全部轮换」。`,
+    outcomes: [
+      "源未披露量化「刮库/滥刷下降」；公开文只描述密钥类型、ACL、限制与 Main/Secured 模型。",
+      "能把「Admin 进前端 / 裸 Search-only / 与通用 Secrets 轮换壳混淆」拆开。",
+      "为前端搜索密钥收紧提供可落地的提问清单。",
+    ],
+    caveats: [
+      "Monitoring/Usage/Analytics 等密钥是否可用取决于套餐；本条不解读报价。",
+      "具体 restriction 参数与 generateSecuredApiKey 字段以专页为准。",
+      "上面写的是产品机制，不是你应用下现有密钥明文列表。",
+    ],
+    prompts: [
+      {
+        title: "Algolia API Keys 分级简报",
+        body: `你是 Algolia API Keys 助手。只给密钥分级与限制核对简报，不要编造已轮换成功。
+
+应用形态：{{app_shape}}
+密钥使用面（前端/后端/移动）：{{surfaces}}
+是否曾把 Admin 放进客户端：{{admin_in_client}}
+担忧（刮库/刷量/越权写）：{{concern}}
+
+输出 Markdown：
+1. Admin vs Search-only vs 其他预置键
+2. 建议 ACL 与限制项提问
+3. Main vs Secured 适用场景
+4. 非生产验收步骤
+禁止索要或回显 Admin/Write Key；禁止代删生产 Main Key。`,
+      },
+      {
+        title: "密钥泄漏/刮库应急提纲",
+        body: `怀疑 Search-only 被滥用或 Admin 曾进仓库，请写应急提纲。
+
+时间线：{{timeline}}
+暴露面摘要：{{exposure}}
+是否可接受短暂停搜：{{downtime_ok}}
+
+输出：
+1. 是否先撤销/轮换 Main 并更新应用
+2. Secured 是否因基键撤销而失效
+3. 索引是否含不该公开字段
+4. 人工验证顺序
+不要伪造「滥用已停止」；不要索要明文密钥。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.algolia.com/doc/guides/security/api-keys",
+      label: "Algolia Documentation · API keys",
+      date: "2026-10-29",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "322",
+    slug: "neon-database-branching-brief",
+    title: "Neon 数据库分支（Branching）简报",
+    summary: "按 copy-on-write 克隆、根分支 main、开发/测试/临时 TTL 与 schema-only，整理数据分支简报；不代删生产分支、不代持连接串。",
+    description:
+      "面向独立开发者：把「像切代码分支一样切生产数据副本」写成可对账步骤，区别于 PlanetScale 连接串与 Cloudflare D1 托管 SQLite。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://neon.com/docs/introduction/branching",
+    sourceLabel: "Neon Docs·Branching",
+    upvotes: 147,
+    trending: false,
+    tags: [
+      "Neon",
+      "Branching",
+      "Postgres",
+      "CI/CD",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴是否已有 Neon 项目、用途（本地开发/并行测试/预览环境）、是否含敏感数据需 schema-only，以及是否要自动过期",
+      "Agent 按官方 Branching 要点输出：CoW 隔离→根分支→开发/测试/临时 TTL→CLI/API/Actions/Vercel 提问清单",
+      "人工在 Console/CLI/API 创建或清理分支；Agent 不代删生产根分支、不回显连接串密码",
+    ],
+    tips: [
+      "创建分支不增加父分支负载；写入以 delta 保存，父子在创建点后独立演进",
+      "与 planetscale-connection-strings-brief / cloudflare-d1-sqlite-workers-brief 不同：本条是 Neon Postgres 数据分支工作流，不是 Vitess 连接串，也不是 Workers SQLite 绑定",
+    ],
+    approach: `要在预览环境或 CI 里测迁移，却不敢动生产库，或每次手工灌库耗掉半天——Neon 分支正是为此设计的工作流。
+
+Neon Docs《Branching》（Last updated / dateModified 可核）说明：可像分支代码一样快速分支数据，用于开发、测试与 CI/CD；也可把数据回拨到历史点以恢复误操作或分析过去状态。分支是数据的 copy-on-write 克隆，可从当前或过去状态创建；支持 schema-only 分支以处理敏感数据。分支与来源隔离，可随意改/删；父子可共享创建点前数据，写入存为 delta。创建分支不会增加父分支负载或影响其性能。每个项目有根分支 main；首个分支从根分出，后续可从根或已有分支再分。工作流包括：开发（默认带父分支截至创建时的全部数据，可用 CLI/API/GitHub Actions，或 Neon 托管的 Vercel 集成按预览部署建分支）、测试（并行分支各有专用计算，测 schema/查询/破坏性操作）、临时环境（设过期日 TTL 自动删）。还可用于数据恢复：在历史窗口内回到过去时间点。本场景据此输出数据库分支简报。禁止声称「生产分支已切好」或回显数据库密码。`,
+    outcomes: [
+      "源未披露量化「预览环境搭建耗时下降」；公开文只描述 CoW、隔离、工作流与恢复能力。",
+      "能把「误改生产 / 与 PlanetScale 连接串或 D1 混淆」拆开。",
+      "为开发/CI 数据副本提供可落地的提问清单。",
+    ],
+    caveats: [
+      "历史窗口、分支数量与存储计量以计划与专页为准；旧分支会锁住数据增加存储。",
+      "Console 创建对话框的「当前/过去/schema-only/脱敏」选项细节见 Manage branches 专页。",
+      "上面写的是产品机制，不是你项目下现有分支列表或连接串。",
+    ],
+    prompts: [
+      {
+        title: "Neon Branching 工作流简报",
+        body: `你是 Neon Branching 助手。只给数据分支核对简报，不要编造已创建成功。
+
+用途：{{purpose}}
+是否含敏感生产数据：{{sensitive}}
+是否需要 TTL/预览联动：{{ttl_or_preview}}
+现有根分支认知：{{root_branch}}
+
+输出 Markdown：
+1. CoW/隔离/对父分支影响
+2. 开发 vs 测试 vs 临时 TTL 选型提问
+3. schema-only 是否更合适
+4. Console/CLI/API 验收步骤
+禁止索要或回显连接串密码；禁止代删生产根分支。`,
+      },
+      {
+        title: "误操作恢复/分支堆积提纲",
+        body: `误删数据或分支越积越多导致存储上涨，请写处理提纲。
+
+症状：{{symptom}}
+历史窗口认知：{{history_window}}
+可删分支候选（名称即可）：{{branch_names}}
+
+输出：
+1. 是否可用过去时间点分支做恢复
+2. 哪些临时分支应设过期或删除
+3. 是否误把实验写回了默认分支
+4. 人工验证顺序
+不要伪造「数据已恢复」；不要索要密码。`,
+      },
+    ],
+    primarySource: {
+      url: "https://neon.com/docs/introduction/branching",
+      label: "Neon Documentation · Branching",
+      date: "2026-09-01",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "323",
+    slug: "honeycomb-query-builder-brief",
+    title: "Honeycomb Query Builder 排查查询简报",
+    summary: "按 SELECT/WHERE/GROUP BY 等子句、关系字段前缀与 Run Query，整理遥测排查查询简报；不代持团队凭据、不声称已定位根因。",
+    description:
+      "面向独立开发者与值班：把「在 Honeycomb 里把一次错误链路问清楚」写成可对账步骤，区别于 Sentry 开 PR 壳与 LangSmith trace 点检。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.honeycomb.io/investigate/query/build",
+    sourceLabel: "Honeycomb Docs·Build a Query",
+    upvotes: 163,
+    trending: false,
+    tags: [
+      "Honeycomb",
+      "Query Builder",
+      "可观测性",
+      "Traces",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴故障时间窗、关心的服务/路由/错误字段、是否已有 trace 样例，以及想对比的维度",
+      "Agent 按官方 Build a Query 要点输出：六子句→关系字段前缀→结果图/表→改数据集与时间范围提问清单",
+      "人工在 Honeycomb UI 执行 Run Query；Agent 不登录客户团队、不声称「根因已确认」",
+    ],
+    tips: [
+      "关系字段仅在 UI Query Builder 的 WHERE/GROUP BY 可用；同前缀条件默认 AND，须全部满足",
+      "与 sentry-bug-to-fix-pr / langsmith-agent-trace-error-spotcheck 不同：本条是 Honeycomb 查询子句与 trace 关系前缀，不是自动开 PR，也不是 LangSmith 点检壳",
+    ],
+    approach: `线上出现「结账页偶发折扣码错误」，日志里只有零散字段，需要按 trace 结构把 root 路由与下游 span 一起收窄——这正是 Query Builder 的典型用法。
+
+Honeycomb Docs《Build a Query》（dateModified 可核）说明：可用 Query Builder 对遥测数据构造查询以调查与探索；在子句中输入字段名、运算符与值。查询最多六个子句：SELECT（计算并画随时间变化的图，HEATMAP 看分布）、WHERE（按字段过滤）、GROUP BY（分组）、ORDER BY、LIMIT、HAVING（按聚合条件过滤）。关系字段用于在 WHERE/GROUP BY 中按 span 类型收窄 trace，前缀包括：root.（匹配根 span）、parent.（直接父及其直接子）、child.（匹配一子并返回对应父）、any./any2./any3.（trace 内任一 span，最多三组独立过滤）、none.（排除含该匹配 span 的 trace）。关系字段仅 UI Query Builder 的 WHERE/GROUP BY 可用，且对子句自动 AND。文档示例：统计结账路径上错误——SELECT COUNT，WHERE error exists AND any.name = getDiscounts AND root.name = /cart/checkout，GROUP BY error。运行可用 Run Query 或 Shift+Enter；结果通常含随时间可视化与汇总表；多 SELECT 多图，GROUP BY 多折线且表中每组一行；空 SELECT 返回原始事件。可改数据集、对比时间范围。本场景据此输出排查查询简报。禁止声称「生产根因已锁定」或索要团队 API Key。`,
+    outcomes: [
+      "源未披露量化「MTTR 下降」；公开文只描述子句、关系前缀与结果形态。",
+      "能把「只会按单字段过滤 / 与 Sentry开PR 或 LangSmith 点检混淆」拆开。",
+      "为一次错误链路收窄提供可落地的查询提问清单。",
+    ],
+    caveats: [
+      "具体可视化算子与 Calculated Fields 以配套专页为准。",
+      "关系字段在 UI 外的查询 API 能力不在本条一手源范围。",
+      "上面写的是产品机制，不是你团队数据集里已有字段字典。",
+    ],
+    prompts: [
+      {
+        title: "Honeycomb Query Builder 简报",
+        body: `你是 Honeycomb Query Builder 助手。只给排查查询核对简报，不要编造已定位根因。
+
+症状：{{symptom}}
+时间窗：{{time_range}}
+已知路由/span 名：{{known_names}}
+数据集认知：{{dataset}}
+
+输出 Markdown：
+1. 建议的 SELECT/WHERE/GROUP BY 骨架
+2. 是否需要 root./any./child. 等关系前缀
+3. 结果图/表如何解读提问
+4. 下一步人工 Run Query 验收
+禁止索要团队 API Key；禁止声称「根因已确认」。`,
+      },
+      {
+        title: "查询无结果/过宽提纲",
+        body: `查询空白或返回过多噪声，请写收窄提纲。
+
+当前子句摘要：{{clauses}}
+预期 trace 形态：{{trace_shape}}
+
+输出：
+1. 是否用错关系前缀或 AND 过严
+2. 是否时间窗/数据集不对
+3. 是否应先空 SELECT 看原始事件
+4. 人工下一步
+不要伪造「已找到唯一根因」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.honeycomb.io/investigate/query/build",
+      label: "Honeycomb Documentation · Build a Query",
+      date: "2026-09-29",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "324",
+    slug: "turso-embedded-replicas-brief",
+    title: "Turso Embedded Replicas 本地副本简报",
+    summary: "按 url/syncUrl、读本地写远端、syncInterval/offline 与使用注意，整理嵌入式副本简报；不代持 authToken、不在无盘环境硬开。",
+    description:
+      "面向独立开发者：把「应用旁挂本地 SQLite 读副本并与 Turso Cloud 同步」写成可对账步骤，区别于 Cloudflare D1 Workers 绑定与 Neon 数据分支。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.turso.tech/features/embedded-replicas/introduction",
+    sourceLabel: "Turso Docs·Embedded Replicas",
+    upvotes: 186,
+    trending: false,
+    tags: [
+      "Turso",
+      "Embedded Replicas",
+      "libSQL",
+      "SQLite",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴部署形态（VPS/移动/是否 serverless 无盘）、读写延迟目标、是否需要 offline，以及是否已有远程库 URL",
+      "Agent 按官方 Embedded Replicas 要点输出：本地 url + syncUrl→读写路径→定期 sync/read-your-writes→注意项与 Sync 推荐提问清单",
+      "人工用 libSQL 客户端配置；Agent 不回显 authToken、不在无文件系统环境声称「已启用副本」",
+    ],
+    tips: [
+      "默认写走远程主库，成功后再反映到本地；offline: true 才可先写本地。同步中勿另开同一本地库文件，以免损坏",
+      "与 cloudflare-d1-sqlite-workers-brief / neon-database-branching-brief 不同：本条是应用内嵌入式读副本+云端主库同步，不是 Workers 托管 SQLite，也不是 Neon CoW 分支",
+    ],
+    approach: `VPS 或弱网移动场景想要微秒级本地读，又要把写入汇到云端主库——Embedded Replicas 把远程库复制进应用进程旁的本地文件。
+
+Turso Docs《Embedded Replicas》（dateModified 可核）说明：嵌入式副本在本地保留 Turso Cloud 数据库的只读副本；读从本地文件以微秒级服务，写默认发到云端主库再反映回副本；生产可用。文档同时提示：新项目若需要 sync，更推荐 Turso Sync（基于逻辑 CDC，本地优先写与显式 push/pull，带宽与延迟通常优于页级复制的 Embedded Replicas）。机制：配置本地文件为 url，远程库为 syncUrl；读始终来自本地；写默认发往 syncUrl（非先写本地），可读己之写（可关）；可用 syncInterval 周期性同步，亦可手动 sync()。支持 encryptionKey 静态加密。用法上 TypeScript 等 SDK 传入 url/syncUrl/authToken（及可选 syncInterval、offline）。注意：同步过程中不要另开该本地库（可能损坏）；无文件系统的 serverless 环境不能用；某些写入/重启/本地文件失效可能导致同步帧数多于预期；一帧约 4KB。本场景据此输出嵌入式副本简报。禁止回显 authToken 或声称「生产副本已同步完成」。`,
+    outcomes: [
+      "源未披露量化「读延迟下降」；公开文只描述读写路径、同步选项与限制。",
+      "能把「当 D1 用 / 在无盘函数里硬开 / 与 Neon 分支混淆」拆开。",
+      "为 VPS/移动本地读加速提供可落地的配置提问清单。",
+    ],
+    caveats: [
+      "新项目文档更推荐 Turso Sync；选型前对照 Sync 专页，勿默认 Embedded Replicas 为唯一同步方案。",
+      "各语言 SDK 构造函数参数名略有差异，以对应示例为准。",
+      "上面写的是产品机制，不是你账号下数据库已同步字节数。",
+    ],
+    prompts: [
+      {
+        title: "Turso Embedded Replicas 简报",
+        body: `你是 Turso Embedded Replicas 助手。只给本地副本核对简报，不要编造已同步成功。
+
+部署形态：{{deploy_shape}}
+是否有持久磁盘：{{has_disk}}
+读写目标：{{rw_goal}}
+是否考虑 Turso Sync：{{consider_sync}}
+
+输出 Markdown：
+1. url/syncUrl 与读写路径
+2. syncInterval/offline/read-your-writes 提问
+3. serverless 无盘是否直接不适用
+4. 非生产验收步骤
+禁止索要或回显 authToken；禁止声称生产已就绪。`,
+      },
+      {
+        title: "同步异常/损坏风险提纲",
+        body: `本地副本不同步或怀疑文件损坏，请写排查提纲。
+
+症状：{{symptom}}
+是否同步时另开了本地库：{{opened_elsewhere}}
+近期是否清过本地文件：{{wiped_local}}
+
+输出：
+1. 是否违反「同步中勿另开」
+2. 是否应全量重同步
+3. 是否场景本应改用 Sync
+4. 人工验证顺序
+不要伪造「数据已一致」；不要索要 token。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.turso.tech/features/embedded-replicas/introduction",
+      label: "Turso Documentation · Embedded Replicas",
+      date: "2026-10-27",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "325",
+    slug: "cloudflare-workers-kv-brief",
+    title: "Cloudflare Workers KV 键值存储简报",
+    summary: "按全局低延迟 KV、Workers 绑定与 REST、典型读多写少场景，整理接入简报；不代持 API Token、不代清空生产命名空间。",
+    description:
+      "面向独立开发者：把「在 Workers 旁挂边缘键值缓存/配置」写成可对账步骤，区别于同厂 D1 SQLite 与 Cron Trigger。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://developers.cloudflare.com/kv/",
+    sourceLabel: "Cloudflare Docs·Workers KV",
+    upvotes: 201,
+    trending: false,
+    tags: [
+      "Cloudflare",
+      "Workers KV",
+      "键值存储",
+      "边缘",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴用途（缓存/配置/偏好/鉴权材料元数据）、读写比、是否已有 Worker，以及是否需从非 Workers 客户端访问",
+      "Agent 按官方 Workers KV Overview 要点输出：适用场景→绑定 put/get/list/delete→wrangler kv_namespaces→REST/SDK 提问清单",
+      "人工创建 namespace 并绑定；Agent 不代持 API Token、不代批量清空生产键",
+    ],
+    tips: [
+      "Overview 示例场景偏缓存、用户配置/偏好、鉴权细节存储；经 Workers Bindings 或外部 REST/SDK 访问",
+      "与 cloudflare-d1-sqlite-workers-brief / cloudflare-workers-cron-trigger-brief 不同：本条是边缘 KV，不是托管 SQLite，也不是定时触发器",
+    ],
+    approach: `Worker 里需要全球可读的配置开关或热点 API 响应缓存，却还在用 D1 硬查单行——Workers KV 面向高读、低延迟键值。
+
+Cloudflare Docs《Workers KV》Overview（Last updated / dateModified 可核）说明：Workers KV 可全球存储与检索数据，用于构建高读量、低延迟的动态 API 与站点；示例用途包括缓存 API 响应、存用户配置/偏好、存用户鉴权细节。可从 Cloudflare Workers 经 Bindings 访问，或从外部应用经 REST API 访问。文档给出 put/get/list/delete 的 Worker 示例，以及 wrangler 中 kv_namespaces 绑定片段；并展示用 API Email/Key 的 curl 与官方 SDK 对 namespace 值进行更新/读取/删除/列出。页面链出 Key-value storage、Wrangler、Bindings、Jurisdictions 等后续主题。本场景据此输出 KV 接入简报。禁止回显 API Token 或声称「生产命名空间已清空/已迁移」。`,
+    outcomes: [
+      "源未披露量化「缓存命中率」；公开文只描述用途示例、绑定与 REST 访问方式。",
+      "能把「当 SQL 用 / 与 D1 或 Cron 混淆」拆开。",
+      "为边缘配置与读多缓存提供可落地的提问清单。",
+    ],
+    caveats: [
+      "一致性模型、单键写频率与套餐限额见 Limits/How KV works 等专页；Overview 不替代一致性设计。",
+      "把鉴权细节放入 KV 仍须评估暴露面与加密；本条不代做威胁建模结论。",
+      "上面写的是产品机制，不是你账号下现有 namespace 键清单。",
+    ],
+    prompts: [
+      {
+        title: "Workers KV 接入简报",
+        body: `你是 Cloudflare Workers KV 助手。只给键值接入核对简报，不要编造已绑定成功。
+
+用途：{{use_case}}
+读写比：{{rw_ratio}}
+是否已有 Worker：{{has_worker}}
+是否需要外部 REST：{{need_rest}}
+
+输出 Markdown：
+1. 是否贴合 Overview 示例场景
+2. 绑定 vs REST 选型提问
+3. wrangler kv_namespaces 验收
+4. 非生产 put/get 验证
+禁止索要 API Token；禁止代清空生产 namespace。`,
+      },
+      {
+        title: "读到旧值/写失败提纲",
+        body: `客户端读到旧配置或写入报错，请写排查提纲。
+
+时间线：{{timeline}}
+键名形态：{{key_shape}}
+访问路径（Worker/REST）：{{path}}
+
+输出：
+1. 是否误用 KV 当强一致主库
+2. 绑定 ID 是否指错 namespace
+3. 是否应回看 Limits/一致性专页
+4. 人工下一步
+不要伪造「已全局一致」；不要索要 Token。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developers.cloudflare.com/kv/",
+      label: "Cloudflare Documentation · Workers KV",
+      date: "2026-10-12",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
