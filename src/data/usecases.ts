@@ -21685,6 +21685,455 @@ CRM/邮箱：{{stack}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "386",
+    slug: "metabase-ten-clojure-subagents",
+    title: "Metabase：十条领域子代理，给 50 万行 Clojure 减上下文税",
+    summary: "对照团队工程实践：按子系统写约 150 行专家 markdown；披露 10 席、各约 2k–3k token、QP 68 段中间件与并行专家评审；不代你吞吐、不外推。",
+    description:
+      "面向超大单体/多方言查询栈、Agent 一换域就烧光上下文的后端团队：把「再开一个通用会话」写成可对账的子代理路由+领域前置知识+并行专家会诊，区别于两触点编排仓与 hooks 工作流引擎。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.metabase.com/blog/ten-custom-subagents",
+    sourceLabel: "metabase.com·Bryan Maass / Metabase 工程实践帖",
+    upvotes: 277,
+    trending: false,
+    tags: [
+      "Claude Code 子代理",
+      "Clojure",
+      "领域专家",
+      "上下文窗口",
+      "MBQL",
+    ],
+    howItWorks: [
+      "粘贴代码库大致行数、自然域边界，以及希望并行会诊的子系统",
+      "Agent 按实践帖输出：子代理 frontmatter 路由词→领域知识/路径/坑点/测法结构→并行 @ 专家提问清单",
+      "人工保留合入与领域描述审阅；Agent 不代你声称已消灭上下文税",
+    ],
+    tips: [
+      "源帖：把 frontmatter description 写成路由规则（含 MBQL/HoneySQL 等触发词），比写空泛职位名更重要",
+      "与 batuhan-yika-orchestrator-two-touchpoints / nick-tune-claude-hooks-workflow-engine 不同：本条是大仓子系统专家子代理减探索税，不是编排仓两触点或 hooks 引擎",
+    ],
+    approach: `Bryan Maass 在 Metabase 工程博客《How we built ten custom subagents to tame a 500K-line Clojure codebase》（页内 Apr 27, 2026；JSON-LD datePublished 2026-04-27 → 2026-04-27）写明：后端约 50 万行 Clojure，跨查询处理器、权限、驱动、通知、序列化、搜索等；用 Claude Code 时每换子系统就 grep/读文件，把主会话上下文吃光，默认子代理也要重新摸索。
+
+做法是按自然域边界做十条自定义子代理（markdown）：YAML frontmatter 含 name/description/model（如 opus）与 memory: user（持久目录 ~/.claude/agent-memory/<name>/）；正文按「领域知识 → 代码路径 → 调查法 → 坑点 → 测试策略」。作者用 Claude 协助写「职位描述」再人工审，每条约 2,000–3,000 token（约 150 行）。十席含 mbql-expert、permissions-expert、platform-expert、enterprise-expert、content-expert、notifications-expert、drivers-and-sync、search-expert、ai-expert、transforms-expert。
+
+重点案例 mbql-expert：QP 为约 68 段中间件管线（预处理约 44、执行约 8、后处理约 13 等），跨约 18 种 SQL 方言；专家已内化「部分中间件因后续引入结构需再跑」等不可从目录名推断的坑，故问 Redshift 嵌套 join 错结果时先推理阶段与驱动覆盖，而非盲目 grep。用法可口语委托或 @ 点名，并可让查询与权限专家并行会诊以免上下文串味。本场景据此输出「领域子代理减税」提纲。禁止建议无人值守合入权限/驱动改动。`,
+    outcomes: [
+      "源披露约 50 万行 Clojure、十条子代理、各约 2k–3k token（约 150 行）、QP 约 68 段中间件与可并行专家会诊等团队口径；属 Metabase 后端叙事，不可外推为你的会话成本、缺陷率或发版吞吐。",
+      "能把「再开通用 Agent」与「按域前置知识 + 路由描述 + 持久 memory」拆开。",
+      "为 description 过泛导致不委派、目录改名与跨域改动漏会诊提供提问清单。",
+    ],
+    caveats: [
+      "数字与管线结构绑定 Metabase QP/权限模型；换语言栈不可照搬席位数与 token 预算。",
+      "子代理仍可能错；并行专家输出需人整合，合入必须人审。",
+      "上面写的是 Metabase 工程实践帖，不是 Anthropic 子代理产品官文。",
+    ],
+    prompts: [
+      {
+        title: "领域子代理编队简报",
+        body: `你是大仓 Claude Code 子代理顾问。只根据用户约束写提问清单，不要编造已上线编队。
+
+仓规模与语言：{{repo_scale}}
+自然域边界：{{domains}}
+是否允许并行会诊：{{parallel_ok}}
+
+输出 Markdown：
+1. 拟设席位与 frontmatter description 路由词
+2. 每席「知识/路径/坑点/测法」提纲
+3. 口语委托与 @ 并行示例
+4. 人工合入与描述审阅清单
+禁止建议自动 merge；禁止声称上下文税已为零。`,
+      },
+      {
+        title: "跨域改动漏会诊复盘提纲",
+        body: `一次改动同时碰查询编译与权限图，只问了单一专家后合入翻车，请写复盘提纲。
+
+改动摘要：{{change}}
+翻车现象：{{symptom}}
+
+输出：
+1. 是 description 路由失败、未并行会诊，还是人跳过专家意见
+2. 最小门禁补丁（触发词/清单）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「子代理已永久正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.metabase.com/blog/ten-custom-subagents",
+      label: "metabase.com · How we built ten custom subagents to tame a 500K-line Clojure codebase",
+      date: "2026-04-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "387",
+    slug: "rye-fix-product-data-extraction-skill",
+    title: "Rye：把「修商品抽取」收成带验收闸的 Claude Code skill",
+    summary: "对照电商基建团队：失败页入库后一键诊断→worktree→修→对原 URL 验收→回归测→开 PR；披露三环（构建/调查/运维）与 /i-hate-pushups 家务；不代你 SLA、不外推。",
+    description:
+      "面向开放网页抓取/结账执行、凌晨站点改版就炸的 agentic commerce 团队：把「再手搓一轮修抽取」写成可对账的可验证 skill 循环，区别于履约门户替换与卖家晨间杂务 API。",
+    categories: [
+      "ecommerce",
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://rye.com/blog/building-rye-with-claude-code",
+    sourceLabel: "rye.com·Rye 工程实践帖",
+    upvotes: 278,
+    trending: false,
+    tags: [
+      "Claude Code skill",
+      "商品数据抽取",
+      "验收闸",
+      "代理电商",
+      "事故调查",
+    ],
+    howItWorks: [
+      "粘贴抽取失败是否已落盘、验收是否必须对原 URL，以及 PR 是否要人审",
+      "Agent 按实践帖输出：手搓循环→skill 步骤与 verification 闸→调查/运维 skill 提问清单",
+      "人工保留合入与事故处置；Agent 不代你声称抽取 SLA 已达标",
+    ],
+    tips: [
+      "源帖：相关推荐/also-bought 会让「测过绿」仍抽错 SKU——必须把「对请求 URL 验收」写进 skill",
+      "与 trmnl-claude-replace-shiphero / alex-willen-amazon-seller-daily-claude 不同：本条是开放网页商品抽取修复 skill，不是自建履约门户或 Seller 后台晨邮",
+    ],
+    approach: `Rye 工程博客《How We Build Rye With Claude Code: Engineering with AI Agents》（页内 Apr 15, 2026；JSON-LD datePublished 2026-04-15 → 2026-04-15）写明：团队做 agentic commerce 的结账执行与商品数据层，生产问题常是凌晨商家改版导致抽取失败、代理区域被限流、或昨日绿测的结账今日静默失败。
+
+他们把日常收成三环：① Building——把反复手搓的循环写成 skill；英雄例 \`/fix-product-data-extraction\`：对可修失败（非硬挡爬）从内部 capture store 拉 HTML→本地跑抽取看错→判定页面无可抽数据或修代码→开 git worktree 实现→相对请求 URL 做端到端验收→新颖 bug 写回归测→开 PR；人只审与合入。强调第 6 步验收：同页常有推荐/also-bought 多套商品结构，「修好」却抽错 SKU 而测仍绿。另例：代理选择逻辑用 Claude 扫配置空间，自称若手探约五倍时长，下午发完。② Investigating——跨 GCP/AWS/Grafana/Mongo 等碎片日志，用 Claude 关联到工作假说，产出必须人核。③ Operating——如 \`/i-hate-pushups\` 把开放 PR 与 Linear 工单对齐等家务自动化。原则：目标式提示优于逐步剧本；漂移早纠；编码循环而非单次任务；生产信任的 skill 必须自带「是否真的好了」闸。本场景据此输出「可验证抽取修复 skill」提纲。禁止建议无人值守对生产抽取规则直接合入。`,
+    outcomes: [
+      "源披露 `/fix-product-data-extraction` 全链路、对原 URL 验收闸、代理逻辑「手探约五倍时长/下午发完」以及 `/i-hate-pushups` 家务等团队口径；属 Rye 代理电商叙事，不可外推为你的抽取成功率、MTTR 或工时。",
+      "能把「再手修一次抽取」与「capture 落盘 + skill + 验收闸 + 人审 PR」拆开。",
+      "为抽错推荐位商品、日志假说未核与家务 skill 误改看板提供提问清单。",
+    ],
+    caveats: [
+      "依赖事先建好的失败页 capture；无落盘则 skill 无原料。",
+      "调查输出首轮常不完美，必须人核再动生产。",
+      "上面写的是 Rye 工程实践帖，不是 Anthropic/Claude 官文。",
+    ],
+    prompts: [
+      {
+        title: "抽取修复 skill 简报",
+        body: `你是代理电商抽取工程顾问。只根据用户约束写提问清单，不要编造已上线 skill。
+
+失败是否落盘：{{capture_store}}
+验收标准：{{verify_rule}}
+合入人审：{{human_review}}
+
+输出 Markdown：
+1. 手搓循环→skill 步骤映射
+2. 「对请求 URL 验收」防抽错推荐位设计
+3. 回归测与 PR 证据清单
+4. 人工合入门禁
+禁止建议自动 merge 生产抽取；禁止声称 SLA 已达标。`,
+      },
+      {
+        title: "绿测抽错 SKU 复盘提纲",
+        body: `回归测全绿但线上抽成 also-bought 商品，请写复盘提纲。
+
+页面特征：{{page_traits}}
+测断言：{{assertions}}
+
+输出：
+1. 是缺 URL 对齐验收、断言过宽，还是 capture 样本偏差
+2. skill 最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「抽取已永不错 SKU」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://rye.com/blog/building-rye-with-claude-code",
+      label: "rye.com · How We Build Rye With Claude Code: Engineering with AI Agents",
+      date: "2026-04-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "388",
+    slug: "lars-clara-consultancy-claude-secretary",
+    title: "Lars：Clara——有脾气的 Claude Code 顾问行政秘书",
+    summary: "对照个人顾问实践：PARA 纯 markdown + 人设 CLAUDE.md + MCP/cron；披露约一年打磨、邮箱白名单问答与最小可用三件套；不代你接单、不外推。",
+    description:
+      "面向一人咨询社被客户项目、服务器笔记与 RSVP 淹没的创始人：把「再装一个待办 App」写成可对账的人设优先工作区+记忆分层+邮件只读答询，区别于 Muninn 域秘书与 Personal OS n8n。",
+    categories: [
+      "career",
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://larsp.de/posts/clara-claude-code-secretary/",
+    sourceLabel: "larsp.de·Lars Peters 实践帖",
+    upvotes: 279,
+    trending: false,
+    tags: [
+      "顾问行政",
+      "PARA",
+      "CLAUDE.md 人设",
+      "IMAP",
+      "cron briefing",
+    ],
+    howItWorks: [
+      "粘贴是否已有 markdown 库、是否要邮箱入口，以及禁止自动执行的动作",
+      "Agent 按实践帖输出：PARA+人设→记忆分层→/briefing 与邮件白名单提问清单",
+      "人工保留破坏性操作确认；Agent 不代你声称顾问行政已无人值守",
+    ],
+    tips: [
+      "源帖：人设比工具更赚——中立助手只会把文件夹聊得更碎；有观点的角色才会逼你决策",
+      "与 rutger-muninn-markdown-domain-secretary / tobias-personal-os-n8n-claude-todoist 不同：本条是咨询社 PARA+德文人口头人设+IMAP 白名单，不是通用域秘书或 n8n Personal OS",
+    ],
+    approach: `Lars Peters 在《Building Clara: a Claude Code setup for running a consultancy》（页内/JSON-LD datePublished 2026-05-19 → 2026-05-19）写明：约一年来把顾问行政收到名为 Clara 的 Claude Code 布置——客户项目、服务器笔记、周期性任务、跟进、日记，以及会回话的收件箱。无自研应用，只是约定与接线。
+
+三块：① PARA 纯 markdown 仓（1-projects / 2-areas / 3-resources / 4-archive）+ JOURNAL.md / RSVP.md；项目 README 含状态、任务 emoji 标签与日志（文内 DATEV 例展示生产导入与后续通话记录）。Syncthing 多机同步。② CLAUDE.md 人设：简短直接、可顶嘴、可调侃拖延；Clara 用德语对话。③ 自动记忆目录（MEMORY.md 索引 + user/feedback/project/reference 分文件），只记仓库状态读不出的稳定事实与纠偏。MCP 接 Sunsama、IMAP、日历；cron 做每日 commit 与 /briefing。邮箱模式：白名单发件人→内容作 prompt→纯文本回复；默认可读仓，删除/归档等破坏动作需明确确认，且不论谁问都不谈凭证。作者称最小已回本组合是：PARA 仓 + 带名字与约定的 CLAUDE.md + 早上手跑 /briefing；其余后加。本场景据此输出「有脾气顾问秘书」提纲。禁止建议对未知发件人开放写权限或无人值守删档。`,
+    outcomes: [
+      "源披露约一年打磨 Clara、PARA+人设优先、MCP（Sunsama/IMAP/日历）、cron /briefing、邮箱白名单纯文本答询以及「最小三件套已回本」等作者窗口口径；属一人咨询社叙事，不可外推为你的接单量、回信时延或行政省时。",
+      "能把「再装待办/笔记 SaaS」与「可迁移 markdown 工作区 + 人设 + 记忆分层」拆开。",
+      "为中立人设失效、记忆写入噪音与邮件越权提供提问清单。",
+    ],
+    caveats: [
+      "强依赖本人维护约定与白名单；人设漂移会重新变成聊天式归档。",
+      "MCP/OAuth 与邮件令牌失效会打断入口；破坏动作必须仍要人确认。",
+      "上面写的是个人博客实践帖，不是 Claude/Sunsama 官文。",
+    ],
+    prompts: [
+      {
+        title: "顾问秘书最小布置简报",
+        body: `你是一人咨询社工作区顾问。只根据用户约束写提问清单，不要编造已上线 Clara。
+
+现有笔记形态：{{notes}}
+是否要邮箱入口：{{email_gate}}
+禁止自动动作：{{forbidden_actions}}
+
+输出 Markdown：
+1. PARA 顶层与 JOURNAL/RSVP 用途
+2. CLAUDE.md 人设与约定要点
+3. /briefing 与记忆分层边界
+4. 白名单邮件只读答询与人确认清单
+禁止建议对未知发件人开放写删；禁止声称行政已全自动。`,
+      },
+      {
+        title: "邮件越权复盘提纲",
+        body: `非白名单或钓鱼语要求「归档所有过期项目」，代理差点执行，请写复盘提纲。
+
+来信摘要：{{mail}}
+代理拟动作：{{planned}}
+
+输出：
+1. 是白名单失效、缺破坏确认，还是人设未禁凭证话题
+2. 门禁最小补丁
+3. 下次验收
+4. 人工确认清单
+不要伪造「邮箱入口已永安全」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://larsp.de/posts/clara-claude-code-secretary/",
+      label: "larsp.de · Building Clara: a Claude Code setup for running a consultancy",
+      date: "2026-05-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "389",
+    slug: "robson-multilang-invoice-claude-api",
+    title: "Robson：多语言顾问发票——Claude API 把月行政从约 90 分钟压到约 12",
+    summary: "对照个人效率实践：Airtable→脚本→多语发票+跟催；披露二月 11 张约 34 分钟、旧均约 22 分钟/张、月 API 约 €1.14、约 40 张仅 3 张手改；不代你合规、不外推。",
+    description:
+      "面向多语种客户开票被语气与税条款拖死的一人顾问：把「再买一套单语开票 SaaS」写成可对账的表单驱动生成+硬编码税条款库+人日检日志，区别于 Invoice Kitten 多 Agent 拼 App 与 Sheila 会计 Agents。",
+    categories: [
+      "efficiency",
+      "career",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://soloaikit.com/freelancer-automates-invoicing-with-claude-api/",
+    sourceLabel: "soloaikit.com·Robson Penassi 实践帖",
+    upvotes: 280,
+    trending: false,
+    tags: [
+      "多语言发票",
+      "Claude API",
+      "Airtable",
+      "税条款库",
+      "一人顾问",
+    ],
+    howItWorks: [
+      "粘贴开票语言种类、是否允许自动发信，以及税条款是否已有会计师审定文本",
+      "Agent 按实践帖输出：表单字段→系统/用户提示与语气档→税条款库与日检提问清单",
+      "人工保留税务合规与失败重发；Agent 不代你声称发票已自动合规",
+    ],
+    tips: [
+      "源帖：不要让模型即兴写增值税/反向征收措辞——把审定条款放进提示库按客户类型选用",
+      "与 invoice-kitten-shopify-multi-agent-batches / soapbox-sheila-accounting-agents-md 不同：本条是一人多语开票+跟催文案生成，不是 Shopify 发票 App 冲刺或会计 Agents.md 编队",
+    ],
+    approach: `Robson Penassi 在《How I Automated Invoicing in 2 Hours With Claude API》（页内/元数据 2026-05-27 → 2026-05-27）写明：马德拉一人房地产顾问，客户含葡/英/德/荷等，发票需多语言、不同付款条款与语气；FreshBooks/Wave/表格都算得清账，却仍要他手写描述与跟催。自称开票行政曾约每月 90 分钟，2026-01 起接入 Claude API 后目标压到约 12 分钟。
+
+链路：填 Airtable 表单（客户、服务、金额、语言、备注）→ Make.com 在行标「ready」时触发→（其实现含）小 Python 经 webhook 调 claude-3-5-sonnet → 生成发票条目/封面信/未付款约 7 日跟催 → Google Doc 模板导出 PDF 经 Gmail API 发出 → 回写 Airtable 日志；自称端到端常不到 90 秒，每日看日志。提示上用系统人设（马德拉房产顾问、葡税语境）+ 按客户类型的正式度指令；约三周试四种结构后定稿。
+
+窗口数据：2026-02 约 28 天内 11 单咨询、11 张发票多语混合；旧 Toggl 口径约 22 分钟/张（含信与跟催），当月开票行政合计约 34 分钟（含填表约 2–3 分钟/客户），自称约省 4 小时；当月 API 约 €1.14；自 1 月起约 40 张仅 3 张需手改；四个月 API 自称不足 €5，droplet 约 $6/月等。踩坑：模型曾写错欧盟内服务反向征收措辞，会计师拦住后改为硬编码税条款库供选用；Gmail token 过期致失败发送，现靠日检；葡语默认偏书面正式，需提示「熟悉但专业」语域。本场景据此输出「多语开票生成」提纲。禁止建议无人值守发明税则或跳过会计师审条款。`,
+    outcomes: [
+      "源披露月行政约 90→约 12 分钟目标、二月 11 张合计约 34 分钟、旧均约 22 分钟/张、当月 API 约 €1.14、约 40 张仅 3 张手改等作者窗口口径；属马德拉一人顾问叙事，不可外推为你的回款周期、合规结果或月省时。",
+      "能把「再买单语开票 SaaS」与「表单 + 语气档提示 + 税条款库 + 日检日志」拆开。",
+      "为税则幻觉、发送失败无告警与语域过硬提供提问清单。",
+    ],
+    caveats: [
+      "IVA/NIF/反向征收等合规必须人与会计师负责；模型不得即兴立法。",
+      "链路含 Make/webhook/Gmail token，失败要有日检，不能当零运维。",
+      "上面写的是个人实践帖，不是 Intuit/税务局官文。",
+    ],
+    prompts: [
+      {
+        title: "多语开票生成简报",
+        body: `你是一人顾问开票自动化顾问。只根据用户约束写提问清单，不要编造已合规。
+
+语言与客户类型：{{langs_clients}}
+是否自动发信：{{auto_send}}
+已有税条款库：{{tax_library}}
+
+输出 Markdown：
+1. 表单字段与「ready」门禁
+2. 系统人设 + 语气档提示要点
+3. 税条款库选用规则（禁止即兴）
+4. 人工日检与会计师抽检清单
+禁止建议模型自创税率；禁止声称发票已自动税务合规。`,
+      },
+      {
+        title: "税措辞翻车复盘提纲",
+        body: `发出的发票被会计师指出反向征收措辞不当，请写复盘提纲。
+
+原文摘录：{{clause}}
+客户类型：{{client_type}}
+
+输出：
+1. 是条款库缺失、选错模板，还是允许模型即兴
+2. 库条目最小补丁与回归样例
+3. 发信前门禁
+4. 人工确认清单
+不要伪造「税务风险已自动消除」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://soloaikit.com/freelancer-automates-invoicing-with-claude-api/",
+      label: "soloaikit.com · How I Automated Invoicing in 2 Hours With Claude API",
+      date: "2026-05-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "390",
+    slug: "tudovu-soc2-remediation-agent",
+    title: "Tudovu：SOC 2 发现项——五阶段人闸的 Claude 修复代理",
+    summary: "对照安全合规实践：核验→爆炸半径→问人→CloudFormation 补丁 PR→存证；披露可省数十小时、约五分钟出首份影响分析+草稿 PR；不代你过审、不外推。",
+    description:
+      "面向小团队被 SOC 2 扫描发现项卡住成交的创始人/安全负责人：把「丢给工程师慢慢改」写成可对账的只读勘察+人答闸+草稿 PR，区别于单调查员 RCA 与通用 CVE 升级简报。",
+    categories: [
+      "security",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://tudovu.com/blog-post/soc2-on-aws",
+    sourceLabel: "tudovu.com·Easmond Tsewole 实践帖",
+    upvotes: 281,
+    trending: false,
+    tags: [
+      "SOC 2",
+      "CloudFormation",
+      "人闸",
+      "Prowler",
+      "合规修复",
+    ],
+    howItWorks: [
+      "粘贴 GRC 发现项来源、AWS 是否仅只读凭证，以及是否允许开草稿 PR",
+      "Agent 按实践帖输出：五阶段门禁→禁止越权清单→首份影响分析验收提问",
+      "人工保留答问与合入；Agent 不代你声称已通过 SOC 2 审计",
+    ],
+    tips: [
+      "源帖：代理停在政策/供应商评审/权限复核/取代审计师之外——修基础设施发现项，不冒充审计",
+      "与 nofire-single-investigator-eval-cut / cve-advisory-upgrade-impact-brief 不同：本条是 SOC 2 发现项五阶段人闸修复代理，不是单调查员事故 RCA 或通用 CVE 升级简报",
+    ],
+    approach: `Easmond Tsewole 在 Tudovu《SOC 2 on AWS, How we built an AI Agent that Automatically Remediates SOC 2 Issues》（页内 August 12, 2026；JSON-LD datePublished 2026-08-12，文内 Updated September 15, 2026 → 主发布日 2026-08-12）写明：对小团队，SOC 2 常花数十到数百小时；联合创始人 David Thompson 多年经历是扫描出发现项→丢工程→补丁慢→证据散。他们开源代理（github.com/tudovu/soc-2-remediation-agent）：在基础设施仓用 Claude Code，喂 GRC 发现项。
+
+五阶段：① Verify——对照环境判断能否修；② Assess blast radius——查近期访问与影响，写 markdown 影响分析；③ Ask the human——未获答不继续；④ Remediate——借 Prowler 片段写 CloudFormation 补丁并开草稿 PR；⑤ Document——提交发现与证据。明确不做：安全政策/行为准则/风险登记、供应商 DPA、权限复核、取代审计师。前置：本地 AWS 只读凭证 + Claude Code；自称约五分钟可出首份影响分析与草稿 PR。叙事口径为可省数十小时级人力。本场景据此输出「SOC 2 发现项人闸修复」提纲。禁止建议写入生产无审合入或跳过审计师。`,
+    outcomes: [
+      "源披露五阶段人闸、开源仓、约五分钟首份影响分析+草稿 PR，以及「可省数十小时」等作者/团队口径；属 Tudovu SOC 2 on AWS 叙事，不可外推为你的认证周期、审计结论或工时。",
+      "能把「丢工程师慢慢改」与「只读勘察 + 问人闸 + 草稿 PR + 存证」拆开。",
+      "为越权写政策、无答仍继续与误合入高爆炸半径补丁提供提问清单。",
+    ],
+    caveats: [
+      "代理不替代审计师与管理评审；政策与供应商尽调仍要人做。",
+      "CloudFormation 补丁必须人审；爆炸半径分析首轮可能不完整。",
+      "上面写的是 Tudovu 实践/产品叙事帖，不是 AICPA/审计商官文。",
+    ],
+    prompts: [
+      {
+        title: "SOC 2 发现项修复简报",
+        body: `你是 SOC 2 基础设施修复顾问。只根据用户约束写提问清单，不要编造已过审。
+
+发现项来源：{{grc_source}}
+凭证范围：{{aws_scope}}
+是否开草稿 PR：{{draft_pr}}
+
+输出 Markdown：
+1. 五阶段门禁与停点
+2. 影响分析必含字段
+3. 人答问题模板
+4. 人工合入与证据清单
+禁止建议无审合入生产；禁止声称已获得 SOC 2 认证。`,
+      },
+      {
+        title: "爆炸半径误判复盘提纲",
+        body: `草稿 PR 合并后影响了共用网络控件，请写复盘提纲。
+
+发现项：{{finding}}
+影响分析摘要：{{impact_md}}
+
+输出：
+1. 是勘察范围不足、人答闸被跳过，还是模板片段不适用
+2. 回滚与最小热修
+3. 阶段 2/3 验收补丁
+4. 人工确认清单
+不要伪造「合规风险已自动清零」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://tudovu.com/blog-post/soc2-on-aws",
+      label: "tudovu.com · SOC 2 on AWS, How we built an AI Agent that Automatically Remediates SOC 2 Issues",
+      date: "2026-08-12",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
