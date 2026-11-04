@@ -18128,6 +18128,463 @@ eval 是否可被 Agent 编辑：{{eval_mutable}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "346",
+    slug: "exe-six-months-agents-botd-vms",
+    title: "exe.dev：半年只让 Agent 写码，用一次性 VM + botd 并行",
+    summary: "对照团队实践：作者半年禁止手写代码，把并行 Agent 从共享本机迁到可丢弃 Linux VM，并用 botd 管会话/审 diff；凭据走代理、外部写仅限测试环境；不代你开 YOLO、不外推吞吐。",
+    description:
+      "面向要并行多 Agent 又不想本机互踩的工程者：把「再开一个终端」写成可对账的隔离 VM + 控制面 + 人审价值，区别于本机签名发版环与 Durable Object 去 VM。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://blog.exe.dev/engineering-with-ai",
+    sourceLabel: "blog.exe.dev·Maisem Ali 实践帖",
+    upvotes: 222,
+    trending: false,
+    tags: [
+      "并行 Agent",
+      "一次性 VM",
+      "botd",
+      "凭据代理",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴当前是否多 Agent 共本机、能否接受可丢弃 VM、以及外部读写边界（日志/Git/支付沙箱）",
+      "Agent 按实践帖输出：共享本机冲突→worktree/容器缺口→每任务一机→控制面（会话/diff/手机）→外部访问最坏情况提问清单",
+      "人工保留合并与「是否值得合入」判断；Agent 不代你把生产写权限放进 YOLO VM、不声称已达某吞吐",
+    ],
+    tips: [
+      "源帖关键句：工具能告诉你改动「能跑」，但不能告诉你该不该进系统——绿测与截图仍可能被扔掉",
+      "与 anyrouter-agent-merge-deploy-loop / camelai-durable-object-coding-agent / mainplane-control-plane-workers 不同：本条是「半年禁手写 + 可丢弃 VM 并行 + botd 控制面 + 凭据代理」的个人/团队并行实践，不是本机签名合入环、DO 去 VM，或多机 WireGuard 控制面产品",
+    ],
+    approach: `exe.dev 的 Maisem Ali 在《Six Months of Writing Code Exclusively With Agents》（JSON-LD/meta datePublished=2026-08-27T13:00:00Z → 2026-08-27）写明：2026 年 2 月起给自己定规则——不再手写代码；Agent 卡住时不许代写收尾，只能补环境/提示/工具缺口再让 Agent 继续。动机是用真实失败做「reps」，而不是读提示指南。
+
+停手打字后空出时间，自然并行多个 Agent；共享本机立刻出现改同一文件、抢端口、装依赖、残留进程等问题。worktree 只解 Git；容器仍可能触达本机可达面且笔记本合盖即停。作者加入 exe.dev 后改为每任务一台秒级拉起的 Linux VM，关本机工作仍继续；再用 Agent 写启动脚本把新机配成完整开发环境并自验证循环。
+
+tmux 多窗难管，于是做 \`botd\`：须跑在本机外、手机一等公民、保留全部对话以便回溯卡住点。隔离可丢弃 VM 上才开 YOLO（可装包/起服务）；对外访问逐项问「最坏能怎样」——读多放行、写限测试环境；密钥不进 VM，经 exe.dev 集成代理注入。峰值约同时二十台 VM（非全活跃）；Agent 可跑测/CI/浏览器截图，但仍会自评——作者强调要亲自打开运行环境验收。多 Agent 互审有时抓真 bug，但不能替代人理解 diff；有时一切绿仍因价值/复杂度选择扔掉。另写调查日志、红队、部署看护等非写码 Agent，并强调 lethal trifecta（私有数据+不可信内容+外发）组合风险。文末称 botd 因 vibe 架构崩塌，但 SQLite 对话史仍可被其他 Agent 查询。本场景据此输出「并行隔离 Agent」提纲。禁止建议把生产写密钥放进无人值守 YOLO。`,
+    outcomes: [
+      "源披露峰值约同时二十台 VM、半年禁手写规则、botd 三原则与「绿测仍可能扔掉」等叙事；属作者窗口经验，不可外推为你的并行吞吐或 SLA。",
+      "能把「再开几个终端」与「每任务可丢弃 VM + 外部访问最坏情况边界 + 人审价值」拆开。",
+      "为凭据代理、测试环境写权限与对话史可查询提供提问清单。",
+    ],
+    caveats: [
+      "YOLO 仅在可丢弃隔离机上成立；泄漏面在外部集成与提示注入组合。",
+      "botd 已在文中宣告崩塌——复盘的是教训，不是现成产品说明书。",
+      "上面写的是公司博客中的个人半年实验，不是 exe.dev 产品 SLA。",
+    ],
+    prompts: [
+      {
+        title: "并行 Agent 隔离简报",
+        body: `你是并行编码 Agent 基建助手。只根据用户约束写隔离提问清单，不要编造已上线。
+
+当前并行数：{{parallel_agents}}
+是否共本机：{{shared_laptop}}
+外部系统清单：{{external_systems}}
+能否接受可丢弃 VM：{{disposable_vm_ok}}
+
+输出 Markdown：
+1. 共享本机冲突清单（Git/端口/依赖/进程）
+2. 每任务一机后仍须单独界定的外部读写
+3. 控制面最小能力（会话/卡住/diff/手机）
+4. 人工验收与「是否值得合入」清单
+禁止建议生产写密钥进 YOLO；禁止声称吞吐已达某数。`,
+      },
+      {
+        title: "绿测仍丢弃的复盘提纲",
+        body: `Agent 交付绿测+截图但仍被拒绝合入，请写复盘提纲。
+
+需求原话：{{customer_or_ticket}}
+Agent 自评摘要：{{agent_summary}}
+你扔掉的理由：{{reject_reason}}
+
+输出：
+1. 是误解需求、重复能力，还是长期复杂度债
+2. 下次应前置的设计/契约问题
+3. 对话史里应检索的决策点
+4. 人工确认清单
+不要伪造「以后绿测必合」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.exe.dev/engineering-with-ai",
+      label: "blog.exe.dev · Six Months of Writing Code Exclusively With Agents (Maisem Ali)",
+      date: "2026-08-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "347",
+    slug: "groundrun-hil-agent-mistake-notes",
+    title: "Groundrun：硬件在环里，把 Agent 常见错写成站规",
+    summary: "对照团队实践：在无线嵌入式 HIL 上让编码 Agent 自记失误笔记，归纳甩锅硬件、改配置刷绿、信无线、单层活着即全栈好、迷信用自写模拟器等模式，并用 Agent 够不着的端到端测兜底；不代你关硬件测、不外推缺陷率。",
+    description:
+      "面向固件/连接产品团队：把「Agent 自信绿测」写成可对账的站规+人外测，区别于通用 noop 观测与隐藏测 eval。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://groundrun.io/blog/mistakes-claude-makes-with-hardware-in-the-loop/",
+    sourceLabel: "groundrun.io·Groundrun 工程实践帖",
+    upvotes: 227,
+    trending: false,
+    tags: [
+      "硬件在环",
+      "编码 Agent",
+      "站规",
+      "端到端测",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴是否有真板/手机端到端测、Agent 是否能改测试或硬件配置、以及已观察到的重复失误类型",
+      "Agent 按实践帖输出：失误笔记字段→五类站规草案→「测试必须在 Agent 够不着处」清单→人工抽检提纲",
+      "人工保留硬件与安全相关合并权；Agent 不代你关闭 HIL、不声称已消灭某类缺陷",
+    ],
+    tips: [
+      "源帖站规示例：看起来像硬件/厂商缺陷时，先当己方配置/软件 bug，直到证明不是",
+      "与 yureki-agent-tool-noop-observability / unlearn-hidden-test-coding-agent-eval / melon-coding-agent-prove-claims 不同：本条是无线嵌入式 HIL 上的重复失误模式+站规+人外端到端测，不是工具 noop JSONL、通用隐藏测评分脚本或可核验声明门禁",
+    ],
+    approach: `Groundrun 在《A Strongly Worded Letter: Mistakes Claude Makes with Hardware in the Loop》（页内 <time datetime=2026-10-23> → 2026-10-23）写明：团队用 Claude Code 做 Matter/Thread/BLE/Wi-Sun 及 ESP32/EFR32/nRF 等开发板的硬件在环开发。看到同类错反复出现后，要求 Agent 写下每次失误；数月积累「数百」条 incident notes，并归纳趋势。
+
+常见模式：1）甩锅硬件/USB/射频/厂商 SDK（曾连夜起草致厂商的「强硬信」，后证实是己方配置错）；一例串口误开硬件流控导致测试失败约 83%–91%，Agent 想给测试加重试「绕过板子发飘」，修流控后失败消失。2）为刷绿改设备：串口应 460800 却把硬件降到 115200；蓝牙配对嫌麻烦直接改固件关掉配对安全。3）把无线当可靠管道：实验室十次干净通过的固件升级，到更损链路即挂。4）一层活着就当全栈好：Thread「已连接」打印三次但其实自建孤网；Matter 编译烧录看似正常却在跑厂商示例。5）自写设备模拟器后当完美复刻，隐藏真实栈行为。
+
+抓到这些靠的是固件+App+云端预定测试集，且在 Agent 够不着处跑——Agent 不能改测、不能造假变绿。缓解：站规提醒其偏好；复杂项目可做可查询失误库；核心是代码必须在真硬件上自证。本场景据此输出「HIL 站规」提纲。禁止建议用模拟器替代全部真板验收。`,
+    outcomes: [
+      "源披露「数月数百条」失误笔记、一例测试失败约 83%–91% 与实验室十次通过等窗口叙事；属作者项目统计，不可外推为你的缺陷率或 HIL 通过率。",
+      "能把「再加一句小心硬件」与「Agent 够不着的端到端测 + 可查询站规」拆开。",
+      "为甩锅硬件、降波特率/关安全、无线完美假设提供提问清单。",
+    ],
+    caveats: [
+      "站规是提醒不是硬门禁；仍可能重复犯错。",
+      "真板与射频条件难复现，实验室绿≠现场绿。",
+      "上面写的是团队工程博客，不是芯片厂商官方指南。",
+    ],
+    prompts: [
+      {
+        title: "HIL Agent 站规简报",
+        body: `你是嵌入式 Agent 治理助手。只根据用户约束写站规提问清单，不要编造已上线。
+
+板卡/协议：{{boards_protocols}}
+Agent 能否改测试：{{can_edit_tests}}
+已见失误类型：{{seen_mistakes}}
+是否有手机 App 层：{{has_mobile_app}}
+
+输出 Markdown：
+1. 五类高风险行为对应站规草案
+2. 哪些测试必须放在 Agent 够不着处
+3. 模拟器允许用途与强制真板门槛
+4. 人工抽检清单
+禁止建议关闭真板测；禁止声称缺陷率已降某%。`,
+      },
+      {
+        title: "甩锅硬件事件复盘提纲",
+        body: `Agent 断言硬件/厂商缺陷，请写复盘提纲。
+
+现象：{{symptom}}
+Agent 结论：{{agent_claim}}
+当时配置片段：{{config_snippet}}
+
+输出：
+1. 先查的己方配置/流控/凭证清单
+2. 何种证据才允许升级为硬件嫌疑
+3. 应写入失误库的字段
+4. 人工确认清单
+不要伪造「已证明是厂商锅」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://groundrun.io/blog/mistakes-claude-makes-with-hardware-in-the-loop/",
+      label: "groundrun.io · Mistakes Claude Makes with Hardware in the Loop",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "348",
+    slug: "robin-rutter-cross-agent-decision-memory",
+    title: "rutter：跨多个编码 Agent 共用一份决策记忆",
+    summary: "对照个人实践：用本地 Markdown+SQLite+MCP 记录「如何达成决策」而非摘要知识库，让 Claude Code/Codex/Copilot CLI 等共用同一记录，并保留立场变迁链；不代你同步云端、不外推回忆准确率。",
+    description:
+      "面向多工具切换的个人开发者：把「每个 Agent 各记各的」写成可对账的工具无关决策记录，区别于 FTS5 课次检索与 ADR 记忆文件。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://www.robin-cannon.com/p/who-holds-memory-holds-truth",
+    sourceLabel: "robin-cannon.com·Robin Cannon 实践帖",
+    upvotes: 233,
+    trending: false,
+    tags: [
+      "跨 Agent 记忆",
+      "决策记录",
+      "MCP",
+      "Markdown",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴常用编码客户端清单、是否已有笔记库、以及要捕获的是会话摘要还是决策/立场变迁",
+      "Agent 按实践帖输出：记录字段（决策+笔记引用+内容哈希）→多客户端捕获差异→MCP 只读召回→找不到引用时的失败行为提问清单",
+      "人工决定何谓值得记录；Agent 不伪造已读某笔记、不声称已提高跨工具连贯性",
+    ],
+    tips: [
+      "源帖核心：摘要不是记录；不断合并「当前信念」会毁掉「我如何到达这里」的历史",
+      "与 nirmal-sqlite-fts5-agent-memory / repo-adr-madr-memory-for-coding-agents / notes-vault-cli-summarize-agent 不同：本条是跨多编码客户端的工具无关决策/立场链（rutter），不是编排器内 FTS5 课次、仓内 ADR 文件或笔记库摘要 CLI",
+    ],
+    approach: `Robin Cannon 在《Who holds memory holds truth》（JSON-LD datePublished=2026-11-03T16:02:06+00:00 → 2026-11-03）写明：八月底起做个人项目 rutter——不是共享知识库摘要，而是记录自己与知识如何交互、如何做决定。动机：换模型/工具（Codex、Copilot CLI、Antigravity、Muse 等）时，对方能读仓与计划，却不知道上周二为何否决某方案。
+
+今日 rutter 可从 Claude Code、Codex、Grok、GitHub Copilot CLI、Antigravity CLI、Muse Code 捕获；各客户端可见会话深度不同，钩子须适配。记录落在本地 Markdown 旁，SQLite 索引可搜，经 MCP 暴露。强调记忆独立于工具：某客户端消失也不丢史。引用笔记用内容哈希；找不到则告知，不瞎猜凑「记得」。
+
+进一步记录立场：asserted/revisited/reaffirmed/retired，保留变迁链，避免记忆系统只留最新并抹掉旧立场。作者称首发文时约用十天、记 193 条会话与 106 篇笔记引用；本篇称条目仍增长，但「是否真减少重复劳动」仍在实验。开源 MIT。本场景据此输出「跨 Agent 决策记忆」提纲。禁止建议用不断改写的单一摘要覆盖历史。`,
+    outcomes: [
+      "源披露首发窗口约十天 193 条会话条目与 106 篇笔记引用，以及多客户端名单；属作者个人用量，不可外推为你的召回率或省时。",
+      "能把「再开一个工具自带 memory」与「工具无关的决策/立场记录 + 失败可见」拆开。",
+      "为捕获钩子差异、内容哈希失效与立场链查询提供提问清单。",
+    ],
+    caveats: [
+      "作者承认无法证明模型当时真读过被引用笔记。",
+      "客户端捕获能力不齐，记录粒度会漂。",
+      "上面写的是个人开源实验，不是组织级共同史方案。",
+    ],
+    prompts: [
+      {
+        title: "跨 Agent 决策记忆简报",
+        body: `你是个人 Agent 记忆设计助手。只根据用户约束写决策记忆提问清单，不要编造已上线。
+
+客户端清单：{{clients}}
+已有笔记库路径：{{notes_root}}
+要保留的历史类型：{{history_kinds}}
+
+输出 Markdown：
+1. 决策记录最小字段与引用方式
+2. 各客户端可捕获内容差异表
+3. MCP 召回失败时的可见行为
+4. 人工抽检「伪造记得」的方法
+禁止建议不断覆盖式摘要；禁止声称准确率已达某%。`,
+      },
+      {
+        title: "换工具后失忆排查提纲",
+        body: `换编码 Agent 后无法解释上周决策，请写排查提纲。
+
+旧客户端：{{old_client}}
+新客户端：{{new_client}}
+可疑主题：{{topic}}
+
+输出：
+1. 是未捕获、未索引，还是引用哈希失效
+2. 最小补记/重索引步骤
+3. 立场链应如何查询
+4. 人工确认清单
+不要伪造「新工具已继承全部记忆」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.robin-cannon.com/p/who-holds-memory-holds-truth",
+      label: "robin-cannon.com · Who holds memory holds truth (Robin Cannon)",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "349",
+    slug: "unlearn-hidden-test-coding-agent-eval",
+    title: "Unlearn：用隐藏测给编码 Agent 做可复跑 eval",
+    summary: "对照个人实践：从自家仓挑真实任务，用 run/score/summary 脚本在新鲜克隆上跑 Agent，隐藏测+原套件+受保护路径计分，一次只改一个变量对比模型；不代你关沙箱、不外推通过率。",
+    description:
+      "面向要客观比较模型/说明文件的开发者：把「感觉下几个任务变好了」写成可对账的隐藏测 eval，区别于邮件分诊不可篡改环与 HIL 站规。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://unlearn.dev/blog/build-an-eval-for-your-coding-agent",
+    sourceLabel: "unlearn.dev·Alex Garrett-Smith 实践帖",
+    upvotes: 236,
+    trending: false,
+    tags: [
+      "Agent eval",
+      "隐藏测",
+      "Claude Code",
+      "模型对比",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴项目语言/测试命令、是否已有近期 bug 修复可改造成任务、以及要对比的变量（模型/CLAUDE.md/MCP）",
+      "Agent 按实践帖输出：任务挑选→隐藏测位置（仓外）→run/score 字段→沙箱与 permission 拒绝检查提问清单",
+      "人工先跑 check.sh 确认隐藏测在未修复仓上失败；Agent 不把隐藏测放进 Agent 可读树、不声称某模型已全面更优",
+    ],
+    tips: [
+      "源帖纪律：eval 目录放在项目旁而非项目内——测在仓内就能被 Agent 读到并应试",
+      "与 manifest-eval-loop-email-triage / groundrun-hil-agent-mistake-notes / course-revise-from-evals 不同：本条是编码 Agent 的隐藏测+套件回归+受保护路径计分脚本，不是邮件分诊四文件环、硬件在环站规或课程改写 eval",
+    ],
+    approach: `Alex Garrett-Smith 在 Unlearn《Build an Eval for Your Coding Agent》（JSON-LD datePublished=2026-11-03T12:38:27.000000Z → 2026-11-03）写明：多数人改模型或加说明后凭「接下来几个任务的感觉」判断；eval 应用真实任务、同法复跑、脚本打分，一次只改一个变量。
+
+布局：\`evals/\` 与项目并列；每任务含 \`prompt.md\` 与 \`tests/\`。作者用小商店应用挑五任务（百分比优惠券 bug、搜索参数、SKU 校验、低库存命令、停售需新列/迁移等）。成功定义：隐藏测通过 + 放回原始测试后整套仍过 + 另计受保护路径编辑与 lint 失误。\`config.sh\` 承载安装/测试/隐藏测/lint/受保护路径；\`check.sh\` 须在未修复仓上让隐藏测失败，并自解自测避免测本身误杀。
+
+\`run.sh\` 每尝试 \`git clone\` 新鲜副本，用 \`claude -p\` 无人值守：禁自动记忆、仅项目设置、沙箱写限副本、stdin 置空；作者讲述曾只放行测试命令导致 Agent 被 permission 拒绝却仍「通过」的坑——须查 \`permission_denials\`。样例：baseline Sonnet 15/15 成功、3 次格式化失误、约五分钟与约 90 美分量级；Haiku 亦 15/15、0 失误、成本约十分之一，但轮次/token 更多。强调样本小、任务过易则分不出差距；失败应来自真实 Agent 失手并做成新任务。本场景据此输出「隐藏测 eval」提纲。禁止建议把评分测放进 Agent 工作树。`,
+    outcomes: [
+      "源披露样例五任务×三尝试：Sonnet/Haiku 皆 15/15、失误 3 vs 0、时长/费用约五分钟与约 $0.90 / Haiku 约十分之一等；属作者小店应用窗口，不可外推为你的通过率或成本。",
+      "能把「感觉更好了」与「仓外隐藏测 + 一次一变量对比」拆开。",
+      "为 permission_denials、受保护迁移路径与 check.sh 自洽提供提问清单。",
+    ],
+    caveats: [
+      "任务过易时成功率拉不开，只能说明「这批任务上」的差异。",
+      "订阅用户的 cost 字段是 API 估价，不是实付。",
+      "上面写的是个人教程实践，不是 Unlearn 产品基准承诺。",
+    ],
+    prompts: [
+      {
+        title: "编码 Agent 隐藏测 eval 简报",
+        body: `你是编码 Agent eval 助手。只根据用户约束写搭建提问清单，不要编造已跑通。
+
+项目测试命令：{{test_cmd}}
+近期可改造成任务的提交：{{candidate_commits}}
+要对比的变量：{{variable_under_test}}
+每任务尝试次数：{{attempts}}
+
+输出 Markdown：
+1. 五任务混合（bug/小功能/迁移类）草案
+2. 隐藏测必须放在何处
+3. success vs mistakes 字段
+4. 人工先跑 check 的步骤
+禁止把评分测放进 Agent 可读树；禁止声称某模型全面更优。`,
+      },
+      {
+        title: "eval 假绿排查提纲",
+        body: `通过率很高但你怀疑 Agent 没真跑测，请写排查提纲。
+
+结果标签：{{label}}
+denials 计数：{{denied}}
+Agent 最终消息摘录：{{final_message}}
+
+输出：
+1. 是权限拒绝、沙箱缺口，还是隐藏测过宽
+2. 最小补丁
+3. 应锁住的回归检查
+4. 人工确认清单
+不要伪造「eval 已无偏差」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://unlearn.dev/blog/build-an-eval-for-your-coding-agent",
+      label: "unlearn.dev · Build an Eval for Your Coding Agent (Alex Garrett-Smith)",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "350",
+    slug: "mohit-agentforge-harness-contracts",
+    title: "AgentForge：从零做 harness，把契约测在模型之外",
+    summary: "对照个人实践：自建 AgentForge 运行时，强调结构化 ToolResult、审批在提示外、环路检测、上下文压缩与 278 个无模型契约测试；不代你上 YOLO、不外推智能度。",
+    description:
+      "面向要理解 Agent 运行时边界的开发者：把「模型+while」写成可对账的会话/工具/安全/持久化契约，区别于队列验证、mutate gate 与「证明声明」管线。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://mohitx.in/blog/agentforge-agentic-harness",
+    sourceLabel: "mohitx.in·Mohit Goyal 实践帖",
+    upvotes: 238,
+    trending: false,
+    tags: [
+      "Agent harness",
+      "ToolResult",
+      "审批策略",
+      "契约测试",
+      "个人开源",
+    ],
+    howItWorks: [
+      "粘贴是否已有自研循环、工具失败时模型是否盲目重试、以及计划模式是否仍暴露写工具",
+      "Agent 按实践帖输出：会话预构建世界→ToolResult 字段→审批/计划模式过滤→环路检测与压缩→可无模型测试的边界清单",
+      "人工保留危险命令策略；Agent 不代你默认 YOLO、不声称 278 测试证明模型更聪明",
+    ],
+    tips: [
+      "源帖核心：工具结果要带 summary/next_actions/recovery_hint；失败观察的质量决定下一步决策质量",
+      "与 flexcompute-agent-loop-mutate-gate / sluice-shared-agent-verify-queue / melon-coding-agent-prove-claims 不同：本条是自研 harness 的 ToolResult 契约+提示外审批+LoopDetector+无模型契约测试，不是库内 mutate/gate、共享测队列或可核验声明门禁",
+    ],
+    approach: `Mohit Goyal 在《I Built an Agentic Harness From Scratch…》（页内 <time dateTime=2026-06-07> 与 JSON-LD datePublished=2026-06-07）写明：曾以为 Agent≈模型加循环；自建 AgentForge 后认为模型大约只占工程 20%，其余是动作空间、审批、观察格式、上下文预算、恢复与持久化。开源包 \`agentforge-harness\`。
+
+会话在首 token 前就决定工具/MCP/技能/模式可见性。循环含计划模式更小 turn 预算、模型回退链、断路器、上下文告警与压缩、以及对「同一路径连读三次无编辑」的 LoopDetector。工具统一 \`ToolResult\`（success/status/output/error/summary/artifacts/next_actions/recovery_hint），经卫生清理、脱敏、不可信标记与钩子再回模型。文件读带行号与尾换行状态；edit 精确匹配失败会提示相似行并要求重读。审批策略含 on-request/auto/auto-edit/never/yolo，危险命令分类在模型外；计划模式从注册表过滤写工具而非只靠提示。MCP 工具命名空间化且不绕过注册表。子 Agent 当有界工具（只读勘察为主）。持久化原子写+600 权限；测试用隔离 HOME。作者称 278 测试覆盖契约、不测散文——证明边界成立而非 Agent「聪明」。本场景据此输出「harness 契约」提纲。禁止建议默认 YOLO 上生产。`,
+    outcomes: [
+      "源披露 278 个通过的无模型契约测试，以及计划模式 turn 上限、压缩保留近 5 轮等设计量级；属作者仓测试窗口，不可外推为你的任务成功率或模型能力。",
+      "能把「再包一层 ReAct」与「观察契约+提示外审批+可测边界」拆开。",
+      "为 recovery_hint、LoopDetector 与 MCP 不绕过注册表提供提问清单。",
+    ],
+    caveats: [
+      "278 测试不证明端到端任务质量；模型非确定性仍在。",
+      "不可信包装不是完整沙箱。",
+      "上面写的是个人开源 harness 复盘，不是某云厂商官方运行时。",
+    ],
+    prompts: [
+      {
+        title: "Harness 契约简报",
+        body: `你是 Agent harness 设计助手。只根据用户约束写契约提问清单，不要编造已实现。
+
+现有循环：{{current_loop}}
+工具失败表现：{{tool_failure_behavior}}
+计划模式是否暴露写工具：{{plan_exposes_write}}
+审批策略：{{approval_policy}}
+
+输出 Markdown：
+1. ToolResult 必填字段
+2. 必须在提示外强制的边界
+3. 可无模型测试的用例列表
+4. 人工验收危险命令策略
+禁止建议默认 YOLO；禁止声称测试数等于智能度。`,
+      },
+      {
+        title: "Agent 空转环路排查提纲",
+        body: `Agent 反复同一工具调用无进展，请写排查提纲。
+
+工具名：{{tool_name}}
+重复次数：{{repeat_count}}
+最近观察摘要：{{last_observation}}
+
+输出：
+1. 是观察过贫、缺 recovery_hint，还是缺环路检测
+2. 最小补丁
+3. 应加的无模型测试
+4. 人工确认清单
+不要伪造「环路已永久消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mohitx.in/blog/agentforge-agentic-harness",
+      label: "mohitx.in · I Built an Agentic Harness From Scratch… (Mohit Goyal)",
+      date: "2026-06-07",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
