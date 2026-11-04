@@ -14524,6 +14524,458 @@ history 同步摘要：{{history_brief}}
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "306",
+    slug: "pypi-trusted-publishers-oidc-brief",
+    title: "PyPI Trusted Publishers（OIDC）发布简报",
+    summary: "按 OIDC 短时身份、在项目 Publishing 绑定仓库/工作流、可选 GitHub Environment，整理无长期 API token 的正式发布简报；不代持凭据、不代上传。",
+    description:
+      "面向独立开发者：把「CI 用 Trusted Publisher 发正式 PyPI」写成可对账步骤，区别于 TestPyPI 试传与长期 token 保管。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.pypi.org/trusted-publishers/",
+    sourceLabel: "PyPI Docs·Trusted Publishing Getting Started",
+    upvotes: 133,
+    trending: false,
+    tags: [
+      "PyPI",
+      "Trusted Publishers",
+      "OIDC",
+      "GitHub Actions",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴项目名、GitHub 仓库/工作流文件名、是否计划用 Environment，以及当前报错或 Publishing 页摘要",
+      "Agent 按官方 Trusted Publishing 说明输出：OIDC 动机→绑定字段→可选 Environment→发布时换短时 token 的提问清单",
+      "人工在 PyPI Publishing 页与 CI 完成配置；Agent 不代点 Add、不代跑 upload",
+    ],
+    tips: [
+      "Trusted Publishing 用 OIDC 换短时身份，目标是去掉长期 API token；GitHub 需填 owner、repo、workflow 文件名，Environment 可选但强烈建议",
+      "与 testpypi-upload-install-checklist 不同：本条是正式索引的 OIDC 发布信任，不是 TestPyPI 试装演练",
+    ],
+    approach: `独立开源或内部包要上正式 PyPI 时，常见麻烦是：把长期 API token 塞进 Actions secrets，轮换痛苦，泄漏面也大。
+
+PyPI User Documentation《Trusted Publishing · Getting Started》说明：Trusted Publishing 指用 OpenID Connect（OIDC）在受信任的第三方服务与 PyPI 之间交换短时身份令牌，用于自动化环境，从而不必再用手工生成的长期 API token 鉴权上传。文档 TL;DR：部分 CI（如 GitHub Actions）可作为 OIDC 身份提供方签发可强校验来源的短时令牌；PyPI 项目可配置信任某一 CI 上的特定配置，使其成为该项目的 OIDC publisher；发布自动化向 PyPI 提交 OIDC 令牌，匹配成功后 PyPI 为对应项目签发短时 API token 再返回。快速入口包括：给已有项目添加 Trusted Publisher、用 Trusted Publisher 创建项目，以及实际发布步骤。配套《Adding a Trusted Publisher to an Existing PyPI Project》写明：在 Your projects 管理页进入 Publishing，按平台填写信任信息；GitHub Actions 必须提供仓库 owner 名、仓库名、授权上传的 workflow 文件名，并可选用 GitHub Actions environment——可选但强烈建议，以便对可信工作流再加人工审批等限制。本场景据此输出正式发布信任配置简报。禁止声称「已绑定成功」或代存任何 token。`,
+    outcomes: [
+      "源未披露量化「相对长期 token 的事故下降比例」；公开文只描述 OIDC 换短时 token、绑定字段与 Environment 建议。",
+      "能把「仍塞长期 token / workflow 文件名写错 / 未开 Environment 审批」拆开提问。",
+      "与 TestPyPI 试发布衔接清晰：先试索引，再上正式 Trusted Publisher。",
+    ],
+    caveats: [
+      "支持的 publisher 平台与字段以 PyPI 当前 Publishing 页为准（文档示例含 GitHub、Google Cloud、ActiveState、GitLab 等）。",
+      "OIDC 信任面取决于仓库与 workflow 权限；Environment 审批不能替代最小权限审查。",
+      "上面写的是官方机制说明，不是你项目当前的 publisher 列表。",
+    ],
+    prompts: [
+      {
+        title: "Trusted Publisher 绑定简报",
+        body: `你是 PyPI Trusted Publishing 助手。只给绑定与发布核对简报，不要编造已配置成功。
+
+PyPI 项目名：{{project_name}}
+GitHub owner/repo：{{github_repo}}
+workflow 文件名：{{workflow_file}}
+是否用 Environment：{{environment_plan}}
+现状/报错：{{status_or_error}}
+
+输出 Markdown：
+1. 为何用 OIDC 替代长期 API token
+2. Publishing 页必填字段核对
+3. Environment 是否启用及审批提问
+4. 首次发布验收步骤（人工）
+禁止索要 API token 或 OIDC 原始断言；禁止代点 Add。`,
+      },
+      {
+        title: "OIDC 发布失败排查提纲",
+        body: `CI 宣称 Trusted Publisher 发布失败，请写排查提纲。
+
+工作流摘要：{{workflow_brief}}
+PyPI 报错摘要：{{error}}
+已登记 publisher 摘要（可打码）：{{publisher_brief}}
+
+输出：
+1. owner/repo/workflow 是否与登记一致
+2. Environment 名称是否匹配
+3. 是否仍在用长期 token 旁路
+4. 下一步人工核对
+不要伪造「已上传到正式 PyPI」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.pypi.org/trusted-publishers/",
+      label: "PyPI User Documentation · Trusted Publishing Getting Started",
+      date: "2026-10-28",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "307",
+    slug: "vercel-env-vars-config-secret-brief",
+    title: "Vercel 环境变量 Config/Secret 配置简报",
+    summary: "按 Environment 作用域、Config 可读 vs Secret 写后不可读、变更仅作用于新部署与轮换步骤，整理多环境变量配置简报；不代改生产密钥。",
+    description:
+      "面向独立开发者与轻量企业：把「Preview/Production 密钥别串台」写成可对账步骤，区别于仅看部署日志。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://vercel.com/docs/environment-variables",
+    sourceLabel: "Vercel Docs·Environment variables",
+    upvotes: 146,
+    trending: false,
+    tags: [
+      "Vercel",
+      "环境变量",
+      "Secret",
+      "Preview",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴变量用途（构建期/运行期）、目标 Environment、现为 Config 还是 Secret，以及串台或缺失症状",
+      "Agent 按官方说明输出：键值在源码外按 Environment 变化→Config/Secret 差异→改完须新部署→轮换提问清单",
+      "人工在 Dashboard/CLI 变更并 redeploy；Agent 不代写入生产 Secret",
+    ],
+    tips: [
+      "值在静态存储侧加密；Config 对有项目权限成员仍可读，Secret 保存后写后不可再读，轮换须走官方 rotating 流程",
+      "与 vercel-deploy-log-digest 不同：本条管变量作用域与密钥形态，不是部署日志摘要",
+    ],
+    approach: `独立站或小团队常在 Preview 误用生产支付密钥，或改完环境变量却仍看到旧值——因为只看了当前部署，没触发新部署。
+
+Vercel Docs《Environment variables》说明：环境变量是配置在源码之外的键值对，使同一键可随 Environment 变化；这些值在静态存储时加密。添加时可选择 Config 或 Secret：Config 对具有项目访问权限的成员保持可读；Secret 保存后为写后不可读（write-only）。需要替换 API key/token 等凭据时，应遵循轮换环境变量步骤，以便在不停机的前提下更新。源码可在 Build Step 或 Function 执行期读取这些值以改变行为。对变量的任何变更不会应用到既有部署，只作用于新部署。文档还覆盖创建变量、大小限制、Preview/Development/Integration 变量、跨环境管理、保留名、轮换、共享变量与系统环境变量等子题。本场景据此输出多环境配置简报。禁止声称「生产密钥已轮换完毕」。`,
+    outcomes: [
+      "源未披露量化「串台事故平均修复时长」；公开文只描述 Environment、Config/Secret、加密与「仅新部署生效」。",
+      "能把「改了没 redeploy / Preview 误挂生产密钥 / Secret 无法回读」拆开处理。",
+      "为企业自动化与独立项目提供可复用的密钥治理提问清单。",
+    ],
+    caveats: [
+      "系统/保留环境变量名与限额以当前文档为准，勿覆盖保留键。",
+      "有项目读权限者仍可能读到 Config；敏感值应优先 Secret 并最小授权。",
+      "上面写的是文档机制，不是你项目变量的实时清单。",
+    ],
+    prompts: [
+      {
+        title: "Vercel 环境变量配置简报",
+        body: `你是 Vercel 环境变量助手。只给配置核对简报，不要编造已写入成功。
+
+变量用途：{{var_purpose}}
+目标 Environment：{{environments}}
+拟用 Config 或 Secret：{{config_or_secret}}
+症状/现状：{{symptom}}
+
+输出 Markdown：
+1. 该键应落在哪些 Environment
+2. Config vs Secret 选择提问
+3. 变更后为何必须新部署
+4. 轮换步骤提问（不要索要真实密钥值）
+禁止代写生产 Secret；禁止回显用户粘贴的密钥全文。`,
+      },
+      {
+        title: "Preview 串台复盘提纲",
+        body: `Preview 或 Development 疑似用到生产凭据，请写复盘提纲。
+
+时间线：{{timeline}}
+涉及键名（勿给值）：{{key_names}}
+部署类型：{{deployment_kind}}
+
+输出：
+1. 作用域是否勾错
+2. 是否未 redeploy 导致旧值
+3. 临时缓解（撤密钥、限制访问）
+4. 防再发（命名约定、Secret、评审）
+不要伪造「已全部轮换」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://vercel.com/docs/environment-variables",
+      label: "Vercel Documentation · Environment variables",
+      date: "2026-09-17",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "308",
+    slug: "vercel-cron-jobs-function-brief",
+    title: "Vercel Cron Jobs 调用 Function 配置简报",
+    summary: "按 vercel.json crons 路径、UTC cron、CRON_SECRET Bearer 校验与 x-vercel-cron-schedule，整理定时打 Function 的配置简报；不代改生产 cron。",
+    description:
+      "面向个人效率与独立开发者：把「定时打自己的 API Route」写成可对账步骤，明确区别于 Cloudflare Workers scheduled 触发器。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://vercel.com/docs/cron-jobs",
+    sourceLabel: "Vercel Docs·Cron Jobs",
+    upvotes: 162,
+    trending: false,
+    tags: [
+      "Vercel",
+      "Cron Jobs",
+      "CRON_SECRET",
+      "Functions",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴目标日程（含时区）、Function/Route 路径、vercel.json crons 片段与是否已设 CRON_SECRET",
+      "Agent 按官方 Cron Jobs 说明输出：vercel.json 映射→UTC 表达式→Bearer 鉴权→同路径多 schedule 头区分提问清单",
+      "人工提交配置并在预发验证；Agent 不代部署生产",
+    ],
+    tips: [
+      "平台示例以 UTC 解释表达式；墙钟需先换算。调用时可带 Authorization: Bearer $CRON_SECRET，路由应比对后拒绝未授权",
+      "与 cloudflare-workers-cron-trigger-brief 不同：本条是 Vercel Functions + vercel.json path，不是 Worker `scheduled()` / wrangler triggers",
+    ],
+    approach: `个人工具想每天汇总邮件或刷新缓存，已有 Next.js Route Handler，却不想再开一台机器跑 crontab——希望平台按时 GET 自己的路径。
+
+Vercel Docs《Cron Jobs》说明：Cron Jobs 用 cron 表达式定义重复任务频率与时机；常见用途包括备份归档、发邮件/Slack 通知、更新 Stripe 订阅数量等。Vercel 为 Vercel Functions 提供 Cron Jobs，可通过 \`vercel.json\` 或 Build Output API 添加。管理侧文档补充：可添加环境变量 \`CRON_SECRET\`（建议至少 16 位随机串）；调用 cron 时会自动带上 Authorization 头，端点应将其与环境变量比对以验真；头值为 \`Bearer\` 前缀加密钥。同路径若挂多条 schedule，请求会带 \`x-vercel-cron-schedule\` 头，值为触发该次调用的 cron 表达式，便于分支全量/增量逻辑。本场景据此输出「路径 + UTC 表达式 + CRON_SECRET」配置简报。禁止声称「生产 cron 已生效」。`,
+    outcomes: [
+      "源未披露量化「定时任务成功率」；公开文只描述 Functions 定时、vercel.json、UTC 示例与 CRON_SECRET 验真。",
+      "能把「表达式时区错 / 未校验 Bearer / 同路径多 schedule 未读头」拆开排查。",
+      "与 Cloudflare Workers Cron Trigger 边界清晰，避免两套平台话术混写。",
+    ],
+    caveats: [
+      "时长、并发、定价与表达式限制见 Managing / Usage 文档，随套餐变化。",
+      "仅保护路径不够：密钥须放环境变量且按 Secret 治理，勿写入仓库。",
+      "上面写的是文档配置路径，不是你项目当前的 crons 实况。",
+    ],
+    prompts: [
+      {
+        title: "Vercel Cron 配置简报",
+        body: `你是 Vercel Cron Jobs 助手。只给配置核对简报，不要编造已调度成功。
+
+目标日程（含用户时区）：{{schedule_local}}
+Function 路径：{{function_path}}
+vercel.json crons 片段：{{crons_snippet}}
+是否已设 CRON_SECRET：{{has_cron_secret}}
+
+输出 Markdown：
+1. path/schedule 字段核对
+2. 换算后的 UTC 表达式候选与提问
+3. Bearer 校验伪代码级检查点（不要索要真实密钥）
+4. 同路径多 schedule 时如何读 x-vercel-cron-schedule
+5. 预发验收步骤
+禁止代部署；禁止与 Cloudflare Workers scheduled 混写步骤。`,
+      },
+      {
+        title: "Cron 401/未触发排查提纲",
+        body: `预期时间未执行或日志大量 401，请写排查提纲。
+
+期望时间：{{expected_time}}
+路径：{{path}}
+鉴权实现摘要：{{auth_brief}}
+
+输出：
+1. UTC 是否算错
+2. Authorization 是否按 Bearer 比对
+3. 变量是否仅在错误 Environment
+4. 下一步人工验证
+不要伪造「已触发成功」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://vercel.com/docs/cron-jobs",
+      label: "Vercel Documentation · Cron Jobs",
+      date: "2026-09-16",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "309",
+    slug: "resend-webhooks-email-events-brief",
+    title: "Resend Webhooks 邮件事件接入简报",
+    summary: "按 HTTPS 事件推送、端点登记、签名校验与重放，整理投递/打开/退信/点击等邮件事件接入简报；不代持 signing secret、不代改生产端点。",
+    description:
+      "面向独立开发者与轻量运营自动化：把「发信结果回流业务库」写成可对账步骤，区别于邮箱收件 Push。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://resend.com/docs/dashboard/webhooks/introduction",
+    sourceLabel: "Resend Docs·Webhooks Introduction",
+    upvotes: 183,
+    trending: false,
+    tags: [
+      "Resend",
+      "Webhooks",
+      "邮件事件",
+      "退信",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴业务目标（退信剔除/告警/自建报表）、拟监听事件、端点栈摘要与是否已有 signing secret（勿贴值）",
+      "Agent 按官方 Webhooks 导论输出：建 POST 端点→Dashboard/API 登记→校验签名→重放/本地监听提问清单",
+      "人工在测试域验证；Agent 不代登记生产 URL、不代存 secret",
+    ],
+    tips: [
+      "推送是实时 HTTPS JSON，含 from/to/状态等元数据；常见用法含自动剔除退信、按事件告警、自建报表，以及接收 inbound",
+      "与 gmail-api-push-watch-checklist 不同：本条是发信服务商事件出站 Webhook，不是 Gmail 邮箱 watch/Pub/Sub",
+    ],
+    approach: `独立产品用 Resend 发事务邮后，业务侧仍靠人工看仪表盘才知道退信——希望投递、打开、退信、点击自动回写用户表或告警通道。
+
+Resend Docs《Webhooks》导论说明：Webhooks 是实时 HTTPS 请求，用于告知应用发生了事件（如投递通知或订阅状态更新），从而获得投递、打开、退信、点击等可行动更新。可在 Dashboard 或 API 创建、更新、观察与重试。载荷为 JSON，含 from、to、状态等元数据。文档列举常见工作流：自动从名单剔除退信地址；按事件类型在消息/事件工具告警；把发送事件存进自有库做报表/留存；以及接收应用 inbound 邮件。功能上支持重放任一 webhook 事件（端点漏接或处理器升级后重处理）、校验请求真实性、本地开发时监听，以及可自托管的 Webhook Ingester。快速开始：先在应用内建可接受 POST 的路由，再在 Resend 定义 webhook（端点 URL + 处理的邮件事件）。本场景据此输出接入简报。禁止声称「生产 webhook 已接通」或回显 signing secret。`,
+    outcomes: [
+      "源未披露量化「退信自动剔除节省工时」；公开文只描述事件类型动机、登记步骤与校验/重放能力。",
+      "能把「未验签 / 漏事件可重放 / 与收件箱 Push 混淆」拆开。",
+      "为运营自动化提供发信结果回流的上游设计。",
+    ],
+    caveats: [
+      "具体事件名与重试策略以 Event Types / Retries 文档为准，导论页不替代字段表。",
+      "验签须用官方 SDK/文档推荐方式；本地调试勿把 secret 写入前端。",
+      "上面写的是产品能力说明，不是你账号下的 webhook 列表。",
+    ],
+    prompts: [
+      {
+        title: "Resend Webhooks 接入简报",
+        body: `你是 Resend Webhooks 助手。只给接入核对简报，不要编造已接通。
+
+业务目标：{{business_goal}}
+拟监听事件：{{event_types}}
+端点栈摘要：{{endpoint_stack}}
+是否已有 signing secret（是/否，勿给值）：{{has_secret}}
+
+输出 Markdown：
+1. POST 端点最小职责
+2. Dashboard/API 登记提问
+3. 验签与重放检查点
+4. 测试域验收步骤
+禁止索要 signing secret 值；禁止代改生产 URL。`,
+      },
+      {
+        title: "退信未回流排查提纲",
+        body: `仪表盘可见 bounce/delivery，业务库未更新，请写排查提纲。
+
+现象：{{symptom}}
+端点日志摘要：{{logs}}
+已订事件：{{subscribed_events}}
+
+输出：
+1. 事件是否订错
+2. 验签失败是否被丢弃
+3. 是否需 Dashboard 重放
+4. 下一步人工验证
+不要伪造「事件已写入业务库」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://resend.com/docs/dashboard/webhooks/introduction",
+      label: "Resend Documentation · Webhooks Introduction",
+      date: "2026-09-24",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "310",
+    slug: "discord-interactions-http-response-brief",
+    title: "Discord Interactions HTTP 接收与响应简报",
+    summary: "按 Interactions Endpoint、3 秒内初始回调、interaction token 十五分钟后续与回调类型，整理 Slash/组件交互接入简报；不代持 Bot token、不代改生产端点。",
+    description:
+      "面向独立开发者：把「HTTP 收交互并按时 ACK」写成可对账步骤，区别于仅网关长连叙事。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://discord.com/developers/docs/interactions/receiving-and-responding",
+    sourceLabel: "Discord Docs·Receiving and Responding to Interactions",
+    upvotes: 207,
+    trending: false,
+    tags: [
+      "Discord",
+      "Interactions",
+      "Slash Commands",
+      "Bot",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴交互类型（Slash/组件等）、是否已配 Interactions Endpoint、超时或回调报错摘要",
+      "Agent 按官方 Receiving and Responding 说明输出：HTTP 收包→3 秒内初始响应→token 后续→回调类型选择提问清单",
+      "人工在测试应用验证；Agent 不代设置生产 Endpoint、不代持 token",
+    ],
+    tips: [
+      "经 HTTP 出站 webhook 收交互须配置 Interactions Endpoint URL；须在收到事件后 3 秒内发出初始响应，否则 token 作废",
+      "interaction token 约 15 分钟内可用于 followup；若交互来自 Gateway，响应仍须走 HTTP，不能当 Gateway 命令回传",
+    ],
+    approach: `独立开发者做 Discord 小工具时，常卡在：Slash 一点就「应用无响应」——其实是 HTTP 端点算太久，没在时限内 ACK。
+
+Discord Developer Docs《Receiving and Responding to Interactions》说明：Interaction 是用户使用应用命令或消息组件时应用收到的消息；Slash 含用户提交值，User/Message 命令含解析后的用户或消息，组件含组件标识，并带 guild/channel/member 等元数据。若要通过基于 HTTP 的出站 webhook 接收交互，须为应用配置 Interactions Endpoint URL。接收与响应在底层都是 webhook：响应交互类似发 webhook 请求。可用多种回调类型，例如 PONG（ACK Ping）、CHANNEL_MESSAGE_WITH_SOURCE、DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE（先 ACK 再稍后编辑，用户见加载态）、组件场景的延迟/更新消息、自动完成结果、弹 Modal 等。对已收到的交互，可向 \`/interactions/<interaction_id>/<interaction_token>/callback\` 发 POST；若交互经 Gateway 收到，仍必须用 HTTP 响应，不能把响应当 Gateway 命令发送。文档写明：interaction token 有效约 15 分钟，可用于后续 followup，但必须在收到事件后 3 秒内发出初始响应，否则 token 失效。本场景据此输出 HTTP 接入与超时治理简报。禁止声称「生产 Endpoint 已验证通过」。`,
+    outcomes: [
+      "源未披露量化「交互超时率」；公开文只描述 Endpoint、3 秒时限、token 窗口与回调类型。",
+      "能把「超时未 ACK / 该 defer 却同步算 / Gateway 误当响应通道」拆开。",
+      "为独立 Bot/组件工具提供可落地的响应时序清单。",
+    ],
+    caveats: [
+      "公钥验签等准备步骤见 Interactions Overview；本条一手源聚焦接收与响应时序与回调。",
+      "回调类型对组件/Modal/Ping 有适用限制，选错类型会直接失败。",
+      "上面写的是文档行为说明，不是你应用的 Endpoint 实况。",
+    ],
+    prompts: [
+      {
+        title: "Discord Interactions 接入简报",
+        body: `你是 Discord Interactions 助手。只给 HTTP 接收与响应核对简报，不要编造已验证通过。
+
+交互类型：{{interaction_kinds}}
+是否已配 Interactions Endpoint：{{has_endpoint}}
+超时/报错摘要：{{error}}
+处理耗时预估：{{latency_estimate}}
+
+输出 Markdown：
+1. Endpoint 是否必需的提问
+2. 3 秒初始响应 vs defer 选择
+3. callback URL 与 token 窗口
+4. 测试应用验收步骤
+禁止索要 Bot token 或公钥；禁止代改生产 Endpoint。`,
+      },
+      {
+        title: "应用无响应复盘提纲",
+        body: `用户反馈 Slash/按钮「应用无响应」，请写复盘提纲。
+
+时间线：{{timeline}}
+端点日志摘要：{{logs}}
+是否尝试 defer：{{tried_defer}}
+
+输出：
+1. 是否超过 3 秒未初始回调
+2. 回调类型是否用错
+3. 是否误走 Gateway 当响应通道
+4. 临时缓解与防再发
+不要伪造「已全部修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://discord.com/developers/docs/interactions/receiving-and-responding",
+      label: "Discord Developer Documentation · Receiving and Responding to Interactions",
+      date: "2026-10-27",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
