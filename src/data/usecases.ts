@@ -16325,6 +16325,455 @@ Cloudflare Docs《Workers KV》Overview（Last updated / dateModified 可核）�
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "326",
+    slug: "gtd-bujo-claude-md-daily-plan",
+    title: "用 Markdown+Git+Claude 扛起 GTD/BuJo 日计划",
+    summary: "对照个人实践：把周回顾与任务迁移交给 slash command，早间 /daily 产出 ONE Thing 与分档清单；不代删待办、不自动外发邮件。",
+    description:
+      "面向个人效率与独立开发者：把「生产力系统死于维护」写成可对账的 Markdown/Git 工作流，区别于仓库 CLI 汇总笔记与后台审批收件箱。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://neoagentix.com/i-was-using-ai-to-write-code-then-we-started-using-it-to-run-my-life/",
+    sourceLabel: "NeoAgentix·Hunter Kampf 实践帖",
+    upvotes: 131,
+    trending: false,
+    tags: [
+      "GTD",
+      "Bullet Journal",
+      "Claude Code",
+      "Markdown",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴现有捕获方式（纸本/Obsidian/待办App）、是否常出差、工作与生活是否需同库，以及周回顾是否经常中断",
+      "Agent 按实践帖要点输出：五条硬约束→MD/Git 目录与 CLAUDE.md→/daily /weekly 与反目标提问清单",
+      "人工在本地仓库跑 slash command 与迁移；Agent 不代删任务、不代发客户邮件",
+    ],
+    tips: [
+      "源帖强调：维护（周回顾、月末手抄迁移）是系统死亡主因；AI 应吸收维护，而不是再造一套要人手喂的应用",
+      "与 notes-vault-cli-summarize-agent / scheduled-recurring-agent-tasks 不同：本条是 GTD/BuJo 符号+价值观锚定的日/周计划状态机，不是 CLI 汇总数月笔记或通用定时任务壳",
+    ],
+    approach: `作者 Hunter Kampf 在个人博客写明：二十年换过 Franklin Covey、GTD、Bullet Journal、Focus Course 等，系统总在忙碌周「静悄悄停摆」——根因不是框架差，而是周回顾、月末手抄迁移等维护最先被砍。他在用 Claude Code 做 Agent 平台时发现：根目录 CLAUDE.md、分层上下文、slash command 与技能文件，其实就是生产力系统该做的捕获、追踪与护栏，只是以前要靠人手续命。
+
+实践选择是放弃「插件过多的 Obsidian 先配后用」，改用纯 Markdown + Git：根 CLAUDE.md、规划子目录、按生活域分文件夹。五条硬约束：出差可用、AI 吸收维护、工作与个人同库、零摩擦捕获、文件可打开可改可回滚。保留 ONE Thing、BuJo 速记符号、周 Top 3、GTD 捕获澄清、Focus Course 的余量与价值观过滤；砍掉繁重周回顾与手抄迁移。早间跑 /daily：脚本先铺日期/周主题/季度目标，再读昨日完成、未闭环、日历与需行动邮件，输出 ONE Thing + must/should/could 与日程。通话后可用会议处理器抽行动项并路由到项目文件；周末 debrief 迁移僵尸任务（连迁三次强制决定）。反目标（连迁上限、连轴会议上限等）写进配置，由命令自动打标。本场景据此输出「Markdown+Git 日计划」可复用提纲。禁止声称「你的周回顾已自动完成」或代发外邮。`,
+    outcomes: [
+      "源披露「六周日用后」的定性结论（维护不再压在本人身上、系统未再死亡），未给统一分钟节省或完成率百分比；公开文以机制叙述为主。",
+      "能把「再装一个待办 App」与「让 Agent 扛维护、人只做捕获与强制决策」拆开。",
+      "为 /daily、周 Top 3、反目标与项目文件路由提供可落地提问清单。",
+    ],
+    caveats: [
+      "源是个人侧写与方法论实践，不是厂商产品 SLA；目录与命令名需按你的仓库改写。",
+      "邮件扫描与会议纪要涉及隐私与误路由，外发前须人工确认。",
+      "上面写的是作者公开做法，不是替你声称「系统已零维护运行 N 月」。",
+    ],
+    prompts: [
+      {
+        title: "Markdown+Git 日计划骨架",
+        body: `你是个人效率系统助手。只根据用户约束设计 Markdown/Git 骨架与命令提问清单，不要编造已跑通。
+
+出行频率：{{travel_ratio}}
+工作/生活是否同库：{{work_life_same_repo}}
+现有捕获习惯：{{capture_habit}}
+常失败的维护动作：{{failed_maintenance}}
+
+输出 Markdown：
+1. 五条硬约束是否满足（出差/AI维护/同库/零摩擦/可检视）
+2. 建议目录与 CLAUDE.md 应写什么（勿贴隐私原文）
+3. /daily 与周末 debrief 各读哪些文件
+4. 反目标 2–4 条草案
+禁止代删待办；禁止声称周回顾已完成；禁止索要邮箱密码。`,
+      },
+      {
+        title: "僵尸任务强制决策提纲",
+        body: `若干任务已连续迁移多次，请写强制决策提纲。
+
+任务列表（标题即可）：{{zombie_tasks}}
+季度目标摘要：{{quarter_goals}}
+本周已承诺 Top3：{{week_top3}}
+
+输出：
+1. 每条：做 / 委派 / 排期 / 丢弃（须二选一理由）
+2. 是否违反「连迁三次」类反目标
+3. 回写到项目文件还是月度 backlog 的建议路径
+4. 人工确认清单
+不要伪造「已全部清空」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://neoagentix.com/i-was-using-ai-to-write-code-then-we-started-using-it-to-run-my-life/",
+      label: "NeoAgentix · I Was Using AI to Write Code. Then We Started Using It to Run My Life. (Hunter Kampf)",
+      date: "2026-02-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "327",
+    slug: "stripe-minions-oneshot-pr-agents",
+    title: "Stripe Minions：Slack 一键无人值守出 PR",
+    summary: "对照 Stripe 工程实践：从 Slack/内部工具拉起隔离 Devbox 上的 one-shot 编码 Agent，本地 lint→最多两轮 CI 后交人审 PR；不代合并、不碰生产。",
+    description:
+      "面向企业工程效能与独立团队参考：把「无人值守修小单/碎测」写成可对账步骤，区别于通用 CR 机器人与后台修缺陷队列。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents",
+    sourceLabel: "Stripe.dev·Minions 工程实践",
+    upvotes: 152,
+    trending: false,
+    tags: [
+      "Stripe",
+      "编码 Agent",
+      "无人值守",
+      "CI",
+      "企业自动化",
+    ],
+    howItWorks: [
+      "粘贴任务入口（IM 线程/工单/脆测告警）、仓库约束（语言/私有库/合规）、以及是否允许隔离环境无外网",
+      "Agent 按 Stripe 公开实践输出：入口→Devbox 隔离→规则/MCP 上下文→本地反馈左移→CI 轮次上限→人审闸门提问清单",
+      "人工在自有流水线落地；Agent 不代合 PR、不持生产凭据",
+    ],
+    tips: [
+      "源帖强调：巨型私有代码库+支付合规下，通用 vibe coding 不够用，须与自家 Devbox/规则/CI 深集成；人审仍是合并前门闩",
+      "与 code-review-pr-agent / fleet-ci-fix-ship-prs 不同：本条聚焦 Slack→隔离环境→one-shot PR 的无人值守编排，不是单次 CR 或舰队式批量修",
+    ],
+    approach: `Stripe 工程博客《Minions: Stripe’s one-shot, end-to-end coding agents》（datePublished 可核）写明：团队自研无人值守编码 Agent「Minions」，目标 one-shot 完成任务；每周有上千个合并 PR 完全由 Minion 产出代码（仍经人审、无人类手写代码进这些 PR）。工程师仍可用 Claude/Cursor 结对，但注意力稀缺时，无人值守可并行消化值班碎单。
+
+典型路径：在 Slack 线程 @ 机器人（也可 CLI/Web，或从内部文档、feature flag、工单 UI 一键拉起；脆测工单可带「用 Minion 修」按钮）→ 在与人类相同的预热 Devbox（约 10 秒就绪、隔离生产与外网）里跑 Agent 循环（基于早期 fork 的 goose，并交织确定性 git/lint/测试步骤）→ 读与 Cursor/Claude Code 相同的条件化 agent 规则 → 经内部 Toolshed MCP（400+ 工具子集）拉文档/工单/Sourcegraph 等 → 先本地启发式 lint（推送后数秒内），再最多两轮选择性 CI（失败可自动修一部分，否则回灌 Minion；第三轮性价比低故硬停）→ 开好符合模板的 PR 等人审；不对则继续指令迭代。本场景据此输出「IM 触发、隔离环境、反馈左移、CI 轮次帽、人审」提纲。禁止声称「已代你合并生产」或回显密钥。`,
+    outcomes: [
+      "源披露「每周逾千个完全由 Minion 产出并经人审合并的 PR」量级；未给出你仓库可复用的通杀成功率。",
+      "能把「聊天里随手 vibe 改生产库」与「隔离 Devbox + 确定性步骤 + 人审」拆开。",
+      "为入口选择、规则条件化、CI 轮次与权限边界提供提问清单。",
+    ],
+    caveats: [
+      "实现细节大量 Stripe 内部（Ruby/Sorbet、Toolshed、Devbox）；外团队只能学模式不能复制内部栈。",
+      "隔离无外网意味着依赖预置工具与 MCP；随意放开出口等于换威胁模型。",
+      "上面写的是 Stripe 公开工程叙事，不是你司已上线的同名产品。",
+    ],
+    prompts: [
+      {
+        title: "无人值守出 PR 编排简报",
+        body: `你是编码 Agent 编排助手。只根据用户约束写 one-shot PR 流水线提问清单，不要编造已上线。
+
+任务入口：{{entrypoints}}
+仓库约束：{{repo_constraints}}
+是否隔离无外网：{{airgapped_ok}}
+CI 成本敏感度：{{ci_cost}}
+
+输出 Markdown：
+1. 入口（IM/工单/脆测）与上下文预取
+2. 隔离环境 vs 本机 worktree 选型
+3. 本地 lint → CI 轮次上限建议
+4. 人审/禁止自动合并闸门
+禁止索要生产凭据；禁止声称 PR 已合并。`,
+      },
+      {
+        title: "脆测/值班碎单 Minion 化提纲",
+        body: `要把一类重复小单交给无人值守 Agent，请写准入提纲。
+
+小单类型：{{chore_type}}
+现有检测信号：{{signal}}
+失败时人工兜底人：{{owner}}
+
+输出：
+1. 哪些可 one-shot、哪些必须结对
+2. 需要预置的规则/测试/MCP
+3. 最多几轮 CI 后停并升级
+4. 审计字段（谁触发、耗时、是否改敏感路径）
+不要伪造「脆测已清零」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents",
+      label: "Stripe.dev · Minions: Stripe’s one-shot, end-to-end coding agents",
+      date: "2026-02-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "328",
+    slug: "github-a11y-agent-pr-review-lessons",
+    title: "GitHub 无障碍 Agent：审 PR 与克制改码实践",
+    summary: "对照 GitHub 工程实践：用评审/实现双子代理+模板 schema 审前端 PR，复杂与高风险模式只给建议不改码；不宣称已达 WCAG 全覆盖。",
+    description:
+      "面向前端与平台团队：把「无障碍 Agent 试点」写成可对账的范围与闸门，区别于通用安全预审与单次 CR。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+    sourceLabel: "GitHub Blog·无障碍 Agent 实践",
+    upvotes: 168,
+    trending: false,
+    tags: [
+      "无障碍",
+      "GitHub",
+      "子代理",
+      "PR 审查",
+      "前端",
+    ],
+    howItWorks: [
+      "粘贴是否已有结构化无障碍缺陷库、前端变更是否自动抽检、以及对「自动改码」的风险容忍",
+      "Agent 按公开实践输出：双子代理沙箱→线性阶段→复杂度/高风险停手→人工升级提问清单",
+      "人工在仓库配置规则与抽检；Agent 不代合 PR、不声称站点已完全无障碍",
+    ],
+    tips: [
+      "源帖强调：先有人工登记/修复的结构化缺陷语料，再喂给 Agent；空喊「遵循无障碍最佳实践」几乎无效",
+      "与 code-review-pr-agent / github-pr-security-prescreen-agent 不同：本条是无障碍专用评审+克制实现闸门，不是通用 CR 或安全预审",
+    ],
+    approach: `GitHub Blog《Building a general-purpose accessibility agent—and what we learned in the process》（Eric Bailey，datePublished 可核）写明：正在试点通用无障碍 Agent，目标有二——在 Copilot CLI/VS Code 里即时答无障碍问题；以及在前端变更上自动评估并修复「简单、客观」的问题。截至发文已审 3535 个 PR，解决率约 68%；高频问题类型包括结构关系、控件名称、重要通知、非文本替代文本、键盘焦点顺序等。
+
+关键做法：不把 Agent 当银弹，而是增强既有无障碍流程。历史投入的结构化缺陷模板（复现步骤、严重级别、WCAG 条款、关联 PR）成为最强语料，用来对抗「训练数据里充斥不可访问代码」的偏见。架构上从单体改为双子代理：被动评审/调研 vs 主动实现，彼此沙箱、经父代理用模板 schema 传递，保留升级点与审计轨迹；指令按线性阶段执行（对齐人工审计习惯）。复杂度脚本超阈值或命中拖拽、toast、富文本、树视图、数据网格等高风险模式时，禁止自动改码，改为指引联系无障碍团队，并加反「想方设法仍去改码」指令。同时承认约 36% 的 A/AA 成功标准无法纯自动发现，设计阶段人工仍关键。本场景据此输出「范围、语料、双子代理、停手条件」提纲。禁止声称「已通过全部 WCAG」。`,
+    outcomes: [
+      "源披露已审 3535 PR、约 68% 解决率及 Top 问题类型；未承诺可迁移到任意产品的同等数字。",
+      "能把「让模型随便改前端」与「评审/实现分离 + 高风险停手」拆开。",
+      "为缺陷语料、schema、升级路径提供提问清单。",
+    ],
+    caveats: [
+      "Agent 仍在试点，开源计划未兑现前只能学方法。",
+      "自动化测不到的成功标准仍依赖设计/人工；法律合规以法务与专业审计为准。",
+      "上面写的是 GitHub 公开实验叙事，不是你产品的无障碍认证。",
+    ],
+    prompts: [
+      {
+        title: "无障碍 Agent 范围与闸门简报",
+        body: `你是无障碍 Agent 设计助手。只给范围与停手闸门简报，不要编造已审 PR 数。
+
+是否已有结构化缺陷库：{{issue_corpus}}
+前端栈：{{frontend_stack}}
+允许自动改码的级别：{{autofix_level}}
+
+输出 Markdown：
+1. 适合自动修 vs 只建议的问题类型
+2. 双子代理（评审/实现）与模板字段
+3. 复杂度/高风险模式停手列表草案
+4. 人工抽检与情感信号如何回灌
+禁止声称已达 WCAG AA；禁止代合 PR。`,
+      },
+      {
+        title: "PR 无障碍评审升级提纲",
+        body: `某前端 PR 触发无障碍检查，请写升级提纲。
+
+变更摘要：{{diff_summary}}
+Agent 初判：{{agent_findings}}
+是否含树视图/富文本等：{{risky_patterns}}
+
+输出：
+1. 可自动修项 vs 须人审项
+2. 是否应转无障碍同学结对
+3. 设计阶段是否可能已埋雷
+4. 合并前人工验证步骤
+不要伪造「用户已可依赖读屏」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+      label: "GitHub Blog · Building a general-purpose accessibility agent—and what we learned in the process",
+      date: "2026-05-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "329",
+    slug: "shopify-roast-structured-ai-workflows",
+    title: "Shopify Roast：把 Agent 工作流写成可测 YAML",
+    summary: "对照 Shopify 工程实践：用约定式 workflow.yml + 提示词步，交织确定性命令与 CodingAgent，会话可回放；不代在生产仓库裸跑改码。",
+    description:
+      "面向独立开发者与平台 DX：把「别让 Agent 在巨型仓库里乱跑」写成结构化工作流，区别于单次提示修 bug 与示教录屏壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://shopify.engineering/introducing-roast",
+    sourceLabel: "Shopify Engineering·Roast 实践",
+    upvotes: 181,
+    trending: false,
+    tags: [
+      "Shopify",
+      "Roast",
+      "结构化工作流",
+      "YAML",
+      "编码 Agent",
+    ],
+    howItWorks: [
+      "粘贴目标任务（测评级/补类型/扫频道信号等）、是否需版本管理与回放、以及哪些步必须确定性",
+      "Agent 按公开实践输出：目录约定→步类型（目录提示/命令/内联/并行/自定义）→CodingAgent 边界→session replay 提问清单",
+      "人工在自有仓库落 workflow；Agent 不代烧生产 token 跑全库",
+    ],
+    tips: [
+      "源帖核心：非确定性是可靠性的敌人；先拆步，再用 AI 填「尚未理解」的洞，理解后再换成确定性步",
+      "与 learn-scripts-from-tools-folder / intent-review-agent-with-tests 不同：本条是 YAML 编排的可回放混合工作流，不是示教录屏或意图评审测试壳",
+    ],
+    approach: `Shopify Engineering《Introducing Roast: Structured AI workflows made easy》（Obie Fernandez，页内 Published on Jun 18, 2025 可核）写明：Augmented Engineering DX 团队在用 Agent 做脆测治理、测试覆盖等时发现——复杂提示塞进一次「满仓库乱逛」几乎不可靠；必须把任务拆成离散步骤，并让 AI 步与普通代码步交织。他们抽出并开源 Roast：约定优于配置的工作流框架，用 workflow.yml + markdown 提示词声明步骤，支持目录步、$() 命令步、内联提示、^CodingAgent（接 Claude Code）、自定义 Ruby 步与并行嵌套数组；步之间共享对话上下文；提供 session replay，可从任一步续跑以免反复烧昂贵 AI 步。
+
+内部案例包括：规模化测质量分析、Boba 工作流（sed/清理→Sorbet 自动更正→剩余交 CodingAgent 迭代）、SRE 扫内部频道做早期信号、竞品情报聚合、「切斯特顿栅栏」式提交/PR 溯源解释。本场景据此输出「结构化 AI 工作流」提纲。禁止声称「已在你的 monorepo 跑完全库烤肉」。`,
+    outcomes: [
+      "源描述内部已用于数千测试文件分析、类型补全、SRE 信号与情报聚合等；未给可直接套用的统一 ROI 百分比。",
+      "能把「一条超长提示碰运气」与「YAML 步 + 可回放 + 确定性/Agent 混编」拆开。",
+      "为第一步该确定性还是该 Agent、如何回放省钱提供提问清单。",
+    ],
+    caveats: [
+      "Roast 本身是 Ruby CLI，工作流可服务多语言，但引入成本与团队栈有关。",
+      "CodingAgent 仍可能改错文件；生产路径须人工 diff 与测试门禁。",
+      "上面写的是 Shopify 公开工程与开源叙述，不是托管 SaaS 承诺。",
+    ],
+    prompts: [
+      {
+        title: "Roast 风格工作流骨架",
+        body: `你是结构化 AI 工作流助手。只设计 workflow 骨架与步类型，不要编造已执行成功。
+
+目标任务：{{task}}
+必确定性的步骤：{{deterministic_steps}}
+适合 Agent 迭代的步骤：{{agent_steps}}
+是否需要回放：{{need_replay}}
+
+输出 Markdown：
+1. workflow.yml 步列表（标类型：prompt/cmd/agent/parallel）
+2. 每步输入输出约定
+3. 失败重试与人工闸门
+4. 本地试跑顺序
+禁止索要 API Key；禁止声称已分析全仓库。`,
+      },
+      {
+        title: "脆测/补类型工作流选型提纲",
+        body: `想把重复工程杂务做成可版本管理的 Agent 工作流，请写选型提纲。
+
+杂务类型：{{chore}}
+现有脚本：{{existing_scripts}}
+模型预算：{{budget}}
+
+输出：
+1. 哪些先保持 sed/脚本确定性
+2. 何处接入 CodingAgent
+3. 如何用 replay 降本
+4. 合并前验证清单
+不要伪造「覆盖率已提升」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://shopify.engineering/introducing-roast",
+      label: "Shopify Engineering · Introducing Roast: Structured AI workflows made easy",
+      date: "2025-06-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "330",
+    slug: "stripe-mongodb-graph-self-heal",
+    title: "Stripe：图搜索自动愈合 MongoDB 分片",
+    summary: "对照 Stripe 工程实践：把分片状态建成可遍历图，用 BFS/Dijkstra 在模拟层规划再经 Temporal 执行；不做你的生产改票/重建。",
+    description:
+      "面向平台/SRE：把「静态插件式自愈扛不住组合故障」写成图搜索自愈叙事，区别于单机 OOM 分诊与通用 DLQ 毒丸。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://stripe.dev/blog/how-stripe-uses-graph-search-and-state-machines-to-auto-remediate-a-global-database-fleet",
+    sourceLabel: "Stripe.dev·MongoDB 图搜索自愈实践",
+    upvotes: 198,
+    trending: false,
+    tags: [
+      "Stripe",
+      "MongoDB",
+      "自愈",
+      "图搜索",
+      "SRE",
+    ],
+    howItWorks: [
+      "粘贴现有自愈是「插件优先级」还是人工 runbook、故障是否常多因子叠加、以及是否有状态模拟层",
+      "Agent 按公开实践输出：状态/边建模→安全不变量→模拟与执行同逻辑→部分愈合提问清单",
+      "人工在自有控制面设计；Agent 不连接你的数据库、不改投票或隐藏节点",
+    ],
+    tips: [
+      "源帖关键句：别再问「眼下最重要修哪个」，要问「哪条操作序列能在不违反不变量的前提下回到健康」",
+      "与 ecs-oom-killer-log-triage-agent / sqs-dlq-poison-message-triage 不同：本条是全球分片拓扑图搜索自愈，不是单机 OOM 或队列毒丸分诊",
+    ],
+    approach: `Stripe.dev《How Stripe uses graph search and state machines to auto-remediate a global database fleet》（datePublished 可核）写明：Document Database 舰队约 2000 个 MongoDB 分片、40+ 布局；过去值班常为降级分片起床，单次人工护理可达数小时。V1 自愈是单步硬编码插件按固定优先级转——多故障叠加、插件隐式依赖、布局耦合与中途取消留下的中间态，都会把系统逼回人工。
+
+重构把分片健康建成有向图：节点属性含投票、优先级、隐藏、oplog、地域与法定人数等；边是原子操作（改票/优先级、隐藏、重建、扩 oplog）。目标态来自 Source of Truth；非法态（偶数票、健康投票节点少数等）在搜索中剪枝。先用 BFS 找最短合法序列；再演进到带权 Dijkstra（边权≈误配置分数×预估耗时），在无法完全健康时仍可「部分愈合」到误配置最低的可达态。规划在内存模拟（CommonContext 抽象，与 Temporal 生产执行共用业务逻辑）中毫秒级展开，执行仍走 Temporal 耐久工作流。效果：pager 约降 30%（约少 200 次/年）、每年少约 12 天分片困在不健康态，新布局接入可零改代码。本场景据此输出「图搜索自愈」提纲。禁止对你的集群下发操作。`,
+    outcomes: [
+      "源披露约 30% pager 下降、每年约 12 天舰队健康回收、新布局零改代码接入等；数字属于 Stripe 舰队，不可直接当作你环境的承诺。",
+      "能把「再写一个 if 插件」与「不变量+操作集+搜索」拆开。",
+      "为模拟保真、部分愈合与取消后续规划提供提问清单。",
+    ],
+    caveats: [
+      "强依赖可建模的状态与可安全自动化的原子操作；建模错了会系统化做错。",
+      "Temporal/模拟双后端是实现细节，换编排器也可以，但「模拟即执行」保真不可省。",
+      "上面写的是 Stripe 公开工程叙事，不是对你库的诊断结论。",
+    ],
+    prompts: [
+      {
+        title: "状态机自愈建模简报",
+        body: `你是基础设施自愈建模助手。只根据用户描述做图搜索建模提问清单，不要连接真实集群。
+
+资源类型：{{resource_type}}
+已知原子操作：{{atomic_ops}}
+安全不变量：{{invariants}}
+现有痛点：{{pain}}
+
+输出 Markdown：
+1. 状态字段候选
+2. 合法/非法态例子
+3. BFS vs 带权最短路适用场景
+4. 模拟层与执行层如何共用逻辑
+禁止生成可直接对生产执行的命令序列当「已批准变更」。`,
+      },
+      {
+        title: "多故障卡住时的部分愈合提纲",
+        body: `自愈在组合故障下卡住或只完成一部分，请写复盘提纲。
+
+症状：{{symptom}}
+已自动步骤：{{done_steps}}
+仍异常项：{{remaining}}
+
+输出：
+1. 是否存在完整路径，还是应接受部分愈合
+2. 哪些中间态可能由取消/超时留下
+3. 人工接管前要核对的不变量
+4. 是否该加新的误配置计分规则
+不要伪造「舰队已全部健康」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://stripe.dev/blog/how-stripe-uses-graph-search-and-state-machines-to-auto-remediate-a-global-database-fleet",
+      label: "Stripe.dev · How Stripe uses graph search and state machines to auto-remediate a global database fleet",
+      date: "2026-07-16",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
