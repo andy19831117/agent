@@ -14976,6 +14976,456 @@ Discord Developer Docs《Receiving and Responding to Interactions》说明：Int
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "311",
+    slug: "twilio-webhooks-inbound-brief",
+    title: "Twilio Webhooks 入站事件接入简报",
+    summary: "按产品/运行时 Webhook 分流、入站 SMS/通话需回 TwiML、签名校验与 Webhooks 配置 API，整理入站事件接入简报；不代持 Auth Token、不代改生产 URL。",
+    description:
+      "面向独立开发者：把「Twilio 回调到我的 HTTPS」写成可对账步骤，区别于邮件发信商事件 Webhook 与通用签名失败排查。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://www.twilio.com/docs/usage/webhooks",
+    sourceLabel: "Twilio Docs·Introduction to Webhooks",
+    upvotes: 128,
+    trending: false,
+    tags: [
+      "Twilio",
+      "Webhooks",
+      "SMS",
+      "TwiML",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴产品线（Messaging/Voice 等）、Webhook URL 形态、是否已做签名校验，以及超时/无响应症状",
+      "Agent 按官方 Introduction to Webhooks 与同日 Secure webhooks 要点输出：产品 vs 运行时分流→入站回 TwiML vs 仅 ACK→签名/配置 API 提问清单",
+      "人工在测试号验证；Agent 不代写生产 Auth Token、不代改控制台 URL",
+    ],
+    tips: [
+      "Twilio REST 是你→Twilio；Webhook 是 Twilio→你的应用。入站短信常需回合法 TwiML；录音完成类多为通知，回执即可",
+      "与 resend-webhooks-email-events-brief 不同：本条是通信平台入站/运行时回调，不是发信投递事件",
+    ],
+    approach: `独立产品接短信/语音时，常见卡点是：控制台填了 URL，入站消息来了应用却无响应或回了非 TwiML——又或未验签被伪造请求打穿。
+
+Twilio Docs《Introduction to Webhooks》（TechArticle dateModified 可核）说明：Twilio 用 Webhook 在来电、来信等事件发生时通知你的 Web 应用；REST API 负责你的应用→Twilio，Webhook 负责反向。事件发生后 Twilio 向你配置的 URL 发 HTTP 请求，载荷含来电号码、短信正文等。文档区分两类：产品 Webhook（Voice、Messaging、Conversations、Sync 等按产品各自约定）与运行时 Webhook（如账单阈值、错误等）。对入站短信等场景，Twilio 会向你的应用索取指令，应用须返回合法 TwiML；对录音完成等通知类，通常只需确认收到。可用 Webhooks configuration API 按 URL 控制鉴权、签名与投递方式。配套《Secure webhooks》强调用账户 Auth Token 做 HMAC-SHA1 签名校验，并说明 query/form/JSON（bodySHA256）三类参数均须按文档纳入校验；Twilio 无固定出站 IP 段，不宜只靠 IP 白名单。本场景据此输出入站接入简报。禁止回显 Auth Token 或声称「生产 Webhook 已接通」。`,
+    outcomes: [
+      "源未披露量化「入站失败率下降」；公开文只描述 Webhook 方向、产品/运行时分流、TwiML 响应与签名校验要点。",
+      "能把「该回 TwiML 却空响应 / 未验签 / 与发信商事件 Webhook 混淆」拆开。",
+      "为短信/语音自动化提供可落地的入站核对清单。",
+    ],
+    caveats: [
+      "各产品字段与状态回调以对应产品文档为准；本条一手源是总览入口。",
+      "签名校验须用官方库或严格按 Secure webhooks；改写/重编码 URL 会导致验签失败。",
+      "上面写的是机制说明，不是你账户下的号码与 Webhook 配置实况。",
+    ],
+    prompts: [
+      {
+        title: "Twilio 入站 Webhook 接入简报",
+        body: `你是 Twilio Webhooks 助手。只给入站接入核对简报，不要编造已接通。
+
+产品线：{{product_line}}
+Webhook URL 形态（可打码）：{{webhook_url_shape}}
+是否已做签名校验：{{signature_check}}
+症状/报错：{{symptom}}
+
+输出 Markdown：
+1. 产品 Webhook vs 运行时 Webhook
+2. 是否必须回 TwiML
+3. 签名校验与配置 API 提问
+4. 测试号验收步骤
+禁止索要 Auth Token；禁止代改生产 URL。`,
+      },
+      {
+        title: "入站无响应排查提纲",
+        body: `入站 SMS/通话控制台有记录但业务无动作，请写排查提纲。
+
+时间线：{{timeline}}
+端点日志摘要：{{logs}}
+返回内容类型：{{response_type}}
+
+输出：
+1. URL/超时是否导致 Twilio 放弃
+2. 是否应回 TwiML 却空响应
+3. 验签失败是否丢弃合法请求
+4. 下一步人工验证
+不要伪造「已全部修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.twilio.com/docs/usage/webhooks",
+      label: "Twilio Docs · Introduction to Webhooks",
+      date: "2026-10-14",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "312",
+    slug: "clerk-webhooks-user-events-brief",
+    title: "Clerk Webhooks 用户事件同步简报",
+    summary: "按事件目录、Svix 签名、至少一次投递与无序/重复、Replay，整理用户生命周期同步简报；不代持 signing secret、不代改生产端点。",
+    description:
+      "面向独立开发者：把「Clerk 用户变更回写业务库」写成可对账步骤，区别于 Auth0/OIDC 登录报错排查与通用 webhook 验签壳。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://clerk.com/docs/guides/development/webhooks/overview",
+    sourceLabel: "Clerk Docs·Webhooks overview",
+    upvotes: 141,
+    trending: false,
+    tags: [
+      "Clerk",
+      "Webhooks",
+      "用户同步",
+      "Svix",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴拟订阅事件（如 user.created/updated）、业务库同步目标、端点栈摘要与是否已有 signing secret（勿贴值）",
+      "Agent 按官方 Webhooks overview 输出：异步事件→验签→幂等/无序处理→Retry/Replay 提问清单",
+      "人工在测试实例验证；Agent 不代登记生产 URL、不代存 secret",
+    ],
+    tips: [
+      "文档写明至少一次投递、不保证顺序；处理器须幂等，必要时用 instance 数据再读而非只信单次载荷顺序",
+      "与 oidc-sso-login-error-triage 不同：本条是 Clerk 出站用户事件 Webhook，不是登录失败排查",
+    ],
+    approach: `用 Clerk 管登录后，业务库仍靠轮询用户表——希望 user.created / user.updated 自动同步档案或开通租户，但常踩「事件乱序、重复投递、把 Webhook 当同步阻塞点」。
+
+Clerk Docs《Webhooks overview》（页内 Last updated / dateModified 可核）说明：Clerk Webhooks 让你在用户创建或更新等事件发生时收到 HTTP POST，载荷为 JSON，可用于发通知或更新数据库；它是异步的，看起来近实时，但不能当作注册流程的同步步骤——投递通常很快，但不保证立即或一定送达。Dashboard Webhooks 页可取 signing secret；事件目录见 Event Catalog。投递保证：Clerk/Svix 会重试直至端点返回 2xx 或重试用尽；会尽量去重，但重试仍可能导致同一事件到达多次。事件不保证按发生顺序到达（例如同一用户的 updated 可能先于 created）。文档建议处理器在任意顺序与重复下结果一致，并可用服务端再读代替只依赖载荷顺序。失败时可在 Dashboard 对 Message Attempts 做 Replay。防护上应校验 Svix 签名（可用 verifyWebhook），并可限制仅接受 Svix webhook IP。本场景据此输出同步简报。禁止回显 signing secret 或声称「生产已同步完成」。`,
+    outcomes: [
+      "源未披露量化「同步延迟 P95」；公开文只描述事件动机、至少一次/无序、验签与 Replay。",
+      "能把「当同步阻塞 / 未幂等 / 未验签」拆开。",
+      "为用户档案回写提供可落地的事件处理设计提问。",
+    ],
+    caveats: [
+      "具体事件名与 Billing 事件以 Event Catalog / 专用指南为准。",
+      "本地调试需隧道；误配端点会导致重试耗尽，需用 Replay 补救。",
+      "上面写的是产品机制，不是你实例下的端点健康度。",
+    ],
+    prompts: [
+      {
+        title: "Clerk Webhooks 同步简报",
+        body: `你是 Clerk Webhooks 助手。只给用户事件同步核对简报，不要编造已接通。
+
+拟订阅事件：{{event_types}}
+业务同步目标：{{sync_goal}}
+端点栈摘要：{{endpoint_stack}}
+是否已有 signing secret（是/否，勿给值）：{{has_secret}}
+
+输出 Markdown：
+1. 为何不能当注册同步阻塞点
+2. 验签与 IP 限制提问
+3. 幂等/无序处理检查点
+4. 测试实例验收与 Replay
+禁止索要 signing secret；禁止代改生产 URL。`,
+      },
+      {
+        title: "用户事件乱序/重复复盘提纲",
+        body: `业务库出现重复用户或字段被旧事件覆盖，请写复盘提纲。
+
+现象：{{symptom}}
+已订事件：{{subscribed_events}}
+处理器是否幂等：{{idempotent}}
+
+输出：
+1. 是否依赖到达顺序
+2. 是否未处理至少一次投递
+3. 是否需 Replay 或对账重拉
+4. 下一步人工验证
+不要伪造「数据已全部对齐」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://clerk.com/docs/guides/development/webhooks/overview",
+      label: "Clerk Documentation · Webhooks overview",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "313",
+    slug: "supabase-database-webhooks-brief",
+    title: "Supabase Database Webhooks 表事件出站简报",
+    summary: "按 INSERT/UPDATE/DELETE 触发、pg_net 异步包装、载荷形态与 Vault 存密，整理表变更出站简报；不代写生产密钥进迁移、不代改生产触发器。",
+    description:
+      "面向独立开发者：把「行变更推到 Edge Function/外部系统」写成可对账步骤，区别于 Auth Hooks 与邮件/通信 Webhook。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://supabase.com/docs/guides/database/webhooks",
+    sourceLabel: "Supabase Docs·Database Webhooks",
+    upvotes: 159,
+    trending: false,
+    tags: [
+      "Supabase",
+      "Database Webhooks",
+      "pg_net",
+      "触发器",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴目标表与事件（INSERT/UPDATE/DELETE）、下游（Edge Function/HTTP）、本地或托管环境摘要",
+      "Agent 按官方 Database Webhooks 说明输出：触发时机→pg_net 异步→载荷字段→Vault/密钥与本地 host.docker.internal 提问清单",
+      "人工在 SQL Editor/Dashboard 验证；Agent 不代把 secret 写入迁移、不代改生产触发器",
+    ],
+    tips: [
+      "Database Webhooks 是基于触发器 + pg_net 的便利封装，网络请求异步，不因长耗时 HTTP 长时间阻塞行变更",
+      "与 clerk-webhooks-user-events-brief / Twilio 不同：本条是数据库行级出站，不是 IdP 或通信平台事件",
+    ],
+    approach: `业务要在 profiles 插入后通知计费或调用 Edge Function，却把同步 HTTP 塞进触发器——或本地调试把 localhost 写进 Webhook URL 打到容器自己。
+
+Supabase Docs《Database Webhooks》（dateModified 可核）说明：Database Webhooks 在表事件发生时把实时数据发到另一系统；可挂钩 INSERT、UPDATE、DELETE，且均在行变更之后触发。它们与触发器很像，实质是用 pg_net 扩展对触发器的便利包装；扩展异步，因此不会因长耗时网络请求长时间阻塞数据库变更。可用 Dashboard 创建，也可用 SQL 直接建 trigger，调用 supabase_functions.http_request。支持 HTTP POST/GET 等；也可在每次表事件时调用 Edge Function，函数以请求体收载荷，并用项目 secret key 做服务间调用。文档提醒：若把密钥写进触发器定义，密钥会出现在触发器 SQL/数据库转储中；可用 Supabase Vault 存 project_url 与 secret_key，在触发函数里读取后再 net.http_post。本地实例中 Postgres 在 Docker 内，Webhook URL 的 localhost 指向容器自身，应使用 host.docker.internal（或主机局域网 IP）。载荷由底层表记录自动生成，含 type/table/schema/record/old_record。本场景据此输出出站简报。禁止把生产 secret 写入示例迁移或声称「生产触发器已安全」。`,
+    outcomes: [
+      "源未披露量化「出站延迟」；公开文只描述事件类型、pg_net 异步、Vault 存密与本地主机名注意点。",
+      "能把「同步阻塞触发器 / secret 进迁移 / 本地 localhost 误配」拆开。",
+      "为行变更驱动的自动化提供可落地的设计提问。",
+    ],
+    caveats: [
+      "可登录数据库的角色在请求排队期间可能读到解密后的密钥（文档对 net.http_request_queue 有说明）。",
+      "HTTP 超时等参数以当前 http_request/pg_net 文档为准。",
+      "上面写的是官方机制，不是你项目现有触发器列表。",
+    ],
+    prompts: [
+      {
+        title: "Supabase Database Webhooks 简报",
+        body: `你是 Supabase Database Webhooks 助手。只给出站核对简报，不要编造已配置成功。
+
+表与事件：{{table_events}}
+下游目标：{{downstream}}
+环境（local/hosted）：{{environment}}
+密钥存放现状：{{secret_storage}}
+
+输出 Markdown：
+1. 触发时机与异步含义
+2. 载荷字段核对
+3. Vault vs 触发器内嵌密钥提问
+4. 本地 host.docker.internal 验收
+禁止索要 secret key 值；禁止代改生产触发器。`,
+      },
+      {
+        title: "行变更未出站排查提纲",
+        body: `表已更新但下游未收到请求，请写排查提纲。
+
+现象：{{symptom}}
+触发器/Webhook 摘要：{{trigger_brief}}
+下游日志：{{downstream_logs}}
+
+输出：
+1. 事件类型是否订错
+2. URL/主机名是否指向错误主机
+3. 密钥/鉴权是否导致下游拒收
+4. 下一步人工验证
+不要伪造「下游已收到」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://supabase.com/docs/guides/database/webhooks",
+      label: "Supabase Documentation · Database Webhooks",
+      date: "2026-10-29",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "314",
+    slug: "fly-io-deploy-machines-brief",
+    title: "Fly.io fly deploy Machines 发布简报",
+    summary: "按 fly.toml、镜像来源、release command、部署策略与 smoke checks，整理 Machines 发布简报；不代持 API token、不代对生产强制 rolling。",
+    description:
+      "面向独立开发者：把「改完代码怎么安全 fly deploy」写成可对账步骤，区别于 Vercel Cron/Env 与仅看部署日志。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://docs.fly.io/launch/deploy/",
+    sourceLabel: "Fly.io Docs·Deploy an app",
+    upvotes: 178,
+    trending: false,
+    tags: [
+      "Fly.io",
+      "fly deploy",
+      "Machines",
+      "发布",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴应用名/进程组摘要、拟改动（镜像/配置/迁移）、当前策略偏好与失败症状",
+      "Agent 按官方 Deploy an app 说明输出：镜像选择链→托管 vs 非托管 Machine→release command→rolling/canary 等策略与 smoke checks 提问清单",
+      "人工在非生产 app 演练；Agent 不代执行生产 deploy、不代持 token",
+    ],
+    tips: [
+      "首次部署常按进程组创建一到两台 Machine 做冗余；后续 deploy 以 Fly Launch 托管的 Machine 为一组更新",
+      "与 vercel-cron-jobs-function-brief 不同：本条是 Fly Machines 应用发布，不是 Vercel 定时调用 Function",
+    ],
+    approach: `应用已在 Fly 上，改完 Dockerfile 或 fly.toml 后直接 fly deploy，却碰到：迁移没跑、策略选成一次性全停、或启动后立刻非零退出被 smoke checks 打回。
+
+Fly.io Docs《Deploy an app》（dateModified 可核）说明：fly deploy 属于 Fly Launch，按本地 fly.toml 构建/获取镜像并在一台或多台 Fly Machines 上拉起发布。首次部署会按进程组与服务/卷配置创建一或两台 Machine；未显式定义进程组时，首发常给两台以冗余。后续部署把托管 Machine 作为一组更新。镜像来源优先级包括：--image 或 [build] 指定镜像、fly.toml 构建方式、--dockerfile、本地 Dockerfile 等。带合格 HTTP 服务且尚无公网 IP 时，可自动配置公网 IPv6 与共享 IPv4 Anycast。文档区分 Fly Launch 托管 Machine（带 fly_platform_version 元数据、随 deploy 成组更新）与 fly machine run 等创建的非托管 Machine。Release commands 可在正式部署前于临时 VM 跑一次性命令（如迁移），但临时 VM 不挂载你为应用配置的卷。部署策略可选 rolling（默认，逐台成功后再下一台）、immediate、canary、bluegreen 等。Smoke checks 在 Machine 进入 started 后约 10 秒内监视，若持续非零退出重启则部署失败。本场景据此输出发布简报。禁止声称「生产已发布成功」。`,
+    outcomes: [
+      "源未披露量化「回滚时间」；公开文只描述镜像选择、策略、release command 与 smoke checks。",
+      "能把「迁移放错时机 / immediate 全停 / 非托管 Machine 未被更新」拆开。",
+      "为独立应用提供可落地的发布前核对清单。",
+    ],
+    caveats: [
+      "并非所有变更都要新 App release（例如仅加 IP）；改密钥等仍可能触发重启/新部署。",
+      "卷挂载变更有限制：已挂卷的 Machine 不能靠 deploy 换成另一卷，只能改挂载点等。",
+      "上面写的是文档行为，不是你 app 当前 Machine 列表。",
+    ],
+    prompts: [
+      {
+        title: "fly deploy 发布简报",
+        body: `你是 Fly.io 发布助手。只给 fly deploy 核对简报，不要编造已发布成功。
+
+应用/进程组摘要：{{app_brief}}
+拟改动：{{change_brief}}
+是否有迁移：{{has_migration}}
+策略偏好：{{strategy_pref}}
+
+输出 Markdown：
+1. 镜像来源核对
+2. release command 是否适用
+3. 策略与 smoke checks 提问
+4. 非生产演练步骤
+禁止索要 API token；禁止代跑生产 deploy。`,
+      },
+      {
+        title: "部署失败/反复重启复盘提纲",
+        body: `fly deploy 失败或 Machine 启动后重启，请写复盘提纲。
+
+日志摘要：{{logs}}
+策略：{{strategy}}
+是否改了卷/密钥：{{changed}}
+
+输出：
+1. 是否被 smoke checks 判失败
+2. 是否 immediate 导致不可用窗口过大
+3. 是否更新了非托管 Machine 预期外配置
+4. 下一步人工验证
+不要伪造「已回滚成功」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://docs.fly.io/launch/deploy/",
+      label: "Fly.io Documentation · Deploy an app",
+      date: "2026-10-22",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "315",
+    slug: "planetscale-connection-strings-brief",
+    title: "PlanetScale 连接串与分支密码简报",
+    summary: "按分支密码一次性可见、Primary/Replica/只读区域、IP 限制与 GitHub Secret Scanning，整理连接串治理简报；不代存明文密码、不代删生产密码。",
+    description:
+      "面向独立开发者与轻量企业：把「分支级连接串怎么发、怎么收」写成可对账步骤，区别于通用云库连通性检查。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://planetscale.com/docs/vitess/connecting/connection-strings",
+    sourceLabel: "PlanetScale Docs·Connection strings",
+    upvotes: 214,
+    trending: false,
+    tags: [
+      "PlanetScale",
+      "连接串",
+      "分支密码",
+      "IP 限制",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴目标分支、连接类型（Primary/Replica/只读区域）、部署来源 IP 约束与轮换动机",
+      "Agent 按官方 Connection strings 说明输出：创建密码→一次性复制→连接类型→IP 限制/删除断连→Secret Scanning 提问清单",
+      "人工在 Dashboard/pscale 操作；Agent 不代保存明文密码、不代删除生产密码",
+    ],
+    tips: [
+      "密码绑定单一数据库分支，不能跨分支访问数据/schema；创建后明文不可再读，离开页面即无法找回",
+      "与 supabase-database-webhooks-brief 不同：本条管连接凭证与网络面，不是行级出站 Webhook",
+    ],
+    approach: `独立应用接 PlanetScale 时，常把主分支连接串塞进所有环境，或把密码提交到 GitHub——泄漏后不知道能不能远程作废。
+
+PlanetScale Docs《Connection strings》（Vitess/MySQL 路径，dateModified 可核）说明：在数据库 Dashboard 点 Connect，选择分支与 password role、命名后 Create password，会生成仅能访问该分支的用户名/密码对；须当场记下，之后无法再查看。可按框架浏览连接串模板。密码支持三种连接类型：Primary（主区域）、Replica（副本与只读区域就近）、Read-only region（限定只读区域，可用 pscale password create … --read-only-region）。平台不保存明文密码。安全模型强调密码按分支隔离。可为单个密码设置 IP 限制，例如仅允许生产网段或堡垒机出口；无限制时等同允许更广来源，加入网段后范围外不能用该密码连接。删除密码会使该用户名/密码对失效，并在约五分钟内断开仍在使用它的活跃客户端。另与 GitHub Secret Scanning 集成：若密码或服务令牌以明文提交到公开仓库，PlanetScale 会收到通知并采取删除访问等纠正措施。本场景据此输出连接串治理简报。禁止回显真实密码或声称「已在生产轮换完成」。`,
+    outcomes: [
+      "源未披露量化「凭据泄漏事件下降」；公开文只描述一次性可见、分支隔离、IP 限制、删除断连与 Secret Scanning。",
+      "能把「全环境共用主分支串 / 明文进仓 / 删密后会话残留窗口」拆开。",
+      "为预发/生产连接面提供可落地的轮换提问清单。",
+    ],
+    caveats: [
+      "部分旧密码可能与 IP 限制不兼容，需新建密码才能启用限制。",
+      "Postgres 路径与 Vitess/MySQL 创建方式不同（文档分节）；本条一手源以 Vitess 连接串页为主。",
+      "上面写的是产品机制，不是你组织下现有密码列表。",
+    ],
+    prompts: [
+      {
+        title: "PlanetScale 连接串治理简报",
+        body: `你是 PlanetScale 连接串助手。只给分支密码与连接面核对简报，不要编造已轮换成功。
+
+目标分支：{{branch}}
+连接类型：{{connection_type}}
+部署出口 IP 约束：{{ip_policy}}
+轮换动机：{{rotate_reason}}
+
+输出 Markdown：
+1. 为何密码绑定分支
+2. Primary/Replica/只读区域选择提问
+3. IP 限制与删除断连窗口
+4. 人工验收（勿回显密码）
+禁止索要或回显明文密码；禁止代删生产密码。`,
+      },
+      {
+        title: "连接串泄漏应急提纲",
+        body: `怀疑连接串进入仓库或聊天记录，请写应急提纲。
+
+暴露面摘要：{{exposure}}
+是否仍能连接：{{still_connects}}
+环境：{{env}}
+
+输出：
+1. 是否立即删除该密码
+2. 五分钟断连窗口内要注意什么
+3. 是否启用/收紧 IP 限制
+4. 重建密码与配置更新顺序
+不要伪造「攻击已排除」；不要索要明文密码。`,
+      },
+    ],
+    primarySource: {
+      url: "https://planetscale.com/docs/vitess/connecting/connection-strings",
+      label: "PlanetScale Documentation · Connection strings",
+      date: "2026-11-03",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
