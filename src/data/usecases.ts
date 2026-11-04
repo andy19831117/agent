@@ -14077,6 +14077,453 @@ n8n《Webhook》说明：节点提供 Test URL 与 Production URL 切换。Test�
       dateLabel: "文档更新",
     },
   },
+  {
+    id: "301",
+    slug: "browser-permissions-policy-checklist",
+    title: "Permissions-Policy 功能开关与违规上报清单",
+    summary: "按响应头 allowlist、iframe allow 继承与 Reporting-Endpoints/report-to，整理摄像头/麦克风/地理等强能力开关与违规上报核对清单；不代改生产头。",
+    description:
+      "面向独立开发者与前端安全：把「站点误开强能力 / 嵌入页越权」写成可对账步骤，区别于 CSP 脚本来源策略。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy",
+    sourceLabel: "MDN·Permissions-Policy header",
+    upvotes: 125,
+    trending: false,
+    tags: [
+      "Permissions-Policy",
+      "浏览器安全",
+      "iframe",
+      "Reporting API",
+      "前端",
+    ],
+    howItWorks: [
+      "粘贴当前 Permissions-Policy / Reporting-Endpoints 响应头摘要、关键 iframe allow，以及报错或报表片段",
+      "Agent 按文档输出：指令 allowlist→空列表禁用→头与 iframe 继承→report-to/default 端点提问清单",
+      "人工在预发验证；Agent 不代改 CDN/网关响应头",
+    ],
+    tips: [
+      "头里的 allowlist 是超集，iframe allow 只能在该超集内再收窄；嵌入后导航到未列出的源默认不再继承",
+      "与 browser-csp-violation-triage 不同：本条管 geolocation/camera/microphone 等能力开关，不是脚本来源 CSP",
+    ],
+    approach: `独立站与嵌入广告/小工具页常见事故：主站想禁麦克风，却仍被第三方 iframe 拉起 getUserMedia；或地理定位在生产误开 *。
+
+MDN《Permissions-Policy header》说明：该响应头用于允许或拒绝文档及其中 iframe 使用浏览器能力。策略语法为指令=allowlist，可选 per-directive 的 report-to；多指令可用逗号分隔，也可拆成多条头。allowlist 常见取值包括 *、() 空列表、self、以及带引号的源列表；空列表表示顶层与嵌套上下文均禁用该能力。文档强调：头上的 allowlist 定义「潜在允许」的超集，iframe 的 allow 属性在该超集内再授权；因此宜在 HTTP 头写可接受的最宽范围，再在各 iframe 收窄。若 iframe 导航到未在 allow 中列出的源，默认不把策略带到新源。禁用强能力示例可将 microphone=()、geolocation=()。违规可用 Reporting API：配合 Reporting-Endpoints 命名端点，并在 Permissions-Policy 指令上写 report-to=端点名；省略时可能落到名为 default 的端点。也可用 ReportingObserver 在页内观察。本场景据此输出开关与上报核对清单。禁止声称「生产头已改好」。`,
+    outcomes: [
+      "源未披露量化「平均封禁误开能力耗时」；公开文只描述头语法、iframe 继承与违规上报示例。",
+      "能把「头超集 / iframe 收窄 / 空列表全禁 / report-to」拆开，避免只改 CSP 却漏能力开关。",
+      "与 CSP 违规分诊边界清晰，前端安全值班可并列引用。",
+    ],
+    caveats: [
+      "MDN 标注该头在部分主流浏览器可用性有限（非 Baseline），上线前须查兼容表。",
+      "Chrome 服务端报表字段可能用 policyId 而非 featureId，解析报表时勿写死字段名。",
+      "上面写的是文档机制，不是你站点当前响应头实况。",
+    ],
+    prompts: [
+      {
+        title: "Permissions-Policy 开关核对清单",
+        body: `你是浏览器 Permissions-Policy 助手。只根据提供的头与现象给核对清单，不要编造已上线配置。
+
+当前响应头摘要：{{response_headers}}
+关键 iframe allow：{{iframe_allow}}
+现象/报表片段：{{symptom}}
+
+输出 Markdown：
+1. 各指令 allowlist 含义（含 * / () / self / 源列表）
+2. 头超集与 iframe allow 继承提问
+3. report-to 与 Reporting-Endpoints 是否成对
+4. 预发验证步骤与值班一句话
+禁止代改生产头；禁止索要源站私钥。`,
+      },
+      {
+        title: "能力误开复盘提纲",
+        body: `生产曾误开或误禁浏览器能力，请写复盘提纲。
+
+时间线：{{timeline}}
+涉及指令：{{directives}}
+变更：{{changes}}
+
+输出：
+1. 根因（头/iframe/导航丢策略）
+2. 证据
+3. 临时缓解
+4. 防再发（CI 检查关键头、预发报表）
+不要伪造「全站已合规」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy",
+      label: "MDN Web Docs · Permissions-Policy header",
+      date: "2026-10-23",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "302",
+    slug: "testpypi-upload-install-checklist",
+    title: "TestPyPI 上传与试装核对清单",
+    summary: "按独立账号、twine --repository testpypi、pip --index-url/--extra-index-url 与 .pypirc，整理试发布与试装核对清单；不代传包、不代保管 token。",
+    description:
+      "面向独立开发者：把「上正式 PyPI 前先在 TestPyPI 走通」写成可对账步骤，避免误传正式索引。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://packaging.python.org/en/latest/guides/using-testpypi/",
+    sourceLabel: "Python Packaging User Guide·Using TestPyPI",
+    upvotes: 138,
+    trending: false,
+    tags: [
+      "TestPyPI",
+      "twine",
+      "pip",
+      "Python打包",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴包名、是否已有 test.pypi.org 账号、计划用的 twine/pip 命令与报错摘要",
+      "Agent 按官方指南输出：注册→twine 上传→项目页确认→pip 试装（含依赖走 extra-index）→.pypirc 提问清单",
+      "人工执行上传与安装；Agent 不代持 API token、不代跑 upload",
+    ],
+    tips: [
+      "TestPyPI 与正式 PyPI 数据库分离，须单独注册；库可能被定期清理，账号消失并不罕见",
+      "试装有第三方依赖时用 --index-url 指向 TestPyPI simple，并加 --extra-index-url https://pypi.org/simple/",
+    ],
+    approach: `个人开源或内部工具包最怕：第一次 twine upload 直接打到正式 PyPI，元数据写错或版本号占坑。
+
+Python Packaging User Guide《Using TestPyPI》说明：TestPyPI 是与正式索引分离的实例，托管在 test.pypi.org，用于练习分发工具与流程而不影响真实索引。因其独立数据库，需到 test.pypi.org 单独注册账号；文档注明数据库可能被定期 prune，用户账号被删并不少见。上传可用 twine，并指定 \`--repository testpypi\`，例如 \`twine upload --repository testpypi dist/*\`；成功后可打开 \`https://test.pypi.org/project/<项目名>\` 确认（可能延迟一两分钟才出现）。安装可用 pip 的 \`--index-url https://test.pypi.org/simple/\`；若包还有依赖需从正式 PyPI 拉，再加 \`--extra-index-url https://pypi.org/simple/\`。为减少反复输入凭据，可在 \`$HOME/.pypirc\` 配置 \`[testpypi]\`，用户名 \`__token__\`、密码为 TestPyPI API Token。本场景据此输出试发布/试装清单。禁止声称「已上传成功」或代存 token。`,
+    outcomes: [
+      "源未披露量化「试发布一次成功率」；公开文只描述账号分离、twine/pip 标志与 .pypirc 配置要点。",
+      "能把「误传正式索引 / 依赖装不到 / 项目页延迟」拆开提问。",
+      "与正式 Trusted Publisher 上线流程可衔接，但本条止于 TestPyPI 演练。",
+    ],
+    caveats: [
+      "TestPyPI 内容与账号可能被清理，勿当长期制品库。",
+      "token 与密码只放本机 .pypirc 或 CI 密钥库，勿贴进对话。",
+      "上面写的是官方指南步骤，不是你的包当前在 TestPyPI 上的状态。",
+    ],
+    prompts: [
+      {
+        title: "TestPyPI 试发布清单",
+        body: `你是 Python 打包试发布助手。只给核对清单，不要编造已上传成功。
+
+项目名：{{project_name}}
+发行物路径摘要：{{dist_brief}}
+已有账号/报错：{{account_or_error}}
+
+输出 Markdown：
+1. 为何必须单独注册 TestPyPI
+2. twine --repository testpypi 命令核对
+3. 项目页确认与延迟说明
+4. pip --index-url / --extra-index-url 试装
+5. .pypirc 字段提问（不要索要真实 token）
+禁止代跑 upload；禁止把 token 写进回复。`,
+      },
+      {
+        title: "试装失败排查提纲",
+        body: `从 TestPyPI 试装失败或依赖解析异常，请写排查提纲。
+
+pip 命令：{{pip_cmd}}
+报错摘要：{{error}}
+依赖说明：{{deps}}
+
+输出：
+1. index-url 是否指错
+2. 是否缺 extra-index-url
+3. 项目是否已在 TestPyPI 可见
+4. 下一步人工命令
+不要伪造「已安装成功」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://packaging.python.org/en/latest/guides/using-testpypi/",
+      label: "Python Packaging User Guide · Using TestPyPI",
+      date: "2026-11-02",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "303",
+    slug: "notion-database-datasource-api-brief",
+    title: "Notion 数据库与 data source API 简报",
+    summary: "按 database / data source / page 对象分层、属性 schema 与筛选排序入口，生成企业自动化对接简报；不代调生产 Notion 写入。",
+    description:
+      "面向企业自动化与独立开发者：把「多维表对接」写成对象模型简报，区别于仅聊 Notion Agent 控制面。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "feishu",
+      "n8n",
+    ],
+    sourceUrl: "https://developers.notion.com/guides/data-apis/working-with-databases",
+    sourceLabel: "Notion Docs·Working with databases",
+    upvotes: 157,
+    trending: false,
+    tags: [
+      "Notion API",
+      "database",
+      "data source",
+      "企业自动化",
+      "多维表",
+    ],
+    howItWorks: [
+      "粘贴目标库用途、已知 database/data_source ID 形态（可打码）与要读写的属性名",
+      "Agent 按官方结构说明输出：database→data_sources→pages/属性→筛选排序相关入口提问",
+      "人工用集成 token 在沙箱库验证；Agent 不代发写入请求",
+    ],
+    tips: [
+      "API 把 database、其 data sources 与 pages 视为不同对象；表头 schema 在 data source，行是 page",
+      "与 notion-agents-control-plane 不同：本条是 Data API 对象模型与库操作入口，不是 Agent 控制面叙事",
+    ],
+    approach: `把飞书/表格流程迁到 Notion 或用 n8n 写回多维表时，最常见卡点是：只拿到一个「库链接」，却分不清该调 database 还是 data source，属性写到哪一层。
+
+Notion Docs《Working with databases》说明：Notion database 组织 pages；data source 定义这些 pages 共享的属性。API 将 database、其 data sources 与 pages 视为分离对象。结构上，database 含 data sources 与 views，\`data_sources\` 数组给出各源的 id 与 name；data source 持有 schema，并作为其 pages 的 parent；schema 定义属性名、类型与设置。在表格视图中，属性像列、page 像行，属性值填单元格，内容块构成页面正文。文档指向创建 data source 中的 page、读取页面属性、更新 data source 属性等步骤页，并涵盖遍历 database 对象、向 data source 加 page、查找/过滤/排序 data source pages，以及 linked / wiki 等额外库类型。本场景据此输出对接简报与提问清单。禁止声称「已写入客户正式库」。`,
+    outcomes: [
+      "源未披露量化「对接一次平均工时」；公开文只描述 database/data source/page 分层与操作入口。",
+      "能避免把 database id 当成可直接当「表 schema 父级」误用。",
+      "为企业自动化（工单/清单回写）提供可复用对象词汇表。",
+    ],
+    caveats: [
+      "Notion API 版本与属性类型会演进，以实现时官方参考与升级说明为准。",
+      "集成权限不足时读得到库结构也写不进页，须先核 capabilities。",
+      "上面写的是文档结构说明，不是你工作区实时 schema。",
+    ],
+    prompts: [
+      {
+        title: "Notion 库对接简报",
+        body: `你是 Notion Data API 对接助手。只根据文档结构给简报，不要编造已写入成功。
+
+业务目标：{{business_goal}}
+已知 ID/属性（可打码）：{{ids_and_props}}
+集成权限摘要：{{integration_caps}}
+
+输出 Markdown：
+1. database / data source / page 分层对照
+2. 创建页、读属性、过滤排序应落在哪一层
+3. 还需向业务确认的字段清单
+4. 沙箱验证步骤
+禁止索要正式 integration secret；禁止代发写请求。`,
+      },
+      {
+        title: "属性对不齐排查提纲",
+        body: `自动化读写 Notion 库时属性对不齐或找不到行，请写排查提纲。
+
+现象：{{symptom}}
+使用的对象 ID 类型：{{id_kind}}
+过滤器摘要：{{filter_brief}}
+
+输出：
+1. 是否用错 database vs data_source id
+2. schema 是否在 data source
+3. 过滤/排序入口核对
+4. 下一步人工 API 调用建议
+不要伪造「数据已同步」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developers.notion.com/guides/data-apis/working-with-databases",
+      label: "Notion Docs · Working with databases",
+      date: "2026-09-23",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "304",
+    slug: "cloudflare-workers-cron-trigger-brief",
+    title: "Cloudflare Workers Cron Trigger 配置简报",
+    summary: "按 scheduled 处理器、UTC cron 表达式、配置传播延迟与本地试跑入口，生成周期任务配置简报；不代改线上 Worker 触发器。",
+    description:
+      "面向独立开发者与个人效率自动化：把「定时跑 Worker」写成可对账步骤，区别于纯云主机 crontab 运维壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://developers.cloudflare.com/workers/configuration/cron-triggers/",
+    sourceLabel: "Cloudflare Docs·Cron Triggers",
+    upvotes: 174,
+    trending: false,
+    tags: [
+      "Cloudflare Workers",
+      "Cron Triggers",
+      "scheduled",
+      "UTC",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴期望日程（含时区）、现有 Worker 是否已有 scheduled 处理器、配置片段（可打码）",
+      "Agent 按文档输出：scheduled 处理器→UTC cron→配置更新与传播窗口→本地测试入口提问清单",
+      "人工在预发/仪表盘变更；Agent 不代部署生产",
+    ],
+    tips: [
+      "Cron Triggers 按 UTC 执行；本地墙钟需先换算，月末/工作日表达式以文档支持的 cron 语法为准",
+      "新增或修改触发器可能需数分钟（文档称最长约 15 分钟）才传播到全球网络",
+    ],
+    approach: `个人站点凌晨清理、定时拉第三方行情或发摘要，常想「丢到 Cloudflare Worker 定时跑」，却卡在：写了 fetch 处理器、cron 不触发，或按北京时间写了表达式实际按 UTC 跑偏。
+
+Cloudflare Docs《Cron Triggers》说明：可用 cron 表达式映射到 Worker 的 \`scheduled()\` 处理器，适合周期性维护或调用第三方 API 拉数。文档写明 Cron Triggers 按 UTC 执行。添加步骤：先在 Worker 中定义 scheduled 事件监听（JS/TS \`async scheduled(controller, env, ctx)\` 或 Python Entrypoint 的 scheduled，参数齐全）；再更新项目配置中的 triggers/crons（示例含 \`*/3 * * * *\`、\`0 15 1 * *\`、\`59 23 LW * *\` 等，亦可按环境分别设置）。变更（增删改 Cron Trigger）可能需数分钟、最长约 15 分钟传播到 Cloudflare 全球网络。文档还覆盖支持的 cron 表达式、多触发器、本地测试（Local Explorer / HTTP）、查看历史事件与移除触发器，并提示 Workflows 也可直接使用 schedules。本场景据此输出配置简报。禁止声称「线上 cron 已生效」。`,
+    outcomes: [
+      "源未披露量化「配置一次成功率」；公开文只描述 scheduled 处理器、UTC、传播延迟与本地试跑入口。",
+      "能把「没写 scheduled / 时区写错 / 传播未完成」拆开排查。",
+      "适合独立开发者轻量定时任务，而非重型集群 crontab 同构检查表。",
+    ],
+    caveats: [
+      "表达式与平台限额以当前文档 Limits 为准，勿假设与 Linux cron 完全一致。",
+      "传播有延迟，刚改完立刻判断「失败」可能过早。",
+      "上面写的是文档配置路径，不是你账号下触发器实时状态。",
+    ],
+    prompts: [
+      {
+        title: "Workers Cron 配置简报",
+        body: `你是 Cloudflare Workers Cron 助手。只给配置核对简报，不要编造已部署成功。
+
+目标日程（含用户时区）：{{schedule_local}}
+Worker 代码摘要：{{worker_brief}}
+现有 triggers/crons 片段：{{crons_snippet}}
+
+输出 Markdown：
+1. 是否已有 scheduled 处理器
+2. 换算后的 UTC cron 候选与提问
+3. 配置传播延迟提醒
+4. 本地试跑入口建议
+5. 值班一句话
+禁止代部署；禁止索要 API token。`,
+      },
+      {
+        title: "Cron 未触发排查提纲",
+        body: `预期时间未看到 Worker 被 cron 唤起，请写排查提纲。
+
+期望时间：{{expected_time}}
+配置变更时间：{{changed_at}}
+日志摘要：{{logs}}
+
+输出：
+1. scheduled 是否存在
+2. UTC 是否算错
+3. 是否仍在传播窗口
+4. 下一步人工验证
+不要伪造「已触发成功」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developers.cloudflare.com/workers/configuration/cron-triggers/",
+      label: "Cloudflare Workers docs · Cron Triggers",
+      date: "2026-10-17",
+      dateLabel: "文档更新",
+    },
+  },
+  {
+    id: "305",
+    slug: "gmail-api-push-watch-checklist",
+    title: "Gmail API Push/Watch 通知配置清单",
+    summary: "按 Cloud Pub/Sub 前置、mailbox watch、historyId/expiration 续订与历史同步，整理邮件变更推送配置清单；不代持 OAuth、不代建生产订阅。",
+    description:
+      "面向个人效率与轻量企业自动化：把「别轮询邮箱、改用推送」写成可对账步骤，衔接行动项抽取上游。",
+    categories: [
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "feishu",
+      "n8n",
+    ],
+    sourceUrl: "https://developers.google.com/workspace/gmail/api/guides/push",
+    sourceLabel: "Google for Developers·Gmail API push notifications",
+    upvotes: 196,
+    trending: false,
+    tags: [
+      "Gmail API",
+      "Push",
+      "Pub/Sub",
+      "watch",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴是否已有 GCP Pub/Sub 主题/订阅、Gmail OAuth 范围摘要，以及 watch 响应或报错",
+      "Agent 按官方指南输出：Pub/Sub 前置→发起 watch→保存 historyId/expiration→到期续订→用 history 拉变更提问清单",
+      "人工在测试项目配置；Agent 不代完成 OAuth 同意屏、不代创建计费资源",
+    ],
+    tips: [
+      "watch 成功响应含当前 historyId 与 expiration；客户端只保证收到该 historyId 之后的变更通知",
+      "推送只是信号，具体邮件内容仍要用历史/消息接口拉取；到期必须重新 watch",
+    ],
+    approach: `个人助理想把「新邮件→待办」做成近实时，却用定时全量拉收件箱，既慢又费配额。
+
+Google《Configure push notifications with the Gmail API》说明：Gmail API 提供服务端推送，便于监视邮箱变更，减少轮询成本。指南仍推荐用同步客户端那套方式取更新。推送经由 Cloud Pub/Sub 投递，可用 webhook 或在单一订阅上拉取。前置需完成 Pub/Sub 相关设置后，对用户邮箱发起 watch；成功时响应类似包含 \`historyId\` 与 \`expiration\`：historyId 表示当前邮箱历史水位，客户端会收到该水位之后的变更通知；若还需处理更早变更，应另行用历史接口补齐。expiration 到期后需重新 watch 才能继续收通知。本场景据此输出「Pub/Sub→watch→续订→按 history 拉信」配置清单，作为个人效率链路的上游信号，而不是直接生成待办正文。禁止声称「生产推送已接通」。`,
+    outcomes: [
+      "源未披露量化「相对轮询节省的请求比例」；公开文只描述推送动机、Pub/Sub、watch 响应字段与续订必要性。",
+      "能把「只有通知没有正文 / watch 过期 / history 断档」拆开处理。",
+      "可为后续「邮件行动项→待办」自动化提供可靠触发源设计。",
+    ],
+    caveats: [
+      "需 Google Cloud 项目、Pub/Sub 与合适的 Gmail OAuth 范围；配额与计费以 Google 当前政策为准。",
+      "通知可能重复或乱序，业务侧应按 historyId 做幂等。",
+      "上面写的是官方配置路径，不是你项目里的订阅实况。",
+    ],
+    prompts: [
+      {
+        title: "Gmail Watch 配置清单",
+        body: `你是 Gmail API 推送配置助手。只给核对清单，不要编造已接通。
+
+GCP/Pub/Sub 摘要：{{pubsub_brief}}
+OAuth 范围摘要：{{scopes}}
+已有 watch 响应或报错：{{watch_response}}
+
+输出 Markdown：
+1. Pub/Sub 前置是否齐全的提问
+2. 发起 watch 后必存字段（historyId、expiration）
+3. 到期续订与补历史策略
+4. 测试项目验收步骤
+禁止索要 refresh token；禁止代建云资源。`,
+      },
+      {
+        title: "推送中断复盘提纲",
+        body: `Gmail 推送突然停更或漏信，请写复盘提纲。
+
+最后成功通知时间：{{last_push}}
+expiration：{{expiration}}
+history 同步摘要：{{history_brief}}
+
+输出：
+1. 是否过期未续 watch
+2. Pub/Sub 订阅/权限问题提问
+3. history 断档补齐步骤
+4. 临时改回受控轮询的边界
+不要伪造「已恢复推送」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://developers.google.com/workspace/gmail/api/guides/push",
+      label: "Google for Developers · Configure push notifications with the Gmail API",
+      date: "2026-09-15",
+      dateLabel: "文档更新",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
