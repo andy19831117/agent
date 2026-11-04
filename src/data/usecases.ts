@@ -31526,6 +31526,456 @@ MVP 范围：{{scope}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "496",
+    slug: "yureki-rest-graphql-diff-harness-12-days",
+    title: "yureki：Claude Code 迁 40 个 REST→GraphQL——12 天，差分 harness 0/500→500/500",
+    summary: "个人；披露 12 天、约 40 端点、差分 500 条签名；p95 约 1340→480ms、往返 6→1；N+1 曾吃掉两天；不代你任意仓同速。",
+    description:
+      "面向要把有机生长的 REST 面迁到 GraphQL、却卡在「如何证明新旧返回一致」的后端/移动协作：把「先建差分记分板再写 schema」写成门禁，区别于云账单迁机与静态档案后处理。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/yureki_lab/how-i-migrated-40-rest-endpoints-to-graphql-with-claude-code-in-12-days-5b8i",
+    sourceLabel: "DEV·yureki_lab 实践帖",
+    upvotes: 387,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "GraphQL",
+      "REST",
+      "差分测试",
+      "N+1",
+    ],
+    howItWorks: [
+      "粘贴 REST 面范围（端点数/客户端约束）、不可改行为清单，以及「绝不可无人切流」项",
+      "Agent 按实践帖输出：录流量→差分 harness→schema/resolver→N+1 查询数门禁→特性开关切屏表",
+      "人工保留兼容裁决与发布列车批准；Agent 不代你保证「必 12 天或同 p95」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-08-29T14:32:38Z → 2026-08-29）：yureki_lab 用 Claude Code（披露 Opus 5）把约 40 个有机 REST 端点迁到 GraphQL。先录请求签名建差分 harness，起点 0/500，日 6 约 461/500，终 500/500；迁成 37 个端点（删 3）。披露屏级往返 6→1、p95 约 1340→480ms，并删客户端正规化层约 620 LOC。日 7–8 负载测：50 订单+用户+订阅曾打出 151 次库查询（约 9× 慢于旧 REST），靠 DataLoader 与查询数断言补第二块记分板。约束：REST 不能冻结、要求 bug-for-bug。主线是「给代理记分板」的高风险机械重构，不是官文简报。",
+      "与 yureki-agent-tool-noop-observability / arezvov-ghost-nextjs-claude-cursor-migration 不同：本条是 REST→GraphQL 等价证明与 N+1 第二记分板，不是工具 noop JSONL 观测或博客栈迁移",
+    ],
+    approach: `yureki_lab 在 DEV《How I Migrated 40 REST Endpoints to GraphQL With Claude Code in 12 Days》（datePublished 2026-08-29）写明：把 Claude Code 当苦力引擎，但真正堵点不是写 resolver，而是证明新 API 与旧 REST 返回等价。
+
+关键门禁不是「先写完 schema 再补测」，而是先建差分 harness（录流量→规范化→深比较），再让代理对着数字迭代；N+1 还要第二块查询数记分板。架构与切流仍由人定。
+
+本场景据此输出「API 等价迁移门禁」提纲。禁止把 12 天或 500/500 写成任意仓 SLA，或建议跳过差分直接切全量流量。`,
+    outcomes: [
+      "源披露约 12 天、约 40→37 端点、差分 0/500→500/500、往返 6→1、p95 约 1340→480ms、N+1 曾 151 查询等作者口径；属单人/单仓督导窗口，不可外推为你的发布列车工期或「同 harness 必同速」。",
+      "能把「可让代理刷绿的机械改写」与「必须人定的兼容/切屏策略」拆开。",
+      "为「差分全绿仍 9× 慢」提供查询数第二记分板提问清单。",
+    ],
+    caveats: [
+      "工期、p95 与 harness 计数为作者自述；无第三方审计。",
+      "特性开关切屏与 partner 集成仍须人；代理不能替你验收业务语义。",
+      "上面写的是个人实践帖，不是 GraphQL/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "REST→GraphQL 等价门禁",
+        body: `你是资深 API 迁移教练。只根据用户边界写门禁，不要编造已通过的差分条数或 p95。
+
+REST 面与客户端：{{scope}}
+不可改行为：{{compat}}
+不可无人执行：{{no_auto}}
+
+输出 Markdown：
+1. 录流量→差分 harness→schema/resolver→切流的最小阶段表
+2. 「0/N→N/N」记分板如何定义（规范化/深比较）
+3. N+1 的第二记分板（查询数断言）最低要求
+4. 人必须批准的清单（删端点/特性开关）
+禁止声称「必 12 天」；禁止建议未差分就全量切流量。`,
+      },
+      {
+        title: "差分全绿仍变慢复盘",
+        body: `差分 harness 已接近全绿，但负载测显示 GraphQL 远慢于旧 REST。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像 N+1、缺 DataLoader，还是缺查询数断言
+2. 最小修补与重跑顺序
+3. 下次验收标准（正确性+性能）
+4. 人工确认清单
+不要伪造「再开并行会话等于已修 N+1」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/yureki_lab/how-i-migrated-40-rest-endpoints-to-graphql-with-claude-code-in-12-days-5b8i",
+      label: "DEV · How I Migrated 40 REST Endpoints to GraphQL With Claude Code in 12 Days",
+      date: "2026-08-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "497",
+    slug: "khalit-flutter-claude-827-commits-30pct",
+    title: "Khalit：Flutter 电商 827 commits 用 Claude Code——crash-free 约 85%→97%，估快约 30%",
+    summary: "个人（顾问）；披露 827 commits、22 周、crash-free 约 85%→逾 97%；估无 AI 约 30–32 周→约 22 周（约 30%）；不代你任意 App 同速。",
+    description:
+      "面向要把 vibecoding 残留的 Flutter 仓迁到可维护 Clean Architecture、却怕 AI「顺手改架构」的工程：把 CLAUDE.md + 模式技能 + 决策矩阵写成门禁，区别于四事故写禁令根文件与 Expo SDK 大升级。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/khalit_hartmann_17e573503/ai-assisted-flutter-development-claude-code-in-production-1k1g",
+    sourceLabel: "DEV·Khalit Hartmann 实践帖",
+    upvotes: 388,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Flutter",
+      "CLAUDE.md",
+      "Clean Architecture",
+      "生产",
+    ],
+    howItWorks: [
+      "粘贴 App 现状（crash-free/架构债）、迁移边界，以及「绝不可让 AI 改写的遗留模式」清单",
+      "Agent 按实践帖输出：CLAUDE.md 决策树→迁移/遗留/测试技能→PR 抽检门禁表",
+      "人工保留架构裁决与上架验收；Agent 不代你保证「必快 30% 或同 crash-free」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-02T15:04:00Z → 2026-07-02）：Khalit Hartmann 在瑞士零售商 Flutter 电商用 Claude Code 走过 827 commits。接手时 crash-free 约 85%，约 22 周迁 Clean Architecture 并继续发版，crash-free 逾 97%。估无 AI 约 30–32 周，约快 30%；自称约 70% 增益来自样板、约 30% 来自一致性。关键件：CLAUDE.md（决策树）、自定义 skills（迁移/遗留/测试模式）、禁止 AI「顺手改进」未迁代码。称测试初稿约 80% 可用、CLAUDE.md 项目期改过五十余次。主线是生产护栏式 AI 协作，不是官文简报。",
+      "与 michelfaure-4-incidents-claudemd-rules / hipcamp-expo54-new-arch-scout-upgrade 不同：本条是 Flutter 电商 Clean Architecture 长窗与技能切换，不是四事故写禁令根文件或 Expo New Arch 依赖升级",
+    ],
+    approach: `Khalit Hartmann 在 DEV《AI-Assisted Flutter Development: Claude Code in Production》（datePublished 2026-07-02）写明：在真实零售 Flutter 电商上，用 Claude Code 做 AI 辅助开发而非 vibe coding——差别在基础设施，不在模型口号。
+
+关键门禁不是「让代理自由改一切」，而是 CLAUDE.md 决策矩阵 + 任务技能，明确未迁代码跟遗留模式、迁中代码跟目标模式；架构与 QA 仍由人定。
+
+本场景据此输出「生产 Flutter AI 护栏」提纲。禁止把约 30% 或 827 commits 写成任意 App SLA，或建议跳过架构裁决直接全仓「改进」。`,
+    outcomes: [
+      "源披露 827 commits、约 22 周、crash-free 约 85%→逾 97%，以及估 30–32 周→约 22 周（约 30%）等作者口径；属单人顾问窗口，不可外推为你的发版工期或「同 CLAUDE.md 必同崩溃率」。",
+      "能把「可让 AI 做的机械迁移」与「必须人做的架构/生产排障/终验」拆开。",
+      "为 AI 在未迁代码上「顺手重构」提供决策矩阵提问清单。",
+    ],
+    caveats: [
+      "工期与 crash-free 为作者自述/客户项目口径；无第三方审计。",
+      "上架与生产排障仍须人；代理不能替你读 Crashlytics 业务结论。",
+      "上面写的是个人实践帖，不是 Flutter/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Flutter AI 护栏门禁",
+        body: `你是资深移动架构教练。只根据用户边界写门禁，不要编造 crash-free 或周数。
+
+App 现状：{{scope}}
+迁移目标模式：{{target}}
+不可让 AI 改写：{{no_touch}}
+
+输出 Markdown：
+1. CLAUDE.md 最小决策树（迁移中/遗留/测试）
+2. 自定义 skills 切换表
+3. PR 抽检清单（是否遵循模式）
+4. 人必须批准的清单（架构边界）
+禁止声称「必快 30%」；禁止建议对未迁代码做「全面改进」。`,
+      },
+      {
+        title: "AI 顺手改坏遗留复盘",
+        body: `迁移 PR 里发现代理改动了本不该动的遗留模块。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺决策矩阵、缺遗留技能，还是评审漏检
+2. 最小回滚与规则补丁顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再写一句 CLAUDE.md 等于已回滚生产」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/khalit_hartmann_17e573503/ai-assisted-flutter-development-claude-code-in-production-1k1g",
+      label: "DEV · AI-Assisted Flutter Development: Claude Code in Production",
+      date: "2026-07-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "498",
+    slug: "oi-botsinproduction-17-bots-100-usd",
+    title: "OI：韩 B2B 公司 17 个 Claude Code 机器人——月费约 US$100，周维护约 1 小时",
+    summary: "团队（运营）；披露 17 机器人、Claude Max 5x 约 US$100/月、API 约 US$0；现约每周 1 小时（前两月约 10）；不代你任意业务同价。",
+    description:
+      "面向要用本地 CLI 订阅跑业务机器人、却被按 token 账单吓住的中小运营：把「多数纯 Python + 少数 CLI JSON + 人审告警」写成门禁，区别于客服 MCP 吞吐自述与内容再分发编排。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "n8n",
+      "deepseek",
+    ],
+    sourceUrl: "https://botsinproduction.com/blog/what-10-claude-code-bots-cost-per-month/",
+    sourceLabel: "botsinproduction.com·OI 实践帖",
+    upvotes: 389,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "业务机器人",
+      "成本",
+      "CLI",
+      "运营",
+    ],
+    howItWorks: [
+      "粘贴要自动化的业务清单、现有 Slack/表工具，以及「绝不可无人执行」的写库/发信动作",
+      "Agent 按实践帖输出：纯脚本 vs 需模型任务拆分、CLI 旗标、告警进个人 DM 的门禁表",
+      "人工保留规则撰写与告警处置；Agent 不代你保证「必 US$100 或同周维护」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-21T00:00:00.000Z → 2026-10-21；页内 Oct 21, 2026）：OI 在韩国 B2B 分销公司运营岗（自称非开发）披露 17 个 Claude Code 相关机器人跑在一台办公 Mac。账单主线：Claude Max 5x 约 US$100/月，Anthropic API 约 US$0（摘要有 API 回退但未启用）。17 个里仅约 3 个真正调模型（聊天摘要/图片匹配/错误监视），其余约 14 个为纯 Python。模型调用走 `claude -p` CLI（--restricted、--no-session-persistence、JSON 输出）。隐性成本：现约每周 1 小时维护，前两月约 10 小时（规则/告警/对照评测）；claims logger 规则逾 40 条。事故：并行写库曾约 300 次 database is locked；笔记本睡眠导致「机器人没跑」。主线是真实账单与运维纪律，不是官文简报。",
+      "与 cursor-support-mcp-75pct-throughput / codingcharly-n8n-claude-content-5h-45m / heinoux-claude-business-agents-2879 不同：本条是本地 Max 订阅跑 B2B 运营机器人与周维护小时，不是支持组 MCP 吞吐、内容再分发或知识图公司操作系统",
+    ],
+    approach: `OI 在《What 17 Claude Code Bots Cost Per Month: US$100 (Real Numbers)》（datePublished 2026-10-21）写明：真正稀缺的不是「又一个自动化教程」，而是把账单摊开——用 Claude Max 订阅 + 办公室一台不眠 Mac，跑 17 个日常业务机器人。
+
+关键门禁不是「一切都调 API」，而是多数任务保持纯脚本，少数任务用受限 CLI 出 JSON，错误进个人 DM，写库串行；规则与告警仍由人定。
+
+本场景据此输出「业务机器人成本门禁」提纲。禁止把 US$100 或每周 1 小时写成任意公司 SLA，或建议无人值守直接改账本。`,
+    outcomes: [
+      "源披露 17 机器人、Max 5x 约 US$100/月、API 约 US$0、约 3/17 调模型，以及现约每周 1 小时（前两月约 10）等作者口径；属单公司运营窗口，不可外推为你的账单或「同 CLI 旗标必同成本」。",
+      "能把「可脚本化的模板出卡」与「必须人写的业务规则/告警处置」拆开。",
+      "为笔记本睡眠、登录过期、并行写库锁提供运维提问清单。",
+    ],
+    caveats: [
+      "账单与小时数为作者自述；无第三方审计。",
+      "发信/写库/定价动作仍须人审；代理不能替你承担合规责任。",
+      "上面写的是团队实践帖，不是 Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "业务机器人成本门禁",
+        body: `你是资深运营自动化教练。只根据用户边界写门禁，不要编造月费或周维护小时。
+
+业务清单：{{scope}}
+现有工具：{{tools}}
+不可无人执行：{{no_auto}}
+
+输出 Markdown：
+1. 纯脚本 vs 需模型任务拆分表
+2. CLI 受限调用最低旗标（无会话记忆/JSON/工具白名单）
+3. 告警路由（个人 DM）与写库串行要求
+4. 人必须批准的清单（规则变更/发信）
+禁止声称「必 US$100」；禁止建议跳过人审直接改生产表。`,
+      },
+      {
+        title: "机器人静默一夜复盘",
+        body: `早晨发现机器人一夜无产出。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像机器睡眠、CLI 登录过期，还是规则/锁错误
+2. 最小检查顺序（电源日志→登录→错误 DM）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「重启会话等于已修复账单」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://botsinproduction.com/blog/what-10-claude-code-bots-cost-per-month/",
+      label: "botsinproduction.com · What 17 Claude Code Bots Cost Per Month: US$100",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "499",
+    slug: "nextools-js-ts-200k-six-weeks",
+    title: "Nex Tools：Claude Code 技能流迁约 20 万行 JS→TS——约六周对标约六个月",
+    summary: "个人/带队；披露约 20 万行、约六周日历、日审约 30 分钟（FAQ 约一小时）并保持发版；首轮大爆炸曾卡在约 4%；不代你任意仓同速。",
+    description:
+      "面向要在不停发版前提下做大型 JS→TS、却怕 long-lived 分支与 any 海的工程：把 foundation/inventory/conversion 技能写成门禁，区别于 GraphQL 等价证明与 Flutter 架构迁。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/nextools/claude-code-for-typescript-migrations-how-i-converted-a-200000-line-javascript-codebase-without-55e5",
+    sourceLabel: "DEV·Nex Tools 实践帖",
+    upvotes: 390,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "TypeScript",
+      "迁移",
+      "技能",
+      "增量",
+    ],
+    howItWorks: [
+      "粘贴仓体量（约行数/是否须不停发版）、严格模式目标，以及「绝不可大爆炸冻功能」约束",
+      "Agent 按实践帖输出：foundation→inventory→按叶节点 conversion→pattern library 的门禁表",
+      "人工保留难类型裁决与合并节奏；Agent 不代你保证「必六周或同 20 万行」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-05-11T13:18:59Z → 2026-05-11）：Nex Tools 写 Claude Code 技能工作流，把约 20 万行 JavaScript 迁到 TypeScript。对比：无此工作流估约六个月专项；有工作流约六周日历且持续发版。正文称作者每日约 30 分钟审并合并约 5–10 个文件迁移；FAQ 写约一小时/日外加团队常规评审。首轮「六周项目」大爆炸曾推进约 4% 后停滞，三月后带着大量 any 遗憾合回。技能含 foundation（allowJs/checkJs 共存）、inventory（难度/依赖图）、conversion（按真实调用推断类型、尽量 unknown 而非 any）、pattern library。主线是增量不停航迁移，不是官文简报。",
+      "与 yureki-rest-graphql-diff-harness-12-days / david-hoze-haskell-bit-ai-without-knowing 不同：本条是大仓 JS→TS 技能化增量迁，不是 GraphQL 差分等价或「不会语言却做出工具」",
+    ],
+    approach: `Nex Tools 在 DEV《Claude Code for TypeScript Migrations…》（datePublished 2026-05-11）写明：大爆炸式 TS 迁移在生产仓会输给功能压力；第二次用 Claude Code 技能把「本需约六个月」的约 20 万行迁成约六周日历，且全程继续发版。
+
+关键门禁不是「开长期分支从上到下改」，而是 foundation 让 .js/.ts 共存，inventory 按叶节点排序，conversion 小步合并；难类型仍由人定。
+
+本场景据此输出「不停航 TS 迁移门禁」提纲。禁止把六周或 20 万行写成任意仓 SLA，或建议以 any 海冒充完成。`,
+    outcomes: [
+      "源披露约 20 万行、约六周对标约六个月、日审约 30 分钟（FAQ 约一小时）等作者口径；属作者督导窗口，不可外推为你的迁移工期或「同技能必同完成度」。",
+      "能把「可自动化的机械加类型」与「必须人做的多态/边界类型裁决」拆开。",
+      "为 long-lived 分支与 any 合回提供复盘提问清单。",
+    ],
+    caveats: [
+      "工期与行数为作者自述；无第三方审计。",
+      "严格模式升级与公共 API 类型仍须人；代理不能替你保证运行时等价。",
+      "上面写的是个人/团队实践帖，不是 TypeScript/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "不停航 JS→TS 门禁",
+        body: `你是资深 TypeScript 迁移教练。只根据用户边界写门禁，不要编造已迁移文件数或周数。
+
+仓体量与约束：{{scope}}
+严格模式目标：{{strict}}
+不可大爆炸：{{no_bang}}
+
+输出 Markdown：
+1. foundation→inventory→conversion→pattern library 阶段表
+2. 叶节点优先的合并节奏
+3. any/unknown 纪律与 PR 大小上限
+4. 人必须批准的清单（公共类型）
+禁止声称「必六周」；禁止建议长期分支冻功能。`,
+      },
+      {
+        title: "any 海合回复盘",
+        body: `迁移分支停滞数月后带着大量 any 合回。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像大爆炸立项、缺共存 foundation，还是缺小步合并
+2. 最小重启顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍 conversion 等于已严格模式」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/nextools/claude-code-for-typescript-migrations-how-i-converted-a-200000-line-javascript-codebase-without-55e5",
+      label: "DEV · Claude Code for TypeScript Migrations (200,000-Line JS)",
+      date: "2026-05-11",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "500",
+    slug: "amado-islam-museum-fleet-23-days",
+    title: "Ahmed：七代理船队 23 天做出约 4.7 万条数字博物馆——14216 commits",
+    summary: "个人；披露 23 天（2026-10-11→11-02）、约 47330 条记录/~8.9 万页、14216 commits/2999 PR；事实须具名来源；不代你任意内容站同速。",
+    description:
+      "面向要用多代理并行灌内容站、却怕无来源「编造史实」的独立开发者：把「车道 brief + 校验门 + 具名出处」写成门禁，区别于两周 SaaS MVP 与单代理静态档案迁。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "grok",
+    ],
+    sourceUrl: "https://forum.cursor.com/t/built-with-cursor-and-six-other-agents-a-47-000-record-museum-14-216-commits-in-23-days/177112",
+    sourceLabel: "Cursor Forum·Ahmed Abdel Aal 实践帖",
+    upvotes: 391,
+    trending: false,
+    tags: [
+      "Cursor",
+      "多代理",
+      "数字博物馆",
+      "引用门禁",
+      "独立开发",
+    ],
+    howItWorks: [
+      "粘贴内容域与语言、记录量目标，以及「绝不可无出处上线」的事实纪律",
+      "Agent 按实践帖输出：车道/wave brief→校验 0 errors/引用 0 fail→协调合并门禁表",
+      "人工保留教义与争议条目裁决；Agent 不代你保证「必 23 天或同 commits」",
+    ],
+    tips: [
+      "源帖（论坛 datetime 2026-11-03T00:03:16+00:00 → 2026-11-03；页内 November 3, 2026）：Ahmed Abdel Aal（Toronto，solo）写 2026-10-11 至 11-02 约 23 天交出 islam.museum。披露约 47,330 条有来源记录、约 89,000 静态页（阿/英/乌尔都）；七系统分车道：Cursor（交互迭代+与 Grok 对抗 QA）、Claude/Devin 大宗生产、Muse 协调合并、Codex 沙箱任务、Antigravity 并行环境。公开账本：14,216 commits、2,999 已合并 PR、约 4.67M 行插入。仓库 HOW_IT_WAS_BUILT.md 可核：峰值日约 4,395 commits；校验须打印 0 errors、引用 0 fail；教义要求事实须具名可核来源，疑点记 unknown 禁止猜。主线是多代理内容船队+出处门，不是官文简报。",
+      "与 masud-rana-invoiceflow-saas-14-days / rafe-blandford-centos-static-archive-claude 不同：本条是多代理分车道灌有出处内容站，不是开票 SaaS 两周 MVP 或濒死机静态档案迁",
+    ],
+    approach: `Ahmed Abdel Aal 在 Cursor Forum《Built with Cursor (and six other agents): a 47,000-record museum…》（2026-11-03）写明：一人指挥七个 AI 系统分车道，约 23 天做出免费开放数字博物馆，并把 commits/PR/教义留在仓库可核。
+
+关键门禁不是「并行狂写」，而是 wave brief + 校验/引用双零失败 +「无具名来源不上架」；争议分类与合并仍由人定。
+
+本场景据此输出「多代理内容船队门禁」提纲。禁止把 23 天或 14216 commits 写成任意内容站 SLA，或建议无出处生成事实。`,
+    outcomes: [
+      "源披露约 23 天、约 47330 条/~8.9 万页、14216 commits/2999 PR、约 4.67M 行插入等作者口径；属单人船队窗口，不可外推为你的内容工期或「同七代理必同质量」。",
+      "能把「可并行的文件生产」与「必须人守的出处/分类教义」拆开。",
+      "为松散结算混入史实提供整日回滚与引用门提问清单。",
+    ],
+    caveats: [
+      "commits/记录数为作者与仓库自述；无第三方内容审计。",
+      "史实争议与多语言审校仍须人；代理不能替你承担出处责任。",
+      "上面写的是个人实践帖，不是 Cursor/博物馆机构官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多代理内容船队门禁",
+        body: `你是资深内容工程教练。只根据用户边界写门禁，不要编造 commits 或记录数。
+
+内容域与语言：{{scope}}
+记录量目标：{{target}}
+不可无出处上线：{{no_source}}
+
+输出 Markdown：
+1. 车道/wave brief 最小模板
+2. 校验 0 errors + 引用 0 fail 合并门
+3. 疑点记 unknown 的纪律
+4. 人必须批准的清单（争议分类）
+禁止声称「必 23 天」；禁止建议无具名来源生成事实。`,
+      },
+      {
+        title: "无出处条目混入复盘",
+        body: `发现一批已合并记录缺少可核来源。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像引用门未跑、车道 brief 过松，还是协调漏检
+2. 最小回滚与重跑顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再开并行代理等于已补齐出处」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://forum.cursor.com/t/built-with-cursor-and-six-other-agents-a-47-000-record-museum-14-216-commits-in-23-days/177112",
+      label: "Cursor Forum · 47,000-record museum — 14,216 commits in 23 days",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
