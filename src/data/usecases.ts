@@ -22134,6 +22134,450 @@ CRM/邮箱：{{stack}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "391",
+    slug: "jayden-nebula-seven-agent-soul-body",
+    title: "Jayden：Nebula 七席 soul/body——一人独立游戏工作室的日常编队",
+    summary: "对照独立开发者：把秘书/市场/变现/法务/研发与两台构建机收成持久 soul + 一次性 CLI body；披露 7 席、30 天约 527 次执行/约 2.5M token/约 $387、约 80% 有用；不代你省时、不外推。",
+    description:
+      "面向一人工作室、会话一关就失忆、多域杂务抢游戏本职工时的独立开发者：把「再开多个终端会话」写成可对账的 soul/body + @路由 + 早晚 briefing，区别于顾问 PARA 秘书与大仓领域子代理。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.jaydengames.com/posts/how-i-run-a-7-agent-ai-team/",
+    sourceLabel: "jaydengames.com·Jayden Zhang 个人实践帖",
+    upvotes: 282,
+    trending: false,
+    tags: [
+      "Nebula",
+      "soul/body",
+      "独立游戏",
+      "多智能体",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴你要托管的日常域（情报/合规/CI 等）、是否允许跨代理 @路由，以及不可逆动作是否必须人确认",
+      "Agent 按实践帖输出：soul（SQLite 身份/记忆/MCP）与 body（可换 CLI）切分→七席角色清单→早晚 cron 与人工纠错门禁提问清单",
+      "人工保留不可逆动作与事实核对；Agent 不代你声称工作室已无人值守",
+    ],
+    tips: [
+      "源帖：Marketing 曾把 Steam Next Fest 日期错报两个月——要求每条发现带源链接，并由 Secretary 交叉核验",
+      "与 lars-clara-consultancy-claude-secretary / metabase-ten-clojure-subagents 不同：本条是 indie 工作室多域运营编队 + soul/body 持久化，不是顾问 PARA 秘书或大仓领域专家子代理",
+    ],
+    approach: `Jayden Zhang 在个人博客《How I Run a 7-Agent AI Team for My Indie Game Studio》（页内 Posted Apr 18, 2026；JSON-LD/og datePublished 2026-04-18 → 2026-04-18；canonical jaydengames.com）写明：一人做 Godot roguelite deckbuilder，日常要盯 Steam 竞品、15+ 仓 CI、香港公司合规、引擎周变更与 Kickstarter 合拍策略；单会话工具一关即失忆，CrewAI/多终端也缺共享身份与跨代理通信。
+
+做法是自建开源自托管平台 Nebula：soul（姓名/角色/完整消息史/skills/密钥/记忆/MCP 配置）落 SQLite；body 为可丢弃 CLI（Claude Code / OpenCode / Codex / Gemini），按需投影 soul、执行后退场，崩溃不伤身份，并可一键换后端。七席：Secretary（汇总早晚 briefing、Gitea/TeamCity、邮件与周报）、Marketing、Monetization、Finance、RnD（前五为「思考」）以及 BM Pacman（Windows TeamCity）、Mac M3 Max（后二为「做事」远程构建，WebSocket+Tauri）。典型日：约 6:00 四席情报扫描并 HTML 邮件；约 6:30 Secretary 汇总晨报；日间 @mention 路由注入相关上下文；晚间短扫描。用量仪表盘 alt 文披露 30 天：约 527 次执行、约 2.5M token、约 $387。作者称产出约 80% 有用、约 20% 需纠或噪声；系统提示+知识约 20–100KB，叠加历史常占上下文约 50–80%。本场景据此输出「indie 运营编队」提纲。禁止建议无人值守财务申报或对外发稿。`,
+    outcomes: [
+      "源披露 7 席 soul/body、15+ 仓监测、30 天约 527 次执行/约 2.5M token/约 $387、约 80%/20% 有用噪声比以及上下文常推到约 50–80% 等作者窗口口径；属一人 indie 工作室叙事，不可外推为你的 API 账单、情报准确率或发版吞吐。",
+      "能把「多开终端会话」与「持久 soul + 可换 body + @路由 + 人确认不可逆」拆开。",
+      "为过期网页事实被当权威、跨代理路由复制上下文推高费用、以及不可逆动作无人闸提供提问清单。",
+    ],
+    caveats: [
+      "成本与路由模式强相关；图表数字绑定作者当月部署，不可当预算模板。",
+      "代理自信不等于正确；无源链接与交叉核验会放大假情报。",
+      "上面写的是 Jayden 个人实践帖与开源 Nebula 叙事，不是 Anthropic/OpenAI 官文。",
+    ],
+    prompts: [
+      {
+        title: "indie 七席运营编队简报",
+        body: `你是一人工作室多智能体顾问。只根据用户约束写提问清单，不要编造已上线编队。
+
+日常域列表：{{domains}}
+是否允许 @跨代理：{{mention_ok}}
+不可逆动作：{{irreversible}}
+
+输出 Markdown：
+1. soul（持久身份/记忆/MCP）与 body（CLI）切分
+2. 拟设席位与早晚 cron 边界
+3. 源链接与交叉核验门禁
+4. 人工确认清单
+禁止建议自动提交合规申报或自动对外发帖；禁止声称已无人值守。`,
+      },
+      {
+        title: "假情报与费用漂移复盘提纲",
+        body: `一次市场扫描日期错误或月账单飙升，请写复盘提纲。
+
+现象：{{symptom}}
+当月执行/token 粗数：{{usage}}
+
+输出：
+1. 是缓存源、缺交叉核验，还是路由复制上下文过重
+2. 最小门禁补丁（必填源/Secretary 复核/上下文投影规则）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「代理已永久正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.jaydengames.com/posts/how-i-run-a-7-agent-ai-team/",
+      label: "jaydengames.com · How I Run a 7-Agent AI Team for My Indie Game Studio",
+      date: "2026-04-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "392",
+    slug: "exante-codey-jira-feature-environment",
+    title: "EXANTE Codey：Jira 到特性环境的多智能体研发流水线",
+    summary: "对照金融科技团队：Researcher→…→Verifier 六角色串起 Jira/GitLab/CI 与特性环境；披露约 250 任务、约 75% 成功、占相关团队任务约 7%、编码到特性环境约 30 分钟；不代你吞吐、不外推。",
+    description:
+      "面向要从「个人补全」升级到可度量的任务→可点开预览环境的工程组织：把「再交给某个编码助手」写成可对账的多角色编排+项目档案+至多三轮返工，区别于 Build/Gate/Ship 发版线与大仓领域子代理。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/alina_poluykova/from-jira-ticket-to-feature-environment-how-we-built-a-multi-agent-ai-developer-1lhd",
+    sourceLabel: "dev.to·Alina Poluykova / EXANTE 工程实践帖",
+    upvotes: 283,
+    trending: false,
+    tags: [
+      "Codey",
+      "Jira",
+      "特性环境",
+      "多智能体",
+      "EXANTE",
+    ],
+    howItWorks: [
+      "粘贴任务来源（Jira 标签/共享 backlog/Slack）、项目是否已有检查命令与特性环境配置，以及人审是否保留 Confirm",
+      "Agent 按实践帖输出：六角色链路→项目 profile/skills 分层→失败三类原因与三轮返工上限提问清单",
+      "人工保留产品验收与发布责任；Agent 不代你声称交付周期已达标",
+    ],
+    tips: [
+      "源帖：强制 Jira 模板写清验收流与测试要求；否则 Codey 与人类开发者一样做不好",
+      "与 glide-slipstream-build-gate-ship / metabase-ten-clojure-subagents 不同：本条是 Jira→MR→特性环境的多角色研发编排，不是发版 Build/Gate/Ship 或 Clojure 领域专家席",
+    ],
+    approach: `Alina Poluykova（EXANTE Head of Web Applications）在 DEV 实践帖《From Jira ticket to feature environment: how we built a multi-agent AI developer》（页内 Posted on Oct 9；JSON-LD datePublished 2026-10-09 → 2026-10-09；canonical dev.to；exante.eu 同题路径本次 GET 404，以 DEV 一手文为准）写明：不满足于个人编码工具，要可度量的自主管线，覆盖内部 CRM/中后台到客户门户、Web 交易终端与桌面应用。
+
+结果是 Codey：自研编排层，连接 Claude Agent SDK、Codex、OpenCode 等运行时，对接 Jira、GitLab 与 CI。任务入口：团队贴标签或共享 backlog（AI skip 留给人类）；或 Slack 描述需求→澄清→建 Jira→做完开 MR→回帖附特性环境链接。每任务六角色：Researcher→Planner→Developer→Reviewer→QA→Verifier；不同角色可用不同模型；Reviewer/检查失败回 Developer，至多三轮，仍未解决标 AI failed 并进统计。MR 后跑测试/linter/安全/AI code review；通过后前后端部署到独立特性环境，请求方 Confirm 后再进团队评审与发布构建。人在环：产品验收与发布责任在人。披露滚动约六个月口径：约 250 任务过系统、约 75% 成功完成、使用团队中约 7% 任务由 Codey 处理、从开始编码到部署特性环境典型约 30 分钟。失败主因常为缺上下文、跨多仓改动、新项目/新栈首任务。本场景据此输出「任务→特性环境」提纲。禁止建议无人值守合入生产发布。`,
+    outcomes: [
+      "源披露约 250 任务、约 75% 成功、占使用团队任务约 7%、编码到特性环境典型约 30 分钟、六角色与至多三轮返工等团队口径；属 EXANTE Web 应用叙事，不可外推为你的 sprint 吞吐、缺陷率或云成本。",
+      "能把「丢给单一编码助手」与「多角色+项目 profile+质量门+人 Confirm 特性环境」拆开。",
+      "为需求模板缺失、跨仓缺上下文、特性环境寿命/缩库成本失控提供提问清单。",
+    ],
+    caveats: [
+      "数字绑定已配置检查命令与项目档案的团队；绿野新栈首任务失败率会高。",
+      "早期负载会转移到理解「Agent 如何解读任务」的评审上。",
+      "上面写的是 EXANTE 工程实践帖（DEV 发布），不是模型商官文。",
+    ],
+    prompts: [
+      {
+        title: "Jira→特性环境编排简报",
+        body: `你是企业多智能体交付顾问。只根据用户约束写提问清单，不要编造已上线 Codey。
+
+任务入口：{{intake}}
+检查命令是否可复现：{{checks}}
+特性环境：{{preview_env}}
+人审 Confirm：{{confirm}}
+
+输出 Markdown：
+1. 六角色与模型分工假设
+2. 项目 profile / 三级 skills
+3. 三轮返工与 AI failed 统计
+4. 人工验收与发布门禁
+禁止建议自动 merge 生产；禁止声称周期已达约 30 分钟。`,
+      },
+      {
+        title: "AI failed 三类原因复盘提纲",
+        body: `一批任务标 AI failed，请写复盘提纲。
+
+失败样例：{{samples}}
+是否跨多仓：{{multi_repo}}
+
+输出：
+1. 缺上下文 / 跨仓 / 新栈 哪类为主
+2. Jira 模板与项目档案最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造成功率。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/alina_poluykova/from-jira-ticket-to-feature-environment-how-we-built-a-multi-agent-ai-developer-1lhd",
+      label: "dev.to · From Jira ticket to feature environment (Alina Poluykova / EXANTE)",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "393",
+    slug: "scriptxeno-blog-mcp-claude-publish",
+    title: "ScriptXeno：CLAUDE.md + blog-mcp——人写正文、机械发布交给本地 MCP",
+    summary: "对照个人博客：手写 front matter/标签大小写/外置图床/双 GitHub 账号易错；披露自研 blog-mcp 与手搓 YAML 序列化、标签纠错与 scoped 发布；不代你产量、不外推。",
+    description:
+      "面向一人静态博客、研究与成文仍想自己做、却在 Jekyll/Chirpy 机械步骤反复翻车的作者：把「再让模型整篇代写」写成可对账的约定文档+本地 MCP 发布工具链，区别于周刊五段流水线与顾问秘书。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://scriptxeno.github.io/posts/how-i-run-this-blog-claude-code-mcp-server/",
+    sourceLabel: "scriptxeno.github.io·Nakshatra Ranjan Saha 个人实践帖",
+    upvotes: 284,
+    trending: false,
+    tags: [
+      "blog-mcp",
+      "CLAUDE.md",
+      "Jekyll",
+      "Chirpy",
+      "发布工具链",
+    ],
+    howItWorks: [
+      "粘贴站点生成器约定（permalink/标签大小写/图床账号），以及正文是否必须人写",
+      "Agent 按实践帖输出：CLAUDE.md 必记坑→MCP 工具边界（序列化/标签和解/图床/scoped push）→人工审 diff 提问清单",
+      "人工保留研究与逐句编辑；Agent 不代你声称已自动写稿",
+    ],
+    tips: [
+      "源帖：gray-matter 默认写回会把日期扩成带时间戳、打散 tags 数组——解析用库、写出用手搓序列化器",
+      "与 Alejandro 周刊五段流水线不同：本条明确人写正文，MCP 只做机械发布；亦非顾问秘书",
+    ],
+    approach: `Nakshatra Ranjan Saha（OCEANOFANYTHING / ScriptXeno）在个人博客《How I Run This Blog with Claude Code, a CLAUDE.md File, and a Custom MCP Server (Real Setup, 2026)》（页内 Posted Aug 19, 2026；JSON-LD datePublished 2026-08-19 → 2026-08-19；canonical scriptxeno.github.io）写明：一人技术博客保持更新的「无聊真相」——研究、起草、逐句编辑仍自己做；Claude Code 读仓库根 CLAUDE.md（记录本仓真实约定），再加自研本地 MCP server blog-mcp 处理易错机械步骤。
+
+CLAUDE.md 钉死的坑包括：Chirpy 主题在本仓全量 vendored（不能只信 gem 文档）；permalink 为 /posts/:title/，乱改会静默打断历史链接；jekyll-archives 下标签/分类大小写敏感（「Tech」与「tech」会变两个归档；现存语料甚至标签 ai 与分类 AI 并存）；图片走外置 GitHub Pages 仓而非本仓 assets，并涉及与日常 gh 凭证分离的 ScriptXeno 账号。blog-mcp 提供列表/读写文、手搓 front matter 序列化（裸 YYYY-MM-DD、flow 数组、固定 image 字段序；仅改正文时原样回贴 front matter）、相对已发布语料纠标签大小写、按帖建图床仓与上传、按站点真实品牌色生成缩略图提示，以及一次 scoped commit/push 发布。作者强调工具是为去掉「成品草稿→正确上线」的琐碎，不是代写文章。本场景据此输出「约定文档+发布 MCP」提纲。禁止建议无人值守对任意私有仓 force-push。`,
+    outcomes: [
+      "源披露 CLAUDE.md 约定集、blog-mcp 工具面（手搓 YAML 序列化、标签和解、外置图床、scoped 发布）以及「人写正文、工具做机械步骤」边界等作者口径；属一人 Jekyll/Chirpy 博客叙事，不可外推为你的更新频率、阅读量或写作省时。",
+      "能把「让模型整站代写代发」与「人编辑 + 本地 MCP 只碰格式/标签/图床/push」拆开。",
+      "为 gray-matter 写回污染、标签大小写分裂归档、双 GitHub 账号推错仓提供提问清单。",
+    ],
+    caveats: [
+      "强绑定该仓 Chirpy vendored 与多账号 GitHub 布局；换主题/托管需重写约定与工具。",
+      "MCP 仍可能推错；scoped push 前要人看 diff。",
+      "上面写的是作者个人实践帖，不是 Anthropic MCP 官文。",
+    ],
+    prompts: [
+      {
+        title: "博客约定 + 发布 MCP 简报",
+        body: `你是静态博客工具链顾问。只根据用户约束写提问清单，不要编造已上线 MCP。
+
+生成器与主题：{{stack}}
+标签大小写规则：{{tag_rules}}
+图床/多账号：{{images_auth}}
+正文是否人写：{{human_draft}}
+
+输出 Markdown：
+1. CLAUDE.md 必记坑清单
+2. MCP 工具边界（序列化/标签/图床/push）
+3. 禁止代写正文的操作协议
+4. 人工看 diff 门禁
+禁止建议 force-push；禁止声称已自动日更。`,
+      },
+      {
+        title: "front matter 污染复盘提纲",
+        body: `一次保存后日期带上 T00:00:00Z 或 tags 被打成 block list，请写复盘提纲。
+
+diff 摘要：{{diff}}
+
+输出：
+1. 是通用 YAML 写回还是手搓序列化被绕过
+2. 「仅改正文则原样回贴 front matter」补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「序列化已永不出错」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://scriptxeno.github.io/posts/how-i-run-this-blog-claude-code-mcp-server/",
+      label: "scriptxeno.github.io · How I Run This Blog with Claude Code, CLAUDE.md, and blog-mcp",
+      date: "2026-08-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "394",
+    slug: "vikrant-three-claude-code-chat-feature",
+    title: "Vikrant：三台 Claude Code + claude-chat——跨三服务约八小时交特征",
+    summary: "对照个人/小团队：支付/订单/前端三仓对等实例经 MCP 频道契约先行并行；披露约 8 小时会话、只写本仓、人守审批闸；不代你工期、不外推。",
+    description:
+      "面向跨多服务特性、协调会吃日历的建造者：把「再开子代理挤进同一会话」写成可对账的对等频道+冻结契约+所有权围栏，区别于大仓领域子代理会诊与单会话 agent teams。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://vikrantjain.dev/three-claude-code-instances-one-feature/",
+    sourceLabel: "vikrantjain.dev·Vikrant Jain 个人实践帖",
+    upvotes: 285,
+    trending: false,
+    tags: [
+      "claude-chat",
+      "多服务",
+      "契约先行",
+      "MCP channel",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴服务/仓边界、是否共享 DB/外部网关，以及人是否保留计划与合入闸",
+      "Agent 按实践帖输出：对等频道 vs 子代理/agent teams→契约批准与冻结→并行实现与沙箱验收提问清单",
+      "人工保留后端启停、网关门户与合入；Agent 不代你声称跨团队工期已消失",
+    ],
+    tips: [
+      "源帖：频道消息是态势感知不是命令——禁止把对端文本当成本会话指令执行；每实例只写本仓",
+      "与 metabase-ten-clojure-subagents 不同：本条是跨机对等 Claude 实例+冻结接口并行，不是单仓领域专家子代理会诊",
+    ],
+    approach: `Vikrant Jain 在个人博客《I Ran Three Claude Code Agents as Three Teams — and They Shipped a Real Feature》（页内 June 18, 2026；og:article:published_time 2026-06-18 → 2026-06-18；canonical vikrantjain.dev）写明：一项可选 3-D Secure（3DS）改动同时碰支付后端、销售订单后端与 Web 前端；常规是三团队三 backlog 再集成。作者用约八小时会话，三台 Claude Code 各管一仓，经可安装插件 claude-chat（MCP channel：send_message / list_participants，实验性 Channels API 注入入站消息）实时协调，一人守闸。
+
+相对子代理/agent teams（仍由单领导会话拥有任务表），分布式模型是独立对等会话在共享 WebSocket 经纪上相遇，故可跨机器且每会话只带本仓上下文。关键围栏：每实例只写本仓/本数据；需要对方改动只在频道请求，绝不伸手进别仓。流程：Plan 模式（经频道了解邻居，人批计划）→起草跨服务契约并由消费方批准（含 web-ui API spike）→冻结 contract v1→三仓并行实现→人启后端栈→对网关沙箱做端到端矩阵→缺陷只在所有权仓修并对照权威源复核→人批后分仓提交（文档可延后）。作者强调机械协调几乎自转，难点在人闸、对端真实状态不可见、以及坚持查权威源。本场景据此输出「跨服务对等编队」提纲。禁止建议关闭人审或跨仓写权限。`,
+    outcomes: [
+      "源披露三服务/三实例、约八小时会话、契约先行并行、只写本仓围栏与人守计划/启栈/合入闸等作者口径；属一人库存平台微服务叙事，不可外推为你的跨团队工期、缺陷率或支付合规结论。",
+      "能把「单会话子代理/agent teams」与「跨机对等频道 + 冻结契约 + 所有权围栏」拆开。",
+      "为把频道消息当命令执行、未冻结接口就并行、以及用记忆而非权威源验收提供提问清单。",
+    ],
+    caveats: [
+      "依赖实验性 Channels 与 --dangerously-load-development-channels 类开关；预览构建有风险。",
+      "异步频道看不到对端真状态；人必须守审批与沙箱访问。",
+      "上面写的是作者个人 build log，不是 Anthropic 官文；3DS 细节属项目不宜照搬。",
+    ],
+    prompts: [
+      {
+        title: "跨服务对等编队简报",
+        body: `你是多仓 Claude Code 协调顾问。只根据用户约束写提问清单，不要编造已上线频道。
+
+服务与仓：{{services}}
+共享依赖：{{shared}}
+人闸点：{{gates}}
+
+输出 Markdown：
+1. 对等频道 vs 子代理/agent teams 选型理由
+2. 契约起草→消费方批准→冻结步骤
+3. 只写本仓的权限与消息协议
+4. 人工启栈/沙箱/合入清单
+禁止建议跨仓写权限或自动合入；禁止声称八小时可复现。`,
+      },
+      {
+        title: "契约漂移复盘提纲",
+        body: `并行中有一侧改了字段未广播导致集成失败，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是未冻结、消息当命令，还是验收未对权威源
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「频道已消除协调税」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://vikrantjain.dev/three-claude-code-instances-one-feature/",
+      label: "vikrantjain.dev · Three Claude Code instances, one real feature",
+      date: "2026-06-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "395",
+    slug: "glide-slipstream-build-gate-ship",
+    title: "Glide Slipstream：Build / Gate / Ship + 召回——给人让路的发版流水线",
+    summary: "对照产品工程团队：单仓+旗标+合并队列上跑 Build/Gate/Ship 与 detect→repair 召回；披露首代约 8 月 vs Slipstream 后约 90 天追平、合并→生产中位约 14 分、PR p75 约 5.4 时等；不代你指标、不外推。",
+    description:
+      "面向 Agent 生成代码量把 PR 审阅读成橡皮图章、回滚仍等人发现的平台团队：把「再加人工审批章」写成可对账的三站流水线+自动召回，区别于 Jira→特性环境编排与 SOC2 人闸修复代理。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.glideapps.com/blog/creating-slipstream",
+    sourceLabel: "glideapps.com·Glide 工程实践帖",
+    upvotes: 286,
+    trending: false,
+    tags: [
+      "Slipstream",
+      "Build Gate Ship",
+      "feature flags",
+      "自动回滚",
+      "agentic SDLC",
+    ],
+    howItWorks: [
+      "粘贴是否已 monorepo/旗标/合并队列，以及人签核是看「功能」还是「逐行代码」",
+      "Agent 按实践帖输出：Build/Gate/Ship 三站→召回四步→人留两处判断（功能签核/修复安全性）提问清单",
+      "人工保留功能验收与修复合入判断；Agent 不代你声称已自愈生产",
+    ],
+    tips: [
+      "源帖：回滚可在无人响应时自动执行，但「向前滚动」的修复仍要人批——两处人闸问的问题不同",
+      "与 exante-codey-jira-feature-environment / tudovu-soc2-remediation-agent 不同：本条是发版 Build/Gate/Ship+召回，不是 Jira 特性环境六角色或 SOC 2 五阶段修复",
+    ],
+    approach: `Glide 工程博客《Creating Slipstream: How we rebuilt our software engineering process for AI agents》（JSON-LD datePublished 2026-08-06 → 2026-08-06）写明：首代 agentic 平台叠在「为人设计」的架构与流程上，花约 8 个月；重建后相信给 Agent 自然操作空间，团队约 90 天追平能力——未换模型/工具，换的是信任与为 Agent 设计的过程。痛点先爆在 PR：Agent 代码足够好后评审变成排队盖章，工程师反要求少审。
+
+Slipstream 是从规格到生产的流水线，三站：Build（按约定/lint/架构一次写对）、Gate（eval/e2e 等规则门，人签核看功能是否符合要求而非逐行代码）、Ship（合并队列上线并藏在旗标后，rollout watcher 盯降级）。另有召回模式：Detect（遥测/安全/流量/质量）→Notify（GitHub issue 指派）→Diagnose & repair（Agent 开修复 PR）→Return to service（人批后走同一 Ship）。向前滚动保留两处人判断；回滚可不等人——CTO 引内部消息称 watcher 曾自动回滚以保护客户。基础改造：多仓改单仓、迁 Cloudflare、默认功能旗标、合并队列。披露中滚动指标（部分为进行中目标）：合并→生产中位约 14 分钟（对照 G2 约 23 小时）；PR 周期 p75 约 5.4 小时（原约 21 小时）；约 90% 变更由 Agent 审而无须人卷入代码审；每次部署受监控且用户破坏行为可自动回滚；约 25% 组织已能从规格直接出生产 PR（10 人已合 37 个生产 PR）。本场景据此输出「Build/Gate/Ship+召回」提纲。禁止建议关闭人审即自动合入安全修复。`,
+    outcomes: [
+      "源披露首代约 8 月 vs 约 90 天追平、合并→生产中位约 14 分（对照约 23 时）、PR p75 约 5.4 时、约 90% Agent 审、约 25% 非工程已从规格出生产 PR（10 人 37 PR）以及自动回滚实例等团队口径；属 GlideOS/Slipstream 中期叙事，不可外推为你的 DORA、缺陷逃逸或组织转型速度。",
+      "能把「PR 橡皮图章」与「Gate 看功能 + 系统扛代码质量 + 召回自动侦测」拆开。",
+      "为无人响应时的自动回滚误伤、非工程有门不敢进、以及修复 PR 跳过人批提供提问清单。",
+    ],
+    caveats: [
+      "文称 mid-rollout，部分数字是承诺追踪的目标而非终局证明。",
+      "自动回滚依赖可观测与判定「用户破坏」；误判有可用性风险。",
+      "上面写的是 Glide 工程实践帖，不是模型商官文。",
+    ],
+    prompts: [
+      {
+        title: "Build/Gate/Ship 简报",
+        body: `你是 agentic 发版顾问。只根据用户约束写提问清单，不要编造已上线 Slipstream。
+
+仓形态：{{repo}}
+旗标/合并队列：{{flags_mq}}
+人签核问题：{{human_signoff}}
+
+输出 Markdown：
+1. 三站职责与证据
+2. 召回四步与人批修复边界
+3. 自动回滚触发条件草案
+4. 人工确认清单
+禁止建议安全修复免审合入；禁止声称 DORA 已达对照值。`,
+      },
+      {
+        title: "误自动回滚复盘提纲",
+        body: `rollout watcher 回滚了一次实为噪声的指标抖动，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是遥测误判、通知无人确认窗口过短，还是缺少金丝雀
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「平台已完全自愈」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.glideapps.com/blog/creating-slipstream",
+      label: "glideapps.com · Creating Slipstream: rebuilding engineering for AI agents",
+      date: "2026-08-06",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
