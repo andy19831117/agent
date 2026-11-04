@@ -25248,6 +25248,454 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
       dateLabel: "发布",
     },
   },
+  {
+    id: "426",
+    slug: "taewoo-tabby-19-days-claude-talk",
+    title: "Taewoo：19 天用对话做出 Tabby——546 条消息、141 用户、$909 API 等价",
+    summary: "越南语口语指挥 Claude Code 做浏览器标签管理器；披露 19 天 546 消息/2.5B token API 等价约 $909、1.2 一日 58 消息、商店 141 用户；不代你用绿测代替肉眼看 UI。",
+    description:
+      "面向一人做多语言浏览器扩展与短视频物料、要把「说清要什么」当成主循环的独立开发者：把计划门禁+截图验收+错例写回记忆做成节奏，区别于付费结账绿测陷阱与联盟代理满月。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/taewoo/19-days-546-messages-141-users-building-my-app-by-mostly-talking-to-claude-code-1mgb",
+    sourceLabel: "dev.to·Taewoo 实践帖",
+    upvotes: 317,
+    trending: false,
+    tags: [
+      "Tabby",
+      "口语指挥",
+      "浏览器扩展",
+      "人眼验收",
+      "短视频",
+    ],
+    howItWorks: [
+      "粘贴产品形态、语言/主题规模与是否已有「先出计划再动手」记忆规则",
+      "Agent 按实践帖输出：消息/token 记账表、双 Claude 互评到 9–10/10、以及截图/短片验收门",
+      "人工保留 UI 与素材品味裁决；Agent 不代你声称测绿等于观感正确或可无人值守发商店",
+    ],
+    tips: [
+      "源帖：自 2026-10-05 起约 19 天；全项目 546 消息、2.5B token、API 等价约 $909（作者用 Claude Max 订阅，非实付 API）；Tabby 1.2 约一日 58 消息/888M/~$316；lock-in 短片约 3.5 小时 45 消息/207M/~$55、扔过 2 版；商店 141 用户、评分 5.0/3 评；YouTube 约 3.4K 观看/6.7 小时；字体未加载靠人眼发现；越文按钮溢出后补 12 语手机宽扫描",
+      "与 carlos-infantes-skillpilot-green-tests-miss-checkout / conor-gotzens-affiliate-ai-team-month-one 不同：本条是口语指挥+扩展观感/短片验收，不是付费结账绿测或联盟 SEO 代理满月",
+    ],
+    approach: `Taewoo 在 DEV《19 days, 546 messages, 141 users: building my app by mostly talking to Claude Code》（JSON-LD/页内 datePublished 2026-10-24T06:00:59Z → 2026-10-24）写明：他做免费标签管理器 Tabby（Chrome/Firefox/Edge），本周交付 1.2 并做了三语「lock in」短片；几乎不手写代码，主要用越南语口语指挥 Claude Code（「难看」「字被切」「音乐不对」），看结果后说是或否。
+
+数字来自 Claude Code 日志按 Opus API 牌价折算：自约 10 月 5 日起 19 天、546 条消息、2.5B token、API 等价约 $909（作者用 Claude Max 包月，强调非实付 API；多数 token 为重读项目、缓存价更便宜）。1.2 从计划到发布约一日（10/22 夜→10/23 晚）58 消息、888M、约 $316；短片含 3 版+两语约 3.5 小时、45 消息、207M、约 $55，扔掉 2 版。产出：29 主题（6 免费）、12 语言、新首页/商店页、51 秒宣传片；商店侧约 141 用户、3 条评 5.0；YouTube 约 3.4K 观看与 6.7 小时观看时长；折合约 $6 API 等价/用户。
+
+工作法：不写规格书，先让其出计划并批准——早期它未展示计划就改站，后写入记忆「先计划、等 OK 再做」。用截图、2 秒演示、并排选项图代替长文；大块让第二 Claude 互评到 9–10/10，甚至「评到 10/10 再做」后睡觉。人眼抓到的错：主题字体从未加载（自动测全绿）、越文第三钮溢出（后补 12 语手机宽扫描失败门）、短片做成「全盘广告」而非趋势那种单行特写（对照 7k 赞样例写规则）。本场景据此输出「口语指挥扩展发布」提纲。禁止建议用单测绿灯代替肉眼看 UI/短片节奏，或把 API 等价写成必付账单。`,
+    outcomes: [
+      "源披露 19 天/546 消息/2.5B token API 等价约 $909、1.2 一日 58 消息、商店 141 用户、字体未加载与越文溢出靠人眼等作者口径；属早期一人窗口，不可外推为你的商店转化、订阅划算性或「只说话就能免审上架」。",
+      "能把「测绿可发」与「计划门禁 + 截图/短片验收 + 错例写回记忆」拆开。",
+      "为把全盘功能演示当成短视频、以及忽略非英语文案溢出提供提问清单。",
+    ],
+    caveats: [
+      "观感与多语言布局须人眼看；作者强调重要 bug 都是人发现的。",
+      "$909 等为 API 牌价折算，作者实付为 Max 订阅口径。",
+      "上面写的是 Taewoo 个人实践帖，不是 Chrome Web Store/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "口语指挥扩展发布节奏简报",
+        body: `你是独立开发者发布顾问。只根据用户约束写节奏与验收门，不要编造商店用户数。
+
+产品：{{product}}
+语言/主题规模：{{locales}}
+是否已有「先计划再动手」规则：{{plan_gate}}
+
+输出 Markdown：
+1. 消息/token 记账字段（订阅 vs API 等价分列）
+2. 计划门禁与截图/短片验收清单
+3. 双 Agent 互评到分的适用边界
+4. 人必须保留的观感/上架决策
+禁止建议用单测绿灯代替肉眼看 UI；禁止伪造「口语指挥必复现 141 用户」。`,
+      },
+      {
+        title: "测绿但字体/文案溢出复盘提纲",
+        body: `自动测全绿，但主题字体未加载或某语言按钮被切。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺人眼截图门、缺多语手机宽扫描，还是缺设计对照
+2. 最小回归夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「单测已覆盖全部观感」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/taewoo/19-days-546-messages-141-users-building-my-app-by-mostly-talking-to-claude-code-1mgb",
+      label: "dev.to/taewoo · 19 days, 546 messages, 141 users: building my app by mostly talking to Claude Code",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "427",
+    slug: "asafamos-axle-a11y-saas-one-day",
+    title: "Asaf：非主程序员周六约 12 小时做出 a11y SaaS——当日首笔 $49",
+    summary: "用 Claude Code 做出 axle 无障碍合规 CI；披露约 12 小时、Claude 约写 90% 字符、单次修复约 $0.008、同日 Polar 收首笔 $49；不代你无人值守合入无障碍「自动修复」。",
+    description:
+      "面向要把 WCAG 扫描+PR 修复建议做成可收款产品、且非美国商户的独立开发者：把 Polar MoR、置信度打分与人工复核旗标写成门禁，区别于结账绿测陷阱与家庭财务自托管。",
+    categories: [
+      "ecommerce",
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/asafamos/i-built-an-accessibility-compliance-saas-in-a-day-with-claude-code-5495",
+    sourceLabel: "dev.to·Asaf Amos 实践帖",
+    upvotes: 318,
+    trending: false,
+    tags: [
+      "无障碍",
+      "axle",
+      "Polar",
+      "WCAG",
+      "首笔收款",
+    ],
+    howItWorks: [
+      "粘贴目标合规标准、商户所在地限制与是否必须输出置信度/人工复核旗标",
+      "Agent 按实践帖输出：一日栈选择、MoR 绕行路径、以及「修复建议≠免审合入」门禁",
+      "人工保留定价/法律表述与合入决策；Agent 不代你声称可覆盖全部 WCAG 或无人值守收钱免责",
+    ],
+    tips: [
+      "源帖：周六约 12 小时；Next.js@Vercel + Playwright/axe-core + @sparticuz/chromium + Claude Sonnet 4.6（约 $0.008/修复）+ Upstash + Resend + Polar.sh；作者称 Claude 约写 90% 字符、拒约三分之一过度防御 try/catch；宣称对真实页约 60–75% WCAG 违例可给定向修复；以色列无法直接开 Stripe 商户、旧 Paddle 被拒，Polar 当日完成 KYC 并在约六小时内跑通首笔 $49；上线 GitHub Marketplace/npm/托管 UI",
+      "与 carlos-infantes-skillpilot-green-tests-miss-checkout / rodik-keepard-family-finance-9-days 不同：本条是无障碍合规 CI 一日首收款+非美 MoR，不是 SkillPilot 结账绿测或家庭财务九日账",
+    ],
+    approach: `Asaf Amos 在 DEV《I built an accessibility compliance SaaS in a day with Claude Code》（JSON-LD/页内 datePublished 2026-04-18T10:17:31Z → 2026-04-18）写明：他并非主程序员，周六约 12 小时用 Claude Code 做出 axle——扫描每个 PR 的 WCAG 2.1/2.2 AA 违例并提议 AI 生成代码修复；当日上线 GitHub Marketplace、npm 与托管 Web UI，并处理了首笔真实 $49 交易。
+
+动机三件事叠在一起：欧盟无障碍法案（EAA）自 2025-06 生效、accessiBe 类 overlay 被 FTC 罚金叙事、以及 Claude Sonnet 4.6 对定向修复已「够用」——作者称对真实页约 60–75% WCAG 违例可给出可辩护修复；楔子是 PR diff 修复+合规官要的审计痕迹/无障碍声明/监测，而非又一个扫描仪。栈按「最快到首笔真收款」选：Next.js 16@Vercel、Playwright+axe-core 4.11、@sparticuz/chromium（Vercel 函数无完整浏览器）、Anthropic SDK+短暂 prompt cache（约 $0.008/修复）、Upstash Redis、Resend、Polar.sh 作 merchant of record。
+
+商户坑：以色列不在 Stripe 新账户 Business Location 下拉里；旧 Paddle 曾因另一产品被拒。Polar 当天下午完成身份核验并挂上以色列美元账户，注册后约六小时内跑通端到端 $49。协作感：描述下一块→审 diff→迭代；Claude 约写 90% 字符；他负责产品层定价/法律站位/反 overlay，并拒掉约三分之一过度防御的 try/catch。作者强调「自动修复」主张须带置信度与人工复核旗标。本场景据此输出「无障碍合规一日首收款」提纲。禁止建议无人值守把 AI 修复直接合入生产，或把约 60–75% 写成对你站点的保证率。`,
+    outcomes: [
+      "源披露约 12 小时、Claude 约写 90% 字符、约 $0.008/修复、同日 Polar 首笔 $49、以及约 60–75% 违例可定向修复等作者口径；属一日首发窗口，不可外推为你的 MRR、KYC 时长或「AI 修复可免合规官」。",
+      "能把「能扫描」与「MoR 可收款 + 置信度/人工旗标 + 法律站位」拆开。",
+      "为非美创始人卡在 Stripe/Paddle、以及把 overlay 式万能修复当卖点提供提问清单。",
+    ],
+    caveats: [
+      "AI 修复须置信度与人工复核；作者自承非万能。",
+      "KYC/商户资格是非美创始人真实瓶颈，不是编码细节。",
+      "上面写的是 Asaf 个人实践帖，不是 Polar/Stripe/axe-core 官文或无障碍认证。",
+    ],
+    prompts: [
+      {
+        title: "无障碍合规 CI 首收款门禁简报",
+        body: `你是独立开发者合规产品顾问。只根据用户约束写栈与门禁，不要编造已通过认证。
+
+目标标准：{{standard}}
+商户所在地限制：{{geo}}
+是否必须置信度旗标：{{confidence_flag}}
+
+输出 Markdown：
+1. 扫描/修复/声明产物边界
+2. MoR/支付绕行核对清单
+3. 置信度+人工复核合入门
+4. 人必须保留的法律表述与定价
+禁止建议无人值守合入 AI 修复；禁止伪造「已覆盖全部 WCAG」。`,
+      },
+      {
+        title: "Stripe 无国家选项改走 MoR 复盘提纲",
+        body: `目标市场无法直接开某 PSP 商户账户。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 MoR、缺旧账户申诉积压，还是 KYC 材料不全
+2. 最小可收款路径
+3. 下次验收（首笔真收费）
+4. 人工确认清单
+不要伪造「任意国家均可同日 Stripe 直连」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/asafamos/i-built-an-accessibility-compliance-saas-in-a-day-with-claude-code-5495",
+      label: "dev.to/asafamos · I built an accessibility compliance SaaS in a day with Claude Code",
+      date: "2026-04-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "428",
+    slug: "ilya-gorban-15-claude-sessions-governance",
+    title: "Ilya：一人 DevOps 并行 10–15 个 Claude 会话——治理委托与 49 个守卫钩",
+    summary: "cmux 上多会话当分布式系统跑；披露约 18 worktree 踩坑、约 57 条跨会话消息教训、约 49 hook/57 测；审批不可转述、无未审编辑入共享分支；不代你无人值守改集群。",
+    description:
+      "面向一人要并行多任务 Claude Code、又怕文件碰撞与「转述批准」的 DevOps：把治理会话单写者+钩子 TDD+GitOps 二次核对写成纪律，区别于 PR 一审风扇与周末运维批处理。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/ilya_gorban/running-15-claude-code-sessions-at-once-5bec",
+    sourceLabel: "dev.to·Ilya Gorban 实践帖",
+    upvotes: 319,
+    trending: false,
+    tags: [
+      "并行会话",
+      "治理委托",
+      "守卫钩",
+      "GitOps",
+      "cmux",
+    ],
+    howItWorks: [
+      "粘贴并行会话数、共享规则目录与是否允许会话改 kubectl/Terraform",
+      "Agent 按实践帖输出：治理单写者、审批不可转述、钩子测试阶梯与 verify-before-ask 规则",
+      "人工保留合并与集群变更；Agent 不代你声称可无人值守合入或转述「用户已批准」",
+    ],
+    tips: [
+      "源帖：一人 DevOps，cmux 上 10–15 会话/任务；约 18 worktree 跨两仓难分废弃与进行中；约 57 条真实跨会话消息总结「发现缺陷≠归你修、接到补丁≠归你批」；约 49 hook 文件/57 测文件；PreToolUse 拦变更 kubectl（只读/diff/--dry-run=server/Argo 补丁可）、禁主仓直改、要求完整 PR URL、禁 /tmp 草稿、要求 PromQL/LogQL/SQL 须本会话实跑过、结束回合检查未推送提交；GitOps+ArgoCD 作二次核对；会话停在 ready for review、人读 diff 再合",
+      "与 oleh-veheria-claude-pr-first-pass-review / chelle-honiker-claude-weekend-ops-batch 不同：本条是多会话治理委托+钩子执法，不是 PR 一审风扇或周末运维批跑",
+    ],
+    approach: `Ilya Gorban 在 DEV《Running 15 Claude Code Sessions at Once》（JSON-LD/页内 datePublished 2026-10-08T20:15:21Z → 2026-10-08）写明：作为公司唯一 DevOps，他在 cmux 上并行跑 10–15 个 Claude Code 会话；前提是把它们当成小型分布式系统——按职能所有权、共享规则/钩子由一个治理会话单写、审批永不转述、重复错误沉为守卫钩、负载假设先核实再问人、无 Claude 生成编辑在未人工审阅前进入共享分支，并以 GitOps 为记录。作者强调这是一家公司的经验意见，不是唯一正确答案。
+
+「章鱼」失败模式：两会话同改一规则文件，git add -A 把别人的改动卷进错误提交；A 对 B 说「用户已批准」但 B 无法核验；约 18 个 worktree 跨两仓，清扫分不清废弃与进行中；brief 只活在发送方转录里，双方压缩后消失；钩子正则修复互踩，单测各自绿。
+
+做法要点：每会话一任务一 worktree/分支/PR；治理委托会话专写全局 CLAUDE.md/钩子/测试/设置，其他会话只发 brief；brief 必须写明「下列皆非预批准，审批走你本会话的用户」；约 57 条跨会话消息沉淀「发现≠归属修复、接到补丁≠归属批准」；钩子约 49 文件配 57 测，PreToolUse（exit 2）拦变更型 kubectl、主仓直改、残缺 PR 引用、/tmp 草稿、未实跑的查询写进文档、回合结束未推送等；变更集群只能经人审提交，Git 与 ArgoCD 漂移对照二次核对。本场景据此输出「并行会话治理」提纲。禁止建议会话互相转述批准，或无人值守合并/变更生产集群。`,
+    outcomes: [
+      "源披露 10–15 并行会话、约 18 worktree 踩坑、约 57 跨会话消息教训、约 49 hook/57 测、以及审批不可转述/未审不入共享分支等作者口径；属一人公司窗口，不可外推为你的并行上限、事故率或「钩子=可无人值守」。",
+      "能把「多开几个窗」与「治理单写者 + 钩子 TDD + GitOps 二次核对」拆开。",
+      "为转述批准、以及文档里写未实跑的 PromQL/SQL 提供提问清单。",
+    ],
+    caveats: [
+      "人审是瓶颈；作者称会话 95% 对时会把 5% 错静静带上船。",
+      "钩子须测优先；坏钩要么全员阻塞要么静默失守。",
+      "上面写的是 Ilya 个人（一家公司）实践帖，不是 Anthropic/ArgoCD 官文。",
+    ],
+    prompts: [
+      {
+        title: "并行 Claude 会话治理布置简报",
+        body: `你是 DevOps 多会话治理顾问。只根据用户约束写所有权与门禁，不要编造已通过生产演练。
+
+并行会话数：{{n}}
+共享规则目录：{{shared_cfg}}
+是否允许会话改集群：{{cluster_ok}}
+
+输出 Markdown：
+1. 治理单写者与 SendMessage brief 字段
+2. 审批不可转述的句式
+3. PreToolUse 钩子最小集与测试要求
+4. 人必须保留的合并/集群决策
+禁止建议会话互传「用户已批准」；禁止伪造可无人值守改生产。`,
+      },
+      {
+        title: "转述批准导致误合入复盘提纲",
+        body: `会话 A 告诉会话 B「用户已批准」，B 据此推进。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺本会话人批、缺证据字段，还是钩子未拦
+2. 最小 brief/钩子补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「跨会话批准可安全传递」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/ilya_gorban/running-15-claude-code-sessions-at-once-5bec",
+      label: "dev.to/ilya_gorban · Running 15 Claude Code Sessions at Once",
+      date: "2026-10-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "429",
+    slug: "shape-marko-claude-vs-cursor-router",
+    title: "Shape：同票对照 Claude Code vs Cursor——47 文件 53 分钟对 1 小时 42 分",
+    summary: "团队双开工具；披露同票 47 文件 CC 53m/Cursor 1h42m、单文件 Cursor 22m vs CC 34m、CC 约 $420/工程师/周；规格+双工具工作流；不代你宗教式单选或无人值守合 PR。",
+    description:
+      "面向要在工作室同时用终端 Agent 与编辑器 Agent 的工程团队：把「脑内能装下用 Cursor、装不下写规格用 Claude Code」写成日课，区别于 token 透明代理与技能正文审计。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.shape-labs.com/articles/claude-code-vs-cursor",
+    sourceLabel: "shape-labs.com·Marko Balažic / Shape 实践帖",
+    upvotes: 320,
+    trending: false,
+    tags: [
+      "工具分工",
+      "同票对照",
+      "规格驱动",
+      "双开工作流",
+      "Shape",
+    ],
+    howItWorks: [
+      "粘贴任务规模（文件数/是否长程）与团队是否允许双开订阅",
+      "Agent 按实践帖输出：同票对照表、日课三规则、以及规格→CC 执行→Cursor 审 diff 闭环",
+      "人工保留每个 Agent PR 的合入；Agent 不代你声称某一工具永远 2× 或可免读描述里的计划",
+    ],
+    tips: [
+      "源帖：同票「给 RN 用户可见字符串加多语言+评估用例」触 47 文件、同工程师同分支各跑一次——Cursor 1h42m（手抓约半打错误上下文替换）、Claude Code 53m（约 180 词规格后走开，审时一处架构纠正）；下一单文件设计系统重构 Cursor 22m vs CC 34m；最活跃客户项上月 CC 约 $420/工程师/周、Cursor 约 $80/月订阅+$60/周超额；错规格空转一小时可约 $40；日课：脑内约 100 行或两文件内用 Cursor，否则写规格用 CC；无规格不跑 CC；读每个 PR 的计划与校验输出",
+      "与 konde-rtk-claude-token-proxy-60pct / postman-devrel-claude-skills-token-audit 不同：本条是同票工具分工与双开工作流，不是 API 前透明代理或 19 技能正文审计",
+    ],
+    approach: `Marko Balažic（Shape 创始人）在《Claude Code vs Cursor: When We Reach for Which (and the Router That Runs Both)》（JSON-LD datePublished 2026-05-26T17:48:16.288+00:00 → 2026-05-26；页内 Article · May 26, 2026）写明：团队几乎整天双开——问题不是宗教站队，而是「此刻你处在哪种工作模式」。
+
+同票对照：上季度真实票「给 React Native 用户可见字符串加多语言支持并加评估用例」，触及 47 文件；同资深工程师、同构分支各跑一次。Cursor：1 小时 42 分合入，工程师称需更多看护，并手抓约半打错误上下文替换。Claude Code：53 分钟合入——写约 180 词规格后走开，回来分支已绿，审阅时做一处架构纠正。作者称此类工作 CC 约 2× 快，且角色从「驾驶」变为「写规格+审阅」。下一张同项目单文件「按新设计系统重构组件」则 Cursor 更快：22 分 vs 34 分。
+
+花费（最活跃客户项上月）：CC 约 $420/工程师/周（多 Agent 长程）；Cursor 约 $80/月订阅外加约 $60/周 Agent 超额。错规格空转一小时可烧约 $40——他们把发票上的可见性当强迫函数。第三选项：几乎每位资深都双开——Cursor 写仓内 Markdown 规格→CC 长程执行→在 Cursor 审 PR diff→线内修补与下轮规格仍在 Cursor→CC 对更新规格重跑；有人把 CC 嵌在 Cursor 终端；有人用 GitHub 上的 claude-code-router 扇出与缓存。日课三规则：脑内能装下（约 100 行改动或两文件，取小）用 Cursor，否则写规格用 CC；无规格不跑 CC；读每个 Claude PR 的计划与校验输出，勿只看 diff。本场景据此输出「双工具同票分工」提纲。禁止建议宗教式单选，或无人值守合入 Agent PR。`,
+    outcomes: [
+      "源披露同票 47 文件 CC 53m vs Cursor 1h42m、单文件 22m vs 34m、CC 约 $420/工程师/周与错规格约 $40/小时等作者口径；属工作室窗口，不可外推为你的人效倍数、账单或「永远该用某一工具」。",
+      "能把「工具信仰」与「模式匹配：驾驶用 Cursor / 监督用 CC + 必读计划」拆开。",
+      "为无规格空转烧钱、以及只看 diff 不看 Agent 计划提供提问清单。",
+    ],
+    caveats: [
+      "作者称工具两周一轮更新，文中细节约三个月后可能只剩七成准；原则更稳。",
+      "每个 Agent PR 须人读；合入决策不外包。",
+      "上面写的是 Shape 团队实践帖，不是 Anthropic/Cursor 官文评测榜。",
+    ],
+    prompts: [
+      {
+        title: "Claude Code / Cursor 同票分工简报",
+        body: `你是工程工作室工具顾问。只根据用户约束写分工与日课，不要编造基准分数。
+
+任务类型：{{task_type}}
+预估文件数：{{files}}
+是否允许双开：{{both_ok}}
+
+输出 Markdown：
+1. 驾驶 vs 监督模式选择
+2. 规格最小字段（约 180–200 词量级）
+3. 同票对照记账表（墙钟/人工介入次数）
+4. 人必须保留的 PR 合入检查（含计划/校验输出）
+禁止建议宗教式单选；禁止伪造「CC 永 2×」。`,
+      },
+      {
+        title: "无规格长跑烧出 $40 复盘提纲",
+        body: `Claude Code 因含糊目标空转约一小时并产生高额用量。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺规格、缺中止条件，还是缺用量告警
+2. 最小规格模板与中止钩
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「长跑费用已永可控」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.shape-labs.com/articles/claude-code-vs-cursor",
+      label: "shape-labs.com · Claude Code vs Cursor: When We Reach for Which (and the Router That Runs Both)",
+      date: "2026-05-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "430",
+    slug: "chirag-seven-months-agents-leash-28335",
+    title: "Chirag：七个月五套 harness 花 $28,335——真正买到的是 15 步皮带",
+    summary: "自记 /trends 账单；披露 $28,335、0.7% 工具调用在午夜–6 点、约 15 次工具调用/人回合、四月并行 worktree 后月耗约 7.4×；不代你无人值守通宵或把花费写成省 token 代理。",
+    description:
+      "面向要并行多 worktree、又坚持人在环短皮带的工程师：把会话遥测（夜间空洞、中断次数、技能调用率）写成自律，区别于 RTK 透明降本代理与技能正文审计。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/chiragagg5k/seven-months-of-coding-agents-what-28335-actually-bought-1ka3",
+    sourceLabel: "dev.to·Chirag Aggarwal 实践帖",
+    upvotes: 321,
+    trending: false,
+    tags: [
+      "人在环",
+      "并行 worktree",
+      "会话遥测",
+      "短皮带",
+      "Appwrite",
+    ],
+    howItWorks: [
+      "粘贴是否允许通宵无人循环、并行 worktree 上限与技能库规模",
+      "Agent 按实践帖输出：小时桶直方图、工具调用/人回合皮带、以及技能安装 vs 实际调用对照",
+      "人工保留每次中断与合入解释权；Agent 不代你声称可无人值守通宵或「$28k=必省出的 token」",
+    ],
+    tips: [
+      "源帖：约七个月、$28,335、五套 harness；201,473 次工具调用按清醒小时分桶——峰值 16:00、低谷 03:00；午夜–6 点仅 0.7%（Claude Code 与 Codex 独立同为 0.7%）；工作日均约 $176/日、周末约 $67；四月起并行 git worktree 后月耗约 7.4×并维持；自 1 月约 9,350 commits/145 仓（作者提醒含生成器批量，勿过度解读）；1,432 会话、人均约 15 次工具调用/人回合、2,047 次中断；约 130 技能只触发 52 次（26 次为同一 release-sdk）",
+      "与 konde-rtk-claude-token-proxy-60pct / postman-devrel-claude-skills-token-audit 不同：本条是人在环调度/短皮带遥测，不是 API 前压缩代理或技能正文 token 审计",
+    ],
+    approach: `Chirag Aggarwal（文称 Appwrite Platform Engineer）在 DEV《Seven months of coding agents: what $28,335 actually bought》（JSON-LD/页内 datePublished 2026-10-26T12:36:00Z → 2026-10-26；文末称原稿在 chiragaggarwal.tech）写明：七个月五套 agent harness 共约 $28,335，数字挂在自更新的 /trends。他原以为是成本故事，数据却指向调度：201,473 次工具调用按他清醒的小时分桶——峰值 16:00、低谷 03:00；午夜到早上六点仅 0.7%，且 Claude Code 与 Codex 各自独立算出同一个 0.7%。无人值守通宵循环会把夜间填平；他的直方图有洞，洞在睡觉。工作日均约 $176、周末约 $67，花费跟日历而非调度器。
+
+四月曲线陡升约 7.4×并维持——不是调价或新模型，而是他从单会话改为并行 git worktree，这是花费与交付量同时跳变的最大变化。自一月约 9,350 commits 跨 145 仓（集中在 sdk-generator/cloud/appwrite）；他提醒 sdk-generator 含批量生成，且仅 205 commits 带 agent Co-authored-by，故 9,350 只作规模陈述。工作关系浓缩为：约 15 次工具调用后人说一句——Claude Code 约 9.8、Codex 约 16.5、合计约 15.0；花费涨约 300×时该皮带长度大致恒定，四月改变的是同时抓住几条皮带。2,047 次中断（逃逸/中止）超出直觉，因中断太便宜而不再被当事件。1,432 会话中 21% 单回合；中位会话约 4–7 个人回合、16–34 分钟——是结对而非自动化。约 130 技能只触发 52 次。本场景据此输出「短皮带人在环」提纲。禁止建议通宵无人循环当默认，或把本帖改写成「如何用代理砍 60% token」。`,
+    outcomes: [
+      "源披露 $28,335、夜间工具调用 0.7%、约 15 次工具调用/人回合、四月并行 worktree 后约 7.4×、2,047 次中断与 130 技能仅 52 次触发等作者口径；属一人遥测窗口，不可外推为你的合理预算、吞吐或「短皮带=省钱公式」。",
+      "能把「降本代理/技能瘦身」与「人在环短皮带 + 并行 worktree 调度选择」拆开。",
+      "为把安装技能库当成生产力、以及通宵填平直方图提供提问清单。",
+    ],
+    caveats: [
+      "作者明确选择不填夜间空洞；代价是本可通宵交付的工作没做。",
+      "commit 规模含生成器输出；勿把 9,350 当「思考单位」。",
+      "上面写的是 Chirag 个人实践帖，不是 Anthropic/OpenAI 账单官文或降本 SaaS 推介。",
+    ],
+    prompts: [
+      {
+        title: "人在环短皮带遥测布置简报",
+        body: `你是工程效能顾问。只根据用户约束写遥测与皮带规则，不要编造已节省金额。
+
+是否允许通宵循环：{{overnight_ok}}
+并行 worktree 上限：{{wt_cap}}
+技能库规模：{{skills_n}}
+
+输出 Markdown：
+1. 小时桶/工作日周末对照字段
+2. 工具调用/人回合目标皮带与中断记账
+3. 技能安装 vs 实际触发对照
+4. 人必须保留的合入解释权
+禁止建议默认无人值守通宵；禁止把本布置写成 token 透明代理方案。`,
+      },
+      {
+        title: "并行 worktree 后账单陡升复盘提纲",
+        body: `改为多 worktree 并行后月耗陡升数倍。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺缓存回温、缺并行上限，还是皮带变长
+2. 最小调度/缓存补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「并行越多越便宜」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/chiragagg5k/seven-months-of-coding-agents-what-28335-actually-bought-1ka3",
+      label: "dev.to/chiragagg5k · Seven months of coding agents: what $28,335 actually bought",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
