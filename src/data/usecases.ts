@@ -26146,6 +26146,454 @@ Claude Code 交出语法正确的本地骨架（Flask 入口、SQLite 替 Firest
       dateLabel: "发布",
     },
   },
+  {
+    id: "436",
+    slug: "lukasz-fryc-marketing-os-49-slash-commands",
+    title: "Lukas：49 个斜杠命令当营销组——6 个 SaaS 的 SEO/草稿/外联都从终端跑",
+    summary: "一人跑 6 个 SaaS；披露 Marketing OS 约 49 条命令、/draft 12 步、14 关键词跟踪、约 $250/月工具栈、人仍审发；不代你无人值守群发或伪造排名。",
+    description:
+      "面向会写代码却雇不起营销、又怕内容流水线失控的独立开发者：把 CLAUDE.md、数据缓存与「人审再发」写成门禁，区别于站点重建与多会话治理。",
+    categories: [
+      "content",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/lukaszfryc/i-replaced-my-marketing-team-with-claude-code-2k6k",
+    sourceLabel: "dev.to·Lukas Fryc 实践帖",
+    upvotes: 327,
+    trending: false,
+    tags: [
+      "Marketing OS",
+      "斜杠命令",
+      "SEO",
+      "内容流水线",
+      "Ahrefs",
+    ],
+    howItWorks: [
+      "粘贴产品/受众/声线约束、已接数据源（Ahrefs/GSC 等），以及是否强制「外联与发帖必须人审」",
+      "Agent 按实践帖输出：最小命令集（draft/keywords/report）、内容库存字段、以及可降级无付费 SEO 数据的边界",
+      "人工保留选题品味与发出决策；Agent 不代你声称可无人值守群发或保证排名",
+    ],
+    tips: [
+      "源帖：一人 6 个 SaaS；约 49 斜杠命令；/draft 12 步（含去重、Ahrefs、SERP、核链、标题≤60/描述≤160、≥2 内链）；content-inventory 示例 14 关键词/7 帖（5 发 2 草稿）；工具栈 Ahrefs~$99–199 + Claude Max + ForumScout~$30 + Firecrawl~$9，合计约 $250/月对照雇人 $3–5k；自承 AI~85%/人~15%；邮件仍人审；/draft 规格 alone ~950 行",
+      "与 jared-smith-one-person-content-fabrication-gate / alex-cloudstar-32784-lines-two-day-rebuild 不同：本条是营销命令系统+真实 SEO 数据管线，不是内容造假门禁或站点两日重建",
+    ],
+    approach: `Lukas Fryc 在 DEV《I Replaced My Marketing Team with Claude Code》（JSON-LD datePublished 2026-02-09T09:57:41Z → 2026-02-09）写明：他一人跑 6 个 SaaS，不会传统营销，却用 Claude Code 搭了叫 Marketing OS 的工程化营销系统——约 49 个斜杠命令，把 SEO、撰稿、社媒聆听、外联与上线清单收进终端。
+
+仓库结构强调「可版本化」：\`.claude/commands\`/\`guides\`/\`knowledge\`，加上 \`strategy.md\`、\`product-context.md\`、\`content-inventory.json\`、品牌声线样例，以及 keywords/rankings/competitors 缓存目录。核心回路：\`/keywords\` 用 Ahrefs 拉量级/难度并算可赢分（文中示例含「claude code vs cursor」美区约 3,300 月搜、KD 2）；\`/draft\` 固定 12 步——去重→载入产品与声线→按 5/15/30 credit 深度查词→SERP 意图→核权威外链是否真存在→大纲等人批→成稿→GEO 元素→全链核验→标题≤60/描述≤160/≥2 内链→更新库存→Unsplash 封面；\`/setup\`/\`/mode\`/\`/report\` 管 90 天计划与 Traffic/Conversion/Balanced；\`/listen\`/\`/respond\` 找 Reddit/HN/Twitter 机会但帖子仍手发；\`/outreach\`/\`/cold-campaign\` 做外联研究与模板，邮件仍人审。
+
+作者强调这不是玩具：Ahrefs、Google Search Console、ForumScout、Firecrawl 接真实数据；缺 Ahrefs/GSC 时能力降级而非瞎编。自承 AI 约做 85%、人 15%——创意判断、关系经营、品味与新策略仍在人。对照雇兼职营销约 $3–5k/月，作者估工具合计约 $250/月并可跨 6 项目。本场景据此输出「终端营销 OS」提纲。禁止建议跳过人审群发外联，或把示例关键词量级写成你的保证排名。`,
+    outcomes: [
+      "源披露约 49 命令、/draft 12 步、库存示例 14 词/7 帖、工具约 $250/月、AI~85%/人审~15%、以及外联必人批等作者口径；属一人多 SaaS 窗口，不可外推为你的流量、打开率或「命令数等于增长」。",
+      "能把「会写提示词」与「内容库存 + 可核数据源 + 硬限制清单」拆开。",
+      "为无数据源瞎选题、以及把 AI 草稿当可直接外联垃圾提供提问清单。",
+    ],
+    caveats: [
+      "作者明确仍须人审品味与关系；系统擅长执行既有 playbook，不替代 CMO 级策略。",
+      "付费 SEO 数据是质量前提；无 Ahrefs/GSC 时要接受降级。",
+      "上面写的是 Lukas 个人实践帖，不是 Anthropic/Ahrefs 官文。",
+    ],
+    prompts: [
+      {
+        title: "终端 Marketing OS 最小命令集简报",
+        body: `你是独立开发者营销工程顾问。只根据用户约束写最小可运转命令集与验收门，不要编造已有排名或流量。
+
+产品/受众/声线：{{product}}
+已接数据源：{{data_sources}}
+是否强制人审外联/发帖：{{human_gate}}
+
+输出 Markdown：
+1. 先做的 3 个命令（建议 draft/keywords/report）规格要点
+2. content-inventory 必含字段
+3. 标题/描述/内链硬限制
+4. 人必须保留的选题与发出决策
+禁止建议无人值守群发；禁止伪造「必上首页」。`,
+      },
+      {
+        title: "无真实 SEO 数据却在选题复盘提纲",
+        body: `团队用模型「猜」关键词量级并开写，后发现对不上 GSC。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺缓存数据源、缺可赢分过滤，还是缺人批大纲门
+2. 最小降级策略（有/无 Ahrefs、有/无 GSC）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「模型记忆等于搜索量」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/lukaszfryc/i-replaced-my-marketing-team-with-claude-code-2k6k",
+      label: "dev.to/lukaszfryc · I Replaced My Marketing Team with Claude Code",
+      date: "2026-02-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "437",
+    slug: "georgii-motrenko-finance-17-skills-mcp",
+    title: "Georgii：17 个财务技能链——200+ 伙伴日报从 2–3 小时压到分钟级",
+    summary: "B2B 保险/金融平台 PO；披露约 3 个月、17 skills/9 MCP、日报约 40 秒、月对账约 3–5 分钟、自称约省 60 人时/月；不代你无人值守改账或对监管报送。",
+    description:
+      "面向被伙伴漏斗日报/月对账拖住的产品负责人：把只读 SQL、写后自检与别名映射写成门禁，区别于开票 PDF 抽取与 indie 日跑 Schedule。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/georgii-motrenko/how-i-replaced-the-finance-department-with-a-chain-of-ai-agents-200c",
+    sourceLabel: "dev.to·Georgii Motrenko 实践帖",
+    upvotes: 328,
+    trending: false,
+    tags: [
+      "财务报告",
+      "MCP",
+      "技能链",
+      "对账",
+      "只读库",
+    ],
+    howItWorks: [
+      "粘贴伙伴漏斗字段、是否强制 DB 只读，以及写 Sheets 后是否必须回读校验",
+      "Agent 按实践帖输出：单报告 skill 五步、对账多厂商匹配清单、以及别名映射与合并提交过滤规则",
+      "人工保留佣金口径与对外数字；Agent 不代你声称可无人值守改生产账或监管报送",
+    ],
+    tips: [
+      "源帖：200+ 伙伴；约 3 个月建 17 skills、9 MCP（SQL/Sheets/Drive/Calendar/Gmail/GitLab/Tracker/Telegram/GitHub）；财务报告约 40 秒；全伙伴日摘要约 2–3 分钟；月对账约 3–5 分钟（原约 1 工作日）；合约生成约 1–2 分钟；前后对照日报 2–3h/天→5–10 分钟、月对账 8h→5 分钟、报告错 3–5/月→0（自检）、财务例行 2 人→0（PO 扛）；自称约省 60 人时/月；Claude Max 约 $200/月；强调 Sheets 非原子写、文档 enum 会撒谎、格式化须后置、大上下文要外置日志",
+      "与 peter-sutarik-idoklad-mcp-invoices / kevin-welter-frieda-anton-inbox-invoices 不同：本条是伙伴漏斗报告+月对账技能链，不是开票 MCP 或收件箱发票流",
+    ],
+    approach: `Georgii Motrenko（B2B 保险/金融平台 PO）在 DEV《How I Replaced the Finance Department with a Chain of AI Agents》（JSON-LD datePublished 2026-03-25T12:49:29Z → 2026-03-25；注明曾发 Medium）写明：平台聚合金融产品给银行/借贷/电商等伙伴，200+ 活跃伙伴使日报、月对账、临时转化查询与标准合约变成传送带——原先约 2–3 小时/天、两人扛。约三个月内他搭了 17 个 Claude Code skills + 9 个 MCP，逻辑几乎全在 markdown，自称「没有传统业务代码」。
+
+架构是「技能链」而非全能机器人：只读 MS SQL MCP、Google Sheets/Drive、任务跟踪、GitLab 等；各 skill 各干一事。高频财务报告五步：别名解析→生成漏斗 SQL（申请→转化→放款→佣金，注意文档 enum 与真值不一致）→按日聚合与分润→先写数据再格式化→回读自检（Sheets 批量写会丢行）。月对账更重：多厂商导出、匹配规则、不同分润、多 tab 汇总；作者称原约一工作日，现约 3–5 分钟。扩展还有合约生成、团队跟踪、17 仓 GitLab 分析、会议转录结构化等。
+
+踩坑写得很具体：Sheets 非原子；glossary 撒谎须 join 参照表；样式与写入不可并行；大数据量要用步骤日志当外置记忆；合并提交与 ORM 迁移会灌爆产出统计；跨系统人名别名必须映射。数字表：日报 2–3h→5–10 分钟；月对账 8h→5 分钟；合约 2–3h→2 分钟；报告错 3–5/月→0（自检）；财务例行人 2→0；约省 60 人时/月；Max 约 $200/月。本场景据此输出「财务技能链」提纲。禁止建议对生产库可写，或把分钟级对账写成可免审对外报送。`,
+    outcomes: [
+      "源披露约 3 个月/17 skills/9 MCP、报告约 40 秒、对账约 3–5 分钟、约省 60 人时/月、以及自检把报告错压到作者口径 0 等；属单一 B2B 平台窗口，不可外推为你的合规口径、零差错保证或「可无人值守改账」。",
+      "能把「会问模型写 SQL」与「只读 MCP + 写后回读 + 别名/enum 映射」拆开。",
+      "为信任 glossary、以及合并提交灌爆人效报表提供提问清单。",
+    ],
+    caveats: [
+      "作者强调 80% 力气在校验而非写提示词；无自检会静默出错。",
+      "对外伙伴数字与佣金口径仍须人签核；技能链不替代财务责任制。",
+      "上面写的是 Georgii 个人实践帖，不是 Claude/Google Sheets 官文。",
+    ],
+    prompts: [
+      {
+        title: "伙伴漏斗财务技能链门禁简报",
+        body: `你是 B2B 财务运营自动化顾问。只根据用户约束写 skill 与验收门，不要编造已对平账。
+
+漏斗阶段/字段：{{funnel}}
+DB 是否只读：{{readonly}}
+写 Sheets 后是否强制回读：{{verify}}
+
+输出 Markdown：
+1. 单伙伴报告五步（含别名与 enum 处理）
+2. 月对账多厂商匹配清单
+3. 自检与失败停机规则
+4. 人必须保留的对外数字/佣金决策
+禁止建议可写生产库；禁止伪造「分钟级即监管就绪」。`,
+      },
+      {
+        title: "Sheets 丢行/格式化空单元格复盘提纲",
+        body: `批量写入后发现行数不对或样式打在空格。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺回读、缺「先数据后样式」，还是批次过大
+2. 最小修复夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「Sheets API 一次写必原子成功」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/georgii-motrenko/how-i-replaced-the-finance-department-with-a-chain-of-ai-agents-200c",
+      label: "dev.to/georgii-motrenko · How I Replaced the Finance Department with a Chain of AI Agents",
+      date: "2026-03-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "438",
+    slug: "khal-tessellai-serverless-to-monolith-claude",
+    title: "Khalit：SST 打了 8 个月后——3 周用 Claude Code 把后端改成 FastAPI 单体",
+    summary: "TessellAI 照片马赛克；披露约 5 个月停更、3 周重写、432 文件 +24422/-11569、16 份设计文档、迁完后功能多于前 8 个月基建；不代你无人值守合入生产。",
+    description:
+      "面向被错误 Serverless 选型拖死、又觉得重写付不起的独立开发者：把编号任务、设计文档先行与人裁架构写成门禁，区别于主机多站迁与框架大版本下午迁。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://khal.it/en/blog/migrating-serverless-to-monolith-with-claude-code",
+    sourceLabel: "khal.it·Khalit Hartmann 实践帖",
+    upvotes: 329,
+    trending: false,
+    tags: [
+      "Serverless",
+      "单体重写",
+      "FastAPI",
+      "设计文档",
+      "技术债",
+    ],
+    howItWorks: [
+      "粘贴当前栈痛点、目标单体边界，以及是否要求每阶段可回滚/向后兼容",
+      "Agent 按实践帖输出：编号迁移任务表、先后端后分页前端、以及设计文档→实现节奏",
+      "人工保留架构决策与合入；Agent 不代你声称 3 周必生产可切或可无人值守改 DNS",
+    ],
+    tips: [
+      "源帖：SST/AWS 约 8 个月；2025-03 单月约 196 commit 多为基建；约 2025-08-18→2026-01-24 五个月零提交；2026-01-25 起约 3 周重写；squash 432 文件 +24,422/-11,569；16 设计文档约 237KB；月提交约 74→105（+42%）；2026-02-16 一日四阶段 Media 表拆分；作者估无 AI 约 2–3 月全职；迁移枝仍在 feature 未最终合 main",
+      "与 jeremy-keeshin-16-sites-linode-day-migrate / flowingcode-vaadin10-to-25-claude-afternoon / keith-townsend-gcp-local-migration-gap 不同：本条是产品架构 Serverless→单体重写+停更复活，不是主机迁、Vaadin 版本迁或云→本地演示鸿沟",
+    ],
+    approach: `Khalit Hartmann 在个人站《I Used Claude Code to Migrate My Full-Stack App from Serverless to Monolith》（JSON-LD datePublished 2026-03-10 → 2026-03-10）写明：TessellAI 是活动现场照片马赛克生成器；2024-12 选 SST/AWS（Neon/Drizzle/Hono/IoT MQTT/SQS/S3）后，重图像流水线与 Serverless 冷启动/超时/伸缩反复打架——2025-03 约 196 次提交几乎全是基建，同年 8 月后约五个月零提交。2026-01-25 起用 Claude Code 把后端改到 FastAPI/Python 单体，约三周内落地。
+
+人裁架构：Python 统一马赛克管线语言、FastAPI 而非 Django、Celery 而非后台线程、WebSocket 而非 AWS IoT。Day1 先加 CLAUDE.md 与编号任务（模型、鉴权 TDD、上传、Celery、管线、前端类型、前两页迁移）。随后约十日按页改前端；openapi-fetch 在编译期抓住响应形变。一次 squash：432 文件、+24,422/-11,569。迁后三周内反而能推新样式、PixiJS、向导、i18n 11 语言、高分辨率打印管线等——作者称功能进度超过此前八个月基建。2026-02-16 一日完成 Media→EventMedia/MosaicMedia 四阶段向后兼容迁移（每阶段有设计文档与测试）。
+
+诚实面：AI 时代更容易「先做再评」——spotlight 动画建了又删；432 文件 squash 不利追溯；方向仍须人给；写稿时迁移仍在 feature 枝、最终合 main/生产切流未完。本场景据此输出「停更项目单体复活」提纲。禁止建议跳过设计文档与人裁架构，或把三周写成任意 Serverless 仓保证。`,
+    outcomes: [
+      "源披露约 5 个月停更、约 3 周重写、432 文件 +24422/-11569、16 份设计文档约 237KB、月提交约 +42%、以及无 AI 估 2–3 月等作者口径；属一人活动产品窗口，不可外推为你的停机、数据零损或「三周必可切生产」。",
+      "能把「生成很快」与「编号计划 + 设计文档 + 人裁栈选型」拆开。",
+      "为错误 Serverless 选型沉没成本、以及 squash 过大难回滚提供提问清单。",
+    ],
+    caveats: [
+      "作者自承迁移枝尚未最终合 main；演示进度≠生产切流完成。",
+      "生成便宜会诱使先建后评；仍须人做架构与品味否决。",
+      "上面写的是 Khalit 个人实践帖，不是 AWS SST/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "Serverless→单体重写门禁简报",
+        body: `你是独立产品架构迁移顾问。只根据用户约束写编号任务与验收门，不要编造已切生产。
+
+当前痛点：{{pains}}
+目标栈边界：{{target}}
+是否要求分阶段可回滚：{{rollback}}
+
+输出 Markdown：
+1. 人必须先拍板的架构决策清单
+2. 编号任务表（先后端 API，再分页前端）
+3. 设计文档最小模板
+4. 合入/切流人审门
+禁止建议无人值守改生产 DNS；禁止伪造「三周必零停机」。`,
+      },
+      {
+        title: "生成过快导致功能建了又删复盘提纲",
+        body: `低成本生成后快速上线又整段删除重做。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺设计文档门、缺「先评价值再实现」，还是范围一次过大
+2. 最小刹车机制
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「生成成本低就可以跳过产品否决」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://khal.it/en/blog/migrating-serverless-to-monolith-with-claude-code",
+      label: "khal.it · I Used Claude Code to Migrate My Full-Stack App from Serverless to Monolith",
+      date: "2026-03-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "439",
+    slug: "pedro-mansan-design-system-claude-agents",
+    title: "Pedro：用数十个 Claude Code 代理迁设计系统——技能、worktree 与子代理验收",
+    summary: "小团队多租户 SaaS；披露 Fomantic→Vuexy Bootstrap 5、数周执行、skills+worktree+子代理视觉对照、登录捷径省重试；不代你无人值守合入或免人审。",
+    description:
+      "面向要把整站 UI 设计系统从旧组件库迁走、人手不够并行的小团队：把「禁止找替换类名」、worktree 隔离与子代理多维验收写成门禁，区别于后端单体重写与主机迁移。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://mansan.dev/writing/claude-code-agents-design-system/",
+    sourceLabel: "mansan.dev·Pedro Mansan 实践帖",
+    upvotes: 330,
+    trending: false,
+    tags: [
+      "设计系统",
+      "worktree",
+      "子代理",
+      "Django",
+      "视觉验收",
+    ],
+    howItWorks: [
+      "粘贴源/目标组件库、是否禁止「类名替换式迁移」，以及是否要求 Figma/截图对照",
+      "Agent 按实践帖输出：skills 目录、worktree 并行边界、以及设计/功能/标记/视觉子代理清单",
+      "人工保留合入与产品裁决；Agent 不代你声称可无人值守合主枝或替代架构选型",
+    ],
+    tips: [
+      "源帖：页内日期 Apr 29, 2026 → 2026-04-29；Fomantic UI（自约 2019）→ Vuexy Bootstrap 5（非 Vue SPA），Django 模板；架构师 Diego 2026-03 搭脚手架；作者估手写单页 2–4 小时、独力要数月；skills：create-vuexy-page（明确从不复用 Fomantic）、mindzclub-design、vuexy-components、vuexy-to-figma；子代理：设计/功能/标记/视觉；DEBUG 本地 /ead/mcp-login/ 跳过登录表；先重写 datatable 基座拉动数十列表页；自承调度在脑子里、squash 提交信息差、一人质量门",
+      "与 khal-tessellai-serverless-to-monolith-claude / flowingcode-vaadin10-to-25-claude-afternoon 不同：本条是 UI 设计系统多代理并行迁，不是后端单体重写或 Vaadin 大版本下午迁",
+    ],
+    approach: `Pedro Mansan 在个人站《Orchestrating dozens of Claude Code agents to migrate a design system》（页内 post-meta「Apr 29, 2026」→ 2026-04-29）写明：他在与两三位同事共建的多租户 SaaS 上，负责把管理端等从 Fomantic UI（Semantic 分支，自约 2019，拖着 jQuery）迁到 Vuexy Bootstrap 5，并继续用 Django 模板渲染。架构师 Diego 否决了 Vue 3+Vuetify 全 SPA，于 2026-03 搭好 Vuexy 脚手架；Pedro 负责大量列表/CRUD/看板，且同一模板通过 \`MEMBERS_MODE\` 服务管理端与学员端。
+
+放代理前先建三件套：自定义 skills（\`create-vuexy-page\` 明文「从不适配/复用 Fomantic 组件」——禁止类名替换；\`mindzclub-design\`；组件目录；\`vuexy-to-figma\` 视觉报告）、专职子代理（设计审查/功能检查/标记完整性/对照 Figma）、以及 \`git worktree\` 隔离并行以免抢文件。主代理按页端到端，子代理多维验收；人坐在队列上审、缝合、解冲突。杠杆还包括先重写 datatable 基座，让数十列表页只换 include；以及 DEBUG+localhost 的 \`/ead/mcp-login/\` 一键登录，避免 Chrome DevTools MCP 把预算耗在登录表。
+
+反思：调度协议在脑子里、无队列/重试策略；squash 导致提交说明与 240 文件 diff 错位；几乎只有他一人当质量门——作者不推荐当作默认。适用边界：组件契约清晰、可自动核验的设计系统迁；不适用于需求模糊的绿地功能、塞不进提示词的产品语境、以及税务/鉴权等弱自动核验逻辑。本场景据此输出「设计系统多代理迁」提纲。禁止建议跳过人审合入，或把「数周」写成任意 UI 仓保证。`,
+    outcomes: [
+      "源披露数周执行、skills+worktree+子代理、登录捷径、datatable 基座杠杆、以及调度/提交/单人质量门反思等作者口径；属小团队多租户窗口，不可外推为你的人周、视觉零回归或「代理可无人值守合主枝」。",
+      "能把「多开几个会话」与「禁止类名替换 + 隔离 worktree + 多维子代理验收」拆开。",
+      "为类名替换翻车、以及 squash 提交不可读提供提问清单。",
+    ],
+    caveats: [
+      "作者自承调度非正式、一人质量门；团队流程不同则不可照搬。",
+      "架构选型（保留 Django 模板）仍由人完成；代理加速的是机械铺开。",
+      "上面写的是 Pedro 个人/小团队实践帖，不是 Vuexy/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "设计系统多代理迁移门禁简报",
+        body: `你是前端设计系统迁移顾问。只根据用户约束写编排与验收门，不要编造已视觉对齐。
+
+源/目标组件库：{{libs}}
+是否禁止类名替换：{{no_find_replace}}
+是否有 Figma/截图基线：{{baseline}}
+
+输出 Markdown：
+1. skills 最小集合（含「禁止复用旧组件」句）
+2. worktree 并行与冲突边界
+3. 子代理验收维度清单
+4. 人必须保留的合入决策
+禁止建议无人值守合主枝；禁止伪造「代理数等于零缺陷」。`,
+      },
+      {
+        title: "类名替换式迁移翻车复盘提纲",
+        body: `代理把旧 UI 类名批量换成新名后交互/栅格全坏。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺「重建页」技能约束、缺组件契约文档，还是缺视觉子代理
+2. 最小回滚与基座杠杆（如 datatable）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「换类名等于完成设计系统迁移」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mansan.dev/writing/claude-code-agents-design-system/",
+      label: "mansan.dev · Orchestrating dozens of Claude Code agents to migrate a design system",
+      date: "2026-04-29",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "440",
+    slug: "startupfinances-contract-to-invoice-afternoon",
+    title: "Tatyana：一下午用 Claude Code 做合同→发票应用——先验抽取再搭审批与 ZUGFeRD",
+    summary: "约 30 客户定制合同；披露先脚本验抽取约 4/6 成功、Streamlit 五页、Draft→Approve、ZUGFeRD/EN 16931；不代你无人值守对外开票或跳过人审金额。",
+    description:
+      "面向合同条款各异、目录型开票软件不合用的财务/运营：把「先验证抽取」与审批/审计轨迹写成门禁，区别于伙伴漏斗报告技能链与收件箱发票流。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://startupfinances.substack.com/p/i-built-a-contract-to-invoice-web",
+    sourceLabel: "Startup Finances·Tatyana Anastasova 实践帖",
+    upvotes: 331,
+    trending: false,
+    tags: [
+      "合同抽取",
+      "开票",
+      "ZUGFeRD",
+      "审批",
+      "Streamlit",
+    ],
+    howItWorks: [
+      "粘贴合同样例约束、增值税/逆向征收规则，以及是否强制 Draft→人批→再发送",
+      "Agent 按实践帖输出：抽取验活脚本提纲、五页应用信息架构、以及编号/锁定/Credit Note 规则",
+      "人工保留金额与发出；Agent 不代你声称可无人值守对外开票或保证税务合规",
+    ],
+    tips: [
+      "源帖：JSON-LD datePublished 2026-06-10；约 30 客户个性化协议；先 Python 抽到 Sheets，首跑约 4/6 合同正确（另失败为额度问题非抽取）；再 Streamlit+SQLite+Drive+WeasyPrint 五页（扫描抽取/数据/缺项/开票审批/设置）；发票号 INV-YYYY-NNNN 线程安全；GoBD 审批审计；Factur-X 嵌 ZUGFeRD EN 16931 Comfort，校验失败则退回纯 PDF；作者列下一步 DATEV/自动催款等未做",
+      "与 georgii-motrenko-finance-17-skills-mcp / peter-sutarik-idoklad-mcp-invoices 不同：本条是合同 PDF→合规发票 Web 应用+审批/ZUGFeRD，不是伙伴漏斗技能链或 iDoklad MCP",
+    ],
+    approach: `Tatyana Anastasova（Startup Finances）在 Substack《I Built a Contract-to-Invoice Web App in One Afternoon Using Claude Code - Here's Exactly How》（JSON-LD datePublished 2026-06-10T10:27:00+00:00 → 2026-06-10）写明：团队每月要从约 30 份签约 PDF 手工抄计费条款进表再开票——条款各异（爬坡价、用量、季预付、人天），sevDesk/lexoffice 一类「目录商品」假设不合用，抄错还要贷记与尴尬邮件。
+
+做法强调顺序：先不搭 UI，用 Claude Code 写抽取脚本（仅处理文件名含 signed 的 PDF；原生 base64 送模型；按服务行出 JSON；含非欧盟 0%、欧盟 B2B 逆向征收、欧盟 B2C 本地税率逻辑）写到 Google Sheets。首跑约 4/6 正确，其余失败作者归因额度而非抽取；建议先拿最乱合同验。验过后再一句话需求重建 Streamlit 五页：扫描 Drive 新合同→抽取入库；可检索合同表；缺项补录回写；按月预览生成 Draft PDF；设置公司抬头与密钥。金额相关必须审批：Draft→Approve 记邮箱与时间戳；批准后锁金额/税/编号；Credit Note 另号不删原票；编号 INV-YYYY-NNNN 按年重置、线程安全事务。再补 ZUGFeRD（Factur-X，EN 16931 Comfort）：视觉 PDF + 嵌入 XML；校验失败则保存纯 PDF 并记日志，不阻断生成。本场景据此输出「合同→发票下午原型」提纲。禁止建议跳过人批对外发送，或把下午原型写成已获税务认证。`,
+    outcomes: [
+      "源披露一下午叙事、抽取首跑约 4/6、五页 Streamlit、Draft→Approve、ZUGFeRD Comfort 与校验失败降级等作者口径；属早期团队内部工具窗口，不可外推为你的税务合规、零错票或「可无人值守开票」。",
+      "能把「能抽字段」与「先验抽取 + 审批审计 + 电子发票降级策略」拆开。",
+      "为未经验证就搭 UI、以及无审批直接发送提供提问清单。",
+    ],
+    caveats: [
+      "作者自承是速度优先的第一版；DATEV/自动发送/提醒等仍待做。",
+      "德国电子发票时间表与合规以官方要求为准；嵌入 XML 成功≠完成全部法定义务。",
+      "上面写的是 Tatyana 实践帖，不是 sevDesk/税务机关官文。",
+    ],
+    prompts: [
+      {
+        title: "合同→发票应用下午原型门禁简报",
+        body: `你是财务流程自动化顾问。只根据用户约束写验活与门禁，不要编造已税务认证。
+
+合同样例特征：{{contracts}}
+增值税规则要点：{{vat_rules}}
+是否强制人批：{{approval}}
+
+输出 Markdown：
+1. 抽取验活脚本验收标准（先最乱合同）
+2. 五页信息架构
+3. Draft→Approve→Credit Note 与编号规则
+4. 人必须保留的金额/发送决策
+禁止建议无人值守对外开票；禁止伪造「下午必合规上线」。`,
+      },
+      {
+        title: "未先验抽取就搭开票 UI 复盘提纲",
+        body: `直接生成完整应用后发现关键计费字段常抽错。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺验活门、缺最乱样本、还是缺缺项回写页
+2. 最小拆回「脚本→再 UI」步骤
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「UI 好看等于抽取正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://startupfinances.substack.com/p/i-built-a-contract-to-invoice-web",
+      label: "startupfinances.substack.com · I Built a Contract-to-Invoice Web App in One Afternoon Using Claude Code",
+      date: "2026-06-10",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
