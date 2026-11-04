@@ -37,12 +37,12 @@ export function Header() {
           >
             赞助
           </Link>
-          <a
-            href="#subscribe"
+          <Link
+            href="/#subscribe"
             className="btn-primary ml-1 rounded-full px-3 py-1.5 text-sm font-medium"
           >
             订阅
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

@@ -1,12 +1,25 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { HomeFaq } from "@/components/HomeFaq";
 import { SearchFilters } from "@/components/SearchFilters";
-import { SubscribePlaceholder } from "@/components/SubscribePlaceholder";
+import { SubscribeForm } from "@/components/SubscribeForm";
 import { TrendingSection } from "@/components/TrendingSection";
 import { usecases } from "@/data/usecases";
 import { categories } from "@/data/categories";
+import { getSiteUrl } from "@/lib/site-url";
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  alternates: {
+    canonical: getSiteUrl(),
+  },
+};
+
+export default function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ subscribed?: string | string[] }>;
+}) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6 sm:py-8">
       <SearchFilters
@@ -61,8 +74,22 @@ export default function HomePage() {
 
       <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
         <HomeFaq />
-        <SubscribePlaceholder />
+        <Suspense fallback={<SubscribeForm />}>
+          <HomeSubscribe searchParams={searchParams} />
+        </Suspense>
       </div>
     </div>
   );
+}
+
+async function HomeSubscribe({
+  searchParams,
+}: {
+  searchParams: Promise<{ subscribed?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const raw = Array.isArray(params.subscribed) ? params.subscribed[0] : params.subscribed;
+  const initialStatus =
+    raw === "confirmed" || raw === "invalid" || raw === "unavailable" ? raw : undefined;
+  return <SubscribeForm initialStatus={initialStatus} />;
 }

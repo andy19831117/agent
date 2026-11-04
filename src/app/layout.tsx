@@ -4,7 +4,11 @@ import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SponsorTopBar } from "@/components/SponsorTopBar";
 import { siteContact } from "@/data/contact";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
+
+const siteUrl = getSiteUrl();
+const ogImageUrl = `${siteUrl}/og.png`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +25,7 @@ const siteDescription =
   "精选面向中文用户的 AI Agent 真实用例：效率办公、职场求职、内容创作、电商运营、学习教育、生活办事、开发者工具与企业协作。";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteTitle,
     template: `%s · ${siteTitle}`,
@@ -43,11 +48,21 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     type: "website",
     siteName: siteTitle,
+    url: siteUrl,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Agent场景库：精选中文 AI Agent 用例",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
+    images: [ogImageUrl],
   },
 };
 
