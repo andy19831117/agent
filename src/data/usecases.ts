@@ -17675,6 +17675,459 @@ worker 互访需求：{{worker_links}}
       dateLabel: "讨论",
     },
   },
+  {
+    id: "341",
+    slug: "anyrouter-agent-merge-deploy-loop",
+    title: "AnyRouter：本地签名 CI + 按提交审 + 小时级部署环",
+    summary: "对照团队实践：关掉 Actions 常规 CI 后，用本机签名门禁、按 commit 绑定的评审状态、单一 merge 脚本与约每小时门控部署，让 Agent 周合数百 PR；不代你关 Actions、不外推吞吐。",
+    description:
+      "面向小团队高吞吐 Agent 发版：把「人点按钮合代码」写成可对账的 local-ci→review→merge→deploy 环，区别于舰队修 CI 与一键出 PR 的 Minions。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://anyrouter.dev/blog/agents-ship-loop",
+    sourceLabel: "anyrouter.dev·Agent 发版环实践帖",
+    upvotes: 224,
+    trending: false,
+    tags: [
+      "Agent 发版",
+      "local-ci",
+      "按提交评审",
+      "部署门禁",
+      "团队实践",
+    ],
+    howItWorks: [
+      "粘贴仓库规模、是否仍用 GitHub Actions、以及迁移/计费/密钥类变更是否必须人合",
+      "Agent 按实践帖输出：本机签名 CI→按 commit 绑定评审→单一 merge 脚本→轮询部署与回滚提问清单",
+      "人工保留 release/敏感路径合并权；Agent 不代你关托管 CI、不持生产密钥",
+    ],
+    tips: [
+      "源帖关键纪律：审批绑在确切 commit 上——评审跑完若有人再 push，脚本拒绝，因为 live head 已不是审过的代码",
+      "与 fleet-ci-fix-ship-prs / stripe-minions-oneshot-pr-agents / code-review-pr-agent 不同：本条是本机签名门禁+按提交评审状态+小时级门控部署的发版环，不是远端舰队修 CI、Slack 一键出 PR 或通用 CR 机器人",
+    ],
+    approach: `AnyRouter 团队在《How agents ship AnyRouter: the merge and deploy loop》（页内/JSON-LD datePublished=October 26, 2026 → 2026-10-26）写明：小团队+大量编码 Agent——领 issue、在独立 worktree 写修复、互相开 PR、互相审、合入并部署；人定规则并做只有人该做的决定。文称 2026-10-19 至 10-25 一周合入 main 346 个 PR（最忙日 71、最闲 29）；10-05 至 10-25 三周合入 1111。数字来自 git 历史/GitHub API/仓内脚本。
+
+为省钱关掉 GitHub Actions 常规 CI，只留 release 工作流；门禁迁到本机 \`pnpm local-ci\`（约 2026-10-04 落地）：串行跑（机器约 15GB 内存扛不住并行），含约 18 个常驻仓护栏（迁移编号、schema drift、导入边界、生成配置过期、PR 正文格式等）+ 按变更 scoped 的 biome/typecheck/\`vitest related\`。关键：在「PR 合到当前 main」上跑，而不是只跑分支；通过后由单一 bot 账号发 \`local-ci\` commit status，状态写明闸门计数与日志 sha256，其他账号绿标不算。
+
+另有独立评审会话：对照校验清单读 diff、重跑可疑处，批准绑在确切 commit（\`approve-pr.sh\`）；头已变则拒绝。合并只走 \`merge-pr.sh\`：拒绝 release PR、无签名 local-ci、无 review 状态/标签、带 \`review:changes\` 者；squash 用 \`--match-head-commit\` 防合入未审头。曾因管道取末命令退出码放过红 PR，现检查单独跑并留注释。部署不跟 push：\`gh-loop\` 约每 3 分钟轮询，自上次部署有变更且至少隔 30 分钟才开部署道；要内存/磁盘门槛，最多 3 条重车道；顺序含 D1 Time Travel 书签（取代曾让 API 宕 2–4 分钟的全量导出）、部署前后冒烟与按变更 Worker 上传、失败回滚。敏感路径（迁移破坏性改写、计费、auth、密钥、法务、对客）由表驱动 skip 且有测试防删。本场景据此输出「发版环」提纲。禁止建议为省钱关掉所有门禁。`,
+    outcomes: [
+      "源披露 2026-10-19–25 一周合入 346 PR、三周 1111、其中一周 342/346 带 review:approved，以及样机部署日志（如 10-26 至 17:00 UTC 15 成功/2 失败、中位约 520s 等）；属作者仓窗口统计，不可外推为你的吞吐或 SLA。",
+      "能把「再开一个 Actions 工作流」与「本机签名状态+按提交评审+单一 merge/deploy 脚本」拆开。",
+      "为敏感路径 skip 表、管道退出码陷阱与 D1 书签替代全量导出提供提问清单。",
+    ],
+    caveats: [
+      "本机 CI 依赖单机资源与 bot 账号信任；签名机制被旁路≈门禁失效。",
+      "高吞吐依赖大量 Agent 工时与严格 skip 表；照搬数字无意义。",
+      "上面写的是团队发版实践复盘，不是 AnyRouter 产品 SLA。",
+    ],
+    prompts: [
+      {
+        title: "Agent 发版环简报",
+        body: `你是小团队 Agent 发版助手。只根据用户约束写 merge/deploy 环提问清单，不要编造已合入。
+
+是否仍用托管 CI：{{hosted_ci}}
+本机内存预算：{{local_ram_gb}}
+必须人合的路径：{{human_only_paths}}
+部署节奏目标：{{deploy_cadence}}
+
+输出 Markdown：
+1. local-ci 常驻护栏 vs scoped 检查
+2. 评审如何绑定确切 commit
+3. merge 脚本硬拒绝条件
+4. 部署前书签/冒烟/回滚最小集
+禁止建议删除敏感路径 skip；禁止声称周合入已达某数。`,
+      },
+      {
+        title: "红 PR 被合入的复盘提纲",
+        body: `一次失败检查仍被 merge，请写复盘提纲。
+
+现象：{{symptom}}
+当时管道/脚本片段：{{pipeline_snippet}}
+是否有签名状态：{{signed_status}}
+
+输出：
+1. 是管道取末退出码、状态账号被伪造，还是 head 漂移
+2. 最小补丁（单独跑检查/--match-head-commit/账号白名单）
+3. 回归测试应锁住哪条规则
+4. 人工确认清单
+不要伪造「以后永不合错」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://anyrouter.dev/blog/agents-ship-loop",
+      label: "anyrouter.dev · How agents ship AnyRouter: the merge and deploy loop",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "342",
+    slug: "nirmal-sqlite-fts5-agent-memory",
+    title: "Whirlwind：用 SQLite FTS5 给编码 Agent 可检索课次",
+    summary: "对照个人实践：在本地编排器里把课次做成可检索记录，用 FTS5+加权 BM25、项目/角色作用域、源锚过期与 MCP on-demand 搜索，并在 SQLite 里持久化阅读额度；不代你灌全库进提示、不外推准确率。",
+    description:
+      "面向自建编码编排器：把「把旧笔记全塞进上下文」写成可对账的检索+额度记忆，区别于笔记库 CLI 摘要与意图评审壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://nirmalhk7.com/blog/sqlite-fts5-agent-memory",
+    sourceLabel: "nirmalhk7.com·Nirmal Khedkar 实践帖",
+    upvotes: 231,
+    trending: false,
+    tags: [
+      "FTS5",
+      "Agent 记忆",
+      "MCP",
+      "上下文预算",
+      "个人开源",
+    ],
+    howItWorks: [
+      "粘贴是否已有课次结构、多项目/多角色是否隔离、以及自动召回 vs on-demand 额度上限",
+      "Agent 按实践帖输出：课次字段→FTS5 加权与标识符优先→源锚过期→MCP 搜索与 SQLite 额度记账提问清单",
+      "人工在本机落地；Agent 不把密钥送进嵌入端点、不声称已提高任务通过率",
+    ],
+    tips: [
+      "源帖核心句：笔记本只有找得到才有用；自动检索应搜任务事实，而不是把角色说明书整段当查询",
+      "与 notes-vault-cli-summarize-agent / repo-adr-madr-memory-for-coding-agents / melon-coding-agent-prove-claims 不同：本条是编排器内 FTS5 课次检索+源锚失效+跨重启持久额度，不是笔记库摘要 CLI、ADR 记忆文件或可核验声明门禁",
+    ],
+    approach: `作者 Nirmal Khedkar 在个人站《I Gave Coding Agents a Search Engine with SQLite FTS5 and MCP》（meta/JSON-LD datePublished=2026-10-21）写明：为本地工程编排器 Whirlwind（Ideation/Planner/Coding/Reviewer 四角色）加项目记忆时，若把既往笔记全塞进每次提示，只是昂贵阅读作业。他把检索放在 Go 后端：先搜笔记本、交一小撮结果，任务中途再允许再搜——落地为 SQLite FTS5、排序策略与 MCP 工具 \`search_lessons\`。
+
+课次记录含触发、应避免的错误、纠正与证据，并可带路径/符号/错误签名/源锚以便对照代码是否已变。检索按当前项目与角色作用域，作用域来自运行中的 operation，不由模型在搜索参数里自选。FTS5 虚拟表对标识符与纠正加权高于散文；精确路径/符号/错误签名优先于散文 BM25。索引可重建，触发器与主表同步；退役状态不得占候选窗。自动检索查询收窄为任务事实，避免角色说明书与已召回课次自我强化。交付前用工作树指纹核对源锚，不匹配则标 stale。
+
+MCP 路径只收 query，项目/角色/operation 由服务端注入；标注只读但实际由服务端强制作用域。额度也在 SQLite：自动召回最多约 3 条且约 2KiB 块；on-demand 每 operation 约 2 次、单次约 2KiB、合计约 4KiB——字节限制而非 token。预算键含项目/任务/计划版本/角色/operation 等，重启 attempt 不刷新额度；失败搜索仍占调用次数。可选语义路径默认关，需有评估结果才开，失败回落 FTS5。作者重跑 race 测试覆盖检索/额度/MCP，但明确未跑 live model probes，故不声称任务更快或更准。本场景据此输出「可检索课次记忆」提纲。禁止建议把全库笔记灌进系统提示。`,
+    outcomes: [
+      "源披露机制上限（自动约 3 条/2KiB、on-demand 约 2 次与字节帽等）与测试范围，并声明未做 live 准确率对比；属源披露设计量级，不可外推为你的召回率或省时。",
+      "能把「再加一个 RAG」与「作用域+源锚+持久额度的检索记忆」拆开。",
+      "为查询构造（任务事实 vs 说明书）与并发预订额度提供提问清单。",
+    ],
+    caveats: [
+      "权重与额度是作者策略选择，不是相关性基准结论。",
+      "凭证检测器不是证明所有敏感串都能识别；嵌入路径需额外谨慎。",
+      "上面写的是个人编排器实践，不是通用记忆 SaaS 承诺。",
+    ],
+    prompts: [
+      {
+        title: "FTS5 课次记忆简报",
+        body: `你是编码 Agent 记忆设计助手。只根据用户约束写检索记忆提问清单，不要编造已上线。
+
+课次是否已结构化：{{lesson_schema}}
+项目/角色隔离：{{scope_rules}}
+自动召回额度：{{auto_budget}}
+on-demand 次数：{{ondemand_calls}}
+
+输出 Markdown：
+1. 课次必填字段与源锚
+2. FTS 加权与标识符优先规则
+3. 额度键应包含哪些维度以免重启刷预算
+4. 人工抽检 stale 课次的方法
+禁止建议全量塞进系统提示；禁止声称召回率已达某%。`,
+      },
+      {
+        title: "记忆污染排查提纲",
+        body: `Agent 反复召回过期或跨项目建议，请写排查提纲。
+
+现象：{{symptom}}
+近期变更文件：{{changed_files}}
+是否有 MCP 搜索：{{used_mcp_search}}
+
+输出：
+1. 是作用域泄漏、源锚未校验，还是额度未持久
+2. 最小补丁
+3. 应用哪条回归测试锁住
+4. 人工确认清单
+不要伪造「记忆已永久净化」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://nirmalhk7.com/blog/sqlite-fts5-agent-memory",
+      label: "nirmalhk7.com · I Gave Coding Agents a Search Engine… (Nirmal Khedkar)",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "343",
+    slug: "camelai-durable-object-coding-agent",
+    title: "camelAI：编码 Agent 跑在 Durable Object 而非常开 VM",
+    summary: "对照工程实践：三轮把编码 Agent 从自建 VM 迁到 Cloudflare Durable Object+SQLite/R2 文件系统，并去掉 bash、改显式 JS 方法执行；不代你关沙箱、不外推成本数量级。",
+    description:
+      "面向要控成本的 Agent 产品团队：把「每用户一台 Linux」写成可对账的脑手分离→去 VM→去 bash 路径，区别于控制面-worker 多机与本机共享测队列。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://camelai.com/blog/our-coding-agent-runs-in-a-cloudflare-durable-object-not-a-vm",
+    sourceLabel: "camelai.com·Miguel/camelAI 工程实践帖",
+    upvotes: 235,
+    trending: false,
+    tags: [
+      "Durable Object",
+      "编码 Agent",
+      "去 VM",
+      "Code Mode",
+      "工程博客",
+    ],
+    howItWorks: [
+      "粘贴当前是否每会话占 VM、能否接受「无 bash 只能显式方法」、以及构建/笔记本是否仍需短时容器",
+      "Agent 按实践帖输出：脑手分离→文件系统迁 SQLite/R2→bash 替为方法面→仍保留 Linux 的窄场景提问清单",
+      "人工评估威胁模型与账单；Agent 不代你迁生产、不声称已省下某比例成本",
+    ],
+    tips: [
+      "源帖诚实代价：去掉 bash 后能力必须产品侧预见；但压力迫使做出一等公民路径，且缩小动作空间后小模型更好开",
+      "与 mainplane-control-plane-workers / sluice-shared-agent-verify-queue / flexcompute-agent-loop-mutate-gate 不同：本条是产品侧「Agent 住 Durable Object、文件系统存 SQLite/R2、执行改 JS 方法」的去 VM 案例，不是多机 WireGuard 控制面、本机测队列或库内 loop/mutate/gate",
+    ],
+    approach: `camelAI CTO Miguel 在《Our coding agent runs in a Cloudflare Durable Object, not a VM》（meta datePublished=2026-07-28；文首另有 2026-09 更新说明此后迁到自建 camelRun）写明：多数团队把编码 Agent 放全量 Linux VM/容器；他们也曾如此，但每用户常开机+快盘太贵。目标是离开 VM，难点是 Agent 训练偏好 bash、原 Claude Code harness 绑定完整 VM。文中路径分三轮，开源代码在 github.com/qaml-ai/camelAI。
+
+零阶段：自建容器服务跑 Claude Code harness，可用但贵。一阶段：在 pi（Mario Zechner 开源编码 Agent）下层库上自建 harness，把「脑」放进每聊天线程一个 Durable Object，远程指挥 VM「手」——Agent 可在 VM 未醒时先响应，一脑可控多手；但每用户仍有 VM，成本未解。二阶段：去掉 VM，项目文件系统落在 Durable Object SQLite（约 10GB 帽）+大文件 R2 指针，版本史走 Cloudflare Artifacts。三阶段：去掉 bash，改由 Code Mode/动态 Worker 跑 JavaScript，凭证不进沙箱；文件读写/自研 grep/glob 覆盖大半；deploy/build/notebook 成显式方法——构建与笔记本仍用短时容器因确需 Linux。作者称动态 Worker 按次计费相对按秒容器「数量级」更便宜，并利于小模型；但能力缺口必须产品补方法。2026-09 更新称 DO 阶段为 2026-07 至 09 的历史架构。本场景据此输出「去常开 VM」提纲。禁止建议为省钱去掉所有隔离。`,
+    outcomes: [
+      "源以架构阶段与定性成本/时延叙述为主（如 DO 存储约 10GB 帽、小文件阈值阈值、构建仍短时容器等），并称执行计费相对常开容器「数量级」更便宜；属作者环境叙事，不可外推为你的账单。",
+      "能把「再租一批开发机」与「脑在边缘状态单元、手缩成显式方法」拆开。",
+      "为仍需 Linux 的窄场景白名单与方法面缺口清单提供提问提纲。",
+    ],
+    caveats: [
+      "文已声明后续迁出 Durable Object；本条复盘的是 DO 阶段教训，不是当前运行时说明书。",
+      "去 bash 缩小能力面；缺方法=功能空洞，需产品节奏跟得上。",
+      "上面写的是团队工程博客，不是 Cloudflare 官方最佳实践全文。",
+    ],
+    prompts: [
+      {
+        title: "去常开 VM 路径简报",
+        body: `你是 Agent 运行时架构助手。只根据用户约束写去 VM 提问清单，不要编造已迁完。
+
+当前运行时：{{current_runtime}}
+是否依赖 bash：{{needs_bash}}
+必须保留的 Linux 作业：{{linux_jobs}}
+每用户成本敏感度：{{cost_sensitivity}}
+
+输出 Markdown：
+1. 脑/手分离是否值得先做
+2. 文件系统持久化候选（对象存储/嵌入式库）
+3. 可改成显式方法的命令清单
+4. 人工验收与回滚点
+禁止建议取消租户隔离；禁止声称成本已降某倍。`,
+      },
+      {
+        title: "能力缺口补方法提纲",
+        body: `去掉开放 shell 后用户卡住，请写补方法提纲。
+
+失败任务：{{failed_task}}
+Agent 试图调用：{{attempted_commands}}
+是否已有短时容器逃生舱：{{has_ephemeral_container}}
+
+输出：
+1. 应升为一等公民方法的能力
+2. 仍应拒绝的开放面
+3. 如何测小模型在方法面上的表现
+4. 人工确认清单
+不要伪造「已覆盖全部 bash 用例」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://camelai.com/blog/our-coding-agent-runs-in-a-cloudflare-durable-object-not-a-vm",
+      label: "camelai.com · Our coding agent runs in a Cloudflare Durable Object… (Miguel / camelAI)",
+      date: "2026-07-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "344",
+    slug: "yureki-agent-tool-noop-observability",
+    title: "yureki：在工具边界记 noop，别信 Agent 自评",
+    summary: "对照个人实践：给无人值守编码 Agent 加 harness 侧 JSONL 工具日志，并把「跑了但没改动」标成 noop，用查询抓住静默假成功；不代你接观测平台、不外推缺陷率。",
+    description:
+      "面向跑长会话 Agent 的个人开发者：把「只看最终总结」写成可对账的边界日志+noop 分诊，区别于可核验声明门禁与意图评审壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://dev.to/yureki_lab/how-i-built-observability-for-my-autonomous-coding-agent-5-lessons-3740",
+    sourceLabel: "DEV·yureki_lab 实践帖",
+    upvotes: 241,
+    trending: false,
+    tags: [
+      "可观测性",
+      "noop",
+      "JSONL",
+      "工具日志",
+      "个人实践",
+    ],
+    howItWorks: [
+      "粘贴 Agent 是否无人值守、现有日志是 Agent 自述还是 harness 落点、以及能否接受摘要而非全量 stdout",
+      "Agent 按实践帖输出：边界字段→success/error/noop→会话后 jq 分诊→中程告警提问清单",
+      "人工保留对高风险写操作的抽检；Agent 不代你接付费 APM、不声称已消灭假成功",
+    ],
+    tips: [
+      "源帖关键句：静默部分失败比响亮崩溃更糟——崩溃告诉你往哪看，静默跳步则让最终报告用省略主动撒谎",
+      "与 melon-coding-agent-prove-claims / intent-review-agent-with-tests / sluice-shared-agent-verify-queue 不同：本条是 harness 边界 JSONL+noop 状态的个人观测层，不是声明查盘/可证伪审查、意图评审壳或本机共享测队列",
+    ],
+    approach: `作者 yureki_lab 在 DEV Community《How I Built Observability for My Autonomous Coding Agent: 5 Lessons》（JSON-LD datePublished=2026-07-21T14:33:19Z）写明：自主编码 Agent 可无人值守跑数小时，但「已完成」总结由同一可能出错的 Agent 生成；曾有一次重构自称成功、测试也绿，却因更早一步编辑未真正应用——测的是旧代码。结论：需要独立于 Agent 叙事的动作序列记录。
+
+做法：日志层夹在 Agent 与工具之间，由 harness 在工具真实执行时写出，而不是让模型写「我做了什么」。每条含时间戳、工具名、参数摘要（无密钥/无全文）、状态 success|error|noop、耗时；追加写入 \`agent_trace.jsonl\`。noop 是关键分类：编辑工具运行但无匹配/无变更≠成功。可视化成序列后，「noop 紧接测试 success」成为红旗。刻意只记摘要（diff 前约 100 字符、命令名与退出码），细节需要时再单步重跑。结构化后用 \`jq\` 筛 noop；作者称开始每会话后查询后，观察到大约 1/12 会话中段至少一次写工具 noop，其中约四分之一掩盖真问题——强调此前无法估这个比例。也跟踪每会话工具调用数异常（过少/过多）。日志层自称约 40 行内、单次写入毫秒级。下一步想把写工具 noop 变成中程告警。本场景据此输出「边界 noop 观测」提纲。禁止用 Agent 自评代替 harness 事实日志。`,
+    outcomes: [
+      "源披露作者观测比例（约 1/12 会话含写工具 noop、其中约 1/4 掩盖问题）与实现体量（约 40 行日志层）；属个人环境粗估，不可外推。",
+      "能把「再看一眼最终总结」与「harness 边界事实日志+noop」拆开。",
+      "为会话后 jq 检查单与中程 noop 告警提供提问清单。",
+    ],
+    caveats: [
+      "摘要日志不是完整回放；取证仍可能要重跑单步。",
+      "比例来自作者自述样本，非正式基准。",
+      "上面写的是个人实践随笔，不是观测厂商文档。",
+    ],
+    prompts: [
+      {
+        title: "工具边界 noop 日志简报",
+        body: `你是 Agent 可观测性助手。只根据用户约束写边界日志提问清单，不要编造已接入。
+
+运行是否无人值守：{{unattended}}
+现有日志来源：{{log_source}}
+敏感字段红线：{{redact_policy}}
+
+输出 Markdown：
+1. 每条事件必填字段
+2. success/error/noop 判定规则
+3. 会话后最小查询集
+4. 人工抽检频率
+禁止建议把密钥写入日志；禁止声称假成功率已降到 0。`,
+      },
+      {
+        title: "静默假成功复盘提纲",
+        body: `测试绿但行为未变，请写复盘提纲。
+
+现象：{{symptom}}
+是否有 JSONL 轨迹：{{has_trace}}
+可疑工具：{{suspect_tools}}
+
+输出：
+1. 如何用 noop/调用数异常定位跳步
+2. 最小 harness 补丁
+3. 是否应在中程阻断继续叙事
+4. 人工确认清单
+不要伪造「该类缺陷已绝迹」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/yureki_lab/how-i-built-observability-for-my-autonomous-coding-agent-5-lessons-3740",
+      label: "DEV Community · How I Built Observability… (yureki_lab)",
+      date: "2026-07-21",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "345",
+    slug: "manifest-eval-loop-email-triage",
+    title: "Manifest：用不可篡改 eval 环优化邮件分诊",
+    summary: "对照个人实践：在 Hermes 个人 Agent 上用 contract/target/eval/state 四文件环做提出-执行-评分-取舍，并把生成与评判上下文隔离；不代你删邮件、不外推准确率。",
+    description:
+      "面向想从「每早手搓提示」升级的个人用户：把邮件分诊写成可对账的评分环+人工纠错集，区别于沉默晨报与飞书邮件降噪壳。",
+    categories: [
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://manifest.build/blog/design-the-loop/",
+    sourceLabel: "manifest.build·Sébastien Conejo 实践帖",
+    upvotes: 221,
+    trending: false,
+    tags: [
+      "eval 环",
+      "邮件分诊",
+      "上下文隔离",
+      "个人 Agent",
+      "评分",
+    ],
+    howItWorks: [
+      "粘贴重复任务类型、能否用数字评分、以及人工纠错是否可持续积累成测试集",
+      "Agent 按实践帖输出：四文件职责→生成/评判隔离→纠错变用例→防刷分留出集提问清单",
+      "人工保留纠错与合同边界；Agent 不代你自动回复/删除重要邮件",
+    ],
+    tips: [
+      "源帖关键句：写 eval 才是真技能——环只是 while+if/else；eval 迫使你用脚本可检查的方式定义「好」",
+      "与 claus-silence-morning-brief / feishu-mail-noise-filter-morning-brief / gtd-bujo-claude-md-daily-plan 不同：本条是不可变评分器驱动的提出-取舍优化环（邮件分诊为例），不是沉默晨报、飞书降噪壳或 GTD/MD 日计划",
+    ],
+    approach: `作者 Sébastien Conejo 在 Manifest Blog《I Stopped Prompting My Agent. Now I Design the Loop That Prompts It.》（JSON-LD/meta datePublished=2026-06-30）写明：在 VM 上跑基于 Hermes 的个人 Agent 做邮件分诊、Reddit 监控、部分日历；模型够用，自己却是每天提示-审阅的瓶颈。于是借用 Karpathy autoresearch 思路，做提出-执行-评估-保留/丢弃环，优化环本身约四文件、无框架 SDK。
+
+四文件：\`contract.md\` 定边界（人写一次）；\`target/\` 是 Agent 可改的唯一可变面；\`eval\` 返回分数且不可变——Agent 不能改自己的裁判；\`state/\` 追加记录每次实验与取舍。脚本是带预算的 while：规划→改 target→评分→更好则留、更差则回滚。第一版让同一模型既分类又自报信心，「HIGH」刷屏但结果平庸——生成与评判相关错误；改为两次调用且互不见推理链，只共享产物与分数；再经 Manifest 路由到不同模型作加强而非核心。邮件例：早间分诊标噪声，人纠错「这封重要/这封噪声」→每条纠错成测试用例；eval 用当前规则重分类历史邮件，分数=匹配率。无 state 时每天重学同一模式。作者强调仍未把自己移出环：纠错是 ground truth；角色从操作员变成主管——周日环跑约二十版规则，周一稍好。并提醒防刷分：对历史可到 100% 却砸在新邮件上，需留出近期数据。本场景据此输出「评分环分诊」提纲。禁止建议无人值守删除邮件。`,
+    outcomes: [
+      "源以机制与角色转变叙事为主（四文件、周日约二十版尝试等），未披露可外推的准确率曲线；源未披露量化基准。",
+      "能把「每天再写一条更好的提示」与「不可变 eval+纠错集驱动的优化环」拆开。",
+      "为任务是否适合建环的五问清单与留出集防刷分提供提问提纲。",
+    ],
+    caveats: [
+      "贪心爬山可能停在局部最优；作者承认适用其用例未必适用你的。",
+      "环每轮烧 token；不重复的任务用好提示更便宜。",
+      "上面写的是个人实践+自家路由产品旁注，不是 Hermes 官方教程。",
+    ],
+    prompts: [
+      {
+        title: "个人任务评分环简报",
+        body: `你是个人 Agent 环设计助手。只根据用户约束写四文件环提问清单，不要编造已优化。
+
+重复任务：{{task}}
+可否数字评分：{{scorable}}
+人工纠错来源：{{corrections}}
+每周预算轮次：{{weekly_budget}}
+
+输出 Markdown：
+1. contract/target/eval/state 各自内容
+2. 生成与评判如何隔离上下文
+3. 纠错如何变成用例
+4. 何时不该建环
+禁止建议自动删除未审邮件；禁止声称准确率已达某%。`,
+      },
+      {
+        title: "eval 被刷分的复盘提纲",
+        body: `历史集分数很高但新邮件仍分错，请写复盘提纲。
+
+历史分数：{{hist_score}}
+新失误样例：{{new_misses}}
+eval 是否可被 Agent 编辑：{{eval_mutable}}
+
+输出：
+1. 是刷分、分布漂移，还是生成/评判未隔离
+2. 留出集与合同边界补丁
+3. 人工纠错节奏建议
+4. 确认清单
+不要伪造「环已泛化」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://manifest.build/blog/design-the-loop/",
+      label: "manifest.build · I Stopped Prompting My Agent… (Sébastien Conejo)",
+      date: "2026-06-30",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
