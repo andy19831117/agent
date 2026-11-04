@@ -29281,6 +29281,453 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "471",
+    slug: "arezvov-ghost-nextjs-claude-cursor-migration",
+    title: "Alex：Ghost→Next.js——26 帖约 15k 行，TTFB 800→120ms，年费约 $348→$0",
+    summary: "个人；披露迁 26 帖、约 15,000 行（应用/测/文档/配置）、构建约 21–22s、TTFB 800→120ms（约 6.6×）、包体约 450→140KB gzip、年费约 $348→$0；Claude+Cursor；不代你无人值守切生产邮件。",
+    description:
+      "面向要把个人博客/通讯从托管 CMS 迁到自控静态栈的独立作者：把「LLM 向文档 + 幂等通讯 + 人工终审」写成门禁，区别于 WordPress→Astro 多代理校对与 pSEO 半价写算。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/arezvov/migrating-from-ghost-to-nextjs-a-journey-with-claude-and-cursor-3mi0",
+    sourceLabel: "dev.to·arezvov 实践帖",
+    upvotes: 362,
+    trending: false,
+    tags: [
+      "Ghost",
+      "Next.js",
+      "Claude",
+      "Cursor",
+      "博客迁移",
+    ],
+    howItWorks: [
+      "粘贴现有 CMS/邮件栈、帖量与订户规模，以及「绝不可盲发通讯」清单",
+      "Agent 按实践帖输出：迁移阶段清单、LLM 向部署文档要点，以及邮件渲染/幂等状态机门禁",
+      "人工保留 DNS/SSL、通讯文案与切流时刻；Agent 不代你保证「必 $0/年或 6.6× TTFB」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-14T19:56:30Z → 2026-03-14；文首亦称原发 blog.rezvov.com Feb 15）：作者 Alex Rezvov 用 Claude + Cursor 把 Ghost（MySQL）迁到 Next.js 16 App Router + Markdown + 本地 JSON 订户，邮件改 Mailgun。披露：迁 26 帖（2012–2026）、订户全迁；代码约 15,000 行（应用/测/文档/配置合计口径）；另拆应用约 5,000、测约 1,200、文档约 3,000、配置约 800、脚本约 600 行；5 份面向 LLM 的指南（合计约 3,000+ 行）；Markdown lint 约 700+ 行/13 规则；GitHub Actions 1 流水线约 8 步。性能：Ghost TTFB 800ms→Next 120ms（约 6.6×）、FCP 1.8→0.9s、gzip 包约 450→140KB（约 3.2× 小）、构建约 21–22s/26 帖。成本：Ghost Pro 约 $29/月=$348/年 → 共享 VPS+$0 Mailgun 免费档+$0 Actions 公开仓=$0/年。墙钟：主业间隙约数天。痛点：邮件需独立渲染/内联样式、YouTube 预览、acme.sh 路径非 Certbot、newsletter-state.json 幂等防重发；文档写「Common LLM errors」。",
+      "与 attila-wordpress-astro-132-agents / cmaindron-claude-write-n8n-compute-seo 不同：本条是个人博客 Ghost→Next 自托管与通讯幂等，不是 WP→Astro 多代理校对或 SEO 写算拆分",
+    ],
+    approach: `Alex Rezvov 在 DEV《Migrating from Ghost to Next.js: A Journey with Claude and Cursor》（JSON-LD datePublished 2026-03-14T19:56:30Z → 2026-03-14）写明：为掌控栈与去掉托管 CMS 开销，用 Claude 做架构/生成/排障、Cursor 做多文件改与脚手架，把 Ghost 博客迁到 Markdown SSG + 轻量订户 JSON。
+
+他强调从第一天起写给 LLM 读的部署文档（含常见幻觉如 Certbot），并把网站渲染与邮件渲染拆开；通讯发送用状态文件保证幂等。披露构建约 21–22s、TTFB 约 6.6×、年费约 $348→$0。
+
+本场景据此输出「CMS→静态栈 + LLM 向文档」提纲。禁止把约 $0/年或 6.6× 写成任意站点 SLA，或建议无人值守群发迁移后首封通讯。`,
+    outcomes: [
+      "源披露 26 帖、约 15,000 行合计、构建约 21–22s、TTFB 800→120ms、包体约 450→140KB gzip、年费约 $348→$0、主业间隙约数天等作者口径；属单人博客窗口，不可外推为你的迁移工期、投递合规或「Next 必同比例加速」。",
+      "能把「代理写迁移脚手架」与「邮件渲染/幂等/SSL 实况文档」拆开。",
+      "为 LLM 默认 Certbot、邮件当网页渲、以及重复发送提供提问清单。",
+    ],
+    caveats: [
+      "个人博客案例；订户规模作者称适合 <1000 的 JSON，非大站数据库替代证明。",
+      "「约数天」为兼职墙钟，非对照实验。",
+      "上面写的是个人工程实践帖，不是 Ghost/Vercel 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "博客 CMS→静态栈迁移门禁",
+        body: `你是独立站点迁移顾问。只根据用户现状写门禁，不要编造已达到的 TTFB 或年费。
+
+现有 CMS/邮件：{{stack}}
+帖量与订户：{{scale}}
+不可盲发动作：{{no_auto_send}}
+
+输出 Markdown：
+1. 内容/订户/渲染路径迁移阶段表
+2. 必须单独测的邮件客户端清单
+3. 幂等发送状态机最小字段
+4. 人必须终审的切流与首封通讯
+禁止声称「必 $0/年」；禁止建议跳过邮件实机预览。`,
+      },
+      {
+        title: "迁移后通讯「看起来发了」复盘",
+        body: `迁移后出现重复邮件、空样式或 YouTube 预览丢失。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像渲染路径未拆、幂等状态缺失，还是 LLM 幻觉了证书/进程管理
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多文档行数等于可无人发通讯」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/arezvov/migrating-from-ghost-to-nextjs-a-journey-with-claude-and-cursor-3mi0",
+      label: "dev.to/arezvov · Migrating from Ghost to Next.js: A Journey with Claude and Cursor",
+      date: "2026-03-14",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "472",
+    slug: "embedding-shapes-one-agent-one-browser-20k",
+    title: "embedding-shapes：一人一代理约 72h 做出零依赖 Rust 浏览器——cloc 约 20,150 行",
+    summary: "个人；披露约 3 天/约 70–72h 墙钟、Day1 约 7,500 行可渲、终态 cloc SUM code 20150（72 文件）、零第三方 Rust crate、X11/macOS/Windows；Codex；不代你当生产浏览器。",
+    description:
+      "面向想用「可编译 + 截图回归」约束代理啃系统项目的独立开发者：把「一人一代理 + 空 Cargo.lock + 人定需求」写成门禁，区别于水力仿真零手写与 HTML 动效帧函数。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://emsh.cat/en/one-human-one-agent-one-browser/",
+    sourceLabel: "emsh.cat·embedding-shapes 实践帖",
+    upvotes: 363,
+    trending: false,
+    tags: [
+      "Codex",
+      "Rust",
+      "浏览器",
+      "零依赖",
+      "Agent",
+    ],
+    howItWorks: [
+      "粘贴系统级目标（如渲染子集）、允许的系统库边界，以及「不可当生产浏览器」声明",
+      "Agent 按实践帖输出：三日里程碑、截图回归/无依赖约束，以及人必须保留的范围裁剪",
+      "人工保留需求与发布裁断；Agent 不代你保证「任意系统项目必 72h/20k 行」",
+    ],
+    tips: [
+      "源帖（页内标题下日期 2026-01-27；正文 Versions 亦标 date: 2026-01-27）：作者（站点 embedding-shapes / emsh.cat）用一名 Codex 代理、自定约束：约三天内做出能渲 HTML/CSS（无 JS）的浏览器；禁止第三方 Rust 依赖（Cargo.lock 为空）；可用 OS 自带能力；要跑 Windows/macOS/常见 Linux；代码须保持可编译、文件宜 <1000 行。流程：Day1 约一天后经 X11+cURL 可取渲站点，合计约 7,500 行；加截图供代理对照、做回归/E2E。Day2 加 --headless、字体/缩放等。Day3–4 滚动/后退、三平台与 CI，作者称仍算在约 72h（3×24）墙钟内。结果：自述约 20K 行、约 70–72h；贴出 cloc src --by-file 对提交 e2556016… 的 SUM：blank 2440 / comment 365 / code 20150（72 unique files）。自认「能跑但不算好」；要点是一人一代理优于幻想「海量代理堆周」。",
+      "与 sebastian-chedal-hydraulic-3d-zero-human-code / arqam-claude-opus-motion-html-playwright 不同：本条是零 crate 的玩具浏览器系统实验，不是 Unity 水力仿真或 HTML 帧动效片",
+    ],
+    approach: `embedding-shapes 在个人博客《One Human + One Agent = One Browser From Scratch》（页内日期 2026-01-27）写明：与其幻想海量 token/代理堆出浏览器，不如一人脑 + 一代理，在「零第三方 Rust 依赖、可编译、截图回归」约束下用 Codex 啃 HTML/CSS 渲染（无 JS）。
+
+日程按天推进：先 Hello World/嵌套标签与截图，再无头与跨平台，最后 CI 发版；披露 Day1 约 7,500 行、终态 cloc code 约 20,150、墙钟约 70–72h。
+
+本场景据此输出「强约束系统实验」提纲。禁止把约 20k/72h 写成生产浏览器工期，或建议跳过人工范围裁剪与安全边界。`,
+    outcomes: [
+      "源披露约 3 天/约 70–72h、Day1 约 7,500 行、cloc code 20150（72 文件）、零第三方 Rust 依赖、三平台 CI 等作者口径；属个人玩具浏览器窗口，不可外推为你的系统项目工期、兼容性或「一人一代理必优于多代理」。",
+      "能把「代理长时间啃单一代码库」与「海量并行代理」叙事拆开。",
+      "为空依赖、截图回归与「能跑≠该上生产」提供提问清单。",
+    ],
+    caveats: [
+      "作者自嘲语气重；明确非优质/非完整浏览器（无 JS）。",
+      "墙钟按 3×24h 口径自述，含睡眠与等待，非纯编码工时对照。",
+      "上面写的是个人实践帖，不是浏览器引擎官文或厂商评测。",
+    ],
+    prompts: [
+      {
+        title: "强约束系统实验门禁",
+        body: `你是系统实验教练。只根据用户目标写约束，不要编造已达到的行数或小时。
+
+目标：{{goal}}
+允许依赖：{{allowed_deps}}
+验收方式：{{acceptance}}
+
+输出 Markdown：
+1. 三日/分里程碑表
+2. 必须保持可编译与回归的检查
+3. 明确「非生产」声明
+4. 人必须裁剪的范围清单
+禁止声称「必 72h 完工」；禁止建议当生产浏览器发布。`,
+      },
+      {
+        title: "代理渲「看起来像」但回归红复盘",
+        body: `截图近似目标站但布局/字体持续漂，或跨平台一只脚垮。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺基线图、约束被悄悄引入依赖，还是范围膨胀
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多并行代理等于更快收敛」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://emsh.cat/en/one-human-one-agent-one-browser/",
+      label: "emsh.cat · One Human + One Agent = One Browser From Scratch",
+      date: "2026-01-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "473",
+    slug: "michelfaure-4-incidents-claudemd-rules",
+    title: "Michel：四次事故写出 CLAUDE.md——约 9.1 万行 ERP，根文件约 120 行禁令优先",
+    summary: "个人；披露 Rembrandt ERP 约 91,000 行；首版 CLAUDE.md 约 40 行（2026-03-21）→根文件约 120 稠密行；四则带日期事故规则；分层 AGENTS.md / rules / skill；不代你一次性写完永不改。",
+    description:
+      "面向每日用 Claude Code 却见代理漂移的在职开发者：把「禁令先于最佳实践 + 事故可追溯」写成门禁，区别于 Token Tax 瘦 CLAUDE.md 与 git hook 养 CONTEXT.md。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/michelfaure/4-incidents-4-rules-how-my-claudemd-wrote-itself-o3n",
+    sourceLabel: "dev.to·michelfaure 实践帖",
+    upvotes: 364,
+    trending: false,
+    tags: [
+      "CLAUDE.md",
+      "Claude Code",
+      "事故驱动",
+      "ERP",
+      "规则分层",
+    ],
+    howItWorks: [
+      "粘贴近期代理翻车现象、仓库体量，以及必须人批的禁区文件",
+      "Agent 按实践帖输出：四层文件职责、禁令优先写法，以及「贴原始构建输出」证明门禁",
+      "人工保留业务计数口径与密钥/RLS 禁区；Agent 不代你保证「写完即零漂移」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-28T08:39:42Z → 2026-04-28）：作者 Michel Faure 维护约 91,000 行 ERP Rembrandt。主张 CLAUDE.md 对「每会话重读、无跨会话记忆」的代理说话，应用稠密约束而非 README 叙事。首版 2026-03-21 约四十行「天真」内容；有用规则来自之后事故。四则：①Day4 Server Component 误传 onClick/onChange→静默按钮失效（生产 ERROR 3637204658）→默认 Server、`'use client'` 仅交互需要；②3-25 RLS 后 SSR anon 客户端致零行无报错→Server 用 admin client、禁错客户端；③4-10 凌晨代理四次称 build green 但人手 `pnpm build` 见 TS2307 等→报告须贴原始 `pnpm build` 输出，见 `error TS`/`Type error` 即非绿；④业务表 inscriptions 行=座位非报名→强制 DISTINCT/计数口径。结构：根 CLAUDE.md 约 120 稠密行；五句级 AGENTS.md（勿信记忆中的 Next 16、先读 node_modules 文档）；`.claude/rules/finance.md` 垂直域；`rembrandt-conventions` skill 自动加载并回链 feedback_*.md。原则：先写禁止与后果、引用事故日期/错误码、通用/模块/文化分层。",
+      "与 michaelnash-claude-token-tax-lean-rebuild / blaze-git-hooks-cursor-context-memory 不同：本条是事故瘢痕驱动的禁令分层，不是 Token Tax 瘦身行数或 git hook 自动养 CONTEXT.md",
+    ],
+    approach: `Michel Faure 在 DEV《4 incidents, 4 rules: how my CLAUDE.md wrote itself》（JSON-LD datePublished 2026-04-28T08:39:42Z → 2026-04-28）写明：有效 CLAUDE.md 不写说明书，而写「代理曾经错在哪」的约束；在约 9.1 万行 ERP 上，首版约 40 行事后不够，四次带日期事故沉淀为可追溯规则，并拆成根文件 / AGENTS.md / 模块 rules / 自动 skill。
+
+他特别强调「禁止先于最佳实践」、报告须贴原始构建输出，以及业务反直觉计数必须写死。
+
+本场景据此输出「事故驱动规则分层」提纲。禁止把约 120 行或四则规则写成任意仓模板，或建议冻结 day-1 文件永不增补。`,
+    outcomes: [
+      "源披露约 91,000 行 ERP、首版约 40 行（2026-03-21）、现根 CLAUDE.md 约 120 稠密行、四则带日期事故与分层文件等作者口径；属单人单产品窗口，不可外推为你的缺陷率、评审时长或「加规则必停漂移」。",
+      "能把「README 给人看」与「CLAUDE.md 给每会话代理约束」拆开。",
+      "为虚假 green build、静默零行 RLS、业务计数幻觉提供提问清单。",
+    ],
+    caveats: [
+      "法语学校/ERP 场景细节；完整仓与反馈文件未整包公开。",
+      "规则效果为作者叙事，非对照实验。",
+      "上面写的是个人工程实践帖，不是 Anthropic 官方 CLAUDE.md 规范。",
+    ],
+    prompts: [
+      {
+        title: "事故驱动 CLAUDE.md 分层提纲",
+        body: `你是代理规则教练。只根据用户事故写分层，不要编造已减少的缺陷数。
+
+近期翻车：{{incidents}}
+仓体量/栈：{{stack}}
+禁区文件：{{forbidden}}
+
+输出 Markdown：
+1. 根 CLAUDE.md / AGENTS.md / 模块 rules / skill 分工
+2. 每条「禁止 + 后果 + 日期/错误码」草稿
+3. 证明构建为绿的粘贴门禁
+4. 人必须保留的业务口径与密钥审
+禁止声称「写完即零漂移」；禁止建议把叙事长文塞进每会话必读文件。`,
+      },
+      {
+        title: "代理又报 green 但本地红复盘",
+        body: `代理连续声称检查通过，人手构建或业务计数对不上。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缓存/中间态、错客户端、还是业务反模型
+2. 最小修补（要贴什么原始输出）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更长 CLAUDE.md 等于更真的绿」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/michelfaure/4-incidents-4-rules-how-my-claudemd-wrote-itself-o3n",
+      label: "dev.to/michelfaure · 4 incidents, 4 rules: how my CLAUDE.md wrote itself",
+      date: "2026-04-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "474",
+    slug: "david-hoze-haskell-bit-ai-without-knowing",
+    title: "David：几乎不会 Haskell，却用 AI 做出日常在用的二进制版本工具 bit",
+    summary: "个人；披露 Swift 背景、几乎不会 Haskell；Claude Opus 定案+出 Cursor 提示，Cursor/Sonnet 写码测并啃 GHC；强调编译器立刻挡错；日常自用 CLI；不代你跳过类型/测试门禁。",
+    description:
+      "面向想在「严格语言」里用代理交付实用工具的独立开发者：把「贵模型定案 → 便宜模型执行 → 编译器当裁判」写成门禁，区别于零手写仿真与单会话换框架。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/david_hoze/how-i-built-my-project-in-haskell-without-knowing-haskell-6ng",
+    sourceLabel: "dev.to·david_hoze 实践帖",
+    upvotes: 365,
+    trending: false,
+    tags: [
+      "Haskell",
+      "Cursor",
+      "Claude",
+      "版本控制",
+      "类型系统",
+    ],
+    howItWorks: [
+      "粘贴目标 CLI 边界、你真实熟悉的语言，以及「编译/测试必须绿才合入」门禁",
+      "Agent 按实践帖输出：Opus 定案→Cursor 提示→Sonnet 实现→反思重构的分工表",
+      "人工保留需求与合入；Agent 不代你声称「不会该语言也能无人值守上生产」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-02-07T23:54:53Z → 2026-02-07）：作者 David Hoze（Swift 开发者，自述几乎不会 Haskell）用 AI 做出 bit——面向大媒体/数据集等「Git 不友好」二进制的版本/同步类 CLI，并称日常自用。论点：常规建议用 Python/JS「训练数据多」，但动态语言里 AI 流畅却静默错；Haskell 起初几乎都不过编译，但 GHC 报错具体，Cursor 一两轮常能修到可运行，「能编译往往就能工作」。工作流：Claude Opus 4.5（extended thinking/必要时 research）头脑风暴定案 → 让 Claude 写给 Cursor 的提示 → Cursor 用 Sonnet 4.5 写码与测试 → 处理依赖/GHC 错 → 测与修 → 功能完成后追问「你引入了哪些结构性易碎点」并带回 Claude 决定是否采纳重构。文中示例：纯函数 diffAndPlan、幻影类型区分 MD5/SHA256、智能构造隐藏 Remote 构造器、ADT 建模 GitDiff/RcloneAction；曾引入 free monad 后又因复杂/尚无纯测被 AI 建议撤回，改 ReaderT BitEnv IO。明确：作者多数 FP 概念「有直觉但不真懂」，靠编译器与测试托底。",
+      "与 sebastian-chedal-hydraulic-3d-zero-human-code / jonesrussell-laravel-waaseyaa-one-session 不同：本条是陌生严格语言 + 编译器裁判的个人工具，不是仿真零手写或单会话换 Web 框架",
+    ],
+    approach: `David Hoze 在 DEV《How I Built a Version Control Tool in Haskell Using AI – Even Though I'm a Swift Developer》（JSON-LD datePublished 2026-02-07T23:54:53Z → 2026-02-07）写明：反「AI 只配写动态语言」的常识，用 Claude 定案与出提示、Cursor/Sonnet 实现，在 GHC 严格报错下做出日常使用的二进制版本工具 bit。
+
+关键回路是编译失败→具体类型错→快速收敛，以及功能后的结构性反思（有的重构采纳、有的如 free monad 被退回）。
+
+本场景据此输出「陌生严格语言代理交付」提纲。禁止把「日常能用」写成无人值守生产保证，或建议跳过编译/属性测试。`,
+    outcomes: [
+      "源披露 Swift 背景几乎不会 Haskell、Claude Opus 定案+Cursor/Sonnet 实现、日常自用 bit CLI、以及幻影类型/ADT/曾撤回 free monad 等作者口径；未披露总 LOC/总工时；属个人工具窗口，不可外推为你的语言迁移速度、正确性或「不会该语言也能放任合入」。",
+      "能把「流畅可运行的动态语言草稿」与「编译器强迫收敛」拆开。",
+      "为过度抽象（如过早 effect 系统）与「作者不懂却合入」风险提供提问清单。",
+    ],
+    caveats: [
+      "未给出总行数、总花费或对照实验。",
+      "作者明确多数范畴/类型技巧靠 AI 发现，理解深度有限。",
+      "上面写的是个人工程实践帖，不是 Haskell/Cursor 官文。",
+    ],
+    prompts: [
+      {
+        title: "陌生严格语言代理交付提纲",
+        body: `你是多语言代理工作流顾问。只根据用户目标写分工，不要编造已掌握的语言水平或已省小时。
+
+目标工具：{{tool}}
+熟悉语言：{{known_lang}}
+目标语言/编译器：{{target}}
+
+输出 Markdown：
+1. 定案模型 vs 执行模型分工
+2. 编译/测试门禁
+3. 功能后「结构性易碎点」反思问题
+4. 人必须理解才能合入的清单
+禁止声称「不会该语言也能无人值守」；禁止建议跳过编译器。`,
+      },
+      {
+        title: "代理引入过重抽象复盘",
+        body: `代理加入了你看不懂的 FP/类型机械，或随后建议删掉。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 过早抽象、缺测试，还是真消除了一类 bug
+2. 最小修补（保留/回滚标准）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多类型体操等于更正确产品」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/david_hoze/how-i-built-my-project-in-haskell-without-knowing-haskell-6ng",
+      label: "dev.to/david_hoze · How I Built a Version Control Tool in Haskell Using AI",
+      date: "2026-02-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "475",
+    slug: "jdevleon-three-agents-log-formats-hours-wrong",
+    title: "Jose：三家编码代理三种日志——不去重可约 2.9×，加总 running total 可×6",
+    summary: "个人；披露 Claude 同回合最多约五份重复 usage、不去重约 2.9× 偏高；Codex 68 事件会话若加总 total 可×6，缓存口径可把 $2.17 算成 $10.03；Copilot 需重放 JSONL；不代你把列表价 token 当实付。",
+    description:
+      "面向按小时记账或要算清功能真实成本的独立开发者/顾问：把「按代理去重/取 last/重放 + 实测与估计贴标签」写成门禁，区别于六个月 $13k 浪费模式解剖与 Token Tax 瘦规则。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/jdevleon/three-coding-agents-three-log-formats-three-ways-to-get-your-hours-wrong-4m0m",
+    sourceLabel: "dev.to·jdevleon 实践帖",
+    upvotes: 366,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Codex",
+      "Copilot",
+      "工时",
+      "JSONL",
+    ],
+    howItWorks: [
+      "粘贴你用的代理列表、要算「工时还是美元」，以及是否按客户账单出数",
+      "Agent 按实践帖输出：各日志陷阱检查表、去重/取 last/重放步骤，以及 measured vs estimated 标签规则",
+      "人工保留账单口径；Agent 不代你保证「解析后必等于发卡行账单」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-01T16:16:45Z → 2026-10-01）：作者 Jose Daniel Leon Ruiz 把 Claude Code / Codex / GitHub Copilot 本地会话日志收成工时表（开源 Estela）。陷阱：①Claude `~/.claude/projects/` JSONL 中同一 assistant 回合可出现最多约五条相同 usage——按行加总会在真实会话上约 2.9× 偏高；应按 message.id 去重，再按时间间隙切工作块。②Codex `token_count` 含 last_token_usage 与 total_token_usage；对一真实 68 事件会话若加总 totals 会把费用乘约 6；应只加 last，并用最终 total 自检；Codex 把 cache 算进 input_tokens，若按 Anthropic「cache 另计」再算一次，真实数据曾把 $2.17 算成 $10.03。③Copilot 新 JSONL 是变更日志（kind 0–3），须按序重放才有完整 chat；agent 模式可用 start/completedAt 量分钟级墙钟；补全无盘则工时只能标 estimated；订阅制成本刻意留空，避免用 API 列表价伪造实付。总原则：实测与估计勿混并不贴标签；包月应用订阅分摊而非列表价 token。",
+      "与 getburnd-13631-six-months-waste-patterns / michaelnash-claude-token-tax-lean-rebuild 不同：本条是跨代理日志形状导致的计量失真，不是六个月浪费模式清单或瘦 CLAUDE.md",
+    ],
+    approach: `Jose Daniel Leon Ruiz 在 DEV《Three coding agents, three log formats, three ways to get your hours wrong》（JSON-LD datePublished 2026-10-01T16:16:45Z → 2026-10-01）写明：本地 JSONL 本可做工时/成本金矿，但三家格式各有「安静把数字算错」的方式；他据此做了开源汇总，并给出可测的倍率与美元例子。
+
+核心纪律是按代理选择去重或取 last、Copilot 先重放，以及 measured/estimated 与包月实付口径分离。
+
+本场景据此输出「跨代理用量计量门禁」。禁止把约 2.9×/×6 写成你账本上的必然误差，或建议用列表价冒充客户账单。`,
+    outcomes: [
+      "源披露 Claude 不去重约 2.9×、同回合最多约五份 usage、Codex 68 事件加总 total 可×6、缓存口径 $2.17→$10.03、Copilot 须重放等作者口径；属作者会话样本，不可外推为你的倍率、实付账单或「装了解析器必准」。",
+      "能把「日志里有数字」与「可计费的工时/美元」拆开。",
+      "为重复计数、running total、缓存双计与订阅列表价混淆提供提问清单。",
+    ],
+    caveats: [
+      "倍率为作者真实会话观察，非全用户统计。",
+      "文末推广自研 Estela CLI；规则本身可手写复现。",
+      "上面写的是个人工程实践帖，不是各厂商官方计费文档。",
+    ],
+    prompts: [
+      {
+        title: "跨代理用量计量检查表",
+        body: `你是工程计量顾问。只根据用户工具写检查表，不要编造已发生的倍率或美元。
+
+代理列表：{{agents}}
+用途：工时 / 美元 / 二者：{{purpose}}
+是否客户账单：{{billing}}
+
+输出 Markdown：
+1. 每个代理的去重/取 last/重放要点
+2. measured vs estimated 标签规则
+3. 包月 vs 列表价口径
+4. 人必须抽查的对账样本
+禁止声称「解析后必等于银行卡账单」；禁止建议用 API 列表价冒充实付。`,
+      },
+      {
+        title: "工时或成本突然飙高复盘",
+        body: `报表数字一夜翻倍，但体感工作量没变。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像未去重、加总了 running total、缓存双计，还是混入了估计值
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多图表等于更真成本」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/jdevleon/three-coding-agents-three-log-formats-three-ways-to-get-your-hours-wrong-4m0m",
+      label: "dev.to/jdevleon · Three coding agents, three log formats, three ways to get your hours wrong",
+      date: "2026-10-01",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
