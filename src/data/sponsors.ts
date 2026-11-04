@@ -46,15 +46,12 @@ export interface SponsorRecPlacement {
 }
 
 /**
- * Soft placements. None are enabled. Cap is 5 usecases.
+ * Soft placements. Empty or all-disabled means no 「荐」角标.
+ * selectVisibleRecs enforces at most one badge per usecase and five sitewide.
  */
 export const sponsorRecPlacements: readonly SponsorRecPlacement[] = [];
 
-/** Sitewide 「荐」角标。默认关闭。 */
-export const SPONSOR_REC_ENABLED = false;
-
-export const sponsorRecsEnabled =
-  SPONSOR_REC_ENABLED && sponsorRecPlacements.some((item) => item.enabled);
+export const sponsorRecsEnabled = sponsorRecPlacements.some((item) => item.enabled);
 
 export interface SponsorTier {
   id: "explore" | "growth" | "partner";

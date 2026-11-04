@@ -1,11 +1,11 @@
 # Agent场景库
 
-面向中文用户的 AI Agent **真实用例目录** MVP（本地草稿）。品牌为原创「Agent场景库」，与第三方目录站点无关。
+面向中文用户的 AI Agent **真实用例目录**。品牌为原创「Agent场景库」，与第三方目录站点无关。
 
-## 功能（MVP）
+## 功能
 
-- 首页：搜索、分类筛选、Agent/平台筛选、热门卡片、赞助条占位、订阅占位
-- 用例卡片：标题、摘要、平台、分类、来源链接、点赞（前端静态）、分享占位
+- 首页：搜索、分类筛选、Agent/平台筛选、热门卡片、赞助条、邮件订阅
+- 用例卡片：标题、摘要、平台、分类、来源链接、点赞（前端静态）、分享（复制链接）
 - 分类页 `/category/[slug]`、详情页 `/usecase/[slug]`
 - `sitemap.xml` / `robots.txt`、赞助页 stub
 - 种子数据 100+ 条中文用例，覆盖 8 个分类
@@ -37,6 +37,17 @@ NEXT_PUBLIC_SITE_URL=https://agent-usecases-cn.vercel.app
 
 `src/app/sitemap.ts` 与 `src/app/robots.ts` 都通过 `src/lib/site-url.ts` 的 `getSiteUrl()` 取这个值。未设置时：生产构建（`NODE_ENV=production`，包括 Vercel）回退到 `https://agent-usecases-cn.vercel.app`；本地 `next dev` 回退到 `http://localhost:3000`。不要用 `VERCEL_URL` 当生产地址，那是单次部署的主机名，不是正式别名。
 
+邮件订阅还需要服务端变量（见 `.env.example`，不要提交真实密钥）：
+
+```bash
+RESEND_API_KEY=
+RESEND_SEGMENT_ID=
+RESEND_FROM=
+SUBSCRIBE_TOKEN_SECRET=
+```
+
+`POST /api/subscribe` 经 Resend 发确认邮件；收件人打开 `/subscribe/confirm` 并确认后，邮箱才写入 Segment。未配置上述变量时，表单会提示订阅暂时不可用。
+
 ## 如何新增用例
 
 1. 编辑 `src/data/usecases.ts`，按现有对象追加一条（`slug` 全局唯一）。
@@ -50,5 +61,4 @@ NEXT_PUBLIC_SITE_URL=https://agent-usecases-cn.vercel.app
 
 ## 说明
 
-- 本仓库为 **本机草稿**，请勿擅自关联 GitHub / Cursor Origin 远程（除非产品负责人明确要求）。
-- 点赞与订阅均为前端占位，未接后端。
+- 点赞为前端状态，刷新后不会保留。订阅走服务端 API，确认后写入 Resend Segment。

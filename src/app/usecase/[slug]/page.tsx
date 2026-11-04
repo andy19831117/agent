@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { categories } from "@/data/categories";
 import { platforms } from "@/data/platforms";
 import { getUseCaseBySlug, usecases } from "@/data/usecases";
+import { SponsorRecBadge } from "@/components/SponsorRecBadge";
 import { UsecaseFaq } from "@/components/UsecaseFaq";
+import { recForUseCase } from "@/data/sponsors";
 import { UseCaseActions } from "./UseCaseActions";
 import { UseCaseNarrative } from "./UseCaseNarrative";
 
@@ -31,6 +33,7 @@ export default async function UseCaseDetailPage({ params }: Props) {
 
   const cats = categories.filter((c) => usecase.categories.includes(c.slug));
   const plats = platforms.filter((p) => usecase.platforms.includes(p.slug));
+  const rec = recForUseCase(usecase.slug);
 
   return (
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-10 sm:px-6">
@@ -62,8 +65,13 @@ export default async function UseCaseDetailPage({ params }: Props) {
 
       <div className="flex flex-wrap gap-2">
         {plats.map((p) => (
-          <span key={p.slug} className="badge-plat rounded-lg px-2.5 py-1 text-sm">
-            {p.name}
+          <span key={p.slug} className="inline-flex items-center gap-1">
+            <span className="badge-plat rounded-lg px-2.5 py-1 text-sm">
+              {p.name}
+            </span>
+            {rec?.platform === p.slug ? (
+              <SponsorRecBadge tooltip={rec.tooltip} href={rec.href} />
+            ) : null}
           </span>
         ))}
         {cats.map((c) => (
