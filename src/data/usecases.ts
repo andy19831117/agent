@@ -16774,6 +16774,455 @@ Agent 初判：{{agent_findings}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "331",
+    slug: "ghost-core-always-on-governance",
+    title: "Ghost：常驻个人机构要靠闸门而非通读",
+    summary: "对照个人实践：把 3 a.m. 仍在行动的个人 Agent 建成带审批/审计/物理停机的小机构；质量来自 Agent 控不了的闸门，不代你合生产、不代你花费。",
+    description:
+      "面向独立开发者与重度个人自动化：把「常驻 Agent 输出多到读不完」写成可对账的治理失败课，区别于通用定时任务壳与部门自托管 Agent 名册。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://yalcin.ai/ghost-core/",
+    sourceLabel: "yalcin.ai·Eren Yalçın Ghost 实践帖",
+    upvotes: 126,
+    trending: false,
+    tags: [
+      "个人 Agent",
+      "治理闸门",
+      "Claude Code",
+      "常驻系统",
+      "审计",
+    ],
+    howItWorks: [
+      "粘贴你是否要 24/7 行动、可触达设备（本机/VPS/手机）、以及永久/花费类动作是否必须人工批",
+      "Agent 按实践帖要点输出：动作分级→强制盲审第二眼→物理/密钥停机→审计与课次回流提问清单",
+      "人工在自有栈落地；Agent 不代合并生产、不持你的支付凭据、不声称已替你跑通 65 天",
+    ],
+    tips: [
+      "源帖核心约束：质量不能靠「有人醒着逐行读输出」，必须来自 Agent 无法自行关闭的闸门",
+      "与 scheduled-recurring-agent-tasks / solo-company-agent-departments / autonomous-employee-like-agent 不同：本条聚焦常驻个人机构的五类闸门失败与补丁，不是定时壳或部门编制隐喻",
+    ],
+    approach: `作者 Eren Yalçın 在个人站《65 days, 680 commits, 170 lessons: building and operating a one-person autonomous institution》（datePublished 可核）写明：目标不是聊天窗或需人盯的编码会话，而是凌晨三点仍在行动的系统——盯站点、读邮件、驱动 Mac 与备用 iPhone、写提醒，并在早晨汇报「做了什么 / 需要我什么」。公开树为 ghost-core；真正交付物是伴随失败写入的 LESSONS。
+
+机制侧把 Ghost 写成「小机构」：VPS 上 Telegram 桥接拉起 Claude Code；Mac 经反向隧道作 worker；iPhone 经 WebDriverAgent 作 limb；驾驶舱 App 含审批卡与 Pulse；记忆用 SQLite+FTS 并注入每轮；治理把动作分成 read / reversible / permanent / spend，后两类必须审批，另有审计日志与 freeze。关键设计约束：常驻系统产出远超人工通读，故质量只能来自 Agent 控不了的闸门。文中按时间线复盘五类失败：未绑定的测试钩（hooksPath 未版本化）→自修复绑定+同命令 CI；可选评审等于自我豁免→规则触发、盲审（不见推理）、可否决；无人值守升级杀进程→禁外部重启+飞行中消息落盘恰好一次重入队；网络依赖的软停机不够→YubiKey 物理在位才开 Mac 快车道；API 有新模型而 CLI 别名过期→自解析「API∩已装 CLI」交集并日报漂移。本场景据此输出「常驻个人机构治理」提纲。禁止声称已代你常驻运行或已代花费。`,
+    outcomes: [
+      "源披露第 65 天量级：约 680 commits、170 条课次、审计约 1934 条动作、站点自部署约 220 次，以及邮件摘要/提醒/App Store 端到端等定性能力；属作者环境，不可外推为你的 SLA。",
+      "能把「再加一个评审 skill 让 Agent 自觉调用」与「规则触发+盲审+否决+物理停机」拆开。",
+      "为动作分级、第二眼、停机与课次从 commit 回流 playbook 提供提问清单。",
+    ],
+    caveats: [
+      "源是个人生产侧写与公开 scrub 后的参考实现，不是托管产品；私有读件（邮件/备份等）故意不进公开树。",
+      "设备控制与邮件读取威胁模型极重；权限边界与物理停机不可当装饰。",
+      "上面写的是作者公开做法与失败课，不是替你声称「已零事故运行 N 天」。",
+    ],
+    prompts: [
+      {
+        title: "常驻 Agent 治理闸门简报",
+        body: `你是个人常驻 Agent 治理助手。只根据用户约束写闸门提问清单，不要编造已上线。
+
+运行位置：{{runtime_hosts}}
+可触达数据：{{data_surfaces}}
+是否允许无人值守改码/花费：{{unattended_scope}}
+现有停机方式：{{kill_switch}}
+
+输出 Markdown：
+1. 动作四级（读/可逆/永久/花费）举例
+2. 哪些必须规则触发盲审（Agent 不可 opt-out）
+3. 物理或带外停机候选
+4. 审计字段与周合成要读的失败类
+禁止索要生产密钥；禁止声称系统已常驻运行。`,
+      },
+      {
+        title: "闸门失效复盘提纲",
+        body: `某次常驻 Agent 动作越过了你以为存在的控制，请写复盘提纲。
+
+事件摘要：{{incident}}
+原以为的闸门：{{assumed_gate}}
+实际影响：{{impact}}
+
+输出：
+1. 闸门是未绑定、可被 Agent 跳过，还是外部重启毁掉了飞行中状态
+2. 最小补丁（自修复绑定 / 盲审 / 恰好一次重入队 / 物理键）
+3. 如何把课次写入可检索 playbook 而非只留在 commit
+4. 人工确认清单
+不要伪造「已永久修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://yalcin.ai/ghost-core/",
+      label: "yalcin.ai · 65 days, 680 commits, 170 lessons (Eren Yalçın / ghost-core)",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "332",
+    slug: "platypus-kanban-cron-agent-pipeline",
+    title: "Platypus：用 Cron+看板把研究流水线跑过夜",
+    summary: "对照个人开源实践：自托管 Agent 平台用 cron/事件触发+看板列流转，把选题→检索→Obsidian 笔记串成无人值守管线；不代你外发、不宣称已托管 SaaS。",
+    description:
+      "面向独立开发者：把「聊天界面扛不住自治」写成可对账的触发器/看板/沙箱组合，区别于通用定时任务与个人研究维基壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://willdady.com/i-built-platypus-an-ai-agent-platform-because-chat-interfaces-arent-enough",
+    sourceLabel: "willdady.com·Will Dady Platypus 实践帖",
+    upvotes: 140,
+    trending: false,
+    tags: [
+      "自托管",
+      "Cron",
+      "Kanban",
+      "Obsidian",
+      "Agent 编排",
+    ],
+    howItWorks: [
+      "粘贴你要自治的流水线（研究/新闻/清理）、是否自托管、以及笔记库与模型成本敏感度",
+      "Agent 按实践帖输出：Agent/Skill/Sub-agent 分工→cron 与事件触发→看板列契约→便宜模型做搬运提问清单",
+      "人工在自有机器 Docker Compose 落地；Agent 不代发外邮、不持你的云密钥写回生产",
+    ],
+    tips: [
+      "源帖对比：多数开源 AI 界面是对话中心；Platypus 是行动中心——聊天只是表面之一，重点是无人值守时做什么",
+      "与 scheduled-recurring-agent-tasks / personal-research-wiki-agent 不同：本条是看板列+事件触发驱动的多 Agent 研究管线，不是单一定时壳或维基问答",
+    ],
+    approach: `作者 Will Dady 在个人博客《I built Platypus, an AI agent platform, because chat interfaces aren't enough》（文首 28 June, 2026；og article:published_time 可核）写明：自 2025-11 起做自托管开源平台 Platypus——不是聊天机器人，而是 Agent 可按计划跑、响应事件、互相委派、跨会话记住偏好。清晨醒来可见新闻仪表盘已更新、若干研究主题已落入结构化 Obsidian 笔记、过期部署被清理。
+
+原语：Agent 钉死 provider/模型/系统提示/工具/skills/sub-agents；Skills 运行时按需拉取；Sub-agent 隔离上下文回流结果；Memory 后台抽事实偏好并用向量检索。自动化层：Cron（例：新闻 Agent 每天 6:15）与事件触发（看板卡片进入某列即启动）；Kanban 作任务面；Sandbox 在隔离容器给 shell/文件系统；Dashboard 由 Agent 写组件。真实管线：协调 Agent 往「To Do」丢研究卡 → 每小时研究 Agent 检索并写回 → 入「Note Processing」触发 Obsidian Agent 写带 frontmatter/wiki-link 的笔记再标 Done；研究用前沿模型、搬运用便宜模型。明确不做：内置通用 RAG 产品化、实时多人协作、托管版（Docker Compose 自托管）。本场景据此输出「触发器+看板自治管线」提纲。禁止声称已替你过夜跑通或代发内容。`,
+    outcomes: [
+      "源以机制与个人日用叙事为主（过夜新闻/研究/清理），未给出可外推的统一成功率或小时节省百分比。",
+      "能把「再做一个聊天 UI」与「cron/事件+看板列契约+按 Agent 选模型」拆开。",
+      "为列状态机、失败重试、沙箱与 MCP 边界提供提问清单。",
+    ],
+    caveats: [
+      "作者标明 sandbox/dashboard 等仍实验性；自托管意味着你要自己护数据与密钥。",
+      "事件触发管线会放大错误卡片；列契约与人工抽检不可省。",
+      "上面写的是个人开源实践，不是 Platypus 云服务 SLA。",
+    ],
+    prompts: [
+      {
+        title: "过夜研究管线编排简报",
+        body: `你是自托管 Agent 编排助手。只根据用户约束写 cron+看板管线提问清单，不要编造已部署。
+
+流水线目标：{{pipeline_goal}}
+笔记/输出位置：{{output_sink}}
+可接受无人值守动作：{{unattended_actions}}
+模型成本敏感度：{{cost_sensitivity}}
+
+输出 Markdown：
+1. Agent 角色拆分（协调/研究/入库/清理）
+2. 看板列与事件触发契约
+3. 哪步用前沿模型、哪步用便宜模型
+4. 失败重试与人工抽检点
+禁止索要云厂商根密钥；禁止声称管线已过夜成功。`,
+      },
+      {
+        title: "看板卡住卡片分诊提纲",
+        body: `某列卡片堆积或循环重试，请写分诊提纲。
+
+卡住列：{{stuck_column}}
+典型错误日志摘要：{{error_summary}}
+是否允许自动移回 To Do：{{requeue_ok}}
+
+输出：
+1. 是触发器误配、模型失败还是 Obsidian 路径权限
+2. 哪些可自动重试、哪些必须人工改卡
+3. 清理 cron 是否误删未完成卡
+4. 审计字段
+不要伪造「队列已清空」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://willdady.com/i-built-platypus-an-ai-agent-platform-because-chat-interfaces-arent-enough",
+      label: "willdady.com · I built Platypus, an AI agent platform… (Will Dady)",
+      date: "2026-06-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "333",
+    slug: "cotocha-vps-openclaw-life-ops",
+    title: "Cotocha：一台廉价 VPS 上的生活运营编排",
+    summary: "对照个人实践：用 OpenClaw 网关在德国 VPS 跑主编排+专家小队，承接基建巡检、告警、研究与草稿；人不做五标签页编排器，但关键动作仍人工确认。",
+    description:
+      "面向远程独立开发者：把「早晨开五个控制台」写成可对账的 VPS 编排叙事，区别于 N8N 节点迷宫导购与部门自托管 Agent 名册。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://mariohealthbits.dev/en/blog/2026-04-01-cotocha-orquestador-agentes-ia/",
+    sourceLabel: "mariohealthbits.dev·Mario Inostroza Cotocha 实践帖",
+    upvotes: 153,
+    trending: false,
+    tags: [
+      "VPS",
+      "OpenClaw",
+      "Telegram",
+      "编排",
+      "独立开发者",
+    ],
+    howItWorks: [
+      "粘贴你早晨靠哪些控制台确认健康、是否已有 Telegram/IM 入口、以及哪些动作绝不可无人值守",
+      "Agent 按实践帖输出：主编排分类委派→专家角色边界→cron 巡检→记忆回流提问清单",
+      "人工在自有 VPS 落地；Agent 不登录你的云控台、不代发客户消息",
+    ],
+    tips: [
+      "源帖对比监控仪表盘：仪表盘给指标，不告诉你做什么；作者要的是「别的东西当编排器」",
+      "与 company-dept-self-hosted-agents / solo-company-agent-departments 不同：本条是个人三产品+单 VPS 的 OpenClaw 生活运营，不是企业部门编制方案；亦非 OpenClaw 导购落地页",
+    ],
+    approach: `作者 Mario Inostroza 在个人博客《Cotocha: the agent orchestrator that runs my life from a VPS》（datePublished=2026-04-01）写明：人在巴塔哥尼亚运营三款 AI 产品，德国廉价 VPS 上跑基于 OpenClaw 的编排器 Cotocha——自醒、巡检、告警、甚至起草博文。过去早晨要开 Telegram/Slack/GitHub/Railway/Contabo 五个标签页才知道昨夜是否挂了；仪表盘给指标却不编排行动。
+
+Cotocha 是主 Agent，协调专家小队（文中角色名：Stark 基建巡检、Shuri 写代码、Loki 财务、Vision 市场情报、Banner 临床数据、Rocket 销售线索）。Telegram 消息进入后：分类→委派→汇总→跟进；除非必要不打扰人。OpenClaw 提供状态持久、cron、文件系统与命令执行，而非 ChatGPT 套壳。作者描述曾一觉醒来已跑约 20 个夜间 cron、内存约 33%（自判安全阈值内）、准备 HN 相关简报、从数据库摘要抽行动项、同步 Obsidian。记忆侧用向量后端（文中称 QMD）做语义检索，避免重复踩坑。对比 N8N/Make：节点适合简单流，但「读文件+git pull+查库+特定模型生成+Telegram 交互按钮」会变成迷宫；要的是系统级直接能力。本场景据此输出「单 VPS 生活运营编排」提纲。禁止声称已替你值守三款产品或代发客户触达。`,
+    outcomes: [
+      "源披露个人定性场景（约 20 个夜间 cron、内存阈值自检、简报与 Obsidian 同步等），未给统一故障率或省时百分比；不可外推。",
+      "能把「再开一个监控看板」与「主编排+专家委派+cron」拆开。",
+      "为角色边界、Telegram 入口与不可自动化清单提供提问提纲。",
+    ],
+    caveats: [
+      "OpenClaw/命令执行权限极高；VPS 失陷≈全家桶失陷，须最小权限与密钥隔离。",
+      "文中专家名与产品栈属作者语境；照搬角色名无意义，要按你的产品切分。",
+      "上面写的是个人实践侧写，不是厂商 SLA 或「已替你从远程运营 N 个产品」。",
+    ],
+    prompts: [
+      {
+        title: "单 VPS 编排角色简报",
+        body: `你是个人 VPS Agent 编排助手。只根据用户约束写角色与 cron 提问清单，不要编造已上线。
+
+产品/站点数量：{{product_count}}
+早晨现用控制台：{{morning_consoles}}
+IM 入口：{{im_channel}}
+禁止无人值守动作：{{forbidden_actions}}
+
+输出 Markdown：
+1. 主编排 vs 专家角色草案（职责一句、工具边界）
+2. 夜间 cron 候选与告警升级
+3. 记忆中应持久化的「已踩坑」类型
+4. 人工必批清单
+禁止索要 SSH 私钥；禁止声称已值守成功。`,
+      },
+      {
+        title: "为何不用纯 N8N 的决策提纲",
+        body: `团队纠结 N8N/Make 与自托管 Agent 网关，请写决策提纲。
+
+典型任务链：{{task_chain}}
+合规/数据驻留：{{compliance}}
+运维人手：{{ops_capacity}}
+
+输出：
+1. 哪些段适合节点流、哪些段需要 shell/git/文件系统
+2. 失控时的回滚面对比
+3. 混合架构（节点做触达、Agent 做推理）是否更稳
+4. 90 天试跑指标（人工介入次数等）
+不要伪造「已证明 N8N 不够用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mariohealthbits.dev/en/blog/2026-04-01-cotocha-orquestador-agentes-ia/",
+      label: "mariohealthbits.dev · Cotocha: the agent orchestrator… (Mario Inostroza)",
+      date: "2026-04-01",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "334",
+    slug: "nonengineer-claude-figma-site-rebuild",
+    title: "非工程师用 Claude+Figma MCP 重做官网",
+    summary: "对照创始人实践：以 VS Code+Claude Code+GitHub CLI+Figma Dev Mode MCP 按分支/PR/自审/CI 重做落地页；人盯设计还原与误改，不代合并核心产品。",
+    description:
+      "面向非工程创始人与小团队：把「不会写代码也能进真实仓库」写成可对账工作流与翻车处理，区别于通用终端结对与单次 Figma 出首页示意。",
+    categories: [
+      "devtools",
+      "career",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://blog.nseldeib.com/p/pairing-with-claude-code-to-rebuild",
+    sourceLabel: "Nadia Eldeib·非工程师结对实践帖",
+    upvotes: 164,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Figma MCP",
+      "非工程师",
+      "PR 工作流",
+      "落地页",
+    ],
+    howItWorks: [
+      "粘贴改动是否隔离于核心产品、设计稿来源（Figma）、以及是否有工程师做合并前门闩",
+      "Agent 按实践帖输出：本地预览→分支/PR→「CTO 角色」自审→清理哈希垃圾文件→CI 失败回滚提问清单",
+      "人工合并与线上验收；Agent 不代合 main、不动支付/鉴权核心路径",
+    ],
+    tips: [
+      "源帖强调：能力在「结对」——人定方向与验收，Agent 加速执行；落地页与核心产品隔离才把风险压住",
+      "与 claude-code-terminal-pair-agent / figma-mcp-build-homepage 不同：本条是非工程师创始人在真实 startup 仓库走完整 PR/CI/回滚，并专述 Figma MCP 哈希垃圾文件与中途停工，不是 CLI 发布说明或单次出首页示意",
+    ],
+    approach: `作者 Nadia Eldeib（非工程创始人）在个人 Substack《Pairing with Claude Code to Rebuild My Startup’s Website》（datePublished=2025-09-19；HN item 45336775 讨论日约 2025-09-22）写明：用 VS Code + Claude Code CLI + GitHub CLI（由 Claude 触发）+ Figma Dev Mode MCP，把 CodeYam 新设计落地进真实代码库；版本一已上线。动机是设计师与创始人推进落地页时不打断核心产品研发。
+
+工作方式收敛到常见工程节律：本地改→开发服务器预览（后发现同网手机预览有用）→频繁推 WIP 分支→清理并让 Claude 测→开 PR。有效技巧：让 Claude「扮演联合创始人/CTO」审 PR、给合并建议，再只采纳说得通的清理项；CI 过后再合并删分支，并在开发环境手测。翻车清单：Figma MCP 产出大量未引用哈希名 SVG/文件，需专门清扫与语义化重命名，且常「清完又冒」；任务中途静默停工需多次 continue；走偏时宁可硬重置回已知好提交再开新会话。结论：隔离落地页风险可控，但仍需人持续核对改动文件；早期 PR 最好有工程师反馈校准「该看什么」。本场景据此输出「非工程师结对进仓」提纲。禁止声称已代你合并生产或设计已 100% 像素级保证。`,
+    outcomes: [
+      "源披露定性：以周计而非以月年学会 Remix 后手写；可高保真对齐 Figma；未给统一工时对比表或缺陷密度，不可外推。",
+      "能把「纯 vibe 改 main」与「分支/PR/角色自审/CI/可回滚」拆开。",
+      "为 MCP 垃圾文件清理、停工续跑与回滚策略提供提问清单。",
+    ],
+    caveats: [
+      "作者明确：不信任任何 Agent 在无人紧盯下改生产；同事人工审仍然关键。",
+      "Figma Dev Mode MCP 当时为 Beta，行为会变；哈希垃圾文件问题可能随版本消长。",
+      "上面写的是个人结对叙事，不是 Anthropic/Figma 官方教程承诺。",
+    ],
+    prompts: [
+      {
+        title: "非工程师结对进仓简报",
+        body: `你是非工程师与编码 Agent 结对教练。只根据用户约束写进仓工作流提问清单，不要编造已合并。
+
+改动范围：{{change_scope}}
+是否隔离于核心产品：{{isolated_from_core}}
+设计来源：{{design_source}}
+合并前门闩人：{{merge_gatekeeper}}
+
+输出 Markdown：
+1. 分支/预览/PR/CI/手测最小闭环
+2. 「CTO 角色」自审要问的 5 个问题
+3. 禁止 Agent 触碰的路径
+4. 每日回滚点策略
+禁止索要仓库写权限令牌；禁止声称 PR 已合并。`,
+      },
+      {
+        title: "Figma MCP 垃圾文件清理提纲",
+        body: `PR 里出现大量哈希名未引用资源，请写清理提纲。
+
+可疑路径样例：{{suspect_paths}}
+开发环境是否已目视：{{dev_preview_checked}}
+
+输出：
+1. 如何确认未引用再删
+2. 语义化重命名步骤与人工抽检
+3. 如何防止下一轮 MCP 再次生成
+4. 误删后的恢复动作
+不要伪造「仓库已无垃圾文件」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.nseldeib.com/p/pairing-with-claude-code-to-rebuild",
+      label: "Nadia’s Substack · Pairing with Claude Code to Rebuild My Startup’s Website",
+      date: "2025-09-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "335",
+    slug: "sluice-shared-agent-verify-queue",
+    title: "Sluice：并行 Agent 共用验证队列与缓存",
+    summary: "对照个人实践：多 worktree Agent 抢跑同一套测/检导致 OOM 时，用共用队列+按树缓存把重复验证变成一次；不代你改项目钩子政策、不关停必要检查。",
+    description:
+      "面向并行使用编码 Agent 的个人/小团队：把「机器被自己的测试打崩」写成可对账的共享验证层，区别于舰队式修 CI 与单次 CR 机器人。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://josegarrido.dev/en/sluice-shared-queue-so-your-agents-stop-repeating-tests/",
+    sourceLabel: "josegarrido.dev·José Garrido Sluice 实践帖",
+    upvotes: 175,
+    trending: false,
+    tags: [
+      "验证队列",
+      "缓存",
+      "worktree",
+      "Claude Code",
+      "OOM",
+    ],
+    howItWorks: [
+      "粘贴并行 Agent/worktree 数量、最贵检查（测/lint/type）、以及机器内存是否被 systemd-oomd/OOM killer 动过",
+      "Agent 按实践帖输出：门禁（gate）定义→按 git 树缓存键→CPU/内存预算→钩子与 MCP 接入提问清单",
+      "人工在自有 Linux 机安装；Agent 不删除你的测试、不宣称已替全团队省下 N 小时",
+    ],
+    tips: [
+      "源帖关键句：Sluice 不让测试更快，而是避免重复跑、排序何时跑、并护住机器",
+      "与 fleet-ci-fix-ship-prs / code-review-pr-agent / stripe-minions-oneshot-pr-agents 不同：本条是本机多 Agent 共享验证队列与树级缓存，不是远端舰队修 CI 或无人值守出 PR",
+    ],
+    approach: `作者 José Antonio Garrido 在个人站《Sluice: one queue for every build, test and heavy command your agents run》（datePublished=2026-10-29）写明：日常用大量 Claude Code 等 Agent 各占 git worktree，项目自带昂贵 pre-commit/pre-push；无人协调时同一套测/构建反复跑到内存耗尽——内核 OOM killer 与 systemd-oomd 开始杀浏览器与 Agent 工具。Sluice（Rust、MIT）做本机共享验证队列与缓存：每个 gate（测试/lint/类型检查等）对同一 git 树只跑一次，受共同 CPU/内存预算约束，结果可复用；git hooks 无需 Agent 配合，支持 MCP，另有 Claude Code 插件。
+
+机制要点：缓存键绑定工作树精确内容；工具链版本变化应使缓存失效；未命中才入队，命中可在约数十毫秒级返回（作者机上的观察）。作者给出两台机器约一周窗口的 daemon 库计量（源内表）：例如第二机约 5.8 天 Checks run 1,874 / Cache answers 1,142 / Run time saved 19.2 hours；开发机同时段另一组数字；合计约 28 小时「本可不必再跑」的测与 lint。目标是护机与去重，不是加速单次测试本身。本场景据此输出「共享验证队列」提纲。禁止建议关闭所有测试来「省时间」。`,
+    outcomes: [
+      "源披露作者两台机器约一周窗口的计量（如约 1874 次检查、约 1142 次缓存命中、约 19.2 小时节省等，另有合计约 28 小时叙述）；属其工作负载，不可外推为你的机器承诺。",
+      "能把「再加一台更大内存云主机」与「按树去重+预算排队」拆开。",
+      "为 gate 划分、缓存失效条件与 OOM 护栏提供提问清单。",
+    ],
+    caveats: [
+      "依赖 Linux 与可拦截的钩子/命令路径；不是所有商业 CI 策略都能本地化。",
+      "缓存错误失效条件会导致「绿了但其实没跑到新代码」——工具链与环境指纹必须纳入键。",
+      "上面写的是作者机器上的开源实践数字，不是对你仓库的基准测试报告。",
+    ],
+    prompts: [
+      {
+        title: "本机共享验证队列简报",
+        body: `你是并行编码 Agent 基础设施助手。只根据用户约束写 Sluice 式队列提问清单，不要编造已安装。
+
+并行 worktree 数：{{worktree_count}}
+最贵检查命令：{{expensive_checks}}
+近期 OOM/卡顿症状：{{oom_symptoms}}
+钩子是否可改：{{hooks_editable}}
+
+输出 Markdown：
+1. 建议做成 gate 的命令 vs 必须每次跑的命令
+2. 缓存键应包含的指纹（树/工具链/环境）
+3. CPU/内存预算与抢占策略
+4. 与 CI 远端仍保留的双重门闩
+禁止建议删除测试；禁止声称已节省 N 小时。`,
+      },
+      {
+        title: "缓存命中但行为不对的分诊提纲",
+        body: `本地钩子秒过但 CI 失败或运行时异常，请写分诊提纲。
+
+本地现象：{{local_symptom}}
+CI 失败摘要：{{ci_failure}}
+近期工具链变更：{{toolchain_change}}
+
+输出：
+1. 是否错误缓存命中
+2. 应失效的指纹字段
+3. 强制重跑与对比步骤
+4. 是否该把该 gate 标成不可缓存
+不要伪造「缓存层已修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://josegarrido.dev/en/sluice-shared-queue-so-your-agents-stop-repeating-tests/",
+      label: "josegarrido.dev · Sluice: one queue for every build, test and heavy command…",
+      date: "2026-10-29",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
