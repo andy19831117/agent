@@ -25696,6 +25696,456 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
       dateLabel: "发布",
     },
   },
+  {
+    id: "431",
+    slug: "alex-cloudstar-32784-lines-two-day-rebuild",
+    title: "Alex：两天「32,784 行」背后——543 测、零坏链，最好的交付是删掉 API",
+    summary: "用 Claude Code 两天重建站点；披露约 100 commit/11 PR、228 帖改写、543 测、索引 URL 全 200、删 API 后静态页 1093→596；不代你把行数当生产力。",
+    description:
+      "面向一人要重建内容站/作品集、又怕「行数好看但资产伤了」的独立开发者：把负向约束、行为测与「该不该存在」写成门禁，区别于工具对照评测与多会话治理皮带。",
+    categories: [
+      "content",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://alexcloudstar.com/blog/claude-code-workflow-32784-lines-2-days-2026/",
+    sourceLabel: "alexcloudstar.com·Alex Cloudstar 实践帖",
+    upvotes: 322,
+    trending: false,
+    tags: [
+      "站点重建",
+      "零坏链",
+      "行为测",
+      "删除优于生成",
+      "DataForSEO",
+    ],
+    howItWorks: [
+      "粘贴必须保留的索引 URL 规则、负向措辞/版式约束，以及是否已有行为测当合并合同",
+      "Agent 按实践帖输出：两日切片合并节奏、URL 回归门、以及「该不该存在」删除清单",
+      "人工保留产品与品味裁决；Agent 不代你声称行数等于产出或可无人值守改生产路由",
+    ],
+    tips: [
+      "源帖：约 Oct 21 晚→Oct 23 晨；~100 commits、11 merged PR；Astro→Next.js 16；228 帖按关键词改写；543 tests；零坏链；DataForSEO 313 次调用约 $4.37；删公共 JSON API 后静态页约 1093→596；站内仍靠 llms.txt/Markdown 协商",
+      "与 shape-marko-claude-vs-cursor-router / chirag-seven-months-agents-leash-28335 不同：本条是内容站重建+行数祛魅+删除门禁，不是同票工具对照或七个月短皮带遥测",
+    ],
+    approach: `Alex Cloudstar 在个人站《I Shipped 32,784 Lines of Code in 2 Days With Claude Code. Here Is What the Number Hides》（JSON-LD/页内 datePublished 2026-10-24 → 2026-10-24；DEV 转载同文）写明：他把 LinkedIn 上的「32,784 行」拆穿——行数是最弱事实。两日覆盖：站点从 2025-12 的 Astro 全量重建到 Next.js 16（Cache Components、轻改版、共享面包屑、主页重写），228 篇帖按真实关键词数据改标题/摘要/导语，543 项测试通过，且线上每个已索引 URL 仍须 200 有内容。约 100 次提交、11 个已合并 PR；首提交约 10 月 21 日晚、末次约 10 月 23 日晨。
+
+工作法强调「写代码成本接近零，决定该存在什么没降」：先把负向约束写进会话可读说明（勿断链、标题换行稳定、禁用某些元数据措辞、元数据规则由测试强制）；把测试当合同而非事后补丁；小切片合并并解释每个 diff 决策。关键词侧用 DataForSEO 跑 313 次调用约 $4.37，换来可赢查询地图，但仍用人味否决约 720 月搜、自己不喜欢的措辞。
+
+最有价值交付是删除：10 月 23 日晨他还版本化过 /api/v1 与弃用头，随后整段删掉公共 JSON API——作品集无 SEO/AI 发现增益却多出约 500 静态页；删后静态页约 1093→596，发现面留给 llms.txt 与 Markdown 协商。踩坑：Agent 为「干净结构」重定向分页、把隐藏项目页打成 404，虽曾口头要求保链——于是写成「Keep every URL main serves」并在每次路由变更后对照旧 sitemap。本场景据此输出「两日重建+删除门禁」提纲。禁止建议用行数或绿灯编译代替人眼看页、或把 32,784 写成可复现 KPI。`,
+    outcomes: [
+      "源披露约两日/~100 commit/11 PR、228 帖改写、543 测、零坏链、DataForSEO 313 次约 $4.37、删 API 后静态页约 1093→596 等作者口径；属一人作品集窗口，不可外推为你的流量、排名或「行数即产出」。",
+      "能把「生成很快」与「负向约束 + 行为测合同 + 该不该存在」拆开。",
+      "为 Agent 优化干净结构却弄断索引 URL、以及用行数自嗨提供提问清单。",
+    ],
+    caveats: [
+      "编译/测绿不等于页面说对了话；作者强调须人看。",
+      "并行子代理只适合不碰同一文件的切片，否则审查负载倍增。",
+      "上面写的是 Alex 个人实践帖，不是 Next.js/Anthropic/DataForSEO 官文。",
+    ],
+    prompts: [
+      {
+        title: "内容站两日重建门禁简报",
+        body: `你是独立站重建顾问。只根据用户约束写节奏与验收门，不要编造流量或行数 KPI。
+
+必须保留的 URL 规则：{{url_rules}}
+负向措辞/版式约束：{{negatives}}
+是否已有行为测：{{tests}}
+
+输出 Markdown：
+1. 负向约束清单（写进会话可读处）
+2. URL/ sitemap 回归门
+3. 小切片合并与「该不该存在」删除检查
+4. 人必须保留的品味/产品决策
+禁止建议用行数当产出；禁止伪造「两日必零坏链」。`,
+      },
+      {
+        title: "测绿但索引 URL 被重定向/404 复盘提纲",
+        body: `Agent 为干净结构改了路由，分页或隐藏页对索引用户坏了。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺书面保链约束、缺旧 sitemap 对照，还是合并切片过大
+2. 最小回归夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「单测已覆盖全部 SEO 资产」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://alexcloudstar.com/blog/claude-code-workflow-32784-lines-2-days-2026/",
+      label: "alexcloudstar.com · I Shipped 32,784 Lines of Code in 2 Days With Claude Code. Here Is What the Number Hides",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "432",
+    slug: "jeremy-keeshin-16-sites-linode-day-migrate",
+    title: "Jeremy：一天用 Claude Code 迁完约 16 个站——Obsidian 计划门与人跑脚本",
+    summary: "自 2011 旧 Linode 迁到新机；披露约一日、16+ 站（静态/WP/Django）、每站 markdown 计划+问答、脚本由人执行核验；不代你无人值守改 DNS/生产。",
+    description:
+      "面向一人扛多年个人站/小项目机、又被 Ubuntu 与 bitrot 卡住的开发者：把 Obsidian 进度、开放问题与「脚本我跑」写成纪律，区别于框架大版本下午迁与内容站两日重建。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://thekeesh.com/2026/04/how-i-migrated-16-sites-between-linode-servers-in-1-day-with-claude-code/",
+    sourceLabel: "thekeesh.com·Jeremy Keeshin 实践帖",
+    upvotes: 323,
+    trending: false,
+    tags: [
+      "服务器迁移",
+      "Linode",
+      "Obsidian",
+      "bitrot",
+      "人跑脚本",
+    ],
+    howItWorks: [
+      "粘贴源/目标机约束、站类型清单，以及是否要求「Agent 只写脚本、人执行」",
+      "Agent 按实践帖输出：每站计划模板、开放问题表、以及小→中→大批次验证门",
+      "人工保留执行与切流决策；Agent 不代你声称可无人值守改生产或免懂系统",
+    ],
+    tips: [
+      "源帖：旧机自约 2011；约一日迁到新 Linode；16+ 站含静态、WordPress、简单 Django；Obsidian 目录跟踪；每站迁移计划+todos→完成后 readme；Claude 写检查/迁移脚本，作者运行或核验；先修简单静态站；批次验证；顺带清理旧 WP 漏洞与 bitrot；自承不会写代码很难做成",
+      "与 flowingcode-vaadin10-to-25-claude-afternoon / alex-cloudstar-32784-lines-two-day-rebuild 不同：本条是多站主机迁移+人跑脚本，不是 Vaadin 框架下午迁或内容站 SEO 重建",
+    ],
+    approach: `Jeremy Keeshin 在个人博客《How I migrated 16 sites between Linode servers in 1 day with Claude Code》（页内/article:published_time 2026-04-23T00:26:37+00:00 → 2026-04-23）写明：旧 Linode 自约 2011 年起托管个人站点，Ubuntu 与升级债越积越重；约一日内用 Claude Code 迁到新机，覆盖 16+ 站（静态、WordPress、简单 Django）。
+
+流程以 markdown 为中枢：新建目录用 Obsidian 跟踪；先写上下文与总计划，再展开规划文档、开放问题、参考信息与待决事项——人答完问题后先迁简单静态站。每站一个文件夹：顶部 todos 的迁移计划，完成后留下说明「如何工作」的 readme。作者强调二十多年项目里大量遗留，许多本会因「不值得动手」搁置，这次被整理并修到比起点更好。
+
+协作分工：Claude 写检查与跨机迁移脚本，他在终端实际运行或核验输出；批量操作（如图片重传、多帖更新）按「先一个→再几个→再大批次」验证。顺带发现并清理旧 WordPress 漏洞；大量站点因 bitrot（文件/库/API 弃用）损坏，多数被修回。工作流偏好 bash 脚本；会话风格不完全一致、曾试图保存偏好、途中有会话崩溃。明确：不懂编码很难做成——仍须知道要什么与为何。迁完后还把本地代码与 GitHub 远程对齐，并更新部署相关钩子以便推送上线（本条主题是迁移验收，不展开钩子教程）。本场景据此输出「一日多站迁移」提纲。禁止建议无人值守改 DNS/生产，或把「约一日」写成无运维经验也可复现。`,
+    outcomes: [
+      "源披露约一日、16+ 站类型、Obsidian/每站计划、脚本由人执行核验、以及 bitrot/旧 WP 漏洞清理等作者口径；属个人主机窗口，不可外推为你的停机时长、数据零损或「不懂系统也能一日迁完」。",
+      "能把「Agent 会写脚本」与「人答开放问题 + 人跑命令 + 批次验证」拆开。",
+      "为因 bitrot 搁置多年的站、以及一次改太多站提供提问清单。",
+    ],
+    caveats: [
+      "作者自承无编码/系统判断很难做成；Agent 不能替你负切流责任。",
+      "会话崩溃与风格漂移会发生；进度应落在外部 markdown。",
+      "上面写的是 Jeremy 个人实践帖，不是 Linode/Canonical 官文。",
+    ],
+    prompts: [
+      {
+        title: "多站主机一日迁移门禁简报",
+        body: `你是个人基础设施迁移顾问。只根据用户约束写计划与验收门，不要编造已迁成功。
+
+站清单/类型：{{sites}}
+源/目标约束：{{hosts}}
+是否强制人跑脚本：{{human_run}}
+
+输出 Markdown：
+1. 总计划与开放问题表
+2. 每站计划模板（todos→readme）
+3. 小→中→大批次验证门
+4. 人必须保留的切流/回滚决策
+禁止建议无人值守改生产 DNS；禁止伪造「一日必零停机」。`,
+      },
+      {
+        title: "bitrot 站点批量修复复盘提纲",
+        body: `迁移后部分站因弃用库/API/缺失资源仍坏。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺单站验收、缺批次门，还是缺漏洞扫描
+2. 最小修复夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「脚本跑通即全站健康」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://thekeesh.com/2026/04/how-i-migrated-16-sites-between-linode-servers-in-1-day-with-claude-code/",
+      label: "thekeesh.com · How I migrated 16 sites between Linode servers in 1 day with Claude Code",
+      date: "2026-04-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "433",
+    slug: "flowingcode-vaadin10-to-25-claude-afternoon",
+    title: "Flowing Code：Vaadin 10→25 一下午——先出迁移指南再动手，约 3–4 小时",
+    summary: "团队用 Claude Opus 复活 2018 黑客松应用；披露先写可分享迁移指南、免费无 Key API 约束、约 3–4 小时有效会话、后接 Vaadin MCP/Signals；不代你无人值守合入商标与架构。",
+    description:
+      "面向要把跨大版本 Java/Vaadin 遗留演示救活、又怕盲开改的小团队：把「首交付=指南」、人裁 API/商标与测试中禁改写成门禁，区别于一日多站主机迁与两日内容站重建。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.flowingcode.com/en/vaadin-10-to-25-migrating-a-8-year-old-app-with-claude-ai/",
+    sourceLabel: "flowingcode.com·Paola De Bartolo/Flowing Code 实践帖",
+    upvotes: 324,
+    trending: false,
+    tags: [
+      "Vaadin",
+      "遗留迁移",
+      "迁移指南",
+      "人在环",
+      "MCP",
+    ],
+    howItWorks: [
+      "粘贴源/目标栈、是否必须免费无 Key 数据源，以及商标/免责约束",
+      "Agent 按实践帖输出：首份迁移指南提纲、人必须拍板项、以及「测试中勿改文件」纪律",
+      "人工保留 API/法律与合入决策；Agent 不代你声称可覆盖全部破坏性变更或免审上线",
+    ],
+    tips: [
+      "源帖：2018 Vaadin 10 + Java 8 + Spring Boot 2.0 → Vaadin 25 + Java 21 + Spring Boot 4.0.6；原 worldcup.sfg.io 已永久下线；严格「免费、无 API Key」；选用 worldcup26.ir；应用更名 Global Football 2026 Stats 并加非隶属声明；有效会话约 3–4 小时；Vite 打包约 3 分钟最慢机械步；MVP 分层使 presenter/DTO 未动；后接 Vaadin MCP 与 SharedMapSignal 重构直播分推送",
+      "与 jeremy-keeshin-16-sites-linode-day-migrate / outloop-claude-legacy-dotnet-audit-harden 不同：本条是 Vaadin/Java 大版本下午迁+指南先行，不是多站主机迁或 .NET 审计加固",
+    ],
+    approach: `Paola De Bartolo 代表 Flowing Code 团队在《Vaadin 10 to 25: Migrating a 8-Year-Old App with Claude AI》（JSON-LD datePublished 2026-06-18T19:49:25Z → 2026-06-18）写明：他们要把 2018 黑客松足球赛况看板从 Vaadin 10/Java 8/Spring Boot 2.0 迁到 Vaadin 25/Java 21/Spring Boot 4.0.6，并用 Claude Opus 作结对。首交付不是代码，而是可分享的迁移指南——盘点现状、比较数据源、标出必须由人决定的项；Claude 侦察确认原 API worldcup.sfg.io 已永久下线。
+
+人裁关键决策：严格「免费、无 API Key」直接排除付费富统计源，产品收敛为赛程/比分/小组/国家页，选用 worldcup26.ir；因赛事相关商标，人决定更名为 Global Football 2026 Stats 并加非隶属声明；纠正模型把 Vaadin 25 误绑 Spring Boot 3.x 的过时假设。架构红利：原 MVP 分层使 view-DTO 与数据源无关，主要重写 repository/mapper，presenter/屏幕/DTO 基本不动。
+
+协作亮点：读已解析 JAR/官方 starter POM、curl 验活 API schema；机械扫 javax→jakarta 与弃用组件。踩坑：缺 vaadin-dev 依赖导致本地命令崩；测试运行中 Agent 改文件造成冲突配置——须明示「我在测试，别动」。事后补接 Vaadin MCP，用 SharedMapSignal 替换 2018 手写 broadcaster/UI.access 直播分推送。作者估计同类手工要数日，本次有效会话约 3–4 小时，最慢机械步是约 3 分钟的 Vite 打包。本场景据此输出「指南先行的大版本迁」提纲。禁止建议无人值守处理商标或把 3–4 小时写成任意遗留仓保证。`,
+    outcomes: [
+      "源披露约 3–4 小时有效会话、指南先行、免费无 Key 约束、商标更名声明、以及后接 MCP/Signals 等作者口径；属小演示仓窗口，不可外推为你的企业遗留工期或「下午必可上生产」。",
+      "能把「能编译到新版本」与「人裁数据/法律 + 测试中禁改 + 领域 MCP」拆开。",
+      "为盲开大版本、以及 Agent 在联调时抢改文件提供提问清单。",
+    ],
+    caveats: [
+      "免费社区 API 可能拥堵/短暂不可用；作者已提示。",
+      "知识截止日期会导致错误框架假设，须人纠。",
+      "上面写的是 Flowing Code 团队实践帖，不是 Vaadin/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "大版本遗留迁移指南先行简报",
+        body: `你是 Java/前端框架现代化顾问。只根据用户约束写指南与门禁，不要编造已通过兼容认证。
+
+源栈：{{from_stack}}
+目标栈：{{to_stack}}
+数据/商标约束：{{constraints}}
+
+输出 Markdown：
+1. 首份迁移指南目录（含人必须拍板项）
+2. 分层上「可不动」与「必重写」边界
+3. 联调期「测试中勿改」纪律
+4. 人必须保留的法律/产品决策
+禁止建议无人值守合入；禁止伪造「下午必生产就绪」。`,
+      },
+      {
+        title: "联调时 Agent 抢改文件复盘提纲",
+        body: `人在跑应用验收，Agent 同时改配置导致启动冲突。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺原子变更边界、缺口头禁令，还是缺分支隔离
+2. 最小恢复步骤
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「Agent 会自动感知你在测试」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.flowingcode.com/en/vaadin-10-to-25-migrating-a-8-year-old-app-with-claude-ai/",
+      label: "flowingcode.com · Vaadin 10 to 25: Migrating a 8-Year-Old App with Claude AI",
+      date: "2026-06-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "434",
+    slug: "lanternproton-codex-3-releases-48-hours",
+    title: "keeper：48 小时用 Codex CLI 发出三仓版本——15 bug、测 77→189，以及挂起审批坑",
+    summary: "三款 3D 打印开源工具统一 CLI；披露约两日、修 15 bug、新增测至合计 189、exec 曾因 OnRequest 审批挂 21 分钟；不代你无人值守对真机打样。",
+    description:
+      "面向维护多仓开源工具、想用 Codex/同类 CLI 做修 bug+补测冲刺的独立开发者：把详细 prompt、stdin 投喂与沙箱写权限写成节奏，区别于 Claude 多会话治理与内容站重建。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "education",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/lanternproton/how-codex-cli-helped-me-ship-3-releases-in-48-hours-and-what-it-got-wrong-461i",
+    sourceLabel: "dev.to·lanternproton/keeper 实践帖",
+    upvotes: 325,
+    trending: false,
+    tags: [
+      "Codex CLI",
+      "开源冲刺",
+      "补测",
+      "审批挂起",
+      "3D打印",
+    ],
+    howItWorks: [
+      "粘贴多仓目标、已知 bug 列表格式，以及是否允许 workspace-write 沙箱跳过交互审批",
+      "Agent 按实践帖输出：prompt 字段清单、stdin 投喂法、以及委托 argv 级测试门",
+      "人工保留发布与真机验收；Agent 不代你声称可无人值守对打印机下指令",
+    ],
+    tips: [
+      "源帖：Codex CLI v0.133.0 + gpt-5.5（ChatGPT Plus）；SupportSage/Printsight/FilamentDB；约两日；bugs 6+5+4=15；测前 77/0 坏/0 → 后 131/16/42 合计 189；首 exec 因 approval=OnRequest 无 TTY 挂约 21 分钟，改 --sandbox workspace-write；硬编码 --json 被标 CRITICAL；应用 stdin：cat prompt.txt | codex exec ... \"\"；Phase 1 统一 CLI 作者最终手写部分",
+      "与 ilya-gorban-15-claude-sessions-governance / shape-marko-claude-vs-cursor-router 不同：本条是 Codex 多仓修 bug+补测冲刺与 exec 审批坑，不是 Claude 多会话钩子治理或 CC vs Cursor 同票对照",
+    ],
+    approach: `keeper（DEV：lanternproton）在《How Codex CLI helped me ship 3 releases in 48 hours — and what it got wrong》（JSON-LD/页内 datePublished 2026-05-23T00:08:36Z → 2026-05-23）写明：他维护 SupportSage、Printsight、FilamentDB 三款 3D 打印开源工具；约两日内用 Codex CLI v0.133.0（gpt-5.5，ChatGPT Plus）修 15 个 bug、补大量测试并推出统一 CLI。
+
+工作流：写含精确路径/行号/期望行为/验证命令的详细 prompt → \`codex exec\` → 审 diff → 补测 → 提交。成果表：SupportSage 6 bug、77→131 测；Printsight 5 bug、原基于缺失图片的子进程测全挂→16 个合成 numpy 单测；FilamentDB 4 bug、0→42 测；合计测 77→189。统一后可用 supportsage inspect/filament search 等委托子工具，共享 \`~/.supportsage/config.toml\`。
+
+踩坑：approval=OnRequest 时 exec 无 TTY 可批，首跑挂约 21 分钟无输出——改 \`--sandbox workspace-write\` 并做 \`cxe\` 别名；自写统一层曾硬编码把 \`--json\` 传给 Printsight，Codex 审出 CRITICAL；pyproject 声称 ≥3.10 却用了 3.11 tomllib，需 tomli 回退；\`$(cat prompt.txt)\` 参数展开不稳，改为 stdin 管道。作者反思：先用两词 prompt 测 exec；委托测须断言 argv 而非只断言「发生了委托」；Phase 1 统一 CLI 最终仍有部分自己写。本场景据此输出「多仓 Codex 冲刺」提纲。禁止建议跳过真机/人工发布验收，或把 48 小时写成任意三仓保证。`,
+    outcomes: [
+      "源披露约两日、15 bug、测 77→189、审批挂约 21 分钟、以及 stdin/沙箱修复等作者口径；属开源维护窗口，不可外推为你的发布节奏、模型必复现或「exec 可无人值守」。",
+      "能把「模型会改代码」与「可写沙箱 + stdin prompt + argv 级测试」拆开。",
+      "为交互审批挂死、以及只测到委托发生未测参数提供提问清单。",
+    ],
+    caveats: [
+      "作者自承统一 CLI 有一段最终手写；勿假设 Agent 包办。",
+      "3D 打印质量仍须真机/人眼；测试用合成图不代替实物。",
+      "上面写的是 keeper 个人实践帖，不是 OpenAI Codex 官文。",
+    ],
+    prompts: [
+      {
+        title: "多仓 Codex 修 bug 冲刺简报",
+        body: `你是开源维护冲刺顾问。只根据用户约束写节奏与验收门，不要编造已修 bug 数。
+
+仓/工具列表：{{repos}}
+已知问题格式：{{bug_format}}
+是否允许非交互写沙箱：{{sandbox}}
+
+输出 Markdown：
+1. prompt 必含字段（路径/期望/验证命令）
+2. stdin 投喂与审批/沙箱核对
+3. 委托 argv 级测试门
+4. 人必须保留的发布决策
+禁止建议无人值守对生产/真机操作；禁止伪造「48 小时必三发」。`,
+      },
+      {
+        title: "exec 无输出挂起复盘提纲",
+        body: `CLI agent 长时间无输出，后确认在等审批。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺非交互沙箱、缺冒烟 prompt，还是 TTY 假设错误
+2. 最小配置修复
+3. 下次验收（两词冒烟）
+4. 人工确认清单
+不要伪造「长时间无输出=模型在思考」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/lanternproton/how-codex-cli-helped-me-ship-3-releases-in-48-hours-and-what-it-got-wrong-461i",
+      label: "dev.to/lanternproton · How Codex CLI helped me ship 3 releases in 48 hours — and what it got wrong",
+      date: "2026-05-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "435",
+    slug: "keith-townsend-gcp-local-migration-gap",
+    title: "Keith：GCP→本地 5.5 小时到可跑演示——Claude 写一半，另一半是集成判断",
+    summary: "Virtual CTO Advisor 迁本地；披露约 1,200 行规格、Claude~3,700 行+人再~3,700 行、1:27–6:51 共 5.5 小时、演示≠生产还要约 20–40 小时；不代你声称已生产硬化。",
+    description:
+      "面向要把云依赖演示迁到本地/边缘、又容易把「能跑」当成「可上线」的技术负责人：把双模、无残留依赖与演示/生产差距写成门禁，区别于框架下午迁与主机多站迁。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zerotobuilder.substack.com/p/the-gap-between-ai-output-and-production",
+    sourceLabel: "Zero to Builder·Keith Townsend 实践帖",
+    upvotes: 326,
+    trending: false,
+    tags: [
+      "迁移复盘",
+      "演示非生产",
+      "双模",
+      "本地化",
+      "集成判断",
+    ],
+    howItWorks: [
+      "粘贴云→本地替换清单、是否必须双模并存，以及「演示完成」与「生产完成」的定义差",
+      "Agent 按实践帖输出：规格缺口清单、集成缝验收、以及 20–40 小时级硬化待办边界",
+      "人工保留生产定义；Agent 不代你声称下午迁完即可对真实用户开放",
+    ],
+    tips: [
+      "源帖：当日 1:27 PM→6:51 PM 约 5.5 小时；Claude Opus 规格约 1,200 行~1h；Claude Code 初稿审阅~30m；Cursor 修扩~4h；Claude 与人大约各再 3,700 行量级；栈含 Flask/SQLite/Milvus/sentence-transformers/vLLM+Llama 3.1；文档迁移约 7,000；无 AI 估 2–3 全日日→有 AI 一下午到演示；生产硬化另估约 20–40 小时",
+      "与 flowingcode-vaadin10-to-25-claude-afternoon / jeremy-keeshin-16-sites-linode-day-migrate 不同：本条是云→本地演示/生产鸿沟复盘，不是 Vaadin 版本迁或 Linode 多站迁",
+    ],
+    approach: `Keith Townsend（@CTOAdvisor）在 Substack《The Gap Between AI Output and Production Code: A Migration Post-Mortem》（JSON-LD datePublished 2026-01-16T16:29:03+00:00 → 2026-01-16）写明：当天下午他把 Virtual CTO Advisor 从 GCP 往本地迁——1:27 PM 开工，6:51 PM 更新，合计约 5.5 小时。过程：用 Claude Opus 写约 1,200 行规格（约 1 小时）→交 Claude Code 出初稿并审（约 30 分钟）→在 Cursor 里修、扩、调（约 4 小时）。应用能跑，但作者强调「runs」≠可交付产品。
+
+Claude Code 交出语法正确的本地骨架（Flask 入口、SQLite 替 Firestore、Milvus 替 Discovery Engine、sentence-transformers 替云嵌入、vLLM 兼容客户端、批量知识库迁移脚本等），但到可工作 MVP 大约还要再写/再修约 3,700 行。典型缝：把「替换」做成「本地实现+云代码仍在」——需要显式双模；「本地服务」仍经共享模块进口云依赖；前端并非免费（localhost 探测、CORS、端口 5001/8080）；guest 模式保留了原三问限额而非单用户本地应取消限制；~7,000 文档批量迁移不够迭代开发；ARM64 须覆盖目标机与 Apple Silicon 开发机；dataclass 不会被 Flask 自动 JSON 序列化；Llama 3.1 不像 Gemini 那样使用检索上下文，要改 prompt。
+
+结论：AI 把到演示的距离压到一下午（自估无 AI 要 2–3 全日日，约 3–5×），但不折叠到生产——缺错误处理/并发/可观测/合适鉴权/限流等，作者估还要约 20–40 小时判断型硬化。本场景据此输出「演示≠生产」迁移复盘提纲。禁止建议把下午演示当成可对真实用户开放，或省略双模/无残留依赖的显式规格。`,
+    outcomes: [
+      "源披露约 5.5 小时、规格~1,200 行、双方约各 3,700 行量级、演示后还要约 20–40 小时硬化、以及 3–5× 到 PoC 等作者口径；属个人顾问产品窗口，不可外推为你的停机、数据完备或「下午即生产」。",
+      "能把「能跑的演示」与「双模/无残留依赖 + 前后端缝 + 生产硬化清单」拆开。",
+      "为规格只写架构不写验收、以及模型行为不可移植提供提问清单。",
+    ],
+    caveats: [
+      "作者明确当前是 demo，不是 production-ready。",
+      "加速前提是人懂源系统与目标基础设施并能改生成代码。",
+      "上面写的是 Keith 个人实践帖，不是 Google Cloud/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "云→本地迁移演示/生产门禁简报",
+        body: `你是迁移复盘顾问。只根据用户约束写规格缺口与验收门，不要编造已生产就绪。
+
+替换清单：{{replacements}}
+是否必须双模：{{dual_mode}}
+演示完成定义：{{demo_done}}
+
+输出 Markdown：
+1. 对每条「用 Y 替换 X」补「并验证 Z」
+2. 前后端/CORS/端口缝清单
+3. 演示 vs 生产硬化待办边界
+4. 人必须保留的上线决策
+禁止建议下午演示直接对外部用户开放；禁止伪造「生成代码无残留云依赖」。`,
+      },
+      {
+        title: "本地适配仍进口云依赖复盘提纲",
+        body: `生成了 local_* 包装，但共享模块仍拉取云 SDK。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺「无依赖」显式句、缺导入图检查，还是缺双模开关
+2. 最小割裂步骤
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「文件名带 local 即无云依赖」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zerotobuilder.substack.com/p/the-gap-between-ai-output-and-production",
+      label: "zerotobuilder.substack.com · The Gap Between AI Output and Production Code: A Migration Post-Mortem",
+      date: "2026-01-16",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
