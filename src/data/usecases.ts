@@ -24356,6 +24356,451 @@ PR 工具：{{pr_tool}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "416",
+    slug: "outloop-claude-legacy-dotnet-audit-harden",
+    title: "Outloop：用 Claude 审计加固三套关键路径 .NET——清单化债而不重写",
+    summary: "小团队对三套实时控制相关 .NET 服务做多轮 Claude 审计；披露跨审计 140+ 问题实例、竞态 44、日志缺口 38；小 PR+先测后改；不代你无人值守合入安全关键改动。",
+    description:
+      "面向不能「整仓重写」、却被竞态/静默失败拖住的关键路径团队：把 Claude 做成可再生审计清单与小 PR 燃烧，区别于大迁双代理与周末运维清债。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://outloop.blog/2026/04/22/taming-legacy-codebase-with-claude.html",
+    sourceLabel: "outloop.blog·Dr. Nobel Khandaker 团队工程实践",
+    upvotes: 307,
+    trending: false,
+    tags: [
+      "遗留.NET",
+      "审计清单",
+      "竞态",
+      "关联ID日志",
+      "小PR",
+    ],
+    howItWorks: [
+      "粘贴服务边界与不可接受的停机风险（是否允许大重写）",
+      "Agent 按实践帖输出：单模块审计→严重度标签→高风险先写失败测→一小问题一 PR 的节奏",
+      "人工保留严重度、合入与停手决策；Agent 不代你声称审计计数等于某一时刻未关闭缺陷数",
+    ],
+    tips: [
+      "源帖：三服务约 15–200 源文件；跨审计五类合计 140+ 问题实例（缺陷 32 / 竞态 44 / 安全与密钥 9 / 日志 38 / 质量债 24）；竞态六原型；密钥审计曾发现 nuget.config 硬编码 GitHub PAT；刻意留下已由上游序列化的竞态并文档化",
+      "与 brex-cursor-dual-agent-micronaut-migration / chelle-honiker-claude-weekend-ops-batch 不同：本条是关键路径遗留 .NET 审计硬化，不是 Micronaut 大迁或周末多站运维批",
+    ],
+    approach: `Dr. Nobel Khandaker 在 outloop.blog《Agentic Engineering: Taming a Legacy Codebase》（JSON-LD BlogPosting datePublished 2026-04-22T08:00:00-04:00 → 2026-04-22；页内 April 22, 2026）写明：团队数月用 Claude 审计并加固三套坐在实时控制关键路径上的 .NET 服务（约 15–200 源文件）；崩溃意味着现场设备停机，「整仓重写」不可接受。样例已混淆，但模式与教训来自生产。
+
+Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候选修复）、同类缺陷模式匹配、在失败测或清晰目标下起草最小补丁、从干净代码推断隐式约定。人仍拥有严重度、与现实对齐的合入状态、测法选择，以及「不为零问题不惜成本」的停手。工作循环四阶段：审计→严重度→（高风险）先写失败测→小 diff 合入；审计 markdown 定期重生。
+
+跨审计合计披露约 140+ 问题实例：缺陷与逻辑 32、竞态与线程安全 44、安全与密钥 9、日志与可观测缺口 38、质量债 24——作者强调这是多服务多时点库存，不宜当成某一瞬间未关闭数。文中拆解 ContinueWith 误把成功当故障、Task.Delay 秒/毫秒单位错、关联 ID 贯穿管道、共享 Dictionary/标志位/计时器世代等原型；技术债表跟踪硬编码密钥、整文件注释掉、TODO、NotImplemented、缺 ILogger 等指标下降。密钥审计曾在未被 gitignore 的 nuget.config 发现硬编码 GitHub PAT，同小时轮换并迁 CI secret。刻意留下一例已由 SignalR hub 序列化、理论竞态但难复现的问题并文档化。本场景据此输出「遗留关键路径审计硬化」提纲。禁止建议无人值守合入并发/安全改动，或把审计计数当合规证明。`,
+    outcomes: [
+      "源披露三服务约 15–200 文件、跨审计 140+ 问题实例（含竞态 44、日志缺口 38 等）、小 PR/先测后改与刻意留下残余竞态等团队口径；属混淆样例后的窗口叙事，不可外推为你的缺陷率、MTTR 或「零债」承诺。",
+      "能把「整仓重写冲动」与「单模块审计清单 + 严重度 + 高风险先测 + 一小问题一 PR」拆开。",
+      "为把多时点审计合计当成单一未关闭数、以及忽略日志/关联 ID ROI 提供提问清单。",
+    ],
+    caveats: [
+      "高风险（并发/启动/可观测）改动须有可复现证明；审计输出仍要人对照分支现实。",
+      "样例已混淆；计数是库存视角，不是瞬时精确未关闭数。",
+      "上面写的是 outloop 团队工程实践帖，不是 Microsoft/.NET 官文简报或安全合规认证。",
+    ],
+    prompts: [
+      {
+        title: "遗留服务单模块审计简报",
+        body: `你是关键路径遗留系统顾问。只根据用户约束写提问清单与审计骨架，不要编造已关闭缺陷数。
+
+服务描述：{{service}}
+是否允许大重写：{{allow_rewrite}}
+不可接受风险：{{risks}}
+
+输出 Markdown：
+1. 单模块审计字段（路径/行号/类别/严重度/候选修复）
+2. 高风险项的失败测或应力夹具要求
+3. 「一小问题一 PR」合入节奏
+4. 人必须保留的严重度/停手决策
+禁止建议无人值守合入并发或安全改动；禁止把审计计数写成合规证明。`,
+      },
+      {
+        title: "审计合计当未关闭数复盘提纲",
+        body: `有人把多轮审计相加的问题数当成「今天还开着的 bug 数」对外汇报。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 库存视角 vs 瞬时开销的差在哪
+2. 最小对齐补丁（分支状态/已修/仍开）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「审计数已等于生产逃逸」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://outloop.blog/2026/04/22/taming-legacy-codebase-with-claude.html",
+      label: "outloop.blog · Agentic Engineering: Taming a Legacy Codebase",
+      date: "2026-04-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "417",
+    slug: "denis-sirashev-nine-ai-sessions-vertical-slices",
+    title: "Denis：把一周表单拆成 9 次 AI 会话——两天交付垂直切片",
+    summary: "Electron 内 React/TS 分支设置表单：计划会话后按垂直切片清上下文；披露原估约一周→两天、9 任务、单任务约 80k–135k token；不代你跳过人审编辑。",
+    description:
+      "面向上下文一胀就糊的中型前端任务：把「一次聊完」改成可测垂直切片会话，区别于编排去 proceed 与 harness 钩子账单叙事。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/6akcuk/how-i-split-a-week-long-task-into-9-ai-sessions-and-shipped-it-in-2-days-3m3h",
+    sourceLabel: "dev.to·Denis Sirashev 实践帖",
+    upvotes: 308,
+    trending: false,
+    tags: [
+      "垂直切片",
+      "上下文管理",
+      "Claude Code",
+      "Electron表单",
+      "会话拆分",
+    ],
+    howItWorks: [
+      "粘贴任务说明与必须保留的兼容约束",
+      "Agent 按实践帖输出：Explore 澄清→落盘计划→可独立验收的垂直切片清单与每切片清会话节奏",
+      "人工保留默认模式下的逐文件批准与视觉对照；Agent 不代你声称可无人值守合入",
+    ],
+    tips: [
+      "源帖：原估约一周至一周半；实际 9 任务两天完成；计划阶段上下文约 125k；单任务约 80k–135k token；作者以约 100k 为「笨区」参考线；默认批准模式；第 5 任务曾拦下跨 feature 私有目录深挖",
+      "与 aaron-yong-automate-out-of-loop-orchestrator / aditlal-harness-engineering-24k-prompts 不同：本条是单功能垂直切片会话拆分，不是编排移出 proceed 或长期 harness 捕获率账单",
+    ],
+    approach: `Denis Sirashev 在 DEV《How I Split a Week-Long Task Into 9 AI Sessions and Shipped It in 2 Days》（页内/抓取 datePublished 2026-08-04T18:40:20Z → 2026-08-04；注明 Originally published at sirashev.com，站内同路径现回首页故以 DEV 为可核一手）写明：他接了一个多步、带分支与向后兼容的设置表单——React/TypeScript，但只跑在 Electron 里；设计已签、产品已认，仍因兼容旧流、页内连接图（非纯图/SVG）、以及跨 feature 复用弹层/表格，乍看约一周再加几天修。
+
+做法：先把说明拷进仓库 markdown，开 Explore 子代理查代码并允许追问；不满则切聊天深聊，必要时回产品补需求；澄清后把计划写成仓库内 markdown——因为此时上下文已大半占用，不宜直接开写。他引用课程口径：笨区大约从 10 万 token 起；计划阶段自己约 12.5 万，故把代码库研究甩给独立代理。新会话按「每任务须能在运行中的应用里测完」拆垂直切片，得到 11 项、合并后 9 项各一 markdown。估每项 2–3 小时。
+
+实现用 Claude 默认「每改必批」模式；每任务清会话 \`Take @docs/task-N.md…\`。第 5 任务拦下了对另一 feature 私有目录的深依赖与重复，要求上提共享层。视觉对照 Figma（可用 MCP 对节点复核间距/字号）。单任务上下文约 8–13.5 万 token。两天收完 9 项；第 9 项收尾翻译键、测、lint、typecheck 与清单边角。评审意见少、多为轻微。本场景据此输出「垂直切片清会话」提纲。禁止建议 bypass 批准或一次会话塞满整周工作。`,
+    outcomes: [
+      "源披露原估约一周–一周半→两天、9 垂直切片、计划约 125k、单任务约 80k–135k token、默认逐改批准等作者口径；属一人 Electron 表单窗口，不可外推为你的人日、缺陷率或任意栈通用加速。",
+      "能把「同一会话从分析一路写到糊」与「计划落盘 + 可测切片 + 清上下文」拆开。",
+      "为跨 feature 私有目录深挖、以及把百万上下文当无限聪明区提供提问清单。",
+    ],
+    caveats: [
+      "作者仍人工批准每次编辑并做视觉验收；非无人值守交付。",
+      "「约 100k 笨区」来自课程口径+个人体感，不是厂商 SLA。",
+      "上面写的是 Denis 个人实践帖，不是 Electron/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "垂直切片会话拆分简报",
+        body: `你是前端交付顾问。只根据用户约束写切片清单，不要编造已完成人日。
+
+任务说明：{{task}}
+兼容约束：{{compat}}
+验收方式：{{accept}}
+
+输出 Markdown：
+1. Explore/澄清问题清单
+2. 计划落盘字段
+3. 可独立在运行应用中验收的垂直切片（每片一文件）
+4. 每片清会话与人工批准点
+禁止建议 bypass 批准或单会话塞完整周工作；禁止伪造工期。`,
+      },
+      {
+        title: "跨 feature 深依赖复盘提纲",
+        body: `Agent 从另一功能的私有目录 import 并复制弹层逻辑。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺共享层约束、缺中途停手，还是切片过大
+2. 最小架构补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「Agent 已永不越界」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/6akcuk/how-i-split-a-week-long-task-into-9-ai-sessions-and-shipped-it-in-2-days-3m3h",
+      label: "dev.to/6akcuk · How I Split a Week-Long Task Into 9 AI Sessions and Shipped It in 2 Days",
+      date: "2026-08-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "418",
+    slug: "oleh-veheria-claude-pr-first-pass-review",
+    title: "Oleh：把 Claude 放进 PR 一审——自称省约每工程师每天 30 分钟",
+    summary: "跨国 iOS 团队：多维 Agent 先审再人审；披露自测约省 30 分钟/工程师/天、曾误开自动合入后撤回；不代你让 Agent 按测试绿灯无人值守合入。",
+    description:
+      "面向评审被机械项挤占判断力的移动团队：把一审做成带失败场景的多维风扇，区别于跨系统支持调查仓与 completion-judge 停钩。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://veheria.tech/blog/claude-code-code-review-workflow",
+    sourceLabel: "veheria.tech·Oleh Veheria 实践帖",
+    upvotes: 309,
+    trending: false,
+    tags: [
+      "代码评审",
+      "多维Agent",
+      "iOS",
+      "人工合入",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴仓库与希望 Agent 先扫的维度（正确性/一致性/测试/i18n·无障碍等）",
+      "Agent 按实践帖输出：风扇维度、失败场景引用规则、作者先修再进人审的流程",
+      "人工保留合入键与架构判断；Agent 不代你声称可按测试通过自动合入",
+    ],
+    tips: [
+      "源帖：作者在跨国 iOS 团队自测约省 30 分钟/工程师/天；要求每条发现引用文件行号+具体失败场景否则丢弃；明确反对自动合入（曾上线后撤回）；单「啥都审」巨代理不如窄透镜风扇；未干净仪表化逃逸缺陷率故不报",
+      "与 mergify-claude-cross-system-support-investigator / kenji-skills-completion-judge-gate 不同：本条是 PR 一审多维风扇+人留合入，不是跨 Datadog/Sentry 支持调查或 Stop 完成判定",
+    ],
+    approach: `Oleh Veheria 在 veheria.tech《A Claude Code Review Workflow That Saved 30 Minutes Per Engineer a Day》（JSON-LD BlogPosting datePublished 2026-07-06T00:00:00.000Z → 2026-07-06；页内 July 6, 2026；另有后续修订）写明：移动团队在代码评审上常「等审」而非「写审」耗掉整日感；他把 Claude Code Agent 放进真实评审环，作为每 PR 的第一遍，自称在跨国 iOS 团队数月日用后，自测约省每工程师每天 30 分钟，周期缩短且人审质量未降——人回去争设计。
+
+流程：PR 打开即多维风扇——正确性（边角/nil/并发）、一致性（命名/错误处理/模块惯例）、测试（是否覆盖行为变化而非镜像实现）、以及移动特有的 i18n/无障碍（硬编码字符串、Dynamic Type、触控目标 <44pt）。每条发现必须引用文件与行号并描述具体失败场景；无失败场景则丢弃——这是防「考虑提升可读性」噪音的主规则。作者先根据 Agent 意见修，再进人审；人只做判断：边界、API 形状、功能是否该在此处。
+
+明确失败：自动合入曾先上线——有提示无编码意图的 Agent 会优化最近代理（测试通过）而非「值得合入」；他撤回并把人放回合入键。单巨代理「审一切」产出浅；窄透镜风扇才挖到真问题。他承认 30 分钟是事后测量、基线靠重建，若重来会先约定度量。未干净仪表化逃逸缺陷率与资深小时回收，故不报。本场景据此输出「PR 一审风扇」提纲。禁止建议按绿测自动合入。`,
+    outcomes: [
+      "源披露自测约省 30 分钟/工程师/天、多维风扇+失败场景引用、自动合入撤回、未报逃逸缺陷率等作者口径；属一人在跨国 iOS 团队窗口的自测，不可外推为你的评审时长、缺陷逃逸或全公司 ROI。",
+      "能把「人既做机械核对又做架构判断」与「Agent 一审机械项 + 人留合入」拆开。",
+      "为无失败场景的噪音评论、以及绿测即合入提供提问清单。",
+    ],
+    caveats: [
+      "合入键必须留人；作者已踩过自动合入优化错代理的坑。",
+      "30 分钟为作者自测，非盲测对照试验。",
+      "上面写的是 Oleh 实践帖，不是 Anthropic/GitHub 官文评审规范。",
+    ],
+    prompts: [
+      {
+        title: "PR 一审多维风扇简报",
+        body: `你是移动工程评审顾问。只根据用户约束写布置清单，不要编造已节省分钟数。
+
+仓库：{{repo}}
+维度：{{dimensions}}
+是否允许自动合入：{{auto_merge}}
+
+输出 Markdown：
+1. 每维 Agent 的透镜与禁止事项
+2. 「文件行号+失败场景否则丢弃」规则
+3. 作者先修→人审判断的交接
+4. 合入键与度量（先定再上）
+禁止建议绿测自动合入；禁止伪造节省时长。`,
+      },
+      {
+        title: "自动合入撤回复盘提纲",
+        body: `Agent 一审通过且测试绿就自动合入，后来发现行为不对。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 优化了哪类错误代理（测试通过 vs 值得合入）
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「一审已可无人合入」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://veheria.tech/blog/claude-code-code-review-workflow",
+      label: "veheria.tech · A Claude Code Review Workflow That Saved 30 Minutes Per Engineer a Day",
+      date: "2026-07-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "419",
+    slug: "jared-smith-one-person-content-fabrication-gate",
+    title: "Jared：一人内容管线——可核验处才交给 AI，排期必须人手",
+    summary: "独立站用 Claude Code 子代理做选题/起草/捏造门/预检+测试门；披露排期技能禁模型自调、编辑审只读；不代你无人值守公开发布。",
+    description:
+      "面向一人内容经营、怕「编经历/捏数字」上线的作者：把可外核阶段自动化、把事实与排期留人，区别于周末运维批与幕僚 OS。",
+    categories: [
+      "content",
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://sublimecoding.com/blog/ai-in-a-one-person-content-operation",
+    sourceLabel: "sublimecoding.com·Jared Smith 实践帖",
+    upvotes: 310,
+    trending: false,
+    tags: [
+      "内容管线",
+      "捏造门",
+      "子代理",
+      "排期人手",
+      "Claude Code",
+    ],
+    howItWorks: [
+      "粘贴内容阶段列表与哪些主张必须有外链/语料依据",
+      "Agent 按实践帖输出：可核验阶段 vs 必须人手阶段、只读编辑审与禁模型自调排期的门禁",
+      "人工保留 brief 真假与排期命令；Agent 不代你声称可无人值守公开发文",
+    ],
+    tips: [
+      "源帖：子代理含 SERP 评分、起草、只读 editorial-reviewer（捏造/无引用门）、publish-preflight；/schedule-post 设 disable-model-invocation；测试拒超长标题/坏标签/缺社交卡/FAQ 不一致/45 天无入链等；举例审出过期 bio 与单位漂移的费用区间",
+      "与 chelle-honiker-claude-weekend-ops-batch / frederic-elena-claude-chief-of-staff 不同：本条是一人博客内容捏造门+人手排期，不是周末多站运维或幕僚 OS",
+    ],
+    approach: `Jared Smith 在 sublimecoding.com《Where AI Belongs in a One-Person Content Operation》（meta article:published_time / JSON-LD datePublished 2026-10-06T14:00:00Z → 2026-10-06；页内 October 6, 2026）写明：他一人运营该站，用 Claude Code 子代理管线跑博客——但分界不是「AI 写、人改」，而是：输出能对照管线外某物（搜索页、源链接、测试）时 AI 相对安全；必须发明（事实、经历、客户故事）时危险。故两根承重柱是捏造门，以及人（非 Agent）排期每一篇。
+
+阶段：serp-gap-validator 对查询与近变体搜 SERP、分类首页占位并 grep 自有语料防自相蚕食，给 GREEN/YELLOW/RED；brief 仍由人定角度、允许使用的真实案例与必带内链；post-drafter 对照范例与声音契约写单文件，禁发明客户/事件/数字，外链统计须先验；editorial-reviewer 只读（无 Write/Edit）、更重模型，优先抓第一人称无来源主张、无引用统计、声音漂移与蚕食，返回 APPROVE/REVISE；publish-preflight 并行查标题长度、标签、frontmatter、内链、图、排期 ISO；/schedule-post 由人手键入（disable-model-invocation: true），注入未来时间戳并要求主题 hub 与旧文回链；最后 mix test 作硬门。文中举例：审稿抓住过期 bio 复述，以及费用区间「每开发者每月」单位在复述中漂移。诚实脚注：快管线解决生产不解决分发。本场景据此输出「可核验才自动化的内容管线」提纲。禁止建议模型自行公开发布或捏造客户故事。`,
+    outcomes: [
+      "源披露子代理分级、只读捏造门、排期禁模型自调、测试硬门，以及 bio/单位漂移等捕获例等作者口径；属一人博客窗口，不可外推为你的流量、收录或「AI 写稿合规免责」。",
+      "能把「全自动发文」与「可外核阶段自动化 + brief/排期留人」拆开。",
+      "为起草自审、以及无来源第一人称故事提供提问清单。",
+    ],
+    caveats: [
+      "排期与 brief 必须人手；作者强调模型不得自行判定「看起来可发」。",
+      "管线不解决分发；测试绿≠值得读。",
+      "上面写的是 Jared 个人实践帖，不是 Google/SEO 官文或 CMS 评测榜。",
+    ],
+    prompts: [
+      {
+        title: "一人内容管线门禁简报",
+        body: `你是一人内容经营顾问。只根据用户约束写阶段与门禁，不要编造已发篇数或流量。
+
+阶段列表：{{stages}}
+必须有来源的主张类型：{{claim_types}}
+发布动作：{{publish_action}}
+
+输出 Markdown：
+1. 可外核（可自动化）vs 必须人手阶段表
+2. 只读编辑审的检查优先级
+3. 排期/发布为何禁模型自调
+4. 测试或预检硬门候选
+禁止建议无人值守公开发文；禁止捏造客户故事或数字。`,
+      },
+      {
+        title: "单位漂移/过期 bio 复盘提纲",
+        body: `草稿复述了旧 bio 或把「每席」费用写成「团队合计」。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺只读二审、缺对照语料，还是 brief 过期
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「起草模型已永不错单位」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://sublimecoding.com/blog/ai-in-a-one-person-content-operation",
+      label: "sublimecoding.com · Where AI Belongs in a One-Person Content Operation",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "420",
+    slug: "juste-thales-zerosuite-chatwoot-draft-only-support",
+    title: "Juste：Chatwoot 草稿模式客服 AI——只写私密笔记，从不对客发言",
+    summary: "科特迪瓦主机商一日内接草稿助手；披露历史约 1.2 万会话、夜间抽取约 $7.28/702 候选、四次审计、93 测；不代你对客自动回复或处理金流。",
+    description:
+      "面向要把历史会话变成知识、又绝不能让模型直接对客的支持台：把抽取候选+私密草稿+引用否则移交写成门禁，区别于跨系统工程调查仓与 Canvas 支持 Agent。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://thalesandhisaictoclaude.com/zerosuite/how-we-built-zerosuite-an-ai-joins-the-support-team",
+    sourceLabel: "thalesandhisaictoclaude.com·Juste Thales Gnimavo / ZeroSuite 实践帖",
+    upvotes: 311,
+    trending: false,
+    tags: [
+      "客服草稿",
+      "Chatwoot",
+      "知识抽取",
+      "私密笔记",
+      "引用否则移交",
+    ],
+    howItWorks: [
+      "粘贴帮助台类型、是否允许对客发送、以及金流/争议是否必须人接",
+      "Agent 按实践帖输出：匿名化抽取→候选人工批准→私密笔记草稿→引用条目否则移交的规则清单",
+      "人工保留批准知识与对客发送；Agent 不代你声称可对客自动回复或处理付款退款",
+    ],
+    tips: [
+      "源帖：12,166 历史会话；夜间跑约读 12,079，新候选 702、变体 823、成本约 $7.28；四次独立审计均「go with fixes」；93 测；笔记只放可整段粘贴的回复；付款/退款/争议强制移交；截图读一次留描述、从不读 PDF；自动模式拟按类目「未改发送率>90%」才开",
+      "与 mergify-claude-cross-system-support-investigator / canvas-investigator-slack-support-agent 不同：本条是主机支持台草稿私密笔记+知识候选，不是跨 Datadog/Sentry 工程调查或 Slack Canvas 支持",
+    ],
+    approach: `Juste Thales Gnimavo（ZeroSuite / TPEcloud CEO）在 thalesandhisaictoclaude.com《A New Hire Who Only Writes Private Notes…》（JSON-LD BlogPosting datePublished 2026-09-28 → 2026-09-28；页内 September 28, 2026）写明：科特迪瓦主机业务支持跑在自建 Chatwoot（站内聊、两个 WhatsApp、邮件）；2026-09-28 单日 Claude Code 会话里「雇」了只能写私密笔记的 AI——至收工：从已解决会话抽取问答候选、管理页人工批准/改/合并/拒、两收件箱草稿私密笔记、可读截图从不读 PDF、四次独立审计（均 go with fixes）与 93 测；它从未也不能向客户发消息。
+
+知识来自约 12,166 已解决会话而非仅 95 条标准答：匿名化后再调模型；抽出一律候选；拒绝条目不可被流水线覆写吸收；去重阈值阈值 0.88（曾测到 0.83 真重复仍宁严）。模型盲选：50 会话上 Gemini 3.8 Flash 胜出，约 $0.0018/会话，全史粗估约 $22；每晚消费入 llm_usage 表。草稿用账户 webhook 而非 Agent Bot（避免改队列状态）；等 20 秒静音再起草；生成前后检查「最后公开消息仍是客户」；决策仅回答（须引用≥1 条知识否则改移交）/追问细节/移交——金流、退款、争议、要人、二次无解、需动账户或服务器强制移交。笔记最初含分数与条目号，CEO 要求删掉：疲倦坐席会全选粘贴；现只放可发送正文。截图：读一次留 1–4 句描述并缓存；PDF 不读；文件名同样脱敏。夜间史读约 12,079 会话、新候选 702、变体 823、成本约 $7.28。多人批准前补版本令牌与分片队列防互相覆盖。自动模式未建：拟按类目「草稿未改发送率>90%」才开，付款收件箱永不自动。本场景据此输出「草稿私密客服 AI」提纲。禁止建议对客自动发送或模型独自处理金流。`,
+    outcomes: [
+      "源披露约 12,166 历史会话、夜间约 $7.28/702 候选、四次审计+93 测、引用否则移交与笔记可粘贴化等作者口径；属 TPEcloud/ZeroSuite 一日窗口叙事，不可外推为你的首次解决率、客诉或合规免责。",
+      "能把「FAQ 聊天机器人对客」与「候选知识+私密草稿+人发送」拆开。",
+      "为笔记含内部分数被整段粘贴、以及阈值阈值误伤相关条目提供提问清单。",
+    ],
+    caveats: [
+      "对客发送与知识批准必须留人；金流/争议强制移交。",
+      "作者自述检索相似度阈值当前几乎不起作用，靠「引用或移交」约束。",
+      "上面写的是 Juste/ZeroSuite 实践帖，不是 Chatwoot/Anthropic 官文或客服 SaaS 评测。",
+    ],
+    prompts: [
+      {
+        title: "草稿私密客服 AI 布置简报",
+        body: `你是支持台自动化顾问。只根据用户约束写门禁清单，不要编造已对客自动回复。
+
+帮助台：{{helpdesk}}
+是否允许对客发送：{{allow_public}}
+强制人接类目：{{human_only}}
+
+输出 Markdown：
+1. 匿名化抽取→候选→人工批准流
+2. 私密笔记 vs 对客消息边界
+3. 引用条目否则移交（含金流规则）
+4. 截图/文档与文件名脱敏
+禁止建议对客自动发送或模型处理付款退款；禁止伪造解决率。`,
+      },
+      {
+        title: "私密笔记被整段粘贴复盘提纲",
+        body: `坐席把含分数/条目号的内部笔记全选发给了客户。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 笔记是否只含可发送正文
+2. 最小门禁补丁（提及/链接中和等）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「草稿模式已永不泄内部字段」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://thalesandhisaictoclaude.com/zerosuite/how-we-built-zerosuite-an-ai-joins-the-support-team",
+      label: "thalesandhisaictoclaude.com · Plugging An AI Into A Live Support Desk (draft mode only)",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
