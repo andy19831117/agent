@@ -27043,6 +27043,454 @@ cron/时区：{{schedule}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "446",
+    slug: "nick-t-leymish-cron-tiny-business-agents",
+    title: "Nick T：把微型公司交给 5 个 cron 代理——人不上环、代理不碰 git",
+    summary: "个人实验公司 Leymish；披露 $20 起步、五角色、STATE/BACKLOG/JOURNAL、protect+guardrails 后 shell 提交、GHA 免费额度内、公开账本；不代你无人值守花钱或发收入承诺。",
+    description:
+      "面向想用定时代理跑小生意、又怕模型改账本/漏密钥的独立开发者：把「Markdown 状态机 + 代理只改文件 + shell 护栏提交」写成门禁，区别于小代理 SaaS 月费替换与 Marketing OS。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/nick_t_eac6be7ee8e88de2f3/i-handed-a-tiny-business-to-claude-code-agents-on-a-cron-schedule-heres-the-architecture-2615",
+    sourceLabel: "dev.to·Nick T 实践帖",
+    upvotes: 337,
+    trending: false,
+    tags: [
+      "微型公司",
+      "cron",
+      "Claude Code Action",
+      "护栏",
+      "账本",
+    ],
+    howItWorks: [
+      "粘贴业务目标、角色清单、以及哪些文件绝对禁止代理改写",
+      "Agent 按实践帖输出：STATE/BACKLOG/JOURNAL 约定、技能触发节奏、以及 protect→guardrails→commit 顺序",
+      "人工保留支出批准与公开文案真实性；Agent 不代你声称可无人值守收付款或保证营收",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-09-26T10:26:21Z → 2026-09-26）：规则「人不上环」；五代理 ceo/builder/growth/verifier/board 跑私有 GitHub；文件脑：CLAUDE.md 宪法、STATE.md（脚本生成、代理不可改）、STRATEGY.md、BACKLOG.md（Markdown 表交接）、JOURNAL.md。调度：claude-code-action + skill（如 /ship-task），OAuth 订阅额度、--max-turns 60、timeout-minutes；节奏 CEO daily / Builder 2×daily / Growth daily / Board weekly，按私仓免费约 2,000 GHA 分钟/月裁切。关键：代理步骤只改文件就停；随后 protect.sh 回滚受保护文件（账本/STATE/工作流/CLAUDE.md）→ guardrails.py 查泄密/畸形账本行/炒作话术 → commit.sh rebase 重试。金库脚本无 AI，同步 Gumroad→ledger.csv，利润 20% 进永不花的储备；代理无支付权，想花钱写 NEEDS-MICK。Verifier 用新上下文审验收；作者承认 day one 响应式图双版本同屏仍需人眼。公开账本/日志 leymish.com；$0 其余基础设施。",
+      "与 henry-knight-agency-saas-claude-agents / lukasz-fryc-marketing-os-49-slash-commands 不同：本条是定时微型公司文件状态机+git 护栏，不是月费 SaaS 逐项砍或终端营销命令系统",
+    ],
+    approach: `Nick T 在 DEV《I handed a tiny business to Claude Code agents on a cron schedule. Here's the architecture.》（JSON-LD datePublished 2026-09-26T10:26:21Z → 2026-09-26）写明：用约 $20 与一条硬规则「人不上环」开实验公司；五个 Claude Code 代理从私有 GitHub 仓被定时工作流叫醒，各做一件事并写回。
+
+仓即脑：代理跨次不记忆，全靠文件——CLAUDE.md 宪法、脚本生成且代理不可改的 STATE.md、STRATEGY.md、BACKLOG.md 交接表、JOURNAL.md。CEO 写带验收标准的 READY 行；Builder/Growth 各取本角色第一行。唤醒靠可复用 job 调 claude-code-action，prompt 指向 skill；订阅 token + max-turns/timeout 封顶。
+
+最有用的决策：代理不碰 git。代理只编辑后退出；shell 跑 protect.sh（回滚账本/STATE/工作流/CLAUDE.md）→ guardrails.py（泄密、畸形账本、收入承诺/假评论等炒作）→ commit.sh。金库无 AI：Gumroad API→ledger.csv，利润 20% 进永不花的储备；代理无支付权限，支出只能开 NEEDS-MICK。Verifier 用新上下文审验收；作者诚实写 day one 仍有人眼才发现的双布局同屏。本场景据此输出「定时微型公司护栏」提纲。禁止建议给代理支付密钥，或把公开账本写成你的保证利润。`,
+    outcomes: [
+      "源披露约 $20 起步、五角色文件状态机、代理不提交/shell 护栏、GHA 免费分钟裁切节奏、金库脚本+20% 储备、以及公开 leymish 账本/日志等作者口径；属单一实验公司窗口，不可外推为你的营收、Actions 额度或「无人公司必成」。",
+      "能把「让代理自己 commit」与「改文件→protect→guardrails→人批支出」拆开。",
+      "为给代理支付权限、以及缺超时/缺日志漏跑却无人察觉提供提问清单。",
+    ],
+    caveats: [
+      "作者称 Verifier 非保证；完成但做错题仍靠人读 JOURNAL 对 STATE。",
+      "文末有付费 Kit/模板推广；架构要点以正文文件约定为准。",
+      "上面写的是 Nick T 个人实践帖，不是 Anthropic/GitHub Actions 官文。",
+    ],
+    prompts: [
+      {
+        title: "微型公司 cron 代理护栏简报",
+        body: `你是独立开发者公司自动化顾问。只根据用户约束写文件状态机与护栏，不要编造已产生的收入。
+
+业务目标：{{goal}}
+角色清单：{{roles}}
+禁止代理改写的文件：{{protected}}
+
+输出 Markdown：
+1. STATE/BACKLOG/JOURNAL 字段约定
+2. 各角色 cron 节奏与 max-turns/timeout
+3. protect→guardrails→commit 顺序与失败回滚
+4. 人必须保留的支出/公开发布决策
+禁止建议给代理支付密钥；禁止伪造「无人值守必盈利」。`,
+      },
+      {
+        title: "代理静默改账本或漏跑复盘提纲",
+        body: `发现账本被改或某日 JOURNAL 缺条目。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 protect、缺 timeout、还是缺「漏跑写占位日志」
+2. 最小修复与验收夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「绿勾 Actions 等于业务正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/nick_t_eac6be7ee8e88de2f3/i-handed-a-tiny-business-to-claude-code-agents-on-a-cron-schedule-heres-the-architecture-2615",
+      label: "dev.to/nick_t_eac6be7ee8e88de2f3 · I handed a tiny business to Claude Code agents on a cron schedule. Here's the architecture.",
+      date: "2026-09-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "447",
+    slug: "lamingsrb-47-takehomes-claude-18-dollars",
+    title: "Lamingsrb：47 份 take-home 评审仅花 $18——日回经理、offer 周期 19→8 天",
+    summary: "客户实习批次；披露 47 份/$18.33/均约 $0.39、经理 22→4 分、开箱 11→<1 天、offer-accept 19→8；不代你无人值守拒录或保证招到人。",
+    description:
+      "面向 ATS 自动化了 sourcing 却卡在 take-home 静默期的招聘方：把「格式预处理 + 六维 rubric + 日 digest」写成门禁，区别于迷你 CRM 与合同开票。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "career",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "n8n",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/lamingsrb/47-take-homes-reviewed-for-18-the-hiring-step-nobody-5b3m",
+    sourceLabel: "dev.to·lamingsrb 实践帖",
+    upvotes: 338,
+    trending: false,
+    tags: [
+      "招聘",
+      "take-home",
+      "n8n",
+      "Notion",
+      "评分 rubric",
+    ],
+    howItWorks: [
+      "粘贴作业提交入口、六维权重、以及候选人可见动作是否强制人审",
+      "Agent 按实践帖输出：GitHub/PDF/Loom 预处理边界、JSON 评分 schema、以及 Notion 灯号+日 Slack digest",
+      "人工保留拒录/邀约/发 offer；Agent 不代你声称模型可最终录用决策",
+    ],
+    tips: [
+      "源帖（JSON-LD 2026-08-17）：痛点是提交后约 11 天静默；客户表：申请人 203、take-home 47、开箱 11→<1 天、首回 14→2 天、经理 22→4 分/人、offer-accept 19→8 天、Claude 合计 $18.33（均约 $0.39）。栈：Gmail 标签 take-home-submitted → n8n 每 5 分钟轮询（非教程主写 webhook）→ Claude → Notion → 日 Slack。格式：~60% GitHub / ~30% PDF·Doc / ~10% Loom；GitHub 只拉 README+最大三源文件+近 20 commits；PDF→markdown；Loom→Whisper。六维 1–5 强制一句证据，满分 30；concern 两句；flag CLEAN/MINOR/MAJOR。Notion 灯：>24 且 CLEAN 绿；18–24 或 MINOR 黄；<18 或 MAJOR 红；日 digest 只推黄绿前五。作者强调模型是第一评审人，候选人动作仍人审；含 bizflowai 服务推广。",
+      "与 sid-probstein-postgres-spreadsheet-mini-crm / julian-epbcenter-claude-crm-no-dev 不同：本条是实习 take-home 批审吞吐与静默期，不是 CRM 替换",
+    ],
+    approach: `作者 lamingsrb（文末署名 Lazar Milicevic）在 DEV《47 Take-Homes Reviewed for $18: The Hiring Step Nobody》（JSON-LD datePublished 2026-08-17T06:12:36Z → 2026-08-17）写明：主流 ATS 自动化了 sourcing/筛选/约面等便宜步骤，真正漏人的是 take-home 提交后约 11 天的静默——经理对着几十个 zip/PDF 无从下手。
+
+他为客户实习批次搭了评审代理：邮件打标 take-home-submitted 后，n8n 每五分钟轮询触发；先按格式分流（约 60% GitHub、30% PDF/Doc、10% Loom），再做廉价预处理——GitHub 只取 README、最大三个源文件与近 20 commits；PDF 转 markdown；Loom 先 Whisper——作者称这是均约 $0.39 与 $2+ 的差别。
+
+评分不用「整体评价一下」：六维各 1–5 且必须一句指向代码/文档的理由，外加两句 concern 与 CLEAN/MINOR/MAJOR；写 Notion 卡片与灯号，每日只把前五可看项推给经理。客户披露口径：47 份、$18.33 合计、经理 22→4 分钟、offer-to-accept 19→8 天。本场景据此输出「take-home 第一评审人」提纲。禁止建议自动群发拒信/offer，或把周期缩短写成你的录用质量保证。`,
+    outcomes: [
+      "源披露 47 份、合计 $18.33（均约 $0.39）、开箱 11→<1 天、经理 22→4 分、offer-accept 19→8 天、以及六维+concern 日 digest 等作者/客户口径；属单客户实习窗口，不可外推为你的招录质量、误杀率或「AI 评审可替代面试」。",
+      "能把「再买 ATS 模块」与「预处理控上下文 + 强制证据 rubric + 人审可见动作」拆开。",
+      "为模糊评分导致全员 3 分、以及自动拒信无申诉提供提问清单。",
+    ],
+    caveats: [
+      "文末含 bizflowai/YouTube/咨询推广；数字以正文客户表为准，非第三方审计。",
+      "MAJOR_FLAG（疑似抄袭/不可运行）仍须人核；模型易漏领域意图。",
+      "上面写的是作者客户实践帖，不是 Greenhouse/Ashby 官文或招聘评测榜。",
+    ],
+    prompts: [
+      {
+        title: "Take-home 第一评审流水线简报",
+        body: `你是招聘自动化顾问。只根据用户约束写评审流水线，不要编造已缩短的 offer 周期。
+
+提交入口/格式占比：{{intake}}
+六维权重：{{rubric}}
+候选人可见动作是否人审：{{human_gate}}
+
+输出 Markdown：
+1. 预处理（GitHub/PDF/音视频）边界与 token 预算
+2. JSON 评分 schema（含 concern/flag）
+3. Notion 灯号与日 digest 规则
+4. 人必须保留的拒录/邀约决策
+禁止建议自动发拒信或 offer；禁止伪造「零误杀」。`,
+      },
+      {
+        title: "AI 分数好看但面试翻车复盘提纲",
+        body: `高分候选人到面后能力落差大。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺证据句、缺 MAJOR 规则，还是 digest 只看总分
+2. 最小 rubric/抽检修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「分数等于上岗表现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/lamingsrb/47-take-homes-reviewed-for-18-the-hiring-step-nobody-5b3m",
+      label: "dev.to/lamingsrb · 47 Take-Homes Reviewed for $18: The Hiring Step Nobody",
+      date: "2026-08-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "448",
+    slug: "karthik-claude-setup-product-migration",
+    title: "Karthik：产品迁移动真靠 setup——约 50 票/580 测/约 $5k、一人约 15 工作日",
+    summary: "工程经理个人 PoC；披露 4→2 仓、MySQL→PG、全栈升级、~50 票/~580 测、95%+ API 覆盖、约 $5k Bedrock、约 15 工作日；不代你无人值守合入生产。",
+    description:
+      "面向「开箱 Claude 写代码」失望的团队负责人：把多层 CLAUDE.md、技能/MCP 与并行 worktree 写成门禁，区别于并行票据编排器改造与两日大仓重建。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/aws-builders/the-setup-is-the-strategy-how-i-orchestrated-a-product-migration-with-claude-code-b92",
+    sourceLabel: "dev.to·Karthik Subramanian 实践帖",
+    upvotes: 339,
+    trending: false,
+    tags: [
+      "产品迁移",
+      "CLAUDE.md",
+      "worktree",
+      "MCP",
+      "Bedrock 成本",
+    ],
+    howItWorks: [
+      "粘贴迁移范围、现有 issue/CI/质量门工具，以及合入是否强制人审架构项",
+      "Agent 按实践帖输出：CLAUDE.md 分层清单、必备 skills/MCP、以及并行 worktree 上限与成本杠杆",
+      "人工保留权限模型与合入签字；Agent 不代你声称 PoC 成本可外推为团队产能",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-16；dateModified 可见 2026-10-25）：工程经理个人 PoC，AI-first 跑完 SDLC。范围：4 legacy 仓并 2、MySQL→PostgreSQL、Spring Boot 2→3 / Java 17→21 / React 17→18、认证模型替换、完整测试。CLAUDE.md 多层：workspace 约 181 行（25+ 仓概览）、domain、per-repo。Atlassian MCP + my-jira skill 消化换行/故事点自定义字段等静默坑。执行：每票 design+plan；峰值 8 worktree/2 仓、约 4 活跃会话；manage-mr 监控 CI；Sonar MCP；Chrome/Figma/Postman MCP；move-to-qa 模板化交接。结果口径：约 50 票、约 580 通过测试、API 覆盖 95%+、前端约 91%、QA 交接时称零 bug/漏洞/hotspot；约 15 工作日、Bedrock 近 $5k。成本课：常 /compact、短会话、Opus 规划/Sonnet 执行/Haiku 查询。AI 评审约抓 30–40% 低中层问题，架构仍靠人。",
+      "与 day-implement-orchestrated-parallel-tickets / alex-cloudstar-32784-lines-two-day-rebuild / flowingcode-vaadin10-to-25-claude-afternoon 不同：本条是迁移 PoC 的分层 setup+成本账，不是 Matt /implement 编排改造、两日行数重建或 Vaadin 下午升级",
+    ],
+    approach: `Karthik Subramanian（AWS Builders）在 DEV《The Setup Is the Strategy: How I Orchestrated a Product Migration with Claude Code》（JSON-LD datePublished 2026-04-16T13:49:55Z → 2026-04-16）写明：多数人只用开箱 Claude Code；他作为聚焦 AI 加速的工程经理，提议把本需多冲刺团队的真实产品迁移做成一人 PoC——不是「AI 辅助写两行」，而是 SDLC 各阶段都走 Claude Code 能力面。
+
+迁移本身很重：四仓并两仓、MySQL→PostgreSQL、全栈框架升级、认证替换与完整测试。作者强调奏效的不是模型本身，而是 setup：workspace/domain/per-repo 多层 CLAUDE.md；记忆与 brainstorming；Atlassian MCP 加自定义 Jira skill 吃掉换行渲染、故事点自定义字段等静默失败；每票先 design/plan 再执行；worktree 并行（峰值八个、约四活跃会话）；manage-mr+/loop 盯 CI；Sonar/Chrome/Figma/Postman MCP；move-to-qa 固化交接。
+
+收口口径：约 50 票、约 580 通过测试、API 覆盖 95%+、约 15 工作日、Bedrock 近 $5k；并写明 AI 评审约抓 30–40% 低中层问题，架构仍靠人。本场景据此输出「迁移先投资 setup」提纲。禁止建议跳过质量门无人合入生产，或把一人 PoC 写成可复制的编制裁撤依据。`,
+    outcomes: [
+      "源披露约 50 票、约 580 通过测试、95%+ API/约 91% 前端覆盖、约 15 工作日、近 $5k Bedrock、以及 AI 评审约 30–40% 低中层问题等作者口径；属单人迁移 PoC 窗口，不可外推为你的缺陷密度、Bedrock 账单或「一人可替整队」。",
+      "能把「直接让模型改代码」与「分层 CLAUDE.md + 技能/MCP + 并行 worktree + 人审架构」拆开。",
+      "为马拉松长会话烧缓存费、以及 AI 乱删「未使用」状态变量导致 CI 红提供提问清单。",
+    ],
+    caveats: [
+      "成本与覆盖率是作者自报；生产签字仍依赖人类架构与安全评审。",
+      "工具链（GitLab/Jira/Sonar/MCP）绑定强，换栈需重做 skill。",
+      "上面写的是 Karthik 个人 PoC 实践帖，不是 Anthropic/AWS 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "产品迁移 Claude setup 分层简报",
+        body: `你是工程效能顾问。只根据用户约束写迁移 setup，不要编造已全绿的覆盖率。
+
+迁移范围：{{scope}}
+现有追踪/CI/质量工具：{{toolchain}}
+合入是否强制人审架构：{{arch_gate}}
+
+输出 Markdown：
+1. CLAUDE.md 分层大纲
+2. 优先 3 个 skills + 优先 MCP
+3. worktree 并行上限与 CI 回修环
+4. 人必须保留的合入/权限决策
+禁止建议无人值守合 main；禁止伪造「一人半月可替团队」。`,
+      },
+      {
+        title: "长会话账单爆炸与误删状态复盘提纲",
+        body: `迁移中途 token 账单飙升或 CI 因删状态变量反复红。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺 /compact、缺短会话策略，还是缺「删除前查引用」记忆规则
+2. 最小修复
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试绿等于架构正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/aws-builders/the-setup-is-the-strategy-how-i-orchestrated-a-product-migration-with-claude-code-b92",
+      label: "dev.to/aws-builders · The Setup Is the Strategy: How I Orchestrated a Product Migration with Claude Code",
+      date: "2026-04-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "449",
+    slug: "ji-ai-spoonai-newsletter-11-subs-cron",
+    title: "ji_ai：为自己做 AI 早报——11 订户、49 双语帖、08:00 KST cron",
+    summary: "个人站 spoonai.me；披露 11 订户/49 双语帖、08:00 cron→Firecrawl→双语文→Vercel→Resend 单发、周末节奏；不代你无人值守群发或保证打开率。",
+    description:
+      "面向自己都坚持不了每日策展的作者：把「小名单回路 + 定时技能 + 单发邮件」写成门禁，区别于 Marketing OS 与夜间作品集交付。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/ji_ai/i-built-an-ai-newsletter-for-myself-11-subscribers-49-posts-zero-regrets-3e3k",
+    sourceLabel: "dev.to·ji_ai 实践帖",
+    upvotes: 340,
+    trending: false,
+    tags: [
+      "newsletter",
+      "cron",
+      "Firecrawl",
+      "Resend",
+      "双语内容",
+    ],
+    howItWorks: [
+      "粘贴信源列表、时区 cron、以及是否允许自动对外发送",
+      "Agent 按实践帖输出：skill 步骤（去重/选题/双语/部署校验）、Resend 单发与周日停邮规则",
+      "人工保留事实核对与退订/投诉处理；Agent 不代你声称可规模化媒体营收",
+    ],
+    tips: [
+      "源帖（JSON-LD 2026-04-20）：开篇即账：11 订户、49 双语帖、一人推送。动机：厌倦刷 X；瓶颈是策展非信息量。先前手工 news4ai 死于意志力。现：0 8 * * * KST 触发 Claude Code 定时任务→skill spoonai-daily-briefing：读昨日帖去重→Firecrawl MCP 爬策展源→并行写韩/英（非互译腔）各三则→commit Next.js→Vercel 部署并由 Vercel MCP 验绿→Resend 11 封单发（10 韩模板/1 英）。节奏 Mon–Fri 日更+邮、Sat 周报邮、Sun 只发文不邮。强调 BCC 有害、单发可个性化；2026-04-16 单日曾发三对双语。作者称跑数月；故障通常大声（超时/API/依赖）。文末邀请自建回路而非买列表。",
+      "与 lukasz-fryc-marketing-os-49-slash-commands / reet-batra-tokenmaxxing-overnight-portfolio / persimmoq-claude-routines-docs-watcher 不同：本条是个人 AI 早报小名单 cron 回路，不是营销命令系统、作品集夜间 /goal 或官方文档 diff 看守",
+    ],
+    approach: `作者 ji_ai（jidonglab）在 DEV《I Built an AI Newsletter for Myself. 11 Subscribers, 49 Posts, Zero Regrets.》（JSON-LD datePublished 2026-04-20T15:43:31Z → 2026-04-20）写明：spoonai.me 的会计很简单——11 个订户、49 篇双语帖、一个人推 commit。他不为增长黑客而建，只为结束「开三十个标签却说不清今天谁真的发了什么」。
+
+核心回路：每天 08:00 KST，Claude Code 定时任务触发 skill \`spoonai-daily-briefing\`——读昨日已发去重、经 Firecrawl MCP 爬策展源、并行写韩文与英文（强调不是同文翻译腔）、提交 Next.js、Vercel 自动部署并用 MCP 验绿，再经 Resend 向 11 人单发（10 韩/1 英模板）。节奏：工作日日更+邮件、周六周报邮件、周日只发文不邮。
+
+对比早先手工 news4ai：靠意志力策展最终停更；把策展搬上 cron+skill 后才可持续。作者把「11 人」写成功能：认识订户、有人回错字，比虚胖列表更真。本场景据此输出「为自己先跑通的早报回路」提纲。禁止建议购买垃圾名单群发，或把 11 订户写成可复制的媒体收入模型。`,
+    outcomes: [
+      "源披露 11 订户、49 双语帖、08:00 KST cron、Firecrawl→双语写作→Vercel→Resend 单发、以及手工版死于意志力等作者口径；属单人小名单窗口，不可外推为你的打开率、SEO 或「自动早报必有读者」。",
+      "能把「再堆增长技巧」与「先服务自己的定时策展回路」拆开。",
+      "为 BCC 群发进促销箱、以及无去重导致重复选题提供提问清单。",
+    ],
+    caveats: [
+      "自动写作仍可能事实错误；作者承认晚间修故障、次日再跑。",
+      "受众高度偏韩语开发者；英文读者仅披露 1 人。",
+      "上面写的是 ji_ai 个人实践帖，不是 Resend/Vercel 官文或 newsletter 增长课。",
+    ],
+    prompts: [
+      {
+        title: "个人早报 cron 回路最小简报",
+        body: `你是个人内容系统顾问。只根据用户约束写早报回路，不要编造订户增长。
+
+信源列表：{{sources}}
+cron/时区：{{schedule}}
+是否允许自动外发：{{autosend}}
+
+输出 Markdown：
+1. skill 步骤（去重/选题/写作/部署校验）
+2. 邮件单发 vs BCC 选择与停邮日
+3. 故障大声失败信号
+4. 人醒来必须核对的事实项
+禁止建议购买名单群发；禁止伪造「必达打开率」。`,
+      },
+      {
+        title: "手工策展停更改 cron 仍重复选题复盘提纲",
+        body: `改成定时后仍出现与昨日重复或事实错误。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺去重读昨日、缺人审事实，还是源列表过窄
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「部署绿等于内容正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/ji_ai/i-built-an-ai-newsletter-for-myself-11-subscribers-49-posts-zero-regrets-3e3k",
+      label: "dev.to/ji_ai · I Built an AI Newsletter for Myself. 11 Subscribers, 49 Posts, Zero Regrets.",
+      date: "2026-04-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "450",
+    slug: "david-loor-ralph-loop-27h-aidaemon",
+    title: "David：Ralph Loop 挂机约 27 小时——84 任务测硬 AIdaemon，completion-promise 才停",
+    summary: "个人；披露 >27h、84 任务、test 88、--chrome+跳过权限、Ralph completion-promise、事后人审有过工；不代你在生产机密机无人值守。",
+    description:
+      "面向想让 Claude Code 夜间自测自修却一小时就「宣告胜利」的开发者：把「可检查成功标准 + Ralph 停词 + 浏览器真测」写成门禁，区别于作品集夜间 /goal 与并行票据编排。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://davidloor.com/en/blog/how-to-run-claude-code-autonomously-for-hours",
+    sourceLabel: "davidloor.com·David Loor 实践帖",
+    upvotes: 341,
+    trending: false,
+    tags: [
+      "Ralph Loop",
+      "夜间自治",
+      "浏览器测",
+      "AIdaemon",
+      "completion-promise",
+    ],
+    howItWorks: [
+      "粘贴可检查的成功标准、是否允许 --dangerously-skip-permissions、以及最大迭代",
+      "Agent 按实践帖输出：task-prompt.md 结构、Ralph 停词/max-iterations、以及 chrome 真测与事后人审清单",
+      "人工保留生产机密边界与合并；Agent 不代你声称 27 小时必出可发布质量",
+    ],
+    tips: [
+      "源帖（JSON-LD/页内 datePublished 2026-03-05）：作者用 Claude Code 20x，挂机测自家 Telegram 代理 AIdaemon；白天看一眼、夜里继续，次日称跑超 27 小时、完成 84 任务，到 test 88 仍在推进。三件套：claude --dangerously-skip-permissions（无确认才不卡死；作者称勿用于带生产机密的机器）、--chrome（Claude in Chrome MCP 点 Telegram Web）、Ralph Loop 插件（stop hook 把同一提示喂回；唯输出 --completion-promise 如 DONE 才停，可加 --max-iterations）。关键是长 markdown 提示：架构路径、渐进加难、修根因非创可贴、每修必回归、成功标准写清。过程：自升级难度、发现提示注入并加固再测更难注入、修通知 ping 上限与工具名解析级联回退、抓到对用户暴露内部机制的 UX 问题；后期让代理从零写 JSON parser 并带 79 测例。事后人审：多数改动好，少数过工、一次重构碰太多文件。",
+      "与 reet-batra-tokenmaxxing-overnight-portfolio / day-implement-orchestrated-parallel-tickets 不同：本条是 Ralph 长跑自测自修+浏览器 E2E，不是作品集 /goal 预答或并行票编排",
+    ],
+    approach: `David Loor 在个人博客《How to run Claude Code autonomously for hours without babysitting it》（JSON-LD datePublished 2026-03-05 → 2026-03-05）写明：他让 Claude Code 在真实任务上过夜——通过 Telegram Web 测自家代理 AIdaemon；白天抽查、夜里继续，次日会话已超约 27 小时，完成 84 个任务，并自推进到更高难度测试。
+
+能挂住靠三件套：\`--dangerously-skip-permissions\` 去掉权限弹窗死等（作者明确不建议在有生产机密的机器上用）；\`--chrome\` 接浏览器 MCP，才能在 Telegram Web 真点真读；Ralph Loop（Ralph Wiggum）用 stop hook 在模型想退出时把同一提示再喂回去，只有输出约定的 \`--completion-promise\`（如 DONE）才结束，另可用 \`--max-iterations\` 做保险。
+
+提示必须是带架构注释与成功标准的 markdown：一行「测一测修修 bug」往往一小时就假胜利。作者观察到模型会自行加难、发现提示注入并加固后再测、做通用修复而非单测创可贴；事后人审承认有过工与过大重构。本场景据此输出「可停词的长跑自测」提纲。禁止建议在生产密钥环境开跳过权限，或把 27 小时写成可复现 SLA。`,
+    outcomes: [
+      "源披露约 >27 小时、84 任务、test 88 仍在推进、跳过权限+chrome+Ralph 停词、以及事后人审有过工等作者口径；属单人开发机窗口，不可外推为你的缺陷清零、订阅额度或「挂机必可发布」。",
+      "能把「丢一句测完就行」与「成功标准 + completion-promise + 浏览器回归」拆开。",
+      "为生产机密机开 skip-permissions、以及无一小时假胜利的停词提供提问清单。",
+    ],
+    caveats: [
+      "跳过权限风险由作者明示；仅适合范围受限的开发机。",
+      "长跑可能过工/过大重构；合并前仍须人 diff。",
+      "上面写的是 David 个人实践帖，不是 Anthropic Ralph 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Ralph 长跑自测最小提示简报",
+        body: `你是代理式测试顾问。只根据用户约束写可挂机提示，不要编造已跑满的小时数。
+
+被测系统与路径：{{system}}
+是否允许 skip-permissions：{{skip_perm}}
+max-iterations：{{max_iter}}
+
+输出 Markdown：
+1. task-prompt.md 大纲（架构/加难/修根因/成功标准）
+2. Ralph 停词与安全网
+3. 浏览器真测步骤边界
+4. 人醒来必须审的 diff 项
+禁止建议在生产机密机跳过权限；禁止伪造「挂机必可发布」。`,
+      },
+      {
+        title: "一小时假胜利或过工重构复盘提纲",
+        body: `会话很快输出 DONE，或改动面远超测试所需。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺可检查成功标准、缺通用修复指令，还是缺 max-iterations
+2. 最小提示修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更长挂机等于更高质量」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://davidloor.com/en/blog/how-to-run-claude-code-autonomously-for-hours",
+      label: "davidloor.com · How to run Claude Code autonomously for hours without babysitting it",
+      date: "2026-03-05",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
