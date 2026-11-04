@@ -28834,6 +28834,453 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "466",
+    slug: "uaslimcreate-cursor-claude-totp-2fa-walkthrough",
+    title: "uaslim：CitizenApp 加 TOTP 2FA——Cursor+Claude 约 9h→4.25h，诚实约 2× 不是 3×",
+    summary: "个人；披露单功能预估无 AI ~9h、有 AI ~4.25h（约省 4.75h，约 2×）；架构决策 2h→20min、前端 3h→1.5h，鉴权流手写省 0；不代你无人值守合入安全逻辑。",
+    description:
+      "面向要把「具体功能墙钟」从口号拆成可复盘步骤的独立开发者：把「Claude 先定架构 → Cursor 起草 → 人审安全/迁移」写成门禁，区别于通宵作品集与单会话换框架。",
+    categories: [
+      "security",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/uaslimcreate/my-cursor-claude-engineering-workflow-a-real-project-walkthrough-3hij",
+    sourceLabel: "dev.to·uaslimcreate 实践帖",
+    upvotes: 357,
+    trending: false,
+    tags: [
+      "Cursor",
+      "Claude",
+      "TOTP",
+      "2FA",
+      "FastAPI",
+    ],
+    howItWorks: [
+      "粘贴目标功能边界（如 TOTP/恢复码）、现有鉴权栈与「哪些文件绝不可盲合」清单",
+      "Agent 按实践帖输出：架构问答提纲、Cursor 起草顺序、以及人必须线审的安全/迁移检查表",
+      "人工保留 pending token 与密钥/恢复码路径；Agent 不代你声称「任意功能必 2×」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-05-22T14:31:35Z → 2026-05-22）：作者 uaslimcreate 以 CitizenApp 加 Google Authenticator 兼容 TOTP + 10 条一次性恢复码为完整走查——触鉴权、用户模型、会话、邮件与前端至少 4 处。无 AI 估 2–3 天；实作约 6 小时墙钟。分步：①Claude 先审架构（Fernet 加密存 secret、短时 pending 2FA JWT、恢复码 SHA-256 哈希），约 20 分钟；②Cursor Agent 写 SQLAlchemy 模型与 Alembic 迁移（补 timezone=True）；③TOTP 服务约 90% 可用，作者改 window=1 防时钟漂移；④登录/pending 校验流手写后交 Claude 安全审；⑤Cursor 生成 7 测、修 2 处；⑥前端约 90 分钟。诚实表：架构 2h→20min、DB 30→10、TOTP 服务 1h→25min、鉴权流 1.5h→1.5h（0）、测 1h→30min、前端 3h→1.5h，合计 ~9h→~4.25h（约省 4.75h，约 2× 非 3×）。明确永不盲合：安全敏感逻辑、DB 迁移、鉴权流、错误处理。",
+      "与 reet-batra-tokenmaxxing-overnight-portfolio / jonesrussell-laravel-waaseyaa-one-session 不同：本条是单功能安全走查与诚实倍速表，不是通宵 /goal 作品集或整框单会话迁移",
+    ],
+    approach: `作者在 DEV《My Cursor + Claude Engineering Workflow: A Real Project Walkthrough》（JSON-LD datePublished 2026-05-22T14:31:35Z → 2026-05-22）写明：讨厌空泛「用 AI 写样板」与挑好 demo，于是把 CitizenApp 的 TOTP 2FA（含 10 条恢复码）从头走到尾，标出 Claude 与 Cursor 各自省时与失灵处。
+
+流程是先用 Claude 钉死密钥加密、pending JWT 与恢复码哈希，再用 Cursor 起草模型/服务/测与前端，鉴权合流与安全边角仍人手写并回审；最后给出无 AI ~9h 与有 AI ~4.25h 的对照表，强调架构与安全敏感段几乎不加速。
+
+本场景据此输出「功能墙钟走查」提纲。禁止把约 2× 写成任意功能 SLA，或建议跳过对 TOTP/迁移的人工线审。`,
+    outcomes: [
+      "源披露无 AI 合计约 9h、有 AI 约 4.25h（约省 4.75h，约 2×）、架构 2h→20min、前端 3h→1.5h、鉴权流节省 0 等作者口径；属单功能个人窗口，不可外推为你的倍速、缺陷率或「安全功能必半工时」。",
+      "能把「AI 写样板口号」与「分工具分工 + 永不盲合清单」拆开。",
+      "为 window/时钟漂移、pending token 与恢复码短路等「看起来对」的补丁提供提问清单。",
+    ],
+    caveats: [
+      "文为作者单功能走查；CitizenApp 全仓与配置未整包公开。",
+      "表内「Without AI」为作者估计，非对照实验。",
+      "上面写的是个人工程实践帖，不是 Anthropic/Cursor 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "安全功能 AI 加速走查提纲",
+        body: `你是安全功能交付顾问。只根据用户粘贴的栈与边界写提纲，不要编造已节省的小时数。
+
+功能：{{feature}}
+现有鉴权栈：{{auth_stack}}
+不可盲合文件：{{no_auto_merge}}
+
+输出 Markdown：
+1. 应先问模型的架构问题（存储/会话/恢复路径）
+2. 适合草稿 vs 必须手写的步骤表
+3. 线审检查表（密钥、时钟窗、迁移、审计日志）
+4. 人必须保留的合入门禁
+禁止声称「必达 2×」；禁止建议无人值守合并 TOTP/鉴权。`,
+      },
+      {
+        title: "TOTP/恢复码可疑实现复盘",
+        body: `代理生成的 2FA 代码「能跑」但你不放心。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像时钟窗、明文恢复码、pending token，还是短路校验
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多规则文件等于更安全 2FA」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/uaslimcreate/my-cursor-claude-engineering-workflow-a-real-project-walkthrough-3hij",
+      label: "dev.to/uaslimcreate · My Cursor + Claude Engineering Workflow: A Real Project Walkthrough",
+      date: "2026-05-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "467",
+    slug: "emilywoods-ai-agents-one-week-at-work",
+    title: "Emily：上班一周全力用编码代理——提交行数约 +40%，可合并产量几乎没变",
+    summary: "个人（在职实验）；披露一周行数约 +40%、PR 由常约 4 增至 5、约 3 小时花在审改代理代码；新服务 Cursor ~12 分钟出约 80%、事故根因与计费边角仍失手；不代你用行数当绩效。",
+    description:
+      "面向被 demo 拉扯、想用本职一周数据校准预期的工程师：把「代理先写 → 人审 → 标出组织记忆失灵点」写成实验门禁，区别于 Token Tax 瘦规则与多代理仓审计。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "career",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/emilywoodsnyc/i-used-ai-coding-agents-for-a-week-at-work-here-is-what-actually-happened-99h",
+    sourceLabel: "dev.to·emilywoodsnyc 实践帖",
+    upvotes: 358,
+    trending: false,
+    tags: [
+      "编码代理",
+      "在职实验",
+      "Cursor",
+      "Claude Code",
+      "评审",
+    ],
+    howItWorks: [
+      "粘贴本周任务类型（新服务/测/事故/计费）、工具组合，以及你平时一周 PR 与行数基线",
+      "Agent 按实践帖输出：一周实验记录表、适用/失灵分类，以及「勿用行数当唯一绩效」提醒",
+      "人工保留事故研判与容量决策；Agent 不代你保证「+40% 行数必多交付」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-05-08T20:17:14Z → 2026-05-08）：作者 Emily Woods 用一整周本职工作「凡事先让代理写」收集数据——栈为 Python/Go 微服务、队列、Postgres、Redis 与多第三方 API；工具含 Cursor agent、Claude Code，以及队内读 Jira 出计划的内部工具。有用处：周二新 Kafka 消费服务 Cursor 约 12 分钟生成约 80% 结构；补测 Claude Code 约 20 分钟出主路径并抓到边界条件（仅 3 测因 mock 假设需改）；服务说明约 90% 准确助入职。失灵：事故根因在跨仓 git 史与三周前 Slack、不在代码；是否加缓存的「教材答案」忽略 on-call 收缩与既往一致性事故；计费按比例/时区/祖父条款交互边角来回约 90 分钟后关掉工具自写更快。数字：相对平常周提交行数约 +40%（多来自新服务与测）、PR 常约 4→5、约 3 小时审改代理代码；无该周代理代码致生产事故（因全部人审）。结论：代理替换「可预期样板」，替不了组织记忆与容量判断。",
+      "与 michaelnash-claude-token-tax-lean-rebuild / davron-four-agents-77-projects-90-min 不同：本条是在职一周对照实验与「行数≠可合并产量」，不是瘦 CLAUDE.md 或四代理批量仓审计",
+    ],
+    approach: `Emily Woods 在 DEV《I used AI coding agents for a week at work》（JSON-LD datePublished 2026-05-08T20:17:14Z → 2026-05-08）写明：不再跟 demo 站队，而是用本职一周「先描述再让代理写、自己改」收集数据。
+
+她记录 Cursor/Claude Code 在新服务脚手架、补测与入职说明上的速度，也记下事故根因、容量决策与计费边角规则上的失灵——那些答案往往在 Slack、git 史与团队负载里，而不在仓库文件。
+
+本场景据此输出「一周实验记录」提纲。禁止把约 +40% 行数写成交付 SLA，或建议用提交行数替代评审与事故研判。`,
+    outcomes: [
+      "源披露提交行数约 +40%、PR 常约 4→5、约 3 小时审改、新服务约 12 分钟出约 80%、说明约 90% 准确等作者口径；属单人单周窗口，不可外推为你的速度、质量或「行数上升等于产出上升」。",
+      "能把「代理写得快」与「可合并产量 / 组织记忆」拆开。",
+      "为事故跨仓上下文、缓存容量决策与计费边角提供提问清单。",
+    ],
+    caveats: [
+      "实验自我报告；团队与仓库未公开。",
+      "行数与 PR 数受任务组合影响，非随机对照。",
+      "上面写的是个人在职实践帖，不是厂商效能白皮书。",
+    ],
+    prompts: [
+      {
+        title: "编码代理一周实验记录表",
+        body: `你是工程效能教练。只根据用户基线设计一周实验，不要编造已提升的百分比。
+
+平常一周 PR/行数：{{baseline}}
+本周任务类型：{{tasks}}
+工具：{{tools}}
+
+输出 Markdown：
+1. 每日记录字段（任务、代理占比、审改分钟、是否合入）
+2. 适用 vs 失灵分类标准
+3. 禁止用行数当唯一绩效的声明
+4. 人必须保留的事故/容量决策
+禁止声称「必 +40%」；禁止建议跳过人审合生产。`,
+      },
+      {
+        title: "代理在事故或计费边角失灵复盘",
+        body: `代理给出了「教材正确」但情境错误的建议，或边角改到崩溃。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺组织记忆、缺容量约束，还是规则互相打架
+2. 最小修补（何时关工具手写）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多上下文文件等于能读 Slack 决策」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/emilywoodsnyc/i-used-ai-coding-agents-for-a-week-at-work-here-is-what-actually-happened-99h",
+      label: "dev.to/emilywoodsnyc · I used AI coding agents for a week at work. Here is what actually happened.",
+      date: "2026-05-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "468",
+    slug: "cmaindron-claude-write-n8n-compute-seo",
+    title: "Cécile：Claude 只写页、n8n 算链接——单页成本约 $0.23→$0.11，双人审才上线",
+    summary: "个人（B2B 增长，非工程师）；披露拒绝约 1–7¢、整页约 11¢，拆掉模型重写 memory 后同词输出约减 2/3、输入 29142→20660 token、成本约 $0.23→$0.11；Slack+PR 双人审；不代你无人值守发站。",
+    description:
+      "面向要跑关键词→页面流水线却怕模型维护站点真相的内容/增长同事：把「输出契约 + 可计算归代码 + 双人门禁」写成门禁，区别于 200 页 pSEO 宣发与早报 cron。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "n8n",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/cmaindron/what-i-let-claude-write-and-what-i-made-n8n-compute-73f",
+    sourceLabel: "dev.to·cmaindron 实践帖",
+    upvotes: 359,
+    trending: false,
+    tags: [
+      "n8n",
+      "Claude API",
+      "SEO",
+      "人审",
+      "成本",
+    ],
+    howItWorks: [
+      "粘贴关键词表来源、是否已有站点 memory/sitemap，以及 SEO 与开发是否分人审",
+      "Agent 按实践帖输出：输出契约字段、Parse/校验清单、以及「模型写文案 / 代码算链接」拆分表",
+      "人工保留 Slack 内容批准与 PR 合并；Agent 不代你保证「必降到 $0.11/页」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-06T14:51:27Z → 2026-10-06）：B2B 增长营销 Cécile Maindron 为自己的演示站 Funnelsight 建月度 SEO 流水线——Google Sheet → n8n 循环 → Claude 判定 create/skip/duplicate → Slack send-and-wait 给 SEO → 开 GitHub 枝与 PR → 开发合并；状态回写表。关键设计：严格输出契约（拒绝仅两段、创建 六段）；Parse 后在进 GitHub 前校验文件名/slug/占位符/9 字段 memory/资源卡/read-next/内链是否指向存在页。踩坑：Limit 节点静默丢条目；多行正则 $ 截断段。成本转折：首跑因模型整份重写 content-memory.md 触顶；改为「可计算归 n8n」——Claude 只写页+一行 memory（internal_linking=AUTO），由代码从 HTML 抽链、补回链、计数、sitemap、资源卡分区。同关键词：输出约减 2/3、输入 29,142→20,660 token、成本约 $0.23→$0.11；拒绝约 1–7¢、整页约 11¢；连续 duplicate 缓存可读到约 $0.01 而非 $0.06。失败路径统一告警、删枝、标 Failed 并继续下一词。",
+      "与 ji-ai-spoonai-newsletter-11-subs-cron / lukasz-fryc-marketing-os-49-slash-commands 不同：本条核心是「模型勿维护可计算真相」与双人审门禁，不是订户早报或营销斜杠命令 OS",
+    ],
+    approach: `Cécile Maindron 在 DEV《What I let Claude write, and what I made n8n compute》（JSON-LD datePublished 2026-10-06T14:51:27Z → 2026-10-06）写明：她不是工程师，但用 n8n+Claude API 跑月度关键词流水线；真正贵且易漂的是让模型维护站点 memory。
+
+做法是先钉死输出契约与进仓前校验，再把内链、sitemap、资源卡等可从 HTML/表推导的事交给 n8n；内容批准与 PR 合并仍分给 SEO 与开发两人。成本上同词从约 $0.23 降到约 $0.11。
+
+本场景据此输出「写文案 vs 算结构」拆分提纲。禁止把 $0.11 写成任意站点单价，或建议跳过双人审自动合并。`,
+    outcomes: [
+      "源披露拒绝约 1–7¢、整页约 11¢、同词成本约 $0.23→$0.11、输入 29,142→20,660 token、输出约减 2/3 等作者口径；属演示站个人流水线窗口，不可外推为你的 SEO 排名、流量或「拆 memory 必半价」。",
+      "能把「让模型维护站点真相」与「契约 + 代码计算 + 双人门禁」拆开。",
+      "为 Limit 静默丢项、正则截断与并行 PUT 冲突提供提问清单。",
+    ],
+    caveats: [
+      "站点为认证演示 SaaS；流量/排名效果本文未作为主结论。",
+      "成本数字来自作者同词对照与缓存窗口，依赖当时模型价。",
+      "上面写的是个人增长工程实践帖，不是 n8n/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "SEO 流水线：模型写 vs 代码算拆分表",
+        body: `你是内容自动化顾问。只根据用户描述拆分职责，不要编造已降至的美元单价。
+
+关键词来源：{{sheet}}
+现有 memory/sitemap：{{site_truth}}
+审稿人：{{reviewers}}
+
+输出 Markdown：
+1. 输出契约字段（create/skip/duplicate）
+2. 进仓前校验清单
+3. 应禁止模型维护的可计算文件
+4. 人必须保留的双人门禁
+禁止声称「必 $0.11/页」；禁止建议无人值守合并到生产。`,
+      },
+      {
+        title: "流水线触顶或 memory 漂移复盘",
+        body: `生成中断、内链指向不存在页，或费用突然翻倍。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 模型重写可计算文件、解析截断，还是并行提交冲突
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更大 max_tokens 等于更稳站点真相」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/cmaindron/what-i-let-claude-write-and-what-i-made-n8n-compute-73f",
+      label: "dev.to/cmaindron · What I let Claude write, and what I made n8n compute",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "469",
+    slug: "monei-zendesk-amazon-connect-bedrock-support",
+    title: "MONEI：Zendesk→Amazon Connect+Bedrock——切流后约 55.2% 有意义会话自动解决",
+    summary: "团队；披露约 4 个月（末 6 周主攻）、工作台初版约 3 天；2026-09-24–10-18 关闭的有意义会话约 55.2% 自动解决，邮件分拣约 58.1% 标 IGNORED；不代你无人值守关人工投诉通道。",
+    description:
+      "面向坐席席位与「自动解决计费」不合团队协作方式的支付/SaaS 支持团队：把「文档合一 → 并行试跑 → 切流度量」写成门禁，区别于 CVE 自动驾驶与 ECS→EKS harness。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/monei/from-zendesk-to-amazon-connect-how-we-rebuilt-merchant-support-at-monei-2h36",
+    sourceLabel: "dev.to·MONEI 工程实践帖",
+    upvotes: 360,
+    trending: false,
+    tags: [
+      "Amazon Connect",
+      "Bedrock",
+      "客服",
+      "Zendesk",
+      "知识库",
+    ],
+    howItWorks: [
+      "粘贴当前工单系统、文档是否双语/双源，以及自动解决如何计费与定义",
+      "Agent 按实践帖输出：迁移动因核对表、并行试跑清单，以及切流后度量口径（有意义会话 vs IGNORED）",
+      "人工保留投诉与核身路径；Agent 不代你保证「必达 55.2% 自动解决」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-22T10:25:33Z → 2026-10-22）：支付公司 MONEI 写 2026-09 商户支持从 Zendesk 迁到 Amazon Connect，AI 用 Amazon Bedrock，支持工作台嵌回办公室。离开原因：Help Center 与工程 Markdown 文档双源；Zendesk AI 自动解决按次约 US$2 且「回答+静默」可计费、与「商户确认已解决」有落差；席位模型难匹配工程/运营共担支持。建设：Connect Cases 作需人跟进的系统记录；邮件 AI 分拣（答/澄清/转人/忽略垃圾与非支持）；脱敏与定期自动校验；Bedrock Knowledge Bases 统一支持+开发文档；仪表盘/落地页聊天；工作台同屏商户档案与翻译/摘要/润色。时间线：整体约 4 个月、支持专项多在切流前约 6 周；5 月并入 docs.monei.com 英西双语；8-24 邮件 AI 与 Zendesk 并行；9-22 工作台对内、9-23 21:00–23:00 马德里时间切流（仅 15 个未结会话迁移）。度量自 9-24：至 10-18，与 MONEI 相关、已关闭的有意义支持会话约 55.2% 自动解决；另有约 58.1% 邮件被标 IGNORED（不计 55.2%）。自动回复先上英/西/法/加泰，英语兜底。",
+      "与 henri-cve-migration-control-autopilot / henry-knight-agency-saas-claude-agents 不同：本条是商户支持通道重建与自动解决口径，不是 CVE PR 自动驾驶或代理替 SaaS 账单",
+    ],
+    approach: `MONEI 在 DEV《From Zendesk to Amazon Connect》（JSON-LD datePublished 2026-10-22T10:25:33Z → 2026-10-22）写明：要的不是再买席位，而是把文档、AI 分拣与回办公室工作台收成一条可度量路径，并避开「静默即算自动解决」的计费落差。
+
+他们先统一英西文档与 Bedrock 知识库，让邮件 AI 与 Zendesk 并行试跑，再在非工作时段切流；人仍处理投诉、核身与需调查请求。切流后约三周窗口给出约 55.2% 有意义会话自动解决等口径。
+
+本场景据此输出「支持通道重建」提纲。禁止把 55.2% 写成任意行业 SLA，或建议关闭人工投诉入口。`,
+    outcomes: [
+      "源披露约 4 个月（末约 6 周主攻）、工作台初版约 3 天、2026-09-24–10-18 有意义已关闭会话约 55.2% 自动解决、邮件约 58.1% IGNORED、并行自 8-24、切流 9-23 等团队口径；属单一支付公司窗口，不可外推为你的解决率、席位成本或「上 Bedrock 必同比例」。",
+      "能把「自动解决计费」与「商户确认/有意义会话」度量拆开。",
+      "为双源文档、席位共担与脱敏校验提供提问清单。",
+    ],
+    caveats: [
+      "公司自述工程博文；完整提示词与模型选型细节未全公开。",
+      "55.2%/58.1% 为切流后约三周窗口，非全年对照实验。",
+      "上面写的是团队工程实践帖，不是 AWS/Zendesk 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "客服通道迁移动因与度量口径表",
+        body: `你是支持系统迁移顾问。只根据用户现状列清单，不要编造已达到的自动解决率。
+
+当前工单系统：{{ticket_system}}
+文档是否双源：{{docs}}
+自动解决如何计费/定义：{{resolution_def}}
+
+输出 Markdown：
+1. 迁移动因核对（双源、计费落差、席位模型）
+2. 并行试跑与切流检查表
+3. 有意义会话 vs IGNORED 度量建议
+4. 人必须保留的投诉/核身路径
+禁止声称「必达 55.2%」；禁止建议取消人工升级。`,
+      },
+      {
+        title: "自动回复与「已解决」口径争议复盘",
+        body: `商户仍来问、或账单按自动解决收费但体验差。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 知识过期、脱敏过严，还是静默计费口径
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多自动回复等于更高真实解决率」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/monei/from-zendesk-to-amazon-connect-how-we-rebuilt-merchant-support-at-monei-2h36",
+      label: "dev.to/monei · From Zendesk to Amazon Connect: how we rebuilt merchant support at MONEI",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "470",
+    slug: "sebastian-chedal-hydraulic-3d-zero-human-code",
+    title: "Fountain City：水力 3D 仿真「零人手生产代码」——约 60h 编码 vs 估 300h，API 约 $360.50",
+    summary: "团队（1 人导演+13 代理）；披露约 18,000 行 C#/58 文件、编码 60h vs 传统估 300h、规划 32h vs 估 16h、首项学习约 40h、11 会话约 334.6M token、API $360.50；写与验分代理；不代你无人值守签物理正确。",
+    description:
+      "面向有可编程验收标准的仿真/工具链团队：把「文档先行 + 写码与科学审计分模型 + Unity 批跑」写成门禁，区别于 HTML 动效帧函数与多仓并行审计。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/sebastian_chedal/how-we-built-hydraulic-3d-simulation-software-with-zero-human-code-and-what-we-learned-through-the-4fei",
+    sourceLabel: "dev.to·Sebastian Chedal / Fountain City 实践帖",
+    upvotes: 361,
+    trending: false,
+    tags: [
+      "Agentic",
+      "Unity",
+      "仿真",
+      "Claude Code",
+      "验收",
+    ],
+    howItWorks: [
+      "粘贴领域算法/验收指标（如质量守恒误差）、是否可批跑测试，以及谁有权宣布「物理正确」",
+      "Agent 按实践帖输出：文档先行清单、写码/科学审计/日志校验分权，以及首项学习开销预期",
+      "人工保留规格终审与客户验收；Agent 不代你保证「必 5× 或 $0.02/行」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-08T18:12:41Z → 2026-04-08）：Fountain City（CEO Sebastian Chedal 导演）为游戏客户在 Unity 6.2 做水力级联地形仿真（湖泊/河流/侵蚀/流域/季节水位等），宣称生产 C# 无一人手键入——约 18,000 行、58 文件。栈：Anthropic Opus 经 Claude Code/Cursor 负责编码与架构判断，Gemini 3.1 Pro 做科学交叉检查；Cursor 批模式驱动 Unity 测跑。组织：13 定制代理 + 8 领域技能；唯一写码代理（Sonnet）实施前须读科学审计与架构评审（Opus）；测跑与日志校验（Haiku）分家；编排器不派技术裁决。数字：客户传统编码估 300h，实际编码 60h（自称约 5×）；规划 16→32h；首项学习开销约 40h；11 会话、9,314 消息、约 334.6M token，API 合计 $360.50（Sonnet 实施约 $198、Opus 判断约 $162；称缓存读写约占花费 98%）。早周因规格不全走弯路，改为文档经双模型+人审后才准动码。",
+      "与 arqam-claude-opus-motion-html-playwright / davron-four-agents-77-projects-90-min 不同：本条是可程序验收的物理仿真「写验分权」，不是 HTML 帧动效或四代理批量仓审计",
+    ],
+    approach: `Sebastian Chedal 在 DEV《How We Built Hydraulic 3D Simulation Software With Zero Human Code》（JSON-LD datePublished 2026-04-08T18:12:41Z → 2026-04-08）写明：「零人手代码」指生产源码全由代理生成，人只做需求、架构裁决与验收；水力仿真能这样做，是因为质量守恒、无上坡流等可用程序指标卡住。
+
+关键是写码代理不得自验——科学审计、架构评审、Unity 批跑与日志校验分属不同代理/模型；并承认规划加倍与约 40h 首项学习税。口径上编码 300h 估→60h 实，API 约 $360.50。
+
+本场景据此输出「可验收领域的分权代理」提纲。禁止把 5× 或 $360.50 写成任意项目保证，或建议无人签署物理正确。`,
+    outcomes: [
+      "源披露约 18,000 行/58 文件、编码 60h vs 估 300h、规划 32h vs 估 16h、学习约 40h、约 334.6M token、API $360.50（Sonnet≈$198/Opus≈$162）等作者口径；属单一客户仿真窗口，不可外推为你的工期、物理正确性或「零人手必 5×」。",
+      "能把「代理写得快」与「写验分权 + 文档先行」拆开。",
+      "为规格未完就开码、以及单模型自审自批提供提问清单。",
+    ],
+    caveats: [
+      "公司项目复盘；「传统 300h」为客户/团队估计。",
+      "文含公司服务导向叙述；完整代理配置未整仓开源。",
+      "上面写的是团队工程实践帖，不是 Unity/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "可程序验收领域的代理分权清单",
+        body: `你是仿真/工具链 AI 工作流顾问。只根据用户领域写分权，不要编造已达到的倍速或美元。
+
+领域与算法：{{domain}}
+可量化验收：{{metrics}}
+批跑方式：{{batch_runner}}
+
+输出 Markdown：
+1. 文档先行最小集
+2. 写码 / 科学审计 / 测跑 / 日志校验分权表
+3. 首项学习开销预期问题
+4. 人必须签署的物理/业务正确门禁
+禁止声称「必 5×」；禁止建议写码代理自批上线。`,
+      },
+      {
+        title: "代理仿真结果「看起来对」复盘",
+        body: `水位/流量可视化正常但指标越界，或代理反复测同一错误假说。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 规格缺口、自审自批，还是缺强制换假说
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多代理数量等于更正确物理」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/sebastian_chedal/how-we-built-hydraulic-3d-simulation-software-with-zero-human-code-and-what-we-learned-through-the-4fei",
+      label: "dev.to/sebastian_chedal · How We Built Hydraulic 3D Simulation Software With Zero Human Code",
+      date: "2026-04-08",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
