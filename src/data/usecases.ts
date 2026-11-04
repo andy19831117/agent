@@ -20366,6 +20366,446 @@ PR 摘要：{{pr}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "371",
+    slug: "rutger-muninn-markdown-domain-secretary",
+    title: "Rutger：Markdown 域剧本 + MCP，Claude Code 私人秘书 Muninn",
+    summary: "对照个人效率实践：口述生成 CLAUDE.md/域剧本；并行域扫描出简报；出站需确认；披露简报约 30–120 秒；不代你无人发信、不外推省时。",
+    description:
+      "面向想把邮件/日历/健康等多域收成一次简报的个人用户：把「再装 OpenClaw 全能管家」写成可对账的 Markdown 身份+域剧本+并行子代理扫描+出站确认，区别于 n8n Personal OS 与三要素 PreToolUse 硬闸。",
+    categories: [
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://deknijf.com/posts/my-ai-secretary/",
+    sourceLabel: "deknijf.com·Rutger de Knijf 实践帖",
+    upvotes: 262,
+    trending: false,
+    tags: [
+      "私人秘书",
+      "CLAUDE.md",
+      "域剧本",
+      "并行简报",
+      "MCP",
+    ],
+    howItWorks: [
+      "粘贴要覆盖的生活/工作域、可用 MCP/连接器，以及出站动作是否必须先确认",
+      "Agent 按实践帖输出：CLAUDE.md 身份与确认规则→域 Scan/Execute 剧本清单→decisions.md 已决过滤→并行简报提问清单",
+      "人工保留发信/改日历/下单权；Agent 不代你声称六应用晨检已无人值守完成",
+    ],
+    tips: [
+      "源帖关键：内读可偏行动，出站（发信、完成任务、建事件）必须先展示再确认；记忆用主题 Markdown+BM25，任务仍进 Todoist",
+      "与 tobias-personal-os-n8n-claude-todoist / wes-sander-personal-agent-trifecta 不同：本条是 Claude Code Markdown 域剧本+并行域扫描秘书，不是 n8n 晨报 OS 或 PreToolUse 三要素硬闸；文中试过 OpenClaw 后弃用，主题不是 OpenClaw",
+    ],
+    approach: `Rutger de Knijf 在《My AI Secretary》（页内 March 3, 2026；JSON-LD datePublished 2026-03-03 → 2026-03-03）写明：用 Claude Code 搭私人秘书 Muninn——整仓是 Markdown，无自研框架/数据库/部署管线；会话开始读 CLAUDE.md 定义身份与能力；domains/ 下每域一份剧本（tasks/calendar/email/health/transport/cooking/home 等），含 Scan Procedure 与 Execute Procedures；memory/ 存 people、decisions、projects、briefing-notes 等主题事实，以本地 BM25（QMD）检索，作者称早期向量检索更慢且不可预期。
+
+作者口述（Whispering）驱动，AI 写指令与剧本；原则是 Bias toward action（能自己做就不甩回给人）+ Confirmation Rule（对外动作先展示草案再等确认，内部读取可不问）。杀手工作流 \`/briefing\`：先载入 decisions/briefing-notes 建「勿再提」清单 → 并行启动各域子代理扫描 → 过滤已决/已消项 → 按 URGENT/TODAY/…/ANOMALIES/SUGGESTED ACTIONS 呈现 → 会后把已处理/延后/驳回写回 decisions.md。作者称简报约 30–120 秒，可占 Claude Code Max 会话额度的几个百分点，并替换原先轮查约六个应用的晨间习惯。另有烹饪、机维等独立子项目。本场景据此输出「Markdown 域剧本私人秘书」提纲。禁止建议跳过出站确认或无人值守自动发信/下单。`,
+    outcomes: [
+      "源披露简报约 30–120 秒、可占 Max 会话额度约数个百分点，以及并行域扫描+出站确认等作者窗口口径；属个人效率叙事，不可外推为你的省时比或零误发率。",
+      "能把「再装 OpenClaw/全能管家」与「Markdown 身份 + 域剧本 + 并行扫描 + 出站确认」拆开。",
+      "为重复唠叨、记忆未引用与出站误发提供提问清单。",
+    ],
+    caveats: [
+      "记忆「真的会先查再行动」仍是作者持续调教难点；剧本再完善也要人审出站。",
+      "MCP/Home Assistant/邮箱权限边界因人而异，不可照搬。",
+      "上面写的是个人博客实践帖；作者提及试过 OpenClaw 后改用 Claude Code，本条不写成 OpenClaw 教程。",
+    ],
+    prompts: [
+      {
+        title: "域剧本私人秘书简报",
+        body: `你是个人效率系统顾问。只根据用户约束写提问清单，不要编造已上线。
+
+覆盖域：{{domains}}
+可用连接器：{{connectors}}
+出站是否需确认：{{confirm_outbound}}
+
+输出 Markdown：
+1. CLAUDE.md 身份/能力/确认规则要点
+2. 每域 Scan 与 Execute 剧本提纲
+3. decisions.md 已决/驳回写法
+4. /briefing 五段提问清单
+禁止建议无人值守自动发信或下单；禁止声称晨检已全自动完成。`,
+      },
+      {
+        title: "简报重复唠叨复盘提纲",
+        body: `秘书简报反复提起已处理事项，请写复盘提纲。
+
+重复项：{{item}}
+当前 decisions/memory 摘录：{{memory_excerpt}}
+
+输出：
+1. 是未写回已决、检索未命中，还是域剧本忽略过滤列表
+2. 最小修复（写回格式+扫描前强制读）
+3. 下次 briefing 验收标准
+4. 人工确认清单
+不要伪造「记忆已永久修好」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://deknijf.com/posts/my-ai-secretary/",
+      label: "deknijf.com · My AI Secretary",
+      date: "2026-03-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "372",
+    slug: "openobserve-council-e2e-qa-agents",
+    title: "OpenObserve：八席 Council 子代理，把 E2E QA 写成可阻断流水线",
+    summary: "对照团队工程案例：Analyst→Architect→Engineer→Sentinel→Healer→Scribe；披露分析 45–60 分→5–10 分、脆测约 30–35→4–5、用例约 380→700+，并在写测时揪出 ServiceNow 静默缺陷；不代你零漏测、不外推。",
+    description:
+      "面向跟不上发版速度的 QA/工程团队：把「再加人写 Playwright」写成可对账的分职 Council+Sentinel 阻断+Healer 自愈，区别于自治 CI 贡献者与 Agent PR 人审工件闸。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://openobserve.ai/blog/autonomous-qa-testing-ai-agents-claude-code/",
+    sourceLabel: "openobserve.ai·Shrinath Rao 工程实践帖",
+    upvotes: 263,
+    trending: false,
+    tags: [
+      "E2E 测试",
+      "Claude Code",
+      "子代理",
+      "Playwright",
+      "QA 自动化",
+    ],
+    howItWorks: [
+      "粘贴现有 E2E 栈、Page Object/选择器约定，以及是否允许 Healer 自动改测",
+      "Agent 按实践帖输出：六阶段产物边界→Sentinel 阻断规则→Healer 迭代上限→人审 P0 提问清单",
+      "人工保留合入与发布；Agent 不代你声称覆盖率或脆测率已达标",
+    ],
+    tips: [
+      "源帖：Council 以 `.claude/commands/` slash 命令落地；Sentinel 发现严重问题可阻断全管线；人仍审 P0",
+      "与 clickhouse-groeneai-autonomous-contributor / zeybek-agent-pr-scope-behaviour-checks 不同：本条是生成/审计/自愈 E2E 测的分职流水线，不是仓库自治修 CI 或人审 Agent PR 的范围工件闸",
+    ],
+    approach: `Shrinath Rao 在 OpenObserve 博客《From 380 to 700+ Tests: How We Built an Autonomous QA Team with Claude Code》（页内 January 27, 2026；JSON-LD datePublished 2026-01-27 → 2026-01-27）写明：面对功能分析约 45–60 分钟、脆测约 30+、覆盖约 380 跟不上发版的瓶颈，团队用 Claude Code 搭「Council of Sub Agents」——八个专长代理覆盖整条 E2E 管线。编排器路由 OSS/Enterprise 路径；六阶段为 Analyst（源码与 data-test、工作流与边角→Feature Design Doc）→ Architect（P0/P1/P2 测计划）→ Engineer（按 Page Object 与已核选择器写 Playwright）→ Sentinel（审计框架违规、脆定位、缺断言、硬编码凭证，严重则阻断）→ Healer（跑测、诊断、至多约 5 轮修复）→ Scribe（写入 TestDino）；另有独立 Test Inspector 审含 E2E 变更的 GitHub PR。
+
+「Aha」案例：为 Prebuilt Alert Destinations（Slack/Discord/Teams/PagerDuty/ServiceNow）生成测时，ServiceNow 编辑用例卡在 Loading；Healer 追到 Vue 组件 hostname 切片错误——静默集成缺陷，客户尚未报障。结果口径（作者团队窗口）：特征分析 45–60 分→5–10 分；首条通过测约 1 小时→约 5 分钟；脆测约 30–35→4–5（约 85%）；覆盖约 380→700+（约 84% 增）。强调自治≠无人监督，P0 仍人审。本场景据此输出「E2E QA Council」提纲。禁止把 700+ 或 85% 写成对你产品的保证。`,
+    outcomes: [
+      "源披露分析 45–60 分→5–10 分、脆测约 30–35→4–5、覆盖约 380→700+，以及写测时发现 ServiceNow 静默缺陷等团队窗口数字；属 OpenObserve QA 叙事，不可外推为你的漏测率或发版 SLA。",
+      "能把「再加人写测」与「分职 Council + Sentinel 阻断 + Healer 有限自愈」拆开。",
+      "为脆定位、选择器漂移与 Healer 改坏断言提供提问清单。",
+    ],
+    caveats: [
+      "强依赖既有 Playwright/POM/data-test 纪律；乱选择器仓会放大幻觉。",
+      "Healer 自动改测需人设上限与 diff 审，否则测俘获风险上升。",
+      "上面写的是可观测性产品团队工程博客，不是 Claude/Playwright 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "E2E QA Council 简报",
+        body: `你是 QA 自动化顾问。只根据用户约束写提问清单，不要编造已上线。
+
+现有测栈：{{stack}}
+选择器约定：{{selectors}}
+是否允许自动改测：{{allow_heal}}
+
+输出 Markdown：
+1. 六阶段产物与交接文件
+2. Sentinel 阻断规则示例
+3. Healer 迭代上限与人审点
+4. P0 人工验收清单
+禁止声称覆盖率已达标；禁止建议取消人审合入。`,
+      },
+      {
+        title: "Healer 改坏断言复盘提纲",
+        body: `Healer 为让用例变绿削弱了断言，请写复盘提纲。
+
+失败日志摘录：{{log}}
+改动 diff 摘要：{{diff}}
+
+输出：
+1. 是迭代上限过高、缺断言基线，还是 Sentinel 未再审
+2. 最小门禁补丁
+3. 回滚/重生成步骤
+4. 人工确认清单
+不要伪造「脆测已自动消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://openobserve.ai/blog/autonomous-qa-testing-ai-agents-claude-code/",
+      label: "openobserve.ai · From 380 to 700+ Tests: How We Built an Autonomous QA Team with Claude Code",
+      date: "2026-01-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "373",
+    slug: "tony-tong-crm-stage-evals",
+    title: "Tony Tong：顾问获客 CRM 是 Agent 系统，阶段契约 + Eval 才知道对不对",
+    summary: "对照独立顾问实践：Notion 单源获客；人批每封；披露 25 天约 424 线索/165 封、首轮 Eval 规则通过约 90%/78%，并揪出未验证先发等；不代你提回复率、不外推。",
+    description:
+      "面向一人顾问/小咨询用 Agent 做获客：把「再仔细读每封 AI 邮件」写成可对账的阶段契约+规则/金标/窄裁判 Eval，区别于外勤 Telegram Sheets CRM 与支持邮箱分类。",
+    categories: [
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://tonytonggg.com/writing/my-crm-is-an-agent-system",
+    sourceLabel: "tonytonggg.com·Tony Tong 实践帖",
+    upvotes: 264,
+    trending: false,
+    tags: [
+      "获客 CRM",
+      "阶段契约",
+      "Eval",
+      "冷邮件",
+      "独立顾问",
+    ],
+    howItWorks: [
+      "粘贴线索来源、CRM 字段，以及是否允许系统直接发送",
+      "Agent 按实践帖输出：Find→Enrich→Score→Draft→人批阶段契约→规则/金标/裁判分层→日审提问清单",
+      "人工保留发送权；Agent 不代你声称回复率或域名健康已提升",
+    ],
+    tips: [
+      "源帖：读邮件只检查文笔，抓不到未验证地址/多触点/错网站；先种已知错误再信 faithfulness 类指标",
+      "与 outside-sales-telegram-claude-sheets / dominic 支持邮箱类主题不同：本条是顾问冷启动获客管线+阶段 Eval，不是外勤 Telegram CRM 或支持分拣",
+    ],
+    approach: `Tony Tong 在《My CRM is an agent system. Evals are how I know it works.》（JSON-LD datePublished 2026-10-10 → 2026-10-10）写明：为自己咨询品牌 Flareworks 跑内部生产系统——Notion 库「Singapore Leads」为唯一真相源；定时任务按 lane 找线索（LinkedIn 互动、差评信号、招聘广告等，经 treg 按次查询，月花费帽约 US$20），Enrich 校验网站/电话/负责人/工作邮，打 ICP 分，ChatGPT 起草，作者读过每封才从本人 Gmail 发出；定时任务无发送步。
+
+v1 活动口径（截至 2026-10-02 约 25 天）：线索 424、已验证邮约 211、已发 165、标回复 11（其二到短发现阶段）；作者估算约省 70 小时（算术非秒表），日约 45 分钟批阅发送。失败多在上游：职称误判、错网站、开场数字串岗、假重复等。v2 为每阶段写契约（网站归属注册名、邮域匹配、仅已验证可发、一址不重复、暖联不冷触、声明可追溯等），用三层 Eval：全量免费规则、50 条手标网站金标、DeepEval+窄自研裁判（Claude 评 ChatGPT 稿）。首轮对约 308 封/260 人/208 线索：邮件规则全过约 90%、线索约 78%；揪出未验证先发 22、暖联被冷触 1、同企多触 16、发了未入库 5、反弹 2/308；写作尚可，问题在验证/去重/跟踪。另测出默认 faithfulness 对捏造「第二分店」仍打 1.0，改窄检查。开源同模式队列：github.com/s0yabean/agent-approval-queue。本场景据此输出「获客 Agent + 阶段 Eval」提纲。禁止建议无人值守群发或绕过验证。`,
+    outcomes: [
+      "源披露约 25 天 424 线索/165 封、估约 70 小时、首轮规则通过约 90%/78% 与未验证先发 22 等作者窗口数字；属一人顾问生产叙事，不可外推为你的回复率、转化或域名信誉。",
+      "能把「再仔细读 AI 邮件」与「阶段契约 + 规则/金标/窄裁判」拆开。",
+      "为错网站、假重复与指标名不副实提供提问清单。",
+    ],
+    caveats: [
+      "回复率样本仍小；作者明说 Eval 尚未证明回复提升。",
+      "treg/Notion/Gmail 组合与新加坡 ICP 高度定制。",
+      "上面写的是个人实践帖与开源审批队列，不是某 CRM 厂商官文。",
+    ],
+    prompts: [
+      {
+        title: "获客 Agent 阶段契约简报",
+        body: `你是独立顾问获客系统顾问。只根据用户约束写提问清单，不要编造已获客。
+
+线索来源：{{lanes}}
+CRM 落点：{{crm}}
+是否允许自动发送：{{allow_send}}
+
+输出 Markdown：
+1. Find→Enrich→Score→Draft→Approve 契约表（必须/禁止）
+2. 免费规则检查清单
+3. 金标集应覆盖的风险步
+4. 人工日批与周抽检
+禁止建议无人值守群发；禁止声称回复率已提升。`,
+      },
+      {
+        title: "未验证地址已发送复盘提纲",
+        body: `Eval 发现一批邮件在地址未验证时已发出，请写复盘提纲。
+
+数量与样本：{{sample}}
+当时审批流程：{{approval}}
+
+输出：
+1. 是契约缺字段、规则未跑，还是人批跳过验证列
+2. 最小门禁补丁
+3. 域名/名单补救步骤
+4. 人工确认清单
+不要伪造「反弹已自动清零」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://tonytonggg.com/writing/my-crm-is-an-agent-system",
+      label: "tonytonggg.com · My CRM is an agent system. Evals are how I know it works.",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "374",
+    slug: "canvas-investigator-slack-support-agent",
+    title: "Canvas Medical：Support Stack → Slack Investigator，用 MCP 查支撑告警",
+    summary: "对照医疗团队实践：本地 MCP/技能包给支持自助调查；再做成 Slack Agent 跟告警与@提问；披露小时级多人排查压到分钟级口径；不代你合规免责、不外推。",
+    description:
+      "面向有工单/观测/代码多源的支持与平台团队：把「再找工程师盯告警」写成可对账的 MCP 技能包→Slack 调查 Agent+反馈按钮，区别于支持邮箱分类与外勤 CRM。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://www.canvasmedical.com/articles/i-built-an-agent-and-now-it-has-questions",
+    sourceLabel: "canvasmedical.com·Beau Gunderson 工程实践帖",
+    upvotes: 265,
+    trending: false,
+    tags: [
+      "Slack Agent",
+      "支持调查",
+      "MCP",
+      "告警",
+      "医疗信息化",
+    ],
+    howItWorks: [
+      "粘贴支持需查的系统清单、是否已有 BAA/合规边界，以及 Agent 可否开 PR",
+      "Agent 按实践帖输出：Support Stack 仓库应含 MCP/技能→Investigator 工具主题分组→Slack 线程反馈回路→人审提问清单",
+      "人工保留生产变更与客户答复；Agent 不代你声称已通过医疗合规审计",
+    ],
+    tips: [
+      "源帖前提：与 Anthropic 及工具商有 BAA；无此则医疗场景不可照搬",
+      "与 Dominic 支持邮箱分类 / outside-sales-telegram-claude-sheets 不同：本条是多源 MCP 调查包升级为 Slack 告警/问答 Agent，不是邮件分拣或外勤 CRM",
+    ],
+    approach: `Beau Gunderson 在 Canvas Medical《I Built an Agent and Now It Has Questions》（页内 April 16, 2026；JSON-LD datePublished 2026-04-16 → 2026-04-16）写明：同事 Jess 要给 Claude Code 接 Jira/Pylon/Notion/GitHub/Fathom 等 MCP 后，作者被「一句话读票写码开 PR / 总结沉默票 / 解释客户实例性能」能力击中。阶段演进：直接用 Claude Code 辅助评审与改码 → MCP 扩上下文与时间管理 → 打包 MCP 定义与 skills 成内部「Support Stack」仓库供支持克隆 → 用 Claude Agent SDK + Slack 做「Investigator」自动调查告警并可在线程被 @。
+
+Support Stack：首次试用即从 GitHub/Pylon/Sentry 等拉数、定位缺陷并起草修复。作者称支持问题从常需数小时、多人协作压到数分钟；减少支持卡工程师与人工跨源检索。Investigator：对监控告警自动调查，接代码搜索、GitHub PR、Sentry、Elasticsearch、InfluxDB 与内部客户插件 API 等；可解释「高 CPU」背后近期请求或插件新版本。随后支持任意频道 @，工具面扩展到实例、基础设施、药房/检验、集成配置、Notion/Pylon 等；公开频道回答可复利；内置赞/踩并常让 Agent 对自己的上下文开 PR。文末强调最有生产力的用法是公司/角色定制，而非买通用产品。本场景据此输出「支持调查 Agent」提纲。禁止在无 BAA/合规审查时建议接入 PHI 系统。`,
+    outcomes: [
+      "源披露定性「数小时多人排查→数分钟」与 Support Stack/Investigator 演进，以及工具主题附录；未给工单量或 MTTR 百分比；属 Canvas 医疗团队窗口，不可外推为你的支持 ROI 或合规基线。",
+      "能把「再找工程师盯告警」与「MCP 技能包 + Slack 调查 Agent + 反馈改上下文」拆开。",
+      "为错误归咎插件、工具权限过宽与幻觉答复提供提问清单。",
+    ],
+    caveats: [
+      "医疗/PHI 场景依赖 BAA 与最小权限；无合规审查不可复制工具面。",
+      "Agent 可重启应用、改 IP 白名单等能力极高危，须按角色收紧。",
+      "上面写的是 Canvas 工程师实践帖，不是 Anthropic/Slack 官文。",
+    ],
+    prompts: [
+      {
+        title: "支持调查 Agent 简报",
+        body: `你是平台支持自动化顾问。只根据用户约束写提问清单，不要编造已上线。
+
+可查系统：{{systems}}
+合规约束：{{compliance}}
+是否允许开 PR/改基础设施：{{allow_mutate}}
+
+输出 Markdown：
+1. Support Stack 应含的 MCP/技能清单
+2. Slack Investigator 触发与线程规范
+3. 工具权限分级（只读/变更）
+4. 人工抽检与赞踩复盘
+禁止在无合规前提下接入受保护健康数据；禁止声称 MTTR 已下降。`,
+      },
+      {
+        title: "误归咎客户插件复盘提纲",
+        body: `Agent 把性能问题错误归咎于无关插件，请写复盘提纲。
+
+答复摘录：{{reply}}
+事后根因：{{root_cause}}
+
+输出：
+1. 是上下文缺失、相关≠因果，还是工具结果未交叉验证
+2. 应写入 skills 的禁则
+3. 对客户/内部更正步骤
+4. 人工确认清单
+不要伪造「根因已自动更正」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.canvasmedical.com/articles/i-built-an-agent-and-now-it-has-questions",
+      label: "canvasmedical.com · I Built an Agent and Now It Has Questions",
+      date: "2026-04-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "375",
+    slug: "janmejai-notion-interest-rating-editorial",
+    title: "Janmejai：七条定时例程 + Notion Interest Rating，人只点下拉不自动发文",
+    summary: "对照个人编辑实践：雷达投稿等人评 4/5；Approved 例程不可写；披露技能表 64/~6.1k token→7/~1.2k，并因 SEO 聚合错误引入 claim ledger；不代你流量、不外推。",
+    description:
+      "面向一人内容站要用 Agent 做选题与草稿：把「再接一条周刊五段流水线」写成可对账的 Notion 控制面+Interest Rating 闸+claim ledger+技能 token 预算，区别于周刊 Claude Code 五段管线。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://janmejai2002.github.io/blog/how-this-blog-builds-itself/",
+    sourceLabel: "janmejai2002.github.io·Janmejai Singh Minhas 实践帖",
+    upvotes: 266,
+    trending: false,
+    tags: [
+      "内容流水线",
+      "Notion",
+      "Interest Rating",
+      "claim ledger",
+      "定时例程",
+    ],
+    howItWorks: [
+      "粘贴内容主题数、是否允许自动发布，以及事实引用规则",
+      "Agent 按实践帖输出：雷达 vs 受限写手分流→Interest Rating/Approved 状态机→claim ledger 三列→技能目录瘦身提问清单",
+      "人工保留评分与终发；Agent 不代你声称 SEO 或阅读量已提升",
+    ],
+    tips: [
+      "源帖铁律：例程不得写入 Approved；无人值守只许用不 tip 过期的凭证；案例研究从「一天十篇」降到一周两篇以防规模化滥用处罚",
+      "与 alejandro-newsletter-claude-code-pipeline 不同：本条是 Notion 下拉评分闸+claim ledger+技能 token 预算的多主题定时编辑部，不是周刊五段 Claude Code 起草管线",
+    ],
+    approach: `Janmejai Singh Minhas 在 wAIbi-sabi《How This Blog Builds Itself》（页内/JSON-LD datePublished 2026-08-24 → 2026-08-24）写明：七条定时 Claude Code 例程覆盖五主题——三条雷达（技术/商业/基础）只投稿选题并停下；案例与 Talks 写手因主题已受限可直接起草但仍落在 Draft Ready；另有每四小时拾取评分 4/5 的 ai-article-writer，以及新闻档案同步。Notion 是控制面（两相关库+决策），git 只存已发布成品。
+
+核心人闸是 Interest Rating 下拉：多数流水线只需人评 4/5；1/2 还会教雷达避开近邻题。状态机上写手前先把雷达行标 Drafting 防四小时任务双开；**Approved 是任何例程都不可写的状态**——系统只产草稿。事实层：两篇已上线文因归属错误公开勘误，且错误皆溯至 SEO 聚合页而非一手源，于是强制 claim ledger（声明原文|URL|页内逐字原句）。token 预算：技能/代理描述会注入每会话及每个子代理，作者把活动技能从 64 个约 6.1k token 收到 7 个约 1.2k，代理人设从约 263 收到约 27；其余归档旁路目录。另强调冷启动提示即文档、主题名多处硬编码易漂移、Talks 不用会过期登录的 NotebookLM。本场景据此输出「Notion 评分闸编辑部」提纲。禁止建议例程自动 Approved 或群发未核对声明。`,
+    outcomes: [
+      "源披露七例程/五主题、技能 64/~6.1k→7/~1.2k、代理人设约 263→约 27，以及两篇公开勘误催生 claim ledger 等作者窗口数字；属个人站点叙事，不可外推为你的流量、收录或内容 ROI。",
+      "能把「再接周刊五段管线」与「Notion 评分闸 + 例程禁写 Approved + claim ledger」拆开。",
+      "为双开起草、聚合页假引用与技能表膨胀提供提问清单。",
+    ],
+    caveats: [
+      "冷启动提示多处硬编码主题名，重构时易静默失败。",
+      "案例/Talks 写手约束在提示里，仍需人审 Draft Ready。",
+      "上面写的是个人博客系统复盘，不是 Notion/Claude 官文。",
+    ],
+    prompts: [
+      {
+        title: "Notion 评分闸编辑部简报",
+        body: `你是一人内容站自动化顾问。只根据用户约束写提问清单，不要编造已发布。
+
+主题列表：{{themes}}
+是否允许自动发布：{{allow_autopublish}}
+引用规则：{{citation_rules}}
+
+输出 Markdown：
+1. 雷达 vs 受限写手分流表
+2. Interest Rating / Drafting / Draft Ready / Approved 状态机（标明谁可写）
+3. claim ledger 三列与禁止源
+4. 技能目录瘦身与人工周审
+禁止建议例程写入 Approved；禁止声称流量已提升。`,
+      },
+      {
+        title: "聚合页假引用复盘提纲",
+        body: `已发文被发现统计数字链到未刊登该数字的 SEO 聚合页，请写复盘提纲。
+
+文章与声明：{{claims}}
+原链接：{{urls}}
+
+输出：
+1. 是缺 ledger、允许聚合源，还是人审未核第三列
+2. 公开勘误步骤
+3. 提示/技能最小补丁
+4. 人工确认清单
+不要伪造「收录惩罚已自动解除」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://janmejai2002.github.io/blog/how-this-blog-builds-itself/",
+      label: "janmejai2002.github.io · How This Blog Builds Itself",
+      date: "2026-08-24",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
