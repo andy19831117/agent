@@ -22578,6 +22578,449 @@ Slipstream 是从规格到生产的流水线，三站：Build（按约定/lint/�
       dateLabel: "发布",
     },
   },
+  {
+    id: "396",
+    slug: "frederic-elena-claude-chief-of-staff",
+    title: "Frederic：Elena——文件夹里的 Claude 首席幕僚，日跑三班读六信箱",
+    summary: "对照一人咨询/独立业务：把邮件/日历/LinkedIn/WhatsApp 收进本地文件夹+协议+三档规则；披露自 2026-07-22 至 10-25 记 1,629 次作业、六信箱语料规模与日三班；不代你省时、不外推。",
+    description:
+      "面向一人生意、跨渠道跟进与会前会后文书吃掉判断时间的运营者：把「再开一个万能聊天」写成可对账的本地文件夹记忆+协议/skills/agents+静默/草稿/永不三档规则，区别于顾问 PARA 秘书与 indie 多席 soul/body 运营编队。",
+    categories: [
+      "efficiency",
+      "life",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://elenabridge.com/ai-chief-of-staff",
+    sourceLabel: "elenabridge.com·Frederic Bodin 个人实践帖",
+    upvotes: 287,
+    trending: false,
+    tags: [
+      "Elena",
+      "首席幕僚",
+      "Claude Code",
+      "多信箱",
+      "本地文件夹",
+    ],
+    howItWorks: [
+      "粘贴要接入的渠道（邮件/日历/聊天导出）、日跑时刻，以及静默/草稿/永不三档边界",
+      "Agent 按实践帖输出：文件夹记忆与 CLAUDE.md→协议/skills/agents 分层→日三班与人按发送门禁提问清单",
+      "人工保留发送、支付与删数；Agent 不代你声称已无人值守经营",
+    ],
+    tips: [
+      "源帖：回复默认等人按发送；支付、删数、接受条款进永不清单；笔记本睡眠会跳过排程",
+      "与 lars-clara-consultancy-claude-secretary / jayden-nebula-seven-agent-soul-body 不同：本条是一人业务多渠道首席幕僚+作业 changelog，不是顾问 PARA 秘书或 indie 七席 soul/body",
+    ],
+    approach: `Frederic Bodin 在个人实践帖《How I built my AI chief of staff on Claude》（页内 Frederic Bodin · 27 October 2026；JSON-LD Article datePublished 2026-10-27 → 2026-10-27；canonical elenabridge.com）写明：所谓 AI 首席幕僚，是笔记本上一文件夹——Claude Code 每次任务前读取邮件/日历/LinkedIn/WhatsApp 与文件，外加书面规则写清它可独自做什么。系统自 2026-07-22 起跑业务，至 2026-10-25 作业 changelog 记 1,629 次；每次作业当日落盘故可计数。
+
+它读六个收件侧：披露约 11,542 封邮件、约 3,082 条 LinkedIn 会话、约 988 条 WhatsApp 与约 94 条 Telegram，按人跨渠道对齐进同一队列。日三班约 07:30 / 13:00 / 18:00 整理入站并为有模式的回复起草；几乎所有回复等人按发送，仅少数作者自开窄例外且各有关断。日间还可要「一页今日」、会前一人史、会后 todos/纪要/跟进草稿，以及跨邮件聊天文件追「五月我们怎么说定的」。
+
+零件：文件夹即记忆（会话可丢）、CLAUDE.md、按职协议、.claude/skills（如 /brief）、.claude/agents（收件/会议/日历/行政）、本机 Ollama+bge-m3 语义索引，以及静默/草稿询问/永不三档规则。限制：课程路径下回复保持草稿至人手发送；第 7 天永不清单含支付、删数、接受条款；Gmail/日历走官方连接器；LinkedIn 用官方导出而非抓站自动化；WhatsApp 读桌面同步副本或手机导出，不用非官方桥。笔记本睡眠则排程跳过，醒来补一次。本场景据此输出「本地首席幕僚」提纲。禁止建议无人值守对外发送或绕开平台 ToS 自动化 LinkedIn/WhatsApp。`,
+    outcomes: [
+      "源披露自 2026-07-22 至 10-25 记 1,629 次作业、六信箱语料规模（约 11,542 邮件 / 3,082 LinkedIn / 988 WhatsApp / 94 Telegram）、日三班 07:30·13:00·18:00 以及默认草稿等人发送等作者口径；属一人咨询业务叙事，不可外推为你的跟进响应、商务转化或 API 账单。",
+      "能把「万能聊天助手」与「文件夹记忆 + 协议/skills + 三档规则 + 人按发送」拆开。",
+      "为睡眠跳过排程、导出过期导致漏跟进、以及窄例外关断缺失提供提问清单。",
+    ],
+    caveats: [
+      "排程依赖 Claude 桌面应用打开且机器醒着；关盖即跳过。",
+      "LinkedIn/WhatsApp 自动化触碰平台条款风险——源帖强调官方导出/本地副本而非非官方桥。",
+      "上面写的是 Frederic 个人实践帖（站点亦售 €29 课程），不是 Anthropic 官文；数字绑定其 changelog 窗口。",
+    ],
+    prompts: [
+      {
+        title: "本地首席幕僚布置简报",
+        body: `你是一人业务幕僚系统顾问。只根据用户约束写提问清单，不要编造已上线 Elena。
+
+渠道列表：{{channels}}
+日跑时刻：{{cron}}
+静默/草稿/永不：{{rules}}
+
+输出 Markdown：
+1. 文件夹记忆与 CLAUDE.md 最小字段
+2. 协议 / skills / agents 分层
+3. 日三班与会前会后门禁
+4. 人工确认清单（发送/支付/删数）
+禁止建议无人值守发送；禁止声称已达 1,629 次作业。`,
+      },
+      {
+        title: "误发或漏跟进复盘提纲",
+        body: `一次草稿被当成已发送，或睡眠跳班导致客户跟进遗漏，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是例外开关过宽、排程跳过未补跑，还是跨渠道身份未对齐
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「幕僚已永久正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://elenabridge.com/ai-chief-of-staff",
+      label: "elenabridge.com · How I built my AI chief of staff on Claude",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "397",
+    slug: "nir-nirops-pm-operating-system",
+    title: "Nir：NirOps——产品经理的本地 AI 操作系统，读多写少",
+    summary: "对照个人 PM：Jira/新闻/收件三指令起日，MCP 代理白名单只读为主；披露约 16 个 skills、会前研究约 20 分钟→约 30 秒；不代你工时、不外推。",
+    description:
+      "面向回到产品、被分诊/会前/纪要与新闻淹没战略时间的技术 PM：把「再贴一段 ChatGPT」写成可对账的本地仓库制品+技能自检+渐进放开写权限，区别于首席幕僚多信箱日三班与顾问秘书。",
+    categories: [
+      "efficiency",
+      "career",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://nyechiel.com/blog/2026/05/13/ai-operating-system-for-product-management/",
+    sourceLabel: "nyechiel.com·Nir Yechiel 个人实践帖",
+    upvotes: 288,
+    trending: false,
+    tags: [
+      "NirOps",
+      "产品经理",
+      "MCP",
+      "skills",
+      "只读优先",
+    ],
+    howItWorks: [
+      "粘贴要接的工作工具（Jira/Slack/Gmail/日历）、是否强制只读代理，以及外发是否必须人批",
+      "Agent 按实践帖输出：晨间三指令→技能自检与可组合→联系人地图/快捕与渐进自动化提问清单",
+      "人工保留策略判断与外发；Agent 不代你声称已实现 70/30 时间翻转",
+    ],
+    tips: [
+      "源帖：先只读后写；每个产出 skill 读回自检完整性，避免「说完成却只处理了分页一半」",
+      "与 frederic-elena-claude-chief-of-staff / lars-clara-consultancy-claude-secretary 不同：本条是 PM 本地操作系统+Jira/MCP 制品库，不是多信箱首席幕僚或顾问 PARA 秘书",
+    ],
+    approach: `Nir Yechiel（Red Hat Senior Principal Product Manager）在个人博客《I Built a Personal AI Operating System for Product Management》（页内 May 13, 2026；JSON-LD/og datePublished 2026-05-13 → 2026-05-13；canonical nyechiel.com）写明：回到 PM 后被分诊、会前、行动项、规格与行业新闻填满；想把约 70% 运营开销 / 30% 战略的比例倒过来。于是自建本地系统 NirOps：AI 处理例行运营，人保留判断；会议简报、分诊输出、研究笔记与决策记录落本机结构化仓，上下文随用积累。
+
+典型日：晨间三条——Jira triage、域相关新闻 top-10（深读进后台阅读任务）、Slack+Gmail 分诊（respond/review/FYI/defer，急件起草、行动项进任务板、已处理归档）。会前给主题与出席者生成要点；会后由 Gemini 转写自动发现，对齐日历、抽行动项、更新联系人地图并写入领域知识。日间研究/竞品/线程简报均为技能化工作流而非临场提示。
+
+接线：Claude Code + MCP（Gmail 读/归档、日历/Drive 读、Slack 读/已读、Contacts、Jira/Confluence 读写、自研 Crux 任务板）。多数 MCP 在本地容器后经网关代理，JSON 白名单只暴露允许工具——例如 Workspace 只开搜索读取不开放发送创建。知识库 Markdown、任务板 SQLite；工具消失仍留制品。设计：人作审批者（不擅自发消息/建票/标完成）、制品优于聊天、先只读再渐进自动化；披露当前约 16 个 skills；会前研究从约 20 分钟手工压到一指令约 30 秒（作者窗口叙事）。本场景据此输出「PM 本地 OS」提纲。禁止建议关闭人批即自动对外发送或写生产票。`,
+    outcomes: [
+      "源披露约 16 个 skills、晨间 Jira/新闻/收件三指令、MCP 代理白名单只读优先，以及会前研究约 20 分钟→约 30 秒等作者口径；属个人 PM onboarding 叙事，不可外推为你的工时结构、团队吞吐或合规结论。",
+      "能把「零上下文聊天」与「本地制品仓 + 技能自检 + 人审批外发」拆开。",
+      "为分页漏处理假完成、过早放开写权限、以及联系人地图缺失导致会前空洞提供提问清单。",
+    ],
+    caveats: [
+      "需能排障容器网络与 MCP 代理；非开箱产品。",
+      "作者目标「70/30 翻转」是动机陈述，不是已验证对照试验。",
+      "上面写的是 Nir 个人实践帖（后开源模板另文），不是模型商官文。",
+    ],
+    prompts: [
+      {
+        title: "PM 本地 OS 布置简报",
+        body: `你是产品经理运营系统顾问。只根据用户约束写提问清单，不要编造已上线 NirOps。
+
+工具列表：{{tools}}
+是否只读代理：{{readonly}}
+外发人批：{{approve}}
+
+输出 Markdown：
+1. 晨间三指令与产物文件约定
+2. skills 自检与可组合规则
+3. 联系人地图与会后抓取边界
+4. 人工确认清单
+禁止建议自动发 Slack/邮件或自动建生产票；禁止声称工时已翻转。`,
+      },
+      {
+        title: "分诊假完成复盘提纲",
+        body: `Agent 称收件已清，实际只处理了首页若干封，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺分页自检、白名单过宽，还是归档误伤待回
+2. 最小门禁补丁（读回计数/抽样）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「分诊已 100%」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://nyechiel.com/blog/2026/05/13/ai-operating-system-for-product-management/",
+      label: "nyechiel.com · I Built a Personal AI Operating System for Product Management",
+      date: "2026-05-13",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "398",
+    slug: "kanta-daily-indie-claude-schedule",
+    title: "Kanta：Claude Code Schedule——把独立开发「晨间复利」交给日跑 skill",
+    summary: "对照一人 indie：daily-development 七步无人在场；披露提交约 0–2→1–3/日、博客草稿约 3→25+/月、路线图断更约 5–10→0 天；不代你产量、不外推。",
+    description:
+      "面向一人公司、晨间五分钟琐事一停就断月的独立开发者：把「看心情再更新」写成可对账的排程 skill+迁移时间戳纪律+Anthropic 宕机回退，区别于周刊五段流水线与博客 MCP 只做机械发布。",
+    categories: [
+      "devtools",
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/kanta13jp1/putting-daily-indie-dev-on-autopilot-with-claude-code-schedule-2779",
+    sourceLabel: "dev.to·kanta13jp1 个人实践帖",
+    upvotes: 289,
+    trending: false,
+    tags: [
+      "Claude Code Schedule",
+      "indie",
+      "SKILL.md",
+      "cron",
+      "roadmap",
+    ],
+    howItWorks: [
+      "粘贴晨间复利清单（路线图/迁移种子/博客草稿/提交）、是否允许无人提问，以及 Anthropic 宕机回退工具",
+      "Agent 按实践帖输出：七步 SKILL→迁移时间戳/+10 分增量→禁并行 Bash 与回退分桶提问清单",
+      "人工保留对外正式发布与架构拍板；Agent 不代你声称日更质量已达标",
+    ],
+    tips: [
+      "源帖：排程失败常见于 migration 时间戳碰撞（SQLSTATE 23505）；同日用 +10 分钟步进；并行 Bash 易因权限流取消整跑",
+      "与 alejandro-newsletter-claude-code-pipeline / scriptxeno-blog-mcp-claude-publish 不同：本条是 indie 晨间研发复利排程，不是周刊五段或人写正文+MCP 发布",
+    ],
+    approach: `kanta13jp1（东京，Jibun K.K.「Me, Inc.」叙事）在 DEV 实践帖《Putting Daily Indie Dev on Autopilot with Claude Code Schedule》（页内 Posted on Apr 27；JSON-LD datePublished 2026-04-27 → 2026-04-27；canonical dev.to）写明：独立开发最难的是日复一日小复利——重读路线图、把今日进度写成 seed migration、起草一篇博客、追加 ROADMAP_LOG、commit/push；各约五分钟，但「没感觉」停一周会变成断更一个月。做法是把晨间例程交给 Claude Code Schedule：一个名为 daily-development 的 SKILL，由 cron 日跑一次。
+
+SKILL 七步（写时假定用户不在场、允许决策不允许追问）：读 memory/MEMORY.md → 从 GROWTH_STRATEGY_ROADMAP 尾部取下一项 → 先补假数据缺口 → 实现短期未完成项 → 写日英技术博客草稿进 docs/blog-drafts/ → 在 supabase/migrations/ 追加成就 seed → commit/push 到 main。运维坑：并行实例易撞 migration 主键；先 ls 当日最新时间戳，用 +10 分钟而非 +30 步进。排程环境禁止同消息并行 Bash（权限流一拒全取消）；Read/Glob/Grep 仍可并行。另备 Anthropic 宕机回退：判断步骤仍靠 Claude，样板步骤可切 Codex/Copilot/Gemini/NotebookLM 等，并区分 Claude-only 与 AI-fungible 桶。KPI 表（作者前后对照）：每日提交约 0–2→1–3；月博客草稿约 3→25+；路线图断更约 5–10 天→0；晨间动力需求约 100%→0%。草稿由另一 PowerShell 例程再发到 dev.to/Qiita。本场景据此输出「indie 日跑 skill」提纲。禁止建议无人值守对生产库乱迁或跳过人工审草稿即公开夸大宣传。`,
+    outcomes: [
+      "源披露七步 daily-development、迁移时间戳/+10 分与禁并行 Bash 纪律，以及 KPI 表（提交约 0–2→1–3/日、草稿约 3→25+/月、断更约 5–10→0 天、晨间动力约 100%→0%）等作者口径；属一人 indie 叙事，不可外推为你的阅读量、收入或草稿质量。",
+      "能把「看心情更新」与「无人在场七步 + 宕机回退分桶」拆开。",
+      "为 migration 主键碰撞、并行 Bash 半途死跑、以及草稿堆积未审发提供提问清单。",
+    ],
+    caveats: [
+      "KPI 为作者前后对照表，非盲测；草稿量≠已发布质量。",
+      "强绑定其 Supabase migration 与多实例（PowerShell/Windows）布局。",
+      "上面写的是 DEV 个人实践帖，不是 Anthropic Schedule 官文。",
+    ],
+    prompts: [
+      {
+        title: "indie 日跑 skill 简报",
+        body: `你是独立开发排程顾问。只根据用户约束写提问清单，不要编造已上线 Schedule。
+
+晨间步骤：{{steps}}
+是否允许提问：{{ask_ok}}
+宕机回退：{{fallback}}
+
+输出 Markdown：
+1. SKILL.md 七步（或你的等价清单）
+2. 迁移时间戳与并行约束
+3. Claude-only vs AI-fungible 分桶
+4. 人工审草稿/架构清单
+禁止建议跳过审稿自动夸大宣传；禁止声称 KPI 可复现。`,
+      },
+      {
+        title: "migration 碰撞复盘提纲",
+        body: `日跑因 schema_migrations 主键冲突失败，请写复盘提纲。
+
+日志摘要：{{log}}
+
+输出：
+1. 是时间戳步进、多实例并行，还是禁 Bash 规则被绕过
+2. 最小门禁补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「排程已永不失败」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/kanta13jp1/putting-daily-indie-dev-on-autopilot-with-claude-code-schedule-2779",
+      label: "dev.to · Putting Daily Indie Dev on Autopilot with Claude Code Schedule",
+      date: "2026-04-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "399",
+    slug: "scott-skill-activation-daytona-evals",
+    title: "Scott：Daytona 沙箱评 Claude Code skill 激活——forced-eval 打满分",
+    summary: "对照个人工具链作者：用真 claude -p 沙箱而非 API 模拟测钩子；披露基线约 55%、forced-eval/llm-eval 标准集 100%、难例真负 forced-eval 5/5、全评约 $5.59；不代你激活率、不外推。",
+    description:
+      "面向写了一堆 skills 却发现模型常不调用的建造者：把「再改一版描述碰运气」写成可对账的沙箱评测+钩子对照+真负样本，区别于删多智能体调查队的产品 Eval 与隐藏测试编码评测。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://scottspence.com/posts/measuring-claude-code-skill-activation-with-sandboxed-evals",
+    sourceLabel: "scottspence.com·Scott Spence 个人实践帖",
+    upvotes: 290,
+    trending: false,
+    tags: [
+      "skill activation",
+      "Daytona",
+      "forced-eval",
+      "hooks",
+      "evals",
+    ],
+    howItWorks: [
+      "粘贴 skills 列表、是否已有 UserPromptSubmit 钩子，以及是否包含「不应激活」负例",
+      "Agent 按实践帖输出：沙箱 harness 步骤→五配置对照→forced-eval vs llm-eval 选型与真负样本提问清单",
+      "人工保留生产钩子上线判断；Agent 不代你声称激活率已 100%",
+    ],
+    tips: [
+      "源帖：激活列与正确列一致——问题是「会不会调用 Skill()」，不是「选错 skill」；无关键词提示基线很脆",
+      "与 nofire-single-investigator-eval-cut / unlearn-hidden-test-coding-agent-eval 不同：本条是 Claude Code skill 激活钩子沙箱评测，不是删调查队或隐藏测试编码评测",
+    ],
+    approach: `Scott Spence 在个人博客《Measuring Claude Code Skill Activation With Sandboxed Evals》（页内 February 8, 2026；JSON-LD datePublished 2026-02-08 → 2026-02-08；canonical scottspence.com）写明：先前用 Messages API+Haiku 模拟测 forced-eval 约到 84%，但那是模拟而非真 Claude Code。于是自建评测：每个钩子配置在 Daytona 沙箱跑真 claude -p，上传 Svelte skills 与钩子，解析 stream-json 里 Skill() tool_use；约 20 秒超时只关心是否激活，避免完整「修问题」跑到数百秒。
+
+五配置：none 基线、simple 一行提示、forced-eval（UserPromptSubmit 强制逐 skill YES/NO 再 Skill()）、llm-eval（Haiku 预分类再告知激活）、type-prompt（原生 prompt 钩）。Run1（22 题，Sonnet 4.5）：none 约 55%（12/22）、simple 约 59%、forced-eval 与 llm-eval 均为 100%、type-prompt 约 55%（与无钩相当）。激活列与正确列一致——选错不是主因。llm-eval 均时约 6.4s 快于 forced-eval 约 10.7s（约快 40%）。Run2 复核：结构化钩仍 100%；无结构配置在约 41–59% 晃。更难 24 题（含五条无关负例）：forced-eval 总准约 75%（18/24）、真负 5/5、假正 0；llm-eval 约 67%、真负仅 1/5、假正 4。全评花费约 $5.59（约 250 次调用量级）。结论倾向 forced-eval：标准集满分且负例不乱推荐；基线靠关键词更像匹配。本场景据此输出「skill 激活评测」提纲。禁止建议把评测满分当生产无人值守保证。`,
+    outcomes: [
+      "源披露五配置对照、基线约 55%、forced-eval/llm-eval 标准 22 题两跑 100%、难例 forced-eval 真负 5/5 对比 llm-eval 假正 4，以及全评约 $5.59 等作者口径；属个人 Svelte skills 沙箱叙事，不可外推为你的技能集激活率、延迟或账单。",
+      "能把「改描述碰运气」与「真二进制沙箱 + 钩子对照 + 负例」拆开。",
+      "为 type-prompt 无效、无关键词提示漏激活、以及 llm-eval 乱荐 skill 提供提问清单。",
+    ],
+    caveats: [
+      "用例绑定作者四则 Svelte skills；换领域需重做题集。",
+      "20 秒截断只测激活，不证明实现质量。",
+      "上面写的是作者个人实践帖，不是 Anthropic 官文评测。",
+    ],
+    prompts: [
+      {
+        title: "skill 激活评测简报",
+        body: `你是 Claude Code skill 评测顾问。只根据用户约束写提问清单，不要编造已跑满分。
+
+skills 列表：{{skills}}
+是否含负例：{{negatives}}
+钩子现状：{{hooks}}
+
+输出 Markdown：
+1. 沙箱 harness 最小步骤
+2. 五配置对照表该怎么填
+3. forced-eval vs llm-eval 选型理由
+4. 人工上线钩子清单
+禁止声称激活已 100%；禁止建议跳过负例。`,
+      },
+      {
+        title: "假激活复盘提纲",
+        body: `上线 llm-eval 后，无关 React 问题也拉起了业务 skill，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺真负样本、预分类幻觉，还是描述过宽
+2. 改 forced-eval 或加负例门禁的最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「钩子已消除全部漏报误报」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://scottspence.com/posts/measuring-claude-code-skill-activation-with-sandboxed-evals",
+      label: "scottspence.com · Measuring Claude Code Skill Activation With Sandboxed Evals",
+      date: "2026-02-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "400",
+    slug: "vincent-team-shared-claude-code-flow",
+    title: "Vincent：10–20 人共用一套 Claude Code——多人批计划后再自主实现",
+    summary: "对照网络安全 SaaS 团队：插件市场发共享 skills，产品/QA/工程共批计划；披露一人数日可交昔日数周特性（作者观察非计量）、评审成瓶颈与席位限额；不代你速度、不外推。",
+    description:
+      "面向要从「各用各的 Agent」收到可共享交付节奏的工程组织：把「个人 harness 私藏」写成可对账的插件市场+双过滤计划批准+工具权限硬边界，区别于 Jira→特性环境六角色与 Build/Gate/Ship 发版召回。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://vincentcassiau.com/en/engineering-notes/agentic-development-flow-engineering-team-claude-code/",
+    sourceLabel: "vincentcassiau.com·Vincent Cassiau 工程实践帖",
+    upvotes: 291,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "团队共享",
+      "计划批准",
+      "plugin marketplace",
+      "人在环",
+    ],
+    howItWorks: [
+      "粘贴团队规模、PRD 来源与是否要求产品/QA/工程共批计划，以及 MCP 账号权限边界",
+      "Agent 按实践帖输出：插件+仓内规则分发→计划双过滤→自主实现四回人条件与评审瓶颈提问清单",
+      "人工保留计划共批、功能验收与合入；Agent 不代你声称交付已从数周变数日",
+    ],
+    tips: [
+      "源帖：指令只是上下文不是强制配置——真正禁区靠 MCP 账号权限与允许动作，不靠提示词",
+      "与 exante-codey-jira-feature-environment / glide-slipstream-build-gate-ship 不同：本条是团队共享插件流+多人批计划，不是六角色特性环境或 Build/Gate/Ship 召回",
+    ],
+    approach: `Vincent Cassiau（后端工程师）在个人站工程笔记《An agentic development flow for a whole engineering team, built on Claude Code》（页内 Published on 30 September 2026；JSON-LD datePublished 2026-09-30 → 2026-09-30；canonical vincentcassiau.com）写明：所在网络安全 SaaS 技术团队约 10–20 人共用同一 Claude Code 流程；他设计并维护。动机是消除「少数人极快、其他人掉队」的不公，覆盖特性、迁移、维护与修漏洞。设置强烈推荐而非强制。
+
+载体两处：Claude Code 插件经（可私有）marketplace 分发共享 skills/subagents/hooks/MCP；规则与 settings 落在各仓。改流程=发新插件版本。MCP 有现成与自研（如 DevOps 拉 SaaS 环境日志的调试流）。个人 memory 仍各人一份。路径：开发者对产品 PRD 启 Agent→MCP 取 PRD/上下文并提案计划→开发者先技术过滤是否可呈→产品/QA/工程共批并挂到 PRD→Agent 在人监督下端到端实现与本地验证（测、起应用、子代理审）→开发者自测后再要人工 PR 审。架构/基建未清可先走 ADR 代理流。批准后回人的四类：偏离计划、验证连败、越权产品/架构/安全决策、动作被拦。作者观察：一人数日可交付昔日团队数周的特性——强调是趋势观察非计量。仍痛：评审跟不上生产；席位有滚动五小时与周限额，需按任务调模型/力度。本场景据此输出「团队共享计划门」提纲。禁止建议取消共批或仅靠提示词当作权限边界。`,
+    outcomes: [
+      "源披露约 10–20 人共用、插件 marketplace 分发、产品/QA/工程共批计划、四类回人条件，以及「一人数日 vs 昔日数周」为作者观察非计量、评审瓶颈与席位限额等团队口径；属网络安全 SaaS 叙事，不可外推为你的 DORA、缺陷率或座椅 ROI。",
+      "能把「各人私藏 harness」与「共享插件 + 双过滤计划 + 工具硬权限」拆开。",
+      "为误解仍漏进实现、评审排队、以及限额耗尽中断提供提问清单。",
+    ],
+    caveats: [
+      "速度对比是观察不是对照试验；勿当 SLA。",
+      "规则/skills 是引导不是强制——禁区必须落在工具权限。",
+      "上面写的是 Vincent 工程实践帖，不是 Anthropic 官文；偏好 Claude Code 为作者声明。",
+    ],
+    prompts: [
+      {
+        title: "团队共享 Claude 流简报",
+        body: `你是工程组织 agentic 顾问。只根据用户约束写提问清单，不要编造已上线共享流。
+
+团队规模：{{size}}
+计划共批角色：{{approvers}}
+MCP 权限：{{mcp}}
+
+输出 Markdown：
+1. 插件 marketplace vs 仓内规则分工
+2. 计划双过滤步骤
+3. 自主实现四回人条件
+4. 人工评审与合入清单
+禁止建议取消共批；禁止声称交付已达「数日替代数周」。`,
+      },
+      {
+        title: "评审瓶颈复盘提纲",
+        body: `Agent 产出快于人工评审，PR 排队，请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 是缺分层评审、并行过度，还是验证证据不足导致不敢轻审
+2. 最小流程补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「评审税已消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://vincentcassiau.com/en/engineering-notes/agentic-development-flow-engineering-team-claude-code/",
+      label: "vincentcassiau.com · An agentic development flow for a whole engineering team",
+      date: "2026-09-30",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
