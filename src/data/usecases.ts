@@ -28388,6 +28388,452 @@ estate 模块与 depends_on：{{estate}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "461",
+    slug: "michaelnash-claude-token-tax-lean-rebuild",
+    title: "Mike：Claude Code「Token Tax」——CLAUDE.md 319→61，约 19p/次交付多抓 50% 问题",
+    summary: "个人顾问；披露启动前约 31,500 token（约 1 镑）、CLAUDE.md 319→61、标准拆五文件按需加载、六专用评审代理、约 19p/ship 且预 PR 多抓约 50% 问题；不代你无人值守降账单。",
+    description:
+      "面向上下文越喂越贵、想用按需加载与模型路由压启动税的独立开发者：把「瘦 CLAUDE.md + JIT 标准 + hooks/子代理」写成门禁，区别于 tokenmaxxing 通宵作品集与财务技能链。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/michaelnash/claude-code-the-token-tax-4i01",
+    sourceLabel: "dev.to·Mike Nash 实践帖",
+    upvotes: 352,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Token 成本",
+      "CLAUDE.md",
+      "按需加载",
+      "子代理",
+    ],
+    howItWorks: [
+      "粘贴当前 CLAUDE.md/标准文件行数、每命令强制读取清单，以及是否已开 token 计费可见性",
+      "Agent 按实践帖输出：常驻上下文审计、JIT 拆分、hooks/双击熔断、以及 Opus 规划/Sonnet 执行路由提纲",
+      "人工保留合入与账单上限；Agent 不代你声称「瘦文件必省一半账单」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-02-12T09:00:04Z → 2026-02-12）：独立顾问 Mike Nash 写 Opus 4.6 提速约 3× 也抬约 3× 成本后，拆开自建工作流。计费可见后发现 /ship 启动税：CLAUDE.md 319 行自动加载、命令再读一遍、GLOBAL_STANDARDS 500+ 行每次读、设计系统 557 行与设计模式 540 行甚至后端任务也灌入——合计逾 15,000 token 文档，再加 issue/搜索后约 31,500 token（约一镑）才写第一行；一次 /address-review 约三镑。重建原则「只在需要时加载」：CLAUDE.md 319→61，示例改为 @import 指针；GLOBAL_STANDARDS 拆成 .claude/standards/ 五文件共 135 行按需；删除约 350 行模型已会的 SOLID/TS 讲义；learnings 改成约 10 词子弹、70% 相似合并、仅大 PR（100+ 行或 5+ 文件）才记；非 UI 的 /plan 不再读约 1,100 行设计文档（约省 8,000 token）；PostToolUse hooks 静默 Prettier；两击熔断（构建失败 2 次停问人）；六专用评审代理（依赖/性能/安全/包体积/git 史/终优化）跑 Sonnet/Haiku 并行，称预 PR 多抓约 50% 问题；口径约 19p/ship（含新质检）。作者强调查启动税、勿重复读自动加载文件、勿用讲义当偏好声明。",
+      "与 reet-batra-tokenmaxxing-overnight-portfolio / georgii-motrenko-finance-17-skills-mcp 不同：本条是个人顾问把膨胀规则撕成 JIT 上下文与模型路由，不是通宵 /goal 作品集或财务技能日报链",
+    ],
+    approach: `Mike Nash 在 DEV《Claude Code: The Token Tax》（JSON-LD datePublished 2026-02-12T09:00:04Z → 2026-02-12）写明：真正贵的不是「写代码」，而是每次 /ship 前把 319 行 CLAUDE.md、500+ 行标准与整套设计文档无条件灌进上下文——他量到约 31,500 token（约一镑）启动税，再叠加 Opus 4.6 单价，一次评论处理可到约三镑。
+
+做法是把系统拆瘦：CLAUDE.md 319→61、标准按领域按需加载、删掉模型已会的讲义、命令改技能+条件读取、hooks 消掉格式化死循环、双击熔断，并用六个便宜评审代理在开 PR 前扫问题；口径变成约 19p/ship 且预审多抓约 50% 问题。
+
+本场景据此输出「启动税审计+JIT 重建」提纲。禁止把 19p 或 50% 写成任意账单 SLA，或建议无人值守关掉人工合入。`,
+    outcomes: [
+      "源披露启动前约 31,500 token（约一镑）、CLAUDE.md 319→61、标准拆五文件共 135 行、约 19p/ship、预 PR 多抓约 50% 问题等作者口径；属单一顾问工作流窗口，不可外推为你的账单、缺陷率或「瘦文件必省一半」。",
+      "能把「规则越多越稳」与「常驻上下文审计 + JIT + hooks/路由」拆开。",
+      "为重复读自动加载文件、以及用两三百字讲义代替十词偏好提供提问清单。",
+    ],
+    caveats: [
+      "文为作者系列 Part 3 转向成本复盘；完整配置未整仓公开。",
+      "19p/50% 为作者自测口径，依赖其任务分布与模型价。",
+      "上面写的是 Mike Nash 个人实践帖，不是 Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Claude Code 启动税审计简报",
+        body: `你是 AI 工作流成本顾问。只根据用户粘贴的文件清单写审计，不要编造已降到的便士数。
+
+CLAUDE.md 行数：{{claude_md_lines}}
+每命令强制读取：{{forced_reads}}
+计费可见性：{{billing}}
+
+输出 Markdown：
+1. 常驻 vs 按需加载拆分表
+2. 应删除的「模型已会」讲义候选
+3. hooks/双击熔断/模型路由最小集
+4. 人必须保留的合入与账单上限
+禁止声称瘦文件等于账单腰斩；禁止伪造「19p/ship 保证」。`,
+      },
+      {
+        title: "上下文灌满或格式化死循环复盘提纲",
+        body: `会话很快顶满上下文，或代理反复修 Prettier/分号。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 启动税、重复读取，还是缺 hooks/熔断
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多标准文件等于更稳输出」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/michaelnash/claude-code-the-token-tax-4i01",
+      label: "dev.to/michaelnash · Claude Code: The Token Tax",
+      date: "2026-02-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "462",
+    slug: "getburnd-13631-six-months-waste-patterns",
+    title: "Gar：六个月 Claude Code 花 $13,631——解析 JSONL 揪出约 $76/月可修浪费",
+    summary: "个人（高中生）；披露六个月账单 $13,631、~40M token 无细拆；自建解析 8 类浪费（如深夜会话约 $180/月、错误风暴约 $40/月等）合计约 $76/月可修；不代你无人值守砍订阅。",
+    description:
+      "面向只有总额看不到泄漏模式的重度 Claude Code 用户：把「本地 JSONL → 浪费模式 → 单点习惯修补」写成门禁，区别于 Token Tax 瘦规则与营销斜杠命令组。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/getburnd/i-spent-13631-on-claude-code-in-6-months-heres-exactly-where-it-went-m43",
+    sourceLabel: "dev.to·getburnd 实践帖",
+    upvotes: 353,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "账单",
+      "JSONL",
+      "浪费模式",
+      "个人效率",
+    ],
+    howItWorks: [
+      "粘贴计费周期总额（或声明仅有控制台总量）、主要项目类型，以及是否保留 ~/.claude/projects JSONL",
+      "Agent 按实践帖输出：八类浪费检查清单、每类最小修补，以及「先修环境再开会话」门禁",
+      "人工保留订阅/API 上限；Agent 不代你保证「跑一次审计必省 $76」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-12T10:02:16Z → 2026-04-12）：作者（文中自称 16 岁、Guwahati；工具仓 getburnd）写六个月认真用 Claude Code 做 side project，Anthropic 账单合计 $13,631（约 ₹11.4 万），控制台只给 ~40M token 总量难回答「哪类会话在烧钱」。做法：解析 ~/.claude/projects 下每会话 JSONL，标出 8 类浪费并给出本人月度量级——①长 Bash 输出（测跑/构建 1万–5万字节进上下文）约 $31/月，修法 | head -100；②重复读同一文件（一例 31 次）约 $10/月，修法信任 Edit；③工具错误风暴（坏环境同工具打 15–20 次）约 $40/月，修法会前 5 分钟修好环境；④Bash 滥用（一例 80% 调用是 Bash 替代 Read/Glob/Grep）约 $15/月；⑤深夜 00:00–05:00 会话每任务贵约 2.5×，停用后单月省约 $180；⑥API 重试风暴约 $8/月；⑦技能触发过宽（某技能占工具调用约 42%）约 $12/月；⑧项目离群（一例 3.2× 中位数，因 40,000-token CLAUDE.md）约 $30/月，裁到 3,000 token。作者合计「可标可修浪费」约 $76/月，并开源本地工具 npx getburnd（强调不出机）。明确：不是说 Claude Code 不值，而是习惯浪费可测可修。",
+      "与 michaelnash-claude-token-tax-lean-rebuild / lukasz-fryc-marketing-os-49-slash-commands 不同：本条是从本地会话 JSONL 做花费取证与习惯修补，不是重建 JIT 规则文件或营销斜杠命令 OS",
+    ],
+    approach: `作者在 DEV《I spent $13,631 on Claude Code in 6 months》（JSON-LD datePublished 2026-04-12T10:02:16Z → 2026-04-12）写明：控制台只有总量时，无法回答「哪类习惯在烧钱」；真正可动刀的是会话 JSONL 里反复出现的模式，而不是再加一条空泛省钱口号。
+
+他解析本地 Claude Code 日志，标出长 Bash 输出、重复读文件、错误风暴、Bash 替代原生工具、深夜低质量提示、重试、过宽技能与超大 CLAUDE.md 等 8 类泄漏，并给出本人月度量级（合计约 $76/月可修；其中停深夜会话单月约省 $180）。工具本地跑、强调数据不出机。
+
+本场景据此输出「账单取证→习惯门禁」提纲。禁止把 $13,631 或 $76 写成你的必然账单，或建议为省钱关掉必要的测试输出门禁。`,
+    outcomes: [
+      "源披露六个月 $13,631、~40M token 粗总量、八类浪费及约 $76/月可修（含深夜约 $180/月等）等作者口径；属单一个人窗口，不可外推为你的账单、汇率或「跑审计必省同额」。",
+      "能把「只看订阅总额」与「JSONL 模式清单 + 会前环境门禁」拆开。",
+      "为坏环境硬开会话、以及 4 万 token CLAUDE.md 每会话重载提供提问清单。",
+    ],
+    caveats: [
+      "文末推广自研 Burnd；数字来自作者自有 JSONL，检测器非审计标准。",
+      "深夜 $180 等为作者行为改变后的自述，非对照实验。",
+      "上面写的是个人花费实践帖，不是 Anthropic 账单官文。",
+    ],
+    prompts: [
+      {
+        title: "Claude Code 花费泄漏检查清单",
+        body: `你是 AI 用量审计助手。只根据用户描述列检查项，不要编造已节省的美元。
+
+周期与总额：{{spend}}
+是否有本地 JSONL：{{has_jsonl}}
+主要任务类型：{{workload}}
+
+输出 Markdown：
+1. 对照八类浪费的自查问题
+2. 每类最小修补（含会前环境检查）
+3. 应用内 Read/Glob/Grep vs Bash 边界
+4. 人必须确认的订阅/API 上限
+禁止声称「必省 $76」；禁止建议删除必要测试日志门禁。`,
+      },
+      {
+        title: "单会话账单飙高或错误风暴复盘提纲",
+        body: `某会话费用异常或工具失败循环。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 长输出、重复读、坏环境，还是过宽技能/超大规则文件
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多仪表盘等于更低账单」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/getburnd/i-spent-13631-on-claude-code-in-6-months-heres-exactly-where-it-went-m43",
+      label: "dev.to/getburnd · I spent $13,631 on Claude Code in 6 months",
+      date: "2026-04-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "463",
+    slug: "buildloops-claude-opencode-redeclaration",
+    title: "Buildloops：Claude Code→OpenCode——迁移是重声明，不是拷文件",
+    summary: "个人；披露规则/记忆串味导致 token 爬升后迁 OpenCode；四类断裂（规则未生效、让新工具迁旧配置、技能静默降级、摩擦税）；结论 rebuild don't port；不代你一键换壳。",
+    description:
+      "面向想换代理壳却把 CLAUDE.md 当可拷配置的人：把「清单→AGENTS.md 重声明→技能重建→生效核验」写成门禁，区别于 Laravel 单会话换框架与 SST→单体。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/buildloops/i-migrated-my-claude-code-workflow-to-opencode-heres-what-broke-5ajc",
+    sourceLabel: "dev.to·buildloops 实践帖",
+    upvotes: 354,
+    trending: false,
+    tags: [
+      "OpenCode",
+      "Claude Code",
+      "AGENTS.md",
+      "技能迁移",
+      "工作流",
+    ],
+    howItWorks: [
+      "粘贴现用规则/记忆/技能/MCP 清单，以及目标壳是否读 AGENTS.md",
+      "Agent 按实践帖输出：迁移前库存、重声明顺序、技能重建 vs 删除标准，以及「问规则能否复述」核验",
+      "人工保留密钥与权限姿态；Agent 不代你声称「改名即等价」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-08-06T12:24:49Z → 2026-08-06）：作者 buildloops 写小而稳的 Claude Code 布置（根 CLAUDE.md、旁路 MEMORY.md、参考文档、第二份规则味 CLAUDE.md）运行数月后无改动却开始「泄漏」——规则当指令、记忆当参考，token 每会话爬升。遂整迁 OpenCode：记忆似在、指令不听。按伤害排序四类断裂：①CLAUDE.md 规则未随行（OpenCode 读 AGENTS.md）——重建是重声明并在新会话问「我的规则是什么」核验，Loaded≠Obeyed；②让新工具迁旧技能/MCP——它无法盘点自己从未拥有的东西，须在旧工具仍可用时先写库存清单；③迁过去的技能静默降级（frontmatter 仅识别 name/description/license/compatibility/metadata，其余忽略；且多为按需加载）——假定皆降级，只重建常用、删其余；④摩擦税（模式切换、权限姿态、成本从订阅感变为可推理的 per-token）。作者还提到 2026-01-09 起第三方 OAuth 限制打乱既有订阅用法。核心课：技能「带来的」会静默变差，「新装的」一次成功——迁移是 rebuild don't port。日一重来顺序：先写 AGENTS.md→会话日志指令→重建三个真用技能→手搓 MCP→有意识选模型与权限。文末给 migrate/stay/both 条件与反模式清单（含勿信 drop-in 全等价、勿跳过版本/CVE 审计）。",
+      "与 jonesrussell-laravel-waaseyaa-one-session / khal-tessellai-serverless-to-monolith-claude 不同：本条是个人代理壳/规则系统的重声明迁移，不是应用框架单会话迁栈或 SST 后端改单体",
+    ],
+    approach: `作者 buildloops 在 DEV《I Migrated My Claude Code Workflow to OpenCode. Here's What Broke.》（JSON-LD datePublished 2026-08-06T12:24:49Z → 2026-08-06）写明：小配置也会在数月后静默串味；换壳时把文件拷过去不等于规则仍生效——OpenCode 认 AGENTS.md，且技能 frontmatter/触发语义与 Claude Code 不同。
+
+他按伤害列出四类断裂，并落到同一修复：在旧工具还活着时做库存，在新工具里重声明状态文件，只重建真正在用的技能，再用「复述我的规则」核验 Loaded≠Obeyed。愿再迁一次，但 day-one 会先写 AGENTS.md 而非先搬文件。
+
+本场景据此输出「代理壳迁移重声明」提纲。禁止把「重建技能」写成无人值守全量导入，或宣称任意两壳同模型必同结果。`,
+    outcomes: [
+      "源披露规则/记忆串味、四类断裂、AGENTS.md 重声明、技能静默降级、以及 rebuild don't port 等作者口径；属单一个人工作流窗口，不可外推为你的 token 账单、迁移人天或「换壳必更快更省」。",
+      "能把「拷 CLAUDE.md」与「库存清单 + 重声明 + 生效核验」拆开。",
+      "为让新代理迁旧配置、以及 Loaded 当 Obeyed 提供提问清单。",
+    ],
+    caveats: [
+      "文中引用的跨壳基准/SWE-bench 摆动是外部数字，非作者自测主结果。",
+      "OpenCode 能力随版本变；frontmatter 支持集以当时文档为准。",
+      "上面写的是 buildloops 个人实践帖，不是 OpenCode/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "代理壳迁移重声明简报",
+        body: `你是代理工作流迁移顾问。只根据用户库存写计划，不要编造已恢复的技能数。
+
+源壳与目标壳：{{from_to}}
+规则/记忆/技能/MCP 库存：{{inventory}}
+
+输出 Markdown：
+1. 必须重声明的状态文件（如 AGENTS.md）与核验问句
+2. 重建 vs 删除的技能标准
+3. MCP/权限/模型姿态检查表
+4. 人必须保留的密钥与合入权
+禁止建议「文件拷贝即完成」；禁止伪造跨壳同模型同成绩。`,
+      },
+      {
+        title: "迁壳后指令不听或技能变钝复盘提纲",
+        body: `新壳记得笔记却不守规则，或旧技能行为变弱。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 规则文件名/语义不匹配、frontmatter 被忽略，还是缺生效核验
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多迁移动作等于更稳」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/buildloops/i-migrated-my-claude-code-workflow-to-opencode-heres-what-broke-5ajc",
+      label: "dev.to/buildloops · I Migrated My Claude Code Workflow to OpenCode. Here's What Broke.",
+      date: "2026-08-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "464",
+    slug: "ole-veheria-ios-pr-review-agents-30min",
+    title: "Oleh：iOS 多维代理首轮评审——约省每人每天 30 分钟，人仍握合并键",
+    summary: "团队（跨国 iOS）；披露多代理按正确性/一致性/测试/i18n·a11y 首轮；作者自测约省每人每天 30 分钟、评审周期下降且人审质量未降；自动合并曾翻车已撤。",
+    description:
+      "面向评审队列被机械检查拖死的移动团队：把「分维首轮代理 + 作者先修 + 人只做判断」写成门禁，区别于 CVE 无写权自动驾驶与四代理仓审计。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://veheria.tech/blog/claude-code-code-review-workflow",
+    sourceLabel: "veheria.tech·Oleh 实践帖",
+    upvotes: 355,
+    trending: false,
+    tags: [
+      "代码评审",
+      "iOS",
+      "Claude Code",
+      "多代理",
+      "无障碍",
+    ],
+    howItWorks: [
+      "粘贴仓库类型（如 iOS）、现有 PR 门禁，以及希望代理覆盖的维度（正确性/一致性/测试/i18n·a11y）",
+      "Agent 按实践帖输出：分维首轮提示字段、必须含失败场景的发现格式，以及作者修复→人审判断的顺序",
+      "人工保留合并键；Agent 不代你打开「代理全绿即合并」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-06T00:00:00.000Z → 2026-07-06；页内 July 6, 2026；DEV 转载 JSON-LD 2026-08-22）：Oleh（veheria.tech / DEV@5uper0）把 Claude Code 代理放进跨国 iOS 团队的真实评审环：PR 打开即多代理分维首轮——正确性（边界/nil/并发）、一致性（模式/命名/错误处理）、测试（是否覆盖行为而非镜像实现）、i18n 与无障碍（硬编码文案、Dynamic Type、触控目标 <44pt）。每条发现必须引用文件行并描述具体失败场景，否则丢弃，用以压「请改进可读性」噪声。作者先根据发现修改，人再只做判断（模块边界、API 形状、该不该做）。明确翻车：①代理全绿自动合并——代理会优化「测试通过」而非「值得合并」，已撤回，代理建议、人决定；②单一大评审代理——发现浅，分维风扇才抓到真问题；③上线前未约定度量——30 分钟是事后回测基线。作者只愿引用自己量到的：数月日用后约省每人每天 30 分钟、评审周期下降、人审质量未降；逃逸缺陷率与高管工时回收未干净仪器化故不报。建议从单一维度（一致性最稳）、单仓、建议而非门禁起步。",
+      "与 henri-cve-migration-control-autopilot / davron-four-agents-77-projects-90-min 不同：本条是移动 PR 分维首轮评审省等待，不是 CVE 无写凭证自动驾驶或多仓并行审计",
+    ],
+    approach: `Oleh 在 veheria.tech《A Claude Code Review Workflow That Saved 30 Minutes Per Engineer a Day》（JSON-LD datePublished 2026-07-06 → 2026-07-06）写明：评审耗时主要耗在等待与机械检查，而不是缺一次「全能 LGTM」；他把机械维交给分维代理，把判断留给人，并坚持人握合并键。
+
+实践上按正确性/一致性/测试/i18n·a11y 风扇审查 diff，发现必须带失败场景；作者先修再进人审。自动合并与单代理大杂烩都被他标为失败模式。自测口径约省每人每天 30 分钟。
+
+本场景据此输出「分维首轮评审」提纲。禁止把 30 分钟写成组织 KPI，或建议代理全绿自动合入生产。`,
+    outcomes: [
+      "源披露分维首轮、约省每人每天 30 分钟、评审周期下降且人审质量未降、以及撤回自动合并等作者口径；属单一跨国 iOS 窗口，不可外推为你的逃逸缺陷率、编制或「代理评审必省半小时」。",
+      "能把「人从头到尾扫机械项」与「分维代理建议 + 作者先修 + 人做判断」拆开。",
+      "为无失败场景的噪声评论、以及缺度量就全仓铺开提供提问清单。",
+    ],
+    caveats: [
+      "作者承认逃逸缺陷与高管工时等未干净测量，故不引用。",
+      "文末有策略咨询 CTA；流程仍依赖团队对信号的信任建设。",
+      "上面写的是 Oleh 团队实践帖，不是 Apple/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "移动 PR 分维首轮评审简报",
+        body: `你是移动代码评审顾问。只根据用户约束写首轮代理提纲，不要编造已节省的分钟数。
+
+平台与仓：{{stack}}
+维度：{{dimensions}}
+现有门禁：{{gates}}
+
+输出 Markdown：
+1. 每维检查问题与「必须含失败场景」的发现模板
+2. 作者修复→人审判断的顺序
+3. 禁止自动合并的条件
+4. 上线前要约定的度量
+禁止建议代理全绿即合并；禁止伪造「必省 30 分钟」。`,
+      },
+      {
+        title: "代理评审噪声或漏并发问题复盘提纲",
+        body: `评论充斥空泛建议，或人审仍被 nil/并发打回。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺失败场景规则、单代理过宽，还是维度未覆盖
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多代理等于更少等待」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://veheria.tech/blog/claude-code-code-review-workflow",
+      label: "veheria.tech · A Claude Code Review Workflow That Saved 30 Minutes Per Engineer a Day",
+      date: "2026-07-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "465",
+    slug: "metalbear-meat-proxies-ai-to-center",
+    title: "MetalBear：八个月后 AI 进中心——有人一周约 95% 在评审，防变「肉代理」",
+    summary: "团队（mirrord/Rust）；披露从边缘到中心、有人评审从约 20–40%→约 95%；AGENTS.md 缩短+公司共享上下文仓；夜巡 CI/晨修小 bug/支持草稿机器人；不代你无人值守发版。",
+    description:
+      "面向代理已能写核心代码、却怕团队沦为只点批准的平台/工具团队：把「人理解每个改动 + 共享上下文 + 首轮自动审」写成门禁，区别于非编码聊天复盘与 git hook 记忆。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://metalbear.com/blog/engineering-ai-use-part-2/",
+    sourceLabel: "metalbear.com·Eyal Bukchin 团队实践帖",
+    upvotes: 356,
+    trending: false,
+    tags: [
+      "工程文化",
+      "代码评审",
+      "AGENTS.md",
+      "Rust",
+      "人在环",
+    ],
+    howItWorks: [
+      "粘贴团队现状（手写比例、工具散度）、是否已有仓级/公司级代理上下文，以及首轮评审工具",
+      "Agent 按实践帖输出：防「肉代理」检查清单、AGENTS.md 缩短原则、共享上下文仓字段，以及可调度的低风险任务边界",
+      "人工保留理解与发版责任；Agent 不代你宣称「代理写完即可合入」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-07T00:00:00Z → 2026-10-07；页内 October 7, 2026；DEV 转载 2026-10-08）：MetalBear CTO Eyal Bukchin 续写团队 AI 用法。一月文称 AI 只在边缘有用（mirrord 为低层 Rust、架构特殊）；八个月后再问同一组问题——多数回复者几乎不再手写，增长最大的是评审：不仅 PR，还包括内环读改/重提示代理产出。有人形容「我不太写代码了，只是审 slop、驯服野兽」；另一人：周工作从约 20–40% 评审/60–80% 生成，变为约 95% 评审，「太累了」。工具不强制统一：Claude Code/Codex 最常见，长尾含 Emacs agent-shell、Amp、Orca 多 worktree、pi、Graphify、本地 Gemma、Zed 等；成本进入决策（一例估 Fable 用量约 Opus 的 10× 且质量增益有限故留 Opus；「强模型写指南→弱模型写码」实验失败）。仍痛：Rust 偏冗长 clone/collect、爱切碎函数堆测试、爱另起炉灶而非找既有库；多人坚持手写提交说明/PR/注释，因「AI 文本像 word pulp」，且写 PR 描述迫使抬高理解。应对：Greptile 自动 PR 首轮（并在用 AI 对比评 Qodo）；许多人开 PR 前先让代理自审；为「将来由代理维护」加充分日志；仓内长架构 walkthrough 的 CLAUDE.md 收成 AGENTS.md（组件一行描述+构建/测试/lint 命令），并让每人从 ~/.claude/CLAUDE.md 导入公司共享上下文仓。有人试验调度代理：夜巡 CI、晨从 Linear 挑小 bug 开 PR、支持草稿机器人（曾把未核实配置写成「既往确认可用」，遂加规则：先搜历史决议、每答结尾写依据）。结论：AI 已写多数代码，增长的工作是确保有人理解后再发——下篇希望讲如何解决疲劳。",
+      "与 cseeman-claude-noncoding-chats-10-weeks / blaze-git-hooks-cursor-context-memory 不同：本条是工具团队八个月追踪「边缘→中心」与评审疲劳，不是个人非编码聊天复盘或 git hook 养 CONTEXT.md",
+    ],
+    approach: `Eyal Bukchin（MetalBear）在官网博客《How Our Engineering Team Uses AI, Part II: Meat Proxies》（JSON-LD datePublished 2026-10-07 → 2026-10-07）写明：问题已从「模型能不能碰核心」变成「人如何不被评审洪峰做成肉代理」——有人自述周工作约 95% 在评审，并行多线程更易疲劳。
+
+团队不强制单一工具，但收缩仓级 AGENTS.md、导入公司共享上下文，并用自动首轮审/自审/日志友好设计与调度式小任务（夜巡 CI、小 bug PR、带依据的支持草稿）减轻机械层；提交说明与关键判断仍多人坚持手写以保持理解。
+
+本场景据此输出「防肉代理」提纲。禁止把「约 95% 评审」写成行业均值，或建议跳过理解直接批量合入。`,
+    outcomes: [
+      "源披露八个月后 AI 进中心、有人评审约 20–40%→约 95%、AGENTS.md 缩短+共享上下文、调度式 CI/小 bug/支持草稿等作者口径；属单一 Rust 工具团队窗口，不可外推为你的产能、倦怠率或「有共享上下文即可放心放权」。",
+      "能把「生成越多越好」与「理解门禁 + 首轮自动审 + 低风险调度任务」拆开。",
+      "为支持机器人臆造「已确认」、以及并行多代理导致的理解稀释提供提问清单。",
+    ],
+    caveats: [
+      "文为问卷式团队复盘，非统一度量仪表盘；工具列表含长尾试验。",
+      "产品为 mirrord，文中亦提自家能力，但主体是工程用法而非功能宣发清单。",
+      "上面写的是 MetalBear 团队实践帖，不是模型厂商官文简报。",
+    ],
+    prompts: [
+      {
+        title: "防「肉代理」工程复盘简报",
+        body: `你是工程效能顾问。只根据用户团队现状写提纲，不要编造评审占比。
+
+手写 vs 代理生成大致比例：{{ratio}}
+是否有仓级/公司级 AGENTS 上下文：{{context}}
+首轮评审工具：{{review_bot}}
+
+输出 Markdown：
+1. 理解门禁（何物必须人写/人测）
+2. AGENTS.md 缩短与共享上下文字段
+3. 可调度的低风险任务边界（含禁止臆造依据）
+4. 疲劳信号与并行上限
+禁止建议跳过理解合入；禁止伪造「95% 评审是健康态」。`,
+      },
+      {
+        title: "评审过载或支持草稿胡说复盘提纲",
+        body: `工程师表示几乎只在审 slop，或机器人把未核实配置写成已确认。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺理解门禁、并行过宽，还是缺「先搜历史+声明依据」规则
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多自动首轮等于更少疲劳」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://metalbear.com/blog/engineering-ai-use-part-2/",
+      label: "metalbear.com · How Our Engineering Team Uses AI, Part II: Meat Proxies",
+      date: "2026-10-07",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
