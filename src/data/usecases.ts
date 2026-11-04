@@ -26594,6 +26594,455 @@ DB 是否只读：{{readonly}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "441",
+    slug: "henry-knight-agency-saas-claude-agents",
+    title: "Henry：小代理把约 $800/月 SaaS 换成 Claude 代理——Zapier/Airtable/浏览器测逐项砍",
+    summary: "自由职业小代理；披露 Before 表合计约 $744/月、After 约 $148–188/月、自称年省约 $6.6–7.2k、Zapier→约 200 行 cron；不代你无人值守发信或伪造省钱保证。",
+    description:
+      "面向被胶水 SaaS 月费拖住的小代理/独立工作室：把「数据→判断→动作→日志」与仍须付费的 UX 面拆开，区别于终端 Marketing OS 与合同开票原型。",
+    categories: [
+      "efficiency",
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/henryknight_dev/i-replaced-my-freelance-agencys-800month-saas-stack-with-claude-agents-3565",
+    sourceLabel: "dev.to·Henry Knight 实践帖",
+    upvotes: 332,
+    trending: false,
+    tags: [
+      "SaaS 替换",
+      "小代理运营",
+      "Zapier",
+      "SQLite",
+      "CDP",
+    ],
+    howItWorks: [
+      "粘贴当前月费工具清单、哪条是纯数据搬运、以及邮件/发帖是否强制人审",
+      "Agent 按实践帖输出：优先替换顺序（胶水→报表→低频浏览器测）、验收窗（约 30 天）、以及保留 UX 面的边界",
+      "人工保留客户沟通与发出决策；Agent 不代你声称可无人值守外联或保证年省金额",
+    ],
+    tips: [
+      "源帖：开篇称工具约 $800+/月（含 Zapier $149、Airtable $240、浏览器测 $199、Notion AI $96、抓取 API $79 等）；Real Numbers Before 合计 $744/月；After：Claude API $80–120 + Resend $20 + Notion Plus $48 ≈ $148–188/月；自称省约 $550–600/月、$6,600–7,200/年；Zapier→约 200 行 Python cron（CSV/webhook→富集→SQLite→Resend）；Airtable+报表插件→SQLite+夜间查询；浏览器 SaaS（约 15 小时/月）→CDP 代理；Notion AI 降档保留编辑器内改写；建议一次换一项、撑约 30 天再换下一项；文末有作者 $7 starter kit 推广",
+      "与 lukasz-fryc-marketing-os-49-slash-commands / aaron-yong-automate-out-of-loop-orchestrator 不同：本条是小代理月费 SaaS 逐项替换与成本表，不是终端营销命令系统或编排器产品叙事",
+    ],
+    approach: `Henry Knight 在 DEV《I Replaced My Freelance Agency's $800/month SaaS Stack with Claude Agents》（JSON-LD datePublished 2026-06-13T15:49:16Z → 2026-06-13）写明：小代理曾为「没人质疑」的工具栈每月烧掉约 $800+——Zapier、Airtable、浏览器测试 SaaS、Notion AI、抓取 API 等。他先把 Claude 代理当内部实验，再逐项替换；开篇称今日工具账单约 $80–120/月（多为 Claude API），后文 Real Numbers 表把 After 写成 Claude API $80–120 + Resend $20 + Notion Plus $48，合计约 $148–188/月。
+
+替换清单很具体：Zapier（约 $149）→ 单脚本 cron，约 200 行 Python，读新线索（CSV dump 或 webhook）、廉价 API 富集、写 SQLite、经 Resend 发信，并把「选跟进模板/改语气」留给模型判断；Airtable Business 自动化（约 $240）加第三方报表（约 $60）→ 运营数据进 SQLite，夜间代理查询并生成周报；浏览器测试 SaaS（约 $199，自称每月约用 15 小时）→ Chrome DevTools Protocol 代理导航、填表、查控制台错误与截图；Notion AI（约 $96）只部分成功——研究/摘要改走 Claude API，编辑器内快改仍留 Notion，套餐降到 Plus 约 $48。作者模式：只替换纯「数据+逻辑」；人爱用的界面可继续付费；一次换一项，撑约 30 天再换下一项。
+
+本场景据此输出「小代理 SaaS 税替换」提纲。禁止建议无人值守群发客户邮件，或把作者成本表写成你的保证年省。`,
+    outcomes: [
+      "源披露开篇约 $800+/月工具税、Real Numbers Before 合计约 $744/月、After 约 $148–188/月、自称月省约 $550–600/年省约 $6.6–7.2k、以及 Zapier→约 200 行 cron 等作者口径；属单一小代理窗口，不可外推为你的账单、送达率或「换 Claude 必省同额」。",
+      "能把「再买一个 Zap」与「数据→判断→动作→日志 + 30 天验收」拆开。",
+      "为一次换光全栈、以及把仍依赖 UX 的工具硬拆脚本提供提问清单。",
+    ],
+    caveats: [
+      "作者承认 Notion 类 UX 胜出工具不宜硬替换；开篇 $80–120 与 After 合计表口径不完全同一。",
+      "文末含付费 starter kit 推广；实践数字仍以正文替换表为准，不是第三方审计。",
+      "上面写的是 Henry 个人实践帖，不是 Zapier/Airtable/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "小代理 SaaS 税最小替换简报",
+        body: `你是小代理运营自动化顾问。只根据用户约束写逐项替换与验收门，不要编造已省金额。
+
+当前月费工具与用途：{{stack}}
+纯数据搬运候选：{{data_pipes}}
+邮件/外联是否强制人审：{{human_gate}}
+
+输出 Markdown：
+1. 先换的 1 条工具与「数据→判断→动作→日志」草图
+2. 约 30 天验收指标（失败回滚条件）
+3. 明确保留付费的 UX 面
+4. 人必须保留的客户发出决策
+禁止建议无人值守群发；禁止伪造「年省必达」。`,
+      },
+      {
+        title: "一次换光胶水栈翻车复盘提纲",
+        body: `团队周末并行拆掉多个 Zap/报表后线上静默失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺分项验收、缺日志对照，还是误拆了 UX 关键工具
+2. 最小回滚与单管道重做顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「模型记忆等于生产 Zap 状态」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/henryknight_dev/i-replaced-my-freelance-agencys-800month-saas-stack-with-claude-agents-3565",
+      label: "dev.to/henryknight_dev · I Replaced My Freelance Agency's $800/month SaaS Stack with Claude Agents",
+      date: "2026-06-13",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "442",
+    slug: "persimmoq-claude-routines-docs-watcher",
+    title: "Persimmoq：只用 Claude Code routines——每天 09:00 盯 12 页文档并日文摘要进 Slack",
+    summary: "Claude API 指南作者；披露 routines 云定时、12 页文档、曾漏 Haiku 5.5 约 5 天、Python 出 diff/模型只评判；不代你无人值守发书或伪造变更。",
+    description:
+      "面向靠官方文档写教程、却被本地「changed」刷屏淹没的作者：把「脚本出 diff、模型只写摘要」与云端无本地文件限制写成门禁，区别于 Marketing OS 与收件箱发票流。",
+    categories: [
+      "content",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/persimmoq/i-built-an-ai-coworker-that-works-while-i-sleep-using-nothing-but-claude-code-6k8",
+    sourceLabel: "dev.to·Persimmoq 实践帖",
+    upvotes: 333,
+    trending: false,
+    tags: [
+      "Claude routines",
+      "文档变更监控",
+      "Slack",
+      "diff",
+      "定时任务",
+    ],
+    howItWorks: [
+      "粘贴要监控的文档列表、时区/cron、以及无变更时是否只写一行日志",
+      "Agent 按实践帖输出：watch 脚本职责边界、routine 自包含提示要点、以及草稿进 GitHub/摘要进 Slack 的人审门",
+      "人工保留「是否影响己书、是否公开发文」；Agent 不代你声称可无人值守出版",
+    ],
+    tips: [
+      "源帖（JSON-LD 2026-10-16；文内 as of October 16, 2026）：Claude Code routines=云端按 cron 起会话、克隆 GitHub 仓、可用 claude.ai 上挂的 MCP（Slack/Gmail）、退出；最小间隔 1 小时；看不到本地文件/本地 env；提示须自包含。作者仓库结构含 pages.json（12 个官方页）、stdlib-only 的 watch.py（拉页→与 state/ 比→diffs/<date>/ + result.json）、drafts/、log/。动机：写 Claude API 指南却漏掉 Haiku 5.5 发布约五天；本地脚本天天刷「changed」无人读。设计关键：Python 出 diff，模型只评判与日文写作；若让模型每天读约 12 页全文≈约 30 万字符易漏。无变更：写 log 一行、commit/push、Slack 短讯；有实质变更：按页写摘要，影响己书则推草稿。计费：称走订阅额度、未见单独 API 账；无变更跑几千 token 量级。删除仅网页端。",
+      "与 kanta-daily-indie-claude-schedule / claus-silence-morning-brief 不同：本条是官方文档 diff→日文 Slack/GitHub 草稿的 routines 同事，不是 indie 日程或晨报治理",
+    ],
+    approach: `Persimmoq（页内作者名 Pesimmoq；写 Claude API 指南）在 DEV《I built an AI coworker that works while I sleep, using nothing but Claude Code》（JSON-LD datePublished 2026-10-16T03:06:05Z → 2026-10-16；文内写明 as of October 16, 2026）写明：用 Claude Code 的 routines——云端按 cron 起会话、克隆指定 GitHub 仓、挂上 claude.ai 的 MCP（如 Slack），跑完退出，无需自备常驻服务器。
+
+他做了每天 09:00 JST 的文档看守：读 Anthropic 官方文档约 12 页（pages.json 指向 platform.claude.com 的 .md），与昨日 state 比对，向 Slack 发日文摘要；若变更影响自己的书，再把草稿推进 GitHub。动机很具体：曾漏掉 Haiku 5.5 发布约五天；本地脚本天天刷「changed」却没人看。架构强调「Python 找 diff，模型只评判与写作」——让模型每天吞约 12 页全文（文称约 30 万字符）既贵又易漏；watch.py 只产出 diff/result.json，模型读这些文件。
+
+约束写得很硬：最小间隔一小时；会话看不见本地文件与仅装在 Claude Code 里的 MCP；提示每次从零读入必须自包含；删除 routine 只能网页端；作者称跑在订阅额度内、无变更大约几千 token。本场景据此输出「云端文档看守同事」提纲。禁止建议把草稿自动公开发布，或把「有 diff」写成「必须改书」。`,
+    outcomes: [
+      "源披露 routines 云定时、约 12 页官方文档、曾漏发布约 5 天、最小间隔 1 小时、Python 出 diff/模型只写摘要、以及无变更约几千 token 等作者口径；属单一作者文档监窗口，不可外推为你的漏检率、Slack 阅读率或「routines 可替代编辑部」。",
+      "能把「让模型每天重读全站文档」与「脚本 diff + 自包含提示 + 人审是否改书」拆开。",
+      "为本地刷屏无人读、以及误以为 Claude Code 本地 MCP 在云 routine 可用提供提问清单。",
+    ],
+    caveats: [
+      "routines 形态变化快；作者写明以当时官方文档为准。",
+      "无本地机访问：密钥与状态必须进仓或云可达；删任务仅网页。",
+      "上面写的是 Persimmoq 个人实践帖，不是 Anthropic routines 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "官方文档 diff 看守最小 routine 简报",
+        body: `你是技术作者运维顾问。只根据用户约束写看守流水线，不要编造已捕获的产品发布。
+
+监控页列表：{{pages}}
+cron/时区：{{schedule}}
+无变更是否仍推 Slack：{{notify_no_change}}
+
+输出 Markdown：
+1. watch 脚本输入输出文件约定
+2. routine 自包含提示步骤（含 git pull、读 result.json）
+3. 「实质变更 vs 纯格式」过滤规则
+4. 人必须保留的改书/发文决策
+禁止建议自动公开发布；禁止伪造「全网发布零漏检」。`,
+      },
+      {
+        title: "本地 changed 刷屏却仍漏重大发布复盘提纲",
+        body: `脚本天天报 changed，团队仍漏掉一次模型发布。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺实质 diff、缺日文可读摘要，还是通知通道噪音过大
+2. 最小修复（脚本出 diff / 模型只写摘要）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「有 webhook 就等于编辑读过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/persimmoq/i-built-an-ai-coworker-that-works-while-i-sleep-using-nothing-but-claude-code-6k8",
+      label: "dev.to/persimmoq · I built an AI coworker that works while I sleep, using nothing but Claude Code",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "443",
+    slug: "day-implement-orchestrated-parallel-tickets",
+    title: "day：把 Matt /implement 改成并行编排——8 票、约 1h50、子代理同 coder 回修",
+    summary: "个人工作流；披露 8 票全关、约 1h50+50 分、+4373/−299、Playwright 27→89、约 3.24M token、事后 /code-review 又挖 23 条；不代你无人值守合入。",
+    description:
+      "面向已用 grill→spec→tickets、却卡在单票串行的开发者：把 worktree 并行、同 coder 回修与仓外状态表写成门禁，区别于设计系统多代理与多会话治理。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/day_b3fa2204948ded3059f6f/turning-matt-pococks-implement-into-a-parallel-orchestrator-in-claude-code-1d4a",
+    sourceLabel: "dev.to·day 实践帖",
+    upvotes: 334,
+    trending: false,
+    tags: [
+      "Matt Pocock",
+      "子代理",
+      "worktree",
+      "并行票据",
+      "代码评审",
+    ],
+    howItWorks: [
+      "粘贴已有 spec/tickets、并行上限 N、以及是否强制每票 reviewer 后再合",
+      "Agent 按实践帖输出：仓外状态表字段、frontier 调度规则、同 coder SendMessage 回修与两轮失败升级人",
+      "人工保留架构异议与合入；Agent 不代你声称编排器可替代最终安全评审",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-09-10；Edited on Sep 22）：保留 Matt 链的规划半段，只替换构建半段为 /implement-orchestrated；coder 子代理 isolation:worktree，最多 N 并行；票完 spawn reviewer；Needs fixes 则把 findings 路径 SendMessage 回同一 coder；两轮失败升级人；状态表放仓外以防上下文压缩丢失。一次跑：8 票全关、零升级人；01/02/07 三宽并行；7 票约 08:07 合完；01–07 主动编排约 1h50，末票+终门约 50 分钟；30 commits，+4,373/−299，42 文件；Playwright 27→89，Deno 86→89；子代理约 3.24M token（coder 1.61M / per-ticket reviewer 0.68M / final gate 0.96M）。痛点：Opus max 触发 429，第 8 个 coder 起不来。诚实脚注：事后内置 /code-review max 又挖 23 findings（3 标安全），再 5 commits 修；套件 Playwright 89→103、Deno 89→91。",
+      "与 pedro-mansan-design-system-claude-agents / ilya-gorban-15-claude-sessions-governance / aaron-yong-automate-out-of-loop-orchestrator 不同：本条是 Matt /implement 的并行票据编排+同 coder 回修实测，不是设计系统迁、多会话治理产品或通用编排器宣发",
+    ],
+    approach: `作者 day 在 DEV《Turning Matt Pocock's /implement into a parallel orchestrator in Claude Code》（JSON-LD datePublished 2026-09-10T09:22:15Z → 2026-09-10；页内 Edited on Sep 22）写明：他从 superpowers 迁到 Matt Pocock 技能链 \`/grill-with-docs → /to-spec → /to-tickets → /implement\`，但 Matt 的 \`/implement\` 刻意「一票一会话」；文档也写明批量派发与子代理扇出「常被要、但没有」。于是他保留规划半段，只把构建半段换成 \`/implement-orchestrated\`。
+
+回路：读 spec/tickets，在仓外写状态表（票、阻塞、状态、coder、分支、worktree）以免上下文压缩丢状态→开功能分支、记测试基线、开 draft PR→把无阻塞 frontier 派给最多 N 个 worktree 内 coder→coder 汇报后起 reviewer；Needs fixes 则把 findings 文件路径 SendMessage 回同一 coder（保留上下文）；两轮失败升级人→\`--no-ff\` 合并、跑全量、关票、删 worktree、重算 frontier→终局再跑 Matt 式 code-review、max 找 bug、final-reviewer。
+
+一次实测：8 票全关、零升级；三宽并行；主动编排约 1h50（01–07）+约 50 分钟收尾；+4,373/−299；Playwright 27→89；约 3.24M token。也诚实写：429 杀掉第 8 个 coder；事后 \`/code-review max\` 仍挖出 23 条（含 3 条安全标）。本场景据此输出「并行 implement 编排」提纲。禁止建议跳过终局人审合入生产，或把一次绿测写成安全签字。`,
+    outcomes: [
+      "源披露 8 票全关、约 1h50+50 分、30 commits/+4373/−299、Playwright 27→89、约 3.24M token、429 限流、以及事后又挖 23 findings 等作者口径；属单次个人编排窗口，不可外推为你的吞吐、缺陷密度或「并行即免审」。",
+      "能把「一票一清会话」与「仓外状态表 + worktree 并行 + 同 coder 回修」拆开。",
+      "为把编排终门当成最终安全评审、以及合并冲突时乱改主工作区提供提问清单。",
+    ],
+    caveats: [
+      "作者脚注说明编排终门仍漏安全向 findings；内置 /code-review max 仍有价值。",
+      "高努力 Opus 易触会话限流；编排器要能报告偏差而非挂死。",
+      "上面写的是 day 个人实践帖，不是 Matt Pocock/Anthropic 官文。",
+    ],
+    prompts: [
+      {
+        title: "并行 /implement-orchestrated 最小门禁简报",
+        body: `你是代理式开发流程顾问。只根据用户约束写编排规格，不要编造已全绿合入。
+
+票数/阻塞关系：{{tickets}}
+并行上限 N：{{n}}
+是否强制每票 reviewer：{{per_ticket_review}}
+
+输出 Markdown：
+1. 仓外状态表字段
+2. frontier 调度与 worktree 规则
+3. Needs fixes→同 coder 回修与两轮升级人
+4. 终局三道门与人必须保留的合入决策
+禁止建议静默合 main；禁止伪造「并行后零缺陷」。`,
+      },
+      {
+        title: "编排绿了事后安全评审又爆复盘提纲",
+        body: `编排终门全过，随后 /code-review max 仍报多条安全向。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺独立安全门、缺 findings 验证环，还是 reviewer 与 coder 同质化
+2. 最小补门（独立 reviewer / 分 findings 验证）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试变绿等于威胁模型通过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/day_b3fa2204948ded3059f6f/turning-matt-pococks-implement-into-a-parallel-orchestrator-in-claude-code-1d4a",
+      label: "dev.to/day_b3fa2204948ded3059f6f · Turning Matt Pocock's /implement into a parallel orchestrator in Claude Code",
+      date: "2026-09-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "444",
+    slug: "sid-probstein-postgres-spreadsheet-mini-crm",
+    title: "Sid：一下午用 Postgres+表格+代理替换 Salesforce/HubSpot——变更报告抓住「按名更新」bug",
+    summary: "团队小规模管道；披露 >100 组织、三表三视图、一下午、表格仍作 UI、idempotent 同步与 change report 抓回归；不代你上 50 人销售 CRM。",
+    description:
+      "面向全功能 CRM 两次证明过重、表格又欠历史的小团队：把活动追加写、表格作 UI、同步必须零变更验收写成门禁，区别于无开发背景 90 路由 CRM 自建。",
+    categories: [
+      "enterprise",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://dev.to/sidprobstein/replaced-salesforce-and-hubspot-with-postgres-a-spreadsheet-and-an-ai-agent-5bc9",
+    sourceLabel: "dev.to·Sid Probstein 实践帖",
+    upvotes: 335,
+    trending: false,
+    tags: [
+      "迷你 CRM",
+      "Postgres",
+      "电子表格 UI",
+      "idempotent",
+      "SWIRL",
+    ],
+    howItWorks: [
+      "粘贴现有表格列、组织规模、以及是否强制同步后 change report 必须为 0",
+      "Agent 按实践帖输出：org/contact/activity 最小图式、表格 Tracking 同步规则、以及「按名+类」唯一键验收",
+      "人工保留管道口径与批量「标死/成交」审查；Agent 不代你声称可替代持牌大型 CRM",
+    ],
+    tips: [
+      "源帖（JSON-LD 2026-08-04）：先 Salesforce 后 HubSpot 均不划算；逃逸后只剩三列公司名（Engaged Prospects / Legal / Partners/Channels），>100 组织、无状态/无活动史/无下一步。一下午用 Claude Cowork + 本地 PostgreSQL + 表格 + SWIRL 联邦搜索做迷你 CRM。三表：organizations（category CHECK；status 自由文本）、contacts、activities（追加写历史）。两视图：org_latest_activity、followups_due。加载器 ON CONFLICT (name,category) DO NOTHING。表格第二页 Tracking 作编辑面；同步只更新差异、插入新活动、永不删除；SQL 大批量改完再从库回刷表。Bug：仅按 name 做键，一名跨两类时 UPDATE 打中两行，把刚标 dead 的行「复活」；靠「刷新后再同步应零变更」的 change report 抓到（报 1 org updated）。作者明确：不试图服务 50 人销售团队；结果是三表三视图、零 ORM、取消两份 CRM 订阅。",
+      "与 julian-epbcenter-claude-crm-no-dev / tony-tong-crm-stage-evals 不同：本条是小规模 Postgres+表格 UI+同步 idempotency 实测，不是 90 路由自建 CRM 或阶段评估",
+    ],
+    approach: `Sid Probstein 在 DEV《Replaced Salesforce and HubSpot with Postgres, a Spreadsheet, and an AI Agent》（JSON-LD datePublished 2026-08-04T16:00:51Z → 2026-08-04）写明：团队先后上过 Salesforce 与 HubSpot，在他们的规模都「挣不回票价」；数据逃逸后只剩三列公司名（Engaged Prospects / Legal / Partners/Channels）——超过 100 个组织，却无状态、无活动史、无下一步。全功能 CRM 两次过重，纯表格又欠历史。
+
+他用一下午 + Claude Cowork，在已有本地 PostgreSQL、表格与 SWIRL 搜索上搭迷你 CRM：organizations / contacts / activities 三表；活动追加写；category 用 CHECK，status 保持自由文本以免第一次真实「dead」就逼迁移；视图提供最新活动与到期跟进；加载器按 (name, category) 幂等插入。关键产品决策：表格留下当 UI——第二页 Tracking 预填一行一组织，人改单元格再跑同步；脚本不删数据，连续跑两次应是空操作；直接 SQL 批量改完要从库回刷表，避免双源互打。
+
+上线即踩坑：第一版同步只按 name 建内存键，一名跨两类（既是服务商又是渠道）时 UPDATE 打中两行，把刚标 dead 的行复活。能立刻发现，是因为同步打印 change report，而「刷新后再同步」预期必须是零变更——却报了 1 org updated。本场景据此输出「表格 UI + Postgres 历史」提纲。禁止建议以此替换 50 人销售合规 CRM，或跳过批量状态变更的人审。`,
+    outcomes: [
+      "源披露 >100 组织、三表三视图、一下午、表格仍作 UI、idempotent 加载、以及 change report 抓到按名更新 bug 等作者口径；属小团队管道窗口，不可外推为你的转化率、可取消套餐金额或「可服务大型销售组织」。",
+      "能把「再买一套 CRM」与「追加写活动 + 表格作 UI + 零变更验收」拆开。",
+      "为只按显示名更新、以及对话式逐条口述 100+ 更新提供提问清单。",
+    ],
+    caveats: [
+      "作者自承不适合 50 人销售团队；这是过重/过轻之间的最小系统。",
+      "批量自然语言改状态仍须人看变更报告；脚本默认不删除。",
+      "上面写的是 Sid 团队实践帖，不是 Salesforce/HubSpot 官文或 CRM 评测榜。",
+    ],
+    prompts: [
+      {
+        title: "迷你 CRM 图式与同步门禁简报",
+        body: `你是小团队管道数据顾问。只根据用户约束写最小图式与同步验收，不要编造已迁完的 CRM。
+
+现有表格列/类目：{{sheet}}
+组织数量级：{{scale}}
+同步后是否强制 change report=0：{{noop_gate}}
+
+输出 Markdown：
+1. org/contact/activity 字段与唯一键
+2. 表格 Tracking 列与差异同步规则
+3. 「刷新→再同步→必须零变更」夹具
+4. 人必须保留的批量状态/成交决策
+禁止建议删除生产历史；禁止伪造「可替换大型 CRM 合规」。`,
+      },
+      {
+        title: "按名同步复活已标死客户复盘提纲",
+        body: `同步后发现刚标 dead 的组织又变 active。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺复合唯一键、缺 scoped UPDATE，还是缺零变更报告
+2. 最小修复与回归夹具
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「显示名全局唯一」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/sidprobstein/replaced-salesforce-and-hubspot-with-postgres-a-spreadsheet-and-an-ai-agent-5bc9",
+      label: "dev.to/sidprobstein · Replaced Salesforce and HubSpot with Postgres, a Spreadsheet, and an AI Agent",
+      date: "2026-08-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "445",
+    slug: "reet-batra-tokenmaxxing-overnight-portfolio",
+    title: "Reet：2:30 设 /goal 睡醒作品集已上线——CLAUDE.md 先答完、token 花在检查上",
+    summary: "个人站点；披露约 2:30 下指令、4:40 提交、六站参考/十四像素图标/三域名、测与评审后部署；不代你无人值守改生产品牌站。",
+    description:
+      "面向订阅额度周周作废、又不敢让代理夜间乱问的独立开发者：把可验收 /goal、CLAUDE.md 预答与「token 花在检查」写成门禁，区别于两日大仓重建与 16 站主机迁。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://www.reetbatra.com/writing/tokenmaxxing-claude-code",
+    sourceLabel: "reetbatra.com·Reet Batra 实践帖",
+    upvotes: 336,
+    trending: false,
+    tags: [
+      "tokenmaxxing",
+      "/goal",
+      "CLAUDE.md",
+      "作品集",
+      "夜间代理",
+    ],
+    howItWorks: [
+      "粘贴可检查的完成条件、CLAUDE.md 里已预答的「别再问」清单，以及部署是否允许无人值守",
+      "Agent 按实践帖输出：/goal 条件写法、预答问题清单、以及测/浏览器截图/评审的检查预算",
+      "人工保留品牌品味与生产域名最终确认；Agent 不代你声称夜间必交付可售作品",
+    ],
+    tips: [
+      "源帖（JSON-LD/页内 datePublished 2026-10-15；「oct 2026」）：约 2:30 am 一段话列出六个喜欢的作品集站点，要求混合风格、有问题自行解决并端到端完成；4:40 am 改版提交。醒来时：真浏览器访问六站并截图（发现一域名已不存在、不瞎猜）、写下各站借鉴点以免抄成一家、手绘十四个像素图标（含 12×12 网格测试）、重建 home/work/writing 并覆盖其三个域名、跑 build/测试/代码评审后部署。中途另请修「公司电脑报 not secure」：先完成进行中的检查，再定位为域名过新未被企业过滤器分类，补安全头并列出仅人能做的步骤。要点：CLAUDE.md 预答「要不要 commit」类问题；/goal 条件必须可检查（「三域名上线且测试通过」而非「让站点更好」）；token 多数花在检查（截图发现挤扁气泡、测试飞行员瞄准过高、评审抓到 //evil.com 伪相对链接等）。",
+      "与 alex-cloudstar-32784-lines-two-day-rebuild / jeremy-keeshin-16-sites-linode-day-migrate 不同：本条是个人作品集夜间 /goal + 预答门禁，不是大仓两日重建或主机多站迁",
+    ],
+    approach: `Reet Batra 在个人站《Tokenmaxxing Claude Code: I Set a Goal at 2:30 am and Woke Up to a New Portfolio》（JSON-LD datePublished 2026-10-15 → 2026-10-15；页内「oct 2026」）写明：Claude Code 周额度不用就作废；她关心的不是「多要 token」，而是把已付额度变成含睡眠时段的真实交付。
+
+约 2:30 am 她只写一段：列出六个喜欢的作品集站、嫌自己站太像抄来的、要求混合风格，并加一句「有问题别等我，自行解决，端到端做完」。约 4:40 am 改版提交落地。醒来时代理已：用真浏览器访问六站并截图（发现一域名不存在就如实说）、写下各站借鉴点以免做成某一站的副本、把十四个像素图标当数据手绘并加 12×12 网格测试、重建 home/work/writing 并覆盖三个域名、跑构建/测试/代码评审后部署。中途她又丢了一个「朋友公司电脑报 not secure」——代理先完成进行中的检查，再判断是域名过新未被企业过滤器分类，补上安全头，并列出只有她本人能做的步骤。
+
+方法总结：CLAUDE.md 把「要不要 commit/部署」类问题预先答掉；\`/goal\` 条件必须可机器检查；重复要求收成 skills；多数 token 花在检查而非再生成。本场景据此输出「可验收夜间目标」提纲。禁止建议对未备份生产站开放无人值守强制推送，或把一次睡醒交付写成可复现 SLA。`,
+    outcomes: [
+      "源披露约 2:30 下指令、4:40 提交、六站参考/十四图标/三域名、测与评审后部署、以及检查阶段自抓布局/测试/链接问题等作者口径；属单人作品集窗口，不可外推为你的上线质量、企业网络放行或「tokenmaxxing 必出可售产品」。",
+      "能把「让站点更好」与「可检查 /goal + 预答 CLAUDE.md + 检查预算」拆开。",
+      "为夜间停在「要不要 commit」、以及把生成预算全花在再写一版 UI 提供提问清单。",
+    ],
+    caveats: [
+      "作者仍列出只有人能做的步骤（企业过滤器申诉等）；夜间自主不等于零人收尾。",
+      "可检查目标写不好会永不结束或提前假完成。",
+      "上面写的是 Reet 个人实践帖，不是 Anthropic 官文或 token 攻略站。",
+    ],
+    prompts: [
+      {
+        title: "可验收夜间 /goal 与 CLAUDE.md 预答简报",
+        body: `你是独立开发者代理工作流顾问。只根据用户约束写夜间可跑目标，不要编造已部署成功。
+
+完成条件（须可检查）：{{goal}}
+部署是否允许无人值守：{{autodeploy}}
+已知重复确认题：{{faq}}
+
+输出 Markdown：
+1. /goal 条件改写（可真可假）
+2. CLAUDE.md 预答清单
+3. 检查预算（测试/截图/评审）占比建议
+4. 人醒来必须确认的项
+禁止建议无备份强推生产；禁止伪造「睡醒即商业就绪」。`,
+      },
+      {
+        title: "夜间代理卡在反复提问复盘提纲",
+        body: `早上发现会话停在「要不要 commit/选配色」。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 缺预答、缺可检查 goal，还是目标含主观品味未切片
+2. 最小 CLAUDE.md /goal 修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更长提示等于可无人值守」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.reetbatra.com/writing/tokenmaxxing-claude-code",
+      label: "reetbatra.com · Tokenmaxxing Claude Code: I Set a Goal at 2:30 am and Woke Up to a New Portfolio",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
