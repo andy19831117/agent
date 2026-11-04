@@ -31076,6 +31076,456 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "491",
+    slug: "rafe-blandford-centos-static-archive-claude",
+    title: "Rafe：Claude Code 主操迁三站静态档案——约两天对标晚间两到三周",
+    summary: "个人；披露两天内迁三站、约二十年内容；爬约 2.4 万动态页、rsync 约 54GB 媒体、后处理约 2.9 万 HTML；估晚间两到三周→约两整日；不代你任意机房同速。",
+    description:
+      "面向要把濒死机上的多站内容迁成可维护静态档案、却卡在批量脚本与回滚的独立站长/工程：把「先单页试正则 + 快照再全量」写成门禁，区别于 Ghost→Next 重写栈与 AWS→DO 云账单迁。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://rafeblandford.com/claude-code-as-a-migration-partner/",
+    sourceLabel: "rafeblandford.com·Rafe Blandford 实践帖",
+    upvotes: 382,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "静态档案",
+      "站点迁移",
+      "后处理",
+      "Lighthouse",
+    ],
+    howItWorks: [
+      "粘贴旧机范围（站点数/内容年代）、目标形态（静态档案/新主机），以及「绝不可无人执行」的切流清单",
+      "Agent 按实践帖输出：审计→爬取/rsync→单页试脚本→全量后处理→视觉抽检门禁表",
+      "人工保留保留/放弃内容与 DNS 切流批准；Agent 不代你保证「必两天或同体量」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-04T10:00:00+01:00 → 2026-04-04；页内 4 April 2026）：Rafe Blandford 用 Claude Code 在 Mac 上 SSH 旧 CentOS 7 与新 OVH Debian，约两天迁三站、约二十年内容为静态档案。披露爬约 24,000 动态页、rsync 约 54GB 媒体、后处理约 29,000 HTML；可批处理如剥 GA（约 2.9 万页）、给约 387,000 图片标签加 lazy-load。估晚间两到三周→约两整日。事故：贪婪正则误剥内容，靠 hardlink 快照后重爬重跑。主线是 Claude Code 督导式运维，不是官文简报。",
+      "与 arezvov-ghost-nextjs-claude-cursor-migration 不同：本条是濒死机多站→静态档案与批量后处理纪律，不是博客栈 Ghost→Next 性能/年费对照",
+    ],
+    approach: `Rafe Blandford 在《Claude Code as a migration partner》（datePublished 2026-04-04）写明：以 Claude Code 为主要执行者、人做方向与抽检，把三站约二十年内容从濒死 CentOS 迁到现代静态档案。
+
+关键门禁不是「让代理自己切 DNS」，而是单页验证脚本、视觉抽检、快照回滚；架构取舍与保留哪些内容仍由人定。
+
+本场景据此输出「静态档案迁移门禁」提纲。禁止把两天或 2.9 万页写成任意机房 SLA，或建议跳过抽检直接全站正则。`,
+    outcomes: [
+      "源披露约两天、三站、约二十年内容、约 2.4 万动态页、约 54GB 媒体、约 2.9 万 HTML 后处理，以及晚间两到三周→约两整日等作者口径；属单人督导窗口，不可外推为你的切流工期或「同脚本必同速」。",
+      "能把「可批处理的后处理」与「必须人做的内容取舍/视觉验收」拆开。",
+      "为贪婪正则吃内容、缺快照、缺单页试跑提供提问清单。",
+    ],
+    caveats: [
+      "工期与体量为作者自述；无第三方审计。",
+      "视觉验收与域名切流仍须人；代理只能查 HTTP 状态不能替你看版式。",
+      "上面写的是个人实践帖，不是 Anthropic/云厂商官文简报。",
+    ],
+    prompts: [
+      {
+        title: "静态档案迁移门禁",
+        body: `你是资深站点运维教练。只根据用户边界写门禁，不要编造已完成的天数或页数。
+
+旧机与站点数：{{scope}}
+目标主机与形态：{{target}}
+不可无人执行：{{no_auto}}
+
+输出 Markdown：
+1. 审计→爬取/媒体→后处理→切流的最小阶段表
+2. 「单页试正则/脚本→视觉确认→再全量」检查点
+3. 快照/回滚最低要求
+4. 人必须批准的清单（保留内容/DNS）
+禁止声称「必两天」；禁止建议未抽检就全站替换。`,
+      },
+      {
+        title: "后处理吃掉正文复盘",
+        body: `批量脚本跑完后发现正文被剥残。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像贪婪正则、缺单页试跑，还是缺快照
+2. 最小修补与重跑顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再开并行会话等于已回滚」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://rafeblandford.com/claude-code-as-a-migration-partner/",
+      label: "rafeblandford.com · Claude Code as a migration partner",
+      date: "2026-04-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "492",
+    slug: "alex-diaz-mac-use-etax-accessibility",
+    title: "Alex：mac-use 走无障碍 API 填瑞士报税——约十分钟对标一下午",
+    summary: "个人；披露用 Claude Code + mac-use（Accessibility API）填 eTax；自称整段约十分钟内，以往约一下午；强调无截图/无像素点选；不代你任意桌面税软同速。",
+    description:
+      "面向被无 API 的遗产桌面软件拖住的独立开发者/小团队：把「读控件树点名操作 + 不确定就停问人」写成门禁，区别于纯视觉 RPA 与内容再分发省时链。",
+    categories: [
+      "life",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://founders.do/posts/mac-use-desktop-automation/",
+    sourceLabel: "founders.do·Alex Diaz 实践帖",
+    upvotes: 383,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "mac-use",
+      "无障碍 API",
+      "桌面自动化",
+      "报税",
+    ],
+    howItWorks: [
+      "粘贴目标 macOS 应用、表单段落，以及「不确定字段必须停问」规则",
+      "Agent 按实践帖输出：MCP 接入步骤、按控件名填写顺序，以及停问触发条件",
+      "人工保留最终提交与敏感字段核对；Agent 不代你保证「必十分钟或零错填」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-30T00:00:00.000Z → 2026-03-30；By Alex Diaz）：开源 MCP 服务 mac-use 让 Claude Code 经 Apple 无障碍（Accessibility）API 读写控件——按名称点击/填表/读值/走菜单，不靠截图与像素坐标。作者用它填瑞士州级 eTax：从 PDF/CSV 读数→开应用→按分区填→遇不确定停问；自称整段约十分钟内，以往约一下午。对比表称截图路径约 3–5 秒/步且有分辨率成本，无障碍路径为直接 API、无边际截图费。主线是 Claude Code + mac-use，可挂 ChatGPT/DeepSeek 仅作旁路草稿。",
+      "与 codingcharly-n8n-claude-content-5h-45m 不同：本条是遗产桌面 GUI 无障碍自动化，不是内容再分发 n8n 链",
+    ],
+    approach: `Alex Diaz 在《I built an AI agent that controls any Mac app》（datePublished 2026-03-30）写明：为瑞士 eTax 一类无 API 桌面税软，自研 MCP「mac-use」，经系统无障碍树驱动填表，而不是截图点选。
+
+关键门禁是「控件可命名才可自动化」与「不确定就停」；人仍握提交。
+
+本场景据此输出「桌面无障碍填表门禁」提纲。禁止把十分钟写成任意税软 SLA，或建议跳过人对敏感字段的核对。`,
+    outcomes: [
+      "源披露整段约十分钟内对标以往约一下午，以及无截图、按控件名操作等作者口径；属单人报税窗口，不可外推为你的税软、字段集或「装同 MCP 必同速」。",
+      "能把「无障碍树直控」与「截图/像素 RPA」拆开。",
+      "为控件无名、权限未开、不确定字段乱填提供提问清单。",
+    ],
+    caveats: [
+      "省时为作者自述；依赖 macOS 无障碍权限与标准控件树。",
+      "非标准自绘 UI 可能读不到；提交前仍须人核。",
+      "上面写的是个人实践帖，不是 Apple/税局官文。",
+    ],
+    prompts: [
+      {
+        title: "桌面无障碍填表门禁",
+        body: `你是桌面自动化教练。只根据用户边界写门禁，不要编造已达到的分钟数。
+
+应用与表单段落：{{app}}
+数据来源：{{sources}}
+必须停问的字段：{{stop_fields}}
+
+输出 Markdown：
+1. MCP/无障碍权限检查清单
+2. 按控件名填写的分步顺序
+3. 停问与人核触发条件
+4. 提交前人工确认清单
+禁止声称「必十分钟」；禁止建议跳过人核直接提交。`,
+      },
+      {
+        title: "控件读不到复盘",
+        body: `代理找不到按钮或下拉项。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像权限未开、自绘 UI，还是名称/角色不稳
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「改用截图点选就等于已无障碍合规」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://founders.do/posts/mac-use-desktop-automation/",
+      label: "founders.do · I built an AI agent that controls any Mac app",
+      date: "2026-03-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "493",
+    slug: "elina-onchul-codecentric-ai-accessibility",
+    title: "Elina：四层 AI 无障碍走查——双代理检出二十余处真问题仍难言 100%",
+    summary: "团队实践；披露至约 2026-05 用 CI 扫描、Claude Code±Playwright MCP、专用 MCP、双代理走查；双代理最终发现二十余处真实问题；结论：AI 可加速明显项，但不能单独宣称完全无障碍。",
+    description:
+      "面向要在缺专职无障碍专家时仍推进 BFSG/WCAG、却怕「工具说 OK」的工程团队：把「分层工具 + 人终检」写成门禁，区别于一日清零 axe 违规叙事与桌面无障碍填表。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.codecentric.de/en/knowledge-hub/blog/ensuring-accessibility-with-ai-what-works-today-and-what-doesnt",
+    sourceLabel: "codecentric Blog·Elina Onchul 实践帖",
+    upvotes: 384,
+    trending: false,
+    tags: [
+      "无障碍",
+      "Claude Code",
+      "Playwright MCP",
+      "WCAG",
+      "双代理",
+    ],
+    howItWorks: [
+      "粘贴应用登录约束、关键用户流，以及「AI 宣称通过仍须人验收」规则",
+      "Agent 按实践帖输出：四层工具试用顺序、双代理分工，以及人终检清单",
+      "人工保留合规签字与动态组件抽检；Agent 不代你保证「必二十余处或已 100%」",
+    ],
+    tips: [
+      "源帖（页内署名 Elina Onchul 2.6.2026 → 2026-06-02；实验口径 as of May 2026）：codecentric 顾问试四层——GitHub AI Accessibility Scanner（预览，登录标签硬编码易失败）；Claude Code 泛提示「Make my app accessible」+ Playwright MCP 抓运行时问题；专用无障碍 MCP（如带 axe 的扫描器，登录仍常卡）；Awesome GitHub Copilot 双代理（Accessibility Expert + Runtime Tester）最终发现二十余处真实问题。文内提醒 axe-core 等自动引擎约只能覆盖部分 WCAG（文引约 20%–57% 区间）。结论：能更快清明显项，但不能单靠 AI 宣称完全无障碍。主线是 Claude/Copilot 工具链实验，不是叠加器厂商官宣。",
+      "与 alex-diaz-mac-use-etax-accessibility / asafamos-axle-a11y-saas-one-day 不同：本条是 Web 无障碍分层实验与「工具说 OK≠合规」，不是 macOS 桌面填表，也不是单日清零违规冲刺",
+    ],
+    approach: `Elina Onchul 在 codecentric《Ensuring accessibility with AI…》（页内 2.6.2026）写明：在德国 BFSG 背景下，系统试 CI 扫描、Claude Code、无障碍 MCP 与双代理，看 AI 能把无障碍推多远。
+
+关键发现是双代理可挖出二十余处真问题，但动态组件与语义判断仍有缺口；「工具说 OK」不等于合规。
+
+本场景据此输出「分层无障碍走查门禁」提纲。禁止把二十余处或某通过率写成任意产品认证，或建议省略人工终检。`,
+    outcomes: [
+      "源披露四层走查、双代理发现二十余处真实问题，以及「尚不能单靠 AI 做完全无障碍」等作者口径；属顾问实验窗口，不可外推为你的合规结论或「同上工具必同数」。",
+      "能把「静态改码 / 运行时 MCP / 双代理」与「人终检」拆开。",
+      "为登录挡扫描器、aria-label=\"null\" 类运行时坑、叠加器虚假承诺提供提问清单。",
+    ],
+    caveats: [
+      "GitHub 扫描器当时为 Public Preview；工具能力会变。",
+      "「二十余处」为作者实验计数，非第三方审计。",
+      "上面写的是团队/顾问实践帖，不是无障碍叠加器或模型官文简报。",
+    ],
+    prompts: [
+      {
+        title: "分层无障碍走查门禁",
+        body: `你是无障碍工程教练。只根据用户边界写门禁，不要编造已发现的问题数或合规结论。
+
+应用与关键流：{{flows}}
+登录/动态组件约束：{{constraints}}
+必须人终检项：{{human_signoff}}
+
+输出 Markdown：
+1. 四层工具试用顺序（CI→IDE→专用 MCP→双代理）
+2. 每层「通过」的最低证据
+3. 人终检清单（键盘流/读屏抽检）
+4. 禁止写成认证的表述
+禁止声称「必二十余处或已 100%」；禁止建议以叠加器代替修码。`,
+      },
+      {
+        title: "扫描器过了读屏仍卡复盘",
+        body: `自动扫描全绿，但键盘/读屏用户仍失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只跑了静态规则、缺运行时流，还是缺人终检
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍 axe 等于已完全无障碍」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.codecentric.de/en/knowledge-hub/blog/ensuring-accessibility-with-ai-what-works-today-and-what-doesnt",
+      label: "codecentric · Ensuring accessibility with AI: what works today (and what doesn't)",
+      date: "2026-06-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "494",
+    slug: "hasangilani-knock-87-sessions-saleor-cost",
+    title: "Hasan：录 87 场 Claude Code——Saleor 调查中位成本约 $0.42→$0.25",
+    summary: "个人；披露 87 场实录；在约 4,776 文件 Saleor 上同题 8+8 跑：中位成本约 $0.42→$0.25（约 −40%）、工具调用 26→13、模型时 142s→86s；正确仍 8/8；前两版 knock 在 Flask 上省不到钱。",
+    description:
+      "面向大仓调查时被用量/子代理空转烧钱的独立开发者：把「先测地图是否真替 grep，再上 MCP」写成门禁，区别于自治小时幂律日志与三代理日志计费陷阱。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/hasangilani/i-recorded-87-claude-code-sessions-to-find-out-where-the-money-goes-2i2k",
+    sourceLabel: "DEV·HasanGilani 实践帖",
+    upvotes: 385,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "knock",
+      "MCP",
+      "成本",
+      "Saleor",
+    ],
+    howItWorks: [
+      "粘贴仓库体量、典型调查题，以及「必须对照无 MCP 基线」规则",
+      "Agent 按实践帖输出：录制对照表字段、地图 MCP 验收标准，以及子代理触发观察项",
+      "人工保留是否上生产 MCP 的决定；Agent 不代你保证「必 −40%」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-02T08:06:39Z → 2026-11-02）：HasanGilani 录 87 场 Claude Code（文称 Claude Sonnet 5）全文与成本。自研 MCP knock 给代码地图；前两版（笔记记忆层/结构地图）在约 200 文件 Flask 上几乎不省甚至更贵。换到约 4,776 文件的 Saleor、同调查题各 8 跑：中位成本约 $0.42→$0.25（约 −40%），中位工具调用 26→13，中位模型时 142s→86s，正确 8/8 对 8/8，拉起子代理 5/8→0/8。主线是测驱 MCP 降调查成本，不是模型官宣榜。",
+      "与 michael-roth-543-hours-autonomous-claude / jdevleon-three-agents-log-formats-hours-wrong 不同：本条是大仓调查成本 A/B 与地图 MCP，不是长窗自治小时幂律，也不是三家日志格式计费陷阱",
+    ],
+    approach: `HasanGilani 在 DEV《Stop Claude Code from burning your usage limit on big repos》（datePublished 2026-11-02）写明：用 87 场实录证明——代码地图 MCP 只有在「大而陌生」仓上才省钱；小仓上它可能只是替换原生 grep。
+
+关键门禁是对照实验：同题、有/无 MCP、看中位成本与是否乱拉子代理。
+
+本场景据此输出「调查成本对照门禁」提纲。禁止把 −40% 写成任意仓 SLA，或建议未测基线就强制全员装地图。`,
+    outcomes: [
+      "源披露 87 场、Saleor 约 4,776 文件上中位约 $0.42→$0.25（约 −40%）、工具调用与模型时下降、正确率仍 8/8 等作者口径；属单人录制窗口，不可外推为你的账单或「装 knock 必同比例」。",
+      "能把「大仓调查省钱」与「小仓/记忆层无效」拆开。",
+      "为未测基线就上 MCP、子代理空转烧额度提供提问清单。",
+    ],
+    caveats: [
+      "成本为 Claude Code 自报；题集与模型版本固定在作者窗口。",
+      "前两版在 Flask 上失败——工具本身不保证省钱。",
+      "上面写的是个人实践帖，不是 Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "调查成本对照门禁",
+        body: `你是编码代理成本教练。只根据用户边界写门禁，不要编造已达到的中位美元或百分比。
+
+仓库体量与熟悉度：{{repo}}
+典型调查题：{{questions}}
+对照次数：{{runs}}
+
+输出 Markdown：
+1. 有/无地图 MCP 的录制字段表
+2. 小仓先测「是否只是替换 grep」的否决条件
+3. 子代理触发观察项
+4. 上生产前的验收阈值
+禁止声称「必 −40%」；禁止建议跳过无 MCP 基线。`,
+      },
+      {
+        title: "装了地图更贵复盘",
+        body: `加 MCP 后单次调查更贵或工具调用更多。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像仓太小、检索噪音，还是地图未减少子代理
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加大上下文等于必省钱」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/hasangilani/i-recorded-87-claude-code-sessions-to-find-out-where-the-money-goes-2i2k",
+      label: "DEV · Stop Claude Code from burning your usage limit on big repos",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "495",
+    slug: "masud-rana-invoiceflow-saas-14-days",
+    title: "Masud：AI 代理两周交出 InvoiceFlow——估无 AI 约四到六周",
+    summary: "个人；披露 14 天做出发票 SaaS MVP；自称 AI 约 60% 代码、人约 40% 代码但 100% 决策；工具月费约 $50、基建约 $7；无 AI 估约 4–6 周；不代你任意垂类同工期。",
+    description:
+      "面向要一个人把开票/收款 MVP 推到可收费、却在样板与集成之间耗尽的独立开发者：把「规格先写死 + AI 只扛样板」写成门禁，区别于 vibe 后分发墙与内容再分发省时。",
+    categories: [
+      "ecommerce",
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://masudpro.hashnode.dev/saas-mvp-14-days-ai-coding-agents",
+    sourceLabel: "masudpro.hashnode.dev·Masud Rana 实践帖",
+    upvotes: 386,
+    trending: false,
+    tags: [
+      "InvoiceFlow",
+      "Claude Code",
+      "Cursor",
+      "SaaS MVP",
+      "Stripe",
+    ],
+    howItWorks: [
+      "粘贴 MVP 范围（发票/支付/提醒）、栈约束，以及「业务规则必须人写测」清单",
+      "Agent 按实践帖输出：14 日切分、AI/人分工表，以及上线前验收",
+      "人工保留定价、合规与支付切流；Agent 不代你保证「必 14 天或 60%」",
+    ],
+    tips: [
+      "源帖（JSON-LD/og article:published_time 2026-04-11T11:05:43.577Z → 2026-04-11；页内 Updated April 18, 2026）：Masud Rana 用 Claude Code + Cursor + Copilot 约 14 天做出 InvoiceFlow（Next.js + Laravel + PostgreSQL + Stripe + SendGrid）。自称 AI 约 60% 代码、人约 40% 代码但 100% 决策；无 AI 估约 4–6 周。月费口径：Claude Pro 约 $20、Cursor Pro 约 $20、Copilot 约 $10（AI 工具合计约 $50），基建约 $7，合计约 $57/月（另加 Stripe 费率）。难项：复杂提醒规则、人眼看不见的集成调试、体验打磨、部署仍偏手干。主线是三工具组合做开票 MVP，正文以 Claude/Cursor 为主。",
+      "与 lmoncany-vibe-code-distribution-wall / codingcharly-n8n-claude-content-5h-45m 不同：本条是发票收款 MVP 两周交付与人机分工，不是构建加速后的获客分发墙，也不是内容再分发省时",
+    ],
+    approach: `Masud Rana 在《I Shipped a SaaS MVP in 14 Days Using AI Coding Agents》（datePublished 2026-04-11）写明：按日切分把 InvoiceFlow 推到可部署，AI 扛样板与 CRUD，人握架构、业务规则与打磨。
+
+关键门禁是先有短规格与「AI 不准独断的规则」，再加速实现。
+
+本场景据此输出「开票 MVP 双周门禁」提纲。禁止把 14 天或 60% 写成任意垂类 SLA，或建议跳过支付/提醒规则的人测。`,
+    outcomes: [
+      "源披露 14 天、AI 约 60%/人约 40% 代码、无 AI 估约 4–6 周、AI 工具约 $50/月与合计约 $57/月等作者口径；属单人开票 MVP 窗口，不可外推为你的工期、分成或「同栈必两周上线」。",
+      "能把「可交给代理的样板」与「必须人定的业务规则/调试」拆开。",
+      "为提醒规则翻车、集成盲调、只生成 UI 无打磨提供提问清单。",
+    ],
+    caveats: [
+      "工期与代码比例为作者自估，非第三方审计。",
+      "「AI 工具第 3 天回本」为作者口径，取决于你的人工时成本。",
+      "上面写的是个人实践帖，不是 Stripe/框架官文简报。",
+    ],
+    prompts: [
+      {
+        title: "开票 MVP 双周门禁",
+        body: `你是独立 SaaS 教练。只根据用户边界写门禁，不要编造已达到的天数或代码比例。
+
+MVP 范围：{{scope}}
+栈与支付约束：{{stack}}
+必须人写测的规则：{{rules}}
+
+输出 Markdown：
+1. 14 日内可裁剪的日程切分
+2. AI/人分工表（样板 vs 决策）
+3. 支付与提醒规则的验收用例
+4. 上线前人工确认清单
+禁止声称「必 14 天或 60%」；禁止建议跳过支付沙盒人测。`,
+      },
+      {
+        title: "提醒规则被代理写歪复盘",
+        body: `「N 天未提醒才再催」一类规则上线后行为不对。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像规格含糊、缺测试，还是把业务规则交给了样板生成
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加一个代理等于规则已正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://masudpro.hashnode.dev/saas-mvp-14-days-ai-coding-agents",
+      label: "masudpro.hashnode.dev · I Shipped a SaaS MVP in 14 Days Using AI Coding Agents",
+      date: "2026-04-11",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
