@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { NEWSLETTER_NAME } from "@/lib/newsletter-name";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   normalizeEmail,
@@ -105,16 +106,16 @@ export async function requestSubscription(
       body: JSON.stringify({
         from: config.from,
         to: [email],
-        subject: "请确认订阅 Agent场景库",
+        subject: `请确认订阅《${NEWSLETTER_NAME}》`,
         text: [
-          "请确认订阅 Agent场景库的精选用例邮件。",
+          `请确认订阅《${NEWSLETTER_NAME}》。`,
           "打开链接后点击「确认订阅」才会加入名单：",
           confirmUrl,
           "",
           "如果不是你本人操作，忽略这封邮件即可。链接 48 小时内有效。可随时退订。",
         ].join("\n"),
         html: `<div style="font-family:sans-serif;line-height:1.6;color:#0f172a">
-<p>请确认订阅 Agent场景库的精选用例邮件。</p>
+<p>请确认订阅《${escapeHtml(NEWSLETTER_NAME)}》。</p>
 <p><a href="${safeUrl}">确认订阅</a></p>
 <p>如果不是你本人操作，忽略这封邮件即可。链接 48 小时内有效。确认后可随时退订。</p>
 </div>`,

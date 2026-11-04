@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { LegalPage, LegalSection } from "@/components/LegalPage";
+import { NEWSLETTER_NAME } from "@/lib/newsletter-name";
 
 export const metadata: Metadata = {
   title: "隐私政策",
-  description: "本站可能收集订阅邮箱与基础访问日志。订阅邮箱只用于发送精选用例邮件，可随时退订。",
+  description: `本站可能收集订阅邮箱与基础访问日志。订阅邮箱只用于发送《${NEWSLETTER_NAME}》，可随时退订。`,
 };
 
 export default function PrivacyPage() {
@@ -13,7 +14,9 @@ export default function PrivacyPage() {
         <p>本站可能收集你在订阅时留下的邮箱，以及服务器产生的基础访问日志，例如访问时间和页面路径。</p>
       </LegalSection>
       <LegalSection title="订阅用途">
-        <p>订阅邮箱只用于发送精选用例邮件。确认订阅后才会加入名单，可随时退订。</p>
+        <p>
+          订阅邮箱只用于发送《{NEWSLETTER_NAME}》。确认订阅后才会加入名单，可随时退订。
+        </p>
       </LegalSection>
       <LegalSection title="不作他用">
         <p>这些信息只用于完成订阅和维护站点运行，不作其他用途。</p>

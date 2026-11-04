@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { readNewsletterConfig } from "@/lib/newsletter";
+import { NEWSLETTER_NAME } from "@/lib/newsletter-name";
 import { verifySubscribeToken } from "@/lib/subscribe-token";
 
 export const metadata: Metadata = {
-  title: "确认订阅",
+  title: `确认订阅《${NEWSLETTER_NAME}》`,
   robots: { index: false, follow: false },
 };
 
@@ -37,7 +38,9 @@ async function ConfirmBody({
   return (
     <div className="mx-auto max-w-lg px-4 py-16 sm:px-6">
       <article className="surface-card rounded-2xl px-5 py-6 sm:px-8 sm:py-8">
-        <h1 className="text-xl font-bold text-slate-50">确认订阅</h1>
+        <h1 className="text-xl font-bold text-slate-50">
+          确认订阅《{NEWSLETTER_NAME}》
+        </h1>
         {!config ? (
           <p className="mt-3 text-sm leading-relaxed text-rose-300">
             订阅服务暂时不可用，请稍后再试。
@@ -46,7 +49,7 @@ async function ConfirmBody({
           <>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
               确认后，<span className="text-slate-100">{email}</span>{" "}
-              会开始接收精选用例邮件，可随时退订。
+              会开始接收《{NEWSLETTER_NAME}》，可随时退订。
             </p>
             <form method="post" action="/api/subscribe/confirm" className="mt-5">
               <input type="hidden" name="token" value={token} />
@@ -80,7 +83,9 @@ function ConfirmShell() {
   return (
     <div className="mx-auto max-w-lg px-4 py-16 sm:px-6">
       <article className="surface-card rounded-2xl px-5 py-6 sm:px-8 sm:py-8">
-        <h1 className="text-xl font-bold text-slate-50">确认订阅</h1>
+        <h1 className="text-xl font-bold text-slate-50">
+          确认订阅《{NEWSLETTER_NAME}》
+        </h1>
         <p className="mt-3 text-sm text-slate-400">正在核对确认链接…</p>
       </article>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { NEWSLETTER_NAME } from "@/lib/newsletter-name";
 
 type Phase = "idle" | "pending" | "confirmed" | "error";
 type SubscribeStatus = "confirmed" | "invalid" | "unavailable";
@@ -9,7 +10,7 @@ function statusCopy(status?: SubscribeStatus): { phase: Phase; message: string }
   if (status === "confirmed") {
     return {
       phase: "confirmed",
-      message: "订阅已确认。精选用例邮件会发到这个邮箱，可随时退订。",
+      message: `订阅已确认。《${NEWSLETTER_NAME}》会发到这个邮箱，可随时退订。`,
     };
   }
   if (status === "invalid") {
@@ -46,7 +47,7 @@ export function SubscribeForm({ initialStatus }: { initialStatus?: SubscribeStat
       if (response.ok && data?.ok) {
         setPhase("pending");
         setMessage(
-          "确认邮件已发出。请打开邮件并点击确认，完成后才会开始接收精选用例。",
+          `确认邮件已发出。请打开邮件并点击确认，完成后才会开始接收《${NEWSLETTER_NAME}》。`,
         );
         setEmail("");
       } else {
@@ -74,10 +75,10 @@ export function SubscribeForm({ initialStatus }: { initialStatus?: SubscribeStat
         aria-hidden
       />
       <h2 className="relative text-lg font-semibold text-slate-50">
-        订阅每周精选用例
+        订阅《{NEWSLETTER_NAME}》
       </h2>
       <p className="relative mt-1 text-sm text-slate-300">
-        留下邮箱即可接收精选用例。我们会先发确认邮件，点确认后才会加入名单，可随时退订。
+        留下邮箱即可接收《{NEWSLETTER_NAME}》。我们会先发确认邮件，点确认后才会加入名单，可随时退订。
       </p>
       <form
         onSubmit={onSubmit}
