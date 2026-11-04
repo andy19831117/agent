@@ -17223,6 +17223,458 @@ CI 失败摘要：{{ci_failure}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "336",
+    slug: "melon-coding-agent-prove-claims",
+    title: "melon：让编码 Agent 的「已完成」可被核验",
+    summary: "对照个人实践：十天内把编码 Agent 建成「声明可核对」——单门禁过工具调用、引用查盘、廉价复核与签名守卫；不代你合并生产、不声称已胜过某商业 Agent。",
+    description:
+      "面向自建编码 harness 的开发者：把「跑完就报 done」写成可对账的证明半与成本半，区别于通用 CR 机器人与意图评审壳。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://lab.adpandey.dev/writing/426-commits-in-ten-days-building-a-coding-agent-that-proves-its-work",
+    sourceLabel: "lab.adpandey.dev·Aditya Dutt Pandey melon 实践帖",
+    upvotes: 179,
+    trending: false,
+    tags: [
+      "编码 Agent",
+      "可核验",
+      "审查管线",
+      "上下文成本",
+      "个人开源",
+    ],
+    howItWorks: [
+      "粘贴你最怕的「假 done」形态（漏签名/假引用/测未覆盖旧调用）、是否自建 harness、以及可接受的复核成本",
+      "Agent 按实践帖输出：单入口工具门禁→确定性查盘→复核/复现分层→签名守卫与 todo 节流提问清单",
+      "人工在自有仓库落地；Agent 不代合 main、不代跑对你合同/链上资产的变更",
+    ],
+    tips: [
+      "源帖核心句：证明很贵，必须同时做「让声明可核对」与「让核对付得起」两半",
+      "与 intent-review-agent-with-tests / code-review-pr-agent / sluice-shared-agent-verify-queue 不同：本条是作者自建 melon 的十日建造日志（门禁/引用查盘/可证伪审查），不是站内意图评审壳、通用 CR，也不是本机共享测队列",
+    ],
+    approach: `作者 Aditya Dutt Pandey（tunyt CTO）在个人站《426 commits in ten days: how I built a coding agent, and what I had to undo》（页内 datePublished=2026-10-22）写明：讨厌编码 Agent 自信地报「done」却偶发为假，于是在 2026-10-13 至 10-22 间以约 426 次提交建成 melon，并按日复盘做错的部分。
+
+架构压成两半：一半让声明可核（改动文件上的检查、独立审查、最终答案里每个 path:line 回盘查找）；一半让核对付得起（小上下文、可命中的缓存、按任务选模型）。第一天就发现「需确认的 shell」被静默放行——于是所有工具调用（主 Agent/子 Agent/并行工人）必须过同一函数：守卫、工作区禁闭、审批与 OS 沙箱都挂在这扇门上，审批失败默认关闭。随后补上：文件工具禁出启动目录、shell 跑前扫路径、按仓信任、读后写、以及「最终答案引用查盘」这类廉价确定性修复。
+
+审查管线先做成扇出多评审员，真实跑次显示每个子 Agent 再拉挑战者可烧掉约 8 万 token 与约四分钟，于是砍到一评审+廉价验证；再结构化长回：发现必须是可证伪的 claim，第二 Agent 尝试证伪，确认的 HIGH 在抛开副本上复现失败才站得住，引用不存在文件则直接丢弃。与 Claude Code 的 11 题同场（不同模型、各一跑）各 10/11，作者明确只支持「同量级」不支持胜负外推；melon 的 miss 暴露「测未覆盖旧调用签名」→ 增加公共签名守卫。记忆侧放弃「always/never」正则，改为对照回复与请求抽课次写入仓内 AGENTS.md。本场景据此输出「可核验编码 Agent」提纲。禁止声称已代你胜过某商业 Agent 或已代改高价值合约。`,
+    outcomes: [
+      "源披露建造窗口约 426 commits（10-13 至 10-22）、11 题同场各 10/11、以及一次合约迁移前后 mint 费用表等；属作者环境与单次叙事，不可外推为你的 SLA 或基准胜率。",
+      "能把「再加一条请仔细」与「单门禁+查盘+可证伪审查+签名守卫」拆开。",
+      "为守卫计量（replay 无 API）、审查扇出成本与 todo 空转调用提供提问清单。",
+    ],
+    caveats: [
+      "作者明确不做：同模型多跑基准、跨模型配额污染的对比表、把种植缺陷小样当百分比。",
+      "高价值资产（文中 Veris 合约）即使 Agent 跑通仍须人审与链上后果自负。",
+      "上面写的是个人建造日志，不是 melon 产品 SLA。",
+    ],
+    prompts: [
+      {
+        title: "可核验编码 Agent 简报",
+        body: `你是编码 harness 设计助手。只根据用户约束写「声明可核验」提问清单，不要编造已上线。
+
+假 done 痛点：{{fake_done_modes}}
+是否自建 harness：{{own_harness}}
+复核成本敏感度：{{verify_budget}}
+禁止无人值守路径：{{forbidden_paths}}
+
+输出 Markdown：
+1. 必须过同一门禁的工具调用类
+2. 可用确定性代码做的核对（引用查盘/签名 diff）vs 必须模型复核的核对
+3. 审查扇出如何先砍再结构化
+4. 人工最终门闩
+禁止索要生产密钥；禁止声称 Agent 已胜过某商业产品。`,
+      },
+      {
+        title: "假 verified 复盘提纲",
+        body: `某次 Agent 标 verified 但线上/评审发现回归，请写复盘提纲。
+
+现象：{{symptom}}
+当时通过的检查：{{passed_checks}}
+漏测的旧调用/契约：{{missed_contract}}
+
+输出：
+1. 是测覆盖洞、引用幻觉，还是审批被旁路
+2. 最小补丁（单门禁/签名守卫/复现门槛）
+3. 如何用无 API 的 replay 计量该守卫是否划算
+4. 人工确认清单
+不要伪造「已永久修复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://lab.adpandey.dev/writing/426-commits-in-ten-days-building-a-coding-agent-that-proves-its-work",
+      label: "lab.adpandey.dev · 426 commits in ten days… (Aditya Dutt Pandey / melon)",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "337",
+    slug: "flexcompute-agent-loop-mutate-gate",
+    title: "Flexcompute：用 loop/mutate/gate 托住 Agent 写库",
+    summary: "对照工程实践：个人向 autodiff 库几乎全由 Agent 写成后，用 scoped loop、diff 突变测试与全量 gate 把质量地板从「人盯每一行」挪到 harness；不代你关测试、不外推 commit 统计。",
+    description:
+      "面向重度使用编码 Agent 的个人/小团队：把「Agent 越写越大、质量靠人肉」写成可对账的验证节律，区别于本机共享测队列与舰队修 CI。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://engineering.flexcompute.com/articles/what-should-we-work-on-next/",
+    sourceLabel: "Flexcompute Engineering·harness 实践帖",
+    upvotes: 199,
+    trending: false,
+    tags: [
+      "harness",
+      "突变测试",
+      "Agent 验证",
+      "AGENTS.md",
+      "工程博客",
+    ],
+    howItWorks: [
+      "粘贴仓库语言栈、Agent 常漏的检查、以及是否允许多 worktree 并行",
+      "Agent 按实践帖输出：loop（scoped 快检）→mutate（diff 突变）→gate（合并全检）→边界/压制守卫提问清单",
+      "人工把 harness 接到 CI 与 AGENTS.md；Agent 不删除你的测试、不宣称已替你涨到某测试触及率",
+    ],
+    tips: [
+      "源帖关键转变：不是模型突然变好，而是验证地板够硬之后，才敢真问「下一步做什么」",
+      "与 sluice-shared-agent-verify-queue / fleet-ci-fix-ship-prs / stripe-minions-oneshot-pr-agents 不同：本条是库内 loop/mutate/gate + 变更行突变杀伤率，不是本机去重队列、远端舰队修 CI 或 Slack 一键出 PR",
+    ],
+    approach: `作者 Yannick Augenstein 与 Frederik Schubert 在 Flexcompute Engineering《"What Should We Work On Next?"》（页内 datePublished=2026-02-26）写明：约一年用编码 Agent 后，自 2025-11 起约三个月把内部 autodiff 库（图优先、急切追踪、NumPy 集成）几乎全交给 Agent 写到约 8 万行 Python；角色从「逐行审」变成许多会话以「下一步做什么」开场——前提是验证基础设施把质量地板托住。代码未开源，文章交付的是模式而非制品。
+
+痛点驱动工具链：Agent 跳过 mypy/覆盖/文档 → \`pre_pr.sh\` → \`quality.py\` → 按 OpenAI harness 思路硬切到 \`harness.py\` 三档：\`loop\`（按 diff+依赖图 scoped，约 180s 预算，超时推迟而非假失败）、\`mutate\`（只突变已执行的变更行，存活突变阻断）、\`gate\`（全量合并门）。另有禁止新增 \`# type: ignore\`/\`# noqa\`、AST 层导入边界、JSON 信封限长以免灌爆 Agent 上下文。突变策略：对变更且被覆盖的行做 AST 级翻转，最多约 12 个突变、跨文件铺开，要求变更行 100% kill，并配合 \`require_changed_tests\`。
+
+并行用 worktree；早期「七专家子 Agent」因上下文交接差而放弃，改用会话末「写下一阶段提示」的 relay。失败后追问「为何漏过、harness 缺哪条」把 bug 变成检查。源内对 287 commits（约 2025-11-27 至 2026-02-24，harness 切换约 02-16）给出触及测试文件比例约 41%→76% 等统计。本场景据此输出「loop/mutate/gate」提纲。禁止建议为省事关闭突变或测试。`,
+    outcomes: [
+      "源披露约 8 万行库、287 commits 窗口内触及测试文件比例约 41%→76%、修复类提交比例约 11% 持平、平均插入行约 668→1187 等；属作者私有库统计，不可外推。",
+      "能把「再写一份 AGENTS.md 口号」与「Agent 跑得起的 scoped 验证节律」拆开。",
+      "为边界检查、压制守卫与「失败→新检查」闭环提供提问清单。",
+    ],
+    caveats: [
+      "实现绑定 Python/AST/pytest 生态；迁移到其他语言要重做检查，不要照搬命令名。",
+      "纯重构与等价突变会摩擦；作者认为对「优化让测通过」的 Agent 仍划算。",
+      "上面写的是工程博客模式复盘，不是开源 harness 产品承诺。",
+    ],
+    prompts: [
+      {
+        title: "loop/mutate/gate 简报",
+        body: `你是 Agent 验证 harness 助手。只根据用户约束写三档验证提问清单，不要编造已上线。
+
+语言/构建：{{stack}}
+Agent 常跳过的检查：{{skipped_checks}}
+并行 worktree：{{parallel_worktrees}}
+合并前门闩：{{merge_gate}}
+
+输出 Markdown：
+1. loop 应 scoped 的检查与时间预算
+2. mutate 应对哪些变更行、何谓存活突变
+3. gate 相对 loop 多出的不可省略项
+4. JSON/限长回传如何避免灌爆上下文
+禁止建议删除测试；禁止声称已达到某 kill rate。`,
+      },
+      {
+        title: "Agent 压制类型错误的分诊提纲",
+        body: `PR 里新增大量 type ignore / noqa，请写分诊提纲。
+
+样例注解：{{suppressions}}
+是否已有压制守卫：{{guard_exists}}
+
+输出：
+1. 哪些必须改成真修复
+2. 守卫应拦截的模式
+3. 与 loop/gate 的接入点
+4. 人工抽检清单
+不要伪造「仓库已无压制」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://engineering.flexcompute.com/articles/what-should-we-work-on-next/",
+      label: "Flexcompute Engineering · \"What Should We Work On Next?\" (Augenstein & Schubert)",
+      date: "2026-02-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "338",
+    slug: "claus-silence-morning-brief",
+    title: "Claus：晨报只报要反应的事，沉默也是功能",
+    summary: "对照个人实践：特教教师自建晨/晚 Telegram 简报，只列日历异常、逾期与需行动邮件，并强制「无事则静默」；不代你连邮箱、不堆天气新闻证明自己在干活。",
+    description:
+      "面向被通知淹没的个人用户：把「又一个状态频道」写成可对账的触发+沉默阈值，区别于通用晨报摘要壳与常驻治理闸门长文。",
+    categories: [
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://seise.org/en/blog/ai-agent-chatgpt",
+    sourceLabel: "seise.org·Matti Seise Claus 实践帖",
+    upvotes: 202,
+    trending: false,
+    tags: [
+      "晨报",
+      "沉默阈值",
+      "Telegram",
+      "个人 Agent",
+      "通知减噪",
+    ],
+    howItWorks: [
+      "粘贴你早晨真正要反应的信息源、投递渠道、以及何种情况下允许发「空状态」",
+      "Agent 按实践帖输出：触发器→必报/禁报清单→沉默规则→晚间预告差分提问清单",
+      "人工接线历/待办/邮件；Agent 不持你的邮箱密码、不代你回复邮件",
+    ],
+    tips: [
+      "源帖关键句：最好的晨报特征不是塞了什么，而是故意留下了什么；无事则静默，有消息才值得点开",
+      "与 feishu-mail-noise-filter-morning-brief / ghost-core-always-on-governance / gtd-bujo-claude-md-daily-plan 不同：本条聚焦「沉默即功能」的个人晨/晚两封短讯，不是飞书邮件降噪壳、常驻闸门机构或 GTD/MD 日计划系统",
+    ],
+    approach: `作者 Matti Seise（特殊教育/信息教师）在个人站《Why I Built My Own AI Agent Instead of Just Using ChatGPT》（datePublished=2026-06-09）写明：工作日被 Wilma、itslearning、学生约谈、Notion 与住房公司邮件等小切片行政任务切碎；聊天机器人只是把劳动挪到新提示框，他仍要记得去打开。于是自建会按约定事件醒来的 Agent「Claus」。
+
+晨报是 clearest 例子：每天一条简明 Telegram，只含需反应项——当日日历异常、逾期任务、需行动的邮件；不含总状态、以防万一的天气、有趣新闻。天气仅当影响通勤方式时出现；系统状态仅当坏了才报。晚 8 点另有一封：晚间异常与明日预约。实际每天两封短讯、合计数行即够。强制规则：不发「今天没事 / 我查过了都正常」类空状态——无事则静默，有推送即代表值得看。开篇建议从单一痛点起步：选痛点→定触发→定渠道→定何时保持沉默（与何时行动同等重要）。本场景据此输出「沉默阈值晨报」提纲。禁止声称已代你值守邮箱或已替你清空待办。`,
+    outcomes: [
+      "源以机制与个人日用叙事为主（两封短讯、沉默规则），未披露可外推的省时分钟或漏报率；源未披露量化基准。",
+      "能把「再做一个全能助理」与「单一痛点+触发+沉默阈值」拆开。",
+      "为必报/禁报清单与空状态测试用例提供提问提纲。",
+    ],
+    caveats: [
+      "作者标明本文是系列开篇；后续才展开「30 个后台服务」失败课，本条不提前剧透未核段落。",
+      "接邮件/日历权限即扩大泄露面；沉默规则不能代替最小权限。",
+      "上面写的是个人实践侧写，不是托管晨报 SaaS。",
+    ],
+    prompts: [
+      {
+        title: "沉默阈值晨报简报",
+        body: `你是个人通知减噪助手。只根据用户约束写晨/晚简报提问清单，不要编造已接通。
+
+信息源：{{sources}}
+投递渠道：{{channel}}
+允许的空状态：{{empty_status_policy}}
+晚间是否需要明日预告：{{evening_preview}}
+
+输出 Markdown：
+1. 必报项 vs 禁报项
+2. 触发器（时间/日历/邮件）
+3. 沉默规则的可测用例
+4. 人工抽检一周的观察点
+禁止索要邮箱密码；禁止声称简报已上线。`,
+      },
+      {
+        title: "又变成状态频道的复盘提纲",
+        body: `Agent 开始每天报「一切正常」，请写复盘提纲。
+
+近期消息样例：{{sample_messages}}
+用户是否已忽略推送：{{ignored}}
+
+输出：
+1. 哪条规则被放宽成了空状态
+2. 如何改回「有事才说」
+3. 哪些「证明我在工作」的字段应删除
+4. 人工确认清单
+不要伪造「用户已重新信任推送」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://seise.org/en/blog/ai-agent-chatgpt",
+      label: "seise.org · Why I Built My Own AI Agent… (Matti Seise / Claus)",
+      date: "2026-06-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "339",
+    slug: "hank-exec-coaching-agent-os",
+    title: "Hank：用会议记忆做一对一教练准备",
+    summary: "对照个人实践：在自托管个人 OS 上为关键对话组装协作者记忆、Granola 纪要与领导力框架检索，并在事后登记结果闭环；不代你开会、不声称已提升领导力分数。",
+    description:
+      "面向管理者与独立负责人：把「会后靠感觉复盘」写成可对账的会前准备+记忆飞轮，区别于通用会议纪要分发与常驻生活编排。",
+    categories: [
+      "career",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://www.connorphillips.com/my-personal-os-hank-executive-coaching-agent-version-1/",
+    sourceLabel: "Connor Phillips·Hank 教练 Agent 实践帖",
+    upvotes: 213,
+    trending: false,
+    tags: [
+      "一对一教练",
+      "会议记忆",
+      "个人 OS",
+      "Granola",
+      "领导力",
+    ],
+    howItWorks: [
+      "粘贴对话对象类型（下属/协作/客户）、纪要来源、以及会后是否强制登记结果标签",
+      "Agent 按实践帖输出：会话上下文字段→纪要/框架/持久记忆三层装配→会后 resolution 提问清单",
+      "人工主持真实对话并确认建议；Agent 不代发绩效结论、不写入未授权人事系统",
+    ],
+    tips: [
+      "源帖强调：起初以为靠系统提示就够，实验后发现教练效果来自复合记忆而非更漂亮的提示",
+      "与 feishu-meeting-summary-agent / calendar-guest-research-briefing / cotocha-vps-openclaw-life-ops 不同：本条是会前教练准备+会后结果入库的个人 OS 功能，不是纪要分发、嘉宾调研或 OpenClaw 生活运营编排（文中仅将 OpenClaw 列为未来记忆形态参考）",
+    ],
+    approach: `作者 Connor Phillips 在个人站《My Personal OS, Hank - Executive Coaching Agent - Version 1》（页内标注 October 2, 2026；配图路径含 2026/10）写明：一对一教练难在缺少「比赛录像」式复盘；Granola 等转录解放了笔记与在场之间的权衡，于是他把教练功能做进自托管个人 agentic OS「Hank」（私有服务器+VPN）。栈：LangChain 编排与工具调用、Granola/Tavily 工具、CopilotKit 前端、OpenRouter 选模型并审计花费。
+
+工作流：会前初始化会话上下文——协作者、目的、细节/目标/偏好风格（支持/直接/战略）；工作区四流：该协作者持久记忆、会议纪要摘要、外部资料、主聊天。装配三步：Granola MCP 拉近 90 天相关纪要；Tavily 检索策展领导力出版物（如 HBR）并人工挑 2–3 篇；挂上历史偏好与文档。挑战：逐轮手塞摘要会失粘——纪要层解决；通用建议太空——框架检索层解决；作者描述 pre/post 对照有「可感知」质量提升但未给量表。最后补上会后 resolution（结果标签+笔记+可选挂回 Granola），否则飞轮缺闭环。本场景据此输出「教练准备+记忆飞轮」提纲。禁止声称已代你完成绩效谈话或已量化提升领导力。`,
+    outcomes: [
+      "源以机制与定性 pre/post 感受为主，未披露可外推的评分提升或节省小时；源未披露量化基准。",
+      "能把「再写一个教练系统提示」与「纪要层+框架层+会后 resolution」拆开。",
+      "为协作者分类、90 天检索范围与结果标签设计提供提问清单。",
+    ],
+    caveats: [
+      "会议与人事语境极度敏感；自托管与最小权限不可当装饰。",
+      "文中截图含 mocked 示例；勿把演示数据当成真实员工档案。",
+      "上面写的是个人 v1 实践，不是 LangChain/Granola 官方教程承诺。",
+    ],
+    prompts: [
+      {
+        title: "会前教练准备简报",
+        body: `你是一对一教练准备助手。只根据用户约束写会前装配提问清单，不要编造已谈话。
+
+对象关系：{{counterpart_role}}
+目标结果：{{objective}}
+风格偏好：{{style}}
+可用纪要窗口：{{notes_window}}
+
+输出 Markdown：
+1. 会话上下文必填字段
+2. 应从纪要检索的证据类型
+3. 外部框架检索查询草案
+4. 会中禁止 Agent 自动执行的动作
+禁止索要未脱敏人事数据；禁止声称谈话已完成。`,
+      },
+      {
+        title: "会后 resolution 入库提纲",
+        body: `谈话已结束，请写结果入库提纲。
+
+结果摘要：{{outcome}}
+是否挂纪要：{{attach_transcript}}
+下次同类谈话：{{next_similar}}
+
+输出：
+1. 结果标签候选
+2. 应写入持久记忆的偏好/雷区
+3. 哪些细节必须脱敏或不入库
+4. 人工确认清单
+不要伪造「领导力已提升 N%」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.connorphillips.com/my-personal-os-hank-executive-coaching-agent-version-1/",
+      label: "connorphillips.com · My Personal OS, Hank… (Connor Phillips)",
+      date: "2026-10-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "340",
+    slug: "mainplane-control-plane-workers",
+    title: "Mainplane：控制面常驻旧机，工具跑在工作机",
+    summary: "对照 Indie/HN 实践：用 Go 控制面把会话与密钥留在常开旧机，经内置 WireGuard 把 shell/文件工具路由到笔记本等 worker；不代你暴露内网、不宣称已零事故运行。",
+    description:
+      "面向多机开发者：把「笔记本一睡 Agent 就死 / 云端够不着本地活」写成可对账的控制面-worker 拆分，区别于 Notion 控制面名册与单机常驻闸门。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "n8n",
+    ],
+    sourceUrl: "https://news.ycombinator.com/item?id=50246690",
+    sourceLabel: "HN·Alexander Mainplane Show HN 原文",
+    upvotes: 220,
+    trending: false,
+    tags: [
+      "控制面",
+      "WireGuard",
+      "多机 Agent",
+      "会话文件",
+      "Indie",
+    ],
+    howItWorks: [
+      "粘贴常开机器与工作机分工、密钥是否允许离开控制面、以及 worker 之间是否需要互访",
+      "Agent 按实践帖输出：控制面职责→worker 工具边界→会话 append-only 文件→/continue 而非有损压缩提问清单",
+      "人工自托管安装；Agent 不替你改防火墙、不持你的云根密钥",
+    ],
+    tips: [
+      "源帖设计赌注：权限提示拦不住不对齐的强 Agent——宁可给单机满权限，只把你信任的工作放上该机；密钥永不离开控制面",
+      "与 notion-agents-control-plane / ghost-core-always-on-governance / company-dept-self-hosted-agents 不同：本条是「密钥与会话在常开控制面、工具经 WireGuard 落到多 worker」的 Indie harness，不是 Notion 名册、个人闸门课次或企业部门 Agent 编制",
+    ],
+    approach: `作者 Alexander（自称曾为 Browser Use 工程师 #2）在 Show HN《Mainplane – Agent in Go that lives on your old PC, drives your laptop》（HN item 50246690；HN API time → 2026-10-26；外链 github.com/mainplane-ai/mainplane）第一人称说明：本地 Agent 随笔记本休眠死去，云端 Agent 又够不着「不在 git 里」的跨桌面/Mac mini/笔记本工作，于是在 2012 旧台式机装 Ubuntu 作 Mainplane server——自称已跑约四周、负载均值约 0.02，因工具在其他机器执行。
+
+机制：控制面跑 harness，持有 API 密钥与全部会话、发起 LLM 调用，并把每次工具调用路由到 worker；worker 经内置私有 WireGuard 组网，bash 落在 worker 终端而非 server。会话=一份可读的 append-only 文件，可从文件恢复；可观测性即这些状态文件。刻意做小：系统提示约 3k token，工具只有 shell 与文件读写改——作者称在 Browser Use 删辅助函数后前沿模型更好。不做有损 compaction：会话满时 \`/continue\` 开新会话去 grep 旧状态文件取回所需，而不是等漫长 \`/compact\`。不做权限提示弹窗：策略是只把信任的工作放上该机。Go 以便把 WireGuard 编进约 20MB 二进制。本场景据此输出「控制面-worker」提纲。禁止声称已代你组网或已替你保管密钥零事故。`,
+    outcomes: [
+      "源披露定性与作者机观察（约四周常开、负载均值约 0.02、系统提示约 3k、约 20MB 二进制等）；未给可外推的任务成功率，属源披露量级、不可外推。",
+      "能把「再买一台云开发机」与「密钥留守控制面+工具下沉 worker」拆开。",
+      "为 worker 互链最小暴露、会话文件备份与 /continue 检索策略提供提问清单。",
+    ],
+    caveats: [
+      "满权限 worker 威胁模型极重；链路与「不互访」配置错误≈横向移动面。",
+      "Show HN 为作者自述+开源仓库；以 HN 时间戳与正文机制为准，产品站偏安装导览。",
+      "上面写的是 Indie 实践陈述，不是托管 Mainplane 云 SLA。",
+    ],
+    prompts: [
+      {
+        title: "控制面-worker 拆分简报",
+        body: `你是多机 Agent 基建助手。只根据用户约束写控制面拆分提问清单，不要编造已组网。
+
+常开机器：{{always_on_host}}
+工作机列表：{{workers}}
+密钥是否可离开控制面：{{keys_may_leave}}
+worker 互访需求：{{worker_links}}
+
+输出 Markdown：
+1. 控制面独占职责（密钥/会话/LLM）
+2. 各 worker 允许的工具与数据面
+3. 会话文件备份与恢复演练
+4. 人工熔断步骤
+禁止索要 WireGuard 私钥；禁止声称 mesh 已安全。`,
+      },
+      {
+        title: "会话过长时的 continue 提纲",
+        body: `会话上下文将满，请写 /continue 策略提纲。
+
+旧状态文件位置：{{state_file}}
+下一任务目标：{{next_goal}}
+是否允许有损摘要：{{allow_lossy_summary}}
+
+输出：
+1. 应从旧文件 grep 回的关键段
+2. 不应带入新会话的噪声
+3. 如何验证新会话仍对齐目标
+4. 人工确认清单
+不要伪造「上下文已无损迁移」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://news.ycombinator.com/item?id=50246690",
+      label: "Hacker News · Show HN: Mainplane… (Alexander / item 50246690)",
+      date: "2026-10-26",
+      dateLabel: "讨论",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
