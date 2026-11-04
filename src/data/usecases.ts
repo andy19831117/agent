@@ -30628,6 +30628,454 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "486",
+    slug: "michael-roth-543-hours-autonomous-claude",
+    title: "Michael：97 天 Claude Code 日志——543 自治小时、约 5% 弧吃掉约 48% 时长",
+    summary: "个人；披露 97 天、543 自治小时、14,926 提示、2,314 会话、165 发布、月费约 $500；Release 类约占弧 4.5% 却约 48% 时长（均约 10.3h）；不代你无人值守必 10×。",
+    description:
+      "面向已能跑通代理、却在「到底是 10× 还是垃圾」上拿不出收据的资深独立/效率向开发者：把「日志聚类 + 模板化长弧 + 人仍握决策」写成门禁，区别于 Token Tax 瘦根文件与三代理日志计费。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://michael.roth.rocks/research/543-hours/",
+    sourceLabel: "michael.roth.rocks·Michael Rothrock 实践帖",
+    upvotes: 377,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "自治小时",
+      "日志分析",
+      "发布弧",
+      "模板",
+    ],
+    howItWorks: [
+      "粘贴你的代理日志窗口（天数/会话数）、并发工作流数，以及「绝不可无人合并」清单",
+      "Agent 按实践帖输出：工作弧类型表、可模板化的长弧清单，以及人必须留下的决策点",
+      "人工保留发布与架构取舍；Agent 不代你保证「必到 543 小时或 5%→48% 同构」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-02-26）：Michael Rothrock 用 Claude Code 自析约 97 天日志（约 2025-10-02 起至 2026-01），披露 543 自治小时、14,926 提示、2,314 会话、165 次发布、约 6 条并发工作流、月费约 $500。约 650 条工作弧聚类后呈幂律：约 5% 的弧贡献约 48% 自治时长；其中 Release 类约占弧 4.5%、时长约 48%、均约 10.3 小时（范围约 4.1–17.3），同模板重复约 29 次。交互上称约 42% 结构化模板、约 58% 仍需人自适应决策。论点：高产靠 harness/护栏，不是裸 autocomplete。",
+      "与 michaelnash-claude-token-tax-lean-rebuild / jdevleon-three-agents-log-formats-hours-wrong 不同：本条是单人长窗自治时长幂律与发布弧模板，不是瘦 CLAUDE.md，也不是三家代理日志格式计费陷阱",
+    ],
+    approach: `Michael Rothrock 在《543 Hours: What Happens When AI Runs While You Sleep》（JSON-LD datePublished 2026-02-26）写明：与其网上争「10× 还是垃圾」，不如把约 97 天 Claude Code 日志摊开——543 自治小时、上万提示与百余次发布。
+
+关键发现是工作弧幂律：少数长「Release」弧吃掉近半自治时长，且依赖可重复模板与 MCP 资源；多数交互仍是人在做决策（文内约 58% 自适应）。
+
+本场景据此输出「自治时长收据门禁」提纲。禁止把 543 小时或 5%→48% 写成任意团队 SLA，或建议跳过人审直接合并长弧产物。`,
+    outcomes: [
+      "源披露 97 天、543 自治小时、14,926 提示、2,314 会话、165 发布、月费约 $500，以及约 5% 弧≈48% 时长、Release 均约 10.3h 等作者口径；属单人长窗日志窗口，不可外推为你的吞吐、账单或「装同模板必同比例自治」。",
+      "能把「可模板化的长发布弧」与「仍需人做的自适应决策」拆开。",
+      "为只有感受没有收据、或指望裸提示一夜 10× 提供提问清单。",
+    ],
+    caveats: [
+      "日志与聚类为作者自建分析；Satisfaction/分类非第三方审计。",
+      "月费约 $500 为作者口径，含其工作流强度。",
+      "上面写的是个人实践帖，不是 Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "自治时长收据门禁",
+        body: `你是资深工程效率教练。只根据用户日志边界写门禁，不要编造已达到的自治小时或幂律比例。
+
+日志窗口与工具：{{logs}}
+并发工作流：{{streams}}
+不可无人合并的动作：{{no_merge}}
+
+输出 Markdown：
+1. 工作弧类型表（短舵/功能/发布等）最小字段
+2. 可先模板化的 1–2 条长弧
+3. 人必须留下的决策检查点
+4. 「收据」验收（提示数/会话/发布）
+禁止声称「必 543 或 5%→48%」；禁止建议跳过发布前人审。`,
+      },
+      {
+        title: "长夜自治跑完但白天不敢合复盘",
+        body: `代理过夜交了大 diff，白天不敢合。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺少发布弧模板、短弧舵不足，还是人审清单缺失
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加并发会话等于可无人合并」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://michael.roth.rocks/research/543-hours/",
+      label: "michael.roth.rocks · 543 Hours: What Happens When AI Runs While You Sleep",
+      date: "2026-02-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "487",
+    slug: "christophermeiklejohn-claude-social-app-week-ipad",
+    title: "Christopher：iPad 上 Claude Code 六天做出好友社交通——384 消息，仅 2/27 会话全达标",
+    summary: "个人；披露六天、384 消息、27 会话、168 文件；中位响应约 29 秒；仅 2/27 会话完全达成目标；首版在 11\" iPad 床上连空仓；朋友在用；不代你开放式调试必成功。",
+    description:
+      "面向想用编码代理快速做出「熟人小圈」产品、却总在无反馈环会话里耗死的独立开发者：把「紧会话 + 停点摘要 + 钩子重启」写成门禁，区别于 vibe 后分发墙与不会语言硬做 CLI。",
+    categories: [
+      "devtools",
+      "life",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://christophermeiklejohn.com/ai/claude/2026/02/17/building-a-social-app-in-a-week-with-claude-code.html",
+    sourceLabel: "christophermeiklejohn.com·Christopher Meiklejohn 实践帖",
+    upvotes: 378,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "iPad",
+      "社交应用",
+      "会话纪律",
+      "hooks",
+    ],
+    howItWorks: [
+      "粘贴产品最小范围、部署约束，以及「开放式调试最多两轮」规则",
+      "Agent 按实践帖输出：紧会话切分表、CLAUDE.md 护栏草案，以及会话结束状态摘要模板",
+      "人工保留迁移/部署批准与视觉验收；Agent 不代你保证「六天必上线或 2/27 同构」",
+    ],
+    tips: [
+      "源帖（JSON-LD/article:published_time 2026-02-17T08:00:00+00:00 → 2026-02-17）：Christopher Meiklejohn 用 Claude Code 约六天做出邀请制好友社交（现场录音/演出日程等），栈为 Go + 服务端驱动 UI，并出原生 iOS/Android；朋友在用。Anthropic 周报口径：384 消息、27 会话、168 文件、六天，中位响应约 29 秒；风格被标为「反应式纠偏而非规格驱动」。诚实点：仅 2/27 会话完全达成原目标——失败会话多呈开放式、无停点、视觉/状态调试无反馈环；成功会话是「一件已知的事做对就停」。首版整段在床上用 11\" iPad Claude Code App 连空 GitHub 仓，数小时内 login/feed/发帖并部署 Railway，后半才上笔记本。报告建议：.go 改后 hook 重启后端；CLAUDE.md 写明改后端必重启、禁擅自迁移/部署、用户说某层 OK 就停查、同一路线最多两试；五会话毁于上下文上限且 /compact 失败——应收在自然停点写摘要再开新会话。",
+      "与 lmoncany-vibe-code-distribution-wall / david-hoze-haskell-bit-ai-without-knowing 不同：本条是熟人社交六天交付与紧会话纪律，不是构建加速后的获客分发墙，也不是几乎不会某语言做日常 CLI",
+    ],
+    approach: `Christopher Meiklejohn 在《I Built a Social App in a Week with Claude Code》（datePublished 2026-02-17）写明：用 Claude Code（含 iPad App）约六天做出朋友在用的私密社交，并对照周报里的会话统计与失败形态。
+
+关键门禁不是「更快打字」，而是收紧会话目标、写护栏、在上下文爆掉前收口；开放式视觉调试最易空转。
+
+本场景据此输出「紧会话交付门禁」提纲。禁止把六天或 384 消息写成任意 App SLA，或建议在无反馈环上无限重试。`,
+    outcomes: [
+      "源披露六天、384 消息、27 会话、168 文件、中位约 29 秒、仅 2/27 会话全达标，以及 iPad 首版+Railway、朋友在用等作者口径；属单人熟人社交窗口，不可外推为你的上线工期、会话成功率或「iPad 必同速」。",
+      "能把「紧、有停点的会话」与「开放式无反馈环空转」拆开。",
+      "为上下文撑爆、缺 hook 重启、缺 CLAUDE.md 护栏提供提问清单。",
+    ],
+    caveats: [
+      "周报「是否达成目标」为供应商报告口径，非双盲评审。",
+      "作者称 hooks 等建议当时尚未全部落地。",
+      "上面写的是个人实践帖，不是 Claude/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "紧会话交付门禁",
+        body: `你是独立开发教练。只根据用户边界写门禁，不要编造已达到的天数或会话成功率。
+
+最小可分享范围：{{scope}}
+栈与设备约束：{{stack}}
+不可代理自决动作：{{no_auto}}
+
+输出 Markdown：
+1. 六天内可裁剪的紧会话切分（每会话一件已知事）
+2. CLAUDE.md 护栏草案（重启/禁迁移部署/两试上限）
+3. 会话结束状态摘要模板
+4. 视觉/状态调试的反馈环最低要求
+禁止声称「必六天或 2/27」；禁止建议无限开放式重试。`,
+      },
+      {
+        title: "会话中途上下文爆掉复盘",
+        body: `对话过长，compact 失败，任务悬空。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺自然停点、摘要未写，还是单会话塞了多目标
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再开并行会话等于不丢上下文」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://christophermeiklejohn.com/ai/claude/2026/02/17/building-a-social-app-in-a-week-with-claude-code.html",
+      label: "christophermeiklejohn.com · I Built a Social App in a Week with Claude Code",
+      date: "2026-02-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "488",
+    slug: "tianhan-claude-cfd-asurf-38-days",
+    title: "Tianhan：Claude Code 38 天重写燃烧 CFD——544 commits，78 篇论文校验",
+    summary: "个人科研；披露 38 天、544 commits、AI 共著约 72%；Fortran 约 36,800 行→Python 约 17,200 行；处理论文 78、定量校验 40；相对 Cantera 均误差约 5.5%；15 自定义技能、137+ 测；不代你任意求解器同速。",
+    description:
+      "面向要把遗产科学计算代码迁语言、却必须先有物理校验层的研究者/工程师：把「先验证层再全速代理 + 论文对照」写成门禁，区别于遗产内核驱动复活与零依赖玩具浏览器。",
+    categories: [
+      "education",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.bohrium.com/en/blog/dev-diaries/544-commits-claude-code-cfd-solver/",
+    sourceLabel: "Bohrium Dev Diaries·Tianhan Zhang 实践帖",
+    upvotes: 379,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "CFD",
+      "Fortran",
+      "论文复现",
+      "科学计算",
+    ],
+    howItWorks: [
+      "粘贴遗产求解器规模、目标语言，以及必须对照的基准/论文清单",
+      "Agent 按实践帖输出：验证层优先里程碑、技能拆分表，以及论文定量验收字段",
+      "人工保留物理口径与最终签字；Agent 不代你保证「38 天必 544 commits 或均误差约 5.5%」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-19T00:00:00Z → 2026-03-19；作者 Tianhan Zhang）：一人用 Claude Code 全日协作为燃烧 CFD 求解器 ASURF 做 Fortran→Python（pyASURF）重写窗口约 38 天，日投约 8+ 小时。表内披露：544 commits；AI 共著约 72%；处理论文 78、定量校验 40；相对 Cantera 均误差约 5.5%；Bohrium 云仿真 17；自定义 Claude skills 15；测试用例 137+。规模口径：原 Fortran 约 36,800 行→Python 约 17,200 行（文称单次提交跨约 67 文件）。强调先建 CFD 验证层再让代理全速；含冲击管/点火/爆轰等基准与分层 pytest。文末有 BohrClaw/平台导流，工程数字以正文指标表为准。",
+      "与 dmitry-claude-ftape-kernel-driver / embedding-shapes-one-agent-one-browser-20k 不同：本条是科学计算求解器迁语言+论文定量校验，不是遗产磁带驱动，也不是零依赖玩具浏览器",
+    ],
+    approach: `Tianhan Zhang 在 Bohrium Dev Diaries《544 Commits in 38 Days…》（datePublished 2026-03-19）写明：把燃烧 CFD 求解器 ASURF 从 Fortran 迁到 Python，并以论文与 Cantera 对照为验收，Claude Code 作为全日结对。
+
+关键门禁是「验证层与测试先于速度」——先有可跑基准与分层测试，再放大代理改写吞吐。
+
+本场景据此输出「科学代码迁语言门禁」提纲。禁止把 38 天或 5.5% 误差写成任意求解器 SLA，或建议无校验层就全速 YOLO。`,
+    outcomes: [
+      "源披露 38 天、544 commits、AI 共著约 72%、Fortran≈36,800→Python≈17,200、论文 78/定量 40、相对 Cantera 均误差约 5.5%、15 技能与 137+ 测等作者口径；属单人燃烧 CFD 窗口，不可外推为你的科研工期、误差或「迁语言必同比例缩行」。",
+      "能把「代理加速实现」与「人握物理/论文验收」拆开。",
+      "为未建验证层就大改遗产科学代码提供提问清单。",
+    ],
+    caveats: [
+      "托管于 Bohrium 平台博客，文末有产品/能力导流；指标以正文表为准。",
+      "「AI 共著约 72%」为作者 commit 口径，非期刊同行评议结论。",
+      "上面写的是个人科研实践帖，不是 Claude 官文或平台白皮书简报。",
+    ],
+    prompts: [
+      {
+        title: "科学代码迁语言门禁",
+        body: `你是科学计算工程教练。只根据用户边界写门禁，不要编造已达到的 commits 或误差。
+
+遗产代码与目标：{{legacy}}
+基准/论文清单：{{bench}}
+不可跳过的物理验收：{{physics}}
+
+输出 Markdown：
+1. 验证层优先里程碑（基准用例最小集）
+2. 分层测试与对照字段（含外部求解器对照）
+3. 可交给代理的改写批次 vs 人必须看的物理点
+4. 完成定义（定量误差/论文条目）
+禁止声称「必 38 天或 5.5%」；禁止建议无验证层全速改写。`,
+      },
+      {
+        title: "代理改写后数值对不上复盘",
+        body: `代码能跑，但与基准/论文偏离。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺验证层、机制参数漂移，还是批次过大无人卡点
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加技能文件等于物理自动正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.bohrium.com/en/blog/dev-diaries/544-commits-claude-code-cfd-solver/",
+      label: "bohrium.com · 544 Commits in 38 Days: How Claude Code Rebuilt a CFD Solver…",
+      date: "2026-03-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "489",
+    slug: "codingcharly-n8n-claude-content-5h-45m",
+    title: "Charly：Claude+n8n 内容再分发——每周约 5 小时改写压到约 45 分钟",
+    summary: "个人；披露再分发曾约 5h/周（LinkedIn 30m+线程 45m+通讯 20m+博客 60m）；现写帖约 30m+改输出约 15m≈45m；四路进 Notion 仍手发；不代你声线零漂移或必同省时。",
+    description:
+      "面向一条想法要手搓四平台、却不愿上完整 CMS 的独立创作者：把「webhook→Claude 四提示→Notion 草稿库→人审发布」写成门禁，区别于 SEO 半价写算链路与客服切流自动解决率。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "n8n",
+      "claude",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://codingcharly.dev/blog/n8n-agent-content-repurposing",
+    sourceLabel: "codingcharly.dev·Coding Charly 实践帖",
+    upvotes: 380,
+    trending: false,
+    tags: [
+      "n8n",
+      "Claude",
+      "内容再分发",
+      "Notion",
+      "LinkedIn",
+    ],
+    howItWorks: [
+      "粘贴你现有四平台耗时拆解，以及必须保留的声线样例",
+      "Agent 按实践帖输出：webhook 触发草图、四段提示词骨架，以及 Notion 字段表",
+      "人工保留终审与发布；Agent 不代你保证「必 5h→45m 或草稿已可直发」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-20）：Coding Charly 写内容再分发——写一条 LinkedIn，再手改 X 线程、通讯段落与博客草稿，合计约 5 小时/周（拆约 30+45+20+60 分钟）。现流程：写完 LinkedIn → 表单/webhook（或主题含 [CONTENT] 的自回邮）进 n8n → Claude 三段提示分别出线程（6–10 条、无标签）、通讯段落（3–5 句）、约 600 字 Markdown 博客骨架 → 四路写入 Notion（Status=Draft 等）→ 人改后手发。称草稿大约到 70%。时间口径：写帖约 30 分钟+改输出约 15 分钟≈45 分钟。警告：声线易被洗白（系统消息要贴自己的例句）；博客仍需真人编辑；勿自动发布。站点有 starter kit 导流，流程数字以正文为准。",
+      "与 cmaindron-claude-write-n8n-compute-seo / monei-zendesk-amazon-connect-bedrock-support 不同：本条是个人内容再分发时省，不是 SEO 链接计算半价，也不是客服平台自动解决率",
+    ],
+    approach: `Coding Charly 在《My n8n Agent Saved 5 Hours a Week》（datePublished 2026-04-20）写明：用 n8n 串 Claude，把「一帖四格式」从约每周 5 小时改写压到约 45 分钟的「写+改」，并坚持 Notion 草稿后人发。
+
+关键门禁是自动化停在草稿，发布键仍在人；提示里显式保声线。
+
+本场景据此输出「内容再分发草稿门禁」提纲。禁止把 5h→45m 写成任意账号 SLA，或建议跳过人工直接群发。`,
+    outcomes: [
+      "源披露再分发约 5h/周→约 45 分钟（约 30m 写+15m 改）、四路 Notion 草稿约七成可用、仍手发等作者口径；属作者内容工作流窗口，不可外推为你的涨粉、声线稳定或「同流程必同省时」。",
+      "能把「模型出四格式草稿」与「人掌握发布与声线」拆开。",
+      "为手搓四平台、或让工作流自动外发提供提问清单。",
+    ],
+    caveats: [
+      "省时为作者前后口径，非对照实验计时。",
+      "文末/站点含 starter kit 导流；以正文流程为准。",
+      "上面写的是个人实践帖，不是 n8n/Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "内容再分发草稿门禁",
+        body: `你是独立创作者工作流教练。只根据用户边界写门禁，不要编造已达到的小时数。
+
+现有四平台耗时：{{times}}
+声线样例：{{voice}}
+不可自动外发的渠道：{{no_send}}
+
+输出 Markdown：
+1. webhook→四输出→草稿库最小字段
+2. 线程/通讯/博客三段提示骨架（含声线约束）
+3. 人审发布检查表
+4. 明确禁止自动发布的动作
+禁止声称「必 5h→45m」；禁止建议工作流直接发帖。`,
+      },
+      {
+        title: "草稿声线被洗白复盘",
+        body: `四路输出正确但读起来不像你。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像系统消息缺例句、博客段被灌水，还是跳过了人工改
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加一条自动发布等于更省」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://codingcharly.dev/blog/n8n-agent-content-repurposing",
+      label: "codingcharly.dev · My n8n Agent Saved 5 Hours a Week",
+      date: "2026-04-20",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "490",
+    slug: "cursor-support-mcp-75pct-throughput",
+    title: "Cursor 支持组：超 75% 工单在 Cursor 内查——自称吞吐约 5–10×",
+    summary: "团队；披露超 75% 支持互动经 Cursor；吞吐自称约 5–10×；Ask Mode+多仓工作区+MCP（客户库/日志/Slack/工单/runbook）；Datadog 拉痕迹；不代你任意客服台同倍数。",
+    description:
+      "面向要把排障从「多工具跳转」收成「代码+日志+旧案同一会话」的产品支持/平台工程团队：把「多根工作区 + MCP 上下文 + 命令/规则/子代理」写成门禁，区别于 MONEI 客服切流自动解决与 Sentry 后台代理扩语言。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://cursor.com/blog/cursor-support",
+    sourceLabel: "Cursor Blog·Kody Fisher & Zach Hudson 实践帖",
+    upvotes: 381,
+    trending: false,
+    tags: [
+      "Cursor",
+      "技术支持",
+      "MCP",
+      "Datadog",
+      "吞吐",
+    ],
+    howItWorks: [
+      "粘贴现有排障跳转路径、可用 MCP/数据源，以及「升级为缺陷前必须人确认」清单",
+      "Agent 按实践帖输出：多根工作区清单、调查步骤顺序，以及命令/规则/子代理拆分",
+      "人工保留对客口径与缺陷裁定；Agent 不代你保证「必超 75% 或 5–10×」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-03-03T12:00:00.000Z → 2026-03-03；作者 Kody Fisher & Zach Hudson）：Cursor 技术支持自述把调查收进 Cursor——Ask Mode 从症状回溯产品行为；多根工作区同时挂前端/后端/文档仓。MCP 接入客户库（订阅档/团队与隐私设置）、事件日志、Slack、工程工单、内部 runbook、客户账户信息等。排障顺序：Datadog MCP 拉日志/痕迹判断可复现与失败层；用硬标识（错误串/request ID）搜相似工单与 Slack；Notion MCP 对 runbook 判「缺陷还是预期」；调查材料收齐后再开缺陷与文档更新。再往上用命令固化常步、Rules/Skills 固化重复模式、子代理并行。披露：超 75% 支持互动经 Cursor 本身，支持工程师吞吐自称约 5–10×。主线是 Cursor+MCP 调查流，不是某一家外部 LLM 品牌。",
+      "与 monei-zendesk-amazon-connect-bedrock-support / sentry-cursor-bg-agent-csharp-pr-comments 不同：本条是支持工程师在 IDE 内用 MCP 收上下文提吞吐，不是客服台自动解决率切流，也不是后台代理按样板扩 C# 解析",
+    ],
+    approach: `Kody Fisher 与 Zach Hudson（Cursor）在《How technical support at Cursor uses Cursor》（datePublished 2026-03-03）写明：支持调查本质是研究问题，瓶颈在拼上下文；他们把代码、日志、旧对话与 runbook 收进同一 Cursor 会话，并用 MCP/命令/规则加速。
+
+披露超 75% 互动走 Cursor、吞吐约 5–10× 等团队口径。
+
+本场景据此输出「支持调查工作区门禁」提纲。禁止把 5–10× 写成任意客服 SLA，或建议模型直接对客自动答复无审。`,
+    outcomes: [
+      "源披露超 75% 支持互动经 Cursor、吞吐自称约 5–10×，以及 Ask Mode+多仓+MCP（含 Datadog/Slack/工单/runbook）调查链等作者口径；属 Cursor 支持团队窗口，不可外推为你的解决率、对客质量或「同 MCP 必同倍数」。",
+      "能把「上下文一次拉齐」与「人裁定缺陷/对客口径」拆开。",
+      "为多工具跳转排障、缺相似案检索、缺 runbook 对照提供提问清单。",
+    ],
+    caveats: [
+      "公司工程博客；75%/5–10× 为团队自述，非第三方审计。",
+      "强依赖内网 MCP 与多仓权限，外搬需重接数据源。",
+      "上面写的是团队工程实践帖，不是「如何购买 Cursor」宣发编排。",
+    ],
+    prompts: [
+      {
+        title: "支持调查工作区门禁",
+        body: `你是产品支持工程教练。只根据用户现状写门禁，不要编造已达到的吞吐倍数。
+
+现有跳转工具：{{tools}}
+可接 MCP/数据源：{{mcp}}
+对客红线：{{red_lines}}
+
+输出 Markdown：
+1. 多根工作区应挂的仓/文档
+2. 调查步骤顺序（症状→日志→相似案→runbook→缺陷）
+3. 命令/规则/子代理拆分建议
+4. 人必须确认才对客/开缺陷的检查表
+禁止声称「必 75% 或 5–10×」；禁止建议模型无人值守直接对客承诺。`,
+      },
+      {
+        title: "上下文齐了仍判不清缺陷复盘",
+        body: `日志与旧案都在会话里，仍不敢判 bug。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像 runbook 缺失、相似案未含现状，还是对客口径未人审
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加子代理等于自动定性」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://cursor.com/blog/cursor-support",
+      label: "cursor.com/blog · How technical support at Cursor uses Cursor",
+      date: "2026-03-03",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
