@@ -30178,6 +30178,456 @@ CLAUDE.md 行数：{{claude_md_lines}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "481",
+    slug: "eyevinn-osaas-claude-error-debt-4h",
+    title: "Eyevinn：Claude+Cursor 清 OSC 错误处理债——估 40–60 小时→约 4 小时",
+    summary: "团队；披露不一致错误处理债手工估约 40–60 小时、Claude 辅助约 4 小时、约 10–15×、八阶段计划逐 commit 人审；不代你无人值守清任意技术债。",
+    description:
+      "面向功能冲刺后错误处理各写各的平台团队：把「分层盘点 + 人定自定义错误类型 + 分阶段测改」写成门禁，区别于 Datadog 测驱换存储与 Codurance 工时系统重建。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.osaas.io/blog/claude-paid-our-code-debt",
+    sourceLabel: "Open Source Cloud Blog·Joel del Pilar 实践帖",
+    upvotes: 372,
+    trending: false,
+    tags: [
+      "Eyevinn",
+      "Claude Code",
+      "Cursor",
+      "技术债",
+      "错误处理",
+    ],
+    howItWorks: [
+      "粘贴错误处理乱象范围、现有日志/客户端表现，以及「绝不可盲合并」清单",
+      "Agent 按实践帖输出：client/backend/API/接口分层盘点表、八阶段 todo 与每阶段人审点",
+      "人工保留自定义错误类型与收尾验收；Agent 不代你保证「必 40–60→4 或 10–15×」",
+    ],
+    tips: [
+      "源帖（JSON-LD/页内 datePublished 2026-02-02；作者 Joel del Pilar，Eyevinn Technology / Open Source Cloud）：团队在 OSC 平台冲功能后，错误处理风格分裂——用户看到不清提示、无意义崩溃、甚至客户端显示成功而服务端已失败。做法：在 Cursor 里用 Claude Code 按 client、backend、API、interfaces 分层分析并文档化，人把自定义错误类型想法并入策略；再拆成八阶段行动计划与详细 todo，Claude 实现、人逐 commit 审。披露手工估约 40–60 小时→Claude 辅助约 4 小时，称约 10–15×；结果口径为错误处理一致、提示更清晰。文末指向 DEV 更长原文。",
+      "与 datadog-stream-router-ai-assisted-migration / codurance-timesheet-ai-60-to-3-days 不同：本条是全栈错误处理债的分阶段测改，不是指标路由换存储或内部工时系统近对等重建",
+    ],
+    approach: `Joel del Pilar（Eyevinn / Open Source Cloud）在《How Claude Helped Us Pay Off Our Code Debt》（datePublished 2026-02-02）写明：功能冲刺后错误处理债已影响体验与排障，团队用 Claude Code（在 Cursor 内）做分层盘点与八阶段实现，人定自定义错误类型并逐 commit 审。
+
+披露估约 40–60 小时手工→约 4 小时完成，约 10–15× 口径。
+
+本场景据此输出「错误处理债清收门禁」提纲。禁止把约 4 小时或 10–15× 写成任意技术债 SLA，或建议跳过人审直接合并。`,
+    outcomes: [
+      "源披露手工估约 40–60 小时、Claude 辅助约 4 小时、约 10–15×、八阶段+逐 commit 人审，以及错误处理一致化等作者口径；属 OSC 单次错误处理债窗口，不可外推为你的债清工期、倍数或「Claude 必同比例还债」。",
+      "能把「人定错误类型与阶段边界」与「代理按阶段改实现」拆开。",
+      "为只甩整仓给代理、无分层盘点与提交级人审提供提问清单。",
+    ],
+    caveats: [
+      "公司产品博客摘要向；完整细节指向 DEV 原文，数字以本帖披露为准。",
+      "「估 40–60 小时」为作者事前估计，非对照实验计时。",
+      "上面写的是团队工程实践帖，不是 Claude/Cursor 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "错误处理债分层清收门禁",
+        body: `你是平台工程教练。只根据用户现状写门禁，不要编造已达到的小时数或倍数。
+
+系统与债表现：{{debt}}
+分层（client/backend/API/接口）：{{layers}}
+不可盲合并动作：{{no_merge}}
+
+输出 Markdown：
+1. 分层盘点表模板
+2. 人必须先定的自定义错误类型要点
+3. 八阶段以内的可裁剪阶段表（含每阶段人审）
+4. 完成定义（用户可见提示/客户端成功态一致性）
+禁止声称「必 40–60→4」；禁止建议跳过提交级人审。`,
+      },
+      {
+        title: "客户端显示成功但服务端失败复盘",
+        body: `用户看到成功，日志显示失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像跨层错误契约缺失、代理只改了一层，还是验收未覆盖成功态一致性
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更多阶段等于契约自动正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.osaas.io/blog/claude-paid-our-code-debt",
+      label: "osaas.io/blog · How Claude Helped Us Pay Off Our Code Debt",
+      date: "2026-02-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "482",
+    slug: "matthummel-claude-wp-playbook-60kb",
+    title: "Matt：WordPress Claude 规则手册——常驻约 60KB→0.9KB，SessionStart 跨机同步",
+    summary: "个人；披露十份常驻规则合计约 60KB→核心 0.9KB（<1KB）；路径/技能按需加载；SessionStart 拉 main 重装；含 WCAG 2.1 AA 等硬规则；不代你省任意 token 账单。",
+    description:
+      "面向多客户 WordPress/Sage 主题、规则在仓间漂移且常驻上下文过肥的独立开发者：把「跨机 playbook + 路径触发 + 项目事实仍留 CLAUDE.md」写成门禁，区别于 Token Tax 瘦单仓根文件与 vibe coding 后分发墙。",
+    categories: [
+      "efficiency",
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://matthummel.com/claude-code-playbook-wordpress/",
+    sourceLabel: "matthummel.com·Matt Hummel 实践帖",
+    upvotes: 373,
+    trending: false,
+    tags: [
+      "WordPress",
+      "Claude Code",
+      "规则手册",
+      "上下文",
+      "无障碍",
+    ],
+    howItWorks: [
+      "粘贴现有常驻规则体积、机器台数，以及必须留在项目内的客户事实",
+      "Agent 按实践帖输出：core 常驻草案、路径规则/技能拆分表，以及 SessionStart 同步清单",
+      "人工保留客户机密与合并；Agent 不代你保证「必从 60KB 降到 0.9KB 或账单同比例下降」",
+    ],
+    tips: [
+      "源帖（页内 itemprop/datetime datePublished 2026-10-15T02:11:09+00:00 → 2026-10-15；DEV 镜像 JSON-LD 同日）：Matt Hummel 把 WordPress 相关 Claude Code 标准收到公共仓 AI Dev Standards & Playbook，每台机器新会话用 SessionStart hook git pull --ff-only 后拷贝进 ~/.claude。动机：规则困在单主题仓会漂移；十份 always-on 合计约 60KB，写博客时也加载。改造后仅 core.md 常驻约 0.9KB（<1KB），含先答问题、开分支、先读再改、sanitize/escape、WCAG 2.1 AA、禁止编造指标、核对官方文档等；其余按路径（PHP/Sage/SEO Blade 等）或技能/斜杠命令按需加载。客户事实仍留各项目 CLAUDE.md。公开仓与文档站见文内链接。",
+      "与 michaelnash-claude-token-tax-lean-rebuild / lmoncany-vibe-code-distribution-wall 不同：本条是跨机可同步的 WordPress 规则手册与路径触发减负，不是单仓 CLAUDE.md Token Tax 瘦身，也不是构建加速后的获客分发墙",
+    ],
+    approach: `Matt Hummel 在《Why I Built a Claude Code Playbook for WordPress》（页内 datePublished 2026-10-15）写明：多客户 WordPress 工作时，规则既要跟着人走，又不能每会话都付一整包 always-on 上下文。
+
+他把标准收到公共 playbook：SessionStart 同步到每台机器；常驻从约 60KB 收到约 0.9KB，细节改路径/技能触发；无障碍（WCAG 2.1 AA）等硬规则进 core。
+
+本场景据此输出「可移植规则减负门禁」提纲。禁止把 0.9KB 写成任意项目 token SLA，或把客户机密放进公共 playbook。`,
+    outcomes: [
+      "源披露十份常驻约 60KB→核心约 0.9KB（under 1KB）、SessionStart 拉 main 重装、路径/技能按需加载，以及 core 含 WCAG 2.1 AA 等作者口径；属作者 WordPress 顾问工作流窗口，不可外推为你的 token 账单、多机一致性或「拆规则必同比例省费」。",
+      "能把「通用标准跨机同步」与「客户事实留在项目 CLAUDE.md」拆开。",
+      "为 always-on 过大、规则漂移、把无障碍检查只写在口头提示里提供提问清单。",
+    ],
+    caveats: [
+      "个人顾问工作流；未披露具体美元 token 账单对照。",
+      "规则拷贝非 symlink（文中称兼顾 Windows）；合并后需新会话或手动 sync 才生效。",
+      "上面写的是个人实践帖，不是 WordPress/Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "跨机规则手册减负门禁",
+        body: `你是独立开发者工作流教练。只根据用户现状写门禁，不要编造已达到的 KB 或省费。
+
+现有常驻规则体积与内容：{{rules}}
+机器/客户数：{{scope}}
+必须留在项目内的事实：{{secrets}}
+
+输出 Markdown：
+1. core 常驻（建议 <1KB 量级）应留下的硬规则清单（可含无障碍/可访问性基线）
+2. 路径规则 vs 技能 vs 斜杠命令拆分表
+3. SessionStart 同步最小步骤
+4. 明确禁止放进公共 playbook 的内容
+禁止声称「必 60→0.9」；禁止建议把客户密钥写入公共仓。`,
+      },
+      {
+        title: "写博客也加载整包 WP 规则复盘",
+        body: `非 PHP 会话仍塞满主题/框架细则。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺少路径触发、技能未拆，还是项目 CLAUDE.md 又堆回 always-on
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加一份总规则等于更稳」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://matthummel.com/claude-code-playbook-wordpress/",
+      label: "matthummel.com · Why I Built a Claude Code Playbook for WordPress",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "483",
+    slug: "dmitry-claude-ftape-kernel-driver",
+    title: "Dmitry：Claude Code 救活 25 年 ftape——内核 2.4→现代可装模块，约数天而非数周啃古文档",
+    summary: "个人；披露 ftape 自约 2000 停更、曾只能 CentOS 3.5；Claude 迭代编译至可对 kernel 6.8 思路现代化并做出可加载 .ko；敏感 sudo 自管、dmesg 人贴回；作者称约数天对话+验证，相对自学 25 年前内核或数周；已在 Xubuntu 24.04 实机读带。",
+    description:
+      "面向要用代理啃遗产驱动、却必须自握特权操作的系统爱好者/工程师：把「编译反馈闭环 + 人管 sudo/装载 + 对照已知良好日志」写成门禁，区别于零依赖玩具浏览器与不会语言硬做 CLI。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dmitrybrant.com/2025/09/07/using-claude-code-to-modernize-a-25-year-old-kernel-driver",
+    sourceLabel: "dmitrybrant.com·Dmitry Brant 实践帖",
+    upvotes: 374,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Linux",
+      "内核模块",
+      "ftape",
+      "遗产代码",
+    ],
+    howItWorks: [
+      "粘贴遗产驱动目标内核版本、现有编译错误，以及「绝不可让代理自行 sudo」清单",
+      "Agent 按实践帖输出：编译反馈闭环步骤、out-of-tree 模块构建清单，以及 dmesg 对照排查提纲",
+      "人工保留装载/硬件操作与最终验收；Agent 不代你保证「任意 25 年驱动必数天复活」",
+    ],
+    tips: [
+      "源帖（页内 <time datetime=\"2025-09-07T16:46:58-04:00\"> → 2025-09-07；Posted on September 7, 2025）：Dmitry Brant 为恢复 QIC-80 等软驱接口磁带，长期依赖仅能在极老 Linux（例 CentOS 3.5）编译的 ftape（约 2000 后失维护，曾对 kernel 2.4）。他向 Claude Code 请求现代化到现代内核 API；代理据编译输出自迭代，替换 2.4→6.8 之间大量弃用接口，作者仅少量手改，并继续请代理做成可独立编译的可加载模块（.ko）。装载需 sudo 后不再让代理独自迭代敏感操作：作者自装模块，把 dmesg 贴回，对照已知成功日志；代理定位默认基址 -1→0xffff 导致探测失败等问题。作者反思：若自学 25 年前内核开发或需数周无用知识；实际约数天与代理对话并验证，并在 Xubuntu 24.04 实机确认软驱/并口磁带可读。强调选对任务类型，代理非万能。",
+      "与 embedding-shapes-one-agent-one-browser-20k / david-hoze-haskell-bit-ai-without-knowing 不同：本条是遗产内核驱动现代化与人管特权装载，不是零依赖玩具浏览器或几乎不会某语言做日常 CLI",
+    ],
+    approach: `Dmitry Brant 在《Using Claude Code to modernize a 25-year-old kernel driver》（datetime 2025-09-07）写明：用 Claude Code 把停更约四分之一世纪的 ftape 推到现代内核可编译、可加载，并在真硬件上恢复读带能力。
+
+关键门禁是编译/日志闭环由代理加速，sudo 装载与硬件操作由人执行；对照已知良好 dmesg 缩小剩余缺陷。
+
+本场景据此输出「遗产驱动现代化门禁」提纲。禁止把「约数天」写成任意内核驱动 SLA，或建议让代理无人值守执行 sudo。`,
+    outcomes: [
+      "源披露 ftape 约 2000 停更、曾困在老发行版；Claude 助其现代化并产出可加载模块；作者称相对自学旧内核或需数周，实际约数天对话+验证，并在 Xubuntu 24.04 实机读带等口径；属单人磁带恢复爱好项目窗口，不可外推为你的驱动工期、稳定性或「遗产内核必数天可生产」。",
+      "能把「代理啃编译与 API 迁移」与「人管特权操作/真机验收」拆开。",
+      "为默认参数/探测失败类静默问题、以及不适合代理的任务类型提供提问清单。",
+    ],
+    caveats: [
+      "内核模块有主机风险；作者自述装载阶段收回代理自治。",
+      "「数天 vs 数周」为作者叙事对照，非双盲计时。",
+      "上面写的是个人实践帖，不是 Linux/Claude 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "遗产驱动现代化门禁",
+        body: `你是系统软件教练。只根据用户边界写门禁，不要编造已达到的天数或「必可装载」。
+
+驱动与目标内核：{{driver}}
+现有编译/运行症状：{{symptom}}
+不可代理执行的特权动作：{{no_sudo}}
+
+输出 Markdown：
+1. 编译错误→最小补丁闭环步骤
+2. out-of-tree 模块构建检查表
+3. 人贴日志 / 对照已知良好输出的排查提纲
+4. 真机验收最低标准
+禁止声称「必数天复活」；禁止建议代理自行 sudo 装载。`,
+      },
+      {
+        title: "模块能装但探不到硬件复盘",
+        body: ` .ko 加载成功，设备探测失败或基址异常。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像默认参数/配置未传入、日志对照不足，还是 API 迁移语义偏差
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再给代理一次 sudo 等于更快收敛」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dmitrybrant.com/2025/09/07/using-claude-code-to-modernize-a-25-year-old-kernel-driver",
+      label: "dmitrybrant.com · Using Claude Code to modernize a 25-year-old kernel driver",
+      date: "2025-09-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "484",
+    slug: "sentry-cursor-bg-agent-csharp-pr-comments",
+    title: "Sentry：Cursor 后台代理加 Open PR Comments 的 C#——两句提示+旧 PR，人补测合并",
+    summary: "团队；披露用 Cursor background agents 为 Open PR Comments 加 C# 解析（已有 Python/TS/Ruby/PHP 模式）；提示约两句+旧 PR 链接；代理加 CSharpParser、正则、测试与功能开关；作者自认零 C# 仍人审并加测后合入（例 PR #93304）；不代你无人值守合任意语言扩展。",
+    description:
+      "面向有清晰样板、想把「孤立模式扩展」丢给后台代理的产品工程团队：把「先模块化 + 极简提示指样板 + 人补测终审」写成门禁，区别于 iOS 多维代理评审与全代理后台四场景测。",
+    categories: [
+      "devtools",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://blog.sentry.io/shipping-features-without-writing-code/",
+    sourceLabel: "Sentry Blog·Raj Joshi 实践帖",
+    upvotes: 375,
+    trending: false,
+    tags: [
+      "Sentry",
+      "Cursor",
+      "后台代理",
+      "PR Comments",
+      "C#",
+    ],
+    howItWorks: [
+      "粘贴待扩展语言/模式、已有样板 PR，以及「合并前必须人做的检查」",
+      "Agent 按实践帖输出：是否适合后台代理的任务判定、极简提示模板，以及人补测清单",
+      "人工保留审查与合并；Agent 不代你保证「两句提示必产出可合并实现」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2025-07-07T00:00:00.000Z → 2025-07-07；页内 Published July 7, 2025）：Raj Joshi（Sentry）写 Open PR Comments——用 git hunk 头正则抽函数名，提示开发者改动区已有缺陷。已有 Python/TypeScript，他曾手加 Ruby/PHP（当时零基础，靠文档与试错）；C# 长期因调研开销被搁置。团队获得 Cursor background agents 后，他先把代码改得更模块化，再给后台代理约两句说明 + 一年前已合 PR 链接。代理新增 CSharpParser、方法签名正则与测试，并按现有模式加了功能开关。作者随后自写补充测试并彻底审查；称多数方法签名识别合理、能处理若干边界且遵循仓内模式。文内链到示例 PR https://github.com/getsentry/sentry/pull/93304。作者强调：适合孤立、定义清楚、有样板的任务；复杂设计仍易在 prompt 开销上不划算。",
+      "与 ole-veheria-ios-pr-review-agents-30min / netguru-full-agentic-backoffice-gates 不同：本条是后台代理按样板扩展单一语言解析器，不是 iOS 多维评审省时，也不是全代理后台规则三层+四场景测",
+    ],
+    approach: `Raj Joshi（Sentry）在《Shipping Features Without Writing Code》（JSON-LD datePublished 2025-07-07）写明：把「为 Open PR Comments 加 C#」这类有现成 Ruby 等样板的孤立任务交给 Cursor 后台代理，用极简提示指向旧 PR，再由人补测与审查合并。
+
+他对比自己当年手啃 PHP/Ruby 的调研成本，以及过去对 background agents「prompt 比做事还累」的怀疑。
+
+本场景据此输出「样板型后台代理扩展门禁」提纲。禁止把「没写业务代码」写成可跳过人审，或建议用后台代理做未模块化的大设计。`,
+    outcomes: [
+      "源披露约两句提示+旧 PR 链接即可产出 CSharpParser/正则/测试/功能开关，作者零 C# 背景仍经人补测与审查合入（文内示例 PR #93304），并强调任务需先模块化、定义清楚等作者口径；属 Sentry 单功能扩展窗口，不可外推为你的任意语言支持工期或「后台代理必一次可合并」。",
+      "能把「适合后台代理的孤立模式任务」与「仍需人写补充测试/终审」拆开。",
+      "为未模块化就丢后台代理、或复杂设计硬 vibe 提供提问清单。",
+    ],
+    caveats: [
+      "源未披露该任务墙钟小时或代理费用；成功叙事偏单次体验。",
+      "依赖仓内已有语言实现作样板；无样板时难度不同。",
+      "上面写的是团队工程实践帖，不是 Cursor 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "样板型后台代理扩展门禁",
+        body: `你是产品工程教练。只根据用户任务写门禁，不要编造已合并的 PR 或零缺陷。
+
+待扩展能力：{{feature}}
+现有样板实现/PR：{{template}}
+人必须做的检查：{{human}}
+
+输出 Markdown：
+1. 是否适合后台代理的判定（孤立/有样板/可测）
+2. 极简提示模板（含样板链接字段）
+3. 人补测与审查清单
+4. 明确不适用的任务类型
+禁止声称「两句提示必可合并」；禁止建议跳过审查。`,
+      },
+      {
+        title: "后台代理交付后仍不敢合复盘",
+        body: `代理交了解析器与测试，但边界用例不稳。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像样板不足、模块化不够，还是人补测覆盖面不够
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加长提示等于可无人合并」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.sentry.io/shipping-features-without-writing-code/",
+      label: "blog.sentry.io · Shipping Features Without Writing Code",
+      date: "2025-07-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "485",
+    slug: "heinoux-claude-business-agents-2879",
+    title: "Heinoux：用 Claude Code 跑一家公司——2879 节点知识图、两小时收件箱、一技能改 200 份文档",
+    summary: "个人；披露 NexBDM 单人运营：记忆沉淀知识图约 2,879 节点；收件箱代理约每 2 小时分拣且从不代发；一技能曾一扫重品牌约 200 份在线文档；日更营销日历+夜间重建图；不代你无人值守对外发送。",
+    description:
+      "面向想把公司重复流程沉成文件技能、却必须守住「只起草不发送」的独立经营者：把「文件夹 OS + 一事实一文件记忆 + 意图索引 + 硬规则」写成门禁，区别于客服自动解决率切流与 vibe coding 后分发墙。",
+    categories: [
+      "efficiency",
+      "enterprise",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/heinouxroux/how-i-run-a-business-on-ai-agents-the-exact-setup-9lh",
+    sourceLabel: "dev.to·Heinoux Roux 实践帖",
+    upvotes: 376,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "知识图谱",
+      "收件箱",
+      "技能文件",
+      "独立经营",
+    ],
+    howItWorks: [
+      "粘贴重复流程清单、对外发送红线，以及现有文件夹/记忆习惯",
+      "Agent 按实践帖输出：四层目录草图、首批两个技能、以及「只起草不发送」检查表",
+      "人工保留发送/报价/付款开关；Agent 不代你保证「必到 2879 节点或一次改 200 份文档」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-11T14:04:05Z → 2026-07-11；作者 Heinoux Roux，NexBDM）：写单人用 Claude Code + 纯文件跑公司——技能、记忆、意图索引同根目录；定时代理做重复活，不靠会蒸发的聊天窗。四层：操作系统式目录；一事实一文件记忆（夜间任务把记忆织成知识图，文内称约 2,879 节点）；解释过两遍的流程写成技能（含曾一扫重品牌约 200 份在线文档的方法）；意图索引按「想做什么」检索，硬规则置顶。日常：约每两小时收件箱代理分拣/起草回复/归档且从不发送，人审后点发送；每日营销引擎按批准日历发布并有品牌检查拦截；夜间重建知识图；项目按需套技能。三安全：只起草不发送；硬规则每会话加载+脚本校验；禁止代理捏造数字。文末有免费 starter 与付费资料导流，事实以正文运维段落为准。",
+      "与 monei-zendesk-amazon-connect-bedrock-support / lmoncany-vibe-code-distribution-wall 不同：本条是单人公司文件化代理运营（收件箱+知识图+技能），不是客服平台切流自动解决率，也不是 SaaS 构建加速后的获客分发墙",
+    ],
+    approach: `Heinoux Roux 在 DEV《How I run a business on AI agents: the exact setup》（JSON-LD datePublished 2026-07-11）写明：NexBDM 的日常运营沉在 Claude Code 可读的文件层——记忆、技能与意图索引——并用「只起草不发送」守住对外风险。
+
+披露知识图约 2,879 节点、收件箱约每两小时跑一轮、以及一技能重品牌约 200 份文档等口径。
+
+本场景据此输出「文件化经营代理门禁」提纲。禁止把节点数或 200 份文档写成任意公司自动化 SLA，或建议代理直接对外发送。`,
+    outcomes: [
+      "源披露知识图约 2,879 节点、收件箱约每 2 小时分拣且从不代发、一技能曾重品牌约 200 份在线文档、日更营销+夜间重建图等作者口径；属南非单人 AI 自动化公司窗口，不可外推为你的营收、回复质量或「同样目录必同规模节点」。",
+      "能把「流程沉成技能/记忆」与「人掌握发送键」拆开。",
+      "为聊天窗当唯一记忆、允许代理直接外发、允许捏造业务数字提供提问清单。",
+    ],
+    caveats: [
+      "文末含免费模板与付费资料导流；运维数字以正文为准。",
+      "知识图节点数为作者当日口径，非第三方审计。",
+      "上面写的是个人经营实践帖，不是 Claude 官文或自动化课程宣发正文。",
+    ],
+    prompts: [
+      {
+        title: "文件化经营代理门禁",
+        body: `你是一人公司运营教练。只根据用户边界写门禁，不要编造已达到的节点数或文档数。
+
+业务与重复流程：{{biz}}
+对外红线：{{red_lines}}
+现有文件夹习惯：{{files}}
+
+输出 Markdown：
+1. 四层目录最小草图（方法/记忆/项目/意图索引）
+2. 首批两个技能的「完成定义」
+3. 「只起草不发送」与禁止捏造数字的检查表
+4. 人必须亲自点的动作
+禁止声称「必 2879 节点或一次 200 份」；禁止建议代理直接外发。`,
+      },
+      {
+        title: "代理草稿语气漂移或险些外发复盘",
+        body: `收件箱草稿跑偏，或检查未拦住对外动作。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像硬规则未置顶、技能缺失，还是发送键误交给代理
+2. 最小修补
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「更大知识图等于可无人发送」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/heinouxroux/how-i-run-a-business-on-ai-agents-the-exact-setup-9lh",
+      label: "dev.to/heinouxroux · How I run a business on AI agents: the exact setup",
+      date: "2026-07-11",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
