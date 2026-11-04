@@ -21248,6 +21248,443 @@ CRM/邮箱：{{stack}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "381",
+    slug: "trmnl-claude-replace-shiphero",
+    title: "TRMNL：用 Claude Design+CLI 两周换掉年约 2 万美元履约平台",
+    summary: "对照团队履约实践：截图喂 Design 保肌肉记忆；披露 Liz 约 80–100 小时开发+一周现场，ShipHero 曾寄出 3 万+ 包裹约 $0.76/件且维护后成本望再降 2–3×；不代你零停线、不外推。",
+    description:
+      "面向自建仓/多仓发货却被 3PL SaaS 卡死的小团队：把「再续一年履约合同」写成可对账的截图仿制+Superpowers 架构+活邮资 API 切换，区别于销售多 Agent 日成本与店铺客服注入防御。",
+    categories: [
+      "ecommerce",
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://trmnl.com/blog/vibe-coding-shiphero",
+    sourceLabel: "trmnl.com·Ryan Kulp / TRMNL 实践帖",
+    upvotes: 272,
+    trending: false,
+    tags: [
+      "履约",
+      "ShipHero",
+      "Claude Design",
+      "自建 3PL",
+      "多仓发货",
+    ],
+    howItWorks: [
+      "粘贴现用履约栈痛点、仓点数、以及是否必须同日切换无停线",
+      "Agent 按实践帖输出：订单/打包双界面仿制清单→危险品/多国邮资集成提问→角色权限与现场调试门禁",
+      "人工保留活邮资账号与上线切换窗口；Agent 不代你声称已省下年约两万",
+    ],
+    tips: [
+      "源帖：用 Claude Design 吃旧门户截图，降低十余人仓侧肌肉记忆冲击；仅少数人可提需求/改代码以防范围爆炸",
+      "与 alan-albert-dollar-day-sales-agents / firas-loomhaus-injection-stock-gates 不同：本条是自建履约门户替换 3PL SaaS，不是销售 Agent 劳动力或店铺客服注入防御",
+    ],
+    approach: `Ryan Kulp 在 TRMNL 博客《Vibe Coding a $20k /year Enterprise Logistics Platform》（页内 May 15, 2026；JSON-LD datePublished 2026-05-15 → 2026-05-15）写明：团队在 Georgia 与 Berlin 自建仓履约，曾签 ShipHero 年约；门户丑、无移动布局、双域 SSO 差，且 2026-03-31 Berlin 仓失效后 postage 异常、支持拖延，最终决定用 Claude 替换。核心能力仅两项：订单加 hold/备注，以及打包买邮资。方法：把旧门户截图喂给 Claude Design，仿出「左侧点 SKU、右侧装包」交互以保留仓侧肌肉记忆；代码用 Claude CLI + Superpowers skill（澄清问题驱动架构与大量测试）。范围上仅少数人对工单与代码有权，避免一夜替换后需求轰炸。关键路径是 4/30 前接通 UPS/FedEx 活邮资（DHL/USPS 后补），危险品与多国船运使部分 courier JSON 可达约千行。另建 Swift 网络打印工具打 4×6 标签、WebSocket 锁单防双发、同客多单合并、以及基于店面 webhook 的 Automation Rules（Python/Ruby/Node）。作者披露 Liz 约 80–100 小时开发，再一周美国仓现场调试，德国仓次周一上线；用 ShipHero 时曾寄出 3 万+ 包裹约 $0.76/件，计维护后成本望再降 2–3×。本场景据此输出「截图仿制换履约 SaaS」提纲。禁止建议无人值守改活邮资账号或跳过现场验收。`,
+    outcomes: [
+      "源披露 Liz 约 80–100 小时开发+一周现场、ShipHero 窗口寄出 3 万+ 包裹约 $0.76/件且维护后成本望再降 2–3×，以及 Design 仿制保留仓侧肌肉记忆等团队口径；属 TRMNL 自建履约叙事，不可外推为你的停线风险或单位运费。",
+      "能把「再续一年 3PL 合同」与「截图仿制 + Superpowers 测试 + 活邮资关键路径」拆开。",
+      "为范围爆炸、双发锁单失败与危险品 JSON 集成提供提问清单。",
+    ],
+    caveats: [
+      "数字绑定作者仓网与危险品/多国船运；换承运商或 SKU 面不可照搬工时与单价。",
+      "活邮资与标签打印属高危集成，必须人审与现场联调。",
+      "上面写的是创始人团队实践帖，不是 ShipHero/承运商官文或通用「vibe coding」榜单。",
+    ],
+    prompts: [
+      {
+        title: "履约门户替换简报",
+        body: `你是自建仓履约系统顾问。只根据用户约束写提问清单，不要编造已上线替换。
+
+现用 3PL/门户：{{current_stack}}
+仓点与承运商：{{warehouses_carriers}}
+是否必须同日切换：{{same_day_cutover}}
+
+输出 Markdown：
+1. 订单备注/打包买邮资最小双界面仿制清单
+2. 活邮资关键路径与沙箱→生产门禁
+3. 锁单/合并/自动化规则验收
+4. 现场联调与回滚清单
+禁止声称已省下年约费用；禁止建议无人值守改承运商账号。`,
+      },
+      {
+        title: "切换窗口翻车复盘提纲",
+        body: `上线日某承运商报价异常或标签打不出，请写复盘提纲。
+
+现象：{{symptom}}
+影响仓点：{{sites}}
+
+输出：
+1. 是沙箱/活环境混用、危险品字段缺失，还是打印机工具权限
+2. 最小热修与人工兜底发货流程
+3. 下次切换验收标准
+4. 人工确认清单
+不要伪造「已自动零停线」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://trmnl.com/blog/vibe-coding-shiphero",
+      label: "trmnl.com · Vibe Coding a $20k /year Enterprise Logistics Platform",
+      date: "2026-05-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "382",
+    slug: "batuhan-yika-orchestrator-two-touchpoints",
+    title: "Batuhan：一人 IoT 平台两触点——编排审范围，构建到预发再合入",
+    summary: "对照独立开发者实践：编排仓与前后端构建仓分席；披露计划+RED 停、评审+反驳、Chrome 走查，以及约 80% 做产品/20% 养流程；不代你吞吐、不外推。",
+    description:
+      "面向一人扛平台前后端又不想读每一行的创始人：把「再开 Agent Teams」写成可对账的两触点+瑞士奶酪门禁+跨会话消息，区别于 Hive Lead/Worker 与 hooks 工作流引擎。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://batuhanergor.com/blog/autopilot/",
+    sourceLabel: "batuhanergor.com·Batuhan Ergör 实践帖",
+    upvotes: 273,
+    trending: false,
+    tags: [
+      "编排 Agent",
+      "TDD",
+      "跨会话消息",
+      "一人公司",
+      "IoT 平台",
+    ],
+    howItWorks: [
+      "粘贴前后端仓结构、是否常驻第二台机，以及合入前必须人审哪些点",
+      "Agent 按实践帖输出：两触点职责→计划+失败测试停→评审/反驳/走查提问清单",
+      "人工保留生产合入；Agent 不代你声称已自动驾驶上线",
+    ],
+    tips: [
+      "源帖：故意不用 Claude Code Agent Teams——构建席要常驻规则与教训，评审席才要无历史的新鲜子代理",
+      "与 chris-gmyr-hive-lead-codex-workers / nick-tune-claude-hooks-workflow-engine 不同：本条是编排仓无产品代码+瑞士奶酪碰撞门禁，不是本地 SQLite Lead/Worker 或 hooks 引擎",
+    ],
+    approach: `Batuhan Ergör 在《How I ship for my company's platform on (almost) autopilot》（页内 16 October 2026 → 2026-10-16）写明：一人经营医院/餐饮卫生监测 IoT 平台 YIKA，过去一年产品优先、重回键盘。今日发版只保留两触点——(1) 指向任务，编排 Agent 起草范围供他审，批准后派给前端/后端构建 Agent；(2) 预发验证完成且生产 PR 打开后再审合入。中间无人接力。三席皆为 Claude Code：编排仓无产品代码，只持待办、每任务规格、会话 recap、从错误学来的规则与 skills；构建席各在自己代码仓加载规则与记忆。家用第二台笔记本 24/7，tmux 常驻，SSH/手机 Claude App 连入；编排与构建靠跨会话消息直连，单订阅。
+
+流程强调「瑞士奶酪」层叠：范围 skill 会先用多角度新鲜子代理攻击规格（含不可逆性排序），再给人看；派工给目标与约束而非命令，并强制「先挑战隐含假设」；构建先交计划+失败测试（RED）再实现；绿测后新鲜评审→反驳，存证或修或记债；编排再用 Claude in Chrome 在本地/预发/生产走查。作者称约 80% 时间做产品、20% 养 skills/hooks/规则；规则堆肥会剪枝，屡次失败则升格为结构（如审阅者必须在 worktree、STE 句长 hook）。本场景据此输出「两触点瑞士奶酪」提纲。禁止建议取消生产合入人审。`,
+    outcomes: [
+      "源披露两触点、计划+RED 停、评审+反驳+Chrome 走查，以及约 80%/20% 产品与流程投入等作者窗口口径；属一人 IoT 平台叙事，不可外推为你的发版吞吐或缺陷率。",
+      "能把「再开 Agent Teams」与「编排仓分席 + 跨会话消息 + 门禁碰撞」拆开。",
+      "为虚假绿测、评审改坏工作树与走查看漏整屏提供提问清单。",
+    ],
+    caveats: [
+      "强依赖 Claude Code 跨会话消息与常驻第二台机；订阅与网络中断会卡住流水线。",
+      "日历工期变长是故意的；默认可串行而非并行车道。",
+      "上面写的是个人博客实践帖，不是 Anthropic Agent Teams 官文。",
+    ],
+    prompts: [
+      {
+        title: "两触点发版简报",
+        body: `你是一人平台发版顾问。只根据用户约束写提问清单，不要编造已自动驾驶。
+
+仓结构：{{repos}}
+是否常驻第二台机：{{always_on}}
+合入前必审：{{merge_gates}}
+
+输出 Markdown：
+1. 编排/前端构建/后端构建职责与禁止项
+2. 计划+RED 停与派工话术
+3. 评审→反驳→走查门禁
+4. 人工生产合入清单
+禁止建议自动 merge；禁止声称吞吐已达标。`,
+      },
+      {
+        title: "虚假绿测复盘提纲",
+        body: `构建席报告「22 测全绿」但你一问发现无人读测文件，请写复盘提纲。
+
+摘要原话：{{summary}}
+真实测文件摘录：{{tests}}
+
+输出：
+1. 是摘要崇拜、缺「故意弄坏代码看测是否红」，还是编排未抽查
+2. 门禁最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「绿测已永可信」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://batuhanergor.com/blog/autopilot/",
+      label: "batuhanergor.com · How I ship for my company's platform on (almost) autopilot",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "383",
+    slug: "javier-unir-class-prep-claude-gates",
+    title: "Javier：九条 CLAUDE.md + 四阶段签字，备课质量门比生成更重要",
+    summary: "对照教育实践：诊断→骨架→成稿→审计逐段人批；披露七节课理论屡破 25 分钟顶、物流案例 27 条核源仅 10 条站得住、笔记本末跑 75 检 0 失败；不代你课时、不外推。",
+    description:
+      "面向在线课备课、怕幻数与超时的高校教师：把「再让模型直接出课件」写成可对账的规则优先+分阶段签字+脚本验 deck/notebook，区别于 Notion 兴趣评分闸与教材泛化互动课。",
+    categories: [
+      "education",
+      "efficiency",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://javierlougedo.com/blog/class-prep-claude-code/",
+    sourceLabel: "javierlougedo.com·Javier Lougedo 实践帖",
+    upvotes: 274,
+    trending: false,
+    tags: [
+      "备课",
+      "CLAUDE.md",
+      "质量门",
+      "python-pptx",
+      "可核数据",
+    ],
+    howItWorks: [
+      "粘贴课时时长、理论上限、以及是否允许学生动手产出",
+      "Agent 按实践帖输出：九条规则草案→四阶段签字文件→质量门九问与例外书面化清单",
+      "人工保留每阶段签字与课堂例外；Agent 不代你声称课件已达标",
+    ],
+    tips: [
+      "源帖：规则写明优先于你热头提出的要求；破门必须书面记代价（如新闻块吃掉实践）",
+      "与 janmejai-notion-interest-rating-editorial / course-revise-from-evals 不同：本条是课堂备课分阶段门禁+脚本验 deck，不是内容兴趣评分或作业批注流水线",
+    ],
+    approach: `Javier Lougedo 在《How I review my classes with Claude Code》（页内/JSON-LD datePublished 2026-09-30 → 2026-09-30）写明：在 UNIR 教两门在线课（产业 AI、新编程入门）；自 2026-09-07 起每节课走同一套 Claude Code 规则。CLAUDE.md 固定九条：理论顶 15/25 分钟、点名的工具当天必须打开、学生带走可运行产出、120 分钟块可加总、跟屏检查点、口头声明原型≠生产、禁止编造数据、真数或标明合成、默认 Markdown 而非 pptx。规则优先于当场口头改口。流程四阶段且上一阶段未签字不进入下一阶段：诊断 \`00-diagnostico.md\` → 骨架 \`01-esqueleto.md\` → 成稿脚本/实操 → 审计清单。质量门九问书面答，失败不得用段落辩解放行。作者承认产业课七节里六节理论仍 44–64 分钟破 25 分钟顶，两次新闻块拖垮实践；门的价值是先标代价。物料：python-pptx 克隆校版式生成 deck；新课以单一 Python 源驱动幻灯与讲稿防漂移；notebook 用 exec/IPython 对照检查点，文内记 2026-09-29 末跑 75 检 0 失败。物流案例把材料中 27 条「真公司 AI 案例」对一手源：10 条站得住、7 部分真、2 张冠、7 无迹、1 公司不存在。本场景据此输出「规则优先备课门」提纲。禁止建议无人值守直接对学生发布未签字课件。`,
+    outcomes: [
+      "源披露七节课中六节理论破顶、27 条案例核源仅 10 条站得住，以及 2026-09-29 notebook 75 检 0 失败等作者窗口口径；属 UNIR 在线备课叙事，不可外推为你的课时达标率或案例可信度。",
+      "能把「直接生成整套课件」与「九条规则 + 四阶段签字 + 脚本验 deck/notebook」拆开。",
+      "为理论超时、幻数与 QR/备注漂移提供提问清单。",
+    ],
+    caveats: [
+      "门不替你做决定；作者仍多次书面破顶，代价需人承担。",
+      "依赖校版式模板与本地脚本链；换 LMS/模板需重做生成器。",
+      "上面写的是个人教学实践帖，不是 Anthropic/UNIR 官文。",
+    ],
+    prompts: [
+      {
+        title: "备课质量门简报",
+        body: `你是在线课备课顾问。只根据用户约束写提问清单，不要编造已上过的课。
+
+课时分钟：{{minutes}}
+理论上限：{{theory_cap}}
+学生产出：{{deliverable}}
+
+输出 Markdown：
+1. CLAUDE.md 九条规则草案（可改）
+2. 四阶段文件与签字点
+3. 质量门九问
+4. 破门例外书面化模板
+禁止建议跳过签字直接出 pptx；禁止声称课时已达标。`,
+      },
+      {
+        title: "案例核源翻车复盘提纲",
+        body: `课件里「真公司 AI 案例」核源大量失败，请写复盘提纲。
+
+案例列表：{{cases}}
+核源结果：{{audit}}
+
+输出：
+1. 是二手综述、算法名听起来真，还是缺一手链接字段
+2. 红黄标记规则最小补丁
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「案例库已永久可信」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://javierlougedo.com/blog/class-prep-claude-code/",
+      label: "javierlougedo.com · How I review my classes with Claude Code",
+      date: "2026-09-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "384",
+    slug: "firas-loomhaus-injection-stock-gates",
+    title: "Firas：店铺客服 Agent——库存决策出模型，四层挡住注入与议价",
+    summary: "对照电商安全实践：n8n 编排三子代理；披露注入 10/10 封、抢最后库存 21/21、Notion 断连 8/8、履约同步约 36.5 秒；不代你零泄漏、不外推。",
+    description:
+      "面向小店客服要接库存/下单却怕被套折扣的独立开发者：把「再给模型看库存数」写成可对账的工作流判库存+分层注入防御，区别于履约门户替换与销售 Agent 触达。",
+    categories: [
+      "ecommerce",
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+      "chatgpt",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://firasridene.tech/work/store-support-agent/",
+    sourceLabel: "firasridene.tech·Firas Ridene 案例帖",
+    upvotes: 275,
+    trending: false,
+    tags: [
+      "提示注入",
+      "库存闸",
+      "n8n",
+      "客服 Agent",
+      "黑客松",
+    ],
+    howItWorks: [
+      "粘贴客服渠道、库存/订单真相源，以及是否允许模型见精确库存数",
+      "Agent 按实践帖输出：编排+三子代理工具面→预过滤/金丝雀/schema 终检→对账式验收用例",
+      "人工保留改价与履约；Agent 不代你声称已防住一切注入",
+    ],
+    tips: [
+      "源帖：模型只听「有货/未确认」；精确库存与折扣工具根本不存在",
+      "与 invoice-kitten-shopify-multi-agent-batches / dominic-support-email-classify-escalate 不同：本条是店面客服+库存闸+分层注入，不是 Shopify 多 Agent 批次或支持邮箱升级",
+    ],
+    approach: `Firas Ridene 在案例页《Multi-agent store support agent with prompt-injection defence》（JSON-LD datePublished 2026-10-11；页内写 Multi-App AI Agent Hackathon, September 2026 → 发布日取 2026-10-11）写明：为虚构服装小店做 Loomhaus 客服原型，约五小时，栈为 n8n + gpt-4.1-mini + Sheets/Notion/Supabase + Next.js 仪表盘。每条消息先过注入预过滤；干净消息进编排 Agent，只能调三支路：check_inventory（Sheet；IF 节点比较库存/预留/需求后只回「available/not confirmed」）、capture_order（再检库存→写 Notion→预留→重读防超卖）、answer_from_kb（Supabase 向量政策）。履约同步每 30 秒扫 Notion Fulfilled 回写 Sheet 且幂等。关键决策：库存数永不进模型上下文，故无法泄漏或向顾客圆成有货。注入防御四层：无改价/折扣/窥他单/回库存数工具；预过滤拦常见覆盖指令；指示把顾客文本当信息并含金丝雀词；回复固定 schema，终检拦金丝雀与库存数字。验收对活系统 API 回读：注入 10/10 封（过滤 6、其余层 4）且 3/3 正常问可答；抢最后库存 21/21；Notion 断连 8/8 诚实失败不半写；履约同步约 36.5 秒且不双计。作者强调黑客松原型、共享演示态、10 条对抗集非穷尽。本场景据此输出「库存出模型+分层注入」提纲。禁止建议把改价工具交给客服模型。`,
+    outcomes: [
+      "源披露注入 10/10 封、抢库存 21/21、Notion 断连 8/8、履约同步约 36.5 秒，以及约五小时建成等作者窗口数字；属黑客松原型叙事，不可外推为你的真实店铺零超卖或零注入。",
+      "能把「给模型看库存表」与「工作流判有货 + 四层注入防御」拆开。",
+      "为预过滤漏网、演示态串扰与工具面过宽提供提问清单。",
+    ],
+    caveats: [
+      "对抗集仅 10 条；预过滤 alone 只拦 6/10，必须叠层。",
+      "虚构店与共享 demo 态，不是生产多租户客服。",
+      "上面写的是个人黑客松案例帖，不是 OpenAI/n8n 官文安全白皮书。",
+    ],
+    prompts: [
+      {
+        title: "店面客服库存闸简报",
+        body: `你是电商客服 Agent 安全顾问。只根据用户约束写提问清单，不要编造已上线防注入。
+
+渠道：{{channel}}
+库存/订单源：{{systems}}
+模型可否见库存数：{{see_stock}}
+
+输出 Markdown：
+1. 编排与子代理工具白名单（含禁止项）
+2. 预过滤/金丝雀/schema 终检
+3. 超卖与断连失败语义
+4. 对账式验收用例
+禁止建议把改价/折扣工具交给模型；禁止声称已防住一切注入。`,
+      },
+      {
+        title: "注入漏网复盘提纲",
+        body: `顾客用隐藏标签套出折扣话术，请写复盘提纲。
+
+原始消息：{{message}}
+模型回复：{{reply}}
+
+输出：
+1. 是预过滤漏模式、指示未把文本当信息，还是 schema 缺价格字段校验
+2. 层叠最小补丁
+3. 对抗用例补集
+4. 人工确认清单
+不要伪造「注入已永久消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://firasridene.tech/work/store-support-agent/",
+      label: "firasridene.tech · Multi-agent store support agent with prompt-injection defence",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "385",
+    slug: "alex-willen-amazon-seller-daily-claude",
+    title: "Alex：Claude Code 包圆亚马逊卖家晨间杂务，再自建 Actions 日跑",
+    summary: "对照电商效率实践：缺口货核对+评价请求 API；披露约十个品牌曾月初耗数小时、slash 后「夺回每月数小时」，并由 Actions 晨邮告警；不代你回款、不外推。",
+    description:
+      "面向多品牌亚马逊卖家被收货差异与评价按钮拖死的个人运营：把「再雇助理点后台」写成可对账的 Seller API 脚本+/dailyupdates+GitHub Actions，区别于销售多 Agent 成交叙事与履约门户自建。",
+    categories: [
+      "ecommerce",
+      "efficiency",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://theautomatedoperator.substack.com/p/handing-my-daily-tasks-off-to-claude",
+    sourceLabel: "theautomatedoperator.substack.com·Alex Willen 实践帖",
+    upvotes: 276,
+    trending: false,
+    tags: [
+      "Amazon Seller",
+      "收货差异",
+      "评价请求",
+      "GitHub Actions",
+      "晨间杂务",
+    ],
+    howItWorks: [
+      "粘贴 Seller 账户数量、现有 API/密钥存放方式，以及告警是否要邮件",
+      "Agent 按实践帖输出：收货差异核对字段→评价请求批处理边界→Secrets+Actions 日跑提问清单",
+      "人工保留开 case 与密钥保管；Agent 不代你声称已自动拿回全部赔偿",
+    ],
+    tips: [
+      "源帖：模型误判「API 忽略日期过滤」时，一句「听起来不对你再查」即可纠偏——保留质疑权",
+      "与 alan-albert-dollar-day-sales-agents / trmnl-claude-replace-shiphero 不同：本条是卖家后台杂务 API 自动化，不是 B2B 销售 Agent 或自建履约门户",
+    ],
+    approach: `Alex Willen 在 Substack《Handing My Daily Tasks Off To Claude Code》（页内/JSON-LD datePublished 2026-02-05 → 2026-02-05）写明：约十个品牌各有 Seller 账号，亚马逊收货常少计且需在货件关闭后 60 天内开 case；后台慢，他曾每月初耗数小时核对，有时仅换回几美元。已有 Seller API 接入后，他让 Claude Code 写脚本：拉自上次运行后更新的 Closed 货件；比对计划发货量与已收量；列出差异；记下已告警货件 ID 防重复。过程中模型曾错怪 API 忽略日期过滤，他要求上网核实后发现是自己日期格式错误并修好。第二工具调用评价请求 API，替代订单页逐单点按钮（评价量影响搜索排名）。两者收进 slash 命令 \`/dailyupdates\`，晨起一跑「夺回每月数小时」。写作时进一步让 Claude 用 GitHub Actions 日跑、配 Secrets、并在有收货问题时邮件通知——他几乎只需提供 Gmail 凭证。文内展示一例告警后开 case 获赔的截图结果（作者窗口）。本场景据此输出「卖家晨间杂务 API 化」提纲。禁止建议把 Seller 主密码明文塞进仓库或无人值守批量改价。`,
+    outcomes: [
+      "源披露约十品牌、曾月初耗数小时核对、slash/Actions 后「夺回每月数小时」以及告警后开 case 获赔等作者窗口口径；属个人亚马逊卖家叙事，不可外推为你的回款额、评价增速或月省时。",
+      "能把「雇人点后台按钮」与「Seller API 差异核对 + 评价请求 + Actions 晨邮」拆开。",
+      "为 API 日期坑、重复告警与密钥进库风险提供提问清单。",
+    ],
+    caveats: [
+      "60 天窗口与 API 行为会变；脚本需随 Seller Central 变更维护。",
+      "获赔截图为作者个例，非平均回款率。",
+      "上面写的是个人 Substack 实践帖，不是 Amazon Seller 官文。",
+    ],
+    prompts: [
+      {
+        title: "卖家晨间杂务简报",
+        body: `你是亚马逊多品牌卖家自动化顾问。只根据用户约束写提问清单，不要编造已获赔。
+
+品牌/账号数：{{accounts}}
+已有 API：{{apis}}
+告警通道：{{alerts}}
+
+输出 Markdown：
+1. 收货差异核对字段与去重
+2. 评价请求批处理边界与频控
+3. Secrets + Actions 日跑最小集
+4. 人工开 case 清单
+禁止建议把主密码写入仓库；禁止声称回款已自动化完成。`,
+      },
+      {
+        title: "API 日期坑复盘提纲",
+        body: `脚本声称「平台忽略日期过滤」拉全量，请写复盘提纲。
+
+请求参数：{{params}}
+返回规模：{{volume}}
+
+输出：
+1. 是日期格式、时区，还是分页/状态过滤
+2. 最小复现与对照查询
+3. 回归验收
+4. 人工确认清单
+不要伪造「API 已确认有 bug」除非有官方证据。`,
+      },
+    ],
+    primarySource: {
+      url: "https://theautomatedoperator.substack.com/p/handing-my-daily-tasks-off-to-claude",
+      label: "theautomatedoperator.substack.com · Handing My Daily Tasks Off To Claude Code",
+      date: "2026-02-05",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
