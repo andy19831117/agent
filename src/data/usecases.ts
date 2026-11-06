@@ -35947,6 +35947,444 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "546",
+    slug: "andhand-mybooks-6-days-18-testflight",
+    title: "たけやす：六天救活闲置七年的 iOS 应用——18 次 TestFlight 后才上架",
+    summary: "个人（作者たけやす，博客 ON THE HAND）；披露把 2016 年初版、闲置约 7 年的藏书应用 My Books，在 2026-04-25 至 2026-05-01 的 6 天里与 Claude Code 配对现代化，经 18 次 TestFlight 构建后于 2026-05-02 以 v3.0.0／Build 18 上架，审查未再追问；约 60 次提交；新增 20 个测试；6 天里约 5 天做现代化、半天搭发布管道，其余应对 TestFlight；CocoaPods 迁到 SPM；废弃 API 改了逾 30 处；ViewController 从 1135 行拆到 471 行；Realm 改为 @Persisted，并在需要迁移时删库重置；编译通过后实机仍出事：只含注释的空 Run Script 被 Xcode 26 沙盒报错；乐天旧接口将于 2026-05-14 关闭、当时还剩 13 天，缺 Origin 会 403；Google Books 匿名调用撞上全球共享额度而 429；DGCharts 在 Build 5–8 因 vtable 崩溃，后来用约 60 行 CoreGraphics 自绘替换；不代你任意七年旧应用同样 6 天上架。",
+    description:
+      "面向把多年未动的原生 iOS 应用迁到现行 Xcode／Swift 并必须自己过 TestFlight 实机的人：把「编译通过不等于实机能跑，发布管道要先自动化，第三方接口和图表库会在你改完自己的代码之后才爆」写成门禁，区别于从零做 Flutter 应用、Android 无障碍改造，以及四天内做出手机编排产品。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://tech.andhandworks.com/2026/05/7-ios-claude-code-app-store-6-xcode-26.html",
+    sourceLabel: "tech.andhandworks.com·たけやす 实践帖",
+    upvotes: 437,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "iOS",
+      "TestFlight",
+      "旧应用现代化",
+      "Swift",
+    ],
+    howItWorks: [
+      "粘贴旧应用的技术边界（语言、依赖、必须保住的数据）以及「绝不可把编译通过当成已经能在实机上架，也不可把商店协议、真机手感和第三方开发者控制台交给代理」纪律",
+      "Agent 按实践帖输出：现代化应按什么顺序推进、发布管道要先自动化到哪一步、编译通过后还应在真机上核对哪些崩溃与接口失败",
+      "人工保留是否删库重置、何时提交审核，以及第三方开发者账号怎么改；Agent 不代你保证「六年或七年没动的应用必能在 6 天、18 次构建后上架」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-05-01 → 2026-05-01；页内写 2026年5月1日金曜日；GET 200，UA MiraBot/1.0）：たけやす在《7 年放置の iOS アプリを Claude Code で復活させて App Store に出した 6 日間》写自己 2016 年初版的藏书应用 My Books 闲置约 7 年，栈停在当年的 Swift、CocoaPods、Realm 和一批第三方 SDK。他在 2026-04-25 至 2026-05-01 的 6 天里与 Claude Code 配对做现代化，目标环境是 Xcode 26、Swift 6、iOS 17+，旧 master 冻结。数字表写：约 60 次提交、18 次 TestFlight 构建、新增 20 个测试（AppUtilTests／BookTests／ItemEnumsTests／ViewUtilTests），以 v3.0.0／Build 18 于 2026-05-02 上架。流程分成三段：约 5 天做现代化（4 月 25–30 日），4 月 30 日下午搭发布管道，4 月 30 日夜至 5 月 2 日把 Build 5 打到 18 并提交审核；Build 18 审查未再追问，版本号与构建号沿用最后一次 TestFlight。现代化顺序是计划、删除、接口迁移、Realm、拆 ViewController、整理密钥、补测试。依赖从 CocoaPods 迁到 SPM，点名 Realm 20.0.4、Firebase iOS SDK 11.15.0、Google Mobile Ads 11.13.0、DGCharts 5.1.0；Amazon PA-API 相关代码和辅助应用全部删掉；废弃 API 改了逾 30 处；ProductSearch 改成 withTaskGroup 并行，Google Books／乐天／OpenBD 统一成 async throws；Realm 从 @objc dynamic 改到 @Persisted，放弃旧迁移，改为 deleteRealmIfMigrationNeeded = true 并弹「数据已重置」；一个 ViewController 从 1135 行拆到 471 行，另用 Camera／ProductSearch／Library／Speech 四个 extension。密钥用提交上去的 Secrets.template.xcconfig，真值文件不进仓库。编辑在 WSL2，构建经 SSH 打到另一台 Mac，三条脚本分别准备独立的 build keychain、非交互归档、导出 IPA 并用 altool 上传。他写最耗时间的是编译通过之后：真机 iOS 26 上的差距比预想大。五个印象深的坑包括：项目里还有一个只剩注释的 update_storyboard_strings.sh，Xcode 26 的构建沙盒会因为路径解析失败把空的 Run Script Phase 升级成错误，最后整段脚本阶段都得删掉；查封面图缺失时发现乐天旧域名 app.rakuten.co.jp 将于 2026-05-14 关闭，当时还剩 13 天，新接口要 applicationId 加 accessKey，移动应用须按 Web Application 注册并带 Origin，否则 403 REQUEST_CONTEXT_BODY_HTTP_REFERRER_MISSING；Google Books 不带自己的密钥会打到匿名共享项目，报错里的 project_number 不是他的，额度按文中说法是全球匿名调用共享约 2000 万次／日，经常 429，后来改成自己的 GCP 密钥；DGCharts 在 Build 5–8 于饼图赋值时 EXC_BAD_INSTRUCTION，atos 看到大量符号指到同一桩函数，改静态／动态或走 objc_msgSend 都没修好，最终用约 60 行 CoreGraphics 自绘三瓣圆环替换；SSH 归档时 login keychain 即使解锁，codesign 仍可能读不到，后来改用放宽 ACL 的专用 build keychain。人机分工上，代理擅长符号化崩溃日志、用 curl 核对接口、改代码和远程归档；真机手感、商店协议、以及要在浏览器里完成的 GCP／乐天控制台仍归人。作者写道：编译通过不等于能用，第三方接口会按自己的时间表变，没有一键发布管道就很难在一天内把构建从 1 打到 18。英文译本页注明这是用 Claude Code 做的自动博客更新实验，本条以日文原文为一手来源。主线是旧应用现代化和 TestFlight 连战，不是官文简报。",
+      "与 carmen-krol-android-a11y-8-new-handle / khalit-flutter-claude-827-commits-30pct / tom-vaucourt-starbridge-4-days-450-prs / babipanote-gentledo-75-to-158-tests 不同：本条是把闲置约七年的 Swift／CocoaPods／Realm 应用迁到现行 Xcode 并记录真机 TestFlight 崩溃，不是 Android 无障碍改造，不是从零做 Flutter 应用，也不是四天做出从手机派活的编排产品",
+    ],
+    approach: `たけやす在《7 年放置の iOS アプリを Claude Code で復活させて App Store に出した 6 日間》（JSON-LD 2026-05-01）写明：代理可以协助迁移依赖、改废弃 API、符号化崩溃日志并跑远程归档，但真机是否真的能用、商店协议怎么点、第三方开发者控制台如何迁移，仍归人。
+
+关键门禁不是「六年或七年没动的应用开一个会话就能上架」，而是先把发布管道自动化，并承认编译通过之后还有图表库、沙盒脚本和外部接口额度要在真机上暴露。
+
+本场景据此输出「旧 iOS 应用现代化须人审」提纲。禁止把 6 天、18 次构建或审查一次通过写成任意旧应用的 SLA，或建议把商店提交和真机手感交给代理。`,
+    outcomes: [
+      "源披露工作窗口 2026-04-25 至 2026-05-01 共 6 天，约 60 次提交、18 次 TestFlight、新增 20 个测试，2026-05-02 以 v3.0.0／Build 18 上架且审查未再追问；约 5 天现代化、半天搭管道；废弃 API 改了逾 30 处；ViewController 1135→471 行；乐天旧接口当时还剩 13 天关闭；DGCharts 在 Build 5–8 崩溃后用约 60 行自绘替换；属该应用与那次现代化窗口，不可外推为你的上架天数、构建次数或「编译绿了就必能在真机和审核里一次过」。",
+      "能把「可写成依赖迁移、测试和远程归档脚本的部分」与「必须人完成的真机操作、商店协议和第三方控制台」拆开。",
+      "为构建沙盒把空脚本升级成错误、匿名接口额度耗尽、以及图表库在真机上因 vtable 崩溃提供提问清单。",
+    ],
+    caveats: [
+      "6 天、约 60 次提交、18 次构建、20 个测试和审查一次通过等为作者自述，不是对照实验。英文译本页另有自动翻译／更新实验说明，本条以日文原文为准。",
+      "是否删库重置用户数据、何时提交审核，以及第三方开发者账号怎么改，仍须人；作者写编译通过之后的真机连战比预想更长。",
+      "上面写的是个人实践帖（tech.andhandworks.com / たけやす），不是 Apple、Realm 或某个云厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "旧 iOS 应用现代化的门禁",
+        body: `你是资深移动发布教练。只根据用户边界写门禁，不要编造已上架的天数或 TestFlight 次数。
+
+旧应用与必须保住的数据：{{legacy_boundary}}
+真机与商店提交约束：{{store_constraint}}
+
+输出 Markdown：
+1. 现代化应按什么顺序推进（依赖、废弃 API、数据层、拆界面、密钥、测试）
+2. 发布管道至少要先自动化到哪一步，才能支撑多轮真机构建
+3. 编译通过之后还应在真机上核对哪些崩溃与外部接口失败
+4. 人必须完成的清单（真机手感、商店协议、第三方控制台、是否删库重置）
+禁止声称「必能在 6 天或 18 次构建后上架」；禁止建议把商店提交或真机验收交给代理。`,
+      },
+      {
+        title: "编译通过但真机连崩复盘",
+        body: `归档和测试在模拟器或本机是绿的，TestFlight 真机却连续崩溃或封面图拉取失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像第三方库在新工具链下的运行时崩溃、构建沙盒把旧脚本升级成错误，还是外部接口改域名、改必填头或耗尽共享额度
+2. 最小复验顺序（看真机崩溃符号→看外部接口状态码→决定替换库、补请求头还是换自己的密钥）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「编译通过或模拟器绿了等于用户已经能在真机上使用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://tech.andhandworks.com/2026/05/7-ios-claude-code-app-store-6-xcode-26.html",
+      label: "tech.andhandworks.com · 7 年放置の iOS アプリを Claude Code で復活させて App Store に出した 6 日間",
+      date: "2026-05-01",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "547",
+    slug: "jason-macht-customerio-bigquery-15min",
+    title: "Jason：给 Customer.io 搭 BigQuery 管道——有个文件曾被加载两次",
+    summary: "个人（White Space Solutions 创始人 Jason Macht）；披露自己并非数据工程师，用 Claude Code 在 GCP 上搭建 Customer.io 到 BigQuery 的管道：Customer.io 每 15 分钟把 Parquet 丢进 GCS（约 96 次／日），Cloud Function 校验 v5 文件名后追加进着陆表，再每 15 到 30 分钟 MERGE 进供报表使用的精选表；着陆分区约 7 天过期，精选约 90 天，GCS 原文件约 30 天后删除；函数用 Go，并跟踪已处理文件以免重试时重复加载；首次函数没处理好「加载超时但后来成功」，和解时发现有一个文件被加载两次；定时查询有启动延迟，文件比查询更快时可能冲突，后来加了约 5 分钟缓冲；IAM 绑定还缺过两次；嵌套字段的类型映射第一次没做对，要迭代；文章有咨询导流，未给出自己的账单金额或总行数；不代你任意管道同样一次搭好、也不保证不再重复加载。",
+    description:
+      "面向要把营销或消息平台的落地文件送进仓库、又必须自己盯去重和存储成本的人：把「原始层与精选层分开，加载必须可重入，发布前先对行数，过期策略不能事后再想」写成门禁，区别于只给 dbt 草稿 PR 加守卫，以及没有一次真实跑数的数据平台手册。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.whitespacesolutions.ai/content/claude-code-data-engineer-agent-customer-io-bigquery",
+    sourceLabel: "whitespacesolutions.ai·Jason Macht 实践帖",
+    upvotes: 438,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "数据管道",
+      "BigQuery",
+      "Customer.io",
+      "去重",
+    ],
+    howItWorks: [
+      "粘贴源系统如何落文件、目标仓库与必须保留的审计窗口，以及「绝不可在没有跟踪已处理文件时让加载函数随意重试，也不可把密钥贴进提示词」纪律",
+      "Agent 按实践帖输出：着陆表与精选表应如何分开、MERGE 与过期策略怎么写、哪些失败应进死信前缀而不是静默丢掉",
+      "人工保留用哪家仓库、过期几天可以接受，以及和解发现重复加载时要不要回滚；Agent 不代你保证「每 15 分钟的落地必能一次去重成功，或账单必低于第三方 ETL」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-01-12T00:00:00.000Z → 2026-01-12；dateModified 2026-01-14T00:00:00.000Z，取发布日；页内写 January 12, 2026 · Updated January 14, 2026；GET 200，UA MiraBot/1.0）：Jason Macht 写自己需要把 Customer.io 的数据送进 BigQuery，但该产品并不直连仓库，而是每 15 分钟把消息相关的 Parquet 丢进用户控制的 GCS。他自称不是数据工程师，只是对 GCP「知道到会出事的程度」，于是用 Claude Code 来搭带 IAM、调度、去重和成本控制的管道，并希望以后能在下一个项目复用。他估算 15 分钟一次相当于每天约 96 次落地，再乘以 subjects、outputs、metrics 等类型，就会变成每天数百个文件。文件可能重叠，同一条记录会出现在多次导出里；导出格式也会变，当时的 v5 文件名形如 <name>_v5_<workspace_id>_<sequence>.parquet，若仍按 v4 假设就会断。他见过客户用 Fivetran 或 Airbyte，但想自己控制端到端，并在问答里把这类规模的第三方月费写成通常约 500 到 2000 美元——这是对照，不是他自己的账单。架构是：落地到 GCS 后由 Cloud Function 校验格式与 schema 版本，载入只追加、按摄入日期分区的着陆表；再每 15 到 30 分钟跑 MERGE，按稳定键去重后写入供下游使用的精选表；可选归档表分区约 90 天过期。代理先核对项目、区域和所需 API，再创建区域存储类存储桶，并加上约 30 天后删除 Parquet 的生命周期规则。服务账号只给目标桶 storage.objects.create 与回读用的 storage.objects.get，再生成给 Customer.io 粘贴的 JSON 密钥，而不是套 storage.admin。函数用 Go，按文件名判断进哪张表，着陆表用 WRITE_APPEND，并跟踪已处理文件；校验失败的文件移到 /errors 前缀而不是消失。MERGE 示例按 message_id 与 customer_id 匹配，源侧用 QUALIFY ROW_NUMBER 只留最新一行。成本控制包括着陆分区约 7 天过期、精选约 90 天、GCS 约 30 天，以及每日查询费用超阈值告警。他写过程并不一次成功：Parquet 嵌套字段与 BigQuery 类型对不齐，第一次建表漏了映射，要迭代；函数起初没处理「加载超时但后来成功」，和解时发现有一个文件被加载两次；IAM 绑定还缺过两次，报错几乎只说 permission denied；定时查询有启动延迟，文件落地比查询更快时可能冲突，后来加了约 5 分钟缓冲。文末有咨询和相关服务导流，并另链一篇房地产市场的反向管道案例。主线是这条 Customer.io 落地管道和重复加载，不是官文简报。",
+      "与 ricardoribs-pipeline-guard-dbt-draft-pr 不同：本条是把 Customer.io 定期落下的 Parquet 载入 BigQuery 并做 MERGE 去重、过期和一次重复加载复盘，不是给 dbt 模型的草稿 PR 加守卫；也不是没有一次真实跑数的数据平台手册",
+    ],
+    approach: `Jason Macht 在《I Built a Data Engineer Agent for Customer.io》（JSON-LD 2026-01-12）写明：代理可以按简报写出存储桶、最小权限、加载函数和定时 MERGE，但密钥不能进提示词，和解发现重复加载以及过期几天可以接受，仍归人。
+
+关键门禁不是「换掉第三方 ETL 就算完成」，而是原始层与精选层分开、加载可重入，并在函数重试和定时查询冷启动上预留失败样本。
+
+本场景据此输出「落地文件进仓库须人审」提纲。禁止把每 15 分钟、约 96 次／日或第三方月费区间写成你的 SLA，或建议在没跟踪已处理文件时让加载随便重试。`,
+    outcomes: [
+      "源披露 Customer.io 每 15 分钟落一次 Parquet，约 96 次／日；精选 MERGE 每 15 到 30 分钟；着陆约 7 天、精选约 90 天、GCS 约 30 天后过期；首次函数未处理「超时但后来成功」，和解时有一个文件被加载两次；后来为定时查询加了约 5 分钟缓冲；IAM 绑定缺过两次；文章未给出作者自己的账单或总行数，500–2000 美元是他对第三方 ETL 月费的对照；属该管道与那次搭建窗口，不可外推为你的去重成功率、存储账单或「让代理搭一遍就必能一次可重入」。",
+      "能把「可写成分层表、生命周期和 MERGE 模板的部分」与「必须人决定过期窗口、如何和解重复加载、密钥放哪里」拆开。",
+      "为加载超时后重复入库、定时查询冷启动跟不上落地速度，以及报错只写 permission denied 提供提问清单。",
+    ],
+    caveats: [
+      "15 分钟间隔、约 96 次／日、7／30／90 天过期、一次重复加载和约 5 分钟缓冲等为作者自述；第三方月费区间是对照，不是他自己的账单，也不是对照实验。文末有咨询导流。",
+      "过期几天、是否回滚重复加载，以及密钥如何分发给源系统，仍须人；作者写明不要把密钥贴进提示词。",
+      "上面写的是个人实践帖（whitespacesolutions.ai / Jason Macht），不是 Customer.io、Google Cloud 或某个 ETL 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "落地文件进仓库的门禁",
+        body: `你是资深数据管道教练。只根据用户边界写门禁，不要编造已节省的月费或已处理的行数。
+
+源如何落文件、目标仓库：{{pipeline_boundary}}
+重试、过期与密钥约束：{{reliability_constraint}}
+
+输出 Markdown：
+1. 原始层与精选层应如何分开，过期策略各管什么
+2. 加载函数如何跟踪已处理文件，校验失败时文件应去哪里
+3. 定时去重若慢于落地，应预留什么缓冲或告警
+4. 人必须完成的清单（和解重复加载、密钥发放、费用阈值）
+禁止声称「必能按每 15 分钟稳定去重或必能低于第三方 ETL 月费」；禁止建议把密钥贴进提示词，或在没跟踪已处理文件时让加载重试。`,
+      },
+      {
+        title: "同一文件被加载两次复盘",
+        body: `落地文件的加载任务报过超时，后来却成功了；和解时发现同一文件进了两次。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像重试时没有记录已成功的加载作业、定时 MERGE 冷启动跟不上落地，还是 schema 映射把嵌套字段写错
+2. 最小复验顺序（对源与目标行数→找出重复键→决定去重、回滚还是补缓冲）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「函数重试过就等于数据只进了一次」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.whitespacesolutions.ai/content/claude-code-data-engineer-agent-customer-io-bigquery",
+      label: "whitespacesolutions.ai · I Built a Data Engineer Agent for Customer.io",
+      date: "2026-01-12",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "548",
+    slug: "rsdlt-foambyte-24-skills-1200-tests",
+    title: "Rodrigo / Foambyte：1200 个测试和类型错误棘轮——代理不能自己跑迁移",
+    summary: "个人（Foambyte 联合创始人 Rodrigo Santiago，自称设计并实现了整站）；披露 Foambyte 保存真实酿酒师数据，不能「写完看能不能跑」；根目录 CLAUDE.md 约 100 行，并在每次做决定时和代码一起改；仓库有 24 个技能，第三方技能用锁文件记录来源和内容的 SHA-256；权限拒绝数据库迁移、drizzle-kit migrate／push、恢复以及 git push，迁移由他读完 SQL 后在自己的机器上执行；应用数据库角色能读写但不能做 DDL；完整测试约 1200 例，含对着真实 Postgres 的集成测试；服务端类型错误曾有 11 个、前端 547 个，先用棘轮禁止变多，再收到零，之后检查改为严格；把配方计算引擎从浏览器迁到服务器时，先为 6 道参考配方做黄金样本，再在生产做影子对照，容差十亿分之一，匹配后才切源，并用构建插件防止引擎代码回到浏览器包；审计报告不进仓库；不代你任意生产 SaaS 同样把类型错误收到零。",
+    description:
+      "面向生产环境里已有真实用户数据、又必须让编码代理动手的人：把「合同写下来并随代码更新，不可逆操作写成无法覆盖的拒绝项，用棘轮和测试替人盯住质量」写成门禁，区别于代理从不合并的流程叙事，以及对外做渗透测试或抓出口泄漏的安全帖。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://rsdlt.dev/posts/claude-code-production-saas-ai-coding-guardrails/",
+    sourceLabel: "rsdlt.dev·Rodrigo Santiago / Foambyte 实践帖",
+    upvotes: 439,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "生产门禁",
+      "类型错误棘轮",
+      "技能哈希",
+      "安全审计",
+    ],
+    howItWorks: [
+      "粘贴生产边界、不可逆操作清单，以及「绝不可让代理自己执行数据库迁移或推送到远端，也不可在类型错误还在涨的时候把检查改成严格零」纪律",
+      "Agent 按实践帖输出：合同和技能应写哪些不可误读的规则、哪些动作要写成权限拒绝、类型错误如何先棘轮再收零，以及高风险改动如何先影子对照",
+      "人工保留架构和数据模型、迁移是否执行、安全取舍，以及每一份 diff 是否提交；Agent 不代你保证「约 1200 个测试或类型错误收到零可在任意仓库复现」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-10-15T14:00:00.000Z → 2026-10-15；dateModified 同；article:published_time 同；页内写 15 Oct, 2026；GET 200，UA MiraBot/1.0）：Rodrigo Santiago 写 Foambyte 最初的每一行都由他手写，现在很大一部分代码由编码代理完成，主要是 Claude Code。平台里是真实酿酒师的数据，所以「让模型写完看能不能跑」从来不是选项。根目录 CLAUDE.md 约 100 行，写的是架构和不可误读的规则，例如用户数据查询必须按 userId 限定、发给服务器的数值必须先换成标准公制单位、Cloudflare 构建在任何错误时失败，以及数据库迁移必须先扩展再收缩。它还说明 API 路由的四文件结构、前端的 query-key／query-options／mutation-options，以及发布如何从预发到生产。重要习惯是：做出搬到 Postgres、加包或收紧规则这类决定时，合同和代码在同一份工作里一起改。仓库另有 24 个技能，覆盖 Drizzle、Hono、TanStack Query、Cloudflare Workers、Postgres、Capacitor、better-auth 安全、无障碍和安全加固等；第三方技能用锁文件记录来源和内容的 SHA-256，作者把它们写成与 npm 依赖同类的供应链输入。酿酒单位规则单独写成技能，并标明不可商量。有些动作不能只靠说明：权限拒绝 Bash(*db:migrate*)、drizzle-kit migrate／push、restore:pg 以及 git push；代理可以生成迁移，但必须停下来交给他，由他读完 SQL 后在自己的机器上执行；代理只在本地提交，远端推送由他来。基础设施还有第三层：应用数据库角色能读写数据，但不能执行 DDL，即使拿着应用凭证也不能删表。每一份 diff 他都在提交前读完，并要求一次提交只做一件事；代理协助的提交带 Co-Authored-By。部署流水线会做依赖许可证白名单、前端／服务端／共享包的类型检查，以及完整测试——约 1200 例，含对着真实 Postgres 的集成测试——任一步失败都不能部署。发布先到预发，用 Changesets 版本化，验证后再升生产；另有一套冒烟测试对着真实预发库跑，并总是回滚事务。类型检查的严格零不是起点：服务端曾有 11 个错误，前端 547 个，他们先用棘轮禁止数量变多，再和代理一起收到零，之后检查才改成严格。他也用代理做安全审计：先威胁建模，再 STRIDE，再按授权、认证、套餐权益、Workers 运行时、数据库、邮件、前端、移动应用和供应链逐项核对；发现要再核一次才算数，需要判断的标给人，而不是自动「修掉」。接受的发现有编号，修复引用该编号，并在合适时补能证明问题的测试；多租户隔离测试就是这样来的：先写入一个用户的批次指向另一用户发酵罐这种不该存在的状态，再证明 API 不会碰到别人的数据。审计报告本身不进仓库。高风险例子是把配方计算引擎从浏览器迁到服务器：先为 6 道参考配方在每条计算路径上做黄金样本；抽成纯函数且快照不变；再在生产以影子模式重算每次保存但不落库，按十亿分之一的容差记录是否匹配；生产匹配后才把服务器当成真相源；并用构建插件在引擎代码回到浏览器包时让前端构建失败。不委托的包括架构与数据模型、迁移与生产发布、审计标出的安全取舍，以及每一份 diff 的最后一读。主线是生产门禁和棘轮，不是官文简报。",
+      "与 allen-hutchison-agent-never-merges / classkasa-pentest-8-fixes-3-high / princejain-egressleak-153-transcripts 不同：本条是作者给自己的生产 SaaS 写合同、给技能加哈希、用类型错误棘轮和影子模式保护真实用户数据；禁止的是迁移与推送，不是「代理从不合并」本身，也不是对外渗透测试或抓出口泄漏",
+    ],
+    approach: `Rodrigo Santiago 在《How I Use Claude Code on a Production SaaS Without Vibe Coding》（JSON-LD 2026-10-15）写明：代理可以按写成合同的规则改代码，甚至参与审计，但迁移、推送、安全取舍和每一份 diff 的最后一读仍归人。
+
+关键门禁不是「多写几句提示词」，而是把不可逆操作写成代理无法覆盖的拒绝项，并用棘轮、许可证检查和影子对照让错误在到达生产前被机械抓住。
+
+本场景据此输出「生产 SaaS 代理须人审」提纲。禁止把约 1200 个测试或类型错误从 547 收到零写成任意仓库的保证，或建议让代理自己执行迁移和推送。`,
+    outcomes: [
+      "源披露 CLAUDE.md 约 100 行、24 个技能并用 SHA-256 锁定第三方技能；权限拒绝迁移、push 与恢复；完整测试约 1200 例；服务端类型错误曾 11 个、前端 547 个，先棘轮再收到零；配方引擎迁移用了 6 道参考配方和十亿分之一容差的影子对照；审计报告不进仓库；属该生产平台与那套门禁窗口，不可外推为你的测试规模、收零周期或「上了拒绝项就必能在生产里同样安全」。",
+      "能把「可写成合同、技能、棘轮和影子对照的部分」与「必须人执行的迁移、推送、安全取舍和最终读 diff」拆开。",
+      "为类型错误还在涨时就把门禁改成严格零、以及高风险逻辑迁走却没有黄金样本或影子对照提供提问清单。",
+    ],
+    caveats: [
+      "约 100 行合同、24 个技能、约 1200 个测试、11／547 个类型错误收到零，以及 6 道配方和十亿分之一容差等为作者自述，不是对照实验。",
+      "架构、迁移是否执行、审计里需要判断的取舍，以及每一份 diff 是否提交，仍须人；作者写明应用角色也不能执行 DDL。",
+      "上面写的是个人实践帖（rsdlt.dev / Rodrigo Santiago），不是 Anthropic 或 Cloudflare 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "生产 SaaS 代理的门禁",
+        body: `你是资深生产教练。只根据用户边界写门禁，不要编造已清零的类型错误数或测试数。
+
+生产数据与发布边界：{{prod_boundary}}
+不可逆操作（迁移、推送、恢复）：{{deny_constraint}}
+
+输出 Markdown：
+1. 哪些规则应写成随代码一起更新的合同，哪些应再做成技能并锁定哈希
+2. 哪些动作必须写成代理无法覆盖的拒绝项
+3. 类型错误或测试应如何先棘轮、再收紧，而不是一上来报严格零
+4. 人必须完成的清单（读 SQL 并执行迁移、推送、安全取舍、最终读 diff）
+禁止声称「必能把前端类型错误从数百收到零」；禁止建议让代理自己执行数据库迁移或 git push。`,
+      },
+      {
+        title: "高风险逻辑迁移复盘",
+        body: `要把一段原先在浏览器里跑的计算迁到服务器，又必须证明新旧结果一致。请写复盘提纲。
+
+现象或计划：{{symptom}}
+
+输出：
+1. 更像缺少黄金样本、没有在生产做影子对照，还是切源之后计算代码又被打进了客户端包
+2. 最小复验顺序（固定参考输入→影子对照容差→决定继续并行、回滚还是切源）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试绿了或影子模式跑过一次等于已经可以只信服务器」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://rsdlt.dev/posts/claude-code-production-saas-ai-coding-guardrails/",
+      label: "rsdlt.dev · How I Use Claude Code on a Production SaaS Without Vibe Coding",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "549",
+    slug: "doneyli-langfuse-hook-offline-queue",
+    title: "Doneyli：给 Claude Code 自建可观测性——两周后 markdown 日志撑不住了",
+    summary: "个人（Doneyli De Jesus）；披露日常约 20–50 个对话轮，一周下来是成百上千次提示、工具调用和回复，关闭终端这些过程就消失；先写钩子把提示追加进 markdown，为了可读把长提示截到 500 字符，且只记录自己发出去的话；约两周后暂存文件涨到数千行，结果标注几乎一直停在 pending（认真标过两次）；后来在 Docker 里自建 Langfuse（六个服务），用 Stop 钩子读本地 jsonl 成绩单，按会话增量处理并做成可查询的 trace；钩子作者写通常不到一秒；Langfuse 不可达时先做约 2 秒的套接字健康检查，失败则写入本地 JSONL 队列，恢复后先排空再处理当前轮，文中日志示例一次排空 7 条；整栈约 4–6GB 内存，镜像约 2–5GB；家庭财务看板只作例子并声明数字不是真的；文末有通讯订阅导流；不代你任意环境同样不丢会话。",
+    description:
+      "面向编码会话一关就丢、又必须自己决定哪些项目能被记录的人：把「先承认扁平日志回答不了分析问题，捕获要包含回复和工具调用，后端短暂不可用时也不能把这一轮丢掉」写成门禁，区别于给家庭实验室补 runbook 的文档审计，以及上架前测量测试输出的实验。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://doneyli.substack.com/p/i-built-my-own-observability-for",
+    sourceLabel: "doneyli.substack.com·Doneyli De Jesus 实践帖",
+    upvotes: 440,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "可观测性",
+      "Langfuse",
+      "会话钩子",
+      "离线队列",
+    ],
+    howItWorks: [
+      "粘贴你要记录的项目边界、数据能否离开本机，以及「绝不可只记下自己发出的半截提示，也不可在后端暂停时把这一轮悄悄丢掉」纪律",
+      "Agent 按实践帖输出：扁平日志会在哪几处先坏掉、钩子应如何增量读取成绩单、后端不可达时应怎样入队和排空",
+      "人工保留哪些项目允许记录、自托管栈能否一直开着，以及日志里有没有不该留存的内容；Agent 不代你保证「必能不丢任何一轮，或钩子必在一秒内结束」",
+    ],
+    tips: [
+      "源帖（JSON-LD NewsArticle datePublished 2026-01-31T16:55:11+00:00 → 2026-01-31；JSON-LD dateModified 同；页内写 Jan 31, 2026；meta article:modified_time=2026-04-03T19:32:33.966Z，取发布日；GET 200，UA MiraBot/1.0）：Doneyli De Jesus 写自己把 Claude Code 当日常驱动，用来写应用、排错和做架构。副作用之一是家庭财务看板，用来跟踪孩子的大学基金、处理工资单和做假设推演；文中截图说明数字不是真的。他估计典型一天会跑 20 到 50 个对话轮，一周就是成百上千次提示、工具调用和回复，关掉终端这些过程就没了。他在意的不是怀旧，而是哪些提示词稳定好用、工具实际怎么被调用、一次约 45 分钟的有效会话和空转有什么差别。第一次做法是 UserPromptSubmit 钩子，把提示追加到 .claude/PROMPT_LOG_STAGING.md，再偶尔把好的晋升到正式日志。为保持可读，长提示被截到 500 字符，而且只记录自己发出去的那一侧。大约两周后问题集中爆发：暂存文件涨到数千行且没有轮转；最需要留下的长提示反被截断；没有回复和工具调用；无法按主题查询；一轮 9 步的排错会变成 9 条互不相干的记录；结果标注需要手写，他认真做过两次就不再做了；各项目还各有一份日志，看不出跨项目模式。他随后把这当成标准的大模型可观测性问题，选了可自托管的开源 Langfuse：数据留在本机，带 trace／span／session 数据模型和网页界面。模板仓库用 Docker Compose 拉起六个容器，网页在 localhost:3050；生成脚本会写出各组件的随机口令和加密密钥，并提醒第一次登录后改密码。安装钩子会装 Python SDK、把脚本放到 ~/.claude/hooks/，并在全局 settings 里打开 TRACE_TO_LANGFUSE。钩子挂在 Stop：每次助手回复结束后，去 ~/.claude/projects/ 下找最新 jsonl，用 ~/.claude/state/langfuse_state.json 记下读到哪一行，只处理增量；把用户消息到助手回复、工具结果收成一轮，再写成带生成观察和工具 span 的 trace。异常必须以退出码 0 结束，以免挡住会话；作者写即使已经有几百轮，钩子通常也不到一秒。后来补了离线队列：先用约 2 秒超时的套接字探活，后端不可达就把这一轮连同 queued_at 追加到 pending_traces.jsonl，状态行数照样前进以免重复入队；恢复后先排空队列再处理当前轮，中途失败就停并把剩下的写回文件。文中日志示例写于 2026-01-28 15:23:45，一次排空 7 条，随后 0.8 秒处理了 1 轮。不想被记录的项目可在项目级设置里把 TRACE_TO_LANGFUSE 设为 false。资源上，六个服务运行时约 4–6GB 内存，镜像约 2–5GB，空闲 CPU 很低；端口默认 3050／5433／8124／6379／9090。文末导向模板仓库和通讯订阅。主线是从扁平日志换到可查询 trace 和离线队列，不是官文简报。",
+      "与 franz-homelab-six-runbooks-doc-audit / alvaro-measured-test-output-16-sessions / yureki-agent-tool-noop-observability 不同：本条是给自己的编码会话补结构化 trace 和后端宕机时的本地队列，不是给家庭实验室补 runbook，也不是测量测试输出或工具空转；与近批已用的 observability 条不是同一篇文章",
+    ],
+    approach: `Doneyli De Jesus 在《I Built my own Observability for Claude Code — Here’s Why and How》（JSON-LD 2026-01-31）写明：只把提示追加进 markdown，很快就既截断又无法查询；要把回复、工具调用和会话串在一起，并且后端暂停时也不能把这一轮丢掉。
+
+关键门禁不是「再找一个会记录聊天的面板」，而是增量读取已有成绩单、失败必须不挡住会话，以及用本地队列补上短暂不可用。
+
+本场景据此输出「编码会话可观测性须人审」提纲。禁止把约 20–50 轮／日或一次排空 7 条写成任意环境的保证，或建议在未约定数据能否离开本机时把完整提示发到第三方。`,
+    outcomes: [
+      "源披露日常约 20–50 个对话轮；markdown 方案把提示截到 500 字符，约两周后暂存文件到数千行，结果标注只认真做过两次；后来自托管六个服务的 Langfuse，钩子通常不到一秒；探活超时约 2 秒，文中示例一次排空 7 条并在 0.8 秒内处理 1 轮；运行时约 4–6GB 内存，镜像约 2–5GB；属作者自己的会话记录窗口，不可外推为你的会话量、存储增长或「装了钩子就必能不丢任何一轮」。",
+      "能把「可写成增量钩子、结构化 trace 和离线队列的部分」与「必须人决定哪些项目允许被记录、栈是否一直开着」拆开。",
+      "为只记下半截提示、后端暂停时静默丢轮，以及结果标注永远停在 pending 提供提问清单。",
+    ],
+    caveats: [
+      "20–50 轮／日、500 字符截断、约两周后文件到数千行、钩子不到一秒、一次排空 7 条和 4–6GB 内存等为作者自述，不是对照实验。家庭财务截图已声明数字不是真的。文末有通讯订阅导流。",
+      "哪些项目允许记录、自托管栈何时开关，以及日志里有没有不该留存的内容，仍须人；作者提供了按项目关闭追踪的开关。",
+      "上面写的是个人实践帖（doneyli.substack.com / Doneyli De Jesus），不是 Anthropic 或 Langfuse 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "编码会话可观测性的门禁",
+        body: `你是资深可观测性教练。只根据用户边界写门禁，不要编造已捕获的会话数或保证不丢数据。
+
+要记录的项目与数据能否离开本机：{{obs_boundary}}
+后端不可用时的约束：{{offline_constraint}}
+
+输出 Markdown：
+1. 扁平提示日志会在哪些方面先失效（截断、没有回复、无法按会话查询）
+2. 钩子应如何增量读取已有成绩单，并在失败时不挡住编码会话
+3. 后端不可达时如何入队、如何避免重复入队、恢复后如何排空
+4. 人必须完成的清单（哪些项目允许记录、口令与端口、日志留存）
+禁止声称「必能不丢任何一轮或钩子必在一秒内结束」；禁止建议在未约定的情况下把完整提示发到第三方。`,
+      },
+      {
+        title: "会话记录出现缺口复盘",
+        body: `你以为每一轮都被记下了，但回看时发现某段排错会话不完整，或后端暂停期间少了一批 trace。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只记录了发出去的提示、长提示被截断，还是后端不可达时没有本地队列
+2. 最小复验顺序（看钩子日志→看待发送队列→看状态文件读到了哪一行）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「装过可观测性面板等于这段会话已经被完整保存」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://doneyli.substack.com/p/i-built-my-own-observability-for",
+      label: "doneyli.substack.com · I Built my own Observability for Claude Code — Here’s Why and How",
+      date: "2026-01-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "550",
+    slug: "laurynas-fiberplane-11-serializers-44-to-25",
+    title: "Laurynas / Fiberplane：测了 11 种锁文件格式——伪冲突从约 44% 降到约 25%",
+    summary: "团队（Fiberplane，作者 Laurynas Keturakis）；披露 drift 的锁文件最初类似 go.sum，一行一条绑定，作者注意到合并冲突很多且多为伪冲突：两边最终状态一样，只是字节不同；元数据字段曾按内存追加顺序写出，同样语义会得到不同字节顺序，修复是写出时按键排序，约 6 行；随后用 Zig 的 minish 做属性测试：生成器先把两次编辑分到不同绑定上，再交给 git merge-file；第一次 400 次试验约 40% 出现冲突标记，干净合并里零次语义错误；后来让 Claude 又写了 10 种替代格式，共 11 种用同一生成器和种子：基准行格式约 211 字节、冲突率约 44%；对齐列表对照约 54%；多行变体约 25%–31%；最终上线的扁平 TOML 约 324 字节、约 25%；相对约少 40%，11 种里没有低于 25% 的，作者把这写成排序文本加相邻插入的结构性地板；没做自定义 merge driver，因为 GitHub 的 PR 合并会忽略它；测量与脚手架是几个晚上做完的；不代你任意锁文件同样降到 25%。",
+    description:
+      "面向锁文件或生成出来的排序文本在并行分支上频繁伪冲突、又必须自己决定改格式还是写合并驱动的团队：把「先测不相交编辑会被 git 当成冲突的比例，再换序列化而不是要求别人安装自定义合并驱动」写成门禁，区别于 Dependabot 升级流，以及以 Playwright 为主线的测试生成。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://blog.fiberplane.com/blog/what-eleven-serializers-told-us-about-merge-conflicts/",
+    sourceLabel: "blog.fiberplane.com·Laurynas Keturakis / Fiberplane 实践帖",
+    upvotes: 441,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "锁文件",
+      "合并冲突",
+      "属性测试",
+      "TOML",
+    ],
+    howItWorks: [
+      "粘贴锁文件或生成文本的格式边界，以及「绝不可在没分清伪冲突和静默合并错误之前就换格式，也不可把自定义 merge driver 当成托管 PR 里一定会生效的修复」纪律",
+      "Agent 按实践帖输出：如何生成两次不相交的编辑、怎样把冲突率和干净但语义错误分开统计，以及不同序列化可能把不相邻的改动挤进同一块 diff",
+      "人工保留是否改格式、选哪一种序列化，以及 25% 左右的地板能否接受；Agent 不代你保证「必能从约 44% 降到约 25%，或某种格式能低于这个地板」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD／article:published_time；页眉写 12 May 2026 → 2026-05-12；GET 200，UA MiraBot/1.0）：Laurynas Keturakis 写 Fiberplane 的 drift 用来把说明锚到代码上，以免文档漂移。早期引入 drift.lock，把原先散落在 frontmatter 里的属性和哈希收进一个锁文件，但它很快变成合并冲突的来源，而且多数是伪冲突：两边最终状态一样，只是字节不同。最初格式有点像 go.sum，每行是 <spec> -> <target> 再加 key:value。他们越来越多用属性测试来约束代理可能不会有意识维持的不变量。作者让 Claude 用 Zig 的 minish 搭了一套很小的测试，先发现序列化器按内存追加顺序写元数据，同样的语义可能得到 sig 在前或 origin 在前两种字节；绑定只要有一个以上元数据字段，两条分支重新链接时就可能冲突。修复是写出时按键排序，约 6 行。更有意思的问题是：能不能用同一套生成器，在 N 次随机情况里测量有多少会变成冲突？生成器先给出一份小的基线锁文件和两份不相交的编辑脚本（添加、删除或改某个元数据），不相交是生成时就划分好的，不是事后过滤。每边各自应用脚本后，把三份文本交给 git merge-file -p --no-diff3。他们问两个问题：git 有没有打出冲突标记；如果没有，合并结果解析出来是否等于把两份脚本都应用到基线。后者——干净合并却静默错误——算硬失败；前者是伪冲突，只计数。第一次 400 次试验约 40% 以冲突结束，例如一边给 docs/auth.md 加新绑定，另一边只改无关的 billing 绑定的 sig；文中解释 git 会把大约三行以内的改动收进同一块，排序后的一行一条文件很容易让无关编辑挤在一起。这 400 次里干净合并的硬失败是零：drift 不会在干净合并时把锁文件合并错，只是会制造假打架。他们没有写自定义 merge driver：一是 .gitattributes 里的驱动在 GitHub 的 PR 合并路径上会被忽略；二是 drift 要进别人的仓库，不宜多规定别人怎么合并。基线之后，作者让 Claude 又写了 10 种替代格式，包括多行块、按文档分组、TOML、YAML、INI 和几种对照，用同一生成器和种子、只换序列化器。表格里基准行格式约 211 字节、冲突率约 44%；多行块约 28%，按文档分行约 31%，按文档再多行约 25%，上线的扁平 TOML 约 324 字节、约 25%，嵌套 YAML 约 26%，分隔线对照约 28%，对齐列表对照约 54%，INI 块约 28%，嵌套 TOML 约 28%，按文档分组的 TOML 约 25%。也就是约从 44% 降到 25%，相对约少 40%；11 种里没有低于 25% 的，作者把这写成排序文本的结构性地板——两边在同一排序空隙里插入新绑定，无论周围格式多特别，git 只看位置。数据上按文档分组的 TOML 约 25.0%，扁平约 25.2%，差别在测量噪声里，他们仍选了扁平：可直接反序列化成绑定列表，新字段不必绕嵌套映射，文件头也可以放 version = 1。顺带一提 TOML 序列化大约比旧格式快一倍，因为旧实现先写到临时缓冲再排序，TOML 按键排一次后直接流式写出。作者写这套随机预言机、11 种格式和测量在过去的工时预算里完全说不过去，现在因为代理吃掉了脚手架成本，几个晚上就能做完；问题由他来定，Claude 写测试架，数据帮他们做决定。测试架和 eleven serializers 放在 drift 的 PR #31。主线是测量伪冲突并据此改格式，不是官文简报。",
+      "与 kompiro-karasu-dependabot-88-prs / nagayashion-playwright-claude-month-60pct / gorka-blablanote-10-repos-119-prs 不同：本条是用属性测试测量锁文件在不相交编辑下的伪冲突率，并据此把格式改成 TOML；不是 Dependabot 升级流，不是以 Playwright 为主线的测试生成，也不是用内容哈希跳过重复 CI",
+    ],
+    approach: `Laurynas Keturakis 在《What eleven serializers told us about merge conflicts》（页眉 2026-05-12）写明：代理可以帮忙写出属性测试和十一种序列化，但要不要改格式、能否接受仍剩下的冲突地板，以及不把自定义合并驱动强加给别人，仍归人。
+
+关键门禁不是「换一种看起来更现代的格式」，而是先把伪冲突和干净却静默错误分开统计，并认清 git 按位置分块会给排序文本留下地板。
+
+本场景据此输出「锁文件伪冲突须人审」提纲。禁止把约 44%→25% 写成任意文件格式的保证，或建议把自定义 merge driver 当成托管 PR 里一定生效的修复。`,
+    outcomes: [
+      "源披露第一次 400 次试验约 40% 冲突、干净合并里零次语义错误；11 种格式里基准行格式约 44%、对齐列对照约 54%、多行变体约 25%–31%，上线的扁平 TOML 约 25%、约 324 字节；相对约少 40%，没有一种低于 25%；元数据乱序的修复约 6 行；测量用了几个晚上；属 drift 锁文件与那套生成器窗口，不可外推为你的冲突率、相对降幅或「换成 TOML 就必能到 25% 以下」。",
+      "能把「可写成生成器、冲突率对照和序列化实现的部分」与「必须人决定改不改格式、选哪一种、地板能否接受」拆开。",
+      "为无关编辑因挤在同一 diff 块里被当成冲突、以及自定义 merge driver 在托管 PR 上不生效提供提问清单。",
+    ],
+    caveats: [
+      "400 次试验、约 40%／44%／25%、相对约 40% 和「几个晚上」等为作者自述；25.0% 与 25.2% 作者已标在测量噪声内，也不是对照实验。页内无 JSON-LD，日期取页眉。",
+      "是否改格式、选扁平还是分组，以及剩下的相邻插入冲突能否接受，仍须人；作者明确没把自定义 merge driver 当作可依赖的修复。",
+      "上面写的是团队实践帖（blog.fiberplane.com / Laurynas Keturakis），不是 Git 或 GitHub 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "锁文件伪冲突的测量门禁",
+        body: `你是资深版本管理教练。只根据用户边界写门禁，不要编造已测到的冲突率。
+
+当前锁文件或生成文本格式：{{lockfile_boundary}}
+合并环境约束（是否只走托管 PR）：{{merge_constraint}}
+
+输出 Markdown：
+1. 如何生成两次确定不相交的编辑，并把「打出冲突标记」与「干净合并却语义错误」分开统计
+2. 排序后的一行一条文本为什么容易把无关编辑挤进同一块 diff
+3. 若考虑换序列化，应同时记录冲突率和是否还需要别人安装自定义合并驱动
+4. 人必须完成的清单（样本量、种子是否固定、地板能否接受）
+禁止声称「必能从约 44% 降到约 25%」；禁止建议把自定义 merge driver 当成托管 PR 里一定生效的修复。`,
+      },
+      {
+        title: "不相交编辑却总是冲突复盘",
+        body: `两条分支改的是锁文件里完全不同的条目，合并却经常出现冲突标记，而解析后的最终状态其实一样。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像元数据字段写出顺序不稳定、无关编辑挤在同一 diff 块，还是两边在同一排序空隙里各自插入了新条目
+2. 最小复验顺序（看是否伪冲突→看字段顺序是否确定→决定排序、换格式还是接受地板）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「换成看起来更现代的格式就一定不再冲突」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.fiberplane.com/blog/what-eleven-serializers-told-us-about-merge-conflicts/",
+      label: "blog.fiberplane.com · What eleven serializers told us about merge conflicts",
+      date: "2026-05-12",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
