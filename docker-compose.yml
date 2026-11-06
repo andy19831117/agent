@@ -1,0 +1,17 @@
+# 旁路部署。密钥放在仓库根目录的 .env，不要提交。
+services:
+  agent-usecases:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://agent.eastoracle.top}
+    image: agent-usecases:local
+    ports:
+      - "127.0.0.1:3000:3000"
+    env_file:
+      - .env
+    environment:
+      HOSTNAME: "0.0.0.0"
+      PORT: "3000"
+      NODE_ENV: production
+    restart: unless-stopped
