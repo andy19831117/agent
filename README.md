@@ -48,6 +48,27 @@ SUBSCRIBE_TOKEN_SECRET=
 
 `POST /api/subscribe` 经 Resend 发确认邮件。邮件里的链接是短地址 `/c/…`（整行放得进 75 字符，避免邮件折行截断）。收件人打开后点击「确认订阅」，邮箱才写入 Segment。仍可用 `/subscribe/confirm?token=` 校验未过期的旧 HMAC 链接。未配置上述变量时，表单会提示订阅暂时不可用。发送域名请关闭点击跟踪，否则确认链接会被改写成超长跳转。
 
+## 国内 ECS 部署
+
+旁路部署到阿里云 ECS `47.103.117.81`，域名 `agent.eastoracle.top`。不替换现有 Vercel 部署，也不要改 `news.eastoracle.top` 的发信。先在仓库根目录写 `.env`（不要提交）：
+
+```bash
+RESEND_API_KEY=
+RESEND_SEGMENT_ID=
+RESEND_FROM=
+SUBSCRIBE_TOKEN_SECRET=
+NEXT_PUBLIC_SITE_URL=https://agent.eastoracle.top
+```
+
+`NEXT_PUBLIC_SITE_URL` 会在 `next build` 时写进前端包，变更后需要重新构建镜像。不要打开 Resend 点击跟踪，否则确认信短链会被改成长跳转。
+
+```bash
+docker compose build
+docker compose up -d
+```
+
+镜像内监听 `3000`，Compose 只把它绑到宿主机 `127.0.0.1:3000`。把 `deploy/nginx-agent.eastoracle.top.conf.example` 放到 Nginx 的 http 配置里，反代该地址，再用 Certbot 为 `agent.eastoracle.top` 签发证书。
+
 ## 如何新增用例
 
 1. 编辑 `src/data/usecases.ts`，按现有对象追加一条（`slug` 全局唯一）。
