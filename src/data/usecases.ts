@@ -36385,6 +36385,444 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "551",
+    slug: "dunkels-matter-xg24-60s-to-4s",
+    title: "Adam Dunkels：给 Matter 灯泡做出全链路联调——调试时把 60 秒等待压到 4 秒",
+    summary: "个人（作者 Adam Dunkels，PhD）；披露用 Claude Code（Opus 4.6）做出一套可自动回归的 Matter 智能家居原型：Silicon Labs xG24 开发板分别跑照明固件和 Thread 射频协处理器，Google Pixel 6a 上的 Android 应用完成发现、入网并开关板上 LED，开发容器里跑边界路由器与回归脚本、由脚本遥控手机和开发板；Matter 开源代码逾 2.3 万个文件、约 100 个子模块、支持 12 家硬件厂商；人工把工作拆成开发容器、Android 应用、入网流程、调试、视觉设计、性能和自动化回归七项任务；入网调试与性能改进约占所耗 token 的一半，一度出现找到设备后要等 60 秒才能接受命令，代理钻进 SDK 源码读到 token 猛涨，被人叫停去读文档后把等待压到约 4 秒；整项工作用掉 Claude Code 5x Max 周额度的约 34%，用 Claude Design 一句话生成 Android 界面设计则用掉该设计额度的约 55%；作者写过去要数周的环境搭建现在只要数天，但强调远非一句话提示、且必须懂底层技术并拆任务；不代你任意智能家居项目同样从数周变成数天。",
+    description:
+      "面向要把 Matter／Thread 固件、边界路由器和真机委托应用联成可回归原型、又必须自己盯入网调试的人：把「代理可以编译烧录和遥控真机，但任务拆分、纠偏和叫停乱读超大 SDK 仍归人」写成门禁，区别于把闲置多年的 iOS 应用现代化、Android 无障碍改造，以及从零做 Flutter 应用。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://dunkels.com/adam/vibe-code-smart-home-matter-device/",
+    sourceLabel: "dunkels.com·Adam Dunkels 实践帖",
+    upvotes: 442,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Matter",
+      "嵌入式",
+      "Thread",
+      "Android",
+    ],
+    howItWorks: [
+      "粘贴硬件与协议边界（开发板、手机、无线介质、必须保住的安全委托流程）以及「绝不可把编译通过或脚本跑绿当成已经在真实家居里可用，也不可把入网、证书和真机手感交给代理独自签字」纪律",
+      "Agent 按实践帖输出：环境应按什么顺序搭（容器、固件、边界路由器、手机应用、回归脚本）、入网流程还应在真机上核对哪些步骤、代理若开始通读超大 SDK 该在什么信号上叫停",
+      "人工保留任务怎么拆、何时叫停乱读源码、以及真机委托是否真的成功；Agent 不代你保证「任意 Matter 产品都能把过去数周的搭建变成数天，或把入网等待从 60 秒压到 4 秒」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-04-27T00:00:00+00:00 → 2026-04-27；dateModified 同；article:published_time 同；页内写 Apr 27, 2026；GET 200，UA MiraBot/1.0）：Adam Dunkels 在《Can we Vibe Code a Smart Home Device with Matter?》写自己用 Claude Code 与 Opus 4.6，尝试给尚未被模型专门练熟的 Matter 标准「即兴」做出可工作的原型。他指出 Matter 开源库很大：逾 2.3 万个文件、约 100 个子模块、支持 12 家硬件厂商。目标组件包括两块 Silicon Labs xG24——一块跑照明固件，一块跑 OpenThread 射频协处理器——以及一部真实的 Google Pixel 6a 上的 Android 委托／控制应用；Windows 宿主里的开发容器承担工具链、Matter 编译、otbr-agent 边界路由器、socat 中继和 avahi／SRP，开发板经 USB 连接。最终回归脚本会编译并烧录两块板、把应用装到手机、对灯做恢复出厂、经蓝牙发现、把灯委托进 Thread 网络，再在应用里开关板上 LED，全程遥控手机与开发板、无需人点下一步。作者写这绝非一句话提示：人必须把工作拆成开发容器、Android 应用、入网流程、调试（给固件加可无人值守启动委托的 shell 命令）、按 Claude Design 提供的设计改界面、改进入网性能、以及自动回归七项，且每一步都需要大量带着走。入网流程最难，代理会走错方向，人要在上下文窗口被填满时叫它们停下来重新计划。入网调试与性能改进是最贵的操作，而且大多是无人值守，约占所耗 token 的一半；代理会为了搞懂流程去读 Matter 源码，代码库体积本身就会烧掉大量 token，最后仍要人把它们拉出来。有一次从找到设备到委托完成出现 60 秒等待，调试中的代理钻进 SDK，作者是因为 token 计数突然上涨才发现，只能命令它停止读 SDK；几经弯路后它改去读文档，把等待压到约 4 秒。整项工作用掉 Claude Code 5x Max 订阅周额度的约 34%；Android 界面用 Claude Design 一句话生成，用掉该设计额度的约 55%。作者的判断是：过去要数周的环境搭建现在只要数天，但人仍在做真正的工程——拆任务、抓住弯路、懂系统到能转向；页末有面向软硬件交叉产品的咨询导流。主线是 Matter／Thread 真机联调和硬件在环回归，不是官文简报。",
+      "与 andhand-mybooks-6-days-18-testflight / carmen-krol-android-a11y-8-new-handle / khalit-flutter-claude-827-commits-30pct / babipanote-gentledo-75-to-158-tests 不同：本条是把 Matter 固件、Thread 边界路由器和 Pixel 真机委托应用联成可自动回归的原型，并记录 60 秒等待被压到约 4 秒，不是把闲置约七年的 iOS 应用现代化，不是 Android 无障碍改造，也不是从零做 Flutter 应用",
+    ],
+    approach: `Adam Dunkels 在《Can we Vibe Code a Smart Home Device with Matter?》（JSON-LD 2026-04-27）写明：代理可以编译固件、安装 Android 应用并写出遥控真机的回归脚本，但任务必须由人拆开，入网流程会走错方向，代理若开始通读超大 SDK 还得由人叫停。
+
+关键门禁不是「对 Matter 说一句话就能做出可卖的智能家居产品」，而是先承认过去数周的环境搭建被压缩到数天，是因为人懂底层技术并盯着硬件在环联调。
+
+本场景据此输出「Matter／Thread 真机联调须人审」提纲。禁止把「数周变数天」或 60 秒到 4 秒写成任意智能家居项目的 SLA，或建议把真机委托和证书交给代理独自签字。`,
+    outcomes: [
+      "源披露用 Claude Code／Opus 4.6 在 xG24 开发板与 Google Pixel 6a 上做出可自动回归的 Matter 灯控原型；开源库逾 2.3 万个文件、约 100 个子模块、支持 12 家厂商；入网调试约占所耗 token 的一半，等待从 60 秒压到约 4 秒；约消耗 5x Max 周额度的 34%，Claude Design 用掉其额度约 55%；作者写过去要数周的搭建现在只要数天；属该原型与那次联调，不可外推为你的智能家居项目必能同样缩短工期，或把入网等待稳定压到 4 秒。",
+      "能把「可写成编译、烧录、安装和回归脚本的部分」与「必须人完成的任务拆分、叫停乱读 SDK、以及真机委托是否成功」拆开。",
+      "为代理在超大嵌入式代码库里靠读源码烧 token、以及入网流程出现数十秒无意义等待提供提问清单。",
+    ],
+    caveats: [
+      "2.3 万余文件、60 秒到约 4 秒、约 34% 与约 55% 的额度、以及「数周变数天」均为作者自述，不是对照实验。",
+      "任务怎么拆、何时叫停代理去读 SDK，以及真机委托和证书是否可接受，仍须人；作者写每一步都需要大量带着走。",
+      "源页页末有软硬件交叉产品咨询/服务导流（dunkels.com/adam/consulting.html 与 Services）。",
+      "上面写的是个人实践帖（dunkels.com / Adam Dunkels），不是 Connectivity Standards Alliance、Silicon Labs 或某个云厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Matter 真机联调的门禁",
+        body: `你是资深嵌入式与智能家居联调教练。只根据用户边界写门禁，不要编造已完成的天数或入网等待时间。
+
+硬件与协议边界：{{hw_boundary}}
+真机与安全委托约束：{{commissioning_constraint}}
+
+输出 Markdown：
+1. 环境应按什么顺序搭（容器／工具链、设备固件、边界路由器、手机应用、回归脚本）
+2. 入网流程至少要在真机上核对哪些步骤，才能称为一次完整联调
+3. 代理若开始通读超大 SDK，哪些信号说明该叫停并改去读文档
+4. 人必须完成的清单（任务拆分、真机手感、证书与委托是否成功、何时允许无人值守）
+禁止声称「必能把过去数周的搭建变成数天」；禁止建议把真机委托或证书签字交给代理。`,
+      },
+      {
+        title: "入网等待过长复盘",
+        body: `固件能编译、应用能装上，但从发现设备到可接受命令要等将近一分钟，代理同时在大SDK里越读越深。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像协议/IPv6 配置问题、回归脚本里的固定等待，还是代理在用通读源码代替读文档
+2. 最小复验顺序（看真机日志→看等待发生在哪一步→决定改配置、改脚本还是叫停读源码）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「脚本跑绿或等待变短等于用户已经能在真实家居里安全使用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dunkels.com/adam/vibe-code-smart-home-matter-device/",
+      label: "dunkels.com · Can we Vibe Code a Smart Home Device with Matter?",
+      date: "2026-04-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "552",
+    slug: "jiawei-guan-300k-lines-then-deleted",
+    title: "关嘉伟：10 天堆出近 30 万行后又几乎全删——48 小时用不到 1 万行跑通",
+    summary: "个人（作者关嘉伟，AI Infra 创业者）；披露自己完全不会写代码，在 Claude Opus 4.6 发布后用 Claude Code 做实验：人在旅行中经手机 SSH + tmux 远程指挥，10 天里堆出将近 20 万行 Go 代码加 10 万行测试代码，合计近 30 万行，期间一次都没有真正上手体验产品，只是让它写、自己看、再继续写；停下来实测时最基础的主链路不通，来回改测后才跑通，随后发现在约 20 万行的仓库里连小改动都要消耗夸张数量的 token，作者拒绝写出具体烧了多少；他决定推倒重来，先回到 MRD／PRD 再做架构，花半天加一晚把问题、创新和设计哲学写进项目，大约 5000 行时就把异构硬件、引擎和模型带进真实测试；48 小时后不到 1 万行，端到端跑通，并在小盒子上一键部署了当时刚发布两天的模型；作者写代码是负债不是资产，并说指挥多个会话 5–6 小时后像一个人三开高强度游戏；不代你任意项目同样先删 30 万行再在 48 小时内跑通。",
+    description:
+      "面向会被代理的产量淹没、又必须自己决定什么该删的人：把「先写清要解决的问题再让代理实现，并尽早在真实设备上验证主链路」写成门禁，区别于以云账单或订阅倍率为主线的成本复盘，以及以冲刺人天估算为主的工时故事。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://guanjiawei.ai/zh/blog/code-is-liability",
+    sourceLabel: "guanjiawei.ai·关嘉伟 实践帖",
+    upvotes: 443,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Vibe Coding",
+      "推倒重来",
+      "代码负债",
+      "端侧推理",
+    ],
+    howItWorks: [
+      "粘贴你要解决的核心问题、必须在真机上跑通的主链路，以及「绝不可把代码行数或测试行数当成已经可用，也不可在自己从未点过产品的情况下继续加功能」纪律",
+      "Agent 按实践帖输出：何时该停下来做一次真实上手、推倒重来前应先写清哪些文档、大约多少行就该把真实硬件和模型带进验证",
+      "人工保留是否删除现有仓库、产品到底要解决什么问题，以及主链路是否真的跑通；Agent 不代你保证「删掉近 30 万行后必能在 48 小时、不到 1 万行内端到端成功」",
+    ],
+    tips: [
+      "源帖（中文原文 JSON-LD BlogPosting datePublished 2026-03-01T00:00:00.000Z → 2026-03-01；dateModified 同；inLanguage zh-CN；页内写 2026年3月1日；GET 200，UA MiraBot/1.0。英文译本 /en/blog/code-is-liability 同日 JSON-LD，本条以中文原文为一手来源）：关嘉伟在《10天写了30万行代码，然后我全删了》写自己完全不会写代码，也从未做过软件开发。Claude Opus 4.6 发布后，他让 Claude Code 从零做一个项目，两天做出雏形；随后想让 AI 7×24 小时自己对照架构找机会，或在真实设备上观察并自修，直到链路跑通——事后觉得两条路都有点天真。人在外面旅行，他用手机 SSH + tmux 远程指挥，烧掉「夸张数量」的 token，具体数字「不说了，说出来有点心疼」。10 天里项目累计将近 20 万行 Go 代码加 10 万行测试代码，变成一座代码山；这 10 天他一次都没有真正上手体验产品，只是让它写、review、继续写。停下来测试时，最基础的主要链路根本不通。按测试结果来回改测后链路终于跑通，他作为技术外行觉得奇妙，但马上发现在约 20 万行的仓库里任何一个小改动都要消耗夸张数量的 token，「像在屎山上动土」。他决定从零开新项目，先花很长时间问自己到底要解决什么核心问题，回到写 MRD、PRD，再做架构，并用深度研究挑选组件。推倒后他花了半天加一晚做出自认为有意义的架构与产品，把问题、创新和设计哲学写进项目；开发到大约 5000 行就开始对最核心功能做真实测试，并很早带入异构硬件、引擎和模型；每次改动都问是否违反自己写下的原则，经常返工。48 小时后端到端跑通，代码不到 1 万行，并在设备上做一键模型推理部署，把一个刚发布两天的模型跑在他们的小盒子上。作者的结论是：每一行代码是负债不是资产；指挥多个 Claude Code 会话 5–6 个小时后像一个人三开打高强度游戏，身体被掏空。文末推荐微信公众号「关嘉伟谈AI」。主线是产量变成负债后的推倒重来，不是官文简报。",
+      "与 boris-barash-10-day-sprint-50x-billing / oi-botsinproduction-17-bots-100-usd / scott-algatt-cloud-bill-198-to-74 / baodev 七天冲刺（已跳过）不同：本条是非开发者先堆近 30 万行、主链路不通后再删掉重做，硬数是行数、10 天／48 小时和「token 多到不愿写出」，不是云账单下降或订阅倍率对照",
+    ],
+    approach: `关嘉伟在《10天写了30万行代码，然后我全删了》（中文原文 JSON-LD 2026-03-01）写明：代理可以在十天里堆出看似庞大的仓库，但作者一次都没真正上手时，最基础的主链路是不通的；后来能在 48 小时、不到 1 万行里跑通，是因为先写清问题并尽早在真实设备上验证。
+
+关键门禁不是「外行加代理等于可以先堆三十万行再谈产品」，而是把代码行数看成负债，并承认具体烧掉多少 token 作者自己都不愿写出。
+
+本场景据此输出「产量变成负债时须人决定是否推倒」提纲。禁止把 10 天近 30 万行或 48 小时不到 1 万行写成任意项目的 SLA，或建议在自己从未点过产品的情况下继续加功能。`,
+    outcomes: [
+      "源披露 10 天内将近 20 万行 Go 加 10 万行测试、合计近 30 万行，期间一次没真正上手，实测时主链路不通；推倒后大约 5000 行就开始真机验证，48 小时后不到 1 万行端到端跑通，并在小盒子上部署了当时刚发布两天的模型；具体 token 消耗作者拒绝写出；属该实验与那两次窗口，不可外推为你删除或重写代码后必能在 48 小时内跑通，或把近 30 万行当成可复用的产能指标。",
+      "能把「可写成文档、测试和真机验证的部分」与「必须人回答的产品到底解决什么问题、是否删除现有仓库」拆开。",
+      "为「行数很多但主链路不通」以及「仓库大到连小改动都极贵」提供提问清单。",
+    ],
+    caveats: [
+      "近 30 万行、10 天、48 小时、不到 1 万行、约 5000 行开始真测，以及主链路一度不通，均为作者自述，不是对照实验；具体 token 花费作者明确拒绝披露。",
+      "是否删除现有仓库、产品到底要解决什么问题，以及主链路是否算跑通，仍须人；作者写指挥多个会话比自己写代码更累。",
+      "源文文末有微信公众号「关嘉伟谈AI」导流。",
+      "上面写的是个人实践帖（guanjiawei.ai / 关嘉伟中文原文），不是 Anthropic 或某个模型厂商的官文简报。英文译本页同日发布，本条以中文原文为准。",
+    ],
+    prompts: [
+      {
+        title: "产量变成负债时的推倒门禁",
+        body: `你是资深产品与技术教练。只根据用户边界写门禁，不要编造已删除的行数或重做所需小时数。
+
+当前仓库与主链路：{{repo_boundary}}
+作者或团队是否亲手用过产品：{{hands_on_status}}
+
+输出 Markdown：
+1. 现在更应该先做一次真实上手，还是已经到了该停下来写 MRD／PRD／架构原则的时候
+2. 推倒重来前至少要写清哪些「不能违反」的原则
+3. 大约到什么验证点就该把真实设备或真实数据带进来，而不是继续加行数
+4. 人必须完成的清单（是否删除旧仓、主链路怎样算跑通、哪些功能先不做）
+禁止声称「删掉近 30 万行后必能在 48 小时内跑通」；禁止建议用代码行数证明进展。`,
+      },
+      {
+        title: "主链路不通却持续加功能复盘",
+        body: `仓库已经很大，测试文件也不少，但最基本的主路径在真实环境里走不通，同时每一次小改动都变得很贵。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像从未在真机上验证过主链路、功能是即兴堆上去的，还是仓库大到模型已经很难安全改动
+2. 最小复验顺序（亲手走一遍主路径→列出真正创造价值的部分→决定修、拆还是新开仓库）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试文件很多或行数很多等于用户已经能完成主任务」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://guanjiawei.ai/zh/blog/code-is-liability",
+      label: "guanjiawei.ai · 10天写了30万行代码，然后我全删了",
+      date: "2026-03-01",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "553",
+    slug: "manuel-fedele-infra-template-20-tests",
+    title: "Manuel：一次长会话做出 AWS 基建模板——20 项安全测试找出 3 个问题",
+    summary: "个人（作者 Manuel Fedele，带平台工程团队）；披露用一次延长的 Claude Code 会话，做出能生成 AWS Fargate／Lambda 项目的 Copier 模板，并在两个真实 AWS 账户里部署、拆掉、修好：会话持续数小时，两个仓库约 30 次提交，约 15 轮「部署→把报错贴回去→再部署」循环、每轮约 2–5 分钟；从两个既有交付仓各拉逾 10 个文件做并行调研约 2 分钟；Cookiecutter 迁到 Copier 动了 59 个文件、约 15 分钟；后期对已部署应用做了 20 项基础安全测试，发现跨域过宽且带凭证、非本地环境暴露 Swagger／OpenAPI、Nginx 泄露版本号，三项都修完并复测；模板最终约 60 个文件，覆盖 Terraform、FastAPI、React、Docker、nginx 与 GitLab CI；作者按以往经验估计手工做同等模板约要两周，并写明这是经验估计；会话里还改过硬编码的 qual、构建期写死的 EntraID 客户端 ID、误加的 PKCE 客户端密钥，以及 ECS 因 :latest 标签不变化而不滚动新镜像；文末有 50 欧元／60 分钟的一对一咨询导流；不代你任意模板同样一次会话、20 项测试后就能在两个账户上线。",
+    description:
+      "面向要把可重复的云交付模板真正打到真实账户、又必须自己看 IAM、密钥和暴露面的人：把「先部署再凭报错迭代，发布前用对己方接口的基础安全检查兜底」写成门禁，区别于专门做渗透测试或出口流量审计的安全专题，以及只停留在计划里的基础设施手册。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://manuelfedele.github.io/posts/building-production-infrastructure-templates-with-claude-code/",
+    sourceLabel: "manuelfedele.github.io·Manuel Fedele 实践帖",
+    upvotes: 444,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Terraform",
+      "AWS",
+      "平台工程",
+      "安全测试",
+    ],
+    howItWorks: [
+      "粘贴你要生成的运行时边界（Fargate／Lambda、是否暴露公网、数据库与对象存储、身份登录）以及「绝不可把一次 terraform apply 变绿当成已经能交给下一个团队，也不可跳过对己方接口的基础安全复查」纪律",
+      "Agent 按实践帖输出：应先分析哪些既有仓库、部署失败后按什么顺序看报错、模板生成后至少要覆盖哪些安全检查",
+      "人工保留账户权限怎么改、密钥要不要存在 Secrets Manager、以及公网暴露面是否可接受；Agent 不代你保证「一次会话、约 30 次提交或 20 项测试后必能在两个账户上安全交付」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-03-15T14:00:00+01:00 → 2026-03-15；dateCreated／dateModified 同；article:published_time 同；页内写 15 March 2026；GET 200，UA MiraBot/1.0）：Manuel Fedele 在《I Built a Production Infrastructure Template With Claude Code in One Session》写自己带平台工程团队，每个新交付项目都会有人复制旧仓、花一天撕掉旧应用并改 Terraform／IAM／密钥，再花一天搭 CI／CD。他要用一次命令加若干问答生成可部署项目，支持 Fargate 或 Lambda、可选 ALB／Route53／SSL、Aurora PostgreSQL、S3 与 EntraID SSO，并从 AWS CLI profile 自动发现网络资源。一次延长会话里，Claude Code 完成构建、部署、拆掉、修复、基础安全测试和迭代；模式不是「给我写个模板」，而是打到真实 AWS 账户，把报错贴回去。会话持续数小时，两个仓库约 30 次提交。调查阶段对两个参考仓并行拉文件（各逾 10 个），约 2 分钟给出汇总，作者估计人工阅读约要一小时。部署—报错—修复循环约 15 次，每轮约 2–5 分钟，报错过重复标签、IAM CreateRole AccessDenied（角色名需要大写的 scope 前缀）、以及 Secrets Manager 里密钥没有值导致 ECS 任务起不来。两次架构转向：问能否丢掉 generate.sh 包装后迁到 Copier，迁移动了 59 个文件、约 15 分钟；以及「Davis 就是模板本身」，把具体示例仓和模板合成一个仓库。后期他让同一代理对已部署应用做基础安全评估，跑了 20 项测试，包括恶意 Origin 的 CORS、JWT alg:none、以及 /api/docs 是否对外；发现三个问题并全部修好：CORS * 且带凭证改为同源并可用 CORS_ORIGIN 配置、非本地环境关掉 Swagger／OpenAPI、nginx 加上 server_tokens off，再部署后用同样测试复查。他还纠正过若干组织向错误：模板被先放到单独的 blueprints/ 目录；变量名、文件名和默认值里硬编码 qual；EntraID 客户端 ID 写成构建期 VITE_ 变量，后来改成运行时 /api/v1/config；为 PKCE 公钥流误加了 entra_client_secret；ECS 一直跑旧镜像，因为任务定义在 :latest 标签不变时没有 diff，后来把 BUILD_ID 注入容器环境迫使修订。最终模板一个命令生成项目，按选项生成模块化 Terraform，从 profile 名拆出 scope／国家／环境，按分支部署到不同账户，并带 CPU 目标跟踪自动扩缩（最少 1 个任务，默认最多 5，扩容冷却 15 秒）。作者按以往经验估计手工做这样的模板约要两周，并写明这是经验对比，不是对照实验。文末提供 50 欧元／60 分钟的一对一咨询。主线是真实账户上的模板迭代和基础安全复查，不是官文简报。",
+      "与 classkasa-pentest-8-fixes-3-high / princejain-egressleak-153-transcripts / jason-macht-customerio-bigquery-15min 不同：本条是平台工程模板在真实 AWS 账户里部署—报错—再部署，并在同一会话里对己方接口做 20 项基础检查，不是专项渗透测试，不是出口流量审计，也不是把营销平台文件送进数仓",
+    ],
+    approach: `Manuel Fedele 在《I Built a Production Infrastructure Template With Claude Code in One Session》（JSON-LD 2026-03-15）写明：代理可以分析参考仓、改 Terraform 并把报错修回去，但组织决策——模板是不是独立仓库、环境名能不能写死、公钥流要不要客户端密钥——仍要人纠正。
+
+关键门禁不是「一次会话就能给任意团队交出生产级模板」，而是尽早打到真实账户，并在同一会话里用对己方接口的基础安全测试复查。
+
+本场景据此输出「云交付模板须人审」提纲。禁止把约 30 次提交、20 项测试或「大约两周变一次会话」写成 SLA，或建议把 IAM、密钥和公网暴露面交给代理独自签字。`,
+    outcomes: [
+      "源披露一次数小时会话、两个仓库约 30 次提交，约 15 轮部署—报错循环（每轮约 2–5 分钟），Copier 迁移 59 个文件约 15 分钟，对已部署应用跑 20 项安全测试并修好 3 个问题，模板约 60 个文件并在两个 AWS 账户验证；「手工约两周」为作者经验估计；属该模板与那次会话，不可外推为你的基础设施模板必能一次会话交付，或 20 项检查等于完整安全审计。",
+      "能把「可写成生成脚本、模块化 Terraform 和复测命令的部分」与「必须人决定的账户权限、密钥去留和公网暴露面」拆开。",
+      "为重复标签、IAM 前缀、空密钥、:latest 不滚动，以及 CORS／文档暴露／版本头这类基础问题提供提问清单。",
+    ],
+    caveats: [
+      "约 30 次提交、约 15 轮循环、20 项测试、3 个问题、59 个文件／约 15 分钟，以及「手工约两周」，均为作者自述；两周是经验估计，不是对照实验。",
+      "账户权限、密钥是否保留、公网是否暴露，以及模板目录怎么组织，仍须人；作者写代理在组织决策上最常需要纠正。",
+      "上面写的是个人实践帖（manuelfedele.github.io / Manuel Fedele），不是 AWS 或某个云厂商的官文简报。文末有咨询导流。",
+    ],
+    prompts: [
+      {
+        title: "云交付模板的真实账户门禁",
+        body: `你是资深平台工程教练。只根据用户边界写门禁，不要编造已完成的会话次数或安全测试项数。
+
+要生成的运行时与账号边界：{{platform_boundary}}
+必须由人签字的安全约束：{{security_constraint}}
+
+输出 Markdown：
+1. 生成模板前应先从哪些既有仓库提取模式
+2. 第一次打到真实账户后，应按什么顺序处理 IAM、网络、密钥和镜像滚动失败
+3. 上线前至少要对己方接口做哪些基础安全复查（跨域、鉴权绕过、文档与版本头暴露）
+4. 人必须完成的清单（权限、密钥、暴露面、环境名是否写死）
+禁止声称「必能在一次会话或 20 项测试后交付」；禁止建议把 IAM 或密钥交给代理独自签字。`,
+      },
+      {
+        title: "部署变绿但任务起不来复盘",
+        body: `Terraform 已经 apply 成功，容器却起不来，或新镜像推上去后服务仍在跑旧版本。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像密钥资源没有版本、IAM 名称/权限不匹配，还是镜像标签不变导致任务定义没有 diff
+2. 最小复验顺序（看服务日志→看密钥和角色→看任务定义是否真的变了）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「apply 变绿或镜像已推送等于下一个团队已经能安全使用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://manuelfedele.github.io/posts/building-production-infrastructure-templates-with-claude-code/",
+      label: "manuelfedele.github.io · I Built a Production Infrastructure Template With Claude Code in One Session",
+      date: "2026-03-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "554",
+    slug: "mldangelo-promptfoo-1000-prs-winston",
+    title: "Michael：给 Promptfoo 合入逾 1000 个 PR——还把 Winston 2018 年的旧缺陷送进了上游",
+    summary: "个人（Promptfoo 开源项目维护者 Michael D'Angelo）；披露 2025 年用并行 Claude Code 工作流给 Promptfoo 合入逾 1000 个 PR：七月仅交互式开发就接近 1 万美元 API 额度（Anthropic 给了额度赠款，当月并非自付），后来改用两个 Max 订阅轮换，因为一个账号会碰到周限额；日常在 Ghostty 里开六个窗格，其中四个是同一仓库的 git worktree，另外两个做别的项目，窗格提示响了就合并或打回；默认 Opus 4.5，非平凡改动先走 Plan Mode 并把计划写成仓内文件；用 Codex CLI 与 Gemini CLI 做交叉核对，浏览器验证用原生 --chrome，需要可保存截图时才用 Playwright MCP；他开着 --dangerously-skip-permissions，并写这大概不是好主意、最终可能出问题；一次排查日志时代理没补自己的代码，而是发现 Winston 自 2018 年以来的缺陷——logger.end() 可能在文件写完前就发出 finish，随 process.exit() 会丢掉最后几行——后来补了 _final() 钩子、最小复现和回归测试并向上游开 PR，维护者合入后随 v3.19.0 发布；Gemini 曾指出一次鉴权重构在测试通过后仍改了返回给客户端的错误文案；作者把 2024 年 5396 次 GitHub 贡献当作另一套工具成熟前的粗对照，并提醒贡献图只是粗代理；不代你任意开源仓同样一年合入逾 1000 个 PR。",
+    description:
+      "面向要在自己维护的开源仓里并行开多个代理、又必须自己对合并和安全改动负责的人：把「计划写入仓库、用类型检查和测试做紧反馈，并用另一个模型审合约与鉴权」写成门禁，区别于 Dependabot 或 Issue 分诊式的开源维护，以及以评审调用次数为主线的测量文。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://mldangelo.com/writing/shipping-with-claude-code/",
+    sourceLabel: "mldangelo.com·Michael D'Angelo 实践帖",
+    upvotes: 445,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Promptfoo",
+      "开源维护",
+      "Git worktree",
+      "Winston",
+    ],
+    howItWorks: [
+      "粘贴仓库与合并纪律（哪些路径能并行、哪些改动必须额外审计）以及「绝不可把测试变绿当成可以跳过人工看 diff，也不可默认关闭所有权限提示」纪律",
+      "Agent 按实践帖输出：非平凡任务怎样先写计划文件、四个工作树如何避免互相覆盖、哪些改动必须再请另一个模型核对",
+      "人工保留何时合并、是否向上游开 PR，以及能否承担跳过权限提示的风险；Agent 不代你保证「一年合入逾 1000 个 PR，或下一次必能找到并合入像 Winston 那样的上游缺陷」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-01-03 → 2026-01-03；dateModified 同；article:published_time 同；页内 time datetime=2026-01-03；GET 200，UA MiraBot/1.0）：Michael D'Angelo 在《What I learned shipping 1,000+ PRs with Claude Code》写自己大部分时间在做开源 LLM 评估工具 Promptfoo。2025 年七月仅交互式开发（不含生产流量）就接近 1 万美元 API 额度；Anthropic 为 Promptfoo 提供了额度赠款，当月并非自付，但那样的用量让他改用 Max，后来因为单账户会撞上周限额而同时跑两个 Max 订阅。配置是 Ghostty 六个窗格加通知：四个是同一仓库的独立 git worktree，两个做其他项目；窗格提示响起时，他要么合并 diff，要么只用一轮后续意见打回。默认模型是 Opus 4.5（工具默认 Sonnet 4.5）。非平凡任务先走 Plan Mode，审完计划再写成 docs/plans/<task>.md，然后按清单实现；用 Codex CLI 和 Gemini CLI 做第二意见，重要改动还要在干净的 worktree 和浏览器里验证。浏览器交互用原生 claude --chrome，需要可附在 PR／issue 里的确定性截图时才用 Playwright MCP。他在这些项目上使用 --dangerously-skip-permissions，并写「这大概不是好主意」，该标志会关闭文件编辑和 shell 的权限提示，他预期这最终会带来问题；若不想承担风险，应使用隔离环境或 /sandbox。分工上，代理找文件、改代码、跑校验、在浏览器里操作并起草提交和 PR 说明；人设定目标、审 diff、对重要改动做交叉审计并决定能否发布。一个具体例子：排查 Promptfoo 日志时，代理没有只补自己的代码，而是定位到 Winston 自 2018 年以来的问题——File transport 上 logger.end() 可能在底层写完前就发出 finish，若紧接着 process.exit() 会丢掉最后几行；它问作者要不要向上游开 PR，随后加上 _final() 钩子让流程等待 fs.WriteStream 刷新，并补了最小复现和回归测试。Winston 维护者合入后，修复随 v3.19.0 发布。另一次 Claude 重构鉴权流且测试通过，Gemini 指出新代码改了返回给客户端的错误文案，会破坏前端既有错误处理，Claude 的测试没覆盖这一合约。作者还写自己会审计其他开源项目并披露过漏洞，Claude Code 承担定位文件、追踪数据流、起草修复和跑校验等机械部分；文中「数十个已披露漏洞」是对其安全工作的概括，不是本篇给 Claude 计件的结果。2025 年他给 Promptfoo 合入逾 1000 个 PR；对照 2024 年有 5396 次 GitHub 贡献，并说明贡献图把提交、PR、评审和 issue 活动算在一起，只作粗代理。主线是开源仓上的并行工作流和一次上游修复，不是官文简报。",
+      "与 stanislas-openvpn-150-issues-50-prs / bootstrap-triage-230-items-410-labels / davis-vaughan-dplyr-revdep-200-prs / murooka-ai-review-782-calls-62pct / nagayashion-playwright-claude-month-60pct 不同：本条是 Promptfoo 维护者的并行 worktree 工作流，并记录一次把 Winston 2018 年缺陷送进上游、随 v3.19.0 发布；不是 OpenVPN／Bootstrap／dplyr 反依赖维护，不是评审调用测量，也不以 Playwright 测试套件为主线（Playwright MCP 在文中只用于需要保存截图时）",
+    ],
+    approach: `Michael D'Angelo 在《What I learned shipping 1,000+ PRs with Claude Code》（JSON-LD 2026-01-03）写明：代理可以并行改多个 worktree、跑类型检查和测试并起草 PR，但合并、上游贡献，以及对鉴权／合约改动的交叉审计，仍归人。
+
+关键门禁不是「开六个窗格就能在一年里合入一千个 PR」，而是计划先落盘，并用第二个模型去抓测试没覆盖的行为变化；跳过权限提示被作者自己标成有风险。
+
+本场景据此输出「开源仓并行代理须人审」提纲。禁止把逾 1000 个 PR 或 Winston v3.19.0 写成任意仓库的 SLA，或建议默认关闭所有权限提示。`,
+    outcomes: [
+      "源披露 2025 年给 Promptfoo 合入逾 1000 个 PR；七月交互式开发接近 1 万美元 API 额度但有厂商赠款、后改两个 Max 订阅；六个窗格中四个为 worktree；一次发现 Winston 自 2018 年以来的缺陷并被上游合入 v3.19.0；2024 年 5396 次贡献只作粗对照；属该维护者与 Promptfoo／那次上游修复，不可外推为你的开源仓必能一年合入逾 1000 个 PR，或下一次调试必能找到可被上游接受的缺陷。",
+      "能把「可写成计划文件、类型检查、测试和草稿 PR 的部分」与「必须人决定的合并、上游贡献和权限提示策略」拆开。",
+      "为测试通过但仍改了错误文案合约、以及跳过权限提示的风险提供提问清单。",
+    ],
+    caveats: [
+      "逾 1000 个 PR、接近 1 万美元 API 额度、两个 Max 订阅、5396 次贡献和 Winston v3.19.0 均为作者自述；贡献图被作者本人标成粗代理，当月高额 API 账单有赠款。",
+      "何时合并、是否向上游开 PR，以及能否承担 --dangerously-skip-permissions，仍须人；作者写这大概不是好主意。",
+      "上面写的是个人实践帖（mldangelo.com / Michael D'Angelo），不是 Anthropic、Winston 或 GitHub 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "开源仓并行代理的门禁",
+        body: `你是资深开源维护教练。只根据用户边界写门禁，不要编造已合并的 PR 数或上游版本号。
+
+仓库与可并行任务：{{repo_boundary}}
+合并与安全约束：{{merge_constraint}}
+
+输出 Markdown：
+1. 哪些任务可以分到独立 worktree，哪些必须串行
+2. 非平凡改动怎样先把计划写成仓内文件再实现
+3. 哪些改动（鉴权、合约、安全）必须再请另一个模型或干净工作树复核
+4. 人必须完成的清单（看 diff、决定合并、是否向上游贡献、权限提示策略）
+禁止声称「必能一年合入逾 1000 个 PR」；禁止建议默认关闭所有权限提示。`,
+      },
+      {
+        title: "测试通过但合约可能已变复盘",
+        body: `一次重构让测试全绿，另一个模型却指出返回给调用方的错误文案或接口行为变了。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像测试没覆盖对外合约、实现引入了不必要的抽象，还是错误被后续会话当成前提继续放大
+2. 最小复验顺序（对比旧错误文案／接口→补契约测试→决定回滚还是有意变更）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试变绿等于调用方已经不会被破坏」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://mldangelo.com/writing/shipping-with-claude-code/",
+      label: "mldangelo.com · What I learned shipping 1,000+ PRs with Claude Code",
+      date: "2026-01-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "555",
+    slug: "mustafa-turan-agentrq-chrome-webmcp",
+    title: "Mustafa / AgentRQ：让远端代理调用你已登录网站的工具——写入必须等人批准",
+    summary: "团队（AgentRQ，作者 Mustafa Turan）；披露他们做 Chrome 扩展时把页面里的 WebMCP 工具桥给笔记本、构建机或机房里的 Claude Code／Codex：调用跑在你已登录的标签里，代理看不到密码、cookie 或 API 令牌，只读工具可直接跑，写入要在任务里等人选「允许一次」「此站此工具始终允许」或「拒绝」，而且只有人能从弹层逐站点分享，检测默认关闭；为了不把每个站点的完整 schema 塞进上下文，MCP 面拆成只返回名称与描述的 listSiteTools、按需取完整入参 schema 的 getSiteToolDefinition，以及真正执行的 callSiteTool；服务端会按页面自己的 JSON Schema 校验参数，调用限 60 秒，结果上限 256 KiB；Manifest V3 里服务工要先用登录 cookie 换一张约 1 分钟的工票再建立 WebSocket，并自己每 20 秒发一次 ping（服务端 ping 不足以保活），退避重连从 1 秒到 30 秒；输出按约 25 毫秒窗口合并，每秒重画约 100 次的进度条大约变成 40 次发送，但按键绝不合并，以免 Esc 和下一个键被拼成无人敲过的转义序列；第一版从调用方取出会话 ID 并用 BigInt 转换，base62 字符串会抛错，于是每个按键都失败而画面仍在更新，单元测试传的是数字 ID 所以没抓住；agentrq.com 自己提供 3 个工具可试用；官网另有 2026-09-28 的较短上架稿，本条以 2026-10-02 这篇讲排障的实践帖为准；文末有 Chrome 商店安装 CTA；不代你任意网站同样能被远端代理安全调用。",
+    description:
+      "面向要把浏览器里已登录站点的工具交给远端编码代理、又必须自己批准写入的人：把「调用发生在你的标签里、凭证不上传，写入默认要人点头」写成门禁，区别于把闲置 iOS 应用现代化或做 Android 无障碍改造，也区别于专项渗透测试和出口流量审计。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/agentrq/use-claude-right-inside-your-chrome-and-let-it-play-with-webmcp-tools-3k41",
+    sourceLabel: "dev.to·Mustafa Turan / AgentRQ 实践帖",
+    upvotes: 446,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Chrome 扩展",
+      "WebMCP",
+      "人审批准",
+      "Manifest V3",
+    ],
+    howItWorks: [
+      "粘贴你希望分享的站点与工具边界（只读还是会写入、浏览器是否必须保持打开）以及「绝不可把远程代理能发起请求当成可以把 cookie 或令牌交给它，也不可让代理自己添加要分享的站点」纪律",
+      "Agent 按实践帖输出：桥该怎样把页面世界和扩展世界隔开、写入批准应出现在哪、终端回放怎样避免把进度条重画冲掉历史",
+      "人工保留哪些站点可以分享、哪些工具可以「始终允许」，以及 Chrome 关掉时是否接受站点离线；Agent 不代你保证「任意网站都能被远端代理安全调用，或测试通过就等于按键一定能打进正确会话」",
+    ],
+    tips: [
+      "源帖（DEV Community JSON-LD Article datePublished 2026-10-02T03:00:01Z → 2026-10-02；dateModified 2026-10-02T03:12:29Z，取发布日；GET 200，UA MiraBot/1.0。文末写最初发布于 AgentRQ 博客；官网同路径页标题为《AgentRQ for Chrome: Your Agents Can Now Use Websites》，页内／JSON-LD 写 September 28, 2026／2026-09-28，正文是更短的上架说明，本条以 DEV 这篇排障实践为一手来源）：Mustafa Turan 在《Use Claude right inside your Chrome and let it play with WebMCP tools》写团队如何把页面通过 document.modelContext 注册的 WebMCP 工具，桥给并不在同一个标签里的 Claude Code、Codex 或其他 MCP 代理。观察脚本在页面自己的世界、document_start、且只在顶层框架运行，包装原生 registerTool，记录注册内容但绝不自己添加 modelContext，以免页面的特性检测把扩展误认成 Chrome。工具可被 AbortSignal 撤回；同名重新注册以新的为准；描述或 schema 不能 JSON 序列化的工具会在门口被丢掉。页面世界与隔离世界要经 DOM 通信，他们不用固定事件名：桥先生成随机 UUID 写到 <html> 的 data 属性上，观察脚本读完立刻删掉，之后用这个 nonce 做 CustomEvent 类型，并在启动时保存 dispatchEvent／CustomEvent／JSON，防止页面后打补丁。他们踩过 document_start 脚本按注册 ID 而不是注册顺序执行，桥的 ID 必须按字母排在前面。服务工无法被服务器主动连回来，所以浏览器向外开 WebSocket：服务工先用普通登录 cookie 换一张约 1 分钟的工票（必要时刷新短时访问令牌），再拿工票连上；Chrome 会杀掉空闲服务工，服务端 ping 不算流量，于是服务工自己每 20 秒发一次 ping；只有至少一个站点被分享时才保持连接，断开后从 1 秒退避到 30 秒。调用打到最近使用过、且仍提供该工具的同站标签；若标签都关了，会在后台重新打开站点并等待工具再次注册。导航期间按文档而不是按标签跟踪调用，避免跨站导航后旧页面的 unload 误伤新页面；往返缓存恢复的页面不会重跑脚本，桥会在持久化的 pageshow 上重发上次工具列表。为了不吃掉代理的上下文，listSiteTools 只返回名称、描述和站点是否在线，getSiteToolDefinition 才给出完整入参 schema；服务器在请求到达浏览器前按页面自己的 JSON Schema 校验，调用限 60 秒，结果上限 256 KiB。写入在任务里展示工具名和格式化后的 JSON 参数，供人允许一次、对此站此工具始终允许、或拒绝；代理必须带上 taskId；只有人能从弹层逐站点分享；检测默认关闭。弹层是约 440×600（Chrome 限制弹层最大 800×600），完整尺寸用快捷键在标签里打开。终端守护进程在每台已连接机器上为会话保留自己的终端仿真器，打开时发送当前屏幕重绘，而不是回放环形缓冲区；输出按约 25 毫秒窗口合并，每秒重画约 100 次的进度条大约变成 40 次发送，但从不以丢弃最旧字节的方式泄压，跟不上就整批丢掉并改发一帧正确画面。输入从不合并，避免 Esc 与下一键被拼成转义序列。浏览器不能自己选择把按键打进哪个会话，由服务器覆盖客户端传来的会话 ID。第一版从调用方取会话 ID 并用 BigInt 转换，base62 字符串会抛错，结果每个按键都失败而输出仍在到达，终端看起来像在忽略键盘；单元测试传的是数字 ID，没抓住这个问题。WebGL 渲染器可能在 activate() 里才失败，或中途丢掉 GPU 上下文，他们会尝试下一渲染器，第二次丢上下文就降级并停在那里。权衡包括：Chrome 必须打开，否则站点离线；只对提供 WebMCP 的站点有效，名单还很短；agentrq.com 提供 3 个工具。文末有 Chrome 网上应用店安装链接和仓库开源说明。主线是浏览器桥与人审写入，不是官文简报。",
+      "与 andhand-mybooks-6-days-18-testflight / carmen-krol-android-a11y-8-new-handle / classkasa-pentest-8-fixes-3-high / princejain-egressleak-153-transcripts 不同：本条是把页面内的 WebMCP 工具桥给远端编码代理，并记录 MV3 保活、终端回放和一次会话 ID 类型错误，不是 iOS 旧应用现代化、Android 无障碍改造，也不是专项渗透或出口流量审计",
+    ],
+    approach: `Mustafa Turan 在《Use Claude right inside your Chrome and let it play with WebMCP tools》（JSON-LD 2026-10-02）写明：远端代理可以调用你已登录网站提供的工具，但调用发生在你的标签里，写入默认要人批准，而且只有人能决定分享哪个站点。
+
+关键门禁不是「装一个扩展就等于任意网站都能被代理安全操作」，而是凭证不离开浏览器，检测默认关闭，并且用任务里的批准把每一次写入绑到看得见的工作上。
+
+本场景据此输出「浏览器内站点工具桥须人审」提纲。禁止把 60 秒时限、256 KiB 上限或 3 个示例工具写成任意站点的 SLA，或建议让代理自己添加要分享的站点。`,
+    outcomes: [
+      "源披露该扩展把页面 WebMCP 工具桥给远端代理：写入默认要人批准，检测默认关闭，listSiteTools 只返回名称与描述；调用限 60 秒、结果上限 256 KiB；工票约 1 分钟，服务工每 20 秒自发 ping，重连退避 1 到 30 秒；输出约 25 毫秒合并，每秒约 100 次重画大约变成 40 次发送；agentrq.com 提供 3 个可试用工具；第一版用 BigInt 解析会话 ID 导致所有按键失败且测试未覆盖；属该扩展与那些实现选择，不可外推为你的网站必能被远端代理安全调用，或测试通过就等于输入一定能打进正确会话。",
+      "能把「可写成桥接、校验和终端重绘的部分」与「必须人完成的站点分享、写入批准和浏览器保持打开」拆开。",
+      "为服务工空闲被杀、往返缓存不重跑脚本、环形缓冲被进度条重画写满，以及会话 ID 类型错误提供提问清单。",
+    ],
+    caveats: [
+      "60 秒时限、256 KiB 上限、20 秒 ping、25 毫秒合并、3 个示例工具，以及 BigInt／base62 缺陷，均为作者自述，不是对照实验。官网另有 2026-09-28 的较短上架说明。",
+      "哪些站点可以分享、哪些工具可以始终允许，以及 Chrome 关闭时是否接受离线，仍须人；作者写这是有意保留的人在回路里。",
+      "上面写的是团队实践帖（dev.to / Mustafa Turan，AgentRQ），不是 Google Chrome 或 WebMCP 标准组织的官文简报。文末有产品安装 CTA。",
+    ],
+    prompts: [
+      {
+        title: "把站点工具交给远端代理的门禁",
+        body: `你是资深浏览器安全与扩展教练。只根据用户边界写门禁，不要编造已桥接的站点数量或调用时限。
+
+希望分享的站点与工具：{{site_boundary}}
+写入与会话约束：{{approval_constraint}}
+
+输出 Markdown：
+1. 哪些工具可以只读直跑，哪些必须在任务里等人批准
+2. 如何避免把完整 schema 或凭证送出浏览器
+3. 浏览器关掉、标签导航或往返缓存恢复时，调用应如何失败而不是挂起
+4. 人必须完成的清单（逐站点分享、始终允许的范围、是否接受离线）
+禁止声称「任意网站都能被远端代理安全调用」；禁止建议让代理自己添加要分享的站点或上传 cookie。`,
+      },
+      {
+        title: "终端看得到画面但按键无效复盘",
+        body: `扩展里能看到代理终端在更新，键盘输入却没有反应，同时自动化测试是绿的。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像会话 ID 类型/来源校验有误、输入被错误地批量合并，还是测试用的标识格式与生产不一致
+2. 最小复验顺序（看按键是否离开浏览器→看服务端是否改写会话 ID→用与生产相同格式的 ID 补测试）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「画面仍在更新或单元测试变绿等于人已经能把输入打进正确会话」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/agentrq/use-claude-right-inside-your-chrome-and-let-it-play-with-webmcp-tools-3k41",
+      label: "dev.to · Use Claude right inside your Chrome and let it play with WebMCP tools",
+      date: "2026-10-02",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
