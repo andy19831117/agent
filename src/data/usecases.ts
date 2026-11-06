@@ -34628,6 +34628,446 @@ issue/规格/计划的路径：{{paths}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "531",
+    slug: "puvaan-obsidian-wiki-432-pages-141-edges",
+    title: "Puvaan：给 Claude Code 做可累积的知识库——后来扩到 432 页流程，自动修好 35/55 条断链",
+    summary: "个人；披露先按 Karpathy 的 wiki 模式用 Obsidian 做可累积笔记：SessionStart 注入且硬帽约 8KB（约 2K token），会话结束用后台回放草稿，约 10K token／作者估约 0.02 美元，_pending.md 不自动合并；后来把同一模式扩到约 432 页流程、9 个应用枢纽，配对出 141 条跨文件夹边，自动修好 55 条断链中的 35 条；定向节省与「必同样好用」均为作者估算，不代你任意知识库同效果。",
+    description:
+      "面向每次新会话都要重新摸架构、又不想把内部笔记送进第三方向量库的人：把「代码只当原料、markdown wiki 做可累积中间层、schema 写清怎么维护，人审后再写入正式页」写成门禁，区别于本地 pgvector RAG 当会话记忆，以及把个人博客做成多语系静态站。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://puvaan.dev/posts/building-a-persistent-knowledge-base-for-claude-code/",
+    sourceLabel: "puvaan.dev·Puvaan Raaj 实践帖",
+    upvotes: 422,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "知识库",
+      "Obsidian",
+      "wiki",
+      "SessionStart",
+    ],
+    howItWorks: [
+      "粘贴要索引的仓库／笔记边界，以及「绝不可把没审过的自动草稿当成正式架构，也不可让 wiki 代替代码当事实来源」纪律",
+      "Agent 按实践帖输出：会话开始注入哪些页、会话结束如何回放记录并写入暂存、多应用时枢纽和自动标记如何与手写内容分开，以及断链修理何时必须停下来问人",
+      "人工保留是否把暂存合并进正式页、新前缀能否成为枢纽、以及模棱两可的断链该指向哪篇；Agent 不代你保证「约 432 页或 35/55 条断链必同样修得掉」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-04-18T00:00:00.000Z → 2026-04-18；article:published_time 同，dateModified 同）：Puvaan 写编码代理每次新会话都像失忆——先读 CLAUDE.md、再 grep、再请模型概括架构，真正的活还没开始；若 /clear 或一天里换两个仓库，这笔税还要再交。他认为 RAG 是每次提问重新拼碎片，知识没有累积。文中引用 Karpathy 在 2026 年 2 月 23 日提出的 wiki 模式：原料层（代码）保持不可变，中间用模型维护带交叉引用的 markdown wiki，再用一份 schema 告诉模型怎么维护。他自己审计后发现三层知识是断开的：成熟的 Obsidian 库（多年策展、13 套模板）、约 30 个仓库里深浅不一的 CLAUDE.md，以及 Claude Code 自己的 memory／feedback 文件。缺的不是再接一个图数据库，而是会话开始注入、会话结束回收。他比较过三种方案：只扩展 Obsidian、上 Graphiti 时序知识图谱、自建 SQLite+向量+图；当时选了 A，理由是对少量仓库、几千条事实，查询能力不是瓶颈，可靠的会后更新才是，图库留作以后。实现是 SessionStart 钩子按 git 根目录名找到对应 wiki，注入 _index.md 和 Gotchas.md，硬帽 8192 字节（约 2K token）；Stop 钩子立刻返回，后台用无头 claude -p 回放记录、去掉工具噪声、压缩到约 40KB（约 10K token），只抽取「代码里看不出来的架构、决策理由和坑」，没有合格内容就输出 NO_LEARNINGS，结果写入 _pending.md，不自动并进 Gotchas 或 ADR。另有 /wiki-bootstrap、/wiki-lint 和专门的 wiki-curator 子代理。作者把单次会后抽取估成约 0.02 美元，并写注入能省掉大约 5 到 10 次定向 Read／Grep，但同时承认前几个刚bootstrap 的项目还很稀，价值要几周才叠得起来。风险段写得很清楚：wiki 可能过期；抽取提示词可能太松或太紧；若 _index.md 写错，模型会自信地重复错误——代码仍是细节的真相来源。文后半段写，几周后他把同一模式用到一套支付平台的参考库：约 432 页流程散落在九个应用里。扁平索引在这个体量下会糊成一团，于是加了一层按文件名前缀生成的枢纽（九个集群）；机写区域用 HTML 注释标记，重跑时只替换标记内的内容；流程页与上下文页按文件名主题做双向配对，实际跑出 141 条以前没有的跨文件夹边，六个上下文因词干对不上而保持未配对、留给人处理。断链修理按「精确词干 → 后缀匹配 → 去掉数字前缀再试」的顺序，只在恰好一个候选时改写：第一轮 55 条断链里自动修好 35 条，剩下 20 条是真正缺失的文件。四段流水线是建枢纽、配对链接、修链、再写出断链与孤儿清单——lint 只给清单，不擅自改。作者强调个人库规模不需要枢纽，多应用才需要；可迁移回任何体量的是自动标记、只出清单的 lint，以及 schema 里写清从哪一页开始读。主线是做可累积、可人审的 markdown 知识层，不是官文简报。",
+      "与 tomakl-local-rag-170-docs-mcp / pitt-wu-blog-rebuild-10-days-801-i18n 不同：本条是个人把会话收获写成 Obsidian wiki，并在更大的流程库上用枢纽、自动标记和修链；不是本地 pgvector 给编码代理当检索记忆，也不是把个人内容站批量译成多语系静态页",
+    ],
+    approach: `Puvaan 在《Building a Persistent Knowledge Base for Claude Code》（datePublished 2026-04-18）写明：编码代理的税是每个新会话重新摸架构，RAG 只是每次重新拼碎片；他要的是一份可累积、人能读也能审的 markdown wiki。
+
+关键门禁不是「再接一个托管向量库」，而是会话开始只注入少量定向页、会话结束把摘录写进暂存、正式页必须人审；扩到多应用时，机写区块与手写内容要用标记分开，断链只在唯一候选时改。
+
+本场景据此输出「可累积项目 wiki」提纲。禁止把约 432 页、141 条边、35/55 条断链或约 0.02 美元写成任意知识库 SLA，或建议把自动草稿直接当成架构真相。`,
+    outcomes: [
+      "源披露 SessionStart 硬帽约 8KB（约 2K token）、会后回放约 10K token／作者估约 0.02 美元、约 30 个带 CLAUDE.md 的仓库、后来约 432 页流程／9 个应用枢纽、141 条跨文件夹边、55 条断链中自动修好 35 条（其余 20 条为真正缺失）；定向「能省掉 5 到 10 次检索」与「每月节省可观」为作者估算，属个人及他经手的支付平台参考库窗口，不可外推为你的召回率、工期或「上了 wiki 必同样省 token」。",
+      "能把「可写成钩子与脚本的注入、回放、枢纽和修链」与「必须人决定是否合并暂存、新前缀如何归类、模棱两可的断链指向哪篇」拆开。",
+      "为过期 wiki 被当成现状、自动草稿未经审阅就进正式页、以及断链在多个候选时被脚本猜错提供提问清单。",
+    ],
+    caveats: [
+      "432 页、141 条边、35/55 条断链、约 2K／10K token 和约 0.02 美元等为作者自述；定向节省是估算，不是对照实验。",
+      "暂存是否合并、枢纽前缀映射、以及不止一个候选的断链，仍须人；作者写明代码仍是细节的真相来源，_index.md 写错时模型会自信地重复错误。",
+      "上面写的是个人实践帖（puvaan.dev），不是 Anthropic、Obsidian 或某个托管记忆产品的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "可累积项目 wiki 门禁",
+        body: `你是资深知识工程教练。只根据用户边界写门禁，不要编造已有页数、断链数或节省的 token。
+
+现有笔记／仓库边界：{{wiki_boundary}}
+不可自动写入正式页的内容：{{pending_forbidden}}
+
+输出 Markdown：
+1. 会话开始应注入哪些短页，如何设置体积上限
+2. 会话结束哪些收获可以进暂存，哪些应从代码里直接看而不写
+3. 多应用或多仓库时，机写索引与手写正文如何隔离
+4. 人必须批准的清单（合并暂存、新增分类、修理模棱两可的断链）
+禁止声称「必覆盖 432 页或必自动修好 35/55 条断链」；禁止建议把未审草稿当成架构真相。`,
+      },
+      {
+        title: "wiki 与代码不一致复盘",
+        body: `助手根据 wiki 引用了一条架构或路径，你对照仓库时对不上。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像 wiki 过期、自动草稿未经审阅、还是检索／注入截断丢掉了关键段落
+2. 最小复验顺序（打开被引用的 wiki 页→对照当前代码→决定改 wiki、改规则还是不用这条）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「wiki 里写过等于代码现在仍是这样」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://puvaan.dev/posts/building-a-persistent-knowledge-base-for-claude-code/",
+      label: "puvaan.dev · Building a Persistent Knowledge Base for Claude Code: From Session Amnesia to Compounding Intelligence",
+      date: "2026-04-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "532",
+    slug: "james-farris-cron-incident-15-turns",
+    title: "James：用 cron 给自己的故障做分诊——15 轮上限，有一次用尽轮次没写出报告",
+    summary: "个人（RydeRush.com）；披露约 300 行 Bash／Python、每 5 分钟轮询 Healthchecks.io、专用 Linux 用户 claude-responder、sudo 只允许重启 5 个服务、timeout 600 秒、最多 15 轮；新故障先发 Telegram 再拆出调查；一次真实故障（incident-20260507-192003）用尽 15 轮且没吐出完整 REPORT；不代你任意站点同进度自愈。",
+    description:
+      "面向一个人兼值班、只想先读日志再决定是否重启的站点维护者：把「健康检查变红后由加了锁的无头代理做只读调查，重启必须同时满足日志依据、高把握和白名单，报告用固定标记框住」写成门禁，区别于把个人终端迁进共享频道，以及给云告警接只读侦探却没有轮次与失败样本。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://jamesafarris.info/blog/claude-cron-incident-triage/",
+    sourceLabel: "jamesafarris.info·James Farris 实践帖",
+    upvotes: 423,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "cron",
+      "故障分诊",
+      "Healthchecks",
+      "值班",
+    ],
+    howItWorks: [
+      "粘贴健康检查、日志路径与允许重启的服务边界，以及「绝不可给代理装包、改代码、动数据库或重启白名单外的单元」纪律",
+      "Agent 按实践帖输出：谁负责轮询与去重、Telegram 与调查谁先谁后、允许的工具和轮次／超时、以及报告必须落在哪些标记之间",
+      "人工保留是否采信报告、是否还要做根因修复，以及白名单要不要改；Agent 不代你保证「必在 15 轮内写出完整报告或重启必安全」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 time datetime=2026-05-11T07:02:19.666589+00:00 且 itemprop=datePublished → 2026-05-11）：James 写自己运营主题公园内容站 RydeRush.com，实质是一个人兼写稿、编辑、SEO 和凌晨值班。Celery 挂住或 gunicorn 连不上库时，他常常要等搜索控制台曲线变差才发现。经典做法是 Healthchecks.io 变红后再 SSH、看 systemctl、翻 journalctl——对爱好者体量来说，诊断才是耗掉周日下午的部分。他把活交给代理：每 5 分钟一条 cron 去拉 Healthchecks v3 API，对照本地状态文件分出新 DOWN、恢复（带停机时长）和仍在 55 分钟去重窗口里的重复 DOWN；只有新 DOWN 才拉起调查。新故障先发一条 Telegram，再 setsid／disown 拆出响应脚本，以免 cron 被 Claude 堵住。代理跑在专用用户 claude-responder 下：加入 adm 和 www-data 以便读系统与站点日志；sudoers 只放行五条 systemctl restart（gunicorn／daphne／Celery worker／Celery beat／nginx）以及 journalctl。整套大约 300 行 Bash 和 Python。调用 Claude Code CLI 时叠了四层限制：脚本入口 flock 保证同时只有一个会话；timeout 600 秒（超时后再等 30 秒强杀）；--max-turns 15；--allowed-tools 只给读日志、看状态、看磁盘内存、curl 探活、读部署 git，以及那五条重启。提示词要求先调查，只有日志清楚指向短暂故障、把握是 HIGH 并引用具体行、目标在五服务之内、且报告里先写明打算重启什么，才允许在结尾做一次重启。输出必须夹在 <<<REPORT 与 REPORT>>> 之间，由正则抽出；没有标记就如实说没写完，并指向磁盘上的全文记录。Telegram 截到约 3800 字，完整报告另走邮件。诚实样本是 2026-05-07 19:20:03 那次「RydeRush: Wait Times Update」变红：监视器五分钟内打到 Telegram，代理用尽 15 轮也没吐出完整 REPORT，邮件变成「未能达成结论」并指向 incident-20260507-192003.log——作者写这不是胜利，但是正确的失败方式。较小的成功是：日志顶部就是 Python 回溯时，它能在三轮里写出带行号的诊断；他第一次看它根据日志决定不重启、认为工作进程会自己恢复，才开始把它当成「只被允许做很小决定的初级同事」。若重来，他想按检查项写分册、加上跨事件记忆，以及把「HIGH」改成脚本层可拦截的数字门槛。主线是给单人站点做加了锁的故障分诊，不是官文简报。",
+      "与 agentconnect-team-channels-30-agents / michelfaure-4-incidents-claudemd-rules 不同：本条是个人用 cron、沙箱用户和硬轮次给自己的 VPS 做分诊，并公开一次用尽轮次写不出报告的样本；不是把个人终端迁进团队共享频道，也不是把四次事故堆进规则文件",
+    ],
+    approach: `James 在《How I Wired Claude into Cron to Triage My Own Outages》（发布 2026-05-11）写明：单人站点的痛点往往不是修复本身，而是凌晨先弄清楚坏了什么；他要用权限和 CLI 旗帜而不是一段可以辩解的提示词，把代理关在窄权限里。
+
+关键门禁不是「告警一响就自动修好」，而是先发通知、再做有轮次上限的调查，重启必须同时满足日志依据、高把握和白名单，报告要用固定标记框住；写不出结论时指向日志，而不是假装知道答案。
+
+本场景据此输出「加锁的单人故障分诊」提纲。禁止把约 300 行、15 轮或五分钟通知写成任意 SLA，或建议给代理装包、改代码或重启白名单外的服务。`,
+    outcomes: [
+      "源披露约 300 行 Bash／Python、每 5 分钟轮询、55 分钟去重、timeout 600 秒、最多 15 轮、5 个可重启服务，以及一次真实故障 incident-20260507-192003 用尽 15 轮且未吐出完整 REPORT；「三轮写出带行号的诊断」和「曾正确选择不重启」为作者口述，属个人单机站点窗口，不可外推为你的 MTTR 或「上了 cron 代理必同样分诊成功」。",
+      "能把「可写成脚本的轮询、去重、工具白名单和报告抽取」与「必须人决定是否采信、是否做根因修复、白名单是否改」拆开。",
+      "为用尽轮次写不出报告、模型把把握评得过高而重启、以及重复告警在去重窗口外再次拉起调查提供提问清单。",
+    ],
+    caveats: [
+      "约 300 行、15 轮、600 秒和 2026-05-07 那次写不出报告等为作者自述；成功案例是定性描述，没有系统的处理时长对照。",
+      "是否采信报告、是否重启之外还要改代码，以及 sudo 白名单如何收紧，仍须人；作者写明最坏情况仍可能是重启了一个当时并不需要重启的服务。",
+      "上面写的是个人实践帖（jamesafarris.info），不是 Healthchecks、Anthropic 或某个值班厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "加锁的故障分诊门禁",
+        body: `你是资深值班教练。只根据用户边界写门禁，不要编造已处理的故障数或修复时长。
+
+健康检查与日志边界：{{monitor_boundary}}
+允许重启或禁止执行的动作：{{restart_allowlist}}
+
+输出 Markdown：
+1. 新故障应按什么顺序发通知、做调查、写报告
+2. 轮次、超时和同时只跑一个会话应如何限制
+3. 什么条件下才允许一次重启，报告必须包含哪些字段
+4. 人必须事后确认的清单（根因、白名单、是否误重启）
+禁止声称「必在 15 轮内写出完整报告」；禁止建议给代理装包、改代码或重启未授权的服务。`,
+      },
+      {
+        title: "用尽轮次没有完整报告复盘",
+        body: `代理跑满轮次或超时，没有吐出约定格式的报告，只留下全文日志。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像提示词要它看的路径太多、日志本身没有清晰栈、还是输出标记太严导致写到一半被切断
+2. 最小复验顺序（打开完整日志→看它已经查过什么→决定补分册、加轮次还是改由人查）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「没写出报告等于系统已经恢复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://jamesafarris.info/blog/claude-cron-incident-triage/",
+      label: "jamesafarris.info · How I Wired Claude into Cron to Triage My Own Outages",
+      date: "2026-05-11",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "533",
+    slug: "vamshi-gmail-digest-18-newsletters-220-lines",
+    title: "Vamshi：每周一自动写通讯摘要——18 份通讯约 85–90 封，runbook 长到约 220 行",
+    summary: "个人；披露订阅 18 份 AI／工程通讯，正常一周约 85 到 90 封；每周一定时代理查 Gmail、按仓库里的 runbook 写结构化摘要并推到 master，由 GitHub Actions 部署；runbook 从约一页长到约 220 行；旧的 9 个发件人名单只返回 38 封；公开五种静默失败（写错信封地址、未对数量做健康检查、误读 HTML、同一封信两地址重复、连续两周深挖同一主题）；不代你任意通讯摘要同质量。",
+    description:
+      "面向邮箱里堆着行业通讯、却不想每周一手工粘进对话框的人：把「检索与结构写进版本库里的 runbook，凭明文正文而不是 HTML 做摘要，用预期封数当健康检查，写之前先读自己上次的标题」写成门禁，区别于用编码代理对外生产通讯，以及只做多语系个人站翻译。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.codegully.com/blog/automating-my-newsletter-digest-with-claude-and-gmail/",
+    sourceLabel: "codegully.com·Vamshi 实践帖",
+    upvotes: 424,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Gmail",
+      "通讯摘要",
+      "runbook",
+      "GitHub Actions",
+    ],
+    howItWorks: [
+      "粘贴通讯发件人名单、Gmail 检索与发布仓库边界，以及「绝不可把写错的地址当成这周没信，也不可让代理持有超出部署所需的云权限」纪律",
+      "Agent 按实践帖输出：哪些说明应写进仓库里的 runbook、如何只抽明文正文、如何按主题去重，以及写新稿前如何对照最近两期标题",
+      "人工保留发件人名单、预期封数，以及某一条是否值得写成深挖；Agent 不代你保证「必读到 85–90 封或摘要必不重复」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-08-07T00:00:00.000Z → 2026-08-07）：Vamshi 写自己订了 18 份 AI 与工程通讯，正常一周大约 85 到 90 封线索，实际上大约只读其中四封。他不想每周一手工往对话框里粘，于是做成完全不需要自己在场的流水线：每周一本地时间上午 9 点（文中 cron 写作 30 3 * * 1 UTC）由带 Gmail 连接器的定时代理查收、阅读、写出结构化摘要并推到 master；GitHub Actions 负责构建、上传 S3 并刷新 CloudFront。代理没有 AWS 凭证；工作流用专用 IAM 用户，权限是一个桶上的四条 S3 动作，外加一条指定发行版的 CloudFront 失效，策略 JSON 也进了仓库。他认为最不该省的是 runbook：代理自己的指令只有一句「按 runbook 做」，发件人白名单、检索式、成稿结构和失败方式都写在 scripts/newsletter-digest.md 里。这份文件从约一页长到约 220 行，几乎每一段都来自一次真实故障。他写了五件很久才发现的事。第一，Gmail 的 from: 匹配的是信封地址不是显示名：他把一份通讯的显示名和另一份的域名拼成 MyClaw@aisecret.us，查询静默返回空，这份他特意订阅的通讯缺席了几个月的摘要；后来发现 AI Secret 与 MyClaw 是两个相关但不同域的每日通讯。第二，发件人数量本身就是健康检查：约 18 个发件人对应约 85 到 90 封，旧的 9 个发件人名单只返回 38 封；如果结果明显偏低，应对照白名单查信封地址，而不是当成「这周比较安静」。第三，通讯 HTML 每封约 8 万到 16 万字符，乘以约 90 封会在思考开始前耗尽上下文；应用 Gmail API 的 plaintextBody，先按主题分诊，再只对过线的正文精读；Substack 明文常被付费墙截成预告，作者认为主题加预告通常够判断。第四，有的通讯会发到两个都进同一收件箱的地址，同一主题大约隔十五分钟再来一次；若不按主题去重，同一故事会被当成两个独立来源，而「多个来源同时出现」正是他用来决定新闻区头条的信号。第五，每周换一批通讯并不会自动换主题：连续两期都在深挖推理账单／推理优化，因为通讯本身就在这几个主题里打转；修复是先读最近两期摘要的三级标题，同一主题没有新进展就丢掉，有进展就写成更新并突出差值。另外还有两条更小的约束：卡片用的 description 兼 SEO 说明，硬帽 178 个字符；连续六期用了同一张封面图之后，runbook 里加了配图表和「选一张没用过的」。作者的结论是：自动化常常静默变差，值得留下的是版本库里的说明书、最小权限，以及对数量和上一期输出的自检。主线是给收件箱里的通讯做可复盘的周摘要，不是官文简报。",
+      "与 alejandro-newsletter-claude-code-pipeline / pitt-wu-blog-rebuild-10-days-801-i18n 不同：本条是个人从 Gmail 读取已订阅通讯、用带数量自检的 runbook 写站内周摘要，并公开五种静默失败；不是用编码代理对外生产通讯，也不是把个人内容站批量译成多语系页面",
+    ],
+    approach: `Vamshi 在《Wiring Claude to Gmail to Write My Weekly Newsletter Digest》（datePublished 2026-08-07）写明：他要的不是每周一往对话框里粘贴，而是一份按仓库里的 runbook 运行、权限拆开、还能对照自己上期输出的摘要流水线。
+
+关键门禁不是「把所有 HTML 丢给模型」，而是用信封地址做白名单、用预期封数做健康检查、只读明文正文、按主题去重，并且写新稿前先看最近两期标题。显示名匹配不到任何邮件时，系统不会报错，只会少内容。
+
+本场景据此输出「带自检的通讯周摘要」提纲。禁止把 18 份、约 85–90 封或约 220 行写成任意内容 SLA，或建议忽略明显偏低的检索结果。`,
+    outcomes: [
+      "源披露 18 份通讯、正常一周约 85 到 90 封、旧的 9 个发件人名单返回 38 封、runbook 从约一页长到约 220 行、HTML 每封约 8 万到 16 万字符、description 硬帽 178 个字符，以及五种静默失败（写错信封地址、未对数量做健康检查、误读 HTML、同一封信两地址重复、连续两期深挖同一主题）；属个人收件箱与个人博客窗口，不可外推为你的阅读量、发布节奏或「定时代理必同样写好周报」。",
+      "能把「可写成 runbook 的检索、去重、数量自检和对照上期标题」与「必须人决定白名单、预期封数以及哪一条值得深挖」拆开。",
+      "为过滤器静默匹配到零封、重复来信扭曲排序、以及自动化一周比一周差却不报错提供提问清单。",
+    ],
+    caveats: [
+      "18 份、约 85–90 封、38 封和约 220 行等为作者自述；「大约只读其中四封」是个人阅读习惯，不是对照实验。",
+      "发件人白名单、预期封数，以及某一主题是否写成深挖，仍须人；作者写明自动化常常静默变差，需要用数量和上期输出做自检。",
+      "上面写的是个人实践帖（codegully.com），不是 Google／Gmail 或某个通讯平台的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "通讯周摘要门禁",
+        body: `你是资深内容运营教练。只根据用户边界写门禁，不要编造已处理的通讯份数或每周封数。
+
+现有发件人／邮箱边界：{{sender_allowlist}}
+不可交给代理的发布权限：{{deploy_forbidden}}
+
+输出 Markdown：
+1. 哪些检索与结构说明应写进仓库里的 runbook，而不是只放在调度器配置里
+2. 如何确认新发件人真的能检索到邮件，并用预期数量做健康检查
+3. 如何只抽明文、按主题去重，并在动笔前阅读最近两期标题
+4. 人必须决定的清单（白名单、数量异常时是否发布、哪一条值得深挖）
+禁止声称「必覆盖 18 份或每周必读到 85–90 封」；禁止建议把明显偏低的检索结果当成淡季。`,
+      },
+      {
+        title: "摘要连续两周重复同一主题复盘",
+        body: `新一期摘要又在深挖与上一期几乎相同的主题，或者同一故事出现了两次。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像没读上期标题、同一封信进了两个地址，还是通讯本身在循环同一主题而过滤器没有要求写出差值
+2. 最小复验顺序（对照最近两期标题→按主题查重→决定删掉、改写成更新还是人工重写）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「每周换一批来信等于内容不会重复」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.codegully.com/blog/automating-my-newsletter-digest-with-claude-and-gmail/",
+      label: "codegully.com · Wiring Claude to Gmail to Write My Weekly Newsletter Digest",
+      date: "2026-08-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "534",
+    slug: "danielle-cfn-investigator-shared-compute",
+    title: "Danielle：把 Claude Code 搬上团队可触发的共享计算——一次失败部署指出 Fargate 缺了环境变量",
+    summary: "个人（团队里唯一的 DevOps）；披露用 CodeBuild 跑无头 Claude Code 调查失败的 CloudFormation，经 AWS MCP、只读角色读栈状态，工作里把分析帖到告警所在的 Slack 线程；公开仓 headless-claude-on-aws 是削薄后只覆盖 CloudFormation、从零重建的示范，不是工作副本；发文前一周一次失败部署指出 Fargate 任务定义缺环境变量，开发者自己补上并重部署、没有再找她；IAM 用了偏宽的托管 ReadOnlyAccess；不代你任意云账号同样省掉人。",
+    description:
+      "面向失败的云部署总要问到同一个人、又希望先给同事一个只读起点的人：把「在共享计算上跑无头调查，角色只读、结论允许说不确定，修和不修仍由人决定」写成门禁，区别于自己机器上的 cron 分诊，以及用 GitHub Actions 评审 terraform plan 的实验稿。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://danielleheberling.xyz/blog/headless-claude-on-aws/",
+    sourceLabel: "danielleheberling.xyz·Danielle Heberling 实践帖",
+    upvotes: 425,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "CloudFormation",
+      "CodeBuild",
+      "故障调查",
+      "只读",
+    ],
+    howItWorks: [
+      "粘贴失败栈名、告警线程与可提供的只读权限边界，以及「绝不可让调查角色改栈、也不可把公开示范仓当成工作环境原样照搬」纪律",
+      "Agent 按实践帖输出：无头任务如何接手栈名和可疑提交、只读查询应看哪些栈事件、以及分析结果应回到哪条告警线程",
+      "人工保留是否采信某一条原因、是否改模板或重部署；Agent 不代你保证「下一次 CREATE_FAILED 必同样指出缺了哪个环境变量」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；article:published_time 2026-05-23T10:12:03.284Z → 2026-05-23；页内 time dateTime 同）：Danielle 写在自己机器上跑 Claude Code 很容易，难的是让整个团队都能触发。她是团队里唯一的 DevOps：CloudFormation 部署失败后 Slack 会响，常常有人来问哪里坏了。CREATE_FAILED 再叠一次回滚，对不天天碰 AWS 的人并不友好；真正的问题是失败部署只拴在一个人身上，规模化不了。她做的调查器叫 cfn-investigator：一个 CodeBuild 项目无头运行 Claude Code，你传入失败栈名，可选带上可疑提交；它经 AWS MCP、用只读角色读栈状态，写出短分析。示例实现把结果打到 CloudWatch，并留了一行便于转发到别处；她自己的版本则发回告警所在的 Slack 线程。系统提示要求诚实，包括可以选择「不确定」并给假设排序，而不是编一个干净答案。她强调这不是教科书架构：选 CodeBuild 而不是 Lambda 或 Fargate，直接用 Anthropic API 密钥而不是 Bedrock，图的是最快做出能跑的原型，并且简单到她一个人维护。公开仓库 github.com/deeheber/headless-claude-on-aws 是削薄后只覆盖 CloudFormation、从零重建的示范，用来当跳板，不是工作里那套的拷贝。她自己也列出不完美之处：仓库是一堆 YAML 和 bash；IAM 比应有的更宽——用了 AWS 托管的 ReadOnlyAccess，她写明你会希望再收窄；工具每次运行都现装而不是打进镜像；双角色拆分约束的是 MCP 的 AWS 调用，不是 Claude 进程本身。尽管如此它能用：发文前一周一次部署失败，调查器指出 Fargate 任务定义缺了一个环境变量，开发者看到消息后补上变量并重部署，没有再 ping 任何人。她写，与其等一份干净、全托管、权限完美的参考架构，不如先让自己能维护的「有点乱但能看懂」的版本去解决今天的问题。文末提到后来出现了更多托管选项，她还没用过，不能评价它们好不好用。主线是把无头调查搬到团队可触发的共享计算上，不是官文简报。",
+      "与 james-farris-cron-incident-15-turns / agentconnect-team-channels-30-agents 不同：本条是个人把 CloudFormation 失败调查放到 CodeBuild 上给同事触发，并公开示范仓不是工作副本、IAM 仍然偏宽；不是给自己的 VPS 做 cron 分诊，也不是把个人终端迁进共享频道",
+    ],
+    approach: `Danielle 在《Getting Claude Code off my laptop and onto shared compute》（发布 2026-05-23）写明：失败的 CloudFormation 总问到唯一的 DevOps，她要给同事一个只读起点，而不是让代理直接去修。
+
+关键门禁不是「再做一套会改栈的自愈」，而是在共享计算上用只读角色读栈事件，允许输出「不确定」的排序假设，并把分析送回告警线程。公开示范仓是削薄重建，不能当成生产副本。
+
+本场景据此输出「共享计算上的只读部署调查」提纲。禁止把「一次指出缺环境变量」写成任意云账号 SLA，或建议调查角色拥有改栈权限。`,
+    outcomes: [
+      "源披露用 CodeBuild 跑无头 Claude Code 调查失败的 CloudFormation、经只读角色和 AWS MCP 读栈，工作里把分析发回 Slack 线程；公开仓是削薄后只覆盖 CloudFormation、从零重建的示范；发文前一周一次失败部署指出 Fargate 任务定义缺环境变量，开发者自行补上并重部署；IAM 使用托管 ReadOnlyAccess（作者认为偏宽）；属她所在团队的部署窗口，不可外推为你的调查命中率或「上了共享计算必同样指出根因」。",
+      "能把「可写成无头任务的只读取证和回帖位置」与「必须人决定是否改模板、是否重部署、只读策略要收多紧」拆开。",
+      "为调查角色过宽、把示范仓当成工作环境原样照搬、以及模型编造一个干净但错误的原因提供提问清单。",
+    ],
+    caveats: [
+      "「发文前一周指出缺环境变量」等为作者自述；文中没有统计一共调查过多少次、命中率如何。",
+      "是否采信分析、是否改栈或重部署，仍须人；作者写明公开仓不是工作副本，且托管 ReadOnlyAccess 比应有的更宽。",
+      "上面写的是个人实践帖（danielleheberling.xyz），不是 AWS、Anthropic 或某个值班厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "只读部署调查门禁",
+        body: `你是资深平台工程教练。只根据用户边界写门禁，不要编造已调查的失败次数或命中率。
+
+失败栈／告警线程边界：{{stack_boundary}}
+调查角色不可拥有的写权限：{{readonly_forbidden}}
+
+输出 Markdown：
+1. 无头任务应接收哪些输入（栈名、可疑提交、告警线程）
+2. 只读查询应按什么顺序看栈事件、资源状态和近期变更
+3. 分析结果应回到哪里，如何允许「不确定」而不是编一个干净答案
+4. 人必须批准的清单（是否改模板、是否重部署、是否收窄 IAM）
+禁止声称「必指出缺失的环境变量」；禁止建议调查角色拥有改栈或重启权限。`,
+      },
+      {
+        title: "调查结论与实际原因不符复盘",
+        body: `调查器给出了一个看起来完整的原因，对照栈事件或重部署结果后对不上。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只读权限看不到关键事件、提示词逼它给出单一根因，还是公开／示范配置与真实工作环境不一致
+2. 最小复验顺序（打开原始栈事件→对照它引用的证据→决定改提示词、收窄范围还是改由人查）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「有一份分析帖子等于根因已经确认」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://danielleheberling.xyz/blog/headless-claude-on-aws/",
+      label: "danielleheberling.xyz · Getting Claude Code off my laptop and onto shared compute",
+      date: "2026-05-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "535",
+    slug: "bootstrap-triage-230-items-410-labels",
+    title: "Julien / Bootstrap：用代理分诊开源积压——230 条未关闭，标好 410 个标签",
+    summary: "团队（Bootstrap，两位活跃核心成员）；披露发文时仓库还有 230 个未关闭 issue／PR，其中约四分之一超过三年，几个月前曾超过 500（作者把下降写成本阶段多次使用 LLM 的整体进展，不是单靠本工具清仓）；过去十二个月收到 186 个 issue 与 838 个 PR；代理处理了逾 200 条剩余项并按易处理程度分成 86／90／33／8；给 198 条未关闭项打上 410 个标签；一次会话发现 9 条其实已经修好；维护者仍亲自做每个决定、发出每条回复；不代你任意开源仓同样加快。",
+    description:
+      "面向热门开源仓被旧贴和外部 PR 压住、又不能让代理直接在主仓发言或推代码的维护者：把「只读同步、起草分析与回复、需要时在自己的分诊仓准备修复分支，关闭、合并和对外回复仍由人完成」写成门禁，区别于把安装脚本的 issue／PR 清到零，以及禁止代理合并的夜间排队。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://blog.getbootstrap.com/2026/10/15/triaging-bootstrap-with-claude-agents/",
+    sourceLabel: "blog.getbootstrap.com·Julien Déramond / Bootstrap 实践帖",
+    upvotes: 426,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "开源维护",
+      "issue 分诊",
+      "Bootstrap",
+      "标签",
+    ],
+    howItWorks: [
+      "粘贴主仓与分诊仓边界，以及「绝不可检出或运行贡献者代码，也不可让代理在主仓评论、推送或开 PR」纪律",
+      "Agent 按实践帖输出：如何只读同步每条未关闭项、分析／回复／修复草稿如何分文件存放、易处理分数如何帮助挑选下一步，以及事实标签与决策标签如何分开",
+      "人工保留是否改写回复、是否合并或关闭、以及范围／设计／破坏性变更；Agent 不代你保证「230 条或 86 条可粘贴项必同样处理完」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 time datetime=2026-10-15 title=\"Thu, 15 Oct 2026 00:00:00 GMT\" → 2026-10-15；meta author=Julien Déramond）：Julien 写 Bootstrap 发文时还有 230 个未关闭 issue 与 PR，其中约四分之一超过三年；往前几个月曾超过 500。他们在 Bootstrap 6 开发期间多次借助 LLM，最新做法是内部工具 twbs/triage：为维护者自动分诊，而不用一条条提示。日常维护落在两位活跃核心成员 @mdo 和他本人身上。过去十二个月他们收到 186 个 issue 和 838 个 PR；其中 189 个 PR 来自机器人，433 个来自核心团队，216 个来自约 130 位贡献者——这 216 个里 60 个已合并、106 个未合并关闭、50 个仍开放。答好其中任意一条，意味着读完线索、对照 v5 与 v6 开发分支、查找相关工作、复现问题再回复。他本月把个人项目上的维护方式带进 Bootstrap：用 Claude Code 同步积压并派发后台代理，成果落到 Triage 应用。每条都走五步：只读同步且不写 twbs/bootstrap；阅读线索、找相关工作、检查两个分支并复现；起草分析、回复、修复和下一步；存进 twbs/triage；由他或 Mark 审阅、改写，再亲手在 GitHub 上行动——也可以什么都不做。每条 issue／PR 一个文件夹，例如讨论 flex 网格容器查询的 #37807，内有 analysis.md、answer.md、最多三个修复方向和 meta.json。状态分成 action／decision／waiting／done，并打易处理分数：9–10 可粘贴评论后关闭或合并，6–8 提交评审或从准备好的分支开 PR，3–5 先手工核对，0–2 要先做范围、设计或破坏性变更的决定。需要改代码或文档时，代理从 Bootstrap 自己的 main 或 v5-dev 准备修复分支，不复制外部 PR。第一轮发现了从「其实已经修好」到「同一功能有多种实现」的各类情况：#31088 在一次会话里就找出 9 条已修好但仍开放的项；#42714 是等待评审、CI 因首次贡献者未批准而从未跑过的正确修复，他在 10 月 4 日合并（文中写 4 October，结合该单 2026-07-20 打开，按同年理解）；#37442 的分析建议关闭，Mark 用自己的说明关闭，并指出 v6 里已被另一 PR 取代。作者写，代理「没多久」就处理了逾 200 条剩余项，并按下一步分成：可粘贴关闭或合并 86，评审或开 PR 90，先手工核对 33，先做决定 8（86+90+33+8=217）。他们还标准化并文档化了标签，补上 bug、needs-decision 等缺失标签，给 198 条未关闭项打上 410 个标签；代理只能从固定允许名单打事实标签，duplicate／wont-fix 这类暗示结论的标签仍由维护者来。GitHub Discussions 也被纳入：Bootstrap 6 反馈帖看似已回复，分析却在 28 条里找出 17 个未关门点——其中一个 bug 已被 #42856 修好，两个请求变成草稿 issue，七条回复准备发给仍在等待的人。安全默认是敌意的：代理从不检出、安装或运行贡献者代码，只读 diff、把 GitHub CI 当证据；从不打开 issue 里的链接，只对着 Bootstrap 自己的 dist/ 从零复现；不能在 twbs/bootstrap 上评论、推送或开 PR，唯一例外是允许名单里的自动标签；任何可疑之处停下来等人。作者写代理也会错，不知道仍留在维护者脑子里的历史；它们的产出是起点，不是直接上线的东西。从逾 500 降到 230 是几个月里的整体进展，文中没有把它写成单靠本分诊工具清仓。主线是给热门开源仓做只读分诊与起草，不是官文简报。",
+      "与 stanislas-openvpn-150-issues-50-prs / allen-hutchison-agent-never-merges 不同：本条是 Bootstrap 维护者用分诊仓起草分析、回复和最多三个修复方向，并公开标签与敌意默认；不是先补 E2E 再把安装脚本的 issue／PR 清到零，也不是夜间代理只排队、由运行时禁止合并",
+    ],
+    approach: `Julien 在 Bootstrap 博客《Triaging open source with agents》（页内日期 2026-10-15）写明：两位核心维护者面对数百条旧贴和外部 PR，要把个人项目上的分诊方式变成团队可用的内部工具，但不能让代理在主仓自行发言或推代码。
+
+关键门禁不是「让代理清仓」，而是只读同步、在分诊仓起草分析与回复，需要时从项目自己的分支准备修复，关闭、合并和对外回复仍由人完成。贡献者代码只当数据，不当指令。
+
+本场景据此输出「热门开源仓的只读分诊」提纲。禁止把 230 条、86/90/33/8 或从逾 500 降到 230 写成任意仓库清仓 SLA，或建议代理在主仓评论、推送或运行外部补丁。`,
+    outcomes: [
+      "源披露发文时 230 个未关闭 issue／PR（约四分之一超过三年；几个月前曾超过 500，作者将其写成本阶段多次使用 LLM 的整体进展，而非单靠本工具清仓）、十二个月 186 个 issue 与 838 个 PR（189 个机器人／433 个核心团队／216 个来自约 130 位贡献者，其中 60 个已合并、106 个未合并关闭、50 个仍开放）、逾 200 条剩余项按 86／90／33／8 分类、给 198 条打上 410 个标签、一次会话发现 9 条已修好的开放项；属 Bootstrap 维护窗口，不可外推为你的清仓速度或「上了分诊代理必同样加快」。",
+      "能把「可写成只读同步、起草分析和准备修复分支的部分」与「必须人改写回复、决定合并或关闭、以及处理范围与破坏性变更」拆开。",
+      "为代理不了解项目史而建议改代码、在主仓误发言或运行外部补丁、以及把几个月里从逾 500 降到 230 当成单次工具效果提供提问清单。",
+    ],
+    caveats: [
+      "230 条、86／90／33／8、410 个标签和 9 条已修好等为作者自述；「没多久处理完逾 200 条」是定性说法，从逾 500 降到 230 不能写成单靠本工具清仓。",
+      "是否改写回复、是否合并或关闭，以及 duplicate 等决策标签，仍须人；作者写明代理会出错，产出只是起点。",
+      "上面写的是 Bootstrap 维护者实践帖（blog.getbootstrap.com），不是 Anthropic 或 GitHub 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "开源只读分诊门禁",
+        body: `你是资深开源维护教练。只根据用户边界写门禁，不要编造已处理的 issue 数或清仓速度。
+
+主仓与分诊仓边界：{{repo_boundary}}
+代理不可在主仓执行的动作：{{main_repo_forbidden}}
+
+输出 Markdown：
+1. 每条未关闭项应按什么顺序只读收集线索、相关工作与两个维护分支上的现状
+2. 分析、对外回复草稿和可选修复分支应分别存成什么，易处理分数如何帮助挑选下一步
+3. 哪些标签可由代理按允许名单打上，哪些必须留给维护者
+4. 人必须亲自完成的清单（改写回复、合并或关闭、范围与破坏性变更）
+禁止声称「必处理 230 条或必分出 86 条可直接粘贴的项」；禁止建议代理在主仓评论、推送或运行贡献者补丁。`,
+      },
+      {
+        title: "分诊草稿与维护者判断不一致复盘",
+        body: `代理建议关闭或合并某一条，维护者对照项目史后不同意，或发现建议改代码的地方其实该先讨论范围。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像代理缺少仍留在维护者脑子里的历史、把外部 PR 当成可复制的修复，还是把设计问题误判成实现问题
+2. 最小复验顺序（对照两个维护分支与相关 PR→看它引用的证据→决定改提示词、补进 pitfalls 还是保持人工决定）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「有分析草稿等于可以不经人就关闭或合并」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.getbootstrap.com/2026/10/15/triaging-bootstrap-with-claude-agents/",
+      label: "blog.getbootstrap.com · Triaging open source with agents",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
