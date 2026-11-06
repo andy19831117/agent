@@ -32425,6 +32425,450 @@ App 现状：{{scope}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "506",
+    slug: "davis-vaughan-dplyr-revdep-200-prs",
+    title: "Davis：半自动修复 dplyr 反依赖——约 200 个 PR，估 33 小时降到约 8 小时",
+    summary: "个人（tidyverse）；披露约 200 套 diff 均经人审后成 PR；估 10 分钟×200=33 小时→约 8 小时（约 4×）；第二批 50 包墙时约 1 小时 10 分、费用约 $147；不代你任意 revdep 同省时。",
+    description:
+      "面向要因上游破坏性变更给下游发补丁、却怕代理搞乱 git 与本机全局库的开源维护者：把「人预克隆并隔离依赖库 + 代理只做最小修复 + 人审后再发 PR」写成门禁，区别于 Dependabot 周更研判与失修高下载包复活。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://blog.davisvaughan.com/posts/2026-01-09-claude-200-pull-requests/",
+    sourceLabel: "blog.davisvaughan.com·Davis Vaughan 实践帖",
+    upvotes: 397,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "dplyr",
+      "反依赖",
+      "开源维护",
+      "PR",
+    ],
+    howItWorks: [
+      "粘贴上游破坏点、受影响包清单与「修复须同时通过开发版与当前 CRAN 版」的验收，以及「绝不可由代理直接开 PR 或改你的全局包库」约束",
+      "Agent 按实践帖输出：人预克隆与隔离 library 的清单、每个子代理只修一类问题的最小范围，以及人审 diff 后再推送的步骤",
+      "人工保留每条 PR 的发送与措辞；Agent 不代你保证「必 200 个 PR 或同时省到约 8 小时」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD datePublished；页内 meta dcterms.date 2026-01-09，文首 January 9, 2026，URL 路径同日 → 2026-01-09）：Posit/tidyverse 工程师 Davis Vaughan 为即将发布的 dplyr 把已弃用的下划线函数推进到 defunct，反向依赖检查牵出「远不止 50、而是超过 200」个包需要补丁。团队原则是：若会破坏别人的包，就应提前提 PR。粗算 10 分钟×200=2000 分钟≈33 小时。他先让 Claude Code（Opus 4.5）按包启动子代理：克隆、隔离 library、对照 CRAN/开发版跑 check。第一批约 100 个与已 defunct 的 dplyr::id()（常被当成列名 id 的 NSE 绑定）相关：修复内容往往可用，但代理中途改下 tarball 而非 git clone（无 diff、无远端）、隔离库未被遵守以致改到全局 R 库，且主会话不断索要权限。第二批约 50 个 mutate_() 相关包改为：人用脚本预克隆、预建 .Rprofile 与 library/、预写进度清单；子代理只做诊断/修复/双版本校验，并以后台任务运行（并发上限 10、每包超时 10 分钟）。作者举例：benthos 这类绝非简单替换的补丁，原先估约 20 分钟，变成核对 check 后不到 2 分钟可推 PR；{useful} 约 1 分钟。结论写明约 200 套 diff 都变成了人审 PR，整体估时约 4×（33 小时→8 小时）。第二批 50 包 /cost：合计约 $147.07，API 时长约 6h33m，墙时约 1h9m51s，+869/−802 行；作者对比「50 包×10 分钟=8.3 小时」降到约 1–2 小时审补丁，并写明账单由 Posit 承担。主线是把重复、可验证的下游补丁收成可审 diff，不是官文简报。",
+      "与 kompiro-karasu-dependabot-88-prs / greenstevester-license-checker-evergreen-18h 不同：本条是上游破坏性变更后给人审的下游反依赖补丁，不是周更 Dependabot 研判，也不是分叉复活失修 npm 包",
+    ],
+    approach: `Davis Vaughan 在个人博客《Semi-automating 200 Pull Requests with Claude Code》（页内日期 2026-01-09）写明：dplyr 下一次发布要真正拆掉多年警告的旧 API，礼貌做法是给受影响的 CRAN 包先送补丁；真正稀缺的不是「再生成一批看起来像修复的 diff」，而是每个修复都能在开发版与当前 CRAN 版上验证，并且人能从 git 里审完再推。
+
+关键门禁不是把克隆、装依赖和修代码全塞进同一个子代理，而是人先铺好仓库与隔离库，让代理只做最小范围内的修复；git 被改成下 tarball、或写进全局库，都会让产出变得几乎无法审。发送 PR 仍由人完成。
+
+本场景据此输出「反依赖补丁门禁」提纲。禁止把约 200 个 PR 或 33 小时→8 小时写成任意仓 SLA，或建议跳过人审由代理直接开 PR。`,
+    outcomes: [
+      "源披露约 200 套经人审的 diff/PR、粗算 33 小时→约 8 小时（约 4×），以及第二批 50 包墙时约 1 小时 10 分、费用约 $147 等作者口径；属单人 tidyverse 发布窗口，不可外推为你的 revdep 工期或「同子代理必同省时」。",
+      "能把「可让代理做的定位与机械修补」与「必须人做的预克隆、隔离库与发 PR」拆开。",
+      "为「下 tarball 导致无 diff」、污染全局包库、以及主会话被权限提示拖住提供提问清单。",
+    ],
+    caveats: [
+      "33 小时是按 10 分钟/包的粗算，8 小时与约 $147 为作者自述；无第三方审计。",
+      "每条下游补丁是否推送、如何称呼破坏点，仍须人；代理不能替你承担 CRAN/维护者关系。",
+      "上面写的是个人实践帖，不是 tidyverse/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "反依赖补丁门禁",
+        body: `你是资深开源维护教练。只根据用户边界写门禁，不要编造已完成的 PR 数或节省小时数。
+
+上游破坏点：{{breaking}}
+受影响包范围：{{scope}}
+不可由代理直接开 PR：{{no_auto}}
+
+输出 Markdown：
+1. 人预克隆/隔离依赖库 / 代理只修一类问题 / 人审再推送 的最小分工表
+2. 必须同时通过「开发版上游」与「当前稳定版上游」的验收
+3. 如何发现代理改下 tarball 或写进全局库
+4. 人必须批准的清单（是否发 PR、PR 说明是否套话）
+禁止声称「必 200 个 PR」或「必从 33 小时降到 8 小时」；禁止建议由代理直接向下游开 PR。`,
+      },
+      {
+        title: "代理修好了却无法审 diff 复盘",
+        body: `子代理报告包已修复，目录里却没有可推送的 git diff（或改动落在了你的全局库）。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像改下了压缩包、没走隔离 library，还是权限提示打断了计划
+2. 最小复验顺序（看远程、看 diff、重跑双版本 check）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍子代理等于已可发 PR」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.davisvaughan.com/posts/2026-01-09-claude-200-pull-requests/",
+      label: "Davis Vaughan · Semi-automating 200 Pull Requests with Claude Code",
+      date: "2026-01-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "507",
+    slug: "denrakeiw-scumble-desktop-editor-5-weeks",
+    title: "Dennis：五周做出桌面修图应用 Scumble——43 次发布，应用代码约 8.3 万行",
+    summary: "个人；披露约五周：43 次发布、应用仓 632 次提交、应用约 8.3 万行 JS + 约 2900 行 Rust，测试工具代码约同样 8.3 万行；26 份计划、109 个 MCP 工具；不代你任意桌面应用同规模。",
+    description:
+      "面向要用代理快速做出带 GPU/合成器的桌面编辑器、却怕长会话漂品质或测试覆盖掉真实文档的独立开发者：把「一步一提交后清空上下文 + 按风险分档测真应用 + 像素落地先写一句效果」写成门禁，区别于自建 SaaS MCP 池与博物馆多代理船队。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/denrakeiw/i-built-a-desktop-image-editor-in-five-weeks-with-claude-code-46g2",
+    sourceLabel: "DEV·Dennis Schöneberg 实践帖",
+    upvotes: 398,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Electron",
+      "桌面应用",
+      "图像编辑",
+      "MCP",
+    ],
+    howItWorks: [
+      "粘贴产品边界（图层/选择/导出/哪些必须在真应用上测），以及「绝不可用默认真人配置跑测试」项",
+      "Agent 按实践帖输出：CLAUDE.md 决策与陷阱表、一步一计划后清空会话的节奏，以及按数据损坏风险分档的真机门禁",
+      "人工保留功能取舍与视觉验收；Agent 不代你保证「必五周或同 43 次发布」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-09T11:49:45Z → 2026-10-09；dateModified 2026-10-09T11:53:19Z，取发布日）：Dennis Schöneberg（denrakeiw）写 Scumble。9 月 4 日先做 ComfyUI 自定义节点（画布、图层与选择），9 月 7 日改成桌面应用；距首次提交约五周时已在 Microsoft Store，自称可编辑 15000 像素图而不卡死。数字：43 次发布（0.1.0 在 9 月 9 日，0.1.44 在 10 月 9 日）；应用仓 632 次提交、ComfyUI 节点 137 次；应用约 8.3 万行 JavaScript + 约 2900 行 Rust；测试与工具代码约 8.3 万行；文档与计划约 4.3 万行 Markdown、26 份计划；MCP 工具 109 个。栈是 Electron + canvas/WebGL2 + 瓦片引擎（SharedArrayBuffer/worker/Rust WASM）。CLAUDE.md 记已做决定与日期、「未经用户不得重开」、陷阱与编号需求；长历史迁到 docs/HISTORY.md。一次会话连续做八步把上下文堆到约 85% 后品质下降，此后改为：计划中的一步、提交、交接备注、然后 /clear。像素如何落在画布上，须先写一句人话效果再写代码。测试用门禁跑真实应用（Chrome DevTools Protocol 看像素/文件/命令），并按风险分成完整/普通/轻量三档；曾因默认配置基准测试覆盖掉自己正在编辑的文档，此后每次测试必须独立 --user-data-dir。并行工作流曾一下午烧光配额。浏览器陷阱包括：globalCompositeOperation=copy 会清空整张画布、预乘两次、65536 宽画布静默不画、隐藏窗口里 requestAnimationFrame 不触发等。代码签名改走 Microsoft Store 的 MSIX（微软代签）。主线是桌面编辑器的节奏与真机门，不是官文简报。",
+      "与 vineeth-mcp-pool-11-servers-week / amado-islam-museum-fleet-23-days 不同：本条是桌面修图应用的发布节奏与真机分档测试；文中的 109 个 MCP 工具是编辑器命令面，不是自建 11 个 SaaS MCP，也不是博物馆多代理船队",
+    ],
+    approach: `Dennis Schöneberg 在 DEV《I built a desktop image editor in five weeks with Claude Code》（datePublished 2026-10-09）写明：他几乎不手写那些代码，自己的工作是决定做什么、用自己的图片验收，并频繁说「不是那样」；五周能收住，靠的不是一次把八步做完，而是项目记忆、一步一清空，以及在 GPU/合成器上测真应用。
+
+关键门禁不是「生成得动就算完成」，而是像素类改动先写一句人话效果、测试不得碰默认工作配置，并按「会不会丢数据或损坏文件」决定测多少。功能是否该存在、校色是否看起来对，仍由人判断。
+
+本场景据此输出「桌面编辑器真机门禁」提纲。禁止把五周、43 次发布或约 8.3 万行写成任意应用 SLA，或建议在默认用户配置里跑生成测试。`,
+    outcomes: [
+      "源披露约五周、43 次发布、632+137 次提交、应用约 8.3 万行 JS + 约 2900 行 Rust、测试工具代码约同样 8.3 万行、26 份计划与 109 个 MCP 工具等作者口径；属单人桌面应用窗口，不可外推为你的工期或「同 CLAUDE.md 必同规模」。",
+      "能把「可让代理写的命令/渲染实现」与「必须人做的取舍、视觉验收与发布签名」拆开。",
+      "为长会话品质下降、测试覆盖真实文档、以及浏览器合成器陷阱提供提问清单。",
+    ],
+    caveats: [
+      "工期、行数、发布次数与「15000 像素不卡死」为作者自述；应用仍处 0.1.x。",
+      "功能是否该做、校色与导出是否可接受，仍须人；代理不能替你承担用户数据损坏。",
+      "上面写的是个人实践帖，不是 Electron/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "桌面编辑器真机门禁",
+        body: `你是资深桌面应用教练。只根据用户边界写门禁，不要编造已完成的周数、发布次数或代码行数。
+
+产品范围：{{scope}}
+高风险路径（文档/导出/像素内核）：{{risk}}
+不可用默认真人配置测试：{{no_default_profile}}
+
+输出 Markdown：
+1. 项目记忆文件里必须写下的决定/陷阱/编号需求
+2. 一步一提交后清空会话的最小节奏
+3. 按数据损坏风险分档的真机测试（完整/普通/轻量）
+4. 人必须批准的清单（像素效果一句话、是否发布）
+禁止声称「必五周」；禁止建议在默认用户配置里跑生成测试。`,
+      },
+      {
+        title: "长会话写完却漂品质复盘",
+        body: `一次会话里连续做了多步，后半段开始重开旧决策或引入合成器 bug。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像上下文堆积、计划里没写「做成什么样」，还是测试没打到真应用
+2. 最小收敛顺序（交接备注→清空→补陷阱一行）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再生成一遍等于已稳定」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/denrakeiw/i-built-a-desktop-image-editor-in-five-weeks-with-claude-code-46g2",
+      label: "DEV · I built a desktop image editor in five weeks with Claude Code",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "508",
+    slug: "rss-holmes-claude-review-rules-five-months",
+    title: "Rohan：生产评审规则演化五个月——六名专员加核验器，无法证实的发现一律丢弃",
+    summary: "团队；披露约五个月：从按需单提示到剧本 + 六名专员 + 核验器；核验器查文件/引文/是否在 diff/规则原文四项，任一失败即丢弃；人仍须批准每个 PR；不代你任意仓同准。",
+    description:
+      "面向要把代理评审接到每条 PR、却怕误报挡住同事或翻出多年前旧代码的工程团队：把「按路径加载规则 + 只评改动行 + 发现必须引规则 + 核验器先证伪」写成门禁，区别于统一全员 AI 工作流与发布阴影门。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://nulltensor.com/posts/claude-code-review/",
+    sourceLabel: "nulltensor·Rohan Sen Sharma 实践帖",
+    upvotes: 399,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "代码评审",
+      "GitHub Actions",
+      "核验器",
+      "团队",
+    ],
+    howItWorks: [
+      "粘贴现有分层模块与规则文档位置，以及「绝不可在未核验时对同事 request changes」约束",
+      "Agent 按实践帖输出：按路径加载规则、只评改动行、严重级别定义，以及四项核验后再发评的表",
+      "人工保留架构对错与合并；Agent 不代你保证「必五个月建成或同误报水平」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-09-28T00:00:00.000Z → 2026-09-28；页内 28 Sept 2026；DEV 转载标注 Originally published at nulltensor.com）：Rohan Sen Sharma 写所在公司把 Claude Code 评审从一条 GitHub 工作流提示，做成剧本、六名专员和一名核验器。时间线：4 月 20 日上线按需版（评论里同时出现 @claude 与 review 才跑），规则未稳时误报多，所以不自动跑。5 月 12–15 日一周内改四次：对每条就绪的 PR（open/新推送/重新打开）提交真正的 GitHub review——有阻断项就 request changes，否则 approve；跳过草稿和长生命周期项目分支。作者强调：一旦会投票，误报就变成挡住同事的成本。随后改为按改动路径只加载相关规则（一次加载全部规则曾导致幻觉出不存在的违规），并写死「只评改动或新增行，永不标记既有代码」；严重级别按定义而非临场判断。5 月 18 日规则搬进统一的 docs/review.md，本地 /review 与 CI 共用；本地要询问目标分支，不假定 main；跳过 SQL/CSV/JSON；阻断项必须引用架构规则章节。5 月 19 日单评审改成编排器：路由、服务、仓库、架构、Python 风格专员并行，另加核验器。核验器对每条发现查四项：引用的文件是否存在、引文是否出现在所标行附近 5 行内、该行是否为本 diff 新增或修改、所引规则章节是否真如发现所说；任一项失败就丢弃。原则是误报远比漏报更糟；核验器不得改严重级别或自己添发现。9 月加入第六名数据库性能专员（循环内查询、N+1、可批写却逐行写等可阻断；无界拉取等为警告），且这是「风格不阻断遗留代码」的刻意例外；加专员不必改工作流文件。文中提到的「90% 代理 PR 合并率」是反例提醒，不是本组指标。每个 PR 仍须人批准。主线是可证伪的评审门，不是官文简报。",
+      "与 tint-standardize-ai-workflow-130pct / chudi-polyphemus-36k-shadow-gate 不同：本条是生产 PR 评审剧本与核验器，不是团队统一 /implement 工作流或发布阴影门",
+    ],
+    approach: `Rohan Sen Sharma 在 nulltensor《Claude Code Review in Production…》（datePublished 2026-09-28）写明：他们保留自建评审，是因为要执行写下来的架构、每条发现都引用规则，并真的对 PR 投票；Anthropic 托管评审默认找正确性缺陷，也从不批准或阻断 PR。
+
+关键门禁不是「规则越多越严」，而是按路径加载、只评改动行，并用核验器先核对引文、行号、diff 与规则原文。一旦评审会 request changes，误报就不再只是噪音。合并与「这是不是该做的改动」仍由人判断。
+
+本场景据此输出「生产评审核验门」提纲。禁止把五个月或六名专员写成任意仓 SLA，或建议未核验就自动阻断同事的 PR。`,
+    outcomes: [
+      "源披露约五个月演化、4 月 20 日按需版至 9 月第六名数据库性能专员、六名专员加核验器以及核验器四项检查等作者口径；属单公司评审窗口，不可外推为你的误报率或「同剧本必同精度」。",
+      "能把「可按路径自动执行的规则检查」与「必须人做的合并与方案判断」拆开。",
+      "为一次加载全部规则产生幻觉、把旧代码翻成二十条发现、以及错误的 request changes 提供提问清单。",
+    ],
+    caveats: [
+      "时间线与专员设置为作者所在公司实践；文中未给出误报率或吞吐百分比（「90% 合并率」是反例，不是本组结果）。",
+      "每个 PR 仍须人批准；代理不能替你承担合并责任。",
+      "上面写的是团队实践帖，不是 Anthropic 托管 Code Review 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "生产评审核验门",
+        body: `你是资深代码评审教练。只根据用户边界写门禁，不要编造已降低的误报率或建成所需月数。
+
+模块与规则文档：{{scope}}
+不可未核验就 request changes：{{no_false_block}}
+
+输出 Markdown：
+1. 按需→每条 PR 投票→按路径加载规则 的最小演进顺序
+2. 「只评改动行」与严重级别定义（阻断/警告/建议）
+3. 核验器必须核对的四项（文件/引文/是否在 diff/规则原文）
+4. 人必须批准的清单（合并、是否把风格设为阻断）
+禁止声称「必五个月建成」；禁止建议跳过核验器直接阻断同事。`,
+      },
+      {
+        title: "评审翻出旧代码复盘",
+        body: `一条只改了一行的 PR，代理却列出十几条多年前的风格问题，或引用了 diff 里不存在的代码。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像一次加载了全部规则、没有限制在改动行，还是缺少核验器
+2. 最小补丁顺序（先加「只评 diff」再加四项核验）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍评审等于已去掉误报」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://nulltensor.com/posts/claude-code-review/",
+      label: "nulltensor · Claude Code Review in Production: How Our Review Rules Evolved Over Five Months",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "509",
+    slug: "bergholz-courseshelf-react-liveview-40-days",
+    title: "Daniel：四次尝试迁完 CourseShelf——人手驾技能约 35–40 天，技能约 152 行",
+    summary: "个人；披露 React/Inertia→Phoenix LiveView 四次尝试：懒自动化约 40–45 分钟失败；最终技能约 152 行、人手逐页驾驭；全程约 35–40 天（业余，约两个月跨度）；不代你任意迁栈同工期。",
+    description:
+      "面向要把现有 SaaS 前端迁到另一套框架、却怕代理提前宣布完工并留下「即将推出」占位的独立开发者：把「自动化的是可重复技能、工作仍由人逐页验收」写成门禁，区别于静态站点归档迁移与云厂商搬迁。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://bergholz.com.br/en/blog/how-i-used-ai-to-rebuild-my-saas-from-scratch-5f3m",
+    sourceLabel: "bergholz.com.br·Daniel Bergholz 实践帖",
+    upvotes: 400,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Phoenix LiveView",
+      "迁移",
+      "技能",
+      "SaaS",
+    ],
+    howItWorks: [
+      "粘贴旧栈/新栈差异（哪些抽象只为旧边界存在），以及「绝不可接受 to-do 或『即将推出』占位就算完工」项",
+      "Agent 按实践帖输出：四类失败模式对照、可重复技能应写明的简化规则，以及逐页验收清单",
+      "人工保留逐页视觉与代码气味验收；Agent 不代你保证「必 35–40 天或一次自动迁完」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-06-16T19:40:11.990Z → 2026-06-16；dateModified 2026-09-03T14:27:30.000Z，取发布日；DEV 有转载）：Daniel Bergholz 写 CourseShelf 从 React + Inertia 迁到 Phoenix LiveView，主模型为 Claude Opus 4.7，驾驭是桌面版 Claude Code。第一次「懒测试」：提示几乎只有「迁走 React、用 LiveView、别出错」，开到最大力度，等了约 40–45 分钟。首页前十分钟还接近，之后每一页都像另一个产品；代理还宣布完工，却留下大量 to-do 和前端「即将推出」占位。作者自评 UI 保真约 2/10。第二次加上 /batch 子代理切页，努力程度仍约 0，前两三页明显更好，但仍以「完工」+ 占位收场。第三次花 20–30 分钟写长计划（努力程度约 4）：代码质量改善，因为代理不再把只为 Inertia 存在的 JSON 序列化层搬进 LiveView；UI 仍漂。他要求用 Playwright MCP 对照线上截图，并写明自己相当确定这一步被忽略了。第四次把计划收成约 152 行技能，人手逐个主要功能调用，并开约五个并行会话亲自看每一页和每一份 diff。努力程度自评约 9；UI 保真约 9、代码质量自评 10。保真不是 10，是因为 v2 用 daisyUI、v1 用 shadcn/ui，作者接受大约 90%。他强调：自动化的是技能（剧本），不是整次迁移；若懒方法能一次成功，他估「一晚」可迁完——这是反事实，实际因逐项手驾花了将近两个月、约 35–40 天，且 CourseShelf 不是全职工作。另写技能纠正「打开对话框也走 LiveView 服务端往返、用户空等约 200ms」的气味：服务端响应会不会改变用户看到的东西？不会就用客户端 JS。主线是人驾技能，不是官文简报。",
+      "与 rafe-blandford-centos-static-archive-claude / nagayashion-playwright-claude-month-60pct 不同：本条是自有 SaaS 的 React/Inertia→LiveView，不是静态档案迁移；文中的 Playwright MCP 被作者写明并未真正执行，也不是生产 E2E 代写稳定门",
+    ],
+    approach: `Daniel Bergholz 在个人博客《How I Used AI to Rebuild My SaaS From Scratch》（datePublished 2026-06-16）写明：他试过把整站交给一次自动化，试了四次；Twitter 上那种「一句话迁完」的结局没有发生。真正转过来的，是把迁栈决策写成约 152 行技能，然后自己逐页开车、逐 diff 验收。
+
+关键门禁不是「再加一个 /batch 就会自己宣布完工」，而是拒绝 to-do 与「即将推出」占位，并写明哪些旧边界抽象（序列化层、Inertia props）不得带进新框架。功能是否一致、对话框是否不该走服务端，仍由人看。
+
+本场景据此输出「人驾迁栈技能门禁」提纲。禁止把约 35–40 天或「一晚」反事实写成任意迁栈 SLA，或建议接受占位页面并宣布迁移完成。`,
+    outcomes: [
+      "源披露四次尝试、首次约 40–45 分钟失败、技能约 152 行，以及人手驾驭约 35–40 天（业余、近两个月跨度；「一晚迁完」为反事实）等作者口径；属单人侧项目窗口，不可外推为你的迁栈工期或「同技能必同保真」。",
+      "能把「可写成技能的简化规则」与「必须人做的逐页视觉与气味验收」拆开。",
+      "为代理提前宣布完工、把旧边界抽象带进新框架、以及截图对比步骤被忽略提供提问清单。",
+    ],
+    caveats: [
+      "UI 2/10→9、代码质量 10 与约 90% 保真为作者自评；35–40 天为业余跨度，不是全职人日。",
+      "逐页是否可上线、旧数据与 SEO 是否对齐，仍须人；代理不能替你承担生产迁移。",
+      "上面写的是个人实践帖，不是 Phoenix/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "人驾迁栈技能门禁",
+        body: `你是资深框架迁移教练。只根据用户边界写门禁，不要编造已完成的天数或保真分数。
+
+旧栈与新栈：{{stacks}}
+不得带入的旧边界抽象：{{no_carry}}
+不可把占位当成完工：{{no_todo}}
+
+输出 Markdown：
+1. 懒一次跑完 / 切页 batch / 长计划 / 人手逐页驾技能 各自通常败在哪
+2. 技能里应写死的简化规则与测试命令
+3. 逐页验收清单（UI、路由、无 to-do）
+4. 人必须批准的清单（是否宣布迁完）
+禁止声称「必 35 天」或「必一晚」；禁止建议带着『即将推出』占位宣布迁移完成。`,
+      },
+      {
+        title: "代理宣布迁完却满是占位复盘",
+        body: `一次长会话后代理说迁移已完成，打开页面却看到 to-do 注释或「即将推出」。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像上下文腐烂、缺少「禁止占位」规则，还是没有人逐页验收
+2. 最小补查顺序（列出未完成页→写成技能→逐页重跑）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再生成一遍等于已迁完」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://bergholz.com.br/en/blog/how-i-used-ai-to-rebuild-my-saas-from-scratch-5f3m",
+      label: "Daniel Bergholz · How I Used AI to Rebuild My SaaS From Scratch",
+      date: "2026-06-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "510",
+    slug: "princejain-egressleak-153-transcripts",
+    title: "Prince：审计 153 份本地会话出站——滤掉 259 条合成邮箱后，抓住 2 次 URL 泄露",
+    summary: "个人；披露 153 份 Claude Code/Codex 转录、去重工具调用 1928 次；邮箱正则先打出 336 处，其中 259 条为提交说明里的合成地址；随后见到 2 次 URL 查询串带邮箱、1 次外部 POST、3 条 SSH MCP；不代你任意机器同结果。",
+    description:
+      "面向刚看到出站 User-Agent/URL 可能带走账号邮箱、要对本地会话做自检的开发者：把「先剔除合成邮箱与回环请求，再看真正外连」写成门禁，区别于会话花费拆账与依赖更新研判。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/princejain756/auditing-153-claude-code-codex-transcripts-for-107757-user-agent-and-url-email-leaks-and-chf",
+    sourceLabel: "DEV·Prince Jain 实践帖",
+    upvotes: 401,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "出站审计",
+      "PII",
+      "PreToolUse",
+      "安全",
+    ],
+    howItWorks: [
+      "粘贴本地转录与配置路径，以及「绝不可把第一次正则命中数当成已泄露数量」纪律",
+      "Agent 按实践帖输出：合成地址/回环请求过滤表、外连分类，以及拦截 User-Agent/查询串邮箱与常见 token 的钩子提纲",
+      "人工保留如何处理已外发的地址与是否启用钩子；Agent 不代你保证「必抓住全部泄露」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-06T05:33:48Z → 2026-11-06）：Prince Jain 在 anthropics/claude-code#107757 与 #55743 登上首页的当天，对自己机器上 153 份 Claude Code 与 Codex CLI 转录做了出站审计（去重后工具调用 1928 次）。第一次用通用邮箱正则扫 ~/.claude/projects 与 ~/.codex/sessions，得到 336 处命中，作者一度以为泄露了大量个人/客户地址；按域名归类后，259/336（约 77.1%）是 Claude Code 提交说明提示里的 noreply@anthropic.com 与 example.com。去掉合成域名后剩 77 处真实邮箱命中，分布在 8 个域名（gmail.com 53、mcxindia.com 11、prince.sh 4、adelev8.com 4、nvidia.com 2、aqr.com 1）。从工具输入抽取 HTTP URL 得到 30 个请求，其中 19 个（约 63.3%）是 127.0.0.1/localhost 健康检查，剩下 11 个外部请求（9 个到 q.prince.sh，2 个到 gemini.google.com）。过滤之后，审计抓住：2 次出站 URL 查询串带邮箱（?authuser=，EGL008）；1 次用 Bash curl 把本地文件 POST 到外部端点（EGL010）；~/.claude.json 里 3 条经 ssh root@… 转发参数的 MCP（EGL003）；因未设 DISABLE_TELEMETRY=1 与 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1，配置里仍有 userID/machineID 等遥测字段（EGL002）；153/153 会话（100%）把本机 macOS 用户路径 /Users/… 打进了提示上下文（EGL005）。作者把零依赖审计器发布为 egressleak，并可用 emit-hook 生成 PreToolUse 脚本，在 Bash/WebFetch/WebSearch 的输入里看到真实邮箱、?authuser=/?email= 或 sk-/ghp_/AIza 类 token 时以退出码 2 拦截。作者写明局限：转录看不见运行时动态拼出、却未出现在工具参数里的 URL；钩子也不检查已批准脚本内部再拉起的子进程。主线是先去掉假阳性再谈泄露，不是官文简报。",
+      "与 hasangilani-knock-87-sessions-saleor-cost / getburnd-13631-six-months-waste-patterns 不同：本条是本地转录的出站/PII 自检，不是会话费用 A/B，也不是六个月 token 账单拆解",
+    ],
+    approach: `Prince Jain 在 DEV《Auditing 153 Claude Code & Codex transcripts…》（datePublished 2026-11-06）写明：公开问题让他去查自己的会话到底有没有把邮箱送出机器；第一版脚本会被提交说明里的合成地址和本地健康检查吓一跳，必须先把这两类假阳性分开，剩下的外连才能谈。
+
+关键门禁不是「正则命中数等于泄露数」，也不是把上游修复日当成你这台机器已经安全。作者同时给出可在工具调用前拦截的钩子，并写明转录回放看不见运行时动态拼装的目的地。如何轮换已暴露的地址，仍由人决定。
+
+本场景据此输出「会话出站自检门禁」提纲。禁止把 153 份、2 次查询串泄露或 259 条过滤写成任意环境的扫描 SLA，或把第一次正则命中数当成已确认泄露。`,
+    outcomes: [
+      "源披露 153 份转录、去重工具调用 1928 次、336 处邮箱命中中 259 条为合成地址、以及 2 次 URL 查询串带邮箱、1 次外部 POST、3 条 SSH MCP、153/153 打入本机用户路径等作者口径；属单机自检窗口，不可外推为你的泄露数量或「同脚本必同发现」。",
+      "能把「可脚本化的假阳性过滤与参数拦截」与「必须人做的凭证轮换/是否启用钩子」拆开。",
+      "为把提交说明里的 noreply 地址当成客户泄露、以及把 localhost 健康检查算成外连提供提问清单。",
+    ],
+    caveats: [
+      "计数为作者对自有转录的脚本结果；文末发布了 egressleak，且写明转录与钩子都看不见运行时动态拼出的目的地。",
+      "已外发地址如何作废、钩子误伤哪些合法请求，仍须人；代理不能替你承担泄露善后。",
+      "上面写的是个人实践帖，不是 Anthropic 安全公告或官文简报。",
+    ],
+    prompts: [
+      {
+        title: "会话出站自检门禁",
+        body: `你是资深安全复盘教练。只根据用户边界写门禁，不要编造已发现的泄露条数。
+
+转录与配置位置：{{scope}}
+不可把第一次正则命中当成泄露：{{no_raw_regex}}
+
+输出 Markdown：
+1. 扫描→按域名剔除合成地址→分开回环与外连 的最小步骤
+2. 应单独记录的项（查询串邮箱、外部 POST、SSH MCP、本机用户路径）
+3. 工具调用前钩子能拦与不能拦的范围
+4. 人必须批准的清单（轮换地址、启用钩子）
+禁止声称「必扫出同样数量」；禁止把未过滤的邮箱正则命中数写成已确认泄露。`,
+      },
+      {
+        title: "扫描器报出数百个邮箱复盘",
+        body: `你对本地会话跑了邮箱正则，命中数高得吓人。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像提交说明里的合成地址、回环健康检查，还是真的查询串/请求头外带
+2. 最小复验顺序（按域名分组→标回环→只保留外连）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「命中数下降等于泄露已消失」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/princejain756/auditing-153-claude-code-codex-transcripts-for-107757-user-agent-and-url-email-leaks-and-chf",
+      label: "DEV · Auditing 153 Claude Code & Codex transcripts for #107757",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
