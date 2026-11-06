@@ -37262,6 +37262,447 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "561",
+    slug: "austin-ginder-1600-emails-3000-sites",
+    title: "Austin：一天两场会话清掉 1,600 封运维邮件——15 个站点里只修了 4 个站",
+    summary: "个人（作者 Austin Ginder，发布于公司 Anchor Hosting 博客）；披露自己管理接近 3,000 个 WordPress 站点，收件箱里堆着改密、注册、监控、插件不匹配、Kinsta 错误、恢复模式、域名续费和 Google Workspace 账单等通知，典型一周会新进数百封；他用自己写的 WP-CLI 插件 Missive CLI 让 Claude Code 搜索、归类、关闭和起草邮件，并 SSH 进服务器看日志、修问题和记录；一度做过带优先级和看板的 /email-triage 技能，后来扔掉，改成短对话指挥；同一天两场会话（作者也写成一个下午）关闭 1,600 多封邮件、补了 6 个文件、SSH 复查 15 个站点、清掉 14 类噪声；分类计数包括监控告警 900、技术问题告警 182、密码/注册 75、Kinsta 错误 50、ThemeForest 更新 40、ICANN 域名通知 37、新订单 34、WordPress 自动更新 29、其他噪声 150；WHOIS 确认 21 封一次关完，改密 43 加新注册 32 共 75 封；26 封 Google Workspace 账单里有 4 封是真人对话被留下；50 封 Kinsta 错误覆盖 15 个站点，SSH 到其中 12 个（3 个对不上 CaptainCore 记录），作者写 9 个站点只有扫描噪声、4 个有真实错误，整段复查约 2 分钟；一处 PHP 8.3 在主题没有 404.php 时 include 空路径抛出 ValueError，代理第一次指错版本，作者纠正后才定位；另一个站点自定义主题 Redwood 有 4 个文件在 PHP 8.3 下大量告警；还有站点用 SCP 从另一台机器取来 WP Migrate Pro 2.7.7 替换损坏安装；182 封恢复模式邮件按插件归组：Rank Math SEO PRO 5 个站、CleanTalk 8 个站、The Events Calendar 2 个站共 12 封、Role-Based Pricing 1 个站；监控告警里 8 个站点已连续出现 6 个月以上，本周 5 个宕机中 3 个自愈、2 个仍未恢复，另有 6 个短暂抖动；站内导航有托管套餐、联系和通讯订阅导流；不代你任意托管收件箱同样一下午清掉 1,600 封，或 SSH 约 2 分钟就能找齐故障。",
+    description:
+      "面向要把海量运维通知真正分诊并修掉信号、又必须自己判断哪封该关、哪台该登的人：把「先按类清噪声，再对有信号的站点看日志，代理的第一次诊断不能直接签字」写成门禁，区别于把通讯邮件做成摘要，以及以工单系统自动回复为主线的客服编排。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://anchor.host/1600-emails-in-one-conversation-how-i-triage-my-inbox-with-claude-code/",
+    sourceLabel: "anchor.host·Austin Ginder 实践帖",
+    upvotes: 452,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "邮件分诊",
+      "WordPress",
+      "运维",
+      "SSH",
+    ],
+    howItWorks: [
+      "粘贴收件箱与主机边界（邮件从哪来、哪些类别可以直接关、哪些站点你有 SSH）以及「绝不可把一类通知全部关掉当成已经排除故障，也不可不核对就把代理第一次指出的版本差异当成根因」纪律",
+      "Agent 按实践帖输出：噪声应先按什么主题批量清掉、哪些类别关闭前必须按站点归组并看日志、修复和记录应怎样分开",
+      "人工保留哪一类算噪声、哪台机器现在该登上去，以及代理的诊断能不能签字；Agent 不代你保证「必能在一个下午关闭 1,600 封邮件，或约 2 分钟的日志复查等于已经找齐故障」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-04-14T07:00:00-04:00 → 2026-04-14；dateModified 同；article:published_time 同；页内 April 14, 2026；GET 200，UA MiraBot/1.0）：Austin Ginder 在《1,600 Emails in One Conversation: How I Triage My Inbox With Claude Code》写自己管理接近 3,000 个 WordPress 站点，每台都会产生改密、注册、可用性监控、插件不匹配、Kinsta 错误、WordPress 恢复模式、域名续费和 Google Workspace 账单等邮件。典型一周会新进数百封，大多数是噪声，但里面会藏着 PHP 致命错误、更新损坏的插件或主题在 PHP 8.3 上开始报错。他用 Claude Code 当操作员而不是摘要机器人：搜索邮件、分类、SSH 进服务器、读错误日志、判断根因、打补丁并记录。关键是给收件箱一个命令行接口——他自己做了 WP-CLI 插件 Missive CLI，可以搜索、阅读、关闭和起草邮件。一开始他还做了带优先级分层、粒度规则、看板和四阶段流水线的 /email-triage 技能，后来觉得完全不必，扔掉后改成短对话：「先把监控告警拉出来」「按站点归组」「SSH 进本周这些」「其余关掉」。作者写自己是分诊的人，Claude 是操作员，不再需要技能文件。同一会话里，21 封未关的 WHOIS Data Confirmation 一次关完；改密 43 封加新用户注册 32 封共 75 封也一次关完；ThemeForest 更新、Missive 收据、WooCommerce 订单确认和 Google Workspace 账单用同样方式清。关掉 Google Workspace 那批之前，代理标出 26 封里有 4 封是真人对话，不是自动通知，于是留下。数字表：同一天两场会话关闭 1,600 多封、补了 6 个文件、SSH 复查 15 个站点、清掉 14 类噪声；分类为监控告警 900、技术问题告警 182、密码/注册 75、Kinsta 错误 50、ThemeForest 更新 40、ICANN 域名通知 37、新订单 34、WordPress 自动更新 29、其他噪声 150。最大一类是可用性监控，逾 900 封，多数是同样 15 个站点连续出现数月，有的已下线，有的是他们监控但不控制的客户站。作者让代理把 50 封 Kinsta「We've detected an error」按站点归组并 SSH 看日志：15 个站点里拿到 12 个的 SSH，3 个对不上 CaptainCore 记录；随后写 9 个站点只有机器人扫描噪声，4 个有真实错误（文中站点名已改成假地址），包括 captaincore-helper.php 在空路径上的 PHP Fatal、票务页面的 FooEvents foreach 告警、一个站点合计 185 条插件告警，以及主题在 PHP 8.3 上 4 个文件快速刷日志。作者写 50 封错误邮件覆盖 15 个站点，只有 4 个有真实问题，整段复查约 2 分钟。一处调查里，自定义主题的作者归档 URL 触发 PHP Fatal，代理先说新版本已经有防护，作者指出该防护在 v0.6.0 里就有；重新看代码后才发现 get_404_template() 在没有 404.php 时返回空字符串，PHP 8.3 对 include '' 会抛 ValueError，而 PHP 7.x 会静默失败。另一个站点上，自定义 WooCommerce 主题 Redwood 每天产生数百条 PHP 告警，4 个文件都是未做空值检查：product-dimensions.php 在 $rows 可能为空时取 $rows[0]['title']（每个产品页 8 条）；single-inspiration_gallery.php 在缺少 ACF 主视觉块时有两个未定义变量；blog-sidebar.php 期望父模板传入 $offset 和 $exclude；hero.php 在 is_search() 分支缺少 $thisID。第三处修复是损坏的 WP Migrate Pro：自动更新已坏，代理从另一台受管站点取出 2.7.7，经 SCP 传过去替换插件目录。182 封「Your Site is Experiencing a Technical Issue」按插件归组：Rank Math SEO PRO 导致 5 个站点致命错误，CleanTalk 打到 8 个站点，The Events Calendar 在 2 个站点共 12 封，Role-Based Pricing for WooCommerce 在单站反复崩溃。本周出现的两处里，一处是上面的 WP Migrate Pro，另一处是 All-in-One WP Migration 与 Unlimited Extension 版本不一致，需要从厂商手工下载。其余较旧，站点已自行恢复，182 封随后关掉。逾 900 封监控告警里，8 个站点已连续出现 6 个月以上，应移出监控；本周 5 个站点宕机，3 个自愈、2 个仍未恢复；另有 6 个当天短暂抖动后恢复。作者写关闭 900 封是一条命令，但要知道哪两个还宕着、哪八个该移出监控，需要一场对话。每次会话结束他会让代理生成带数字卡片和柱状图的 HTML 报告。文末又把过程概括成一个下午处理 1,600 多封、修好 4 个站点、补了 6 个文件，并记进他们的流程跟踪。页眉/页脚有 Plans、Contact 和 Subscribe。主线是托管规模的收件箱分诊和登机组查，不是官文简报。",
+      "与 vamshi-gmail-digest-18-newsletters-220-lines / nunc-108-tickets-oracle-legacy-24-skills / juste-thales-zerosuite-chatwoot-draft-only-support / monei-zendesk-amazon-connect-bedrock-support 不同：本条是托管运维收件箱按类清噪声并 SSH 查真实错误，不是把通讯做成摘要，也不是客服工单自动回复或草稿分流",
+    ],
+    approach: `Austin Ginder 在《1,600 Emails in One Conversation》（JSON-LD 2026-04-14）写明：代理可以按主题搜索并批量关闭邮件，并联登进服务器读日志，但哪一类算噪声、哪台机器现在该登、以及第一次诊断对不对，仍归人。
+
+关键门禁不是「一个下午关掉 1,600 封等于收件箱已经健康」，而是关闭前按站点归组，对有信号的类别看日志；作者纠正了代理把旧防护当成新修复的判断。
+
+本场景据此输出「运维邮件分诊须人审」提纲。禁止把 1,600 封或约 2 分钟复查写成 SLA，或建议不看内容就按主题全部关闭。`,
+    outcomes: [
+      "源披露作者管理接近 3,000 个 WordPress 站点；同一天两场会话（作者也写成一个下午）关闭 1,600 多封邮件、补了 6 个文件、SSH 复查 15 个站点、清掉 14 类噪声；分类包括监控告警 900、技术问题 182、密码/注册 75、Kinsta 错误 50 等；50 封 Kinsta 错误覆盖 15 个站点，SSH 到其中 12 个，作者写只有 4 个有真实问题，整段复查约 2 分钟；监控告警里 8 个站点已出现 6 个月以上，本周 5 个宕机中 2 个仍未恢复；属该托管收件箱与那两场会话，不可外推为你的收件箱必能同样一下午清掉 1,600 封，或 SSH 复查约 2 分钟就能找齐故障。",
+      "能把「可写成按主题搜索、批量关闭、并联 SSH 和出报告的部分」与「必须人决定的噪声边界、现在该登哪台机器，以及代理的第一次诊断能否签字」拆开。",
+      "为把自动通知里的真人对话一起关掉、把旧代码里已有的防护当成新修复，以及只关监控邮件却不知道哪些站点仍宕着提供提问清单。",
+    ],
+    caveats: [
+      "1,600 多封、6 个文件、15 个站点和约 2 分钟复查，以及分类计数，均为作者自述；站点名在文中已改成示例地址，不是对照实验。作者既写「同一天两场会话」，文末又写成「一个下午」。",
+      "哪一类可以批量关闭、哪台机器现在该登上去，以及代理指出的根因是否成立，仍须人；作者写自己纠正了代理对 404 模板防护版本的误判。",
+      "源站导航有托管套餐、联系和通讯订阅导流（anchor.host/plans/、/contact/、/subscribe/）。",
+      "上面写的是个人实践帖（anchor.host / Austin Ginder，发布于公司 Anchor Hosting 博客），不是 Anthropic、Kinsta 或 WordPress 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "运维收件箱分诊门禁",
+        body: `你是资深运维与收件箱教练。只根据用户边界写门禁，不要编造已关闭的邮件数或复查分钟数。
+
+收件箱与主机边界：{{inbox_boundary}}
+必须由人签字才能关闭或改生产的约束：{{ops_constraint}}
+
+输出 Markdown：
+1. 哪些通知主题可以先当噪声清掉，关闭前还要抽查什么
+2. 哪些类别必须先按站点归组并查看服务器日志，不能只看主题
+3. 登入修复后至少要记录哪些项，才能知道下次同类邮件该不该关
+4. 人必须完成的清单（噪声边界、现在该登哪台、代理的第一次诊断能否签字）
+禁止声称「必能在一个下午关闭 1,600 封邮件」；禁止建议不看内容就按主题全部关闭。`,
+      },
+      {
+        title: "关掉一大类告警后仍有站点异常复盘",
+        body: `一类监控或恢复模式邮件已经被批量关闭，后来才发现有的站点仍宕着，或代理指出的「新版本已修复」其实在旧代码里就有。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像关闭前没有按站点归组、把旧防护当成新修复，还是只看了邮件主题没有看日志
+2. 最小复验顺序（按站点重读未关邮件→抽查仍异常的主机日志→再决定补监控名单还是打补丁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「邮件数降下来或一次 SSH 复查等于故障已经找齐」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://anchor.host/1600-emails-in-one-conversation-how-i-triage-my-inbox-with-claude-code/",
+      label: "anchor.host · 1,600 Emails in One Conversation: How I Triage My Inbox With Claude Code",
+      date: "2026-04-14",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "562",
+    slug: "aleksandr-butakov-woocommerce-1c-erp",
+    title: "Aleksandr：一个人把女装店接到 1C 库存——静默解析错误堆出约一千条孤儿变体",
+    summary: "个人（作者 Aleksandr Butakov）；披露给一家女装品牌做网店：库存在俄罗斯零售常用的 1C（经 XML/CommerceML 对外），客户已有 React 原型，要求像素级还原，预算排不进通常的企业平台；他一个人用从零写的 WordPress 全站点编辑主题和 WooCommerce，由 Claude Code 写大部分代码，自己做架构并审过它改的每一处；本地默认方案是商业 CMS Bitrix 加现成交换模块，作者写授权、年费和集成商加起来接近这次开源构建的全部预算，而主题还对不上四色、两种字体、除胶囊标签外圆角为零的设计；需求还包括每个尺码颜色组合单独计数的实时库存、本地支付、快递、隐私同意和电商事件追踪；技术栈是 PHP 8 模块化 inc/、theme.json 做设计令牌、CommerceML 实时同步，并用 Playwright MCP 做浏览器核对、SSH MCP 做部署；项目跑了几个月，他把「WooCommerce Blocks 不加载 jQuery」「ERP 增量导出默默清掉产品变体」等教训写进下次会话会重读的文档；产品卡链接曾只在桌面生产环境失效，代理用 Playwright 真实点击复现后追到图片轮播里的 setPointerCapture 把点击从商品链接抢到了轨道上；同步显示成功但店面库存不对，对比原始 XML 与入库数据后发现该协议版本把库存放在按仓嵌套的结构里，插件解析器只认上一层扁平数量并静默跳过；属性和变体特征在协议里是两条互不相干的路径；快速同步按增量块重建整组变体，缺失的变体直接消失，发现时库里大约堆了 1,000 条孤儿变体；属性词曾用 GUID 当 slug，过滤 URL 和后台都难读；现代 WooCommerce 区块主题店面不再加载 jQuery，作者重写了原生变体解析；客户两轮修改约 30 项，每轮几天而不是数周；总工期落在数周而不是数月；平台许可费用为零美元；文末有个人站点 butakov.dev 导流；不代你任意 ERP 网店同样数周可上线，或同步显示成功就等于库存数字正确。",
+    description:
+      "面向要把定制店面真正接到外部库存系统、又必须自己核对 XML 和插件解析器的人：把「同步变绿不够，入库数字要和原始报文对上；代理自称修好必须先在真页面复现」写成门禁，区别于把营销事件送进数仓，以及以商店内购类型不一致为主线的上架故事。",
+    categories: [
+      "ecommerce",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/saintbooth/i-replaced-most-of-a-dev-team-with-claude-code-to-build-a-production-e-commerce-store-heres-what-gen",
+    sourceLabel: "dev.to·Aleksandr Butakov 实践帖",
+    upvotes: 453,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "WooCommerce",
+      "ERP",
+      "CommerceML",
+      "Playwright",
+    ],
+    howItWorks: [
+      "粘贴店面与库存边界（ERP 用什么报文、每个 SKU 的库存怎么拆、哪些设计规则绝不能让代理即兴发挥）以及「绝不可把同步成功当成店面数字已经和仓库一致，也不可不复现就接受一次声称的修复」纪律",
+      "Agent 按实践帖输出：设计令牌和禁止项应怎样写进项目说明、增量同步时哪些字段必须跨批次保留、上线前至少要用真点击和原始报文核对哪些路径",
+      "人工保留架构怎么选、插件源码要不要打补丁，以及店面数字和原型是否可接受；Agent 不代你保证「必能在数周内上线同等网店，或同步变绿等于库存已经正确」",
+    ],
+    tips: [
+      "源帖（DEV Community JSON-LD Article datePublished 2026-09-14T05:23:10Z → 2026-09-14；dateModified 同；GET 200，UA MiraBot/1.0）：Aleksandr Butakov 在《I replaced most of a dev team with Claude Code to build a production e-commerce store. Here's what broke.》写这是他在 DEV 的第一篇，要用真实项目而不是自我介绍。客户是女装品牌，库存在 1C——作者写这是当地大多数零售在用的 ERP 和收银系统，对外只讲 XML。通常的回答是做在 Bitrix 上，因为它有现成的交换模块和一圈会报价的集成商。对单店精品来说，这条默认路在两头都破：授权、年费和集成商加起来接近这次开源构建的全部预算，功能还没开始；客户已有 React 原型，要安静奢侈的样子，四种颜色、两种字体、到处圆角为零，把这种设计硬套进现成主题比从零写还慢。需求没有因为预算变小：每个尺码颜色组合单独计数的实时库存、本地卡支付和即时支付、快递、符合当地隐私法的 cookie 横幅和同意勾选，以及电商事件追踪。栈是从零做的 WordPress 全站点编辑区块主题（不用页面构建插件）、WooCommerce 与 WooCommerce Blocks、用 Store API 做迷你购物车、PHP 8 模块化 inc/、纯 ES 模块前端、theme.json 做唯一设计真相来源，以及 CommerceML 实时同步；工具是 Claude Code，外加 Playwright 浏览器核对和 SSH 部署的 MCP。作者写代理写了大部分代码，自己做架构、拆任务并审回来的东西。CLAUDE.md 里是扁平禁令：恰好四种颜色、代码里不许出现原始十六进制、圆角为零、间距只走 8px 尺度；代理需要新色号时用 oklch() 从已有令牌推导。项目跑了几个月，上下文会重置，于是每次真正教训都写进下次会重读的 markdown，例如「WooCommerce Blocks 不加载 jQuery」和「ERP 的增量导出默默清掉产品变体」。验证方面，代理经 Playwright 自己打开线上页面、走真实流程、截图并和原型对比，规则是没有真核对就不能说「修好了」。这条规则在一个只在桌面生产环境出现的缺陷上值回票价：产品卡链接悄悄失效，代理用真实点击复现后追到图片轮播里的 setPointerCapture，它把指针事件从商品链接抢走，点到了下面的轨道。作者写若只盯着轮播代码会觉得它大体是好的。吃掉最多时间的是 ERP：CommerceML 由 ERP 按计划和事件导出数据包，WordPress 侧插件解析后更新目录。第一处是库存数字不真实，同步却干净、没有报错；对比原始 XML 和入库数据后发现，他们用的协议版本把库存放在按仓嵌套的结构里，插件解析器只认上一层扁平数量字段，于是静默跳过。补上解析器之后，作者写自己从此每次更新前都先 diff 插件源码，因为下一版可能把这个缺陷带回来且不写进更新说明。另外两处挨着出现：产品属性和变体特征在该协议里是两套机制，颜色若被做成属性、尺码被做成特征，会走完全不同的逻辑进入 WooCommerce；快速同步发送增量块而不是每次全量目录，插件却按当前块重建整组变体，块里没有的变体就消失。尺码范围在他们发觉之前流失了不知多久，作者写大概是客户先发现；修复是保留跨部分导出的变体，外加清理，因为发现时库里大约堆了 1,000 条孤儿变体。较小的一处是属性词用 GUID 当 slug，过滤 URL 和后台都难读，后来用映射表和每次同步后的修复脚本处理。现代 WooCommerce 区块模板在店面完全不加载 jQuery，经典教程里基于 $('.variations_form').on('found_variation') 的写法没有挂钩点，作者重写了原生变体解析器来更新价格、照片和可用性。AJAX 目录过滤渲染在区块产品模板里，过滤状态经 history.pushState 进 URL，迷你购物车走 Store API，滚动动画用 IntersectionObserver 并尊重 prefers-reduced-motion。交付是与原型真正对齐的自定义区块主题店、带尺码颜色的可变产品卡、愿望单、移动端可滑动图库，以及价格、库存和变体的实时同步。客户两轮修改约 30 项，每轮几天而不是数周；总工期落在数周而不是数月；平台许可费用为零美元。作者写这套不适合一天处理数千单的市场，也不适合多仓实时预留，更不适合采购流程要求纸面厂商支持合同的客户。文末写自己经常这样给网店和内部工具做开发，并给出 butakov.dev。主线是定制店面与 ERP 报文核对，不是官文简报。",
+      "与 jason-macht-customerio-bigquery-15min / biellz-bookworm-playstore-913-tests / nagayashion-playwright-claude-month-60pct / andhand-mybooks-6-days-18-testflight 不同：本条是 WooCommerce 对接 1C/CommerceML，并记录静默跳过的嵌套库存和增量同步丢掉变体，不是营销平台进数仓，不是商店内购类型问题，也不是以 Playwright 套件为主线（文中 Playwright 用于真页面复现）",
+    ],
+    approach: `Aleksandr Butakov 在《I replaced most of a dev team with Claude Code to build a production e-commerce store》（JSON-LD 2026-09-14）写明：代理可以按设计禁令和模块边界写出主题与同步补丁，但架构怎么选、插件源码要不要改，以及店面数字是否真的和仓库一致，仍归人。
+
+关键门禁不是「数周加零许可费就等于任意 ERP 网店可上线」，而是同步成功之后还要用原始报文对入库数字，并且代理自称修好必须先在真页面复现。
+
+本场景据此输出「ERP 同步与真页面核对须人审」提纲。禁止把数周工期或约 1,000 条孤儿变体写成 SLA，或建议只看同步成功日志就签字。`,
+    outcomes: [
+      "源披露一个人用从零写的 WordPress 区块主题和 WooCommerce 对接 1C/CommerceML；同步曾显示成功但店面库存不对，解析器静默跳过按仓嵌套的数量；增量同步按单块重建变体，发现时库里大约堆了 1,000 条孤儿变体；产品卡链接曾只在桌面生产环境被轮播的 setPointerCapture 抢走点击；客户两轮修改约 30 项，每轮几天而非数周，总工期是数周而非数月；平台许可费用为零美元；属该店与那次对接，不可外推为你的 ERP 网店必能同样数周上线，或同步显示成功就等于库存数字已经正确。",
+      "能把「可写成设计禁令、模块文件、解析补丁和真点击核对的部分」与「必须人完成的架构选择、插件是否打补丁，以及店面数字和原型是否可接受」拆开。",
+      "为同步全绿但数字不对、增量块把未出现的变体删掉，以及只在生产桌面点击失效提供提问清单。",
+    ],
+    caveats: [
+      "约 1,000 条孤儿变体、约 30 项修改、数周而不是数月，以及零美元平台许可，均为作者自述；工期是定性对照，不是对照实验。",
+      "架构怎么选、插件源码要不要打补丁，以及店面数字和真点击路径是否可接受，仍须人；作者写没有复现就让代理修，它会自信地修错根因。",
+      "文末有个人站点导流（butakov.dev；作者写自己经常这样给网店和内部工具做开发）。",
+      "上面写的是个人实践帖（dev.to / Aleksandr Butakov），不是 WooCommerce、1C 或某个商业 CMS 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "定制店面与外部库存同步门禁",
+        body: `你是资深电商与集成教练。只根据用户边界写门禁，不要编造已完成的周数或已清理的变体数。
+
+店面与库存边界：{{store_boundary}}
+必须由人签字的设计和同步约束：{{sync_constraint}}
+
+输出 Markdown：
+1. 哪些设计规则必须写成明确禁令，代理才能停止即兴加颜色或圆角
+2. 增量同步时哪些字段必须跨批次保留，避免只按当前报文重建
+3. 上线前至少要用原始报文和真页面点击核对哪些路径
+4. 人必须完成的清单（架构、是否改第三方解析器、库存数字是否可对外显示）
+禁止声称「必能在数周内上线」；禁止建议只看同步成功日志就签字。`,
+      },
+      {
+        title: "同步成功但店面数字不对复盘",
+        body: `库存同步没有报错，店面数量却和仓库不一致，或某些尺码颜色在几次增量之后消失了。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像解析器认错了嵌套字段并静默跳过、按单次增量重建了整组变体，还是属性和特征走了两条互不相干的路径
+2. 最小复验顺序（对比原始报文与入库记录→看一次增量前后的变体集合→再决定改解析器还是先停对外显示）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「同步任务变绿或插件已更新等于顾客看到的库存已经正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/saintbooth/i-replaced-most-of-a-dev-team-with-claude-code-to-build-a-production-e-commerce-store-heres-what-gen",
+      label: "dev.to · I replaced most of a dev team with Claude Code to build a production e-commerce store. Here's what broke.",
+      date: "2026-09-14",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "563",
+    slug: "panth-patel-944-ticket-orchestrator",
+    title: "Panth：944 行把工单变成无头会话——一张工单九次跑到 402 美元才看得见花费",
+    summary: "个人（作者 Panth Patel，文中写自己带领 Oizom 软件团队；开源的是他的编排器与 tracker）；披露自己不再经终端、而是用工单把活交给 Claude Code：一份 944 行、零依赖的编排器把每张工单变成一次无头会话，并在 9 月 27 日与它所用的 tracker 一并按 MIT 开源；起初做成应用里的终端，后来房间里堆满代理，出现三个问题——人会黏在同一个长会话上、应用成了进入虚拟机的门、虚拟机断网就无法排队提示；改成工单后，每张工单一会话，编排器在机器上拉取工作，tracker 托管在别处，虚拟机离线时仍可提单，虚拟机和个人电脑可吃同一块板；代理是看板成员，被分到 To do 后由编排器认领并在工作区指向的仓库里启动 claude -p，带上 tracker 的 MCP 工具；需要决策时调用 ask_question 在线程里放表单，以 status waiting 结束回合，不轮询，回答或任何评论用 --resume 恢复同一会话；把工单移回 To do 视为返工，取消分配或在运行中移到别处会停掉代理；工单阶段、心跳、收件箱和分配等工具列入 DISALLOWED，只由编排器改状态；代理只汇报 review、waiting 或 blocked，编排器看到它报告完成后才把工单推进 Review；Claude Code 的 total_cost_usd 在 --resume 上是累计值，编排器存上次总数并发布差额，作者有一张工单九次运行累计 402 美元之后应用才显示花费；编排器在代理运行时每分钟跳一次心跳，每第 5 次重读任务列表，健康状态每 15 秒由上次状态和心跳时间推导，working 且超过 75 秒无心跳标为 stale，静默满 5 分钟给负责人一次通知；应用、/v1 REST（OpenAPI 3.1）和 /mcp 走同一套命令；跑在一个 Firebase 项目上，作者写这里的「自托管」是自己的 Firebase Blaze 项目而不是 Docker 镜像；本地 pnpm dev 起模拟器需 Node 22、pnpm 9、Java 21 和 Firebase CLI；权限模式模板是 acceptEdits，bypassPermissions 只在信任简报和仓库时开启；工作上按工单隔离的分支、独立服务、开发库副本和预发地址属于 Envizom 专有代码，未放入该仓库；文中给出 github.com/Panth977/ticket-tracker；不代你任意无头会话都能按工单看见花费，或 944 行等于生产编排已经完备。",
+    description:
+      "面向要把无头编码代理接到工单而不是终端、又必须自己回答问题并看清每一回合花费的人：把「代理不能自己改工单阶段，花费按回合从累计值里拆出来，健康状态由心跳推导而不是存一份死亡标记」写成门禁，区别于把工程票据直接打成 PR，以及以客服工单自动回复为主线的编排。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://panth.vardayinitech.in/blog/ticket-to-headless-claude-code-session",
+    sourceLabel: "panth.vardayinitech.in·Panth Patel 实践帖",
+    upvotes: 454,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "无头会话",
+      "工单",
+      "编排器",
+      "Firebase",
+    ],
+    howItWorks: [
+      "粘贴工单与机器边界（tracker 和仓库是否分开、谁有权改阶段、哪些权限模式绝不能默认打开）以及「绝不可让代理自己把工单标成完成，也不可只看月底总数却说不清哪一张工单花了钱」纪律",
+      "Agent 按实践帖输出：认领、提问、恢复和返工应怎样接到同一会话，心跳与健康状态应怎样从时间推导，以及每回合回执要记下哪些花费",
+      "人工保留要不要恢复某次等待、权限模式能否升级，以及一张高花费工单该不该继续；Agent 不代你保证「必能按工单看清花费，或 944 行编排器等于已经可在生产里无人值守」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-10-26 → 2026-10-26；dateModified 同；article:published_time 同；页内 26 Oct 2026；GET 200，UA MiraBot/1.0）：Panth Patel 在《944 lines that turn a ticket into a headless Claude Code session》写自己经工单而不是终端把活交给 Claude Code。一份 944 行、零依赖的编排器把每张工单变成自己的无头会话，并在 9 月 27 日与所用的 tracker 一并按 MIT 开源。作者写自己带领 Oizom 的软件团队。最初版本是应用里的终端，后来变成一屋子代理，出了三件事：人会黏在同一个长会话上、新开会话很麻烦；应用成了进入虚拟机的门，一旦有人闯进去清理会花很久；虚拟机断网时连提示都排不进去。工单修掉这三件：每张工单一会话；编排器在机器上拉工作，不必从外连进那台机器；tracker 托管在别处，虚拟机离线仍可提单，虚拟机和个人电脑可吃同一块板。代理是看板成员：有档案、系统提示和一块板上的令牌。把工单分给它并移到 To do 之后，编排器认领、在工作区指向的仓库里启动 claude -p，并带上 tracker 的 MCP 工具。代理阅读工单和线程，把计划写成任务列表并逐项勾掉。需要决策时调用 ask_question，在线程里放表单，以 status: \"waiting\" 结束回合，不轮询；回答或线程里的任何评论用 --resume 恢复同一会话及其全部历史。把工单移回 To do 视为返工；取消分配，或在代理运行时移到别处，会停掉它。给每个代理的简报有两句：你在该仓库里无头运行，没人看你的终端；负责人只看见工单，所以你想让他们看见的都写到工单上。代理拿得到 tracker 的 MCP 工具，但决定工单位置的那些被拿掉：move_ticket、update_ticket、assign_ticket、create_ticket、heartbeat、get_events、ack_events。代理只做活并汇报 review、waiting 或 blocked；编排器移动工单、打心跳、读事件收件箱并发布回执。因此工单只有在编排器看见代理报告完成后才会进入 Review。回执是每个回合一条，带上该回合花费。Claude Code 的 total_cost_usd 在 --resume 上累计，编排器存上次总数并发布差额；作者写因为代理会推每个回合的花费，才能看见钱花在哪张工单、哪一回合，而不是月底一个数字。他自己有一张工单九次运行达到 402 美元之后，应用才显示其中任何一笔，完整经过写在《$402 on one ticket》。心跳方面，编排器在代理运行时每分钟跳一次，每第 5 次重读任务列表，工单圆点会显示类似 3/12 · Running tests。看板不存储「这个代理死了」，而是用一个函数根据上次状态和距上次心跳的时间推导健康，每 15 秒重算：working 且上次心跳不到 75 秒为 working；working 且 75 秒无心跳为 stale（编排器可能已经挂了）；等待回答或已停止为 idle；完成待审为 done；出错停止（例如超时）为 error；还没有状态为 none。75 秒是一次漏跳加一点余量。只有 working 会变成 stale。静默满 5 分钟，代理的负责人会为这一段静默收到一次通知。应用、REST API（/v1，OpenAPI 3.1）和 MCP 服务器（/mcp）跑同一套命令，代理能做的和人能做的没有不同，每次改动都记下来源，例如「Owner via Claude (MCP)」。令牌限定在一块板，要么以你的身份，要么以某个代理的身份行动。整个系统跑在一个 Firebase 项目上：Firestore、Functions、Storage、Realtime Database、Auth 和 Hosting。作者写这里的「自托管」是自己的 Firebase Blaze 项目，不是 Docker 镜像。本地 pnpm dev 会启动模拟器、写入演示数据并提供应用，需要 Node 22、pnpm 9、Java 21 和 Firebase CLI。选择 Firebase 是因为 tracker 必须和干活的机器分开。应用直接从 Firestore 做实时读取，编排器监听 Realtime Database 的修订流醒来，代理回来时从停下的地方继续。工作区是一个文件夹：workspace.json（仓库、看板、代理、同时几个代理）、给该代理的 Worker 令牌 .env，以及项目规则 brief.md。代理在你的工作树里无人值守运行，permissionMode 来自 workspace.json，模板是 acceptEdits，bypassPermissions 只在信任简报和仓库时开启，开启前要读 workspaces/lib/brief.md。作者明确写工作上用过按工单隔离的栈：每个仓库一个分支、自己的服务、自己的开发库副本和每张工单一个预发地址，这些属于 Envizom 的专有代码，不在这个仓库里；这里代理只在你指向的仓库里工作。仓库是 github.com/Panth977/ticket-tracker。页内未见咨询或商店硬销。用 MiraBot UA 抓取时页脚会出现一份简历 PDF 的跳转提示，正文本身没有把它写成号召。主线是工单驱动的无头会话和按回合计费，不是官文简报。",
+      "与 mahdi-talal-200-prs-tdd-hooks / nunc-108-tickets-oracle-legacy-24-skills / gonewx-decker-147-decisions-10-days / agentconnect-team-channels-30-agents 不同：本条是把工程工单变成隔离的无头会话，并由编排器独占阶段和心跳，不是把票据打成 PR、客服工单自动回复，也不是决策日志或多代理频道编排",
+    ],
+    approach: `Panth Patel 在《944 lines that turn a ticket into a headless Claude Code session》（JSON-LD 2026-10-26）写明：代理可以在无头会话里读工单、提问并继续同一段历史，但工单阶段由编排器改，要不要回答问题、以及一张已经花了很多钱的工单该不该继续，仍归人。
+
+关键门禁不是「开源 944 行就等于可以无人值守跑生产」，而是代理不能自己改阶段，花费必须按回合从累计值里拆出来，健康状态由心跳时间推导。
+
+本场景据此输出「无头工单编排须人审」提纲。禁止把 402 美元或 944 行写成 SLA，或建议默认打开跳过全部权限提示。`,
+    outcomes: [
+      "源披露 944 行、零依赖的编排器把每张工单变成一次无头 Claude Code 会话，并于 9 月 27 日与 tracker 一并按 MIT 开源；心跳每分钟一次，每第 5 次重读任务列表，健康状态每 15 秒推导，working 超过 75 秒无心跳标为 stale，静默满 5 分钟给负责人一次通知；一张工单九次运行累计 402 美元之后应用才显示花费；工作上的按工单隔离栈未放入该仓库；属该编排器与那张工单，不可外推为你的无头会话必能按工单看清花费，或 944 行等于生产编排已经完备。",
+      "能把「可写成认领、提问恢复、回执和心跳推导的部分」与「必须人完成的问题回答、权限模式，以及高花费工单要不要继续」拆开。",
+      "为累计花费只在月底才看见、应用充当进入虚拟机的门，以及代理自己改工单阶段提供提问清单。",
+    ],
+    caveats: [
+      "944 行、9 月 27 日开源、402 美元／九次运行，以及 75 秒／5 分钟等心跳阈值，均为作者自述；402 美元来自他记录的一张工单，不是对照实验。",
+      "要不要回答一次提问、权限模式能否设成跳过提示，以及一张高花费工单该不该继续，仍须人；作者写 bypassPermissions 只在信任简报和仓库时开启。",
+      "上面写的是个人实践帖（panth.vardayinitech.in / Panth Patel），不是 Anthropic 或 Firebase 的官文简报。文中给出 MIT 仓库 github.com/Panth977/ticket-tracker，作为该编排器本身的源码地址，未见咨询或商店硬销。",
+    ],
+    prompts: [
+      {
+        title: "无头会话接到工单的门禁",
+        body: `你是资深代理编排教练。只根据用户边界写门禁，不要编造已达到的行数或单张工单费用。
+
+工单与机器边界：{{ticket_boundary}}
+必须由人签字的权限和花费约束：{{control_constraint}}
+
+输出 Markdown：
+1. 哪些工具只能由编排器调用，代理不能自己改工单阶段或分配
+2. 提问、返工和取消分配应怎样结束或恢复同一会话
+3. 每回合回执至少要记下哪些花费，才能避免只看见月底总数
+4. 人必须完成的清单（回答问题、健康状态告警后怎么办、能否打开跳过权限提示）
+禁止声称「必能按工单看清花费或用固定行数完成编排」；禁止建议默认跳过全部权限提示。`,
+      },
+      {
+        title: "一张工单花费很高却很晚才看见复盘",
+        body: `无头代理已经连着跑了多轮，月底或很晚才发现单张工单花费远超预期，或看板上的代理看起来还在工作、实际上心跳已经停了。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只记录了累计总额、没有按回合发布差额，还是健康状态靠手写「已死亡」而不是由心跳时间推导
+2. 最小复验顺序（按工单把每回合花费加总→看最后一次心跳→再决定停会话、改回执还是改告警）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「工单已经进入 Review 或月底账单能对上等于每一回合花费都及时可见」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://panth.vardayinitech.in/blog/ticket-to-headless-claude-code-session",
+      label: "panth.vardayinitech.in · 944 lines that turn a ticket into a headless Claude Code session",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "564",
+    slug: "joko-nectoux-security-audit-inhouse",
+    title: "Joko：把一年一次的外部安全审计收成内部技能——约一天写出、作者估计一年省约 15 万美元",
+    summary: "团队（Joko，作者 Pierre Nectoux）；披露购物助手 Joko 在法国和美国有超过 600 万用户，用户会连接银行账户，公司在其上运行支付，因此安全被写成一等事项；以往规模相当的公司会一年请外部机构做一次审计，作者写它贵、落地时代码已经往前走，并且对外面常见问题和请求头更熟、对自家业务逻辑较浅；他们做成内部 Claude Code 插件里的 security-audit 技能，指向一个或全部仓库，按五轮顺序跑：三轮确定性、两轮推理——依赖 CVE（例如 npm audit --json）、密钥与凭据（从基础 grep 到 trufflehog 一类工具）、OWASP 静态模式（semgrep 加 OWASP Top Ten）、读基础设施与部署配置找过宽权限和风险安装钩子，以及读源码找伪造钱包、管理接口角色检查、可重放的资金 webhook 和把支付信息打进日志等业务逻辑问题；输出按 Critical／High／Medium／Low 排序，每条带 file:line 和一句为何危险，再和已有工单去重，并可只把 Critical 与 High 做成 Linear 工单；作者写约一天就已经找出以往外部审计没抓到的问题；已分诊并关闭的类型包括角色上的通配动作（收到最小权限）、CI 里的长期云密钥（迁到短时 OIDC）、HSTS max-age 过短（提到一年）以及缺少防嵌入／点击劫持头、Sentry 面包屑记录完整请求 URL（查询参数里可能带令牌或个人数据）且未配置清理、少量处理函数把邮箱和支付细节等 PII 打进日志；一次全量扫过 100% 后端服务和横切问题，确认后的 P1 收进有截止日期的收口项目；之后每仓每季度再跑，发现进入每周分诊；作者把不再外包的审计和在变成事故前抓住的缺口加在一起，估计一年节省约 15 万美元，扫描本身还要几个工程师日；最严重的问题跨多个服务，单仓运行看不见，是靠人手把分开的审计拼成一幅图才发现；他们因此想把遗留逻辑迁进已用于新业务的 monorepo，让推理轮能跟着请求跨服务走；页内未见咨询或商店硬销；不代你任意公司同样约一天找出外部审计漏掉的问题，或把约 15 万美元当成可迁移的节省额。",
+    description:
+      "面向要把安全审计从一年一份外部报告收成可重复的内部习惯、又必须自己确认跨服务裂缝的人：把「机械扫描只是前三轮，业务逻辑和基础设施要分开推理，单仓通过不等于跨服务信任已经成立」写成门禁，区别于专项渗透测试，以及流量出口泄漏排查。",
+    categories: [
+      "security",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://engineering.hellojoko.com/posts/how-we-used-ai-to-increase-the-security-level-of-our-code/",
+    sourceLabel: "engineering.hellojoko.com·Pierre Nectoux 实践帖",
+    upvotes: 455,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "安全审计",
+      "IAM",
+      "OIDC",
+      "PII",
+    ],
+    howItWorks: [
+      "粘贴仓库与支付边界（哪些服务动钱或个人数据、哪些外部扫描已经在跑、哪些发现必须先变成工单）以及「绝不可把单仓报告当成跨服务信任已经成立，也不可把模型列出的文件行号不经验证就当已确认漏洞」纪律",
+      "Agent 按实践帖输出：五轮检查应怎样先做确定性扫描再做推理、哪些发现只看本仓会漏掉、全量扫描和定期复查应怎样分开",
+      "人工保留哪些发现算数、P1 要不要收进有截止日期的项目，以及跨服务拼图是否可接受；Agent 不代你保证「约一天必能找出外部审计漏掉的问题，或一年节省约 15 万美元」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；article:published_time 2026-07-16T00:00:00+00:00 → 2026-07-16；页内 Jul 16, 2026；GET 200，UA MiraBot/1.0）：Pierre Nectoux 在 Joko 工程博客《How We Used AI to Increase the Security Level of Our Code》写他们用自己跑的 AI 审计，替换一年一次的外部审计，覆盖 100% 服务，并想跑就跑。Joko 是购物助手，作者写在法国和美国有超过 600 万用户，用户会连接银行账户，公司在其上运行支付，安全因此是一等事项。同等规模公司的默认做法是付钱请外部机构；因为贵，且要让外部分析师熟悉环境，通常一年一次。作者写它有三个结构性问题：贵；是时间点快照，报告落地时代码已经往前走；对已知 CVE 和缺失请求头一类通用问题较强，对产品特有的事较浅，因为审计人不熟他们的领域。他们把审计分成两半：一半是机械扫描，包管理器、密钥检测和 OWASP 静态模式，工具做了多年；另一半是上下文推理，例如能否经某个接口伪造用户钱包里的钱、管理处理函数是否检查请求者角色、资金移动的 webhook 是否安全可重放、某个 Lambda 是否把敏感支付信息打到 CloudWatch。技能写在内部 Claude Code 插件里，指向一个或全部仓库，按五轮顺序跑。第 1 轮依赖 CVE，例如 Node 上的 npm audit --json。第 2 轮密钥和凭据，从基础的 git grep 到 trufflehog 一类专用工具。第 3 轮 OWASP 静态模式，使用 semgrep 和 OWASP Top Ten 规则集。作者写前三轮只是把已有工具编排起来，价值从第 4 轮开始。第 4 轮读基础设施和部署配置：IaC、CI/CD、运行清单和环境配置（文中举例 Terraform／CloudFormation、Kubernetes／Helm、Docker、GitHub Actions 以及 package.json、pom.xml、requirements.txt 一类清单），寻找过宽的云 IAM 或 Kubernetes RBAC、通配动作、缺失加密、开放 CORS、暴露的配置和有风险的安装钩子。第 5 轮读源码找产品特有风险：未经签名或未认证的载荷伪造钱包、缺少角色检查的管理提权、把敏感支付信息打进 CloudWatch、未认证就接受的敏感路由。输出是按 Critical／High／Medium／Low 排序的报告，每条有 file:line 和一句为何危险，再和已有工单去重，并可选择只把 Critical 与 High 做成 Linear 工单。文中有一份标注为 payment-service、日期 2026-06-20 的报告格式示例，演示空的 Critical、一条通配 IAM 的 High 和一条把邮箱写入 CloudWatch 的 Medium；后文「它发现了什么」则按类型列出已分诊并关闭的问题，而不把该示例的文件行号写成单独的生产结论。已关闭的类型包括：过宽权限，角色上的通配动作收到最小权限；CI 凭据，长期云密钥迁到短时 OIDC；安全头，HSTS max-age 过短并提到一年，同时补上缺失的防嵌入／点击劫持头；可观测泄漏，Sentry 面包屑记录完整请求 URL，查询参数里可能带令牌或个人数据，且未配置清理；日志卫生，少量处理函数把邮箱和支付细节等 PII 打进日志。作者写这些都不新奇，正是年度审计之间会积下来的缺口。工作分成两段，形状像一次成本清理：一次性全量扫过 100% 后端服务和密钥、IAM、CI 认证、请求头、日志等横切问题，确认后的发现变成工单，P1 收进有硬截止日期的「先关掉紧急缺口」项目；之后技能可以重复跑，发现进入每周分诊流，全量扫描改成每仓每季度一次。经济账上，作者把一年一次、为期数周的外部项目，对照约一天写成的技能和每季度几个工程师日的扫描，再加上变成事故前抓住的缺口，估计一年节省约 15 万美元，同时覆盖从一年一次变成持续。局限是上下文：新业务逻辑已在 monorepo，仍有遗留逻辑散在旧的独立仓库，审计一次只看见一个服务；最危险的缺口往往在缝上。他们知道这些缺口是真的，因为审计找出的最严重问题跨多个服务，对任何单仓运行都不可见，只是靠人手把分开的审计拼成一幅图。这成为他们想把遗留逻辑迁进已用于其他一切的 monorepo 的最强理由。页内导航是 Posts 和 About，未见咨询或商店硬销。主线是把外部年审收成可重复的内部技能，不是官文简报。",
+      "与 classkasa-pentest-8-fixes-3-high / princejain-egressleak-153-transcripts / dunkels-matter-xg24-60s-to-4s / manuel-fedele-infra-template-20-tests 不同：本条是购物／支付公司把年度外部审计收成五轮内部技能，并记录跨服务才能看见的缺口，不是专项渗透测试，不是流量出口泄漏排查，也不是智能家居联调或基础设施模板检查",
+    ],
+    approach: `Pierre Nectoux 在《How We Used AI to Increase the Security Level of Our Code》（article:published_time 2026-07-16）写明：代理可以按五轮跑完扫描和推理并起草工单，但哪些发现算数、P1 要不要收进有截止日期的项目，以及跨服务拼在一起的图是否成立，仍归人。
+
+关键门禁不是「约一天写成技能就等于外部审计可以取消」，而是机械扫描只做前三轮，业务逻辑要单独推理，并且单仓通过不等于跨服务信任已经成立。
+
+本场景据此输出「内部安全审计须人审」提纲。禁止把约 15 万美元或约一天写成 SLA，或建议不经验证就把报告里的文件行号当成已确认漏洞。`,
+    outcomes: [
+      "源披露 Joko（作者写超过 600 万用户，用户会连接银行账户并在其上运行支付）把一年一次的外部安全审计收成内部 Claude Code 技能；作者写约一天就已找出以往外部审计没抓到的问题，并估计一年节省约 15 万美元；技能分五轮，对 100% 后端服务做一次全量扫描后改为每仓每季度再跑、发现每周分诊；已关闭的类型包括过宽 IAM、CI 长期云密钥（迁到短时 OIDC）、过短的 HSTS 和缺失的防嵌入头、未清理的 Sentry URL 面包屑，以及日志中的 PII；最严重的问题跨多个服务，单仓运行看不见；属该公司与那次收编，不可外推为你的审计技能必能在约一天内找出外部审计漏掉的问题，或把约 15 万美元当成可迁移的节省额。",
+      "能把「可写成确定性扫描、推理提示和去重工单的部分」与「必须人确认的发现、P1 截止日期，以及跨服务拼图是否成立」拆开。",
+      "为单仓报告看起来干净、问题却出在服务之间的信任假设，以及把模型列出的文件行号直接当成已确认漏洞提供提问清单。",
+    ],
+    caveats: [
+      "超过 600 万用户、约一天写出技能、几个工程师日的扫描，以及一年约 15 万美元，均为作者自述；约 15 万美元是把不再外包的审计和提前抓住的缺口加在一起的估计，不是外部对照账本。",
+      "哪些发现算数、P1 要不要收进有截止日期的项目，以及跨服务才能看见的问题如何确认，仍须人；作者写最严重的缺口是人手把分开的审计拼在一起才发现的。",
+      "上面写的是团队实践帖（engineering.hellojoko.com / Pierre Nectoux），不是 Anthropic 或某个安全厂商的官文简报。页内无 JSON-LD，日期取 article:published_time 并与页内 Jul 16, 2026 核对。页内未见咨询或商店硬销。",
+    ],
+    prompts: [
+      {
+        title: "内部安全审计技能的门禁",
+        body: `你是资深应用安全教练。只根据用户边界写门禁，不要编造已节省的金额或已发现的漏洞数。
+
+服务与数据边界：{{security_boundary}}
+必须由人签字才能当成已确认发现的约束：{{confirm_constraint}}
+
+输出 Markdown：
+1. 哪些检查应先交给现成的确定性工具，哪些必须按业务逻辑单独推理
+2. 单仓运行会看不见哪些跨服务信任假设
+3. 全量扫描和定期复查应怎样分开，哪些级别才自动变成工单
+4. 人必须完成的清单（发现是否属实、P1 截止日期、跨服务拼图能否签字）
+禁止声称「必能在约一天内找出外部审计漏掉的问题或一年节省固定金额」；禁止建议不经验证就把报告中的文件行号当成已确认漏洞。`,
+      },
+      {
+        title: "单仓审计全绿但仍不放心复盘",
+        body: `每个仓库的审计报告看起来都不严重，但资金或身份相关的请求会跨过几个服务，有人担心真正的缺口在缝上。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像审计一次只看见一个仓库、上游以为自己做了鉴权而下游没有，还是日志和监控把令牌或个人数据带过了边界
+2. 最小复验顺序（画出跨服务请求→分别看每一侧的鉴权和签名→再决定改代码、改审计范围还是先限制该路径）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「每个仓库的报告都是绿的等于跨服务的资金和身份路径已经安全」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://engineering.hellojoko.com/posts/how-we-used-ai-to-increase-the-security-level-of-our-code/",
+      label: "engineering.hellojoko.com · How We Used AI to Increase the Security Level of Our Code",
+      date: "2026-07-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "565",
+    slug: "iliya-oblakov-review-gate-claude-codex",
+    title: "Iliya：让 Codex 只读评审 Claude Code——同一提交既要测试通过也要 ACCEPT，收窄命令仍会过门",
+    summary: "个人（作者 Iliya Oblakov）；披露自己的门禁用 Claude Code 在独立 git worktree 里写代码，用 Codex 只读评审，并由一组 bash 脚本在「精确到该提交的测试通过记录」和「ACCEPT」都齐之前拒绝合并；评审提示要求「你只评审、绝不修理」，每个问题写给作者在新提交里修，修理本身再走一轮评审；角色可对调，BUILDER=codex 时由 Codex 写、Claude Code 评；Codex 的调用是 codex exec -s read-only --color never --output-last-message <文件> -，沙箱可读文件并跑 git diff，但不能写；作者发现 ~/.codex/config.toml 里配置的 MCP 服务器评审时仍会启动，能在沙箱外改东西的服务器等于破坏只读，评审时应设 enabled = false；钩子也会在 codex exec 下运行，一条让 Codex 评审后再继续的 Stop 钩子可能把最终消息换成空的，门禁找不到裁定、退出码 1，诊断日志还在但裁定不会保存；Claude Code 当评审者时只给 Read、Grep 和 Glob，不能跑 git，脚本把提交和完整 diff 放进提示；两边要读同一套简短家规，分别写入项目的 CLAUDE.md 和 AGENTS.md：作者一次只提交一处改动、不动 .ai/ 文件夹、不要合并，评审者保持只读；Codex 在指令文件合计达到默认 32 KiB 的 project_doc_max_bytes 后停止继续加载，写在长 AGENTS.md 末尾的规则可能到不了它；作者还写这两个文件也是入口，引擎会遵循自己加载到的说明，包括不是你写的那份，并链到在 Downloads 里放置 AGENTS.md 的检查文；gate.sh 在干净检出上跑测试命令并按提交写出通过记录，review.sh 把提交和 diff 送给另一引擎并按所评提交保存裁定，merge-check.sh 除非当前提交两者都有、且 ACCEPT 来自不是作者的那一侧，否则拒绝；新提交没有旧证据，旧 ACCEPT 不能覆盖没人评过的代码；走查里用替身评审者、不调用模型，事先放好的缺陷是 sum.sh 跳过第一个参数，测试只检查 sum 0 4——跳过一个零仍然得对，测试会绿，评审要求修改，修复提交必须自己再挣一次通过和 ACCEPT；三个脚本都拒绝有未提交或未跟踪文件的检出，因为测试可能在没有进入提交的文件上变绿；设置会要求把 .ai/ 加进项目 .gitignore，在草稿仓上试时，刚改的 .gitignore 本身就是未提交改动，门禁拒绝的第一件事就是你为它加上的那一行；测试命令若留下文件，即使全部通过也会失败；在 Node 20.19 的草稿仓里，add() 结果是错的，test/add.test.js 测 add()，test/format.test.js 测另一个函数：GATE_CMD=\"node --test test/\" 得到 FAIL 且无通过记录，改成只跑 test/format.test.js 则对应该提交写出 PASS，尽管 add() 仍是错的；默认计数检查只在输出为空或汇总为零时失败，这里跑了一条测试；通过记录把命令写在 Command: 行，merge-check.sh 并不拿它和任何东西比较；加上 GATE_COUNT_RE 和 GATE_MIN_TESTS=2 后，同样的收窄命令会失败并提示输出只报告了 1 条测试；作者写增加测试时必须上调这个数字，它比较的是输出报告的总数，看不到是哪些测试；命令行上临时改的命令不会出现在 diff 里，计数检查是唯一能看见它的东西，评审也可能漏；看通过记录之前要先读它的 Command: 行；门禁不保证代码正确，也不推送或合并；若以后想让合并本身被接手，文中介绍付费的 Two Engines Kit，可按已过门的提交做合并脚本、排队合并、两边共用的规则册，以及能按字节还原的安装／卸载；站内另有网站／全栈开发服务、联系和 AI Visibility Audit；不代你任意双引擎门禁都能拦住收窄后的测试命令，或 ACCEPT 等于代码已经正确。",
+    description:
+      "面向要让一个引擎写、另一个引擎评、又必须自己看通过记录里实际跑了什么命令的人：把「证据绑在提交上，只读必须连 MCP 和钩子一起收紧，测试命令被收窄后默认计数检查不够」写成门禁，区别于以合并排队时间为主线的 CI 爬山，以及以过滤测试输出来省 token 为主线的做法。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://rayastats.com/en/blog/use-claude-code-and-codex-together",
+    sourceLabel: "rayastats.com·Iliya Oblakov 实践帖",
+    upvotes: 456,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Codex",
+      "评审门禁",
+      "测试",
+      "git",
+    ],
+    howItWorks: [
+      "粘贴双引擎与仓库边界（谁写谁评、测试命令是什么、哪些 MCP 或钩子绝不能在评审时启动）以及「绝不可把一次 PASS 或 ACCEPT 当成可以合并，也不可以旧提交的证据覆盖新提交」纪律",
+      "Agent 按实践帖输出：只读评审应怎样连 MCP 和钩子一起收紧、通过记录和裁定应怎样按提交命名、测试命令被收窄时至少要设哪些计数下限",
+      "人工保留家规写多长、GATE_MIN_TESTS 调到多少，以及通过记录里的 Command: 是否可接受；Agent 不代你保证「门禁必能拦住收窄后的测试命令，或 ACCEPT 等于代码已经正确」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-29T15:52:56.811Z → 2026-10-29；dateModified 2026-11-05T00:34:20.942Z，取发布日；article:published_time 同；页内 Published on October 29, 2026；GET 200，UA MiraBot/1.0。DEV Community 转载 /iliyaoblakov/how-to-use-claude-code-and-codex-together-setup-lessons-from-my-review-gate-44gh 的 JSON-LD 为 2026-11-04T15:21:31Z，本条以原文为准）：Iliya Oblakov 在《How to use Claude Code and Codex together: setup lessons from my review gate》写大多数指南停在共享说明和分开的 worktree，他要写的是之后那截：怎样让一次评审和一次测试运行真正有意义，以及设置里让他意外的地方。他自己的分工是 Claude Code 写代码，Codex 只读评审，一组 bash 脚本除非精确到该提交的测试通过记录和 ACCEPT 都在，否则拒绝合并。Claude Code 在自己的 git worktree 里写；Codex 的最终消息以恰好一行 Verdict: ACCEPT 或 Verdict: CHANGES REQUIRED 开头，后面才是发现。作者把写作交给 Claude Code，因为上下文堆在计划、简报、worktree 和门禁日志里；评审需要的更少，主要是 diff、规则和这次改动本意。评审者从不修理。评审提示写「You review; you never fix」，并要求把每个问题写清楚，好让作者在新提交里修，修理再走自己的评审。提示里还规定评审查什么；作者另有一篇讲如何给完成定义和家规逐条作答，以及让循环结束的轮次规则。角色可以对调：BUILDER=codex 时由 Codex 写、Claude Code 评。Codex 的评审调用是 codex exec -s read-only --color never --output-last-message <文件> -。沙箱允许读文件并跑 git diff，不能写。配置里仍会跟着来的有两件：~/.codex/config.toml 里的 MCP 服务器评审时也会启动，能在沙箱外改东西的服务器等于破坏只读，评审时应设 enabled = false；钩子同样会在 codex exec 下运行，一条让 Codex 评审后再继续的 Stop 钩子可能把最终消息换成空的，门禁找不到裁定、退出码 1，诊断日志还在但裁定不会保存。Claude Code 当评审者时只给 Read、Grep 和 Glob，不能跑 git，脚本把提交和完整 diff 放进提示。两边要读同一套家规，分别写入项目的 CLAUDE.md 和 AGENTS.md：作者一次提交一处改动、不动 .ai/、不要合并；评审者保持只读。给 Codex 的部分要短，因为它在指令文件合计达到默认 32 KiB 的 project_doc_max_bytes 后停止继续加载，写在长 AGENTS.md 末尾的规则可能到不了它。作者还写这些文件也是入口：引擎会遵循自己加载到的说明，包括不是你写的那份，并链到在 Downloads 里放置 AGENTS.md 以检查实际加载了哪些文件。循环的核心是每份证据按它所覆盖的提交命名：gate.sh 在干净检出上跑测试命令并按提交写出通过记录；review.sh 把提交和 diff 送给另一引擎，按所评提交保存裁定；merge-check.sh 除非你正处在的提交两者都有、且 ACCEPT 来自不是作者的那一侧，否则拒绝。新提交没有证据，旧 ACCEPT 不能覆盖没人评过的代码。走查里用替身评审者、不调用模型，事先放好的缺陷是 sum.sh 跳过第一个参数，测试只检查 sum 0 4，也就是跳过一个零仍然得对的那种输入；测试会绿，评审要求修改，修复提交必须自己再挣一次通过和 ACCEPT。三个脚本都拒绝有未提交或未跟踪文件的检出，因为测试可能在没有进入提交的文件上变绿。设置会要求把 .ai/ 加进项目 .gitignore；在草稿仓上试时，刚改的 .gitignore 本身就是未提交改动，门禁拒绝的第一件事就是你为它加上的那一行。检查在测试之后还会再跑一遍：测试命令若留下文件，即使全部通过也会失败。若套件把快照或构建输出写进仓库，应指到 git 忽略的目录，并提交那次 .gitignore 改动。另一处陷阱是收窄后的测试命令仍会通过。门禁在测试命令于干净检出上以 0 退出、且计数检查接受输出时记录 PASS，它并不知道项目里有哪些测试。作者在 Node 20.19 的草稿仓里演示：add() 返回错误结果，test/add.test.js 测 add()，test/format.test.js 测另一个函数。GATE_CMD=\"node --test test/\" 得到 FAIL（退出码 1）且无通过记录；改成 GATE_CMD=\"node --test test/format.test.js\" 则对应该提交写出 PASS，尽管 add() 仍是错的。默认设置下，内置计数检查只在输出为空或测试汇总加起来为零时失败，这里跑了一条测试。通过记录把命令写在 Command: 行，merge-check.sh 并不拿它和任何东西比较。两个设置能降低风险：GATE_COUNT_RE，以及把 GATE_MIN_TESTS 设成项目现有测试数。加上 GATE_COUNT_RE='^# pass ([0-9]+)$' 和 GATE_MIN_TESTS=2 后，同样的收窄命令会失败并提示输出只报告了 1 条测试。作者写增加测试时必须上调这个数字，它比较的是输出报告的总数，看不到是哪些测试；第二层是评审提示要求检查任何削弱现有检查的改动，这能覆盖提交里被收窄的测试脚本。命令行上临时键入的命令不会出现在 diff 里，计数检查是唯一能看见它的东西，评审也可能漏。在相信一份通过记录之前，先读它的 Command: 行。门禁不保证代码正确，也不推送或合并。若以后想让合并本身被接手，文中介绍付费的 Two Engines Kit：按已过门的提交做合并脚本、排队合并、两边共用的一份规则册，以及带备份、可用 uninstall.sh 按字节还原的安装器。站内导航另有网站开发、全栈 Web 应用开发、Get in touch，以及相关服务 AI Visibility Audit。主线是把评审和测试绑在同一提交上，不是官文简报。",
+      "与 thomas-fairhurst-ci-16min-to-86s / alvaro-measured-test-output-16-sessions / murooka-ai-review-782-calls-62pct / rss-holmes-claude-review-rules-five-months 不同：本条是双引擎只读评审加按提交命名的测试与 ACCEPT 证据，并记录收窄测试命令仍会得到 PASS，不是合并排队爬山、过滤测试输出以省 token，也不是评审采纳率或长期评审规则月报",
+    ],
+    approach: `Iliya Oblakov 在《How to use Claude Code and Codex together》（JSON-LD 2026-10-29）写明：代理可以按分工写代码或写出只读裁定，但家规写多长、测试下限设多少，以及通过记录里实际跑的命令能不能接受，仍归人。
+
+关键门禁不是「有 ACCEPT 加测试变绿就可以合并」，而是证据必须绑在当前提交上，只读要连 MCP 和钩子一起收紧，并且测试命令被收窄后默认计数检查不够。
+
+本场景据此输出「双引擎评审门禁须人审」提纲。禁止把 32 KiB 或 GATE_MIN_TESTS 的示例值写成通用 SLA，或建议用旧提交的 ACCEPT 覆盖新代码。`,
+    outcomes: [
+      "源披露该门禁用 Claude Code 写代码、Codex 只读评审，并在精确到该提交的测试通过记录和 ACCEPT 都齐之前拒绝合并；Codex 默认 project_doc_max_bytes 为 32 KiB；走查里 sum.sh 跳过第一个参数、测试只检查 sum 0 4 时测试会绿而评审要求修改；在 Node 20.19 的草稿仓里，把 GATE_CMD 收成只跑 format.test.js 会得到 PASS，尽管 add() 仍是错的；默认计数检查只在输出为空或汇总为零时失败；三个脚本都会拒绝未提交或未跟踪的文件，测试若留下文件即使全绿也失败；门禁本身不推送、不合并；属该门禁与那些演示，不可外推为你的双引擎门禁必能拦住收窄后的测试命令，或 ACCEPT 等于代码已经正确。",
+      "能把「可写成只读调用、按提交命名的证据和计数下限的部分」与「必须人决定的家规长度、GATE_MIN_TESTS，以及 Command: 行是否可接受」拆开。",
+      "为评审时仍启动可写 MCP、Stop 钩子把裁定弄丢，以及通过记录来自一条被收窄的测试命令提供提问清单。",
+    ],
+    caveats: [
+      "32 KiB 上限、Node 20.19 草稿仓里的 PASS／FAIL，以及 sum.sh 走查，均为作者自述的设置与演示，不是在多个生产仓库上做的对照实验。",
+      "家规写多长、GATE_MIN_TESTS 调到多少，以及通过记录里的 Command: 能否接受，仍须人；作者写门禁不保证代码正确，也不推送或合并。",
+      "文中有付费工具导流（Two Engines Kit，含按已过门提交合并、排队合并和可按字节还原的安装／卸载）；站内另有网站开发、全栈 Web 应用开发服务、联系表单，以及相关服务 AI Visibility Audit 导流。",
+      "上面写的是个人实践帖（rayastats.com / Iliya Oblakov），不是 Anthropic 或 OpenAI 的官文简报。DEV 转载日期为 2026-11-04，本条以原文 JSON-LD 发布日 2026-10-29 为准。",
+    ],
+    prompts: [
+      {
+        title: "双引擎评审门禁",
+        body: `你是资深代码评审与门禁教练。只根据用户边界写门禁，不要编造已通过的提交数或已拦住的缺陷数。
+
+双引擎与仓库边界：{{gate_boundary}}
+必须由人签字才能合并的约束：{{merge_constraint}}
+
+输出 Markdown：
+1. 谁写谁评，以及评审调用怎样保持只读（包括 MCP 和钩子）
+2. 测试通过记录和裁定应怎样按提交命名，旧证据为什么不能覆盖新提交
+3. 测试命令被收窄时，计数下限和 Command: 行分别应拦住什么
+4. 人必须完成的清单（家规长度、GATE_MIN_TESTS、看到 PASS 之后是否还要读实际命令）
+禁止声称「必能拦住所有被削弱的测试」；禁止建议用旧提交的 ACCEPT 覆盖新代码。`,
+      },
+      {
+        title: "测试通过但只跑了部分文件复盘",
+        body: `门禁已经记下 PASS 或 ACCEPT，后来才发现实际跑的测试命令比项目套件更窄，或评审消息是空的。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像有人在命令行收窄了测试、默认计数检查把「跑到一条」当成通过，还是 Stop 钩子把裁定消息换空了
+2. 最小复验顺序（读通过记录的 Command: 行→用完整套件重跑→再决定改下限、改钩子还是作废这份证据）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「PASS 或 ACCEPT 等于当前提交已经按完整套件检查过，或代码已经正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://rayastats.com/en/blog/use-claude-code-and-codex-together",
+      label: "rayastats.com · How to use Claude Code and Codex together: setup lessons from my review gate",
+      date: "2026-10-29",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
