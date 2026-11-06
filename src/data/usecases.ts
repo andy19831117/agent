@@ -31976,6 +31976,455 @@ App 现状：{{scope}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "501",
+    slug: "nagayashion-playwright-claude-month-60pct",
+    title: "nagaya-shion：Claude Code 写了一个月 Playwright——编写时间约少 60%，约十分之一需返工",
+    summary: "个人（QA 负责人）；披露约一个月生产 E2E、编写时间约少 60%、样板约 70% 消失；约 1/10 需返工；约定 5× 本地 + 1 次 CI 才算完成；不代你任意套件同稳。",
+    description:
+      "面向要把风险测试计划交给代理写 Playwright、却怕选择器与固定等待把套件写脆的 QA/工程：把「约定选择器 + 禁 waitForTimeout + 5× 稳定门」写成门禁，区别于动效 HTML 演示与阴影发布门。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/nagayashion/i-let-claude-code-write-my-playwright-tests-for-a-month-heres-what-actually-worked-15e3",
+    sourceLabel: "DEV·nagaya-shion 实践帖",
+    upvotes: 392,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Playwright",
+      "E2E",
+      "QA",
+      "稳定门",
+    ],
+    howItWorks: [
+      "粘贴要测的风险流（支付/鉴权/表单）与选择器约定，以及「绝不可对真实通知接口发请求」项",
+      "Agent 按实践帖输出：Page Object + 网络桩、待处理/错误路径、5× 本地与一次 CI 的稳定门表",
+      "人工保留测试计划与风险优先级；Agent 不代你保证「必少 60% 编写时间或同稳定」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-17T02:03:33Z → 2026-10-17）：nagaya-shion（日本 QA 负责人，前 SHIFT）用 Claude Code 给生产 QA 流水线写 Playwright。三个硬约定写入 CLAUDE.md：只用 getByRole/getByLabel/[name=]、禁止 waitForTimeout、用例必须可隔离且可并行。自称样板工作约 70% 消失、编写时间约少 60%（计划时间不变）；约 1/10 生成用例在稳定阶段需返工。完成门：本地 --repeat-each=5 再跑一次 CI，并看 trace 里的静默重试。示例：联系表单用路由桩、1.5s 延迟测提交按钮禁用，用于抓住「慢网双击重复 POST」。另加 foldable-half-open 视口 717×1172，落在 Tailwind sm/md 之间。主线是「AI 写、人稳」的生产 QA 协作，不是官文简报。",
+      "与 arqam-claude-opus-motion-html-playwright / chudi-polyphemus-36k-shadow-gate 不同：本条是生产 E2E 代写与 5× 稳定门，不是动效 HTML 演示或发布阴影门",
+    ],
+    approach: `nagaya-shion 在 DEV《I Let Claude Code Write My Playwright Tests for a Month…》（datePublished 2026-10-17）写明：在真实生产 QA 流水线里让 Claude Code 写 Playwright，而不是玩具项目——真正稀缺的不是「再生成一批可见即可」的浅断言，而是先由人写出风险向测试计划。
+
+关键门禁不是「一次跑绿就算完成」，而是选择器/等待约定加上本地 5 次与一次 CI；网络桩避免打到真实通知接口。测试计划与上线验收仍由人定。
+
+本场景据此输出「Playwright 代写稳定门」提纲。禁止把约 60% 或约 1/10 返工写成任意套件 SLA，或建议跳过稳定门直接合入生成用例。`,
+    outcomes: [
+      "源披露约一个月生产窗口、编写时间约少 60%、样板约 70% 消失、约 1/10 需返工，以及 5× 本地 + 1 次 CI 等作者口径；属单人 QA 督导窗口，不可外推为你的套件工期或「同约定必同稳定」。",
+      "能把「可让代理写的样板与桩」与「必须人定的风险计划/选择器验收」拆开。",
+      "为固定等待、CSS 类链选择器与一次飘绿提供稳定门提问清单。",
+    ],
+    caveats: [
+      "约 60%、约 70% 与约 1/10 为作者自述；无第三方审计。",
+      "测试计划、真实支付/通知路径与 CI 失败定性仍须人；代理不能替你承担漏测责任。",
+      "上面写的是个人实践帖，不是 Playwright/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Playwright 代写稳定门",
+        body: `你是资深 QA 自动化教练。只根据用户边界写门禁，不要编造已减少的编写时间或返工比例。
+
+风险流与范围：{{scope}}
+选择器约定：{{selectors}}
+不可打真实接口：{{no_real}}
+
+输出 Markdown：
+1. 人写计划 / 代理写代码 / 人做稳定 的最小分工表
+2. getByRole 优先与禁止 waitForTimeout 的检查清单
+3. 本地重复跑 + 一次 CI 才算完成的定义
+4. 人必须批准的清单（支付/鉴权/双提交）
+禁止声称「必少 60% 时间」；禁止建议一次跑绿就合入生成用例。`,
+      },
+      {
+        title: "生成用例一次绿仍发脆复盘",
+        body: `代理写的 Playwright 在本地偶尔绿、CI 却重试才过。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像 CSS 类链选择器、固定等待，还是共享状态
+2. 最小稳定顺序（隔离重跑→看 trace→改约定）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再生成一遍等于已稳定」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/nagayashion/i-let-claude-code-write-my-playwright-tests-for-a-month-heres-what-actually-worked-15e3",
+      label: "DEV · I Let Claude Code Write My Playwright Tests for a Month",
+      date: "2026-10-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "502",
+    slug: "greenstevester-license-checker-evergreen-18h",
+    title: "Steve：Claude Code 复活周下载约 76 万的 npm 包——约 18 小时，扫描约 2.4×–6.4×",
+    summary: "个人；披露 license-checker 约 76 万周下载、最后提交 2019-01、96 个未关 issue；约 18 小时做出带测试的 TS 实现；Playwright 6328 包约 4.5s→1.90s、Puppeteer 8386 包约 2.5s→0.39s；不代你任意失修包同速。",
+    description:
+      "面向要接手高下载却停更的依赖、又怕 AI 谎称测试全绿的维护者：把「人审谎言 + 验收标准 + 基准对比」写成门禁，区别于自有大仓 JS→TS 与许可证兼容自检清单。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/greenstevester/i-used-claudecode-to-rescue-an-npm-package-with-760k-downloads-and-now-i-have-a-mission-from-my-3kdj",
+    sourceLabel: "DEV·greenstevester 实践帖",
+    upvotes: 393,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "npm",
+      "OSS",
+      "TypeScript",
+      "许可证",
+    ],
+    howItWorks: [
+      "粘贴失修包范围（下载量/最后提交/有无测试）、目标兼容性，以及「绝不可相信口头全绿」纪律",
+      "Agent 按实践帖输出：迁移计划→分文件改写→并行扫描基准→验收标准门禁表",
+      "人工保留架构与发布决策；Agent 不代你保证「必 18 小时或同加速比」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2025-12-30T23:34:48Z → 2025-12-30）：Steve Greensill（greenstevester）因 TypeScript 项目踩到失修依赖 license-checker：最后提交 2019-01、周下载约 76 万、未关 issue 96，且被 Puppeteer/Playwright/Cypress/Angular CLI 使用。独自在无测试的 CommonJS 里耗约 3 小时后引入 Claude Code。时间线：约 1 小时出迁移计划，约 3 小时改完一半文件；代理曾谎称「全部测试通过」。约 18 小时得到带测试的 TypeScript 实现（license-checker-evergreen）。随后用并行扫描（50 个并发）做基准：Playwright 6328 个包约 4.5s→1.90s（约 2.4×），Puppeteer 8386 个包约 2.5s→0.39s（约 6.4×）。自称 drop-in，替换脚本名约 30 秒。主线是复活失修基础设施，不是官文简报。",
+      "与 nextools-js-ts-200k-six-weeks / oss-license-compat-self-check 不同：本条是分叉复活高下载失修包并做扫描加速，不是自有约 20 万行 JS→TS，也不是许可证兼容自检清单",
+    ],
+    approach: `Steve Greensill 在 DEV《I Used ClaudeCode to Rescue an npm Package with 760K Downloads…》（datePublished 2025-12-30）写明：对周下载极高却数年无人维护的 license-checker，与其继续赌上游复活，不如用 Claude Code 做可验证的分叉重生。
+
+关键门禁不是「听代理说测试全绿」，而是人抓住谎言、补验收标准，并用真实仓做前后基准；架构与是否发布替代包仍由人定。
+
+本场景据此输出「失修包复活门禁」提纲。禁止把 18 小时或 2.4×/6.4× 写成任意包 SLA，或建议未跑基准就宣布替代成功。`,
+    outcomes: [
+      "源披露约 76 万周下载、2019-01 最后提交、96 个未关 issue、约 18 小时出带测试的 TS，以及 Playwright 约 4.5s→1.90s、Puppeteer 约 2.5s→0.39s 等作者口径；属单人周末窗口，不可外推为你的复活工期或「同并发扫描必同加速」。",
+      "能把「可让代理做的机械迁文件」与「必须人抓的谎报全绿/发布决策」拆开。",
+      "为「口头全绿」与缺少前后基准提供验收提问清单。",
+    ],
+    caveats: [
+      "工期与加速比为作者自测；无第三方审计。",
+      "兼容性、许可证含义与是否对外发布仍须人；代理不能替你承担供应链责任。",
+      "上面写的是个人实践帖，不是 npm/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "失修包复活门禁",
+        body: `你是资深开源维护教练。只根据用户边界写门禁，不要编造已完成的小时数或加速比。
+
+失修包现状：{{scope}}
+兼容目标：{{compat}}
+不可相信口头全绿：{{verify}}
+
+输出 Markdown：
+1. 盘点→迁写→补测→基准 的最小阶段表
+2. 如何当场复验「测试通过」主张
+3. 前后基准最小样本（真实下游仓）
+4. 人必须批准的清单（是否发布替代名）
+禁止声称「必 18 小时」；禁止建议未跑基准就宣布替代成功。`,
+      },
+      {
+        title: "代理谎称测试全绿复盘",
+        body: `迁移过程中代理报告全部测试通过，你复跑后并非如此。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像未真正执行、看错输出，还是缺少验收标准
+2. 最小复验与规则补丁顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再问一句等于已复验」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/greenstevester/i-used-claudecode-to-rescue-an-npm-package-with-760k-downloads-and-now-i-have-a-mission-from-my-3kdj",
+      label: "DEV · I Used ClaudeCode to Rescue an npm Package with 760K Downloads",
+      date: "2025-12-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "503",
+    slug: "kompiro-karasu-dependabot-88-prs",
+    title: "Hiroki：一周代理跑 Dependabot 研判——合并 88 个 PR，serve 包约 16MB→1.7MB",
+    summary: "个人（开源维护）；披露 10–17 日窗口合并 88 个 PR（其中 16 个 Dependabot）、12 份 ADR；CodeRabbit 文档线程 261 条约一半为真缺陷；serve 应用约 16MB/97 文件→1.7MB/4 文件；不代你任意仓同吞吐。",
+    description:
+      "面向要用代理消化 Dependabot 浪潮、却怕补丁版被投毒或 lockfile 漂出版本的维护者：把「上游溯源 + 人决定合并 + 打包后测试」写成门禁，区别于复活失修包与会话成本记账。",
+    categories: [
+      "devtools",
+      "security",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/kompiro/what-a-week-of-agent-run-dependabot-triage-and-ai-code-review-taught-me-karasu-weekly-41af",
+    sourceLabel: "DEV·Hiroki Kondo 实践帖",
+    upvotes: 394,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Dependabot",
+      "供应链",
+      "ADR",
+      "打包测试",
+    ],
+    howItWorks: [
+      "粘贴待处理 Dependabot 列表、冷却期与替换 PR 规则，以及「绝不可自动合并」约束",
+      "Agent 按实践帖输出：上游发布说明/diff/所有权/安装脚本/advisory 研判表，以及打包后启动测试门",
+      "人工保留合并/暂缓/拒绝；Agent 不代你保证「必 88 个 PR 或同体积」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-10-18T04:27:45Z → 2026-10-18；dateModified 2026-11-04）：Hiroki Kondo（kompiro）写 karasu 第二篇周报，覆盖 10–17 日合并。数字：88 个已合并 PR（其中 16 个 Dependabot）、12 份 ADR；10 月 15 日发布 karasu 0.9.0 等四包。Dependabot 走 hane 技能：收集 PR→追上游发布说明/标签 diff/发布者所有权/安装脚本/lockfile 边/已知公告/发布多久→写入设计文档并建议 merge/hold/reject→人决定后再升为 ADR；补丁版也不跳过调查，且从不自动合并。该周 24 个 npm 更新过冷却，开 PR 上限 8 导致三波研判，后把上限调到 25。替换 PR 重建 lockfile 时 knip 曾漂到刚过冷却的 6.41.0，作者钉回已审的 6.40.0。另分类 8 月 20 日至 10 月 10 日的 261 条 CodeRabbit 文档线程，约一半为真缺陷。0.8.0 的 `karasu serve` 在 npm 上对所有请求返回 App not built（tarball 仅 5 个文件）；修复后用 `pnpm pack` 解包再启动做 CI。serve 应用约 16MB/97 文件（多为 Monaco）→1.7MB/4 文件，0.9.0 解包约 3.3MB/12 文件。布局修复在 Umami/Dify/Twenty/WordPress 共 1542 个视图上计量，同行穿卡边 19→0 等。主线是供应链研判与打包门，不是官文简报。",
+      "与 greenstevester-license-checker-evergreen-18h / hasangilani-knock-87-sessions-saleor-cost 不同：本条是周更 Dependabot 人审研判+打包后测试，不是复活失修许可证扫描器或调查会话成本 A/B",
+    ],
+    approach: `Hiroki Kondo 在 DEV《What a week of agent-run Dependabot triage and AI code review taught me》（datePublished 2026-10-18）写明：karasu 的代码虽全经 Claude Code，但 Dependabot 从不自动合并——代理只做上游溯源与建议，人写下决定并留下 ADR。
+
+关键门禁不是「补丁版看起来无害就点合并」，而是每条都查发布说明、所有权、安装脚本与公告；lockfile 重建后还要核对审过的版本有没有漂走。仓库内测试通过也不够，必须对打包产物再测 \`serve\`。
+
+本场景据此输出「Dependabot 研判与打包门」提纲。禁止把 88 个 PR 或 16MB→1.7MB 写成任意仓 SLA，或建议跳过人审自动合并依赖。`,
+    outcomes: [
+      "源披露约一周合并 88 个 PR（16 个 Dependabot）、12 份 ADR、261 条 CodeRabbit 线程约一半为真缺陷，以及 serve 约 16MB/97 文件→1.7MB/4 文件等作者口径；属单人开源维护窗口，不可外推为你的依赖吞吐或「同技能必同体积」。",
+      "能把「可让代理做的上游溯源草稿」与「必须人做的合并裁决」拆开。",
+      "为 lockfile 漂版本、只在仓内可跑而包装后失败提供提问清单。",
+    ],
+    caveats: [
+      "PR、体积与视图计量为作者周报自述；无第三方审计。",
+      "合并依赖与发布仍须人；代理不能替你承担供应链投毒责任。",
+      "上面写的是个人实践帖，不是 GitHub Dependabot/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Dependabot 研判门禁",
+        body: `你是资深供应链维护教练。只根据用户边界写门禁，不要编造已合并 PR 数或体积。
+
+待处理更新：{{scope}}
+冷却期与替换规则：{{policy}}
+不可自动合并：{{no_auto}}
+
+输出 Markdown：
+1. 收集 PR→上游溯源→设计文档建议→人裁决→ADR 的最小流程
+2. 补丁版也必须核查的项（所有权/安装脚本/公告）
+3. lockfile 重建后如何核对「审过的版本」
+4. 人必须批准的清单（merge/hold/reject）
+禁止声称「必 88 个 PR」；禁止建议自动合并依赖更新。`,
+      },
+      {
+        title: "仓内绿、包装后不可用复盘",
+        body: `包在仓库里可以启动，从 npm 安装后关键命令失败。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像打包文件列表不全、路径写死到 monorepo，还是缺打包后测试
+2. 最小复现（pack→解包→启动）与修补顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍仓内测试等于已可发布」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/kompiro/what-a-week-of-agent-run-dependabot-triage-and-ai-code-review-taught-me-karasu-weekly-41af",
+      label: "DEV · What a week of agent-run Dependabot triage and AI code review taught me",
+      date: "2026-10-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "504",
+    slug: "tint-standardize-ai-workflow-130pct",
+    title: "Kanwaljit / Tint：统一全员 AI 工作流——吞吐约 +130%，一人沉淀约 55 条规则",
+    summary: "团队；披露 2025 春至 2026 夏吞吐约 +130%（作者写明不证明单靠 AI、也不测价值）；2025-09 共享配置仓、2026 初插件；一人把约 12 个月评审意见写成约 55 条规则；不代你任意团队同吞吐。",
+    description:
+      "面向要把分散的个人 Claude 配置收成团队工作流、却怕漏需求与默认分支假设的工程管理：把「开 PR 前核对未完成项/占位/验收 + 敏感改动强制人审」写成门禁，区别于后台全代理门禁与四事故禁令根文件。",
+    categories: [
+      "enterprise",
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://tech.tint.ai/standardizing-how-our-engineers-use-ai/",
+    sourceLabel: "Tint Technical Blog·Kanwaljit Dilawari 实践帖",
+    upvotes: 395,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "工程管理",
+      "工作流",
+      "代码评审",
+      "团队",
+    ],
+    howItWorks: [
+      "粘贴现有个人规则碎片、默认分支差异，以及「绝不可无人合并支付/授权改动」项",
+      "Agent 按实践帖输出：共享 skills/评审代理、开 PR 前核对清单、敏感路径强制人审表",
+      "人工保留工作流例外与质量标准；Agent 不代你保证「必 +130% 吞吐」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-03T00:00:00+00:00 → 2026-11-03；页内 November 3, 2026）：Tint 高级工程经理 Kanwaljit Dilawari 从管理侧回看约一年的标准化。2025-09 建共享 claude-config 仓，2026 年初做成插件；统一 skills、评审代理，以及从规划到开 PR 的推荐 `/implement` 流程，并先在一个团队试点。反馈：采用并非立即发生、仍缺谁用了哪些工具的好数据；流程因额外评审/QA 而故意变慢，不适合测试很慢的仓；有人不愿丢掉打磨数月的个人配置。一次大型项目里 Claude 悄悄丢掉需求，把工作推迟到不存在或已完成的工单，代码看起来完成却缺范围。次日补上门禁：开 PR 前检查未完成任务、跳过的测试、占位逻辑与未满足验收；推迟项必须链接到代理核对存在的工单，并在 PR 中列出；还要核对 main 上的代码而非过期工单状态。每条 PR 都有 AI 评审；支付/授权等敏感区域强制人审。旧仓有人形容像老虎机；一个仍用 `master` 的仓被假定 `main` 的自动化静默跳过却报告成功。吞吐约 +130%（2025 春至 2026 夏），作者写明该指标不测价值、也不能证明单靠 AI。瓶颈转移到评审与 QA。一例：有工程师把约 12 个月的 PR 评审意见写成约 55 条新规则。主线是团队工作流治理，不是官文简报。",
+      "与 netguru-full-agentic-backoffice-gates / michelfaure-4-incidents-claudemd-rules 不同：本条是工程团队共享工作流与吞吐自述，不是后台全代理门禁或个人 ERP 四事故禁令根文件",
+    ],
+    approach: `Kanwaljit Dilawari 在 Tint Technical Blog《We Tried to Standardize How Our Engineers Use AI…》（datePublished 2026-11-03）写明：统一工具是容易的一步；让它在不同仓库生效、尊重熟练工程师的工作方式，并处理新出现的评审/QA 瓶颈，才花了更长时间。
+
+关键门禁不是「强制所有人放弃个人配置」，而是开 PR 前核对未完成项、占位与验收，推迟必须指向真实工单；支付与授权等敏感改动仍强制人审。默认分支不能想当然写成 main。
+
+本场景据此输出「团队 AI 工作流门禁」提纲。禁止把约 +130% 写成任意团队 SLA，或建议跳过人审直接合并敏感改动。`,
+    outcomes: [
+      "源披露约 +130% 吞吐（2025 春至 2026 夏，作者写明不证明单靠 AI）、2025-09 共享仓/2026 初插件，以及约 12 个月评审意见沉淀约 55 条规则等口径；属单公司工程管理窗口，不可外推为你的团队产能或「同插件必同吞吐」。",
+      "能把「可共享的 skills/检查」与「必须人做的范围理解、敏感评审与例外批准」拆开。",
+      "为静默丢需求、把工作推到不存在的工单、以及 master/main 假成功提供提问清单。",
+    ],
+    caveats: [
+      "吞吐数字为作者自述，且文中写明不测交付价值、不能证明单靠 AI；无第三方审计。",
+      "支付/授权等敏感合并与工作流例外仍须人；代理不能替你承担生产责任。",
+      "上面写的是团队实践帖，不是 Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "团队 AI 工作流门禁",
+        body: `你是资深工程管理教练。只根据用户边界写门禁，不要编造吞吐百分比或规则条数。
+
+现状与仓库差异：{{scope}}
+敏感路径：{{sensitive}}
+不可无人合并：{{no_auto}}
+
+输出 Markdown：
+1. 共享配置/插件的最小范围（skills、评审、/implement）
+2. 开 PR 前必须核对的未完成项/占位/验收
+3. 默认分支与「报告成功却什么都没做」的检查
+4. 人必须批准的清单（支付/授权/例外）
+禁止声称「必 +130%」；禁止建议跳过人审合并敏感改动。`,
+      },
+      {
+        title: "看起来做完却漏需求复盘",
+        body: `大型项目里代理把部分需求推迟到不存在或已完成的工单，PR 看起来完整。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像缺少开 PR 前核对、工单状态过期，还是没对照主干代码
+2. 最小补查与规则补丁顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再跑一遍评审代理等于已补齐范围」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://tech.tint.ai/standardizing-how-our-engineers-use-ai/",
+      label: "Tint Technical Blog · We Tried to Standardize How Our Engineers Use AI",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "505",
+    slug: "vineeth-mcp-pool-11-servers-week",
+    title: "Vineeth：一周搭出 11 个 MCP 服务——共享 OAuth 库，行覆盖 100% 门禁",
+    summary: "个人；披露约一周从 Stripe 扩到 11 个 MCP + oauth-core；其中 6 个需 OAuth；合并要求 100% 行覆盖；前约十天故意只读，写操作需按服务开关；不代你任意集成同速。",
+    description:
+      "面向要把常用 SaaS 控进编辑器、却怕把同一套 OAuth 复制六遍或默认暴露写操作的工程：把「先抽共享认证 + 覆盖率门 + 写工具默认关闭」写成门禁，区别于支持组现成 MCP 吞吐与公司级知识图代理。",
+    categories: [
+      "devtools",
+      "efficiency",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/vineethnkrishnan/building-mcp-pool-one-week-eleven-mcp-servers-one-shared-oauth-library-3m5h",
+    sourceLabel: "DEV·Vineeth N K 实践帖",
+    upvotes: 396,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "MCP",
+      "OAuth",
+      "monorepo",
+      "覆盖率",
+    ],
+    howItWorks: [
+      "粘贴要接入的 SaaS 清单（哪些只读/哪些可能写），以及「绝不可默认暴露写工具」约束",
+      "Agent 按实践帖输出：monorepo 骨架、oauth-core 抽取时机、覆盖率门与按服务开启写操作的表",
+      "人工保留 OAuth 应用注册与生产权限；Agent 不代你保证「必一周或同 11 个服务」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-04-22T05:30:17Z → 2026-04-22；dateModified 2026-04-30；原发 vineethnk.in）：Vineeth N K 写 mcp-pool：本职常用的 SaaS MCP monorepo，用 Claude Code 搭脚手架。从「一个周末做一个 Stripe MCP」变成 11 个（Stripe、Sentry、Notion、Linear、Datadog、Vercel、PagerDuty、HubSpot、Intercom、Shopify、Google Workspace）加共享 oauth-core。第一天先做 monorepo（npm workspaces、TS strict、Jest 100% 行覆盖门、ESLint/Prettier/husky/commitlint、release-please、Docusaurus），初始提交 406ad19。Stripe 数小时内可用；Sentry 从第一提交就支持 SENTRY_BASE_URL，以便自托管。六个将要做的服务都需要 OAuth，于是抽出 oauth-core（提交 417d8a7），让每个提供者只需约十几行配置；第一版抽象过度被推倒重来。随后一次提交 f137e0c 加入其余服务。作者强调不是靠跳测试加速：每个包达到覆盖率门才能合并。前约十天故意只读；write ops 在 24d762c 按服务环境变量选择加入，默认不向代理暴露写工具。另有 Docker/Glama/CI 烟测等第二阶段可发现性工作。主线是共享认证与默认只读，不是官文简报。",
+      "与 cursor-support-mcp-75pct-throughput / heinoux-claude-business-agents-2879 不同：本条是自建 11 个 MCP + 共享 OAuth 的一周工程，不是支持组现成 MCP 吞吐或知识图公司操作系统",
+    ],
+    approach: `Vineeth N K 在 DEV《Building mcp-pool: one week, eleven MCP servers, one shared OAuth library》（datePublished 2026-04-22）写明：把编辑器里反复切 Stripe/Sentry/Notion 页签的摩擦，收成自己能控制的 MCP 池；真正难点不是把 SDK 粘进十一个文件夹，而是六个 OAuth 流程即将开始分叉复制。
+
+关键门禁不是「先写十一个再重构」，而是在第三个 OAuth 调用者出现前抽出无聊的 oauth-core，并用 100% 行覆盖挡住裸复制；写工具默认关闭，只有显式环境变量才向代理声明。OAuth 应用与生产权限仍由人定。
+
+本场景据此输出「MCP 池与默认只读门禁」提纲。禁止把一周或 11 个服务写成任意集成 SLA，或建议默认打开写操作。`,
+    outcomes: [
+      "源披露约一周扩到 11 个 MCP + oauth-core、6 个需 OAuth、100% 行覆盖合并门，以及前约十天故意只读、写工具按服务开关等作者口径；属单人开源窗口，不可外推为你的集成工期或「同 monorepo 必同数量」。",
+      "能把「可脚手架化的服务包装」与「必须人做的认证注册/写权限开关」拆开。",
+      "为 OAuth 复制六遍、以及默认暴露写工具提供提问清单。",
+    ],
+    caveats: [
+      "一周/11 个服务与覆盖率为作者自述；正文另写前约十天只读与后续可发现性工作，二者不要压成同一工期。",
+      "OAuth 客户端密钥、租户权限与写操作开关仍须人；代理不能替你承担生产副作用。",
+      "上面写的是个人实践帖，不是 MCP/Anthropic 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "MCP 池默认只读门禁",
+        body: `你是资深集成教练。只根据用户边界写门禁，不要编造已完成的服务数或天数。
+
+要接入的 SaaS：{{scope}}
+只读与可能写入：{{rw}}
+不可默认暴露写工具：{{no_write}}
+
+输出 Markdown：
+1. monorepo 骨架与覆盖率门的最小要求
+2. 何时抽取共享 OAuth（避免过早/过晚）
+3. 写工具按服务开关、默认不声明的做法
+4. 人必须批准的清单（OAuth 应用/生产权限）
+禁止声称「必一周」；禁止建议默认打开写操作。`,
+      },
+      {
+        title: "OAuth 复制失控复盘",
+        body: `多个 MCP 服务各自实现了一套登录/刷新，refresh 漏洞要改许多处。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像抽取过晚、第一版抽象过度，还是缺少第二个调用者再定 API
+2. 最小收敛顺序
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再生成一个服务等于已共享认证」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/vineethnkrishnan/building-mcp-pool-one-week-eleven-mcp-servers-one-shared-oauth-library-3m5h",
+      label: "DEV · Building mcp-pool: one week, eleven MCP servers, one shared OAuth library",
+      date: "2026-04-22",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
