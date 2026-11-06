@@ -46,7 +46,7 @@ RESEND_FROM=
 SUBSCRIBE_TOKEN_SECRET=
 ```
 
-`POST /api/subscribe` 经 Resend 发确认邮件；收件人打开 `/subscribe/confirm` 并确认后，邮箱才写入 Segment。未配置上述变量时，表单会提示订阅暂时不可用。
+`POST /api/subscribe` 经 Resend 发确认邮件。邮件里的链接是短地址 `/c/…`（整行放得进 75 字符，避免邮件折行截断）。收件人打开后点击「确认订阅」，邮箱才写入 Segment。仍可用 `/subscribe/confirm?token=` 校验未过期的旧 HMAC 链接。未配置上述变量时，表单会提示订阅暂时不可用。发送域名请关闭点击跟踪，否则确认链接会被改写成超长跳转。
 
 ## 如何新增用例
 
