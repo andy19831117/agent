@@ -36823,6 +36823,445 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "556",
+    slug: "giuseppe-cunsolo-kebab-9-days-93-prs",
+    title: "Giuseppe：九天做出完整 kebab 肉鸽——93 个 PR、1,087 条测试仍挡不住拇指难玩",
+    summary: "个人（作者 Giuseppe Cunsolo，发布于雇主 Eleven Labs 博客）；披露自己当产品负责人、评审和测试者，由代理写全部代码，在 2026-10-18 至 2026-10-26 共 9 天做出浏览器卡牌肉鸽《Salade Tomate Oignon》：10 月 26 日从仓库读到 93 个已合并 PR、main 上 571 次提交、98 个 spec 文件里 1,087 条测试、测试外 TypeScript 18,377 行加测试 16,856 行、88 次 Claude Code 会话；规则写在游戏简报里，仓内 docs/brief.md 是生成快照（当时修订号 90），词汇表 471 行；工具链同期建设，32 次提交动到 .claude/ 或 CLAUDE.md，12 个 PR 不含一行游戏代码；第三天起上线，提供法、英、意；引擎自第一天起要求 90% 覆盖率且未下调；10 月 26 日早晨第一次用拇指实玩，弃牌模式连续点按会点到下一张牌，「上菜」后下一位顾客的按钮落在刚点过的位置，几乎不能玩；生产环境懒加载样式表先于 index.css 到达，@layer 顺序翻转，横幅 logo 变成棕上棕，开发服务器和截图脚本都看不见；2,000 次种子每种厨师曾要测约一小时，上限后来写进脚本拒绝超过 1,000；页眉有 Eleven Labs「Contact us」咨询联系导流；不代你任意游戏同样九天可玩，或 1,087 条测试等于拇指好用。",
+    description:
+      "面向要把规则写清并让代理按简报实现、又必须自己用真机验收手感的人：把「规则先写进简报、测试先红，用法必须在真机和生产构建上验收」写成门禁，区别于以冲刺人天或行数为主的上架故事，以及以合并排队时间为主线的 CI 优化。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://blog.eleven-labs.com/en/claude-code-workflow-kebab-roguelite/",
+    sourceLabel: "blog.eleven-labs.com·Giuseppe Cunsolo 实践帖",
+    upvotes: 447,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "游戏",
+      "工作流",
+      "TDD",
+      "Hooks",
+    ],
+    howItWorks: [
+      "粘贴产品规则边界（必须先写进简报的不变量、参考回归例子、不能让代理顺便改的规则）以及「绝不可把测试全绿或开发服务器截图当成已经好玩，也不可让代理在对话里改业务规则」纪律",
+      "Agent 按实践帖输出：简报、词汇表、按目录加载的规则、技能和钩子应怎样分层；一次里程碑从接下一项到合并要经过哪些闸",
+      "人工保留规则怎么改、哪些建议该拒绝，以及真机手感是否可接受；Agent 不代你保证「九天必能交出可玩的完整游戏，或 1,087 条测试等于拇指好用」",
+    ],
+    tips: [
+      "源帖（英文页 JSON-LD BlogPosting datePublished 2026-10-27T00:00:00.000Z → 2026-10-27；dateModified 同；article:published_time 同；页内写 Oct 27, 2026；GET 200，UA MiraBot/1.0。法文原文 /fr/workflow-claude-code-kebab-roguelite/ 同日 JSON-LD，作者对话原为法文，本条以英文译本核过数字）：Giuseppe Cunsolo 在《The workflow is a product: a complete game in nine days with Claude Code》写自己打的赌是一个人当产品负责人、评审和测试者，代理写全部代码，看它能否在真实产品上撑过三天还不崩质量。产品是浏览器里的卡牌肉鸽《Salade Tomate Oignon》，玩家接手一家走下坡的 kebab 店；作者强调游戏只是贯穿线索，主题是简报、规则、技能、钩子和 PR 程序，也就是他所说的 mise en place。10 月 26 日从仓库读到的数字：9 天（18 日至 26 日）、93 个已合并 PR、main 上 571 次提交、98 个 spec 文件里 1,087 条测试、测试外 TypeScript 18,377 行加测试 16,856 行、88 次 Claude Code 会话；作者写除了自尊之外没有向上取整。游戏从第三天起上线，提供法语、英语和意大利语。规则写在一份游戏简报里，仓库只读生成快照 docs/brief.md，文首是修订号（当时为 90）；规则先改简报再改代码。词汇表 docs/glossaire.md 当时有 471 行，并在翻译时当词库用。参考回归是顾客 Karim 得分 15：10 月 23 日计分模型改了，决定仍是「Karim 保持 15」。引擎是带种子的纯 reducer，商店和组件不许塞进游戏规则；规格先写并先看到红，简报里每条编号规则都有同名测试；引擎自第一天起要求 90% 覆盖率且未下调。技能包括 /milestone、/next、/ship、/brief、/bot；钩子会格式化刚改的文件、拒绝在 main 上提交或推送以及任何 force push、拒绝未通过 Prettier／ESLint 的提交，并在平衡机器人运行时拒绝完整检查、vitest 和截图。工具链不是第一天早上就齐的：32 次提交动到 .claude/ 或 CLAUDE.md，12 个 PR 不含一行游戏代码。10 月 26 日 PR 117 从「next」到上线共 12 步，作者只在开头、并行写这篇回顾、以及合并时出现三次；规格在 1,000 个种子上先看到红再写引擎；自动评审级别 high 采纳了 3 处修改、搁置 2 处并在 PR 正文写明原因。2,000 次种子每种厨师曾要测约一小时并锁住机器，上限后来走完整道「持久化阶梯」写进 scripts/bot.ts，脚本本身拒绝超过 1,000。作者明确写出工作流做不到的事：1,087 条测试、90% 覆盖率、每个 PR 的 360 像素截图和受监控的 Lighthouse，仍在 26 日早晨第一次拇指实玩时几乎不能玩——弃牌模式每点一下手牌就立刻收紧，下一次点到另一张牌；「上菜」后下一位顾客的按钮出现在刚点过的位置。生产环境里懒加载分片的样式表先于 index.css 到达，@layer 顺序翻转，横幅 logo 变成棕上棕；开发服务器和截图脚本都保持正确顺序，整条证据链对此盲目。作者还写代理在「差不多对」时特别自信，评审负担没有消失只是换了位置：他不再写代码，但要读 93 个 PR、裁决每个决策段、并亲自玩产品。页眉导航有指向 eleven-labs.com/contact/ 的 Contact us。主线是把工作流本身做成产品，并承认绿测不等于用法，不是官文简报。",
+      "与 andhand-mybooks-6-days-18-testflight / babipanote-gentledo-75-to-158-tests / hussein-yahfoufi-eventship-5-weeks-20k / pitt-wu-blog-rebuild-10-days-801-i18n 不同：本条是浏览器肉鸽把规则写进简报、用钩子保住测试与 PR 纪律，并记录拇指难玩和生产构建上的样式层顺序问题，不是把闲置 iOS 应用现代化，不是 Flutter 应用补测试，不是活动购票迁移，也不是个人站多语重建",
+    ],
+    approach: `Giuseppe Cunsolo 在《The workflow is a product: a complete game in nine days with Claude Code》（JSON-LD 2026-10-27）写明：代理可以按简报写出全部代码、先让规格变红再实现，并在每次会话之间用技能和钩子交接，但规则改不改、建议接不接受，以及在真机上好不好玩，仍归人。
+
+关键门禁不是「九天加 1,087 条测试就等于做出可玩的游戏」，而是规则先写进简报，用法必须在真机和生产构建上验收；开发服务器上的截图会漏掉生产才出现的样式顺序问题。
+
+本场景据此输出「规则写进简报、用法须真机审」提纲。禁止把 93 个 PR 或 1,087 条测试写成任意游戏的 SLA，或建议用测试全绿代替拇指实玩。`,
+    outcomes: [
+      "源披露 9 天（2026-10-18 至 2026-10-26）由代理写全部代码、人做产品与评审：10 月 26 日仓库读数为 93 个已合并 PR、main 上 571 次提交、98 个 spec 文件里 1,087 条测试、测试外 TypeScript 18,377 行加测试 16,856 行、88 次会话；简报快照当时修订号 90，词汇表 471 行；32 次提交／12 个 PR 只动工具链；第三天起上线；26 日早晨拇指实玩几乎不能玩，生产构建还出现开发服务器看不见的 @layer 顺序问题；属该游戏与那九天，不可外推为你的游戏必能同样九天可玩，或 1,087 条测试等于真机手感已经过关。",
+      "能把「可写成简报快照、先红测试、钩子和 PR 程序的部分」与「必须人完成的规则裁决、拒绝范围和真机手感」拆开。",
+      "为「测试与截图全绿但拇指点不准」，以及「只在开发服务器上取证、生产构建顺序不同」提供提问清单。",
+    ],
+    caveats: [
+      "93 个 PR、571 次提交、1,087 条测试、行数、88 次会话，以及「几乎不能玩」，均为作者自述，数字来自 10 月 26 日的仓库读取，不是对照实验。",
+      "规则怎么改、哪些建议该拒绝、何时合并，以及真机手感是否可接受，仍须人；作者写评审负担没有消失，只是从写代码变成读 PR 和玩产品。",
+      "源站页眉/导航有 Eleven Labs 咨询联系导流（eleven-labs.com/contact/）。",
+      "上面写的是个人实践帖（blog.eleven-labs.com / Giuseppe Cunsolo，发布于雇主博客），不是 Anthropic 或某个游戏引擎的官文简报。法文原文同日发布，本条以英文译本核过的数字为准。",
+    ],
+    prompts: [
+      {
+        title: "把工作流写成产品的门禁",
+        body: `你是资深产品与工作流教练。只根据用户边界写门禁，不要编造已合并的 PR 数或测试条数。
+
+产品与规则边界：{{product_boundary}}
+必须由人签字的验收约束：{{acceptance_constraint}}
+
+输出 Markdown：
+1. 哪些规则必须先写进简报或参考例子，才能让下一会话接着做
+2. 测试、钩子和 PR 程序分别应拦住什么（例如禁止直接推 main、规格先红）
+3. 哪些验收只能在真机或生产构建上做，开发服务器上的截图不够
+4. 人必须完成的清单（规则裁决、拒绝范围、真机手感、何时允许合并）
+禁止声称「必能在九天或 1,087 条测试后可玩」；禁止建议用测试全绿代替真机实玩。`,
+      },
+      {
+        title: "测试全绿但真机难用复盘",
+        body: `套件和截图都是绿的，真机上一连点却总点到下一张牌，或生产环境的颜色和本地不一致。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像测试没覆盖手指位移、证据取在开发服务器而不是生产构建，还是代理把「可运行」说成了「可玩」
+2. 最小复验顺序（真机走一遍主路径→对比生产构建与开发服务器→决定改交互、改取证还是改规则）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试全绿或 Lighthouse 受监控等于玩家已经能在目标设备上顺手完成一局」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://blog.eleven-labs.com/en/claude-code-workflow-kebab-roguelite/",
+      label: "blog.eleven-labs.com · The workflow is a product: a complete game in nine days with Claude Code",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "557",
+    slug: "thomas-fairhurst-ci-16min-to-86s",
+    title: "Thomas / Leadlord：给合并排队再一夜爬山——中位时间从 16 分钟压到 86 秒",
+    summary: "团队（Leadlord，作者 Thomas Fairhurst 与合伙人 James）；披露编码代理每天在一台 8 核服务器上合并 50 到 100 个改动：2026 年 10 月初一次合并中位要 16 分钟，一周后中位 86 秒，约快 11 倍；先把合并排成一条队，中位从排队前三天的 16 分钟降到上线首日 75 秒；再用 Claude Opus 5.5 与 168 个子代理按评测一夜爬山，约 29 小时合并 77 个改动；代理没见过的 8 个留出合并上，门禁预期时间从 84.9 秒降到 60.6 秒（少 29%）；对比窗口 10 月 2–4 日／5–7 日／9–10 日的合并数是 240／175／117，中位 965／172／86 秒，p90 为 2,422／388／299 秒，两分钟内完成的比例 9%／27%／59%，每次落地合并分摊的 CI 检查从 234 秒降到 53 秒；Opus 5.5 于 9 月 22 日发布后约 18 天，主干非空行从约 72 万涨到近 200 万，约一半是测试，代理每天约 71 个任务对上之前三周的 47 个，中位改动行 704 对 141；3,727 个测试文件从 Vitest 迁到 Bun 后测试阶段 597 秒→296 秒；一次宽门禁里单条备份测试曾跑 129 秒；React 测试里 146 次 300 毫秒等待约 50 秒→约 5 秒，泄漏的 30 秒 sleep 从 33 秒→3 秒；租用蒙特利尔服务器约 98 美元／月，作者对照当时工作量下托管方案约 310–440 美元；爬山消耗 52.4 亿 token，按 API 约 2,100–2,500 美元、按他们统计的 Max 套餐约 43 美元；10 月 2–7 日的数字由一位创始人日志重建，2–4 日含若干卡住的合并；文中链到尚未上线的创业项目 Leadlord；不代你任意仓库同样把合并中位压到 86 秒。",
+    description:
+      "面向代理日提交付已经把检查变成瓶颈、又必须自己规定「什么更快不能以削弱检查为代价」的人：把「先量出理论上限，再用留出样本和反作弊补丁约束代理去爬山」写成门禁，区别于以云账单下降为主线的省钱文，以及以 Dependabot 或 Playwright 套件为主线的维护故事。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://thomasfairhurst.com/blog/hill-climbing-ci",
+    sourceLabel: "thomasfairhurst.com·Thomas Fairhurst 实践帖",
+    upvotes: 448,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "CI",
+      "合并队列",
+      "评测",
+      "Bun",
+    ],
+    howItWorks: [
+      "粘贴仓库与机器边界（检查跑在哪、一天大约合并多少次、哪些检查绝不能为了速度而跳过）以及「绝不可把一次合并变快当成可以削弱门禁，也不可让代理自己改评测或隔离失败测试」纪律",
+      "Agent 按实践帖输出：合并是否该排成一条队、理论上限应怎么算、一夜爬山至少要准备哪些留出样本和必须继续失败的补丁",
+      "人工保留评测怎么设计、哪些加速可以合入，以及生产与代理是否继续共享同一台机器；Agent 不代你保证「中位合并必能从 16 分钟降到 86 秒，或留出样本上的 29% 会在你的仓库重现」",
+    ],
+    tips: [
+      "源帖（JSON-LD BlogPosting datePublished 2026-10-10T00:00:00.000Z → 2026-10-10；dateModified 2026-10-11T00:00:00.000Z，取发布日；article:published_time 同；页内写 10 Oct 2026，更新 11 Oct 2026；GET 200，UA MiraBot/1.0）：Thomas Fairhurst 在《Hill-climbing our CI with Opus 5.5 agents》写自己与合伙人 James 的创业项目 Leadlord 尚未上线，编码代理写了大部分代码，并在一台 8 核服务器上每天合并 50 到 100 个改动。10 月初一次合并中位要 16 分钟，一周后中位 86 秒，约快 11 倍；作者写大部分来自先把合并排成队，然后从第一性原理算出检查能有多快，再让 Claude Opus 5.5 与 168 个子代理连夜向那个下限爬山。机器是蒙特利尔租用的 AMD Ryzen 7 9700X（8 核 16 线程、64 GiB 内存、两块镜像 NVMe），约 98 美元／月；生产、预发、开发环境、代理所用应用、每个任务一个 git worktree 以及 CI 虚拟机都挤在这 16 条线程上。合并门禁跑完受影响检查后把分支 squash 进 trunk，开发环境对 trunk 热更新；作者写一次坏合并会让所有人一起坏。自 10 月 5 日起，四次真正的 CI 失败都先通过了门禁，所以推送后 CI 会再跑一遍干净检查。Opus 5.5 于 9 月 22 日发布后约 18 天，代理每天完成约 71 个任务，之前三周约 47 个；中位改动行从 141 变成 704（非空新增加删除，不含生成文件和 lockfile）；主干非空行从约 72 万涨到近 200 万，约一半是测试（表中 9 月 22 日 719,853 行／10 月 9 日 1,984,806 行）。先上的队伍把合并中位从排队前三天的 16 分钟降到上线首日 75 秒；有日志的日子里门禁本身每天中位 157–235 秒，说明当时大部分时间花在等待开工。他们把 3,727 个测试文件从 Vitest 迁到 Bun 的测试运行器（每包一个进程），CI 测试阶段从 597 秒降到 296 秒，CPU 时间降到约 2.7 分之一。随后两个选择又让合并变慢：用 Turbo 按受影响包重跑，取代曾在 4.5 小时里写出 778 GB 记录的自研按文件选择器，每次提交的测试时间中位占比从 3.4% 变成 13.7%；Bun 默认超时 5 秒（Vitest 为 30 秒）有一个下午让约一半门禁失败，后来改成 300 秒上限并替换约 400 条单测限额。更粗的选择加上包内文件一度串行，使中位合并有两天从 75 秒升到 198 秒。tsc-rs 0.1.0 检查 86 个项目用 50.4 秒，对照 TypeScript 7 的 112.0 秒，于是每个门禁也做类型检查且不增加墙钟时间。一次宽门禁约有 1,000 CPU 秒测试，按 16 线程算约 64 秒，但最长链是一条跑了 129 秒的备份测试文件；16 条忙线程大约只做 8 个物理核 1.2 倍的活。爬山模仿 Lance Martin 的评测爬山法：24 次真实过去合并（8 类各 3 次）在今天的代码上重放，16 个用于调参、8 个留出；评分是按最近 1,000 次提交里各类合并频率加权的预期门禁时间。计时噪声在包含忙碌运行时是 41%，改为等待空闲服务器后，同一代码对自身是 1.7%。17 个已知坏补丁（含一条片状测试）必须继续让门禁失败，作为反作弊：放过一个就得零分。规则还包括「绝不为了更快而削弱检查」。约 29 小时里，一个编排会话与至多同时 20 个子代理、共 168 个子代理合并了 77 个改动。第 1 轮让浏览器测试并行：调参组合快了 7%，留出没有，按过拟合回滚。从第 3 轮起改动不再单独做留出检查，最终评测一次量完整晚：留出门禁预期时间 84.9 秒→60.6 秒（少 29%），调参组合少 32%。单独计时的大胜包括：泄漏的 30 秒 sleep 33 秒→3 秒（约 11 倍）；React 19 在 act() 外到达的数据会等 300 毫秒，一个套件做了 146 次，约 50 秒→约 5 秒（约 10 倍）；裁剪镜像构建 142 秒→18 秒（约 7.9 倍）；备份测试改为构建一次 147 秒→27 秒（约 5.4 倍，发生在爬山前）。产品文件被至少一条测试跑到的比例从 94.0% 升到 96.4%，全部文件从 91.5% 变成 91.0%。三个完整窗口（UTC）：10 月 2–4 日、5–7 日、9–10 日的合并数 240／175／117，中位 965／172／86 秒，p90 为 2,422／388／299 秒，两分钟内完成 9%／27%／59%，有日志的门禁中位 218／155／68 秒，每次落地合并分摊的 CI 检查 234／82／53 秒；CI 检查任务中位从 407 秒降到 193 秒。10 月 2–7 日由一位创始人日志重建，2–4 日含若干卡住的合并；9–10 日来自双方的实时合并账。空闲服务器上的合并中位从 159 秒降到 63 秒。作者还写 8 月 19 日 Convex 曾以「月度支出上限阈值为 $NaN」关掉全部项目（含生产），次日租了这台服务器；按当时工作量对照托管方案约 310–440 美元／月（含他们估算的 Blacksmith 约 170–300 美元）对上服务器约 98 美元／月。自 8 月 20 日迁入以来约 17% 的提交是服务器工作。爬山 52.4 亿 token 按 API 约 2,100–2,500 美元，按他们统计一张约 200 美元的 Max 每月约 240 亿 token 则约 43 美元。文中链到 leadlord.ai。页脚 Follow 只提供 RSS，作者写不需要账号和邮箱。主线是合并门禁与评测爬山，不是官文简报。",
+      "与 scott-algatt-cloud-bill-198-to-74 / kompiro-karasu-dependabot-88-prs / nagayashion-playwright-claude-month-60pct / alvaro-measured-test-output-16-sessions / gorka-blablanote-10-repos-119-prs 不同：本条是单机上的合并排队加一夜评测爬山，硬数是合并中位 965 秒→86 秒和留出样本上的 29%，不是把云账单从 198 美元降到 74 美元，不是 Dependabot 或 Playwright 套件主线，也不是过滤测试输出以节省 token",
+    ],
+    approach: `Thomas Fairhurst 在《Hill-climbing our CI with Opus 5.5 agents》（JSON-LD 2026-10-10）写明：代理可以连夜改检查、合并并发布，但评测怎么设计、哪些加速算数，以及绝不能为了更快而削弱检查，仍归人。
+
+关键门禁不是「开 168 个子代理就能把任意仓库的合并压到 86 秒」，而是先量出工作量和最长链给出的下限，再用留出样本和必须继续失败的补丁防止代理作弊。
+
+本场景据此输出「CI 爬山须人审」提纲。禁止把 16 分钟到 86 秒或留出样本上的 29% 写成 SLA，或建议跳过测试、隔离失败用例来换速度。`,
+    outcomes: [
+      "源披露该团队在一台 8 核服务器上每天合并 50 到 100 个改动；对比窗口中位合并 965 秒→86 秒（约 11 倍），p90 从 2,422 秒降到 299 秒；排队上线首日中位曾到 75 秒；约 29 小时、168 个子代理合并 77 个改动，留出 8 个合并上门禁预期时间 84.9 秒→60.6 秒（少 29%）；3,727 个测试文件迁到 Bun 后测试阶段 597 秒→296 秒；爬山 52.4 亿 token；10 月 2–7 日数字由一位创始人日志重建；属该仓库与那些窗口，不可外推为你的 CI 必能把合并中位压到 86 秒，或留出样本上的 29% 会在别的机器上重现。",
+      "能把「可写成排队、重放评测和计时脚本的部分」与「必须人决定的反作弊补丁、不可削弱的检查，以及生产是否与代理共享机器」拆开。",
+      "为测试在睡觉、选择器过粗、默认超时报半天失败，以及门禁先绿、推送后的干净 CI 仍红提供提问清单。",
+    ],
+    caveats: [
+      "16 分钟到 86 秒、留出样本上的 29%、52.4 亿 token 与约 98 美元对 310–440 美元，均为作者自述；10 月 2–7 日由一位创始人日志重建，2–4 日含卡住的合并，不是外部对照实验。",
+      "评测怎么设计、哪些加速可以合入、生产与代理是否共享机器，仍须人；作者把「绝不为了更快而削弱检查」和 17 个必须继续失败的补丁写成硬规则。",
+      "文中有创业项目导流：外链尚未上线的 Leadlord（leadlord.ai）。",
+    ],
+    prompts: [
+      {
+        title: "合并门禁爬山的评测门禁",
+        body: `你是资深 CI 与评测教练。只根据用户边界写门禁，不要编造已达到的合并时间或加速倍数。
+
+仓库与机器边界：{{ci_boundary}}
+绝不能为了速度而削弱的检查：{{must_keep_checks}}
+
+输出 Markdown：
+1. 合并是否应该排成一条队，以及并排跑会如何拉长平均等待
+2. 理论上限应怎么估计（总工作量／核数，以及最长的那条测试链）
+3. 一夜爬山至少要准备哪些留出样本，以及哪些已知坏补丁必须继续失败
+4. 人必须完成的清单（能否合入某次加速、是否允许跳过或隔离测试、生产是否与代理共享机器）
+禁止声称「必能把合并中位压到 86 秒」；禁止建议跳过测试或改评测来换分数。`,
+      },
+      {
+        title: "门禁变绿但干净 CI 仍红复盘",
+        body: `合并门禁已经通过，推到主干后的干净检查却失败了，或迁到更快的测试运行器后中位合并反而变慢。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像门禁和 CI 看到的环境不一致、选择器变得更粗，还是默认超时或片状测试被重试掩盖
+2. 最小复验顺序（对比两次运行的命令与选择范围→看最慢的那条链→决定改选择器、改超时还是修测试）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「门禁变绿或中位时间变短等于主干已经稳定可给所有人用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://thomasfairhurst.com/blog/hill-climbing-ci",
+      label: "thomasfairhurst.com · Hill-climbing our CI with Opus 5.5 agents",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "558",
+    slug: "wdavid-betts-soundsignal-5-days-506",
+    title: "David：五天做出建筑许可情报平台——143 次提交、506 条测试、每块地约 1.30 美元",
+    summary: "个人（作者 W. David Betts）；披露用 Claude Code 五天做出 SoundSignal 建筑许可情报平台：56 次会话、414 条消息、143 次提交、95 个 PR、约 29,500 行代码、506 条测试（后端 464 加前端 42），Claude Code 费用估计约 200 美元；每个提交都走 PR，不直接推 main；输入华盛顿州 Bainbridge Island 的地址后，经县里的 SmartGov 门户解析地块、抓取相关许可并下载蓝图、检查报告和申请等 PDF，再做三层提取以免单次调用撑爆上下文，作者写每块地总成本约 1.30 美元（第 1 层约 0.80、第 2 层约 0.30、第 3 层约 0.20）；Terraform 拉起 15 个以上 AWS 服务，基础设施代码 4,400 多行；作者估计大约 20% 的方案需要他改方向；全程开着 --dangerously-skip-permissions，并写在带密钥的生产仓库里不会这么做；反复出现应用加了环境变量却忘了写进 ECS 任务定义，代码没问题容器却缺配置；PyMuPDF 的 page.widgets() 返回生成器、布尔值恒为真，浪费约 20 分钟；日期取页眉 February 22, 2026（无 JSON-LD）；不代你任意文档管线同样五天交付，或把每块地 1.30 美元当成稳定单价。",
+    description:
+      "面向要把抓取、文档提取和云上部署打通、又必须自己审每个 PR 和环境变量是否真的进了任务定义的人：把「一层一层往上汇总以免撑爆上下文，并用 PR 保住可部署的主干」写成门禁，区别于把营销平台事件送进数仓，以及本地文档 RAG 或智能家居真机联调。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://wdbetts.com/writing/building-soundsignal-5-days-claude-code/",
+    sourceLabel: "wdbetts.com·W. David Betts 实践帖",
+    upvotes: 449,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "文档提取",
+      "Terraform",
+      "ECS",
+      "建筑许可",
+    ],
+    howItWorks: [
+      "粘贴文档与云边界（要抓哪些门户、PDF 如何分级提取、哪些密钥绝不能只写在应用代码里）以及「绝不可把主干可部署当成容器一定带上了新环境变量，也不可在存放密钥的仓库里默认跳过所有权限提示」纪律",
+      "Agent 按实践帖输出：三层提取应怎样把单次调用控制在上下文之内、哪些改动必须走独立 worktree 和 PR、上线前至少要核对任务定义里的哪些配置",
+      "人工保留每个 PR 是否合并、架构怎么选，以及生产环境变量是否真的进了任务定义；Agent 不代你保证「五天必能交出同等平台，或每块地稳定花 1.30 美元」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD／article:published_time／time datetime；页眉写 February 22, 2026 → 2026-02-22；GET 200，UA MiraBot/1.0）：W. David Betts 在《Building SoundSignal in 5 Days with Claude Code》用一张表列出原始数字：日历 5 天、Claude Code 会话 56 次、消息 414 条、提交 143 次、PR 95 个、代码约 29,500 行、测试 506 条（后端 464 加前端 42）、Claude Code 费用估计约 200 美元。每个提交都走 PR，不直接推 main；循环是实现、提交、推送、开 PR、合并。SoundSignal 接受华盛顿州 Bainbridge Island 的地址，经县里的 SmartGov 门户解析地块，抓取相关建筑许可，下载蓝图、检查报告和申请等 PDF，再做三层提取：第一层从单份文档抽出结构化数据，第二层汇总成每份许可的摘要，第三层合成带风险标记的地块报告。分层是为了不让单次 Claude 调用撑爆上下文，每一层先摘要再往上交。作者写总成本约 1.30 美元／地块，其中第 1 层约 0.80（尤其走视觉路径的建筑图纸）、第 2 层约 0.30、第 3 层约 0.20；生产用 Bedrock 上的 claude-sonnet-4-5-20250929，走 IAM、不放 API 密钥。视觉路径文档比文本贵 5 到 20 倍，下载器里有 PDF 分类器，把文档送到尽可能便宜的提取路径。技术栈包括 Python 3.12、FastAPI、Celery、PostgreSQL、Redis、Next.js 14，以及 ECS Fargate、RDS、ElastiCache、CloudFront、S3、ALB、Cognito、SES、API Gateway、Route 53、Secrets Manager 等，全部 Terraform，放在带正确子网和安全组的 VPC 里。作者写 Terraform 是最出乎意料的部分：15 个以上服务、基础设施代码 4,400 多行由 Claude Code 写出；CI／CD 在每次合并到 main 时构建镜像、跑迁移、apply Terraform 并部署到 ECS。使用方式：描述需求，代理读相关代码并提出方案（作者估计大约 20% 的时候要改方向），写代码，建分支，提交，推送，开 PR；人审 diff 后要求修改或合并。全程开着 --dangerously-skip-permissions，作者写这个名字就是为了吓人，它理论上可以删掉仓库，这次没做破坏性操作，但等于把每次写文件和跑命令都交给模型；他接受是因为一切都在 git 里、每个 PR 都经他审，而且是没有敏感信息的绿地项目，并明确说在带密钥的生产仓库里不会这么做。第 2 天起固定为每个任务建 git worktree，以保持 main 始终可运行。顺利时，从「我想要 X」到「X 已部署」对直接的功能常常不到 10 分钟。令人沮丧的地方包括：代理有时读文件太久才写代码，作者后来在 CLAUDE.md 里加上「探索／规划最多 2–3 分钟就要开始出代码」；最恼人的重复问题是功能需要新的环境变量时，应用代码改对了，却忘了写进 Terraform 里的 ECS 任务定义，导致几次生产排障——代码没问题，容器没有配置。长会话填满上下文后质量下降，更短、一次只做一件事的会话更好用。PyMuPDF 的 page.widgets() 返回生成器，布尔值恒为真，不能写 if page.widgets()，需要 any(...)，作者写这种问题浪费了约 20 分钟。落地清单还包括带实时进度的仪表盘、时事通讯（通过 SES 生成每周建筑活动摘要，并有不暴露住宅地址的隐私规则）、Chrome 扩展、承包商评分、物业观察名单、管理后台、按任务的成本追踪，以及 506 条覆盖模型、接口、抓取解析、下载器、时事通讯、限流和前端工具的测试。作者的结论是：自己在每个会话里选做什么、审每个 PR、补上代理漏掉的环境变量缺口并做架构决定；五天不是魔法数字，他当时全职且知道要做什么。页脚只有个人 LinkedIn、GitHub 和邮箱，未见咨询或通讯硬销。主线是许可文档管线和云上部署，不是官文简报。",
+      "与 jason-macht-customerio-bigquery-15min / tomakl-local-rag-170-docs-mcp / dunkels-matter-xg24-60s-to-4s / andhand-mybooks-6-days-18-testflight / nagayashion-playwright-claude-month-60pct 不同：本条是县门户抓取加三层许可文档提取，并记录 ECS 任务定义漏环境变量，不是营销平台进数仓，不是本地文档 RAG，不是 Matter 真机联调，也不是以 Playwright 测试套件为主线（文中 Playwright 用于抓取门户）",
+    ],
+    approach: `W. David Betts 在《Building SoundSignal in 5 Days with Claude Code》（页眉 2026-02-22）写明：代理可以写出应用、测试和 4,400 多行 Terraform，并走完提交到 PR 的回路，但合并与否、架构怎么选，以及环境变量有没有真正写进 ECS 任务定义，仍归人。
+
+关键门禁不是「五天加 95 个 PR 就等于任意文档平台可上线」，而是用三层摘要控制上下文，并用 PR 保住可部署的主干；跳过权限提示被作者自己限定在无密钥的绿地项目。
+
+本场景据此输出「文档提取与云部署须人审」提纲。禁止把五天、约 200 美元或每块地 1.30 美元写成 SLA，或建议在存放密钥的仓库里默认关闭所有权限提示。`,
+    outcomes: [
+      "源披露五天、56 次会话、414 条消息、143 次提交、95 个 PR、约 29,500 行代码、506 条测试（后端 464 加前端 42），Claude Code 费用估计约 200 美元；每块地提取约 1.30 美元（约 0.80／0.30／0.20）；Terraform 覆盖 15 个以上服务、基础设施代码 4,400 多行；环境变量多次只改了应用、没写进 ECS 任务定义；属该平台与那五天，不可外推为你的文档管线必能同样五天交付，或把每块地 1.30 美元当成稳定单价。",
+      "能把「可写成分支、测试、分层提取和 Terraform 的部分」与「必须人完成的 PR 合并、架构选择和任务定义核对」拆开。",
+      "为容器缺环境变量、生成器被当成真值，以及长会话填满上下文后质量下降提供提问清单。",
+    ],
+    caveats: [
+      "五天、95 个 PR、506 条测试、约 29,500 行、约 200 美元和每块地约 1.30 美元均为作者自述；约 200 美元是估计，约 1.30 美元来自该模型与那次分层，不是对照实验。",
+      "每个 PR 是否合并、架构怎么选，以及生产任务定义里是否真有新变量，仍须人；作者写在带密钥的生产仓库里不会开 --dangerously-skip-permissions。",
+      "上面写的是个人实践帖（wdbetts.com / W. David Betts），不是 AWS、Anthropic 或县门户的官文简报。页内无 JSON-LD，日期取页眉 February 22, 2026。",
+    ],
+    prompts: [
+      {
+        title: "分层文档提取与上线门禁",
+        body: `你是资深数据与平台教练。只根据用户边界写门禁，不要编造已完成的天数或每份文档的费用。
+
+文档与云边界：{{pipeline_boundary}}
+密钥与部署约束：{{secret_constraint}}
+
+输出 Markdown：
+1. 三层提取应如何把单次调用控制在上下文之内，以及哪些文档必须走更贵的视觉路径
+2. 哪些改动必须走独立分支和 PR，才能让主干保持可部署
+3. 上线前至少要核对任务定义、密钥和网络里的哪些项
+4. 人必须完成的清单（合并、架构、环境变量是否真进了运行环境、能否跳过权限提示）
+禁止声称「必能在五天或每份文档固定费用内交付」；禁止建议在存放密钥的仓库里默认关闭所有权限提示。`,
+      },
+      {
+        title: "代码没问题但容器缺配置复盘",
+        body: `应用代码已经加上新的环境变量，测试也过了，部署后服务却读不到配置或密钥。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只改了应用、没改任务定义或密钥管理，还是镜像标签没变导致没有滚动
+2. 最小复验顺序（看运行中的任务定义→看密钥是否有值→再决定改基础设施还是回滚）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「测试变绿或镜像已推送等于生产已经读到新配置」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://wdbetts.com/writing/building-soundsignal-5-days-claude-code/",
+      label: "wdbetts.com · Building SoundSignal in 5 Days with Claude Code",
+      date: "2026-02-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "559",
+    slug: "andrey-krupa-guesstimato-49-min",
+    title: "Andrey：第一次提交到生产地址 49 分钟——安全自查还补上了抢座位的洞",
+    summary: "个人（作者 Andrey Krupa）；披露给团队估点做了规划扑克 Guesstimato：从第一次提交到可访问的生产地址 49 分钟（2026-11-03 19:22 至 20:11，GMT+2），但规格和实现计划写在第一次提交之前；最终 18 次提交、约 5,500 行 TypeScript、1,700 行测试，117 条单元和集成测试，另加 9 个 Playwright 规格在桌面和移动视口上跑（共 18 次运行）；房间存在内存里，空闲 12 小时删除；主持人离线超过 60 秒把主持权交给最早加入且在线的人；揭示前服务器绝不发送别人的点数；次日早晨按攻击者视角自查，发现任何人都能用房间里可见的参与者 id 抢走座位（含主持人），后来用浏览器保存的随机密钥绑定座位；限流曾按错误的 IP 键控（代理后的 TCP 对端），改为仅在请求确实经过 Cloudflare 时才采信 CF-Connecting-IP，否则直打 Railway 主机就可伪造头；房间号猜测、socket 洪水和 1 MB 消息各有上限，并有各自的集成测试；严格 CSP，且有 E2E 在控制台出现 CSP 违规时失败；服务器每 5 秒及收到 SIGTERM 时把房间写成 JSON 快照到 Railway volume，作者在生产上创建已揭示的房间、触发重新部署后再加入，票、主题、历史和聊天都在；Open Graph 图里番茄 logo 曾被 flexbox 挤没，一行 flex-shrink: 0 修好；文末有 guesstimato.com 试用导流；不代你任意应用同样 49 分钟上线。",
+    description:
+      "面向要把小的实时协作工具真正打到公网、又必须自己补上身份和代理头的人：把「规格先写清、揭示前不要泄漏点数，并在上线后按攻击者视角复查」写成门禁，区别于专项渗透测试，以及以 Playwright 套件为主线的质量月报。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://dev.to/andrii_k/49-minutes-from-first-commit-to-production-building-a-planning-poker-app-with-claude-code-ld5",
+    sourceLabel: "dev.to·Andrey Krupa 实践帖",
+    upvotes: 450,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "规划扑克",
+      "WebSocket",
+      "安全自查",
+      "CSP",
+    ],
+    howItWorks: [
+      "粘贴实时协作边界（房间存在哪、揭示前谁能看见点数、主持人掉线怎么办）以及「绝不可把第一次部署成功当成身份和限流已经正确，也不可把规格里划掉的功能再加回来」纪律",
+      "Agent 按实践帖输出：规格应先写清哪些不做、服务器应怎样给每个客户端单独投影、上线后至少要按攻击者视角核对哪些项",
+      "人工保留范围怎么砍、生产部署是否批准，以及座位密钥和代理头是否可接受；Agent 不代你保证「必能在 49 分钟内上线，或一次自查就能找齐全部分类问题」",
+    ],
+    tips: [
+      "源帖（DEV Community JSON-LD Article datePublished 2026-11-05T12:20:35Z → 2026-11-05；dateModified 同；GET 200，UA MiraBot/1.0）：Andrey Krupa 在《49 minutes from first commit to production: building a planning poker app with Claude Code》写团队估点一直用一个广告很多、看起来像 2009 年的免费站点，于是做了 Guesstimato：大家同时亮牌、看统计，还可以向投 13 的人扔番茄。Claude Code 写了大部分代码。提交时间（GMT+2）为：11 月 3 日 19:22 共享领域逻辑，19:25 服务器状态机、存储和限流，19:26 socket 层、Fastify 应用和集成测试，19:44 Web、Docker、Railway 配置和 E2E，19:55 修复重复抛出被吞掉，20:11 在 Railway 上线——从第一次提交到可访问的生产地址 49 分钟。作者写诚实的保留是：规格和实现计划写在第一次提交之前。次日 11:16 至 12:38 补了回合历史、分析、规范域名、安全自查、隐私政策和 SEO；11 月 5 日又加上匿名用量统计和能在重新部署后存活的房间。最终 18 次提交、约 5,500 行 TypeScript、1,700 行测试，117 条单元和集成测试，另加 9 个 Playwright 规格在桌面和移动视口上跑（18 次运行）。规格写明不做 Jira、音效、角色头像和小游戏；计划约束包括：无账号、无数据库、不持久化个人数据，房间在内存里、空闲 12 小时删除；揭示前服务器绝不发送另一位参与者的点数；主持人离线超过 60 秒把主持权交给最早加入且在线的人；不用 dangerouslySetInnerHTML。实现上，服务器不做整房广播，而是给每个客户端单独投影，揭示前别人只能看到是否已投票。次日早晨他让代理按攻击者视角复查，代理在自己写的代码里找出真实问题：参与者 id 对房间可见，只凭 id 加入就能变成那个人（含主持人），后来每个浏览器保存随机密钥，座位同时绑定 id 和密钥；限流曾按错误的 IP 键控，Railway 代理加 Cloudflare 之后 TCP 对端是代理不是用户，后来仅当请求确实经过 Cloudflare 时才采信 CF-Connecting-IP，否则直打 railway.app 主机就可伪造头；房间号猜测、socket 洪水和 1 MB 消息各有上限和集成测试；还有严格 CSP，E2E 会在控制台出现 CSP 违规时失败。作者写这些并不高深，只是他平时会在副业上跳过的东西。为了让 SPA 在没有 SSR 的情况下仍有不同的链接预览，服务器只渲染 head：填标题、描述、规范网址、英／俄 hreflang、Open Graph 和 JSON-LD；房间页 noindex 并用通用标题，以免私密房间名漏进预览；未知路径返回真正的 404。作者写 Google 在一天内索引了两个语言版本的首页。房间本在内存里，重新部署会丢掉进行中的投票，于是服务器每 5 秒和 SIGTERM 时把房间写成 JSON 快照（先写临时文件再 rename，模式 0o600）；作者在生产上创建已揭示的房间、触发重新部署后再加入，票、主题、历史和聊天都在。Railway 挂载的 volume 属 root，应用以非特权用户运行，容器只在开头 chown 快照目录再降权。用量方面，Cloudflare Web Analytics 只计页面浏览，服务器在房间创建和关闭时各打一行计数（人数、票、揭示回合、聊天、扔出的番茄、活跃分钟），不含姓名、主题、消息和 IP；E2E 在 User-Agent 里加标记，以免生产验收冲高数字。作者手工点选时发现一些小缺陷，代理几分钟内修好；生成的 Open Graph 图里番茄 logo 被 flexbox 挤没，一行 flex-shrink: 0 修好，但如果不看那张 PNG 谁也不会注意到。他写对一个人能做决定的小应用会再这样做，但不会在没有规格、上下文散落在十年决策里的大型遗留仓库上同样做。文末写 Guesstimato 免费、无需注册，提供英语和俄语，并给出 guesstimato.com，邀请下次估点时试用。主线是先写规格的短时上线和一次安全自查，不是官文简报。",
+      "与 classkasa-pentest-8-fixes-3-high / nagayashion-playwright-claude-month-60pct / nunc-108-tickets-oracle-legacy-24-skills / carmen-krol-android-a11y-8-new-handle 不同：本条是规划扑克从第一次提交到生产地址 49 分钟，并在次日按攻击者视角补上抢座位和代理 IP，不是专项渗透测试，不是以 Playwright 套件为主线的质量月报（Playwright 在文中用于 E2E），也不是客服工单或 Android 无障碍专项",
+    ],
+    approach: `Andrey Krupa 在《49 minutes from first commit to production》（JSON-LD 2026-11-05）写明：代理可以按预先写好的规格在 49 分钟内把应用推到生产地址，但范围怎么砍、生产部署是否批准，以及上线后按攻击者视角看到的身份和限流问题，仍归人。
+
+关键门禁不是「49 分钟等于任意实时应用可上线」，而是规格先写清哪些不做，揭示前不要泄漏别人的点数，并在上线后专门做一次安全自查。
+
+本场景据此输出「短时上线后须人做安全自查」提纲。禁止把 49 分钟或 117 条测试写成 SLA，或建议跳过对抢座位和代理头的复查。`,
+    outcomes: [
+      "源披露从第一次提交到生产地址 49 分钟（2026-11-03 19:22 至 20:11，GMT+2），规格和计划写在提交之前；最终 18 次提交、约 5,500 行 TypeScript、1,700 行测试、117 条单元和集成测试，另加 9 个 Playwright 规格（18 次运行）；安全自查发现可抢座位和限流 IP 键控错误；作者在生产重新部署后用快照恢复了已揭示房间；属该应用与那次窗口，不可外推为你的应用必能在 49 分钟内上线，或一次自查就能找齐同类问题。",
+      "能把「可写成规格、投影函数、集成测试和快照脚本的部分」与「必须人完成的范围裁剪、生产批准，以及座位密钥和代理头是否可接受」拆开。",
+      "为只凭可见 id 抢座位、在代理后用错 IP，以及 Open Graph 图被布局挤变形提供提问清单。",
+    ],
+    caveats: [
+      "49 分钟、18 次提交、约 5,500 行、117 加 9 条测试，以及抢座位和限流问题，均为作者自述；49 分钟从第一次提交起算，不含事先写规格和计划的时间，不是对照实验。",
+      "范围怎么砍、生产部署是否批准，以及座位绑定和代理头策略是否可接受，仍须人；作者写自己在部署、DNS 和会产生费用的操作前会要求代理先问。",
+      "文末有产品试用导流（guesstimato.com；作者写免费、无需注册，并邀请下次估点时试用）。",
+      "上面写的是个人实践帖（dev.to / Andrey Krupa），不是 Railway、Cloudflare 或某个安全厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "短时上线实时协作应用的门禁",
+        body: `你是资深实时应用与安全教练。只根据用户边界写门禁，不要编造已上线的分钟数或测试条数。
+
+房间与同步边界：{{realtime_boundary}}
+必须由人签字的安全约束：{{security_constraint}}
+
+输出 Markdown：
+1. 规格应先写清哪些功能明确不做
+2. 揭示前服务器应怎样避免泄漏别人的点数或私密房间名
+3. 上线后至少要按攻击者视角核对哪些项（抢身份、限流键、消息大小、内容安全策略）
+4. 人必须完成的清单（范围、生产批准、重新部署后房间如何恢复）
+禁止声称「必能在 49 分钟内上线」；禁止建议跳过对抢座位和代理头的复查。`,
+      },
+      {
+        title: "上线后发现能抢别人座位复盘",
+        body: `应用已经能在生产上开会，但房间里可见的参与者标识似乎足以让人冒充主持人或躲开限流。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像只凭公开标识认人、在代理后用了错误的客户端地址，还是消息和房间号缺少上限
+2. 最小复验顺序（自己尝试冒充→看识别座位和限流用的字段→补测试后再决定是否回滚）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「功能能用或集成测试变绿等于身份和限流已经安全」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://dev.to/andrii_k/49-minutes-from-first-commit-to-production-building-a-planning-poker-app-with-claude-code-ld5",
+      label: "dev.to · 49 minutes from first commit to production: building a planning poker app with Claude Code",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "560",
+    slug: "biellz-bookworm-playstore-913-tests",
+    title: "biellz1221：把阅读追踪做到 Play Store 封闭测试——913 条后端测试没先抓住 IAP 静默崩溃",
+    summary: "个人（作者 TabNews 用户 biellz1221）；披露一个人从零做阅读追踪应用 Bookworm（Web、Android、双语落地页、鉴权、订阅、游戏化和 e-reader 集成），几乎全程用终端里的 Claude Code：后端 63 个套件／913 条 Jest 单测，Web 10 个套件／95 条 Vitest，移动端 17 个套件／301 条 Jest，E2E 24 个文件／68 条（Playwright 加 axe-core 做无障碍检查）；生产跑在家用 Raspberry Pi 5（8GB RAM），经 Cloudflare Tunnel 对外，推到 main 后约 5–6 分钟完成拉取镜像并重启；NestJS 用 tsc 构建曾峰值约 700MB、约 30 秒，换成 SWC 后 176 个 TypeScript 文件约 200 毫秒、约 200MB；GitHub Actions 从约 20 分钟降到约 5 分钟，并不再顶满默认 2GB 内存；Dockerfile 第二次 npm ci 改成 npm prune --omit=dev 后，这一步在 ARM 上从 227 秒降到 79 秒；从 Next.js 迁到 Vite 约 4 小时；横切分页作者估计自己要一下午，代理约 20 分钟做完并补测试；Android 内购曾完全没有可见错误：后端把 productIds 作成对象，客户端按数组调用 forEach，IAP 被标成不可用后回退到浏览器里的 Stripe；把 Google Sign-In 升到 v15 需要 Kotlin 2.0，当时 AdMob 不兼容，作者留在 v14，排查约 2 小时；ProGuard 未加 keep 规则时 release 崩溃、debug 正常；文末有 bookwormtracker.com、Play Store 封闭测试招募和优惠码 TABNEWS；不代你任意应用同样能在家用 Pi 上稳定收款。",
+    description:
+      "面向要把 Expo／React Native 应用真正打到商店、又必须自己看支付合约和 release 构建的人：把「跨仓库的类型要写成共享契约，release、ProGuard 和真机支付路径必须人验收」写成门禁，区别于把闲置 iOS 应用现代化、Android 无障碍专项实验，以及从零做 Flutter 应用。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://www.tabnews.com.br/biellz1221/do-zero-ao-play-store-decisoes-tecnicas-bugs-reais-e-o-que-o-claude-code-nao-conseguiu-fazer-por-mim",
+    sourceLabel: "tabnews.com.br·biellz1221 实践帖",
+    upvotes: 451,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "React Native",
+      "Play Store",
+      "IAP",
+      "Raspberry Pi",
+    ],
+    howItWorks: [
+      "粘贴客户端与账单边界（Web 和 Android 是否分仓、内购走哪家、release 构建和 debug 是否分开验收）以及「绝不可把 debug 能装上或单测变绿当成商店里已经能收款，也不可只在一侧更新支付字段类型」纪律",
+      "Agent 按实践帖输出：跨端类型应怎样共享、哪些崩溃只会在 release／ProGuard 或真机支付路径上出现、家用主机上的构建应先盯哪些资源峰值",
+      "人工保留架构怎么选、原生依赖能否升级，以及真机支付和封闭测试是否可接受；Agent 不代你保证「必能在家用树莓派上稳定收款，或 913 条后端测试等于内购已经通」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；article:published_time 2026-03-02T21:20:22.746Z → 2026-03-02；TabNews API published_at 同；页内只写相对时间「8 meses atrás」；GET 200，UA MiraBot/1.0）：biellz1221 在《Do zero ao Play Store: decisões técnicas, bugs reais, e o que o Claude Code não conseguiu fazer por mim》写自己在狂欢节期间收尾 Bookworm——一个带 Web、Android、双语落地页、完整后端鉴权、订阅、游戏化和 e-reader 集成的阅读追踪，一个人从零做起。作者几乎用终端里的 Claude Code 完成构建，并分开写了代理擅长和必须自己做的事。栈是 NestJS 加 Prisma 与 PostgreSQL、Vite 加 React Router 的 Web、Expo 加 React Native 与 NativeWind 的移动端，以及独立的双语落地页。Web 曾因惯性从 Lovable 的设计稿留在 Next.js，数周后迁到 Vite，作者写迁移约 4 小时，没有重写组件。横切改动是代理最省时间的一类：给所有外部搜索接口加上 offset／hasMore 分页，作者估计自己要一下午，描述模式后代理在 4 处套用、写测试并更新类型，约 20 分钟。作者把无障碍写成不可妥协的要求，并写代理擅长补 aria-label、role、live region 和键盘导航。测试方面：后端 63 个套件／913 条 Jest 单测，Web 10 个套件／95 条 Vitest，移动端 17 个套件／301 条 Jest，E2E 24 个文件／68 条（Playwright 加 axe-core 做无障碍检查）。他写后端 service 测试和 Playwright E2E 值得做（后者抓到过移动浏览器里的 signInWithRedirect，以及取消购买后的错误状态）；React Native Testing Library 的界面层维护成本高，他后来主要测服务和 hooks。最耗时的缺陷是 Android 内购静默失败：用户点高级订阅时什么都不发生，界面无错误，Sentry 也无日志。原因是 POST /subscriptions/subscribe 把 productIds 作成 Record<string, string>，移动端却按 string[] 调用 forEach，对象上的 TypeError 被吞掉，IAP 被标成 isAvailable: false，回退去浏览器打开 Stripe，而那在 Android 上不好用。前后端分仓，类型检查看不到这一边。Firebase 的 signInWithRedirect 在移动浏览器会整页跳转并重载会话，作者最后改用 signInWithPopup。升级 @react-native-google-signin/google-signin 到 v15 需要 Kotlin 2.0，当时的 AdMob 不兼容，作者留在 v14，从 release 构建爆炸到核对更新日志约 2 小时。ProGuard 默认在 release 里混淆类名，IAP、Firebase 和广告若没有 keep 规则，会只在生产崩溃、debug 正常。生产跑在家用 Raspberry Pi 5（8GB RAM）：Cloudflare Tunnel 终止 TLS，不开放端口；Docker 加 GitHub Actions，推到 main 后 SSH 到 Pi 拉镜像并重启，约 5–6 分钟；PostgreSQL 备份到 R2，图片走预签名上传。Pi 内存有限，CI 用 tsc 构建 NestJS 时峰值约 700MB；改成 SWC 后 176 个 TypeScript 文件约 200 毫秒、约 200MB，原先约 30 秒、约 700MB。同一改动让 GitHub Actions 从约 20 分钟降到约 5 分钟，并不再顶满默认 2GB。原 Dockerfile 做两次 npm ci，第二次改成 npm prune --omit=dev 后，这一步在 ARM 上从 227 秒降到 79 秒。作者写停电或更新重启会造成停机，以接近零的固定成本做验证是有意的选择。游戏化用事件发射器隔离，连续阅读记录只追踪、不发送愧疚通知。KoReader 的 KoSync 能进来进度，但电子书书名和作者与自己的书库对齐并不总成功，对不上的书会挂起等人确认。作者还写第一版 Android 发布是手工改 versionCode，自动化是后来才补的。文末给出封闭测试中的 Play Store（请人留言邮箱以便放行）和网站 bookwormtracker.com，并说明 freemium 与优惠码 TABNEWS。主线是商店上架、真机支付和家用主机上的构建限制，不是官文简报。",
+      "与 andhand-mybooks-6-days-18-testflight / carmen-krol-android-a11y-8-new-handle / khalit-flutter-claude-827-commits-30pct / babipanote-gentledo-75-to-158-tests / nagayashion-playwright-claude-month-60pct 不同：本条是 Expo／React Native 阅读追踪打到 Play Store 封闭测试，并记录 IAP 类型不一致、ProGuard 和家用 Pi 上的构建峰值，不是把闲置 iOS 应用现代化，不是 Android 无障碍专项实验（文中无障碍是长期要求，E2E 用了 axe-core），也不是从零做 Flutter，或以 Playwright 套件为主线的质量月报",
+    ],
+    approach: `biellz1221 在《Do zero ao Play Store》（article:published_time 2026-03-02）写明：代理可以套用已有模块、补测试并处理已知模式的崩溃，但架构怎么选、原生依赖能不能升级，以及 debug 正常、release 或真机支付却失败的问题，仍归人。
+
+关键门禁不是「913 条后端测试或家用树莓派等于已经能在商店里收款」，而是跨仓库的支付字段要有共享契约，并且 release、ProGuard 和真机支付路径必须分开验收。
+
+本场景据此输出「商店上架与真机支付须人审」提纲。禁止把 20 分钟做完分页或 Actions 降到 5 分钟写成 SLA，或建议只用 debug 构建签字。`,
+    outcomes: [
+      "源披露后端 63 个套件／913 条测试、Web 10／95、移动端 17／301、E2E 24 个文件／68 条；家用 Raspberry Pi 5 上推 main 后约 5–6 分钟部署；tsc 构建约 30 秒／约 700MB，改 SWC 后 176 个文件约 200 毫秒／约 200MB，GitHub Actions 约 20 分钟→约 5 分钟；Dockerfile 第二步在 ARM 上 227 秒→79 秒；Android 内购曾因 productIds 类型不一致而静默失败；属该应用与那些测量，不可外推为你的应用必能在家用主机上稳定收款，或 913 条后端测试等于商店里的支付已经通。",
+      "能把「可写成模块模板、单测和构建脚本的部分」与「必须人完成的架构选择、原生依赖升级，以及真机支付和 release 构建验收」拆开。",
+      "为分仓后的支付字段类型不一致、只在 release／ProGuard 出现的崩溃，以及构建峰值顶满小型主机内存提供提问清单。",
+    ],
+    caveats: [
+      "913／95／301／68 条测试、约 5–6 分钟流水线、SWC 与 Actions 的耗时和内存，以及「一下午变约 20 分钟」，均为作者自述；分页耗时是经验对照，不是计时实验。",
+      "架构怎么选、原生依赖能否升级，以及真机支付和封闭测试是否可接受，仍须人；作者写环境相关的 release 崩溃仍要自己在目标设备上查。",
+      "文末有产品与商业导流（bookwormtracker.com、Play Store 封闭测试招募，以及优惠码 TABNEWS）。",
+      "上面写的是个人实践帖（tabnews.com.br / biellz1221），不是 Google Play、Expo 或 Stripe 的官文简报。页内无 JSON-LD，日期取 article:published_time 并与 TabNews API published_at 核对。",
+    ],
+    prompts: [
+      {
+        title: "商店上架与真机支付门禁",
+        body: `你是资深移动与全栈教练。只根据用户边界写门禁，不要编造已通过的测试条数或构建分钟数。
+
+客户端与账单边界：{{app_boundary}}
+必须由人签字的支付和发布约束：{{store_constraint}}
+
+输出 Markdown：
+1. Web 与移动端之间哪些支付和订阅字段必须写成共享契约
+2. 哪些崩溃只会在 release、ProGuard 或真机支付路径上出现，debug 通过不够
+3. 若生产跑在资源有限的主机上，构建应先盯哪些内存和耗时峰值
+4. 人必须完成的清单（真机买一单、release 包、原生依赖升级、封闭测试范围）
+禁止声称「必能在家用主机或 913 条测试后稳定收款」；禁止建议只用 debug 构建或单侧类型签字。`,
+      },
+      {
+        title: "点订阅没有任何反应复盘",
+        body: `用户在 Android 上点高级订阅时界面没有错误，崩溃报告也是空的，支付没有开始；debug 构建可能是正常的。请写复盘提纲。
+
+现象：{{symptom}}
+
+输出：
+1. 更像前后端把同一字段理解成不同形状、release 混淆掉了反射用到的类，还是支付回退走到了移动浏览器里不成立的路径
+2. 最小复验顺序（看客户端实际收到的 JSON→看 release 与 debug 差异→用真机走完整购买）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「单测变绿或 debug 能装上等于商店里已经能收款」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://www.tabnews.com.br/biellz1221/do-zero-ao-play-store-decisoes-tecnicas-bugs-reais-e-o-que-o-claude-code-nao-conseguiu-fazer-por-mim",
+      label: "tabnews.com.br · Do zero ao Play Store: decisões técnicas, bugs reais, e o que o Claude Code não conseguiu fazer por mim",
+      date: "2026-03-02",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
