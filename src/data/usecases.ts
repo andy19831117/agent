@@ -49878,6 +49878,446 @@ Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_a
       dateLabel: "发布",
     },
   },
+  {
+    id: "703",
+    slug: "sumumu-24test-9fail-10weak",
+    title: "sumumu／miharuba：AI 写的 24 条测试——有 bug 的应用全「成功」；修好后 9 条失败；另有 10 条通了也不安心",
+    summary: "个人（sumumu26／miharuba_jp）；披露用 Udemy 课里的小管理应用：故意留 bug 的版本上，AI 写出的 Playwright 测试 24 条全成功；同一套 24 条在修好的正常版本上却失败 9 条。通了的 15 条里还有 10 条在核对规格里没写的事。作者把「操作只是跟着点」与「要断言结果」拆开；页上链 Udemy 课／先到 10 名免费券与 miharuba.jp。Udemy 本机 403；GitHub 组织页偶发 504。不代你同样让 AI 写测，就等于下一应用也会 24 全绿再 9 红，或弱断言也总会约 10。",
+    description: "面向已经把「测试全绿就等于可交付」写成门禁、却还没分开操作回放与结果断言的人：把「AI 写测须同时报有 bug 版／修好版与弱断言件数」写成门禁，区别于 FAQ 标签检索，以及双 CLI CSV 对照。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/sumumu26/articles/b1afde3b0e06f2",
+    sourceLabel: "zenn.dev·sumumu26／miharuba_jp 实践帖",
+    upvotes: 594,
+    trending: false,
+    tags: [
+      "Playwright",
+      "AI tests",
+      "assertion",
+      "miharuba",
+      "Udemy",
+    ],
+    howItWorks: [
+      "粘贴 AI 写测边界（是不是约 24 条、有 bug 版是不是全成功、修好版是不是约 9 条失败、弱断言是不是约 10）以及「绝不可把全绿写成规格已验完」纪律",
+      "Agent 按实践帖输出：应怎样同时记下有 bug 版／修好版对照、断言是否在规格内，以及人是否先读测试再合入",
+      "人工保留 24／9／10 来自哪一套小应用与哪一次 AI 写测；Agent 不代你保证「同样让 AI 写测就等于下一应用也会 24 全绿再 9 红」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T11:29:31.531+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T02:29:31Z、Asia/Shanghai 2026-11-08 10:29:31；bodyUpdatedAt 2026-11-08T11:26:52.870+09:00 同日约 3 分钟前，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：miharuba 的池谷在《AIが書いたテスト24件、バグありアプリで全部『成功』。直したら9件『失敗』した》写 24 全绿／9 红／10 弱断言。页上链 Udemy 与 miharuba.jp；Udemy 403、GitHub 偶发 504。主线是先把全绿与断言质量拆开，不是官文简报。",
+      "与 solo-faq-30pct-to-10-110tag / chukidx-csv-4ok-64s-103s 不同：本条不是 FAQ 标签或双 CLI 集计，而是 AI 写的 E2E 测试在有 bug／修好两版上的对照",
+    ],
+    approach: `sumumu26（miharuba_jp）在《AIが書いたテスト24件、バグありアプリで全部『成功』。直したら9件『失敗』した》（页内 2026-11-08）写明：故意留「必填为空也能注册」等 bug 的小管理应用上，AI 写的 24 条 Playwright 测试全成功；同一 24 条在修好的正常版上失败 9 条；通了的 15 条里约 10 条在核对规格未写事项。
+
+关键门禁不是「全绿就等于可交付」，而是分开记操作回放与结果断言，并核对这些件数来自哪一次写测。
+
+本场景据此输出「AI 写测须同时报告有 bug 版／修好版与弱断言，不能只报已经全绿」提纲。禁止把 24／9／10 写成下一应用也总会到达，或把「操作能点完」写成已防住漏断言。`,
+    outcomes: [
+      "源披露作者在 miharuba 做 AI 技术验证，用 Udemy 课里的小管理应用做对照：有 bug 版本上 AI 写出的 24 条测试全「成功」；同一套在修好的正常版本上失败 9 条（多为 AI 臆造的期望与真实规格不符）。通了的 15 条里约 10 条在核对规格里没有写的事——结果栏是绿的，却说不清该不该验。作者把「只跟着点」与「断言结果」拆开，并主张合入前先读测试在验什么。属作者这一课材与这一次写测，不可外推为你同样让 AI 写测就等于下一应用也会 24 全绿再 9 红，或弱断言也总会约 10。",
+      "能把「可写成同时记下有 bug 版／修好版对照、断言是否在规格内，以及人是否先读测试」与「必须人完成的规格对齐、弱断言分拣，以及 Udemy／站点是否导流」拆开。",
+      "为把 24 全绿当成下一应用也总会到达的通用合格、以及把「操作回放能跑完」当成已验完规格提供提问清单。",
+    ],
+    caveats: [
+      "24／9／10／15 均为作者课材上的一次自测；有 bug 版与修好版是成对准备的小应用，不是生产仓。",
+      "文中链到 https://www.udemy.com/course/playwright-ai-tests/ 与带 couponCode 的免费券链、以及 https://miharuba.jp/ ，属课程／公司站导流。miharuba.jp 本机 GET 200，列入可达导流。Udemy 课程页本机现 HTTP 403，已不列入可达导流。源文所提 https://github.com/miharubajp 本机复检偶发 HTTP 504，已不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / sumumu26），不是 Playwright 或 Udemy 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AI 写测须同时报告有 bug 版与弱断言门禁",
+        body: `你是资深测试教练。只根据用户边界写门禁，不要编造已经数到的 24／9／10。
+
+现在是不是约 24 条 AI 写测：{{whether_about_twenty_four_ai_tests}}
+有 bug 版是不是全成功、修好版是不是约 9 条失败：{{whether_buggy_all_green_fixed_about_nine_red}}
+弱断言是不是约 10：{{whether_weak_assertions_about_ten}}
+
+输出 Markdown：
+1. 为什么「全绿」不能写成规格已验完
+2. 应怎样同时记下有 bug 版／修好版对照、断言是否在规格内，以及人是否先读测试
+3. 只有一次课材写测时，应怎样单独记账，而不是写成下一应用也必然 24 全绿再 9 红
+4. 人必须完成的清单（规格对齐、弱断言分拣、导流链）
+禁止声称「同样让 AI 写测就等于下一应用也总会 24／9」；禁止把「操作能点完」写成已防住漏断言。`,
+      },
+      {
+        title: "二十四全绿与九红复盘",
+        body: `报告上可以写 24 全绿、修好后 9 红、弱断言约 10；但这是成对小应用上的一次写测。请写复盘提纲。
+
+现象：{{twenty_four_green_nine_red}}
+
+输出：
+1. 更像漏断言，还是期望臆造与规格错位
+2. 最小复验顺序（先抽失败 9→再抽绿但弱的 10→再决定能不能对外说 AI 写测可默认合入）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上人读一遍就等于下一应用也总会 24／9」，或「这一次约 10 就等于任何课材都会复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sumumu26/articles/b1afde3b0e06f2",
+      label: "zenn.dev · AIが書いたテスト24件、バグありアプリで全部『成功』。直したら9件『失敗』した",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "704",
+    slug: "jarvis-10name-450run-utf8",
+    title: "ai_jarvis：日语文件名 10 种试 text=True——PYTHONUTF8=1 时 10/10；共 15 组×10×3＝450 次",
+    summary: "个人（ai_jarvis）；披露日语 Windows（cp932）上用 subprocess.run(..., text=True) 读 git／子 Python 吐出的日语名：试了含「日本語.txt」「髙橋.txt」、丸数字、emoji、résumé 等 10 种名；7 条件×git 与子 2 路＋八进显示 git 1 路共 15 组，各 10 名×3 次＝450 次。A／B 下 git 通 0／化 3／掉 7；C～G（含 PYTHONUTF8=1）git 10/10。子进程要 G（父 encoding=utf-8＋子 PYTHONIOENCODING）才 10/10。页上链 Kindle 反馈页。不代你同样开 UTF-8，就等于下一台 Windows 也总会 10/10，或 450 次也总会同表。",
+    description: "面向已经把「没抛 UnicodeDecodeError 就等于文件名可读」写成门禁、却还没分开例外与名字一致性的人：把「日语名须同时报通／化／掉与是否与原名一致」写成门禁，区别于 AI 写测全绿，以及判定模型对照。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/ai_jarvis/articles/bc7a15aabab8ea",
+    sourceLabel: "zenn.dev·ai_jarvis 实践帖",
+    upvotes: 595,
+    trending: false,
+    tags: [
+      "Python",
+      "subprocess",
+      "UTF-8",
+      "Windows",
+      "git quotepath",
+    ],
+    howItWorks: [
+      "粘贴日语名解码边界（是不是约 10 种名、是不是约 450 次、PYTHONUTF8=1 时 git 是不是 10/10）以及「绝不可把没抛异常写成名字已一致」纪律",
+      "Agent 按实践帖输出：应怎样同时记下通／化／掉、父子编码是否对齐，以及八进显示是否只是「能读但不是原名」",
+      "人工保留 10／450／10/10 来自哪一台 Windows 与哪一组条件；Agent 不代你保证「同样开 UTF-8 就等于下一台也总会 10/10」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T16:31:13.241+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:31:13Z、Asia/Shanghai 2026-11-09 15:31:13；bodyUpdatedAt 2026-11-09T16:30:29.924+09:00 同日约 1 分钟前，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：AI Jarvis 在《日本語のファイル名10種でtext=Trueの文字化けを試した》写 10 种名／450 次与 C／G 的 10/10。页上链 Kindle 反馈页。主线是先把例外与原名一致拆开，不是官文简报。",
+      "与 sumumu-24test-9fail-10weak / nemolize-63to18-225of225 不同：本条不是 AI 写测对照或判定模型，而是 Windows 上日语文件名经 text=True 的通／化／掉",
+    ],
+    approach: `ai_jarvis 在《日本語のファイル名10種でtext=Trueの文字化けを試した》（页内 2026-11-09）写明：日语 Windows cp932 上对 10 种日语／特殊名跑 15 组条件共约 450 次；仅 text=True 时 git 通 0／化 3／掉 7；PYTHONUTF8=1（C）与父子都 UTF-8（G）时可达 10/10。
+
+关键门禁不是「没抛异常就等于可读」，而是分开记通／化／掉与是否与原名一致，并核对这些件数来自哪一台机。
+
+本场景据此输出「日语名解码须同时报告通／化／掉与原名一致，不能只报已经不报错」提纲。禁止把 10/10 写成下一台 Windows 也总会到达，或把 errors=replace 写成已保证名字正确。`,
+    outcomes: [
+      "源披露作者在 Windows 11（10.0.26300）／Python 3.12.10／git 2.55.0 上，用 10 种名（含日本語.txt、髙橋.txt、①②.txt、emoji、résumé 等）测 subprocess text=True：7 条件×git 与子 Python 2 路＋八进显示 git 1 路＝15 组，各 10 名×3 次＝450 次。git：A／B 通 0／化 3／掉 7；C～G 通 10。子：A 通 8／写不出 2；要 G（父 encoding=utf-8＋errors=replace，且子 PYTHONIOENCODING=utf-8）才通 10；仅父改编码时子侧可掉 8。八进显示打开时例外少，但读到的不是原名。属作者这一台机与这一组条件，不可外推为你同样开 PYTHONUTF8=1 就等于下一台 Windows 也总会 10/10，或 450 次表也总会同形。",
+      "能把「可写成同时记下通／化／掉、父子编码是否对齐，以及八进显示是否只是能读」与「必须人完成的现有代码副作用核验，以及 Kindle 反馈页是否导流」拆开。",
+      "为把 10/10 当成下一台也总会到达的通用合格、以及把「errors=replace 不报错」当成名字已正确提供提问清单。",
+    ],
+    caveats: [
+      "10／450／10/10 均为作者一台日语 Windows 自测；PYTHONUTF8=1 会改 Python 默认编码，作者写未测对既有代码的副作用。",
+      "文中链到 https://tony-kinot.github.io/kdp-book1/feedback/ ，属 Kindle／书相关反馈页导流；本机 GET 200，列入可达导流。未见商店／试用／招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / ai_jarvis），不是 Python 或 Git 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "日语名解码须同时报告通化掉与原名一致门禁",
+        body: `你是资深 Windows／Python 编码教练。只根据用户边界写门禁，不要编造已经数到的 10/10 或 450。
+
+现在是不是约 10 种名、约 450 次：{{whether_about_ten_names_four_fifty_runs}}
+PYTHONUTF8=1 时 git 是不是 10/10：{{whether_pythonutf8_git_ten_of_ten}}
+子进程是不是要父子都 UTF-8 才 10/10：{{whether_child_needs_both_sides_utf8}}
+
+输出 Markdown：
+1. 为什么「没抛 UnicodeDecodeError」不能写成文件名已可读一致
+2. 应怎样同时记下通／化／掉、父子编码，以及八进显示
+3. 只有一台机时，应怎样单独记账，而不是写成下一台也必然 10/10
+4. 人必须完成的清单（副作用核验、原名对照、导流链）
+禁止声称「同样开 UTF-8 就等于下一台也总会 10/10」；禁止把 errors=replace 写成已保证原名。`,
+      },
+      {
+        title: "十种名与四百五十次复盘",
+        body: `报告上可以写 10 种名、450 次、C／G 下 10/10；但这是一台 cp932 Windows 的自测。请写复盘提纲。
+
+现象：{{ten_names_four_fifty}}
+
+输出：
+1. 更像父解码错，还是子写出码页与父不一致
+2. 最小复验顺序（先抽 git A／C→再抽子 E／G→再决定能不能对外说日语名已稳）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 PYTHONUTF8 就等于下一台也总会 10/10」，或「这一次 450 就等于任何名表都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ai_jarvis/articles/bc7a15aabab8ea",
+      label: "zenn.dev · 日本語のファイル名10種でtext=Trueの文字化けを試した",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "705",
+    slug: "nemolize-63to18-225of225",
+    title: "nemolize：日语商务 5 类判定——thinking 开后敬语误报 63%→18%；秘密信息 225/225；机械判定 0.001 秒",
+    summary: "个人（nemolize）；披露在可机械造正解的 5 类判定（敬语／表記／秘密信息等）上比 12 种方法：同一 claude-haiku-5-5，thinking 开后敬语误报 63%→18%；gitleaks＋LLM 复核可使误报从 60 降到 2～29，检测仍 225/225；机械判定二重敬语 45/45、全角混在 43/45、秘密 225/225，约 0.001 秒／件。gemini-3.7-flash 约 3.3 秒／件。页上链 GitHub judge-bench；本机 GitHub 偶发 504。不代你同样比 12 法，就等于下一语料也会 63→18，或秘密检测也总会 225/225。",
+    description: "面向已经把「交给 LLM 判定就等于比规则强」写成默认、却还没分开误报与漏检的人：把「判定对照须同时报误报、检测件数与 thinking 开关」写成门禁，区别于日语文件名解码，以及本地翻译吞吐。",
+    categories: [
+      "security",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/nemolize/articles/judge-models-japanese-tasks",
+    sourceLabel: "zenn.dev·nemolize 实践帖",
+    upvotes: 596,
+    trending: false,
+    tags: [
+      "judge model",
+      "textlint",
+      "gitleaks",
+      "thinking",
+      "Ollama",
+    ],
+    howItWorks: [
+      "粘贴判定对照边界（敬语误报是不是约 63%→18%、秘密是不是 225/225、机械判定是不是约 0.001 秒）以及「绝不可把误报下降写成判定已可无人值守」纪律",
+      "Agent 按实践帖输出：应怎样同时记下误报／漏检、thinking 开关，以及指示注入下判定是否漂移",
+      "人工保留 63／18／225 来自哪一份小语料与哪一次测量；Agent 不代你保证「同样开 thinking 就等于下一语料也总会 63→18」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T03:02:51.673+09:00 → 2026-11-08，同时刻为 UTC 2026-11-07T18:02:51Z、Asia/Shanghai 2026-11-08 02:02:51；bodyUpdatedAt 2026-11-09T07:33:54.987+09:00 晚于发布日，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：nemolize 在《日本のビジネスシーンで日々直面する5つの判定タスクで、機械的判定・LLM・判定専用モデルを比べた》写 63%→18%、225/225、0.001 秒。页上链 GitHub；偶发 504。主线是先把误报与漏检拆开，不是官文简报。",
+      "与 jarvis-10name-450run-utf8 / fizor-nuka-08b-667mib-198ts 不同：本条不是文件名解码或本地翻译吞吐，而是日语商务判定任务上的误报／检测对照",
+    ],
+    approach: `nemolize 在《日本のビジネスシーンで日々直面する5つの判定タスクで、機械的判定・LLM・判定専用モデルを比べた》（页内 2026-11-08）写明：5 类可机械造正解的任务上比 12 种判定役；同一 haiku，thinking 开后敬语误报 63%→18%；秘密信息路径可达 225/225；机械判定约 0.001 秒／件。
+
+关键门禁不是「LLM 判定就等于比规则强」，而是分开记误报与漏检，并核对这些比例来自哪一份小语料。
+
+本场景据此输出「判定对照须同时报告误报、检测件数与 thinking 开关，不能只报已经接上模型」提纲。禁止把 63→18 写成下一语料也总会到达，或把 225/225 写成任何秘密扫描都会复现。`,
+    outcomes: [
+      "源披露作者用可机械造正解的 5 类日语商务判定（敬语、表記、秘密信息等）对比机械规则、云／本地 LLM 与判定专用模型共约 12 种：同一 claude-haiku-5-5，thinking 开后敬语误报 63%→18%（thinking 关时对「伪正解」指示 65%／24/37 会改判）；gitleaks 警告经 LLM 复核，误报可从 60 降到 2～29，检测仍 225/225；机械判定二重敬语 45/45、全角混在 43/45、秘密 225/225，约 0.001 秒／件；gemini-3.7-flash 约 3.3 秒／件。作者写语料小、各测 1 次，「AI 写的文」任务本次都不推荐。属作者这一份语料与这一次测量，不可外推为你同样开 thinking 就等于下一语料也会 63→18，或秘密检测也总会 225/225。",
+      "能把「可写成同时记下误报／漏检、thinking 开关，以及指示注入下是否漂移」与「必须人完成的语料边界、外发是否允许，以及 GitHub 是否导流」拆开。",
+      "为把 63→18 当成下一语料也总会到达的通用降幅、以及把「判定专用模型开箱即用」当成默认可选提供提问清单。",
+    ],
+    caveats: [
+      "63%／18%／225／45／0.001／3.3 均为作者小语料、各方法约 1 次测量；指示注入只试了 3 种写法；作者写不保证真实文章同结果。",
+      "文中链到 https://github.com/nemolize/judge-bench/tree/2173b0672d73a5227d696e6580b9d478d6788741 （及仓库根），属自有实验仓导流。本机复检 GitHub 偶发 HTTP 504，已不列入可达导流。未见商店／试用／Newsletter／招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / nemolize），不是 Anthropic／Google／Ollama 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "判定对照须同时报告误报与 thinking 开关门禁",
+        body: `你是资深文本判定质检教练。只根据用户边界写门禁，不要编造已经降到的 18% 或 225/225。
+
+现在敬语误报是不是约 63%→18%：{{whether_keigo_false_alarm_sixty_three_to_eighteen}}
+秘密检测是不是 225/225：{{whether_secret_two_twenty_five_of_two_twenty_five}}
+机械判定是不是约 0.001 秒／件：{{whether_mechanical_about_point_zero_zero_one_sec}}
+
+输出 Markdown：
+1. 为什么「交给 LLM」不能写成比规则更稳
+2. 应怎样同时记下误报／漏检、thinking 开关，以及指示注入漂移
+3. 只有一份小语料时，应怎样单独记账，而不是写成下一语料也必然 63→18
+4. 人必须完成的清单（语料边界、外发、导流链）
+禁止声称「同样开 thinking 就等于下一语料也总会 18%」；禁止把判定专用模型写成开箱即默认。`,
+      },
+      {
+        title: "六十三到十八与二百二十五复盘",
+        body: `报告上可以写误报 63%→18%、秘密 225/225、机械 0.001 秒；但语料小且各法约 1 次。请写复盘提纲。
+
+现象：{{sixty_three_to_eighteen_and_two_twenty_five}}
+
+输出：
+1. 更像 thinking 压住误报，还是规则已能覆盖的种类被重复计算
+2. 最小复验顺序（先抽敬语误报→再抽秘密 225→再决定能不能对外说可无人值守）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上全量重跑就等于下一语料也总会 63→18」，或「这一次 225/225 就等于任何扫描都会复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nemolize/articles/judge-models-japanese-tasks",
+      label: "zenn.dev · 日本のビジネスシーンで日々直面する5つの判定タスクで、機械的判定・LLM・判定専用モデルを比べた",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "706",
+    slug: "fizor-nuka-08b-667mib-198ts",
+    title: "fizor：本地 PLaMo 3 Translate 应用 NuKa——0.8B 约占 667 MiB；tg128≈199 t/s；pp512≈1,502 t/s",
+    summary: "个人（fizor）；披露把 PLaMo 3 Translate 做成完全本地的 NuKa（Tauri＋llama.cpp）：在 GTX 1660 6GB／llama.cpp b12136／-ngl 99 上，0.8B Q4_K_M 全层 GPU 时 VRAM 增量约 667 MiB；tg128 生成约 198.93±2.87 t/s；pp512 约 1,501.78±9.63 t/s；体感一句约 0.2～0.5 秒。同捆 14 种 GGUF（0.8B～31B×量化）。发布前审计发现 SHA-256 校验在生产路径未真正执行，已改并加集成测试。页上链 GitHub NuKa／releases；本机 GitHub 偶发 504。不代你同样本地跑，就等于下一张 6GB 卡也总会 ≈199 t/s，或 VRAM 也总会约 667 MiB。",
+    description: "面向已经把「本地翻译能开就等于可贴机密」写成默认、却还没分开吞吐与校验是否真跑过的人：把「本地译须同时报 VRAM／t/s 与校验是否在生产路径执行」写成门禁，区别于判定模型误报，以及展会 ASR 选型。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/fizor/articles/9000d4ff1a95b9",
+    sourceLabel: "zenn.dev·fizor 实践帖",
+    upvotes: 597,
+    trending: false,
+    tags: [
+      "PLaMo",
+      "llama.cpp",
+      "NuKa",
+      "local translate",
+      "Tauri",
+    ],
+    howItWorks: [
+      "粘贴本地译边界（是不是约 0.8B／667 MiB、tg128 是不是约 199 t/s、pp512 是不是约 1,502 t/s）以及「绝不可把能出译文写成校验已在生产路径执行」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 VRAM／t/s、模型下载边界，以及 SHA-256 是否走过同一生产函数",
+      "人工保留 667／199／1,502 来自哪一张卡与哪一版 llama.cpp；Agent 不代你保证「同样本地跑就等于下一张 6GB 卡也总会 ≈199 t/s」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T05:21:40.951+09:00 → 2026-11-08，同时刻为 UTC 2026-11-07T20:21:40Z、Asia/Shanghai 2026-11-08 04:21:40；bodyUpdatedAt 2026-11-08T05:20:46.887+09:00 同日约 1 分钟前，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：Fizor 在《DeepL に貼れない文章用に、PLaMo 3 Translate を完全ローカルで動く翻訳アプリにした》写 667 MiB／≈199 t/s／≈1,502 t/s 与校验漏洞。页上链 GitHub；偶发 504。主线是先把吞吐与校验是否真执行拆开，不是官文简报。",
+      "与 nemolize-63to18-225of225 / trust-wer173-whisper26-62h 不同：本条不是判定误报或展会 ASR，而是本地翻译应用的 VRAM／吞吐与发布前校验",
+    ],
+    approach: `fizor 在《DeepL に貼れない文章用に、PLaMo 3 Translate を完全ローカルで動く翻訳アプリにした》（页内 2026-11-08）写明：NuKa 在 GTX 1660 6GB 上 0.8B 约占 667 MiB，tg128≈199 t/s、pp512≈1,502 t/s；发布前审计发现 SHA-256 校验未真正跑进生产路径。
+
+关键门禁不是「本地能译就等于可贴机密」，而是分开记吞吐与校验是否执行，并核对这些数字来自哪一张卡。
+
+本场景据此输出「本地译须同时报告 VRAM／t/s 与校验路径，不能只报已经出译文」提纲。禁止把 ≈199 t/s 写成下一张 6GB 卡也总会到达，或把「有校验函数」写成已在生产路径执行。`,
+    outcomes: [
+      "源披露作者做完全本地的 NuKa（Tauri＋llama.cpp 子进程）：GTX 1660（6GB, Turing）／llama.cpp b12136／-ngl 99 上，0.8B Q4_K_M 全层 GPU 时 VRAM 增量约 667 MiB；tg128 生成 198.93±2.87 t/s；pp512 1,501.78±9.63 t/s；体感一句约 0.2～0.5 秒。同捆下载 14 种 GGUF（0.8B～31B×多种量化）。发布前审计发现 select_asset 剥掉 sha256: 前缀后 verify_download 再次 strip 导致生产路径从未校验；已改为只规范化一次，并加「select→download→verify、1 字节篡改拒绝」集成测试。属作者这一张卡与这一版 runtime，不可外推为你同样本地跑就等于下一张 6GB 卡也总会 ≈199 t/s，或 VRAM 也总会约 667 MiB。",
+      "能把「可写成同时记下 VRAM／t/s、模型下载边界，以及校验是否走过同一生产函数」与「必须人完成的 GPU／散热边界、机密是否真的不外发，以及 GitHub 是否导流」拆开。",
+      "为把 ≈199 t/s 当成下一张卡也总会到达的通用吞吐、以及把「仓库里有校验代码」当成已在生产路径执行提供提问清单。",
+    ],
+    caveats: [
+      "667 MiB／198.93／1,501.78／0.2～0.5 秒均为作者 GTX 1660 上一次实測；体感句时未给批量统计；需要 GPU。",
+      "文中链到 https://github.com/Fizor-drm/NuKa 与 https://github.com/Fizor-drm/NuKa/releases ，属自有产品仓／发布页导流。本机复检 GitHub 偶发 HTTP 504，已不列入可达导流。未见 Udemy／Newsletter／招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / fizor），不是 PLaMo 或 DeepL 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "本地译须同时报告吞吐与校验路径门禁",
+        body: `你是资深本地推理质检教练。只根据用户边界写门禁，不要编造已经测到的 667 MiB 或 199 t/s。
+
+现在是不是约 0.8B／667 MiB：{{whether_about_zero_eight_b_six_sixty_seven_mib}}
+tg128 是不是约 199 t/s、pp512 是不是约 1,502 t/s：{{whether_tg_about_one_ninety_nine_pp_about_fifteen_oh_two}}
+校验是不是曾未进生产路径：{{whether_sha_was_dead_on_prod_path}}
+
+输出 Markdown：
+1. 为什么「本地能译」不能写成校验已执行、机密已可贴
+2. 应怎样同时记下 VRAM／t/s、下载边界，以及校验是否走同一生产函数
+3. 只有一张卡时，应怎样单独记账，而不是写成下一张 6GB 卡也必然 ≈199 t/s
+4. 人必须完成的清单（篡改拒绝测试、散热、导流链）
+禁止声称「同样本地跑就等于下一张卡也总会 ≈199 t/s」；禁止把「有校验函数」写成已在生产路径执行。`,
+      },
+      {
+        title: "六百六十七兆与一百九十九每秒复盘",
+        body: `报告上可以写约 667 MiB、≈199 t/s、≈1,502 t/s；但这是 GTX 1660 上一次实測，且曾有校验死代码。请写复盘提纲。
+
+现象：{{six_sixty_seven_mib_and_one_ninety_nine_ts}}
+
+输出：
+1. 更像吞吐已够用，还是发布门禁仍缺「校验真执行」证据
+2. 最小复验顺序（先抽 VRAM→再抽 tg／pp→再跑 1 字节篡改拒绝→再决定能不能对外说本地译可默认）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上集成测试就等于下一张卡也总会 ≈199 t/s」，或「这一次 667 MiB 就等于任何 0.8B 量化都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/fizor/articles/9000d4ff1a95b9",
+      label: "zenn.dev · DeepL に貼れない文章用に、PLaMo 3 Translate を完全ローカルで動く翻訳アプリにした",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "707",
+    slug: "trust-wer173-whisper26-62h",
+    title: "TRUST：展会录音文字化选型——Transcribe 字误率 17.3%；Whisper 约 26%；62 小时整段用 Transcribe",
+    summary: "团队（株式会社トラスト／TRUST Publication・櫻井）；披露智能工厂展约 52 本、合计约 62 小时展台录音的选型：在噪声不同的 4 段（约 67～80 秒）上比 AWS Transcribe、JumpStart Whisper large-v3／turbo、Notion AI、录音机。汇总字误率 Transcribe 17.3%，Whisper large-v3 约 26.6%、turbo 约 26.3%；听不清处 Whisper 与 Notion AI 会编出录音里没有的句子。费用试算 Whisper 更便宜，但启动与等待下不划算。最终 62 小时整段用 Transcribe。页上链公司站 trust-coms.com。不代你同样比 5 法，就等于下一场展会也会 17.3% 对约 26%，或 62 小时也总会选同一家。",
+    description: "面向已经把「字误率最低就等于可分析」写成默认、却还没分开误字与无中生有的人：把「ASR 选型须同时报字误率与是否编造听不清段」写成门禁，区别于本地翻译吞吐，以及 AI 写测全绿。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/trust/articles/expo2026-asr-comparison",
+    sourceLabel: "zenn.dev·TRUST／ryu_sakurai 实践帖",
+    upvotes: 598,
+    trending: false,
+    tags: [
+      "AWS Transcribe",
+      "Whisper",
+      "WER",
+      "expo",
+      "Notion AI",
+    ],
+    howItWorks: [
+      "粘贴 ASR 选型边界（Transcribe 是不是约 17.3%、Whisper 是不是约 26%、整段是不是约 62 小时）以及「绝不可把字误率最低写成听不清段也不会编造」纪律",
+      "Agent 按实践帖输出：应怎样同时记下字误率、听不清段输出、费用与启动等待",
+      "人工保留 17.3／26／62 来自哪一场展会与哪几段抽样；Agent 不代你保证「同样比 5 法就等于下一场展会也总会 17.3% 对约 26%」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T10:59:45.644+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T01:59:45Z、Asia/Shanghai 2026-11-09 09:59:45；bodyUpdatedAt 2026-11-06T09:56:26.395+09:00 早于发布日，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：櫻井在 TRUST Publication《文字起こしは何を選べばいいか｜AWS Transcribe・Whisper・Notion AIを比べた》写 17.3%／约 26%／62 小时。页上链公司站。主线是先把字误率与无中生有拆开，不是官文简报。",
+      "与 fizor-nuka-08b-667mib-198ts / sumumu-24test-9fail-10weak 不同：本条不是本地翻译吞吐或 AI 写测，而是展会噪声录音的 ASR 选型",
+    ],
+    approach: `TRUST（櫻井）在《文字起こしは何を選べばいいか｜AWS Transcribe・Whisper・Notion AIを比べた》（页内 2026-11-09）写明：约 62 小时展台录音选型，抽样段上 Transcribe 字误率 17.3%、Whisper 约 26%；听不清处 Whisper／Notion AI 会编造；最终整段用 Transcribe。
+
+关键门禁不是「字误率最低就等于可分析」，而是分开记误字与无中生有，并核对这些比例来自哪几段抽样。
+
+本场景据此输出「ASR 选型须同时报告字误率与是否编造，不能只报已经接上某服务」提纲。禁止把 17.3% 写成下一场展会也总会到达，或把「Whisper 更便宜」写成已抵消编造风险。`,
+    outcomes: [
+      "源披露株式会社トラスト工程师櫻井：智能工厂展给展台员工挂录音笔，约 52 本合计约 62 小时。先在噪声不同的 4 段（约 79／80／79／67 秒）上比 Transcribe、JumpStart Whisper large-v3／turbo、Notion AI、soundcore 录音机。作者汇总：Transcribe 字误率 17.3%；Whisper large-v3 约 26.6%、turbo 约 26.3%（文称 26% 台）。听不清段上 Whisper 与 Notion AI 会输出录音里没有的句子；作者把「别编造」看得比单纯字误率差更重。费用试算 62 小时 Whisper 更便宜，但启动与等待下不划算。正解文由多路输出对齐后再人工听 12 处分歧，作者写对 Transcribe／Notion／录音机略有利。最终 62 小时整段用 Transcribe。属这一场展会与这几段抽样，不可外推为你同样比 5 法就等于下一场展会也会 17.3% 对约 26%，或 62 小时也总会选同一家。",
+      "能把「可写成同时记下字误率、听不清段是否编造，以及费用／启动等待」与「必须人完成的抽样段选择、正解如何裁定，以及公司站是否导流」拆开。",
+      "为把 17.3% 当成下一场展会也总会到达的通用字误率、以及把「Whisper 试算更便宜」当成已可默认换引擎提供提问清单。",
+    ],
+    caveats: [
+      "17.3%／约 26%／52／62／4 段均为作者一场展会抽样；正解非全文听写；代码示例作者写为博客简化概念码，非可直接上生产。",
+      "文中链到 https://trust-coms.com/ （Publication 简介／公司站），属公司站导流；本机 GET 200，列入可达导流。未见商店／试用／GitHub 仓硬导流。",
+      "上面写的是团队实践帖（zenn.dev / TRUST Publication · ryu_sakurai），不是 AWS 或 OpenAI Whisper 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "ASR 选型须同时报告字误率与编造门禁",
+        body: `你是资深语音转写选型教练。只根据用户边界写门禁，不要编造已经测到的 17.3% 或 62 小时。
+
+现在 Transcribe 是不是约 17.3%、Whisper 是不是约 26%：{{whether_transcribe_about_seventeen_three_whisper_about_twenty_six}}
+整段是不是约 62 小时：{{whether_about_sixty_two_hours}}
+听不清段是不是出现过编造：{{whether_unintelligible_hallucination_seen}}
+
+输出 Markdown：
+1. 为什么「字误率最低」不能写成可直接做访客分析
+2. 应怎样同时记下字误率、听不清段输出、费用与启动等待
+3. 只有几段抽样时，应怎样单独记账，而不是写成下一场展会也必然 17.3% 对约 26%
+4. 人必须完成的清单（抽样段、正解裁定、导流链）
+禁止声称「同样比 5 法就等于下一场也总会 17.3%」；禁止把「Whisper 更便宜」写成已抵消编造风险。`,
+      },
+      {
+        title: "十七点三与六十二小时复盘",
+        body: `报告上可以写 Transcribe 17.3%、Whisper 约 26%、62 小时整段用 Transcribe；但这是一场展会的 4 段抽样。请写复盘提纲。
+
+现象：{{seventeen_three_and_sixty_two_hours}}
+
+输出：
+1. 更像字误率差决定选型，还是「别编造」一票否决了更便宜方案
+2. 最小复验顺序（先抽听不清段→再看汇总字误率→再做费用／等待→再决定能不能对外说已定引擎）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上全文听写就等于下一场也总会 17.3%」，或「这一次 62 小时就等于任何展会都会选同一家」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/trust/articles/expo2026-asr-comparison",
+      label: "zenn.dev · 文字起こしは何を選べばいいか｜AWS Transcribe・Whisper・Notion AIを比べた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
