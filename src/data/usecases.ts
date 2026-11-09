@@ -55158,6 +55158,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "763",
+    slug: "smori-100rec-9min-50off",
+    title: "smori：Bedrock 上 Claude Opus 5 批推理——最低 100 条 JSONL、作者试跑约 9 分钟；相对同模按需约半价",
+    summary: "个人（smori）；披露在东京区用 Claude Opus 5 做 Bedrock 批推理：输入须同区 S3、每作业最低 100 条 JSONL、「こんにちは」×100 的试跑约 9 分钟出结果；相对 Opus 5 按需约 50% 价、相对 Opus 5.5 按需约 37.5% 价；Opus 5.5 当时不支持批推理。不代你同样凑满 100 条，就等于下一作业也会约 9 分钟或半价已门禁。",
+    description: "面向已经把「批推理=半价」当成窗口已到、却还没分开「最低条数／同区 S3／模型代际是否支持」的人：把「Agent 合做 Bedrock 批推须同时报条数门槛、同区约束与完成耗时」写成门禁，区别于费用/Effort 口算，以及本地小模型对照。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/smori/articles/bedrock-batch-inference-handson",
+    sourceLabel: "zenn.dev·smori 实践帖",
+    upvotes: 654,
+    trending: false,
+    tags: [
+      "Bedrock",
+      "batch-inference",
+      "Opus-5",
+      "S3",
+      "AWS",
+    ],
+    howItWorks: [
+      "粘贴批推理边界（是不是约最低100条JSONL、是不是约同区S3、是不是约作者试跑9分钟）以及「绝不可把半价写成窗口已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下条数门槛、模型代际是否支持批推、以及未满100条时的按需回退",
+      "人工保留 100条／9分钟／50%／37.5%／100作业配额来自哪一次控制台试跑；Agent 不代你保证「同样凑100条就等于下一作业也总会先落到约9分钟」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T22:52:43.477+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T13:52:43Z、Asia/Shanghai 2026-11-09 21:52:43；bodyUpdatedAt 2026-11-09T22:54:26.464+09:00 略晚于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：smori 在《Amazon Bedrockのバッチ推論をClaude Opus 5で試す》写 100 条门槛、约 9 分钟、半价。文内链 AWS 官方文档为厂商文档对照，非作者商店硬导流；本机未见作者产品／外链硬导流可列入可达。主线是 Bedrock 批推门槛与代际支持，不是官文简报。",
+      "与费用/Effort 口算、本地小模型对照不同：本条不是把 token 单价或本机模型当主线，而是批推理的最低条数、同区 S3 与模型是否支持",
+    ],
+    approach: `smori 在《Amazon Bedrockのバッチ推論をClaude Opus 5で試す》（页内 2026-11-09）写明：Bedrock 上 Anthropic 模型的批推理支持随代际断续——Opus 4.6 曾支持、4.7／4.8 未支持，Opus 5 再次支持，但当时最新的 Opus 5.5 又不支持。批推理把大量提示异步跑完：输入 JSONL 放进 S3，建作业后结果写回 S3；适合不需实时答复的批量，相对同模按需约半价。作者在东京区用控制台做手把手：把「こんにちは」短文本排成 100 行 JSONL（每作业最低 100 条），用 Global 配置的 Claude Opus 5（东京仅 global.anthropic.claude-opus-5）建作业；同区 S3 放输入／输出。约束含：S3 必须与作业同区；同时 In progress＋Submitted 在东京 Opus 5 基础模型约 100 作业配额；作业不可删只能停。该次试跑约 9 分钟完成。价比叙述：相对 Opus 5 按需约 50% 便宜，相对 Opus 5.5 按需约 37.5% 便宜。未满 100 条时作者建议回退普通 Converse。
+
+关键门禁不是「批推=半价」，而是分开记「条数门槛／同区／代际是否支持」与「完成耗时」。
+
+本场景据此输出「Agent 合做 Bedrock 批推须同时报告条数门槛、同区约束与完成耗时，不能只报半价」提纲。禁止把 9 分钟写成下一作业也总会到达，或把半价写成窗口已门禁。`,
+    outcomes: [
+      "源披露作者在东京区用 Claude Opus 5 跑 Bedrock 批推理：每作业最低 100 条 JSONL，「こんにちは」×100 的试跑约 9 分钟出结果；相对 Opus 5 按需约 50% 价、相对 Opus 5.5 按需约 37.5% 价；当时 Opus 5.5 不支持批推。属作者这一次控制台手把手，不可外推为你同样凑满 100 条就等于下一作业也会约 9 分钟，或半价就等于窗口已门禁。",
+      "能把「可写成同时记下条数门槛、同区 S3、模型代际支持与完成耗时」与「必须人完成的账号／配额／以及是否有作者产品导流」拆开。",
+      "为把「批推=半价」当成已门禁、以及把未满 100 条仍硬建作业提供提问清单。",
+    ],
+    caveats: [
+      "100条／约9分钟／50%／37.5%／东京约100作业配额均为作者控制台叙述与价表对照；未声称任意账号或区同一耗时。",
+      "文内 AWS 官方文档为厂商文档对照，非作者自有商店硬导流；本机未见作者产品／外链硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / smori），不是 AWS／Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Bedrock 批推须同时报告条数门槛与同区约束",
+        body: `你是资深 Agent 云批推教练。只根据用户边界写门禁，不要编造已经到的9分钟或半价。
+
+现在是不是约最低100条JSONL：{{whether_about_100rec}}
+是不是约输入输出同区S3：{{whether_about_same_region_s3}}
+是不是约作者试跑约9分钟：{{whether_about_9min}}
+
+输出 Markdown：
+1. 为什么「批推=半价」不能写成窗口已门禁
+2. 应怎样同时记下条数门槛、模型代际是否支持、未满100条时的按需回退
+3. 只有一次控制台试跑时，应怎样单独记账，而不是写成下一作业也必然约9分钟
+4. 人必须完成的清单（区、配额、导流链）
+禁止声称「同样凑100条就等于下一作业也总会先落到约9分钟」；禁止把半价写成已门禁。`,
+      },
+      {
+        title: "百条门槛与九分钟试跑复盘",
+        body: `报告上可以写最低100条、试跑约9分钟、相对按需约50%；但这是一次个人控制台。请写复盘提纲。
+
+现象：{{hundred_records_nine_min}}
+
+输出：
+1. 更像条数／同区配置问题，还是模型代际不支持
+2. 最小复验顺序（先核最低条数→再核同区S3→再决定能不能对外说半价已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上凑满100条就等于下一作业也总会约9分钟」，或「价表半价就等于窗口已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/smori/articles/bedrock-batch-inference-handson",
+      label: "zenn.dev · Amazon Bedrockのバッチ推論をClaude Opus 5で試す",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "764",
+    slug: "shinai-45k-61to33-200ln",
+    title: "shinai：Claude Code 省 token 的七个习惯——无人侧启动指示约 4.5 万字，CLAUDE.md 从约 6.1 千字收到约 3.3 千字",
+    summary: "个人（shinai）；披露对照官方成本／记忆页整理七个习惯：官方 CLAUDE.md 宜 <200 行；自己无人执行侧 2026-11-07 记录启动必读指示合计约 4.5 万字，把该夹 CLAUDE.md 从约 6.1 千字挪出到约 3.3 千字、索引约短 25%，并写明第 2 次起不重读规则／索引；未测 API token／账单／周额度降幅。不代你同样砍半，就等于下一无人启动也会先见到 6.1→3.3 千字。",
+    description: "面向已经把「写了省 token」当成用量已门禁、却还没分开「字数／行数纪律」与「账单／周额度实测」的人：把「Agent 合做上下文减负须同时报启动必读体积、挪出依据与未测项」写成门禁，区别于费用/Effort 口算，以及 CLAUDE.md 四类取舍。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/shinai/articles/claude-code-token-saving-7habits",
+    sourceLabel: "zenn.dev·shinai 实践帖",
+    upvotes: 655,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "CLAUDE.md",
+      "token",
+      "skills",
+      "permissions",
+    ],
+    howItWorks: [
+      "粘贴上下文减负边界（是不是约官方CLAUDE.md<200行、是不是约启动必读合计4.5万字、是不是约该夹CLAUDE.md 6.1→3.3千字）以及「绝不可把字数砍半写成账单已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下挪到 skill／子夹 CLAUDE.md／paths 规则、以及未测 API token／周额度",
+      "人工保留 4.5万字／6.1千／3.3千／25%／1小时最多10次启动来自哪一份运维记录；Agent 不代你保证「同样砍半就等于下一无人启动也总会先落到 6.1→3.3 千字」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T03:07:11.370+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T18:07:11Z、Asia/Shanghai 2026-11-09 02:07:11；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：shinai 在《Claude Codeのトークンを減らす7つの習慣：公式ドキュメントで確かめ、CLAUDE.mdを半分近くに減らした》写 4.5 万字／6.1→3.3 千字。文内链 Claude 官方文档为厂商文档对照，非作者商店硬导流；本机未见作者产品／外链硬导流可列入可达。主线是启动必读体积与技能分流，不是官文简报。",
+      "与费用/Effort 口算、CLAUDE.md 四类取舍不同：本条不是把单价或「删了会出事的四类」当主线，而是启动必读字数／行数与 skill／paths 分流，且作者明示未测账单降幅",
+    ],
+    approach: `shinai 在《Claude Codeのトークンを減らす7つの習慣：公式ドキュメントで確かめ、CLAUDE.mdを半分近くに減らした》（页内 2026-11-09）写明：对照官方 Manage costs／memory 等页，把「官方写明的」与「自己环境在做的」分开。习惯含：话题切换 /clear、/compact、/autocompact；请求写到文件／函数名；CLAUDE.md 官方宜 <200 行、长流程进 skill（启动只载 description）、子夹 CLAUDE.md／paths 规则按需读；.claudeignore 无效须用 permissions.deny；模型／effort 按活；可用 hook／脚本卸荷等。作者无人侧（claude -p）2026-11-07 运维记录：每次启动必读指示（CLAUDE.md・共通规则・作业指示・索引等）合计约 4.5 万字，当时约 1 小时最多 10 次启动；把该无人夹 CLAUDE.md 从约 6.1 千字挪出历程／已知课题／测试结果后约 3.3 千字，索引写法约短 25%，并规定第 2 次起不重读规则／索引。作者明示：API token／账单／周额度降幅未测；规格按 2026-11-08 官方正文核对。
+
+关键门禁不是「写了省 token」，而是分开记「启动必读体积」与「账单是否已测」。
+
+本场景据此输出「Agent 合做上下文减负须同时报告启动必读体积、挪出依据与未测项，不能只报砍半」提纲。禁止把 6.1→3.3 千字写成下一环境也总会到达，或把字数纪律写成账单已门禁。`,
+    outcomes: [
+      "源披露作者对照官方页整理七个习惯，并在无人执行侧 2026-11-07 记录里把启动必读指示合计约 4.5 万字中的该夹 CLAUDE.md 从约 6.1 千字收到约 3.3 千字、索引约短 25%；官方 CLAUDE.md 宜 <200 行。属作者这一次运维记录与官方对照，不可外推为你同样砍半就等于下一无人启动也会先见到 6.1→3.3 千字，或字数纪律就等于账单／周额度已门禁。",
+      "能把「可写成同时记下启动必读体积、挪到 skill／paths 的依据、以及未测账单项」与「必须人完成的权限／导流链」拆开。",
+      "为把「写了省 token」当成用量已门禁、以及把 .claudeignore 当成已隔离提供提问清单。",
+    ],
+    caveats: [
+      "4.5万字／6.1千／3.3千／约25%／1小时最多10次启动均为作者运维记录；作者明示未测 API token／账单／周额度降幅。",
+      "文内 Claude 官方文档为厂商文档对照，非作者自有商店硬导流；本机未见作者产品／外链硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / shinai），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "上下文减负须同时报告启动必读体积与未测项",
+        body: `你是资深 Agent 上下文教练。只根据用户边界写门禁，不要编造已经到的账单降幅。
+
+现在是不是约启动必读合计4.5万字：{{whether_about_45k}}
+是不是约该夹CLAUDE.md 6.1→3.3千字：{{whether_about_61to33}}
+是不是约官方CLAUDE.md宜<200行：{{whether_about_200ln}}
+
+输出 Markdown：
+1. 为什么「字数砍半」不能写成账单已门禁
+2. 应怎样同时记下挪到skill／子夹／paths的依据、以及未测API token／周额度
+3. 只有一份运维记录时，应怎样单独记账，而不是写成下一无人启动也必然6.1→3.3千字
+4. 人必须完成的清单（deny规则、导流链）
+禁止声称「同样砍半就等于下一启动也总会先落到6.1→3.3千字」；禁止把官方日均费用例写成自己的降幅。`,
+      },
+      {
+        title: "四点五万字与六千一百字复盘",
+        body: `报告上可以写启动必读约4.5万字、CLAUDE.md 6.1→3.3千字、索引约短25%；但这是一次个人运维。请写复盘提纲。
+
+现象：{{forty_five_k_shrink}}
+
+输出：
+1. 更像每次全量重读，还是长流程未进skill
+2. 最小复验顺序（先量启动必读字数→再核挪出文件→再决定能不能对外说用量已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上砍半就等于账单也必然下降」，或「.claudeignore就等于已隔离」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shinai/articles/claude-code-token-saving-7habits",
+      label: "zenn.dev · Claude Codeのトークンを減らす7つの習慣：公式ドキュメントで確かめ、CLAUDE.mdを半分近くに減らした",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "765",
+    slug: "shinku-cvp12d-mythos041",
+    title: "shinkusanagi：一人公司也能摸到 Claude Mythos——CVP Defense Access 首拒后 12 日获批，用在 DSSE 0.4.1 安审",
+    summary: "个人（shinkusanagi／ランタンネットワークス一人公司）；披露做零信任 DSSE 时 PKI 作业常被 Opus 5／5.5 安全闸切到 Opus 4.8；申 CVP 首拒（约 10/26 邮件称证据不足），未异议；约 12 日后 11/7 以 Defense Access 获批，Mythos 用于 0.4.1 安全审阅与修正。不代你同样等 12 日，就等于下一申请也会获批或 Mythos 已门禁。",
+    description: "面向已经把「交了 CVP」当成 Mythos 已开、却还没分开「申请／驳回／获批日」与「人侧安审范围」的人：把「Agent 合做网络产品开发须同时报 CVP 阶段、获批日与 Mythos 使用边界」写成门禁，区别于 Gap/CVE 扫描吞吐，以及技能安全扫描。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/shinkusanagi/items/646303f3501f589f3ca8",
+    sourceLabel: "qiita.com·shinkusanagi 实践帖",
+    upvotes: 656,
+    trending: false,
+    tags: [
+      "CVP",
+      "Mythos",
+      "Defense-Access",
+      "DSSE",
+      "zero-trust",
+    ],
+    howItWorks: [
+      "粘贴 CVP 边界（是不是约首拒后约12日获批Defense Access、是不是约Mythos用于0.4.1安审、是不是约一人公司）以及「绝不可把交了申请写成Mythos已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下驳回理由、获批日、以及Mythos只用在安全关键路径",
+      "人工保留 10/26驳回／11/7获批／12日／0.4.1／Opus4.8切换来自哪一封邮件与发布；Agent 不代你保证「同样等12日就等于下一申请也总会获批」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T20:25:06+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T11:25:06Z、Asia/Shanghai 2026-11-09 19:25:06；updated_at 同 created_at；GET 200，UA MiraBot/1.0）：shinkusanagi 在《一人の会社でも Claude Mythos が使えるようになった ― CVP の Defense Access が承認されるまで》写首拒、12 日、Defense Access、0.4.1。文内链 https://github.com/lantern-networks/dsse-core/releases/tag/v0.4.1-experimental 属作者仓／发布导流，本机 GET 200，列入可达导流。主线是一人公司 CVP 获批路径，不是官文简报。",
+      "与 Gap/CVE 扫描吞吐、技能安全扫描不同：本条不是把漏洞扫描器命中数当主线，而是安全产品开发被模型闸挡住后如何走 CVP 拿到 Mythos",
+    ],
+    approach: `shinkusanagi 在《一人の会社でも Claude Mythos が使えるようになった ― CVP の Defense Access が承認されるまで》（Qiita 2026-11-09）写明：一人公司ランタンネットワークス开源零信任 DSSE；开发中 PKI／证书／TLS 检查类作业常被 Claude 安全闸判定为攻击向，Opus 5／5.5 会话被切到 Opus 4.8 并保持。9–10 月曾主用 OpenAI Astra。为回到 Claude 申请 Cyber Verification Program：首封约 10/26 邮件称资格证据不足，建议补 CVE 致谢／赏金／公开披露等再异议——作者无此类履历，未提异议。约 12 日后 11/7 以 Defense Access 获批（邮件未写理由）；作者猜测评审了公开的 Lantern DSSE 仓。获批后 Mythos 用于 0.4.1-experimental 的安全审阅与修正；日常仍多走 Opus 5.5，只在安全关键处用 Mythos。文内对照 CVP 三档（Defense／Red Team／Specialized）与 Glasswing 早期限额叙述。
+
+关键门禁不是「交了 CVP」，而是分开记「驳回／获批日」与「Mythos 实际用在哪条安审」。
+
+本场景据此输出「Agent 合做安全产品开发须同时报告 CVP 阶段、获批日与 Mythos 使用边界，不能只报已申请」提纲。禁止把 12 日写成下一申请也总会获批，或把获批写成全会话已切 Mythos。`,
+    outcomes: [
+      "源披露作者一人公司申 CVP：约 10/26 首拒后未异议，约 12 日后 11/7 获 Defense Access；Mythos 用于 DSSE 0.4.1 安全审阅与修正，日常仍多 Opus 5.5。属作者这一次申请邮件与发布叙述，不可外推为你同样等 12 日就等于下一申请也会获批，或获批就等于 Mythos 已门禁。",
+      "能把「可写成同时记下驳回日、获批日、Mythos 使用边界」与「必须人完成的证据材料／导流链」拆开。",
+      "为把「交了 CVP」当成 Mythos 已开、以及把安全闸切到 4.8 当成产品失败提供提问清单。",
+    ],
+    caveats: [
+      "10/26驳回／11/7获批／约12日／0.4.1／Opus4.8切换均为作者邮件与自述；未声称任意一人公司同审期。",
+      "作者仓发布 https://github.com/lantern-networks/dsse-core/releases/tag/v0.4.1-experimental 为可达导流（GET 200）。文内 Anthropic 公告／Support 为厂商对照。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / shinkusanagi），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "CVP 须同时报告驳回日与 Mythos 使用边界",
+        body: `你是资深 Agent 安全开发教练。只根据用户边界写门禁，不要编造已经获批。
+
+现在是不是约首拒后约12日获Defense Access：{{whether_about_12d}}
+是不是约Mythos用于0.4.1安审：{{whether_about_mythos_041}}
+是不是约一人公司：{{whether_about_solo_co}}
+
+输出 Markdown：
+1. 为什么「交了CVP」不能写成Mythos已门禁
+2. 应怎样同时记下驳回理由、获批日、Mythos只用在安全关键路径
+3. 只有一套申请邮件时，应怎样单独记账，而不是写成下一申请也必然12日获批
+4. 人必须完成的清单（证据、导流链）
+禁止声称「同样等12日就等于下一申请也总会获批」；禁止把获批写成全会话已切Mythos。`,
+      },
+      {
+        title: "十二日获批与零点四一点一复盘",
+        body: `报告上可以写首拒、约12日、Defense Access、Mythos用于0.4.1；但这是一次个人申请。请写复盘提纲。
+
+现象：{{cvp_12d_mythos}}
+
+输出：
+1. 更像证据不足，还是产品公开仓被二次看见
+2. 最小复验顺序（先核驳回邮件→再核获批日→再决定能不能对外说Mythos已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上等12日就等于下一申请也总会获批」，或「获批就等于PKI作业不再被闸」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/shinkusanagi/items/646303f3501f589f3ca8",
+      label: "qiita.com · 一人の会社でも Claude Mythos が使えるようになった ― CVP の Defense Access が承認されるまで",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "766",
+    slug: "kensudo-151t-40news-imp",
+    title: "kensudo1203：投资桌面新闻不进下单链路——Claude 只译／打情绪，重要度 0–100 由代码算；151 测＋单次最多 40 条",
+    summary: "个人（kensudo1203）；披露 HedgeDesk 新闻分析：Claude 只出译／情绪／影响 1–5／分类／理由，重要度 0–100 由代码乘鲜度权重；单次最多 40 条（20×2）、失败上限每标题 2 次；测试 151 件；换有效钥后首跑分析 40 条。新闻不进信号／风控／下单。不代你同样 151 测，就等于下一桌面也会 40 条首跑或重要度已门禁。",
+    description: "面向已经把「AI 打了分」当成可下单、却还没分开「模型字段」与「代码重要度／鲜度闸」的人：把「Agent 合做新闻桌面须同时报单次条数上限、测试件数与未进下单链路」写成门禁，区别于事实核查，以及趋势周报。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/kensudo1203/articles/8c88fc713837ce",
+    sourceLabel: "zenn.dev·kensudo1203 实践帖",
+    upvotes: 657,
+    trending: false,
+    tags: [
+      "HedgeDesk",
+      "news",
+      "structured-output",
+      "paper-trading",
+      "Claude",
+    ],
+    howItWorks: [
+      "粘贴新闻桌面边界（是不是约单次最多40条、是不是约测试151件、是不是约重要度由代码算且新闻不进下单）以及「绝不可把AI情绪写成可下单」纪律",
+      "Agent 按实践帖输出：应怎样同时记下鲜度权重、价格反应未就绪时0点、以及失败上限不含钥错误",
+      "人工保留 40条／151测／0–100点／45中／鲜度6h/24h/72h来自哪一次实跑；Agent 不代你保证「同样151测就等于下一桌面也总会先40条首跑」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T10:21:00.369+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T01:21:00Z、Asia/Shanghai 2026-11-09 09:21:00；bodyUpdatedAt 2026-11-09T10:20:50.588+09:00 略早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：kensudo1203 在《ニュースをAIで訳して採点し、鮮度と値動きで裏を取る ― 投資判断支援の作り方》写 151 测／最多 40 条／代码重要度。文内链 https://github.com/kensudogit/HedgeDesk 属作者仓导流，本机 GET 200，列入可达导流。主线是新闻不进下单的桌面门禁，不是官文简报。",
+      "与事实核查、趋势周报不同：本条不是把主张核真或周报摘要当主线，而是投资纸面桌面上「模型字段 vs 代码重要度」且明确不进发单路径",
+    ],
+    approach: `kensudo1203 在《ニュースをAIで訳して採点し、鮮度と値動きで裏を取る ― 投資判断支援の作り方》（页内 2026-11-09）写明：一人用 HedgeDesk（Alpaca 纸面）把新闻分析做成三柱——鲜度、Claude 结构化判断、日线价格反应——再由代码合成 0–100 重要度。原则：新闻结果只上屏，不进信号／风控／下单（缺标的历史新闻无法回测）；AI 不算最终分，只出译／情绪／影响 1–5／分类／理由；缺数据就标「未设定／未分析／旧」。鲜度权重：6h 内 1.0、24h 内 0.8、72h 内 0.5、时刻不明 0.6、超 72h 移出。机制停机提示：采集超 45 分、分析落后超 90 分等。费用闸：单次最多 40 条（20×2）、同 PROMPT_VERSION 不重送、每标题失败上限 2 次（钥／权限类错误不计入该上限——作者曾因此差点永久踢出 40 条）。测试 151 件。换有效钥后首跑分析 40 条（claude-opus-5-5）；文内样例重要度 45（中）。API 费用金额未测。
+
+关键门禁不是「AI 打了分」，而是分开记「模型字段」与「代码重要度／未进下单」。
+
+本场景据此输出「Agent 合做新闻桌面须同时报告条数上限、测试件数与未进下单，不能只报情绪分」提纲。禁止把 40 条首跑写成下一钥也总会到达，或把重要度写成可下单。`,
+    outcomes: [
+      "源披露作者把新闻分析做成 Claude 只出字段、重要度 0–100 由代码乘鲜度；单次最多 40 条、测试 151 件，换有效钥后首跑分析 40 条；新闻不进下单链路。属作者这一次纸面桌面与测试，不可外推为你同样 151 测就等于下一桌面也会 40 条首跑，或重要度就等于可下单已门禁。",
+      "能把「可写成同时记下条数上限、失败上限口径、未进下单」与「必须人完成的钥／纸面账户／导流链」拆开。",
+      "为把「AI 情绪分」当成可下单、以及把钥错误计入失败上限提供提问清单。",
+    ],
+    caveats: [
+      "151测／最多40条／首跑40条／重要度0–100／样例45均为作者桌面与测试叙述；API 费用金额作者明示未测。非投资建议，仅纸面。",
+      "作者仓 https://github.com/kensudogit/HedgeDesk 为可达导流（GET 200）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / kensudo1203），不是券商或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "新闻桌面须同时报告条数上限与未进下单",
+        body: `你是资深 Agent 投资桌面教练。只根据用户边界写门禁，不要编造已经可下单。
+
+现在是不是约单次最多40条：{{whether_about_40}}
+是不是约测试151件：{{whether_about_151}}
+是不是约重要度由代码算且新闻不进下单：{{whether_about_code_score}}
+
+输出 Markdown：
+1. 为什么「AI情绪分」不能写成可下单
+2. 应怎样同时记下鲜度权重、价格未就绪时0点、失败上限不含钥错误
+3. 只有一次首跑40条时，应怎样单独记账，而不是写成下一钥也必然40条
+4. 人必须完成的清单（纸面账户、导流链）
+禁止声称「同样151测就等于下一桌面也总会先40条首跑」；禁止把重要度写成投资建议。`,
+      },
+      {
+        title: "一百五十一测与四十条首跑复盘",
+        body: `报告上可以写151测、最多40条、首跑40条、重要度代码合成；但这是一次个人纸面桌面。请写复盘提纲。
+
+现象：{{one_fifty_one_forty}}
+
+输出：
+1. 更像费用闸设计，还是失败上限误计钥错误
+2. 最小复验顺序（先核未进下单→再核条数上限→再决定能不能对外说评分已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上打分就等于可下单」，或「首跑40条就等于费用已测」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kensudo1203/articles/8c88fc713837ce",
+      label: "zenn.dev · ニュースをAIで訳して採点し、鮮度と値動きで裏を取る ― 投資判断支援の作り方",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "767",
+    slug: "keepmac-lid-caff-s-batt0",
+    title: "Keep Mac Awake：盖上 MacBook 后 Claude Code 为何停——caffeinate -s 在电池上 PreventSystemSleep 汇总仍为 0",
+    summary: "团队（Keep Mac Awake）；披露对照 Apple／Anthropic 文档并用 pmset 实测：盖合睡眠≠空闲睡眠；桌面「Keep computer awake」与默认 caffeinate（-i）挡不住盖合；caffeinate -s 仅 AC 有效，电池上作者见进程有 PreventSystemSleep 但系统汇总仍为 0；pmset disablesleep 可全关睡眠但易忘关。不代你同样 -s，就等于盖合过夜任务也会跑完。",
+    description: "面向已经把「开了 Keep awake／caffeinate」当成盖合任务已门禁、却还没分开「空闲睡眠」与「盖合睡眠／电源断言」的人：把「Agent 合做盖合长任务须同时报电源、断言类型与 pmset 证据」写成门禁，区别于静默停机巡检，以及过夜编码编排。",
+    categories: [
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://zenn.dev/keepmacawake/articles/b5e50830870345",
+    sourceLabel: "zenn.dev·keepmacawake 实践帖",
+    upvotes: 658,
+    trending: false,
+    tags: [
+      "macOS",
+      "caffeinate",
+      "pmset",
+      "Claude-Code",
+      "lid-close",
+    ],
+    howItWorks: [
+      "粘贴盖合长任务边界（是不是约盖合≠空闲睡眠、是不是约-s仅AC、是不是约电池上汇总PreventSystemSleep为0）以及「绝不可把开了caffeinate写成盖合已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下电源（AC／Batt）、断言类型、以及DarkWake日志读法",
+      "人工保留 PreventSystemSleep 0／-s／disablesleep／macOS 27.0.1来自哪一次pmset；Agent 不代你保证「同样-s就等于盖合过夜也总会跑完」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T20:37:48.243+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T11:37:48Z、Asia/Shanghai 2026-11-08 19:37:48；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：keepmacawake 在《MacBook の蓋を閉じると Claude Code が止まるのはなぜか：caffeinate と pmset で確かめた》写 -i／-s／电池汇总 0。文内链 https://keepmacawake.com/ja/blog/keep-claude-code-running-lid-closed 与 https://keepmacawake.com/ 属作者产品导流，本机 GET 200，列入可达导流。主线是盖合睡眠与电源断言，不是官文简报。",
+      "与静默停机巡检、过夜编码编排不同：本条不是把进程看门狗或夜间多会话写码当主线，而是笔记本盖合睡眠分层与 caffeinate／pmset 证据",
+    ],
+    approach: `keepmacawake 团队在《MacBook の蓋を閉じると Claude Code が止まるのはなぜか：caffeinate と pmset で確かめた》（页内 2026-11-08）写明：环境为 Apple 硅 MacBook、macOS 27.0.1。盖合会使 Mac 睡眠，Claude Code 作为本机进程一并停；醒来可能重试，但盖合期间工作未推进。Anthropic 文档亦写桌面「Keep computer awake」挡不住盖合睡眠。caffeinate 默认／-i 对应 PreventUserIdleSystemSleep（仍可能因盖合睡）；-s 对应 PreventSystemSleep，man 写明仅 AC 有效。作者在电池上跑 caffeinate -s 并 pmset -g assertions：进程列表可见 PreventSystemSleep，但系统汇总 PreventSystemSleep 仍为 0——与「仅 AC 有效」一致。另可用 sudo pmset disablesleep 1 全局关睡眠（电池／AC 盖合也不睡），但无定时／电量下限、重启后仍保持，易忘关。产品 Keep Mac Awake 用会话包装 SleepDisabled 并加看门狗回退；文首声明产品只占开头一项与文末一行，其余为系统机制。
+
+关键门禁不是「开了 caffeinate」，而是分开记「空闲 vs 盖合」与「AC／电池上的断言是否计入汇总」。
+
+本场景据此输出「Agent 合做盖合长任务须同时报告电源、断言类型与 pmset 证据，不能只报开了 Keep awake」提纲。禁止把 -s 写成电池盖合也总会跑完，或把开了工具写成窗口已门禁。`,
+    outcomes: [
+      "源披露作者团队用文档＋pmset 核对：盖合睡眠≠空闲睡眠；默认 caffeinate／桌面 Keep awake 挡不住盖合；caffeinate -s 在电池上进程有断言但系统汇总 PreventSystemSleep 仍为 0。属作者这一次 macOS 27.0.1 实测，不可外推为你同样加 -s 就等于盖合过夜任务也会跑完，或开了工具就等于盖合已门禁。",
+      "能把「可写成同时记下电源、断言类型、DarkWake 日志读法」与「必须人完成的管理员权限／导流链」拆开。",
+      "为把「开了 Keep awake」当成盖合任务已门禁、以及把 DarkWake from Deep Idle 误读成一直在跑提供提问清单。",
+    ],
+    caveats: [
+      "PreventSystemSleep 汇总0／-s仅AC／disablesleep／macOS 27.0.1均为作者团队实测；未声称任意机型同断言行为。",
+      "作者产品导流 https://keepmacawake.com/ja/blog/keep-claude-code-running-lid-closed 与 https://keepmacawake.com/ 可达（GET 200）。文内 Apple／Anthropic／开源 man 为厂商／源码对照。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / keepmacawake），不是 Apple／Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "盖合长任务须同时报告电源与断言类型",
+        body: `你是资深 Agent macOS 长任务教练。只根据用户边界写门禁，不要编造盖合已跑完。
+
+现在是不是约盖合≠空闲睡眠：{{whether_about_lid_vs_idle}}
+是不是约-s仅AC有效：{{whether_about_s_ac_only}}
+是不是约电池上汇总PreventSystemSleep为0：{{whether_about_batt0}}
+
+输出 Markdown：
+1. 为什么「开了caffeinate／Keep awake」不能写成盖合已门禁
+2. 应怎样同时记下电源、断言类型、DarkWake日志读法
+3. 只有一次pmset输出时，应怎样单独记账，而不是写成下一盖合过夜也必然跑完
+4. 人必须完成的清单（AC确认、导流链）
+禁止声称「同样-s就等于电池盖合也总会跑完」；禁止把DarkWake from Deep Idle写成一直在跑。`,
+      },
+      {
+        title: "电池汇总零与盖合睡眠复盘",
+        body: `报告上可以写-i挡不住盖合、-s仅AC、电池上汇总PreventSystemSleep为0；但这是一次团队实测。请写复盘提纲。
+
+现象：{{batt_prevent_zero}}
+
+输出：
+1. 更像电源不在AC，还是误用了-i
+2. 最小复验顺序（先pmset -g batt→再assertions→再决定能不能对外说盖合已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上-s就等于盖合过夜也总会跑完」，或「开了菜单栏工具就等于SleepDisabled已安全回退」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/keepmacawake/articles/b5e50830870345",
+      label: "zenn.dev · MacBook の蓋を閉じると Claude Code が止まるのはなぜか：caffeinate と pmset で確かめた",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
