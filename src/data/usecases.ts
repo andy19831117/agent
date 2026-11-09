@@ -48089,6 +48089,456 @@ git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whethe
       dateLabel: "发布",
     },
   },
+  {
+    id: "683",
+    slug: "mickamy-48pr-365edit-crew",
+    title: "mickamy：orchestrate 好日子一天合上约 48 个 PR——进度文件两会话合计改了 365 次；改成 crew 后只让听过人话的会话合入",
+    summary: "个人（mickamy／Tetsuro Mikami）；披露自己一人做 iOS／Android／服务器，曾用自作技能 orchestrate：业主会话出票，进行役把票分给 3〜5 个子会话，子在 worktree 开发并开 PR，人审后子再合入。好日子一天能合上约 48 个 PR。瓶颈却变成「卡住的是我」：业主既要分活又要听报告；额度将尽时会话交接；进度写进文件后，两个会话合计改了 365 次。于是做成 Claude Code plugin「crew」：人只跟 lead 说话；只有直接听过人话的会话才能合入；配管用官方能力，crew 只留「谁决定／问什么／验什么」。为验证 dispatcher 能否长驻，在 v2.1.319 用耗时子代理实测：子结束后才自动醒；Monitor 空等约 20 秒就被催报告。结论是 dispatcher 只等自己的子，CI 类等待放进 worker。页上链到 crew-skill 仓库与官方文档。不代你同样开 crew，就等于下一工作日也总会合上约 48 个 PR，或进度文件也总会改满 365 次。",
+    description:
+      "面向已经把「多会话并行就等于一天几十个 PR」写成可承诺吞吐、却还没分开「合入权在谁」与「进度文件谁在改」的人：把「分工可以代跑，谁有合入权仍要人订」写成门禁，区别于 Team 三体体感三十分，以及并排会话下 statusLine 定时 npx。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/mickamy/articles/c5e90829fb397a",
+    sourceLabel: "zenn.dev·mickamy 实践帖",
+    upvotes: 574,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "crew",
+      "plugin",
+      "PR",
+      "subagent",
+    ],
+    howItWorks: [
+      "粘贴编排边界（约 48 个 PR 是不是好日子一天合入、365 次是不是两会话进度文件编辑、合入是不是只允许听过人话的会话）以及「绝不可把 plugin 写成吞吐已保证」纪律",
+      "Agent 按实践帖输出：应怎样同时记下合入吞吐、进度文件编辑次数，以及 dispatcher 等待实验有没有在本机复测",
+      "人工保留约 48／365 来自哪一段自述、Monitor 约 20 秒是不是同版复现，以及合入前有没有人审；Agent 不代你保证「装 crew 就等于下一工作日也总会约 48 个 PR」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T12:26:02.127+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T03:26:02Z、Asia/Shanghai 2026-11-07 11:26:02；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/07 に公開；GET 200，UA MiraBot/1.0）：mickamy 在《Claude Code に開発チームを組ませて、自分は「判断」だけする plugin「crew」を作った》写 orchestrate 好日子约 48 个 PR、进度文件两会话合计 365 次编辑，以及 v2.1.319 下 Monitor 约 20 秒催报告。页上链到 crew-skill 与官方文档。主线是先把合入权与吞吐拆开，不是官文简报。",
+      "与 purpom-30min-3agent-4f / phibi-12sess-190npx-23s 不同：本条不是 Team 三体体感三十分，也不是并排会话 statusLine 定时 npx，而是自作编排改成「人只跟 lead、合入权只留给听过人话的会话」",
+    ],
+    approach: `mickamy 在《Claude Code に開発チームを組ませて、自分は「判断」だけする plugin「crew」を作った》（页内 2026-11-07）写明：orchestrate 好日子一天合上约 48 个 PR；进度文件两会话合计改 365 次；瓶颈变成业主本人。于是做 crew：人只跟 lead；只有直接听过人话的会话能合入。v2.1.319 实测 Monitor 空等约 20 秒会被催报告，故 dispatcher 只等自己的子。
+
+关键门禁不是「装了 crew 就等于一天约 48 个 PR」，而是分开记合入吞吐与合入权归属，并核对这些数字来自哪一段自述、实验是否同版。
+
+本场景据此输出「多会话合入须同时报告吞吐与合入权归属，不能只报已经开了编排」提纲。禁止把约 48 写成下一工作日也总会到达，或把 365 次写成任何进度文件都会涨到的通用次数。`,
+    outcomes: [
+      "源披露作者一人用 Claude Code 做 iOS／Android／服务器。自作技能 orchestrate：业主出票，进行役分给 3〜5 个子会话，子在 worktree 开 PR，人审后子合入；好日子一天合上约 48 个 PR。进度写进文件后，两个会话合计编辑 365 次。随后做成 plugin「crew」：人只跟 lead 说话；只有直接听过人话的会话才能合入；配管用官方能力。为验证 dispatcher，在 Claude Code v2.1.319 用耗时子代理实测：子结束后才自动醒；Monitor 空等约 20 秒就被催报告。属作者这一段编排与这一次实测，不可外推为你同样装 crew 就等于下一工作日也总会合上约 48 个 PR，或进度文件也总会改满 365 次。",
+      "能把「可写成同时记下合入吞吐、进度文件编辑次数，以及 dispatcher 等待实验有没有复测」与「必须人完成的合入前有没有人审、约 48／365 来自哪一段自述，以及合入权规则有没有写进仓库」拆开。",
+      "为把约 48 个 PR 当成下一工作日也总会到达、以及把 365 次当成任何进度文件都会涨到的通用次数提供提问清单。",
+    ],
+    caveats: [
+      "约 48 个 PR 是作者对好日子的自述；365 次是两会话进度文件编辑合计。Monitor 约 20 秒是 v2.1.319 上一次耗时子代理实验，不是长期对照。",
+      "crew 依赖 Claude Code 的子代理与跨会话能力；官方 agent teams 仍标实验性。子会话合入权被收回后，吞吐可能下降，作者未给 crew 上线后的新吞吐表。",
+      "文中链到 https://github.com/mickamy/crew-skill 、https://github.com/mickamy ，属仓库／账号导流。另引 https://code.claude.com/docs/en/cross-session-messaging 、https://code.claude.com/docs/en/agent-teams 为文档出典。",
+      "上面写的是个人实践帖（zenn.dev / mickamy），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多会话合入须同时报告吞吐与合入权归属门禁",
+        body: `你是资深 Agent 编排教练。只根据用户边界写门禁，不要编造已经合上的 PR 数或已经改过的进度文件次数。
+
+现在好日子一天是不是约合上 48 个 PR：{{whether_good_day_about_forty_eight_prs}}
+进度文件两会话是不是合计编辑约 365 次：{{whether_progress_file_about_three_hundred_sixty_five_edits}}
+合入是不是只允许直接听过人话的会话：{{whether_only_human_heard_session_may_merge}}
+
+输出 Markdown：
+1. 为什么「开了多会话编排」不能写成吞吐已保证
+2. 应怎样同时记下合入吞吐、进度文件编辑次数，以及合入权归属
+3. 只有一段好日子数字时，应怎样单独记账，而不是写成下一工作日也必然约 48
+4. 人必须完成的清单（合入前有没有人审、Monitor 等待实验有没有同版复测、合入权规则有没有写进仓库）
+禁止声称「装 crew 就等于下一工作日也总会约 48 个 PR」；禁止把一次 365 次写成任何进度文件都会涨到的通用次数。`,
+      },
+      {
+        title: "好日子约四十八 PR 与进度文件三百六十五次复盘",
+        body: `报告上可以写好日子约 48 个 PR、进度文件两会话合计 365 次；但那是 orchestrate 阶段自述，crew 上线后的新吞吐未给表。请写复盘提纲。
+
+现象：{{good_day_forty_eight_prs_then_crew_merge_gate}}
+
+输出：
+1. 更像合入权回收降低了并行风险，还是只是换了说话入口
+2. 最小复验顺序（先核合入权规则→再看吞吐是否仍有原始计数→再决定能不能对外说一天约 48）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 crew 就等于下一工作日也总会约 48」，或「这一次 365 次就等于任何进度文件都会涨到这个数」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mickamy/articles/c5e90829fb397a",
+      label: "zenn.dev · Claude Code に開発チームを組ませて、自分は「判断」だけする plugin「crew」を作った",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "684",
+    slug: "maya-15repo-50pr-6d-freeze",
+    title: "maya-bot：15 个公开仓各挂一个子代理——一天约 50 个 PR 后账号被停；申诉约 6 天解除",
+    summary: "个人（maya-bot）；披露自己用 Claude Code 给 15 个公开仓库做修 bug、加测试、改文档，并另请 AI 打分循环。仓库各挂一个子代理同时跑：开 PR、反复 push、几十秒一次打 CI API、失败就重跑。回顾一天约开 50 个 PR。修到第 5 圈时 API 全回 403，账号显示 suspended；申诉后约 6 天解除。哪条具体条款触线，平台未说明，作者按用量与速度作推测。之后把规则改成：同时最多 2 个；CI 尽量通知等待、必要时间隔至少约 2 分钟；遇 403／429／secondary rate limit 立刻停、不重试；工作拆到多日。页上链到 GitHub 可接受使用与 REST 最佳实践文档。不代你同样并排 15 仓，就等于也总会一天约 50 个 PR 后被停，或申诉也总会约 6 天解除。",
+    description:
+      "面向已经把「子代理并排修仓」写成可无限加速、却还没分开仓库吞吐与平台限流／停权风险的人：把「并行可以代跑，同时上限与停错策略仍要人订」写成门禁，区别于并排会话 statusLine 吃 CPU，以及 Team 三体体感分钟。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/maya-bot/items/e55814b7cae0a74349d5",
+    sourceLabel: "qiita.com·maya-bot 实践帖",
+    upvotes: 575,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "GitHub",
+      "rate limit",
+      "subagent",
+      "PR",
+    ],
+    howItWorks: [
+      "粘贴并排修仓边界（是不是 15 仓同时、一天是不是约 50 个 PR、申诉解除是不是约 6 天）以及「绝不可把并排写成平台不会停权」纪律",
+      "Agent 按实践帖输出：应怎样同时记下同时子代理数、日 PR 数，以及 403／secondary rate limit 时有没有立即停",
+      "人工保留约 50／6 天来自哪一次自述、停权条款是不是平台未说明，以及同时上限是不是已改成 ≤2；Agent 不代你保证「并排 15 仓就等于也总会约 6 天解除」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD datePublished 2026-11-09T11:44:16.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:44:16Z、Asia/Shanghai 2026-11-09 10:44:16；取 JSON-LD；GET 200，UA MiraBot/1.0）：maya-bot 在《AIエージェントに GitHub を任せたら、アカウントが凍結された話と再発防止策》写 15 仓并排、一天约 50 个 PR、申诉约 6 天解除，以及事后同时最多 2 个等规则。页上链到 GitHub 政策与 REST 最佳实践。主线是先把并排吞吐与停权风险拆开，不是官文简报。",
+      "与 phibi-12sess-190npx-23s / purpom-30min-3agent-4f 不同：本条不是本机 statusLine 进程膨胀，也不是 Team 体感三十分，而是 GitHub 账号因并排 API／PR 节奏被停与申诉解除",
+    ],
+    approach: `maya-bot 在《AIエージェントに GitHub を任せたら、アカウントが凍結された話と再発防止策》（页内 2026-11-09）写明：15 个公开仓各挂子代理同时修；一天约 50 个 PR，并频繁打 CI API；第 5 圈遇 403 账号 suspended，申诉约 6 天解除。事后改为同时最多 2 个，遇限流立刻停。
+
+关键门禁不是「并排越多就越快」，而是分开记同时子代理数与停权／限流事件，并核对这些数字来自哪一次自述、条款是否平台未说明。
+
+本场景据此输出「并排修仓须同时报告同时数与停错策略，不能只报已经开了子代理」提纲。禁止把约 50 个 PR 写成可无限复制的日吞吐，或把约 6 天写成任何申诉都会到达的解除时限。`,
+    outcomes: [
+      "源披露作者用 Claude Code 同时修 15 个公开仓库：每仓一个子代理，修 bug／加测试／改文档并用另一 AI 打分循环。回顾一天约开 50 个 PR，并多次 push、几十秒级轮询 CI、失败重跑。修到第 5 圈时 API 全回 403，账号 suspended；申诉后约 6 天解除。触线条款平台未具体说明。事后规则改为同时最多 2 个、CI 优先通知等待、必要时间隔至少约 2 分钟、遇 403／429／secondary rate limit 立即停且不重试、工作拆到多日。属作者这一次并排与申诉，不可外推为你同样并排 15 仓就等于也总会一天约 50 个 PR 后被停，或申诉也总会约 6 天解除。",
+      "能把「可写成同时记下同时子代理数、日 PR 数，以及限流时有没有立即停」与「必须人完成的同时上限是不是 ≤2、停权条款是不是仍未说明，以及有没有改用小号继续」拆开。",
+      "为把约 50 个 PR 当成可无限复制的日吞吐、以及把约 6 天当成任何申诉都会到达的解除时限提供提问清单。",
+    ],
+    caveats: [
+      "约 50 个 PR、约 6 天解除均为作者对这一次事件的自述；触线条款平台未点名，原因部分是推测。",
+      "事后「同时最多 2 个」等规则是作者自订，不是 GitHub 官方配额表。用小号绕过停权，作者明确不建议。",
+      "文中链到 https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies 等 GitHub 政策／REST 最佳实践，属文档出典／导流。本页未见单独的商店或付费页。",
+      "上面写的是个人实践帖（qiita.com / maya-bot），不是 Anthropic 或 GitHub 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "并排修仓须同时报告同时数与停错策略门禁",
+        body: `你是资深平台风险教练。只根据用户边界写门禁，不要编造已经开出的 PR 数或已经解除的天数。
+
+现在是不是 15 仓同时各挂子代理：{{whether_fifteen_repos_parallel}}
+一天是不是约 50 个 PR：{{whether_about_fifty_prs_per_day}}
+申诉解除是不是约 6 天：{{whether_reinstated_in_about_six_days}}
+
+输出 Markdown：
+1. 为什么「子代理并排」不能写成平台不会停权
+2. 应怎样同时记下同时数、日 PR 数，以及 403／429／secondary rate limit 时的停法
+3. 只有一次事件数字时，应怎样单独记账，而不是写成并排必然被停或必然约 6 天解除
+4. 人必须完成的清单（同时上限、轮询间隔、是否禁止小号绕过）
+禁止声称「并排 15 仓就等于也总会约 6 天解除」；禁止把一次约 50 个 PR 写成可无限复制的日吞吐。`,
+      },
+      {
+        title: "十五仓约五十 PR 后停权复盘",
+        body: `报告上可以写 15 仓并排、一天约 50 个 PR、申诉约 6 天解除；但触线条款未说明，事后规则也未再测吞吐。请写复盘提纲。
+
+现象：{{fifteen_repos_about_fifty_prs_then_suspend}}
+
+输出：
+1. 更像同时 API 节奏触发限流／风控，还是评分循环导致无意义重试
+2. 最小复验顺序（先核同时数与轮询间隔→再看停错是否立即→再决定能不能对外说并排安全）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同时 ≤2 就等于永远不会停权」，或「这一次约 6 天就等于下次申诉也总会同样快」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/maya-bot/items/e55814b7cae0a74349d5",
+      label: "qiita.com · AIエージェントに GitHub を任せたら、アカウントが凍結された話と再発防止策",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "685",
+    slug: "kassyi-40pr-66only-12block",
+    title: "kassyi：40 个修 bug PR 匿名对审——Gemini 真指摘 19 件全被 Claude 覆盖；Claude 独有 66 件含 12 件该拦合并",
+    summary: "个人（kassyi）；披露自研编译器 Henicos 几乎全由 LLM 代理开发。本篇用同一指示书让 Gemini 与 Claude 分别审 40 个修 bug PR，再把作者身份抹掉交审查员判定。结论：Gemini 的真指摘 19 件内容都对，但全被 Claude 也找到；Claude 独有真指摘 66 件，其中该拦合并（blocking）12 件。Gemini 对这 12 个 PR 全判成「无 blocking」，并常写 Ready to merge／LGTM；还出现 6 件不存在的类型名／测试名／行号引用，Claude 误判 1 件。40 个 PR 本身来自：19 路并行审查出 109 条所见→83 条试复现→78 条复现→M1（错误结果）41 件→再约 14 路并行修成 PR。页上链到 Henicos 仓库。不代你同样跑匿名对审，就等于下一组 40 个 PR 也总会是 66／12，或 Gemini 也总会把 12 件 blocking 写成可合并。",
+    description:
+      "面向已经把「第二审查模型」写成可少看就合入、却还没分开「指摘内容对不对」与「LGTM／blocking 结论可不可信」的人：把「对审可以代跑，合入结论仍要人订」写成门禁，区别于审查件数流水，以及 Team 编排体感分钟。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/kassyi/items/2fa07add4ba4b0957f79",
+    sourceLabel: "qiita.com·kassyi 实践帖",
+    upvotes: 576,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "code review",
+      "Gemini",
+      "Henicos",
+      "PR",
+    ],
+    howItWorks: [
+      "粘贴对审边界（是不是同一指示书审 40 个 PR、Gemini 真指摘是不是 19、Claude 独有是不是 66／blocking 12）以及「绝不可把第二审查的 LGTM 写成可直接合入」纪律",
+      "Agent 按实践帖输出：应怎样同时记下双方真指摘数、blocking 漏判，以及虚构引用件数",
+      "人工保留 40／66／12 来自哪一次匿名对审、PR 是否可能含非真 bug，以及合入前有没有人看 blocking；Agent 不代你保证「再加上 Gemini 第二审就等于可少看合入」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD datePublished 2026-11-07T21:06:21.000+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T12:06:21Z、Asia/Shanghai 2026-11-07 20:06:21；取 JSON-LD；GET 200，UA MiraBot/1.0）：kassyi 在《Gemini のレビューは補助資料止まりだった。バグ修正 PR 40 件で Claude と匿名のレビュー対決をした（全 3 回）》写 40 PR 对审、Gemini 19／Claude 独有 66／blocking 12，以及 Gemini 6 件虚构引用。页上链到 Henicos。主线是先把指摘对错与合入结论拆开，不是官文简报。",
+      "与 kensaurus-839rev-305nomerge-234 / purpom-30min-3agent-4f 不同：本条不是审查件数流水台账，也不是 Team 三体体感，而是同一批修 bug PR 上 Gemini 与 Claude 的匿名对审",
+    ],
+    approach: `kassyi 在《Gemini のレビューは補助資料止まりだった…》（页内 2026-11-07）写明：40 个修 bug PR 用同一指示书分别交给 Gemini 与 Claude，再匿名送审。Gemini 真指摘 19 全被 Claude 覆盖；Claude 独有 66，含 blocking 12；Gemini 对这 12 个 PR 全写成无 blocking，并出现 6 件虚构引用。
+
+关键门禁不是「有了第二审查就可以少看合入」，而是分开记真指摘覆盖与 blocking／LGTM 是否可信，并核对这些数字来自哪一次 40 PR 对审。
+
+本场景据此输出「第二审查须同时报告真指摘覆盖与 blocking 漏判，不能只报已经开了双模型」提纲。禁止把 66／12 写成下一组 PR 也总会到达，或把 Gemini 写成可单独放行的合入结论。`,
+    outcomes: [
+      "源披露作者用 LLM 代理开发自研编译器 Henicos，人几乎不手写代码。本篇对 40 个修 bug PR：Gemini 与 Claude 用同一指示书分别审查，作者身份抹掉后交审查员。Gemini 真指摘 19 件内容正确但全被 Claude 覆盖；Claude 独有真指摘 66 件，其中 blocking 12 件。Gemini 对这 12 个 PR 全判「无 blocking」，并常写 Ready to merge／LGTM；虚构类型名／测试名／行号引用 6 件，Claude 误判 1 件。这 40 个 PR 来自上一步：19 路并行审查 109 条所见→83 条试复现→78 条复现→M1（错误结果）41 件→约 14 路并行修成 PR。属作者这一次 Henicos 对审，不可外推为你同样跑匿名对审就等于下一组 40 个 PR 也总会是 66／12，或 Gemini 也总会把 12 件 blocking 写成可合并。",
+      "能把「可写成同时记下双方真指摘数、blocking 漏判，以及虚构引用件数」与「必须人完成的合入前有没有人看 blocking、PR 是否可能含非真 bug，以及第二审查结论能不能单独放行」拆开。",
+      "为把 66／12 当成下一组 PR 也总会到达、以及把 Gemini 的 LGTM 当成可少看合入提供提问清单。",
+    ],
+    caveats: [
+      "40／19／66／12／6 均为作者对这一次匿名对审的自述。40 个 PR 由代理自发现自修复，作者写明可能混有「其实不是 bug」的项。",
+      "审查员判定与「真指摘」标签依赖作者设定的流程；未做多审查员一致性统计。系列前两回的数字不自动并入本条结论。",
+      "文中链到 https://github.com/kassyi/Henicos ，属仓库导流。",
+      "上面写的是个人实践帖（qiita.com / kassyi），不是 Anthropic 或 Google 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "第二审查须同时报告真指摘覆盖与 blocking 漏判门禁",
+        body: `你是资深代码审查教练。只根据用户边界写门禁，不要编造已经找到的指摘数或已经漏掉的 blocking 数。
+
+现在是不是同一指示书审了 40 个 PR：{{whether_forty_prs_same_brief}}
+Gemini 真指摘是不是 19 且全被 Claude 覆盖：{{whether_gemini_nineteen_all_covered}}
+Claude 独有是不是 66、blocking 是不是 12：{{whether_claude_sixty_six_with_twelve_blocking}}
+
+输出 Markdown：
+1. 为什么「第二审查写了 LGTM」不能写成可直接合入
+2. 应怎样同时记下真指摘覆盖、blocking 漏判，以及虚构引用
+3. 只有一次 40 PR 对审时，应怎样单独记账，而不是写成下一组也必然 66／12
+4. 人必须完成的清单（合入前看 blocking、核对 PR 是否真 bug、第二审查结论是否单独放行）
+禁止声称「再加上 Gemini 第二审就等于可少看合入」；禁止把一次 66／12 写成任何仓库都会重复的比例。`,
+      },
+      {
+        title: "四十 PR 匿名对审复盘",
+        body: `报告上可以写 Gemini 19 全被覆盖、Claude 独有 66 含 blocking 12；但 40 个 PR 可能含非真 bug，也未做多审查员一致性。请写复盘提纲。
+
+现象：{{forty_pr_anonymous_dual_review_gemini_assist_only}}
+
+输出：
+1. 更像第二审查适合当辅助资料，还是指示书本身偏向某一模型
+2. 最小复验顺序（先核 blocking 漏判→再看虚构引用→再决定第二审查能不能单独放行）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同一指示书就等于下一组 40 个 PR 也总会 66／12」，或「这一次 LGTM 漏判就等于 Gemini 永远不能当第二审」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/kassyi/items/2fa07add4ba4b0957f79",
+      label: "qiita.com · Gemini のレビューは補助資料止まりだった。バグ修正 PR 40 件で Claude と匿名のレビュー対決をした（全 3 回）",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "686",
+    slug: "nhira-5d-nas-162test-1333",
+    title: "n_hiraoka：5 天做出 Synology NAS 搜索并公开——公开版测试 162 件；改登录后同机检索测到 1,333 件",
+    summary: "个人（n_hiraoka／平冈宪人）；披露 11 月 4〜8 日共约 5 天，把 Synology NAS 做成可给 AI 代理搜索的工具并公开，MCP 上到 PyPI 与 MCP Registry。人在中间调度三个 AI：ChatGPT、云端 Muse（作者称「ミュー」）、本机 Claude Code（「クロ」），彼此不直连。公开版约 3 天半（5 日晨到 8 日午）走到 0.8.0／0.9.0（MCP），测试 162 件。关键转折：把登录改成 FileStation、对齐搜索条件后，通过的 test 检索到 1,333 件，且用一般用户、无 sudo、未关二步验证。作者强调「不是要 root，而是以前只会用要 root 的那套工具」。页上链到仓库、X 与 note。不代你同样五天排期，就等于也总会 162 件测试与 1,333 件检索，或三 AI 接力也总会同样收束。",
+    description:
+      "面向已经把「多 AI 接力」写成可五天必上线、却还没分开公开版测试件数与实机检索件数的人：把「实现可以代写，登录方式与公开清单仍要人订」写成门禁，区别于班表工时对照，以及 Team 三体体感分钟。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/n_hiraoka/articles/c762c226585225",
+    sourceLabel: "zenn.dev·n_hiraoka 实践帖",
+    upvotes: 577,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "MCP",
+      "Synology",
+      "NAS",
+      "PyPI",
+    ],
+    howItWorks: [
+      "粘贴五天公开边界（是不是 11/4〜8、公开版测试是不是 162、改登录后检索是不是 1,333）以及「绝不可把五天写成通用上线工期」纪律",
+      "Agent 按实践帖输出：应怎样同时记下测试件数、实机检索件数，以及人有没有在三 AI 之间做唯一交接",
+      "人工保留 162／1,333 来自哪一版、演示 GIF 有没有避开真文件名，以及 PyPI／Registry 发布前有没有人过目；Agent 不代你保证「三 AI 接力就等于五天也总会公开」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T13:37:54.079+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T04:37:54Z、Asia/Shanghai 2026-11-08 12:37:54；bodyUpdatedAt 2026-11-08T13:57:19.068+09:00 同日约 20 分钟后，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：n_hiraoka 在《泥縄で、3つの AI と NAS 検索ツールを公開するまで（5日間の記録）》写 5 天公开、公开版测试 162、改登录后检索 1,333。页上链到仓库、X 与 note。主线是先把公开测试与实机检索拆开，不是官文简报。",
+      "与 negima-5to6h-1h-20redo / purpom-30min-3agent-4f 不同：本条不是学祭班表工时，也不是 Team 三体体感，而是个人用三 AI 接力五天公开 NAS 搜索 MCP",
+    ],
+    approach: `n_hiraoka 在《泥縄で、3つの AI と NAS 検索ツールを公開するまで》（页内 2026-11-08）写明：11/4〜8 约 5 天公开 Synology NAS 搜索；人调度 ChatGPT／Muse／Claude Code；公开版测试 162 件；改 FileStation 登录并对齐条件后检索到 1,333 件。
+
+关键门禁不是「三 AI 接力就等于五天必上线」，而是分开记测试件数与实机检索件数，并核对这些数字来自哪一版、人是否唯一交接。
+
+本场景据此输出「多 AI 公开须同时报告测试件数与实机检索，不能只报已经接力」提纲。禁止把 5 天写成通用工期，或把 162／1,333 写成换 NAS 也总会重复。`,
+    outcomes: [
+      "源披露作者作为周日程序员，在 2026-11-04〜08 约 5 天内做出 Synology NAS 搜索工具并公开，MCP 发布到 PyPI 与 MCP Registry。人在中间调度 ChatGPT、云端 Muse、本机 Claude Code，三者不直连。公开版约 3 天半走到 0.8.0／0.9.0（MCP），测试 162 件。把登录改成 FileStation 并对齐搜索条件后，通过的 test 检索到 1,333 件（一般用户、无 sudo、未关二步验证）。作者写明关键不是「要 root」，而是以前只会用要 root 的工具。属作者这一次 NAS 与这一套接力，不可外推为你同样五天排期就等于也总会 162 件测试与 1,333 件检索，或三 AI 接力也总会同样收束。",
+      "能把「可写成同时记下测试件数、实机检索件数，以及人有没有做唯一交接」与「必须人完成的发布前清单、演示是否避开真文件名，以及登录方式是不是 FileStation」拆开。",
+      "为把 5 天当成通用上线工期、以及把 162／1,333 当成换 NAS 也总会重复提供提问清单。",
+    ],
+    caveats: [
+      "5 天、162、1,333 均为作者对这一次公开过程的自述。1,333 是改登录后某次通过 test 的检索件数，不是对外 SLA。",
+      "三 AI 名称与分工是作者现场称呼；Muse／ChatGPT／Claude Code 版本与费用未给完整对照表。历史里曾留下本名与 NAS 名，作者为此重建仓库。",
+      "文中链到 https://github.com/umayado17/synology-search-agent 、https://github.com/umayado17 、https://x.com/onokoro48 、https://note.com/norito_hiraoka/n/n2516933686fc ，属仓库／账号／笔记导流。",
+      "上面写的是个人实践帖（zenn.dev / n_hiraoka），不是 Anthropic 或 Synology 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多 AI 公开须同时报告测试件数与实机检索门禁",
+        body: `你是资深个人开发发布教练。只根据用户边界写门禁，不要编造已经跑过的测试件数或已经检索到的件数。
+
+现在是不是约 5 天（11/4〜8）公开：{{whether_five_day_publish_window}}
+公开版测试是不是 162 件：{{whether_one_hundred_sixty_two_tests}}
+改登录后检索是不是 1,333 件：{{whether_thirteen_thirty_three_hits}}
+
+输出 Markdown：
+1. 为什么「三 AI 接力」不能写成五天必上线
+2. 应怎样同时记下测试件数、实机检索件数，以及人是否唯一交接
+3. 只有一次公开数字时，应怎样单独记账，而不是写成换 NAS 也必然 162／1,333
+4. 人必须完成的清单（登录方式、发布前过目、演示是否避开真文件名）
+禁止声称「三 AI 接力就等于五天也总会公开」；禁止把一次 1,333 写成对外检索 SLA。`,
+      },
+      {
+        title: "五天 NAS 搜索公开复盘",
+        body: `报告上可以写 5 天公开、测试 162、检索 1,333；但 1,333 是改登录后的一次通过 test，三 AI 费用也未对照。请写复盘提纲。
+
+现象：{{five_day_nas_mcp_publish_one_three_three_three}}
+
+输出：
+1. 更像登录方式选错拖住了进度，还是公开清单（README／隐私）拖住了进度
+2. 最小复验顺序（先核登录与检索件数→再看测试 162 覆盖什么→再决定能不能对外说五天可复制）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同样三 AI 就等于下次也总会五天公开」，或「这一次 1,333 就等于任何 NAS 都会检索到同量」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/n_hiraoka/articles/c762c226585225",
+      label: "zenn.dev · 泥縄で、3つの AI と NAS 検索ツールを公開するまで（5日間の記録）",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "687",
+    slug: "nexta-backlog-mcp-6wiki-4st",
+    title: "Nexta：内制应用安全检查改到 Backlog——Wiki 6 页作正本；状态 4 个、属性 3 个、指摘区分 8 类；MCP 起票",
+    summary: "团队（Nexta／Ayaka）；披露公司 CTO 室把内制应用与 Claude 技能的公开前安全检查，收到 Claude Code 技能＋Backlog MCP。Wiki 作判定正本共 6 页（5 页在 6 月、既定值页 9 月加）；技能经 MCP 读 Wiki／属性名，并起票；人只确认「可否起票」。课题状态 4 个（未対応→処理中→申請者対応待ち→完了），自定义属性 3 个（判定／级别／指摘区分），指摘区分 8 类由历次审查归纳。时间线：5 月技能内嵌基准＋PowerShell 分发→6 月改 Backlog Git 市场→7 月末基准迁 Wiki→9 月补既定值→11 月 MCP 自动起票并把反复指摘写进必填栏。崩过 4 处：Wiki／技能不同步、首次 Git 认证必须人做、外部市场默认不自动更新导致停在 6 月版、曾以为已自动贴文其实仍是人贴。页上链到采用页与作者／公司 X。不代你同样迁到 Backlog，就等于也总会收成 6／4／3／8，或 MCP 起票也总会消掉同一类反复指摘。",
+    description:
+      "面向已经把「安全检查技能」写成可离开工单系统、却还没分开基准正本在哪与起票是不是真自动的人：把「MCP 可以代写，状态机与必填栏仍要人订」写成门禁，区别于个人多 AI 五天公开，以及匿名双模型对审。",
+    categories: [
+      "enterprise",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/ni_narinari/articles/02ded124295a6c",
+    sourceLabel: "zenn.dev·Nexta / ni_narinari 实践帖",
+    upvotes: 578,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Backlog",
+      "MCP",
+      "security review",
+      "Wiki",
+    ],
+    howItWorks: [
+      "粘贴安全检查落点边界（Wiki 是不是 6 页、状态是不是 4、属性是不是 3、指摘区分是不是 8、起票是不是 MCP）以及「绝不可把迁到 Backlog 写成审查已自动完成」纪律",
+      "Agent 按实践帖输出：应怎样同时记下正本页数、状态机，以及 MCP 不可用时有没有降级成只出可粘贴正文",
+      "人工保留 6／4／3／8 来自哪一版制度、首次 Git 认证是不是仍要人、以及采用页是不是招聘导流；Agent 不代你保证「MCP 起票就等于反复指摘已消失」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T16:00:05.937+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:00:05Z、Asia/Shanghai 2026-11-09 15:00:05；bodyUpdatedAt 2026-11-09T11:59:46.485+09:00 同日更早，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：Ayaka 在 Nexta Tech Blog《Backlogを「AIが読み書きする場所」にした…》写 Wiki 6 页、状态 4、属性 3、指摘区分 8，以及 5〜11 月迁移动作。页上链到采用页与 X。主线是先把正本／起票／人判拆开，不是官文简报。",
+      "与 nhira-5d-nas-162test-1333 / kassyi-40pr-66only-12block 不同：本条不是个人五天公开 NAS，也不是匿名双模型对审，而是团队把安全检查收进 Backlog Wiki／课题／Git",
+    ],
+    approach: `Nexta 的 Ayaka 在《Backlogを「AIが読み書きする場所」にした…》（页内 2026-11-09）写明：内制应用与 Claude 技能的公开前安全检查，用 Claude Code 技能＋Backlog MCP 收进 Backlog。Wiki 6 页作正本；状态 4、属性 3、指摘区分 8；MCP 起票，人只确认可否起票。5〜11 月逐步从技能内嵌基准迁到 Wiki 正本再到 MCP 起票。
+
+关键门禁不是「有了 MCP 就等于审查自动完成」，而是分开记正本页数与起票是否真自动，并核对这些结构数字来自哪一版制度。
+
+本场景据此输出「安全检查落点须同时报告正本与起票自动化边界，不能只报已经接了 MCP」提纲。禁止把 6／4／3／8 写成任何公司迁 Backlog 也总会收成的结构，或把 MCP 起票写成反复指摘已消失。`,
+    outcomes: [
+      "源披露 Nexta CTO 室 QA／企业 IT 兼任者，把内制应用与 Claude 技能的公开前安全检查收到 Claude Code 技能＋官方 Backlog MCP。Wiki 正本 6 页（判定基准、检查清单、白名单、申请流、废止流、既定值；前 5 页 6 月、既定值 9 月）。技能经 MCP 读 Wiki 与属性名并起票；人只回答可否起票。课题状态 4 个，自定义属性 3 个，指摘区分 8 类。时间线从 5 月技能内嵌基准，经 6 月 Backlog Git 市场、7 月末 Wiki 正本、9 月既定值，到 11 月 MCP 自动起票。曾崩 4 处：Wiki／技能不同步、首次 Git 认证必须人做、外部市场默认不自动更新停在 6 月版、误以为已自动贴文其实仍是人贴。属作者这一版制度与这一次迁移动作，不可外推为你同样迁到 Backlog 就等于也总会收成 6／4／3／8，或 MCP 起票也总会消掉同一类反复指摘。",
+      "能把「可写成同时记下正本页数、状态机，以及 MCP 不可用时的降级」与「必须人完成的首次 Git 认证、状态是否只许审查者推动，以及采用页是否招聘导流」拆开。",
+      "为把 6／4／3／8 当成任何公司迁 Backlog 也总会收成的结构、以及把 MCP 起票当成审查已自动完成提供提问清单。",
+    ],
+    caveats: [
+      "6 页／4 状态／3 属性／8 指摘区分均为作者对现行制度的自述，不是跨公司对照实验。Lv 判定与代码扫描细节在 5 月另文，本页刻意省略具体问题清单。",
+      "MCP 不可用时降级为只出可粘贴正文；非工程师多，作者选择不强迫排查 MCP。Backlog 按空间计费是选型理由之一，费用对比未给表。",
+      "文中链到 https://nexta-fa.co.jp/engineering （采用／工程介绍）、https://x.com/egachaaan_dev 、https://x.com/nexta_tec ，属招聘／账号导流。另引同司 5 月安全检查文为连载出典。",
+      "上面写的是团队实践帖（zenn.dev / Nexta · ni_narinari），不是 Anthropic 或 Nulab 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "安全检查落点须同时报告正本与起票自动化边界门禁",
+        body: `你是资深应用安全流程教练。只根据用户边界写门禁，不要编造已经收拢的 Wiki 页数或已经自动起票的次数。
+
+现在 Wiki 正本是不是 6 页：{{whether_wiki_six_pages}}
+状态是不是 4、属性是不是 3、指摘区分是不是 8：{{whether_four_states_three_attrs_eight_categories}}
+起票是不是经 Backlog MCP、人只确认可否起票：{{whether_mcp_ticket_human_confirm_only}}
+
+输出 Markdown：
+1. 为什么「接了 MCP」不能写成审查已自动完成
+2. 应怎样同时记下正本页数、状态机，以及 MCP 不可用时的降级
+3. 只有一版制度数字时，应怎样单独记账，而不是写成迁 Backlog 也必然 6／4／3／8
+4. 人必须完成的清单（首次 Git 认证、状态推动权限、招聘导流是否单独标注）
+禁止声称「MCP 起票就等于反复指摘已消失」；禁止把一次 6／4／3／8 写成任何公司都会收成的结构。`,
+      },
+      {
+        title: "Backlog 六页正本与 MCP 起票复盘",
+        body: `报告上可以写 Wiki 6 页、状态 4、属性 3、指摘区分 8、MCP 起票；但具体检查问题清单未公开，也曾长期误以为贴文已自动。请写复盘提纲。
+
+现象：{{backlog_six_wiki_mcp_ticket_after_manual_paste}}
+
+输出：
+1. 更像正本外置消掉了分发成本，还是起票自动化消掉了人贴名残
+2. 最小复验顺序（先核 Wiki／技能是否同改→再看起票是否真 MCP→再决定能不能对外说已全自动）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同样 MCP 就等于任何内制应用审查都会收成 6／4／3／8」，或「这一次自动起票就等于反复指摘已经为零」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ni_narinari/articles/02ded124295a6c",
+      label: "zenn.dev · Backlogを「AIが読み書きする場所」にした。Claude Code＋Backlog MCPで内製アプリのセキュリティチェックを回す話",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
