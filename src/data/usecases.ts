@@ -48989,6 +48989,455 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
       dateLabel: "发布",
     },
   },
+  {
+    id: "693",
+    slug: "moimoi-opus55-30h-260tool",
+    title: "moimoi：同岛同性格只换 Opus 5.5 再玩 30 小时——自作脚本 0→260；尖塔约 18 分登顶（上次 5 小时 27 分）",
+    summary: "个人（moimoi）；披露用 clawblox／Mesa Island，性格文件不变，只把模型从 Opus 4.6 换成 Opus 5.5（effort high）再跑 30 小时自由玩耍（每小时重置岛与对话，记忆只靠工作区文件）。自作脚本从上次 0 本增到 260 本，约 30 分钟就开始写移动／搬运工具；尖塔初登顶约 18 分钟（上次 5 小时 27 分）。拾得预言 296 件：工具输出命中约 85%、当场计算约 54%、凭感觉约 38%。14 小时目有 12 块石 30 秒扔 112 次、76 行 Python 杂耍。页上链到 clawblox、machineplaying.org、前作与 Anthropic 政策；Forbes 链本机现 403。不代你同样只换模型再玩 30 小时，就等于下一岛也会 0→260，或尖塔也总会约 18 分登顶。",
+    description:
+      "面向已经把「换更强模型」写成玩法必升级、却还没分开单次 30 小时观察与可复现对照的人：把「模型差要同时记工具数与预言命中，不能只写更聪明」写成门禁，区别于行上笔记审改、以及多仓并行 PR。",
+    categories: [
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/moimoi/articles/claudecode-agents-island-opus55",
+    sourceLabel: "zenn.dev·moimoi 实践帖",
+    upvotes: 584,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Opus 5.5",
+      "multi-agent",
+      "clawblox",
+      "play",
+    ],
+    howItWorks: [
+      "粘贴同岛换模边界（是不是约 30 小时、自作脚本是不是 0→260、尖塔是不是约 18 分对 5 小时 27 分）以及「绝不可把单次观察写成模型升级已证明」纪律",
+      "Agent 按实践帖输出：应怎样同时记下工具数、预言命中分层，以及评价是否含辅助 Agent",
+      "人工保留 260／296／85% 来自哪一次 30 小时、Claude Code 版是否 2.1.316→2.1.319；Agent 不代你保证「换 Opus 5.5 就等于下一岛也总会 0→260」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T11:09:39.910+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:09:39Z、Asia/Shanghai 2026-11-09 10:09:39；bodyUpdatedAt 2026-11-08T22:56:33.119+09:00 早于发布日，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：moimoi 在《はじめましても、またねも…》写同岛换 Opus 5.5 再 30 小时、脚本 0→260、尖塔约 18 分。页上链到 clawblox／machineplaying／前作；Forbes 本机现 403。主线是先把换模与单次观察拆开，不是官文简报。",
+      "与 zundamon-3note-2ok-7test / mizoko-3pass-20then5-40fix 不同：本条不是差分笔记或资料三轮审查，而是双 Agent 在 3D 岛上自由玩耍的换模对照",
+    ],
+    approach: `moimoi 在《はじめましても、またねも、どっちもうれしい ― Claude Opus 5.5 の2体を3Dの島で30時間遊ばせた》（页内 2026-11-09）写明：同岛、同性格、只换 Opus 5.5 再玩 30 小时；自作脚本 0→260；尖塔约 18 分登顶（上次 5 小时 27 分）；预言 296 件分层命中约 85%／54%／38%。
+
+关键门禁不是「更强模型就等于玩法必升级」，而是分开记工具数与单次观察，并核对这些数字来自哪一次 30 小时。
+
+本场景据此输出「换模对照须同时报告工具数与预言分层，不能只报更聪明」提纲。禁止把 0→260 写成下一岛也总会到达，或把约 18 分登顶写成任何设定都会复现的通用成绩。`,
+    outcomes: [
+      "源披露作者用 clawblox／Mesa Island，性格文件（Sora／Kiko）不变，只把模型从 Opus 4.6 换成 Opus 5.5（effort high）再跑 30 小时（每小时重置岛与对话，记忆只靠工作区文件；Claude Code 2.1.316→2.1.319）。自作脚本从上次 0 本增到 260 本，约 30 分钟起开始写移动／搬运工具；尖塔初登顶约 18 分钟（上次 5 小时 27 分）。拾得预言 296 件：工具输出约 85%、当场计算约 54%、凭感觉约 38%（难度分层与辅助 Agent 评价带主观）。14 小时目录像：12 块石 30 秒扔 112 次；杂耍由 76 行 Python 驱动。作者写两种模型都只跑 1 次，差含偶然。属作者这两次 30 小时观察，不可外推为你同样只换模型再玩 30 小时就等于下一岛也会 0→260，或尖塔也总会约 18 分登顶。",
+      "能把「可写成同时记下工具数、预言分层命中，以及评价是否含辅助 Agent」与「必须人完成的是否接受单次偶然、版差异有没有单独记账，以及产品／论文链是否导流」拆开。",
+      "为把 0→260 当成下一岛也总会到达的升级曲线、以及把约 18 分登顶当成任何设定都会复现的通用成绩提供提问清单。",
+    ],
+    caveats: [
+      "0→260／约 18 分／296／85% 均为作者两次各 30 小时自述；每种模型只 1 次，评价部分由辅助 Claude 做。难度分层主观。",
+      "文中链到 https://machineplaying.org 、https://zenn.dev/moimoi/articles/claudecode-agents-play-3d-island 、https://www.anthropic.com/legal/aup 、https://www.anthropic.com/research/end-subset-conversations ，属论文站／前作／政策导流。源文所链 https://github.com/nacloos/clawblox 本机复检偶发 HTTP 504，已不列入可达导流。https://forbesjapan.com/articles/detail/106484 本机 GET 现 HTTP 403，已不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / moimoi），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "换模对照须同时报告工具数与预言分层门禁",
+        body: `你是资深多 Agent 玩耍实验教练。只根据用户边界写门禁，不要编造已经数到的脚本数或登顶时间。
+
+现在是不是约 30 小时同岛对照：{{whether_about_thirty_hour_same_island}}
+自作脚本是不是约 0→260：{{whether_scripts_zero_to_two_sixty}}
+尖塔是不是约 18 分对上次约 5 小时 27 分：{{whether_spire_about_eighteen_vs_five_h_twenty_seven}}
+
+输出 Markdown：
+1. 为什么「换更强模型」不能写成玩法已升级证明
+2. 应怎样同时记下工具数、预言分层命中，以及评价是否含辅助 Agent
+3. 只有两次各一次跑时，应怎样单独记账，而不是写成下一岛也必然 0→260
+4. 人必须完成的清单（是否接受单次偶然、版差异、导流链）
+禁止声称「换 Opus 5.5 就等于下一岛也总会 0→260」；禁止把约 18 分写成任何设定都会复现的通用成绩。`,
+      },
+      {
+        title: "二百六十脚本与二百九十六预言复盘",
+        body: `报告上可以写脚本 0→260、预言 296 件命中约 85%／54%／38%；但每种模型只跑 1 次，评价还含辅助 Agent。请写复盘提纲。
+
+现象：{{two_sixty_scripts_two_ninety_six_forecasts}}
+
+输出：
+1. 更像模型更爱写工具，还是论文底座／版差异主导
+2. 最小复验顺序（先核工具清单→再抽样预言→再决定能不能对外说换模必出工具潮）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Opus 5.5 就等于下一岛也总会 0→260」，或「这一次约 18 分就等于任何设定都会复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/moimoi/articles/claudecode-agents-island-opus55",
+      label: "zenn.dev · はじめましても、またねも、どっちもうれしい ― Claude Opus 5.5 の2体を3Dの島で30時間遊ばせた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "694",
+    slug: "hilopon-35digit-25far-8diff",
+    title: "hilopon：家用 PC 上 qwen3-vl:4b 读照片——多条件数字 35/35；纸太小 25/35；「没有停车场」被读成「有」",
+    summary: "个人（hilopon）；披露用 Ollama 的 qwen3-vl:4b-instruct（约 3.3GB）在家用游戏 PC 上读 LINE 照片，约 6 秒/张。对 5 类虚构文书做坏拍照：清楚／倾斜／暗影压缩／模糊／缩到宽 200px／竖排等多条件数字栏多为 35/35；纸只占画面约一成时数字 25/35、整页一字不差 0/5。竖排「停车场はありません」被读成「あります」，且 unsure 为空。要求自报没把握：12 件读错里印记 0 件。改成两次不同写法对照：25 张里首轮 11 件错中揪出 8 件，首轮对的 14 件误报 0；漏 3 件是同错。时间约 6 秒→12〜13 秒。页上链到同作者 Zenn 本（第 7 章写照片）。不代你同样换小 VLM，就等于下一组照片也总会 35/35，或两次对照也总会揪出 8/11。",
+    description:
+      "面向已经把「本地小模型能 OCR」写成可默认信、却还没分开数字全对与语义反转的人：把「自报没把握不能当门禁，要用两次答案互核」写成门禁，区别于安全扫描基准，以及会话检索。",
+    categories: [
+      "life",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "deepseek",
+      "claude",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/hilopon/articles/local-vlm-ocr-confident-misread",
+    sourceLabel: "zenn.dev·hilopon 实践帖",
+    upvotes: 585,
+    trending: false,
+    tags: [
+      "Ollama",
+      "qwen3-vl",
+      "OCR",
+      "LINE",
+      "local LLM",
+    ],
+    howItWorks: [
+      "粘贴本地 VLM 读图边界（数字是不是多条件 35/35、纸太小是不是 25/35、两次对照是不是揪出约 8/11）以及「绝不可把数字全对写成语义已可靠」纪律",
+      "Agent 按实践帖输出：应怎样同时记下数字对错、语义反转，以及自报没把握是否失效",
+      "人工保留 35／25／8／11 来自哪一批虚构文书、有没有手写样本；Agent 不代你保证「两次对照就等于下一组照片也总会揪出 8/11」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T06:30:44.528+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T21:30:44Z、Asia/Shanghai 2026-11-09 05:30:44；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：hilopon 在《「駐車場はありません」が「あります」で返ってきた…》写 35/35、25/35、两次对照 8/11。页上链到同作者 Zenn 本。主线是先把数字全对与语义反转拆开，不是官文简报。",
+      "与 datarobot-gap-41-to-31-cve0 / hotskills-849repo-78pct-net 不同：本条不是生产就绪度扫描或技能仓排名，而是家用本地小 VLM 读照片的失败形态与两次互核",
+    ],
+    approach: `hilopon 在《「駐車場はありません」が「あります」で返ってきた。小さなローカルLLMの写真読み取りを試す》（页内 2026-11-09）写明：qwen3-vl:4b 多条件数字多为 35/35；纸太小 25/35；竖排语义反转且自报失效；两次不同写法对照在 25 张里揪出首轮 11 错中的 8 件。
+
+关键门禁不是「数字全对就等于可默认信」，而是分开记数字与语义，并核对这些比例来自哪一批虚构文书。
+
+本场景据此输出「本地 OCR 须同时报告数字对错与两次互核，不能只报 35/35」提纲。禁止把 35/35 写成下一组照片也总会到达，或把 8/11 写成任何样本都会揪出的通用检出率。`,
+    outcomes: [
+      "源披露作者用 Ollama 的 qwen3-vl:4b-instruct（约 3.3GB，temperature 0）在家用游戏 PC 读 LINE 照片，约 6 秒/张。对电脑生成的 5 类虚构文书做坏拍照：清楚／倾 10°／暗影压缩／模糊／宽 200px／竖排等条件下，数字栏多为 35/35；纸约占画面一成时数字 25/35、整页一字不差 0/5。竖排「駐車場はありません」被读成「あります」，unsure 为空。要求自报没把握：12 件读错里印记 0 件；先选自报档位则几乎全标「ほぼ読めない」。改成「全文」与「逐行数组」两次对照：25 张里首轮 11 错揪出 8，首轮对的 14 误报 0；漏 3 件为两轮同错。耗时约 6→12〜13 秒。属作者这一批虚构文书与这一次模型，不可外推为你同样换小 VLM 就等于下一组照片也总会 35/35，或两次对照也总会揪出 8/11。",
+      "能把「可写成同时记下数字对错、语义反转，以及两次互核有没有误报」与「必须人完成的重要数字是否仍对照原图、有没有手写样本，以及 Zenn 本是否导流」拆开。",
+      "为把 35/35 当成下一组照片也总会到达的通用正确率、以及把自报没把握当成可靠门禁提供提问清单。",
+    ],
+    caveats: [
+      "35／25／8／11 均为作者对虚构文书坏拍照的自测；未含手写。真人手机照片数字会动。",
+      "自报没把握与三档可读性在本模型上失效；两次对照仍漏同错的 1〜2 字差。",
+      "文中链到 https://zenn.dev/hilopon/books/local-ai-line-recorder （写明第 7 章含照片；1／2／13 章免费），属同作者本／付费章节导流。",
+      "上面写的是个人实践帖（zenn.dev / hilopon），不是 Ollama／Qwen 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "本地 OCR 须同时报告数字对错与两次互核门禁",
+        body: `你是资深本地 VLM 读图教练。只根据用户边界写门禁，不要编造已经测到的 35/35 或揪出件数。
+
+现在多条件数字是不是约 35/35：{{whether_digits_about_thirty_five_of_thirty_five}}
+纸太小是不是约 25/35：{{whether_far_paper_about_twenty_five_of_thirty_five}}
+两次对照是不是约揪出 8/11：{{whether_double_read_caught_about_eight_of_eleven}}
+
+输出 Markdown：
+1. 为什么「数字全对」不能写成语义已可靠
+2. 应怎样同时记下数字对错、语义反转，以及自报没把握是否失效
+3. 只有一批虚构文书时，应怎样单独记账，而不是写成下一组照片也必然 35/35
+4. 人必须完成的清单（重要数字对照原图、有无手写、本是否导流）
+禁止声称「两次对照就等于下一组也总会揪出 8/11」；禁止把自报没把握写成可靠门禁。`,
+      },
+      {
+        title: "三十五全对与停车场反转复盘",
+        body: `报告上可以写多条件 35/35，但竖排「没有停车场」曾被读成「有」，且自报印记 0/12。请写复盘提纲。
+
+现象：{{thirty_five_ok_parking_flipped}}
+
+输出：
+1. 更像分辨率／竖排，还是模型不愿说「读不到」
+2. 最小复验顺序（先看语义关键句→再跑两次互核→再决定能不能对外说小 VLM 已够用）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上两次对照就等于下一组也总会 35/35」，或「这一次 8/11 就等于任何样本都会揪出」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hilopon/articles/local-vlm-ocr-confident-misread",
+      label: "zenn.dev · 「駐車場はありません」が「あります」で返ってきた。小さなローカルLLMの写真読み取りを試す",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "695",
+    slug: "syarihu-2wt-gradle-sessenv",
+    title: "syarihu：worktree 里 settings.local.json 的 env 不生效——Gradle 2 本名单分开后双方 BUILD SUCCESSFUL；改用 SessionStart 写 CLAUDE_ENV_FILE",
+    summary: "个人（syarihu／Android）；披露多 worktree 并行跑 Claude Code 时，./gradlew --stop 会因共用 daemon registry 把别的 worktree 构建打掉。Gradle 9.6.1、2 本 worktree：名单分开后双方 BUILD SUCCESSFUL，--status 也互不可见。本想用各 worktree 的 .claude/settings.local.json env 配 GRADLE_OPTS，但 Claude Code 从 v2.1.211 起在 worktree 读的是主 checkout 根上的 settings.local.json；echo $GRADLE_OPTS 仍是 main 值。试了外移 worktree／启动时传环境变量等：不奏效或靠兼容。最终用 SessionStart 钩子往 $CLAUDE_ENV_FILE 写 export。页上链到官方 settings／hooks／env 文档、CHANGELOG 与 X @syarihu。不代你同样改钩子，就等于下一台 Android 仓也总会双方 BUILD SUCCESSFUL，或 settings.local.json 也总会在 worktree 生效。",
+    description:
+      "面向已经把「每个 worktree 放一份 settings.local.json」写成环境已隔离、却还没核主 checkout 才是读取根的人：把「worktree 局部 env 要以 SessionStart／CLAUDE_ENV_FILE 为准」写成门禁，区别于账号停权、以及 Windows nul 文件清理。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/syarihu/articles/ae9ac46b6b85b4",
+    sourceLabel: "zenn.dev·syarihu 实践帖",
+    upvotes: 586,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "git worktree",
+      "Gradle",
+      "settings.local.json",
+      "SessionStart",
+    ],
+    howItWorks: [
+      "粘贴 worktree Gradle 边界（是不是 2 本 worktree、名单分开后是不是双方 BUILD SUCCESSFUL、settings.local.json env 是不是仍读到 main）以及「绝不可把放了 local 文件写成环境已隔离」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 registry.base、实际 echo 值，以及 SessionStart 是否写入 CLAUDE_ENV_FILE",
+      "人工保留 2 本／BUILD SUCCESSFUL 来自哪一次 Gradle 9.6.1 试验、Claude Code 是否 ≥2.1.211；Agent 不代你保证「加了 SessionStart 就等于下一仓也总会双方成功」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T09:00:12.351+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T00:00:12Z、Asia/Shanghai 2026-11-09 08:00:12；bodyUpdatedAt 2026-11-08T17:05:55.635+09:00 早于发布日，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：syarihu 在《Claude Codeのworktreeでsettings.local.jsonのenvが効かず…》写 2 本 worktree、BUILD SUCCESSFUL、SessionStart→CLAUDE_ENV_FILE。页上链到官方文档／CHANGELOG／X。主线是先把「有 local 文件」与「读到的是哪份」拆开，不是官文简报。",
+      "与 maya-15repo-50pr-6d-freeze / yorusuzu-nul-cmd-rm-ps0 不同：本条不是账号停权或 Windows nul，而是 worktree 下 settings.local.json env 的读取根与 Gradle daemon 隔离",
+    ],
+    approach: `syarihu 在《Claude Codeのworktreeでsettings.local.jsonのenvが効かず、Gradleデーモンを分けられなかった話》（页内 2026-11-09）写明：Gradle 名单分开后 2 本 worktree 双方 BUILD SUCCESSFUL；但 settings.local.json 的 env 在 worktree 仍读到 main；改用 SessionStart 写 $CLAUDE_ENV_FILE。
+
+关键门禁不是「放了 local 文件就等于环境已隔离」，而是分开记文件是否存在与实际生效来源，并核对这些结果来自哪一次 2 本试验。
+
+本场景据此输出「worktree env 须同时报告 echo 实值与 SessionStart 写入，不能只报已有 settings.local.json」提纲。禁止把双方 BUILD SUCCESSFUL 写成下一仓也总会到达，或把 local 文件写成在 worktree 必然生效。`,
+    outcomes: [
+      "源披露 Android 工程师 syarihu 多 worktree 并行 Claude Code：共用 Gradle daemon registry 时，一处 ./gradlew --stop 会让别处 stop command received。Gradle 9.6.1、2 本 worktree：用 org.gradle.daemon.registry.base 分开名单后双方 BUILD SUCCESSFUL，--status 互不可见。本想用各 worktree .claude/settings.local.json 的 env 配 GRADLE_OPTS，但自 Claude Code v2.1.211 起 worktree 会话读的是主 checkout 根上的该文件；echo $GRADLE_OPTS 与 ps 所见均为 main 路径。外移 worktree、启动时传环境变量等不奏效或只靠旧兼容；SessionStart 钩子往 $CLAUDE_ENV_FILE 写 export 有效（Claude Code 2.1.316／2.1.317 同结果）。属作者这一次 Android／Gradle 试验，不可外推为你同样改钩子就等于下一仓也总会双方 BUILD SUCCESSFUL，或 settings.local.json 也总会在 worktree 按子目录生效。",
+      "能把「可写成同时记下 registry.base、echo 实值，以及 SessionStart 是否写入 CLAUDE_ENV_FILE」与「必须人完成的是否接受官方读取根变更、Android Studio 是否另配，以及文档／X 链是否导流」拆开。",
+      "为把双方 BUILD SUCCESSFUL 当成下一仓也总会到达的通用结果、以及把「有 settings.local.json」当成 worktree 已隔离提供提问清单。",
+    ],
+    caveats: [
+      "2 本／BUILD SUCCESSFUL 为作者 Gradle 9.6.1 自测；Android Studio 不在本次 env 目标内。",
+      "worktree 侧 local 文件仍可能被当旧路径兼容读取，但键冲突时无警告；/status 不显示键来源。",
+      "文中链到 https://code.claude.com/docs/en/settings 、https://code.claude.com/docs/en/hooks 、https://code.claude.com/docs/en/env-vars 与 https://x.com/syarihu ，属官方文档／作者 X 导流。源文所链 https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md 本机复检偶发 HTTP 504，已不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / syarihu），不是 Anthropic 的官文简报；文中引用了官方 settings 说明作为依据。",
+    ],
+    prompts: [
+      {
+        title: "worktree env 须同时报告 echo 实值与 SessionStart 写入门禁",
+        body: `你是资深 Claude Code worktree 环境教练。只根据用户边界写门禁，不要编造已经分好的 daemon 或已经成功的构建。
+
+现在是不是约 2 本 worktree：{{whether_about_two_worktrees}}
+名单分开后是不是双方 BUILD SUCCESSFUL：{{whether_both_build_successful}}
+settings.local.json env 是不是仍读到 main：{{whether_local_env_still_main}}
+
+输出 Markdown：
+1. 为什么「放了 settings.local.json」不能写成环境已隔离
+2. 应怎样同时记下 registry.base、echo 实值，以及 SessionStart／CLAUDE_ENV_FILE
+3. 只有一次 2 本试验时，应怎样单独记账，而不是写成下一仓也必然双方成功
+4. 人必须完成的清单（官方读取根、IDE 是否另配、文档链是否导流）
+禁止声称「加了 SessionStart 就等于下一仓也总会双方 BUILD SUCCESSFUL」；禁止把 local 文件写成在 worktree 必然按子目录生效。`,
+      },
+      {
+        title: "两本 worktree 与 GRADLE_OPTS 复盘",
+        body: `报告上可以写名单分开后双方 BUILD SUCCESSFUL；但 settings.local.json 的 env 在 worktree 仍指向 main。请写复盘提纲。
+
+现象：{{two_worktrees_gradle_opts_main}}
+
+输出：
+1. 更像官方读取根变更，还是 GRADLE_OPTS 传递路径理解错
+2. 最小复验顺序（先 echo→再 --status→再决定能不能对外说 local env 已按 worktree 生效）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 SessionStart 就等于下一仓也总会双方成功」，或「这一次 2 本就等于任何 Gradle 版都同样」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/syarihu/articles/ae9ac46b6b85b4",
+      label: "zenn.dev · Claude Codeのworktreeでsettings.local.jsonのenvが効かず、Gradleデーモンを分けられなかった話",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "696",
+    slug: "biglat-1930-4am-3para-4loop",
+    title: "biglat80：首夜 19:30〜翌 4:30 装 Claude Code——并行 3 线；约 2,500 曲换图；契约循环试 4 次",
+    summary: "个人（biglat80）；披露在家用 Windows 10 Pro 上第一夜 19:30〜翌 4:30 装 Claude Code，多数指令经手机 Remote Control。定最小文件夹、三层日志、状态栏用量、约 10 个官方插件（「全装」多装 1 个后退掉）、CLAUDE.md／内存规则、Stop 钩子跑构建／测试／lint。后半夜并行 3 线：Android 雏形、iTunes 嵌入图替换约 2,500 曲（先 1000px 全开会卡，改长边 800px）、以及「先写契约→critic 审 2 次→外侧隐藏验证器→claude -p /goal」循环试 4 次。页上未见外链商店／试用导流。不代你同样熬一晚，就等于下一台 Windows 也总会 3 线并行跑通，或 2,500 曲也总会一次换完。",
+    description:
+      "面向已经把「装好就能干」写成第一夜目标、却还没分开脚手架与外侧验证器的人：把「合否不能靠模型自报」写成门禁，区别于 30 小时岛上玩耍，以及 worktree Gradle 隔离。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/biglat80/articles/claude-code-first-night-setup-log",
+    sourceLabel: "zenn.dev·biglat80 实践帖",
+    upvotes: 587,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Windows",
+      "Remote Control",
+      "hooks",
+      "first setup",
+    ],
+    howItWorks: [
+      "粘贴首夜装机边界（是不是约 19:30〜4:30、并行是不是 3 线、契约循环是不是约 4 次）以及「绝不可把装好写成合否已外包」纪律",
+      "Agent 按实践帖输出：应怎样同时记下并行线、Stop 钩子，以及验证器是否在模型够不着的外侧",
+      "人工保留 2,500／10／4 来自哪一晚 Windows 环境、Remote Control 是否前提；Agent 不代你保证「熬一晚就等于下一台也总会 3 线跑通」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T04:53:05.885+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T19:53:05Z、Asia/Shanghai 2026-11-09 03:53:05；bodyUpdatedAt 2026-11-09T04:51:34.557+09:00 同日约 2 分钟前，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：biglat80 在《はじめて Claude Code を使う日に…》写 19:30〜4:30、3 线并行、约 2,500 曲、契约循环 4 次。页上未见外链商店／试用导流。主线是先把脚手架与外侧验证拆开，不是官文简报。",
+      "与 moimoi-opus55-30h-260tool / syarihu-2wt-gradle-sessenv 不同：本条不是岛上换模玩耍或 worktree Gradle，而是 Windows 首夜装机与并行三线＋契约循环",
+    ],
+    approach: `biglat80 在《はじめて Claude Code を使う日に、何を考えて何を整えたか》（页内 2026-11-09）写明：首夜 19:30〜翌 4:30；并行 3 线；约 2,500 曲换图；契约＋外侧验证循环试 4 次；Stop 钩子跑构建／测试／lint。
+
+关键门禁不是「装好就等于合否已保证」，而是分开记脚手架与外侧验证器，并核对这些数字来自哪一晚。
+
+本场景据此输出「首夜装机须同时报告并行线与外侧验证，不能只报已安装」提纲。禁止把 3 线并行写成下一台也总会跑通，或把约 2,500 曲写成任何曲库都会一次换完。`,
+    outcomes: [
+      "源披露作者在 Windows 10 Pro／PowerShell 5.1／有 Git Bash 的家用 PC 上，第一夜 19:30〜翌 4:30 装 Claude Code；多数指令经手机 Remote Control。整理 secretary／dev 两树与三层日志；状态栏看 5 小时／周额度；官方插件约装 10 个，「全装」把附条件候选也装入后退掉 1 个；写 CLAUDE.md 与内存规则；Stop 钩子自动构建／测试／lint，失败 exit 2 打回。后半夜并行 3 线：Android（Kotlin＋Compose）雏形、iTunes 嵌入图替换约 2,500 曲（先 1000px 全开卡顿，改长边 800px 并先在各显示模式试几首）、以及「契约→critic 审 2 次→外侧隐藏验证器→claude -p /goal」循环试 4 次（故意矛盾测试时模型停下来报告而非改测试）。属作者这一夜这一台机器，不可外推为你同样熬一晚就等于下一台 Windows 也总会 3 线跑通，或约 2,500 曲也总会一次换完。",
+      "能把「可写成同时记下并行线、Stop 钩子，以及验证器是否在外侧」与「必须人完成的 UAC／权限、Remote Control 前提，以及未确认项有没有标未确认」拆开。",
+      "为把 3 线并行当成下一台也总会跑通的通用首夜成绩、以及把「通到停」当成可让模型改测试提供提问清单。",
+    ],
+    caveats: [
+      "19:30〜4:30／3 线／约 2,500／约 10 插件／4 次循环均为作者一晚自述；官方文档未核处已标未确认。",
+      "Git Bash 存在时部分设置命令经 Bash，路径与权限表现与纯 PowerShell 不同。",
+      "页上未见外链商店／试用／Newsletter／招聘导流，无可达导流 URL 可列。",
+      "上面写的是个人实践帖（zenn.dev / biglat80），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "首夜装机须同时报告并行线与外侧验证门禁",
+        body: `你是资深 Claude Code 装机教练。只根据用户边界写门禁，不要编造已经并行的线数或已经处理的曲数。
+
+现在是不是约从 19:30 到翌 4:30：{{whether_about_nineteen_thirty_to_four_thirty}}
+并行是不是约 3 线：{{whether_about_three_parallel_tracks}}
+契约循环是不是约 4 次：{{whether_about_four_contract_loops}}
+
+输出 Markdown：
+1. 为什么「装好」不能写成合否已保证
+2. 应怎样同时记下并行线、Stop 钩子，以及验证器是否在模型够不着的外侧
+3. 只有一晚数字时，应怎样单独记账，而不是写成下一台也必然 3 线跑通
+4. 人必须完成的清单（UAC／权限、Remote Control 前提、未确认项）
+禁止声称「熬一晚就等于下一台也总会 3 线跑通」；禁止把「通到停」写成可让模型改测试。`,
+      },
+      {
+        title: "二千五百曲与四次契约循环复盘",
+        body: `报告上可以写约 2,500 曲换图、契约循环 4 次；但那是一晚一台 Windows，且 1000px 全开曾卡顿。请写复盘提纲。
+
+现象：{{twenty_five_hundred_tracks_four_loops}}
+
+输出：
+1. 更像脚手架到位，还是任务本身偏机械
+2. 最小复验顺序（先看 Stop 钩子是否真跑→再抽查验证器是否外侧→再决定能不能对外说首夜已可并行）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Stop 钩子就等于下一台也总会 3 线跑通」，或「这一次 4 次循环就等于任何课题都不会改测试」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/biglat80/articles/claude-code-first-night-setup-log",
+      label: "zenn.dev · はじめて Claude Code を使う日に、何を考えて何を整えたか",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "697",
+    slug: "dmmdata-3skill-okf-meta",
+    title: "DMM 数据：用 Codex＋3 个 Skill 养表元数据——合并 Skill 每次输出不稳才拆开；OKF 的 YAML＋Markdown",
+    summary: "团队（DMM／dmmdata·percy_tech）；披露数据基盤一次表说明跟不上接入与问询，用 Codex 定期跑元数据扩写。先试合并 Skill，每次输出内容不同、达不到可用，才拆成 description 整備／利用调查／指南执笔 3 个 Skill：调查包落地后再执笔；进度写入文件以便下次接着跑。知识落成 OKF 风格（YAML frontmatter＋Markdown），含表／列说明、利用指南、术语与指标条件；现只覆盖一次表，数据マート后续。页上链到 OKF 仓与 SPEC；OpenAI Skills 概念页与 ChatGPT Automations 说明本机 GET 现 403。不代你同样拆 3 Skill，就等于下一套表也会每次稳定可审，或人审也总会消失。",
+    description:
+      "面向已经把「让 Agent 写表说明」写成可入库、却还没分开合并 Skill 不稳与人审仍在的人：把「元数据扩写须同时报告 Skill 拆分与人审队列」写成门禁，区别于个人首夜装机，以及本地 VLM 读图。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "github",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/dmmdata/articles/753624cdec8535",
+    sourceLabel: "zenn.dev·DMM データ基盤 / percy_tech 实践帖",
+    upvotes: 588,
+    trending: false,
+    tags: [
+      "Codex",
+      "Skill",
+      "OKF",
+      "metadata",
+      "DMM",
+    ],
+    howItWorks: [
+      "粘贴元数据扩写边界（是不是拆成约 3 个 Skill、合并时是不是每次输出不稳、是不是只覆盖一次表）以及「绝不可把定期跑写成已免人审」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 Skill 职责、进度文件，以及观察与推定有没有分开",
+      "人工保留 3 Skill／OKF 来自哪一版 DMM 一次表范围、403 链有没有另核；Agent 不代你保证「拆 3 Skill 就等于下一套表也会稳定可审」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T11:56:09.253+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:56:09Z、Asia/Shanghai 2026-11-09 10:56:09；bodyUpdatedAt 2026-11-09T12:11:39.735+09:00 同日约 15 分钟后，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：percy_tech 在 DMM データ基盤《テーブルの意味と使い方を育てる…》写合并 Skill 不稳→拆 3 个、OKF、定期 Codex。OKF 仓可达；OpenAI Skills／Automations 页本机现 403。主线是先把自动扩写与人审拆开，不是官文简报。",
+      "与 biglat-1930-4am-3para-4loop / hilopon-35digit-25far-8diff 不同：本条不是个人首夜装机或本地读图，而是团队用 Codex＋Skill 养数据表元数据",
+    ],
+    approach: `DMM データ基盤的 percy_tech 在《テーブルの意味と使い方を育てる。CodexとSkillで回すメタデータ整備》（页内 2026-11-09）写明：合并 Skill 每次输出不稳，才拆成 3 个 Skill；用 OKF 风格 YAML＋Markdown 落一次表说明；Codex 定期跑，人审仍在。
+
+关键门禁不是「定期跑就等于元数据已可信」，而是分开记自动扩写与人审队列，并核对这些做法来自哪一版一次表范围。
+
+本场景据此输出「元数据扩写须同时报告 Skill 拆分与人审，不能只报已定期执行」提纲。禁止把拆 3 Skill 写成下一套表也总会稳定，或把 OKF 落盘写成已免人审。`,
+    outcomes: [
+      "源披露 DMM 数据基盤作者用 Codex 定期扩写一次表元数据：先做合并 Skill，每次输出内容不同、达不到可用，才拆成 description 整備／利用调查／指南执笔 3 个 Skill；调查包齐后再执笔，进度写入文件以便中断后续跑。知识按 OKF（Open Knowledge Format）用 YAML frontmatter＋Markdown 目录存放表／列说明、利用指南、术语与指标条件（含母集団・粒度・期间・NULL・除外）；现只覆盖一次表，数据マート后续。作者写人审队列仍在，希望将来人不必全量重读。属作者这一版 DMM 一次表流程，不可外推为你同样拆 3 Skill 就等于下一套表也会每次稳定可审，或人审也总会消失。",
+      "能把「可写成同时记下 Skill 职责、进度文件，以及观察与推定有没有分开」与「必须人完成的业务定义是否确认、マート是否仍缺，以及 403 文档链有没有另核」拆开。",
+      "为把拆 3 Skill 当成下一套表也总会稳定的通用解法、以及把定期 Codex 当成已免人审提供提问清单。",
+    ],
+    caveats: [
+      "3 Skill／OKF 为作者团队流程自述，无给出已完成表数或准确率对照表。人审仍在。",
+      "现范围仅一次表；加工后マート的粒度／JOIN／指标条件仍待做。",
+      "页上链到 https://github.com/GoogleCloudPlatform/open-knowledge-format 与其 SPEC.md；本机复检该仓偶发 HTTP 504，已不列入可达导流。https://developers.openai.com/plugins/concepts/skills 、https://learn.chatgpt.com/docs/automations?surface=app 本机 GET 现 HTTP 403，已不列入可达导流。本条交审时无可稳定核达的外链导流 URL 可列。",
+      "上面写的是团队实践帖（zenn.dev / DMM データ基盤 · percy_tech），不是 OpenAI 的官文简报；部分产品文档链本次未能以 200 核达。",
+    ],
+    prompts: [
+      {
+        title: "元数据扩写须同时报告 Skill 拆分与人审门禁",
+        body: `你是资深数据元数据 Agent 教练。只根据用户边界写门禁，不要编造已经稳定的输出或已经免审的表数。
+
+现在是不是拆成约 3 个 Skill：{{whether_about_three_skills}}
+合并时是不是每次输出不稳：{{whether_merged_skill_unstable}}
+是不是只覆盖一次表：{{whether_primary_tables_only}}
+
+输出 Markdown：
+1. 为什么「定期跑 Codex」不能写成元数据已可信
+2. 应怎样同时记下 Skill 职责、进度文件，以及观察与推定分开
+3. 只有流程叙述没有完成表数时，应怎样单独记账，而不是写成下一套表也必然稳定
+4. 人必须完成的清单（业务定义、マート范围、403 文档链）
+禁止声称「拆 3 Skill 就等于下一套表也会稳定可审」；禁止把定期执行写成已免人审。`,
+      },
+      {
+        title: "三 Skill 与 OKF 落盘复盘",
+        body: `报告上可以写合并 Skill 不稳后拆成 3 个、并用 OKF 落盘；但人审仍在，且只覆盖一次表。请写复盘提纲。
+
+现象：{{three_skills_okf_primary_only}}
+
+输出：
+1. 更像职责过宽导致漂移，还是缺进度文件导致无法续跑
+2. 最小复验顺序（先抽查观察／推定标记→再看人审队列→再决定能不能对外说可自动入库）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 OKF 就等于下一套表也总会稳定」，或「这一次拆 3 Skill 就等于人审已可去掉」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dmmdata/articles/753624cdec8535",
+      label: "zenn.dev · テーブルの意味と使い方を育てる。CodexとSkillで回すメタデータ整備",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
