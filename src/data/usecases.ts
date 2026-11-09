@@ -53398,6 +53398,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "743",
+    slug: "yasuaki-del2-0875-0912",
+    title: "yasuakiomokawa：把 Agent 技能做成可数的验收——删掉 2 个技能后 grader 合格率 0.875→0.912",
+    summary: "个人（yasuakiomokawa）；披露把 define-done 的验收标准改成可执行测试后，用 with／without 与各 case 3 run 的 grader 门禁改技能，并删掉已不再需要的 2 个技能：define-done 的 grader 单位合格率从 0.875 升到 0.912；invite-owner 题 3 run 全通且 verify exit 0。不代你同样跑 3 run，就等于下一仓也会 0.875→0.912，或删技能就等于已更稳。",
+    description: "面向已经把「写了 SKILL.md」当成技能已生效、却还没分开「可数的检测」与「感觉上更好」的人：把「Agent 合做技能验收须同时报 grader 口径、回归门禁与人侧封板」写成门禁，区别于技能安全扫描清单，以及写测／TDD 竞赛。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/yasuakiomokawa/articles/d271586275672e",
+    sourceLabel: "zenn.dev·yasuakiomokawa 实践帖",
+    upvotes: 634,
+    trending: false,
+    tags: [
+      "agent-skills",
+      "acceptance-tests",
+      "eval",
+      "define-done",
+      "Claude-Code",
+    ],
+    howItWorks: [
+      "粘贴技能验收边界（是不是约删 2 技能、是不是约 0.875→0.912、是不是各 case 3 run）以及「绝不可把有 SKILL.md 写成已可数生效」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 with／without、grader 合否、以及 3 run 中 2 run 以上才算回归的门槛",
+      "人工保留 0.875／0.912／删 2 来自哪一段 eval；Agent 不代你保证「同样跑 3 run 就等于下一仓也总会升到 0.912」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T20:37:58.017+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T11:37:58Z、Asia/Shanghai 2026-11-06 19:37:58；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：yasuakiomokawa 在《エージェントスキルの定量検証をしよう》写删 2／0.875→0.912／3 run。文内链 https://github.com/YasuakiOmokawa/skills 属技能仓导流且可达。主线是技能验收可数化，不是官文简报。",
+      "与技能安全扫描、写测／TDD 不同：本条不是秘密／CVE 清单或先写测再实现竞赛，而是用验收测试与变异／变种检测率改技能本身",
+    ],
+    approach: `yasuakiomokawa 在《エージェントスキルの定量検証をしよう》（页内 2026-11-06）写明：原先 define-done／implement-plan／verify-plan 三技能流水线里，AC 的「怎样算合格」只是散文（如「/items 送 61 次则第 61 次 429」），无法回答「用了技能是否更贴需求、更少假完成」。他把 define-done 改成输出可执行验收测试，建立 eval（with／without、grader），并数两件事——要求反例与故意变异能否被检出，以及测试是否擅自断言需求未写之事。要求清晰的题上，检出率 with／without 都是 100%；差出在有效性：实 bug 题 28 上，不用技能的 3 run 虽全检出变种，但 3 run 都含「需求外断言」，有效测试为 0。改技能时用「各 case 3 run、grader 合否、2 run 以上变差才算回归」；v15.0 曾 3 run 中 2 run 漏掉「1.5」类非法输入，封板后实现只过 5 测中 4。按数字只改被指到的行，并删掉已不需要的 2 个技能后，define-done grader 合格率 0.875→0.912，invite-owner 3 run 全通且 verify exit 0。
+
+关键门禁不是「已经写了技能」，而是分开记「可数的检出／有效性」与「感觉上更顺」。
+
+本场景据此输出「Agent 合做技能验收须同时报告 grader 口径、回归门禁与人侧封板，不能只报有 SKILL.md」提纲。禁止把 0.875→0.912／删 2 写成下一仓也总会到达，或把删技能写成已更稳。`,
+    outcomes: [
+      "源披露作者把技能验收可数化后：删掉 2 个技能，define-done grader 合格率 0.875→0.912；invite-owner 3 run 全通。另披露题 28 上 without 有效测试为 0、v15.0 曾漏检。属作者这一套 eval 与题库，不可外推为你同样跑 3 run 就等于下一仓也会 0.875→0.912，或删技能就等于已更稳。",
+      "能把「可写成同时记下 with／without、grader 合否、3-run 回归门槛」与「必须人完成的封板对照、以及是否有技能仓导流」拆开。",
+      "为把「有 SKILL.md」当成已可数生效、以及把「检出率 100%」当成测试未越权提供提问清单。",
+    ],
+    caveats: [
+      "0.875／0.912／删2／3 run／题28有效测0／v15.0 漏检 均为作者自建 eval 与题库结果；等价变异会使检出率达不到 100%；未声称任意技能同升幅。",
+      "文中链 https://github.com/YasuakiOmokawa/skills ，属技能仓导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / yasuakiomokawa），不是 Anthropic／Claude Code 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "技能验收须同时报告grader口径与回归门禁",
+        body: `你是资深 Agent 技能验收教练。只根据用户边界写门禁，不要编造已经到的0.912或删2。
+
+现在是不是约删2技能：{{whether_about_delete_two}}
+是不是约0.875→0.912：{{whether_about_pass_rate}}
+是不是各case约3 run：{{whether_about_three_runs}}
+
+输出 Markdown：
+1. 为什么「有SKILL.md」不能写成已可数生效
+2. 应怎样同时记下with／without、grader合否、3-run回归门槛
+3. 只有一套题库时，应怎样单独记账，而不是写成下一仓也必然0.912
+4. 人必须完成的清单（封板对照、导流链）
+禁止声称「同样跑3 run就等于下一仓也总会0.912」；禁止把删技能写成已更稳。`,
+      },
+      {
+        title: "零点八七五到零点九一二与删二复盘",
+        body: `报告上可以写删2技能、grader 0.875→0.912、invite-owner 3 run全通；但这是一套个人eval。请写复盘提纲。
+
+现象：{{rate_and_delete_two}}
+
+输出：
+1. 更像验收口径生效，还是题库恰好偏AC书写
+2. 最小复验顺序（先抽有效测试是否为零→再抽3-run回归→再决定能不能对外说技能已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上删技能就等于下一仓也总会0.912」，或「这一次100%检出就等于测试未越权」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yasuakiomokawa/articles/d271586275672e",
+      label: "zenn.dev · エージェントスキルの定量検証をしよう",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "744",
+    slug: "okzaq-buf10-12sched",
+    title: "okzaq：用 claude -p 试跑 SNS 周更技能——Buffer 预约列表默认只回 10 件，实际已有 12 件",
+    summary: "个人（okzaq）；披露把自用 X／Threads 周更预约做成 Claude Code 技能后，用 claude -p 多轮对接真实 Buffer API：预约／删除都成功，但 list 仍显示「10 件预约中」；翻页后实为 12 件，曾误判 X 还空 2 档。不代你同样试跑 1 次，就等于下一账号也会 10／12，或有离线检查就等于分页已门禁。",
+    description: "面向已经把「脚本单测绿了」当成可上架技能、却还没分开「离线检查」与「真实列表分页」的人：把「Agent 合做预约技能试跑须同时报分页口径、空档判断与人侧抽检」写成门禁，区别于费用／Effort 刷榜，以及多 PR 吞吐。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/okzaq/articles/claude-code-skill-trial-buffer-pagination",
+    sourceLabel: "zenn.dev·okzaq 实践帖",
+    upvotes: 635,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Buffer-API",
+      "pagination",
+      "skill-trial",
+      "SNS",
+    ],
+    howItWorks: [
+      "粘贴预约列表试跑边界（是不是约默认 10 件、是不是约实际 12 件、是不是空档误判）以及「绝不可把离线绿写成分页已通」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 pageInfo 翻页、频道分计、以及远日期只订 1 条再删的试跑规程",
+      "人工保留 10／12／误判空档来自哪一次真实 API；Agent 不代你保证「同样试跑就等于下一账号也总会先看到 12」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-27T07:30:05.461+09:00 → 2026-10-27，同时刻为 UTC 2026-10-26T22:30:05Z、Asia/Shanghai 2026-10-27 06:30:05；bodyUpdatedAt 2026-10-26T16:32:20.522+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：okzaq 在《Claude Code のスキルを claude -p で試運転したら、Buffer API の予約一覧が10件で切れていた》写 10／12／空档误判。文内链 https://employeestore.app/agents/f924d352-ff9a-4498-a9ca-04c12ae71c96 属 Employee Store 商品导流且可达。主线是真实 API 分页门禁，不是官文简报。",
+      "与费用／Effort、多 PR 吞吐不同：本条不是模型档位或合入速度，而是周更技能上架前用真实预约列表发现静默截断",
+    ],
+    approach: `okzaq 在《Claude Code のスキルを claude -p で試運転したら、Buffer API の予約一覧が10件で切れていた》（页内 2026-10-27）写明：把自用周更预约收成 sns-setup／sns-weekly 两技能与 buffer_post.py；离线已验超长／过期／重复则整批不送。出品前用 claude -p 与 --session-id／--resume 多轮对接真实 Buffer：远日期只订 1 条测试帖再立刻删除。预约与删除均成功，但 list 仍报「10 件预约中」且看不到测试帖；技能未只报删除成功，而写明「预约后 list 未见测试帖、是否真进 Buffer 未核完」，并猜到「可能只取了前 10」。查 GraphQL：posts 默认 first=10，靠 pageInfo.hasNextPage 续取；脚本只读 edges 故静默丢 11 件起。改 first:100 后见 12 件（测前已超 10），其中被藏的 2 件是 10/24 的 X／Threads；周更技能据此曾判「X 还空 2 档」，实空 1 档。用 first:5 复制件验翻页仍得同 12 件，并加上频道分计（threads 3／x 9）。作者披露：同一 list 逻辑已在自用工具跑数月。
+
+关键门禁不是「脚本单测已绿」，而是分开记「离线检查」与「真实列表必须翻页」。
+
+本场景据此输出「Agent 合做预约技能试跑须同时报告分页口径、空档判断与人侧抽检，不能只报删除成功」提纲。禁止把 10／12 写成下一账号也总会先暴露，或把有离线检查写成分页已门禁。`,
+    outcomes: [
+      "源披露作者真实 API 试跑：list 默认只示 10 件，翻页后实为 12 件，并曾误判 X 空档；远日期 1 条预约／删除流程暴露该静默截断。属作者这一账号与当次库存，不可外推为你同样试跑就等于下一账号也会 10／12，或有离线检查就等于分页已门禁。",
+      "能把「可写成同时记下 pageInfo 翻页、频道分计、远日期只订 1 条」与「必须人完成的空档复核、以及是否有商品页导流」拆开。",
+      "为把「单测绿」当成可上架、以及把「显示 10 件」当成已到频道上限提供提问清单。",
+    ],
+    caveats: [
+      "10／12／空档误判／threads3／x9／远日期测试帖 均为作者当次 Buffer 库存与试跑；免费档每频道预约上限亦为 10，易与截断混淆；未声称任意账号同库存。",
+      "文中链 https://employeestore.app/agents/f924d352-ff9a-4498-a9ca-04c12ae71c96 ，属 Employee Store 商品导流（付费／咨询类须进 caveats）；本机 GET 200，列入可达导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / okzaq），不是 Buffer／Employee Store 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "预约技能试跑须同时报告列表分页与空档判断门禁",
+        body: `你是资深 Agent 预约技能试跑教练。只根据用户边界写门禁，不要编造已经到的12或空档。
+
+现在是不是约默认只回10件：{{whether_about_ten_default}}
+是不是约实际12件：{{whether_about_twelve}}
+是不是发生过空档误判：{{whether_about_slot_miscount}}
+
+输出 Markdown：
+1. 为什么「离线单测绿」不能写成分页已通
+2. 应怎样同时记下pageInfo翻页、频道分计、远日期只订1条再删
+3. 只有一次真实库存时，应怎样单独记账，而不是写成下一账号也必然先见12
+4. 人必须完成的清单（空档复核、导流链）
+禁止声称「同样试跑就等于下一账号也总会10／12」；禁止把有离线检查写成分页已门禁。`,
+      },
+      {
+        title: "十件截断与十二件实库存复盘",
+        body: `报告上可以写list默认10、实为12、曾误判空档；但这是一次个人真实API库存。请写复盘提纲。
+
+现象：{{ten_and_twelve}}
+
+输出：
+1. 更像分页纪律缺失，还是库存恰好卡在10附近
+2. 最小复验顺序（先抽hasNextPage→再抽频道分计→再决定能不能对外说列表已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上first:100就等于下一账号也总会先暴露截断」，或「这一次删帖成功就等于预约曾进列表」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/okzaq/articles/claude-code-skill-trial-buffer-pagination",
+      label: "zenn.dev · Claude Code のスキルを claude -p で試運転したら、Buffer API の予約一覧が10件で切れていた",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "745",
+    slug: "jskn-4kb-60pm-72h",
+    title: "jskn_d：给外置 Agent／脚本开同一条状态车道——单行 <4KB、每源 60 件／分、等待超 72 小时不进「自己的班」",
+    summary: "个人（jskn_d）；披露在 Turnlane 为无 hooks／难读会话的外置 Agent 与脚本增加 report 口：CLI／MCP／HTTP 三入口同型写入 spool；单行 <4KB、每源每分超 60 件丢弃、等待超 72 小时不进「自己的班」；report 自 0.8.0、scheduled 自 0.8.1。不代你同样接 1 个源，就等于下一台也会 4KB／60／72，或有报告口就等于内容已核实。",
+    description: "面向已经把「外置 Agent 在跑」当成可值班、却还没分开「自我申报状态」与「形与长度以外不可核」的人：把「Agent 合做跨工具状态车道须同时报写入规程、限流与人侧核验」写成门禁，区别于 MCP 起票流水线，以及过夜编排值守。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/jskn_d/articles/external-ai-work-report",
+    sourceLabel: "zenn.dev·jskn_d 实践帖",
+    upvotes: 636,
+    trending: false,
+    tags: [
+      "Turnlane",
+      "agent-status",
+      "spool",
+      "hooks",
+      "multi-agent",
+    ],
+    howItWorks: [
+      "粘贴外置状态车道边界（是不是约单行 <4KB、是不是约 60 件／分、是不是约 72 小时）以及「绝不可把有报告口写成内容已核实」纪律",
+      "Agent 按实践帖输出：应怎样同时记下三入口同型、client_id 去重、以及 started／waiting／done／scheduled 状态机",
+      "人工保留 4KB／60／72／0.8.0 来自哪一版设计；Agent 不代你保证「同样接 1 源就等于下一台也总会不丢行」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T16:58:43.586+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:58:43Z、Asia/Shanghai 2026-11-09 15:58:43；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：jskn_d 在《外の AI エージェントの作業を、Claude Code と同じ 1 本のレーンに書く口を作った》写 4KB／60／72／0.8.0。正文推介 Turnlane Mac 应用与 brew cask，但未见可点 http 外链；另核 https://github.com/turnlane/turnlane GET 200，作开源仓可达导流披露。主线是外置状态自我申报门禁，不是官文简报。",
+      "与 MCP 起票、过夜编排不同：本条不是用 MCP 建票或整晚无人长跑，而是让无 hooks 的外置作业把开始／等待／结束写进同一车道",
+    ],
+    approach: `jskn_d 在《外の AI エージェントの作業を、Claude Code と同じ 1 本のレーンに書く口を作った》（页内 2026-11-09）写明：前作靠 hooks／本地记录只能覆盖会写会话事实的工具；夜批脚本、云端思考＋本机执行的 Agent 等常无 hooks、也难读 MCP／localhost。于是在 Turnlane 增加外写状态口：CLI turnlane ai report、MCP report_ai_work、HTTP POST /api/ai/reports 三入口同型校验后写入同一 spool；单行 <4KB 一次追加；client_id（UUIDv7）去重，适配器每 spool 文件记近 500 个 id；未知键直接拒；来源名 2〜32 字符且不得占用内建名；题 120／问 300／选项 10×60／许可说明 60 字上限；每源每分超 60 件丢弃；等待超 72 小时不进「自己的班」。状态含 started／running／waiting／done／scheduled（预定带只作提示，超时改文案但不自动变「自己的班」）。作者强调报告是自我申报，Turnlane 只核形与长度；答问回写口尚未做。版本：report 0.8.0、scheduled 0.8.1；macOS 14＋Apple Silicon；brew cask 安装。
+
+关键门禁不是「外置 Agent 已在跑」，而是分开记「可写进同一车道」与「内容仍须人／对端核实」。
+
+本场景据此输出「Agent 合做跨工具状态车道须同时报告写入规程、限流与人侧核验，不能只报有 CLI」提纲。禁止把 4KB／60／72 写成下一台也总会不丢，或把有报告口写成内容已核实。`,
+    outcomes: [
+      "源披露作者为外置作业设计同一状态车道：单行 <4KB、每源 60 件／分、等待超 72 小时不进「自己的班」；三入口同型；report 自 0.8.0。属作者这一产品设计与自述上限，不可外推为你同样接 1 源就等于下一台也会 4KB／60／72，或有报告口就等于内容已核实。",
+      "能把「可写成同时记下三入口同型、client_id 去重、状态机」与「必须人完成的内容核验、以及是否有应用／开源仓导流」拆开。",
+      "为把「外置 Agent 在跑」当成可值班、以及把「已写入 spool」当成事实已核提供提问清单。",
+    ],
+    caveats: [
+      "4KB／60／分／72小时／500 id／0.8.0／0.8.1 均为作者设计上限与版本自述；报告内容为自我申报；未声称任意部署同吞吐。",
+      "正文推介 Turnlane 与 brew cask，属产品导流；正文未见可点 http 外链。另核 https://github.com/turnlane/turnlane 本机 GET 200，列入可达开源仓导流。文中提及 MCP 仅作三入口之一，主线不是 MCP 起票。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / jskn_d），不是 Turnlane 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "跨工具状态车道须同时报告写入规程与限流门禁",
+        body: `你是资深 Agent 状态车道教练。只根据用户边界写门禁，不要编造已经到的60或72。
+
+现在是不是约单行<4KB：{{whether_about_four_kb}}
+是不是约每源60件／分：{{whether_about_sixty_per_min}}
+是不是约等待超72小时不进自己的班：{{whether_about_seventy_two_h}}
+
+输出 Markdown：
+1. 为什么「外置Agent在跑」不能写成可无人值班
+2. 应怎样同时记下三入口同型、client_id去重、状态机
+3. 只有设计上限时，应怎样单独记账，而不是写成下一台也必然不丢行
+4. 人必须完成的清单（内容核验、导流链）
+禁止声称「同样接1源就等于下一台也总会4KB／60／72」；禁止把有报告口写成内容已核实。`,
+      },
+      {
+        title: "四KB与六十每分、七十二小时复盘",
+        body: `报告上可以写<4KB、60／分、72小时、0.8.0；但这是一版个人产品设计。请写复盘提纲。
+
+现象：{{four_kb_and_sixty}}
+
+输出：
+1. 更像写入规程生效，还是源恰好低流量
+2. 最小复验顺序（先抽丢弃／去重→再抽自我申报边界→再决定能不能对外说车道已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上MCP入口就等于下一台也总会不丢」，或「这一次写入成功就等于等待内容已核」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jskn_d/articles/external-ai-work-report",
+      label: "zenn.dev · 外の AI エージェントの作業を、Claude Code と同じ 1 本のレーンに書く口を作った",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "746",
+    slug: "nakanishi-30s24-lod771",
+    title: "nakanishitf：PLATEAU×Blender×Muse 做实在空间影像——成品约 30 秒／24fps；八王子 LOD2 仅约 7.71 km²",
+    summary: "个人（nakanishitf）；披露对照 Muse 复现备忘与自存 PLATEAU／成片：校园箱状后改练涩谷；确认投稿用成片约 30 秒、24fps、无音轨；八王子 README 写 LOD1 全市、LOD2.0 约 7.71 km²，校园主部网格 53393247／53393257 未见 LOD2 实体。不代你同样导出 30 秒，就等于下一城也会 30／24／7.71，或有 Muse 就等于校园细部已齐。",
+    description: "面向已经把「能出好看视频」当成实在空间已对齐、却还没分开「Agent 编排」与「生成模型补绘／源数据 LOD」的人：把「Agent 合做城模影像须同时报数据档位、中间产物核验与人侧对照」写成门禁，区别于游戏资产生成流水线，以及短视频两行提示词。",
+    categories: [
+      "content",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/nakanishitf/articles/5c563606266e0c",
+    sourceLabel: "zenn.dev·nakanishitf 实践帖",
+    upvotes: 637,
+    trending: false,
+    tags: [
+      "PLATEAU",
+      "Blender",
+      "Muse",
+      "city-model",
+      "video",
+    ],
+    howItWorks: [
+      "粘贴城模影像边界（是不是约 30 秒／24fps、是不是约 LOD2 7.71 km²、是不是校园未见 LOD2）以及「绝不可把成片好看写成源模已细」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 PLATEAU 档位、Blender 参照图、以及 Muse Agent 与 Muse Image／Video 分工",
+      "人工保留 30／24／7.71／网格号来自哪一次对照；Agent 不代你保证「同样跑流水线就等于下一城也总会细部齐」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T23:15:19.035+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T14:15:19Z、Asia/Shanghai 2026-11-09 22:15:19；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：nakanishitf 在《PLATEAU × Blender × Museで実在空間を映像にする。自動化の中身と応用の入口》写 30 秒／24fps／LOD2 7.71。文内大量链 PLATEAU／Blender／Meta Muse 介绍与数据页作出处；未见作者产品硬导流。主线是城模档位与 Agent 编排边界，不是官文简报。",
+      "与游戏资产生成、短视频两行提示不同：本条不是素材库或两行出片，而是用实在城市模型当参照、再经 Agent 编排与生成模型出片",
+    ],
+    approach: `nakanishitf 在《PLATEAU × Blender × Museで実在空間を映像にする。自動化の中身と応用の入口》（页内 2026-11-09，数据确认同日）写明：先在东工大八王子校园用 PLATEAU＋Blender＋Muse 试做，建筑呈箱状、屋顶／入口／喷水特征不足；改以涩谷十字路口练习并得到「想要的影像」手感，同时承认招牌文字等有创作成分。对照 Muse 复现备忘与自存数据／成片（非回放 Muse 全工具日志）：区分 Muse Agent（选步骤、写代码／配置并调用）与 Muse Image／Video（生成）；备忘含 LOD1／LOD2+纹理／地形三套转换、Blender 内建场景、短片拼接约 30 秒并用 ffmpeg 去音。作者确认的 X 投稿用文件均为约 30 秒、24fps、无音轨；校园 1088×816、涩谷 832×1040，不能反推 Muse 初生成分辨率。八王子 2025 数据包 README：建筑 LOD1 全市、LOD2.0 约 7.71 km²；校园主部网格 53393247 与 53393257 未见 LOD2 实体。文内强调：成片好看≠源模已细，且非对照实验故不能单因归 LOD2。
+
+关键门禁不是「已经能出片」，而是分开记「Agent 编排与参照图」与「生成补绘／源数据 LOD」。
+
+本场景据此输出「Agent 合做城模影像须同时报告数据档位、中间产物核验与人侧对照，不能只报已出 30 秒」提纲。禁止把 30／24／7.71 写成下一城也总会齐，或把有 Muse 写成校园细部已齐。`,
+    outcomes: [
+      "源披露作者对照备忘与成片：投稿用文件约 30 秒／24fps／无音轨；八王子 LOD2.0 约 7.71 km²，校园主部两网格未见 LOD2。属作者这一次数据与成片，不可外推为你同样导出 30 秒就等于下一城也会 30／24／7.71，或有 Muse 就等于校园细部已齐。",
+      "能把「可写成同时记下 PLATEAU 档位、Blender 参照、Agent／生成模型分工」与「必须人完成的实景对照、以及是否有出处链」拆开。",
+      "为把「成片好看」当成源模已细、以及把「有 Muse」当成全流程可无人复现提供提问清单。",
+    ],
+    caveats: [
+      "30秒／24fps／7.71km²／网格53393247・53393257／分辨率 均为作者自存成片与 README／对照；备忘非全工具日志回放；未声称任意城市同档位。",
+      "文内链 PLATEAU／Blender／Meta Muse 介绍与地理空间数据页均作出处；本机抽检 start-guide、八王子数据集、Muse 介绍页 GET 200。未见作者产品／招聘硬导流字样。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / nakanishitf），不是国交省 PLATEAU 或 Meta Muse 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "城模影像须同时报告数据档位与中间产物核验门禁",
+        body: `你是资深 Agent 城模影像教练。只根据用户边界写门禁，不要编造已经到的30或7.71。
+
+现在是不是约30秒／24fps：{{whether_about_thirty_twenty_four}}
+是不是约LOD2 7.71km²：{{whether_about_lod_area}}
+是不是校园主部未见LOD2：{{whether_about_campus_no_lod2}}
+
+输出 Markdown：
+1. 为什么「成片好看」不能写成源模已细
+2. 应怎样同时记下PLATEAU档位、Blender参照、Agent／生成模型分工
+3. 只有一次城市数据时，应怎样单独记账，而不是写成下一城也必然细部齐
+4. 人必须完成的清单（实景对照、出处链）
+禁止声称「同样导出30秒就等于下一城也总会30／24／7.71」；禁止把有Muse写成校园细部已齐。`,
+      },
+      {
+        title: "三十秒二十四帧与七点七一平方千米复盘",
+        body: `报告上可以写30秒、24fps、LOD2约7.71km²、校园未见LOD2；但这是一次个人对照。请写复盘提纲。
+
+现象：{{thirty_and_lod}}
+
+输出：
+1. 更像数据档位门禁生效，还是选题恰好从校园改到涩谷
+2. 最小复验顺序（先抽LOD实体→再抽成片元数据→再决定能不能对外说城模影像已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上LOD2就等于下一城也总会细部齐」，或「这一次30秒成片就等于中间图像可全复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nakanishitf/articles/5c563606266e0c",
+      label: "zenn.dev · PLATEAU × Blender × Museで実在空間を映像にする。自動化の中身と応用の入口",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "747",
+    slug: "srehold-68to9-8ai4miss",
+    title: "SRE Holdings：用 Claude Code 组 QA 小队——68 条指摘收成 9 张票，AI 独见 8、范围内漏 4",
+    summary: "团队（SRE Holdings／snabeta）；披露用 leader＋多 tester＋怀疑 verifier 的技能／子代理，对社内 2 个业务 SaaS 跑 6 轮共 146 案：tester 出 68 条，约 3 成像真误报；经汇总／验证／人裁收到 9 张票，其中 8 张仅 AI 队发现，范围内另漏 4（含数值差 14.5 倍却只看版式 PASS）。不代你同样跑 146 案，就等于下一产品也会 68→9／8／4，或有验证者就等于已无漏检。",
+    description: "面向已经把「AI 说发现了」当成可起票、却还没分开「可丢弃的像样误报」与「PASS 仍可能值错」的人：把「Agent 合做 QA 小队须同时报丢弃漏斗、独见／漏检分账与人侧终裁」写成门禁，区别于写测／TDD，以及确信度自评。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/sre_holdings/articles/d4acb079680a79",
+    sourceLabel: "zenn.dev·SRE Holdings 实践帖",
+    upvotes: 638,
+    trending: false,
+    tags: [
+      "QA",
+      "Claude-Code",
+      "subagents",
+      "manual-testing",
+      "bug-triage",
+    ],
+    howItWorks: [
+      "粘贴 QA 小队边界（是不是约 68→9、是不是约独见 8／漏 4、是不是约 146 案）以及「绝不可把有验证者写成已无漏检」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 tester→leader→verifier→人裁漏斗、独见／漏检分账、以及 PASS 须核值本身",
+      "人工保留 68／9／8／4 来自哪一段 6 轮；Agent 不代你保证「同样跑 146 案就等于下一产品也总会 9 张真票」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-29T14:00:29.579+09:00 → 2026-10-29，同时刻为 UTC 2026-10-29T05:00:29Z、Asia/Shanghai 2026-10-29 13:00:29；bodyUpdatedAt 2026-10-15T18:41:54.727+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：snabeta 在 SRE Holdings 刊《Claude Codeで「QAチーム」を組んだら、効いたのは「捨てる仕組み」だった》写 68→9／8／4／146。文内链 https://sre-group.co.jp/ 属企业站导流且可达。主线是误报丢弃与漏检分账，不是官文简报。",
+      "与写测／TDD、确信度自评不同：本条不是先写单测再实现或模型自报把握，而是功能／探索测试里用验证者与人裁把像样误报丢掉",
+    ],
+    approach: `snabeta 在 SRE Holdings 刊《Claude Codeで「QAチーム」を組んだら、効いたのは「捨てる仕組み」だった ― AIだけが見つけた不具合・見逃しは？》（页内 2026-10-29）写明：用 Claude Code 技能与子代理组「leader 1＋多 tester＋怀疑 verifier」QA 小队，对人测功能／探索负责，浏览器操作与最终起票仍在人。对象为社内业务 SaaS 2 个；2026-08-20〜09-16 共 6 轮（3 功能初测＋发布／修复／再部署确认）合计 146 案。漏斗：tester 出 68 条 → leader 去重／问询／已知等去掉 22 剩 46 → verifier 另法观测驳回 15 → 人再裁 22 不起票，终起票 9；人裁另拦 5，与 verifier 驳回合计误报 20（约 3 成）。与开发／规格／外部手测对照：仅 AI 队发现 8；AI 范围内漏 4，最重一例只核版式 PASS、数值相对他屏同口径差 14.5 倍。作者结论：丢弃机制降误报，不降漏检——PASS 还须核值本身。
+
+关键门禁不是「AI 已经会点」，而是分开记「可丢弃的像样误报」与「PASS 仍可能值错」。
+
+本场景据此输出「Agent 合做 QA 小队须同时报告丢弃漏斗、独见／漏检分账与人侧终裁，不能只报找到了多少」提纲。禁止把 68→9／8／4 写成下一产品也总会到达，或把有验证者写成已无漏检。`,
+    outcomes: [
+      "源披露团队 6 轮 146 案：68 条指摘收到 9 张票（约 3 成误报被丢掉），其中 8 张仅 AI 队发现，范围内漏 4（含 14.5 倍数值）。属作者这一产品与期间，不可外推为你同样跑 146 案就等于下一产品也会 68→9／8／4，或有验证者就等于已无漏检。",
+      "能把「可写成同时记下四段漏斗、独见／漏检分账、PASS 核值」与「必须人完成的终裁起票、以及是否有企业站导流」拆开。",
+      "为把「AI 说发现了」当成可起票、以及把「验证者已过」当成必真提供提问清单。",
+    ],
+    caveats: [
+      "68／9／8／4／146／6轮／约3成误报／14.5倍 均为作者社内 2 个 SaaS 与自述对照；样本小；未声称任意产品同比例。",
+      "文中链 https://sre-group.co.jp/ ，属企业站导流；本机 GET 200，列入可达导流。未见招聘硬导流字样。primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / SRE Holdings · snabeta），不是 Anthropic／Claude Code 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "QA小队须同时报告丢弃漏斗与独见漏检分账门禁",
+        body: `你是资深 Agent QA小队教练。只根据用户边界写门禁，不要编造已经到的9或8。
+
+现在是不是约68→9：{{whether_about_sixty_eight_to_nine}}
+是不是约独见8／漏4：{{whether_about_eight_and_four}}
+是不是约146案／6轮：{{whether_about_one_forty_six}}
+
+输出 Markdown：
+1. 为什么「AI说发现了」不能写成可直接起票
+2. 应怎样同时记下tester→leader→verifier→人裁漏斗、独见／漏检分账、PASS核值
+3. 只有一段期间时，应怎样单独记账，而不是写成下一产品也必然68→9
+4. 人必须完成的清单（终裁起票、导流链）
+禁止声称「同样跑146案就等于下一产品也总会9张真票」；禁止把有验证者写成已无漏检。`,
+      },
+      {
+        title: "六十八到九与八独见四漏检复盘",
+        body: `报告上可以写68→9、独见8、漏4、146案；但这是团队一段期间。请写复盘提纲。
+
+现象：{{sixty_eight_and_nine}}
+
+输出：
+1. 更像丢弃纪律生效，还是题恰好偏UI误报
+2. 最小复验顺序（先抽误报占比→再抽PASS是否核值→再决定能不能对外说QA小队已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上验证者就等于下一产品也总会无漏检」，或「这一次独见8就等于任意探索都会赢」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sre_holdings/articles/d4acb079680a79",
+      label: "zenn.dev · Claude Codeで「QAチーム」を組んだら、効いたのは「捨てる仕組み」だった ― AIだけが見つけた不具合・見逃しは？",
+      date: "2026-10-29",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
