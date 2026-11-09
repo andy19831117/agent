@@ -53838,6 +53838,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "748",
+    slug: "itara-800ln-54r7-40split",
+    title: "itaraiguma：给 Agent 读的文件一拆再拆——800 行上限下，7 日 54 读／测文件拆 40 本后数日又超限",
+    summary: "个人（itaraiguma／DevPick）；披露把 Agent 一次可读上限定在 800 行或 46,080 字节后，Antigravity 日志里 800 行台站点地图测文件近 7 日被读 54 次，344KB 需求书 14 日 122 次合计约 104 万字；10/27–31 仅测文件就拆了 40 本，11/1 再量又超限，规约还曾超系统提示上限 727 字节被截尾。后改先上 CI 禁增、设计文档 5 本另定宽松上限。不代你同样拆 40 本，就等于下一仓也会 7 日 54 读，或上 CI 就等于读次必降。",
+    description: "面向已经把「超限就拆文件」当成读上下文治理已完成、却还没分开「一时压进上限」与「追记会再涨回去」的人：把「Agent 合做读限治理须同时报读次口径、禁增例外与人侧抽检」写成门禁，区别于外置状态车道，以及多 PR 吞吐。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/itaraiguma/articles/agent-read-limit-split-did-not-hold",
+    sourceLabel: "zenn.dev·itaraiguma 实践帖",
+    upvotes: 639,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "Antigravity",
+      "read-limit",
+      "CI",
+    ],
+    howItWorks: [
+      "粘贴读限治理边界（是不是约 800 行／46,080 字节、是不是约 7 日 54 读、是不是约拆 40 本后又超）以及「绝不可把拆完写成读次已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下读次日志、已超文件的例外上限、以及设计文档与代码不同的禁增口径",
+      "人工保留 54／122／40／727 来自哪一段日志；Agent 不代你保证「同样拆文件就等于下一仓也总会先看到读次下降」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T08:51:37.284+09:00 → 2026-11-08，同时刻为 UTC 2026-11-07T23:51:37Z、Asia/Shanghai 2026-11-08 07:51:37；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：itaraiguma 在《AIに読ませるファイルを分割しても、数日でまた800行を超えていた話》写 800／54／122／40／727。文内链 https://devpick.it-araiguma.com 属作者产品 DevPick 导流，本机 GET 403，已不列入可达导流；Qiita 版清单 https://qiita.com/itaraiguma/items/ce64d8ac2140c5bad631 GET 200，属同主题清单帖而非商店硬导流。主线是读限禁增，不是官文简报。",
+      "与外置状态车道、多 PR 吞吐不同：本条不是外置 Agent 自我申报车道或合入速度，而是仓内读限被追记反复顶破后改先禁增",
+    ],
+    approach: `itaraiguma 在《AIに読ませるファイルを分割しても、数日でまた800行を超えていた話》（页内 2026-11-08）写明：个人开发的技术文策展服务 DevPick 几乎把实现交给 Claude Code／Codex／Antigravity，三者都边读仓边改。一次可读上限是 800 行或 46,080 字节；更大文件会被分段读，且读过的内容留在会话上下文。Antigravity 日志显示：800 行台的站点地图测文件近 7 日被读 54 次；344KB 需求定义书 14 日被读 122 次、合计约 104 万字；虽另备「只抽一段」工具同期用了 139 次，全文仍被并行读入。作者先在 10/27–31 按功能拆代码与测试，仅测文件就拆了 40 本；11/1 再量，未拆的 800 行台与刚拆完又被追测顶破的文件再次超限，还有距上限仅剩 6／9 行的中核文件 2 个。规约文件也曾缩完后数日～1 周因追记回到原状，并曾超出 Antigravity 可摄入系统提示上限 727 字节，导致每次会话末尾被截。作者结论是：只拆不禁增，追记会在无人察觉超限时继续涨。于是先上 CI：超限 PR 拒绝；已超文件把「当时大小」登记为例外上限且只许缩不许回胀；设计文档 5 本曾是上限的 2～7 倍、需求书在整行长后约再胀 15%，故对设计文档改「略宽上限＋单 PR 上调须写理由」，而不是代码同款「绝不再增」。设计文档因引用链多，本次未拆，只定达上限后再拆的步骤；11/5 才把设计文档纳入检查，效果未测。
+
+关键门禁不是「已经拆过文件」，而是分开记「读次与字节／行上限」与「禁增例外是否挡住追记」。
+
+本场景据此输出「Agent 合做读限治理须同时报告读次口径、禁增例外与人侧抽检，不能只报拆了多少本」提纲。禁止把 7 日 54 读／拆 40 本写成下一仓也总会到达，或把上 CI 写成读次已降。`,
+    outcomes: [
+      "源披露作者在 800 行／46,080 字节读限下：站点地图测文件近 7 日 54 读；344KB 需求书 14 日 122 读约 104 万字；测文件拆 40 本后数日又超限；规约曾超系统提示 727 字节被截尾；后改先 CI 禁增。属作者这一套 DevPick／Antigravity 日志，不可外推为你同样拆 40 本就等于下一仓也会 7 日 54 读，或上 CI 就等于读次必降。",
+      "能把「可写成同时记下读次、例外上限、设计文档与代码不同禁增口径」与「必须人完成的日志抽检、以及是否有产品导流」拆开。",
+      "为把「拆完」当成读限已门禁、以及把「有抽段工具」当成全文不再被读提供提问清单。",
+    ],
+    caveats: [
+      "800／46,080／54／122／104万字／40／727／5本／约15% 均为作者自建服务与日志结果；设计文档纳入检查后效果未测；未声称任意仓同读次。",
+      "文中链 https://devpick.it-araiguma.com ，属作者产品 DevPick 导流；本机 GET 403，现 HTTP 403，已不列入可达导流。Qiita 版清单链可达，属同主题清单而非商店硬导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / itaraiguma），不是 Anthropic／OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "读限治理须同时报告读次与禁增例外",
+        body: `你是资深 Agent 读限治理教练。只根据用户边界写门禁，不要编造已经到的7日54读或拆40本。
+
+现在是不是约800行／46080字节：{{whether_about_800}}
+是不是约7日54读：{{whether_about_54}}
+是不是约拆40本后又超：{{whether_about_40_split}}
+
+输出 Markdown：
+1. 为什么「拆完文件」不能写成读次已门禁
+2. 应怎样同时记下读次日志、已超文件例外上限、设计文档与代码不同的禁增口径
+3. 只有一套日志时，应怎样单独记账，而不是写成下一仓也必然读次下降
+4. 人必须完成的清单（日志抽检、导流链）
+禁止声称「同样拆40本就等于下一仓也总会先看到读次下降」；禁止把上CI写成读次已降。`,
+      },
+      {
+        title: "八百行读限与拆四十复盘",
+        body: `报告上可以写800行上限、7日54读、拆40本后又超、规约超727字节截尾；但这是一套个人服务日志。请写复盘提纲。
+
+现象：{{read_limit_and_split}}
+
+输出：
+1. 更像追记无人察觉，还是上限本身过紧
+2. 最小复验顺序（先抽读次→再抽禁增是否挡住回胀→再决定能不能对外说读限已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上拆文件就等于下一仓也总会54读变少」，或「有抽段工具就等于全文不再进上下文」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/itaraiguma/articles/agent-read-limit-split-did-not-hold",
+      label: "zenn.dev · AIに読ませるファイルを分割しても、数日でまた800行を超えていた話",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "749",
+    slug: "horibe-ng10n-8r7ok-12drop",
+    title: "horibe：把「多练过的句子」当成「不会的句子」——按重做次数排序后，8 次里对 7 次的文排到了最前",
+    summary: "个人（horibe）；披露在自做 TOEIC 学习 App 的「从苦手练起」里，若只按重做次数 DESC，合成例上 8 次重做且对 7 次的文会排到最前，而每次都错的 3 次文反而靠后。改成 score＝落次×10＋重做次后，8 次只落 1 次落到末位；并披露 AI 音素建议曾 +15／上限 +45 把 19 分音挤到 55 分音后面，后降到 +10／+25。材料侧 5 个自评槽有 2 个只覆写最新 1 件；旧记录无行下标时弃用并提示落下 12 件。不代你同样改公式，就等于下一套练习队列也总会 8／7 不再置顶，或降权重就等于排序已门禁。",
+    description: "面向已经把「按重做次数排序」当成苦手队列已生效、却还没分开「练得多」与「做错得多」的人：把「Agent 合做练习排序须同时报落次口径、材料是否逐次留存与人侧抽检」写成门禁，区别于确信度／伪完成，以及数字 grounding。",
+    categories: [
+      "education",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/horibe/articles/rank-by-failures-not-retries",
+    sourceLabel: "zenn.dev·horibe 实践帖",
+    upvotes: 640,
+    trending: false,
+    tags: [
+      "TOEIC",
+      "ranking",
+      "scoring",
+      "learning-app",
+      "logging",
+    ],
+    howItWorks: [
+      "粘贴苦手排序边界（是不是约 8 次／对 7 次置顶、是不是约 score＝落次×10＋重做次、是不是约 AI 建议 +15／+45 打乱）以及「绝不可把重做次数写成已等于不会」纪律",
+      "Agent 按实践帖输出：应怎样同时记下落次主轴、材料是否逐次留存、以及无行下标旧记录的弃用与条数披露",
+      "人工保留 8／7／×10／+15／+45／12 来自哪一次对照；Agent 不代你保证「同样改公式就等于下一套队列也总会先把每次都错的文提前」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T22:17:40.158+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T13:17:40Z、Asia/Shanghai 2026-11-09 21:17:40；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：horibe 在《「何回もやり直したもの」を回数順に並べたら、いちばん得意なものが先頭に来た》写 8／7、score＝ng×10＋n、+15／+45→+10／+25、落下 12 件。文内未见作者产品／商店硬导流外链。主线是苦手排序口径，不是官文简报。",
+      "与确信度、数字 grounding 不同：本条不是模型自评是否可靠或完成条件里的例值被写死，而是练习队列把「重做次数」误当成「不会」",
+    ],
+    approach: `horibe 在《「何回もやり直したもの」を回数順に並べたら、いちばん得意なものが先頭に来た》（页内 2026-11-09）写明：个人做的 TOEIC 学习 App 首页有「从苦手练起」；用户要再加「重做过很多次的句子」。作者起初把需求译成 ORDER BY 重做次数 DESC，合成数据上：(C) 8 次重做排最前，但 8 次里对了 7 次；(A) 6 次重做里错 3 次；(B) 3 次重做且 3 次全错。于是最前其实是「常练／好练」的文，不是「不会」。公式改成 score＝落次 ng×10＋重做次 n：6 次里落 3→36；3 次全落→33；2 次全落→22；8 次只落 1→18，使「每次都错但次数少」不再被「常练且几乎都会」压过。×10 的权重来自同仓音素排序的教训：曾给「AI 建议选该音」加 +15／上限 +45，实数据上 /g/ 19 分无建议→81，/j/ 55 分建议 3 次→90，反而把更坏的音挤到后面；降到 +10／上限 +25 后 /j/＝70，不再超过 /g/＝81。另设：仅 1 次记录不算重做（至少 2 次）；从未落过的文不进列表。材料侧 5 个自评槽里 it.repeat／it.rlu 只覆写最新 1 件，10 次重做也只剩最后 1 条，靠旁路 plog 逐次留存才救回次数；dlog 只在按了词级按钮时才写，造成「看似逐次、实则有洞」。旧发音日志无行下标 li 时，Part1 一题四句不可猜归到 (A)，只在一题一句时可对齐；对不齐的记录丢弃并在界面写清落下件数（例：12 件对不上已导入英文）。
+
+关键门禁不是「已经按次数排了」，而是分开记「落次主轴」与「材料是否真能数次」。
+
+本场景据此输出「Agent 合做练习排序须同时报告落次口径、留存形态与人侧抽检，不能只报按重做次数排了」提纲。禁止把 8／7 置顶复现写成下一套队列也总会发生，或把改公式写成已门禁。`,
+    outcomes: [
+      "源披露作者把「重做次数 DESC」改成 score＝落次×10＋重做次后：合成例上 8 次对 7 次不再置顶；并披露 AI 建议 +15／+45 曾打乱音素序、后降到 +10／+25；无行下标旧记录弃用并提示落下 12 件。属作者这一套 App 与合成／实数据对照，不可外推为你同样改公式就等于下一套队列也总会 8／7 不再置顶，或降权重就等于排序已门禁。",
+      "能把「可写成同时记下落次主轴、材料逐次留存、旧记录弃用条数」与「必须人完成的队列抽检、以及是否有产品导流」拆开。",
+      "为把「练得多」当成「不会」、以及把「有自评槽」当成「每次都留存」提供提问清单。",
+    ],
+    caveats: [
+      "8／7／×10／+15／+45／+10／+25／12／5槽中2槽覆写 均为作者自建 App 与合成／实数据；未做跨用户 A／B；未声称任意练习队列同序。",
+      "源页未见作者产品／商店硬导流外链；无列入可达的作者产品硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / horibe），不是 TOEIC 官方或模型厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "练习排序须同时报告落次口径与留存形态",
+        body: `你是资深练习队列教练。只根据用户边界写门禁，不要编造已经到的8次对7次或落下12件。
+
+现在是不是约按重做次数DESC：{{whether_about_retry_desc}}
+是不是约score＝落次×10＋重做次：{{whether_about_ng10}}
+是不是约材料有覆写式自评槽：{{whether_about_overwrite_slots}}
+
+输出 Markdown：
+1. 为什么「重做次数多」不能写成已等于不会
+2. 应怎样同时记下落次主轴、逐次留存、旧记录弃用条数
+3. 只有一套合成例时，应怎样单独记账，而不是写成下一套队列也必然同序
+4. 人必须完成的清单（队列抽检、导流链）
+禁止声称「同样改公式就等于下一套也总会把每次都错的文提前」；禁止把降AI建议权重写成排序已门禁。`,
+      },
+      {
+        title: "八次对七与权重复盘",
+        body: `报告上可以写8次对7次曾置顶、score＝ng×10＋n、AI建议+15／+45打乱、落下12件；但这是一套个人App。请写复盘提纲。
+
+现象：{{ranking_and_weights}}
+
+输出：
+1. 更像需求语义翻译错，还是材料留存不够
+2. 最小复验顺序（先抽落次是否进公式→再抽留存是否逐次→再决定能不能对外说苦手队列已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上改公式就等于下一套也总会8／7不再置顶」，或「有5个自评槽就等于每次都留存」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/horibe/articles/rank-by-failures-not-retries",
+      label: "zenn.dev · 「何回もやり直したもの」を回数順に並べたら、いちばん得意なものが先頭に来た",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "750",
+    slug: "tomi-3carr-0keep-124kzip",
+    title: "tomipetit：三家快递停运信息日更 API——AI 抽到「0 件」不信，KEN_ALL 约 12.45 万行由 Workers 自挂邮编",
+    summary: "个人（tomipetit）；披露用 Cloudflare Workers 每日同步雅玛多／佐川／日本邮便停运信息：抓取归 Workers、正文／PDF 归一归 AI、邮编挂载归 Workers 自备 KEN_ALL（约 12 万 4,500 行）。日本邮便 PDF 另要 determination；读失败或「有停运却 0 件」等矛盾当失败并保留旧数据；雅玛多抽到 0 件也保持旧数据。不代你同样日更 1 次，就等于下一套停运表也总会 0 件不误清，或挂上邮编就等于发运可自动拍板。",
+    description: "面向已经把「AI 抽完 JSON」当成停运源已可信、却还没分开「模型读失败」与「真的无停运」的人：把「Agent 合做停运抽取须同时报 determination、0 件保旧与人侧对照官方」写成门禁，区别于事实核查周报，以及 OCR 读图。",
+    categories: [
+      "devtools",
+      "ecommerce",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/tomipetit/articles/delivery-status-api-workers",
+    sourceLabel: "zenn.dev·tomipetit 实践帖",
+    upvotes: 641,
+    trending: false,
+    tags: [
+      "Cloudflare-Workers",
+      "OpenAI",
+      "delivery",
+      "PDF",
+      "D1",
+    ],
+    howItWorks: [
+      "粘贴停运抽取边界（是不是约三家日更、是不是约 0 件保旧／determination、是不是约 KEN_ALL 12.45 万行自挂）以及「绝不可把 AI 0 件写成已无停运」纪律",
+      "Agent 按实践帖输出：应怎样同时记下指纹跳过、矛盾判定失败、以及邮编由 Workers 自挂而非模型编造",
+      "人工保留 determination／0 件保旧／约 12.45 万行来自哪一段实现；Agent 不代你保证「同样日更就等于下一套也总会先挡住误清」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T13:19:30.239+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T04:19:30Z、Asia/Shanghai 2026-11-09 12:19:30；bodyUpdatedAt 2026-11-09T13:17:25.415+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：tomipetit 在《ヤマト・佐川・日本郵便の配送停止情報をCloudflare WorkersとAIで毎日APIにする》写三家分工、0 件不信、KEN_ALL 约 12 万 4,500 行。文内链 https://github.com/tomipetit/delivery-status-api 属开源仓导流且可达；各社官方停运／邮编页为出处。主线是停运抽取门禁，不是官文简报。",
+      "与事实核查、OCR 不同：本条不是文章主张三分或照片读字，而是承运停运源上「AI 0 件」不得误清旧限制",
+    ],
+    approach: `tomipetit 在《ヤマト・佐川・日本郵便の配送停止情報をCloudflare WorkersとAIで毎日APIにする》（页内 2026-11-09）写明：灾后／暴雨后发运要查三家官方停运页，但雅玛多是 HTML 表、佐川是公告文、日本邮便是 PDF，人眼日更很痛。做法是：抓取用 Workers（早 9 点 JST Cron），正文／PDF 归一用 OpenAI Responses API，邮编不交给模型「猜」，而把日本邮便 KEN_ALL（约 12 万 4,500 行）放进 D1，由 Workers 在抽取后、写入前自挂；postalCodeLevel 区分町域／市区／县全域等。日本邮便改为自取 unkou.pdf 以附件送模型，sourceUrl 固定为 Workers 拿到的 PDF URL，避免模型自报出处。最怕的失败是「其实读失败却写成无停运」从而清掉旧限制——发运侧会往停运区照寄。于是 PDF 路径强制 determination：active_restrictions_found／no_active_restrictions／unreadable；unreadable 或「判定有停运却 0 件」「判定无停运却有件」一律当失败并保留旧数据；max_output_tokens 截断也当失败。雅玛多页面抽取无法证明「真的全无」，故 0 件时保持旧数据；佐川若列表 XML 一篇都解析不到，也不当成「无刊登」以免布局变更误杀。另用来源指纹（SHA-256）跳过未变内容的 AI 调用；雅玛多页含「〇时现在」整点文案，指纹曾被每小时误触发，需剥时间再算。作者强调个人用途、与承运公司无关，最终发运可否必须以官方为准。
+
+关键门禁不是「已经抽成 JSON」，而是分开记「模型读失败」与「真的无停运」，并核邮编是否由规则挂载。
+
+本场景据此输出「Agent 合做停运抽取须同时报告 determination、0 件保旧与人侧对照官方，不能只报日更成功」提纲。禁止把 0 件保旧写成下一套也总会挡住误清，或把挂上邮编写成可自动拍板发运。`,
+    outcomes: [
+      "源披露作者做三家停运日更 API：AI 负责归一，邮编用 KEN_ALL 约 12 万 4,500 行由 Workers 自挂；日本邮便 PDF 要 determination，读失败／矛盾 0 件当失败并保旧；雅玛多 0 件也保旧。属作者这一套 Workers／模型配置，不可外推为你同样日更就等于下一套也总会 0 件不误清，或挂上邮编就等于发运可自动拍板。",
+      "能把「可写成同时记下 determination、0 件保旧、指纹跳过」与「必须人完成的官方对照、以及是否有开源仓导流」拆开。",
+      "为把「AI 返回 0 件」当成已无停运、以及把「有 postalCodes 字段」当成模型未编造邮编提供提问清单。",
+    ],
+    caveats: [
+      "约12.45万行／determination／0件保旧／指纹跳过 均为作者自建实现；未声称抽取准确率；作者自披最终发运可否须对照官方。",
+      "文中链 https://github.com/tomipetit/delivery-status-api ，属开源仓导流；本机 GET 200，列入可达导流。各社官方页为出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / tomipetit），不是各快递公司或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "停运抽取须同时报告determination与0件保旧",
+        body: `你是资深物流数据门禁教练。只根据用户边界写门禁，不要编造已经挡住的误清或12.45万行已挂全。
+
+现在是不是约三家日更：{{whether_about_three_carriers}}
+是不是约AI返回0件：{{whether_about_zero}}
+是不是约邮编由规则自挂：{{whether_about_ken_all}}
+
+输出 Markdown：
+1. 为什么「AI抽到0件」不能写成已无停运
+2. 应怎样同时记下determination、矛盾失败、0件保旧
+3. 只有一套个人Workers时，应怎样单独记账，而不是写成下一套也必然挡住误清
+4. 人必须完成的清单（对照官方、导流链）
+禁止声称「同样日更就等于下一套也总会0件不误清」；禁止把挂上邮编写成发运可自动拍板。`,
+      },
+      {
+        title: "零件保旧与邮编自挂复盘",
+        body: `报告上可以写determination、0件保旧、KEN_ALL约12.45万行自挂；但这是一套个人实现。请写复盘提纲。
+
+现象：{{zero_keep_and_zip}}
+
+输出：
+1. 更像读失败被当成无停运，还是邮编被模型编造
+2. 最小复验顺序（先抽矛盾判定→再抽0件是否保旧→再决定能不能对外说停运源已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上determination就等于下一套也总会挡住误清」，或「有postalCodes字段就等于未编造」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tomipetit/articles/delivery-status-api-workers",
+      label: "zenn.dev · ヤマト・佐川・日本郵便の配送停止情報をCloudflare WorkersとAIで毎日APIにする",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "751",
+    slug: "yattaru-4gate-3blog-10out",
+    title: "yattaru：把事业运营交给 Claude Code 定期跑——总开关＋博客待审≥3／外联未发≥10／推送≤2／日即停产",
+    summary: "个人（yattaru）；披露用 Claude Code 定期跑人寻／博客／周复盘草稿时，先读同一 JSON：stop_all 或分区 off 即停；caps 规定博客待审≥3 不再新写、外联未发≥10 不再新造、手机推送≤2／日（失败通知另计）；审批集中到一箱且约定 AI 永不写「承认／修改／見送」状态。并披露仅凭「别的会话说继续」的上线曾被 Claude Code 危险判定拦住。不代你同样加 4 道闸，就等于下一套定期跑也总会 3／10／2 挡住堆积，或有总开关就等于不会误发外。",
+    description: "面向已经把「定期跑草稿」当成运营已自动化、却还没分开「人确认得及」与「AI 可无限产稿」的人：把「Agent 合做定期运营须同时报 caps、审批箱纪律与人侧抽检」写成门禁，区别于过夜编排舰队，以及静默停机 watchdog。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/yattaru/articles/442fd244c68fd7",
+    sourceLabel: "zenn.dev·yattaru 实践帖",
+    upvotes: 642,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "scheduled-jobs",
+      "approval",
+      "safety",
+      "caps",
+    ],
+    howItWorks: [
+      "粘贴定期运营边界（是不是约博客待审≥3、是不是约外联未发≥10、是不是约推送≤2／日）以及「绝不可把有定期跑写成已可无人外发」纪律",
+      "Agent 按实践帖输出：应怎样同时记下总开关 JSON、审批箱「AI 不写承认」、以及危险操作须人话／箱内承认",
+      "人工保留 3／10／2／四道闸来自哪一段设计；Agent 不代你保证「同样加 caps 就等于下一套也总会先挡住堆积」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T16:48:12.470+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T07:48:12Z、Asia/Shanghai 2026-11-08 15:48:12；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：yattaru 在《AIの定期実行に事業の運営を任せるときに入れた、4つの安全装置》写 stop_all、3／10／2、审批箱纪律。文内链 https://yattaru.pages.dev 属 YATTARU 产品导流且可达。主线是定期运营安全闸，不是官文简报。",
+      "与过夜编排、watchdog 不同：本条不是多 Agent 过夜舰队或进程死活监视，而是人确认速率用 caps 卡住产稿与外发",
+    ],
+    approach: `yattaru 在《AIの定期実行に事業の運営を任せるときに入れた、4つの安全装置》（页内 2026-11-08）写明：个人小服务把寻人草稿（每日）、博客草稿（每周 2 次）、周复盘（每周）交给 Claude Code 定期跑，线是「草稿到 AI、外发须人 OK」。怕的是 AI「好心」在无人确认时送到外面。四道闸：①所有定期任务先读同一 JSON——stop_all=true 则只回报停止中；areas 可按 sns_draft／outreach／blog／weekly 分区 off；人在任一聊天说「停」即可让 AI 改该文件，避免每任务各有一套停法。②caps：博客待审≥3 不再新写；外联未发≥10 不再新造；手机推送≤2／日（失败通知另计）——按人确认得及的速度限产，而不是「能产多少产多少」。③审批集中到一个「审批箱」页：每件含要点、承认后会发生什么、全文与选项；各定期任务先读箱内对自己请求的回复。因 AI 与人写同一库时无法从数据区分「人承认还是 AI 自写」，约定 AI 永不把状态改成「承认／修改／見送」、也永不写人的回复栏；AI 只可新建请求、改完回「等待」、完成标「已处理」，并把同一句写进各任务指示与正本手册。④把 Claude Code 的危险操作判定当双保险：曾有「只因别的会话说继续」就要上线的操作被拦住；作者改为「上线须人话或箱内承认」，被拦则不绕道、改问人。作者自披刚开运营，遇挫再写。
+
+关键门禁不是「已经定期跑了」，而是分开记「产稿 caps」与「外发是否真须人承认」。
+
+本场景据此输出「Agent 合做定期运营须同时报告 caps、审批箱纪律与人侧抽检，不能只报任务已 cron」提纲。禁止把 3／10／2 写成下一套也总会挡住堆积，或把有总开关写成不会误发外。`,
+    outcomes: [
+      "源披露作者为 Claude Code 定期运营加四道闸：总开关 JSON；博客待审≥3／外联未发≥10／推送≤2／日即停产；审批箱约定 AI 不写承认；并披露「别的会话说继续」上线曾被危险判定拦住。属作者这一套运营设计，不可外推为你同样加 4 道闸就等于下一套也总会 3／10／2 挡住堆积，或有总开关就等于不会误发外。",
+      "能把「可写成同时记下 caps、AI 不写承认、上线须人话／箱内承认」与「必须人完成的待审抽检、以及是否有产品导流」拆开。",
+      "为把「定期跑草稿」当成已可无人外发、以及把「库里有承认状态」当成必是人点的提供提问清单。",
+    ],
+    caveats: [
+      "3／10／2／四道闸／一次被拦上线 均为作者自述设计与个例；运营刚开始，未给长期事故率；未声称任意定期任务同 caps。",
+      "文中链 https://yattaru.pages.dev ，属 YATTARU 产品导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / yattaru），不是 Anthropic／Claude Code 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "定期运营须同时报告caps与审批箱纪律",
+        body: `你是资深 Agent 定期运营教练。只根据用户边界写门禁，不要编造已经挡住的3／10／2堆积。
+
+现在是不是约博客待审≥3：{{whether_about_blog3}}
+是不是约外联未发≥10：{{whether_about_out10}}
+是不是约推送≤2／日：{{whether_about_push2}}
+
+输出 Markdown：
+1. 为什么「已经cron」不能写成已可无人外发
+2. 应怎样同时记下总开关、caps、AI不写承认
+3. 只有一套个人运营时，应怎样单独记账，而不是写成下一套也必然挡住堆积
+4. 人必须完成的清单（待审抽检、导流链）
+禁止声称「同样加4道闸就等于下一套也总会3／10／2挡住」；禁止把有总开关写成不会误发外。`,
+      },
+      {
+        title: "三本十件两则与自承认复盘",
+        body: `报告上可以写博客≥3／外联≥10／推送≤2、AI不写承认、一次被拦上线；但这是一套个人设计。请写复盘提纲。
+
+现象：{{caps_and_self_approve}}
+
+输出：
+1. 更像产稿超过人确认速度，还是承认状态可被AI自写
+2. 最小复验顺序（先抽caps是否真停产→再抽库内承认是否可能AI写入→再决定能不能对外说定期运营已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上caps就等于下一套也总会挡住堆积」，或「库里有承认字段就等于必是人点的」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yattaru/articles/442fd244c68fd7",
+      label: "zenn.dev · AIの定期実行に事業の運営を任せるときに入れた、4つの安全装置",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "752",
+    slug: "matsush-omb148-27eng-28s",
+    title: "matsushima_a：把已登录的 Claude Code CLI 当聊天后端——OpenMausBot 0.1.148 检出 27 引擎仅 claude 可用，一次约 2.8 秒",
+    summary: "个人（matsushima_a）；披露在 Ubuntu 上装 OpenMausBot 0.1.148（Node≥24），不新开付费 API Key，仅用已登录 Claude Code CLI：doctor 显示 Engines available: claude；models 列出 27 种引擎里仅 claude 为 available（默认 claude-sonnet-5、8 models）。run 创建文件任务自 CLI 启动到结束约 2.8 秒；自托管 owner trust 与 GUI 默认「Just do it」下删文件均无确认卡；MCP 许可工具 mcp__ogb__approve 缺失时曾 exit 1，同请重试 2 次同错。不代你同样接 1 次，就等于下一机也会 27 里仅 1 可用，或约 2.8 秒就等于可当生产聊天后端。",
+    description: "面向已经把「聊天 App 能跑」当成本地 Agent CLI 已安全复用、却还没分开「引擎检出」与「危险操作确认是否真出现」的人：把「Agent 合做 CLI 复用须同时报可用引擎口径、确认卡路径与人侧抽检」写成门禁，区别于双 CLI 同题赛跑，以及 Remote Control 常驻。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/matsushima_a/articles/day-041-openmausbot-claude-cli",
+    sourceLabel: "zenn.dev·matsushima_a 实践帖",
+    upvotes: 643,
+    trending: false,
+    tags: [
+      "OpenMausBot",
+      "Claude-Code",
+      "CLI",
+      "self-hosted",
+      "approval",
+    ],
+    howItWorks: [
+      "粘贴 CLI 复用边界（是不是约 27 引擎仅 claude 可用、是不是约 2.8 秒、是不是确认卡未出现）以及「绝不可把 serve 200 写成危险操作已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 doctor／models 口径、owner trust 与 bot 默认批准级别、以及 MCP 许可工具缺失时的失败",
+      "人工保留 0.1.148／27／2.8／2 次同错来自哪一次实测；Agent 不代你保证「同样安装就等于下一机也总会先只检出 claude」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T23:23:01.018+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T14:23:01Z、Asia/Shanghai 2026-11-09 22:23:01；bodyUpdatedAt 2026-11-08T21:55:51.342+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：matsushima_a 在《Grok Botの代わりに、手元のClaude Code CLIをそのままチャットのバックエンドにしてみた》写 0.1.148／27／约 2.8 秒／Just do it。文内链 https://github.com/milind-soni/OpenMausBot 属上游开源仓导流且可达；https://www.npmjs.com/package/openmausbot 本机 GET 403，现 HTTP 403，已不列入可达导流；作者系列仓 https://github.com/Matsushima-A-830/ai-100days 可达。主线是本地 CLI 复用实测，不是官文简报。",
+      "与双 CLI、Remote Control 不同：本条不是两套 CLI 同题赛跑或手机远控常驻机，而是把已登录 Claude Code 当聊天 App 引擎时的检出与确认卡落差",
+    ],
+    approach: `matsushima_a 在《Grok Botの代わりに、手元のClaude Code CLIをそのままチャットのバックエンドにしてみた》（页内 2026-11-09）写明：试用 milind-soni/OpenMausBot（npm 0.1.148，要求 Node≥24；作者默认 Node 22，另备 24）。该 OSS 聊天把引擎指到本机已登录的 claude／codex／grok 等 Agent CLI，不新发 API Key。Ubuntu 24.04.5 上 npm install 数秒、0 vulnerabilities；\`npx openmausbot serve --no-open --local\` 听在 127.0.0.1:8799，curl／ 200；日志写 local requests: owner trust。doctor：Engines available: claude；models 列出约 27 种引擎，available 仅 claude（默认 claude-sonnet-5、8 models）。\`openmausbot run\` 让 MausBot 在工作区写 hello 文件并读回，作者 cat 核对一致；再测 \`rm\` 删预置文件，ls 确认已删。预期危险操作会出允许／拒绝卡，但自托管 owner 路径无确认、立即执行；本地浏览器 GUI 默认「Before MausBot acts」＝「Just do it」时同样无卡——不是「CLI 才信任」，而是 bot 默认批准级别已近 Full access。另见：经 \`--permission-prompt-tool\` 找 MCP 工具 mcp__ogb__approve 不存在时 claude exit 1，同请试 2 次同错。作者用 \`time\` 记一次从 CLI 启动到结束约 2.8 秒（0m2.811s）。未用 enterprise／未加付费 Key。
+
+关键门禁不是「聊天 UI 已经起来」，而是分开记「引擎真正 available」与「确认卡是否在该路径出现」。
+
+本场景据此输出「Agent 合做 CLI 复用须同时报告可用引擎口径、确认卡路径与人侧抽检，不能只报 serve 200」提纲。禁止把 27 仅 1 可用／约 2.8 秒写成下一机也总会如此，或把能跑写成危险操作已门禁。`,
+    outcomes: [
+      "源披露作者在 OpenMausBot 0.1.148 上：27 种引擎列表里仅已登录 claude 为 available；一次 run 约 2.8 秒；自托管与 GUI 默认 Just do it 下删文件均无确认卡；MCP 许可工具缺失时 2 次同错 exit 1。属作者这一次环境实测，不可外推为你同样安装就等于下一机也会 27 里仅 1 可用，或约 2.8 秒就等于可当生产聊天后端。",
+      "能把「可写成同时记下 doctor／models、批准级别、MCP 工具是否存在」与「必须人完成的删文件抽检、以及是否有开源仓导流」拆开。",
+      "为把「serve 200」当成危险操作已门禁、以及把「列出 27 引擎」当成 27 都能跑提供提问清单。",
+    ],
+    caveats: [
+      "0.1.148／27／约2.8秒／Just do it／2次同错 均为作者单机实测；未做负载或多人；未声称可当生产 SLA。",
+      "文中链 https://github.com/milind-soni/OpenMausBot 属上游开源仓导流，本机 GET 200，列入可达导流；https://www.npmjs.com/package/openmausbot 现 HTTP 403，已不列入可达导流；作者系列仓 https://github.com/Matsushima-A-830/ai-100days GET 200。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / matsushima_a），不是 xAI／Anthropic 或 OpenMausBot 官方发布说明。",
+    ],
+    prompts: [
+      {
+        title: "CLI复用须同时报告可用引擎与确认卡路径",
+        body: `你是资深本地Agent复用教练。只根据用户边界写门禁，不要编造已经到的27仅1可用或2.8秒。
+
+现在是不是约只检出claude：{{whether_about_claude_only}}
+是不是约确认卡未出现：{{whether_about_no_card}}
+是不是约MCP许可工具缺失：{{whether_about_mcp_missing}}
+
+输出 Markdown：
+1. 为什么「serve 200」不能写成危险操作已门禁
+2. 应怎样同时记下doctor／models、bot批准级别、MCP工具是否存在
+3. 只有一次单机实测时，应怎样单独记账，而不是写成下一机也必然同结果
+4. 人必须完成的清单（删文件抽检、导流链）
+禁止声称「同样安装就等于下一机也总会27里仅1可用」；禁止把约2.8秒写成可当生产后端。`,
+      },
+      {
+        title: "二十七引擎与无卡删除复盘",
+        body: `报告上可以写27引擎仅claude available、约2.8秒、Just do it无卡删除、MCP工具缺失2次同错；但这是一次个人实测。请写复盘提纲。
+
+现象：{{engines_and_approval}}
+
+输出：
+1. 更像引擎检出正常，还是批准级别默认过宽
+2. 最小复验顺序（先抽available列表→再抽危险操作是否出卡→再决定能不能对外说CLI复用已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上能跑就等于下一机也总会只检出claude」，或「文档写了确认卡就等于该路径一定出现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/matsushima_a/articles/day-041-openmausbot-claude-cli",
+      label: "zenn.dev · Grok Botの代わりに、手元のClaude Code CLIをそのままチャットのバックエンドにしてみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
