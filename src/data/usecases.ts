@@ -47639,6 +47639,456 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
       dateLabel: "发布",
     },
   },
+  {
+    id: "678",
+    slug: "negima-5to6h-1h-20redo",
+    title: "negima：学祭班表从 5〜6 小时、约 20 次返工做到约 1 小时——担当手改只要 5〜15 分；HMW 试 5 次结论相同",
+    summary: "个人（negima／jun_eg）；披露自己为大学社团学祭模拟店做 Google 表格＋Apps Script 班表生成器。往年担当从零对齐希望、能不能下厨、准备与收拾规则，要 5〜6 小时、约 20 次返工。今年实战：从准备到 LINE 发放约 1 小时，担当看案手改 5〜15 分。作者本人几乎没写过代码，访谈 5 名希望侧；访谈文案与整理、HMW 与 Design Doc 多靠 Claude Code 的 skill。HMW 试过 5 次，都落到「分配是全程唯一最大瓶颈」。达成条件写了 8 条，退掉的案（只筛候选、只做违规检查、全自动定稿）都留了理由。先随便做一版摸可行性时：提交 355、合并 PR 136、Issue 155；文档胀了就把结论与 ADR 拆开，并做人读摘要／AI 读原本两层，pre-commit 与 CI 用哈希防摘要枯死。正式开发改成「交 Issue 就回 PR」，force-push、已 push 的 rebase、amend、reset --hard、往 main push／merge 用 settings.json deny 加 PreToolUse 双层拦住。未写外挂服务器或 API 费用。页上作者卡链到 X 与 GitHub。不代你同样做一版班表生成器，就等于下一届学祭也总会从 5〜6 小时缩到约 1 小时，或 HMW 也总会 5 次同一结论。",
+    description:
+      "面向已经把「班表难做」写成再加班排，却还没分开「往返 20 次」和「机器出一案、人只改例外」的人：把「案可以代出，发放前手改仍要人订」写成门禁，区别于记分册 OCR 批改，以及联盟点击报表。",
+    categories: [
+      "education",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/jun_eg/articles/school-festival-shift-apps-script",
+    sourceLabel: "zenn.dev·negima / jun_eg 实践帖",
+    upvotes: 569,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "学祭",
+      "班表",
+      "Apps Script",
+      "Design Doc",
+    ],
+    howItWorks: [
+      "粘贴班表工时边界（5〜6 小时是不是往年、约 1 小时是不是含发放、5〜15 分是不是担当手改、约 20 次是不是往返）以及「绝不可把自动出案写成班表已定稿」纪律",
+      "Agent 按实践帖输出：应怎样同时记下往返次数、手改分钟，以及 HMW／Design Doc 有没有先钉死瓶颈",
+      "人工保留访谈是不是 5 人、正式开发有没有双层拦住不可挽回操作，以及发放前有没有人过目；Agent 不代你保证「做生成器就等于下一届也总会约 1 小时」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T11:58:51.860+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T02:58:51Z、Asia/Shanghai 2026-11-06 10:58:51；bodyUpdatedAt 2026-11-06T11:58:39.754+09:00 早约 12 秒、同一日历日，取 publishedAt；页头写 2026/11/06 に公開；GET 200，UA MiraBot/1.0）：negima 在《作るから直す人へ 学祭のシフト作りを5時間から1時間にした話》写往年 5〜6 小时、约 20 次返工，今年含发放约 1 小时、手改 5〜15 分；HMW 试 5 次结论相同。页上链到作者 X 与 GitHub。主线是先把「往返」和「出一案再改例外」拆开，不是官文简报。",
+      "与 shogaku-33sheet-25score-93pct / inori-a8click-5d26-35d4 不同：本条不是记分册 OCR，也不是联盟点击报表，而是学祭班表从空白对齐到发放的工时与返工次数",
+    ],
+    approach: `negima 在《作るから直す人へ 学祭のシフト作りを5時間から1時間にした話》（页内 2026-11-06）写明：社团学祭模拟店班表往年 5〜6 小时、约 20 次返工；今年用表格上的 Apps Script 出一案，含发放约 1 小时，担当手改 5〜15 分。访谈希望侧 5 人；HMW 试 5 次都落到分配瓶颈。先摸可行性时提交 355、PR 136、Issue 155；正式开发用 Issue→PR，并对不可挽回 git 操作做 deny＋钩子双层。
+
+关键门禁不是「有了生成器就等于班表已定稿」，而是分开记往返次数与手改分钟，并核对这些数字来自哪一届实战、发放前有没有人过目。
+
+本场景据此输出「班表自动化须同时报告往返次数与手改时间，不能只报已经能生成」提纲。禁止把约 1 小时写成下一届也会到达的通用工时，或把 HMW 5 次同一结论写成任何社团都会钉死同一瓶颈。`,
+    outcomes: [
+      "源披露作者为大学社团学祭模拟店做班表工具。往年担当从零对齐希望与规则要 5〜6 小时、约 20 次返工；今年实战从准备到 LINE 发放约 1 小时，担当手改 5〜15 分。希望侧访谈 5 人；HMW 试 5 次都落到「分配是全程唯一最大瓶颈」。Design Doc 写了 8 条达成条件，并退掉只筛候选、只做违规检查、全自动定稿三案。摸可行性阶段提交 355、合并 PR 136、Issue 155。正式开发用「交 Issue 回 PR」，force-push、已 push 的 rebase、amend、reset --hard、往 main push／merge 用 settings.json deny 加 PreToolUse 双层拦住。动在担当自己的表格里，不靠外部服务器或 API 课金。属作者这一届学祭与这一套流程，不可外推为你同样做生成器就等于下一届也总会从 5〜6 小时缩到约 1 小时，或 HMW 也总会 5 次同一结论。",
+      "能把「可写成同时记下往返次数、手改分钟，以及 HMW／Design Doc 有没有先钉死瓶颈」与「必须人完成的访谈是不是 5 人、发放前有没有人过目，以及不可挽回操作是不是双层拦住」拆开。",
+      "为把约 1 小时当成下一届也会到达的通用工时、以及把 HMW 5 次同一结论当成任何社团都会钉死同一瓶颈提供提问清单。",
+    ],
+    caveats: [
+      "5〜6 小时、约 20 次返工、约 1 小时与手改 5〜15 分，均为作者对往年与今年这一届学祭的自述。摸可行性阶段的 355／136／155 是那一段仓库计数，不是正式开发全程。",
+      "作者写自己几乎不会写代码；访谈文案、HMW、Design Doc 多靠 skill。HMW 试 5 次同一结论，是这一次流程上的观察，不是对照实验。实现细项另文，本页未展开全部约束求解细节。",
+      "文中链到 https://x.com/negima_manuki 、https://github.com/jun-eg ，属账号／仓库导流。",
+      "上面写的是个人实践帖（zenn.dev / jun_eg），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "班表自动化须同时报告往返次数与手改时间门禁",
+        body: `你是资深活动排班教练。只根据用户边界写门禁，不要编造已经缩短的小时数或已经减少的返工次数。
+
+现在往年是不是 5〜6 小时、约 20 次返工：{{whether_prior_year_was_five_to_six_hours_and_about_twenty_redos}}
+今年含发放是不是约 1 小时、担当手改是不是 5〜15 分：{{whether_this_year_about_one_hour_with_five_to_fifteen_min_edits}}
+HMW 是不是试了 5 次且结论相同：{{whether_hmw_five_trials_same_conclusion}}
+
+输出 Markdown：
+1. 为什么「已经能自动出案」不能写成班表已定稿
+2. 应怎样同时记下往返次数、手改分钟，以及发放前有没有人过目
+3. 只有一届实战数字时，应怎样单独记账，而不是写成下一届也必然约 1 小时
+4. 人必须完成的清单（访谈人数、不可挽回操作有没有双层拦住、发放渠道是不是已核对）
+禁止声称「做生成器就等于下一届也总会约 1 小时」；禁止把一次 HMW 5 次同一结论写成任何社团都会钉死同一瓶颈。`,
+      },
+      {
+        title: "班表从五六小时缩到约一小时复盘",
+        body: `报告上可以写往年 5〜6 小时、约 20 次返工，今年含发放约 1 小时、手改 5〜15 分；但只有一届实战，摸可行性阶段的提交数也不能当成正式开发工时。请写复盘提纲。
+
+现象：{{festival_shift_hours_fell_after_one_draft_plus_human_edits}}
+
+输出：
+1. 更像往返被消掉，还是条件被外置后担当只改例外
+2. 最小复验顺序（先核对往返与手改→再看发放前有没有人过目→再决定能不能对外说已经缩到约 1 小时）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同一套 skill 就等于下一届也总会约 1 小时」，或「这一次 HMW 5 次就等于任何社团都会得到同一瓶颈」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jun_eg/articles/school-festival-shift-apps-script",
+      label: "zenn.dev · 作るから直す人へ 学祭のシフト作りを5時間から1時間にした話",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "679",
+    slug: "phibi-12sess-190npx-23s",
+    title: "もんすん：12 个 Claude Code 并行时 Mac 变沉——10 秒约生 190 个进程；npx 刷新约 23 秒、直调 node 约 1.2 秒",
+    summary: "个人（もんすん／phibi-soon）；披露自己用 cmux 并排跑 12 个 Claude Code 会话时，Mac 耗电明显变快。先疑 cmux，让其中一个会话查：cmux 本体 CPU 约 4%。再数 10 秒内新起进程，约 190 个，多半是 ccstatusline 相关的 npx／node／ps／stty；同时能看到约 26 个由 npx 拉起、偏长命的 node。根因是 ~/.claude/settings.json 里 statusLine 每 10 秒跑 npx -y ccstatusline@latest。同机实测：npx 一轮约 23 秒（含等待），其中 CPU 约 1.75 秒；装好后用 node 直调约 1.2 秒。按 1.75×12÷10 ≈ 2.1，约等于两颗 CPU 核一直在为状态行转。作者没选「全局安装」或「拉长间隔」，而是整段去掉 statusLine，因为平时几乎不看那一行。页上链到 cmux 仓库与官方 statusLine 文档。不代你同样并排 12 会话，就等于 10 秒也总会冒出约 190 个进程，或状态行也总会占到约两核。",
+    description:
+      "面向已经把「并行会话一多机器就沉」写成终端复用器有问题、却还没分开宿主 CPU 与定时 npx 刷新的人：把「进程清单可以代查，要不要留状态行仍要人订」写成门禁，区别于作业文件夹外写入权限，以及常驻任务斜杠技能未展开。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/phibi-soon/items/ea7eb2cf78ab6828ce70",
+    sourceLabel: "qiita.com·もんすん / phibi-soon 实践帖",
+    upvotes: 570,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "并行会话",
+      "statusLine",
+      "npx",
+      "CPU",
+    ],
+    howItWorks: [
+      "粘贴并行负载边界（12 是不是并排会话数、10 秒约 190 是不是新起进程、npx 约 23 秒对 node 约 1.2 秒、约 2.1 是不是 1.75×12÷10）以及「绝不可把电池变快写成一定是终端复用器」纪律",
+      "Agent 按实践帖输出：应怎样同时记下宿主 CPU、新起进程种类，以及 statusLine 命令与刷新间隔",
+      "人工保留测量是不是在 12 会话仍开着时做的、状态行平时有没有人看，以及去掉后电池有没有可复验变化；Agent 不代你保证「并排 12 个就等于 10 秒也总会约 190 个进程」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 datePublished／created 2026-11-08T19:53:11+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T10:53:11Z、Asia/Shanghai 2026-11-08 18:53:11；updated 2026-11-09T00:36:53+09:00 为次日凌晨同一帖修订，取发布日 2026-11-08；GET 200，UA MiraBot/1.0）：もんすん在《Claude Code12並列でMacが重い。犯人は未使用ツールのnpx起動だった》写 12 会话并行、10 秒约 190 进程、npx 约 23 秒对 node 约 1.2 秒。页上链到 cmux 仓库与官方 statusLine 文档。主线是先把宿主 CPU 和定时 npx 拆开，不是官文简报。",
+      "与 ojisan-4mode-6block-bashok / masamitsu 斜杠技能未展开 不同：本条不是外向写入权限，也不是常驻任务技能名未展开，而是并排会话下状态行定时拉起 npx 的合计负载",
+    ],
+    approach: `もんすん在《Claude Code12並列でMacが重い。犯人は未使用ツールのnpx起動だった》（页内 2026-11-08）写明：cmux 上并排 12 个会话时耗电变快；cmux 本体约 4% CPU；10 秒约生 190 个进程，多与 ccstatusline 的 npx 有关；npx 一轮约 23 秒（CPU 约 1.75 秒），node 直调约 1.2 秒；1.75×12÷10≈2.1。最后整段去掉 statusLine。
+
+关键门禁不是「并行一多就一定是终端复用器」，而是分开记宿主 CPU、新起进程与 statusLine 命令，并核对这些数字是不是在 12 会话仍开着时测的。
+
+本场景据此输出「并行负载须同时报告宿主 CPU 与定时刷新命令成本，不能只报已经开了多少会话」提纲。禁止把约 190 个进程写成下一台 Mac 上同样 12 会话的必然结果，或把约两核写成任何 statusLine 配置都会占满。`,
+    outcomes: [
+      "源披露作者在 Mac 上用 cmux 并排 12 个 Claude Code 会话时耗电变快。其中一个会话回报 cmux 本体 CPU 约 4%。10 秒内新起进程约 190 个，多半是 ccstatusline 相关的 npx／node／ps／stty；同时约 26 个由 npx 拉起的偏长命 node。settings.json 里 statusLine 每 10 秒执行 npx -y ccstatusline@latest。同机在 12 会话仍开着时测：npx 一轮约 23 秒（含等待），其中 CPU 约 1.75 秒；安装后 node 直调约 1.2 秒。按 1.75×12÷10≈2.1，约两核持续为状态行转动。作者选择整段删除 statusLine，而不是全局安装或拉长间隔，因为平时几乎不看那一行。属作者这一台 Mac、这一组 12 会话与这一次计数，不可外推为你同样并排 12 个就等于 10 秒也总会约 190 个进程，或状态行也总会占到约两核。",
+      "能把「可写成同时记下宿主 CPU、新起进程种类，以及 statusLine 命令与刷新间隔」与「必须人完成的测量是不是在 12 会话仍开着时做的、状态行平时有没有人看，以及去掉后电池有没有可复验变化」拆开。",
+      "为把约 190 个进程当成下一台机器上同样 12 会话的必然结果、以及把约两核当成任何 statusLine 都会占满提供提问清单。",
+    ],
+    caveats: [
+      "12 会话、10 秒约 190 进程、npx 约 23 秒／CPU 约 1.75 秒、node 约 1.2 秒，以及约 2.1 核估算，均为作者在自己 Mac、12 会话仍开着时的自述。秒数随环境会变。",
+      "调查是交给其中一个 Claude Code 会话做的。作者写平时几乎不看状态行，所以选择删除而不是优化；删掉之后电池「能压住」是体感，没有给出前后 mAh 或百分比表。",
+      "文中链到 https://github.com/manaflow-ai/cmux 、https://code.claude.com/docs/en/statusline ，属仓库／文档导流（作者使用的终端与官方说明，不是作者自己的付费店）。",
+      "上面写的是个人实践帖（qiita.com / phibi-soon），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "并行负载须同时报告宿主 CPU 与定时刷新成本门禁",
+        body: `你是资深本地 Agent 性能教练。只根据用户边界写门禁，不要编造已经冒出的进程数或已经占用的核数。
+
+现在并排会话是不是 12 个：{{whether_twelve_parallel_sessions}}
+10 秒新起进程是不是约 190、且多与 statusLine／npx 有关：{{whether_about_one_hundred_ninety_procs_per_ten_seconds}}
+npx 一轮是不是约 23 秒（CPU 约 1.75 秒）、node 直调约 1.2 秒：{{whether_npx_about_twenty_three_vs_node_about_one_point_two}}
+
+输出 Markdown：
+1. 为什么「电池变快」不能写成一定是终端复用器
+2. 应怎样同时记下宿主 CPU、新起进程种类，以及 statusLine 命令与刷新间隔
+3. 只有一次 10 秒计数时，应怎样单独记账，而不是写成下一台机器也必然约 190
+4. 人必须完成的清单（测量时会话是不是仍开着、状态行有没有人看、去掉后有没有可复验的耗电变化）
+禁止声称「并排 12 个就等于 10 秒也总会约 190 个进程」；禁止把一次约两核估算写成任何 statusLine 都会占满。`,
+      },
+      {
+        title: "状态行 npx 拖慢并行会话复盘",
+        body: `报告上可以写 cmux 约 4% CPU，10 秒约 190 进程，npx 约 23 秒对 node 约 1.2 秒；但计数只有一次，删掉状态行后的耗电也没有表。请写复盘提纲。
+
+现象：{{statusline_npx_dominated_parallel_session_cpu}}
+
+输出：
+1. 更像定时 npx 合计过重，还是终端复用器本身
+2. 最小复验顺序（先核宿主 CPU→再数新起进程→再决定删掉、拉长间隔还是改直调）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上直调 node 就等于下一台 12 会话也总会只剩约 1.2 秒」，或「这一次约 190 就等于任何 10 秒窗口都会冒出同样多进程」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/phibi-soon/items/ea7eb2cf78ab6828ce70",
+      label: "qiita.com · Claude Code12並列でMacが重い。犯人は未使用ツールのnpx起動だった",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "680",
+    slug: "suwa-21press-ps11-proj",
+    title: "suwa_nobu：「次から聞かない」试了 21 次——三工具里只有 Claude Code 把规则写进项目；PowerShell 11 次命令整段含令牌",
+    summary: "个人（suwa_nobu）；披露自己在 Windows 10 上，用哑元令牌 dontask-DUMMY-7f3a9c1e 与本地 127.0.0.1 试验服，测 Claude Code 2.1.319、Codex 0.167.0、Gemini CLI 0.67.0 在按「Yes, and don't ask again」后把命令写到哪里。共按 21 次。Claude Code：PowerShell 路径下请求头 9 次、URL 2 次都是整段命令入库（11／11 含令牌）；Bash 环境变量形 5／5 写成带令牌的 Bash(API_TOKEN=… curl.exe *)，Bash 请求头／URL 共 5 次写成 Bash(curl.exe *)、0／5 含令牌。三者里只有 Claude Code 往项目里的 .claude/settings.local.json 写。Codex 往家里目录写整段；Gemini CLI 默认选不了「次から聞かない」，即便打开也多半只留命令名。作者用 Apiiro／HN 说的公开库 1,122 个含密 settings 作引子，但写明正文在自己环境读不全、没复核数法。默认 auto 模式试 1 次同款 curl 没出许可屏。gitignore 若写成反斜杠路径，对 .claude/settings.local.json 可能对不上。页上链到 HN 与同系列三篇，无公司招聘脚。不代你同样按 21 次，就等于 PowerShell 也总会 11／11 整段含令牌，或三工具里也总会只有 Claude Code 写进项目。",
+    description:
+      "面向已经把「次から聞かない」写成以后更省事、却还没分开规则落点与命令里有没有秘密的人：把「落点可以代查，允不允许整段入库仍要人订」写成门禁，区别于外向 Write 权限模式实测，以及作业文件夹外写入键。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/suwa_nobu/items/8ecef4e3b495e91b4eb8",
+    sourceLabel: "qiita.com·suwa_nobu 实践帖",
+    upvotes: 571,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Codex",
+      "Gemini CLI",
+      "权限规则",
+      "秘密",
+    ],
+    howItWorks: [
+      "粘贴「次から聞かない」落点边界（21 次是不是总按键次数、PowerShell 11／11 是不是整段含令牌、是不是只有 Claude Code 写进项目）以及「绝不可把按了次から聞かない写成秘密已离开仓库」纪律",
+      "Agent 按实践帖输出：应怎样同时记下落点文件、规则是否含令牌，以及 gitignore 有没有真挡住",
+      "人工保留是不是 Windows、auto 模式有没有再测、macOS／Linux／VS Code 有没有测；Agent 不代你保证「按 21 次就等于 PowerShell 也总会 11／11 整段含令牌」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 datePublished／发布时间 2026-11-09T11:23:02+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:23:02Z、Asia/Shanghai 2026-11-09 10:23:02；updated 2026-11-09T11:25:26+09:00 同日约 2 分钟后小改，取发布日；GET 200，UA MiraBot/1.0）：suwa_nobu 在《「次から聞かない」で許したコマンドのパスワードは、どこに残るのか…》写 21 次按键、仅 Claude Code 写进项目、PowerShell 11／11 整段含令牌。页上链到 HN 与同系列三篇。主线是先把落点与秘密是否入库拆开，不是官文简报。",
+      "与 ojisan-4mode-6block-bashok / suwa 池中权限测量过密顾虑 不同：本条不是外向 Write 四模式拒绝文，而是「次から聞かない」规则文件落在项目还是家里、以及命令整段有没有令牌",
+    ],
+    approach: `suwa_nobu 在《「次から聞かない」で許したコマンドのパスワードは、どこに残るのか》（页内 2026-11-09）写明：Windows 10、哑元令牌、本地试验服，Claude Code／Codex／Gemini CLI 共按 21 次。仅 Claude Code 写入项目 settings.local.json；PowerShell 11／11 整段含令牌；Bash 环境变量形 5／5 含令牌，Bash 请求头／URL 0／5 含令牌。Codex 写家里；Gemini CLI 默认难选该选项。
+
+关键门禁不是「按了次から聞かない就更安全」，而是分开记落点与规则是否含秘密，并核对这些数字来自哪一版、是不是只在 Windows。
+
+本场景据此输出「次から聞かない须同时报告落点与是否含令牌，不能只报已经勾选」提纲。禁止把 11／11 写成下一台机器 PowerShell 也总会整段入库，或把「只有 Claude Code 写项目」写成三工具永远如此。`,
+    outcomes: [
+      "源披露作者在 Windows 10、Claude Code 2.1.319、Codex 0.167.0、Gemini CLI 0.67.0 上，用哑元令牌与 127.0.0.1 试验服测「次から聞かない」落点。共按 21 次。Claude Code：PowerShell 请求头 9／9、URL 2／2 均为整段命令入库（合计 11／11 含令牌）；Bash 环境变量形 5／5 写成带令牌的允许规则，Bash 请求头／URL 共 5 次写成 Bash(curl.exe *)、0／5 含令牌。三者里只有 Claude Code 往项目 .claude/settings.local.json 写。Codex 往家里写整段；Gemini CLI 默认选不了该选项，打开后也多半只留命令名。默认 auto 模式试 1 次同款 curl 未出许可屏。gitignore 反斜杠写法可能对不上 settings.local.json。Apiiro／HN 的 1,122 件作者写明未复核。属作者这一台 Windows 与这一组 21 次，不可外推为你同样按 21 次就等于 PowerShell 也总会 11／11 整段含令牌，或三工具里也总会只有 Claude Code 写进项目。",
+      "能把「可写成同时记下落点文件、规则是否含令牌，以及 gitignore 有没有真挡住」与「必须人完成的是不是 Windows、auto 模式与 VS Code 有没有测，以及公开库 1,122 件有没有自己复核」拆开。",
+      "为把 11／11 当成下一台 PowerShell 也总会整段入库、以及把「只有 Claude Code 写项目」当成三工具永远如此提供提问清单。",
+    ],
+    caveats: [
+      "21 次、PowerShell 11／11、Bash 5／5 与 0／5，以及仅 Claude Code 写项目，均为作者在 Windows 10 上每个条件有限次数的自述。macOS／Linux、VS Code 扩展与 Claude Desktop 未测。",
+      "URL 形曾有安全装置判成 cyber、改切 Opus 4.8 的回合。Apiiro 的 1,122 件作者写明正文读不全、未复核数法。secret scanning 能不能拦住这种形，作者写未试。",
+      "文中链到 https://news.ycombinator.com/item?id=50407882 ，以及同系列 https://qiita.com/suwa_nobu/items/314fb8cf661ef05046d3 、https://qiita.com/suwa_nobu/items/2153a88ac22db86e5a5f 、https://qiita.com/suwa_nobu/items/3cd02fa0f1cec7ea979c ，属出典／连载导流。本帖正文未挂公司招聘脚。",
+      "上面写的是个人实践帖（qiita.com / suwa_nobu），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "次から聞かない须同时报告落点与是否含令牌门禁",
+        body: `你是资深密钥落点教练。只根据用户边界写门禁，不要编造已经入库的按键次数或已经含令牌的规则数。
+
+现在总按键是不是 21 次：{{whether_twenty_one_dont_ask_again_presses}}
+PowerShell 是不是 11／11 整段含令牌：{{whether_powershell_eleven_of_eleven_kept_token}}
+是不是只有 Claude Code 把规则写进项目目录：{{whether_only_claude_code_wrote_into_project}}
+
+输出 Markdown：
+1. 为什么「按了次から聞かない」不能写成秘密已离开仓库
+2. 应怎样同时记下落点文件、规则是否含令牌，以及 gitignore 有没有真挡住
+3. 每个条件只有有限次数时，应怎样单独记账，而不是写成下一台机器也必然 11／11
+4. 人必须完成的清单（是不是 Windows、auto 模式有没有再测、公开库件数有没有自己复核）
+禁止声称「按 21 次就等于 PowerShell 也总会 11／11 整段含令牌」；禁止把一次「只有 Claude Code 写项目」写成三工具永远如此。`,
+      },
+      {
+        title: "次から聞かない把令牌写进项目复盘",
+        body: `报告上可以写 21 次里 PowerShell 11／11 整段含令牌，且只有 Claude Code 写进项目；但 macOS／Linux 未测，1,122 件也未复核。请写复盘提纲。
+
+现象：{{dont_ask_again_rules_kept_tokens_in_project_settings}}
+
+输出：
+1. 更像规则把整段命令当键，还是壳种类（PowerShell／Bash）决定了是否剥掉令牌
+2. 最小复验顺序（先核落点→再看规则是否含令牌→再决定能不能对外说已经不会进仓库）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 gitignore 就等于下一台也总会挡住 settings.local.json」，或「这一次 11／11 就等于任何请求头形都会整段入库」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/suwa_nobu/items/8ecef4e3b495e91b4eb8",
+      label: "qiita.com · 「次から聞かない」で許したコマンドのパスワードは、どこに残るのか。Claude Code・Codex・Gemini CLI で試したら、プロジェクトの中に書くのは1つだけだった",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "681",
+    slug: "yorusuzu-nul-cmd-rm-ps0",
+    title: "yorusuzu：Windows 上手造 nul——cmd 的 del\\\\?\\ 与 Git Bash 的 rm 能删；Remove-Item 结束码 0 仍留下",
+    summary: "个人（yorusuzu）；披露自己在 Windows 11 Home、PowerShell 5.1、Git Bash、Claude Code 2.1.305（测日最新 2.1.317 未复测）上，用 %TEMP% 一次性文件夹手造 nul，对照删法。能删：cmd 的 del \"\\\\?\\<フルパス>\\nul\"、Git Bash 的 rm ./nul（各案 1 次）。删不掉：PowerShell Remove-Item -LiteralPath '\\\\?\\…\\nul' 结束码 0 却仍留 2 字节；cmd 的 del nul 结束码 123。Test-Path 对真有的 nul 连试 6 次都是 False。仓库里有一个 nul 时，git add .／-A／add nul 都是 128，整次失败；.gitignore 写 nul（不要 nul/）后 add 才过。2.1.305 的 claude -p 下，> nul 与 2>nul 因要批准而未执行，cwd 未出现 nul／tmpclaude-*-cwd；Bash 有跑的 3 案里 %TEMP% 曾短暂出现 claude-<4位十六进>-cwd。页上链到作者 Zenn 书籍《Claude Code サブエージェント組織 実践ガイド》。不代你同样手造一次 nul，就等于 Remove-Item 也总会结束码 0 仍留下，或 2.1.305 也总会不在 cwd 造出 nul。",
+    description:
+      "面向已经把「nul 删不掉」写成再换一条删除命令、却还没分开结束码成功与文件还在的人：把「删法可以代试，git add 会不会整次失败仍要人订」写成门禁，区别于外向写入权限，以及 Mac 钩子搬到 Windows 的结束码表。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/yorusuzu/articles/claude-code-windows-nul-tmpclaude-cwd",
+    sourceLabel: "zenn.dev·yorusuzu 实践帖",
+    upvotes: 572,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Windows",
+      "nul",
+      "Git Bash",
+      "gitignore",
+    ],
+    howItWorks: [
+      "粘贴 nul 删除边界（cmd 的 \\\\?\\ del 与 Git Bash rm 是不是能删、Remove-Item 是不是结束码 0 仍留下、git add 是不是 128）以及「绝不可把结束码 0 写成已经删掉」纪律",
+      "Agent 按实践帖输出：应怎样同时记下结束码、删后目录清单，以及 .gitignore 写法",
+      "人工保留是不是手造 nul、PowerShell 7／最新 Claude Code 有没有测，以及 rm -rf 有没有先确认目标；Agent 不代你保证「换一条 del 就等于下一台也总会删掉」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T12:43:58.224+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T03:43:58Z、Asia/Shanghai 2026-11-09 11:43:58；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：yorusuzu 在《Claude Code の nul ファイルが消せない…》写 cmd／Git Bash 能删、Remove-Item 结束码 0 仍留下、git add 128。页上链到作者 Zenn 书籍。主线是先把结束码与文件是否还在拆开，不是官文简报。",
+      "与 ojisan-4mode-6block-bashok / takamatt 钩子搬迁 不同：本条不是外向 Write 拒绝文，也不是钩子结束码表，而是 Windows 保留名 nul 的删法与 git add 整次失败",
+    ],
+    approach: `yorusuzu 在《Claude Code の nul ファイルが消せない: cmd と Git Bash で消えた、Remove-Item は残った》（页内 2026-11-09）写明：手造 nul 后，cmd 的 del "\\\\?\\…" 与 Git Bash rm 能删；Remove-Item -LiteralPath '\\\\?\\…' 结束码 0 仍留下；git add 遇 nul 返回 128；.gitignore 写 nul 后才过。2.1.305 的 -p 下重定向到 nul 未执行，cwd 未出现 nul。
+
+关键门禁不是「换一条删除命令就等于清掉了」，而是分开记结束码与删后清单，并核对这些结果是不是各案只跑 1 次、是不是手造样本。
+
+本场景据此输出「nul 清理须同时报告结束码与删后是否还在，不能只报命令已成功」提纲。禁止把结束码 0 写成下一台也总会删掉，或把 2.1.305 未造出 nul 写成后续版本也绝不会出现。`,
+    outcomes: [
+      "源披露作者在 Windows 11 Home、PowerShell 5.1、Git Bash、Claude Code 2.1.305（测日 2026-11-03；2.1.317 及以后未复测）上，于 %TEMP% 一次性文件夹手造 nul 对照删法（各案 1 次）。能删：cmd 的 del \"\\\\?\\<フルパス>\\nul\"、Git Bash 的 rm ./nul。删不掉：Remove-Item -LiteralPath '\\\\?\\…\\nul' 结束码 0 仍留 2 字节；cmd 的 del nul 结束码 123。Test-Path 对真有的 nul 6 次皆 False。有一个 nul 时 git add .／-A／add nul 皆 128；.gitignore 写 nul（不要写成 nul/）后 add 才过。2.1.305 的 claude -p 下 > nul 与 2>nul 因要批准未执行，cwd 未出现 nul／tmpclaude-*-cwd；Bash 有跑的 3 案里 %TEMP% 曾短暂出现 claude-<4位十六进>-cwd。属作者这一台 Windows 与这一组各 1 次观察，不可外推为你同样手造一次就等于 Remove-Item 也总会结束码 0 仍留下，或 2.1.305 也总会不在 cwd 造出 nul。",
+      "能把「可写成同时记下结束码、删后目录清单，以及 .gitignore 写法」与「必须人完成的是不是手造样本、PowerShell 7／新版 Claude Code 有没有测，以及 rm -rf 有没有先确认目标」拆开。",
+      "为把结束码 0 当成下一台也总会删掉、以及把 2.1.305 未造出 nul 当成后续版本也绝不会出现提供提问清单。",
+    ],
+    caveats: [
+      "删法对照与 git add 观察均为各案 1 次的自述。PowerShell 7、macOS／Linux／WSL、对话里批准后是否造出 nul、已跟踪的 nul，作者写未测。",
+      "cwd 未出现 nul 只对 2.1.305 的 -p 与文中那几案；作者明确写最新版与其他环境不能外推。%TEMP% 里短暂名字不能断定就是本次启动所造。",
+      "文中链到 https://zenn.dev/yorusuzu/books/claude-code-agent-org-guide ，属书籍导流。文中另引用的 GitHub issue／changelog 是出典。",
+      "上面写的是个人实践帖（zenn.dev / yorusuzu），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "nul 清理须同时报告结束码与删后是否还在门禁",
+        body: `你是资深 Windows 工作区教练。只根据用户边界写门禁，不要编造已经删掉的次数或已经失败的 git add 次数。
+
+现在 cmd 的 \\\\?\\ del 与 Git Bash rm 是不是能删：{{whether_cmd_qmark_del_and_git_bash_rm_deleted_nul}}
+Remove-Item 是不是结束码 0 仍留下：{{whether_remove_item_exit_zero_but_nul_remained}}
+git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whether_git_add_failed_128_until_gitignore_nul}}
+
+输出 Markdown：
+1. 为什么「结束码 0」不能写成已经删掉
+2. 应怎样同时记下结束码、删后清单，以及 .gitignore 有没有写成 nul/ 这种无效形
+3. 各案只有 1 次时，应怎样单独记账，而不是写成下一台也必然同一结束码
+4. 人必须完成的清单（是不是手造样本、新版 Claude Code 有没有测、rm -rf 有没有先确认）
+禁止声称「换一条 del 就等于下一台也总会删掉」；禁止把一次 2.1.305 未造出 nul 写成后续版本也绝不会出现。`,
+      },
+      {
+        title: "Remove-Item 成功码仍留下 nul 复盘",
+        body: `报告上可以写 cmd／Git Bash 能删，Remove-Item 结束码 0 仍留下，git add 遇 nul 返回 128；但各案只有 1 次，新版也未复测。请写复盘提纲。
+
+现象：{{remove_item_exit_zero_left_nul_git_add_128}}
+
+输出：
+1. 更像结束码不能代表删除成功，还是路径／保留名处理不一致
+2. 最小复验顺序（先看删后清单→再试 git add→再决定用 cmd／Git Bash 还是只靠 gitignore）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 \\\\?\\ 就等于任何 Remove-Item 也总会删掉」，或「这一次 128 就等于所有仓库遇 nul 都会整次失败」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yorusuzu/articles/claude-code-windows-nul-tmpclaude-cwd",
+      label: "zenn.dev · Claude Code の nul ファイルが消せない: cmd と Git Bash で消えた、Remove-Item は残った",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "682",
+    slug: "purpom-30min-3agent-4f",
+    title: "Purpom：设计到 PR 约 30 分——3 个 Agent 分工；对照表里传统合计约 2.5 小时是事后拆开的估计",
+    summary: "团队（coa00／Purpom Media Lab）；披露在 BMG 幻灯生成功能上，用 Claude Code 的 Team：Plan 设计后改 4 个文件，再 TeamCreate 出 change-analyzer、test-planner、playwright-tester 三体，覆盖分析、测试项、Playwright E2E、复查与 PR。作者体感这一轮约 30 分；文中对照表把传统流程拆成设计 30＋实现 30＋测试项 20＋E2E 30＋复查 20＋PR 10，合计约 2.5 小时，并写明是事后按环节拆开的对照估计，不是同一任务的双盲计时。三体 API 费用作者写约 2〜3 美元（当时 Opus）。实测踩坑：UniqueInsight 已进请求仍未进幻灯，用 Chrome DevTools MCP 看网络后把用户提示位置前移才过。页上链到作者与实验室的 X／GitHub。不代你同样开三体，就等于下一轮也总会约 30 分，或传统侧也总会是约 2.5 小时。",
+    description:
+      "面向已经把「Team 一开就等于省下半天」写成可承诺工时、却还没分开这一轮体感 30 分与事后拆开的传统对照的人：把「分工可以代跑，对照工时是不是同一任务双盲仍要人订」写成门禁，区别于 grill-epic 细化会，以及配套机制把月份压短。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/purpom/articles/claude-code-team-development-workflow",
+    sourceLabel: "zenn.dev·Purpom Media Lab / coa00 实践帖",
+    upvotes: 573,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Team",
+      "Playwright",
+      "E2E",
+      "PR",
+    ],
+    howItWorks: [
+      "粘贴 Team 工时边界（约 30 分是不是这一轮体感、约 2.5 小时是不是事后拆开的对照、4 文件／3 Agent 是不是本文配置）以及「绝不可把对照表写成同一任务双盲计时」纪律",
+      "Agent 按实践帖输出：应怎样同时记下体感分钟、对照表是否事后估计，以及 E2E 失败有没有用独立工具链核实",
+      "人工保留费用约 2〜3 美元的模型与任务粒度、传统 2.5 小时有没有原始计时，以及 PR 合并前有没有人过目；Agent 不代你保证「开三体就等于下一轮也总会约 30 分」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-02-22T14:15:30.671+09:00 → 2026-02-22，同时刻为 UTC 2026-02-22T05:15:30Z、Asia/Shanghai 2026-02-22 13:15:30；bodyUpdatedAt 2026-02-23T01:23:35.515+09:00 → 日历日 2026-02-23，取 publishedAt；页头写 2026/02/22 に公開；GET 200，UA MiraBot/1.0）：coa00 在《AIエージェント3体で開発チームを組んだら、設計からPRまで30分で終わった》写这一轮约 30 分、4 文件、3 Agent；对照表传统约 2.5 小时为事后拆开估计。页上链到实验室与作者的 X／GitHub。主线是先把体感 30 分与事后对照拆开，不是官文简报。",
+      "与 h0r15h0-grillepic-stop-pbi-est / smarthr-aniyama-2mo5-to-1mo-harness 不同：本条不是细化会估计故事点，也不是配套机制把月份压短，而是一次功能改动上 Team 三体并行到 PR 的体感分钟与事后对照表",
+    ],
+    approach: `coa00 在《AIエージェント3体で開発チームを組んだら、設計からPRまで30分で終わった》（页内 2026-02-22）写明：BMG 幻灯功能用 Plan＋4 文件改动＋Team 三体（分析／测试项／Playwright）走到 PR，体感约 30 分；对照表传统合计约 2.5 小时是事后按环节拆开的估计。费用约 2〜3 美元。E2E 曾因提示位置未进幻灯，用 DevTools MCP 才定位。
+
+关键门禁不是「Team 一开就等于省下约 2 小时」，而是分开记体感分钟与对照是否双盲，并核对这些数字来自哪一次 4 文件任务。
+
+本场景据此输出「Team 工时须同时报告体感分钟与对照是否事后估计，不能只报已经开了三体」提纲。禁止把约 30 分写成下一轮任意任务也总会到达，或把约 2.5 小时写成已测得的传统基线。`,
+    outcomes: [
+      "源披露 Purpom Media Lab 在 BMG 幻灯生成功能上使用 Claude Code Team：Plan 设计后改 4 个文件，TeamCreate 出 change-analyzer、test-planner、playwright-tester，再复查与开 PR。作者写这一轮体感约 30 分。文中对照表将传统流程拆成设计 30 分、实现 30 分、测试项 20 分、E2E 30 分、复查 20 分、PR 10 分，合计约 2.5 小时，并说明是事后按环节拆开的对照估计，不是同一任务的双盲计时。三体 API 费用约 2〜3 美元（当时 Opus）。UniqueInsight 已进前端请求仍未进幻灯时，用 Chrome DevTools MCP 看网络后把用户提示位置前移再测才通过。属作者这一次 4 文件任务与这一组体感／对照，不可外推为你同样开三体就等于下一轮也总会约 30 分，或传统侧也总会是约 2.5 小时。",
+      "能把「可写成同时记下体感分钟、对照表是否事后估计，以及 E2E 失败有没有独立核实」与「必须人完成的传统 2.5 小时有没有原始计时、费用对应哪一模型，以及 PR 合并前有没有人过目」拆开。",
+      "为把约 30 分当成下一轮任意任务也总会到达、以及把约 2.5 小时当成已测得的传统基线提供提问清单。",
+    ],
+    caveats: [
+      "约 30 分是作者对这一轮的体感；约 2.5 小时是事后按环节拆开的对照估计，不是同一任务旁路计时。4 文件、3 Agent、约 2〜3 美元亦为该次自述。",
+      "Playwright／浏览器操作依赖环境，作者写测试可能不稳，需要 wait。小任务切太细时 Agent 启动成本可能反超收益。",
+      "文中链到 https://x.com/purpommedialab 、https://x.com/coa00 、https://github.com/purpom-media-lab 、https://github.com/coa00 ，属账号／仓库导流。文中另引用的 Playwright MCP 等为工具出典。",
+      "上面写的是团队实践帖（zenn.dev / purpom · coa00），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Team 工时须同时报告体感分钟与对照是否事后估计门禁",
+        body: `你是资深 Agent 编排教练。只根据用户边界写门禁，不要编造已经缩短的分钟数或已经花掉的美元。
+
+现在这一轮体感是不是约 30 分：{{whether_this_run_felt_about_thirty_minutes}}
+约 2.5 小时是不是事后拆开的对照而不是双盲计时：{{whether_two_point_five_hours_is_post_hoc_estimate}}
+是不是 4 文件、3 Agent：{{whether_four_files_and_three_agents}}
+
+输出 Markdown：
+1. 为什么「开了 Team」不能写成已经省下约 2 小时
+2. 应怎样同时记下体感分钟、对照是否事后估计，以及 E2E 失败如何核实
+3. 只有一次体感数字时，应怎样单独记账，而不是写成下一轮也必然约 30 分
+4. 人必须完成的清单（传统对照有没有原始计时、费用对应模型、PR 合并前有没有人过目）
+禁止声称「开三体就等于下一轮也总会约 30 分」；禁止把一次约 2.5 小时写成已测得的传统基线。`,
+      },
+      {
+        title: "Team 三体约三十分复盘",
+        body: `报告上可以写这一轮约 30 分、对照表传统约 2.5 小时；但 2.5 小时是事后拆开的估计，费用约 2〜3 美元也只对应当时 Opus。请写复盘提纲。
+
+现象：{{team_three_agents_felt_thirty_minutes_vs_post_hoc_two_point_five}}
+
+输出：
+1. 更像并行挡住了等待，还是任务本身只有 4 文件所以体感短
+2. 最小复验顺序（先核体感是否有原始计时→再看对照是否双盲→再决定能不能对外说省下约 2 小时）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同样三体就等于下一功能也总会约 30 分」，或「这一次约 2.5 小时就等于传统流程每次都是这个数」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/purpom/articles/claude-code-team-development-workflow",
+      label: "zenn.dev · AIエージェント3体で開発チームを組んだら、設計からPRまで30分で終わった",
+      date: "2026-02-22",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
