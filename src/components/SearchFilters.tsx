@@ -10,6 +10,20 @@ import { UseCaseCard } from "./UseCaseCard";
 const fieldClass =
   "input-dark w-full rounded-xl px-3 py-2.5 text-sm sm:py-2";
 
+const USECASE_RESULTS_ID = "usecase-results";
+
+function scrollToUseCaseResults() {
+  const target = document.getElementById(USECASE_RESULTS_ID);
+  if (!target) return;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  target.scrollIntoView({
+    behavior: reduceMotion ? "auto" : "smooth",
+    block: "start",
+  });
+}
+
 export function SearchFilters({
   hero,
   children,
@@ -131,17 +145,26 @@ export function SearchFilters({
                   {hasFilters ? "（已筛选）" : ""}
                 </p>
                 {hasFilters && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQ("");
-                      setCategory("");
-                      setPlatform("");
-                    }}
-                    className="text-xs text-indigo-300 hover:text-indigo-200 hover:underline"
-                  >
-                    清除筛选
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQ("");
+                        setCategory("");
+                        setPlatform("");
+                      }}
+                      className="text-xs text-indigo-300 hover:text-indigo-200 hover:underline"
+                    >
+                      清除筛选
+                    </button>
+                    <button
+                      type="button"
+                      onClick={scrollToUseCaseResults}
+                      className="btn-primary rounded-full px-3.5 py-1.5 text-sm font-medium"
+                    >
+                      查看结果
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
@@ -151,7 +174,11 @@ export function SearchFilters({
 
       {children}
 
-      <section aria-label="用例列表" className="space-y-4">
+      <section
+        id={USECASE_RESULTS_ID}
+        aria-label="用例列表"
+        className="scroll-mt-20 space-y-4"
+      >
         <div className="flex items-end justify-between gap-3">
           <div>
             <h2 className="text-lg font-semibold tracking-tight text-slate-50">
