@@ -48539,6 +48539,456 @@ Claude 独有是不是 66、blocking 是不是 12：{{whether_claude_sixty_six_w
       dateLabel: "发布",
     },
   },
+  {
+    id: "688",
+    slug: "zundamon-3note-2ok-7test",
+    title: "zundamon_tools：hunk 行上写 3 条笔记交给 Claude Code——2 次都未点名就把 3 处改对，npm test 各 7 件通过",
+    summary: "个人（zundamon_tools）；披露用终端差分查看器 hunk 在行上写了 3 条笔记，只对 Claude Code 说「读 hunk 的笔记并改」。2 次试验都未再说文件名／行号，3 处全部改对，还自行补了未要求的测试。npm test 两次都是 7 件通过。第 2 次差分标题从 7 files +62 增到 8 files +101；两次都未提交。样例 PR 故意放了分页偏移、吞掉 ENOENT 以外错误、设置文件损坏时静默回退等 3 个缺陷。页上链到 modem-dev/hunk、hunk.dev 文档、安装脚本、样例仓与 YouTube。不代你同样只写行上笔记，就等于下一份差分也总会 3 处全对，或 npm test 也总会 7 件通过。",
+    description:
+      "面向已经把「审 AI 改动」写成可在聊天里重打文件名与行号、却还没分开「指出哪一行」与「改对是不是已保证」的人：把「人只定要改的行，Agent 读笔记」写成门禁，区别于匿名双模型对审，以及记分册／联盟点击类测量。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/zundamon_tools/articles/hunk-review-notes-claude-code",
+    sourceLabel: "zenn.dev·zundamon_tools 实践帖",
+    upvotes: 579,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "hunk",
+      "code review",
+      "diff notes",
+      "npm test",
+    ],
+    howItWorks: [
+      "粘贴行上笔记审改边界（是不是写了 3 条笔记、是不是 2 次都未点名却 3 处全对、npm test 是不是各 7 件）以及「绝不可把装了 hunk 写成审改已保证」纪律",
+      "Agent 按实践帖输出：应怎样同时记下笔记条数、复试次数，以及未要求的测试有没有单独记账",
+      "人工保留 3／2／7 来自哪一次样例 PR、差分是不是从 +62 涨到 +101，以及合入前有没有人审；Agent 不代你保证「只写行上笔记就等于下一份差分也总会 3 处全对」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T07:12:24.920+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T22:12:24Z、Asia/Shanghai 2026-11-09 06:12:24；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：zundamon_tools 在《AIへの指摘は差分の行に書けば届く：hunk のノートを Claude Code に読ませて直す》写 3 条行上笔记、2 次都 3 处全对、npm test 各 7 件。页上链到 hunk 仓库／文档／样例／视频。主线是先把「指出哪一行」与「改对是否已保证」拆开，不是官文简报。",
+      "与 kassyi-40pr-66only-12block / shogaku-33sheet-25score-93pct 不同：本条不是匿名双模型对审，也不是记分册识别，而是人在差分行上写笔记、只让 Claude Code 读笔记来改",
+    ],
+    approach: `zundamon_tools 在《AIへの指摘は差分の行に書けば届く：hunk のノートを Claude Code に読ませて直す》（页内 2026-11-09）写明：在 hunk 差分行上写 3 条笔记，只对 Claude Code 说读笔记并改。2 次都未再点名文件与行号，3 处全对；npm test 两次各 7 件通过。第 2 次从 7 files +62 增到 8 files +101。
+
+关键门禁不是「装了 hunk 就等于审改已保证」，而是分开记笔记条数与复试是否同缺陷样例，并核对这些数字来自哪一次试验。
+
+本场景据此输出「行上笔记审改须同时报告笔记条数与复试结果，不能只报已经开了差分工具」提纲。禁止把 3 处全对写成下一份差分也总会到达，或把 7 件测试写成任何仓库都会通过的通用数。`,
+    outcomes: [
+      "源披露作者用终端差分查看器 hunk（modem-dev，MIT，文内写最新 v0.24.1／2026-10-25）在样例 PR 的 3 行上写笔记，只让 Claude Code「读 hunk 的笔记并改」。故意放入的 3 个缺陷（分页偏移、吞错、设置损坏静默）在 2 次试验中都未再点名文件／行号即全部改对，并自行补了未要求的测试；npm test 两次都报告 7 件通过。第 2 次差分标题从 7 files +62 变为 8 files +101；两次均未提交。属作者这一次样例与这两次试验，不可外推为你同样只写行上笔记就等于下一份差分也总会 3 处全对，或 npm test 也总会 7 件通过。",
+      "能把「可写成同时记下笔记条数、复试次数，以及未要求测试有没有单独记账」与「必须人完成的选定要改的行、合入前有没有人审，以及样例是不是故意缺陷」拆开。",
+      "为把 3 处全对当成下一份差分也总会到达、以及把 7 件测试当成任何仓库都会通过的通用数提供提问清单。",
+    ],
+    caveats: [
+      "3／2／7 与 +62→+101 均为作者对同一样例 PR 的两次试验自述，不是多仓库对照。测试文件名两次不同（io.test.js／load.test.js），同请求不会得到同一差分。",
+      "hunk 与 review skill 依赖本机 Node／npx；官方仍在迭代。页上有约 9 分钟解说视频。",
+      "文中链到 https://github.com/modem-dev/hunk 、https://github.com/zun-tools/hunk-review-sample 、https://www.hunk.dev/docs/agents/review-with-an-agent 、https://hunk.dev/install.sh 、https://youtu.be/m1wE9CddG8M?t=217 等，属产品／仓库／视频导流。",
+      "上面写的是个人实践帖（zenn.dev / zundamon_tools），不是 Anthropic 或 modem-dev 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "行上笔记审改须同时报告笔记条数与复试结果门禁",
+        body: `你是资深 Agent 代码审改教练。只根据用户边界写门禁，不要编造已经改对的处数或已经通过的测试数。
+
+现在是不是在差分行上写了约 3 条笔记：{{whether_about_three_hunk_notes}}
+是不是约 2 次复试都未点名却约 3 处全对：{{whether_two_trials_three_fixes_without_pointing}}
+npm test 是不是各约 7 件通过：{{whether_npm_test_seven_each}}
+
+输出 Markdown：
+1. 为什么「开了差分工具」不能写成审改已保证
+2. 应怎样同时记下笔记条数、复试次数，以及未要求测试有没有单独记账
+3. 只有一次样例数字时，应怎样单独记账，而不是写成下一份差分也必然 3 处全对
+4. 人必须完成的清单（选定要改的行、合入前有没有人审、样例是不是故意缺陷）
+禁止声称「装 hunk 就等于下一份差分也总会 3 处全对」；禁止把一次 7 件写成任何仓库都会通过的通用数。`,
+      },
+      {
+        title: "三笔记两试与七测通过复盘",
+        body: `报告上可以写 3 条笔记、2 次都 3 处全对、npm test 各 7 件；但那是同一样例 PR 的自述，测试落点两次还不同。请写复盘提纲。
+
+现象：{{three_notes_two_trials_seven_tests}}
+
+输出：
+1. 更像行上笔记降低了定位成本，还是样例缺陷太好认
+2. 最小复验顺序（先核笔记原文→再看两次差分是否同形→再决定能不能对外说 3 处全对）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 hunk 就等于下一份差分也总会 3 处全对」，或「这一次 7 件就等于任何仓库都会通过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/zundamon_tools/articles/hunk-review-notes-claude-code",
+      label: "zenn.dev · AIへの指摘は差分の行に書けば届く：hunk のノートを Claude Code に読ませて直す",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "689",
+    slug: "mizoko-3pass-20then5-40fix",
+    title: "mizo_ko：资料内容审查改成 3 个全新 Agent 直列——首轮约 20 件，后两轮各再出 5〜10；合计实改约 30〜40 件",
+    summary: "个人（mizo_ko／PM）；披露用 Claude 审设计书与比较资料时，1 轮平均约出 20 件指摘，但第 2、第 3 轮仍各会新出约 5〜10 件。于是规定内容审查必须用全新 Agent 直列跑 3 轮：禁止并行；后轮要带上前轮指摘表；中途 0 件也不能省略；出最终稿前 3 轮都要结束。Agent 只出指摘、不改正文；区分与是否修改由作者定。3 轮合计作者实际改过约 30〜40 件。配上过去指摘汇成的观点表之后，以前含细项约收 10 件指摘，后段降到约 2〜3 件。页上无外链商店／试用导流。不代你同样改成 3 轮直列，就等于下一份资料也总会先见到约 20 件，或合计也总会实改约 30〜40 件。",
+    description:
+      "面向已经把「AI 审过一轮」写成可出稿、却还没分开首轮覆盖与后轮新指摘的人：把「必须全新 Agent 直列三轮」写成门禁，区别于匿名双模型对审 PR，以及行上笔记一次改对。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/mizo_ko/articles/article-003-zenn",
+    sourceLabel: "zenn.dev·mizo_ko 实践帖",
+    upvotes: 580,
+    trending: false,
+    tags: [
+      "Claude",
+      "document review",
+      "serial agents",
+      "PM",
+      "checklist",
+    ],
+    howItWorks: [
+      "粘贴三轮直列审查边界（首轮是不是约 20 件、后两轮是不是各约 5〜10、实改是不是约 30〜40）以及「绝不可把跑过一轮写成指摘已穷尽」纪律",
+      "Agent 按实践帖输出：应怎样同时记下每轮新指摘数、是否全新会话，以及人有没有保留改或不改的最终权",
+      "人工保留约 20／5〜10／30〜40 来自哪一类资料、观点表引入前后是不是从约 10 降到约 2〜3；Agent 不代你保证「三轮直列就等于下一份资料也总会实改约 30〜40」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T16:10:06.298+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T07:10:06Z、Asia/Shanghai 2026-11-08 15:10:06；bodyUpdatedAt 2026-11-08T16:00:06.323+09:00 略早于 publishedAt、同一日历日，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：mizo_ko 在《AIの資料レビューは1回で終わらせない…》写首轮约 20、后轮各 5〜10、实改约 30〜40。页上未见外链商店／试用导流。主线是先把「一轮审过」与「后轮新指摘」拆开，不是官文简报。",
+      "与 kassyi-40pr-66only-12block / zundamon-3note-2ok-7test 不同：本条不是匿名对审修 bug PR，也不是差分行上笔记，而是资料内容审查用全新 Agent 直列三轮",
+    ],
+    approach: `mizo_ko 在《AIの資料レビューは1回で終わらせない。まっさらなエージェントを3回直列で回す手順書》（页内 2026-11-08）写明：1 轮平均约 20 件指摘，第 2、第 3 轮仍各新出约 5〜10 件。规定必须全新 Agent 直列 3 轮，禁止并行，后轮带前轮指摘表。Agent 只出指摘；作者 3 轮合计实改约 30〜40 件。
+
+关键门禁不是「跑过一轮就等于指摘已穷尽」，而是分开记每轮新指摘与是否全新会话，并核对这些区间来自哪一类资料。
+
+本场景据此输出「资料审查须同时报告每轮新指摘与人是否保留改稿权，不能只报已经 AI 审过」提纲。禁止把约 20 写成下一份资料首轮也总会到达，或把约 30〜40 写成任何资料都会实改到的通用件数。`,
+    outcomes: [
+      "源披露作者以 PM 身份用 Claude 审设计书与比较资料：1 轮平均约出 20 件指摘，第 2、第 3 轮仍各新出约 5〜10 件。内容审查改为每次用全新 Agent 直列 3 轮（禁并行；后轮输入含前轮指摘表；中途 0 件也不省略；3 轮结束前不准出最终稿）。Agent 只出指摘、不改正文；区分与是否修改由作者定。3 轮合计实际修改约 30〜40 件；配上过去指摘汇成的观点表后，以前含细项约收 10 件，后段约 2〜3 件。属作者这一类资料与这一套直列规则，不可外推为你同样改成 3 轮直列就等于下一份资料也总会先见到约 20 件，或合计也总会实改约 30〜40 件。",
+      "能把「可写成同时记下每轮新指摘数、是否全新会话，以及人有没有保留改或不改的最终权」与「必须人完成的区分判定、图示取舍，以及观点表有没有更新」拆开。",
+      "为把约 20 当成下一份资料首轮也总会到达、以及把约 30〜40 当成任何资料都会实改到的通用件数提供提问清单。",
+    ],
+    caveats: [
+      "约 20／5〜10／30〜40 与后来的约 10→2〜3 均为作者对自身资料审查的区间自述，不是多团队对照。页上未给逐轮原始表。",
+      "作者写清：此流程主要拾遗漏与错误；版式／图示取舍仍要人。前提交代不清时效果会差。",
+      "本页未见外链商店／试用／Newsletter／招聘导流；交审时无额外可达导流 URL 可列。",
+      "上面写的是个人实践帖（zenn.dev / mizo_ko），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "资料审查须同时报告每轮新指摘与人改稿权门禁",
+        body: `你是资深资料审查教练。只根据用户边界写门禁，不要编造已经出现的指摘件数或已经实改的件数。
+
+现在首轮是不是约 20 件指摘：{{whether_first_pass_about_twenty}}
+后两轮是不是各约 5〜10 件新指摘：{{whether_later_passes_about_five_to_ten}}
+三轮合计是不是实改约 30〜40 件：{{whether_total_fixed_about_thirty_to_forty}}
+
+输出 Markdown：
+1. 为什么「AI 审过一轮」不能写成指摘已穷尽
+2. 应怎样同时记下每轮新指摘、是否全新会话，以及人是否保留改稿权
+3. 只有区间自述时，应怎样单独记账，而不是写成下一份资料也必然约 20
+4. 人必须完成的清单（区分判定、图示取舍、观点表有没有更新）
+禁止声称「三轮直列就等于下一份资料也总会实改约 30〜40」；禁止把一次约 20 写成任何资料首轮都会到达的通用数。`,
+      },
+      {
+        title: "三轮直列与三十到四十实改复盘",
+        body: `报告上可以写首轮约 20、后轮各 5〜10、实改约 30〜40；但那是作者区间自述，页上未给逐轮原始表。请写复盘提纲。
+
+现象：{{three_serial_passes_thirty_to_forty_fixes}}
+
+输出：
+1. 更像后轮输入前轮表抬出了漏项，还是资料本身不稳定
+2. 最小复验顺序（先核是否全新会话→再看后轮是否真有新项→再决定能不能对外说必须三轮）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上观点表就等于下一份资料也总会先见到约 20」，或「这一次 30〜40 就等于任何资料都会实改到这个数」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mizo_ko/articles/article-003-zenn",
+      label: "zenn.dev · AIの資料レビューは1回で終わらせない。まっさらなエージェントを3回直列で回す手順書",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "690",
+    slug: "hoshino-sessgrep-323-253-5",
+    title: "hoshinotsuyoshi：不做索引、直接 rg 读 Claude／Codex 会话——同词 rg 323 文件，session-grep --all 253 会话，默认只剩 5",
+    summary: "个人（hoshinotsuyoshi）；披露做了 session-grep：直接读 ~/.claude/projects 与 ~/.codex/sessions 的 jsonl，按会话给出「谈了什么」与 resume 命令，并可作为 Claude Code skill 给 agent 用。2026-11-08 用近两周 Claude Code 日志、以某自作 skill 名为词：rg -l -F 命中 323 个文件（含 subagent）；session-grep --all 得到 253 个会话；默认（只显示人／agent 发言命中）只剩 5 个会话——其余多半只是 skill 名单里带了这个名字。页上链到本仓与若干相关检索项目。不代你同样装 session-grep，就等于下一份日志里同词也总会是 323／253／5。",
+    description:
+      "面向已经把「用 rg 搜 jsonl」写成可找回前情、却还没分开「文件命中」与「真谈过该 skill」的人：把「按发言种类过滤会话」写成门禁，区别于 NAS 搜索 MCP，以及 8h／28h 工时对照。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/hoshinotsuyoshi/articles/52f707d4de485d",
+    sourceLabel: "zenn.dev·hoshinotsuyoshi 实践帖",
+    upvotes: 581,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Codex",
+      "session-grep",
+      "rg",
+      "JSONL",
+    ],
+    howItWorks: [
+      "粘贴会话检索边界（rg 是不是约 323 文件、--all 是不是约 253 会话、默认是不是约 5）以及「绝不可把装了 CLI 写成前情已自动找回」纪律",
+      "Agent 按实践帖输出：应怎样同时记下文件命中、会话命中，以及默认过滤有没有把只出现在 skill 名单里的会话去掉",
+      "人工保留 323／253／5 来自哪一天哪一个 skill 名、输出示例是不是架空日志，以及 resume 前有没有人确认；Agent 不代你保证「装 session-grep 就等于下一份日志也总会是 323／253／5」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T01:10:34.439+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T16:10:34Z、Asia/Shanghai 2026-11-09 00:10:34；bodyUpdatedAt 2026-11-09T01:41:06.274+09:00 同日约 30 分钟后，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：hoshinotsuyoshi 在《索引を作らずに…session-grepをつくった》写 323／253／5。页上链到本仓与相关项目。主线是先把文件命中与真谈过拆开，不是官文简报。",
+      "与 nhira-5d-nas-162test-1333 / hoshino-8h-vs-28h-12h 不同：本条不是 NAS 搜索 MCP，也不是同作者的 8h／28h 工时对照，而是直接 rg 读会话 jsonl 并按发言种类过滤",
+    ],
+    approach: `hoshinotsuyoshi 在《索引を作らずに Claude Code と codex の過去セッションを探す session-grepをつくった》（页内 2026-11-09）写明：不做索引，直接 rg 读 Claude／Codex 的 jsonl。2026-11-08 近两周日志里，同 skill 名：rg 323 文件，session-grep --all 253 会话，默认 5 会话。
+
+关键门禁不是「能搜到文件就等于找回了前情」，而是分开记文件命中与默认过滤后的会话数，并核对这些数字来自哪一天哪一个词。
+
+本场景据此输出「会话检索须同时报告文件命中与发言过滤后的会话数，不能只报已经 rg 过」提纲。禁止把 323／253／5 写成下一份日志也总会到达的通用比，或把 resume 命令写成 agent 可自行恢复会话。`,
+    outcomes: [
+      "源披露作者公开 session-grep：直接读 ~/.claude/projects 与 ~/.codex/sessions 的 jsonl，按会话输出题名、命中与 resume 命令，并可作为 Claude Code skill。2026-11-08 近两周 Claude Code 日志、以某自作 skill 名为固定词：rg -l -F 命中 323 个文件（含 subagent）；session-grep --all 得到 253 个会话；默认（人／agent 发言才算出）只剩 5 个会话——作者写其余多半只是 skill 名单里带名。文内命令输出示例标明为架空日志。属作者这一天这一词的测量，不可外推为你同样装 session-grep 就等于下一份日志里同词也总会是 323／253／5。",
+      "能把「可写成同时记下文件命中、会话命中，以及默认过滤有没有去掉只出现在名单里的会话」与「必须人完成的是否真要 resume、--repo 是否漏掉跨仓会话，以及示例是不是架空」拆开。",
+      "为把 323／253／5 当成下一份日志也总会到达的通用比、以及把 resume 行当成 agent 可自行恢复提供提问清单。",
+    ],
+    caveats: [
+      "323／253／5 是 2026-11-08 近两周、某一个自作 skill 名的一次对比；不是全历史或全用户基准。文内演示输出为架空日志。",
+      "作者写清：--repo 按启动 cwd 判定；跨仓改 dotfiles 的会话可能漏；常见词全期搜索可能要数秒；尚无命中行前后文视图。skill 约定 agent 不自行 resume，把命令交给人。",
+      "文中链到 https://github.com/hoshinotsuyoshi/session-grep ，并列举 https://github.com/Dicklesworthstone/coding_agent_session_search 、https://github.com/matz/spinel 、https://github.com/nicosuave/memex 、https://github.com/zippoxer/recall 等，属仓库／相关项目导流。",
+      "上面写的是个人实践帖（zenn.dev / hoshinotsuyoshi），不是 Anthropic 或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "会话检索须同时报告文件命中与发言过滤后会话数门禁",
+        body: `你是资深 Agent 会话检索教练。只根据用户边界写门禁，不要编造已经命中的文件数或会话数。
+
+现在 rg 是不是约 323 个文件：{{whether_rg_about_three_hundred_twenty_three_files}}
+session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_fifty_three_sessions}}
+默认过滤后是不是约 5 个会话：{{whether_default_about_five_sessions}}
+
+输出 Markdown：
+1. 为什么「rg 能搜到 jsonl」不能写成前情已找回
+2. 应怎样同时记下文件命中、--all 会话数，以及默认发言过滤
+3. 只有一天一个词的数字时，应怎样单独记账，而不是写成下一份日志也必然 323／253／5
+4. 人必须完成的清单（是否真要 resume、示例是不是架空、--repo 会不会漏）
+禁止声称「装 session-grep 就等于下一份日志也总会是 323／253／5」；禁止把 resume 行写成 agent 可自行恢复。`,
+      },
+      {
+        title: "三百二十三文件与五会话复盘",
+        body: `报告上可以写 323／253／5；但那是某一天某一个 skill 名的对比，演示输出还是架空日志。请写复盘提纲。
+
+现象：{{three_two_three_files_five_sessions}}
+
+输出：
+1. 更像 meta／skill 名单造成假命中，还是检索词本身过宽
+2. 最小复验顺序（先核默认过滤规则→再抽查 5 个会话是否真谈过→再决定能不能对外说只要默认模式）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 session-grep 就等于下一份日志也总会是 323／253／5」，或「这一次 5 就等于所有词都只剩五个真会话」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hoshinotsuyoshi/articles/52f707d4de485d",
+      label: "zenn.dev · 索引を作らずに Claude Code と codex の過去セッションを探す session-grepをつくった",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "691",
+    slug: "hotskills-849repo-78pct-net",
+    title: "hotskills：每小时给 Agent 技能仓做排名——已跟踪 6,400+ 仓／约 8.4 万技能；热门 849 仓里 77.6% 含网络或宽壳",
+    summary: "个人（hotskills）；披露做了 hotskills.dev：从 GitHub 搜技能仓，用文件树判定（不用 LLM），每小时更新星标。当时跟踪 6,400 以上仓库、约 8.4 万个按 SKILL.md 内容哈希去重的技能。10 月已检查完当前提交的热门仓 849 个：仅指示 10.1%、有本地脚本 12.3%、含网络调用或宽壳 77.6%。另对 52,571 个技能估了 token：frontmatter 中位 114，SKILL.md 中位 1,353，上四分位 ≥2,394；装 10 个技能约常驻 1,100 token。10 月一个月技能相关仓星标 +987,550（+12.0%）、新仓 513。安装命令钉在已检查提交。页上链到站点、方法页、10 月报告与只读 MCP。不代你同样看排名，就等于下一份热门样本也总会是 77.6% 含网络或宽壳，或星标也总会一个月 +12.0%。",
+    description:
+      "面向已经把「装个技能就开干」写成可默认安全、却还没分开「星标热门」与「会不会出网／宽壳」的人：把「安装前看执行面信号」写成门禁，区别于技能名未展开、以及费用／Effort 主题。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/hotskills/articles/f346c6bfe61fec",
+    sourceLabel: "zenn.dev·hotskills 实践帖",
+    upvotes: 582,
+    trending: false,
+    tags: [
+      "agent skills",
+      "SKILL.md",
+      "security signals",
+      "ranking",
+      "MCP",
+    ],
+    howItWorks: [
+      "粘贴技能仓排名边界（热门样本是不是约 849、网络或宽壳是不是约 77.6%、跟踪规模是不是 6,400+／约 8.4 万）以及「绝不可把热门写成已安全」纪律",
+      "Agent 按实践帖输出：应怎样同时记下执行面占比、token 中位，以及安装命令有没有钉在已检查提交",
+      "人工保留 77.6%／849 来自哪一版 10 月样本、信号是不是自动而非保证，以及站点是不是产品导流；Agent 不代你保证「看了排名就等于下一份样本也总会是 77.6%」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T17:11:08.643+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T08:11:08Z、Asia/Shanghai 2026-11-07 16:11:08；bodyUpdatedAt 2026-11-07T18:03:07.885+09:00 同日约 52 分钟后，取 publishedAt；页头写 2026/11/07 に公開；GET 200，UA MiraBot/1.0）：hotskills 在《エージェントスキルのリポジトリを毎時ランキングしてわかったこと…》写 6,400+／8.4 万、849 仓中 77.6% 含网络或宽壳。页上链到站点／方法／10 月报告。主线是先把热门与执行面拆开，不是官文简报。",
+      "与 joinclass-13skill-6mo-832allow / masamitsu 技能未读 不同：本条不是本机技能是否展开，而是公开技能仓的执行面排名与 token 中位",
+    ],
+    approach: `hotskills 在《エージェントスキルのリポジトリを毎時ランキングしてわかったこと：人気リポジトリの78%がネットワークか広いシェルを使う》（页内 2026-11-07）写明：跟踪 6,400+ 仓／约 8.4 万技能；10 月热门已检 849 仓中 77.6% 含网络或宽壳；并给出 token 中位与 10 月星标增长。
+
+关键门禁不是「热门就等于可默认安装」，而是分开记执行面信号与星标，并核对这些比例来自哪一版样本。
+
+本场景据此输出「安装公开技能前须同时报告执行面信号与是否钉提交，不能只报星标」提纲。禁止把 77.6% 写成下一份样本也总会到达的通用危险率，或把自动信号写成已人工审计。`,
+    outcomes: [
+      "源披露作者做 hotskills.dev：用 GitHub 搜索与文件树判定技能仓（判定不用 LLM），星标每小时更新。当时跟踪 6,400 以上仓库、约 8.4 万个按 SKILL.md 内容哈希去重的技能。10 月已检查当前提交的热门仓 849 个：仅指示 10.1%、有本地脚本 12.3%、含网络调用或宽壳 77.6%（作者写这不等于「危险」，但是安装前要看的理由；信号带文件名行号，属自动信号非保证）。另估 52,571 个技能的 token：frontmatter 中位 114，SKILL.md 中位 1,353，上 25% ≥2,394；装 10 个约常驻 1,100 token。10 月一个月相关仓星标 +987,550（+12.0%）、新仓 513。安装命令钉在已检查提交。属作者这一版跟踪与这一份 10 月切片，不可外推为你同样看排名就等于下一份热门样本也总会是 77.6% 含网络或宽壳，或星标也总会一个月 +12.0%。",
+      "能把「可写成同时记下执行面占比、token 中位，以及安装命令有没有钉提交」与「必须人完成的是否接受出网／宽壳、信号是不是误报，以及站点是否产品导流」拆开。",
+      "为把 77.6% 当成下一份样本也总会到达的通用危险率、以及把自动信号当成已人工审计提供提问清单。",
+    ],
+    caveats: [
+      "77.6%／849／6,400+／8.4 万均为作者站点当时切片；10 月报告与方法页为同源产品说明。自动信号不是安全保证。",
+      "作者提供只读 MCP（文内写官方 MCP Registry：dev.hotskills/hotskills），密钥写免费；可用性随对方服务变化。",
+      "文中链到 https://hotskills.dev 、https://hotskills.dev/methodology/ 、https://hotskills.dev/state/2026-10/ ，属产品／报告导流。",
+      "上面写的是个人实践帖（zenn.dev / hotskills），不是 Anthropic／OpenAI／Cursor 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "安装公开技能前须同时报告执行面信号与钉提交门禁",
+        body: `你是资深 Agent 技能安全教练。只根据用户边界写门禁，不要编造已经统计到的仓数或比例。
+
+现在热门已检样本是不是约 849：{{whether_popular_sample_about_eight_hundred_forty_nine}}
+网络或宽壳占比是不是约 77.6%：{{whether_network_or_broad_shell_about_seventy_seven_point_six}}
+跟踪规模是不是 6,400+ 仓／约 8.4 万技能：{{whether_tracking_sixty_four_hundred_plus}}
+
+输出 Markdown：
+1. 为什么「星标热门」不能写成可默认安装
+2. 应怎样同时记下执行面信号、token 中位，以及安装是否钉在已检查提交
+3. 只有一份 10 月切片时，应怎样单独记账，而不是写成下一份样本也必然 77.6%
+4. 人必须完成的清单（是否接受出网／宽壳、信号是否误报、站点是否产品导流）
+禁止声称「看了排名就等于下一份样本也总会是 77.6%」；禁止把自动信号写成已人工审计。`,
+      },
+      {
+        title: "八百四十九仓与七十七点六占比复盘",
+        body: `报告上可以写 849 仓中 77.6% 含网络或宽壳；但那是作者 10 月已检热门切片，信号还是自动的。请写复盘提纲。
+
+现象：{{eight_forty_nine_repos_seventy_seven_point_six_pct}}
+
+输出：
+1. 更像热门技能本来就要出网，还是宽壳规则过宽
+2. 最小复验顺序（先抽查信号文件名行号→再看是否钉提交→再决定能不能对外说热门大多要出网）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 hotskills 就等于下一份样本也总会是 77.6%」，或「这一次 +12.0% 星标就等于下个月也同样涨」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hotskills/articles/f346c6bfe61fec",
+      label: "zenn.dev · エージェントスキルのリポジトリを毎時ランキングしてわかったこと：人気リポジトリの78%がネットワークか広いシェルを使う",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "692",
+    slug: "datarobot-gap-41-to-31-cve0",
+    title: "DataRobot Japan：Agent Gap Analysis 扫自作小应用——初评 41 件 RE-PLATFORM；修完剩 31 件，依赖已知 CVE 归零",
+    summary: "团队（DataRobot Japan Tech／小川幹雄）；披露用公开的 datarobot-gap-analysis 技能，把自作小 Agent 应用部署到 Workload API 后做生产就绪度评分。初评 41 件（HIGH 15／MEDIUM 19／LOW 7），Posture 为 RE-PLATFORM；其中 structural 17 件，high structural 9 件触发「≥4 即 RE-PLATFORM」。--fix 后再 --verify：41→34，HIGH 15→11，约 3 分钟；但测试／CI 类有「文件在不在」即过的空洞。再把报告与差分交给 Claude Code 等 AI 编码收尾后：31 件，HIGH／MEDIUM／LOW 为 10／14／7，Layer1 扫描仪 11→3，依赖已知 CVE 归零，并补上有内容的测试 25 本与能跑通的 CI。剩 HIGH 10 件里 8 件是策略向 structural，作者写要用改部署方式关闭。页上链到技能仓；npm 包页与 docs.datarobot.com、联系页本机 GET 现 403。不代你同样跑 Gap Analysis，就等于下一应用也总会从 41 收到 31，或 CVE 也总会归零。",
+    description:
+      "面向已经把「有安全扫描」写成可上生产、却还没分开自动 --fix 计数与策略向 structural 的人：把「再评分件数不能当唯一验收」写成门禁，区别于个人行上笔记审改，以及热门技能仓执行面排名。",
+    categories: [
+      "enterprise",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/datarobotjp/articles/3d450781e9e77b",
+    sourceLabel: "zenn.dev·DataRobot Japan Tech / miogawa 实践帖",
+    upvotes: 583,
+    trending: false,
+    tags: [
+      "DataRobot",
+      "Agent Gap Analysis",
+      "security",
+      "RE-PLATFORM",
+      "CVE",
+    ],
+    howItWorks: [
+      "粘贴 Gap Analysis 边界（初评是不是 41／RE-PLATFORM、收尾后是不是 31、依赖 CVE 是不是归零）以及「绝不可把 --verify 减件写成已可上生产」纪律",
+      "Agent 按实践帖输出：应怎样同时记下初评／--fix 后／收尾后三张表，以及 structural／策略指摘有没有单独列出",
+      "人工保留 41／34／31 与 25 本测试来自哪一次自作应用、npm／文档链是不是 403，以及剩 HIGH 是不是部署策略问题；Agent 不代你保证「跑了 Gap Analysis 就等于下一应用也总会收到 31 且 CVE 归零」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T10:13:05.062+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T01:13:05Z、Asia/Shanghai 2026-11-09 09:13:05；bodyUpdatedAt 2026-11-07T11:48:00.540+09:00 早于发布日，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：miogawa 在 DataRobot Japan Tech《Agent Gap Analysis…》写 41→34→31 与 CVE 归零。页上链到技能仓；npm／docs／联系页本机现 403。主线是先把自动减件与策略 structural 拆开，不是官文简报。",
+      "与 zundamon-3note-2ok-7test / hotskills-849repo-78pct-net 不同：本条不是个人差分笔记，也不是公开技能仓排名，而是团队用 Gap Analysis 技能对自作 Agent 应用做生产就绪度再评分",
+    ],
+    approach: `DataRobot Japan Tech 的小川幹雄在《Agent Gap Analysis：AI エージェントの本番準備度を診断する DataRobot のスキル》（页内 2026-11-09）写明：对自作小 Agent 应用跑 Gap Analysis，初评 41 件 RE-PLATFORM；--fix＋--verify 到 34；再经 AI 编码收尾到 31，依赖已知 CVE 归零。
+
+关键门禁不是「--verify 减件就等于可上生产」，而是分开记自动修正与策略向 structural，并核对这些件数来自哪一次自作应用。
+
+本场景据此输出「Gap Analysis 须同时报告三张评分表与剩余 structural，不能只报件数下降」提纲。禁止把 41→31 写成下一应用也总会到达的减件曲线，或把 CVE 归零写成策略指摘已关闭。`,
+    outcomes: [
+      "源披露 DataRobot Japan Tech 作者把自作小 Agent 应用部署到 Workload API，用公开 datarobot-gap-analysis 技能评分：初评 41 件（HIGH 15／MEDIUM 19／LOW 7），Posture RE-PLATFORM；structural 17 件，high structural 9 件触发「≥4 即 RE-PLATFORM」。Layer2 约 151 秒、LLM 调用约 65 次、输入约 92 万／输出约 1.5 万 token。--fix 后再 --verify：41→34，HIGH 15→11，约 3 分钟；作者发现测试／CI 类存在「有文件即过」的空洞。再交 Claude Code 等收尾：31 件（10／14／7），Layer1 11→3，依赖已知 CVE 归零，并补有内容测试 25 本与可跑通 CI。剩 HIGH 10 中 8 件为策略向 structural，作者写需改部署方式。属这一次自作应用与这一次技能跑法，不可外推为你同样跑 Gap Analysis 就等于下一应用也总会从 41 收到 31，或 CVE 也总会归零。",
+      "能把「可写成同时记下初评／--fix 后／收尾后三张表，以及 structural 有没有单独列出」与「必须人完成的差分是否只是新建空文件、剩 HIGH 是否部署策略，以及 403 文档链有没有另核」拆开。",
+      "为把 41→31 当成下一应用也总会到达的减件曲线、以及把 CVE 归零当成策略指摘已关闭提供提问清单。",
+    ],
+    caveats: [
+      "41／34／31 与 25 本测试均为作者对自作小应用的一次跑法；Posture 始终 RE-PLATFORM。--verify 改善件数不可直接当验收。",
+      "技能仓公开且写明非 DataRobot 自研 Agent 也可用；--fix 只在 gap-fixes/* 分支改、不自动开 PR。文内另链同刊前文。",
+      "文中链到 https://github.com/datarobot-oss/datarobot-agent-skills （可达导流）。https://www.npmjs.com/package/opencode-datarobot-skills 、https://docs.datarobot.com/ 、出版说明里的 https://www.datarobot.com/jp/contact-us/ 本机 GET 现 HTTP 403，已不列入可达导流。",
+      "上面写的是团队实践帖（zenn.dev / DataRobot Japan Tech · miogawa），不是 Anthropic 的官文简报；DataRobot 产品文档链本次未能以 200 核达。",
+    ],
+    prompts: [
+      {
+        title: "Gap Analysis 须同时报告三张评分表与剩余 structural 门禁",
+        body: `你是资深 Agent 生产就绪度教练。只根据用户边界写门禁，不要编造已经降下来的指摘件数或已经归零的 CVE 数。
+
+现在初评是不是约 41 件且 RE-PLATFORM：{{whether_initial_about_forty_one_replatform}}
+收尾后是不是约 31 件：{{whether_after_polish_about_thirty_one}}
+依赖已知 CVE 是不是归零：{{whether_known_cve_zero}}
+
+输出 Markdown：
+1. 为什么「--verify 减件」不能写成已可上生产
+2. 应怎样同时记下初评／--fix 后／收尾后三张表，以及 structural／策略指摘
+3. 只有一次自作应用数字时，应怎样单独记账，而不是写成下一应用也必然 41→31
+4. 人必须完成的清单（差分是不是空文件、剩 HIGH 是否部署策略、403 文档链有没有另核）
+禁止声称「跑了 Gap Analysis 就等于下一应用也总会收到 31」；禁止把 CVE 归零写成策略指摘已关闭。`,
+      },
+      {
+        title: "四十一到三十一与 CVE 归零复盘",
+        body: `报告上可以写 41→34→31 且依赖 CVE 归零；但 Posture 仍是 RE-PLATFORM，且 --verify 曾把「有测试文件」当成通过。请写复盘提纲。
+
+现象：{{forty_one_to_thirty_one_cve_zero}}
+
+输出：
+1. 更像自动 --fix 只动了 plumbing，还是策略 structural 本就不该被件数掩盖
+2. 最小复验顺序（先看三张表→再抽查测试／CI 是否真跑→再决定能不能对外说已接近可部署）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 --fix 就等于下一应用也总会从 41 收到 31」，或「这一次 CVE 归零就等于剩 HIGH 也已关闭」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/datarobotjp/articles/3d450781e9e77b",
+      label: "zenn.dev · Agent Gap Analysis：AI エージェントの本番準備度を診断する DataRobot のスキル",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
