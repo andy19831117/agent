@@ -49438,6 +49438,446 @@ settings.local.json env 是不是仍读到 main：{{whether_local_env_still_main
       dateLabel: "发布",
     },
   },
+  {
+    id: "698",
+    slug: "jackto-1219-243of244-141err",
+    title: "jackto：图像生成 AI 5 种写日语——共 1,219 张；GPT Image 243/244，错 141 张里别字 60、多写整行 31",
+    summary: "个人（jackto／AIFont）；披露用同一套日语短词提示，对 GPT Image 2.5、Nano Banana 2.1、Grok Imagine 2.0、Seedream 5.0 Pro、Qwen-Image 3.0 Pro 各出书体风格 244 种的第 1 张（Seedream 少 1 张），合计约 1,219 张。正确：GPT 243/244、Nano 239/244、Grok 226/244、Seedream 214/243、Qwen 154/244。错 141 张（可重叠）：别字 60、多写整行 31、多一字 19、浊点半浊点 16、漏字 14、不可读 4。Qwen 错 90 张里 26 张把字体说明写进画面。判定先 AI 再人看 104 张；作者非日语母语，阿拉伯语对照曾 291 张里差 23。页上链到 GitHub 数据集与母语校对招募；GitHub 本机复检偶发 504。不代你同样跑 5 模，就等于下一组日语词也会 GPT 243/244，或错类也总会 60／31。",
+    description: "面向已经把「图像模型能写日语」写成可贴图就发、却还没分开正确率与错类的人：把「第 1 张日语字形须同时报对错与别字／多写」写成门禁，区别于本地小 VLM 读照片，以及 FAQ 标签检索。",
+    categories: [
+      "content",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "grok",
+      "deepseek",
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/jackto/articles/ddc51ac2f444d8",
+    sourceLabel: "zenn.dev·jackto 实践帖",
+    upvotes: 589,
+    trending: false,
+    tags: [
+      "image generation",
+      "Japanese text",
+      "AIFont",
+      "Seedream",
+      "Qwen-Image",
+    ],
+    howItWorks: [
+      "粘贴图像写日语边界（是不是约 1,219 张、GPT 是不是约 243/244、错类是不是别字约 60／多写整行约 31）以及「绝不可把高正确率写成日语字形已可靠」纪律",
+      "Agent 按实践帖输出：应怎样同时记下模型对错、错类分层，以及人审抽样有没有母语差",
+      "人工保留 243／141／26 来自哪一批书体与第 1 张规则、有没有母语复判；Agent 不代你保证「换 5 模就等于下一组日语词也总会 GPT 243/244」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T02:57:45.878+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T17:57:45Z、Asia/Shanghai 2026-11-09 01:57:45；bodyUpdatedAt 2026-11-09T02:54:47.940+09:00 同日约 3 分钟前，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：Jack 在《画像生成AI 5種に日本語を書かせたら、どこで間違えたか（1,219枚）》写 5 模第 1 张日语对错与 141 张错类。页上链到数据集仓与母语校对招募；GitHub 偶发 504。主线是先把正确率与错类拆开，不是官文简报。",
+      "与 hilopon-35digit-25far-8diff / solo-faq-30pct-to-10-110tag 不同：本条不是本地小 VLM 读照片或 FAQ 标签，而是图像生成模型写日语字形的对错与错类",
+    ],
+    approach: `jackto 在《画像生成AI 5種に日本語を書かせたら、どこで間違えたか（1,219枚）》（页内 2026-11-09）写明：5 个图像模型对 244 种书体各出第 1 张日语短词；GPT Image 243/244，错 141 张里别字 60、多写整行 31；Qwen 错 90 里 26 把说明写进画面。
+
+关键门禁不是「某模正确率高就等于日语字形可贴图就发」，而是分开记对错与错类，并核对这些比例来自第 1 张与哪一批书体。
+
+本场景据此输出「图像写日语须同时报告对错与错类分层，不能只报 243/244」提纲。禁止把 243/244 写成下一组日语词也总会到达，或把 60／31 写成任何词表都会复现的通用错类比。`,
+    outcomes: [
+      "源披露作者运营 AIFont，用同一提示对 GPT Image 2.5／Nano Banana 2.1／Grok Imagine 2.0／Seedream 5.0 Pro／Qwen-Image 3.0 Pro 各跑 244 种书体的第 1 张（Seedream 记为 243），合计约 1,219 张；只数第 1 张、不含重抽。正确：243/244、239/244、226/244、214/243、154/244。错 141 张（可重叠）：别字 60、多写整行 31、多一字 19、浊点半浊点 16、漏字 14、不可读 4；Qwen 错 90 里 26 把字体说明写进画面。判定先 AI 后人看 104；作者非日语母语，阿拉伯语对照曾 291 张差 23。属作者这一批书体与第 1 张规则，不可外推为你同样跑 5 模就等于下一组日语词也会 GPT 243/244，或错类也总会 60／31。",
+      "能把「可写成同时记下模型对错、错类分层，以及人审抽样有没有母语差」与「必须人完成的上线前是否放大检查多写、母语是否复判，以及数据集／招募是否导流」拆开。",
+      "为把 243/244 当成下一组日语词也总会到达的通用正确率、以及把「提示写了不要加字」当成已防住多写提供提问清单。",
+    ],
+    caveats: [
+      "1,219／243／141／60／31／26 均为作者自测；只数第 1 张；人审 104 张；作者写非日语母语，判定未最终确定。",
+      "文中链到 https://aifont.ai/ja/blog/native-speakers-wanted ，属产品站／母语校对招募导流；正文提到 AIFont（aifont.ai）。源文所链 https://github.com/Funovate-Technology/aifont-text-rendering 本机复检偶发 HTTP 504，已不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / jackto），不是各图像模型厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "图像写日语须同时报告对错与错类门禁",
+        body: `你是资深图像文字质检教练。只根据用户边界写门禁，不要编造已经数到的 243/244 或错类件数。
+
+现在是不是约 1,219 张第 1 张对照：{{whether_about_twelve_nineteen_first_shots}}
+GPT Image 是不是约 243/244：{{whether_gpt_about_two_forty_three_of_two_forty_four}}
+错类是不是别字约 60、多写整行约 31：{{whether_wrong_char_about_sixty_extra_line_about_thirty_one}}
+
+输出 Markdown：
+1. 为什么「高正确率」不能写成日语字形可贴图就发
+2. 应怎样同时记下模型对错、错类分层，以及人审抽样有没有母语差
+3. 只有第 1 张规则时，应怎样单独记账，而不是写成下一组日语词也必然 243/244
+4. 人必须完成的清单（放大检查多写、母语复判、导流链）
+禁止声称「换 5 模就等于下一组也总会 GPT 243/244」；禁止把「提示写了不要加字」写成已防住多写。`,
+      },
+      {
+        title: "一千二百十九张与一百四十一错复盘",
+        body: `报告上可以写约 1,219 张、错 141、Qwen 错 90 里 26 把说明写进画面；但人审只有 104，且作者非日语母语。请写复盘提纲。
+
+现象：{{twelve_nineteen_and_one_forty_one_errors}}
+
+输出：
+1. 更像模型字形能力，还是提示里的字体说明被模型当成画面文案
+2. 最小复验顺序（先抽多写整行→再抽别字→再决定能不能对外说日语已稳）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上母语校对就等于下一组也总会 243/244」，或「这一次 60／31 就等于任何词表都会复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jackto/articles/ddc51ac2f444d8",
+      label: "zenn.dev · 画像生成AI 5種に日本語を書かせたら、どこで間違えたか（1,219枚）",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "699",
+    slug: "solo-faq-30pct-to-10-110tag",
+    title: "solo_joshis：社内 FAQ 零命中约 3 成→1 成弱——先人工 200 词半日；字典 60→约 110；上限 5 标签",
+    summary: "个人（solo_joshis／一人情シス）；披露呼叫中心社内 FAQ：1 个月检索日志约 3 成零命中，上 200 个零命中词里一半以上其实已有答案。人工半日对齐后做约 60 词标签字典，AI 只从字典选至多 5 个标签；先 20 件目检再全量。2 个月后零命中 1 成弱，「FAQ 在哪」聊天从多日十数件降到数件，字典约 110。曾无上限时平均约 12 标签、一搜 40 件；完美体系设计停 2 周。页末参考 Python／Anthropic／Zenn 记法文档，未见商店／试用／招聘硬导流。不代你同样贴标签，就等于下一套 FAQ 也总会 3 成→1 成弱，或字典也总会到约 110。",
+    description: "面向已经把「FAQ 搜不到就等于缺文」写成要重写全文、却还没分开零命中与用词错位的人：把「先从零命中日志做字典再让 AI 限选标签」写成门禁，区别于图像写日语，以及 CSV 工具对照。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/solo_joshis/articles/2026-10-17-aifaq-ai-tool-88",
+    sourceLabel: "zenn.dev·solo_joshis 实践帖",
+    upvotes: 590,
+    trending: false,
+    tags: [
+      "FAQ",
+      "tagging",
+      "controlled vocabulary",
+      "call center",
+      "Claude",
+    ],
+    howItWorks: [
+      "粘贴 FAQ 标签边界（零命中是不是约 3 成→1 成弱、字典是不是约 60→110、上限是不是 5）以及「绝不可把零命中下降写成 FAQ 全文已够用」纪律",
+      "Agent 按实践帖输出：应怎样同时记下零命中比例、字典外拒绝，以及更新日后重打标签",
+      "人工保留 200／60／110 来自哪一个月日志、工具是否支持标签检索；Agent 不代你保证「同样贴标签就等于下一套 FAQ 也总会 3 成→1 成弱」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T09:33:57.068+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T00:33:57Z、Asia/Shanghai 2026-11-09 08:33:57；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：ソロ情シス在《社内FAQの「探しても出てこない」を、AIのタグ付けで減らした3ステップ（0件ヒット3割→1割弱）》写 3 成→1 成弱、60→约 110。页末参考文档；未见商店／试用硬导流。主线是先把零命中与用词错位拆开，不是官文简报。",
+      "与 jackto-1219-243of244-141err / chukidx-csv-4ok-64s-103s 不同：本条不是图像写日语或双 CLI 集计对照，而是社内 FAQ 用检索日志养标签字典",
+    ],
+    approach: `solo_joshis 在《社内FAQの「探しても出てこない」を、AIのタグ付けで減らした3ステップ（0件ヒット3割→1割弱）》（页内 2026-11-09）写明：约 3 成零命中里一半以上已有文；人工 200 词半日后字典约 60，AI 限选至多 5 标签；2 个月后零命中 1 成弱、字典约 110。
+
+关键门禁不是「搜不到就等于缺文要重写」，而是分开记零命中与用词错位，并核对这些比例来自哪一个月日志。
+
+本场景据此输出「FAQ 标签须同时报告零命中与字典外拒绝，不能只报已经贴完」提纲。禁止把 3 成→1 成弱写成下一套 FAQ 也总会到达，或把约 110 写成任何职场都会长到的字典规模。`,
+    outcomes: [
+      "源披露作者在中小呼叫中心做一人情シス：1 个月检索日志约 3 成零命中；上 200 个零命中词人工半日对齐，一半以上其实已有 FAQ。建约 60 词标签字典（含别名），AI 只从字典选至多 5 个；字典外进 suggest，周约 10 分人工；先 20 件目检再全量导入。2 个月后零命中 1 成弱，「FAQ 在哪」聊天从多日十数件到数件，字典约 110。曾无上限时平均约 12 标签、一搜约 40 件；为完美体系停 2 周；现按更新日差分重打标签。属作者这一职场与这一工具，不可外推为你同样贴标签就等于下一套 FAQ 也总会 3 成→1 成弱，或字典也总会到约 110。",
+      "能把「可写成同时记下零命中比例、字典外拒绝，以及标签上限有没有止住噪音」与「必须人完成的半日对齐、工具是否支持标签检索，以及参考文档是否导流」拆开。",
+      "为把 3 成→1 成弱当成下一套 FAQ 也总会到达的通用降幅、以及把「AI 随便加标签」当成可默认开提供提问清单。",
+    ],
+    caveats: [
+      "约 3 成／1 成弱／200／60／110／5 均为作者一职场自述；依赖标签检索与可导出日志。",
+      "页末参考链到 https://docs.python.org/ja/3/library/csv.html 、https://docs.python.org/ja/3/library/json.html 、https://zenn.dev/zenn/articles/markdown-guide ，属文档参考、可达。https://docs.anthropic.com/ 本机跟随后落到地区不可用页，已不列入可达导流。未见商店／试用／Newsletter／招聘／自有产品硬导流。",
+      "上面写的是个人实践帖（zenn.dev / solo_joshis），不是 Anthropic 或 FAQ 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "FAQ 标签须同时报告零命中与字典外拒绝门禁",
+        body: `你是资深知识库检索教练。只根据用户边界写门禁，不要编造已经降到的 1 成弱或字典语数。
+
+现在零命中是不是约 3 成→1 成弱：{{whether_zero_hit_about_thirty_to_under_ten}}
+字典是不是约 60→110：{{whether_dict_about_sixty_to_one_ten}}
+标签上限是不是 5：{{whether_tag_cap_five}}
+
+输出 Markdown：
+1. 为什么「搜不到」不能写成缺文要重写全文
+2. 应怎样同时记下零命中比例、字典外拒绝，以及更新日后重打标签
+3. 只有一个月日志时，应怎样单独记账，而不是写成下一套 FAQ 也必然 3 成→1 成弱
+4. 人必须完成的清单（半日对齐、上限、suggest 周检）
+禁止声称「同样贴标签就等于下一套也总会 1 成弱」；禁止把无上限的 AI 贴标写成可默认开。`,
+      },
+      {
+        title: "三成到一成弱与一百一十词复盘",
+        body: `报告上可以写零命中约 3 成→1 成弱、字典约 60→110；但曾无上限平均约 12 标签、一搜约 40 件。请写复盘提纲。
+
+现象：{{thirty_to_ten_and_one_ten_tags}}
+
+输出：
+1. 更像用词错位被补上，还是标签噪音被上限压住
+2. 最小复验顺序（先抽零命中词→再看一搜件数→再决定能不能对外说 FAQ 已好搜）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上全量重打就等于下一套也总会 1 成弱」，或「这一次约 110 就等于任何职场都会长到」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/solo_joshis/articles/2026-10-17-aifaq-ai-tool-88",
+      label: "zenn.dev · 社内FAQの「探しても出てこない」を、AIのタグ付けで減らした3ステップ（0件ヒット3割→1割弱）",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "700",
+    slug: "chukidx-csv-4ok-64s-103s",
+    title: "chukidx：同一 CSV 集计交给 Codex 与 Claude Code——4 次全对；64／49 秒对 103／87 秒；差在许可与补全",
+    summary: "个人（chukidx_dev）；披露 Windows 11 上用同一委托文，让 Claude Code 2.1.296 与 Codex CLI 0.128.0 各跑 2 次写月度支店売上集计：4 次 summary.csv 与作者另算的 9 行全一致。实測时間 Claude 64／49 秒、Codex 103／87 秒。Claude 在允许 Bash(python *) 外被拒 4／3 次后改写；Codex 沙箱内未停，却有结束码错误 5／3 次。输出编码与路径基准也不同。页上链到官方无头文档、有料本与 note；ChatGPT 非交互文档现 403。不代你同样对照，就等于下一任务也总会 4 次全对，或时間也总会 64 对 103。",
+    description: "面向已经把「结果对了就等于两工具可互换」写成默认、却还没分开正确率与许可／补全差的人：把「双 CLI 对照须同时报对错与拒绝次数」写成门禁，区别于 FAQ 标签，以及善意注记审阅。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/chukidx_dev/articles/codex-vs-claudecode-trial",
+    sourceLabel: "zenn.dev·chukidx_dev 实践帖",
+    upvotes: 591,
+    trending: false,
+    tags: [
+      "Codex CLI",
+      "Claude Code",
+      "CSV",
+      "permissions",
+      "Windows",
+    ],
+    howItWorks: [
+      "粘贴双 CLI 集计边界（是不是 4 次全对、时間是不是约 64／49 对 103／87、拒绝是不是约 4／3）以及「绝不可把结果正确写成许可模型已相同」纪律",
+      "Agent 按实践帖输出：应怎样同时记下对错、拒绝／错误次数，以及编码与路径基准",
+      "人工保留 4／9／64／103 来自虚构 CSV 与哪一版 CLI；Agent 不代你保证「同样对照就等于下一任务也总会 4 次全对」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T08:59:01.918+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T23:59:01Z、Asia/Shanghai 2026-11-09 07:59:01；bodyUpdatedAt 与 publishedAt 同一时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：chukidx 在《Codex CLI と Claude Code に同じ CSV 集計を頼んで比べた…》写 4 次全对与时間／许可差。页上链到无头文档／有料本／note；ChatGPT 文档现 403。主线是先把正确率与许可／补全拆开，不是官文简报。",
+      "与 solo-faq-30pct-to-10-110tag / murooka-19of62-ja23-def0 不同：本条不是 FAQ 标签或善意注记审阅，而是同一委托文下两 CLI 的许可与补全差",
+    ],
+    approach: `chukidx_dev 在《Codex CLI と Claude Code に同じ CSV 集計を頼んで比べた — 違いは「許可の仕組み」と「指示していない部分」》（页内 2026-11-09）写明：各 2 次共 4 次正确；Claude 64／49 秒、Codex 103／87 秒；差在许可拒绝与未写明的编码／路径。
+
+关键门禁不是「结果对了就等于两工具可互换」，而是分开记对错与许可／补全，并核对这些数字来自虚构 CSV 与哪一版。
+
+本场景据此输出「双 CLI 对照须同时报告对错与拒绝次数，不能只报 4 次全对」提纲。禁止把 4 次全对写成下一任务也总会到达，或把 64 对 103 写成任何任务都会复现的通用时間比。`,
+    outcomes: [
+      "源披露作者在 Windows 11 Pro／Python 3.13.2，执行日 2026-10-13，用同一委托文让 Claude Code 2.1.296 与 Codex CLI 0.128.0（effort medium）各跑 2 次：3 个虚构月次 CSV 集计到 summary.csv。4 次脚本均可跑，9 行与作者另算全一致。实測时間 64／49／103／87 秒。Claude 允许外命令拒 4／3 次后改写；Codex 沙箱内未停，结束码错误 5／3 次（PowerShell 写法／乱码／非 git 目录等）。Claude 常 BOM 与脚本目录基准；Codex 常无 BOM 与 cwd 基准，换目录可静默写出仅表头。属作者这一任务各 2 次，不可外推为你同样对照就等于下一任务也总会 4 次全对，或时間也总会 64 对 103。",
+      "能把「可写成同时记下对错、拒绝／错误次数，以及编码与路径基准」与「必须人完成的业务条件是否写进委托文、有料本／note 是否导流」拆开。",
+      "为把 4 次全对当成两工具已可互换的证明、以及把沙箱未停当成无需命令级许可提供提问清单。",
+    ],
+    caveats: [
+      "4／9／64／49／103／87 均为虚构小 CSV、各 2 次；作者写明不是「谁更强」结论。",
+      "文中链到 https://code.claude.com/docs/en/headless 、https://zenn.dev/chukidx_dev/books/claude-code-for-joshisu 、https://note.com/chuki_dx_note/n/n9524803d393b ，属官方文档／有料本／note 导流。https://learn.chatgpt.com/docs/non-interactive-mode 现 HTTP 403，已不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / chukidx_dev），不是 Anthropic 或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "双 CLI 对照须同时报告对错与拒绝次数门禁",
+        body: `你是资深终端 Agent 对照教练。只根据用户边界写门禁，不要编造已经测到的 4 次全对或秒数。
+
+现在是不是 4 次结果全对：{{whether_four_runs_all_correct}}
+时間是不是约 Claude 64／49 对 Codex 103／87：{{whether_times_about_sixty_four_vs_one_oh_three}}
+Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_and_three}}
+
+输出 Markdown：
+1. 为什么「结果正确」不能写成两工具许可模型已相同
+2. 应怎样同时记下对错、拒绝／错误次数，以及编码与路径基准
+3. 只有各 2 次时，应怎样单独记账，而不是写成下一任务也必然 4 次全对
+4. 人必须完成的清单（业务条件写进委托文、导流链）
+禁止声称「同样对照就等于下一任务也总会 4 次全对」；禁止把沙箱未停写成无需命令级许可。`,
+      },
+      {
+        title: "六十四秒对一百零三秒复盘",
+        body: `报告上可以写 Claude 约 64／49 秒、Codex 约 103／87 秒且 4 次全对；但任务只有一个虚构 CSV。请写复盘提纲。
+
+现象：{{sixty_four_vs_one_oh_three_all_correct}}
+
+输出：
+1. 更像许可重试耗时，还是补全策略（BOM／路径）主导
+2. 最小复验顺序（先核 9 行→再看拒绝日志→再决定能不能对外说可互换）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上同一委托文就等于下一任务也总会 4 次全对」，或「这一次 64 对 103 就等于任何任务都会复现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/chukidx_dev/articles/codex-vs-claudecode-trial",
+      label: "zenn.dev · Codex CLI と Claude Code に同じ CSV 集計を頼んで比べた — 違いは「許可の仕組み」と「指示していない部分」",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "701",
+    slug: "murooka-19of62-ja23-def0",
+    title: "murooka：善意注记「已知／勿指摘」——外情 19/62 放过真 bug；日语金额题 23/24；防御 3 句后 0",
+    summary: "个人（murooka_az）；披露用 11 种小仓库与业务文书，测「已知（票号）／他处已担保／勿指摘」等无恶意注记会否扭曲审阅。外情注记下真 bug 被降级或排除 19/62（31%）；Sonnet 13/25、Opus 5/24、Haiku 1/13。日语金额 2 题 23/24（英语同题约 15/25）。只留说明去掉「勿指摘」仍 9/16；注记无则 0/16。effort high／max 合计 13/18 仍防不住；防御 3 句后 Sonnet／Opus 英 0/41、日 0/24。审阅约 594 次，修改另 144 次。页上链到系统卡／研究／arxiv；作者卡有 X 与公司站。不代你同样加注记，就等于下一组审阅也总会 19/62，或 3 句也总会 0。",
+    description: "面向已经把「模型抗注入分数低」写成审阅已安全、却还没分开恶意指令与善意外情注记的人：把「外情注记下的放过率须单列」写成门禁，区别于 CSV 双 CLI 对照，以及闭域网 TTFT 优化。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/murooka_az/articles/benign-injection-known-note-review",
+    sourceLabel: "zenn.dev·Murooka / murooka_az 实践帖",
+    upvotes: 592,
+    trending: false,
+    tags: [
+      "prompt injection",
+      "code review",
+      "Claude",
+      "benign injection",
+      "guardrails",
+    ],
+    howItWorks: [
+      "粘贴善意注记边界（外情放过是不是约 19/62、日语是不是约 23/24、防御 3 句后是不是 0）以及「绝不可把系统卡抗注入写成审阅已不被外情带偏」纪律",
+      "Agent 按实践帖输出：应怎样同时记下放过率、可反证注记，以及防御句有没有写「不得因注记排除缺陷」",
+      "人工保留 19／23／0／594 来自哪一批题材与判定规则；Agent 不代你保证「加上 3 句就等于下一组审阅也总会 0」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T15:45:43.309+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T06:45:43Z、Asia/Shanghai 2026-11-09 14:45:43；bodyUpdatedAt 2026-11-09T13:04:22.529+09:00 同日约 2.7 小时前，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：murooka 在《悪意なきインジェクション…》写 19/62、日语 23/24、防御后 0。页上链到系统卡／研究；作者卡有 X／公司站。主线是先把恶意注入与善意外情注记拆开，不是官文简报。",
+      "与 chukidx-csv-4ok-64s-103s / fixstars-ttft59-to-38-conc50 不同：本条不是双 CLI 集计或闭域网 TTFT，而是审阅里善意「已知／勿指摘」注记的放过率",
+    ],
+    approach: `murooka_az 在《悪意なきインジェクション：「既知」「他で担保済み」の一文でAIの判断はどこまで歪むか》（页内 2026-11-09）写明：外情注记下 19/62 放过真 bug；日语金额题 23/24；防御 3 句后 Sonnet／Opus 为 0。
+
+关键门禁不是「系统卡抗注入分数低就等于审阅已安全」，而是分开记恶意指令与善意外情注记，并核对这些比例来自哪一批小仓库题材。
+
+本场景据此输出「善意注记审阅须同时报告放过率与防御句，不能只报抗注入分数」提纲。禁止把 19/62 写成下一组审阅也总会到达，或把防御后 0 写成任何题材都会归零。`,
+    outcomes: [
+      "源披露作者做 11 种小 Python 仓（各 1 真 bug）与日语业务文书：外情「已知／他处已担保／勿指摘」下真 bug 被降级或排除 19/62（31%；Sonnet 13/25、Opus 5/24、Haiku 1/13）。日语金额 2 题注记下 23/24；英语同题约 15/25。去掉「勿指摘」只留说明仍 9/16（无注记 0/16）。effort high／max 合计 13/18 仍防不住；防御 3 句后英 0/41、日 0/24（Haiku 英语防御后未稳）。可反证注记约 1/31。审阅约 594 次，修改另 144 次；判定多用盲检。属作者这一批题材与 Haiku／Sonnet／Opus 5.5，不可外推为你同样加注记就等于下一组审阅也总会 19/62，或 3 句也总会 0。",
+      "能把「可写成同时记下放过率、可反证注记，以及防御句有没有写不得因注记排除缺陷」与「必须人完成的外情是否仍要人核实、系统卡／研究链是否导流」拆开。",
+      "为把系统卡抗注入分数当成审阅已不被外情带偏、以及把「提高 effort」当成可替代防御句提供提问清单。",
+    ],
+    caveats: [
+      "19／23／0／594／144 均为作者自拟小仓与文书；部分格子次数少。授权缺失／SQL 注入题注记下未放过，不能外推到所有缺陷类。",
+      "文中链到 https://www-cdn.anthropic.com/c5fbac3f0b1280a933ebd26d3cb8bb9f5bdeaf48/Claude%20Opus%205%20System%20Card.pdf 、https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf 、https://www.anthropic.com/research/prompt-injection-defenses 、https://arxiv.org/abs/2602.16741 、https://arxiv.org/abs/2603.18740 ，属系统卡／研究导流。https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks 本机跟随后落到地区不可用页，已不列入可达导流。作者卡露出 https://x.com/murooka_az 、https://www.az-llc.com/ ，属账号／站点导流。",
+      "上面写的是个人实践帖（zenn.dev / murooka_az），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "善意注记审阅须同时报告放过率与防御句门禁",
+        body: `你是资深 AI 审阅安全教练。只根据用户边界写门禁，不要编造已经测到的 19/62 或归零次数。
+
+现在外情放过是不是约 19/62：{{whether_external_note_about_nineteen_of_sixty_two}}
+日语金额题是不是约 23/24：{{whether_ja_money_about_twenty_three_of_twenty_four}}
+防御 3 句后是不是 0：{{whether_three_sentence_defense_zero}}
+
+输出 Markdown：
+1. 为什么「系统卡抗注入分数低」不能写成审阅已不被外情带偏
+2. 应怎样同时记下放过率、可反证注记，以及防御句有没有写不得因注记排除缺陷
+3. 只有自拟小仓时，应怎样单独记账，而不是写成下一组审阅也必然 19/62
+4. 人必须完成的清单（外情核实、导流链）
+禁止声称「加上 3 句就等于下一组也总会 0」；禁止把提高 effort 写成可替代防御句。`,
+      },
+      {
+        title: "十九除以六十二与日语二十三复盘",
+        body: `报告上可以写外情 19/62、日语 23/24、防御后 0；但授权缺失题注记下未放过。请写复盘提纲。
+
+现象：{{nineteen_of_sixty_two_and_ja_twenty_three}}
+
+输出：
+1. 更像「注记若为真则像规格」的金额类，还是语言／文面差
+2. 最小复验顺序（先分外情／可反证→再试防御句→再决定能不能对外说审阅已稳）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上防御句就等于下一组也总会 0」，或「这一次 19/62 就等于任何缺陷类都会放过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/murooka_az/articles/benign-injection-known-note-review",
+      label: "zenn.dev · 悪意なきインジェクション：「既知」「他で担保済み」の一文でAIの判断はどこまで歪むか",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "702",
+    slug: "fixstars-ttft59-to-38-conc50",
+    title: "Fixstars：闭域网本地 LLM×GitLab DAP——同时连接 50 时 P90 TTFT 59→3.8 秒；90 连接仍约 3.5 秒",
+    summary: "团队（フィックスターズ／yosh_matsuda 登壇稿）；披露约 350 人公司把本地 LLM 与自管 GitLab Duo Agent Platform 放在同一内网，客户代码不上公网。H200×8 上 GLM-5.1：同时连接 50 时优化前 P90 TTFT 59 秒、优化后 3.8 秒（约 16 倍）；同时连接 90 时 P90 TTFT 3.5 秒。另写 16 周用量约 6.1 倍、Claude 占比 83%→13%、按外部单价外推月约 8,800 万对实付约 1,200 万（不含 GPU 购置运维）。环境称 Fixstars Vega 可对外提供；页上链到 Artificial Analysis。不代你同样优化，就等于下一机房也总会 59→3.8，或费用也总会降到约 16%。",
+    description: "面向已经把「上本地模型」写成闭域网已可用、却还没分开能否回答与首 token 等待的人：把「同时连接下的 P90 TTFT 须单列」写成门禁，区别于善意注记审阅，以及图像写日语。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "deepseek",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/fixstars/articles/gitlab-epic-tour-2026-local-llm",
+    sourceLabel: "zenn.dev·Fixstars Tech Blog / yosh_matsuda 实践帖",
+    upvotes: 593,
+    trending: false,
+    tags: [
+      "local LLM",
+      "GitLab DAP",
+      "Fixstars Vega",
+      "TTFT",
+      "air-gapped",
+    ],
+    howItWorks: [
+      "粘贴闭域网 TTFT 边界（同时 50 是不是约 59→3.8 秒、同时 90 是不是约 3.5 秒、是否 H200×8／GLM）以及「绝不可把单机房 TTFT 写成任意本地部署已够用」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 P90 TTFT、同时连接数，以及费用推算有没有不含 GPU",
+      "人工保留 59／3.8／3.5／6.1 来自哪一次测定与哪一版 GitLab；Agent 不代你保证「同样优化就等于下一机房也总会 59→3.8」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T10:45:40.384+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T01:45:40Z、Asia/Shanghai 2026-11-09 09:45:40；bodyUpdatedAt 2026-10-21T17:30:27.502+09:00 早于发布日，取 publishedAt；页头写 2026/11/09 に公開；用户名路径会到出版物路径 https://zenn.dev/fixstars/articles/gitlab-epic-tour-2026-local-llm ；GET 200，UA MiraBot/1.0）：松田在 GitLab Epic Tour 登壇稿写 TTFT 59→3.8。页上链到 Artificial Analysis；文末提 Vega 询价。主线是先把「能回答」与首 token 等待拆开，不是官文简报。",
+      "与 murooka-19of62-ja23-def0 / jackto-1219-243of244-141err 不同：本条不是善意注记审阅或图像写日语，而是闭域网本地 LLM 在同时连接下的 TTFT 优化",
+    ],
+    approach: `yosh_matsuda 在 Fixstars Tech Blog《閉域網でも AI を使いこなす: ローカル LLM × GitLab DAP》（页内 2026-11-09，登壇 2026-10-09）写明：H200×8 上 GLM-5.1，同时连接 50 时 P90 TTFT 59→3.8 秒；同时连接 90 仍约 3.5 秒。
+
+关键门禁不是「上了本地模型就等于闭域网已可用」，而是分开记能否回答与首 token 等待，并核对这些秒数来自哪一次机房测定。
+
+本场景据此输出「闭域网本地 LLM 须同时报告 P90 TTFT 与同时连接数，不能只报已经部署」提纲。禁止把 59→3.8 写成下一机房也总会到达，或把费用推算写成不含 GPU 也能直接对标的通用省钱幅度。`,
+    outcomes: [
+      "源披露フィックスターズ约 350 人（工程师约九成以上）把本地 LLM 与自管 GitLab DAP 放在同一内网；客户代码不上公网，Claude 仅经 Bedrock 且不用于客户代码。H200×8 跑 GLM-5.1：同时连接 50 时优化前 P90 TTFT 59 秒、P90／P99 TPOT 约 63.11／89.40 ms；优化后 P90 TTFT 3.8 秒、TPOT 约 54.21／74.31 ms（约 16 倍）；同时连接 90 时 P90 TTFT 3.5 秒。另写约 1.5 年用量约 2000 倍、16 周约 6.1 倍、Claude 占比 83%→13%、按外部单价外推月约 8,800 万对实付约 1,200 万（1 美元=150 日元，不含 GPU 购置运维）。环境产品名 Fixstars Vega。属作者这一机房与这一版测定，不可外推为你同样优化就等于下一机房也总会 59→3.8，或费用也总会降到约 16%。",
+      "能把「可写成同时记下 P90 TTFT、同时连接数，以及费用推算有没有不含 GPU」与「必须人完成的安全分级是否允许本地、Vega／图表链是否导流」拆开。",
+      "为把「已经部署本地模型」当成闭域网已可用、以及把外部支付下降当成含 GPU 的总拥有成本已下降提供提问清单。",
+    ],
+    caveats: [
+      "59／3.8／3.5／6.1／8,800 万／1,200 万均为作者机房自述与推算；作者写明不可与不同构成简单比较；GPU 费用未计入支付对比。",
+      "文中链到 https://artificialanalysis.ai/ ，属图表／基准站导流。文末写 Fixstars Vega 可对外提供并欢迎询价，但未见单独产品／询价 URL。用户名路径会转到出版物路径。",
+      "上面写的是团队实践帖（zenn.dev / fixstars，作者 yosh_matsuda），不是 GitLab 或模型厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "闭域网本地 LLM 须同时报告 P90 TTFT 与同时连接门禁",
+        body: `你是资深私有化 LLM 平台教练。只根据用户边界写门禁，不要编造已经测到的 59→3.8 或费用。
+
+现在同时 50 是不是约 59→3.8 秒：{{whether_conc50_ttft_about_fifty_nine_to_three_eight}}
+同时 90 是不是约 3.5 秒：{{whether_conc90_ttft_about_three_five}}
+是否写明不含 GPU 购置运维：{{whether_gpu_capex_excluded}}
+
+输出 Markdown：
+1. 为什么「已经部署本地模型」不能写成闭域网已可用
+2. 应怎样同时记下 P90 TTFT、同时连接数，以及费用推算边界
+3. 只有一机房测定时，应怎样单独记账，而不是写成下一机房也必然 59→3.8
+4. 人必须完成的清单（安全分级、导流／询价）
+禁止声称「同样优化就等于下一机房也总会 59→3.8」；禁止把外部支付下降写成含 GPU 的总拥有成本已下降。`,
+      },
+      {
+        title: "五十九秒到三点八秒复盘",
+        body: `报告上可以写同时 50 时 P90 TTFT 59→3.8 秒、同时 90 仍约 3.5 秒；但费用对比不含 GPU。请写复盘提纲。
+
+现象：{{fifty_nine_to_three_eight_ttft}}
+
+输出：
+1. 更像推理引擎优化，还是模型／卡型／并发策略主导
+2. 最小复验顺序（先核 TTFT 表→再核并发→再决定能不能对外说闭域网已够用）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Vega 就等于下一机房也总会 59→3.8」，或「这一次支付下降就等于总拥有成本已下降」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/fixstars/articles/gitlab-epic-tour-2026-local-llm",
+      label: "zenn.dev · 閉域網でも AI を使いこなす: ローカル LLM × GitLab DAP（GitLab Epic Tour Japan 2026 登壇）",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
