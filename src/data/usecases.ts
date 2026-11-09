@@ -54278,6 +54278,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "753",
+    slug: "midori-505plamo-frar16-6",
+    title: "midorisawa07：把 X 的 Grok 翻译换成本地 PLaMo 3——505 组全件对照，法阿报道 57 组里 Grok 16 错／PLaMo 8B 仅 6 错",
+    summary: "个人（midorisawa07）；披露从 X 翻译缓存抽 505 组（外语→日 294／日→英 211），用 Grok 与 PLaMo 3 Translate 0.8B／2B／8B 全件对照：法＋阿报道 57 组错误 Grok 16、PLaMo 0.8B 23→2B 11→8B 6；事实向文 PLaMo 2B／8B 可替甚至更少改名／加戏，日常口语帖仍 Grok 更稳。不代你同样换 8B，就等于下一套时间线也会 505／16／6，或换本地译模就等于专名不再被改写。",
+    description: "面向已经把「换上本地翻译模型」当成 X 译文可信已完成、却还没分开「事实报道」与「碎口语／梗」的人：把「Agent 合做译文替换须同时报语域口径、专名是否被改写与人侧抽检」写成门禁，区别于本地小模型编码助手，以及事实核查流水线。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "grok",
+      "chatgpt",
+      "claude",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/midorisawa07/articles/c30289adc4a0e0",
+    sourceLabel: "zenn.dev·midorisawa07 实践帖",
+    upvotes: 644,
+    trending: false,
+    tags: [
+      "PLaMo",
+      "Grok",
+      "translation",
+      "X",
+      "local-model",
+    ],
+    howItWorks: [
+      "粘贴译文替换边界（是不是约 505 组全件对照、是不是约法阿 57 组 Grok 16／PLaMo 8B 6、是不是约事实向可替而口语仍弱）以及「绝不可把换上本地译模写成专名已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下语域分桶（行政／报道 vs 日常）、错误类型（改名／加戏／口吻）与人侧抽检条数",
+      "人工保留 505／294／211／57／16／6／18（台风英字误记）来自哪一次对照；Agent 不代你保证「同样换 8B 就等于下一套时间线也总会先少改名」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T22:31:47.015+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T13:31:47Z、Asia/Shanghai 2026-11-09 21:31:47；bodyUpdatedAt 2026-11-09T22:39:26.895+09:00 同日略晚，取 publishedAt；GET 200，UA MiraBot/1.0）：midorisawa07 在《【X検証】PLaMo 3 TranslateはGrok翻訳の代替になるか》写 505／294／211、法阿 57 组 16→6。文内链 https://github.com/midorisawa/plamo-for-x 属作者实验仓导流，本机 GET 200，列入可达导流；另有 Preferred 官宣链属模型厂商非作者商店。主线是语域分桶后的译文替换，不是官文简报。",
+      "与本地小模型编码助手、事实核查流水线不同：本条不是把仓内助手换成小模型或做主张核验流水线，而是把 X 自动译从 Grok 换成本地译模并按语域报错",
+    ],
+    approach: `midorisawa07 在《【X検証】PLaMo 3 TranslateはGrok翻訳の代替になるか》（页内 2026-11-09）写明：从 2026-11-09 时点的 X 翻译缓存抽出 505 组（排除有长文版的短帖等），用 Grok 与 PLaMo 3 Translate 0.8B／2B／8B 全件对照（31B 因本机过慢放弃）。外语→日 294 组、日→英 211 组。表内法＋阿报道 57 组上，错误件数 Grok 16、PLaMo 0.8B 23→2B 11→8B 6。作者结论：行政／新闻等事实向文，PLaMo 2B 可与 Grok 并列、8B 往往更少「用人名／地名替换原文」与「原文没有的细节加戏」；碎口语／梗／主语省略的日常帖，即使到 8B 也难追上 Grok。英译气象速报里台风「チャンパカ／Cempaka」定型 18 组被各模型一律误写并各计 18 件。WebGPU 本地则写 2B 约 1.8GB、8B 约 5.3GB 的体量取舍。
+
+关键门禁不是「已经换上本地译模」，而是分开记「语域」与「错误是改名／加戏还是口吻」。
+
+本场景据此输出「Agent 合做译文替换须同时报告语域口径、专名改写与人侧抽检，不能只报已经换模」提纲。禁止把 505／16／6 写成下一套时间线也总会到达，或把换 8B 写成专名已门禁。`,
+    outcomes: [
+      "源披露作者对 X 译文做 505 组全件对照：外语→日 294／日→英 211；法＋阿报道 57 组错误 Grok 16、PLaMo 0.8B 23→2B 11→8B 6；事实向可替、日常口语仍偏 Grok；台风英字定型 18 组被各模型一律误记。属作者这一次缓存抽样与本机跑模，不可外推为你同样换 8B 就等于下一套时间线也会 505／16／6，或换本地译模就等于专名不再被改写。",
+      "能把「可写成同时记下语域分桶、错误类型与抽检条数」与「必须人完成的专名／口吻抽检、以及是否有作者仓导流」拆开。",
+      "为把「换上本地译模」当成译文已门禁、以及把「8B 更大」当成口语帖也已追上提供提问清单。",
+    ],
+    caveats: [
+      "505／294／211／57／16／23／11／6／18／约1.8GB／约5.3GB 均为作者自抽缓存与本机对照；31B 未跑；未声称任意时间线同错次。",
+      "文中链 https://github.com/midorisawa/plamo-for-x ，属作者实验仓导流；本机 GET 200，列入可达导流。Preferred 官宣链为模型厂商页非作者商店硬导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / midorisawa07），不是 Preferred／xAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "译文替换须同时报告语域与专名改写",
+        body: `你是资深 Agent 译文替换教练。只根据用户边界写门禁，不要编造已经到的505或16／6。
+
+现在是不是约505组全件对照：{{whether_about_505}}
+是不是约法阿57组Grok16／PLaMo8B6：{{whether_about_16_vs_6}}
+是不是约事实向可替而口语仍弱：{{whether_fact_ok_slang_weak}}
+
+输出 Markdown：
+1. 为什么「换上本地译模」不能写成专名已门禁
+2. 应怎样同时记下语域分桶、错误类型（改名／加戏／口吻）、人侧抽检条数
+3. 只有一次抽样时，应怎样单独记账，而不是写成下一套时间线也必然16变6
+4. 人必须完成的清单（专名抽检、导流链）
+禁止声称「同样换8B就等于下一套时间线也总会先少改名」；禁止把换模写成口语帖也已追上。`,
+      },
+      {
+        title: "五百零五组与法阿十六对六复盘",
+        body: `报告上可以写505组、法阿57组Grok16／PLaMo8B6、事实向可替口语仍弱；但这是一次个人缓存抽样。请写复盘提纲。
+
+现象：{{five_oh_five_and_16_6}}
+
+输出：
+1. 更像语域分桶生效，还是模型碰巧少改名
+2. 最小复验顺序（先抽语域→再抽专名改写→再决定能不能对外说译文已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上换8B就等于下一套时间线也总会16变6」，或「事实向可替就等于日常梗帖也已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/midorisawa07/articles/c30289adc4a0e0",
+      label: "zenn.dev · 【X検証】PLaMo 3 TranslateはGrok翻訳の代替になるか",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "754",
+    slug: "noriyuk-1y-2mail-shelfdel",
+    title: "noriyuk：一年前和 Claude 搭的书评站——重审时确认邮件 1 小时 2 通、书架一摘连别人书评也删",
+    summary: "个人（noriyuk／BookConnect）；披露 2025-11 用 Claude 聊天搭站后近乎未动，2026-09 推广前重审认证：确认邮件 1 小时仅 2 通（同小时第 3 人收不到）、无退会、书架摘书会删掉该书上他人书评（自试用账号复现删掉自己 1 件书评）、Google Books 日配额约 1000 次约 50 人常规即顶、自存 API 数据或违约。不代你同样重审，就等于下一仓也会 2 通／书架误删，或换 Opus 就等于一年前洞已门禁。",
+    description: "面向已经把「一年前能跑的 Claude 产物」当成仍可推广、却还没分开「当时能聊通」与「推广前风险是否可复验」的人：把「Agent 合做旧站重审须同时报可复现洞、配额口径与人侧实测」写成门禁，区别于学习叙事首 PR，以及交付作者门。",
+    categories: [
+      "devtools",
+      "career",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/noriyuk/articles/2b2ea8b44aa0a4",
+    sourceLabel: "zenn.dev·noriyuk 实践帖",
+    upvotes: 645,
+    trending: false,
+    tags: [
+      "Claude",
+      "BookConnect",
+      "Supabase",
+      "auth-review",
+      "personal-dev",
+    ],
+    howItWorks: [
+      "粘贴旧站重审边界（是不是约 1 小时 2 通确认邮、是不是约书架摘书误删他人书评、是不是约 Books API 日 1000／约 50 人即顶）以及「绝不可把一年前能跑写成推广前已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下可复现步骤、配额与 ToS 风险、以及「真实／详细／盲点」类个人指示对指摘密度的影响",
+      "人工保留 2 通／1 件误删书评／1000／约 50 人来自哪一次实测；Agent 不代你保证「同样重审就等于下一仓也总会先看到同款洞」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T07:38:25.645+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T22:38:25Z、Asia/Shanghai 2026-11-09 06:38:25；bodyUpdatedAt 2026-11-09T07:38:16.201+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：noriyuk 在《1年前に Claude と作ったサイトを見直したら、同じ Claude に次々と問題を指摘されました》写 2 通／书架误删／1000／约 50。文内链 https://book-connect.net 属作者产品 BookConnect 导流，本机 GET 200，列入可达导流；单点修复细节声明留给后续连载。主线是旧站重审可复现，不是官文简报。",
+      "与学习叙事首 PR、交付作者门不同：本条不是叙事成首个 PR 或作者署名门，而是一年前 Claude 产物在推广前被同一路线模型逐条指出并可复现的洞",
+    ],
+    approach: `noriyuk 在《1年前に Claude と作ったサイトを見直したら、同じ Claude に次々と問題を指摘されました》（页内 2026-11-09）写明：个人书评站 BookConnect（Next.js／TypeScript／Supabase／Vercel）于 2025-09 起与 Claude 聊天共作、2025-11 公开后几乎未动；2026-09 拟推广前重审认证。Claude 先点出确认邮件 1 小时仅 2 通——同小时第 3 人注册则收不到；其后两个月清单还包括：无退会；书架摘书会删掉该书上他人书评；Google Books API 日配额约 1000 次、约 50 人常规使用即顶；把 API 数据存进自库或违 ToS。作者曾以为是「请讲真实细节与盲点」的个人指示逼模型硬找问题，但对书架洞做了试用账号实测：把自己写过书评的书放进该账号书架再摘掉，自己的 1 件书评被干净删掉，与指摘一致。作者对比：一年前多用 Opus 4.1 聊天「把站做出来」；现在用 Opus 5.5＋Claude Code＋Perplexity，且任务改成「推广前尽量去掉想得到的风险」。单点修法声明留给后续文章。
+
+关键门禁不是「一年前能跑」，而是分开记「可复现洞」与「配额／ToS 是否按推广流量估过」。
+
+本场景据此输出「Agent 合做旧站重审须同时报告可复现步骤、配额口径与人侧实测，不能只报模型又提了几条」提纲。禁止把 2 通／误删书评写成下一仓也总会到达，或把换新模型写成一年前洞已门禁。`,
+    outcomes: [
+      "源披露作者对一年前 Claude 共作的 BookConnect 做推广前重审：确认邮件 1 小时 2 通（同小时第 3 人收不到）；书架摘书经试用账号复现会删掉该书上自己的 1 件书评；Google Books 日约 1000 次／约 50 人常规即顶；另列无退会与自存 API 数据或违约。属作者这一站与这一次实测，不可外推为你同样重审就等于下一仓也会 2 通／书架误删，或换 Opus 就等于一年前洞已门禁。",
+      "能把「可写成同时记下可复现步骤、配额与 ToS、个人指示对指摘密度的影响」与「必须人完成的实测、以及是否有产品导流」拆开。",
+      "为把「一年前能跑」当成可推广、以及把「模型爱挑刺」当成洞不存在提供提问清单。",
+    ],
+    caveats: [
+      "2通／1件误删书评／1000／约50人 均为作者个人站与实测；单点修法在后续连载；未声称任意旧站同洞。",
+      "文中链 https://book-connect.net ，属作者产品 BookConnect 导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / noriyuk），不是 Anthropic／Supabase 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "旧站重审须同时报告可复现洞与配额",
+        body: `你是资深 Agent 旧站重审教练。只根据用户边界写门禁，不要编造已经到的2通或书架误删。
+
+现在是不是约1小时2通确认邮：{{whether_about_2_per_hour}}
+是不是约书架摘书误删他人书评：{{whether_about_shelf_delete}}
+是不是约日1000次／约50人即顶：{{whether_about_1000_quota}}
+
+输出 Markdown：
+1. 为什么「一年前能跑」不能写成推广前已门禁
+2. 应怎样同时记下可复现步骤、配额／ToS、人侧实测
+3. 只有一站样本时，应怎样单独记账，而不是写成下一仓也必然同款洞
+4. 人必须完成的清单（实测、导流链）
+禁止声称「同样重审就等于下一仓也总会先看到2通墙」；禁止把换新模型写成一年前洞已门禁。`,
+      },
+      {
+        title: "两通邮件与书架误删复盘",
+        body: `报告上可以写1小时2通、书架误删1件书评、日约1000次；但这是一站个人实测。请写复盘提纲。
+
+现象：{{two_mail_and_shelf}}
+
+输出：
+1. 更像推广流量口径变了，还是一年前完成定义过窄
+2. 最小复验顺序（先抽确认邮上限→再抽破坏性写路径→再决定能不能对外说可推广）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上换Opus就等于下一仓也总会先看到同款洞」，或「模型爱挑刺就等于洞不存在」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/noriyuk/articles/2b2ea8b44aa0a4",
+      label: "zenn.dev · 1年前に Claude と作ったサイトを見直したら、同じ Claude に次々と問題を指摘されました",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "755",
+    slug: "koto-cue3-1min-15land",
+    title: "kotocraft：英会话 AI 讲师守不住课时——从每课 3 次 CUE、每分 1 次，到剩余 60 秒静默提词才稳住 15 分起承转合",
+    summary: "个人（kotocraft／KotoCraft）；披露 Gemini Live 英会话课可选 5／10／15／25 分，讲师常偏早收束：每课约 3 次 CUE、提频到每分 1 次仍难控；监督 AI 有时滞；Part 正则切换与教材题量联动能改善进度却不等于用尽课时；后改程序当舞台监督，仅在无音空隙、剩余约 60 秒插入「进入总结」、互致问候后再「完全结束」，称 15 分起承转合才稳定落地。不代你同样上静默提词，就等于下一课也会 3 次／每分 1 次／15 分稳住，或加 CUE 就等于课时已门禁。",
+    description: "面向已经把「在提示里写请在 N 分钟结束」当成课时门禁已完成、却还没分开「题量消化」与「时钟用尽」的人：把「Agent 合做实时课时须同时报提词时机、题量与时钟分账与人侧试听」写成门禁，区别于静默停机，以及过夜编排。",
+    categories: [
+      "education",
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "tongyi",
+    ],
+    sourceUrl: "https://zenn.dev/kotocraft/articles/6c9dfa6ecd0cca",
+    sourceLabel: "zenn.dev·kotocraft 实践帖",
+    upvotes: 646,
+    trending: false,
+    tags: [
+      "Gemini-Live",
+      "voice",
+      "lesson-timer",
+      "state-machine",
+      "KotoCraft",
+    ],
+    howItWorks: [
+      "粘贴实时课时边界（是不是约 5／10／15／25 分可选、是不是约每课 3 次 CUE 与每分 1 次仍早收、是不是约剩余 60 秒静默提词后 15 分才稳住）以及「绝不可把提示里写满 N 分钟写成课时已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下提词时机（无音空隙）、题量与时钟分账、以及人侧试听口径",
+      "人工保留 3 次／每分 1 次／60 秒／15 分来自哪一次试课；Agent 不代你保证「同样上静默提词就等于下一课也总会先稳住 15 分」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T21:27:04.228+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T12:27:04Z、Asia/Shanghai 2026-11-09 20:27:04；bodyUpdatedAt 2026-11-10T01:57:16.940+09:00 跨日晚于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：kotocraft 在《AI英会話アプリを作ったら、AI講師が時間を守ってくれなかった話》写 5／10／15／25、3 次 CUE、每分 1 次、剩余 60 秒静默提词、15 分落地。文内链 https://kotocraft-ai.web.app/ 属作者产品 KotoCraft 公开 beta 导流，本机 GET 200，列入可达导流。主线是课时时钟与题量分账，不是官文简报。",
+      "与静默停机、过夜编排不同：本条不是守护进程停转或夜间批跑，而是实时语音课里程序侧时间员对讲师发话的静默提词",
+    ],
+    approach: `kotocraft 在《AI英会話アプリを作ったら、AI講師が時間を守ってくれなかった話》（页内 2026-11-09）写明：个人用 Gemini Live 做英会话 Web 应用 KotoCraft，课时可选 5／10／15／25 分，但讲师常远早于设定收束。先试每课约 3 次「尚未结束／注意剩余时间」类 CUE，几乎无效；提到每分 1 次仍难控。再加监督 AI 按时局发 CUE，却因判断时滞，常在主讲师已开下一句后插入，造成发话别扭。改为程序用正则侦测 Part 切换再发 CUE，仍难卡准「已开下一句／上一 Part 未完」。教材题量与提示词联动后，进度与消化改善，但学员应答快慢与反馈长短使「题量做完≠时钟用尽」。最终用状态机：AI 发话中不插；只在播放结束的无音空隙，于剩余约 60 秒插入「请进入总结」，互致问候后再插入「到此完全结束」；称由此 15 分起承转合才稳定落地。公开 beta，自备 Gemini API Key 可免注册试用。
+
+关键门禁不是「提示里写了请在 N 分钟结束」，而是分开记「题量」与「时钟提词时机」。
+
+本场景据此输出「Agent 合做实时课时须同时报告提词时机、题量／时钟分账与人侧试听，不能只报已经加了 CUE」提纲。禁止把 3 次／每分 1 次／15 分写成下一课也总会到达，或把加 CUE 写成课时已门禁。`,
+    outcomes: [
+      "源披露作者做 Gemini Live 英会话课时：可选 5／10／15／25 分；每课约 3 次 CUE、提频到每分 1 次仍难控；监督 AI 有时滞；题量联动改善进度却不等于用尽时钟；后改无音空隙、剩余约 60 秒静默提词，称 15 分起承转合才稳定落地。属作者这一套 KotoCraft 试课，不可外推为你同样上静默提词就等于下一课也会 3 次／每分 1 次／15 分稳住，或加 CUE 就等于课时已门禁。",
+      "能把「可写成同时记下提词时机、题量与时钟分账」与「必须人完成的试听、以及是否有产品导流」拆开。",
+      "为把「提示写满 N 分钟」当成课时已门禁、以及把「题量做完」当成时钟已用尽提供提问清单。",
+    ],
+    caveats: [
+      "5／10／15／25／3次／每分1次／60秒／15分 均为作者试课经验叙述；公开 beta 仍在调；未声称任意语音课同稳态。",
+      "文中链 https://kotocraft-ai.web.app/ ，属作者产品 KotoCraft 导流；本机 GET 200，列入可达导流。需自备 Gemini API Key。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / kotocraft），不是 Google／Gemini 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "实时课时须同时报告提词时机与时钟分账",
+        body: `你是资深 Agent 实时课时教练。只根据用户边界写门禁，不要编造已经到的每分1次或15分稳住。
+
+现在是不是约5／10／15／25分可选：{{whether_about_duration_options}}
+是不是约每课3次CUE且每分1次仍早收：{{whether_about_cue_3_and_1min}}
+是不是约剩余60秒静默提词后15分才稳住：{{whether_about_60s_15min}}
+
+输出 Markdown：
+1. 为什么「提示里写请在N分钟结束」不能写成课时已门禁
+2. 应怎样同时记下无音空隙提词、题量与时钟分账、人侧试听
+3. 只有一套试课时，应怎样单独记账，而不是写成下一课也必然15分稳住
+4. 人必须完成的清单（试听、导流链）
+禁止声称「同样上静默提词就等于下一课也总会先稳住15分」；禁止把题量做完写成时钟已用尽。`,
+      },
+      {
+        title: "三次CUE与十五分落地复盘",
+        body: `报告上可以写每课3次CUE、每分1次、剩余60秒静默提词、15分起承转合；但这是一套个人试课。请写复盘提纲。
+
+现象：{{cue_and_fifteen}}
+
+输出：
+1. 更像提词时机生效，还是课时碰巧好控
+2. 最小复验顺序（先抽早收比例→再抽提词是否落在无音空隙→再决定能不能对外说课时已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上CUE就等于下一课也总会15分稳住」，或「题量做完就等于时钟已用尽」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kotocraft/articles/6c9dfa6ecd0cca",
+      label: "zenn.dev · AI英会話アプリを作ったら、AI講師が時間を守ってくれなかった話",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "756",
+    slug: "mst-hover-aurc177-3952",
+    title: "mst_design2020：HoVer「有据才答」七法对照——NLI 十一特征逻辑回归 AURC 0.177，证据网 0.225 五折全负于 LR",
+    summary: "个人（mst_design2020）；披露在 HoVer dev 资料齐全版 3,952 条（剔除预览 48）上比七种「资料依据下决定是否回答」：最好是 NLI 数字 11 个进逻辑回归 AURC 0.177；证据网（与概率传播同解的严格计算）AURC 0.225，对 Gemma-2 2B 自信（0.207）同着、对 LR 五折全负。抽掉 1 段金标后 Gemma 答案大变但自信几乎不动（约 0.445→0.443）。不代你同样上 11 特征 LR，就等于下一套多跳核验也会 0.177／0.225，或上证据网就等于已优于自信基线。",
+    description: "面向已经把「给模型接上资料图／证据网」当成该拒则拒已完成、却还没分开「图结构漂亮」与「拒答校准是否真降风险」的人：把「Agent 合做有据拒答须同时报 AURC 口径、特征是否泄漏与人侧抽检」写成门禁，区别于确信度自评，以及数字 grounding。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/mst_design2020/articles/c1537032d8943c",
+    sourceLabel: "zenn.dev·mst_design2020 实践帖",
+    upvotes: 647,
+    trending: false,
+    tags: [
+      "HoVer",
+      "AURC",
+      "NLI",
+      "abstention",
+      "RAG",
+    ],
+    howItWorks: [
+      "粘贴有据拒答边界（是不是约 3,952 条、是不是约 LR AURC 0.177／网 0.225、是不是约抽段后自信几乎不动）以及「绝不可把接上证据网写成拒答已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 AURC／五折胜负、特征是否与标签泄漏、以及金标段落抽除实验",
+      "人工保留 3952／0.177／0.225／0.207／0.445→0.443／5／5 来自哪一次跑表；Agent 不代你保证「同样上 11 特征 LR 就等于下一套核验也总会先看到 0.177」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T20:40:07.969+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T11:40:07Z、Asia/Shanghai 2026-11-09 19:40:07；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：mst_design2020 在《HoVerで「資料を根拠に控える」を7方法で比べた――資料をつなぐ網は、NLI特徴＋ロジスティック回帰に勝てなかった》写 3952／0.177／0.225。文内链 https://github.com/mst-design2020/akane-e2-experiments 属作者实验仓导流，本机 GET 200，列入可达导流；https://note.com/mst_design2020/n/nf427df9ee49d 属作者通俗版导流，本机 GET 200，列入可达导流。主线是有据拒答校准，不是官文简报。",
+      "与确信度自评、数字 grounding 不同：本条不是模型口头自信是否可靠或完成条件里的例值写死，而是多跳资料核验上「该不该答」的 AURC 对照",
+    ],
+    approach: `mst_design2020 在《HoVerで「資料を根拠に控える」を7方法で比べた――資料をつなぐ網は、NLI特徴＋ロジスティック回帰に勝てなかった》（页内 2026-11-09）写明：在 HoVer dev、ProgramFC 公开的资料齐全版上，3,952 条（剔除预览看过的 48）supports／refutes，主张跨 2〜4 篇维基。答案与自信取 google/gemma-2-2b-it 的 P(True)；NLI 用 DeBERTa-v3-large-mnli-fever-anli-ling-wanli。七种打分里最好的是把句／段最大 entail／contradict、均值、积、子主张概率最小与均值、无候选比例、段数等 11 个特征送进五折逻辑回归，AURC 0.177；把资料－子主张－候选名连成的证据网（与概率传播同解的严格计算）AURC 0.225，对 Gemma 自信 0.207 同着（差 0.016、网上 1／5），对 LR 则 0／5 全负；对 Dempster–Shafer 等另有胜负表。抽掉 1 段金标后 Gemma 答案大变，自信 |s−0.5| 约 0.445→0.443 几乎不动，而用资料判定的分数会下降。Colab Pro L4 约 4 小时；作者自披 LR 有学习、网无调参，条件不完全同。
+
+关键门禁不是「已经接上证据网」，而是分开记「AURC／五折」与「抽段后自信是否真动」。
+
+本场景据此输出「Agent 合做有据拒答须同时报告 AURC 口径、特征与抽段实验，不能只报已经接上图」提纲。禁止把 0.177／0.225 写成下一套核验也总会到达，或把上证据网写成已优于自信基线。`,
+    outcomes: [
+      "源披露作者在 HoVer 3,952 条上比七种有据拒答：NLI 11 特征逻辑回归 AURC 0.177 最好；证据网 0.225，对 Gemma-2 2B 自信 0.207 同着、对 LR 五折 0／5；抽 1 段金标后 Gemma 答案大变但自信约 0.445→0.443。属作者这一次 Colab／公开切分实验，不可外推为你同样上 11 特征 LR 就等于下一套核验也会 0.177／0.225，或上证据网就等于已优于自信基线。",
+      "能把「可写成同时记下 AURC、五折胜负、抽段实验」与「必须人完成的标签／切分核验、以及是否有实验仓导流」拆开。",
+      "为把「接上证据网」当成拒答已门禁、以及把「自信高」当成资料已够提供提问清单。",
+    ],
+    caveats: [
+      "3952／0.177／0.225／0.207／0.445→0.443／5折／约4小时 均为作者选定切分与模型；LR 有监督、网无调参；未声称任意 RAG 同 AURC。",
+      "文中链 https://github.com/mst-design2020/akane-e2-experiments 与 https://note.com/mst_design2020/n/nf427df9ee49d ，属作者实验仓／通俗版导流；本机均 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / mst_design2020），不是 Google／HoVer 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "有据拒答须同时报告 AURC 与抽段实验",
+        body: `你是资深 Agent 有据拒答教练。只根据用户边界写门禁，不要编造已经到的0.177或0.225。
+
+现在是不是约3952条：{{whether_about_3952}}
+是不是约LR AURC0.177／网0.225：{{whether_about_177_225}}
+是不是约抽段后自信几乎不动：{{whether_about_confidence_flat}}
+
+输出 Markdown：
+1. 为什么「接上证据网」不能写成拒答已门禁
+2. 应怎样同时记下AURC／五折、特征是否泄漏、抽段实验
+3. 只有一次切分时，应怎样单独记账，而不是写成下一套核验也必然0.177
+4. 人必须完成的清单（切分核验、导流链）
+禁止声称「同样上11特征LR就等于下一套核验也总会先看到0.177」；禁止把上证据网写成已优于自信基线。`,
+      },
+      {
+        title: "零点一七七与证据网复盘",
+        body: `报告上可以写AURC 0.177／0.225、五折全负于LR、抽段后自信几乎不动；但这是一次个人实验。请写复盘提纲。
+
+现象：{{aurc_and_graph}}
+
+输出：
+1. 更像特征校准生效，还是切分碰巧
+2. 最小复验顺序（先抽AURC定义→再抽五折胜负→再决定能不能对外说拒答已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上证据网就等于下一套核验也总会优于自信」，或「自信高就等于资料已够」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mst_design2020/articles/c1537032d8943c",
+      label: "zenn.dev · HoVerで「資料を根拠に控える」を7方法で比べた――資料をつなぐ網は、NLI特徴＋ロジスティック回帰に勝てなかった",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "757",
+    slug: "tomcat-allow12-7sec-5ok",
+    title: "Tomcat-zhou：把 Claude Code「不再询问」写进 allow 的密钥清掉——样例 12 条里键形只抓 2，A+B 抓 7，安全 5 条零误报",
+    summary: "个人（Tomcat-zhou）；披露 Yes, and don't ask again 会把整段命令写入 .claude/settings.local.json 的 permissions.allow；用 A（键形）+B（口令参数）扫样例 12 条：A 单独 2、A+B 共 7 条密、安全 5 条零误报；pre-commit 在有密时停、清完可通过。并转述报道引 Apiiro：当前文件已无的历史密 734、fork 211 仍可能残留。不代你同样上 A+B，就等于下一仓也会 12／7／5，或扫 allow 就等于历史密已门禁。",
+    description: "面向已经把「点过不再询问」当成权限省事已完成、却还没分开「命令模式」与「命令里是否嵌了密」的人：把「Agent 合做 allow 清密须同时报检测器口径、pre-commit 是否真停与人侧轮换」写成门禁，区别于技能安全扫描产品评测，以及 git 钩空转。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/Tomcat-zhou/items/2aa6afaa12175471d824",
+    sourceLabel: "qiita.com·Tomcat-zhou 实践帖",
+    upvotes: 648,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "settings.local.json",
+      "secrets",
+      "pre-commit",
+      "allow-list",
+    ],
+    howItWorks: [
+      "粘贴 allow 清密边界（是不是约样例 12 条、是不是约 A 2／A+B 7／安全 5 零误报、是不是约 pre-commit 有密即停）以及「绝不可把扫过 allow 写成历史密已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 A／B 检测器、pre-commit 进出码、以及已泄漏时先轮换再脱跟踪的顺序",
+      "人工保留 12／2／7／5／734／211 来自哪一段样例或转述；Agent 不代你保证「同样上 A+B 就等于下一仓也总会先看到 7 条密」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T18:46:18+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T09:46:18Z、Asia/Shanghai 2026-11-09 17:46:18；updated_at 2026-11-10T00:24:01+09:00 跨日，取 created_at 为发布；GET 200，UA MiraBot/1.0）：Tomcat-zhou 在《Claude Codeの承認ルールから秘密を掃除する手順｜settings.local.jsonを棚卸しして、pre-commitで止める》写 12／2／7／5。文内链 https://zenn.dev/zztomcat/articles/b8f5ca3a666d44 与 https://note.com/tomcat001 属作者频道导流，本机均 GET 200，列入可达导流；官方 permissions 文档链非作者商店。样例值均为哑元。主线是 allow 清密与 pre-commit，不是官文简报。",
+      "与技能安全扫描、git 钩空转不同：本条不是评测技能包恶意扫描器或钩子没跑起来，而是 permissions.allow 里嵌密的棚卸与提交拦截",
+    ],
+    approach: `Tomcat-zhou 在《Claude Codeの承認ルールから秘密を掃除する手順｜settings.local.jsonを棚卸しして、pre-commitで止める》（Qiita 2026-11-09）写明：在 Claude Code 点「Yes, and don't ask again」后，整段命令可写入仓库根 .claude/settings.local.json 的 permissions.allow；若命令内嵌口令／Token，密也会留在文件里。作者用仅标准库的 Python 3.13 脚本对样例 12 条规则跑 A（AKIA／ghp_ 等键形）与 B（PGPASSWORD／sshpass -p／URL userinfo 等口令参数）：A 单独标 2，A+B 共标 7 条密，安全 5 条（npm test *、git status、DATABASE_URL=$DATABASE_URL、npm run lint *、WebFetch）零误报。pre-commit 接入后：有密则提交停、清完可通过。已入史则强调先轮换再脱跟踪；并转述报道所引 Apiiro：当前文件已不见的历史密 734、fork 211 仍可能残留（作者称 Apiiro 原文获取失败，数字来自报道引用）。验证环境 Python 3.13／git／Linux bash，实施日 2026-11-09；样例全哑元。
+
+关键门禁不是「已经扫过 allow」，而是分开记「检测器口径」与「历史／fork 是否另册」。
+
+本场景据此输出「Agent 合做 allow 清密须同时报告 A／B 口径、pre-commit 与轮换顺序，不能只报已经跑过脚本」提纲。禁止把 12／7／5 写成下一仓也总会到达，或把扫 allow 写成历史密已门禁。`,
+    outcomes: [
+      "源披露作者对 Claude Code permissions.allow 样例 12 条：键形 A 单独 2、A+B 共 7 条密、安全 5 条零误报；pre-commit 有密停、清完可通过；并转述报道引 Apiiro 历史密 734／fork 211。属作者这一次哑元样例与钩子验证（734／211 为转述非自测），不可外推为你同样上 A+B 就等于下一仓也会 12／7／5，或扫 allow 就等于历史密已门禁。",
+      "能把「可写成同时记下 A／B、pre-commit 进出码、先轮换再脱跟踪」与「必须人完成的轮换、以及是否有作者频道导流」拆开。",
+      "为把「点过不再询问」当成权限已省事安全、以及把「当前文件已无密」当成历史已干净提供提问清单。",
+    ],
+    caveats: [
+      "12／2／7／5 为作者哑元样例；734／211 为报道转述 Apiiro、作者未直接核原文；未声称任意仓同检出率。",
+      "文中链 https://zenn.dev/zztomcat/articles/b8f5ca3a666d44 与 https://note.com/tomcat001 ，属作者频道导流；本机均 GET 200，列入可达导流。官方 permissions 文档非作者商店。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / Tomcat-zhou），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "allow 清密须同时报告检测器与 pre-commit",
+        body: `你是资深 Agent allow 清密教练。只根据用户边界写门禁，不要编造已经到的12或7。
+
+现在是不是约样例12条：{{whether_about_12}}
+是不是约A2／A+B7／安全5零误报：{{whether_about_2_7_5}}
+是不是约pre-commit有密即停：{{whether_about_precommit_stop}}
+
+输出 Markdown：
+1. 为什么「扫过allow」不能写成历史密已门禁
+2. 应怎样同时记下A／B检测器、pre-commit进出码、先轮换再脱跟踪
+3. 只有一套哑元样例时，应怎样单独记账，而不是写成下一仓也必然7条密
+4. 人必须完成的清单（轮换、导流链）
+禁止声称「同样上A+B就等于下一仓也总会先看到7条密」；禁止把当前文件已无密写成历史已干净。`,
+      },
+      {
+        title: "十二条样例与七条密复盘",
+        body: `报告上可以写12条样例、A2／A+B7、安全5零误报、pre-commit有密停；但这是一次个人哑元验证。请写复盘提纲。
+
+现象：{{twelve_and_seven}}
+
+输出：
+1. 更像B类口令参数补盲，还是样例碰巧好扫
+2. 最小复验顺序（先抽allow是否入轨→再抽A／B进出→再决定能不能对外说清密已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上扫allow就等于下一仓也总会7条密」，或「当前文件已无密就等于历史／fork已干净」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/Tomcat-zhou/items/2aa6afaa12175471d824",
+      label: "qiita.com · Claude Codeの承認ルールから秘密を掃除する手順｜settings.local.jsonを棚卸しして、pre-commitで止める",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
