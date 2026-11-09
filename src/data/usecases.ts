@@ -56478,6 +56478,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "778",
+    slug: "sadnorth-0to5-hole-prompt",
+    title: "Northern Sadness：AI 查洞——「故意弄坏」0 件；改成「堵住残留洞」后 5 件；计算器无 AI 检查 0 件后 AI 读出 11 件",
+    summary: "个人（Northern Sadness Productions／sadnorth_blog）；披露同一代码、同一 Fable，仅改 1 行请求：写「找故意弄坏处」得 0 件（AI 证明无故意破坏后停），改「堵住残留的洞」后实机复现 5 件；另用无 AI 按键检查对计算器报 0 件后，Fable 读码报 11 件（重 1／中 6／轻 4），人按验证负号续算洞。不代你同样改 1 行，就等于下一查洞也总会从 0 变成 5。",
+    description: "面向已经把「AI 说问题没有」当成查洞已门禁、却还没分开「问句里的锚」与「让它继续找洞」的人：把「Agent 合做查洞须同时报请求锚、0→5 对照与无 AI 检查的盲区」写成门禁，区别于确信度标定，以及双方向复核。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/sadnorth_blog/articles/49600115501d25",
+    sourceLabel: "zenn.dev·sadnorth_blog／Northern Sadness Productions 实践帖",
+    upvotes: 669,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Fable",
+      "bug-finding",
+      "prompt",
+      "Kokoro-OS",
+    ],
+    howItWorks: [
+      "粘贴查洞边界（是不是约请求锚导致停搜、是不是约 0→5 对照、是不是约无 AI 按键检查盲区）以及「绝不可把 AI 说 0 件写成无洞已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下请求文案、复现步骤、以及无 AI 检查写明「未见」的范围",
+      "人工保留 5／10／11／Fable／2026-09-04 来自哪一次自述；Agent 不代你保证「同样改 1 行就等于下一查洞也总会从 0 变成 5」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T12:40:40.191+09:00 → 2026-11-03，同时刻为 UTC 2026-11-03T03:40:40Z、Asia/Shanghai 2026-11-03 11:40:40；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：sadnorth_blog 在《AI にバグを探させたら 0 件。頼み方を 1 行変えたら 5 件見つかった》写请求锚与 0→5。文末 https://usekokoro.com 为作者产品可达导流（GET 200）。主线是查洞请求写法，不是官文简报。",
+      "与确信度标定、双方向复核不同：本条不是把概率分数或双脑对撞当主线，而是同一模型下请求锚如何让「0 件」变成可复现洞清单",
+    ],
+    approach: `sadnorth_blog（Northern Sadness Productions）在《AI にバグを探させたら 0 件。頼み方を 1 行変えたら 5 件見つかった》（页内 2026-11-03）写明：非专职工程师，用 Claude Code＋Fable 做自研马赛克应用查洞。材料取自真实修复前的历史版本（未故意植入）。第一次请求「找故意弄坏处并修」→ 0 件：Fable 追到原仓证明无故意破坏后停搜，真实洞仍在。第二次只改请求为「堵住这一版残留的洞」→ 5 件，含右键误点、第二指覆盖、拖动中换图出线、贴图名与规格纸不符、过大图失败理由误读；作者对关键步骤实机复现。同日厨房多计时器应用：人摸到 5 症状、无 AI 自动检查 1 件、Fable 10 件＋未修 5＋副作用自报 3。第三本 AI 写的计算器（2026-09-07）：无 AI 按键检查 0 件后仍交给 Fable，得 11 件（重 1／中 6／轻 4）；重洞为负号续算解析错误，人按验证；作者改检查文案写明「0 件＝按了没坏，不是无洞」。另有 12 本带洞应用对照 Haiku／Sonnet／Fable（Fable 只试 8 本，费用约 80–145 円／次）。
+
+关键门禁不是「AI 说了问题没有」，而是分开记「请求锚会在何处停搜」与「无 AI 检查写明了哪些组合没看」。
+
+本场景据此输出「Agent 合做查洞须同时报告请求锚、0→5 对照与检查盲区，不能只报 AI 说 0 件」提纲。禁止把 0→5 写成任意仓必然同分布，或把未复现的 AI 指摘写成已核洞。`,
+    outcomes: [
+      "源披露作者同一 Fable、同一马赛克应用：请求「故意弄坏」得 0 件；改「堵住残留洞」后实机复现 5 件；计算器无 AI 检查 0 件后 AI 读出 11 件。属作者这一次个人对照，不可外推为你同样改 1 行就等于下一查洞也总会从 0 变成 5，或无 AI 检查 0 件就等于无洞已门禁。",
+      "能把「可写成同时记下请求锚、复现步骤、检查盲区」与「必须人完成的最终按验／导流链」拆开。",
+      "为把「AI 说问题没有」当成查洞已门禁、以及把未写盲区的 0 件对外说成无洞提供提问清单。",
+    ],
+    caveats: [
+      "0／5／10／11／80–145円／12本对照均为作者自述；测次少；11 件中人按验证仅部分；Fable 8 本对照不可写成全面排名。",
+      "作者产品 https://usekokoro.com 为可达导流（GET 200，UA MiraBot/1.0）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / sadnorth_blog），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "查洞须同时报告请求锚与 0→5 对照",
+        body: `你是资深 Agent 查洞教练。只根据用户边界写门禁，不要编造无洞已门禁。
+
+现在是不是约请求锚导致停搜：{{whether_about_anchor}}
+是不是约同一模型 0→5 对照：{{whether_about_zero_to_five}}
+是不是约无 AI 检查盲区：{{whether_about_blind}}
+
+输出 Markdown：
+1. 为什么「AI 说问题没有」不能写成无洞已门禁
+2. 应怎样同时记下请求文案、复现步骤、无 AI 检查写明未见的范围
+3. 只有一次 0→5 对照时，应怎样单独记账，而不是写成下一仓也必然同分布
+4. 人必须完成的清单（按验、导流链）
+禁止声称「同样改成堵住残留洞就等于下一查洞也总会先找到 5 件」；禁止把未复现指摘写成已核洞。`,
+      },
+      {
+        title: "零到五与计算器十一件复盘",
+        body: `报告上可以写请求一改从 0 到 5、计算器无 AI 0 件后 AI 11 件；但这是一次个人对照。请写复盘提纲。
+
+现象：{{zero_to_five_eleven}}
+
+输出：
+1. 更像请求锚过窄，还是无 AI 检查未覆盖组合路径
+2. 最小复验顺序（先固定请求文案→再对关键洞按验→再写盲区声明→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上规格纸就等于所有命名洞也总会命中」，或「Fable 一次就等于廉价模型也同召回」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sadnorth_blog/articles/49600115501d25",
+      label: "zenn.dev · AI にバグを探させたら 0 件。頼み方を 1 行変えたら 5 件見つかった",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "779",
+    slug: "kenji-hcheck-33-93ver",
+    title: "kenji00_Games：/harness-check 三月——约 90 日 93 版；33 次区间；要对应仅 2；判定不能拒记 3",
+    summary: "个人（kenji00_Games）；披露自作 oneShot ハーネス用 SessionStart＋/harness-check 追 Claude Code 日更：约 90 日自 2.1.226→2.1.319 共 93 版；33 次区间执行中要对应 2（2.1.231 Grep/Glob 默失效、2.1.233 任务工具消失）、判定不能／未完拒记 3；退役零收获二进制 diff 段。不代你同样跑 33 次，就等于下一自建钩子也不会再默默丢工具。",
+    description: "面向已经把「读了 CHANGELOG」当成自建ハーネス已追平、却还没分开「有没有节」与「实机 init 工具清单是否对得上声明」的人：把「Agent 合做ハーネス追更须同时报区间次数、要对应／判定不能与记录闸」写成门禁，区别于 headless exit0/xhigh，以及技能安全扫描。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/kenji00_Games/items/0fb599fde465c8b3fb4d",
+    sourceLabel: "qiita.com·kenji00_Games 实践帖",
+    upvotes: 670,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "harness-check",
+      "hooks",
+      "oneShot",
+      "SessionStart",
+    ],
+    howItWorks: [
+      "粘贴ハーネス追更边界（是不是约版差通知、是不是约 raw CHANGELOG＋init 工具清单、是不是约判定不能拒记）以及「绝不可把读了 changelog 写成声明工具已配齐已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 33 次区间、2 次要对应、3 次拒记，以及 D113 等已知缺席清单",
+      "人工保留 93 版／2.1.231／2.1.233／2.1.319 来自哪一次自述；Agent 不代你保证「同样跑 harness-check 就等于下一版也不会再默丢 Grep」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-08T10:54:42+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T01:54:42Z、Asia/Shanghai 2026-11-08 09:54:42；updated_at 2026-11-08T23:25:10+09:00；取 created；GET 200，UA MiraBot/1.0）：kenji00_Games 在《Claude Code はほぼ毎日更新される ― 自作ハーネスを追従させる /harness-check を 3 か月回した記録》写追更。同作者前篇 Qiita、https://games.kenji00.com/ 与 note 篇为可达产品／连载导流（均 GET 200）。主线是ハーネス追更，不是官文简报。",
+      "与 headless exit0/xhigh、技能安全扫描不同：本条不是把 changelog 无人 exit 或技能包扫描当主线，而是自建钩／技能声明与实机配发清单的追平闸门",
+    ],
+    approach: `kenji00_Games 在《Claude Code はほぼ毎日更新される ― 自作ハーネスを追従させる /harness-check を 3 か月回した記録》（Qiita 2026-11-08）写明：自用 oneShot 模板捆 CLAUDE.md／Python 钩／技能／子代理／permissions；痛点是 Claude Code 几乎日更——作者记录约 90 日自 2.1.226→2.1.319 共 93 版，且部分破坏不写进 changelog。SessionStart 钩比「当前版」与「上次确认版」，不同则催 /harness-check；只有跑完检查才推进记录。流程：raw CHANGELOG 原文切片（不用会摘要的 WebFetch）→ 必要时用临时目录实测 SessionStart 注入 → 用 stream-json 的 system/init 工具清单对照 agents／skills／settings 声明 → 新功能棚卸し → working.log 固定判定语（追従不要／要対応／判定不能），脚本只在前两语才允许记版。三月数字：33 次区间；要对应 2（2.1.231 Bash 代理默不配 Grep/Glob；2.1.233 任务系工具消失）；判定不能／未完拒记 3；退役二进制 diff 段（33 次实质检出 0）。另：节缺失的版若仍记确认，会永远跳过晚发节——故「判定不能」拒记。
+
+关键门禁不是「读了 changelog／升了版」，而是分开记「节是否存在」与「声明工具是否真配到 init」。
+
+本场景据此输出「Agent 合做ハーネス追更须同时报告区间次数、要对应与拒记闸，不能只报读了 changelog」提纲。禁止把 33／2 写成任意模板同分布，或把判定不能记成问题没有。`,
+    outcomes: [
+      "源披露作者约 90 日 93 版、33 次区间：要对应 2、判定不能／未完拒记 3；退役零收获段 1。属作者这一次 oneShot 追更账本，不可外推为你同样跑 33 次就等于下一自建钩也不会再默丢 Grep，或读了 changelog 就等于声明工具已配齐已门禁。",
+      "能把「可写成同时记下区间、要对应、拒记闸」与「必须人完成的模板分发策略／导流链」拆开。",
+      "为把「升了版」当成ハーネス已追平、以及把判定不能写成问题没有提供提问清单。",
+    ],
+    caveats: [
+      "93／33／2／3／2.1.231／233／319均为作者本机账本；已知缺席用 D113 等白名单；模型写判定语仍可能误标追従不要。",
+      "作者游戏站 https://games.kenji00.com/ 、note 篇与同作者前篇 Qiita 为可达产品／连载导流（GET 200，UA MiraBot/1.0）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / kenji00_Games），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "ハーネス追更须同时报告区间与拒记闸",
+        body: `你是资深 Agent ハーネス追更教练。只根据用户边界写门禁，不要编造声明工具已配齐已门禁。
+
+现在是不是约版差 SessionStart 通知：{{whether_about_version_nudge}}
+是不是约 init 工具清单对照声明：{{whether_about_init_tools}}
+是不是约判定不能拒记：{{whether_about_ungated_record}}
+
+输出 Markdown：
+1. 为什么「读了 changelog」不能写成声明工具已配齐已门禁
+2. 应怎样同时记下区间次数、要对应、判定不能拒记
+3. 只有一次 33／2 账本时，应怎样单独记账，而不是写成下一模板也必然同分布
+4. 人必须完成的清单（分发物与保守物分界、导流链）
+禁止声称「同样跑 harness-check 就等于下一版也总会先拦住默丢 Grep」；禁止把判定不能记成问题没有。`,
+      },
+      {
+        title: "三十三次与两次要对应复盘",
+        body: `报告上可以写 33 次区间、要对应仅 2；但这是一次个人账本。请写复盘提纲。
+
+现象：{{thirty_three_two}}
+
+输出：
+1. 更像只读了 changelog，还是未对 init 工具清单
+2. 最小复验顺序（先比版→再 raw 节→再 init 对照→再决定能不能对外说已追平）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 plugin validate --strict 就等于 frontmatter 键失效也总会报警」，或「33 次就等于任意仓同检出率」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/kenji00_Games/items/0fb599fde465c8b3fb4d",
+      label: "qiita.com · Claude Code はほぼ毎日更新される ― 自作ハーネスを追従させる /harness-check を 3 か月回した記録",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "780",
+    slug: "ma2738-123f-33turn-8m",
+    title: "ma2738：Codex 一句话拉起 Claude Code 做审——123 文件哈希一致；33 回合约 8 分；权限拒绝记录 0",
+    summary: "个人（ma2738）；披露个人开发里 Codex 实现、Claude 验证：对人说「让 Claude 审」后，Codex 用 Python 非交互拉起 Claude Code（--safe-mode／--restricted／只 Read,Glob,Grep／plan），对 123 文件拷贝审完；CLI 报约 8 分 5 秒、33 回合、exit 0、permission_denials 空、哈希不一致 0。明示只实证单向、非 OS 级隔离。不代你同样拉起，就等于下一审也不会再需要人粘贴。",
+    description: "面向已经把「两个 CLI 都装了」当成跨 Agent 审阅已门禁、却还没分开「单向拉起」与「OS 隔离／事前批准」的人：把「Agent 合做跨 CLI 审阅须同时报文件数、回合、哈希与权限拒绝记录」写成门禁，区别于双 CLI 对时，以及双方向复核。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/ma2738/items/ee63da706aa64f3784a9",
+    sourceLabel: "qiita.com·ma2738 实践帖",
+    upvotes: 671,
+    trending: false,
+    tags: [
+      "Codex",
+      "Claude-Code",
+      "code-review",
+      "subprocess",
+      "restricted",
+    ],
+    howItWorks: [
+      "粘贴跨 CLI 审阅边界（是不是约 Codex 拉起 Claude、是不是约只读工具集、是不是约审后哈希）以及「绝不可把能互启写成 OS 隔离已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 123 文件、33 回合、约 8 分、permission_denials 空与评估采纳／保留／驳回",
+      "人工保留 2.1.301／total_cost_usd 自述／单向范围来自哪一次日志；Agent 不代你保证「同样拉起就等于下一审也不需要人粘贴」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-05T12:02:32+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T03:02:32Z、Asia/Shanghai 2026-11-05 11:02:32；updated_at 同 created；GET 200，UA MiraBot/1.0）：ma2738 在《Codexに「Claudeにレビューを頼んで」と言ったら、Claude Codeを自動起動してレビューまで完了した話》写日志回放。文内 code.claude.com CLI／permissions 文档为厂商对照（GET 200）。未见作者产品商店硬导流可列入可达。主线是单向拉起审阅，不是官文简报。",
+      "与双 CLI 对时、双方向复核不同：本条不是把两 CLI 同题比正确率或互相打分当主线，而是 Codex 进程内单向拉起 Claude 做独立只读审并回评估",
+    ],
+    approach: `ma2738 在《Codexに「Claudeにレビューを頼んで」と言ったら…》（Qiita 2026-11-05）写明：个人开发中 Codex 实现、Claude Code 验证；以往靠人粘贴。本次对人一句「让 Claude 审」后，Codex 自备 review-run 目录（REQUEST／MEASUREMENTS／SOURCE_HASHES／source 拷贝等），用 Python subprocess 非交互启动本机 Claude Code 2.1.301：含 -p、--safe-mode、--restricted、--tools/--allowedTools 限 Read,Glob,Grep、--permission-mode plan、--no-session-persistence、--output-format json；stdin 喂 REQUEST。日志：CLI 报约 484,962 ms（约 8 分 5 秒）、33 回合、exit 0、success、permission_denials 空、stderr 0 字节、输出 JSON 约 25KB；123 文件 SHA-256 不一致 0。Codex 对 Claude 建议分采纳／保留／驳回，并继续做对比实现；作者强调哈希一致≠全程无临时改写、禁止事项≠技术强制、非 OS 级隔离、源码仍会出站推理。total_cost_usd≈1.92 为 CLI 自报非账单证明。实证范围仅 Codex→Claude 单向。
+
+关键门禁不是「两个 CLI 都能跑」，而是分开记「单向拉起是否带只读限制」与「事后哈希／评估是否留下」。
+
+本场景据此输出「Agent 合做跨 CLI 审阅须同时报告文件数、回合、哈希与拒绝记录，不能只报互启成功」提纲。禁止把单向成功写成双向自动，或把 permission_denials 空写成从未尝试禁操作。`,
+    outcomes: [
+      "源披露作者日志：123 文件哈希不一致 0；33 回合约 8 分 5 秒；exit 0；permission_denials 空。属作者这一次单向拉起审阅，不可外推为你同样拉起就等于下一审也不需要人粘贴，或有 --restricted 就等于 OS 隔离已门禁。",
+      "能把「可写成同时记下工具限制、哈希、评估分档」与「必须人完成的事前批准／导流链」拆开。",
+      "为把「能互启」当成跨 Agent 审阅已门禁、以及把 CLI 自报费用写成账单提供提问清单。",
+    ],
+    caveats: [
+      "123／33／约8分／denials空／≈1.92USD均为一次日志自述；明示单向、非 OS 隔离；哈希不能证明全程无临时改写。",
+      "文内 code.claude.com 文档为厂商对照（GET 200）。本机未见作者产品商店硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / ma2738），不是 Anthropic／OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "跨 CLI 审阅须同时报告哈希与拒绝记录",
+        body: `你是资深 Agent 跨 CLI 审阅教练。只根据用户边界写门禁，不要编造 OS 隔离已门禁。
+
+现在是不是约 Codex 单向拉起 Claude：{{whether_about_one_way}}
+是不是约只读工具集：{{whether_about_readonly_tools}}
+是不是约审后哈希：{{whether_about_hash}}
+
+输出 Markdown：
+1. 为什么「两个 CLI 都能跑」不能写成 OS 隔离已门禁
+2. 应怎样同时记下文件数、回合、哈希、permission_denials
+3. 只有一次单向日志时，应怎样单独记账，而不是写成双向自动也已门禁
+4. 人必须完成的清单（事前批准、导流链）
+禁止声称「同样 --restricted 就等于下一审也总会先拦住写盘」；禁止把 denials 空写成从未尝试禁操作。`,
+      },
+      {
+        title: "一百二十三文件与三十三回合复盘",
+        body: `报告上可以写 123 文件哈希一致、33 回合约 8 分；但这是一次个人日志。请写复盘提纲。
+
+现象：{{one_two_three_thirty_three}}
+
+输出：
+1. 更像缺了只读限制，还是缺了审后哈希／评估分档
+2. 最小复验顺序（先拷贝隔离目录→再限工具拉起→再对哈希与评估落盘→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 plan 模式就等于推理也不会出站」，或「8 分钟就等于任意仓同耗时」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/ma2738/items/ee63da706aa64f3784a9",
+      label: "qiita.com · Codexに「Claudeにレビューを頼んで」と言ったら、Claude Codeを自動起動してレビューまで完了した話",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "781",
+    slug: "ytsuba-diff-12step-5must",
+    title: "y_tsubasa：AI 差分按处理流逐步读——示例 12 步里默认只走 5 步必读；未配发工具",
+    summary: "个人（y_tsubasa，刊于 qnote）；披露 AI 写码后读 diff 比写更久：自做本地屏把变更排成处理流，并分成必读／确认／交给机器；示例看板通知功能 12 步中默认「下一步」只走 5 步必读。说明由 Claude Code／Codex 写、人读；工具按个人读法未对外配发。不代你同样 12→5，就等于下一 PR 也总会先滤掉非必读。",
+    description: "面向已经把「让 AI 解释整份 diff」当成审阅已门禁、却还没分开「按处理流逐步」与「先筛必读」的人：把「Agent 合做 diff 阅读须同时报分列标准、步数与已读痕迹」写成门禁，区别于 CodeRabbit 行评，以及 UI Skill。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/y_tsubasa/items/46a5748d97ca50ed00ad",
+    sourceLabel: "qiita.com·y_tsubasa／qnote 实践帖",
+    upvotes: 672,
+    trending: false,
+    tags: [
+      "diff-review",
+      "Claude-Code",
+      "Codex",
+      "reading-tool",
+      "must-read",
+    ],
+    howItWorks: [
+      "粘贴 diff 阅读边界（是不是约处理流排序、是不是约必读／确认／机器三列、是不是约已读痕迹）以及「绝不可把 AI 长文解释写成审阅已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下分列标准、12→5 示例、以及外部发送字段对照须来自实测而非推测",
+      "人工保留示例看板／未配发声明来自哪一次自述；Agent 不代你保证「同样 12→5 就等于下一 PR 也总会先滤掉非必读」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-07T15:52:13+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T06:52:13Z、Asia/Shanghai 2026-11-07 14:52:13；updated_at 同 created；GET 200，UA MiraBot/1.0）：y_tsubasa 在《差分を流れ順に 1 ステップずつ読むツールを作った話》写阅读屏。文内 Anthropic 审阅博文、karamage 文为对照（GET 200）。工具明示未配发；未见作者商店硬导流可列入可达。主线是按流阅读，不是官文简报。",
+      "与 CodeRabbit 行评、UI Skill 不同：本条不是把机器人行评或画 UI 技能当主线，而是人用本地屏按处理流逐步读 AI 差分并留下已读痕迹",
+    ],
+    approach: `y_tsubasa（刊于 qnote）在《差分を流れ順に 1 ステップずつ読むツールを作った話》（Qiita 2026-11-07）写明：AI 写码量上去后，读差分比写更久；git diff／编辑器按路径排，追处理流要来回跳；让 AI 长文解释又慢。自做本地阅读屏：先把变更分成必读／确认／交给机器三列（AI 初标，人可改）；必读偏外发／写库／失败回退；确认偏路由与校验；机器列偏测试与纯展示。示例（AI 做的看板：发帖通知聊天）共 12 步，默认「下一步」只走必读 5 步。逐步屏以代码为主，行头展开说明；分支与规格不符行默认展开；外发步骤附字段对照表，约定实现值取自测试实发而非推测；「看过→下一步」与文件级已读会落 Markdown 清单。选中行可当场问写说明的同一 AI 会话。作者强调最有效的是先筛必读；并引用 Anthropic 团队按风险收窄人看范围的做法。工具按个人读法制作、未对外配发。
+
+关键门禁不是「让 AI 解释了整份 diff」，而是分开记「是否按处理流」与「是否先筛必读并留已读痕迹」。
+
+本场景据此输出「Agent 合做 diff 阅读须同时报告分列标准、步数与已读痕迹，不能只报 AI 解释完了」提纲。禁止把 12→5 写成任意 PR 同比例，或把未配发工具写成已可团队安装。`,
+    outcomes: [
+      "源披露作者示例：12 步差分里默认只走 5 步必读；工具未对外配发。属作者这一次个人阅读屏自述，不可外推为你同样 12→5 就等于下一 PR 也总会先滤掉非必读，或让 AI 解释完整 diff 就等于审阅已门禁。",
+      "能把「可写成同时记下分列标准、步数、已读痕迹」与「必须人完成的规格判定／导流链」拆开。",
+      "为把「AI 长文解释」当成审阅已门禁、以及把未筛必读却对外说已读完提供提问清单。",
+    ],
+    caveats: [
+      "12／5 为文内示例步数；工具明示未配发；外发对照依赖测试实发约定。",
+      "文内 Anthropic 博文与 karamage 文为对照（GET 200）。本机未见作者商店硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / y_tsubasa），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "diff 阅读须同时报告必读筛与已读痕迹",
+        body: `你是资深 Agent diff 阅读教练。只根据用户边界写门禁，不要编造审阅已门禁。
+
+现在是不是约处理流排序：{{whether_about_flow_order}}
+是不是约必读／确认／机器三列：{{whether_about_triage}}
+是不是约已读痕迹：{{whether_about_seen_marks}}
+
+输出 Markdown：
+1. 为什么「让 AI 解释整份 diff」不能写成审阅已门禁
+2. 应怎样同时记下分列标准、步数、已读痕迹
+3. 只有一次 12→5 示例时，应怎样单独记账，而不是写成下一 PR 也必然同比例
+4. 人必须完成的清单（规格判定、导流链）
+禁止声称「同样做了三列就等于下一 PR 也总会先只读必读」；禁止把未配发工具写成已可团队安装。`,
+      },
+      {
+        title: "十二步五必读复盘",
+        body: `报告上可以写示例 12 步默认只走 5 步必读；但这是一次个人示例。请写复盘提纲。
+
+现象：{{twelve_to_five}}
+
+输出：
+1. 更像按路径扫、还是缺了必读筛
+2. 最小复验顺序（先定分列→再按流逐步→再留已读→再决定能不能对外说已审完）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上外发对照表就等于所有字段也总会来自实测」，或「引用 Anthropic 博文就等于本仓风险分级已对齐」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/y_tsubasa/items/46a5748d97ca50ed00ad",
+      label: "qiita.com · 差分を流れ順に 1 ステップずつ読むツールを作った話",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "782",
+    slug: "penne-13inc-wtguard-5ok",
+    title: "ペンネ：worktree 隔离一周 13 事故——改 PreToolUse 二段守卫；smoke 5/5",
+    summary: "团队（ペンネ株式会社／penne_inc）；披露「安全文字起こし」开发中 6 体 Claude Code 并行时，曾信 isolation: worktree；2026-06 第一周累计 13 件穿出（含绝对路径写父仓、cwd 继承误 commit）。改以 PreToolUse 对 Bash/Edit/Write 挡 worktree 外路径（exit 2）；smoke 5/5。不代你同样装守卫，就等于下一并行日也不会再写穿父仓。",
+    description: "面向已经把「开了 isolation: worktree」当成写盘隔离已门禁、却还没分开「默认朝 worktree」与「绝对路径／cwd 继承能否穿出」的人：把「Agent 合做 worktree 隔离须同时报事故件数、钩守卫与 smoke」写成门禁，区别于并行 bulkhead 挡 shell，以及 Remote Control。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/penne_inc/articles/claude-code-worktree-isolation-bug",
+    sourceLabel: "zenn.dev·ペンネ株式会社／penne_inc 实践帖",
+    upvotes: 673,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "worktree",
+      "PreToolUse",
+      "isolation",
+      "hooks",
+    ],
+    howItWorks: [
+      "粘贴 worktree 隔离边界（是不是约 isolation: worktree、是不是约绝对路径／cwd 穿出、是不是约 PreToolUse 挡外路径）以及「绝不可把开了 worktree 隔离写成写盘隔离已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 13 件年表、钩注册与 5/5 smoke",
+      "人工保留 6 体角色／PR #679／Issue #57847 对照来自哪一次自述；Agent 不代你保证「同样装守卫就等于下一并行日也不会再写穿父仓」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-06-10T16:55:10.824+09:00 → 2026-06-10，同时刻为 UTC 2026-06-10T07:55:10Z、Asia/Shanghai 2026-06-10 15:55:10；bodyUpdatedAt 2026-06-10T14:45:19.437+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：ペンネ株式会社 在《Claude Code の worktree 隔離は信用するな — 1週間13件のインシデントと PreToolUse フックによる解決》写事故与钩。文末「安全文字起こし」硬链 https://anzen-mojiokoshi.org 为可达产品导流（GET 200）。另对 anzen-mojiokoshi.com／anzenmojiokoshi.jp 探测无响应（连接失败，已不列入可达导流）。同社站 https://penne.co.jp/ GET 200 但非文内硬链，作同社背景不列入可达导流。主线是 worktree 穿出与钩守卫，不是官文简报。",
+      "与并行 bulkhead 挡 shell、Remote Control 不同：本条不是把 pkill／端口碰撞或远端接管当主线，而是 isolation: worktree 被绝对路径／cwd 继承写穿后的 PreToolUse 二段守卫",
+    ],
+    approach: `ペンネ株式会社（penne_inc）在《Claude Code の worktree 隔離は信用するな — 1週間13件のインシデントと PreToolUse フックによる解決》（页内 2026-06-10）写明：安全文字起こし开发用 lead／dev／PO／webmaster／qa／guide 等最多约 6 体并行；曾以 Agent({ isolation: "worktree" }) 为写盘隔离前提并放宽权限。2026-06 第一周表列 13 件穿出：含 worktree 内作业却直接改父仓 API、写 lead 专属治理文件、9 文件写穿父 frontend、lead 自己在 PO 分支误 commit、完成后 cwd 继承导致误 push、启动即用父仓绝对路径 Edit 等。根因对照官方 cwd 继承／绝对路径问题（文引 Issue #57847）：isolation 更像默认朝 worktree，不是牢笼。PR #679 改主防线为 PreToolUse：匹配 Bash|Edit|Write|NotebookEdit，脚本查路径是否出 worktree，出则 exit 2。smoke 5 项全过（lead 在 main 可写；dev 无 worktree 写 main 被挡；正确 worktree 内可写；worktree 内用父绝对路径被挡；子目录可写）。结论：提示「别写出 worktree」不够；要用环境确定挡住。
+
+关键门禁不是「开了 isolation: worktree」，而是分开记「默认朝哪」与「绝对路径／cwd 继承是否被钩挡住」。
+
+本场景据此输出「Agent 合做 worktree 隔离须同时报告事故件数、钩守卫与 smoke，不能只报开了 isolation」提纲。禁止把 13／5/5 写成任意仓同分布，或把 isolation 写成牢笼已门禁。`,
+    outcomes: [
+      "源披露团队一周表列 13 件 worktree 穿出；改 PreToolUse 二段守卫后 smoke 5/5。属该公司这一次事故账与钩自述，不可外推为你同样装守卫就等于下一并行日也不会再写穿父仓，或开了 isolation: worktree 就等于写盘隔离已门禁。",
+      "能把「可写成同时记下事故类型、钩匹配与 smoke」与「必须人完成的仓库策略／导流链」拆开。",
+      "为把「开了 isolation」当成写盘隔离已门禁、以及把未跑 smoke 却对外说已守卫提供提问清单。",
+    ],
+    caveats: [
+      "13／5/5／6体／PR#679均为作者团队自述；官方 cwd 问题修复后钩的一部分或可收缩，但「用环境守」原则仍保留。",
+      "文末「安全文字起こし」硬链 https://anzen-mojiokoshi.org 为可达产品导流（GET 200，UA MiraBot/1.0）。另对 anzen-mojiokoshi.com／anzenmojiokoshi.jp 探测无响应（连接失败，已不列入可达导流）。同社站 https://penne.co.jp/ GET 200 但非文内硬链，不列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / ペンネ株式会社），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "worktree 隔离须同时报告事故与钩守卫",
+        body: `你是资深 Agent worktree 隔离教练。只根据用户边界写门禁，不要编造写盘隔离已门禁。
+
+现在是不是约 isolation: worktree：{{whether_about_isolation_flag}}
+是不是约绝对路径／cwd 穿出：{{whether_about_path_escape}}
+是不是约 PreToolUse 挡外路径：{{whether_about_pretooluse}}
+
+输出 Markdown：
+1. 为什么「开了 isolation: worktree」不能写成写盘隔离已门禁
+2. 应怎样同时记下事故件数、钩匹配、smoke
+3. 只有一次 13／5/5 账本时，应怎样单独记账，而不是写成下一仓也必然同分布
+4. 人必须完成的清单（仓库策略、导流链）
+禁止声称「同样装 PreToolUse 就等于下一并行日也总会先拦住写穿」；禁止把 isolation 写成牢笼已门禁。`,
+      },
+      {
+        title: "十三件与五比五 smoke 复盘",
+        body: `报告上可以写一周 13 件穿出、smoke 5/5；但这是一次团队账本。请写复盘提纲。
+
+现象：{{thirteen_five_of_five}}
+
+输出：
+1. 更像绝对路径穿出，还是 cwd 继承误 commit
+2. 最小复验顺序（先复现写穿→再装钩→再跑 smoke→再决定能不能对外说已守卫）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上提示别写出 worktree 就等于绝对路径也总会停」，或「5/5 就等于任意 matcher 也同覆盖」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/penne_inc/articles/claude-code-worktree-isolation-bug",
+      label: "zenn.dev · Claude Code の worktree 隔離は信用するな — 1週間13件のインシデントと PreToolUse フックによる解決",
+      date: "2026-06-10",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
