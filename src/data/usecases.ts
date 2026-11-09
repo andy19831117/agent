@@ -52518,6 +52518,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "733",
+    slug: "ykstudio-19top-13num-155x",
+    title: "yk_studio：嫌的不是「AI 写的」——上位 19 本里 13 本标题有数字；个人开发×AI 同比 15.5 倍已饱和",
+    summary: "个人（yk_studio）；披露先实查再改自家 AI 代笔流程：上位 19 本里 13 本标题含具体数字；装饰图 0 张／证据图才留；Qiita「个人开发」×AI 同比约 15.5 倍已供给过剩。不代你同样数 19 本，就等于下一稿也会 19／13／15.5，或去掉装饰图就等于已无 AI 味。",
+    description: "面向已经把「不像 AI 写的」当成可发布、却还没分开「口气像人」与「句句有人核验」的人：把「Agent 合做技术文须同时报证据图／数字标题与人侧事实核」写成门禁，区别于出版前主张三类核验，以及子代理趋势周报审计。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/yk_studio/articles/why-ai-written-articles-feel-ai",
+    sourceLabel: "zenn.dev·yk_studio 实践帖",
+    upvotes: 624,
+    trending: false,
+    tags: [
+      "AI-writing",
+      "Zenn",
+      "Qiita",
+      "tech-blog",
+      "evidence",
+    ],
+    howItWorks: [
+      "粘贴技术文发布边界（是不是上位约 19 本、是不是标题含数字约 13 本、是不是同比约 15.5 倍）以及「绝不可把口气像人写成句句已核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下证据图／数字标题／失败钩子，以及人必须提供的事实与公开判断",
+      "人工保留 19／13／15.5 来自哪一轮对照；Agent 不代你保证「同样数 19 本就等于下一稿也总会 19／13」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T20:30:08.044+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T11:30:08Z、Asia/Shanghai 2026-11-09 19:30:08；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：yk_studio 在《「AIが書いた記事」が嫌われる理由は、AIが書いたことではなかった。人気記事を実地で調べて分かったこと》写 19／13／15.5。文末链个人站失败谈与「ご依頼・料金」，属个人站／接单导流且可达。主线是证据与人核，不是官文简报。",
+      "与 mugenweb-2over-3kind-5mb／udm-11src-0err-70d 不同：本条不是主张三类改写或周报结论审计，而是发布前对「上位文长什么样」做对照后改 AI 代笔分工",
+    ],
+    approach: `yk_studio 在《「AIが書いた記事」が嫌われる理由は、AIが書いたことではなかった。人気記事を実地で調べて分かったこと》（页内 2026-11-09）写明：自家站几乎全由 AI 代笔、人只交素材与公开判断；动手前先对照 Zenn／Qiita 上位文。发现：上位装饰图 0 张，出现的图全是截图／终端／管理画面／实数据图；主张 1 条配证据 1 张；查到的上位 19 本里 13 本标题含具体数字，且失败钩子更常进标题；「AI 味」信号最后落在「没有版本号／日期／环境／真实报错／自我限界」——嫌的是「人没核验」，不是「用了 AI」。Qiita 官方数据写「个人开发」×AI 同比约 15.5 倍，作者判断讲解向供给已饱和，应改走实录／实费／失败结构。
+
+关键门禁不是「已经去 AI 腔」，而是分开记「口气像人」与「句句有人核的事实」。
+
+本场景据此输出「Agent 合做技术文须同时报告证据图／数字标题与人侧事实核，不能只报已润色」提纲。禁止把 19／13／15.5 写成下一稿也总会到达，或把去掉装饰图写成已无 AI 味。`,
+    outcomes: [
+      "源披露作者对照上位文后改 AI 代笔：上位 19 本中 13 本标题含具体数字；装饰图 0、证据图才留；把「AI 味」收束为缺人核验的一般论；并引用 Qiita「个人开发」×AI 同比约 15.5 倍作供给过剩背景。属作者这一轮对照与自家站分工，不可外推为你同样数 19 本就等于下一稿也会 19／13／15.5，或去掉装饰图就等于已无 AI 味。",
+      "能把「可写成同时记下证据图、数字标题、人侧事实核」与「必须人完成的公开判断、以及是否有外链导流」拆开。",
+      "为把「口气像人」当成句句已核、以及把「已去装饰图」当成已无 AI 味提供提问清单。",
+    ],
+    caveats: [
+      "19／13／15.5／装饰图0／8000〜10000字·标题20+ 均为作者这一轮对照与文内引用；未声称照做必涨；「内容几乎不解释点赞」来自文内引用的外部分析。",
+      "文中链 https://ykstudio.net/blog/revenuecat-silent-failure/ 、https://ykstudio.net/blog/x-autopost-19-posts-never-sent/ 、https://ykstudio.net/blog/blog-monetization-what-is-actually-required/ 、https://ykstudio.net/ 、https://ykstudio.net/#works 、https://ykstudio.net/services/ ，属个人站作品／接单导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / yk_studio），不是 Zenn／Qiita 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AI代笔技术文须同时报告证据与人核门禁",
+        body: `你是资深 Agent 技术文发布教练。只根据用户边界写门禁，不要编造已经到的19或13。
+
+现在是不是上位约19本：{{whether_about_nineteen_top}}
+是不是标题含数字约13本：{{whether_about_thirteen_numeric_titles}}
+是不是同比约15.5倍背景：{{whether_about_fifteen_point_five}}
+
+输出 Markdown：
+1. 为什么「口气像人」不能写成句句已核
+2. 应怎样同时记下证据图、数字标题与人侧事实核
+3. 只有一轮对照时，应怎样单独记账，而不是写成下一稿也必然19／13
+4. 人必须完成的清单（公开判断、导流链）
+禁止声称「同样数19本就等于下一稿也总会19／13」；禁止把去掉装饰图写成已无AI味。`,
+      },
+      {
+        title: "十九本与十三、十五点五复盘",
+        body: `报告上可以写上位19本、标题含数字13本、同比约15.5倍；但这是一轮个人对照。请写复盘提纲。
+
+现象：{{nineteen_and_thirteen}}
+
+输出：
+1. 更像证据纪律生效，还是题目恰好好对照
+2. 最小复验顺序（先抽标题数字→再抽证据图→再决定能不能对外说代笔已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上去装饰图就等于下一稿也总会13」，或「这一次对照就等于任何AI文都会被读」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yk_studio/articles/why-ai-written-articles-feel-ai",
+      label: "zenn.dev · 「AIが書いた記事」が嫌われる理由は、AIが書いたことではなかった。人気記事を実地で調べて分かったこと",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "734",
+    slug: "ruri-7spec-33k-1568",
+    title: "ruri：code as spec——到手 7 本共 3.3 万字：弃 15%／迁码测 68%／ADR 9%／留文 8%",
+    summary: "个人（ruri）；披露把「自然语言 spec 当正」改成「可读代码当 SSoT」：到手已实现完的 spec 7 本共约 3.3 万字，数出弃 15%、迁入测试·型·代码 68%、ADR 9%、仍留文 8%；曾收约 2,000 行 spec-kit PR 读不动。不代你同样数 7 本，就等于下一仓也会 7／3.3万／15／68，或 code-as-spec 就等于已无陈旧正本。",
+    description: "面向已经把「仓库里有详细 spec」当成 Agent 可跟、却还没分开「人能核的正」与「自然语言正会陈旧」的人：把「Agent 合做 SDD 须同时报正本位置、丢弃比例与生成说明不回写」写成门禁，区别于 UI Skill 评测对照，以及合并 Skill 拆分。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/ruri/articles/code-as-spec",
+    sourceLabel: "zenn.dev·ruri 实践帖",
+    upvotes: 625,
+    trending: false,
+    tags: [
+      "SDD",
+      "code-as-spec",
+      "TypeScript",
+      "domain-modeling",
+      "tests",
+    ],
+    howItWorks: [
+      "粘贴 SDD 正本边界（是不是约 7 本 spec、是不是约 3.3 万字、是不是约 15%／68%／9%／8%）以及「绝不可把仓库有 spec 写成正已可核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下正本在代码／测试、丢弃与 ADR 分流、以及说明书不回写为输入",
+      "人工保留 7／3.3万／15／68 来自哪一套题；Agent 不代你保证「同样数 7 本就等于下一仓也总会 15／68」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T08:00:05.648+09:00 → 2026-11-06，同时刻为 UTC 2026-11-05T23:00:05Z、Asia/Shanghai 2026-11-06 07:00:05；bodyUpdatedAt 2026-11-05T09:20:29.527+09:00 早于发布时刻，取 publishedAt；GET 200，UA MiraBot/1.0）：ruri 在《spec as code ではなく、code as spec — 仕様書のように書かれたコードを正にする》写 7／3.3万／15／68／9／8。文内链 Fowler／Böckeler 文作出处；另链作者前作 spec-stock-or-flow。主线是正本与可检验，不是官文简报。",
+      "与 oiloil UI Skill／percy 合并 Skill 拆分不同：本条不是技能评测或元数据拆分，而是把自然语言 spec 从「正」降为可丢弃的任务草稿",
+    ],
+    approach: `ruri 在《spec as code ではなく、code as spec — 仕様書のように書かれたコードを正にする》（页内 2026-11-06）写明：收过约 2,000 行 spec-kit PR，人读不动却当正进仓；主张可检验的 SSoT 应是可读的领域代码与测试，自然语言 spec 实现后应放手。对手头已实现完的 spec 7 本（计约 3.3 万字）计数：弃 15%、迁入测试·型·代码 68%、ADR 9%、仍作文档留 8%。同题用 TypeScript 域模型重写后，代码约 63 行、测试约 23 行、型检与测试 10 本先过；让另一会话只凭代码写说明书，又挖出「无词键→空标签」等未测边，补约束后测试到 12 本。生成说明只读不回写为下一轮输入。
+
+关键门禁不是「spec 已经写得很细」，而是分开记「人能用编译器／测试核的正」与「自然语言正会陈旧却仍被 Agent 当正」。
+
+本场景据此输出「Agent 合做 SDD 须同时报告正本位置、丢弃比例与说明不回写，不能只报有 spec」提纲。禁止把 7／3.3万／15／68 写成下一仓也总会到达，或把 code-as-spec 写成已无陈旧正本。`,
+    outcomes: [
+      "源披露作者对手头 7 本已实现 spec（约 3.3 万字）计数：弃 15%、迁码测 68%、ADR 9%、留文 8%；同题 TypeScript 重写约 63＋23 行、测试 10→12 本，并由生成说明抓到未测边。另披露曾收约 2,000 行自然语言 spec PR。属作者这一套题与计数，不可外推为你同样数 7 本就等于下一仓也会 7／3.3万／15／68，或 code-as-spec 就等于已无陈旧正本。",
+      "能把「可写成同时记下正本位置、丢弃／ADR 分流、说明不回写」与「必须人完成的域层复审、以及是否有外链导流」拆开。",
+      "为把「仓库有详细 spec」当成正已可核、以及把「已生成说明」当成又可当输入 spec」提供提问清单。",
+    ],
+    caveats: [
+      "7／3.3万／15／68／9／8／2000行／63・23行／10→12本 均为作者这一套题与文内计数；百分比来自作者自数；未声称任意仓同比例。",
+      "文中链 https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html 作对照出处；https://zenn.dev/ruri/articles/spec-stock-or-flow 为作者相关文。未见招聘／有料外链硬导流字样；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / ruri），不是各 SDD 工具商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "SDD正本须同时报告丢弃比例与不回写门禁",
+        body: `你是资深 Agent SDD正本教练。只根据用户边界写门禁，不要编造已经到的7或68。
+
+现在是不是约7本spec：{{whether_about_seven_specs}}
+是不是约3.3万字：{{whether_about_thirty_three_k}}
+是不是约15%／68%分流：{{whether_about_fifteen_sixty_eight}}
+
+输出 Markdown：
+1. 为什么「仓库有详细spec」不能写成正已可核
+2. 应怎样同时记下正本在代码／测试、丢弃与ADR、说明不回写
+3. 只有一套题时，应怎样单独记账，而不是写成下一仓也必然15／68
+4. 人必须完成的清单（域层复审、导流链）
+禁止声称「同样数7本就等于下一仓也总会15／68」；禁止把已生成说明写成可再当输入spec。`,
+      },
+      {
+        title: "七本与三点三万、十五六十八复盘",
+        body: `报告上可以写7本spec、约3.3万字、弃15%／迁68%；但这是一套个人计数。请写复盘提纲。
+
+现象：{{seven_and_thirty_three}}
+
+输出：
+1. 更像正本纪律生效，还是题目恰好好切
+2. 最小复验顺序（先抽正本位置→再抽是否回写→再决定能不能对外说SDD已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上code-as-spec就等于下一仓也总会15／68」，或「这一次抓到未测边就等于任何说明都已完备」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ruri/articles/code-as-spec",
+      label: "zenn.dev · spec as code ではなく、code as spec — 仕様書のように書かれたコードを正にする",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "735",
+    slug: "figluiz-571pr-200cr-82pct",
+    title: "figueiredoluiz：一人 OSS 按团队标准审——两仓 PR 571／合 548；CodeRabbit 行评 200 件处置 82%",
+    summary: "个人（figueiredoluiz）；披露一人维护 vitest-dedup／cuke-dedup：2026-09〜11 两仓 PR 571、合 548；CodeRabbit 行评 200 件中 164（82%）已确认修正或已回复；本地 Codex→Claude→必要时 CodeRabbit CLI，人只留维护者判断。不代你同样堆 571，就等于下一仓也会 571／200／82，或四层审就等于可免人合。",
+    description: "面向已经把「AI 写了又 AI 审了」当成可合、却还没分开「多层检出」与「维护者仍要判设计债」的人：把「Agent 合做一人 OSS 须同时报门禁层、处置率与人侧合入判断」写成门禁，区别于多 PR 吞吐竞赛，以及学习叙事首月大 diff。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://qiita.com/figueiredoluiz/items/1a043190d8f00d2ebda6",
+    sourceLabel: "qiita.com·figueiredoluiz 实践帖",
+    upvotes: 626,
+    trending: false,
+    tags: [
+      "CodeRabbit",
+      "Codex",
+      "Claude-Code",
+      "OSS",
+      "code-review",
+    ],
+    howItWorks: [
+      "粘贴一人 OSS 评审边界（是不是约 PR 571／合 548、是不是行评约 200、是不是处置约 82%）以及「绝不可把 AI 审过写成可免人合」纪律",
+      "Agent 按实践帖输出：应怎样同时记下确定性门禁、本地多视角审、PR 机器人与人侧判断",
+      "人工保留 571／200／82 来自哪两仓哪段窗；Agent 不代你保证「同样四层就等于下一仓也总会 82」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD Article；datePublished 2026-11-10T01:24:42.000+09:00 → 2026-11-10，同时刻为 UTC 2026-11-09T16:24:42Z、Asia/Shanghai 2026-11-10 00:24:42；dateModified 同发布；GET 200，UA MiraBot/1.0）：figueiredoluiz 在《ひとりで作るOSSを、チームの基準でレビューする（Codex・Claude・CodeRabbit）》写 571／548／200／82。文内产品站 vitestdedup.dev／cukededup.dev 属工具导流且可达；coderabbit.link 学习／自动审链本机 GET 404，已不列入可达导流。主线是四人视角门禁与处置，不是官文简报。",
+      "与 kingyosun 多 PR 吞吐／eliri 首月大 diff 不同：本条不是冲提交量或理解负债叙事，而是一人仓用确定性门禁＋多 AI 审把合入判断留给维护者",
+    ],
+    approach: `figueiredoluiz 在《ひとりで作るOSSを、チームの基準でレビューする（Codex・Claude・CodeRabbit）》（JSON-LD 2026-11-10）写明：一人维护两套重复测试检测器；2026-09〜11 两仓 PR 571、合 548。流程是 pre-commit／pre-push 等确定性门禁 → Codex \`/review\` 直到无指摘 → Claude \`/code-review\`（四评审并行＋验证步与置信度过滤）→ 大改再上 CodeRabbit CLI；GitHub 上 CodeRabbit 行评 200 件（图示 Major 50），164（82%）为已确认修正或作者已回复。pre-push 最长可挡约 20 分，作者用「手跑同检＋漏检风险」对照，而非只比等待。人侧仍判：是否解对题、一年后是否扛得住、复杂度是否值得。
+
+关键门禁不是「已经过了 AI 审」，而是分开记「多层检出」与「维护者仍要做合入判断」。
+
+本场景据此输出「Agent 合做一人 OSS 须同时报告门禁层、处置率与人侧合入判断，不能只报审过」提纲。禁止把 571／200／82 写成下一仓也总会到达，或把四层审写成可免人合。`,
+    outcomes: [
+      "源披露作者一人两仓在 2026-09〜11：PR 571／合 548；CodeRabbit 行评 200 件中 164（82%）已确认修正或已回复（vitest-dedup 74／102、cuke-dedup 90／98）；流程含确定性钩子、Codex、Claude 四视角、必要时 CodeRabbit。属作者这两仓与该窗，不可外推为你同样堆 571 就等于下一仓也会 571／200／82，或四层审就等于可免人合。",
+      "能把「可写成同时记下门禁层、处置率、人侧合入判断」与「必须人完成的设计债取舍、以及是否有外链导流」拆开。",
+      "为把「AI 审过」当成可免人合、以及把「指摘正确」当成「必须进本 PR」提供提问清单。",
+    ],
+    caveats: [
+      "571／548／200／164／82%／Major50／pre-push约20分／Vue88%对照 均为作者文内计量与外部搜索概算；两仓仍默认 CodeRabbit 配置；未声称任意 OSS 同处置率。",
+      "文中链 https://vitestdedup.dev 、https://cukededup.dev ，属作者工具站导流；本机 GET 200，列入可达导流。https://coderabbit.link/figueiredoluiz/learnings 与 https://coderabbit.link/figueiredoluiz/auto-review 现 HTTP 404，已不列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / figueiredoluiz），不是 CodeRabbit／Anthropic／OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "一人OSS多层审须同时报告处置率与人合门禁",
+        body: `你是资深 Agent OSS评审教练。只根据用户边界写门禁，不要编造已经到的571或82。
+
+现在是不是约PR571／合548：{{whether_about_571_548}}
+是不是行评约200：{{whether_about_200_comments}}
+是不是处置约82%：{{whether_about_82_percent}}
+
+输出 Markdown：
+1. 为什么「AI审过」不能写成可免人合
+2. 应怎样同时记下确定性门禁、多视角审与人侧合入判断
+3. 只有两仓一窗时，应怎样单独记账，而不是写成下一仓也必然82
+4. 人必须完成的清单（设计债取舍、导流链）
+禁止声称「同样四层就等于下一仓也总会82」；禁止把指摘正确写成必须塞进本PR。`,
+      },
+      {
+        title: "五百七十一与二百、八十二复盘",
+        body: `报告上可以写PR571／合548、行评200、处置82%；但这是两仓一窗。请写复盘提纲。
+
+现象：{{five_seventy_one_and_eighty_two}}
+
+输出：
+1. 更像门禁层生效，还是工具默认就够吵
+2. 最小复验顺序（先抽处置定义→再抽人合清单→再决定能不能对外说评审已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上CodeRabbit就等于下一仓也总会82」，或「这一次82就等于任何指摘都已关闭」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/figueiredoluiz/items/1a043190d8f00d2ebda6",
+      label: "qiita.com · ひとりで作るOSSを、チームの基準でレビューする（Codex・Claude・CodeRabbit）",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "736",
+    slug: "nexus-150crore-10x-2626",
+    title: "nexus-tools：₹150 crore 被写成 150 million——做印式金额 grounding；判定集 26／26，纯字符串仅 10／26",
+    summary: "个人（nexus-tools）；披露为抓「crore→million」类 10 倍错做 IN Number Grounding：命名错型后对判定集 26 问 26／26，同集纯数字串搜索仅 10／26；测试 35 件；并作 MCP 三工具。不代你同样跑 26，就等于下一语种也会 26／26／10，或 grounding 就等于实文已零错。",
+    description: "面向已经把「摘要里的数字能在原文搜到」当成金额已核、却还没分开「字面命中」与「单位换算是否同值」的人：把「Agent 合做金额核验须同时报错型名、换算对照与判定集限度」写成门禁，区别于出版前主张三类核验，以及趋势周报出典审计。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/nexus-tools/items/5aef631b86eeea2a8880",
+    sourceLabel: "qiita.com·nexus-tools 实践帖",
+    upvotes: 627,
+    trending: false,
+    tags: [
+      "number-grounding",
+      "MCP",
+      "India",
+      "fact-check",
+      "Python",
+    ],
+    howItWorks: [
+      "粘贴金额核验边界（是不是约 ₹150 crore／10 倍例、是不是判定集约 26／26、是不是字符串搜索约 10／26）以及「绝不可把字面搜到写成换算已核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下错型名、值级对照与判定集／实文限度",
+      "人工保留 150／10x／26／10 来自哪套工具与判定集；Agent 不代你保证「同样跑 26 就等于下一语种也总会 26／26」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD Article；datePublished 2026-11-10T00:25:48.000+09:00 → 2026-11-10，同时刻为 UTC 2026-11-09T15:25:48Z、Asia/Shanghai 2026-11-09 23:25:48；dateModified 同发布；GET 200，UA MiraBot/1.0）：nexus-tools 在《「₹150 crore」をAIが「150 million rupees」と書く10倍のずれを、要約と原文の照合で名前つきで見つける道具を作った》写 150／10x／26／26。文内 everything-pr／arxiv 作背景出处；GitHub 仓属工具导流且可达。主线是单位换算核验，不是官文简报。",
+      "与 mugenweb 主张三类／udm 周报审计不同：本条不是断定句分类或潮流命名过强，而是印式 lakh／crore 与 million 换算后的同值对照",
+    ],
+    approach: `nexus-tools 在《「₹150 crore」をAIが「150 million rupees」と書く10倍のずれを…》（JSON-LD 2026-11-10）写明：印式 lakh／crore 英译常落 million／billion，字面搜索会漏「数字同、单位错」与「写法不同、值相同」。做成 IN Number Grounding（MIT、仅标准库、无外连），给 crore_read_as_million／lakh_crore_swap／scale_mismatch 等错型命名；自造判定集 26 问跑 26／26，同集纯数字串搜索仅 10／26；测试 35 件。作者写明判定集与规则同作者，只作回归哨兵、不作实文精度证明。另提供 MCP 三工具与 CLI。背景引用外部 90 问测例，不作本条主结果。
+
+关键门禁不是「摘要数字能搜到」，而是分开记「字面命中」与「换算后是否同值、错型是否命名」。
+
+本场景据此输出「Agent 合做金额核验须同时报告错型名、换算对照与判定集限度，不能只报搜到了」提纲。禁止把 26／26／10 写成下一语种也总会到达，或把 grounding 写成实文已零错。`,
+    outcomes: [
+      "源披露作者做印式金额 grounding：以 ₹150 crore→150 million 为 10 倍错样例；判定集 26／26，纯字符串搜索 10／26；测试 35 件；MCP／CLI 可跑。作者自披露判定集非实文精度证明。属作者这一套工具与判定集，不可外推为你同样跑 26 就等于下一语种也会 26／26／10，或 grounding 就等于实文已零错。",
+      "能把「可写成同时记下错型名、换算对照、判定集限度」与「必须人完成的实文抽检、以及是否有外链导流」拆开。",
+      "为把「数字能搜到」当成金额已核、以及把「判定集满分」当成实文已零错提供提问清单。",
+    ],
+    caveats: [
+      "150 crore／10倍／26／26／10／26／35件 均为作者工具与自造判定集；外部 90 问／28 错等为文内引用背景，非作者自测主结果。",
+      "文中链 https://github.com/japan-ai-tools/in-number-grounding ，属工具仓导流；本机 GET 200，列入可达导流。https://everything-pr.com/ai-entertainment-communications-playbook 、https://www.arxiv.org/pdf/2601.15251 仅背景出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / nexus-tools），不是各 LLM 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "金额核验须同时报告错型名与换算对照门禁",
+        body: `你是资深 Agent 金额核验教练。只根据用户边界写门禁，不要编造已经到的26或10。
+
+现在是不是约₹150 crore／10倍例：{{whether_about_150_crore_10x}}
+是不是判定集约26／26：{{whether_about_26_of_26}}
+是不是字符串搜索约10／26：{{whether_about_10_of_26}}
+
+输出 Markdown：
+1. 为什么「数字能搜到」不能写成换算已核
+2. 应怎样同时记下错型名、值级对照与判定集限度
+3. 只有一套判定集时，应怎样单独记账，而不是写成下一语种也必然26／26
+4. 人必须完成的清单（实文抽检、导流链）
+禁止声称「同样跑26就等于下一语种也总会26／26」；禁止把判定集满分写成实文已零错。`,
+      },
+      {
+        title: "一百五十 crore 与二十六、十复盘",
+        body: `报告上可以写₹150 crore 10倍例、判定集26／26、字符串10／26；但这是一套个人工具。请写复盘提纲。
+
+现象：{{one_fifty_and_twenty_six}}
+
+输出：
+1. 更像换算纪律生效，还是判定集恰好贴规则
+2. 最小复验顺序（先抽错型名→再抽实文样例→再决定能不能对外说金额核验已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上grounding就等于下一语种也总会26／26」，或「这一次26／26就等于任何摘要金额都已核」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/nexus-tools/items/5aef631b86eeea2a8880",
+      label: "qiita.com · 「₹150 crore」をAIが「150 million rupees」と書く10倍のずれを、要約と原文の照合で名前つきで見つける道具を作った",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "737",
+    slug: "nhiraoka-5d-169m-1333",
+    title: "n_hiraoka：5 天三 AI 做出 NAS 搜索——约 169 万文件名 12〜15 秒；无 sudo 一次 1,333 件",
+    summary: "个人（n_hiraoka）；披露 11/4〜8 共 5 天，用 Muse／ChatGPT／Claude（クロ）做成 Synology 搜索并上 PyPI／MCP Registry：文件名遍历约 169 万约 12〜15 秒；索引近空约 2.8MB→小共享夹 47 件；Web API 无 sudo 一次 1,333 件；终到 0.9.0（测 162）。不代你同样 5 天，就等于下一 NAS 也会 5／169万／1333，或有 MCP 就等于检索已可免人核。",
+    description: "面向已经把「MCP 已发布」当成检索可交付、却还没分开「谁设计／谁实现／谁监督」与「索引是否为空」的人：把「Agent 合做跨 AI 交付须同时报角色交接、索引实态与人侧登录会话」写成门禁，区别于 MCP 起票／金融 MCP，以及过夜常驻秘书编排。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/n_hiraoka/articles/c762c226585225",
+    sourceLabel: "zenn.dev·n_hiraoka 实践帖",
+    upvotes: 628,
+    trending: false,
+    tags: [
+      "MCP",
+      "Synology",
+      "NAS",
+      "multi-agent",
+      "PyPI",
+    ],
+    howItWorks: [
+      "粘贴跨 AI 检索交付边界（是不是约 5 天、是不是约 169 万文件／12〜15 秒、是不是一次约 1,333 件）以及「绝不可把 MCP 已上架写成检索已验收」纪律",
+      "Agent 按实践帖输出：应怎样同时记下角色交接、索引实态、人持会话与监督清单",
+      "人工保留 5／169万／1333 来自哪一次 NAS；Agent 不代你保证「同样 5 天就等于下一 NAS 也总会 1333」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T13:37:54.079+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T04:37:54Z、Asia/Shanghai 2026-11-08 12:37:54；bodyUpdatedAt 2026-11-08T13:57:19.068+09:00 晚于发布，日期仍取 publishedAt；GET 200，UA MiraBot/1.0）：n_hiraoka 在《泥縄で、3つの AI と NAS 検索ツールを公開するまで（5日間の記録）》写 5／169万／1333。文内 GitHub／前作 Zenn／note 属作品导流且可达。主线是跨 AI 交接与索引实态，不是官文简报。",
+      "与 MCP 起票／金融 MCP／hifn 常驻秘书不同：本条不是工单或行情接口，也不是过夜编排，而是 5 天内把 NAS 正文搜索从空索引推到可发布 MCP",
+    ],
+    approach: `n_hiraoka 在《泥縄で、3つの AI と NAS 検索ツールを公開するまで（5日間の記録）》（页内 2026-11-08）写明：11/4〜8 共 5 天，日曜程序员用 Muse（ミュー）设计／实机、ChatGPT 调研、Claude Desktop 的クロ实现，做成 Synology 搜索 CLI 并最终加 MCP。关键数字：家用盘文件名遍历约 169 万约 12〜15 秒；Universal Search 索引一度约 2.8MB 近空，指定小共享夹后 47 件命中；去掉 sudo、用人持登录会话后 Web API 一次 1,333 件。公开路径到 0.8.0 再 0.9.0（MCP；文内写测试 162），PyPI 第四次才过；作者强调「MCP 不会让搜索变快」、以及跨 AI 时四天前对话也会忘谁写的。
+
+关键门禁不是「已经推到 Registry」，而是分开记「谁做了哪一段」与「索引／权限／会话是否人核过」。
+
+本场景据此输出「Agent 合做跨 AI 检索交付须同时报告角色交接、索引实态与人持会话，不能只报已发布」提纲。禁止把 5／169万／1333 写成下一 NAS 也总会到达，或把有 MCP 写成检索已可免人核。`,
+    outcomes: [
+      "源披露作者 5 天（11/4〜8）跨三 AI 交付 NAS 搜索：约 169 万文件名 12〜15 秒；索引近空约 2.8MB→小夹 47 件；无 sudo Web API 一次 1,333 件；经 0.8.0 到 0.9.0（MCP，测 162）并上 PyPI／Registry。属作者这一台 Synology 与这五天，不可外推为你同样 5 天就等于下一 NAS 也会 5／169万／1333，或有 MCP 就等于检索已可免人核。",
+      "能把「可写成同时记下角色交接、索引实态、人持会话」与「必须人完成的安全边界、以及是否有外链导流」拆开。",
+      "为把「MCP 已上架」当成检索已验收、以及把「AI 说索引好了」当成正文可搜提供提问清单。",
+    ],
+    caveats: [
+      "5日／169万／12〜15秒／2.8MB／47／1333／0.9.0／测162／PyPI第4次 均为作者这一台 NAS 与文内时间线；跨 AI 记忆遗漏作者已自披露。",
+      "文中链 https://github.com/umayado17/synology-search-agent 、https://zenn.dev/n_hiraoka/articles/8514c11759816d 、https://note.com/norito_hiraoka/n/n2516933686fc ，属作品／连载导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / n_hiraoka），不是 Synology／Anthropic／OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "跨AI检索交付须同时报告交接与索引实态门禁",
+        body: `你是资深 Agent 跨模型交付教练。只根据用户边界写门禁，不要编造已经到的169万或1333。
+
+现在是不是约5天：{{whether_about_five_days}}
+是不是约169万文件／12〜15秒：{{whether_about_1_69m_files}}
+是不是一次约1333件：{{whether_about_1333_hits}}
+
+输出 Markdown：
+1. 为什么「MCP已上架」不能写成检索已验收
+2. 应怎样同时记下角色交接、索引实态与人持会话
+3. 只有一台NAS五天时，应怎样单独记账，而不是写成下一NAS也必然1333
+4. 人必须完成的清单（安全边界、导流链）
+禁止声称「同样5天就等于下一NAS也总会1333」；禁止把AI说索引好了写成正文可搜。`,
+      },
+      {
+        title: "五天与一百六十九万、一千三百三十三复盘",
+        body: `报告上可以写5天、约169万文件、一次1333件；但这是一台个人NAS。请写复盘提纲。
+
+现象：{{five_days_and_1333}}
+
+输出：
+1. 更像交接纪律生效，还是索引恰好可补
+2. 最小复验顺序（先抽索引大小→再抽人持会话→再决定能不能对外说检索交付已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上MCP就等于下一NAS也总会1333」，或「这一次162测就等于任何正文搜索都已验收」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/n_hiraoka/articles/c762c226585225",
+      label: "zenn.dev · 泥縄で、3つの AI と NAS 検索ツールを公開するまで（5日間の記録）",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
