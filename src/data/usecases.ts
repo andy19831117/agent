@@ -51198,6 +51198,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "718",
+    slug: "sbkm-322-22k-166pass",
+    title: "sbkm：AI 合做个人笔记 App——约2.2万行里默失败322处；166处 pass 改记日志；机械改316处",
+    summary: "个人（sbkm）；披露用 Claude Code 合做 Windows 个人笔记 App（单文件约2.2万行）：删除失败仍提示「删除了」、写入丢失与标签清空都无人知晓；清点「接住失败却默默继续」共322处（其中裸 except 45处、散在202个函数）；手改关键6处、其余316处用脚本改（166处 pass→记一行、91处补记日志、59处同类收口），关进 exe 构建门。不代你同样清点，就等于下一 App 也会322／316／166，或关口也总会拦住返回值漏看。",
+    description: "面向已经把「测绿／能打开」当成可交付、却还没分开「失败是否被人看见」的人：把「Agent 合做桌面 App 须同时报默失败出口清点、可见失败出口与构建门」写成门禁，区别于双方向代码复核，以及游戏资产流水线。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/sbkm/articles/81f37a67359ba6",
+    sourceLabel: "zenn.dev·sbkm 实践帖",
+    upvotes: 609,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "silent-failure",
+      "Python",
+      "desktop-app",
+      "exception-handling",
+    ],
+    howItWorks: [
+      "粘贴默失败清点边界（是不是约322处默出口、是不是约2.2万行单文件、是不是约166处 pass 改记日志）以及「绝不可把测绿写成失败已被人看见」纪律",
+      "Agent 按实践帖输出：应怎样同时记下三类出口、构建门拦什么、以及返回值漏看仍可能关不住",
+      "人工保留322／316／166来自哪一套个人 App；Agent 不代你保证「同样清点就等于下一 App 也总会322／316／166」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T21:00:05.159+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T12:00:05Z、Asia/Shanghai 2026-11-09 20:00:05；bodyUpdatedAt 2026-11-05T21:26:08.464+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：sbkm 在《AIと作ったアプリは、削除に失敗しても「削除しました」と言った — 黙って失敗する箇所が322か所あった》写 322／2.2万／316／166。未见外链硬导流。主线是先把「失败是否被人看见」与测绿拆开，不是官文简报。",
+      "与 kokagex-5bug-4hit-47gb / asobiai-70mon-10boss-79gen 不同：本条不是双方向代码复核或游戏资产流水线，而是 Agent 合做桌面 App 上的默失败出口清点与可见失败门禁",
+    ],
+    approach: `sbkm 在《AIと作ったアプリは、削除に失敗しても「削除しました」と言った — 黙って失敗する箇所が322か所あった》（页内 2026-11-09）写明：用 Claude Code 合做 Windows 个人笔记 App，单文件约2.2万行；写入丢失与标签全空都无提示；清点默失败出口322处；手改6处、脚本改316处（含166处 pass→记一行）。
+
+关键门禁不是「已经能打开 App」，而是分开记默出口与可见失败，并把无出口的 except 拦在 exe 构建门外。
+
+本场景据此输出「Agent 合做桌面 App 须同时报告默失败清点、可见出口与构建门，不能只报测绿」提纲。禁止把322／316写成下一 App 也总会到达，或把构建门写成已拦住返回值漏看。`,
+    outcomes: [
+      "源披露作者用 Claude Code 合做 Windows 个人笔记 App（Python、单文件约2.2万行）：9月10日写入后关闭再开为空且无错误；两日后标签全空同样无人知晓；清点「接住失败却默默继续」共322处（151+171两类口径合计；裸 except 45处、散在202个函数）。删除路径曾在失败时仍提示「删除了」。手改关键6处，其余316处脚本改：166处把 pass 改成记一行、91处补记日志并保留原返回值、59处同类收口；写关进 exe 构建门。98键总按时记录文件未增；月末日期边角在「不再默」后才留下线索。属作者这一套 App 与这一次清点，不可外推为你同样清点就等于下一 App 也会322／316／166，或构建门也总会拦住返回值漏看。",
+      "能把「可写成同时记下三类出口、构建门拦什么、以及返回值漏看仍可能关不住」与「必须人完成的关键路径手改、以及是否有外链导流」拆开。",
+      "为把「测绿／能打开」当成失败已被人看见、以及把「构建门 PASS」当成已覆盖返回值漏看提供提问清单。",
+    ],
+    caveats: [
+      "322／2.2万／45／202／6／316／166／91／59／98 均为作者这一套个人笔记 App 与文内清点；作者写返回值式失败仍可能关不住；322如何堆出未追查。",
+      "文中主要链到作者其他 zenn 实践帖作对照，未见招聘／有料／公司站等外链硬导流；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / sbkm），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Agent合做桌面App须同时报告默失败出口清点门禁",
+        body: `你是资深 Agent 桌面交付教练。只根据用户边界写门禁，不要编造已经到的322或166。
+
+现在是不是约322处默出口：{{whether_about_three_twenty_two_silent_exits}}
+是不是约2.2万行单文件：{{whether_about_twenty_two_k_loc}}
+是不是约166处 pass 改记日志：{{whether_about_one_sixty_six_pass_to_log}}
+
+输出 Markdown：
+1. 为什么「测绿／能打开」不能写成失败已被人看见
+2. 应怎样同时记下三类出口、构建门，以及返回值漏看
+3. 只有一套App时，应怎样单独记账，而不是写成下一套也必然322／316
+4. 人必须完成的清单（关键路径手改、导流链）
+禁止声称「同样清点就等于下一 App 也总会322／166」；禁止把构建门 PASS 写成已拦住返回值漏看。`,
+      },
+      {
+        title: "三百二十二处默失败与一百六十六处改记复盘",
+        body: `报告上可以写默失败322、脚本改316、pass改记166；但这是一套个人App。请写复盘提纲。
+
+现象：{{three_twenty_two_and_one_sixty_six}}
+
+输出：
+1. 更像出口纪律生效，还是题材恰好容易全文搜索 except
+2. 最小复验顺序（先抽322分类→再抽构建门→再决定能不能对外说默失败已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上脚本就等于下一 App 也总会322／316／166」，或「这一次98键0件就等于任何UI都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sbkm/articles/81f37a67359ba6",
+      label: "zenn.dev · AIと作ったアプリは、削除に失敗しても「削除しました」と言った — 黙って失敗する箇所が322か所あった",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "719",
+    slug: "starken-2632env-838sess-834dot",
+    title: "starken：桌面侧栏空会话——session-env 积2632件；实会话838里834件只有「.」；对上 Remote Control issue",
+    summary: "个人（starken）；披露 Claude 桌面 App 侧栏冒出大量空会话：~/.claude/session-env/ 积到2632件元数据；测 ~/.claude/projects/ 下实会话838件中834件只有定时「.」痕迹，说明15分 LaunchAgent 并没有每次新开会话；本地桌面会话仓仅33件也对不上。对照上游 issue#31487（报告者环境1097件）。不代你同样开 Remote Control，就等于下一台也会2632／838／834，或侧栏也总会同形。",
+    description: "面向已经把「侧栏会话列表」当成真实会话清单、却还没分开元数据残留与对话正文的人：把「Remote Control／定时 CLI 并用须同时报 session-env 残留、实会话痕迹与侧栏可见子集」写成门禁，区别于 session 检索，以及静默停机。",
+    categories: [
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/starken/articles/claude-code-remote-control-stale-sessions",
+    sourceLabel: "zenn.dev·starken 实践帖",
+    upvotes: 610,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "Remote Control",
+      "session-env",
+      "macOS",
+      "LaunchAgent",
+    ],
+    howItWorks: [
+      "粘贴空会话排查边界（是不是约2632件 session-env、是不是约838中834只有「.」、是不是侧栏可见远少于积压）以及「绝不可把侧栏列表写成全部真实对话」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 session-env／projects 痕迹／桌面本地仓，以及 Remote Control 二段机制",
+      "人工保留2632／838／834来自哪一台 Mac 观测；Agent 不代你保证「同样并用就等于下一台也总会2632／838／834」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T22:52:18.040+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T13:52:18Z、Asia/Shanghai 2026-11-06 21:52:18；bodyUpdatedAt 同值，取 publishedAt；页头写 2026/11/06 に公開；GET 200，UA MiraBot/1.0）：starken 在《Claude Codeで、デスクトップアプリに空のセッションが大量に並ぶ原因》写 2632／838／834。页上链上游 issue#31487 仅作出处。主线是先把元数据残留与真实对话拆开，不是官文简报。",
+      "与 hoshino-sessgrep-323-253-5 / hakumai-94to1-7d-17priv 不同：本条不是 session 检索或静默停机，而是 Remote Control 元数据残留导致的空侧栏会话",
+    ],
+    approach: `starken 在《Claude Codeで、デスクトップアプリに空のセッションが大量に並ぶ原因》（页内 2026-11-06；观测日 2026-08-21）写明：桌面侧栏出现大量空会话；session-env 积2632；实会话838中834只有「.」；对照 issue#31487。
+
+关键门禁不是「侧栏看起来很多」，而是分开记元数据残留与对话正文，并核 Remote Control 是否在读残留。
+
+本场景据此输出「Remote Control／定时 CLI 并用须同时报告 session-env 残留、实会话痕迹与侧栏可见子集，不能只报侧栏数量」提纲。禁止把2632写成下一台也总会到达，或把侧栏列表写成全部真实对话。`,
+    outcomes: [
+      "源披露作者在 macOS 13.7.8／Claude Code 2.1.270（观测 2026-08-21，成文 2026-11-05）见桌面 App 侧栏「无分组」下大量空会话：~/.claude/session-env/ 积2632件元数据；~/.claude/projects/ 实会话838件中834件只有定时脚本发的「.」痕迹，说明15分 LaunchAgent 并不是每次新开会话；桌面本地会话仓仅33件也对不上名字。对照上游 issue#31487（报告者环境1097件）描述的「元数据不删 + Remote Control 去读」二段。属作者这一台机与这一次观测，不可外推为你同样并用就等于下一台也会2632／838／834，或侧栏也总会同形。",
+      "能把「可写成同时记下 session-env／projects 痕迹／桌面本地仓，以及 Remote Control 二段机制」与「必须人完成的清理／关闭 Remote Control 判断、以及 issue 链是否只作出处」拆开。",
+      "为把「侧栏会话列表」当成全部真实对话、以及把「定时 CLI」当成每次必然新开会话提供提问清单。",
+    ],
+    caveats: [
+      "2632／838／834／33／1097／15分 均为作者这一台 Mac 观测与文内对照；作者写侧栏可见远少于2632、根因修复与清理命令安全性未完全核实。",
+      "文中链到 https://github.com/anthropics/claude-code/issues/31487 ，属上游 issue 出处；本机 GET 200，不作产品／招聘导流列入。未见招聘／有料硬导流。",
+      "上面写的是个人实践帖（zenn.dev / starken），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Remote Control并用须同时报告session-env残留门禁",
+        body: `你是资深 Agent 会话治理教练。只根据用户边界写门禁，不要编造已经到的2632或834。
+
+现在是不是约2632件 session-env：{{whether_about_two_six_three_two_session_env}}
+是不是约838中834只有「.」：{{whether_about_eight_thirty_four_of_eight_thirty_eight}}
+是不是侧栏可见远少于积压：{{whether_sidebar_much_smaller_than_backlog}}
+
+输出 Markdown：
+1. 为什么「侧栏列表」不能写成全部真实对话
+2. 应怎样同时记下 session-env／projects 痕迹／桌面本地仓
+3. 只有一台机观测时，应怎样单独记账，而不是写成下一台也必然2632
+4. 人必须完成的清单（是否关 Remote Control、清理风险、出处链）
+禁止声称「同样并用就等于下一台也总会2632／834」；禁止把定时 CLI 写成每次必然新开会话。`,
+      },
+      {
+        title: "二千六百三十二件元数据与八百三十四件点号复盘",
+        body: `报告上可以写 session-env 2632、838中834只有「.」；但这是一台机观测。请写复盘提纲。
+
+现象：{{two_six_three_two_and_eight_thirty_four}}
+
+输出：
+1. 更像 Remote Control 读残留生效，还是本地插件名碰巧像空会话
+2. 最小复验顺序（先抽 session-env 计数→再抽「.」痕迹→再决定能不能对外说已定位）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上关 Remote Control 就等于下一台也总会同形」，或「这一次2632就等于任何环境都会1097／2632」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/starken/articles/claude-code-remote-control-stale-sessions",
+      label: "zenn.dev · Claude Codeで、デスクトップアプリに空のセッションが大量に並ぶ原因",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "720",
+    slug: "sera-156call-154hit-40run",
+    title: "masamitsu_sera：--restricted 下 /技能名 未展开——156次里154次靠模型自找；常驻 Mac 40次都在该状态",
+    summary: "个人（masamitsu_sera）；披露常驻 Mac 上用 claude -p --restricted 调仓库技能：本以为 /技能名 会展开 SKILL.md，实际未当斜杠命令解析；9/26–10/2 常驻40次都在该状态。笔记本同形调用156次中154次模型自己 Grep/读到 SKILL.md（125次先 Grep；工具调用中位约3次），2次失手。改为直接注入 SKILL.md 正文后，选段工具调用中位约10→5。不代你同样 --restricted，就等于下一环境也会156／154／40，或斜杠也总会静默降级。",
+    description: "面向已经把「写出了 /技能名」当成技能已注入、却还没分开斜杠解析与模型自寻的人：把「受限 claude -p 调技能须同时报是否展开、自寻命中与失败样本」写成门禁，区别于技能安全扫描，以及交付作者门。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/masamitsu_sera/articles/7363154f42de02",
+    sourceLabel: "zenn.dev·masamitsu_sera 实践帖",
+    upvotes: 611,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "skills",
+      "restricted",
+      "claude -p",
+      "SKILL.md",
+    ],
+    howItWorks: [
+      "粘贴受限技能调用边界（是不是约156次中154次自寻命中、是不是约40次常驻都在未展开、是不是已改为正文注入）以及「绝不可把 /技能名 字面写成技能已展开」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 attachment 证据、自寻路径、失手样本，以及正文注入后的调用变化",
+      "人工保留156／154／40来自哪一环境记录；Agent 不代你保证「同样 --restricted 就等于下一环境也总会156／154／40」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T07:30:05.532+09:00 → 2026-11-06，同时刻为 UTC 2026-11-05T22:30:05Z、Asia/Shanghai 2026-11-06 06:30:05；bodyUpdatedAt 2026-11-05T09:58:12.385+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/06 に公開；GET 200，UA MiraBot/1.0）：masamitsu_sera 在《`claude -p --restricted` の `/スキル名` は展開されていなかった…》写 156／154／40。未见外链硬导流。主线是先把斜杠解析与模型自寻拆开，不是官文简报。",
+      "与 Tomcat-zhou 秘密扫描池／kirinuki-418script-15gate-10sw 不同：本条不是技能安全扫描或交付作者门，而是受限模式下技能斜杠未展开却被模型自寻掩盖",
+    ],
+    approach: `masamitsu_sera 在《\`claude -p --restricted\` の \`/スキル名\` は展開されていなかった ― モデルが自力で探し当てていた1週間》（页内 2026-11-06）写明：常驻 Mac 40次与笔记本156次显示 /技能名 未展开；154次靠模型自寻；后改为注入 SKILL.md 正文。
+
+关键门禁不是「成果物好像对」，而是分开记斜杠是否展开与模型是否自寻，并核失手样本。
+
+本场景据此输出「受限 claude -p 调技能须同时报告是否展开、自寻命中与失败样本，不能只报成果物过关」提纲。禁止把156／154写成下一环境也总会到达，或把 /技能名 字面写成已展开。`,
+    outcomes: [
+      "源披露作者常驻 Mac 用 claude -p（含 --restricted）按 /技能名 调仓库 SKILL.md：10月2日选段失败露出「命令不存在」类回复后才追查；9/26–10/2 常驻40次都在未展开状态。笔记本同形 jsonl：直改前156次中154次模型自寻读到 SKILL.md（125次先 Grep；读到前工具调用2–9次、中位3）；2次失手（Glob 空／未读 SKILL 仍交差）。改成注入 SKILL.md 正文（去 frontmatter、$ARGUMENTS→输入夹）后，选段工具调用中位约10→5、响应中位约7→3.5（作者写差不全可归因「少找」；费用约一半未在本次汇总核实）。属作者这一套调用与这些会话记录，不可外推为你同样 --restricted 就等于下一环境也会156／154／40，或斜杠也总会静默降级。",
+      "能把「可写成同时记下 attachment 证据、自寻路径、失手样本，以及正文注入后的调用变化」与「必须人完成的是否保留 --restricted、以及有无外链导流」拆开。",
+      "为把「写出了 /技能名」当成技能已展开、以及把「成果物过关」当成展开链路已验证提供提问清单。",
+    ],
+    caveats: [
+      "156／154／125／40／10→5 均为作者这一环境会话记录与文内中位；撰写时未在 2.1.310 复跑同一对照；用户级／插件技能未测。",
+      "文中未见招聘／有料／公司站等外链硬导流；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / masamitsu_sera），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "受限claude-p调技能须同时报告是否展开门禁",
+        body: `你是资深 Agent 技能编排教练。只根据用户边界写门禁，不要编造已经到的154或40。
+
+现在是不是约156次中154次自寻命中：{{whether_about_one_fifty_four_of_one_fifty_six}}
+是不是约40次常驻都在未展开：{{whether_about_forty_runs_unexpanded}}
+是不是已改为正文注入：{{whether_switched_to_skill_body_inject}}
+
+输出 Markdown：
+1. 为什么「写出了 /技能名」不能写成技能已展开
+2. 应怎样同时记下 attachment 证据、自寻路径、失手样本
+3. 只有一套会话记录时，应怎样单独记账，而不是写成下一环境也必然156／154
+4. 人必须完成的清单（是否保留 --restricted、导流链）
+禁止声称「同样 --restricted 就等于下一环境也总会154／40」；禁止把成果物过关写成展开链路已验证。`,
+      },
+      {
+        title: "一百五十六次调用与一百五十四次自寻复盘",
+        body: `报告上可以写156次中154次自寻、常驻40次未展开；但这是一套环境记录。请写复盘提纲。
+
+现象：{{one_fifty_six_and_one_fifty_four}}
+
+输出：
+1. 更像斜杠未解析被自寻掩盖，还是技能名恰好好搜
+2. 最小复验顺序（先抽 attachment→再抽失手2例→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上正文注入就等于下一环境也总会156／154／40」，或「这一次中位10→5就等于任何技能都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/masamitsu_sera/articles/7363154f42de02",
+      label: "zenn.dev · `claude -p --restricted` の `/スキル名` は展開されていなかった ― モデルが自力で探し当てていた1週間",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "721",
+    slug: "orca-2line-57final-19note",
+    title: "orca_forge：短视频指示压成2行——scene_final 被读57次；制作笔记19次；细则改由仓库规矩补齐",
+    summary: "个人（orca_forge）；披露把竖屏短视频收尾指示从细项清单压成2行（只要成品规格+台本路径）后，Codex 自己去读仓库：src/scene_final.py 57次、docs/ep10/production_notes.md 19次、docs/OPENING.md 16次等，并补上作者细嘱时漏掉的收尾检查。页写转载自 forge.workstyle.tech。不代你同样压成2行，就等于下一片也会57／19／16，或细则也总会被仓库规矩补齐。",
+    description: "面向已经把「提示词越写越长」当成可控、却还没分开会话指示与仓库规矩的人：把「短视频 Agent 收尾须同时报指示行数、仓库文件读取次数与人仍要补的人物流程」写成门禁，区别于零读码大 App，以及卡牌强度标定。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/orca_forge/articles/two-line-prompt-rules-in-repo",
+    sourceLabel: "zenn.dev·orca_forge 实践帖",
+    upvotes: 612,
+    trending: false,
+    tags: [
+      "Codex",
+      "Claude Code",
+      "short-video",
+      "prompt",
+      "repo-rules",
+    ],
+    howItWorks: [
+      "粘贴2行收尾边界（是不是约 scene_final 57次、是不是约制作笔记19次、是不是指示已压到2行）以及「绝不可把短指示写成可省略仓库规矩」纪律",
+      "Agent 按实践帖输出：应怎样同时记下读取次数、人仍要另写的人物流程，以及转载／站点导流",
+      "人工保留57／19／16来自哪一集短视频收尾；Agent 不代你保证「同样2行就等于下一片也总会57／19／16」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T08:30:40.565+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T23:30:40Z、Asia/Shanghai 2026-11-09 07:30:40；bodyUpdatedAt 2026-09-29T09:54:11.673+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：orca_forge 在《指示は2行でいい ── 決まりごとをリポジトリに置けば、AIは自分で仕上げる》写 2行／57／19。页写转载自 forge.workstyle.tech。主线是先把会话指示与仓库规矩拆开，不是官文简报。",
+      "与 daisuke7-28klib-517test-22fail / fromage-40man-13to87-84pct 不同：本条不是零读码大 App 或卡牌强度标定，而是短视频收尾把细则放进仓库后的2行指示",
+    ],
+    approach: `orca_forge 在《指示は2行でいい ── 決まりごとをリポジトリに置けば、AIは自分で仕上げる》（页内 2026-11-09）写明：竖屏短视频收尾指示压成2行后，Codex 读 scene_final.py 57次、production_notes 19次等，并补上细嘱时漏掉的检查；新人物流程仍要另写。
+
+关键门禁不是「指示越短越好」，而是分开记会话指示与仓库规矩，并核读取是否真落到规矩文件。
+
+本场景据此输出「短视频 Agent 收尾须同时报告指示行数、仓库读取次数与人仍要补的人物流程，不能只报已经生成片子」提纲。禁止把57／19写成下一片也总会到达，或把2行写成可省略仓库规矩。`,
+    outcomes: [
+      "源披露作者做竖屏（1080×1920）短视频收尾：把细项清单压成2行（只要成品规格+台本路径）后，观察 Codex 读取：src/scene_final.py 57次、docs/ep10/production_notes.md 19次、docs/OPENING.md 16次、docs/ep10/final_script.md 8次、docs/PRODUCTION.md 5次；并补上作者细嘱时漏掉的收尾检查（含最后一格字幕消失等）。作者写新人物出场时2行不够，似顔絵流程仍要另置。页写本文转载自 forge.workstyle.tech。属作者这一集收尾与这一次读取统计，不可外推为你同样压成2行就等于下一片也会57／19／16，或细则也总会被仓库规矩补齐。",
+      "能把「可写成同时记下读取次数、人仍要另写的人物流程，以及站点是否导流」与「必须人完成的成片验收、以及转载来源披露」拆开。",
+      "为把「指示越短越好」当成可省略仓库规矩、以及把「读过 scene_final」当成已覆盖一切人物流程提供提问清单。",
+    ],
+    caveats: [
+      "57／19／16／8／5／2行 均为作者这一集短视频收尾与文内读取统计；新人物／似顔絵流程作者写2行不够。",
+      "文中写转载自 https://forge.workstyle.tech ，属站点／作品导流；本机 GET 200，列入可达导流。未见招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / orca_forge），不是 OpenAI／Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "短视频Agent收尾须同时报告仓库规矩读取门禁",
+        body: `你是资深短视频 Agent 工作流教练。只根据用户边界写门禁，不要编造已经到的57或19。
+
+现在是不是约 scene_final 57次：{{whether_about_fifty_seven_scene_final}}
+是不是约制作笔记19次：{{whether_about_nineteen_production_notes}}
+是不是指示已压到2行：{{whether_prompt_down_to_two_lines}}
+
+输出 Markdown：
+1. 为什么「指示越短越好」不能写成可省略仓库规矩
+2. 应怎样同时记下读取次数、人仍要另写的人物流程
+3. 只有一集收尾时，应怎样单独记账，而不是写成下一片也必然57／19
+4. 人必须完成的清单（成片验收、导流链）
+禁止声称「同样2行就等于下一片也总会57／19」；禁止把读过 scene_final 写成已覆盖一切人物流程。`,
+      },
+      {
+        title: "五十七次scene_final与十九次制作笔记复盘",
+        body: `报告上可以写 scene_final 57、production_notes 19、指示2行；但这是一集收尾。请写复盘提纲。
+
+现象：{{fifty_seven_and_nineteen}}
+
+输出：
+1. 更像仓库规矩生效，还是该集文件恰好好找
+2. 最小复验顺序（先抽读取次数→再抽漏检是否补上→再决定能不能对外说2行可复用）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上2行就等于下一片也总会57／19／16」，或「这一次补上字幕检查就等于任何集都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/orca_forge/articles/two-line-prompt-rules-in-repo",
+      label: "zenn.dev · 指示は2行でいい ── 決まりごとをリポジトリに置けば、AIは自分で仕上げる",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "722",
+    slug: "genda-5pass-12min-131loc",
+    title: "GENDA／ikenyal：陌生练习 App 上比 MagicPod 与 Playwright——两边都5连过；约12分对约6分；代码约131行",
+    summary: "团队（GENDA 技术博客／ikenyal）；披露用 Claude Code 在自建「陌生」练习 Web 上对比 MagicPod MCP 与 Playwright：正常系+错误系都要求5连成功；MagicPod 约12分（29+31步），Playwright 约6分（测试代码约131行）；两边中途各失败1次后由 Claude 自修。预备实验还写出 Playwright 输入拼接约10次里1次、修后5连过。不代你同样对比，就等于下一 App 也会12分／6分／131行，或5连过也总会同形。",
+    description: "面向已经把「Claude 一发写过」当成 E2E 可维护、却还没分开工具可读性与重复执行稳定性的人：把「Agent 写 E2E 对比须同时报5连过、耗时／体量与业务规则读出数」写成门禁，区别于多 PR 吞吐，以及费用／Effort 叙事。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/genda_jp/articles/7b423bcd20b532",
+    sourceLabel: "zenn.dev·genda_jp／ikenyal 实践帖",
+    upvotes: 613,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "MagicPod",
+      "Playwright",
+      "E2E",
+      "MCP",
+    ],
+    howItWorks: [
+      "粘贴盲测 E2E 对比边界（是不是两边都约5连过、是不是约12分对约6分、是不是约131行测试代码）以及「绝不可把一发通过写成已稳定」纪律",
+      "Agent 按实践帖输出：应怎样同时记下步骤／代码体量、业务规则读出、以及产品／演示导流",
+      "人工保留12／6／131／5来自哪一次盲测；Agent 不代你保证「同样对比就等于下一 App 也总会12分／6分／131行」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T14:13:04.110+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T05:13:04Z、Asia/Shanghai 2026-11-06 13:13:04；bodyUpdatedAt 同值，取 publishedAt；页头写 2026/11/06 に公開；GET 200，UA MiraBot/1.0）：ikenyal 在 GENDA 刊《Claudeを使いこなす人に、MagicPodは要るのか…》写 5连过／12分／6分／131行。页上链演示站／MagicPod／PR 等。主线是先把一发通过与重复执行稳定性拆开，不是官文简报。",
+      "与 otar 多 PR 吞吐池／费用 Effort 同型不同：本条不是吞吐或账单主线，而是陌生 App 上 MagicPod 与 Playwright 的 Agent 写测对比",
+    ],
+    approach: `ikenyal 在 GENDA 技术博客《Claudeを使いこなす人に、MagicPodは要るのか。知らないアプリでPlaywrightと比べた記録》（页内 2026-11-06）写明：自建陌生练习 App，要求 Claude 分别用 MagicPod／Playwright 写出正常系+错误系并5连过；约12分对约6分、131行；两边各中途失败1次后自修。
+
+关键门禁不是「哪个工具更快」，而是分开记一发通过与重复执行稳定性，并核业务规则是否真读出。
+
+本场景据此输出「Agent 写 E2E 对比须同时报告5连过、耗时／体量与业务规则读出数，不能只报第一次绿」提纲。禁止把12／6／131写成下一 App 也总会到达，或把一发通过写成已稳定。`,
+    outcomes: [
+      "源披露 GENDA 技术博客作者 ikenyal 用 Claude Code，在源码不可见的自建练习 Web（入力→确认→完成）上对比 MagicPod MCP 与 Playwright：两边都要正常系+错误系，并 `5连成功` 才收；MagicPod 约12分（正常系29步、错误系31步），Playwright 约6分（测试代码约131行）；中途各失败1次后由 Claude 自修。规格书7条业务规则中两边都读出6条、共同漏1条。预备实验在酒店示例站：Playwright 输入拼接约10次里1次，修后5连过。属这一次盲测与该练习 App，不可外推为你同样对比就等于下一 App 也会12分／6分／131行，或5连过也总会同形。",
+      "能把「可写成同时记下步骤／代码体量、业务规则读出、以及产品／演示是否导流」与「必须人完成的维护者是谁、以及付费工具是否值得」拆开。",
+      "为把「Claude 一发写过」当成已稳定、以及把「更快写完」当成已可团队长期维护提供提问清单。",
+    ],
+    caveats: [
+      "12分／6分／131行／29+31步／5连／7读6 均为这一次盲测与文内笔记；作者写各实验多为单次、时间作趋势读；移动端不在范围。",
+      "文中链到 https://ikenyal.github.io/claude-e2e-blind-app/ 、https://prtimes.jp/main/html/rd/p/000000079.000027392.html 、https://magicpod.com/blog/failure-investigation-with-ai-agent/ 、https://youtrust.jp/users/ikenyal 、https://hotel-example-site.takeyaqa.dev/ja/ 等，属演示站／产品公关／产品博文／简历向资料／练习站导流；本机均 GET 200，列入可达导流。playwright.dev 文档链仅出处。未见招聘硬导流字样，但 YouTrust 属个人资料导流已披露。",
+      "上面写的是团队实践帖（zenn.dev / genda_jp·ikenyal），不是 MagicPod 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Agent写E2E对比须同时报告五连过与体量门禁",
+        body: `你是资深 E2E／Agent 测评教练。只根据用户边界写门禁，不要编造已经到的131或12分。
+
+现在是不是两边都约5连过：{{whether_both_about_five_consecutive_passes}}
+是不是约12分对约6分：{{whether_about_twelve_vs_six_minutes}}
+是不是约131行测试代码：{{whether_about_one_thirty_one_loc}}
+
+输出 Markdown：
+1. 为什么「一发通过」不能写成已稳定
+2. 应怎样同时记下步骤／代码体量、业务规则读出
+3. 只有一次盲测时，应怎样单独记账，而不是写成下一 App 也必然12／6／131
+4. 人必须完成的清单（谁维护、导流链）
+禁止声称「同样对比就等于下一 App 也总会12分／6分／131行」；禁止把更快写完写成已可长期维护。`,
+      },
+      {
+        title: "十二分钟对六分钟与一百三十一行复盘",
+        body: `报告上可以写 MagicPod 约12分、Playwright 约6分／131行、两边5连过；但这是一次盲测。请写复盘提纲。
+
+现象：{{twelve_vs_six_and_one_thirty_one}}
+
+输出：
+1. 更像重复执行门禁生效，还是练习 App 恰好好探
+2. 最小复验顺序（先抽5连→再抽规则读出→再决定能不能对外说可替换付费工具）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Claude 就等于下一 App 也总会12／6／131」，或「这一次5连就等于任何业务 App 都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/genda_jp/articles/7b423bcd20b532",
+      label: "zenn.dev · Claudeを使いこなす人に、MagicPodは要るのか。知らないアプリでPlaywrightと比べた記録",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
