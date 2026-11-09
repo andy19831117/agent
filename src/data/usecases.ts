@@ -55598,6 +55598,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "768",
+    slug: "sktt-309to318-exit0-xhigh",
+    title: "sktt_panda：Claude Code 2.1.309〜318——claude -p 不再默 exit 0；ultrathink 变 xhigh；登录到期约提前 10 日警告",
+    summary: "个人（sktt_panda）；披露整理官方 changelog 2026-10-22〜11-04 的 v2.1.309〜v2.1.318（页上未见 313／315）：多处修掉 claude -p 失败仍 exit 0；ultrathink 在 Opus／Sonnet／Haiku 5.5 与 Fable 5.1 上把该回合跑成 xhigh effort；2.1.318 起 loginExpiresAt／credential_expires_at，文本输出约提前 10 日 stderr 警告。作者写稿时本机仍为 v2.1.296。不代你同样升到 318，就等于下一无人 cron 也不会再默成功。",
+    description: "面向已经把「开了 claude -p／写了 ultrathink」当成无人任务与深度思考已门禁、却还没分开「退出码是否可信」与「effort／登录到期预警」的人：把「Agent 合做无人 Claude Code 须同时报版本区间、exit 口径与登录到期字段」写成门禁，区别于静默停机巡检，以及费用/Effort 口算。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/sktt_panda/articles/claude-code-2026-11-headless-exit-ultrathink",
+    sourceLabel: "zenn.dev·sktt_panda 实践帖",
+    upvotes: 659,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "headless",
+      "exit-code",
+      "ultrathink",
+      "changelog",
+    ],
+    howItWorks: [
+      "粘贴无人 Claude Code 边界（是不是约 v2.1.309〜318、是不是约失败不再默 exit 0、是不是约 ultrathink→xhigh／约提前10日登录警告）以及「绝不可把开了 -p 写成退出码已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下本机版本、exit 1 场景、loginExpiresAt／credential_expires_at，以及 NFS 容量注记",
+      "人工保留 309〜318／296／10日／xhigh／11月30日 fast mode 截止来自哪一份 changelog 对照；Agent 不代你保证「同样升到318就等于下一 cron 也不会再默成功」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T10:15:14.889+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T01:15:14Z、Asia/Shanghai 2026-11-09 09:15:14；bodyUpdatedAt 2026-11-06T10:13:03.433+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：sktt_panda 在《Claude Code 2.1.309〜318まとめ：claude -pが黙って成功しなくなり、ultrathinkはxhighに》写 exit 0 修复／xhigh／约10日警告。文内链 code.claude.com changelog／fast-mode 为厂商文档对照，非作者商店硬导流；本机未见作者产品／外链硬导流可列入可达。主线是无人退出码与 effort 关键词，不是官文简报。",
+      "与静默停机巡检、费用/Effort 口算不同：本条不是把进程看门狗或周额度口算当主线，而是 changelog 区间内 headless 退出码、ultrathink→xhigh 与登录到期预警字段",
+    ],
+    approach: `sktt_panda 在《Claude Code 2.1.309〜318まとめ：claude -pが黙って成功しなくなり、ultrathinkはxhighに》（页内 2026-11-09）对照官方 changelog 写明：2026-10-22〜11-04 出现 v2.1.309〜v2.1.318（页上未见 313／315 条目）。无人侧重点：claude -p 多处「失败仍 exit 0」被修——如启动失败改为报错并 exit 1（2.1.314／316 文面）、磁盘满／配额导致 transcript 或 ~/.claude.json 写入失败时 text／json 输出改为 exit 1（2.1.317，并注 NFS 导出可能漏检）。2.1.318 增加登录到期事前手段：claude auth status 的 loginExpiresAt、claude -p JSON 的 credential_expires_at、文本输出约提前 10 日向 stderr 打一行警告。对话侧：2.1.311 起终端输入 ultrathink 时，经 Anthropic API 的 Opus／Sonnet／Haiku 5.5 与 Fable 5.1 将该回合以 xhigh effort 跑；2.1.316 起 VS Code 扩展同行为。作者写稿时本机仍为 v2.1.296，auth status 尚无期限字段。另记 sed -i 不再经 /rewind 特殊回退、Opus 4.8 fast mode 约 11 月 30 日结束等。
+
+关键门禁不是「开了 -p／写了 ultrathink」，而是分开记「本机是否已落入修过退出码的版本」与「登录到期／effort 关键词是否按 changelog 生效」。
+
+本场景据此输出「Agent 合做无人 Claude Code 须同时报告版本区间、exit 口径与登录到期字段，不能只报开了 -p」提纲。禁止把升到 318 写成下一 cron 也不会再默成功，或把 ultrathink 写成账单已门禁。`,
+    outcomes: [
+      "源披露作者对照 changelog：v2.1.309〜318 多处修掉 claude -p 失败仍 exit 0；ultrathink 在 5.5／Fable 5.1 上变为该回合 xhigh；2.1.318 起约提前 10 日 stderr 警告登录到期；写稿时本机仍 v2.1.296。属作者这一次 changelog 对照与本机版本自述，不可外推为你同样升到 318 就等于下一无人 cron 也不会再默成功，或写了 ultrathink 就等于深度思考／费用已门禁。",
+      "能把「可写成同时记下版本号、exit 1 场景、loginExpiresAt／credential_expires_at」与「必须人完成的升级／NFS 路径／导流链」拆开。",
+      "为把「开了 -p」当成退出码已可信、以及把本机仍停在 296 却对外说已有 10 日警告提供提问清单。",
+    ],
+    caveats: [
+      "309〜318／未见313·315／本机296／约10日警告／xhigh／11月30日 fast mode 截止均为作者对照官方 changelog 与本机自述；未声称任意账号同一字段已出现。",
+      "文内 code.claude.com changelog／fast-mode 为厂商文档对照，非作者自有商店硬导流；本机未见作者产品／外链硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / sktt_panda），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "无人 Claude Code 须同时报告版本与 exit 口径",
+        body: `你是资深 Agent 无人 Claude Code 教练。只根据用户边界写门禁，不要编造退出码已可信。
+
+现在是不是约 v2.1.309〜318：{{whether_about_309_318}}
+是不是约失败不再默 exit 0：{{whether_about_exit1}}
+是不是约 ultrathink→xhigh／约提前10日登录警告：{{whether_about_xhigh_10d}}
+
+输出 Markdown：
+1. 为什么「开了 claude -p」不能写成退出码已门禁
+2. 应怎样同时记下本机版本、exit 1 场景、loginExpiresAt／credential_expires_at
+3. 只有一次 changelog 对照时，应怎样单独记账，而不是写成下一 cron 也必然不再默成功
+4. 人必须完成的清单（升级、NFS、导流链）
+禁止声称「同样升到318就等于下一无人任务也总会先落到可信 exit」；禁止把 ultrathink 写成费用已门禁。`,
+      },
+      {
+        title: "三百零九至三百一十八与默成功复盘",
+        body: `报告上可以写 309〜318 修 exit 0、ultrathink→xhigh、约提前10日警告；但这是一次个人 changelog 对照。请写复盘提纲。
+
+现象：{{three_oh_nine_exit0}}
+
+输出：
+1. 更像本机仍停在旧版，还是脚本只看了 exit 0
+2. 最小复验顺序（先 claude --version→再故意制造失败看 exit→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上写 ultrathink 就等于 xhigh 已账单门禁」，或「升到318就等于 NFS 容量告警也总会命中」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sktt_panda/articles/claude-code-2026-11-headless-exit-ultrathink",
+      label: "zenn.dev · Claude Code 2.1.309〜318まとめ：claude -pが黙って成功しなくなり、ultrathinkはxhighに",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "769",
+    slug: "bon10-attachoff-271-311",
+    title: "bon10：VS Code 里 Claude Code 别再自动附上当前文件——attachOpenFile／Selection 关掉；扩展 2.1.311",
+    summary: "个人（bon10）；披露用 VS Code 扩展聊天时，默认会把当前打开文件／选区自动附进对话，曾误把本地 .env 等送进聊天；在 settings.json 设 claudeCode.attachOpenFile／attachSelection 为 false 可关；两键分别约自 v2.1.271／v2.1.300，作者扩展为 2.1.311。不代你同样关掉，就等于下一对话也不会再误附密钥文件。",
+    description: "面向已经把「在 VS Code 里开了 Claude Code」当成附件可控已门禁、却还没分开「默认自动附文件」与「手动 @／Option+K」的人：把「Agent 合做编辑器侧对话须同时报扩展版本与自动附件开关」写成门禁，区别于注入/越狱演练，以及 skills 安全扫描。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/bon10/items/449dd303d9c0aad9c485",
+    sourceLabel: "qiita.com·bon10 实践帖",
+    upvotes: 660,
+    trending: false,
+    tags: [
+      "VS-Code",
+      "Claude-Code",
+      "attachOpenFile",
+      "settings",
+      "secrets",
+    ],
+    howItWorks: [
+      "粘贴编辑器侧对话边界（是不是约默认自动附打开文件／选区、是不是约 attachOpenFile／attachSelection 可关、是不是约扩展≥2.1.271／2.1.300）以及「绝不可把开了扩展写成附件已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下扩展版本、两开关默认 true、以及手动 Option+K 附行",
+      "人工保留 2.1.271／2.1.300／作者 2.1.311／.env 误附来自哪一次自述；Agent 不代你保证「同样关掉就等于下一对话也不会再误附密钥文件」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T18:34:21+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T09:34:21Z、Asia/Shanghai 2026-11-09 17:34:21；updated_at 同 created_at；GET 200，UA MiraBot/1.0）：bon10 在《VSCodeのClaude Codeでのチャットにおいて、今開いてるファイルが勝手に添付されるのを防ぐ》写两开关与版本门槛。文内未见作者产品／外链硬导流可列入可达。主线是自动附件默认与密钥误附，不是官文简报。",
+      "与注入/越狱演练、技能安全扫描不同：本条不是把提示注入或技能包扫描当主线，而是 VS Code 扩展默认自动附文件／选区的开关与版本门槛",
+    ],
+    approach: `bon10 在《VSCodeのClaude Codeでのチャットにおいて、今開いてるファイルが勝手に添付されるのを防ぐ》（Qiita 2026-11-09）写明：习惯在 VS Code 里边看代码边用 Claude Code 聊天；近来每次对话常把本地 .env 等误附进聊天。向 Claude Code 询问后得到 settings.json 配置：claudeCode.attachOpenFile 与 claudeCode.attachSelection 设为 false。默认均为 true；关掉后打开中的文件不再自动附上，选区也不再自动附上，仍可用 Option+K 手动以 @文件名#行 附上。两键分别约自扩展 v2.1.271 与 v2.1.300；作者当时扩展为 2.1.311，两者可用。官方文档称该设置对 VS Code 内终端里跑的 Claude Code 也生效。
+
+关键门禁不是「开了扩展」，而是分开记「默认自动附」与「版本是否已支持关闭」。
+
+本场景据此输出「Agent 合做编辑器侧对话须同时报告扩展版本与自动附件开关，不能只报开了 Claude Code」提纲。禁止把关掉开关写成下一对话也绝不会误附，或把开了扩展写成附件已门禁。`,
+    outcomes: [
+      "源披露作者在 VS Code Claude Code 聊天里因默认自动附文件误送 .env；将 attachOpenFile／attachSelection 设为 false 可关；两键约自 v2.1.271／v2.1.300，作者扩展 2.1.311。属作者这一次扩展设置自述，不可外推为你同样关掉就等于下一对话也不会再误附密钥文件，或开了扩展就等于附件已门禁。",
+      "能把「可写成同时记下扩展版本、两开关默认、手动附行方式」与「必须人完成的本机 settings／导流链」拆开。",
+      "为把「默认 ON」当成可接受、以及把未达版本门槛却对外说已能关自动附提供提问清单。",
+    ],
+    caveats: [
+      "2.1.271／2.1.300／作者扩展2.1.311／默认true／.env误附均为作者自述；未声称任意扩展构建同一默认。",
+      "本机未见作者产品／外链硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / bon10），不是 Anthropic／VS Code 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "编辑器侧对话须同时报告自动附件开关",
+        body: `你是资深 Agent 编辑器侧安全教练。只根据用户边界写门禁，不要编造附件已可控。
+
+现在是不是约默认自动附打开文件／选区：{{whether_about_auto_attach}}
+是不是约 attachOpenFile／attachSelection 可关：{{whether_about_attach_off}}
+是不是约扩展≥2.1.271／2.1.300：{{whether_about_ext_ver}}
+
+输出 Markdown：
+1. 为什么「开了 VS Code Claude Code」不能写成附件已门禁
+2. 应怎样同时记下扩展版本、两开关默认 true、手动 Option+K
+3. 只有一次误附.env自述时，应怎样单独记账，而不是写成下一对话也必然不再误附
+4. 人必须完成的清单（settings.json、导流链）
+禁止声称「同样关掉就等于下一对话也总会先落到无自动附」；禁止把默认ON写成可接受已门禁。`,
+      },
+      {
+        title: "自动附件与扩展版本复盘",
+        body: `报告上可以写 attachOpenFile／Selection 可关、约自 2.1.271／2.1.300、作者 2.1.311；但这是一次个人设置。请写复盘提纲。
+
+现象：{{attach_env_leak}}
+
+输出：
+1. 更像扩展未达版本，还是开关仍为默认 true
+2. 最小复验顺序（先看扩展版本→再开空聊天看是否自动附→再决定能不能对外说附件已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Option+K 就等于自动附已关」，或「关了两个键就等于终端侧也绝不会读到.env」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/bon10/items/449dd303d9c0aad9c485",
+      label: "qiita.com · VSCodeのClaude Codeでのチャットにおいて、今開いてるファイルが勝手に添付されるのを防ぐ",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "770",
+    slug: "zee-design-13slide-96px",
+    title: "zeeeeen：后端工程师试 Claude Design——约 13 页幻灯片约 1 分钟生成；手绘「变大」到约 96px；Design system 约 4 分钟",
+    summary: "个人（zeeeeen）；披露约 2026-09 中旬〜10 上旬操作：对话内填内容／外观问卷后约 1 分钟得到约 13 页幻灯片＋讲者笔记；手绘箭头写「变大」后标题约到 96px；上传品牌文件后 Design system 约 4 分钟；URL 风格迁移生成约 3 分钟弱；交给 Claude Code 后见 480px 手机宽試作页。作者演示 artifact 本机跟随落到地区不可用页，已不列入可达导流。不代你同样点生成，就等于下一稿也会先约 13 页／1 分钟。",
+    description: "面向已经把「开了 Claude Design」当成演示稿与设计系统已门禁、却还没分开「生成耗时自述」与「导出／地区可达／本番构建」的人：把「Agent 合做 Design 交接须同时报页数耗时、手绘改动与 artifact 可达」写成门禁，区别于 UI Skill 合并，以及短视频两行脚本。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/zeeeeen/items/007cd25f2d3145b5b54c",
+    sourceLabel: "qiita.com·zeeeeen 实践帖",
+    upvotes: 661,
+    trending: false,
+    tags: [
+      "Claude-Design",
+      "slides",
+      "design-system",
+      "Claude-Code",
+      "artifact",
+    ],
+    howItWorks: [
+      "粘贴 Design 交接边界（是不是约13页／约1分钟、是不是约手绘到96px、是不是约 Design system 约4分钟）以及「绝不可把点了生成写成演示稿已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 9/16 前后界面差、Hand off to Claude Code、以及 artifact 是否地区不可用",
+      "人工保留 13页／1分钟／96px／4分钟／3分钟弱／480px／124k tokens 提示来自哪一次操作；Agent 不代你保证「同样点生成就等于下一稿也总会先约13页／1分钟」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T16:48:32+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:48:32Z、Asia/Shanghai 2026-11-09 15:48:32；updated_at 同 created_at；GET 200，UA MiraBot/1.0）：zeeeeen 在《バックエンドエンジニアがClaude Designを触ってみた》写 13 页／96px／约 4 分钟。文内作者演示 https://claude.ai/artifact/… 本机 GET 跟随落到 https://claude.com/app-unavailable-in-region（HTTP 200），已不列入可达导流；第三方对比博文非作者商店。主线是 Design 生成耗时与交接，不是官文简报。",
+      "与 UI Skill、短视频两行脚本不同：本条不是把组件 Skill 合并或口播两行当主线，而是 Claude Design 幻灯片／手绘改动／Design system 与 Claude Code 交接的耗时自述",
+    ],
+    approach: `zeeeeen 在《バックエンドエンジニアがClaude Designを触ってみた》（Qiita 2026-11-09；操作约 2026-09 中旬〜10 上旬）写明：2026-09-16 后 Design 并入普通 Claude 对话，界面有旧／新之别。先填内容面与外观面问卷，约 1 分钟得到约 13 页幻灯片＋讲者笔记。画布上用手绘箭头写「变大」，标题约放大到 96px；配色例：背景 #FAF9F6、强调 #C2410C。把产品 URL 丢进去做风格迁移，生成约 3 分钟弱。Design system：旧屏可「Create here／Create using Claude Code」；新屏从设置创建，作者把聊天生成的规则 .md 去掉无效索引后 Upload brand files，约 4 分钟生成。Share 可交 Claude Code：本机空目录／design-login 后贴指示，得到约 480px 手机宽試作站（React／Babel 经 unpkg 的开发向构成）。旧屏重活后出现「Start a new chat to save 124k tokens of context」类提示。
+
+关键门禁不是「点了生成」，而是分开记「页数／耗时自述」与「artifact 是否在你区可达／是否已是本番构建」。
+
+本场景据此输出「Agent 合做 Design 交接须同时报告页数耗时、手绘改动与 artifact 可达，不能只报开了 Design」提纲。禁止把约 1 分钟写成下一稿也总会到达，或把試作页写成可上线。`,
+    outcomes: [
+      "源披露作者约 9〜10 月操作：问卷后约 1 分钟得约 13 页幻灯片；手绘「变大」到约 96px；Design system 约 4 分钟；URL 风格约 3 分钟弱；交 Claude Code 见约 480px 試作。属作者这一次操作自述，不可外推为你同样点生成就等于下一稿也会先约 13 页／1 分钟，或試作页就等于可上线已门禁。",
+      "能把「可写成同时记下耗时、手绘改动、Hand off 步骤」与「必须人完成的登录／地区可达／导流链」拆开。",
+      "为把「开了 Design」当成演示稿已门禁、以及把地区不可用的 artifact 链当可达导流提供提问清单。",
+    ],
+    caveats: [
+      "13页／约1分钟／96px／约4分钟／约3分钟弱／480px／124k提示均为作者操作自述；未声称任意账号同一耗时。",
+      "作者演示 artifact（如 https://claude.ai/artifact/AfDYq3yGCJcbjoqb81zHaX ）本机 GET 跟随落到 https://claude.com/app-unavailable-in-region（HTTP 200），已不列入可达导流。第三方对比博文非作者商店硬导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / zeeeeen），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Design 交接须同时报告页数耗时与 artifact 可达",
+        body: `你是资深 Agent 设计交接教练。只根据用户边界写门禁，不要编造演示稿已门禁。
+
+现在是不是约13页／约1分钟：{{whether_about_13slide_1min}}
+是不是约手绘到96px：{{whether_about_96px}}
+是不是约 Design system 约4分钟：{{whether_about_4min_ds}}
+
+输出 Markdown：
+1. 为什么「开了 Claude Design」不能写成演示稿已门禁
+2. 应怎样同时记下 9/16 前后界面、Hand off、artifact 是否地区不可用
+3. 只有一次约1分钟自述时，应怎样单独记账，而不是写成下一稿也必然13页／1分钟
+4. 人必须完成的清单（登录、导流链）
+禁止声称「同样点生成就等于下一稿也总会先约13页／1分钟」；禁止把試作页写成可上线。`,
+      },
+      {
+        title: "十三页一分钟与地区不可用复盘",
+        body: `报告上可以写约13页／1分钟、96px、约4分钟 Design system；但这是一次个人操作，且 artifact 可能地区不可用。请写复盘提纲。
+
+现象：{{thirteen_slides_region}}
+
+输出：
+1. 更像生成耗时波动，还是导流链不可达被误列
+2. 最小复验顺序（先本区打开 artifact→再核页数→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Hand off 就等于本番构建完成」，或「HTTP 200 就等于未落到地区不可用页」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/zeeeeen/items/007cd25f2d3145b5b54c",
+      label: "qiita.com · バックエンドエンジニアがClaude Designを触ってみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "771",
+    slug: "ally-dec7case-py314",
+    title: "Ally_moliy：审 AI 写的加密货币计价——先定单位；Decimal 用字符串；7 个用例在 Python 3.14.3 核对",
+    summary: "个人（Ally_moliy）；披露让 AI 写现货购买金额（价格×数量＋手续费）时，先固定 BTC／USDT 单位；用 Decimal(\"…\") 而非 float；拒绝 NaN／零数量／负手续费／币种不一致／float 入参；例 60000×0.001＋0.06→60.06；上述 7 案在 Python 3.14.3 跑过。不代你同样 7 案，就等于下一交易所 CSV 也可直接当取得价税基。",
+    description: "面向已经把「AI 写出了能跑的金额函数」当成金融计算已门禁、却还没分开「单位／Decimal 入参」与「损益／税基／多档成交」的人：把「Agent 合做金额代码须同时报单位表、拒绝规则与用例数」写成门禁，区别于数字 grounding，以及 CodeRabbit 行评。",
+    categories: [
+      "devtools",
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/Ally_moliy/items/ee3a1b8f9974783ebd11",
+    sourceLabel: "qiita.com·Ally_moliy 实践帖",
+    upvotes: 662,
+    trending: false,
+    tags: [
+      "Decimal",
+      "crypto",
+      "code-review",
+      "Python",
+      "AI-codegen",
+    ],
+    howItWorks: [
+      "粘贴金额代码边界（是不是约先定价格／数量／手续费单位、是不是约 Decimal 字符串入参、是不是约7案含拒绝路径）以及「绝不可把能跑写成税基已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 quote 与 fee_currency 一致性、prec=40 仅为例、以及多档成交未覆盖",
+      "人工保留 60.06／7案／Python 3.14.3／prec40 来自哪一次样例；Agent 不代你保证「同样7案就等于下一 CSV 也可直接当取得价」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T16:34:23+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:34:23Z、Asia/Shanghai 2026-11-09 15:34:23；updated_at 同 created_at；GET 200，UA MiraBot/1.0）：Ally_moliy 在《AIが書いた暗号資産の計算コードをレビューする：Decimal・通貨単位・境界値の確認》写 7 案／3.14.3。文内链 CircleCIJapan 相关文为对照阅读，非作者商店硬导流；本机未见作者产品／外链硬导流可列入可达。主线是单位与 Decimal 拒绝规则，不是官文简报。",
+      "与数字 grounding、CodeRabbit 行评不同：本条不是把事实数字核真或 PR 行评工具当主线，而是 AI 生成金额函数的单位表、Decimal 入参与拒绝路径用例",
+    ],
+    approach: `Ally_moliy 在《AIが書いた暗号資産の計算コードをレビューする：Decimal・通貨単位・境界値の確認》（Qiita 2026-11-09）写明：向 AI 要「加密货币购买金额」Python 时，能跑与前提正确是两件事。先限定模型：价格为每 BTC 的 USDT、数量为 BTC、手续费为另付的 USDT，求 USDT 合计＝价格×数量＋手续费；例 60,000×0.001＋0.06→60.06。强调 float 有 0.1＋0.2 问题，Decimal 须 Decimal("0.1") 而非 Decimal(0.1)。样例函数要求三值均为 str、有限、价格／数量＞0、手续费≥0，且 fee_currency 与 quote 一致，否则拒绝；localcontext prec=40 仅为示例精度。正常与拒绝共 7 案在 Python 3.14.3 核对。文末写明：扣费币种不同、多档成交、交易所舍入、损益／税基／期货保证金均超出本函数。说明用单位表非特定交易所 CSV／API 复刻。
+
+关键门禁不是「能跑」，而是分开记「单位／入参纪律」与「业务边界未覆盖项」。
+
+本场景据此输出「Agent 合做金额代码须同时报告单位表、拒绝规则与用例数，不能只报能跑」提纲。禁止把 7 案写成下一 CSV 也可当税基，或把能跑写成金融已门禁。`,
+    outcomes: [
+      "源披露作者审 AI 现货购买金额代码：先定 BTC／USDT 单位；Decimal 用字符串；含拒绝路径共 7 案在 Python 3.14.3 核对；例 60000×0.001＋0.06→60.06。属作者这一次样例与版本自述，不可外推为你同样 7 案就等于下一交易所 CSV 也可直接当取得价税基，或能跑就等于金融计算已门禁。",
+      "能把「可写成同时记下单位表、拒绝规则、未覆盖的多档／税基」与「必须人完成的交易所规格／导流链」拆开。",
+      "为把「AI 写出了函数」当成可上核算、以及把 float 入参仍当安全 Decimal 提供提问清单。",
+    ],
+    caveats: [
+      "60.06／7案／Python 3.14.3／prec40均为作者样例自述；明示非特定交易所 CSV／API 复刻，亦不覆盖损益税基。",
+      "文内 CircleCIJapan 相关文为对照阅读，非作者自有商店硬导流；本机未见作者产品／外链硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / Ally_moliy），不是交易所或 Python 官文简报。",
+    ],
+    prompts: [
+      {
+        title: "金额代码须同时报告单位表与拒绝规则",
+        body: `你是资深 Agent 金融代码审阅教练。只根据用户边界写门禁，不要编造税基已门禁。
+
+现在是不是约先定价格／数量／手续费单位：{{whether_about_units}}
+是不是约 Decimal 字符串入参：{{whether_about_decimal_str}}
+是不是约7案含拒绝路径：{{whether_about_7cases}}
+
+输出 Markdown：
+1. 为什么「能跑」不能写成金融计算已门禁
+2. 应怎样同时记下 quote 与 fee_currency、拒绝规则、未覆盖的多档／税基
+3. 只有一次 60.06 样例时，应怎样单独记账，而不是写成下一 CSV 也必然可当取得价
+4. 人必须完成的清单（交易所规格、导流链）
+禁止声称「同样7案就等于下一CSV也总会先落到可税基」；禁止把 float 入参写成安全 Decimal。`,
+      },
+      {
+        title: "七案与六十点零六复盘",
+        body: `报告上可以写7案、Python 3.14.3、60000×0.001＋0.06→60.06；但这是一次个人样例。请写复盘提纲。
+
+现象：{{seven_cases_sixty}}
+
+输出：
+1. 更像单位未先定，还是 float 经由 Decimal
+2. 最小复验顺序（先单位表→再拒绝路径→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 assert 就等于损益税基已覆盖」，或「prec=40 就等于任意输入精度已保证」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/Ally_moliy/items/ee3a1b8f9974783ebd11",
+      label: "qiita.com · AIが書いた暗号資産の計算コードをレビューする：Decimal・通貨単位・境界値の確認",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "772",
+    slug: "hanamaru-attrib-empty-coauth",
+    title: "hanamaru_nyaa：GitHub 上 Claude 图标从哪来——Co-Authored-By；attribution.commit／pr 置空可去掉",
+    summary: "个人（hanamaru_nyaa）；披露 Claude Code 提交／PR 会写入 Co-Authored-By: Claude … <noreply@anthropic.com> 与 Generated with Claude Code 行，GitHub 据邮箱显示图标；在 ~/.claude/settings.json 把 attribution.commit／pr 设为 \"\" 可不再附加（键省略则仍用默认）。不代你同样置空，就等于下一仓合规政策也允许去掉 AI 署名。",
+    description: "面向已经把「提交里出现 Claude 图标」当成必须保留或必须删除已门禁、却还没分开「谁写了 Co-Authored-By」与「项目／OSS 是否要求披露」的人：把「Agent 合做提交署名须同时报 attribution 键与合规选择」写成门禁，区别于 git 钩密钥扫描，以及学习叙事首 PR。",
+    categories: [
+      "devtools",
+      "career",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/hanamaru_nyaa/items/2c9b829f676b1ef3514d",
+    sourceLabel: "qiita.com·hanamaru_nyaa 实践帖",
+    upvotes: 663,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "attribution",
+      "Co-Authored-By",
+      "GitHub",
+      "settings",
+    ],
+    howItWorks: [
+      "粘贴提交署名边界（是不是约 Co-Authored-By 由 Claude Code 写入、是不是约 GitHub 按邮箱显示图标、是不是约 attribution.commit／pr 置空可去）以及「绝不可把能去掉写成合规已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下保留／改写／清空三种选择，以及键省略仍走默认",
+      "人工保留 noreply@anthropic.com／settings.json 样例来自哪一次自述；Agent 不代你保证「同样置空就等于下一仓也允许去掉 AI 署名」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T23:13:33+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T14:13:33Z、Asia/Shanghai 2026-11-09 22:13:33；updated_at 同 created_at；GET 200，UA MiraBot/1.0）：hanamaru_nyaa 在《GitHubのコミットにClaudeのアイコンが並ぶのはなぜ？Co-Authored-Byの正体とattribution設定での消し方》写 attribution 置空。文内 Claude Code 链接为默认 PR 文案示例；本机未见作者产品／外链硬导流可列入可达。主线是署名来源与 settings 键，不是官文简报。",
+      "与 git 钩密钥扫描、学习叙事首 PR 不同：本条不是把 pre-commit 扫密或首 PR 学习故事当主线，而是 Co-Authored-By 由谁写入、GitHub 如何显示、attribution 如何改／清",
+    ],
+    approach: `hanamaru_nyaa 在《GitHubのコミットにClaudeのアイコンが並ぶのはなぜ？Co-Authored-Byの正体とattribution設定での消し方》（Qiita 2026-11-09）写明：把提交交给 Claude Code 后，GitHub 提交列表旁会出现 Claude 图标。提交消息会带 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>（模型名随当时所用）；PR 说明会带 Generated with Claude Code 行。作者在自己的 Qiita 文章管理仓首提也见到该行。写入方是 Claude Code（内置指示在写消息时追加），不是 git hook 事后插入；显示方是 GitHub 读取 Co-Authored-By 邮箱并关联账号。关掉方式：在 ~/.claude/settings.json 设 attribution.commit 与 attribution.pr 为空字符串；键省略则仍附默认文案。也可改成 Assisted-by 等自定义。是否删除取决于项目／OSS／公司是否要求披露 AI 协助；作者个人选择置空。
+
+关键门禁不是「能去掉图标」，而是分开记「技术上去掉」与「合规是否允许去掉」。
+
+本场景据此输出「Agent 合做提交署名须同时报告 attribution 键与合规选择，不能只报能置空」提纲。禁止把置空写成下一仓也允许去署名，或把出现图标写成故障。`,
+    outcomes: [
+      "源披露作者说明：Claude Code 写入 Co-Authored-By／Generated 行，GitHub 据邮箱显示图标；attribution.commit／pr 置空可不再附加，键省略仍默认。属作者这一次 settings 自述，不可外推为你同样置空就等于下一仓合规也允许去掉 AI 署名，或能去掉就等于披露义务已门禁。",
+      "能把「可写成同时记下写入方／显示方、三种选择」与「必须人完成的仓库政策／导流链」拆开。",
+      "为把「能置空」当成合规已通过、以及把键省略误当成已关闭提供提问清单。",
+    ],
+    caveats: [
+      "Co-Authored-By 样例／attribution 置空／键省略仍默认均为作者自述；未声称任意组织政策允许删除披露。",
+      "本机未见作者产品／外链硬导流可列入可达导流（文内 Claude Code 链为默认 PR 文案示例）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / hanamaru_nyaa），不是 GitHub／Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "提交署名须同时报告 attribution 与合规选择",
+        body: `你是资深 Agent 提交署名教练。只根据用户边界写门禁，不要编造合规已通过。
+
+现在是不是约 Co-Authored-By 由 Claude Code 写入：{{whether_about_coauth_write}}
+是不是约 GitHub 按邮箱显示图标：{{whether_about_gh_icon}}
+是不是约 attribution.commit／pr 置空可去：{{whether_about_attrib_empty}}
+
+输出 Markdown：
+1. 为什么「能置空」不能写成合规已门禁
+2. 应怎样同时记下保留／改写／清空，以及键省略仍默认
+3. 只有一次个人置空自述时，应怎样单独记账，而不是写成下一仓也必然允许去署名
+4. 人必须完成的清单（仓库政策、导流链）
+禁止声称「同样置空就等于下一OSS也总会先允许去署名」；禁止把出现图标写成故障。`,
+      },
+      {
+        title: "共同作者行与置空复盘",
+        body: `报告上可以写 Co-Authored-By 由 Claude Code 写入、attribution 置空可去；但这是一次个人设置。请写复盘提纲。
+
+现象：{{coauth_attrib_empty}}
+
+输出：
+1. 更像键省略仍默认，还是组织要求必须披露
+2. 最小复验顺序（先看 settings 是否含空字符串键→再看新提交消息→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上改写 Assisted-by 就等于合规审查完成」，或「个人仓置空就等于公司仓也可同样清空」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/hanamaru_nyaa/items/2c9b829f676b1ef3514d",
+      label: "qiita.com · GitHubのコミットにClaudeのアイコンが並ぶのはなぜ？Co-Authored-Byの正体とattribution設定での消し方",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
