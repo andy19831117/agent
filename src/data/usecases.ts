@@ -51638,6 +51638,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "723",
+    slug: "sk8jp-55ok-34miss-32cmp",
+    title: "sk8jp：无分支保护的 private 仓——重做 Claude Code + pre-push 双层守卫；案 55 件全过，旧钩 34 件不符",
+    summary: "个人（sk8jp）；披露在未开 GitHub 分支保护的 private 仓上，用 Claude Code PreToolUse 钩与 Git pre-push 钩双层拦住误 push main：补洞案经两段 Agent 审后否决「字符串堵尽」；重做后判定试验 55 件案全合预期（旧钩 34 件不符）、入口对打 32 件案全过。不代你同样重做，就等于下一仓也会 55／34／32，或钩也总会拦住刻意绕行。",
+    description: "面向已经把「装了 push 钩」当成 main 已受保护、却还没分开「字符串解析能否穷尽写法」的人：把「Agent 合做私仓守卫须同时报双层职责、外钩拆除门与钩失败倒向确认」写成门禁，区别于技能安全扫描，以及默失败出口清点。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/sk8jp/articles/937288f65fcfab",
+    sourceLabel: "zenn.dev·sk8jp 实践帖",
+    upvotes: 614,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "git-hooks",
+      "pre-push",
+      "private-repo",
+      "branch-protection",
+    ],
+    howItWorks: [
+      "粘贴私仓 push 守卫边界（是不是约 55 件案全合预期、是不是旧钩约 34 件不符、是不是入口对打约 32 件）以及「绝不可把装了钩写成写法已被穷尽」纪律",
+      "Agent 按实践帖输出：应怎样同时记下双层职责、外钩拆除须由内钩拦住、以及钩失败倒向确认",
+      "人工保留 55／34／32 来自哪一判定试验；Agent 不代你保证「同样重做就等于下一仓也总会 55／34／32」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T13:27:20.306+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T04:27:20Z、Asia/Shanghai 2026-11-07 12:27:20；bodyUpdatedAt 2026-11-07T13:25:52.809+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/07 に公開；GET 200，UA MiraBot/1.0）：sk8jp 在《ブランチ保護のない private リポで、Claude Code の main への push を止める守りを「割り切って」作り直した話》写 55／34／32。未见外链硬导流。主线是先把「字符串钩能否穷尽」与「装了钩」拆开，不是官文简报。",
+      "与 sera-156call-154hit-40run / sbkm-322-22k-166pass 不同：本条不是受限斜杠未展开或默失败出口清点，而是无分支保护私仓上的双层 push 守卫重做与判定试验",
+    ],
+    approach: `sk8jp 在《ブランチ保護のない private リポで、Claude Code の main への push を止める守りを「割り切って」作り直した話》（页内 2026-11-07）写明：周末 Solo 在未用 GitHub 分支保护（付费能力）的 private 仓，用 Claude Code PreToolUse 与 Git pre-push 双层拦误 push main；补洞案经通用 Agent + Fable 5 两段审后，两段都劝「不要按原案落地」；改为内钩「日常形正确、少见形广确认」、外钩看 Git 展开后的目的地、拆除外钩的操作必须被内钩拦住，钩失败倒向确认。
+
+关键门禁不是「已经装了两道钩」，而是分开记字符串解析的极限与双层职责，并把判定试验数字与「能否穷尽写法」拆开。
+
+本场景据此输出「Agent 合做私仓守卫须同时报告双层职责、拆除门与钩失败倒向，不能只报已装钩」提纲。禁止把 55／34 写成下一仓也总会到达，或把钩 PASS 写成已拦住刻意绕行。`,
+    outcomes: [
+      "源披露作者在未开 GitHub 分支保护的 private 仓上，用 Claude Code PreToolUse 钩与 Git pre-push 钩双层拦住误 push main：补洞案两段审（通用 Agent + Fable 5）均劝勿原案落地；发现「越补越松」「钩根本不解析的写法」「可默拆外钩」「钩进程失败仍继续」。重做后：日常形正确、少见形广确认；外钩看 Git 解释后的目的地；拆除外钩须由内钩拦住；钩失败倒向确认。判定试验：55 件（日常／应拦／目的地／拆外钩类）案全合预期，旧钩 34 件不符；入口同输入对打 32 件案全过；弄坏判定 python 时案倒向确认。属作者这一套钩与这一次判定试验，不可外推为你同样重做就等于下一仓也会 55／34／32，或钩也总会拦住刻意绕行。",
+      "能把「可写成同时记下双层职责、拆除门、钩失败倒向」与「必须人完成的威胁模型一行、以及是否有外链导流」拆开。",
+      "为把「已装钩」当成写法已穷尽、以及把「判定试验全绿」当成已防住刻意绕行提供提问清单。",
+    ],
+    caveats: [
+      "55／34／32 均为作者这一套钩与文内判定试验（命令本身未执行、只喂判定函数）；作者写字符串解析堵不尽、刻意绕行不在范围；具体匹配串未公开。",
+      "文中主要链到作者前一篇 zenn 实践帖作对照，未见招聘／有料／公司站等外链硬导流；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / sk8jp），不是 GitHub 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "无分支保护私仓push守卫须同时报告双层职责门禁",
+        body: `你是资深 Agent 仓库守卫教练。只根据用户边界写门禁，不要编造已经到的55或34。
+
+现在是不是约55件案全合预期：{{whether_about_fifty_five_cases_pass}}
+是不是旧钩约34件不符：{{whether_about_thirty_four_old_miss}}
+是不是入口对打约32件：{{whether_about_thirty_two_compare}}
+
+输出 Markdown：
+1. 为什么「已装两道钩」不能写成写法已被穷尽
+2. 应怎样同时记下双层职责、拆除门与钩失败倒向
+3. 只有一套钩试验时，应怎样单独记账，而不是写成下一仓也必然55／34
+4. 人必须完成的清单（威胁模型一行、导流链）
+禁止声称「同样重做就等于下一仓也总会55／34／32」；禁止把判定全绿写成已拦住刻意绕行。`,
+      },
+      {
+        title: "五十五件全过与三十四件旧不符复盘",
+        body: `报告上可以写案55全过、旧钩34不符、对打32；但这是一套私仓钩试验。请写复盘提纲。
+
+现象：{{fifty_five_and_thirty_four}}
+
+输出：
+1. 更像职责割り切生效，还是用例集恰好贴日常形
+2. 最小复验顺序（先抽55分类→再抽拆外钩路径→再决定能不能对外说守卫已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上字符串分支就等于下一仓也总会55／34／32」，或「这一次钩失败倒向就等于任何钩崩溃都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sk8jp/articles/937288f65fcfab",
+      label: "zenn.dev · ブランチ保護のない private リポで、Claude Code の main への push を止める守りを「割り切って」作り直した話",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "724",
+    slug: "rjchiba-1334to501-805tile",
+    title: "rjchiba：Claude Code 优化 IIIF Image Server——info.json p50 1334→501ms；大图块 2472→805；空闲首请求 7713→1874",
+    summary: "个人（rjchiba）；披露用 Claude Code 在自研数字档案 coloda 的 IIIF Image Server（Cloud Run 1vCPU・512Mi）上自走「测→改→再测」：info.json p50 约 1334→501ms、大图块 p50 约 2472→805、空闲后首请求约 7713→1874；1 人错误率约 18–29% 收到 20 人 0 件、吞吐约 18.4→55.5 要求/秒。不代你同样交给 Agent，就等于下一服务也会 1334→501／805／1874，或改动也总会无需人核对。",
+    description: "面向已经把「Agent 改完延迟降了」当成可交付、却还没分开「人是否仍能核对每步判断」的人：把「Agent 合做图服优化须同时报基线对照、负载错误率与人核判断」写成门禁，区别于 E2E 写测对时，以及本地小模型吞吐。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/rjchiba/articles/e8b76cc20152b5",
+    sourceLabel: "zenn.dev·rjchiba 实践帖",
+    upvotes: 615,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "IIIF",
+      "Cloud Run",
+      "performance",
+      "sanf",
+    ],
+    howItWorks: [
+      "粘贴 IIIF 优化边界（是不是 info.json p50 约 1334→501、是不是大图块约 2472→805、是不是空闲首请求约 7713→1874）以及「绝不可把延迟下降写成每步判断已无需人核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下基线表、负载错误率、以及作者事后发现的非最优与 SDK 遗漏",
+      "人工保留 1334→501／805／1874 来自哪一服务与哪轮对照；Agent 不代你保证「同样交给 Agent 就等于下一服务也总会 1334→501」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T16:40:21.547+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T07:40:21Z、Asia/Shanghai 2026-11-07 15:40:21；bodyUpdatedAt 2026-11-07T19:55:11.556+09:00 晚于发布时刻，日期仍取 publishedAt；页头写 2026/11/07 に公開；GET 200，UA MiraBot/1.0）：rjchiba 在《IIIF Image Server の最適化をしてみる（Claude Codeが）》写 1334→501／2472→805／7713→1874。文内链 pypi sanf 作依赖出处；未见招聘硬导流。主线是 Agent 自走测改环与人核判断，不是官文简报。",
+      "与 genda-5pass-12min-131loc / airtanker 本地翻译边界不同：本条不是陌生 App 上 E2E 写测对时或本地小模型，而是 Cloud Run 上 IIIF 图服的基线对照优化",
+    ],
+    approach: `rjchiba 在《IIIF Image Server の最適化をしてみる（Claude Codeが）》（页内 2026-11-07）写明：自研数字档案 coloda 的 IIIF Image Server 跑在 Cloud Run（1vCPU・512Mi・冷启动）；Claude Code 先确认前端 OpenSeadragon 6.1.1 并写出计量工具，再按日推进：少全面解码、减 DB 往返、同缩放级解码缓存等；汇总表给出 info.json p50 1334→501ms、缩略图 1415→532、大图块 2472→805、空闲首请求 7713→1874，负载错误从 1 人约 18–29% 收到 20 人 0 件。
+
+关键门禁不是「延迟已经降了六成」，而是同时留下基线对照，并承认作者事后复盘仍见非最优与 SDK 遗漏。
+
+本场景据此输出「Agent 合做图服优化须同时报告基线表、负载与人核点，不能只报降幅」提纲。禁止把 1334→501 写成下一服务也总会到达，或把 Agent 自走写成已无需人核。`,
+    outcomes: [
+      "源披露作者用 Claude Code 优化自研 coloda 的 IIIF Image Server（Cloud Run 1vCPU・512Mi）：自建计量（小/中/大图 1200×900／3000×4000／5000×7000；并发 1→5→10→20）。基线 info.json p50 约 1334ms、缩略图约 1415、大图块约 2472、空闲后首请求约 7713；1 人错误率约 29.1%／18.2%。优化后汇总：info.json p50 约 501ms、缩略图约 532、大图块约 805、空闲首请求约 1874；作者写延迟约改善 60%；20 人错误 0 件、吞吐约 18.4→55.5 要求/秒（三尺寸）；大图浏览 p50／p95 约 7867／12066→810／1739。作者写事后复盘仍见非最优与 SDK 遗漏。属作者这一服务与这些对照轮次，不可外推为你同样交给 Agent 就等于下一服务也会 1334→501／805／1874，或改动也总会无需人核。",
+      "能把「可写成同时记下基线表、负载错误率、人核非最优」与「必须人完成的费用／配额决策、以及是否有外链导流」拆开。",
+      "为把「延迟降了」当成每步判断已正确、以及把「Agent 自走闭环」当成已可免复盘提供提问清单。",
+    ],
+    caveats: [
+      "1334→501／1415→532／2472→805／7713→1874／18–29%／55.5／810／1739 均为作者这一 IIIF 服务与文内对照；作者写元构成改善余地大、且事后见非最优与 SDK 遗漏；费用决策仍由人做。",
+      "文中链到 https://pypi.org/project/sanf 等作包／前作对照出处；个人站点链在资料页而非正文硬导流。未见招聘硬导流字样；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / rjchiba），不是 Google Cloud 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Agent合做IIIF图服优化须同时报告基线对照门禁",
+        body: `你是资深 Agent 性能交付教练。只根据用户边界写门禁，不要编造已经到的1334→501。
+
+现在是不是info.json p50约1334→501：{{whether_about_1334_to_501}}
+是不是大图块约2472→805：{{whether_about_2472_to_805}}
+是不是空闲首请求约7713→1874：{{whether_about_7713_to_1874}}
+
+输出 Markdown：
+1. 为什么「延迟降了」不能写成每步判断已无需人核
+2. 应怎样同时记下基线表、负载错误率与事后非最优
+3. 只有一轮对照时，应怎样单独记账，而不是写成下一服务也必然1334→501
+4. 人必须完成的清单（费用决策、导流链）
+禁止声称「同样交给Agent就等于下一服务也总会1334→501」；禁止把自走闭环写成已免复盘。`,
+      },
+      {
+        title: "一千三百三十四到五百零一与八百零五块复盘",
+        body: `报告上可以写info.json p50 1334→501、大图块2472→805、空闲首请求7713→1874；但这是一套图服对照。请写复盘提纲。
+
+现象：{{p50_and_tile}}
+
+输出：
+1. 更像测改环纪律生效，还是基线恰好很差
+2. 最小复验顺序（先抽基线表→再抽20人错误→再决定能不能对外说已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上缓存就等于下一服务也总会501／805／1874」，或「这一次60%就等于任何图服都会同形」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/rjchiba/articles/e8b76cc20152b5",
+      label: "zenn.dev · IIIF Image Server の最適化をしてみる（Claude Codeが）",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "725",
+    slug: "pcnoto-18d-3dup-36man",
+    title: "pcnotonari：Claude Code 写出的重复编号警告——挂在 36 万字目录顶上 18 天；双重编号 3 件无人读",
+    summary: "个人（pcnotonari）；披露用 Claude Code／自动化给约 36 万字决定账本自动目录并挂上重复编号警告：警告本身正确且持续显示，但双重编号 3 件在约 18 天内无人读到；根因是警告出口放在「自己规定勿通读」的目录顶。后改为并入每次必读的点检出口。不代你同样加警告，就等于下一账本也会 18／3／36 万，或挂上就等于已被人看见。",
+    description: "面向已经把「警告有输出」当成风险已被看见、却还没分开「出口是否在人必经之路」的人：把「Agent 合做长文账本警告须同时报出口位置、必读点检与误警告修正」写成门禁，区别于静默停机监护，以及 Remote Control 会话残留。",
+    categories: [
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/pcnotonari/articles/fd5685f53ed68b",
+    sourceLabel: "zenn.dev·pcnotonari 实践帖",
+    upvotes: 616,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "warnings",
+      "automation",
+      "documentation",
+      "human-attention",
+    ],
+    howItWorks: [
+      "粘贴警告出口边界（是不是约 18 天未读、是不是双重编号约 3 件、是不是约 36 万字账本）以及「绝不可把警告有输出写成已被人看见」纪律",
+      "Agent 按实践帖输出：应怎样同时记下出口位置、误警告两次修正、以及并入必读点检",
+      "人工保留 18／3／36 万来自哪一套账本；Agent 不代你保证「同样加警告就等于下一账本也总会 18／3」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T11:01:17.133+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T02:01:17Z、Asia/Shanghai 2026-11-08 10:01:17；bodyUpdatedAt 2026-11-08T11:00:26.836+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：pcnotonari 在《Claude Codeの警告を18日間読まなかった》写 18／3／36万。文末嵌 note 作者页，属个人站导流且可达。主线是警告出口与必读路径，不是官文简报。",
+      "与 starken-2632env-838sess-834dot / 静默停机类不同：本条不是 Remote Control 元数据残留或进程守护，而是长文账本上「警告已显示却无人读」的出口位移",
+    ],
+    approach: `pcnotonari 在《Claude Codeの警告を18日間読まなかった》（页内 2026-11-08）写明：神戸二手电脑修理出借的决定记在单文件约 36 万字；9/26 起用自动化重做目录并挂 4 类警告；重复编号警告本身正确，但 9/30、10/1、10/9 共 3 件双重编号直到 10/18 才被看见——约 18 天；根因是出口在「勿通读」的目录顶。修正是警告生成逻辑不动，改为并入每次会读的点检汇总。
+
+关键门禁不是「警告已经会打印」，而是分开记「有输出」与「在人必经出口」。
+
+本场景据此输出「Agent 合做长文警告须同时报告出口位置与必读点检，不能只报警告已实现」提纲。禁止把 18／3 写成下一账本也总会到达，或把有输出写成已被人看见。`,
+    outcomes: [
+      "源披露作者给约 36 万字决定账本自动目录并挂警告：手写目录停在 7 月–9/12、约七成正文未入目；警告 4 类（含同一决定号出现 ≥2 次）。编号抽取曾误警告 2 次（枝号 #75b、正文引用 #56）后改只认标题先頭。双重编号 3 件（9/30、10/1、10/9，第三件作者自编号）在目录顶持续显示约 18 天至 10/18 才发现；作者写工具在工作、人没走那条路。后不改警告生成，改并入每次必读的点检（与另 7 件一并出结果）。属作者这一套账本与这一段日期，不可外推为你同样加警告就等于下一账本也会 18／3／36 万，或挂上就等于已被人看见。",
+      "能把「可写成同时记下出口位置、误警告修正、必读点检」与「必须人完成的阅读路径改派、以及是否有外链导流」拆开。",
+      "为把「警告有输出」当成风险已关闭、以及把「目录顶加粗」当成已在人必经之路提供提问清单。",
+    ],
+    caveats: [
+      "18／3／36万／4类／2次误警告／另7件点检 均为作者这一套决定账本与文内日期；未声称换出口后零遗漏；36万字为文内约数。",
+      "文中嵌 https://note.com/pcnotonari_2609 ，属作者 note／个人站导流；本机 GET 200，列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / pcnotonari），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "长文账本警告须同时报告出口是否必读门禁",
+        body: `你是资深 Agent 文档出口教练。只根据用户边界写门禁，不要编造已经到的18或3。
+
+现在是不是约18天未读：{{whether_about_eighteen_days_unread}}
+是不是双重编号约3件：{{whether_about_three_dup_numbers}}
+是不是约36万字账本：{{whether_about_360k_chars}}
+
+输出 Markdown：
+1. 为什么「警告有输出」不能写成已被人看见
+2. 应怎样同时记下出口位置、误警告与必读点检
+3. 只有一套账本时，应怎样单独记账，而不是写成下一账本也必然18／3
+4. 人必须完成的清单（阅读路径改派、导流链）
+禁止声称「同样加警告就等于下一账本也总会18／3」；禁止把目录顶加粗写成已在必经之路。`,
+      },
+      {
+        title: "十八天未读与三件双重编号复盘",
+        body: `报告上可以写18天未读、双重编号3件、约36万字；但这是一套个人账本。请写复盘提纲。
+
+现象：{{eighteen_and_three}}
+
+输出：
+1. 更像出口位移生效，还是题材恰好有每日点检可并入
+2. 最小复验顺序（先抽3件时间线→再抽出口是否必经→再决定能不能对外说警告已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上目录警告就等于下一账本也总会18／3」，或「这一次并入点检就等于任何警告都会被读到」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/pcnotonari/articles/fd5685f53ed68b",
+      label: "zenn.dev · Claude Codeの警告を18日間読まなかった",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "726",
+    slug: "oiloil-15run-87avg-4skill",
+    title: "oiloil：4 种 UI 设计 Skill + 无 Skill 同题 15 次——无 Skill 均分 84.3 且仅 1/3 动作全过；有 Skill 三轮动作全过",
+    summary: "个人（oiloil）；披露为减「AI 模板感」自研 Oil UI Skill，并与另 3 种公开 UI Skill及无 Skill 在同一课题、同一模型上各 3 次共 15 次生成：无 Skill 外观均分约 84.3、仅 1/3 轮 6 项动作全过；Oil UI 免费版均分约 87.0 且 3/3 全过。不代你同样 15 次，就等于下一课题也会 84.3／87.0／15，或有 Skill 就等于已无障碍达标。",
+    description: "面向已经把「Agent 出了能点的页面」当成设计可交付、却还没分开「有无 Skill 对照与实机无障碍检查」的人：把「Agent 合做 UI 须同时报 Skill 对照表、实机截图门与无障碍项」写成门禁，区别于短视频 2 行指示，以及游戏资产流水线。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/oiloil/articles/d8522a669b3041",
+    sourceLabel: "zenn.dev·oiloil 实践帖",
+    upvotes: 617,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "UI-Skill",
+      "accessibility",
+      "Playwright",
+      "frontend",
+    ],
+    howItWorks: [
+      "粘贴 UI Skill 对照边界（是不是约 15 次、是不是无 Skill 均分约 84.3、是不是 Oil UI 约 87.0 且动作 3/3 全过）以及「绝不可把能点写成无障碍已达标」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 5 条件×3 次表、PC／手机实机、以及无障碍评分项",
+      "人工保留 15／84.3／87.0 来自哪一课题与模型；Agent 不代你保证「同样 15 次就等于下一课题也总会 84.3／87.0」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T08:51:01.386+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T23:51:01Z、Asia/Shanghai 2026-11-09 07:51:01；bodyUpdatedAt 2026-11-09T08:57:43.989+09:00 晚于发布，日期仍取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：oiloil 在《Claude Codeで作る画面の「AIっぽさ」を減らすために、UIデザインSkillを作って4種比較してみた》写 15／84.3／87.0。文内链 GitHub／ui.oiloil.org／Pro 买断属产品导流且可达。主线是 Skill 对照与实机门，不是官文简报。",
+      "与 orca-2line-57final-19note / asobiai 游戏资产不同：本条不是短视频 2 行指示或 PixelLab 流水线，而是同一课题上 UI 设计 Skill 的 15 次对照与无障碍评分",
+    ],
+    approach: `oiloil 在《Claude Codeで作る画面の「AIっぽさ」を減らすために、UIデザインSkillを作って4種比較してみた》（页内 2026-11-09）写明：先定画面类型→可比方向→实机 PC 1440×900／手机 390×844 截图；再以 ToolShelf 课题、kimi-1021-preview、5 条件各 3 次共 15 次对比 Oil UI 免费版／frontend-design／Impeccable／UI UX Pro Max／无 Skill；外观 100 分含无障碍等 6 项盲评，动作 6 项 Playwright。
+
+关键门禁不是「页面已经能点」，而是同时留下有无 Skill 对照与实机无障碍项。
+
+本场景据此输出「Agent 合做 UI 须同时报告对照表、实机门与无障碍项，不能只报生成成功」提纲。禁止把 84.3／87.0 写成下一课题也总会到达，或把有 Skill 写成无障碍已达标。`,
+    outcomes: [
+      "源披露作者用同一模型（kimi-1021-preview）在干净目录对 ToolShelf（6 件工具数据的素 HTML／CSS／JS 页）跑 5 条件×3 次＝15 次：Oil UI 免费版外观合计 261／300、均分约 87.0、动作 3／3 全过；frontend-design 与 Impeccable 均分约 88.0、264／300、3／3 全过；UI UX Pro Max 均分约 86.7、260／300、3／3 全过；无 Skill 均分约 84.3、253／300、仅 1／3 轮 6 项动作全过（另两轮 5／6）。盲评含可读性／产品感／响应式／操作反馈／无障碍／细节。作者写有 Skill 时动作漏检减少；Oil UI 第 3 次曾掉到 83 分。属作者这一课题与这一模型的 15 次，不可外推为你同样 15 次就等于下一课题也会 84.3／87.0／15，或有 Skill 就等于无障碍已达标。",
+      "能把「可写成同时记下对照表、实机截图、无障碍项」与「必须人完成的产品方向选择、以及是否有外链导流」拆开。",
+      "为把「能点」当成设计完成、以及把「有 Skill」当成无障碍已达标提供提问清单。",
+    ],
+    caveats: [
+      "15／87.0／88.0／86.7／84.3／261／264／260／253／3／3／1／3 均为作者这一课题、kimi-1021-preview 与文内 15 次；作者写单课题单模型各 3 次，不作跨模型趋势；无障碍为盲评六项之一，非完整无障碍审计。",
+      "文中链到 https://github.com/oil-oil/oil-ui 、https://ui.oiloil.org/ja/guide/ui-design-skills-tested/ 、https://ui.oiloil.org/ja/ 、https://oiloil.org 及作品页，并写 Oil UI Pro 买断 USD 9.99／约 69 人民币，属产品／演示／付费导流；本机均 GET 200，列入可达导流。未见招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / oiloil），不是 Anthropic 或 Cursor 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Agent合做UI须同时报告Skill对照与无障碍门禁",
+        body: `你是资深 Agent UI 交付教练。只根据用户边界写门禁，不要编造已经到的15或84.3。注意：accessibility 写「无障碍／可访问性」，不要写「无访问」。
+
+现在是不是约15次对照：{{whether_about_fifteen_runs}}
+是不是无Skill均分约84.3：{{whether_about_84_3_no_skill}}
+是不是Oil UI约87.0且动作3/3全过：{{whether_about_87_and_3_of_3}}
+
+输出 Markdown：
+1. 为什么「能点」不能写成无障碍已达标
+2. 应怎样同时记下对照表、实机PC／手机与无障碍项
+3. 只有一轮15次时，应怎样单独记账，而不是写成下一课题也必然84.3／87.0
+4. 人必须完成的清单（方向选择、导流链）
+禁止声称「同样15次就等于下一课题也总会84.3／87.0」；禁止把有Skill写成无障碍审计已完成。`,
+      },
+      {
+        title: "十五次对照与八十四点三无Skill复盘",
+        body: `报告上可以写15次、无Skill均分84.3、Oil UI 87.0且动作3/3全过；但这是一套课题试验。请写复盘提纲。
+
+现象：{{fifteen_and_84_3}}
+
+输出：
+1. 更像Skill纪律生效，还是课题恰好吃素HTML
+2. 最小复验顺序（先抽无Skill失败轮→再抽无障碍项→再决定能不能对外说UI已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上Skill就等于下一课题也总会87／3／3」，或「这一次盲评无障碍就等于完整无障碍审计」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/oiloil/articles/d8522a669b3041",
+      label: "zenn.dev · Claude Codeで作る画面の「AIっぽさ」を減らすために、UIデザインSkillを作って4種比較してみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "727",
+    slug: "percy-3skill-orders-codex",
+    title: "DMM／percy_tech：Codex + 3 个 Skill 养表元数据——合并 Skill 输出不稳后拆成调查／使用调查／指南撰写",
+    summary: "团队（DMM Data Blog·percy_tech）；披露用 Codex 定期执行 + 3 个 Skill（说明调查／使用调查／指南撰写）为表与列养 OKF 风元数据：先做合并 Skill 验证时「每次输出都不同、达不到可用」；拆成「先查后写」并把进度／版次印写回文件后，以空 EC orders 为例跑通 description→用途包→usage.md。不代你同样 3 Skill，就等于下一数仓也会同形稳定，或定期执行也总会免招聘／费用门。",
+    description: "面向已经把「给 Agent 一份大 Skill」当成元数据可自治、却还没分开「调查与撰写职责」的人：把「Agent 合做数仓元数据须同时报 Skill 拆分理由、进度版次与未确认事项」写成门禁，区别于 MCP 起票，以及费用／Effort 调参。",
+    categories: [
+      "devtools",
+      "enterprise",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/percy_tech/articles/753624cdec8535",
+    sourceLabel: "zenn.dev·DMM Data Blog／percy_tech 实践帖",
+    upvotes: 618,
+    trending: false,
+    tags: [
+      "Codex",
+      "Skill",
+      "metadata",
+      "OKF",
+      "data-catalog",
+    ],
+    howItWorks: [
+      "粘贴元数据 Skill 边界（是不是先合并后拆成约 3 个 Skill、是不是以 orders 为例、是不是定期执行读进度版次）以及「绝不可把有 Skill 写成元数据已自治完成」纪律",
+      "Agent 按实践帖输出：应怎样同时记下拆分理由、未确认事项回传、以及费用上限",
+      "人工保留 3 Skill／orders 来自哪一团队试点；Agent 不代你保证「同样 3 Skill 就等于下一数仓也总会可用」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T11:56:09.253+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:56:09Z、Asia/Shanghai 2026-11-09 10:56:09；bodyUpdatedAt 2026-11-09T12:11:39.735+09:00 晚于发布，日期仍取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：percy_tech 在《テーブルの意味と使い方を育てる。CodexとSkillで回すメタデータ整備》写 3 Skill／orders。文末 DMM 招聘链本机 GET 404，已不列入可达导流。主线是调查与撰写拆分，不是官文简报。",
+      "与 MCP 起票／金融 MCP、费用 Effort 调参不同：本条不是用 MCP 自动开票或周限 Model／Effort，而是 Codex 定期执行下表元数据 Skill 的职责拆分",
+    ],
+    approach: `percy_tech（DMM Data Blog）在《テーブルの意味と使い方を育てる。CodexとSkillで回すメタデータ整備》（页内 2026-11-09）写明：表／列意义与用法进仓库文件（对齐 OKF 思路）；Skill 拆成说明调查、使用调查、指南撰写 3 个；合并 Skill 验证时每次输出不同、达不到可用，故缩小职责；Codex 定期执行读进度与版次，只接收「准备完成」印的调查包；以空 EC 的 orders 为例写出 description、集计条件包与 usage.md。
+
+关键门禁不是「已经挂上 Skill」，而是同时留下拆分理由、未确认事项与费用上限。
+
+本场景据此输出「Agent 合做数仓元数据须同时报告 3 Skill 职责、进度版次与未确认，不能只报定期执行已开」提纲。禁止把 3 Skill 写成下一数仓也总会可用，或把定期执行写成已免人审。`,
+    outcomes: [
+      "源披露 DMM 数据侧用 Codex 定期执行 + 3 个 Skill 养表元数据：说明调查（description 案／依据／未确认）、使用调查（用途／关系／指标／条件包）、指南撰写（usage.md／术语集）。合并 Skill 先验时「执行每次输出都不同、达不到可用」后拆开；进度按调查／撰写／确认分状态存，只把带准备完成印的版交给撰写；并对费用型处理设上限。示例空 EC orders：补谁的什么值、按日 COUNT(DISTINCT customer_id) 等条件进包，再写成可回答「如何按日看成交购入者」的指南。属作者这一团队试点与这一示例，不可外推为你同样 3 Skill 就等于下一数仓也会同形稳定，或定期执行也总会免人审与招聘门。",
+      "能把「可写成同时记下拆分理由、版次印、未确认回传」与「必须人完成的权限范围、以及招聘等导流是否可达」拆开。",
+      "为把「有 Skill＋定期执行」当成元数据已自治、以及把「示例 orders 跑通」当成全仓已覆盖提供提问清单。",
+    ],
+    caveats: [
+      "3 个 Skill／orders 示例／合并后不稳 均为作者这一团队试点与文内叙述；未给全仓表数或成功率；系统代码仅限已授权范围；费用上限为设计项未披露具体额度。",
+      "文中链到 https://dmm-corp.com/recruit/engineer/172/ 、https://dmm-corp.com/recruit/engineer/5124/ 、https://dmm-corp.com/recruit/engineer/5783/ 、https://dmm-corp.com/recruit/search/ 等，属招聘导流；本机均 GET 404，现 HTTP 404，已不列入可达导流。https://github.com/GoogleCloudPlatform/open-knowledge-format 为格式出处（GET 200）。OpenAI Skill／Automations 文档链本机 GET 403，仅出处、不列入可达导流。",
+      "上面写的是团队实践帖（zenn.dev / DMM Data Blog·percy_tech），不是 OpenAI 或 DMM 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "数仓元数据Skill须同时报告调查撰写拆分门禁",
+        body: `你是资深 Agent 数据目录教练。只根据用户边界写门禁，不要编造已经稳定的全仓成功率。
+
+现在是不是先合并后拆成约3个Skill：{{whether_about_three_skills_split}}
+是不是以orders为例：{{whether_about_orders_example}}
+是不是定期执行读进度版次：{{whether_about_scheduled_progress}}
+
+输出 Markdown：
+1. 为什么「有Skill＋定期执行」不能写成元数据已自治完成
+2. 应怎样同时记下拆分理由、版次印与未确认事项
+3. 只有一个示例表时，应怎样单独记账，而不是写成全仓也必然可用
+4. 人必须完成的清单（权限范围、导流链可达性）
+禁止声称「同样3 Skill就等于下一数仓也总会可用」；禁止把示例跑通写成全仓已覆盖。`,
+      },
+      {
+        title: "三Skill拆分与orders示例复盘",
+        body: `报告上可以写3个Skill、合并后不稳、orders示例跑通；但这是一套团队试点。请写复盘提纲。
+
+现象：{{three_skills_and_orders}}
+
+输出：
+1. 更像职责拆分生效，还是示例表恰好简单
+2. 最小复验顺序（先抽合并失败样本→再抽版次印→再决定能不能对外说元数据已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上定期执行就等于下一数仓也总会同形稳定」，或「这一次orders就等于全仓覆盖」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/percy_tech/articles/753624cdec8535",
+      label: "zenn.dev · テーブルの意味と使い方を育てる。CodexとSkillで回すメタデータ整備",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
