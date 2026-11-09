@@ -52078,6 +52078,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "728",
+    slug: "mugenweb-2over-3kind-5mb",
+    title: "mugen_web：AI 稿断定过强 2 处——主张先分 3 类；「5MB」与「Zenn 不重发」都改成未确认",
+    summary: "个人（mugen_web）；披露用 Claude Code 写 Zenn／Kindle 后自审：断定过强描述 2 处（樱花上传「上限 5MB」、以及「Zenn 不会自动重发卡住的本」）；把主张先分成环境事实／外部规格／推测 3 类再核。不代你同样分 3 类，就等于下一稿也会 2／3／5MB，或改写后就等于已无过强断定。",
+    description: "面向已经把「AI 写完且口气一致」当成可发布、却还没分开「哪句已核、哪句仍是推测」的人：把「Agent 合做事实核验须同时报主张分类、出处与未确认改写」写成门禁，区别于趋势周报结论审计，以及依赖空包伪完成。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/mugen_web/articles/ai-draft-fact-check-three-kinds",
+    sourceLabel: "zenn.dev·mugen_web 实践帖",
+    upvotes: 619,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "fact-check",
+      "Zenn",
+      "documentation",
+      "AI-writing",
+    ],
+    howItWorks: [
+      "粘贴事实核验边界（是不是断定过强约 2 处、是不是主张分约 3 类、是不是含「5MB」类数字）以及「绝不可把口气一致写成句句已核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 A/B/C 分类、官方一次信息、以及「未确认」改写与全仓检索",
+      "人工保留 2／3／5MB 来自哪一套稿；Agent 不代你保证「同样分 3 类就等于下一稿也总会 2／3」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T12:18:37.048+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T03:18:37Z、Asia/Shanghai 2026-11-09 11:18:37；bodyUpdatedAt 2026-11-07T11:01:10.162+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：mugen_web 在《AIが書いた記事・本の事実確認は、主張を3種類に分けてやる。私が断定しすぎた2つの記述と、直した手順(Claude Code)》写 2／3／5MB。文末链 Zenn 本与 X，属个人书／社媒导流且可达。主线是主张分类与未确认改写，不是官文简报。",
+      "与 udm-11src-0err-70d / aether 确信度台账不同：本条不是周报结论审计或预测台账，而是出版前把断定句拆成环境／规格／推测三类再核",
+    ],
+    approach: `mugen_web 在《AIが書いた記事・本の事実確認は、主張を3種類に分けてやる。私が断定しすぎた2つの記述と、直した手順(Claude Code)》（页内 2026-11-09）写明：用 Claude Code 写 Zenn／Kindle；按 Zenn 内容方针自审后，发现断定过强 2 处——把项目旧记录里的「樱花上传上限 5MB」写成了像一般事实；又把「Zenn 不会自动重发卡住的本」写成已确认规格（官方 FAQ 只写限额与判定窗，重发与否未写；第 3 本约在第 2 本后 1 周又 45 分公开，但当时自己也跑了重发工作流，分不清谁生效）。改法是先把主张分成 A 自己环境／B 外部规格／C 推测，再分别用记录、官方一次信息或标明「推定」处理；并 grep 同源文件，避免只改 Zenn 本、原稿又回去。
+
+关键门禁不是「已经通读一遍」，而是分开记「口气一致」与「句句已核」。
+
+本场景据此输出「Agent 合做事实核验须同时报告主张分类、出处与未确认改写，不能只报已润色」提纲。禁止把 2／3 写成下一稿也总会到达，或把改写写成已无过强断定。`,
+    outcomes: [
+      "源披露作者自审 AI 协助稿时抓到断定过强 2 处：①把项目记录里的樱花上传「5MB」写成一般事实，改为写清出处与「能否用配置放宽未确认」，并强调各自确认上限；②把「Zenn 不会自动重发卡住的本」写成已确认，改为「自动重发与否未确认」。主张先分 3 类（A 自己环境／B 外部规格看官方一次信息／C 推测须标推定）；另提醒「问题なし」报告也要看验证脚本是否真跑过。属作者这一套稿与这两处改写，不可外推为你同样分 3 类就等于下一稿也会 2／3／5MB，或改写后就等于已无过强断定。",
+      "能把「可写成同时记下主张分类、官方一次信息、全仓检索」与「必须人完成的发布判断、以及是否有外链导流」拆开。",
+      "为把「口气一致」当成句句已核、以及把「已改两处」当成已覆盖全部同源文件提供提问清单。",
+    ],
+    caveats: [
+      "2／3／5MB／约1周又45分 均为作者这一套稿与文内日期；未声称分类后零遗漏；「问题なし」复验亦属作者个案。",
+      "文中链到 https://zenn.dev/mugen_web/books/claude-code-laravel-jitsumu （Zenn 本）与 https://x.com/mugenweb21 ，属作者书／个人站导流；本机 GET 200，列入可达导流。https://info.zenn.dev/2026-03-10-ai-contents-guideline 仅内容方针出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / mugen_web），不是 Zenn 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AI稿事实核验须同时报告主张三类门禁",
+        body: `你是资深 Agent 事实核验教练。只根据用户边界写门禁，不要编造已经到的2或3。
+
+现在是不是断定过强约2处：{{whether_about_two_overclaims}}
+是不是主张分约3类：{{whether_about_three_claim_kinds}}
+是不是含约5MB类数字：{{whether_about_five_mb_number}}
+
+输出 Markdown：
+1. 为什么「口气一致」不能写成句句已核
+2. 应怎样同时记下A/B/C分类、官方一次信息与未确认改写
+3. 只有一套稿时，应怎样单独记账，而不是写成下一稿也必然2／3
+4. 人必须完成的清单（发布判断、导流链）
+禁止声称「同样分3类就等于下一稿也总会2／3」；禁止把已改两处写成已覆盖全部同源文件。`,
+      },
+      {
+        title: "两处断定与三类主张复盘",
+        body: `报告上可以写断定过强2处、主张分3类、含5MB类数字；但这是一套个人稿。请写复盘提纲。
+
+现象：{{two_and_three}}
+
+输出：
+1. 更像分类纪律生效，还是恰好撞上可核数字
+2. 最小复验顺序（先抽2处原文→再抽grep同源→再决定能不能对外说核验已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上三类标签就等于下一稿也总会2／3」，或「这一次改写就等于任何断定都会被标出」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mugen_web/articles/ai-draft-fact-check-three-kinds",
+      label: "zenn.dev · AIが書いた記事・本の事実確認は、主張を3種類に分けてやる。私が断定しすぎた2つの記述と、直した手順(Claude Code)",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "729",
+    slug: "udm-11src-0err-70d",
+    title: "udm：Claude Code 趋势周报审计——对照出典 11 本金额日期 0 错，最抢眼结论却对不上",
+    summary: "个人（udm）；披露把趋势周报交给子代理后自审：可对照出典 11 本里金额与日期错误 0 件，但最抢眼结论在海外出典对不上；「日本还没有」多处只凭搜不到，1 处搜 1 次就崩；出典年龄中位约 70 日。不代你同样加验证役，就等于下一周报也会 11／0／70，或验证役就等于结论已稳。",
+    description: "面向已经把「有出典且数字对」当成结论可发、却还没分开「事实对」与「潮流命名是否过强」的人：把「Agent 合做周报须同时报对照范围、过强判定与未检测／不在」写成门禁，区别于出版前主张三类核验，以及确信度预测台账。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/udm/articles/claude-code-trend-report-audit-1108",
+    sourceLabel: "zenn.dev·udm 实践帖",
+    upvotes: 620,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "subagents",
+      "report-audit",
+      "fact-check",
+      "skills",
+    ],
+    howItWorks: [
+      "粘贴周报审计边界（是不是对照出典约 11 本、是不是金额日期错误约 0、是不是出典年龄中位约 70 日）以及「绝不可把数字对写成结论已核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下对照范围、过强／不一致判定、以及未检测与不在的写法",
+      "人工保留 11／0／70 来自哪一本周报；Agent 不代你保证「同样加验证役就等于下一周报也总会 11／0」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T21:58:18.742+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T12:58:18Z、Asia/Shanghai 2026-11-08 20:58:18；bodyUpdatedAt 2026-11-08T22:37:16.828+09:00 晚于发布，日期仍取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：udm 在《Claude Code のトレンド週報を監査したら、数字は合っていたのに結論がズレていた話》写 11／0／70。文末仅链官方 Skills／Subagents 文档作出处。主线是结论过强与未检测写法，不是官文简报。",
+      "与 mugenweb-2over-3kind-5mb / aether 确信度台账不同：本条不是出版前主张分类或预测命中率，而是子代理周报「数字对、结论偏」的对照审计",
+    ],
+    approach: `udm 在《Claude Code のトレンド週報を監査したら、数字は合っていたのに結論がズレていた話》（页内 2026-11-08）写明：用子代理做海外／日本温度差周报；首发合格条件只要求「主张有出典」「约 10 分可读」等，未要求核对出典正文。自审时 35 本出典里对照上 11 本（原文 8＋另文 3），金额与日期在对照范围内 0 错；但「海外 AI 互相对话匹配大幅领先」一类结论，对照后只有日本 1 家明示 AI 互相对话，海外依据并不支撑「海外先行」命名。「日本还没有」多处靠搜不到，1 处搜 1 次就找到国内入场者；出典年龄中位约 70 日，结论用源有 50–204 日前。对策是加只做对照的验证役、把日本热度写成确认／未检测／未调查，并要求期间内依据。
+
+关键门禁不是「出典链接齐全」，而是分开记「数字对」与「潮流名是否过强」。
+
+本场景据此输出「Agent 合做周报须同时报告对照范围、过强判定与未检测写法，不能只报有出典」提纲。禁止把 11／0／70 写成下一周报也总会到达，或把加验证役写成结论已稳。`,
+    outcomes: [
+      "源披露作者审计子代理趋势周报：35 本出典中对照上 11 本，金额与日期错误 0 件；最抢眼「海外大幅先行」结论在对照范围内站不住；「日本还没有」多处仅「搜不到」，1 处搜 1 次即崩；出典年龄中位约 70 日，结论用源约 50–204 日前；14 日以内有本文的源很少。后加验证役（一致／过强／不一致／对照不可）、日本热度三态、期间内依据字段；作者写修正后的流程在发文时还没跑过完整一轮。属作者这一本周报与这一次对照范围，不可外推为你同样加验证役就等于下一周报也会 11／0／70，或验证役就等于结论已稳。",
+      "能把「可写成同时记下对照范围、过强判定、未检测／不在」与「必须人完成的可否外发判断、以及是否有外链导流」拆开。",
+      "为把「数字对」当成结论可发、以及把「搜不到」当成「日本没有」提供提问清单。",
+    ],
+    caveats: [
+      "11／0／70／35／24未对照／50–204日 均为作者这一本周报与文内对照范围；作者写修正流程尚未实跑；验证役自身误读仍在。",
+      "文中主要链到 https://code.claude.com/docs/en/skills 、https://code.claude.com/docs/en/sub-agents 作官方出处；未见招聘／有料等外链硬导流字样；本机对 primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / udm），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "子代理周报须同时报告对照范围与过强判定门禁",
+        body: `你是资深 Agent 周报审计教练。只根据用户边界写门禁，不要编造已经到的11或0。
+
+现在是不是对照出典约11本：{{whether_about_eleven_sources}}
+是不是金额日期错误约0：{{whether_about_zero_amount_date_err}}
+是不是出典年龄中位约70日：{{whether_about_seventy_day_median}}
+
+输出 Markdown：
+1. 为什么「数字对」不能写成结论已核
+2. 应怎样同时记下对照范围、过强判定与未检测／不在
+3. 只有一本周报时，应怎样单独记账，而不是写成下一周报也必然11／0
+4. 人必须完成的清单（可否外发、导流链）
+禁止声称「同样加验证役就等于下一周报也总会11／0」；禁止把搜不到写成日本没有。`,
+      },
+      {
+        title: "十一本对照与七十日中位复盘",
+        body: `报告上可以写对照11本、金额日期0错、出典年龄中位约70日；但这是一本周报。请写复盘提纲。
+
+现象：{{eleven_and_seventy}}
+
+输出：
+1. 更像验证役纪律生效，还是题目恰好好对照
+2. 最小复验顺序（先抽结论行→再抽期间内依据→再决定能不能对外说周报已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上验证役就等于下一周报也总会11／0」，或「这一次0错就等于任何结论都已稳」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/udm/articles/claude-code-trend-report-audit-1108",
+      label: "zenn.dev · Claude Code のトレンド週報を監査したら、数字は合っていたのに結論がズレていた話",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "730",
+    slug: "daichi-56song-18-17-21",
+    title: "dev_daichi：Muse Vault 不把密码写进聊天——3 个播放列表共 56 曲（18／17／21）全进；首轮误落 Spotify",
+    summary: "个人（dev_daichi）；披露用 Meta Muse 做须登录的状态变更任务：凭 Secure Vault 注入登录，不把密码写进聊天；3 个播放列表共 56 曲按 18／17／21 全进且无缺。首轮因未指定服务误建在 Spotify，改写成 Apple Music 规格后重做。不代你同样交 Vault，就等于下一任务也会 56／18／17／21，或 Vault 就等于已可免人核。",
+    description: "面向已经把「Agent 说做完了」当成登录任务可交付、却还没分开「凭证怎么交」与「完成条件是否可数」的人：把「Agent 合做登录变更须同时报 Vault／批准卡、服务锁定与人侧验收」写成门禁，区别于技能权限收窄，以及合并 Skill 拆分。",
+    categories: [
+      "devtools",
+      "life",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/dev_daichi/articles/b1913d259065ba",
+    sourceLabel: "zenn.dev·dev_daichi 实践帖",
+    upvotes: 621,
+    trending: false,
+    tags: [
+      "Muse",
+      "agent-auth",
+      "Secure-Vault",
+      "playlist",
+      "human-verification",
+    ],
+    howItWorks: [
+      "粘贴登录变更边界（是不是约 56 曲全进、是不是 18／17／21、是不是首轮误落 Spotify）以及「绝不可把 Agent 说做完写成已验收」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 Vault／批准卡、服务锁定与曲数验收",
+      "人工保留 56／18／17／21 来自哪一次任务；Agent 不代你保证「同样交 Vault 就等于下一任务也总会 56」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T21:39:26.203+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T12:39:26Z、Asia/Shanghai 2026-11-09 20:39:26；bodyUpdatedAt 2026-11-09T21:38:51.389+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/09 に公開；GET 200，UA MiraBot/1.0）：dev_daichi 在《パスワードを見せずにログインさせる：AIエージェントの認証・承認・検証フロー実践》写 56／18／17／21。文内链 Muse 隐私／条款作出处；文末提及 note「AIエージェント入门」连载但未给 URL，故不列入可达导流。主线是 Vault＋可数验收，不是官文简报。",
+      "与 sera-156call-154hit-40run / percy-3skill-orders-codex 不同：本条不是受限斜杠未展开或元数据 Skill 拆分，而是登录态状态变更的凭证与验收设计",
+    ],
+    approach: `dev_daichi 在《パスワードを見せずにログインさせる：AIエージェントの認証・承認・検証フロー実践》（页内 2026-11-09）写明：把「在音乐订阅里建 3 个播放列表并登记指定 56 曲」交给 Meta Muse；凭证进 Secure Vault，由浏览器侧注入，不把密码写进聊天；重要操作走批准卡与 Activity 审计。首轮因未写死服务，Agent 建在 Spotify，而作者日常是 Apple Music；重写规格锁定 Apple Music、三表 18／17／21、仅原版、完成后按表报曲数后，56 曲全进无缺。人侧仍核曲数与版本混入。
+
+关键门禁不是「已经登录成功」，而是分开记「凭证怎么交」与「完成条件是否可数、是否人核」。
+
+本场景据此输出「Agent 合做登录变更须同时报告 Vault／批准、服务锁定与人侧验收，不能只报已完成」提纲。禁止把 56／18／17／21 写成下一任务也总会到达，或把 Vault 写成已可免人核。`,
+    outcomes: [
+      "源披露作者用 Muse Secure Vault 完成须登录任务：3 个播放列表曲数 18／17／21，合计 56 曲全进无缺；首轮因未指定服务误落 Spotify，改写成服务锁定＋完成条件数字化＋报告格式后重做。人侧验收含曲数一致与版本混入；作者把可低成本验证的登录变更放进阶段 3，金钱类仍每次批准、不自动化。属作者这一次 Muse 任务与验收，不可外推为你同样交 Vault 就等于下一任务也会 56／18／17／21，或 Vault 就等于已可免人核。",
+      "能把「可写成同时记下 Vault／批准卡、服务锁定、曲数验收」与「必须人完成的威胁模型与是否有外链导流」拆开。",
+      "为把「Agent 说做完」当成已验收、以及把「已登录」当成可任意状态变更提供提问清单。",
+    ],
+    caveats: [
+      "56／18／17／21／首轮 Spotify 均为作者这一次 Muse 任务；Vault／批准卡行为依提供方说明，作者写非第三方审计、且规格会变；个人用途范围。",
+      "文中链 https://muse.ai/privacy 、https://muse.ai/terms 作出处（2026-11-09 确认），GET 200，不列入硬导流。文末写 note「AIエージェント入门」连载导流但未给 URL，故不列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / dev_daichi），不是 Meta／Muse 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "登录态Agent任务须同时报告Vault与可数验收门禁",
+        body: `你是资深 Agent 权限交付教练。只根据用户边界写门禁，不要编造已经到的56或18。
+
+现在是不是约56曲全进：{{whether_about_fifty_six_songs}}
+是不是约18／17／21：{{whether_about_18_17_21}}
+是不是首轮误落其他服务：{{whether_first_round_wrong_service}}
+
+输出 Markdown：
+1. 为什么「Agent说做完」不能写成已验收
+2. 应怎样同时记下Vault／批准卡、服务锁定与人侧验收
+3. 只有一次任务时，应怎样单独记账，而不是写成下一任务也必然56
+4. 人必须完成的清单（威胁模型、导流链）
+禁止声称「同样交Vault就等于下一任务也总会56」；禁止把已登录写成可任意状态变更。`,
+      },
+      {
+        title: "五十六曲与十八十七二十一复盘",
+        body: `报告上可以写56曲全进、18／17／21、首轮误落Spotify；但这是一次个人任务。请写复盘提纲。
+
+现象：{{fifty_six_and_split}}
+
+输出：
+1. 更像规格锁定生效，还是任务恰好可数
+2. 最小复验顺序（先抽服务字段→再抽曲数验收→再决定能不能对外说登录变更已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上Vault就等于下一任务也总会56」，或「这一次全进就等于任何登录任务都可免人核」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dev_daichi/articles/b1913d259065ba",
+      label: "zenn.dev · パスワードを見せずにログインさせる：AIエージェントの認証・承認・検証フロー実践",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "731",
+    slug: "eliri-139file-3800loc",
+    title: "eliri：Codex 开跑约 1 个月——首个博客 PR 139 文件／约 3800 行；残留 Kamal 配置差点当正用",
+    summary: "个人（eliri）；披露约 1 个月用 Codex 做 AI 驱动开发：首个博客 PR 改 139 文件、增约 3800 行，自己跟不上理解；后改「可复查单位切分＋AGENTS.md／Skills」。改 ReNovo 时因仓库残留 Kamal 文件，Codex 按 Kamal 前提开 PR，而实际部署在 Render。不代你同样开大 PR，就等于下一仓也会 139／3800，或有 AGENTS.md 就等于配置已与实部署一致。",
+    description: "面向已经把「AI 很快出了大 PR」当成可合并、却还没分开「人是否跟得上理解」与「仓库残留配置是否当正用」的人：把「Agent 合做驱动开发须同时报变更粒度、实部署核对与理解负债」写成门禁，区别于多 PR 吞吐竞赛，以及零读码大 App。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/eliri/articles/fad5a22342fdce",
+    sourceLabel: "zenn.dev·eliri 实践帖",
+    upvotes: 622,
+    trending: false,
+    tags: [
+      "Codex",
+      "AGENTS.md",
+      "Skills",
+      "Rails",
+      "understanding-debt",
+    ],
+    howItWorks: [
+      "粘贴驱动开发边界（是不是首 PR 约 139 文件、是不是约 3800 行、是不是约 1 个月）以及「绝不可把大 PR 绿了写成理解已跟上」纪律",
+      "Agent 按实践帖输出：应怎样同时记下可复查粒度、实部署核对、以及残留配置清理",
+      "人工保留 139／3800 来自哪一 PR；Agent 不代你保证「同样开大 PR 就等于下一仓也总会 139／3800」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T22:18:13.664+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T13:18:13Z、Asia/Shanghai 2026-11-08 21:18:13；bodyUpdatedAt 2026-11-08T22:20:28.216+09:00 晚于发布，日期仍取 publishedAt；页头写 2026/11/08 に公開；GET 200，UA MiraBot/1.0）：eliri 在《CodexでAI駆動開発を始めて1か月、失敗から学んだこと》写 139／3800。文内链个人 PR／ReNovo／hatena／Fjord，属作品与学习社区导流且可达；OpenAI Codex 文档本机 GET 403，仅出处、不列入可达导流。主线是理解负债与残留配置，不是官文简报。",
+      "与 kingyosun 多 PR 吞吐／零读码大 App 不同：本条不是冲提交量或宣称零读码交付，而是首月大 PR 后改粒度与核对实部署",
+    ],
+    approach: `eliri 在《CodexでAI駆動開発を始めて1か月、失敗から学んだこと》（页内 2026-11-08）写明：10 月起约 1 个月用 Codex；首个 Rails 博客 PR 改 139 文件、增约 3800 行，自我感觉「不知道怎么就做成了」，遂改为实现前确认方针、按可复查单位切任务、并记日志。后在自作服务 ReNovo 引入 AGENTS.md 与 Skills；Ruby 升级相关改动里，仓库残留的 Kamal 配置让 Codex 按 Kamal 前提开 PR，而实际部署在 Render——删掉未使用 Kamal 相关后再收束。
+
+关键门禁不是「AI 已经很快出 PR」，而是分开记「生成速度」与「人是否跟得上、配置是否与实部署一致」。
+
+本场景据此输出「Agent 合做驱动开发须同时报告变更粒度、实部署核对与残留配置，不能只报 PR 已开」提纲。禁止把 139／3800 写成下一仓也总会到达，或把有 AGENTS.md 写成配置已对齐。`,
+    outcomes: [
+      "源披露作者约 1 个月 Codex 实践：首个博客 PR 139 文件／约 3800 行后改可复查切分；ReNovo 上 AGENTS.md＋Skills 推进时，因 rails new 残留 Kamal 文件，Codex 按未使用的 Kamal 前提开 PR（后删未用配置，保留 Render／Dockerfile 等仍需部分）。属作者这一月与这些 PR，不可外推为你同样开大 PR 就等于下一仓也会 139／3800，或有 AGENTS.md 就等于配置已与实部署一致。",
+      "能把「可写成同时记下变更粒度、实部署核对、残留配置清理」与「必须人完成的合并判断、以及是否有外链导流」拆开。",
+      "为把「大 PR 绿了」当成理解已跟上、以及把「仓库有某配置文件」当成正在使用该工具提供提问清单。",
+    ],
+    caveats: [
+      "139／约3800／约1个月 均为作者文内 PR 与时间窗；未给全仓成功率；Kamal 误用属残留配置个案。",
+      "文中链 https://github.com/koguchi-e/elilog/pull/2 、https://renovoapp.net/ 、https://eliri.hatenablog.com/entry/2026/09/17/080344 、https://bootcamp.fjord.jp/ 等，属作品／学习社区导流；本机 GET 200，列入可达导流。https://developers.openai.com/codex/ 现 HTTP 403，仅出处、已不列入可达导流。书籍链与 PRTimes 作学习／对照出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / eliri），不是 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AI驱动首月大PR须同时报告理解粒度门禁",
+        body: `你是资深 Agent 理解负债教练。只根据用户边界写门禁，不要编造已经到的139或3800。
+
+现在是不是首PR约139文件：{{whether_about_139_files}}
+是不是约3800行：{{whether_about_3800_loc}}
+是不是约1个月实践：{{whether_about_one_month}}
+
+输出 Markdown：
+1. 为什么「大PR绿了」不能写成理解已跟上
+2. 应怎样同时记下可复查粒度、实部署核对与残留配置
+3. 只有一月实践时，应怎样单独记账，而不是写成下一仓也必然139／3800
+4. 人必须完成的清单（合并判断、导流链）
+禁止声称「同样开大PR就等于下一仓也总会139／3800」；禁止把仓库有配置文件写成正在使用该工具。`,
+      },
+      {
+        title: "一百三十九文件与三千八百行复盘",
+        body: `报告上可以写首PR 139文件／约3800行、约1个月；但这是一套个人练习。请写复盘提纲。
+
+现象：{{one_thirty_nine_and_3800}}
+
+输出：
+1. 更像切分纪律生效，还是题目恰好适合练习
+2. 最小复验顺序（先抽PR范围→再抽实部署字段→再决定能不能对外说驱动开发已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上AGENTS.md就等于下一仓也总会139／3800」，或「这一次删Kamal就等于任何残留配置都会被发现」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/eliri/articles/fad5a22342fdce",
+      label: "zenn.dev · CodexでAI駆動開発を始めて1か月、失敗から学んだこと",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "732",
+    slug: "aima-14robots-1705-201",
+    title: "AIMA／ikioideok：14 家服务 robots.txt 对照 AI 机器人——1,705 条回答里 note 被引 201，X／Zenn 为 0",
+    summary: "团队（株式会社 AIMA／ikioideok）；披露数「选 AIO 公司」型提问共 1,705 条回答的出典后，再取 14 家服务 robots.txt 判 AI 机器人能否读：note 被引 201，X・Yahoo!知恵袋・Zenn 为 0；SNS 多对 AI 机器人全拦、对搜索机器人放行。不代你同样数 1,705，就等于下一题也会 14／1705／201，或 robots 放行就等于一定会被引用。",
+    description: "面向已经把「发了 SNS」当成会被 AI 回答引用、却还没分开「人看得见」与「AI 机器人是否被 robots 放行」的人：把「Agent 合做 AIO 选址须同时报引用计数、robots 矩阵与例外路径」写成门禁，区别于金融 MCP 取数，以及 Gap／CVE 扫描。",
+    categories: [
+      "enterprise",
+      "content",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/aima/articles/369b6ec6330746",
+    sourceLabel: "zenn.dev·株式会社AIMA／ikioideok 实践帖",
+    upvotes: 623,
+    trending: false,
+    tags: [
+      "AIO",
+      "robots.txt",
+      "LLMO",
+      "citation",
+      "AI-search",
+    ],
+    howItWorks: [
+      "粘贴 AIO 选址边界（是不是约 14 家服务、是不是约 1,705 条回答、是不是 note 约 201）以及「绝不可把 SNS 已发写成 AI 已可读」纪律",
+      "Agent 按实践帖输出：应怎样同时记下引用计数、robots 矩阵、以及 Reddit／User 代理等例外",
+      "人工保留 14／1705／201 来自哪一轮提问与哪日 robots；Agent 不代你保证「同样数一轮就等于下一题也总会 14／1705／201」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T23:35:57.662+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T14:35:57Z、Asia/Shanghai 2026-11-06 22:35:57；bodyUpdatedAt 2026-11-06T23:35:11.766+09:00 早于发布时刻，取 publishedAt；页头写 2026/11/06 に公開；canonical path /aima/articles/…；GET 200，UA MiraBot/1.0）：ikioideok 在株式会社 AIMA 刊《AIに読まれる発信先はどこか：14サービスのrobots.txtをAIのロボットごとに判定した》写 14／1705／201。正文无外链招聘／公司站硬导流；刊名为 AIMA。主线是引用计数与 robots 矩阵，不是官文简报。",
+      "与金融 MCP／Gap CVE 扫描不同：本条不是行情接口或漏洞清单，而是 AIO 出典计数＋robots.txt 可达矩阵",
+    ],
+    approach: `ikioideok 在株式会社 AIMA 刊《AIに読まれる発信先はどこか：14サービスのrobots.txtをAIのロボットごとに判定した》（页内 2026-11-06）写明：对「选 AIO 公司」型提问累计 1,705 条回答（ChatGPT 557／Claude 556／Gemini 556／Grok 36）数出典域名；note 被 201 条引用，PR TIMES 123，而 X・Yahoo!知恵袋・Zenn 为 0、Qiita 仅 1。再于 2026-11-06 取 14 家服务 robots.txt，用脚本按 RFC 9309 判 GPTBot／ClaudeBot 等；结论是多数 SNS 对 AI 机器人全拦、对 Google／Bing 搜索机器人放行，note／Zenn／Qiita 等未拦 AI 机器人。同时写明：放行≠一定被引；Reddit 全拦仍被 ChatGPT 引 2 次（Data API 等旁路）。
+
+关键门禁不是「已经发在 SNS」，而是分开记「人看得见」与「AI 机器人是否被放行、以及放行是否等于被引」。
+
+本场景据此输出「Agent 合做 AIO 选址须同时报告引用计数、robots 矩阵与例外路径，不能只报已发帖」提纲。禁止把 14／1705／201 写成下一题也总会到达，或把 robots 放行写成一定会被引用。`,
+    outcomes: [
+      "源披露团队数「选 AIO 公司」型提问共 1,705 条回答出典，并判 14 家服务 robots.txt：note 被引 201（Gemini 137／Claude 48／ChatGPT 16），PR TIMES 123；X・Threads・Facebook・Instagram・Yahoo!知恵袋・Zenn・はてな 等在该题型下为 0（Qiita 1）。robots 侧：多数 SNS 拦 AI 机器人、通搜索机器人；LinkedIn／知恵袋学习拦、搜索通；note／Zenn／Qiita 等未拦 AI 机器人。作者写放行不是被引的充分条件；Reddit 全拦仍有 2 次 ChatGPT 引用。属作者公司这一轮提问与 2026-11-06 robots 快照，不可外推为你同样数一轮就等于下一题也会 14／1705／201，或 robots 放行就等于一定会被引用。",
+      "能把「可写成同时记下引用计数、robots 矩阵、例外路径」与「必须人完成的选址／合规决策、以及是否有外链导流」拆开。",
+      "为把「SNS 已发」当成 AI 已可读、以及把「robots 放行」当成一定会被引用提供提问清单。",
+    ],
+    caveats: [
+      "14／1705／201／123／557・556・556・36 均为作者公司这一轮提问与 2026-11-06 robots 快照；题型偏「选公司」；每服务只判一类页面路径；User 代理／JS 墙等例外作者已自披露。",
+      "正文未见招聘／公司站等外链硬导流字样（刊名为株式会社 AIMA）；本机对 primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / aima・ikioideok），不是各 AI 公司的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AIO选址须同时报告引用计数与robots矩阵门禁",
+        body: `你是资深 Agent AIO选址教练。只根据用户边界写门禁，不要编造已经到的1705或201。
+
+现在是不是约14家服务：{{whether_about_fourteen_services}}
+是不是约1705条回答：{{whether_about_1705_answers}}
+是不是note约201：{{whether_about_note_201}}
+
+输出 Markdown：
+1. 为什么「SNS已发」不能写成AI已可读
+2. 应怎样同时记下引用计数、robots矩阵与例外路径
+3. 只有一轮提问时，应怎样单独记账，而不是写成下一题也必然14／1705／201
+4. 人必须完成的清单（选址决策、导流链）
+禁止声称「同样数一轮就等于下一题也总会14／1705／201」；禁止把robots放行写成一定会被引用。`,
+      },
+      {
+        title: "十四家与一千七百零五、二百零一复盘",
+        body: `报告上可以写14家服务、1705条回答、note 201；但这是一轮公司计量。请写复盘提纲。
+
+现象：{{fourteen_and_1705}}
+
+输出：
+1. 更像robots解释生效，还是题型恰好偏公司介绍场
+2. 最小复验顺序（先抽引用表→再抽当日robots→再决定能不能对外说选址已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上放行就等于下一题也总会201」，或「这一次0就等于任何SNS都永不可被引」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/aima/articles/369b6ec6330746",
+      label: "zenn.dev · AIに読まれる発信先はどこか：14サービスのrobots.txtをAIのロボットごとに判定した",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
