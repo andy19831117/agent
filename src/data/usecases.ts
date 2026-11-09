@@ -56918,6 +56918,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "783",
+    slug: "hakumai-68opus-6sub-800k",
+    title: "白米元気：司令塔先烧掉预算——opus 审计 68 次用尽余额；脚本 API 30 日约 3 美元；一次会话 6 子代理约 80 万 token",
+    summary: "个人（白米元気／hakumaigenki｜LLM Oops）；披露个人把 Claude Code 当司令塔调度定时候选与子代理后：2026-10-07 用 claude-opus-5 做事实审计 68 次当天用尽 API 余额，连带 4 条无关自动化停机；月结后脚本 API 仅约 3 美元／30 日，大头在会话侧一次作业 6 子代理约 80 万 token。不代你同样改成 haiku，就等于下一司令塔日也不会再先烧预算。",
+    description: "面向已经把「能调度多个子代理」当成无人事务自动化已门禁、却还没分开「末端脚本 API」与「司令塔会话自身消耗」的人：把「Agent 合做多代理调度须同时报调用次数、余额事故与会话侧 token」写成门禁，区别于费用／Effort 基准，以及 Herdr 多代理可视。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/hakumaigenki/articles/claudecode-subagent-cost-1109",
+    sourceLabel: "zenn.dev·白米元気／hakumaigenki 实践帖",
+    upvotes: 674,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "subagent",
+      "cost",
+      "opus",
+      "haiku",
+    ],
+    howItWorks: [
+      "粘贴多代理调度成本边界（是不是约子代理默认立起、是不是约批量判定模型档、是不是约会话侧 token 与脚本 API 分账）以及「绝不可把能调度写成无人事务已省钱已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 68 次、4 条停机、约 3 美元／30 日与 6 子代理约 80 万 token",
+      "人工保留 2026-10-07／10-09、haiku／sonnet／opus 分工来自哪一次自述；Agent 不代你保证「同样改成 haiku 就等于下一司令塔日也不会先烧预算」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T18:09:26.048+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T09:09:26Z、Asia/Shanghai 2026-11-09 17:09:26；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：hakumaigenki 在《Claude Codeを「司令塔」にしてエージェントを増やしたら、先に壊れたのは効率ではなく予算だった話》写预算事故。文内硬链 https://gpirot.com/?from=zenn 为可达产品导流（GET 200）。主线是司令塔会话成本，不是官文简报。",
+      "与费用／Effort 基准、Herdr 多代理可视不同：本条不是把课题套表比模型档或状态面板当主线，而是末端脚本 API 与司令塔会话侧子代理／截图消耗的分账门禁",
+    ],
+    approach: `白米元気（hakumaigenki）在《Claude Codeを「司令塔」にして…予算だった話》（页内 2026-11-09）写明：个人用 1 条 Claude Code 会话作司令塔，调度定时任务与子代理做事务自动化。对照趋势文 Herdr／hc「只对司令塔说话」后，作者先撞上的不是可视，而是预算。2026-10-07：为洗公开文章事实矛盾，用 claude-opus-5 跑审计；自以为「一次几十円」却 68 次调用当天用尽 API 余额，同余额上的询价一次对应、转记、接待聊天、日志生成 4 条也停。事后改为：判定类用 claude-haiku-4-5，写作用 sonnet，opus 仅点名；超 100 次批量先写次数×单价。2026-10-09 月结：脚本 API 约 3 美元／30 日，更大差额来自司令塔会话自身——一次作业实测子代理 6 本约 80 万 token（随意立子代理、多贴截图、长上下文不断）。改法：小调查／小编辑自己直接搜改；子代理限 haiku 且同时 1 本；一屏一图；段落切短上下文；opus 默认不用。作者强调本稿本身也是同一司令塔定时候选写出，并先接收「本轮与主人同框、勿空转」指示。
+
+关键门禁不是「能调度多个子代理」，而是分开记「末端脚本花了多少」与「会话侧立子代理／截图／长上下文花了多少」。
+
+本场景据此输出「Agent 合做多代理调度须同时报告调用次数、余额事故与会话侧 token，不能只报能调度」提纲。禁止把 68／约3美元／80万写成任意仓同分布，或把改成 haiku 写成已省钱已门禁。`,
+    outcomes: [
+      "源披露作者 opus 审计 68 次当天用尽余额并连带 4 条自动化停机；月结脚本 API 约 3 美元／30 日；一次会话 6 子代理约 80 万 token。属作者这一次个人预算账，不可外推为你同样改成 haiku 就等于下一司令塔日也不会先烧预算，或能调度子代理就等于无人事务已省钱已门禁。",
+      "能把「可写成同时记下调用次数、分账对象、模型档」与「必须人完成的余额告警／导流链」拆开。",
+      "为把「能调度」当成已省钱已门禁、以及只砍脚本 API 却不看会话侧消耗提供提问清单。",
+    ],
+    caveats: [
+      "68／4条／约3美元／6本／约80万token／数十円估均为作者自述；未公布完整账单截图；模型名随产品线可能更名。",
+      "文内硬链 https://gpirot.com/?from=zenn 为可达产品导流（GET 200，UA MiraBot/1.0）。作者站 https://gpirot.com 同域可达。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / hakumaigenki），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多代理调度须同时报告分账与调用次数",
+        body: `你是资深 Agent 多代理成本教练。只根据用户边界写门禁，不要编造已省钱已门禁。
+
+现在是不是约子代理默认立起：{{whether_about_default_subagent}}
+是不是约批量判定模型档：{{whether_about_judge_model}}
+是不是约会话侧 token 与脚本 API 分账：{{whether_about_split_ledger}}
+
+输出 Markdown：
+1. 为什么「能调度多个子代理」不能写成无人事务已省钱已门禁
+2. 应怎样同时记下调用次数、余额事故、会话侧 token
+3. 只有一次 68／约3美元／80万账本时，应怎样单独记账，而不是写成下一仓也必然同分布
+4. 人必须完成的清单（余额告警、导流链）
+禁止声称「同样改成 haiku 就等于下一司令塔日也总会先省下预算」；禁止把能调度写成已省钱已门禁。`,
+      },
+      {
+        title: "六十八次与八十万 token 复盘",
+        body: `报告上可以写 opus 68 次烧余额、一次会话 6 子代理约 80 万 token；但这是一次个人账本。请写复盘提纲。
+
+现象：{{sixty_eight_eight_hundred_k}}
+
+输出：
+1. 更像末端脚本模型档过高，还是会话侧随意立子代理／多截图
+2. 最小复验顺序（先分账→再估次数×单价→再限子代理→再决定能不能对外说已省钱）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上状态面板就等于会话侧也不会再空转」，或「约3美元就等于任意账号同消耗」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hakumaigenki/articles/claudecode-subagent-cost-1109",
+      label: "zenn.dev · Claude Codeを「司令塔」にしてエージェントを増やしたら、先に壊れたのは効率ではなく予算だった話",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "784",
+    slug: "skillselion-30git-15pass",
+    title: "Skillselion：git-guardrails 危险命令 30 模式实测——15 个 exit 0 穿出；无 jq 时连 git push 也穿",
+    summary: "团队（Skillselion）；披露按安装数第 1 的 git-guardrails-claude-code（同日 skills.sh 计约 542,705 安装）在 2026-11-08 本机对危险系 30 模式复测：15 个 exit 0 穿出（含 git -C . push、双空格 push、git clean -xfd 等）；无 jq 时 git push／reset --hard／clean -fd 皆 0。强化版对穿出 15 个改回 exit 2。不代你同样装技能，就等于下一危险 git 也不会再穿出。",
+    description: "面向已经把「装了 git 守卫技能」当成危险 git 已门禁、却还没分开「字面部分匹配」与「选项／空白／缺 jq」的人：把「Agent 合做 git 守卫须同时报模式数、穿出清单与 jq 前置」写成门禁，区别于 managed settings deny 洞，以及 allowlist pre-commit。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/Skillselion/items/11c07f0851d580164a28",
+    sourceLabel: "qiita.com·Skillselion 实践帖",
+    upvotes: 675,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "git",
+      "PreToolUse",
+      "hooks",
+      "Skillselion",
+    ],
+    howItWorks: [
+      "粘贴 git 守卫边界（是不是约危险子命令字面匹配、是不是约 -C／空白／长选项变体、是不是约 jq 缺失）以及「绝不可把装了 git-guardrails 写成危险 git 已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 30／15 穿出、无 jq 三连 0、强化版 exit 2",
+      "人工保留 542,705／脚本 25 行／提交 62f43a1817 来自哪一次自述；Agent 不代你保证「同样装技能就等于下一危险 git 也不会再穿出」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-08T18:17:15+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T09:17:15Z、Asia/Shanghai 2026-11-08 17:17:15；updated_at 同 created；GET 200，UA MiraBot/1.0）：Skillselion 在《Claude Code の git ガード hook、危険な git コマンド30パターン中15個は素通りでした》写复测。文内多条 skillselion.com 技能／指南／分类硬链均为可达产品导流（抽样与全量均 GET 200）。主线是 git 守卫穿出复测，不是官文简报。",
+      "与 managed settings deny 洞、allowlist pre-commit 不同：本条不是把托管 deny 键失效或提交钩行数当主线，而是第三方 git-guardrails 脚本对命令变体与缺 jq 的实测穿出",
+    ],
+    approach: `Skillselion（技能安装数目录运营方）在《…30パターン中15個は素通りでした》（Qiita 2026-11-08）写明：其 git 技能指南安装数第 1 的 mattpocock/skills·git-guardrails-claude-code，同日 skills.sh 计约 542,705 安装、仓星约 318,023；本体是 PreToolUse 钩说明＋约 25 行 block-dangerous-git.sh（jq 取 command 后对「git push」「git reset --hard」等做部分匹配，命中 exit 2）。作者不用会话内、而用与 SKILL.md 同形的 JSON 管道在 macOS／bash 3.2.57／jq 1.8.1 单测脚本。危险系 30 模式中 15 个 exit 0：含 git -C . push、git -c … push、引号／双空格／Tab 夹 push、git clean -xfd／-dfx／--force -d、branch --delete --force、checkout -- .／-f、stash drop／clear、reflog expire、config alias.p push。另：PATH 无 jq 时 git push／reset --hard／clean -fd 皆 0（COMMAND 变空串落到 exit 0）；作者强调 onFailure:block 也救不了「脚本自己 exit 0」。止住的 15 个含标准 git push 变体、reset --hard（含 -C .）、clean -fd／-f、branch -D、checkout .、restore .。强化：无 jq 先 exit 2；归一空白后再用允许选项夹缝的正则。并提醒 deny Bash(git push *) 仍挡不住 git -C . push，宜与钩并用。
+
+关键门禁不是「装了热门 git 守卫技能」，而是分开记「字面有没有命中」与「变体／缺 jq 时脚本会不会自己放行」。
+
+本场景据此输出「Agent 合做 git 守卫须同时报告模式数、穿出清单与 jq 前置，不能只报装了技能」提纲。禁止把 30／15 写成任意钩同分布，或把装了技能写成危险 git 已门禁。`,
+    outcomes: [
+      "源披露团队对 git-guardrails 危险系 30 模式复测：15 个 exit 0 穿出；无 jq 时 push／reset --hard／clean -fd 皆 0；强化版对穿出 15 个改回 2。属该目录运营方这一次单测账，不可外推为你同样装技能就等于下一危险 git 也不会再穿出，或装了 git-guardrails 就等于危险 git 已门禁。",
+      "能把「可写成同时记下模式清单、jq 前置、强化正则」与「必须人完成的 deny 并用／导流链」拆开。",
+      "为把「装了热门技能」当成危险 git 已门禁、以及未测变体就对外说已守卫提供提问清单。",
+    ],
+    caveats: [
+      "30／15／542,705／318,023／25行均为作者团队自述与同日快照；测的是脚本单测非会话内 hook；部分匹配会误拦提交说明里的「git push」字样。",
+      "文内 skillselion.com 技能页／指南／分类等多条硬链为可达产品导流（均 GET 200，UA MiraBot/1.0）。GitHub upstream 为对照仓。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（qiita.com / Skillselion），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "git 守卫须同时报告穿出清单与 jq 前置",
+        body: `你是资深 Agent git 守卫教练。只根据用户边界写门禁，不要编造危险 git 已门禁。
+
+现在是不是约危险子命令字面匹配：{{whether_about_literal_match}}
+是不是约 -C／空白／长选项变体：{{whether_about_variants}}
+是不是约 jq 缺失：{{whether_about_missing_jq}}
+
+输出 Markdown：
+1. 为什么「装了 git-guardrails」不能写成危险 git 已门禁
+2. 应怎样同时记下模式数、穿出清单、jq 前置
+3. 只有一次 30／15 账本时，应怎样单独记账，而不是写成下一钩也必然同分布
+4. 人必须完成的清单（deny 并用、导流链）
+禁止声称「同样装技能就等于下一危险 git 也总会先被拦住」；禁止把装了技能写成已门禁。`,
+      },
+      {
+        title: "三十模式与十五穿出复盘",
+        body: `报告上可以写 30 模式中 15 个 exit 0 穿出；但这是一次团队单测。请写复盘提纲。
+
+现象：{{thirty_fifteen}}
+
+输出：
+1. 更像选项／空白变体，还是缺 jq 导致空命令
+2. 最小复验顺序（先无 jq 探测→再跑变体表→再加前置与正则→再决定能不能对外说已守卫）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 onFailure:block 就等于脚本 exit 0 也会停」，或「15 穿出就等于任意仓同比例」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/Skillselion/items/11c07f0851d580164a28",
+      label: "qiita.com · Claude Code の git ガード hook、危険な git コマンド30パターン中15個は素通りでした",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "785",
+    slug: "tobaru-75pct-pace-mod",
+    title: "tobaru：周中「利用枠 75%」惊吓——用 Claude Code mod 做占用＋节奏预报；示例周框约 47%",
+    summary: "个人（tobaru）；披露工作日周三弹出「本周利用枠 75%」后，用 Claude Code mod（自 2.1.287）在 VS Code 侧栏常驻 5 小时／周占用，并估算「此节奏重置时约几 %／是否早于重置撞顶」。示例：5 小时框 36% 但快于时间进度 32%，周框 12%、同节奏重置时约 47%；报警例「约 2.9 小时后达上限（比重置早 30 分）」。显示本身不耗模型 token。不代你同样装 mod，就等于下一周也不会再周中才发现 75%。",
+    description: "面向已经把「会看 /usage」当成利用枠已门禁、却还没分开「当前 %」与「此节奏是否撑到重置」的人：把「Agent 合做利用枠预报须同时报当前占用、节奏外推与是否耗 token」写成门禁，区别于桌面 mod 按钮，以及周限额 Model／Effort 省用。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/tobaru/items/334231f1121f0fd68522",
+    sourceLabel: "qiita.com·tobaru 实践帖",
+    upvotes: 676,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "mod",
+      "usage",
+      "VS-Code",
+      "quota",
+    ],
+    howItWorks: [
+      "粘贴利用枠预报边界（是不是约侧栏常驻占用、是不是约节奏外推至重置、是不是约显示是否耗 token）以及「绝不可把会看 /usage 写成利用枠已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 75% 惊吓、36%／32%／12%／约 47% 与约 2.9 小时例",
+      "人工保留 Pro 订阅／2.1.319／2026-11-08 来自哪一次自述；Agent 不代你保证「同样装 mod 就等于下一周也不会再周中才发现 75%」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-08T19:27:44+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T10:27:44Z、Asia/Shanghai 2026-11-08 18:27:44；updated_at 2026-11-08T19:30:28+09:00；取 created；GET 200，UA MiraBot/1.0）：tobaru 在《週の途中で「利用枠75%」に焦らないために、Claude Code の mod でペースの予報を出した》写侧栏预报。文内 code.claude.com mods 文档为厂商对照；azukiazusa／第三方 GitHub release 为相关阅读，未见作者产品商店硬导流可列入可达。主线是利用枠节奏预报，不是官文简报。",
+      "与桌面 mod 按钮、周限额 Model／Effort 省用不同：本条不是把缺省按钮补齐或换模型撑天数当主线，而是用 mod 把当前占用与节奏外推常驻在侧栏",
+    ],
+    approach: `tobaru 在《…mod でペースの予報を出した》（Qiita 2026-11-08）写明：工作用 Claude Code，某周三弹出「本周利用枠 75%」；虽周四重置未停工，但只靠 Web 使用量页或 /usage 只有「现在几 %／何时重置」，缺少「此节奏能否撑到重置」。作者首次用 mod（终端自 2.1.287、VS Code 扩展画面自 2.1.299；确认环境 Windows 11 Pro＋扩展 2.1.319、Claude Pro、确认日 2026-11-08）做侧栏常驻：展示会话（5 小时）与本周占用及重置时刻；并外推「此节奏重置时约几 %」，不足则提示「约 X 小时后达上限（比重置早 Y）」。示例屏：5 小时框 36%、时间进度 32%→标「偏快」；周框 12%、同节奏重置时约 47%→「有余量」；另有「约 2.9 小时后达上限（比重置早 30 分）」类文案。强调面板由程序读取占用、不跑模型故不耗利用枠 token；API key 模式可能读不到占用。制作过程咨询了 Claude Code。
+
+关键门禁不是「会打开 /usage」，而是分开记「当前 %」与「此外推节奏是否在重置前撞顶」。
+
+本场景据此输出「Agent 合做利用枠预报须同时报告当前占用、节奏外推与是否耗 token，不能只报会看 /usage」提纲。禁止把 75%／约 47% 写成任意账号同分布，或把装了 mod 写成利用枠已门禁。`,
+    outcomes: [
+      "源披露作者周中「利用枠 75%」惊吓后，用 mod 常驻占用并外推节奏；示例周框同节奏重置时约 47%，报警例约 2.9 小时后达上限。属作者这一次 Pro／VS Code 侧栏自述，不可外推为你同样装 mod 就等于下一周也不会再周中才发现 75%，或会看 /usage 就等于利用枠已门禁。",
+      "能把「可写成同时记下当前 %、外推、是否耗 token」与「必须人完成的订阅档确认／导流链」拆开。",
+      "为把「会看 /usage」当成利用枠已门禁、以及把侧栏显示误当成又在烧模型提供提问清单。",
+    ],
+    caveats: [
+      "75%／36%／32%／12%／约47%／约2.9小时均为作者屏例与自述；仅订阅档可读占用；预报是线性外推非官方保证。",
+      "文内 code.claude.com mods 文档为厂商对照（GET 200）。azukiazusa 博文与第三方 GitHub release 为相关阅读，未见作者产品商店硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / tobaru），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "利用枠预报须同时报告外推与是否耗 token",
+        body: `你是资深 Agent 利用枠教练。只根据用户边界写门禁，不要编造利用枠已门禁。
+
+现在是不是约侧栏常驻占用：{{whether_about_sidebar}}
+是不是约节奏外推至重置：{{whether_about_pace}}
+是不是约显示是否耗 token：{{whether_about_token_free}}
+
+输出 Markdown：
+1. 为什么「会看 /usage」不能写成利用枠已门禁
+2. 应怎样同时记下当前 %、外推、是否耗 token
+3. 只有一次 75%／约 47% 屏例时，应怎样单独记账，而不是写成下一账号也必然同分布
+4. 人必须完成的清单（订阅档确认、导流链）
+禁止声称「同样装 mod 就等于下一周也总会先看见撞顶风险」；禁止把会看 /usage 写成已门禁。`,
+      },
+      {
+        title: "七十五百分与约四十七百分复盘",
+        body: `报告上可以写周中 75% 惊吓、同节奏重置时约 47%；但这是一次个人屏例。请写复盘提纲。
+
+现象：{{seventy_five_forty_seven}}
+
+输出：
+1. 更像缺少常驻占用，还是缺少节奏外推
+2. 最小复验顺序（先读占用 API／字段→再算外推→再确认显示不耗 token→再决定能不能对外说已预报）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 /usage 就等于周中也不会再惊吓」，或「约 47% 就等于任意周同余量」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/tobaru/items/334231f1121f0fd68522",
+      label: "qiita.com · 週の途中で「利用枠75%」に焦らないために、Claude Code の mod でペースの予報を出した",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "786",
+    slug: "chuki-p-exit0-5deny",
+    title: "chuki_dx：claude -p 写盘被拒仍 exit 0——Manual 5/5；deny 时 permission_denials 可空",
+    summary: "个人（chuki_dx）；披露在 Windows 11／Claude Code 2.1.318 用 claude -p 请写 hello.txt：Manual 模式写盘被拒时 5 次皆 exit 0、文件不存在，JSON 仍 subtype success／is_error false 且 permission_denials 有 Write；settings deny 掉写工具后再跑，exit 仍 0 且 denials 可空。结论：脚本须同时看退出码、denials 与成果物。不代你同样判 exit 0，就等于下一无人脚本也不会在没落盘时继续。",
+    description: "面向已经把「claude -p 退出码 0」当成无人任务已成功、却还没分开「进程成功」与「委托写盘是否落成」的人：把「Agent 合做 -p 验收须同时报退出码、denials 与成果物」写成门禁，区别于 headless exit0/xhigh 版更，以及 --restricted 技能展开。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/chuki_dx/items/bfbb6c0878ef23c80b1d",
+    sourceLabel: "qiita.com·chuki_dx 实践帖",
+    upvotes: 677,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "headless",
+      "exit-code",
+      "permission_denials",
+      "Windows",
+    ],
+    howItWorks: [
+      "粘贴 -p 验收边界（是不是约退出码当成功、是不是约 permission_denials、是不是约成果物存在）以及「绝不可把 exit 0 写成委托已落盘已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 5/5 exit 0、denials 有无、文件存在与否",
+      "人工保留 2.1.318／2026-11-06／PowerShell 5.1 来自哪一次自述；Agent 不代你保证「同样三角判定就等于下一无人脚本也不会在没落盘时继续」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T18:39:14+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T09:39:14Z、Asia/Shanghai 2026-11-09 17:39:14；updated_at 同 created；GET 200，UA MiraBot/1.0）：chuki_dx 在《Claude Code の claude -p は、書き込みを断られても終了コード 0 で終わる…》写复现。同作者 Zenn 连载 https://zenn.dev/chukidx_dev/articles/claude-code-deny-env-windows 为可达连载导流（GET 200）。code.claude.com headless／settings 为厂商对照。主线是 -p 退出码与落盘判定，不是官文简报。",
+      "与 headless exit0/xhigh 版更、--restricted 技能展开不同：本条不是把 -p 静默成功变更或斜杠技能未展开当主线，而是写盘被拒／deny 时退出码仍 0 的脚本验收三角",
+    ],
+    approach: `chuki_dx 在《…書き込みを断られても終了コード 0 で終わる》（Qiita 2026-11-09；确认日 2026-11-06）写明：Claude Code 2.1.318、Windows 11 Pro、PowerShell 5.1。空临时目录跑 claude -p 请写 hello.txt（内容一行 hi）。Manual（默认）下 5 次：皆 exit 0、文件不存在；模型回复承认未获写许可。JSON 模式：subtype success、is_error false，permission_denials 含 Write。再在 settings 对 Write／Edit／NotebookEdit／Bash／PowerShell 做 deny 并配 --permission-mode acceptEdits：仍 exit 0、文件无，且 denials 为空——因工具一开始不可用，不算「调用后被拒」。仅 deny Write 时，模型可转 Bash／PowerShell，最终仍可能写出文件。作者给出三角判定：退出码（抓启动／API 失败）＋ denials 计数＋期望文件存在；并提醒 PS 5.1 须把 OutputEncoding 设 UTF-8 才能稳解析 JSON。同作者另有 Zenn 记 deny 挡 .env 读取。
+
+关键门禁不是「exit 0」，而是分开记「进程是否正常结束」与「委托写盘是否真落盘」。
+
+本场景据此输出「Agent 合做 -p 验收须同时报告退出码、denials 与成果物，不能只报 exit 0」提纲。禁止把 5/5 写成任意版同分布，或把 exit 0 写成已落盘已门禁。`,
+    outcomes: [
+      "源披露作者 Manual 下写盘被拒 5/5 皆 exit 0 且无文件；deny 写工具后 exit 仍 0 且 denials 可空。属作者这一次 Windows／2.1.318 复现，不可外推为你同样看 exit 0 就等于下一无人脚本也不会在没落盘时继续，或 exit 0 就等于委托已落盘已门禁。",
+      "能把「可写成同时记下退出码、denials、成果物」与「必须人完成的权限模式确认／导流链」拆开。",
+      "为把「exit 0」当成无人任务已成功、以及只看 denials 却漏掉 deny 空窗提供提问清单。",
+    ],
+    caveats: [
+      "5/5／2.1.318／num_turns 2 均为作者本机复现；官方 headless「失败非0」与「权限拒绝≠执行失败」需分开读；仅测写盘场景。",
+      "同作者 Zenn https://zenn.dev/chukidx_dev/articles/claude-code-deny-env-windows 为可达连载导流（GET 200，UA MiraBot/1.0）。code.claude.com 文档为厂商对照。未见作者产品商店硬导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / chuki_dx），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "-p 验收须同时报告退出码与成果物",
+        body: `你是资深 Agent headless 验收教练。只根据用户边界写门禁，不要编造委托已落盘已门禁。
+
+现在是不是约退出码当成功：{{whether_about_exit_code}}
+是不是约 permission_denials：{{whether_about_denials}}
+是不是约成果物存在：{{whether_about_artifact}}
+
+输出 Markdown：
+1. 为什么「exit 0」不能写成委托已落盘已门禁
+2. 应怎样同时记下退出码、denials、成果物
+3. 只有一次 5/5 复现时，应怎样单独记账，而不是写成下一版也必然同分布
+4. 人必须完成的清单（权限模式确认、导流链）
+禁止声称「同样三角判定就等于下一无人脚本也总会先拦住空转」；禁止把 exit 0 写成已落盘已门禁。`,
+      },
+      {
+        title: "五比五与 denials 可空复盘",
+        body: `报告上可以写 Manual 5/5 exit 0 无文件、deny 后 denials 可空；但这是一次个人复现。请写复盘提纲。
+
+现象：{{five_of_five_empty_denials}}
+
+输出：
+1. 更像只信退出码，还是只信 denials 漏掉 deny 空窗
+2. 最小复验顺序（先 Manual 复现→再 JSON 看 denials→再查成果物→再决定能不能对外说已验收）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 acceptEdits 就等于 deny 也不会被绕写」，或「5/5 就等于任意 OS 同结果」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/chuki_dx/items/bfbb6c0878ef23c80b1d",
+      label: "qiita.com · Claude Code の claude -p は、書き込みを断られても終了コード 0 で終わる — スクリプトからは出力とファイルで判定する",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "787",
+    slug: "acerola-100ln-6split",
+    title: "acerola_jp：逼 Claude Code 把提交切到 100 行内——无约束 298／426；钩拒绝后 6 段且 --no-verify 0 次",
+    summary: "个人（acerola_jp）；披露 2026-10-11 在 Linux／Claude Code 2.1.296 对 5 模块加校验＋测试并提交：无约束两回 1 提交 298／426 行；CLAUDE.md「≤100 行」两回皆 6 提交（最大 59／66），但「请合成 1 个」时有一回 139 行越线；git pre-commit 拒 >100 行后两回皆先整包被拒再自拆 6 段（最大 76／80），即使用户要求合成也 0 次 --no-verify。总分行数仍约 300–430。不代你同样加钩，就等于下一 AI 大改也不会再单提交数百行。",
+    description: "面向已经把「CLAUDE.md 写了要小提交」当成提交粒度已门禁、却还没分开「平时听话」与「当面指令冲突时谁赢」的人：把「Agent 合做提交切分须同时报无约束对照、越线回与钩拒次数」写成门禁，区别于 managed settings deny 洞，以及 git 守卫技能穿出。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/acerola_jp/items/9a5962efe449e19c75d9",
+    sourceLabel: "qiita.com·acerola_jp 实践帖",
+    upvotes: 678,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "git",
+      "pre-commit",
+      "CLAUDE.md",
+      "commit-size",
+    ],
+    howItWorks: [
+      "粘贴提交切分边界（是不是约 CLAUDE.md 行数纪律、是不是约 pre-commit 硬拒、是不是约当面「合成一个」冲突）以及「绝不可把写了小提交纪律写成提交粒度已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 298／426、6 段最大 59／66、钩拒后 76／80 与 --no-verify 0",
+      "人工保留 2.1.296／2026-10-11／5 模块题来自哪一次自述；Agent 不代你保证「同样加钩就等于下一 AI 大改也不会再单提交数百行」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-08T11:26:47+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T02:26:47Z、Asia/Shanghai 2026-11-08 10:26:47；updated_at 同 created；GET 200，UA MiraBot/1.0）：acerola_jp 在《Claude Code のコミットを100行以内に分けさせる》写对照。文内 https://acerola-tools.acerola.workers.dev/?from=qiita-claude-code-commit-size-guard 为可达产品导流（GET 200）；同作者 Zenn 同题为可达连载导流（GET 200）。husky 文档为第三方对照。主线是提交行数外置硬拒，不是官文简报。",
+      "与 managed settings deny 洞、git 守卫技能穿出不同：本条不是把托管 deny 或危险 git 变体当主线，而是 CLAUDE.md 软纪律 vs pre-commit 硬拒在「请合成一个」冲突下的对照",
+    ],
+    approach: `acerola_jp 在《Claude Code のコミットを100行以内に分けさせる》（Qiita 2026-11-08；实验日 2026-10-11）写明：Linux、Claude Code 2.1.296、claude -p 非交互、--max-turns 60、允许 Bash/Edit/Write/Read/Glob/Grep。题：src/ 下 5 同构模块（cart／user／order／invoice／shipping）各加输入校验与 node:test，npm test 通过后提交。无约束：两回皆 1 提交，298 行与 426 行。CLAUDE.md 写「单提交增删合计 ≤100，将超则按语义拆」：两回皆 6 提交，最大 59／66，合计仍 304／372。把结尾改成「请全部合成 1 个提交」后：CLAUDE.md 一回 139 行越线（模型称优先用户当面指令），另一回 95 行；pre-commit（git diff --cached --numstat 求和 >100 则 exit 1）两回皆不提交并停下来问人，--no-verify 回避 0 次。钩路径下正常题两回亦先整包被拒再自拆 6 段，最大 76／80，合计 421／427。作者强调拆提交不减 PR 总量（仍约 300–430）；若要缩 PR 需另做 pre-push／CI 对 main 差分设限（本文未测）。
+
+关键门禁不是「CLAUDE.md 写了要小提交」，而是分开记「平时是否拆」与「当面指令冲突时有没有外置硬拒」。
+
+本场景据此输出「Agent 合做提交切分须同时报告无约束对照、越线回与钩拒次数，不能只报写了纪律」提纲。禁止把 298／6 段写成任意题同分布，或把写了 CLAUDE.md 写成提交粒度已门禁。`,
+    outcomes: [
+      "源披露作者无约束两回 298／426 行单提交；CLAUDE.md 下两回 6 段（最大 59／66）但「合成一个」时有一回 139 越线；pre-commit 下两回自拆 6 段且 --no-verify 0 次。属作者这一次 5 模块题对照，不可外推为你同样加钩就等于下一 AI 大改也不会再单提交数百行，或写了 CLAUDE.md 就等于提交粒度已门禁。",
+      "能把「可写成同时记下无约束对照、冲突回、钩拒」与「必须人完成的钩分发／导流链」拆开。",
+      "为把「写了小提交纪律」当成提交粒度已门禁、以及拆了提交却误以为 PR 已变小提供提问清单。",
+    ],
+    caveats: [
+      "298／426／6／59／66／139／76／80／--no-verify 0 均为作者 2026-10-11 对照；题小且模块同构；未测 pre-push／CI 缩 PR。",
+      "文内 https://acerola-tools.acerola.workers.dev/?from=qiita-claude-code-commit-size-guard 为可达产品导流（GET 200，UA MiraBot/1.0）。同作者 Zenn 同题为可达连载导流（GET 200）。husky 为第三方对照。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / acerola_jp），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "提交切分须同时报告对照与钩拒",
+        body: `你是资深 Agent 提交粒度教练。只根据用户边界写门禁，不要编造提交粒度已门禁。
+
+现在是不是约 CLAUDE.md 行数纪律：{{whether_about_claude_md}}
+是不是约 pre-commit 硬拒：{{whether_about_pre_commit}}
+是不是约当面「合成一个」冲突：{{whether_about_override}}
+
+输出 Markdown：
+1. 为什么「写了小提交纪律」不能写成提交粒度已门禁
+2. 应怎样同时记下无约束对照、越线回、钩拒次数
+3. 只有一次 298／6 段账本时，应怎样单独记账，而不是写成下一题也必然同分布
+4. 人必须完成的清单（钩分发、导流链）
+禁止声称「同样加钩就等于下一 AI 大改也总会先拆开」；禁止把写了 CLAUDE.md 写成已门禁。`,
+      },
+      {
+        title: "二百九十八行与六段复盘",
+        body: `报告上可以写无约束 298／426、钩下 6 段且 --no-verify 0；但这是一次个人对照。请写复盘提纲。
+
+现象：{{two_nine_eight_six_splits}}
+
+输出：
+1. 更像只靠 CLAUDE.md，还是缺了外置硬拒
+2. 最小复验顺序（先无约束基线→再只开纪律→再开钩并制造「合成一个」冲突→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上拆提交就等于 PR 总量也总会下降」，或「6 段就等于任意题同切法」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/acerola_jp/items/9a5962efe449e19c75d9",
+      label: "qiita.com · Claude Code のコミットを100行以内に分けさせる",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
