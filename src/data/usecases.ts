@@ -52958,6 +52958,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "738",
+    slug: "nttdata-45w25l-5th-best8",
+    title: "NTT DATA TECH：Agentic Football Cup——Alpha 70 场 45 胜 25 败联赛 A 第 5；亚洲进 16 并进八强",
+    summary: "团队（NTT DATA TECH／kashiwabaray）；披露只靠门户选阵型／模型／提示词、不写代码参赛：Alpha 季联赛 A 70 场 45 胜 25 败、得 232／失 162、无失点 14、积分 1,702、第 5；同期亚洲大会进 16 强决赛圈并进八强。不代你同样排 70 场，就等于下一季也会 45／25／第5，或只改提示词就等于必进八强。",
+    description: "面向已经把「多智能体演示」当成可复用、却还没分开「赛前设定可改」与「场上不可直接控人」的人：把「Agent 合做多智能体对抗须同时报赛前设定门禁、成绩口径与人侧部署纪律」写成门禁，区别于游戏资产生成流水线，以及多 PR 吞吐竞赛。",
+    categories: [
+      "education",
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/nttdata_tech/articles/d083178ce17706",
+    sourceLabel: "zenn.dev·NTT DATA TECH 实践帖",
+    upvotes: 629,
+    trending: false,
+    tags: [
+      "multi-agent",
+      "AgentCore",
+      "Bedrock",
+      "AgenticFootballCup",
+      "prompting",
+    ],
+    howItWorks: [
+      "粘贴多智能体对抗边界（是不是约 70 场、是不是约 45 胜 25 败、是不是亚洲进八）以及「绝不可把门户可设写成场上可手操」纪律",
+      "Agent 按实践帖输出：应怎样同时记下阵型／模型／提示词部署、练习赛与联赛切换、以及人只能用 Shout 的限界",
+      "人工保留 45／25／第5／八强来自哪一季门户榜；Agent 不代你保证「同样排 70 场就等于下一季也总会第5」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T16:58:32.447+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T07:58:32Z、Asia/Shanghai 2026-11-09 15:58:32；bodyUpdatedAt 2026-11-04T18:04:59.456+09:00 早于发布时刻，取 publishedAt；GET 200，UA MiraBot/1.0）：kashiwabaray 在 NTT DATA TECH 刊《ゲームで学ぶマルチエージェント 実戦編 — Agentic Football Cup Alpha シーズンの記録》写 70／45／25／第5／八强。文内链 https://agenticfootballcup.ai/ 属赛事门户导流且可达；前作工作坊文作相关出处。主线是赛前设定与成绩口径，不是官文简报。",
+      "与 PixelLab／游戏资产流水线、多 PR 吞吐不同：本条不是素材生成或合入速度，而是五人全员 AI 的门户设定对抗与一季成绩",
+    ],
+    approach: `kashiwabaray 在 NTT DATA TECH 刊《ゲームで学ぶマルチエージェント 実戦編 — Agentic Football Cup Alpha シーズンの記録》（页内 2026-11-09）写明：AWS 运营的 Virtual League「Alpha」季 2026/09/11〜10/25，亚洲大会同机制于 09/15〜09/18 另开。Virtual League 只需在浏览器门户选阵型、模型与每人系统提示（约 6,000 字内）并「变更部署」，无需代码与自有 AWS；场上人只能发 200 字内 Shout。作者队 Chalk Hurricanes 在联赛 A：70 场、45 胜 25 败（平 0）、得 232／失 162（场均 3.31／2.31）、无失点 14、积分 1,702、最终第 5；亚洲大会联赛阶段进前 16，并在 09/18 淘汰赛进八强。对比同联赛第 1 的 61 胜 9 败、场均得 6.19，作者判断失点接近、差距主要在攻击。另披露积分细则与助手说明不完全一致、未能与榜核对，以及联赛不申报也会按日自动开打——门户须常放「可上场」设定。
+
+关键门禁不是「已经组了多智能体」，而是分开记「赛前设定可改」与「场上不可直接控人、成绩口径须标明」。
+
+本场景据此输出「Agent 合做多智能体对抗须同时报告设定门禁、成绩口径与人侧部署纪律，不能只报已参赛」提纲。禁止把 45／25／第5／八强写成下一季也总会到达，或把只改提示词写成必进八强。`,
+    outcomes: [
+      "源披露作者队 Alpha 联赛 A：70 场 45 胜 25 败、得 232／失 162、无失点 14、积分 1,702、第 5；亚洲大会进 16 并进八强。属作者这一季门户榜与自述，不可外推为你同样排 70 场就等于下一季也会 45／25／第5，或只改提示词就等于必进八强。",
+      "能把「可写成同时记下阵型／模型／提示词部署、练习赛与联赛切换、Shout 限界」与「必须人完成的可上场设定值守、以及是否有赛事门户导流」拆开。",
+      "为把「已组多智能体」当成场上可手操、以及把「已改提示词」当成下一季必第5提供提问清单。",
+    ],
+    caveats: [
+      "70／45／25／232／162／14／1702／第5／八强 均为作者赛季末门户榜与自述；积分计算方式作者未能与榜完全核对；未声称任意队同成绩。",
+      "文中链 https://agenticfootballcup.ai/ ，属赛事门户导流；本机 GET 200，列入可达导流。另链 https://zenn.dev/nttdata_tech/articles/47ca78ab934ef8 为作者相关前作出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / NTT DATA TECH · kashiwabaray），不是 AWS 赛事的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多智能体对抗须同时报告赛前设定与成绩口径门禁",
+        body: `你是资深 Agent 多智能体对抗教练。只根据用户边界写门禁，不要编造已经到的45或第5。
+
+现在是不是约70场：{{whether_about_seventy_games}}
+是不是约45胜25败：{{whether_about_forty_five_twenty_five}}
+是不是亚洲进八：{{whether_about_asia_best_eight}}
+
+输出 Markdown：
+1. 为什么「门户可设」不能写成场上可手操
+2. 应怎样同时记下阵型／模型／提示词部署、练习赛与联赛切换、Shout限界
+3. 只有一季榜时，应怎样单独记账，而不是写成下一季也必然第5
+4. 人必须完成的清单（可上场设定值守、导流链）
+禁止声称「同样排70场就等于下一季也总会第5」；禁止把只改提示词写成必进八强。`,
+      },
+      {
+        title: "七十场与四十五二十五、第五复盘",
+        body: `报告上可以写70场、45胜25败、联赛A第5、亚洲八强；但这是一季个人／团队门户榜。请写复盘提纲。
+
+现象：{{seventy_and_forty_five}}
+
+输出：
+1. 更像赛前设定纪律生效，还是对手池恰好
+2. 最小复验顺序（先抽练习赛→再抽联赛自动开打风险→再决定能不能对外说多智能体已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上改提示词就等于下一季也总会第5」，或「这一次进八强就等于任意阵型都会赢」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nttdata_tech/articles/d083178ce17706",
+      label: "zenn.dev · ゲームで学ぶマルチエージェント 実戦編 — Agentic Football Cup Alpha シーズンの記録",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "739",
+    slug: "satou-10d-20req-9field6",
+    title: "satouyoshiaki：把 Muse 交给 50 代母亲 10 天——主要委托 20+、9 个领域、6 种用法型",
+    summary: "个人（satouyoshiaki）；披露把 Muse 交给母亲 10 天（约 10/29〜11/7）：主要委托 20 件超、分 9 个领域、归纳 6 种用法型；门铃置换里出过 3 案草稿、核到 40,040 日元与区补助约 3 万。不代你同样交 10 天，就等于下一户也会 20／9／6，或有助理就等于可代人下单。",
+    description: "面向已经把「家里人会聊 AI」当成可交付、却还没分开「持续秘书型委托」与「最终判断仍在人」的人：把「Agent 合做家庭助理须同时报用法型、人侧终裁与证据留存」写成门禁，区别于音乐库入库，以及过夜编排值守。",
+    categories: [
+      "life",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://qiita.com/satouyoshiaki/items/4b80a552341eb9d6cea2",
+    sourceLabel: "qiita.com·satouyoshiaki 实践帖",
+    upvotes: 630,
+    trending: false,
+    tags: [
+      "Muse",
+      "family",
+      "personal-assistant",
+      "voice-input",
+      "automation",
+    ],
+    howItWorks: [
+      "粘贴家庭助理边界（是不是约 10 天、是不是约 20 件超委托、是不是约 9 领域／6 型）以及「绝不可把会聊天写成可代人终裁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下常驻／决策支援／事件再确认等型、人侧终裁点、以及语音纠错回路",
+      "人工保留 10／20／9／6 来自哪一段观察；Agent 不代你保证「同样交 10 天就等于下一户也总会 20／9」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD Article；datePublished 2026-11-10T00:57:36.000+09:00 → 2026-11-10，同时刻为 UTC 2026-11-09T15:57:36Z、Asia/Shanghai 2026-11-09 23:57:36；dateModified 同发布；GET 200，UA MiraBot/1.0）：satouyoshiaki 在《50代の母にMuseを渡して10日間、どんな使い方をしていたか調べてみた！》写 10／20+／9／6。未见外链硬导流。主线是家庭用法型与人侧终裁，不是官文简报。",
+      "与音乐库入库、过夜编排值守不同：本条不是媒体资产或无人长跑，而是非工程师用户 10 天真实委托形态",
+    ],
+    approach: `satouyoshiaki 在《50代の母にMuseを渡して10日間、どんな使い方をしていたか調べてみた！》（JSON-LD 2026-11-10）写明：把 Muse（母称「ふうちゃん」）交给 50 代母亲，连日历／邮件／Tasks，并设早 7:30 天气、有约日前提醒、每月 5／15／25 积分日等。观察窗约 2026-10-29〜11-07：主要委托 20 件超，分 9 领域（通知自动化、调查、旅行、决策准备、成果物、代登记、外出信息、知识问答、看图咨询等）；归纳 6 型——常驻请求、决策支援（人终裁）、事件驱动再确认、条件逐步追加、语音纠错推进、跨工具一次办完。门铃置换例：读 PDF、核价、比官方规格、查区防犯补助、改方针重写回复共 3 案；发现报价按「带子机」算，修正后含施工 40,040 日元（税込），补助约 3 万则自负约 1 万——调查与草稿归 Muse，申请与终裁归人。国会参观当日多次再确认本会议结束才改「下午可参观」。作者判断价值中心是持续、记忆与下准备，而非「更聪明的单次回答」。
+
+关键门禁不是「家里人已经会聊」，而是分开记「秘书型持续委托」与「终裁／下单仍在人」。
+
+本场景据此输出「Agent 合做家庭助理须同时报告用法型、人侧终裁与证据留存，不能只报已开通」提纲。禁止把 10／20／9／6 写成下一户也总会到达，或把有助理写成可代人下单。`,
+    outcomes: [
+      "源披露作者观察母亲用 Muse 约 10 天：主要委托 20 件超、9 领域、6 用法型；门铃案 3 稿并核到 40,040 日元与补助口径。属作者这一户观察，不可外推为你同样交 10 天就等于下一户也会 20／9／6，或有助理就等于可代人终裁下单。",
+      "能把「可写成同时记下用法型、人侧终裁点、语音纠错」与「必须人完成的申请／付款、以及是否有外链导流」拆开。",
+      "为把「会聊天」当成可代人终裁、以及把「已设定期提醒」当成已无误判提供提问清单。",
+    ],
+    caveats: [
+      "10／20+／9／6／3案／40040円／补助约3万 均为作者这一户观察与文内数字；领域划分来自让 Muse 自述后的归纳；未声称任意家庭同比例。",
+      "文内未见招聘／有料外链硬导流字样；本机对 primary GET 200。Muse 产品名随文出现，不作外链硬导流计。",
+      "上面写的是个人实践帖（qiita.com / satouyoshiaki），不是 Muse 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "家庭助理须同时报告用法型与人侧终裁门禁",
+        body: `你是资深 Agent 家庭助理教练。只根据用户边界写门禁，不要编造已经到的20或9。
+
+现在是不是约10天观察：{{whether_about_ten_days}}
+是不是约20件超委托：{{whether_about_twenty_plus}}
+是不是约9领域／6型：{{whether_about_nine_six}}
+
+输出 Markdown：
+1. 为什么「会聊天」不能写成可代人终裁
+2. 应怎样同时记下常驻／决策支援／事件再确认等型、人侧终裁、语音纠错
+3. 只有一户观察时，应怎样单独记账，而不是写成下一户也必然20／9
+4. 人必须完成的清单（申请／付款、导流链）
+禁止声称「同样交10天就等于下一户也总会20／9」；禁止把有助理写成可代人下单。`,
+      },
+      {
+        title: "十天与二十件、九领域六型复盘",
+        body: `报告上可以写10天、20件超、9领域、6型；但这是一户观察。请写复盘提纲。
+
+现象：{{ten_and_twenty}}
+
+输出：
+1. 更像用法型纪律生效，还是题目恰好是门铃／旅行
+2. 最小复验顺序（先抽终裁点→再抽持续委托→再决定能不能对外说家庭助理已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上定期提醒就等于下一户也总会9／6」，或「这一次核到40040就等于任何报价都已核完」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/satouyoshiaki/items/4b80a552341eb9d6cea2",
+      label: "qiita.com · 50代の母にMuseを渡して10日間、どんな使い方をしていたか調べてみた！",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "740",
+    slug: "shirochan-4sess-62t-9test",
+    title: "shirochan：自组 Claude Code 长跑 harness——4 会话 62 回合过 4 功能／9 测；Stop 钩救回未跑测就收工",
+    summary: "个人（shirochan）；披露只用 CLAUDE.md／钩子／权限与 claude -p 仿长跑 harness：MAX_SESSIONS=5 下 4 会话共 62 回合、约 5 分 20 秒让 4 功能 passes:true、9 测全过；会话 1 曾未跑测就要收工，被 Stop 钩拦回才补测提交。不代你同样开 4 会话，就等于下一仓也会 4／62／9，或有 Stop 钩就等于测改写已封死。",
+    description: "面向已经把「会写 hooks」当成可无人交付、却还没分开「完成由钩判定」与「deny 仍可能被旁路」的人：把「Agent 合做会话间 harness 须同时报完成门禁、测改写封锁与人侧复验」写成门禁，区别于过夜编排值守，以及写测／TDD worktree 竞赛。",
+    categories: [
+      "devtools",
+      "education",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/shirochan/articles/7b6f7bb878fe68",
+    sourceLabel: "zenn.dev·shirochan 实践帖",
+    upvotes: 631,
+    trending: false,
+    tags: [
+      "harness",
+      "Claude-Code",
+      "Stop-hook",
+      "long-running-agent",
+      "unittest",
+    ],
+    howItWorks: [
+      "粘贴会话间 harness 边界（是不是约 4 会话、是不是约 62 回合／9 测、是不是 Stop 救回）以及「绝不可把有钩写成测改写已封死」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 features.json／Stop 判定、测改写 deny 与旁路、以及开始检查与结束检查拆分",
+      "人工保留 4／62／9 来自哪一次本地跑；Agent 不代你保证「同样开 4 会话就等于下一仓也总会 9 测全过」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T18:08:21.382+09:00 → 2026-11-04，同时刻为 UTC 2026-11-04T09:08:21Z、Asia/Shanghai 2026-11-04 17:08:21；bodyUpdatedAt 2026-11-04T18:16:24.460+09:00 晚于发布，日期仍取 publishedAt；GET 200，UA MiraBot/1.0）：shirochan 在《Claude Codeで理解する「ハーネス」入門から設計・実践まで》写 4／62／9／Stop。文内大量链官方文档与 Anthropic 工程文作出处；未见外链硬导流。主线是完成判定与测改写门禁，不是官文简报。",
+      "与过夜编排、写测／TDD worktree 不同：本条不是整晚值守或多 worktree 吞吐，而是短局 4 会话里用 Stop 钩强制「测过才算完」",
+    ],
+    approach: `shirochan 在《Claude Codeで理解する「ハーネス」入門から設計・実践まで》（页内 2026-11-04，Claude Code v2.1.314）先梳理官方 harness 概念，再仿 Anthropic 长跑文：用 CLAUDE.md、Stop／PreToolUse 钩、权限与 claude -p 做「无记忆新会话 + 文件接力」。题为 4 功能家计簿库、作者预写 9 测；run.sh 在功能未完前逐会话启动。MAX_SESSIONS=5、模型 claude-opus-5-5 一次跑：4 会话共 62 回合、约 5 分 20 秒（文内亦记约 $1.70 作当次账单，不作本条主主张）后 4 功能 passes:true、9 测全过。会话 1 曾在 dontAsk 拒 shell 后改用 Read 写完、却未跑测就要以「未完成」收工——Stop 钩要求先测与提交，才补跑 3 测通过并提交。作者同时披露：python3 直写可绕过测改写 deny；2>&1 重定向曾被自研钩误伤；init.sh 与 Stop 共用脚本导致「途中检查必失败」等 harness 自伤。
+
+关键门禁不是「已经会写 hooks」，而是分开记「完成由钩跑测判定」与「deny／模式仍可能被旁路」。
+
+本场景据此输出「Agent 合做会话间 harness 须同时报告完成门禁、测改写封锁与人侧复验，不能只报有 Stop」提纲。禁止把 4／62／9 写成下一仓也总会到达，或把有 Stop 写成测改写已封死。`,
+    outcomes: [
+      "源披露作者一次本地跑：4 会话 62 回合、约 5 分 20 秒使 4 功能／9 测全过；会话 1 未跑测收工被 Stop 钩救回。另披露测改写旁路与钩自伤。属作者这一次题与环境，不可外推为你同样开 4 会话就等于下一仓也会 4／62／9，或有 Stop 钩就等于测改写已封死。",
+      "能把「可写成同时记下 features 状态、Stop 判定、deny 旁路」与「必须人完成的开始／结束检查拆分、以及是否有外链导流」拆开。",
+      "为把「有 hooks」当成可无人交付、以及把「已 deny 测文件」当成改写已不可能提供提问清单。",
+    ],
+    caveats: [
+      "4／62／9／约5分20秒／当次约$1.70／MAX_SESSIONS=5 均为作者一次本地跑；文内自述不保证再现；费用数字仅作当次账单背景，不作「更省」主张。",
+      "文中链 code.claude.com 文档与 Anthropic 工程／研究文作出处；本机对 hooks 文档与 harness 文跟随后 GET 200。未见招聘／有料外链硬导流字样；primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / shirochan），不是 Anthropic／Claude Code 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "会话间harness须同时报告Stop完成判定与测改写封锁门禁",
+        body: `你是资深 Agent harness教练。只根据用户边界写门禁，不要编造已经到的4或9。
+
+现在是不是约4会话：{{whether_about_four_sessions}}
+是不是约62回合／9测：{{whether_about_sixty_two_nine}}
+是不是Stop救回未跑测：{{whether_about_stop_rescue}}
+
+输出 Markdown：
+1. 为什么「有hooks」不能写成可无人交付
+2. 应怎样同时记下features状态、Stop跑测判定、deny旁路
+3. 只有一次本地跑时，应怎样单独记账，而不是写成下一仓也必然9测全过
+4. 人必须完成的清单（开始／结束检查拆分、导流链）
+禁止声称「同样开4会话就等于下一仓也总会9测全过」；禁止把有Stop写成测改写已封死。`,
+      },
+      {
+        title: "四会话与六十二回合、九测复盘",
+        body: `报告上可以写4会话、62回合、9测全过、Stop救回；但这是一次个人本地跑。请写复盘提纲。
+
+现象：{{four_and_sixty_two}}
+
+输出：
+1. 更像完成门禁生效，还是题目恰好4功能
+2. 最小复验顺序（先抽Stop是否真跑测→再抽python旁路→再决定能不能对外说harness已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上deny就等于下一仓也总会9测全过」，或「这一次Stop救回就等于任意收工都会被拦」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shirochan/articles/7b6f7bb878fe68",
+      label: "zenn.dev · Claude Codeで理解する「ハーネス」入門から設計・実践まで",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "741",
+    slug: "claire-16task-opus7-son9",
+    title: "claire_ai：背后委托涨到 16 种——按「要不要判断」拆成 Opus 7／Sonnet 9",
+    summary: "个人（claire_ai）；披露 Claude Code 一键背后作业涨到 16 种后，于 2026-08-25 按「要不要判断／比较」只定一条标准：Opus 7、Sonnet 9。不代你同样数 16 种，就等于下一套也会 16／7／9，或拆模型就等于已更省更准。",
+    description: "面向已经把「全部丢给最强模型」当成省心、却还没分开「要判断的作业」与「步骤已定的作业」的人：把「Agent 合做背后作业路由须同时报作业清单、分流标准与人侧抽检」写成门禁，区别于费用／Effort 刷榜，以及双 CLI 对时。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "feishu",
+    ],
+    sourceUrl: "https://zenn.dev/claire_ai/articles/model-iriguchi",
+    sourceLabel: "zenn.dev·claire_ai 实践帖",
+    upvotes: 632,
+    trending: false,
+    tags: [
+      "model-routing",
+      "Claude-Code",
+      "Opus",
+      "Sonnet",
+      "background-jobs",
+    ],
+    howItWorks: [
+      "粘贴背后作业路由边界（是不是约 16 种、是不是约 Opus 7／Sonnet 9、是不是单标准分流）以及「绝不可把已分流写成已更省更准」纪律",
+      "Agent 按实践帖输出：应怎样同时记下作业清单、判断／非判断标准、以及一键入口仍指向谁",
+      "人工保留 16／7／9 来自哪一次分配；Agent 不代你保证「同样数 16 种就等于下一套也总会 7／9」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T17:14:24.154+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T08:14:24Z、Asia/Shanghai 2026-11-09 16:14:24；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：claire_ai 在《AI に裏で任せる作業が16種類に増えたので、作業ごとに使うモデルを分けた》写 16／7／9。文内链 https://note.com/claire_ai/n/n364cd16da767 作续篇／有料导流且可达。主线是分流标准，不是官文简报。",
+      "与费用／Effort 刷榜、双 CLI 对时不同：本条不是测哪档更便宜或双工具对拍，而是 16 种背后作业按判断需求路由",
+    ],
+    approach: `claire_ai 在《AI に裏で任せる作業が16種類に増えたので、作業ごとに使うモデルを分けた》（页内 2026-11-09）写明：用 Claude Code 做「画面一键背后作业」（打标签、摘要、日報、找矛盾等），作业种类涨到 16。2026-08-25 只定一条标准——要不要判断／比较：要则 Opus，步骤已定则 Sonnet；结果 Opus 7、Sonnet 9。Zenn 文是入口，细则与切换道具写在 note 续篇。作者强调：全部同一模型，要么轻活用重模型，要么判断活用轻模型。
+
+关键门禁不是「已经会换模型」，而是分开记「作业要不要判断」与「分流不等于已证明更省更准」。
+
+本场景据此输出「Agent 合做背后作业路由须同时报告作业清单、分流标准与人侧抽检，不能只报已换模型」提纲。禁止把 16／7／9 写成下一套也总会到达，或把拆模型写成已更省更准。`,
+    outcomes: [
+      "源披露作者于 2026-08-25 把 16 种背后作业按单标准分为 Opus 7／Sonnet 9。属作者这一次分配，不可外推为你同样数 16 种就等于下一套也会 16／7／9，或拆模型就等于已更省更准。",
+      "能把「可写成同时记下作业清单、判断／非判断标准、一键入口」与「必须人完成的抽检、以及是否有有料导流」拆开。",
+      "为把「已分流」当成已更省更准、以及把「全部 Opus」当成已无误判提供提问清单。",
+    ],
+    caveats: [
+      "16／7／9／2026-08-25 均为作者这一次分配；Zenn 为入口摘要，细则在续篇；未给出对照实验证明更省或更准。",
+      "文中链 https://note.com/claire_ai/n/n364cd16da767 ，属个人站续篇／有料导流；本机 GET 200，列入可达导流并披露有料。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / claire_ai），不是 Anthropic 模型定价的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "背后作业路由须同时报告清单与判断分流门禁",
+        body: `你是资深 Agent 作业路由教练。只根据用户边界写门禁，不要编造已经到的16或7。
+
+现在是不是约16种作业：{{whether_about_sixteen_tasks}}
+是不是约Opus7／Sonnet9：{{whether_about_seven_nine}}
+是不是单标准「要不要判断」：{{whether_about_judgment_split}}
+
+输出 Markdown：
+1. 为什么「已换模型」不能写成已更省更准
+2. 应怎样同时记下作业清单、判断／非判断标准、一键入口
+3. 只有一次分配时，应怎样单独记账，而不是写成下一套也必然7／9
+4. 人必须完成的清单（抽检、导流链）
+禁止声称「同样数16种就等于下一套也总会7／9」；禁止把拆模型写成已更省更准。`,
+      },
+      {
+        title: "十六种与七、九复盘",
+        body: `报告上可以写16种、Opus7、Sonnet9；但这是一次个人分配。请写复盘提纲。
+
+现象：{{sixteen_and_seven_nine}}
+
+输出：
+1. 更像分流标准生效，还是作业清单恰好好切
+2. 最小复验顺序（先抽判断类作业→再抽步骤类作业→再决定能不能对外说路由已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上Haiku就等于下一套也总会更省」，或「这一次7／9就等于任何背后作业都已分流正确」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/claire_ai/articles/model-iriguchi",
+      label: "zenn.dev · AI に裏で任せる作業が16種類に増えたので、作業ごとに使うモデルを分けた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "742",
+    slug: "shimpei-9to3d-lt4-unver",
+    title: "shimpeiws：业务 Agent 本体循环原型——完工到开票中位 9 天→3 天达 <4；错票率仍 unverified",
+    summary: "个人（shimpeiws）；披露按 Ontology 思路做业务改善循环原型：目标把完工→开票中位从 9 天压到 <4；实模型全环跑后中位 9→3 且标 attained，但错票率证据不齐综合 unverified。不代你同样跑一环，就等于下一业务也会 9→3，或中位达标就等于业务结果已核。",
+    description: "面向已经把「Agent 发了提醒」当成业务改善、却还没分开「操作成功」与「业务结果可核」的人：把「Agent 合做业务循环须同时报目标口径、证据与 unverified 条件」写成门禁，区别于 MCP 起票，以及确信度／伪完成台账。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/shimpeiws/articles/4fedafb9deb62d",
+    sourceLabel: "zenn.dev·shimpeiws 实践帖",
+    upvotes: 633,
+    trending: false,
+    tags: [
+      "ontology",
+      "business-agent",
+      "evaluation",
+      "prototype",
+      "YAML",
+    ],
+    howItWorks: [
+      "粘贴业务循环边界（是不是中位约 9→3、是不是目标 <4、是不是错票 unverified）以及「绝不可把操作成功写成业务结果已核」纪律",
+      "Agent 按实践帖输出：应怎样同时记下四文件定义、诊断／提议／人批／执行分离、以及 attained／unverified 分账",
+      "人工保留 9／3／<4 来自哪一次合成数据环；Agent 不代你保证「同样跑一环就等于下一业务也总会 9→3」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T17:07:51.144+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T08:07:51Z、Asia/Shanghai 2026-11-09 16:07:51；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：shimpeiws 在《業務AIエージェントの共通基盤を考える――Ontologyを参考に、業務改善ループを試作した》写 9→3／<4／unverified。文内链 GitHub 原型仓属 OSS 导流且可达；Palantir 文档作出处。主线是业务结果与操作成功分账，不是官文简报。",
+      "与 MCP 起票、确信度台账不同：本条不是工单 MCP 或预测校准，而是完工→开票循环的目标／证据／unverified",
+    ],
+    approach: `shimpeiws 在《業務AIエージェントの共通基盤を考える――Ontologyを参考に、業務改善ループを試作した》（页内 2026-11-09）写明：把业务定义拆成 4 个 YAML（无代码执行、无环境变量展开），core 只读定义跑循环；演示目标是完工→开票中位从基线 9 天到 <4（恰 4 不算达），并设错票率不升为护栏。诊断条件为完工逾 2 天仍未开票；干预是给人提醒，当前适配器只写本地 CSV、不发真邮件。as-of 2026-10-21 例：C01（4 天）／C02（3 天）入选，恰 2 天的 C03 排除。实模型全环记录：baseline median 9 days → after 3 days（3 paired, 1 pending），target lt 4 attained；但错票率证据不齐，综合 unverified。另有三模型各 1 次诊断对照记在仓内文档。
+
+关键门禁不是「Agent 已经会提醒」，而是分开记「操作成功（写了提醒）」与「业务结果可核（中位／错票）」。
+
+本场景据此输出「Agent 合做业务循环须同时报告目标口径、证据与 unverified，不能只报已提醒」提纲。禁止把 9→3 写成下一业务也总会到达，或把中位达标写成业务结果已全部核完。`,
+    outcomes: [
+      "源披露作者演示环：完工→开票中位 9→3 天且 <4 标 attained，错票率证据不齐综合 unverified。属作者这一次合成数据与模型跑，不可外推为你同样跑一环就等于下一业务也会 9→3，或中位达标就等于业务结果已核。",
+      "能把「可写成同时记下四文件定义、人批分离、attained／unverified」与「必须人完成的护栏证据、以及是否有 OSS 导流」拆开。",
+      "为把「已发提醒」当成业务已改善、以及把「中位达标」当成错票也可外推提供提问清单。",
+    ],
+    caveats: [
+      "9／3／<4／unverified／四YAML／合成数据 均为作者原型与文内记录；提醒未接真邮件；三模型对照各 1 次不作一般优劣。",
+      "文中链 https://github.com/shimpeiws/ontology-prototype 与对照文档，属 OSS／资料导流；本机 GET 200，列入可达导流。Palantir 文档链作出处。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / shimpeiws），不是 Palantir／各 BPM 厂商的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "业务循环须同时报告目标口径与unverified门禁",
+        body: `你是资深 Agent 业务循环教练。只根据用户边界写门禁，不要编造已经到的9→3。
+
+现在是不是中位约9→3：{{whether_about_nine_to_three}}
+是不是目标<4：{{whether_about_lt_four}}
+是不是错票unverified：{{whether_about_unverified}}
+
+输出 Markdown：
+1. 为什么「操作成功」不能写成业务结果已核
+2. 应怎样同时记下目标口径、人批分离、attained／unverified
+3. 只有一次合成数据环时，应怎样单独记账，而不是写成下一业务也必然9→3
+4. 人必须完成的清单（护栏证据、导流链）
+禁止声称「同样跑一环就等于下一业务也总会9→3」；禁止把中位达标写成错票也可外推。`,
+      },
+      {
+        title: "九到三与小于四、unverified复盘",
+        body: `报告上可以写中位9→3、<4 attained、错票unverified；但这是一次个人原型。请写复盘提纲。
+
+现象：{{nine_to_three}}
+
+输出：
+1. 更像目标／证据纪律生效，还是合成数据恰好
+2. 最小复验顺序（先抽操作成功定义→再抽业务结果证据→再决定能不能对外说循环已门禁化）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上真发邮件就等于下一业务也总会9→3」，或「这一次attained就等于unverified可忽略」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shimpeiws/articles/4fedafb9deb62d",
+      label: "zenn.dev · 業務AIエージェントの共通基盤を考える――Ontologyを参考に、業務改善ループを試作した",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
