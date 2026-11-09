@@ -56038,6 +56038,446 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "773",
+    slug: "dooly-bulkhead-13sess-507",
+    title: "dooly6276：并行 Claude Code 两周日志回放——最多约 13 会话；本可拦住约 507 条；约 25 次误 git add -A",
+    summary: "个人（dooly6276）；披露用 PreToolUse hook 集 claude-bulkhead 在共享机上挡 pkill／抢端口／同树 checkout 等；一次判定约 50ms；对本机约两周日志（约 7.0GB、shell 约 10 万条）用 bulkhead scan 约 39 秒回放：同时会话最多约 13；本可拦住约 507 条，其中约 25 条是别会话编辑中树上的 git add -A。不代你同样装上，就等于下一并行会话也不会再误杀他人进程。",
+    description: "面向已经把「开了多会话／worktree」当成并行隔离已门禁、却还没分开「分支隔离」与「本机进程／端口／同树写盘」的人：把「Agent 合做并行 Claude Code 须同时报会话峰值、可拦命令数与 checkout 误提交」写成门禁，区别于 Remote Control，以及多会话 Stop 救回。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/dooly6276/articles/9863fac3b3e3c2",
+    sourceLabel: "zenn.dev·dooly6276 实践帖",
+    upvotes: 664,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "hooks",
+      "bulkhead",
+      "worktree",
+      "parallel-sessions",
+    ],
+    howItWorks: [
+      "粘贴并行会话边界（是不是约共享机多会话、是不是约 PreToolUse 挡 pkill／端口／同树、是不是约对历史日志做 scan）以及「绝不可把开了 worktree 写成进程隔离已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下会话峰值、可拦件数、约 25 次 git add -A，以及约 50ms／约 39 秒扫描自述",
+      "人工保留 7.0GB／10万条／507／13／25 来自哪一次本机回放；Agent 不代你保证「同样装上就等于下一并行日也不会再误杀他人 node」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T09:59:44.268+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T00:59:44Z、Asia/Shanghai 2026-11-09 08:59:44；bodyUpdatedAt 同 publishedAt；GET 200，UA MiraBot/1.0）：dooly6276 在《並列 Claude Code セッションは何回ぶつかったか：2週間のログを hook に再生して数えた》写 bulkhead 与 scan。作者仓库 https://github.com/dooly6276/claude-bulkhead 为可达导流（GET 200）。主线是并行会话碰撞回放，不是官文简报。",
+      "与 Remote Control、多会话 Stop 救回不同：本条不是把远端接管或 Stop 救会话当主线，而是共享机上 hook 挡危险 shell，以及对历史日志回放计数",
+    ],
+    approach: `dooly6276 在《並列 Claude Code セッションは何回ぶつかったか：2週間のログを hook に再生して数えた》（页内 2026-11-09）写明：一台机器上多开 Claude Code 时，即便 git worktree 分开了分支，机器仍共享。某会话 pkill node 会拖垮其他 worktree 的开发服务器；两会话抢 3000 端口；多构建同分钟起跑会卡死。作者用 PreToolUse hook 集做成 MIT 开源 claude-bulkhead：无常驻进程，在 shell 执行前读命令串，对照各会话进程／端口／内存／所在 git 树，冲突则拦下并回传理由与替代命令；一次判定约 50ms。典型：kill-guard 拦误杀；port-guard 拦端口错位；memory-guard／bulkhead-slot 在内存紧时排队；checkout-guard 拦别会话作业中树上的 checkout／git add -A；orphan-reaper 清残留；disk-guard 收窄 du。bulkhead scan 对 ~/.claude/projects 历史 shell 只读回放（不外传、掩敏感）：作者本机约两周约 7.0GB、shell 约 10 万条约 39 秒读完；同时会话最多约 13；本可拦住约 507 条；其中约 25 条是别会话编辑中树上的 git add -A（会把对方半成品带进自己的提交）。端口／内存状态日志不保留故未回放 port／内存；checkout-guard 按同分钟同树会话重建。明示：读命令串不是沙箱，真隔离须容器等。
+
+关键门禁不是「开了多会话／worktree」，而是分开记「分支隔离」与「本机进程／端口／同树写盘是否被 hook 挡住」。
+
+本场景据此输出「Agent 合做并行 Claude Code 须同时报告会话峰值、可拦件数与误 add 数，不能只报开了 worktree」提纲。禁止把装上 bulkhead 写成下一并行日也不会再误杀，或把 scan 数字写成任意仓库同分布。`,
+    outcomes: [
+      "源披露作者对本机约两周日志回放：同时会话最多约 13；本可拦住约 507 条，其中约 25 条为别会话编辑中树上的 git add -A；scan 约 39 秒读约 7.0GB／约 10 万条 shell；判定约 50ms。属作者这一次本机回放与 hook 自述，不可外推为你同样装上 bulkhead 就等于下一并行日也不会再误杀他人进程，或 507／25 就是任意仓的碰撞分布。",
+      "能把「可写成同时记下峰值会话、可拦件数、误 add」与「必须人完成的容器隔离／导流链」拆开。",
+      "为把「开了 worktree」当成进程隔离已门禁、以及把未跑 scan 却对外说已清点碰撞提供提问清单。",
+    ],
+    caveats: [
+      "13／507／25／7.0GB／10万／39秒／50ms均为作者本机回放自述；端口与内存未纳入回放；明示非沙箱。",
+      "作者仓库 https://github.com/dooly6276/claude-bulkhead 为可达导流（GET 200，UA MiraBot/1.0）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / dooly6276），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "并行会话须同时报告峰值与可拦件数",
+        body: `你是资深 Agent 并行 Claude Code 教练。只根据用户边界写门禁，不要编造进程隔离已门禁。
+
+现在是不是约共享机多会话：{{whether_about_multi_session}}
+是不是约 PreToolUse 挡 pkill／端口／同树：{{whether_about_bulkhead_hooks}}
+是不是约对历史日志做 scan：{{whether_about_scan}}
+
+输出 Markdown：
+1. 为什么「开了 worktree」不能写成进程隔离已门禁
+2. 应怎样同时记下会话峰值、可拦件数、误 git add -A
+3. 只有一次约 507／25 回放时，应怎样单独记账，而不是写成任意仓同分布
+4. 人必须完成的清单（容器隔离、导流链）
+禁止声称「同样装上 bulkhead 就等于下一并行日也总会先拦住误杀」；禁止把 scan 写成沙箱已门禁。`,
+      },
+      {
+        title: "五百零七与二十五次误 add 复盘",
+        body: `报告上可以写最多约13会话、约507条可拦、约25次误 git add -A；但这是一次个人本机回放。请写复盘提纲。
+
+现象：{{five_oh_seven_twenty_five}}
+
+输出：
+1. 更像未装 checkout-guard，还是只看了 worktree 就当隔离
+2. 最小复验顺序（先对本机跑 scan→再对故意 pkill／同树 add 做一次拦截演练→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 port-guard 就等于内存／磁盘碰撞也总会命中」，或「39秒读完就等于任意盘容量也可同样扫完」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dooly6276/articles/9863fac3b3e3c2",
+      label: "zenn.dev · 並列 Claude Code セッションは何回ぶつかったか：2週間のログを hook に再生して数えた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "774",
+    slug: "nexta-mod-above-prompt-291",
+    title: "seiyoo／Nexta：桌面「新窗口」缺的工具钮——用 mod 的 AbovePrompt 自己加；验于 Claude Code 2.1.291",
+    summary: "个人（seiyoo，刊于 Nexta Tech Blog）；披露桌面 Code 新窗口没有右上终端／浏览器／文件钮；用 mod（桌面约自 v2.1.286、终端约自 v2.1.287）在 AbovePrompt 自放按钮；本机验 Claude Code 2.1.291／Windows 11；surface≠desktop 则 CLI 不放。文末有ネクスタ招聘导流。不代你同样装 mod，就等于下一桌面会话也总会有官方同款钮。",
+    description: "面向已经把「开了桌面 Code 新窗口」当成面板齐全已门禁、却还没分开「官方缺钮」与「mod AbovePrompt 自补」的人：把「Agent 合做桌面 mod 须同时报版本门槛、surface=desktop 与失败 toast」写成门禁，区别于 UI Skill，以及 VS Code 自动附件。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/nexta_/articles/claude-desktop-mod-buttons",
+    sourceLabel: "zenn.dev·Nexta Tech Blog／seiyoo 实践帖",
+    upvotes: 665,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "mod",
+      "AbovePrompt",
+      "desktop",
+      "Windows",
+    ],
+    howItWorks: [
+      "粘贴桌面 mod 边界（是不是约新窗口缺官方钮、是不是约 AbovePrompt 自放、是不是约≥2.1.286／本机 2.1.291）以及「绝不可把开了新窗口写成面板齐全已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 marketplace 安装、surface=desktop、失败 toast／无弹层用下行菜单等约束",
+      "人工保留 2.1.286／287／291／Windows 11 来自哪一次自述；Agent 不代你保证「同样装 mod 就等于下一桌面也总会有官方同款钮」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T11:30:07.728+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:30:07Z、Asia/Shanghai 2026-11-09 10:30:07；bodyUpdatedAt 2026-11-09T05:22:33.702+09:00 早于发布，取 publishedAt；GET 200，UA MiraBot/1.0；seiyoo 路径会 redirect 到 nexta_ 规范 URL）：seiyoo 在《Claudeデスクトップアプリの「新しいウィンドウ」に無いボタンを、mod 機能で足してみた》写 AbovePrompt。文内 code.claude.com mods 文档为厂商对照；招聘短链 https://x.gd/nextatechb1109 → https://nexta-fa.co.jp/engineering?... 为可达招聘导流（GET 200）。主线是桌面缺钮自补，不是官文简报。",
+      "与 UI Skill、VS Code 自动附件不同：本条不是把技能包画 UI 或编辑器自动附文件当主线，而是桌面 mod 在输入框上方自放按钮与版本／surface 约束",
+    ],
+    approach: `seiyoo（刊于 Nexta Tech Blog）《Claudeデスクトップアプリの「新しいウィンドウ」に無いボタンを、mod 機能で足してみた》（页内 2026-11-09；规范 URL 为 nexta_）写明：桌面 Code 可用「新窗口」并排会话，但新窗口没有右上终端／diff／浏览器／文件钮。作者曾用 /app-terminal 等 slash 凑合。mod（桌面约自 v2.1.286、终端约自 v2.1.287）可用 TypeScript 改界面；本机验 Claude Code 2.1.291／Windows 11。做法：plugin.json＋hooks.json＋register.tsx；常用则把 ~/.claude/mods 当本地 marketplace 再 /plugin install；试跑可用 claude --plugin-dir。在 ui.render／AbovePrompt 放按钮；若 e.surface !== 'desktop' 则 CLI 不放。左右分组、失败用 $.ui.toast（约 10s）。自用钮含复制会话 ID、JP 重说、TODO 提问、开作业备忘、↗ 在带下展开打开菜单（因无弹层组件；桌面 Button 高度不可改，折行须 gap）。改完 /reload-plugins 后再发一条消息生效。结言：缺钮可用 AbovePrompt 补；亦有无弹层／高度限制等约束。文末写ネクスタ招工程师并链招聘页。
+
+关键门禁不是「开了新窗口／装了 mod」，而是分开记「官方是否仍缺钮」与「自写 mod 的 surface／版本／失败可见」。
+
+本场景据此输出「Agent 合做桌面 mod 须同时报告版本门槛、surface=desktop 与失败 toast，不能只报开了新窗口」提纲。禁止把装 mod 写成官方已补钮，或把招聘链写成功能门禁。`,
+    outcomes: [
+      "源披露作者在 Claude Code 2.1.291／Windows 11 用 mod AbovePrompt 为桌面新窗口自补缺钮；mod 约自桌面 2.1.286／终端 2.1.287；surface≠desktop 则 CLI 不放。属作者这一次桌面自述，不可外推为你同样装 mod 就等于下一桌面会话也总会有官方同款钮，或能点按钮就等于面板权限已门禁。",
+      "能把「可写成同时记下版本、AbovePrompt、失败 toast／无弹层」与「必须人完成的 permissions／招聘导流链」拆开。",
+      "为把「开了新窗口」当成面板齐全、以及把 CLI 会话也当成已有同款带提供提问清单。",
+    ],
+    caveats: [
+      "2.1.286／287／291／Windows 11／AbovePrompt／无弹层均为作者自述；未声称官方已在新窗口补齐同款钮。",
+      "文内 code.claude.com mods 文档为厂商对照；招聘导流 https://x.gd/nextatechb1109（跟随至 nexta-fa.co.jp/engineering，GET 200，UA MiraBot/1.0）须写入导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / Nexta Tech Blog·seiyoo），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "桌面 mod 须同时报告版本与 surface",
+        body: `你是资深 Agent 桌面 Claude Code mod 教练。只根据用户边界写门禁，不要编造官方已补钮。
+
+现在是不是约新窗口缺官方钮：{{whether_about_missing_buttons}}
+是不是约 AbovePrompt 自放：{{whether_about_above_prompt}}
+是不是约≥2.1.286／本机约 2.1.291：{{whether_about_mod_version}}
+
+输出 Markdown：
+1. 为什么「开了新窗口」不能写成面板齐全已门禁
+2. 应怎样同时记下 marketplace 安装、surface=desktop、失败 toast
+3. 只有一次 2.1.291 自述时，应怎样单独记账，而不是写成下一桌面也必然有官方同款钮
+4. 人必须完成的清单（permissions、招聘导流链）
+禁止声称「同样装 mod 就等于下一桌面也总会先出现官方同款钮」；禁止把 CLI 会话写成已有同款带。`,
+      },
+      {
+        title: "二百九十一与 AbovePrompt 复盘",
+        body: `报告上可以写 2.1.291、AbovePrompt、桌面 2.1.286 起有 mod；但这是一次个人桌面实践。请写复盘提纲。
+
+现象：{{two_nine_one_above_prompt}}
+
+输出：
+1. 更像仍停在旧版，还是 surface 未判 desktop
+2. 最小复验顺序（先 --version→再确认新窗口是否仍缺钮→再 /reload-plugins 后发一条→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 toast 就等于 OS 通知也总会弹出」，或「装了 mod 就等于官方已补齐新窗口工具钮」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nexta_/articles/claude-desktop-mod-buttons",
+      label: "zenn.dev · Claudeデスクトップアプリの「新しいウィンドウ」に無いボタンを、mod 機能で足してみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "775",
+    slug: "jepupu-toast-notif-stop",
+    title: "je-pu-pu：Claude Code 许可等待——用 Windows 原生 toast；Notification／Stop hook；假 AppId 会无声失败",
+    summary: "个人（je-pu-pu）；披露用 hooks 的 Notification（许可等待）与 Stop（响应结束）调 Windows.UI.Notifications；无额外安装；音约 25 种；假 AppId／未转义 & 会无声不弹；借 PowerShell 已注册 AppId；permission_prompt 约等 6 秒、idle_prompt 约空闲 60 秒。不代你同样挂 hook，就等于下一许可等待也总会先被你看见。",
+    description: "面向已经把「把长活交给 Claude Code」当成不会空等已门禁、却还没分开「工作中」与「等你点许可」的人：把「Agent 合做 Windows 侧等待感知须同时报 hook 事件、AppId 与 XML 转义」写成门禁，区别于静默停机巡检，以及盖合 caffeinate 电池。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/je-pu-pu/items/b4052bc0b68e3a3f1de2",
+    sourceLabel: "qiita.com·je-pu-pu 实践帖",
+    upvotes: 666,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "hooks",
+      "Windows",
+      "toast",
+      "Notification",
+    ],
+    howItWorks: [
+      "粘贴许可等待边界（是不是约 Notification／Stop hook、是不是约 Windows 原生 toast、是不是约假 AppId／& 会无声失败）以及「绝不可把开了长活写成不会空等已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 PowerShell AppId、XML 转义顺序、permission_prompt≈6s／idle_prompt≈60s，以及 hook 失败宜 exit 0 以免打断本体",
+      "人工保留 25 种音／6 秒／60 秒来自哪一次自述；Agent 不代你保证「同样挂 hook 就等于下一许可等待也总会先被你看见」",
+    ],
+    tips: [
+      "源帖（Qiita API／JSON-LD datePublished 2026-11-09T13:57:45+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T04:57:45Z、Asia/Shanghai 2026-11-09 12:57:45；updated_at 2026-11-09T17:59:35+09:00；取 created／datePublished；GET 200，UA MiraBot/1.0）：je-pu-pu 在《Claude Code の「許可待ち」を Windows のトースト通知で知る》写 toast hook。文内 Microsoft toast 音 schema、code.claude.com hooks、同事 Apple Watch 文为对照；本机未见作者产品商店硬导流可列入可达。主线是许可等待可感知，不是官文简报。",
+      "与静默停机巡检、盖合 caffeinate 不同：本条不是把进程看门狗或合盖续跑当主线，而是 Windows 上用 hook 把许可等待／响应结束推到 toast",
+    ],
+    approach: `je-pu-pu 在《Claude Code の「許可待ち」を Windows のトースト通知で知る》（Qiita 2026-11-09）写明：把长活交给 Claude Code 后去别窗查阅，回来常发现对方在等许可——两边都在等。同事有 Apple Watch 通知文，作者做 Windows 版且不用外部推送服务。hooks：Notification＝求许可停下时；Stop＝响应结束时；另提 SubagentStop。用 Windows.UI.Notifications，Windows 10 起无需加装。toast 本体是 XML；官方音约 25 种（Default／IM／Mail／Reminder／SMS 等 5＋闹钟系 20）；可 silent。关键坑：不存在的 AppId 调用 Show() 不抛错、通知却不出；作者借已注册的 PowerShell AppId（通知上会显示 Windows PowerShell）。另一坑：许可文案含 &／< 等未 XML 转义时 LoadXml 也会无声失败，须先替换 &。notification_type：permission_prompt≈等许可约 6 秒后；idle_prompt≈响应结束后约 60 秒无输入；用日文文案区分。hook 脚本 catch 后 exit 0，避免通知失败拖垮本体作业。脚本可由 Claude Code 代写，作者强调要懂机制才能想到可做。
+
+关键门禁不是「开了长活／挂了 hook」，而是分开记「工作中」与「等你点许可」是否被无声失败吞掉。
+
+本场景据此输出「Agent 合做 Windows 等待感知须同时报告 hook 事件、AppId 与 XML 转义，不能只报开了长活」提纲。禁止把挂 toast 写成下一许可等待也总会先被看见，或把 exit 0 写成调试已门禁。`,
+    outcomes: [
+      "源披露作者用 Notification／Stop hook 调 Windows 原生 toast；假 AppId 与未转义 & 会无声不弹；借 PowerShell AppId；permission_prompt 约 6 秒、idle_prompt 约 60 秒。属作者这一次 Windows hook 自述，不可外推为你同样挂 hook 就等于下一许可等待也总会先被你看见，或能弹 toast 就等于无人值守已门禁。",
+      "能把「可写成同时记下 AppId、XML 转义、两种等待文案」与「必须人完成的权限模式／导流链」拆开。",
+      "为把「开了长活」当成不会空等、以及把无声失败当成「没有许可请求」提供提问清单。",
+    ],
+    caveats: [
+      "25种音／约6秒／约60秒／PowerShell AppId／exit 0 策略均为作者自述；未声称任意 Windows 版本同行为。",
+      "文内 Microsoft schema、code.claude.com hooks、同事 Qiita 文为对照阅读，非作者自有商店硬导流；本机未见作者产品硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / je-pu-pu），不是 Microsoft／Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "许可等待须同时报告 hook 与 AppId",
+        body: `你是资深 Agent Windows Claude Code 等待感知教练。只根据用户边界写门禁，不要编造不会空等已门禁。
+
+现在是不是约 Notification／Stop hook：{{whether_about_notif_stop}}
+是不是约 Windows 原生 toast：{{whether_about_win_toast}}
+是不是约假 AppId／& 会无声失败：{{whether_about_silent_fail}}
+
+输出 Markdown：
+1. 为什么「开了长活」不能写成不会空等已门禁
+2. 应怎样同时记下 AppId、XML 转义、permission_prompt／idle_prompt 文案
+3. 只有一次个人 hook 自述时，应怎样单独记账，而不是写成下一许可等待也必然先被看见
+4. 人必须完成的清单（权限模式、导流链）
+禁止声称「同样挂 toast 就等于下一许可等待也总会先弹出」；禁止把 exit 0 写成错误已被门禁发现。`,
+      },
+      {
+        title: "无声失败与六秒许可复盘",
+        body: `报告上可以写假 AppId 无声失败、permission_prompt 约 6 秒、idle 约 60 秒；但这是一次个人 Windows 实践。请写复盘提纲。
+
+现象：{{silent_appid_six_sec}}
+
+输出：
+1. 更像 AppId／XML 转义问题，还是 hook 根本未挂上
+2. 最小复验顺序（先故意触发许可→看 toast→再临时 exit 1 暴露脚本错→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上闹钟音就等于无人值守也可过夜」，或「Stop 能弹就等于 Subagent 也总会弹」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/je-pu-pu/items/b4052bc0b68e3a3f1de2",
+      label: "qiita.com · Claude Code の「許可待ち」を Windows のトースト通知で知る",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "776",
+    slug: "suwa-dontask-ps11-bash5",
+    title: "suwa_nobu：「次から闻かない」密码留哪——仅 Claude Code 写入项目内；PowerShell 11/11 整段残留",
+    summary: "个人（suwa_nobu）；披露在 Windows 用哑元 token 测 Claude Code 2.1.319／Codex 0.167.0／Gemini CLI 0.67.0：「Don't ask again」仅 Claude Code 写入项目内 .claude/settings.local.json；Codex／Gemini 写家目录。规则里残留 token：PowerShell 11/11、Bash 5/10；Codex 9/9；Gemini 0/6（默认无此选项）。gitignore 仍可能进 npm pack／zip。不代你同样测通，就等于下一「次から闻かない」也不会再把密钥写进可推送文件。",
+    description: "面向已经把「点了不要再问」当成密钥不会进仓已门禁、却还没分开「写在项目内还是家目录」与「规则是否整段含密」的人：把「Agent 合做三 CLI 许可持久化须同时报写入位置与残留次数」写成门禁，区别于 allowlist pre-commit 清扫，以及技能安全扫描。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/suwa_nobu/items/8ecef4e3b495e91b4eb8",
+    sourceLabel: "qiita.com·suwa_nobu 实践帖",
+    upvotes: 667,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "Gemini-CLI",
+      "secrets",
+      "settings.local",
+    ],
+    howItWorks: [
+      "粘贴「不要再问」边界（是不是约三 CLI 对照、是不是约仅 Claude 写项目内、是不是约 PowerShell 整段含密）以及「绝不可把点了不要再问写成密钥不会进仓已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下写入路径、PowerShell 11/11 与 Bash 5/10、以及 gitignore 仍可能进 pack／zip",
+      "人工保留 2.1.319／0.167.0／0.67.0／哑元 token 来自哪一次自述；Agent 不代你保证「同样测通就等于下一 Don't ask again 也不会再写可推送文件」",
+    ],
+    tips: [
+      "源帖（Qiita API created_at 2026-11-09T11:23:02+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T02:23:02Z、Asia/Shanghai 2026-11-09 10:23:02；updated_at 2026-11-09T11:25:26+09:00；GET 200，UA MiraBot/1.0）：suwa_nobu 在《「次から聞かない」で許したコマンドのパスワードは、どこに残るのか。Claude Code・Codex・Gemini CLI で試したら、プロジェクトの中に書くのは1つだけだった》写三 CLI 对照。HN 帖为背景；作者称 Apiiro 正文本机 403 未核 1122 计数——不得把 1122 当已核数字。文内同作者相关 Qiita 为对照。未见作者产品商店硬导流可列入可达。主线是许可持久化落点，不是官文简报。",
+      "与 allowlist pre-commit 清扫、技能安全扫描不同：本条不是把 pre-commit 扫 settings 或技能包扫描当主线，而是三 CLI 对「Don't ask again」写入位置与规则是否整段含密的实测",
+    ],
+    approach: `suwa_nobu 在《「次から聞かない」で許したコマンドのパスワードは、どこに残るのか…》（Qiita 2026-11-09）写明：HN 有帖称 Apiiro 发现 1,122 个公开文件因 Claude Code「Yes, and don't ask again」含密码；作者环境读 Apiiro 正文 403，未核该计数。Boris 称 settings.local.json 应保持本地且 Claude 创建时会 gitignore。作者在 Windows 用哑元 dontask-DUMMY-…、隔离配置目录，测 Claude Code 2.1.319、Codex 0.167.0、Gemini CLI 0.67.0。结论表：仅 Claude Code 写入项目内 .claude/settings.local.json；Codex→~/.codex/rules/default.rules；Gemini→~/.gemini/policies/auto-saved.toml。规则中残留 token：PowerShell 执行 11/11、Bash 5/10；Codex 9/9；Gemini 0/6（默认无此选项）。对话历史三端皆残留。PowerShell 常整段保存含 Bearer 的命令；Bash 有时缩成 curl.exe *，但 API_TOKEN=… 前置形式仍整段含密。gitignore 今版对作者生效，但约一年前 Windows 排除行曾坏；即便 gitignore 生效，npm pack／zip 仍可能打进。另：现默认 auto mode 可能根本不弹许可（作者试 1 次）。
+
+关键门禁不是「点了不要再问／有 gitignore」，而是分开记「写在哪」与「规则是否整段含密／打包是否仍带走」。
+
+本场景据此输出「Agent 合做三 CLI 许可持久化须同时报告写入位置与残留次数，不能只报点了不要再问」提纲。禁止把 1122 当已核数字，或把 gitignore 写成 pack／zip 也安全。`,
+    outcomes: [
+      "源披露作者在 Windows 对照三 CLI：仅 Claude Code 把「Don't ask again」写入项目内；PowerShell 11/11、Bash 5/10 规则含哑元 token；Codex 9/9；Gemini 0/6。属作者这一次哑元实测，不可外推为你同样测通就等于下一「Don't ask again」也不会再把密钥写进可推送文件，或有 gitignore 就等于 npm pack／zip 已门禁。",
+      "能把「可写成同时记下写入路径、残留分数、打包例外」与「必须人完成的密钥轮换／导流链」拆开。",
+      "为把「点了不要再问」当成密钥不会进仓、以及把 HN／Apiiro 的 1122 未核计数写成已复验提供提问清单。",
+    ],
+    caveats: [
+      "2.1.319／0.167.0／0.67.0／11/11／5/10／9/9／0/6均为作者哑元实测；Apiiro 所称 1122 作者未能打开正文核验，不得当已核数字。",
+      "文内 HN 与同作者相关 Qiita 为对照；本机未见作者产品商店硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / suwa_nobu），不是 Anthropic／OpenAI／Google 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "Don't ask again 须同时报告写入位置与残留",
+        body: `你是资深 Agent CLI 许可持久化教练。只根据用户边界写门禁，不要编造密钥不会进仓已门禁。
+
+现在是不是约三 CLI 对照：{{whether_about_three_cli}}
+是不是约仅 Claude 写项目内：{{whether_about_project_local}}
+是不是约 PowerShell 整段含密：{{whether_about_ps_full}}
+
+输出 Markdown：
+1. 为什么「点了不要再问」不能写成密钥不会进仓已门禁
+2. 应怎样同时记下写入路径、残留分数、gitignore 与 pack／zip
+3. 只有一次哑元实测时，应怎样单独记账，而不是写成下一命令也必然不含密
+4. 人必须完成的清单（轮换密钥、导流链）
+禁止声称「同样有 gitignore 就等于 npm pack 也总会先排除 settings.local」；禁止把未核的 1122 写成已复验。`,
+      },
+      {
+        title: "十一比十一与项目内写入复盘",
+        body: `报告上可以写 PowerShell 11/11 整段残留、仅 Claude Code 写项目内；但这是一次个人哑元实测。请写复盘提纲。
+
+现象：{{eleven_of_eleven_project_local}}
+
+输出：
+1. 更像 PowerShell 整段保存，还是 Bash 缩写仍含环境变量前缀
+2. 最小复验顺序（先隔离目录复现→再搜 token→再检查 pack／zip→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 auto mode 就等于不会再写含密规则」，或「家目录写入就等于不会进任何备份」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/suwa_nobu/items/8ecef4e3b495e91b4eb8",
+      label: "qiita.com · 「次から聞かない」で許したコマンドのパスワードは、どこに残るのか。Claude Code・Codex・Gemini CLI で試したら、プロジェクトの中に書くのは1つだけだった",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "777",
+    slug: "interpark-okr-34of36-pf",
+    title: "インターパーク：Claude×サスケWorks 目标到评价——promptfoo 36 回中 34 合格；改善后 18/18",
+    summary: "团队（株式会社インターパーク）；披露工程师侧「OKR等级コンパス」用 Claude Artifact＋サスケWorks 连接，把等级身高判定交给 AI、计数与 S〜D 交给程序；用 promptfoo 做模试：36 回中 34 合格（约 94.44%），同题 3 跑分裂 12 组中 1 组；初版 16/18、改善1 为 18/18 且 6 组中 0 分裂；跑约 1m8s、并发 6。明示用本人数据验证、非全公司自动评价。不代你同样 34/36，就等于下一人事制度也可直接自动打等级。",
+    description: "面向已经把「接了 Works／开了 Artifact」当成评价自动化已门禁、却还没分开「AI 只判 true/false」与「promptfoo 模试是否先定合格标准」的人：把「Agent 合做 OKR 辅助须同时报合格定义、36 回成绩与改善前后对照」写成门禁，区别于交付作者门，以及零售点子评分 fly。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "deepseek",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/interpark/articles/315a520d9590b3",
+    sourceLabel: "zenn.dev·株式会社インターパーク 实践帖",
+    upvotes: 668,
+    trending: false,
+    tags: [
+      "OKR",
+      "promptfoo",
+      "Claude",
+      "サスケWorks",
+      "evaluation",
+    ],
+    howItWorks: [
+      "粘贴 OKR 辅助边界（是不是约 AI 只判是否命中文案、是不是约先定合格＝与人标等级一致、是不是约 promptfoo 36 回）以及「绝不可把接了 Works 写成全公司评价已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 34/36、初版 16/18 与改善1 的 18/18、以及 12 组中 1 组分裂",
+      "人工保留 1m8s／并发6／五落とし穴／本人数据范围来自哪一次自述；Agent 不代你保证「同样 34/36 就等于下一人事制度也可自动打等级」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T01:53:20.703+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T16:53:20Z、Asia/Shanghai 2026-11-09 00:53:20；bodyUpdatedAt 2026-11-09T11:02:46.250+09:00 晚于发布，取 publishedAt；GET 200，UA MiraBot/1.0）：株式会社インターパーク 在《Claude × サスケWorks で、目標設定から評価までの自動化を試してみた ― promptfoo を添えて》写模试。同社人事侧文 https://zenn.dev/interpark/articles/b3941a5e295347、https://github.com/promptfoo/promptfoo 为对照／工具链（均 GET 200）。未见作者商店硬导流；主线是评价辅助＋promptfoo，不是官文简报。",
+      "与交付作者门、零售点子评分 fly 不同：本条不是把作者署名门或零售点子打分产品当主线，而是 OKR 等级判定的 promptfoo 模试与改善前后对照",
+    ],
+    approach: `株式会社インターパーク《Claude × サスケWorks で、目標設定から評価までの自動化を試してみた ― promptfoo を添えて》（页内 2026-11-09）写明：人事眞鍋与工程师各做目标管理工具，皆用 Claude×サスケWorks；本文为工程师侧。出发点是 OKR 常见五落とし穴；做成「OKR等级コンパス」：从半期个人目标、到每月作业报告、再到 S〜D。等级角色整理为「课题大小」「卷入对象」两轴六级，个人目标身高取两轴较低者。工具：サスケWorks 存每日报告；claude.ai Artifact 为单页 HTML，经 window.claude 调 Claude、不持 API key；MCP 连接按日精确取报告。AI 只回答「这段文案对应事实是否出现（true/false）＋依据一句」；段计数、除法、S〜D 由程序做。明示用作者本人数据验证，非全公司制度自动运营；文中画面与基准已换成一般例。第2–3部用 promptfoo 模试：先定合格＝AI 判定等级与人标一致；36 回中 34 合格（约 94.44%），同题 3 跑分裂 12 组中 1 组；初版 16/18（6 组中 1 组分裂在成员级），改善1 为 18/18 且 6 组 0 分裂；跑约 1m 8s、并发 6。
+
+关键门禁不是「接了 Works／开了 Artifact」，而是分开记「AI 只做命中判定」与「模试是否先定合格标准并留下改善对照」。
+
+本场景据此输出「Agent 合做 OKR 辅助须同时报告合格定义、36 回成绩与改善前后，不能只报接了 Works」提纲。禁止把 34/36 写成下一公司也可自动打等级，或把本人数据验证写成全员已上线。`,
+    outcomes: [
+      "源披露团队工程师侧用 promptfoo：36 回中 34 合格；初版 16/18、改善1 为 18/18 且分裂组清零；跑约 1m8s、并发 6。属该公司这一次本人数据模试，不可外推为你同样 34/36 就等于下一人事制度也可直接自动打等级，或接了 Works 就等于全公司评价已门禁。",
+      "能把「可写成同时记下合格定义、改善前后、AI／程序分工」与「必须人完成的制度设计／导流链」拆开。",
+      "为把「Artifact 能跑」当成评价已自动化、以及把未先定合格标准却对外说已模试提供提问清单。",
+    ],
+    caveats: [
+      "34/36／16/18／18/18／12组中1组／1m8s／并发6均为作者模试自述；明示本人数据、非全公司自动评价；文中例已一般化。",
+      "同社人事侧文与 promptfoo GitHub 为对照／工具链（GET 200）；本机未见作者商店硬导流可列入可达导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（zenn.dev / 株式会社インターパーク），不是 Anthropic 或サスケWorks 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "OKR 辅助须同时报告合格定义与模试成绩",
+        body: `你是资深 Agent OKR 评价辅助教练。只根据用户边界写门禁，不要编造全公司评价已门禁。
+
+现在是不是约 AI 只判 true/false：{{whether_about_ai_tf}}
+是不是约先定合格＝与人标等级一致：{{whether_about_pass_def}}
+是不是约 promptfoo 约 36 回：{{whether_about_36}}
+
+输出 Markdown：
+1. 为什么「接了 Works／开了 Artifact」不能写成全公司评价已门禁
+2. 应怎样同时记下合格定义、34/36、初版与改善1 对照
+3. 只有一次本人数据模试时，应怎样单独记账，而不是写成下一制度也必然可自动打等级
+4. 人必须完成的清单（制度设计、导流链）
+禁止声称「同样 34/36 就等于下一公司也总会先落到可自动等级」；禁止把计数／S〜D 交给 AI 写成已门禁。`,
+      },
+      {
+        title: "三十四比三十六与改善一对照复盘",
+        body: `报告上可以写 36 回中 34 合格、改善1 为 18/18；但这是一次团队本人数据模试。请写复盘提纲。
+
+现象：{{thirty_four_of_thirty_six}}
+
+输出：
+1. 更像合格标准未先定，还是初版提示未稳住成员级
+2. 最小复验顺序（先定合格→再跑同题 3 次看分裂→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 MCP 按日拉取就等于全员报告已自动入库」，或「并发 6 就等于任意额度下也同成绩」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/interpark/articles/315a520d9590b3",
+      label: "zenn.dev · Claude × サスケWorks で、目標設定から評価までの自動化を試してみた ― promptfoo を添えて",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
