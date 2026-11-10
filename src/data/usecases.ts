@@ -62536,6 +62536,322 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
       date: "2026-10-26",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "853",
+    slug: "hathi-34of36-630-93",
+    title: "八兵卫／hathibei7：用工具等待时间为零的模拟 EC 客服，对照「按组织图拆开的编排器＋子代理」(A) 与「单循环＋技能」(B)。12 项任务各 3 次，共 72 次。B 在 12 项上全部更快，平均时延 13.49 秒对 6.30 秒（约 2.1 倍，是除法）。严格量表成功 A 34/36、B 35/36。带缓存的实测费用每任务 $0.0241 对 $0.0093（约 2.6 倍，是除法）。A 在 T04 上 2/3（合计 2/4）因协调失误失败；给退货担当补上 get_shipment 后 A' 为 3/3。原文那种部分折叠构成 A'' 在 28 次里没有观测到同样的失败",
+    summary: "个人（八兵卫／hathibei7／hatyibei）；披露自己按 Anthropic 那篇「何时把子代理折进主循环」的主张，做了一个虚构网店「ハチベエストア」的客服基准：工具是即时返回的确定 JSON，等待时间为零，「今天」固定为 2026-10-24。A 是作者故意按组织图拆开的编排器＋五个专业子代理（退货担当没有 get_shipment）；B 是单循环，只对技能做渐进展开，6 个数据工具一开始就全部可见，没有用 tool search。本编 12 项任务各跑 3 次、4 路并行，共 72 次，模型一律 claude-sonnet-5-5，评分用 claude-haiku-5-5。正文质量数字用的是事后改过的评分器 v2（给了技能正文、1 答评 3 次取多数）；v1 是 A 31/36、B 33/36。v2 严格量表成功为 A 34/36、B 35/36，决定性检查两边都是 36/36。B 在 12 项上全部更快，平均／中位／p90 时延是 13.49／13.60／18.06 秒对 6.30／7.03／8.49 秒，任务别平均时延比（A/B）为 1.78–2.83 倍、中位 2.16 倍，平均约 2.1 倍是除法。带缓存的实测每任务费用 $0.0241 对 $0.0093（约 2.6 倍，是除法）；若把全部输入都按普通单价试算则是 $0.0373 对 $0.0222（约 1.7 倍，是除法）。完全串行各跑 1 次、重试 0 次时，平均 12.74 秒对 6.52 秒，约 2.0 倍，费用 $0.0264 对 $0.0134。本编唯一翻转的是 T04（A 2/3、B 3/3）；失败的 2 次都是编排器只问了退货担当、也没有再问配送担当。给退货担当补上 get_shipment 的 A' 在 T04 上 3/3。部分折叠的 A'' 在 6 项各 3 次共 18 次全部成功，难化再测里 A'' 又 10 次成功，合计 28 次没有观测到原文那种「自己答、不问配送」的失败。作者亲手按量表读完 72 条回答，与 v2 一致 70/72；按作者自己的判定重数是 A 35/36、B 36/36。API 费用是 usage 乘官方标价的推算，不是账单：本编 72 次代理 $1.20、评分 $0.19，连同追加实验和作废的约 $1.58，合计约 $5.1。代码仓已公开，原始 runs.jsonl 未收入仓库。",
+    description: "面向已经把「Anthropic 说单循环又快又便宜，就可以在自己的系统里把子代理折掉」写成可以上线的人：把「这一次对照是在工具瞬时返回的模拟店上测的；约 2 倍的时延差不能写成官方原文的复现，也不能外推到工具本身要等待的实系统」写成门禁，区别于只看平均倍率、却不核任务是否翻转、评分器是否事后改过、失败是不是权限边界造成的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/hathibei7/items/b3b6aa8874aab70717ff",
+    sourceLabel: "qiita.com·hathibei7 实践帖",
+    upvotes: 744,
+    trending: false,
+    tags: [
+      "claude",
+      "subagent",
+      "single-loop",
+      "evaluation",
+      "latency",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「子代理该不该折进主循环」写成上线根据之前，要先核的边界（是不是约本编 12 项各 3 次、共 72 次，是不是约严格量表成功为 A 34/36、B 35/36，是不是约平均时延 13.49 秒对 6.30 秒，是不是约带缓存费用 $0.0241 对 $0.0093，是不是约 T04 的失败在 A' 上 3/3 消失，是不是约 A'' 的 28 次里没有观测到原文那种失败）以及「绝不可把约 2.1 倍／约 2.6 倍写成另一次实测，也不可把这次模拟店的结果写成官方原文已经复现」纪律",
+      "Agent 按实践帖输出：应怎样同时记下构成（A／A'／A''／B）、并行还是串行、评分器是 v1 还是 v2、决定性检查与量表是否对得上，以及工具等待是不是为零；没有测过的实系统等待、别的模型、tool search，要标明未核",
+      "人工保留 12 项任务表、T04 的轨迹和费用是 usage 乘标价的推算；Agent 不代你保证「换成带等待的真工具、别的拆法或别的模型，单循环也一定同样快、同样便宜，或质量一定不降」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-10-24T21:06:54.000+09:00 → 2026-10-24，同时刻为 UTC 2026-10-24T12:06:54Z、Asia/Shanghai 2026-10-24 20:06:54；dateModified 与发布相同；Qiita API created_at 同值；取 published；GET 200（UA MiraBot/1.0））：hathibei7 在《サブエージェントはメインループに「畳む」べきか？Anthropicの記事をモックECサポートで実測してみた》写模拟客服上单循环与子代理的对照。可达导流：https://github.com/hatyibei GET 200（作者卡 GitHub）；https://github.com/hatyibei/zenn-articles GET 200、https://github.com/hatyibei/zenn-articles/tree/main/bench/subagent-fold GET 200（正文代码仓）；https://x.com/hatyibei7 GET 200（作者卡 X）。作者卡 website 为空。配图 1 张 GET 200（不列入产品导流）：https://raw.githubusercontent.com/hatyibei/zenn-articles/main/images/subagent-bench/comparison.png 。一次资料未列入可达：https://platform.claude.com/docs/en/about-claude/pricing GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用，不因 200 算可达）。一次资料已核、不列入导流：https://claude.com/ja/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop GET 200。Qiita imgix 包装与 mermaid 嵌入不当作者产品导流。",
+      "与只转述 Anthropic 原文不同：本条测的是作者自己的模拟店，工具等待时间为零，B 也不是官方推荐构成的完全复现（没有 tool search）。不要把约 2.1 倍、约 2.6 倍、约 1.7 倍、约 2.0 倍写成另一次实测。正文质量数字用的是事后改过的 v2，不要和 v1 的 31/36、33/36 混成同一张表。作者亲手重数的 35/36、36/36 不要和 v2 的 34/36、35/36 混写。",
+    ],
+    approach: `八兵卫／hathibei7 在《サブエージェントはメインループに「畳む」べきか？Anthropicの記事をモックECサポートで実測してみた》（JSON-LD datePublished 2026-10-24，dateModified 与发布相同，取 published）披露：自己读了 Anthropic 的《Building agents: When to fold subagents into your main agent loop》之后，做了一个虚构网店「ハチベエストア」的客服基准，用 API 实际跑完对照。数字都是作者手头调用得到的。初版曾请 Claude、ChatGPT 和 Gemini 审过并改写，后又补做了 A'、A''、串行再测和难化实验。
+
+工具是确定性的 JSON 模拟，一调用就返回，工具侧等待时间为零。「今天」固定为 2026-10-24。订单记录里没有送达完成日（只在 get_shipment 里），却把过期的下单时预计送达日当作陷阱。A 是作者故意按组织图拆开的构成：编排器自己没有数据工具，退货担当与配送担当被分开，而退货担当没有 get_shipment。B 只对 5 份技能做渐进展开，6 个数据工具一开始就全部可见，没有用 tool search。作者写明：B 不是 Anthropic 推荐构成的完全复现。代理一律用 claude-sonnet-5-5，评分用 claude-haiku-5-5，没有开 extended thinking（日志里 thinking token 为 0），max_tokens=2048，两边都开了自动提示缓存。
+
+本编是 12 项任务（single 4、chain 5、rule 3）各跑 3 次，两种构成共 72 次，执行顺序打乱，4 路并行。质量看决定性检查和严格量表成功（检查全过且 grader 达到 4 分以上、且未触不合格条件）。正文里的质量数字，用的是事后改过的评分器 v2：初版 v1 只把 JSON 当作参照，把技能里写过的正确说明也当成编造来扣分；作者看了结果才改成把技能正文加入参照、1 答评 3 次取多数，代理没有重跑，72 条回答按同一条件重评。v1 是 A 31/36、B 33/36，v2 是 A 34/36、B 35/36。决定性检查两边都是 36/36。作者也写明：T04／T09 的必要工具里本来没有 get_shipment，量表却要求写出「期限 10/15 也过了」，所以会出现检查全过、grader 仍不及格；「初期不良」在 electronics 与 damaged 里分别是 30 日和 7 日，是模拟数据的设计缺陷。
+
+时延上，B 在 12 项上全部更快。平均／中位／p90 是 13.49／13.60／18.06 秒对 6.30／7.03／8.49 秒；任务别平均时延比（A/B）最小 1.78 倍、中位 2.16 倍、最大 2.83 倍；全文说的平均约 2.1 倍，是用 13.49 除以 6.30，不是另一次实测。每任务 API 调用 7.17 对 3.53（约 2 倍，是除法），输出 token 1,497 对 609（约 2.5 倍，是除法）。带缓存的实测费用每任务 $0.0241 对 $0.0093（约 2.6 倍，是除法）；全部输入都按普通单价试算则是 $0.0373 对 $0.0222（约 1.7 倍，是除法）。任务费用不含评分器。为了看是不是重试把 A 拖慢，作者用输出 token 回归各次 API 耗时：残差超过 3 秒的是 385 次里的 4 次，都在 A 侧，合计分到 1 次大约 0.4 秒，解释不了约 7 秒的差距。接着把 12 项完全串行各跑 1 次，自备重试并计数：重试 0 次，平均／中位 12.74／13.15 秒对 6.52／7.04 秒，倍率中位 1.96、最大 2.65，约 2.0 倍，费用 $0.0264 对 $0.0134。作者写明：这和原文「约快 2 倍」数字相近，但条件完全不同，不称为「复现」；实系统加上工具等待后，倍率可能会缩小。
+
+本编唯一翻转的是 T04（A 2/3、B 3/3）。串行再测里 A 又在 T04 上失败，所以 A 的 T04 合计是 2/4。失败的 2 次都是编排器只问了退货担当，退货担当没有 get_shipment，编排器也没有再问配送担当。给退货担当补上该工具的 A'，T04 为 3/3。部分折叠的 A''（把订单查询折进本体、配送仍是专业担当）在 chain／rule 的 6 项各 3 次共 18 次全部成功，18 次都问了配送担当；平均时延 23.8 秒（含 T10 的一次 106 秒离群，该次重试仍为 0、单次 API 要 33–35 秒）。难化再测里，A'' 又在 T02／T03 上各 5 次成功。作者把 A'' 的 18＋10 次合计为 28 次，没有观测到原文那种失败；0/18 的 95% 置信上限约为 19%，不能写成「不会发生」。25 次难化里失败也是 0，按格来看上限约 52%，25 次合计上限约 14%。作者亲手按量表读完 72 条，与 v2 一致 70/72；不一致的 2 条都是 T09，按作者自己的判定重数是 A 35/36、B 36/36。API 费用是 usage 乘 2026-10-24 查阅的官方标价，不是账单：本编代理 $1.20、评分 $0.19（v1 $0.04＋v2 $0.15），初版消融 $0.13，追加实验（含评分）$1.95，因评分器设置失误和重复启动而作废、未计入汇总的约 $1.58，合计约 $5.1。代码在 GitHub 公开，原始 runs.jsonl／ext_runs.jsonl 因体积未收入仓库。`,
+    outcomes: [
+      "源披露作者用工具等待时间为零的模拟 EC 客服，对照按组织图拆开的子代理构成 A 与单循环＋技能构成 B：本编 12 项各 3 次共 72 次，严格量表成功为 A 34/36、B 35/36；B 在 12 项上全部更快，平均时延 13.49 秒对 6.30 秒（约 2.1 倍，是除法），带缓存的每任务费用 $0.0241 对 $0.0093（约 2.6 倍，是除法）。A 在 T04 上因协调失误 2/3 失败，补权限后的 A' 为 3/3；部分折叠的 A'' 在 28 次里没有观测到原文那种失败。这是这一份模拟店、这一种拆法、这一个模型和这一次评分器上的记录，不可外推成带工具等待的实系统、别的拆法或别的模型也会得到相同的倍率或质量，也不能把约 2 倍写成官方原文已经复现。",
+      "能把「可写成这一次对照里单循环更快、更便宜，质量也没有明显变差」与「必须人完成的题目与导流链」拆开。",
+      "为把「看到官方说单循环更好，就在自己的系统里把子代理折掉」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "12 项、各 3 次、72 次、34/36 与 35/36、13.49／6.30 秒、约 2.1 倍、1.78–2.83 倍、中位 2.16 倍、$0.0241／$0.0093、约 2.6 倍、$0.0373／$0.0222、约 1.7 倍、串行 12.74／6.52 秒、约 2.0 倍、$1.20／$0.19／约 $1.58／约 $5.1、T04 的 2/3 与合计 2/4、A' 的 3/3、A'' 的 18／28 次、70/72、作者重数的 35/36 与 36/36，以及「工具等待时间为零」「B 不是推荐构成的完全复现」，均为作者自述。约 2.1 倍、约 2.6 倍、约 1.7 倍、约 2.0 倍、约 2 倍的调用次数、约 2.5 倍的输出 token，都是除法或汇总，不是另一次实测。约 $5.1 是 usage 乘官方标价的推算，不是账单；作废的约 $1.58 未计入对照。v2 是看过结果之后改的评分器，不要和 v1 混成同一张表；作者亲手重数不要和 v2 混写。本编 4 路并行，追加实验是串行或 3 路并行、时段也不同，只在同一次实验里比数字。0 次失败不能写成「不会发生」。不要把「长文会增加 token、变慢」误接成本条。",
+      "可达导流：https://github.com/hatyibei GET 200（作者卡 GitHub）；https://github.com/hatyibei/zenn-articles GET 200、https://github.com/hatyibei/zenn-articles/tree/main/bench/subagent-fold GET 200（正文代码仓）；https://x.com/hatyibei7 GET 200（作者卡 X）。作者卡 website 为空。配图 1 张 GET 200（不列入产品导流）：https://raw.githubusercontent.com/hatyibei/zenn-articles/main/images/subagent-bench/comparison.png 。一次资料未列入可达：https://platform.claude.com/docs/en/about-claude/pricing GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用，不因 200 算可达）。一次资料已核、不列入导流：https://claude.com/ja/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop GET 200。Qiita imgix 包装与 mermaid 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核构成和等待，再谈折掉子代理",
+        body: "请对照这篇实践，不要把「单循环比子代理更快、更便宜」写成已经在实系统里得到证实，也不要把约 2 倍的时延差写成官方原文的复现。请分别写清：（1）对照的是哪两种构成，工具等待是不是为零，B 有没有用 tool search；（2）时延和费用的倍率是哪两个实测值相除，是不是另一次实测；（3）质量数字用的是 v1 还是事后改过的 v2，翻转的任务失败原因是不是权限边界。没有在带工具等待的实系统、别的模型或其他拆法上测过的结论，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/hathibei7/items/b3b6aa8874aab70717ff",
+      label: "qiita.com·hathibei7《サブエージェントはメインループに「畳む」べきか？Anthropicの記事をモックECサポートで実測してみた》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "854",
+    slug: "kiyaku-tmpok-git0-000",
+    title: "エージェント規約工房／agentkiyaku：用 Codex CLI 0.163.0（Linux 6.12、bubblewrap 0.12.0，2026-10-18）的 codex sandbox，在 workspace-write 下逐项试写。作业文件夹内可以新建和删除；/tmp 可以写；家目录下别的文件夹、.git 内写入、git add／commit／reset --hard、rm -rf .git、作业文件夹内的 .codex／.agents，以及 curl https://example.com 都被拦住（curl 结束为 000；沙箱外同样的 curl 是 200）。打开 network_access 后，example.com、github.com、pypi.org 都是 200。没有在与模型对话的状态下试，也没有试 macOS／Windows／WSL2",
+    summary: "个人（エージェント規約工房／agentkiyaku）；披露自己用 Codex CLI 0.163.0（npm 安装）、Linux 6.12、bubblewrap 0.12.0，在 2026-10-18 用 codex sandbox 直接跑命令，核 workspace-write 实际会拦住什么。没有在智能体与模型对话、由模型自己选命令的状态下试，也没有看成是怎么弹出的，承认提示只按官方文档来写。只在 Linux 上试过，macOS、Windows、WSL2 未试。本次版本的 --ask-for-approval 帮助里只剩 on-request 与 never；再传已经废止的 untrusted 会报 invalid value。文档里的 `codex sandbox linux …` 写法在这个版本会报错，作者用的是 `codex sandbox -- <命令>`。workspace-write 下：作业文件夹内新建和删除都可以；家目录下别的文件夹、.git 内写入、git add／commit／reset --hard（因为做不了 .git/index.lock）、rm -rf .git，以及作业文件夹内的 .codex／.agents 都被拦住，提示 Read-only file system；curl https://example.com 结束为 000，沙箱外同样的 curl 是 200。/tmp 可以写。不加选项时按 read-only 处理，作业文件夹内和 /tmp 都不能写（作者当时没有改 ~/.codex/config.toml 里的 sandbox_mode）。把 sandbox_workspace_write.exclude_tmpdir_env_var 打开后，向 /tmp 写也会变成只读；作者写明测试或构建里要用临时文件的工具会不会因此动不了，没有试。打开 network_access 后，example.com、github.com、pypi.org 都是 200；按域名收窄的 network_proxy 没有试。在沙箱里做 git commit 再走「批准后到沙箱外执行」这条路，也没有试。作者写「手头 1 秒不到就结束了」，这是原文的说法，不是另一次秒表实测。文末导向作者在 note 上的付费连载（写各工具里不让读 .env 和 API 密钥的设定）。Codex 不在平台枚举里，正文也未写实测用了枚举内平台，platforms 留空。",
+    description: "面向已经把「选了 workspace-write，作业文件夹以外就全部写不了」写成可以上线的人：把「/tmp 默认写得进、.git 和通信默认写不出；这些只在 codex sandbox 直接跑命令时核过」写成门禁，区别于只看模式名字、却不按项试写入、删除、通信和 git 的实践。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/agentkiyaku/articles/9a93fbb6076fa8",
+    sourceLabel: "zenn.dev·agentkiyaku 实践帖",
+    upvotes: 745,
+    trending: false,
+    tags: [
+      "codex-cli",
+      "sandbox",
+      "workspace-write",
+      "permissions",
+      "linux",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「workspace-write 已经把作业文件夹外的写入全部拦住」当成根据之前，要先核的边界（是不是约 Codex CLI 0.163.0、Linux 6.12、bubblewrap 0.12.0，是不是约用 codex sandbox 直接跑命令而不是与模型对话，是不是约作业文件夹内可写、/tmp 可写、家目录下别的文件夹和 .git 被拦、curl 结束为 000，是不是约打开 network_access 后 example.com／github.com／pypi.org 为 200）以及「绝不可把 /tmp 写成默认不可写，也不可把这次命令测试写成模型对话里已经核过承认提示」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 sandbox 模式、是否改过 config.toml、network_access 开还是关，以及试过的是 Linux 上的哪一条命令；没有测过的模型对话、承认提示、macOS／Windows／WSL2、network_proxy，要标明未核",
+      "人工保留那张写入对照表和「untrusted 已经不能再用」的帮助输出；Agent 不代你保证「同一组选项在别的版本、别的操作系统，或由模型自己选命令时，也会给出相同的拦截结果」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-18T12:40:07.851+09:00 → 2026-10-18，同时刻为 UTC 2026-10-18T03:40:07Z、Asia/Shanghai 2026-10-18 11:40:07；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：agentkiyaku 在《Codex CLI の workspace-write を codex sandbox で検証：/tmp には書けて .git は止まる》写 workspace-write 的实际拦截范围。可达导流：https://note.com/agentkiyaku/m/m179e3a155323 GET 200（正文付费连载，写各工具里不让读 .env 和 API 密钥的设定）。作者卡 website／GitHub／X 为空。无配图。一次资料未列入可达：https://developers.openai.com/codex/agent-approvals-security 、https://developers.openai.com/codex/concepts/sandboxing 均 GET 403（59 字节，Forbidden）。源文代码里的 https://example.com 按原文写出，属占位示例域，未作为可达链去核。",
+      "本条测的是 codex sandbox 直接跑命令，不是模型自己选命令时的承认提示。不要把「手头 1 秒不到就结束了」写成另一次秒表实测。不要把 /tmp 写成默认不可写；关掉临时目录写入之后，测试或构建会不会失败，作者写明未试。Codex 不在枚举里，不硬凑；platforms 留空。",
+    ],
+    approach: `エージェント規約工房／agentkiyaku 在《Codex CLI の workspace-write を codex sandbox で検証：/tmp には書けて .git は止まる》（页内 publishedAt 2026-10-18，bodyUpdatedAt 与发布相同，取 published）披露：自己开始用 Codex CLI 时，对沙箱和承认的设定没有把握，于是用中间档 workspace-write，在 codex sandbox 里一条条试它实际会拦住什么。确认条件是 Codex CLI 0.163.0（npm i -g @openai/codex）、Linux 6.12、bubblewrap 0.12.0，日期 2026-10-18。
+
+试的是直接执行命令，不调用模型，因此也不耗 token。没有在智能体与模型对话、由模型自己选命令的状态下试，也没有看成是怎么弹出的；承认提示只按官方文档来写。只在 Linux 上试过，macOS、Windows、WSL2 未试。本次版本的帮助里，--ask-for-approval 只剩 on-request 与 never；再传已经废止的 untrusted，会得到 invalid value 和 possible values: on-request, never。文档里的 \`codex sandbox linux …\` 写法在这个版本会报错，作者用的是 \`codex sandbox -- <命令>\`。
+
+作者先在 ~/sbtest 里初始化一个 git 仓库，再在 workspace-write 下试写入。结果是：作业文件夹内新建和删除都可以；家目录下别的文件夹不能写；/tmp 可以写；.git 内不能写；git add／commit／reset --hard 都会停住，因为做不了 .git/index.lock；rm -rf .git 被拦住，历史还在；作业文件夹内的 .codex／.agents 不能写；curl https://example.com 结束为 000。失败的写入提示是 Read-only file system。沙箱外打同样的 curl 是 200，说明机器本身的网络是通的。git status 等读取可以。不加选项时按 read-only 处理，作业文件夹内和 /tmp 都不能写（作者当时没有改 ~/.codex/config.toml 里的 sandbox_mode）。
+
+作者还试了把临时目录排除在可写范围之外：打开 sandbox_workspace_write.exclude_tmpdir_env_var 后，向 /tmp 写也会变成只读。测试或构建里要用临时文件的工具会不会因此动不了，写明未试。打开 network_access 之后，curl 对 example.com、github.com、pypi.org 都是 200；按域名收窄要开 features.network_proxy，这一项没有试。在沙箱里做不了 git commit，批准后到沙箱外执行这条路，也没有试。作业文件夹内的文件可以用 rm 删掉；已经提交的内容，在沙箱外可以用 git restore 恢复，沙箱里的 git restore 同样做不了 index.lock。作者建议日常从官方当作 Auto 预置来介绍的 \`codex -s workspace-write -a on-request\` 开始，并写明实际的确认画面没有试过。文末写「手头 1 秒不到就结束了」，这是原文的说法，不是另一次秒表实测。文末导向作者在 note 上的付费连载。`,
+    outcomes: [
+      "源披露作者在 2026-10-18 用 Codex CLI 0.163.0、Linux 6.12、bubblewrap 0.12.0 的 codex sandbox，于 workspace-write 下逐项试写：作业文件夹内可以新建和删除，/tmp 可以写；家目录下别的文件夹、.git 内写入、git 改写历史、作业文件夹内的 .codex／.agents，以及 curl https://example.com 都被拦住（curl 结束为 000，沙箱外同样的 curl 是 200）。打开 network_access 后，example.com、github.com、pypi.org 都是 200。这是这一次在 Linux 上用 sandbox 直接跑命令的记录，不可外推成与模型对话、承认提示、其他操作系统或其他版本也会给出相同的拦截结果，也不能把 /tmp 写成默认不可写。",
+      "能把「可写成这一次对照里 /tmp 默认写得进、.git 和通信默认写不出」与「必须人完成的题目与导流链」拆开。",
+      "为把「选了 workspace-write 就等于作业文件夹以外全部写不了」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "Codex CLI 0.163.0、Linux 6.12、bubblewrap 0.12.0、2026-10-18、作业文件夹内可写、/tmp 可写、家目录下别的文件夹和 .git 被拦、curl 结束为 000、打开 network_access 后三处均为 200，以及「没有在与模型对话的状态下试」，均为作者自述。「手头 1 秒不到就结束了」是原文的说法，不是另一次秒表实测。承认提示、macOS／Windows／WSL2、network_proxy，以及批准后到沙箱外做 git commit，作者写明未试。关掉 /tmp 写入后，测试或构建会不会失败，也写明未试。源文代码里的 https://example.com 按原文写出，属占位示例域，未作为可达链去核。不要把「长文会增加 token、变慢」误接成本条。Codex 不在枚举里，正文未写枚举内平台，platforms=[]，不硬凑。",
+      "可达导流：https://note.com/agentkiyaku/m/m179e3a155323 GET 200（正文付费连载）。作者卡 website／GitHub／X 为空。无配图。一次资料未列入可达：https://developers.openai.com/codex/agent-approvals-security 、https://developers.openai.com/codex/concepts/sandboxing 均 GET 403（59 字节，Forbidden），已写出完整 URL。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先按项试写入，再谈 workspace-write 已经拦住",
+        body: "请对照这篇实践，不要把「选了 workspace-write」写成「作业文件夹以外已经全部写不了」。请分别写清：（1）试的是 codex sandbox 直接跑命令，还是与模型对话、由模型自己选命令；（2）作业文件夹内、/tmp、家目录下别的文件夹、.git、通信各自是成功还是被拦，curl 的结束码是什么；（3）用的是哪个 Codex CLI 版本、哪个操作系统，有没有改过 config.toml。没有测过的承认提示、其他操作系统、network_proxy，请标明未核。不要把 /tmp 写成默认不可写。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/agentkiyaku/articles/9a93fbb6076fa8",
+      label: "zenn.dev·agentkiyaku《Codex CLI の workspace-write を codex sandbox で検証：/tmp には書けて .git は止まる》",
+      date: "2026-10-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "855",
+    slug: "twin-26to43-12s-3h",
+    title: "twinharness：给 Claude Code 加了结束时的 Stop 钩子，改变了文件却还没让另一套 AI（Codex）做过只读评审时，只拦一次。2026-09-24 用自己的会话记录复现误判并改正：会把已评审过的提交当成未评审、把后台评审刚启动当成已经通过、把「使用上限」的字样误判为通过，以及评审后的 git commit 被当成变更（闸门挡了作者自己才发现）。测试从 26 件增到 43 件，新增测试在改正前的版本上会失败。2026-09-28 又发现拦回过程中仍会发出完成通知，于是做成共用的完成判定（试跑闸门限 12 秒，后台工作超过 3 小时视为通知遗漏）",
+    summary: "个人（twinharness）；披露自己用 Claude Code 写、用 Codex 做只读评审，并把共同规则放在名为 agent-toolkit 的仓库里（正文没有给出仓库 URL）。文章里的规则用文字写着「实现之后要让另一套 AI 做评审」，但只靠文章守不住，于是做了 Stop 钩子 Hook-CodexGate.js：对话要结束时，先查会话记录里有没有尚未评审的变更，没有通过就拦一次。变更包括编辑／写入、外壳里的改写，以及对实现用子代理的委托；交接文档、记忆文件和临时文件夹单独的改动不计入。只有 Invoke-Codex.ps1、New-CodexReview.ps1、codex exec 这类命令真正成功才算「已经过 Codex」；只搜索名字的命令不算；因为使用上限而跑不起来时，只要写进 HANDOFF，也可以结束。已经处于拦回状态的停止一律放行；作者也可以写「【Codex省略: 理由】」或关掉闸门。拦回文从 6 行缩到 3 行。2026-09-24，作者用自己的会话记录复现误判并改正：展示的变更清单曾把上次 Codex 通过之前的改动也算进来；后台拉起的 Codex 刚启动就被当成已经通过；文面或测试输出里的「使用上限」曾让闸门误判为通过；评审后的 git commit 也被当成变更——最后这一条是闸门挡住作者自己才发现的。改正后测试从 26 件增到 43 件，新增测试在改正前的版本上会失败。作者后来还规定：最后一次变更之后、3 小时以内只是在等后台 Codex 的结果，就不要拦回；here-document 正文和写到临时文件夹也不算变更。2026-09-28，作者指出拦回过程中仍会发出完成通知，原因是完成通知钩子与闸门同时跑、彼此看不到结果。于是做成 StopVerdict.js，先把 Codex、质量检查、日语三道闸门不写回状态地试跑一遍，任一要拦就不算完成；试跑限 12 秒，失败或超时按「不拦」处理；后台工作超过 3 小时且记录里没有结束通知，视为通知遗漏。这件判定也被 Codex 评审过，采用了严重 1 件、中等 1 件；「超过 3 小时的后台工作会过早显示完成」那条没有采用。闸门判定不靠 AI 猜测，只看会话记录里的字符串和顺序。夜间的 claude -p 会不会被闸门拦住，写明未核；README 是否还在把提交算作变更，也写明未核。无配图，无产品导流。Codex 不在枚举里，不硬凑；正文写明用了 Claude Code，platforms 记 claude。",
+    description: "面向已经把「规则里写了要实现之后先做跨模型评审，就可以当成每次都会做到」写成可以上线的人：把「文章守不住的规则，要用结束时的闸门去数变更和评审；闸门自己也会误判，要用会话记录复现后再加测试」写成门禁，区别于只写一条规则、却不核钩子实际会不会放行、会不会在拦回时仍报完成的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/twinharness/articles/codex-review-gate-stop-hook",
+    sourceLabel: "zenn.dev·twinharness 实践帖",
+    upvotes: 746,
+    trending: false,
+    tags: [
+      "claude-code",
+      "stop-hook",
+      "code-review",
+      "codex",
+      "false-positive",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「规则里已经写了要先做跨模型评审」当成每次都会做到之前，要先核的边界（是不是约结束时的 Stop 钩子只拦一次，是不是约 2026-09-24 用自己的会话记录复现了四类误判，是不是约测试从 26 件增到 43 件且新增测试在改正前的版本上会失败，是不是约 2026-09-28 发现拦回时仍会发出完成通知，是不是约试跑限 12 秒、后台工作超过 3 小时视为通知遗漏）以及「绝不可把规则写成已经自动执行，也不可把闸门写成不会误判」纪律",
+      "Agent 按实践帖输出：应怎样同时记下何谓变更、何谓已经过评审、拦回是否只一次，以及完成通知是否与闸门共用判定；没有测过的夜间 claude -p、用 git 状态对比来代替命令字符串推测，要标明未核",
+      "人工保留 9 月 24 日那张误判表和 9 月 28 日关于完成通知的指摘；Agent 不代你保证「同一套钩子在夜间无人运行、或其他命令写法下，也不会漏拦或误拦」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T23:31:24.103+09:00 → 2026-10-25，同时刻为 UTC 2026-10-25T14:31:24Z、Asia/Shanghai 2026-10-25 22:31:24；bodyUpdatedAt 2026-10-08T23:33:58.841+09:00（早于发布，按预定发布或先写后发理解）；取 published；GET 200（UA MiraBot/1.0））：twinharness 在《別のAIにレビューさせる決まりをClaude Codeが忘れるので、終了時に1回だけ止めるフックを作った》写结束闸门的误判与改正。无产品导流。作者卡 website／GitHub／X 为空。正文提到 agent-toolkit 仓库，但没有给出 URL。无配图。页内 mermaid 嵌入不当作者产品导流。",
+      "不要把测试从 26 件增到 43 件写成另一次与误判无关的测量；新增测试是用来锁住改正前会失败的那些例子。12 秒和 3 小时是完成判定里写明的阈值，不是另一次秒表实测。夜间 claude -p 是否会被拦住，README 是否还在把提交算作变更，作者写明未核。Codex 不在枚举里，不硬凑；platforms 记 claude。",
+    ],
+    approach: `twinharness 在《別のAIにレビューさせる決まりをClaude Codeが忘れるので、終了時に1回だけ止めるフックを作った》（页内 publishedAt 2026-10-25，bodyUpdatedAt 2026-10-08，早于发布，按预定发布或先写后发理解，取 published）披露：自己用 Claude Code 写代码、用 Codex 做只读评审，并把共同规则和辅助脚本放在名为 agent-toolkit 的仓库里（正文没有给出仓库 URL）。「实现之后要让另一套 AI 做评审」这条规则只写在文章里时守不住，于是做了在对话即将结束时自动运行的 Stop 钩子。
+
+闸门脚本是 Hook-CodexGate.js。它读会话记录，把编辑／写入、外壳里的改写，以及对实现用子代理的委托算作变更；交接文档、记忆文件和临时文件夹单独的改动不计入。只有 Invoke-Codex.ps1、New-CodexReview.ps1、codex exec 这类命令真正成功，才算已经过 Codex；只搜索名字的命令不算；因为使用上限而跑不起来时，只要写进 HANDOFF，也可以结束。为了避免来回拦，已经处于拦回状态的停止一律放行；作者也可以在最后一轮单独写一行「【Codex省略: 理由】」，或在设定里关掉闸门。拦回文从 6 行缩到 3 行，以免每次都被重新读进上下文。
+
+2026-09-24，作者用自己的会话记录复现误判并改正。展示给模型看的变更清单，曾把上次 Codex 通过之前的改动也算成还未评审，后来改成只展示那次通过之后的改动。后台拉起的 Codex 刚启动，曾被当成已经通过，后来改成只认会话记录里特定形态的结束通知，并且不把工具输出里引用的通知算进去。闸门文面或测试输出里出现「使用上限」时，曾把尚未通过的情况判成已经通过，后来改成：只有包在 Codex 调用脚本里跑的那次上限提示才算。评审之后的 git commit 也曾被当成变更——这一条是闸门挡住作者自己才发现的，后来改成不把提交算进变更。改正后，测试从 26 件增到 43 件；作者写明，新增的测试在改正前的版本上会失败。
+
+作者后来还接到「把拦回文造成的用量压到最低」的指示，又改了两处：最后一次变更之后、3 小时以内如果只是在等后台直接调用的 Codex 出结果，就不要拦回，等结果到达之后的那次停止再核；here-document 的正文和写到临时文件夹也不算变更，因为提交说明里的 <noreply@…> 曾被当成重定向符号，不过用 .. 写出目录的仍要算。作者写明，在实际会话里，为等待评审而停止时已经不再被拦回。
+
+2026-09-28，作者指出拦回过程中仍会发出完成通知。原因是完成通知钩子与闸门同时跑，彼此看不到对方的结果。于是做成 StopVerdict.js，先把 Codex、质量检查、日语三道闸门不写回状态地试跑一遍，任一要拦就不算完成；后台工作如果还没有结束通知，也不算完成。试跑限 12 秒，失败或超时按「不拦」处理；后台工作超过 3 小时且记录里没有结束通知，视为通知遗漏。这件判定也被 Codex 评审过，采用了严重 1 件（用被拦回的那一轮指纹，避免与日语闸门冲突）和中等 1 件（判定过程中新到达的指示，不要被旧的停止覆盖）。「超过 3 小时的后台工作会过早显示完成」那条没有采用，作者认为少见，而且漏通知导致长时间不提示的害处更大。闸门判定不靠 AI 猜测，只看会话记录里的字符串和顺序。夜间的 claude -p 会不会被拦住，写明未核；README 是否还在把提交算作变更，也写明未核。`,
+    outcomes: [
+      "源披露作者给 Claude Code 做了结束时只拦一次的评审闸门，并在 2026-09-24 用自己的会话记录复现了四类误判后改正，测试从 26 件增到 43 件，新增测试在改正前的版本上会失败；2026-09-28 又发现拦回过程中仍会发出完成通知，于是做成共用的完成判定，试跑限 12 秒，后台工作超过 3 小时视为通知遗漏。这是这一套钩子、这几段会话记录和这一份测试上的记录，不可外推成其他命令写法、夜间的 claude -p 或其他仓库里也不会误判或漏报完成，也不能把规则里写了「要先做评审」写成每次都会做到。",
+      "能把「可写成文章守不住的跨模型评审，要用结束时的闸门去数变更，而且闸门自己也会误判」与「必须人完成的题目与导流链」拆开。",
+      "为把「规则里写了要实现之后先做评审，就可以当成每次都会做到」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "2026-09-24／2026-09-28、测试 26 件增到 43 件、拦回文 6 行缩到 3 行、试跑限 12 秒、后台工作超过 3 小时视为通知遗漏，以及四类误判的改正，均为作者自述。12 秒和 3 小时是完成判定里写明的阈值，不是另一次秒表实测。新增测试在改正前的版本上会失败，不要把 26→43 写成与误判无关的另一次测量。夜间 claude -p 会不会被拦住，用 git 状态对比来代替命令字符串推测，以及 README 是否还在把提交算作变更，作者写明未核。正文提到 agent-toolkit 仓库，但没有给出 URL。不要把「长文会增加 token、变慢」误接成本条。Codex 不在枚举里，不硬凑；platforms 记 claude。",
+      "无产品导流。作者卡 website／GitHub／X 为空。无配图。页内 mermaid 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核闸门实际拦了什么，再谈规则已经生效",
+        body: "请对照这篇实践，不要把「规则里写了要实现之后先做跨模型评审」写成每次都会做到。请分别写清：（1）结束时的闸门把什么算作变更、把什么算作已经评审，拦回是不是只一次；（2）是否用自己的会话记录复现过误判，测试是否覆盖改正前会失败的例子；（3）完成通知会不会在拦回过程中发出，试跑和超时是怎么规定的。夜间无人运行、其他命令写法，以及尚未用 git 状态对比代替命令字符串推测的行为，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/twinharness/articles/codex-review-gate-stop-hook",
+      label: "zenn.dev·twinharness《別のAIにレビューさせる決まりをClaude Codeが忘れるので、終了時に1回だけ止めるフックを作った》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "856",
+    slug: "krbrr-656-127-2of9",
+    title: "krbrr／zenn_content：把 Claude Code 官方仓库里、2026-07-28 之后、带复现步骤且带 Windows／Desktop／hooks／data-loss 标签的 656 件问题报告做筛选（2026-10-26 时点）。未解决且估计「这台 PC 也可能发生」的先是 127 件，其中 63 件在手头规则／备忘里完全没有。从 127 件里拿出能安全试的 9 件，在 Desktop 同梱 2.1.299 上实机试：再现 2 件，其中 1 件是已有备忘 #88561 的另一编号，新确认的再现只有 #100983 一件（而且方向与报告相反，是 LF→CRLF）。同日把判定范围扩大后，台账变成 221 件（其中 209 件仍是未确认的估计）",
+    summary: "个人（krbrr／zenn_content）；披露自己在 Windows 11 Pro、Claude Code Desktop 同梱 2.1.299／CLI 2.1.304、单人使用的环境下，把「踩到再查」改成「踩到之前先做台账」。件数以 2026-10-26 为时点。作者的知识收集管道里约有 15 万件（150,418 件），其中官方问题报告 40,315 件，约八成（32,130 件）是最低档，周检从未出现过；而已经写进 ~/.claude 的 978 件来源里，问题报告反而是最多的 249 件。按标签和「有复现步骤」抽出 656 件，当时能取到状态的 655 件里，未解决 527、已修复关闭 69、重复关闭 36、不计划修复关闭 23，1 件取不到。判定对象是未解决加上不计划修复的 550 件。由 Sonnet 按作者写明的环境来判，「这台 PC 也可能发生」的先是 127 件（消失／误执行 17、停止／默默出错 72、慢／麻烦 38），另有条件再说 276 件、判成不会发生或只是表面的 147 件。127 件里有 63 件在手头规则、备忘、知识里完全没有。从 127 件里拿出能安全试的 9 件实机试：#89392 再现，但是已有备忘 #88561 的同一问题（Bash 工具把 'a\\\\b' 收成 3 字节，PowerShell 工具仍是 4 个字符）；#100983 再现，但方向与报告相反，是 LF→CRLF；其余 7 件未再现或缺少前提。新确认的再现只有 1 件。同日把判定范围扩大后，台账变成 221 件（重大 S1 为 34 件），按 9 个领域笔记加 1 份目录来放，221 件中 209 件仍是未确认的估计。用 11 条委托试自动显示：写了症状的 5 条都能显示出台账，无关的 6 条一条也没有显示；「显示了就会被读」并不成立，另一次调查里，自动显示的笔记在同一轮被打开的比例是 1.2%。第一次完整的每周作业里，最近 43 件候选大约 5 分钟判定完，16 件作为「也可能发生」进入台账。台账是否真的被用到，作者计划大约 2026-11-23 再看显示次数和打开次数，当时还未做。",
+    description: "面向已经把「问题报告上写了会在 Windows 或 Desktop 上发生，就可以当成自己这台机器已经会中」写成可以上线的人：把「报告文只是别人环境里的事实；估计「也可能发生」必须和实机核过的结果分开记」写成门禁，区别于只按标签筛出一份长清单、却不抽样实机试、也不标明哪些只是估计的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/zenn_content/articles/claude-code-known-bugs-ledger",
+    sourceLabel: "zenn.dev·zenn_content 实践帖",
+    upvotes: 747,
+    trending: false,
+    tags: [
+      "claude-code",
+      "bug-ledger",
+      "windows",
+      "hooks",
+      "repro",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「官方问题报告里写了会在这种环境发生」当成自己已经会中之前，要先核的边界（是不是约 2026-10-26 时点从 656 件筛到估计「也可能发生」的 127 件，是不是约 9 件实机试里再现 2 件、新确认只有 1 件，是不是约同日扩大后的台账为 221 件、其中 209 件仍是估计，是不是约 63 件在手头完全没有记载）以及「绝不可把 127 件写成已经在这台机器上再现，也不可把 221 件和 127 件混成同一次筛选」纪律",
+      "Agent 按实践帖输出：应怎样同时记下筛选条件、判定是模型估计还是实机结果、实机用的是哪个 Desktop 版本，以及台账里「实机」栏有没有把估计和核过的分开；没有实机试过的条目、尚未做的四周后使用情况复核，要标明未核",
+      "人工保留 9 件实机表和「新确认只有 #100983」这条限度；Agent 不代你保证「同一套标签筛选在别的日期、别的版本或其他机器上，也会得到相同的 127 件或相同的再现结果」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T19:59:36.012+09:00 → 2026-10-31，同时刻为 UTC 2026-10-31T10:59:36Z、Asia/Shanghai 2026-10-31 18:59:36；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：krbrr／zenn_content 在《Claude Codeの未解決バグ、自分のPCで起きる127件を先回りで台帳にした》写筛选与 9 件实机。无产品导流。作者卡 website／GitHub／X 为空。无配图。连载前篇已核、不列入导流：https://zenn.dev/zenn_content/articles/claude-code-error-known-bug-lookup 、https://zenn.dev/zenn_content/articles/claude-code-hooks-known-limits 、https://zenn.dev/zenn_content/articles/claude-code-settings-hardening ，均 GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/headless 、https://code.claude.com/docs/en/permissions ，以及 https://github.com/anthropics/claude-code/issues 与正文写出的 #100349、#100614、#100983、#104331、#89392、#90148、#92328、#93960、#96263、#97692、#99438 各页，均 GET 200。页内 mermaid 嵌入不当作者产品导流。本次 GitHub 页未遇 429。",
+      "不要把 127 件写成已经在这台机器上再现；实机只试了 9 件，新确认的再现只有 1 件。不要把后来扩大到 221 件的台账，和第一次筛出的 127 件混成同一次计数。11 条委托的自动显示，不要和 9 件实机、也不要和另一次调查里的 1.2% 打开比例混成同一场。约 5 分钟是原文的「約」，不是另一次秒表实测。大约 2026-11-23 的使用情况复核，作者写明当时还未做。",
+    ],
+    approach: `krbrr／zenn_content 在《Claude Codeの未解決バグ、自分のPCで起きる127件を先回りで台帳にした》（页内 publishedAt 2026-10-31，bodyUpdatedAt 与发布相同，取 published）披露：自己在 Windows 11 Pro、Claude Code Desktop 同梱 2.1.299／CLI 2.1.304、单人使用的环境下，不再等踩到再查，而是先把「这台 PC 也可能发生」的未解决问题做成台账。件数以 2026-10-26 为时点；各 issue 之后可能已经修复或关闭。「也可能发生」是按报告文做的估计，实机只试了 9 件。
+
+这和作者 8 月那篇「常见错误 10 种里有 9 种是已知缺陷」不同。那篇是踩到再去自己的知识库里对。用下来有三个弱点：数据消失类等到踩到可能已经晚了；说不清症状就搜不到；单条问题报告在通用知识里分数低，周检轮不到。第三个弱点有数字：管道里约有 15 万件（150,418 件），其中官方问题报告 40,315 件，约八成（32,130 件，是除法）是最低档，周检从未出现过；而已经写进 ~/.claude 的 978 件来源里，问题报告反而是最多的 249 件。
+
+筛选是：官方仓库 issue、2026-07-28 之后公开、标签里带 platform:windows／area:desktop／area:hooks／data-loss 之一、带复现步骤、去掉 stale／duplicate／invalid，抽出 656 件。当时能取到状态的 655 件里，未解决 527、已修复关闭 69、重复关闭 36、不计划修复关闭 23，1 件取不到。判定对象是未解决加上不计划修复的 550 件。由 Sonnet 按作者写明的环境来判——用了什么、没有用什么都写上——「也可能发生」的先是 127 件（消失／误执行 17、停止／默默出错 72、慢／麻烦 38），条件再说 276 件只留在数据里，判成不会发生或只是表面的 147 件。127 件里有 63 件在手头规则、备忘、知识里完全没有。
+
+从 127 件里拿出能安全试的 9 件，在 Desktop 同梱 2.1.299 上实机试。#89392（Bash 工具把 \\\\ 收成 \\）再现，但是已有备忘 #88561 的同一问题：printf '%s' 'a\\\\b' | wc -c 经 Bash 工具是 3 字节，经 PowerShell 工具仍是 4 个字符。#100983（Edit 碰到混用换行的文件会改到没在改的行）再现，但方向与报告相反，是 LF→CRLF。#96263 未再现，当时的版本直接拒绝写入。#100296、#97977、#98744、#103837 未再现；#104433 缺少前提（并不是联接）；#93960 当时没有发生冲突。9 件里，新确认的再现只有 #100983 一件。
+
+同日把判定范围扩大后，台账变成 221 件（重大 S1 为 34 件），放进 Obsidian 知识库，按 9 个领域笔记加 1 份目录来放，九类件数相加正是 221。221 件中 209 件仍是未确认的估计。用 issue 编号能对上的是 3 件，用症状能对上的是 21 件。作者又用 11 条委托试自动显示：写了症状的 5 条都能显示出台账，无关的 6 条一条也没有显示。另一次调查里，自动显示的笔记在同一轮被打开的比例是 1.2%，所以又在排错技能和规则里加了一行「怀疑本体缺陷时先看台账」。每周日的定期作业里，判定役只许读，不许写或跑外壳；候选超过 180 件的周次只通知、不开判定；第一次完整跑的时候，最近 43 件候选大约 5 分钟判定完，16 件作为「也可能发生」进入台账。台账是否真的被用到，作者计划大约 2026-11-23 再看显示次数和打开次数，当时还未做。`,
+    outcomes: [
+      "源披露作者在 2026-10-26 时点，从 656 件带复现步骤的官方问题报告里，筛出估计「这台 Windows 11 的 Claude Code 也可能发生」的 127 件，其中 63 件手头完全没有记载；从中拿出能安全试的 9 件在 Desktop 同梱 2.1.299 上实机试，再现 2 件，新确认的再现只有 #100983 一件。同日扩大后的台账是 221 件，其中 209 件仍是未确认的估计。这是这一台机器、这一个时点和这一次抽样上的记录，不可外推成 127 件或 221 件都已在这台机器上再现，也不能外推成其他版本、其他日期或其他环境会得到相同的筛选结果或再现比例。",
+      "能把「可写成报告文上的估计必须和实机核过的结果分开记」与「必须人完成的题目与导流链」拆开。",
+      "为把「问题报告写了会在这种环境发生，就可以当成自己已经会中」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "656／655／550／127／63／9／2／1、221／209／34、150,418／40,315／32,130／978／249、11 条委托里的 5／6、另一次调查里的 1.2%、第一次每周作业的 43 件、约 5 分钟、16 件，以及「也可能发生是报告文上的估计」，均为作者自述。约八成（32,130／40,315）是除法。约 5 分钟是原文的「約」，不是另一次秒表实测。不要把第一次筛出的 127 件，和同日扩大后的 221 件混成同一次计数。不要把 9 件实机、11 条自动显示，和另一次调查里的 1.2% 打开比例混成同一场。#100983 的再现方向与报告相反；#89392 是已有备忘的另一编号。大约 2026-11-23 的使用情况复核，作者写明当时还未做。不要把「长文会增加 token、变慢」误接成本条。platforms 记 claude。",
+      "无产品导流。作者卡 website／GitHub／X 为空。无配图。连载前篇已核、不列入导流：https://zenn.dev/zenn_content/articles/claude-code-error-known-bug-lookup 、https://zenn.dev/zenn_content/articles/claude-code-hooks-known-limits 、https://zenn.dev/zenn_content/articles/claude-code-settings-hardening ，均 GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/headless 、https://code.claude.com/docs/en/permissions 、https://github.com/anthropics/claude-code/issues ，以及正文写出的完整 URL：https://github.com/anthropics/claude-code/issues/100349 、https://github.com/anthropics/claude-code/issues/100614 、https://github.com/anthropics/claude-code/issues/100983 、https://github.com/anthropics/claude-code/issues/104331 、https://github.com/anthropics/claude-code/issues/89392 、https://github.com/anthropics/claude-code/issues/90148 、https://github.com/anthropics/claude-code/issues/92328 、https://github.com/anthropics/claude-code/issues/93960 、https://github.com/anthropics/claude-code/issues/96263 、https://github.com/anthropics/claude-code/issues/97692 、https://github.com/anthropics/claude-code/issues/99438 ，均 GET 200（本机复检 Asia/Shanghai 2026-11-10 14:20 左右，未遇 429）。页内 mermaid 嵌入不当作者产品导流。本次 GitHub 页未遇 429。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分开估计和实机，再谈这台机器也会中",
+        body: "请对照这篇实践，不要把「问题报告写了会在 Windows 或 Desktop 上发生」写成自己这台机器已经会中。请分别写清：（1）筛选的时点、版本和标签条件，127 件是估计还是实机结果；（2）实机抽了几件、再现几件，新确认的是哪一件，有没有和报告方向不一致；（3）后来扩大后的台账是多少件，其中多少件仍是未确认的估计。没有实机试过的条目，以及尚未做的使用情况复核，请标明未核。不要把 127 件和 221 件混成同一次计数。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/zenn_content/articles/claude-code-known-bugs-ledger",
+      label: "zenn.dev·zenn_content《Claude Codeの未解決バグ、自分のPCで起きる127件を先回りで台帳にした》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "857",
+    slug: "sata-2126-191-3896",
+    title: "さた／sataappdev：在自宅服务器（Intel Core i5-6400、内存 16GB、Ubuntu 24.04.4）上，把 Dify、n8n、OpenClaw、Hermes Agent 启动后的内存和启动时间记下来（都没有调用 AI 模型）。2026-10-07：Dify 1.17.1 两次 3 分钟后 docker stats 为 2,201／2,126 MiB，启动 66.3／103.6 秒；长期运行中的 n8n 2.33.7 读数为 191 MiB；OpenClaw 2026.9.8 为 1,038 MiB；Hermes Agent v0.21.5 为 466 MiB。四个数相加是 3,896 MiB（3.8 GiB），这是加法，不是同时跑的实测。api／worker 四个容器占 Dify 整体的 76–78%（两次）",
+    summary: "个人（さた／sataappdev）；披露自己在自宅服务器（Intel Core i5-6400、4 核、内存 16GB、swap 16GB、Ubuntu 24.04.4 LTS、Docker Compose v5.5.0、cgroup v2）上，把 Dify、n8n、OpenClaw、Hermes Agent 四个工具的启动时间和内存记下来，作为租用 VPS 之前的参考。测量时没有调用 AI 模型（没有填 API 密钥）。当时还有 27 个常驻容器，测前的 MemAvailable 是 5.1–8.5GB。Dify、OpenClaw、Hermes Agent 按同一流程各启动一次再拆掉；n8n 在 10-07 的主表里读的是平时一直开着、带着 4 条工作流、没有停机的实例。数字主要由 2026-10-07 的版本构成；OpenClaw 与 Hermes Agent 因新版本在 2026-10-09 用同一流程再测，n8n 则在同一天把 2.42.5 和 2.33.7 都新启动来比，和主表里长期运行的读法不同，不能并排比。10-07 主表：Dify 1.17.1（15 个容器）两次启动 66.3／103.6 秒，3 分钟后 docker stats 为 2,201／2,126 MiB；长期运行中的 n8n 2.33.7 在 2026-10-07 17:18 读数为 191 MiB（RSS 相当 139 MiB），启动时间来自日志里 19 次重启的 7.1–23.0 秒（中位 7.9 秒），监视软件 24 小时最大是 366 MB（20 分钟平均、MB 显示）；OpenClaw 2026.9.8（只开 gateway）启动 42.1 秒，3 分钟后 1,038 MiB；Hermes Agent v0.21.5 启动 20.9 秒，3 分钟后 466 MiB。Dify 两次里，api／worker 四个容器占整体的 76–78%；第二次的四个容器合计 1.63 GiB，占 78%。四个 3 分钟后的值相加是 2,201＋191＋1,038＋466＝3,896 MiB（3.8 GiB），这是加法，不是同时跑的实测。10-09 把 OpenClaw、Hermes 换成新版本后再加，是 3,677 MiB（3.6 GiB），同样是加法。作者写明：没有测调用模型时多出来的内存，也没有把四个同时跑起来（相加已约 3.8 GiB，自宅空闲有时会掉到 5GB 出头，担心碰到 2GB 的监视线）。测量是自宅服务器上的 AI 智能体按脚本执行，再从输出里抽出数字。文内导向作者的个人实测站和内存加总页，作者卡 website 指向 note。",
+    description: "面向已经把「把四个工具各自测到的内存加起来，当成同时跑在同一台机器上的占用」写成可以上线的人：把「单件测量可以记；相加只是加法，不是同时跑的实测，而且这里还没有调用模型」写成门禁，区别于只看一个加总 GiB、却不核测法是否相同、n8n 是长期运行还是新启动的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "dify",
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/sataappdev/articles/dify-n8n-openclaw-hermes-memory",
+    sourceLabel: "zenn.dev·sataappdev 实践帖",
+    upvotes: 748,
+    trending: false,
+    tags: [
+      "dify",
+      "n8n",
+      "memory",
+      "self-hosting",
+      "docker",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「四个工具大概要占多少内存」写成租用或上线根据之前，要先核的边界（是不是约 2026-10-07 在 16GB 的自宅服务器上测，是不是约都没有调用 AI 模型，是不是约 Dify 两次 3 分钟后为 2,201／2,126 MiB、长期运行中的 n8n 为 191 MiB、OpenClaw 为 1,038 MiB、Hermes Agent 为 466 MiB，是不是约四个数相加 3,896 MiB 只是加法而不是同时跑，是不是约 api／worker 四个容器占 Dify 的 76–78%）以及「绝不可把相加结果写成同时跑的实测，也不可把长期运行中的 n8n 读数和新启动 3 分钟的值并排比」纪律",
+      "Agent 按实践帖输出：应怎样同时记下版本、是长期运行还是新启动、docker stats 与 RSS 相当（anon）分别是多少，以及有没有调用模型；没有测过的同时运行、调用模型后的增量、租用服务器上的值，要标明未核",
+      "人工保留 10-07 主表和 10-09 的再测、以及「相加不是同时跑」这行说明；Agent 不代你保证「同一组版本在空闲的机器上、或在真正调用模型之后，也会得到相同的 MiB」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-14T01:16:32.189+09:00 → 2026-10-14，同时刻为 UTC 2026-10-13T16:16:32Z、Asia/Shanghai 2026-10-14 00:16:32；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：sataappdev 在《Dify・n8n・OpenClaw・Hermes Agent を 16GB の自宅サーバーで動かし、メモリと起動時間を測った》写四个工具的启动内存。可达导流：https://aihost-jissoku.pages.dev/ GET 200（正文个人实测站，作者写「广告なし」）；https://aihost-jissoku.pages.dev/calc GET 200（正文内存加总页）；https://note.com/super_knot618 GET 200（作者卡 website）。作者卡 GitHub／X 为空。无配图。OpenClaw 与 Hermes Agent 不在枚举里，不硬凑；正文实测了 Dify 与 n8n，platforms 记 dify、n8n。",
+      "不要把 3,896 MiB（3.8 GiB）写成四个工具同时跑的实测，这是单件测量的加法。不要把长期运行中的 n8n 191 MiB，和 10-09 新启动 3 分钟后的 406／366 MiB 并排当作同一种测法。监视软件的 366 MB 是 20 分钟平均、MB 显示，不要和 docker stats 的 MiB 混成同一套单位。10-09 各只测了 1 次，作者写明分不开版本差和当时机器状态差。官方最低内存要求作者写明未实测。",
+    ],
+    approach: `さた／sataappdev 在《Dify・n8n・OpenClaw・Hermes Agent を 16GB の自宅サーバーで動かし、メモリと起動時間を測った》（页内 publishedAt 2026-10-14，bodyUpdatedAt 与发布相同，取 published）披露：自己在自宅服务器上把四个工作流／智能体工具启动起来，记下启动时间和内存，作为决定 VPS 内存之前的参考。机器是 Intel Core i5-6400（4 核）、内存 16GB、swap 16GB、Ubuntu 24.04.4 LTS、Docker Compose v5.5.0、cgroup v2。当时还有 27 个常驻容器，测前的 MemAvailable 是 5.1–8.5GB。都用官方分发的 Docker Compose 启动，对外端口只绑 127.0.0.1。没有填写 API 密钥，因此也没有调用 AI 模型。Dify、OpenClaw、Hermes Agent 按同一流程启动，待响应后再隔 1 分钟、做一点轻操作、到 3 分钟时记内存，然后连数据一起删掉；n8n 在 10-07 的主表里没有停，读的是平时一直开着、带着 4 条工作流的实例。空闲内存若低于 2,048MB 就停，各次都没有碰到，最低仍有 4,169MB。测量是自宅服务器上的 AI 智能体按脚本执行，再从输出里抽出数字。
+
+启动时间是从 docker compose up -d 起算到画面或 API 响应的秒数，不含拉镜像。内存主看 docker stats 各容器合计（MiB）；另外记下 cgroup memory.stat 的 anon 作为更接近程序实际占用的 RSS 相当值。Dify 的响应标准是 GET /console/api/setup 返回 step，且 /install 为 200；OpenClaw 是 /healthz 为 200；Hermes Agent 是 /health 为 200。
+
+2026-10-07 的主表是：Dify 1.17.1（15 个容器）测了两次，启动 66.3 秒和 103.6 秒，3 分钟后 docker stats 为 2,201 和 2,126 MiB，anon 为 1,840 和 1,847 MiB，区间最大为 2,238 和 2,180 MiB，镜像展开后 2.83 GB。作者写明，同一流程下启动时间也会因机器上还有别的服务而晃动。n8n 2.33.7 在 2026-10-07 17:18 的读数是 docker stats 191 MiB（anon 139 MiB、文件缓存 48 MiB）、CPU 0.13%；启动时间来自日志里从 Initializing n8n process 到 Editor is now accessible 的 19 次（每晚备份重启等），为 7.1–23.0 秒、中位 7.9 秒；监视软件 Beszel 的 24 小时记录是中位 232、最大 366 MB（20 分钟平均、MB 显示），30 日是中位 284、最大 308 MB。Uptime Kuma 近 24 小时 1,441 次探活里，停机判定 0 次，保留 1 次是备份刚重启之后。OpenClaw 2026.9.8 只开 gateway，启动 42.1 秒，响应时 862、1 分钟后 1,169、3 分钟后 1,038 MiB；同一容器里再跑 CLI 时，最大到 1,331 MiB。Hermes Agent v0.21.5 开了 gateway、API server 和 dashboard，启动 20.9 秒，响应时 434、3 分钟后 466 MiB，anon 为 359–366 MiB；没有跑 setup 向导，也没有登录 Nous Portal。
+
+Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整体的 76–78%。第二次 3 分钟后的分项是 api 435、api_websocket 417、worker 412、worker_beat 403、agent_backend 113、web 107 MiB，其余 9 个都不超过 63 MiB；四个合计 1.63 GiB，占 78%。memory.peak 合计 3,316 MiB；机器空闲从 5,989MB 降到最低 4,494MB。把 .env 里的 EXPOSE_PLUGIN_DEBUGGING_PORT 写成带 IP 的 127.0.0.1:15003 时，api 会因 PLUGIN_REMOTE_INSTALL_PORT must be a bare port number 反复启动，作者改到 docker-compose.override.yaml 里才指定 IP。
+
+2026-10-09，OpenClaw 2026.9.9 启动 39.1 秒，3 分钟后 docker stats 838 MiB，anon 仍是 782 MiB；Hermes Agent v0.21.6 启动 29.1 秒（比前一版慢 8.2 秒），3 分钟后 447 MiB，anon 431 MiB，镜像 1.12 GB。这两个都只测了 1 次，作者写明分不开版本差和当时机器状态差；测前空闲 10-07 是 5,085MB，10-09 是 8,520MB。同一天把 n8n 2.42.5 和 2.33.7 都新启动来比：启动 15.5 秒对 16.2 秒，3 分钟后 366 MiB 对 406 MiB，anon 333 MiB 对 299 MiB。作者写明，这和主表里长期运行的 191 MiB 测法不同，不要并排比。
+
+四个 10-07 的 3 分钟后值相加是 2,201＋191＋1,038＋466＝3,896 MiB（3.8 GiB）；区间最大相加是 2,238＋366＋1,331＋475＝4,410 MiB（4.3 GiB），其中 n8n 的 366 用的是监视软件的 MB 显示。把 OpenClaw 和 Hermes 换成 10-09 的版本后再加，是 2,201＋191＋838＋447＝3,677 MiB（3.6 GiB）。这些都是加法，不是同时跑的实测。作者写明还没计入：调用模型或跑工作流时多出来的部分、操作系统和 Docker 本身、以及其他软件；四个同时跑也没有测，因为相加已约 3.8 GiB，自宅空闲有时会掉到 5GB 出头，担心碰到 2GB 的监视线。官方文档里的最低内存要求，作者写明是查阅、未实测。文内导向个人实测站和内存加总页。`,
+    outcomes: [
+      "源披露作者在 2026-10-07 于 16GB 的自宅服务器上，在没有调用 AI 模型的前提下，记下四个工具 3 分钟后的 docker stats：Dify 1.17.1 两次为 2,201／2,126 MiB，长期运行中的 n8n 2.33.7 为 191 MiB，OpenClaw 2026.9.8 为 1,038 MiB，Hermes Agent v0.21.5 为 466 MiB；四个数相加是 3,896 MiB（3.8 GiB），这是加法，不是同时跑的实测。api／worker 四个容器占 Dify 整体的 76–78%（两次）。这是这一台还有 27 个常驻容器的自宅机器、这两个日期和这一次测法上的记录，不可外推成四个工具同时跑、调用模型之后，或在空闲的租用服务器上也会占同样的内存，也不能把长期运行中的 n8n 读数和新启动 3 分钟的值当成同一种测法。",
+      "能把「可写成单件测量可以记、相加只是加法」与「必须人完成的题目与导流链」拆开。",
+      "为把「把各自测到的内存加起来，当成同时跑在同一台机器上的占用」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "16GB 自宅服务器、27 个常驻容器、未调用模型、Dify 两次 66.3／103.6 秒与 2,201／2,126 MiB、长期运行中的 n8n 191 MiB、OpenClaw 1,038 MiB、Hermes 466 MiB、相加 3,896 MiB、76–78%、10-09 再测，以及监视软件的 366 MB，均为作者自述。3,896 MiB（3.8 GiB）、4,410 MiB（4.3 GiB）、3,677 MiB（3.6 GiB）都是加法，不是同时跑的实测。76–78% 是两次测量里四个容器占 Dify 整体的比例；第二次四个合计 1.63 GiB、占 78%，不要和容器总数 15 混写。长期运行中的 n8n 191 MiB，不要和 10-09 新启动 3 分钟后的 406／366 MiB 并排比；366 MB 是监视软件的 20 分钟平均、MB 显示，不要和 docker stats 的 MiB 混成同一套单位。10-09 各只测了 1 次，分不开版本差和当时机器状态差。调用模型后的增量、四个同时跑、租用服务器上的值，以及官方最低内存，作者写明未测或未实测。不要把「长文会增加 token、变慢」误接成本条。OpenClaw 与 Hermes Agent 不在枚举里，不硬凑；platforms 记 dify、n8n。",
+      "可达导流：https://aihost-jissoku.pages.dev/ GET 200（正文个人实测站）；https://aihost-jissoku.pages.dev/calc GET 200（正文内存加总页）；https://note.com/super_knot618 GET 200（作者卡 website）。作者卡 GitHub／X 为空。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分清测法和是否同时跑，再谈内存要多大",
+        body: "请对照这篇实践，不要把「四个工具各自测到的内存加起来」写成同时跑在同一台机器上的占用，也不要把长期运行中的读数和新启动 3 分钟的值当成同一种测法。请分别写清：（1）有没有调用 AI 模型，机器上当时还跑着什么；（2）每个工具的版本、是长期运行还是新启动，3 分钟后的 docker stats 和 RSS 相当分别是多少；（3）加总是不是加法，有没有做过同时运行。没有测过的调用模型后增量、同时运行，以及租用服务器上的值，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sataappdev/articles/dify-n8n-openclaw-hermes-memory",
+      label: "zenn.dev·sataappdev《Dify・n8n・OpenClaw・Hermes Agent を 16GB の自宅サーバーで動かし、メモリと起動時間を測った》",
+      date: "2026-10-14",
+      dateLabel: "发布",
+    },
   }
 ];
 
