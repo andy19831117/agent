@@ -13,7 +13,7 @@ export function CategoryGrid() {
           覆盖个人效率、独立开发与企业自动化
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {categories.map((c) => {
           const count = usecases.filter((u) =>
             u.categories.includes(c.slug)
