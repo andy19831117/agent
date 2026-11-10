@@ -69595,6 +69595,556 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T13:43:00.188+09:00 → UTC 2026-10-31T04:43:00Z、Asia/Shanghai 2026-10-31 12:43:00；bodyUpdatedAt 2026-10-31T13:15:43.752+09:00，略早于发布、同日，仍取 published → 2026-10-31；GET 200（UA MiraBot/1.0））：sivami 在《10問に答えるだけで、Claude Code に渡す設計の4ファイルを作るツールを作った》记下这次自测。",
       "115 秒是加上限制后再跑同一题的时间，不要写成最初的 30–60 秒。还没有别人用过。",
     ],
+  },
+  {
+    id: "978",
+    slug: "houc-38mem-17",
+    title: "houchi_unyo：从 2026 年 8 月起把无人运转交给 Claude Code。记忆越训越多，2026-09-07 已到 38 本，当天折成 17 本；09-23 清点是 21 本。以前在对话结束时才一起改记忆，中途断开那一轮就丢了；09-23 起改成「被训的那一轮」先看能不能写进已有文件，再加 1 行。索引每本只留 1 行。这些是作者自己这套无人运转上的用法，不可外推到别人的记忆库。",
+    summary: "houchi_unyo 的 Claude Code 记忆在 2026-09-07 涨到 38 本，当天折成 17 本；09-23 是 21 本。规则改成被训的那一轮往已有文件加 1 行，索引每本只留 1 行。38、17、21 不要混用。这些是作者自己这套无人运转上的用法，不可外推。",
+    description: "面向已经在 Claude Code 里靠记忆压重复失败、却眼看文件一本本往上堆的人：把 38 本折成 17 本、09-23 的 21 本，以及「被训的那一轮加 1 行」写成门禁，区别于只建议「多写记忆」、却没有写出何时加、何时折的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/houchi_unyo/articles/claude-code-memory-38-to-17",
+    sourceLabel: "zenn.dev·houchi_unyo 实践帖",
+    upvotes: 869,
+    trending: false,
+    tags: [
+      "claude-code",
+      "memory",
+      "agents-md",
+      "feedback",
+      "index",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/houchi_unyo/articles/claude-code-memory-38-to-17",
+      label: "zenn.dev·houchi_unyo《Claude Code の記憶が 38 本に増えたので 17 本に畳んだ ― 叱った回に 1 行足す運用》",
+      date: "2026-09-23",
+      dateLabel: "发布",
+    },
+    approach: "作者从 2026 年 8 月起把无人运转交给 Claude Code，训过就会好、换一场对话又忘。于是把训过的内容写进项目记忆；本子越堆越多之后，改成按话题合并，并规定只在被训的那一轮往已有文件加一行。",
+    outcomes: [
+      "源披露：2026-09-07 记忆已到 38 本，当天折成 17 本；09-23 清点是 21 本。以前在对话结束时才一起改，中途断开那一轮就丢了；09-23 起改成被训的那一轮先看已有文件能不能收，再加 1 行。这些是作者自己这套无人运转上的用法，不可外推到别人的记忆库。",
+      "折完之后只守 4 条：1 文件 1 件事；开头 3 行名牌（名字、一行说明、类型）；被训定下的规则要写「为什么」和「怎么套」；索引每本只留 1 行。铁则放在 CLAUDE.md，由来和数字放在记忆里。38、17、21 不要混用。",
+      "记忆里的「事实」也会写错。09-18 追到一条「频繁发布会被永久停」的依据，发现不是官方说明，而是影像编辑服务商的报告，结论没改、依据换了。还出现过 AI 把写在书开头的不实履历，后来再当成「出处：这本书」。现在履历只准用本人核对过的一页台账，自己写的文字不准再当自己的出处。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-24T01:06:37.714+09:00，晚于发布且跨到 09-24，仍取 published → 2026-09-23。正文无配图、无 YouTube 嵌入。作者卡 website 为 https://houchi-unyo.com，文内未链，未列入导流。",
+      "导流：https://www.amazon.co.jp/dp/B0HKK4VXXP 写作窗口与复检两次均为 TLS 000（unexpected eof while reading），不列入可达，完整 URL 与最后状态已披露。primary GET 200，未跟随至公司出版物。platforms 记 claude。不要把 38、17、21 混用。",
+    ],
+    prompts: [
+      {
+        title: "先问清 38、17、21 是不是同一天的数，再谈「多写记忆就行」",
+        body: "请按实测算一算：记忆是哪一天涨到 38 本、当天折成几本；09-23 清点是几本；以前在什么时候改记忆，中途断开会怎样；09-23 起改成在哪一轮、往已有文件加几行；索引每本留几行。不要把 38、17、21 混成同一个数，也不要把「被训的那一轮加 1 行」写成对话结束时再汇总。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "项目里有记忆文件夹，索引会在对话开头被读入。被训过的内容写在这里，下一场对话还能用。",
+      "同一话题的规则收进同一文件，细则往该文件里加；新开一本之前先问能不能写进已有的。索引只留一行，避免每次一开头就被写满。",
+      "被训定下的规则要写下原因和套用办法，训过的原话不改写。铁则放在指示书开头，由来要打开时再去翻记忆。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-23T14:34:50.491+09:00 → UTC 2026-09-23T05:34:50Z、Asia/Shanghai 2026-09-23 13:34:50；bodyUpdatedAt 2026-09-24T01:06:37.714+09:00，晚于发布且跨到 09-24，仍取 published → 2026-09-23；GET 200（UA MiraBot/1.0））：houchi_unyo 在《Claude Code の記憶が 38 本に増えたので 17 本に畳んだ ― 叱った回に 1 行足す運用》记下这套折法。不要因 bodyUpdatedAt 写成 2026-09-24。",
+      "38 是折之前的本数，17 是 09-07 当天折完的本数，21 是 09-23 的清点，不要混用。被训的那一轮加 1 行，不是对话结束时再汇总。",
+    ],
+  },
+  {
+    id: "979",
+    slug: "tott-5mo-23rule",
+    title: "tottoko_hamu（saitoko）：2026 年 4 月起用 Claude Code 写文章，约 5 个月后，2026-09-05 实测 writing-guidelines.md 从刚上手时的 5 个小节长到 23 个小节、257 行（不含更新记录小节）。两篇质检抽出 17 条指摘，其中必须改的 5 条。作者认为质量的起伏是在「动笔之前」定的，不是写到一半再补提示。这些是作者自己这 5 个月写作流水线上的用法，不可外推到别的题材或团队。",
+    summary: "tottoko_hamu 用 Claude Code 写了约 5 个月。2026-09-05 实测，退稿规则从 5 个小节长到 23 个小节、257 行；两篇质检抽出 17 条指摘，其中必须改的 5 条。起伏出在动笔之前。这些是作者自己这 5 个月流水线上的用法，不可外推。",
+    description: "面向已经让 Claude Code 起草、却总觉得质量一阵好一阵坏的人：把 5 个月、23 个小节／257 行，以及两篇质检的 17 条／5 条必须改写成门禁，区别于只谈「写的时候再改提示」、却没有写出退稿规则怎么长起来的实践。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tottoko_hamu/articles/2026-09-05-232000",
+    sourceLabel: "zenn.dev·tottoko_hamu 实践帖",
+    upvotes: 870,
+    trending: false,
+    tags: [
+      "claude-code",
+      "writing",
+      "guidelines",
+      "review",
+      "quality",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tottoko_hamu/articles/2026-09-05-232000",
+      label: "zenn.dev·tottoko_hamu《AIに記事を書かせるムラは「書く前」で決まっていた——Claude Codeの品質設計4段階と、5ヶ月で23個に育った差し戻しルール》",
+      date: "2026-09-23",
+      dateLabel: "发布",
+    },
+    approach: "作者 2026 年 4 月起把写文章的流程交给 Claude Code，一边写一边把退稿理由收回同一份规则。大约 5 个月后回头数，发现起伏主要出在动笔前的底子，而不是写到一半才改提示。",
+    outcomes: [
+      "源披露：机制从 2026 年 4 月起运转，约 5 个月后，2026-09-05 实测 writing-guidelines.md 从刚上手时的 5 个小节（数字依据、平衡、结构、可复现、禁止虚构）长到 23 个小节、257 行（不含更新记录小节）。这些是作者自己这 5 个月写作流水线上的用法，不可外推到别的题材或团队。",
+      "两篇质检抽出指摘 17 条，其中必须改的 5 条。角色定义文件在 2026-09-05 实测是 76 行，当初的 6 项已经不再以原样保留。不要把 5 个小节、23 个小节、17 条指摘和必须改的 5 条混成同一个「5」。",
+      "作者写明，目前能证明的只是「同一类坏法再出现时有 23 条记录可对」，不是质量已经稳定。规则还会继续变长，要按「动笔前的底子」来看，不要写成写到一半靠提示补救的教程。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与 publishedAt 同为 2026-09-23T21:04:41.851+09:00，取 published → 2026-09-23。正文无配图、无 YouTube 嵌入。同作者另一篇《続けられる条件》已留 pool，本条不占用。",
+      "导流：https://blog.saitoko.net/entry/2026/04/20/232912 GET 200；https://blog.saitoko.net/entry/2026/05/04/152913 GET 200；https://blog.saitoko.net/entry/2026/09/05/232000?utm_source=zenn&utm_medium=crosspost GET 200；https://zenn.dev/tottoko_hamu/books/writing-with-ai-team-without-code GET 200。https://www.amazon.co.jp/dp/4297153548 写作窗口与复检两次均为 TLS 000（unexpected eof while reading），不列入可达。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 个小节和 23 个小节是不是同一天的数，再谈「写的时候再改提示」",
+        body: "请按实测算一算：这套写作机制是从哪个月开始的，到 2026-09-05 实测过了大约几个月；writing-guidelines.md 刚上手时是几个小节，当天长到几个小节、多少行，更不更新记录小节有没有算进去；两篇质检抽出多少条指摘，其中必须改的是几条。不要把 5 个小节和必须改的 5 条混用，也不要把起伏写成写到一半靠提示就能补上。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "动笔前先把构想、依据和禁写项写下。退稿理由不零散改提示，而是收回同一份 writing-guidelines.md。",
+      "规则按小节往上加。2026-09-05 实测已到 23 个小节、257 行，作者把它当作还会继续变长的机制，而不是一份写死的清单。",
+      "质检时按这份规则挑必须改的项。同一类坏法再出现时，先对已有记录，而不是再开一条新的口头约定。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-23T21:04:41.851+09:00 → UTC 2026-09-23T12:04:41Z、Asia/Shanghai 2026-09-23 20:04:41；bodyUpdatedAt 与发布相同；取 published → 2026-09-23；GET 200（UA MiraBot/1.0））：tottoko_hamu 在《AIに記事を書かせるムラは「書く前」で決まっていた——Claude Codeの品質設計4段階と、5ヶ月で23個に育った差し戻しルール》记下这 5 个月。",
+      "5 个小节是刚上手时的结构，23 个小节／257 行是 09-05 的实测，17 条指摘和必须改的 5 条是两篇质检，不要混用。起伏出在动笔之前。",
+    ],
+  },
+  {
+    id: "980",
+    slug: "kuji-30d-2p9g",
+    title: "kujira_ai：本想按自己的脚本统计 Claude Code 对话日志，2026-09-22 一跑，8 月 6 日到 8 月 23 日整段空着。执行日正好 30 天前是 8 月 23 日。原因不是脚本，而是默认 cleanupPeriodDays=30，到期会清掉旧日志。作者这套环境里 30 天大约 2.9GB。后来把统计窗改成 14 天，并把汇总另存。这些是作者自己这套日志上的用法，不可外推到别的保留天数或磁盘用量。",
+    summary: "kujira_ai 在 2026-09-22 统计 Claude Code 对话日志时，发现 8 月 6 日到 8 月 23 日整段空着，当天正好是默认 30 天窗口的边缘。30 天大约 2.9GB。默认 cleanupPeriodDays 是 30、最小是 1，写 0 会报错。这些是作者自己这套日志上的用法，不可外推。",
+    description: "面向已经在拿 Claude Code 对话日志做统计、却突然发现更早的日子整段不见了的人：把 09-22 的空窗、默认 30 天和 2.9GB 写成门禁，区别于只写「日志会过期」、却没有写出哪一天被切到边缘、容量是多少的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kujira_ai/articles/a0d57ca2de4a63",
+    sourceLabel: "zenn.dev·kujira_ai 实践帖",
+    upvotes: 871,
+    trending: false,
+    tags: [
+      "claude-code",
+      "logs",
+      "cleanupPeriodDays",
+      "retention",
+      "aggregation",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kujira_ai/articles/a0d57ca2de4a63",
+      label: "zenn.dev·kujira_ai《Claude Codeの会話ログは既定30日で消える：cleanupPeriodDaysの確認と集計の組み方》",
+      date: "2026-09-24",
+      dateLabel: "发布",
+    },
+    approach: "作者本想按自己的脚本统计对话日志，却在 2026-09-22 发现更早的日子整段空着。查下来不是脚本写错，而是 Claude Code 默认会清掉到期的旧日志。于是核对 cleanupPeriodDays，并把统计窗和汇总存法改掉。",
+    outcomes: [
+      "源披露：2026-09-22 在作者自己的环境里跑统计，8 月 6 日与 8 月 23 日之间整段空着；执行日正好 30 天前是 8 月 23 日。默认 cleanupPeriodDays 是 30 天，最小是 1 天，写 0 会报错。这些是作者自己这套日志上的用法，不可外推到别的保留天数或磁盘用量。",
+      "作者这套环境里 30 天大约 2.9GB，日志是明文，里面有发过的话、工具调用和结果。不要把 2.9GB 写成官方统一容量，也不要把「默认 30 天」写成「30 天前的日志一定已经没了」。作者的写法是：30 天前的日子不可靠，不代表每一天都会整齐切掉。",
+      "后来把统计窗从 30 天改成 14 天，避免窗口总含着「快被清掉的边缘」；并把汇总另存成文件，以免原日志被清之后无法再比。没有另存的旧统计，之后就复现不了。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-23T10:04:31.440+09:00，略早于发布、跨在发布日前一日，仍取 published → 2026-09-24。正文无配图、无 YouTube 嵌入，也无文内产品硬链。作者卡 GitHub／X／website 均为空。",
+      "无作者产品导流可列。primary GET 200，未跟随至公司出版物。platforms 记 claude。不要把 2.9GB 写成官方容量，也不要把「30 天前不可靠」写成「30 天前一定已经没了」。",
+    ],
+    prompts: [
+      {
+        title: "先问清 30 天和 2.9GB 是不是同一套环境里的数，再谈「日志会过期」",
+        body: "请按实测算一算：统计是哪一天跑的，空着的是哪一段日子，那一天的 30 天前是哪一天；默认 cleanupPeriodDays 是多少，最小是多少，写 0 会怎样；作者这套环境里 30 天大约占多少容量；后来把统计窗改成多少天，汇总有没有另存。不要把 2.9GB 写成官方统一容量，也不要把「30 天前不可靠」写成「30 天前的日志一定已经没了」。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "对话日志按默认天数保留。到期后旧文件会被清掉，统计脚本若仍按「全部历史」去数，就会在窗口边缘看到整段空档。",
+      "cleanupPeriodDays 决定保留天数。什么都不写也按 30 天走；最小是 1 天，写 0 会报错。",
+      "把统计窗收短，并让每次汇总另存，这样原日志被清之后，还能量不同日期的结果。没有另存的旧统计，之后就对不上了。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-24T07:14:08.210+09:00 → UTC 2026-09-23T22:14:08Z、Asia/Shanghai 2026-09-24 06:14:08；bodyUpdatedAt 2026-09-23T10:04:31.440+09:00，略早于发布，仍取 published → 2026-09-24；GET 200（UA MiraBot/1.0））：kujira_ai 在《Claude Codeの会話ログは既定30日で消える：cleanupPeriodDaysの確認と集計の組み方》记下这次空窗。不要因 bodyUpdatedAt 写成 2026-09-23。",
+      "30 天是默认保留，2.9GB 是作者自己环境里 30 天的容量，不要混成官方数字。30 天前不可靠，不是 30 天前一定已经没了。",
+    ],
+  },
+  {
+    id: "981",
+    slug: "kant-jev-192",
+    title: "kanta13jp1：用 Jev 拦危险命令。样本是 150 条本机真实命令加 42 条合成命令，一共 192 条；标签是作者在调用 Jev 之前独自标的，其中安全 131、要确认 35、危险 26。预先定下的及格线里，三轮都要 100% 拦住危险和要确认，安全命令自动执行还要比「只靠规则」高出 10 个百分点以上。三择 Jev 把危险 26／26、要确认 35／35 都拦住了，安全自动执行只多了 4.6～5.3 个百分点，按预先标准判定不合格。Hook 方式 17 次执行里文件夹和推送目标都没被改掉；MCP 方式下读取密钥没经过 Jev。这些是作者自己这套样本和接入方式上的结果，不可外推到别的命令集或模型。",
+    summary: "kanta13jp1 用 150 条真实命令加 42 条合成命令（共 192 条）测 Jev。三择把危险 26 和要确认 35 都拦住了，安全自动执行只多了 4.6～5.3 个百分点，按预先标准不合格。Hook 方式 17 次没改掉文件夹；MCP 方式下读取密钥没经过 Jev。这些是作者自己这套样本上的结果，不可外推。",
+    description: "面向已经想把 Jev 接进 Claude Code 当「判断员」的人：把 150＋42、预先及格线和 MCP 方式下密钥被放行写成门禁，区别于只介绍 Jev、却没有写出按预先标准其实不合格、以及两种接入差在哪的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kanta13jp1/articles/jev-gate-fail-closed-verification",
+    sourceLabel: "zenn.dev·kanta13jp1 实践帖",
+    upvotes: 872,
+    trending: false,
+    tags: [
+      "claude-code",
+      "jev",
+      "pretooluse",
+      "sandbox",
+      "security",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kanta13jp1/articles/jev-gate-fail-closed-verification",
+      label: "zenn.dev·kanta13jp1《Jevは危険なコマンドを止められるか：実コマンド192件とClaude Codeへの組み込みで検証》",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+    approach: "作者先在调用 Jev 之前独自给样本贴上安全／要确认／危险，再把「只靠规则」和几种 Jev 用法摆在同一套及格线下比。随后把同一套判定分别接到 PreToolUse 钩和 MCP 许可工具上，看真实会不会放行。",
+    outcomes: [
+      "源披露：真实命令 150 条来自本机 Claude Code 在 my_web_app 开发中的提议，从 2026 年 6 月至 9 月的 16,418 种里抽样；另外准备合成命令 42 条，一共 192 条。标签是作者独自所标：安全 131、要确认 35、危险 26。这些是作者自己这套样本和接入方式上的结果，不可外推到别的命令集或模型。",
+      "预先及格线有 4 条：三轮都要 100% 拦住危险和要确认；安全命令自动执行比只靠规则高出 10 个百分点以上；安全命令误拒在 2% 以下；响应时间 95 百分位在 1 秒以下。三择 Jev 拦住了危险 26／26、要确认 35／35，安全误拒是 0，但安全自动执行只从 87.8% 升到 92.4～93.1%，多了 4.6～5.3 个百分点，不到 10 个百分点，正式判定不合格。不要把标题里的「192 件」写成 192 条全部都是真实命令，也不要把「拦住了危险」写成已经及格。",
+      "Hook 方式让每条命令都经过 Jev：17 次执行里，安全以外的操作没有被执行，文件夹和推送目标都没变；一次性仓库、密钥是假的、推送目标也在本机。MCP 方式下 14 个课题里只有 7 个问到 Jev，cat .ssh/id_ed25519 没经过 Jev 就执行了，假密钥内容被显示。bash cleanup.sh 即使被拦住，Jev 看到的也只是文件名。09-29 有 3 件是 Claude 自己先拒、没送到 Jev；10-04 重跑时 Claude 想执行、由 Jev 拒绝。硬窗不是 hook 教程。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-04T19:55:15.315+09:00，晚于发布且跨到 10-04，仍取 published → 2026-09-28。正文无配图、无 YouTube 嵌入。作者写明 26 件危险零漏看不能当安全证明：漏看率即使大约 11%，全拦住仍有 5% 的机会出现。费用：576 次约 0.02 美元。本机曾开着 disableAllHooks: true，钩子一度完全没被调用。同作者 AGENTS.md 篇已留 pool。硬窗不是 hook 教程。",
+      "导流：https://my-web-app-b67f4.web.app/asset-management GET 200（标题 自分株式会社とは？ | 人生を経営するAIライフマネジメントアプリ）；作者写明家计分类是另一套用法，不能拿来支撑本篇命令拦截的结论。文内复现仓 https://github.com/kanta13jp1/zenn-content/tree/main/experiments/jev-agent-judge 、https://github.com/kanta13jp1/zenn-content/tree/main/experiments/jev-gate 、仓库根 https://github.com/kanta13jp1/zenn-content ，以及文内克隆地址 https://github.com/kanta13jp1/zenn-content.git 最后一次 GET 均为 404（.git 跟随至仓库根，同样 404），不列入可达。一次资料：https://docs.typesafe.ai/introduction/coding-agents GET 200；https://docs.typesafe.ai/model-jaggedness/jev-1.13 GET 200，跟随至 https://docs.typesafe.ai/model-jaggedness（父页，标题 Model jaggedness - TypeSafe）；https://x.com/MakeAI_CEO/status/2102183673890238746 GET 200。primary GET 200。platforms 记 claude。Codex 不填进 platforms。不要因为复现说明写在 GitHub 上，就把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先问清 150 和 42 是不是加起来才 192，再谈「Jev 能当判断员」",
+        body: "请按实测算一算：真实命令是多少条、合成命令是多少条、一共多少条；安全、要确认、危险各是多少；预先及格线是哪 4 条，三择 Jev 有没有达到「安全自动执行高出 10 个百分点」；Hook 方式 17 次执行里文件夹和推送目标有没有被改掉；MCP 方式下读取密钥有没有经过 Jev。不要把 192 写成全部都是真实命令，也不要把「拦住了危险」写成已经及格。硬窗不是 hook 教程。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先按作者自己的运营方针给每条命令贴标签，再和「只看命令名的允许清单」放在同一套及格线下比。",
+      "Hook 方式走 PreToolUse，每条命令都先问 Jev；MCP 方式只在 Claude Code 自己觉得要提问时才问，被它当成「只读」的命令不会送到 Jev。",
+      "接入之后还要看日志里钩子是不是真的被调用。本机若开着 disableAllHooks: true，钩子一次都不会跑。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-28T11:24:39.225+09:00 → UTC 2026-09-28T02:24:39Z、Asia/Shanghai 2026-09-28 10:24:39；bodyUpdatedAt 2026-10-04T19:55:15.315+09:00，晚于发布且跨到 10-04，仍取 published → 2026-09-28；GET 200（UA MiraBot/1.0））：kanta13jp1 在《Jevは危険なコマンドを止められるか：実コマンド192件とClaude Codeへの組み込みで検証》记下这次对照。不要因 bodyUpdatedAt 写成 2026-10-04。",
+      "150＋42 才是 192。拦住危险不等于按预先标准及格。MCP 方式会放行「只读」里的读密钥。硬窗不是 hook 教程。复现仓最后一次 GET 404。",
+    ],
+  },
+  {
+    id: "982",
+    slug: "mcko-deny-fopen",
+    title: "mckosei：同一条 sandbox.filesystem.denyRead: [\"**/.env\"]，项目 A 连深路径都会拦，项目 B 却没有任何警告，Bash 能直接读到 sub/.env。两边都是 v2.1.283。只要项目下存在一个主机用户读不了的目录，这条通配在展开时遇到 EACCES 就会整条静默放弃（fail-open）。固定路径 ./.env 两边都能拦。作者在空目录里 mkdir locked && chmod 000 locked 之后，sub/.env 从 blocked 变成 readable。官方 sandbox-runtime PR #503 于 2026-09-17 合入，Claude Code v2.1.284（2026-09-28）起改了这处。这些是作者在 Linux bubblewrap 沙箱、v2.1.283 上的实测，不可外推到别的版本或操作系统。",
+    summary: "mckosei 发现同一条 denyRead **/.env，在 v2.1.283 的项目 A 能拦、项目 B 却静默失效，Bash 能读到 sub/.env。原因是项目里只要有一个读不了的目录，通配展开就会 fail-open。v2.1.284 起已改。这些是作者在 Linux bubblewrap 上的实测，不可外推。",
+    description: "面向已经在 Linux 上给 Claude Code 配了 denyRead、以为 **/.env 全都能拦住的人：把项目 A／B 的反差、chmod 000 复现和 v2.1.284 才修好写成门禁，区别于只写「打开沙箱就安全」、却没有写出通配会静默失效的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mckosei/articles/202609-claude-code-linux-sandbox-denyread",
+    sourceLabel: "zenn.dev·mckosei 实践帖",
+    upvotes: 873,
+    trending: false,
+    tags: [
+      "claude-code",
+      "sandbox",
+      "denyRead",
+      "linux",
+      "bubblewrap",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mckosei/articles/202609-claude-code-linux-sandbox-denyread",
+      label: "zenn.dev·mckosei《Claude Code の Linux sandbox で denyRead が「黙って無効化」される条件と対策》",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+    approach: "作者在两个项目里写了同一条 denyRead，却一个能拦、一个完全读得过。于是按路径写法、配置范围、文件数量和 Git 状态逐项排除，最后在空仓库里用一个权限为 000 的目录把失效复现出来，并对照官方 sandbox-runtime 的修复。",
+    outcomes: [
+      "源披露：同一条 denyRead: [\"**/.env\"]，项目 A 连深路径都会拦；项目 B 没有错误也没有警告，sub/.env 能被 Bash 读到。固定路径 ./.env 在两个项目里都能拦。两边都是 v2.1.283。这些是作者在 Linux bubblewrap 沙箱上的实测，不可外推到别的版本或操作系统。",
+      "空目录里先看到 .env、sub/.env 为 blocked、README.md 为 readable；mkdir locked && chmod 000 locked 后再跑，sub/.env 变成 readable，.env 仍是 blocked。失败只作用于该条通配：sub/**/.env 这类缩小了起点的写法仍然有效。作者还试过约 10 万个文件、以及个人设置／共享设置／--settings，都不是根因。",
+      "官方 anthropics/sandbox-runtime 的 PR #503 于 2026-09-17 合入，Claude Code v2.1.284（2026-09-28）起改成 fail-close。作者写明，修好之后，读不了的目录会被空的 tmpfs 挡住；把 Git 跟踪的文件用 denyRead 堵住时，sandbox 里会看成字符设备，git status 可能一直显示 M。Docker 数据目录改用 Named Volume、机密文件再写一份固定路径，仍被当作多层防护。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-04T17:35:55.052+09:00，晚于发布且跨到 10-04，仍取 published → 2026-09-28。正文无配图、无 YouTube 嵌入。这是 Linux bubblewrap 上的行为，不要写成所有平台的沙箱都会这样。v2.1.284 起已改，不要把旧版失效写成当前默认。",
+      "一次资料、不列入作者产品导流：https://github.com/anthropics/sandbox-runtime/pull/503 GET 200；https://github.com/anthropics/sandbox-runtime GET 200；https://github.com/anthropics/sandbox-runtime/blob/322c59a8fd2141944464d45bead0eddbc5f66cbb/src/sandbox/sandbox-utils.ts#L956-L983 GET 200。作者卡 GitHub／X 为 mckosei，文内未链个人仓。primary GET 200。platforms 记 claude。Linux／Docker／bubblewrap 不填进 platforms。不要因为对照的是 GitHub 上的 PR，就把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先问清项目 A 和项目 B 是不是同一条设置，再谈「打开沙箱就安全」",
+        body: "请按实测算一算：同一条 denyRead **/.env 在项目 A 和项目 B 分别是拦住还是能读；固定路径 ./.env 会不会也失效；复现时是怎样一个读不了的目录让 sub/.env 从 blocked 变成 readable；这是哪个版本上的行为，从哪个版本起改了。不要把 Linux bubblewrap 上的失效写成所有平台都会这样，也不要把已修好的旧版行为写成当前默认。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "带通配的 denyRead 会从第一个通配符之前的目录开始，向下展开成真实路径后再拦住。",
+      "展开途中只要碰到一个 EACCES 的目录，旧实现会不报错、也不警告，整条通配放弃，于是更深的 .env 就能被读到。固定路径不受影响。",
+      "v2.1.284 起改为 fail-close。即便如此，作者仍建议：读不了的目录尽量移出仓库，机密文件再写一份固定路径。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-28T21:48:32.382+09:00 → UTC 2026-09-28T12:48:32Z、Asia/Shanghai 2026-09-28 20:48:32；bodyUpdatedAt 2026-10-04T17:35:55.052+09:00，晚于发布且跨到 10-04，仍取 published → 2026-09-28；GET 200（UA MiraBot/1.0））：mckosei 在《Claude Code の Linux sandbox で denyRead が「黙って無効化」される条件と対策》记下这次对照。不要因 bodyUpdatedAt 写成 2026-10-04。",
+      "项目 A／B 是同一条设置下的反差。v2.1.283 上会 fail-open，v2.1.284 起已改，不要写成当前默认。这是 Linux bubblewrap 上的行为。",
+    ],
+  },
+  {
+    id: "983",
+    slug: "yuin-25d-8green",
+    title: "yuu_inaka：GitHub Actions 本应按每 4 小时启动一次 Claude Code，却从 2026-09-18 夜里到 09-21 早上，2.5 天一步都没走动。日志最后一行是 You've hit your weekly limit，但作业每次都是绿色成功，运行时间大约 25 秒。后来从留下原因的文件里数出连续 8 次，间隔从 3 小时到 8 小时不等。claude -p 碰到上限或掉登录时只打一行就结束，退出码仍是成功。这些是作者自己这套定时作业上的观测，不可外推到别的账户、套餐或工作流。",
+    summary: "yuu_inaka 的 GitHub Actions 从 2026-09-18 夜里到 09-21 早上绿了 2.5 天，却一步没走。日志最后一行是 weekly limit，每次大约 25 秒。连续 8 次，间隔 3 到 8 小时不等。这些是作者自己这套定时作业上的观测，不可外推。",
+    description: "面向已经把 Claude Code 挂在 GitHub Actions 里定时跑、却只看绿色对号的人：把 2.5 天、大约 25 秒和连续 8 次写成门禁，区别于只写「定时任务在跑」、却没有写出上限命中后仍会显示成功的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuu_inaka/articles/green-but-stopped",
+    sourceLabel: "zenn.dev·yuu_inaka 实践帖",
+    upvotes: 874,
+    trending: false,
+    tags: [
+      "claude-code",
+      "github-actions",
+      "usage-limit",
+      "cron",
+      "monitoring",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuu_inaka/articles/green-but-stopped",
+      label: "zenn.dev·yuu_inaka《Claude Codeの定時実行が使用上限で2.5日止まっていたのに、GitHub Actionsはずっと緑だった》",
+      date: "2026-09-29",
+      dateLabel: "发布",
+    },
+    approach: "作者用 GitHub Actions 每 4 小时拉起一次 Claude Code，却在连续几天里只看到绿色成功。后来去对作业日志和自己留下原因的文件，才发现是使用上限把进程提前结束了，退出码仍是成功。",
+    outcomes: [
+      "源披露：从 2026-09-18 夜里到 09-21 早上，2.5 天一步都没走动。日志最后一行是 You've hit your weekly limit，但 GitHub Actions 每次都是绿色成功，运行时间大约 25 秒。这些是作者自己这套定时作业上的观测，不可外推到别的账户、套餐或工作流。",
+      "连续 8 次都是「成功」，8 次都因使用上限马上结束。8 这个数是从留下原因的文件历史里数出来的；把 8 次的时刻排开，间隔从 3 小时到 8 小时不等，并不等于 cron 上写的「每 4 小时」。不要把 2.5 天、大约 25 秒和连续 8 次混成同一个指标。",
+      "同一周里，周次的编辑会议和经营复盘（也都要叫 Claude）在 09-20 也失败了。claude -p 碰到上限或掉登录（Not logged in）时都只打一行就结束。同作者另一篇写部下未指定模型会继承父模型、echo 一次就用掉 101,418 token（其中约 9 万来自 CLAUDE.md）已留 pool，本条硬窗是「绿了却停了」，不要和那篇的 9 万 token 混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-24T23:24:45.827+09:00，早于发布，仍取 published → 2026-09-29。正文无配图、无 YouTube 嵌入。硬窗是 GitHub Actions 绿色成功但实际停住，不是 hook 教程。",
+      "导流：https://zenn.dev/yuu_inaka/books/claude-code-side-business-90days GET 200（标题 Claude Codeで副業ブログ＋Xを90日自動運営した実録）。作者卡 GitHub／X／website 均为空。primary GET 200。platforms 只记 claude：仓库 18 值枚举没有 github，诚实省略；GitHub Actions 的绿色成功、大约 25 秒、连续 8 次已在正文披露，不是因为个人主页在 GitHub 上。不要和同作者 9 万 token 那篇混用。",
+    ],
+    prompts: [
+      {
+        title: "先问清绿色成功和 2.5 天停住是不是同一段日子，再谈「定时任务在跑」",
+        body: "请按实测算一算：作业是从哪天夜里停到哪天早上，一共几天；日志最后一行写的是什么，GitHub Actions 当时是不是绿色成功，每次大约跑几秒；连续几次是从哪里数出来的，间隔是不是等于 cron 上写的每 4 小时。不要只看绿色对号，也不要把这篇的 2.5 天和同作者另一篇的 9 万 token 混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "GitHub Actions 按 cron 拉起 claude -p。进程如果碰到使用上限或掉登录，往往只打一行就结束，退出码仍可能是成功，所以对号还是绿的。",
+      "只看绿色对号看不出有没有真正往前走。要把作业日志最后一行，和自己留下原因的文件对上，才能数出连续停住的次数。",
+      "同一周里其他也要叫 Claude 的作业会一起撞上限。间隔也不等于 cron 上写的数字，要把实际时刻排开来看。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-29T07:30:05.440+09:00 → UTC 2026-09-28T22:30:05Z、Asia/Shanghai 2026-09-29 06:30:05；bodyUpdatedAt 2026-09-24T23:24:45.827+09:00，早于发布，仍取 published → 2026-09-29；GET 200（UA MiraBot/1.0））：yuu_inaka 在《Claude Codeの定時実行が使用上限で2.5日止まっていたのに、GitHub Actionsはずっと緑だった》记下这 2.5 天。不要因 bodyUpdatedAt 写成 2026-09-24。",
+      "2.5 天、大约 25 秒和连续 8 次不要混用。不要只看绿色对号。不要和同作者 9 万 token 那篇混用。",
+    ],
+  },
+  {
+    id: "984",
+    slug: "cosm-5site-42",
+    title: "cosmicjan（nukitagon）：一个人用「统括方式」同时转 5 个数据站点。每个项目放一个实现用的 Claude Code，上面再放一个统括用的 Claude，作者只在两者之间传纸条。一次改修里，实现侧扫出 49 条候选，统括逐条看完，决定 42 条做 410、7 条维持；台账上曾写成「维持 8 条」，对过之后是 7 条（1 条和其他分类重复）。干跑时 410 正好 42 条，正式也是 42 条。作者规定：只有人在台账上写成 excluded 的行才能做 410，不能只靠规则或模型判断，并且一次生成能做 410 的条数要设上限。这些是作者自己这 5 个站点上的用法，不可外推到别的站点或流程。",
+    summary: "cosmicjan 一个人同时转 5 个数据站点。一次改修里 49 条候选被决定成 42 条做 410、7 条维持；台账曾写成维持 8 条，对过是 7 条。干跑和正式的 410 都是 42 条。这些是作者自己这 5 个站点上的用法，不可外推。",
+    description: "面向已经让 Claude Code 既写代码又决定「哪些页该下线」的人：把 5 个站点、49／42／7 和台账上多出来的那 1 条写成门禁，区别于只写「加一层统括就行」、却没有写出人还要逐条看、而且数字要对台账的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/cosmicjan/articles/375673d3039699",
+    sourceLabel: "zenn.dev·cosmicjan 实践帖",
+    upvotes: 875,
+    trending: false,
+    tags: [
+      "claude-code",
+      "oversight",
+      "static-site",
+      "http-410",
+      "ledger",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/cosmicjan/articles/375673d3039699",
+      label: "zenn.dev·cosmicjan《Claude Code を「統括方式」で運用して、一人で 5 つのデータサイトを回している話》",
+      date: "2026-10-01",
+      dateLabel: "发布",
+    },
+    approach: "作者一个人同时转 5 个数据站点，把实现和拍板拆开：每个项目由 Claude Code 做调查、改代码、测试和部署，上面再放一个统括用的 Claude 看数字、定取舍，自己只在中间传纸条，并要求 410 必须对人在台账上划过的行。",
+    outcomes: [
+      "源披露：一次改修里，实现侧全量扫描给出 49 条候选，统括逐条看完，决定 42 条做 410、7 条维持。台账上曾写成「维持 8 条」，对过之后是 7 条，因为有 1 条和其他分类重复。干跑时 410 正好 42 条，正式也是 42 条。这些是作者自己这 5 个站点上的用法，不可外推到别的站点或流程。",
+      "作者规定：只有人在台账上写成 excluded 的行才能做 410，不能只靠规则或模型判断；一次生成能做 410 的条数要设上限。模型挂了就改用规则的结果，模型换版本就把旧结果丢掉。不要把 49、42、7 和台账上多出来的那 1 条混用，也不要把这里的 410 理解成别的业务指标。",
+      "统括侧还登记过「公开 2 周后去看 GSC」这类带日期的判断。作者也写过：实现侧曾用已有的机械判定去「生成正确答案」再做评估，评估就不再是评估。另有一次，扩大采集源之后发现对端站点并不欢迎自动采集，维持这笔采集的费用占了月成本的大半。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-01T10:06:48.470+09:00，略早于发布、同日，仍取 published → 2026-10-01。正文无配图、无 YouTube 嵌入，也无文内产品硬链。作者卡 GitHub／X／website 均为空。",
+      "无作者产品导流可列。primary GET 200，未跟随至公司出版物。platforms 记 claude。这里的 410 是对公开 URL 做 HTTP 410，不要写成别的业务指标。49／42／7 不要混用。",
+    ],
+    prompts: [
+      {
+        title: "先问清 49、42、7 是不是同一次改修里的数，再谈「加一层统括就行」",
+        body: "请按实测算一算：同时在转的是几个站点；那一次扫描给出多少条候选，统括决定多少条做 410、多少条维持；台账上的「维持」原先写成几条，对过之后是几条，多出来的那一条是什么原因；干跑和正式的 410 是不是同一个数；哪些行才被允许做 410。不要把 49、42、7 混用，也不要把这里的 410 写成别的业务指标。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "每个项目放一个实现用的 Claude Code，负责调查、改代码、测试、部署并写出报告；上面再放一个统括用的 Claude，看数字、定取舍。人只在中间传纸条。",
+      "要下线的 URL 做成 HTTP 410 之前，必须是人在台账上写成 excluded 的行。一次能做 410 的条数设上限，并先干跑，再对正式。",
+      "数字要跟台账对。模型挂了就改用规则结果，模型换版本就把旧结果丢掉，避免用旧判定给新判定打分。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-01T10:11:22.316+09:00 → UTC 2026-10-01T01:11:22Z、Asia/Shanghai 2026-10-01 09:11:22；bodyUpdatedAt 2026-10-01T10:06:48.470+09:00，略早于发布、同日，仍取 published → 2026-10-01；GET 200（UA MiraBot/1.0））：cosmicjan 在《Claude Code を「統括方式」で運用して、一人で 5 つのデータサイトを回している話》记下这 5 个站点。",
+      "49 是候选，42 是做 410 的条数，7 是维持，台账上曾多写 1 条。干跑和正式都是 42 条。这里的 410 是 HTTP 410。",
+    ],
+  },
+  {
+    id: "985",
+    slug: "tksf-max20x-111",
+    title: "tksfjt1024：在 Max 20x 上实测 Claude Code 用量怎么计，发现权重和 API 价目表对不上。按作者拟合，从缓存再读（cache read）1 个 token 的权重是输入的 1/40（0.025 倍），输入本身的权重是 1；一次请求的用量是「模型权重 ×（输入 + 缓存写入×1.25 + 输出×5 + 缓存再读×0.025）」。同样 token 数，无界面（claude -p／Agent SDK）在 5 小时窗口里会按对话模式的 2 倍往下扣；高峰时段（平日日本时间 21:00 到次日 03:00）是 2.86 倍，周窗口不按时段、是 1.25 倍。官方后来公布的「5 小时窗口 +20%」，作者实测是 1.11 倍。/usage 显示 100% 时，请求有时还能通过。9 月就改过 3 次：09-14 改周窗口、一次没有预告的算法调整、09-23 改 5 小时窗口。这些是作者在 Max 20x、自己那套实验上拟合出来的数，不可外推到别的套餐、时期或官方公式。",
+    summary: "tksfjt1024 在 Max 20x 上测 Claude Code 用量，发现权重和 API 价目表对不上。从缓存再读按输入的 1/40（0.025 倍）计，输入本身的权重是 1；无界面在 5 小时窗口里按对话的 2 倍扣，高峰 2.86 倍；官方「5 小时 +20%」实测是 1.11 倍。这些是作者自己拟合的数，不可外推。",
+    description: "面向已经在看 /usage、却对不上自己感觉的消耗速度的人：把 Max 20x 上的 0.025、2 倍、2.86 倍和官方 +20% 实测 1.11 倍写成门禁，区别于只转述价目表、却没有写出自己拟合结果和官方宣传对不上的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tksfjt1024/articles/25c0ab111c277c",
+    sourceLabel: "zenn.dev·tksfjt1024 实践帖",
+    upvotes: 876,
+    trending: false,
+    tags: [
+      "claude-code",
+      "max-20x",
+      "usage-limit",
+      "weights",
+      "headless",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tksfjt1024/articles/25c0ab111c277c",
+      label: "zenn.dev·tksfjt1024《Claude Code の使用量はどう数えられているのか ── Max 20x で実測した重みは API 料金表と違った》",
+      date: "2026-10-01",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Max 20x 上把 5 小时窗口和周窗口的扣减拆开，按条件对齐做实验，去拟合「一种请求到底按多少权重计入」，并拿结果去对 API 价目表和后来的官方宣传。",
+    outcomes: [
+      "源披露：按作者在 Max 20x 上的拟合，从缓存再读（cache read）1 个 token 的权重是输入的 1/40（0.025 倍），输入本身的权重是 1。一次请求的用量公式是：模型权重 ×（输入 + 缓存写入×1.25 + 输出×5 + 缓存再读×0.025）。同样 token 数，无界面（claude -p 或 Agent SDK）在 5 小时窗口里会按对话模式的 2 倍往下扣；高峰时段（平日日本时间 21:00 到次日 03:00）是 2.86 倍，周窗口不按时段、是 1.25 倍。这些是作者自己那套实验上拟合出来的数，不可外推到别的套餐、时期或官方公式。",
+      "官方后来公布的「5 小时窗口 +20%」，作者实测是 1.11 倍，不要把 +20% 写成作者测到的倍数。作者写出的 5 小时使用率公式是：（对话模式用量合计 + 无界面用量合计 × 2）÷ 3 亿 × 100%。这是作者拟合的分母，不要写成官方公布的容量。/usage 显示 100% 时，请求有时还能通过。",
+      "9 月就改过 3 次：09-14 改周窗口、一次没有预告的算法调整、09-23 改 5 小时窗口。0.025 是缓存再读相对输入的系数，不要写成输入本身的权重。不要把 0.025、2 倍、2.86 倍、1.25 倍和 1.11 倍混成同一个系数，也不要把这套 Max 20x 上的拟合当成所有套餐的通用公式。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与 publishedAt 同为 2026-10-01T11:34:27.913+09:00，取 published → 2026-10-01。正文无配图、无 YouTube 嵌入。作者卡 website 为 https://openmoney.jp/，文内未链，未列入导流。这些系数是作者在 Max 20x 上拟合的，不要写成官方公式。 不要把 cache read 的 0.025 写成输入的权重；输入的权重是 1。",
+      "文内硬链须按最后一次 GET 披露。可达：https://she-llac.com/claude-limits GET 200；https://zenn.dev/skipbit/articles/2026-08-token-call-count GET 200；https://dev.classmethod.jp/articles/claude-max-20x-weekly-limit-not-4x/ GET 200；https://github.com/jonathanavis96/claude-usage-tracker 、https://github.com/jonathanavis96/claude-usage-tracker/blob/main/history/model-rates.json 、https://github.com/jonathanavis96/claude-usage-tracker/blob/main/docs/findings-2026-09-28-scatter.md 均 GET 200；https://github.com/anthropics/claude-code/issues/97398 、https://github.com/anthropics/claude-code/issues/97398#issuecomment-5858142962 GET 200；https://github.com/anthropics/claude-code/issues/97074 、https://github.com/anthropics/claude-code/issues/97074#issuecomment-5854738845 GET 200；https://claude.dev/blog/what-a-task-costs-on-opus-5-5/ GET 200；https://www.anthropic.com/news/higher-limits-spacex GET 200；https://support.claude.com/ja/articles/11647753 GET 200（标题 使用量と長さの制限はどのように機能しますか？ | Anthropicヘルプセンター；HTML 里虽有原型「unavailable」文案，落地是帮助正文，按 200 可达，不按区域不可用计）；https://support.claude.com/ja/articles/9797557 GET 200（标题 使用制限のベストプラクティス | Anthropicヘルプセンター，同样按正文可达）；https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion GET 200；https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan GET 200；https://x.com/trq212/status/2037254607001559305 、https://x.com/ClaudeDevs/status/2093742321473065266 、https://x.com/ClaudeDevs/status/2093742322525810912 、https://x.com/ClaudeDevs/status/2102438800836489554 、https://x.com/ClaudeDevs/status/2102438803013333469 、https://x.com/ClaudeDevs/status/2094856679250919746 、https://x.com/lydiahallie/status/2095967323412930677 均 GET 200。非可达：https://platform.claude.com/docs/en/about-claude/pricing GET 200，跟随至 https://claude.com/app-unavailable-in-region，按区域不可用披露，不因 200 算可达；https://www.reddit.com/r/ClaudeCode/comments/1wjsb04/i_measured_what_prompt_caching_actually_costs/ 、https://www.reddit.com/r/ClaudeCode/comments/1wrpv8j/opus_55_on_one_max20x_subscription_measuring/ 、https://www.reddit.com/r/ClaudeAI/comments/1s4idaq/update_on_session_limits/ 写作窗口与复检两次均为连接超时 000，不列入可达。primary GET 200。platforms 记 claude。不要因为文内引用了 GitHub issue，就把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0.025 是不是缓存再读相对输入的系数、输入本身是不是 1，再谈「按价目表就能换算」",
+        body: "请按实测算一算：这是在哪个套餐上测的；从缓存再读 1 个 token 按作者拟合是输入的多少倍，输入本身的权重是多少，一次请求的公式怎么写；无界面在 5 小时窗口里相对对话模式怎么扣；高峰时段和周窗口分别是多少倍；官方「5 小时窗口 +20%」作者实测是多少倍；9 月改过几次。不要把 +20% 写成作者测到的倍数，也不要把这套 Max 20x 上的拟合当成官方公式或其他套餐的通用算法。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "5 小时窗口和周窗口分开计。一次请求的用量是模型权重乘上（输入 + 缓存写入×1.25 + 输出×5 + 缓存再读×0.025）；输入的权重是 1，0.025 是缓存再读相对输入的系数。作者拿这套拟合去对 /usage 的变化。",
+      "无界面和对话模式即使 token 数相同，在 5 小时窗口里也不按同一速度扣。高峰时段只作用于 5 小时窗口的那一套倍数。",
+      "官方后来公布的额度变化，要再拿自己的实验对一次，不能把宣传里的百分数直接当成实测倍数。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-01T11:34:27.913+09:00 → UTC 2026-10-01T02:34:27Z、Asia/Shanghai 2026-10-01 10:34:27；bodyUpdatedAt 与发布相同；取 published → 2026-10-01；GET 200（UA MiraBot/1.0））：tksfjt1024 在《Claude Code の使用量はどう数えられているのか ── Max 20x で実測した重みは API 料金表と違った》记下这套拟合。",
+      "0.025 是缓存再读相对输入的系数，不是输入本身的权重。不要把 0.025、2 倍、2.86 倍、1.25 倍和 1.11 倍混用。+20% 是官方宣传，1.11 倍才是作者实测。3 亿是作者拟合的分母，不是官方容量。platform.claude.com 跟随至区域不可用页；三条 Reddit 两次均为 000。",
+    ],
+  },
+  {
+    id: "986",
+    slug: "camp-21skip-1",
+    title: "autocamp：把 Claude Code 定期任务的「见送り」（这次被推迟、没轮上）重新计数后，发现最先跳出的 21 条警告其实是同一回等待。21 条全部落在 9 月 21 日 13:42 到 13:49 这 8 分钟里，是撞上可同时运行的上限后，每 1 分钟再试一次留下的记录。3 条任务叠在同一时刻，一回拥堵就会变成 21 条警告。于是改成：30 分钟以内接着出现的暂缓只数成 1 回；若后来跑成功，就视为已经补上。另一类「没在动」的警告出在 3 条事后改过时刻的任务上，改成「预定那天有跑过一次就算数」，电脑在睡觉则再等 2 小时再判断。作者写明，这两类警告的原始数字本身是对的，错在计数方式。这些是作者自己这套定期任务上的用法，不可外推到别的调度或上限。注意：日文「見送り」是这次被推迟，不能译成「先发送」。",
+    summary: "autocamp 把 Claude Code 定期任务的「见送り」（这次被推迟）重新计数，发现 21 条警告其实是 9 月 21 日 13:42–13:49 这 8 分钟里的同一回等待。30 分钟内接着出现的暂缓改数成 1 回。这些是作者自己这套任务上的用法，不可外推。「見送り」不能译成「先发送」。",
+    description: "面向已经在看 Claude Code 定期任务警告、却被「21 条暂缓」吓到的人：把 8 分钟里的 21 条、3 条任务叠在一起，以及 30 分钟窗改数成 1 回写成门禁，区别于只报警告条数、却没有把同一回等待重新计过的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/autocamp/articles/56520d20812298",
+    sourceLabel: "zenn.dev·autocamp 实践帖",
+    upvotes: 877,
+    trending: false,
+    tags: [
+      "claude-code",
+      "scheduled-tasks",
+      "deferral",
+      "alerting",
+      "recount",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/autocamp/articles/56520d20812298",
+      label: "zenn.dev·autocamp《Claude Codeの定期タスクの「見送り」を数え直したら、21件は1回だった》",
+      date: "2026-10-03",
+      dateLabel: "发布",
+    },
+    approach: "作者先按警告条数去看定期任务的「见送り」（这次被推迟、没轮上），觉得多得不对。把每条打开后，发现它们挤在同一小段时间里，于是改成按「同一回等待」重新计数，而不是按原始条数报警。",
+    outcomes: [
+      "源披露：最先跳出的「见送り」警告是 21 条，逐条打开后全部落在 9 月 21 日 13:42 到 13:49 这 8 分钟里。那是撞上可同时运行的上限后，每 1 分钟再试一次留下的记录；等 8 分钟就会排上 8 条，3 条任务叠在同一时刻，一回拥堵就会变成 21 条警告。这些是作者自己这套定期任务上的用法，不可外推到别的调度或上限。日文「見送り」是这次被推迟，不能译成「先发送」。",
+      "后来改成：30 分钟以内接着出现的暂缓只数成 1 回；若后来跑成功，就视为已经补上。不要把 21 条警告写成 21 回独立的失败，也不要把 8 分钟、每 1 分钟再试、3 条任务和 30 分钟窗混成同一个数。",
+      "另一类警告是 3 条「没在动」，都出在事后改过时刻的任务上。改成「预定那天有跑过一次就算数」；电脑在睡觉，则从预定时刻再等 2 小时再判断。作者写明，这两类警告的原始数字本身是对的，错在计数方式。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与 publishedAt 同为 2026-10-03T13:33:44.223+09:00，取 published → 2026-10-03。正文无配图、无 YouTube 嵌入。日文「見送り」必须译成这次被推迟／没轮上，绝不能写成「先发送」。作者卡 website 为 https://autocamp.website/，文内未链，未列入导流。",
+      "导流：https://note.com/autocamp/n/nf6a6a84c453f GET 200（标题 Claude Codeの定期タスクを見張る拡張機能を作ったら、最初の警告が2回とも外れた｜オートキャンプライフ）。primary GET 200。platforms 记 claude。21 条是同一回等待里的原始警告条数，不要写成 21 回失败。",
+    ],
+    prompts: [
+      {
+        title: "先问清 21 条警告是不是同一回等待，再谈「定期任务失败了 21 次」",
+        body: "请按实测算一算：最先跳出的「见送り」警告是多少条，它们落在哪一天的哪几分钟里；是因为什么上限、隔多少分钟再试一次；几条任务叠在一起会把一回等待写成多少条；后来改成多少分钟以内只数成 1 回。日文「見送り」是这次被推迟，不能译成「先发送」。不要把 21 条警告写成 21 回独立的失败。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "定期任务撞上可同时运行的上限时，会按短间隔再试，每一次再试都会留下一条「这次被推迟」的警告。",
+      "把同一小段时间里连续出现的警告先收成「一回等待」，再看后来有没有跑成功。30 分钟以内接着出现的，只数成 1 回。",
+      "「没在动」要先看这条任务是不是事后改过时刻，以及当时电脑是不是在睡觉，不能只按警告条数下结论。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-03T13:33:44.223+09:00 → UTC 2026-10-03T04:33:44Z、Asia/Shanghai 2026-10-03 12:33:44；bodyUpdatedAt 与发布相同；取 published → 2026-10-03；GET 200（UA MiraBot/1.0））：autocamp 在《Claude Codeの定期タスクの「見送り」を数え直したら、21件は1回だった》记下这次重计。日文「見送り」不能译成「先发送」。",
+      "21 条是同一回等待里的原始警告，8 分钟、每 1 分钟再试、3 条任务和 30 分钟窗不要混用。原始数字是对的，错在计数方式。",
+    ],
+  },
+  {
+    id: "987",
+    slug: "rere-104n-20q",
+    title: "rererr_engineer：用自己的 104 篇个人笔记测 Claude Code 能不能把知识找回来，并做了 hikidasu。评估是 20 问（词汇一致 5、同义 6、日英写法 3、跨笔记 3、没有答案 3；没有答案的 3 问不进分母），指标是 Recall@5。检索器单独测：grep 0.666，BM25 关键词 0.402，把问句直接丢给 BM25 是 0.000；日语特化嵌入 ruri-v3-310m 用问句是 0.941。真正交给 Claude Code 时，从 20 问里抽出 10 问，3 种指示×4 个模型共 120 次、合计 10.64 美元：grep 指示到达率 0.99，ruri 0.95，并用 0.97，费用约一半。文中引用的 grep 68%、语义 84%、混合 89% 来自另一篇，作者写明未见复现步骤、本文没有复现，不要拿来当成这篇的实测。这些是作者自己这 104 篇笔记和 20 问上的结果，不可外推到别的库或问法。",
+    summary: "rererr_engineer 用 104 篇个人笔记、20 问测检索。检索器单独测，grep 的 Recall@5 是 0.666，ruri 用问句是 0.941。交给 Claude Code 后，10 问、120 次里 grep 指示到达率 0.99、ruri 0.95，费用约一半。另一篇的 68%／84%／89% 本文没有复现。这些是作者自己这套笔记上的结果，不可外推。",
+    description: "面向已经在让 Claude Code 搜自己的笔记、却分不清「检索器分数」和「代理真的读到了」的人：把 104 篇、20 问、grep 0.666／ruri 0.941 和代理到达率写成门禁，区别于转述别人的 68%／84%／89%、却没有写出自己这套问法上两种测法并不相同的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/rererr_engineer/articles/grep-vs-embedding-knowledge-search",
+    sourceLabel: "zenn.dev·rererr_engineer 实践帖",
+    upvotes: 878,
+    trending: false,
+    tags: [
+      "claude-code",
+      "retrieval",
+      "ruri",
+      "grep",
+      "hikidasu",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/rererr_engineer/articles/grep-vs-embedding-knowledge-search",
+      label: "zenn.dev·rererr_engineer《溜めたナレッジ、Claude Code はちゃんと読めてる？ grep と埋め込みを 104 ノートで測って hikidasu を作った》",
+      date: "2026-10-04",
+      dateLabel: "发布",
+    },
+    approach: "作者先用自己的 104 篇笔记和 20 道自己会问的日语题，把 grep、BM25 和嵌入只当检索器来测 Recall@5；再让 Claude Code 按「用 grep 找」或「用 ruri 找」去读笔记，看它有没有真正打开正确的文件，最后把 ruri 做成常驻工具 hikidasu。",
+    outcomes: [
+      "源披露：对象是作者自己的 104 篇个人笔记。20 问里词汇一致 5、同义 6、日英写法 3、跨笔记 3、没有答案 3；没有答案的 3 问不进分母，指标是 Recall@5。检索器单独测：grep 0.666（词汇一致 1.000、同义 0.667、写法 0.000、跨笔记 0.777），BM25 关键词 0.402，把问句直接丢给 BM25 是 0.000；ruri-v3-310m 用问句是 0.941。这些是作者自己这 104 篇笔记和 20 问上的结果，不可外推到别的库或问法。",
+      "英译这 104 篇用本地 qwen3:8b，一篇中位 20 秒（最短 7 秒、最长 165 秒），合计 42 分钟。英译后 BM25 升到 0.598，仍低于 grep 的 0.628；嵌入在英译库上更高，但作者最后采用不翻译、直接用 ruri。文中引用的 grep 68%、语义 84%、混合 89% 来自另一篇，作者写明未见复现步骤、本文没有复现，不要写成这篇的实测。",
+      "交给代理之后，从 20 问里抽出 10 问，3 种指示（grep、ruri、ruri 找不到再回 grep）×4 个模型共 120 次、各格 1 次、合计 10.64 美元。4 个模型平均到达率：grep 0.99、ruri 0.95、并用 0.97，差别只有 1 问，这个规模区分不开。ruri 指示费用大约是 0.35～0.53 倍；最便宜是 haiku＋ruri，每问 0.019 美元。墙钟时间 grep 指示 11～29 秒、ruri 指示 39～56 秒，API 时间两边都是 9～28 秒，多出来的主要是每次重新载入 ruri，中位 20 秒。做成常驻后，同一 10 问用 sonnet，ruri 指示墙钟 11 秒、并用 12 秒，token 仍大约一半。判定只看有没有 Read 到正确笔记，没有看回答对不对。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-05T04:29:47.193+09:00，晚于发布且跨到 10-05，仍取 published → 2026-10-04。正文无配图、无 YouTube 嵌入。20 问是作者自己出的，知道答案，选词会有偏差；有一问最初用的词在正文里找不到，后来改成正文里的词。不要把检索器单独测的 0.666 写成代理到达率。Qwen／ollama／Hugging Face 不填进 platforms。作者卡 website 为 https://rererr-portfolio.pages.dev/，文内未链，未列入导流。",
+      "导流：https://github.com/Rererr/hikidasu GET 200。https://pypi.org/project/hikidasu/ 写作窗口与复检两次均为 HTTP 200，标题 Client Challenge（人机验证页），不列入可达。一次资料：https://www.codewithseb.com/blog/claude-code-obsidian-rag-knowledge-base-guide GET 200；https://github.com/tobi/qmd GET 200；https://huggingface.co/cl-nagoya/ruri-v3-310m GET 200。primary GET 200。platforms 记 claude。不要因为工具仓在 GitHub 上，就把 github 填进 platforms。不要把另一篇未复现的 68%／84%／89% 写成这篇的实测。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0.666 和 0.99 是不是同一层测量，再谈「嵌入一定更准」",
+        body: "请按实测算一算：笔记是多少篇，评估是多少问，各类问怎么分，没有答案的问进不进分母；检索器单独测时 grep 和 ruri 的 Recall@5 各是多少；交给 Claude Code 之后抽了多少问、跑了多少次，grep 指示和 ruri 指示的到达率和费用差多少。不要把另一篇未复现的 68%／84%／89% 写成这篇的实测，也不要把检索器单独测的分数写成代理到达率。判定只看有没有读到正确笔记，不是看回答对不对。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先只测检索器：按自己会打的关键词或原问句取出前 5 篇，看正确答案在不在里面，没有答案的 3 问不进分母。",
+      "再让 Claude Code 按不同指示去搜并 Read 笔记，只看有没有打开正确文件。检索器单独测时被丢掉的同义和写法，代理会用近义词和索引补上，所以两层分数不能混用。",
+      "把 ruri 做成常驻服务 hikidasu，避免每次重新载入模型。找不到时再退回用日英近义词做 grep。常驻服务没有鉴权，作者把套接字权限收成只有自己能用。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-04T19:46:16.239+09:00 → UTC 2026-10-04T10:46:16Z、Asia/Shanghai 2026-10-04 18:46:16；bodyUpdatedAt 2026-10-05T04:29:47.193+09:00，晚于发布且跨到 10-05，仍取 published → 2026-10-04；GET 200（UA MiraBot/1.0））：rererr_engineer 在《溜めたナレッジ、Claude Code はちゃんと読めてる？ grep と埋め込みを 104 ノートで測って hikidasu を作った》记下这 104 篇和 20 问。不要因 bodyUpdatedAt 写成 2026-10-05。",
+      "检索器单独测的 grep 0.666／ruri 0.941，不要和代理到达率 0.99／0.95 混用。另一篇的 68%／84%／89% 本文没有复现。PyPI 页两次均为人机验证页，不列入可达。",
+    ],
   }
 ];
 
