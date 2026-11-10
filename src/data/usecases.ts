@@ -75713,6 +75713,61 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "1089",
+    slug: "acro-30of32-94",
+    title: "acropapa330／アクロパパ：用「从 40 个虚构配置里按条件把文件选全」这道题，测了 21 种配置。题目是 4 档 × 8 题＝32 题，集合必须完全一致才算对。LFM3-1.7B 思考开是 24／32（75％），关思考后是 30／32（94％）；想完并写出答案的 24 题全部正确，错的 8 题都是碰到 8,192 token 输出上限。Claude 5.5 的 3 个模型和 GPT-6.1 sol、GPT-6 astra 等云端上位是 32／32。不要把 30／32 和 24／32、或 94％ 和 75％、32／32 写成同一笔。云端经 OpenRouter。源文写的是 Claude 与 GPT-6.1 sol、GPT-6 astra 等模型名，未称为 ChatGPT，不写入 chatgpt。platforms 只记 claude。这些是作者自己这一次、在自造数据上各跑 1 次的记录，不可外推。",
+    summary: "acropapa330 用 40 个虚构配置、32 道必全对的题比较 21 种配置。LFM3 思考开 24／32（75％），关思考后 30／32（94％）；若干云端上位是 32／32。不要把 94％ 和 75％ 或 32／32 混用。源文未称为 ChatGPT，不写入 chatgpt。platforms 只记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算把「思考开着就一定更准」用到小型本地模型上、却还把 94％ 和 75％ 写成同一笔的人：把 LFM3 关思考后的 30／32，以及错的 8 题全是输出上限写完写成门禁，区别于把云端 32／32 或体感的 75％ 说成可以外推到真实配置文件的结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/acropapa330/articles/lfm3-config-pick-benchmark",
+    sourceLabel: "zenn.dev·acropapa330 实践帖",
+    upvotes: 980,
+    trending: false,
+    tags: [
+      "llm",
+      "benchmark",
+      "claude",
+      "lfm3",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/acropapa330/articles/lfm3-config-pick-benchmark",
+      label: "zenn.dev·acropapa330／アクロパパ《1.7BのLFM3は思考オフで94% — 設定ファイル選びでGPT-6.1・Claude・Gemma 4ら21構成比較》",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
+    approach: "作者先在自己的应用里让 LFM3 选配置，体感大约只能对 75％。于是做了虚构的录像／推流应用「CamFlow」预设 40 个（约 6.9KB、约 3,200 token），每题把 40 个全部交给模型，按条件把文件名集合选全，对错由代码算，不用人和 LLM 评分。题目是 4 档 × 8 题＝32 题，缺一个或多一个都算错。云端走 OpenRouter、temperature 0；本地是 Core i9-12900K 只开 CPU、内存 48GB。每种配置各跑 1 次。",
+    outcomes: [
+      "源披露：LFM3-1.7B 思考开是 24／32（75％），关思考后是 30／32（94％）。思考开错的 8 题都是碰到 8,192 token 输出上限，想完并写出「答案:」的 24 题全部正确。Claude Haiku 5.5、Sonnet 5.5、Opus 5.5 和 GPT-6.1 sol、GPT-6 astra 等云端上位是 32／32；GPT-6.1 terra 是 31／32，GPT-6 luna 是 29／32。不要把 30／32 和 24／32、或 94％ 和 75％、32／32 写成同一笔。这些是作者自己这一次、在自造的 40 个配置上各跑 1 次的记录，不可外推到真实应用的配置文件或多次取样。",
+      "云端费用上，Claude Haiku 5.5 是 32 题 $0.022，GPT-6 luna 是 $0.014 但只有 29／32。本地侧，Gemma 4 E2B 是 28／32、约 1.7 分／题，LFM3 关思考约 5 分／题。作者写明量化并不齐（LFM3 为 Q8_0，Gemma 和 Qwen3.5 4B 为 Q4_K_M），不要把这些耗时、费用和 30／32 写成同一组结论。",
+      "作者也写了题目本身的限度：数据是他做的虚构集；NEG 最后一题（q32）的日文可能有点含糊，GPT-5.6 的 4 种配置都读错，LFM3 关思考也多选了同样 3 个。失败过的 GPT-6 题是因为 OpenRouter 一度返回 402，后来改成 1 路过重新取。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-02T12:17:06.244+09:00 → UTC 2026-11-02T03:17:06Z、Asia/Shanghai 2026-11-02 11:17:06；bodyUpdatedAt 2026-11-02T12:13:54.325+09:00，早于发布、同日，仍取 published → 2026-11-02；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 30／32（94％）和 24／32（75％）或云端 32／32 混用。不要和近批硬窗混用。正文未配图。",
+      "导流：无作者独立产品导流可列。作者资料里的 YouTube https://youtube.com/@acropapa330?si=xTT-w0KCarz1qDfx 与 https://x.com/acropapa330 只出现在作者资料／侧栏，源页 HTML／正文／简介没有这两条硬链，不算导流，不补写。Gemini 等不在 18 值里，不写入 platforms。源文未称为 ChatGPT，不把 GPT-6.1 sol／GPT-6 astra／GPT-6 luna／GPT-5.6 写入 chatgpt。platforms 只记 claude。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 30／32（94％）和 24／32（75％）不是同一笔，再谈 32／32 不能写进 LFM3",
+        body: "请按原文核算：是不是 40 个虚构配置、4 档 × 8 题＝32 题、21 种配置。LFM3 思考开是不是 24／32（75％），关思考后是不是 30／32（94％）。错的 8 题是不是都碰到 8,192 token 上限，想完的 24 题是不是全部正确。Claude 5.5 的 3 个模型和 GPT-6.1 sol、GPT-6 astra 是不是 32／32，GPT-6.1 terra 是不是 31／32，GPT-6 luna 是不是 29／32。Haiku 5.5 32 题是不是 $0.022。云端是不是走 OpenRouter，各配置是不是只跑 1 次。体感 75％ 和这次 24／32 能不能直接当成同一笔已经证实的事。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用代码算出应得的文件名集合，集合必须完全一致，才能比较不同模型。",
+      "小型模型先看是判断错了，还是思考过程把输出上限用完了。",
+      "输出上限固定时，关掉思考有时反而能写完答案。",
+      "云端满分和本地 94％ 要分开看费用、耗时和量化是否齐。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-02T12:17:06.244+09:00 → UTC 2026-11-02T03:17:06Z、Asia/Shanghai 2026-11-02 11:17:06；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-11-02；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-11-02。",
+      "不要把 30／32 和 24／32，或 94％ 和 75％、32／32 混用。源文未称为 ChatGPT，不把经 OpenRouter 的 GPT 系模型名写入 chatgpt。platforms 只记 claude。作者资料站点不算导流，不补写。",
+    ],
+  },
+  {
     id: "1090",
     slug: "ctun-12d-170x",
     title: "dev_ctun／しーつん：把自走代理的状态文件从头读进每次启动后，文件从开业时约 2KB 涨到 12 天后的 336KB，约 170 倍。启动是 1 天 14 次、每小时 1 次；间隔一小时缓存会掉，每次还没开始干活就要把 336KB 当新输入计费。后来把「事业」节只留最新 30KB，335,860 bytes 压到 81,986 bytes，多出来的旧日志全文进退避库，缺失 0 行，连跑第二次不再改动，并跑了 123 个测试。不要把约 170 倍和后来的 335,860→81,986，或约 2KB 和 336KB 写成同一阶段。正文写明这次计费走的是 Claude API，Claude Code 只是拿来类比，platforms 记 claude。这些是作者自己这一次状态文件上的记录，不可外推。",
