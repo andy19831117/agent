@@ -71243,6 +71243,443 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-10-21T18:22:14.778+09:00 → UTC 2026-10-21T09:22:14Z、Asia/Shanghai 2026-10-21 17:22:14；bodyUpdatedAt 与发布相同，取 published → 2026-10-21；GET 200（UA MiraBot/1.0））：yosiki 在《cronのclaude -pが\"ok\"だけで4万トークン——--safe-modeと--tools \"\"で98%削減》记下这次实測。",
       "39,968 是素调用，737 是最终写法，−98% 是这两者的对比。各条件只测了 1 次。一周大约 112 万变成 2 万是按一天 4 次的推算。不要和 #989、#985 混用。",
     ],
+  },
+  {
+    id: "1008",
+    slug: "tkg-207-1p50",
+    title: "tkg216：在日本国内 1 个地点，用静态临时凭证，对东京区域的 RDS DescribeDBInstances、ECS ListClusters、EC2 DescribeVpcs，从 run_script 在连接之后的调用，每个服务测了 69 次（3 个服务合计 207 次）。表里是中位数，单位是毫秒。把端点改到东京后，3 个服务合计从 2968ms 变成 1979ms，大约快 1.0 秒（1.50 倍）；同一轮 69 组对照里，东京全部更快。同一条件下，AWS CLI 单次读取的中位数是 491ms，东京端点的 MCP 是 1979ms，大约是 4 倍（各 n=207）；把 3 个 API 合成一次任务后，差距是 1.80 倍（MCP 2636ms、CLI 1466ms；n 分别是 68 和 69）。这些是作者自己这一地点、这一组调用上的实测，不可外推到别人的网络、时段或别的区域。",
+    summary: "tkg216 在日本 1 个地点把 AWS MCP 端点改到东京后，3 个服务合计 207 次调用的中位数从 2968ms 变成 1979ms（1.50 倍）。同一条件里 CLI 单次读取仍大约快 4 倍。这些是作者自己这一地点上的实测，不可外推。",
+    description: "面向已经在用 AWS MCP、却还把端点留在 us-east-1 的人：把 207 次、中位数 2968ms→1979ms（1.50 倍），以及 CLI 单次大约快 4 倍写成门禁，区别于只说「换到东京就会更快」、却没有写出自己这一地点实测次数和中位数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tkg216/articles/aws-mcp-tokyo-latency",
+    sourceLabel: "zenn.dev·tkg216 实践帖",
+    upvotes: 899,
+    trending: false,
+    tags: [
+      "aws",
+      "mcp",
+      "claude",
+      "latency",
+      "tokyo",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tkg216/articles/aws-mcp-tokyo-latency",
+      label: "zenn.dev·tkg216《AWS MCP Serverの東京リージョンを実測して、設定の決め方を考える》",
+      date: "2026-10-13",
+      dateLabel: "发布",
+    },
+    approach: "作者自己的设置原先还停在 us-east-1。东京区域开通之后，他在日本国内 1 个地点、用静态临时凭证，把东京区域的 RDS、ECS、EC2 列表读取从 run_script 里调出来，按中位数比较换端点之后到底快多少，再对照本地的 AWS CLI。",
+    outcomes: [
+      "源披露：每个服务 69 次、3 个服务合计 207 次，表里是中位数，单位是毫秒。端点改到东京后，3 个服务合计从 2968ms 变成 1979ms，大约快 1.0 秒（1.50 倍）；同一轮 69 组对照里东京全部更快，中位数差是 RDS 979ms、ECS 987ms、EC2 1030ms。只看通信的话，tools/list 再送从 966ms 变成 311ms，大约 3 倍（各 n=75）。会话里第一次 run_script 不论端点都要 8～12 秒（各 n=14～15，中位数 8.6～10.9 秒）。这些是作者自己这一地点、朝／午／夜各测 1 轮上的实测，不可外推到别人的网络或别的区域。",
+      "同一条件里，3 个服务单次读取，CLI 的中位数是 491ms，东京端点的 MCP 是 1979ms，大约 4 倍，表里写作 4.04 倍（各 n=207）。把 3 个 API 合成一次任务后，MCP 是 2636ms、CLI 是 1466ms，差距变成 1.80 倍（n 分别是 68 和 69）。CLI 三连 1466ms 和单次 3 回合计 1473ms 几乎一样；MCP 单次 3 回合计 5966ms，合成一次只要 2636ms。作者按 1 本到 3 本的增量外推，大约 10 本才会反超，但 4 本以上没有测，这是推测。",
+      "uvx mcp-proxy-for-aws@latest --help 的中位数是 1131ms，钉在 ==1.7.0 是 844ms，每次启动大约差 290ms（各 n=12，有缓存）。这组数字用的是拆名前的包名。SSO 档案每次重新取票，东京的 tools/list 再送从 311ms 变成 753ms，大约多 0.4 秒（n=36）。tools/list 的应答单是 13,483 个字符，会常驻在上下文里。--read-only 并不会把 API 限制成只读：实测里 run_script 和 get_presigned_url 的 readOnlyHint 都是 false，会从清单里消失，剩下的是知识类 5 个工具再加上 get_tasks。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-13T14:54:10.297+09:00 → UTC 2026-10-13T05:54:10Z、Asia/Shanghai 2026-10-13 13:54:10；bodyUpdatedAt 2026-10-13T08:42:04.366+09:00，早于发布、同日，仍取 published → 2026-10-13。正文无配图、无 YouTube 嵌入。不要把表里的中位数写成平均数。不要把大约 4 倍和表里的 4.04 倍、1.50 倍和 1.80 倍混用。大约 10 本反超是 2 个点的直线外推，4 本以上未测。不要和 #985、#989、#993、#996、#1003、#1006、#1007 的 token／耗时统计混用。platforms 记 claude。不要填 github。",
+      "导流：无作者产品导流可列。一次资料：https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/ GET 200（标题 The AWS MCP Server is now available in six additional AWS Regions）；https://github.com/awslabs/mcp/blob/main/src/aws-api-mcp-server/MIGRATION.md GET 200；https://aws.amazon.com/blogs/security/secure-ai-agent-access-patterns-to-aws-resources-using-model-context-protocol/ GET 200。API 端点 https://aws-mcp.ap-northeast-1.api.aws/mcp 交付时 GET 405，不列入可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 2968ms→1979ms 是不是中位数、207 次是不是 3 个服务合计，再谈「换到东京就一定更快」",
+        body: "请按原文核算：每个服务测了多少次、3 个服务合计多少次，表里用的是中位数还是平均数；端点改到东京后，3 个服务合计从多少毫秒变成多少毫秒，1.50 倍和大约 1.0 秒是不是同一组数。再对照 AWS CLI：单次读取的中位数各是多少、n 是多少，大约 4 倍和表里的 4.04 倍怎么对应；3 个 API 合成一次之后，MCP 和 CLI 各是多少毫秒、1.80 倍的 n 分别是多少。不要把第一次 run_script 的 8～12 秒写成日常调用，也不要把大约 10 本反超写成已经测过。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在日本 1 个地点，用静态临时凭证，对东京区域的 RDS、ECS、EC2 列表读取做连接之后的调用，每个服务 69 次，按中位数比较 us-east-1 和东京端点。",
+      "同一组对象再拿本地 AWS CLI 做单次读取，以及把 3 个 API 合成一次任务，写出 4.04 倍和 1.80 倍这两档差距。",
+      "另外测了固定版本、SSO 重新取票、第一次 run_script 和 --read-only 实际还剩哪些工具，用来决定 Claude Code 里怎么写 AWS MCP 的设置。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-13T14:54:10.297+09:00 → UTC 2026-10-13T05:54:10Z、Asia/Shanghai 2026-10-13 13:54:10；bodyUpdatedAt 2026-10-13T08:42:04.366+09:00，早于发布、同日，仍取 published → 2026-10-13；GET 200（UA MiraBot/1.0））：tkg216 在《AWS MCP Serverの東京リージョンを実測して、設定の決め方を考える》写 207 次中位数和 1.50 倍。无作者产品导流。端点 405 须披露。",
+      "表里全部是中位数，不要改称平均。2968→1979 的 1.50 倍、CLI 的大约 4 倍／4.04 倍、合成后的 1.80 倍，不是同一档比较。大约 10 本反超未实测。",
+    ],
+  },
+  {
+    id: "1009",
+    slug: "nger-5940-9of37",
+    title: "ngermany：自己做家计簿，停掉 Money Forward ME 年付 5,940 日元（标准档／卡片支付）的方案。后来又从云上每月 $14 改到这台电脑本地跑，月租写成 0 日元（不含电脑电费；库放在 Neon 免费档，0.5 GB 额度里实测 11 MB）。Gmail 里解析 4 家卡片的使用通知。用订单确认邮件的「商品计」去对齐时，实测 37 件里有 22 件对不上；发货通知里的「合计」在 36 件里有 20 件和订购确认不一致；37 件里有 9 件（24%）是全额积分或礼品余额支付，卡片根本不会出账。这些是作者自己这套邮件和这 37 件订单上的用法，不可外推到别人的卡片或别的邮箱。",
+    summary: "ngermany 停掉年付 5,940 日元的 Money Forward ME，改用自己做的家计簿和 MCP。订单「商品计」在 37 件里有 22 件对不上，37 件里有 9 件（24%）全额积分支付。这些是作者自己这 37 件上的用法，不可外推。",
+    description: "面向已经在为家计簿年费和锁定发愁、又想让 Claude Code 直接读自己账本的人：把年 5,940 日元、37 件里 22 件对不上、9 件（24%）全额积分写成门禁，区别于只建议「自己做一套更便宜」、却没有写出邮件对齐实测件数的实践。",
+    categories: [
+      "life",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ngermany/articles/moneyforward-to-selfhosted",
+    sourceLabel: "zenn.dev·ngermany 实践帖",
+    upvotes: 900,
+    trending: false,
+    tags: [
+      "household",
+      "mcp",
+      "claude",
+      "gmail",
+      "self-host",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ngermany/articles/moneyforward-to-selfhosted",
+      label: "zenn.dev·ngermany《家計簿を自作してマネーフォワードをやめた — 年5,940円とロックインから降りる》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者先算清 Money Forward ME 标准档年付 5,940 日元，以及免费档只许 4 家机构、一年以前的账看不见。自己做了家计簿之后，又从云上每月 $14 迁回这台电脑，并用 Gmail 和订单邮件取数，再经 MCP 给 Claude Code 读。",
+    outcomes: [
+      "源披露：对照表里，Money Forward ME 标准档年付是 5,940 日元（卡片支付）；App Store／Google Play 支付是年 6,490 日元，不要写成同一报价。自己做的方案月租写成 0 日元，作者写明不含电脑电费；库在 Neon 免费档，0.5 GB 额度里实测 11 MB。自做之初放在 AWS 上时，曾变成每月 $14，只是付款对象换了。这些是作者自己这套家计簿上的费用和用量，不可外推到别人的账单或电费。",
+      "Gmail 解析的是 4 家卡片：三井住友、Amazon Mastercard、JCB、乐天。乐天的邮件会晚 1～13 天，作者举过 21 日消费、8 天后才寄到的例子；若按收信日只取 1 天，乐天会变成 0 件。乐天还会先寄「速报版」（没有使用店名），再寄正式通知，两封都取就会记成 2 件。Amazon Mastercard 和三井住友的正文几乎一字不差，只能靠「ご利用カード：」那一行区分，而且这两条判定必须互斥，否则同步会整段失败。",
+      "用订单确认里的「商品计」去对齐卡片支出时，实测 37 件里有 22 件对不上，要对的是扣掉积分、礼品余额和优惠券之后的「合计」。发货通知里的「合计」会把积分加回去，实测 36 件里有 20 件和订购确认不一致，拿去覆盖会把已经对上的支出改坏。37 件里有 9 件（24%）是全额积分或礼品余额支付，卡片不出账，没有可对齐的支出。不要把 37 件和 36 件、22 件和 20 件、9 件（24%）写成同一组。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-12T14:45:39.639+09:00 → UTC 2026-10-12T05:45:39Z、Asia/Shanghai 2026-10-12 13:45:39；bodyUpdatedAt 2026-10-12T15:10:26.695+09:00，晚于发布、同日，仍取 published → 2026-10-12。正文配图 2 张，完整 URL 已挂在本条：https://static.zenn.studio/user-upload/deployed-images/e6e039c6bb23696fbae55c86.png?sha=3c8c1d7903387df667508ad55acf06cf919d057c 、https://static.zenn.studio/user-upload/deployed-images/79a353b624dcddfa225077ec.png?sha=e8b27eef9106d949408b14600fd4bd1d014004f2 ，均 GET 200。作者写明首页数字是为这篇文章准备的演示数据。无 YouTube 嵌入。停掉公开端点之后，claude.ai 和手机上的 Claude 已经不能用，现在只从 Claude Code 用。platforms 记 claude。",
+      "导流：无作者产品站点可列。相关篇（固定费用怎样变成 0）https://zenn.dev/ngermany/articles/aws-to-local-zero-cost GET 200，不列入产品导流。一次资料：https://moneyforward.com/pages/premium_features GET 200（标题 プレミアムサービス機能比較表｜マネーフォワード ME）；https://modelcontextprotocol.io/ GET 200；https://tailscale.com/kb/1223/funnel GET 200（作者写 Tailscale Funnel 可以免费接回 HTTPS，但还没做）。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5,940 日元是年付哪一档，37 件里 22 件、36 件里 20 件和 9 件（24%）是不是三组不同的数，再谈「自己做就零成本」",
+        body: "请按原文核算：Money Forward ME 标准档卡片支付的年费是多少，App Store／Google Play 那一档是多少，不要写成同一个报价。自做方案的月租 0 日元包不包电费，Neon 免费档 0.5 GB 里实测是多少。订单确认用「商品计」对齐时，37 件里有多少件对不上；发货通知的「合计」是在 36 件里有多少件不一致；37 件里有多少件（百分之几）是全额积分或礼品余额、卡片不出账。不要把这三组分母混用。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先停掉年付 5,940 日元的 Money Forward ME，把账放进自己的 PostgreSQL（52 张表），再从曾经过每月 $14 的云上迁回这台电脑。",
+      "用 Gmail 解析 4 家卡片的使用通知，并用 Amazon、ABC-MART 的订单确认邮件把商品名对到支出上；对不唯一的日期和金额就宁可不对。",
+      "自己架 MCP 服务器，让 Claude Code 用对话读写家计数据。工具只给材料，不替人下「该用哪张卡」的判断。公开端点停掉之后，只从 Claude Code 用。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-12T14:45:39.639+09:00 → UTC 2026-10-12T05:45:39Z、Asia/Shanghai 2026-10-12 13:45:39；bodyUpdatedAt 2026-10-12T15:10:26.695+09:00，晚于发布、同日，仍取 published → 2026-10-12；GET 200（UA MiraBot/1.0））：ngermany 在《家計簿を自作してマネーフォワードをやめた — 年5,940円とロックインから降りる》写年 5,940 日元和 37 件里 9 件（24%）。配图 2 张均 200。相关篇 200，不列入产品导流。",
+      "5,940 和 6,490 不是同一支付渠道。37 件／22 件、36 件／20 件、9 件（24%）不要混用。月租 0 日元不含电费。首页数字是演示数据。",
+    ],
+  },
+  {
+    id: "1010",
+    slug: "mato-1403-550",
+    title: "mato：把自己两年的头痛备忘（2024年10月–2026年10月，1,403 件）迁进自己做的 HeadDots（Web 应用／PWA）。写法每天都不一样，作者让 Claude Code 读这些备忘并写出导入脚本；大约 100 件读不出来的，没有靠推测补上，而是列出来自己事后看。从第一次提交起 11 天大约 550 次提交，逻辑单测大约 1,000 件也交给 Claude Code 写。到了几乎要当 SaaS 公开的时候，作者停掉了新用户，改成只给自己用。这些是作者自己这 1,403 件备忘、这一次迁移和提交上的记录，不可外推到别人的健康应用或别的工期。",
+    summary: "mato 把 1,403 件两年头痛备忘迁进自己做的 HeadDots，大约 100 件读不出的不靠推测补上。11 天大约 550 次提交后，公开到了临门一脚又改成只给自己用。这些是作者自己这次迁移上的记录，不可外推。",
+    description: "面向已经用备忘录记健康记录、又想用 Claude Code 做成自己能每天用的应用的人：把 1,403 件、大约 100 件未补全、11 天大约 550 次提交写成门禁，区别于只说「Vibe Coding 很快就能上线」、却没有写出自己迁了多少条、后来为何停掉公开的实践。",
+    categories: [
+      "life",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mato/articles/headdots-daily-use",
+    sourceLabel: "zenn.dev·mato 实践帖",
+    upvotes: 901,
+    trending: false,
+    tags: [
+      "claude",
+      "mcp",
+      "pwa",
+      "health",
+      "vibecoding",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mato/articles/headdots-daily-use",
+      label: "zenn.dev·mato《Vibe-Codingで頭痛アプリを作って、今度は毎日使ってる話（ただ、一般公開はやめた・・）》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+    approach: "作者已经用 iPhone 备忘录记了大约两年头痛。这次做成 HeadDots，让 Claude Code 把旧备忘迁进来，并接上 MCP，对话也能记。公开到了临门一脚，又因为要保管他人的健康记录，停掉了新用户。",
+    outcomes: [
+      "源披露：迁入的是 2024年10月到 2026年10月、一共 1,403 件备忘。大约 100 件读不出来的，没有靠推测补上，而是列成清单自己事后看。这些是作者自己这 1,403 件上的迁移记录，不可外推到别人的备忘或别的导入脚本。",
+      "从第一次提交起 11 天大约 550 次提交。作者只管定方针和做审查，实现交给 Claude Code；一个会话当「司令塔」，实现分给别的代理。逻辑单测大约 1,000 件由 Claude Code 写，再用 Playwright 做主要流程的 E2E，并在每次 push 时用 CI 跑。不要把 1,403 件、大约 100 件、大约 550 次提交和大约 1,000 件单测写成同一组数。推送时跑 CI 只是测试怎么落地，硬窗不是批准流，不要和 #983、#995、#997、#1004 混用。",
+      "作者写过介绍页、利用规则和隐私政策，也做了宣传视频，但在公开前停掉了新用户，改成只给自己用。介绍页上的对话和记录，作者写明是虚构的。自己用的时候，曾把「0」改成「0.5」却记成 2 件，当天就改成了覆盖而不是新增。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-19T08:31:50.843+09:00 → UTC 2026-10-18T23:31:50Z、Asia/Shanghai 2026-10-19 07:31:50；bodyUpdatedAt 2026-10-19T08:27:54.601+09:00，早于发布、同日，仍取 published → 2026-10-19。UTC 日期是 10-18，不要写成 2026-10-18。正文配图 4 张，完整 URL 已挂在本条：https://static.zenn.studio/user-upload/deployed-images/33257549e64401db2ac4d830.png?sha=947943da8ec58d850a611dc0ba0b420bdcef4c42 、https://static.zenn.studio/user-upload/deployed-images/5065cfc779d74434680d530e.png?sha=bb9b6d5c8b2fbf48e549b9aa24458897835da405 、https://static.zenn.studio/user-upload/deployed-images/54e9f9177a5bd98d471b33e2.png?sha=1293272b323670346421848b9b0f109cb2331f8d 、https://static.zenn.studio/user-upload/deployed-images/0237dc82300dd5484163c7ba.png?sha=3f384dc1c8769404335ce8ebe87b717146a14cf2 ，均 GET 200。无 YouTube 嵌入。platforms 记 claude。不要填 github。",
+      "导流：作者写明已经停掉一般公开，正文没有给出可访问的产品站点。前篇 https://zenn.dev/mato/articles/65cf1b36537cca GET 200，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1,403 件和大约 100 件、11 天大约 550 次提交是不是同一趟迁移，再谈「已经公开上线」",
+        body: "请按原文核算：迁入的备忘是哪段时间、一共多少件；读不出来的大约多少件，有没有靠推测补上。从第一次提交起几天、大约多少次提交；逻辑单测大约多少件。最后有没有一般公开，介绍页上的对话和记录是不是虚构的。不要把 1,403 件和大约 1,000 件单测混用，也不要把「公开到了临门一脚」写成已经对外运营。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "让 Claude Code 读两年备忘并写出导入脚本，读不出来的大约 100 件只列出来，不靠推测补全。",
+      "一个会话当司令塔，实现分给别的代理；单测和 E2E 也交给 Claude Code，并在每次 push 时跑。",
+      "接上 MCP 之后，和 Claude 说话也能记头痛、顿服和复诊。公开前停掉新用户，改成只给自己用。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-19T08:31:50.843+09:00 → UTC 2026-10-18T23:31:50Z、Asia/Shanghai 2026-10-19 07:31:50；bodyUpdatedAt 2026-10-19T08:27:54.601+09:00，早于发布、同日，仍取 published → 2026-10-19；GET 200（UA MiraBot/1.0））：mato 在《Vibe-Codingで頭痛アプリを作って、今度は毎日使ってる話（ただ、一般公開はやめた・・）》写 1,403 件和 11 天大约 550 次提交。UTC 日期是 10-18，不要写成 2026-10-18。配图 4 张均 200。",
+      "大约 100 件是未补全，不是失败导入的全部。介绍页对话是虚构的。不要和近批 CI／批准条混用。",
+    ],
+  },
+  {
+    id: "1011",
+    slug: "momo-1to3-27",
+    title: "momo_aoyama：在 2026 年选秀会（10月22日）结果出来之前，让 Claude、GPT、Gemini 三个模型做预测并预先登记，会后再自动打分。1 位指名的命中按 12 支球队、各 3 次的平均来写：条件 B（记忆＋名单）三家都是 1.0；条件 D（代理）里 GPT-5.6 Terra 是 3.0（3 次都是 3），Gemini 3.8 Flash 是 2.7，Claude Sonnet 5.5 是 1.7。同一模型改条件后，GPT 从 1.0 到 3.0，最大到 3 倍。27 次里名单外的名字是 0 件。记录上这 27 次花了 $18.14（预算上限 $25）。这些是作者自己这次 27 次、各条件 3 次平均上的结果，不可外推到别的选秀、别的模型或更多次数。",
+    summary: "momo_aoyama 在选秀结果出来前预先登记 Claude、GPT、Gemini 的预测。1 位指名按 12 队、各 3 次的平均，GPT 从条件 B 的 1.0 到条件 D 的 3.0。27 次里名单外名字是 0 件。这些是作者自己这 27 次平均上的结果，不可外推。",
+    description: "面向想比较「换模型」和「换交给模型的东西」到底哪个更管用的人：把各 3 次的平均、GPT 1.0→3.0、27 次里 0 件名单外名字写成门禁，区别于只在结果出来之后挑说中的那几次来写的评测。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/momo_aoyama/articles/8845c279893771",
+    sourceLabel: "zenn.dev·momo_aoyama 实践帖",
+    upvotes: 902,
+    trending: false,
+    tags: [
+      "claude",
+      "chatgpt",
+      "mcp",
+      "evaluation",
+      "draft",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/momo_aoyama/articles/8845c279893771",
+      label: "zenn.dev·momo_aoyama《AIのドラフト2026予想を事前登録してCIで守り、自動採点した話》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+    approach: "作者先在结果出来之前把预测公开并固定，再用标签、CI 里的 prereg-guard 和 GitHub 规则集一起看管，避免事后改预测。三个模型按条件 B、C、D 各跑 3 次，一共 27 次，会后按同一把尺子打分。Gemini 不在 18 值平台枚举里，platforms 只记 claude 和 chatgpt。",
+    outcomes: [
+      "源披露：1 位指名的命中按 12 支球队、各 3 次的平均来写，不是中位数。条件 B（记忆＋大约 290 人的名单）三家都是 1.0；条件 C（再加 Web 搜索）是 1.3～1.7；条件 D（代理：搜索＋名单工具＋自检）里 GPT-5.6 Terra 是 3.0（3 次都是 3），Gemini 3.8 Flash 是 2.7，Claude Sonnet 5.5 是 1.7。同一模型改条件后，GPT 从 1.0 到 3.0，最大到 3 倍；同一条件下模型之间最多差 1.3 支球队。媒体多数决（2 家媒体）是 3。27 次里名单外的名字是 0 件。这些是作者自己这次 27 次、各条件只有 3 次平均上的结果，不可外推到更多次数或别的年份。",
+      "最初把条件 C 写成「先搜索、再按固定 JSON 回答」的一次提示时，Gemini 试了 4 次、4 次都没有搜索，却在信息源栏写了 6 个 URL。拆成「调查」和「整形」两段之后，三家都会搜索；但正式跑的时候，Gemini 在条件 C 的 3 次里仍有 1 次没有搜索。条件 D 的 Claude 各次是 0～3 支球队，作者写明各 3 次还说不准模型之间的细差。代码大约 2,800 行，测试 217 件。记录上 27 次花了 $18.14，预算上限是 $25；条件 B 一次大约 $0.01～0.08，条件 D 一次大约 $0.5～4。",
+      "Claude 在条件 D 里，一次请求的输入最多到 76 万 token；GPT 一侧记录到的最大输入大约 11 万，没有超过 272,000 的加价线。正式跑到一半时余额用完，出现 400 错误、停了 2 次，而且停掉之前用掉的 token 没有留下记录。作者和 Claude Code 一起做这套机制，到写这篇文章为止有 17 个 PR。预先登记用到了 CI，但硬窗是这 27 次的平均命中，不要和 #983、#995、#997、#1004 的 CI／批准流混用。也不要把 76 万、大约 11 万或 $18.14 写成和 #985、#989、#993、#996、#1003、#1006、#1007 同一类 token 对照。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-23T13:11:05.999+09:00 → UTC 2026-10-23T04:11:05Z、Asia/Shanghai 2026-10-23 12:11:05；bodyUpdatedAt 2026-10-23T13:10:36.292+09:00，略早于发布、同日，仍取 published → 2026-10-23。正文配图 2 张，完整 URL 已挂在本条：https://static.zenn.studio/user-upload/e5798bed6a0f-20261023.png 、https://static.zenn.studio/user-upload/c07ec9cbe2fc-20261023.png ，均 GET 200。无 YouTube 嵌入。表里是各 3 次的平均，不要改称中位数。platforms 记 claude 和 chatgpt；Gemini 不在 18 值枚举里，不硬凑。不要因为仓库在 GitHub 上就把 github 填进 platforms。",
+      "导流：无作者产品站点可列。仓 https://github.com/amomo0220/2026draft-llm-bench GET 200；预先登记标签树 https://github.com/amomo0220/2026draft-llm-bench/tree/prereg-2026-10-15 GET 200。连载前篇 https://note.com/return_chiba/n/n84c3df363a4d GET 200，后篇 https://note.com/return_chiba/n/n8789a0208736 GET 200，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1.0 和 3.0 是不是各 3 次的平均，再谈「换个更强的模型就行」",
+        body: "请按原文核算：1 位指名的命中是按 12 支球队、各几次的平均还是中位数来写的。条件 B、C、D 三家各是多少；GPT 从 1.0 到 3.0 是不是同一模型改条件，3 倍该怎么读。27 次里名单外的名字是多少件，记录上花费是多少、预算上限是多少。Gemini 一开始 4 次都不搜索、正式跑又有 1 次不搜索，不要和 27 次里 0 件名单外名字混成同一组。各条件只有 3 次，不要把模型之间的细差说死。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在截止前把预测提交并打上 prereg-2026-10-15，再用 CI 的一次 git diff 和规则集，防止事后改 predictions/ 里的内容。",
+      "三个模型按条件 B、C、D 各跑 3 次，共 27 次；条件 C／D 把调查、整形和自检拆开，避免一次提示里既搜索又交固定 JSON。",
+      "会后用同一套打分代码算 1 位指名命中等指标。名单对上是打分侧的事，预测文件只保留姓名，后补的异体字处理不会改已经登记的预测。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-23T13:11:05.999+09:00 → UTC 2026-10-23T04:11:05Z、Asia/Shanghai 2026-10-23 12:11:05；bodyUpdatedAt 2026-10-23T13:10:36.292+09:00，略早于发布、同日，仍取 published → 2026-10-23；GET 200（UA MiraBot/1.0））：momo_aoyama 在《AIのドラフト2026予想を事前登録してCIで守り、自動採点した話》写各 3 次平均和 GPT 1.0→3.0。配图 2 张、仓和前后篇均 200。",
+      "必须写成「平均」，不要改称中位数。硬窗是 27 次命中，不是 CI 批准流。各条件只有 3 次。",
+    ],
+  },
+  {
+    id: "1012",
+    slug: "tnte-5mo-147",
+    title: "tntetsu：用 Claude Code 的自然语言指示，花 5 个月做 JSVisualizer，作者自己一行代码都没写。截至 2026-11-02：这个仓库 147 次提交、设计判断记录（ADR）48 件，从 2026-05-25 开始；依赖的解释器 JSInterpreter 是 52 次提交，从 5 月 23 日开始。2026-09-30 起用在大学一年级课上。5 月 24 日那次，185 件测试全过，作者还是把 Claude 把打包从 ESM 改成 IIFE 的提交撤了回去。这些是作者自己这两个仓库、这 5 个月上的用法，不可外推到别人的项目或别的模型。",
+    summary: "tntetsu 用 Claude Code 做了 5 个月 JSVisualizer，自己一行代码都没写。截至 2026-11-02 是 147 次提交、48 件 ADR；5 月 24 日 185 件测试全过，作者仍把一次改打包方式的提交撤了回去。这些是作者自己这两个仓库上的用法，不可外推。",
+    description: "面向自己不大写代码、却想用 Claude Code 把课上能用的工具做出来的人：把 5 个月、147 次提交、48 件 ADR，以及 185 件测试全过仍被撤回的那一次写成门禁，区别于只说「一行代码都不写也能做完」、却没有写出自己后来怎样把方向拉回来的实践。",
+    categories: [
+      "education",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/tntetsu/items/ecdbcafdfb553224dbda",
+    sourceLabel: "qiita.com·tntetsu 实践帖",
+    upvotes: 903,
+    trending: false,
+    tags: [
+      "claude",
+      "education",
+      "javascript",
+      "agentic-coding",
+    ],
+    primarySource: {
+      url: "https://qiita.com/tntetsu/items/ecdbcafdfb553224dbda",
+      label: "qiita.com·tntetsu《コードを1行も書かずに5か月：Agentic Codingの基本ループ》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+    approach: "作者不会在这两个仓库里自己写代码，只用自然语言给 Claude Code 下指示：新功能先给个大框，用起来觉得不对再把症状、想要的样子和理由写清楚。一阶段结束就说「写成文档并提交」。",
+    outcomes: [
+      "源披露：截至 2026-11-02，JSVisualizer 是 147 次提交、设计判断记录（ADR）48 件，从 2026-05-25 开始；JSInterpreter 是 52 次提交，从 2026-05-23 开始。2026-09-30 起用在大学一年级课上。作者写明自己在这两个项目里一行代码都没写。这些是作者自己这两个仓库、这一天统计上的规模，不可外推到别人的项目或别的工期。",
+      "5 月 24 日，作者报告示例在页面上选不进编辑器。Claude 把打包从 ESM 改成 IIFE，并提交了一次「直接打开文件也能跑」的修改，185 件测试全部通过。作者要的是继续走 ESM、可以依赖 HTTP 服务器，于是把这次修改撤了回去。测试全过并不能说明方向也对。8 月 9 日那会儿，103 次提交里大约 20 件的说明以「fix:」开头。叫「代入展开」的视图放了 4 个半月才被作者看见并改掉。",
+      "工具本身可以按 12 种看法去看 JavaScript 的执行；全步骤会先记下来，2026 年 11 月时上限是 5 万步，超过就会中途停下。注记写明：这篇文章里 2026 年 5 月 JSInterpreter 的对话用的是 Claude Sonnet 4.6，10 月的例子用的是 Claude Opus 5.5。不要把 147、52、48、185 和大约 20 件写成同一组数。",
+    ],
+    caveats: [
+      "无 JSON-LD；Qiita API created_at 2026-11-05T11:47:29+09:00 → UTC 2026-11-05T02:47:29Z、Asia/Shanghai 2026-11-05 10:47:29；updated_at 2026-11-10T10:54:37+09:00，晚于发布且跨到 11-10，仍取 created（published）→ 2026-11-05。不要因更新写成 2026-11-10。正文配图 1 张（文内出现两次，是同一地址），完整 URL 已挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/165753/26d188a5-e768-42d3-b9bd-12fb976b79bb.png ，GET 200。Qiita imgix 转写不当作者产品导流。无 YouTube 嵌入。platforms 记 claude。不要因为演示页或仓在 GitHub 上就把 github 填进 platforms。",
+      "导流：https://tntetsu.github.io/JSVisualizer/ GET 200（标题 JSVisualizer）。仓 https://github.com/tntetsu/JSInterpreter GET 200。正文里的 ADR 文件页：https://github.com/tntetsu/JSVisualizer/blob/main/docs/adr/ADR-001-omniscient-debugging.md 、https://github.com/tntetsu/JSVisualizer/blob/main/docs/adr/ADR-045-compact-calltree-nodes.md 、https://github.com/tntetsu/JSVisualizer/blob/main/docs/adr/ADR-012-linetrace-single-pane.md 、https://github.com/tntetsu/JSVisualizer/blob/main/docs/adr/ADR-021-objectgraph-hierarchical-layout.md ，均 GET 200。相关介绍篇 https://qiita.com/tntetsu/items/ec78facbf92f4d6f9b7a GET 200，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 147 次提交和 185 件全过的测试是不是同一回事，再谈「测试绿了就方向对了」",
+        body: "请按原文核算：截至哪一天，JSVisualizer 是多少次提交、多少件 ADR、从哪一天开始；JSInterpreter 是多少次提交、从哪一天开始；哪一天起用在课上。5 月 24 日那次 185 件测试全过之后，作者有没有把打包方式的修改撤回去，想留下的是 ESM 还是 IIFE。不要把 147 次提交和 52 次提交、48 件 ADR 混用，也不要把 5 个月写成作者自己写了代码。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "新功能先只给大框，让 Claude Code 去实现；用的时候把不对的地方写成症状、想要的样子和理由，再下一次指示。",
+      "先读计划，觉得不对就当场驳回，并给出自己的方案。不给手法名称也可以。",
+      "一阶段结束就明确说「写成文档并提交」。不单看测试过不过，还要看修改的方向是不是自己要的。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-11-05T11:47:29+09:00 → UTC 2026-11-05T02:47:29Z、Asia/Shanghai 2026-11-05 10:47:29；updated_at 2026-11-10T10:54:37+09:00，晚于发布且跨到 11-10，仍取 created → 2026-11-05；GET 200（UA MiraBot/1.0））：tntetsu 在《コードを1行も書かずに5か月：Agentic Codingの基本ループ》写 147 次提交和 185 件测试仍被撤回。不要因更新写成 2026-11-10。配图和仓、ADR、演示页均 200。",
+      "185 件全过不等于方向对。5 月用的是 Sonnet 4.6，10 月例子是 Opus 5.5。不要把 147 和 52 混用。",
+    ],
+  },
+  {
+    id: "1013",
+    slug: "kuma-65allow-11",
+    title: "kumaik：从 5 月起，在个人用途里用自己做的知识图谱（经 MCP 提供）放记忆、共用规则和项目之间的任务，不含公司业务。2026-09-22，从别的项目登记 Task 的副作用，把接收方项目节点的 11 个属性清掉了；2026-09-26 才改成在服务器侧合并 props。同一天的许可列表汇总是 allow 65 件，deny 和 ask 都是 0 件（这组汇总是 Claude Code 做的，覆盖 9 个项目）。会话开始时读入的件数和 token，作者写明没有测、不能写出数字。这些是作者自己这套图谱、这两天事故上的记录，不可外推到别人的权限配置或官方记忆功能。",
+    summary: "kumaik 从 5 月起用自己做的知识图谱给多个 Claude Code 会话共享记忆。2026-09-22 一次登记 Task 清掉了接收方 11 个属性；当天的许可列表是 allow 65、deny 和 ask 都是 0。这些是作者自己这次事故上的记录，不可外推。",
+    description: "面向已经把记忆写进 CLAUDE.md、又想在多个 Claude Code 会话之间共享的人：把 5 月起、11 个属性被清空、allow 65／deny 0／ask 0 写成门禁，区别于只建议「改用知识图谱就更稳」、却没有写出自己这次覆盖事故的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kumaik/articles/agent-collab-knowledge-graph",
+    sourceLabel: "zenn.dev·kumaik 实践帖",
+    upvotes: 904,
+    trending: false,
+    tags: [
+      "claude",
+      "mcp",
+      "knowledge-graph",
+      "memory",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kumaik/articles/agent-collab-knowledge-graph",
+      label: "zenn.dev·kumaik《役割を持たせたAIエージェントの共有記憶を、ナレッジグラフで自作して運用している（現時点の試み）》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者想给不同角色的代理共享记忆，但不想绑死在某一个 AI 上，于是自己做了知识图谱，并以 MCP 服务器提供。调查和执笔放在不同的 Claude Code 会话里。除 Claude Code 以外的客户端，作者写明还没用过、未验证。",
+    outcomes: [
+      "源披露：这是个人用途，不含公司业务，从 5 月起这样跑。2026-09-22，从别的项目登记 Task 时，步骤书让调用带上 props={}，把接收方项目节点已有的 11 个属性覆盖成空。2026-09-26 才在服务器侧改成合并 props。这些是作者自己这套图谱、这两天事故上的记录，不可外推到别人的接口或别的数据。",
+      "2026-09-22 的许可列表汇总是 allow 65 件，deny 和 ask 都是 0 件。这组汇总是 Claude Code 做的，覆盖 9 个项目。作者写过自己多次点过允许 kg_remember，出事那天确认框也在，但几乎没看参数。不要把 11 个属性和 65 件 allow、9 个项目写成同一组数。",
+      "官方文档（作者按 2026-09-29 的表述来引）里，auto memory 会读 MEMORY.md 的开头 200 行或 25 KB，而且不跨机器、不跨云共享。作者的动机不是官方记忆不够用，而是想不绑死在某一个 AI 上。会话开始时 kg_session_init 读入的件数和 token，作者写明没有测、不能写出数字。不要把 200 行／25 KB 写成作者自己的实测。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-12T12:44:41.271+09:00 → UTC 2026-10-12T03:44:41Z、Asia/Shanghai 2026-10-12 11:44:41；bodyUpdatedAt 2026-10-12T20:55:03.781+09:00，晚于发布、同日，仍取 published → 2026-10-12。正文无配图、无 YouTube 嵌入。作者写明这是当前尝试，强制执行还没有做；压缩之后规则会不会失效，也还没确认。platforms 记 claude。不要填 github。",
+      "导流：无作者产品站点可列。一次资料（作者按 2026-09-29 的表述）：https://code.claude.com/docs/en/memory GET 200（标题 How Claude remembers your project - Claude Code Docs）；https://code.claude.com/docs/en/cross-session-messaging GET 200；https://code.claude.com/docs/en/agent-teams GET 200，落地均为文档正文，未跟随至区域不可用页。https://github.com/modelcontextprotocol/servers/tree/main/src/memory GET 200。引用 https://mitchellh.com/writing/my-ai-adoption-journey GET 200（2026-02-05）。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 11 个属性是被清空还是被删掉节点，65 件是不是同一天的 allow，再谈「换知识图谱就不会出事」",
+        body: "请按原文核算：这套用法从哪个月开始，是不是个人用途。2026-09-22 出了什么事，被清空的是多少个属性，原因是不是调用带了空的 props；哪一天才改成合并。许可列表汇总是哪一天、覆盖几个项目，allow、deny、ask 各是多少件，这组汇总是谁做的。会话开始时读入的件数和 token，作者有没有写出数字。不要把官方 auto memory 的 200 行／25 KB 写成作者自己的实测。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "会话一开始先调 kg_session_init，把该项目的记录和共用规则一次取回，而不是把规则都写进 CLAUDE.md。",
+      "调查侧把委托登记成对执笔侧项目的 Task，问答跟在 Task 的评论线程里，对方会话没开着也能留下记录。",
+      "写操作仍要人点头。作者后来才发现，空的 props 会把已有属性盖掉，于是改成在服务器侧合并。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-12T12:44:41.271+09:00 → UTC 2026-10-12T03:44:41Z、Asia/Shanghai 2026-10-12 11:44:41；bodyUpdatedAt 2026-10-12T20:55:03.781+09:00，晚于发布、同日，仍取 published → 2026-10-12；GET 200（UA MiraBot/1.0））：kumaik 在《役割を持たせたAIエージェントの共有記憶を、ナレッジグラフで自作して運用している（現時点の試み）》写 11 个属性和 allow 65。官方文档 200，未跟随至区域不可用页。",
+      "件数和 token 作者写明没测。200 行／25 KB 是官方 auto memory，不是作者的图谱。不要把 11 和 65 混用。",
+    ],
+  },
+  {
+    id: "1015",
+    slug: "yuit-6trap-stdio",
+    title: "yuito2742：给自己的自托管应用加上 MCP 服务器时，连续踩了 6 个「不抛异常、结果却是错的」坑。stdout 被自己的日志、dotenv 17 系默认横幅、以及 npm run 的横幅一共污染了 3 层，客户端初始化会失败。12 个工具起初只用一行 description 时，模型选不对工具；改写成「何时用、和其他工具的差别、副作用」之后，「用 3 个阶段做计划」才会选 add_steps。这些是作者自己在 macOS、@modelcontextprotocol/sdk 1.32、TypeScript 6.0、Claude Desktop 上的踩坑记录，不可外推到别的 SDK 版本或别的客户端。",
+    summary: "yuito2742 给自托管应用加 MCP 时踩了 6 个不报错却给错结果的坑。stdout 被 3 层横幅污染；12 个工具改写 description 之后，模型才会选对 add_steps。这些是作者自己这套 SDK 版本上的记录，不可外推。",
+    description: "面向已经把现有应用接到 MCP、却看见「看起来在跑、结果不对」的人：把 6 个坑、stdout 的 3 层污染、12 个工具的 description 写成门禁，区别于只说「不要 console.log」、却没有写出污染来自依赖和 npm run 的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuito2742/articles/3fb4189b65d6dc",
+    sourceLabel: "zenn.dev·yuito2742 实践帖",
+    upvotes: 906,
+    trending: false,
+    tags: [
+      "mcp",
+      "typescript",
+      "claude",
+      "stdout",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuito2742/articles/3fb4189b65d6dc",
+      label: "zenn.dev·yuito2742《MCP サーバーを作るとき、stdout に何も書いてはいけない — 型とプロトコルで静かに壊れる 6 つの罠》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+    approach: "作者给自己的自托管应用接上 MCP 之后，多次遇到「看起来在动、其实已经坏了」的情况。他把这 6 个不抛异常的失败记下来，并写明写作时的环境是 macOS、@modelcontextprotocol/sdk 1.32、TypeScript 6.0、Node.js 26、Claude Desktop。",
+    outcomes: [
+      "源披露：这 6 个坑里，前 3 个是协议前提，后 3 个是「类型能通过并不等于对」。stdout 这一路，污染源有 3 层：自己的 console.log、dotenv 17 系默认把读入的环境变量个数打到 stdout（横幅里出现 www.dotenvx.com，这是工具横幅里的字，不是作者另加的产品链）、以及 npm run 自己打出的脚本名。关掉 dotenv 之后，只要还经 npm run 启动，初始化照样失败。这些是作者自己这套版本上的踩坑记录，不可外推到别的 SDK 或别的启动方式。",
+      "打开 exactOptionalPropertyTypes 之后，文档里写的 sessionIdGenerator: undefined 反而过不了类型检查，要整键省略。作者写在这次开发里，这个选项实际抓住过 3～4 次真的 bug，所以没有为了迁就 SDK 的类型而把开关关掉。一旦用 declare module 给 IncomingMessage 错加了 raw，tsc 会通过，运行时却一直是 401。漏掉 await 时，JSON.stringify(Promise) 会变成 {}，客户端只看到空树；那个没人接的 Promise 随后拒绝，Prisma 的堆栈大约 40 行里才有一行真正的原因，而且会把「数据库地址不对」这件事先挡住。",
+      "12 个工具起初只用「新建节点的工具」这样一行 description，模型选不对。改写成何时用、和其他工具的差别、副作用之后，「用 3 个阶段做计划」才会选 add_steps，「列出进行中的任务」才会选带筛选的工具。不要把 6 个坑、3 层污染、12 个工具和 3～4 次抓到的 bug 写成同一组数。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-20T00:52:03.198+09:00 → UTC 2026-10-19T15:52:03Z、Asia/Shanghai 2026-10-19 23:52:03；bodyUpdatedAt 与发布相同，取 published 后的上海日期 → 2026-10-19。源时区日历是 2026-10-20，文内「執筆日」也写成 2026-10-20，但按源时区→UTC→Asia/Shanghai 取值，必须写成 2026-10-19，不要写成 2026-10-20。正文无配图、无文内硬链、无 YouTube 嵌入。dotenv 横幅里的 www.dotenvx.com 按原文披露，不当作作者产品硬链去核。platforms 记 claude（文内是 Claude Desktop 和 claude_desktop_config.json）。",
+      "导流：无作者产品导流可列。正文没有给出仓库、文档或演示页硬链。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 6 个坑里 stdout 被污染了几层，再谈「别在自己的代码里打日志就行」",
+        body: "请按原文核算：作者一共记了几个坑，stdout 这一路的污染源有几层，分别是什么；dotenv 是哪个大版本开始默认往 stdout 打横幅，关掉它之后经 npm run 启动还会不会坏。12 个工具改 description 之前和之后，模型对「用 3 个阶段做计划」会选哪个工具。exactOptionalPropertyTypes 抓住过大约几次真的 bug。发布时刻按上海时区是哪一天，不要只看文内的執筆日。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "日志只打到 stderr。客户端配置里直接调用 node 或 tsx，不经 npm run；dotenv 要加 quiet: true。",
+      "保持 exactOptionalPropertyTypes。文档要求传入 undefined 时，改成整键省略；SDK 类型对不上的那一行再单独断言，并写明原因。",
+      "工具的 description 写清何时用、和其他工具的差别、副作用。类型注解要故意弄坏一次，确认编译器真的会报错；漏掉 await 时不要把返回的 {} 当成空数据。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-20T00:52:03.198+09:00 → UTC 2026-10-19T15:52:03Z、Asia/Shanghai 2026-10-19 23:52:03；bodyUpdatedAt 与发布相同，取 published → 2026-10-19；GET 200（UA MiraBot/1.0））：yuito2742 在《MCP サーバーを作るとき、stdout に何も書いてはいけない — 型とプロトコルで静かに壊れる 6 つの罠》写 6 个坑和 3 层 stdout 污染。必须写成 2026-10-19，不要因源时区日历或執筆日写成 2026-10-20。正文无硬链。",
+      "6 个坑、3 层污染、12 个工具不要混用。污染源不只有自己的 console.log。",
+    ],
+  },
+  {
+    id: "1016",
+    slug: "hori-307bp-2",
+    title: "h_horiguchi：把 Agent Toolkit for AWS 里的 Well-Architected 评审技能改成不走 MCP，改读本地语料。语料是 6 根柱、57 个问题、307 项最佳实践（约 3.6 MB、307 个 Markdown 文件）；索引和正文里，只有 SEC01-BP01 与 SEC03-BP02 这 2 项的标题表述不一致。对 AWS 样例仓库 amazon-ecs-fullstack-app-terraform，在同一会话里连续跑了 4 次评审；这 4 次里，307 项实践的正文（mds/*.md）都没有被读过，但完整评审仍输出了 307／307 的台账。这些是作者自己这次移植、这一个样例仓库、这 4 次连续评审上的记录，不可外推到别人的语料或单独跑一次的耗时。",
+    summary: "h_horiguchi 把 Well-Architected 评审技能改成读本地 307 项实践。索引和正文只有 2 项标题表述不一致。同一会话里连续 4 次评审都没有读过这 307 个正文文件，完整评审却输出了 307／307。这些是作者自己这次移植上的记录，不可外推。",
+    description: "面向不能连 MCP、却还想在本地做 Well-Architected 评审的人：把 6／57／307、只有 2 项标题不一致、以及 4 次都没读正文却打出 307／307 写成门禁，区别于只说「把文档下到本地就能审」、却没有写出正文有没有真被读到的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/h_horiguchi/items/e84c069ffa5519de29b7",
+    sourceLabel: "qiita.com·h_horiguchi 实践帖",
+    upvotes: 907,
+    trending: false,
+    tags: [
+      "claude",
+      "aws",
+      "well-architected",
+      "skills",
+    ],
+    primarySource: {
+      url: "https://qiita.com/h_horiguchi/items/e84c069ffa5519de29b7",
+      label: "qiita.com·h_horiguchi《MCPサーバーなしで Well-Architected レビュー！Agent Toolkit for AWS のスキルをローカルコーパス化してポーティングしてみた》",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+    approach: "作者先把 Well-Architected Framework 的 HTML 下下来，转成 Markdown，做成本地语料，再先写好 change-policy.md，才让 Claude Code（2.1.318，Sonnet 5.5，经 Amazon Bedrock）按这份方针改技能。然后对 AWS 的样例仓库，在同一会话里连续跑快捷评审、分数输出、安全柱评审和完整评审。",
+    outcomes: [
+      "源披露：语料范围是框架本体，不含 Lens，计 6 根柱、57 个问题、307 项最佳实践，约 3.6 MB、307 个 Markdown 文件。all_titles.md 和 mds/*.md 里的 BP ID 都是 307 个、全部唯一；只有 SEC01-BP01 与 SEC03-BP02 这 2 项，索引和正文的标题表述不一致。这些是作者自己这次语料上的核对，不可外推到后来更新过的框架版本。",
+      "4 次评审在同一会话里按 1 到 4 的顺序连续执行，执行中没有停在批准确认。表里的耗时是：快捷评审大约 91 秒，分数输出大约 21 秒，安全柱大约 54 秒，完整评审大约 298 秒。完整评审用了 6 个按柱拆开的子代理，表里是主会话和子代理的合计。作者写明分数输出变短，是因为复用了快捷评审已经读过的证据；单独跑一次不会是这些数。4 次里，307 项实践的正文（mds/*.md）都没有被读过，完整评审却输出了 307／307 的台账。作者认为这是原先技能「能用标题和证据判断就先判断」的设计被沿用，不是这次移植新引入的缺陷。不要把「输出了 307／307」写成「读过 307 个正文」。",
+      "表里的 token 分列是「输入／输出／缓存创建／缓存读取」。快捷评审的输入是 24，缓存读取是 375,208；完整评审的输入是 94，缓存读取是 1,556,627（作者也写成主会话和子代理合计大约 156 万）。不要把缓存读取写成输入，也不要和 #985、#989、#993、#996、#1003、#1006、#1007 的 token／耗时统计混用。输出 token 作者写明可能因为流式记录而偏少。安全柱（11 问、63 项实践）综合分是 2.0／5；快捷评审的综合分是 3.0，完整评审更低，因为代码里对不上的组织／运营项被标成「无法判断」。硬窗不是批准流，不要和 #983、#995、#997、#1004 混用。",
+    ],
+    caveats: [
+      "无 JSON-LD；Qiita API created_at 2026-11-06T15:18:42+09:00 → UTC 2026-11-06T06:18:42Z、Asia/Shanghai 2026-11-06 14:18:42；updated_at 2026-11-10T18:37:48+09:00，晚于发布且跨到 11-10，仍取 created（published）→ 2026-11-06。不要因更新写成 2026-11-10。正文无配图、无 YouTube 嵌入。脚本里的占位 URL 按源文原样写出、不列入可达、不当公网链去核：https://github.com/jgm/pandoc/releases/download/${VERSION}/pandoc-${VERSION}-linux-amd64.tar.gz 、https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/framework/$HTML 。platforms 记 claude。不要填 github。",
+      "导流：无作者产品导流可列。一次资料：https://github.com/aws/agent-toolkit-for-aws GET 200（https://github.com/aws/agent-toolkit-for-aws.git 同样 200）；https://github.com/aws-samples/amazon-ecs-fullstack-app-terraform GET 200；https://github.com/aws-samples GET 200；https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/framework/ 首次 GET 为 TLS 失败（000），最后一次 GET 200（标题 AWS Well-Architected フレームワーク），披露首次失败、不把失败码列入可达，按最后一次 200 可列可达；https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/framework/appendix.html GET 200；https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/framework/rel_adapt_to_changes_autoscale_adapt.html GET 200；https://d1.awsstatic.com/onedam/marketing-channels/website/public/legal/terms/AWS_Site_Terms_Japanese_2025-06-04_JA-JP.pdf#page=2 GET 200；https://github.com/jgm/pandoc/releases GET 200。安装源 https://claude.ai/install.sh GET 200，但跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 算可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 307／307 是不是读过正文，再谈「本地语料已经审完所有最佳实践」",
+        body: "请按原文核算：语料是几根柱、多少问题、多少项最佳实践，大约多少 MB、多少个 Markdown 文件；索引和正文里有几项标题表述不一致，是哪两个编号。4 次评审是不是同一会话里连续跑的，这 4 次有没有读过 mds/*.md 的正文，完整评审输出的 307／307 该怎么读。表里「输入」和「缓存读取」分别是多少，不要把 1,556,627 或大约 156 万写成输入。单独跑一次会不会仍是大约 91 秒、21 秒、54 秒、298 秒。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先把框架 HTML 转成 Markdown，做成 307 项实践的本地语料，并核过 ID 唯一、只有 2 项标题表述不一致。",
+      "先写 change-policy.md，把改动限制在「不走 MCP、不用 Lens、改读本地」，再让 Claude Code 按这份方针改技能。",
+      "对样例仓库在同一会话里连续跑 4 种评审。事后核对工具调用，发现 307 个正文文件都没有被读过。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-11-06T15:18:42+09:00 → UTC 2026-11-06T06:18:42Z、Asia/Shanghai 2026-11-06 14:18:42；updated_at 2026-11-10T18:37:48+09:00，晚于发布且跨到 11-10，仍取 created → 2026-11-06；GET 200（UA MiraBot/1.0））：h_horiguchi 在《MCPサーバーなしで Well-Architected レビュー！》写 307 项和 2 项标题不一致。不要因更新写成 2026-11-10。install.sh 跟随至区域不可用页。框架文档首页首次 TLS 000、最后 200。占位 URL 未当公网链去核。",
+      "307／307 不是正文已读。缓存读取不要写成输入。4 次是同一会话连续跑的，不要当成 4 次独立计时。不要和近批 token／CI 条混用。",
+    ],
   }
 ];
 
