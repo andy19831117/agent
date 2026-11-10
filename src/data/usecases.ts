@@ -61935,6 +61935,308 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
       date: "2026-10-12",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "843",
+    slug: "ikino-60886-143-4obs",
+    title: "ikinokori：把 claude -p 的 --max-turns 当作无人作业的安全装置来测，发现 result JSON 已经写出 subtype:\"error_max_turns\" 之后，进程仍不会自己退出，要等外侧 kill。--max-turns 3、60 秒后 kill 是 exit=1（60,886 ms）；同一 --max-turns 2 下，120 秒是 120,990 ms、30 秒是 31,018 ms，都跟设定的等待几乎一致。伪服务器完全不响应的另一场景，同样 SIGTERM 却是 exit=143（4,036 ms）。这 4 次观测里，没有一次是进程自己结束的",
+    summary: "个人（ikinokori／厨二病エンジニア）；披露自己在 Claude Code 2.1.267、Node v22.21.1、macOS 26.6.1 上，把 ANTHROPIC_BASE_URL 指到本地伪 Anthropic API，用「一直返回 tool_use」的场景去跑 claude -p，并在外侧按设定秒数发送 kill。作者原来的前提是：工具调用失控时，--max-turns 会让作业在那里停住。实测是：max_turns 判定已经做完、stdout 里已经有 subtype:\"error_max_turns\" 的 result JSON，进程却还不把控制权交回 shell，一直等到 watchdog 的 kill。--max-turns 3、KILL_AFTER=60 时 exit=1（60,886 ms）；同一 --max-turns 2 下，120 秒是 120,990 ms、30 秒是 31,018 ms，墙钟时间几乎等于设定的等待。把 watchdog 改短，只是更早被 kill 抓住，并没有出现「result 写出后再等一会儿就会自己结束」的路径。另一场景让伪服务器完全不响应，同样发送 SIGTERM，结束码却是 143（4,036 ms；128 加未处理 SIGTERM 的信号号）。作者写明：为何会从 1 裂成 143 没有追到信号处理，那只是推测；测到的只是这 4 次观测。对话模式、真实 Anthropic API、其他版本，仍可能在没有 watchdog 时自己结束。验证用的假 API 与 run_case.sh 在文中有说明；更完整的故障模式写在作者站点上的前篇。",
+    description: "面向已经把「--max-turns 一到，无人作业的进程就会自己结束」或「exit=1 和 exit=143 可以单独用来区分自己停还是被杀」当成可以上线的人：把「result JSON 已经写出，并不能写成进程已经退出；同一次 SIGTERM 也会裂成两种结束码」写成门禁，区别于只看官方旗标、却没有外侧 watchdog 的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ikinokori/articles/claude-code-max-turns-process-not-exit",
+    sourceLabel: "zenn.dev·ikinokori 实践帖",
+    upvotes: 734,
+    trending: false,
+    tags: [
+      "claude-code",
+      "max-turns",
+      "watchdog",
+      "unattended-jobs",
+      "cli",
+    ],
+    howItWorks: [
+      "粘贴 Agent 无人作业收尾的边界（是不是约 --max-turns 3、60 秒后 kill 为 exit=1／60,886 ms，是不是约同一 --max-turns 2 下 120 秒为 120,990 ms、30 秒为 31,018 ms，是不是约不响应场景同样 SIGTERM 却是 exit=143／4,036 ms，是不是约这 4 次观测里进程都没有自己结束）以及「绝不可把 result JSON 已经写出写成进程已经退出，或把结束码单独当成正常停止的判据」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 --max-turns 的值、watchdog 秒数、result JSON 的 subtype，以及进程实际退出的墙钟时间和结束码；没有测过的对话模式、真实 API 和其他版本，要标明未核",
+      "人工保留这 4 次观测的条件与数字；Agent 不代你保证「同一条 --max-turns 在真实 API 或其他版本上也会一直等到 kill，或 exit=1 与 exit=143 的差别已经查清是信号处理」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T12:00:05.388+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T03:00:05Z、Asia/Shanghai 2026-11-05 11:00:05；bodyUpdatedAt 2026-10-31T07:41:14.343+09:00，早于发布，按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：ikinokori（厨二病エンジニア）在《claude -p の --max-turns 打ち切り後、プロセスは自分の意思では終わらない》写 result JSON 写出后进程仍要等外侧 kill。可达导流：https://ikinokori.net/blog/claude-code-error-subtype-success/#utm_source=zenn&utm_medium=referral&utm_campaign=claude-code-error-subtype-success GET 200（正文前篇／作者站点，UTM 为源文原样）。去参后的 https://ikinokori.net/blog/claude-code-error-subtype-success/ 亦 GET 200。作者卡 website／GitHub／X 为空。无配图。",
+      "与近批权限规则或用量核对不同：本条不是在测允许哪些命令，而是测 --max-turns 已经判定结束后，进程会不会自己退出。对话模式、真实 API 和其他版本作者写明还没有测，不能补写成已经复现。",
+    ],
+    approach: `ikinokori（厨二病エンジニア）在《claude -p の --max-turns 打ち切り後、プロセスは自分の意思では終わらない》（页内 publishedAt 2026-11-05，bodyUpdatedAt 早于发布，取 published）披露：把 claude -p 接到无人作业时，有人会把 --max-turns 当作「工具调用失控也会在那里停住」的安全装置。作者在 Claude Code 2.1.267、Node v22.21.1、macOS 26.6.1 上，把 ANTHROPIC_BASE_URL 指到本地伪 Anthropic API，让它一直返回 tool_use，再配上 --max-turns 与 --allowedTools Bash，由外侧 shell 按 KILL_AFTER 发送 kill。伪服务器的应答是固定的，变的只是 --max-turns 的值和 watchdog 等待的秒数。
+
+--max-turns 3、60 秒后 kill 的那一次，stdout 里已经有 subtype:"error_max_turns" 的 result JSON，也就是 Claude Code 自己已经判定「3 轮到了，要截住」，进程却还不把控制权交回 shell，直到 60 秒后的 kill 才结束，记录是 exit=1（60,886 ms）。同一 --max-turns 2 下，120 秒是 120,990 ms，把 watchdog 收到 30 秒是 31,018 ms，三次的 JSON 形状（subtype、errors、terminal_reason）都先出来，结束时刻则跟着设定的等待走。作者写明：把等待改短，只是更早被 kill 抓住，并没有出现「result 写出后再等一会儿就会自己结束」的路径。
+
+另外，让伪服务器完全不响应、3 秒后发送同一条 SIGTERM 时，结束码是 143（4,036 ms）。上面三次截断后都是 exit=1。作者写明没有追到信号处理，1 和 143 为何会裂开只是推测；这里确认的只是「同一条 SIGTERM 也会裂成两种结束码」。因此，结束码不能单独当成「自己正常停」或「被外侧杀掉」的判据，更可信的是 stdout 里的 result JSON。测过的是这 4 次观测，不能外推到对话模式、真实 API 或其他版本。`,
+    outcomes: [
+      "源披露作者在 Claude Code 2.1.267 上把 claude -p 接到一直返回 tool_use 的本地伪 API，并用外侧 kill 做 watchdog：--max-turns 3、60 秒后 kill 为 exit=1（60,886 ms），同一 --max-turns 2 下 120 秒为 120,990 ms、30 秒为 31,018 ms，墙钟时间几乎等于设定的等待；不响应场景同样 SIGTERM 却是 exit=143（4,036 ms）。这 4 次观测里，result JSON 写出之后，没有一次是进程自己结束的。这是这一版本、这一套伪 API 与这一组 watchdog 秒数上的记录，不可外推成对话模式、真实 Anthropic API 或其他版本也会一直等到 kill，也不能把 exit=1 与 exit=143 的差别写成已经查清原因。",
+      "能把「可写成 result JSON 的输出和进程退出是两件事，结束码也不能单独用来判断是自己停还是被杀」与「必须人完成的题目与导流链」拆开。",
+      "为把「--max-turns 一到进程就会自己结束」或「看到 exit=1 就当成应用自己报错停住」写成可以上线的无人作业，提供提问清单。",
+    ],
+    caveats: [
+      "60,886 ms／120,990 ms／31,018 ms／4,036 ms、exit=1 与 exit=143、--max-turns 3 与 2、KILL_AFTER 60／120／30／3、Claude Code 2.1.267、Node v22.21.1、macOS 26.6.1，以及「4 次观测里没有一次自己结束」，均为作者自述。墙钟时间几乎等于设定等待，只接在这三次 tool-loop 观测上；exit=143 只接在不响应的 hang 场景。作者写明没有追到信号处理，1 和 143 为何裂开不能写成已核原因。对话模式、真实 API 和其他版本写明未测。不要把「长文会增加 token、变慢」误接成本条，源文没有写输入上限。",
+      "可达导流：https://ikinokori.net/blog/claude-code-error-subtype-success/#utm_source=zenn&utm_medium=referral&utm_campaign=claude-code-error-subtype-success GET 200（正文前篇／作者站点，UTM 为源文原样）；去参后的 https://ikinokori.net/blog/claude-code-error-subtype-success/ 亦 GET 200。作者卡 website／GitHub／X 为空。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「result 已写出」和「进程已退出」分开问",
+        body: "请对照这篇实践，不要把「--max-turns 已经判定结束、result JSON 已经写出」写成「进程已经自己退出」。请分别写清：（1）用的 Claude Code 版本、是伪 API 还是真实 API、--max-turns 的值；（2）watchdog 设定了多少秒、实际退出的墙钟时间和结束码；（3）同一条 SIGTERM 有没有裂成不同结束码。没有测过的对话模式、其他版本，请标明未核，不要补写成已经复现。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ikinokori/articles/claude-code-max-turns-process-not-exit",
+      label: "zenn.dev·ikinokori《claude -p の --max-turns 打ち切り後、プロセスは自分の意思では終わらない》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "844",
+    slug: "sero-3209-18to0-51hid",
+    title: "serotoninmax：Claude 桌面应用 4.23118.1 在 M1 Max（内存 64GB、外接 4K 144Hz）上，从把光标移进输入栏到点击、输入、转换、确定，都要等 1 秒以上，重启也不好。未归档会话 3,209 件、共 480MB，其中 remoteMcpServersConfig 就占 452MB；把 7 日以前、未加星也未钉住的 2,934 件归档后，停止不再被记录。20 秒测量里 mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，输入路径并没有慢。30 分钟里 slow hid response 51 件、平均 2.8 秒、最大 6.6 秒，全是 Claude，同时段 Chrome／Obsidian 是 0 件。整理前启动 7 分钟停止 18 次、合计 42.8 秒；整理后启动 3 分半是 0 次、0 秒——后一次观察窗更短，作者写明还要继续看会不会再出现",
+    summary: "个人（serotoninmax）；披露自己排查 Claude 桌面应用输入变慢，并不是「整台 Mac 都慢」。机器是 M1 Max、内存 64GB、外接 4K 144Hz，应用版本 4.23118.1。先用 listen-only 的 CGEventTap 测 20 秒：mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，滚动最大 19.9ms，输入路径没有慢；GPU Device Utilization 18%～33%，没有发生内存交换；IME 的 JapanesePerformanceTimer 只在 0.06 秒台越过 0.060 秒阈值，没有秒级延迟。中途一度被自作常驻工具的 avgUsecLatency（0.5 秒到 4.6 秒）带偏，但同一时段 listen-only 测到的仍是毫秒级；关掉 App Nap 再启动，值还是数秒，而且常出现 min 与 max 相同，作者认为它不能当成「事件被等了多久」。spindump 的 slow hid response 在 30 分钟里有 51 件、平均 2.8 秒、最大 6.6 秒，全部是 Claude 主进程，同时段 Chrome 和 Obsidian 是 0 件。主日志里的 event-loop-stall 大约每 12.5 秒出现约 2.1 秒；启动约 30 分钟后，停止累计 366 秒，作者按运行时间的两成左右来算。8 秒采样 5,545 个样本里，约 4,200 个是 JavaScript，约 2,000 个来自 libuv fs 完成回调，JavaScript 侧没有符号，没追到是哪一段。按日汇总：10/28～11/04 每天停止 4～26 次、中央值 590～760ms；11/05～11/10 每天 184～913 次、中央值 1.9～2.4 秒。版本号在 11/04 到 11/06 之间从 4.4212.0 升到 4.16336.0，会话则每天增加 30～50 件，11/05 没有台阶。未归档 3,209 件共 480MB，remoteMcpServersConfig 占 452MB，每个会话大约复制 140KB 的 MCP 配置。用 ⌘Q 手动退出后改文件，把 7 日以前、未加星也未钉住的 2,934 件归档；备份是 481MB。整理前启动 7 分钟停止 18 次、合计 42.8 秒、最长 4.5 秒；整理后启动 3 分半是 0 次、0 秒。后一次观察窗更短，作者写明还要继续看会不会再出现。自动归档默认是 0（不自动归档），这次改成 7 天；已经堆在那里的大量会话，只改设置会以多快的速度减下去，作者写明没有核实。",
+    description: "面向已经把「输入慢就是整台 Mac 或输入路径慢」或「归档过一批会话就等于长期不会再停」当成可以结案的人：把「输入路径的毫秒级测量、应用侧的秒级 hid 响应，以及整理前后不同长度的观察窗」分开记，区别于只看一次手感、却没有对照其他应用的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/serotoninmax/articles/claude-desktop-event-loop-stall",
+    sourceLabel: "zenn.dev·serotoninmax 实践帖",
+    upvotes: 735,
+    trending: false,
+    tags: [
+      "claude-desktop",
+      "event-loop-stall",
+      "sessions",
+      "macos",
+      "performance",
+    ],
+    howItWorks: [
+      "粘贴 Agent 桌面输入延迟对照的边界（是不是约 20 秒里 mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，是不是约 30 分钟里 slow hid response 51 件且全是 Claude、同时段 Chrome／Obsidian 为 0，是不是约未归档 3,209 件里把 7 日以前的 2,934 件归档，是不是约整理前启动 7 分钟停止 18 次、整理后启动 3 分半为 0 次）以及「绝不可把整理后更短观察窗里的 0 次写成已经长期修好，或把 avgUsecLatency 的数秒当成配送延迟」纪律",
+      "Agent 按实践帖输出：应怎样同时记下输入路径测量、hid 响应、event-loop-stall 的周期和按日表，以及自动归档设置改了之后、原有大量会话会减得多快还没有核实",
+      "人工保留这组机器、版本和观察窗；Agent 不代你保证「同样看到 3,209 件未归档，就等于所有人的桌面都会秒级停住，或归档之后长时间使用也不会再出现停止」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T14:24:28.749+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T05:24:28Z、Asia/Shanghai 2026-11-10 13:24:28；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：serotoninmax 在《Claudeデスクトップアプリの入力遅延を切り分ける: CGEventTap、spindump、event-loop-stall》写 3,209 件未归档与整理前后的停止次数。可达导流：https://serotoninmax.com/posts/claude-desktop-mac-slow-sessions/ GET 200（正文「使用侧」姐妹篇／作者站点）；https://serotoninmax.com/ GET 200；https://make-good-life.com/ GET 200（作者卡 website 为空，简介写明同时运营这两个站点）。作者卡 GitHub／X 为空。无配图。",
+      "与近批会话记忆或桌面权限规则不同：本条不是在写 SessionStart 钩子怎么接上下文，而是把输入路径、IME 和应用事件循环的停止分开量。整理后的 0 次只接在启动后 3 分半这一段，不能写成已经长期观察过不再复发。",
+    ],
+    approach: `serotoninmax 在《Claudeデスクトップアプリの入力遅延を切り分ける: CGEventTap、spindump、event-loop-stall》（页内 publishedAt 2026-11-10，取 published）披露：自己的 Claude 桌面应用 4.23118.1 在 M1 Max、内存 64GB、外接 4K 144Hz 的 MacBook Pro 上，从把光标移进输入栏到点击、输入、转换、确定，都要等 1 秒以上，重启也不好。作者先排除「整台 Mac 或输入路径慢」：listen-only 的 CGEventTap 测 20 秒，mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，滚动最大 19.9ms；GPU 利用率 18%～33%，没有交换；IME 只在 0.06 秒台越过 0.060 秒阈值。自作常驻工具的 avgUsecLatency 曾显示 0.5 秒到 4.6 秒，但同一时段 listen-only 仍是毫秒级，关掉 App Nap 再启动也还是数秒，作者不再把它当作配送延迟的指标。
+
+真正对上症状的是应用侧。30 分钟里 slow hid response 51 件、平均 2.8 秒、最大 6.6 秒，全部是 Claude 主进程，同时段 Chrome 和 Obsidian 是 0 件。main.log 里的 event-loop-stall 大约每 12.5 秒出现约 2.1 秒；启动约 30 分钟后累计 366 秒，作者按运行时间的两成左右来算。8 秒采样 5,545 个样本里约 4,200 个是 JavaScript，约 2,000 个来自 fs 完成回调，但没有符号，没追到是哪一段把事件循环停住。按日看，11/05 起每天停止从 4～26 次升到 184～913 次，中央值也从几百毫秒变成约 2 秒；版本在 11/04 到 11/06 之间从 4.4212.0 升到 4.16336.0，会话则每天增加 30～50 件，11/05 没有台阶。
+
+未归档会话 3,209 件共 480MB，其中 remoteMcpServersConfig 就占 452MB。AppleScript 的 quit 会被 before-quit 拦截，作者改为手动 ⌘Q，再改文件把 7 日以前、未加星也未钉住的 2,934 件归档，备份 481MB。整理前启动 7 分钟停止 18 次、合计 42.8 秒；整理后启动 3 分半是 0 次、0 秒。后一次观察窗更短，作者写明还要继续看会不会再出现。自动归档默认是 0，这次改成 7 天；只改设置会让原有大量会话减得多快，写明没有核实。使用侧的经过写在作者站点的姐妹篇。`,
+    outcomes: [
+      "源披露作者在 M1 Max 上排查 Claude 桌面应用 4.23118.1 的输入延迟：20 秒测量里输入路径是毫秒级，30 分钟里 slow hid response 51 件、平均 2.8 秒、最大 6.6 秒且全是 Claude，同时段 Chrome／Obsidian 为 0 件。未归档会话 3,209 件、共 480MB；把 7 日以前的 2,934 件归档后，整理前启动 7 分钟停止 18 次、合计 42.8 秒，整理后启动 3 分半是 0 次、0 秒。这是这一台机器、这一版本和这两组观察窗上的记录，不可外推成其他机器或其他版本也会同样秒级停止，也不能把整理后更短观察窗里的 0 次写成已经长期修好，或把 366 秒／约两成写成对所有启动时长都成立的比例。",
+      "能把「可写成输入路径、IME、应用事件循环停止，以及归档前后不同长度的观察窗要分开记账」与「必须人完成的题目与导流链」拆开。",
+      "为把「输入慢就是整台 Mac 慢」或「归档过一批会话就等于长期不会再停」当成可以结案，提供提问清单。",
+    ],
+    caveats: [
+      "1 秒以上、3,209 件／2,934 件、480MB／452MB／约 140KB、481MB、20 秒／326 件／0.4ms／12.2ms／19.9ms、18%～33%、0.060 秒、0.5 秒到 4.6 秒、30 分钟／51 件／平均 2.8 秒／最大 6.6 秒、约 12.5 秒／约 2.1 秒、约 30 分钟／366 秒／约两成、5,545／约 4,200／约 2,000、10/28～11/04 的 4～26 次与 590～760ms、11/05～11/10 的 184～913 次与 1.9～2.4 秒、4.4212.0 到 4.16336.0、每天 30～50 件、整理前 7 分钟 18 次／42.8 秒／4.5 秒、整理后 3 分半 0 次／0 秒，均为作者自述。约两成是用约 30 分钟里累计 366 秒除出来的，不是另一场实测。整理前后的 0 次不能直接对比成长短相同的观察。作者写明没有确定是哪一段代码停住事件循环，也没有核实只改自动归档设置会让原有会话减得多快。avgUsecLatency 不能当成配送延迟。",
+      "可达导流：https://serotoninmax.com/posts/claude-desktop-mac-slow-sessions/ GET 200（正文姐妹篇／作者站点）；https://serotoninmax.com/ GET 200；https://make-good-life.com/ GET 200（作者卡 website 为空，简介写明同时运营 Make Good Life 与セロトニン最大化計画）。作者卡 GitHub／X 为空。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「输入路径慢」和「应用事件循环停住」分开问",
+        body: "请对照这篇实践，不要把「输入感觉慢」写成「整台 Mac 或输入路径已经测到秒级延迟」。请分别写清：（1）输入路径、IME 和应用 hid 响应各自测了多久、得到什么数字，同时段其他应用是不是 0 件；（2）未归档会话有多少、归档了哪些、整理前后的观察窗是不是一样长；（3）自动归档设置改了之后，原有大量会话减得多快有没有核实。没有追到的代码位置和没有做过的长期观察，请标明未核，不要补写成已经修好。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/serotoninmax/articles/claude-desktop-event-loop-stall",
+      label: "zenn.dev·serotoninmax《Claudeデスクトップアプリの入力遅延を切り分ける: CGEventTap、spindump、event-loop-stall》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "845",
+    slug: "takak-49799-2fail-45pr",
+    title: "kashiwa／takak2166：ISUCON2026 本赛 1 人队，自己几乎不写代码，指挥交给 Grok Bot「ソニック」，实现交给 Cursor 的云端代理。当日最终 49,799 点（17:51 PASS、减点 0），初回 3,518 点；赛后追试两次都因数据一致性不合格而失格，没有名次。第 1 位 Typing Bears 是 625,857 点，约 12.6 倍（用两位分数做除法，不是另一次实测）。最后约 1 万点（39,627→49,799）只是去掉了测量代码。PR 共 45 本，Merged 29 本，其中 11 本后来因分数下降被 revert；Open、未进 main 的还有 15 本。正文在作者引言之后，是 Bot 写的回顾",
+    summary: "个人（takak2166／kashiwa）；披露自己参加 ISUCON2026 本赛时，几乎不写代码，把当日指挥交给专任 Grok Bot「ソニック」，实现、部署和测量交给 Cursor 的云端代理。作者负责建栈、最初的 bootstrap，以及在聊天里给方针。当日最终 49,799 点（17:51 的最终基准测试 PASS、减点 0），初回 10:19 是 3,518 点；赛后追试两次都不是性能、而是数据一致性未达基准，官方失格表里写着「追试不合格（2回とも基準未達）」，因此没有名次。第 1 位 Typing Bears（也是 1 人队、Go）625,857 点，文中的约 12.6 倍是用这两个分数除出来的。作者（借 Bot 之口）写明：最后约 1 万点（39,627→49,799）只是在 17:38 去掉测量代码后的延伸，不是又做了一轮功能改进。追试第 1 次是 Memories 里某条投稿的 RealMoji 期望 8 件、实际 6 件；第 2 次是开始约 14 秒后，朋友和朋友的朋友的信息流里出现了不该看见的投稿。结束后读过仓库代码，原因没有确定；失败当时的数据也没有留下来。最终形态（去掉测量后的版本）只在 17:51 跑过 1 次基准测试，把确认和最终跑次并成了一次。当日跑了大约 50 次基准测试，同一份代码也会有约 ±1,000 点（记录里最大约 ±10%）的晃动，这一点是 16:50 的确认跑才看清楚的。PR 共 45 本，Merged 29 本，其中 11 本后来因分数下降被 revert；Open、未进 main 的还有 15 本。公开仓库里是 194 个提交。10:00～18:00 的 Cursor 使用日志合计请求 2,161 次、约 5.06 亿 token，其中约 4.90 亿（约 97%）是缓存读取，输出约 300 万；作者写明同一天其他 Bot 的用量也含了一点进去，云端代理一行更接近「一次指示」而不是模型调用次数。追加计费上限原是 1 美元，16:06 看到 on-demand 已到 2.09 美元，超出部分被归到切换前 14 时台的 claude-opus-5-5。正文在作者短序之后写明「以下由ソニック来写」。Cursor 云端代理、composer-2.5 和后来做 PR 审的 Devin 都不在平台枚举里，不硬凑。",
+    description: "面向已经把「最终基准测试 PASS 了就等于追试也会过」或「从初回涨到最终分就等于这些分都来自功能改进」当成可以复盘结案的人：把「去掉测量代码涨出来的约 1 万点、只跑过一次的最终形态，以及追试两次一致性失败」分开记，区别于只看当日最高分的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "grok",
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/takak2166/articles/7a1ec70768174b",
+    sourceLabel: "zenn.dev·takak2166 实践帖",
+    upvotes: 736,
+    trending: false,
+    tags: [
+      "isucon",
+      "grok-bot",
+      "benchmark",
+      "pr-review",
+      "go",
+    ],
+    howItWorks: [
+      "粘贴 Agent 竞赛复盘的边界（是不是约当日最终 49,799 点、初回 3,518 点，是不是约追试两次都因一致性不合格而失格，是不是约第 1 位 625,857 点、约 12.6 倍只是除法，是不是约 39,627→49,799 只来自去掉测量代码，是不是约 PR 45 本里 Merged 29 本、其中 11 本后来被 revert）以及「绝不可把最终 PASS 写成追试也会过，或把约 14 倍写成又做了一次对照实测」纪律",
+      "Agent 按实践帖输出：应怎样同时记下分数时间表、追试两次的具体失败、最终形态只跑过一次，以及使用日志里含有同一天其他 Bot、云端代理的「请求」更接近指示次数",
+      "人工保留这些竞赛条件和数字；Agent 不代你保证「同样用 Grok Bot 指挥、用云端代理写代码，就会得到 49,799 点或避开追试失败，或已经查清一致性失败的原因」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T22:38:13.439+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T13:38:13Z、Asia/Shanghai 2026-11-05 21:38:13；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：takak2166（kashiwa）在《Grok Bot一本でISUCON2026に参加したら追試不合格だった（最高スコア49,799）》写最终 49,799 点与追试两次失格。可达导流：https://speakerdeck.com/takak2166 GET 200（作者卡 website）；https://github.com/takak2166 GET 200；https://github.com/takak2166/isucon-2026-public GET 200（正文公开竞赛仓）。作者卡 X 为空。一次资料、不列入可达导流：https://isucon.net/archives/60126600.html GET 200（官方结果）；https://github.com/kaz/pprotein GET 200（文中测量工具，不是作者产品）。无配图。",
+      "与池中其他 ISUCON／几乎无人驾驶的条目不同：本条主线是 Grok Bot 指挥加追试两次一致性失败，而且最后约 1 万点被作者单独记成「去掉测量代码」。正文主体是 Bot 写的回顾，数字按作者在文首认可的结果来记，不把 Bot 的推测写成已核原因。Cursor 云端代理、composer-2.5、Devin 不在枚举里，不硬凑；platforms 只记实测到的 grok、claude、github。",
+    ],
+    approach: `takak2166（kashiwa）在《Grok Bot一本でISUCON2026に参加したら追試不合格だった（最高スコア49,799）》（页内 publishedAt 2026-11-05，取 published）披露：自己以 1 人队、Go 参加 ISUCON2026 本赛，几乎不写代码，把当日指挥交给专任 Grok Bot「ソニック」，实现交给 Cursor 的云端代理。作者负责建栈、bootstrap 和方针。文首先写下最终 49,799 点，以及追试两次都未达基准、因而失格、没有名次；随后写明「以下由这次实际做事的ソニック来写」。
+
+分数时间表上，10:19 初回 3,518 点，17:51 最终 49,799 点 PASS、减点 0。第 1 位 Typing Bears 625,857 点，文中的约 12.6 倍是用这两个分数除出来的；结文里的「约 14 倍」则是用最终分除以初回分。最后约 1 万点（39,627→49,799）只是去掉 pprof／pprotein 收集后的延伸。17:43～17:46 四台重启后，还核对过重启前的数据还在（users 5,000 件、posts 625,111 件）。追试第 1 次是 RealMoji 期望 8 件、实际 6 件；第 2 次是约 14 秒后信息流里出现了不该看见的投稿。原因没有确定。最终形态只在 17:51 跑过 1 次。大约 50 次基准测试里，同一份代码也会有约 ±1,000 点（记录里最大约 ±10%）的晃动，是 16:50 才看清楚的。
+
+当日动过的云端代理是 15 本，模型用过 composer-2.5、claude-opus-5-5、grok-4.6、grok-4.7 等；14:38 调查角色把套餐额度用完后，没有上调 1 美元的追加上限，改切到 grok-4.6，17:10 起又按作者指示全部改成 grok-4.7。16:06 才发现 on-demand 已经到 2.09 美元，超出部分被归到切换前的 Opus。PR 共 45 本，Merged 29 本，其中 11 本后来因分数下降被 revert；Open、未进 main 的还有 15 本。公开仓有 194 个提交。10:00～18:00 的使用日志是请求 2,161 次、约 5.06 亿 token，作者写明含有同一天其他 Bot 的一点点，并且云端代理的「请求」更接近指示次数。PR 曾由 Devin 来审，重要指摘在合并前用来做暂不审或修改的判断。`,
+    outcomes: [
+      "源披露作者在 ISUCON2026 本赛把指挥交给 Grok Bot、实现交给云端代理：当日最终 49,799 点（17:51 PASS、减点 0），初回 3,518 点；赛后追试两次都因数据一致性不合格而失格，没有名次。第 1 位 625,857 点的约 12.6 倍是除法结果，不是另一次实测；39,627→49,799 的约 1 万点只接在去掉测量代码这一次上。PR 共 45 本，Merged 29 本，其中 11 本后来被 revert。这是这一次本赛、这一套分工和这一份使用日志上的记录，不可外推成换一届题目或换一套代理也会得到同一分数或躲过追试失败，也不能把最终 PASS 写成追试已经核对过，或把使用日志里的 2,161 次写成不含其他 Bot、等于模型调用次数。",
+      "能把「可写成最终分、去掉测量代码涨出来的分、追试两次的具体失败，以及 PR 合并与后来 revert 要分开记账」与「必须人完成的题目与导流链」拆开。",
+      "为把「最终基准测试已经 PASS」或「从初回涨到最终分就等于这些分都来自功能改进」当成可以结案，提供提问清单。",
+    ],
+    caveats: [
+      "49,799／3,518、625,857、约 12.6 倍、约 14 倍、39,627→49,799、追试两次、RealMoji 8 件对 6 件、约 14 秒、users 5,000／posts 625,111、约 50 次、约 ±1,000 点／约 ±10%、PR 45／Merged 29／后来 revert 11／Open 15、云端代理 15 本、194 个提交、请求 2,161 次、约 5.06 亿／约 4.90 亿／约 97%／约 300 万 token、上限 1 美元对 2.09 美元，均为作者自述。约 12.6 倍和约 14 倍都是除法，不是另一次实测。29 本 Merged 里含有后来被 revert 的 11 本，不能写成 29 本都留在 main。使用日志写明含有同一天其他 Bot，云端代理的「请求」更接近指示次数。追试失败原因写明没有确定。正文主体是 Bot 写的回顾；文中 Devin 审阅后的「見送り」按暂不审／先搁下理解。Cursor 云端代理、composer-2.5、Devin 不在平台枚举里，不硬凑。",
+      "可达导流：https://speakerdeck.com/takak2166 GET 200（作者卡 website）；https://github.com/takak2166 GET 200；https://github.com/takak2166/isucon-2026-public GET 200（正文公开竞赛仓）。作者卡 X 为空。一次资料、不列入可达导流：https://isucon.net/archives/60126600.html GET 200；https://github.com/kaz/pprotein GET 200。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「最终 PASS」和「追试已经过」分开问",
+        body: "请对照这篇实践，不要把「当日最后一次基准测试 PASS、减点 0」写成「追试也会过」。请分别写清：（1）初回分、最终分、最终形态跑了几次；（2）最后一段分数是功能改进还是去掉了测量代码；（3）追试失败是性能还是一致性，具体各是什么，原因有没有确定。使用日志若写明含有其他 Bot，或「请求」其实更接近指示次数，请保持原文口径，不要改写成模型调用次数。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/takak2166/articles/7a1ec70768174b",
+      label: "zenn.dev·takak2166《Grok Bot一本でISUCON2026に参加したら追試不合格だった（最高スコア49,799）》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "846",
+    slug: "sora-6corp-3evt-10min",
+    title: "そら／sora_biz：2026 年 7 月到 10 月 24 日收到 6 家泄露通知后，把电脑和仓库的点检交给 Claude Code，6 小时跑一轮，人要判断的事项收到「是／否」能答的最多 3 项。接上 X 监视的第一次跑，就抓到台账未登记的 3 件，其中一件是 Git for Windows 2.56.0.windows.3 同捆 curl 的 brotli 仍是 1.2.0、不是已修补的 1.2.1。提出 issue 约 10 分钟收到维护者回复，周一发布了 v2.56.0.windows.4，发行说明链到该 issue。11 月 5 日刊出当天的 OpenSSH 10.6p2 修正，次日 6 小时点检和 X 监视都没抓到；改成从已安装清单组装监视对象后再跑，才把它当成新话题检出。VPS 清单第一次接入时，容器里待更新的包是 44 件，换新镜像后再比还剩 2 件",
+    summary: "个人（sora_biz／そら）；披露自己在大约 3 个月里接到 6 家不正访问或泄露通知后，决定至少把电脑和仓库里能管到的漏洞交给 Claude Code 去点检。作者写明：对方服务器上的泄露，查自己的电脑也防不住。点检是 6 小时一轮，另有每天早晨把父会话按说明书走一圈、以及汇总 JVN／JPCERT/CC／CISA KEV 新件的定时任务。人要回答的「要对应」最多 3 项，并且都收成是／否能答的形状。判定分成「有影响」「无影响」「没确认到」；没读到的信息不得算成「没有漏洞」。同一项连续 2 轮没修好，第 3 轮不再试，交给作者。接上 X 监视的第一次跑，抓到台账未登记的 3 件，其中一件是当时最新的 Git for Windows 2.56.0.windows.3 里，同捆 curl 用的 brotli 仍是 1.2.0、不是已修补的 1.2.1。提出 issue 约 10 分钟收到维护者 Johannes Schindelin 的回复；周六提、周一就发布了 v2.56.0.windows.4，发行说明的 brotli 变更行链到该 issue。11 月 5 日文章刚刊出当天，OpenSSH 10.6p2 的修正发布，次日一看，6 小时点检和 X 监视都没抓到——作者写明自己这边的 sshd 其实并不符合那条漏洞的条件，漏检的原因是产品名单当时靠手写，清单以外的东西根本不会被看到。改成每次从已安装应用、服务、端口、WSL／VM／Docker 组装监视对象后再跑，才把 OpenSSH 当成新话题检出。VPS 清单第一次接入时，发现有容器还在用旧镜像，待更新的包 44 件，换新镜像后再比还剩 2 件。11 月 7 日起，「有影响」的各条都要写出处，并由 Codex 上的 GPT-6.1 Sol 与 GPT-6.1 Terra 分开确认；它们曾退回过 2 句：发现者报告里并不存在的「演示是在 macOS」，以及没有明确出处的「重启就消失」。Codex 与这两个模型不在平台枚举里，不硬凑。正文公开了作者的 patchwait、scanmux、security-loop 三个仓库。",
+    description: "面向已经把「定时点检在跑，就等于新修正都会被抓到」或「确认不到的项目可以算成安全」当成可以上线的人：把「第一次 X 监视抓到的 3 件、刊出当天漏掉的 OpenSSH，以及『没确认到』不得算成没有漏洞」分开记，区别于只看一份绿报告的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/sora_biz/articles/security-loop-scanmux-patchwait",
+    sourceLabel: "zenn.dev·sora_biz 实践帖",
+    upvotes: 737,
+    trending: false,
+    tags: [
+      "claude-code",
+      "vulnerability-monitoring",
+      "scheduled-tasks",
+      "git-for-windows",
+      "inventory",
+    ],
+    howItWorks: [
+      "粘贴 Agent 漏洞点检的边界（是不是约 7 月到 10 月 24 日的 6 家通知，是不是约接上 X 监视的第一次跑抓到 3 件未登记，是不是约 issue 约 10 分钟收到回复、周一发布了 v2.56.0.windows.4，是不是约刊出当天的 OpenSSH 修正次日仍未抓到，是不是约 VPS 第一次接入时待更新 44 件、换镜像后还剩 2 件）以及「绝不可把『没确认到』写成安全，或把这套点检写成已经挡住了那 6 家泄露」纪律",
+      "Agent 按实践帖输出：应怎样同时记下第一次抓到的 Git for Windows 旧 brotli、刊出后漏掉 OpenSSH 的原因（手写名单），以及 Sol／Terra 退回过的 2 句分别是什么",
+      "人工保留这些时间窗与数字；Agent 不代你保证「同样 6 小时跑一轮就会在官方修正前发现同类问题，或改成从已安装清单组装之后就不会再漏」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T12:47:52.210+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T03:47:52Z、Asia/Shanghai 2026-11-05 11:47:52；bodyUpdatedAt 2026-11-08T17:27:11.112+09:00，晚于发布；取 published；GET 200（UA MiraBot/1.0））：sora_biz（そら）在《漏えい通知が6社から届いたので、Claude Code に PC の脆弱性を監視させた話》写 6 家通知、第一次 X 监视的 3 件和 Git for Windows 的 issue。可达导流：https://sorabiz.substack.com/ GET 200（作者卡 website）；https://github.com/sora-bluesky GET 200；https://github.com/Sora-bluesky/patchwait 、https://github.com/Sora-bluesky/scanmux 、https://github.com/Sora-bluesky/security-loop 均 GET 200（正文产品仓）；https://x.com/sora_biz GET 200；https://x.com/sora_biz/status/2114163165449928871 、https://x.com/sora_biz/status/2114627781279756696 均 GET 200（正文作者帖）。配图 4 张均 GET 200。一次资料、不列入可达导流：https://github.com/git-for-windows/git/issues/6514 、https://github.com/git-for-windows/git/releases/tag/v2.56.0.windows.4 、https://github.com/cloudflare/security-audit-skill 、https://code.claude.com/docs/en/overview 、https://code.claude.com/docs/en/desktop-scheduled-tasks ，均按最后一次 GET 200。",
+      "与近批技能安全扫描或 CVE 对照不同：本条主线是作者自己的定时点检第一次抓到 Git for Windows 同捆 brotli，以及刊出当天因手写名单漏掉 OpenSSH。不要把这套点检写成已经挡住了那 6 家泄露。Codex／GPT-6.1 Sol／Terra 不在枚举里，不硬凑；platforms 只记实测到的 claude、github。",
+    ],
+    approach: `sora_biz（そら）在《漏えい通知が6社から届いたので、Claude Code に PC の脆弱性を監視させた話》（页内 publishedAt 2026-11-05，更新晚于发布，取 published）披露：2026 年 7 月到 10 月 24 日，大约 3 个月里接到 6 家不正访问或泄露通知，于是把电脑和仓库里能管到的漏洞交给 Claude Code 去点检。作者写明：对方服务器上的泄露，查自己的电脑也防不住。定时任务是 6 小时跑一轮 scan.py 与 X 监视（有新件或失败才叫醒父会话），再加上每天早晨按说明书走一圈、以及汇总 JVN／JPCERT/CC／CISA KEV 新件。人要判断的「要对应」最多 3 项，都收成是／否能答的形状。判定分成有影响、无影响、没确认到；没读到的信息不得算成没有漏洞。同一项连续 2 轮没修好，第 3 轮不再试。
+
+接上 X 监视的第一次跑，抓到台账未登记的 3 件，其中一件是当时最新的 Git for Windows 2.56.0.windows.3，同捆 curl 的 brotli 仍是 1.2.0、不是已修补的 1.2.1。提出 issue 约 10 分钟收到维护者回复；周六提、周一发布了 v2.56.0.windows.4，发行说明链到该 issue。
+
+11 月 5 日文章刊出当天，OpenSSH 10.6p2 的修正发布。次日一看，6 小时点检和 X 监视都没抓到。作者写明自己这边的 sshd 其实并不符合那条漏洞的条件，漏检是因为当时产品名单靠手写，清单以外的东西不会被看到。10 月漏看 VS Code 修正前版本，也被写成同一结构。改成每次从已安装应用、服务、端口、WSL／VM／Docker 组装监视对象后再跑，才把 OpenSSH 当成新话题检出。VPS 清单第一次接入时，有容器还在用旧镜像，待更新的包 44 件，换新镜像后再比还剩 2 件。11 月 7 日起，「有影响」要写出处，并由 Codex 上的 GPT-6.1 Sol 与 Terra 分开确认，它们曾退回过 2 句。点检还用到作者公开的 patchwait 与 scanmux。`,
+    outcomes: [
+      "源披露作者在接到 6 家泄露通知后，把点检交给 Claude Code：接上 X 监视的第一次跑抓到台账未登记的 3 件，其中 Git for Windows 2.56.0.windows.3 的同捆 brotli 仍是 1.2.0；提出 issue 约 10 分钟收到回复，周一发布了 v2.56.0.windows.4。11 月 5 日刊出当天的 OpenSSH 10.6p2 修正，次日 6 小时点检和 X 监视都没抓到；改成从已安装清单组装后再跑，才把它当成新话题检出。VPS 清单第一次接入时待更新的包 44 件，换新镜像后再比还剩 2 件。这是作者自己这套定时任务和这一段时间窗上的记录，不可外推成同样 6 小时跑一轮就会在官方修正前发现所有同类问题，也不能把这套点检写成已经挡住了那 6 家泄露，或把「没确认到」写成安全。",
+      "能把「可写成第一次 X 监视抓到的 3 件、刊出后因手写名单漏掉的 OpenSSH，以及『没确认到』必须单独记账」与「必须人完成的题目与导流链」拆开。",
+      "为把「定时点检在跑就等于新修正都会被抓到」或「确认不到的项目可以算成安全」当成可以上线，提供提问清单。",
+    ],
+    caveats: [
+      "6 家通知、约 3 个月、7 月到 10 月 24 日、6 小时一轮、要对应最多 3 项、第一次跑的 3 件、2.56.0.windows.3／brotli 1.2.0 对 1.2.1、约 10 分钟、v2.56.0.windows.4、OpenSSH 10.6p2、待更新 44 件对还剩 2 件、Sol／Terra 退回 2 句，均为作者自述。约 10 分钟只接在这一次 Git for Windows issue 的回复上。44 件对 2 件只接在 VPS 清单第一次接入、换新镜像后再比这一次。6 家通知是对方服务器上的泄露，不能写成这套点检已经挡住。作者写明自己的 sshd 并不符合那条 OpenSSH 条件。Codex／GPT-6.1 Sol／Terra 不在平台枚举里，不硬凑。",
+      "可达导流：https://sorabiz.substack.com/ GET 200（作者卡 website）；https://github.com/sora-bluesky GET 200；https://github.com/Sora-bluesky/patchwait 、https://github.com/Sora-bluesky/scanmux 、https://github.com/Sora-bluesky/security-loop 均 GET 200（正文产品仓）；https://x.com/sora_biz GET 200；https://x.com/sora_biz/status/2114163165449928871 、https://x.com/sora_biz/status/2114627781279756696 均 GET 200。配图 4 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/5219a495edf863c19ffb8337.png?sha=5bd6709212ec06880254431ca20750c9086d9f46 、https://static.zenn.studio/user-upload/deployed-images/c07f41f9effe17196f918bcc.png?sha=1472bc81eb5b1f8a829ced4a3118a0cde22d6826 、https://static.zenn.studio/user-upload/deployed-images/4ffe06a1fee22fb493e80ce1.png?sha=24700da250d1638b59d378986f0130ae25e7c5f5 、https://static.zenn.studio/user-upload/deployed-images/179ef721517e137156c6f1c2.png?sha=4668348766ee06869a636a316a590fd689e96c81 。一次资料、不列入可达导流：https://github.com/git-for-windows/git/issues/6514 、https://github.com/git-for-windows/git/releases/tag/v2.56.0.windows.4 、https://github.com/cloudflare/security-audit-skill 、https://code.claude.com/docs/en/overview 、https://code.claude.com/docs/en/desktop-scheduled-tasks ，均按最后一次 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「点检在跑」和「新修正一定会被抓到」分开问",
+        body: "请对照这篇实践，不要把「已经安排了 6 小时一轮的点检」写成「所有新修正都会被抓到」，也不要把「确认不到」写成「没有漏洞」。请分别写清：（1）第一次接入某种监视时抓到了几件、其中有没有后来被官方发行说明链到的报告；（2）有没有刊出之后仍然漏掉的修正，漏掉时名单是手写还是从已安装清单组装的；（3）人要判断的事项有没有上限，连续修不好时第 3 轮会不会还继续试。没有核实到自己环境的条件，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sora_biz/articles/security-loop-scanmux-patchwait",
+      label: "zenn.dev·sora_biz《漏えい通知が6社から届いたので、Claude Code に PC の脆弱性を監視させた話》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "847",
+    slug: "osprey-3handoff-35pr-11",
+    title: "osprey74：把 iOS Markdown 编辑器 Stilo 的实现几乎交给 Claude Code，自己主要写规格书（HANDOFF 3 本加短的 CLAUDE.md）。2026-09-18 从 Phase 1（文件读写）开始，9 月 20 日把 1.0 提交到 App Store——按着手那天起算是第 3 天；加上仓库联动的 1.1 在 9 月 25 日提交、26 日获批。到 9 月 24 日，已合并的 PR 是 35 本。作者写明这是 Stilo 这一本上的记录，不是对所有项目都适用的方法",
+    summary: "个人（osprey74）；披露自己做 iOS Markdown 编辑器 Stilo 时，实现几乎交给 Claude Code，自己主要写规格书。规格书在项目里叫 HANDOFF，一共 3 本，外加短的 CLAUDE.md 只写阅读顺序和任何 Phase 都要守的规则。环境是 2026-09-18 当时的最新 Claude Code，之后也一直跟到最新；模型以 Claude Fable 5.1 为主，额度用完时改切 Claude Opus 5。2026-09-18 从 Phase 1（文件读写）开始，9 月 20 日把第一个版本 1.0 提交到 App Store；加上仓库联动的 1.1 在 9 月 25 日提交审查，次日 26 日获批。到 9 月 24 日，已合并的 PR 是 35 本。作者写明：这是 Stilo 这一本上的记录，不是在写对所有项目都适用的方法。自觉有效的是三件事：把「不做的事」写下来，以免模型往范围外扩展；先写各 Phase 的接受条件，并要求完成报告用 ○／× 对照，而不是只说「做完了」；规格互相冲突时，事先写明行为看 HANDOFF、外观看 DESIGN_SPEC，差额写进 PR。文中摘了 PR #2 Phase A 的接受条件表（其中单元测试 3 件成功），以及 PR #24 的购买／剥夺操作时间戳，这些只接在被摘到的那一份 PR 上。learnings.md 由 Claude Code 在每个 PR 结尾追加，但作者也引了一句模型自己的反省：曾经指引「⌘U 能通过」，其实 learnings 里已经写过，说明写了却没读就没有用。作者还准备在 11 月出一本把这套做法写给其他项目用的 Zenn 书，文中没有给出书的 URL。本篇是「Stilo 实録」第 6 回、也是最终回，前 5 回可以单独读。",
+    description: "面向已经把「写过一份很长的规格书」或「App Store 已经交了 1.0」当成项目可以收尾的人：把「HANDOFF 3 本加短规则、按着手那天起算第 3 天提交 1.0，以及 9 月 24 日已合并 35 本 PR」分开记，区别于只看一次上架成功、却没有留下接受条件对照的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/osprey74/articles/06-stilo-handoff-driven-development",
+    sourceLabel: "zenn.dev·osprey74 实践帖",
+    upvotes: 738,
+    trending: false,
+    tags: [
+      "claude-code",
+      "handoff",
+      "spec-driven",
+      "ios",
+      "app-store",
+    ],
+    howItWorks: [
+      "粘贴 Agent 规格驱动交付的边界（是不是约 HANDOFF 3 本加短的 CLAUDE.md，是不是约 2026-09-18 开始、9 月 20 日提交 1.0（按着手那天起算第 3 天），是不是约 1.1 在 9 月 25 日提交、26 日获批，是不是约到 9 月 24 日已合并 35 本 PR）以及「绝不可把 Stilo 这一本上的日程写成对所有项目都适用，或把某一份 PR 摘录里的 3 件测试写成全部 PR 都是 3 件」纪律",
+      "Agent 按实践帖输出：应怎样同时记下交给模型的文件、各节点日期、已合并 PR 数，以及 learnings.md 写了却可能没被读到的例子",
+      "人工保留这些日期和 35 本的截止日；Agent 不代你保证「同样交 3 本 HANDOFF，就会在第 3 天提交到 App Store，或 35 本 PR 都带同一张接受条件表」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T08:00:10.697+09:00 → 2026-11-05，同时刻为 UTC 2026-11-04T23:00:10Z、Asia/Shanghai 2026-11-05 07:00:10；bodyUpdatedAt 2026-09-28T10:09:41.326+09:00，早于发布，按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：osprey74 在《HANDOFF 駆動開発 —— Claude Code に仕様書を渡して個人アプリを完走させる》写 HANDOFF 3 本、35 本已合并 PR 与 1.0／1.1 的提交日期。可达导流：https://stilo.osprey74.com/ GET 200（正文产品站；作者卡 website 为空）；https://github.com/osprey74 GET 200。作者卡 X 为空。连载前 5 回均 GET 200、不列入可达导流：https://zenn.dev/osprey74/articles/01-stilo-storekit2-nonconsumable 、https://zenn.dev/osprey74/articles/02-stilo-honest-paywall 、https://zenn.dev/osprey74/articles/03-stilo-vertical-writing-ruby 、https://zenn.dev/osprey74/articles/04-stilo-localization-ci-100 、https://zenn.dev/osprey74/articles/05-stilo-find-abandoned-apps 。文中预告 11 月将在 Zenn 出书，没有给出书的 URL。无配图。",
+      "与近批只谈 AGENTS.md 分层的设计文不同：本条有可核的着手日、提交日、获批日和 9 月 24 日已合并 35 本 PR。作者写明这是 Stilo 这一本上的记录。产品站与即将出版的书须进导流披露。",
+    ],
+    approach: `osprey74 在《HANDOFF 駆動開発 —— Claude Code に仕様書を渡して個人アプリを完走させる》（页内 publishedAt 2026-11-05，bodyUpdatedAt 早于发布，取 published）披露：这是连载「Stilo 实録」的最终回（第 6 回）。iOS Markdown 编辑器 Stilo 的实现几乎交给 Claude Code，作者自己主要写规格书，并把它叫作 HANDOFF。交给仓库的是 HANDOFF 3 本（基础与 Phase 1、收费与日文写作、仓库联动）加短的 CLAUDE.md，以及 DESIGN_SPEC、learnings.md。Claude Code 以 2026-09-18 当时的最新版为起点，之后也一直更新；模型以 Claude Fable 5.1 为主，额度用完时改切 Claude Opus 5。
+
+先写结果：2026-09-18 从 Phase 1（文件读写）开始，9 月 20 日把 1.0 提交到 App Store——按着手那天起算是第 3 天；加上仓库联动的 1.1 在 9 月 25 日提交审查，次日 26 日获批。到 9 月 24 日，已合并的 PR 是 35 本。作者写明这是 Stilo 这一本上的记录，不是对所有项目都适用的方法。
+
+自觉有效的是三件。第一，把「不做的事」写进 HANDOFF，避免模型把仓库联动自然扩展成自己做分支、合并或自建中转。作者早年没约定 GitHub 可以做到哪一步时，曾把不该留的临时文件合并进 main，后来才把 Git 操作限制到提交和推送，或更慎重时只先开 PR。第二，先写各 Phase 的接受条件，并要求完成报告用 ○／× 对照；文中摘了 PR #2 Phase A 的表，其中「单元测试：Entitlement.isUnlocked 的全部 feature」是 3 件成功，这只接在这一份摘录上。第三，冲突时事先写明行为看 HANDOFF、外观看 DESIGN_SPEC，差额写进 PR。learnings.md 按规则在每个 PR 结尾追加，但作者也引了模型自己的反省：曾经指引「⌘U 能通过」，其实 learnings 里已经写过。作者还预告 11 月将在 Zenn 出一本把这套做法写给其他项目用的书，文中没有给出书的 URL。`,
+    outcomes: [
+      "源披露作者把 Stilo 的实现几乎交给 Claude Code，自己主要写 HANDOFF 3 本加短的 CLAUDE.md：2026-09-18 从 Phase 1 开始，9 月 20 日提交 1.0（按着手那天起算是第 3 天）；1.1 在 9 月 25 日提交、26 日获批；到 9 月 24 日，已合并的 PR 是 35 本。这是 Stilo 这一本、这一段日程上的记录，不可外推成换一个项目也会在第 3 天提交到 App Store，或 35 本 PR 都带同一张接受条件表，也不能把某一份 PR 摘录里的 3 件测试写成全部 Phase 都已实测通过。",
+      "能把「可写成交给模型的文件、着手与提交的日历日、已合并 PR 的截止日，以及 learnings 写了却可能没被读到」与「必须人完成的题目与导流链」拆开。",
+      "为把「写过很长的规格书」或「1.0 已经交到 App Store」当成项目可以收尾，提供提问清单。",
+    ],
+    caveats: [
+      "HANDOFF 3 本、2026-09-18 着手、9 月 20 日提交 1.0、1.1 在 9 月 25 日提交、26 日获批、到 9 月 24 日已合并 35 本 PR，以及 PR #2 摘录里的 3 件单元测试，均为作者自述。「第 3 天」按着手那天起算的日历来理解，不是另一次用秒表量过的 72 小时。35 本只接到 9 月 24 日为止的已合并数，不要和 1.1 获批日混成同一个截止点。PR #2 的 3 件测试只接在这一份摘录上。learnings.md 写了却可能没被读到，不能写成已经解决了重复踩坑。作者写明这是 Stilo 这一本上的记录。额度用完才切 Opus 5，文中没有写切换了几次，不要补数字。",
+      "可达导流：https://stilo.osprey74.com/ GET 200（正文产品站；作者卡 website 为空）；https://github.com/osprey74 GET 200。作者卡 X 为空。文中预告 11 月将在 Zenn 出书，没有给出书的 URL，已作为作者产品向说明写入，未作为可达链去核。连载前 5 回均 GET 200、不列入可达导流：https://zenn.dev/osprey74/articles/01-stilo-storekit2-nonconsumable 、https://zenn.dev/osprey74/articles/02-stilo-honest-paywall 、https://zenn.dev/osprey74/articles/03-stilo-vertical-writing-ruby 、https://zenn.dev/osprey74/articles/04-stilo-localization-ci-100 、https://zenn.dev/osprey74/articles/05-stilo-find-abandoned-apps 。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「交过 1.0」和「全部 Phase 都已对照接受条件」分开问",
+        body: "请对照这篇实践，不要把「已经把 1.0 交到 App Store」写成「所有 Phase 都按接受条件核对过」，也不要把某一份 PR 摘录里的测试件数写成全部 PR 的结果。请分别写清：（1）交给模型的是几本规格书、规则文件写了什么；（2）着手日、1.0／1.1 的提交与获批日，已合并 PR 数接到哪一天；（3）learnings 或「不做的事」有没有实际被读到、被遵守。作者写明只适用于这一个应用时，请保持这个范围，不要外推。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/osprey74/articles/06-stilo-handoff-driven-development",
+      label: "zenn.dev·osprey74《HANDOFF 駆動開発 —— Claude Code に仕様書を渡して個人アプリを完走させる》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
   }
 ];
 
