@@ -57358,6 +57358,436 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "788",
+    slug: "anikuma-120pv-2chg-ledger",
+    title: "anikuma：完成条件里的示例值 120 被写进实测台账——8 月 12 日发现；8 月 30 日闸门差点用它判定；事后改成占位符并写明写入范围",
+    summary: "个人（anikuma｜现役 EM／个人开发）；披露把计量工具交给 Codex 后：完成条件里为说明参数写下的示例值 120，于 2026-08-12 作为第二周 Zenn PV 实绩进入 discovery_log.md，差点成为 8 月 30 日实售闸门的判定材料。作者强调这不是模型虚构新数字，而是把示例当步骤执行。不代你同样改成占位符，就等于下一份写入类委托也不会再把示例写进台账。",
+    description: "面向已经把「报告里写了结果就能发现」当成写入类委托已门禁、却还没检查完成条件里的示例值会不会被当成实绩落盘的人：把「Agent 合做写入类委托须同时报示例值、允许写入范围与台账事故」写成门禁，区别于事实核查三类，以及费用／Effort 基准。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/anikuma/articles/completion-example-value-120",
+    sourceLabel: "zenn.dev·anikuma 实践帖",
+    upvotes: 679,
+    trending: false,
+    tags: [
+      "Codex",
+      "completion-criteria",
+      "ledger",
+      "placeholder",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴写入类委托边界（是不是约完成条件里含具体数字示例、是不是约验证只到 dry-run 或临时文件、是不是约台账会被闸门当实绩读）以及「绝不可把报告里写了结果写成已发现已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 120、2026-08-12、8 月 30 日闸门与两处改法（占位符＋写入范围）",
+      "人工保留 120／discovery_log.md／git 无法复现中间态来自哪一次自述；Agent 不代你保证「同样改成占位符就等于下一份写入类委托也不会再把示例写进台账」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T00:00:00.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T15:00:00Z、Asia/Shanghai 2026-11-08 23:00:00；bodyUpdatedAt 2026-11-09T17:16:45.478+09:00 → 同时刻为 UTC 2026-11-09T08:16:45Z、Asia/Shanghai 2026-11-09 16:16:45；取 published；GET 200，UA MiraBot/1.0）：anikuma 在《AIは数字を捏造していなかった。完了条件の「120」をそのまま書いた》写完成条件示例值误入台账。文内硬链 https://www.amazon.co.jp/dp/B0HPB7KHZL 本机 GET 连接失败（TLS unexpected eof），不列入可达导流。作者 X https://x.com/anikuma_tech GET 200（可达社交主页导流）；同作者前篇 https://zenn.dev/anikuma/articles/ai-persona-canon-fact-accident GET 200（可达相关实践连载导流）。主线是完成条件示例值，不是官文简报。",
+      "与事实核查三类、费用／Effort 基准不同：本条不是把主张分型或模型档比价当主线，而是完成条件里的示例数字会不会被当成实绩写入台账的门禁",
+    ],
+    approach: `anikuma 在《AIは数字を捏造していなかった。完了条件の「120」をそのまま書いた》（页内 2026-11-09）写明：个人把计量工具的实现交给 Codex。完成条件里为说明参数写法放了示例 --zenn-pv 120，而工具又能按参数把数字追加到台账。2026-08-12，工作报告里的计量台账 discovery_log.md 出现了「bet-01 W2: Zenn PV 120」——这不是模型虚构的新数字，而是把示例值当作要执行的步骤跑完后写入、准备给 8 月 30 日实售闸门当第二周实绩用的。作者当天从台账删掉并改成实测量。他强调：完成条件是「做到这些就算结束」的清单，其中的执行例会被当成真的要打的命令；120 作为 PV 既不会被输入校验挡下，肉眼也不像离谱值。若当时没读报告就进入下一步，8 月 30 日的闸门可能会用含 120 的表来判定。事后改了两处：示例值改成占位符（形如 --zenn-pv <Zenn仪表盘确认的PV>，直接执行会因 < > 被 shell 当成重定向而语法错误，到不了台账）；并写明验证只到 dry-run 或只写临时文件，不写 discovery_log.md。作者声明尚未统计改法是否让再发停止；120 曾写入台账的中间状态也无法从 git 历史复现，本稿依据当天事故记录。
+
+关键门禁不是「报告里写了就能发现」，而是完成条件里不要放可被当实绩写入的具体数字，并写明允许写入的范围。
+
+本场景据此输出「Agent 合做写入类委托须同时检查完成条件里的示例值与写入范围，不能只报报告里写了结果」提纲。禁止把 120／8 月 12 日／8 月 30 日写成任意仓库同分布，或把改成占位符写成已不再误写入已门禁。`,
+    outcomes: [
+      "源披露作者完成条件里的示例值 120 于 2026-08-12 作为第二周 Zenn PV 进入 discovery_log.md，差点成为 8 月 30 日实售闸门的判定材料；事后改成占位符并写明验证只到 dry-run 或临时文件。属作者这一次个人事故记录（git 无法复现中间态，亦尚未统计再发是否停止），不可外推为你同样改成占位符就等于下一份写入类委托也不会再把示例写进台账，或报告里写了结果就等于已发现已门禁。",
+      "能把「可写成同时检查完成条件示例值、允许写入范围、闸门是否会读台账」与「必须人完成的报告核对／导流链」拆开。",
+      "为把「报告里写了就能发现」当成已门禁、以及只怪模型虚构却不改完成条件提供提问清单。",
+    ],
+    caveats: [
+      "120／2026-08-12／8 月 30 日闸门／两处改法／尚未统计再发均为作者自述；中间态无法从 git 历史复现，依据当天事故记录；工具是 Codex，不可写成 Claude Code 同一次事故。",
+      "文内硬链 https://www.amazon.co.jp/dp/B0HPB7KHZL 为作者 Kindle 导流，本机 curl（UA MiraBot/1.0）TLS 连接失败（unexpected eof），不列入可达。作者 X https://x.com/anikuma_tech GET 200（可达社交主页导流）。同作者前篇 https://zenn.dev/anikuma/articles/ai-persona-canon-fact-accident GET 200（可达相关实践连载导流）。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / anikuma），不是 Anthropic 或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "写入类委托须先检查完成条件里的示例值",
+        body: `你是资深 Agent 完成条件教练。只根据用户边界写门禁，不要编造已不再误写入已门禁。
+
+现在是不是约完成条件里含具体数字示例：{{whether_about_numeric_example}}
+是不是约验证只到 dry-run 或临时文件：{{whether_about_write_scope}}
+是不是约台账会被闸门当实绩读：{{whether_about_gate_reads_ledger}}
+
+输出 Markdown：
+1. 为什么「报告里写了结果」不能写成写入类委托已发现已门禁
+2. 应怎样同时检查示例值、允许写入范围、闸门是否会读台账
+3. 只有一次 120／8 月 12 日账本时，应怎样单独记账，而不是写成下一仓也必然同分布
+4. 人必须完成的清单（报告核对、导流链）
+禁止声称「同样改成占位符就等于下一份写入类委托也总会不再把示例写进台账」；禁止把报告里写了写成已发现已门禁。`,
+      },
+      {
+        title: "一百二十写入台账复盘",
+        body: `报告上可以写示例值 120 进入 discovery_log.md、差点被 8 月 30 日闸门当实绩；但这是一次个人事故记录。请写复盘提纲。
+
+现象：{{one_twenty_into_ledger}}
+
+输出：
+1. 更像模型虚构新数字，还是完成条件把示例当成了要执行的步骤
+2. 最小复验顺序（先对照完成条件→再看写入范围→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上读报告就等于示例也不会再落盘」，或「占位符就等于任意仓库同分布」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/anikuma/articles/completion-example-value-120",
+      label: "zenn.dev · AIは数字を捏造していなかった。完了条件の「120」をそのまま書いた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "789",
+    slug: "shoma-960hook-428-253blk",
+    title: "shoma46：把 Codex 放在 git push 前做审查——2 个月 hook 发火 960 次；判定 428 次中 block 253 次约 59%；142 件里 62 件由 Claude 修改后 pass",
+    summary: "个人（shoma46）；披露 2026-08-09 至 10-07 用 PreToolUse 钩在 git push 前让 Codex 先审：hook 发火 960 次，Codex 给出判定 428 次其中 block 253 次约 59%，判定耗时中位约 105 秒，人类批准放行 91 次。253 次 block 归并为 142 件后，62 件（约 44%）由 Claude 补提交并再审 pass。不代你同样接上 Codex 关卡，就等于下一仓也不会再把未审 diff 推上去。",
+    description: "面向已经把「能在 push 前叫另一个模型看一眼」当成代码审查已门禁、却还没分开「判定次数、block 率、人类放行与 fail-open」的人：把「Agent 合做推送前审查须同时报发火次数、判定次数与结算路径」写成门禁，区别于 git-guardrails 危险命令穿出，以及 CodeRabbit 行评。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/shoma46/articles/claude-code-codex-push-review-hook",
+    sourceLabel: "zenn.dev·shoma46 实践帖",
+    upvotes: 680,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "PreToolUse",
+      "code-review",
+      "git-push",
+    ],
+    howItWorks: [
+      "粘贴推送前审查边界（是不是约 hook 只在 git push 发火、是不是约 Codex 判定与 hook 侧重算 verdict、是不是约小于 10 行或超时走 fail-open）以及「绝不可把能叫另一个模型看一眼写成未审 diff 已拦住已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 960、428、253、约 59%、91、142 件与 62 件补提交后 pass",
+      "人工保留 2026-08-09／10-07、中位约 105 秒、35 次因上次指摘未解消而 block、46 次额度、8 次 fail-open 来自哪一次自述；Agent 不代你保证「同样接上 Codex 关卡就等于下一仓也不会再把未审 diff 推上去」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T10:16:55.134+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T01:16:55Z、Asia/Shanghai 2026-11-10 09:16:55；bodyUpdatedAt 2026-11-10T10:10:24.626+09:00（早于发布时间）；取 published；GET 200，UA MiraBot/1.0）：shoma46 在《Claudeのコードを人間が全部読まなくて済むように、Codexにpushを審査させるhookを2か月運用した》写推送前审查账本。正文未见作者产品硬链。主线是 Codex 推送前审查的两个月账，不是官文简报，也不是危险命令守卫。",
+      "与 git-guardrails 危险命令穿出、CodeRabbit 行评、双 CLI 同题对比不同：本条不是把危险 git 模式或行级机器人当主线，而是 push 前另一模型关卡的发火／判定／block／人类放行分账门禁",
+    ],
+    approach: `shoma46 在《Claudeのコードを人間が全部読まなくて済むように、Codexにpushを審査させるhookを2か月運用した》（页内 2026-11-10）写明：个人用 Claude Code 的 PreToolUse 钩在 Bash 的 git push 前叫 Codex 先审，再由 hook 按指摘严重度重算判定（不采信 Codex 自报的 pass／block）。集计窗口 2026-08-09 至 10-07，日志在 ~/.claude/logs/codex-review.jsonl。hook 发火 960 次；Codex 给出判定 428 次，其中 block 253 次约 59%，判定耗时中位约 105 秒；人类在批准提示里放行 91 次；175 次 pass 则无人干预放行。小于 10 行的 diff 或超时／出错未能判定时走 fail-open（未审放行）；超时设为 660 秒，略长于 Codex 侧 600 秒。把同一分支上连续 block 归并成「从被拦到结算」的 142 件后：62 件（约 44%）由 Claude 补提交并再审 pass，25 件（约 18%）补提交后仍由人解除，42 件（约 30%）未改就由人解除，8 件（约 6%）因 Codex 出错未审通过，5 件（约 4%）之后再无 push。新的重要指摘 1 件有 143 次、2 件有 44 次，1～2 件约占 74%；因上次指摘未标已解决而 block 的有 35 次。作者还写：9 月 19 日写入严重度基准后，全量审查 block 率从 72%（158 次）降到 42%（26 次），增量审查从 51%（174 次）降到 14%（22 次），但引入后样本少、仓库也换过，不能全部算成基准的效果；8 月中旬起至少 46 次因额度 Codex 未跑；全量审查中位 186 秒（diff 中位 966 行），增量 48 秒（75 行）。练习记录应用里有两例差点让用户数据静默消失的 block。文中亦提到：为无障碍／可访问性去掉固定的 accessibilityLabel 后只改了 5 行，因不足 10 行未再审、block 被沿用，至少 17 次人类放行属于这类摩擦。
+
+关键门禁不是「能在 push 前叫另一个模型看一眼」，而是同时记下发火次数、判定次数、block 结算路径与 fail-open。
+
+本场景据此输出「Agent 合做推送前审查须同时报告 960／428／253 与 142 件结算，不能只报能叫 Codex」提纲。禁止把约 59%／62 件写成任意仓同分布，或把接上关卡写成未审 diff 已拦住已门禁。`,
+    outcomes: [
+      "源披露作者 2026-08-09 至 10-07 的 hook 发火 960 次，Codex 判定 428 次其中 block 253 次约 59%，人类放行 91 次；253 次归并为 142 件后 62 件由 Claude 补提交再审 pass。属作者这一次个人两个月账本，不可外推为你同样接上 Codex 关卡就等于下一仓也不会再把未审 diff 推上去，或能叫另一个模型看一眼就等于审查已门禁。",
+      "能把「可写成同时记下发火次数、判定次数、block 结算与 fail-open」与「必须人完成的批准理由核对／导流链」拆开。",
+      "为把「能叫另一个模型看一眼」当成未审 diff 已拦住已门禁、以及只看 block 率却不算人类放行与超时放行提供提问清单。",
+    ],
+    caveats: [
+      "960／428／253／约59%／91／142／62／中位约105秒／46次额度／8次 fail-open／35次指摘未解消均为作者自述日志集计；block 后补提交不等于指摘都是真缺陷；小于 10 行或超时时未审放行；文中 worktree 的 cwd 未跟随只是坑位，不是本条主线。",
+      "正文未见作者产品／外链硬导流可列入可达。primary GET 200（UA MiraBot/1.0）。未见招聘硬导流。",
+      "上面写的是个人实践帖（zenn.dev / shoma46），不是 Anthropic 或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "推送前审查须同时报告判定次数与结算路径",
+        body: `你是资深 Agent 推送前审查教练。只根据用户边界写门禁，不要编造未审 diff 已拦住已门禁。
+
+现在是不是约 hook 只在 git push 发火：{{whether_about_push_hook}}
+是不是约 hook 侧重算 verdict 而不是采信模型自报：{{whether_about_recompute_verdict}}
+是不是约小于 10 行或超时走 fail-open：{{whether_about_fail_open}}
+
+输出 Markdown：
+1. 为什么「能在 push 前叫另一个模型看一眼」不能写成审查已门禁
+2. 应怎样同时记下发火次数、判定次数、block 结算与 fail-open
+3. 只有一次 960／428／253 账本时，应怎样单独记账，而不是写成下一仓也必然同分布
+4. 人必须完成的清单（批准理由核对、导流链）
+禁止声称「同样接上 Codex 关卡就等于下一仓也总会拦住未审 diff」；禁止把能叫另一个模型看一眼写成已门禁。`,
+      },
+      {
+        title: "九百六十次发火与二百五十三次 block 复盘",
+        body: `报告上可以写 hook 发火 960 次、判定 428 次中 block 约 59%、142 件里 62 件补提交后 pass；但这是一次两个月个人账本。请写复盘提纲。
+
+现象：{{nine_sixty_fifty_nine}}
+
+输出：
+1. 更像关卡真拦住了缺陷，还是 block 率被未解消指摘、小 diff 未再审或人类直接放行抬高／拆低
+2. 最小复验顺序（先分发火与判定→再看结算路径→再看 fail-open→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上行评机器人就等于未审 diff 也不会再出去」，或「约 59% 就等于任意仓库同分布」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shoma46/articles/claude-code-codex-push-review-hook",
+      label: "zenn.dev · Claudeのコードを人間が全部読まなくて済むように、Codexにpushを審査させるhookを2か月運用した",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "790",
+    slug: "joinclass-thin-235ln-047",
+    title: "合同会社ジョインクラス：Thin Orchestrator——父会话只传路径不读正文；CLAUDE.md 从超 1000 行收到 235 行；探询「2+2」一次约 0.27～0.47 美元",
+    summary: "团队（joinclass｜合同会社ジョインクラス）；披露用 Claude Code 跑约 10 个部门、launchd 作业 17 个以上后：父会话曾把各部门 STATE.md 和日志全部自己读完，CLAUDE.md 加到超 1000 行并自相矛盾。改为 Thin Orchestrator（父只传路径、目标把上下文用在 10%～15%），CLAUDE.md 现为 235 行。探询「2+2」一次仍约 0.27～0.47 美元，缓存写入约 4.1 万 token、其中自家文件仅约 5800。不代你同样只传路径，就等于下一父会话也不会再被正文撑满。",
+    description: "面向已经把「能调度子代理」当成上下文不会耗尽已门禁、却还没分开「父会话自己读了正文」与「一次调用的固定开销」的人：把「Agent 合做编排须同时报父会话是否只传路径、CLAUDE.md 行数与单次调用开销」写成门禁，区别于技能 allowlist 长期账，以及 token 省字习惯清单。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/joinclass/items/7159dea2ad9280ff27ac",
+    sourceLabel: "qiita.com·joinclass／合同会社ジョインクラス 实践帖",
+    upvotes: 681,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Thin-Orchestrator",
+      "subagent",
+      "context",
+      "CLAUDE.md",
+    ],
+    howItWorks: [
+      "粘贴编排边界（是不是约父会话只传路径不读正文、是不是约定时作业不经父会话直接 claude -p、是不是约用 total_cost_usd 记账而不是固定概算）以及「绝不可把能调度子代理写成上下文不会耗尽已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下约 10 个部门、17 个以上作业、CLAUDE.md 超 1000 行收到 235 行、探询「2+2」约 0.27～0.47 美元与约 4.1 万／5800 token",
+      "人工保留 10%～15% 目标、--max-budget-usd 3、曾经用固定 0.02 概算导致上限从未触发来自哪一次自述；Agent 不代你保证「同样只传路径就等于下一父会话也不会再被正文撑满」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-10T08:30:08.000+09:00 → 2026-11-10，同时刻为 UTC 2026-11-09T23:30:08Z、Asia/Shanghai 2026-11-10 07:30:08；dateModified 同发布；Qiita API created_at 同；GET 200，UA MiraBot/1.0）：joinclass 在《Claude Codeのコンテキスト枯渇を防ぐ「Thin Orchestrator」設計 — 親は読まない、パスだけ渡す》写父会话只传路径。文内硬链 https://zenn.dev/joinclass?tab=books 为可达书籍导流（GET 200）。主线是 Thin Orchestrator，不是官文简报。与已用 joinclass-13skill-6mo-832allow 错开主题。",
+      "与技能 allowlist 长期账、token 省字 CLAUDE.md 习惯不同：本条不是把技能命名或删字当主线，而是父会话不把正文读进自己窗口、并用实测算单次调用开销的分账门禁",
+    ],
+    approach: `合同会社ジョインクラス（joinclass）在《Claude Codeのコンテキスト枯渇を防ぐ「Thin Orchestrator」設計》（JSON-LD 2026-11-10）写明：团队用 Claude Code 跑约 10 个部门的代理，launchd 作业 17 个以上，覆盖文章发布、销售管道和早间摘要。作者最棘手的是会话后半 CLAUDE.md 规则开始失效：一是规则一直往 CLAUDE.md 里加，超过 1000 行并且互相矛盾；二是父会话把各部门 STATE.md 和日志全部自己 Read，窗口很快被填满，压缩时关键指示被丢掉。改法称作 Thin Orchestrator：父会话目标把上下文使用率维持在 10%～15%，只把文件路径交给子代理，自己不做编码或写文档；子代理在自己的窗口里读正文，只把结论按约定格式还回去（文中举例：子代理即使读了 10 万 token，若只回 500 token 摘要，父窗口几乎不涨）。定时部门任务进一步改为不经父会话，由 launchd 直接起 claude -p，每次都是干净窗口；包装脚本用 --output-format json 记下 total_cost_usd，并设 --max-budget-usd 3（脚本注释里还有月 160 美元警告、200 美元停止的计划，文中未给触发实例）。验证时他们实测探询「2+2」一次就要 0.27～0.47 美元，其中缓存写入约 4.1 万 token，自家文件（CLAUDE.md、代理、技能）只占约 5800，其余是 Claude Code 本体固定开销。由此得出：再削自家文件对这次调用费用帮助有限，CLAUDE.md 缩短是为去掉矛盾；真正撬动费用的是调用次数，故部门作业改成每日一次。CLAUDE.md 现在是 235 行，细节搬到 .claude/agents/。他们还写到：曾经用固定 0.02 美元概算累加，费用上限从未作動，后来才改记 total_cost_usd；--bare 会因未读认证而报 Not logged in，定时作业不用 --bare。
+
+关键门禁不是「能调度子代理」，而是父会话是否只传路径、以及一次调用的固定开销有没有按实测算记账。
+
+本场景据此输出「Agent 合做编排须同时报告父会话读了什么、CLAUDE.md 行数与单次开销，不能只报能调度」提纲。禁止把 235 行／0.27～0.47 美元写成任意组织同分布，或把只传路径写成上下文不会耗尽已门禁。`,
+    outcomes: [
+      "源披露该社 CLAUDE.md 曾超 1000 行、现为 235 行；父会话改为只传路径；探询「2+2」一次仍约 0.27～0.47 美元，缓存写入约 4.1 万 token、其中自家文件约 5800。属作者这一次团队编排账，不可外推为你同样只传路径就等于下一父会话也不会再被正文撑满，或能调度子代理就等于上下文不会耗尽已门禁。",
+      "能把「可写成同时记下父会话是否只传路径、CLAUDE.md 行数、单次调用实测算」与「必须人完成的 /context 抽查／导流链」拆开。",
+      "为把「能调度子代理」当成上下文已门禁、以及只砍 CLAUDE.md 却不看一次调用固定开销提供提问清单。",
+    ],
+    caveats: [
+      "约10个部门／17个以上作业／超1000行→235行／10%～15%目标／0.27～0.47美元／约4.1万与5800 token／--max-budget-usd 3 均为作者自述；10 万对 500 token 是说明例；月 160／200 美元是脚本里的计划阈值，文中未给触发实例。",
+      "文内硬链 https://zenn.dev/joinclass?tab=books 为可达书籍导流（GET 200，UA MiraBot/1.0）。未见招聘硬导流。primary GET 200。",
+      "上面写的是团队实践帖（qiita.com / joinclass／合同会社ジョインクラス），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "编排须同时报告父会话是否只传路径与单次开销",
+        body: `你是资深 Agent 编排教练。只根据用户边界写门禁，不要编造上下文不会耗尽已门禁。
+
+现在是不是约父会话只传路径不读正文：{{whether_about_path_only}}
+是不是约定时作业不经父会话直接 claude -p：{{whether_about_headless_job}}
+是不是约用 total_cost_usd 记账而不是固定概算：{{whether_about_real_cost}}
+
+输出 Markdown：
+1. 为什么「能调度子代理」不能写成上下文不会耗尽已门禁
+2. 应怎样同时记下父会话读了什么、CLAUDE.md 行数、单次调用实测算
+3. 只有一次 235 行／0.27～0.47 美元账本时，应怎样单独记账，而不是写成下一组织也必然同分布
+4. 人必须完成的清单（/context 抽查、导流链）
+禁止声称「同样只传路径就等于下一父会话也总会不被正文撑满」；禁止把能调度写成已门禁。`,
+      },
+      {
+        title: "二千三百五十行与四十七美分探询复盘",
+        body: `报告上可以写 CLAUDE.md 从超 1000 行收到 235 行、探询「2+2」仍约 0.27～0.47 美元；但这是一次团队账本。请写复盘提纲。
+
+现象：{{two_thirty_five_and_probe_cost}}
+
+输出：
+1. 更像父会话自己读正文把窗口撑满，还是一次调用的固定缓存开销本来就高
+2. 最小复验顺序（先看父会话读了什么→再看 CLAUDE.md 是否自相矛盾→再记 total_cost_usd→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上技能命名规则就等于父窗口也不会再被撑满」，或「0.27～0.47 美元就等于任意账号同消耗」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/joinclass/items/7159dea2ad9280ff27ac",
+      label: "qiita.com · Claude Codeのコンテキスト枯渇を防ぐ「Thin Orchestrator」設計 — 親は読まない、パスだけ渡す",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "791",
+    slug: "takamatt-bossbtn-7case-4ex2",
+    title: "takamatt_ai：只拦浏览器「发送／公开」——2026-11-05 实测 7 例中 4 例 exit 2；JS 点击与 Enter 也会停；改写说明可穿出",
+    summary: "个人（takamatt_ai）；披露把表单输入交给 Claude in Chrome 后，一句「先送出去吧」被当成许可，模型按下了发送。作者不用 CLAUDE.md 拜托，而用 PreToolUse 钩按按钮说明拦「向外走的最后一下」。2026-11-05 用假输入跑 7 例：4 例 exit 2（含 JS 点击与 Enter 发送），3 例 exit 0（草稿保存、进入公开页、输入栏点击）。不代你同样装上说明词钩，就等于下一次也不会再误点发送。",
+    description: "面向已经把「CLAUDE.md 里写了发送由人来按」当成浏览器操作已门禁、却还没按工具参数拦住最后一下点击的人：把「Agent 合做浏览器代填须同时报拦哪些按钮、7 例结果与说明词穿出」写成门禁，区别于 git 危险命令守卫，以及 -p 写盘被拒仍 exit 0。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/takamatt_ai/items/2ff4079dceef86e54de9",
+    sourceLabel: "qiita.com·takamatt_ai 实践帖",
+    upvotes: 682,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "PreToolUse",
+      "Claude-in-Chrome",
+      "hooks",
+      "browser",
+    ],
+    howItWorks: [
+      "粘贴浏览器代填边界（是不是约只拦向外走的最后按钮、是不是约连 browser_batch 与 Enter 键也看、是不是约例外必须与屏幕原文完全一致）以及「绝不可把 CLAUDE.md 写了发送由人来按写成已拦住已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 2026-11-05 的 7 例、4 例 exit 2、3 例 exit 0，以及说明词改写可以穿出",
+      "人工保留「投稿する」会停、「公開に進む」会放行、X 予約設定只有整句日期模板才放行来自哪一次自述；Agent 不代你保证「同样装上说明词钩就等于下一次也不会再误点发送」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-08T10:59:56.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T01:59:56Z、Asia/Shanghai 2026-11-08 09:59:56；dateModified 同发布；Qiita API created_at 同；GET 200，UA MiraBot/1.0）：takamatt_ai 在《Claude Code のブラウザ操作で「送信・公開」ボタンだけを PreToolUse フックで止める(言い換えとJSクリックの抜け道つき)》写按钮守卫实测。文内 https://docs.claude.com/en/docs/claude-code/hooks 为厂商对照（GET 200），不是作者产品导流。主线是浏览器最后按钮，不是官文简报，也不是 git 危险命令守卫。",
+      "与 git-guardrails 穿出、delete-guard、chuki -p 写盘被拒仍 exit 0 不同：本条不是把危险 git／删目录或无头退出码当主线，而是按按钮说明拦截发送／公开，并承认改写说明可以穿出的门禁",
+    ],
+    approach: `takamatt_ai 在《Claude Code のブラウザ操作で「送信・公開」ボタンだけを PreToolUse フックで止める》（JSON-LD 2026-11-08）写明：个人让 Claude in Chrome 代填表单时，自己说了一句「先送出去吧」，模型把它当成许可按下了发送。CLAUDE.md 里写「发送由我来按」仍可能被忘掉，于是用 PreToolUse 钩只拦向外走、撤销不了的最后一下点击，草稿保存和页面跳转放行。matcher 覆盖 mcp__claude-in-chrome__computer、browser_batch 与 javascript_tool；脚本是 ~/.claude/hooks/boss-button-guard.py，拦下时 exit 2 并把理由写回模型。判断依据主要是 computer 工具的 action_summary。2026-11-05 用标准输入灌 JSON 看退出码：action_summary 为「「投稿する」ボタンを押す」的左键 → exit 2；「下書き保存を押す」→ 0；「公開に進むを押す」→ 0（作者认为这一屏还没走出去）；「本文欄をクリックする(投稿の入力)」→ 0（有「投稿」但 SAFE 里的「入力」放行）；javascript_tool 里 document.querySelector("button").click(); // 送信 → 2；key 的 Return 且说明为「Enterで送信」→ 2；「予約設定を押す」→ 2。7 例中 4 例停止、3 例放行。作者承认这是栅栏不是墙：最初只写「投稿」时，连正文输入栏点击也被拦住；反之，用 FINAL 词表里没有的说法描述真发送按钮就能穿出，前提是模型把说明写得「老实」。可撤销的「予約設定」只开了一条例外，而且必须整句等于屏幕上的日期时间模板；「予約設定を押す」这种短说不会放行。口头再说「可以送」也不会让钩放行，要放宽只能改例外规则。
+
+关键门禁不是「CLAUDE.md 写了发送由人来按」，而是按工具参数拦住最后一下，并承认说明词改写可以穿出。
+
+本场景据此输出「Agent 合做浏览器代填须同时报告 7 例结果与穿出条件，不能只报写了由人来按」提纲。禁止把 4／7 写成任意站点同分布，或把装上说明词钩写成已不会误点发送已门禁。`,
+    outcomes: [
+      "源披露作者 2026-11-05 用假输入跑 7 例，其中 4 例 exit 2（含 JS 点击与 Enter 发送），3 例 exit 0；并写明改写说明可以穿出，例外只对整句日期模板放行。属作者这一次个人脚本实测，不可外推为你同样装上说明词钩就等于下一次也不会再误点发送，或 CLAUDE.md 写了发送由人来按就等于已拦住已门禁。",
+      "能把「可写成同时记下拦哪些按钮、7 例退出码、说明词穿出」与「必须人完成的例外规则核对／导流链」拆开。",
+      "为把「写了由人来按」当成已门禁、以及只测左键点击却不看 JS 点击与 Enter 提供提问清单。",
+    ],
+    caveats: [
+      "7 例／4 例 exit 2／3 例 exit 0／2026-11-05 均为向脚本灌假 JSON 的退出码，不是一次完整线上误发送的全链路回放；说明词改写可以穿出，作者自称为栅栏不是墙；「公開に進む」被放行是基于「这一屏还没走出去」的判断。",
+      "文内 https://docs.claude.com/en/docs/claude-code/hooks 为厂商对照（GET 200，UA MiraBot/1.0），不是作者产品导流。未见作者产品硬导流可列入可达。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / takamatt_ai），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "浏览器代填须同时报告拦哪些按钮与穿出条件",
+        body: `你是资深 Agent 浏览器操作教练。只根据用户边界写门禁，不要编造已不会误点发送已门禁。
+
+现在是不是约只拦向外走的最后按钮：{{whether_about_final_button}}
+是不是约连 browser_batch、JS 点击与 Enter 也看：{{whether_about_batch_js_enter}}
+是不是约例外必须与屏幕原文完全一致：{{whether_about_exact_exception}}
+
+输出 Markdown：
+1. 为什么「CLAUDE.md 写了发送由人来按」不能写成已拦住已门禁
+2. 应怎样同时记下拦哪些按钮、退出码样本、说明词穿出
+3. 只有一次 7 例／4 例 exit 2 账本时，应怎样单独记账，而不是写成下一站点也必然同分布
+4. 人必须完成的清单（例外规则核对、导流链）
+禁止声称「同样装上说明词钩就等于下一次也总会拦住发送」；禁止把写了由人来按写成已门禁。`,
+      },
+      {
+        title: "七例里四次 exit 2 复盘",
+        body: `报告上可以写 2026-11-05 的 7 例中 4 例 exit 2、JS 点击与 Enter 也会停；但这是一次向脚本灌假输入的个人实测。请写复盘提纲。
+
+现象：{{seven_cases_four_exit2}}
+
+输出：
+1. 更像最后按钮真被拦住，还是只对老实的说明词有效、改写后仍会穿出
+2. 最小复验顺序（先测左键→再测 JS 与 Enter→再试改写说明→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 CLAUDE.md 就等于说明词穿出也不会发生」，或「4／7 就等于任意站点同分布」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/takamatt_ai/items/2ff4079dceef86e54de9",
+      label: "qiita.com · Claude Code のブラウザ操作で「送信・公開」ボタンだけを PreToolUse フックで止める(言い換えとJSクリックの抜け道つき)",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "792",
+    slug: "akaringo-adb-85h-35mb",
+    title: "akaringo1109：用 ADB 把手机交给 Claude Code 过夜排查——约 8.5 小时；logcat 约每小时 35MB；13 项设置；事后指向双 Wi-Fi 分流",
+    summary: "个人（akaringo1109｜文末披露所属 Trellis）；披露 2026 年 10 月在 Android 15 真机与 Windows 上，用 ADB 让 Claude Code 过夜看间歇网络不稳：约 15 秒一轮探测，Monitor 默认最长 30 分钟、本次约每 30 分钟重挂；看了一夜约 8.5 小时，logcat 约每小时增 35MB。13 项设置与约 4000 行瞬时日志里，作者记录模型把原因说成双 Wi-Fi 分流、把握为中到高；关掉后分流未再出现。不代你同样挂上一夜 ADB，就等于下一台手机也能定位到同一原因。",
+    description: "面向已经把「能把 ADB 交给模型打命令」当成真机排障已门禁、却还没分开「过夜时长、日志增量与结论把握」的人：把「Agent 合做真机排障须同时报观察窗口、日志量与结论把握」写成门禁，区别于 Remote Control 过夜编排，以及官方 Android CLI 插件介绍。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/akaringo1109/articles/claude-code-adb-android-debug",
+    sourceLabel: "zenn.dev·akaringo1109 实践帖",
+    upvotes: 683,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "ADB",
+      "Android",
+      "Monitor",
+      "logcat",
+    ],
+    howItWorks: [
+      "粘贴真机排障边界（是不是约只用 ADB 读设置与日志、是不是约禁止抹数据等不可逆操作、是不是约 overnight 观察窗口与日志落在电脑上）以及「绝不可把能让模型打 adb 写成原因已定位已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下约 8.5 小时、约每小时 35MB、13 项设置、约 4000 行瞬时日志，以及「双 Wi-Fi、把握中到高」只是模型看法",
+      "人工保留 Android 15／Windows PowerShell 5.1、约 15 秒探测、Monitor 约 30 分钟重挂、关掉后未再出现来自哪一次自述；Agent 不代你保证「同样挂上一夜 ADB 就等于下一台手机也能定位到同一原因」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T09:00:00.000+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T00:00:00Z、Asia/Shanghai 2026-11-10 08:00:00；bodyUpdatedAt 2026-11-10T10:02:58.083+09:00 → 同时刻为 UTC 2026-11-10T01:02:58Z、Asia/Shanghai 2026-11-10 09:02:58；取 published；GET 200，UA MiraBot/1.0）：akaringo1109 在《スマホを ADB でつなぐと、Claude Code が不具合まで調べてくれる》写过夜真机排障。文内硬链 https://trellis-grow.com/?utm_source=zenn&utm_medium=referral&utm_campaign=claude-code-adb-android-debug&utm_content=card 为可达公司站点导流（GET 200）；同域 https://trellis-grow.com 亦 200。源页另有 Claude Code／Android／Microsoft 文档对照链，均 GET 200，不是作者产品导流。主线是 ADB 过夜观察，不是官文简报。",
+      "与 Remote Control 过夜编排、官方 Android CLI 插件介绍不同：本条不是把远程遥控或插件安装当主线，而是真机间歇故障的观察窗口、日志增量与结论把握门禁",
+    ],
+    approach: `akaringo1109 在《スマホを ADB でつなぐと、Claude Code が不具合まで調べてくれる》（页内 2026-11-10）写明：2026 年 10 月在 Android 15 手机和 Windows（PowerShell 5.1 与 Git Bash）上，用 Android SDK Platform Tools 的 adb，让 Claude Code 查间歇出现、约每 20～30 分钟来一次又消失的网络不稳——这种瞬间不适合人守着等。作者先让模型用 settings 读 13 项、list global，再抓 dnsresolver、IPv6 与路由规则，并用 adb logcat -d -v threadtime -t 4000 留下约 4000 行瞬时日志；持续 logcat 则写到电脑，因为约每小时仍增 35MB。过夜前约 15 秒一轮从手机壳测连通，家里电脑同步测以区分是不是整网问题；异变才用 Monitor 送一行（官方说监视默认 5 分钟、最长 30 分钟，本次 Claude Code 约每 30 分钟自己重挂；tail -F 不会补上重挂空隙里的行，要靠每小时汇总回看）。看了一夜约 8.5 小时。日志里出现 Kindle、Instagram、YouTube 等把部分流量转到第二只 Wi-Fi（wlan1）的规则；模型把原因说成终端自带的双 Wi-Fi，把握为中到高。关掉该功能后，分流没有再出现。作者还写：PowerShell 5.1 的 > 不会按字节写截图，官方 adb exec-out screencap -p > screen.png 会把图弄坏，要到 PowerShell 7.4 才按字节重定向，所以改成先存在手机再 adb pull。文末说明 Trellis 是福冈做网站和业务自动化的公司，本稿同时发在 Zenn 与公司站博客。
+
+关键门禁不是「能把 adb 交给模型打命令」，而是同时记下观察窗口、日志增量，并把「双 Wi-Fi、把握中到高」留在模型看法而不是已证实结论。
+
+本场景据此输出「Agent 合做真机排障须同时报告 8.5 小时／35MB 与结论把握，不能只报能打 adb」提纲。禁止把 8.5 小时／双 Wi-Fi 写成任意机型同分布，或把挂上一夜写成原因已定位已门禁。`,
+    outcomes: [
+      "源披露作者过夜观察约 8.5 小时，logcat 约每小时增 35MB，读了 13 项设置与约 4000 行瞬时日志；模型把原因说成双 Wi-Fi 分流、把握为中到高，关掉后分流未再出现。属作者这一次个人真机观察，不可外推为你同样挂上一夜 ADB 就等于下一台手机也能定位到同一原因，或能让模型打 adb 就等于原因已定位已门禁。",
+      "能把「可写成同时记下观察窗口、日志增量、结论把握」与「必须人完成的不可逆操作禁令／导流链」拆开。",
+      "为把「能打 adb」当成原因已定位已门禁、以及只看模型结论却不记把握与关掉后是否再发提供提问清单。",
+    ],
+    caveats: [
+      "约8.5小时／约每小时35MB／13项设置／约4000行／约15秒探测／Monitor 约30分钟重挂／把握中到高均为作者自述；双 Wi-Fi 是模型看法而非独立复现实验；关掉后未再出现也不等于已在别的机型证实；PowerShell 5.1 重定向坑仅针对截图保存。",
+      "文内硬链 https://trellis-grow.com/?utm_source=zenn&utm_medium=referral&utm_campaign=claude-code-adb-android-debug&utm_content=card 为可达公司站点导流（GET 200，UA MiraBot/1.0）。同域 https://trellis-grow.com GET 200。源页 Claude Code／Android／Microsoft 文档为厂商对照，均 GET 200，不列入作者产品导流。未见招聘硬导流。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / akaringo1109），不是 Google 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "真机排障须同时报告观察窗口与结论把握",
+        body: `你是资深 Agent 真机排障教练。只根据用户边界写门禁，不要编造原因已定位已门禁。
+
+现在是不是约只用 ADB 读设置与日志：{{whether_about_adb_readonly}}
+是不是约禁止抹数据等不可逆操作：{{whether_about_no_irreversible}}
+是不是约 overnight 观察窗口与日志落在电脑上：{{whether_about_overnight_window}}
+
+输出 Markdown：
+1. 为什么「能让模型打 adb」不能写成原因已定位已门禁
+2. 应怎样同时记下观察窗口、日志增量、结论把握
+3. 只有一次约 8.5 小时／35MB 账本时，应怎样单独记账，而不是写成下一机型也必然同分布
+4. 人必须完成的清单（不可逆操作禁令、导流链）
+禁止声称「同样挂上一夜 ADB 就等于下一台手机也总会定位到同一原因」；禁止把能打 adb 写成已门禁。`,
+      },
+      {
+        title: "八点五小时与双 Wi-Fi 看法复盘",
+        body: `报告上可以写过夜约 8.5 小时、logcat 约每小时 35MB、模型把原因说成双 Wi-Fi 且把握中到高；但这是一次个人真机观察。请写复盘提纲。
+
+现象：{{eight_point_five_dual_wifi}}
+
+输出：
+1. 更像日志里已经有分流规则，还是只把模型看法写成了已证实原因
+2. 最小复验顺序（先记下观察窗口与日志增量→再把结论标成看法或已证实→再看关掉后是否再发→再决定能不能对外说已定位）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上官方 Android CLI 插件就等于原因也不会再误判」，或「关掉后未再出现就等于任意机型同分布」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/akaringo1109/articles/claude-code-adb-android-debug",
+      label: "zenn.dev · スマホを ADB でつなぐと、Claude Code が不具合まで調べてくれる",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
