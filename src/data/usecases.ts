@@ -61624,6 +61624,317 @@ OpenCode v1.19.5 装在用户目录，配置里把本地 Strata 的 OpenAI 兼�
       date: "2026-10-26",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "838",
+    slug: "usuginu-804px-636-0warn",
+    title: "usuginu：用 Claude Code 把设计要点画成一张信息图，再放到无头 Chrome 里按实寸测量。原先按「半角=字号的 0.62 倍」去估宽度，英文标题估成 804px，实际画出只有 636px，差了两成以上；半角宽度从 0.23 倍（'）到 1.06 倍（W）不等。改成画完再测之后，一条约 1 秒。CI 上 Noto Sans CJK 行高约 1.45 em，13px 的字约 19px，行距 17px 时曾把并未重叠的两行判成重叠；改成纵向按基线上下 0.85 em／0.18 em 之后，字体不同也不再误判。零件默认间距图要求警告和问题都是 0 件",
+    summary: "个人（usuginu／うすぎぬ）；披露自己用 Claude Code 画信息图时，AI 写出的 SVG 并不会自己检查看起来如何，文字溢出、重叠、标题只写「原因」「概要」、各图配色含义不一致都很常见。SVG 没有自动换行，只能先估字宽。最初用一律的「半角是字号的 0.62 倍」，英文标题估成 804px，实际画出是 636px，差了两成以上；因为半角宽度会按字符从 0.23 倍（撇号）变到 1.06 倍（W），一律的系数打不准。于是改成画完后在无头 Chrome 里按实寸测量，结果用 --dump-dom 取出，一条约 1 秒弱，Claude 会改到检查行不再出现为止，并再打开 PNG 用眼睛看。曾经用 macOS 的 sips 转 PNG，字重只分两档（500 以下细字、600 以上极粗），居中文字还会往右偏，后来改用浏览器转换。GitHub Actions 的 Ubuntu 用 Noto Sans CJK 测量时，本机 Mac 能过、CI 却把折成两行的标题判成重叠：getBBox() 的高度是字体行高而不是字面高度，Noto 行高约 1.45 em，13px 的字约 19px，行距却是 17px，框叠了字其实没叠。现在横向用实测量，纵向按基线向上 0.85 em、向下 0.18 em。做了检查和回归测试后，零件默认间距还曾窄过自己定的「箭头至少 28px」，于是把「全部件按默认间距画出的图，警告和问题都是 0 件」写成每次要过的测试。零件集是单文件、只用标准库，文件已超过 1,000 行。作者写明：留白是否偏、图整体是否平衡，检查看不出来，还要看 PNG；CI 只在 Ubuntu 上跑，Windows 还没验证；技能把图改善了多少，也还没有做成评估。日文折行没有做形态素分析，只对幻灯片上的短句有把握。",
+    description: "面向已经把「AI 画出的 SVG 看起来差不多」或「按固定系数估过字宽」当成图可以交付、却还没把「估算宽度、浏览器实寸、以及不同字体下的行高判定」分开记的人：把「先估宽度不能写成已经检查过实寸，本机通过也不能写成 CI 上不会把行框判成重叠」写成门禁，区别于只看一次导出图的实践。",
+    categories: [
+      "content",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/usuginu/articles/15e2b8fb4c2751",
+    sourceLabel: "zenn.dev·usuginu 实践帖",
+    upvotes: 729,
+    trending: false,
+    tags: [
+      "claude-code",
+      "svg",
+      "infographic",
+      "skills",
+      "ci",
+    ],
+    howItWorks: [
+      "粘贴 Agent 信息图实寸对照的边界（是不是约半角按 0.62 倍去估时英文标题估成 804px、实际画出 636px，是不是约半角宽度会从 0.23 倍变到 1.06 倍，是不是约一条约 1 秒的浏览器实寸，是不是约 CI 上 Noto 行高把未重叠的两行判成重叠，是不是约默认间距图要求警告和问题都是 0 件）以及「绝不可把一次本机出图写成已经在实寸和 CI 字体下检查过」纪律",
+      "Agent 按实践帖输出：应怎样同时记下估算宽度、浏览器实寸、CI 字体行高，以及技能效果评估和 Windows 验证都还没有做",
+      "人工保留这组测量条件与数字；Agent 不代你保证「同样看到 804px 对 636px，就等于已经挡住所有溢出，或默认间距 0 件已经等于技能把图改善了多少，或 Windows 上也会得到同一组对错」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T19:28:16.396+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T10:28:16Z、Asia/Shanghai 2026-11-06 18:28:16；bodyUpdatedAt 2026-11-06T20:51:34.673+09:00（晚于发布）；取 published；GET 200（UA MiraBot/1.0））：usuginu（うすぎぬ）在《Claude Code ですばやくきれいなインフォグラフィックを作る》写估宽 804px 对实画 636px，并改成浏览器实寸。可达导流：https://github.com/usuginus/svg-infographic GET 200（正文产品仓）；https://github.com/usuginus GET 200；https://x.com/usuginus GET 200。配图 6 张均 GET 200。作者卡 website 为空。",
+      "与近批本地渲染或技能目录对照不同：本条不是把图交给图像生成模型，而是 SVG 由代码写出后再用无头浏览器按实寸测量。技能效果评估和 Windows 验证作者写明还没有做，不能补写成已经测过。",
+    ],
+    approach: `usuginu（うすぎぬ）在《Claude Code ですばやくきれいなインフォグラフィックを作る》（页内 publishedAt 2026-11-06，更新晚于发布）写明：AI 把代码、设计和文档写得更快之后，自己最慢的反而变成阅读和理解。他习惯先把要点画成一张信息图再读正文，并且做成图片，好在 Slack、Notion、PR 和幻灯片里看起来一样。手头逐渐长出来的这套 Claude Code 技能已经公开，会把画出的图放到浏览器里按实寸测量，发现文字溢出或重叠就改后再生成图片。本文里的图都是这套技能画的。
+
+他写明，AI 写出 SVG 并不等于已经检查过看起来如何。常见问题包括：文字超出卡片宽度、箭头或标签压到别的字、标题只写「原因」「概要」这样的话题名、各图里橙色到底表示问题还是强调也不一致。SVG 没有自动换行，只能先估字宽。最初用一律的「半角是字号的 0.62 倍」，英文标题估成 804px，实际画出只有 636px，差了两成以上。半角宽度会按字符从 0.23 倍（'）变到 1.06 倍（W），一律的系数打不准。他因此改成：先画，再在无头 Chrome 里打开，用页面里的 JavaScript 量各元素的大小，结果用 --dump-dom 取出，一条约 1 秒弱。检查会看溢出、字是否跨出框、两段字是否重叠、线或箭头是否压字或穿过不该穿过的箱子、填充是否盖住标签、以及字是否在图的边缘被切掉。零件在 SVG 上打了 data-part 一类标记，检查靠这些标记区分箱子、箭头和线。Claude 会改到检查行不再出现为止，然后再打开 PNG 用眼睛看。
+
+日文折行最初允许在平假名后面任意断开，于是出现过「割り｜当てられ」「インフォグラ｜フィック」。现在的顺序是：先看句读点后面（而且只有当前行已经填到七成以上才折，免得短行变多），再看助词后面，再看平假名转到汉字或片假名的位置；片假名词和英数字中间不断，行首不放句读点、引号或助词，括号结束后的助词留在同一行。作者写明没有做形态素分析，只对幻灯片上的短句有把握。转换 PNG 时，他一度用 macOS 的 sips，字重只分两档（500 以下细字、600 以上极粗），居中文字还会往右偏，后来改用已经装在机器上的 Chrome，不再新装依赖。零件集写成单独的 Python 文件、只用标准库，是为了少引入外部包；代价是文件已经超过 1,000 行。
+
+GitHub Actions 的 Ubuntu 用 Noto Sans CJK 测量时，本机 Mac 能过，CI 却把折成两行的标题判成重叠。原因是用 getBBox() 的高度当字的纵向范围，而这个高度是字体行高：Noto 行高约 1.45 em，13px 的字约 19px，两行间距却是 17px，框叠了、字其实没叠。现在横向用实测量，纵向按基线向上 0.85 em、向下 0.18 em，字体不同也不再这样误判。做成检查和回归测试之后，全部件按默认值排出来的图，还曾因为默认间距太窄，撞上自己定的「箭头至少 28px」。于是测试改成：全部件按默认间距画出的图，警告和问题都要是 0 件。作者写明：留白是否偏、图整体是否平衡，检查看不出来，还要看 PNG；CI 只在 Ubuntu 上跑，Windows 还没验证；技能把图改善了多少，也还没有做成评估。这套机制是「Claude 画完后、交出去之前先检查一次」，不是完全自动生成终稿。`,
+    outcomes: [
+      "源披露作者用 Claude Code 把设计要点画成一张信息图，并放到无头 Chrome 里按实寸测量：原先按「半角=字号的 0.62 倍」去估时，英文标题估成 804px，实际画出只有 636px；改成画完再测之后，一条约 1 秒。CI 上 Noto Sans CJK 行高约 1.45 em，13px 的字约 19px，行距 17px 时曾把并未重叠的两行判成重叠；改成纵向按基线上下 0.85 em／0.18 em 之后，字体不同也不再误判。零件默认间距图要求警告和问题都是 0 件。这是这一套技能、这一组字体和这一次测量上的记录，不可外推成其他字体、其他环境或其他图也会得到同一组对错，也不能把 804px 对 636px 写成已经挡住所有溢出，或把默认间距 0 件写成技能效果已经量化。",
+      "能把「可写成按估算宽度、浏览器实寸、以及 CI 字体行高分开记账，并且把尚未做的 Windows 验证和效果评估留在未核范围」与「必须人完成的题目与导流链」拆开。",
+      "为把「本机已经出过一张图」或「按固定系数估过字宽」当成可以交付，以及把一次 CI 全绿写成所有字体下都不会误判，提供提问清单。",
+    ],
+    caveats: [
+      "804px 对 636px、两成以上、0.23 倍到 1.06 倍、一律 0.62 倍、约 1 秒、约 1.45 em／约 19px／17px、上下 0.85 em／0.18 em、箭头至少 28px、警告和问题 0 件、文件超过 1,000 行，均为作者自述。804px 对 636px 只接在「英文标题、用一律 0.62 倍去估」这一次对照上，不能写成所有标题都会差两成。约 1 秒只接在这一次 --dump-dom 实寸检查上。CI 误判只接在 Ubuntu、Noto Sans CJK、用 getBBox() 高度当字高这一组。0 件只接在「全部件按默认间距画出的图」这一项测试，不能写成技能已经量化了「图变好了多少」。作者写明：留白和整体平衡还要看 PNG；Windows 还没验证；日文折行没有做形态素分析。文中「見よがし」是作者自己说要在文里多用这些图，不是「先发送」。",
+      "可达导流：https://github.com/usuginus/svg-infographic GET 200（正文产品仓）；https://github.com/usuginus GET 200；https://x.com/usuginus GET 200。作者卡 website 为空。配图 6 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/312f5598f8b2-20261106.png 、https://static.zenn.studio/user-upload/d505af7068ec-20261106.png 、https://static.zenn.studio/user-upload/3c561716dfab-20261106.png 、https://static.zenn.studio/user-upload/7acb3a7d3462-20261106.png 、https://static.zenn.studio/user-upload/df234040dcbc-20261106.png 、https://static.zenn.studio/user-upload/5a6f5d5045b1-20261106.png 。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「估过字宽」和「已经按实寸检查」分开问",
+        body: "请对照这篇实践，不要把「用固定系数估过字宽」写成「已经检查过实寸」。请分别写清：（1）估算时用的系数、估出的宽度和实际画出的宽度；（2）实寸是在哪一种浏览器、哪一种字体下量的，一次大约要多久；（3）本机通过但 CI 失败时，失败的是字重叠还是行框重叠，行高是怎么取的。没有测过的环境（例如 Windows）和没有做成的评估，请标明未核，不要补写成已经通过。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/usuginu/articles/15e2b8fb4c2751",
+      label: "zenn.dev·usuginu《Claude Code ですばやくきれいなインフォグラフィックを作る》",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "839",
+    slug: "pico-97pct-950-350go",
+    title: "petittomato／PicoLab：OpenCode Go 月上限用到 97% 时，用会话日志把额度重算了一遍，跟管理后台下载的 1,000 条使用日志在金额上精确到 1 美分。看起来最便宜的 GPT-6 Luna（标价输入 $0.10）同一套开发会用掉 DeepSeek V4.1 Flash 的 4～5 倍上限，因为模型「月上限」其实是整体额度的权重，不是各自独立的额度。按（1）里一次复习就能满分的模型来算，MiMo-V2.6-Flash（low）约用 0.1%、约可排 950 次、35 分钟；DeepSeek（max）约 0.3%、约 350 次、23 分钟。作者写明这些次数是用额度除出来的，不是真的跑了 950 次",
+    summary: "个人（petittomato／PicoLab）；披露自己在连载第 3 篇里，把「低价模型标价越便宜，Go 的月上限就用得越少」这件事推翻了。题目仍是家里的电视操作命令。评估做到一半，当月上限已经用到 97%，于是先查 Go 怎么计数。官方说明是：上限是全体共用的一份；模型旁边写的月上限 $15～60，只是「这次花费 ÷ 该模型月上限」要记成整体额度的百分之几。他用会话日志把此前用量重算，跟管理后台下载的 1,000 条使用日志在金额上精确到 1 美分。Luna 输入 $0.10 ÷ $15 约 0.67%，DeepSeek $0.15 ÷ $60 约 0.25%，只看输入就约 2.7 倍。真正开发时还要算缓存读取：他没有用各模型自己开发时的花费，而是把 Opus 在 Claude Code 上做同一题的 2 次 token 数当成共同用量，再套各模型单价。那 2 次里 Claude Code 调了 21～23 次，平均一次送 6 万～8 万 token，合计约 130 万～170 万，其中 97～98% 是缓存读写。套价之后，Luna 和 DeepSeek 一次大约都是 $0.04 左右，但一次占用的月上限是 Luna 0.27～0.30%、DeepSeek 0.06～0.07%，也就是 4～5 倍。9 月 23 日到 10 月 11 日的 97% 里，平时作业的 Kimi K3（111 次、$4.54、30.3%）加上 Haiku 5.5 和 Luna，三个 $15 权重的模型就超过一半；另有约 8% 出处没能核对。按（1）里一次复习就能满分的模型来算，MiMo（low）满分约用 0.1%、约可排 950 次、35 分钟；DeepSeek（max）约 0.3%、约 350 次、23 分钟；Haiku 5.5 最快 13 分钟，但一次 4.9%，一个月大约只能排约 20 次，5 小时上限（月的 20%）大约 4 次就会停。作者写明：约 950 次和约 350 次是用额度除出来的，不是真跑了这么多次；一次开发的金额也不是各模型自己开发时记下的花费。单价取自 2026 年 10 月 11 日的 Go 价目。",
+    description: "面向已经把「模型选择屏上输入单价更低」当成「Go 的月上限用得更少」、却还没把「价目单价、模型月上限权重、以及用共同 token 量套出来的金额」分开记的人：把「Luna 标价更低不能写成一次开发也更省额度，约 950 次不是实测次数」写成门禁，区别于只看一张单价表的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/petittomato/articles/ai-model-cost-performance-3",
+    sourceLabel: "zenn.dev·petittomato 实践帖",
+    upvotes: 730,
+    trending: false,
+    tags: [
+      "opencode-go",
+      "cost",
+      "deepseek",
+      "quota",
+      "cache",
+    ],
+    howItWorks: [
+      "粘贴 Agent 额度权重对照的边界（是不是约日志重算与 1,000 条下载日志精确到 1 美分，是不是约 97% 里 $15 权重的三个模型就超过一半，是不是约 Luna 与 DeepSeek 一次都约 $0.04 但占用上限差 4～5 倍，是不是约 950 次／350 次是用额度除出来的而不是实测次数，是不是约一次开发的金额是用 Opus 的 2 次 token 去套价）以及「绝不可把标价更低写成占用上限也更少」纪律",
+      "Agent 按实践帖输出：应怎样同时记下价目单价、模型月上限权重、共同 token 量套价，以及哪些次数只是除法结果",
+      "人工保留这组日志窗与价目日期；Agent 不代你保证「同样看到 Luna 标价更低，就等于一次开发也更省，或其他月份、其他题目也会得到约 950 次对约 350 次」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-16T23:50:50.300+09:00 → 2026-10-16，同时刻为 UTC 2026-10-16T14:50:50Z、Asia/Shanghai 2026-10-16 22:50:50；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：petittomato（PicoLab）在《開発に使うAIモデルのコストと性能の最適化に挑戦（3）》写 97% 上限与 Luna 对 DeepSeek 的 4～5 倍权重。无作者产品导流：作者卡 website／GitHub／X 为空，正文无作者产品、站点或仓链。连载前篇与文内另文、Go 说明及配图均 GET 200，完整 URL 已写入 caveats。OpenCode 不在枚举里，不硬凑；正文实测到的 Claude Code／DeepSeek／Kimi 记入 platforms。",
+      "与近批费用核对或本地 tokens/s 不同：本条不是把账单再对一次，而是 Go 的「模型月上限」其实是整体额度的权重，标价更低的模型可能一次占用更多上限。约 950 次和约 350 次不要写成实测跑次。",
+    ],
+    approach: `petittomato（PicoLab）在《開発に使うAIモデルのコストと性能の最適化に挑戦（3）：OpenCode Goの月の上限をほぼ使い切ったので、内訳を調べて選び方を探った話》（页内 publishedAt 2026-10-16）写明：这组连载想用尽量便宜的办法，做到和 Claude Opus 一样的结果，题目是家里的电视操作命令。（1）里，把开发交给低价模型、再把测试结果给它看一次再改，是最便宜摸到满分的做法；（2）里，先让 Opus 写设计书，并没有因此更便宜。低价模型是从 OpenCode Go 用的，月费 $10 固定，差在同一笔 $10 能让他交多少次开发。评估做到一半，当月上限已经用到 97%，他才回头查计数方法。
+
+omp 的选模型画面上排着每百万 token 的输入和输出单价，例如 DeepSeek V4.1 Flash 是 $0.15／0.6，Kimi K3 是 $3／15。他本来以为「价目上越便宜，Go 的上限就用得越少」；去掉免费模型后，画面上最便宜的是 GPT-6 Luna（$0.10／0.5）。但官方说明是：5 小时、1 周、1 个月的上限都是全体共用的一份；价目上每个模型的「月上限」$15～60，只是权重——每次调用先算「这次花费 ÷ 该模型月上限」，再累加，才是月上限用掉的比例。1 周上限按月的 50%、5 小时上限按 20%，算法相同。上限走到 97% 的时候，他用此前会话日志把用量重算了一遍，得出的金额跟管理后台下载的使用日志（1,000 条）精确到 1 美分。同样的 token 数，记到月上限上的比例因模型而变：Luna 的输入 $0.10 ÷ $15 约 0.67%，DeepSeek $0.15 ÷ $60 约 0.25%，大约 2.7 倍；输出大约 3.3 倍。只看单价会把顺序看反。
+
+真正做开发时，他还把缓存读取算进去。各模型实际用掉的 token 数并不一样，所以他没有用「各模型自己开发时记下的花费」，而是把 Opus 在 Claude Code 上做同一题的 2 次 token 数当成共同用量，再套 Go 各模型的单价。那 2 次里，Claude Code 调了 21～23 次，平均一次送 6 万～8 万 token，合计约 130 万～170 万，其中 97～98% 是把已经送过的上下文再从缓存读写。单价取自 2026 年 10 月 11 日的 Go 文档价目。套价之后，Luna 和 DeepSeek 一次大约都是 $0.04 左右，但一次占用的月上限是 Luna 0.27～0.30%、DeepSeek 0.06～0.07%，也就是 4～5 倍；输入输出单价上大约 3 倍的差距，在缓存为主的作业里被拉得更开。Luna 这一次里，缓存读取大约占金额的三分之一；对话越长，这个比例还会升高。Luna 在单次输入超过 27.2 万 token 时单价大约再翻倍，Haiku 5.5 则是超过 10 万 token 后为 5 倍。
+
+97% 的分项也按同一算法，时间窗是 9 月 23 日到 10 月 11 日。「平时作业」是评估之外用 omp 的部分。平时作业里，Kimi K3 只是听说能用、出于好奇试了 111 次，就记了 $4.54、30.3%，作者写自己没想到会占这么多、有些后悔。Haiku 5.5 的评估调用 189 次、$1.98、13.2%；Luna 把平时和评估两条加起来约 10.7%。这三个 $15 权重的模型合在一起，已经超过月上限的一半。另有约 8% 出处没能核对。同样花大约 $2.0，Kimi K2.7 Code（$60 权重）只占 3.4%，Haiku 5.5 却占 13.2%。按调用次数看差得更大：评估里 DeepSeek 调了 431 次只占 1.3%，Kimi K3 111 次却占 30.3%。
+
+再拿（1）里「一次复习就能满分（37 件全过）」的模型来比满分所需上限和完成时间。MiMo-V2.6-Flash（low）约用 0.1%、按这个比例去除大约可排 950 次、35 分钟；同一模型 high 会升到 0.7%、约 130 次、187 分钟。DeepSeek V4.1 Flash（max）约 0.3%、约 350 次、23 分钟，比 MiMo（low）快约 12 分钟，但（1）里除了 max 以外没有摸到满分。Haiku 5.5（high）最快 13 分钟，一次却用 4.9%，一个月大约只能排约 20 次；5 小时上限（月的 20%）大约 4 次就会停。Step 5 Preview 在 10 月 10 日评估时还从 Go 免费可用，但要 70～110 分钟。作者写明：约 950 次和约 350 次是用额度除出来的，前提仍是「准备好能核对对错的测试，并再给一次复习」。这次作业里，输出和缓存读取大约占金额的六到八成，几乎不送未缓存的输入，所以输入单价几乎不影响金额。OpenCode 不在枚举里，不硬凑。`,
+    outcomes: [
+      "源披露作者在 OpenCode Go 月上限用到 97% 时，用会话日志把额度重算了一遍，跟管理后台下载的 1,000 条使用日志在金额上精确到 1 美分；看起来最便宜的 Luna 在把 Opus 的 2 次 token 量套到各模型单价之后，一次开发占用的月上限是 DeepSeek 的 4～5 倍。按（1）里一次复习就能满分的模型来算，MiMo（low）约用 0.1%、约可排 950 次、35 分钟，DeepSeek（max）约 0.3%、约 350 次、23 分钟。这是这一段日志窗、2026-10-11 的价目、以及用 Opus 的 2 次 token 去套价的记录，不可外推成其他月份、其他题目或其他价目也会得到同一组比例，也不能把约 950 次或约 350 次写成实际跑过的次数，或把一次约 $0.04 写成各模型自己开发时记下的花费。",
+      "能把「可写成按价目单价、模型月上限权重、以及共同 token 量套价分开记账，并且把除法得到的可排次数和实测完成时间分开」与「必须人完成的题目与导流链」拆开。",
+      "为把「选择屏上输入单价更低」当成「月上限用得更少」，以及把约 950 次写成已经跑过的次数，提供提问清单。",
+    ],
+    caveats: [
+      "97%、1,000 条日志精确到 1 美分、4～5 倍、约 950 次／约 350 次、35 分钟／23 分钟／13 分钟／187 分钟／70～110 分钟、21～23 次调用、约 130 万～170 万 token、97～98% 缓存、Kimi K3 的 111 次／$4.54／30.3%、约 8% 未核对，均为作者自述。约 950 次和约 350 次只接在「满分一次占用的上限去除法」上，不是实测跑次。一次开发的 $0.025～0.027 等到约 $0.04，只接在「用 Opus 在 Claude Code 上 2 次的 token 量去套各模型单价」这一算法上，不能写成各模型自己开发时记下的花费。4～5 倍只接在这次缓存为主的电视命令作业、Luna 对 DeepSeek 的上限占用上。97% 的一半以上只接在 9 月 23 日到 10 月 11 日、Kimi K3＋Haiku 5.5＋Luna 这一组。Haiku 大约 4 次会碰到 5 小时上限，是用 4.9% 去除月的 20%，不是另外测过的 4 次事故。单价取自 2026-10-11 的 Go 价目。DeepSeek 在（1）里除了 max 以外没有满分，不能把 23 分钟写成所有深度都能满分。OpenCode／omp 不在枚举里，不硬凑。",
+      "无作者产品导流：作者卡 website／GitHub／X 为空，正文无作者产品、站点或仓链。连载前篇已核、不列入可达导流：https://zenn.dev/petittomato/articles/ai-model-cost-performance-1 GET 200；https://zenn.dev/petittomato/articles/ai-model-cost-performance-2 GET 200；文内另文 https://zenn.dev/petittomato/articles/openclaw-context-trace GET 200。一次资料：https://opencode.ai/docs/go/ 跟随至 https://opencode.ai/docs/console/go/ 后仍为 200。配图 3 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/610b410527255c683bdfd123.png?sha=5d8bf6f6b252240ac3c24369d5c645c491edf181 、https://static.zenn.studio/user-upload/deployed-images/d389c8d3026163e049f76862.png?sha=1fd36b9c02babacb5692164a1d0d47441d1e5aaa 、https://static.zenn.studio/user-upload/deployed-images/648d5377ee7418bcd297efde.png?sha=a9aad8bd64ea7166486cb2933e4a13c6c955a6f4 。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「标价更低」和「占用的月上限更少」分开问",
+        body: "请对照这篇实践，不要把「选择屏上的输入单价更低」写成「Go 的月上限也用得更少」。请分别写清：（1）日志重算是否与下载的使用日志核对过，核对到什么精度；（2）一次开发的金额是各模型自己记下的，还是用另一次共同 token 量去套价；（3）「每月可排多少次」是实测跑次，还是用一次占用的上限去除法。没有核对的出处比例，请标明未核，不要补写成已经分清。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/petittomato/articles/ai-model-cost-performance-3",
+      label: "zenn.dev·petittomato《開発に使うAIモデルのコストと性能の最適化に挑戦（3）》",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "840",
+    slug: "after6-4draft-postoff",
+    title: "after6labo：第一次用 microCMS MCP，用 Claude Code 先手录 2 件、再下写 4 件礼物介绍。11 月 4 日连通并写下第 1 件，11 月 8 日补 3 件后去掉 POST，同一条「请登记成下写」再次调用下写工具时被权限拒绝。作者写明：「请写成下写」和「这把钥匙只能写再下写」不是同一件事；这次实验里还没有加上客户端 deny。短的 4 条输入都进了打算要的栏，但不能外推成更长或更难判断的句子也会分对",
+    summary: "个人（after6labo／After 6 Labo）；披露自己第一次用 microCMS，从 Hobby 方案建了一个实验用服务，没有接到正在公开的站点。API 默认只给 GET，实验期间才给 gifts 单独加上 POST。Claude 桌面应用的自定义连接器只看到「连接有问题」，原因没有查清；curl 不带钥匙是 401，带 Bearer 能 200 取到服务器信息，之后改用连通了的 Claude Code，记录上的模型是 claude-sonnet-4-6，当时 MCP 还是测试版。先手录 2 件并确认能用 API 取出后，把「掌心大小好摆。功效不要说死。」这样连在一起的句子交给它「请把小品多肉摆件登记成下写」，没有指定字段；Claude Code 选了下写工具，把前半放进公开介绍、后半放进制作备忘。又改了语序和口气补 3 件，连同第一件共 4 件都进了打算要的栏；其中毛巾那一条两句都进了介绍，备忘是空字符串，模型没有另外编造备忘。作者写明：只确认了这 4 条短输入，不能说更长或自己也拿不准是否能公开的句子也会分对；分错的句子会直接进公开栏，下写之后仍要人看。MCP 里「公开创建」和「下写创建」是两个工具，但都要 POST；有 POST 的钥匙并不会因此变成只能写再下写。这 4 件是靠口头说「请写成下写」才选对工具的，客户端还没有拒绝公开创建等 6 个工具，文中的 deny 示例写明未在这次实验里启用。11 月 8 日实验结束后去掉 POST，再用同一句话去登记，模型再次调用下写工具，这次变成权限错误、登记不上。作者写明：这不是靠把话说得更软才劝停的，而是钥匙不再允许创建。Hobby 方案只有一把钥匙。本稿的结构和推敲用过 Claude 和 ChatGPT。",
+    description: "面向已经把「跟 AI 说了请写成下写」当成「这把钥匙不能公开发布」、却还没把「口头指示、客户端工具限制、以及 API 钥匙权限」分开记的人：把「4 件下写成功不能写成已经只能再下写，去掉 POST 之后的拒绝才是钥匙在拦」写成门禁，区别于只看一次登记成功的实践。",
+    categories: [
+      "efficiency",
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://qiita.com/after6labo/items/f01286c1a059d5c13c28",
+    sourceLabel: "qiita.com·after6labo 实践帖",
+    upvotes: 731,
+    trending: false,
+    tags: [
+      "mcp",
+      "microcms",
+      "permissions",
+      "claude-code",
+      "draft",
+    ],
+    howItWorks: [
+      "粘贴 Agent CMS 搬入权限对照的边界（是不是约桌面连接失败但 curl 带钥匙 200、Claude Code 连通，是不是约先手录 2 件再下写 4 件，是不是约 11 月 4 日第 1 件、11 月 8 日补 3 件后去掉 POST 才拒绝，是不是约文中 deny 示例并未在这次启用）以及「绝不可把口头说了请写成下写当成钥匙已经只能再下写」纪律",
+      "Agent 按实践帖输出：应怎样同时记下口头指示、客户端尚未启用的 deny、以及去掉 POST 之后的拒绝，并把 4 条短输入的分栏结果与未核的长文分开",
+      "人工保留这组日期、权限变更和 4 条输入；Agent 不代你保证「同样看到 4 件都进了打算要的栏，就等于更长的句子也会分对，或客户端 deny 已经生效」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD datePublished 2026-11-08T16:55:23.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T07:55:23Z、Asia/Shanghai 2026-11-08 15:55:23；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：after6labo（After 6 Labo）在《初めてのmicroCMS MCP、最後は「書けません」で成功した》写 4 件下写与去掉 POST 后的拒绝。可达导流：https://github.com/after6labo GET 200；https://x.com/after6labo GET 200。失败码、不列入可达：作者卡 website https://tools.after6labo.com/ 与正文产品页 https://gift.after6labo.com/collection/ 最后一次 GET 403。正文相对路径 assets/11_desktop_connector_error.png 无法解析为可 GET 的绝对 URL，已披露。配图 1 张（下写截图）GET 200。连载日历与后篇、一次资料均 GET 200。platforms 含 chatgpt，是因为作者写明本稿结构和推敲用过 ChatGPT；实验本身用的是 Claude Code。",
+      "与近批权限规则或 hook 守卫不同：本条不是本地文件的 deny 是否拦住 Write，而是 CMS 上「口头说请写成下写」与「钥匙能不能公开发布」不是同一层。文中 deny 示例写明未在这次实验里启用，不能补写成已经加上。",
+    ],
+    approach: `after6labo（After 6 Labo）在《初めてのmicroCMS MCP、最後は「書けません」で成功した》（JSON-LD datePublished 2026-11-08）写明：这是 microCMS Advent Calendar 2026 第 7 天的前篇，后篇谈本社展示。自己写文、最后由人往 CMS 里粘贴时，搬入口还在人这边。microCMS 是第一次用，从 Hobby 方案建了实验用服务，里面是列表型 API gifts，没有接到正在公开的站点。字段分成商品名、公开介绍和制作备忘。API 钥匙默认只给 GET，实验期间才给 gifts 单独加上 POST，没有一并打开更新或删除。
+
+microCMS MCP 当时还是测试版，认证是 HTTP Bearer。先试 Claude 桌面应用的自定义连接器，只看到「连接有问题」，原因没有查清。他把「看起来都像认证失败」的路径分开记：curl 不带钥匙是 401；带 Bearer 能 200 取到服务器信息；Claude Code 可以连通。之后只用连通了的 Claude Code。同名注册还在时，会先确认再 claude mcp remove 后重加；中途 Claude Code 自己的登录问题用 /login 解决，和交换 microCMS 钥匙不是一件事。命令里的服务 ID 和钥匙是占位，要换成自己的值。传进去的认证头会写进 Claude Code 的设置，终端设置和 shell 历史也会成为管钥匙的地方。
+
+连通后先请它列出 gifts，先前手录的 2 件连介绍和制作备忘一起以表返回。栏名写成「制作备忘（不公开）」并不会改变读取权限；钥匙能取到的范围，MCP 都会执行。第一件下写只给了商品名和「掌心大小好摆。功效不要说死。」这样连在一起的句子，没有指定字段。Claude Code 选了 microcms_create_content_draft，把前半放进介绍、后半放进备忘，管理画面里也能看到下写状态和分栏。作者写明这件比较好比。于是改了语序和口气又补 3 件（都是实验用句子）：迷你观叶的后半「进货处还没定」进了备忘；木笔筒开头的联盟费率进了备忘、后面的触感进了介绍；毛巾套装两句都进了介绍，备忘是空字符串，模型没有另外编造。连同第一件共 4 件都进了打算要的栏，用的都是同一个下写工具。作者写明：只确认了这 4 条短输入，不能说更长或自己也拿不准是否能公开的句子也会分对；分错会直接进公开栏，下写之后仍要人看。搬入可以交给它，验收并没有因此结束。
+
+MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API 若不标明 status=draft，创建出来就是公开的。所以有 POST 的钥匙并不会因此变成只能写再下写。这 4 件是靠口头说「请写成下写」才选对工具的，公开创建工具在 Claude Code 这边还没有被拒绝。作者把常用时打算加的 6 条 deny 写成示例，并写明这是未在这次实验里启用的设置例；它只限制已经套上这份规则的 Claude Code 去调这 6 个工具，同一把钥匙从别的客户端或 Bash 发出的 HTTP 请求，MCP 的拒绝规则拦不住。公开状态变更和预约属于管理 API，开头那张 GET／POST 表并不能说明全部权限。11 月 8 日实验结束后，他从 gifts 的单独权限里去掉 POST，再用同一句话去登记：模型再次调用下写工具，这次变成权限错误、登记不上。作者写明：这不是靠把话说得更软才劝停的，而是 microCMS 这边的权限在拒绝同一操作。Hobby 方案只有一把钥匙；常用若要养成写入路径，他打算改成按用途分开钥匙。验证条件写明：MCP 初次连通和第 1 件登记是 2026 年 11 月 4 日，补 3 件和去掉 POST 后的拒绝是 11 月 8 日，记录上的模型是 claude-sonnet-4-6。本稿的结构和推敲用过 Claude 和 ChatGPT。`,
+    outcomes: [
+      "源披露作者第一次用 microCMS MCP，用 Claude Code 先手录 2 件、再下写 4 件：11 月 4 日连通并写下第 1 件，11 月 8 日补 3 件后去掉 POST，同一条「请登记成下写」再次调用下写工具时被权限拒绝。短的 4 条输入都进了打算要的栏。这是这一次 Hobby 方案、这一把钥匙和这 4 条短输入上的记录，不可外推成更长或更难判断的句子也会分对，也不能把「口头说了请写成下写」写成钥匙已经只能再下写，或把文中的 deny 示例写成已经在这次实验里启用。",
+      "能把「可写成按口头指示、尚未启用的客户端 deny、以及去掉 POST 之后的拒绝分开记账」与「必须人完成的题目与导流链」拆开。",
+      "为把「4 件都登记成了下写」当成已经不会公开发布，以及把桌面连接失败写成账号或 MCP 本身不可用，提供提问清单。",
+    ],
+    caveats: [
+      "4 件下写、先手录 2 件、curl 401／200、11 月 4 日与 11 月 8 日、deny 示例未启用、Hobby 只有一把钥匙，均为作者自述。4 件都进打算要的栏，只接在这 4 条短输入上；毛巾那一条两句都进了介绍、备忘为空，不能写成 4 件都「介绍和备忘成对出现」。文中 6 条 deny 是未在这次实验里启用的设置例，不能写成已经拦住公开创建。去掉 POST 之后确认的是：同一下写工具的新建被拒绝，不是所有写入路径都已经测过。桌面应用的失败原因没有查清，不能写成 MCP 本身不可用。本稿结构和推敲用过 Claude 和 ChatGPT，实验本身是 Claude Code、记录上的模型是 claude-sonnet-4-6。文中 https://mcp.microcms.io/mcp/<サービスID>（与中文写法 <服务ID> 同一占位）是占位，未作为可达链去核。",
+      "可达导流：https://github.com/after6labo GET 200；https://x.com/after6labo GET 200。失败码、不列入可达导流：https://tools.after6labo.com/ 最后一次 GET 403（作者卡 website）；https://gift.after6labo.com/collection/ 最后一次 GET 403（正文产品页，作者写明实验未接到正在公开的站点）。正文相对路径 assets/11_desktop_connector_error.png（桌面连接失败截图）无法解析为可 GET 的绝对 URL，已披露，不列入可达。配图 1 张 GET 200（不列入产品导流）：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4512144/e2e71990-150f-4dce-9189-d983b05be638.png 。连载入口 https://qiita.com/advent-calendar/2026/microcms GET 200；后篇 https://qiita.com/after6labo/items/3c25f704ac4efffda129 GET 200（正文以标题加日历入口指向，完整 URL 已写出并 GET）。一次资料已核、不列入可达导流：https://document.microcms.io/mcp-server/microcms-mcp 、https://document.microcms.io/content-api/post-content 、https://document.microcms.io/content-api/x-microcms-api-key 、https://microcms.io/pricing 、https://code.claude.com/docs/en/permissions ，均按最后一次 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「说了请写成下写」和「钥匙只能再下写」分开问",
+        body: "请对照这篇实践，不要把「已经口头要求登记成下写」写成「这把钥匙不能公开发布」。请分别写清：（1）这次成功的 4 件，是靠口头指示选对了下写工具，还是钥匙本身不能公开创建；（2）客户端的 deny 是否已经启用，示例和实装不要混写；（3）去掉 POST 之后，再次调用同一工具时得到的是权限错误还是模型被说服不再写。只确认过的短输入条数请保持原样，不要外推到更长或更难判断的句子。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/after6labo/items/f01286c1a059d5c13c28",
+      label: "qiita.com·after6labo《初めてのmicroCMS MCP、最後は「書けません」で成功した》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "841",
+    slug: "hoshika-4game-pr-rev",
+    title: "星影（unsoluble_sugar）：给《星影》4 个已公开小游戏接上 Grok Bot 的 PR 审与合入后部署。Cursor Origin 的监听一次也没等到回调，于是先用 15 分钟轮询、再改成 Cloudflare Worker 收 GitHub Push 再调 Grok API。核对过一次：合入后 1 分钟以内部署例程开始跑。轮询后来降成每小时的保险；从未响过的合入监听例程先停着，免得以后若再响会把开发版部署跑两次。对还在写的 PR，Bot 回过一次「看起来还在写，这次先搁下」",
+    summary: "个人（星影／unsoluble_sugar）；披露自己给《星影》接上 Grok Bot 的 PR 审与合入后部署。正文写明已公开 4 个小游戏；配图说明里并列了洗濯物、傾けずに干せ、千人大縄、今日はZ軸が渋滞しています、滑り込み電車这些名字并写「4 个」，不能据此把正文的 4 改写成 5。仓库检查对象里还有 _template、kaku-hanger、oonawa、suberikomi、z-axis-traffic 等 id，和「已公开 4 个」不是同一组计数。npm run check 大约 10 分钟；通过时最后一行是 check: ok 加这些 id。正文里「失败 2 件／kaku-hanger: overflow」是检查失败时的输出写法示例，不是另行记下的事故次数。样例审的是《滑り込み電車》：没有阻断项、2 条非阻断、1 次提交、2 个文件、+3／-3。Cursor Origin 连接器会在 262,144 字节截断；sandbox 里对 Origin 的 git／HTTP 得到 401，于是改成快照后再用 SHA-1 核对 blob。Origin 监听一次也没等到回调，先用 15 分钟轮询补上合入后的开发版部署，再做成 Cloudflare Worker：约 15 分钟、2 个文件，收转发后再调 Grok API。核对过一次：合入后 1 分钟以内部署例程开始跑。轮询后来降成每小时的保险；从未响过的合入监听例程先停着，免得以后若再响会部署两次。对还在写的 PR，Bot 回过一次「看起来还在写，这次先搁下」。冒烟测试曾把「预构建 HTML、没有开发标记」误判成 FAIL，例外收窄后，200、noindex 和字节比对仍要通过。合入某个游戏的 PR 之后，开发版部署在 npm run check 上停住了；原因不是刚合入的那条 PR，而是另一个游戏的文字超出了安全区，直到担当 Bot 的修正合入才放行，作者写明这是正确行为。前一篇里写过 CI 次数大约是人的 10 倍、月初用尽 Actions 免费档，不能记成本篇新测到的数字。Cursor Origin 不在枚举里，不硬凑；正文实测到的是 Grok。",
+    description: "面向已经把「接上了合入后部署」当成「监听已经在回调」，或把检查输出示例里的「失败 2 件」当成记下的事故次数的人：把「监听一次也没等到回调，核对过一次约 1 分钟内开始跑，不能把前篇的 10 倍 CI 写成这篇文章新测到的数字」写成门禁，区别于只看一条样例审的实践。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "grok",
+    ],
+    sourceUrl: "https://zenn.dev/unsoluble_sugar/articles/grok-bot-pr-review-dev-deploy",
+    sourceLabel: "zenn.dev·unsoluble_sugar 实践帖",
+    upvotes: 732,
+    trending: false,
+    tags: [
+      "grok-bot",
+      "pr-review",
+      "cloudflare-worker",
+      "deploy",
+      "cursor-origin",
+    ],
+    howItWorks: [
+      "粘贴 Agent 审与部署分工对照的边界（是不是约 Origin 监听一次也没等到回调，是不是约核对过一次合入后 1 分钟以内开始跑，是不是约「失败 2 件」只是检查输出示例，是不是约对还在写的 PR 回过一次先搁下，是不是约前篇的 10 倍 CI 不能记成本篇新测）以及「绝不可把接上了合入后部署写成监听已经在回调」纪律",
+      "Agent 按实践帖输出：应怎样同时记下轮询、Push 转发、一次核对过的启动间隔，以及检查输出示例和样例审不要混成事故次数",
+      "人工保留这组仓库与一次核对；Agent 不代你保证「同样看到约 1 分钟内开始跑，就等于监听已经在回调，或其他仓库的检查输出也会是失败 2 件」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-27T12:13:27.616+09:00 → 2026-10-27，同时刻为 UTC 2026-10-27T03:13:27Z、Asia/Shanghai 2026-10-27 11:13:27；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：星影（unsoluble_sugar）在《Grok BotにPRレビューとマージ後デプロイをやってもらっている》写 4 个已公开小游戏的审与部署。可达导流：https://unsolublesugar.github.io/portfolio/ GET 200（作者卡 website）；https://hoshika-games.pages.dev/ GET 200（正文游戏站）；https://note.com/unsoluble_sugar/n/n8b8216883915 GET 200（正文 note）；https://github.com/unsolublesugar GET 200；https://x.com/unsoluble_sugar GET 200。文内 API https://api.cursor.com/v1/origin/keys GET 200，是正文硬链、不是作者产品，不列入产品导流。一次资料、前篇与配图 5 张均 GET 200。文中 https://<name>.<account>.workers.dev 是占位，未作为可达链去核。Cursor Origin 不在枚举里，不硬凑；platforms 只记 grok。",
+      "与近批钩子或合入例程不同：本条不是本地 hook 有没有拦住写入，而是 Origin 监听一次也没等到回调，合入后部署先靠轮询、再靠 Worker 收 Push。正文的「見送ります」是暂不审／先搁下，不要写成「先发送」。",
+    ],
+    approach: `星影（unsoluble_sugar）在《Grok BotにPRレビューとマージ後デプロイをやってもらっている》（页内 publishedAt 2026-10-27）写明：自己在做《星影》这个小游戏站点，本篇写怎样把 PR 审和合入后的部署交给 Grok Bot。正文写明已公开 4 个小游戏；文中另举过洗濯物、傾けずに干せ、千人大縄、今日はZ軸が渋滞しています、滑り込み電車这些名字，不能据此把正文写明的 4 改写成 5。仓库检查对象里还有 _template、kaku-hanger、oonawa、suberikomi、z-axis-traffic 等 id，和「已公开 4 个」不是同一组计数。
+
+审的路径是：有 PR 就跑检查，再把结果写成评论。npm run check 大约 10 分钟。正文里「失败 2 件／kaku-hanger: overflow」是检查输出的写法示例，不是另行记下、标了日期的事故次数。样例审贴的是《滑り込み電車》：没有阻断项、2 条非阻断、1 次提交、2 个文件、+3／-3。对还在写的 PR，Bot 回过一次「看起来还在写，这次先搁下」——这里的「見送ります」是暂不审、先搁下，不是先发送。Cursor Origin 连接器会在 262,144 字节截断；评论里也提到过 1 MiB 的可读上限。sandbox 里对 Origin 的 git／HTTP 得到 401，于是改成先做快照，再用 SHA-1 核对 blob。负载限制是 load 小于 4，进程用 nice -n 19，Node 是 22。作者还写过「一天会有好几十条 PR」，这是运转背景，不是本篇新测到的条数。
+
+合入后的部署本来指望 Cursor Origin 的监听。监听一次也没等到回调，于是先用 15 分钟轮询补上。后来做成 Cloudflare Worker：大约 15 分钟、2 个文件，收 GitHub Push 再调 Grok API。核对过一次：合入之后，1 分钟以内部署例程开始跑。轮询后来降成每小时的保险；从未响过的合入监听例程先停着，免得以后若再响会把开发版部署跑两次。冒烟测试曾把「预构建 HTML、没有开发标记」误判成 FAIL；例外收窄之后，200、noindex 和字节比对仍要通过。合入某个游戏的 PR 之后，开发版部署在 npm run check 上停住了；原因不是刚合入的那条 PR，而是另一个游戏的文字超出了安全区。担当 Bot 的修正 PR 合入之前，部署一直停着。作者写明这是正确行为，因为门户是按整站来构建和部署的。前一篇里写过 CI 次数大约是人的 10 倍、月初用尽 Actions 免费档，这是前篇的测量，不能记成这篇文章新测到的数字。Cursor Origin 不在枚举里，不硬凑；正文实测到的是 Grok。`,
+    outcomes: [
+      "源披露作者给《星影》4 个已公开小游戏接上 Grok Bot 的 PR 审与合入后部署：Origin 监听一次也没等到回调，于是先用 15 分钟轮询、再改成 Cloudflare Worker 收转发。核对过一次，合入后 1 分钟以内部署例程开始跑。这是这一组仓库、这一次核对和这一份检查输出示例上的记录，不可外推成监听已经在回调，也不能把检查输出示例里的「失败 2 件」写成记下的事故次数，或把前一篇的「CI 次数大约是人的 10 倍」写成这篇文章新测到的数字，或把「另一个游戏的文字超出安全区、挡住了开发版部署」写成检查输出示例里的那次 overflow。",
+      "能把「可写成按监听是否回调、轮询或 Push 转发、以及一次核对过的启动间隔分开记账，并把检查输出示例和样例审与事故次数分开」与「必须人完成的题目与导流链」拆开。",
+      "为把「接上了合入后部署」当成监听已经在回调，以及把「失敗 2 件」写成已经发生过的事故统计，提供提问清单。",
+    ],
+    caveats: [
+      "已公开 4 个、检查约 10 分钟、监听一次也没等到回调、核对过一次合入后 1 分钟以内开始跑、Worker 约 15 分钟／2 个文件、样例审没有阻断项／2 条非阻断／1 次提交／2 个文件／+3／-3、连接器在 262,144 字节截断、sandbox 对 Origin 401、对还在写的 PR 回过一次先搁下，均为作者自述。「失败 2 件／kaku-hanger: overflow」只接在检查失败时的输出写法示例上，不是标了日期的事故次数。挡住开发版部署的那一次，只接在「合入某个游戏的 PR 之后，npm run check 因另一个游戏的文字超出安全区而停下，直到担当 Bot 的修正合入才放行」这一记述上，不要和示例输出里的「失败 2 件」混成一组统计。前一篇的「CI 次数大约是人的 10 倍、月初用尽 Actions 免费档」不能记成本篇新测。「一天会有好几十条 PR」是运转背景，不是本篇计数。正文写明已公开 4 个小游戏；配图说明里并列了 5 个名字并写「4 个」，不要把 4 改成 5。「見送ります」译为暂不审／先搁下，不得写成「先发送」。从未响过的是合入监听例程，不要写成另有一条「第三条」部署例程。Cursor Origin 不在枚举里，不硬凑。",
+      "可达导流：https://unsolublesugar.github.io/portfolio/ GET 200（作者卡 website）；https://hoshika-games.pages.dev/ GET 200（正文游戏站）；https://note.com/unsoluble_sugar/n/n8b8216883915 GET 200（正文 note）；https://github.com/unsolublesugar GET 200；https://x.com/unsoluble_sugar GET 200。文内 API https://api.cursor.com/v1/origin/keys GET 200，是正文硬链、不是作者产品，不列入产品导流。一次资料已核、不列入可达导流：https://x.ai/news/introducing-grok-bot 、https://developers.cloudflare.com/pages/ 、https://developers.cloudflare.com/analytics/analytics-engine/ 、https://developers.cloudflare.com/workers/ 、https://developers.cloudflare.com/workers/wrangler/commands/ 、https://developers.cloudflare.com/workers/runtime-apis/web-crypto/ 、https://cursor.com/docs/api/origin#headers 、https://cursor.com/origin ，均按最后一次 GET 200。前篇 https://zenn.dev/unsoluble_sugar/articles/github-actions-e2e-free-tier GET 200。配图 5 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/5025ef896d49-20261027.png 、https://static.zenn.studio/user-upload/4f7a0c047454-20261027.png 、https://static.zenn.studio/user-upload/d9c9797db151-20261027.png 、https://static.zenn.studio/user-upload/dc2b14d97c58-20261027.png 、https://static.zenn.studio/user-upload/58613452f01e-20261027.png 。文中 https://<name>.<account>.workers.dev 是占位，未作为可达链去核。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「接上了合入后部署」和「监听已经在回调」分开问",
+        body: "请对照这篇实践，不要把「已经接上合入后的部署」写成「Origin 监听已经在回调」。请分别写清：（1）监听有没有等到过回调；（2）1 分钟以内开始跑，是核对过一次的观察，还是稳定承诺；（3）正文里的「失败 2 件」是检查失败时的输出示例，还是记下的事故次数。挡住开发版部署的那一次，是另一个游戏的文字超出安全区，不要和示例输出混写。前一篇的 CI 倍数不要写进这篇文章的新测量。对还在写的 PR，「見送ります」请写成暂不审或先搁下，不要写成先发送。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/unsoluble_sugar/articles/grok-bot-pr-review-dev-deploy",
+      label: "zenn.dev·unsoluble_sugar《Grok BotにPRレビューとマージ後デプロイをやってもらっている》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "842",
+    slug: "daydr-pong-pine-mango",
+    title: "daydreamer：10 月 11 日夜里碰到 Claude Code 的周上限，控制台登录后又看到 Credit 余额不足；10 月 12 日改用 OpenCode v2.0.27，带上 API 钥匙。haiku-5-5 回「pong」能通。用过之后，宣传积分少了，官方说明没有写第三方客户端也会扣。一次性仓库里做口令核对：只有 CLAUDE.md 写 PINEAPPLE 时读到 NONE，再加上 AGENTS.md 写 MANGO 时读到 MANGO。instructions 字段能接受 CLAUDE.md，但 V2 并不会去加载它",
+    summary: "个人（daydreamer）；披露自己在 10 月 11 日夜里碰到 Claude Code 的周上限，控制台登录后又看到 Credit 余额不足，10 月 12 日改用 OpenCode v2.0.27（当时环境是 macOS 27.0.1、Claude Code 2.1.296），用 API 钥匙继续。haiku-5-5 回「pong」能通。用过之后，宣传积分少了；官方说明没有写第三方客户端也会扣。作者在一次性仓库里做口令核对：只有 CLAUDE.md 写 PINEAPPLE 时读到 NONE，再加上 AGENTS.md 写 MANGO 时读到 MANGO。instructions 字段能接受 CLAUDE.md，但 V2 并不会去加载它。plan agent 曾提议改写 10 个 agent，并列过迁不过去的 hooks；作者写这篇粘贴提示之前，已经自己迁过一遍。`opencode debug agents | jq` 连着 5 次都被截断，后来改成先写到文件再看。自己的 code-review skill 和插件里同名的 skill ID 撞车；skill 工具输入里的 $ARGUMENTS 没有展开。作者写明没有使用 `opencode service set env`。OpenCode 不在枚举里，不硬凑；正文实测到的是 Claude。platform.claude.com 上的发行说明、订阅者积分和钥匙／费用页，HTTP 虽是 200，跟随后落到 claude.com/app-unavailable-in-region，按区域不可用披露，不列入可达。",
+    description: "面向已经把「换到带 API 钥匙的第三方客户端」当成「宣传积分不会动」，或把「instructions 能填 CLAUDE.md」当成「V2 会加载它」的人：把「只有 CLAUDE.md 时读到 NONE、加上 AGENTS.md 才读到 MANGO，官方说明没有写第三方客户端也会扣积分」写成门禁，区别于只看一次 pong 能通的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/daydreamer/articles/opencode-claude-max-api-credits",
+    sourceLabel: "zenn.dev·daydreamer 实践帖",
+    upvotes: 733,
+    trending: false,
+    tags: [
+      "opencode",
+      "claude-code",
+      "api-credits",
+      "agents-md",
+      "migration",
+    ],
+    howItWorks: [
+      "粘贴 Agent 客户端搬迁对照的边界（是不是约 10 月 11 日夜里碰到周上限、控制台又看到余额不足，是不是约 10 月 12 日 OpenCode v2.0.27 上 haiku-5-5 回 pong 能通，是不是约用过之后宣传积分少了，是不是约只有 CLAUDE.md 时读到 NONE、加上 AGENTS.md 才读到 MANGO，是不是约 debug agents 连着 5 次被截断）以及「绝不可把 instructions 能填 CLAUDE.md 写成 V2 会加载它」纪律",
+      "Agent 按实践帖输出：应怎样同时记下周上限、余额不足、pong 连通、宣传积分减少，以及口令核对和未使用的 service set env",
+      "人工保留这组日期与一次性仓库核对；Agent 不代你保证「同样看到 pong 能通，就等于宣传积分不会动，或其他机器上 CLAUDE.md 也会被 V2 加载」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-12T20:36:24.955+09:00 → 2026-10-12，同时刻为 UTC 2026-10-12T11:36:24Z、Asia/Shanghai 2026-10-12 19:36:24；bodyUpdatedAt 2026-10-12T20:49:40+09:00，晚于发布、仍为同日，取 published；GET 200（UA MiraBot/1.0））：daydreamer 在《Claude Codeの制限に当たったのでOpenCodeに逃げる》写周上限之后改用 OpenCode 与口令核对。可达导流：https://github.com/ryoshumei GET 200。失败码／区域不可用、不列入可达：platform.claude.com 的发行说明、订阅者积分、钥匙与费用页 HTTP 200，跟随后落到 https://claude.com/app-unavailable-in-region；https://mcp.context7.com/mcp GET 405。https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-and-team-plans GET 200，跟随至 https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans 。前篇、code.claude.com 认证／错误／合规说明与 OpenCode 文档均 GET 200（多数 /v2/docs/… 跟随至无 v2 的 /docs/…；https://opencode.ai/v2/install 跟随后仍停留在 /v2/install）。OpenCode 不在枚举里，不硬凑；platforms 只记 claude。",
+      "与近批费用上限或配置迁移不同：本条不是把账单再对一次，而是周上限之后换到第三方客户端，宣传积分少了，且 V2 不会加载 CLAUDE.md。作者写明没有使用 `opencode service set env`，不要补写成已经用过。",
+    ],
+    approach: `daydreamer 在《Claude Codeの制限に当たったのでOpenCodeに逃げる》（页内 publishedAt 2026-10-12）写明：10 月 11 日夜里碰到 Claude Code 的周上限。当时环境是 macOS 27.0.1、Claude Code 2.1.296。登录 Anthropic 控制台之后，又看到 Credit 余额不足。10 月 12 日改用 OpenCode v2.0.27，带上 API 钥匙继续。haiku-5-5 回「pong」能通。用过之后，宣传积分少了；官方说明没有写第三方客户端也会扣。
+
+为了核对指示文件到底有没有被读到，作者在一次性仓库里做了口令实验：只有 CLAUDE.md、里面写 PINEAPPLE 时，读到的是 NONE；再加上 AGENTS.md、里面写 MANGO 时，读到的是 MANGO。instructions 字段能接受 CLAUDE.md，但 V2 并不会去加载它。plan agent 曾提议改写 10 个 agent，并列过迁不过去的 hooks；作者写这篇粘贴提示之前，已经自己迁过一遍，不能把那条提示写成迁移动作本身是模型刚做完的。
+
+查配置时，\`opencode debug agents | jq\` 连着 5 次都被截断，后来改成先写到文件再看。自己的 code-review skill 和插件里同名的 skill ID 撞车；skill 工具输入里的 $ARGUMENTS 没有展开。作者写明没有使用 \`opencode service set env\`。OpenCode 不在枚举里，不硬凑；正文实测到的是 Claude。`,
+    outcomes: [
+      "源披露作者在 10 月 11 日夜里碰到 Claude Code 的周上限，控制台登录后又看到 Credit 余额不足，10 月 12 日改用 OpenCode v2.0.27；haiku-5-5 回「pong」能通，用过之后宣传积分少了。一次性仓库里，只有 CLAUDE.md 写 PINEAPPLE 时读到 NONE，再加上 AGENTS.md 写 MANGO 时读到 MANGO。这是这一组日期、这一版客户端和这一次口令核对上的记录，不可外推成其他版本也会同样不加载 CLAUDE.md，也不能把「instructions 能接受 CLAUDE.md」写成 V2 会加载它，或把宣传积分减少写成官方已经说明第三方客户端会扣。",
+      "能把「可写成按周上限、余额不足、pong 连通、宣传积分减少，以及口令核对结果分开记账」与「必须人完成的题目与导流链」拆开。",
+      "为把「换到带 API 钥匙的第三方客户端」当成宣传积分不会动，以及把 plan agent 的改写提议当成已经替作者完成迁移，提供提问清单。",
+    ],
+    caveats: [
+      "10 月 11 日夜里的周上限、控制台余额不足、10 月 12 日改用 OpenCode v2.0.27、haiku-5-5 回 pong 能通、宣传积分随后减少、只有 CLAUDE.md 时读到 NONE、加上 AGENTS.md 时读到 MANGO、debug agents 连着 5 次被截断、skill ID 撞车、$ARGUMENTS 未展开、未使用 service set env，均为作者自述。宣传积分减少只接在作者用过 OpenCode 之后的观察上，官方说明没有写第三方客户端也会扣，不能补写成官方已经承认这一扣法。plan agent 提议改写 10 个 agent 并列过迁不过去的 hooks，是提议，不是本篇完成的迁移；作者写明在写粘贴提示之前已经自己迁过。macOS 27.0.1、Claude Code 2.1.296、OpenCode v2.0.27 只接在这一次环境上。OpenCode 不在枚举里，不硬凑。",
+      "可达导流：https://github.com/ryoshumei GET 200。失败码／区域不可用、不列入可达导流：https://platform.claude.com/docs/en/release-notes/overview 、https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers 、https://platform.claude.com/settings/keys 、https://platform.claude.com/cost 最后一次 HTTP 均为 200，跟随后落到 https://claude.com/app-unavailable-in-region，按区域不可用披露。https://mcp.context7.com/mcp 最后一次 GET 405。一次资料已核、跟随后仍按 200 披露完整 URL，不列入可达导流：https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-and-team-plans 跟随至 https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans ；https://code.claude.com/docs/en/authentication 、https://code.claude.com/docs/en/authentication#authentication-precedence 、https://code.claude.com/docs/en/errors#credit-balance-is-too-low 、https://code.claude.com/docs/en/legal-and-compliance 最后一次 GET 200；https://opencode.ai/docs/providers/ 最后一次 GET 200；https://opencode.ai/v2/docs/ 跟随至 https://opencode.ai/docs/ ，以及 https://opencode.ai/v2/docs/agents/ 、https://opencode.ai/v2/docs/cli/providers/ 、https://opencode.ai/v2/docs/commands/ 、https://opencode.ai/v2/docs/config/ 、https://opencode.ai/v2/docs/instructions/ 、https://opencode.ai/v2/docs/mcp-servers/ 、https://opencode.ai/v2/docs/models/ 、https://opencode.ai/v2/docs/permissions/ 、https://opencode.ai/v2/docs/plugins/ 、https://opencode.ai/v2/docs/skills/ 均跟随至对应无 v2 的 https://opencode.ai/docs/… 路径，最后一次 GET 200；https://opencode.ai/v2/install 最后一次 GET 200（跟随后仍停留在 /v2/install）。前篇 https://zenn.dev/daydreamer/articles/claude-code-usage-limit-auto-resume GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "把「能填 CLAUDE.md」和「V2 会加载它」分开问",
+        body: "请对照这篇实践，不要把「instructions 字段能接受 CLAUDE.md」写成「V2 会加载它」。请分别写清：（1）只有 CLAUDE.md 时读到的口令是什么，加上 AGENTS.md 之后呢；（2）宣传积分减少，是作者用过第三方客户端之后的观察，还是官方说明已经写明会扣；（3）plan agent 的改写提议和作者自己已经迁过的部分不要混成一次自动迁移。作者写明没有使用的命令，请保持未使用，不要补写成已经执行。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/daydreamer/articles/opencode-claude-max-api-credits",
+      label: "zenn.dev·daydreamer《Claude Codeの制限に当たったのでOpenCodeに逃げる》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
   }
 ];
 
