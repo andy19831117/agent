@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { UseCaseCard } from "@/components/UseCaseCard";
 import { categories, getCategory } from "@/data/categories";
 import { getUseCasesByCategory } from "@/data/usecases";
+import { toUseCaseListItem } from "@/lib/usecase-list";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,7 +27,7 @@ export default async function CategoryPage({ params }: Props) {
   const category = getCategory(slug);
   if (!category) notFound();
 
-  const list = getUseCasesByCategory(slug);
+  const list = getUseCasesByCategory(slug).map(toUseCaseListItem);
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6">

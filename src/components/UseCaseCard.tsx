@@ -6,9 +6,10 @@ import { SponsorRecBadge } from "@/components/SponsorRecBadge";
 import { categories } from "@/data/categories";
 import { platforms } from "@/data/platforms";
 import { recForUseCase } from "@/data/sponsors";
-import type { Platform, UseCase } from "@/data/types";
+import type { Platform } from "@/data/types";
+import type { UseCaseListItem } from "@/lib/usecase-list";
 
-export function UseCaseCard({ usecase }: { usecase: UseCase }) {
+export function UseCaseCard({ usecase }: { usecase: UseCaseListItem }) {
   const [votes, setVotes] = useState(usecase.upvotes);
   const [voted, setVoted] = useState(false);
   const [shared, setShared] = useState(false);
