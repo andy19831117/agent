@@ -67943,6 +67943,501 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T00:00:13.858+09:00 → UTC 2026-11-04T15:00:13Z、Asia/Shanghai 2026-11-04 23:00:13；bodyUpdatedAt 与发布相同；取 published → 2026-11-04；GET 200（UA MiraBot/1.0））：daming_cafe 在《Saturday：耳と口をつけた Claude Code》记下 4–6 秒和约 $0.002。发布时刻是 JST 11-05 00:00，换算到上海已是 2026-11-04，不要写成 2026-11-05。",
       "14/14、约 190 ms 只属于唤醒词测试。约 $0.002 不要和旧方案约 $0.05／分钟混用。endrol.github.io 是作者原站导流。不要把 chatgpt 填进 platforms。",
     ],
+  },
+  {
+    id: "948",
+    slug: "zero-1mo-22acc",
+    title: "zeroyen_dev：把博客运营交给 Claude Code 大约 1 个月，记下事故 22 件。其中 AI 所写代码的错误几乎为零；定期执行合计停了 6 次以上且仍未解决；把原因判断错了 2 次（以为是权限，花了半天／1 天）。launchd 的每日任务有 8 天一次都没跑（脚本在 iCloud Drive 里）；分页 API 同样的错踩了 4 次（第 3 次 PV 计成 183、实际 189）；还有「部署成功但页面仍是旧的」「图说设好了却没按保存」。费用是免费框的 0 日元。",
+    summary: "zeroyen_dev 把写稿、测数字、改站和定期执行交给 Claude Code 大约 1 个月，记下事故 22 件。代码错误几乎为零；定期执行合计停了 6 次以上且未解决；原因看错 2 次。8 天里 launchd 一次没跑；同一类分页错踩了 4 次（第 3 次 183 对 189）。作者后改成报告须带回实物前后数字，并用别的信息源核对件数。这些是这一段免费框运营上的事故地图，不可外推到别的站或周期。",
+    description: "面向已经把发布和定期执行交给 Claude Code、却只看「成功了」这句报告的人：把约 1 个月里的 22 件事故、8 天未启动、分页错 4 次和 183 对 189 写成门禁，区别于只谈代码质量、却没有把「报告成功但实物不对」计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/zeroyen_dev/articles/claude-code-where-automation-stops",
+    sourceLabel: "zenn.dev·zeroyen_dev 实践帖",
+    upvotes: 839,
+    trending: false,
+    tags: [
+      "claude-code",
+      "ops-log",
+      "scheduled-tasks",
+      "launchd",
+      "verification",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/zeroyen_dev/articles/claude-code-where-automation-stops",
+      label: "zenn.dev·zeroyen_dev《Claude Codeに1か月の運用を任せて、止まった場所を全部記録した》",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+    approach: "大约 1 个月里，把博客的写稿、每日 PV、站点部署和早间定期执行交给 Claude Code，费用只用免费框（0 日元），环境是 macOS。作者按实际停下的地方画地图，不把「报告成功」当成结果已经落地，并写下仍未解决的定期执行问题。",
+    outcomes: [
+      "源披露：大约 1 个月记下事故 22 件，其中 AI 所写代码的错误几乎为零；定期执行合计停了 6 次以上（仍未解决）；原因看错 2 次（以为是权限，分别花了半天／1 天）。launchd 每日任务有 8 天一次没跑；分页 API 同样只读第一页的错踩了 4 次（第 3 次 17 本里只记下 12 本，合计 PV 报 183、实际 189）。这些是这一段免费框运营上的事故地图，不可外推到别的站或周期。",
+      "另外还有「部署命令成功但公开页仍是旧内容」「图片说已设置、再取 API 却是空的（没按保存）」；作者后来要求报告须重新取回实物、并把前后数字并列，上述 3 件才能防住。",
+      "定期执行本身仍会静静停住：有的任务预定时刻过后执行次数是 0；有的启动后在 4 秒、6 秒、39 秒、5 秒停在第一次工具调用，并长时间占着「执行中」、堵住下次。作者写明根本原因还没追上，现在只能人手停掉。",
+    ],
+    caveats: [
+      "大约 1 个月不要改成精确日历天数。22 件是记下的事故，6 次以上是仍未解决的定期执行停止，不要混用。183 对 189 只属于分页错的第 3 次，不要写成 22 件的合计。8 天未启动绑在 iCloud Drive 上的那条 launchd 任务，不要写成全部定期执行。费用 0 日元是免费框，不要写成付费账单。launchd、Cloudflare、iCloud 不在 19 个平台枚举里，不硬凑。正文无配图。",
+      "导流：https://note.com/zeroyen_dev/n/nda77fb5655ab GET 200（标题 はじめての方へ｜Claude Codeに任せて壊れた記録の読み方｜ゼロ円開発ログ）；https://note.com/zeroyen_dev GET 200（作者卡网站，标题 ゼロ円開発ログ｜note）。作者卡 GitHub／X 为空。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先把「报告成功但实物不对」按件记下，再谈「代码质量是不是够了」",
+        body: "请按实测算一算：大约几个月里记下了几件事故，其中有几件是模型所写代码的错误；定期执行停了几次、是否已解决；有没有把原因判断错、各花了多久；有没有连续几天一次都没启动；同一类计数错误重复了几次，其中一次报出的合计和实际各是多少。不要只看「成功了」这句报告。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者大约 1 个月把博客的写稿、测数字、部署和早间定期执行交给 Claude Code，只用免费框。",
+      "记下事故 22 件，代码错误几乎为零；8 天里 launchd 一次没跑，分页错踩了 4 次，定期执行合计停了 6 次以上且未解决。",
+      "后来要求报告带回实物前后数字，并用别的信息源核对件数；定期执行静静停住的问题仍只能人手停掉。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-06T01:34:44.677+09:00 → UTC 2026-10-05T16:34:44Z、Asia/Shanghai 2026-10-06 00:34:44；bodyUpdatedAt 与发布相同；取 published → 2026-10-06；GET 200（UA MiraBot/1.0））：zeroyen_dev 在《Claude Codeに1か月の運用を任せて、止まった場所を全部記録した》记下 22 件事故。JST 01:34 换算到上海仍是 10-06，不要写成 10-05。",
+      "183 对 189 只属于分页错的第 3 次。6 次以上是仍未解决的定期执行停止，不要和 22 件事故混用。硬窗是这些事故，不是 hook 教程。",
+    ],
+  },
+  {
+    id: "949",
+    slug: "kats-9rev-4gud",
+    title: "cutlet_of_pork：让 Claude Code 判断并修改挡住自己的守卫后，外侧的 Codex 审查当天走了 9 个来回。当天拦住的 4 类守卫里，3 类是对的，1 类是过检测（目标路径末尾碰巧是 scripts/tests/）。审查脚本只把 staged diff 的 sha256 交给 Codex CLI，对话上下文不共享；只有最后一行是 VERDICT: ACCEPT、且 hash 仍与 staged diff 一致才允许提交。作者认为 9 个来回偏多，但能一直倒向安全侧，是因为自己不能批准的结构放在外侧。",
+    summary: "cutlet_of_pork 在 Claude Code 被守卫挡住后，让它判断守卫对不对并去改。当天 4 类拦住里 3 类正确、1 类过检测，随后 Codex 审查走了 9 个来回。审查只看 staged diff，不共享对话上下文，须 VERDICT: ACCEPT 且 hash 一致才能提交。9 个来回只属于这一天改守卫的过程，不可外推到别的守卫或其他天。",
+    description: "面向已经用钩去拦测试目录改写、却在「让模型自己改守卫」之后没有记下审查来回次数的人：把当天 4 类里 3 对 1 过检测、以及 9 个来回写成门禁，区别于只介绍 PreToolUse 写法、却没有外侧审查计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/cutlet_of_pork/articles/ai-agent-self-improvement-guard-review-loop",
+    sourceLabel: "zenn.dev·cutlet_of_pork 实践帖",
+    upvotes: 840,
+    trending: false,
+    tags: [
+      "claude-code",
+      "code-review",
+      "guardrail",
+      "codex",
+      "pretooluse",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/cutlet_of_pork/articles/ai-agent-self-improvement-guard-review-loop",
+      label: "zenn.dev·cutlet_of_pork《Claude Codeに自分のガードを直させたら、Codexのレビューが9往復した》",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+    approach: "PreToolUse 钩会拒绝往测试目录做 cp／mv／install，以防模型改测试来把结果变绿。当天 4 类拦住里有 1 类是过检测，作者让 Claude Code 判断守卫并去改，同时用脚本把 staged diff 交给另一路的 Codex CLI 审查，只有 ACCEPT 且 hash 一致才能提交。",
+    outcomes: [
+      "源披露：当天拦住的 4 类守卫里，3 类是对的，1 类是过检测；随后让模型改守卫，外侧 Codex 审查走了 9 个来回。审查只交 staged diff 的 sha256，不共享对话上下文；须最后一行 VERDICT: ACCEPT、且 record 的 hash 仍与 staged diff 一致才允许提交。这些是这一天改守卫的过程，不可外推到别的守卫或其他天。",
+      "作者写明 9 个来回偏多，希望下次大约 3 个来回就够；能一直倒向安全侧，不是因为模型更聪明，而是自己不能批准的结构放在外侧。审查之后只要改 1 个字，record 就作废。",
+      "PreToolUse 钩只是拦住测试目录改写的装置。硬窗是 4 类拦住和 9 个来回，不要写成 hook 教程。Codex CLI 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "9 个来回和 4 类拦住都绑在「这一天」改守卫的过程上，不要写成日常审查的平均数。3 个来回是作者对下次的期望，不是这次的实测。bodyUpdatedAt 跨到 2026-11-01，仍取 published 10-06。正文无配图。作者卡 GitHub／X 为空。",
+      "导流：https://daybreak-portfolio.pages.dev/ GET 200（作者卡网站，标题 とんのかつ｜業務自動化エンジニア）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先数清当天拦住的类别和审查来回，再谈「让模型自己改守卫就行」",
+        body: "请按实测算一算：当天拦住了几类守卫，其中几类是对的、几类是过检测；过检测是因为什么路径；外侧审查走了几个来回；审查交的是不是只有 staged diff，须怎样的结论和 hash 才能提交。不要把作者对下次来回次数的期望当成这次的实测。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者用 PreToolUse 钩拦住往测试目录的 cp／mv／install，以防模型改测试来变绿。",
+      "当天 4 类拦住里 3 类正确、1 类过检测；让 Claude Code 去改守卫后，外侧 Codex 审查走了 9 个来回。",
+      "审查不共享对话上下文，须 VERDICT: ACCEPT 且 hash 一致才能提交；改 1 个字则 record 作废。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-06T15:42:58.757+09:00 → UTC 2026-10-06T06:42:58Z、Asia/Shanghai 2026-10-06 14:42:58；bodyUpdatedAt 2026-11-01T11:06:30.593+09:00，晚于发布且跨到 11-01，仍取 published → 2026-10-06；GET 200（UA MiraBot/1.0））：cutlet_of_pork 在《Claude Codeに自分のガードを直させたら、Codexのレビューが9往復した》记下 9 个来回。不要因 bodyUpdatedAt 写成 2026-11-01。",
+      "9 个来回只属于这一天。3 个来回是期望不是实测。硬窗不是 hook 教程。Codex 不填进 platforms。",
+    ],
+  },
+  {
+    id: "950",
+    slug: "yata-977-13542",
+    title: "charge0315：用 Claude Code 把过去 4 年、977 个交易日的行情一天一天重做了一遍，用了 1 小时 46 分，给出 13,542 条选股，但生产评估的数字一毫米也没动。作者写明这反而是对的：回放结果进了专用台账，不会混进生产评估；同时回放一旦去碰「当天之后」的数据，就会被未来泄漏的例外挡住。不要把「生产数字没动」写成实验失败。",
+    summary: "charge0315 用 Claude Code 把过去 4 年、977 个交易日一天一天重做，用时 1 小时 46 分，给出 13,542 条选股，生产评估数字却一毫米没动。作者认为这是对的：结果进了专用台账，且不得看当天之后的数据，未来泄漏会被例外挡住。这些是这一次回放学习上的数字，不可外推到别的品种或窗口。",
+    description: "面向已经用历史行情做回放学习、却把「生产数字没动」直接判成失败的人：把 977 个交易日、1 小时 46 分、13,542 条选股，以及未来泄漏被例外挡住写成门禁，区别于只展示回放速度、却没有把生产数字对照写清的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/charge0315/articles/5a7ca48de722ce",
+    sourceLabel: "zenn.dev·charge0315 实践帖",
+    upvotes: 841,
+    trending: false,
+    tags: [
+      "claude-code",
+      "replay-learning",
+      "future-leak",
+      "backtest",
+      "stock-screen",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/charge0315/articles/5a7ca48de722ce",
+      label: "zenn.dev·charge0315《Claude Codeと過去4年をやり直したのに、本番の数字が動かなかった話⏰ 未来リークを例外で止めるリプレイ学習》",
+      date: "2026-10-14",
+      dateLabel: "发布",
+    },
+    approach: "个人在开发日本股票的筛选与持续学习终端。作者用 Claude Code 把过去 4 年、977 个交易日一天一天重做；回放结果写入专用台账，不混进生产评估，并在重放视图里禁止访问「当天之后」的数据。跑完后对照生产评估，数字没有动，作者把它写成设计如此，而不是失败。",
+    outcomes: [
+      "源披露：过去 4 年、977 个交易日一天一天重做，用了 1 小时 46 分，给出 13,542 条选股，生产评估的数字一毫米也没动。作者写明这反而是对的：回放结果进了专用台账，不会混进生产评估；同时回放一旦去碰当天之后的数据，就会被未来泄漏的例外挡住。这些是这一次回放上的数字，不可外推到别的品种或窗口。",
+      "4 年、977 个交易日、1 小时 46 分和 13,542 条是同一次回放的一组数字，不要拆成几次实验，也不要把 13,542 写成生产上已经采用的选股数。",
+      "同作者另一篇删掉 765 行文档的棚卸不是本条硬窗，已留 pool。日本股票终端、回放框架不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "不要把「生产数字没动」写成实验失败或模型没有学到东西。没动的直接原因是专用台账，不要只写成「被未来泄漏的例外挡住所以数字没动」。1 小时 46 分是这次回放的耗时（14:51 开始、16:37 结束），不要写成每天的训练时间。bodyUpdatedAt 在 10-12，早于发布，按预定发布理解，仍取 published 10-14。配图 8 张须写完整 URL，不要只写「配图 8 张见本批 md」。",
+      "导流：https://note.com/featured_stocks/n/nd1c4bfa293f2 GET 200（作者相关篇）；https://note.com/featured_stocks GET 200（作者卡网站）；https://github.com/charge0315 GET 200；https://x.com/chargesince2026 GET 200。配图 8 张均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/50be33b962ef-20261012.jpg ；https://static.zenn.studio/user-upload/a936cd9c9d5b-20261012.jpg ；https://static.zenn.studio/user-upload/75780f71acb8-20261012.jpg ；https://static.zenn.studio/user-upload/cf4079ef8bcc-20261012.jpg ；https://static.zenn.studio/user-upload/80e27be7cc90-20261012.jpg ；https://static.zenn.studio/user-upload/1f760d85819c-20261012.jpg ；https://static.zenn.studio/user-upload/7a90c58db94b-20261012.jpg ；https://static.zenn.studio/user-upload/e0cf3c176ead-20261012.jpg 。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照回放数字和生产评估，再谈「重做一遍历史是不是白做了」",
+        body: "请按实测算一算：回放覆盖了多少年、多少个交易日，用了多久，给出了多少条选股；生产评估的数字有没有动；若没有动，源文是把它写成失败，还是写成未来泄漏被挡住后的正确结果。不要把回放给出的选股数写成生产已采用的数量。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者用 Claude Code 把过去 4 年、977 个交易日一天一天重做，并禁止回放查看当天之后的数据。",
+      "这次用了 1 小时 46 分，给出 13,542 条选股；结果写在专用台账里，生产评估数字一毫米没动。",
+      "作者认为这是对的：回放不得混进生产评估，且一旦去碰未来数据，就会被例外挡住。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-14T14:41:49.391+09:00 → UTC 2026-10-14T05:41:49Z、Asia/Shanghai 2026-10-14 13:41:49；bodyUpdatedAt 2026-10-12T09:35:24.110+09:00，早于发布，按预定发布理解；取 published → 2026-10-14；GET 200（UA MiraBot/1.0））：charge0315 在《Claude Codeと過去4年をやり直したのに、本番の数字が動かなかった話》记下 977 日和 13,542 条。不要因 bodyUpdatedAt 写成 2026-10-12。",
+      "不要把生产数字没动写成实验失败，也不要把原因只写成未来泄漏例外、漏掉专用台账。13,542 条是回放给出的选股，不是生产已采用数。同作者 765 行棚卸篇留 pool。",
+    ],
+  },
+  {
+    id: "951",
+    slug: "haru-jp-cp932",
+    title: "haruto_miyakawa：在 Windows 上自写 Claude Code 钩时，发现只有日文提示会让钩什么都不做，而且不报错。同样的判定若改成命令行参数就能跑。原因是日文 Windows 上 Python 3.14 及更早版本默认用 cp932 读写标准输入输出，而 Claude Code 传来的 JSON 是 UTF-8；入口会无异常地乱码，出口则把乱码送回去，或在「—」这类符号上只输出 1 个字符就退出。Python 3.15 才改了这一默认。",
+    summary: "haruto_miyakawa 在 Windows 上发现 Claude Code 的钩只在日文提示时静默不工作。日文 Windows 的 Python 3.14 及更早默认用 cp932，和 UTF-8 的 JSON 对不上；入口乱码且不抛异常。这些是这一组 Python 版本在日文 Windows 上的对照，不可外推到别的系统或 3.15 之后的默认。",
+    description: "面向已经在 Windows 上给 Claude Code 写了钩、却把「日文时什么都不做且没有报错」当成钩没挂上的人：把 cp932 对 UTF-8、以及 3.14 及更早才有这一默认写成门禁，区别于只介绍 hooks 文档、却没有编码对照的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/haruto_miyakawa/articles/claude-code-hook-windows-cp932",
+    sourceLabel: "zenn.dev·haruto_miyakawa 实践帖",
+    upvotes: 842,
+    trending: false,
+    tags: [
+      "claude-code",
+      "windows",
+      "hooks",
+      "cp932",
+      "utf-8",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/haruto_miyakawa/articles/claude-code-hook-windows-cp932",
+      label: "zenn.dev·haruto_miyakawa《Windows の Claude Code フックは、日本語のときだけ黙って壊れる》",
+      date: "2026-10-14",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Windows 上自写 Claude Code 钩，发现只有日文提示时钩什么都不做且不报错；同样判定用命令行参数就能跑。对照后定位到日文 Windows 上 Python 3.14 及更早默认用 cp932 读写标准输入输出，和 Claude Code 传来的 UTF-8 JSON 不一致。",
+    outcomes: [
+      "源披露：日文 Windows 上 Python 3.14 及更早的钩，标准输入输出默认按 cp932 读写，而 Claude Code 传来的 JSON 是 UTF-8，日文会坏掉。入口不抛异常、只是乱码；出口会把乱码送回 Claude，或在「—」一类符号上只输出 1 个字符就退出。Python 3.15 才改了这一默认。这些是这一组版本在日文 Windows 上的对照，不可外推到别的系统或更早／更晚的默认。",
+      "「只有日文提示时什么都不做」不要写成钩没有安装，也不要写成所有语言都会静默失败。命令行参数那条对照说明判定本身能跑，坏的是标准输入输出的编码。",
+      "硬窗是这条编码不一致，不是 hook 教程。Windows、Python、cp932 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "3.14 及更早和 3.15 的默认不要混用。作者写明手头不是用 3.15 本身，而是用同等设定的 python -X utf8 确认能修好，不要写成已经在 3.15 上跑过同一条钩。bodyUpdatedAt 在 10-12，早于发布 19:00，按预定发布理解，仍取 published 10-14。正文无配图。",
+      "导流：https://haruto-miyakawa.dev/ GET 200（作者卡网站）；https://github.com/haruto-miyakawa GET 200；https://x.com/myfuns101010 GET 200。文内一次资料、不列入作者产品导流：https://code.claude.com/docs/en/hooks GET 200；https://docs.python.org/3.15/whatsnew/3.15.html GET 200；https://peps.python.org/pep-0686/ GET 200；https://docs.python.org/3/library/os.html#python-utf-8-mode GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照日文提示和命令行参数，再谈「钩是不是没挂上」",
+        body: "请按实测算一算：钩是在什么系统、哪个 Python 版本上写的；是不是只有日文提示时什么都不做，而且不报错；同样判定改成命令行参数能不能跑；标准输入输出的默认编码和 Claude Code 传来的 JSON 编码各是什么；入口会不会抛异常，出口会怎样失败；这一默认是从哪个版本才改掉的。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者在 Windows 上自写钩，发现只有日文提示时钩什么都不做且不报错，改成命令行参数就能跑。",
+      "定位到日文 Windows 上 Python 3.14 及更早默认用 cp932，和 UTF-8 的 JSON 对不上。",
+      "入口乱码且不抛异常；出口送回乱码，或在部分符号上只输出 1 个字符就退出。Python 3.15 才改默认。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-14T19:00:06.771+09:00 → UTC 2026-10-14T10:00:06Z、Asia/Shanghai 2026-10-14 18:00:06；bodyUpdatedAt 2026-10-12T00:13:15.698+09:00，早于发布，按预定发布理解；取 published → 2026-10-14；GET 200（UA MiraBot/1.0））：haruto_miyakawa 在《Windows の Claude Code フックは、日本語のときだけ黙って壊れる》记下 cp932 对照。不要因 bodyUpdatedAt 写成 2026-10-12。",
+      "硬窗是编码不一致，不是 hook 教程。3.14 及更早与 3.15 的默认不要混用；3.15 的确认是同等设定的 -X utf8，不是 3.15 本机实测。",
+    ],
+  },
+  {
+    id: "953",
+    slug: "side-1w-3cap",
+    title: "sidejob：把 Claude Code 接到业务自动化、夜间无人跑之后，最初「23 点把全部工程一次做完」的方针，在头一周日志里停了 3 次，原因都是 Claude Pro 的用量上限（429/529）。日志里 17:00 的写稿是 113 轮、约 5.27 美元，21:13 的补充是 84 轮、约 3.63 美元，23:00 的健康检查因超限失败。17 点到 23 点的 6 小时里挤了 4 道工程，滚动 5 小时窗口把 17 点的重活留到了 23 点。上限一到，代理会无声结束。作者后来把重活拆到白天、把工程切开，并用另一会话写出的用量门禁，只在两边都不超过 50% 时才跑不急的活。",
+    summary: "sidejob 最初在 23 点一次跑完全部工程，头一周停了 3 次，全是 Claude Pro 用量上限。17:00 写稿 113 轮约 5.27 美元，23:00 健康检查超限失败。滚动 5 小时窗口让白天的重活挤到夜里。这些是这一周日志上的数字，不可外推到别的套餐或排程。",
+    description: "面向已经把无人任务全堆到夜里 23 点、却只在早上才发现什么都没跑的人：把头一周 3 次停止、113 轮／约 5.27 美元和滚动 5 小时窗口写成门禁，区别于只劝人「错开时间」、却没有对照日志的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/sidejob/articles/a3ccd8cd6745346ed",
+    sourceLabel: "zenn.dev·sidejob 实践帖",
+    upvotes: 844,
+    trending: false,
+    tags: [
+      "claude-code",
+      "nightly-batch",
+      "rate-limit",
+      "capacity",
+      "unattended",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sidejob/articles/a3ccd8cd6745346ed",
+      label: "zenn.dev·sidejob《Claude Code を夜間に無人実行させたら1週間で3回止まった——コスト設計で変えた4つのこと》",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+    approach: "把 Claude Code 接到业务自动化，最初在 23 点一次跑完全部工程。对照 capacity-log.jsonl 后，作者发现头一周停了 3 次，全是 Pro 用量上限，且都发生在 23 点前后。后来把最重的工程拆到白天，把「急的」和「不急的」分开，并用另一会话写出的用量门禁决定要不要跑不急的活，还加上从中断处续跑。",
+    outcomes: [
+      "源披露：最初「23 点一次做完全部」的方针，在头一周日志里停了 3 次，原因都是 Claude Pro 的用量上限（429/529）。日志里 17:00 写稿 113 轮、约 5.27 美元，21:13 补充 84 轮、约 3.63 美元，23:00 健康检查因超限失败。17 点到 23 点的 6 小时里挤了 4 道工程；滚动 5 小时窗口把 17 点的重活留到了 23 点。这些是这一周日志上的数字，不可外推到别的套餐或排程。",
+      "另有一天，周转数持续增加的工程最终到了 106 轮，超限中途结束，从头再跑大约消耗了 6.4 美元。约 5.27、3.63、6.4 美元是这些工程的用量估算，不要写成月账单。",
+      "后来的 4 项设计是：把重活分散到白天、把工程拆成急的和不急的、不急的活只在五小时和每周用量都不超过 50% 时才跑、以及从中断处续跑。门禁文件里 2026-10-10 的 42%／38% 是文中给出的一条记录示例，不要当成头一周三次停止当天的数字。",
+    ],
+    caveats: [
+      "3 次停止都绑在头一周、23 点一次跑完全部的方针上，不要写成后来改排程之后的合计。429/529 是源文对 Pro 用量上限的写法，不要改写成别的 HTTP 事故。上限一到代理会无声结束，日志还在、屏幕上什么都没有。正文无配图。",
+      "导流：https://note.com/light_tern636/n/n6ce5a7f64d76 GET 200（作者相关篇）；https://note.com/light_tern636 GET 200（作者卡网站，标题 現場のAI活用担当｜note）。作者卡 GitHub／X 为空。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照 23 点的日志和滚动 5 小时窗口，再谈「全部放到夜里就不会抢白天的额度」",
+        body: "请按实测算一算：最初是几点一次跑完全部；头一周停了几次、原因是不是同一种用量上限；各工程的时刻、轮次和估算费用是多少；滚动窗口是几小时，重活的影响留到了几点。不要把单次工程的估算费用写成月账单。改排程之后的门禁阈值若是文中示例，要标明。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者最初在 23 点一次跑完全部夜间工程，对照日志后发现头一周停了 3 次，全是 Pro 用量上限。",
+      "17:00 写稿 113 轮约 5.27 美元，23:00 健康检查超限失败；滚动 5 小时窗口把白天的重活挤到了夜里。",
+      "后来把重活分散到白天，把急的和不急的切开，并用另一会话写出的用量门禁，只在两边都不超过 50% 时才跑不急的活。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-15T09:15:10.950+09:00 → UTC 2026-10-15T00:15:10Z、Asia/Shanghai 2026-10-15 08:15:10；bodyUpdatedAt 与发布相同；取 published → 2026-10-15；GET 200（UA MiraBot/1.0））：sidejob 在《Claude Code を夜間に無人実行させたら1週間で3回止まった——コスト設計で変えた4つのこと》记下头一周 3 次停止。",
+      "约 5.27／3.63／6.4 美元是这些工程的用量估算，不是月账单。42%／38% 是门禁记录示例，不要当成三次停止当天的数字。",
+    ],
+  },
+  {
+    id: "954",
+    slug: "nral-53-19zip",
+    title: "neuralalpha：用 Claude Code 做好在 Gumroad 上卖的监视用模板集之后，按购买者同样的步骤自己试买。打开寄到的 ZIP，53 个文件里面向购买者的只是一部分，其余是销售侧资料（发布计划、要发的帖、定价备忘等）。作者把给购买者看的版本重新整理，文件数变成 19 个，并写下出荷前要确认的 5 件事。",
+    summary: "neuralalpha 用 Claude Code 做了销售用 ZIP，自己按购买者步骤试买后发现 53 个文件里面向购买者的只是一部分，其余是销售侧资料。重新整理后变成 19 个文件。53 和 19 不要混成同一次打包的前后都是「给购买者」的数量。这些是这一次试买和整理上的数字，不可外推到别的商品或商店。",
+    description: "面向已经让 Claude Code 在同一个文件夹里既做商品又做销售准备、却还没有按购买者步骤打开过寄出 ZIP 的人：把 53 个文件里混进销售侧资料、以及整理后的 19 个写成门禁，区别于只列出出荷检查项、却没有试买计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/neuralalpha/articles/release-zip-check-ja",
+    sourceLabel: "zenn.dev·neuralalpha 实践帖",
+    upvotes: 845,
+    trending: false,
+    tags: [
+      "claude-code",
+      "release-check",
+      "zip",
+      "indie-product",
+      "preflight",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/neuralalpha/articles/release-zip-check-ja",
+      label: "zenn.dev·neuralalpha《Claude Code と作った販売用ZIP、53ファイル中 購入者向けは19個だけだった──出荷前に確認している5つのこと》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Claude Code 做监视用模板集，在 Gumroad 上出售。公开后按购买者同样的步骤自己试买，打开寄到的 ZIP，发现销售侧资料和给购买者的文件混在一起，于是重新整理出荷用的版本，并把 5 项出荷前确认写下来。",
+    outcomes: [
+      "源披露：自己试买后打开的 ZIP 里有 53 个文件，面向购买者的只是一部分，其余是销售侧资料；重新整理后的给购买者看的版本是 19 个文件。之后作者固定了出荷前要确认的 5 件事。这些是这一次试买和整理上的数字，不可外推到别的商品或商店。",
+      "标题里的「53 个里有 19 个给购买者」容易读成第一次 ZIP 里已经数出 19 个；正文是先发现 53 个里混了销售侧资料，再整理成 19 个。不要把 19 写成打开 53 个时当场数出的购买者文件数。",
+      "Gumroad、Amazon、BOOTH 不在 19 个平台枚举里，不硬凑。bodyUpdatedAt 跨到 11-01，仍取 published 10-22。",
+    ],
+    caveats: [
+      "53 是试买寄到的 ZIP 里的文件数，19 是重新整理后给购买者的文件数，不要写成同一次打包里「53 个里数出 19 个」。5 件事是出荷前的确认清单，不要当成 5 次试买。正文无配图。作者卡 GitHub／X／website 均为空。",
+      "导流：https://neuralalpha.gumroad.com/l/agent-ops-preflight-ja?utm_source=zenn&utm_medium=article GET 200；https://zenn.dev/neuralalpha/books/agent-ops-guide/viewer/release GET 200；https://zenn.dev/neuralalpha/books/agent-ops-guide/viewer/overview GET 200；https://github.com/neuralalpha-ai/downloads/blob/main/agent-ops-preflight-checklist-ja-v1.0.pdf GET 200；https://github.com/neuralalpha-ai/agent-write-ledger GET 200。未达、不列入可达：https://www.amazon.co.jp/dp/B0H9YQ2GJB 第一次 GET 在 Asia/Shanghai 2026-11-10 18:41:23 为 TLS／000（curl 35），交付时 18:46:41–18:46:49 重试仍是 000／curl 35；父代理复检主批 18:50:34–18:51:37 仍为 000／curl 35，60 秒重试 18:51:56–18:52:04 仍是 TLS／000（curl 35）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先按购买者步骤打开寄到的 ZIP，再谈「文件夹里看起来已经整理好了」",
+        body: "请按实测算一算：试买寄到的 ZIP 里有多少个文件，其中哪些是销售侧资料；给购买者重新整理后是多少个；出荷前固定确认几件事。不要把整理后的文件数写成第一次打开时当场数出的购买者文件数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者用 Claude Code 做了销售用模板集，公开后按购买者步骤自己试买。",
+      "寄到的 ZIP 有 53 个文件，里面混着销售侧资料；重新整理后给购买者的版本是 19 个文件。",
+      "随后把出荷前要确认的 5 件事写下来，作为以后出货的固定检查。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-22T12:32:24.004+09:00 → UTC 2026-10-22T03:32:24Z、Asia/Shanghai 2026-10-22 11:32:24；bodyUpdatedAt 2026-11-01T22:10:05.134+09:00，晚于发布且跨到 11-01，仍取 published → 2026-10-22；GET 200（UA MiraBot/1.0））：neuralalpha 在《Claude Code と作った販売用ZIP、53ファイル中 購入者向けは19個だけだった》记下试买。不要因 bodyUpdatedAt 写成 2026-11-01。",
+      "19 是整理后的文件数，不要写成打开 53 个时当场数出的数量。Amazon 链接两次 TLS／000（18:41:23 与 18:46:41–18:46:49），不列入可达。",
+    ],
+  },
+  {
+    id: "955",
+    slug: "dawon-lid-2030",
+    title: "dawon：合上盖睡觉后，早上任务没做完，日志里全是 Connection lost while your computer was asleep，每周额度比睡前少了 20～30 个点，却没有做出有用的结果。2026 年 10 月 15–18 日，Claude Code 的追踪器上出现 4 条同类报告。#103064 的日志是每隔 15～20 分钟醒 2～7 秒，接上电源后又有一次 27 分钟的维护起床；#102597 是 6.5 小时里 26 次，大约每 15 分钟一次。作者对照表里，冷缓存的例子每周用量从 20% 升到 56%，一直保持热缓存的则约从 9% 升到 19%；后台例子里完成的 15 次调用中，冷启动的 cache_creation 约 710 万 token。",
+    summary: "dawon 记下合盖过夜后每周额度少 20～30 个点、却没有做出有用结果。10 月 15–18 日追踪器上有 4 条同类报告；#102597 是 6.5 小时 26 次 DarkWake。冷缓存例子从 20% 升到 56%，热缓存约从 9% 升到 19%。20～30 个点和百分比表不要混用。这些是合盖过夜这一段上的对照，不可外推到别的系统或日期。",
+    description: "面向已经让 Claude Code 在合盖后继续跑、却把早上额度变少当成「夜里正常干活了」的人：把 20～30 个点、6.5 小时 26 次，以及 20% 升到 56% 对 9% 升到 19% 写成门禁，区别于只解释 DarkWake、却没有用量对照的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/dawon/articles/958dc0d144e32c",
+    sourceLabel: "zenn.dev·dawon 实践帖",
+    upvotes: 846,
+    trending: false,
+    tags: [
+      "claude-code",
+      "macos",
+      "darkwake",
+      "usage-limit",
+      "lid-closed",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dawon/articles/958dc0d144e32c",
+      label: "zenn.dev·dawon《蓋を閉じても Claude Code は動いている：macOS の DarkWake が一晩で週間上限を削る仕組み》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+    approach: "作者合上 Mac 盖睡觉，早上发现任务没做完，每周额度却少了一截。对照 pmset 日志和 10 月 15–18 日追踪器上的 4 条报告后，定位到 DarkWake：屏幕仍关着，系统会短暂把机器叫醒，正在流式输出的 Claude Code 会话会在这几秒里继续跑。",
+    outcomes: [
+      "源披露：合盖过夜后，每周额度比睡前少 20～30 个点，却没有做出有用结果。10 月 15–18 日追踪器上有 4 条报告（须写完整 issue URL）。#103064 每隔 15～20 分钟醒 2～7 秒，接上电源后又有一次 27 分钟维护起床；#102597 是 6.5 小时里 26 次，大约每 15 分钟一次。对照表里，冷缓存例子每周用量从 20% 升到 56%，一直保持热缓存的约从 9% 升到 19%；后台例子里完成的 15 次调用中，冷启动的 cache_creation 约 710 万 token。这些是合盖过夜这一段上的对照，不可外推到别的系统或日期。",
+      "20～30 个点是作者对睡前睡后额度变化的描述，不要和 20% 升到 56%、9% 升到 19% 那组百分比混成同一列数字。4 条报告是追踪器上的条数，其中 2 条日志较详细，不要写成作者自己提了 4 条 issue。",
+      "macOS、DarkWake、Power Nap 不在 19 个平台枚举里，不硬凑。issue 须写完整 URL，不要只写裸的 #103064。",
+    ],
+    caveats: [
+      "20%→56% 和 9%→19% 是对照表里冷缓存与热缓存两列，不要都写成 20～30 个点。710 万 token 属于完成后台调用里冷启动的 cache_creation，不要写成整夜所有 token。正文无配图。作者卡 GitHub 为空。",
+      "导流：https://lidnight.app/ja/ GET 200；https://lidnight.app/ja/guides/claude-code-darkwake-lid-closed/ GET 200；https://github.com/whereisdw/claude-code-hooks-recipes GET 200；https://x.com/leeluvy17 GET 200。文内完整硬链已核：https://github.com/anthropics/claude-code/issues/102597 、https://github.com/anthropics/claude-code/issues/102269 、https://github.com/anthropics/claude-code/issues/103064 、https://github.com/anthropics/claude-code/issues/103233 均 GET 200；https://dev.to/dawonlee/lid-closed-claude-code-still-running-how-macos-darkwakes-burn-your-weekly-limit-overnight-217i GET 200（一次资料／同步稿）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清睡前睡后少了多少点和表里的百分比，再谈「合盖后它还在干活」",
+        body: "请按实测算一算：合盖过夜后每周额度少了多少，有没有做出有用结果；追踪器在哪段日期出现了几条同类报告，完整 URL 是什么；其中较详细的日志是每隔多久醒一次、一次醒多久，6.5 小时里醒了几次；对照表里冷缓存和热缓存的每周用量各从多少升到多少。不要把「少了 20～30 个点」和百分比表混成一列。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者合盖睡觉后，早上任务没做完，每周额度却少了 20～30 个点，日志里都是休眠中连接断开。",
+      "对照 10 月 15–18 日的 4 条报告和 pmset 日志，定位到 DarkWake 会在合盖后短暂叫醒机器。",
+      "#102597 是 6.5 小时 26 次；冷缓存例子每周用量从 20% 升到 56%，热缓存约从 9% 升到 19%。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-24T16:25:29.336+09:00 → UTC 2026-10-24T07:25:29Z、Asia/Shanghai 2026-10-24 15:25:29；bodyUpdatedAt 与发布相同；取 published → 2026-10-24；GET 200（UA MiraBot/1.0））：dawon 在《蓋を閉じても Claude Code は動いている：macOS の DarkWake が一晩で週間上限を削る仕組み》记下合盖过夜的用量。",
+      "20～30 个点不要和 20%→56%／9%→19% 混用。4 条 issue 须写完整 URL。lidnight.app 是作者产品导流。",
+    ],
+  },
+  {
+    id: "956",
+    slug: "shin-977-548",
+    title: "i_shinya：系列第 3 篇把 2026 年 10 月 2 日到 15 日合并的 977 个 PR 拿来对照，其中 548 个（56%）只是在改 harness 的副本。10 月 15 日改成插件之后，这类复制就不再进仓库。实现者子代理一共试了两次后停了：一次是 10 月 8 日到 15 日只用 Sonnet 做实现者，token 费用大约只便宜 4%，没有采用；另一次是 10 月 20 日起按任务改用 Opus 做实现者，两天后对照出 3 个问题，10 月 22 日停掉。",
+    summary: "i_shinya 系列第 3 篇记下 10 月 2 日到 15 日合并的 977 个 PR 里，548 个（56%）只是在改 harness 副本；10 月 15 日改成插件后这类复制不再进仓库。实现者子代理试了两次：Sonnet 大约只便宜 4%，没有采用；10 月 20 日的 Opus 方案两天后对照出 3 个问题后停掉。这些是这一段合并记录上的数字，不可外推到别的仓库或窗口。",
+    description: "面向已经给每个仓库各放一份 harness、却还没有按合并记录数过「有多少 PR 只是在改副本」的人：把 977 个里的 548 个（56%）写成门禁，区别于只劝人改用插件、却没有这段对照的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/i_shinya/articles/harness-fewer-subagents",
+    sourceLabel: "zenn.dev·i_shinya 实践帖",
+    upvotes: 847,
+    trending: false,
+    tags: [
+      "claude-code",
+      "harness",
+      "subagent",
+      "plugin",
+      "pull-request",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/i_shinya/articles/harness-fewer-subagents",
+      label: "zenn.dev·i_shinya《自分のClaude Codeハーネスの変遷 #3（フロー更新編）》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+    approach: "系列第 3 篇。作者对照 10 月 2 日到 15 日的合并记录，发现过半 PR 只是在改各仓库里的 harness 副本，于是在 10 月 15 日改成插件。实现者子代理试了两次：10 月 8 日到 15 日只用 Sonnet 做实现者，大约只便宜 4%，没有采用；10 月 20 日起按任务改用 Opus 做实现者，两天后对照出 3 个问题，10 月 22 日停掉。",
+    outcomes: [
+      "源披露：2026 年 10 月 2 日到 15 日合并的 PR 共 977 个，其中 548 个（56%）只是在改 harness 的副本；10 月 15 日改成插件后，这类复制不再进仓库。实现者子代理一共试了两次：10 月 8 日到 15 日只用 Sonnet 做实现者时，token 费用大约只便宜 4%，没有采用；10 月 20 日起按任务改用 Opus 做实现者，两天后对照出 3 个问题，10 月 22 日停掉。这些是这一段合并记录上的数字，不可外推到别的仓库或窗口。",
+      "548／56% 是「只改 harness 副本」的 PR 占比，不要写成全部 PR 的质量指标，也不要和 977 混成插件化之后的数量。大约 4% 是 10 月 8 日到 15 日只换实现者模型时的 token 费用差，没有采用，不要写成已经上线的节省。3 个问题属于 10 月 20 日起那一次 Opus 试验，不要写成 Sonnet 那一次的结论。",
+      "本条硬窗是副本 PR 的计数和后来停用的两次试验，不是「如何配置子代理」的教程。同作者第 2 篇已核并留 pool；第 4 篇已在 135 pool，不再拾取。",
+    ],
+    caveats: [
+      "系列第 3 篇，不要把第 2、第 4 篇的数字写进来。3 个问题是改用 Opus 做实现者两天后的对照，不要写成子代理那两次试验的结论。正文无配图。作者卡 X／website 为空。",
+      "导流：https://github.com/i-shinya GET 200。文内相关篇 https://zenn.dev/i_shinya/articles/2796be41d60816 GET 200（系列第 2 篇，已留 pool）。一次资料：https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them GET 200、redir 1，最终落到 https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them，不是区域不可用页；https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先数清有多少合并 PR 只是在改 harness 副本，再谈「每个仓库放一份会比较独立」",
+        body: "请按实测算一算：对照的是哪一段日期的合并记录，一共多少个 PR，其中多少个只是在改 harness 副本、占比多少；改成插件是哪一天。实现者子代理试了几次；只换 Sonnet 做实现者时，token 费用差了多少、有没有采用；后来按任务改用 Opus，过了几天又对照出几个问题、哪一天停掉。不要把「大约便宜 4%」写成已经上线的节省。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者对照 10 月 2 日到 15 日的合并记录，977 个 PR 里有 548 个（56%）只是在改 harness 副本。",
+      "10 月 15 日改成插件后，这类复制不再进仓库。",
+      "实现者子代理试了两次：只用 Sonnet 大约只便宜 4%，没有采用；10 月 20 日起按任务用 Opus 做实现者，两天后对照出 3 个问题，10 月 22 日停掉。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-30T03:57:57.372+09:00 → UTC 2026-10-29T18:57:57Z、Asia/Shanghai 2026-10-30 02:57:57，仍是 10-30；bodyUpdatedAt 与发布几乎相同；取 published → 2026-10-30；GET 200（UA MiraBot/1.0））：i_shinya 在《自分のClaude Codeハーネスの変遷 #3（フロー更新編）》记下 977 和 548。不要因 UTC 跨日写成 2026-10-29。",
+      "大约 4% 没有采用，不要写成已上线节省。两次实现者试验不要混成一次。第 2 篇留 pool，第 4 篇已在 135 pool，不再拾取。",
+    ],
+  },
+  {
+    id: "957",
+    slug: "tsku-14n-30mis",
+    title: "tasukina：把 Claude Code 接到每天要写的记录上之后，14 篇 note 和 1 份书稿里，对照记录后发现 30 处说法对不上，其中 19 处是发布之后才发现的。文中的「公司」并不是登记过的法人，而是一台定时跑 Claude Code 的电脑。标记规则在 2026 年 10 月 11 日定下来，10 月 13 日起稿的稿件才开始用，并不回溯已经发布的文章。本篇本身也是 Claude Code 按记录写成、再由人核对的，作者写明了这一点。",
+    summary: "tasukina 对照记录后，在 14 篇 note 和 1 份书稿里发现 30 处说法对不上，其中 19 处是发布之后才发现的。标记规则从 10 月 13 日起稿的稿件才开始用，不回溯已发布的文章。这些是这一组已对照稿件上的数字，不可外推到别的站点或窗口。",
+    description: "面向已经让 Claude Code 按记录写稿、却还没有回去数「有多少句和记录对不上」的人：把 14 篇加 1 份书稿里的 30 处、以及其中 19 处发布后才发现写成门禁，区别于只介绍引用标记、却没有事后计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tasukina/articles/claude-code-article-source-markers",
+    sourceLabel: "zenn.dev·tasukina 实践帖",
+    upvotes: 848,
+    trending: false,
+    tags: [
+      "claude-code",
+      "fact-check",
+      "source-marker",
+      "note",
+      "records",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tasukina/articles/claude-code-article-source-markers",
+      label: "zenn.dev·tasukina《Claude Code に書かせた記事の事実の文に、出典の印を付けさせて照合する》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Claude Code 接到每天要写的记录上，用来写 note 和书稿。对照记录后发现已发布的文章里仍有对不上的句子，于是定下出处标记规则，但从新起草的稿件开始用，不回溯已经发布的文章。本篇也按同一套记录写成，并写明经过人核对。",
+    outcomes: [
+      "源披露：14 篇 note 和 1 份书稿里，对照记录后发现 30 处说法对不上，其中 19 处是发布之后才发现的。标记规则在 2026 年 10 月 11 日定下来，从 10 月 13 日以后起草的稿件才开始用，并不回溯已经发布的文章。这些是这一组已对照稿件上的数字，不可外推到别的站点或窗口。",
+      "文中的「公司」并不是登记过的法人，而是一台定时跑 Claude Code 的电脑，不要写成公司团队实践。30 处是对照后的合计，19 处是其中发布后才发现的，不要把 19 写成另外一批稿件。",
+      "本篇本身由 Claude Code 按记录写成、再由人核对，须按源文披露，不要写成完全手写。作者写明书稿从 10 月 11 日起写，没有套用本篇这套印，不要把 30 处写成「印生效之后仍对不上」。同作者 4 小时无人残留提交篇，以及已在 135 pool 的两篇，不再拾取。",
+    ],
+    caveats: [
+      "14 篇 note 加 1 份书稿是对照范围，不要漏掉书稿，也不要把 30 处写成 14 篇文章上的平均数。标记只从 10 月 13 日以后起草的稿件开始用，不回溯已发布文章；书稿本身从 10-11 起写，没套用这套印。后来因行号错位数出的「合不上」不要和这 30 处混用。正文无配图。作者卡 GitHub／X／website 均为空。",
+      "导流：https://zenn.dev/tasukina/books/claude-code-records-fact-check GET 200（作者书，正文写明有料、1,000 日元，第 1 章免费）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先数清已发布稿件里有多少句和记录对不上，再谈「按记录写就不会写错」",
+        body: "请按实测算一算：对照了多少篇已发布文章、几份书稿；对不上的有几处，其中多少处是发布之后才发现的；标记规则是哪一天定的，从哪一天以后起草的稿件才开始用，有没有回溯已经发布的文章，书稿有没有套用这套印。文中的「公司」如果不是登记法人，要按原文说明。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者把 Claude Code 接到每天的记录上写 note 和书稿，对照后发现已发布稿件里仍有对不上的句子。",
+      "14 篇 note 和 1 份书稿里共 30 处对不上，其中 19 处是发布之后才发现的。",
+      "标记规则在 10 月 11 日定下来，从 10 月 13 日以后起草的稿件才开始用，不回溯已发布文章；本篇也按记录写成再由人核对。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T12:28:25.051+09:00 → UTC 2026-11-03T03:28:25Z、Asia/Shanghai 2026-11-03 11:28:25；bodyUpdatedAt 与发布相同；取 published → 2026-11-03；GET 200（UA MiraBot/1.0））：tasukina 在《Claude Code に書かせた記事の事実の文に、出典の印を付けさせて照合する》记下 30 处和 19 处。",
+      "「公司」不是登记法人。标记不回溯已发布文章，书稿也未套用这套印。同作者 4 小时无人篇及 135 pool 已有篇不再拾取。",
+    ],
   }
 ];
 
