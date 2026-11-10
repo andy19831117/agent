@@ -72057,6 +72057,59 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "1023",
+    slug: "mitn-3d-7pit",
+    title: "mitna：在自己这套环境里给 Unreal Engine 5.8 打开官方实验性 MCP，用自写脚本让 AI 操作 Unreal Editor。装上之后 3 天，用「操作交给 AI、验收留在人」做成了回合制僵尸 FPS 的核心（射击、换弹、回合推进、局内经济），并配上策划文档、武器数据、地图自动生成、用脚本驱动 Blender 做的枪模，以及用代码托管合成器做的战斗 BGM。环境里能看到 52 个 toolset（他说官方是 50 个以上，会随插件增减）。踩了 7 个坑，其中编辑器弹出模态对话框时，initialize 会按他这边的超时设置沉默，他在这上面等了 180 秒乘 3 次。这些是作者自己这 3 天、这一套连接上的记录，不可外推到别人的版本、机器或以后的官方接口。",
+    summary: "mitna 用 UE5.8 官方实验性 MCP 和自写脚本，让 AI 操作编辑器，3 天做出回合制僵尸 FPS 的核心，并记下 7 个坑。他这套环境里是 52 个 toolset。模态对话框堵住游戏线程时，initialize 按他的超时沉默，他等了 180 秒乘 3 次。这些是作者自己这 3 天的记录，不可外推。",
+    description: "面向已经想把 Unreal Editor 交给特工的人：把 3 天、52 个 toolset、7 个坑和 180 秒乘 3 次写成门禁，区别于只说「官方 MCP 已经能直接操作编辑器」却没有写出自己踩到哪些静默失败的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/mitna/articles/ue58-official-mcp-claude-code",
+    sourceLabel: "zenn.dev·mitna 实践帖",
+    upvotes: 914,
+    trending: false,
+    tags: [
+      "unreal",
+      "mcp",
+      "claude",
+      "gamedev",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mitna/articles/ue58-official-mcp-claude-code",
+      label: "zenn.dev·mitna《AIにUnreal Editorを直接操作させて3日でゾンビFPSの土台を作った ── UE5.8公式MCP実測・落とし穴7選》",
+      date: "2026-07-06",
+      dateLabel: "发布",
+    },
+    approach: "他把官方 MCP 注册成 HTTP 服务，端点写的是本机 http://127.0.0.1:8000/mcp，运输是 streamable HTTP。没有让 Claude Code 直连 .mcp.json，而是用自写脚本发请求，好自己控制握手重试。编辑器里的操作由 AI 做，人只看结果；他不建议在还有「静默死掉」的行为时做长时间无人值守。",
+    outcomes: [
+      "源披露：装上 UE5.8 之后 3 天，作者这套环境里做到了回合制僵尸 FPS 的核心系统，以及策划文档、武器数据、地图生成、枪模和战斗 BGM。toolset 在他这套环境里是 52 个，正文同时写官方是 50 个以上、会随插件增减。7 个坑是这篇文章的主体。这些是作者自己这 3 天、这一套连接上的记录，不可外推到别人的版本或机器。",
+      "第 2 个坑：编辑器崩溃后再启动，若弹出「要不要恢复包」一类模态对话框，会堵住游戏线程。端口已经在听，toolset 注册日志也出来了，initialize 却按客户端超时设置长时间沉默；他这边超时是 180 秒，这样等了 3 次。第 1 个坑是 initialize 有时返回空应答，之后整段会话作废，所以他给 session_init() 加了重试。缩短名的 toolset、不完整的对象路径、以及 CaptureViewport 省掉 captureTransform，他都写成自己实测会失败。",
+      "其余几坑包括：用管道包住进程后 exit code 消失，崩溃看起来像成功；Windows 的 cp932 下日文输出会坏掉；urllib 读 SSE 时正文会空；未保存的 actor 有时会消失；PIE（在编辑器里玩）时抓到的是「另一个世界」。run() 必须返回 dict，模块只允许 json／math／re／copy／datetime／time，这些也是他实测对上的。正文演示视频嵌在页里。2026-07-07 追记指向他的一本讲解「捏造对策」的书，本编和后记可免费读，付费的是最后一章。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-07-06T18:16:24.672+09:00 → UTC 2026-07-06T09:16:24Z、Asia/Shanghai 2026-07-06 17:16:24；bodyUpdatedAt 2026-07-07T07:13:07.103+09:00，晚于发布且跨到 07-07，仍取 published → 2026-07-06。不要因更新或追记写成 2026-07-07。不要把 50 个以上和作者环境里的 52 个写成同一句「官方就是 52」。180 秒是他这边的超时，乘 3 次不要写成官方固定值。本机端点 http://127.0.0.1:8000/mcp 按源文原样写出，未当公网链去核，不列入可达。Unreal／Windows 不在 18 值枚举里，不填进 platforms。正文「Claude Code」只出现在「Claude Code みたいなAIエージェント」这类举例，以及「Claude Code の .mcp.json に…直結もできるはずだけど、ミトナは 自前スクリプトで叩く方式」；话题标签 claudecode 不能代替这次实践，platforms=[]，不要硬凑 claude。不要填 github。配图 1 张和 YouTube 嵌入须写完整 URL。",
+      "导流：作者的书 https://zenn.dev/mitna/books/context-rot-qa-defense 交付时 GET 200（标题 ねごとは寝て言え！Claude Code ── 文脈腐敗（Context Rot）に立ち向かい、因果を成立させる運用実装），按作者产品导流披露，可列可达。一次资料：https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor GET 200（标题 Unreal MCP in Unreal Editor | Unreal Engine 5.9 Documentation）。配图：https://static.zenn.studio/user-upload/deployed-images/e00e399f21d5787dd4963df6.jpg?sha=23b911e0ff7fef2df0ececd72210643a3da34272 GET 200。正文演示嵌入 https://www.youtube-nocookie.com/embed/H_g0RcmhTtM GET 200；对应观看页 https://www.youtube.com/watch?v=H_g0RcmhTtM GET 200，未另跟随，页内标题／oembed 为「UE5.8でAI使って3日で作ったFPSサンプル」。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3 天、52 个 toolset 和 180 秒乘 3 次分别是什么，再谈「官方 MCP 已经能直接做游戏」",
+        body: "请按原文核算：3 天里作者说做到了哪些部分；50 个以上和 52 个各指什么。7 个坑里，initialize 空应答和模态对话框各是什么现象；180 秒是谁的超时，乘 3 次是哪一坑。不要把本机 http://127.0.0.1:8000/mcp 当成公网可访问地址。演示视频的标题是什么。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "打开 UE5.8 官方实验性 MCP，用自写脚本走本机 streamable HTTP，自己控制握手重试。",
+      "把编辑器里的操作交给 AI，人只看视口和运行结果，并按实测补上 toolset 全名、对象路径和 CaptureViewport 的必填参数。",
+      "记下 7 个静默失败，尤其是空应答和模态对话框导致的超时，不建议在这些还在时做长时间无人值守。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-06T18:16:24.672+09:00 → UTC 2026-07-06T09:16:24Z、Asia/Shanghai 2026-07-06 17:16:24；bodyUpdatedAt 2026-07-07T07:13:07.103+09:00，晚于发布且跨到 07-07，仍取 published → 2026-07-06；GET 200（UA MiraBot/1.0））：mitna 在《AIにUnreal Editorを直接操作させて3日でゾンビFPSの土台を作った ── UE5.8公式MCP実測・落とし穴7選》写 3 天和 7 个坑。不要因更新写成 2026-07-07。导流书页 GET 200。本机端点未当公网链去核。YouTube 页内标题／oembed 为 UE5.8でAI使って3日で作ったFPSサンプル。",
+      "52 是作者环境里的 toolset 数。180 秒乘 3 次是模态对话框那一坑。这次是未具名 AI + 自写脚本，不要写成 Claude Code 执行。platforms=[]，不要填 Unreal 或 github，不要硬凑 claude。",
+    ],
+  },
+  {
     id: "1024",
     slug: "ishi-42gb-8681",
     title: "ishizakahiroshi：Windows 上的 Codex 应用在他没用 WSL 里 Codex 的情况下，仍大约每 20 秒尝试连一次 Ubuntu。每次都会拉起 msrdc.exe，写下大约 5MB 的 RdClientAutoTrace 诊断日志。4 天里攒到 8,681 本，合计 42.7GB。F 盘占用到了 92.7%，而 4 天前刚整理到 64%。按天看，11 月 7 日 1.6GB、8 日 12.1GB、9 日 16.6GB、10 日到 14 时是 12.3GB。在应用里把「设置 → 连接 → WSL」的 Ubuntu 开关关掉之后，他盯了 70 秒，新的 wsl.exe／msrdc.exe 是 0 行。这些是作者自己这台机器、这 4 天上的计数，不可外推到别人的版本、磁盘或设置。",
@@ -72162,6 +72215,59 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "源帖（无 JSON-LD；Qiita API created_at 2026-10-25T07:21:34+09:00 → UTC 2026-10-24T22:21:34Z、Asia/Shanghai 2026-10-25 06:21:34；updated_at 2026-10-25T07:43:55+09:00，晚于发布、同日，仍取 created（published）→ 2026-10-25；GET 200（UA MiraBot/1.0））：potofo 在《ビジネスモデル2.0図解をClaude Agent Skill化して、Webサービスにしてみた》写 4 个坑和 240 秒超时。UTC 日期是 10-24，必须写成 2026-10-25。配图 24 张均 200。官方 Skills 概述页跟随后为区域不可用，不列入可达。",
       "shop.zukai.co 是他人付费工具包，须按导流披露。不要把 240 秒和超过 20 分钟、最多 5 分钟混成同一个时钟。正文是見送り，不要写成「先发送」。",
+    ],
+  },
+  {
+    id: "1026",
+    slug: "nwn-77of100-36",
+    title: "nwn：因为还剩 ChatGPT 额度，用 Codex 和 Astra Ultra Effort 大约花了 1 小时，把 Qwen3.5-0.8B 的回答语尾改成ずんだもん风的「のだ／なのだ」。开发集 100 题是 77／100。另外准备的新 50 题是 36／50。权重大约改了整个模型的 0.486%（ようです）。观察集是另外 60 对（名词、动词、い形容词各 20），和这 100 题不是同一组。这些是作者自己这一组题、这一次改权上的计数，不可外推到别的模型、题目或评价集。",
+    summary: "nwn 把 Qwen3.5-0.8B 的回答语尾改成ずんだもん风的「のだ／なのだ」：开发集 77／100，另外准备的新 50 题是 36／50。权重大约改了整个模型的 0.486%。观察集 60 对和这 100 题不是同一组。这些是作者自己这一组题上的计数，不可外推。",
+    description: "面向已经在改小模型回答语尾、却还没把开发集和另备的 50 题分开写的人：把 77／100 和 36／50 写成门禁，区别于只看开发集分数、或把对照集上的 36／50 和另备 50 题上的 36／50 当成同一组的实践。",
+    categories: [
+      "education",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/nwn/articles/cf9fe78aa33861",
+    sourceLabel: "zenn.dev·nwn 实践帖",
+    upvotes: 917,
+    trending: false,
+    tags: [
+      "llm",
+      "qwen",
+      "finetune",
+      "chatgpt",
+      "education",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nwn/articles/cf9fe78aa33861",
+      label: "zenn.dev·nwn《Weight-Space Programming やってみた(やらせてみた)》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "他先做了 60 对观察（通常体和「のだ」体；名词、动词、い形容词各 20），和评价用的已有 100 题不是同一组问题。随后只改了 0 起始第 19 层（第 20 个块）的 mlp.down_proj.weight 里的 3,654,154 个元素（形状 1024×3584），其余 319 张量不动。对照时在另一组 50 题上先把候选收到 25 题 16 个，再拿到完整 50 题上比强度；选定的是预先 1.25、事后 2.0，并按词性分开。",
+    outcomes: [
+      "源披露：开发集 100 题是 77／100。另外准备的新 50 题是 36／50。权重大约改了整个模型的 0.486%（ようです）。观察集 60 对（20＋20＋20）和这 100 题不是同一组。这些是作者自己这一组题、这一次改权上的计数，不可外推。",
+      "对照集（另一组 50 题）上：预先 1.25 是 29／50，强度 2 是 23／50，1.25 再事后 0.5 是 33／50，1.25 再事后 2 是 36／50，按词性分开后再用 1.25＋事后 2 是 40／50。他最后选用的是预先 1.25、事后 2.0 且按词性分开。正文写出的「另备 50 题 36／50」和对照集上「1.25＋事后 2 → 36／50」分数相同，但不是同一组题，不要混用。",
+      "已有 100 题里，9 题会重复同一回答，10 题撞上生成上限。只改了 0 起始第 19 层（第 20 个块）的 mlp.down_proj.weight，3,654,154／(1024×3584) 个元素，其余 319 张量未改。作者把改过的模型放到 Hugging Face，并在文末用一段对话演示（样本回答里出现「百円玉を三枚集めると 300 円になるのだ」，这是题面里的例子，不是作者的花费）。Codex 和 Astra Ultra Effort 大约花了 1 小时，这是他的工具说明，不是本条硬窗。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-07T09:57:13.508+09:00 → UTC 2026-11-07T00:57:13Z、Asia/Shanghai 2026-11-07 08:57:13；bodyUpdatedAt 2026-11-07T13:36:35.191+09:00，晚于发布、同日，仍取 published → 2026-11-07。不要把 77／100、另备 50 题的 36／50、对照集上的 29／23／33／36／40，以及观察集 60 对混成同一组。另备 50 题的 36／50 和对照集「1.25＋事后 2 → 36／50」分数相同，不是同一组题。0.486% 原文带「ようです」，按约数写。不要把样本回答里的「300 円」写成作者花费。正文「ChatGPT」只出现在额度说明里（「ChatGPTのトークンが余っていたこともあり、CodexでAstraを使って」），随后把改权交给 Astra(Ultra Effort)；这是额度／配额，不是这次改权的执行方。Codex／Astra 继续披露，但不在 18 值枚举里，不填进 platforms。platforms=[]，不要硬凑 chatgpt。不要填 github。不要和近批 token／耗时条混用。本条硬窗是通过题数，不是 token。正文任务是把回答语尾改成ずんだもん风的「のだ／なのだ」，不要写成把第一人称从「ボク」改成「オラ」。另备 50 题正文没有写成未公开。",
+      "导流：作者放出的模型 https://huggingface.co/auhulu/Qwen3.5-0.8B-Zundamon 交付时 GET 200（标题 auhulu/Qwen3.5-0.8B-Zundamon · Hugging Face），按作者产品导流披露，可列可达。相关推文 https://x.com/rikiyatakehi/status/2117313742891327994 交付时 GET 200（标题 Rikiya Takehi on X: \"We asked GPT-6 Astra to edit Qwen3.5-0.8B weights to improve math. It directly changed only 0.016% of weights, fixing 0.8B's reasoning loops & improving math u），这是他人相关推文，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 77／100 和两组 36／50 是不是同一组题，再谈「改了语尾就成功了」",
+        body: "请按原文核算：开发集是多少题、多少通过；另外准备的新 50 题是多少。对照集上 29、23、33、36、40 各对应哪一种强度，和另备 50 题的 36／50 是不是同一组。观察集 60 对怎么构成，和 100 题是不是同一组。改了哪一层、多少元素，0.486% 原文有没有「ようです」。任务是把语尾改成「のだ／なのだ」，不要写成第一人称ボク／オラ。不要把样本里的 300 円写成花费。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先用 60 对通常体／「のだ」体观察，再只改第 20 个块的 mlp.down_proj.weight 里的部分元素。",
+      "在对照用的 50 题上比较预先和事后强度，再按词性分开，选定预先 1.25、事后 2.0。",
+      "用开发集 100 题和另外准备的 50 题分开报告，不把对照集上的分数写成另备集的分数。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T09:57:13.508+09:00 → UTC 2026-11-07T00:57:13Z、Asia/Shanghai 2026-11-07 08:57:13；bodyUpdatedAt 2026-11-07T13:36:35.191+09:00，晚于发布、同日，仍取 published → 2026-11-07；GET 200（UA MiraBot/1.0））：nwn 在《Weight-Space Programming やってみた(やらせてみた)》写把语尾改成「のだ／なのだ」，以及 77／100 和 36／50。导流 Hugging Face 模型页 GET 200。platforms=[]，不要把额度说明里的 ChatGPT 写成执行方。Codex／Astra 不填进 platforms。不要把 300 円写成花费。",
+      "另备 50 题的 36／50 和对照集上的 36／50 不是同一组。0.486% 带「ようです」。Codex／Astra 不填进 platforms，也不要把额度说明里的 ChatGPT 写成执行方，不要硬凑 chatgpt。正文任务是语尾「のだ／なのだ」，不要写成ボク／オラ。另备 50 题没有写成未公开。",
     ],
   },
   {
