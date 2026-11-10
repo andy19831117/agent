@@ -58223,6 +58223,441 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
       dateLabel: "发布",
     },
   },
+  {
+    id: "798",
+    slug: "kosuke-320mail-15old-1rule",
+    title: "kosuke：用正则 lint 检查 AI 房地产回复——素的 160 通里 27 通要改，其中 15 通主动写出值下前价格；请求里写上 5 条规则后，160 通只剩 1 通嵌字；349 次调用失败 0 次",
+    summary: "个人（kosukeozawa｜协助房产与教育公司做 AI 导入，并做房产向 AI 服务）；披露用 Codex CLI 0.163.0 的 gpt-6.1-terra／gpt-6-luna，对虚构 4 套房、5 类询问各跑 4 回，素的与写规则两条件共 320 通，再加让 AI 按指摘改写 29 通，合计 349 次、失败 0 次、中位数 6.0 秒。素的 160 通里要改 27 通，值下前价格占 15 通，「最高」「廉价」等需依据的词是 0 通；请求里写上 5 条规则后，问题减到 160 通中 1 通（嵌字），值下前价格 16 通中 0 通。不代你同样加上规则和正则 lint，就等于下一封客户回信也不会再写出值下前价格。",
+    description: "面向已经把「禁止夸张词」写进提示词就当成房产回复已合规、却还没按同一批询问实测会不会主动写出值下前价格的人：把「Agent 合做房产回复须同时报素的问题通数、值下前价格通数、写规则后剩余通数，以及 lint 漏检与误检」写成门禁，区别于会则 RAG，以及手册 Skill 一次修订。",
+    categories: [
+      "enterprise",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/kosukeozawa/articles/ai-realestate-email-lint",
+    sourceLabel: "zenn.dev·kosukeozawa 实践帖",
+    upvotes: 689,
+    trending: false,
+    tags: [
+      "Codex",
+      "lint",
+      "eval",
+      "real-estate",
+      "GPT",
+    ],
+    howItWorks: [
+      "粘贴房产回复边界（是不是约同一批询问下要同时记下素的问题通数与值下前价格通数、是不是约写规则后剩余通数要单独记账、是不是约 lint 漏检与误检要分开报）以及「绝不可把禁止夸张词已经写入提示词写成已合规已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 320 通／349 次失败 0、素的 160 通里 27 通要改（值下前价格 15 通）、写规则后 160 通中 1 通，以及 v2 在新 80 通上指摘 14 通中的 13 通、误检 2 通",
+      "人工保留 15／27／1 与 3 通连现价一并删掉来自哪一次自述；Agent 不代你保证「同样加上 5 条规则和正则 lint 就等于下一封客户回信也不会再写出值下前价格」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T11:01:44.528+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T02:01:44Z、Asia/Shanghai 2026-11-10 10:01:44；bodyUpdatedAt 同发布；取 published；GET 200（UA MiraBot/1.0））：kosuke 在《AIの不動産メールをlintしたら、誇大語より値下げ前の価格が問題だった》写 320 通 lint。文内硬链 https://ai.sanvia.co.jp/articles/ai-property-description GET 200（可达作者站点相关文导流），https://ai.sanvia.co.jp/authors/kosuke GET 200（可达作者页导流）。源页作者卡 https://ai.sanvia.co.jp/ GET 200（可达站点导流），https://x.com/kosukecat12 GET 200（可达社交主页导流），https://github.com/ozko00 GET 200（可达作者 GitHub 导流）。文内出典 https://www.rftc.jp/webkanri/kanri/wp-content/uploads/2025/08/20250826_kiyakushuu.pdf GET 200（行业规约 PDF，不是作者产品，已核链、不列入可达导流）。Zenn 源仓 https://github.com/ozko00/zenn-content/blob/main/articles/ai-realestate-email-lint.md GET 200（文章源文件，不列入可达导流）。实验窗口为 2026-11-10 10:48〜10:56（日本时间），模型是 Codex CLI 0.163.0 的 gpt-6.1-terra／gpt-6-luna。",
+      "与会则 RAG、手册 Skill 一次修订不同：本条不是把切分或手册修订耗时当主线，而是同一批询问下，夸张词为 0 时会不会仍写出值下前价格、以及正则 lint 漏检与误检能否分开记账的门禁",
+    ],
+    approach: `kosukeozawa（kosuke）在《AIの不動産メールをlintしたら、誇大語より値下げ前の価格が問題だった》（页内 2026-11-10）写明：房产公司让 AI 起草给客户的回复时，人通常先担心「最高」「廉价」「完美」这类没有依据就不能用的词。作者用虚构的 4 套房、5 类询问，经 Codex CLI 0.163.0 的 gpt-6.1-terra 与 gpt-6-luna，按素的与写规则两条件各 4 回共生成 320 通，再用只含正则、不让 LLM 判定的 lint 去看。需依据的词是 0 回，审查或打折承诺也是 0 回；反过来，没被问到值下经过却写出值下前价格的情况最多——值下过的房在价格或推荐类询问里，素的 16 通中有 15 通写了「从 3,480 万改到 3,280 万」。素的 160 通里要改的是 27 通（值下前价格 15、嵌字 4、邮件里留下 Markdown 的 ** 4、把物件信息里没有的事说死 4、租赁却写成「卖方」1；有的通重叠了两项）。请求里写上 5 条规则后，问题减到 160 通中 1 通（嵌字），值下前价格 16 通中 0 通。实验在 2026-11-10 10:48〜10:56（日本时间）做完，连让 AI 按指摘改写的 29 通共 349 次，失败 0 次，单次中位数 6.0 秒。
+
+第一版 lint（v1）在制作用 80 通上指摘了 20 通，真正有问题的只有 7 通：日文金额写法会把「7万2,000円」里的「2,000円」当成物件信息没有的数字，合计额与「审查」等正确答复也会被误伤，同义（犬／猫／车）和形式规则当时还没有，漏了 6 通。作者改成 v2 后，用同样条件新做的 80 通验证：有问题的 14 通里指摘了 13 通，漏检 1 通（内见日程说死，当时没有这条规则），误检 2 通（土地回复里正确谈到宠物或停车，只是没用「确认」一词）。把 lint 指摘过的 29 通（真问题 26、误检 3）交回 AI 并要求只改被指摘处后，真问题 26 通都没了，但值下前价格被删掉的 15 通里，有 3 通连现在的 3,280 万也一起没了。作者建议的用法是「请求里先写规则 → lint → 只对有指摘的由人读」；若再让 AI 改，改完还要再跑一次 lint 并过目。
+
+本场景据此输出「Agent 合做房产回复须同时检查素的问题通数、值下前价格通数、写规则后剩余通数，以及 lint 漏检与误检，不能只报已经禁止夸张词」提纲。禁止把 15／27／1 写成任意客户回信同分布，或把加上规则写成已合规已门禁。`,
+    outcomes: [
+      "源披露作者用 Codex CLI 对虚构 4 套房、5 类询问做 320 通回复 lint：素的 160 通里要改 27 通，其中 15 通主动写出值下前价格，「最高」「廉价」等需依据的词是 0 通；请求里写上 5 条规则后，问题减到 160 通中 1 通（嵌字），值下前价格 16 通中 0 通；含改写在内共 349 次、失败 0 次、中位数 6.0 秒。属作者 2026-11-10 10:48〜10:56（日本时间）对虚构物件与两种模型的一次记录（不是真实客户来信，亦未判断单封回信是否构成广告上的「表示」），不可外推为你同样加上 5 条规则和正则 lint 就等于下一封客户回信也不会再写出值下前价格，或「禁止夸张词」已经写入提示词就等于已合规已门禁。",
+      "能把「可写成同时检查素的问题通数、值下前价格通数、写规则后剩余通数，以及 lint 漏检与误检」与「必须人完成的规约判断／导流链」拆开。",
+      "为把「禁止夸张词已经写入提示词」当成已合规已门禁，以及只让 AI 按指摘改写却不检查现价是否被一并删掉提供提问清单。",
+    ],
+    caveats: [
+      "320 通／349 次失败 0／素的 27 通／值下前价格 15 通／写规则后 1 通／v2 在新 80 通上 13／14 指摘、漏检 1、误检 2／15 通中 3 通连现价一并删掉，均为作者自述；物件是虚构的 4 件、询问只有 5 类；判定由撰写侧完成，作者写明未判断是否违反表示规约；模型是 Codex CLI 0.163.0 的 gpt-6.1-terra／gpt-6-luna。",
+      "文内硬链 https://ai.sanvia.co.jp/articles/ai-property-description 为作者站点相关文导流，本机 curl（UA MiraBot/1.0）GET 200（可达相关实践导流）。https://ai.sanvia.co.jp/authors/kosuke GET 200（可达作者页导流）。源页作者卡 https://ai.sanvia.co.jp/ GET 200（可达站点导流）；https://x.com/kosukecat12 GET 200（可达社交主页导流）；https://github.com/ozko00 GET 200（可达作者 GitHub 导流）。文内出典 https://www.rftc.jp/webkanri/kanri/wp-content/uploads/2025/08/20250826_kiyakushuu.pdf GET 200（行业规约 PDF，不是作者产品，已核链、不列入可达导流）。Zenn 源仓 https://github.com/ozko00/zenn-content/blob/main/articles/ai-realestate-email-lint.md GET 200（文章源文件，不列入可达导流）。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / kosukeozawa），不是 OpenAI 或房产公正交易协议会的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "房产回复须先按同一批询问实测会不会写出值下前价格",
+        body: `你是资深 Agent 合规回复教练。只根据用户边界写门禁，不要编造已不再写出值下前价格已门禁。
+
+现在是不是约同一批询问下要同时记下素的问题通数与值下前价格通数：{{whether_about_old_price_count}}
+是不是约写规则后剩余通数要单独记账：{{whether_about_rules_in_prompt}}
+是不是约 lint 漏检与误检要分开报：{{whether_about_lint_miss_fp}}
+
+输出 Markdown：
+1. 为什么「禁止夸张词已经写入提示词」不能写成房产回复已合规已门禁
+2. 应怎样同时检查素的问题通数、值下前价格通数、写规则后剩余通数，以及 lint 漏检与误检
+3. 只有一次 320 通／15 通值下前价格账本时，应怎样单独记账，而不是写成下一封也必然同分布
+4. 人必须完成的清单（规约判断、导流链）
+禁止声称「同样加上 5 条规则和正则 lint 就等于下一封客户回信也不会再写出值下前价格」；禁止把禁止夸张词已经写入提示词写成已发现已门禁。`,
+      },
+      {
+        title: "三百二十通值下前价格复盘",
+        body: `报告上可以写素的 160 通里 27 通要改、其中 15 通写出值下前价格、写规则后只剩 1 通、让 AI 改写时 15 通中 3 通连现价一并删掉；但这是虚构物件上的一次记录。请写复盘提纲。
+
+现象：{{three_twenty_old_price_split}}
+
+输出：
+1. 更像模型爱用夸张词，还是没被问到也会把值下前价格写进回复、且改写时可能把现价一起删掉
+2. 最小复验顺序（先对照素的与写规则两条件→再看 lint 漏检与误检→再决定能不能对外说已合规）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上正则 lint 就等于任意客户回信同分布」，或「夸张词是 0 通就等于已合规已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kosukeozawa/articles/ai-realestate-email-lint",
+      label: "zenn.dev · AIの不動産メールをlintしたら、誇大語より値下げ前の価格が問題だった",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "799",
+    slug: "numarn-6cancel-0task-21",
+    title: "numarn：MCP「追加确认」在 Claude Code 2.1.311 的无人 claude -p 下 6/6 回都返回 cancel，且不报失败；「Tasks」在能力名单里 3/3 回都没出现，标成必需的工具仍按普通调用进来",
+    summary: "个人（numarn）；披露用 Claude Code 2.1.311、claude-sonnet-5-5、官方 SDK 1.32.2，自写只做追加确认的 MCP 服务器，在无人自动执行 claude -p 下，form 3/3 回、url 3/3 回共 6/6 回都返回 {\"action\":\"cancel\"}，而退出码 0、标准错误 0 字节、is_error 为 false、permission_denials 为空。连接时的能力名单里 3/3 回都没有 tasks；即便工具声明 taskSupport:\"required\"，3/3 回 hasTaskField 仍为 false，工具列表却从 40 件增到 41 件并按成功返回。不代你同样在无人 -p 下接到 cancel，就等于下一台 Claude Code 也会把追加确认当成已失败已拦住，或 Tasks 已经按任务方式调用。",
+    description: "面向已经把「文档写了支持 Elicitations／Tasks」或「退出码是 0」当成 MCP 追加确认与任务调用已门禁、却还没在无人 -p 下读返回的 action 与能力名单的人：把「Agent 合做 MCP 对接须同时报追加确认往返次数与 action、是否当失败、Tasks 是否出现在能力名单」写成门禁，区别于 claude -p 写入被拒仍 exit 0，以及费用／Effort 对照。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "github",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/numarn/articles/mcp-tasks-elicitation-sdk-support-handson",
+    sourceLabel: "zenn.dev·numarn 实践帖",
+    upvotes: 690,
+    trending: false,
+    tags: [
+      "MCP",
+      "Claude-Code",
+      "elicitation",
+      "tasks",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 MCP 对接边界（是不是约无人 -p 下要同时记下追加确认往返与返回的 action、是不是约 cancel 不得当成失败才算拦住、是不是约 Tasks 是否出现在能力名单要单独看）以及「绝不可把文档写了支持或退出码是 0 写成已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 form 3/3、url 3/3 共 6/6 回 cancel，退出码 0／is_error false，以及 initialize 3/3 回没有 tasks、required 工具 3/3 回仍无任务印",
+      "人工保留 6/6、3/3 与 SDK 7 条件各 3 回共 21 回来自哪一次自述；Agent 不代你保证「同样在无人 -p 下接到 cancel 就等于下一台也会把追加确认当成已失败已拦住，或 Tasks 已经按任务方式调用」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T11:42:22.338+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T02:42:22Z、Asia/Shanghai 2026-11-08 10:42:22；bodyUpdatedAt 2026-10-27T13:28:53.853+09:00（早于发布时间）→ 同时刻为 UTC 2026-10-27T04:28:53Z、Asia/Shanghai 2026-10-27 12:28:53；取 published；GET 200（UA MiraBot/1.0））：ぬまーん／numarn 在《MCPの「Elicitations」は6/6回cancel、「Tasks」はClaude Codeが名乗らなかった》写 2.1.311 实测。正文未见作者产品／站点硬导流可列入可达。文内出发用链 https://x.com/cursorvers/status/2113752331309437080 GET 200（他人推文，作者写明未直接打开原帖对照，不列入可达导流）。clientInfo 中的 https://claude.com/claude-code GET 200（厂商站点，已核链、不列入可达导流）。复现步骤中的 https://github.com/modelcontextprotocol/modelcontextprotocol GET 200（官方规格仓，已核链、不列入可达导流）。作者写明 {\"action\":\"accept\"} 路径因无人自动执行无法验证。",
+      "与 claude -p 写入被拒仍 exit 0、费用／Effort 对照不同：本条不是把写入被拒的退出码或调用费用当主线，而是无人 -p 下追加确认是否真往返、返回的是不是 cancel、以及 Tasks 有没有出现在能力名单的门禁。同作者「1 行 vs 仕様」费用篇未入选。",
+    ],
+    approach: `numarn（ぬまーんのZenn記事）在《MCPの「Elicitations」は6/6回cancel、「Tasks」はClaude Codeが名乗らなかった》（页内 2026-11-08，正文更新早于发布）写明：在 X 上看到 MCP 被加上 Tasks 与 Elicitations 的介绍后，不把「对应」这类句子当依据，只用自己在 Claude Code 2.1.311 与官方 SDK 1.32.2 上跑出来的件数、版本、错误码和 JSON 字段。环境是 Linux、Node v22.22.0，主要应答模型按 modelUsage 判定为 claude-sonnet-5-5。先跑一次 claude -p "OK"，退出码 0、耗时 3,156ms，确认自动执行本身能跑。再自写只公开 confirm_delete 的 MCP 服务器，被叫到就 elicitInput 问「Really delete /tmp/x?」，并把返回值记进日志。无人自动执行下跑了 3 回 form、再 3 回 url，服务器日志 3 回相同：往返成立，但返回都是 {"action":"cancel"}，合计 6/6 回 cancel。作者强调更要小心的是 Claude Code 并不把这当成失败——3/3 回退出码 0、标准错误 0 字节、is_error 为 false、permission_denials 为空数组，连接状态仍是 connected。有人点接受的路径，作者标明验证不可：自动执行没有人可输入的画面。
+
+Tasks 一侧，initialize 的 capabilities 3/3 回都只有 roots 与 elicitation，没有 tasks。另做声明了 taskSupport:"required" 的 slow_job，3/3 回 hasTaskField 仍为 false，工具列表却从 40 件增到 41 件，调用按成功返回。作者又在 SDK 内存传输上把 7 个指名条件各跑 3 回共 21 回，同条件 3 回输出完全一致：只申报 url 却发出 form 时，错误是 -32603，且 elicitation/create 根本没有出现在往来里（消息数从 7 件减到 5 件）；申报了却没注册处理器则是 -32601。规格最新版 2026-07-28 里，名字含 Task 的类型定义从 16 件减到 0 件；SDK 1.32.2 持有的协议版仍是 "2025-11-25"，dist/esm 里 tasks/update 为 0 件。规格仓用压缩包下载曾 HTTP 403，git clone --depth 1 用 3.595s 成功。
+
+本场景据此输出「Agent 合做 MCP 对接须同时检查追加确认往返与 action、cancel 是否被当成失败、Tasks 是否出现在能力名单，不能只报文档写了支持或退出码是 0」提纲。禁止把 6/6 cancel 写成任意客户端同分布，或把退出码 0 写成追加确认已拦住已门禁。`,
+    outcomes: [
+      "源披露作者在 Claude Code 2.1.311 的无人 claude -p 下自写 MCP 服务器实测：追加确认往返成立，form 3/3 回、url 3/3 回共 6/6 回都返回 {\"action\":\"cancel\"}，且退出码 0、is_error 为 false、permission_denials 为空；initialize 3/3 回的能力名单里没有 tasks，声明 taskSupport:\"required\" 的工具 3/3 回仍无任务印，工具列表从 40 件增到 41 件并按成功返回。属作者这一次在 2.1.311／SDK 1.32.2／自写服务器上的记录（有人点接受的路径标明验证不可，亦未测真实远程 MCP 服务器），不可外推为你同样在无人 -p 下接到 cancel 就等于下一台 Claude Code 也会把追加确认当成已失败已拦住，或 Tasks 已经按任务方式调用，或文档写了支持就等于已门禁。",
+      "能把「可写成同时检查追加确认往返与 action、cancel 是否被当成失败、Tasks 是否出现在能力名单」与「必须人完成的有人接受路径核对／导流链」拆开。",
+      "为把「文档写了支持」或「退出码是 0」当成 MCP 追加确认与任务调用已门禁，以及只看工具已经出现在列表里却不看有没有任务印提供提问清单。",
+    ],
+    caveats: [
+      "6/6 回 cancel、退出码 0／is_error false、Tasks 3/3 回未现身、required 工具 3/3 回无任务印、SDK 7 条件 21 回同条件一致，均为作者自述；测的是 2.1.311 与自写服务器，不是真实远程 MCP；{\"action\":\"accept\"} 路径、对话画面里的样子、扩展版 2026-07-28 的任务实际动作，作者标明验证不可。出发用的 X 帖，作者写明未直接打开原帖对照。",
+      "正文未见作者产品／站点硬导流可列入可达。文内 https://x.com/cursorvers/status/2113752331309437080 GET 200（他人推文，不列入可达导流）。https://claude.com/claude-code GET 200（厂商站点，已核链、不列入可达导流）。https://github.com/modelcontextprotocol/modelcontextprotocol GET 200（官方规格仓，已核链、不列入可达导流）。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / numarn），不是 Anthropic 或 MCP 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "MCP 追加确认须先在无人 -p 下读返回的 action",
+        body: `你是资深 Agent MCP 对接教练。只根据用户边界写门禁，不要编造追加确认已失败已拦住已门禁。
+
+现在是不是约无人 -p 下要同时记下追加确认往返与返回的 action：{{whether_about_cancel_action}}
+是不是约 cancel 不得当成失败才算拦住：{{whether_about_not_treated_as_error}}
+是不是约 Tasks 是否出现在能力名单要单独看：{{whether_about_tasks_in_caps}}
+
+输出 Markdown：
+1. 为什么「文档写了支持」或「退出码是 0」不能写成 MCP 追加确认与任务调用已发现已门禁
+2. 应怎样同时检查追加确认往返与 action、cancel 是否被当成失败、Tasks 是否出现在能力名单
+3. 只有一次 6/6 回 cancel 账本时，应怎样单独记账，而不是写成下一台也必然同分布
+4. 人必须完成的清单（有人接受路径核对、导流链）
+禁止声称「同样在无人 -p 下接到 cancel 就等于下一台也会把追加确认当成已失败已拦住」；禁止把文档写了支持或退出码是 0 写成已发现已门禁。`,
+      },
+      {
+        title: "六回 cancel 与无 Tasks 复盘",
+        body: `报告上可以写追加确认 6/6 回都返回 cancel 且不报失败、Tasks 3/3 回未出现在能力名单、required 工具仍按普通调用进来；但这是 2.1.311 与自写服务器上的一次记录。请写复盘提纲。
+
+现象：{{six_cancel_no_task}}
+
+输出：
+1. 更像协议没往返，还是往返了但无人可答所以一律 cancel、且客户端不当成失败
+2. 最小复验顺序（先对照返回的 action→再看退出码与 is_error→再看能力名单里有没有 tasks→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上退出码 0 就等于已拦住」，或「工具已出现在列表里就等于已经按任务方式调用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/numarn/articles/mcp-tasks-elicitation-sdk-support-handson",
+      label: "zenn.dev · MCPの「Elicitations」は6/6回cancel、「Tasks」はClaude Codeが名乗らなかった",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "800",
+    slug: "ciel-71464-19447-11m4",
+    title: "Ciel：把挤在一个窗口里的工作拆开——文章窗的 CLAUDE.md 从 71,464 字节收到 19,447 字节（约原先的 27%），人从打字到「做完」用了 11 分钟；「谁按发布钮」在 7 天里改了 4 次，只靠传话时纸会留在旧角色",
+    summary: "个人（ciel_lab／Ciel｜公司职员，不写代码，用指示让 AI 做业务系统）；披露 10 月 29 日早晨，文章窗除了博客还拿着商品页、X 文稿、分发草稿和测验试卷，CLAUDE.md 有 71,464 字节。人在 09:48:39 向汇总窗提出只要博客，到 09:59:32 文章窗回报做完，用了 11 分钟，CLAUDE.md 变成 19,447 字节，约原先的 27%。卖场窗是当天新建的，第一次发送因窗口没开而失败，打开 9 秒后再送才送到。「谁按发布钮」在能对上的记录里 7 天改了 4 次；10 月 27 日 19 时只改了传话，文章窗的纸仍写着秘书按，直到 11 月 2 日才改回一行。不代你同样再开几个窗口，就等于下一份 CLAUDE.md 也不会再涨到 71KB，或按钮的角色不会再和纸不一致。",
+    description: "面向已经把「再开一个窗口」或「已经口头改了按钮角色」当成分工已门禁、却还没检查接收窗的 CLAUDE.md 里是否写了持有物／已交出物／按钮角色的人：把「Agent 合做多窗分工须同时报一份纸的字节数变化、从人打字到做完的分钟数、按钮角色改了几次以及纸与传话是否一致」写成门禁，区别于 Thin Orchestrator 父窗只传路径，以及合并 Skill。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/ciel_lab/articles/5a9291e5cc3128",
+    sourceLabel: "zenn.dev·ciel_lab／Ciel 实践帖",
+    upvotes: 691,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "CLAUDE.md",
+      "multi-session",
+      "roles",
+      "hooks",
+    ],
+    howItWorks: [
+      "粘贴多窗分工边界（是不是约一份纸的字节数要单独记账、是不是约从人打字到做完的分钟数要记下、是不是约按钮角色须写在接收窗的纸上而不能只靠传话）以及「绝不可把再开一个窗口或已经口头改了角色写成已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 71,464→19,447 字节（约 27%）、11 分钟，以及 7 天里按钮角色改了 4 次、只改传话时纸会留在旧角色",
+      "人工保留 71,464／19,447／11 分钟与 4 次改角色来自哪一次自述；Agent 不代你保证「同样再开几个窗口就等于下一份 CLAUDE.md 也不会再涨到 71KB，或按钮的角色不会再和纸不一致」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T10:09:44.487+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T01:09:44Z、Asia/Shanghai 2026-11-07 09:09:44；bodyUpdatedAt 2026-11-07T09:02:46.398+09:00（早于发布时间）→ 同时刻为 UTC 2026-11-07T00:02:46Z、Asia/Shanghai 2026-11-07 08:02:46；取 published；GET 200（UA MiraBot/1.0））：Ciel 在《Claude Code の窓を増やしても、仕事は1つの窓に集まる。役の分け方と CLAUDE.md の書き方》写 71,464→19,447 字节与 11 分钟拆分。正文与作者卡均未见作者产品／站点硬导流可列入可达。作者写明变小不全是因为拆角色：09:45:08 另有一笔「请把 71KB 的纸变轻」的委托，文章窗把经过和投稿记录原样搬到了别的文件。",
+      "与 Thin Orchestrator（父窗只传路径）、合并 Skill 不同：本条不是把父窗少读正文或技能合并当主线，而是多窗之下一份纸的字节数、从人打字到做完的分钟数、以及按钮角色是否写在接收窗纸上的门禁",
+    ],
+    approach: `ciel_lab（Ciel）在《Claude Code の窓を増やしても、仕事は1つの窓に集まる。役の分け方と CLAUDE.md の書き方》（页内 2026-11-07，正文更新早于发布）写明：窗口开到两三个，拜托仍会堆到「话最快的那一扇」。10 月 29 日早晨，名叫文章窗的窗口除了博客，还拿着卖场商品页、X 的帖文和资料、分发物草稿、以及表计算的测验与评分，当天那份 CLAUDE.md 有 71,464 字节，Claude Code 每次开窗都会读。09:44:51 作者从电脑打给汇总窗，说文章窗忙成一团、纸也在变长；09:48:39 又打一通，希望文章窗只做博客并分开。36 秒后的 09:49:15 起 4 秒内，汇总窗把角色发给文章窗和接收的 4 扇窗。卖场窗是这天新建的，第一次发送因「窗口没开」没送到；09:49:26 打开窗口，09:49:35 重发后送到，距打开 9 秒、距第一次发送 20 秒。09:50:54 文章窗在 4 秒内给 4 扇接收窗发出要交的东西和复制去处；09:59:32 文章窗回报做完。从人打字起算是 11 分钟，CLAUDE.md 变成 19,447 字节，约原先的 27%。作者写明变小不全是因为拆角色：09:45:08 汇总窗另有一笔「请把现在 71KB 的纸变轻」的委托，文章窗把经过和投稿记录一个字没改地搬到了别的文件。
+
+按钮角色最容易晃。作者在能对上的窗口记录和变更历史上，看到「谁按文章发布钮」在 7 天里改了 4 次：10-27 14:56 改成秘书按，15:01 写进文章窗的纸并用 24 秒三窗对过；同日 19:03 只传话给秘书窗，改成汇总窗按、秘书做到前一步，文章窗的纸仍写着秘书按，第二天又补了一行；到 11-02 才改成「这扇窗自己按」的一行。作者的写法是：接收窗的纸上要同时写持有物、已交出物（含交给哪一扇、原件留在「移了/」且写明别碰）、按钮角色、以及不要去改的地方；改角色时不但发传话，也要改那一行。各窗还各有一个工作文件夹，东西在哪个文件夹，就不必再问窗口谁是主人。
+
+本场景据此输出「Agent 合做多窗分工须同时检查一份纸的字节数、从人打字到做完的分钟数、按钮角色改了几次以及纸与传话是否一致，不能只报已经再开了一个窗口」提纲。禁止把 71,464→19,447 写成任意分工同分布，或把再开窗口写成已不再堆到一扇窗已门禁。`,
+    outcomes: [
+      "源披露作者在 10 月 29 日早晨把挤在文章窗里的工作拆开：CLAUDE.md 从 71,464 字节收到 19,447 字节（约原先的 27%），人从 09:48:39 打字到 09:59:32 文章窗回报做完用了 11 分钟；卖场窗第一次发送因没打开而失败，打开 9 秒后再送才送到。「谁按发布钮」在能对上的记录里 7 天改了 4 次，10 月 27 日 19 时只改了传话，纸仍写着旧角色，直到 11 月 2 日才改回一行。属作者这一次窗口记录与变更历史上的自述（变小不全是拆角色，另有一笔把经过搬到别的文件的委托；按钮角色只统计对得上的记录），不可外推为你同样再开几个窗口就等于下一份 CLAUDE.md 也不会再涨到 71KB，或按钮的角色不会再和纸不一致，或「已经口头改了角色」就等于已门禁。",
+      "能把「可写成同时检查一份纸的字节数、从人打字到做完的分钟数、按钮角色改了几次以及纸与传话是否一致」与「必须人完成的纸面核对／导流链」拆开。",
+      "为把「再开一个窗口」或「已经口头改了按钮角色」当成分工已门禁，以及只加窗口却不把持有物／已交出物写进接收窗的纸提供提问清单。",
+    ],
+    caveats: [
+      "71,464→19,447 字节（约 27%）、11 分钟、卖场窗第一次发送失败后 9 秒重送成功、7 天里按钮角色改了 4 次，均为作者自述；变小不全是拆角色，09:45:08 另有一笔把经过和投稿记录搬到别的文件的委托；按钮角色只统计对得上的窗口记录和变更历史。",
+      "正文与源页作者卡均未见作者产品／站点硬导流可列入可达。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / ciel_lab／Ciel），不是 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "多窗分工须先检查接收窗的纸上有没有写按钮角色",
+        body: `你是资深 Agent 多窗分工教练。只根据用户边界写门禁，不要编造已不再堆到一扇窗已门禁。
+
+现在是不是约一份纸的字节数要单独记账：{{whether_about_bytes}}
+是不是约从人打字到做完的分钟数要记下：{{whether_about_eleven_min}}
+是不是约按钮角色须写在接收窗的纸上而不能只靠传话：{{whether_about_button_role_on_paper}}
+
+输出 Markdown：
+1. 为什么「再开一个窗口」或「已经口头改了角色」不能写成多窗分工已发现已门禁
+2. 应怎样同时检查一份纸的字节数、从人打字到做完的分钟数、按钮角色改了几次以及纸与传话是否一致
+3. 只有一次 71,464→19,447 字节／11 分钟账本时，应怎样单独记账，而不是写成下一份也必然同分布
+4. 人必须完成的清单（纸面核对、导流链）
+禁止声称「同样再开几个窗口就等于下一份 CLAUDE.md 也不会再涨到 71KB」；禁止把已经口头改了角色写成已发现已门禁。`,
+      },
+      {
+        title: "七万字节到一万九与四次改按钮复盘",
+        body: `报告上可以写 CLAUDE.md 从 71,464 字节收到 19,447 字节、11 分钟拆完、按钮角色 7 天改了 4 次且只改传话时纸会留在旧角色；但这是一次窗口记录上的自述。请写复盘提纲。
+
+现象：{{seventy_one_k_to_nineteen_k}}
+
+输出：
+1. 更像窗口太少，还是角色没写在接收窗的纸上，拜托仍会堆到话最快的那一扇
+2. 最小复验顺序（先对照持有物与已交出物是否写在纸上→再看按钮角色的纸与传话是否一致→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上几个窗口就等于任意分工同分布」，或「纸变短了就等于已不再堆到一扇窗已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ciel_lab/articles/5a9291e5cc3128",
+      label: "zenn.dev · Claude Code の窓を増やしても、仕事は1つの窓に集まる。役の分け方と CLAUDE.md の書き方",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "801",
+    slug: "hal220-17m-46dec-4982",
+    title: "hal220：把 Whisper 粗转写迁到 WSL2+GPU，再用 Claude Code 技能做二次校正——约 17 分音频上 small／fp32 约 54 秒，medium／fp16 约 2 分 43 秒、显存峰值 4,982 MiB（6,144 中）；decode 46 回里温度非 0 的只有 1 回，作者先用行首 grep 错报成 0 件",
+    summary: "个人（hal220／ハル｜数据分析工程师，原临床检验技师）；披露把已在跑的本地 Whisper 脚本迁到 WSL2（Ubuntu）+ uv + CUDA，并把原先交给 ChatGPT 的二次校正做成 Claude Code 技能。约 17 分的一轨音频上，small／fp32 约 54 秒，medium／fp16 约 2 分 43 秒（不含模型下载），显存峰值 4,982 MiB（6,144 MiB 中，nvidia-smi 每 0.5 秒采一次）。medium／fp16 的日志里 decode 46 回，温度不是 0.0 的只有 1 回（0.2），compression_ratio 超过 2.4 的 1 件（9.63）。作者起初用行首 grep 报成「temperature fallback 0 件」，改成 grep -o 才数到 1 件。技能默认只跑到 Whisper，不加 --correct 就不读正文。不代你同样迁到 GPU 或做成技能，就等于下一轨也不会再把正文送出，或 fallback 次数用行首 grep 也不会再数错。",
+    description: "面向已经把「校正已经交给模型」或「日志里没看到 fallback」当成转写流水线已门禁、却还没按一轨音频核对显存、decode 次数以及技能会不会在未确认时就读正文的人：把「Agent 合做转写校正须同时报一轨耗时与显存、decode 与 fallback 次数、以及未加校正开关时是否仍读正文」写成门禁，区别于预转录 0 件排查，以及定时摘要。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/hal220/articles/6e10afc854a8d8",
+    sourceLabel: "zenn.dev·hal220 实践帖",
+    upvotes: 692,
+    trending: false,
+    tags: [
+      "Whisper",
+      "Claude-Code",
+      "WSL2",
+      "skill",
+      "GPU",
+    ],
+    howItWorks: [
+      "粘贴转写校正边界（是不是约一轨耗时与显存要单独记账、是不是约 decode 与 fallback 次数须按日志字段数而不是行首、是不是约未加校正开关时不得读正文）以及「绝不可把校正已经交给模型或日志里没看到 fallback 写成已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下约 17 分音频上 small／fp32 约 54 秒、medium／fp16 约 2 分 43 秒与 4,982 MiB，以及 decode 46 回、温度非 0 的 1 回、行首 grep 曾错报 0 件",
+      "人工保留 54 秒／2 分 43 秒／4,982 MiB 与 46／1 回来自哪一轨自述；Agent 不代你保证「同样迁到 GPU 或做成技能就等于下一轨也不会再把正文送出，或 fallback 次数用行首 grep 也不会再数错」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T00:52:03.763+09:00 → 2026-11-07，同时刻为 UTC 2026-11-06T15:52:03Z、Asia/Shanghai 2026-11-06 23:52:03；bodyUpdatedAt 2026-11-07T01:01:01.212+09:00（晚于发布）→ 同时刻为 UTC 2026-11-06T16:01:01Z、Asia/Shanghai 2026-11-07 00:01:01；取 published；GET 200（UA MiraBot/1.0））：hal220 在《Whisper文字起こしをWSL2+GPUへ移して、補正をClaude Codeのスキルにする。》写约 17 分一轨实测。文内硬链 https://github.com/hal220/create_sound_to_text GET 200（可达作者公开仓导流）；同文复现用的 https://github.com/hal220/create_sound_to_text.git GET 200（同仓 git 地址，不另列可达导流）。文内 uv 索引 https://download.pytorch.org/whl/cu128 GET 200（PyTorch 官方 wheel 索引，已核链、不列入可达导流）。作者写明未比较 fp16 对文面质量或反复幻觉的影响，也未用人工终稿对照校正精度。",
+      "与预转录 0 件排查、定时摘要不同：本条不是把任务为何 0 件或每小时只摘要 1 篇当主线，而是一轨音频的耗时与显存、fallback 次数如何从日志数出、以及技能未加校正开关时会不会读正文的门禁",
+    ],
+    approach: `hal220（ハル）在《Whisper文字起こしをWSL2+GPUへ移して、補正をClaude Codeのスキルにする。》（页内 2026-11-07，正文稍后有更新）写明：上一篇已经用本地 Whisper 做粗转写、再把文件交给 ChatGPT 校正；这次要把还在跑的脚本迁到新搭的 WSL2（Ubuntu）+ uv + CUDA，并把二次校正收进 Claude Code 技能，从 Whisper 到校正一次做完。迁移时先守住已在跑的 CUDA 版 PyTorch，依赖只许 uv sync --locked。脚本不再依赖当前目录，改从文件位置推项目根。分割开始时刻原先按「序号 × 分割秒数」算，ffmpeg -c copy 的边界不一定刚好 10 分钟，后面的文件会把误差累起来；作者改成把实际时长累加。约 17 分的这一轨上，第一段刚好 600.0 秒，改完在手头看不出差别。GPU 是 RTX 3060 Laptop、显存 6GB，GPU 时把 fp16 设成默认，可用 --no-fp16 回到 fp32。同一轨上的数字是：small／fp32 约 54 秒；medium／fp16 约 2 分 43 秒（不含模型下载）；medium／fp16 显存峰值 4,982 MiB（6,144 MiB 中），用 nvidia-smi 每 0.5 秒采一次。作者写明没比质量，也没验证 fp16 会不会改变反复幻觉。
+
+medium／fp16 的日志里，decode 46 回，温度不是 0.0 的只有 1 回（0.2），compression_ratio 超过 2.4 的 1 件（9.63）。同一轨、同一设置，行数上次是 96 与 79，这次是 92 与 91，误转写的「拼法」每次也不同。作者起初用行首 grep 去数 [decode]，因为这行和进度条写在同一行，结果报成「temperature fallback 0 件」；改成 grep -o 取出字段后才数到 1 件。二次校正做成项目里的技能，默认只跑到 Whisper，报告件数和耗时、不读正文；没有 --correct 却被要求校正，须在读正文前先问人。教会语音里有人名和家庭事情，校正等于把正文送给 Anthropic，所以「这次可不可以读」每次由人决定。词典也不再追每次都变的错误拼法，改以「正确词＋读音」为主，并把会破坏普通日语的替换挪到有条件的一栏。公开仓与各教会的私有设定分开放，私有目录不进 git。
+
+本场景据此输出「Agent 合做转写校正须同时检查一轨耗时与显存、decode 与 fallback 次数、以及未加校正开关时是否仍读正文，不能只报校正已经交给模型」提纲。禁止把 54 秒／2 分 43 秒写成任意音频同分布，或把做成技能写成正文不会再被送出已门禁。`,
+    outcomes: [
+      "源披露作者把 Whisper 粗转写迁到 WSL2+GPU，并用 Claude Code 技能做二次校正：约 17 分的一轨上，small／fp32 约 54 秒，medium／fp16 约 2 分 43 秒、显存峰值 4,982 MiB（6,144 中）；decode 46 回里温度非 0 的只有 1 回（0.2），compression_ratio 超过 2.4 的 1 件（9.63）；行首 grep 曾把 fallback 错报成 0 件，改成按字段提取才数到 1 件。技能默认只跑到 Whisper，不加 --correct 就不读正文。属作者这一轨在 RTX 3060 Laptop／6GB 上的记录（未比较 fp16 对文面质量，亦未用人工终稿对照校正精度），不可外推为你同样迁到 GPU 或做成技能就等于下一轨也不会再把正文送出，或 fallback 次数用行首 grep 也不会再数错，或「校正已经交给模型」就等于已门禁。",
+      "能把「可写成同时检查一轨耗时与显存、decode 与 fallback 次数、以及未加校正开关时是否仍读正文」与「必须人完成的可否送出正文确认／导流链」拆开。",
+      "为把「校正已经交给模型」或「日志里没看到 fallback」当成转写流水线已门禁，以及只换 GPU 却不改技能默认是否读正文提供提问清单。",
+    ],
+    caveats: [
+      "约 17 分／约 54 秒／约 2 分 43 秒／4,982 MiB、decode 46 回、温度非 0 的 1 回、compression_ratio 9.63、行首 grep 错报 0 件，均为作者自述；数字来自这一轨，质量与反复幻觉未比；分割时刻的修正在这一轨第一段刚好 600.0 秒，手头看不出差别；后台命令曾把 & 写重一次，模型下载中途断开。",
+      "文内硬链 https://github.com/hal220/create_sound_to_text 为作者公开仓导流，本机 curl（UA MiraBot/1.0）GET 200（可达相关仓导流）。同文 https://github.com/hal220/create_sound_to_text.git GET 200（同仓 git 地址，不另列可达导流）。文内 uv 索引 https://download.pytorch.org/whl/cu128 GET 200（PyTorch 官方 wheel 索引，已核链、不列入可达导流）。primary GET 200。",
+      "上面写的是个人实践帖（zenn.dev / hal220），不是 Anthropic 或 OpenAI 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "转写校正须先按一轨日志数 fallback，且未确认不得读正文",
+        body: `你是资深 Agent 转写校正教练。只根据用户边界写门禁，不要编造正文已不再被送出已门禁。
+
+现在是不是约一轨耗时与显存要单独记账：{{whether_about_runtime_vram}}
+是不是约 decode 与 fallback 次数须按日志字段数而不是行首：{{whether_about_field_grep}}
+是不是约未加校正开关时不得读正文：{{whether_about_correct_flag}}
+
+输出 Markdown：
+1. 为什么「校正已经交给模型」或「日志里没看到 fallback」不能写成转写流水线已发现已门禁
+2. 应怎样同时检查一轨耗时与显存、decode 与 fallback 次数、以及未加校正开关时是否仍读正文
+3. 只有一轨约 17 分／46 回 decode 账本时，应怎样单独记账，而不是写成下一轨也必然同分布
+4. 人必须完成的清单（可否送出正文、导流链）
+禁止声称「同样迁到 GPU 或做成技能就等于下一轨也不会再把正文送出」；禁止把校正已经交给模型写成已发现已门禁。`,
+      },
+      {
+        title: "四十六回 decode 与一次 fallback 复盘",
+        body: `报告上可以写约 17 分音频 small／fp32 约 54 秒、medium／fp16 约 2 分 43 秒与 4,982 MiB、decode 46 回里 fallback 1 回，且行首 grep 曾错报 0 件；但这是一轨上的记录。请写复盘提纲。
+
+现象：{{seventeen_min_46_decode}}
+
+输出：
+1. 更像 GPU 没生效，还是日志字段和行首不在同一位置，导致「没看到」被写成「没发生」
+2. 最小复验顺序（先对照一轨耗时与显存→再按字段数 fallback→再看未加开关时是否读正文→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上技能就等于任意音频同分布」，或「日志里没看到就等于 fallback 是 0 已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hal220/articles/6e10afc854a8d8",
+      label: "zenn.dev · Whisper文字起こしをWSL2+GPUへ移して、補正をClaude Codeのスキルにする。",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "802",
+    slug: "hisashi-gauss3-4ok-435",
+    title: "hisashi-ito：用 Lean 4.35.0 检查 Claude Code 写的证明——高斯求和 3 回才通过，Mathlib 上的 4 条定理第 1 回就通过且不含 sorryAx；2+2=5 被带理由驳回，只写 sorry 的证明则只给警告却能通过",
+    summary: "个人（hisashi-ito／hisashi Itoh，Qiita 资料里写所属 NTT DOCOMO，本稿按个人实践帖收录）；披露在 Docker 里跑 2026-11-09 当时的稳定版 Lean 4.35.0，证明代码都由 Claude Code 写，通不通过由 Lean 判定。2+2=5 被 decide 带理由驳回；只写 sorry 的命题不是报错而是警告 1 行就通过，#print axioms 会看到 sorryAx。高斯求和「1 到 n 的合计的 2 倍等于 n(n+1)」第 1、2 回被 omega 驳回，第 3 回展开乘法后通过，退出码 0。Mathlib v4.35.0 上素数无穷、√2 无理、两奇数之和为偶数、x+1/x≥2 这 4 条，第 1 回就通过，axioms 里都没有 sorryAx。#eval sumTo 100 输出 5050。不代你同样让 Lean 通过，就等于下一道题也已经答对原问，或「编译过了」就等于证明里没有省略。",
+    description: "面向已经把「Lean 已经通过」或「AI 写了证明」当成命题已门禁、却还没检查有没有 sorryAx、以及写成 Lean 的命题是不是原来要问的那一句的人：把「Agent 合做证明检查须同时报同一命题试了几回、通过的命题里有没有 sorryAx、以及人是否另核过命题是否写对」写成门禁，区别于技术书一行一条对照，以及会则问答正答率。",
+    categories: [
+      "education",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/hisashi-ito/items/4b529a0f1ea5cbdbefda",
+    sourceLabel: "qiita.com·hisashi-ito 实践帖",
+    upvotes: 693,
+    trending: false,
+    tags: [
+      "Lean",
+      "Claude-Code",
+      "proof",
+      "Mathlib",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴证明检查边界（是不是约同一命题要记下试了几回才通过、是不是约通过的命题须查 axioms 里有没有 sorryAx、是不是约人须另核写成 Lean 的命题是不是原来要问的那一句）以及「绝不可把 Lean 已经通过或 AI 写了证明写成已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下高斯求和 3 回才通过、Mathlib 4 条第 1 回通过且不含 sorryAx，以及 2+2=5 被驳回、只写 sorry 则只给警告却能通过",
+      "人工保留 3 回／4 条／4.35.0 与论文里 353 件中 9 件等数字来自哪一次自述或一次资料；Agent 不代你保证「同样让 Lean 通过就等于下一道题也已经答对原问，或编译过了就等于证明里没有省略」",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-09T17:57:07.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T08:57:07Z、Asia/Shanghai 2026-11-09 16:57:07；dateModified 2026-11-09T17:57:17.000+09:00 → 同时刻为 UTC 2026-11-09T08:57:17Z、Asia/Shanghai 2026-11-09 16:57:17；Qiita API created_at 同发布；取 published；GET 200（UA MiraBot/1.0））：hisashi-ito 在《AI の数学の証明のニュースによく出る Lean とは何か。動かして、AI が書いた証明を検査させてみた》写 Lean 4.35.0 实测。文内配图 https://hisashi-ito.github.io/github-census/figures/lean/fig_ai_lean_loop.png?v=784af46f GET 200（可达作者 GitHub Pages 配图导流）。源页作者卡／简介 https://github.com/hisashi-ito GET 200（可达作者 GitHub 导流），https://gist.github.com/hisashi-ito GET 200（可达 gist 导流）。文内出典 https://lean-lang.org/about 、 https://arxiv.org/abs/2605.22763 、 https://leodemoura.github.io/blog/2026-8-1-postmortem-for-kernel-soundness-bug-14576/ 、 https://gigazine.net/gsc_news/en/20260803-collatz-lean-kernel-bug/ 、 https://github.com/leanprover-community/mathlib4 、 https://lean-ja.github.io/ 均 GET 200（一次资料或社区站点，已核链、不列入可达导流）。论文里 353 件中 9 件、492 件中 44 件等数字作者写明是读论文核实，不是自己复测。",
+      "与技术书一行一条对照、会则问答正答率不同：本条不是把主张对照表或问答切分当主线，而是同一命题试了几回、通过后有没有 sorryAx、以及人是否另核过命题是否写对的门禁",
+    ],
+    approach: `hisashi-ito（hisashi Itoh）在 Qiita《AI の数学の証明のニュースによく出る Lean とは何か。動かして、AI が書いた証明を検査させてみた》（JSON-LD 2026-11-09）写明：这篇用 Claude Code 查、跑、写，Lean 代码也由 Claude Code 写，通不通过由 Lean 判定。环境是 Docker 里 2026-11-09 当时的稳定版 Lean 4.35.0。先试 4 条：加法加 0、2+2=4 顺利通过；2+2=5 被 decide 判定为假并带理由驳回；只写 sorry 的命题不是报错，而是警告 1 行就通过。#eval sumTo 100 输出 5050。接着让 Claude Code 证高斯求和「1 到 n 的合计的 2 倍等于 n(n+1)」：第 1 回把乘法项收成一个字母就交给 omega，被驳回；第 2 回加了展开仍没咬合，再被驳回；第 3 回先展开乘法、对齐同类项后通过，退出码 0，屏幕上什么也不打印——在 Lean 里这就是成功。作者用 #print axioms 对照：sorry 版依赖 sorryAx，真正证完的版只依赖 propext 与 Quot.sound。另举 too_weak：只证「合计 ≥ 0」，几乎显然且通过，说明 Lean 只保证「写下的命题被证明了」，不保证它就是你原来想问的那一句。
+
+在与 Lean 4.35.0 对应的 Mathlib v4.35.0 上，素数无穷、√2 无理、两奇数之和为偶数、x>0 则 x+1/x≥2 这 4 条，第 1 回就通过，axioms 里都没有 sorryAx；前两条直接调用库定理，后两条是自己写的证明。新闻里「AI 解了未解问题」的数字，作者按 arXiv:2605.22763 的摘要和正文核对：最强智能体在 353 道未解爱尔德什问题里自主解了 9 道，OEIS 猜想 492 道里证了 44 道；作者写明这些不是自己复测，且论文也写了通过之后仍由专家核对 Lean 命题是否忠实于原猜想。2026 年 7 月科拉茨「反证」穿过 Lean 内核缺陷的经过，作者按 Leonardo de Moura 2026-08-01 的事后报告与一篇摘要核实，并写明自己没有做复现实验。
+
+本场景据此输出「Agent 合做证明检查须同时检查同一命题试了几回、通过的命题里有没有 sorryAx、以及人是否另核过命题是否写对，不能只报 Lean 已经通过」提纲。禁止把 3 回通过写成任意命题同分布，或把编译过了写成已答对原问已门禁。`,
+    outcomes: [
+      "源披露作者在 Lean 4.35.0 上检查 Claude Code 写的证明：高斯求和 3 回才通过；Mathlib v4.35.0 上的 4 条定理第 1 回就通过，axioms 里都没有 sorryAx；2+2=5 被带理由驳回，只写 sorry 的证明则只给警告却能通过，#print axioms 会看到 sorryAx；#eval sumTo 100 输出 5050。属作者 2026-11-09 在 Docker／4.35.0 上对初等命题的一次记录（作者写明未测 AI 解未解问题的能力，论文里 353 件中 9 件等数字是读一次资料核实，科拉茨内核缺陷也未复现），不可外推为你同样让 Lean 通过就等于下一道题也已经答对原问，或「编译过了」就等于证明里没有省略，或「AI 写了证明」就等于已门禁。",
+      "能把「可写成同时检查同一命题试了几回、通过的命题里有没有 sorryAx、以及人是否另核过命题是否写对」与「必须人完成的原问核对／导流链」拆开。",
+      "为把「Lean 已经通过」或「AI 写了证明」当成命题已门禁，以及只看退出码 0 却不查 sorryAx 提供提问清单。",
+    ],
+    caveats: [
+      "高斯求和 3 回、Mathlib 4 条第 1 回通过且无 sorryAx、2+2=5 被驳回、sorry 只给警告却通过、sumTo 100=5050，均为作者自述；测的是初等命题，不是未解问题。论文里 353 件中 9 件、492 件中 44 件等数字作者写明是读一次资料核实，不是自己复测。科拉茨内核缺陷按事后报告核实，作者未复现；4.35.0 是否包含该修正，作者写明自己没有核对版号。",
+      "文内配图 https://hisashi-ito.github.io/github-census/figures/lean/fig_ai_lean_loop.png?v=784af46f 为作者 GitHub Pages 配图导流，本机 curl（UA MiraBot/1.0）GET 200（可达配图导流）。源页作者卡／简介 https://github.com/hisashi-ito GET 200（可达作者 GitHub 导流）；https://gist.github.com/hisashi-ito GET 200（可达 gist 导流）。文内出典 https://lean-lang.org/about 、 https://arxiv.org/abs/2605.22763 、 https://leodemoura.github.io/blog/2026-8-1-postmortem-for-kernel-soundness-bug-14576/ 、 https://gigazine.net/gsc_news/en/20260803-collatz-lean-kernel-bug/ 、 https://github.com/leanprover-community/mathlib4 、 https://lean-ja.github.io/ 均 GET 200（一次资料或社区站点，已核链、不列入可达导流）。primary GET 200。",
+      "上面写的是个人实践帖（qiita.com / hisashi-ito；Qiita 资料里写所属 NTT DOCOMO，本稿不是公司工程博客），不是 Lean 或 DeepMind 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "证明检查须先查同一命题试了几回，以及通过后有没有 sorryAx",
+        body: `你是资深 Agent 证明检查教练。只根据用户边界写门禁，不要编造已答对原问已门禁。
+
+现在是不是约同一命题要记下试了几回才通过：{{whether_about_attempt_count}}
+是不是约通过的命题须查 axioms 里有没有 sorryAx：{{whether_about_sorryax}}
+是不是约人须另核写成 Lean 的命题是不是原来要问的那一句：{{whether_about_statement_check}}
+
+输出 Markdown：
+1. 为什么「Lean 已经通过」或「AI 写了证明」不能写成命题已发现已门禁
+2. 应怎样同时检查同一命题试了几回、通过的命题里有没有 sorryAx、以及人是否另核过命题是否写对
+3. 只有一次高斯求和 3 回通过账本时，应怎样单独记账，而不是写成下一道也必然同分布
+4. 人必须完成的清单（原问核对、导流链）
+禁止声称「同样让 Lean 通过就等于下一道题也已经答对原问」；禁止把编译过了或退出码 0 写成已发现已门禁。`,
+      },
+      {
+        title: "三回高斯求和与四条首通复盘",
+        body: `报告上可以写高斯求和 3 回才通过、Mathlib 4 条第 1 回通过且不含 sorryAx、只写 sorry 则只给警告却能通过；但这是初等命题上的一次记录。请写复盘提纲。
+
+现象：{{gauss_three_mathlib_four}}
+
+输出：
+1. 更像模型不会写证明，还是「通过」只保证写下的命题被证明、sorry 仍可能只靠警告过关，原问还要人核
+2. 最小复验顺序（先对照试了几回→再查 axioms 有没有 sorryAx→再由人核命题是不是原问→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 Lean 就等于任意命题同分布」，或「编译过了就等于已答对原问已门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/hisashi-ito/items/4b529a0f1ea5cbdbefda",
+      label: "qiita.com · AI の数学の証明のニュースによく出る Lean とは何か。動かして、AI が書いた証明を検査させてみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
