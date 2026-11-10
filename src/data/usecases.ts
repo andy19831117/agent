@@ -59086,6 +59086,427 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
       dateLabel: "发布",
     },
   },
+  {
+    id: "808",
+    slug: "meursy-550mut-496-6of109",
+    title: "meursyphus：用 Stryker 检查 Claude Code 写的测试——已有测试的 10 个文件、550 个变异体只检出 49.6%；11 个测试漏掉 6 个边界变异；Markdown 图片解析器 109 个里只检出 6 个；首次运行 1 分 5 秒",
+    summary: "个人（meursyphus／Daeseung Moon）；披露在自己的 Next.js 项目里，用 StrykerJS 与 Vitest 检查已由 Claude Code 编写、经他审阅合并的测试。项目共 84 个文件、451 个测试。先对已有测试的 src/lib 中 10 个文件跑变异：550 个变异体里检出 49.6%（Killed 273、Survived 161、No coverage 116），首次运行 1 分 5 秒。日期显示工具 kstRelativeTime 上 11 个测试执行过该函数，但把 < 换成 <= 的 6 个变异全部幸存；Markdown 图片解析器 109 个变异体只检出 6 个。后又对逻辑侧 902 个文件、41,343 个变异体跑了一次，约 49 分钟，有覆盖的变异体上得分为 62.9%。不代你同样看到 49.6%，就等于下一组 AI 写的测试已经够用，或变异分数已经可以当质量门禁。",
+    description: "面向已经把「测试全绿」或「测试件数够了」当成 AI 所写测试已门禁、却还没按同一批变异体分开报检出率、幸存件数与无覆盖件数的人：把「Agent 合写测试须同时报变异检出率、边界是否被测到，以及分数的分母是全部变异还是有覆盖的变异」写成门禁，区别于只谈写测顺序或只看覆盖率的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/meursyphus/articles/5c2641c2bade16",
+    sourceLabel: "zenn.dev·meursyphus 实践帖",
+    upvotes: 699,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Stryker",
+      "mutation",
+      "eval",
+      "testing",
+    ],
+    howItWorks: [
+      "粘贴 AI 所写测试的变异检查边界（是不是约同一批变异体要同时记下检出率、幸存件数与无覆盖件数、是不是约边界值有没有被测到要单独记账、是不是约分数分母是全部变异还是有覆盖的变异要写清）以及「绝不可把测试全绿或测试件数写成所写测试已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 10 个文件上 550 个变异体检出 49.6%、11 个测试漏掉 6 个边界变异、Markdown 图片解析器 6/109，以及扩大到 902 个文件时 62.9% 的分母是有覆盖的变异体",
+      "人工保留 49.6%、11 漏 6、6/109 与 62.9% 来自哪一次自述；Agent 不代你保证「同样看到 49.6% 就等于下一组 AI 写的测试已经够用，或变异分数已经可以当质量门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T09:42:00.928+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T00:42:00Z、Asia/Shanghai 2026-11-10 08:42:00；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：meursyphus（Daeseung Moon）在《AIが書いたテストでは変異の半分を検出できなかった》写 10 个文件与一次扩大范围的实测。日文稿是作者 2026-10-07 韩语原文的整理。https://comwit.io GET 200（可达作者产品 Comwit 导流）；https://x.com/meursyphus GET 200（可达社交主页导流，作者卡 bio 亦有此联系方式）；https://velog.io/@k-svelte-master/ai-generated-tests-mutation-testing GET 200（可达韩语原文导流）。作者卡 website／GitHub／X 字段为空，bio 口述开发了 SSGOI 与 Flitter，没有可请求的产品硬链，不列入可达导流。厂商与一次资料已核、不列入可达导流：https://arxiv.org/html/2606.18168v1 、https://arxiv.org/html/2501.12862v1 、https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/ 、https://stryker-mutator.io/docs/stryker-js/configuration/ 、https://stryker-mutator.io/docs/stryker-js/configuration/#disabletypechecks-boolean--string 、https://stryker-mutator.io/docs/stryker-js/incremental/ 均 GET 200。",
+      "与近批写测顺序、Stryker 变异试验不同：本条不是把补测步骤或工具用法当主线，而是同一批已有测试在变异下的检出率、边界是否被测到，以及扩大范围时分数分母该怎么写的门禁。",
+    ],
+    approach: `meursyphus（Daeseung Moon）在《AIが書いたテストでは変異の半分を検出できなかった》（页内 2026-11-10，与发布时刻相同；日文稿由 2026-10-07 的韩语原文整理）写明：项目里有 84 个文件、451 个测试，由 Claude Code 编写、经他审阅后合并；以前只要测试跑通就安心。朋友提起变异测试后，他先对已有测试的 src/lib 中 10 个文件跑 StrykerJS＋Vitest（disableTypeChecks 为 false、incremental 为 true）。工具向生产代码加入 550 个小改动：Killed 273、Survived 161、No coverage 116，检出 49.6%；首次运行 1 分 5 秒。作者写明这不是「451 个测试有一半没有意义」，而是这次生成的变异里约一半没被检测到。
+
+印象最深的是日期显示工具 kstRelativeTime：11 个测试执行过该函数，但把 < 换成 <= 的 6 个变异全部幸存；「几周前」的分支本身没有覆盖。同时编辑的序号把 +1 换成 -1 仍能通过；文本合并里把 if (local === remote) 改成 if (false) 也能通过；Markdown 图片解析器 109 个变异体只检出 6 个。项目里还有 7 个文件共 62 个「只查源文件里有没有某个词」的测试，以及 139 个 toHaveBeenCalled()。这类读源字符串的测试会因为工具插入测量代码而失败，作者把它们从这次变异运行里排除了。后又对逻辑侧 902 个文件、41,343 个变异体跑了一次，约 49 分钟：有覆盖的变异体 10,230 个，其中幸存 3,799 个，有覆盖变异体上的得分是 62.9%（不是对 41,343 的分数）；生成的变异里约四分之一有覆盖，有覆盖的里面又有三分之一以上幸存。文中引用的 All Smoke, No Alarm（80.2%）和 Meta 的 9,095 个变异／571 个测试、73% 采纳率，都是他人研究，不是这次项目的结果。
+
+本场景据此输出「Agent 合写测试须同时检查变异检出率、边界是否被测到、分数分母是什么，不能只报测试全绿或测试件数」提纲。禁止把 49.6% 写成任意项目同分布，或把测试全绿写成所写测试已门禁。`,
+    outcomes: [
+      "源披露作者在自己的 Next.js 项目上用 StrykerJS＋Vitest，对 Claude Code 编写并经他审阅合并的测试做变异检查：已有测试的 10 个文件上 550 个变异体检出 49.6%（Killed 273、Survived 161、No coverage 116），首次运行 1 分 5 秒；kstRelativeTime 上 11 个测试漏掉 6 个边界变异；Markdown 图片解析器 109 个里只检出 6 个。扩大到逻辑侧 902 个文件、41,343 个变异体时约 49 分钟，有覆盖的变异体上得分为 62.9%。属作者这一次在该仓库、该工具配置上的记录（读源字符串的测试已从这次运行排除；扩大范围的 62.9% 分母是有覆盖的变异体，不是 41,343），不可外推为你同样看到 49.6% 就等于下一组 AI 写的测试已经够用，或测试全绿就等于所写测试已门禁，或变异分数已经可以当质量门禁。",
+      "能把「可写成同时检查变异检出率、边界是否被测到、分数分母是全部变异还是有覆盖的变异」与「必须人完成的题目与导流链」拆开。",
+      "为把「测试全绿」或「测试件数够了」当成 AI 所写测试已门禁，以及只看平均分数、不看分母与边界提供提问清单。",
+    ],
+    caveats: [
+      "49.6%、273／161／116、11 个测试漏 6 个边界变异、6/109、1 分 5 秒、41,343 个变异体约 49 分钟、62.9%，均为作者自述；测的是这一仓库里已有测试的 10 个文件，以及后来一次逻辑侧扩大范围，不是公开基准的多次平均。62.9% 的分母是有覆盖的 10,230 个变异体。80.2% 与 Meta 的 73% 来自论文，不是这次项目的结果。读源字符串的测试已排除，不能写成全部测试都进了同一次运行。",
+      "https://comwit.io GET 200（可达作者产品 Comwit 导流）；https://x.com/meursyphus GET 200（可达社交主页导流，作者卡 bio 亦有此联系方式）；https://velog.io/@k-svelte-master/ai-generated-tests-mutation-testing GET 200（可达韩语原文导流）。作者卡 website／GitHub／X 字段为空，bio 口述开发了 SSGOI 与 Flitter，没有可请求的产品硬链，不列入可达导流。arxiv 与 Stryker 文档已核、不列入可达导流。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / meursyphus），不是 Stryker、Anthropic 或任何测试框架官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "AI 所写测试须先按同一批变异体报检出率",
+        body: `你是资深 Agent 测试质量教练。只根据用户边界写门禁，不要编造所写测试已门禁。
+
+现在是不是约同一批变异体要同时记下检出率、幸存件数与无覆盖件数：{{whether_about_killed_survived_nocov}}
+是不是约边界值有没有被测到要单独记账：{{whether_about_boundary_miss}}
+是不是约分数分母是全部变异还是有覆盖的变异要写清：{{whether_about_score_denominator}}
+
+输出 Markdown：
+1. 为什么「测试全绿」或「测试件数够了」不能写成所写测试已发现已门禁
+2. 应怎样同时检查变异检出率、边界是否被测到、分数分母是什么
+3. 只有一次 49.6% 账本时，应怎样单独记账，而不是写成下一组测试也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 49.6% 就等于下一组 AI 写的测试已经够用」；禁止把测试全绿写成已发现已门禁。`,
+      },
+      {
+        title: "百分之四十九点六与十一漏六复盘",
+        body: `报告上可以写 10 个文件上 550 个变异体检出 49.6%、11 个测试漏掉 6 个边界变异、Markdown 图片解析器 6/109，以及扩大范围时有覆盖变异体上 62.9%；但这是这一仓库与这一次配置上的记录。请写复盘提纲。
+
+现象：{{forty_nine_point_six_and_eleven_miss_six}}
+
+输出：
+1. 更像测试根本没走到变更处，还是走到了却没断言边界，或读源字符串的测试被测量代码干扰
+2. 最小复验顺序（先对照检出率与幸存／无覆盖件数→再看边界是否被测到→再核对分数分母→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上变异分数就等于已能检出」，或「测试全绿就等于所写测试已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/meursyphus/articles/5c2641c2bade16",
+      label: "zenn.dev · AIが書いたテストでは変異の半分を検出できなかった",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "809",
+    slug: "daha-143h-28p-66ok",
+    title: "dahatake：比较「用了 EABK」和「不用自研框架」的两个视频编辑应用——非引入例 11 个会话、28 条人的 Prompt、记录区间 14.3 小时到达首个发布版；引入例简单合计 411.6 小时仍未完成；另 6 件小改动两边隐藏测试都是 6/6，平均时间 47.6 分对 3.1 分",
+    summary: "个人（dahatake／Daiyu Hatakeyama）；披露把两个目的相近的视频编辑应用的开发史放在一起看：中途引入 EABK 0.5.x 的一侧到 2026-11-08 仍未完成，不用自研框架、主要走 Copilot CLI Autopilot 的一侧在 11 月 7–8 日、11 个会话、28 条人的 Prompt、记录区间 14.3 小时到达作者所说的首个发布版。引入例人的 Prompt／介入为引入前 135 件、引入后对话 44 件、后半 run 约 33 件，记录区间简单合计 411.6 小时（引入前 272.6 小时就已计入，不是「EABK 让它慢了约 29 倍」）。另用同一应用上 6 件一句话改动做对照：两边隐藏测试都是 6/6、既有单元测试退行 0 件，平均时间 47.6 分对 3.1 分，平均 AI 积分 252.0 对 8.1。不代你同样看到 14.3 小时与 6/6，就等于不用框架也能同样交差，或框架已经可以卸掉。",
+    description: "面向已经把「不用自研框架也能做完」或「框架会让一切变慢」当成编排已门禁、却还没按同一批记录分开报完成状态、区间长度与隐藏测试的人：把「Agent 合做应用开发须同时报有无框架两侧的完成状态、记录区间与隐藏测试，且不可把引入前的时间算成框架造成的倍数」写成门禁，区别于只比较模型费用或只看一次发布的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://qiita.com/dahatake/items/44d94d01a7517fd8c137",
+    sourceLabel: "qiita.com·dahatake 实践帖",
+    upvotes: 700,
+    trending: false,
+    tags: [
+      "Copilot",
+      "eval",
+      "EABK",
+      "framework",
+      "Autopilot",
+    ],
+    howItWorks: [
+      "粘贴自研框架去留的对照边界（是不是约有无框架两侧要同时记下完成状态与记录区间、是不是约引入前的时间不可算成框架造成的倍数、是不是约同一批小改动的隐藏测试与耗时要分开报）以及「绝不可把不用框架也能做完或框架会让一切变慢写成编排已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下非引入例 28 条 Prompt、14.3 小时到达首个发布版，引入例简单合计 411.6 小时且引入前已有 272.6 小时，以及 6 件小改动两边隐藏测试都是 6/6、平均 47.6 分对 3.1 分",
+      "人工保留 14.3 小时、411.6 小时、6/6 与 47.6 对 3.1 来自哪一次自述；Agent 不代你保证「同样看到 14.3 小时与 6/6 就等于不用框架也能同样交差，或框架已经可以卸掉」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-11-08T22:18:16.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T13:18:16Z、Asia/Shanghai 2026-11-08 21:18:16；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：dahatake（Daiyu Hatakeyama）在《開発フレームワークはもう不要なのか？ 2 つのアプリの開発履歴を比べて、Coding Agent に残したい規律を考えた》写两应用对照。作者写明这是个人记录，不是特定组织的官方见解。https://github.com/dahatake/VideoCreator GET 200（可达非引入例公开仓导流）；https://github.com/dahatake GET 200（可达作者 GitHub 导流）；https://x.com/dahatake GET 200（可达社交主页导流）；https://note.com/dahatake GET 200（可达作者站点导流，源页作者卡 website）。EABK 的公开一次资料 URL，文中写明这次材料里没有给出，不编造、不列入可达导流。厂商与一次资料已核、不列入可达导流：https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/ 、https://github.blog/changelog/2026-09-22-claude-opus-5-5-is-now-available-in-github-copilot/ 、https://qiita.com/Qiita/items/c686397e4a0f4f11683d 均 GET 200。",
+      "与近批费用／Effort 对照、低价云通路实测不同：本条不是把单次 API 费用或模型档位当主线，而是有无自研框架的两侧完成状态、记录区间，以及同一批小改动的隐藏测试与耗时的门禁。",
+    ],
+    approach: `dahatake（Daiyu Hatakeyama）在《開発フレームワークはもう不要なのか？ 2 つのアプリの開発履歴を比べて、Coding Agent に残したい規律を考えた》（JSON-LD 2026-11-08，正文无另一次更新）写明：他为长任务堆过 HVE 与 EABK，后来又用两个目的相近的视频编辑应用做对照——一侧是 Windows 桌面应用、中途引入 EABK 0.5.x，仓库不公开，到 2026-11-08 仍未完成；一侧是本地 Web 应用、不用自研框架、主要走 Copilot CLI Autopilot，公开仓为 Video Creator，在 11 月 7–8 日被他评为到达首个发布版（第三方盲检验收仍保留）。记录整理日是 2026-11-08。两侧要求件数接近（98 对 103），但粒度、功能与代码量不同：引入例约 29.8 万行，非引入例约 1.4 万行。作者写明要求件数接近并不等于难度或完成度相同，观测到的差也不能单独归因于框架有无。
+
+非引入例是 11 个会话、28 条人的 Prompt、记录区间 14.3 小时，超过 2 小时的作业 0 件，最长 99.5 分钟。引入例人的 Prompt／介入为引入前 135 件、引入后对话 44 件、后半 run 约 33 件；记录区间为引入前 272.6 小时、引入后对话 38.4 小时、后半 run 100.6 小时，简单合计 411.6 小时。数字上看大约是 29 倍，但作者明确写这不是「EABK 让它慢了 29 倍」：272.6 小时发生在引入之前，后半 run 的计时单位也不同，还有未记录的时段。引入前仅「汇总剩余作业」与「恢复／确认状态」两类就占了 231.1 小时，约 85%。质量侧：引入例记录了 3,717 个测试方法，最后一次 run 里对象验收基准 30/30 合格，98 件要求里 55 件写了实现文件与测试、43 件未确认（不是未实现）；非引入例调查时 151 个测试合格，103 件里 56 件被工具判为与代码或测试有关联，主实现之后有的功能没有写回 PRD。费用侧记录的是含缓存的输入 token 与课金倍率合计，不是实付账单：引入例有记录的对话约 90.7 亿 token，非引入例约 4.1 亿；引入期变更 124,862 行里约 49% 被分类为工具包／框架，不能写成开发者时间或费用的 49% 花在了 EABK 上。另在同一应用上用 6 件一句话改动对照：两边隐藏测试都是 6/6、既有单元测试退行 0 件，平均时间 47.6 分对 3.1 分，平均 AI 积分 252.0 对 8.1；其中一件可能与既有安全要求冲突的日志改动，普通 Coding Agent 未指出就实现了，EABK 一侧有一次停下征求判断。作者写明两边的执行模型等条件并未完全对齐，6 件不能推广到所有变更。EABK Lite 0.6.0 与中等模型切换都尚未在同一条件下测过。
+
+本场景据此输出「Agent 合做应用开发须同时检查有无框架两侧的完成状态、记录区间与隐藏测试，且不可把引入前的时间算成框架造成的倍数」提纲。禁止把 14.3 小时与 6/6 写成任意项目同分布，或把不用框架写成编排已门禁。`,
+    outcomes: [
+      "源披露作者把两个目的相近的视频编辑应用放在一起看：不用自研框架的一侧在 11 个会话、28 条人的 Prompt、记录区间 14.3 小时到达作者所说的首个发布版（盲检验收仍保留）；引入 EABK 0.5.x 的一侧简单合计 411.6 小时仍未完成，其中引入前已有 272.6 小时，作者写明这不是「EABK 让它慢了约 29 倍」。另 6 件一句话改动中，两边隐藏测试都是 6/6、既有单元测试退行 0 件，平均时间 47.6 分对 3.1 分，平均 AI 积分 252.0 对 8.1。属作者这一次在这两个应用、这些模型与记录口径上的整理（两侧功能、代码量、时期与环境并不齐；记录区间含等待，单位也不完全相同；对话与历史未公开，无法仅凭此文独立重算），不可外推为你同样看到 14.3 小时与 6/6 就等于不用框架也能同样交差，或框架已经可以卸掉，或时间差已经可以单独归因于框架有无。",
+      "能把「可写成同时检查有无框架两侧的完成状态、记录区间、隐藏测试，以及引入前的时间不可算成框架造成的倍数」与「必须人完成的题目与导流链」拆开。",
+      "为把「不用自研框架也能做完」或「框架会让一切变慢」当成编排已门禁，以及只看简单合计倍数、不看引入前时段提供提问清单。",
+    ],
+    caveats: [
+      "14.3 小时、28 条 Prompt、411.6 小时、272.6 小时、6/6、47.6 分对 3.1 分、151 与 3,717 等，均为作者自述；两侧应用、模型、时期与环境并不齐，差不能单独归因于 EABK。引入例有对话缺失与 token 未记录的时段；「未完成」与「首个发布版」是作者自己的评价，非引入例的盲检验收仍保留。记录的费用是课金倍率合计，不是实付账单。EABK Lite 与中等模型切换尚未在同一条件下测过。",
+      "https://github.com/dahatake/VideoCreator GET 200（可达非引入例公开仓导流）；https://github.com/dahatake GET 200（可达作者 GitHub 导流）；https://x.com/dahatake GET 200（可达社交主页导流）；https://note.com/dahatake GET 200（可达作者站点导流）。EABK 的公开一次资料 URL，文中写明这次材料里没有给出，不编造、不列入可达导流。GitHub Changelog 与 Qiita 记法页已核、不列入可达导流。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（qiita.com / dahatake），不是 GitHub、Microsoft 或 EABK 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "自研框架去留须先分开报两侧完成状态与记录区间",
+        body: `你是资深 Agent 编排教练。只根据用户边界写门禁，不要编造框架去留已门禁。
+
+现在是不是约有无框架两侧要同时记下完成状态与记录区间：{{whether_about_both_sides_status_and_duration}}
+是不是约引入前的时间不可算成框架造成的倍数：{{whether_about_pre_adoption_hours}}
+是不是约同一批小改动的隐藏测试与耗时要分开报：{{whether_about_hidden_tests}}
+
+输出 Markdown：
+1. 为什么「不用框架也能做完」或「简单合计慢了约 29 倍」不能写成编排已发现已门禁
+2. 应怎样同时检查两侧完成状态、记录区间、引入前时段，以及同一批小改动的隐藏测试
+3. 只有一次 14.3 小时与 6/6 账本时，应怎样单独记账，而不是写成下一组项目也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 14.3 小时与 6/6 就等于不用框架也能同样交差」；禁止把引入前的时间写成框架造成的倍数；禁止把框架已经可以卸掉写成已发现已门禁。`,
+      },
+      {
+        title: "十四点三小时与六比六隐藏测试复盘",
+        body: `报告上可以写非引入例 14.3 小时、28 条 Prompt 到达首个发布版，引入例简单合计 411.6 小时仍未完成，6 件小改动两边隐藏测试都是 6/6、平均 47.6 分对 3.1 分；但这是这两个应用与这一次记录口径上的整理。请写复盘提纲。
+
+现象：{{fourteen_point_three_hours_and_six_of_six}}
+
+输出：
+1. 更像框架本身拖慢了作业，还是引入前就已有长作业、计时单位不同，或两边完成度本来就不可比
+2. 最小复验顺序（先对照两侧完成状态→再拆开引入前与引入后的区间→再看隐藏测试与冲突检测→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上不用框架就等于已能同样交差」，或「简单合计的倍数就等于框架已经必须卸掉」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/dahatake/items/44d94d01a7517fd8c137",
+      label: "qiita.com · 開発フレームワークはもう不要なのか？ 2 つのアプリの開発履歴を比べて、Coding Agent に残したい規律を考えた",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "810",
+    slug: "sunsun-29green-2brk-30m",
+    title: "sunsun_eng：n8n 付费模板出货前用真实环境做 E2E——vitest 29 件全绿，Docker 官方镜像上仍连续在 2 处失败；修完后 3 件、年额合计 ¥37,120 与预期一致；约 30 分钟的验证",
+    summary: "个人（sunsun_eng／すんすん）；披露在出货一份从乐天信用卡明细 CSV 检测订阅的 n8n 付费模板前，用 Docker 官方镜像按购买者步骤做了一次贯通验证。检测逻辑的 vitest 单测 29 件全绿，无 n8n 的冒烟测试里 Netflix／Spotify／Adobe 3 件、年额合计 ¥37,120 也已对上，仍在真实环境里于逻辑开始前连续失败 2 次：一是表达式读取环境变量被默认拒绝，二是文件读取未授权目录。改掉环境变量、在启动示例里写明挂载与 N8N_RESTRICT_FILE_ACCESS_TO 后，按指南的 docker 命令再跑，3 件、¥37,120 与预期完全一致；去掉许可设置也能复现 FAQ 里的报错。作者写这次约 30 分钟的验证去掉了 2 件退款／差评风险。不代你同样看到 29 件全绿仍失败 2 处，就等于下一份工作流也可以只靠单测出货，或真实环境已经门禁。",
+    description: "面向已经把「单测全绿」或「无工作流引擎的冒烟已通过」当成模板可出货已门禁、却还没按购买者步骤在真实 n8n 上跑通一次的人：把「Agent 合做出货前验收须同时报单测件数、真实环境失败次数，以及修完后预期输出有没有对上」写成门禁，区别于只在本地跑纯函数测试的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/sunsun_eng/articles/n8n-template-e2e",
+    sourceLabel: "zenn.dev·sunsun_eng 实践帖",
+    upvotes: 701,
+    trending: false,
+    tags: [
+      "n8n",
+      "e2e",
+      "eval",
+      "vitest",
+      "Docker",
+    ],
+    howItWorks: [
+      "粘贴出货前真实环境验收边界（是不是约单测件数与真实环境失败次数要同时记下、是不是约购买者步骤须至少跑通一次、是不是约修完后预期输出有没有对上要单独记账）以及「绝不可把单测全绿或无引擎冒烟已通过写成模板可出货已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 vitest 29 件全绿、真实 n8n 上连续失败 2 处，以及修完后 3 件、¥37,120 与预期一致、约 30 分钟验掉 2 件退款／差评风险",
+      "人工保留 29 件全绿、失败 2 处、3 件／¥37,120 与约 30 分钟来自哪一次自述；Agent 不代你保证「同样看到 29 件全绿仍失败 2 处就等于下一份工作流也可以只靠单测出货，或真实环境已经门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T20:43:28.622+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T11:43:28Z、Asia/Shanghai 2026-11-08 19:43:28；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：sunsun_eng（すんすん）在《単体テスト29件が全緑なのに、本物のn8nでは2箇所で壊れた話 — 有料テンプレ出荷前のE2E検証》写出货前实测。https://syunflare.gumroad.com/l/subscription-finder-n8n GET 200（可达作者付费模板导流，$29）。源页可见 GitHub 源文硬链：https://github.com/shunNishijima/zenn-content/blob/main/articles/n8n-template-e2e.md GET 200（可达源文仓导流）；https://github.com/shunNishijima/zenn-content GET 200（可达作者仓导流）；源页可见提交页 https://github.com/shunNishijima/zenn-content/commits/main?path=articles/n8n-template-e2e.md 与 https://github.com/shunNishijima/zenn-content/commits/main/articles/n8n-template-e2e.md 本机复检均 GET 429，已披露、不列入可达导流。作者卡 website／GitHub／X 字段为空。",
+      "与近批手册 Skill、完成条件示例值入台账不同：本条不是把文档修订或台账写入当主线，而是单测全绿的工作流在真实 n8n 权限默认值下会不会在逻辑开始前就失败的门禁。",
+    ],
+    approach: `sunsun_eng（すんすん）在《単体テスト29件が全緑なのに、本物のn8nでは2箇所で壊れた話 — 有料テンプレ出荷前のE2E検証》（页内 2026-11-08，与发布时刻相同）写明：他准备出货一份 n8n 付费模板，把乐天信用卡明细 CSV 读进去，把「不同月份至少 2 次、金额几乎相同」的扣款当成订阅，列出年额换算和退订页 URL。检测逻辑是纯 JavaScript 函数（名称归并、噪声排除、周期判定、年额换算），vitest 单测 29 件全绿，也做了不启动 n8n 的冒烟；用样本 CSV 时 Netflix／Spotify／Adobe 3 件、年额合计 ¥37,120 已对上，当时觉得「已经做过动作确认」。
+
+出货前，他把工作流 JSON 导入 Docker 的 n8n 官方镜像（当时的最新版），按购买者步骤执行，结果在逻辑开始前连续失败 2 次。第一次是用 ={{ $env.RAKUTEN_CSV_PATH }} 读环境变量，现行 n8n 默认拒绝表达式访问环境变量；要绕过需设 N8N_BLOCK_ENV_ACCESS_IN_NODE=false，作者认为不应要求购买者这样改。处理是不再用环境变量，改为在节点的 File(s) Selector 里直接填路径。第二次是文件读取被拒：现行 n8n 需要用 N8N_RESTRICT_FILE_ACCESS_TO 明确允许目录。处理是在设置指南的 docker 启动示例里写明挂载与许可，并按报错补了 FAQ。按指南的 docker 命令再跑：导入 → 把片段贴进 Code 节点 → 执行，跑通，3 件、¥37,120 与预期完全一致；去掉许可设置也能复现 FAQ 里的报错。作者的结论是单测只保证逻辑，真实环境的权限、设置与版本差是另一层；这次约 30 分钟的验证去掉了 2 件退款／差评风险。文末有 $29 的付费模板导流。
+
+本场景据此输出「Agent 合做出货前验收须同时检查单测件数、真实环境失败次数，以及修完后预期输出有没有对上，不能只报单测全绿或无引擎冒烟已通过」提纲。禁止把 29 件全绿仍失败 2 处写成任意工作流同分布，或把单测全绿写成可出货已门禁。`,
+    outcomes: [
+      "源披露作者在出货 n8n 付费模板前，用 Docker 官方镜像按购买者步骤做贯通验证：vitest 29 件全绿、无 n8n 冒烟里 3 件／¥37,120 已对上，仍在真实环境于逻辑开始前连续失败 2 次（表达式读环境变量被默认拒绝，以及未授权目录的文件读取）。改掉环境变量并在启动示例里写明挂载与目录许可后，3 件、¥37,120 与预期完全一致；去掉许可设置也能复现 FAQ 报错。作者写这次约 30 分钟的验证去掉了 2 件退款／差评风险。属作者这一次在该模板、当时最新官方镜像与这份样本 CSV 上的记录（失败来自 n8n 安全默认值，不是检测逻辑算错；未比较其他版本或购买者机器），不可外推为你同样看到 29 件全绿仍失败 2 处就等于下一份工作流也可以只靠单测出货，或真实环境已经门禁，或单测全绿就等于可出货已门禁。",
+      "能把「可写成同时检查单测件数、真实环境失败次数、修完后预期输出有没有对上」与「必须人完成的题目与导流链」拆开。",
+      "为把「单测全绿」或「无引擎冒烟已通过」当成模板可出货已门禁，以及只在本地跑纯函数测试、不按购买者步骤贯通提供提问清单。",
+    ],
+    caveats: [
+      "29 件全绿、失败 2 处、3 件／¥37,120、约 30 分钟，均为作者自述；测的是这一份乐天卡 CSV 模板与当时 Docker 官方镜像的一次贯通，不是多版本矩阵。两处失败来自现行 n8n 的安全默认值，不是检测逻辑算错。¥37,120 是样本 CSV 上 Netflix／Spotify／Adobe 的年额合计，不是购买者账单。",
+      "https://syunflare.gumroad.com/l/subscription-finder-n8n GET 200（可达作者付费模板导流，$29）。源页可见 GitHub 源文硬链：https://github.com/shunNishijima/zenn-content/blob/main/articles/n8n-template-e2e.md GET 200（可达源文仓导流）；https://github.com/shunNishijima/zenn-content GET 200（可达作者仓导流）。源页可见提交页 https://github.com/shunNishijima/zenn-content/commits/main?path=articles/n8n-template-e2e.md 与 https://github.com/shunNishijima/zenn-content/commits/main/articles/n8n-template-e2e.md 本机复检均 GET 429，已披露、不列入可达导流。作者卡 website／GitHub／X 字段为空。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / sunsun_eng），不是 n8n 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "出货前验收须先在真实环境按购买者步骤跑通",
+        body: `你是资深 Agent 工作流出货教练。只根据用户边界写门禁，不要编造可出货已门禁。
+
+现在是不是约单测件数与真实环境失败次数要同时记下：{{whether_about_unit_and_runtime_failures}}
+是不是约购买者步骤须至少跑通一次：{{whether_about_buyer_path}}
+是不是约修完后预期输出有没有对上要单独记账：{{whether_about_expected_output}}
+
+输出 Markdown：
+1. 为什么「单测全绿」或「无引擎冒烟已通过」不能写成可出货已发现已门禁
+2. 应怎样同时检查单测件数、真实环境失败次数、修完后预期输出有没有对上
+3. 只有一次 29 件全绿仍失败 2 处的账本时，应怎样单独记账，而不是写成下一份工作流也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 29 件全绿仍失败 2 处就等于下一份工作流也可以只靠单测出货」；禁止把单测全绿写成已发现已门禁。`,
+      },
+      {
+        title: "二十九件全绿与两处失败复盘",
+        body: `报告上可以写 vitest 29 件全绿、真实 n8n 上连续失败 2 处、修完后 3 件／¥37,120 对上、约 30 分钟验掉 2 件退款／差评风险；但这是这一份模板与当时官方镜像上的一次记录。请写复盘提纲。
+
+现象：{{twenty_nine_green_and_two_breaks}}
+
+输出：
+1. 更像逻辑算错，还是环境变量或文件许可等默认安全设置在逻辑开始前就把流程拦住
+2. 最小复验顺序（先对照单测与冒烟→再按购买者步骤在真实环境跑一次→再看修完后的预期输出与去掉许可能否复现报错→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上单测全绿就等于已能出货」，或「无引擎冒烟已通过就等于真实环境已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sunsun_eng/articles/n8n-template-e2e",
+      label: "zenn.dev · 単体テスト29件が全緑なのに、本物のn8nでは2箇所で壊れた話 — 有料テンプレ出荷前のE2E検証",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "811",
+    slug: "tyamada-5vid-s3re-sha",
+    title: "tyamada22：把 ChatGPT Work 模式接去拍操作视频——10 月 28 日 14:36 交接，14:56 报告 5 本生成；Scene 3 因没有拍到分割于 15:16 要求重拍，15:18 改成 20 秒；17:24 非公开上传、18:04 公开、18:32 播放列表；5 本的 SHA-256 与保存文件、上传列表一致",
+    summary: "个人（tyamada22）；披露在 Android「对开 PDF 查看器」系列第 8 回，把拍操作视频的作业从 ChatGPT 交到 Work 模式。10 月 28 日约 14:36 交接，要求执行 build_shorts.py 生成带旁白与字幕的 5 本完成版 MP4；14:56 Work 模式报告 5 本已生成且播放检查成功。Scene 1 能看到从一览切到对开，但 5 本并非初回就全部正确：Scene 3 没有拍到分割实演，作者于 15:16 要求改剧本并重拍，15:18 改成「旋转→插入空白页→删除」的 20 秒版。拍摄中还发现保存看似成功、PDF 却是 0 字节，修到能保存有内容的 8 页 PDF。17:24 非公开上传完成，18:04 视频公开，18:32 播放列表公开；5 本的 SHA-256 在 Work 模式输出、项目内保存文件与上传列表上一致。不代你同样看到 5 本生成与 SHA-256 一致，就等于下一组操作视频初回就能拍对，或 Work 模式已经可以当拍摄已门禁。",
+    description: "面向已经把「脚本跑完并生成了文件」或「模型报告播放检查成功」当成操作视频已门禁、却还没按同一批成片核对有没有拍到指定操作、重拍次数与校验和是否一致的人：把「Agent 合拍操作视频须同时报生成报告、指定操作有没有入画，以及成片校验和是否与保存文件一致」写成门禁，区别于只谈本地小模型或只看文件是否生成的实践。",
+    categories: [
+      "devtools",
+      "content",
+    ],
+    platforms: [
+      "chatgpt",
+    ],
+    sourceUrl: "https://qiita.com/tyamada22/items/9242c832f31ca103ee87",
+    sourceLabel: "qiita.com·tyamada22 实践帖",
+    upvotes: 702,
+    trending: false,
+    tags: [
+      "ChatGPT",
+      "Work-mode",
+      "video",
+      "eval",
+      "Android",
+    ],
+    howItWorks: [
+      "粘贴操作视频验收边界（是不是约生成报告与指定操作有没有入画要同时记下、是不是约重拍次数与成片时长要单独记账、是不是约校验和是否与保存文件、上传列表一致要写清）以及「绝不可把脚本跑完、生成了文件或模型报告播放检查成功写成拍摄已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 14:36 交接、14:56 报告 5 本生成，Scene 3 于 15:16 要求重拍、15:18 改成 20 秒，以及 17:24／18:04／18:32 的上传公开与 5 本 SHA-256 一致",
+      "人工保留 5 本生成、Scene 3 重拍、SHA-256 一致来自哪一次自述；Agent 不代你保证「同样看到 5 本生成与 SHA-256 一致就等于下一组操作视频初回就能拍对，或 Work 模式已经可以当拍摄已门禁」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-11-09T06:16:44.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T21:16:44Z、Asia/Shanghai 2026-11-09 05:16:44；dateModified 2026-11-10T06:30:00.000+09:00（晚于发布）→ 同时刻为 UTC 2026-11-09T21:30:00Z、Asia/Shanghai 2026-11-10 05:30:00；取 published；GET 200（UA MiraBot/1.0））：tyamada22 在《【第8回】Workモードで動画5本を完成させ、撮影手順を教材にする》写 10 月 28 日实测。https://youtube.com/shorts/R_FD63c29E0 GET 200（可达公开的第 1 本成片导流；作者写这是当时公开记录与保存文件的核对，不是这次把 YouTube 上全部视频重新看过）。https://github.com/tyamada GET 200（可达作者 GitHub 导流，源页作者卡）；https://x.com/tyamada22 GET 200（可达社交主页导流，源页作者卡）。连载清单与前后篇已核、不列入产品导流：https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2 、https://qiita.com/tyamada22/items/62208c1c870e7a38fe35 、https://qiita.com/tyamada22/items/d36dd52cd1f7f811eabd 、https://qiita.com/tyamada22/items/5d2f23df0480c6dae6fd 均 GET 200。配图 10 张已核、不列入产品导流：https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_01.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_02.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_03.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_04.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_05.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_06.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_07.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_08.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_09.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_10.png 均 GET 200，不列入产品导流。https://creativecommons.org/licenses/by/4.0/ GET 200（作品许可页，一次资料，已核链、不列入可达导流）。作者卡无 website。",
+      "与近批本地小模型选择题、预转录 0 件不同：本条不是把正答率或转写件数为 0 当主线，而是同一批操作视频有没有拍到指定操作、要不要重拍，以及成片校验和是否一致的门禁。",
+    ],
+    approach: `tyamada22 在《【第8回】Workモードで動画5本を完成させ、撮影手順を教材にする》（JSON-LD 发布 2026-11-09，正文更新 2026-11-10）写明：这是 Android「对开 PDF 查看器」连载第 8 回，文章是他与 ChatGPT 对稿，并对照 Android Studio 内 Gemini 的对话、ChatGPT 对话、Git 与成品写成的。第 7 回里用 Gemini 试拍工具应用的操作视频，必要操作没有入画就结束了。10 月 28 日约 14:36，他把作业交到 ChatGPT 的 Work 模式，要求参照已有脚本、查看实际 UI，实现 scripts/build_shorts.py，执行 --scene all，在 ./shorts_output/ 产出带英语旁白与字幕的 scene_01_final.mp4 至 scene_05_final.mp4。交接时还纠正过对象文件夹。14:56 Work 模式报告 5 本已生成、播放检查成功。作者写明收到报告后仍要核内容：Scene 1 在 1.0 秒与 10.0 秒能看到从 8 页一览切到对开，但这不是 5 本初回就全部正确。
+
+Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示把对开稿分开；初回代码（6b1321d）打开 Split Pages 并保存画面后只发了 Android「返回」，并没有按 Run 执行分割。15:16 作者要求改剧本并重拍；15:18 Work 模式改成「旋转→插入空白页并对开确认→删除插入的空白页」的 20 秒版，并报告已重拍、播放检查完毕。重拍后 5 本时长为 15、15、20、15、17 秒。拍摄中还发现保存画面出现了、PDF 却是 0 字节，原因是读取与保存共用同一 PDF 处理实例，修到能保存有内容的 8 页 PDF。15:20 作者请 Work 模式准备上传；频道创建与 5 本非公开上传在他批准后由 Work 模式执行，记录为 17:24 非公开上传完成、18:04 视频公开完成、18:32 播放列表公开完成。5 本的 SHA-256 在 Work 模式输出、项目内保存文件与上传列表上一致；作者写这是当时公开记录与保存文件的核对，不是这次把 YouTube 上全部视频重新看过。本回把做成的实现整理成教材，但没有再用这份教材让 Gemini 重拍；那次尝试放在第 9 回。作者也写明，这是包含既有日志、成片核对与他本人修正指示的结果，不能单凭模型名断言成败。
+
+本场景据此输出「Agent 合拍操作视频须同时检查生成报告、指定操作有没有入画，以及成片校验和是否与保存文件一致，不能只报脚本跑完、生成了文件或播放检查成功」提纲。禁止把 5 本生成与 SHA-256 一致写成任意项目初回就能拍对，或把 Work 模式写成拍摄已门禁。`,
+    outcomes: [
+      "源披露作者在 10 月 28 日约 14:36 把拍操作视频的作业交到 ChatGPT Work 模式，14:56 收到 5 本已生成、播放检查成功的报告；Scene 3 没有拍到分割实演，15:16 要求重拍，15:18 改成 20 秒版。拍摄中还修过「保存看似成功、PDF 却是 0 字节」。17:24 非公开上传、18:04 公开、18:32 播放列表公开；5 本的 SHA-256 在 Work 模式输出、项目内保存文件与上传列表上一致。属作者这一次在该工具应用、这些脚本与当天记录上的回顾（5 本并非初回全部正确；SHA-256 一致不是这次把 YouTube 上全部视频重新看过；本回没有再用整理出的教材让 Gemini 重拍），不可外推为你同样看到 5 本生成与 SHA-256 一致就等于下一组操作视频初回就能拍对，或脚本跑完、生成了文件就等于拍摄已门禁，或 Work 模式已经可以当拍摄已门禁。",
+      "能把「可写成同时检查生成报告、指定操作有没有入画、重拍次数与成片校验和是否一致」与「必须人完成的题目与导流链」拆开。",
+      "为把「脚本跑完并生成了文件」或「模型报告播放检查成功」当成操作视频已门禁，以及只看文件是否存在、不看指定操作有没有入画提供提问清单。",
+    ],
+    caveats: [
+      "14:36／14:56、Scene 3 于 15:16 重拍、15／15／20／15／17 秒、0 字节 PDF、17:24／18:04／18:32、SHA-256 一致，均为作者自述；时刻来自当天对话与完成报告，不是另行校准的计时器。5 本并非初回全部正确。SHA-256 一致是当时公开记录与保存文件的核对，作者写明不是这次把 YouTube 上全部视频重新看过。本回没有用整理出的教材让 Gemini 重拍。画面中的作品是 Komairo Hiyori 的 The Try-It Club / Episode 1，按 CC BY 4.0 标明。",
+      "https://youtube.com/shorts/R_FD63c29E0 GET 200（可达公开的第 1 本成片导流）。https://github.com/tyamada GET 200（可达作者 GitHub 导流）；https://x.com/tyamada22 GET 200（可达社交主页导流）。连载清单与前后篇已核、不列入产品导流：https://qiita.com/tyamada22/stocks/8aeb6d899f7e0257f1d2 、https://qiita.com/tyamada22/items/62208c1c870e7a38fe35 、https://qiita.com/tyamada22/items/d36dd52cd1f7f811eabd 、https://qiita.com/tyamada22/items/5d2f23df0480c6dae6fd 均 GET 200。配图 10 张已核、不列入产品导流：https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_01.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_02.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_03.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_04.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_05.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_06.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_07.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_08.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_09.png、https://ik.imagekit.io/tyamada22/qiita_android_pdf/android_part8_20261109_10.png 均 GET 200，不列入产品导流。https://creativecommons.org/licenses/by/4.0/ GET 200（作品许可页，一次资料，已核链、不列入可达导流）。作者卡无 website。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（qiita.com / tyamada22），不是 OpenAI、Google 或 YouTube 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "操作视频须先核对指定操作有没有入画",
+        body: `你是资深 Agent 操作视频教练。只根据用户边界写门禁，不要编造拍摄已门禁。
+
+现在是不是约生成报告与指定操作有没有入画要同时记下：{{whether_about_report_and_onscreen_action}}
+是不是约重拍次数与成片时长要单独记账：{{whether_about_reshoot}}
+是不是约校验和是否与保存文件、上传列表一致要写清：{{whether_about_checksum}}
+
+输出 Markdown：
+1. 为什么「脚本跑完并生成了文件」或「模型报告播放检查成功」不能写成拍摄已发现已门禁
+2. 应怎样同时检查生成报告、指定操作有没有入画、重拍次数与成片校验和
+3. 只有一次 5 本生成与 SHA-256 一致的账本时，应怎样单独记账，而不是写成下一组视频初回也必然拍对
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 5 本生成与 SHA-256 一致就等于下一组操作视频初回就能拍对」；禁止把播放检查成功写成已发现已门禁。`,
+      },
+      {
+        title: "五本生成与第三镜重拍复盘",
+        body: `报告上可以写 14:56 报告 5 本生成、Scene 3 因没有拍到分割而重拍成 20 秒、5 本 SHA-256 与保存文件和上传列表一致；但这是这一工具应用与当天记录上的一次回顾。请写复盘提纲。
+
+现象：{{five_videos_and_scene_three_reshoot}}
+
+输出：
+1. 更像模型不会拍，还是样本数据不够演示指定操作、脚本只打开了画面却没执行操作，或保存成功的画面与文件实际写完不是一回事
+2. 最小复验顺序（先对照生成报告→再逐镜看指定操作有没有入画→再核校验和与上传记录→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上生成了文件就等于已拍到指定操作」，或「播放检查成功就等于拍摄已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/tyamada22/items/9242c832f31ca103ee87",
+      label: "qiita.com · 【第8回】Workモードで動画5本を完成させ、撮影手順を教材にする",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "812",
+    slug: "tanemudao-1agt-0owner-403",
+    title: "tanemudao：用 Microsoft Graph 清点 Agent Identity——验证租户里 1 个 Agent 的 Owner 是 0 件、Sponsor 与 appRoleAssignments 各 1 件；文档写委任不可取 Sponsor，实测 AgentIdentity.Read.All 返回 200；同一全局管理员在只有 User.Read 时 4 个 API 全是 403",
+    summary: "个人（tanemudao）；披露在自己的验证租户里，用 Microsoft Graph 清点此前用 API 建出的 1 个 Agent Identity（TokenTestAgent，创建于 2026-09-15）。列表与 Owner 接口都成功，但 Owner 是 0 件——创建时只指定了 Sponsor，没有指定 Owner。文档写委任路径不支持取 Sponsor、应用权限只列了 AgentIdentity.ReadWrite.All；他用只含 AgentIdentity.Read.All 的委任令牌仍取得 Sponsor 1 件、appRoleAssignments 1 件，HTTP 200。同一全局管理员改用只有 User.Read、不含 AgentIdentity 范围的令牌时，列表、Owner、Sponsor、appRoleAssignments 4 个 API 全是 403 Authorization_RequestDenied。不代你同样看到 Owner 0 件与 403，就等于下一租户的台账已经齐，或文档上的权限说明已经可以当清点已门禁。",
+    description: "面向已经把「列表接口能返回 Agent」或「文档写了委任不支持」当成身份台账已门禁、却还没在同一租户分开报 Owner 是 0 件还是获取失败、以及无对应范围时是不是 403 的人：把「Agent 合做身份清点须同时报 Owner／Sponsor 件数、文档与实测是否一致，以及管理员角色在缺少范围时会不会被 403」写成门禁，区别于只抄官方权限表的实践。",
+    categories: [
+      "security",
+      "enterprise",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/tanemudao/items/f69e7744e27b2855fdfb",
+    sourceLabel: "qiita.com·tanemudao 实践帖",
+    upvotes: 703,
+    trending: false,
+    tags: [
+      "Entra-ID",
+      "Microsoft-Graph",
+      "PowerShell",
+      "eval",
+      "security",
+    ],
+    howItWorks: [
+      "粘贴 Agent Identity 清点边界（是不是约 Owner 是 0 件还是获取失败要分开记账、是不是约文档与实测是否一致要单独记下、是不是约管理员角色在缺少范围时会不会被 403 要写清）以及「绝不可把列表接口能返回或文档写了委任不支持写成身份台账已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下验证租户里 1 个 Agent 的 Owner 是 0 件、Sponsor 与 appRoleAssignments 各 1 件，文档与 Read.All 实测 200 不一致，以及同一全局管理员在只有 User.Read 时 4 个 API 全是 403",
+      "人工保留 Owner 0 件、Sponsor 1 件与 403 来自哪一次自述；Agent 不代你保证「同样看到 Owner 0 件与 403 就等于下一租户的台账已经齐，或文档上的权限说明已经可以当清点已门禁」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-11-09T02:17:54.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T17:17:54Z、Asia/Shanghai 2026-11-09 01:17:54；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：tanemudao 在《AI Agentの権限は見えているか？ Microsoft GraphでAgent Identityを棚卸ししてみた》写验证租户实测。正文与作者卡均未见作者产品／站点／仓／社交主页可列入可达导流。厂商与一次资料已核、不列入可达导流：https://learn.microsoft.com/ja-jp/graph/api/agentidentity-list?view=graph-rest-1.0 、https://learn.microsoft.com/ja-jp/graph/api/agentidentity-list-owners?view=graph-rest-1.0 、https://learn.microsoft.com/ja-jp/graph/api/agentidentity-list-sponsors?view=graph-rest-1.0 、https://learn.microsoft.com/ja-jp/graph/api/serviceprincipal-list-approleassignments?view=graph-rest-1.0 、https://learn.microsoft.com/ja-jp/graph/throttling 、https://learn.microsoft.com/ja-jp/entra/agent-id/concept-inheritable-permissions 、https://learn.microsoft.com/ja-jp/entra/agent-id/authorization-agent-id 均 GET 200；https://graph.microsoft.com 跟随至 https://developer.microsoft.com/en-us/graph GET 200；https://graph.microsoft.com/v1.0 GET 200；https://graph.microsoft.com/v1.0/servicePrincipals/microsoft.graph.agentIdentity GET 401（需令牌，不当可达）。",
+      "与近批公开服务器漏洞检查、安全 Agent 对照不同：本条不是把扫描所见件数当主线，而是同一租户里 Owner 是 0 件还是获取失败、文档与实测是否一致，以及缺少范围时会不会被 403 的门禁。",
+    ],
+    approach: `tanemudao 在《AI Agentの権限は見えているか？ Microsoft GraphでAgent Identityを棚卸ししてみた》（JSON-LD 2026-11-09，正文无另一次更新）写明：这是「AI Agent 与 Identity」连载第 6 回，要在验证租户里用 Microsoft Graph 清点 Agent Identity。该租户里只有 1 个 Agent Identity，是第 2 回用 Graph API 建出的 TokenTestAgent，createdDateTime 为 2026-09-15T16:37:48Z，accountEnabled 为 True。列表接口成功返回这一件，并带有 displayName、agentIdentityBlueprintId、servicePrincipalType=ServiceIdentity 等字段。
+
+取 Owner 的接口也成功，但 Owner 是 0 件。原因是创建时只指定了 Sponsor，没有指定 Owner；作者引用第 5 回的整理：Sponsor 必需、Owner 可选，所以有可能空着就进入使用。他强调 OwnerCount=0（没有设置 Owner）与 OwnerStatus=Error（还没确认到）不能当成一回事。取 Sponsor 时，官方文档写委任路径不受支持，应用权限只列了 AgentIdentity.ReadWrite.All。他先用含 ReadWrite.All 的委任令牌打到 HTTP 200、Sponsor 1 件；又单独做了一个只管理员同意了 AgentIdentity.Read.All 的应用注册，令牌范围是 AgentIdentity.Read.All profile openid email，仍然是列表 OK（1 件）、Owner OK（0 件）、Sponsor OK（1 件）、appRoleAssignments OK（1 件）。再把范围换成只有 User.Read，执行者仍是同一全局管理员，4 个 API 全是 403 Authorization_RequestDenied。作者写明：至少在这次的 4 个接口上，只靠管理员角色不够。Global Reader 与无角色的一般用户尚未验证。他还写明：列表到的并不是公司里全部 AI Agent，普通 Service Principal 与 Managed Identity 要另查；第 2 回从 Blueprint 继承的 Delegated Permission 也不会出现在 appRoleAssignments 里，不能只凭直接授予的权限断言有效权限。
+
+本场景据此输出「Agent 合做身份清点须同时检查 Owner 是 0 件还是获取失败、文档与实测是否一致，以及管理员角色在缺少范围时会不会被 403，不能只报列表接口能返回或文档写了委任不支持」提纲。禁止把 Owner 0 件与 403 写成任意租户同分布，或把文档说明写成清点已门禁。`,
+    outcomes: [
+      "源披露作者在自己的验证租户里清点此前用 Graph API 建出的 1 个 Agent Identity：列表成功返回 1 件，Owner 接口成功但 Owner 是 0 件（创建时只指定了 Sponsor）。文档写委任不可取 Sponsor，实测只用 AgentIdentity.Read.All 仍取得 Sponsor 1 件、appRoleAssignments 1 件，HTTP 200；同一全局管理员在只有 User.Read 时，列表、Owner、Sponsor、appRoleAssignments 4 个 API 全是 403。属作者这一次在该验证租户、这些委任令牌与这 4 个接口上的记录（Global Reader 与无角色用户尚未验证；列表覆盖不到普通 Service Principal 与 Managed Identity；Blueprint 继承的 Delegated Permission 不会出现在 appRoleAssignments 里），不可外推为你同样看到 Owner 0 件与 403 就等于下一租户的台账已经齐，或文档上的权限说明已经可以当清点已门禁，或列表接口能返回就等于身份台账已门禁。",
+      "能把「可写成同时检查 Owner 是 0 件还是获取失败、文档与实测是否一致、缺少范围时会不会被 403」与「必须人完成的题目与导流链」拆开。",
+      "为把「列表接口能返回 Agent」或「文档写了委任不支持」当成身份台账已门禁，以及把获取失败写成 Owner 为 0 提供提问清单。",
+    ],
+    caveats: [
+      "1 个 Agent、Owner 0 件、Sponsor 1 件、appRoleAssignments 1 件、Read.All 返回 200、User.Read 下 4 个 API 全是 403，均为作者自述；测的是作者自己建出的验证租户，不是生产目录的全量清点。Global Reader 与无角色用户尚未验证。作者写明文档与实测不一致的路径不应被依赖进实现。直接授予的 appRoleAssignments 看不到 Blueprint 继承的 Delegated Permission。",
+      "正文与作者卡均未见作者产品／站点／仓／社交主页可列入可达导流。Microsoft Learn 与 Graph 文档页均 GET 200，属官方一次资料，已核链、不列入可达导流。https://graph.microsoft.com 跟随至开发者页 GET 200，https://graph.microsoft.com/v1.0 GET 200，均不列入可达导流。https://graph.microsoft.com/v1.0/servicePrincipals/microsoft.graph.agentIdentity GET 401（需令牌），已披露，不当可达。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（qiita.com / tanemudao），不是 Microsoft、Entra 或 Graph 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "身份清点须先区分 Owner 为 0 与获取失败",
+        body: `你是资深 Agent 身份台账教练。只根据用户边界写门禁，不要编造清点已门禁。
+
+现在是不是约 Owner 是 0 件还是获取失败要分开记账：{{whether_about_zero_versus_error}}
+是不是约文档与实测是否一致要单独记下：{{whether_about_docs_versus_measured}}
+是不是约管理员角色在缺少范围时会不会被 403 要写清：{{whether_about_403_without_scope}}
+
+输出 Markdown：
+1. 为什么「列表接口能返回 Agent」或「文档写了委任不支持」不能写成身份台账已发现已门禁
+2. 应怎样同时检查 Owner 是 0 件还是获取失败、文档与实测是否一致、缺少范围时会不会被 403
+3. 只有一次 Owner 0 件与 403 的账本时，应怎样单独记账，而不是写成下一租户也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 Owner 0 件与 403 就等于下一租户的台账已经齐」；禁止把文档说明写成已发现已门禁。`,
+      },
+      {
+        title: "一件 Agent 零个 Owner 与四零三复盘",
+        body: `报告上可以写验证租户里 1 个 Agent 的 Owner 是 0 件、Sponsor 与 appRoleAssignments 各 1 件、文档与 Read.All 实测 200 不一致、同一全局管理员在只有 User.Read 时 4 个 API 全是 403；但这是这一验证租户与这些委任令牌上的一次记录。请写复盘提纲。
+
+现象：{{one_agent_zero_owner_and_403}}
+
+输出：
+1. 更像接口坏了，还是创建时本来就没指定 Owner、文档与实测路径不一致，或管理员角色在缺少范围时本来就不能调用
+2. 最小复验顺序（先对照列表件数→再把 OwnerCount=0 与获取失败分开记→再核对文档与实测→再看无范围时是不是 403→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上列表能返回就等于台账已齐」，或「文档写了委任不支持就等于清点已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/tanemudao/items/f69e7744e27b2855fdfb",
+      label: "qiita.com · AI Agentの権限は見えているか？ Microsoft GraphでAgent Identityを棚卸ししてみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
