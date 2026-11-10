@@ -75097,6 +75097,564 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 published_at 2026-04-15T18:22:42.575+09:00 → UTC 2026-04-15T09:22:42Z、Asia/Shanghai 2026-04-15 17:22:42；body_updated_at 早于发布，仍取 published → 2026-04-15；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-04-15。",
       "硬窗是常驻 1,358→807（−551，约 −41％）。不要和 222／2,165／9,833 混用。n8n.md 只是文件名，platforms 只记 claude。code.claude.com 文档本次 GET 200，可列可达，不当主源。",
     ],
+  },
+  {
+    id: "1078",
+    slug: "keis-405-184",
+    title: "keisato848／keisato：用 Claude Agent SDK 把教材台本的起草、复查和修改跑了 405 次。全模型费用合计 $184.51；其中 Sonnet 是 $183.62。Sonnet 输入里缓存读取占 93.3％，但在 Sonnet 账单里只占 20.4％。不要把 $184.51 和 $183.62 写成同一笔，也不要把 93.3％ 和 20.4％ 当成同一个比例。正文点名这次用了 Agent SDK（与 Claude Code 同一套机制）。这些是作者自己这一次 405 次执行上的记录，不可外推。",
+    summary: "keisato 用 Agent SDK 跑了 405 次教材台本作业，全模型费用 $184.51，Sonnet 为 $183.62。Sonnet 输入里缓存读取占 93.3％，账单里只占 20.4％。不要把这两笔费用或这两个比例混用。这些是作者自己这一次 405 次上的记录，不可外推。",
+    description: "面向已经打算用 Agent SDK 做多轮读写作业、却还把「缓存命中很高」说成「账单一定便宜」的人：把 405 次、$184.51／$183.62，以及 93.3％ 输入占比和 20.4％ 账单占比写成门禁，区别于把它们当成同一笔，或把作者否决的 99.74％ 公式写成本文采用的缓存率。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/keisato848/articles/agent-sdk-cache-bill",
+    sourceLabel: "zenn.dev·keisato848 实践帖",
+    upvotes: 969,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "agent-sdk",
+      "cost",
+      "prompt-cache",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/keisato848/articles/agent-sdk-cache-bill",
+      label: "zenn.dev·keisato848／keisato《Claude Agent SDK を使ってみた。何往復もの作業におすすめ》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Claude Ultra 每月附带、快要过期的 $200 API 额度，拿来让 Agent SDK（文中写明与 Claude Code 同一套机制，可从自己的程序里调用）做教材台本的起草、复查、修改和注音。记录区间是 2026-10-21 至 26，一人一把 API 密钥，共执行 405 次，以 Sonnet 为主；一次执行平均约 21 往复（文中也写 20.8 往复）。作者没有单独写缓存指定，但系统提示只有短短一行、工具列表固定，并且 setting_sources=[]，不让读 CLAUDE.md 或技能。费用和 token 内透写在自己的 ledger 里，再按控制台用量 CSV 的列名汇总；单价是从执行记录的费用栏反推的，没有和官方价目表核对。",
+    outcomes: [
+      "源披露：405 次执行的全模型费用合计 $184.51，几乎用完当月 $200 额度。Sonnet 单独合计是 $183.62，差额 $0.89 是 Haiku（试跑和各次执行附带的内部小调用）。Sonnet 输入里缓存读取占 93.3％，但在 Sonnet 账单里只占 20.4％；账单约八成是输出（43.0％，$78.95）和缓存写入（36.5％，$67.08）。不要把 $184.51 和 $183.62 写成同一笔，也不要把 93.3％ 和 20.4％ 当成同一个比例。这些是作者自己这一次 405 次执行上的记录，不可外推到别人的 SDK 用法或别的模型。",
+      "教材台本类作业 70 次就占了 Sonnet 费用的 53％（$97.58）；注音 69 次只有 $2.74。不要把这两类和 405 次总账写成同一笔。文中还写过 Messages API 直接调用的对照 26 次，读取只占 13.08％，但用法不同，作者明确写不能因此说「因为是 SDK 才有效」。",
+      "作者否决把「读取÷（读取＋无缓存）」得到的 99.74％ 当作本文的缓存率。反事实「若没有缓存、同样 token 全按输入单价付」约 $922、约为实际的 5.0 倍，是概算，不要和 $183.62／$184.51 混用。单价未经官方价目表核对。正文点名这次执行用了 Agent SDK／Claude，platforms 记 claude。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-31T13:53:28.786+09:00 → UTC 2026-10-31T04:53:28Z、Asia/Shanghai 2026-10-31 12:53:28；bodyUpdatedAt 2026-10-31T12:23:58.241+09:00，早于发布、同日，仍取 published → 2026-10-31；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 $184.51 和 $183.62、93.3％ 和 20.4％，或 70 次台本／69 次注音混用。也不要把作者否决的 99.74％ 写成本文采用的缓存率。不要和近批 token／耗时／中位数条，或本批 #1081 的 $8.09→$4.22 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。一次资料：https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans 交付时 GET 200（标题 Monthly API credits for Max, Ultra, and Team plans | Claude Help Center），可列可达，不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 $184.51 和 $183.62 不是同一笔，再谈 93.3％ 和 20.4％",
+        body: "请按原文核算：Agent SDK 是不是跑了 405 次，全模型费用是不是 $184.51，Sonnet 单独是不是 $183.62，差额 $0.89 是不是 Haiku。Sonnet 输入里缓存读取是不是 93.3％，在 Sonnet 账单里是不是只占 20.4％。台本类 70 次是不是占 Sonnet 费用 53％（$97.58），注音 69 次是不是 $2.74。作者有没有把 99.74％ 那个公式当作本文采用的缓存率。Messages API 26 次的 13.08％ 能不能直接说成 SDK 的效果。单价有没有和官方价目表核对。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把多轮读写作业交给 Agent SDK，并留下每次执行的费用和分模型 token 内透。",
+      "即使没有单独写缓存指定，也把系统提示、工具列表固定下来，避免前缀每次都变。",
+      "同时看「输入里读取占多少」和「账单里读取占多少」，不要只看缓存命中率。",
+      "按作业种类拆费用，才能看出是哪一类在花钱。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T13:53:28.786+09:00 → UTC 2026-10-31T04:53:28Z、Asia/Shanghai 2026-10-31 12:53:28；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-10-31；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-31。",
+      "不要把 $184.51 和 $183.62，或 93.3％ 和 20.4％ 混用。platforms 记 claude。支持页可列可达，不当主源。",
+    ],
+  },
+  {
+    id: "1079",
+    slug: "qzai-5fix-877",
+    title: "qzailabs／Qz AI Labs：一个人用 Claude Code 和 Codex 在同一天把漏洞信息收集做成晨间机制；请 GPT 找「内行人会觉得哪里松」时列出 5 处，当天 5 处都补上了。不要把这 5 处和「同类文章 12 篇」、上午 npm audit 已是 0 件，或后来向 OSV 询问的 npm 877 件与 3 个环境里 394 件 Python 包写成同一笔。Codex 不在 18 值里，不写入 platforms；正文点名还用了 ChatGPT 的 dots 和 GPT 检索，platforms 记 claude 与 chatgpt。这些是作者自己这一天上的记录，不可外推。",
+    summary: "qzailabs 在同一天用 Claude Code 搭起晨间漏洞收集，并让 GPT 找出 5 处松的地方，当天 5 处都补上。不要把这 5 处和 12 篇同类文章，或 OSV 的 877／394 件混用。Codex 不填 platforms。这些是作者自己这一天上的记录，不可外推。",
+    description: "面向已经打算让编码代理每天代为收集漏洞通告、却还把「当天补上的 5 处」和「询问到的包件数」写成同一笔的人：把 5 处全部补上写成门禁，区别于把 12 篇同类文章、上午的 0 件或 OSV 的 877／394 件说成同一项结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/qzailabs/articles/ai-daily-vulnerability-watch",
+    sourceLabel: "zenn.dev·qzailabs 实践帖",
+    upvotes: 970,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "chatgpt",
+      "security-ops",
+      "osv",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/qzailabs/articles/ai-daily-vulnerability-watch",
+      label: "zenn.dev·qzailabs／Qz AI Labs《脆弱性の情報集めを毎朝 AI に任せ、その甘い所も AI に探させた。一人の現場の記録》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者一个人做事业，站点、管理画面和若干工具跑在一台 Windows PC 上，由 Claude Code 与 Codex 协助开发。10 月一连串证书和 Node.js、npm 通告让他无法每次自己追，于是让 Claude Code 先清点手头版本、各仓库的只读 npm audit，以及各 Python 环境的 certifi／pip，再把清点结果交给「ChatGPT 枠、带 Web 搜索、只读」的 Codex 去对照近期通告，关键判断由 Claude Code 回官方页面核对。上午已经做完更新、不用 --force 修 npm 依赖，以及关掉 Node.js／cloudflared 在「公用」网络上的入站例外。写稿前又让 GPT 查找类似文章，并按「内行人会觉得哪里松」列出要补的点。",
+    outcomes: [
+      "源披露：作者写明，请 GPT 找松的地方时列出 5 处，当天 5 处都补上了。这 5 处包括：把锁定文件里的全部 npm 包（877 件）和 3 个环境里的 Python 包（394 件）直接向 OSV API 询问并分开记录「查到 0 件」和「没查成」；未修复项不能只靠与前一天的差分就从报告里消失；把恶意包记录和 npm audit signatures 纳入晨间；用 Claude Code 的 permissions.deny 不让读文件功能打开密钥位置；信息收集结束后从 PC 发一封报告邮件，由 ChatGPT 的 dots 在每天 7:00 只看 Gmail，只在邮件没来或主题写「有失败」的日子通知作者。不要把这 5 处和「同类文章确认到 12 篇」、上午 npm audit「已知漏洞 0 件」，或 877／394 件包数写成同一笔。这些是作者自己这一天上的记录，不可外推到别人的环境或别的一天。",
+      "晨间节奏是 5:40 由任务计划启动收集，需要采取对策的日子才在 6:00 进入作者要确认的事项，7:00 由 dots 做机外巡查。作者写明，机外确认只试过「邮件到达日」和「未到达日」，正式的第一个早晨当时还没到。向 OSV 直接询问之后，又在另一个 Python 作业环境里发现了上午没对照到的 critical／high，不要和上午的 0 件混用。",
+      "正文点名这次执行用了 Claude Code，以及 GPT 检索和 ChatGPT 的 dots，platforms 记 claude 与 chatgpt。Codex 也是这次对照通告的执行方，文中写成「ChatGPT 的枠」，但不在 18 值里，不硬凑进 platforms。Node.js 24.22.1 已是修复版、Claude Code 当时版本已高于 2.1.251 的写入范围修复，这些是清点表里的判定，不要和 5 处补丁写成同一笔。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-27T13:28:40.978+09:00 → UTC 2026-10-27T04:28:40Z、Asia/Shanghai 2026-10-27 12:28:40；bodyUpdatedAt 2026-10-27T14:25:41.477+09:00，晚于发布、同日，仍取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 5 处和 12 篇、上午 0 件或 877／394 件混用。Codex 不填 platforms。不要和近批硬窗或本批其他费用条混用。正文未配图。",
+      "导流：正文写有协作／业务委托咨询页 https://qz-ai-labs.com/partners/?utm_source=zenn&utm_medium=referral&utm_campaign=post&utm_content=z004 ，交付时 GET 200（标题 制作会社・コンサル会社向け 生成AI開発パートナー（PoC・試作から） | Qz AI Labs），按作者咨询／站点导流披露，可列可达。一次资料：https://osv.dev/ 交付时 GET 200（标题 OSV - Open Source Vulnerabilities），可列可达，不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 处当天都补上了，再谈 877 件、394 件和上午的 0 件不是同一笔",
+        body: "请按原文核算：请 GPT 找松的地方时是不是列出 5 处，是不是当天 5 处都补上了。OSV 直接询问的是不是 npm 877 件和 3 个环境里 394 件 Python 包。上午修完后 npm audit 的「已知漏洞 0 件」能不能和后来在另一个 Python 环境里发现的 critical／high 混用。同类文章是不是「确认到 12 篇」。晨间是不是 5:40 收集、6:00 确认、7:00 由 ChatGPT 的 dots 看 Gmail。机外确认当时是不是只试过到达／未到达，正式第一个早晨是否还未到。Codex 有没有被写进 platforms。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先清点自己机器和仓库里实际有什么，再去对照通告，避免把用不上的公告当成待办。",
+      "不用 --force 修依赖，并把 overrides 的理由写进可追溯的说明，上游修好后再撤。",
+      "让另一个模型专门挑「内行人会觉得哪里松」，而不是只让搭机制的那个模型自评。",
+      "把「报告为 0 件」和「查询失败」、「安全所以没通知」和「机器停了所以没通知」分开。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-27T13:28:40.978+09:00 → UTC 2026-10-27T04:28:40Z、Asia/Shanghai 2026-10-27 12:28:40；bodyUpdatedAt 晚于发布、同日，仍取 published → 2026-10-27；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-27。",
+      "不要把 5 处和 877／394 件或上午 0 件混用。platforms 记 claude 与 chatgpt。Codex 不填。咨询页须按导流披露。",
+    ],
+  },
+  {
+    id: "1080",
+    slug: "fuku-34-242",
+    title: "fukubaka0825／Takashi Narikawa：把 Claude Code 用户范围的 Skill 改成个人插件市场来管理。手头的例子是，视频生成 Skill 在放入当天就从 1.0 升到 1.3；后来一次改写是 +34／−242 行，并把 3 个 Skill 的 description 收窄，避免抢同一类请求。市场侧要同时放 Claude 形式和 Codex 形式两份 marketplace.json，才能按插件分发给 4 个工具。不要把「当天 1.0→1.3」和「+34／−242 行」或「两份市场 JSON、4 个工具」写成同一笔，也不要把「最少还要 marketplace.json 加 plugin.json」和「两份市场 JSON」混成同一组两份文件。正文点名这次实践的是 Claude Code 用户范围 Skill，platforms 记 claude。这些是作者自己这一次管理方式上的记录，不可外推。",
+    summary: "fukubaka0825 把用户范围 Skill 改由个人插件市场管理。例子是当天 1.0→1.3，后来一次 +34／−242 行，以及 Claude／Codex 两份市场 JSON 对应 4 个工具。不要把这些数字混用。platforms 记 claude。这些是作者自己这一次管理方式上的记录，不可外推。",
+    description: "面向已经打算把用户范围 Skill 从本机目录直放改成可版本管理的插件、却还把「一次改了多少行」和「两份市场文件能覆盖几个工具」写成同一笔的人：把 1.0→1.3、+34／−242 行和两份市场 JSON／4 个工具写成门禁，区别于把最少所需的 marketplace.json 加 plugin.json 说成同一组两份文件。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/fukubaka0825/articles/29231f739cd547",
+    sourceLabel: "zenn.dev·fukubaka0825 实践帖",
+    upvotes: 971,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "agent-skills",
+      "plugins",
+      "marketplace",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/fukubaka0825/articles/29231f739cd547",
+      label: "zenn.dev·fukubaka0825／Takashi Narikawa《Skill は最初から個人マーケットプレイスの plugin で管理しよう》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者认为，把 SKILL.md 直接放在 ~/.claude/skills/ 会变成没有版本和历史的配置文件，换机器或换代理时只能手拷。于是用一个 GitHub 仓库做个人插件市场，Skill 以 plugin 形式放入；并写明这篇文章谈的是不绑项目、自己在全部仓库都用的用户范围 Skill，不包括项目内的 .claude/skills/。文首也写了这是「让 AI 按 @fukubaka0825 的口吻来写」的实验系列，但内容以自己在做的事情为底。市场 JSON 的放置位置各工具不同：作者的办法是同时放 Claude 形式和 Codex 形式两份 marketplace.json。Copilot CLI、Codex、Cursor 不在 18 值里，只作为兼容对象，不写入 platforms。",
+    outcomes: [
+      "源披露：作者手头的例子是，视频生成 Skill 在放入当天就从 1.0 升到 1.3；后来还做过一次 +34／−242 行的改写，并收窄 3 个 Skill 的 description，避免抢同一类请求。市场侧要同时放 Claude 形式和 Codex 形式两份 marketplace.json，才能按插件分发给 4 个工具。不要把当天的 1.0→1.3 和后来的 +34／−242 行、3 个 description，或「两份市场 JSON、4 个工具」写成同一笔。文中另写「最少构成的成本是 JSON 两份（marketplace.json 和 plugin.json 各一份）」，这是另一组文件，不要和两份市场 JSON 混成同一组。这些是作者自己这一次管理方式上的记录，不可外推到别人的 Skill 集或别的工具组合。",
+      "正文点名这次实践的执行对象是 Claude Code 的用户范围 Skill，platforms 记 claude。Copilot CLI、VS Code、Codex、Cursor 只出现在市场放置位置对照里，不是这篇的执行平台，不写入 platforms。",
+      "文中给出的个人插件仓库 https://github.com/fukubaka0825/agent-plugins 交付时 HTTP 404，须写完整 URL 并披露状态，不列入可达。GitHub 用户页须按导流披露。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-12T03:07:07.580+09:00 → UTC 2026-10-11T18:07:07Z、Asia/Shanghai 2026-10-12 02:07:07；bodyUpdatedAt 2026-10-11T16:04:21.032+09:00，早于发布且跨日，仍取 published → 2026-10-12；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-12，不要因 bodyUpdatedAt 写成 2026-10-11。不要把 1.0→1.3、+34／−242 行和两份市场 JSON／4 个工具混用，也不要把 marketplace.json＋plugin.json 与两份市场 JSON 混成同一组。不要和近批硬窗混用。正文未配图。",
+      "导流：GitHub 用户页 https://github.com/fukubaka0825 交付时 GET 200，可列可达。文中仓库 https://github.com/fukubaka0825/agent-plugins 交付时 HTTP 404（标题 Page not found · GitHub），须写完整 URL 并披露状态，不列入可达。正文还写了 https://x.com/fukubaka0825 ，交付时 GET 200（标题 Nari (@fukubaka0825) / X），可列可达。一次资料：https://agentskills.io/specification、https://agent-plugins.org、https://cursor.com/docs/plugins 交付时均 GET 200，可列可达；https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace GET 200，跟随至 https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/create-and-share-plugin-marketplaces，可列可达并披露跟随；https://code.visualstudio.com/docs/copilot/customization/agent-plugins GET 200，跟随至 https://code.visualstudio.com/docs/agent-customization/agent-plugins，可列可达并披露跟随。https://developers.openai.com/codex/plugins/build 交付时 HTTP 403，须写完整 URL 并披露状态，不列入可达。上述一次资料不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清当天 1.0→1.3 和后来的 +34／−242 行不是同一笔，再谈两份市场 JSON 和 4 个工具",
+        body: "请按原文核算：视频生成 Skill 是不是在放入当天从 1.0 升到 1.3。后来一次改写是不是 +34／−242 行，是不是收窄了 3 个 Skill 的 description。要覆盖 4 个工具，是不是需要同时放 Claude 形式和 Codex 形式两份 marketplace.json。文中「最少两份 JSON」说的是不是 marketplace.json 加 plugin.json，能不能和两份市场 JSON 混成同一组。文中的 agent-plugins 仓库现在是不是 404。这篇的执行平台是不是 Claude Code 用户范围 Skill，Codex／Cursor／Copilot 有没有被写进 platforms。发布日期是不是 2026-10-12，有没有因 bodyUpdatedAt 写成 10-11。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用户范围 Skill 不要只直放在本机目录里，用一个个人仓库按插件来做版本和安装来源。",
+      "市场 JSON 的路径因工具而异，至少准备 Claude 形式和 Codex 形式两份，才能按插件分发。",
+      "Skill 会在放入当天就开始改，版本号和 git 历史要比手改直放更能追溯。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-12T03:07:07.580+09:00 → UTC 2026-10-11T18:07:07Z、Asia/Shanghai 2026-10-12 02:07:07；bodyUpdatedAt 早于发布且跨日，仍取 published → 2026-10-12；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-12。不要写成 2026-10-11。",
+      "不要把 1.0→1.3 和 +34／−242 行或两份市场 JSON／4 个工具混用。platforms 记 claude。agent-plugins 仓库本次 404，不列入可达。OpenAI Codex 插件文档 403，不列入可达。",
+    ],
+  },
+  {
+    id: "1081",
+    slug: "koki-809-422",
+    title: "koki_n22：个人开发用 claude -p 从 Issue 做到 PR 的自动化时，为评估跑了 500 步以上，成本比预想高。把缓存保持从 1 小时改成 5 分钟，并收窄启动时读入的设置后，同一课题记录上的成本从 $8.09 降到 $4.22（减 48％）；去掉变更前独有的步骤、按对应的 17 步比，是减 45.1％。不要把 48％ 和 45.1％ 写成同一笔，也不要把这次对照和事先汇总的 543 步合计 $277.31 混用。正文点名这次用了 Claude Code，platforms 记 claude。这些是作者自己这一次对照上的记录，不可外推。",
+    summary: "koki_n22 把 claude -p 的缓存保持改成 5 分钟并收窄启动设置后，同一课题记录上的成本从 $8.09 降到 $4.22（减 48％）；对应 17 步是减 45.1％。不要把两个降幅和 543 步 $277.31 混用。这些是作者自己这一次对照上的记录，不可外推。",
+    description: "面向已经打算反复拉起 claude -p、却还把「全部步骤的 48％」和「对齐后 17 步的 45.1％」写成同一笔的人：把 $8.09→$4.22 和 45.1％ 写成门禁，区别于把 543 步 $277.31 的构成，或启动时约 32.3k→约 9.3k token 说成同一项对照结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/koki_n22/articles/20d628b3ceb99f",
+    sourceLabel: "zenn.dev·koki_n22 实践帖",
+    upvotes: 972,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "prompt-cache",
+      "cost",
+      "cli",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/koki_n22/articles/20d628b3ceb99f",
+      label: "zenn.dev·koki_n22《claude -pのキャッシュと起動設定を見直したら、記録上のコストが約半分になった》",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+    approach: "作者在个人开发里用 claude -p 做从 Issue 到 PR 的自动化，为评估执行了 500 步以上，成本偏高，也希望少碰到用量上限。在改模型和改指示之前，先改启动设置。设置变更在 2026-10-07 至 08，Claude Code 2.1.292；对照的「变更前」执行是 2026-10-06；2026-10-11 用 2.1.296 做了追加确认。模型是 claude-opus-5-5，走 Claude 订阅登录，不是把订阅账单当成文中的美元额。每一步单独拉起 claude -p，工作目录用 Git worktree；费用按返回 JSON 里的 costUSD 汇总。改动包括：CLAUDE_CODE_PROMPT_CACHE_TTL=5m，以及 --setting-sources project,local、--strict-mcp-config、--disable-slash-commands、限制 --tools，并关掉自动记忆；同时显式加上 --effort high，以免用户设置被拿掉后推理强度一起变掉。",
+    outcomes: [
+      "源披露：同一规格、同一初始状态，把一个小的 Kotlin 库分成 4 个任务来跑，记录上的全部成本从 $8.09 降到 $4.22（表内是 $8.088→$4.216，减 48％）。变更前多出来的 2 步是一次故障引发的追加审查（$0.412）和一次因用量上限中断（$0）；去掉后按对应的 17 步比，是 $7.677→$4.216，减 45.1％。不要把 48％ 和 45.1％ 写成同一笔。作者写明，改了多项设置，前后各只跑 1 次，45.1％ 不能全部算成设置变更的效果；对应 17 步的回合合计也从 190 变成 163。这些是作者自己这一次对照上的记录，不可外推到别人的 claude -p 用法或对话会话。",
+      "不要把这次对照和变更前 543 步合计 $277.31 的构成（缓存写入 66.2％、输出 22.6％、缓存读取 11.3％，因四舍五入合计与 100％ 不完全一致）写成同一笔。启动时上下文约 32.3k→约 9.3k token 是短提示下的启动值，不是整次处理按同一比例减少。用 claudeMdExcludes 排除上级指示的约 6.8k／约 11k／约 6.7k 是 2.1.296 的追加试验，而且当时还没用于测 48％ 的那一次。按 5 分钟单价改写变更前 17 步得到的约 $5.82（约减 24％）是「缓存再利用率不变」的试算，不是实測。",
+      "合并是 4／4、评分测试是 17／17、无退回完成是 3／4，前后一致，但各条件只试了 1 次，作者写明不能说每次质量都相同。文中的美元是 Claude Code 返回的 API 费用换算，不是订阅账单。对用量上限和耗时的缩短，这次没有测量。正文点名这次用了 Claude Code，platforms 记 claude。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-11T17:09:55.031+09:00 → UTC 2026-10-11T08:09:55Z、Asia/Shanghai 2026-10-11 16:09:55；bodyUpdatedAt 2026-10-11T17:08:10.142+09:00，早于发布、同日，仍取 published → 2026-10-11；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 48％ 和 45.1％、543 步 $277.31、约 32.3k→约 9.3k 或约 $5.82 试算混用。不要和近批硬窗或本批 #1078 的 $184.51／93.3％ 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。一次资料：https://code.claude.com/docs/en/prompt-caching 、https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets 、https://code.claude.com/docs/en/prompt-caching#choose-the-ttl-yourself 、https://code.claude.com/docs/en/settings 、https://code.claude.com/docs/en/permissions 、https://code.claude.com/docs/en/cli-reference 交付时均 GET 200（标题为 How Claude Code uses prompt caching / Settings files and precedence / Configure permissions / CLI reference — Claude Code Docs，未跟随至区域不可用页），可列可达，不当本条主源。https://platform.claude.com/docs/en/build-with-claude/prompt-caching 与 https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing 交付时 HTTP 200，但跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 列入可达，须写完整 URL 并披露跟随。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 48％ 和 45.1％ 不是同一笔，再谈 $8.09→$4.22 不是 543 步那笔账",
+        body: "请按原文核算：同一课题记录上的成本是不是从 $8.09 降到 $4.22，是不是减 48％。对应 17 步是不是 $7.677→$4.216、减 45.1％。变更前多出的 2 步是不是追加审查 $0.412 和因上限中断的 $0。543 步合计 $277.31 的构成能不能和这次对照写成同一笔。约 32.3k→约 9.3k 是不是只指启动时上下文。约 $5.82 是不是假设再利用率不变的试算。美元额是不是 costUSD 换算而不是订阅账单。前后各是不是只跑了 1 次。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在改模型或改指示之前，先量启动时的缓存保持时间和读入内容。",
+      "一步一进程的短请求，不必默认使用 1 小时缓存；但中间若有超过 5 分钟的构建或测试，结论可能反过来。",
+      "收窄设置时要把 effort 等行为开关显式写出，避免比较条件一起被改掉。",
+      "同时报「全部步骤」和「对齐后的步骤」，并写明各条件只跑了几次。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-11T17:09:55.031+09:00 → UTC 2026-10-11T08:09:55Z、Asia/Shanghai 2026-10-11 16:09:55；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-10-11；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-11。",
+      "不要把 48％ 和 45.1％ 或 543 步 $277.31 混用。platforms 记 claude。code.claude.com 文档本次 200，可列可达；platform.claude.com 跟随至区域不可用页，不列入可达。",
+    ],
+  },
+  {
+    id: "1082",
+    slug: "jada-20x-052",
+    title: "jadaq／Jada QIU：个人做「拍照变成单词贴纸」的应用时，先怀疑是抠图坏了，叠框后发现是识别框把玩偶本体剪在框外。关掉思考后，Haiku 5.5 在 4 个样本上 IoU 为 0.48–0.52，和 Sonnet 5.5 的 0.51 相当，按当时官方单价估算约是 1/20 的价格（约 $0.00016 对约 $0.0032）。不要把这 1/20 和第一次 Haiku 5.5 连续 4 次解析失败写成同一笔——那 4 次输出 token 都恰好是 300，是 max_tokens 被思考用完，不是模型「不能用」。正文点名用的是 Claude 模型，platforms 记 claude。这些是作者自己这一次实测上的记录，不可外推。",
+    summary: "jadaq 叠框后发现不是抠图坏了。关掉思考后，Haiku 5.5 的 IoU 为 0.48–0.52，与 Sonnet 5.5 的 0.51 相当，估算约 1/20 价格。不要把第一次连续 4 次解析失败当成模型不能用。这些是作者自己这一次实测上的记录，不可外推。",
+    description: "面向已经打算凭体感更换视觉模型、却还把「解析失败」直接写成「新模型不能用」的人：把关掉思考后的 IoU 0.48–0.52 对 0.51、以及约 1/20 的单价对比写成门禁，区别于把第一次恰好 300 token 的 4 次失败，或 Haiku 4.5 的 0.00–0.10 说成同一项结论。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/jadaq/articles/932e0d9c52f0fb",
+    sourceLabel: "zenn.dev·jadaq 实践帖",
+    upvotes: 973,
+    trending: false,
+    tags: [
+      "claude",
+      "vision",
+      "evaluation",
+      "personal-dev",
+      "iou",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jadaq/articles/932e0d9c52f0fb",
+      label: "zenn.dev·jadaq／Jada QIU《うさぎのぬいぐるみが「カブ」になった — 画像認識モデルの乗り換えを、実測だけで決めた話》",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+    approach: "作者在个人应用里拍照生成单词贴纸，自己先遇到「钥匙扣拍出来只剩绿色链子、单词却是 rabbit」的报告。没有先改抠图，而是把模型返回的千分比框叠回原图（296×468，框落到 x 80–220、y 100–280），看到玩偶几乎在框外。同一张照片改到 647×1024 后，返回词从 ornament／keychain 变成 turnip／turnip。当时用的是 claude-haiku-4-5。作者先手绘 GT 框，用 IoU 评分，按应用里的同一提示，对每个模型做 2 种尺寸×2 次＝4 个样本。第一次看到新 Haiku 5.5 连续 4 次解析失败、输出 token 都恰好是 300 后，没有写成「新模型不能用」，而是发现自适应思考默认开启，把 300 的预算用完、正文没有空间；关掉思考并提高 max_tokens 后再测。",
+    outcomes: [
+      "源披露：关掉思考后，Haiku 5.5 四次都返回 keychain，box IoU 为 0.48–0.52，输出约 110 token；Sonnet 5.5 在第一轮是 0.51。按长边缩到 1024 的实測 token（输入 1153、输出 91）和当时官方单价估算，Haiku 5.5 约 $0.00016，Sonnet 5.5 约 $0.0032，也就是约 1/20。不要把这 1/20 和第一次 Haiku 5.5 连续 4 次解析失败、或 Haiku 4.5 的 IoU 0.00–0.10／同一张图改尺寸后变成「芜菁」写成同一笔。这些是作者自己这一次、同一张照片上的记录，不可外推到别的对象或别的价目。",
+      "作者写明，Haiku 4.5 已从现行价目表拿下（legacy），不能写「比旧模型便宜了多少」；1/20 只比较当时仍刊出价的 Haiku 5.5 和 Sonnet 5.5。IoU 约 0.5 并不能直接说成「框不准」：作者的 GT 只围了玩偶本体，模型按 keychain 把链子也围进去，评分定义和模型解释不一致。开启思考时输出会涨到约 4 倍，框也不更稳。",
+      "正文点名用的是 Claude 的 Haiku／Sonnet，platforms 记 claude。配图 1 张须按完整 URL 写入本条 caveats。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-10T14:44:20.663+09:00 → UTC 2026-10-10T05:44:20Z、Asia/Shanghai 2026-10-10 13:44:20；bodyUpdatedAt 2026-10-10T14:28:51.210+09:00，早于发布、同日，仍取 published → 2026-10-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 1/20 和第一次 4 次解析失败、Haiku 4.5 的 0.00–0.10 或「芜菁」混用，也不要按 legacy 旧模型写「便宜了多少倍」。不要和近批硬窗混用。配图 1 张见本条。",
+      "导流：无作者独立产品导流可列。配图 1 张原址 https://static.zenn.studio/user-upload/b7f3949335e6-20261010.png 交付时 GET 200，完整 URL 须进本条。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清第一次 4 次解析失败不是模型不能用，再谈 0.48–0.52 对 0.51 和约 1/20 的价格",
+        body: "请按原文核算：叠框后是不是玩偶落在识别框外，而不是抠图坏了。关掉思考后，Haiku 5.5 的 IoU 是不是 0.48–0.52，Sonnet 5.5 第一轮是不是 0.51。约 $0.00016 对约 $0.0032 是不是当时官方单价下的约 1/20。第一次 Haiku 5.5 连续 4 次解析失败时，输出 token 是不是都恰好为 300，这是不是 max_tokens 被思考用完。能不能对已经拿下价目表的 Haiku 4.5 写「便宜了多少倍」。IoU 约 0.5 是不是还受 GT 只围玩偶本体的影响。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "看起来像抠图坏了时，先把模型返回的框叠回原图，再决定改哪一层。",
+      "同一个输入至少改一次尺寸再送，不稳定的识别会在这里暴露。",
+      "新模型「没有正文」时，先看输出 token 是不是顶到了上限，再下「不能用」的结论。",
+      "评分框要和模型自己的对象定义一致，否则正确的答案也会被打低。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-10T14:44:20.663+09:00 → UTC 2026-10-10T05:44:20Z、Asia/Shanghai 2026-10-10 13:44:20；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-10-10；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-10。",
+      "不要把 1/20 和第一次 4 次失败混用。platforms 记 claude。配图 1 张须按完整 URL 写入本条 caveats。",
+    ],
+  },
+  {
+    id: "1083",
+    slug: "nori-785-185",
+    title: "noricha／のりちゃん：在本地跑 DeepSeek V4 Flash（MLX）时，本想把 max_tokens 从 24,000 提到 65,000 来避免被截断，结果更糟。はさみ将棋在上限 24,000 时把「让我写代码」重复了 185 次；提到 65,000 后同一句重复了 785 次，始终没开始写代码。不要把 785 次和 185 次写成同一笔，也不要把顺利写完的オセロ 10,804 tokens，或墨流し在 65,000 时把代码围栏重开 269 次混进去。正文点名这次用的是 DeepSeek V4 Flash 的本地量化版，platforms 记 deepseek。官方 API 版有没有同样循环，文中写明还没测。这些是作者自己这一次基准上的记录，不可外推。",
+    summary: "noricha 把本地 DeepSeek V4 Flash 的 max_tokens 从 24,000 提到 65,000 后，はさみ将棋把「让我写代码」从重复 185 次变成 785 次。不要把 785 和 185，或オセロ 10,804 tokens、墨流し 269 次重开围栏混用。官方 API 版还没测。这些是作者自己这一次基准上的记录，不可外推。",
+    description: "面向已经打算靠加大 max_tokens 让本地模型跑完长任务、却还把「重复了 785 次」和「24,000 时的 185 次」写成同一笔的人：把 785 对 185 写成门禁，区别于把一次公开过的配置失误、或オセロ自然结束的 10,804 tokens 说成同一项结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/noricha/articles/deepseek-v4-flash-mlx-max-tokens-loop",
+    sourceLabel: "zenn.dev·noricha 实践帖",
+    upvotes: 974,
+    trending: false,
+    tags: [
+      "deepseek",
+      "local-llm",
+      "max-tokens",
+      "benchmark",
+      "mlx",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/noricha/articles/deepseek-v4-flash-mlx-max-tokens-loop",
+      label: "zenn.dev·noricha／のりちゃん《max_tokensを上げたら悪化した: DeepSeek V4 Flash (MLX) が「コードを書こう」と785回言い続けた》",
+      date: "2026-08-04",
+      dateLabel: "发布",
+    },
+    approach: "作者在 2026-08-03 至 08-04 用 Mac Studio M3 Ultra 512GB，跑 inferencerlabs/DeepSeek-V4-Flash-0731-MLX（约 156GB、4.5bit 级混合量化），用 OreOre-Bench 的 8 个主题做一气生成。最初把跑分器的 max_tokens 写死为 24,000，8 个主题里有 3 个因 finish_reason=length 被截断；作者一度把这当成「模型实力」公开过，后来承认是自己的设置失误，而且只检查 </html> 也会被截断输出里偶然出现的标签骗过。把上限提到 65,000 后，オセロ和Roguelike 在一万多 tokens 就自然结束并能玩；はさみ将棋和墨流し却把 65,000 用完。作者用 uniq -c 清点输出，才看到并不是「思考太长来不及写完」。",
+    outcomes: [
+      "源披露：はさみ将棋在上限 65,000 时，同一句「好的，让我写完整代码。」重复了 785 次，始终没开始写代码就顶到上限；上限 24,000 时，同一类「让我写代码」重复了 185 次。墨流し在 24,000 时两次都自然结束并能运行（19,294／23,220 tokens），提到 65,000 后反而把代码围栏重开了 269 次并顶到上限。オセロ在 65,000 时用 10,804 tokens 自然结束，能玩。不要把 785 次和 185 次、269 次或 10,804 tokens 写成同一笔。这些是作者自己这一次、这一版 MLX 量化模型上的记录，不可外推到官方 API 版或其他主题。",
+      "把上限调回 24,000 再跑：墨流し两次都成功，失败出在加大上限之后；はさみ将棋三次都没完跑，存在「24,000 写不完、65,000 又发散」的夹板。行重复率在成功输出里是 19–38％，循环输出里超过 83％。另外 10 个任务里循环是 0 件，但逻辑谜题和只要求 800 字规则说明的はさみ将棋会把思考用满仍没有回答。finish_reason=length 且思考未闭合时，content 与 reasoning_content 曾出现字节级完全一致，不能只凭 content 非空判定成功。",
+      "正文点名这次跑的是 DeepSeek V4 Flash 的本地量化版，platforms 记 deepseek。作者写明，官方 API 版会不会出现同样循环，当时还没测。生成物和失败输出放在 OreOre-Bench 上，须按导流披露。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-08-04T22:10:25.888+09:00 → UTC 2026-08-04T13:10:25Z、Asia/Shanghai 2026-08-04 21:10:25；bodyUpdatedAt 2026-08-04T22:29:02.826+09:00，晚于发布、同日，仍取 published → 2026-08-04；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。实验日是 2026-08-03 至 08-04，不要写成准确到其中某一天的单一实验日，也不要把发布日和实验日起止混用。不要把 785、185、269 和 10,804 混用。不要和近批 token／耗时条或本批其他费用窗混用。正文未配图。",
+      "导流：一次资料／生成物：https://oreore-bench.pages.dev/?models=deepseek-v4-flash-0731-mlx 、https://oreore-bench.pages.dev/viewer?theme=othello&model=deepseek-v4-flash-0731-mlx 、https://oreore-bench.pages.dev/viewer?theme=hasami-shogi&model=deepseek-v4-flash-0731-mlx 交付时均 GET 200，按作者基准站／生成物导流披露，可列可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 785 次和 185 次不是同一笔，再谈オセロ 10,804 tokens 和墨流し 269 次",
+        body: "请按原文核算：はさみ将棋在上限 65,000 时是不是把同一句重复了 785 次，在 24,000 时是不是 185 次。オセロ在 65,000 时是不是 10,804 tokens 自然结束并能玩。墨流し在 24,000 时是不是两次成功（19,294／23,220 tokens），在 65,000 时是不是把代码围栏重开 269 次。最初 8 个主题里 3 个被截断，作者后来是不是承认那是自己把 max_tokens 写死为 24,000 的设置失误。官方 API 版有没有测过同样循环。10 个其他任务里循环是不是 0 件。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先看 finish_reason，不要只靠输出里有没有 </html> 判断是否写完。",
+      "加大 max_tokens 之前，先抽查是不是在重复同一句，而不是假设「预算不够」。",
+      "思考未闭合就被截断时，不要把思考文本当成成果物。",
+      "同一主题至少用两个上限对照，才能把「任务太难」和「上限反而诱发循环」分开。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-04T22:10:25.888+09:00 → UTC 2026-08-04T13:10:25Z、Asia/Shanghai 2026-08-04 21:10:25；bodyUpdatedAt 晚于发布、同日，仍取 published → 2026-08-04；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-08-04。",
+      "不要把 785 次和 185 次混用。platforms 记 deepseek。官方 API 版未测。OreOre-Bench 须按导流披露。",
+    ],
+  },
+  {
+    id: "1084",
+    slug: "haza-93of198",
+    title: "hellohazime：2026-06-17 至 06-30，用一台 Mac Studio（M3 Ultra、512GB）跑 2bit 量化的 Kimi K2.7 Code，完成 SWE-Lancer IC SWE（Diamond）198 个任务。93 个任务正确，正确率 47.0％；获得报酬 $69,875／满额 $189,300（36.9％），耗时 308 小时 34 分，约 13 天。不要把 93／198、47.0％ 和 36.9％、$69,875 写成同一口径，也不要把首次试跑 52 个任务里只对 2 个（3.85％），或 198 个里 109 个至少触发过一次 900 秒截断写成同一笔。Claude Code 只出现在「下次或许改用」的设想里，不是这次的执行方，platforms 只记 kimi。这些是作者自己这一次基准上的记录，不可外推。",
+    summary: "hellohazime 用一台 Mac Studio 跑 2bit 的 Kimi K2.7 Code，完成 SWE-Lancer 198 个任务，93 个正确（47.0％），获得 $69,875／满额 $189,300（36.9％）。不要把正确率和报酬率，或首次 52 题里的 3.85％ 混用。platforms 只记 kimi。这些是作者自己这一次基准上的记录，不可外推。",
+    description: "面向已经打算只看正确率就比较本地模型「赚了多少」、却还把 47.0％ 和 36.9％ 写成同一口径的人：把 198 个任务、93 个正确和 $69,875／$189,300 写成门禁，区别于把首次 52 题的 3.85％，或作者自己加的 900 秒截断说成同一项结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local",
+    sourceLabel: "zenn.dev·hellohazime 实践帖",
+    upvotes: 975,
+    trending: false,
+    tags: [
+      "kimi",
+      "swe-lancer",
+      "local-llm",
+      "benchmark",
+      "mac-studio",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local",
+      label: "zenn.dev·hellohazime《2bitに量子化したKimi K2.7 CodeにMac Studio 1台で$69,875を稼いでもらった》",
+      date: "2026-07-23",
+      dateLabel: "发布",
+    },
+    approach: "作者在 2026-06-17 至 06-30，用一台 Mac Studio（M3 Ultra、512GB）把 Unsloth 的 Kimi K2.7 Code GGUF（UD-Q2_K_XL、约 341GB）载入 llama-server，上下文 262,144 token，对 SWE-Lancer 的 IC SWE（Diamond）198 个任务做完跑。默认附带的求解器靠模型在正文里写 python 代码块，但 Kimi 更倾向发工具调用，首次试跑在 52 个任务评分时只对 2 个（3.85％）就停了。作者改写成带原生 python 工具的 ToolAwareAgentSolver，最终 198 个任务都走工具执行；其中 21 个还靠从残缺工具调用或 JSON 的 code 栏再抽出 Python。改修后的代码和 results.csv 放在 fork 分支里。这次跑的是 Kimi，不是 Claude Code；Claude Code 只在文末作为下次或许改用的设想出现。",
+    outcomes: [
+      "源披露：198 个任务中 93 个正确，正确率 47.0％；获得 $69,875，满额是 $189,300，报酬率 36.9％。耗时 308 小时 34 分，约 13 天。不要把 47.0％ 和 36.9％ 写成同一个比例，也不要把 $69,875 和满额 $189,300 当成已经全部拿到。这些是作者自己这一次基准上的记录，不可外推到未量化模型、别的求解器或官方评测配置。",
+      "不要和首次试跑 52 个任务里只对 2 个（3.85％）混用。198 个任务里有 21 个靠了残缺工具调用的回退抽取；作者自己加的「单次响应超过 900 秒就截断再评分」在 198 个任务里有 109 个至少触发过一次，其中 75 个得了 0 分，47.0％ 是在超过一半任务被中途切断的条件下得到的。同机尝试 GLM-5.2 时，一题约 8 小时、198 题约 61 天的估算后放弃，不要和这次 13 天完跑写成同一笔。",
+      "按报酬带划分时，$4,000 以上的 13 个任务满额合计 $92,000，只拿到 $24,000；最高的 $32,000 一题也没拿到。输入合计 2 亿 7,133 万 token，输出 267 万 token，每题平均约 1.6 小时。正文点名这次执行方是 Kimi K2.7 Code，platforms 记 kimi。Claude Code 不是这次的执行方，不写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-07-23T21:35:05.592+09:00 → UTC 2026-07-23T12:35:05Z、Asia/Shanghai 2026-07-23 20:35:05；bodyUpdatedAt 2026-07-23T21:30:59.297+09:00，早于发布、同日，仍取 published → 2026-07-23；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。跑题区间是 2026-06-17 至 06-30，不要把发布日写成完跑日。不要把 47.0％ 和 36.9％、首次 3.85％ 或 109／198 次 900 秒截断混用。不要和近批硬窗混用。正文未配图。源文提到的 arXiv:2502.12115 与 Hugging Face 上的 unsloth/Kimi-K2.7-Code-GGUF 未见完整 URL，不编造。",
+      "导流：改修分支 https://github.com/01554/frontier-evals/tree/kimi-k2.7-code-tool-aware-solver 、求解器 https://github.com/01554/frontier-evals/blob/kimi-k2.7-code-tool-aware-solver/project/swelancer/swelancer/solvers/swelancer_agent/solver.py 、一次数据 https://github.com/01554/frontier-evals/blob/kimi-k2.7-code-tool-aware-solver/project/swelancer/runs/2026-06-17T09-21-13-UTC_run-group_tool-aware-solver/results.csv 交付时均 GET 200，按作者 fork／数据导流披露，可列可达。一次资料：https://www.kimi.com/resources/kimi-k2-7-code 交付时 GET 200（标题 Kimi K2.7 Code：开源智能体式编程模型），可列可达，不当本条主源。run.log 文中写明只留在本地，不编造公开 URL。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 47.0％ 和 36.9％ 不是同一个比例，再谈 93／198 和首次 52 题里的 3.85％",
+        body: "请按原文核算：是不是 198 个任务中 93 个正确、正确率 47.0％，获得是不是 $69,875，满额是不是 $189,300，报酬率是不是 36.9％。耗时是不是 308 小时 34 分、约 13 天。首次试跑是不是 52 个任务里只对 2 个（3.85％）。198 个里是不是 21 个靠了回退抽取，109 个至少触发过一次作者自加的 900 秒截断，其中 75 个是 0 分。Claude Code 这次有没有实际用来跑题。results.csv 和求解器的完整 URL 是不是源文给出的 fork 路径。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先看模型是不是在按它习惯的工具调用写答案，而不是先怪「模型不会做题」。",
+      "把求解器改成模型真正会调用的工具，并给残缺输出留回退抽取。",
+      "同时报正确率和按报酬加权的获得率，高额题没拿到时两个数字会分开。",
+      "若自己加了超时截断，要写清有多少题被切过，避免把完跑率当成无截断条件。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-23T21:35:05.592+09:00 → UTC 2026-07-23T12:35:05Z、Asia/Shanghai 2026-07-23 20:35:05；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-07-23；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-23。不要把发布日写成 06-17 至 06-30 的完跑日。",
+      "不要把 47.0％ 和 36.9％ 或首次 3.85％ 混用。platforms 只记 kimi。fork、results.csv 与 kimi.com 资源页须按导流／一次资料披露。未见完整 URL 的 arXiv 与 Hugging Face 路径不编造。",
+    ],
+  },
+  {
+    id: "1085",
+    slug: "mona-42-12-3",
+    title: "ai_worklab／moname_ai：用 Claude Code 在自己的实务里运着 42 个 Agent Skills，其中自己写的是 12 个，其余 30 个只是装了别人分发的。自己写的 12 个里，只有 3 个（25％）写到了「不要触发的条件」。不要沿用更正前的「40 个」或「将近一半」，也不要把这 42／12／3 和「候选太多就会掉精度」的旧推测写成同一笔——作者后来更正：技能列表有字数预算，超出的 description 会被自动裁掉。发布日必须写成 2026-07-15，不要因 07-30 更正或 08-30 的正文更新改写成别的日期。正文点名这次用了 Claude Code，platforms 记 claude。这些是作者自己这一次运营上的记录，不可外推。",
+    summary: "ai_worklab 用 Claude Code 运着 42 个技能，自己写的 12 个里只有 3 个（25％）写了「不要触发的条件」。不要沿用更正前的「40 个」或「将近一半」，也不要把「候选太多就掉精度」的旧推测当真。必须写成 2026-07-15。这些是作者自己这一次运营上的记录，不可外推。",
+    description: "面向已经打算靠多堆技能来提高命中、却还把更正前的「40 个」或「将近一半」写成现状的人：把更正后的 42／12／3（25％）写成门禁，区别于把已撤回的「候选太多就掉精度」说成这次实测结论。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ai_worklab/articles/agent-skills-40-lessons",
+    sourceLabel: "zenn.dev·ai_worklab 实践帖",
+    upvotes: 976,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "agent-skills",
+      "description",
+      "personal-ops",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ai_worklab/articles/agent-skills-40-lessons",
+      label: "zenn.dev·ai_worklab／moname_ai《Agent Skillsを42本運用して分かった、効かせる3条件》",
+      date: "2026-07-15",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Claude Code 在工作实务里运营 Agent Skills，公开后在 2026-07-30 更正了两处数字，并承认「候选太多就会掉选择精度」是推测，后来查到技能列表有字数预算，超出的 description 会按调用次数少的先被裁掉；实测和对策写在 Qiita 版。更正后的口径是：一共 42 个，自己写的 12 个，其余 30 个是装了分发物。作者把难处归纳成三道墙：触发不了、效果测不了、数量多了就无法把握，并强调本文只谈个人运营。做法包括把 description 写成调用条件列表而不是摘要，对「有技能／无技能」各送一次同一委托来看差异，以及先规定什么不技能化、加新技能前先搜重复、并给本数设上限。",
+    outcomes: [
+      "源披露：更正后的数字是一共 42 个技能，自己写的 12 个，其余 30 个是分发物；自己写的 12 个里，写到「不要触发的条件」的只有 3 个（25％）。不要沿用更正前的「40 个运营」或把记载率写成「将近一半」。作者也写明，42 个里并没有全部测过效果。这些是作者自己这一次个人运营上的记录，不可外推到别人的技能集或团队分发。",
+      "「候选太多就会掉选择精度」是已撤回的推测，不要当成这次实测结论。作者后来写明，真正的问题是字数预算把 description 裁掉了，判断材料根本没有送到 Claude；实测和对策见 Qiita 版，不另作本条主源。",
+      "正文点名这次用了 Claude Code，platforms 记 claude。发布日必须写成 2026-07-15，不要因 2026-07-30 更正或 bodyUpdatedAt 2026-08-30 改写成别的日期。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-07-15T18:24:09.116+09:00 → UTC 2026-07-15T09:24:09Z、Asia/Shanghai 2026-07-15 17:24:09；bodyUpdatedAt 2026-08-30T13:23:45.898+09:00，晚于发布且跨月，仍取 published → 2026-07-15；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-15，不要因 07-30 更正或 08-30 更新写成 2026-07-30 或 2026-08-30。不要沿用更正前的「40 个」或「将近一半」，也不要把已撤回的精度推测当成实测。不要和近批硬窗或本批 #1080 的技能行数混用。正文未配图。",
+      "导流：更正后的实测与对策写在 https://qiita.com/moname_ai/items/b9eafa243115693b9008 ，交付时 GET 200（标题 Claude Codeのスキルが呼ばれない原因は、descriptionの書き方ではなく文字数予算だった #LLM - Qiita），不另作本条主源，可列可达。相关篇 https://zenn.dev/ai_worklab/articles/fable5-sonnet-3-prompts 交付时 GET 200，不另作主源。正文还写了 https://bsky.app/profile/moname-ai.bsky.social ，交付时 GET 200，可列可达。primary GET 200。Qiita 页脚、广告与 imgix 头像不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清更正后是 42 个里自己写了 12 个、其中 3 个（25％）写了不触发条件，再谈不要沿用 40 个或「将近一半」",
+        body: "请按原文核算：更正后是不是一共 42 个技能，自己写的是不是 12 个，分发物是不是 30 个。12 个里写到「不要触发的条件」的是不是 3 个（25％）。更正前是不是曾写成「40 个」和「将近一半」。「候选太多就会掉精度」后来是不是被撤回，实际是不是字数预算裁掉了 description。发布日是不是 2026-07-15，有没有因 07-30 更正或 08-30 更新改写成别的日期。Qiita 版的完整 URL 源文有没有给出。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "description 要写成调用条件和反例，而不是一段摘要。",
+      "每加一个技能，至少用同一句委托对比「有技能／无技能」的输出。",
+      "先规定什么不做成技能，并给本数设上限，否则管理成本和调用材料都会先被吃掉。",
+      "数字若事后发现写错，应公开更正，不要继续沿用旧口径。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-15T18:24:09.116+09:00 → UTC 2026-07-15T09:24:09Z、Asia/Shanghai 2026-07-15 17:24:09；bodyUpdatedAt 晚于发布且跨月，仍取 published → 2026-07-15；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-15。不要写成 2026-07-30 或 2026-08-30。",
+      "只采用更正后的 42／12／3（25％）。platforms 记 claude。Qiita 版不另作主源。",
+    ],
+  },
+  {
+    id: "1086",
+    slug: "ikah-440-1g",
+    title: "ikahan／0x00：把原来跑在笔记本上的公开 PDF 定期获取和漏洞信息 Discord 通知，集中到 OCI Always Free 的 1 台免费虚拟机上，做成 24 小时无人值守。机器是 1GB 内存加 2GB swap，n8n 用 Docker 只绑在 127.0.0.1:5678；实測高峰 swap 约 440MB，n8n 没有掉线。不要把约 440MB 和 Chromium 启动时多出来的 100–130MB swap、或当时仍剩约 300MB 空闲内存写成同一笔。源文写明了 127.0.0.1:5678，按原样写出、不列入可达，也不要编成 http 地址。正文点名这次用了 n8n，platforms 记 n8n。这些是作者自己这一次迁移上的记录，不可外推。",
+    summary: "ikahan 把个人自动收集迁到 1GB 内存加 2GB swap 的免费虚拟机，n8n 只绑在 127.0.0.1:5678，高峰 swap 约 440MB 且没有掉线。不要把 440MB 和 100–130MB 或约 300MB 空闲内存混用。本机端址不列入可达。这些是作者自己这一次迁移上的记录，不可外推。",
+    description: "面向已经打算把笔记本上的定时采集迁到免费小机器、却还把「高峰 swap 约 440MB」和启动瞬间多出来的 100–130MB 写成同一笔的人：把 1GB＋2GB、约 440MB 且 n8n 未掉线写成门禁，区别于把某一家银行站点的 403 或未给出完整 URL 的另文说成同一项结果。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/ikahan/articles/oci-free-vm-personal-automation",
+    sourceLabel: "zenn.dev·ikahan 实践帖",
+    upvotes: 977,
+    trending: false,
+    tags: [
+      "n8n",
+      "oci",
+      "self-host",
+      "cron",
+      "personal-automation",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ikahan/articles/oci-free-vm-personal-automation",
+      label: "zenn.dev·ikahan／0x00《OCIの無料VM1台に個人の自動収集を集約して24時間無人化した》",
+      date: "2026-06-27",
+      dateLabel: "发布",
+    },
+    approach: "作者原来在笔记本上同时跑爬虫和 n8n，合上盖就停，早上 9:30 的任务也不保证会跑。于是把它们集中到 OCI Always Free 的 E2.1.Micro（1GB 内存）上：n8n 用 Docker 并以 127.0.0.1:5678 只绑本机，管理界面走 SSH 隧道；Python 爬虫（requests + Playwright）用 cron 在 09:30 和 15:30 跑，虚拟机时区设为 JST；rclone 同步到云存储，Discord webhook 回报成功和失败。对外只开 SSH（22），关密码登录和 root SSH，并停掉不用的 rpcbind（111）。密钥只放在虚拟机里权限 600 的 .env 和 ~/.config，不进 git 和日志。作者从自宅对虚拟机做端口扫描，确认对外只开 22。",
+    outcomes: [
+      "源披露：1GB 内存加 2GB swap 的免费虚拟机上，作者边跑 headless Chromium 边用另一条 SSH 看 free -h：Chromium 启动时 swap 多用 100–130MB，空闲内存仍保持约 300MB，n8n 容器没有掉线；成为继续迁移依据的是空闲内存约 300MB、高峰 swap 约 440MB。不要把约 440MB、100–130MB 和约 300MB 写成同一笔。这些是作者自己这一次、这一台免费虚拟机上的记录，不可外推到更高频率的采集或其他机型。",
+      "有一家日本银行的公开仓库在数据中心 IP 上固定返回 403，同一套代码在自宅住宅线路可以通过；作者改 UA、加 Referer 仍是 403，于是把这个站点移出本次集中采集。原因对照写在「另文」，源文没有给出完整 URL，不编造。git push 失败是因为 main 没有设 upstream，迁移时用 git push -u origin main 修好，不要和 403 或 440MB 混用。",
+      "正文点名这次用了 n8n，platforms 记 n8n。源文明确写出 127.0.0.1:5678（Docker 绑定为 127.0.0.1:5678:5678），按原样写出、不列入可达，也不编成 http://127.0.0.1:5678。源页未见作者独立产品 URL，不编造。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-06-27T23:22:11.030+09:00 → UTC 2026-06-27T14:22:11Z、Asia/Shanghai 2026-06-27 22:22:11；bodyUpdatedAt 与发布相同，取 published → 2026-06-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把约 440MB、100–130MB 和约 300MB 混用。不要和近批硬窗混用。正文未配图。",
+      "导流：源页正文与作者简介未见完整产品 URL，不编造。源文明确写出本机端址 127.0.0.1:5678（Docker 绑定 127.0.0.1:5678:5678），按原样写出、不列入可达，也不对它做公网 GET，不编成 http 地址。「另文」没有完整 URL，不编造。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清高峰 swap 约 440MB 和启动时多出的 100–130MB 不是同一笔，再谈 127.0.0.1:5678 不能当可达公网链",
+        body: "请按原文核算：机器是不是 1GB 内存加 2GB swap。高峰 swap 是不是约 440MB，Chromium 启动时是不是多占用 100–130MB swap，空闲内存是不是仍约 300MB，n8n 有没有掉线。cron 是不是 09:30 和 15:30，时区是不是 JST。n8n 是不是只绑在 127.0.0.1:5678。那家银行站点是不是在数据中心 IP 上固定 403，另文有没有完整 URL。对外是不是只开 SSH 22。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把「合上盖就会停」的定时任务迁到可以 24 小时开着的免费小机器，并把时区设成任务期望的时区。",
+      "管理界面只绑本机，从外网只留 SSH，密钥不进仓库和日志。",
+      "用实測的内存和 swap 决定是否继续，而不是只看标称 1GB。",
+      "数据中心 IP 被拒的站点要单独处理，不要和「机器太小」混成同一个故障。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-06-27T23:22:11.030+09:00 → UTC 2026-06-27T14:22:11Z、Asia/Shanghai 2026-06-27 22:22:11；bodyUpdatedAt 与发布相同，取 published → 2026-06-27；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-06-27。",
+      "不要把约 440MB 和 100–130MB 或约 300MB 混用。platforms 记 n8n。127.0.0.1:5678 按原样写出、不列入可达。另文无完整 URL，不编造。",
+    ],
+  },
+  {
+    id: "1087",
+    slug: "koma-4of11-7",
+    title: "komachi／torihada：用 OpenCode 让 11 个本地模型做「只写一个 hello.py」的极小任务，只有 4 个成功、7 个失败。按后端拆开是 LM Studio 4 个里成功 3 个（75％），Ollama 7 个里成功 1 个（14％），而且这 1 个还被怀疑走了 Skill。不要把 4／11 和 3／4、1／7 写成同一笔，也不要把前篇「只有 Gemma 4 26B A4B 能跑」当成这篇的结论。OpenCode、Ollama、LM Studio 都不在 18 值里，platforms 为 []。日期必须写成 2026-05-15：页内 publishedAt 是 JST 2026-05-16 00:44:49，换到 Asia/Shanghai 仍是 05-15 23:44:49，不要写成 05-16。这些是作者自己这一次、在 RTX 4070 Ti Super 16GB 上的记录，不可外推。",
+    summary: "komachi 用 OpenCode 试 11 个本地模型写 hello.py，4 个成功、7 个失败；LM Studio 为 3／4，Ollama 为 1／7。不要和前篇「只有一个模型能跑」混用。platforms 为 []。必须写成 2026-05-15，不要因 JST 已是 05-16 而写成 05-16。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算按「模型够不够大」来判断本地代理能不能跑、却还把 4／11 和 Ollama 的 1／7 写成同一笔的人：把 11 个模型里 4 个成功、以及同一 Gemma e4b 在两个后端上结果相反写成门禁，区别于把前篇唯一成功的那个模型，或 Qwen3.6 27B 在 52.1％ 处被超时断开说成「模型本身不能跑」。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/komachi/articles/f96e34287f397d",
+    sourceLabel: "zenn.dev·komachi 实践帖",
+    upvotes: 978,
+    trending: false,
+    tags: [
+      "opencode",
+      "local-llm",
+      "ollama",
+      "lm-studio",
+      "tool-calling",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/komachi/articles/f96e34287f397d",
+      label: "zenn.dev·komachi／torihada《OpenCode × ローカルLLM 11モデル試したら、犯人はOllama側だった？ ─ よく分からない点も・・・》",
+      date: "2026-05-15",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Windows 11、RTX 4070 Ti Super 16GB 上，用当时的最新 OpenCode，让 11 个本地模型做同一件极小任务：用 write 工具在当前目录写 hello.py，内容只有一行 print(\"Hello from local LLM\")。工作目录放到 D:\\OpenCodeWork，因为 C: 下没有写权限；有的模型还会在未受指示时去碰 C:\\Temp。11 个模型分走 Ollama 和 LM Studio 两条后端。前篇曾得出「只有 Gemma 4 26B A4B（LM Studio）能跑」，这篇把范围扩大后再数一次。OpenCode 不在 18 值里，不写入 platforms。",
+    outcomes: [
+      "源披露：11 个模型里成功的是 4 个、失败的是 7 个。按后端拆开，LM Studio 4 个里成功 3 个（75％），Ollama 7 个里成功 1 个（14％），而且这 1 个 Qwen3.6 latest 还被怀疑走了名为 customize-opencode 的 Skill。不要把 4／11 和 3／4、1／7 写成同一笔，也不要把前篇「只有 Gemma 4 26B A4B 能跑」当成这篇的结论。这些是作者自己这一次、在 16GB 显存机器上的记录，不可外推到更大显存或其他版本。",
+      "同一 Gemma 4 e4b 系列：Ollama 版 9.6GB 失败，LM Studio 版约 6GB 反而成功；作者据此认为，工具调用失败的主因更像后端实现，而不是「量化越深越不会调用工具」。LM Studio 上的 Qwen3.6 27B 在提示处理进度 52.1％ 时被 OpenCode 超时断开，作者写明这不是「完全不能动」，而是当时超时设定下跑不完，不要和「7 个失败」里那些工具调用格式错误或「看起来写好了、磁盘上没有文件」的情况混成同一类原因。",
+      "正文点名这次执行环境是 OpenCode 加 Ollama／LM Studio，三者都不在 18 值里，platforms 为 []。前篇只作为一次资料，不另作主源。日期必须写成 2026-05-15，不要因 JST 日期已是 05-16 而写成 2026-05-16。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-05-16T00:44:49.072+09:00 → UTC 2026-05-15T15:44:49Z、Asia/Shanghai 2026-05-15 23:44:49；bodyUpdatedAt 与发布相同，取 published → 2026-05-15；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-05-15，不要因源时区日历已是 2026-05-16 而写成 05-16。不要把 4／11 和 3／4、1／7 或前篇「只有 1 个能跑」混用。不要和近批硬窗混用。正文未配图。",
+      "导流：无作者独立产品导流可列。一次资料／前篇 https://zenn.dev/komachi/articles/b3869383928117 交付时 GET 200，不另作本条主源，可列可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清发布日是 2026-05-15 不是 05-16，再谈 4／11 和 3／4、1／7 不是同一笔",
+        body: "请按原文核算：页内 publishedAt 是不是 2026-05-16T00:44:49.072+09:00，换到 Asia/Shanghai 是不是仍为 2026-05-15 23:44:49，取 published 后是不是必须写成 2026-05-15。11 个模型是不是 4 个成功、7 个失败。LM Studio 是不是 3／4，Ollama 是不是 1／7，这 1 个是不是还被怀疑走了 Skill。同一 Gemma e4b 是不是 Ollama 9.6GB 失败、LM Studio 约 6GB 成功。Qwen3.6 27B 在 LM Studio 上是不是在 52.1％ 处被超时断开。OpenCode 有没有被写进 platforms。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先用「只写一个文件」这种极小任务做能否调用工具的筛选，再谈哪个模型更聪明。",
+      "同一模型要在不同后端上对照，才能把「模型不会」和「后端把工具调用传错」分开。",
+      "超时断开要看服务器日志里的处理进度，不要直接记成模型不能跑。",
+      "看起来「已经写好了」时，还要去磁盘上确认文件在不在。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-05-16T00:44:49.072+09:00 → UTC 2026-05-15T15:44:49Z、Asia/Shanghai 2026-05-15 23:44:49；bodyUpdatedAt 与发布相同，取 published → 2026-05-15；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-05-15。不要写成 2026-05-16。",
+      "不要把 4／11 和 3／4、1／7 或前篇结论混用。platforms 为 []。前篇不另作主源。",
+    ],
   }
 ];
 
