@@ -59507,6 +59507,427 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
       dateLabel: "发布",
     },
   },
+  {
+    id: "813",
+    slug: "nana-16ok-204s-23t",
+    title: "Nana_777：同一份事实备忘与同一条提示词，不用技能与加上 hallmark 技能各生成 1 次——16 项事实两边都对上、都没有编造；时间 2 分 4.6 秒对 4 分 40.4 秒，回合 3 对 23；Lighthouse 性能 70 对 98，无障碍都是 100（各测 1 次）",
+    summary: "个人（Nana_777／山本 直弥）；披露用同一份 Amazon Bedrock AgentCore 13 项服务的事实备忘和同一条提示词，在 Claude Code 2.1.314、Sonnet 5.5、effort Medium 下，不用技能与加上 hallmark 2.0.0 各非交互生成 1 次。作者通读后，事实备忘的 16 项两边都一致，备忘里没有的提供情况、区域、价目金额、导入企业、性能数字和客户评价两边都没有出现。时间 2 分 4.6 秒对 4 分 40.4 秒，回合 3 对 23，输出 token 19,713（思考 4,603）对 37,967（思考 19,022），缓存读取 112,985 对 1,183,663，API 换算费用约 0.356 美元对约 0.857 美元，生成文件各 1 个 index.html（425 行对 520 行）。Chrome DevTools Lighthouse（移动端、导航）经本地 HTTP 服务器各测 1 次：性能 70 对 98，无障碍、最佳实践、SEO 都是 100。不代你同样看到 16 项对上或性能 98，就等于下一页已经事实正确，或 hallmark 已经让页面更快，或无障碍 100 已经可以当设计门禁。",
+    description: "面向已经把「换了设计技能」或「Lighthouse 分数高」当成页面事实与观感已门禁、却还没按同一份备忘分开记事实是否对上、有没有编造、以及时间与费用的人：把「Agent 生成页面须同时报事实对照、编造有无、时间与费用，以及无障碍与性能分数是哪一次、什么条件下测的」写成门禁，区别于只谈手册技能或只看平均分数的实践。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/Nana_777/items/3c243ec46877f2e04421",
+    sourceLabel: "qiita.com · 【ClaudeCode】WebページのデザインからAIっぽさ、AI臭さを消すには？【hallmark】",
+    upvotes: 704,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "hallmark",
+      "design",
+      "eval",
+      "Lighthouse",
+    ],
+    howItWorks: [
+      "粘贴 Agent 生成页面的对照边界（是不是约同一份事实备忘要记下 16 项是否对上、是不是约备忘里没有的价目与区域有没有被写进去、是不是约时间与费用和 Lighthouse 分数的测量条件要写清）以及「绝不可把换了设计技能或无障碍 100 写成页面已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下两边 16 项都对上、都没有编造，时间 2 分 4.6 秒对 4 分 40.4 秒、回合 3 对 23，以及 Lighthouse 性能 70 对 98、无障碍都是 100 是各测 1 次且带有扩展程序警告",
+      "人工保留 16 项对照、时间与费用、性能 70 对 98 来自哪一次自述；Agent 不代你保证「同样看到 16 项对上或性能 98 就等于下一页已经事实正确，或 hallmark 已经让页面更快，或无障碍 100 已经可以当设计门禁」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-11-04T07:53:33.000+09:00 → 2026-11-04，同时刻为 UTC 2026-11-03T22:53:33Z、Asia/Shanghai 2026-11-04 06:53:33；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：Nana_777（山本 直弥）在《【ClaudeCode】WebページのデザインからAIっぽさ、AI臭さを消すには？【hallmark】》写同一条提示词下各 1 次的对照。https://lit.link/nao777nanaarchitect GET 200（可达作者站点导流，源页作者卡 website）；https://x.com/nananaonana7 GET 200（可达社交主页导流，源页作者卡）。https://www.linkedin.com/in/naoya-yamamoto-06b918335 跟随至 https://www.linkedin.cn/incareer/in/naoya-yamamoto-06b918335 GET 451（0 字节），已披露、不列入可达导流。作者卡无 GitHub。厂商与一次资料已核、不列入可达导流：https://github.com/Nutlope/hallmark 、https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html 、https://aws.amazon.com/bedrock/agentcore/ 均 GET 200。配图 8 张已核、不列入产品导流：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/dad2785d-0b1b-4d14-8a50-15b299911707.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/cecaf72c-0059-40e0-99d1-ed99f1d4de8a.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/a22edee5-307e-4bf0-9d6f-3018ec5058e6.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/f7f910e2-ed96-4c2f-bdcc-f8186c8be5d9.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/7992d9d4-ae60-4e4a-9e46-4ce69bdafb45.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/e8af20e1-fc1a-4e2c-b88d-5e30d3d63080.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/86f712a3-981e-4004-938a-ae28f2f68dff.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/96077b6c-ea89-4221-bc79-0e6039065699.png 均 GET 200，不列入产品导流。",
+      "与近批手册 Skill、完成条件示例值入台账不同：本条不是把技能安装步骤或台账写法当主线，而是同一份事实备忘与同一条提示词下，有无设计技能时事实是否对上、时间与费用怎么记，以及无障碍与性能分数的测量条件该怎么写的门禁。",
+    ],
+    approach: `Nana_777（山本 直弥）在《【ClaudeCode】WebページのデザインからAIっぽさ、AI臭さを消すには？【hallmark】》（JSON-LD 2026-11-04，与发布时刻相同）写明：看到 GitHub 趋势上的 Nutlope/hallmark（文中写 2026-11-03 时约 46.6k star、约 2.5k fork；仓库写明 Made by Together AI、MIT）后，用同一份 Amazon Bedrock AgentCore 13 项服务的事实备忘和同一条提示词，在 Claude Code 2.1.314、Sonnet 5.5、effort Medium 下，不用技能与加上 hallmark 2.0.0（skills-lock.json 哈希 8a79fc0d…3089）各非交互生成 1 次，没有追加修改。两边都要求做成单文件日语解说页，标明非官方，不用 AWS 标志，也不许写入备忘里没有的提供情况、区域、价目金额、导入企业、性能数字和客户评价。作者自己通读对照事实备忘的 16 项（13 项服务是否都在、要点、服务间关系、费用思路等）：两边都一致，上述编造两边都没有；分组都写明是页面自己的整理。作者写明对照是目视、不是严格全文比较；带技能的正文里还留着读者看不懂的「このメモの関係表」这种说法。
+
+时间与费用来自 --output-format json：不用技能 2 分 4.6 秒、3 个回合、输出 token 19,713（思考 4,603）、缓存读取 112,985、API 换算约 0.356 美元、index.html 425 行；带技能 4 分 40.4 秒、23 个回合、输出 token 37,967（思考 19,022）、缓存读取 1,183,663、API 换算约 0.857 美元、index.html 520 行。费用是 API 换算参考值，作者用的是 Pro 计划，没有额外账单，但会消耗用量额度。Chrome DevTools Lighthouse（移动端、导航）经本地 HTTP 服务器各测 1 次：性能 70 对 98，无障碍、最佳实践、SEO 都是 100。作者原以为带技能会因读取 Google Fonts 而更慢，结果相反，原因未确认；两边都有「Chrome 扩展程序影响了加载性能」的警告，没有在无痕窗口重测，性能差是参考值。无障碍两边都是 100，带技能所重视的对比度一项，不用技能的输出也没有出现问题。
+
+本场景据此输出「Agent 生成页面须同时检查事实对照、编造有无、时间与费用，以及无障碍与性能分数的测量条件，不能只报换了设计技能或 Lighthouse 分数高」提纲。禁止把 16 项对上或性能 98 写成任意页面同分布，或把无障碍 100 写成设计已门禁。`,
+    outcomes: [
+      "源披露作者用同一份 Amazon Bedrock AgentCore 13 项服务的事实备忘和同一条提示词，在 Claude Code 2.1.314、Sonnet 5.5 下，不用技能与加上 hallmark 2.0.0 各非交互生成 1 次：事实备忘 16 项两边都对上，备忘里没有的提供情况、区域、价目金额、导入企业、性能数字和客户评价两边都没有出现；时间 2 分 4.6 秒对 4 分 40.4 秒，回合 3 对 23，API 换算约 0.356 美元对约 0.857 美元。Lighthouse 性能 70 对 98，无障碍、最佳实践、SEO 都是 100。属作者这一次在该提示词、该备忘与该工具版本上的记录（各 1 次；对照是目视；Lighthouse 各测 1 次且有扩展程序警告，性能差是参考值），不可外推为你同样看到 16 项对上或性能 98 就等于下一页已经事实正确，或 hallmark 已经让页面更快，或无障碍 100 已经可以当设计门禁。",
+      "能把「可写成同时检查事实对照、编造有无、时间与费用，以及无障碍与性能分数的测量条件」与「必须人完成的题目与导流链」拆开。",
+      "为把「换了设计技能」或「Lighthouse 分数高」当成页面已门禁，以及只看平均分数、不看测量次数与警告提供提问清单。",
+    ],
+    caveats: [
+      "16 项都对上、两边都没有编造、2 分 4.6 秒对 4 分 40.4 秒、3 对 23 个回合、约 0.356 美元对约 0.857 美元、性能 70 对 98、无障碍都是 100，均为作者自述；测的是这一条提示词与这一份备忘上各 1 次生成，不是多次平均。对照是目视。费用是 API 换算参考值。性能差是参考值，作者写明原因未确认。不能把无障碍 100 写成 hallmark 才通过对比度检查。",
+      "https://lit.link/nao777nanaarchitect GET 200（可达作者站点导流）；https://x.com/nananaonana7 GET 200（可达社交主页导流）。https://www.linkedin.com/in/naoya-yamamoto-06b918335 跟随至 https://www.linkedin.cn/incareer/in/naoya-yamamoto-06b918335 GET 451（0 字节），已披露、不列入可达导流。hallmark 仓与 AWS 文档已核、不列入可达导流。配图 8 张完整 URL 已核：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/dad2785d-0b1b-4d14-8a50-15b299911707.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/cecaf72c-0059-40e0-99d1-ed99f1d4de8a.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/a22edee5-307e-4bf0-9d6f-3018ec5058e6.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/f7f910e2-ed96-4c2f-bdcc-f8186c8be5d9.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/7992d9d4-ae60-4e4a-9e46-4ce69bdafb45.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/e8af20e1-fc1a-4e2c-b88d-5e30d3d63080.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/86f712a3-981e-4004-938a-ae28f2f68dff.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/192949/96077b6c-ea89-4221-bc79-0e6039065699.png 均 GET 200，不列入产品导流。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（qiita.com / Nana_777），作者写明是个人见解，不代表所属企业。也不是 Anthropic、Together AI 或 hallmark 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "生成页面须先按同一份事实备忘报对照",
+        body: `你是资深 Agent 页面验收教练。只根据用户边界写门禁，不要编造页面已门禁。
+
+现在是不是约同一份事实备忘要记下各项是否对上：{{whether_about_fact_sheet_match}}
+是不是约备忘里没有的价目、区域或客户评价有没有被写进去：{{whether_about_fabrication}}
+是不是约时间与费用、以及无障碍与性能分数的测量条件要写清：{{whether_about_time_cost_lighthouse}}
+
+输出 Markdown：
+1. 为什么「换了设计技能」或「Lighthouse 分数高」不能写成页面已发现已门禁
+2. 应怎样同时检查事实对照、编造有无、时间与费用，以及分数是哪一次、什么条件下测的
+3. 只有一次 16 项对上、性能 70 对 98 的账本时，应怎样单独记账，而不是写成下一页也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 16 项对上或性能 98 就等于下一页已经事实正确，或 hallmark 已经让页面更快，或无障碍 100 已经可以当设计门禁」。`,
+      },
+      {
+        title: "十六项对照与性能七十分复盘",
+        body: `报告上可以写同一条提示词下两边 16 项都对上、都没有编造，时间 2 分 4.6 秒对 4 分 40.4 秒，以及 Lighthouse 性能 70 对 98、无障碍都是 100；但这是这一份备忘与各 1 次测量上的记录。请写复盘提纲。
+
+现象：{{sixteen_match_and_perf_seventy_vs_ninety_eight}}
+
+输出：
+1. 更像事实已经写对，还是只是目视没看见编造，或性能分是扩展程序干扰下的一次参考值
+2. 最小复验顺序（先对照事实备忘与编造项→再看时间与费用→再核对 Lighthouse 的测量条件与警告→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上设计技能就等于已能去味」，或「无障碍 100 就等于页面已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/Nana_777/items/3c243ec46877f2e04421",
+      label: "qiita.com · 【ClaudeCode】WebページのデザインからAIっぽさ、AI臭さを消すには？【hallmark】",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "814",
+    slug: "jfp-100cr-85u-0sale",
+    title: "jfp_mesh：把 Claude Code 云会话的 $100 额度交给 Agent 去「把本金做大」——2026-10-10 到 11-05 共 26 天，用掉 $85、剩余 $15 到期作废；note 付费套件卖出 0 本，套件页浏览 24；决定日志 51 件、失败日志 11 件",
+    summary: "个人（jfp_mesh）；披露把 Claude Code 云会话的 $100 额度（不是现金）交给 Agent，胜利条件是到期前扣除手续费后的确定利润超过 $100。期间 2026-10-10 到 11-05 共 26 天，额度于 2026-11-05 16:59 JST 作废。台账合计用掉 $85（10/10–11 $42、10/12–13 $18、10/18 $12、10/18–11/05 $13，其中含正在核对的 $4），剩余 $15 到期作废。制作预算原先定为 $20–30，头两天就超过了。note 付费套件于 10/21 19:56 上架，纪念价 ¥1,980（10/21 20:00 到 10/27 23:30），常规价 ¥2,980；按卡支付到手估算，只卖常规价要约 6–7 本，掺进纪念价要约 8–9 本，实际卖出 0 本。11/5 17:51 统计的 note 仪表盘（过去 28 天，已覆盖上架后全程）：套件页显示 211、浏览 24；账号整体显示 4,221、浏览 243、喜欢 3；浏览来源 note 内 93.8%、无来源 5.8%、note 外 0.4%（1 次）；外部评论 0。26 天里决定日志 51 件、失败日志 11 件。不代你同样看到卖出 0 本或用掉 $85，就等于下一笔额度已经赚回来，或浏览 24 已经可以判断内容或定价，或只看销售额就已经能当停手门禁。",
+    description: "面向已经把「把额度交给 Agent 去赚钱」或「已经上架」当成实验已门禁、却还没按同一笔额度分开记花到哪里、卖出是 0 本还是浏览不够，以及胜利条件只看销售额时有没有更早的改手点的人：把「Agent 代为经营须同时报额度去向、卖出与浏览，以及销售额之前的改手门槛」写成门禁，区别于只谈费用均值或只看是否上架的实践。",
+    categories: [
+      "ecommerce",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/jfp_mesh/articles/pup-100-dollar-challenge-postmortem",
+    sourceLabel: "zenn.dev · Claude Code に $100 分のクレジットを渡して「稼いで」と頼んだら、26 日後の売上は 0 円だった",
+    upvotes: 705,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "note",
+      "credit",
+      "eval",
+      "sales",
+    ],
+    howItWorks: [
+      "粘贴 Agent 代为经营的记账边界（是不是约同一笔额度要记下用掉多少、剩余多少、分日花在哪里，是不是约卖出本数与浏览要分开记，是不是约销售额之前还要不要设改手门槛）以及「绝不可把已经上架或用掉额度写成已经赚回来」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 26 天用掉 $85、剩余 $15 作废，套件卖出 0 本、浏览 24，以及决定日志 51 件、失败日志 11 件；并且写明制作预算 $20–30 在头两天就超过了",
+      "人工保留 $85、0 本与浏览 24 来自哪一次自述；Agent 不代你保证「同样看到卖出 0 本或用掉 $85 就等于下一笔额度已经赚回来，或浏览 24 已经可以判断内容或定价，或只看销售额就已经能当停手门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T02:36:53.634+09:00 → 2026-11-06，同时刻为 UTC 2026-11-05T17:36:53Z、Asia/Shanghai 2026-11-06 01:36:53；bodyUpdatedAt 2026-11-07T17:51:07.758+09:00（晚于发布）→ 同时刻为 UTC 2026-11-07T08:51:07Z、Asia/Shanghai 2026-11-07 16:51:07；取 published；GET 200（UA MiraBot/1.0））：jfp_mesh 在《Claude Code に $100 分のクレジットを渡して「稼いで」と頼んだら、26 日後の売上は 0 円だった》写 26 天台账。文首写明稿子由云端 Claude Code「PUP」根据台账与日志起草，数字由人类搭档对着屏幕核对后公开。https://note.com/jfp_mesh GET 200（可达作者站点导流，作者卡 bio 口述连载地址）；https://note.com/jfp_mesh/m/ma26edbad7568 GET 200（可达连载导流）；https://note.com/jfp_mesh/n/n94bfd8b504a2 GET 200（可达付费套件导流，常规价 ¥2,980）。作者卡 website／GitHub／X 字段为空。",
+      "与近批费用／Effort 对照、低价云通路实测不同：本条不是把模型单价或云通路速度当主线，而是同一笔云额度在 26 天里花到哪里、卖出是 0 本还是浏览不够，以及胜利条件只看销售额时会不会没有改手机会的门禁。",
+    ],
+    approach: `jfp_mesh 在《Claude Code に $100 分のクレジットを渡して「稼いで」と頼んだら、26 日後の売上は 0 円だった》（页内 2026-11-06；正文后于 2026-11-07 有更新，取发布日）写明：本金是 Claude Code 云会话的 $100 额度，不是现金，于 2026-11-05 16:59 JST 作废；胜利条件是到期前扣除手续费后的确定利润超过 $100；禁止自购、虚假评价、垃圾信息和夸大收益。期间是 2026-10-10 到 11-05，共 26 天。团队是人类 1 人加 5 个 AI，没有上下级：PUP 是云端 Claude Code，负责设计、组装和检品，也是这篇的起草者；クロヤン是 Claude（聊天与 Cowork），负责文章与连载；じーやん是 ChatGPT，负责封面和以买家视角做检视；じぇみやん是 Gemini，负责比较与测试；パーヤン是 Perplexity，只做内部调研。PUP 看不到余额，由人类搭档看屏幕再告诉 PUP 记入台账。稿子公开前由人类核对。初日 PUP 提了 3 个方案，因人类搭档是上班族、白天不能接待客户，去掉了「代做 AI 实现」的受托，剩下两件：把多 AI 协作的运营套件作为 note 付费文章出售（常规价 ¥2,980），以及把实验过程写成连载。
+
+11/5 17:51 的 note 仪表盘（过去 28 天，套件 10/21 上架，已覆盖上架后全程）：10/21 19:56 上架，纪念价 ¥1,980（10/21 20:00 到 10/27 23:30），卖出 0 本；套件页显示 211、浏览 24；账号整体显示 4,221、浏览 243、喜欢 3；浏览来源 note 内 93.8%、无来源 5.8%、note 外 0.4%（1 次）；外部评论 0。按卡支付到手估算，只卖常规价要约 6–7 本，掺进纪念价要约 8–9 本，实际是 0 本。作者写明，浏览只有 24 人时还分不清是内容差还是定价高，能确定的是人没来。台账：$42（10/10–11，策略与套件组装）、$18（10/12–13，整份读入与上架用 ZIP）、$12（10/18，检视后的修正）、$13（10/18–11/05，上架后的记录，含正在核对的 $4），合计 $85，剩余 $15 作废。制作预算原是 $20–30，头两天就超过，之后几乎都花在修正、测试和检查上，几乎没用来做 note 以外的入口。ChatGPT 以犹豫中的买家身份指出 15 项。整份 PDF 分别交给 ChatGPT、Gemini、Claude，「这套件能做什么，用 3 行说明」，无前缀与有前缀各 2 次、合计 6 次，6 次都只回答了问题、没有执行样本指示；作者写明修正前的版本没有这样试过，因此不能写成「有了标签才没混」。26 天里决定日志 51 件、失败日志 11 件。文中还写过「上架 9 天卖出 3 本」的门槛，但没有「多少人读了该卖出多少本」的预估，浏览到 22 时也没有改手的依据。
+
+本场景据此输出「Agent 代为经营须同时记下额度去向、卖出与浏览，以及销售额之前的改手门槛，不能只报已经上架或额度已经花完」提纲。禁止把 0 本或 $85 写成任意一次经营同分布，或把已经上架写成已经赚回来。`,
+    outcomes: [
+      "源披露作者把 Claude Code 云会话的 $100 额度（不是现金）交给 Agent，期间 2026-10-10 到 11-05 共 26 天：台账用掉 $85，剩余 $15 于 11-05 16:59 JST 作废；note 付费套件卖出 0 本，套件页浏览 24；决定日志 51 件、失败日志 11 件。制作预算 $20–30 在头两天就超过。属作者这一次在该额度、该套件与该仪表盘统计时点上的记录（数字由人类搭档对着屏幕核对；浏览 24 时作者写明还分不清是内容还是定价；修正前的版本没有做整份读入测试），不可外推为你同样看到卖出 0 本或用掉 $85 就等于下一笔额度已经赚回来，或浏览 24 已经可以判断内容或定价，或只看销售额就已经能当停手门禁。",
+      "能把「可写成同时记下额度去向、卖出与浏览，以及销售额之前的改手门槛」与「必须人完成的题目与导流链」拆开。",
+      "为把「已经上架」或「额度已经花完」当成经营已门禁，以及只看销售额、不看浏览与入口提供提问清单。",
+    ],
+    caveats: [
+      "$100 额度、$85／$15、卖出 0 本、浏览 24、决定日志 51 件与失败日志 11 件，均为作者自述；测的是这一笔云额度和这一份 note 套件，不是多次经营的平均。额度不是现金。浏览 24 时作者写明还分不清内容与定价。6 次整份读入测试不能写成「标签已经防止混淆」。文中的 6–7 本、8–9 本是按到手估算的所需本数，不是实际订单。",
+      "https://note.com/jfp_mesh GET 200（可达作者站点导流）；https://note.com/jfp_mesh/m/ma26edbad7568 GET 200（可达连载导流）；https://note.com/jfp_mesh/n/n94bfd8b504a2 GET 200（可达付费套件导流）。作者卡 website／GitHub／X 字段为空。稿子由 PUP 起草、人类核对。Gemini 与 Perplexity 在实践里有使用，但平台枚举没有对应项，platforms 只填了实际用到且枚举存在的 claude 与 chatgpt，不硬凑。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / jfp_mesh），不是 Anthropic、note 或任何支付平台官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "代为经营须先按同一笔额度报去向与卖出",
+        body: `你是资深 Agent 经营验收教练。只根据用户边界写门禁，不要编造已经赚回来。
+
+现在是不是约同一笔额度要记下用掉多少、剩余多少、分日花在哪里：{{whether_about_credit_ledger}}
+是不是约卖出本数与浏览要分开记：{{whether_about_sales_and_views}}
+是不是约销售额之前还要不要设改手门槛：{{whether_about_pre_revenue_gate}}
+
+输出 Markdown：
+1. 为什么「已经上架」或「额度已经花完」不能写成经营已发现已门禁
+2. 应怎样同时检查额度去向、卖出与浏览，以及销售额之前的改手点
+3. 只有一次卖出 0 本、浏览 24、$85 账本时，应怎样单独记账，而不是写成下一笔额度也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到卖出 0 本或用掉 $85 就等于下一笔额度已经赚回来，或浏览 24 已经可以判断内容或定价，或只看销售额就已经能当停手门禁」。`,
+      },
+      {
+        title: "八十五美元与零本复盘",
+        body: `报告上可以写 26 天用掉 $85、剩余 $15 作废，套件卖出 0 本、浏览 24，以及决定日志 51 件；但这是这一笔额度与这一次仪表盘统计上的记录。请写复盘提纲。
+
+现象：{{eighty_five_dollars_and_zero_sales}}
+
+输出：
+1. 更像入口没做成，还是浏览不够仍分不清内容与定价，或胜利条件只看了销售额
+2. 最小复验顺序（先对照台账与作废剩余→再看卖出与浏览→再核对是否有销售额之前的改手门槛→再决定能不能对外说已赚回）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上上架就等于已能回本」，或「额度花完就等于经营已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jfp_mesh/articles/pup-100-dollar-challenge-postmortem",
+      label: "zenn.dev · Claude Code に $100 分のクレジットを渡して「稼いで」と頼んだら、26 日後の売上は 0 円だった",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "815",
+    slug: "clopy-deny-pass-bare1",
+    title: "clopy：在 Claude Code 2.1.318 上实测 --restricted 与 --safe-mode 会不会加载项目里的 deny 规则——两种旗标都是退出码 0，被禁止的 probe-output.txt 都被写成 WRITE_PROBE_B91A3F；--bare 退出码 1，工具与模型调用都是 0 件，耗时 2324ms，报错原文是 Not logged in · Please run /login",
+    summary: "个人（clopy）；披露在 macOS、Claude Code 2.1.318、只用已有的 claude.ai 订阅登录（未设置 ANTHROPIC_API_KEY）下，向只含 1 条 Write(./probe-output.txt) deny 的一次性项目，用同一条「只调用 1 次 Write，把 WRITE_PROBE_B91A3F 写入该文件」的提示词，对 --restricted、--safe-mode、--bare 各跑 1 次。判定看的是文件系统里有没有生成文件，以及退出码和 stderr，不看模型怎么说。--restricted 与 --safe-mode 都是退出码 0，文件都被写成 WRITE_PROBE_B91A3F，permission_denial_observed 都是 false，target_file_written 都是 true，两种旗标之间没有差别；耗时约 6.8–7.7 秒。--bare 退出码 1，工具调用 0 件、模型调用 0 件，耗时 2324ms，total_cost_usd 为 0，入出 token 都是 0；events.jsonl 里只留下 Not logged in · Please run /login（authentication_failed）。不代你同样看到文件被写成 WRITE_PROBE_B91A3F 或 --bare 退出码 1，就等于下一份 deny 规则已经在这两种旗标下生效，或报错原文已经可以按文档里的 API 密钥字样去监控，或这一次结果已经可以当安全门禁。",
+    description: "面向已经把「加了 --restricted 或 --safe-mode」当成项目里的 deny 规则仍会生效、却还没按同一次写入分开记规则有没有被加载、文件有没有被写成指定内容，以及 --bare 的拒绝原文是什么的人：把「启动面收窄须同时用文件系统核实 deny 有没有被加载，以及拒绝原文是不是文档里的那一句」写成门禁，区别于只复述旗标说明或只谈允许列表写法的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/clopy/articles/claude-code-restricted-safe-mode-bare-decision",
+    sourceLabel: "zenn.dev · Claude Codeの--restricted/--safe-mode、denyルールは両方素通りする",
+    upvotes: 706,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "permissions",
+      "deny",
+      "restricted",
+      "safe-mode",
+    ],
+    howItWorks: [
+      "粘贴启动面收窄的核实边界（是不是约项目里的 deny 要用文件有没有被写成指定内容来核对，是不是约 --restricted 与 --safe-mode 要分开记账，是不是约 --bare 的退出码和拒绝原文要按实际日志写）以及「绝不可把加了旗标写成 deny 已经生效」纪律",
+      "Agent 按实践帖输出：应怎样同时记下两种旗标都是退出码 0、probe-output.txt 都被写成 WRITE_PROBE_B91A3F，以及 --bare 退出码 1、工具与模型调用都是 0 件、报错原文是 Not logged in · Please run /login",
+      "人工保留文件被写入与 --bare 退出码 1 来自哪一次自述；Agent 不代你保证「同样看到文件被写入或退出码 1 就等于下一份 deny 已经在这两种旗标下生效，或报错原文已经可以按文档里的 API 密钥字样去监控，或这一次结果已经可以当安全门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T06:36:46.278+09:00 → 2026-11-06，同时刻为 UTC 2026-11-05T21:36:46Z、Asia/Shanghai 2026-11-06 05:36:46；bodyUpdatedAt 2026-11-06T05:52:42.919+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：clopy 在《Claude Codeの--restricted/--safe-mode、denyルールは両方素通りする》写 2026-11-05、claude 2.1.318 上各 1 次的实测。https://github.com/RyukaST077/zenn GET 200（可达作者仓导流，源页可见 githubRepository）；https://github.com/RyukaST077/zenn/blob/main/articles/claude-code-restricted-safe-mode-bare-decision.md GET 200（可达文稿页导流）。源页可见提交页 https://github.com/RyukaST077/zenn/commits/main?path=articles/claude-code-restricted-safe-mode-bare-decision.md 与 https://github.com/RyukaST077/zenn/commits/main/articles/claude-code-restricted-safe-mode-bare-decision.md 本机复检均 GET 200（可达提交页导流）。作者卡 website／GitHub／X 字段为空。正文提到官方 CLI 说明与 headless.md，但未给出可请求的文档硬链，不编造。",
+      "与近批 --restricted 用法说明、permissions 允许列表、无人编排不同：本条不是把旗标或允许列表怎么写当主线，而是项目里已有的 Write deny 在这两种旗标下会不会被加载，以及 --bare 的拒绝原文是否等于文档提示的门禁。",
+    ],
+    approach: `clopy 在《Claude Codeの--restricted/--safe-mode、denyルールは両方素通りする》（页内 2026-11-06；正文更新时刻早于发布，取发布日）写明：验证日是 2026-11-05，版本是 claude 2.1.318，系统是 macOS。只使用已有的 claude.ai 订阅登录，未设置 ANTHROPIC_API_KEY。一次性项目的 .claude/settings.json 里只放了 1 条 deny：Write(./probe-output.txt)；同时在 CLAUDE.md 里放了标记字符串 CLAUDEMD_MARKER_7D12E6。对同一条提示词（只调用 1 次 Write，把 WRITE_PROBE_B91A3F 写入 probe-output.txt），用 --restricted、--safe-mode、--bare 各跑 1 次，没有重复。共同旗标是 --output-format stream-json --tools Write；前两种还带 --permission-mode acceptEdits 与 --max-turns 3。判定看文件系统里有没有生成文件、退出码和 stderr，不看模型怎么说。作者事先把「--safe-mode 会守住 deny」当作本命预料（依据是官方 CLI 说明里 permissions work normally 那一句），同时也把「两种都不加载」写成可能的相反结果；实际观测到的是后者，不是事后才改口。
+
+--restricted 与 --safe-mode 都是退出码 0，文件都被写成 WRITE_PROBE_B91A3F（两边的 diff.patch 可对上），permission_denial_observed 都是 false，target_file_written 都是 true，两种旗标没有差别，耗时约 6.8–7.7 秒。CLAUDE.md 的标记在两边保存下来的原始 stream-json 里都没找到（claude_md_marker_observed: false）；作者写明这是对原始事件流做字符串搜索的弱检测方法，--safe-mode 不读 CLAUDE.md 已有官方说明，但 --restricted 不能单凭这一次观测概括。--bare 退出码 1，工具调用 0 件、模型调用 0 件，耗时 2324ms，total_cost_usd 为 0，入出 token 都是 0；events.jsonl 只留下 Not logged in · Please run /login（authentication_failed）。这与「bare mode 不用订阅登录」的方向一致，但与文档所暗示的「请设置 ANTHROPIC_API_KEY」字样不同，也与夹具里预先登记的那句 Error: --bare mode doesn't use your subscription login. Set ANTHROPIC_API_KEY before running it. 不一致，因此被记成 unregistered。作者还写明：只测了 Write、一种路径；不能推广到 Bash 或其他工具的 deny；给了有效 API 密钥之后的 --bare 行为不在范围内；network: false 只约束仓库自己的沙箱，不是对 claude 主机进程的操作系统级断网。
+
+本场景据此输出「启动面收窄须用文件系统核实 deny 有没有被加载，并按实际日志记下拒绝原文，不能只报加了旗标」提纲。禁止把这一次写入或退出码 1 写成任意环境同分布，或把加了 --restricted／--safe-mode 写成 deny 已门禁。`,
+    outcomes: [
+      "源披露作者在 macOS、Claude Code 2.1.318、只用订阅登录的条件下，对只含 1 条 Write(./probe-output.txt) deny 的项目，用同一条提示词对 --restricted、--safe-mode、--bare 各跑 1 次：前两种都是退出码 0，被禁止的文件都被写成 WRITE_PROBE_B91A3F，两种旗标没有差别；--bare 退出码 1，工具与模型调用都是 0 件，耗时 2324ms，报错原文是 Not logged in · Please run /login，不是文档里请设置 API 密钥的那一句。属作者这一次在该版本、该订阅登录与这条 Write deny 上的记录（各 1 次，没有重复；不能推广到 Bash 或其他工具的 deny；有效 API 密钥下的 --bare 未测），不可外推为你同样看到文件被写入或退出码 1 就等于下一份 deny 已经在这两种旗标下生效，或报错原文已经可以按文档里的 API 密钥字样去监控，或这一次结果已经可以当安全门禁。",
+      "能把「可写成用文件系统核实 deny 有没有被加载，并按实际日志记下拒绝原文」与「必须人完成的题目与导流链」拆开。",
+      "为把「加了 --restricted 或 --safe-mode」当成项目 deny 已生效，以及只按文档字样做日志监控提供提问清单。",
+    ],
+    caveats: [
+      "退出码 0 且文件被写成 WRITE_PROBE_B91A3F、--bare 退出码 1、工具与模型调用 0 件、2324ms、报错原文 Not logged in · Please run /login，均为作者自述；各案例只跑 1 次，不能排除 CLI 一时波动。只测了 Write、一种路径，不能写成 Bash deny 或其他工具也同样会被放过。有效 API 密钥下的 --bare 未测。CLAUDE.md 标记未检出，作者写明不能据此断定 --restricted 对 CLAUDE.md 的处理。",
+      "https://github.com/RyukaST077/zenn GET 200（可达作者仓导流）；https://github.com/RyukaST077/zenn/blob/main/articles/claude-code-restricted-safe-mode-bare-decision.md GET 200（可达文稿页导流）。源页可见提交页 https://github.com/RyukaST077/zenn/commits/main?path=articles/claude-code-restricted-safe-mode-bare-decision.md 与 https://github.com/RyukaST077/zenn/commits/main/articles/claude-code-restricted-safe-mode-bare-decision.md 本机复检均 GET 200（可达提交页导流）。正文未给出官方文档硬链，不编造。作者卡 website／GitHub／X 字段为空。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / clopy），不是 Anthropic 或 Claude Code 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "收窄启动面须先用文件核实 deny 有没有被加载",
+        body: `你是资深 Agent 权限验收教练。只根据用户边界写门禁，不要编造 deny 已经生效。
+
+现在是不是约项目里的 deny 要用文件有没有被写成指定内容来核对：{{whether_about_deny_file_written}}
+是不是约 --restricted 与 --safe-mode 要分开记账：{{whether_about_both_flags}}
+是不是约 --bare 的退出码和拒绝原文要按实际日志写：{{whether_about_bare_error_text}}
+
+输出 Markdown：
+1. 为什么「加了 --restricted 或 --safe-mode」不能写成 deny 已发现已门禁
+2. 应怎样同时用文件系统核实写入，并记下拒绝原文是不是文档里的那一句
+3. 只有一次两种旗标都放行、--bare 退出码 1 的账本时，应怎样单独记账，而不是写成下一份 deny 也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到文件被写入或退出码 1 就等于下一份 deny 已经在这两种旗标下生效，或报错原文已经可以按文档里的 API 密钥字样去监控，或这一次结果已经可以当安全门禁」。`,
+      },
+      {
+        title: "探测文件被写入与裸模式退出码一复盘",
+        body: `报告上可以写 --restricted 与 --safe-mode 都把被禁止的 probe-output.txt 写成了 WRITE_PROBE_B91A3F，以及 --bare 退出码 1、报错原文是 Not logged in · Please run /login；但这是这一版本、这一条 Write deny 与各 1 次运行上的记录。请写复盘提纲。
+
+现象：{{deny_passthrough_and_bare_exit_one}}
+
+输出：
+1. 更像规则根本没被加载，还是加载了却没拦住写入，或 --bare 只是在模型调用前被本地拒绝
+2. 最小复验顺序（先对照文件内容与退出码→再看两种旗标有没有差别→再核对拒绝原文与文档字样→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上旗标就等于 deny 已生效」，或「退出码 1 就等于安全已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/clopy/articles/claude-code-restricted-safe-mode-bare-decision",
+      label: "zenn.dev · Claude Codeの--restricted/--safe-mode、denyルールは両方素通りする",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "816",
+    slug: "kamome-348s-25op-1fail",
+    title: "kamomekun：同一套「先注册再在 Widget 上确认」的动作，有无 Xcode 附带的 device-interaction skill 各跑 1 次——操作时间 3 分 48 秒对 11 分 8 秒，模拟器操作 25 次对 53 次，工具失败 1 次对 19 次；两边对 4 个项目都判定正确",
+    summary: "个人（kamomekun）；披露在 Xcode 27.1 下，用终端里的 Claude Code CLI 接 Xcode MCP 做模拟器动作确认，不用 Xcode 里的 Claude Agent。把 Xcode 附带的 device-interaction skill 用 xcrun agent skills export 导出，放到项目的 .claude/skills 里。对同一套「先做含文字输入的注册，再把注册项显示到 Widget 上，做 Widget 动作确认，并在各要点截图贴进 HTML」的委托，有技能与无技能各跑 1 次。操作时间从第一次碰到模拟器算到最后一次：3 分 48 秒对 11 分 8 秒（约 3 倍）；模拟器操作 25 次对 53 次；工具失败 1 次对 19 次；正确判定的项目两边都是 4 项中的 4 项。无技能时因不熟悉文字输入命令反复报错，最后还去网上查；有技能时几乎不犹豫。作者还写过，单测都通过的实现里仍然发现过缺陷，但文中未给出件数。不代你同样看到 3 分 48 秒或工具失败 1 次，就等于下一次动作确认已经更快，或 4/4 已经可以当界面已门禁，或单测全绿就等于已经确认过界面。",
+    description: "面向已经把「接上了 Xcode MCP」或「单测全绿」当成界面动作确认已门禁、却还没按同一套委托分开记有无步骤书时的时间、操作次数与工具失败次数的人：把「Agent 做模拟器确认须同时报操作时间、操作次数与工具失败次数，以及单测全绿能不能代替界面确认」写成门禁，区别于只谈操作视频重拍或只看测试全绿的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kamomekun/articles/87d44696797e3f",
+    sourceLabel: "zenn.dev · Xcode MCPで動作確認を自動化し、device-interaction skillで加速させる",
+    upvotes: 707,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Xcode",
+      "MCP",
+      "simulator",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴模拟器动作确认的对照边界（是不是约同一套委托要同时记下操作时间、操作次数与工具失败次数，是不是约有无步骤书要分开记账，是不是约单测全绿能不能代替界面确认要写清）以及「绝不可把接上了 MCP 或单测全绿写成界面已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下有技能 3 分 48 秒、25 次操作、工具失败 1 次，无技能 11 分 8 秒、53 次操作、工具失败 19 次，以及两边对 4 个项目都判定正确；并且写明时间从第一次碰到模拟器算到最后一次",
+      "人工保留 3 分 48 秒对 11 分 8 秒、1 对 19 次失败来自哪一次自述；Agent 不代你保证「同样看到 3 分 48 秒或失败 1 次就等于下一次动作确认已经更快，或 4/4 已经可以当界面已门禁，或单测全绿就等于已经确认过界面」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T19:24:19.983+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T10:24:19Z、Asia/Shanghai 2026-11-07 18:24:19；bodyUpdatedAt 2026-11-07T19:21:49.241+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：kamomekun 在《Xcode MCPで動作確認を自動化し、device-interaction skillで加速させる》写同一套委托上各 1 次的对照。https://qiita.com/kamomeKUN GET 200（可达作者站点导流，源页作者卡 website）；https://github.com/kamomekun GET 200（可达作者 GitHub 导流，源页作者卡）。作者卡无 X。厂商与一次资料已核、不列入可达导流：https://developer.apple.com/documentation/xcode-release-notes/xcode-27-release-notes 、https://developer.apple.com/videos/play/wwdc2026/269/ 均 GET 200。配图 2 张已核、不列入产品导流：https://static.zenn.studio/user-upload/38f04ce2d65c-20261107.png 、https://static.zenn.studio/user-upload/71709d233d71-20261107.png 均 GET 200。",
+      "与近批操作视频重拍、ADB 过夜排查不同：本条不是把成片校验或真机排障当主线，而是同一套模拟器动作在有无官方步骤书时，时间、操作次数与工具失败次数该怎么记，以及单测全绿能不能代替界面确认的门禁。",
+    ],
+    approach: `kamomekun 在《Xcode MCPで動作確認を自動化し、device-interaction skillで加速させる》（页内 2026-11-07；正文更新时刻早于发布，取发布日）写明：环境是 Xcode 27.1，用终端里启动的 Claude Code CLI 接 Xcode MCP 操作模拟器，不用 Xcode 里的 Claude Agent。device-interaction skill 是 Xcode 附带的步骤书，需先用 xcrun agent skills export 导出，再放到项目的 .claude/skills 里。无技能的对照就是不放这个目录。委托是同一套：「先做含文字输入的注册，再把注册项显示到 Widget 上，做 Widget 动作确认，并在各要点截图贴进 HTML」。操作时间从第一次碰到模拟器算到最后一次。
+
+各跑 1 次的结果：有技能 3 分 48 秒、模拟器操作 25 次、工具失败 1 次；无技能 11 分 8 秒、模拟器操作 53 次、工具失败 19 次；正确判定的项目两边都是 4 项中的 4 项。作者写操作时间大约差 3 倍，事先没料到会差这么多。无技能时因不熟悉文字输入命令，试了就报错、反复试，最后去网上查；有技能时几乎不犹豫。作者还观察到，开始做动作确认时，Xcode MCP 会提示使用该 skill；没有 skill 时，Claude Code 会先四处寻找，因此作者认为这两者本来就准备成套使用。文中另外写过：实际用下来，单测都通过的实现里仍然发现过缺陷，若只看测试结果可能会漏掉；但没有给出缺陷件数。作者也写了课题：Xcode MCP 与模拟器的连接有时不稳定；Mac 屏幕锁定后就无法操作，看起来又像连接错误，不容易发现。这些问题的处理写在 skill 之外的规则里。
+
+本场景据此输出「Agent 做模拟器确认须同时记下操作时间、操作次数与工具失败次数，不能只报接上了 MCP 或单测全绿」提纲。禁止把 3 分 48 秒或 4/4 写成任意一次确认同分布，或把单测全绿写成界面已门禁。`,
+    outcomes: [
+      "源披露作者在 Xcode 27.1、终端里的 Claude Code CLI 接 Xcode MCP 的条件下，对同一套「先注册再在 Widget 上确认并截图」的委托，有无 device-interaction skill 各跑 1 次：操作时间 3 分 48 秒对 11 分 8 秒，模拟器操作 25 次对 53 次，工具失败 1 次对 19 次；两边对 4 个项目都判定正确。属作者这一次在该项目、该委托与各 1 次运行上的记录（时间从第一次碰到模拟器算到最后一次；用的是 CLI 不是 Xcode 里的 Claude Agent；单测全绿后发现过缺陷但未给件数），不可外推为你同样看到 3 分 48 秒或失败 1 次就等于下一次动作确认已经更快，或 4/4 已经可以当界面已门禁，或单测全绿就等于已经确认过界面。",
+      "能把「可写成同时记下操作时间、操作次数与工具失败次数，以及单测全绿能不能代替界面确认」与「必须人完成的题目与导流链」拆开。",
+      "为把「接上了 Xcode MCP」或「单测全绿」当成界面已门禁，以及只看平均耗时、不看失败次数提供提问清单。",
+    ],
+    caveats: [
+      "3 分 48 秒对 11 分 8 秒、25 次对 53 次、工具失败 1 次对 19 次、4/4，均为作者自述；各只跑 1 次，不是多次平均。时间口径是从第一次碰到模拟器到最后一次。单测全绿后发现过缺陷，但文中未给出件数，不编造。连接不稳与屏幕锁定后无法操作，是作者另外写的课题，不能算进这一次对照的时间差原因。",
+      "https://qiita.com/kamomeKUN GET 200（可达作者站点导流）；https://github.com/kamomekun GET 200（可达作者 GitHub 导流）。Apple 一次资料已核、不列入可达导流。配图 2 张已核、不列入产品导流：https://static.zenn.studio/user-upload/38f04ce2d65c-20261107.png 、https://static.zenn.studio/user-upload/71709d233d71-20261107.png 均 GET 200。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / kamomekun），不是 Apple、Xcode 或 Anthropic 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "模拟器确认须先按同一套委托报时间与失败次数",
+        body: `你是资深 Agent 界面确认教练。只根据用户边界写门禁，不要编造界面已门禁。
+
+现在是不是约同一套委托要同时记下操作时间、操作次数与工具失败次数：{{whether_about_time_ops_failures}}
+是不是约有无步骤书要分开记账：{{whether_about_skill_on_off}}
+是不是约单测全绿能不能代替界面确认要写清：{{whether_about_unit_tests_vs_ui}}
+
+输出 Markdown：
+1. 为什么「接上了 Xcode MCP」或「单测全绿」不能写成界面已发现已门禁
+2. 应怎样同时检查操作时间、操作次数与工具失败次数，并写明时间从哪里算到哪里
+3. 只有一次 3 分 48 秒对 11 分 8 秒、失败 1 对 19 的账本时，应怎样单独记账，而不是写成下一次确认也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 3 分 48 秒或失败 1 次就等于下一次动作确认已经更快，或 4/4 已经可以当界面已门禁，或单测全绿就等于已经确认过界面」。`,
+      },
+      {
+        title: "三分四十八秒与十九次失败复盘",
+        body: `报告上可以写有技能 3 分 48 秒、25 次操作、失败 1 次，无技能 11 分 8 秒、53 次操作、失败 19 次，以及两边都是 4/4；但这是这一套委托与各 1 次运行上的记录。请写复盘提纲。
+
+现象：{{three_minutes_forty_eight_and_nineteen_failures}}
+
+输出：
+1. 更像步骤书减少了试错，还是文字输入命令不熟导致反复失败，或时间口径把连接不稳也算了进去
+2. 最小复验顺序（先对照时间口径与操作次数→再看工具失败次数→再核对单测全绿有没有代替界面确认→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上步骤书就等于已经更快」，或「4/4 就等于界面已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kamomekun/articles/87d44696797e3f",
+      label: "zenn.dev · Xcode MCPで動作確認を自動化し、device-interaction skillで加速させる",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "817",
+    slug: "yuki-90of150-51of150",
+    title: "yuki_h_94：自己不看代码，用日语把小学时的游戏想法交给 Claude 做成能在浏览器里玩的棋盘 RPG——地图 76 格；Claude 自己做的自动游玩机器人各跑 150 局，做任务 90/150、不做任务 51/150 通关；公开页标题是迷你版",
+    summary: "个人（yuki_h_94／Yuki H）；披露自己不看代码，只用日语把想法交给 Claude，做成可在浏览器里玩的一人用棋盘 RPG（TypeScript + React + Vite，存档在本地存储，放到 Cloudflare Workers）。地图 76 格，草原、水、火山 3 个区域；魔将前 40 回合睡觉，醒来后 15 回合内要打倒，延长战 12 回合且只有一次。先做了约 15 格、2 个村子、1 个头目、自动战斗的迷你版，确认能成局后再慢慢加大。Claude 自己做了自动游玩机器人，各跑 150 局：做任务 90/150 通关，不做任务 51/150 通关。作者写明这些数字是 AI 测的，不是自己玩了 150 局；机器人数字好，实际去玩仍会暴露等级上限、税金过多、缺少 ★1 敌人和「什么都不发生的格子」这类问题。公开地址 https://sugoroku.peachjuice.workers.dev/ GET 200，页标题是「すごろくRPG（ミニ版）」。不代你同样看到 90/150 或 76 格，就等于游戏已经好玩，或公开页已经是完整的 76 格地图，或通关率已经可以当验收门禁。",
+    description: "面向已经把「能在浏览器里玩」或「自动游玩通关率高」当成游戏已门禁、却还没按同一批 150 局分开记做任务与不做任务，以及公开页到底是迷你版还是完整地图的人：把「不看代码的验收须同时报自动游玩通关数来自谁、试玩还发现了什么，以及公开页标题是不是完整版」写成门禁，区别于只谈页面生成或只看能否运行的实践。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuki_h_94/articles/de8f05e59f29b5",
+    sourceLabel: "zenn.dev · 小学生の頃のゲームのアイデアを、コードを一度も見ずにClaudeで実装してみた",
+    upvotes: 708,
+    trending: false,
+    tags: [
+      "Claude",
+      "game",
+      "eval",
+      "playtest",
+      "personal-dev",
+    ],
+    howItWorks: [
+      "粘贴不看代码验收的边界（是不是约自动游玩的通关数要写清是谁跑的、做任务与不做任务要分开记，是不是约试玩还发现了数字里没有的问题要单独记账，是不是约公开页标题是不是完整版要写清）以及「绝不可把能在浏览器里玩或通关率高写成游戏已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下地图 76 格，机器人各 150 局做任务 90/150、不做任务 51/150，以及公开页标题是迷你版；并且写明 90/150 不是作者自己玩了 150 局",
+      "人工保留 90/150 与 51/150 来自哪一次自述；Agent 不代你保证「同样看到 90/150 或 76 格就等于游戏已经好玩，或公开页已经是完整的 76 格地图，或通关率已经可以当验收门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T20:46:39.339+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T11:46:39Z、Asia/Shanghai 2026-11-07 19:46:39；bodyUpdatedAt 2026-11-07T20:30:43.541+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：yuki_h_94（Yuki H）在《小学生の頃のゲームのアイデアを、コードを一度も見ずにClaudeで実装してみた》写不看代码的试玩验收。https://sugoroku.peachjuice.workers.dev/ GET 200（可达公开游戏页导流，页标题为「すごろくRPG（ミニ版）」）；https://x.com/yuki_h_94 GET 200（可达社交主页导流，源页作者卡）；https://github.com/yuki-h-45 GET 200（可达作者 GitHub 导流，源页作者卡）；https://forms.gle/y5ss6LUMTCSXh6AcA 跟随至 https://docs.google.com/forms/d/e/1FAIpQLSeVMFL8zf8MUCLUjH8b3CnxebqiePmN8DgFp6iUSn3ZTq3oFA/viewform?usp=send_form GET 200（可达作者联系表单导流，作者卡 bio）。作者卡 website 字段为空。配图 2 张已核、不列入产品导流：https://static.zenn.studio/user-upload/f6bc19e5909d-20261107.jpg 、https://static.zenn.studio/user-upload/da888146201a-20261107.jpg 均 GET 200。",
+      "与近批 140 页学习站、本地小模型选择题不同：本条不是把并行写页或本地模型正确率当主线，而是作者不看代码、只靠试玩验收时，自动游玩 150 局的通关数能不能当成已经好玩，以及公开页是不是 76 格完整版的门禁。",
+    ],
+    approach: `yuki_h_94（Yuki H）在《小学生の頃のゲームのアイデアを、コードを一度も見ずにClaudeで実装してみた》（页内 2026-11-07；正文更新时刻早于发布，取发布日）写明：自己不看代码，只用日语把小学时的想法交给 Claude，做成一人用的棋盘 RPG。地图 76 格，草原、水、火山 3 个区域；村子可收购、有战斗、升级可分配 3 点；属性相性是有利 1.5 倍、同属性 0.75 倍；魔将前 40 回合睡觉，醒来后 15 回合内要打倒，延长战 12 回合且只有一次。技术是 TypeScript + React + Vite，存档在浏览器本地存储，静态文件放到 Cloudflare Workers；换终端或浏览器时存档不能带走。作者没有一上来做完全体，先做了约 15 格、2 个村子、1 个头目、自动战斗的迷你版，确认能成局后再加大。自己负责说出想要什么、以及玩过之后要不要接受。
+
+Claude 自己做了自动游玩机器人（不是作者先提出的），各跑 150 局：做任务 90/150 通关，不做任务 51/150 通关。作者认为「做任务更容易赢、偷懒会更严」符合设计；机器人还发现把点全加在防御上会过强，于是调整了防御成长。作者写明这些数字是 AI 测的。机器人数字好，自己去玩仍会暴露问题：水区域在睡觉期过半就到了等级上限（后来取消了上限）；税金过多、后半段钱花不掉（后来减税并加了锻造）；水区域没有最弱的 ★1 敌人（后来补了水母格）；「什么都不发生的格子很多」这种无聊，数字里看不出来；「防御」指令没人用，也是玩的时候才发现，后来改成掷出 5 或 6 就反击的「カウンター」。作者还撤回过自己最初写的「不设回合限制」。公开地址在文中给了两次：https://sugoroku.peachjuice.workers.dev/ ；本机 GET 200，页标题是「すごろくRPG（ミニ版）」，因此不能把这个地址写成 76 格完整版已经上线。
+
+本场景据此输出「不看代码的验收须同时写清自动游玩通关数来自谁、试玩还发现了什么，以及公开页标题是不是完整版，不能只报能在浏览器里玩或通关率高」提纲。禁止把 90/150 写成作者自己玩了 150 局，或把公开页写成 76 格完整版已门禁。`,
+    outcomes: [
+      "源披露作者自己不看代码，用日语把想法交给 Claude，做成可在浏览器里玩的棋盘 RPG：地图 76 格；Claude 自己做的自动游玩机器人各跑 150 局，做任务 90/150 通关，不做任务 51/150 通关。公开页 https://sugoroku.peachjuice.workers.dev/ GET 200，页标题是「すごろくRPG（ミニ版）」。属作者这一次在该项目上的记录（90/150 与 51/150 是机器人测的，不是作者自己玩了 150 局；机器人数字好，试玩仍发现了等级上限、税金过多和缺少 ★1 敌人；公开页标题是迷你版，不能当成 76 格完整版已经上线），不可外推为你同样看到 90/150 或 76 格就等于游戏已经好玩，或公开页已经是完整的 76 格地图，或通关率已经可以当验收门禁。",
+      "能把「可写成同时写清通关数来自谁、试玩还发现了什么，以及公开页标题是不是完整版」与「必须人完成的题目与导流链」拆开。",
+      "为把「能在浏览器里玩」或「自动游玩通关率高」当成游戏已门禁，以及只看机器人数字、不看试玩提供提问清单。",
+    ],
+    caveats: [
+      "76 格、90/150 与 51/150 均为作者自述；150 局是 Claude 做的机器人跑的，不是作者自己玩了 150 局。机器人数字好也不能写成游戏已经好玩。先做的迷你版是约 15 格、2 个村子、1 个头目。公开页标题是迷你版，不能把该 URL 写成 76 格完整版已经上线。属性倍率、睡觉回合和延长战是规则说明，不是这一次 150 局的结果。",
+      "https://sugoroku.peachjuice.workers.dev/ GET 200（可达公开游戏页导流，页标题为迷你版）；https://x.com/yuki_h_94 GET 200（可达社交主页导流）；https://github.com/yuki-h-45 GET 200（可达作者 GitHub 导流）；https://forms.gle/y5ss6LUMTCSXh6AcA 跟随至 Google 表单 GET 200（可达作者联系表单导流）。配图 2 张已核、不列入产品导流：https://static.zenn.studio/user-upload/f6bc19e5909d-20261107.jpg 、https://static.zenn.studio/user-upload/da888146201a-20261107.jpg 均 GET 200。作者卡 website 字段为空。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / yuki_h_94），不是 Anthropic 或 Cloudflare 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "不看代码的验收须先写清通关数是谁跑的",
+        body: `你是资深 Agent 游戏验收教练。只根据用户边界写门禁，不要编造游戏已门禁。
+
+现在是不是约自动游玩的通关数要写清是谁跑的、做任务与不做任务要分开记：{{whether_about_bot_clear_rate}}
+是不是约试玩还发现了数字里没有的问题要单独记账：{{whether_about_human_playtest}}
+是不是约公开页标题是不是完整版要写清：{{whether_about_public_page_edition}}
+
+输出 Markdown：
+1. 为什么「能在浏览器里玩」或「通关率高」不能写成游戏已发现已门禁
+2. 应怎样同时写清通关数来自谁、试玩还发现了什么，以及公开页标题是什么
+3. 只有一次 90/150 与 51/150 账本时，应怎样单独记账，而不是写成下一款游戏也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 90/150 或 76 格就等于游戏已经好玩，或公开页已经是完整的 76 格地图，或通关率已经可以当验收门禁」。`,
+      },
+      {
+        title: "一百五十局通关与迷你版公开页复盘",
+        body: `报告上可以写地图 76 格，机器人各 150 局做任务 90/150、不做任务 51/150，以及公开页可以打开；但这是这一项目上的记录，且公开页标题是迷你版。请写复盘提纲。
+
+现象：{{ninety_of_one_fifty_and_mini_page}}
+
+输出：
+1. 更像机器人数字与试玩感受不一致，还是公开页并不是 76 格完整版，或通关率被当成了好玩已经门禁
+2. 最小复验顺序（先对照通关数是谁跑的→再看试玩发现了什么→再核对外公开页标题→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上自动游玩就等于已经好玩」，或「能打开公开页就等于完整版已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuki_h_94/articles/de8f05e59f29b5",
+      label: "zenn.dev · 小学生の頃のゲームのアイデアを、コードを一度も見ずにClaudeで実装してみた",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  }
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
