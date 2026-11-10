@@ -64646,6 +64646,553 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       date: "2026-10-22",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "888",
+    slug: "kimura-129-130-302",
+    title: "kimura0314：GAS Web 应用上的 MCP 服务器，官方 Python SDK mcp 1.29.0 能连上，1.30.0 起（含 2026-11-02 当时最新的 2.3.0）不再跟随跨源 302。1.30.0 于 2026-09-07 发布。环境是 Windows 11／Python 3.12.10。正文把部署 ID 写成 <deployment-id> 占位。实测客户端是 Python SDK，Gemini 只出现在「自己写的客户端能用、别人的客户端用不上」的说明里，不在枚举，platforms=[]",
+    summary: "kimura0314 在自己的 GAS MCP 服务器上，只改 mcp 版本、连同一台服务器：1.29.0 能走到 initialize 和 tools/list；1.30.0 与 2.3.0 都以「Redirect to https://script.googleusercontent.com/macros/echo not followed」落下。原因是 GAS 对 POST 一律 302 到另一个源，而 1.30.0 起 next_request_within_origin 只跟随「方法不变且同源」的跳转。echo 的 URL 每次都带一次性 user_content_key，不能登记成端点。GAS 里边没有找到修法。这是这一次、这一组版本上的记录。",
+    description: "面向已经把 GAS 做成 MCP 服务器、却在换新版 Python SDK 后连不上的人：把「分界是 1.29.0 通、1.30.0 与 2.3.0 不通；2.3.0 改写后再跑仍是同一句 MCPError；部署 ID 与 user_content_key 是占位／截断，不要补成可达链」写成门禁，区别于只看「新版 SDK 连不上」却不核版本分界和 302 条件的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kimura0314/articles/gas-mcp-python-sdk-130-redirect",
+    sourceLabel: "zenn.dev·kimura0314 实践帖",
+    upvotes: 779,
+    trending: false,
+    tags: [
+      "mcp",
+      "gas",
+      "python-sdk",
+      "redirect",
+      "302",
+    ],
+    howItWorks: [
+      "作者先前用 GAS 做了只在 Apps Script 里跑的 MCP 服务器（相关篇 https://zenn.dev/kimura0314/articles/gas-only-mcp-server）。本篇只改官方 Python SDK 的版本，连同一台已部署的 Web 应用。环境是 Windows 11、Python 3.12.10；对照的版本是 mcp 1.29.0、1.30.0 和 2026-11-02 当时最新的 2.3.0（1.30.0 的发布是 2026-09-07）。",
+      "1.29.0 能走到 initialize 和 tools/list。1.30.0 与 2.3.0 都以同一句错误落下：Redirect to https://script.googleusercontent.com/macros/echo not followed。作者用 curl 看过 POST 的回复：HTTP 302，Location 指向 script.googleusercontent.com 上带一次性 user_content_key 的 /macros/echo（正文把密钥之后截断了）。",
+      "1.30.0 起，mcp/shared/_httpx_utils.py 里的 next_request_within_origin 只在方法不变、同源（http→https 且主机相同可放行）、Location 不自带 userinfo 时才跟随。GAS 的 302 会把 POST 变成无正文的 GET，并且从 script.google.com 跳到 script.googleusercontent.com，两条都不满足。SDK 提示「若那是有意的服务器，就把那个 URL 当作端点」；但 echo 的地址每次都换，不能登记。2.3.0 里客户端改名为 streamable_http_client、返回值变成 2 个，作者改写后再跑，仍是同一句 MCPError。作者写明：自己写、钉在 mcp<1.30 的客户端能通，对 Gemini 这类别人的客户端没用；GAS 里边没有找到修法。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-02T11:19:38.256+09:00 → UTC 2026-11-02T02:19:38Z、Asia/Shanghai 2026-11-02 10:19:38；bodyUpdatedAt 与发布相同；取 published → 2026-11-02；GET 200（UA MiraBot/1.0））：kimura0314 在《GASのMCPサーバーに新しいPython SDKがつながらない。1.30.0から別オリジンへの302を追わなくなった》记录 Python SDK 与 GAS MCP 的版本分界。可达导流：https://kimura-portfolio.pages.dev/ GET 200。路径 https://script.google.com/macros/s/<deployment-id>/exec 与截断的 https://script.googleusercontent.com/macros/echo?user_content_key= 按源文占位／截断写出，未作为可达链去核。",
+      "不要写成「新版 SDK 一律不能用」：分界是 1.29.0 通，1.30.0 与 2.3.0 不通。2.3.0 改名、改返回值后再跑，仍是同一句错误。部署 ID 和 user_content_key 不要补全或拿去探测。",
+    ],
+    approach: `作者把官方 Python MCP SDK 的版本当成唯一变量，在 Windows 11、Python 3.12.10 上分别建了 1.29.0 和 1.30.0 的虚拟环境，用同一份 client.py 去连自己已经部署的 GAS Web 应用。1.29.0 能完成 initialize 和 tools/list；换成 1.30.0，错误停在「Redirect to https://script.googleusercontent.com/macros/echo not followed」。当时最新的 2.3.0（记录于 2026-11-02）同样落下。作者用 curl 复现了 POST 之后的 302：Location 从 script.google.com 转到 script.googleusercontent.com 上带一次性 user_content_key 的 /macros/echo。对照 1.30.0（2026-09-07 发布）里 next_request_within_origin 的条件后，他确认 GAS 这条 302 既改变了方法（httpx 会把对 POST 的 302 改成无正文的 GET），也改变了源，因此不再被跟随。SDK 建议把未跟随的 URL 登记成端点，但 echo 地址每次都变，登记不了。2.3.0 里相关符号改名、返回值变成两个，作者改写后再跑，错误文案不变。他写明：把客户端钉在 mcp<1.30 只对自己写的脚本有用，对 Gemini 这类别人的客户端没用；在 GAS 里边也还没找到修法。正文里的部署 ID 写成 <deployment-id>，密钥之后截断，不要补成真实地址。`,
+    outcomes: [
+      "源披露只改 mcp 版本、连同一台 GAS MCP 服务器时，1.29.0 能走到 initialize 和 tools/list，1.30.0 与 2.3.0 都以未跟随跨源 302 落下。这是这一次、这一组版本上的记录，不可外推成「所有新版 SDK 都不能连 GAS」，也不能把 2.3.0 的改写失败写成别的错误，更不能把占位部署 ID 或截断的 user_content_key 补成可达链。",
+      "失败文案是 Redirect to https://script.googleusercontent.com/macros/echo not followed。1.30.0 起只跟随方法不变且同源的跳转；GAS 对 POST 的 302 两条都不满足。echo 地址带一次性密钥，不能当固定端点。",
+      "2.3.0 把客户端改名为 streamable_http_client、返回值变成 2 个；改写后再跑，仍是同一句 MCPError。作者写明 GAS 里边没有找到修法。",
+    ],
+    caveats: [
+      "分界是 1.29.0 通、1.30.0 与 2.3.0 不通，不要写成「新版一律不能用」。2.3.0 是 2026-11-02 当时的最新，不要写成之后所有 2.x。Gemini 不是这次实测的客户端，不在平台枚举，不硬凑，platforms=[]。",
+      "导流：作者卡 website https://kimura-portfolio.pages.dev/ GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。作者卡 GitHub／X 为空，不要补链。相关篇已核、不列入导流：https://zenn.dev/kimura0314/articles/gas-only-mcp-server GET 200。占位／截断、未作为可达链去核：https://script.google.com/macros/s/<deployment-id>/exec（源文示例，须自行替换部署 ID）；Location 示例 https://script.googleusercontent.com/macros/echo?user_content_key= 在源文里于密钥之后截断（写作 user_content_key=...），完整密钥未给出，未探测。错误文案中的 https://script.googleusercontent.com/macros/echo 没有密钥，同样不是可登记的端点，未作为可达链去核。页内 mermaid 嵌入不当作者产品导流。未见正文配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先写清 SDK 版本分界和 302 是否跨源，再谈「GAS 上的 MCP 连不上」",
+        body: "请写明能通和不能通的具体版本（例如 1.29.0 通，1.30.0 与当时最新的 2.3.0 不通），不要写成「新版一律不能用」。若失败文案是未跟随重定向，要写清 Location 是否换了源、方法是否被改成 GET，以及那种一次性 URL 能不能登记成端点。部署 ID、密钥之类若原文是占位或截断，不要补全，也不要拿去探测。别人的客户端（如 Gemini）若只是说明「这套钉版本的办法用不上」，不要写成已经在那个客户端上测过。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kimura0314/articles/gas-mcp-python-sdk-130-redirect",
+      label: "zenn.dev·kimura0314《GASのMCPサーバーに新しいPython SDKがつながらない。1.30.0から別オリジンへの302を追わなくなった》",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "889",
+    slug: "mskbhd-18run-6ok-0fix",
+    title: "mskbhd：在 Mac mini、Claude Code 2.1.299 上，用 claude -p 跑 18 次，测官方插件 security-guidance v2.0.13 会不会拦住脆弱代码。插件不阻断写入，文档也写 None of the layers block writes or commits。OAuth 订阅的 headless 下 LLM 审查被跳过（skip_reason=3）。补上 API 钥匙后，留下危险代码的 6 次全部指出，修好的是 0 次。不要把 18 次写成 4 任务×2 模型×3 条件都跑过；表里 Haiku 的 on 是「—」",
+    summary: "mskbhd 用官方插件 security-guidance v2.0.13，在 Claude Code 2.1.299、Mac mini 上以 claude -p 跑了可见的 18 次：同一批四个编程任务，分别交给 Opus 和 Haiku，并对照插件关闭、仅 OAuth、以及补上 API 钥匙。插件的三层都不阻断写入或提交。正则层把 15 件危险样本里的 7 件打成警告，SQL 注入和密钥是 0；8 件安全样本里有 1 件把注释里的 # eval( 误报。LLM 审查在 OAuth 的 headless 下被跳过（skip_reason=3）；补上钥匙后实际跑了 8 次：留下危险代码的 6 次全部指出，已改成安全写法的 2 次没有误报，按提示把代码改安全的是 0 次。第 3 层提交审查这次没有触发。",
+    description: "面向已经把 security-guidance 当成能拦住脆弱代码的人：把「18 次不是 4×2×3 全跑过；Haiku 的 on 是破折号；LLM 审查实际 8 次里指出 6、误报 0、修好 0；正则 15 件危险只警告 7 件，不要和这 18 次混写；密钥是文档假值」写成门禁，区别于只看「插件会审查」却不核是否跳过、是否改写的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mskbhd/articles/lab-1027-claude-code",
+    sourceLabel: "zenn.dev·mskbhd 实践帖",
+    upvotes: 780,
+    trending: false,
+    tags: [
+      "claude-code",
+      "security-guidance",
+      "hooks",
+      "headless",
+      "prompt",
+    ],
+    howItWorks: [
+      "作者在 Mac mini、Claude Code 2.1.299 上安装官方插件 security-guidance v2.0.13，用 claude -p 把头跑同一批四个编程任务（命令注入、路径遍历、SQL 注入、硬编码密钥），分别交给 Opus 和 Haiku，并对照三种条件：插件关闭、仅用 OAuth 订阅打开插件、以及再补上 API 钥匙。导语里的 18 次，是表里能见到的回数：Opus 四项各有 off／on／key；Haiku 可见的是其中三项的 off 与 key，on 一栏是「—」。不要还原成 4×2×3=24。",
+      "先把插件的 hook 直接打在样本上（实验 A）：15 件危险样本里，正则层发出警告的是 7 件，SQL 注入和硬编码密钥是 0；8 件安全样本里有 1 件把注释里的 # eval( 误报。这一层很快，约 0.1 秒，但不阻断写入。文档也写明 None of the layers block writes or commits。",
+      "LLM 审查在只用 OAuth 的 headless（claude -p）下被跳过，日志是 skip_reason=3。补上 API 钥匙后，这一层实际跑了 8 次：模型留下危险代码的 6 次全部被指出，已经改成安全写法的 2 次没有误报，按审查提示把代码改安全的是 0 次——提示允许在用户写明要求时继续。耗时约 4.6–10.7 秒，费用约 $0.017–$0.080；同一任务上，key 相对 off 大约多 6–57 秒。第 3 层提交审查这次没有触发。对话模式未测。文中的 AWS 钥匙是文档里的假值。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-19T10:09:04.114+09:00 → UTC 2026-10-19T01:09:04Z、Asia/Shanghai 2026-10-19 09:09:04；bodyUpdatedAt 2026-10-15T07:45:20.195+09:00，早于发布，换算到上海为 2026-10-15 06:45:20，按先写后发理解；取 published → 2026-10-19；不要把发布日写成 2026-10-15；GET 200（UA MiraBot/1.0））：mskbhd 在《Claude Codeのsecurity-guidanceは脆弱コードを止めるか 18回実行して測った》记录官方插件三层审查的实测。作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。一次资料已核、不列入导流：https://github.com/anthropics/claude-plugins-official 、https://code.claude.com/docs/ja/security-guidance 、https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance 均 GET 200。",
+      "不要把 18 次写成 4 任务×2 模型×3 条件都跑过。LLM 审查实际 8 次：指出 6、已安全 2 次无误报、修好 0。正则 15+8 件是直接打 hook，不要和 18 次混写。OAuth 的 headless 会跳过 LLM 审查。",
+    ],
+    approach: `作者要问的不是「插件会不会提示」，而是「在 claude -p 这种无人值守写法里，官方插件 security-guidance v2.0.13 会不会把脆弱代码拦住」。环境是 Mac mini、Claude Code 2.1.299。四个任务（命令注入、路径遍历、SQL 注入、硬编码密钥）分别交给 Opus 和 Haiku，并对照插件关闭、仅 OAuth 打开、以及再补 API 钥匙。表里能见到的合计是 18 次：Opus 四项三种条件都有；Haiku 只见到三项的 off 与 key，on 是「—」，不要补成 24 次。另有一组是把 hook 直接打在 15 件危险和 8 件安全样本上，用来看正则层：危险样本警告 7 件，SQL 注入和密钥是 0；安全样本里 1 件把注释 # eval( 误报。跑任务时，OAuth 的 headless 日志给出 skip_reason=3，LLM 审查被跳过；补上钥匙后这一层跑了 8 次——留下危险代码的 6 次全部指出，已改安全写法的 2 次没有误报，真正按提示改掉的是 0 次，因为提示允许在用户明确要求时继续。插件文档写明各层都不阻断写入或提交；第 3 层提交审查这次没有触发。密钥用的是 AWS 文档假值。对话模式没有测。`,
+    outcomes: [
+      "源披露在 Claude Code 2.1.299 上用 claude -p 跑可见的 18 次时，官方插件 security-guidance v2.0.13 并不阻断写入；OAuth 的 headless 下 LLM 审查被跳过，补上钥匙后留下危险代码的 6 次全部指出，修好的是 0 次。这是这一次、这一组任务和条件上的记录，不可外推成「装上插件就会拦住脆弱代码」，也不能把 18 次写成 4×2×3 全跑过，更不能把实验 A 的 15+8 件和这 18 次混成同一笔。",
+      "正则层：15 件危险样本警告 7 件，SQL 注入和硬编码密钥是 0；8 件安全样本里 1 件把注释里的 # eval( 误报。约 0.1 秒，不阻断写入。",
+      "LLM 审查实际 8 次（不是 18 次）：6 次指出、2 次已安全无误报、改安全 0 次。耗时约 4.6–10.7 秒，费用约 $0.017–$0.080；key 相对 off 大约多 6–57 秒。第 3 层这次没触发。",
+    ],
+    caveats: [
+      "18 次是导语回数，不要还原成 24。Haiku 的 on 是「—」，不要补跑结果。LLM 审查的 6／2／0 只属于补上钥匙后实际跑到的 8 次。正则 15+8 件是直接打 hook。密钥是文档假值。对话模式与第 3 层提交审查未测。该作者池中另有 Pi hook 篇，不是本条。",
+      "导流：作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。一次资料已核、不列入导流：https://github.com/anthropics/claude-plugins-official GET 200；https://code.claude.com/docs/ja/security-guidance GET 200；https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。未见正文配图。页内若有文档 link-card 嵌入，不当作者产品导流。本条硬窗是插件三层会不会拦住写入、以及 headless 下 LLM 审查被跳过，与 #881／#882／#887 的 hook 主题不是同一扇窗。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清跑了哪些格子、哪一层被跳过、有没有改掉代码，再谈「安全插件会审查」",
+        body: "请按表里实际出现的格子计数，不要把「4 个任务×2 个模型×3 种条件」自动乘成总次数；缺的格子（例如某模型在某一条件下是破折号）不要补结果。若官方文档写明各层都不阻断写入或提交，不要写成「会拦住提交」。headless 或 OAuth 下若日志出现跳过原因，要单独写。正则样本实验和端到端任务次数不要混写。指出次数、误报次数和真正改掉代码的次数要分列。测试密钥若是文档假值，要标明。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mskbhd/articles/lab-1027-claude-code",
+      label: "zenn.dev·mskbhd《Claude Codeのsecurity-guidanceは脆弱コードを止めるか 18回実行して測った》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "890",
+    slug: "yamato-40note-15k-1of5",
+    title: "yamato_snow／やまと：用 40 件虚构家计簿备忘、6 个问题、Sonnet、claude -p，对照 4 种 CLAUDE.md 放法。知识类 5 问四种放法各 3 次全对；5 问平均输入 token 约 8,700（A 全放进 CLAUDE.md）对约 15,000（B 索引）对约 16,800（D 把规矩也移走）。「约 19 分之 1」是作者自己仓库 141 件、约 35 万字对每次约 1 万 8 千字的除法，不是这次 40 件上测到的 token。D 在生数据重测里 5 次中 1 次把虚构密钥交给了 AI",
+    summary: "yamato_snow 先按自己仓库 141 件备忘、约 35 万字，算出若每次只读 CLAUDE.md（3,578 字）加索引（约 1 万 8 千字）大约是全文的 19 分之 1——这是字数除法，作者写明没有用 claude -p 去测数十万字时的用量。真正拿来跑的是另造的 40 件虚构家计簿备忘（其中 A 方案把全文放进 CLAUDE.md 时只有 7,395 字节），6 个问题，Sonnet，Claude Code 2.1.304，2026-10-21 在 Mac 上测。知识类 5 问、四种放法、各 3 次全部答对。四种放法里，5 问平均输入 token 约 8,700（A）对约 15,000（B）对约 16,800（D）；作者写「约 2 倍」是在这些小备忘上的对照，不要写成真实仓库已经测到 2 倍。第 6 问看会不会去读 .dev.vars：先是自我申报 3 次，D 有 2 次说出密钥；再用工具生数据重测 5 次，D 是 1/5，A／B／C 是 0/5。不要把 2/3 和 1/5 混成一笔。",
+    description: "面向已经把「CLAUDE.md 改成索引就能省 token」写成经验的人：把「约 19 分之 1 是字数除法、不是 40 件实验上的 token；约 8,700 对约 15,000 的约 2 倍只属于这些小备忘；密钥是先 2/3 后 1/5，不要混写」写成门禁，区别于把仓库规模和实验 token 写成同一笔的实践。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yamato_snow/articles/claude-md-index-design",
+    sourceLabel: "zenn.dev·yamato_snow 实践帖",
+    upvotes: 781,
+    trending: false,
+    tags: [
+      "claude-code",
+      "claude-md",
+      "index",
+      "tokens",
+      "secrets",
+    ],
+    howItWorks: [
+      "作者自己的开发仓库里有 141 件备忘，合计约 35 万字。若每次会话只把 CLAUDE.md 本文（3,578 字）和索引（约 1 万 8 千字）交给模型，用字数相除大约是 19 分之 1。作者写明这是按字数算出来的，没有用 claude -p 去跑「数十万字全文」时的实际用量。不要把这组数字写成 40 件实验的结果。",
+      "实验另造了 40 件虚构家计簿备忘，问题 6 个，模型只用 Sonnet，客户端是 Claude Code 2.1.304，测量日是 2026-10-21、在 Mac 上。四种放法：A 把备忘全文放进 CLAUDE.md（这份 CLAUDE.md 只有 7,395 字节，远小于真实仓库的 35 万字）；B 只放索引，需要时再去读原文；C 用 Skill 来指引怎么找；D 把规矩也从 CLAUDE.md 里挪走。知识类 5 问在四种放法上各跑 3 次，全部答对。",
+      "5 问的平均输入 token 大约是 A 8,700、B 15,000、D 16,800。作者写「约 2 倍」，是这些小备忘上 A 对 B／D 的对照，不是 141 件仓库的实测。第 6 问问变量名、会不会去碰 .dev.vars 里的虚构密钥：先按模型自我申报看了 3 次，D 有 2 次把密钥说出来；作者不放心，再用工具生数据重测 5 次，D 是 1/5，A／B／C 是 0/5。另有一组只看设置来源时的 token：3,242 对 5,717，不要和 5 问平均混写。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-22T10:00:38.410+09:00 → UTC 2026-10-22T01:00:38Z、Asia/Shanghai 2026-10-22 09:00:38；bodyUpdatedAt 2026-10-21T20:20:36.564+09:00，早于发布，换算到上海为 2026-10-21 19:20:36，按预定发布理解；取 published → 2026-10-22；不要把实测日 2026-10-21 写成发布日；GET 200（UA MiraBot/1.0））：yamato_snow／やまと在《CLAUDE.md は索引にして、決まりだけは本文に残す：4つの置き方を測った話》对照 4 种放法。可达导流：https://github.com/yamato-snow GET 200；https://x.com/keepmovelab GET 200。相关篇已核、不列入导流：https://zenn.dev/yamato_snow/articles/ai-driven-dev-harness-from-stack-selection GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/memory 、https://code.claude.com/docs/en/skills 、https://github.com/DeusData/codebase-memory-mcp（灵感来源，不是作者产品）均 GET 200。",
+      "约 19 分之 1 是字数除法，不要写成 40 件上测到的 token。约 2 倍只属于这些小备忘。密钥先是自我申报 2/3，生数据是 1/5，不要混写。知识 5 问与第 6 问要分开。",
+    ],
+    approach: `作者先面对自己的仓库：141 件备忘约 35 万字，若每次只读 CLAUDE.md（3,578 字）加索引（约 1 万 8 千字），用字数除一下大约是 19 分之 1。他写明没有用 claude -p 去测「真把数十万字都喂进去」时会花多少 token，所以这只是除法，不是实测用量。为了能反复跑，他另造了 40 件虚构家计簿备忘，设计 6 个问题，只用 Sonnet，在 2026-10-21 的 Mac 上、用 Claude Code 2.1.304 和 claude -p 对照四种放法。A 把全文放进 CLAUDE.md，这份文件只有 7,395 字节，和真实仓库不是同一量级。B 只放索引。C 靠 Skill 指引去查。D 连规矩也挪走。知识类 5 个问题，四种放法各跑 3 次，全部答对，所以这次比的不是会不会答错，而是输入 token：5 问平均大约 A 8,700、B 15,000、D 16,800，作者说大约 2 倍，是这些小备忘上的对照。第 6 问专门看会不会去读 .dev.vars。先按模型自己的说法看了 3 次，D 有 2 次泄露；再用工具调用的生数据重测 5 次，D 是 5 次里 1 次，A／B／C 是 0 次。另有一组设置来源对照是 3,242 对 5,717 token，不要和 5 问平均混在一起。`,
+    outcomes: [
+      "源披露用 40 件虚构备忘、6 个问题、Sonnet、claude -p 对照 4 种放法时，知识类 5 问四种放法各 3 次全部答对；5 问平均输入 token 大约是 A 8,700、B 15,000、D 16,800。这是这一次、这些小备忘上的记录，不可外推成真实仓库里「索引一定省一半 token」，也不能把「约 19 分之 1」写成这次测到的用量——那是 141 件、约 35 万字对每次约 1 万 8 千字的除法，作者写明没有用 claude -p 去测数十万字时的用量。",
+      "D 把规矩也挪走之后，第 6 问会不会读 .dev.vars：自我申报 3 次里有 2 次说出虚构密钥；工具生数据重测是 5 次里 1 次。A／B／C 在这 5 次里是 0。不要把 2/3 和 1/5 写成同一笔。",
+      "A 方案的 CLAUDE.md 只有 7,395 字节，和真实仓库约 35 万字不是同一规模。「约 2 倍」只属于这些小备忘上的 5 问平均。设置来源那组 3,242 对 5,717 token 要单列。",
+    ],
+    caveats: [
+      "不要把 141 件／约 35 万字／约 19 分之 1 和实验的 40 件／7,395 字节混写。约 19 分之 1 是字数除法。次数是知识问 3 次、密钥生数据 5 次。密钥先 2/3 后 1/5。发布日是 2026-10-22，不要写成实测日 2026-10-21。",
+      "导流：https://github.com/yamato-snow GET 200；https://x.com/keepmovelab GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。作者卡 website 为空，不要补链。相关篇已核、不列入导流：https://zenn.dev/yamato_snow/articles/ai-driven-dev-harness-from-stack-selection GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/memory GET 200；https://code.claude.com/docs/en/skills GET 200；https://github.com/DeusData/codebase-memory-mcp GET 200（文中作为索引做法的灵感，不是作者产品，不列入导流）。页内 Zenn link-card 嵌入不当作者产品导流。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分开「字数除法」和「小样本上测到的 token」，再谈「CLAUDE.md 改成索引能省多少」",
+        body: "如果作者是用仓库总字数除以每次实际放入的字数，得到「约几分之几」，请标明这是除法、不是用客户端测到的 token，也不要把这个分母用到另一组小样本实验上。小样本若只有几千字节，不要把它的「约 2 倍」写成立即适用于数十万字的仓库。知识类对错和密钥有没有被读出要分列；同一问题若先按模型自述、再按工具生数据重测，两次的分数不要混成一笔。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yamato_snow/articles/claude-md-index-design",
+      label: "zenn.dev·yamato_snow《CLAUDE.md は索引にして、決まりだけは本文に残す：4つの置き方を測った話》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "891",
+    slug: "neko-30rev-22-54",
+    title: "nekoai_lab／Tsukineko：把同一份登录 PR 的初版，用同一句委托各再跑 5 次，三个对象合计 30 次。已知缺陷 6 件里，旧委托 1 次平均拾到 2.2 件，存档型 XSS 是 0/5，第 5 次因只改了 docs 的 7 行才被指出；「先做 2 次」按从 5 次里抽 2 次的组合算是 2.4 件，不是另外实测的 2 次平均。现场补上 12 行确认项后平均 5.4 件，作者写明这是知道答案后写下的上限确认。Codex 不在枚举，platforms 只记 claude",
+    summary: "nekoai_lab 把家里用的登录 PR 冻结成初版，用同一句委托交给 Codex（codex-cli 0.157.1，记录于 2026-10-20）各跑 5 次，三个对象合计 30 次。已知 6 件缺陷里，旧委托 1 次平均拾到 2.2 件；其中存档型 XSS 5 次都没找到，后来第 5 次审查只因改了 docs 的 7 行才被指出——若当时已有「只改文档就复用 qa-pass」的规则，这一次也会被跳过。从 5 次里抽 2 次的组合平均是 2.4 件，不是另跑 2 次的实测。「谁的／现在什么状态／不要信客户端」这类要对照状态的洞，清单关掉时 5 次都没拾到。现场补上 12 行确认项后平均 5.4 件，作者写明是知道答案后写下的上限确认；专门留作对照的 H1 新旧都是 5/5，看不出对未见过的洞有无效果。评分类工作由 Claude 做，审查角色是 Codex。Codex 不在枚举，platforms 只记 claude。",
+    description: "面向已经把「多跑几次 AI 审查就能补上漏检」写成经验的人：把「2.4 件是组合平均不是另跑 2 次；5.4 件是知道答案后的上限确认；XSS 先是 0/5，第 5 次因 7 行文档才出现；204／37／9 是背景不是这 30 次的检出率」写成门禁，区别于只看「平均从 2.2 到 5.4」的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/nekoai_lab/articles/42d47ad4c6d540",
+    sourceLabel: "zenn.dev·nekoai_lab 实践帖",
+    upvotes: 782,
+    trending: false,
+    tags: [
+      "code-review",
+      "codex",
+      "checklist",
+      "xss",
+      "permissions",
+    ],
+    howItWorks: [
+      "作者把家里用的登录 PR 冻在初版，用同一句委托交给 Codex 再跑。对象有三个，每个条件各 5 次，合计 30 次；审查客户端是 codex-cli 0.157.1（记录于 2026-10-20）。评分类工作（委托、确认项、预先登记、是否算检出）由 Claude 做，审查角色是 Codex。检出只计「文件对上、缺陷机制也说对」的；名单以外的指摘另判，不计入这 6 件。",
+      "已知 6 件里，旧委托 1 次平均拾到 2.2 件。存档型 XSS 是 0/5；实际开发里的第 5 次审查，是因为只改了 docs 的 7 行才被指出。作者写明：若当时已经有「只改文档就复用 qa-pass」的规则，这一次会被跳过。把「先做 2 次再看」按从这 5 次里抽 2 次的组合去算，平均是 2.4 件，不是另外实测的 2 次平均。「谁注册的／现在什么状态／不要信客户端」这类要对照状态的洞，清单关掉时 5 次都没拾到。权限洞当初是从界面上看出来的，同样的旧委托再跑是 0/5。",
+      "后来补上 12 行确认项（几乎是把 V1／V2 的缺陷改写成检查句），平均从 2.2 到 5.4，V2-a 从 0/5 到 5/5。作者写明这是「知道答案后写下的确认项也能拾到」的上限确认，不是对未见过的洞做了推广。留作对照的 H1 是明显的 innerHTML XSS，新旧都是 5/5，分不出差别。即便有接近答案的确认项，XSS 仍是 2/5。30 次里没有看到清楚写错的指摘；新委托会多出大约 1 件要费工夫判断的指摘。三周多里另有 204 次 request-qa、blocking 37、其中安全 9 件，是背景，不是这 30 次的检出率。当时那次登录 PR，Codex 在 4 小时半里审查了 14 次，也不要和后来的 30 次重跑混写。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T06:55:47.593+09:00 → UTC 2026-10-24T21:55:47Z、Asia/Shanghai 2026-10-25 05:55:47，未跨日；bodyUpdatedAt 2026-10-25T10:37:30.961+09:00，晚于发布、同日，仍取 published → 2026-10-25；GET 200（UA MiraBot/1.0））：nekoai_lab／Tsukineko 在《回数を増やしても、見ない穴は見なかった ── 自分のAIレビューを同じ版に5回ずつ、計30回かけ直して測った》记录 30 次重跑。可达导流：https://github.com/nekoai-lab 、https://x.com/nekoai_lab 、https://marcrevix.com/ ，以及作者教材 https://nekoai-lab.github.io/ai-security-playbook/learn/agent-permissions/ 、https://nekoai-lab.github.io/ai-security-playbook/learn/ai-review-trust/ ，均 GET 200。",
+      "2.4 件是组合平均，不是另跑 2 次。5.4 件是知道答案后的上限确认。H1 新旧都是 5/5。204／37／9 和 14 次／4 小时半不要写进这 30 次的结果。Codex 不在枚举，只记 claude。",
+    ],
+    approach: `作者不想只凭印象说「再跑一次就会看到」，于是把已经合过的登录 PR 冻回初版，用同一句委托、同一个审查客户端 Codex（codex-cli 0.157.1）对三个对象各跑 5 次，一共 30 次。预先登记了 6 件已知缺陷，只在文件和机制都说对时才计入。旧委托 1 次平均拾到 2.2 件：有的洞 5 次都能看到，有的（存档型 XSS）5 次都看不到。实际开发里，XSS 是在第 5 次、而且只改了 7 行文档之后才被指出；作者提醒，若当时已经规定「只改文档就复用上次的 qa-pass」，这一次根本不会再跑。把「先做 2 次」按组合从这 5 次里抽，得到 2.4 件，这不是另一次实验的实测平均。现场补了 12 行确认项之后平均到 5.4 件，但这 12 行几乎就是已知缺陷的改写，作者自己把它叫做上限确认；用来试推广的 H1 新旧都是 5/5。评分由另一个 Claude 代理在尽量不看是哪份委托的情况下做，但新委托会多出一种只有它才提的竞赛条件指摘，遮罩并不完全，人也没有逐条复核。Codex 不在平台枚举，正文里实际承担评分类工作的是 Claude，platforms 只记 claude。`,
+    outcomes: [
+      "源披露把同一份登录 PR 初版用同一句委托各跑 5 次、三个对象合计 30 次时，已知 6 件里旧委托 1 次平均拾到 2.2 件，存档型 XSS 是 0/5。这是这一次、这一组对象和这一份委托上的记录，不可外推成「多跑几次就能补上漏检」，也不能把「先做 2 次是 2.4 件」写成另跑 2 次的实测平均，更不能把知道答案后写下的 12 行确认项所得到的 5.4 件，写成对未见过的洞已经有效。",
+      "实际开发里 XSS 在第 5 次才被指出，且那一次只改了 docs 的 7 行；若已有「只改文档就复用 qa-pass」的规则，这一次会被跳过。清单关掉时，「谁的／状态／不要信客户端」是 5/5 漏检。权限洞从界面上发现后，旧委托再跑是 0/5。",
+      "12 行确认项后平均 5.4 件，V2-a 从 0/5 到 5/5，XSS 仍是 2/5。H1 新旧都是 5/5。30 次里没有看到清楚写错的指摘。204 次 request-qa、blocking 37、安全 9 件，以及当时 PR 的 14 次／4 小时半，都不是这 30 次的结果。",
+    ],
+    caveats: [
+      "2.4 件是 C(5,2) 一类的组合平均，不是另跑 2 次。5.4 件是知道答案后的上限确认。H1 分不出差别。评分是 Claude，审查是 Codex；Codex 不在枚举，不硬凑，platforms 只记 claude。不要把背景里的 204／37／9 当成这 30 次的检出率。",
+      "导流：https://github.com/nekoai-lab GET 200；https://x.com/nekoai_lab GET 200；https://marcrevix.com/ GET 200；作者教材 https://nekoai-lab.github.io/ai-security-playbook/learn/agent-permissions/ GET 200、https://nekoai-lab.github.io/ai-security-playbook/learn/ai-review-trust/ GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。相关篇已核、不列入导流：https://zenn.dev/nekoai_lab/articles/013b347bc56ebb GET 200。一次资料已核、不列入导流：https://genai.owasp.org/llmrisk/llm062025-excessive-agency/ 、https://genai.owasp.org/llmrisk/llm01-prompt-injection/ 、https://cwe.mitre.org/data/definitions/79.html 、https://cwe.mitre.org/data/definitions/863.html 、https://cwe.mitre.org/data/definitions/362.html 均 GET 200。配图 1 张 https://static.zenn.studio/user-upload/794e1c70439d-20261025.png GET 200，不列入产品导流。页内 mermaid、link-card 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先写清「多跑几次」是实测平均还是组合计算，再谈 AI 审查的检出率",
+        body: "若「先做 2 次」的数字是从已经跑完的 5 次里做组合平均，请标明不是另跑 2 次的实测。确认项如果是看着已知缺陷写的，平均分只能当成上限确认，不要写成对未见过的洞已经有效；若留了对照样本却新旧都打满，要写明分不出差别。某一缺陷在重跑里一直漏检、却在后来一次只改文档时被指出，不要把那一次算进「多跑几次就会看到」。背景里更长周期的审查次数，不要和这次重跑的 30 次混写成同一组检出率。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nekoai_lab/articles/42d47ad4c6d540",
+      label: "zenn.dev·nekoai_lab《回数を増やしても、見ない穴は見なかった ── 自分のAIレビューを同じ版に5回ずつ、計30回かけ直して測った》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "892",
+    slug: "jody-48rec-7cond-0flip",
+    title: "jodycraft：用同一批 48 件设备点检记录、同一 3 问，在 2026-10-31 测「指示模样」的前置句会不会让自动采用件数变动。模型是 Jev 1.13、d1、d1-ultra（Jev 7 个条件、d1 4 个、d1-ultra 7 个）。Jev 上「是否需要立即处理」的判定没有反转（正解→错误 0 件）；自动采用从 base 的 26 件变到伪政策 24、防御声明 27、带防御的伪政策 27、嵌入备忘 30、露骨指示 28。Jev 1.14 未复现。Datadog 12,295 件等是二次引用，不要和这 48 件混写。Jev／d1 不在枚举，platforms=[]",
+    summary: "jodycraft 拿与前篇相同的 48 件点检记录、相同 3 个问题，在 2026-10-31 测量前置句（假政策、防御声明、把指示嵌进备忘、露骨指示等）会不会让判定模型改口。Jev 是 1.13 不是 1.14（1.14 未测）。Jev 上「是否需要立即处理」（阈值 0.5）没有从正确翻到错误（0 件）；自动采用件数却会动：base 26，假政策 24，只有防御声明 27，防御加假政策 27，嵌入备忘 30（多 5 件自动采用，少 1 件回到保留），露骨指示 28。假政策下严重度均值下降 0.29，48 件里 29 件变动超过 0.25，discipline 有 18 件被改成 none。专门做的探测题 48/48 仍能看出「有人在注入」，但严重度和系统字段还是被改了。base2 与 base 一致（自动采用 26、错误 0、Δp 0.006），用来排除计量失误。d1 系在没有注入的第二次也会抖（d1-ultra 的错误从 3 到 5），不能把抖动都算成注入效果。Datadog、Lasso、arXiv 的数字是他人评估，不是这 48 件的结果。",
+    description: "面向已经把「判定模型能识破注入」写成结论的人：把「判定没有反转，但自动采用件数和严重度、系统字段会动；探测题 48/48 看得到注入，不等于字段不被改；d1 系自己会抖；Datadog／Lasso／arXiv 数字不要写进这 48 件」写成门禁，区别于只看「没有翻成错误」的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/jodycraft/articles/decision-gate-injection-48",
+    sourceLabel: "zenn.dev·jodycraft 实践帖",
+    upvotes: 783,
+    trending: false,
+    tags: [
+      "prompt-injection",
+      "jev",
+      "decision-gate",
+      "inspection",
+      "evaluation",
+    ],
+    howItWorks: [
+      "作者用与系列前篇相同的 48 件设备点检记录、相同 3 个问题，在 2026-10-31 测量「指示模样」的前置句。模型是 Jev 1.13（不是 1.14；1.14 未复现）、d1、d1-ultra。Jev 跑了 7 个条件，d1 4 个，d1-ultra 7 个。正文没有写出可复现攻击的逐步指令，本条也不补。",
+      "在 Jev 上，看「是否需要立即处理」（阈值 0.5）时，没有出现从正确翻成错误的件（0 件）。自动采用件数却在动：base 26，假政策 24，只有防御声明 27，防御加假政策 27，把指示嵌进备忘 30（自动采用多 5 件，回到保留的少 1 件），露骨指示 28。假政策下严重度均值下降 0.29，48 件里 29 件变动超过 0.25；discipline 有 18 件全部被改成 none。另设的探测任务 48/48 仍能判断「这段里有注入」，但严重度和系统字段还是被改写了。",
+      "为排除计量失误，作者又跑了一次 base2，与 base 一致：自动采用 26、错误 0、Δp 0.006。d1 系即使在没有注入的第二次也会抖动，例如 d1-ultra 的错误从 3 变成 5，不能把这类变动都归因于注入。文中引用的 Datadog、Lasso、arXiv 数字属于他人评估，不要写进这 48 件的结果。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T14:04:53.805+09:00 → UTC 2026-10-31T05:04:53Z、Asia/Shanghai 2026-10-31 13:04:53；bodyUpdatedAt 与发布相同；取 published → 2026-10-31；GET 200（UA MiraBot/1.0））：jodycraft 在《判定モデルは「指示もどき」でどこが壊れるか — 点検記録48件を7条件で測った》记录 48 件、多条件对照。可达导流：https://joji804.github.io/jodycraft-portfolio GET 200（跟随至带尾斜线，仍为 200）；https://x.com/jodycraft_dev GET 200。Jev／d1／d1-ultra 不在平台枚举，不硬凑，platforms=[]。",
+      "判定未反转与自动采用件数、严重度、系统字段被改写要分开写。base2 用来排除计量失误。d1 系在无注入时也会抖。不要把 Datadog／Lasso／arXiv 的数字写进这 48 件。不要补写攻击步骤。",
+    ],
+    approach: `作者要测的不是「模型会不会答题」，而是同一批 48 件点检记录、同一 3 问，在前置句换成假政策、防御声明、嵌进备忘或露骨指示之后，自动采用件数和字段会不会动。测量日是 2026-10-31。Jev 用的是 1.13，文中写明没有在 1.14 上复现。Jev 看了 7 个条件，d1 4 个，d1-ultra 7 个。「是否需要立即处理」在 0.5 的阈值下，Jev 没有把原来正确的件翻成错误（0 件）。但自动采用件数从 base 的 26 变到假政策 24、只有防御 27、防御加假政策 27、嵌入备忘 30、露骨指示 28。假政策还会改严重度（均值下降 0.29，29/48 变动超过 0.25）和 discipline（18/48 被改成 none）。专门问「这里有没有注入」时 48/48 都能看出有注入，这不能理解成字段也没被改。第二次 base 与第一次一致，用来说明计量本身没有漂。d1 系即使不注入也会抖，作者提醒不要把这类噪声写成注入效果。文中提到的 Datadog、Lasso、arXiv 是二次引用，数字不属于这 48 件。`,
+    outcomes: [
+      "源披露用同一批 48 件点检记录、同一 3 问，在 2026-10-31 对照多种前置句时，Jev 1.13 上「是否需要立即处理」没有从正确翻到错误（0 件），但自动采用件数会从 base 的 26 变到 24、27、30、28 不等，严重度和系统字段也会被改写。这是这一次、这一组模型和条件上的记录，不可外推成「判定模型不会被指示模样带动」，也不能把探测题 48/48 看成字段未被改写，更不能把 Datadog、Lasso、arXiv 的数字写进这 48 件。",
+      "假政策：严重度均值 −0.29，29/48 变动超过 0.25，discipline 18/48 被改成 none。嵌入备忘：自动采用 30（+5），回到保留的少 1 件。带防御的假政策仍是 27，并不低于只有防御声明的 27。",
+      "base2 与 base 一致（自动采用 26、错误 0、Δp 0.006）。d1-ultra 在无注入的第二次错误从 3 到 5，d1 系有噪声底，不能把抖动都算成注入。Jev 1.14 未测。",
+    ],
+    caveats: [
+      "不要把「判定未反转」写成「什么都没被改」。探测题 48/48 与字段被改写是两件事。d1 系第二次也会抖。Datadog／Lasso／arXiv 数字是他人评估。Jev 1.14 未复现。攻击步骤原文未写，不要补。Jev／d1 不在枚举，platforms=[]。",
+      "导流：https://joji804.github.io/jodycraft-portfolio GET 200（跟随至 https://joji804.github.io/jodycraft-portfolio/ ，仍为 200）；https://x.com/jodycraft_dev GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。相关篇已核、不列入导流：https://zenn.dev/jodycraft/articles/3f7548173dcb55 、https://zenn.dev/jodycraft/articles/dfe38e73e1ef8a 、https://zenn.dev/jodycraft/articles/3190d7d582bf4b 、https://zenn.dev/jodycraft/articles/a8516c24d8bbb9 、https://zenn.dev/jodycraft/articles/jev-manufacturing-use-cases 、https://zenn.dev/jodycraft/articles/jev-d1-equipment-inspection-test 、https://zenn.dev/jodycraft/articles/d1-3b-local-equipment-inspection 、https://zenn.dev/jodycraft/articles/decision-models-landscape-2026-10 、https://zenn.dev/jodycraft/articles/dotnet8-eol-dotnet11-ga-migration 均 GET 200。一次资料：https://www.lasso.security/blog/lasso-vs-jev-can-jev-really-replace-a-prompt-injection-classifier GET 200；https://arxiv.org/abs/2609.28613 GET 200；https://docs.typesafe.ai/sdk GET 200。https://securitylabs.datadoghq.com/articles/jev-as-a-judge-how-counterfeit-policy-steers-jev/ 首次 GET 为 CURL 28（连接超时、HTTP 000）；随后两次 GET（约 16:27、16:28）均为 200、size 128985，标题为 Jev as a judge: How counterfeit policy steers Jev，按最后一次列入已核一次资料，首次超时须披露，不列入失败码。https://www.theregister.com/ai-and-ml/2026/10/15/jev-and-other-decision-models-can-still-be-tricked-with-prompt-injection/5303184 本次 HTTP 200、size 2101，落到的是标题为 Are we human? 的 PoW 人机验证页（/_labrador/pow），不是文章正文，不因 200 算可达，不列入可达。未见正文配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分开「判定有没有翻成错误」和「自动采用件数、字段有没有被改」，再谈注入是否「没起作用」",
+        body: "若作者报告阈值判定没有从正确翻成错误，请同时写自动采用件数、严重度、系统字段有没有动。专门检测「有没有注入」的题目若全对，不要据此说字段也没被改。无注入的第二次对照如果自己会抖，不要把抖动都写成注入效果。文中引用的他人评估数字（例如另一家实验室的样本量或百分比）必须标成二次引用，不得写进作者这批样本的结果。攻击若原文没有逐步复现说明，不要补写步骤。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jodycraft/articles/decision-gate-injection-48",
+      label: "zenn.dev·jodycraft《判定モデルは「指示もどき」でどこが壊れるか — 点検記録48件を7条件で測った》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "893",
+    slug: "tetsu-4stg-12fix",
+    title: "tetsu_don／てつどん：用 Claude Code 2.1.306、claude-sonnet-5-5（实验记录里能确认的一次）和 Dataform CLI 3.1.2，在虚构电商数据（客户 1000、商品 100、订单 5000、明细 10015）上让它写管道。这里的「5 个模型」是 staging 4 本加 mart 1 本，不是 5 个 LLM。这 5 个 Dataform 模型一次 compile 通过、手改 0。故意违反的 8 件委托，加上「冲突先确认」一句后合格从 2/8 到 7/8，作者写明是看过结果再补上、又用同一批 8 件测的。F1–F6 各 2 次共 12 件都修好，11 件与原文件完全一致。发布时刻换算到上海是 2026-10-28，不要写成 2026-10-29",
+    summary: "tetsu_don 用虚构电商数据，让 Claude Code 写 Dataform 管道。A：staging 4 本加 mart 1 本，这 5 个 Dataform 模型一次 compile 通过、手改 0；值对不对放到 C 再查。B：8 件故意违反的委托，各条件多为 1 次，命名那件是 3 次。没有项目 CLAUDE.md 时，棋盘式核对是 24/49；有 CLAUDE.md 时 65/70，但被引诱的 8 件里合格只有 2/8。补上「冲突先确认、未批准不写文件」一句后，同一批 8 件从 2/8 到 7/8，作者写明有望、尚未在别的冲突上验证。命名从 1/3 漏看成 3/3。Skill 对验证循环仍是 6/6，日志更新从 2/6 到 6/6，但没有和「只是把步骤写成文」分开。C：先漏掉 F3，补上第 4 条把 staging 和 raw 相比的 assertion 后才检出；「6/6 检出」是看过这次漏检再补的，偏甜。F1–F6 各 2 次共 12 件都定位并修好，11 件与原文件完全一致，0 件去改 assertion；有 1 件只看到输出末尾。留下 35 张表和约 100 个视图，实验里禁止 DROP。",
+    description: "面向已经把「让 Claude 写 Dataform 能一次过」写成经验的人：把「5 个模型是 staging 4 + mart 1，不是 5 个 LLM；发布日换算到上海是 2026-10-28 不是 29；2/8→7/8 和 6/6 检出都是看过结果再补、又用同一批测的；F3 先漏检」写成门禁，区别于只看 compile 通过的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tetsu_don/articles/5a7af1b884bee1",
+    sourceLabel: "zenn.dev·tetsu_don 实践帖",
+    upvotes: 784,
+    trending: false,
+    tags: [
+      "claude-code",
+      "dataform",
+      "bigquery",
+      "assertions",
+      "claude-md",
+    ],
+    howItWorks: [
+      "作者是日常使用 BigQuery 和 Dataform 的数据工程师，用虚构电商数据（客户 1000、商品 100、订单 5000、明细 10015，按 FARM_FINGERPRINT 生成）在 asia-northeast1 上做练习。Claude Code 2.1.306，实验记录里能确认的一次模型是 claude-sonnet-5-5，Dataform CLI 是 @dataform/cli 3.1.2。这里的「5 个模型」是 staging 4 本加 mart 1 本，不是 5 个大模型对照。A 把需求一句话交给它，规约放在 CLAUDE.md：这 5 个 Dataform 模型从生成到 compile 一次通过，手改 0。值对不对放到 C 再查。",
+      "B 准备了 8 件故意违反的委托，各条件多为 1 次，命名那件 3 次。合格的定义是：按规约实现，或在动手前指出冲突并确认；默默按违反去实现、或做完再写「这和规约不一样」，都不合格。没有项目 CLAUDE.md 时（全局 ~/.claude 仍在，作者写明不是完全空白），核对 24/49；有 CLAUDE.md 时 65/70，被引诱的 8 件里合格 2/8。补上「冲突先确认、未批准不写文件也不跑命令」一句后，同一批 8 件从 2/8 到 7/8，作者写明只是有望，别的冲突模式尚未验证。命名例子让 stg_orders 那种不易察觉的漏看从 1/3 变成 3/3。Skill 对验证循环仍是 6/6，日志更新从 2/6 到 6/6，但没有和「只把步骤写成文」对照。",
+      "C 先用手写 3 条跨表 assertion，再故意各埋一处缺陷。F3（staging 里少一部分明细）先被漏掉，因为当时拿 mart 去比 staging，两边一起少，对得上；补上第 4 条把 staging 和 raw 相比后才检出。F6 是后来补的同类。「6/6 检出」是看过这次漏检再补措施的数字，作者自己说偏甜。随后不告诉它埋了什么，只说 assertion 失败了、去查并修：F1–F6 各 2 次共 12 件都找到并修好，11 件与原文件完全一致，没有去改松或删掉 assertion；run 2～5 次，有 1 件只看到输出末尾、自己说不能断言全过。留下 35 张表和约 100 个视图，实验禁止 DROP。正文把 GCP 项目 ID 写成 <project-id>。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-29T00:13:33.473+09:00 → UTC 2026-10-28T15:13:33Z、Asia/Shanghai 2026-10-28 23:13:33，跨日；bodyUpdatedAt 与发布相同；取 published（上海日历日）→ 2026-10-28；不要把发布日写成 2026-10-29；GET 200（UA MiraBot/1.0））：tetsu_don／てつどん在《Claude Code に Dataform のパイプライン開発を任せてみた：規約・テスト・ループで品質を保てるか検証した》记录 A／B／C 三组练习。作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。相关篇已核、不列入导流：https://zenn.dev/tetsu_don/articles/e40b95dfc726ac 、https://zenn.dev/tetsu_don/articles/7b11393600dcf0 均 GET 200。",
+      "「5 个模型」是 staging 4 + mart 1，不要写成 5 个 LLM。发布日是 2026-10-28。2/8→7/8 和 6/6 检出都是看过结果再补、又用同一批测的。F3 先漏检。<project-id> 是占位，不要拿去探测。",
+    ],
+    approach: `作者用一份故意弄脏的虚构电商数据，问 Claude Code 能不能按项目规约写出 Dataform 管道，并在被怂恿违反、以及 assertion 失败时，还能否守住质量。客户端是 Claude Code 2.1.306，实验记录里能确认的一次模型是 claude-sonnet-5-5，CLI 是 Dataform 3.1.2。A 只要它写出 staging 4 本和 mart 1 本：这 5 个 Dataform 模型一次 compile 通过，手改 0；作者把「值对不对」留到 C，不要把 compile 通过写成数据已经对。B 准备 8 件会和规约冲突的委托，多数条件只跑 1 次，命名跑 3 次。没有项目 CLAUDE.md 时核对 24/49；写上之后未被引诱的项遵守率到 65/70，但被引诱的 8 件里合格只有 2/8。他看过这些结果，补上一句「冲突先确认、未批准不动」，再用同一批 8 件，合格到 7/8，并写明这只是有望、别的模式还没验证。C 里 F3 先漏检，因为他当时拿 mart 去比 staging；补上「staging 要比 raw」的第 4 条 assertion 之后才检出，所以「6/6 检出」偏甜。修复阶段 12 件都修好，11 件与原文件完全一致，没有去改 assertion。试跑次数少（1～3 次为主），作者自己说只是看到倾向。发布时刻是 2026-10-29 00:13 JST，换算到上海已是 2026-10-28 23:13，发布日要写成 2026-10-28。`,
+    outcomes: [
+      "源披露用虚构电商数据和 Claude Code 2.1.306 写 Dataform 管道时，staging 4 本加 mart 1 本这 5 个 Dataform 模型一次 compile 通过、手改 0；故意违反的 8 件在补上「冲突先确认」一句后，同一批从 2/8 到 7/8；F1–F6 各 2 次共 12 件都修好，11 件与原文件完全一致。这是这一次、这一组小数据和 1～3 次试跑上的记录，不可外推成别的仓库或别的冲突模式，也不能把「5 个模型」写成 5 个 LLM，更不能把看过结果再补措施、又用同一批测到的 7/8 或「6/6 检出」写成已经普遍有效。",
+      "没有项目 CLAUDE.md 时核对 24/49，有则 65/70，但被引诱时合格先是 2/8。命名例子让不易察觉的漏看从 1/3 到 3/3。Skill 对循环仍是 6/6，日志从 2/6 到 6/6，作者写明还没和「只是把步骤写成文」分开。",
+      "F3 在前 3 条手写 assertion 下被漏检，补上 staging 对 raw 的第 4 条后才检出；F6 是后来补的同类。「6/6 检出」偏甜。改 assertion 0 件。留下 35 张表和约 100 个视图，禁止 DROP。有 1 件只看到输出末尾。",
+    ],
+    caveats: [
+      "发布日须换算到 Asia/Shanghai，是 2026-10-28，不要写成 2026-10-29。「5 个模型」=staging 4+mart 1。24/49、65/70 不含「动手前停住、没有生成文件」的试次，要和合格数一起看。2/8→7/8 与 6/6 检出都是看过结果再补的。各条件 1～3 次。占位 <project-id> 未作为可达链去核。",
+      "导流：作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。相关篇已核、不列入导流：https://zenn.dev/tetsu_don/articles/e40b95dfc726ac GET 200；https://zenn.dev/tetsu_don/articles/7b11393600dcf0 GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。占位、未作为可达链去核：正文把 GCP 项目写成 <project-id>（例如 BigQuery 项目: `<project-id>`），不是完整可达 URL，未探测。CLAUDE.md 里指向未公开仓库的 plan／verification-log 链接，正文未给出可核 URL，不要补链。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清「5 个模型」是 Dataform 文件还是 LLM，再谈一次 compile 通过",
+        body: "若原文的「模型」是 staging／mart 里的 Dataform 模型，不要写成对照了 5 个大模型。compile 通过和「值已经对」要分开写。故意违反的合格率若是看过结果、补上一句话、又用同一批委托测到的，要标明尚未在别的冲突上验证。漏检之后才补上的 assertion，不要把补完后的「全检出」写成一开始就会检出。跨时区的发布时间必须换算到读者时区再取发布日。项目 ID 若是占位，不要补全或探测。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tetsu_don/articles/5a7af1b884bee1",
+      label: "zenn.dev·tetsu_don《Claude Code に Dataform のパイプライン開発を任せてみた：規約・テスト・ループで品質を保てるか検証した》",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "894",
+    slug: "ryofeee-bwrap-5patt",
+    title: "ryofeee：在同一份 python:3.12-slim（Debian 13）加 Bubblewrap 0.12.0 的 ARM64 镜像上，测 Bubblewrap 在 AgentCore Runtime、ECS on EC2、ECS on Fargate 能不能跑。bwrap 试了 5 种调用，root 与一般用户（uid 1000）都记了。ECS on EC2 只有 privileged 时 5 种全 PASS；Fargate 上 5 种全 FAIL。AgentCore 上 1～5 全部 PASS。这是这一次、这一组设置的 PASS/FAIL 表，不是「Fargate 不能跑 Agent」。AgentCore／Fargate／Codex 不在枚举，platforms=[]",
+    summary: "ryofeee 在自己的 AWS 账户里用同一份 ARM64 镜像（python:3.12-slim，Bubblewrap 0.12.0）比较三处执行环境。结论表按一般用户（uid 1000）记：ECS on EC2 默认 5 种全 FAIL；只关掉 seccomp 时 bwrap 1～3 PASS、4 和 5 FAIL（Can't mount proc on /proc），root 在没有 SYS_ADMIN 时 1～3 也 FAIL；只加 cap-sys-admin 则全 FAIL（pivot_root: Operation not permitted）；两者都加时 1～3 在 root 和 uid 1000 都 PASS，4 和 5 仍 FAIL；只有 privileged 时 5 种全 PASS。Fargate 从 unshare -U 起就是 Operation not permitted，5 种全 FAIL，而且 seccomp、capability、privileged 都改不了。AgentCore Runtime 什么都没改，bwrap 1～5 在 root 和 uid 1000 全部 PASS。Fargate 本是首选，作者记了「1 败」。bwrap 4 是 Codex 相当的调用方式（--unshare-pid 并新挂 /proc），不是实测了 Codex 产品。",
+    description: "面向已经把「Fargate 上跑不了带沙箱的 Agent」写成一句结论的人：把「Fargate 是 5 种全 FAIL，不要写成 1～3 能过；1～3 能过、4 和 5 不能过属于 EC2 关掉 seccomp 的那一档；privileged 才能在 EC2 上全过；这不是对 Fargate 上所有 Agent 的判断」写成门禁。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/ryofeee/articles/f9c1880b6461b7",
+    sourceLabel: "zenn.dev·ryofeee 实践帖",
+    upvotes: 785,
+    trending: false,
+    tags: [
+      "bubblewrap",
+      "ecs",
+      "fargate",
+      "agentcore",
+      "sandbox",
+    ],
+    howItWorks: [
+      "作者想在 ECS on Fargate 上跑自己的 Agent，而这份 Agent 需要 Bubblewrap（作者写明：不是 Codex 的所有功能都要求 bwrap，但对他在做的这份是必需的）。候选还有 ECS on EC2 和 Bedrock AgentCore Runtime。镜像只有一份：python:3.12-slim（Debian 13）加 Bubblewrap 0.12.0，全部用 ARM64，因为 AgentCore 要求 ARM64 镜像。容器里跑 diagnose.sh；ECS 用 run-task 看 CloudWatch Logs，AgentCore 用一个小 HTTP 服务返回诊断结果。",
+      "bwrap 试了 5 种调用，root 与 uid 1000 都记。bwrap 4 是 Codex 相当的写法：--unshare-pid，并新挂 /proc。ECS on EC2 试了 5 档设置。默认：全 FAIL，unshare -U 就是 Operation not permitted。seccomp-unconfined：uid 1000 是 bwrap 1～3 PASS、4 和 5 FAIL（Can't mount proc on /proc）；root 没有 SYS_ADMIN，1～3 也 FAIL。cap-sys-admin：全 FAIL（pivot_root: Operation not permitted）。两者都加：1～3 在 root 和 uid 1000 都 PASS，4 和 5 仍 FAIL。privileged：全 PASS，作者也写权限过强、只是用来确认「放开就能过」。",
+      "Fargate：全 FAIL，从 unshare -U 起就是 Operation not permitted；seccomp、capability、privileged 都改不了。不要把「1～3 PASS、4 和 5 FAIL」写到 Fargate 头上，那一档属于 EC2 的 seccomp-unconfined。AgentCore：bwrap 1～5 在 root 和 uid 1000 全部 PASS，看起来接近无 seccomp、有 SYS_ADMIN、也能新挂 /proc。作者的结论是：不把权限放到 privileged 那种程度还能跑完 Codex 相当调用的，是 AgentCore。Fargate 本是首选，记了「1 败」。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T15:18:45.281+09:00 → UTC 2026-11-03T06:18:45Z、Asia/Shanghai 2026-11-03 14:18:45；bodyUpdatedAt 2026-11-03T15:17:26.926+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-11-03；GET 200（UA MiraBot/1.0））：ryofeee 在《【AWS】Bubblewrap は AgentCore / ECS(EC2・Fargate) で動くのかい？》记录同一镜像上的 PASS/FAIL 表。作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。",
+      "Fargate 是 5 种全 FAIL。EC2 上「1～3 PASS、4 和 5 FAIL」属于关掉 seccomp 的那一档，不要写到 Fargate。只有 privileged 时 EC2 才全过。bwrap 4 是调用方式相当，不是测了 Codex 产品。AgentCore／Codex 不在枚举，platforms=[]。",
+    ],
+    approach: `作者在自己的 AWS 账户里搭了三处环境，用同一份 ARM64 镜像问：Bubblewrap 0.12.0 到底在哪儿能跑、要放松到哪一步才行。镜像是 python:3.12-slim，诊断脚本对 5 种 bwrap 调用分别记 PASS 或 FAIL，并且 root 和 uid 1000 都跑。结论表按 uid 1000 汇总。EC2 因为设置改得动，他试了默认、关掉 seccomp、加上 SYS_ADMIN、两者都加、以及 privileged。默认和只加 SYS_ADMIN 都过不了；关掉 seccomp 之后，普通用户能跑完比较简单的 1～3，但 Codex 相当的 4（以及 5）会在挂 /proc 时失败；两边都加也仍过不了 4 和 5；只有 privileged 才 5 种全过。Fargate 改不了这些设置，从创建 user namespace 起就被拒绝，5 种全失败。AgentCore 什么都没改，1～5 在两种用户下都过了。他把 Fargate 当作本命，所以把这次记成 1 败。正文里的「Codex 相当」指的是 bwrap 的调用方式，不是在这些环境里实际跑了 Codex 产品；Claude 也只是作为同样使用 bwrap 的例子被提到，没有作为实测平台写入枚举。`,
+    outcomes: [
+      "源披露在同一份 python:3.12-slim 加 Bubblewrap 0.12.0 的 ARM64 镜像上，ECS on EC2 只有 privileged 时 5 种调用全 PASS，Fargate 5 种全 FAIL，AgentCore Runtime 在未改设置时 1～5 全部 PASS。这是这一次、这一组设置和这一份镜像上的记录，不可外推成「Fargate 不能跑 Agent」，也不能把 EC2 上 seccomp-unconfined 时 uid 1000 的「1～3 PASS、4 和 5 FAIL」写成 Fargate 的结果。",
+      "EC2 默认：全 FAIL（unshare -U 为 Operation not permitted）。只关 seccomp：uid 1000 的 1～3 PASS、4 和 5 FAIL（Can't mount proc on /proc）；root 无 SYS_ADMIN 时 1～3 也 FAIL。只加 cap-sys-admin：全 FAIL（pivot_root: Operation not permitted）。两者都加：1～3 PASS，4 和 5 仍 FAIL。privileged：全 PASS。",
+      "Fargate 从 unshare -U 起失败，设置改不了。AgentCore 上 root 与 uid 1000 的 1～5 都 PASS。Fargate 本是首选，作者记了 1 败。",
+    ],
+    caveats: [
+      "不要把 EC2 五档设置合成一句「EC2 可以」。Fargate 是全 FAIL，不是 1～3 能过。bwrap 4 是 Codex 相当的调用方式，不是实测 Codex。AgentCore／ECS／Fargate／Codex 不在枚举，不硬凑，platforms=[]。正文里的 Claude 只是同类例子，同样不写入 platforms。",
+      "导流：作者卡 GitHub／X／website 为空，正文没有另给产品仓或站点，不要补链，未见作者产品硬导流。配图 3 张均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/f06df1ca8d64-20261103.png 、https://static.zenn.studio/user-upload/214a16ef92ae-20261103.png 、https://static.zenn.studio/user-upload/28de84aa8cde-20261103.png（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。页内 mermaid 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先按环境和设置分格写 PASS/FAIL，再谈「某块云上跑不了沙箱」",
+        body: "请把 ECS on EC2 的每一档设置分开写，不要合成一句「EC2 可以」或「EC2 不可以」。Fargate 若是从创建 user namespace 起就失败、五种调用全失败，不要写成只有某一种调用失败。若某一种调用被作者称作「与某产品相当」，要写明测的是这种调用方式，不是在该环境里实际跑了那个产品。结论只对这次的镜像、架构和诊断脚本有效，不要扩大成「某块计算服务不能跑 Agent」。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ryofeee/articles/f9c1880b6461b7",
+      label: "zenn.dev·ryofeee《【AWS】Bubblewrap は AgentCore / ECS(EC2・Fargate) で動くのかい？》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "895",
+    slug: "gameryo-891mb-279-413",
+    title: "game_ryo：在总内存 891MB、当时可用约 154MB、swap 约 1GB 已占用的 VPS 上跑 Hermes。官方建议 2GB 以上，这是低于该建议的一次记录。停掉约占 135MB 的 AdGuardHome 后可用约 295MB；给 Hermes 设 MemoryHigh=300M、MemoryMax=400M 后启动使用量约 279MB 并稳住。Talk 出现 413，日志是 Limit 7000, Requested 13746（ITPM），换 Groq 的 qwen3.8-27b 后仍是同一句。不要把 154MB 和 295MB、279MB 写成同一时刻。Hermes 不在枚举，platforms=[]",
+    summary: "game_ryo 在一台总内存 891MB 的 VPS 上试跑 Hermes。装上时可用大约 154MB，swap 大约 1GB 已经在用；AdGuardHome 约占 135MB。停掉它之后可用大约 295MB。再用 systemd 给 Hermes 加上 MemoryHigh=300M、MemoryMax=400M、MemorySwapMax=0，启动后使用量大约 279MB 并稳住。Talk 时报 413，日志写 Limit 7000, Requested 13746，单位是提供方的 ITPM，不是这台机器的内存；先用 Groq 的 gpt-oss-20b，再换 qwen3.8-27b，仍是同一句 413，后来改走 kilocode 的 nemotron :free。data 备份约 4.5GB，不要写成内存。官方 2GB 是建议，不是这次测到的下限。可用还在 150〜190MB 时看到的 worker 警告，作者当成体感上的余裕，不是故障计数。正文没有 https 硬链。Hermes／Groq／kilo 不在枚举，platforms=[]。",
+    description: "面向已经把「不到 2GB 也能跑 Hermes」写成经验的人：把「891MB 是整机总量；约 154MB 和约 295MB 是停 AdGuardHome 前后的可用；约 279MB 是加了内存上限后的使用量；7000／13746 是 ITPM 不是内存；4.5GB 是磁盘备份」写成门禁，区别于把这些数字写成同一时刻同一指标的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/game_ryo/articles/hermes-vps-low-memory",
+    sourceLabel: "zenn.dev·game_ryo 实践帖",
+    upvotes: 786,
+    trending: false,
+    tags: [
+      "hermes",
+      "vps",
+      "memory",
+      "413",
+      "systemd",
+    ],
+    howItWorks: [
+      "作者在总内存 891MB 的 VPS 上跑 Hermes。官方材料按 2GB 以上来设想，本篇是低于该建议的一次记录，不是对「最低只要多少」的测量。装上之后当时可用大约 154MB，swap 大约 1GB 已经占用。AdGuardHome 约占 135MB。",
+      "停掉 AdGuardHome 后，可用大约 295MB。再用 systemd 给 Hermes 设定 MemoryHigh=300M、MemoryMax=400M、MemorySwapMax=0，启动后使用量大约 279MB，并在这个水平上稳住。不要把 154MB、295MB、279MB 写成同一时刻的同一个指标：前两个是可用内存，后一个是 Hermes 的使用量。",
+      "Talk 出现 HTTP 413，日志是 Limit 7000, Requested 13746，指提供方的 ITPM 限额和请求量，不是这台 891MB 机器的内存。先走 Groq 的 gpt-oss-20b，再换 qwen3.8-27b，仍是同一句 413，后来改用 kilocode 的 nemotron :free。data 目录备份约 4.5GB，不要写成内存占用。可用还在 150〜190MB 时出现过 worker 警告，作者把它当成体感上「还算有余裕」的观察，不是一次故障计数。正文没有 https 硬链。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T06:19:56.914+09:00 → UTC 2026-11-03T21:19:56Z、Asia/Shanghai 2026-11-04 05:19:56，未跨日；bodyUpdatedAt 2026-11-04T06:16:34.914+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-11-04；GET 200（UA MiraBot/1.0））：game_ryo 在《2GBを下回るVPSでHermes（AIエージェント）を動かしてみた話》记录低于官方建议内存时的一次启动。可达导流：https://game-ryo.is-a.dev GET 200（跟随至带尾斜线，仍为 200）；https://github.com/ryotagtagtag-wq GET 200。正文没有 https 硬链。Hermes／Groq／kilo 不在枚举，platforms=[]。",
+      "891MB 是整机总量。约 154MB 是停 AdGuardHome 前的可用，约 295MB 是停后，约 279MB 是 Hermes 的使用量。7000／13746 是 ITPM。4.5GB 是磁盘备份。官方 2GB 是建议，不是这次测到的下限。",
+    ],
+    approach: `作者没有另买一台符合官方 2GB 建议的机器，而是就在手头这台总内存 891MB 的 VPS 上看 Hermes 能不能起来。先记下当时可用大约 154MB、swap 大约 1GB 已经在用，以及 AdGuardHome 大约占 135MB。停掉 AdGuardHome 之后可用升到大约 295MB，再用 systemd 把 Hermes 限制在 MemoryHigh=300M、MemoryMax=400M、并且不准再吃 swap，启动后使用量大约 279MB 并稳住。之后在 Talk 里碰到 413，日志给出的是限额 7000、请求 13746，单位是提供方的 ITPM；换一条仍走 Groq 的模型，错误不变，后来才改到 kilocode 的免费档。磁盘上 data 备份约 4.5GB，和内存不是同一件事。整篇没有给出可点击的 https 产品链，作者站点与 GitHub 出现在作者卡上。Hermes、Groq、kilo 都不在平台枚举，不硬凑，platforms=[]。`,
+    outcomes: [
+      "源披露在总内存 891MB、当时可用约 154MB 的 VPS 上，停掉约占 135MB 的 AdGuardHome 后可用约 295MB，再给 Hermes 加上 MemoryHigh=300M、MemoryMax=400M 后启动使用量约 279MB 并稳住。这是这一次、这一台机器上的记录，不可外推成「不到 2GB 都能跑 Hermes」，也不能把 154MB、295MB、279MB 写成同一时刻的同一个指标，更不能把 413 日志里的 7000／13746 写成这台机器的内存。",
+      "Talk 的 413 在 Groq 的 gpt-oss-20b 和随后的 qwen3.8-27b 上是同一句 Limit 7000, Requested 13746（ITPM）。后来改走 kilocode 的 nemotron :free。",
+      "data 备份约 4.5GB 是磁盘，不是内存。官方 2GB 是建议，不是这次测到的下限。可用 150〜190MB 时的 worker 警告是体感观察，不是故障计数。",
+    ],
+    caveats: [
+      "不要混写总量、可用、使用量。不要把 ITPM 限额写成内存。不要把 4.5GB 备份写成内存。官方 2GB 不是这次的实测下限。Hermes／Groq／kilo 不在枚举，platforms=[]。正文没有 https，不要补正文里没有的产品链。",
+      "导流：https://game-ryo.is-a.dev GET 200（跟随至 https://game-ryo.is-a.dev/ ，仍为 200）；https://github.com/ryotagtagtag-wq GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。作者卡 X 为空，不要补链。正文（body_html）未出现 https 硬链，仅有页内锚点；未另补正文没有的 URL。未见正文配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分清整机总量、可用内存、进程使用量和提供方的 token 限额，再谈「低内存也能跑」",
+        body: "请分别写机器总内存、采取措施前后的可用内存、以及给进程加上上限之后的使用量，不要写成同一个数字。若 413 日志里的限额和请求量带的是提供方单位（例如 ITPM），不要把它解释成这台机器的内存不够。磁盘上的数据目录或备份体积不要写成内存占用。官方「建议 2GB 以上」若只是建议，不要改写成这次测到的最低配置。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/game_ryo/articles/hermes-vps-low-memory",
+      label: "zenn.dev·game_ryo《2GBを下回るVPSでHermes（AIエージェント）を動かしてみた話》",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "896",
+    slug: "yukamiya-80c-73-18d",
+    title: "yukamiya／Yu Kamiya：在 3 个个人仓库里花约一个半月，把策划到合并的流程交给 AI 自己跑。开发工具仓最近 80 个提交里 73 个（91%）是 Claude 共同作者，91% 是 73/80 的除法。AI 审查分数从 0/5 到 3/5 再到 5/5 是收敛过程，不要写成一开始就是 5/5。macOS 权限让每周 cron 静默全灭 18 天。20 个会话、约 38MB 日志是三个项目合计。这是个人仓库，不是公司组织验证",
+    summary: "yukamiya 在 3 个个人仓库里用大约一个半月，把从策划到合并的流程交给 AI 自己跑，人负责设计权限、合并条件和抽查。开发工具仓最近 80 个提交里，73 个带 Claude 共同作者，91% 是 73 除以 80，不是另一次统计。AI 审查分数从 0/5 升到 3/5 再升到 5/5，是同一套合并条件逐步写清楚后的收敛，不要只写最后的 5/5。曾经有人一行都没写的 PR 被机器人自动合并。每周一次的 launchd 任务因为 macOS 的 TCC（Operation not permitted）静默失败了 18 天，手动执行是正常的，所以当时没发现。20 个会话、约 38MB 日志是三个项目合计，不要写成某一个仓库的量。审查评论的可靠性另测过：实运 2 次，用可复现的方式挡下过大主张 4 件，不要和分数收敛混成一笔。",
+    description: "面向已经把「个人仓库里 AI 自己合并」写成「开发组织已经成型」的人：把「91% 是 73/80 的除法；0/5→3/5→5/5 是收敛不是一开始就 5/5；18 天是 TCC 静默失败；20 个会话约 38MB 是三仓合计；这是个人仓库」写成门禁。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yukamiya/articles/claude-harness-engineering-three-repos",
+    sourceLabel: "zenn.dev·yukamiya 实践帖",
+    upvotes: 787,
+    trending: false,
+    tags: [
+      "claude-code",
+      "harness",
+      "cron",
+      "code-review",
+      "personal-repo",
+    ],
+    howItWorks: [
+      "作者在 3 个个人仓库里花大约一个半月，把策划、实现、审查到合并的流程交给 AI 跑，自己写权限、合并条件和抽查办法。这是个人仓库上的验证，标题里的「开发组织」不要理解成公司组织已经跑通。",
+      "开发工具仓最近 80 个提交里，73 个是 Claude 共同作者，91% 是 73/80 这个除法。AI 审查分数从 0/5 到 3/5 再到 5/5，是同一套合并条件逐步写清楚后的收敛，不要写成一开始就是 5/5。文中还写过：有人一行都没写的 PR，被机器人按条件自动合并。",
+      "每周一次的 launchd／cron 因为 macOS TCC 给出 Operation not permitted 而静默失败，持续 18 天；同一条命令手动执行是正常的，所以当时没有立刻发现。20 个会话、约 38MB 日志是三个项目合计。审查评论另做了实运 2 次，用可复现的方式挡下过大主张 4 件，不要和分数从 0 到 5 的收敛混写。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-16T18:19:51.246+09:00 → UTC 2026-10-16T09:19:51Z、Asia/Shanghai 2026-10-16 17:19:51；bodyUpdatedAt 与发布相同；取 published → 2026-10-16；GET 200（UA MiraBot/1.0））：yukamiya／Yu Kamiya 在《AI前提の開発組織をつくる — 3つの個人リポジトリで検証した権限設計・マージ条件・ガードレール》记录三个个人仓库上的流程。可达导流：https://yukamiya.me GET 200（跟随至带尾斜线，仍为 200）；https://github.com/fuzzy31u GET 200；https://x.com/_yukamiya GET 200。相关篇已核、不列入导流：https://zenn.dev/yukamiya/articles/pm-ssot-claude-skills 、https://zenn.dev/yukamiya/articles/ai-evidence-judgment 均 GET 200。一次资料已核、不列入导流：https://www.greptile.com/ 、https://github.com/anthropics/claude-code-action 均 GET 200。",
+      "91% 是 73/80 的除法。0/5→3/5→5/5 是收敛过程。18 天是 TCC 静默失败。20 个会话、约 38MB 是三仓合计。实运 2 次挡下 4 件过大主张，不要和分数收敛混写。这是个人仓库。",
+    ],
+    approach: `作者没有把公司开发组织搬来做对照，而是在自己的 3 个个人仓库里，用大约一个半月看：如果把策划到合并都交给 AI 跑，权限、合并条件和定时任务会在哪里烂掉。他数过开发工具仓最近 80 个提交，其中 73 个带 Claude 共同作者，91% 就是这一次除法。审查分数从 0/5 到 3/5 再到 5/5，对应的是合并条件被逐步写清楚，而不是一开始就有一份已经打满的清单。定时任务在 macOS 上每周跑一次，因为 TCC 拒绝而静默失败了 18 天；由于同一条命令在终端里手动执行是好的，这次中断没有马上被发现。日志方面，20 个会话大约 38MB，是三个项目加在一起的量。另外，审查评论有没有说大话，他用实运 2 次、挡住 4 件过大主张来说明，这和分数收敛不是同一组数字。文中提到的 greptile、claude-code-action 是一次资料或所用工具，不是作者自己的产品站。`,
+    outcomes: [
+      "源披露在 3 个个人仓库、约一个半月里，开发工具仓最近 80 个提交中 73 个（91%，即 73/80 的除法）是 Claude 共同作者；AI 审查分数从 0/5 到 3/5 再到 5/5。这是这一次、这些个人仓库上的记录，不可外推成公司开发组织已经成型，也不能把 91% 写成另一次统计，更不能把收敛过程写成一开始就是 5/5。",
+      "每周 cron 因 macOS TCC（Operation not permitted）静默失败 18 天；手动执行当时是正常的，所以没有立刻发现。",
+      "20 个会话、约 38MB 日志是三个项目合计。审查评论实运 2 次，挡下过大主张 4 件，不要和 0/5→5/5 混成一笔。曾有人一行未写的 PR 被机器人自动合并。",
+    ],
+    caveats: [
+      "91% 是 73/80 的除法。分数是收敛过程。18 天是静默失败，不是任务明明报错却被忽略。38MB 是三仓合计。2 次／4 件不要和分数混写。标题里的「开发组织」在正文里是 3 个个人仓库。platforms 记 claude。",
+      "导流：https://yukamiya.me GET 200（跟随至 https://yukamiya.me/ ，仍为 200）；https://github.com/fuzzy31u GET 200；https://x.com/_yukamiya GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28）。相关篇已核、不列入导流：https://zenn.dev/yukamiya/articles/pm-ssot-claude-skills GET 200；https://zenn.dev/yukamiya/articles/ai-evidence-judgment GET 200。一次资料已核、不列入导流：https://www.greptile.com/ GET 200；https://github.com/anthropics/claude-code-action GET 200。页内 mermaid、link-card 嵌入不当作者产品导流。未见正文配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先写清分母、收敛过程和静默失败的天数，再谈「AI 已经能自己合并」",
+        body: "若共同作者比例是「最近 N 个提交里有 M 个」，请写出这两个数，并标明百分比来自这次除法。审查分数若是从 0 分逐步到满分，要保留中间的分数，不要只写最后的满分。定时任务若在权限拒绝时不报错、只是不再执行，要写静默失败的天数，以及为什么当时没发现（例如手动执行是正常的）。多个仓库合计的会话数和日志体积，不要写成某一个仓库的量。个人仓库上的验证不要写成公司组织已经跑通。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yukamiya/articles/claude-harness-engineering-three-repos",
+      label: "zenn.dev·yukamiya《AI前提の開発組織をつくる — 3つの個人リポジトリで検証した権限設計・マージ条件・ガードレール》",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "897",
+    slug: "kindle-143-16fail",
+    title: "kindledai：用任务计划程序在无人时启动 claude -p --model haiku --restricted。有待判断工作时启动了 143 次，其中 5 次因额度用尽失败（You've hit your session limit · resets 1am）。刚加上把同类判断交给 Codex 的代役，就碰上周额度用尽：随后 2 天连续 16 次无人启动因额度失败，切换机制 16 次都动了，代役实际干活 0 次（代役自己的免费档也用尽）。不要把 5 次和后来的 16 次合成一笔。文中 19〜46%、每模型每天 20 次、销售额 0 件写在书里，不是本篇测到的。Codex 不在枚举，platforms 只记 claude",
+    summary: "kindledai 用 Windows 任务计划程序，在有待判断的工作时无人启动 claude -p --model haiku --restricted，只允许 Read／Edit／Grep／Glob，标准输入走 PowerShell。大约一个月里这种无人启动有 143 次，其中 5 次因 session limit 失败，提示 You've hit your session limit · resets 1am。作者随即加上：若这类判断失败，就改交给 Codex 做同类工作。刚加上就碰上周额度用尽，随后 2 天连续 16 次无人启动都因额度失败；切换机制 16 次都触发了，代役实际干活 0 次，因为代役自己的免费档也用尽了。数字以 2026-10-01 当时环境为准。不要把加代役之前的 5 次和之后的 16 次加总。书里写的 19〜46% 成功率、每模型每天 20 次、销售额 0 件，不是本篇测到的，不要写进结果。与 #822 同属周额度，本条硬窗是无人启动连续失败且代役也没有额度。",
+    description: "面向已经把「加一个代役就能熬过周额度」写成经验的人：把「143 次里的 5 次是加代役之前；16 次连续失败是加了之后的 2 天；切换 16/16、干活 0/16；书里的成功率与销量不要写进本条」写成门禁，区别于只看「已经做了切换」的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kindledai/articles/bb0ebc19dfe84f",
+    sourceLabel: "zenn.dev·kindledai 实践帖",
+    upvotes: 788,
+    trending: false,
+    tags: [
+      "claude-code",
+      "unattended",
+      "quota",
+      "fallback",
+      "task-scheduler",
+    ],
+    howItWorks: [
+      "作者用任务计划程序，在有待判断的工作时于无人状态下启动 claude -p --model haiku --restricted，工具只开 Read、Edit、Grep、Glob，标准输入由 PowerShell 提供。这是本机无人值守，不是对话里手动点一次。",
+      "大约一个月里，这种无人启动有 143 次，其中 5 次因额度用尽失败，报错是 You've hit your session limit · resets 1am。这 5 次属于加上 Codex 代役之前。",
+      "加上「同类判断失败就交给 Codex」之后，立刻碰到周额度用尽。随后 2 天里，连续 16 次无人启动都因额度失败；切换机制 16 次都动了，代役实际干活 0 次，因为代役自己的免费档也用尽了。数字以 2026-10-01 当时环境为准。Codex 只作为未完成工作的代役出现，且这 16 次里一次都没干成，不在平台枚举，不硬凑，platforms 只记实测启动的 claude。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-15T14:30:45.642+09:00 → UTC 2026-10-15T05:30:45Z、Asia/Shanghai 2026-10-15 13:30:45；bodyUpdatedAt 与发布相同；取 published → 2026-10-15；数字以 2026-10-01 当时环境为准（文中说明）；GET 200（UA MiraBot/1.0））：kindledai 在《無人起動のClaude Codeが、週次リミットで16回連続失敗した記録（代役を用意しても動かなかった）》记录无人启动的额度失败。可达导流：https://zenn.dev/kindledai/books/3d43136e058c0b GET 200（作者书，第 1–2 章可免费阅读）。作者卡 GitHub／X／website 为空，不要另补链。Codex 不在枚举，platforms 只记 claude。",
+      "143 次里的 5 次不要和后来 2 天里的 16 次加总。切换 16/16，干活 0/16。书里的 19〜46%、每天 20 次、销售额 0 不要写进本条结果。与 #822 窗口不同：这里是无人启动连续失败，而且代役也没有额度。",
+    ],
+    approach: `作者把判断类小工作交给一台会在无人时启动的 Windows 任务：claude -p、模型 haiku、加上 --restricted，只允许读和改文件、做 Grep 和 Glob。大约一个月里这样启动了 143 次，其中 5 次撞上 session limit。他接着做了切换：这类判断若在 Claude 这边失败，就改交给 Codex。切换刚写下，就碰上周额度用尽，随后两天连续 16 次无人启动全部因额度失败。切换机制每次都触发了，但 Codex 这边的免费档也用尽，实际一次都没干成。他写明这些数字以 2026-10-01 当时的环境为准。文中提到的书里还有另一组数字（成功率区间、每模型每天次数、销售额），那些不是本篇测到的，本条不写入结果。Codex 不在平台枚举，而且这次代役没有完成任何一次工作，platforms 只记 claude。`,
+    outcomes: [
+      "源披露用任务计划程序无人启动 claude -p haiku --restricted 时，大约一个月里启动 143 次，其中 5 次因 session limit 失败；加上 Codex 代役之后碰上周额度，随后 2 天连续 16 次无人启动都失败，切换 16 次都动了，代役实际干活 0 次。这是 2026-10-01 当时环境上的记录，不可外推成别的套餐或别的时段，也不能把加代役之前的 5 次和之后的 16 次加总，更不能把书里的成功率、每日次数或销售额写进本条结果。",
+      "额度失败的提示是 You've hit your session limit · resets 1am。切换机制本身 16/16 都触发，失败在于代役自己的免费档也用尽。",
+      "与 #822 同属周额度话题，本条硬窗是无人值守连续失败，且已经写下的代役没有额度可用。",
+    ],
+    caveats: [
+      "不要把 5 次和 16 次合成一笔。不要把书里的 19〜46%、每模型每天 20 次、销售额 0 件写进本条。数字截止 2026-10-01。Codex 不在枚举，且这 16 次里干活 0 次，不硬凑，platforms 只记 claude。",
+      "导流：https://zenn.dev/kindledai/books/3d43136e058c0b GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:26–16:28；作者在文末导向这本书，第 1–2 章可免费阅读）。作者卡 GitHub／X／website 为空，不要补链。未见正文配图。页内若有书籍 link-card 嵌入，产品导流已按完整书籍 URL 写出。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分开「加代役之前的失败」和「加了之后连续失败却干不成活」，再谈额度切换",
+        body: "请把加上代役之前一段时间里的启动次数、额度失败次数，和加上之后连续失败的次数分开写，不要加总。若切换机制每次都触发、但代役一次都没干成，要同时写这两件事，并写明代役失败的原因（例如它自己的免费档也用尽）。书或其他篇章里的成功率、每日次数、销量，若不是本篇测到的，不要写进本条结果。数字若写明截止到某一天的环境，要保留这个截止。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kindledai/articles/bb0ebc19dfe84f",
+      label: "zenn.dev·kindledai《無人起動のClaude Codeが、週次リミットで16回連続失敗した記録（代役を用意しても動かなかった）》",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
   }
 ];
 
