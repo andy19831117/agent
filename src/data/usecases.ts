@@ -58658,6 +58658,434 @@ medium／fp16 的日志里，decode 46 回，温度不是 0.0 的只有 1 回（
       dateLabel: "发布",
     },
   },
+  {
+    id: "803",
+    slug: "litalico-3of5-18sc-30m",
+    title: "LITALICO／池野：用 git 历史让 AI 给出重构候选，再交给技术负责人核对——分类 3/5 件、评分 18/25 项「对得上」；6 个域里 1 个未答；优先级档 0/5 件改档；横断问题 2/2 件对得上；人约 30 分钟",
+    summary: "团队（LITALICO 架构推进组／池野 nobus0116，发在 LITALICO工程师）；披露对残障福祉机构向产品的后端 API（PHP/Laravel）用脚本从 git／已合并 PR／复杂度收集信号，再交给 Claude Code 技能做分类与 5 项评分的草稿，最后由技术负责人填核对表。核对约 30 分钟：上位 6 个域里 1 个未答，答了的 5 个域上分类 3/5 件、评分 18/25 项「对得上」，事业影响「不对」0/5 件，优先级档 0/5 件改档，域横断问题 2/2 件对得上。集计期间 1 年（属人化 2 年），PR 294 件，用标题近似到的生产故障 PR 7 件，域 80 个（调整后 76 个）。不代你同样交出 3/5 与 18/25，就等于下一份重构候选也可以不经人核对、或档位已门禁。",
+    description: "面向已经把「让 AI 按 git 历史排出该重构的地方」当成技术负债优先级已门禁、却还没把同一份候选交给技术负责人逐项核对的人：把「Agent 合做重构候选须同时报分类对得上的件数、评分对得上的项数、优先级档有没有改档，以及人核对用了多少分钟」写成门禁，区别于手册 Skill 一次修订，以及会则 RAG。",
+    categories: [
+      "enterprise",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/litalico/articles/84d2427087c27b",
+    sourceLabel: "zenn.dev·LITALICO工程师／nobus0116 实践帖",
+    upvotes: 694,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "refactor",
+      "architecture",
+      "Laravel",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴重构候选边界（是不是约同一份候选要同时记下分类对得上的件数与评分对得上的项数、是不是约优先级档有没有改档要单独记账、是不是约人核对分钟数要单独报）以及「绝不可把 AI 已经排出该重构的地方写成优先级已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下分类 3/5、评分 18/25、档位 0/5 改档、横断 2/2，以及约 30 分钟的核对、294 件 PR 与用标题近似到的 7 件生产故障",
+      "人工保留 3/5、18/25、0/5 改档与 30 分钟来自哪一次自述；Agent 不代你保证「同样交出 3/5 与 18/25 就等于下一份候选也可以不经人核对，或档位已经门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T13:45:00.747+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T04:45:00Z、Asia/Shanghai 2026-11-07 12:45:00；bodyUpdatedAt 2026-11-07T13:42:39.945+09:00（早于发布时间）→ 同时刻为 UTC 2026-11-07T04:42:39Z、Asia/Shanghai 2026-11-07 12:42:39；取 published；GET 200（UA MiraBot/1.0））：LITALICO 架构推进组的池野（nobus0116）在《リファクターの判断はAIに任せない ― git履歴から候補を出して、テックリードと答え合わせする》写这一次核对。正文硬链只有 Zenn 配图，未见作者产品／站点／仓／社交主页可列入可达导流。源页作者卡亦无网站、GitHub、X。文末有 LITALICO 招聘／闲聊面谈的口述，没有可请求的招聘硬链，不列入可达导流。出版物页 https://zenn.dev/p/litalico GET 200（Zenn 出版物索引，不是作者产品，已核链、不列入可达导流）。",
+      "与手册 Skill 一次修订、会则 RAG 不同：本条不是把一次修订小时数或问答正答率当主线，而是同一份重构候选在人核对后分类与评分对得上多少、档位有没有改、人用了多少分钟的门禁。",
+    ],
+    approach: `池野（nobus0116，LITALICO 架构推进组）在《リファクターの判断はAIに任せない ― git履歴から候補を出して、テックリードと答え合わせする》（页内 2026-11-07，正文更新早于发布）写明：各产品团队怎么决定「先还哪一笔技术负债」并不统一，季度架构评审也缺少可横比的材料。作者先由架构推进组写出仍是草稿的「重构／再架构判定信号运用指南」，把危险迹象分成交付质量、设计边界、可测与可维护、组织与运用、非功能局部劣化 5 类，再按事业影响、故障风险、开发速度影响、属人化、改进是否好做 5 个观点各打 1〜5 分，用总分区分「本季度做／下季度候选／继续观察」。指南尚未在各团队正式运用，阈值也预定边跑边调；作者选择不等「完美标准」，先把草稿交给 AI，用人的核对来养。判断流程里，AI 只做到收集信号、区分局部修改还是结构变更、给出优先级草稿，审议与是否采纳仍留给人。
+
+数字由脚本从 git、已合并 PR 和复杂度工具确定性算出，LLM 只做解释与读代码。对象是残障福祉机构向产品的后端 API（PHP/Laravel），把 app/Services 下的目录当作域。集计 1 年（属人化 2 年），PR 294 件，用标题里「本番不具合」「hotfix」等近似到的生产故障 PR 7 件，域 80 个。Hotspot 上位 12 个域由 Claude Code 技能写出分类、5 项评分、依据与要问技术负责人的问题；再做成 Excel 核对表，请技术负责人对上位 6 个域填写（约 30 分钟）。表交给人之前，还会核 PR 号是否存在、件数能否复算、5 项之和是否与 AI 写的总分一致。
+
+核对结果：6 个域里 1 个未答；答了的 5 个域上，分类 3/5 件、评分 18/25 项「对得上」，事业影响「不对」0/5 件，优先级档 0/5 件改档，域横断问题 2/2 件对得上。AI 标明「推定」的事业影响 1 件都没有被驳回。评分被改的 7 项里，有 5 项是「开发速度影响」，且 5 个域全错——AI 依据「每 PR 平均 23 个文件、3.4 个域」，但那是被 1 个大 PR 拉高的平均数，全部 PR 的中位数是 4 个文件。另有与后付功能同时改过 13 次被当成波及、测试因命名空间不同漏检（故障风险 4 分被改成 2 分）等。作者后来把层目录从域里拆出（域从 80 减到 76），并把波及指标从平均数改成中位数；改完后的提案尚未再交给技术负责人核对。同一集计上让 AI 做 2 回提案，域分类 8 件里 7 件一致，横断问题 2 回却各说各的。文末写明公司在招做跨产品架构的工程师，并邀请闲聊面谈，但没有附上可请求的招聘链接。
+
+本场景据此输出「Agent 合做重构候选须同时检查分类与评分对得上的件数、档位有没有改、人核对用了多少分钟，不能只报 AI 已经排出该重构的地方」提纲。禁止把 3/5、18/25 写成任意仓库同分布，或把档位未改写成优先级已门禁。`,
+    outcomes: [
+      "源披露作者在残障福祉机构向 Laravel 后端上，用脚本集计 1 年（属人化 2 年）的 git／PR／复杂度，再交给 Claude Code 技能出草稿，由技术负责人核对上位 6 个域（1 个未答、约 30 分钟）：分类 3/5 件、评分 18/25 项「对得上」，事业影响「不对」0/5 件，优先级档 0/5 件改档，域横断问题 2/2 件对得上；PR 共 294 件，用标题近似到的生产故障 PR 7 件，域 80 个（调整后 76 个）。属作者这一次在单一产品、草稿指南与这名技术负责人上的记录（改成中位数后的提案尚未再核对，生产故障件数也只是标题近似），不可外推为你同样交出 3/5 与 18/25 就等于下一份候选也可以不经人核对，或档位未改就等于优先级已门禁，或 AI 排出该重构的地方就等于已门禁。",
+      "能把「可写成同时检查分类与评分对得上的件数、档位有没有改、人核对用了多少分钟」与「必须人完成的再核对／招聘口述」拆开。",
+      "为把「AI 已经排出该重构的地方」当成技术负债优先级已门禁，以及只看总分、不问依据是否对人说得通提供提问清单。",
+    ],
+    caveats: [
+      "分类 3/5、评分 18/25、档位 0/5 改档、横断 2/2、约 30 分钟、PR 294 件、标题近似故障 7 件、域 80→76，均为作者自述；测的是一个 Laravel 产品与这一名技术负责人；6 个域里 1 个未答；「开发速度影响」5 个域全错，主因是集计用了平均数；改成中位数后的提案作者写明尚未再核对；生产故障信号偏弱，且有修在别的域、标题与分支不一致的情况。指南仍是草稿，阈值预定边跑边调。",
+      "正文硬链只有 Zenn 配图，未见作者产品／站点／仓／社交主页可列入可达导流。源页作者卡亦无网站、GitHub、X。文末有 LITALICO 招聘／闲聊面谈的口述，没有可请求的招聘硬链，不列入可达导流。出版物页 https://zenn.dev/p/litalico GET 200（Zenn 出版物索引，不是作者产品，已核链、不列入可达导流）。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是团队实践帖（zenn.dev / LITALICO工程师／nobus0116），不是 LITALICO 或 Anthropic 的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "重构候选须先交给人核对分类与评分",
+        body: `你是资深 Agent 重构候选教练。只根据用户边界写门禁，不要编造优先级已门禁。
+
+现在是不是约同一份候选要同时记下分类对得上的件数与评分对得上的项数：{{whether_about_class_and_score}}
+是不是约优先级档有没有改档要单独记账：{{whether_about_band_change}}
+是不是约人核对分钟数要单独报：{{whether_about_review_minutes}}
+
+输出 Markdown：
+1. 为什么「AI 已经排出该重构的地方」不能写成技术负债优先级已发现已门禁
+2. 应怎样同时检查分类与评分对得上的件数、档位有没有改、人核对用了多少分钟
+3. 只有一次 3/5 与 18/25 账本时，应怎样单独记账，而不是写成下一份候选也必然同分布
+4. 人必须完成的清单（再核对、导流链）
+禁止声称「同样交出 3/5 与 18/25 就等于下一份候选也可以不经人核对」；禁止把 AI 排出该重构的地方或档位未改写成已发现已门禁。`,
+      },
+      {
+        title: "三比五分类与十八比二十五评分复盘",
+        body: `报告上可以写分类 3/5 件、评分 18/25 项对得上、档位 0/5 件改档、横断 2/2 件对得上、人约 30 分钟；但这是单一产品与这一名技术负责人上的一次记录。请写复盘提纲。
+
+现象：{{three_of_five_eighteen_of_twenty_five}}
+
+输出：
+1. 更像模型乱评，还是集计用了平均数、漏检测试、或人才能补充的背景
+2. 最小复验顺序（先对照分类与评分对得上的件数→再看档位有没有改→再看人核对分钟数→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上档位没改就等于已门禁」，或「AI 排出该重构的地方就等于已经可以开工」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/litalico/articles/84d2427087c27b",
+      label: "zenn.dev · リファクターの判断はAIに任せない ― git履歴から候補を出して、テックリードと答え合わせする",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "804",
+    slug: "rigprobe-15of17-8of17-099",
+    title: "rigprobe：低价云 LLM 5 社实测给编码 Agent 当退路——BlazeRail 去掉 429 后 Tool 15/17、Stream 11/17、OpenCode Agent 8/17；DeepRelay 的 DeepSeek V4.1 Flash 9/9（中位 18.94 秒）；GLM-5.3 Flash 曾 0/9；DeepRelay Base 月 $0.99",
+    summary: "个人（りぐぷろ／rigprobe）；披露 2026-11-02〜08 自开账户、自付费，用 OpenCode 1.18.18 在 Windows 11／PowerShell 7／Node.js 24 上对 5 家低价或免费云 API 做通路与编码 Agent 实测。BlazeRail 去掉 429 后再测：Tool Calling 15/17、Streaming 11/17、OpenCode 上的 Agent 8/17（失败 9 件全是 Claude 系 HTTP 400，不是速率限制）。DeepRelay 上 DeepSeek V4.1 Flash 9/9（中位 18.94 秒），GLM-5.3 9/9（中位 80.1 秒），GLM-5.3 Flash 曾 0/9（HTTP 503，作者提交对照实验后当日修好）。DeepRelay Base 为月 $0.99。不代你同样看到 15/17 或 9/9，就等于下一事也会把「API 通了」写成 Agent 已能跑完，或月 $0.99 已够用已门禁。",
+    description: "面向已经把「便宜云 API 能通」或「目录里有免费模型」当成编码 Agent 退路已门禁、却还没按同一套任务分开报工具调用、流式与 Agent 成功率的人：把「Agent 合做低价云退路须同时报工具调用成功件数、Agent 成功件数，以及失败是 429 还是 400／503」写成门禁，区别于费用／Effort 对照，以及本地小模型时延对照。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "chatgpt",
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/rigprobe/articles/9dedab8c9101f8",
+    sourceLabel: "zenn.dev·rigprobe 实践帖",
+    upvotes: 695,
+    trending: false,
+    tags: [
+      "OpenCode",
+      "eval",
+      "API",
+      "LLM",
+      "cost",
+    ],
+    howItWorks: [
+      "粘贴低价云退路边界（是不是约同一套任务要同时记下工具调用成功件数与 Agent 成功件数、是不是约失败是 429 还是 400／503 要分开报、是不是约中位耗时要单独记账）以及「绝不可把 API 能通或目录里有免费模型写成编码 Agent 退路已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 BlazeRail 去掉 429 后 Tool 15/17、Stream 11/17、Agent 8/17，以及 DeepRelay 上 DeepSeek V4.1 Flash 9/9（中位 18.94 秒）与 GLM-5.3 Flash 曾 0/9",
+      "人工保留 15/17、8/17、9/9 与月 $0.99 来自哪一次自述；Agent 不代你保证「同样看到 15/17 或 9/9 就等于下一事也会把 API 通了写成 Agent 已能跑完，或月 $0.99 已经够用已门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T08:00:05.640+09:00 → 2026-11-08，同时刻为 UTC 2026-11-07T23:00:05Z、Asia/Shanghai 2026-11-08 07:00:05；bodyUpdatedAt 2026-11-08T12:57:54.942+09:00（晚于发布）→ 同时刻为 UTC 2026-11-08T03:57:54Z、Asia/Shanghai 2026-11-08 11:57:54；取 published；GET 200（UA MiraBot/1.0））：りぐぷろ／rigprobe 在《月$0.99でコーディングエージェントを回す — 低価格クラウドLLM 5社を実測した》写 11 月 2〜8 日实测。https://rigprobe.dev/ GET 200（可达作者站点导流）；https://github.com/rigprobe GET 200（可达作者 GitHub 导流）；https://x.com/rigprobe GET 200（可达社交主页导流）。文内厂商端点已核、不列入可达导流：https://api.harogo.ai 与 https://api.harogo.ai/v1 GET 200；https://aihubmix.com GET 200，https://aihubmix.com/v1 GET 404；https://opencode.ai/config.json GET 200；https://api.blazerail.com/v1 连接失败（http_code 000）；https://api.deeprelay.ai/v1 GET 404；https://gateway.rayucode.com 与 https://gateway.rayucode.com/v1 均 GET 401。作者写明各社试验模型、日期与次数不同，表不是 5 社稼働率排行；下次才要把同一软件修改任务对齐来测。",
+      "与费用／Effort 对照、本地小模型时延对照不同：本条不是把周限多用几天或本地 TTFT 当主线，而是便宜云 API 在工具调用、流式与 OpenCode Agent 上各成功几回、失败码是不是同一类的门禁。作者常用的是本地 RTX 5090 32GB 与两台 DGX Spark，本稿写的是它们倒下时的云上退路。",
+    ],
+    approach: `りぐぷろ（rigprobe）在《月$0.99でコーディングエージェントを回す — 低価格クラウドLLM 5社を実測した》（页内 2026-11-08，同日有正文更新）写明：自己常用本地 LLM（RTX 5090 32GB 加两台 DGX Spark），仍想留一条云上退路，但不愿按前沿 API 标价去打。于是在 2026-11-02〜08 自己开户、自己付费，用 OpenCode 1.18.18（Windows 11、PowerShell 7、Node.js 24）对 5 家低价或免费、多半兼容 OpenAI 的 API 做通路与编码 Agent 实测，并声明先写失败与限制，不把「便宜」写成「能用」。5 社的 API 本身都能连上，但能不能当 Agent 用，差别很大。
+
+BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10 个在到达前就 429；去掉 429 后再测，工具调用 15/17、流式 11/17，OpenCode 上的 Agent 8/17。作者强调失败的 9 件全是 Claude 系 HTTP 400，不是速率限制——Claude Opus 5.5 的 API 响应本身成功，进 OpenCode 却 400。DeepRelay Base 为月 $0.99：DeepSeek V4.1 Flash 9/9（中位 18.94 秒），GLM-5.3 9/9（中位 80.1 秒），GLM-5.3 Flash 一度 0/9、HTTP 503（带工具即拒，失败请求 394〜449ms 且不进账单日志；不加工具则同一模型可 HTTP 200）；作者带着复现步骤、对照实验和 3 个 Request ID 提交后，当日两边都修好，再试 4 个模型 8 次推理均 HTTP 200、工具也成功，追加费 $0。作者还记下 OpenCode 报告的原始输入 14,665，对照账单上的加权输入 87,326（约 6 倍），用来估定额容量，并写明这是计费加权，不是已经撞上模型输入上限。Harogo、AIHubMix、Rayu 也各有入金、免费框和目录里当天能通多少的记录；作者写明各社试验模型、日期与次数不同，表不能当成 5 社稼働率排行，对齐的软件修改任务要留到下次。
+
+本场景据此输出「Agent 合做低价云退路须同时检查工具调用与 Agent 成功件数、失败是 429 还是 400／503，不能只报 API 能通或目录里有免费模型」提纲。禁止把 15/17 或 9/9 写成任意一天同分布，或把月 $0.99 写成退路已够用已门禁。`,
+    outcomes: [
+      "源披露作者在 2026-11-02〜08 自开账户对 5 家低价或免费云 API 用 OpenCode 1.18.18 实测：BlazeRail 去掉 429 后 Tool 15/17、Stream 11/17、Agent 8/17（失败 9 件全是 Claude 系 HTTP 400）；DeepRelay 上 DeepSeek V4.1 Flash 9/9（中位 18.94 秒）、GLM-5.3 9/9（中位 80.1 秒），GLM-5.3 Flash 曾 0/9（HTTP 503，提交对照后当日修好）；DeepRelay Base 月 $0.99。属作者这一周在这些账户、模型集合与 OpenCode 1.18.18 上的记录（各社试验模型与次数不同，对齐的软件修改任务尚未做），不可外推为你同样看到 15/17 或 9/9 就等于下一事也会把 API 通了写成 Agent 已能跑完，或月 $0.99 已经够用已门禁，或目录里有免费模型就等于已门禁。",
+      "能把「可写成同时检查工具调用与 Agent 成功件数、失败码是 429 还是 400／503」与「必须人完成的账户与导流链」拆开。",
+      "为把「API 能通」或「目录里有免费模型」当成编码 Agent 退路已门禁，以及只看标价、不看失败码提供提问清单。",
+    ],
+    caveats: [
+      "15/17、11/17、8/17、9/9、0/9、中位 18.94 秒／80.1 秒、月 $0.99，均为作者自述；测的是 11 月 2〜8 日这些账户与 OpenCode 1.18.18，不是对齐后的同一软件修改任务；各社模型集合与次数不同，作者写明表不是稼働率排行；GLM-5.3 Flash 的 0/9 之后已修好，不能写成至今仍 0。加权输入约 6 倍是账单口径，作者用来估定额容量，不是已经撞上模型输入上限。",
+      "https://rigprobe.dev/ GET 200（可达作者站点导流）。https://github.com/rigprobe GET 200（可达作者 GitHub 导流）。https://x.com/rigprobe GET 200（可达社交主页导流）。厂商端点已核、不列入可达导流：https://api.harogo.ai、https://api.harogo.ai/v1、https://aihubmix.com、https://opencode.ai/config.json 均 GET 200；https://aihubmix.com/v1 GET 404；https://api.deeprelay.ai/v1 GET 404；https://gateway.rayucode.com 与 https://gateway.rayucode.com/v1 均 GET 401；https://api.blazerail.com/v1 连接失败（http_code 000）。失败／401／404／连接失败页不当可达。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / rigprobe），不是这 5 家云 API 或 OpenCode 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "低价云退路须先分开报工具调用与 Agent 成功率",
+        body: `你是资深 Agent 云上退路教练。只根据用户边界写门禁，不要编造编码 Agent 退路已够用已门禁。
+
+现在是不是约同一套任务要同时记下工具调用成功件数与 Agent 成功件数：{{whether_about_tool_and_agent}}
+是不是约失败是 429 还是 400／503 要分开报：{{whether_about_error_class}}
+是不是约中位耗时要单独记账：{{whether_about_median_latency}}
+
+输出 Markdown：
+1. 为什么「API 能通」或「目录里有免费模型」不能写成编码 Agent 退路已发现已门禁
+2. 应怎样同时检查工具调用与 Agent 成功件数、失败码是 429 还是 400／503
+3. 只有一次 15/17 与 8/17 账本时，应怎样单独记账，而不是写成下一天也必然同分布
+4. 人必须完成的清单（账户核对、导流链）
+禁止声称「同样看到 15/17 或 9/9 就等于下一事也会把 API 通了写成 Agent 已能跑完」；禁止把月 $0.99 或目录里有免费模型写成已发现已门禁。`,
+      },
+      {
+        title: "十五比十七与八比十七复盘",
+        body: `报告上可以写去掉 429 后工具调用 15/17、Agent 8/17、DeepSeek V4.1 Flash 9/9、GLM-5.3 Flash 曾 0/9、月 $0.99；但这是这一周账户与 OpenCode 上的一次记录。请写复盘提纲。
+
+现象：{{fifteen_of_seventeen_and_eight_of_seventeen}}
+
+输出：
+1. 更像模型不会用工具，还是速率限制、HTTP 400／503，或 API 通了但 Agent 路径另有限制
+2. 最小复验顺序（先对照工具调用成功件数→再看 Agent 成功件数→再看失败码类别→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 API 能通就等于 Agent 已能跑完」，或「月 $0.99 就等于退路已经够用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/rigprobe/articles/9dedab8c9101f8",
+      label: "zenn.dev · 月$0.99でコーディングエージェントを回す — 低価格クラウドLLM 5社を実測した",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "805",
+    slug: "kohei-24q-8to40-93of168",
+    title: "kohei：在 GTX 1080 8GB 上用 7 个本地小模型做哆啦A梦道具选择题——不给说明时平均正答率 8%，给齐 27 件说明后 40%；168 次回答里 93 次写出清单外的名字；Lv4 反而从 17% 降到 6%",
+    summary: "个人（koheidisney／kohei，SIer／AI 工程师）；披露用 Ollama 0.40.15、Q4_K_M、关闭思考，在 GTX 1080（显存 8GB）上让 7 个 4〜9B 本地小模型做自编的 24 道哆啦A梦道具选择题（4 个难度各 6 题），temperature 0、seed 42，每题 1 次。不给道具说明时 7 模型平均正答率 8%，把 27 件名字与效果全部写入提示词后平均 40%；本地 168 次回答里 93 次含清单外名字。最好的 Gemma 4 E4B 在不给说明时也只有 25%，对照的 Claude Sonnet 5.5 为 65%。Lv1 从平均 7% 升到 76%，Lv4 反而从 17% 降到 6%。不代你同样看到 8%→40%，就等于下一组本地小模型也能在组合题上选对，或已经可以当工具选择已门禁。",
+    description: "面向已经把「本地小模型已经能跑」或「把工具说明写进提示词」当成工具选择已门禁、却还没按同一批题分开报有无说明的正答率与造名次数的人：把「Agent 合做本地工具选择须同时报有无说明时的正答率、清单外名字次数，以及难题有没有不升反降」写成门禁，区别于本地小模型时延对照，以及预转录 0 件排查。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/koheidisney/articles/729394f8be42c5",
+    sourceLabel: "zenn.dev·koheidisney 实践帖",
+    upvotes: 696,
+    trending: false,
+    tags: [
+      "local-LLM",
+      "Ollama",
+      "eval",
+      "tool-use",
+      "Claude",
+    ],
+    howItWorks: [
+      "粘贴本地工具选择边界（是不是约同一批题要同时记下有无说明时的正答率、是不是约清单外名字次数要单独记账、是不是约难题有没有不升反降要分开报）以及「绝不可把本地小模型已经能跑或说明已经写入提示词写成工具选择已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下不给说明时平均 8%、给齐说明后平均 40%，168 次里 93 次造名，以及 Lv1 7%→76%、Lv4 17%→6%",
+      "人工保留 8%→40%、93/168 与 Lv4 下降来自哪一次自述；Agent 不代你保证「同样看到 8%→40% 就等于下一组本地小模型也能在组合题上选对，或工具选择已经门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T01:01:13.073+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T16:01:13Z、Asia/Shanghai 2026-11-09 00:01:13；bodyUpdatedAt 2026-11-09T08:00:38.694+09:00（晚于发布）→ 同时刻为 UTC 2026-11-08T23:00:38Z、Asia/Shanghai 2026-11-09 07:00:38；取 published；GET 200（UA MiraBot/1.0））：koheidisney（kohei）在《古代のグラボ（GTX 1080）でも動くローカルLLMを動かしてみた》写 24 题实测。正文 3 条链均为 Zenn 配图，未见作者产品／站点硬导流可列入可达。源页作者卡亦无网站、GitHub、X。环境是 Ollama 0.40.15（Docker）、Q4_K_M、思考关闭；vLLM 在这块 GTX 1080 上没能用。作者写明每题平均 5 秒以内，7 个模型都进了 8GB 显存，仅 Ministral 3 8B 约 6% 溢到 CPU。",
+      "与本地小模型时延对照、预转录 0 件排查不同：本条不是把 TTFT 或预转写件数为 0 当主线，而是同一批道具选择题在有无说明时的正答率、造名次数，以及难题会不会不升反降的门禁。",
+    ],
+    approach: `koheidisney（kohei）在《古代のグラボ（GTX 1080）でも動くローカルLLMを動かしてみた》（页内 2026-11-09，同日有正文更新）写明：家里有一块 GTX 1080（显存 8GB），想确认 4〜9B 的本地小模型量化后，能不能做「按情景挑选哆啦A梦道具」这种工具选择。题目是自编的 24 道，4 个难度各 6 题，答对组合完全一致得 1 分，与半分答案一致得 0.5 分；Lv4 里还有「不借助道具才算对」的题。同一批 24 题只改一项：是否把 27 件道具的名字与效果全部写入提示词。7 个本地模型都用 Ollama 0.40.15、Q4_K_M、关闭思考，temperature 0、seed 42，每题 1 次；对照是云上的 Claude Sonnet 5.5。这块卡不能跟 CUDA 13，vLLM 没能用，Ollama 自带 CUDA 12 部件后可以直接走 GPU。
+
+不给说明时，7 个本地模型平均正答率 8%，几乎做不出；给齐说明后平均 40%。不给说明时最好的 Gemma 4 E4B 也只有 25%，Sonnet 5.5 则是 65%。作者本期望日语续训的模型更熟这批道具，结果 ELYZA-JP 8B 为 15%，Llama 3.1 Swallow 8B 为 6%，差别并不清楚。本地 168 次回答里，一半以上（93 次）含有清单上没有的名字，例如「缩み缩み机」「知识的电脑」。Qwen3.5 4B 在 23 题中有 21 题答「不用道具」。给齐说明后，Lv1 从平均 7% 升到 76%，1-1〜1-4 七个模型全对；升幅最大的是 Qwen3.5 9B，从 4% 到 54%。Lv4 反而从平均 17% 降到 6%。给了「任意门只通向做过的地方」这种规则后，7 个里仍有 6 个选了任意门；Qwen3.5 9B 甚至先引用规则，再得出完全相反的结论。Sonnet 5.5 在给齐说明后 Lv4 也能到 58%。每题平均 5 秒以内；7 个模型都进了 8GB 显存，只有 Ministral 3 8B 约 6% 溢到 CPU。
+
+本场景据此输出「Agent 合做本地工具选择须同时检查有无说明时的正答率、清单外名字次数、难题有没有不升反降，不能只报本地小模型已经能跑或说明已经写入提示词」提纲。禁止把 8%→40% 写成任意题目同分布，或把说明写进提示词写成工具选择已门禁。`,
+    outcomes: [
+      "源披露作者在 GTX 1080 8GB 上用 Ollama 0.40.15 的 7 个 4〜9B 本地模型，对自编 24 道哆啦A梦道具选择题（temperature 0、seed 42，每题 1 次）实测：不给说明时平均正答率 8%，给齐 27 件说明后平均 40%；本地 168 次回答里 93 次含清单外名字；Lv1 从 7% 升到 76%，Lv4 反而从 17% 降到 6%；不给说明时最好的本地模型 25%，对照的 Claude Sonnet 5.5 为 65%。属作者这一次在这块卡、这 7 个量化模型与自编 24 题上的记录（每题只跑 1 次，未比较生成质量以外的解题稳定性），不可外推为你同样看到 8%→40% 就等于下一组本地小模型也能在组合题上选对，或说明已经写入提示词就等于工具选择已门禁，或本地已经能跑就等于已门禁。",
+      "能把「可写成同时检查有无说明时的正答率、清单外名字次数、难题有没有不升反降」与「必须人完成的题目与导流链」拆开。",
+      "为把「本地小模型已经能跑」或「说明已经写入提示词」当成工具选择已门禁，以及只看平均正答率、不看难题是否下降提供提问清单。",
+    ],
+    caveats: [
+      "8%→40%、93/168、Lv1 7%→76%、Lv4 17%→6%、Gemma 25%／Sonnet 65%，均为作者自述；测的是自编 24 题、temperature 0／seed 42、每题 1 次，不是公开基准的多次平均；Qwen3.5 4B 的「不用道具」写的是 23 题中 21 题；说明是作者按原作整理的 27 件，不是官方设定全文。GTX 1080 上 vLLM 没能用，不能写成任意推理引擎都可复现。",
+      "正文 3 条链均为 Zenn 配图，未见作者产品／站点硬导流可列入可达。源页作者卡亦无网站、GitHub、X。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / koheidisney），不是 Ollama、Anthropic 或任何模型官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "本地工具选择须先按同一批题报有无说明的正答率",
+        body: `你是资深 Agent 本地工具选择教练。只根据用户边界写门禁，不要编造工具选择已门禁。
+
+现在是不是约同一批题要同时记下有无说明时的正答率：{{whether_about_with_and_without_docs}}
+是不是约清单外名字次数要单独记账：{{whether_about_invented_names}}
+是不是约难题有没有不升反降要分开报：{{whether_about_hard_drop}}
+
+输出 Markdown：
+1. 为什么「本地小模型已经能跑」或「说明已经写入提示词」不能写成工具选择已发现已门禁
+2. 应怎样同时检查有无说明时的正答率、清单外名字次数、难题有没有不升反降
+3. 只有一次 8%→40% 账本时，应怎样单独记账，而不是写成下一组模型也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 8%→40% 就等于下一组本地小模型也能在组合题上选对」；禁止把说明已经写入提示词写成已发现已门禁。`,
+      },
+      {
+        title: "百分之八到百分之四十与九十三次造名复盘",
+        body: `报告上可以写不给说明时平均 8%、给齐说明后平均 40%、168 次里 93 次造名、Lv4 从 17% 降到 6%；但这是这块 GTX 1080 与自编 24 题上的一次记录。请写复盘提纲。
+
+现象：{{eight_to_forty_and_ninety_three_invented}}
+
+输出：
+1. 更像模型不会读说明，还是会套说明却在组合题与规则上掉下去、或根本在造清单外的名字
+2. 最小复验顺序（先对照有无说明时的正答率→再看造名次数→再看难题有没有下降→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上说明写进提示词就等于已能选对」，或「本地已经能跑就等于工具选择已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/koheidisney/articles/729394f8be42c5",
+      label: "zenn.dev · 古代のグラボ（GTX 1080）でも動くローカルLLMを動かしてみた",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "806",
+    slug: "knbzyh-7req-217mo-0idea",
+    title: "knbzyh：用樱花 AI Engine 免费档做每日 7 次请求的点子日报——月约 217 次（免费档约 7%）；Kimi-K2.6 在 max_tokens=8000 时因思考也占额度，finish_reason 为 length，点子变成 0 件",
+    summary: "个人（hpscript／knbzyh）；披露用樱花 AI Engine 基础模型免费档（聊天生成每月 3,000 次）做「分析师／策划／技术负责人／工程师／编辑」分工的每日邮件批次：一天 7 次请求，按 31 日计约 217 次，约免费档的 7%；最坏按每步还可再试仍约 1,300 次/月，仍在框内。请求次数在发出前入账，到上限就停。最初用 max_tokens=8000 让 preview/Kimi-K2.6 一次出 5 个点子，却因思考过程也占用同一额度，finish_reason 为 length，JSON 中断，点子变成 0 件。作者还测过苹果 10-K 的体量作对照，但那是侧写，不是这套日报已经撞上模型输入上限。不代你同样见到 0 件，就等于下一档免费请求也不会再把输出额度用完，或一天 7 次已经门禁。",
+    description: "面向已经把「每月 3,000 次免费还很宽裕」或「JSON 已经能解析」当成每日 Agent 批次已门禁、却还没检查思考过程是不是也占用 max_tokens、点子会不会变成 0 件的人：把「Agent 合做免费档日批须同时报每日请求次数、输出被截断次数，以及点子是不是 0 件」写成门禁，区别于费用／Effort 对照，以及低价云 API 通路实测。",
+    categories: [
+      "efficiency",
+      "devtools",
+    ],
+    platforms: [
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/knbzyh/articles/107244226b97ee",
+    sourceLabel: "zenn.dev·knbzyh 实践帖",
+    upvotes: 697,
+    trending: false,
+    tags: [
+      "sakura-AI-Engine",
+      "eval",
+      "batch",
+      "JSON",
+      "free-tier",
+    ],
+    howItWorks: [
+      "粘贴免费档日批边界（是不是约每日请求次数要单独记账、是不是约输出被截断次数要与请求次数分开报、是不是约点子变成 0 件要单独记）以及「绝不可把每月 3,000 次还宽裕或 JSON 已经能解析写成日批已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下一天 7 次、月约 217 次（约 7%），以及 Kimi-K2.6 在 max_tokens=8000 时 finish_reason 为 length、点子变成 0 件",
+      "人工保留 7 次、217 次与 0 件来自哪一次自述；Agent 不代你保证「同样见到 0 件就等于下一档免费请求也不会再把输出额度用完，或一天 7 次已经门禁」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T15:30:46.542+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T06:30:46Z、Asia/Shanghai 2026-11-07 14:30:46；bodyUpdatedAt 同发布；取 published；GET 200（UA MiraBot/1.0））：hpscript／knbzyh 在《無料枠3,000リクエストで「新規事業のAIエージェントチーム」 ─ さくらのAI Engine 5モデルを分担させる日次バッチ》写这一套日批。https://8-k-insights.netlify.app/ GET 200（可达作者趣味站点导流，文内写明是另做的美国股票适时披露日文摘要站）。源页作者卡／简介：https://github.com/cmc-labo GET 200（可达作者 GitHub 导流）；https://x.com/knbzyh GET 200（可达社交主页导流）；https://www.youtube.com/@hpscript GET 200（可达 YouTube 导流）。厂商与一次资料已核、不列入可达导流：https://ai.sakura.ad.jp/sakura-ai/ai-engine 、 https://manual.sakura.ad.jp/api/cloud/portal/ai-engine-inference-api/index.html 、 https://manual.sakura.ad.jp/cloud/ai-engine/03-operation-guide.html 、 https://zenn.dev/hellorusk/articles/de8abd324a1178 、 https://zenn.dev/kota_iizuka/articles/3fec86fb4a11b4 、 https://github.com/dgunning/edgartools 、 https://github.com/mozillazg/python-pinyin 、 https://www.netassist.ne.jp/sakuracloud-labo/archives/5013 均 GET 200；https://api.ai.sakura.ad.jp/v1/models GET 401（需令牌，不当可达）；https://api.ai.sakura.ad.jp/v1 GET 404（不当可达）。作者用苹果 10-K 的字符数做了体量对照，并写长文可能更慢、免费档也可能不够用；本稿不把这段写成这套日报已经撞上模型输入上限。点子变成 0 件，是输出侧 max_tokens 被思考过程占满、finish_reason 为 length。",
+      "与费用／Effort 对照、低价云 API 通路实测不同：本条不是把周限或多社成功率当主线，而是免费档日批的请求次数、输出有没有被截断、点子会不会变成 0 件的门禁。",
+    ],
+    approach: `hpscript（knbzyh）在《無料枠3,000リクエストで「新規事業のAIエージェントチーム」 ─ さくらのAI Engine 5モデルを分担させる日次バッチ》（页内 2026-11-07）写明：用樱花 AI Engine 基础模型免费档（聊天生成每月 3,000 次）做一套无界面的每日邮件，从 systemd timer 每天启动一次，按「分析师／策划／技术负责人／工程师／编辑」分工，模型用 gpt-oss-120b、Kimi-K2.6、Kimi-K2.7-Code、llm-jp-3.1 等。正常路径一天 7 次请求，按 31 日计 217 次，约免费档的 7%；即便各步按「重试 3 次 × JSON 再生成 2 次」估到约 1,300 次/月，仍在框内。次数在发出前入账，失败也计 1 次，到上限就停。整份 Python 约 800 行，把官方 OpenAI SDK 的 base_url 换成樱花。
+
+真正绊住作者的是输出额度，不是「每月 3,000 次看起来还很宽」。最初用 max_tokens=8000 让 preview/Kimi-K2.6 一次出 5 个点子的 JSON，结果 finish_reason 为 length，JSON 中断，点子变成 0 件。翻响应后看到 Kimi 把思考写在 message.reasoning 里，思考也占用同一份 max_tokens。更麻烦的是，截断后有时只剩内侧小对象仍能被解析，流程会带着「点子 0 件」往下走而不抛错。作者后来对思考类模型在截断时把上限加倍再试，并为每一步指定必填键，缺了就再生成 1 次；翻译、评价、MVP、摘要可以空着继续发信，趋势分析与点子生成失败，或额度用尽，才会停。文中另用自己在做的 8-K 日文摘要站，测了苹果最新 10-K 的体量（例如 Item 7 约 17,839 字、概算 4,459 tokens）说明超长文可能更慢、免费档也可能不够用；这是侧写对照，作者没有把这套日报写成已经撞上模型输入上限。Groq「大约 20 万 tokens/日」作者标明是自己测试的体感。
+
+本场景据此输出「Agent 合做免费档日批须同时检查每日请求次数、输出被截断次数、点子是不是 0 件，不能只报每月 3,000 次还宽裕或 JSON 已经能解析」提纲。禁止把 217 次或 0 件写成任意免费档同分布，或把一天 7 次写成已门禁。`,
+    outcomes: [
+      "源披露作者用樱花 AI Engine 免费档做每日邮件批次：正常路径一天 7 次请求，按 31 日计约 217 次（约免费档 7%）；最初让 preview/Kimi-K2.6 在 max_tokens=8000 下一次出 5 个点子，却因思考过程也占用同一额度，finish_reason 为 length，JSON 中断，点子变成 0 件。属作者这一套约 800 行脚本与这次截断上的记录（最坏 1,300 次/月是估算，苹果 10-K 是侧写体量对照，不是这套日报已经撞上模型输入上限），不可外推为你同样见到 0 件就等于下一档免费请求也不会再把输出额度用完，或一天 7 次已经门禁，或每月 3,000 次还宽裕就等于已门禁。",
+      "能把「可写成同时检查每日请求次数、输出被截断次数、点子是不是 0 件」与「必须人完成的站点与导流链」拆开。",
+      "为把「每月 3,000 次还宽裕」或「JSON 已经能解析」当成每日 Agent 批次已门禁，以及只看请求次数、不看思考是否占用输出额度提供提问清单。",
+    ],
+    caveats: [
+      "一天 7 次、月约 217 次（约 7%）、max_tokens=8000 时点子 0 件，均为作者自述；最坏约 1,300 次/月是按重试次数估算，不是已跑满一个月的实表；苹果 10-K 的字符与概算 tokens 是侧写对照，作者用来说明超长文可能更慢、免费档也可能不够用，不是这套日报已经撞上模型输入上限；Groq「大约 20 万 tokens/日」标明是体感。",
+      "https://8-k-insights.netlify.app/ GET 200（可达作者趣味站点导流）。https://github.com/cmc-labo GET 200（可达作者 GitHub 导流）。https://x.com/knbzyh GET 200（可达社交主页导流）。https://www.youtube.com/@hpscript GET 200（可达 YouTube 导流）。厂商与一次资料已核、不列入可达导流：https://ai.sakura.ad.jp/sakura-ai/ai-engine 、 https://manual.sakura.ad.jp/api/cloud/portal/ai-engine-inference-api/index.html 、 https://manual.sakura.ad.jp/cloud/ai-engine/03-operation-guide.html 、 https://zenn.dev/hellorusk/articles/de8abd324a1178 、 https://zenn.dev/kota_iizuka/articles/3fec86fb4a11b4 、 https://github.com/dgunning/edgartools 、 https://github.com/mozillazg/python-pinyin 、 https://www.netassist.ne.jp/sakuracloud-labo/archives/5013 均 GET 200；https://api.ai.sakura.ad.jp/v1/models GET 401（需令牌，不当可达）；https://api.ai.sakura.ad.jp/v1 GET 404（不当可达）。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / knbzyh），不是樱花互联网或各模型官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "免费档日批须先检查思考是否占满输出额度",
+        body: `你是资深 Agent 免费档日批教练。只根据用户边界写门禁，不要编造日批已门禁。
+
+现在是不是约每日请求次数要单独记账：{{whether_about_daily_requests}}
+是不是约输出被截断次数要与请求次数分开报：{{whether_about_length_finish}}
+是不是约点子变成 0 件要单独记：{{whether_about_zero_ideas}}
+
+输出 Markdown：
+1. 为什么「每月 3,000 次还宽裕」或「JSON 已经能解析」不能写成每日 Agent 批次已发现已门禁
+2. 应怎样同时检查每日请求次数、输出被截断次数、点子是不是 0 件
+3. 只有一次 0 件账本时，应怎样单独记账，而不是写成下一档免费请求也必然同分布
+4. 人必须完成的清单（站点与导流链）
+禁止声称「同样见到 0 件就等于下一档也不会再把输出额度用完」；禁止把一天 7 次或每月 3,000 次还宽裕写成已发现已门禁。禁止把「长文会更慢、免费档也可能不够用」写成已经撞上模型输入上限。`,
+      },
+      {
+        title: "七点零零截断与零件点子复盘",
+        body: `报告上可以写一天 7 次、月约 217 次、Kimi-K2.6 在 max_tokens=8000 时点子变成 0 件；但这是这一套脚本与这次截断上的记录。请写复盘提纲。
+
+现象：{{seven_requests_and_zero_ideas}}
+
+输出：
+1. 更像请求次数不够，还是思考过程占满了输出额度、截断后仍能解析出空结果
+2. 最小复验顺序（先对照每日请求次数→再看 finish_reason 与点子件数→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上 JSON 能解析就等于点子已经出来」，或「每月 3,000 次还宽裕就等于日批已经门禁」。不要把侧写的长文体量对照写成已经撞上模型输入上限。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/knbzyh/articles/107244226b97ee",
+      label: "zenn.dev · 無料枠3,000リクエストで「新規事業のAIエージェントチーム」 ─ さくらのAI Engine 5モデルを分担させる日次バッチ",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "807",
+    slug: "yunbow-0drift-229-28of8",
+    title: "yun_bow：Agentic AI Hackathon 一审落选复盘——229 件里一审过 28 件（约 12.2%），自己提交的 3 分 7 秒视频里 Drift 检测是 0 件；1 分 44 秒那一段没打开任何一条变旧的规约",
+    summary: "个人（ゆんぼう／yun_bow）；披露把个人开发的 RuleBranch 交给第 5 回 Agentic AI Hackathon with Google Cloud，10 月 26 日收到一审落选。应募 229 件，一审通过 28 件（约 12.2%），二审 10 件，11 月 5 日官方更正后最终路演 8 件。作者重看提交的 3 分 7 秒视频：有带依据的规则候选和 Draft PR，但拍摄时的 Drift（依赖声明与规约不一致）检测是 0 件；1 分 44 秒那一段只在说明机制，没有打开任何一条变旧的规约。作者写明这是自己的复盘，不是评委打分。不代你同样看到 0 件，就等于下一支演示视频也已经把「能找出变旧规约」拍出来，或参赛结果可外推。",
+    description: "面向已经把「规则候选和 Draft PR 都在视频里」当成「能找出变旧规约」已门禁、却还没按时间轴核对检测件数是不是 0 的人：把「Agent 合做规约漂移演示须同时报检测件数、视频里有没有打开变旧的那一句，以及应募与通过件数」写成门禁，区别于 CLAUDE.md 字节收缩，以及完成条件示例值写入台账。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/yun_bow/articles/2034717b8a6188",
+    sourceLabel: "zenn.dev·yun_bow 实践帖",
+    upvotes: 698,
+    trending: false,
+    tags: [
+      "hackathon",
+      "AGENTS.md",
+      "eval",
+      "RuleBranch",
+      "demo",
+    ],
+    howItWorks: [
+      "粘贴规约漂移演示边界（是不是约检测件数要单独记账、是不是约视频里有没有打开变旧的那一句要分开报、是不是约应募与通过件数只作背景）以及「绝不可把规则候选和 Draft PR 已经入镜写成能找出变旧规约已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下拍摄时 Drift 检测 0 件、3 分 7 秒视频里 1 分 44 秒没打开任何一条变旧规约，以及 229 件中一审 28 件、最终路演 8 件",
+      "人工保留 0 件、3 分 7 秒与 229／28／8 来自哪一次自述；Agent 不代你保证「同样看到 0 件就等于下一支演示也已经把能找出变旧规约拍出来，或参赛结果可以外推」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T23:47:20.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T14:47:20Z、Asia/Shanghai 2026-11-08 22:47:20；bodyUpdatedAt 2026-11-08T23:46:59.172+09:00（略早于发布）→ 同时刻为 UTC 2026-11-08T14:46:59Z、Asia/Shanghai 2026-11-08 22:46:59；取 published；GET 200（UA MiraBot/1.0））：ゆんぼう／yun_bow 在《第5回 Agentic AI Hackathon with Google Cloudの一次審査落選を振り返る》写这次复盘。https://oss-tanbou.dev/ GET 200（可达作者站点导流，简介里的 OSS 探访）。https://github.com/yunbow GET 200（可达作者 GitHub 导流）；https://x.com/yun_bow GET 200（可达社交主页导流）。文内 RuleBranch 相关链均 GET 200，属可达作者仓／演示导流：https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/README.md ；https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/docs/demo/zod-upgrade-e2e-design.md ；https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/docs/design/08-demo-and-evidence.md ；https://github.com/yunbow/rule-branch-demo-workspace-1/pull/2 ；https://zenn.dev/hackathons/google-cloud-japan-ai-hackathon-vol5/projects/39069aac9d9dae ；https://www.youtube.com/watch?v=rtqlTruld_I 。https://zenn.dev/hackathons/google-cloud-japan-ai-hackathon-vol5 GET 200（大赛官方页，一次资料，已核链、不列入可达导流）。作者写明评审画面里的任务与评价值是固定数据，测检测精度要另有记录；提交前用样本单测确认过 Zod 4 的日文报错对不上，但视频里没有把测试输出与找到的旧规约放在一起。",
+      "与 CLAUDE.md 字节收缩、完成条件示例值写入台账不同：本条不是把一份纸的字节数或示例值有没有进台账当主线，而是演示视频里漂移检测是不是 0 件、有没有打开变旧那一句的门禁。",
+    ],
+    approach: `ゆんぼう（yun_bow）在《第5回 Agentic AI Hackathon with Google Cloudの一次審査落選を振り返る》（页内 2026-11-08，正文更新略早于发布）写明：把个人开发的 RuleBranch 交到第 5 回大赛，10 月 26 日收到一审落选。文章依据 2026-11-08 当时的官方公布、公开资料和提交视频，并声明只看得到一审结果，以下判断是自己的看法，不是评委打分。应募 229 件，一审通过 28 件（约 12.2%），二审 10 件，11 月 5 日官方更正后最终路演 8 件。RuleBranch 要从 GitHub 仓库拾规约候选，把已采用的规约与依赖声明对照，有偏移就附上依据给出修订案，批准后再生成 AGENTS.md、CLAUDE.md 等，用 Draft PR 分发。
+
+作者重看提交的 3 分 7 秒视频。1 分 04 秒能看到带依据的规则候选，1 分 24 秒有人审与批准，2 分 04 秒有 Draft PR，拍摄时这份 PR 尚未合并。但 1 分 44 秒的 Drift 段，拍摄时检测是 0 件，那里只在说明机制；作者认为，候选已经出来，并不能证明后来找出了变旧的规约，而自己最可惜的正是这一段没有打开任何一条变旧的规约。评审用的浏览画面为了每次打开都能走同一条路径，任务与评价值是固定数据，作者写明那不能用来测检测精度。演示仓的 PR #2 里，4 个文件从 React 18／Zod 3 的写法改到了 React 19／Zod 4；提交前作者也在样本单测里确认过，只把依赖升到 Zod 4 时，漏填的日文报错会对不上。这些材料没有和「实际找到的旧规约」一起出现在视频里。作者计划下次用「旧规约／人改的规约／RuleBranch 分发的规约」三条件，对同一开发委托做对照，本稿还没有把这次对照跑完。
+
+本场景据此输出「Agent 合做规约漂移演示须同时检查检测件数、视频里有没有打开变旧的那一句，不能只报规则候选和 Draft PR 已经入镜」提纲。禁止把 0 件或 229／28／8 写成任意大赛同分布，或把候选入镜写成「能找出变旧规约」已门禁。`,
+    outcomes: [
+      "源披露作者把 RuleBranch 交给第 5 回 Agentic AI Hackathon，10 月 26 日一审落选：应募 229 件、一审 28 件（约 12.2%）、二审 10 件、更正后最终路演 8 件；提交的 3 分 7 秒视频里有规则候选和 Draft PR，但拍摄时 Drift 检测是 0 件，1 分 44 秒那一段没有打开任何一条变旧的规约。属作者这一次提交与自己重看视频的记录（不是评委打分；浏览画面里的评价值是固定数据；「旧规约／人改／产品分发」三条件对照尚未跑），不可外推为你同样看到 0 件就等于下一支演示也已经把「能找出变旧规约」拍出来，或参赛结果可以外推，或候选与 Draft PR 入镜就等于已门禁。",
+      "能把「可写成同时检查检测件数、视频里有没有打开变旧的那一句」与「必须人完成的仓、视频与导流链」拆开。",
+      "为把「规则候选和 Draft PR 已经入镜」当成能找出变旧规约已门禁，以及只看大赛通过件数、不看演示里实际打开了什么提供提问清单。",
+    ],
+    caveats: [
+      "Drift 检测 0 件、3 分 7 秒、1 分 44 秒未打开变旧规约、229／28／10／8，均为作者自述；通过件数来自 10 月 26 日结果通知栏与 11 月 5 日官方更正，作者写明看不到评委打分；评审浏览画面的任务与评价值是固定数据，不能用来测检测精度；演示 PR #2 未在拍摄时合并；三条件对照是下一步，本稿尚未跑。Zod 4 日文报错对不上，是提交前样本单测的范围。",
+      "https://oss-tanbou.dev/ GET 200（可达作者站点导流）。https://github.com/yunbow GET 200（可达作者 GitHub 导流）。https://x.com/yun_bow GET 200（可达社交主页导流）。https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/README.md GET 200（可达公开仓 README 导流）。https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/docs/demo/zod-upgrade-e2e-design.md GET 200（可达 Zod 升级 E2E 设计导流）。https://github.com/yunbow/rule-branch/blob/30d1e32397bec4b4cb05c0e86b21d427c9f384d5/docs/design/08-demo-and-evidence.md GET 200（可达证据文档导流）。https://github.com/yunbow/rule-branch-demo-workspace-1/pull/2 GET 200（可达演示 Draft PR #2 导流）。https://zenn.dev/hackathons/google-cloud-japan-ai-hackathon-vol5/projects/39069aac9d9dae GET 200（可达提交页导流）。https://www.youtube.com/watch?v=rtqlTruld_I GET 200（可达演示视频导流）。https://zenn.dev/hackathons/google-cloud-japan-ai-hackathon-vol5 GET 200（大赛官方页，一次资料，已核链、不列入可达导流）。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / yun_bow），不是 Google Cloud 或大赛官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "规约漂移演示须先核对检测件数是不是 0",
+        body: `你是资深 Agent 规约漂移演示教练。只根据用户边界写门禁，不要编造能找出变旧规约已门禁。
+
+现在是不是约检测件数要单独记账：{{whether_about_zero_drift}}
+是不是约视频里有没有打开变旧的那一句要分开报：{{whether_about_opened_rule}}
+是不是约应募与通过件数只作背景：{{whether_about_contest_counts_as_background}}
+
+输出 Markdown：
+1. 为什么「规则候选和 Draft PR 已经入镜」不能写成能找出变旧规约已发现已门禁
+2. 应怎样同时检查检测件数、视频里有没有打开变旧的那一句
+3. 只有一次 0 件账本时，应怎样单独记账，而不是写成下一支演示也必然同分布
+4. 人必须完成的清单（仓、视频与导流链）
+禁止声称「同样看到 0 件就等于下一支演示也已经把能找出变旧规约拍出来」；禁止把候选入镜或大赛通过件数写成已发现已门禁。`,
+      },
+      {
+        title: "零件检测与三分七秒视频复盘",
+        body: `报告上可以写拍摄时 Drift 检测 0 件、3 分 7 秒视频里 1 分 44 秒没打开变旧规约、229 件里一审 28 件后落选；但这是这一次提交与自己重看视频的记录。请写复盘提纲。
+
+现象：{{zero_drift_and_three_minute_seven}}
+
+输出：
+1. 更像产品当时就不会检测，还是会检测但拍摄时是 0 件、视频只说明了机制
+2. 最小复验顺序（先对照检测件数→再看有没有打开变旧的那一句→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「再加上候选和 Draft PR 入镜就等于已经找出变旧规约」，或「一审通过件数可以外推到下一次参赛」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yun_bow/articles/2034717b8a6188",
+      label: "zenn.dev · 第5回 Agentic AI Hackathon with Google Cloudの一次審査落選を振り返る",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
