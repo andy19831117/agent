@@ -60773,6 +60773,421 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
       date: "2026-11-05",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "828",
+    slug: "25h-3of3-2r-1jp",
+    title: "25h：把 Claude Code 写的计划交给两个没在那场对话里的子代理读，并对每条指摘做裁决——用埋了 3 处缺陷的样本计划核对。英文 plugin 版在 2026-10-19（2.1.303）和 10-20（2.1.304）两次里，两体都点名了 3 处，计划文件也补上了两节；10-19 第一次检查曾把两体都记成 0 条，是因为只读到了约 350 字节的回执而不是报告正文。2026-10-30 用本文日文定义与步骤走了 1 次，找「不该通过的理由」的那一侧点名了 3 处。各次都是 1 个样本",
+    summary: "个人（25h）；披露用两个子代理读计划文件：adversarial-reviewer（Sonnet，找不该通过的理由）与 best-path-reviewer（Opus，找更好的结论），在同一条消息里同时启动，只传计划与资料的路径，计划是怎么写出来的不传。写计划的会话对每条指摘做 adopt／rebut／defer／escalate 之一，并写回计划文件末尾的两节。作者写明没有测「这样是否比只请写计划的那一侧再看一遍能找出更多问题」，也没有测把两个模型分开是否真的会少漏。用来自检的是一份埋了 3 处缺陷的样本计划（校验和并未写在脚本里、按 40 GB／20 Mbit/s 在 2 小时维护窗口内传完并不成立、不可逆步骤写在首次跑通之前）。英文 plugin 版在 2026-10-19（Claude Code 2.1.303）和 10-20（2.1.304）各跑 1 次，两体都点名了 3 处，两节都补上了；10-19 第一次检查曾记成 0 条，是检查脚本只读到了约 350 字节的回执。2026-10-30 用本文日文定义与步骤 3 的原文走了 1 次，找「不该通过的理由」的那一侧点名了 3 处，两节也补上了。plugin 文件形检查在 10-30 通过，实物检查在表中两次之后于 10-31 用 2.1.314 也通过。不代你同样看到 3/3，就等于下一份计划也会被点名，或这套办法已经比「再请写计划的人看一遍」更有效。",
+    description: "面向已经把「子代理读过计划」或「检查脚本报了 0 条」当成审查已经做完、却还没把「点名的是不是那 3 处埋好的缺陷、读到的是不是报告正文、以及有没有拿「只请本人再看一遍」做过对照」分开记的人：把「计划须交给当时不在场的子代理读，并且每条指摘都要留下裁决；一次 3/3 不能写成已经测准」写成门禁，区别于只在同一场对话里请本人复读的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/25h/items/3747844156f116237086",
+    sourceLabel: "qiita.com · Claude Code が書いた計画を、書いた本人でなく、会話に居なかったサブエージェント 2 体に読ませ、指摘 1 件ずつに裁きを付ける",
+    upvotes: 719,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "subagents",
+      "plan-review",
+      "eval",
+      "hooks",
+    ],
+    howItWorks: [
+      "粘贴 Agent 计划审查的对照边界（是不是约同一份埋了 3 处缺陷的样本计划要把 2026-10-19、10-20 的英文 plugin 版与 10-30 的日文定义分开记，是不是约 10-19 第一次把两体记成 0 条只是检查脚本没读到报告正文，是不是约作者没有测过「比只请本人再看一遍能找出更多」或「把两个模型分开会更少漏」）以及「绝不可把一次 3/3 写成已经测准」纪律",
+      "Agent 按实践帖输出：应怎样同时记下两个子代理是否在同一条消息里启动、计划文件末尾是否补上了两节、报告是否点名了那 3 处缺陷，以及检查脚本读到的是报告正文还是只有约 350 字节的回执",
+      "人工保留这一次样本计划、两体的报告与计划文件上的裁决节；Agent 不代你保证「同样看到 3/3 就等于下一份计划也会被点名，或这套办法已经比只请写计划的人再看一遍更有效，或把模型分开就已经被证明会更少漏」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-09T21:12:52.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T12:12:52Z、Asia/Shanghai 2026-11-09 20:12:52；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：25h 在《Claude Code が書いた計画を、書いた本人でなく、会話に居なかったサブエージェント 2 体に読ませ、指摘 1 件ずつに裁きを付ける》写用两个子代理读样本计划、并对每条指摘做裁决。作者卡 website／GitHub／X 为空。可达导流：https://github.com/noes-25h/agent-kit GET 200（文内 MIT 插件仓）；https://github.com/noes-25h/agent-kit/blob/main/plugins/plan-review/README.ja.md GET 200（文内 plan-review 说明）；https://mujo.25h.life/ja/?utm_source=qiita&utm_medium=article&utm_campaign=plan-review#code GET 200（文内产品页，带 UTM；跟随至 https://mujo.25h.life/ja/ 亦 GET 200）。正文无配图。文中 backup.example.com 是样本计划里的示例地址，未作为可达链去核。",
+      "与近批权限规则、技能是否被读到不同：本条不是 deny／allow 或技能发火，而是计划写完之后，两个当时不在场的子代理有没有点名样本里埋好的 3 处缺陷，以及检查脚本第一次报 0 条是不是没读到报告正文。作者写明没有测「比只请本人再看一遍能找出更多」，也没有测把两个模型分开的效果。platforms 只填实践里用到且枚举内的 claude（Sonnet、Opus）。",
+    ],
+    approach: `25h 在《Claude Code が書いた計画を、書いた本人でなく、会話に居なかったサブエージェント 2 体に読ませ、指摘 1 件ずつに裁きを付ける》（JSON-LD datePublished 2026-11-09）写明：计划往往是同一场对话里的 Claude 写的，再请「这个计划怎么样」时，读者仍是写它的那一侧。于是在 \`.claude/agents/\` 里放两个定义：adversarial-reviewer（model 为 sonnet、effort 为 high，找不该通过的理由）与 best-path-reviewer（opus、high，找更好的结论）。两者都去掉 Agent／Write／Edit／NotebookEdit，保留 Read、Grep、Glob、Bash 与 WebFetch。在写计划的那场会话里，用同一条消息同时启动这两者，只传计划文件与必须对照的资料路径，不传计划是怎么写出来的。返回的指摘须附「这条指摘在什么条件下会不成立」；写计划的那一侧对每条做 adopt、rebut、defer 或 escalate，并在计划文件末尾补上两节，节标题里写下实际跑到的 model 与 effort。作者写明，定义里的 model／effort 只是缺省值，调用时若再传一次，或以环境变量强制，就会被盖掉，所以步骤 3 要求不要在启动时再传这些值。
+
+用来自检的是一份埋了 3 处缺陷的样本：计划声称脚本会在上传后做校验和，但 backup.sh 里只有 tar、curl 与 echo；按约 40 GB、20 Mbit/s 推算约 4.4 小时，进不了 02:00–04:00 的 2 小时维护窗口；步骤 3 先删掉旧的 cron 与本地归档，首次跑新作业却写在步骤 4。点名与否按「报告里是否同时出现缺陷对象和表示不对的用语」来数。英文 plugin 版（frontmatter 的 model、effort、tools 与步骤 2 相同，正文是英文）在 2026-10-19（Claude Code 2.1.303）和 10-20（2.1.304）各跑 1 次，两次都是同一条消息启动、没有在启动时再传 model／effort，两体都点名了 3 处，两节都补上了。10-19 第一次把实物检查跑通时，检查脚本曾把两体都记成 0 条；作者后来发现，2.1.303 里子代理的报告是从另一个口返回的，脚本当时只读到了约 350 字节的回执。改成先读报告正文后再跑，才得到表里的 3 处。2026-10-30 用本文的日文定义与步骤 3 的原文，在同一样本上走了 1 次：两体仍是同一条消息启动、启动时没有再传 model／effort，计划补上了两节，找「不该通过的理由」的那一侧点名了 3 处。作者写明以上各次都是 1 个样本。plugin 的文件形检查在 10-30 通过；实物检查在表中两次之后，于 10-31 用 Claude Code 2.1.314 也通过。文末把这一套收成 MIT 许可的 plan-review 插件，放在 GitHub，并链到 mujo 产品页。本文由 25h 的 AI（Claude）撰写。`,
+    outcomes: [
+      "源披露作者用埋了 3 处缺陷的样本计划，让两个当时不在场的子代理在同一条消息里同时读计划文件，并对每条指摘做裁决：英文 plugin 版在 2026-10-19（2.1.303）和 10-20（2.1.304）两次里两体都点名了 3 处、两节都补上了；10-19 第一次检查曾把两体记成 0 条，是因为只读到了约 350 字节的回执。2026-10-30 用本文日文定义走了 1 次，找「不该通过的理由」的那一侧点名了 3 处。这是这一份样本计划上的几次各 1 个样本的记录，不可外推成下一份计划、其他版本或其他定义也会得到同一组 3/3，也不能写成已经证明这套办法比只请写计划的人再看一遍更有效。",
+      "能把「可写成两个当时不在场的子代理读了计划文件、每条指摘都留下了裁决，并且检查脚本读到的是报告正文」与「必须人完成的题目与导流链」拆开。",
+      "为把「子代理读过」或「检查脚本报了 0 条」当成审查已经做完，以及把一次 3/3 写成已经测准提供提问清单。",
+    ],
+    caveats: [
+      "3/3、两节都补上，以及 10-19 第一次记成 0 条，均为作者自述。英文 plugin 版与日文定义不是同一份文本，不能把 10-19、10-20、10-30 加成「同一套定义跑了 3 次」。点名是按用词是否同时指到缺陷对象和「不对」来数的，不是人工逐句合议。作者写明没有测「比只请本人再看一遍能找出更多」，也没有测把两个模型分开是否真的会少漏。Bash 仍留在工具里，正文里禁止写入并不能从工具层面拦住。定义里的 model／effort 可被调用或环境变量盖掉。",
+      "可达导流：https://github.com/noes-25h/agent-kit GET 200；https://github.com/noes-25h/agent-kit/blob/main/plugins/plan-review/README.ja.md GET 200；https://mujo.25h.life/ja/?utm_source=qiita&utm_medium=article&utm_campaign=plan-review#code GET 200（跟随至 https://mujo.25h.life/ja/ 亦 GET 200）。作者卡 website／GitHub／X 为空，这三处是正文里的插件仓与产品页。正文无配图。",
+      "上面写的是个人实践帖（qiita.com / 25h），也不是 Anthropic 的官文简报。platforms 只填 claude。",
+    ],
+    prompts: [
+      {
+        title: "计划须先按不在场的子代理与报告正文核对",
+        body: `你是资深 Agent 计划审查验收教练。只根据用户边界写门禁，不要编造审查已经测准。
+
+现在是不是约同一份埋了 3 处缺陷的样本计划要把 2026-10-19、10-20 的英文 plugin 版与 10-30 的日文定义分开记：{{whether_about_same_sample_separate_english_and_japanese}}
+是不是约 10-19 第一次把两体记成 0 条只是检查脚本没读到报告正文：{{whether_about_350_byte_ticket_miscount}}
+是不是约作者没有测过「比只请本人再看一遍能找出更多」或「把两个模型分开会更少漏」：{{whether_about_unmeasured_comparisons}}
+
+输出 Markdown：
+1. 为什么「子代理读过计划」或「检查脚本报了 0 条」不能写成审查已经做完
+2. 应怎样同时检查两个子代理是否在同一条消息里启动、计划文件是否补上了两节、报告是否点名了那 3 处缺陷，以及读到的是不是报告正文
+3. 只有几次各 1 个样本的 3/3 时，应怎样单独记账，而不是写成下一份计划也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 3/3 就等于下一份计划也会被点名，或这套办法已经比只请写计划的人再看一遍更有效，或把模型分开就已经被证明会更少漏」。`,
+      },
+      {
+        title: "三处缺陷与零条复盘",
+        body: `报告上可以写英文 plugin 版在 2026-10-19 和 10-20 两次里两体都点名了 3 处，以及 10-30 日文定义上找「不该通过的理由」的那一侧点名了 3 处；但各次都是这一份样本计划上的 1 个样本。请写复盘提纲。
+
+现象：{{three_of_three_and_zero_miscount}}
+
+输出：
+1. 更像审查办法已经测准，还是只是这一份埋了 3 处缺陷的样本上点名对上了，而「比只请本人再看一遍更好」并没有测过
+2. 最小复验顺序（先确认读到的是报告正文而不是约 350 字节的回执→再看两体是否同时启动、两节是否补上→再看点名的是不是那 3 处→再决定能不能对外说已测准）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「检查脚本报 0 条就等于子代理什么都没找到」，或「一次 3/3 就等于以后都会 3/3」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/25h/items/3747844156f116237086",
+      label: "qiita.com · Claude Code が書いた計画を、書いた本人でなく、会話に居なかったサブエージェント 2 体に読ませ、指摘 1 件ずつに裁きを付ける",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "829",
+    slug: "shiro-110ok-0oom-1934",
+    title: "shiroemons：用 Codex 与 Claude 在 20 天里提交 1,934 次，做成 GCS 模拟器 gcs-mimic 0.16.0。内存上限 128 MiB、无 swap 时，1 GiB 收发 110 次全部字节一致、OOM 0 次、RSS 最大 14.9 MiB；另一次测量 18 次里有 3 次容器 OOM。自己做的 SDK 记分是 gcs-mimic 100、fake-gcs-server 39.8、gcp-storage-emulator 37.7、floci-gcp 77.6；功能台账 310 项里 IMPLEMENTED 只有 1 项。作者写明 100 分是自己出题自己满分",
+    summary: "个人（shiroemons／シロ）；披露用 Codex 与 Claude 重写一个本地 GCS 模拟器。第一笔提交在 2026-10-21，v0.16.0 在 11-09，20 天里 1,934 次提交。内存上限 256 MiB、无 swap 的容器里只传 1 次时，100 MiB 与 1 GiB 都会让 fake-gcs-server 因 OOM 退出，gcs-mimic 成功且字节一致。另把上限收到 128 MiB 后，1 GiB 收发 110 次全部字节一致，OOM 0 次，RSS 最大 14.9 MiB。再另一次测量里，18 次中有 3 次容器 OOM，当时 RSS 约 14–16 MiB，约 120 MiB 是等着写回磁盘的缓存。strict 模式下，匿名读私有桶、改 1 个字的签名、过期签名，gcs-mimic 分别返回 401／403／400，fake-gcs-server 都是 200。作者把 fake-gcs-server 当时未关闭的 Issue 98 件和除 dependabot 以外的 PR 21 件都实际发请求对过，未对应的还剩 7 件；向真实 Cloud Storage 问过、记下的 73 个例子全部一致。2026-11-09 在一台 Apple silicon Mac 的 Docker Desktop 上（还有别的容器在跑）测 SDK 记分与速度、内存：gcs-mimic 100、fake-gcs-server 39.8、gcp-storage-emulator 37.7、floci-gcp 77.6。作者写明 100 分是用自己出的题、改掉失败用例后拿到的满分，不是第三方认证，也不表示与 Google 完全兼容；功能台账 310 项里 IMPLEMENTED 只有 1 项、PARTIAL 106、NOT_STARTED 203。10 MiB 下载在与 fake-gcs-server 相比的 8 种情形里有 7 种更慢。不代你同样看到 110 次 0 次 OOM 或 100 分，就等于别的机器上也不会撑爆，或已经与 Google 完全兼容。",
+    description: "面向已经把「模拟器能上传、SDK 记了 100 分」当成可以代替真桶验收、却还没把 128 MiB 上限下的 110 次与另一次 18 次里 3 次 OOM、以及「自己出题的 100 分」和「台账里 IMPLEMENTED 只有 1 项」分开记的人：把「本地模拟器的内存与权限须按同一次测量条件记账，不能把自测满分写成已经与 Google 完全兼容」写成门禁，区别于只看一次上传成功的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/shiroemons/articles/e46ad04431fa25",
+    sourceLabel: "zenn.dev · GCSエミュレーター「gcs-mimic」をAIとRustで作った話",
+    upvotes: 720,
+    trending: false,
+    tags: [
+      "gcs-mimic",
+      "emulator",
+      "Codex",
+      "Claude",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 模拟器对照的边界（是不是约内存上限 128 MiB 下 1 GiB 收发 110 次、OOM 0 次、RSS 最大 14.9 MiB 要与另一次 18 次里 3 次容器 OOM 分开记，是不是约 256 MiB 上限下只传 1 次的 100 MiB／1 GiB 对照不能写成那 110 次，是不是约 SDK 100 分是自己出题改掉失败用例后的满分、台账 310 项里 IMPLEMENTED 只有 1 项）以及「绝不可把自测 100 分写成已经与 Google 完全兼容」纪律",
+      "Agent 按实践帖输出：应怎样同时记下测量时的内存上限、是否无 swap、对象大小与次数、RSS 与 OOM 次数，以及 SDK 记分的出题方和功能台账的口径",
+      "人工保留这一版 0.16.0 在 2026-11-09／11-10 的测量记录、对照表与台账；Agent 不代你保证「同样看到 110 次 0 次 OOM 或 100 分，就等于别的机器上也不会撑爆，或已经与 Google 完全兼容，或 NOT_STARTED 的 203 项也可以当已经实现」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T13:00:05.301+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T04:00:05Z、Asia/Shanghai 2026-11-10 12:00:05；bodyUpdatedAt 2026-11-10T11:54:40.605+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：shiroemons（シロ）在《GCSエミュレーター「gcs-mimic」をAIとRustで作った話》写用 Codex 与 Claude 做成模拟器后的测量。作者卡 website 为空。可达导流：https://github.com/shiroemons GET 200；https://x.com/shiroemons GET 200；https://github.com/shiroemons/gcs-mimic GET 200（文内产品仓）及仓内说明／证据页均 GET 200：https://github.com/shiroemons/gcs-mimic/blob/main/README.md 、https://github.com/shiroemons/gcs-mimic/blob/main/examples/strict-local/README.md 、https://github.com/shiroemons/gcs-mimic/blob/main/docs/en/evidence/product-comparison-0.16.0.md 、https://github.com/shiroemons/gcs-mimic/tree/main/sdk-scorecard 、https://github.com/shiroemons/gcs-mimic/blob/main/sdk-scorecard/results/2026-11-09/summary.md 、https://github.com/shiroemons/gcs-mimic/blob/main/docs/ja/rails-active-storage.md 、https://github.com/shiroemons/gcs-mimic/blob/main/docs/ja/migrate-from-fake-gcs-server.md 。配图 1 张 GET 200（不列入产品导流）：https://raw.githubusercontent.com/shiroemons/gcs-mimic/main/docs/assets/micket.png 。一次资料已核、不列入可达导流：https://github.com/fsouza/fake-gcs-server 、https://github.com/fsouza/fake-gcs-server/issues/669 、https://github.com/fsouza/fake-gcs-server/issues/1098 、https://github.com/fsouza/fake-gcs-server/issues/1362 、https://github.com/fsouza/fake-gcs-server/issues/2354 、https://github.com/fsouza/fake-gcs-server/pull/2056 、https://github.com/fsouza/fake-gcs-server/issues/1076 、https://github.com/fsouza/fake-gcs-server/issues/1221 、https://github.com/fsouza/fake-gcs-server/issues/2254 、https://github.com/fsouza/fake-gcs-server/issues/2019 、https://github.com/fsouza/fake-gcs-server/issues/1330 、https://github.com/fsouza/fake-gcs-server/issues/2095 、https://github.com/fsouza/fake-gcs-server/issues/1040 ，以及 https://github.com/oittaa/gcp-storage-emulator 、https://github.com/floci-io/floci-gcp ，均 GET 200。",
+      "与近批费用日志、权限规则不同：本条不是用量怎么记账，而是本地 GCS 模拟器在给定内存上限下会不会先自己倒下、该拒绝的请求会不会真的拒绝，以及自己出的 SDK 记分能不能写成已经与 Google 完全兼容。110 次 0 次 OOM 只接在 128 MiB 上限、1 GiB 收发这一组；3/18 次 OOM 是另一次测量，不要写成同一组。platforms 填实践里用到且枚举内的 claude 与 chatgpt（Codex）；本文由 Claude Code／Claude Opus 5.5 根据作者备忘写成，并写明实际跑过代码。Google Cloud Storage 枚举里没有对应值，不硬凑。",
+    ],
+    approach: `shiroemons（シロ）在《GCSエミュレーター「gcs-mimic」をAIとRustで作った話》（页内 publishedAt 2026-11-10，更新早于发布）写明：本地开发与 CI 需要一个假装 GCS 的模拟器，作者以前用 fake-gcs-server，但大文件会先把内容全部读进内存再写盘，容易把容器撑爆；签名与过期也不查，私有桶谁都能读。于是用 Codex 与 Claude 另写了 Rust 版 gcs-mimic。第一笔提交在 2026-10-21，v0.16.0 在 11-09，20 天里 1,934 次提交。本文由 Claude Code／Claude Opus 5.5 根据作者备忘写成，并写明实际读过代码、跑过验证。
+
+内存上限 256 MiB、无 swap 的容器里只传 1 次时，100 MiB 与 1 GiB 都会让 fake-gcs-server 因 OOM 退出，gcs-mimic 成功且字节一致；可恢复上传也一样。gcs-mimic 把文件内容按不超过 64 KiB 切开再流。把上限收到 128 MiB 后，1 GiB 收发 110 次全部字节一致，OOM 0 次，进程 RSS 最大 14.9 MiB。另一次测量里，18 次中有 3 次容器 OOM：当时 RSS 约 14–16 MiB，上限里约 120 MiB 是等着写回磁盘的缓存，和别的重活叠在一起、磁盘卡住时会出现。权限方面，默认 permissive 与 fake-gcs-server 一样会放行；打开 GCS_MIMIC_AUTH_MODE=strict 后，匿名读私有桶、改 1 个字的签名、过期签名，gcs-mimic 分别返回 401、403、400，fake-gcs-server 都是 200；未允许的 CORS 预检，一侧不给许可，一侧返回 *。作者把 fake-gcs-server 在 2026-11-10 时未关闭的 Issue 98 件和除 dependabot 以外的 PR 21 件都实际发请求对过，未对应的还剩 7 件；文档里没有的行为则拿同样的请求去问真实 Cloud Storage，记下的 73 个例子全部一致。
+
+2026-11-09 在一台 Apple silicon Mac 的 Docker Desktop 上（还有别的容器在跑）测 SDK 记分与速度、内存，对照版本是 gcs-mimic 0.16.0、fake-gcs-server 1.56.1、gcp-storage-emulator v2026.07.19、floci-gcp 0.12.0。记分是作者自建的 sdk-scorecard，用 Go、Ruby、Node.js、PHP、Python、Java、.NET、Rust 的官方 SDK 跑同一组操作：gcs-mimic 100、fake-gcs-server 39.8、gcp-storage-emulator 37.7、floci-gcp 77.6。作者写明 100 分是用自己出的题、改掉失败用例后拿到的满分，不是第三方认证，也不表示与 Google 完全兼容。功能台账按「每个字段、每种错误都与 Google 一致」来记，310 项里 IMPLEMENTED 只有 1 项、PARTIAL 106、NOT_STARTED 203。压缩镜像分别是 8.4 MB、25.4 MB、48.8 MB、67.2 MB；空闲内存 9.9、33.9、27.3、103.6 MiB，其中 floci-gcp 的 103.6 含映射进内存的二进制，cgroup 计为 18.8 MiB；读完约 1,000 个对象后是 29.3、57.2、32.0、320.0 MiB。10 MiB 下载在与 fake-gcs-server 相比的 8 种情形里有 7 种更慢；内部缓存在约 1,000 个对象后溢出时，100 KiB 对象上 gcs-mimic 约每秒 7,700–8,400 次，fake-gcs-server 约 30,000–58,000 次。其余实机核对在 2026-11-10 用 Docker 做；Rails 8.1.4.1 上试过经 Rails 的上传与下载、带长度范围检查的直传，以及未允许的 CORS 会失败。`,
+    outcomes: [
+      "源披露作者用 Codex 与 Claude 做成 gcs-mimic 0.16.0，并在给定条件下对照测量：内存上限 128 MiB 时 1 GiB 收发 110 次全部字节一致、OOM 0 次、RSS 最大 14.9 MiB；另一次测量 18 次里有 3 次容器 OOM；自己做的 SDK 记分是 100／39.8／37.7／77.6，功能台账 310 项里 IMPLEMENTED 只有 1 项。这是 2026-11-09／11-10 在一台 Apple silicon Mac 的 Docker Desktop（以及文中写明的容器上限）上的记录，不可外推成别的机器、别的版本或其他负载也不会撑爆，也不能把自测 100 分写成已经与 Google 完全兼容。",
+      "能把「可写成在写明的内存上限与次数下核对过 OOM、字节一致、权限返回码和自建 SDK 记分」与「必须人完成的题目与导流链」拆开。",
+      "为把「能上传」或「记了 100 分」当成已经可以代替真桶验收，以及把 110 次与 3/18 次 OOM 写成同一次测量提供提问清单。",
+    ],
+    caveats: [
+      "110 次 0 次 OOM、14.9 MiB，与 18 次里 3 次 OOM，是两组测量，不要混成一次。256 MiB 上限下只传 1 次的 100 MiB／1 GiB 对照，也不能写成那 110 次。SDK 100 分是作者自己出题、改掉失败用例后的满分；台账 310 项里 IMPLEMENTED 只有 1 项。floci-gcp 空闲 103.6 MiB 含映射进内存的二进制，cgroup 是 18.8 MiB，不要只写其中一个。速度与内存表是 2026-11-09 在一台还跑着别的容器的 Mac 上测的，作者写明不要当成排行榜。1,934 次提交是 10-21 到 11-09 这 20 天的仓库记录。",
+      "可达导流：https://github.com/shiroemons GET 200；https://x.com/shiroemons GET 200；https://github.com/shiroemons/gcs-mimic GET 200 及仓内说明／证据页（完整 URL 见 tips[0]）均 GET 200。配图 1 张 GET 200，不列入产品导流。fake-gcs-server、gcp-storage-emulator、floci-gcp 的仓与 Issue／PR 已核、不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / shiroemons），也不是 Google Cloud 的官文简报。platforms 填 claude 与 chatgpt（Codex）；Google Cloud Storage 枚举里没有对应值，不硬凑。本文由 Claude Code／Claude Opus 5.5 根据作者备忘写成。",
+    ],
+    prompts: [
+      {
+        title: "模拟器须先按同一次测量的内存上限与记分口径核对",
+        body: `你是资深 Agent 模拟器验收教练。只根据用户边界写门禁，不要编造已经与真桶完全兼容。
+
+现在是不是约内存上限 128 MiB 下 1 GiB 收发 110 次、OOM 0 次要与另一次 18 次里 3 次 OOM 分开记：{{whether_about_110_and_3of18_separate}}
+是不是约 256 MiB 上限下只传 1 次的对照不能写成那 110 次：{{whether_about_single_upload_not_110}}
+是不是约 SDK 100 分是自己出题改掉失败用例后的满分、台账 310 项里 IMPLEMENTED 只有 1 项：{{whether_about_self_scored_100}}
+
+输出 Markdown：
+1. 为什么「能上传」或「记了 100 分」不能写成已经可以代替真桶验收
+2. 应怎样同时检查测量时的内存上限、次数、OOM 与 RSS，以及记分的出题方和功能台账口径
+3. 只有一台 Mac、一组 110 次和另一次 18 次时，应怎样单独记账，而不是写成别的机器也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 110 次 0 次 OOM 或 100 分，就等于别的机器上也不会撑爆，或已经与 Google 完全兼容，或 NOT_STARTED 的 203 项也可以当已经实现」。`,
+      },
+      {
+        title: "一百一十次与一百分复盘",
+        body: `报告上可以写 128 MiB 上限下 1 GiB 收发 110 次全部字节一致、OOM 0 次、RSS 最大 14.9 MiB，以及自己做的 SDK 记分 100；但这是 2026-11-09／11-10 在文中条件下的记录。请写复盘提纲。
+
+现象：{{one_ten_zero_oom_and_self_score}}
+
+输出：
+1. 更像已经与 Google 完全兼容，还是只是这一组测量上字节对上了，而 100 分是自己出题改出来的
+2. 最小复验顺序（先分开 110 次与 3/18 次 OOM→再看内存上限与是否无 swap→再看记分口径和台账 IMPLEMENTED 只有 1 项→再决定能不能对外说已兼容）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「自测 100 分就等于第三方认证」，或「110 次没有 OOM 就等于 18 次里那 3 次也不会再发生」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shiroemons/articles/e46ad04431fa25",
+      label: "zenn.dev · GCSエミュレーター「gcs-mimic」をAIとRustで作った話",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "830",
+    slug: "marvel-2100r-18d-1102",
+    title: "marvelousu：把 Claude Code／Codex 的子代理换成月 10 美元的 OpenCode Go 与 Command Code——在一台桌面上统计 2026-10-21 到 11-07 共 18 天：Go 554 个会话、1,025 次请求，第 18 天碰到月上限；Command Code 4 天 189 个会话、1,102 次请求，第 4 天碰到周上限。两档合计约 2,100 次。OpenCode 按 token 换算的费用约 40 美元与约 43 美元，不是账单实付",
+    summary: "个人（marvelousu／Tom）；披露把原先交给 Claude Code／Codex 子代理的实现与范围明确的调查，改从 OpenCode 的 HTTP API 派出。模型用 DeepSeek V4.1 Flash，推理固定为 high。统计的是常用那一台桌面上、OpenCode 自己保存的记录，时间窗是 2026-10-21 到 11-07 共 18 天。OpenCode Go：18 天、554 个会话、1,025 次请求，输入（不含缓存读取）约 8,180 万、缓存读取约 44.5 亿、输出约 1,070 万，换算费用约 40 美元；途中加过 5 美元 Extra Usage，第 18 天（11-07）碰到月上限。Command Code 从 11-04 起用 GOAT 档：4 天、189 个会话、1,102 次请求，输入约 6,660 万、缓存读取约 66.5 亿、输出约 940 万，换算费用约 43 美元，第 4 天（11-07）碰到周上限，当时月额度大约还剩 50%。两档请求合计 2,127 次，文中写作约 2,100 次。期间工具调用约 6.8 万次（壳约 3.2 万、编辑约 1.6 万、读取约 1.3 万）。换算费用是 OpenCode 按 token 量显示的值，作者写明与账单、各服务自己数的额度消耗并不一致。作者感觉质量没有问题，但写明当时用了容易碰到上限的用法（high、还把游戏模拟的并行尽量开满），不能把「两个月 10 美元档刚好够用一个月」写成已经测过的普通用法。Qoder 只确认过在 2 周、300 Credits 的 Pro 试用里能做实现，后来因为自写脚本改写了模型把 300 Credits 用完，11 月几乎没用，不能拿来和 Go／Command Code 比额度。曾让 Grok Bot 也能启动同一套子代理，后来停了。不代你同样看到约 2,100 次或 18 天碰到月上限，就等于普通用法也会在同一天用完，或换算的 40 美元、43 美元已经等于实付。",
+    description: "面向已经把「月 10 美元档用了约 3 周、合计约 2,100 次」或「感觉质量没有问题」当成额度与效果都已经查清、却还没把 Go 的 18 天／1,025 次与 Command Code 的 4 天／1,102 次、以及换算费用和账单实付分开记的人：把「子代理换成低价月档后，请求次数与碰到上限的天数须按档分记，不能把换算费用写成实付，也不能把容易碰上限的用法外推成普通用法」写成门禁，区别于只看一个合计次数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "grok",
+    ],
+    sourceUrl: "https://zenn.dev/marvelousu/articles/subscription-agent-workers",
+    sourceLabel: "zenn.dev · 月10ドルのコーディングエージェントで Claude Code のサブエージェントを置き換える",
+    upvotes: 721,
+    trending: false,
+    tags: [
+      "OpenCode",
+      "Command Code",
+      "subagents",
+      "quota",
+      "Codex",
+    ],
+    howItWorks: [
+      "粘贴 Agent 月档额度对照的边界（是不是约同一台桌面、2026-10-21 到 11-07 这 18 天要把 Go 的 1,025 次／第 18 天碰到月上限与 Command Code 的 1,102 次／第 4 天碰到周上限分开记，是不是约 40 美元与 43 美元只是 OpenCode 按 token 换算的显示值而不是账单实付，是不是约 high 与把模拟并行开满的用法不能写成已经测过的普通用法）以及「绝不可把约 2,100 次或 18 天碰到上限写成普通用法也会同样用完」纪律",
+      "Agent 按实践帖输出：应怎样同时记下各档的会话数、请求次数、缓存读取与不含缓存的输入、碰到的是月上限还是周上限，以及换算费用与实付不是同一件事",
+      "人工保留这一台桌面在这 18 天的 OpenCode 记录；Agent 不代你保证「同样看到约 2,100 次或 18 天碰到月上限，就等于普通用法也会在同一天用完，或换算的 40 美元、43 美元已经等于实付，或质量已经测准」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T13:30:48.644+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T04:30:48Z、Asia/Shanghai 2026-11-10 12:30:48；bodyUpdatedAt 2026-11-10T13:28:19.291+09:00（略早于发布）；取 published；GET 200（UA MiraBot/1.0））：marvelousu（Tom）在《月10ドルのコーディングエージェントで Claude Code のサブエージェントを置き換える》写 18 天里两档月费的请求次数与碰到上限的天数。可达导流：https://maveroni.com/ GET 200（作者卡 website）；https://github.com/marvelousu GET 200；https://x.com/maveroni_dev GET 200。配图 1 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/8098e8a6f467d26a1669e743.png?sha=b57fff1f6f87e824a59fc597d5b7fd59bd31572d 。一次资料已核、不列入可达导流：https://opencode.ai/v2/docs/console/go/ 跟随至 https://opencode.ai/docs/console/go/ GET 200；https://commandcode.ai/pricing GET 200；https://docs.qoder.com/account/pricing GET 200。",
+      "与近批周额度自动跑完、用量日志核对不同：本条不是把额度剩余怎么读或日志里的 cache_read 怎么加总当主线，而是把子代理换成月 10 美元档之后，各档在这 18 天里请求了多少次、哪一天碰到了哪种上限。约 2,100 次是 1,025 与 1,102 的合计，不要只写在其中一档上。platforms 填实践里用到且枚举内的 claude、chatgpt（Codex）与 grok（曾从 Grok Bot 启动同一套子代理，后来停了）。OpenCode／Command Code／Qoder／DeepSeek 枚举里没有对应值，不硬凑。",
+    ],
+    approach: `marvelousu（Tom）在《月10ドルのコーディングエージェントで Claude Code のサブエージェントを置き換える》（页内 publishedAt 2026-11-10，更新略早于发布）写明：平时用 Claude Code／Codex 商量规格与设计，实现和范围明确的调查原先交给子代理。10 月下旬起改从 OpenCode 的 HTTP API 派出，先订 OpenCode Go 的月 10 美元档，模型用 DeepSeek V4.1 Flash，推理固定为 high；额度不够用的日子变多后，11-04 再订同价的 Command Code GOAT 档，只改创建会话时的模型指定。父侧仍负责范围与验收，子侧在独立会话里改代码、跑测试；会话 ID 与委托 ID 会先写下，以免通信中断后把同一条委托送两遍。完成要同时看结束状态是否成功、记录里的模型是否就是指定的那一个，以及实际差分和测试结果。
+
+统计的是常用那一台桌面上、OpenCode 自己保存的记录，时间窗是 2026-10-21 到 11-07 共 18 天。OpenCode Go：18 天、554 个会话、1,025 次请求，输入（不含缓存读取）约 8,180 万、缓存读取约 44.5 亿、输出约 1,070 万，换算费用约 40 美元；途中加过 5 美元 Extra Usage，第 18 天（11-07）碰到月上限。Command Code：4 天、189 个会话、1,102 次请求，输入约 6,660 万、缓存读取约 66.5 亿、输出约 940 万，换算费用约 43 美元；这 4 天的请求次数超过了 Go 的 18 天，因为 Go 撞上限期间的委托几乎都转给了它；第 4 天（11-07）碰到周上限，当时月额度大约还剩 50%。两档请求合计 2,127 次，文中写作约 2,100 次。期间工具调用约 6.8 万次，其中壳约 3.2 万、编辑约 1.6 万、读取约 1.3 万。换算费用是 OpenCode 按 token 量显示的值，作者写明与账单、各服务自己数的额度消耗并不一致。11-07 之后两档都返回上限错误，子代理暂时改回原来的那种。作者写明当时推理固定为 high，期间还把游戏模拟的并行尽量开满，普通用法大概不会这么快碰到上限；「两个月 10 美元档刚好够用一个月」只是感觉，不是另测过的普通用法。Qoder 只确认过在 2 周、300 Credits 的 Pro 试用里能做实现，后来自写脚本把模型改写成会消耗 Credits 的另一种，把 300 Credits 用完了，11 月几乎没用，不能拿来和这两档比额度。曾让 Grok Bot 也能启动同一套子代理，后来因为入口不需要合成一个、小调查还会多绕一圈而停了。`,
+    outcomes: [
+      "源披露作者把 Claude Code／Codex 的子代理换成月 10 美元的 OpenCode Go 与 Command Code，并在一台桌面上统计 2026-10-21 到 11-07 共 18 天：Go 554 个会话、1,025 次请求，第 18 天碰到月上限；Command Code 4 天 189 个会话、1,102 次请求，第 4 天碰到周上限；两档合计约 2,100 次。换算费用约 40 美元与约 43 美元，不是账单实付。这是这一台桌面、这一段用法（推理固定为 high，并包含把模拟并行开满）上的一次汇总，不可外推成普通用法也会在同一天用完，或下一档周期也会得到同一组次数与上限日，也不能把换算费用写成已经实付。",
+      "能把「可写成按档记下请求次数、碰到的是月上限还是周上限，并且把换算费用和实付分开」与「必须人完成的题目与导流链」拆开。",
+      "为把「约 2,100 次」或「感觉质量没有问题」当成额度与效果都已经查清，以及把容易碰上限的用法外推成普通用法提供提问清单。",
+    ],
+    caveats: [
+      "约 2,100 次是 1,025 与 1,102 的合计（精确相加是 2,127），不要只写在其中一档上。约 40 美元与约 43 美元是 OpenCode 按 token 换算的显示值，不是账单实付，也不能直接当成各服务自己数的额度消耗。5 美元 Extra Usage 只发生在 Go 上。作者写明当时用了容易碰到上限的用法，不能把「两个月 10 美元档刚好够用一个月」写成已经测过的普通用法。质量「没有问题」是感觉，不是对照指标。Qoder 的 300 Credits 被自写脚本用完，11 月几乎没用，不能拿来和这两档比额度。",
+      "可达导流：https://maveroni.com/ GET 200；https://github.com/marvelousu GET 200；https://x.com/maveroni_dev GET 200。配图 1 张 GET 200，不列入产品导流（完整 URL 见 tips[0]）。OpenCode／Command Code／Qoder 的定价或说明页已核、不列入可达导流：https://opencode.ai/v2/docs/console/go/ 跟随至 https://opencode.ai/docs/console/go/ GET 200；https://commandcode.ai/pricing GET 200；https://docs.qoder.com/account/pricing GET 200。",
+      "上面写的是个人实践帖（zenn.dev / marvelousu），也不是 OpenCode、Command Code 或 Anthropic、OpenAI 的官文简报。platforms 填 claude、chatgpt 与 grok；OpenCode／Command Code／Qoder／DeepSeek 枚举里没有对应值，不硬凑。",
+    ],
+    prompts: [
+      {
+        title: "月档额度须先按档与时间窗核对",
+        body: `你是资深 Agent 额度验收教练。只根据用户边界写门禁，不要编造额度已经测准。
+
+现在是不是约同一台桌面、2026-10-21 到 11-07 这 18 天要把 Go 的 1,025 次／第 18 天碰到月上限与 Command Code 的 1,102 次／第 4 天碰到周上限分开记：{{whether_about_same_18_days_split_by_plan}}
+是不是约 40 美元与 43 美元只是换算显示值而不是账单实付：{{whether_about_converted_not_billed}}
+是不是约 high 与把模拟并行开满的用法不能写成已经测过的普通用法：{{whether_about_heavy_usage_not_typical}}
+
+输出 Markdown：
+1. 为什么「约 2,100 次」或「感觉质量没有问题」不能写成额度与效果都已经查清
+2. 应怎样同时检查各档的请求次数、碰到的是月上限还是周上限，以及换算费用和实付是不是同一件事
+3. 只有这一台桌面、这一段容易碰上限的用法时，应怎样单独记账，而不是写成普通用法也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到约 2,100 次或 18 天碰到月上限，就等于普通用法也会在同一天用完，或换算的 40 美元、43 美元已经等于实付，或质量已经测准」。`,
+      },
+      {
+        title: "二千一百次与十八天复盘",
+        body: `报告上可以写 Go 18 天 1,025 次请求后碰到月上限，Command Code 4 天 1,102 次请求后碰到周上限，两档合计约 2,100 次；但这是这一台桌面、这一段用法上的一次汇总。请写复盘提纲。
+
+现象：{{twenty_one_hundred_and_cap_days}}
+
+输出：
+1. 更像普通用法下两个月 10 美元档刚好够用一个月，还是只是这一段把推理固定为 high、并把模拟并行开满之后的额度记录
+2. 最小复验顺序（先按档拆开 1,025 与 1,102→再看碰到的是月上限还是周上限→再把换算费用和实付分开→再决定能不能对外说已测过普通用法）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「换算费用等于已经付过」，或「18 天碰到上限就等于下个月普通用法也会同样用完」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/marvelousu/articles/subscription-agent-workers",
+      label: "zenn.dev · 月10ドルのコーディングエージェントで Claude Code のサブエージェントを置き換える",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "831",
+    slug: "takamatt-6in-12bom-49",
+    title: "takamatt_ai：把 Mac 上的 2 个 Claude Code PreToolUse 钩子迁到 Windows 11——2026-11-05 用 6 个伪输入看退出码。Git Bash／cmd 重定向下，delete-guard 与 git-guard 按预期给出 2 或 0；PowerShell 5.1 用 Get-Content -Raw 管道时，12 次（2 钩 × 6 输入）全部退出码 1，是 UTF-8 BOM，不是钩子判定的 2。Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里退出码 49",
+    summary: "个人（takamatt_ai／TAKAMATT）；披露把 Mac 上用来拦住「整文件夹删除」和「git push --force」等操作的 2 个 PreToolUse 钩子，连同 settings.json 一起放到 Windows 11 的笔记本上。环境是 PowerShell 5.1、Git Bash、Python 3.9。改了两处：command 从 python3 改成 python，matcher 写成 Bash|PowerShell。Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里都会打开微软商店的空入口，退出码 49；python --version 是 Python 3.9.13，可以跑。2026-11-05 把 6 个无 BOM、LF 的伪输入写成文件，用 Git Bash 的 python ~/.claude/hooks/xxx.py < file 来喂：Remove-Item -Recurse 只被 delete-guard 拦下（2／0），rm -rf /tmp/work123 两个都是 0，rm -rf \"$WORK_DIR/\" 只被 delete-guard 拦下，git push --force 只被 git-guard 拦下，git status 都是 0，git reset --hard 只被 git-guard 拦下。同一组 6 个用 cmd /c 喂给 delete-guard，结果同样是 2、0、2、0、0、0。改用 PowerShell 5.1 的 Get-Content -Raw file | python hook.py 时，12 次全部退出码 1，Python 报 Unexpected UTF-8 BOM；输入文件头 3 个字节仍是 {\"t，管道对面却读到了 EF BB BF。改 $OutputEncoding 在作者手头没有修好。作者写明这个 1 不是拦住用的 2。还写明：本次核的是手喂标准输入时的退出码，Claude Code 真正调用钩子的路径没有在这次里核对；波浪号路径在 Git Bash 里手跑过，从 Claude Code 的 PowerShell 工具去调没有核；PowerShell 7 没有试。不代你同样看到 6 个输入给出 2 或 0，就等于 Claude Code 在 Windows 上已经按同一张表拦住，或管道里的退出码 1 已经等于钩子判定拦住。",
+    description: "面向已经把「钩子文件已经拷到 Windows、手喂时看到了退出码 2」当成迁移动作已经验收、却还没把 Git Bash／cmd 下的 2 或 0 与 PowerShell 管道里 12 次全部为 1 的 BOM 失败、以及「手喂标准输入」和「Claude Code 真正调用钩子的路径」分开记的人：把「迁移后的钩子须按同一次喂法记下退出码，不能把管道里的 1 写成已经拦住，也不能把手喂的结果写成生产路径已经核过」写成门禁，区别于只拷文件或只看一次退出码的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/takamatt_ai/items/d745c1c432add1d63590",
+    sourceLabel: "qiita.com · Mac で使っている Claude Code のフックを Windows に持っていくと動かない所(python3・matcher の PowerShell・試しの入力はファイル経由・BOM)",
+    upvotes: 722,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "hooks",
+      "Windows",
+      "PowerShell",
+      "PreToolUse",
+    ],
+    howItWorks: [
+      "粘贴 Agent 钩子迁移对照的边界（是不是约 2026-11-05 在 Windows 11 上用 6 个伪输入要把 Git Bash／cmd 下的退出码 2 或 0 与 PowerShell 管道里 12 次全部为 1 的 BOM 失败分开记，是不是约这个 1 不是钩子判定拦住用的 2，是不是约本次只核了手喂标准输入、没有核 Claude Code 真正调用钩子的路径）以及「绝不可把手喂的 2 写成生产路径已经核过」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 python3 的退出码 49、matcher 是否包含 PowerShell、喂入方式是重定向还是管道，以及 6 个输入分别被哪一个钩子拦住",
+      "人工保留这一次 6 个输入文件与退出码表；Agent 不代你保证「同样看到 6 个输入给出 2 或 0，就等于 Claude Code 在 Windows 上已经按同一张表拦住，或管道里的退出码 1 已经等于钩子判定拦住，或 PowerShell 7 也会一样」",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-09T09:21:17.000+09:00 → 2026-11-09，同时刻为 UTC 2026-11-09T00:21:17Z、Asia/Shanghai 2026-11-09 08:21:17；dateModified 与发布相同；取 published；GET 200（UA MiraBot/1.0））：takamatt_ai（TAKAMATT）在《Mac で使っている Claude Code のフックを Windows に持っていくと動かない所(python3・matcher の PowerShell・試しの入力はファイル経由・BOM)》写 2 个钩子迁到 Windows 后的退出码。可达导流：https://note.com/logi_soudan GET 200（作者卡 website）；https://www.linkedin.com/in/toru-takamatsu 为作者 Qiita 个人页上的 LinkedIn（文章页卡片未展开该栏，个人页可见），交付时最后一次 GET 451（跟随至 https://www.linkedin.cn/incareer/in/toru-takamatsu），不列入可达导流。前作已核、不列入可达导流：https://qiita.com/takamatt_ai/items/1f7d9cf0b47d58f9ea86 GET 200（文中「钩子拦什么」的前篇）。一次资料已核、不列入可达导流：https://docs.claude.com/en/docs/claude-code/hooks 跟随至 https://code.claude.com/docs/en/hooks GET 200。正文无配图。作者卡 GitHub／X 为空。",
+      "与近批权限规则、技能是否被读到不同：本条不是 deny／allow 写在 settings 里管不管用，而是把已经在 Mac 上工作的 Python 钩子迁到 Windows 后，手喂伪输入时退出码怎么记，以及 PowerShell 管道加上 BOM 之后的 1 能不能当成拦住。同作者 #791 是老板键的 7 种情形，主线不同，且不在近批 114–118。platforms 只填 claude。",
+    ],
+    approach: `takamatt_ai（TAKAMATT）在《Mac で使っている Claude Code のフックを Windows に持っていくと動かない所(python3・matcher の PowerShell・試しの入力はファイル経由・BOM)》（JSON-LD datePublished 2026-11-09）写明：Mac 上已有 2 个 PreToolUse 钩子，分别拦住整文件夹删除和 git push --force 一类操作。把同一份 settings.json 和 ~/.claude/hooks/ 放到 Windows 11 的笔记本上之后，只拷文件是不够的。环境是 PowerShell 5.1、Git Bash、Python 3.9，Claude Code 的 Bash 工具和 PowerShell 工具都能用。作者改了两处：command 从 python3 改成 python，matcher 写成 Bash|PowerShell。Mac 上原先的 matcher 取值手头没有记录，文中没有写。波浪号路径在写成 ~/.claude/hooks/… 后，用 Git Bash 手跑过可以工作；从 Claude Code 的 PowerShell 工具去调，这次没有核。
+
+Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里都会打开微软商店的空入口，退出码 49；在 Git Bash 里把 ~/bin/python3（内容是 exec python "$@"）放到 PATH 最前之后，才能得到 Python 3.9.13、退出码 0。python --version 本身就是 3.9.13，可以跑。作者还写明：若把带危险字样的试验 JSON 直接写在命令行里用 echo 喂，这一行本身会被钩子拦住，所以试验输入要先写成文件，命令行里只留文件名。
+
+2026-11-05，把 6 个无 BOM、LF 的伪输入写成文件，用 Git Bash 的 python ~/.claude/hooks/xxx.py < file 来喂（退出码 2 表示拦住，0 表示放行）：Remove-Item -Recurse -Force C:\\work\\old 是 2／0，rm -rf /tmp/work123 是 0／0，rm -rf "$WORK_DIR/" 是 2／0，git push --force origin main 是 0／2，git status 是 0／0，git reset --hard HEAD~1 是 0／2。同一组 6 个用 cmd /c "python … < file" 喂给 delete-guard，结果同样是 2、0、2、0、0、0。改用 PowerShell 5.1 的 Get-Content -Raw file | python hook.py 时，12 次（2 钩 × 6 输入）全部退出码 1，Python 报 Unexpected UTF-8 BOM；输入文件头 3 个字节仍是 {"t，管道对面却读到了 EF BB BF。改 $OutputEncoding 或 [Console]::OutputEncoding 在作者手头没有修好。作者写明这个 1 不是拦住用的 2，也没有在本文里改钩子去用 utf-8-sig 消化 BOM。本次核的是手喂标准输入时的退出码；Claude Code 真正调用钩子的路径，以及 PowerShell 7，都没有在这次里核对。`,
+    outcomes: [
+      "源披露作者在 2026-11-05 把 Mac 上的 2 个 Claude Code PreToolUse 钩子迁到 Windows 11，并用 6 个伪输入看退出码：Git Bash／cmd 重定向下，delete-guard 与 git-guard 按预期给出 2 或 0；PowerShell 5.1 用 Get-Content -Raw 管道时，12 次全部退出码 1，是 UTF-8 BOM，不是钩子判定的 2。Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里退出码 49。这是这一次手喂标准输入的记录，不可外推成 Claude Code 在 Windows 上的生产调用路径也会得到同一张表，或 PowerShell 7 也会一样，也不能把管道里的 1 写成已经拦住。",
+      "能把「可写成按喂法记下退出码 2、0、1、49，并且把管道里的 1 与钩子判定的 2 分开」与「必须人完成的题目与导流链」拆开。",
+      "为把「钩子文件已经拷到 Windows」或「手喂时看到了 2」当成迁移动作已经验收，以及把退出码 1 写成已经拦住提供提问清单。",
+    ],
+    caveats: [
+      "6 个输入上的 2 或 0，以及 12 次全部为 1，均为作者自述，测的是 2026-11-05 手喂标准输入。作者写明没有核 Claude Code 真正调用钩子的路径，也没有试 PowerShell 7；波浪号路径从 Claude Code 的 PowerShell 工具去调，这次也没有核。退出码 1 是 JSON 解析遇到 BOM，不是拦住用的 2。rm -rf /tmp/work123 在 delete-guard 上是 0，不要写成所有删除写法都会被拦住。Mac 上原先的 matcher 取值手头没有记录。",
+      "可达导流：https://note.com/logi_soudan GET 200（作者卡 website）；https://www.linkedin.com/in/toru-takamatsu 为作者 Qiita 个人页上的 LinkedIn（文章页卡片未展开该栏，个人页可见），交付时最后一次 GET 451（跟随至 https://www.linkedin.cn/incareer/in/toru-takamatsu），不列入可达导流。前作 https://qiita.com/takamatt_ai/items/1f7d9cf0b47d58f9ea86 GET 200（钩子拦什么的前篇，不列入产品导流）。一次资料 https://docs.claude.com/en/docs/claude-code/hooks 跟随至 https://code.claude.com/docs/en/hooks GET 200，不列入可达导流。正文无配图。作者卡 GitHub／X 为空。",
+      "上面写的是个人实践帖（qiita.com / takamatt_ai），也不是 Anthropic 的官文简报。platforms 只填 claude。同作者 #791 主线不同，且不在近批 114–118。",
+    ],
+    prompts: [
+      {
+        title: "钩子迁移须先按喂法记下退出码",
+        body: `你是资深 Agent 钩子迁移验收教练。只根据用户边界写门禁，不要编造生产路径已经核过。
+
+现在是不是约 2026-11-05 在 Windows 11 上用 6 个伪输入要把 Git Bash／cmd 下的退出码 2 或 0 与 PowerShell 管道里 12 次全部为 1 的 BOM 失败分开记：{{whether_about_redirect_vs_pipe_bom}}
+是不是约这个 1 不是钩子判定拦住用的 2：{{whether_about_exit_1_not_block}}
+是不是约本次只核了手喂标准输入、没有核 Claude Code 真正调用钩子的路径：{{whether_about_hand_fed_not_production}}
+
+输出 Markdown：
+1. 为什么「钩子文件已经拷到 Windows」或「手喂时看到了 2」不能写成迁移动作已经验收
+2. 应怎样同时检查 python3 的退出码 49、matcher 是否包含 PowerShell、喂入方式，以及 6 个输入分别被哪一个钩子拦住
+3. 只有这一次手喂的退出码表时，应怎样单独记账，而不是写成生产路径也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 6 个输入给出 2 或 0，就等于 Claude Code 在 Windows 上已经按同一张表拦住，或管道里的退出码 1 已经等于钩子判定拦住，或 PowerShell 7 也会一样」。`,
+      },
+      {
+        title: "十二次退出码一复盘",
+        body: `报告上可以写 Git Bash／cmd 重定向下 6 个输入按预期给出 2 或 0，以及 PowerShell 管道 12 次全部退出码 1；但这是 2026-11-05 手喂标准输入的一次记录。请写复盘提纲。
+
+现象：{{six_inputs_and_twelve_bom}}
+
+输出：
+1. 更像 Windows 上的钩子已经按同一张表拦住，还是只是这一次手喂重定向时退出码对上了，而管道里的 1 并不是拦住
+2. 最小复验顺序（先分开重定向与管道→再确认 1 是不是 BOM→再看有没有核过 Claude Code 真正调用钩子的路径→再决定能不能对外说已迁好）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「退出码 1 等于已经拦住」，或「手喂的 2 等于生产路径已经核过」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/takamatt_ai/items/d745c1c432add1d63590",
+      label: "qiita.com · Mac で使っている Claude Code のフックを Windows に持っていくと動かない所(python3・matcher の PowerShell・試しの入力はファイル経由・BOM)",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "832",
+    slug: "craft-4ans-88to19",
+    title: "codecraft：同一个「入金后要不要把顺势仓补到目标比例」的改动测了 4 次，答案依次是驳回、采用、驳回、无法判定。第 1 次全区间 +7.6%，但改善额的 97.6% 在 2019–21 年；第 2 次按月入金资产的 3% 得到 +10.1%，却没把「入金达资产 5% 才触发」写进测量；第 3 次 88 种一次性入金，摘要表写胜率 53.8%、中位 +0.0%；第 4 次改按 19 个区间重做，+0.65%，95% 区间 [-1.17, +2.82] 穿过 0",
+    summary: "个人（codecraft／CodeCraft｜システムトレーダー）；披露在约 2 万日元的实盘旁，为同一项改动——入金时是否把顺势仓补到目标比例——测了 4 次，4 次答案都不一样。顺势仓在 BTC 位于 100 日均线之上时按总资产约 40% 持有，期间不换仓，所以中途入金只会变成现金。文中举过：按 20% 目标建的 3,954 日元，目标改成 40% 后仍持有 61 天，占总资产 20,375 日元的 19.4%；若再入金 10 万日元，会稀释到 3.3%，这是按当时数字做的推算。第 1 次用初始 10 万、每月定额 1 万、从 2018 年末起约 8 年回放，全区间 +7.6%，但改善额的 97.6%（+237,471／合计 +243,196 日元）集中在 2019–21 年，于是驳回；后来发现复利把资产推到 2,497 万日元，每月 1 万只占最终资产的 3.9%。第 2 次改成每月入金资产的 3%，全区间 +10.1%，最差时段也是 −2.0%，曾决定采用；但实现里有「入金达总资产 5% 才触发」，月 3% 一次也不会触发。第 3 次改成一次性入金，在 2019-01 到 2026-04 的各月初扫了 88 种：摘要表写中位 +0.0%、胜率 53.8%，因而驳回；后文写处于レジームON 的 52 件里改善 28 件、胜率 53.8%、中位 +0.2%。按离 100 日均线的距离筛选时，胜率最高的一档（20% 以上，71.4%）期望值最低（+1.19%）。第 4 次若把 88 件当成独立样本，95% 区间是 [+0.63, +3.10]，不含 0；改按 19 个レジームON 区间再抽样，无筛选时 +0.65%、中位 −0.95%，区间 [-1.17, +2.82] 穿过 0，于是改为无法判定。作者后来仍因「设置写着 40%、入金后实际会稀释」而打开该功能，并写明不是因为已经证明能赚钱。不代你同样看到 4 次答案依次改变，就等于第 4 次的无法判定已经变成「没有优势」，或 88 件上的区间可以当成 19 个区间上的结论。",
+    description: "面向已经把「回放得到了正的全区间收益」或「88 件上的置信区间不含 0」当成改动已经测准、却还没把 4 次测法、摘要表与后文的中位数字、以及 88 件和 19 个区间分开记的人：把「同一项改动须按每一次的测法单独记账，不能把重叠样本上的显著性写成区间单位上的结论，也不能把后来打开功能写成已经证明能赚钱」写成门禁，区别于只看一次回放数字的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/codecraft/articles/same-change-measured-four-ways",
+    sourceLabel: "zenn.dev · 同じ変更を4回測ったら、却下→採用→却下→判定不能と答えが毎回変わった",
+    upvotes: 723,
+    trending: false,
+    tags: [
+      "backtest",
+      "eval",
+      "trading-bot",
+      "measurement",
+      "statistics",
+    ],
+    howItWorks: [
+      "粘贴 Agent 测量口径对照的边界（是不是约同一项「入金后是否补仓」的改动要把 4 次测法和 4 个答案分开记，是不是约第 3 次摘要表里的中位 +0.0% 与后文 52 件上的中位 +0.2% 不能写成同一个数字，是不是约 88 件上不含 0 的区间不能写成 19 个区间上的结论，是不是约后来打开功能并不是因为已经证明能赚钱）以及「绝不可把一次回放的正收益写成改动已经测准」纪律",
+      "Agent 按实践帖输出：应怎样同时记下每一次的入金方式、有没有把「达资产 5% 才触发」写进测量、样本是 88 件还是 19 个区间，以及胜率最高的筛选是否正好是期望值最低的一档",
+      "人工保留这 4 次测量的条件与数字；Agent 不代你保证「同样看到 4 次答案依次改变，就等于第 4 次的无法判定已经变成没有优势，或 88 件上的区间可以当成 19 个区间上的结论，或后来打开功能等于已经证明能赚钱」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-02T08:07:23.227+09:00 → 2026-11-02，同时刻为 UTC 2026-11-01T23:07:23Z、Asia/Shanghai 2026-11-02 07:07:23；bodyUpdatedAt 2026-10-26T08:06:33.002+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：codecraft（CodeCraft｜システムトレーダー）在《同じ変更を4回測ったら、却下→採用→却下→判定不能と答えが毎回変わった》写同一项改动测了 4 次、答案每次都变。可达导流：https://x.com/codecrafts67596 GET 200（作者卡 X）。作者卡 website／GitHub 为空。正文无配图、无其他产品或仓链。",
+      "与近批费用对照、子代理是否读到计划不同：本条不是模型单价或审查清单，而是同一项交易改动在 4 种测法下得到 4 个答案，以及 88 件与 19 个区间不能混成一次样本。正文没有写这次四次测量用了哪一个枚举内平台；作者简介写用 Claude 做交易，不硬凑 claude，platforms 留空。",
+    ],
+    approach: `codecraft（CodeCraft｜システムトレーダー）在《同じ変更を4回測ったら、却下→採用→却下→判定不能と答えが毎回変わった》（页内 publishedAt 2026-11-02，更新早于发布）写明：自己在做加密货币自动交易 Bot，实盘大约 2 万日元，每周核对回放与实盘是否一致。这次要决定的是一项小改动：入金时要不要把顺势仓补到目标比例。顺势仓在 BTC 位于 100 日均线之上（文中称レジームON）时按总资产约 40% 持有，开启后直到关闭都不换仓，所以中途入金只会变成现金，并只会进逆势仓。文中举过：按 20% 目标建的 3,954 日元，目标改成 40% 后仍持有 61 天，占总资产 20,375 日元的 19.4%；若再入金 10 万日元，会稀释到 3.3%，这是按当时数字做的推算。レジームON 最长可到约 200 天。
+
+第 1 次用初始 10 万日元、每月定额入金 1 万、从 2018 年末起约 8 年回放，全区间是「补仓更好，+7.6%」；把时间切成三段后，改善额的 97.6%（+237,471／合计 +243,196 日元）集中在 2019–21 年的上涨里，于是驳回。后来发现，回放里复利把资产推到 2,497 万日元，每月 1 万只占最终资产的 3.9%，测到的其实是资产还小的头几个月。第 2 次改成每月入金当时资产的 3%，全区间 +10.1%，最差时段也是 −2.0%，最大回撤没有变差，曾决定采用。但实现里有「入金达总资产 5% 才触发」，用来避免手续费和四舍五入造成的每日微小差额被当成入金；月 3% 一次也不会越过 5%。把阈值写进测量后，月 6%、月 10% 在最近一段变成了负的。作者实际入金也是一次性，不是每月均匀。第 3 次改成只做一次入金，在 2019-01 到 2026-04 的各月初扫了 88 种。摘要表写中位 +0.0%、胜率 53.8%，因而驳回；后文写处于レジームON 的 52 件里改善 28 件、胜率 53.8%、中位 +0.2%。平均赢 +7.0%、平均亏 −2.3%，盈亏比约 3.0。按离 100 日均线的距离筛选：无筛选 53 次、胜率 56.6%、期望 +1.79%；5% 以上 43 次、60.5%、+1.67%；10% 以上 34 次、61.8%、+1.32%；20% 以上 21 次、71.4%（胜率最高）、+1.19%（期望最低）。第 4 次若把无筛选的 88 件当成独立样本做自助法，95% 区间是 [+0.63, +3.10]，不含 0；但同一段レジーム里的入金日几乎看到同一段行情。改按 19 个レジームON 区间先平均再抽样：无筛选时 19 个区间里 6 个为正，期望 +0.65%、中位 −0.95%，区间 [-1.17, +2.82] 穿过 0；筛选「偏离 5% 以上」时 7/19 为正，期望 +0.99%、中位 0.00%，区间 [-0.58, +2.88] 也穿过 0，于是改为无法判定。另有一项副产物：88 种里レジーム在 14 天内实际结束的 11 件中有 10 件是亏的（p=0.006）；亏的 23 件剩余天数中位 17 天，赢的 28 件是 87.5 天，但事前用偏离幅度分不开（亏的中位 15.5%，赢的 20.6% 有重叠）。实现时测试还抓到过：按多标的分配补仓时，若每次都从已保存状态重读现金，会把同一笔现金分给两个标的。最终，作者因「设置写着 40%、入金后实际会稀释」而打开该功能，条件是入金达总资产 5%、BTC 在 100 日均线之上至少 5%、只补到 40% 且不卖，并写明不是因为已经证明能赚钱。`,
+    outcomes: [
+      "源披露作者为同一项「入金后要不要把顺势仓补到目标比例」的改动测了 4 次，答案依次是驳回、采用、驳回、无法判定：第 1 次全区间 +7.6%，但改善额的 97.6% 在 2019–21 年；第 2 次月入金 3% 得到 +10.1%，却没把「入金达资产 5% 才触发」写进测量；第 3 次 88 种一次性入金，摘要表写胜率 53.8%、中位 +0.0%；第 4 次按 19 个区间重做，+0.65%，95% 区间 [-1.17, +2.82] 穿过 0。这是这一项改动、这 4 种测法上的记录，不可外推成其他参数、其他品种或其他时段也会得到同一组符号，也不能把 88 件上不含 0 的区间写成 19 个区间上的结论，或把后来打开功能写成已经证明能赚钱。",
+      "能把「可写成按每一次的测法记下答案，并且把 88 件和 19 个区间、摘要表与后文的中位数字分开」与「必须人完成的题目与导流链」拆开。",
+      "为把「回放得到了正的全区间收益」或「88 件上的置信区间不含 0」当成改动已经测准，以及把后来打开功能写成已经证明能赚钱提供提问清单。",
+    ],
+    caveats: [
+      "4 次答案和文中的百分数、件数均为作者自述。第 3 次摘要表写中位 +0.0%，后文写 52 件上中位 +0.2%，不要合成一个数字。88 件上的 [+0.63, +3.10] 与 19 个区间上的 [-1.17, +2.82] 不是同一次抽样。胜率 71.4% 只接在「偏离 20% 以上」这一档，该档期望值 +1.19% 是表里最低的，不要把最高胜率写成最好。3,954 日元持有 61 天、占总资产 19.4% 是文中的实例；入金 10 万会稀释到 3.3% 是按当时数字做的推算。作者后来打开功能，是因为设置与入金后实际比例不一致，文中写明不是因为已经证明能赚钱。p=0.006 只接在「レジーム于 14 天内结束的 11 件里 10 件为亏」这一观察上，作者写明事前用偏离幅度分不开。",
+      "可达导流：https://x.com/codecrafts67596 GET 200（作者卡 X）。作者卡 website／GitHub 为空。正文无配图，也无其他产品、站点或仓链。",
+      "上面写的是个人实践帖（zenn.dev / codecraft），也不是某家交易所或模型厂商的官文简报。正文没有写这次四次测量用了哪一个枚举内平台；作者简介写用 Claude 做交易，不硬凑 claude，platforms 留空。",
+    ],
+    prompts: [
+      {
+        title: "同一项改动须按每一次的测法记下答案",
+        body: `你是资深 Agent 测量口径验收教练。只根据用户边界写门禁，不要编造改动已经测准。
+
+现在是不是约同一项「入金后是否补仓」的改动要把 4 次测法和 4 个答案分开记：{{whether_about_four_measurements_four_answers}}
+是不是约第 3 次摘要表里的中位 +0.0% 与后文 52 件上的中位 +0.2% 不能写成同一个数字，以及 88 件上不含 0 的区间不能写成 19 个区间上的结论：{{whether_about_table_vs_body_and_88_vs_19}}
+是不是约后来打开功能并不是因为已经证明能赚钱：{{whether_about_enabled_for_consistency_not_edge}}
+
+输出 Markdown：
+1. 为什么「回放得到了正的全区间收益」或「88 件上的置信区间不含 0」不能写成改动已经测准
+2. 应怎样同时检查每一次的入金方式、触发条件有没有写进测量、样本是 88 件还是 19 个区间，以及胜率最高的筛选是不是期望值最低的一档
+3. 只有这 4 次测法时，应怎样单独记账，而不是写成其他时段也必然同符号
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 4 次答案依次改变，就等于第 4 次的无法判定已经变成没有优势，或 88 件上的区间可以当成 19 个区间上的结论，或后来打开功能等于已经证明能赚钱」。`,
+      },
+      {
+        title: "四次答案与十九个区间复盘",
+        body: `报告上可以写同一项改动测了 4 次，答案依次是驳回、采用、驳回、无法判定，以及按 19 个区间重做后 +0.65%、95% 区间穿过 0；但这是这一项改动、这 4 种测法上的记录。请写复盘提纲。
+
+现象：{{four_answers_and_nineteen_regimes}}
+
+输出：
+1. 更像改动的优势已经测准，还是只是测法一变答案就变，到第 4 次才改成无法判定
+2. 最小复验顺序（先按 4 次拆开→再核对摘要表与后文的中位数字→再把 88 件和 19 个区间分开→再看后来打开功能的理由是不是收益）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「88 件上不含 0 就等于 19 个区间上也显著」，或「后来打开功能等于已经证明能赚钱」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/codecraft/articles/same-change-measured-four-ways",
+      label: "zenn.dev · 同じ変更を4回測ったら、却下→採用→却下→判定不能と答えが毎回変わった",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
   }
 ];
 
