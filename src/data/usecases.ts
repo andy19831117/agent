@@ -71784,6 +71784,438 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；Qiita API created_at 2026-11-01T05:17:22+09:00 → UTC 2026-10-31T20:17:22Z、Asia/Shanghai 2026-11-01 04:17:22；updated_at 2026-11-01T05:19:56+09:00，晚于发布、同日，仍取 created → 2026-11-01；GET 200（UA MiraBot/1.0））：yasuharusmooth 在《改善メモをExcelからMarkdownに移したら、AIに「#17をやって」で通じるようになった》写 2026-10-25 的 backlog 和 #17。UTC 日期是 10-31，不要写成 2026-10-31。两个 itch.io 页 200；ふりーむ页最后一次 TLS 000；YouTube 200，跟随至 youtube.com/watch?v=J8aooF3N8AA&feature=youtu.be，复检落地页标题 Introduction to Princess Vanguard - YouTube（前作演示）。",
       "#17 是编号，不是 17 条。GO 只能由人勾。不要因 Unity／Cursor 就把不在枚举里的值填进 platforms。文件名 CLAUDE.md 不能代替正文使用，不要硬凑 claude。",
     ],
+  },
+  {
+    id: "1018",
+    slug: "suto-0of205-13d",
+    title: "sutokei：让 AI 特工运营图书馆借阅观测站「借りどき」后，自己做了不记 Cookie、IP 和 UA 的购买链接计数器。2026-08-22 至 2026-11-04 一共记下 6,833 次点击；人的点击印（页面 JS 在 isTrusted 的点击上加的 ?j=1）从 10 月 23 日才开始记，此前约 6,300 次分不清是人还是机器。之后这 13 天里，带 j 印的是 0 件。同一 13 天，自己的浏览信标记到 205 次页面阅读（显示满 10 秒，或有过人工操作），点击率是 0／205。10 月 7 日第一次和联盟后台对账时，8 月 22 日至 10 月 7 日记下 3,893 次点击，Amazon 和乐天的成果都是 0 件。这些是作者自己这个站点上的计数，不可外推到别人的站点、时段或别的联盟。",
+    summary: "sutokei 给 AI 特工运营的「借りどき」自写了购买链接计数。人的点击印从 10 月 23 日起记，之后 13 天是 0 件；同一时期浏览信标是 205 次，点击率 0／205。此前 6,833 次里约 6,300 次分不清人还是机器。这些是作者自己这个站点上的计数，不可外推。",
+    description: "面向已经在看自建点击数、却还没和成果对过账的人：把 13 天 0 件人的点击印、205 次阅读和 0／205，以及 3,893 次记录对上 0 件成果写成门禁，区别于只看计数器上的「点击」就当成有人下单的实践。",
+    categories: [
+      "life",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/sutokei/articles/click-tracker-zero-humans",
+    sourceLabel: "zenn.dev·sutokei 实践帖",
+    upvotes: 909,
+    trending: false,
+    tags: [
+      "affiliate",
+      "click-tracking",
+      "cloudflare",
+      "bot",
+      "life",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sutokei/articles/click-tracker-zero-humans",
+      label: "zenn.dev·sutokei《購入リンクのクリック計測を自作したら、人のクリックは13日間で0件だった》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Cloudflare Workers 只接 /go/ 下的跳转，往 D1 写一行再 302 到店家，不发 Cookie，也不存 IP 和 UA。UA 黑名单、按频率切、以及 Sec-Fetch-User 这三层都没挡住慢慢大范围转的爬虫之后，他改在页面上只给 isTrusted 的点击加 ?j=1，再拿这 13 天的印和浏览信标、联盟成果对账。",
+    outcomes: [
+      "源披露：2026-08-22 至 2026-11-04 记下 6,833 次点击。人的印从 10 月 23 日才开始加，所以更早的约 6,300 次分不清是人还是机器；能分清的 13 天（10/23–11/4）里，带 j 印的是 0 件。同一 13 天，浏览信标是 205 次，点击率写成 0／205。这些是作者自己这个站点、这一套计数器上的结果，不可外推到别人的站点或别的联盟。",
+      "10 月 7 日第一次和联盟后台对账：8 月 22 日至 10 月 7 日记下 3,893 次点击，Amazon 成果 0 件，乐天成果 0 件。Cookie 窗口乐天是 30 天、Amazon 是 24 小时。公开后一个半月里，点击曾按每天 5～15 次、访问每天 10～20 次看起来很稳，当时读成「一半以上访问都点了购买链接」。9 月 1 日至 16 日那些时间分布还像人的日子里，点击 116 次、访问 190 次，这个比例后来也补不回来了。",
+      "10 月 19 日按 UTC 小时看，几乎每小时 30～36 次（晚上 21 时起升到 57、66、71），当天访问却只有 11 次。那种 1 小时踩 93 次同一本书页的，频率阈值挡得住；一次只点不同文章里的不同书、又不超过「同一来源 1 分钟 6 次」或「同一天同一书同一店 3 次」的，会穿过去。Sec-Fetch-User 为 ?1 的 287 次里，有 210 次落在发布超过 1 周的文章上，按小时仍是每小时 2～3 次的平分布，所以也不算人的印。作者后来把「旧文一天被点 5 次及以上」的日子整日标成「不计」，不再写成 0 件。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-05T08:00:10.557+09:00 → UTC 2026-11-04T23:00:10Z、Asia/Shanghai 2026-11-05 07:00:10；bodyUpdatedAt 2026-11-04T23:27:42.071+09:00，早于发布、源时区跨到 11-04，仍取 published 后的上海日期 → 2026-11-05。UTC 日期是 11-04，不要写成 2026-11-04。正文无配图、无 YouTube 嵌入。不要把 6,833、约 6,300、3,893、287、211、205、116／190 混成同一段。0／205 只覆盖加了 j 印的 13 天。正文只写「AI 特工」在运营这个站，没有点名 Claude 或 ChatGPT，话题标签不能代替实际使用，platforms 记空数组 []，不要硬凑 claude。",
+      "导流：作者站点 https://karidoki.jp 交付时 GET 200（标题 借りどき — 今日、日本で本はどう動いた？ | 2026-11-10），按作者产品导流披露，可列可达。连载前篇 https://zenn.dev/sutokei/articles/autopilot-three-gates GET 200，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0 件是哪 13 天、205 次是不是浏览信标，再谈「点击全是假的」",
+        body: "请按原文核算：6,833 次覆盖哪一段日期；人的 j 印从哪一天开始记，这 13 天带 j 印的是多少件；同一时期浏览信标是多少次，0／205 的分母是什么。10 月 7 日对账时，3,893 次对应哪一段，Amazon 和乐天的成果各是多少件。约 6,300 次为什么分不清人还是机器。不要把 9 月 1 日至 16 日的 116／190 写成已经分清的人的点击，也不要把 Sec-Fetch-User 的 287 次写成 j 印。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用 Cloudflare Workers 接 /go/ 下的跳转，往 D1 只写时间、ISBN、店铺和来源，再用 302 送到店家，避免 301 把第二次点击缓存掉。",
+      "UA 黑名单、同一来源 1 分钟 6 次和同一书同一店一天 3 次，以及 Sec-Fetch-User，都没挡住慢慢大范围转的爬虫。",
+      "改在页面上只给 isTrusted 的点击加 ?j=1，用这 13 天的 0 件和 205 次浏览信标、以及 3,893 对 0 件成果，把主 KPI 改写成「不计日」而不是假的 0。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T08:00:10.557+09:00 → UTC 2026-11-04T23:00:10Z、Asia/Shanghai 2026-11-05 07:00:10；bodyUpdatedAt 2026-11-04T23:27:42.071+09:00，早于发布、源时区跨到 11-04，仍取 published 后的上海日期 → 2026-11-05；GET 200（UA MiraBot/1.0））：sutokei 在《購入リンクのクリック計測を自作したら、人のクリックは13日間で0件だった》写 13 天 0 件人的点击印和 0／205。导流 https://karidoki.jp GET 200。UTC 日期是 11-04，必须写成 2026-11-05。",
+      "0／205 只覆盖加了 j 印的 13 天。约 6,300 次不要写成已经确认的机器人点击。3,893 对 0 件成果是 10 月 7 日那次对账。platforms 记 []，不要硬凑 claude。",
+    ],
+  },
+  {
+    id: "1019",
+    slug: "mrnk-29746-15600",
+    title: "marunage_kacho：给 git 前面加了自己写的安全装置，免得把工作账号和个人仓库写混。装置是他和 AI 一起做的，测试大约 400 件。10 天（10/21–10/30）的拒绝记录是 29,746 次，其中 AI 编码工具在后台做的读取大约 15,600 次，IDE 自动 fetch 大约 7,500 次，真正该拦的（账号写错边等）是数百次，剩下是其他。他先把这事说成「AI 的读取拦了 2 万次以上」，数过调用方之后才把周末也能一天出现大约 1,000 次的 IDE fetch 拆出去。这些是作者自己这 10 天日志上的计数，不可外推到别人的工具、设置或时段。",
+    summary: "marunage_kacho 的 git 安全装置在 10 天里拒绝了 29,746 次。其中 AI 编码工具的后台读取大约 15,600 次，IDE 自动 fetch 大约 7,500 次，真正该拦的是数百次。先写成「2 万次以上」是把 IDE fetch 算进去了。这些是作者自己这 10 天日志上的计数，不可外推。",
+    description: "面向已经给 git 加了包装、却还没按调用方数过拒绝次数的人：把 29,746、大约 15,600 和大约 7,500 分开写成门禁，区别于只看标题里的「1 万 5 千次」或把 IDE 的自动 fetch 算成 AI 读取的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/marunage_kacho/articles/safety-wrapper-blocked-ai-reads",
+    sourceLabel: "zenn.dev·marunage_kacho 实践帖",
+    upvotes: 910,
+    trending: false,
+    tags: [
+      "git",
+      "safety",
+      "claude-code",
+      "logging",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/marunage_kacho/articles/safety-wrapper-blocked-ai-reads",
+      label: "zenn.dev·marunage_kacho《自作の安全装置が、AIの裏の読み取りを10日で1万5千回止めていた》",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+    approach: "装置本来会把「用环境变量覆盖认证或设置」的调用一律拦住。AI 编码工具为了在界面上显示分支和改动，会在后台带上这类变量去跑 git status 一类命令，于是全被记下。他改了三次：只对这种固定形态的读取放行，写操作（commit／push）仍拦住；第二次还是看不清停在哪个键上；第三次才在拒绝记录里留下环境变量名和设置键（不留值），才看清是固定的 5 项设置外加「不用 ssh」。",
+    outcomes: [
+      "源披露：10 天（10/21–10/30）拒绝 29,746 次。按调用方重数之后，AI 工具的后台读取大约 15,600 次，IDE 自动 fetch 大约 7,500 次，真正该拦的（账号写错边等）是数百次，其余是其他。标题里的「1 万 5 千回」对应大约 15,600 这一档，不是 29,746，也不是最初说的「2 万次以上」。这些是作者自己这 10 天日志上的计数，不可外推到别人的工具或设置。",
+      "测试大约 400 件。记录文件后来超过 3 万行，几乎都是拒绝。IDE 的自动 fetch 在周末、作者没碰电脑的日子里也能一天出现大约 1,000 次，所以不能算成 AI。作者没用 IDE 的 git 功能，这一头仍保持拦住。真正该拦的那数百次，曾埋在这 1 万 5 千次里面，记录有，但当时读不出来。",
+      "三次才把 AI 工具那一侧的拒绝基本停住。第一次改完，原先被挡住的第二种拒绝才露出来；第二次记录只写「因为有覆盖所以拦了」，看不清键名；第三次补上名字之后，才对上固定 5 项和「不用 ssh」。改完之后，仍有少见形态一天出现数次，作者还在看记录。修正方案是 AI 想的，测试也过了，但 AI 自己的安全确认拦住了「把安全装置放宽」这次提交，三次命令都是作者亲手打的。复查轮次是：第一次 4 周、第二次 2 周、第三次 1 周且没有新的指摘。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-04T13:41:50.579+09:00 → UTC 2026-11-04T04:41:50Z、Asia/Shanghai 2026-11-04 12:41:50；bodyUpdatedAt 与发布相同，取 published → 2026-11-04。正文无配图、无 YouTube 嵌入。不要把 29,746、大约 15,600、大约 7,500、数百次和「2 万次以上」混用。大约 15,600 和大约 7,500 作者写成约数。测试是大约 400 件。话题标签有 claudecode，正文只写「AI 的编码工具」，没有点名 Claude Code，platforms 记空数组 []，不要硬凑 claude。",
+      "导流：无作者产品导流可列。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 29,746 和大约 15,600 是不是同一档，再谈「拦了 1 万 5 千次」",
+        body: "请按原文核算：10 天是哪一段，拒绝总数是多少；AI 工具后台读取、IDE 自动 fetch、真正该拦的，各是多少。标题里的 1 万 5 千回对应哪一档，最初说的「2 万次以上」为什么后来减少。不要把周末一天大约 1,000 次的 IDE fetch 写成 AI 读取，也不要把大约 400 件测试写成已经精确到件。正文如果没有点名具体产品，不要因为话题标签就写成 Claude Code。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在 git 前面加一层：发现环境变量里覆盖了认证或设置，就先拦住，避免工作和私人账号写混。",
+      "按调用方把 29,746 次拒绝拆开，把 AI 后台读取和 IDE 自动 fetch 分开数，不再把后者算进 AI。",
+      "三次放宽读取侧的固定形态，写操作仍拦住；拒绝记录只留键名不留值，修正命令由作者自己执行。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T13:41:50.579+09:00 → UTC 2026-11-04T04:41:50Z、Asia/Shanghai 2026-11-04 12:41:50；bodyUpdatedAt 与发布相同，取 published → 2026-11-04；GET 200（UA MiraBot/1.0））：marunage_kacho 在《自作の安全装置が、AIの裏の読み取りを10日で1万5千回止めていた》写 29,746 和大约 15,600。无作者产品导流。正文未点名 Claude Code，platforms 记 []。",
+      "29,746 是 10 天总数，不是 AI 读取。大约 15,600 和大约 7,500 是约数。不要把「2 万次以上」写成最终结论。",
+    ],
+  },
+  {
+    id: "1020",
+    slug: "logd-1of8-20",
+    title: "logdriven：给个人开发的约会规划应用 CocoDate 用和线上同一套提示词、工具定义，叫 claude-haiku-4-5 做执行时校验。初约会先测 8 次，只有 1 次通过；2～3 次见面和交往中是 16／16。把「2 小时以内」写得更细、补上计算方法和例子之后，初约会也只到 16 次里的 9 次。把时段的 120 分钟框改到代码里、用具体时刻交给模型之后，初约会按 5 个时段各 4 次是 20／20，而且都在第一轮通过；2～3 次见面和交往中是 10／10。这些是作者自己这次诊断脚本上的计数，不可外推到别的模型、提示词或别的约束。",
+    summary: "logdriven 用线上同一套提示词测 claude-haiku-4-5：初约会先是 8 次里 1 次通过，写细提示词只到 16 次里 9 次；把 120 分钟框改到代码后，5 个时段各 4 次是 20／20。2～3 次见面和交往中先是 16／16，后来回归是 10／10。这些是作者自己这次测试上的计数，不可外推。",
+    description: "面向已经在提示词里写了时长上限、却还没按次数测过通过率的人：把 1／8、9／16 和改到代码后的 20／20 写成门禁，区别于只说「把提示词写细就会守时」的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/logdriven/articles/ai-time-constraint-1-of-8",
+    sourceLabel: "zenn.dev·logdriven 实践帖",
+    upvotes: 911,
+    trending: false,
+    tags: [
+      "claude",
+      "validation",
+      "prompt",
+      "typescript",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/logdriven/articles/ai-time-constraint-1-of-8",
+      label: "zenn.dev·logdriven《プロンプトに「2時間以内」と書いても、AIのプランは8回に1回しか通らなかった — 計算をコードに移して20/20》",
+      date: "2026-10-01",
+      dateLabel: "发布",
+    },
+    approach: "2026-08-23 迁环境之后，规划生成在执行时校验上失败（INVALID_OUTPUT，已退款）。他用线上同一套提示词和工具定义，把 Haiku 叫了 24 次：初约会 8 次、2～3 次见面和交往中 16 次。失败的 7 件里有 6 件时长在 135～180 分钟，超过初约会的 120 分钟上限；剩下 1 件是为了塞进 2 小时只留下 1 段行程。随后把 120 分钟框改成服务器侧的时段（例如晚餐 18:00–20:00），提示词和校验共用同一个常数，失败后改送带实测值和上限的修正请求。",
+    outcomes: [
+      "源披露：初约会先是 8 次里 1 次通过；2～3 次见面和交往中是 16／16。把指示写细之后，初约会只到 16 次里 9 次。改到代码后，初约会按 5 个时段各 4 次是 20／20，且都在第一轮通过；2～3 次见面和交往中回归是 10／10。这些是作者用线上同一套提示词、对 claude-haiku-4-5 做的计数，不可外推到别的模型或提示词。",
+      "第一次 24 次调用就是 8 加 16。失败的 7 件里 6 件是 135～180 分钟超过 120 分钟上限，1 件只剩 1 段行程。故意把 140 分钟的上一稿交给修正路径，3 次里有 2 次改对了。Codex 复查之后再测是 30／30，其中 1 件第一轮是「0 个方案」失败，靠修正那一轮才恢复；作者把它写成修正路径真正生效的第一例。Haiku 已经到 100%，他判断不必换更大的模型。",
+      "产品侧他把初约会的「半天」「一天」选项藏掉了，避免和「2 小时以内」打架。还发现失败后的「再试一次」按钮因为重送同一把幂等键，一定会 409。6 路并行时，单次应答最长 28 秒，可能超过 25 秒的超时；超时设计是不重试，所以线上若变慢会直接失败。文末的最小例子是为这篇文章写的 Node.js 片段，作者写明不是 CocoDate 的实装代码。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-01T16:46:32.349+09:00 → UTC 2026-10-01T07:46:32Z、Asia/Shanghai 2026-10-01 15:46:32；bodyUpdatedAt 2026-09-27T04:36:01.652+09:00，早于发布且跨到 09-27，仍取 published → 2026-10-01。不要因更新写成 2026-09-27。正文无配图、无 YouTube 嵌入。不要把 1／8、16／16、9／16、20／20、10／10、2／3、30／30 混成同一档。20／20 是改到代码后、5 个时段各 4 次且第一轮通过；9／16 是只把提示词写细。30／30 是 Codex 复查之后再测，其中 1 件第一轮失败后靠修正恢复。不要和 #985、#989、#993、#996、#1003、#1006、#1007、#1008、#1011、#1016 的 token／耗时／中位数／平均／缓存读取混用。本条硬窗是通过次数，不是 token。Codex 只出现在复查后再测，不在 18 值枚举里，不填进 platforms。platforms 记 claude。不要填 github。",
+      "导流：作者付费本 https://zenn.dev/logdriven/books/verify-ai-written-code 交付时 GET 200（标题 AIの「テスト通りました」を信じない — Claude Code 実運用で、緑の検査をすり抜けた穴と止める仕組み），按作者产品导流披露，可列可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1／8、9／16 和 20／20 是不是同一轮测试，再谈「写细提示词就会守时」",
+        body: "请按原文核算：初约会第一次测了几次、通过几次；2～3 次见面和交往中是多少。把提示词写细之后，初约会变成几次里的几次。把 120 分钟框改到代码后，5 个时段各几次、是不是 20／20 且第一轮通过；回归的 10／10 是哪一组。不要把 30／30 写成第一轮全过，也不要把 2／3 的修正路径和 20／20 混成同一档。失败 7 件里 6 件和 1 件的原因分别是什么。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用线上同一套提示词和工具定义，按初约会、2～3 次见面和交往中分组，看执行时校验过不过。",
+      "把 120 分钟上限改成服务器侧的时段常数，提示词和校验读同一份；失败后把实测值和上限写进修正请求。",
+      "把诊断脚本留下来，改提示词就再测；同时修掉「再试一次」按钮的 409，并记下 28 秒应答可能超过 25 秒超时。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-01T16:46:32.349+09:00 → UTC 2026-10-01T07:46:32Z、Asia/Shanghai 2026-10-01 15:46:32；bodyUpdatedAt 2026-09-27T04:36:01.652+09:00，早于发布且跨到 09-27，仍取 published → 2026-10-01；GET 200（UA MiraBot/1.0））：logdriven 在《プロンプトに「2時間以内」と書いても、AIのプランは8回に1回しか通らなかった — 計算をコードに移して20/20》写 1／8 和 20／20。导流付费本 GET 200。不要因更新写成 2026-09-27。",
+      "1／8、9／16、20／20、10／10、30／30 不是同一轮。硬窗是通过次数，不要写成 token 对照。Codex 不填进 platforms。",
+    ],
+  },
+  {
+    id: "1021",
+    slug: "nock-ccs104-404",
+    title: "nock：个人开发用的 Jira 免费站点，Claude Code 经 MCP 几乎每天都在工单里写评论，后来整站变成 404。工单号码已经到 CCS-104。8 月 28 日 Atlassian 来信说若不再使用将在 2026-09-11 停用，9 月 5 日又来「即将停用」，9 月 12 日停用（和信上写的 9 月 11 日差一天），9 月 20 日他才发现并找支持，9 月 24 日得到的答复是数据已删、保留期也过了，无法恢复。作业日志显示，警告信来了之后直到停用前一天，几乎每天都还在写评论。这些是作者自己这个免费站点上的经历，不可外推到别人的租户或付费计划。",
+    summary: "nock 的 Jira 免费站点在 Claude Code 经 MCP 几乎每天写评论的情况下，仍被判成不活跃并整站 404。工单到了 CCS-104。8 月 28 日的警告写的是 9 月 11 日停用，实际是 9 月 12 日，9 月 24 日确认无法恢复。这些是作者自己这个站点上的经历，不可外推。",
+    description: "面向已经把项目管理交给 AI、自己很少打开网页的人：把 CCS-104、几乎每天的 API 写入和整站 404 写成门禁，区别于以为「只要 AI 还在写就不会被停用」的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/nock/articles/f4bba3a4fe8045",
+    sourceLabel: "zenn.dev·nock 实践帖",
+    upvotes: 912,
+    trending: false,
+    tags: [
+      "jira",
+      "mcp",
+      "claude",
+      "free-tier",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nock/articles/f4bba3a4fe8045",
+      label: "zenn.dev·nock《AIがほぼ毎日書き込んでいたJiraの無料サイトが、非アクティブ判定で消えた》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+    approach: "从 6 月起，他把班次应用和占卜应用等个人项目放在这个 Jira 免费站点里管，工单内容几乎都交给 AI 整理，自己很少读。站点消失后，他按邮件时间线问了支持，并对照 Atlassian 文档里列举的活跃操作（打开仪表盘、看报表、打开工作项、打开管理设置等），推测 API 写入可能没被算进去。文末也列了其他免费档的失效条件，并介绍了自己在做的提醒工具。",
+    outcomes: [
+      "源披露：工单号码到了 CCS-104。8 月 28 日的邮件把停用日写成 2026-09-11，支持的说明和 9 月 12 日当天的通知则是 9 月 12 日。9 月 20 日他才发现并询问，4 天后（9 月 24 日）得到的答复是数据已删、停用后的保留期也过了，无法恢复。这些是作者自己这个免费站点上的经历，不可外推到别人的租户。",
+      "作业日志里，8 月几乎每天都有状态确认评论，8 月 28 日警告之后直到停用前一天也还在写。他没有把「几乎每天」写成精确天数。官方文档没有写明「API 不算」，「API 写入可能没被算进活跃」是作者的推测。工单内容他自己几乎没读过，消失之后也无法再核对。",
+      "他把每周的 Jira 资讯和警告信一样归档掉了。8 月 28 日的信里已经写了大约两周后的停用日，期间只要用浏览器打开过 Jira，按他的判断本来防得住。文末对比了 Supabase Free（不活跃 1 周暂停，90 天内可恢复）、Render Free Postgres（创建起 30 天就会失效，用了也会过）、MongoDB Atlas Free（不活跃 30 天，7 天前有邮件）、GitHub Actions 公共库定时任务（库 60 天无活动会停）。这些是他查官方文档的摘要，不是自己在这些服务上再失过一次的实测。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-22T22:31:15.332+09:00 → UTC 2026-10-22T13:31:15Z、Asia/Shanghai 2026-10-22 21:31:15；bodyUpdatedAt 2026-10-22T22:30:47.174+09:00，略早于发布、同日，仍取 published → 2026-10-22。正文无配图、无 YouTube 嵌入。不要把信上写的 9 月 11 日和实际停用的 9 月 12 日写成同一天。CCS-104 是工单号码，不要写成 104 天或 104 次写入。「几乎每天」不是精确天数。API 是否计入活跃是推测。不要和 #983、#995、#997、#1004、#1014 的 CI／批准混用。本条不是批准流。GitHub Actions 只出现在对照表里，不要把 github 填进 platforms。platforms 记 claude。",
+      "导流：作者预告登记页 https://spiritslab.github.io/keepalive-lp/ja/?utm_source=zenn&utm_campaign=jira-story 交付时 GET 200（标题 Keepalive｜無料枠のDBやサイトが止まる前に、メールでお知らせ），按作者产品导流披露，可列可达。一次资料：https://support.atlassian.com/jira-cloud-administration/docs/what-is-the-free-jira-cloud-plan/ GET 200；https://supabase.com/pricing GET 200；https://supabase.com/changelog/27497-paused-free-plan-projects-are-restorable-for-90-days GET 200；https://render.com/docs/free GET 200；https://www.mongodb.com/docs/atlas/pause-terminate-cluster/ GET 200；https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/disabling-and-enabling-a-workflow GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 9 月 11 日和 9 月 12 日差在哪，再谈「AI 每天写就不会被停用」",
+        body: "请按原文核算：工单号码到了哪一号；8 月 28 日的信把停用日写成哪一天，实际停用是哪一天；哪一天发现、哪一天得到无法恢复的答复。警告之后到停用前一天，作者根据什么说还在写评论。不要把「几乎每天」写成精确天数，也不要把 API 不算活跃写成官方原文。对照表里其他服务的天数是文档摘要，还是作者自己的另一次事故。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "个人项目用 Jira 免费站点放工单，内容几乎都交给 Claude Code 经 MCP 写评论，自己很少打开网页。",
+      "按邮件和支持答复排出 8 月 28 日、9 月 5 日、9 月 12 日、9 月 20 日和 9 月 24 日这条时间线，并核对作业日志。",
+      "把警告信从自动归档里抠出来，并记下其他免费档的失效条件；浏览器里打开过，按作者判断本来防得住。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-22T22:31:15.332+09:00 → UTC 2026-10-22T13:31:15Z、Asia/Shanghai 2026-10-22 21:31:15；bodyUpdatedAt 2026-10-22T22:30:47.174+09:00，略早于发布、同日，仍取 published → 2026-10-22；GET 200（UA MiraBot/1.0））：nock 在《AIがほぼ毎日書き込んでいたJiraの無料サイトが、非アクティブ判定で消えた》写 CCS-104 和整站 404。导流 Keepalive 预告页 GET 200。",
+      "9 月 11 日是信上的停用日，9 月 12 日是实际停用。不要把对照表里的 90 天、30 天、60 天写成作者自己的另一次事故。不要填 github。",
+    ],
+  },
+  {
+    id: "1022",
+    slug: "ndmx-109240-42",
+    title: "ndmxjp：一个人的队伍「takumi_」参加 2026 年 10 月 31 日的 ISUCON2026，手头用 Kiro CLI，当天 66 个回合里 61 个是 Claude Opus 5.5，只提问的 5 个是 Claude Fable 5.1。最终得分 109,240，名次是上榜 579 队里的 149 位；当天最高 117,087。8 小时里试了 42 项改动，仓库提交 69 个，基准测试 78 次（含失败 2 次）。冠军 625,857 分，大约差 5.7 倍。这些是作者自己这一队、这一天的记录，不可外推到别人的队伍或以后的比赛。",
+    summary: "ndmxjp 一个人用 Kiro CLI（当天 66 个回合里 61 个是 Claude Opus 5.5）打 ISUCON2026，最终 109,240 分、上榜 579 队里的 149 位，8 小时试了 42 项改动，基准测试 78 次。冠军 625,857 分，大约差 5.7 倍。这些是作者自己这一队、这一天的记录，不可外推。",
+    description: "面向打算把调优比赛交给特工的人：把 109,240、149／579、42 项改动和 78 次基准写成门禁，区别于只说「交给特工就能打比赛」却没有写出得分、名次和改动次数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ndmxjp/articles/isucon2026-kiro-agent-ops",
+    sourceLabel: "zenn.dev·ndmxjp 实践帖",
+    upvotes: 913,
+    trending: false,
+    tags: [
+      "isucon",
+      "kiro",
+      "claude",
+      "benchmark",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ndmxjp/articles/isucon2026-kiro-agent-ops",
+      label: "zenn.dev·ndmxjp《1 人チームでKiro CLI とISUCON2026に参加した記録：エージェントに任せたこと、任せきれなかったこと》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+    approach: "赛前一周查了用特工打 ISUCON 的先例，并用往届题练习了 2 次，做成测量和记录套件。当天从 10 月 23 日练习起一直用同一段会话。开头 1 小时还是他自己按门户按钮跑基准；11 时 14 分之后，改成特工经自写脚本去按「入队」按钮。服务器上的假 AGENTS.md 他让特工只当数据读，经他同意后挪到备份目录，没有当指令遵守。",
+    outcomes: [
+      "源披露：最终得分 109,240，名次是上榜 579 队里的 149 位（参赛是 856 队、1,596 人）。当天最高 117,087。基准测试 78 次，其中失败 2 次；改动 42 项；提交 69 个。冠军 625,857 分，大约差 5.7 倍。当天 66 个回合里 61 个是 Claude Opus 5.5，5 个只提问的是 Claude Fable 5.1。这些是作者自己这一队、这一天的记录，不可外推。",
+      "练习：ISUCON14 跑了 44 次基准，从 617 分到 100,467 分；ISUCON13 通练跑了 93 次，最高 174,758 分。不要把练习得分和当天的 109,240、117,087、112,407 混用。失败的 2 次，messages 都是 21 件；14 时 35 分那次先看到 20 件 messages，原因是 nginx 的 worker_connections（768）不够。11 时 14 分之后的基准都由特工自己跑。往返欧洲／美洲应用节点到亚洲的数据库大约 101ms；初始图片大约 183 万张。复试若低于最终得分的 75% 会失格。",
+      "c5.large 内存大约 3.7GB。GOGC=400 时堆到 3.2GB，应用因内存不足被杀掉，那次基准失败；改回 GOGC=100 并加上 GOMEMLIMIT=2200MiB 后，峰值内存 1.33GB，得分 112,407。把预计算签名的服务放在 asia1 时，和同机应用抢同一物理核，得分从大约 6.2 万降到大约 4.3 万，后来把计算挪到 asia2 并用 SCHED_IDLE。数据库连接从 30 提到 60、再提到 80，两次都降分后撤回。作者认为，一直没改「以数据库为中心」的结构，是和冠军大约 5.7 倍差距的主因；这个转向特工没有提出来，他自己也没有提出来。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-03T15:33:45.032+09:00 → UTC 2026-11-03T06:33:45Z、Asia/Shanghai 2026-11-03 14:33:45；bodyUpdatedAt 2026-11-03T15:12:06.744+09:00，早于发布、同日，仍取 published → 2026-11-03。不要把 109,240、117,087、112,407、625,857 混用。不要把 42 项改动、69 个提交、78 次基准、66 个回合混用。149 是上榜 579 队里的名次，不要写成 856 队里的 149。练习的 44／93 次和当天的 78 次不是同一场。大约 5.7 倍、大约 101ms、大约 183 万张、大约 6.2 万和大约 4.3 万是原文里的约数或推算。Kiro 和 Gemini 不在 18 值枚举里，不填进 platforms；当天实际用的是 Claude 模型，platforms 记 claude。不要填 github。不要和近批 CI／批准条混用。文中出现 hooks 只是赛后反思里的一句，不是 hook 教程。配图 1 张须写完整 URL。作者在 AWS 任职，正文写明是个人意见、与所属组织无关；本条按个人参赛记录写。",
+      "导流：无作者产品导流可列。一次资料：https://isucon.net/archives/59966826.html GET 200（ISUCON2026 レギュレーション）；https://isucon.net/archives/60126600.html GET 200（ISUCON2026 受賞チームと全チームのスコア）。配图：https://static.zenn.studio/user-upload/deployed-images/7bbc49ae51325b19dbce6313.png?sha=02193ad0ba312b6943b2a041fa2318fe51ee6632 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 109,240 和 117,087、149／579 和 856 队分别是什么，再谈「一个人交给特工就能打比赛」",
+        body: "请按原文核算：最终得分、当天最高、冠军分数和大约 5.7 倍是不是同一场；名次的分母是上榜 579 队还是参赛 856 队。42 项改动、69 个提交、78 次基准（含失败几次）、66 个回合里 Opus 和 Fable 各多少，不要混用。练习两场的基准次数和得分不要写成当天成绩。112,407 是哪一次改动之后的分数。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "赛前用往届题练习 2 次，做成测量、记录和防事故套件，并从 10 月 23 日起沿用同一段会话。",
+      "当天把假 AGENTS.md 只当数据读，11 时 14 分之后让特工自己跑基准，42 项改动都把观测依据写进提交说明。",
+      "按 messages 件数、内存上限和核争用调整，并在复盘里写下一直没改数据库为中心的结构。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T15:33:45.032+09:00 → UTC 2026-11-03T06:33:45Z、Asia/Shanghai 2026-11-03 14:33:45；bodyUpdatedAt 2026-11-03T15:12:06.744+09:00，早于发布、同日，仍取 published → 2026-11-03；GET 200（UA MiraBot/1.0））：ndmxjp 在《1 人チームでKiro CLI とISUCON2026に参加した記録：エージェントに任せたこと、任せきれなかったこと》写 109,240 和 42 项改动。配图 1 张 200。Kiro 不填进 platforms，platforms 记 claude。",
+      "109,240 不是当天最高 117,087，也不是 112,407。149 的分母是 579 不是 856。不要把 42、69、78、66 混用。",
+    ],
+  },
+  {
+    id: "1024",
+    slug: "ishi-42gb-8681",
+    title: "ishizakahiroshi：Windows 上的 Codex 应用在他没用 WSL 里 Codex 的情况下，仍大约每 20 秒尝试连一次 Ubuntu。每次都会拉起 msrdc.exe，写下大约 5MB 的 RdClientAutoTrace 诊断日志。4 天里攒到 8,681 本，合计 42.7GB。F 盘占用到了 92.7%，而 4 天前刚整理到 64%。按天看，11 月 7 日 1.6GB、8 日 12.1GB、9 日 16.6GB、10 日到 14 时是 12.3GB。在应用里把「设置 → 连接 → WSL」的 Ubuntu 开关关掉之后，他盯了 70 秒，新的 wsl.exe／msrdc.exe 是 0 行。这些是作者自己这台机器、这 4 天上的计数，不可外推到别人的版本、磁盘或设置。",
+    summary: "ishizakahiroshi 的 Windows Codex 应用大约每 20 秒尝试连接没装 CLI 的 WSL Ubuntu，4 天写下 8,681 本日志、合计 42.7GB。F 盘从 4 天前的 64% 升到 92.7%。关掉 WSL 开关后再盯 70 秒，新进程是 0 行。这些是作者自己这台机器上的计数，不可外推。",
+    description: "面向已经在 Windows 上装着 Codex 应用、却还没看过临时目录的人：把 8,681 本、42.7GB 和关掉开关后 70 秒 0 行写成门禁，区别于只删日志、或把应用卸掉导致浏览器操作也一起消失的处理。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/ishizakahiroshi/items/a599ce04b5483940100a",
+    sourceLabel: "qiita.com·ishizakahiroshi 实践帖",
+    upvotes: 915,
+    trending: false,
+    tags: [
+      "codex",
+      "windows",
+      "wsl",
+      "disk",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://qiita.com/ishizakahiroshi/items/a599ce04b5483940100a",
+      label: "qiita.com·ishizakahiroshi《Windows の Codex アプリで RdClientAutoTrace が数十GB溜まる原因と止め方》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+    approach: "F 盘报警后，他先以为又是每天 13:15 的清理脚本没扫干净的 Rust 构建残余。对着 %TEMP%\\DiagOutputDir\\RdClientAutoTrace 一数，才发现是 Codex 应用（进程名 ChatGPT.exe）在问 Ubuntu 里有没有 codex CLI：他自己的 Ubuntu 里没有，每次 exit 127，大约 21 秒后再问。卸掉应用后 65 秒里新进程是 0 次，但浏览器操作也没了；装回 26.1103.7773.0 后，21 秒一次的连接又回来，最后靠关掉 WSL 开关才停住。",
+    outcomes: [
+      "源披露：日志 8,681 本，合计 42.7GB，一本大约 5MB。1 小时大约 171 本、大约 0.86GB，折成一天大约 20GB。4 天前 F 盘曾整理到 64%，后来占用到 92.7%。按天：11 月 7 日 1.6GB，8 日 12.1GB，9 日 16.6GB，10 日到 14 时 12.3GB；更早一天到不了 0.1GB。标题里的「约 42GB」和合计 42.7GB 是同一堆文件的约写和精计。这些是作者自己这台机器、这 4 天上的计数，不可外推。",
+      "进程日志是大约每 21 秒一对 wsl.exe／msrdc.exe，父进程是 ChatGPT.exe（正文写明这是 Codex 应用本体）。关掉开关前，大约 20 秒一次会新出 3～4 行；关掉后盯 70 秒是 0 行。卸掉应用后盯 65 秒也是 0 次，但 Chrome 操作不可用。11 月 7 日 13:17 还没开始涨，当天傍晚 17:54–19:17 有一次版本替换，7 日当天多了 320 本、大约 2 小时的量；次日 9:09 装上 26.1103.4239.0 之后，8 日大约 15 小时、9 日大约 20 小时几乎全天都在写。",
+      "他对照了官方 Issue：#60204 写应用升到 26.1103.4239.0 之后开始重连，最后间隔 20 秒，报告者日志到第 107 次；评论里还有 15 秒一次抢焦点。#54509 是别人的 40.55GiB、磁盘只剩 1.32MiB，删旧日志后 9 小时半又回到大约 10GB。#30048 是即便选了 Windows 原生模式仍会拉起 WSL。WSL 讨论 #8486 里还有别人「1 周 223GB」「311GB」的报告，那不是作者自己的盘。他在 11 月 6 日至 10 日这 5 天里，应用版本从 26.1029.7803 到 26.1103.4239 再到 26.1103.7773（中间 26.1103.3517 注册失败，没用上）。顺手还记下：codex exec 在 CLI 0.166.0 和 0.167.0 上浏览器操作会失败，互动式 codex 可以；把 CODEX_HOME 指到别处时，会踩到他自己的 many-ai-cli 为每个账号分开主目录。",
+    ],
+    caveats: [
+      "无 JSON-LD；Qiita API created_at 2026-11-10T19:26:31+09:00 → UTC 2026-11-10T10:26:31Z、Asia/Shanghai 2026-11-10 18:26:31；updated_at 2026-11-10T19:32:38+09:00，晚于发布、同日，仍取 created（published）→ 2026-11-10。不要把 42.7GB、标题里的约 42GB、一天大约 20GB，以及别人报告的 40.55GiB、223GB、311GB 混用。不要把按天的 1.6／12.1／16.6／12.3GB 加成另一种「4 天合计」。大约每 20 秒是标题和开关前的观察，进程日志是 21 秒一次，不要写成两个精确时钟。卸载后 65 秒 0 次和关开关后 70 秒 0 行不是同一段观察。Codex、Windows、PowerShell 不在 18 值枚举里；进程名虽是 ChatGPT.exe，正文写明那是 Codex 应用本体，不要因此硬凑 chatgpt。platforms 记空数组 []。不要填 github。配图 5 张须写完整 URL。#60204、#54509、#30048 和 Discussion #8486 须写完整 URL，不要只写编号。",
+      "导流：作者摘要页 https://ishizakahiroshi.com/articles/2026/2026-11-10_codex-app-wsl-trace-logs/ GET 200；作者站点 https://ishizakahiroshi.com/ GET 200；作者工具仓 https://github.com/ishizakahiroshi/many-ai-cli GET 200。均按作者产品导流披露，可列可达。https://github.com/ishizakahiroshi GET 200，https://x.com/ishizakahiroshi GET 200（标题 いしざか (@ishizakahiroshi) / X），不列入产品导流。前篇 https://qiita.com/ishizakahiroshi/items/609786acea2d1502382b GET 200，不列入产品导流。一次资料（GitHub issue／讨论各页完整 URL）：https://github.com/microsoft/WSL/discussions/8486 GET 200；https://github.com/openai/codex/issues/60204 GET 200；https://github.com/openai/codex/issues/54509 GET 200；https://github.com/openai/codex/issues/30048 GET 200，落地为讨论／issue 正文。配图 5 张：https://raw.githubusercontent.com/ishizakahiroshi/qiita-content/main/public/images/01_2026-11-10_codex-app-wsl-trace_hero.png、https://raw.githubusercontent.com/ishizakahiroshi/qiita-content/main/public/images/02_2026-11-10_codex-app-wsl-trace_infographic.png、https://raw.githubusercontent.com/ishizakahiroshi/qiita-content/main/public/images/03_2026-11-10_codex-app-wsl-trace_settings-wsl-on.png、https://raw.githubusercontent.com/ishizakahiroshi/qiita-content/main/public/images/04_2026-11-10_codex-app-wsl-trace_settings-wsl-off.png、https://raw.githubusercontent.com/ishizakahiroshi/qiita-content/main/public/images/05_2026-11-10_codex-app-wsl-trace_fig-daily.png 均 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 8,681 本和 42.7GB 是不是同一堆文件，再谈「临时目录被写满」",
+        body: "请按原文核算：本数、合计容量、一本大约多少；按天的 1.6、12.1、16.6、12.3GB 各是哪一天，10 日是不是只到 14 时。92.7% 和 4 天前的 64% 是不是同一块盘。关掉 WSL 开关后盯了多少秒、新进程是多少行；卸载后盯了多少秒。不要把别人 Issue 里的 40.55GiB、107 次、223GB 写成作者自己的盘。大约 20 秒和 21 秒分别出现在哪一段。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "对着 RdClientAutoTrace 目录数本数和容量，再按天画出 11 月 7 日至 10 日的增量。",
+      "对进程启动做 70 秒观察，确认父进程是 Codex 应用，命令是在没装 CLI 的 Ubuntu 里跑 codex --version。",
+      "对照官方 Issue 后，把「设置 → 连接 → WSL」里的 Ubuntu 关掉；不把卸载应用当成最终办法，因为浏览器操作也会一起没掉。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-11-10T19:26:31+09:00 → UTC 2026-11-10T10:26:31Z、Asia/Shanghai 2026-11-10 18:26:31；updated_at 2026-11-10T19:32:38+09:00，晚于发布、同日，仍取 created（published）→ 2026-11-10；GET 200（UA MiraBot/1.0））：ishizakahiroshi 在《Windows の Codex アプリで RdClientAutoTrace が数十GB溜まる原因と止め方》写 8,681 本和 42.7GB。导流个人站点、工具仓 GET 200。配图 5 张 200。Codex 不填进 platforms，platforms 记 []。",
+      "42.7GB 不要写成别人报告的 40.55GiB 或 223GB。按天四笔不要加成另一种合计。不要因进程名 ChatGPT.exe 硬凑 chatgpt。",
+    ],
+  },
+  {
+    id: "1025",
+    slug: "poto-4trap-240",
+    title: "potofo：把《ビジネスモデル2.0図鑑》的 3×3 图解做成 Claude 的 Agent Skill，再用 Agent SDK 和 FastAPI 包成 Web 服务。素材工具包后来改成收费提供，截至文章发布日（2026-10-25）权利人还没回信，Skill 和 Web 服务都没有公开。实际踩到 4 个坑：一次画完对象会重叠，检查通常要 2～4 次（多数事例 2～3 次收敛）；把 SVG 贴进 PowerPoint 再「转换成图形」后文字会溢出；调查模式超过 20 分钟还不回来，被 App Service 前段的 240 秒超时切断；生成中刷新页面后，屏幕回到初始状态，服务器上的作业还在跑。这些是作者自己这次搭建上的记录，不可外推到别人的运行时、超时或文件类型。",
+    summary: "potofo 把 3×3 商业模式图解做成 Agent Skill 并包成 Web 服务，记下 4 个坑：对象重叠（检查通常 2～4 次）、SVG 转 PowerPoint 后文字溢出、App Service 240 秒超时，以及刷新后的残留作业。Skill 和 Web 服务当时未公开。这些是作者自己这次搭建上的记录，不可外推。",
+    description: "面向已经想把 Skill 接到自己的 Web 服务、却还没按运行时超时对过账的人：把对象重叠要检查 2～4 次、SVG 转图形后文字溢出，以及调查超过 20 分钟被 240 秒超时切断写成门禁，区别于只说「接上就能跑」却没有写出检查次数和刷新后作业还在跑的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/potofo/items/16f5df2228ec858393e9",
+    sourceLabel: "qiita.com·potofo 实践帖",
+    upvotes: 916,
+    trending: false,
+    tags: [
+      "claude",
+      "skill",
+      "azure",
+      "pptx",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://qiita.com/potofo/items/16f5df2228ec858393e9",
+      label: "qiita.com·potofo《ビジネスモデル2.0図解をClaude Agent Skill化して、Webサービスにしてみた》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+    approach: "他不让模型直接画图，而是让它写出主体、箭头和补足的 JSON，再由脚本每次拼出同一套 SVG 和 PPTX。检查时把 SVG 转成 PNG，交给模型自己看图改重叠，步骤里写明「2～4 次是会转的」，不许省略。Web 服务这一侧后来改成异步作业加 SSE 报进度，调查加上限，刷新后用图解 ID 重新接上还在跑的作业。",
+    outcomes: [
+      "源披露：4 个坑依次是一次画完对象会重叠、把 SVG 贴进 PowerPoint 再「转换成图形」后文字溢出、调查模式超过 20 分钟被 App Service 前段 240 秒超时切断，以及生成中刷新后屏幕回到初始状态、服务器上的作业还在跑。检查通常要 2～4 次，多数事例 2～3 次收敛。Skill 和 Web 服务当时未公开，作者写明 2026 年 9 月问过权利人，到发布日（2026-10-25）还没收到答复。这些是作者自己这次搭建上的记录，不可外推。",
+      "第 3 个坑：调查模式超过 20 分钟还不回来，被 240 秒超时切断。他给调查加上限：搜索最多 3 次、页面抓取最多 2 件，并禁止精读长 PDF；作业改成异步，单次上限 5 分钟；超时若已有未检查的 SVG，就先把这一版返回。第 2 个坑的根治是不再做 SVG「转换成图形」，改从同一份 JSON 直接生成 PPTX。字体从 90MB 的一式瘦到 17MB，是容器镜像里的做法，不是第 2 个坑本身。第 1 个坑修完后，多数事例 2～3 次收敛。第 4 个坑修完后，刷新会按图解 ID 重新接上还在跑的作业，并加了停止按钮。",
+      "设计上是「应用不知道 Skill 里面有什么」。GitHub Actions 只用来把镜像发到未公开的容器仓库，不要因此把 github 填进 platforms。正文引用了图解总研在线商店里售价 1,650 日元的「ビズグラムツールキット3.0」，并写明这是按销售方条款卖的商品，不是旧版发放时的 CC BY 4.0。刊出的企业图解是作者根据公开信息做的个人理解，不是各公司的官方说明。",
+    ],
+    caveats: [
+      "无 JSON-LD；Qiita API created_at 2026-10-25T07:21:34+09:00 → UTC 2026-10-24T22:21:34Z、Asia/Shanghai 2026-10-25 06:21:34；updated_at 2026-10-25T07:43:55+09:00，晚于发布、同日，仍取 created（published）→ 2026-10-25。UTC 日期是 10-24，不要写成 2026-10-24。不要把 2～4 次和多数 2～3 次写成精确的固定次数。240 秒是 App Service 前段超时，不要和调查「超过 20 分钟」、作业上限 5 分钟混成同一个时钟。90MB 瘦到 17MB 是字体体积，不是第 2 个坑。搜索最多 3 次、抓取最多 2 件是后来加上的上限，不是实测通过率。第 2 个坑是「转换成图形」后文字溢出，不要写成打包失败或装了 LibreOffice。正文对公开写的是見送り，不要写成「先发送」。platforms 记 claude。不要填 github。配图 24 张须全部写完整 URL。文中的循环检查是图解检品，不是 hook 教程。",
+      "导流：https://shop.zukai.co/products/bmitk3 交付时 GET 200（标题 ビズグラムツールキット3.0 – 図解商店），售价 1,650 日元，这是他人付费工具包，按导流披露，可列可达。相关：https://note.com/tck/n/nb76ac2c2a709 GET 200；https://note.com/tck/n/n95812964bcbb GET 200；https://zukai.co/news/bmitk-renewal GET 200；https://creativecommons.org/licenses/by/4.0/deed.ja GET 200；https://creativecommons.org/licenses/by/4.0/legalcode.ja GET 200；https://qiita.com/potofo/items/261cc5e3426ae68d8228 GET 200；https://qiita.com/potofo/items/562610a6fb2f23f0e1ff GET 200；https://qiita.com/potofo/items/604002fb4b8ab5f14857 GET 200；https://addyosmani.com/blog/loop-engineering/ GET 200；https://machinelearningmastery.com/an-introduction-to-loop-engineering/ GET 200；https://adtmag.com/articles/2026/07/01/loop-engineering-emerges-as-developers-put-ai-coding-agents-on-repeat.aspx GET 200。一次资料：https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview 交付时 HTTP 200，跟随后落地 https://claude.com/app-unavailable-in-region，按区域不可用处理，不列入可达；https://code.claude.com/docs/en/agent-sdk/overview GET 200，落在文档页（标题 Agent SDK overview - Claude Code Docs），可列可达。配图 24 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/f815d4e9-2418-425a-b5d1-1a32c9f4782a.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/6925b80e-45dc-4b6d-ad5a-d8d41e390801.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/2ebdb1f2-713a-46d5-b924-882b9c7b5290.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/06e8e237-4133-47b2-b827-a1b66897df20.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/ce754471-60cf-4b05-966e-85216b149767.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/51f1c24b-415f-495f-afe3-851abab09a76.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/50c87191-c5d4-47aa-bc77-5b41c7b16054.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/ef89c557-8a15-4ea4-afd2-4241d805830d.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/db322906-533b-4a37-a4ae-9f35eec6386c.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/dab88480-d925-4833-862a-b3c5f05eab6d.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/78bc2464-4cb4-4db3-9934-99de82201cea.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/7e2527bb-df5f-4d34-9af3-0fabcd3baa37.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/d5fff7ad-c219-429b-a29c-b45e6835051c.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/d5e802ea-f9c1-4527-9f7b-dbc754b3332b.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/8b360ada-c46d-4e6a-8715-e40b72510210.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/a5c8f1c7-7ad2-4a1f-964f-8c291751455e.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/de97565c-e625-44d3-a407-ba021f81bcdf.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/b42e3f6e-8a6a-4b50-ba1d-64495b20ca85.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/713ca9fc-825c-439d-b7f1-94ba059e0a2b.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/46db434f-a712-4bcd-9144-f4fc16d4d7a0.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/84d93e0a-3b26-498a-b7a3-17c6de8ff4a6.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/fa6e9b39-c313-44ee-8e74-bbb3933ad733.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/0bfa2aa1-dbb5-4a0e-9afb-62b6d403ab97.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3764962/278bc4da-8cba-49d7-b1cb-7d857ce9d986.png 均 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 4 个坑和 240 秒分别指什么，再谈「把 Skill 接到 Web 服务就能跑」",
+        body: "请按原文核算：4 个坑分别是什么；检查通常要反复几次，多数事例几次收敛。240 秒是哪一层的超时，调查「超过 20 分钟」是不是同一段。字体从多少瘦到多少，是不是第 2 个坑本身。搜索最多 3 次、抓取最多 2 件、作业最多 5 分钟分别写在哪一层。不要把 1,650 日元的工具包写成作者自己的产品。Skill 和 Web 服务当时公开了没有，权利人回信了没有。不要把「转换成图形」后的文字溢出写成打包失败。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "不让模型直接画图，而是写出图解定义 JSON，再由脚本拼出 SVG 和 PPTX，保证同一套数据能得到同一套图。",
+      "把 SVG 转成 PNG，交给模型自己看图改重叠，步骤里写明 2～4 次会转；PowerPoint 不再做「转换成图形」，改从 JSON 直接生成。",
+      "调查加上限并改成异步作业；刷新后用图解 ID 重新接上还在跑的作业，并加上停止和会话丢失时的说明。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-10-25T07:21:34+09:00 → UTC 2026-10-24T22:21:34Z、Asia/Shanghai 2026-10-25 06:21:34；updated_at 2026-10-25T07:43:55+09:00，晚于发布、同日，仍取 created（published）→ 2026-10-25；GET 200（UA MiraBot/1.0））：potofo 在《ビジネスモデル2.0図解をClaude Agent Skill化して、Webサービスにしてみた》写 4 个坑和 240 秒超时。UTC 日期是 10-24，必须写成 2026-10-25。配图 24 张均 200。官方 Skills 概述页跟随后为区域不可用，不列入可达。",
+      "shop.zukai.co 是他人付费工具包，须按导流披露。不要把 240 秒和超过 20 分钟、最多 5 分钟混成同一个时钟。正文是見送り，不要写成「先发送」。",
+    ],
+  },
+  {
+    id: "1027",
+    slug: "tapr-19to20-66",
+    title: "tappers：在完全离线的实验用沙箱虚拟机 VM210 上，用同一个模型 gemini-3.8-flash、同一道未公开的 20 题，把「1 个特工自己写测试再自己实现」（Mode A，SingleContextTDD）和「2 个特工、两份工作树的盲测 TDD」（Mode B，BlindWorktreeTDD）各跑了 1 次。独立评分上，Mode A 是 19／20，变异体击破是 0／6；Mode B 是 20／20，变异体击破是 6／6。客人机里的运行时间是 14.70 秒对 25.61 秒。原讨论里的模式写的是 Codex 写测试、Claude Code 去通过，这次实测用的是 Gemini。这些是作者自己这一次、这一台虚拟机上的计数，不可外推到别的模型、题目或多次重复。",
+    summary: "tappers 在 VM210 上用 gemini-3.8-flash 把两种 TDD 各跑 1 次：Mode A 独立评分 19／20、变异体 0／6；Mode B 是 20／20、6／6。时间是 14.70 秒对 25.61 秒。原模式里的 Codex／Claude Code 这次没有用来跑。这些是作者自己这一次上的计数，不可外推。",
+    description: "面向已经在让特工自己写测试的人：把各跑 1 次得到的 19／20 对 20／20、以及变异体 0／6 对 6／6 写成门禁，区别于只看特工自己申报的测试通过、或把原讨论里的 Codex／Claude Code 当成这次实测模型的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/tappers/articles/ai-labo-e06-blind-tdd-worktrees",
+    sourceLabel: "zenn.dev·tappers 实践帖",
+    upvotes: 918,
+    trending: false,
+    tags: [
+      "tdd",
+      "agent",
+      "gemini",
+      "evaluation",
+      "devtools",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tappers/articles/ai-labo-e06-blind-tdd-worktrees",
+      label: "zenn.dev·tappers《AIに自分のコードのテストを書かせるとバグを見逃す？「1エージェントTDD」vs「2エージェント・ブラインドTDD」実機検証》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+    approach: "他在隔离沙箱里用同一个模型和同一道未公开的 20 题，让两种模式在两份互不影响的目录里连续跑完。Mode A 是 1 个特工在同一段上下文里既写测试又写实现；Mode B 是一份工作树只写测试、另一份只看这份不能改的测试去实现。评分用独立的 20 题和 6 个变异体，不看特工自己申报的通过。",
+    outcomes: [
+      "源披露：各模式只跑了 1 次。独立评分（未公开的 20 题）上，Mode A 是 19／20（95.0%），Mode B 是 20／20。6 个变异体上，Mode A 是 0／6，Mode B 是 6／6。客人机里的运行时间是 14.70 秒对 25.61 秒。这些是作者在 VM210 上用 gemini-3.8-flash 做的这一次计数，不可外推到别的模型、题目或多次重复。",
+      "Mode A 自己写的测试只覆盖了 1 条正常路径，异常和边界题 1 件都没写，变异体因此是 0／6；它在自己的测试上 1／1 通过并提交，独立评分却有 1 题失败。Mode B 的测试先在带初始缺陷的代码上立刻报错（红灯阶段成立），变异体 6／6；实现那一侧在不能改测试的前提下，独立评分 20／20 一次过。调用次数是 Mode A 1 次、Mode B 2 次（写测试 1 次加实现 1 次）。",
+      "表里还有输入 token 2,035 对 7,493（2,448＋5,045），输出 1,717 对 3,257（1,739＋1,518），费用大约 $0.00797 对 $0.01784（大约多 $0.0098）。这些不是本条硬窗，不要写成和近批 token／费用条对照。原讨论的模式写的是 Codex 写测试、Claude Code 去通过，这次实测用的是 Gemini，不要把那两个产品填进 platforms。系列总集篇在文首有链。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-08T18:23:58.641+09:00 → UTC 2026-11-08T09:23:58Z、Asia/Shanghai 2026-11-08 17:23:58；bodyUpdatedAt 与发布相同，取 published → 2026-11-08。各模式只跑了 1 次，不要写成多轮平均或中位数。不要把 19／20 和 20／20、0／6 和 6／6 混用。不要把特工自己申报的 1／1 当成独立评分。14.70 秒和 25.61 秒是客人机里的运行时间。输入／输出 token 和大约 $0.00797／$0.01784 不是本条硬窗，不要和 #985、#989、#993、#996、#1003、#1006、#1007、#1008、#1011、#1016、#1020、#1026 的 token／耗时／费用混用。文中测试题里的 10,000 円是边界用例，不是作者花费。Gemini、Codex 不在 18 值枚举里；这次实测用的是 Gemini，正文虽提到原模式里的 Claude Code，不硬凑 claude。platforms 记空数组 []。不要填 github。不要和近批 CI／批准条混用。",
+      "导流：无作者产品导流可列。相关系列总集篇 https://zenn.dev/tappers/articles/ai-labo-agent-harness-patterns-omnibus 交付时 GET 200（标题 AIエージェントの「ハーネスエンジニアリング」実践パターンを片っ端から実機A/B検証！トークン90%削減・品質100%の黄金設計総集編），按相关篇披露，不列入产品导流。E14 等 token 对照篇留在本批评估池，不并进本条。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 19／20 和 20／20 各跑了几次、变异体是不是同一组，再谈「盲测 TDD 一定更好」",
+        body: "请按原文核算：Mode A 和 Mode B 各跑了几次；独立评分的 20 题上各是多少，变异体 6 个上各是多少。特工自己申报的 1／1 和独立评分是不是同一组。14.70 秒和 25.61 秒是哪一层的时间。这次实测用的是哪个模型，原讨论里的 Codex／Claude Code 有没有用来跑。不要把表里的 token 和大约 0.00797 美元写成硬窗。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在完全离线的 VM210 上，用同一个模型和同一道未公开的 20 题，让两种模式在互不影响的目录里各跑 1 次。",
+      "Mode A 在同一段上下文里既写测试又写实现；Mode B 把写测试和实现拆到两份工作树，实现那一侧不能改测试。",
+      "用独立的 20 题和 6 个变异体评分，不看特工自己申报的通过，并留下 7 份证迹文件。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T18:23:58.641+09:00 → UTC 2026-11-08T09:23:58Z、Asia/Shanghai 2026-11-08 17:23:58；bodyUpdatedAt 与发布相同，取 published → 2026-11-08；GET 200（UA MiraBot/1.0））：tappers 在《AIに自分のコードのテストを書かせるとバグを見逃す？「1エージェントTDD」vs「2エージェント・ブラインドTDD」実機検証》写 19／20 对 20／20、0／6 对 6／6。各模式只跑了 1 次。实测模型是 gemini-3.8-flash，platforms 记 []，不要硬凑 claude。",
+      "硬窗是独立评分和变异体，不是 token 或大约 1 美分的费用差。不要把特工自己申报的 1／1 当成 19／20 或 20／20。",
+    ],
   }
 ];
 
