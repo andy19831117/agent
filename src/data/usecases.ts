@@ -72604,6 +72604,60 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "1033",
+    slug: "riyu-8of3-14",
+    title: "りゅう／riyu8929：翻自己的 ChatGPT 记录，发现「172.16.0.0 0.0.31.255 的范围是？」在 3 个对话里一共问了 8 次，还经常要做 CIDR 与通配符替换、以及构建前后的配置差分。于是做了只在浏览器里运行的 netkit：用 CSP 的 connect-src 'none' 禁止往外发，页面是 GitHub Pages 上的三个静态文件。计算部分用 node 跑了 14 件测试，样例地址全部是虚构的。文末「问了 3 次以上不如做成工具」是事后概括，不是这次量到的 8 次。这些是作者自己的聊天记录和这套页面上的结果，不可外推。",
+    summary: "riyu8929 在 3 个 ChatGPT 对话里把同一句范围计算问了 8 次，于是做了浏览器内、禁止外连的 netkit，并用 node 跑了 14 件测试。『3 次以上』是事后概括，不是量到的 8 次。这些是作者自己的记录和这套页面，不可外推。",
+    description: "面向已经在反复问模型算通配符和看配置差分、却还没把「8 次、3 个对话」和事后那句「3 次以上」分开的人：把这 8 次和 14 件测试写成门禁，区别于把工具普及率写成已经测过。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/riyu8929/articles/netkit-acl-wildcard-config-diff",
+    sourceLabel: "zenn.dev·riyu8929 实践帖",
+    upvotes: 924,
+    trending: false,
+    tags: [
+      "chatgpt",
+      "acl",
+      "cidr",
+      "browser-tool",
+      "config-diff",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/riyu8929/articles/netkit-acl-wildcard-config-diff",
+      label: "zenn.dev·riyu8929《ChatGPTに同じ計算を8回聞いていたので、ACLとコンフィグ差分の道具をブラウザだけで作った》",
+      date: "2026-09-17",
+      dateLabel: "发布",
+    },
+    approach: "目标是把贴进去的配置留在浏览器里。页面加上 CSP：connect-src、img-src、form-action、frame-src 都是 none，没有构建步骤。CIDR 替换只改 a.b.c.d/nn，并用前后不是字母数字下划线或点的规则，避免改到对象名里的地址。差分把每一行变成「路径＋行」再做多重集合相减，相同设置名的删和加再收成「变更」。",
+    outcomes: [
+      "源披露：同一句「172.16.0.0 0.0.31.255 的范围是？」在 3 个 ChatGPT 对话里一共问了 8 次。这是作者翻自己历史时数到的次数和对话数，不可外推到别人的工作或别的模型。文末「同样的事问了 3 次以上，不如做成工具」是事后概括，不要写成这次量到的就是 3 次，也不要把 8 次和 3 个对话加成 11。",
+      "计算部分集中在 netkit.js，用 node test.js 跑了 14 件测试；样例地址全部是虚构的，不要当成真实网段或已在设备上验证过的变更。最初用简单正则时，会改到 NET_10.0.0.0/8 这类对象名，也会改到字母紧挨着的 x1.2.3.4/8。不连续通配符（如 0.0.255.0）不能转成 CIDR，函数会返回空。",
+      "配置差分里，新增 vlan 130 一度既出现在顶层又出现在分段里；后来对整段新增的子段改在名称后标「（新規）」，不再重复顶层标题。空段（只加 vlan 999 这类）仍按顶层显示。正文要求自己核对后再下到设备上。正文「ChatGPT」只出现在翻自己历史时的动机／记录来源（「自分の ChatGPT の履歴を読み返していたら」）；这次做的是只在浏览器里运行、CSP connect-src 'none' 的 netkit，ChatGPT 不是这次做工具的执行方。platforms=[]。不要硬凑 chatgpt。不要因为页面放在 GitHub Pages 就把 github 填进 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-09-17T11:29:40.110+09:00 → UTC 2026-09-17T02:29:40Z、Asia/Shanghai 2026-09-17 10:29:40；bodyUpdatedAt 与发布相同，取 published → 2026-09-17；GET 200（UA MiraBot/1.0）。8 次是 3 个对话里的合计，不是「3 次以上」这句概括，也不是 14 件测试的次数。样例地址是虚构的。正文无配图、无 YouTube 嵌入。正文「ChatGPT」只出现在翻自己历史时的动机／记录来源，这次做的是只在浏览器里运行、CSP connect-src 'none' 的 netkit，ChatGPT 不是这次做工具的执行方。platforms=[]。不要硬凑 chatgpt。不要填 github。",
+      "导流：作者工具 https://riyu8929.github.io/netkit/ 交付时 GET 200（标题 netkit — ACL とコンフィグ差分の道具），按作者产品导流披露，可列可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 8 次是 3 个对话里的合计，再谈「问了 3 次以上就该做工具」",
+        body: "请按原文核算：「172.16.0.0 0.0.31.255 的范围是？」问了几次、分散在几个对话。文末「3 次以上」是不是事后概括，能不能写成这次量到的次数。14 件测试是不是 node 上的计算测试，样例地址是不是虚构的。不要把 8 次和 3 个对话加成 11。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用 CSP 把 connect-src、img-src、form-action、frame-src 设成 none，页面只是 GitHub Pages 上的 HTML／CSS／JS 三个静态文件，没有构建、也不把配置送出去。",
+      "CIDR 替换只在前后不是「字母数字、下划线、点」时才动手，并把 /0 的位移当成特例，避免 JavaScript 移位按 32 取模。",
+      "范围查询按第二个值的首段是不是 255 来区分子网掩码和通配符；不连续掩码不转 CIDR。",
+      "差分先按缩进或 FortiGate 的 config／edit 把行变成路径加行，再做多重集合相减；同一设置名的删和加收成变更，整段新增的子段只在名称后标「（新規）。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-17T11:29:40.110+09:00 → UTC 2026-09-17T02:29:40Z、Asia/Shanghai 2026-09-17 10:29:40；bodyUpdatedAt 与发布相同，取 published → 2026-09-17；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-09-17。",
+      "8 次是 3 个对话里的合计，「3 次以上」是事后概括。14 件测试的地址是虚构的。作者工具须按导流披露。正文「ChatGPT」只作翻自己历史时的动机／记录来源，不是这次做 netkit 的执行方。platforms=[]。不要硬凑 chatgpt。不要填 github。",
+    ],
+  },
+  {
     id: "1034",
     slug: "kosa-143-16",
     title: "Kazunori Osaki／kosaki08：为了减少等待，让编码特工在上游还没定稿时，只在能退回的范围内先做。任务管理上记成完成的件数，8 月上旬那一周是每天 1.43 件，并行那一周是每天 16.0 件；作者写明不是同一类工作，而且近一周很多是在改基础设施，不能直接说成 11 倍。某一刻的快照是执行中 17 件、等内部评审 12 件、等自己判断 2 件。有一天提交到 979 次；另一次不含合并的统计是源码提交 42 次、只改交接备忘 508 次，和 979 的算法不同，不是它的精确拆分。记下的 12 件「进行中」里，真正在跑的只有 2 件。这些是作者自己这一段运用上的计数，不可外推。",
