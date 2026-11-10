@@ -69044,6 +69044,557 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-10-13T09:26:04.260+09:00 → UTC 2026-10-13T00:26:04Z、Asia/Shanghai 2026-10-13 08:26:04；bodyUpdatedAt 2026-10-13T09:30:41.022+09:00，晚于发布、同日，仍取 published → 2026-10-13；GET 200（UA MiraBot/1.0））：menmen_ailab 在《Claude Code Modsは要る? コードを書かない私が1つ入れて確かめた》记下 3 处磕绊。",
       "硬窗不是 hook 教程。2.1.295 里找不到 cc-plugin-diff 的原因，作者写明自己也没查清。md-prompt 仓库不列入本条作者导流。",
     ],
+  },
+  {
+    id: "968",
+    slug: "aroma-todo-3s",
+    title: "aromarious：Claude Code 2.1.287（2026-10-01）起有了 mod。作者做了侧边插件 todo-pane，右边两个标签：TODO 和钉住。TODO 页最底下会留下一天做完事项的最后 5 件；插件在 session.start 时开始每 3 秒重读一次文件。同一目录开多个会话时，清单写在 .claude/todo/<会话名>-<ID 前 6 位>.md，免得混在一起。Git 差分窗开着时，TODO 窗会藏在后面，要先 /diff 或关掉差分窗。这些是作者自己这套插件上的用法，不可外推到别的版本或其他插件。",
+    summary: "aromarious 给 Claude Code 做了侧边 TODO 插件 todo-pane。上一天做完的事在 TODO 页最底下留最后 5 件，文件每 3 秒重读一次，并按会话名拆开，避免同一目录里多个会话把清单混在一起。差分窗开着时，这个窗会藏在后面。这些是作者自己这套插件上的用法，不可外推。",
+    description: "面向已经在 Claude Code 里做长作业、却因为 TODO 列表不再显示而找不到「现在做到哪」的人：把每 3 秒重读、最后 5 件和按会话拆文件写成门禁，区别于只介绍 Mods、却没有写出自己插件怎么分文件、会被哪扇窗挡住的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/aromarious/articles/20261005-todo-pane",
+    sourceLabel: "zenn.dev·aromarious 实践帖",
+    upvotes: 859,
+    trending: false,
+    tags: [
+      "claude-code",
+      "mods",
+      "todo-pane",
+      "plugin",
+      "session",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/aromarious/articles/20261005-todo-pane",
+      label: "zenn.dev·aromarious《Claude Code の横に TODO リストを出し続ける plugin を作った》",
+      date: "2026-10-05",
+      dateLabel: "发布",
+    },
+    approach: "作者发现近来模型不再把 TodoWrite 的任务列表画在画面上，人却跟不上。于是用 2.1.287 起的 mod 做了侧边插件 todo-pane，让 Claude 把「现在在做」和「做完的」写到会话各自的 Markdown 里，并在旁边一直显示。",
+    outcomes: [
+      "源披露：插件要 Claude Code 2.1.287 及以上。TODO 页最底下会留下一天做完事项的最后 5 件；session.start 时开始每 3 秒重读一次文件。同一目录开多个会话时，文件名用会话名加 ID 前 6 位，免得清单混在一起。这些是作者自己这套插件上的用法，不可外推到别的版本或其他插件。",
+      "Git 差分窗开着时，TODO 窗会藏在后面；/todo-pane 也未必能把它调到前面，要先 /diff 或关掉差分窗。关掉后，状态会记在 ~/.claude.json 的 diffSidebarOpen 里。不要把「最后 5 件」写成全部历史。",
+      "钉住是另一个标签，靠技能 /todo-pane:pin 把说明或查到的值留在旁边。mod 事件里还有 prompt.submit、turn.start 等，只是这套插件的装置，本篇硬窗不是 hook 教程，也不要和 #964 的 6 个以上会话、10 本以上 PR 混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-09T16:22:55.212+09:00，晚于发布且跨到 10-09，仍取 published → 2026-10-05。配图 1 张：https://static.zenn.studio/user-upload/deployed-images/ea4c1e370a54eb2b3ecb219e.png?sha=dfca84b57f51e55e28ec565a413cc0c81630d22a GET 200。作者卡 website 为空。硬窗不是 hook 教程。",
+      "导流：https://github.com/aromarious/claude-code-plugins GET 200；https://github.com/aromarious GET 200；https://x.com/aromarious GET 200（标题 aromarious (aro) (@aromarious) / X）。primary GET 200。platforms 记 claude。不要把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先问清每 3 秒重读和最后 5 件是不是同一套清单，再谈「旁边一直看着就行」",
+        body: "请按实测算一算：todo-pane 要哪个版本以上；TODO 页最底下留下一天做完事项的最后几件；文件是隔多少秒重读一次；同一目录开多个会话时，文件名怎么写，会不会把清单混在一起；Git 差分窗开着时，TODO 窗还看不看得到，要怎么把它调出来。不要把最后几件写成全部历史，也不要把这套插件的计数写成别的 Mods 篇里的会话数或 PR 数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "装上插件后，Claude 会先问要不要建 TODO 列表；答应后，清单写在该会话自己的 Markdown 里，右边 TOC 和钉住两个标签一起出现。",
+      "session.start 时开始每 3 秒重读一次文件；会话中途改名时，文件名也会在这次重读里一并改掉。",
+      "差分窗开着会把 TODO 窗挡住。关掉差分窗后，这个状态会记下来，以后不会再自动打开。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-05T20:51:29.835+09:00 → UTC 2026-10-05T11:51:29Z、Asia/Shanghai 2026-10-05 19:51:29；bodyUpdatedAt 2026-10-09T16:22:55.212+09:00，晚于发布且跨到 10-09，仍取 published → 2026-10-05；GET 200（UA MiraBot/1.0））：aromarious 在《Claude Code の横に TODO リストを出し続ける plugin を作った》记下这套插件。不要因 bodyUpdatedAt 写成 2026-10-09。",
+      "最后 5 件不是全部历史。每 3 秒重读和按会话拆文件不要混用。硬窗不是 hook 教程。",
+    ],
+  },
+  {
+    id: "969",
+    slug: "genk-21job-8go",
+    title: "genkunjc：想让 ChatGPT 的 dots 决定下一步、Claude Code 动手、Codex 来审计，中间不再靠人复制粘贴。从 2026-10-06 起大约跑了 1 天，metrics.jsonl 里有 21 件：16 件是无人启动，5 件交给人正在开着的 Claude Code。正式委托一件大约 10–26 分钟。Codex 审计是 GO 8 件、要修正 9 件，将近一半被退回。拾取脚本 10 分钟转一圈。作者写明还是试验运用，件数少，这些比例不可外推到更长周期或其他环境。",
+    summary: "genkunjc 把 ChatGPT 的 dots、Claude Code 和 Codex 用文件交接串起来，10 分钟转一圈。从 2026-10-06 起大约 1 天里记了 21 件，其中 16 件无人启动；正式委托一件大约 10–26 分钟，审计 GO 8 件、要修正 9 件。作者写明还是试验运用，这些数字不可外推。",
+    description: "面向已经分别使用 dots、Claude Code 和 Codex、却还在靠人来回粘贴的人：把 21 件里的 16 件无人启动，以及 GO 8／要修正 9 写成门禁，区别于只给出连接设想、却没有写出自己跑过几天、审计过几件的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/genkunjc/articles/dots-claude-code-hub-prompt",
+    sourceLabel: "zenn.dev·genkunjc 实践帖",
+    upvotes: 860,
+    trending: false,
+    tags: [
+      "claude-code",
+      "chatgpt",
+      "dots",
+      "codex",
+      "unattended",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/genkunjc/articles/dots-claude-code-hub-prompt",
+      label: "zenn.dev·genkunjc《dotsとClaude Codeをつないでみた、試験運用中のコピペ用プロンプト》",
+      date: "2026-10-07",
+      dateLabel: "发布",
+    },
+    approach: "作者不想再在 dots、Claude Code 和 Codex 之间复制粘贴，于是让 dots 把委托写成文件，拾取脚本按 10 分钟一轮去启动 Claude Code，再用 Codex 审计，并把结果写回。外向操作（push、公开、发送、计费）在代码里先关掉。",
+    outcomes: [
+      "源披露：从 2026-10-06 起大约跑了 1 天，metrics.jsonl 里有 21 件。其中 16 件是无人启动，5 件交给人正在开着的 Claude Code。正式委托一件大约 10–26 分钟。Codex 审计是 GO 8 件、要修正 9 件，将近一半被退回。这些是这一天试验运用上的记录，不可外推到更长周期或其他环境。",
+      "21 是这一天记下来的总件数，不要和 16 件无人启动、或 8＋9 件审计结果混用。不是 21 件都走了同一套审计。作者写明件数还少，这个退回比例以后会怎么变，自己也还不知道。",
+      "拾取脚本 10 分钟转一圈；并行上限、模型、是否审计等由 dots 的 policy.json 决定，但出界的值会被脚本收束。Windows 上用任务计划程序时，桌面应用里装的 claude 可能在计划任务里看不见，要用实际路径启动。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-07T16:36:11.048+09:00，晚于发布、同日，仍取 published → 2026-10-07。正文无配图。作者卡 GitHub／website 为空。Codex 不在 19 个枚举里，不填进 platforms。正文点名了 ChatGPT 的 dots，platforms 记 claude、chatgpt。",
+      "导流：https://x.com/sadsadasgaaxwa GET 200（标题 circle (@sadsadasgaaxwa) / X）。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先把 21 件、16 件无人启动和 8／9 的审计结果分开，再谈「已经能 24 小时无人转」",
+        body: "请按实测算一算：从哪一天起跑了大约多久；metrics 里一共多少件，其中多少件是无人启动，多少件是交给人正在开着的 Claude Code；正式委托一件大约要多久；Codex 审计 GO 多少件、要修正多少件。不要把总件数和审计件数混用，也不要把这一天的退回比例写成长期结论。作者有没有写明还是试验运用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "dots 把委托和方针写到自己的工作目录；拾取脚本按入口的 glob 去找文件，再在目标项目里用 claude -p 无人启动。",
+      "做完后由 Codex 写出「审计：GO / 要修正」，并把耗时、判定记进 metrics.jsonl 和 budget.md。",
+      "脚本每 10 分钟转一圈；子进程还在跑时，本体要留下，以免计划任务把孩子一起停掉。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-07T16:22:12.837+09:00 → UTC 2026-10-07T07:22:12Z、Asia/Shanghai 2026-10-07 15:22:12；bodyUpdatedAt 2026-10-07T16:36:11.048+09:00，晚于发布、同日，仍取 published → 2026-10-07；GET 200（UA MiraBot/1.0））：genkunjc 在《dotsとClaude Codeをつないでみた、試験運用中のコピペ用プロンプト》记下这次试验。",
+      "21 件、16 件无人启动、GO 8／要修正 9 不要混用。还是试验运用，不可外推。",
+    ],
+  },
+  {
+    id: "970",
+    slug: "dani-506q-33ok",
+    title: "daniellamar：开发未经验，用 Claude Code 做出了「快捷键大师」。Excel、PowerPoint、Chrome、Windows 共 506 问，用 60 秒测验来计分，等级从 Bronze 到 Grandmaster 共 17 档。AI 说按键已经能收到，作者不直接信，在自己电脑上实按了 36 个键：33 个能收到，PrintScreen、Win＋Shift＋S、Alt＋Space 这 3 个会被 Windows 先抢走，已从出题里拿掉。公开前又按 40 项核对表查出 3 件故障并修好。这些是这一次发布前的核对，不可外推到别的页面或其他键盘。",
+    summary: "daniellamar 用 Claude Code 做出 506 问、60 秒测验的快捷键练习站。自己在电脑上实按 36 个键，33 个能收到，3 个被系统先抢走，已拿出题。公开前用 40 项核对表查出 3 件故障并修好。这些是这一次发布前的核对，不可外推。",
+    description: "面向打算靠 AI 把练习站直接公开的人：把 36 键里的 33／3，以及 40 项核对表上的 3 件故障写成门禁，区别于只宣布「已经能收到按键」、却没有自己逐个按过的发布。",
+    categories: [
+      "education",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/daniellamar/articles/6ab44b1f9ecfe1",
+    sourceLabel: "zenn.dev·daniellamar 实践帖",
+    upvotes: 861,
+    trending: false,
+    tags: [
+      "claude-code",
+      "shortcuts",
+      "keyboard",
+      "qa",
+      "launch",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/daniellamar/articles/6ab44b1f9ecfe1",
+      label: "zenn.dev·daniellamar《開発未経験から Claude Code で Web アプリを公開した。現役エンジニア・PM に聞きたい 4 つのこと》",
+      date: "2026-10-08",
+      dateLabel: "发布",
+    },
+    approach: "作者几乎没有开发经验，用 Claude Code 做了快捷键练习站并上线。上线前不接受「按键已经能收到」的口头结论，自己按键、列核对表，再把查出的故障修好。",
+    outcomes: [
+      "源披露：练习站覆盖 Excel、PowerPoint、Chrome、Windows 共 506 问，用 60 秒测验计分，等级 17 档。作者在自己电脑上实按了 36 个键，33 个能收到，PrintScreen、Win＋Shift＋S、Alt＋Space 这 3 个会被 Windows 先抢走，已从出题里拿掉。这些是这一次发布前的核对，不可外推到别的页面或其他键盘。",
+      "公开前用 40 项核对表查出 3 件故障，修好后才发布。3 件故障不要和按不进去的 3 个键混用。文内引用「公开中的 Web 应用 9 成有漏洞」是别人的调查，不是作者自己测出来的比例。",
+      "Ctrl＋T 在全屏练习里仍可能打开真实标签页，这是作者写过的踩坑，不要把它写进已经拿出题的 3 个键里。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与发布相同，取 published → 2026-10-08。配图 2 张：https://static.zenn.studio/user-upload/11362890aa9d-20261008.gif 、https://static.zenn.studio/user-upload/d1d916bc0414-20261008.png 均 GET 200。作者卡 GitHub／X／website 均为空。",
+      "导流：https://keyboardshortcut.app/?s=1 GET 200（标题 ショートカットマスター — キーボードだけで仕事を回す力を鍛える）；https://x.com/danieosaka GET 200（标题 ダニエル (@danieosaka) / X）。一次资料、不列入作者产品导流：https://www.itmedia.co.jp/news/article/2610/07/2000002055/ GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 36 个键里有几个其实没收到，再谈「AI 说已经能用了」",
+        body: "请按实测算一算：练习站有多少问，测验是多少秒，等级分几档；作者自己实按了多少个键，几个能收到，几个被系统先抢走，这几个有没有从出题里拿掉；公开前的核对表有多少项，查出几件故障，是不是修好后才发布。不要把按不进去的键数和核对表上的故障件数混用，也不要把别人调查里的比例写成作者自己的测量。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "题目在模拟桌面上练，60 秒测验答对时，背后的 Excel 等画面会跟着动。",
+      "作者先做确认页，在自己电脑上逐个按键，把系统会先抢走的 3 个键从出题里拿掉。",
+      "再用 40 项核对表查过一遍，把 3 件故障修好后才公开。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-08T17:34:27.399+09:00 → UTC 2026-10-08T08:34:27Z、Asia/Shanghai 2026-10-08 16:34:27；bodyUpdatedAt 与发布相同；取 published → 2026-10-08；GET 200（UA MiraBot/1.0））：daniellamar 在《開発未経験から Claude Code で Web アプリを公開した。現役エンジニア・PM に聞きたい 4 つのこと》记下这次发布前核对。",
+      "36 键里的 33／3，不要和核对表上的 3 件故障混用。9 成漏洞不是作者自己测的。",
+    ],
+  },
+  {
+    id: "971",
+    slug: "masa-blink-5type",
+    title: "masa0902dev：要把文本光标的闪烁停掉，好专心思考。macOS Tahoe 26 上，在「系统设置」＞「辅助功能／无障碍」＞「视差效果」里打开「优先使用不闪烁的光标」，多数用系统文本控件的应用就会停。VSCode 自己画光标，editor.cursorBlinking 有 blink、smooth、phase、expand、solid 这 5 种，只有 solid 不闪。Claude Code 执行中的「●」「✻」不是文本光标，系统设置管不到，要把 prefersReducedMotion 设为 true。发布时刻是 JST 2026-10-10 00:43，换算到上海已是 2026-10-09 23:43，必须写成 2026-10-09。这些是作者在自己环境里对照过的设法，不可外推到所有应用或所有系统版本。",
+    summary: "masa0902dev 要停掉文本光标闪烁。macOS 的无障碍项能管住多数系统控件；VSCode 的 5 种光标动画里只有 solid 不闪；Claude Code 的装饰符号要另开 prefersReducedMotion。JST 10-10 00:43 换算到上海是 2026-10-09。这些是作者自己对照过的设法，不可外推。",
+    description: "面向会被闪烁光标打断思路、却以为改一处就能管住所有软件的人：把 VSCode 5 种里只有 solid 不闪，以及 Claude Code 装饰符号要另设写成门禁，区别于只说「打开无障碍项就行」、却没有对照过系统光标和编辑器、代理装饰是不是同一套开关的实践。",
+    categories: [
+      "life",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/masa0902dev/articles/macos-stop-blink-of-text-cursor",
+    sourceLabel: "zenn.dev·masa0902dev 实践帖",
+    upvotes: 862,
+    trending: false,
+    tags: [
+      "claude-code",
+      "accessibility",
+      "cursor",
+      "macos",
+      "vscode",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/masa0902dev/articles/macos-stop-blink-of-text-cursor",
+      label: "zenn.dev·masa0902dev《テキストカーソルの点滅を止めて思考に集中しよう【macOS・VSCode・Claude Code】》",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+    approach: "作者日常写代码和文件时会被闪烁光标打断，于是按系统、VSCode、Claude Code 三层把「停闪」的开关分别找出来，并记下不同 macOS 版本里这项设在哪。",
+    outcomes: [
+      "源披露：macOS Tahoe 26 上，在「系统设置」＞「辅助功能／无障碍」＞「视差效果」打开「优先使用不闪烁的光标」，多数用系统文本控件的应用会停闪。VSCode 的 editor.cursorBlinking 有 5 种，只有 solid 不闪，另外 4 种只是动画不同。Claude Code 执行中的「●」「✻」要靠 prefersReducedMotion 设为 true，系统设置管不到。这些是作者在自己环境里对照过的设法，不可外推到所有应用或所有系统版本。",
+      "同一项在 macOS Sequoia 15 里放在「辅助功能／无障碍」＞「显示器」。不要把 5 种光标动画写成 5 种停闪办法。也不要把系统光标、VSCode 光标和 Claude Code 的装饰符号当成同一个开关。",
+      "发布时刻是 JST 2026-10-10 00:43:05，换算到上海已是 2026-10-09 23:43:05，必须写成 2026-10-09，不要写成 2026-10-10。bodyUpdatedAt 跨到 10-31，仍取 published。",
+    ],
+    caveats: [
+      "发布时刻是 JST 2026-10-10 00:43，换算到上海已是 2026-10-09 23:43，必须写成 2026-10-09，不要写成 2026-10-10。bodyUpdatedAt 2026-10-31T18:52:11.044+09:00，晚于发布且跨到 10-31，仍取 published。配图 6 张均 GET 200：https://static.zenn.studio/user-upload/deployed-images/792007a5f5eb864eda78414d.gif?sha=f0e89bc7d6533880b85ba723e2587fd9cd97b619 、https://static.zenn.studio/user-upload/deployed-images/1e9c5fd8ab5bd02366a1e3ac.gif?sha=bff04159ed70b2c9d365cd638611c303f5491c3a 、https://static.zenn.studio/user-upload/deployed-images/5dd262ce0ec4f787f14f6bb0.gif?sha=a106dd6f8fac3787b0edfe5d7153b06f62b2a056 、https://static.zenn.studio/user-upload/deployed-images/cf6a93fd95d37415d102e505.jpg?sha=ed4cefe382bbabf430362830b054f028f2005d15 、https://static.zenn.studio/user-upload/deployed-images/52a2fe75e9c1de8fb6101b7c.gif?sha=57fa3c2ec0407252382378e7925815cf5273dd4e 、https://static.zenn.studio/user-upload/deployed-images/96f897fb6c4cc23be1584cf7.gif?sha=94aa8a471bf4ae3f1163db5759635a7325c9fdce 。作者卡 website 为空。macOS／VSCode 不在 19 个枚举里，不填进 platforms。accessibility 译「无障碍／可访问性」。",
+      "导流：https://github.com/masa0902dev GET 200；https://x.com/m0902dev GET 200（标题 nuuu (@m0902dev) / X）；https://csp.web.nitech.ac.jp/pages/events/2026-NOREMIA-symposium/ GET 200（文内宣传 2026-11-24 国际研讨会）。一次资料：https://code.claude.com/docs/en/settings-reference#prefersreducedmotion GET 200；https://forum.literatureandlatte.com/t/blinking-insertion-point-with-recent-update/134175 GET 200；https://misophoniainternational.com/?p=33472 GET 200、redir 1。一次资料补：https://support.apple.com/ja-jp/guide/mac-help/mchla3c4f1da/mac 写作窗口（19:12:10–19:13:41）两次均为 429 Too Many Requests；父代理复检（19:20:51–19:20:59）GET 200、redir 0，未跟到其他页。披露首次 429，按最后一次 200 列入可达。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清系统光标、VSCode 的 5 种动画和 Claude Code 的装饰符号，再谈「开一个无障碍项就全部停闪」",
+        body: "请按实测算一算：macOS 上停闪的系统项在 Tahoe 26 和 Sequoia 15 分别放在哪一页；VSCode 的 editor.cursorBlinking 有几种，其中哪种才不闪；Claude Code 执行中的符号是不是文本光标，要不要另开 prefersReducedMotion。不要把 5 种动画写成 5 种停闪办法，也不要因为源时区写的是 10-10 就把上海日期写成 10-10。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先打开 macOS 的无障碍项，管住多数用系统文本控件的应用。",
+      "VSCode 要另外把 editor.cursorBlinking 设成 solid，因为另外 4 种仍会闪。",
+      "Claude Code 的装饰符号再在设置里打开 prefersReducedMotion。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-10T00:43:05.048+09:00 → UTC 2026-10-09T15:43:05Z、Asia/Shanghai 2026-10-09 23:43:05；bodyUpdatedAt 2026-10-31T18:52:11.044+09:00，晚于发布且跨到 10-31，仍取 published → 2026-10-09；GET 200（UA MiraBot/1.0））：masa0902dev 在《テキストカーソルの点滅を止めて思考に集中しよう【macOS・VSCode・Claude Code】》记下这组对照。不要因 JST 日期 10-10 或 bodyUpdatedAt 写成 2026-10-10 或 2026-10-31。",
+      "5 种里只有 solid 不闪。https://support.apple.com/ja-jp/guide/mac-help/mchla3c4f1da/mac 写作窗口两次均为 429，复检 GET 200、redir 0，披露首次 429，按最后一次列入可达。",
+    ],
+  },
+  {
+    id: "972",
+    slug: "shin-13test-inv",
+    title: "shin_ikewaki：用 Claude Code 出设计过的估价单和请款单时，金额、版式和编号不能交给模型口算。作者让 Claude 只写出 JSON，计算、编号和「有没有超出 A4」交给脚本。超出检查是在 Chrome 转 PDF 时逐页计数，超出就停；编号在人说「就按这份送」之后才给，例如 E-2610-01 表示估价单、2026 年 10 月、当月第 1 份。消费税尾数按每个税率的合计做一次舍去，不按明细行。仓库里放了 SKILL.md、脚本、测试 13 本、版式和输入样本。这些是作者这套工具上的作法，不可外推到减税 8%、取消或代扣税这类未对应的单据。",
+    summary: "shin_ikewaki 让 Claude Code 只写估价单／请款单的 JSON，计算、编号和是否超出 A4 交给脚本，并用 13 本测试盯住。编号要等人确认才给；消费税尾数按每个税率的合计做一次舍去。这些是这套工具上的作法，不可外推到未对应的税种或单据。",
+    description: "面向已经能让 AI 画出「看起来像」的估价单、却不敢把金额和编号交给它的人：把 13 本测试、超出即停，以及尾数只在税率合计上做一次写成门禁，区别于只把计算规则写进说明书、却没有脚本和测试看住的作法。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/shin_ikewaki/articles/6d575b476bcb58",
+    sourceLabel: "zenn.dev·shin_ikewaki 实践帖",
+    upvotes: 863,
+    trending: false,
+    tags: [
+      "claude-code",
+      "invoice",
+      "pdf",
+      "tax",
+      "skill",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shin_ikewaki/articles/6d575b476bcb58",
+      label: "zenn.dev·shin_ikewaki《デザインされた見積書と請求書をClaude Codeで自動出力》",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+    approach: "作者把「决定内容和单价」留给人，把「从对话里抽出 JSON」留给 Claude，把合计、消费税、编号和是否超出 A4 写成脚本，再配上测试，避免每次靠说明书碰运气。",
+    outcomes: [
+      "源披露：工具里放了 SKILL.md、脚本、测试 13 本、版式和输入样本。超出 A4 时，脚本在 Chrome 转 PDF 的过程中逐页计数，超出就停，不会让模型说「大概能放下」。编号要等人确认才给；E-2610-01 在文内样本里表示估价单、2026 年 10 月、当月第 1 份。消费税尾数按每个税率的合计做一次舍去。这些是作者这套工具上的作法，不可外推到未对应的税种或单据。",
+      "文内税前 ¥360,000、消费税 ¥36,000、合计 ¥396,000 以及「株式会社サンプル商事」是样本输入，不是作者向真实客户开出的账单，不要当成实际成交金额。作者写明已在 Windows 10 和 Node.js 24 上核过。",
+      "未对应减轻税率 8%、取消／折扣／退款、代扣税栏，以及送货单、收据。脚本不做税务判断；送出前仍要人核对金额和内容。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-10T23:18:04.970+09:00，略早于发布、同日，仍取 published → 2026-10-10。配图 1 张：https://static.zenn.studio/user-upload/591f566a7c79-20261010.png GET 200。作者卡 GitHub／X／website 均为空。Windows／Node.js 不填进 platforms。",
+      "导流：https://kyouikusha.booth.pm/items/8966453 GET 200（标题 見積書・請求書キット for Claude Code｜「見積書作って」で、A4の見積書・請求書PDFが出る - 共育社 - BOOTH）。一次资料：https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/pdf/qa/57.pdf GET 200（国税厅发票问答问 57）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 13 本测试盯的是哪几件会算错的事，再谈「让 Claude 直接出 PDF」",
+        body: "请按实测算一算：工具里有几本测试；超出 A4 时是看一眼还是脚本在转 PDF 时逐页计数、超出就停；编号是草稿阶段就给，还是等人确认才给；消费税尾数是按每一行还是按每个税率的合计做一次。文内的金额和编号是不是样本，作者写明核过的环境是什么，哪些单据还没做。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "Claude 只把品名、数量、单价和条件写成 JSON，不在对话里口算合计或编号。",
+      "脚本算出税额、排出 PDF，并在转 PDF 时检查有没有超出页面；草稿左上会标明「草稿」，还没有编号。",
+      "人确认「就按这份送」之后才发行，编号按当月记录里的最大序号加一，已发行的文件事后不会被覆盖。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-10T23:20:52.579+09:00 → UTC 2026-10-10T14:20:52Z、Asia/Shanghai 2026-10-10 22:20:52；bodyUpdatedAt 2026-10-10T23:18:04.970+09:00，略早于发布、同日，仍取 published → 2026-10-10；GET 200（UA MiraBot/1.0））：shin_ikewaki 在《デザインされた見積書と請求書をClaude Codeで自動出力》记下这套分工。",
+      "13 本测试不要漏写。样本金额不要当成真实账单。",
+    ],
+  },
+  {
+    id: "973",
+    slug: "orec-10proj-4st",
+    title: "orectic：Claude Code 在将近 10 个项目里并行跑起来后，分不清哪个终端在等自己。于是做了本地看板 COMMAND DECK，把最近 30 天用过 Claude Code 的项目自动列在一屏，状态只分成 4 种，用来回答「人要不要现在动手」。看板自己不存状态，正在做的工作以 OPEN.md 或 HANDOVER.md 一份文件为准；服务只在 127.0.0.1 上听。作者写明还刚做好、仍在开发中。这些是作者自己这套看板上的设计，不可外推到别的多项目工具或更长周期。",
+    summary: "orectic 在将近 10 个项目里并行使用 Claude Code，做了本地看板 COMMAND DECK：最近 30 天用过的项目自动列在一屏，状态只分 4 种。看板不存状态，只在本机回环地址上听。作者写明还在开发中，这些设计不可外推。",
+    description: "面向已经把 Claude Code 开到好几个项目、却分不清哪一个在等人的人：把将近 10 个项目、最近 30 天自动列出，以及状态只分 4 种写成门禁，区别于只介绍多会话窗口、却没有写出「人要不要现在动手」怎么被收成四种状态的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/orectic/articles/claude-code-command-deck-human-ai",
+    sourceLabel: "zenn.dev·orectic 实践帖",
+    upvotes: 864,
+    trending: false,
+    tags: [
+      "claude-code",
+      "dashboard",
+      "multi-project",
+      "permissions",
+      "local",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/orectic/articles/claude-code-command-deck-human-ai",
+      label: "zenn.dev·orectic《Claude Codeを全プロジェクト横断で動かす司令塔を作った — 人間が持つ権限・AIに渡す権限》",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+    approach: "作者把人当成拍板的人、把 Claude 当成执行的副手，于是做了一个只在本机看的看板：先看清哪个项目在等人，再从同一屏把新的指示送出去。文章重点不是界面清单，而是人和 AI 分别握住哪些权限。",
+    outcomes: [
+      "源披露：作者在将近 10 个项目里并行使用 Claude Code，做了本地看板 COMMAND DECK。最近 30 天用过 Claude Code 的项目会自动列在一屏；卡片上的状态只分成 4 种，用来回答「人要不要现在动手」。这些是作者自己这套看板上的设计，不可外推到别的多项目工具或更长周期。",
+      "「将近 10 个」不是准确的 10 个，不要写成整整 10 个项目。30 天是自动列出的时间窗，不要和 4 种状态混用。看板自己不存状态，正在做的工作以 OPEN.md 或 HANDOVER.md 一份文件为准；服务只在 127.0.0.1 上听。",
+      "作者写明还刚做好、仍在开发中，并列出还缺的部分。文内三种用法（早晨一齐点检、把已做成技能的例行工作一行扔出去、再去看要人拍板的项目）是「现在打算怎么用」，不是已经量过的次数。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-11T12:28:09.152+09:00，晚于发布、同日，仍取 published → 2026-10-11。正文无配图。",
+      "导流：https://codequest.work/ai-organization-build-order/?utm_source=zenn&utm_medium=article&utm_campaign=claude-code-command-deck-human-ai GET 200；https://codequest.work/claude-code-multi-project-dashboard/?utm_source=zenn&utm_medium=article&utm_campaign=claude-code-command-deck-human-ai GET 200；https://codequest.work/?utm_source=zenn&utm_medium=article&utm_campaign=claude-code-command-deck-human-ai GET 200；https://seo.codequest.work/?utm_source=zenn&utm_medium=article&utm_campaign=claude-code-command-deck-human-ai GET 200、redir 1，最终 https://seo.codequest.work/ja?utm_source=zenn&utm_medium=article&utm_campaign=claude-code-command-deck-human-ai ；https://github.com/masakazuimai GET 200；https://x.com/imai_director GET 200（标题 今井政和 | 戦略 × 設計 × 真贋のWEBディレクター (@imai_director) / X）。primary GET 200。platforms 记 claude。不要把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先问清「将近 10 个」和 4 种状态分别指什么，再谈「一个看板就能管住所有项目」",
+        body: "请按实测算一算：作者是在大约多少个项目里并行使用；看板上自动列出的是最近多少天用过的项目；状态分成几种，是用来回答什么问题；看板自己是否保存状态，服务听在哪个地址。不要把「将近 10 个」写成准确的 10，也不要把三种打算中的用法写成已经量过的次数。作者有没有写明还在开发中。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "看板自动列出最近用过 Claude Code 的项目，每张卡片只显示 4 种状态里的一种。",
+      "新的指示从这同一屏送出；「现在做到哪」不写在看板里，而写在那一份交接文件中。",
+      "服务只在本机回环地址上听，启动哪个项目由服务器决定，不把目录暴露到外面。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-11T10:43:04.440+09:00 → UTC 2026-10-11T01:43:04Z、Asia/Shanghai 2026-10-11 09:43:04；bodyUpdatedAt 2026-10-11T12:28:09.152+09:00，晚于发布、同日，仍取 published → 2026-10-11；GET 200（UA MiraBot/1.0））：orectic 在《Claude Codeを全プロジェクト横断で動かす司令塔を作った — 人間が持つ権限・AIに渡す権限》记下这套分工。",
+      "将近 10 个不要写成整整 10 个。4 种状态和 30 天不要混用。还在开发中。",
+    ],
+  },
+  {
+    id: "974",
+    slug: "yuic-3rule-flocss",
+    title: "yuichiroh：用 Claude Code 做 WordPress 主题时，CSS 写法每次都不一样。作者把 FLOCSS 规则写进 CLAUDE.md，再请它做 BASIC 和 STANDARD 两张卡片。这一次，前缀、Modifier 单独成类、clamp() 字号等有被守住；但写在规则里的 3 点没有被守住：说明没有按约定的输出形式来写，文件没有放到 foundation/ 或 object/component/ 目录，还多了不该有的 class。这些是这一次请求上的对照，不可外推到其他规则或其他请求。",
+    summary: "yuichiroh 把 FLOCSS 规则写进 CLAUDE.md 后再让 Claude Code 做主题卡片。这一次有若干写法被守住，但输出形式、目录结构、多余 class 这 3 点仍被写过却没守住。这些是这一次请求上的对照，不可外推。",
+    description: "面向已经给 Claude Code 写了 CSS 约定、却以为写进 CLAUDE.md 就每次都会遵守的人：把这一次没被守住的 3 点写成门禁，区别于只贴出规则全文、却没有对照实际输出哪里守住、哪里没守住的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuichiroh/articles/87a35f53b4eda3",
+    sourceLabel: "zenn.dev·yuichiroh 实践帖",
+    upvotes: 865,
+    trending: false,
+    tags: [
+      "claude-code",
+      "flocss",
+      "wordpress",
+      "claude-md",
+      "css",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuichiroh/articles/87a35f53b4eda3",
+      label: "zenn.dev·yuichiroh《Claude CodeにFLOCSSのルールを覚えさせて、WordPressテーマを作る》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+    approach: "作者先把 FLOCSS 前缀、Modifier 单独成类、clamp() 字号和图片命名写进 CLAUDE.md，再拿「BASIC／STANDARD 两张卡片」这一次请求，对照输出哪里守住、哪里没守住。",
+    outcomes: [
+      "源披露：在这一次「BASIC 和 STANDARD 两张卡片」的请求里，写在 CLAUDE.md 里却没被守住的有 3 点：说明没有按约定的输出形式（文件构成、HTML、SCSS、FLOCSS 分类、响应式、注意点）来写；文件没有放到 foundation/ 或 object/component/ 目录，而是简单地并列输出；还多了不该有的 class。这些是这一次请求上的对照，不可外推到其他规则或其他请求。",
+      "前缀、Modifier 单独成类、clamp() 字号等在这一次里有被守住，不要因为这 3 点没守住，就写成规则全部失效。也不要把「两张卡片」的示例写成 3 点违规的计数。",
+      "作者的结论是：规则写下来仍然有用，但写了不等于每次都守；需要对照输出，而不是只把说明书交给模型。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-23T10:25:11.286+09:00，晚于发布、同日，仍取 published → 2026-10-23。JST 01:53 换算到上海是 00:53，仍是 2026-10-23，不要写成 10-22。正文无配图。作者卡 GitHub／X／website 均为空。WordPress／FLOCSS 不填进 platforms。",
+      "导流：作者卡与正文均无作者产品硬链可列。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照这一次哪 3 点写了却没守住，再谈「CLAUDE.md 写上就会每次遵守」",
+        body: "请按实测算一算：作者请 Claude Code 做的是怎样一次请求；写进 CLAUDE.md 却没被守住的是哪 3 点；哪些写法在这一次里其实守住了。不要把没守住的 3 点和示例里的两张卡片混着数，也不要把这一次对照写成所有请求的结论。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先把项目自己的 FLOCSS 约定写进 CLAUDE.md，而不是只在对话里说一次。",
+      "再发出一次具体的卡片请求，对照 HTML 和 SCSS 是否按目录和输出形式落下来。",
+      "把守住的点和没守住的 3 点分开记，而不是笼统说「规则有用」或「规则没用」。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-23T01:53:40.652+09:00 → UTC 2026-10-22T16:53:40Z、Asia/Shanghai 2026-10-23 00:53:40；bodyUpdatedAt 2026-10-23T10:25:11.286+09:00，晚于发布、同日，仍取 published → 2026-10-23；GET 200（UA MiraBot/1.0））：yuichiroh 在《Claude CodeにFLOCSSのルールを覚えさせて、WordPressテーマを作る》记下这一次对照。不要因 UTC 日期 10-22 写成 2026-10-22。",
+      "没守住的是 3 点。两张卡片是示例，不要和 3 点混用。",
+    ],
+  },
+  {
+    id: "975",
+    slug: "riri-78bm-49",
+    title: "ririenu_lab：浏览器书签很乱，于是先把书签导出成 HTML，放进工作目录，只对 Claude Code 说「做自己用的首页，这次经历稍后要写成 Zenn」。模型先问了 4 个问题。78 件书签去掉重复和只用一次的页面后，收成「AI・聊天」「编程学习」「资格・检定」「创作・发布」等 9 个类别、49 件。文内配图是把站点换成知名网站后的样本，不是作者真实书签的截图。后来把文件放进 Chrome 书签栏、设成启动页，是作者自己做的，这两步都说不到 1 分钟。这些是作者自己这一次整理上的结果，不可外推到别人的书签或别的浏览器。",
+    summary: "ririenu_lab 把导出的书签交给 Claude Code，只说一句就做成了自己的首页。78 件收成 9 类、49 件。文内截图是换成知名站点后的样本。放进 Chrome 书签栏和设成启动页是作者自己做的，都说不到 1 分钟。这些是这一次整理上的结果，不可外推。",
+    description: "面向书签已经堆乱、却还在想「以后再整理」的人：把 78 件收到 49 件、分成 9 类写成门禁，区别于只演示一个漂亮首页、却没有写出原件数、也没有标明截图是样本的实践。",
+    categories: [
+      "life",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ririenu_lab/articles/fe0c459e6e9562",
+    sourceLabel: "zenn.dev·ririenu_lab 实践帖",
+    upvotes: 866,
+    trending: false,
+    tags: [
+      "claude-code",
+      "bookmarks",
+      "homepage",
+      "chrome",
+      "personal",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ririenu_lab/articles/fe0c459e6e9562",
+      label: "zenn.dev·ririenu_lab《Claude Codeにブックマークを渡して一言頼むだけで自分専用Yahoo!ができた》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+    approach: "作者先把 Chrome 书签导出成 HTML，放进 Claude Code 的工作目录，只说一句「做自己用的首页」。模型读完文件后先问 4 个问题，再生成 index.html；浏览器里的设置则自己动手。",
+    outcomes: [
+      "源披露：模型先问了 4 个问题。78 件书签去掉重复和只用一次的页面后，收成 9 个类别、49 件。这些是作者自己这一次整理上的结果，不可外推到别人的书签或别的浏览器。",
+      "文内配图是把站点换成知名网站后的样本，不是作者真实书签的截图，不要把图上的站点当成这 49 件本身。外观选项里有「简洁」「带背景图」「深色」，作者没有选这三项，而是自己写下「像以前的 Yahoo!」。",
+      "把 index.html 放进 Chrome 书签栏、以及设成启动页，是作者自己做的，文中说这两步都不到 1 分钟。不要把「不到 1 分钟」写成生成首页的时间。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-23T11:41:34.231+09:00，略早于发布、同日，仍取 published → 2026-10-23。配图 2 张（文内标明是换成知名站点后的样本，不是作者真实书签）：https://static.zenn.studio/user-upload/9fd7de806b37-20261023.png 、https://static.zenn.studio/user-upload/4973294ce1ab-20261023.png 均 GET 200。作者卡 GitHub／X／website 均为空。Chrome 不填进 platforms。",
+      "导流：作者卡与正文均无作者产品硬链可列。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 78 件收到了 49 件还是只做了个好看的首页，再谈「一句话就能整理书签」",
+        body: "请按实测算一算：导出后原来有多少件书签，最后收成多少件、多少个类别；模型先问了几个问题；文内截图是不是作者真实书签，有没有写成样本；把文件放进书签栏和设成启动页是谁做的，文中说这两步大概要多久，有没有把这段时间写成生成首页的时间。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先把书签导出成 HTML，放进工作目录，再只说一句要做什么。",
+      "模型读完文件后先问 4 个问题，其中外观一项作者没有选现成选项，而是自己写下「像以前的 Yahoo!」。",
+      "生成 index.html 之后，书签栏和启动页由作者自己在 Chrome 里设置。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-23T12:11:05.160+09:00 → UTC 2026-10-23T03:11:05Z、Asia/Shanghai 2026-10-23 11:11:05；bodyUpdatedAt 2026-10-23T11:41:34.231+09:00，略早于发布、同日，仍取 published → 2026-10-23；GET 200（UA MiraBot/1.0））：ririenu_lab 在《Claude Codeにブックマークを渡して一言頼むだけで自分専用Yahoo!ができた》记下这一次整理。",
+      "78 件和 49 件、9 个类别不要混用。配图是样本。不到 1 分钟不是生成时间。",
+    ],
+  },
+  {
+    id: "976",
+    slug: "koeb-42of45-asr",
+    title: "koebumi：做了按 Fn 说话就能把整理过的日文写到光标处的 macOS 应用 Koebumi，并专门用来给 Claude Code、Codex 发声控指令。日文评价集是 15 个用例各跑 3 次、共 45 次，用的是 Apple 端侧模型，合格从 12／45 升到 42／45。另在 M3 上用 Qwen3-ASR 0.6B 测过，一次识别大约 0.08–0.24 秒。这两个数字不是同一套模型、同一套测试，不要混用。应用免费、MIT 开源，要 macOS 26 及以上的 Apple 芯片。这些是作者自己这套评价和这台 M3 上的结果，不可外推到其他模型或其他电脑。",
+    summary: "koebumi 做了能给 Claude Code 发声控指令的 macOS 应用。日文评价集 15 个用例各 3 次、共 45 次，合格从 12／45 升到 42／45；M3 上 Qwen3-ASR 0.6B 一次识别大约 0.08–0.24 秒。两套数字不要混用。这些是作者自己测过的结果，不可外推。",
+    description: "面向想用声音给 Claude Code 下指令、却分不清「日文写得像不像」和「识别要多久」的人：把 15×3 的 42／45，以及 M3 上 0.08–0.24 秒写成门禁，区别于只演示能说话、却没有写出评价集次数和所用模型的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/koebumi/articles/e720806c213ac8",
+    sourceLabel: "zenn.dev·koebumi 实践帖",
+    upvotes: 867,
+    trending: false,
+    tags: [
+      "claude-code",
+      "voice",
+      "macos",
+      "asr",
+      "input",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/koebumi/articles/e720806c213ac8",
+      label: "zenn.dev·koebumi《Claude Codeに声で指示できるmacOSの音声入力アプリ「Koebumi」を作った》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+    approach: "作者觉得现成的语音输入应用几乎没针对 Claude Code、Codex 这类代理，于是做了 Koebumi：按 Fn 说话，把整理过的日文写到光标处，并能用声音回答「要不要继续」和斜杠命令。",
+    outcomes: [
+      "源披露：日文评价集是 15 个用例各跑 3 次、共 45 次，用的是 Apple 端侧模型，合格从 12／45 升到 42／45。另在 M3 上用 Qwen3-ASR 0.6B 测过，一次识别大约 0.08–0.24 秒。这些是作者自己这套评价和这台 M3 上的结果，不可外推到其他模型或其他电脑。",
+      "42／45 和 0.08–0.24 秒不是同一套模型、同一套测试，不要混用。也不要把 15 个用例写成 15 次。确认项的选项顺序会随种类变化（Bash 里「No」是第 4 项，创建文件时是第 3 项），不要写成固定编号。",
+      "作者写明要 macOS 26 及以上的 Apple 芯片；第一次打开可能要在系统设置里允许，因为当时还没有经过 Apple 公证。语音识别也可以在这台 Mac 上跑 Qwen3-ASR 或 Whisper，不必先准备 API 密钥。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-23T19:33:32.122+09:00，晚于发布、同日，仍取 published → 2026-10-23。配图 3 张均 GET 200：https://static.zenn.studio/user-upload/9d44b1ea5677-20261023.png 、https://static.zenn.studio/user-upload/c74840d6256a-20261023.webp 、https://static.zenn.studio/user-upload/8c6c73088151-20261023.webp 。Codex／Whisper／macOS 不填进 platforms。",
+      "导流：https://github.com/koebumi/koebumi GET 200；https://koebumi.github.io/ GET 200；https://koebumi.github.io/assets/koebumi-pr.mp4 GET 200；https://koebumi.github.io/assets/koebumi-claude-code-music.mp4 GET 200；https://github.com/koebumi/koebumi/releases/latest GET 200、redir 1，最终 https://github.com/koebumi/koebumi/releases/tag/v0.4.1 ；https://github.com/koebumi/koebumi/issues GET 200；https://x.com/koebumi_app GET 200（标题 koebumi (@koebumi_app) / X）。文内演示嵌入（YouTube）4 条均 GET 200：https://www.youtube-nocookie.com/embed/L0QF10dgT-A 、https://www.youtube-nocookie.com/embed/NzrlmVRuy3g 、https://www.youtube-nocookie.com/embed/wBa_iP86WzM 、https://www.youtube-nocookie.com/embed/bOLiHQ2EHZw 。primary GET 200。platforms 记 claude。不要把 github 填进 platforms。",
+    ],
+    prompts: [
+      {
+        title: "先把 42／45 和 0.08–0.24 秒分到各自的模型上，再谈「说话就能指挥 Claude Code」",
+        body: "请按实测算一算：日文评价集有几个用例、各跑几次、一共多少次，用的是哪家模型，合格从多少升到多少；另一次在哪台电脑、哪个识别模型上测过，一次识别大约要多久。不要把两套数字混用，也不要把用例数写成测试次数。应用要求的系统版本是什么。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "按住 Fn 说话，把整理过的日文写到当前光标处；在 Claude Code 的确认框里也可以用「是」「以后别问了」「2 番」这样的话来选。",
+      "应用靠画面上的输入栏样式辨别 Claude Code 和 Codex，文件名则尽量按仓库里的写法来说。",
+      "日文会先整理成书面语（例如把「下さい」改成「ください」），再决定要不要发出去。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-23T17:56:43.211+09:00 → UTC 2026-10-23T08:56:43Z、Asia/Shanghai 2026-10-23 16:56:43；bodyUpdatedAt 2026-10-23T19:33:32.122+09:00，晚于发布、同日，仍取 published → 2026-10-23；GET 200（UA MiraBot/1.0））：koebumi 在《Claude Codeに声で指示できるmacOSの音声入力アプリ「Koebumi」を作った》记下这次评价。",
+      "42／45 和 0.08–0.24 秒不要混用。15 个用例不是 15 次。",
+    ],
+  },
+  {
+    id: "977",
+    slug: "siva-10q-115s",
+    title: "sivami：做了网页工具 SpecChat：不注册，一天最多免费 3 次，答完固定的 10 问（分成 4 段），就能下载给 Claude Code 的 4 个文件。CLAUDE.md 是固定文案，不让模型写。作者用自己的答案做样本时，输出碰到 16,000 token 上限，补写过程中又超过服务器函数大约 5 分钟的时限。后来给各篇加上字数上限（任务最多 30 项）再跑同一题，大约 2 分钟（115 秒）返回。页面上最初写「30–60 秒」，已改成「大约 2–3 分钟，不要关掉页面」。作者写明还没有别人用过，这些是作者自己试出来的结果，不可外推到其他题目或其他人的答案。",
+    summary: "sivami 做了答 10 问就给出 4 个设计文件的网页工具，一天最多免费 3 次。自己做样本时先因 16,000 token 和大约 5 分钟时限失败，加上字数上限后再跑同一题，大约 2 分钟（115 秒）返回。还没有别人用过。这些是作者自己试出来的结果，不可外推。",
+    description: "面向每次都要先写 CLAUDE.md 和任务清单、却还没找到固定提问框的人：把 10 问、一天 3 次，以及同一题从超时到 115 秒写成门禁，区别于只展示「生成了 4 个文件」、却没有写出自己撞过上限、也没有标明还没有其他使用者的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/sivami/articles/79d6de9644a4f7",
+    sourceLabel: "zenn.dev·sivami 实践帖",
+    upvotes: 868,
+    trending: false,
+    tags: [
+      "claude-code",
+      "spec",
+      "questionnaire",
+      "claude-md",
+      "web-tool",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sivami/articles/79d6de9644a4f7",
+      label: "zenn.dev·sivami《10問に答えるだけで、Claude Code に渡す設計の4ファイルを作るツールを作った》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+    approach: "作者嫌每次从空白写设计文件太重，于是做了固定 10 问、分成 4 段的网页工具，答完打包成 4 个文件。CLAUDE.md 保持固定文案，只要求按 tasks.md 从上往下做、不要擅自加功能。",
+    outcomes: [
+      "源披露：工具固定 10 问、分成 4 段，答完可下载 4 个文件；不注册，一天最多免费 3 次。作者用自己的答案做样本时，输出碰到 16,000 token 上限，补写又超过服务器函数大约 5 分钟的时限；加上各篇字数上限（任务最多 30 项）后再跑同一题，大约 2 分钟（115 秒）返回。这些是作者自己试出来的结果，不可外推到其他题目或其他人的答案。",
+      "页面上最初写「30–60 秒」，和实际不符，已改成「大约 2–3 分钟，不要关掉页面」。不要把 115 秒写成最初的宣传时间，也不要把 30 项任务上限写成样本里已经生成的任务数。作者写明还没有别人用过，文件能不能直接交给 Claude Code，也只在自己看过的范围内核过。",
+      "样本里的 requirements 写了「MVP 在 2027 年 1 月底发布」，但期限从来没被问过；需求写「数据不送出终端」，设计却读到 Google 的外部 API；「每月最后一天 20:00 发通知」在不放服务器的静态托管里也做不到。这些是作者自己指出的草稿问题，不要当成已经修过的结论。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-31T13:15:43.752+09:00，略早于发布、同日，仍取 published → 2026-10-31。正文无配图。作者卡 GitHub／X／website 均为空。Vercel／Anthropic API 不填进 platforms。",
+      "导流：https://specchat-eta.vercel.app/?utm_source=zenn&utm_medium=article&utm_campaign=specchat GET 200（标题 SpecChat — Claude Code に渡す4点セットを作る）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清同一题是不是先超时、后来才用 115 秒返回，再谈「10 问就能交出可直接用的 4 个文件」",
+        body: "请按实测算一算：问题是不是固定 10 问，一天最多免费几次，会交出几个文件；作者做样本时有没有碰到输出上限和函数时限，后来加上什么限制，同一题大约多久返回；页面上最初写的等待时间和后来改成的文案是不是同一段。作者有没有写明还没有别人用过。不要把 115 秒写成最初的宣传时间，也不要把样本里模型自己编出来的日期当成用户答过的期限。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先用一两行写下想做的东西，再按 4 段、共 10 问作答，第 2 问起会参考已经答过的内容。",
+      "答完后打包 4 个文件；其中 CLAUDE.md 是固定文案，不让模型每次重写。",
+      "输出若在中途被切断，会再请它补写并接上；作者也因此撞过函数时限，后来才给各篇加上长度上限。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T13:43:00.188+09:00 → UTC 2026-10-31T04:43:00Z、Asia/Shanghai 2026-10-31 12:43:00；bodyUpdatedAt 2026-10-31T13:15:43.752+09:00，略早于发布、同日，仍取 published → 2026-10-31；GET 200（UA MiraBot/1.0））：sivami 在《10問に答えるだけで、Claude Code に渡す設計の4ファイルを作るツールを作った》记下这次自测。",
+      "115 秒是加上限制后再跑同一题的时间，不要写成最初的 30–60 秒。还没有别人用过。",
+    ],
   }
 ];
 
