@@ -1,5 +1,6 @@
-import { usecases } from "@/data/usecases";
-import type { CategorySlug, PlatformSlug, UseCase } from "@/data/types";
+import { categories } from "@/data/categories";
+import type { CategorySlug, PlatformSlug } from "@/data/types";
+import type { UseCaseListItem } from "@/lib/usecase-list";
 
 export interface FilterParams {
   q?: string;
@@ -8,40 +9,51 @@ export interface FilterParams {
   sort?: "trending" | "upvotes" | "newest";
 }
 
-export function filterUseCases(params: FilterParams): UseCase[] {
+const categorySearchText = new Map(
+  categories.map((category) => [category.slug, `${category.name} ${category.slug}`])
+);
+
+/**
+ * Homepage search covers title, summary, tags, and categories (name + slug).
+ * Body fields are not on `UseCaseListItem`, so they cannot match.
+ */
+function searchableText(item: UseCaseListItem): string {
+  const categoryText = item.categories
+    .map((slug) => categorySearchText.get(slug) ?? slug)
+    .join(" ");
+  return [item.title, item.summary, ...item.tags, categoryText].join(" ").toLowerCase();
+}
+
+export function filterUseCases(
+  items: readonly UseCaseListItem[],
+  params: FilterParams
+): UseCaseListItem[] {
   const q = (params.q || "").trim().toLowerCase();
-  let list = [...usecases];
+  let list: readonly UseCaseListItem[] = items;
 
   if (params.category) {
-    list = list.filter((u) => u.categories.includes(params.category as CategorySlug));
+    const category = params.category;
+    list = list.filter((item) => item.categories.includes(category));
   }
   if (params.platform) {
-    list = list.filter((u) => u.platforms.includes(params.platform as PlatformSlug));
+    const platform = params.platform;
+    list = list.filter((item) => item.platforms.includes(platform));
   }
   if (q) {
-    list = list.filter((u) => {
-      const hay = [
-        u.title,
-        u.summary,
-        u.description,
-        ...u.tags,
-      ]
-        .join(" ")
-        .toLowerCase();
-      return hay.includes(q);
-    });
+    list = list.filter((item) => searchableText(item).includes(q));
   }
 
+  const sorted = [...list];
   switch (params.sort) {
     case "upvotes":
-      list.sort((a, b) => b.upvotes - a.upvotes);
+      sorted.sort((a, b) => b.upvotes - a.upvotes);
       break;
     case "newest":
-      list.sort((a, b) => Number(b.id) - Number(a.id));
+      sorted.sort((a, b) => Number(b.id) - Number(a.id));
       break;
     case "trending":
     default:
-      list.sort((a, b) => {
+      sorted.sort((a, b) => {
         const ta = a.trending ? 1 : 0;
         const tb = b.trending ? 1 : 0;
         if (tb !== ta) return tb - ta;
@@ -50,5 +62,5 @@ export function filterUseCases(params: FilterParams): UseCase[] {
       break;
   }
 
-  return list;
+  return sorted;
 }
