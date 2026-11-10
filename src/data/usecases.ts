@@ -72877,6 +72877,563 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-07-07T12:00:30.404+09:00 → UTC 2026-07-07T03:00:30Z、Asia/Shanghai 2026-07-07 11:00:30；bodyUpdatedAt 早于发布、同日，仍取 published → 2026-07-07；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-07。",
       "非 fork 和 fork 不要混。签名长度不是 token。3 层不是文档的深度 5。closed 不等于已修复。platforms 记 claude，不要填 github。",
     ],
+  },
+  {
+    id: "1038",
+    slug: "ohana-4ms-44",
+    title: "ohana_support：用 Claude Code 写好的中小企业诊断士过去问练习应用，起初跑在 GAS 上。44 题一次评分曾有过要几十秒的阶段，2026 年 9 月 14 日动手、15 日把同一套代码改到 Cloudflare 静态 PWA 后，评分变成 4ms。题目数据先前用 Gemini 从 PDF 读出，再交给 Claude 核对，有 110 题要修；7 月 14 日到 16 日三天把要修复从 110 题降到 0 件，并切了 22 张图。正答率另做对照，全科目全年度改了 521 件对不上的记录。生成数据合计约 5.4MB。这些是作者自己这套应用、这几次迁移和核对上的测量，不可外推。",
+    summary: "ohana_support 把 Claude Code 写的 GAS 过去问应用原样挪到 Cloudflare 后，44 题评分从曾有过的几十秒变成 4ms。数据侧：Claude 核出 110 题要修，三天修完；正答率对不上的 521 件也改了。这些是作者自己这套路径上的测量，不可外推。",
+    description: "面向已经在用代理写个人学习工具、却还没把「评分变慢」和「题目数据要修」分开看的人：把 44 题评分的 4ms、110 题三天清零，以及 521 件正答率对不上写成门禁，区别于把 Gemini 抽题、Claude Code 写代码和这次迁移写成同一件事。",
+    categories: [
+      "education",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ohana_support/articles/0413eb46d0bd85",
+    sourceLabel: "zenn.dev·ohana_support 实践帖",
+    upvotes: 929,
+    trending: false,
+    tags: [
+      "claudecode",
+      "gas",
+      "cloudflare",
+      "pwa",
+      "personal-dev",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ohana_support/articles/0413eb46d0bd85",
+      label: "zenn.dev·ohana_support《Claude CodeとGASで作った過去問アプリを、コードを書き換えずにCloudflareへ移したら、採点が数十秒→4msになった》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+    approach: "2026 年 7 月考试前，作者让 Claude Code 写代码、自己提需求和验收，做成只给自己用的 GAS 网上应用。题目用 Markdown 保存，构建后再 clasp push 上去；作答记录放在电子表格。数据越积越厚之后，作者在 9 月 14 日动手、15 日把同一套 GAS 代码改到 Cloudflare Pages 的静态 PWA，浏览器里直接跑，不再每次把整包脚本读一遍。",
+    outcomes: [
+      "源披露：44 题一次评分，文中写的是「有过要几十秒的时期」，迁到 Cloudflare 后是 4ms，不要写成迁之前每一次都是几十秒。这些是作者自己这套应用、这一次迁移上的测量，不可外推到别人的题目量、网络或运行环境。",
+      "题目数据先前用 Gemini 从 PDF 读出，再交给 Claude 核对，有 110 题要修。2026-07-14 到 07-16 这三天，要修复从 110 题降到 0 件，图是 22 张从 PDF 裁出来放上的。正答率另做对照，全科目全年度改了 521 件对不上的记录。不要把 110 题、521 件、44 题评分和 22 张图写成同一列。",
+      "生成数据合计约 5.4MB：QuestionData（5 科）约 3.6MB，StudyNotes.js 724KB，Figures.js 645KB，Data2ji.js 438KB。GAS 的服务器往返有时大约 1 秒，要等待的调用会在 250ms 后出指示器；不要把这 1 秒或 250ms 写成后来的 4ms。首次提交是 2026-07-12。代码是 Claude Code 写的；这次迁移写明是「不改写 GAS 代码」。Gemini 只出现在先前的 PDF 抽取，不写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-10T22:43:12.127+09:00 → UTC 2026-11-10T13:43:12Z、Asia/Shanghai 2026-11-10 21:43:12；bodyUpdatedAt 2026-11-10T22:40:11.963+09:00，略早于发布、同日，仍取 published → 2026-11-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。正文写明代码由 Claude Code 来写，platforms 记 claude；话题标签 claudecode 不能代替使用，但正文已写明这次实践。不要把「Claude 核对出 110 题」自动写成 Claude Code 执行。Gemini 不在 18 值里，且只用于先前抽题，不硬凑进 platforms。不要和近批 token／耗时／中位数条混用。本条硬窗是 44 题评分的 4ms、110 题三天清零和 521 件正答率对不上，不要把约 1 秒的往返或 250ms 指示器写成 4ms。",
+      "导流：作者 note 版 https://note.com/ohana_support/n/nb2ebdc62f9ff 交付时 GET 200（标题 中小企業診断士の過去問を「苦手だけ」回したくて、GASで自分用のアプリを作りました｜YT），按作者站点导流披露，可列可达。日区 App Store https://apps.apple.com/jp/app/apple-store/id6814842411?pt=129487134&ct=zenn-gas-app&mt=8 HTTP 200，跟随至 https://apps.apple.com/cn/iphone/today（标题 ‎iPhone 版“Today” - App Store），按区域不可用披露，不因 200 算可达；完整 URL 仍写出。配图 https://static.zenn.studio/user-upload/95715f69d347-20261110.jpg、https://static.zenn.studio/user-upload/6e7300ef2e62-20261110.jpg、https://static.zenn.studio/user-upload/62aea45249e9-20261110.jpg、https://static.zenn.studio/user-upload/780f5b7cc036-20261110.jpg 均 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 4ms 是 44 题评分、110 和 521 不是同一列，再谈「迁到 Cloudflare 就快了」",
+        body: "请按原文核算：44 题评分写成「有过要几十秒的时期」变成 4ms，有没有把约 1 秒的 GAS 往返或 250ms 指示器算进去。110 题要修是 Claude 核对先前 Gemini 读出的数据，三天是 7 月 14 日到 16 日，图是 22 张；521 件是正答率对不上，不要和 110 题混成一列。约 5.4MB 是哪几份文件加总。Claude Code 写的是原来的 GAS 代码，这次迁移写明不改写代码。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "题目用 Markdown 保存，构建成 QuestionData 等脚本后再 clasp push 到 GAS，作答记录放在电子表格，页面通过 google.script.run 调用。",
+      "要等待的调用大约 1 秒往返时，250ms 后出指示器并挡住第二次提交；不必等待的保存和预取走另一条函数。",
+      "2026 年 9 月 14 日动手、15 日完成：把同一套 GAS 代码改到 Cloudflare Pages 静态 PWA，在浏览器里跑，记录改到终端 IndexedDB，并用 D1 做终端之间的副本。",
+      "人眼看不全题，就先用脚本找出「只看题干解不了」的条目，再逐题对照 PDF 修改；正答率另用按「第 N 题 … 12.3%」逐行对照的脚本去核。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T22:43:12.127+09:00 → UTC 2026-11-10T13:43:12Z、Asia/Shanghai 2026-11-10 21:43:12；bodyUpdatedAt 2026-11-10T22:40:11.963+09:00，略早于发布、同日，仍取 published → 2026-11-10；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-11-10。",
+      "4ms 是 44 题评分，不要和约 1 秒往返或 250ms 指示器混用。110 题不是 521 件，也不是 22 张图。Claude Code 写的是原代码；Gemini 只出现在先前抽题。日区 App Store 跟随至中国区 Today，不列入可达。platforms 记 claude。",
+    ],
+  },
+  {
+    id: "1039",
+    slug: "momo-30h-25db",
+    title: "mo__mo：在大阪区域建好 OCI Database 的托管 MCP 后，用 Codex 桌面端做了两次盘点。一次从 30 个 DB Home 取出 28 条数据库信息，去掉 3 条已终止的，列出 25 条：Base Database 5 台都可用，Exadata Dedicated 8 台都可用，Exascale 12 台里 8 台可用、4 台失败。另一次专门看失败的库，确认就是这 4 台，而且同属一个 DB Home 和 Exascale 虚拟机集群。这些是作者自己这个隔间、这一次查询上的结果，不可外推。",
+    summary: "mo__mo 用 Codex 调用 OCI 托管 MCP：30 个 DB Home 取出 28 条信息，去掉 3 条已终止后列出 25 条，其中失败的 4 台都在 Exascale。这些是作者自己这个隔间上的一次盘点，不可外推。",
+    description: "面向已经能连上云数据库控制面、却还没把「Home 数、取出条数、已终止和失败」分开记账的人：把 30、28、25 和 4 写成门禁，区别于把安装脚本里的 chatgpt.com 写成这次调用了 ChatGPT。",
+    categories: [
+      "enterprise",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/mo__mo/items/4a8b7100b6b65a582889",
+    sourceLabel: "qiita.com·mo__mo 实践帖",
+    upvotes: 930,
+    trending: false,
+    tags: [
+      "oci",
+      "mcp",
+      "codex",
+      "database",
+      "inventory",
+    ],
+    primarySource: {
+      url: "https://qiita.com/mo__mo/items/4a8b7100b6b65a582889",
+      label: "qiita.com·mo__mo《OCI Database ServicesのマネージドMCPサーバーをCodexから使ってみた》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者在大阪区域建好托管 MCP，再用 Codex 桌面端（注册时用到 Codex CLI 0.166.0-alpha.5.1）做两次自然语言查询：先按服务和状态汇总数据库清单，再专门查看失败状态的库并要详细信息。认证走已有的 OCI 身份域和 IAM，连接字符串、IP 和用户信息要求不要写进回答。",
+    outcomes: [
+      "源披露：从 30 个 DB Home 取出 28 条数据库信息，去掉 3 条已终止的，列出 25 条。不要把 30、28、25 写成同一个数。这些是作者自己这个隔间、这一次查询上的结果，不可外推到别的区域、权限或时间点。",
+      "25 条的拆分是：Base Database Service 可用 5、失败 0、合计 5；Exadata Dedicated 可用 8、失败 0、合计 8；Exascale 可用 8、失败 4、合计 12。5＋8＋12＝25。失败的 4 台都在 Exascale，第二次查询确认它们同属一个 DB Home 和 Exascale 虚拟机集群。不要把这 4 台写成 3 条已终止。",
+      "文中的验证日期是 2026 年 11 月 6 日，发布日期仍取这篇 Qiita 的 2026-11-07，不要写成 11-06。Codex 不在仓库 18 值里，安装脚本和文档里出现 chatgpt.com／learn.chatgpt.com 不能代替这次调用了 ChatGPT，platforms 记空数组 []。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-11-07T13:47:45.000+09:00，与 Qiita API created_at 2026-11-07T13:47:45+09:00 一致 → UTC 2026-11-07T04:47:45Z、Asia/Shanghai 2026-11-07 12:47:45；dateModified／updated_at 与发布相同，取 published → 2026-11-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。文中验证日期是 11 月 6 日，不要写成发布日期。Codex／OCI 不在 18 值，正文也未点名 ChatGPT 为这次执行方，platforms 记 []，不要因安装脚本或文档 URL 硬凑 chatgpt。不要填 github。不要和近批 token／耗时条混用。本条硬窗是 30／28／25 和失败的 4 台，不要把 3 条已终止写成这 4 台。",
+      "导流：无作者产品导流可列。一次资料：https://docs.oracle.com/en/engineered-systems/exadata-cloud-service/ecscm/mcp.html GET 200（标题 Managed MCP Servers for OCI Database Services）；https://docs.oracle.com/en-us/iaas/Content/Identity/policyreference/iampolicyreference.htm GET 200（标题 Details for IAM with Identity Domains），可列可达。https://learn.chatgpt.com/docs/codex/cli、https://learn.chatgpt.com/docs/extend/mcp?surface=app、https://chatgpt.com/codex/install.sh 交付时均 HTTP 403（前两条响应体为 Forbidden），不列入可达，完整 URL 仍写出。占位 https://<生成されたホスト名>/mcp 按源文原样写出，未当公网链去核，不列入可达。配图 7 张 S3 原址 https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/7f9dd02c-6b3d-4262-8e00-6087204fb538.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/915ded36-629d-42f6-8860-679fc601a988.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/c240a1b8-0e0b-48c8-8160-a93a92a30e71.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/22dcba52-a497-439e-9dbb-856d96f4a646.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/5976153c-f247-4ec6-90fe-a3d59d2ab9ce.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/8adda161-691c-4512-8fbc-05637b79a39f.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3489148/fbb64a6a-23d4-4787-b5c1-fd7a9045eb29.png 均 GET 200。primary GET 200。Qiita mermaid 嵌入不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 30、28、25 和失败的 4 台不是同一个数，再谈「Codex 把库存盘清了」",
+        body: "请按原文核算：30 个 DB Home、取出的 28 条、去掉的 3 条已终止、列出的 25 条分别是哪一步。25 条里 Base、Dedicated、Exascale 的可用／失败／合计各是多少，4 台失败是不是都在 Exascale、是不是同属一个 DB Home。不要把 3 条已终止写成这 4 台。发布日期是不是 2026-11-07，文中的 11 月 6 日是不是验证日。Codex 和安装脚本里的 ChatGPT 地址不要写成 platforms。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "在 OCI 控制台创建托管 MCP，取得端点，再用 Codex CLI 以名称 oci-database 登记，随后走 OAuth。",
+      "第一次自然语言查询要求按服务和状态汇总，并写明用过的工具名；分页未完就继续取，但不要在回答里写入连接字符串、IP 和用户信息。",
+      "第二次专门查看失败状态的库，并要求库名、唯一名、所属 Home、状态和 lifecycleDetails，必要时再取详情。",
+      "作者提醒：Home 上的版本不是库内实测版本；控制面显示可用，也不等于库内部健康已经核对过。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-07T13:47:45.000+09:00，与 Qiita API created_at 2026-11-07T13:47:45+09:00 一致 → UTC 2026-11-07T04:47:45Z、Asia/Shanghai 2026-11-07 12:47:45；updated_at 与发布相同，取 published → 2026-11-07；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-11-07。",
+      "不要把 30、28、25 和失败的 4 台混成同一个数。文中 11 月 6 日不是发布日期。Codex 不填 platforms，也不要因安装脚本硬凑 chatgpt。learn.chatgpt.com 与 install.sh 为 403，不列入可达。platforms 记 []。",
+    ],
+  },
+  {
+    id: "1040",
+    slug: "yosa-10of10-80",
+    title: "yousan：家里 6 台 OpenClaw 里有 1 台说 web_search 不可用，配置里少了整段 tools。作者在主机上对 DuckDuckGo 连打 10 次查询，10 次都是 HTTP 202 加人机验证，一度判断「已经被完全拦住」。后来翻近 30 天工具日志：5 个剖面合计 457 次调用，成功 364 次（80%），失败 93 次；其中 C 在当天 14:35 到 14:39 连续成功 11 次，作者自己的 10 次连打是 15:14。是自己打出来的证据，不是舰队一直被拦。这些是作者自己这几台机器上的日志和探测，不可外推。",
+    summary: "yousan 一度用 10 次 HTTP 202 判断 DuckDuckGo 被完全拦住，但 30 天日志里 457 次调用仍有 80% 成功，当天 14:35 还有连续 11 次成功。10 次连打是 15:14 自己打出来的证据。这些是作者自己这几台机器上的记录，不可外推。",
+    description: "面向已经在给代理配网页搜索、却还没把「此刻的探测」和「近 30 天日志」对照的人：把 10／10 的 202 和 457 次里的 80% 成功写成门禁，区别于把偶发的 Claude 子进程写成这次搜索的执行方。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/yousan/items/3f7168a2db2a24cb7b30",
+    sourceLabel: "qiita.com·yousan 实践帖",
+    upvotes: 931,
+    trending: false,
+    tags: [
+      "openclaw",
+      "brave-search",
+      "duckduckgo",
+      "web-search",
+      "misdiagnosis",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yousan/items/3f7168a2db2a24cb7b30",
+      label: "qiita.com·yousan《OpenClaw の web 検索を Brave に移した — 「DuckDuckGo がブロックされている」は自分で作った証拠だった》",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+    approach: "作者在家里按用途分开跑 6 台 OpenClaw。发现其中 1 台配置里少了整段 tools 之后，去对照其他台，结果先在主机上直接请求 DuckDuckGo，10 次都撞上验证页，误判为整队都被拦。随后用 OpenClaw 留下的工具调用日志把近 30 天按剖面汇总，对上当天成功时刻和自己连打的时刻，才改口并决定把搜索迁到 Brave Search API。",
+    outcomes: [
+      "源披露：主机上 10 次查询全是 HTTP 202 加人机验证，这不能写成「近 30 天都被拦住」。近 30 天 5 个剖面合计 457 次调用，成功 364 次（80%），失败 93 次。这些是作者自己这几台机器、这一段日志上的记录，不可外推到别人的出口或时段。",
+      "5 个剖面不要加成 6 台：A 185／167／18，B 142／100／42，C 101／84／17，D 23／12／11，E 6／1／5。C 在当天 14:35 到 14:39 连续成功 11 次，还按 13 个家电型号回了带实价的答案；作者 10 次连打是 15:14。不要把 10／10、连续 11 次和 6 台写成同一轮。",
+      "OpenClaw、Brave、DuckDuckGo 都不在仓库 18 值里，platforms 记空数组 []。正文里出现的 claude --model claude-opus-5 是重启网关时碰巧还在跑的两条子进程（已跑 11 分钟和 9 分钟），大约 6 分钟后网关才退出，不是这次搜索的执行方，不硬凑 claude。相关篇标题里的 ChatGPT／Claude Code 也不能代替使用。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-09-28T13:52:30.000+09:00，与 Qiita API created_at 2026-09-28T13:52:30+09:00 一致 → UTC 2026-09-28T04:52:30Z、Asia/Shanghai 2026-09-28 12:52:30；dateModified／updated_at 与发布相同，取 published → 2026-09-28；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 10／10 的 202 写成 30 天都被拦；不要把 5 个剖面加成 6 台。Claude 子进程和相关篇标题不能代替这次搜索的执行方，platforms 记 []。不要填 github。不要和近批 token／耗时条混用。",
+      "导流：无作者产品导流可列。一次资料／相关文档：https://openclaw.ai/ GET 200（标题 OpenClaw — Open-Source AI Assistant）；https://docs.openclaw.ai/、https://docs.openclaw.ai/tools/duckduckgo-search、https://docs.openclaw.ai/tools/brave-search、https://docs.openclaw.ai/tools/web、https://docs.openclaw.ai/tools/web-fetch、https://docs.openclaw.ai/tools/parallel-search、https://docs.openclaw.ai/tools/ollama-search、https://docs.openclaw.ai/tools/gemini-search 均 GET 200；https://brave.com/search/api/ GET 200（标题 Brave Search API | Brave）；https://developers.google.com/custom-search/v1/overview GET 200，可列可达。连载相关篇 https://qiita.com/yousan/items/fa79800ed416b057c82a GET 200，不列入产品导流。https://html.duckduckgo.com/html/?q=test 交付时 HTTP 202，正文为「Unfortunately, bots use DuckDuckGo too.」人机验证页，不列入可达；https://html.duckduckgo.com/html HTTP 202，不列入可达；https://duckduckgo.com/aup HTTP 202，跟随至 https://duckduckgo.com/?q=aup&&rpl=1（标题 aup at DuckDuckGo），未落到授权条款正文，不列入可达。完整 URL 仍写出。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 10／10 是 15:14 的连打、80% 是 30 天日志，再谈「搜索被完全拦住了」",
+        body: "请按原文核算：10 次 HTTP 202 是在哪台主机、什么时刻打的。近 30 天 457、364、93 和 80% 是哪 5 个剖面加总，不要加成 6 台。C 在 14:35 到 14:39 连续成功的 11 次，和 13 个型号、作者 15:14 的 10 次连打，是不是同一轮。重启网关时那两条 Claude 子进程是不是这次搜索的执行方。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先检查出问题的那一台，发现 openclaw.json 里少了整段 tools；只打开插件还不够，必须写明 tools.web.search。",
+      "到其他台对照时，先在主机上直接请求 DuckDuckGo HTML 搜索，10 次都返回 202 和验证页，随后让代理再搜一次也失败，于是误判为被完全拦住。",
+      "再用 audit_events 汇总近 30 天各剖面的成功和失败，并对上当天 14:35 仍在成功、15:14 才开始连打的时刻，纠正误诊。",
+      "之后把舰队的网页搜索迁到 Brave Search API。作者还核对了文档：官方把 DuckDuckGo 标成实验性非官方集成，而且搜索提供方没有自动回退，只能指定一个。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-09-28T13:52:30.000+09:00，与 Qiita API created_at 2026-09-28T13:52:30+09:00 一致 → UTC 2026-09-28T04:52:30Z、Asia/Shanghai 2026-09-28 12:52:30；updated_at 与发布相同，取 published → 2026-09-28；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-09-28。",
+      "10／10 的 202 不是 30 天都被拦。5 个剖面不要加成 6 台。14:35 的 11 次成功和 15:14 的连打不是同一轮。Claude 子进程不写入 platforms。DuckDuckGo 三条为 202 或未落到条款正文，不列入可达。platforms 记 []。",
+    ],
+  },
+  {
+    id: "1041",
+    slug: "pshn-59of252-4",
+    title: "prompt_shindan：把 15 条业务提示词迁到便宜模型时，第一天跑了 270 格（15 条×3 条输入×6 个模型），汇总时像是 15 条里坏了 14 条。打开原文才发现，去掉多轮的那 1 条后，252 格里有 59 格正文是 0 字，把中途被截断的也算上是 73 格，相当于 4 格里有 1 格作废。HTTP 全是 200，错误一个没有，finish_reason 是 length：默认打开的思考把 max_tokens 4,096 吃完，还没写正文就停了。这一天的结果全部作废，第二天重跑。这些是作者自己这次实验上的计数，不可外推。",
+    summary: "prompt_shindan 第一天 252 格里有 59 格正文为空，连同截断共 73 格作废，相当于 4 格里有 1 格。HTTP 都是 200，是思考把 4,096 的上限吃完了。15 条里坏了 14 条是被空响应抬上去的，当天结果作废。这些是作者自己这次实验上的计数，不可外推。",
+    description: "面向已经在把提示词迁到便宜模型、却还没把「空正文」和「规则没守住」分开看的人：把 59／252、73 和 4 格里 1 格写成门禁，区别于把 4,096 或思考开关本身当成这条的对照结果。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/prompt_shindan/articles/ee3b1d74e25d7b",
+    sourceLabel: "zenn.dev·prompt_shindan 实践帖",
+    upvotes: 932,
+    trending: false,
+    tags: [
+      "deepseek",
+      "prompt-migration",
+      "reasoning",
+      "openrouter",
+      "evaluation",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/prompt_shindan/articles/ee3b1d74e25d7b",
+      label: "zenn.dev·prompt_shindan《安いLLMに移したら4回に1回、本文が空で返ってきた》",
+      date: "2026-09-21",
+      dateLabel: "发布",
+    },
+    approach: "作者先按 15 条公开业务提示词、3 条输入、6 个便宜模型跑迁移实验。第一天经 OpenRouter、温度 0.2、max_tokens 4,096，没有另行指定思考开关。汇总异常偏高后，他打开原始响应，把正文为空和中途截断单独计出来，认定这一天不能用，第二天重跑，并补做思考开和关的对照。",
+    outcomes: [
+      "源披露：第一天实跑 270 格，去掉多轮的 1 条后看 252 格：正文为空 59 格，连同中途截断是 73 格，文中写作 4 格里有 1 格作废。HTTP 全是 200，错误一个没有。这些是作者自己这次实验、这一天跑次上的计数，不可外推到别的网关、上限或模型世代。",
+      "空正文按模型拆开（各 42 格）不要加成另一天的结果：DeepSeek V4 Flash 16 空／15 截断，Qwen3.7 Plus 12／17，DeepSeek V4 Pro 12／13，Qwen3.7 Flash 11／15，GLM-4.7-Flash 5／10，GLM-5.2 3／3。先前把 15 条里坏了 14 条，是把空响应也算进了「坏」。上一篇 9／15 的损坏是思考关闭后另测的数字，不要和这一天的 14／15 混用。",
+      "思考默认打开，把 max_tokens 4,096 吃完，finish_reason 为 length。后文还有输出 token 变成 5 到 13 倍、响应时间变成 2 到 21 倍等测量，以及个别模型 11 秒变成 246 秒（文中写作 4 分钟）的例子，这些不是本条硬窗，不要和近批 token／耗时条混用。迁移前的环境是 Claude，本篇单元格跑的是便宜模型（含 DeepSeek）；「Claude Code 默认输出上限」只是拿来对照 32,000 这个数字，不硬凑 claude。Qwen、GLM、OpenRouter 不在 18 值里，只在正文和 caveats 披露。后文新世代对照里出现的 Kimi 虽在 18 值内，但不是第一天空正文 59／252 的 6 个模型，不写入 platforms。platforms 记 deepseek。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-09-21T19:26:01.288+09:00 → UTC 2026-09-21T10:26:01Z、Asia/Shanghai 2026-09-21 18:26:01；bodyUpdatedAt 2026-09-21T19:21:59.972+09:00，略早于发布、同日，仍取 published → 2026-09-21；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。本条硬窗是 59／252、73 和 4 格里 1 格作废，不要把 4,096、32,000、5 到 13 倍或 11 秒变 246 秒写成硬窗，也不要和上一篇的 9／15、更不要和 14／15 的误计混用。platforms 记 deepseek；不因对照句硬凑 claude。不要和近批 token／耗时／中位数条混用。",
+      "导流：作者站点 https://sites.google.com/view/prompt-shindan 交付时 GET 200（标题 プロンプト移行診断），按作者产品导流披露，可列可达；https://coconala.com/services/4374991 GET 200（标题含 既存プロンプトの格安AI移行を実測診断します），按作者服务导流披露，可列可达。连载前篇 https://zenn.dev/prompt_shindan/articles/f50b72b03b4389 GET 200，不列入产品导流。一次资料：https://api-docs.deepseek.com/guides/thinking_mode GET 200，跟随至带尾斜线的同一文档（标题 Thinking Mode | DeepSeek API Docs），可列可达；https://www.alibabacloud.com/help/en/model-studio/deep-thinking GET 200；https://docs.z.ai/guides/llm/glm-5.2、https://docs.z.ai/guides/llm/glm-5.3 均 GET 200；https://platform.kimi.ai/docs/api/chat GET 200，可列可达。https://platform.claude.com/docs/en/build-with-claude/thinking、https://platform.claude.com/docs/en/build-with-claude/extended-thinking HTTP 200，跟随至 https://claude.com/app-unavailable-in-region，按区域不可用披露，不因 200 算可达，完整 URL 仍写出。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 59 是空正文、73 含截断、14／15 是被抬高的误计，再谈「便宜模型坏了」",
+        body: "请按原文核算：270 格和去掉多轮后的 252 格是哪一天。59、73 和「4 格里 1 格」怎么对应，HTTP 是不是都是 200。6 个模型各 42 格的空正文和截断不要加成另一天。15 条里坏了 14 条为什么要作废，和上一篇思考关闭后的 9／15 有何不同。4,096、输出 token 倍数和 11 秒变 246 秒是不是本条硬窗。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "第一天按 15 条提示词、3 条输入、6 个模型跑满 270 格，经 OpenRouter，不另行指定思考开关。",
+      "汇总看到 15 条里像坏了 14 条之后，打开原始响应，把正文 0 字和 finish_reason 为 length 的截断单独计出来，确认是思考把上限吃完。",
+      "这一天的结果全部作废，第二天重跑，并补做思考开和关、以及把开关指令发到另一套网关时的表现。",
+      "作者还核对了各家默认思考是否打开、用哪一种字段才能真正关掉；关掉失败时，有的模型仍回 200 但思考还在。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-21T19:26:01.288+09:00 → UTC 2026-09-21T10:26:01Z、Asia/Shanghai 2026-09-21 18:26:01；bodyUpdatedAt 2026-09-21T19:21:59.972+09:00，略早于发布、同日，仍取 published → 2026-09-21；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-09-21。",
+      "硬窗是 59／252 和 4 格里 1 格作废，不是 4,096 或响应秒数。14／15 是误计，9／15 是上一篇另测。Claude 文档跟随至区域不可用页，不列入可达。platforms 记 deepseek，不硬凑 claude。",
+    ],
+  },
+  {
+    id: "1042",
+    slug: "syrp-32t-h1",
+    title: "syrup：在个人实验 incident-loop 里把 grok 当作实现工人时，不把「完成了」当作验收。Phase 1 的 Grok 版凑齐了 32 项测试和复现跑手，但「只用 runbook 映射就能让 AI 写出根因」这条假设并未得到证明：测试能通过，假设不能通过。Phase 1 加固的外部复查写到第 5 次通过；自我改进循环在写作时仍标明未验证。这些是作者自己这次实验上的记录，不可外推。",
+    summary: "syrup 给 grok 工人定下「自报完成不能当作验收」。32 项测试能通过，但根因假设 H1 没有被证明。外部复查写到第 5 次通过，自我改进仍标明未验证。依据在非公开仓库里，读者不能直接核对。这些是作者自己这次实验上的记录，不可外推。",
+    description: "面向已经在让 grok 做实现工人、却还把聊天里的「完成了」当作验收的人：把 32 项测试通过但 H1 未证明写成门禁，区别于把对照句里的 Claude 或 Codex 写成这次的执行方。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "grok",
+    ],
+    sourceUrl: "https://zenn.dev/syrup/articles/bcfdce01e552b3",
+    sourceLabel: "zenn.dev·syrup 实践帖",
+    upvotes: 933,
+    trending: false,
+    tags: [
+      "grok",
+      "agent-governance",
+      "devops",
+      "evaluation",
+      "incident-loop",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/syrup/articles/bcfdce01e552b3",
+      label: "zenn.dev·syrup《Cockpitのgrokが「完了」と言っても、まず信用しない》",
+      date: "2026-07-23",
+      dateLabel: "发布",
+    },
+    approach: "作者在个人实验 incident-loop 里，给 AGI Cockpit 的 grok 实现工人改成「报告正本写进 UTF-8 的 Markdown／JSON，终端和聊天只当通知」。父代理再独立核对 diff、Git、退出码和语义痕迹；需要时另开事件响应会话，专门怀疑抄近路。绿、黄、红用来划分可直接做、先提案和禁止的改动。",
+    outcomes: [
+      "源披露：Phase 1 的 Grok 版凑齐了 32 项测试和复现跑手，但把既定根因分析换成决定性映射、只靠 runbook 就让 AI 写出原因，这条假设没有被证明。测试能通过，假设不能通过。这些是作者自己这次实验上的记录，不可外推到别人的编排或模型版本。",
+      "Phase 1 加固的系统外复查写到第 5 次通过，不要把这 5 次写成 32 项测试。Phase 2 在正式复查后又确认了 executor 的 check-then-act 竞态，记录为不应当时合入 main。自我改进循环在写作时仍标明未验证，不要写成已经测过。",
+      "正文把 Claude 和 Codex 当作对照（「和它们不同，grok CLI 更难拿到结构化回答」），不是这次的执行方，不硬凑进 platforms。platforms 记 grok。依据都在非公开仓库 incident-loop 里，正文只给出短哈希 037fb05、343cc03、eeaeb78 和文件名，没有公开 URL，不编造仓库地址，不列入可达。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-07-23T11:26:49.506+09:00 → UTC 2026-07-23T02:26:49Z、Asia/Shanghai 2026-07-23 10:26:49；bodyUpdatedAt 2026-07-23T11:28:59.658+09:00，晚于发布、同日，仍取 published → 2026-07-23；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。32 项测试通过不等于 H1 被证明。第 5 次通过是外部复查，不是 32 项测试。自我改进在写作时仍标明未验证。Claude／Codex 只作对照，platforms 只记 grok。一次资料在非公开仓库，正文只有短哈希和文件名，不编造公开 URL。不要和近批 token／耗时或 CI／批准条混用。",
+      "导流：无作者产品导流可列。配图 https://static.zenn.studio/user-upload/2500bf3e65fc-20260723.png GET 200。primary GET 200。文中作为依据的 commit 037fb05、343cc03、eeaeb78 及 AGENTS.md、grok-delegation-protocol.md 等文件，作者写明位于非公开仓库 incident-loop，读者不能直接核验；没有公开的完整 URL，不编造、不列入可达。",
+    ],
+    prompts: [
+      {
+        title: "先问清 32 项测试通过但 H1 未证明，再谈「grok 已经管住了」",
+        body: "请按原文核算：32 项测试和复现跑手证明的是什么，H1 是哪一条假设、有没有被证明。第 5 次通过是不是外部复查，能不能写成 32 项测试。自我改进循环在写作时是不是仍标明未验证。Phase 2 的竞态和「不应当时合入 main」是不是另一段。依据是不是只在非公开仓库里。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把报告正本改成 Markdown／JSON 文件，终端和聊天里的「完成了」只当通知，不再当作验收。",
+      "父代理独立核对 diff、Git、退出码和语义痕迹；必要时另开事件响应会话，专门怀疑 grok 的抄近路。",
+      "用绿、黄、红区分：许可路径内的局部改进可做；改设计前提要先提案；涉及安全、凭据或放宽验收的，没有明确授权就禁止。",
+      "和假设验证有关的 Grok 任务默认放在 Initiative Level 1：可以提出异议，偏离之前要先等。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-23T11:26:49.506+09:00 → UTC 2026-07-23T02:26:49Z、Asia/Shanghai 2026-07-23 10:26:49；bodyUpdatedAt 2026-07-23T11:28:59.658+09:00，晚于发布、同日，仍取 published → 2026-07-23；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-23。",
+      "32 项测试通过不等于假设被证明。第 5 次通过不是 32 项测试。自我改进仍标明未验证。依据在非公开仓库，不编造 URL。platforms 只记 grok。",
+    ],
+  },
+  {
+    id: "1043",
+    slug: "ssol-5item-pe",
+    title: "StreamSolty：在 Dify Chatflow 里做了一个假想房产询盘的 5 项问答机器人，要问全再经 Webhook 送出，结果三项都踩过：参数抽取器会返回选项里没有的自造标签；还没问全就被判「齐了」，第一轮就把 Webhook 发出去；同一轮里刚写入的会话变量当下读不到。对照下来，Haiku 4.5 常自造标签，不适合抽取；Sonnet 4.6 被用作抽取器；Opus 4.7 更好但成本高，回复仍用 Haiku。这些是作者自己在 2026 年 7 月这套环境上的观察，不可外推。",
+    summary: "StreamSolty 用 Dify 做 5 项问答机器人时，抽取器会自造标签，还会在第一轮就触发 Webhook。抽取改用 Sonnet 4.6，是否齐了改在代码里判定。Make 侧开关没打开时，Dify 已回 200 但后面什么都不发生。这些是作者自己这套环境上的观察，不可外推。",
+    description: "面向已经在 Dify 里用参数抽取器做问答、却还把「模型说齐了」当成可以外送的人：把 5 项问全之前的误触发和同一轮读不到变量写成门禁，区别于只从模型名推断调用了 Claude 就写入 platforms。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "dify",
+    ],
+    sourceUrl: "https://qiita.com/StreamSolty/items/7089679814ad2a24a223",
+    sourceLabel: "qiita.com·StreamSolty 实践帖",
+    upvotes: 934,
+    trending: false,
+    tags: [
+      "dify",
+      "parameter-extractor",
+      "chatflow",
+      "webhook",
+      "make",
+    ],
+    primarySource: {
+      url: "https://qiita.com/StreamSolty/items/7089679814ad2a24a223",
+      label: "qiita.com·StreamSolty《DifyのParameter Extractorは思い通りに動かない — ヒアリングボット実装で踏んだクセと制御パターン》",
+      date: "2026-07-21",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Dify Chatflow 里按「先抽取、再在代码里归一并判断是否齐了、再写入会话变量、最后才决定是否外送」来做 5 项问答。抽取器和回复用不同模型；完成判定放在代码里当轮做完，不依赖同一轮刚写入的会话变量。和 Make 联调时，再核对开关、首次载荷结构和过滤条件。",
+    outcomes: [
+      "源披露：这是假想房产询盘的 5 项问答演示机器人，不是一次按千次计的线上统计。作者在自己这套 2026 年 7 月的环境里，把自造标签、第一轮误触发和同一轮读不到变量都踩过了，不可外推到其他版本或模型。",
+      "模型对照是作者这套环境上的观察：Haiku 4.5 常自造标签，判断为不适合抽取；Sonnet 4.6 被用作参数抽取器；Opus 4.7 遵守更好但成本高。回复仍用 Haiku。正文没有写出「Claude」这个词，不把模型名硬凑进 platforms。platforms 只记 dify。",
+      "Make 侧「Immediately as data arrives」没打开时，会停在只在手动运行时处理的模式，出现「Dify 已回 200 但后面什么都不发生」。Webhook 会在第一次收到时学习 JSON 结构，测试若只送 {\"test\":\"\"}，以后就只认得这个形状。文中只写主机名 webhook.site，没有完整 URL，不编造。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-07-21T15:04:12.000+09:00，与 Qiita API created_at 2026-07-21T15:04:12+09:00 一致 → UTC 2026-07-21T06:04:12Z、Asia/Shanghai 2026-07-21 14:04:12；dateModified／updated_at 与发布相同，取 published → 2026-07-21；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。这是演示机器人上的观察，不是线上平均值。「杂谈 3 次再升级」文中写明模型不会严格计数，要放在代码里做。Haiku／Sonnet／Opus 已实际用来对照，但正文未点名 Claude，不硬凑 claude。platforms 只记 dify。不要和近批 token／耗时条混用。",
+      "导流：无作者产品导流可列。文内无可核的作者产品硬链。文中只写主机名 webhook.site，未给完整 URL，不编造、不当公网链去核，不列入可达。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 项齐了之前为什么会外送，再谈「换个模型就稳定了」",
+        body: "请按原文核算：这是不是 5 项问答的演示机器人，三项毛病分别是什么。Haiku 4.5、Sonnet 4.6、Opus 4.7 各自的判断是什么，正文有没有写出 Claude。完成判定为什么不能读同一轮刚写入的会话变量。「Dify 已回 200 但后面什么都不发生」对应 Make 上哪一个开关。webhook.site 有没有完整 URL。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用户输入先经过参数抽取器，再进入代码节点做归一和是否齐了的判断，然后写入会话变量，最后才决定是否发 HTTP。",
+      "抽取用 Sonnet 一级的模型，回复用 Haiku；选项和空值写进描述，但自造标签仍可能出现，所以代码侧必须再做一次严校验。",
+      "「第一次齐了才外送」的守卫放在当轮代码里做完，不把完成标志寄托在同一轮还读不到的会话变量上。",
+      "和 Make 联调时打开立即处理开关，必要时重新学习 JSON 结构；次数型升级不交给模型去数。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-21T15:04:12.000+09:00，与 Qiita API created_at 2026-07-21T15:04:12+09:00 一致 → UTC 2026-07-21T06:04:12Z、Asia/Shanghai 2026-07-21 14:04:12；updated_at 与发布相同，取 published → 2026-07-21；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-21。",
+      "这是演示观察，不是线上平均值。不要因 Haiku／Sonnet／Opus 硬凑 claude。webhook.site 没有完整 URL，不编造。platforms 只记 dify。",
+    ],
+  },
+  {
+    id: "1044",
+    slug: "yo16-571mb-13",
+    title: "yo16：自己在 GCP e2-micro（约 1GB 内存、无交换）上托管 n8n，某天连「垃圾日提醒」这种小流程也不再往 Slack 推。查下来是 n8n v2.27 加上 13 个活跃工作流，高峰用到超过 500MB，和系统常占的大约 350MB 一起，把实例仅有的 955MB 吃满后被 OOM 杀掉。出问题的流程有 100 到 150 个节点。后来先加了 2GB 交换文件再跑，反而跑完了，内存高峰是 571MB，比倒下时还高，而且高峰出现在全部结束后写库和写日志的那一瞬间。这些是作者自己这台机器上的一次故障，不可外推。",
+    summary: "yo16 的自建 n8n 因内存被杀：实例 955MB，系统大约 350MB，n8n 高峰超过 500MB，13 个活跃工作流。先加了 2GB 交换文件再跑，高峰反而是 571MB，出现在全部结束之后。这些是作者自己这台机器上的一次故障，不可外推。",
+    description: "面向已经在小规格虚拟机上自建 n8n、却还以为「跑完了内存就会下来」的人：把 571MB 出现在全部结束之后写成门禁，区别于把这次修复写成内存比倒下时更省。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://qiita.com/yo16/items/ce0fa3dbea81c2e0df23",
+    sourceLabel: "qiita.com·yo16 实践帖",
+    upvotes: 935,
+    trending: false,
+    tags: [
+      "n8n",
+      "oom",
+      "self-hosted",
+      "gcp",
+      "workflow",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yo16/items/ce0fa3dbea81c2e0df23",
+      label: "qiita.com·yo16《n8nで大きなワークフローを作ったら落ちて対策した話》",
+      date: "2026-07-14",
+      dateLabel: "发布",
+    },
+    approach: "作者在 GCP 的 e2-micro 上自建 n8n。先是每天的垃圾日提醒不再送到 Slack，才发现服务已经倒下。对照内存、13 个活跃工作流和那条有 100 到 150 个节点的大流程后，判定是 OOM。处理上先加了 2GB 交换文件再跑，并继续观察高峰出现在哪个阶段。",
+    outcomes: [
+      "源披露：实例内存合计 955MB、没有交换分区；n8n 以外的系统和其他进程常占大约 350MB；n8n 用到 500 到 600MB 就会被杀。v2.27 打开了任务运行器，加上 13 个活跃工作流，高峰超过 500MB。这些是作者自己这台 e2-micro 上的一次故障，不可外推到别的规格或版本。",
+      "出问题的流程大约有 100 到 150 个节点，是按站点复制同一套处理做成的。database.sqlite 涨到 294MB，清理窗口已设成 336 小时（14 天），作者写的是「可能」加重启动超时和内存压力，不要写成已经证实的唯一原因。",
+      "先加了 2GB 交换文件后再跑，流程跑完了，内存高峰是 571MB，比倒下时还高；高峰出现在全部结束后写库和写日志的那一瞬间。不要把 571MB 写成比 500 到 600MB 更省，也不要把「大约 350MB」写成精确值。文中后来把大流程拆成大约三分之一并错开执行时刻，那是另一项对策，不要和这次 571MB 的观测混成同一步。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-07-14T10:26:55.000+09:00，与 Qiita API created_at 2026-07-14T10:26:55+09:00 一致 → UTC 2026-07-14T01:26:55Z、Asia/Shanghai 2026-07-14 09:26:55；dateModified／updated_at 2026-07-14T17:38:55+09:00，晚于发布、同日，仍取 published → 2026-07-14；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。571MB 是加了 2GB 交换文件后跑完的高峰，比倒下时还高，不要写成内存降下来了，也不要写成「先等待再跑」。大约 350MB 带「大约」。294MB 的库文件只是可能原因。platforms 记 n8n。不要填 github。不要和近批 token／耗时条混用。",
+      "导流：无作者产品导流可列。相关前篇 https://qiita.com/yo16/items/4c1b81c40db932e2bf8d、https://qiita.com/yo16/items/657c43e5bd685b1656cd 均 GET 200，不列入产品导流。配图 S3 原址 https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/722610/c88d20f8-b6d3-47cb-bcb9-67678e50babd.png GET 200。primary GET 200。Qiita link-card 嵌入不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 571MB 是跑完之后的高峰、比倒下时还高，再谈「内存问题修好了」",
+        body: "请按原文核算：955MB、大约 350MB、500 到 600MB 和 13 个活跃工作流分别是哪一层。100 到 150 个节点是不是那条大流程。先加了 2GB 交换文件再跑，高峰 571MB 出现在什么时刻，有没有比倒下时更省；拆分工流并错开时刻是不是另一步。294MB 的库文件是不是已经证实的唯一原因。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先从「小提醒不再送达」判断服务已经倒下，而不是去改那条小流程本身。",
+      "对照实例只有约 1GB、无交换、系统常占大约 350MB，以及 n8n 高峰超过 500MB，判定是 OOM。",
+      "再看那条 100 到 150 个节点的大流程和 13 个活跃工作流，以及可能加重压力的 294MB 库文件。",
+      "处理上先加了 2GB 交换文件，再边看内存边跑；确认跑完后的高峰出现在结束时的写库和写日志。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-07-14T10:26:55.000+09:00，与 Qiita API created_at 2026-07-14T10:26:55+09:00 一致 → UTC 2026-07-14T01:26:55Z、Asia/Shanghai 2026-07-14 09:26:55；updated_at 2026-07-14T17:38:55+09:00，晚于发布、同日，仍取 published → 2026-07-14；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-14。",
+      "571MB 比倒下时还高，高峰在全部结束之后。不要把大约 350MB 写成精确值。platforms 记 n8n。",
+    ],
+  },
+  {
+    id: "1045",
+    slug: "koed-34man-23",
+    title: "koedesk：给自己的语音输入工具在 X 上投小额视频广告时，只用日本、25 到 54 岁、日语这组人口条件，预估受众大约是 3,700 万到 4,300 万人。作者用 Claude Code 做编排，用 Grok Build 的 grok -p 无界面查询去找种账号，最后放进 23 个跟随者相似账号和大约 11 个关键词，受众落到大约 34 万到 40 万人，文中写作大约百分之一。若把「优化定向」开着，受众会停在 3,700 万人；关掉的瞬间才掉到 34 万人。这些是作者自己这次投放上的后台数字，不可外推。",
+    summary: "koedesk 用 Claude Code 调用 Grok Build，为 X 广告收集 23 个种账号和大约 11 个关键词，受众从大约 3,700 万到 4,300 万人落到大约 34 万到 40 万人。优化开关开着时仍是 3,700 万人。这些是作者自己这次投放上的数字，不可外推。",
+    description: "面向已经在用代理做广告调研、却还把后台的「优化定向」开着的人：把 23 个账号加上关键词之后仍停在 3,700 万、关掉才到 34 万写成门禁，区别于把开篇口中的 3,700 万和表里的区间写成同一个数。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+      "grok",
+    ],
+    sourceUrl: "https://zenn.dev/koedesk/articles/claude-code-grok-x-ad-targeting",
+    sourceLabel: "zenn.dev·koedesk 实践帖",
+    upvotes: 936,
+    trending: false,
+    tags: [
+      "claudecode",
+      "grok-build",
+      "x-ads",
+      "marketing",
+      "indie",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/koedesk/articles/claude-code-grok-x-ad-targeting",
+      label: "zenn.dev·koedesk《Claude Code から Grok Build をヘッドレスで呼んで、X広告のターゲット抽出を自動化した話》",
+      date: "2026-06-30",
+      dateLabel: "发布",
+    },
+    approach: "作者把「在 X 里找种账号」交给 Grok Build 的 grok -p 无界面查询，把「把任务写清楚、调用它、再把结果整理成可粘贴的账号列表」交给平时最熟的 Claude Code。先按语音输入和 AI 编程各找一批，再请对方补充类似账号，最后排除过大的大众账号，并配上关键词。",
+    outcomes: [
+      "源披露：只用人口条件时，预估受众是大约 3,700 万到 4,300 万人；加上 23 个跟随者相似账号和 11 个关键词后，是大约 34 万到 40 万人，文中写作大约百分之一。开篇说的「3,700 万人落到约 34 万人」是口语省略，不要和表里的区间混成同一个精确值。这些是作者自己这次投放后台里的数字，不可外推到别的预算或地区。",
+      "「优化定向」开着时，手填的账号和关键词只被当成提示，受众仍停在 3,700 万人；关掉的瞬间才掉到 34 万人。不要把这一笔写成模型自己把人数算小了。手工逐个检索的负担，文中写的是 20 个；最终放进广告的是 23 个账号，不要写成同一个数。",
+      "23 个账号里包含语音输入和 AI 编程相关账号，以及一位日本区的生产力博主，并故意去掉 @OpenAI、@grok 这类过大账号。关键词大约 11 个。Grok Build 要 SuperGrok 或 X Premium+，和社区版 grok-cli 不是同一个产品。正文写明这次由 Claude Code 和 Grok Build 分工，platforms 记 claude 和 grok。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-06-30T02:57:41.661+09:00 → UTC 2026-06-29T17:57:41Z、Asia/Shanghai 2026-06-30 01:57:41；bodyUpdatedAt 与发布相同，取 published → 2026-06-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。UTC 日期是 06-29，必须写成 2026-06-30，不要写成 2026-06-29。大约 3,700 万到 4,300 万和大约 34 万到 40 万都带「大约」。20 个是手工负担，23 个是最终账号。优化开关开着时仍是 3,700 万。platforms 记 claude 和 grok。文末署名 Guide Inc. Vietnam CEO，本批仍按个人独立开发者投放记录来写，不另开团队条。不要和近批 token／耗时条混用。",
+      "导流：作者产品站点 https://koedesk.app 交付时 GET 200，跟随至 https://koedesk.app/（标题 koedesk — AI voice typing. The keyboard alone is no longer enough.），按作者产品导流披露，可列可达并披露跟随。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3,700 万到 4,300 万和 34 万到 40 万都是区间，再谈「缩到了百分之一」",
+        body: "请按原文核算：只用人口条件时的受众是一个数还是大约 3,700 万到 4,300 万。加上 23 个账号和 11 个关键词后是大约 34 万到 40 万还是开篇说的 34 万。优化开关开着时停在哪个数，关掉才到哪个数。20 个和 23 个各指什么。发布日期是不是 2026-06-30，有没有因 UTC 写成 06-29。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "Claude Code 先把「语音输入 10 个、AI 编程 10 个、再补 5 到 10 个类似账号」写成提示，再用 grok -p 一次取回，不进入交互界面。",
+      "要求 Grok Build 只报能核实的官方账号、句柄和大约粉丝量，不编造；然后再整理成可直接粘贴的换行列表。",
+      "合计 23 个账号时去掉过大的大众账号，并配上大约 11 个关键词。",
+      "在广告后台关掉「优化定向」，让这些账号和关键词真正起过滤作用，而不是只当提示。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-06-30T02:57:41.661+09:00 → UTC 2026-06-29T17:57:41Z、Asia/Shanghai 2026-06-30 01:57:41；bodyUpdatedAt 与发布相同，取 published → 2026-06-30；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-06-30。",
+      "必须写成 2026-06-30，不要因 UTC 写成 06-29。区间不要写成单点。20 个不是 23 个。优化开关开着时仍是 3,700 万。platforms 记 claude 和 grok。koedesk.app 须按导流披露。",
+    ],
+  },
+  {
+    id: "1046",
+    slug: "kamo-72-10-0",
+    title: "kamo78：在本机 DeepSeek V4 Flash 上做了一个寻找「还不太有名、但开始抬头的 Agent 相关开源项目」的代理。验证日是 2026-06-14：发现 72 个仓库，过滤后留下 66 个，深入评估 10 个；结构化 JSON 的校验错误是 0。GitHub API 调用了 49 次、合计 22.80 秒，模型调用 11 次、合计 504.68 秒，这些耗时和 51,518 个 token 不是本条硬窗。发布日期仍是 2026-06-24，不要因更新或 UTC 写成 06-23 或 06-22。这些是作者自己这台 M5 Max、这一次寻找上的结果，不可外推。",
+    summary: "kamo78 用本机 DeepSeek V4 Flash 寻找新兴 Agent 开源项目：72 个发现、66 个过过滤、10 个深入评估，结构化输出校验错误为 0。耗时和 token 不是硬窗。发布日期必须写成 2026-06-24。这些是作者自己这一次寻找上的结果，不可外推。",
+    description: "面向已经在用本地模型做代理、却还想拿单次聊天速度外推的人：把 72／66／10 和校验错误为 0 写成门禁，区别于把 504.68 秒或 51,518 个 token 当成这条的对照结果。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/kamo78/articles/ds4-local-agent-discovery",
+    sourceLabel: "zenn.dev·kamo78 实践帖",
+    upvotes: 937,
+    trending: false,
+    tags: [
+      "deepseek",
+      "local-llm",
+      "agent-discovery",
+      "github",
+      "macos",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kamo78/articles/ds4-local-agent-discovery",
+      label: "zenn.dev·kamo78《ローカルDeepSeek V4で「次に来そうなAI Agent OSS」を探すAgentを作った》",
+      date: "2026-06-24",
+      dateLabel: "发布",
+    },
+    approach: "作者不用现成的多智能体框架，只用 Python 标准库直接打本机 DeepSeek V4 Flash 的 OpenAI 兼容接口。先做发现代理，再把靠前的候选 clone 下来，另做源码检查代理，去读文档、例子、源码、测试和持续集成，而不是只信 README。",
+    outcomes: [
+      "源披露：发现 72 个仓库，过滤后留下 66 个，深入评估 10 个；结构化 JSON 的校验错误是 0。这些是作者自己这台 MacBook Pro M5 Max／128GB、验证日 2026-06-14 这一次寻找上的结果，不可外推到别的机器或日期。",
+      "GitHub API 调用 49 次、合计 22.80 秒；模型调用 11 次、合计 504.68 秒、平均 45.88 秒、最长 145.43 秒；模型总 token 51,518。文中写最长的一次是把 10 个结果收成最终 Markdown。这些耗时和 token 不是本条硬窗，不要和近批 token／耗时条混用，也不要和作者前篇的速度基准混用。",
+      "发布日期取 publishedAt 2026-06-24。bodyUpdatedAt 是 2026-06-23T00:56:21.482+09:00，换到上海是 2026-06-22 23:56:21，早于发布且跨日，仍取 published → 2026-06-24。不要因更新或 UTC（发布时刻的 UTC 日期是 06-23）写成 2026-06-23 或 2026-06-22。正文用的是本机 DeepSeek V4 Flash，platforms 记 deepseek。不要填 github。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-06-24T07:00:05.289+09:00 → UTC 2026-06-23T22:00:05Z、Asia/Shanghai 2026-06-24 06:00:05；bodyUpdatedAt 2026-06-23T00:56:21.482+09:00 → UTC 2026-06-22T15:56:21Z、Asia/Shanghai 2026-06-22 23:56:21，早于发布且跨日，仍取 published → 2026-06-24；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-06-24，不要因 UTC 写成 06-23，也不要因更新写成 06-22。验证日 2026-06-14 不是发布日期。硬窗是 72／66／10 和校验错误 0，不是 504.68 秒或 51,518 个 token。platforms 记 deepseek，不要填 github。不要和近批 token／耗时／中位数条或作者前篇速度基准混用。",
+      "导流：无作者产品导流可列。连载前篇 https://zenn.dev/kamo78/articles/ds4-m5max-launchagent、https://zenn.dev/kamo78/articles/ds4-m5max-setup、https://zenn.dev/kamo78/articles/ds4-m5max-benchmark 均 GET 200，不列入产品导流，也不要把前篇的速度数字写进本条硬窗。发现结果中的仓库页须完整写出并核过：https://github.com/WenyuChiou/awesome-agentic-ai-zh、https://github.com/qingchencloud/clawpanel、https://github.com/Agent-Field/agentfield、https://github.com/raullenchai/Rapid-MLX、https://github.com/IBM/AssetOpsBench、https://github.com/Ar9av/obsidian-wiki、https://github.com/codeaholicguy/ai-devkit、https://github.com/liaohch3/claude-tap、https://github.com/ai-boost/awesome-harness-engineering 均 GET 200；https://github.com/matevip/mateclaw HTTP 200，跟随至 https://github.com/mateaix/mateclaw，落地为仓库页，可列可达并披露跟随。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 72／66／10 和校验错误 0 才是硬窗，再谈「本地模型当代理够不够用」",
+        body: "请按原文核算：72、66、10 分别是发现、过滤还是深入评估。校验错误 0 指的是什么。49 次 GitHub API、11 次模型调用、504.68 秒和 51,518 个 token 是不是本条硬窗。验证日 2026-06-14 和发布日 2026-06-24 不要写反，也不要因更新或 UTC 写成 06-23 或 06-22。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "发现代理在本机 DeepSeek V4 Flash 上找还不太有名、但开始抬头的 Agent 相关仓库，并做过滤。",
+      "靠前的候选再交给源码检查代理：clone 后读文档、例子、源码、测试和持续集成，不把 README 当结论。",
+      "只保存解析结果，不把 clone 下来的外部仓库本体当作要留的材料。",
+      "结构化输出用 JSON 校验；作者指出，把 10 个结果收成一篇 Markdown 的那一次模型调用明显更重。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-06-24T07:00:05.289+09:00 → UTC 2026-06-23T22:00:05Z、Asia/Shanghai 2026-06-24 06:00:05；bodyUpdatedAt 早于发布且跨到 06-22，仍取 published → 2026-06-24；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-06-24。",
+      "必须写成 2026-06-24。硬窗是 72／66／10 和校验错误 0，不是耗时或 token。验证日不是发布日。platforms 记 deepseek，不要填 github。mateclaw 仓跟随至 mateaix，须披露跟随。",
+    ],
+  },
+  {
+    id: "1047",
+    slug: "ddd0-hlthz-404",
+    title: "ddd0609：把 n8n 自己托管到 GCP Cloud Run 后，界面能打开，但工作流右上角一直显示 Offline，一条都改不了、也存不了。原因是前端会定期请求 /healthz，而这条路径被 GCP 留作内部保留路径，请求还没到 n8n 就回了 404。文中写 v2.6.x 以前没有这个问题，v2.7.x 起会在 GCP 上出现；从 v2.7.5 起可用环境变量 N8N_ENDPOINT_HEALTH=health 改到 /health。这些是作者自己这次托管上的故障，不可外推。",
+    summary: "ddd0609 在 Cloud Run 上自建 n8n 时，/healthz 被 GCP 拦下回 404，界面一直显示 Offline。v2.7.x 起会遇到；从 v2.7.5 起把健康检查改到 /health 即可。这些是作者自己这次托管上的故障，不可外推。",
+    description: "面向已经在 Cloud Run 上自建 n8n、却还在查数据库日志的人：把 /healthz 被保留路径拦下回 404 写成门禁，区别于把「界面能打开」当成服务已经通了。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/ddd0609/articles/6bfe517888c338",
+    sourceLabel: "zenn.dev·ddd0609 实践帖",
+    upvotes: 938,
+    trending: false,
+    tags: [
+      "n8n",
+      "cloud-run",
+      "healthcheck",
+      "gcp",
+      "self-hosted",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ddd0609/articles/6bfe517888c338",
+      label: "zenn.dev·ddd0609《GCP Cloud Run で n8n が常に「Offline」になるバグ》",
+      date: "2026-03-09",
+      dateLabel: "发布",
+    },
+    approach: "作者把 n8n 托管在 Cloud Run，数据库用 Cloud SQL。界面能打开但一直显示 Offline 后，对照前端的健康检查路径和 GCP 的保留路径，确认是 /healthz 在到达 n8n 之前就被拦下。处理上只加一个环境变量，把健康检查改到 /health。",
+    outcomes: [
+      "源披露：前端定期请求 /healthz，在 GCP Cloud Run 上会被当成保留路径拦下并回 404，于是一直显示 Offline，工作流不能编辑也不能保存；Cloud Run 日志里没有特别的报错。这些是作者自己这次托管上的故障，不可外推到没有这条保留路径的环境。",
+      "版本不要写错：v2.6.x 以前文中写「没有这个问题（健康检查机制不同）」；v2.7.x 起会在 GCP 上出现；从 v2.7.5 起可用 N8N_ENDPOINT_HEALTH 避开；v2.9.0 起同一变量被写成正式建议。不要把 v2.7.x 和 v2.7.5 写成同一个起点。",
+      "发布日期必须写成 2026-03-09。publishedAt 2026-03-09T06:14:51.614+09:00 换到 UTC 是 2026-03-08T21:14:51Z，上海仍是 03-09 05:14:51，不要因 UTC 写成 2026-03-08。platforms 记 n8n。不要填 github。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-03-09T06:14:51.614+09:00 → UTC 2026-03-08T21:14:51Z、Asia/Shanghai 2026-03-09 05:14:51；bodyUpdatedAt 与发布相同，取 published → 2026-03-09；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-03-09，不要因 UTC 写成 2026-03-08。不要把 v2.7.x 和 v2.7.5 写成同一个起点。platforms 记 n8n，不要填 github。不要和近批 CI／批准条混用。",
+      "导流：无作者产品导流可列。一次资料：https://community.n8n.io/t/no-network-connection-cloudrun-help-needed/264040 GET 200（标题 No network connection. CloudRun - Help needed - Questions - n8n Community）；https://community.n8n.io/t/psa-v2-7-x-has-bugs-on-gcp-do-not-upgrade/263987/22 GET 200（标题含 PSA: v2.7.x HAS BUGS ON GCP，落地为该帖第 22 条回复）；https://github.com/n8n-io/n8n/pull/25729 GET 200（标题 fix(core): Make health endpoint configurable to solve conflicts by dariacodes），可列可达。配图 https://static.zenn.studio/user-upload/46ce5a28e2fc-20260309.png GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清是 /healthz 回 404，不是数据库倒了，再谈「Cloud Run 上 n8n 不能用」",
+        body: "请按原文核算：界面能打开但一直 Offline，请求的是哪一条路径、回的是什么状态码。v2.6.x、v2.7.x、v2.7.5 和 v2.9.0 各自是什么情况。环境变量改到哪一条路径。发布日期是不是 2026-03-09，有没有因 UTC 写成 03-08。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先确认界面能打开、日志也没有明显报错，但右上角 Offline 使工作流不能编辑、不能保存。",
+      "对照前端会定期请求 /healthz，以及 GCP 把这条路径留作内部保留路径，确认 404 发生在到达 n8n 之前。",
+      "加上环境变量 N8N_ENDPOINT_HEALTH=health，把健康检查改到 /health，避开保留路径。",
+      "重新部署后再看出 Offline 横幅是否消失，作为是否修好的检查。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-03-09T06:14:51.614+09:00 → UTC 2026-03-08T21:14:51Z、Asia/Shanghai 2026-03-09 05:14:51；bodyUpdatedAt 与发布相同，取 published → 2026-03-09；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-03-09。",
+      "必须写成 2026-03-09，不要因 UTC 写成 03-08。不要把 v2.7.x 和 v2.7.5 混成同一个起点。platforms 记 n8n，不要填 github。社区帖和第 22 条回复、PR 页须写完整 URL。",
+    ],
   }
 ];
 
