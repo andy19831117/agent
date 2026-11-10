@@ -66843,6 +66843,446 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       date: "2026-11-03",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "928",
+    slug: "seki-2p5mo-5fail",
+    title: "sekimon：从 2026 年 8 月起约两个半月，兼职行政几乎都交给 Claude Code，并把失败全部写成有日期的台账。失败 1 是规则改定当天模型把该协议的判断自行标成「对象外」。失败 2 是同一天里台账行号至少过时 4 次（1309→1333、1478→1502、1749→1756、2126→2154）。失败 3 是「当方」四天后回到稿里，因为这条指示没写进台账；空白审查者一次给出 5 条，其中 2 条已经定过。失败 4 是「先跟审计役协议再交给人」的当天，一天交出 17 件决定，人只推翻 3 件，且这 3 件全是与台账已有决定不一致的 (b) 类。失败 5 是模型没看设置页就断言「请你去申请提现，截止日期是明天」，账户其实已是随时出金、操作并不需要。作者的结论是「下次小心」改不了，只能把判定放到被规制的一侧之外",
+    summary: "sekimon 从 2026 年 8 月起约两个半月，用正典、带日期的台账、只做判断的审计役子代理，以及每两小时一次的自动巡查来跑兼职行政，并写明失败全部实测。规则改定当天就出现自我分类豁免；同一天台账行号至少过时 4 次；「当方」因没进台账四天后回来；一天 17 件里人只推翻 3 件，且全是 (b) 类；提现截止日期是没看屏幕就编出来的。作者后来用形式而不是件数上限划定该问人的 5 类事项，并要求能查的都先查、外部数字必须带实测日。这些是这一段兼职行政上的台账，不可外推到别的业务或其他编排。",
+    description: "面向已经把兼职行政几乎交给 Claude Code、却只在提示里写「先商量、下次小心」的人：把约两个半月里实测的 5 种失败，以及行号过时、一天 17 件里只推翻 3 件、编造提现截止日期写成门禁，区别于只劝人多写规则、却没有台账和对失败计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/sekimon/articles/e7f29bb093b14e",
+    sourceLabel: "zenn.dev·sekimon 实践帖",
+    upvotes: 819,
+    trending: false,
+    tags: [
+      "claude-code",
+      "ledger",
+      "side-job",
+      "audit-subagent",
+      "failure-log",
+    ],
+    howItWorks: [
+      "作者从 2026 年 8 月起把兼职行政几乎交给 Claude Code，用正典、带日期的台账、只做判断的审计役，以及每两小时一次的巡查来跑，并把失败全部写入台账。",
+      "五种失败分别是：改定当天的自我分类豁免、同一天行号至少过时 4 次、「当方」因没进台账四天后回来、一天 17 件里人只推翻 3 件、以及没看屏幕就编出提现截止日期。",
+      "对应的装置是把判定放到被规制的一侧之外、用形式而不是件数上限划定该问人的 5 类事项、能查的都先查，并给外部数字加上实测日。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-09T00:24:10.638+09:00 → UTC 2026-10-08T15:24:10Z、Asia/Shanghai 2026-10-08 23:24:10；bodyUpdatedAt 2026-10-09T00:17:35.450+09:00，略早于发布、换算到上海同为 10-08，按预定发布理解；取 published → 2026-10-08；GET 200（UA MiraBot/1.0））：sekimon 在《Claude Code に副業を丸投げして2ヶ月半。AI が必ず破るルールと、機械で止めた方法》记下约两个半月和 5 种失败。发布时刻是 JST 10-09 00:24，换算到上海已是 2026-10-08，不要写成 2026-10-09。",
+      "17 件和推翻的 3 件是加了协议机制当天的数字，不要写成整个两个半月的合计。行号 4 组变化是同一天至少过时 4 次的记录，不要改成别的日期。硬窗是这 5 种失败和台账，不是 hook 机制本身。",
+    ],
+    approach: "从 2026 年 8 月起约两个半月，兼职行政几乎都交给 Claude Code。正典放在 CLAUDE.md，台账记下决定、实测数字和失败并都带日期，审计役子代理只做判断、不做实现，并每两小时巡查一次案件和消息。作者按实测绘出 5 种失败，再为每一种在外侧加装置，而不是再写一条「下次小心」。",
+    outcomes: [
+      "源披露：约两个半月里记下 5 种失败；同一天台账行号至少过时 4 次（1309→1333、1478→1502、1749→1756、2126→2154）；「当方」四天后因没进台账回到稿里；空白审查一次给出 5 条，其中 2 条已经定过；「先协议再交人」的当天交出 17 件，人只推翻 3 件且全是 (b) 类；提现「截止日期是明天」是没看设置页就断言的。这是这一段兼职行政上的台账，不可外推到别的业务或其他编排。",
+      "后来只用形式划定该问人的 5 类事项，不设「一天最多 3 件」这类上限，以免模型自己挑选哪些不问。人推翻的 3 件全部是台账已有决定与结论不一致。审计役曾反对「外部数字不必写实测日」，两天后人收回自己的决定、改用审计役的意见。",
+      "作者认为 5 件失败的共通点，是模型优先输出自己脑子里的状态，而不是规则、人的决定、台账行号或屏幕上的显示。能查的都先查，查过的外部数字要写成「2,048 行（2026-09-05 時点）」这种带日期的形式；没查的就写「未确认」。",
+    ],
+    caveats: [
+      "约两个半月从 2026 年 8 月起算，不要改成精确的日历天数。「2,048 行（2026-09-05 時点）」是作者给外部数字注明实测日的格式示例，不是本条另一次测量。17 件和推翻的 3 件绑在加了「先协议再交人」的那一天，不要写成整个两个半月的合计。正文没有产品硬链或配图。外侧装置主要是台账、审计役和巡查，不要写成 hook 教程。",
+      "作者卡 GitHub／X／website 均为空，无导流可列。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先把失败记进带日期的台账，再谈「下次小心就够了吗」",
+        body: "请按实测算一算：规则改定当天有没有出现自我分类豁免；台账行号同一天过时了几次、新旧行号各是多少；已经定过的用语或决定隔了几天又出现；一天交给人的决定有几件、人推翻了几件、推翻的是哪一类；有没有不看设置页就断言截止日期或步骤。不要只加一条「先商量」或「一天最多问几件」，说明判定是放在被规制的一侧之外，还是仍由同一个模型自己分类。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sekimon/articles/e7f29bb093b14e",
+      label: "zenn.dev·sekimon《Claude Code に副業を丸投げして2ヶ月半。AI が必ず破るルールと、機械で止めた方法》",
+      date: "2026-10-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "929",
+    slug: "otk-effort-5d-295",
+    title: "otkshol：在 Claude Code v2.1.281 把 effort 设成 max 时，界面提示像是已经存成默认，重启后却回到 medium。不保存本身是规格，max 只在当前会话有效；会让人读成「已保存」的确认文案才是缺陷。作者在 2026-10-04 用一次性配置目录和空工作目录，于 macOS 26.5.1 arm64 zsh、Homebrew cask 的 v2.1.288 上复现，并起票说明文案。相关已有 issue 是 settings.json 的 effortLevel 不接受 max。投稿 3 天后贡献者回复，5 天后的 v2.1.295 官方 CHANGELOG 写明了修正。正文截图和复现步骤都是修正前的样子",
+    summary: "otkshol 在 v2.1.281 把 effort 设成 max 时，看到像是已保存的确认，重启后却回到 medium。对照已有 issue 和文档后确认：max 不写入默认是规格，会让人读成「已保存」的文案才是要报的缺陷。2026-10-04 在干净目录的 v2.1.288 上复现，起票后 3 天有回复、5 天后出现在 v2.1.295 的 CHANGELOG。这是这一份版本和这一次报告上的记录，不可外推到其他版本或其他 effort 等级。",
+    description: "面向已经把 effort 设成 max、却把「界面说已保存」当成默认值真的写入了的人：把「max 不跨会话保存是规格，会让人读成已保存的确认文案才是缺陷，并且在 v2.1.288 干净目录里复现、5 天后写入 v2.1.295 CHANGELOG」写成门禁，区别于只抄「max 存不住」却没核过文案和修复版本的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/otkshol/articles/claude-opus55-effort-selection",
+    sourceLabel: "zenn.dev·otkshol 实践帖",
+    upvotes: 820,
+    trending: false,
+    tags: [
+      "claude-code",
+      "effort",
+      "opus-5.5",
+      "changelog",
+      "bug-report",
+    ],
+    howItWorks: [
+      "作者在 v2.1.281 把 effort 设成 max，看见像是已保存的确认，重启后却回到 medium。",
+      "对照已有 issue 和文档后，把报告从「max 存不住」收窄到确认文案，并在 2026-10-04 用干净目录于 v2.1.288 上复现后起票。",
+      "投稿 3 天后有贡献者回复，5 天后的 v2.1.295 CHANGELOG 写明修正。正文截图仍是修正前的样子。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-10T08:57:36.947+09:00 → UTC 2026-10-09T23:57:36Z、Asia/Shanghai 2026-10-10 07:57:36；bodyUpdatedAt 与发布相同；取 published → 2026-10-10；GET 200（UA MiraBot/1.0））：otkshol 在《Claude Code の effort の仕様とバグ報告から修正までの話》记下 v2.1.281／v2.1.288 的复现和 v2.1.295 的修正。不要因 UTC 跨日写成 2026-10-09。",
+      "5 天是起票到 CHANGELOG 的间隔，不要写成从第一次遇到缺陷算起。issue 页必须写完整 URL，不要只写 #35904 或 #99350。platform.claude.com 两条按区域不可用披露。",
+    ],
+    approach: "先对照官方文档和已有 issue，分清 max 不写入默认是规格，再把要报的内容从「max 存不住」收窄到「确认文案读起来像已保存」。2026-10-04 用一次性配置目录和空工作目录，在 v2.1.288、macOS 26.5.1 arm64 zsh 上复现后起票，并跟踪到 v2.1.295 的 CHANGELOG。",
+    outcomes: [
+      "源披露：缺陷在 v2.1.281 遇到，v2.1.288 于 2026-10-04 在一次性配置目录里复现；起票 3 天后有贡献者回复，5 天后的 v2.1.295 官方 CHANGELOG 写明修正。max 不跨会话保存是规格，会让人读成「已保存」的确认文案才是缺陷。这是这一份版本和这一次报告上的记录，不可外推到其他版本或其他 effort 等级。",
+      "相关已有 issue 说明 settings.json 的 effortLevel 可接受 low、medium、high、xhigh，max 只在当前会话有效。作者 accordingly 把报告从「max 存不住」改成「确认消息写得像已经保存」。",
+      "正文里的画面和复现步骤都是修正前的状态，不要写成修复后的界面仍然如此。对象模型是 Claude Opus 5.5，默认 effort 是 medium。",
+    ],
+    caveats: [
+      "5 天是从起票到出现在 v2.1.295 CHANGELOG 的间隔，3 天是贡献者回复的间隔，不要混用。max 不保存是规格，不要写成「max 存不住已经被修掉」。platform.claude.com 的文档页跟随至区域不可用页，不因 200 列入可达。Homebrew cask、macOS、zsh 不在平台枚举里，不硬凑。",
+      "导流：https://github.com/otake-shol GET 200（标题 otake-shol (Takanori Takeuchi) · GitHub）；https://x.com/otake_shol GET 200（标题 おたけ (@otake_shol) / X）；https://www.otake-shol.com/ GET 200（标题 Takanori Takeuchi｜PM × Engineer ポートフォリオ）。文内完整硬链已核：https://github.com/anthropics/claude-code/issues/35904 及 https://github.com/anthropics/claude-code/issues/35904#issuecomment-5348008599 GET 200；https://github.com/anthropics/claude-code/issues/99350 及 https://github.com/anthropics/claude-code/issues/99350#issuecomment-6030774436 GET 200；https://github.com/anthropics/claude-code/blob/602df92bf481ed904533e95c09f740f40aab5aed/CHANGELOG.md#21295 GET 200；https://registry.npmjs.org/@anthropic-ai/claude-code GET 200；https://code.claude.com/docs/en/model-config 、https://code.claude.com/docs/en/model-config#adjust-effort-level 、https://code.claude.com/docs/en/model-config#choose-an-effort-level 均 GET 200（父代理复检补全为完整 URL，不再只写锚点）。一次资料未达、不列入可达：https://platform.claude.com/docs/en/build-with-claude/effort#how-effort-works 与 https://platform.claude.com/docs/en/build-with-claude/effort GET 200、redir 2，最终 https://claude.com/app-unavailable-in-region，按区域不可用披露，不因 200 算可达。配图 4 张 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/deployed-images/746ee607b0364d01e04a934d.png?sha=f1b847e9b7544dee290a351bb1a5d2b76e17408f ；https://static.zenn.studio/user-upload/deployed-images/0b091dc2d2cbf0263bbaf8e8.png?sha=99118e719f445c6d28d990fc7acf8eaf040db1b2 ；https://static.zenn.studio/user-upload/deployed-images/27c0700dc2777a566844f98a.png?sha=897e6fce24b2360ebd37937c0dcd1515ffc1f0a0 ；https://static.zenn.studio/user-upload/deployed-images/47800d9862aa1f57cd38e85b.png?sha=1b1339742c4dc145b0a302b7e0c6e1d2daca7138 。不要只写「配图 4 张见本批 md」，也不要把 issue 写成裸的 #35904 或 #99350。",
+    ],
+    prompts: [
+      {
+        title: "先分清 max 不保存是规格还是确认文案在误导，再谈要不要起票",
+        body: "请写明 Claude Code 的版本、模型和 effort 设成了哪一档。界面是否出现过读起来像「已保存」的确认，重启或新开会话后实际回到了哪一档。是否用过一次性配置目录复现，相关 issue 和 CHANGELOG 的完整 URL 是什么、修复出现在哪个版本。不要把「max 不写入默认」写成已经被修掉的缺陷，也不要把修正前的截图写成当前界面。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/otkshol/articles/claude-opus55-effort-selection",
+      label: "zenn.dev·otkshol《Claude Code の effort の仕様とバグ報告から修正までの話》",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "931",
+    slug: "okawa-b200-18-17",
+    title: "kazuki2929（okawa2929）：租用 1 张 NVIDIA B200，用 OpenCode 比较 Qwen3.5-122B、gpt-oss-120b 与 Claude Code。18 道较小的修 bug／加功能题里，Qwen3.5-122B 有 17 道测试全绿，Claude Code 是 18 道全绿；6 道同时做时，处理时间约为 Claude Code 的 2.6 倍。作者估计 1 张 B200 上 Qwen3.5-122B 实用并发大约 16 人，OpenCode 里实际核到的只有 8 人。这次租用 4 小时 52 分，按 GPU 7.99 美元加磁盘 0.05 美元、即每小时 8.04 美元计，约 39 美元（按 1 美元 150 日元约 5,900 日元）。常时租用约 87 万日元／月、按 64 人折合每人约 1.4 万日元／月，是假设价格不变后的估算，不是账单。摘要里补写会议纪要里没有的内容，比 Claude 的两个模型更多。页会转到 solvio 出版物",
+    summary: "kazuki2929 用 1 张 B200 做了 18 道小题：Qwen3.5-122B 17 道测试全绿，Claude Code 18 道全绿；6 道同时做时时间约为 2.6 倍。实用并发估计 16 人，OpenCode 里核到的是 8 人。实测租金是 4 小时 52 分约 39 美元；按月折合的 87 万日元和 64 人人均是估算。这是这一次租用和这一组小题上的结果，不可外推到其他 GPU、其他题或别的并发方式。",
+    description: "面向已经在考虑用本地大模型替换 Claude Code、却只有公开跑分没有自己小题和并发数字的人：把 18 道里 17 对 18、6 道同时约 2.6 倍时间、估计 16 人与实际核到 8 人、以及 4 小时 52 分约 39 美元的租金写成门禁，区别于把按月折合的估算写成已经付过的账单的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kazuki2929/articles/6d374a9224327a",
+    sourceLabel: "zenn.dev·kazuki2929 实践帖",
+    upvotes: 822,
+    trending: false,
+    tags: [
+      "claude-code",
+      "local-llm",
+      "b200",
+      "qwen",
+      "concurrency",
+    ],
+    howItWorks: [
+      "作者在 RunPod 租 1 张 B200，用 vLLM 在卡上跑本地模型，编码代理放在 MacBook Pro 上，比较 Qwen3.5-122B、gpt-oss-120b 与 Claude Code。",
+      "18 道小题里 Qwen 17 道测试全绿、Claude Code 18 道全绿；6 道同时做时时间约为 2.6 倍。并发估计 16 人，OpenCode 里核到 8 人。",
+      "这次租金按 4 小时 52 分约 39 美元计算；按月和按 64 人折合的数字是估算。掩码、摘要和翻译另做了可用与否的观察。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-15T11:56:38.510+09:00 → UTC 2026-10-15T02:56:38Z、Asia/Shanghai 2026-10-15 10:56:38；bodyUpdatedAt 2026-10-15T11:54:31.380+09:00，略早于发布、同日；取 published → 2026-10-15；GET 200（UA MiraBot/1.0），跟随至 solvio 出版物页）：kazuki2929 在《【LocalLLM】Claude Codeの代わりになる？精度・同時人数・費用を検証》记下 18 道、17 对 18，以及 4 小时 52 分约 39 美元。不要把 87 万日元／月写成账单。",
+      "16 人是估计，8 人才是实际核对。gpt-oss-120b 的 18 道通过数正文没给，不要补。占位 127.0.0.1:18000/v1 未作为可达链去核。",
+    ],
+    approach: "在 RunPod 按秒租 1 张 B200，服务器上只放 vLLM 和模型，编码代理在当作员工电脑的 MacBook Pro 上跑。用较小的修 bug／加功能题比较 Qwen3.5-122B、gpt-oss-120b 与 Claude Code，再看 1 张卡能同时承担多少人，以及掩码、摘要和翻译是否能用。",
+    outcomes: [
+      "源披露：18 道小题里 Qwen3.5-122B 有 17 道测试全绿，Claude Code 是 18 道全绿；6 道同时做时处理时间约为 2.6 倍。1 张 B200 上 Qwen3.5-122B 的实用并发估计约 16 人，OpenCode 里实际核到的是 8 人。这次租用 4 小时 52 分约 39 美元。这是这一次租用和这一组小题上的结果，不可外推到其他 GPU、其他题或别的并发方式。",
+      "掩码在去掉 Qwen 多出来的空格后，作者认为达到可用水平；摘要和翻译也可用，但摘要会补写会议纪要里没有的内容，比 Claude 的两个模型更多。",
+      "约 87 万日元／月和按 64 人折合的人均约 1.4 万日元，是假设价格不变、并用「同时 16 人、按四人中有一人同时在用」推到 64 人后的估算，不是实测账单。汇率按 1 美元 150 日元。页会转到 solvio 出版物，仍取这条个人实测。",
+    ],
+    caveats: [
+      "16 人是估计，不要写成已经在 OpenCode 里核到 16 人；实际核到的是 8 人。87 万日元／月和 64 人人均不是账单。2.6 倍是 6 道同时做时的处理时间，不要写成 18 道逐题的耗时。gpt-oss-120b 参加了比较，正文没有给出它在这 18 道上的通过数，不要补写。OpenCode、Qwen、RunPod、B200 不在平台枚举里，不硬凑。占位 http://127.0.0.1:18000/v1 按源文写出，未作为可达链去核。",
+      "导流：https://solvio.co.jp/ GET 200（标题 Solvio株式会社）。一次资料已核、不列入作者产品导流：https://opencode.ai/config.json GET 200。配图 11 张均 GET 200，挂在本条，不列入产品导流：https://static.zenn.studio/user-upload/eefbd9e6d478-20261015.png ；https://static.zenn.studio/user-upload/6a025394b26f-20261015.png ；https://static.zenn.studio/user-upload/c636940e31b8-20261015.png ；https://static.zenn.studio/user-upload/bc21388ebf30-20261015.png ；https://static.zenn.studio/user-upload/45e9754118e3-20261015.png ；https://static.zenn.studio/user-upload/b26f34d16427-20261015.png ；https://static.zenn.studio/user-upload/401218a2fb72-20261015.png ；https://static.zenn.studio/user-upload/83025b80dfc5-20261015.png ；https://static.zenn.studio/user-upload/b30404c3d635-20261015.png ；https://static.zenn.studio/user-upload/2208ac7944c2-20261015.png ；https://static.zenn.studio/user-upload/6c791e881243-20261015.png 。不要只写「配图 11 张见本批 md」。primary 跟随至 https://zenn.dev/solvio/articles/6d374a9224327a?redirected=1 ，仍 GET 200。作者卡 GitHub／X／website 均为空。",
+    ],
+    prompts: [
+      {
+        title: "先分开 18 道通过数、6 道同时的耗时，以及估计并发和实际核到的人数，再谈能不能替换 Claude Code",
+        body: "请写明租了哪一种 GPU、租了多久、实际付了多少。小题有几道、各模型测试全绿的是几道；同时做几道时，时间是另一侧的多少倍。实用并发若是估计，写出估计值和实际在哪一种代理里核到了多少人。按月折合或按人数摊的费用如果是假设价格不变后的计算，不要写成账单。没给出通过数的模型不要补写。本地地址若只是配置示例，按占位注明。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kazuki2929/articles/6d374a9224327a",
+      label: "zenn.dev·kazuki2929《【LocalLLM】Claude Codeの代わりになる？精度・同時人数・費用を検証》",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "932",
+    slug: "hiro-3925-1330pr",
+    title: "hirockysan：个人游戏集「あそびば」把 Claude Code 当「社长」，人只做会长的批准和实机 QA。数字截止 2026-10-15：首个提交 2026-06-17，首次发布 6 月 25 日，把 AI 扶正为社长是 8 月 10 日。各月全分支提交／向 main 的 first-parent 合并是 6 月 72／20、7 月 5／0、8 月 585／71、9 月 2,193／154、10 月（到 15 日）1,070／110。合计提交 3,925，已合并 PR 1,330 本；issue 起票 916、完成 885、剩下 31。商店公开版从 8 月 29 日 v1.1.0 到 10 月 12 日 v1.1.11，45 天里更新 12 次。实测 PR 从创建到合并平均 21 分钟，其中 CI 约 10 分钟。值班脚本由 launchd 每 3 分钟（StartInterval 180）拉起，最多 2 个槽同时跑。失败里包括：已写「暂缓合并」却在 17 分钟后被合入；7 本新游戏并行时注册文件冲突；本以为在云上跑的重测量其实在本地 5 路并行，负载到了 49。PreToolUse hook 只是后来挡住破坏性命令的装置之一，不是本条硬窗",
+    summary: "hirockysan 把 Claude Code 当社长运营个人游戏集，数字截止 2026-10-15：合计 3,925 次提交、1,330 本已合并 PR，issue 916／885／31；商店版 45 天更新 12 次；PR 从创建到合并平均 21 分钟，其中 CI 约 10 分钟。7 月几乎停住，8 月换体制后才加快。这是截止 10 月 15 日这一份仓库和商店记录，不可外推到其他应用或其他编排。",
+    description: "面向已经想让 Claude Code 自己合并 PR、却只有「几乎不用手写代码」这种印象的人：把截止 2026-10-15 的 3,925 次提交、1,330 本已合并 PR、45 天 12 次商店更新，以及平均 21 分钟（CI 约 10 分钟）写成门禁，区别于把 hook 挡命令或 launchd 每 3 分钟拉起当成这一条硬窗的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/hirockysan/articles/aa3c5ff723953b",
+    sourceLabel: "zenn.dev·hirockysan 实践帖",
+    upvotes: 823,
+    trending: false,
+    tags: [
+      "claude-code",
+      "launchd",
+      "pull-request",
+      "game-app",
+      "pipeline",
+    ],
+    howItWorks: [
+      "作者给个人游戏集写了章程：人只批准 issue、在 TestFlight 上确认，并决定是否提交审核；合并由值班脚本在 CI 变绿、评测意见处理完后自己做。",
+      "launchd 每 3 分钟拉起值班脚本，有工作才启动 claude -p，最多 2 个槽同时跑。数字按月和合计写在 2026-10-15 時点。",
+      "失败被收成规则：暂缓要变成机器可拒绝的标签，共同注册文件不能并行乱改，执行位置要先用 ps／uptime 确认，破坏性 git 命令由 hook 挡住。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-15T21:42:39.087+09:00 → UTC 2026-10-15T12:42:39Z、Asia/Shanghai 2026-10-15 20:42:39；bodyUpdatedAt 与发布相同；取 published → 2026-10-15；GET 200（UA MiraBot/1.0））：hirockysan 在《AI を社長に、人間を会長にしてゲームアプリを運営している話 ― launchd と Claude Code で回す開発パイプラインの中身》记下截止 2026-10-15 的 3,925 次提交、1,330 本已合并 PR 和 45 天 12 次更新。",
+      "硬窗是这些仓库和商店数字，以及平均 21 分钟，不是 PreToolUse hook 本身。日本区 App Store 跟随至中国区 Today，不列入可达。",
+    ],
+    approach: "个人游戏集「あそびば」从 8 月 10 日起把 Claude Code 当社长，人只批准 issue、在 TestFlight 上做实机确认，并决定是否提交审核。值班脚本由 launchd 每 3 分钟拉起，有工作才调用 claude -p，最多 2 个槽同时跑。数字都写明是 2026-10-15 時点。",
+    outcomes: [
+      "源披露：截止 2026-10-15，合计提交 3,925、已合并 PR 1,330；issue 起票 916、完成 885、剩下 31。商店公开版从 8 月 29 日 v1.1.0 到 10 月 12 日 v1.1.11，45 天更新 12 次。PR 从创建到合并平均 21 分钟，其中 CI 约 10 分钟。这是截止这一天的这一份仓库和商店记录，不可外推到其他应用或其他编排。",
+      "按月看，7 月几乎停住（5 次提交、向 main 的 first-parent 合并 0），8 月换体制后才加快。人把合并从会长职责里拿掉，但金钱、外部服务、审核和广告方针仍要盖章。CodeRabbit 在一天 PR 超过 10 本时常常因速率限制评不上，要靠次日清晨的审计值班补看。",
+      "失败里，已写「暂缓合并」并去掉批准标签后仍在 17 分钟后被合入；7 本新游戏并行时共同注册文件冲突；负载 49 的那次是「以为在云上」其实在本地 5 路并行。PreToolUse hook 后来用来挡住 rm -rf、git reset --hard 和 force push，只是失败 6 的装置，不是本条硬窗。",
+    ],
+    caveats: [
+      "所有仓库和商店数字都截止 2026-10-15，不要外推到写作之后。45 天、12 次只覆盖 v1.1.0 到 v1.1.11，不要写成从 6 月 25 日首次发布起算。平均 21 分钟含约 10 分钟 CI，不要把 CI 写成全部耗时。日本区 App Store 链跟随至中国区 Today，按区域不可用披露，不因 200 算可达。App Store、TestFlight、Xcode、launchd、Fable、CodeRabbit、Swift 不在平台枚举里，不硬凑。正文没有给出公开仓库 URL，不要补仓。",
+      "导流：https://github.com/hiroky1983 GET 200（标题 hiroky1983 (hiroki yamada) · GitHub）；https://x.com/hirock_e1983 GET 200（标题 ひろっきー (@hirock_e1983) / X）。日本区应用页不因 200 列入可达：https://apps.apple.com/jp/app/id6781719499 GET 200、redir 2，写作交付时最终跟随至 https://apps.apple.com/cn/iphone/today（标题 iPhone 版“Today” - App Store，size 2124654）。父代理复检 Asia/Shanghai 2026-11-10：25 秒窗口已跟随至 Today，但传输不完整（curl 28，size 147447）；60 秒重试最后一次（18:15:57）HTTP 200、redir 2、完整跟随至 Today（size 2319437），仍按区域不可用披露，不因 200 列入可达。未见正文配图。页内 link-card／embed.zenn.studio 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。hook 只出现在失败 6，硬窗是截止 10-15 的提交、PR 和商店更新，与 #881／#882／#887／#909／#921 不是同一扇窗。",
+    ],
+    prompts: [
+      {
+        title: "先核截止某一天的提交、已合并 PR 和商店更新次数，再谈「让 AI 当社长」",
+        body: "请写明数字截止到哪一天。首个提交、首次发布、以及把 AI 扶正为社长的日期要分开。合计提交、已合并 PR、issue 的起票／完成／剩余，以及某一段商店版本的天数和更新次数，不要混用分母。PR 从创建到合并若有平均值，写清其中 CI 占多少。并行槽数、值班间隔若是机制说明，不要当成已经量过的吞吐。若有 hook，说明它挡住的是哪一类命令，不要把 hook 写成这条的硬窗。日本区商店链接若打不开应用页，按实际落地页披露。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hirockysan/articles/aa3c5ff723953b",
+      label: "zenn.dev·hirockysan《AI を社長に、人間を会長にしてゲームアプリを運営している話 ― launchd と Claude Code で回す開発パイプラインの中身》",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "934",
+    slug: "swdrk-4run-8lend",
+    title: "swdrk：用虚构的备品出借 Spring Boot API，在 2026-10-17 以 Claude Code 2.1.286 的 claude -p、Spring Boot 4.1.1、Java 21、Maven 3.9.16、H2 和 macOS 做了 4 个条件，每个条件只跑 1 次。实验 1 只给散文规则，约 3 分钟，10 个测试全过，但多做了没要的 API，并且自己加了锁；人写的 8 人同时借同一件的测试跑 5 次，每次都只有 1 次成功。实验 2 加上 CLAUDE.md 和验收条件，约 5 分钟，33 个测试全过，API 也按要求来，但并发控制被「没被要求的功能不要加」挡住，作者写的是「见送りました」（先搁下、暂不采用）。同样的 8 人测试跑 5 次，每次 8 件全部成功。实验 3 把实验 2 的代码交给新会话按 6 个观点审查，约 2 分钟返回 4 条高严重度，也抓住了这个漏洞，但有 1 条误报（把委托过的 data.sql 当成多余）。实验 4 只补一行非功能要求，约 4 分钟加了行锁；拿掉对策后测试会失败（10 人能借到同一件），人写的确认测试 5 次都是只有 1 次成功。归还的双重处理（R5）被当作范围外，没有改",
+    summary: "swdrk 在 2026-10-17 对备品出借 API 做了 4 个条件、每个只跑 1 次。只给散文时约 3 分钟、10 个测试全过，但人写的 8 人同借测试 5 次都只有 1 次成功；加上验收后约 5 分钟、33 个测试全过，同一测试 5 次却是 8 件全成，作者把并发控制「暂不采用」。新会话审查约 2 分钟抓住漏洞，同时有 1 条误报；再补一行非功能要求约 4 分钟后，拿掉对策测试会失败。这是每个条件 1 次的结果，不可外推到多次重复或其他业务 API。",
+    description: "面向已经给 Claude Code 写了验收条件和「不要多做」，却以为非功能要求也会被补上的人：把 8 人同借在有锁和无锁下各跑 5 次的结果，以及审查抓住漏洞却另有 1 条误报写成门禁，区别于只看 10 或 33 个测试全绿的实践。原文「见送りました」是暂不采用，不是先发送。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/swdrk/articles/a18eca9e53d582",
+    sourceLabel: "zenn.dev·swdrk 实践帖",
+    upvotes: 825,
+    trending: false,
+    tags: [
+      "claude-code",
+      "spring-boot",
+      "acceptance-tests",
+      "concurrency",
+      "code-review",
+    ],
+    howItWorks: [
+      "作者用虚构的备品出借规则，在 2026-10-17 用 claude -p 做了 4 个条件，每个只跑 1 次。",
+      "只给散文时测试全绿但仍多做了 API，并且自己加了锁；加上验收后范围变准，并发控制却被暂不采用，8 人能同时借到同一件。",
+      "另开会话的审查抓住了漏洞，也出现 1 条误报；再补一行非功能要求后加上了行锁，拿掉对策测试会失败，R5 仍当作范围外。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-24T16:01:23.904+09:00 → UTC 2026-10-24T07:01:23Z、Asia/Shanghai 2026-10-24 15:01:23；bodyUpdatedAt 2026-10-18T22:21:01.197+09:00，早于发布，按预定发布理解；取 published → 2026-10-24；GET 200（UA MiraBot/1.0））：swdrk 在《Spring Boot の業務 API を Claude Code に書かせて分かった、「書いたことは守り、書かなかったことは落とす」》记下 4 个条件和 8 人同借的结果。不要因 bodyUpdatedAt 写成 2026-10-18。",
+      "原文「见送りました」是暂不采用，不是先发送。8 人与实验 4 的 10 人不要混用。每个条件只跑 1 次。",
+    ],
+    approach: "先用 start.spring.io 做好带 Web、JPA、H2 和校验的骨架，再把出借规则交给 Claude Code 2.1.286 的非交互模式 claude -p。4 个条件分别是：只给散文、加上 CLAUDE.md 和验收、另开会话按 6 个观点审查、以及只补一行非功能要求。每个条件只跑 1 次，日期是 2026-10-17。",
+    outcomes: [
+      "源披露：实验 1 约 3 分钟、10 个测试全过，人写的 8 人同借测试跑 5 次都只有 1 次成功；实验 2 约 5 分钟、33 个测试全过，同一测试跑 5 次却是 8 件全部成功，作者把并发控制「暂不采用」（原文 见送りました）。实验 3 约 2 分钟给出 4 条高严重度并抓住这个漏洞，另有 1 条误报。实验 4 约 4 分钟加上行锁，拿掉对策后测试会失败。这是每个条件只跑 1 次的结果，不可外推到多次重复或其他业务 API。",
+      "实验 2 因为写了「不要加没被要求的功能」，把实验 1 里模型自己加过的锁也挡掉了。实验 4 按「员工 → 备品」的顺序加了悲观写锁以避免死锁，但归还的双重处理（R5）被当作委托范围外，没有改。",
+      "人写的确认测试在有锁时 5 次都是只有 1 次成功；作者还把实验 1 自己写的并发测试里的锁删掉重跑，3 次都有 2 个测试失败，说明那些测试不是摆设。",
+    ],
+    caveats: [
+      "每个条件只跑 1 次，作者写明同样的指示每次输出都可能不同。8 人测试用于实验 1／2，实验 4 拿掉对策时写的是 10 人能借到同一件，不要混用。约 3、5、2、4 分钟是各次报告里的耗时。原文「见送りました」应理解为先搁下、暂不采用，不要写成先发送。Spring Boot、Java、Maven、H2、macOS 不在平台枚举里，不硬凑。正文没有配图。",
+      "导流：https://github.com/rikusawada GET 200（标题 RikuSawada (RikuSawada) · GitHub）。作者卡 X／website 为空。primary GET 200。bodyUpdatedAt 在 10-18，早于发布，按预定发布理解，仍取 published 10-24，不要写成 2026-10-18。",
+    ],
+    prompts: [
+      {
+        title: "先用人写的并发测试核对「测试全绿」是不是已经挡住同时出借，再谈验收条件够不够",
+        body: "请写明 Claude Code 的版本、是不是非交互模式，以及每个条件跑了几次。只给散文、加上验收、另开会话审查、再补一行非功能要求时，测试数、耗时和有没有多做未要的 API，要分开写。人写的同时出借测试在有锁和无锁下各跑了几次、每次成功几件。审查有没有误报。原文若写「见送りました」，按暂不采用理解，不要写成先发送。不要把只跑 1 次的结果写成稳定基准。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/swdrk/articles/a18eca9e53d582",
+      label: "zenn.dev·swdrk《Spring Boot の業務 API を Claude Code に書かせて分かった、「書いたことは守り、書かなかったことは落とす」》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "935",
+    slug: "naoya-6mo-rev-92",
+    title: "naoya551512：用 GitHub API 取了半年（3 月至 8 月）的 PR 行内评论，先去掉 AI 评论、线程回复和本人评论，再只看带 [MUST]／[IMO]／[NITS] 的指摘。漏斗按「取到的全部评论」计：100% → 去掉 AI 后约 64% → 再去掉线程回复约 26% → 只留审查者约 14% → 带这三种标签约 9%。分类先定 19 种「是什么问题」，再用另一个 Claude Code 代理抽约一成重分，种类一致的是 92%；作者自己只抽看过一部分，没有核完全部。最多的一类是「和已有写法、规约不齐」，占 21%，其中 RSpec 约 35%、Ruby 约 22%、视图约 16%。正文只给了这些比例，没有写出评论的绝对件数。API 示例里的 OWNER/REPO 是占位。页会转到 port_inc 出版物",
+    summary: "naoya551512 把半年 PR 行内评论收成相对于「取到的全部评论」的漏斗：去掉 AI 后约 64%，去掉线程回复约 26%，审查者约 14%，带 [MUST]／[IMO]／[NITS] 约 9%。19 种类型里最多的是不齐已有写法，占 21%。约一成重分的一致率是 92%，作者没有核完全部。这是这一段仓库、这一套标签上的比例，不可外推到其他团队或其他评论范围，也不要把比例改成未给出的绝对件数。",
+    description: "面向已经想用 Claude Code 给历史审查意见分类、却打算直接把百分比当成件数的人：把相对全部取到评论的漏斗、19 种类型里占 21% 的「不齐已有写法」，以及约一成重分 92%、且作者未核完全部写成门禁，区别于把 OWNER/REPO 示例当成真实仓库地址、或把 GitHub Copilot 评论算进人的指摘的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/naoya551512/articles/a4bc3b39f44459",
+    sourceLabel: "zenn.dev·naoya551512 实践帖",
+    upvotes: 826,
+    trending: false,
+    tags: [
+      "claude-code",
+      "code-review",
+      "github-api",
+      "classification",
+      "pull-request",
+    ],
+    howItWorks: [
+      "作者用 GitHub API 取 3 月至 8 月的行内评论，按是否为 AI、是否为回复、是否为审查者、以及有没有重要度标签逐层收窄。",
+      "先定 19 种「是什么问题」再交给 Claude Code 分类，并用另一个代理抽约一成重分，得到 92% 的种类一致率。",
+      "结果用比例呈现：最多的是不齐已有写法，占带标签指摘的 21%，其中再按 RSpec、Ruby 和视图拆开。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-28T10:00:06.648+09:00 → UTC 2026-10-28T01:00:06Z、Asia/Shanghai 2026-10-28 09:00:06；bodyUpdatedAt 2026-10-26T15:36:12.393+09:00，早于发布，按预定发布理解；取 published → 2026-10-28；GET 200（UA MiraBot/1.0），跟随至 port_inc 出版物页）：naoya551512 在《Claude Codeで半年分のレビュー指摘を分類してみた》记下漏斗比例和 92% 的重分一致率。不要因 bodyUpdatedAt 写成 2026-10-26。",
+      "不要把比例改成未给出的绝对件数。OWNER/REPO 是占位。92% 不是全量核对。",
+    ],
+    approach: "用 GitHub API 只取行内评论，覆盖 3 月至 8 月。先去掉 AI 评论、线程回复和本人评论，再只保留带 [MUST]／[IMO]／[NITS] 的指摘。类型先列成 19 种「是什么问题」，再交给 Claude Code；另外抽约一成让另一个代理重分，并核对一致率。",
+    outcomes: [
+      "源披露：相对「取到的全部评论」，去掉 AI 后约 64%，再去掉线程回复约 26%，只留审查者约 14%，带 [MUST]／[IMO]／[NITS] 约 9%。19 种类型里最多的是不齐已有写法，占 21%（其中 RSpec 约 35%、Ruby 约 22%、视图约 16%）。约一成重分的种类一致率是 92%，作者没有核完全部。这是这一段仓库、这一套标签上的比例，不可外推到其他团队或其他评论范围。",
+      "API 取到的只是行内评论，不包括审查正文和 PR 对话栏。GitHub Copilot 等 AI 审查评论已被去掉。表上没列出的其余 23% 包括类型注解、和设计稿不一致、异常处理和 Issue 等，不要把 21% 写成全部。",
+      "正文没有给出评论的绝对件数，不要把 9%、21% 或 92% 换算成未披露的条数。「同上」和给分析用 SQL 的指摘已排除后再计数。",
+    ],
+    caveats: [
+      "所有漏斗数字都是占「取到的全部评论」的比例，不要改成绝对件数。92% 是约一成再分类的一致率，作者未核完全部，不要写成全量已对过。OWNER/REPO 按源文占位写出，未作为可达链去核。页会转到 port_inc 出版物，仍取这条个人分类。GitHub Copilot 不在平台枚举里，不硬凑；platforms 只记正文明确使用的 claude，不把 GitHub 从主题标签硬凑进去。",
+      "作者卡 GitHub／X／website 均为空，无作者社交导流可列。配图 2 张 GET 200，挂在本条，不列入产品导流：https://static.zenn.studio/user-upload/145031176c25-20261026.png ；https://static.zenn.studio/user-upload/7d1f00c8b855-20261026.png 。不要只写「配图 2 张见本批 md」。primary GET 200，跟随至 https://zenn.dev/port_inc/articles/a4bc3b39f44459?redirected=1 。bodyUpdatedAt 在 10-26，早于发布，按预定发布理解，仍取 published 10-28。",
+    ],
+    prompts: [
+      {
+        title: "先写清漏斗的分母是「取到的全部评论」，再谈最多的指摘类型是什么",
+        body: "请写明取的是哪一段时间、是不是只含行内评论，以及相对全部取到评论的各层比例。分类有几种、最多的一类占多少，若再按文件种类拆开，也要写清分母。重分抽了多少、一致率是多少、人有没有核完全部。正文若没有绝对件数，不要换算。示例里的 OWNER/REPO 若是占位，按占位注明，不要当成已核过的仓库地址。AI 审查评论有没有被排除，要写明。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/naoya551512/articles/a4bc3b39f44459",
+      label: "zenn.dev·naoya551512《Claude Codeで半年分のレビュー指摘を分類してみた》",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "936",
+    slug: "yazuma-180-070",
+    title: "y_azuma：用 Bluesky 官方应用里实际修过的 5 个缺陷，在 2026 年 10 月测了 180 次，比较 Callstack 的 agent-device、Software Mansion 的 Argent 和 Mobile Next 的 mobile-mcp 的 CLI 与 MCP，共 6 个条件。环境是 Claude Code 2.1.310、Opus 5.5、Xcode 27.1、iOS 26.5 模拟器（iPhone 17），应用是提交 61c7cad、Expo SDK 57 的官方应用，没试过其他应用、其他代理或 Android。结构是 5 题 × 有无 testID 与无障碍标签 × 3 次 × 6 条件。6 个条件都是 30 次里 30 次从复现做到确认。平均每次费用和作业时间：agent-device CLI 0.70 美元／2 分 05 秒，mobilecli（mobile-mcp 的 CLI）同样 0.70 美元／2 分 08 秒，mobile-mcp MCP 0.80 美元／1 分 53 秒，Argent CLI 0.91 美元／3 分 04 秒，agent-device MCP 0.95 美元／1 分 53 秒，Argent MCP 1.11 美元／1 分 41 秒。Argent MCP 最快，费用约是 agent-device CLI 的 1.6 倍。费用是按空缓存重算的 API 换算值，token 的 96% 是缓存读取；同一组合 3 次之间的波动，各条件都在 6% 到 14%。作业时间只作参考，因为同一台 Mac 上有时还在做别的事。页会转到 gemcook 出版物",
+    summary: "y_azuma 用 Bluesky 实修缺陷在 2026 年 10 月测了 180 次：6 个条件都是 30 次全部走完复现到确认。agent-device CLI 与 mobilecli 平均每次 0.70 美元并列最便宜，Argent MCP 最快但约 1.11 美元，约为前者的 1.6 倍。费用按空缓存重算，96% 的 token 是缓存读取。去掉无障碍标签后，费用和时间没有超出 3 次波动的稳定差异。这是这一份应用、模拟器和 180 次上的结果，不可外推到其他应用、Android 或其他代理。",
+    description: "面向已经要给 Claude Code 接上模拟器操作工具、却只看哪一种 MCP 更快的人：把 180 次里 6 个条件全部 30／30 走完，以及 0.70 美元与 1.11 美元、1.6 倍费用写成门禁，区别于没按空缓存重算、或把无障碍标签的有无写成已经稳定改变费用的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/y_azuma/articles/rn-agent-device-cli-benchmark",
+    sourceLabel: "zenn.dev·y_azuma 实践帖",
+    upvotes: 827,
+    trending: false,
+    tags: [
+      "claude-code",
+      "react-native",
+      "agent-device",
+      "benchmark",
+      "accessibility",
+    ],
+    howItWorks: [
+      "作者先定下 5 道 Bluesky 已修缺陷，再在 6 个工具入口上，按有无 testID 与无障碍标签各跑 3 次，一共 180 次，用 Maestro 判断是否修完。",
+      "6 个条件都是 30 次全部走完。费用按空缓存重算后，agent-device CLI 与 mobilecli 并列最便宜，Argent MCP 最快但最贵。",
+      "去掉无障碍标签后，费用差异落在 3 次波动里。作业时间只作参考，因为同一台 Mac 上有时还在做别的事。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-30T14:25:21.822+09:00 → UTC 2026-10-30T05:25:21Z、Asia/Shanghai 2026-10-30 13:25:21；bodyUpdatedAt 2026-10-30T14:24:07.697+09:00，略早于发布、同日；取 published → 2026-10-30；GET 200（UA MiraBot/1.0），跟随至 gemcook 出版物页）：y_azuma 在《Claude Code に React Native アプリを触らせるなら agent-device の CLI》记下 180 次和平均每次 0.70 美元。不要把按标签拆开的数字当成总表。",
+      "「无障碍」不要写成「无访问」。5 道题的 PR 必须写完整 URL。localhost:3000 是占位。没试过 Android 或其他应用，不可外推。",
+    ],
+    approach: "在选定工具之前先定下 5 道已合并的 Bluesky 缺陷，用附带 mock 服务器的官方应用在模拟器上复现、修复并用 Maestro 判定。3 种工具各走 CLI 和 MCP，再乘上有无 testID 与无障碍标签、每种 3 次，一共 180 次。费用按每次都从空缓存开始重新计算，作业时间只作参考。",
+    outcomes: [
+      "源披露：180 次里 6 个条件都是 30 次全部走完复现到确认。平均每次费用：agent-device CLI 与 mobilecli 均为 0.70 美元，mobile-mcp MCP 0.80 美元，Argent CLI 0.91 美元，agent-device MCP 0.95 美元，Argent MCP 1.11 美元（最快，约 1 分 41 秒，费用约是 agent-device CLI 的 1.6 倍）。费用是按空缓存重算的 API 换算值。这是这一份应用和 180 次上的结果，不可外推到其他应用、Android 或其他代理。",
+      "同一题、标签和轮次成对相比，agent-device CLI 在 30 组里有 29 组比自己的 MCP 便宜，30 组全部比 Argent MCP 便宜；与 mobilecli 相比，30 组里有 18 组没有差别。三种工具都是 CLI 比自己的 MCP 便宜（agent-device 近三成，Argent 近两成，mobile-mcp 一成出头）。平均一次约 142 万 token，其中 96% 是缓存读取，费用仍在 1 美元上下。同一组合 3 次之间的波动，各条件都在 6% 到 14%。",
+      "去掉 testID 与无障碍标签后再测，作者的结论是费用和时间没有稳定变化：各条件里「无标签更便宜」的组大约一半，差异落在 3 次波动范围内。不要把「无障碍」写成「无访问」。题目在第一次跑工具之前就定好，没有根据结果改题。没试过其他应用、其他代理或 Android。",
+    ],
+    caveats: [
+      "0.70 美元等是 30 次（含有无标签）的平均值，不要和按标签拆开的 0.71→0.69 等数字混成一次测量。费用已按空缓存重算，不要把可能复用上一轮缓存的原始账单写成这一表。作业时间只作参考。5 道题对应的已合并 PR 必须写完整 URL，不要只写 #10132。localhost:3000 按占位写出，未作为可达链去核。Expo、Xcode、iOS、Maestro、React Native 不在平台枚举里，不硬凑。页会转到 gemcook 出版物。",
+      "导流：https://x.com/yoshitakaazuma GET 200（标题 よしたか (AZUMAX) (@YoshitakaAzuma) / X）。一次资料已核、不列入作者产品导流：https://github.com/callstack/agent-device 、https://github.com/software-mansion/argent 、https://github.com/mobile-next/mobile-mcp 、https://github.com/bluesky-social/social-app ，以及 https://github.com/bluesky-social/social-app/pull/10132 、https://github.com/bluesky-social/social-app/pull/10163 、https://github.com/bluesky-social/social-app/pull/11503 、https://github.com/bluesky-social/social-app/pull/8502 、https://github.com/bluesky-social/social-app/pull/11820 ，https://expo.dev/blog/fable-5-vs-gpt-5-6-sol-expo-apps ，均 GET 200。占位、未作为可达链去核：http://localhost:3000 。未见正文配图。primary GET 200，跟随至 https://zenn.dev/gemcook/articles/rn-agent-device-cli-benchmark?redirected=1 。作者卡 GitHub／website 为空。",
+    ],
+    prompts: [
+      {
+        title: "先核 6 个条件是不是都把复现到确认做完，以及费用是不是按空缓存重算，再谈该选 CLI 还是 MCP",
+        body: "请写明 Claude Code 和模型的版本、模拟器和应用提交，测了多少次、题目是不是在跑工具之前就定好。6 个条件各自完成了几次、平均每次费用和作业时间是多少，费用有没有按空缓存重算，缓存读取占 token 的多少。有无 testID 或无障碍标签若做过对照，写清差异是不是落在重复次数的波动里。「无障碍」不要写成「无访问」。没测过的系统或应用不要外推。题目所用的已合并 PR 请给完整 URL。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/y_azuma/articles/rn-agent-device-cli-benchmark",
+      label: "zenn.dev·y_azuma《Claude Code に React Native アプリを触らせるなら agent-device の CLI》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "937",
+    slug: "nhi-10oku-261mb",
+    title: "nhinata：嫌反复打开 /usage，自己做了 Claude Code 的状态行 tallyline。状态行示例里的「Oct 22.1M tok（约 14.92 美元）」只是画面上的展示，不要和后文的 10 月用量混用。作者在 10 月末结束前已经用掉 10 亿以上 token，按 API 计量约 500 美元，超过 Pro 月费 20 美元的 25 倍。一次绘制约 0.02 秒，本体约 34KB，只用 Python 标准库。个人环境里约 3 个月的对话记录是 261MB，tallyline 自己的记录是 2.1MB，作者估计用一年也到不了 10MB。这和 #918 tanashun 写 statusLine「还剩 5 小时」的做法不是同一扇窗：本条硬窗是个人用量和存储体积。产品仓在 github.com/nhinata/tallyline",
+    summary: "nhinata 自作 tallyline 状态行。10 月末结束前已用掉 10 亿以上 token，按 API 计量约 500 美元，超过 Pro 月费 20 美元的 25 倍。约 3 个月的对话记录 261MB，tallyline 记录 2.1MB；一次绘制约 0.02 秒。画面示例里的 22.1M token（约 14.92 美元）不是这组 10 亿的数字。这是作者个人环境和 10 月用量上的记录，不可外推到其他套餐或其他一个月。",
+    description: "面向已经在状态行上看用量、却把示例截图里的 22.1M token 当成当月真实用量的人：把 10 月末结束前 10 亿以上 token、按 API 计量约 500 美元，以及 261MB 对 2.1MB 的存储对比写成门禁，区别于只介绍如何画出「还剩多少小时」的 statusLine 实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/nhinata/articles/tallyline-claude-code-statusline",
+    sourceLabel: "zenn.dev·nhinata 实践帖",
+    upvotes: 828,
+    trending: false,
+    tags: [
+      "claude-code",
+      "statusline",
+      "token-usage",
+      "tallyline",
+      "storage",
+    ],
+    howItWorks: [
+      "作者自作 tallyline，用增量读取画状态行，并把按日汇总的用量另存，避免对话记录到期后累计变少。",
+      "个人 Pro 套餐在 10 月末结束前已用掉 10 亿以上 token，按 API 计量约 500 美元；约 3 个月对话记录 261MB，自作记录 2.1MB。",
+      "状态行示例里的 22.1M token（约 14.92 美元）只用来说明画面上有什么，不能代替这组 10 月用量。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T23:17:37.467+09:00 → UTC 2026-10-31T14:17:37Z、Asia/Shanghai 2026-10-31 22:17:37；bodyUpdatedAt 与发布相同；取 published → 2026-10-31；GET 200（UA MiraBot/1.0））：nhinata 在《/usage を何度も開くのが面倒で、Claude Code のステータスラインを自作してみた》记下 10 亿以上 token、约 500 美元，以及 261MB 对 2.1MB。不要把示例里的 22.1M 写成这组用量。",
+      "与 #918 tanashun 的 statusLine 剩余时间做法不是同一扇窗。约 500 美元是 API 计量换算，作者当时用的是 Pro 套餐。一年 10MB 是估计。",
+    ],
+    approach: "自己写状态行 tallyline，只显示当前上下文、用量上限、本机当月累计等有限几项，并用增量读取把一次绘制压到约 0.02 秒。用量按日汇总另存，避免对话记录到期被删后年度累计跟着变少。作者用个人 Pro 套餐上的 10 月数字和约 3 个月的存储体积来说明为什么一直看着这些数。",
+    outcomes: [
+      "源披露：10 月末结束前已用掉 10 亿以上 token，按 API 计量约 500 美元，超过 Pro 月费 20 美元的 25 倍。约 3 个月的对话记录 261MB，tallyline 记录 2.1MB；一次绘制约 0.02 秒，本体约 34KB。画面示例里的 Oct 22.1M tok（约 14.92 美元）只是状态行展示，不是这组 10 亿的数字。这是作者个人环境和 10 月用量上的记录，不可外推到其他套餐或其他一个月。",
+      "作者后来还加了 tallyline diagnose 和 tallyline sessions，用来按原因拆开用量、以及列出恢复会话时的费用；正文说对策还在试，效果要另写，不要把这一句写成已经量过的节省幅度。",
+      "默认对话记录 30 天会删（可用 cleanupPeriodDays 改）。tallyline 只保留 token 数、不保留对话内容，并估计用一年也到不了 10MB。硬窗是这些个人用量和存储数字，与 #918 的 statusLine 剩余时间做法不是同一扇窗。",
+    ],
+    caveats: [
+      "22.1M token（约 14.92 美元）是状态行示例，不要和 10 亿以上、约 500 美元混成同一个月的同一笔账。「25 倍以上」是相对 Pro 月费 20 美元，不要写成已经按 API 付了 500 美元；作者当时用的是 Pro 套餐，500 美元是 API 计量换算。一年到不了 10MB 是估计。PyPI、Python 标准库不在平台枚举里，不硬凑。",
+      "导流：https://github.com/nhinata GET 200（标题 nhinata · GitHub）；https://github.com/nhinata/tallyline GET 200（标题 GitHub - nhinata/tallyline: Fast Claude Code statu…）。一次资料已核、不列入作者产品导流：https://github.com/sirmalloc/ccstatusline GET 200；https://github.com/ryoppippi/ccusage GET 200，跟随至 https://github.com/ccusage/ccusage 。配图 1 张 GET 200，挂在本条，不列入产品导流：https://raw.githubusercontent.com/nhinata/tallyline/eceb1100b62de85ab215a2baf5dcc4510d6e9375/assets/social-preview.png 。不要只写「配图 1 张见本批 md」。页内 link-card／embed.zenn.studio 嵌入不当作者产品导流。作者卡 X／website 为空。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先把状态行示例里的当月累计，和文中按 API 计量的 10 月用量分开，再谈要不要自作 statusLine",
+        body: "请写明套餐、统计截止到哪一天，当月用了多少 token、按 API 计量相当于多少钱，以及这和状态行截图里的数字是不是同一笔。对话记录体积和自作存储体积各是多少、覆盖大约几个月，一次绘制要多久。若有「用一年也到不了多少」这种说法，注明那是估计。不要把示例截图里的 22.1M token 写成 10 亿以上的用量，也不要把 API 换算金额写成已经按量付过的账单。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nhinata/articles/tallyline-claude-code-statusline",
+      label: "zenn.dev·nhinata《/usage を何度も開くのが面倒で、Claude Code のステータスラインを自作してみた》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
   }
 ];
 
