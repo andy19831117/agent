@@ -74548,6 +74548,555 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-07-30T16:53:59.308+09:00 → UTC 2026-07-30T07:53:59Z、Asia/Shanghai 2026-07-30 15:53:59；bodyUpdatedAt 晚于发布、同日，仍取 published → 2026-07-30；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-30。",
       "硬窗是 11／60 且全部 ≥0.85，不要和 2 件 ALL PASS 或 4,106 行混用。platforms 记 claude 与 chatgpt。仓库须按导流披露。源文未写出本机端点，不编造 URL。",
     ],
+  },
+  {
+    id: "1068",
+    slug: "hase-69-1103",
+    title: "hasegawa--2025：用 Claude Code 做个人工具集「犬の手」，约 1 周做出 69 个工具。把「完成时必须附证据」写进 CLAUDE.md 后，用国税厅对照表的 1,103 行全部做测试比较，作为「已确认」的例子。不要把 69 个工具和 1,103 行写成同一笔，也不要把「约 1 周」写成准确到日的工期。正文点名这次用了 Claude Code。这些是作者自己这一次开发上的记录，不可外推。",
+    summary: "hasegawa--2025 用 Claude Code 约 1 周做出 69 个工具，并把「完成须附证据」写进 CLAUDE.md；「已确认」的例子是国税厅对照表 1,103 行全部比较。不要把 69 和 1,103 混用。这些是作者自己这一次开发上的记录，不可外推。",
+    description: "面向已经打算让编码代理一起写工具、却还把「实现了所以应该能跑」当成完成声明的人：把 69 个工具、约 1 周和 1,103 行对照测试写成门禁，区别于把「未确认」项说成问题已经没有。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/hasegawa--2025/items/f6f47167f3d35ba8ace3",
+    sourceLabel: "qiita.com·hasegawa--2025 实践帖",
+    upvotes: 959,
+    trending: false,
+    tags: [
+      "claudecode",
+      "claude",
+      "personal-dev",
+      "testing",
+      "claudemd",
+    ],
+    primarySource: {
+      url: "https://qiita.com/hasegawa--2025/items/f6f47167f3d35ba8ace3",
+      label: "qiita.com·hasegawa--2025《AI に開発を手伝ってもらうとき、「動くはず」を信じないために決めたルール》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Claude Code 一起做个人工具集「犬の手」，约 1 周做出 69 个工具，同时看到模型会以很有把握的口吻把「实现了所以应该能跑」说成完成。于是把规则写进每次都会读的 CLAUDE.md：完成声明必须附上文件与行号、命令输出或测试结果三者之一；回答影响范围时必须分成「已确认（用什么确认的）」和「未确认」；失败路径不许用 try/catch 或默认值捂住；commit、push、merge、开 PR 和部署必须等人明确同意，部署命令由作者自己敲；调查委托只出报告、不擅自改代码。文中举的「已确认」例子，是计算与国税厅对照表一致，用测试比较了表的 1,103 行全部；iPhone 显示则标成未确认。作者写明，AI 并没有因此不再出错，而是错误会在宣布完成之前被发现。",
+    outcomes: [
+      "源披露：作者写明用 Claude Code 一起做「犬の手」，约 1 周做出 69 个工具。文中「已确认」的例子是国税厅对照表的 1,103 行全部用测试比较。不要把 69 个工具和 1,103 行写成同一笔，也不要把「约 1 周」写成准确到日的工期。这些是作者自己这一次开发上的记录，不可外推到别人的工具集或别的对照表。",
+      "规则要求「未确认」还剩 1 项时，不许把「没有问题」说死。iPhone 显示在文中明确标成未确认，不能和 1,103 行已确认的比较混用。",
+      "正文点名这次执行用了 Claude Code，platforms 记 claude。作者简介里还提到シフト管理アプリ「Shifna」和工具集「犬の手」，源页正文与简介未见这两项的完整产品 URL，不编造。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-11-10T23:18:24.000+09:00，与 dateModified 相同；写作交付时称 Qiita 列表 API HTTP 401，未另核 created_at；复检时条目 API GET 200，created_at 2026-11-10T23:18:24+09:00，与 JSON-LD 一致，用户列表 API 亦 GET 200。→ UTC 2026-11-10T14:18:24Z、Asia/Shanghai 2026-11-10 22:18:24；取 published → 2026-11-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 69 个工具和 1,103 行混用，也不要把「约 1 周」写成准确到日。不要和近批 token／耗时／中位数条混用。正文未配图。",
+      "导流：作者简介写明个人开发了シフト管理アプリ「Shifna」与输入不外送的浏览器工具集「犬の手」，源页正文与简介未见这两项的完整产品 URL，不编造。primary GET 200。Qiita 页脚、广告、OAuth 与 imgix 头像不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 69 个工具和 1,103 行不是同一笔，再谈完成必须附证据",
+        body: "请按原文核算：作者是不是用 Claude Code 一起做「犬の手」，约 1 周做出的是不是 69 个工具。「已确认」的例子是不是国税厅对照表的 1,103 行全部比较。iPhone 显示在文中是不是标成未确认。完成声明是不是必须附文件与行号、命令输出或测试结果之一。commit、push、merge、开 PR 和部署是不是必须等人明确同意。源页有没有给出「犬の手」或 Shifna 的完整产品 URL。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把「完成必须附证据」「已确认／未确认分开写」「失败不许捂住」「外出操作须人批准」「调查与修改分开」写进每次都会读的 CLAUDE.md。",
+      "用官方对照表这类外部正确答案做测试，而不是只信模型自己写的期望值。",
+      "还剩未确认项时，不许把「没有问题」说死；部署命令由人来敲。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-11-10T23:18:24.000+09:00，与 dateModified 相同；写作交付时称 Qiita 列表 API HTTP 401，未另核 created_at；复检时条目 API GET 200，created_at 2026-11-10T23:18:24+09:00，与 JSON-LD 一致，用户列表 API 亦 GET 200。→ UTC 2026-11-10T14:18:24Z、Asia/Shanghai 2026-11-10 22:18:24；取 published → 2026-11-10；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-11-10。",
+      "不要把 69 个工具和 1,103 行混用。platforms 记 claude。「犬の手」与 Shifna 未见完整产品 URL，不编造。",
+    ],
+  },
+  {
+    id: "1069",
+    slug: "noah-3283-14",
+    title: "noah33／noah：在自己的 WSL 实验室里给个人 Agent 加记忆与审查。方式调整用的开发用 14 问上，Recall@3 从 32.83％ 升到 37.83％。不要把这 14 问和独立 24 问、实课题 6 问，或开发 6 件上 GPT-6 Luna 维持 1／3、GPT-6.1 Sol 维持 3／3 写成同一笔。正文点名的是 GPT-6 Luna 与 GPT-6.1 Sol，没有点名 18 值里的产品名，platforms 为 []。这些是作者自己这一次小规模试验上的记录，不可外推。",
+    summary: "noah33 在开发用 14 问上把 Recall@3 从 32.83％ 调到 37.83％。不要和独立 24 问、实课题 6 问，或审查对照里 Luna 1／3 与 Sol 3／3 混用。ChatGPT 与 Claude 未被点名为这次执行方，platforms 为 []。这些是作者自己这一次小规模试验上的记录，不可外推。",
+    description: "面向已经打算给代理加记忆、却还把检索指标上升写成「工作也变好了」的人：把开发用 14 问上 Recall@3 的 32.83％→37.83％ 写成门禁，区别于把独立 24 问、实课题 6 问或审查对照里的 1／3 与 3／3 写成同一笔。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/noah33/articles/agent-evolution-lab-memory",
+    sourceLabel: "zenn.dev·noah33 实践帖",
+    upvotes: 960,
+    trending: false,
+    tags: [
+      "ai-agent",
+      "rag",
+      "memory",
+      "evaluation",
+      "self-improvement",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/noah33/articles/agent-evolution-lab-memory",
+      label: "zenn.dev·noah33《AIに記憶を持たせれば、経験を生かせるようになるのか》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+    approach: "作者在 WSL 上的个人实验室里，把经验、事实和步骤分开存储，并用检索加审查来看「记下了」能不能变成「下一次做得更好」。检索上把语汇检索与意义检索组合后再用 RRF 汇总；为了比较，试了把意义检索靠前结果略微推高的新排法，用 QASPER 类问题做对照。正文把这次执行写成：GPT-6 Luna 负责初回答和引用位置抽取，GPT-6.1 Sol（推理设定 low）负责审查。作者强调，检索数字变好并不等于课题也能做完；后来把审查员从 Luna 换成 Sol、再把抽取与审查串起来时，还出现过正答被保留、或同一审查输入前后判断不一致的情况。文中写明这是 2026 年 11 月的个人开发记录，数字来自小规模试验，不是独立评估后的最终结果。",
+    outcomes: [
+      "源披露：方式调整用的开发用 14 问上，Recall@3 从 32.83％ 升到 37.83％。不要把这 14 问和文中另写的独立 24 问、实课题 6 问写成同一笔，也不要把开发 6 件上「只换审查员」时 GPT-6 Luna 维持 1／3、GPT-6.1 Sol 维持 3／3 写成这 14 问的成绩。这些是作者自己这一次小规模试验上的记录，不可外推到别人的记忆系统或别的评测集。",
+      "补记里还有开发 6 件审查对照（Luna 11,142 token、Sol 12,404 token；着手到判定 4 分 35 秒）、以及后续通跑／再现试验的耗时与 token。那些是另一组试验，不要和 32.83％→37.83％ 混用，也不要和近批 token／耗时条对照错边。",
+      "正文点名这次执行用了 GPT-6 Luna 与 GPT-6.1 Sol，没有点名 ChatGPT 或 Claude，platforms 为 []。Windows／WSL 不在 18 值里，不硬凑。前篇 OpenClaw＋Sara 的 14 小时是另一篇文章，不能代替本条硬窗。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-11-10T19:45:09.058+09:00 → UTC 2026-11-10T10:45:09Z、Asia/Shanghai 2026-11-10 18:45:09；body_updated_at 2026-11-10T12:34:21.394+09:00 早于发布，仍取 published → 2026-11-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 14 问的 32.83％→37.83％ 和 24 问、6 问或 Luna 1／3、Sol 3／3 混用。ChatGPT／Claude 未点名，platforms 为 []。不要和近批 token／耗时／中位数条混用。",
+      "导流：同一作者前篇 https://zenn.dev/noah33/articles/openclaw-with-sara 交付时 GET 200，不另作主源。一次资料：https://www.youtube.com/watch?v=uGroRwlC9y4 GET 200，可列可达（页内无标题，未落到人机验证或登录页）；https://claude.com/blog/how-warp-builds-self-improving-agents-on-claude GET 200，跟随至 https://claude.com/resources/articles/how-warp-builds-self-improving-agents-on-claude，可列可达并披露跟随，此页未跟随至区域不可用；https://github.com/karpathy/autoresearch GET 200；https://sakana.ai/dgm/ GET 200；https://alignment.anthropic.com/2026/automated-alignment-researchers/ GET 200；https://aclanthology.org/2021.naacl-main.365/ GET 200；https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion GET 200；https://learn.mongodb.com/learn/course/retrieval-evaluation/retrieval-evaluation/retrieval-evaluation-metrics?page=1 GET 200。https://developers.openai.com/api/docs/models 交付时 HTTP 403，须写完整 URL 并披露状态，不列入可达。配图 7 张原址均 GET 200，完整 URL 须进本条：https://static.zenn.studio/user-upload/deployed-images/5bf493f16bdec0c1b8bfea3f.png?sha=71908bbe48d7728b437016ac391277c5b88c1ce2、https://static.zenn.studio/user-upload/deployed-images/3ef3d421240483f36cdc4759.png?sha=e8190e0ec048c6dfed1082b34ca937960bffe882、https://static.zenn.studio/user-upload/deployed-images/77535bcd607fed42f039a771.png?sha=94bbdd13971fa142bdf648848e502b8dfd76725f、https://static.zenn.studio/user-upload/deployed-images/5e15b2a96242ce1f9f1b3ec1.png?sha=34c7f6287b13c1efda9fc532a589d378783e72b9、https://static.zenn.studio/user-upload/deployed-images/b782950a02791793434b6a82.png?sha=3cb44188e390005cfe324521bf19fa96d2d63990、https://static.zenn.studio/user-upload/deployed-images/8e9e8186816dc68355ffeb42.png?sha=1ee4016b4f8cd15c243350befb598329edc1e95b、https://static.zenn.studio/user-upload/deployed-images/8d328dbd92fb542dbd8153da.png?sha=68ef8f0f181048be984a65d55c4089654c3ad08c。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 32.83％→37.83％ 的分母是开发用 14 问，再谈 1／3 与 3／3",
+        body: "请按原文核算：Recall@3 从 32.83％ 升到 37.83％ 的分母是不是开发用 14 问。独立 24 问和实课题 6 问是不是另写的一组。开发 6 件上只换审查员时，GPT-6 Luna 维持初回正答是不是 1／3，GPT-6.1 Sol 是不是 3／3。这次执行方是不是 GPT-6 Luna 与 GPT-6.1 Sol，有没有点名 ChatGPT 或 Claude。32.83％→37.83％ 有没有和补记里的 token 或 4 分 35 秒写成同一笔。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把经验、事实和步骤分开存，检索时组合语汇检索与意义检索再用 RRF 汇总。",
+      "初回答和引用位置抽取与审查分开，审查用另一模型；引用按模型标出的位置由程序从原文切出。",
+      "把「检索变好」和「课题做成」分开记账，并且不把一次开发集上的指标写成已经通过独立评估。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-11-10T19:45:09.058+09:00 → UTC 2026-11-10T10:45:09Z、Asia/Shanghai 2026-11-10 18:45:09；body_updated_at 早于发布，仍取 published → 2026-11-10；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-11-10。",
+      "开发用 14 问上是 32.83％→37.83％，不要和 24 问、6 问或 1／3、3／3 混用。platforms 为 []。配图 7 张完整 URL 见本条 caveats。OpenAI 模型目录页 HTTP 403，不列入可达。",
+    ],
+  },
+  {
+    id: "1070",
+    slug: "llmon-13-917-3",
+    title: "llmonmac／Mac：作者自己运 13 个站点、3 周里约 4,000 次提交。从 2026-10-14 起记 AI 运行，到 10-24 写稿时累计 917 次运行、514 个 PR、401 件完成任务；需人判断的申请有 3 件真正转到人。不要把 917、514、401 和 3 件，或 Claude 11 天里 663 次运行写成同一笔。Codex 与 Cursor 也用了，但不在 18 值里，platforms 只记 claude。这些是作者自己这 13 个站点上的记录，不可外推。",
+    summary: "llmonmac 从 2026-10-14 起记 AI 运行，到 10-24 写稿时 13 个站点累计 917 次运行、514 个 PR、401 件完成任务，需人判断的申请有 3 件转到人。不要和 Claude 663 次或约 4,000 次提交混用。platforms 只记 claude。这些是作者自己这 13 个站点上的记录，不可外推。",
+    description: "面向已经打算让编码代理在多个站点上并行提交、却还把「任务完成了」和「需人判断」混成一笔的人：把 13 个站点、917 次运行、514 个 PR、401 件完成任务和真正转到人的 3 件写成门禁，区别于把 Claude 663 次或约 4,000 次提交说成同一窗口。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/llmonmac/articles/honbu-13-sites-ai-operations",
+    sourceLabel: "zenn.dev·llmonmac 实践帖",
+    upvotes: 961,
+    trending: false,
+    tags: [
+      "claudecode",
+      "automation",
+      "multi-site",
+      "operations",
+      "github-actions",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/llmonmac/articles/honbu-13-sites-ai-operations",
+      label: "zenn.dev·llmonmac《13のサイトをAIでほぼ全自動運用している仕組み ― 人は毎朝メールを読んで、AIにできないことだけやる》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+    approach: "作者一个人运 13 个站点，从规则、仓库结构和调度上让编码代理按任务开分支、改代码、自测并提交。文中按机器记录写：3 周里约 4,000 次提交，其中约 80％ 是记录用、不是功能提交。AI 运行从 2026-10-14 开始记，到 10-24 写稿时累计 917 次运行、514 个 PR、401 件完成任务，规则文件 97 个。这三个编码代理里 Claude Code 用得最多：11 天里 663 次运行，命令行正常结束 654／663；同一表里 Codex 是 149／161，Cursor 是 77／91。需人判断的申请共预检 39 件，36 件由 AI 处理，3 件真正转到人。10 月 17 日自动提交超过每天 300 次，当月 GitHub Actions 免费额度用到约 90％。文中把「任务完成了」和「需人判断」分开记账，并且写明提交次数本身不能代表功能进度。",
+    outcomes: [
+      "源披露：AI 运行从 2026-10-14 开始记，到 10-24 写稿时 13 个站点累计 917 次运行、514 个 PR、401 件完成任务；需人判断的申请预检 39 件里，36 件由 AI 处理，3 件真正转到人。不要把 917、514、401 和这 3 件写成同一笔，也不要把 Claude 11 天里 663 次运行（命令行正常结束 654／663）或 3 周里约 4,000 次提交写成这组累计。这些是作者自己这 13 个站点、这一段记账窗口上的记录，不可外推到别人的站点或别的调度。",
+      "同一表里 Codex 是 149／161，Cursor 是 77／91。这两项不在 18 值里，不能写进 platforms，也不要和 917 次或 Claude 663 次混用。10 月 17 日自动提交超过每天 300 次、当月 Actions 免费额度约 90％，是另一笔运维观察。",
+      "正文点名这次执行用了 Claude Code、Codex 和 Cursor。platforms 只记 claude。规则文件 97 个、约 80％ 记录用提交，不要和 401 件完成任务混用。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-10-24T20:41:18.834+09:00 → UTC 2026-10-24T11:41:18Z、Asia/Shanghai 2026-10-24 19:41:18；body_updated_at 早于发布，仍取 published → 2026-10-24；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 917／514／401 和 3 件、或 Claude 663 次、约 4,000 次提交混用。Codex／Cursor 不在 18 值，platforms 只记 claude。不要和近批 token／耗时／中位数条混用。",
+      "导流：作者站点 https://llmonmac.com 与 https://memocho.dev/ 交付时均 GET 200，按作者站点导流披露，可列可达。前篇 https://zenn.dev/llmonmac/articles/d46f6a5ff5733f GET 200，不另作主源。配图 8 张原址均 GET 200，完整 URL 须进本条：https://static.zenn.studio/user-upload/deployed-images/567968c42f8033da1c269386.png?sha=86f0d65136b14af5a99e32f81c64154ae4e3c854、https://static.zenn.studio/user-upload/deployed-images/f2d858b2e7ed991ffcb93758.png?sha=e9ed058cc7ed310208d83e6292d064d5a469e777、https://static.zenn.studio/user-upload/deployed-images/c171bc7204f30483e4ceca5c.png?sha=32ba5e44ef3e0244ad94ea8f6ea2aea7a8655c36、https://static.zenn.studio/user-upload/deployed-images/150b30146f3262b07ca5e68e.png?sha=8f40c31208d3054f42962f5fc9c919e24528cf6b、https://static.zenn.studio/user-upload/deployed-images/6482a1da4aff2956ea1f9505.png?sha=57b0304318e85df44cfa3d56231ad8fa35031025、https://static.zenn.studio/user-upload/deployed-images/929bbdaa668fdca22924ab92.png?sha=dc6070e99bc066aba9081d85648256c7a93efb19、https://static.zenn.studio/user-upload/deployed-images/4be3cb68da65557d13ff7f82.png?sha=7b85ef336b4b39886823a450be40be2ba3c8701d、https://static.zenn.studio/user-upload/deployed-images/08901678b917dce7da69018c.png?sha=138a67dfbec894bcf368a4604f4718c20a3cc8ad。源文示例写成 https://github.com/<owner>/<repo>/pull/12 这样的占位，按占位披露，不列入可达，也不对光秃的 https://github.com/ 做产品链核达。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 917／514／401 和转到人的 3 件不是同一笔，再谈 Claude 663 次",
+        body: "请按原文核算：13 个站点上，AI 运行是不是从 2026-10-14 记到 10-24 写稿，累计是不是 917 次运行、514 个 PR、401 件完成任务。需人判断的申请是不是预检 39 件、36 件由 AI 处理、3 件真正转到人。Claude Code 11 天里是不是 663 次运行、命令行正常结束 654／663。Codex 149／161 和 Cursor 77／91 能不能写进 platforms。3 周里约 4,000 次提交、约 80％ 记录用，是不是另一笔。源文那条 GitHub pull 示例是不是占位、有没有完整可访问 URL。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用规则和仓库结构让代理按任务开分支、改代码、自测并提交，13 个站点并行记账。",
+      "把「完成任务」和「需人判断」分开：多数申请先由 AI 处理，真正要人看的只记转到人的件数。",
+      "提交次数、记录用提交和功能进度分开看；额度告急时再收紧自动提交频率。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-10-24T20:41:18.834+09:00 → UTC 2026-10-24T11:41:18Z、Asia/Shanghai 2026-10-24 19:41:18；body_updated_at 早于发布，仍取 published → 2026-10-24；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-10-24。",
+      "硬窗是 13 个站点、917／514／401 和转到人的 3 件。不要和 Claude 663 次或约 4,000 次提交混用。platforms 只记 claude。配图 8 张完整 URL 见本条 caveats。占位 pull URL 不列入可达。",
+    ],
+  },
+  {
+    id: "1071",
+    slug: "nobu-18of18-14",
+    title: "nobu_13：用 Kiro 对自建仓库做 7 天无人值守维护。Ground Truth 18 件，检出 18／18＝100％；16 件可自动修，其中正确自主修复 14／16＝87.5％。不要把 18／18 和 14／16，或尝试修复正确率 14／15＝93.3％、语义过度修复 1／15＝6.7％ 写成同一笔。Kiro 不在 18 值里，platforms 为 []。人时总计 34 分 47 秒，不要把其中 2 天的 81.5％ 减负写成 7 天都成立。这些是作者自己这一次 7 天上的记录，不可外推。",
+    summary: "nobu_13 用 Kiro 做 7 天无人值守维护：Ground Truth 18 件检出 18／18，16 件可自动修里正确自主修复 14／16。不要和 14／15、1／15 混用。platforms 为 []。人时 34 分 47 秒；81.5％ 减负只对第 2、6 天那 2 例成立。这些是作者自己这一次 7 天上的记录，不可外推。",
+    description: "面向已经打算让编码代理在仓库里做无人值守维护、却还把检出率和自动修正确率混成一笔的人：把 7 天里 Ground Truth 18 件、检出 18／18 和正确自主修复 14／16 写成门禁，区别于把 14／15 或其中 2 天的 81.5％ 减负说成整周都成立。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/nobu_13/articles/6cd10f09e3eeaf",
+    sourceLabel: "zenn.dev·nobu_13 实践帖",
+    upvotes: 962,
+    trending: false,
+    tags: [
+      "kiro",
+      "autonomous-maintenance",
+      "evaluation",
+      "aws",
+      "python",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nobu_13/articles/6cd10f09e3eeaf",
+      label: "zenn.dev·nobu_13《寝ている間にAWSリポジトリは保守できる？ Kiro Web Automationsを7日間・18 Issueで検証した》",
+      date: "2026-09-16",
+      dateLabel: "发布",
+    },
+    approach: "作者把自建的 Web 应用维护仓库交给 Kiro，连做 7 天无人值守，每天按预置问题跑检测、分类和修复，并亲自复核。7 天的问题件数是 3＋3＋3＋0＋3＋3＋3＝18。第 4 天是无操作日，1／1 通过；批准边界 3／3 通过；7 天里最终都处于健康状态。检出是 18／18。16 件被标成可自动修，其中正确自主修复 14／16＝87.5％；尝试修复正确率按 14／15＝93.3％ 记，语义过度修复 1／15＝6.7％。第 5 天 4 道门禁全部通过，却把 dedup_key 做过了头，作者把它单独记成过度修复，而不是门禁失败。人时总计 34 分 47 秒，其中审查 18 分 14 秒、修复 16 分 33 秒；第 2 天和第 6 天若按手工基线共 30 分 47 秒，Kiro 用了 5 分 42 秒，这两例上的人时减负是 81.5％，作者没有把它写成 7 天都成立。boto3 从 1.24.0 升到 1.40.76 是第 1 天的主版本更新分类，不是这组 18 件检出率的分母。",
+    outcomes: [
+      "源披露：7 天里 Ground Truth 18 件，检出 18／18＝100％；16 件可自动修，其中正确自主修复 14／16＝87.5％。不要把 18／18 和 14／16 写成同一笔，也不要把尝试修复正确率 14／15＝93.3％、语义过度修复 1／15＝6.7％ 写成 14／16 的分母。这些是作者自己这一次 7 天无人值守上的记录，不可外推到别人的仓库或别的代理。",
+      "按日件数 3＋3＋3＋0＋3＋3＋3＝18。第 4 天无操作 1／1，批准边界 3／3，最终健康 7／7 天。人时总计 34 分 47 秒（审查 18 分 14 秒＋修复 16 分 33 秒）。第 2、6 天手工基线 30 分 47 秒对 Kiro 5 分 42 秒、减负 81.5％，只对这两例成立，不能写成 7 天都如此。",
+      "正文点名这次执行用了 Kiro，Kiro 不在 18 值里，platforms 为 []。第 5 天 4 道门禁全部通过但仍过度修复 dedup_key，不要把门禁通过写成修复一定正确。boto3 1.24.0→1.40.76 是第 1 天主版本更新分类，不要当成整周硬窗。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-09-16T10:01:33.983+09:00 → UTC 2026-09-16T01:01:33Z、Asia/Shanghai 2026-09-16 09:01:33；取 published → 2026-09-16；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 18／18、14／16、14／15、1／15 混用，也不要把 81.5％ 减负写成 7 天都成立。Kiro 不在 18 值，platforms 为 []。不要和近批 token／耗时／中位数条混用。",
+      "导流：试验仓库 https://github.com/nobu-13/kiro-web-agentic-maintenance 交付时 GET 200，按作者仓库导流披露，可列可达。作者页网站写成 https://linkedin.com/in/no-isa，复检时 GET 200，标题为 Checking your browser - reCAPTCHA，按人机验证页披露，不列入可达；最终仍停在 https://linkedin.com/in/no-isa，未跟随至 linkedin.cn，也不写成已确认的个人主页正文。同路径 https://www.linkedin.com/in/no-isa 复检时 GET 451，跟随至 https://www.linkedin.cn/incareer/in/no-isa，按 LinkedIn 跟随至 linkedin.cn 披露最后状态，不列入可达。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 18／18 和 14／16 不是同一笔，再谈 14／15 与 81.5％",
+        body: "请按原文核算：Ground Truth 是不是 18 件，检出是不是 18／18。可自动修是不是 16 件，正确自主修复是不是 14／16＝87.5％。尝试修复正确率是不是 14／15＝93.3％，语义过度修复是不是 1／15＝6.7％。第 4 天无操作是不是 1／1，批准边界是不是 3／3，最终健康是不是 7／7 天。人时总计是不是 34 分 47 秒。81.5％ 减负是不是只对第 2、6 天那 2 例（手工 30 分 47 秒对 Kiro 5 分 42 秒）。这次执行方是不是 Kiro，能不能写进 platforms。boto3 1.24.0→1.40.76 是不是第 1 天的主版本更新分类。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "按天预置问题，让代理检测、分类并尝试修复，再由人按 Ground Truth 复核。",
+      "把检出、可自动修、正确自主修复、尝试修复正确率和语义过度修复分开记账，不把门禁全部通过写成修复一定正确。",
+      "人时只在实际发生审查或修复的日子里累加；减负比例只对同时给出手工基线的那几例计算。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-09-16T10:01:33.983+09:00 → UTC 2026-09-16T01:01:33Z、Asia/Shanghai 2026-09-16 09:01:33；取 published → 2026-09-16；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-09-16。",
+      "硬窗是 18／18 与 14／16，不要和 14／15、1／15 或 81.5％ 混用。platforms 为 []。仓库按导流披露。www.linkedin.com 451 跟随至 linkedin.cn，不列入可达。无 www 的 https://linkedin.com/in/no-isa 复检落到 reCAPTCHA，不列入可达。",
+    ],
+  },
+  {
+    id: "1072",
+    slug: "kura-5sk-79",
+    title: "ichiropen／Ichiropen：在 2026-09-10 用自作发布器 kurashi-skill，一次把 5 个 skill 装进当时枚举到的 79 个代理。10 次失败出在 Eve 和 PromptScript 这两个代理上（各乘 5 个 skill），不是 skill 本身的缺陷；成功装上的是 5 个。不要把 5 个 skill、79 个代理、10 次失败和「成功 5 个」写成同一笔。作者这次用的是 Claude Code，platforms 记 claude。这些是作者自己这一次安装上的记录，不可外推。",
+    summary: "ichiropen 在 2026-09-10 用 kurashi-skill 把 5 个 skill 装进当时枚举到的 79 个代理，10 次失败出在 Eve 与 PromptScript，成功装上 5 个。不要把 5、79、10 混用。platforms 记 claude。银周 9／19–9／23 是节假日答案，不是这次工期。这些是作者自己这一次安装上的记录，不可外推。",
+    description: "面向已经打算给多个编码代理批量装 skill、却还把失败次数和成功安装数混成一笔的人：把 2026-09-10 实测的 5 个 skill、79 个代理、10 次失败和成功装上 5 个写成门禁，区别于把银周 5 连休日期写成这次安装工期。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ichiropen/articles/5de40a902e93a3",
+    sourceLabel: "zenn.dev·ichiropen 实践帖",
+    upvotes: 963,
+    trending: false,
+    tags: [
+      "claudecode",
+      "skills",
+      "japanese-holidays",
+      "installer",
+      "personal-dev",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ichiropen/articles/5de40a902e93a3",
+      label: "zenn.dev·ichiropen《kurashi-skillを入れて、AIエージェントにシルバーウィークを計算させた【実践 #1】》",
+      date: "2026-09-10",
+      dateLabel: "发布",
+    },
+    approach: "作者做了一组查日本节假日和天气预报的 skill，并用自作发布器 kurashi-skill 一次装到本机已枚举的代理。正文写明作者自己用的是 Claude Code；Codex 和 OpenCode 是兼容对象的例子，不是这篇里实际按下安装的执行方。2026-09-10 的实测日志写：Found 5 skills，Installing to all 79 agents，随后 10 次失败，失败都出在 Eve 和 PromptScript 这两个代理上（各乘 5 个 skill），作者判断这是这两个运行时还不支持这类 skill，于是跳过，而不是 skill 写错。成功装上的是 5 个。节假日数据用的是内阁府公开的 CSV。文中把初执行的问题写成「来周的银周会连休几天」，答案是 9／19–9／23 的 5 连休；这是节假日问题的答案，不是这次安装的工期。作者还写「实测只需数分钟」，这是笼统说法，不能当成可核对的硬窗。",
+    outcomes: [
+      "源披露：2026-09-10 的实测日志写 Found 5 skills，Installing to all 79 agents；10 次失败出在 Eve 和 PromptScript（各乘 5 个 skill），成功装上 5 个。不要把 5 个 skill、79 个代理、10 次失败和成功装上的 5 个写成同一笔。这些是作者自己这一次安装上的记录，不可外推到别人的代理清单或别的 skill。",
+      "银周 9／19–9／23 的 5 连休是节假日问题的答案，不是这次安装工期。正文里的「实测只需数分钟」是笼统说法，不要写成可核对的耗时。",
+      "正文点名作者这次用了 Claude Code，platforms 记 claude。Codex 与 OpenCode 只作为兼容对象出现，不写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-09-10T12:30:18.237+09:00 → UTC 2026-09-10T03:30:18Z、Asia/Shanghai 2026-09-10 11:30:18；取 published → 2026-09-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 5 个 skill、79 个代理、10 次失败和成功 5 个混用。银周 5 连休不是工期。「数分钟」不当硬窗。platforms 记 claude。不要和近批 token／耗时／中位数条混用。正文未配图。",
+      "导流：发布器仓库 https://github.com/tahodev/kurashi-skill 与文档站 https://tahodev.github.io/kurashi-skill/ 交付时均 GET 200，按作者工具／站点导流披露，可列可达。一次资料：官方节假日 CSV https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv GET 200，可列可达。源文只写了相对路径 docs/install.md，没有完整 blob URL，不编造。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 个 skill、79 个代理和 10 次失败不是同一笔，再谈银周日期",
+        body: "请按原文核算：2026-09-10 的日志是不是 Found 5 skills、Installing to all 79 agents。10 次失败是不是都出在 Eve 和 PromptScript，作者是不是判断为这两个运行时还不支持、因而跳过。成功装上的是不是 5 个。作者这次用的是不是 Claude Code，Codex 与 OpenCode 是不是只作为兼容对象。银周 9／19–9／23 是不是节假日答案而不是安装工期。「实测只需数分钟」有没有给出可核对的起止。docs/install.md 有没有完整 URL。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先枚举本机已装的代理，再按 skill 列表批量安装，失败按运行时跳过而不是改 skill。",
+      "节假日判断读内阁府公开的 CSV，按里面已经写好的日期算出连休，而不必自己实现节假日法。这次初执行问的是「来周的银周会连休几天」。",
+      "把问答演示里的连休日期和这次安装日志分开记账。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-09-10T12:30:18.237+09:00 → UTC 2026-09-10T03:30:18Z、Asia/Shanghai 2026-09-10 11:30:18；取 published → 2026-09-10；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-09-10。",
+      "硬窗是 5 个 skill、79 个代理、10 次失败、成功 5 个。银周 5 连休不是工期。platforms 记 claude。仓库与文档站按导流披露。相对路径 docs/install.md 不编造完整 URL。",
+    ],
+  },
+  {
+    id: "1073",
+    slug: "saku-9n-3try",
+    title: "saku0875：用 n8n 和 Claude API 做每晚自动新增 1 个 CSS 动画的日更站点。工作流是 9 个节点；生成提示试了 3 次才稳定。定时在 JST 每天 00:00，GENERIC_TIMEZONE=Asia/Tokyo，若没设时区，cron 会按 UTC 在日本时间 09:00 触发。不要把 9 个节点和 3 次提示试验写成同一笔，也不要把「作品数超过三位数」写成已经发生的件数。platforms 记 n8n 与 claude。这些是作者自己这一次工作流上的记录，不可外推。",
+    summary: "saku0875 用 n8n 和 Claude API 做每晚自动新增 CSS 动画的日更站点：工作流 9 个节点，提示试了 3 次才稳定；定时是 JST 每天 00:00，未设 GENERIC_TIMEZONE=Asia/Tokyo 时会在日本时间 09:00 触发。不要把 9 和 3 混用，也不要把「作品数超过三位数」写成已发生件数。这些是作者自己这一次工作流上的记录，不可外推。",
+    description: "面向已经打算用工作流给个人站点做每日生成与发布、却还把节点数和提示试验次数混成一笔的人：把 9 个节点、3 次提示试验和 JST 每天 00:00 的时区陷阱写成门禁，区别于把「作品数超过三位数」说成已经发生的库存。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "n8n",
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/saku0875/items/6a362e82bf2ce9ef0a08",
+    sourceLabel: "qiita.com·saku0875 实践帖",
+    upvotes: 964,
+    trending: false,
+    tags: [
+      "n8n",
+      "claude",
+      "css-animation",
+      "github-pages",
+      "automation",
+    ],
+    primarySource: {
+      url: "https://qiita.com/saku0875/items/6a362e82bf2ce9ef0a08",
+      label: "qiita.com·saku0875《Claude APIで毎晩CSSアニメーションが増えていくサイトを作った》",
+      date: "2026-08-24",
+      dateLabel: "发布",
+    },
+    approach: "作者用 n8n 和 Claude API，做了一个每晚 0 点自动生成 1 个 CSS 动画、并追加到日更画廊站点的工作流。站点是 https://saku0875.github.io/animation-gallery/。n8n 工作流共 9 个节点：Schedule Trigger、SetTheme、ThemeGen、ThemeParse、ArtGen、ParseResult、Get a file、追记 Code、Edit a file。流程是先判定日期和季节、再让 Claude 想本日主题、再按主题生成作品，最后把 1 件追加进仓库里的 animations.json 并提交，由 GitHub Pages 自动反映。正文生成提示试了 3 次才稳定：先自由书写，再加约束，再改成「停格也要成立、围绕主角安排副要素」的导向。定时写的是每天 00:00，并且在 Xserver 上自建 n8n 时把 docker-compose.yml 里的 GENERIC_TIMEZONE 设成 Asia/Tokyo；作者写明若没设这个时区，cron 会按 UTC 解释，实际会在日本时间 09:00 触发。文中出现过「作品数超过三位数之后」这类假设，用来说明将来要停掉无限循环、改成悬停再播放，并不是已经清点过的库存件数。作者还提到先前在 Xserver 上装 n8n 的文章，但没给出完整 URL，不编造前篇链接。API 端点写的是 https://api.anthropic.com/v1/messages。",
+    outcomes: [
+      "源披露：工作流是 9 个节点；生成提示试了 3 次才稳定。定时是 JST 每天 00:00，GENERIC_TIMEZONE=Asia/Tokyo；未设时区时 cron 会按 UTC 在日本时间 09:00 触发。不要把 9 个节点和 3 次提示试验写成同一笔，也不要把「作品数超过三位数」写成已经发生的件数。这些是作者自己这一次工作流上的记录，不可外推到别人的画廊站点或别的定时规则。",
+      "正文点名这次执行用了 n8n 和 Claude API，platforms 记 n8n 与 claude。前篇在 Xserver 上装 n8n 只以「前回の記事」出现，源页未给完整 URL，不编造。季节模式 25％ 是 SetTheme 里的概率设定，不要和 9 个节点或 3 次提示试验混用。",
+      "API 端点 https://api.anthropic.com/v1/messages 须写完整 URL；交付时 GET HTTP 403，不列入可达。",
+    ],
+    caveats: [
+      "JSON-LD datePublished 2026-08-24T22:42:56.000+09:00，与 dateModified 相同；写作交付时称 Qiita 列表 API HTTP 401，未另核 created_at；复检时条目 API GET 200，created_at 2026-08-24T22:42:56+09:00，与 JSON-LD 一致，用户列表 API 亦 GET 200。→ UTC 2026-08-24T13:42:56Z、Asia/Shanghai 2026-08-24 21:42:56；取 published → 2026-08-24；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 9 个节点和 3 次提示试验混用，也不要把「作品数超过三位数」写成已发生件数。platforms 记 n8n 与 claude。不要和近批 token／耗时／中位数条混用。",
+      "导流：作品展示站 https://saku0875.github.io/animation-gallery/ 交付时 GET 200，按作者站点导流披露，可列可达。配图 3 张原址均 GET 200，完整 URL 须进本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4144673/45d81a0b-49a3-4c42-968b-32ec29683eb1.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4144673/286d88b7-c6fa-4cbc-81c7-77edeccee643.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4144673/b1d93825-54e9-4bf4-be45-65fc87745c8e.png。API 端点 https://api.anthropic.com/v1/messages 交付时 HTTP 403，须写完整 URL 并披露状态，不列入可达。前篇只写「前回の記事」，未给完整 URL，不编造。primary GET 200。Qiita 页脚、广告、OAuth 与 imgix 头像不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 9 个节点和 3 次提示试验不是同一笔，再谈 JST 00:00",
+        body: "请按原文核算：这是不是每晚自动新增 1 个 CSS 动画的日更站点，而不是把已有作品发到 X。n8n 工作流是不是 9 个节点。生成提示是不是试了 3 次才稳定。定时是不是 JST 每天 00:00，GENERIC_TIMEZONE 是不是 Asia/Tokyo；未设时区时是不是会在日本时间 09:00 触发。「作品数超过三位数」在文中是不是假设，而不是已经清点的件数。前篇在 Xserver 上装 n8n 有没有完整 URL。API 端点是不是 https://api.anthropic.com/v1/messages。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "用 n8n 把判定当日模式、让 Claude 想主题、按主题生成 CSS 动画、追加到仓库 JSON 并提交串成一条定时工作流，由 GitHub Pages 自动更新站点。",
+      "把 GENERIC_TIMEZONE 设成 Asia/Tokyo，避免 cron 按 UTC 在日本时间上午触发。",
+      "提示要反复试到稳定；「作品数超过三位数」这类规模假设不要当成已经清点过的件数。",
+    ],
+    tips: [
+      "源帖（JSON-LD datePublished 2026-08-24T22:42:56.000+09:00，与 dateModified 相同；写作交付时称 Qiita 列表 API HTTP 401，未另核 created_at；复检时条目 API GET 200，created_at 2026-08-24T22:42:56+09:00，与 JSON-LD 一致，用户列表 API 亦 GET 200。→ UTC 2026-08-24T13:42:56Z、Asia/Shanghai 2026-08-24 21:42:56；取 published → 2026-08-24；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-08-24。",
+      "硬窗是 9 个节点和 3 次提示试验，外加 JST 00:00 的时区陷阱。「作品数超过三位数」不是已发生件数。platforms 记 n8n 与 claude。api.anthropic.com/v1/messages HTTP 403，不列入可达。前篇无完整 URL，不编造。",
+    ],
+  },
+  {
+    id: "1074",
+    slug: "ivyx-5llm-93",
+    title: "ivyxon／IVYXON：用同一份约 22,046 字的提示，请 5 个模型审查自研信号引擎里约 400 行的 Python 与 SQL。当时真实数据上已经检出 93 件异常；5 个模型里有 3 个（Kimi、GPT、Sonnet）独立指出了同一组两处关键缺陷，DeepSeek 对这两处都说「没问题」。不要把 5 个模型、约 22,046 字、约 400 行和 93 件异常写成同一笔，也不要把 29.9％→约 12 分与 30.0％→32 分写成同一跳。platforms 记 kimi、deepseek 与 claude。这些是作者自己这一次审查上的记录，不可外推。",
+    summary: "ivyxon 把同一份约 22,046 字的提示交给 5 个模型，审查约 400 行代码；真实数据上已检出 93 件异常，其中 3 个模型独立指出同一组两处关键缺陷，DeepSeek 对这两处都说没问题。不要和 29.9％、30.0％ 那两组分数跳变混用。platforms 记 kimi、deepseek 与 claude。这些是作者自己这一次审查上的记录，不可外推。",
+    description: "面向已经打算把同一份审查提示并行交给多个模型、却还把「有模型说到了同一缺陷」写成全体共识的人：把 5 个模型、约 22,046 字、约 400 行、已检出的 93 件异常和 3／5 说到同一组两处缺陷写成门禁，区别于把 DeepSeek 的「没问题」或 29.9％／30.0％ 分数跳变说成同一笔。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "kimi",
+      "deepseek",
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ivyxon/articles/five-llms-signals-engine-review",
+    sourceLabel: "zenn.dev·ivyxon 实践帖",
+    upvotes: 965,
+    trending: false,
+    tags: [
+      "code-review",
+      "llm-comparison",
+      "kimi",
+      "deepseek",
+      "claude",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ivyxon/articles/five-llms-signals-engine-review",
+      label: "zenn.dev·ivyxon《同じコードレビューを5つのLLMに投げてみた Part 2——一番安いモデルが一番危険だった》",
+      date: "2026-08-21",
+      dateLabel: "发布",
+    },
+    approach: "作者把自研信号引擎里约 400 行的 Python 与 SQL，连同同一份约 22,046 字的提示，并行交给 5 个模型做审查。正文点名的 5 个是 Kimi K3、GLM-5.2、DeepSeek-V4-Pro、GPT-5.6 Sol 和 Claude Sonnet 5。作者写明不对称：只有 Claude Sonnet 5 是在 Claude Code 的代理会话里跑的，其余 4 个是一次 API 调用、没有工具。当时真实数据上已经检出 93 件异常。5 个模型里有 3 个（Kimi、GPT、Sonnet）独立指出了同一组两处关键缺陷，DeepSeek 对这两处都回答「没问题」。文中还写了两组阈值相关的分数变化：29.9％ 时大约 12 分，30.0％ 时 32 分（约 20 分的跳变）；这两笔不要和 93 件异常或 3／5 的共识混用。GLM-5.2 不在 18 值里；GPT-5.6 Sol 在文中没有写成 ChatGPT，platforms 只记 kimi、deepseek 与 claude。",
+    outcomes: [
+      "源披露：同一份约 22,046 字的提示交给 5 个模型，审查约 400 行 Python 与 SQL；当时真实数据上已经检出 93 件异常。5 个模型里有 3 个（Kimi、GPT、Sonnet）独立指出同一组两处关键缺陷，DeepSeek 对这两处都说「没问题」。不要把 5 个模型、约 22,046 字、约 400 行和 93 件异常写成同一笔，也不要把 29.9％→约 12 分与 30.0％→32 分（约 20 分跳变）写成这 93 件的成绩。这些是作者自己这一次审查上的记录，不可外推到别人的引擎或别的模型组合。",
+      "只有 Claude Sonnet 5 在 Claude Code 代理会话里跑，其余 4 个是一次 API 调用、没有工具。不要把这 5 次审查写成同一执行条件。",
+      "platforms 记 kimi、deepseek 与 claude。GLM-5.2 不在 18 值里，不写入。GPT-5.6 Sol 在文中没有写成 ChatGPT，不把 chatgpt 写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-08-21T14:26:53.099+09:00 → UTC 2026-08-21T05:26:53Z、Asia/Shanghai 2026-08-21 13:26:53；body_updated_at 2026-08-12 早于发布，仍取 published → 2026-08-21，不要把日期写成 2026-08-12；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 5 个模型、约 22,046 字、约 400 行、93 件异常和 29.9％／30.0％ 分数跳变混用。platforms 记 kimi、deepseek 与 claude，不写入 chatgpt。不要和近批 token／耗时／中位数条混用。正文未配图。",
+      "导流：作者站点 https://ivyxon.com/?utm_source=zenn&utm_medium=article&utm_campaign=five-llms-signals-review 与 https://ivyxon.com 交付时均 GET 200，按作者站点导流披露，可列可达。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 93 件异常和 3／5 指出同一缺陷不是同一笔，再谈 29.9％ 与 30.0％",
+        body: "请按原文核算：是不是同一份约 22,046 字的提示交给 5 个模型，审查的是不是约 400 行 Python 与 SQL。真实数据上已经检出的是不是 93 件异常。3 个模型是不是 Kimi、GPT、Sonnet，它们是不是独立指出同一组两处关键缺陷。DeepSeek 对这两处是不是都说「没问题」。29.9％→约 12 分和 30.0％→32 分是不是另一组分数变化。只有 Claude Sonnet 5 是不是在 Claude Code 会话里跑，其余是不是一次 API 调用、没有工具。文中有没有把 GPT-5.6 Sol 写成 ChatGPT。日期应取 published 2026-08-21，还是较早的 body_updated 08-12。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把同一份审查提示并行交给多个模型，再对照它们是否独立指到同一组缺陷。",
+      "把「真实数据上已经检出的异常件数」和「模型有没有说到关键缺陷」分开记账，不把某个模型说「没问题」写成全体共识。",
+      "分数阈值附近的跳变单独记，不和异常件数或模型共识混用；同时写明各模型的执行条件并不对称。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-08-21T14:26:53.099+09:00 → UTC 2026-08-21T05:26:53Z、Asia/Shanghai 2026-08-21 13:26:53；body_updated_at 早于发布，仍取 published → 2026-08-21，不要写成 2026-08-12；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-08-21。",
+      "硬窗是 5 个模型、约 22,046 字、约 400 行、93 件异常和 3／5 指出同一组两处缺陷。不要和 29.9％／30.0％ 混用。platforms 记 kimi、deepseek 与 claude，不写入 chatgpt。作者站点按导流披露。",
+    ],
+  },
+  {
+    id: "1075",
+    slug: "umam-15to0-13",
+    title: "umamon／Umamon：2026-07-14 用本机实测日志确认，n8n 健康检查一开始报 15 个无效 plist；全公司改名修好 7 个变成合法 XML 后，健康检查跑了 10 次：15 件起，中间连续 7 次停在 14 件（延期处理），最近一次是 0 件。现在是 13 个 plist，13／13 正常。不要把 15、中间连续 7 次的 14、10 次检查、修好的 7 个和现在的 13／13 写成同一笔。标题写「3 天没动」，正文只写「从某一天起」并在 07-14 确认，不要把这 3 天当成正文核对过的起止。platforms 记 n8n。这些是作者自己这一次健康检查上的记录，不可外推。",
+    summary: "umamon 在 2026-07-14 用日志确认：健康检查一开始 15 个无效 plist，全公司改名修好 7 个后，10 次检查从 15 起、中间连续 7 次停在 14、最近一次是 0；现在 13／13 正常。不要把这些数字混用。标题的「3 天」不是正文核对过的起止。platforms 记 n8n。这些是作者自己这一次健康检查上的记录，不可外推。",
+    description: "面向已经打算给本机自动化做健康检查、却还把标题里的「停了几天」写成正文已核对工期的人：把 2026-07-14 确认的 15 件无效 plist、10 次检查里 15→连续 7 次 14→最近 0、以及现在 13／13 写成门禁，区别于把标题的「3 天」说成正文起止。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/umamon/articles/blog-automation-diary",
+    sourceLabel: "zenn.dev·umamon 实践帖",
+    upvotes: 966,
+    trending: false,
+    tags: [
+      "n8n",
+      "macos",
+      "plist",
+      "healthcheck",
+      "automation",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/umamon/articles/blog-automation-diary",
+      label: "zenn.dev·umamon《エラーが出ていないのに3日間動いていなかった — launchdの壊れたplistと、\"監視の監視\"まで死んでいた話》",
+      date: "2026-07-31",
+      dateLabel: "发布",
+    },
+    approach: "作者给本机的博客自动化加了健康检查，并在 2026-07-14 用实测日志确认异常。一开始检查到 15 个无效 plist。全公司改名后，其中 7 个 plist 被修好、变成合法 XML，但 n8n 和其他剩余项当时被漏掉。之后健康检查共记了 10 次：从 15 件起，中间连续 7 次停在 14 件（作者把这 14 件标成延期处理），最近一次降到 0 件。写稿时现在是 13 个 plist，13／13 正常。标题写「3 天没动」，正文则写「从某一天起完全不动了」，并把识别日期落在 2026-07-14，没有再给出这 3 天的起止，因此不能把标题的 3 天当成正文核对过的硬窗。源文日志路径写成 ~/Library/Logs/.../healthcheck.log 这样带省略号的占位，不编造完整路径。",
+    outcomes: [
+      "源披露：2026-07-14 用本机实测日志确认，健康检查一开始报 15 个无效 plist；全公司改名修好 7 个变成合法 XML 后，健康检查跑了 10 次：从 15 件起，中间连续 7 次停在 14 件（延期处理），最近一次是 0 件；现在是 13 个 plist，13／13 正常。不要把 15、修好的 7 个、10 次检查、中间连续 7 次的 14、最近的 0 和现在的 13／13 写成同一笔。这些是作者自己这一次健康检查上的记录，不可外推到别人的本机环境。",
+      "标题写「3 天没动」，正文只写「从某一天起」并在 2026-07-14 确认，没有给出这 3 天的起止。不要把标题的 3 天写成正文核对过的工期。",
+      "正文点名这次执行涉及 n8n 的健康检查，platforms 记 n8n。日志路径是带省略号的占位，不编造完整地址。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-07-31T12:20:08.305+09:00 → UTC 2026-07-31T03:20:08Z、Asia/Shanghai 2026-07-31 11:20:08；body_updated_at 与发布同日，仍取 published → 2026-07-31；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 15、14、13、修好的 7 个、10 次检查和中间连续 7 次混用。标题的「3 天」不是正文核对过的起止。platforms 记 n8n。不要和近批 token／耗时／中位数条混用。",
+      "导流：源文配图 https://raw.githubusercontent.com/bigkijimon/zenn-content/main/images/blog-automation-diary__anomalies.png 与文章仓 https://github.com/bigkijimon/zenn-content（页内 github_repository）交付时均 GET 200，按作者文章仓／配图披露，可列可达。日志路径写成 ~/Library/Logs/.../healthcheck.log，按占位披露，不编造完整路径，不列入可达。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 15→连续 7 次 14→0 和现在的 13／13 不是同一笔，再谈标题的 3 天",
+        body: "请按原文核算：识别日期是不是 2026-07-14。一开始是不是 15 个无效 plist。全公司改名修好的是不是 7 个 plist。健康检查是不是共 10 次，从 15 起、中间连续 7 次停在 14、最近一次是 0。现在是不是 13 个 plist、13／13 正常。标题的「3 天」在正文里有没有给出起止。日志路径是不是带省略号的占位。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "给本机自动化加健康检查，用日志把无效 plist 件数按次记下来。",
+      "全公司改名能修好一部分文件，但漏掉的项会让计数在中途停住，必须再跟一次。",
+      "把「曾经无效的件数」「中间延期的件数」和「现在清单上的件数」分开记账；标题里的天数若正文没有起止，就不当硬窗。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-07-31T12:20:08.305+09:00 → UTC 2026-07-31T03:20:08Z、Asia/Shanghai 2026-07-31 11:20:08；取 published → 2026-07-31；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-07-31。",
+      "硬窗是 15→连续 7 次 14→0，以及现在 13／13。不要和修好的 7 个或 10 次检查混用。标题的 3 天不是正文起止。platforms 记 n8n。日志占位路径不编造。",
+    ],
+  },
+  {
+    id: "1076",
+    slug: "sy03-5d-21-0",
+    title: "satoh_y_0323／satoh-y-0323：给自作编排器 Claude Code Conductor（C3）发到 v2.30.0 时，第一个外部 PR 大约 5 天没被注意到。专业审查代理这次提出 21 项（code-reviewer 15 项、security-reviewer 6 项），修完后是 0 项；13 个代理的 yaml 全部合法，但 1 个 skill（codex-review）实际是坏的，跑起来会 ParserError。不要把约 5 天、21 项（15＋6）→0、13 个合法 yaml 和 1 个坏 skill 写成同一笔。源文写了「PR #3」，但没有完整 pull URL，不编造。platforms 记 claude。这些是作者自己这一次发布上的记录，不可外推。",
+    summary: "satoh_y_0323 在 C3 v2.30.0 发布时，第一个外部 PR 大约 5 天没被注意到；专业审查提出 21 项（15＋6）修完后是 0 项。13 个代理 yaml 全部合法，但 1 个 skill 实际是坏的。源文写了 PR #3，没有完整 pull URL，不编造。platforms 记 claude。这些是作者自己这一次发布上的记录，不可外推。",
+    description: "面向已经打算给编排器接外部 PR 和专业审查代理、却还把「yaml 合法」写成「skill 一定能跑」的人：把大约 5 天没注意到的第一个外部 PR、21 项（15＋6）→0、13 个合法 yaml 和 1 个实际损坏的 skill 写成门禁，区别于把正文里的「PR #3」编成完整 pull URL。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/satoh_y_0323/articles/07d73ca5ddfff0",
+    sourceLabel: "zenn.dev·satoh_y_0323 实践帖",
+    upvotes: 967,
+    trending: false,
+    tags: [
+      "claudecode",
+      "code-review",
+      "release",
+      "yaml",
+      "conductor",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/satoh_y_0323/articles/07d73ca5ddfff0",
+      label: "zenn.dev·satoh_y_0323《公開したツールに初めて PR が来た ── でも 5 日気づかなかった。OpenCode 対応の貢献を受け取り v2.30.0 にした話》",
+      date: "2026-06-02",
+      dateLabel: "发布",
+    },
+    approach: "作者维护自作编排器 Claude Code Conductor（C3），并把这次发布写成 v2.30.0。正文写，第一个外部 PR（文中记作「PR #3: feat: add OpenCode adapter…」）大约 5 天没被注意到。专业审查代理这次共提出 21 项，其中 code-reviewer 15 项、security-reviewer 6 项，修完后是 0 项。13 个代理的 yaml 全部合法；但 1 个 skill（codex-review）实际是坏的，跑起来会 ParserError。这次审查是 C3 里的专业代理在跑，执行平台记 claude；OpenCode 是这条 PR 要加的适配对象，Codex 与 Cursor 是既有适配目标，都不是这篇里实际执行审查的平台。源文只写了「PR #3」和标题，没有给出完整的 pull URL，不编造完整 pull URL。",
+    outcomes: [
+      "源披露：第一个外部 PR 大约 5 天没被注意到；专业审查提出 21 项（code-reviewer 15 项、security-reviewer 6 项），修完后是 0 项。13 个代理的 yaml 全部合法，但 1 个 skill（codex-review）实际是坏的，跑起来会 ParserError。不要把约 5 天、21 项（15＋6）→0、13 个合法 yaml 和 1 个坏 skill 写成同一笔。这些是作者自己这一次 v2.30.0 发布上的记录，不可外推到别人的编排器或别的外部 PR。",
+      "源文写了「PR #3: feat: add OpenCode adapter…」，但没有完整 pull URL。不编造 pull/3 地址，也不把 issue 列表页或「#3」当成已核达的产品链。",
+      "正文点名这次审查跑在 C3 的专业代理上，platforms 记 claude。OpenCode、Codex、Cursor 不是这篇的执行平台，不写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-06-02T21:00:29.560+09:00 → UTC 2026-06-02T12:00:29Z、Asia/Shanghai 2026-06-02 20:00:29；取 published → 2026-06-02；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把约 5 天、21 项（15＋6）→0、13 个合法 yaml 和 1 个坏 skill 混用。源文没有完整 pull URL，不编造。platforms 记 claude。不要和近批 token／耗时／中位数条混用。正文未配图。",
+      "导流：C3 仓库 https://github.com/satoh-y-0323/claude-code-conductor、文档站 https://satoh-y-0323.github.io/claude-code-conductor/、发布标签 https://github.com/satoh-y-0323/claude-code-conductor/releases/tag/v2.30.0 交付时均 GET 200，按作者工具／站点导流披露，可列可达。https://pypi.org/project/claude-code-conductor/ 交付时 HTTP 200，标题为 Client Challenge，按人机验证页披露，不列入可达。一次资料：前篇 https://zenn.dev/satoh_y_0323/articles/08d0938d73eb36 GET 200，不另作主源；https://opencode.ai 复检时 GET 200，标题为 OpenCode | The open source coding agent for any model，未落到人机验证或登录页，可列可达。源文「PR #3」没有完整 pull URL，不编造。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 21 项（15＋6）→0 和约 5 天不是同一笔，再确认有没有完整 pull URL",
+        body: "请按原文核算：第一个外部 PR 是不是大约 5 天没被注意到。专业审查是不是 21 项，其中 code-reviewer 15 项、security-reviewer 6 项，修完后是不是 0 项。13 个代理的 yaml 是不是全部合法。1 个坏 skill 是不是 codex-review，报错是不是 ParserError。发布是不是 v2.30.0。源文有没有给出 PR #3 的完整 pull URL。这次审查是不是跑在 C3 上，OpenCode／Codex／Cursor 能不能写进 platforms。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "发布前让专业审查代理分别做代码审查和安全审查，按项修完再看是否归零。",
+      "yaml 合法只说明配置能解析，不能代替实际跑一遍 skill；坏 skill 会在运行时以 ParserError 暴露。",
+      "外部 PR 要有通知或值班，否则可能好几天没人看到；没有完整 URL 的「PR #3」不能编造成产品链。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-06-02T21:00:29.560+09:00 → UTC 2026-06-02T12:00:29Z、Asia/Shanghai 2026-06-02 20:00:29；取 published → 2026-06-02；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-06-02。",
+      "硬窗是约 5 天、21 项（15＋6）→0、13 个合法 yaml 和 1 个坏 skill。PR #3 无完整 URL，不编造。pypi 页是 Client Challenge，不列入可达。platforms 记 claude。仓库、文档站和 v2.30.0 标签按导流披露。",
+    ],
+  },
+  {
+    id: "1077",
+    slug: "yott-1358-807",
+    title: "yottayoshida／yotta：整理 Claude Code 每次都会加载的上下文。常驻加载从 1,358 行减到 807 行（少 551 行，约 −41％）。不要把 1,358→807 和 CLAUDE.md 的 222 行、rules 2,165 行（15 个文件）、skills 9,833 行（39 个文件）写成同一笔，那些合计约 12,000 行并不是全部常驻加载。n8n.md 只是规则文件名，不是这次用了 n8n 产品。platforms 只记 claude。这些是作者自己这一次整理上的记录，不可外推。",
+    summary: "yottayoshida 把 Claude Code 常驻加载从 1,358 行减到 807 行（少 551 行，约 −41％）。不要和 CLAUDE.md 222 行、rules 2,165 行、skills 9,833 行混用。n8n.md 只是文件名，platforms 只记 claude。这些是作者自己这一次整理上的记录，不可外推。",
+    description: "面向已经打算给 Claude Code 减常驻上下文、却还把仓库里全部规则和 skill 的行数当成每次都会加载的人：把 1,358→807（−551，约 −41％）写成门禁，区别于把 CLAUDE.md 222 行、rules 2,165 行或 skills 9,833 行说成同一笔常驻负载。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yottayoshida/articles/claude-code-context-cost-structure",
+    sourceLabel: "zenn.dev·yottayoshida 实践帖",
+    upvotes: 968,
+    trending: false,
+    tags: [
+      "claudecode",
+      "context",
+      "rules",
+      "skills",
+      "claudemd",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yottayoshida/articles/claude-code-context-cost-structure",
+      label: "zenn.dev·yottayoshida《Claude Codeのrulesとskillsはいつ読まれる？ — ロード機構を理解して常時コストを41%削減した話》",
+      date: "2026-04-15",
+      dateLabel: "发布",
+    },
+    approach: "作者清点了 Claude Code 每次都会加载的上下文，并把常驻部分从 1,358 行减到 807 行，少 551 行，约 −41％。仓库里另外还有 CLAUDE.md 222 行、rules 2,165 行（15 个文件）、skills 9,833 行（39 个文件），合计大约 12,000 行，但这些并不是全部常驻加载。整理后的分项是：CLAUDE.md 从 222 行减到 174 行（少 48 行），不含路径限制的 rules 从 1,136 行减到 633 行（少 503 行）；15 个规则里本来就有 6 个已经写了 paths:。文中出现的 n8n.md 只是一条规则文件名，不是这次事件用了 n8n 产品。官方文档被当作对照资料引用，不是本条主源。",
+    outcomes: [
+      "源披露：常驻加载从 1,358 行减到 807 行，少 551 行，约 −41％。不要把这组数字和 CLAUDE.md 的 222 行、rules 2,165 行（15 个文件）、skills 9,833 行（39 个文件）写成同一笔，那些合计约 12,000 行并不是全部常驻加载。这些是作者自己这一次整理上的记录，不可外推到别人的规则集或别的仓库。",
+      "整理后的分项是 CLAUDE.md 222→174（少 48 行），不含路径限制的 rules 1,136→633（少 503 行）；15 个规则里本来就有 6 个已经写了 paths:。这些分项不要和 1,358→807 的总常驻窗口混用成另一套总数。",
+      "正文点名这次执行用了 Claude Code，platforms 只记 claude。n8n.md 只是规则文件名，不把 n8n 写入 platforms。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 published_at 2026-04-15T18:22:42.575+09:00 → UTC 2026-04-15T09:22:42Z、Asia/Shanghai 2026-04-15 17:22:42；body_updated_at 早于发布，仍取 published → 2026-04-15；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。不要把 1,358→807 和 222／2,165／9,833 或约 12,000 行混用。n8n.md 只是文件名，platforms 只记 claude。不要和近批 token／耗时／中位数条混用。正文未配图。",
+      "一次资料：https://code.claude.com/docs/en/memory、https://code.claude.com/docs/en/skills、https://code.claude.com/docs/en/features-overview 交付时均 GET 200（标题为 Claude Code Docs，未跟随至区域不可用页），可列可达，不当本条主源。相关篇 https://zenn.dev/farstep/articles/claude-code-best-practices、https://zenn.dev/shintaroamaike/articles/6397da70f4a445、https://zenn.dev/kg_filled/articles/50f762610d48c7 均 GET 200，不另作主源。primary GET 200。Zenn 页面链不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1,358→807 不是仓库里全部约 12,000 行，再谈 222／2,165／9,833",
+        body: "请按原文核算：常驻加载是不是从 1,358 行减到 807 行，少 551 行、约 −41％。CLAUDE.md 222 行、rules 2,165 行（15 个文件）、skills 9,833 行（39 个文件）是不是另一组库存数字，能不能当成全部常驻加载。整理后 CLAUDE.md 是不是 222→174，不含路径限制的 rules 是不是 1,136→633，15 个规则里本来就有 paths: 的是不是 6 个。n8n.md 是不是只是规则文件名。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先分清「每次都会加载的常驻上下文」和「仓库里全部规则、skill 的行数」。",
+      "给会按路径触发的规则补上 paths:，让不必每次出现的说明退出常驻集合。",
+      "缩 CLAUDE.md 和其他常驻规则时，分别记账，不把库存总行数当成已经减掉的常驻负载。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 published_at 2026-04-15T18:22:42.575+09:00 → UTC 2026-04-15T09:22:42Z、Asia/Shanghai 2026-04-15 17:22:42；body_updated_at 早于发布，仍取 published → 2026-04-15；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-04-15。",
+      "硬窗是常驻 1,358→807（−551，约 −41％）。不要和 222／2,165／9,833 混用。n8n.md 只是文件名，platforms 只记 claude。code.claude.com 文档本次 GET 200，可列可达，不当主源。",
+    ],
   }
 ];
 
