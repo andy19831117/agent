@@ -63472,6 +63472,309 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
       date: "2026-10-31",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "868",
+    slug: "ussu-33s-25ok-93",
+    title: "Y Mori／ussu_ussu_ussu：把所属草棒球队的纸质记分簿照片交给 Claude Code（模型是 Claude Opus 5.5）来读，核对后再登记到球队网站。用已经写出正确答案的 33 张，测自动阅读工具（OpenCV 找出格子、按局切出列，再逐列问 Claude）：「有没有得分」与正解一致 99%（913/923），「打席结果」一致 91%（859/941），但一张上的得分表全部对上的只有 33 张里的 25 张。同一张照片读 2 次、读法不一致的格子里 61% 是错的（一致的格子里是 6%）。垒区记号 396 处，Claude 什么都不给时读对 93%（370/396）；自己做的图像处理什么都不给时 71%（283/396）、把正确答案都喂进去后 92%（366/396）。费用是 429 次调用约 3.8 美元。正确答案起初来自 Claude 的转写，作者又从原本放大核对了 47 处",
+    summary: "个人（Y Mori／ussu_ussu_ussu）；披露这是自己球队、在 2026 年 10 月、用开发时看过的 33 张测得的数，读的时候没有把样例或正确答案交给工具，但切法与问法是对着这 33 张调的，不能外推成别的记分簿、别的光线或别的书写习惯。99% 是「有没有得分」的 913/923，91% 是「打席结果」的 859/941，93% 是垒区记号 370/396，不要和 71%（283/396）、92%（366/396）或 33 张里 25 张混写成同一个正确率。429 次调用约 3.8 美元写在垒区 396 处对照那一段，不要写成 33 张得分表测验的费用。同一张再读一次时，得分表曾从 25 张变成 26 张，作者写明每次调用会有一点变动。正确答案是先由 Claude 转写再人工整理的，相同的读错可能被两边一起算成对；作者从原本核对了 47 处，其中 Claude 与正解一致、图像处理不一致的 21 处全部与纸面相同，正解本身也发现了 4 处读错。文中「最近一场 6 局因时间到而结束的比赛」（自队 28 打席：出局 18、得分 5、残垒 5；对手 25 打席：出局 17、得分 1、残垒 7）是用来说明检算式的例子，不要写进 33 张的统计。作者不是记分专家，只写自己球队这一种记分簿。登记前仍要检算，并让负责人确认纸上看不出来的点（例如同姓选手）。",
+    description: "面向已经把「用模型把记分簿照片读完就能直接进成绩库」写成可以上线的人：把「格子对上九成以上，不等于整张得分表对得上；33 张里只有 25 张整表合格；正确答案曾借 Claude 的转写来做，不能把一致率当成完全独立的评测；429 次约 3.8 美元不要安到另一项统计上」写成门禁，区别于只看「九成以上读对了」、却不核整表是否合得上、正解是怎么来的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/ussu_ussu_ussu/items/c9ecfde3d172a0069c65",
+    sourceLabel: "qiita.com·ussu_ussu_ussu 实践帖",
+    upvotes: 759,
+    trending: false,
+    tags: [
+      "claude",
+      "ocr",
+      "sports",
+      "verification",
+      "vision",
+    ],
+    howItWorks: [
+      "记分簿一格是一个打席，中间的菱形把格子分成四个垒区；右下写打者结果，其余三个垒区写进垒原因，中间的罗马数字是该局第几个出局。作者说明，一个打席最终只能落在「出局／得分／残垒」之一，因此局和全场的打席数必须等于这三项之和；时间到而结束的那一局，出局不必凑满 3 个，要用实际数到的个数来对。还要核对「各局得分之和等于全场得分」「投手失分合计等于对方得分」。",
+      "自动阅读工具用 OpenCV 找出格子、按局把列切出来，再逐列问 Claude「这一格有没有打席、结果是什么、有没有得分」等，再汇总成按打序的成绩。同一张会读 2 次，读法不一致的格子标成「请确认」。切出列时会把照片转成横长，并放大 2–4 倍再问，以免整张缩得太小把记号认错。",
+      "跟 Claude Code 一起用时，读完先做成表给负责人看；只有纸上决定不了的点（例如同姓选手是哪一个）才在提问界面里选。确认后再用一条 SQL 写入结果、打击和投手，写完再把合计读回来，核是否与检算一致。负责人改过的队内规矩会写进 Claude Code 的备忘和仓库里的 CLAUDE.md（文中举了「先发未满 5 局也算胜投手」这一条草棒球规矩）。",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-08T16:33:26.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T07:33:26Z、Asia/Shanghai 2026-11-08 15:33:26；dateModified 2026-11-09T07:41:55.000+09:00，晚于发布，仍取 published；Qiita API created_at 与 datePublished 同值；取 published；GET 200（UA MiraBot/1.0））：Y Mori／ussu_ussu_ussu 在《草野球のスコアブックを Claude Code に読ませて成績を登録する：検算のやり方・記号の読み方・コードを公開しました》记录自己用 Claude Code 读记分簿、再按打席结局检算后登记的做法。可达导流：https://github.com/yasumorishima GET 200（作者卡 GitHub，作者卡 website 也是这个地址；作者卡 X 为空）；https://github.com/yasumorishima/baseball-scorebook-ocr-docs GET 200（记号说明与配图所在的文档仓）；https://github.com/yasumorishima/baseball-scorebook-ocr-docs/blob/main/notation.md 、https://github.com/yasumorishima/baseball-scorebook-ocr-docs/blob/main/stats-from-scorebook.md 、https://github.com/yasumorishima/baseball-scorebook-ocr-docs/blob/main/claude-code/scorebook-stats/SKILL.md 均 GET 200；https://github.com/yasumorishima/baseball-scorebook-reader GET 200（自动阅读工具仓）；https://github.com/yasumorishima/baseball-scorebook-reader/tree/main/cv GET 200（文中链到的图像处理目录）。配图 5 张均 GET 200（不列入产品导流）：https://raw.githubusercontent.com/yasumorishima/baseball-scorebook-ocr-docs/main/images/blog/fig-flow.png 、https://raw.githubusercontent.com/yasumorishima/baseball-scorebook-ocr-docs/main/images/blog/fig-cell.png 、https://raw.githubusercontent.com/yasumorishima/baseball-scorebook-ocr-docs/main/images/blog/fig-check.png 、https://raw.githubusercontent.com/yasumorishima/baseball-scorebook-ocr-docs/main/images/blog/fig-accuracy.png 、https://raw.githubusercontent.com/yasumorishima/baseball-scorebook-ocr-docs/main/images/blog/fig-methods.png 。Qiita imgix 包装不当作者产品导流。primary GET 200。",
+      "先把「格子对不对」和「整张得分表能不能对上」分开看。一局只有 30 个上下的打席，错几格，回合计就会偏。符号看不清时，用打席数＝出局＋得分＋残垒这类式子来裁决，不要只凭缩略图上的观感。正确答案如果曾借模型转写来做，要再抽原本核对，并标明抽了几处、发现了几处正解侧的错误。",
+    ],
+    approach: `作者所在的草棒球队要把每场成绩做到球队网站上，底稿是比赛里手写的纸质记分簿。逐格手打又慢又容易把符号看错，他试过从照片里读，现在用 Claude Code（模型是 Claude Opus 5.5）来读，检算并通过负责人确认后再登记。他写明自己不是记分写法的专家，只覆盖自己球队这一路记分簿；33 张里见到的写法（有人把第三个出局写成 Ⅳ 或 Ⅱ、走者出局结束该局时不写第三个出局、安打用红笔、打者一巡后改手写局号等）另外写在记号说明里。
+
+检算的核心是：一个打席最后只能是出局、得分或残垒之一，所以打席数必须与这三项的和一致；因时间到而结束的那一局，出局按实际数到的个数对，不能按「3×局数」去凑。文中用最近一场 6 局、6 局下 2 出局时时间到的比赛做例子：自队 28 打席（出局 18、得分 5、残垒 5），对手 25 打席（出局 17、得分 1、残垒 7）。还要核对各局得分之和、投手失分与对方得分。文中举过：第 5 局第 1 棒格子里的出局数字，整张看像 Ⅲ，放大后是带装饰线的 Ⅱ；若当成 Ⅲ，后面第 5 棒的滚地球就会变成第四个出局。
+
+自动阅读工具在已写出正解的 33 张上测过。格子里「有没有得分」913/923（99%）一致，「打席结果」859/941（91%）一致，但一张上大约有 30 个打席，错几格得分表就会偏，整表全部对上的是 33 张里的 25 张。同一张读 2 次，读法不一致的格子里 61% 是错的，一致的格子里是 6%。在此之前，作者曾在 Raspberry Pi 5 上做过不调用生成模型的图像处理。垒区记号 396 处：图像处理什么都不给时 71%（283/396），把打席、出垒、出局等正解都喂进去后 92%（366/396）；Claude 什么都不给时 93%（370/396）。费用是 429 次调用约 3.8 美元。正解起初来自 Claude 的转写，作者又从原本放大核对了 47 处：那 21 处「只有 Claude 与正解一致」全部与纸面相同，正解本身也发现了 4 处读错。工具和说明已经公开。文中并链到文档仓、工具仓、技能文件与五张配图，作者卡是 GitHub。`,
+    outcomes: [
+      "源披露作者用自己球队已经写出正确答案的 33 张记分簿照片，在 2026 年 10 月测自动阅读工具：格子里「有没有得分」与正解一致 913/923（99%），「打席结果」一致 859/941（91%），整张得分表全部对上的是 33 张里的 25 张；垒区记号 396 处，Claude 什么都不给时 370/396（93%）。这是这一批 33 张、这一种切法和问法上的记录，不可外推成别的记分簿或别的书写习惯，也不能把 99%、91%、93% 和 33 张里 25 张混写成同一个正确率，更不能把 429 次调用约 3.8 美元写成 33 张得分表测验的费用。",
+      "同一张读 2 次时，读法不一致的格子里 61% 是错的，一致的格子里是 6%；再读时整表合格张数曾从 25 变成 26，不要把一次 25/33 写成固定值。",
+      "正确答案起初来自 Claude 的转写。作者从原本核对了 47 处，其中 21 处全部与纸面相同，正解本身也发现了 4 处读错；不要把一致率当成完全独立标注下的评测。",
+    ],
+    caveats: [
+      "99%（913/923）是「有没有得分」，91%（859/941）是「打席结果」，93%（370/396）是垒区记号；71%（283/396）和 92%（366/396）是图像处理在「什么都不给」和「把正解都喂进去」两种条件下的数，不要和 Claude 的 93% 混写成同一次对照。429 次调用约 3.8 美元写在 396 处对照那一段，不要安到 33 张得分表上。25/33 与再读时的 25→26 不要混成同一个结论。文中最近一场 28 对 25 打席的例子，不要写进 33 张的统计。切法与问法是对着这 33 张调的。登记前仍要检算和负责人确认。",
+      "导流：作者卡 GitHub（website 同址）https://github.com/yasumorishima GET 200。文档仓 https://github.com/yasumorishima/baseball-scorebook-ocr-docs 及文中的 notation.md、stats-from-scorebook.md、SKILL.md，工具仓 https://github.com/yasumorishima/baseball-scorebook-reader 及 /tree/main/cv，均 GET 200，已列入可达导流。配图 5 张 GET 200，不列入产品导流。Qiita imgix 包装不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先核整张得分表能不能对上，再谈照片是不是已经读对了",
+        body: "请先把「每一格读得对不对」和「整张得分表的回合计能不能全部对上」分开统计，不要只用格子正确率做上线依据。核对打席数是否等于出局、得分、残垒之和，并核各局得分之和、投手失分与对方得分；因时间到而结束的那一局，出局按实际数到的个数对。同一张至少读两次，把读法不一致的格子单独列出来给人看。如果正确答案曾借模型转写来做，要再抽原本核对，并写明抽了几处、发现了几处正解侧的错误。费用要写明是哪一项测验、多少次调用，不要安到另一张表上。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/ussu_ussu_ussu/items/c9ecfde3d172a0069c65",
+      label: "qiita.com·ussu_ussu_ussu《草野球のスコアブックを Claude Code に読ませて成績を登録する：検算のやり方・記号の読み方・コードを公開しました》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "869",
+    slug: "nomura-10ok-4e-74829",
+    title: "のむらや／nomurasan：经 API 让 5 个模型（请求里写的 ID 是 deepseek-v4-pro-202606、glm-5.2、hy3、kimi-k2.6、kimi-k3）各做同一道修改题的日文和英文委托，各 1 次。有效设置下的 10 次试跑，独立评分器 5 项都是 5/5。此前因为给所有模型发送了 temperature=0，Kimi 两个模型在日英第一次请求上都返回 HTTP 400（提供者代码 400001），共 4 次 API 错误；Kimi 去掉温度后再跑这 4 题全部合格。成功 10 次的总 token 是 74,829。全部 54 次请求（含这 4 次设置错误）里成功 50、错误 4，观测错误率 7.4%，作者写明这不是服务故障率。从各模型第一次失败试跑结束到第一次课题合格，Kimi K2.6 是 108.12 秒、Kimi K3 是 116.05 秒，不要写成整体因此快了约 116 秒",
+    summary: "个人（のむらや／nomurasan）；披露这是 2026-09-10、1 道题、每个条件 1 次的记录，系统指示、工具说明、初始代码和评分器都是英文，只改了委托文的语言，不能用来给模型或语言排性能名次，10 次又都是满分。课题是在一次性环境里只改 parser.py 的边界条件，不是客户代码。5 项检查是：空行与注释、值里包含等号、重复键、没有等号的行、空键。允许改动范围以外的修改是 0 件。总 token 74,829 只含成功 10 次 API 返回的使用量，作者没有据此算费用，失败响应有没有被计费也未确认。缓存是输入的内数，不另行加回输入。DeepSeek／GLM／Hy3 的 temperature 为 0，Kimi 是省略；推理设置用各模型默认，不是对齐后的对照。7.4%（4/54）含设置错误，按模型则 Kimi K2.6 是 14.3%（2/14）、Kimi K3 是 20.0%（2/10），DeepSeek、GLM、Hy3 是 0%；4 件是同一份运行器设置影响两个模型，当作 1 个事象。84.18 秒和 86.02 秒是到第一次 API 成功，108.12 秒和 116.05 秒是到第一次课题合格，起点是失败试跑的结束时刻（作者当时没保存那一次失败 HTTP 调用自身的起止）。失败 4 次的耗时合计 6.589 秒也不是整体延误。GLM 和 Hy3 不在平台枚举里，不硬凑；正文实测用了 DeepSeek 与 Kimi，platforms 只记 deepseek、kimi。",
+    description: "面向已经把「日文委托正确率会下降，所以先把提示词改成英文」或「API 错误率 7.4% 说明服务不稳」写成可以上线的人：把「10 次都是 5/5、每个条件只有 1 次，不能排模型或语言的名次；4 次 HTTP 400 是 temperature=0 的设置不一致，不是 4 次服务故障；7.4% 含设置错误；约 116 秒不是整次作业被耽误的时间」写成门禁，区别于只看满分或只看错误次数、却不核分母和起点的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "deepseek",
+      "kimi",
+    ],
+    sourceUrl: "https://zenn.dev/nomurasan/articles/coding-agent-japanese-english-reliability",
+    sourceLabel: "zenn.dev·nomurasan 实践帖",
+    upvotes: 760,
+    trending: false,
+    tags: [
+      "deepseek",
+      "kimi",
+      "evaluation",
+      "api",
+      "benchmark",
+    ],
+    howItWorks: [
+      "给模型一个能读文件、编辑并跑测试的小工具循环，修正对象只限一次性环境里的 parser.py。课题是修 parse_config(text) 的边界：忽略空行与注释、只按第一个等号切开、重复键取最后一次、没有等号或空键则抛 ValueError。除模型自己跑测试外，结束后再用运行器侧的独立评分器核这 5 项；事先确认过有 bug 的初始代码会不合格、已知修正会全过。",
+      "日文版只改委托文，英文版用同一内容的英文。系统指示、工具说明、初始代码和评分器都是英文。条件是 1 道题 × 5 个模型 × 2 种语言 × 各 1 次，最多 8 个回合。模型之间最多 5 路并行，同一模型的日英按先后跑。DeepSeek／GLM／Hy3 发送 temperature=0，Kimi 后来改为省略。",
+      "记录时把 API 试跑、课题执行和同一原因的事象分开，并同时留下 API 成功和课题合格的时刻。作者写明：评估代理时，不能只看 API 再次成功，还要看代码修正和测试是否做完。本次不为这 1 个事象去估 MTBF／MTTR。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-14T21:22:55.520+09:00 → 2026-09-14，同时刻为 UTC 2026-09-14T12:22:55Z、Asia/Shanghai 2026-09-14 20:22:55；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：のむらや／nomurasan 在《コーディングエージェント5モデルを日英で試す：正答率・トークン・復旧時間の測り方》记录 2026-09-10 的日英各 1 次实测，以及以后对照要用的记法。可达导流：https://github.com/shimajima-eiji GET 200（作者卡 GitHub）；https://x.com/nomuraya_san GET 200（作者卡 X）。作者卡网站未列入可达：https://www.linkedin.com/in/nomuraya/ 本次 GET 为 HTTP 451、size 0，跟随至 https://www.linkedin.cn/incareer/in/nomuraya/，不列入可达，完整 URL 与最后一次状态已写出。配图 1 张本次 GET 为 HTTP 400、size 0（不列入可达）：https://res.cloudinary.com/zenn/image/fetch/s--jFRSf_TZ--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_1200/v1/images/coding-agent-japanese-english-reliability/recovery-times.png?_a=BACMTiAE 。源文写的是相对路径，经 Zenn 的 Cloudinary 包装后未能拉取。相关篇已核、不列入导流：https://zenn.dev/nomurasan/articles/ai-wait-time-is-not-work-hours GET 200。一次资料已核、不列入导流：https://platform.kimi.ai/docs/guide/kimi-k2-6-quickstart 、https://sre.google/sre-book/monitoring-distributed-systems/ 、https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents（跟随至 https://www.anthropic.com/research/demystifying-evals-for-ai-agents，仍为 200），均 GET 200。正文测试夹具里的 https://x.test/?a=b 按源文原样写出，未作为可达链去核。primary GET 200。",
+      "先把「课题有没有合格」和「API 请求有没有成功」分开记。设置错误、鉴权失败、限流、5xx、超时和本地回合上限，不要合成一个错误率。语言对照时要写明改的是哪一层（只改委托文，还是系统指示也改了），每个条件只有 1 次、又全部满分时，不要给模型或语言排名次。",
+    ],
+    approach: `作者想弄清：经 API 使用编码代理时，把日文委托改成英文，结果会不会变。他让 5 个模型各做同一道修改题的日文和英文委托，各 1 次，记下合格与否、耗时和 token。请求里写的模型 ID 是 deepseek-v4-pro-202606、glm-5.2、hy3、kimi-k2.6、kimi-k3，避免用显示名去概括以后的同名模型。这不是客户项目，只在一次性环境里改 parser.py。
+
+有效设置下的 10 次试跑，5 项检查都是 5/5，模型自己都跑了测试，允许范围外的修改是 0 件，过程中没有加人的提示。这次没有观察到日文导致正确率下降。5 个模型里有 4 个英语总 token 更少，Kimi K2.6 则是日语更少；耗时上，Hy3 与 Kimi K2.6 是日语更短，另外 3 个是英语更短。每个条件只有 1 次，又都是满分，作者写明不能据此说「英语更准」或「某个模型最快」。成功 10 次总 token 74,829，没有据此算费用。日期都是 2026-09-10，时刻是 JST；表上的时刻按秒四舍五入，耗时用表里的实测秒数。
+
+第一次运行给所有模型发了 temperature=0。Kimi 两个模型在日英第一次请求上都返回 HTTP 400（代码 400001），没有进入编辑。Kimi 去掉温度后再跑这 4 题全部合格。Kimi K2.6 的官方 Quickstart 写明温度按模式固定；对 K3，作者只把「同样改了就成功」当作依据，不把 K2.6 的规格直接说成 K3 的规格。全部 54 次请求含这 4 次设置错误，成功 50、错误 4，观测错误率 7.4%；有效设置下的 50 次全部成功，其中 Kimi 修正后是 20 次，自动重试 0 次，因改设置而重跑课题 4 次。
+
+从各模型第一次失败试跑结束到第一次 API 成功，Kimi K2.6 是 84.18 秒、Kimi K3 是 86.02 秒；到第一次课题合格是 108.12 秒和 116.05 秒。两个模型都合格的观察区间约 116 秒，作者写明不能说「要是没有错误，整体会早约 116 秒」。失败 4 次耗时合计 6.589 秒也不是整体延误。非公开运行器没有发放，生成代码正文也没有保存。文中链到相关前作、Kimi Quickstart、SRE 书和 Anthropic 的评测文，作者卡有 GitHub、X 和 LinkedIn。正文用 https://x.test/?a=b 做解析夹具。`,
+    outcomes: [
+      "源披露作者在 2026-09-10 经 API 让 5 个模型各做同一道修改题的日文和英文委托、各 1 次：有效设置下的 10 次试跑 5 项都是 5/5；此前因 temperature=0，Kimi 两个模型日英第一次请求共 4 次 HTTP 400；成功 10 次总 token 74,829。这是这一道题、这一次运行器设置上的记录，不可外推成模型或语言的性能排名，也不能把 7.4%（4/54）写成服务故障率，更不能把约 116 秒写成整体因此快了的时间。",
+      "到第一次 API 成功是 84.18 秒（Kimi K2.6）和 86.02 秒（Kimi K3），到第一次课题合格是 108.12 秒和 116.05 秒，不要混成同一个终点；起点是失败试跑的结束时刻，不是那一次失败 HTTP 调用自身的开始。",
+      "5 个模型里有 4 个英语总 token 更少，只有 Kimi K2.6 是日语更少；耗时也不是同一方向。每个条件 1 次，不要从单次差值推出通例。",
+    ],
+    caveats: [
+      "10 次都是 5/5、每个条件 1 次，不能给模型或语言排名次。74,829 只含成功 10 次，不要拿去算费用。7.4% 是 4/54，含设置错误；Kimi K2.6 的 14.3%（2/14）和 Kimi K3 的 20.0%（2/10）不要和服务故障率混写。4 件当作 1 个事象。约 116 秒不是「没有错误就会早这么多」。6.589 秒不是整体延误。温度与推理设置在模型之间没有对齐。缓存是输入的内数。GLM、Hy3 不在平台枚举里，不硬凑，platforms 只记 deepseek、kimi。正文测试夹具 https://x.test/?a=b 按源文原样写出，未作为可达链去核。",
+      "导流：作者卡 GitHub https://github.com/shimajima-eiji 、X https://x.com/nomuraya_san 均 GET 200。作者卡网站 https://www.linkedin.com/in/nomuraya/ 本次 GET 为 HTTP 451、size 0，跟随至 https://www.linkedin.cn/incareer/in/nomuraya/，不列入可达，完整 URL 与最后一次状态已写出。配图 Cloudinary 包装相对路径本次 GET 为 HTTP 400、size 0，不列入可达。相关前作与一次资料已核、不列入导流。",
+    ],
+    prompts: [
+      {
+        title: "先分清课题合格和 API 成功，再谈日文是不是更差",
+        body: "请先核：对照的是不是同一道题、只改了委托文的语言，还是系统指示也改了；每个条件跑了几次；合格是独立评分器的哪几项。把 API 请求成功、课题合格、因设置错误而重跑，分成三本账。错误率要写明分母是否包含设置错误，不要把 400 参数拒绝写成服务故障。若要谈「恢复了多久」，写明起点是失败试跑结束还是那一次失败请求本身，终点是 API 再次成功还是课题合格。每个条件只有 1 次、又全部满分时，不要给模型或语言排名次。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nomurasan/articles/coding-agent-japanese-english-reliability",
+      label: "zenn.dev·nomurasan《コーディングエージェント5モデルを日英で試す：正答率・トークン・復旧時間の測り方》",
+      date: "2026-09-14",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "870",
+    slug: "suzuki-13tx-006-2hole",
+    title: "SuzukiTech／suzuki_tech：在 Base Sepolia 测试网（确认日 2026-10-16）把 x402 的钱包做成 MCP 服务器，用 Claude Code 2.1.301、受试者 Sonnet 来测。1 次支付 0.01 USDC，累计上限 0.05。买家从 19.89 USDC、卖家从 0.11 开始；当天结算成功 13 笔（0.01×13=0.13），链上余额与 19.89−0.13=19.76、卖家 0.11+0.13=0.24 一致。「实费 0 日元」只针对这笔测试网支付，不含 Claude 使用费。只把钱包放到别的进程里，用 Python 改台账（W3）再支付（W4），仍能把台账从 0.05 改到 0.01 并付出去，第 2 回的问题再现。加上 sandbox 之后，若只保护台账，钥匙文件仍可读；把钥匙和源码路径也写入 sandbox（D4）后，试过的项全部停下。作者自己写的钱包服务器还有 2 个洞：并行调用时台账曾从 0.04 涨到 0.06（超过 0.05）；台账 JSON 损坏时按 0 再开算",
+    summary: "个人（SuzukiTech／suzuki_tech）；披露这是测试网、确认日 2026-10-16、连载第 3 回的一次实验，钱包是连载专用的。「实费 0 日元」不含 Claude 使用费，也不适用于主网。0.01×13=0.13、19.89−0.13=19.76、0.11+0.13=0.24 都是乘法和减法，用来和链上最终余额对，不要和实验中途读到的 19.89→19.88→19.87、19.81→19.80、19.83→19.81 等中间余额混写成同一个时点。13 笔是当天实际结算成功的交易（区块 48186212 到 48187305，08:51:52 到 09:28:18 UTC），被拒绝的调用不会出现在这 13 行里。W 试验是对事先写好的命令各跑 1 次，看停在哪一层，不是「会绕路的代理被挡住了」的证据；D3 的 W4 里受试者说「不绕过沙箱限制」，是因为委托本来就这样要求。auto mode 的分类器也曾在启动子代理或未加 --permission-mode 时先拦住，不要把这些当成 deny 或 sandbox 的结果。竞合在不加延迟时，2 本或 4 本同时调不一定超限（4 本同时是 3 本拒绝、1 本成功），加上 500ms 延迟后才从 0.04 涨到 0.06；修完后同样延迟下是 0.04 涨到 0.05。这个修正只覆盖同一进程里的并行调用，开 2 个会话就会起 2 个进程。第 4 回 JPYC 篇还在准备。sandbox 只覆盖 shell，MCP 服务器在 sandbox 外、以用户权限跑。",
+    description: "面向已经把「钱包放到单独的 MCP 进程、再写上 deny，上限就不会被改掉」写成可以上线的人：把「只隔离进程仍可用 Python 改台账再付款；sandbox 只保护写进配置的路径，钥匙若还留在仓库里就能绕过上限；并行调用曾让台账从 0.04 变成 0.06；13 笔最终余额对得上，不等于中间每一次余额都是同一个数」写成门禁，区别于只看「D4 全停了」、却不核钥匙和源码有没有写进保护路径的实践。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/suzuki_tech/articles/x402-03-paid-mcp-server",
+    sourceLabel: "zenn.dev·suzuki_tech 实践帖",
+    upvotes: 761,
+    trending: false,
+    tags: [
+      "claude",
+      "mcp",
+      "sandbox",
+      "payments",
+      "security",
+    ],
+    howItWorks: [
+      "把密钥、单笔上限和累计台账放到仓库外面，由唯一的钱包 MCP 服务器（wallet-mcp）保管。Claude Code 只调工具。桥上放了两个工具：一个走普通 HTTP 的收费 API（构成 b），一个走包了支付的收费 MCP 工具（构成 a），单价都是 0.01 USDC，上限共用一本台账（单笔 0.01、累计 0.05）。签名由 wallet-mcp 做。官方说明 sandbox 只覆盖 shell 命令，文件工具、MCP 服务器和钩子在 sandbox 外运行。",
+      "先不经 Claude、用 MCP 客户端直接调，确认 b 和 a 各能付 1 次；再在无头 Claude Code 上调一次。然后把台账设到上限，依次调工具，看第 3 次是否因 max-total 被拒绝。保护试验分成 D1（无保护）、D2（permissions 的 deny）、D3（D2 加 sandbox，只保护台账路径）、D4（把钥匙和源码路径也写入 sandbox），对事先写好的读改命令各跑 1 次。",
+      "作者还单独测了自己钱包服务器的 2 个洞：确认与记账之间的竞合（先在台账 0.04、上限 0.05 下加 500ms 延迟，再同时调 2 本），以及台账读失败时的 fail-open（损坏的 JSON 曾被当成 0）。修完后再用同样的延迟副本核台账是否停在 0.05。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T09:09:17.166+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T00:09:17Z、Asia/Shanghai 2026-11-08 08:09:17；bodyUpdatedAt 2026-10-29T06:57:46.618+09:00，早于发布，按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：SuzukiTech／suzuki_tech 在《守る対象は台帳ではなく、鍵とコードだった — x402 の財布を MCP サーバーに出して sandbox で囲む》记录把 x402 钱包做成 MCP、再用 sandbox 围住的实测。可达导流：https://github.com/suzukitech GET 200（作者卡 GitHub）；https://x.com/suzuki_tech GET 200（作者卡 X）；https://github.com/suzukitech/agent-payments-lab/tree/x402-03 GET 200（本回实验仓分支）；https://github.com/suzukitech/agent-payments-lab/blob/x402-03/docs/notes/x402-03-run.md GET 200（运行笔记）。作者卡 website 为空。连载相关篇已核、不列入导流：https://zenn.dev/shippai/articles/x402-01-http-402-nextjs （第 1 回，跟随至 https://zenn.dev/suzuki_tech/articles/x402-01-http-402-nextjs?redirected=1，仍为 200）、https://zenn.dev/shippai/articles/x402-02-agent-wallet （第 2 回，跟随至 https://zenn.dev/suzuki_tech/articles/x402-02-agent-wallet?redirected=1，仍为 200）、https://zenn.dev/shippai/articles/prompt-injection-trifecta-sqli-2026 （文末相关篇，跟随至 https://zenn.dev/suzuki_tech/articles/prompt-injection-trifecta-sqli-2026?redirected=1，仍为 200）。配图 3 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/fae260c6b9224ec4f9e91059.png?sha=0e558dadb4fd8aad2bb377bc08cbceb7c599894b 、https://static.zenn.studio/user-upload/deployed-images/1fe96667dcf83c659ff628f8.png?sha=069e6be1cb6bcc910d3b6156840f29d8a5001f59 、https://static.zenn.studio/user-upload/deployed-images/cd254785abd5df585a7ec978.png?sha=d8f781621efc20e2950db0420a6cc97a9466651b 。页内 mermaid 嵌入不当作者产品导流。一次资料已核、不列入导流：https://github.com/x402-foundation/x402/blob/main/specs/transports-v2/mcp.md 、https://code.claude.com/docs/en/mcp 、https://docs.x402.org/guides/mcp-server-with-x402 、https://code.claude.com/docs/en/sandboxing 、https://code.claude.com/docs/en/permissions ，均 GET 200。一次资料未列入可达：https://sepolia.basescan.org/tx/0x804af64a9f75f7ed35500fdbd0e84ad36a834e69de26956cd2dcfaaaf392a28e 、https://sepolia.basescan.org/tx/0x17614951ace523657bec779b4dbc243a0b0ad941a18482f1532491f4c2eeffef 本次 GET 均为 HTTP 403、size 5700，不列入可达，完整 URL 与最后一次状态已写出。正文其余交易只以 0x 哈希出现、没有写成完整 URL，不补链。第 4 回尚未发出。primary GET 200。",
+      "先核钥匙、台账和源码是不是都写进了 sandbox 要保护的路径，再谈「已经把钱包放到别的进程」。只 deny 文件工具、却把改文件的工作交给 Python 或 Bash，和官方写明的漏洞是同一类。并行调用要用人为延迟才能复现时，不要把「偶尔没超限」当成已经安全。测试网的「实费 0 日元」不要写成主网或模型使用费也是 0。",
+    ],
+    approach: `这是连载「给 AI 代理一个钱包」的第 3 回。第 2 回里，累计上限的记录还能被改掉并付款。这次作者把钥匙、上限和台账放到仓库外，做成唯一的钱包 MCP 服务器，让 Claude Code 只调工具。确认日是 2026-10-16，测试网，单笔 0.01 USDC。「实费 0 日元」只针对这笔测试网支付，不含 Claude 使用费。Claude Code 是 2.1.301，受试者是 Sonnet。当天买家从 19.89 USDC、卖家从 0.11 开始。
+
+先不经 Claude，用客户端调构成 b（HTTP）和构成 a（MCP），各付成 1 次；8 秒后再读，买家余额从 19.89 到 19.88，再到 19.87，台账从 0 到 0.01、0.02，卖家从 0.11 到 0.13。无头 Claude Code 也能付 1 次。把台账设到 0.05 再连调，前 2 次成功，第 3 次因超过累计上限被拒，拒绝前后买家余额不动。
+
+保护试验里，D1 无保护时可以把台账改回 0 再付款。只把钱包放到别的进程，W3 仍能把台账改成 0，W4 也能付（台账从 0.05 变成 0.01）。D2 加上 deny 后，W1、W2 停了，但 W3 仍通、W4 仍能付，第 2 回的问题再现。D3 给台账加上 sandbox 后，改台账被操作系统拦住，但钥匙文件仍可读；钥匙若可读，就可以不经上限直接付。D4 把钥匙和源码路径也写入后，试过的项全部停下。这些是对事先写好的命令各跑 1 次，不是「会绕路的代理被挡住了」的证据。auto mode 的分类器也曾先拦住某些调用，不要记成 deny 的结果。
+
+作者自己的服务器还有 2 个洞。竞合：不加延迟时同时调 2 本或 4 本不一定超限；加上 500ms 延迟后，台账从 0.04 涨到 0.06，超过 0.05，两笔都通过了确认，实际只结算 1 笔。修完后再用同样延迟，台账从 0.04 停在 0.05。fail-open：台账 JSON 损坏时曾按 0 再开算，后 2 次都付成了。当天结算成功 13 笔，0.01×13=0.13，与起点 19.89 相减得 19.76，与链上买家余额一致；卖家 0.11+0.13=0.24，也一致。实验仓、运行笔记和前两回已经公开。第 4 回要用 JPYC，还在准备。文中链到了两笔完整的 Basescan 交易页，其余交易只写了哈希。`,
+    outcomes: [
+      "源披露作者在 2026-10-16 的 Base Sepolia 测试网上，用 Claude Code 2.1.301、受试者 Sonnet 测 x402 钱包 MCP：单笔 0.01 USDC、累计上限 0.05，买家从 19.89、卖家从 0.11 开始；当天结算成功 13 笔（0.01×13=0.13），与链上最终余额 19.76／0.24 一致。只把钱包放到别的进程仍能改台账再付款；D4 把钥匙和源码也写入 sandbox 后，试过的项全部停下。这是这一条测试网、这一天的实验，不可外推成主网或别的模型，也不能把「实费 0 日元」写成 Claude 使用费或主网也是 0，更不能把 13 笔最终对账和中途读到的中间余额混成同一个时点。",
+      "竞合在加上 500ms 延迟后，台账从 0.04 涨到 0.06，超过上限 0.05；修完后同样条件从 0.04 停在 0.05。不要把「不加延迟时没超限」写成已经安全。这个修正只覆盖同一进程里的并行调用。",
+      "0.01×13=0.13、19.89−0.13=19.76、0.11+0.13=0.24 都是乘法和减法，用来和链上最终余额对，不是另一次实测。",
+    ],
+    caveats: [
+      "「实费 0 日元」只针对测试网支付，不含 Claude 使用费。13 笔是实际结算成功的交易，被拒绝的调用不在这 13 行里。中间余额 19.89→19.88→19.87 等不要和最终 19.76 混写。W 试验是各 1 次事先写好的命令，D3 的 W4「不绕过沙箱」不能当成抗绕路的证据。auto mode 分类器的拦截不要记成 deny 或 sandbox。bodyUpdatedAt 早于发布，取 published。第 4 回尚未发出。sandbox 不覆盖 MCP 服务器。正文其余交易哈希没有写成完整 URL，不补链。",
+      "导流：作者卡 GitHub https://github.com/suzukitech 、X https://x.com/suzuki_tech ，以及实验仓分支 https://github.com/suzukitech/agent-payments-lab/tree/x402-03 和运行笔记 https://github.com/suzukitech/agent-payments-lab/blob/x402-03/docs/notes/x402-03-run.md ，均 GET 200，已列入可达导流。两笔 Basescan 交易页本次 GET 均为 HTTP 403、size 5700，不列入可达，完整 URL 与最后一次状态已写出。连载第 1、2 回及文末相关篇跟随至 suzuki_tech 路径后仍为 200，不列入导流。配图 3 张 GET 200，不列入产品导流。页内 mermaid 嵌入不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先核钥匙和源码在不在保护路径里，再谈钱包进程已经隔离",
+        body: "请先核：台账、钥匙和钱包源码是不是都写进了 sandbox 要保护的路径；只把钱包放到单独的 MCP 进程、或只 deny 文件工具，是不是还能用 Python 或 Bash 改台账再付款。并行调用若要加延迟才能复现超限，不要把「偶尔没超过」当成已经安全，并写明这个修正在两个会话、两个进程时管不管够。测试网余额对账时，把「当天实际结算成功的笔数」和「被拒绝、未结算的调用」分开，也不要把中途读到的中间余额写成最终余额。测试网的手续费不要写成模型使用费或主网也是 0。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/suzuki_tech/articles/x402-03-paid-mcp-server",
+      label: "zenn.dev·suzuki_tech《守る対象は台帳ではなく、鍵とコードだった — x402 の財布を MCP サーバーに出して sandbox で囲む》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "871",
+    slug: "mryo-6read-2leak-310",
+    title: "mryo0826：在原生 Windows 上用 Claude Code，发现「只靠 permissions 的 deny」挡不住草稿。2026 年 7 月把仓库审计交给 Claude Code 时，它用的子代理读到了本不该读的草稿：Read、Grep 工具被拦住，Bash 的 cat／wc／grep 等能读到；sandbox.filesystem.denyRead 没有带来变化（官方写明原生 Windows 上 sandbox 不工作），当时的版号没有记下。2026-10-25 用 Claude Code v2.1.310，在临时项目里按 6 种读法各测 1 次：Read 工具、Bash 的 cat notes/draft.md、PowerShell 的 Get-Content、Grep 工具都没有漏；Bash 的 grep -r CANARY . 和 python 打开文件这两处仍漏了，和官方文档写明的漏洞一致。作者因此把要保密的草稿和工作记录放到公开仓库外面，用另一个不相连的独立仓库来管",
+    summary: "个人（mryo0826）；披露这是原生 Windows 11、Claude Code v2.1.310、2026-10-25、在临时项目上用 claude -p 按读法各测 1 次的结果，不能外推成别的操作系统、别的版本或官方子代理。启动测量的是对话里的 Claude Code，被测的是非交互的新会话，作者写明这不是官方子代理，也不是官方推荐用法。项目设置里写了 Read(./notes/**) 的 deny；在不信任的文件夹里跑 claude -p 时，allow 会被忽略（启动时有提示），deny 仍然生效。Python 那一行是另外加上 --allowedTools \"Bash(python *)\" 才测到的。对照是：没有 deny 的 README.md，用 cat 和 Get-Content 都能读到。表里「没有漏」指的是被 deny 拦住。7 月那一次：Read／Grep 停了，Bash 能读到，版号没有记录，不要和 10 月这 6 种读法混成同一张表。当时 cat 还停不住，10 月已经能停住，changelog 里写 2.1.257 起 deny 也对 Bash 的重定向和读出命令生效，2.1.268 的改动又在 2.1.273 被撤回。作者没有核 Docker Desktop 或 WSL3 容器里 sandbox 会不会工作。公开仓库旁边的独立仓库不用链接或子模块相连，只在控制文件里写了一处位置名。",
+    description: "面向已经把「在 settings 里写上 Read 的 deny，草稿就不会被模型读到」写成可以上线的人：把「7 月时子代理仍能用 Bash 读到；10 月同一条 deny 能拦住 cat，仍拦不住不点名文件的 grep -r 和自己打开文件的 Python；原生 Windows 没有 OS 级 sandbox；版号一变，挡得住的范围就会变」写成门禁，区别于只看 Read 工具被拦住、却不按读法逐项重测的实践。",
+    categories: [
+      "devtools",
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mryo0826/articles/e1fe4c82ab0428",
+    sourceLabel: "zenn.dev·mryo0826 实践帖",
+    upvotes: 762,
+    trending: false,
+    tags: [
+      "claude",
+      "permissions",
+      "windows",
+      "deny",
+      "secrets",
+    ],
+    howItWorks: [
+      "一开始把草稿放在公开仓库里，用 .gitignore 防止公开，再用 permissions 的 deny 写上 Read(./temp.md)，指望模型读不到。2026 年 7 月把审计交给 Claude Code 时，子代理仍读到了草稿：Read、Grep 工具被拦，Bash 的 cat／wc／grep 等能读；sandbox 配置没有变化。官方文档写明，sandbox 在 macOS、Linux 和 WSL2 上工作，原生 Windows 上命令是 unsandboxed。",
+      "于是把草稿移到公开仓库外面，放到放工作记录的非公开独立仓库里，那里也用 .gitignore 排除。工作记录也曾只靠公开仓库里的 .gitignore 排除，结果 Claude Code 写回来的内容无法用 diff 核对。现在用公开仓库旁边、不用链接或子模块相连的独立仓库来做 git 管理，只在控制文件里写一处位置名。",
+      "2026-10-25 用 v2.1.310 重测：在临时项目的 notes/draft.md 里只写无意义的标记，settings 里写 Read(./notes/**) 的 deny，由对话中的 Claude Code 用 claude -p 按读法各启动 1 次新会话。6 种读法是 Read 工具、Bash 的 cat、PowerShell 的 Get-Content、Grep 工具、Bash 的 grep -r CANARY .，以及 python 打开文件（这一行另加了 --allowedTools）。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-26T00:07:15.482+09:00 → UTC 2026-10-25T15:07:15Z、Asia/Shanghai 2026-10-25 23:07:15，跨日，取上海日历日 **2026-10-25**；bodyUpdatedAt 2026-10-26T00:05:51.326+09:00，略早于发布，换算后同为 2026-10-25 23:05:51；取 published；GET 200（UA MiraBot/1.0））：mryo0826 在《下書きと作業記録を AI コーディングエージェントから守る：設定ではなく置き場所で（Claude Code・Windows）》记录 7 月的一次泄漏和 2026-10-25 的 6 种读法重测。可达导流：https://github.com/mryo0826 GET 200（作者卡 GitHub）；https://x.com/mryo0826 GET 200（作者卡 X）；https://www.threads.com/@mryo0826?hl=ja GET 200（作者卡 website）；https://github.com/mryo0826/aidd-practice-guide GET 200（正文和简介里的实践指南仓）；https://github.com/mryo0826/aidd-claude-home GET 200（可公开的 ~/.claude 设置仓）。页内 mermaid 与卡片嵌入不当作者产品导流。一次资料已核、不列入导流：https://code.claude.com/docs/en/sandboxing 、https://code.claude.com/docs/en/changelog 、https://github.com/anthropics/claude-code/releases/tag/v2.1.310 、https://code.claude.com/docs/en/permissions 、https://www.strongly.ai/blog/stop-leaking-secrets-claude-code.html 、https://code.claude.com/docs/en/claude-code-on-the-web 、https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials 、https://github.com/microsoft/WSL/releases/tag/3.0.1 、https://blogs.windows.com/windowsdeveloper/2026/09/29/wsl-containers-now-generally-available/ 、https://learn.microsoft.com/en-us/windows/wsl/wsl-container 、https://forest.watch.impress.co.jp/docs/news/2144295.html 、https://learn.microsoft.com/en-us/windows/wsl/compare-versions 、https://zenn.dev/green_tea/articles/a994964786cb4f 、https://dev.to/ji_ai/claude-code-deny-rules-blocked-readenv-bash-read-it-anyway-4d3b 、https://zenn.dev/nknnnk2783/articles/e1d98512a77515 ，均 GET 200。primary GET 200。",
+      "先按读法把「工具 Read／Grep」「点名文件的 cat／Get-Content」「不点名文件的 grep -r」「自己打开文件的脚本」分成几行来测，不要只看 Read 工具被拦住。原生 Windows 上不要假定有 OS 级 sandbox。版号一变，deny 对 Bash 管到哪一层就会变，要写下当时的版本。真正不能泄漏的材料，放到工作目录外面，不要只靠 settings。",
+    ],
+    approach: `作者要保护的不是 API 钥匙这类秘密，而是还不想公开的草稿，以及一件件看来无害、按时间排起来却能看出工作节奏的工作记录。他先把草稿放在公开仓库里，用 .gitignore 防止公开，再在 deny 里写上 Read(./temp.md)。2026 年 7 月请 Claude Code 做仓库审计时，子代理读到了这些草稿。当时 Read、Grep 工具停了，Bash 的 cat／wc／grep 等能读到；sandbox.filesystem.denyRead 和 sandbox.enabled 没有变化。官方文档写明原生 Windows 上 sandbox 不工作。当时的版号没有记下。公开这一侧仍被 .gitignore 挡住。
+
+于是他把草稿移到公开仓库外面，放到放工作记录的非公开独立仓库，那里也用 .gitignore 排除。工作记录若只在公开仓库里用 .gitignore 排除，Claude Code 写回来的内容就无法用 diff 核对。现在用旁边一个不相连的独立仓库来管。可公开的 ~/.claude 设置放在 aidd-claude-home，判断也写进指南的 CLAUDE.md：机要的东西不靠设置守，靠放的位置守。
+
+第一次观察过了约 3 个月，权限机制已经变了。2026-10-25，他用 v2.1.310（2026-10-23 发布）在原生 Windows 11 的临时项目上重测。对话里的 Claude Code 用 claude -p 按读法各启动 1 次新会话，不是官方子代理。notes/draft.md 只放标记，deny 写的是 Read(./notes/**)。结果：Read 工具、Bash 的 cat、PowerShell 的 Get-Content、Grep 工具都没有漏；Bash 的 grep -r CANARY . 和 python 打开文件这两处仍漏了。官方文档现在写明：deny 对内置文件工具，以及对 cat、head、tail、sed、tee 和重定向目标生效，但对不点名文件的 grep -r，以及自己打开文件的 Python／Node 脚本不生效。7 月还停不住的 cat，现在能停住。changelog 里，2.1.257 起 deny 也对 Bash 的重定向和读出命令生效，2.1.268 的改动又在 2.1.273 被撤回。Python 那一行加了 --allowedTools 才测到；没有 deny 的 README.md，cat 和 Get-Content 都能读。每种读法各 1 次。作者没有核 Docker 或 WSL3 容器里 sandbox 会不会工作。文中链到了指南仓、设置仓、官方文档和前人文章，作者卡有 GitHub、X 和 Threads。`,
+    outcomes: [
+      "源披露作者在原生 Windows 上用 Claude Code：2026 年 7 月子代理读到了写了 deny 的草稿（Read／Grep 停了，Bash 能读到，版号未记）；2026-10-25 用 v2.1.310 按 6 种读法各测 1 次，cat 已经能停住，但 Bash 的 grep -r CANARY . 和 python 打开文件仍会漏。这是这一台原生 Windows 11、这一个版本、这一个临时项目上各 1 次的记录，不可外推成别的操作系统或官方子代理，也不能把 7 月和 10 月两张表混成同一次测量，更不能把「Read 工具被拦住」写成草稿已经读不到。",
+      "6 种读法里没有漏的是 4 种，仍漏的是 2 种，不要写成「6 种全部拦住」或「deny 已经对 Bash 完全生效」。Python 那一行另加了 --allowedTools 才测到。",
+      "发布时刻是 2026-10-26T00:07:15.482+09:00，换算到 Asia/Shanghai 是 2026-10-25 23:07:15，取上海日历日 2026-10-25，不要写成 2026-10-26。",
+    ],
+    caveats: [
+      "7 月那一次版号没有记录，不要和 10 月 v2.1.310 的 6 种读法混写。各读法只有 1 次。被测的不是官方子代理。不信任文件夹里 allow 会被忽略，deny 仍生效。作者未核 Docker Desktop 或 WSL3 容器里的 sandbox。changelog 中 2.1.257／2.1.268／2.1.273 的反复，说明只靠设置会随版本变。发布时刻跨日，取 Asia/Shanghai 的 2026-10-25。",
+      "导流：作者卡 GitHub https://github.com/mryo0826 、X https://x.com/mryo0826 、website https://www.threads.com/@mryo0826?hl=ja ，以及正文里的 https://github.com/mryo0826/aidd-practice-guide 、https://github.com/mryo0826/aidd-claude-home ，均 GET 200，已列入可达导流。页内 mermaid 与卡片嵌入不当作者产品导流。一次资料均 GET 200，不列入导流。",
+    ],
+    prompts: [
+      {
+        title: "先按读法重测 deny，再假定草稿已经读不到",
+        body: "请在当前版本上，把 Read／Grep 工具、点名文件的 cat 或 Get-Content、不点名文件的 grep -r、以及自己打开文件的 Python 或 Node 脚本分成几行，各测至少一次，不要只看 Read 工具被拦住。写下操作系统是不是原生 Windows：这一侧没有 OS 级 sandbox。记录 Claude Code 的版本，因为 deny 对 Bash 管到哪一层会随版本变。真正不能泄漏的草稿和工作记录，放到工作目录外面的独立位置，不要只写在 settings 的 deny 里。对照里请同时测一个没有 deny 的文件，确认不是工具本身读不到。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mryo0826/articles/e1fe4c82ab0428",
+      label: "zenn.dev·mryo0826《下書きと作業記録を AI コーディングエージェントから守る：設定ではなく置き場所で（Claude Code・Windows）》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "872",
+    slug: "kaion-5sil-3miss-6ok",
+    title: "kaion：个人项目 tech-news-daily 用 Claude Code routine 每天收集技术新闻，推到 GitHub Pages。2026-07-03 起自动 push 开始静默失败：routine 每次都显示正常完成，执行日志里也没有错误，连续 5 次 run 都是这样，生成物随会话结束消失，2026-07-03 到 07-05 三天内容缺号。2026-07-05 改到 GitHub Actions，用 anthropics/claude-code-action@v1 只负责按提示生成，git 的提交和 push 改由同一条 workflow 里的普通 shell 来做，生成物不合格就让这次 run 失败。迁移当天用 workflow_dispatch 手动跑，失败 2 次后调通；之后每天 06:08 JST 的定时跑，从 2026-07-06 到 07-11 连续 6 天成功（用 gh run list 确认）。作者还写到：claude-code-action 结束时不会恢复被它改过的 git 认证，以及 GITHUB_TOKEN 的 push 不会触发其他 workflow",
+    summary: "个人（kaion）；披露这是作者一个公开每日新闻站、从 Claude Code routine 迁到 GitHub Actions 的一段故障与迁移记录，不能外推成所有 routine 或所有版本的 claude-code-action。5 次是静默失败的 run 数，3 天是缺号的日期（2026-07-03 到 07-05），2 次是迁移当天手动跑失败的次数，6 天是 2026-07-06 到 07-11 定时跑连续成功的天数，不要混写成同一个计数。定时时刻写的是每天 21:08 UTC＝06:08 JST，与旧 routine 同一时刻。正文没有给出仓库、Pages 或 Actions 的 URL，只用 gh run list 作为确认方式，不要补链。作者卡的 GitHub、X、website 都是空的。正文示例里的 git remote 地址 https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git 是带占位符的命令，按源文原样写出，未作为可达链去核。模型在示例里写的是 claude-sonnet-5。认证用的是仓库 secret 里的 CLAUDE_CODE_OAUTH_TOKEN（claude setup-token）。",
+    description: "面向已经把「调度任务显示成功，所以今天的站点一定已经更新」写成可以上线的人：把「连续 5 次 run 都是成功状态，push 却没有发生，三天内容直接缺号；生成和 git 操作要分开，并用代码检查生成物，失败必须让这次 run 失败；迁到 Actions 之后，还要处理 action 留下的 git 认证，以及 GITHUB_TOKEN 不会触发其他 workflow」写成门禁，区别于只看绿色对勾、却不核今天的文件是否真的在默认分支上的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/kaion/articles/claude-code-action-push-auth-pitfall",
+    sourceLabel: "zenn.dev·kaion 实践帖",
+    upvotes: 763,
+    trending: false,
+    tags: [
+      "claude",
+      "github",
+      "actions",
+      "automation",
+      "ci",
+    ],
+    howItWorks: [
+      "旧做法是 Claude Code routine 在 claude/** 分支上提交内容，由编排器自动 push，再由 auto-merge workflow 合进 main，反映到 GitHub Pages。2026-07-03 起 push 不再发生，但 routine 仍返回成功、日志里也没有错误。作者先怀疑刚改过的提示词，在 claude.ai 界面里重新粘贴后仍复现；再查 Claude GitHub App 的权限，也没有异常，因而判断是 routine 执行环境的 push 本身出了问题，用户侧没有可修的开关。",
+      "2026-07-05 改到一条名为 .github/workflows/daily-digest.yml 的 workflow：用 actions/checkout@v4 取出代码，用 anthropics/claude-code-action@v1 按提示生成（示例里 --model claude-sonnet-5，token 来自 CLAUDE_CODE_OAUTH_TOKEN），git 的提交和 push 全部由后面的 shell 步骤做。生成物用代码检查有没有差分、以及是否带当天日期，不满足就让这次 run 失败。",
+      "作者还处理了两个具体问题。一是 claude-code-action 会用临时 token 改掉 git 认证，结束时不恢复，后续若直接 push，会在 token 失效后变成 Invalid username or token；他在 push 前用 git remote set-url 把认证改回 GITHUB_TOKEN。二是 GITHUB_TOKEN 的 push 不会触发其他 workflow，因此不再把 Pages 部署拆到另一条 workflow，而是把生成到公开收进同一条。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-11T22:46:42.210+09:00 → 2026-07-11，同时刻为 UTC 2026-07-11T13:46:42Z、Asia/Shanghai 2026-07-11 21:46:42；bodyUpdatedAt 2026-07-11T22:34:10.850+09:00，略早于发布，仍取 published；GET 200（UA MiraBot/1.0））：kaion 在《claude-code-action で自動 push が止まる。git 認証上書きの罠と回避策》记录 routine 静默失败、以及迁到 GitHub Actions 后踩到的 git 认证问题。作者卡 GitHub／X／website 为空。正文没有另给仓库、提交页、Actions 或 Pages 的 URL，不要补链。正文示例里的 https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git 是路径／凭证占位，按源文原样写出，未作为可达链去核。未见作者产品硬导流。primary GET 200。",
+      "调度任务显示成功，不等于默认分支上已经有今天的文件。把「生成」和「提交、push、发布」分成可以分别失败的步骤，并用代码检查生成物。用 claude-code-action 时，假定它结束时不会把 git 认证改回来；若必须用 GITHUB_TOKEN push，不要指望它会触发另一条部署 workflow。",
+    ],
+    approach: `tech-news-daily 是作者的个人项目，每天收集技术新闻，用 GitHub Pages 做成静态站。原来用 claude.ai 的调度功能（Claude Code routine）跑：routine 在 claude/** 分支上提交，编排器自动 push，再由 auto-merge 合进 main。2026-07-03 起，这个自动 push 停了。麻烦的是哪里都不报失败：routine 每次都是正常完成，日志里也没有错误，连续 5 次 run 都是这样。推不出去的生成物随会话结束消失，2026-07-03 到 07-05 三天成为缺号。作者先从提示词查起，在界面里重新粘贴后仍复现；再查 GitHub App 权限，也没有异常，用户侧没有可修的地方。
+
+2026-07-05，他改到 GitHub Actions，用一条 daily-digest.yml 把生成、检查、提交、push 和 Pages 部署做完。设计有三条：生成只交给 claude-code-action，不让它做 git 操作；用代码检查生成物，没有差分或没有当天日期就让 run 失败；认证用仓库 secret 里的 OAuth token。定时是每天 21:08 UTC，也就是 06:08 JST，与旧 routine 同一时刻，并保留手动触发。
+
+迁过去之后还有两处要处理。claude-code-action 会用临时 token 改掉 git 认证，结束时不恢复，后面若直接 push，会在 token 失效后报 Invalid username or token。他在 push 前把 remote 改回 GITHUB_TOKEN。另外，GITHUB_TOKEN 的 push 不会触发其他 workflow，这是为了避免循环的既有规格，因此不能再指望「push 到 main 就会有另一条 Pages workflow」。他把部署收进同一条 workflow。迁移当天手动跑失败 2 次后调通；定时跑从 2026-07-06 到 07-11 连续 6 天成功，是用 gh run list 确认的。正文没有放仓库或 Actions 的链接，作者卡也是空的。示例里的 git 地址带有 GITHUB_TOKEN 和仓库名占位。`,
+    outcomes: [
+      "源披露作者的个人站点 tech-news-daily 在 2026-07-03 起遇到 Claude Code routine 自动 push 静默失败：连续 5 次 run 都是成功状态，日志没有错误，2026-07-03 到 07-05 三天内容缺号；2026-07-05 改到 GitHub Actions 后，当天手动跑失败 2 次，之后每天 06:08 JST 的定时跑从 2026-07-06 到 07-11 连续 6 天成功。这是这一座站点、这一段日期上的记录，不可外推成所有 routine 或所有版本的 claude-code-action，也不能把 5 次静默失败、3 天缺号、2 次手动失败和 6 天连续成功混写成同一个计数。",
+      "生成物随旧会话结束消失，缺号的三天无法用后来的日志还原；不要把迁过去之后的 6 天成功，写成那三天的内容已经补回。",
+      "正文没有仓库或 Actions 的 URL，连续 6 天成功是用 gh run list 确认的，不要补链。",
+    ],
+    caveats: [
+      "5 次是静默失败的 run 数，3 天是 2026-07-03 到 07-05 的缺号，2 次是迁移当天手动失败，6 天是 2026-07-06 到 07-11 的定时成功，不要混写。定时时刻是 21:08 UTC＝06:08 JST。示例模型是 claude-sonnet-5。bodyUpdatedAt 略早于发布，取 published。正文示例里的 https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git 按源文原样写出，未作为可达链去核。",
+      "正文没有另给仓库、提交页、Actions 或 Pages 的 URL，不要补链。作者卡 GitHub／X／website 为空，未见作者产品硬导流。",
+    ],
+    prompts: [
+      {
+        title: "先核今天的文件是不是已经在默认分支上，再相信调度任务的成功状态",
+        body: "请把「生成」和「提交、push、发布」分成可以分别失败的步骤，并用代码检查生成物（例如有没有当天日期、有没有有效差分），不满足就让这次运行失败，不要只看调度界面上的成功状态。若使用会改写 git 认证的 Action，在后续 push 之前把认证改回本次运行应当使用的令牌。若用 GITHUB_TOKEN 推送，不要指望它会触发另一条部署工作流，必要时把发布收进同一条流程。补记时写明是哪几天缺号、后来连续成功了几天，不要把后面的成功写成缺号已经补回。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kaion/articles/claude-code-action-push-auth-pitfall",
+      label: "zenn.dev·kaion《claude-code-action で自動 push が止まる。git 認証上書きの罠と回避策》",
+      date: "2026-07-11",
+      dateLabel: "发布",
+    },
   }
 ];
 
