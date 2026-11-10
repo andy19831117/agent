@@ -66293,6 +66293,556 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       date: "2026-11-08",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "918",
+    slug: "tanashun-mcp-120s-bg",
+    title: "tanashun：用 Claude Code 2.1.294 的 claude -p，以及 tanacode 开发里核对过的 2.1.288 对话画面，实测 MCP 工具 wait_for_human 在等人操作时的后台转移。默认会在 120 秒把调用移到后台；环境变量都不加时，让工具等 130 秒，会在移到后台之前就在 60 秒被打断，报 MCP server \"slow\" tool \"wait_for_human\" timed out after 60s，并向 MCP 服务器发出 notifications/cancelled。把等待上限调到 5 分钟（MCP_TOOL_TIMEOUT=300000）后再等 130 秒，才会在 120 秒移到后台。把 CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS 设成 5 秒、工具等 10 秒时，5 秒移到后台、10 秒返回结果；移到后台并不会取消工具，结果以新一轮的 task-notification 回来。2.1.288 对话画面里记到的默认上限曾是约 27 小时（1e8 毫秒），与 2.1.294 的 -p 默认 60 秒不同，等人的工具要把 timeout 写死",
+    summary: "tanashun 做了一个等人指定秒数再返回的 MCP 工具 wait_for_human，用 Claude Code 2.1.294 的 claude -p 实测后台转移，并在 tanacode 开发里用 2.1.288 的对话画面核过同样行为。环境变量都不加、工具等 130 秒时，还没到 120 秒就会在 60 秒被 MCP_TOOL_TIMEOUT 打断。把上限调到 300000 毫秒后再等 130 秒，才会在 120 秒移到后台。用 5 秒后台阈值、工具等 10 秒的短窗，5 秒移走、10 秒结果以新一轮通知回来，工具本身没有被取消。mcp.json 里把服务器 timeout 调到 10 分钟后，等 70 秒的工具也可以正常返回。版本和启动方式会改变默认上限，不能把 60 秒或 27 小时写成所有环境的默认值。",
+    description: "面向已经想给 Claude Code 接「等人点一下再继续」的 MCP 工具、却只按 120 秒后台规则来设超时的人：把「不加环境变量时，130 秒的等待会在 60 秒被打断；MCP_TOOL_TIMEOUT=300000 时才会在 120 秒移到后台；移到后台不会取消工具，结果以新一轮通知回来；2.1.294 的 -p 与 2.1.288 对话画面默认上限不一样」写成门禁，区别于只抄 120 秒这个数字、却没量过更短的工具等待上限的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tanashun/articles/claude-code-mcp-tool-background",
+    sourceLabel: "zenn.dev·tanashun 实践帖",
+    upvotes: 809,
+    trending: false,
+    tags: [
+      "claude-code",
+      "mcp",
+      "timeout",
+      "background",
+      "wait-for-human",
+    ],
+    howItWorks: [
+      "作者做了一个假装等人操作、到点才返回的 MCP 工具 wait_for_human，让 Claude Code 去调用。正文里的数字，主要是 Claude Code 2.1.294 用 claude -p（不用对话画面）跑出来的；后台转移的行为，也在 tanacode 开发里用 2.1.288 的对话画面核过。作者写明 Claude Code 更新后这些行为可能会变。",
+      "先把 CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS 设成 5 秒，让工具等 10 秒。记录按时间排列：0 秒调用，5 秒被移到后台并返回 moved to the background，10 秒 MCP 服务器返回结果，同一秒 Claude Code 把结果当成通知交给 Claude，Claude 开启新一轮。移到后台时，MCP 服务器没有收到 notifications/cancelled，工具会跑完。结果不是普通的工具返回，而是 task-notification。移走时的文案里有 You can keep working in the meantime，容易让模型在人还没操作完时继续做别的事。",
+      "再测默认的 120 秒规则和另一条更短的等待上限。环境变量都不加、工具等 130 秒时，还没到 120 秒就在 60 秒被打断，报 timed out after 60s，并且这次会向 MCP 服务器发出 notifications/cancelled。mcp.json 里把该服务器 timeout 写成 600000（10 分钟）后，等 70 秒的工具可以正常返回。把 MCP_TOOL_TIMEOUT 设成 300000、再让工具等 130 秒，才会在 120 秒移到后台。2.1.288 对话画面的开发笔记里，默认上限曾记为约 27 小时（1e8 毫秒），和 2.1.294 的 -p 默认 60 秒不一样，所以等人的工具要把 timeout 写死。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-09T15:38:57.896+09:00 → UTC 2026-10-09T06:38:57Z、Asia/Shanghai 2026-10-09 14:38:57；bodyUpdatedAt 2026-10-18T13:27:58.075+09:00，晚于发布且跨到 10-18，仍取 published → 2026-10-09；GET 200（UA MiraBot/1.0））：tanashun 在《Claude Code の MCP ツールで「人の操作を待つ」と、120 秒でバックグラウンドに移される》记下 60 秒打断、120 秒后台转移，以及 5 秒／10 秒的短窗时序。不要因 bodyUpdatedAt 写成 2026-10-18。",
+      "60 秒是工具等待上限，120 秒是移到后台的默认值，不要混用。2.1.294 的 -p 与 2.1.288 对话画面的默认上限不同，不要写成所有版本都是 60 秒或都是 27 小时。同作者另有权限模式 6 种、statusLine 显示 5 小时剩余等篇，留在候选池，不是本条。",
+    ],
+    approach: "作者用自写的 wait_for_human，在 Claude Code 2.1.294 的 claude -p 上量后台转移和超时，并在 tanacode 开发里用 2.1.288 的对话画面核过同一行为。短窗把 CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS 设成 5 秒、工具等 10 秒，按 MCP 服务器和 API 的时间线对齐。再在不设环境变量时让工具等 130 秒，观察是否到得了 120 秒；然后分别把服务器 timeout 调到 10 分钟、把 MCP_TOOL_TIMEOUT 调到 300000，再量 70 秒和 130 秒的等待。对照用的 mock 记录放在 tanacode 仓库的 test/cli/mock-api.ts。",
+    outcomes: [
+      "源披露：不加环境变量时，130 秒的等待会在 60 秒被打断；MCP_TOOL_TIMEOUT=300000 时，同样等 130 秒才会在 120 秒移到后台；5 秒／10 秒短窗里，5 秒移走、10 秒以新一轮通知返回结果，工具没有被取消。这是这一次、这一份 Claude Code 2.1.294 的 claude -p（以及 2.1.288 对话画面）上的实测，不可外推到其他版本或别的 MCP 工具。",
+      "mcp.json 里把该服务器 timeout 调到 10 分钟后，等 70 秒的工具可以正常返回。被 60 秒打断时会发 notifications/cancelled；只是移到后台时不会发，工具会跑完。",
+      "2.1.288 对话画面的开发笔记里，默认上限曾记为约 27 小时（1e8 毫秒），与 2.1.294 的 -p 默认 60 秒不同。移到后台时的文案会鼓励模型继续工作，等人的工具要把超时写死，也不能只看 120 秒这一个数字。",
+    ],
+    caveats: [
+      "这些数字绑在 2.1.294 的 -p 和 2.1.288 的对话画面，作者写明更新后可能会变。60 秒与约 27 小时都是某种启动方式下的默认，不要写成官方保证。同作者其他篇不是本条。",
+      "导流：https://github.com/sny-tanaka GET 200（标题 sny-tanaka (tanashun) · GitHub）；https://x.com/tanashund30299 GET 200（标题 tanashun (@TanashunD30299) / X）；https://github.com/sny-tanaka/tanacode GET 200（标题 GitHub - sny-tanaka/tanacode: Claude Code の中身が見えて、できることが増える）；https://github.com/sny-tanaka/tanacode/blob/develop/test/cli/mock-api.ts GET 200；https://zenn.dev/tanashun/articles/tanacode-v1-2-walkthrough GET 200（标题 Claude が書いたコードを、画面共有のように Claude 自身に説明させる；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。配图 1 张 GET 200、写作交付 size 553054；父代理复检最后一次 GET 200、size 421873（同一 sha 查询参数，以最后一次为准），不列入产品导流：https://static.zenn.studio/user-upload/deployed-images/616a87ff4462c20626d5132c.png?sha=f18b730da16b845f22488db30d323e744b3eaed2。占位、未作为可达链去核：mcp.json 示例里的 /path/to/slow-mcp.mjs。页内 link-card／embed.zenn.studio 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清 60 秒等待上限和 120 秒后台转移，再谈「等人的 MCP 会不会被取消」",
+        body: "请写明 Claude Code 的版本和是 claude -p 还是对话画面。「等人」的工具在不加环境变量时等了多少秒、是在多少秒被打断，还是到了默认的 120 秒才移到后台。若改过 MCP_TOOL_TIMEOUT 或服务器 timeout，写出毫秒值和改完之后的结果。移到后台时，MCP 服务器有没有收到 notifications/cancelled，结果是普通工具返回还是新一轮的通知。不要把某一种启动方式下的默认上限，写成所有版本的共同默认值。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tanashun/articles/claude-code-mcp-tool-background",
+      label: "zenn.dev·tanashun《Claude Code の MCP ツールで「人の操作を待つ」と、120 秒でバックグラウンドに移される》",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "919",
+    slug: "hasumi-15m-5man-0tok",
+    title: "hasumi（蓮美）：用自写的 Figma 开发用插件「监视模式」，把 Claude Code 往 Figma 灌画面的流程，从「每条 10–15 分钟、约 5 万 token」降到「数秒到 2 分钟、几乎 0 token」。连跑 7 条流程、共 244 框的实测：监视模式在 Figma 内合计约 3 分钟、含等待约 5 分钟、几乎 0 token、不用人操作；同样的量用旧方式大约 70–105 分钟、约 35 万 token，还要人贴。旧方式的 use_figma 窗口最多 50,000 字，流程 10 的 JS 合计 73,669 字要拆成 4 本，每本还要手抄 15,000–25,000 字。压成 28,744 字（约 39%）仍要手贴。改成插件去本地取以后，这 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按的试验跑了 3 次，约 25 分钟、约 45 万 token，只灌进 1 本 JS，已放弃。作者写明做这套机制的费用还没收回",
+    summary: "hasumi 原先让 Claude Code 经 MCP 的 use_figma 窗口，把生成的 JS 贴进去在 Figma 上执行：每条流程 10–15 分钟、约 5 万 token；全部 12 条流程若重跑一遍要 2–3 小时。窗口上限 50,000 字，流程 10 的 JS 有 73,669 字，必须拆成 4 本，每本还要抄 15,000–25,000 字，末尾还可能缺。压缩能把流程 10 收到 28,744 字（约 39%），结构仍是手贴。后来把 JS 放到本地 serve.py，由开发用插件来取：流程 10 的 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按试了 3 次，约 25 分钟、约 45 万 token，只灌进 1 本，已放弃。监视模式把插件开着，工作来了自己取；7 条流程、244 框的实测是 Figma 内约 3 分钟、含等待约 5 分钟、几乎 0 token。作者写明做这套的费用还没收回。Figma 不在平台枚举里，platforms 只记 claude。",
+    description: "面向已经想靠「再让 AI 把 JS 贴进 Figma」来省时间的人：把「7 条流程、244 框时，监视模式含等待约 5 分钟、几乎 0 token，旧方式大约 70–105 分钟、约 35 万 token；让 AI 代按的 3 次约 25 分钟、约 45 万 token，只灌进 1 本 JS；做这套的费用还没收回」写成门禁，区别于只看单条流程从 10–15 分钟降到数秒、却没把连跑和失败试验算进去的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/hasumi/articles/6e4fde0fe91f7f",
+    sourceLabel: "zenn.dev·hasumi 实践帖",
+    upvotes: 810,
+    trending: false,
+    tags: [
+      "claude-code",
+      "figma",
+      "plugin",
+      "tokens",
+      "watch-mode",
+    ],
+    howItWorks: [
+      "旧方式是 Claude Code 经 MCP 的 use_figma，把 JS 贴进 Figma 执行。窗口最多 50,000 字；流程 10 合计 73,669 字，要拆成 4 本，每本还要手抄 15,000–25,000 字，末尾可能缺或被改掉。每条流程 10–15 分钟、约 5 万 token；12 条若全部重跑要 2–3 小时。",
+      "先压缩：流程 10 从 73,669 字收到 28,744 字（约 39%），抄写错误没有了，但仍要手贴。再改成开发用插件去本地 serve.py 取文件：这 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按试了 3 次，约 25 分钟、约 45 万 token，只灌进 1 本 JS，比人按一次约 1 分钟更慢更贵，已放弃。",
+      "监视模式把插件开着，自己看有没有新工作，最多等 20 秒再看。连跑 7 条流程、共 244 框：Figma 内合计约 3 分钟、含等待约 5 分钟、几乎 0 token、不用人操作；同样的量用旧方式大约 70–105 分钟、约 35 万 token。开发用插件要把 devAllowedDomains 写成 http://localhost:8765；http://127.0.0.1:8765 在作者环境里通不过。作者写明做这套机制的费用还没收回。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-10T17:58:34.381+09:00 → UTC 2026-10-10T08:58:34Z、Asia/Shanghai 2026-10-10 16:58:34；bodyUpdatedAt 2026-10-10T17:58:00.360+09:00，略早于发布、同日，按预定发布理解，仍取 published → 2026-10-10；GET 200（UA MiraBot/1.0））：hasumi 在《Claude Code から Figma への流し込みを、自前プラグインの「見張りモード」で 15 分・5 万トークンから数秒・ほぼ 0 ト》记下 7 条、244 框的连跑，以及旧方式、压缩、手动执行和 AI 代按的对照。源标题在「ほぼ 0 ト」处结束，不要自行补成「トークンにした」。",
+      "7 条、244 框的约 5 分钟／几乎 0 token，不要和单条「数秒到 2 分钟」或旧方式单条 10–15 分钟、约 5 万 token 混用。约 35 万 token 是这 7 条用旧方式的估算，不是另外一次账单。让 AI 代按的约 25 分钟、约 45 万 token 是失败试验，不要写成监视模式的成本。作者简介里写喜欢 Flutter，正文没有点名，platforms 不填 flutter。",
+    ],
+    approach: "作者先量旧方式：经 use_figma 手贴 JS，记录单条 10–15 分钟、约 5 万 token，以及窗口 50,000 字、流程 10 的 73,669 字必须拆开的限制。再依次试压缩、开发用插件去本地取文件、让 AI 代按「执行」，最后改成监视模式，连跑 7 条流程、共 244 框，把 Figma 内耗时、含等待的时间和 token 与旧方式对照。插件的开发用域名只写成 http://localhost:8765，并核过 127.0.0.1 通不过。",
+    outcomes: [
+      "源披露：7 条流程、244 框时，监视模式在 Figma 内约 3 分钟、含等待约 5 分钟、几乎 0 token；同样的量用旧方式大约 70–105 分钟、约 35 万 token。单条从 10–15 分钟、约 5 万 token，降到数秒到 2 分钟、几乎 0 token。这是作者这一次、这一份 Figma 流程上的实测，不可外推到其他设计和别的 MCP 窗口。",
+      "流程 10 的 JS 73,669 字超过 50,000 字上限，要拆 4 本；压缩后 28,744 字（约 39%）仍要手贴。改成插件去本地取以后，这 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按的 3 次约 25 分钟、约 45 万 token，只灌进 1 本，已放弃。",
+      "作者写明做这套机制的费用还没收回，不要把约 5 分钟、几乎 0 token 写成已经回本。http://127.0.0.1:8765 在作者环境里通不过，不能把 localhost 和 127.0.0.1 当成同一条可达地址。",
+    ],
+    caveats: [
+      "连跑的 7 条、244 框不要和全部 12 条流程混用；12 条若全部重跑的 2–3 小时是旧方式的估算。费用还没收回，文中没有另给一个已经回本的日元数字。Figma 不是平台枚举，不要凭简介里的 Flutter 填写 platforms。",
+      "导流：https://github.com/junki-pw GET 200（标题 junki-pw · GitHub；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。作者卡 X／website 为空，不要补链。正文没有给插件的公开发布页。占位、未作为可达链去核：http://localhost:8765 、http://127.0.0.1:8765 、http://localhost:ポート番号。未见正文配图。页内 mermaid 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清连跑的流程数和框数，再谈「灌进 Figma 是不是已经变成几乎 0 token」",
+        body: "请写明旧方式单条要多少分钟、多少 token，连跑了几条、共多少框，监视模式在 Figma 内和含等待各是多少分钟。窗口字数上限、某条流程的 JS 总字数、拆成几本、压缩后剩多少，要分开写。若试过让 AI 代按，写出试了几次、花了多少时间与 token、最后灌进了几本，不要和监视模式的成本混用。做这套机制的费用有没有收回，也要按作者的原文来写，不要自行补一个已经回本的数字。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hasumi/articles/6e4fde0fe91f7f",
+      label: "zenn.dev·hasumi《Claude Code から Figma への流し込みを、自前プラグインの「見張りモード」で 15 分・5 万トークンから数秒・ほぼ 0 ト》",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "920",
+    slug: "playpark-fda-pinpath",
+    title: "playpark：在 mise 安装的 Claude Code v2.1.292 上，每次更新后，macOS「完全磁盘访问」列表里的 claude 都会多一行，还要再点一次「允许」。原因是安装路径随版本变（mise 在 installs/claude-code/<版>/，原生安装在 ~/.local/share/claude/versions/<版>/，Homebrew cask 在 Caskroom/claude-code/<版>/），系统把它当成新应用。作者环境里 codesign 只有标识符 com.anthropic.claude-code 和 Team ID，不含版本号。把实体复制到固定路径 ~/.local/opt/claude-code/claude，并在 ~/.zshrc 里用函数让每次启动先跑 pin-claude.sh；已经固定就立刻退出，一次约 57ms。用 -ef 判断「是否已固定」，因为按字符串比较时，作者自己把 claude 写成了指向自己的链接、启动失败过。不用 launchd 定期跑，是因为更新之后、任务跑起来之前那一次仍会弹窗、列表再长一行",
+    summary: "playpark 用 mise 装着 Claude Code v2.1.292。更新之后，「隐私与安全性 → 完全磁盘访问」里的 claude 会多一行，每次都要再点允许，也不好判断哪一行才是正在用的。CLI 的这项许可按实体路径一行；mise、原生安装和 Homebrew cask 都会把新版本放到带版本号的目录，路径一变就被当成新应用。作者先看 codesign，自己环境里只有 com.anthropic.claude-code 和 Team ID，没有版本号，这才把实体复制到 ~/.local/opt/claude-code/claude，原路径改成指向固定路径的链接。启动时用 shell 函数先跑 ~/.local/bin/pin-claude.sh，失败也继续启动 claude；已固定则什么都不做，一次约 57ms。按字符串判断「已经固定」时踩过把实体写成自指链接的坑，所以改用 -ef。不用 launchd，是为了避免更新后、定时任务跑起来前那一次再弹窗。TCC 数据库不公开，路径解释是观察，不是 Apple 规格。",
+    description: "面向已经想靠「更新后再点一次允许」或用定时任务去清列表的人：把「许可是按实体路径一行；作者环境的签名不含版本号，才用固定路径 ~/.local/opt/claude-code/claude；每次启动先跑脚本约 57ms；按字符串判断已经踩过自指链接；launchd 仍会漏掉更新后的那一次」写成门禁，区别于只写「把路径固定就行」、却没核过签名是否带版本号的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/playpark/articles/claude-code-update-full-disk-access-fixed-path",
+    sourceLabel: "zenn.dev·playpark 实践帖",
+    upvotes: 811,
+    trending: false,
+    tags: [
+      "claude-code",
+      "macos",
+      "tcc",
+      "mise",
+      "full-disk-access",
+    ],
+    howItWorks: [
+      "作者在 mise 安装的 Claude Code v2.1.292 上看到：每次更新，「完全磁盘访问」列表都会多一行 claude，既要再点允许，也分不清哪一行是正在用的。这项许可按实体路径一行；mise、原生安装和 Homebrew cask 都会把新版本放到带版本号的目录，路径一变，系统就当成新应用。",
+      "先跑 codesign -dr。作者环境里只有标识符 com.anthropic.claude-code 和 Team ID，不含版本号；如果签名要求里带版本号，只固定路径仍会在每次升级后变成另一份。确认这一点之后，把脚本放到 ~/.local/bin/pin-claude.sh：把实体复制到 ~/.local/opt/claude-code/claude，原路径改成指向固定路径的链接。用 -ef 判断是否已经固定，用先拷到旁边再 mv，以及绝对路径的 /bin/cp -c，都是踩过或差一点踩过之后才这样写的。",
+      "不用 launchd 定期跑，是因为更新之后、任务跑起来之前如果先启动 claude，那一次仍会弹窗、列表再长一行。改在 ~/.zshrc（bash 则是 ~/.bashrc）里用函数：先跑脚本，失败也继续启动 claude。已经固定就立刻退出，作者环境里一次约 57ms。函数定义之后 command -v claude 会返回函数名，所以函数里不传路径，让脚本自己去找实体。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-19T05:24:20.846+09:00 → UTC 2026-10-18T20:24:20Z、Asia/Shanghai 2026-10-19 04:24:20（未跨日）；bodyUpdatedAt 2026-10-15T04:01:24.024+09:00，早于发布，按预定发布理解，仍取 published → 2026-10-19；GET 200（UA MiraBot/1.0））：playpark 在《Claude Code更新のたびにフルディスクアクセスが増える問題を、固定パスで止めた》记下 v2.1.292、固定路径和约 57ms。不要因 JST 05:24 或 bodyUpdatedAt 写成 2026-10-18 或 2026-10-15。",
+      "约 57ms 是作者环境里脚本已固定、几乎立刻退出的一次测量，不是每次更新复制实体的耗时。签名不含版本号只在作者这份 mise 安装上核过，不要写成所有安装方式都一样。mise 不是平台枚举，platforms 只记 claude。",
+    ],
+    approach: "作者在自己的 mise 安装、Claude Code v2.1.292 上，先确认更新后「完全磁盘访问」会按新的实体路径多出一行，再读 codesign，看签名要求是否含版本号。确认只有标识符和 Team ID 之后，把实体复制到 ~/.local/opt/claude-code/claude，并用 shell 函数在每次启动前调用 pin-claude.sh。判断「已经固定」不用字符串比较，而用 -ef；不用 launchd，以免漏掉更新后的第一次启动。作者环境里脚本已固定时一次约 57ms。",
+    outcomes: [
+      "源披露：在 mise 安装的 Claude Code v2.1.292 上，更新会让「完全磁盘访问」按新的实体路径多出一行；把实体固定到 ~/.local/opt/claude-code/claude，并在每次启动前跑脚本之后，已固定的启动一次约 57ms。这是作者这一次、这一份 macOS／mise 环境上的观察，不可外推到签名带版本号的安装或其他系统。",
+      "作者环境的 codesign 只有 com.anthropic.claude-code 和 Team ID，不含版本号；这是改用固定路径的前提。按字符串判断「已经固定」时，作者自己把 claude 写成了指向自己的链接，启动失败过，所以改用 -ef。",
+      "不用 launchd，是因为更新之后、定时任务跑起来之前那一次仍会弹窗、列表再长一行。TCC 数据库不公开，路径原因是观察，不是 Apple 规格。",
+    ],
+    caveats: [
+      "约 57ms 不是复制新版本实体的耗时。签名不含版本号不要写成所有安装方式的保证。文中的 <版> 是路径说明，不是一次实测的版本号列表。macOS 桌面许可界面不在平台枚举里，不硬凑。",
+      "导流：https://github.com/it-all-playpark GET 200（标题 it-all-playpark (playpark) · GitHub）；https://x.com/yuji_naramoto GET 200（标题 奈良本悠二 (@yuji_naramoto) / X）；https://www.playpark.co.jp GET 200（跟随至 https://www.playpark.co.jp/ ，标题 合同会社playpark | つくる を、あそぶ。）；https://www.playpark.co.jp/blog/claude-code-update-full-disk-access-fixed-path?utm_source=zenn&utm_medium=crosspost&utm_campaign=claude-code-update-full-disk-access-fixed-path GET 200（标题 Claude Codeを更新するたびmacOSのフルディスクアクセスが増える問題を、固定パスで止める | 合同会社pla；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先核签名里有没有版本号，再谈「固定路径能不能把完全磁盘访问留下」",
+        body: "请写明 Claude Code 的版本和安装方式（mise、原生安装还是 Homebrew cask），以及更新后「完全磁盘访问」是不是按新的实体路径多出一行。codesign 的结果里有没有版本号。固定路径写到哪里、是每次启动跑脚本还是用定时任务，已经固定时一次要花多少时间。若按字符串判断「已经固定」曾经把实体写成自指链接，要单独写出来，不要只写「把路径固定就行」。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/playpark/articles/claude-code-update-full-disk-access-fixed-path",
+      label: "zenn.dev·playpark《Claude Code更新のたびにフルディスクアクセスが増える問題を、固定パスで止めた》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "921",
+    slug: "ryo-9d-1004-rmhome",
+    title: "ryodevapp（リョウ）：2026-10-07 深夜，正在给脚本加「参数如果是家目录就停」的防护时，估计是子代理在写防护之前先跑了测试，测试把真正的家目录传了进去，Mac 家目录里的文件被成批删掉。尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分日志里没有、取不回来。作者认为 hook 和 deny 只看 Claude 打出的那一行命令，看不到脚本里面传给 rm -rf 的路径，所以主要对策是打开 OS 沙箱（sandbox.enabled: true，allowUnsandboxedCommands: false）和把备份放在 Mac 之外；deny 与 hook 只当辅助。截至 2026-10-19，环境是 macOS、Claude Code CLI 2.1.292 与 VS Code 扩展；设置、hook 和 68 项测试放在 github.com/ryodevapp/claude-code-guards。硬窗是这次删除和约 9 天的丢失，不是 hook 机制本身",
+    summary: "ryodevapp 在 2026-10-07 深夜让 Claude Code 继续开发时，家目录里的文件被成批删除。作者估计原因是：给脚本加「参数如果是家目录就停」的防护时，子代理还没写下这条防护就先跑测试，测试传入了真正的家目录。尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分不在日志里。作者写明，Claude Code 执行前的判定和自写 hook 看见的都只是那一行命令，看不见脚本里传给 rm -rf 的路径。之后把主要对策改成 OS 沙箱和 Mac 之外的备份，deny 与 hook 只当辅助；并规定删除测试只在各次测试的临时目录里跑。截至 2026-10-19 是 macOS、CLI 2.1.292 与 VS Code 扩展，仓库里有 68 项测试。与 #881／#882／#887／#889／#909 不是同一扇窗。",
+    description: "面向已经想靠 hook 或 deny 来挡住「删掉家目录」的人：把「2026-10-07 深夜的删除、尚未 push 的约 9 天提交连同 .git 一起没了、日志里取出 1,004 个文件但子代理写过的部分取不回来；hook 只看见那一行命令；主要对策后来改成 OS 沙箱和机外备份」写成门禁，区别于只讨论 hook 写法、却没有这次丢失窗口的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ryodevapp/articles/claude-code-home-deleted-guards",
+    sourceLabel: "zenn.dev·ryodevapp 实践帖",
+    upvotes: 812,
+    trending: false,
+    tags: [
+      "claude-code",
+      "sandbox",
+      "rm",
+      "backup",
+      "subagent",
+    ],
+    howItWorks: [
+      "2026-10-07 深夜，作者把开发交给 Claude Code 时，Mac 家目录里的文件被成批删除。估计原因是：给脚本加「参数如果是家目录就停」的防护时，子代理还没写下防护就先跑测试，测试传入了真正的家目录。尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分日志里没有、取不回来。",
+      "作者写明，Claude Code 执行前的判定和自写 hook 看见的都只是那一行命令，看不见脚本里面传给 rm -rf 的路径。所以后来把主要对策改成两件事：在 ~/.claude/settings.json 打开 sandbox.enabled，并把 allowUnsandboxedCommands 设为 false；以及用 Time Machine 等把备份放到 Mac 之外，已确认的提交尽快 push。deny 规则和 hook 只当辅助。删除测试只在各次测试的临时目录里跑，不再传入真实路径。",
+      "沙箱里也删得掉工作目录中的文件，所以备份仍不可少。必须在沙箱外跑的，作者只留下 Xcode 测试和构建、xcrun simctl、gh、git push，并写明原因和替代对策。设置、hook 和 68 项测试放在 github.com/ryodevapp/claude-code-guards。截至 2026-10-19，环境是 macOS、Claude Code CLI 2.1.292 与 VS Code 扩展。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-19T21:46:28.108+09:00 → UTC 2026-10-19T12:46:28Z、Asia/Shanghai 2026-10-19 20:46:28；bodyUpdatedAt 2026-10-21T00:17:08.232+09:00 → UTC 2026-10-20T15:17:08Z、Asia/Shanghai 2026-10-20 23:17:08，晚于发布且跨日，仍取 published → 2026-10-19；GET 200（UA MiraBot/1.0））：ryodevapp 在《Claude Code が『ファイルを消させない仕組み』を作っている最中に、Mac のファイルが消えた》记下 2026-10-07 的删除、约 9 天提交和 1,004 个文件。不要因 bodyUpdatedAt 写成 2026-10-20 或 2026-10-21。删除发生在 10-07，源日期仍取这篇 Zenn 的 published 10-19。",
+      "1,004 是从对话日志取出的文件数，不是约 9 天提交的个数，也不含子代理写过、日志里没有的部分。原因是作者的估计，不要写成已经逐步调试出来的唯一因果。#881／#882／#887 已是 hook 主题，#889 相邻，#909 硬窗是 10 天里 1,069 次判定、488 次驳回；本条硬窗是这次删除和约 9 天的丢失，不是 hook 机制本身。",
+    ],
+    approach: "作者在事后把 2026-10-07 深夜的删除、尚未 push 的约 9 天提交，以及从对话日志取出的 1,004 个文件写成记录，并说明子代理写过的部分不在日志里。对原因的判断是估计：防护还没写下，测试就传入了真正的家目录。之后不再把 hook 或 deny 当第一道防线，改为打开 OS 沙箱、关闭被拒绝后再在沙箱外重跑，并把备份放到 Mac 之外；删除测试只在临时目录里跑。设置、hook 和 68 项测试公开在自己的仓库里。",
+    outcomes: [
+      "源披露：2026-10-07 深夜，家目录里的文件被成批删除；尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分取不回来。这是作者这一次、这一台 Mac 上的事故记录，不可外推到其他仓库或别的 hook 配置。",
+      "作者认为 hook 和执行前判定只看见那一行命令，看不见脚本里传给 rm -rf 的路径，所以主要对策改成 OS 沙箱和机外备份。沙箱里也删得掉工作目录中的文件。仓库里有 68 项测试，环境截至 2026-10-19 是 CLI 2.1.292 与 VS Code 扩展。",
+      "原因是估计，不是逐步复现出来的唯一因果。不要把本条写成又一条 hook 教程；与 #881／#882／#887／#889／#909 不是同一扇窗。",
+    ],
+    caveats: [
+      "约 9 天是尚未 push 的提交窗口，不要改成从 10-07 往回精确数出的日历天数。1,004 不含日志里没有的子代理文件。日本区 App Store 两条应用链接和作者卡 website 均跟随至中国区 Today，按区域不可用披露，不因最终 200 列入可达。iOS 应用和 VS Code 扩展不在平台枚举里，不硬凑。",
+      "导流：https://github.com/ryodevapp GET 200（标题 ryodevapp · GitHub）；https://x.com/ryodevapp GET 200（标题 リョウ｜AI×個人開発 (@ryodevapp) / X）；https://github.com/ryodevapp/claude-code-guards GET 200；https://note.com/ryodevapp/n/n74da6c87991f GET 200（标题 AIにMacのファイルを消されて、変えた2つのこと｜リョウ｜AI×個人開発；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。作者卡 website 与正文里的日本区 App Store 三条，首次 GET 有的超时（HTTP 000、curl 28），后来跟随至 https://apps.apple.com/cn/iphone/today（标题 iPhone 版“Today” - App Store），按区域不可用、不因 200 列入可达，须写出完整 URL：https://apps.apple.com/jp/app/apple-store/id6813135588?pt=375608344&ct=zenn-profile&mt=8 （首次 17:42:16 HTTP 000／curl 28；17:45:40 HTTP 200、redir 2、最终 Today、body size 0／curl 28）；https://apps.apple.com/jp/app/apple-store/id6813135588?pt=375608344&ct=zenn3&mt=8 （17:43:04 HTTP 200、redir 2、最终 Today、size 2149013）；https://apps.apple.com/jp/app/apple-store/id6761015343?pt=375608344&ct=zenn3&mt=8 （首次 17:43:11 HTTP 000／curl 28；17:45:47 HTTP 200、redir 2、最终 Today、size 2149013）。一次资料已核、不列入导流：https://code.claude.com/docs/en/permissions#bash-rule-limits 、https://code.claude.com/docs/en/sandboxing#run-commands-outside-the-sandbox-with-excludedcommands 、https://code.claude.com/docs/en/permission-modes#critical-paths 、https://code.claude.com/docs/en/permission-modes#how-the-classifier-evaluates-actions 、https://code.claude.com/docs/en/sandboxing#permission-rules 、https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails 、https://code.claude.com/docs/en/sandboxing#repository-settings-under-an-admin-required-sandbox 、https://code.claude.com/docs/en/sandboxing#auto-allow-mode 、https://genai.owasp.org/llmrisk/llm062025-excessive-agency/ 均 GET 200。一次资料未达、不列入可达：https://learn.chatgpt.com/docs/agent-approvals-security GET 403（body「Forbidden」，size 59，17:43:40）。父代理复检 Asia/Shanghai 2026-11-10 17:54:27–17:55:39：三条日本区 App Store 在 25 秒窗口均已跟随至 https://apps.apple.com/cn/iphone/today，但传输不完整（curl 28；size 393216／458752／376832）；60 秒重试最后一次均 HTTP 200、redir 2、完整跟随至 Today（标题 iPhone 版“Today” - App Store；https://apps.apple.com/jp/app/apple-store/id6813135588?pt=375608344&ct=zenn-profile&mt=8 与 https://apps.apple.com/jp/app/apple-store/id6813135588?pt=375608344&ct=zenn3&mt=8 均为 size 2410719；https://apps.apple.com/jp/app/apple-store/id6761015343?pt=375608344&ct=zenn3&mt=8 为 size 2202276）。仍按区域不可用，不因 200 列入可达。learn.chatgpt.com 复检仍 GET 403、size 59。。未见正文配图。页内 mermaid 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清删掉了什么、找回了什么，再谈 hook 能不能挡住家目录被删",
+        body: "请写明删除发生的日期、尚未 push 的提交大概丢了多少天、本地 .git 在不在，以及从对话日志取出了多少个文件、子代理写过的部分能不能取回。原因若只是估计，不要写成已经逐步复现的唯一因果。hook 或执行前判定当时看见的是整条脚本里的路径，还是只看见那一行命令。事后的主要对策是 OS 沙箱和机外备份，还是仍把 hook 当第一道防线。不要把一次删除事故写成与已有 hook 条同一扇窗。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ryodevapp/articles/claude-code-home-deleted-guards",
+      label: "zenn.dev·ryodevapp《Claude Code が『ファイルを消させない仕組み』を作っている最中に、Mac のファイルが消えた》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "922",
+    slug: "itpl-10-m365-wam",
+    title: "it_templates：在 Windows 本机（不是 WSL）用 Claude Code 做 Microsoft 365／Intune／Graph 管理时，把 2026 年 9–10 月记下的 10 个卡住点写成了一张表。当时手头是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0；命令是 Git Bash 与 pwsh 两套，浏览器操作用 Claude in Chrome。交互式登录会在 WAM 上报「A window handle must be configured」失败；改用设备代码后，码会在 120 秒过期。另外还有：每次调用是新进程所以登录和变量会丢、5.1 与 7 用混、提权没有反应、字符串里的 $ 被解析、只改一行 diff 却变成整文件、Python 写回变成全文件 CRLF、经 Bash 的 Python 把 \\\\ 收成 \\、Git Bash 的 date 是 UTC、管理中心 iframe 里取不到元素、截图会停",
+    summary: "it_templates 不经过 WSL，直接在 Windows 上跑 Claude Code，做 Microsoft 365、Intune 和 Graph 管理，记录是 2026 年 9–10 月的，写稿时手头是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0。10 个卡住点里，交互式登录会撞上 WAM 的 A window handle must be configured，改用 -UseDeviceCode 后，码会在 120 秒过期，继续用就要改证书。每次工具调用是新进程，上一轮的登录和变量会丢，需要把登录和处理写在同一次调用里。PowerShell 5.1 跑不了 Graph，含日文注释还会解析失败，要改用 pwsh，5.1 用的脚本则要带 BOM 的 UTF-8。Start-Process -Verb RunAs 往往没有反应；\"$vm: …\" 会变成语法错误。换行被改掉时，只改一行也会出现整文件 diff；经 Bash 再调 Python 时，\\\\ 会变成 \\。管理中心的页面在 iframe 里，元素取不到、截图会停，作者改成直接链接和按坐标点，并把标签页拿到前面。",
+    description: "面向已经想在 Windows 上直接把 M365 管理交给 Claude Code 的人：把「2026 年 9–10 月记下的 10 个卡住点，其中交互式登录会在 WAM 失败、设备代码 120 秒过期、每次调用是新进程、5.1 与 7 不能混用、管理中心 iframe 里取不到元素」写成门禁，区别于只给一套 Graph 调用示例、却没写这些失败条件的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/it_templates/articles/d9c71a70cb6365",
+    sourceLabel: "zenn.dev·it_templates 实践帖",
+    upvotes: 813,
+    trending: false,
+    tags: [
+      "claude-code",
+      "windows",
+      "m365",
+      "intune",
+      "powershell",
+    ],
+    howItWorks: [
+      "作者不经过 WSL，在 Windows 本机跑 Claude Code，处理 Microsoft 365、Intune 和 Graph。Git for Windows 在的情况下，命令是 Git Bash 与 pwsh 两套，浏览器操作用 Claude in Chrome。记录属于 2026 年 9–10 月，写稿时手头是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0。",
+      "登录是最先卡住的地方。交互式登录会报 A window handle must be configured，作者改用 -UseDeviceCode；设备代码 120 秒过期，要接着用就改证书。每次工具调用是新进程，上一轮的登录和变量会丢，需要把登录和处理写在同一次调用里。PowerShell 5.1 跑不了 Graph，含日文注释还会解析失败，要改用 pwsh。",
+      "其余几条写的是写文件和点界面时的坑：字符串里的 $ 要改成 ${vm} 或外层单引号；先用 git ls-files --eol 看换行，否则只改一行也会出现整文件 diff；经 Bash 再调 Python 时不要把 \\ 当成普通字符来写；Git Bash 的 date 是 UTC，要加 TZ=JST-9 或改用 Get-Date；管理中心在 iframe 里取不到元素、截图会停，改成直接链接、按坐标点，并把标签页拿到前面。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-22T12:47:31.798+09:00 → UTC 2026-10-22T03:47:31Z、Asia/Shanghai 2026-10-22 11:47:31；bodyUpdatedAt 2026-10-27T13:03:59.266+09:00，晚于发布且跨到 10-27，仍取 published → 2026-10-22；GET 200（UA MiraBot/1.0））：it_templates 在《Claude Code に Windows で M365 の管理作業をさせて詰まった 10 個（WAM・改行コード・\\ が潰れる）》记下这 10 个卡住点。不要因 bodyUpdatedAt 写成 2026-10-27。",
+      "120 秒是设备代码的过期时间，不要写成登录本身要等 120 秒。记录窗口是 2026 年 9–10 月，PowerShell 7.6 和模块 2.39.0 是写稿时的手头版本。Windows、Graph、Intune 不在平台枚举里，platforms 只记 claude。同作者其他规则或 Hyper-V 篇留在候选池，不是本条。",
+    ],
+    approach: "作者把 2026 年 9–10 月在 Windows 本机（不是 WSL）用 Claude Code 做 M365／Intune／Graph 管理时记下的失败，整理成 10 条，每条带症状和当时的回避办法。环境写明是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0，命令走 Git Bash 与 pwsh，浏览器走 Claude in Chrome。登录、进程边界、5.1 与 7 的混用、换行和反斜杠，以及管理中心 iframe，都按实际报错来写，而不是给一套一次就能跑通的脚本。",
+    outcomes: [
+      "源披露：2026 年 9–10 月在 Windows 本机记下 10 个卡住点；交互式登录会在 WAM 上报 A window handle must be configured 失败，改用设备代码后码会在 120 秒过期。这是作者这一段时间、这一份 Windows 环境上的记录，不可外推到 WSL、其他 PowerShell 版本或别的管理中心页面。",
+      "每次工具调用是新进程，上一轮的登录和变量会丢。PowerShell 5.1 跑不了 Graph，含日文注释还会解析失败。只改一行也可能因为换行变成整文件 diff；经 Bash 再调 Python 时 \\\\ 会变成 \\。",
+      "管理中心在 iframe 里取不到元素、截图会停。文中的回避办法是当时的权宜之计，不要写成 Microsoft 官方步骤。",
+    ],
+    caveats: [
+      "10 个卡住点是作者这段时间的记录，不是完整的回归表。设备代码 120 秒过期不要写成官方一定是 120 秒。作者卡 GitHub／X／website 均为空，不要补链。",
+      "导流：https://kurashi.toolparks.com/go/booth/8952369?from=zenn-10 GET 200、redir 1，跟随至 https://it-templates.booth.pm/items/8952369（标题 パラメーターシート自動作成ツール 2026 年度版（Microsoft Intune の設定に対応） - it-temp；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。文内官方端点已核、不列入作者产品导流：https://login.microsoft.com/device GET 200、redir 1，跟随至 https://login.microsoftonline.com/common/oauth2/deviceauth（标题 Sign in to your account）；https://graph.microsoft.com/beta/deviceManagement/configurationPolicies GET 401（InvalidAuthenticationToken，Access token is empty，size 237，17:43:46），不列入可达，写出完整 URL。未见正文配图。页内 link-card 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清是 Windows 本机还是 WSL，再谈「Claude Code 能不能做 M365 管理」",
+        body: "请写明记录属于哪几个月，手头的 PowerShell 和 Graph 模块版本，以及命令是走 Git Bash、pwsh 还是两者都有。交互式登录有没有撞上 WAM，改用设备代码后码会在多少秒过期。每次工具调用是不是新进程，5.1 与 7 有没有用混，换行和反斜杠出过什么错。管理中心若在 iframe 里取不到元素，不要把「已经能点管理中心」写成一般结论。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/it_templates/articles/d9c71a70cb6365",
+      label: "zenn.dev·it_templates《Claude Code に Windows で M365 の管理作業をさせて詰まった 10 個（WAM・改行コード・\\ が潰れる）》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "923",
+    slug: "hyodo-8gb-380gb",
+    title: "hyodoblog（ひょうどう）：并行把活交给 Claude Code 和 Codex、每次都长出 Git worktree 之后，MacBook Air 的剩余空间一度只剩 8GB。用 Claude Code 边查边清，du 看到：167 个仓库的 .turbo 约 170GB（单个最大 72GB）、Docker.raw 约 115GB、~/Library/Caches 约 50GB、各仓库 .next 约 47GB、pnpm store 约 45GB、~/.npm 约 33GB。开始清理前 df 已是 13GB。按步：包管理器缓存 13→62GB，Docker 构建缓存和未用镜像 62→116GB，.turbo 与 .next 116→335GB，Xcode 缓存等 335→341GB，未用 Docker 卷 341→362GB，不用的 node_modules 和已合并 worktree 356→382GB，最后大约回到 380GB。作者写明其他应用也在写磁盘，这些是约数；客户仓库名已打码",
+    summary: "hyodoblog 最近常并行把活交给 Claude Code 和 Codex，每次都长出 Git worktree，MacBook Air 的剩余空间一度只剩 8GB。用 Claude Code 先 du 再按步清理。占得最多的是 167 个仓库里的 .turbo，约 170GB，单个最大 72GB；其余是 Docker.raw 约 115GB、Caches 约 50GB、.next 约 47GB、pnpm store 约 45GB、npm 缓存约 33GB。开始动手前 df 已经从 8GB 变成 13GB。一步步清完，最后一步从 356GB 到 382GB，作者写成大约回到 380GB。中间从 362GB 到 356GB 有过回落，作者写明其他应用也在写，数字只是约数。客户仓库名已打码。Codex 不在平台枚举里，platforms 只记 claude。",
+    description: "面向已经想靠「再开一个 worktree 并行干活」却发现盘快满了的人：把「一度只剩 8GB，开始清理前是 13GB，du 里 .turbo 约 170GB，清理后大约回到 380GB；这些是 df／du 的约数，不是一张已经扣掉其他应用写入的精确账单」写成门禁，区别于只说「清一下缓存就行」、却没有分项体积和逐步 df 的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yoshinani_dev/articles/0c17dec1c082a1",
+    sourceLabel: "zenn.dev·hyodoblog 实践帖",
+    upvotes: 814,
+    trending: false,
+    tags: [
+      "claude-code",
+      "disk",
+      "worktree",
+      "turbo",
+      "docker",
+    ],
+    howItWorks: [
+      "作者把活并行交给 Claude Code 和 Codex，每次都长出 Git worktree，MacBook Air 的剩余空间一度只剩 8GB。拜托 Claude Code 一起查是什么占了空间，再按顺序清理。客户仓库名已打码。",
+      "先用 du 看大目录：167 个仓库的 .turbo 约 170GB，其中单个最大 72GB；Docker Desktop 的 Docker.raw 约 115GB；~/Library/Caches 约 50GB；各仓库 .next 约 47GB；pnpm store 约 45GB；~/.npm 约 33GB。",
+      "再用 df 记录每一步前后的剩余空间。开始动手前已经从最初看到的 8GB 变成 13GB。包管理器缓存 13→62GB，Docker 构建缓存和未用镜像 62→116GB，.turbo 与 .next 116→335GB，Xcode 缓存等 335→341GB，未用 Docker 卷 341→362GB，不用的 node_modules 和已合并 worktree 356→382GB。最后写成大约回到 380GB。作者写明其他应用也在写磁盘，这些是约数。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-23T02:21:33.689+09:00 → UTC 2026-10-22T17:21:33Z、Asia/Shanghai 2026-10-23 01:21:33（未跨日）；bodyUpdatedAt 与发布相同，取 published → 2026-10-23；GET 200（UA MiraBot/1.0））：hyodoblog 在刊于 yoshinani_dev 的《Claude CodeやCodexで並列開発していたら、Macのストレージが残り8GBになったので掃除した》记下 du 分项和逐步 df。不要因 JST 02:21 写成 2026-10-22。",
+      "最初看到的 8GB、动手前的 13GB，和最后大约 380GB（末步 356→382GB）不要混成同一次读数。中间 362GB 到 356GB 的回落，作者已说明是约数。Codex 不在 19 个平台枚举里，不填写 platforms。同作者其他篇留在候选池，不是本条。",
+    ],
+    approach: "作者先用 df 看到剩余空间一度只剩 8GB，再让 Claude Code 用 du 找出大目录，按包管理器缓存、Docker、.turbo 与 .next、Xcode 缓存、未用卷、不用的 node_modules 和已合并 worktree 的顺序清理，并记下每一步前后的剩余空间。客户仓库名打码。文中写明其他应用也在写磁盘，数字只当约数。",
+    outcomes: [
+      "源披露：剩余空间一度只剩 8GB，开始清理前是 13GB；du 里 167 个仓库的 .turbo 约 170GB（单个最大 72GB），Docker.raw 约 115GB；按步清理后大约回到 380GB（末步 356→382GB）。这是作者这一台 MacBook Air 上这一次的 df／du 记录，不可外推到其他磁盘或其他并行工作方式。",
+      ".turbo 是最大的一项，其次才是 Docker.raw、Caches、.next、pnpm store 和 npm 缓存。不要把约 170GB 和最后腾出的约 380GB 剩余空间加总或互相替代。",
+      "从 362GB 到 356GB 有过回落，作者写明其他应用也在写，不能把逐步 df 当成已经扣除其他写入的精确账单。Codex 只在正文里作为并行工具出现，platforms 只记 claude。",
+    ],
+    caveats: [
+      "8GB 是最初看到的剩余，13GB 是动手前的剩余，不要写成清理从 8GB 起步。约 380GB 是作者对末步 382GB 的约写。客户仓库名已打码，不要补全。",
+      "导流：https://github.com/hyodoblog GET 200（标题 hyodoblog (Yusei Hyodo) · GitHub）；https://x.com/hyodoblog GET 200（标题 ひょうどう｜LEGO×AI (@hyodoblog) / X）；https://yoshinani.co.jp GET 200（跟随至 https://yoshinani.co.jp/ ，标题 株式会社YOSHINANI（よしなに）| ものづくりで皆を笑顔に；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。一次资料已核、不列入导流：https://docs.docker.com/desktop/troubleshoot-and-support/faqs/macfaqs/ GET 200（标题 FAQs for Docker Desktop for Mac | Docker Docs）；https://turborepo.dev/docs/crafting-your-repository/caching GET 200、size 16912；https://turborepo.dev/docs/reference/configuration GET 200、size 57693；https://pnpm.io/settings/node-modules#packageimportmethod GET 200（标题 Node-Modules & Hoisting Settings | pnpm）。未见正文配图。页内 link-card 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分开写最初看到的剩余、动手前的剩余和逐步 df，再谈「并行 worktree 会不会把盘吃满」",
+        body: "请写明最初看到的剩余空间是多少、开始清理前又是多少，以及 du 里各项大约占了多少；.turbo 的仓库数和单个最大项要单独写。每一步前后的 df 不要和最后的约数混成一个数字。若中间有过回落，按作者说明写成约数，不要改成已经扣除其他应用写入的精确账单。正文若同时用了不在平台枚举里的工具，不要把它填进 platforms。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yoshinani_dev/articles/0c17dec1c082a1",
+      label: "zenn.dev·hyodoblog《Claude CodeやCodexで並列開発していたら、Macのストレージが残り8GBになったので掃除した》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "924",
+    slug: "acs-dot-cid-400",
+    title: "acs_developer：把 YouTube 评论分类迁到 Anthropic Message Batches API 时，想把评论 ID 直接放进 custom_id，但回复评论的 ID 会用 . 把父线程和回复拼起来。在 anthropic Python SDK 2.3.0 上，用 max_tokens: 1、模型 claude-haiku-5-5，只改 custom_id、每次 1–4 条探测。2026-10-30 实测，五种都在 0.3–0.4 秒内返回 HTTP 400、invalid_request_error：带点的（Ugx3abcDEF.8xyz，文中写明是占位）、65 个字符、日文「コメント1」、重复的 c0、空字符串。把 2 条合法 ID 和 2 条带点的混在一起，整个批次创建失败，随后 batches.list() 也没有增加；报错只提到第一条坏的（requests.2），requests.3 同样不合法但不会出现在消息里。创建阶段被拒，不会计费。作者后来改成批次内连号当 custom_id，原 ID 对表放在本地",
+    summary: "acs_developer 把 YouTube 评论分类改走 Message Batches API，一开始想把评论 ID 直接当作 custom_id。回复评论的 ID 里会有点。用 anthropic Python SDK 2.3.0，每次只打 1–4 条、max_tokens: 1、模型 claude-haiku-5-5。2026-10-30 五种探测都在 0.3–0.4 秒内返回 HTTP 400：带点、65 字符、日文、重复、空字符串，都是 invalid_request_error。规则可归纳成：只能用英数字、下划线和连字符，长度 1–64，同一批次里不能重复。把 2 条合法 ID 和 2 条带点的混在一起，整个批次都创建不了，list() 也不增加；报错只露出第一条坏的。创建阶段被拒，不会计费，但定时任务会在混进一条回复的那天整批停掉。SDK 的 Request 类型在客户端不做格式检查。作者后来改用连号，对表放在本地。这与 #916 看的请求体比例和线程 TTL 不是同一扇窗。",
+    description: "面向已经想把外部 ID 直接放进 Message Batches custom_id 的人：把「2026-10-30 五种探测都是 HTTP 400；2 条合法加 2 条带点的会让整个批次都创建失败，报错只提第一条；不会计费，但那天的任务会整批停掉」写成门禁，区别于只抄 ^[a-zA-Z0-9_-]{1,64}$ 这条规则、却没量过混进一条非法 ID 会发生什么的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/acs_developer/articles/anthropic-batch-custom-id-pattern-400",
+    sourceLabel: "zenn.dev·acs_developer 实践帖",
+    upvotes: 815,
+    trending: false,
+    tags: [
+      "claude-api",
+      "message-batches",
+      "custom-id",
+      "http-400",
+      "youtube",
+    ],
+    howItWorks: [
+      "作者把 YouTube 评论分类改走 Anthropic Message Batches API，一开始想把评论 ID 直接写入 custom_id。回复评论的 ID 会用 . 把父线程和回复拼起来，这个字符不能用。验证环境是 anthropic Python SDK 2.3.0。",
+      "用 max_tokens: 1、模型 claude-haiku-5-5，每次只打 1–4 条，只改 custom_id。2026-10-30 五种探测都在 0.3–0.4 秒内返回 HTTP 400、invalid_request_error：带点的 Ugx3abcDEF.8xyz（文中写明是占位）、65 个字符、日文「コメント1」、两条相同的 c0、空字符串。规则是：只能用英数字、下划线和连字符，长度 1–64，同一批次里不能重复。",
+      "再把 2 条合法 ID 和 2 条带点的混在一起，整个批次都创建失败，随后 batches.list() 也没有增加；报错只提到 requests.2，requests.3 同样不合法但不会出现在消息里。创建阶段被拒，不会计费。作者后来把 custom_id 改成批次内连号，原 ID 对表放在本地。SDK 的 Request 类型在客户端不做格式检查，要等到送出才会报错。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-30T13:09:03.366+09:00 → UTC 2026-10-30T04:09:03Z、Asia/Shanghai 2026-10-30 12:09:03；bodyUpdatedAt 与发布相同，取 published → 2026-10-30；GET 200（UA MiraBot/1.0））：acs_developer 在《Message Batchesのcustom_idに外部IDを入れると400 — 「.」1つでバッチ全体が弾かれる》记下五种 400 和混打时整批失败。",
+      "五种探测都是创建阶段的 400，不要写成已经计费后再失败。报错只露出第一条坏的，不要以为消息里没有的请求就是合法的。#916 硬窗是 Message threads 的请求体比例和 8 轮对照，不是本条的 custom_id 规则。YouTube 不在平台枚举里，platforms 只记 claude。",
+    ],
+    approach: "作者在 anthropic Python SDK 2.3.0 上，用 max_tokens: 1 的短请求，每次只打 1–4 条，只改 custom_id，先后探测带点、超长、日文、重复和空字符串，记录 HTTP 状态和错误文案。再把 2 条合法 ID 和 2 条带点的混在一次创建里，并立刻看 batches.list() 有没有增加。确认创建阶段被拒、不会计费之后，把 custom_id 改成连号，原 ID 对表放在本地。",
+    outcomes: [
+      "源披露：2026-10-30，五种非法 custom_id 都在 0.3–0.4 秒内返回 HTTP 400、invalid_request_error；把 2 条合法 ID 和 2 条带点的混在一起，整个批次都创建失败，list() 也不增加，报错只提到第一条坏的。这是作者这一次、这一份 SDK 2.3.0 上的探测，不可外推到其他模型和别的批次 API。",
+      "可用字符是英数字、下划线和连字符，长度 1–64，同一批次里不能重复。创建阶段被拒，不会计费，但定时任务会在混进一条回复评论的那天整批停掉。",
+      "探测用的带点 ID 是占位，不是某条真实评论。SDK 的 Request 类型在客户端不做格式检查，不能把「类型能过」当成已经合法。",
+    ],
+    caveats: [
+      "探测批次很小，不要写成生产批量下的耗时或成功率。Ugx3abcDEF.8xyz 和混打里的 UgzA.UgzB、UgzC.UgzD 是文中的占位或示例，未作为可达链去核。正文没有官方文档锚点。",
+      "导流：https://acs-developer.com/ 与 https://acs-developer.com/?utm_source=zenn&utm_medium=referral 均 GET 200（标题 AI検索・LLMO対策を無料診断｜ACS Developer，size 约 54976／54938；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。作者卡 GitHub／X 为空，不要补链；作者卡 website 即上述站点。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先看混进一条非法 custom_id 时整个批次还在不在，再谈「外部 ID 能不能直接放进去」",
+        body: "请写明 SDK 版本、模型、每批打了几条，以及 custom_id 探测了哪些形状。每种是 HTTP 多少、错误类型是什么、大约多少秒返回。若把合法 ID 和非法 ID 混在一起，整个批次有没有创建成功，随后的 list 有没有增加，报错有没有把全部非法项都列出来。创建阶段被拒时有没有计费。不要把「类型或文档看起来能过」当成已经送出成功。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/acs_developer/articles/anthropic-batch-custom-id-pattern-400",
+      label: "zenn.dev·acs_developer《Message Batchesのcustom_idに外部IDを入れると400 — 「.」1つでバッチ全体が弾かれる》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "925",
+    slug: "candy-26d-52200",
+    title: "candynex：用 Gemini 做原案、Claude Code 做实现和维护，26 天（实际开工 22 天）、198 次提交，做成 Steam 游戏《戦う情報システム部》v1.0。C#（Unity＋终端引擎）约 52,200 行、137 个文件，作者写明手写 0 行；Python（剧本生成和检查）约 10,900 行、18 个文件；冒烟测试 1,646 项（含 104 话和隐藏关的通关检查）；Linux 命令 80 种；本篇 104 话，另有入职培训和隐藏关。Claude Code 输入约 47.3 亿 token（缓存 98.6%）、输出约 1,140 万。变更记录 167 条、手测步骤 121 节。文中还写了实际踩过的 7 个坑，其中包括检查脚本在「读到 0 件」时判合格，以及 TextMeshPro 上限 16,383 个被小改动堆满。商店定价 Windows 版 480 日元，发售起 7 天 15% 优惠为 408 日元；Steam 审核因 AI 使用披露的英文栏偏短和胶囊图文字规定退回 2 次，构建审核后已通过",
+    summary: "candynex 用 26 天（实际开工 22 天）、198 次提交，把《戦う情報システム部》做到 Steam。v1.0 的仓库数字是：C# 约 52,200 行、137 个文件，手写 0 行；Python 约 10,900 行、18 个文件；冒烟测试 1,646 项；Linux 命令 80 种；本篇 104 话，另有入职培训和隐藏关。Claude Code 输入约 47.3 亿 token，缓存 98.6%，输出约 1,140 万。原案和选技术时用过 Gemini，实现和维护走 Claude Code。7 个坑里包括：检查脚本在读到 0 件时判合格、被默默丢掉的配置键、TextMeshPro 上限 16,383、成绩保存从第一次提交起就坏了、要用 WSL 实机而不能只靠知识回答「是不是和实机一样」、让模型自己报告提议的前提错了，以及模型看不见画面。Steam 审核退回 2 次后已通过。Gemini 不在平台枚举里，platforms 只记 claude。",
+    description: "面向已经想靠「一行都不手写、再堆 token」来估算能不能做出上架游戏的人：把「26 天、约 52,200 行 C#、1,646 项冒烟、Claude Code 输入约 47.3 亿 token（缓存 98.6%）；检查脚本曾经在 0 件时判合格；Steam 审核退回 2 次」写成门禁，区别于只看标题「26 日で 5.2 万行」、却没把缓存占比、开工天数和这 7 个坑算进去的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/candynex/items/6dadfad94c9e2b197f7a",
+    sourceLabel: "qiita.com·candynex 实践帖",
+    upvotes: 816,
+    trending: false,
+    tags: [
+      "claude-code",
+      "unity",
+      "steam",
+      "tokens",
+      "harness",
+    ],
+    howItWorks: [
+      "作者用 Gemini 做原案和选技术，用 Claude Code 做实现和维护，26 天（实际开工 22 天）、198 次提交，把《戦う情報システム部》做到 Steam。v1.0 的仓库数字：C# 约 52,200 行、137 个文件，手写 0 行；Python 约 10,900 行、18 个文件；冒烟测试 1,646 项，含 104 话和隐藏关的通关检查；Linux 命令 80 种。Claude Code 输入约 47.3 亿 token，缓存 98.6%，输出约 1,140 万。变更记录 167 条，手测步骤 121 节。",
+      "设计上把游戏核心从 Unity 里拆出来做无头验证，并把 Markdown 当作唯一事实来源。作者写明「不会崩」是假的，真正靠的是机器和人两边都能发现崩掉的机制，并公开了 7 个坑：检查脚本在读到 0 件时判合格；配置键被默默丢掉；小改动堆满 TextMeshPro 的 16,383 个上限；成绩保存从第一次提交起就坏了，后来靠模型之间的交叉检查才发现；「是不是和实机一样」要在 WSL 实机上回答；让模型自己报告提议的前提错了；以及模型看不见画面。",
+      "Steamworks 的 9 种成就和云存档，作者写是 Claude 按公开案例做完的。商店审核因 AI 使用披露的英文栏偏短和胶囊图文字规定退回 2 次，构建审核后已通过。Windows 版定价 480 日元，发售起 7 天 15% 优惠为 408 日元。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at=updated_at 2026-10-30T16:52:38+09:00 → UTC 2026-10-30T07:52:38Z、Asia/Shanghai 2026-10-30 15:52:38；取 published／created → 2026-10-30；GET 200（UA MiraBot/1.0））：candynex 在《コードを1行も書かずに26日で5.2万行。Gemini と Claude Code と「情シスのインシデント対応」ゲームを作って Steam に出した話》记下 v1.0 仓库数字和 7 个坑。",
+      "26 天和实际开工 22 天不要混用。约 47.3 亿是 Claude Code 的输入，其中 98.6% 是缓存，不要写成 47.3 亿都是新输入，也不要和约 1,140 万输出加总成「总消耗」。5.2 万行是约 52,200 行 C#，不要把约 10,900 行 Python 加进去再对标题。Gemini 不在 19 个平台枚举里，不填写 platforms。Unity、Steam 也不在枚举里。",
+    ],
+    approach: "作者把 Gemini 放在原案和选技术，把实现、维护和仓库里的检查交给 Claude Code，用无头验证和 Markdown 作为唯一事实来源，在 26 天里把游戏做到可上架。公开的是 v1.0 仓库里的行数、文件数、冒烟项、提交数和 Claude Code 的输入／缓存／输出，以及实际踩过的 7 个坑，而不是只给一条「一行都不手写」的结论。",
+    outcomes: [
+      "源披露：26 天（实际开工 22 天）、198 次提交，C# 约 52,200 行、137 个文件（手写 0 行），冒烟测试 1,646 项，Claude Code 输入约 47.3 亿 token（缓存 98.6%）、输出约 1,140 万。这是作者这一次、这一份 v1.0 仓库上的数字，不可外推到其他题材或其他模型和缓存条件。",
+      "7 个坑里，检查脚本曾经在读到 0 件时判合格，TextMeshPro 上限 16,383 个被小改动堆满，成绩保存从第一次提交起就坏了。不要把「一行都不手写」写成检查已经可靠。",
+      "Steam 审核退回 2 次后已通过。480 日元和 7 天优惠 408 日元是商店标价，不要写成这段开发的成本。Gemini 只作为原案工具出现，platforms 只记 claude。",
+    ],
+    caveats: [
+      "「总物料 47 亿 token」是对输入约 47.3 亿的约写，其中绝大部分是缓存，不要当成 47 亿都要按输出计价。手写 0 行是作者对自己 C# 的声明，不是对 Python 剧本工具或商店素材的审计结论。",
+      "导流：https://store.steampowered.com/app/5326350/?utm_source=qiita&utm_medium=article&utm_campaign=launch&utm_content=top 与 https://store.steampowered.com/app/5326350/?utm_source=qiita&utm_medium=article&utm_campaign=launch&utm_content=bottom 写作交付时均 GET 200（标题 戦う情報システム部 on Steam，size 113404／113497；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。父代理复检 17:54:27–17:55:39：25 秒窗口首次 top HTTP 000／curl 28、size 0，bottom HTTP 200、size 13578、curl 28（标题已是 戦う情報システム部 on Steam）；60 秒重试最后一次（17:55:39）两条均 HTTP 200、exit 0（标题同，size 113468／113561），列入可达导流；披露首次超时，不以 000 为最终状态。Qiita 作者卡 GitHub／Twitter／website 均为空，不要补链。配图 9 张均 GET 200，不列入产品导流：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/bce841e3-cb07-42ef-9ead-914f67a96842.gif （size 1183070）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/608e0653-d344-48cf-b049-d626d4d18bfd.jpeg （size 353356）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/d08651dd-16c6-422a-b770-93b2f23f2d5e.jpeg （size 3290014）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/1ff59fcd-97d4-4d79-ac5f-82a01e4eb4fe.png （size 323959）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/0d0bc026-68ea-4569-aff3-ae85886c832f.png （size 202457）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/90270e14-cbae-415c-8315-010c359c5b95.png （size 721387）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/799f80a6-8053-41e9-aa02-5925bdb7fc8e.png （size 753011）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/6c762d9e-66cb-4797-80df-24dd9b613380.png （size 341121）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4504060/45da2408-bd02-426a-a66c-cdb906908dc3.png （size 82627）。页内 mermaid 嵌入和 Qiita imgix 包装不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分开写输入、缓存占比和输出，再谈「26 天能不能做出 5.2 万行上架游戏」",
+        body: "请写明日历天数和实际开工天数、提交数，以及 C# 与 Python 各自的行数和文件数；手写 0 行若只是作者对自己某一部分的声明，不要扩到全部素材。Claude Code 的输入、缓存占比和输出要分开写，不要把约 47.3 亿当成都要按新输入计价。冒烟测试有多少项、检查脚本有没有在 0 件时判合格，也要写出来。商店标价和审核退回次数不要当成开发成本。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/candynex/items/6dadfad94c9e2b197f7a",
+      label: "qiita.com·candynex《コードを1行も書かずに26日で5.2万行。Gemini と Claude Code と「情シスのインシデント対応」ゲームを作って Steam に出した話》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "926",
+    slug: "vesuv-120-116-15m",
+    title: "ViewsEngineer：用 Claude Code（提交写 Co-Authored-By: Claude Opus 5.5）给 Vesuvius Challenge 做约 9.36 µm 与 2.4 µm 两次 CT 扫描的仿射对齐。作者写方向、核结果。组织外的参加者在拟合没用到的点（held-out）上独立测到的中位数，是相对已有目录变换的 1.35／1.50 体素，这次是 1.20／1.16 体素；手动摆标志点改成一条命令、约 15 分钟自动跑。PR 是 https://github.com/ScrollPrize/villa/pull/2374 ，文中写明截至 2026-11-02 仍 OPEN、未合并。工作仓库是 https://github.com/yuichi916/vesuvius-9um-vs-2p4um 。PR 交出去 27 小时后，组织外的参加者在自己机器上复现，指出 3 个问题，其中一个是 in-sample 残差里原则上看不到的系统性偏移；修好的版本在交出去 46 小时后，由同一人在另一卷上确认",
+    summary: "ViewsEngineer 要在 Vesuvius Challenge 里，把约 9.36 µm 扫描上描出的面，写到 2.4 µm 的扫描上，需要两次体积之间的仿射变换。代码由 Claude Code 写，方向和核对由作者做，提交都写了 Co-Authored-By: Claude Opus 5.5。组织外的参加者在 held-out 点上独立测到的中位数，是 1.20／1.16 体素，对照已有目录变换的 1.35／1.50 体素；自动跑大约 15 分钟。PR #2374 在 2026-11-02 仍是 OPEN、未合并。交出去 27 小时后，组织外的参加者复现并指出 3 个问题，其中一个是 in-sample 残差里看不到的系统性偏移；修好的版本在 46 小时后由同一人在另一卷上确认。正文里的两条公开 zarr 前缀，本次 GET 均为 HTTP 404（NoSuchKey），不列入可达。",
+    description: "面向已经想把「自动对齐比目录里的变换更准」写成结论的人：把「held-out 中位数 1.20／1.16 对 1.35／1.50 体素，约 15 分钟自动跑；PR 在 2026-11-02 仍未合并；交出去 27 小时后被指出 3 个问题，其中一个是 in-sample 看不见的系统性偏移，46 小时后在另一卷上确认」写成门禁，区别于只看作者自己的 in-sample 残差、或把尚未合并的 PR 写成已经进主线的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/ViewsEngineer/items/b26d3d75adc65e35e3de",
+    sourceLabel: "qiita.com·ViewsEngineer 实践帖",
+    upvotes: 817,
+    trending: false,
+    tags: [
+      "claude-code",
+      "vesuvius",
+      "registration",
+      "held-out",
+      "pull-request",
+    ],
+    howItWorks: [
+      "赫库兰尼姆卷的一部分被拍过两次：整卷约 9.36 µm，局部高度 2.4 µm，都作为公开的 OME-Zarr 金字塔放在 S3。作者要的是把 9 µm 侧描出的面写到 2.4 µm 侧，需要两次体积之间的 3×4 仿射。代码由 Claude Code 写，方向和结果由作者核，提交都写了 Co-Authored-By: Claude Opus 5.5。",
+      "组织外的参加者在拟合没用到的点（held-out）上独立测量，中位数是 1.20／1.16 体素，对照已有目录变换的 1.35／1.50 体素。手动摆标志点改成一条命令、约 15 分钟自动跑。变换和验证放在 https://github.com/yuichi916/vesuvius-9um-vs-2p4um ，向 https://github.com/ScrollPrize/villa 开出 PR #2374。文中写明截至 2026-11-02 该 PR 仍 OPEN、未合并。",
+      "交出去 27 小时后，组织外的参加者在自己机器上复现，指出 3 个问题，其中一个是 in-sample 残差里原则上看不到的系统性偏移。修好的版本在交出去 46 小时后，由同一人在另一卷上确认。一般向说明放在 note，录像放在 YouTube。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-11-02T21:47:14+09:00 → UTC 2026-11-02T12:47:14Z、Asia/Shanghai 2026-11-02 20:47:14；updated_at 2026-11-03T20:18:56+09:00，晚于发布且跨到 11-03，仍取 published／created → 2026-11-02；GET 200（UA MiraBot/1.0））：ViewsEngineer 在《Claude Code で Vesuvius Challenge の CT 位置合わせを自動化し、既存の変換より高精度にした（第三者の held-out 検証で 1.35/1.50 → 1.20/1.16 ボクセル）》记下 held-out 中位数、约 15 分钟和 27／46 小时。不要因 updated_at 写成 2026-11-03。",
+      "1.20／1.16 是 held-out 中位数，不要和已有目录变换的 1.35／1.50 写反，也不要写成作者自己的 in-sample。PR 在文中的日期仍是 OPEN，本次 GET 只确认页面可达，不把合并状态写成已经合入。同作者其他篇留在候选池，不是本条。",
+    ],
+    approach: "作者用公开的两次 CT 扫描，让 Claude Code 写出自动仿射对齐，自己定方向并核结果。精度不看 in-sample 残差，而以组织外参加者在 held-out 点上独立测到的中位数，对照已有目录变换。开出的 PR 在文中写明截至 2026-11-02 仍未合并。交出去之后，又记录了 27 小时后的外部复现和 3 个问题，以及 46 小时后在另一卷上确认的修好版本。",
+    outcomes: [
+      "源披露：组织外参加者在 held-out 点上测到的中位数是 1.20／1.16 体素，对照已有目录变换的 1.35／1.50 体素；自动跑大约 15 分钟。这是这一次、这一份扫描和对齐上的测量，不可外推到其他卷或其他变换。",
+      "PR #2374 在 2026-11-02 仍 OPEN、未合并，不要写成已经进主线。交出去 27 小时后被指出 3 个问题，其中一个是 in-sample 看不见的系统性偏移；修好的版本在 46 小时后于另一卷上确认。",
+      "正文列出的两条 zarr 前缀，本次 GET 均为 HTTP 404（NoSuchKey），不列入可达。代码由 Claude Code 写，方向和核对由人做。",
+    ],
+    caveats: [
+      "held-out 数字来自组织外参加者，不要改写成作者自己测的。27 小时和 46 小时都从交出 PR 起算，不要和约 15 分钟的自动跑混用。文中的 zarr 地址是对象前缀，本次按所写 URL GET，得到 404。",
+      "导流：https://github.com/yuichi916/vesuvius-9um-vs-2p4um GET 200；https://yuichi916.github.io/ GET 200（标题 Views Engineer｜AIを使い倒して、人類初をやる — 成果と過程の全記録）；https://yuichi916.github.io/?ref=qiita-vesuvius#firsts GET 200；https://yuichi916.github.io/unsolved.html?ref=qiita-vesuvius GET 200（标题 未解決問題への挑戦 — 答えの出ていなかった数を、計算機で決める）；https://x.com/ViewsEngineer GET 200（标题 ゆうさん｜AI活用｜エンジニアの問題解決力をあなたへ (@ViewsEngineer) / X）；https://note.com/views_of_life/n/n0f73b5e1c609 GET 200（标题 2000年前の炭の巻物を読む世界の挑戦で、既存より正確なCTの位置合わせをAIと2人で作った。翌日、見知らぬ参加者が確か）；https://youtu.be/raonOEpgGL4 GET 200、redir 1，跟随至 https://www.youtube.com/watch?v=raonOEpgGL4&feature=youtu.be ；https://youtu.be/e1I69aw6BaU GET 200、redir 1，跟随至 https://www.youtube.com/watch?v=e1I69aw6BaU&feature=youtu.be ；https://www.youtube.com/playlist?list=PLHfgC-PAaIYM GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。仓与 PR 已核、不单列为作者产品店面，但须写出完整 URL：https://github.com/ScrollPrize/villa GET 200；https://github.com/ScrollPrize/villa/pull/2374 GET 200（标题 volume-registration: automatic affine registration of two sc）。一次资料已核、不列入导流：https://scrollprize.org/ GET 200（标题 Vesuvius Challenge — Reading the Herculaneum Scrolls with AI）；https://scrollprize.org/get_started GET 200。一次资料未达、不列入可达：https://vesuvius-challenge-open-data.s3.amazonaws.com/PHerc0841/volumes/20250821151531-9.366um-1.2m-113keV-masked.zarr GET 404（NoSuchKey，size 355，17:44:26）；https://vesuvius-challenge-open-data.s3.amazonaws.com/PHerc0841/volumes/20260319124803-2.403um-0.2m-77keV-masked.zarr GET 404（NoSuchKey，size 334，17:44:26）。配图 2 张均 GET 200，不列入产品导流：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/332897/c43a8b6f-68d0-4e99-885a-88c2494484d3.png （size 94112）、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/332897/c92f9ae6-9a5f-44fd-9fe0-0e07f1bb901a.png （size 122317）。页内 mermaid 嵌入和 Qiita imgix 包装不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清 held-out 是谁测的、PR 合上了没有，再谈「自动对齐是不是已经更准」",
+        body: "请写明两次扫描的分辨率、held-out 中位数和对照的已有变换各是多少体素，以及自动跑大约要多少分钟。这些数字是组织外参加者独立测的，还是作者自己的 in-sample。PR 在文章所写日期是否仍未合并。交出去之后多少小时被复现、指出了几个问题，其中有没有 in-sample 看不见的系统性偏移，修好的版本又在多少小时后于另一份数据上确认。不要把尚未合并的 PR 写成已经进主线。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/ViewsEngineer/items/b26d3d75adc65e35e3de",
+      label: "qiita.com·ViewsEngineer《Claude Code で Vesuvius Challenge の CT 位置合わせを自動化し、既存の変換より高精度にした（第三者の held-out 検証で 1.35/1.50 → 1.20/1.16 ボクセル）》",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "927",
+    slug: "automos-233-13succ",
+    title: "AUTOMOS：用 claude -p --output-format stream-json 跑定时任务时，2026-11-01 早上连续 4 次的 result 行都是 subtype=success、is_error=true、terminal_reason=api_error，文案是 OAuth session expired and could not be refreshed，total_cost_usd=0、num_turns=1。只看 subtype 会把这些当成成功。作者把自己用早／午／晚命名的执行记录读到 2026-11-02 中午：有 result 行的是 233 次（同一时段另有启动记录 254 次，不是同一分母）；24 个文件有多条 result，只计最后一行。233 次里 subtype 全是 success：is_error=true 13 次、false 220 次，没有一次是 success 以外的 subtype。13 次失败里 billing_error 7、authentication_failed 5、rate_limit 1；这 13 次都是退出码 1、工具执行 0 次、费用 0，duration_ms 143–982。220 次里，工具执行再少也有 10 次；能把退出码对上的 217 次全是 0。另有 16 份记录根本没有 result 行（13 份在 result 之前结束，3 份是 0 字节）",
+    summary: "AUTOMOS 用 claude -p 的 stream-json 做无人定时任务。2026-11-01 早上连续 4 次，result 行都是 subtype=success 且 is_error=true，原因是 OAuth 过期，费用 0。作者把有名字的执行记录读到 2026-11-02 中午，有 result 行的 233 次里，subtype 全部是 success：失败 13 次、成功 220 次，没有一次靠 subtype 就能分开。13 次是余额不足 7、认证失败 5、限流 1，都是退出码 1、没跑过工具、费用 0，耗时 143–982 毫秒。同一时段的启动记录是 254 次，不是 233 的分母；24 个文件有多条 result，只计最后一行。还有 16 份记录没有 result 行。OAuth 那 4 次当天的标准错误是 0 字节，失败句子只在标准输出里。只看 subtype 或只看 result 行，都会漏掉这些形状。",
+    description: "面向已经想靠 result 行的 subtype=success 来判断 claude -p 是否成功的人：把「233 次有 result 的记录里，失败的 13 次 subtype 也是 success；同一时段启动 254 次不是同一分母；还有 16 份根本没有 result 行；标准错误在 OAuth 失败那天是 0 字节」写成门禁，区别于只看 subtype 或只解析最后一行 JSON、却没有自己台账的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/AUTOMOS/items/fff534da1ac2c48d714c",
+    sourceLabel: "qiita.com·AUTOMOS 实践帖",
+    upvotes: 818,
+    trending: false,
+    tags: [
+      "claude-code",
+      "stream-json",
+      "oauth",
+      "is-error",
+      "cron",
+    ],
+    howItWorks: [
+      "作者用 claude -p --output-format stream-json 做无人定时任务。2026-11-01 早上连续 4 次，result 行都是 subtype=success、is_error=true、terminal_reason=api_error，文案是 OAuth session expired and could not be refreshed，num_turns=1，total_cost_usd=0。subtype 和 is_error 不是同一件事，只看前者会把这些当成成功。",
+      "再读自己用早／午／晚命名的执行记录，截至 2026-11-02 中午。有 result 行的是 233 次；同一时段另有启动记录 254 次，因为记录文件会被同一时段的启动覆盖，254 不是 233 的分母。24 个文件有多条 result，只计最后一行。233 次的 subtype 全是 success：is_error=true 13 次、false 220 次，没有一次是 success 以外的 subtype。",
+      "13 次失败里，billing_error（Credit balance is too low）7 次，authentication_failed（OAuth session expired and could not be refreshed）5 次，rate_limit（You've hit your session limit）1 次。这 13 次都是退出码 1、工具执行 0 次、费用 0，duration_ms 143–982。220 次里，工具执行再少也有 10 次；能把退出码对上的 217 次全是 0，剩下 3 次因同一时段有多份启动记录，没有对上。另有 16 份记录没有 result 行：13 份在 result 之前结束，3 份是 0 字节。OAuth 那 4 次当天的标准错误记录是 0 字节，失败句子只在标准输出里；余额不足那天的标准错误里有重复的提示行，也不能单靠 stderr 来判。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at=updated_at 2026-11-03T07:27:06+09:00 → UTC 2026-11-02T22:27:06Z、Asia/Shanghai 2026-11-03 06:27:06（未跨日）；取 published／created → 2026-11-03；GET 200（UA MiraBot/1.0））：AUTOMOS 在《claude -p の result 行は、認証に失敗しても subtype が success だった。結果行の残っていた自分の無人実行233回のうち、失敗の13回で全部そうなっていた》记下 233／13／220 和 4 次 OAuth。不要因 JST 07:27 或换算到 UTC 写成 2026-11-02。",
+      "233 是有 result 行的次数，254 是同一时段的启动记录，不要把 13／220 去除以 254。24 个文件只计最后一行，不要自行改成计全部行。16 份没有 result 行的记录不在 233 里。余额不足 7 次不要和 2026-11-01 早上连续 4 次 OAuth 混成同一天。",
+    ],
+    approach: "作者先抓住 2026-11-01 早上连续 4 次 subtype=success 且 is_error=true 的 result 行，再把自己有名字的执行记录读到 2026-11-02 中午，只统计有 result 行的 233 次，多行时取最后一行，并单独记下同一时段的 254 次启动和 16 份没有 result 的记录。失败 13 次按错误类型拆开，并对照退出码、工具执行次数、费用和耗时。还看了标准错误在 OAuth 失败和余额不足时分别有没有内容。",
+    outcomes: [
+      "源披露：有 result 行的 233 次里，subtype 全是 success，其中 is_error=true 13 次、false 220 次；2026-11-01 早上连续 4 次认证失败也是这种形状。这是作者读到 2026-11-02 中午的这一份台账，不可外推到其他版本、其他输出格式或其他账号。",
+      "13 次失败是余额不足 7、认证失败 5、限流 1，都是退出码 1、工具执行 0 次、费用 0，耗时 143–982 毫秒。同一时段启动 254 次不是 233 的分母。另有 16 份记录没有 result 行，只看 result 会漏掉。",
+      "OAuth 失败当天的标准错误是 0 字节，失败句子只在标准输出里。不要只按 subtype=success 或只按 stderr 是否为空来判成功。",
+    ],
+    caveats: [
+      "233 与 254 不是同一分母；24 个多 result 文件只计最后一行。13 次失败里的 4 次连续 OAuth 是 11-01 早上的触发事例，不要把 5 次 authentication_failed 全写成那天早上。文末的免费查看工具是作者产品导流，本次 GET 失败，不列入可达。",
+      "导流未达、不列入可达：https://h26005.tailf680df.ts.net:10000/free.html 本次 GET HTTP 000、size 0、curl 35（TLS／SSL 连接失败），ts Asia/Shanghai 2026-11-10 17:44:27。Qiita 作者卡 GitHub／Twitter／website 均为空，不要补链（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 17:41–17:45）。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清 subtype 和 is_error，再谈「claude -p 的 result 行是不是已经代表成功」",
+        body: "请写明统计窗口到哪一天，有 result 行的次数、同一时段的启动次数是不是同一分母，以及有多条 result 时计的是最后一行还是全部。subtype 与 is_error 要交叉列表，不要只报 success 的次数。失败次数若再按余额、认证、限流拆开，退出码、工具执行次数和费用也要写上。有没有根本没有 result 行的记录，标准错误里有没有失败句子，都要单独写。不要把某天连续几次认证失败，写成全部失败都发生在那天。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/AUTOMOS/items/fff534da1ac2c48d714c",
+      label: "qiita.com·AUTOMOS《claude -p の result 行は、認証に失敗しても subtype が success だった。結果行の残っていた自分の無人実行233回のうち、失敗の13回で全部そうなっていた》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
   }
 ];
 
