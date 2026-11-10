@@ -71574,6 +71574,58 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "1014",
+    slug: "acft-5pkg-e403",
+    title: "agent_craft：2026-10-14，作者把 5 个 MCP 服务器以 MIT、免费发布到 npm。最初给 Markdown 转 HTML 那个包起的名字是 md2pdf-mcp，发布时被 E403 拒绝，理由是和已有的 md-2-pdf-mcp 太像；改成 kw-md2pdf-mcp 才通过。一次打包发布的脚本没有报错就结束，实际没有发布出去；改成一条条执行 npm publish --access public 之后，5 个都发出去了。作者写明没有掌握下载量，文中不写成果数字。这些是作者自己这次 5 个包、这一天发布流程上的记录，不可外推到别人的包名审查或别的账号。",
+    summary: "agent_craft 在 2026-10-14 把 5 个 MCP 服务器发到 npm。md2pdf-mcp 因和 md-2-pdf-mcp 太像被 E403 拒绝；打包脚本不报错却没发出去，改成一条条发布后 5 个才都出去。这些是作者自己这次发布上的记录，不可外推。",
+    description: "面向已经把 MCP 服务器做完、却卡在 npm 发布流程的人：把 5 个包、E403、以及不报错却没发出去的打包脚本写成门禁，区别于只讲「一行 claude mcp add 就能装」、却没有写出自己这次改名和逐条发布的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/agent_craft/articles/npm-publish-mcp-5-pitfalls",
+    sourceLabel: "zenn.dev·agent_craft 实践帖",
+    upvotes: 905,
+    trending: false,
+    tags: [
+      "mcp",
+      "npm",
+      "claude",
+      "publish",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/agent_craft/articles/npm-publish-mcp-5-pitfalls",
+      label: "zenn.dev·agent_craft《MCPサーバーをnpmに公開して詰まった5点》",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+    approach: "作者在 2026-10-14 把 5 个自己做的 MCP 服务器以 MIT 免费发到 npm。代码本身 npm test 已经通过，卡住的是包名、认证、打包脚本和 Windows 上的测试，所以按发布当天的作业记录把这 5 点写下来。",
+    outcomes: [
+      "源披露：这 5 个包是 fx-rate-mcp、notion-lite-mcp、kw-time-mcp、kw-rss-mcp、kw-md2pdf-mcp，发布日是 2026-10-14。最初的名字 md2pdf-mcp 被 E403 拒绝，理由是和已有的 md-2-pdf-mcp 太像；改成 kw-md2pdf-mcp 才通过。这些是作者自己这次 5 个包、这一天发布流程上的记录，不可外推到别人的包名审查。",
+      "账号当时没有开 2FA，发布时用了带写权限、并允许 Bypass 2FA 的 Granular Access Token，用完后从 npm 管理页删掉。一次打包发布的 publish-all.sh 没有报错就结束，5 个都没有发出去；改成一条条执行 npm publish --access public 之后，5 个才都发出去。发布后 npm view 里会看到占位版本 0.0.0-stage，作者写这对使用没有妨害。Windows 上用 symlink 的测试创建失败，改成 junction 才通过。",
+      "标题是「卡住的 5 点」，文末又把卡住的周边作业收成名字、认证、脚本、操作系统差异这 4 类，不要把 5 点和 4 类写成同一个计数。作者写明没有掌握下载量，文中不写成果数字。安装示例是 claude mcp add kw-time -- npx -y kw-time-mcp。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-21T02:15:37.362+09:00 → UTC 2026-10-20T17:15:37Z、Asia/Shanghai 2026-10-21 01:15:37；bodyUpdatedAt 与发布相同，取 published → 2026-10-21。UTC 日期是 10-20，不要写成 2026-10-20。发布当天的作业记录是 2026-10-14，不要和文章发布日混用。正文无配图、无 YouTube 嵌入。正文还点到 note 上的付费文《公開前に押さえるnpm publishの落とし穴9点》，源文没有给出 URL，按原样写出标题，未当作公网链去核。安装示例是「claude mcp add …」，文末有推广的 Zenn 本标题；开篇「本記事はAIツールを活用して執筆・編集しています」和话题标签 claudecode 都不能代替这次发布事件里的实际使用，platforms=[]，不要硬凑 claude。不要填 github。",
+      "导流：5 个 npm 包页 https://www.npmjs.com/package/fx-rate-mcp 、https://www.npmjs.com/package/notion-lite-mcp 、https://www.npmjs.com/package/kw-time-mcp 、https://www.npmjs.com/package/kw-rss-mcp 、https://www.npmjs.com/package/kw-md2pdf-mcp ，交付时两次 GET 均为 403，标题 Just a moment...，按人机验证页披露，不列入可达。作者的 Zenn 本 https://zenn.dev/agent_craft/books/claude-code-mcp-guide-2026 GET 200（标题 Claude Code で作る MCP サーバー実践ガイド 2026），按作者内容导流披露。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清是 5 个包里哪一个被 E403 拒绝，再谈「名字没被占用就能发」",
+        body: "请按原文核算：发布是哪一天，一共几个包，最初被拒的名字是什么、错误码是什么，和哪个已有包太像，后来改成了什么。打包脚本当时有没有报错、有没有实际发布出去，后来怎样才 5 个都发出去。标题的 5 点和文末收成的 4 类是不是同一组计数。作者有没有写出下载量。不要把文章发布日 2026-10-21 和作业记录日 2026-10-14 混用。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "先做完 5 个 MCP 服务器，再用带写权限的 Granular Access Token 往 npm 发。2FA 当时是关的，所以要用允许 Bypass 2FA 的令牌，用完就删。",
+      "包名不但要查有没有空位，还要看会不会和已有名字太像。md2pdf-mcp 被 E403 之后，改成 kw-md2pdf-mcp 才过。",
+      "打包脚本不报错也不代表已经发布。先一条条执行 npm publish --access public，确认成功后再考虑一次性脚本。Windows 上的测试不要只依赖 symlink。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-21T02:15:37.362+09:00 → UTC 2026-10-20T17:15:37Z、Asia/Shanghai 2026-10-21 01:15:37；bodyUpdatedAt 与发布相同，取 published → 2026-10-21；GET 200（UA MiraBot/1.0））：agent_craft 在《MCPサーバーをnpmに公開して詰まった5点》写 5 个包和 E403。UTC 日期是 10-20，不要写成 2026-10-20。5 个 npm 页两次 GET 均为 403。Zenn 本 200。",
+      "作业记录日是 2026-10-14，文章发布日是 2026-10-21。5 点和 4 类不要混用。note 付费文没有 URL，不要补链。",
+    ],
+  },
+  {
     id: "1015",
     slug: "yuit-6trap-stdio",
     title: "yuito2742：给自己的自托管应用加上 MCP 服务器时，连续踩了 6 个「不抛异常、结果却是错的」坑。stdout 被自己的日志、dotenv 17 系默认横幅、以及 npm run 的横幅一共污染了 3 层，客户端初始化会失败。12 个工具起初只用一行 description 时，模型选不对工具；改写成「何时用、和其他工具的差别、副作用」之后，「用 3 个阶段做计划」才会选 add_steps。这些是作者自己在 macOS、@modelcontextprotocol/sdk 1.32、TypeScript 6.0、Claude Desktop 上的踩坑记录，不可外推到别的 SDK 版本或别的客户端。",
@@ -71679,6 +71731,58 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "源帖（无 JSON-LD；Qiita API created_at 2026-11-06T15:18:42+09:00 → UTC 2026-11-06T06:18:42Z、Asia/Shanghai 2026-11-06 14:18:42；updated_at 2026-11-10T18:37:48+09:00，晚于发布且跨到 11-10，仍取 created → 2026-11-06；GET 200（UA MiraBot/1.0））：h_horiguchi 在《MCPサーバーなしで Well-Architected レビュー！》写 307 项和 2 项标题不一致。不要因更新写成 2026-11-10。install.sh 跟随至区域不可用页。框架文档首页首次 TLS 000、最后 200。占位 URL 未当公网链去核。",
       "307／307 不是正文已读。缓存读取不要写成输入。4 次是同一会话连续跑的，不要当成 4 次独立计时。不要和近批 token／CI 条混用。",
+    ],
+  },
+  {
+    id: "1017",
+    slug: "yhsm-17go-md",
+    title: "yasuharusmooth：自己不会写游戏程序，用日语指挥 AI，在 Unity 6 里做 3D 动作游戏。把改进备忘从 Excel 挪到项目里的 Docs/backlog.md（文件创建于 2026-10-25）之后，对 AI 说「backlog 的 #17 をやって」就能对上号，不必每次把条目内容再说一遍。GO 列只有作者本人能勾；已经 GO 的行，即使还有 × 或 △，AI 也不许改。这些是作者自己这份 backlog、这一天的用法，不可外推到别人的表格或别的项目。",
+    summary: "yasuharusmooth 把改进备忘从 Excel 挪到 Docs/backlog.md（2026-10-25）后，对 AI 说「#17 をやって」就能对上号。GO 列只有作者能勾，已经 GO 的行 AI 不许改。这些是作者自己这份表上的用法，不可外推。",
+    description: "面向自己不大写代码、却已经用 Excel 给 AI 记修改点的人：把 2026-10-25 这次迁移、用 #17 下指令、以及只有人能勾 GO 写成门禁，区别于只建议「改成 Markdown 就更方便」、却没有写出编号不得复用、GO 由人决定的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/yasuharusmooth/items/560a94d1644b306d457b",
+    sourceLabel: "qiita.com·yasuharusmooth 实践帖",
+    upvotes: 908,
+    trending: false,
+    tags: [
+      "claude",
+      "unity",
+      "gamedev",
+      "backlog",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yasuharusmooth/items/560a94d1644b306d457b",
+      label: "qiita.com·yasuharusmooth《改善メモをExcelからMarkdownに移したら、AIに「#17をやって」で通じるようになった》",
+      date: "2026-11-01",
+      dateLabel: "发布",
+    },
+    approach: "作者不会写游戏程序，只用日语指挥 AI 在 Unity 6 里做 3D 动作游戏。玩的时候记下的修改点，原先放在 Excel 里，每次和 AI 同步都要额外花时间。2026 年 10 月下旬把它们挪进项目里的 Markdown，让人和 AI 共同维护。",
+    outcomes: [
+      "源披露：backlog.md 的创建日期是 2026-10-25，迁移发生在 2026 年 10 月下旬。CLAUDE.md 里只写明：修改点由 Docs/backlog.md 管理，新条目在末尾按连续编号追加，DONE 的行移到 Docs/backlog-done.md，编号不复用。这些是作者自己这份文件、这一天起的用法，不可外推到别人的表格或别的项目。",
+      "对 AI 的指示可以直接说「backlog 的 #17 をやって」「把 TODO 按优先级排好」「作为 #32 追加……」，不必每次把条目内容再说一遍。文中示例里，#17 是把待机、行走和冲刺的移动共通化，状态是 DOING；#31 还是 TODO；#43 在 2026-10-25 被标成 HOLD，因为空中攻击已经改成全角色共用的跳跃攻击。备忘栏由 AI 来写，并留下「Play未确认」「手感未确认」。",
+      "另有一张按角色和动作列出动画、特效、音效是否已经接上的表，并用 GO 列标记「作者认为可以过」。GO 只能由作者来勾。已经 GO 的行，即使还有 × 或 △，AI 也不许改，也不会再出现在未实现清单里。未实现清单一眼就能对回 #38、#40、#45 这些编号。Unity／Cursor 不在 18 值平台枚举里，不硬凑进 platforms；文内有 CLAUDE.md，但不能用文件名代替这次事件里的实际使用，platforms=[]，不要硬凑 claude。",
+    ],
+    caveats: [
+      "无 JSON-LD；Qiita API created_at 2026-11-01T05:17:22+09:00 → UTC 2026-10-31T20:17:22Z、Asia/Shanghai 2026-11-01 04:17:22；updated_at 2026-11-01T05:19:56+09:00，晚于发布、同日，仍取 created（published）→ 2026-11-01。UTC 日期是 10-31，不要写成 2026-10-31。正文无配图。前作演示视频 https://youtu.be/J8aooF3N8AA GET 200，跟随至 https://www.youtube.com/watch?v=J8aooF3N8AA&feature=youtu.be ；复检落地页标题 Introduction to Princess Vanguard - YouTube，完整 URL 已进本条 caveats。Unity／Cursor 不在 18 值枚举里，不硬凑进 platforms。正文实践只写未具名的「AI」；唯一和 Claude 有关的是文件名 CLAUDE.md（「AIが最初に読む指示ファイル」），官方标签是 Unity／cursor／生成AI／ゲーム開発／個人開発，不是 Claude。文件名不能代替正文使用，platforms=[]，不要硬凑 claude。",
+      "导流：开发中的 3D 游戏页 https://subaru33jp.itch.io/the-hero-partys-babysitter GET 200（标题 The Hero Party's Babysitter by SubaruJP）；前作 https://subaru33jp.itch.io/princess-vanguard GET 200（标题 Princess Vanguard: Lucia's March by SubaruJP）。https://freegame-mugen.jp/roleplaying/game_15623.html 首次 GET 为 HTTP/2 PROTOCOL_ERROR（000），复检改 HTTP/1.1 后为 TLS unexpected eof（000），不列入可达，按最后一次 TLS 000 披露。作者页 https://x.com/PuddingAthlete GET 200，不列入产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 #17 是编号还是一共 17 条，再谈「改成 Markdown 就行」",
+        body: "请按原文核算：backlog.md 是哪一天创建的，迁移大概在哪段时间。对 AI 说「#17 をやって」时，#17 指的是哪一条、当时状态是什么，是不是编号而不是条目总数。GO 列谁能勾，已经 GO 的行即使还有 × 或 △，AI 可不可以改。DONE 的行搬到哪个文件，编号能不能复用。不要把 #17、#31、#32、#43 当成统计件数。没写明的就标未确认。",
+      },
+    ],
+    howItWorks: [
+      "把修改点放进项目里的 Docs/backlog.md，一条一行、编号连续且不复用；DONE 挪到 backlog-done.md，不再用的改成 HOLD 并留下原因。",
+      "CLAUDE.md 里只写明这份文件由人和 AI 共用。指示用编号，例如「backlog 的 #17 をやって」。",
+      "GO 列只有作者本人能勾。已经 GO 的行，AI 不许改；未实现清单只从尚未 GO、且仍有 × 或 △ 的格子自动生成。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；Qiita API created_at 2026-11-01T05:17:22+09:00 → UTC 2026-10-31T20:17:22Z、Asia/Shanghai 2026-11-01 04:17:22；updated_at 2026-11-01T05:19:56+09:00，晚于发布、同日，仍取 created → 2026-11-01；GET 200（UA MiraBot/1.0））：yasuharusmooth 在《改善メモをExcelからMarkdownに移したら、AIに「#17をやって」で通じるようになった》写 2026-10-25 的 backlog 和 #17。UTC 日期是 10-31，不要写成 2026-10-31。两个 itch.io 页 200；ふりーむ页最后一次 TLS 000；YouTube 200，跟随至 youtube.com/watch?v=J8aooF3N8AA&feature=youtu.be，复检落地页标题 Introduction to Princess Vanguard - YouTube（前作演示）。",
+      "#17 是编号，不是 17 条。GO 只能由人勾。不要因 Unity／Cursor 就把不在枚举里的值填进 platforms。文件名 CLAUDE.md 不能代替正文使用，不要硬凑 claude。",
     ],
   }
 ];
