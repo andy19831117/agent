@@ -68493,6 +68493,501 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T12:28:25.051+09:00 → UTC 2026-11-03T03:28:25Z、Asia/Shanghai 2026-11-03 11:28:25；bodyUpdatedAt 与发布相同；取 published → 2026-11-03；GET 200（UA MiraBot/1.0））：tasukina 在《Claude Code に書かせた記事の事実の文に、出典の印を付けさせて照合する》记下 30 处和 19 处。",
       "「公司」不是登记法人。标记不回溯已发布文章，书稿也未套用这套印。同作者 4 小时无人篇及 135 pool 已有篇不再拾取。",
     ],
+  },
+  {
+    id: "958",
+    slug: "hacchu-6rtn-40s",
+    title: "ai_hacchu：2026 年 9 月时点用 Claude Code 在云上跑着 6 本定期例程。只想把模型换成 Opus 5.5，先按差量只送模型字段，得到 HTTP 400（job_config 必须带环境 ID）。再把环境、工具、仓库和模型都送上、唯独省掉提示词，更新却是 HTTP 200，返回里的提示词是空的。作者先用 get 取过全文，按全文补上模型后再送回去，空窗大约 40 秒，还没到下一次执行时刻。列表接口只按新到旧返回 20 件，第 21 件以后是用事先记下的 ID 取的。有 1 本不想把全文再送进 API，只在 claude.ai 画面上改了模型。",
+    summary: "ai_hacchu 要把 6 本云上例程的模型换成 Opus 5.5。只送模型字段会 HTTP 400；补齐环境等字段却省掉提示词时，更新是 HTTP 200，提示词却空了。靠事先取到的全文在大约 40 秒内还原，没有空跑。这些是这一次更新上的过程，不可外推到别的接口或日期。",
+    description: "面向已经用 API 改 Claude Code 云上例程、却把 HTTP 200 当成「没改掉的字段都会留着」的人：把差量更新把提示词清空、以及大约 40 秒的还原写成门禁，区别于只介绍例程 API、却没有对照返回体的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ai_hacchu/articles/claude-routine-update-wiped-prompt",
+    sourceLabel: "zenn.dev·ai_hacchu 实践帖",
+    upvotes: 849,
+    trending: false,
+    tags: [
+      "claude-code",
+      "routines",
+      "api",
+      "prompt",
+      "partial-update",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ai_hacchu/articles/claude-routine-update-wiped-prompt",
+      label: "zenn.dev·ai_hacchu《Claude Code のルーティンを API で更新したらプロンプトが消えた。設定は丸ごと置き換わる》",
+      date: "2026-10-10",
+      dateLabel: "发布",
+    },
+    approach: "作者在云上跑着博客草稿、周次复核、Zenn 草稿和信息收集等 6 本例程，日常改设置也交给 Claude Code 调 API。这一天只想把模型换成 Opus 5.5，先让它列出并逐本取回全文，再试差量更新。",
+    outcomes: [
+      "源披露：2026 年 9 月时点有 6 本例程。只送模型字段是 HTTP 400；把环境 ID、工具权限、仓库和模型都送上、唯独省掉提示词后，更新是 HTTP 200，返回里的提示词却是空的。作者先取过全文，补上模型后再把全文送回，空窗大约 40 秒，还没到下一次执行。这些是这一次更新上的过程，不可外推到别的接口或日期。",
+      "列表接口只按新到旧返回 20 件，第 21 件以后是用事先记下的 ID 取的。20 和 6 不要混用。有 1 本是只在画面上改模型、再用 API 取回核对，不要写成 6 本都走了同一套清空再还原。",
+      "判断更新成功看的是返回里有没有提示词，不是只看 HTTP 200。job_config 是整份替换，省掉的项会变成空，不是「保持原样」。",
+    ],
+    caveats: [
+      "发布时刻是 JST 2026-10-11 00:36，换算到上海已是 2026-10-10 23:36，必须写成 2026-10-10，不要写成 2026-10-11。bodyUpdatedAt 略早于发布、换算后同是 10-10，仍取 published。正文无配图。作者卡 X／website 为空。",
+      "导流：https://github.com/arataku1023 GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先看返回里的提示词还在不在，再谈「只改模型字段就行」",
+        body: "请按实测算一算：当时有几本例程；只送模型字段的返回码是什么；把环境、工具、仓库和模型都送上却省掉提示词时，更新是不是仍显示成功，提示词还在不在；事先有没有取过全文，空了之后多久还原，有没有空着被跑过。不要把列表接口一次返回的条数和正在跑的本数混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者先列出例程并逐本取回全文，再试只改模型。只送模型字段会 HTTP 400，必须带上环境 ID。",
+      "补齐环境、工具、仓库和模型却省掉提示词后，更新是 HTTP 200，返回里的提示词却空了。",
+      "用事先取到的全文补上新模型再送回，大约 40 秒内还原；有 1 本只在画面上改了模型。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-11T00:36:21.410+09:00 → UTC 2026-10-10T15:36:21Z、Asia/Shanghai 2026-10-10 23:36:21；bodyUpdatedAt 2026-10-11T00:27:48.577+09:00，略早于发布，换算到上海同是 10-10；取 published → 2026-10-10；GET 200（UA MiraBot/1.0））：ai_hacchu 在《Claude Code のルーティンを API で更新したらプロンプトが消えた。設定は丸ごと置き換わる》记下这次清空。不要因 JST 日期 10-11 写成 2026-10-11。",
+      "HTTP 200 不等于字段还在。6 本和列表 20 件不要混用。大约 40 秒内还原，没有空跑。",
+    ],
+  },
+  {
+    id: "959",
+    slug: "auto-3vio-cli",
+    title: "aiautolog：把多本 Claude Code 代理要读写的状态（任务、批准、执行记录）从直接改文件，改成只许走 CLI，并在 CLAUDE.md 里写清「这里不许直接改」。每晚由点检代理读提交历史，找禁止路径上的改动。最近一次，点检代理找出 3 件违规候补，作者认为多半是保存命令把无关文件打进了同一个提交，但还没有定论。另有一次误报：把「只改了 3 个文件」判成了禁止路径违规。点检还发现一份运营备忘写着「可以追加」，CLAUDE.md 却把同一处写成「谁都不许改」。",
+    summary: "aiautolog 不再让代理直接改状态文件，改成只走 CLI，并用每晚的点检去翻提交。最近找出 3 件违规候补，尚未定论；另有一次把「只改了 3 个文件」误报成违规。这些是这一段点检上的数字，不可外推到别的仓库或日期。",
+    description: "面向已经让多本代理直接改状态文件、却还没有回去数「点检出了几件、其中几件是误报」的人：把 3 件候补和那一次误报写成门禁，区别于只规定「不许直接改」、却没有对照点检记录的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/aiautolog/articles/claude-md-state-cli-write-scope",
+    sourceLabel: "zenn.dev·aiautolog 实践帖",
+    upvotes: 850,
+    trending: false,
+    tags: [
+      "claude-code",
+      "cli",
+      "state-file",
+      "guardrail",
+      "audit",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/aiautolog/articles/claude-md-state-cli-write-scope",
+      label: "zenn.dev·aiautolog《Claude Code に状態ファイルを直接触らせない。CLI に一本化して書き込み範囲を CLAUDE.md で縛る》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者一边做 SES，一边用多本 Claude Code 代理分担副业自动化，状态放在 Obsidian 的 Git 仓库里。先试过让代理直接改 Markdown，后来把状态操作收成 CLI，并让点检代理每晚翻提交。",
+    outcomes: [
+      "源披露：改成只许走 CLI 之后，每晚的点检会去找禁止路径上的改动。最近一次找出 3 件违规候补，作者认为多半是保存命令把无关文件打进了同一个提交，但还没有定论。另有一次误报，把「只改了 3 个文件」判成了禁止路径违规。点检还发现运营备忘和 CLAUDE.md 对同一处写了相反的规则。这些是这一段点检上的数字，不可外推到别的仓库或日期。",
+      "3 件是候补，不要写成已经确认的 3 次违规。「只改了 3 个文件」那一次是误报，不要和 3 件候补混成同一组数字。",
+      "Obsidian 不在 19 个平台枚举里，不硬凑。硬窗是点检数字和误报，不是 hook 教程。",
+    ],
+    caveats: [
+      "正文无配图。作者卡 GitHub／X／website 均为空，文内也无产品硬链。primary GET 200。platforms 记 claude。",
+      "导流：作者卡社交为空，正文无作者产品硬链可列。禁止只写、却不给「要改就走批准」的出路时，作者写过代理会悄悄改。保存命令会检查密钥模样的字符串，那是另一套门禁，不要和 3 件候补混用。",
+    ],
+    prompts: [
+      {
+        title: "先分清点检候补和误报，再谈「写上不许直接改就够了」",
+        body: "请按实测算一算：状态是不是改成只能走 CLI；点检最近找出几件违规候补，有没有定论；有没有把合法改动误报成违规，误报的说法是什么；规则文书之间有没有写反。不要把候补写成已经确认的违规次数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者不再让代理直接改状态文件，把任务、批准和执行记录的操作收成 CLI，并在 CLAUDE.md 里写清范围。",
+      "每晚由点检代理读提交历史，找禁止路径上的改动。",
+      "最近找出 3 件候补尚未定论，另有一次误报；还发现两份规则把同一处写成了相反的意思。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-12T06:14:40.171+09:00 → UTC 2026-10-11T21:14:40Z、Asia/Shanghai 2026-10-12 05:14:40；bodyUpdatedAt 与发布相同；取 published → 2026-10-12；GET 200（UA MiraBot/1.0））：aiautolog 在《Claude Code に状態ファイルを直接触らせない。CLI に一本化して書き込み範囲を CLAUDE.md で縛る》记下点检。",
+      "3 件是候补不是定论。误报那一次不要写进 3 件里。Obsidian 不填进 platforms。",
+    ],
+  },
+  {
+    id: "960",
+    slug: "stock-300c-800t",
+    title: "stockrules_jp：自己不写代码，让 Claude Code 当项目管理，再把活分给实现代理，做了两套只给自己用的日本股票工具。第一套从 2026 年 9 月 25 日起步，大约两周半里提交 300 次以上，测试超过 800 件，规格书大约 45 本。第二套从 10 月 8 日起步。工具只给到候选和依据，下单仍由作者在券商画面上自己做。急腾检查那一套用 Claude API 给标题分类，每月上限定为 10 美元，快触到上限的月份就停掉 AI、改用关键词匹配。",
+    summary: "stockrules_jp 用 Claude Code 做了两套自己用的日本股票工具。第一套从 9 月 25 日起大约两周半，提交 300 次以上、测试超过 800 件、规格书大约 45 本；第二套从 10 月 8 日起。分类用的 Claude API 每月上限 10 美元。这些是这一段开发上的数字，不可外推到别的品种或窗口。",
+    description: "面向已经让 Claude Code 代写投资工具、却还没有按工具把提交数、测试数和费用上限分开记录的人：把 300 次以上、800 件以上和每月 10 美元写成门禁，区别于只展示「两个工具」、却没有对照开发账的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/stockrules_jp/articles/6901a969f8f086",
+    sourceLabel: "zenn.dev·stockrules_jp 实践帖",
+    upvotes: 851,
+    trending: false,
+    tags: [
+      "claude-code",
+      "stock-tools",
+      "specs",
+      "tests",
+      "budget",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/stockrules_jp/articles/6901a969f8f086",
+      label: "zenn.dev·stockrules_jp《コードを書かずに、Claude Codeで日本株の投資ツールを2つ作った全体像》",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+    approach: "作者是公司员工，自己用规则做日本股票判断。代码几乎不手写，让 Claude Code 当项目管理，再把实现分给其他代理。先做投资可否检查，10 月又做急腾检查，并规定工具不得自动下单。",
+    outcomes: [
+      "源披露：第一套从 2026 年 9 月 25 日起步，大约两周半里提交 300 次以上，测试超过 800 件，规格书大约 45 本。第二套从 10 月 8 日起步。急腾检查用 Claude API 做标题分类，每月上限 10 美元，快触到上限就停掉 AI、改用关键词匹配。这些是这一段开发上的数字，不可外推到别的品种或窗口。",
+      "300 次、800 件和大约 45 本规格书都属于第一套，不要写到 10 月 8 日才起步的第二套上。10 美元是分类 API 的月上限，不是两套工具的开发账单。",
+      "工具只给候选和依据，下单仍由作者自己做，不要写成已经自动交易。同作者讲分工的另一篇已留 pool。launchd、PostgreSQL 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 跨到 10-16，仍取 published 10-11。正文无配图。作者卡 GitHub／website 为空。本文是做法介绍，不是荐股。",
+      "导流：https://x.com/stockrules_jp GET 200（标题 ルールベース株研 | AIを活用してルールで投資する (@stockrules_jp) / X）。文内相关篇 https://zenn.dev/stockrules_jp/articles/722ba3bbde90dd GET 200（分工篇，已留 pool）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先按工具把提交数、测试数和费用上限分开，再谈「两个工具都已经跑起来了」",
+        body: "请按实测算一算：两套工具各是哪一天起步的；提交次数、测试件数和规格书本数绑在哪一套上；分类或生成用的 API 有没有月上限，触到上限时怎么做；工具会不会自动下单。不要把第一套的开发数字写到第二套上，也不要把月上限写成开发账单。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者让 Claude Code 当项目管理，自己几乎不写代码，先后做了投资可否和急腾两套检查工具。",
+      "第一套从 9 月 25 日起大约两周半，提交 300 次以上，测试超过 800 件，规格书大约 45 本。",
+      "第二套从 10 月 8 日起；分类 API 每月上限 10 美元，快触到就停掉 AI。下单仍由作者自己做。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-11T17:30:05.187+09:00 → UTC 2026-10-11T08:30:05Z、Asia/Shanghai 2026-10-11 16:30:05；bodyUpdatedAt 2026-10-16T15:58:10.925+09:00，晚于发布且跨到 10-16，仍取 published → 2026-10-11；GET 200（UA MiraBot/1.0））：stockrules_jp 在《コードを書かずに、Claude Codeで日本株の投資ツールを2つ作った全体像》记下 300 次和 800 件。不要因 bodyUpdatedAt 写成 2026-10-16。",
+      "300／800／约 45 本只属于第一套。10 美元是分类月上限。同作者分工篇留 pool。",
+    ],
+  },
+  {
+    id: "961",
+    slug: "yume-403-918",
+    title: "yumekui：让 Claude Code 按例程每天给 GitHub Trending 写日文摘要，做成站点「github新聞」。例程里若直接调其他仓库的 GitHub API，会全部变成 403，因为云上环境只允许访问派给这条例程的仓库。作者改成由 GitHub Actions 先把材料收好再启动例程。最初用 6 点收材料、7 点跑例程来错开，可是 10 月 1 日的定时任务拖到 9:18，10 月 2 日拖到 9:25，例程仍按点启动，用的还是前一天的材料。现在改成材料收完再触发例程；定时收材料改到 5:47、7:17、8:47，避开整点。每天新写的是近 10 日第一次上榜的条目，90 日后再上榜的会重写。",
+    summary: "yumekui 让 Claude Code 例程写 GitHub Trending 的日文摘要时，在例程里调其他仓库的 GitHub API 会 403。改成 Actions 收材料后，6 点的定时任务在 10 月 1 日拖到 9:18、10 月 2 日拖到 9:25，例程仍按点启动、用了旧材料。这些是这一段定时上的数字，不可外推到别的日期或账号。",
+    description: "面向已经把云上例程和 GitHub Actions 按钟点错开、却还没有对照「材料是不是当天的」的人：把 403 和 9:18／9:25 写成门禁，区别于只介绍例程、却没有写下延误记录的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yumekui/articles/f8aef8f6a0afac",
+    sourceLabel: "zenn.dev·yumekui 实践帖",
+    upvotes: 852,
+    trending: false,
+    tags: [
+      "claude-code",
+      "routines",
+      "github-actions",
+      "trending",
+      "schedule",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yumekui/articles/f8aef8f6a0afac",
+      label: "zenn.dev·yumekui《【初投稿】Claude Code に毎朝の仕事を任せて、GitHub Trending を日本語で要約するサイトを作った》",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+    approach: "作者做了每天用日文摘要 GitHub Trending 的站点，摘要由 Claude Code 按例程来写。先在例程里直接调 GitHub API，遇到 403 后改成 Actions 先收材料；又发现按钟点错开会被延误打乱，于是改成收完再触发。",
+    outcomes: [
+      "源披露：例程里调其他仓库的 GitHub API 会全部 403。改成 Actions 先收材料后，原来 6 点的定时任务在 2026 年 10 月 1 日拖到 9:18，10 月 2 日拖到 9:25，例程仍按点启动，用的是前一天的材料。后来改成材料收完再触发例程；定时收材料改到 5:47、7:17、8:47。每天新写的是近 10 日第一次上榜的，90 日后再上榜的会重写。这些是这一段定时上的数字，不可外推到别的日期或账号。",
+      "9:18 和 9:25 只属于 10 月 1 日和 2 日这两次延误，不要写成每天如此。10 日和 90 日是摘要复用规则，不要和延误时刻混用。",
+      "GitHub Actions 不在 19 个平台枚举里，不把 github 硬凑进 platforms。文内启动例程的 URL 把例程 ID 写成了占位，按源文原样披露，未当作完整可达链去核。",
+    ],
+    caveats: [
+      "正文无配图。作者卡 X／website 为空。",
+      "导流：https://github-trending.yumekui.org/ GET 200（标题 github新聞｜GitHub トレンドの人気リポジトリを毎朝日本語で解説）；https://note.com/ripe_pansy9259/n/nf241af29ead5?app_launch=false GET 200（作者相关篇）；https://github.com/yumekui08 GET 200。占位、未作为可达链去核：https://api.anthropic.com/v1/claude_code/routines/<routine の ID>/fire （按源文原样写出）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照材料是不是当天的，再谈「6 点收、7 点写就不会乱」",
+        body: "请按实测算一算：在例程里调其他仓库的 GitHub API 会得到什么结果；后来改成先收材料时，原先几点的定时任务在哪几天拖到了几点，例程有没有仍按点启动、用了旧材料；现在是按钟点错开，还是收完再触发。不要把某两天的延误写成每天如此。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者让 Claude Code 例程每天为 GitHub Trending 写日文摘要。例程里直接调其他仓库的 API 会 403。",
+      "改成 Actions 先收材料后，6 点的定时在 10 月 1 日拖到 9:18、10 月 2 日拖到 9:25，例程仍按点启动、用了旧材料。",
+      "现在改成材料收完再触发；每天新写近 10 日首次上榜的条目。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-11T12:36:10.380+09:00 → UTC 2026-10-11T03:36:10Z、Asia/Shanghai 2026-10-11 11:36:10；bodyUpdatedAt 与发布相同；取 published → 2026-10-11；GET 200（UA MiraBot/1.0））：yumekui 在《【初投稿】Claude Code に毎朝の仕事を任せて、GitHub Trending を日本語で要約するサイトを作った》记下 403 和延误。",
+      "9:18／9:25 只属于 10 月 1 日和 2 日。例程 ID 占位 URL 按原样写出、未当可达链去核。不要把 github 填进 platforms。",
+    ],
+  },
+  {
+    id: "962",
+    slug: "dai-9st-29sub",
+    title: "daichi1002：用 Claude Code 的云上例程，把设计合并之后的「实现 → 复核 → 开 PR」自动跑起来，每小时巡一次。一次运行只开 1 个 PR，单本大约控制在去掉测试和生成物后 400 行；未合并的 PR 到 3 本就不再开新的。实现用 Sonnet 5.5，复核用另一路 Opus 5.5 的子代理，且每轮新建。跑了 2 周，应用和后端合计 9 个故事、29 个小任务走过这条流程。其中有一个小任务因为等人抄后端接口定义，停了大约 46 小时，状态一直没变，谁也没注意到。",
+    summary: "daichi1002 用云上例程自动跑实现和开 PR。2 周里走完 9 个故事、29 个小任务；单本大约 400 行，未合并到 3 本就停开。有一个小任务等人时停了大约 46 小时。这些是这两周流程上的数字，不可外推到别的仓库或窗口。",
+    description: "面向已经让例程按小时自动开 PR、却还没有数「有多少任务在等人时静静停住」的人：把 9／29、大约 400 行和大约 46 小时写成门禁，区别于只介绍自动实现流、却没有对照这两周记录的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/daichi1002/articles/feeb4b63aac7d3",
+    sourceLabel: "zenn.dev·daichi1002 实践帖",
+    upvotes: 853,
+    trending: false,
+    tags: [
+      "claude-code",
+      "routines",
+      "jira",
+      "pull-request",
+      "unattended",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/daichi1002/articles/feeb4b63aac7d3",
+      label: "zenn.dev·daichi1002《JiraとClaude Codeルーティーンで自動実装フローを作った》",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+    approach: "作者先前已经用 OpenSpec 写下规格再实现。这一篇把设计合并之后的实现、复核和开 PR 交给每小时启动的云上例程，人主要做设计合并和看实现 PR。",
+    outcomes: [
+      "源披露：跑了 2 周，应用和后端合计 9 个故事、29 个小任务走过这条流程。一次运行只开 1 个 PR，单本大约控制在去掉测试和生成物后 400 行；未合并的 PR 到 3 本就不再开新的。有一个小任务因为等人抄后端接口定义，停了大约 46 小时，状态一直没变。这些是这两周流程上的数字，不可外推到别的仓库或窗口。",
+      "9 和 29 是故事和小任务的件数，不要和单本大约 400 行、未合并上限 3 本混成一列。大约 46 小时只属于那一个等人的小任务，不要写成平均等待。",
+      "实现用 Sonnet 5.5、复核用 Opus 5.5，不要把模型名写成这 9 个故事的结论。同作者 OpenSpec 篇已留 pool。Jira 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 略早于发布、同日，仍取 published 10-09。正文无配图。作者卡 X／website 为空。",
+      "导流：https://github.com/daichi1002 GET 200。文内相关篇 https://zenn.dev/daichi1002/articles/b5bc95c172e1fb GET 200（OpenSpec 篇，已留 pool）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先数清两周里走完几件、有哪件在等人时停住，再谈「设计一合并就可以全自动」",
+        body: "请按实测算一算：自动流程跑了多久，走过几个故事、几个小任务；一次开几个 PR，单本大约多少行，未合并到几本就停开；有没有任务在等人时停住、停了多久、状态有没有变。不要把单本行数或未合并上限写成故事件数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者用每小时启动的云上例程，自动做实现、复核和开 PR，一次只开 1 本。",
+      "2 周里走完 9 个故事、29 个小任务；单本大约 400 行，未合并到 3 本就停开。",
+      "有一个小任务等人时停了大约 46 小时，状态一直没变，当时谁也没注意到。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-09T23:24:56.586+09:00 → UTC 2026-10-09T14:24:56Z、Asia/Shanghai 2026-10-09 22:24:56；bodyUpdatedAt 2026-10-09T23:13:48.990+09:00，略早于发布、同日；取 published → 2026-10-09；GET 200（UA MiraBot/1.0））：daichi1002 在《JiraとClaude Codeルーティーンで自動実装フローを作った》记下 9 个故事和大约 46 小时。",
+      "大约 46 小时只属于那一个等人的小任务。同作者 OpenSpec 篇留 pool。不要把 Jira 填进 platforms。",
+    ],
+  },
+  {
+    id: "963",
+    slug: "yasu-220sk-web",
+    title: "yasu888：一直因为「云上用不了本地技能」而不太敢用 Claude Code on the Web。后来把本地大约 220 个技能打成插件，从自己的 dotfiles 市场加到 claude.ai，云会话里也能用了。第一次对话时会话往往还没开始，技能不会出现，要到第二次对话或之后才用得上。从市场拉更新时，「检查更新」第一次可能失败，稍等再按一次才会通过。作者写明这只是自己试通的一种作法。",
+    summary: "yasu888 把本地大约 220 个技能打成插件，接到 Claude Code on the Web。第一次对话常常还看不到技能；市场更新有时要按第二次才通过。这些是这一次接通上的观察，不可外推到别的账号或版本。",
+    description: "面向已经把技能放在本地、却以为云会话完全用不了的人：把大约 220 个技能、以及第一次对话看不到、更新要再按一次写成门禁，区别于只写「做成插件就能用」、却没有记下这两处顺序的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yasu888/articles/976b6d16ee68d7",
+    sourceLabel: "zenn.dev·yasu888 实践帖",
+    upvotes: 854,
+    trending: false,
+    tags: [
+      "claude-code",
+      "skills",
+      "plugins",
+      "cloud",
+      "dotfiles",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yasu888/articles/976b6d16ee68d7",
+      label: "zenn.dev·yasu888《クラウド開発環境でもローカルSkillsを使いたい！【Claude Code on the web】》",
+      date: "2026-10-17",
+      dateLabel: "发布",
+    },
+    approach: "作者本来以「云上用不了本地技能」为由，不太敢把 Claude Code on the Web 纳入流程。后来把 skill 打进插件和市场，走通云会话里调用本地技能的路径，并记下第一次对话和更新按钮上的顺序问题。",
+    outcomes: [
+      "源披露：本地技能大约 220 个，打成插件并从 dotfiles 市场加到 claude.ai 后，云会话里也能用。第一次对话时会话往往还没开始，技能不会出现，要到第二次或之后。市场「检查更新」第一次可能失败，稍等再按一次才会通过。这些是这一次接通上的观察，不可外推到别的账号或版本。",
+      "大约 220 个是本地技能的件数，不要写成一次会话里实际调用的次数。第一次对话看不到和更新要再按一次，是两个不同的顺序问题，不要混成同一种故障。",
+      "作者写明这是自己试通的一种作法，不是唯一作法。文内 claude.ai 的产品页按区域不可用披露，不因 HTTP 200 算可达。",
+    ],
+    caveats: [
+      "正文配图 9 张须写完整 URL，不要只写「配图 9 张见本批 md」。作者写明「人間が書きました」。",
+      "导流：https://yasu.lifemate.dev/ GET 200（作者卡网站，标题 Hello! I'm Yasu.）；https://github.com/yasu-888 GET 200；https://x.com/_yasu888 GET 200。配图 9 张均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/bc7b00633821-20261017.png ；https://static.zenn.studio/user-upload/09a2476c8937-20261017.png ；https://static.zenn.studio/user-upload/763b9f2eae91-20261015.png ；https://static.zenn.studio/user-upload/c49cd98d80ee-20261015.png ；https://static.zenn.studio/user-upload/b4a01083bb88-20261015.png ；https://static.zenn.studio/user-upload/e98616cc2d52-20261015.png ；https://static.zenn.studio/user-upload/81c814a7d8e3-20261015.png ；https://static.zenn.studio/user-upload/65d403520a08-20261017.png ；https://static.zenn.studio/user-upload/e8ac7731ba99-20261017.png 。一次资料已核：https://code.claude.com/docs/en/plugins/create-marketplace 、https://code.claude.com/docs/en/plugins/marketplace-reference 、https://code.claude.com/docs/en/plugins-reference 、https://claude.com/docs/plugins/overview 、https://claude.com/docs/plugins/platform-support 、https://claude.com/docs/skills/overview 、https://code.claude.com/docs/en/claude-code-on-the-web 、https://code.claude.com/docs/en/skills 、https://code.claude.com/docs/en/plugins/loading 、https://code.claude.com/docs/en/cloud-environments 均 GET 200。未达、按区域不可用披露、不因 200 算可达：https://claude.ai/code 、https://claude.ai/new 、https://claude.ai/customize/plugins 、https://claude.ai/customize/skills/yours 均 GET 200、redir 1，最终 https://claude.com/app-unavailable-in-region（后三条标题 App unavailable in region | Claude by Anthropic）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清第一次对话看不到和更新要再按一次，再谈「做成插件就能在云上用」",
+        body: "请按实测算一算：打成插件的本地技能大约有多少个；第一次云对话能不能看到这些技能，要到第几次才用得上；从市场拉更新时，第一次按「检查更新」会不会失败。不要把技能总数写成一次会话里实际调用的次数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者把本地大约 220 个技能打成插件，从自己的 dotfiles 市场加到 claude.ai。",
+      "第一次对话时会话往往还没开始，技能不会出现，要到第二次或之后。",
+      "市场「检查更新」第一次可能失败，稍等再按一次才会通过。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-17T15:38:19.184+09:00 → UTC 2026-10-17T06:38:19Z、Asia/Shanghai 2026-10-17 14:38:19；bodyUpdatedAt 与发布相同；取 published → 2026-10-17；GET 200（UA MiraBot/1.0））：yasu888 在《クラウド開発環境でもローカルSkillsを使いたい！【Claude Code on the web】》记下大约 220 个技能。",
+      "四条 claude.ai 产品页按区域不可用披露。9 张配图须写完整 URL。第一次对话看不到和更新再按一次不要混用。",
+    ],
+  },
+  {
+    id: "964",
+    slug: "kki-6ses-10pr",
+    title: "kki2ne：最近常常同时开 6 个以上 Claude Code 会话。写代码已经够快，卡住的总是自己这一侧：读差分为止，以及回应 Claude 拜托的事。作者用 mods 做了两块自己用的画面：右边按块翻看复核中的差分，另一路会话则在输入框上方用「现在做／稍后做」两段带子列出拜托事项。到写这篇时，用这块复核窗读过 10 本以上 PR。",
+    summary: "kki2ne 同时开 6 个以上会话时，卡住的是读差分和回应拜托。用 mods 做了复核窗和拜托带子，到写这篇时已用复核窗读过 10 本以上 PR。6 个以上和 10 本以上不要混用。这些是这一段自己用屏幕上的数字，不可外推到别的工作方式或版本。",
+    description: "面向已经并排开许多 Claude Code 会话、却还没有数「用自己做的复核窗读过几本 PR」的人：把 6 个以上和 10 本以上写成门禁，区别于只介绍 mods 能画界面、却没有对照阅读量的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kki2ne/articles/claude-code-mods-review-pane-todo-band-2026",
+    sourceLabel: "zenn.dev·kki2ne 实践帖",
+    upvotes: 855,
+    trending: false,
+    tags: [
+      "claude-code",
+      "mods",
+      "code-review",
+      "multi-session",
+      "ui",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kki2ne/articles/claude-code-mods-review-pane-todo-band-2026",
+      label: "zenn.dev·kki2ne《Claude Code modsで、コードレビューのペインと「頼まれごと」の帯を作った》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+    approach: "作者同时开许多会话做复核。为了不再在对话记录里找「现在看到第几块」和「Claude 还在等什么」，用 mods 做了两块常驻画面，并记下用复核窗读过的 PR 数量。",
+    outcomes: [
+      "源披露：最近常常同时开 6 个以上会话。作者做了按块翻看差分的复核窗，以及「现在做／稍后做」的拜托带子。到写这篇时，用这块复核窗读过 10 本以上 PR。这些是这一段自己用屏幕上的数字，不可外推到别的工作方式或版本。",
+      "6 个以上是同时开着的会话数，10 本以上是用复核窗读过的 PR 数，不要混成同一个量。mods 需要 Claude Code v2.1.287 以后，不要写成所有版本都能画这样的界面。",
+      "硬窗是并排会话时的阅读量和两块自己用的屏幕，不是 hook 教程，也不是 mods 入门。Mods 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 晚于发布、同日，仍取 published 10-19。配图 7 张须写完整 URL，不要只写「配图 7 张见本批 md」。会话里现写的 mod 过期会被清掉，作者把中意的放到了自己的文件夹。",
+      "导流：https://github.com/gunubin GET 200；https://x.com/kki2ne GET 200（标题 きつね | アプリ開発 (@kki2ne) / X）；https://mono-and.blog/ GET 200（作者卡网站，标题 mono-and.blog）；https://mono-and.blog/blog/claude-panes-tmux-multi-session-monitor-2026/ GET 200（作者相关篇）。配图 7 张均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/deployed-images/f1d01ba461a1238e6534e0e1.webp?sha=298618c5aad2f742df1138ef6f4c4e2de5c30199 ；https://static.zenn.studio/user-upload/deployed-images/61a3d31082cef122ba237f49.webp?sha=dabf976fbc3ca88bb9b76a3870ffcc6b4485f1fa ；https://static.zenn.studio/user-upload/deployed-images/2fcd96e25b979e908e03f592.webp?sha=57ce94411df8d6f3c38589c2fff211696530154a ；https://static.zenn.studio/user-upload/deployed-images/42656d76a9aa0728d396b920.webp?sha=6c04681a207067b8717e997abdcc873ad34171d1 ；https://static.zenn.studio/user-upload/deployed-images/ec79c0b74e0511bfd91021e9.webp?sha=42b15323be14c0ca1cf7b4b84c94c21cb67b9107 ；https://static.zenn.studio/user-upload/deployed-images/f35d7635d5c26c412a46dd5d.webp?sha=69b78d7500a1fa3f0bc3cecaf263c5d16ff55683 ；https://static.zenn.studio/user-upload/deployed-images/a840aff66b115ccfcf570b86.webp?sha=cd41462762f360c64f6530ea58b5c4ceb2b6861c 。一次资料：https://code.claude.com/docs/ja/plugins/mods/overview 、https://code.claude.com/docs/ja/plugins/mods/create 均 GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清同时开着几路、用复核窗读过几本，再谈「mods 做个界面就清楚了」",
+        body: "请按实测算一算：同时开着多少个会话；自己做了哪两块画面；到写这篇时，用复核窗读过多少本 PR。不要把同时开着的会话数和读过的 PR 数写成同一个量。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者同时开 6 个以上会话时，卡住的是读差分和回应拜托，而不是写代码的速度。",
+      "用 mods 做了按块翻看差分的复核窗，以及「现在做／稍后做」的拜托带子。",
+      "到写这篇时，用这块复核窗读过 10 本以上 PR。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-19T15:35:35.957+09:00 → UTC 2026-10-19T06:35:35Z、Asia/Shanghai 2026-10-19 14:35:35；bodyUpdatedAt 2026-10-19T15:48:57.988+09:00，晚于发布、同日，仍取 published → 2026-10-19；GET 200（UA MiraBot/1.0））：kki2ne 在《Claude Code modsで、コードレビューのペインと「頼まれごと」の帯を作った》记下 6 个以上和 10 本以上。",
+      "6 个以上和 10 本以上不要混用。7 张配图须写完整 URL。硬窗不是 hook 教程。",
+    ],
+  },
+  {
+    id: "965",
+    slug: "wado-7car-3role",
+    title: "wadome_do：白天开拖车运车，晚上用 Claude Code 做浏览器游戏「僕らは陸送屋」，代码几乎都交给它写。先在 CLAUDE.md 里把角色分成开发、图形和宣传站点三摊，一个会话只动其中一摊。作者多用手机，验证放在云上，这里踩过两个坑：会话一结束，背后的进程就没了，验证常常中途消失；后来把「启动服务器 → 通关式地装上 7 台车 → 看结果」收成一条前台命令 verify.sh 7。另一个坑是验证脚本自己定义了全局的 fm，把本体里忘了取值的缺陷盖住了。",
+    summary: "wadome_do 用 Claude Code 做 7 台装载的拖车游戏，把工作分成三摊，每会话只动一摊。云上验证踩过两个坑，后来收成一条前台命令，按实际操作装上 7 台车来检查。这些是这一段制作上的作法，不可外推到别的游戏或环境。",
+    description: "面向已经在云上让 Claude Code 做游戏、却把「验证脚本能跑完」当成本体没有缺陷的人：把三摊分工、7 台通关验证，以及验证脚本掩盖本体缺陷写成门禁，区别于只展示成品、却没有写下这两个云上坑的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/wadome_do/articles/wadome-ai-game-dev-notes",
+    sourceLabel: "zenn.dev·wadome_do 实践帖",
+    upvotes: 856,
+    trending: false,
+    tags: [
+      "claude-code",
+      "game",
+      "cloud",
+      "verification",
+      "roles",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/wadome_do/articles/wadome-ai-game-dev-notes",
+      label: "zenn.dev·wadome_do《現役のキャリアカー運転手がClaude Codeでブラウザゲームを作っている話》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者是现役拖车司机，用 Claude Code 写几乎全部游戏代码，画和声音交给别的生成工具。为避免一个会话改得到处都是，先把角色和分支分开，并专门处理云上验证会中途消失的问题。",
+    outcomes: [
+      "源披露：工作分成开发、图形和宣传站点三摊，一个会话只动其中一摊。云上验证踩过两个坑：会话一结束背后的进程就没了；验证脚本里的全局 fm 把本体忘了取值的缺陷盖住了。后来把通关式地装上 7 台车收成一条前台命令。这些是这一段制作上的作法，不可外推到别的游戏或环境。",
+      "7 是这条验证命令要装上的车数，也是游戏里拖车的装载台数，不要写成验证过 7 次。三摊是角色分工，不要写成 3 个云上坑。",
+      "画用 ChatGPT、声音用 ElevenLabs，那是素材分工，硬窗是 Claude Code 的角色划分和云上验证，不要因此把 chatgpt 填进 platforms。",
+    ],
+    caveats: [
+      "正文无配图。作者卡 GitHub／X／website 均为空，导流以正文里的站点为准。",
+      "导流：https://wadoooomedou.itch.io/we-are-car-carriers GET 200（可玩页，标题 We Are Car Carriers by WadooooMeDou）；https://bokuriku-game.netlify.app/ GET 200（介绍站）；https://note.com/wadome_do GET 200（作者 note，标题 ワドメ堂｜note）。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先分清三摊分工和 7 台验证，再谈「云上能跑完就说明游戏没问题」",
+        body: "请按实测算一算：一个会话允许动哪几摊；云上验证踩过几个坑，分别是什么；后来的验证命令一次要按实际操作装上几台车；验证脚本有没有把本体的缺陷盖住。不要把装载台数写成验证次数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者把工作分成开发、图形和宣传站点三摊，一个会话只动其中一摊。",
+      "云上验证曾因会话结束而中途消失，后来收成一条前台命令，按实际操作装上 7 台车来检查。",
+      "验证脚本里的全局变量一度盖住了本体忘了取值的缺陷，作者把这条教训写进了 CLAUDE.md。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-27T14:32:19.176+09:00 → UTC 2026-10-27T05:32:19Z、Asia/Shanghai 2026-10-27 13:32:19；bodyUpdatedAt 与发布相同；取 published → 2026-10-27；GET 200（UA MiraBot/1.0））：wadome_do 在《現役のキャリアカー運転手がClaude Codeでブラウザゲームを作っている話》记下三摊和 7 台验证。",
+      "7 是装载台数，不是验证次数。不要把 chatgpt 填进 platforms。作者卡社交为空，导流以正文站点为准。",
+    ],
+  },
+  {
+    id: "967",
+    slug: "men-3stum-296",
+    title: "menmen_ailab：自己平时不写代码，在空文件夹里试着给 Claude Code 只加了 1 个 Mod：给输入框 Markdown 上色的 md-prompt。先是 2.1.295，Mods 所需的 2.1.287 已经满足，但官方文档里写到的内置 cc-plugin-diff 当时既不在「已安装」里，搜索也找不到；出现更新提示并重启后变成 2.1.296，这个 Mod 才出现。参考文写去 ~/.claude/plugins/ 看内容，作者的环境里这个文件夹根本没有，后来改成按官方文档把仓库取下来再 validate。第一次对仓库根目录做 validate，虽然显示通过，却没有 hooks 和 calls 两行——当时验证的是市场说明目录，不是插件本身那一层。",
+    summary: "menmen_ailab 平时不写代码，只试加了 1 个 Mod。2.1.295 里找不到文档所写的内置 cc-plugin-diff，更新到 2.1.296 后才出现；参考文里的插件目录并不存在；对仓库根目录 validate 会通过，却看不到 hooks 和 calls。这些是这一次安装上的对照，不可外推到别的 Mod 或版本。",
+    description: "面向已经按介绍去加 Claude Code Mod、却在「已安装」或 validate 通过后仍对不上文档的人：把 2.1.295 对 2.1.296、目录不存在，以及根目录 validate 看不出 hooks／calls 写成门禁，区别于只写安装步骤、却没有记下这 3 处磕绊的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/menmen_ailab/articles/d1b8a41a908ad8",
+    sourceLabel: "zenn.dev·menmen_ailab 实践帖",
+    upvotes: 858,
+    trending: false,
+    tags: [
+      "claude-code",
+      "mods",
+      "md-prompt",
+      "plugin-validate",
+      "non-coder",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/menmen_ailab/articles/d1b8a41a908ad8",
+      label: "zenn.dev·menmen_ailab《Claude Code Modsは要る? コードを書かない私が1つ入れて確かめた ── 安全な入れ方と、使ってみた感想》",
+      date: "2026-10-13",
+      dateLabel: "发布",
+    },
+    approach: "作者平时不写代码，在新的空文件夹里只试加 md-prompt，并且先在 Claude Code 外面把仓库取下来做 validate，再安装。过程里碰到 3 处和文档或参考文对不上的地方，都按实际环境改了步骤。",
+    outcomes: [
+      "源披露：试加的是 1 个 Mod。2.1.295 已经满足 Mods 所需的 2.1.287，但文档里的内置 cc-plugin-diff 当时找不到；更新并重启成 2.1.296 后才出现。参考文要看的 ~/.claude/plugins/ 在作者环境里并不存在。对仓库根目录 validate 会显示通过，却没有 hooks 和 calls，因为验证的是市场说明目录，不是插件那一层。这些是这一次安装上的对照，不可外推到别的 Mod 或版本。",
+      "1 个 Mod、3 处磕绊和 2.1.295／2.1.296 不要混成同一个量。作者写明为什么 2.1.295 里没有 cc-plugin-diff，自己也没查清，不要写成已经找到原因。",
+      "硬窗是这 3 处安装磕绊，不是 hook 教程，也不是教人做 Mod。md-prompt 的作者是 nogu66，仓库作为一次资料披露，不列入本条作者产品导流。Mods 不在 19 个平台枚举里，不硬凑。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 晚于发布、同日，仍取 published 10-13。正文无配图。作者卡 GitHub／website 为空。试验是在空文件夹 ~/mods-test 里做的，不是在有重要文件的目录里。",
+      "导流：https://x.com/menmen_ailab GET 200（标题 menmen｜実践AI活用ラボ (@menmen_ailab) / X）。一次资料、不列入作者产品导流：https://github.com/nogu66/md-prompt GET 200；https://code.claude.com/docs/ja/plugins/mods/overview GET 200。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先对照版本里有没有文档所写的内置 Mod，再谈「validate 通过就可以装」",
+        body: "请按实测算一算：试加了几个 Mod，先用的是哪个版本；文档里写到的内置 Mod 当时找不找得到，更新到哪一版才出现；参考文里的目录在自己环境里有没有；对哪一层做 validate 会通过却看不到 hooks 和 calls。不要把版本号和磕绊次数写成同一个量。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者在空文件夹里只试加 md-prompt，并先在外部把仓库取下来做 validate。",
+      "2.1.295 里找不到文档所写的内置 cc-plugin-diff，更新到 2.1.296 后才出现。",
+      "参考文里的插件目录并不存在；对仓库根目录 validate 会通过，却看不到 hooks 和 calls，要指到插件那一层才看得到。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-13T09:26:04.260+09:00 → UTC 2026-10-13T00:26:04Z、Asia/Shanghai 2026-10-13 08:26:04；bodyUpdatedAt 2026-10-13T09:30:41.022+09:00，晚于发布、同日，仍取 published → 2026-10-13；GET 200（UA MiraBot/1.0））：menmen_ailab 在《Claude Code Modsは要る? コードを書かない私が1つ入れて確かめた》记下 3 处磕绊。",
+      "硬窗不是 hook 教程。2.1.295 里找不到 cc-plugin-diff 的原因，作者写明自己也没查清。md-prompt 仓库不列入本条作者导流。",
+    ],
   }
 ];
 
