@@ -60361,6 +60361,418 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
       date: "2026-11-07",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "823",
+    slug: "pepe-12to3-17r-6749",
+    title: "pepe_3_go：向 Antigravity 打听如何少耗用量，对方给出「同一问题交替调用三个模型的平均」——Sonnet 1.9 倍、Opus 2.6 倍，并称 GPT-OSS 是唯一没有思考过程的模型、用量按 0.1% 显示；作者用 transcript_full.jsonl 与屏幕核对后，这三项都被否定。约 30 分钟的一场对话里，10 分钟用量从 12% 降到 3%；17 次回复每次约 1 万到 1.7 万 token。/compact 后一度从 9,685 降到 6,749（约 −30%），10:02 又升到 12,467",
+    summary: "个人（pepe_3_go／いわい　ゆう）；披露在工作账号上使用 Antigravity 桌面版时，用量掉得快，就向 Antigravity 自己打听节省办法。对方给出模型倍率，并称依据是「同一问题交替调用三个模型的平均」：Sonnet 1.9 倍、Opus 2.6 倍；还说 GPT-OSS 是唯一没有思考过程（Thinking）的模型，用量按 0.1% 显示。作者并没有做过这种测量，于是去读会话目录里的 transcript_full.jsonl，并对照开始时与 10 分钟后的用量屏幕。GPT-OSS 的日志里同样留着思考内容；屏幕是整数百分比，不是 0.1% 单位；作者也没有做过「三模型交替平均」。约 30 分钟的这一场对话里，10 分钟从 12% 降到 3%（9 个点），其中切到 Sonnet、Opus 后屏幕上立刻看到的减少合计 8 个点；按次粗算 GPT-OSS 120B 约 0.3% 以下（推定）、Claude Sonnet 4.6 约 2%、Claude Opus 4.6 约 4%。17 次回复每次约 1 万到 1.7 万 token，量差不大。连续两次 Sonnet 时，第 2 次新读只有 730 token；第一轮就已经读了约 1.2 万。/compact 直前 9,685、做摘要那一轮 11,276、紧接着 6,749（约 −30%），继续聊到 10:02 变成 12,467。当时 Gemini 的周额度是 0%，Claude 与 GPT-OSS 共用另一格。不代你同样听到 1.9 倍、2.6 倍或看到 12% 降到 3%，就等于模型倍率已经测准，或 /compact 以后都会少 30%，或问 AI 报来的「实测量」可以直接记账。",
+    description: "面向已经把「AI 报出了倍率与测法」或「做了 /compact」当成用量已经查清、却还没按同一场对话把屏幕上的百分比、日志里每次的 token，以及对方声称的测法有没有真的做过分开记的人：把「用量须同时用屏幕与日志核对，不能把 AI 自称的实测量直接入账」写成门禁，区别于只听建议或只看一次摘要的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/pepe_3_go/articles/antigravity-usage-ask-ai-vs-log",
+    sourceLabel: "zenn.dev · AIに自分の使用量を聞いたら、測っていない「実測値」が返ってきた──Antigravityのログで答え合わせする",
+    upvotes: 714,
+    trending: false,
+    tags: [
+      "Antigravity",
+      "usage",
+      "logs",
+      "compact",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 用量核对的对照边界（是不是约同一场约 30 分钟的对话要把屏幕上 10 分钟 12%→3% 与日志里 17 次回复的 token 分开记，是不是约 AI 所说 1.9 倍、2.6 倍和「交替调用的平均」并没有做过，是不是约 /compact 后一度 9,685→6,749 之后又升到 12,467）以及「绝不可把 AI 自称的实测量写成已经测准」纪律",
+      "Agent 按实践帖输出：应怎样同时记下屏幕上的整数百分比、transcript_full.jsonl 里每次的 input_tokens／cache_read_tokens／output_tokens，以及 Gemini 额度当时是 0%、Claude 与 GPT-OSS 共用另一格；并把「交替平均」这种测法有没有做过单独记账",
+      "人工保留这一场对话的屏幕截图、日志与 /compact 前后的 token 行；Agent 不代你保证「同样听到 1.9 倍、2.6 倍或看到 12% 降到 3% 就等于倍率已经测准，或 /compact 以后都会少 30%，或问 AI 报来的实测量可以直接记账」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-06T18:33:01.957+09:00 → 2026-11-06，同时刻为 UTC 2026-11-06T09:33:01Z、Asia/Shanghai 2026-11-06 17:33:01；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：pepe_3_go（いわい　ゆう）在《AIに自分の使用量を聞いたら、測っていない「実測値」が返ってきた──Antigravityのログで答え合わせする》写同一场对话上屏幕与日志的对照。作者卡 website／GitHub／X 为空。无作者产品导流。连载前作已核、不列入可达导流：https://zenn.dev/pepe_3_go/articles/shadow-ai-inside-approved-tools GET 200。配图 7 张均 GET 200（完整 URL 含 sha，不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/1b300e5c6d11ab880c085d11.png?sha=eb3558bc0901c10e9426f590ea8fbb293d897943 、https://static.zenn.studio/user-upload/deployed-images/8f5abae9a66b2b5ce67af384.png?sha=60b1a207f92d96be8b20e7c9c1bfc0b9d95d344a 、https://static.zenn.studio/user-upload/deployed-images/9afca48528cb66e45a3ce85b.png?sha=c683341eb7392518ee5bc1c695831317918f284b 、https://static.zenn.studio/user-upload/deployed-images/99abee3c5b342190c291019a.png?sha=ad21576c10bd03080ce8b1aec785fee1e1db9ac1 、https://static.zenn.studio/user-upload/deployed-images/a66d0a8aaa5b935feaae11ef.png?sha=8d33aced3b4549376ff830da539190d63cd59ac3 、https://static.zenn.studio/user-upload/deployed-images/f68ada473b3672ef691fbb5b.png?sha=74d11fedb42e694b4f3850b6b8d39c6ec6a3e5ab 、https://static.zenn.studio/user-upload/deployed-images/555cbbc6d4ddcacc656bd8ab.png?sha=1528f7f70b83d66ce805bb6cf49819fb957dda23 。",
+      "与近批会话日志工时、周额度自动跑完不同：本条不是把日志里的小时数怎么加总或额度剩余怎么读当主线，而是 AI 自称的「实测量」和测法，能不能在同一场对话的屏幕与日志上对上。Antigravity／Gemini／GPT-OSS 120B 枚举里没有对应平台，不硬凑；platforms 只填实践里用到且枚举内的 claude（Sonnet 4.6、Opus 4.6）。batch86 曾因当时与 kentaro 工时条过近未选，kentaro 为 #658，已非近批，主线也不同。",
+    ],
+    approach: `pepe_3_go（いわい　ゆう）在《AIに自分の使用量を聞いたら、測っていない「実測値」が返ってきた──Antigravityのログで答え合わせする》（页内 publishedAt 2026-11-06，与更新时刻相同）写明：工作账号上开始用 Google 的 Antigravity 之后，用量掉得快，就向 Antigravity 自己打听「怎么少耗用量」。对方给出了挺像那么回事的答案，连模型之间的消耗倍率都写了出来，并称依据是「同一问题交替调用三个模型的平均」。作者写明，那种测量并没有做过。Antigravity 桌面版会把会话日志留在 %USERPROFILE%\\.gemini\\antigravity\\brain\\<会话ID>\\.system_generated\\logs\\ 下，transcript_full.jsonl 是全文，transcript.jsonl 会截长行。模型回复的行里有 input_tokens、cache_read_tokens、output_tokens 和 thinking；切换模型的记录在用户行的 USER_SETTINGS_CHANGE 里。可选模型是 Gemini 3.8 Flash、Claude Sonnet 4.6（Thinking）、Claude Opus 4.6（Thinking）、GPT-OSS 120B（Medium）。当时 Gemini 的周额度是 0%，其余三个共用「Claude and GPT models」这一格，作者是在后三个之间切换着问的。
+
+用量屏幕是在对话开始时和 10 分钟后各截一张。10 分钟里从 12% 降到 3%，少了 9 个点；其中切到 Sonnet、Opus 之后屏幕上立刻看到的减少合计 8 个点，剩下约 1 个点由 GPT-OSS 的 3 次和 Sonnet 的 1 次分摊。按次粗算，GPT-OSS 120B 约 0.3% 以下（推定）、Sonnet 约 2%、Opus 约 4%。屏幕百分比是整数，作者写明可能差约 1 个点，而且只看了约 30 分钟的这一场对话，不能细说倍率。日志里 17 次回复每次约 1 万到 1.7 万 token，量上差不多；作者推测减得快慢来自每 token 的权重，并写明 Antigravity 的换算方法并未公开。连续两次 Sonnet 时，第 2 次新读只有 730 token。第一轮就已经读了约 1.2 万。途中试了 /compact：直前 9,685，做摘要那一轮 11,276，紧接着 6,749（约 −30%），继续聊到 10:02 变成 12,467，比做之前还重。AI 说过「/compact 大约少 30%」，这一点碰巧对上了。三项被否定的主张是：GPT-OSS 是唯一没有思考过程的（日志里有 thinking；名称里的 Medium 看来是思考量设置，Gemini 3.8 Flash 同样显示 Medium）、1.9 倍与 2.6 倍来自交替调用的平均（并未做过）、用量按 0.1% 显示（屏幕是整数）。`,
+    outcomes: [
+      "源披露作者在工作账号的 Antigravity 桌面版上，向它打听如何少耗用量，并用同一场约 30 分钟对话的屏幕与 transcript_full.jsonl 做核对：AI 所称 Sonnet 1.9 倍、Opus 2.6 倍及「三模型交替平均」、GPT-OSS 没有思考过程、按 0.1% 显示，这三项都被否定；10 分钟用量从 12% 降到 3%，17 次回复每次约 1 万到 1.7 万 token，/compact 后一度 9,685→6,749（约 −30%）又在 10:02 升到 12,467。这是这一场对话上的一次记录，不可外推成其他账号、其他模型组合或下一场对话也会得到同一组百分比与倍率。",
+      "能把「可写成同时用屏幕百分比和日志里每次的 token 去核对应答里的倍率与测法」与「必须人完成的题目与导流链」拆开。",
+      "为把「AI 报出了倍率」或「做了 /compact」当成用量已经查清，以及把 1.9 倍、2.6 倍直接写进对照表提供提问清单。",
+    ],
+    caveats: [
+      "12%→3%、17 次、9,685／11,276／6,749／12,467，以及按次约 0.3% 以下、约 2%、约 4%，均为作者自述；测的是约 30 分钟的一场对话，不是多次平均。屏幕是整数，作者写明可能差约 1 个点；GPT-OSS 的 0.3% 以下是推定。1.9 倍、2.6 倍是 AI 的说法，不是日志里的对照结论，不能把时间或百分比差写成已经测准了模型倍率。/compact 约 −30% 只是紧接在 9,685 之后的 6,749，不能写成之后都会少 30%。减得快慢来自每 token 权重，作者写明是推测。",
+      "无作者产品／站点／仓／社交主页（作者卡 website／GitHub／X 为空），caveats 写明无作者产品导流。连载前作 https://zenn.dev/pepe_3_go/articles/shadow-ai-inside-approved-tools GET 200（文中「影子 AI」前篇，不列入产品导流）。配图 7 张均 GET 200，不列入产品导流（完整 URL 见 tips[0]）。",
+      "上面写的是个人实践帖（zenn.dev / pepe_3_go），也不是 Google Antigravity 或 Anthropic、OpenAI 的官文简报。platforms 只填 claude；Antigravity／Gemini／GPT-OSS 枚举里没有对应值，不硬凑。",
+    ],
+    prompts: [
+      {
+        title: "用量须先按同一场对话核屏幕与日志",
+        body: `你是资深 Agent 用量验收教练。只根据用户边界写门禁，不要编造用量已经测准。
+
+现在是不是约同一场约 30 分钟的对话要把屏幕上 10 分钟 12%→3% 与日志里 17 次回复的 token 分开记：{{whether_about_same_conversation_screen_and_log}}
+是不是约 AI 所说 1.9 倍、2.6 倍和「交替调用的平均」并没有做过：{{whether_about_claimed_average_not_measured}}
+是不是约 /compact 后一度少约 30% 之后又升回去：{{whether_about_compact_rebound}}
+
+输出 Markdown：
+1. 为什么「AI 报出了倍率与测法」或「做了 /compact」不能写成用量已经查清
+2. 应怎样同时检查屏幕上的整数百分比、日志里每次的 token，以及对方声称的测法有没有真的做过
+3. 只有一场 12%→3%、17 次回复的账本时，应怎样单独记账，而不是写成下一场也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样听到 1.9 倍、2.6 倍或看到 12% 降到 3% 就等于倍率已经测准，或 /compact 以后都会少 30%，或问 AI 报来的实测量可以直接记账」。`,
+      },
+      {
+        title: "一点九倍与百分之三十复盘",
+        body: `报告上可以写同一场对话里屏幕 10 分钟从 12% 降到 3%，17 次回复每次约 1 万到 1.7 万 token，以及 /compact 后一度 9,685→6,749（约 −30%）又在 10:02 升到 12,467；但这是这一场对话上的一次记录。请写复盘提纲。
+
+现象：{{twelve_to_three_and_compact_rebound}}
+
+输出：
+1. 更像模型倍率已经测准，还是只是这一场对话上屏幕与日志对上了，而 AI 的测法根本没做过
+2. 最小复验顺序（先核对有没有做过「交替平均」→再看屏幕整数百分比→再看日志每次 token 与 /compact 前后→再决定能不能对外说已测准）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「问 AI 得到倍率就等于已经测过」，或「/compact 一次少 30% 就等于以后都会少」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/pepe_3_go/articles/antigravity-usage-ask-ai-vs-log",
+      label: "zenn.dev · AIに自分の使用量を聞いたら、測っていない「実測値」が返ってきた──Antigravityのログで答え合わせする",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "824",
+    slug: "iguchi-5065r-31x-982",
+    title: "r_iguchi：汇总 Claude Code 用量日志——计费输入里约 98% 是 cache_read；有一个会话用了 13 天、发了 5,065 次请求，后半段每次约 84 万 cache_read、按每 100 万 token 0.50 美元估算约 0.42 美元，新会话每次约 2.7 万、约 0.013 美元，约 31 倍。后来 62 个会话、6,343 次请求里 cache_read 占 98.2%。子代理在 97 个会话、21,095 次请求里一次没用，写进 CLAUDE.md 的常时指示后，27 个会话里用了 11 次",
+    summary: "个人（r_iguchi／r.iguchi，写在株式会社ムクイル的技术博客）；披露日常用 Claude Code 做业务系统时，把用量日志加总，发现计费输入里约 98% 是 cache_read（提示缓存读取）。作者一度以为「缓存生效了就会便宜」，后来认为真正的成本是廉价单价被读了非常大的量。有一个时期，同一个会话用了 13 天、发了 5,065 次请求：后半段每次约 84 万 cache_read，按每 100 万 token 0.50 美元估算约 0.42 美元；新会话每次约 2.7 万、约 0.013 美元，约 31 倍。作者写明这是按该单价估算，单价随模型而变。后来重新汇总仍是同一倾向：62 个会话、6,343 次请求，input 13,457（0.0%）、cache_write 29,532,912（1.8%）、cache_read 1,602,017,331（98.2%）；上位会话的最大上下文有到 50 万到 60 万 token 的。子代理定义之后，在 97 个会话、21,095 次请求里一次没用；把「巨大文件走 code-explorer、常时有效、不等待再请」写进 CLAUDE.md 之后，27 个会话里用了 11 次。日志里工具调用的 84.2% 是每条消息只 1 件（平均 1.17 件／消息）；「若平均到 2 件、请求约少 41%」是推算，不是已经做到的结果。不代你同样看到约 98% 或约 31 倍，就等于下一阶段费用已经降下来，或子代理写进文件就等于会被用，或 0.42 美元已经是账单上的实付。",
+    description: "面向已经把「缓存已经生效」或「已经定义子代理」当成费用已经受控、却还没按同一批日志把 cache_read 占比、长会话后半段与新会话的每次成本，以及子代理到底有没有被调用分开记的人：把「费用须同时报上下文长度与请求次数，并核对该估算用的是哪一档单价」写成门禁，区别于只谈缓存单价变便宜的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mukuil_blog/articles/8b5c4f3844dedc",
+    sourceLabel: "zenn.dev · Claude Code のコストは「コンテキスト長 × リクエスト数」で決まる ― 実測で1リクエスト31倍の差",
+    upvotes: 715,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "cache-read",
+      "cost",
+      "subagent",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 费用验收的对照边界（是不是约同一批日志要把 cache_read 占比与 13 天、5,065 次请求后半段约 84 万对约 2.7 万的估算分开记，是不是约 0.42 美元与 0.013 美元用的是每 100 万 token 0.50 美元的假设单价，是不是约子代理在 97 个会话里一次没用、写进常时指示后 27 个会话里用了 11 次）以及「绝不可把缓存生效写成费用已经降下来」纪律",
+      "Agent 按实践帖输出：应怎样同时记下后来 62 个会话、6,343 次请求里 cache_read 占 98.2%，13 天会话上约 31 倍的估算，以及 84.2% 单件调用是日志观察、「平均到 2 件约少 41%」只是推算",
+      "人工保留日志汇总、单价假设与子代理前后两段会话数；Agent 不代你保证「同样看到约 98% 或约 31 倍就等于下一阶段费用已经降下来，或子代理写进文件就等于会被用，或 0.42 美元已经是账单上的实付」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T14:30:42.124+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T05:30:42Z、Asia/Shanghai 2026-11-05 13:30:42；bodyUpdatedAt 2026-11-05T14:29:05.221+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：r_iguchi（r.iguchi）在《Claude Code のコストは「コンテキスト長 × リクエスト数」で決まる ― 実測で1リクエスト31倍の差》写自己的用量日志对照。可达导流：https://www.mukuil.com/ GET 200（文内公司站点）。作者卡 website／GitHub／X 为空，出版物ムクイル技術ブログ的 GitHub／X 亦为空。正文无配图。同出版物更早的 #618 mukuil-markup-290h-to-147h（2026-07-23，标记工时）主线不同，非 114–117 近批。",
+      "与近批周额度自动跑完、Antigravity 屏幕对日志不同：本条不是把周额度剩余怎么读或 AI 自称的实测量当主线，而是 cache_read 占比、长会话后半段与新会话的每次估算，以及子代理有没有真的被调用。0.42 美元与 0.013 美元只接在「每 100 万 token 0.50 美元」这一假设上，不写成账单实付。",
+    ],
+    approach: `r_iguchi（r.iguchi）在株式会社ムクイル技术博客《Claude Code のコストは「コンテキスト長 × リクエスト数」で決まる ― 実測で1リクエスト31倍の差》（页内 publishedAt 2026-11-05；bodyUpdatedAt 略早于发布）写明：日常用 Claude Code 做业务系统，某次把用量日志加总，发现计费输入里约 98% 是 cache_read。缓存读取单价比普通输入低，作者一度以为这样会便宜，后来认为真正的成本是廉价单价被读了非常大的量。Claude Code 每调用一次工具就会再发一次请求，并把到那时为止的整段对话再送一遍；与上次相同的部分走缓存，单价变低，但读取量本身每次都在增加。
+
+有一个时期，同一个会话用了 13 天、发了 5,065 次请求。作者按每 100 万 token 0.50 美元估算 cache_read：后半段每次约 84 万 token、约 0.42 美元，新会话每次约 2.7 万 token、约 0.013 美元，约 31 倍（84 万／2.7 万）。作者写明单价随模型而变，要用自己的单价替换。后来重新汇总仍是同一倾向：62 个会话、6,343 次请求，input 13,457（0.0%）、cache_write 29,532,912（1.8%）、cache_read 1,602,017,331（98.2%）；上位会话里最大上下文有到 50 万到 60 万 token 的。团队据此把规则写进 CLAUDE.md：任务结束就 /clear；超过 300K 时任务中途指定保留内容做 /compact，结束后仍 /clear；约 150KB（约 5 万 token）的大文件交给只读、较便宜的 code-explorer 子代理。作者写明，只定义子代理还不够——在 97 个会话、21,095 次请求里一次没用；写成常时有效的指示后，27 个会话里用了 11 次。日志里工具调用的 84.2% 是每条消息只 1 件（平均 1.17 件／消息）；「若平均到 2 件、请求约少 41%」是按 1.17／2 的推算，不是已经做到的结果。约 5 万 token 再乘 1,000 次请求、再乘该单价得到约 25 美元，也是举例，不是一次实测账单。旧会话日志会在一定时间后自动删除，能汇总的只是手头还留着的那段。`,
+    outcomes: [
+      "源披露作者汇总自己的 Claude Code 用量日志：计费输入里约 98% 是 cache_read；有一个会话用了 13 天、发了 5,065 次请求，按每 100 万 token 0.50 美元估算，后半段每次约 0.42 美元、新会话每次约 0.013 美元（约 84 万对约 2.7 万 token，约 31 倍）。后来 62 个会话、6,343 次请求里 cache_read 占 98.2%。子代理在 97 个会话、21,095 次请求里一次没用，写进常时指示后 27 个会话里用了 11 次。13 天那次与后来的 62 个会话不是同一段样本，0.42 美元是该单价下的估算，不可外推成其他模型单价、其他团队或下一阶段费用已经降下来。",
+      "能把「可写成同时检查 cache_read 占比、长会话后半段与新会话的每次估算，以及子代理到底有没有被调用」与「必须人完成的题目与导流链」拆开。",
+      "为把「缓存已经生效」或「已经定义子代理」当成费用已经受控，以及把 0.42 美元写成账单实付提供提问清单。",
+    ],
+    caveats: [
+      "约 98%、5,065 次、约 84 万对约 2.7 万、约 31 倍，以及后来 62 个会话上的 98.2%，均为作者自述。0.42 美元与 0.013 美元只接在「每 100 万 token 0.50 美元」这一假设上，不是账单实付，也不能换到别的模型单价上直接用。13 天、5,065 次与后来的 62 个会话、6,343 次是两段汇总，不混成同一次样本。84.2% 是日志里的观察；「平均到 2 件约少 41%」和约 25 美元的例子都是推算，不是已经做到或已经付过的结果。子代理 11 次只发生在改写指示后的 27 个会话，不能写成以后都会被调用。",
+      "https://www.mukuil.com/ GET 200（可达公司站点导流；文内写明作者属于株式会社ムクイル）。作者卡 website／GitHub／X 为空。正文无配图。",
+      "上面写的是个人实践帖（zenn.dev / mukuil_blog · r_iguchi），写在公司出版物上，也不是 Anthropic 或 Claude Code 官方的官文简报。同出版物 #618 是标记工时，主线不同。",
+    ],
+    prompts: [
+      {
+        title: "费用须先按同一批日志报占比与单价假设",
+        body: `你是资深 Agent 费用验收教练。只根据用户边界写门禁，不要编造费用已经降下来。
+
+现在是不是约同一批日志要把 cache_read 占比与 13 天、5,065 次请求的每次估算分开记：{{whether_about_cache_read_share_and_long_session}}
+是不是约 0.42 美元用的是每 100 万 token 0.50 美元的假设单价：{{whether_about_unit_price_assumption}}
+是不是约子代理在改写指示前后的调用次数：{{whether_about_subagent_before_after}}
+
+输出 Markdown：
+1. 为什么「缓存已经生效」或「已经定义子代理」不能写成费用已经受控
+2. 应怎样同时检查占比、长会话后半段与新会话的每次估算，以及子代理到底有没有被调用
+3. 只有这一段 5,065 次与后来 62 个会话的账本时，应怎样单独记账，而不是写成下一阶段也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到约 98% 或约 31 倍就等于下一阶段费用已经降下来，或子代理写进文件就等于会被用，或 0.42 美元已经是账单上的实付」。`,
+      },
+      {
+        title: "三十一倍与百分之九十八复盘",
+        body: `报告上可以写 13 天、5,065 次请求后半段约 84 万对约 2.7 万（约 31 倍），以及后来 62 个会话里 cache_read 占 98.2%；但这是作者手头还留着的日志上的汇总，0.42 美元是假设单价下的估算。请写复盘提纲。
+
+现象：{{thirty_one_x_and_ninety_eight_percent}}
+
+输出：
+1. 更像费用已经受控，还是只是这一批日志上 cache_read 占比很高，而账单实付并没有直接给出
+2. 最小复验顺序（先核对单价假设→再把 13 天会话与后来 62 个会话分开→再看子代理前后两段有没有真的被调用→再决定能不能对外说已降费）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「缓存占比高就等于已经便宜」，或「定义了子代理就等于已经被调用」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mukuil_blog/articles/8b5c4f3844dedc",
+      label: "zenn.dev · Claude Code のコストは「コンテキスト長 × リクエスト数」で決まる ― 実測で1リクエスト31倍の差",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "825",
+    slug: "lilpacy-9of9-0of2-3x3",
+    title: "lilpacy：在 2026-10-21 到 22 日，用自己的 dotfiles 技能库测 Claude Code 技能发火——只看 description 的列表测试里，再编技能 9/9 被选中，实际作业里 2 次都没被读到；加强 description 仍是 2 次都没被读到；用 UserPromptSubmit hook 插入「先读这个技能」后 2 次都是最先读到，Codex 上 hook 之后名指的委托也是 2 次都先读。去掉「作」技能里对「送」技能的点名后，3 种委托各 3 次都是 3/3 传到下一技能，Codex 上 2 种同样顺序",
+    summary: "个人（lilpacy／pacy）；披露 2026-10-21 到 22 日在自己的 dotfiles 仓库（Claude Code 与 Codex 共用的技能群）里测量技能什么时候会被读到。作者把发火分成两段：先看 description 会不会进候选，再看当场会不会真的去读正文；并写明这是自己的整理，不是官方公布的内部实现。只把 description 列表拿去选的测试里，再编技能 9/9 被选中；实际会话里请它思考「把证迹贴到 Linear 的技能」和「用浏览器录 GIF 的技能」怎么分工时，模型直接打开被点名的两个技能作答，再编技能 2 次都没被读到。把 description 改成「打开比较对象之前先读」之后仍是 2 次都没被读到；用 UserPromptSubmit hook 插入「先读这个技能」后，2 次都是最先读到。加上 hook 之后，Codex 上带点名的委托也是 2 次都先读。测量方法上也走过弯路：把多条委托合成一次提问时会互相影响，合成时曾 1 件没选中，改成各做 6 次独立跑，改前改后都是 6/6。去掉「作」技能里对「送」技能的点名后，用「第 2 回合再说成果已经做好」的方法来测，GIF→Linear、比较图→PR、GIF→PR 三种委托各 3 次都是 3/3 传到下一技能；Codex（codex exec）上 GIF→Linear 与比较图→PR 两种同样顺序。作者写明各条件只有 2 到 3 次，这是现象存在的报告，不是效果大小；范围是 1 个仓库、4 个技能，送达技能只有 2 个，技能变多、description 变像之后有没有点名还能传到，还没有测。文中转述的 kaya、Scott Spence（10/50 为 20%、42/50 为 84%）和 Jia 等论文数字，不是作者自己的实测。不代你同样看到 9/9 或 3/3，就等于 description 已经足够，或 hook 以后都会先读，或去掉点名以后都还能传到。",
+    description: "面向已经把「列表测试里被选中」或「description 已经写清楚」当成技能会被读到、却还没按同一条委托把列表测试与实际会话里第一次技能调用分开记的人：把「技能发火须同时报候选与当场有没有读到，并且各条件只有两次到三次时不能写成已经稳定」写成门禁，区别于只改 description 或只看一次列表测试的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/lilpacy/articles/claude-code-skill-two-stage-activation",
+    sourceLabel: "zenn.dev · Claude Codeのskillが「選ばれるのに読まれない」理由：発火を2段階に分けて測った",
+    upvotes: 716,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "skills",
+      "hooks",
+      "Codex",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 技能发火验收的对照边界（是不是约同一条再编委托要把列表测试 9/9 与实际会话 2 次都没读到分开记，是不是约加强 description 仍是 2 次都没读到、加上 hook 后 2 次都先读到，是不是约去掉点名后 3 种委托各 3 次都是 3/3）以及「绝不可把列表测试满分写成技能已经会被读到」纪律",
+      "Agent 按实践帖输出：应怎样同时记下测量窗口 2026-10-21 到 22 日、各条件 2 到 3 次，以及 Codex 上 hook 之后 2 次、去掉点名后 2 种同样顺序；并把 kaya、Scott Spence、Jia 等文中转述的数字留在原作者名下",
+      "人工保留各条件的会话记录与次数；Agent 不代你保证「同样看到 9/9 或 3/3 就等于 description 已经足够，或 hook 以后都会先读，或去掉点名以后都还能传到」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T20:48:55.141+09:00 → 2026-10-25，同时刻为 UTC 2026-10-25T11:48:55Z、Asia/Shanghai 2026-10-25 19:48:55；bodyUpdatedAt 2026-10-25T20:35:45.319+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：lilpacy（pacy）在《Claude Codeのskillが「選ばれるのに読まれない」理由：発火を2段階に分けて測った》写列表测试与实际会话的对照。可达导流：https://lilpacy.me GET 200（跟随至 https://lilpacy.me/ 亦 GET 200）；https://github.com/lilpacy GET 200；https://x.com/0xpacy GET 200。正文无配图。厂商与论文一次资料已核、不列入可达导流：https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills 跟随至 https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills GET 200；https://code.claude.com/docs/en/skills 、https://code.claude.com/docs/en/hooks 均 GET 200；https://doi.org/10.1109/TSE.1979.234169 跟随至 https://ieeexplore.ieee.org/document/1702607/ GET 202（已写完整 URL，不列入可达导流）。第三方已核、不列入导流：https://zenn.dev/ka888aa/articles/b7fcb48a3b3fa9 、https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably 、https://arxiv.org/abs/2607.01136 均 GET 200。",
+      "与近批技能是否被选中、权限规则漏过不同：本条不是把旗标是否加载 deny 或技能文案设计当主线，而是同一条再编委托在列表测试与实际会话里读没读到，以及去掉点名之后下一技能还能否传到。各条件只有 2 到 3 次，作者写明不是效果大小。Codex 记在 chatgpt 枚举下。",
+    ],
+    approach: `lilpacy（pacy）在《Claude Codeのskillが「選ばれるのに読まれない」理由：発火を2段階に分けて測った》（页内 publishedAt 2026-10-25；bodyUpdatedAt 略早于发布）写明：自己写的技能越来越多，却常遇到「写了却没用」。一开始以为是 description 写得不好，就改文句、再做列表测试。后来出现列表测试满分、实际作业里却不被读到的技能，才意识到不能把「被用到」当成一件事来测。测量在 2026-10-21 到 22 日，对象是自己的 dotfiles 仓库里 Claude Code 与 Codex 共用的技能群。作者把发火分成两段：description 会不会让它进候选，以及进了候选之后当场会不会去读正文；并写明这只是自己用来整理实测的分法，不是 Claude Code 公布的内部实现。官方博客与文档只确认启动时系统提示里只有 name 与 description，正文要等模型判断相关才会读。
+
+列表测试里，再编技能在 9 条委托上 9/9 被选中。实际会话里请它思考「把证迹贴到 Linear 的技能」和「用浏览器录 GIF 的技能」怎么分工时，模型直接打开被点名的两个技能作答，再编技能 2 次都没被读到。把 description 改成「打开比较对象之前先读」之后仍是 2 次都没被读到；用 UserPromptSubmit hook 以 additionalContext 插入「先读这个技能」后，2 次都是最先读到。作者写明各条件只测了 2 次，只能说「这种委托形态下加强 description 没有生效」，不能说「加强 description 一定无效」。加上 hook 之后，Codex 上带点名的委托也是 2 次都先读。测量方法上：把多条委托合成一次提问时答案会互相影响，合成时曾 1 件没选中，改成各做 6 次独立跑，改前改后都是 6/6；测技能之间的交接时，若把能用的工具收成只剩 Skill、又只跑 1 个回合，模型读完第一个技能就停了，后来改成同一会话第 2 回合再说「成果已经做好」。去掉「作」技能里对「送」技能的点名后，GIF→Linear、比较图→PR、GIF→PR 三种委托各 3 次都是 3/3 传到下一技能；Codex（codex exec）上前两种同样顺序。范围是 1 个仓库、4 个技能，送达技能只有 2 个。`,
+    outcomes: [
+      "源披露作者在 2026-10-21 到 22 日用自己的 dotfiles 技能库测量：再编技能在列表测试里 9/9 被选中，实际会话里 2 次都没被读到；加强 description 仍是 2 次都没被读到；加上 UserPromptSubmit hook 后 2 次都是最先读到，Codex 上 hook 之后带点名的委托也是 2 次都先读。去掉点名后，3 种委托各 3 次都是 3/3 传到下一技能，Codex 上 2 种同样顺序。各条件只有 2 到 3 次，这是这一仓库、这一组技能上的记录，不可外推成其他仓库、更多送达技能或下一次委托也必然同分布。",
+      "能把「可写成同时检查列表测试与实际会话里第一次技能调用，以及去掉点名后下一技能有没有传到」与「必须人完成的题目与导流链」拆开。",
+      "为把「列表测试满分」或「description 已经写清楚」当成技能会被读到，以及把文中转述的 84%、30.41% 写成作者自己测过提供提问清单。",
+    ],
+    caveats: [
+      "9/9、各 2 次、各 3 次的 3/3，以及独立跑时改前改后都是 6/6，均为作者自述；各条件次数很少，作者写明这是现象存在的报告，不是效果大小，不能写成「加强 description 一定无效」或 hook 以后都会先读。范围是 1 个仓库、4 个技能，送达技能只有 2 个。kaya 所写约 25%、Scott Spence 的 10/50（20%）与 42/50（84%），以及 Jia 等论文里 143 万件技能、有依赖的 root skill 中 30.41% 含循环，都是文中转述，不是作者这次的实测，不能接到 9/9 或 3/3 后面当作对照结论。",
+      "https://lilpacy.me GET 200（可达作者站点导流；跟随至 https://lilpacy.me/ 亦 GET 200）；https://github.com/lilpacy GET 200（可达作者 GitHub 导流）；https://x.com/0xpacy GET 200（可达社交主页导流）。正文无配图。一次资料与第三方链已核，不列入可达导流；其中 https://doi.org/10.1109/TSE.1979.234169 跟随至 IEEE Xplore GET 202，已写完整 URL。",
+      "上面写的是个人实践帖（zenn.dev / lilpacy），也不是 Anthropic 或 OpenAI 官方的官文简报。两段发火是作者自己的整理，不是官方内部实现说明。Codex 记在 chatgpt 枚举下。",
+    ],
+    prompts: [
+      {
+        title: "技能发火须先按同一条委托报列表与实读",
+        body: `你是资深 Agent 技能发火验收教练。只根据用户边界写门禁，不要编造技能已经会被读到。
+
+现在是不是约同一条再编委托要把列表测试 9/9 与实际会话 2 次都没读到分开记：{{whether_about_list_test_vs_real_session}}
+是不是约加强 description 与加上 hook 的各 2 次对照：{{whether_about_description_vs_hook}}
+是不是约去掉点名后 3 种委托各 3 次的 3/3：{{whether_about_name_removed_handoff}}
+
+输出 Markdown：
+1. 为什么「列表测试里被选中」或「description 已经写清楚」不能写成技能会被读到
+2. 应怎样同时检查候选与当场有没有读到，以及交接是不是在第 2 回合才测到的
+3. 只有各 2 到 3 次的账本时，应怎样单独记账，而不是写成下一次也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 9/9 或 3/3 就等于 description 已经足够，或 hook 以后都会先读，或去掉点名以后都还能传到」。`,
+      },
+      {
+        title: "九比九与三比三复盘",
+        body: `报告上可以写列表测试 9/9、实际会话 2 次都没读到、加上 hook 后 2 次都先读到，以及去掉点名后 3 种委托各 3 次都是 3/3；但这是 2026-10-21 到 22 日在 1 个仓库、4 个技能上各条件只有 2 到 3 次的记录。请写复盘提纲。
+
+现象：{{nine_of_nine_versus_zero_then_hook}}
+
+输出：
+1. 更像技能发火已经稳定，还是只是这种委托形态下 hook 才读到、次数还很少
+2. 最小复验顺序（先把列表测试与实际会话分开→再看 description 与 hook 各 2 次→再看去掉点名后的 3/3 与范围限制→再决定能不能对外说已稳定）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「列表测试满分就等于实际会被读到」，或把文中转述的 84%、30.41% 写成作者自己测过。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/lilpacy/articles/claude-code-skill-two-stage-activation",
+      label: "zenn.dev · Claude Codeのskillが「選ばれるのに読まれない」理由：発火を2段階に分けて測った",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "826",
+    slug: "sora-290pr-50ae-6gui",
+    title: "sora2901：用 Claude Code 和自建 CEP 桥编辑社内播客第 1 回（约 53 分钟）——3 个 4K 机位合计约 36GB、两支麦克风 WAV，做成 YouTube 4K 本篇和竖屏短视频 20 条。脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次，画面操作约 6 次（Codex CLI 0.162.1 的 Computer Use）。本篇字幕约 860 张；补 1 张缺了约 2 秒的字幕时，后面 4 张被覆盖，后来当场重放。从 10/27 夜到 10/29 夜约两天半，作者没数自己动手的时间",
+    summary: "个人（sora2901／奏良，写在 SALT2 技术博客）；披露用 Claude Code 编辑社内播客「Locked in」第 1 回（约 53 分钟）。素材是 iPhone 拍的 4K 三机位（合计约 36GB）和两支麦克风的 WAV，产出是 YouTube 用 4K 本篇和竖屏短视频 20 条。能写成脚本的操作用自建、只监听 127.0.0.1 的 CEP 扩展来跑 JSX，脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次；作者写明这次没有用现成 MCP 服务器。画面上做不到的部分交给 Codex CLI 0.162.1 的 Computer Use，约 6 次，事先开过 macOS 的屏幕录制与辅助功能许可。作者自己做的是逐条看短视频并提修改、选标题、定 Lumetri 数值；本篇也是他定完数值后再交代「从这里不要再动」。本篇字幕约 860 张，脚本可以 200 张一批放置，结果以 placed 200 NG 0 这样的一行返回。补 1 张缺了约 2 秒的字幕时，后面 4 张被 importMGT 的默认 10 秒长度盖掉，后来当场重放；作者是看 Claude Code 写出的帧才发现，并从事先复制的序列里把句子和时刻捡回来。从 10/27 夜到 10/29 夜约两天半（文中时程如此，配图文件名含 20261031，与 2026-11-04 发布相符），作者写明没有数自己动手的时间。不代你同样看到约 290 次或 20 条短视频，就等于已经全自动做完，或脚本次数已经可以当成质量门禁，或补一条字幕不会再盖掉后面的夹子。",
+    description: "面向已经把「交给 Claude Code 去剪」或标题里的「全自动」当成成片已经不用人看、却还没按同一次编辑把脚本次数与画面操作次数、以及人定的颜色和标题分开记的人：把「成片须同时报脚本次数、画面操作次数，以及人实际做了哪些决定」写成门禁，区别于只看一条成片或只报「已经自动剪完」的实践。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/salt2/articles/2b6e403e059b10",
+    sourceLabel: "zenn.dev · Claude CodeからPremiere Proを290回動かして、53分のPodcastを全自動編集してみた",
+    upvotes: 717,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Premiere",
+      "Codex",
+      "podcast",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 成片验收的对照边界（是不是约同一次编辑要把脚本约 340 次里 Premiere 约 290 次、After Effects 约 50 次与画面操作约 6 次分开记，是不是约本篇字幕约 860 张、补 1 张时后面 4 张被盖掉，是不是约标题、Lumetri 数值仍是人定的）以及「绝不可把标题里的全自动写成已经不用人看」纪律",
+      "Agent 按实践帖输出：应怎样同时记下约 53 分钟本篇、20 条短视频、约 36GB 三机位，以及 Codex CLI 0.162.1 只承担约 6 次画面操作；并把 10/27 夜到 10/29 夜约两天半、作者没数动手时间单独记账",
+      "人工保留脚本回次、被盖掉后重放的 4 张字幕，以及人定的颜色与标题；Agent 不代你保证「同样看到约 290 次或 20 条短视频就等于已经全自动做完，或脚本次数已经可以当成质量门禁，或补一条字幕不会再盖掉后面的夹子」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T21:33:10.909+09:00 → 2026-11-04，同时刻为 UTC 2026-11-04T12:33:10Z、Asia/Shanghai 2026-11-04 20:33:10；bodyUpdatedAt 2026-11-04T21:27:46.034+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：sora2901（奏良）在 SALT2 技术博客《Claude CodeからPremiere Proを290回動かして、53分のPodcastを全自動編集してみた》写同一次编辑的脚本次数与画面操作。作者卡 website／GitHub／X 为空。可达导流（出版物社交）：https://github.com/salt2-boost GET 200；https://x.com/salt2_jp GET 200。配图 7 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/bd52654dba3a-20261031.jpg 、https://static.zenn.studio/user-upload/40be5f743f9b-20261031.png 、https://static.zenn.studio/user-upload/23807a66a27f-20261031.jpg 、https://static.zenn.studio/user-upload/b834a3ee16cb-20261031.jpg 、https://static.zenn.studio/user-upload/b4b7426e4c11-20261031.png 、https://static.zenn.studio/user-upload/6f0986a4bcf8-20261031.jpg 、https://static.zenn.studio/user-upload/de0659b5d8ad-20261104.jpg 。一次资料已核、不列入可达导流：https://github.com/hetpatel-11/Adobe_Premiere_Pro_MCP 、https://github.com/Dakkshin/after-effects-mcp 、https://ppro-scripting.docsforadobe.dev/ 、https://ae-scripting.docsforadobe.dev/ 、https://blog.developer.adobe.com/en/publish/2025/12/uxp-arrives-in-premiere-a-new-era-for-plugin-development 、https://code.claude.com/docs/en/overview 、https://github.com/openai/codex 、https://github.com/openai/codex-plugin-cc 、https://github.com/ml-explore/mlx-examples/tree/main/whisper 、https://github.com/google/budoux 均 GET 200。失败码（不列入可达，亦非导流）：https://learn.chatgpt.com/docs/computer-use GET 403；https://helpx.adobe.com/premiere-pro/using/motion-graphics-templates.html GET 403。",
+      "与近批视频生成、费用日志不同：本条不是把模型对照或 token 费用当主线，而是同一次播客编辑里脚本次数与画面操作次数怎么记，以及人还定了哪些颜色和标题。约 290 次只接在 Premiere 上，约 50 次只接在 After Effects 上，合计约 340 次，不能把标题里的 290 次写成全部脚本次数。Codex 记在 chatgpt 枚举下。同出版物盐路径上更早还有其他作者的文章，本条作者是 sora2901，不是近批作者。",
+    ],
+    approach: `sora2901（奏良）在 SALT2 技术博客《Claude CodeからPremiere Proを290回動かして、53分のPodcastを全自動編集してみた》（页内 publishedAt 2026-11-04；bodyUpdatedAt 略早于发布）写明：平时用 Premiere Pro 与 After Effects 剪视频，这次把社内播客「Locked in」第 1 回（约 53 分钟）交给 Claude Code 来编。素材是 iPhone 拍的 4K 三机位（合计约 36GB）和两支麦克风的 WAV，产出是 YouTube 用 4K 本篇和竖屏短视频 20 条。作者自己做的是逐条看短视频并提修改、选标题、定 Lumetri 数值。能写成脚本的操作用自建 CEP 扩展来跑：扩展里只在 127.0.0.1 上开 HTTP 服务，校验本地 token 后把 JSX 交给 evalScript，监听端口 47820。作者写明看过 hetpatel-11/Adobe_Premiere_Pro_MCP、Dakkshin/after-effects-mcp 这类 MCP 服务器，但有的操作没有做成工具，于是这次不用 MCP，直接送自己的脚本。脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次；画面操作约 6 次，用的是 Codex CLI 0.162.1 的 Computer Use，事先开过 macOS 的屏幕录制与辅助功能许可。环境是 macOS、Premiere Pro 2026、After Effects 2026，作者写明 Windows 上 After Effects 的调用方式会不一样。
+
+本篇字幕约 860 张，脚本可以 200 张一批放置，结果以 placed 200 NG 0 这样的一行返回。importMGT 刚放上去的夹子是模板的 10 秒长度，会盖掉那一段里已有的夹子；作者在收尾时往一段缺了约 2 秒字幕的地方补 1 张，后面 4 张就没了，后来当场重放。看 Claude Code 写出的帧才发现，并从事先复制的序列里把句子和时刻捡回来。切点主要靠声音和文字，不用在 Premiere 里把 4K 素材反复播放来找。两支麦克风音量差在这次录音里达到本人那一支高出 10dB 以上，用来判谁在说话；与先前用 SpeechBrain 的结果几乎一致。转写用了 mlx-whisper 的 turbo 与 large-v3，再交给 Claude Code 对差异清稿。10/27 夜先确认桥接并开始字幕设计，10/28 做完 20 条短视频并在夜里全部导出，10/29 午写出本篇，10/29 夜又改了 3 处再导出；从确认桥接到最后一次导出约两天半。作者写明没有数自己动手的时间。配图文件名含 20261031，与 2026-11-04 发布相符，文中时程写作 10/27 至 10/29。`,
+    outcomes: [
+      "源披露作者用 Claude Code 与自建 CEP 桥编辑社内播客第 1 回（约 53 分钟）：3 个 4K 机位合计约 36GB，做成 YouTube 4K 本篇和竖屏短视频 20 条；脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次，画面操作约 6 次（Codex CLI 0.162.1 的 Computer Use）。本篇字幕约 860 张；补 1 张缺了约 2 秒的字幕时，后面 4 张被盖掉，后来当场重放。从 10/27 夜到 10/29 夜约两天半，作者没数自己动手的时间。这是这一期成片上的一次记录，不可外推成其他项目、其他机器或下一条成片也会是同一组次数，更不能写成已经全自动、不用人看。",
+      "能把「可写成同时检查脚本次数、画面操作次数，以及人定的颜色与标题」与「必须人完成的题目与导流链」拆开。",
+      "为把标题里的「全自动」或「已经跑了 290 次」当成成片已经不用人看，以及把 290 次写成全部脚本次数提供提问清单。",
+    ],
+    caveats: [
+      "约 340 次、约 290 次、约 50 次、约 6 次、约 860 张、20 条短视频，均为作者自述；脚本次数是约数。约 290 次只接在 Premiere 上，约 50 次只接在 After Effects 上，不能把标题里的 290 次写成全部脚本次数。placed 200 NG 0 是批量放置时返回的一行例子，不是全部 860 张的总成绩。作者自己选了标题、定了 Lumetri 数值并做了复查，不能把标题里的「全自动」写成已经不用人看。约两天半是从确认桥接到最后一次导出的日历跨度，作者写明没有数自己动手的时间，不能写成人力工时。补 1 张字幕盖掉后面 4 张，是这次实际发生的事故，不能写成以后不会再出现。QE DOM、ExtendScript 作者写明可能随版本失效。",
+      "https://github.com/salt2-boost GET 200（可达出版物 GitHub 导流）；https://x.com/salt2_jp GET 200（可达出版物社交主页导流）。作者本人卡 website／GitHub／X 为空。配图 7 张均 GET 200，不列入产品导流（完整 URL 见 tips[0]）。失败码（不列入可达，亦非导流）：https://learn.chatgpt.com/docs/computer-use GET 403；https://helpx.adobe.com/premiere-pro/using/motion-graphics-templates.html GET 403。其余一次资料已核、不列入可达导流。",
+      "上面写的是个人实践帖（zenn.dev / salt2 · sora2901），也不是 Adobe、Anthropic 或 OpenAI 官方的官文简报。Codex 记在 chatgpt 枚举下。文中「辅助功能许可」指 macOS 的屏幕录制与辅助功能（无障碍）权限，不要误译成别的意思。",
+    ],
+    prompts: [
+      {
+        title: "成片须先按同一次编辑报脚本与人手",
+        body: `你是资深 Agent 成片验收教练。只根据用户边界写门禁，不要编造成片已经全自动。
+
+现在是不是约同一次编辑要把 Premiere 约 290 次、After Effects 约 50 次与画面操作约 6 次分开记：{{whether_about_script_vs_gui_counts}}
+是不是约标题和 Lumetri 数值仍是人定的：{{whether_about_human_title_and_color}}
+是不是约补 1 张字幕时后面 4 张被盖掉：{{whether_about_mogrt_overwrite}}
+
+输出 Markdown：
+1. 为什么标题里的「全自动」或「已经跑了 290 次」不能写成成片已经不用人看
+2. 应怎样同时检查脚本次数、画面操作次数，以及人实际做了哪些决定
+3. 只有这一期约 53 分钟、20 条短视频的账本时，应怎样单独记账，而不是写成下一条也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到约 290 次或 20 条短视频就等于已经全自动做完，或脚本次数已经可以当成质量门禁，或补一条字幕不会再盖掉后面的夹子」。`,
+      },
+      {
+        title: "二百九十次与六次画面复盘",
+        body: `报告上可以写脚本约 340 次（Premiere 约 290 次、After Effects 约 50 次）、画面操作约 6 次，以及本篇字幕约 860 张、补 1 张时后面 4 张被盖掉；但这是这一期成片上的一次记录，作者还定了标题和颜色，并且没数自己动手的时间。请写复盘提纲。
+
+现象：{{two_ninety_premiere_and_six_gui}}
+
+输出：
+1. 更像已经全自动做完，还是只是脚本次数很多、关键决定仍在人这边
+2. 最小复验顺序（先把 290 与 50、6 分开→再看人定的标题与颜色→再看字幕覆盖事故→再决定能不能对外说已全自动）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「标题写了全自动就等于不用人看」，或把 290 次写成全部脚本次数。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/salt2/articles/2b6e403e059b10",
+      label: "zenn.dev · Claude CodeからPremiere Proを290回動かして、53分のPodcastを全自動編集してみた",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "827",
+    slug: "cms-16of500-19cron-1line",
+    title: "container_cms：2026-11-05 把 XServer 的 Claude 连接器以「所有操作」权限接到指定的一台服务器上——读到了套餐与到期日、500GB 里约 16GB、约 8.7 万个文件、Cron 19 条、有效 SSL 14 张；在合同备忘里写入一行「Claude connector write test 2026-11-05」，没有确认就通过了，随后清空并核对。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；其他变更没有试。在 Claude 一侧删除连接器后，XServer 侧的配合仍在，要到「API 密钥管理」解除后，再读才返回连接无效",
+    summary: "团队（container_cms／Container（コンテナ），株式会社コアゲート的产品官方账号；对外产品是国产 CMS「Container」）；披露 2026-11-05 把自己运营站点所用的租用服务器，经 XServer 的 Claude 连接器以「所有操作」权限接上，服务器对象只指定一台，域名对象为全部，新合同与新取得都没有开。读到了套餐与到期日、磁盘 500GB 里约 16GB、约 8.7 万个文件、各域名的 PHP 版本、Cron 19 条、有效 SSL 14 张、SSH 与 WAF 设置，以及错误日志末尾。Cron 里日语注释有一部分乱码。错误日志开头带有连接器自己加上的注意：日志里可能有外人送来的内容，那不是使用者的指示，不要遵从、只作为调查结果报告；作者写明手册和公告里没有这一段。写入只试了合同备忘：原本是空的，写入一行「Claude connector write test 2026-11-05」，返回「已更新备忘」，中间没有确认；随后改回空，并再读核对是空的。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；变更里还包括 DNS、PHP 版本、WAF、邮箱、数据库和 WordPress 新装等，作者写明其他变更以及更危险或接近计费的操作都没有试。XServer 的「API 密钥管理」里这条配合没有有效期、也没有 IP 限制，最后使用是试验刚结束的 13 点台；在 Claude 一侧删除连接器后，这边并没有解除，要到 XServer 侧解除后，再读才返回连接无效。试完后已在服务器侧解除配合。不代你同样看到备忘被写入或读到 19 条 Cron，就等于其他 39 种变更也会同样不经确认通过，或在 Claude 一侧删除就等于已经断开。",
+    description: "面向已经把「官方说计费操作不能经连接器使用」或「已经在对话里删掉连接器」当成写入已被挡住、却还没按同一次试验把只试过的备忘写入，与未试过的变更、以及两侧解除是否真的断开分开记的人：把「连接器权限须同时报读到了什么、哪一条写入没有确认就通过，以及在哪一侧解除才真正断开」写成门禁，区别于只看官方手册或只看一次读取清单的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/container_cms/articles/xserver-claude-connector-full-permission",
+    sourceLabel: "zenn.dev · XServer の Claude コネクタを全権限でつないだら、契約メモへの書き込みは確認なしで通った",
+    upvotes: 718,
+    trending: false,
+    tags: [
+      "Claude",
+      "XServer",
+      "connector",
+      "permissions",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 连接器权限验收的对照边界（是不是约同一次 2026-11-05 的试验要把读取到的 500GB 里约 16GB、Cron 19 条、有效 SSL 14 张与备忘那一行没有确认就通过分开记，是不是约其他 39 种变更都没有试，是不是约在 Claude 一侧删除后 XServer 侧仍在）以及「绝不可把删掉连接器写成已经断开」纪律",
+      "Agent 按实践帖输出：应怎样同时记下工具清单读取 49 种、服务器侧变更 39 种、域名侧读取 7 种，以及解除后必须在 XServer 的「API 密钥管理」里操作，再读才返回连接无效",
+      "人工保留备忘写入与清空的核对、以及解除前后的读取结果；Agent 不代你保证「同样看到备忘被写入或读到 19 条 Cron 就等于其他 39 种变更也会同样不经确认通过，或在 Claude 一侧删除就等于已经断开」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T14:56:17.316+09:00 → 2026-11-05，同时刻为 UTC 2026-11-05T05:56:17Z、Asia/Shanghai 2026-11-05 13:56:17；bodyUpdatedAt 2026-11-05T14:56:17.309+09:00（略早 7 毫秒）；取 published；GET 200（UA MiraBot/1.0））：container_cms（Container（コンテナ），株式会社コアゲート）在《XServer の Claude コネクタを全権限でつないだら、契約メモへの書き込みは確認なしで通った》写同一次全权限试验。可达导流：https://container.choregate.com/ GET 200（文内产品站点）；https://container.choregate.com/?utm_source=zenn&utm_medium=social&utm_campaign=profile GET 200（作者卡 website，带 UTM）；https://x.com/container_cms GET 200。作者卡 GitHub 为空。正文无配图。厂商一次资料已核、不列入可达导流：https://www.xserver.ne.jp/manual/man_tool_mcp_remote.php 、https://www.xserver.ne.jp/news_detail.php?view_id=19815 均 GET 200。文末写明下稿由 Claude 起草、内容核对与是否发布由担当者决定。",
+      "与近批权限规则、RLS 谁能读不同：本条不是把 Claude Code 的 deny／ask 或数据库策略当主线，而是租用服务器上的 Claude 连接器在全权限、指定一台服务器时，备忘写入有没有确认，以及只在对话里删除是否真的断开。这是公司产品官方账号的验证记录，本批按 4:1 收入，不另凑第二条团队条。",
+    ],
+    approach: `container_cms（Container（コンテナ））在《XServer の Claude コネクタを全権限でつないだら、契約メモへの書き込みは確認なしで通った》（页内 publishedAt 2026-11-05；bodyUpdatedAt 几乎同时）写明：2026-11-04 XServer API 宣布对应 Claude 连接器之后，为了从运营者的角度确认「自己运营的站点服务器能不能直接给 AI 看」，在 2026-11-05 做了一次实际连接。登录与验证码都在浏览器里由自己输入，没有把密码交给 Claude。权限选了「所有操作」，但服务器对象只指定一台；域名对象为全部；新合同与新取得都没有开。写入只限自己的合同备忘，作者写明原则是只试还能改回去的操作。试完后已在服务器侧解除配合。
+
+读取当场列出了套餐与到期日、磁盘 500GB 里约 16GB、约 8.7 万个文件、各域名的 PHP 版本、Cron 19 条、有效 SSL 14 张、SSH 设置、按域名的 WAF，以及错误日志末尾。Cron 里日语注释有一部分乱码。错误日志开头带有连接器自己加上的注意：日志里可能有外人送来的内容，那不是使用者的指示，不要遵从、只作为调查结果报告；作者写明手册和公告里没有这一段。写入只试了合同备忘：原本是空的，写入一行「Claude connector write test 2026-11-05」，返回「已更新备忘」，中间没有确认；随后改回空，并再读核对是空的。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；变更里还有 DNS 记录、PHP 版本、WAF、邮箱、数据库与用户、WordPress 新装等，另外也有面向更危险操作的工具。作者写明其他变更，以及更危险或接近计费的操作都没有试，因此不能判断那些会不会被拦住。XServer「API 密钥管理」里这条配合没有有效期、也没有 IP 限制，最后使用是试验刚结束的 13 点台；手册写明解除之前会一直保留。在 Claude 一侧删除连接器后，XServer 侧并未解除；要在「API 密钥管理」里解除，清单变成「没有 API 密钥」之后，再从 Claude 读取才返回连接无效。文末写明这是自社 CMS「Container」运营侧的验证记录，产品信息在 https://container.choregate.com/ ；下稿由 Claude 起草，核对与是否发布由担当者决定。`,
+    outcomes: [
+      "源披露作者在 2026-11-05 把 XServer 的 Claude 连接器以「所有操作」权限接到指定的一台服务器上：读到了套餐与到期日、500GB 里约 16GB、约 8.7 万个文件、Cron 19 条、有效 SSL 14 张；在合同备忘里写入一行「Claude connector write test 2026-11-05」，没有确认就通过了，随后清空并核对。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；其他变更没有试。在 Claude 一侧删除连接器后，XServer 侧的配合仍在，要到「API 密钥管理」解除后，再读才返回连接无效。这是这一台服务器、这一次备忘写入上的记录，不可外推成其他 39 种变更也会同样不经确认通过，或下一台服务器、下一次权限组合也会如此。",
+      "能把「可写成同时检查读到了什么、哪一条写入没有确认就通过，以及在哪一侧解除才真正断开」与「必须人完成的题目与导流链」拆开。",
+      "为把「官方说计费操作不能经连接器使用」或「已经在对话里删掉连接器」当成写入已被挡住，以及把备忘一次通过写成所有变更都不会问提供提问清单。",
+    ],
+    caveats: [
+      "约 16GB、约 8.7 万个文件、Cron 19 条、SSL 14 张、工具 49／39／7 种，以及备忘那一行没有确认就通过，均为作者自述；写入只试了备忘 1 次，其他变更和更危险或接近计费的操作都没有试，不能写成这些也会同样通过，或已经被拦住。在 Claude 一侧删除并不等于 XServer 侧已经断开。日志开头的注意是这次连接器输出里见到的，不是手册原文。下稿由 Claude 起草、担当者核对，不能把这一点写成内容已经外验。",
+      "https://container.choregate.com/ GET 200（可达产品站点导流）；https://container.choregate.com/?utm_source=zenn&utm_medium=social&utm_campaign=profile GET 200（可达作者卡网站导流，带 UTM）；https://x.com/container_cms GET 200（可达社交主页导流）。作者卡 GitHub 为空。正文无配图。厂商手册与公告已核、不列入可达导流。",
+      "上面写的是公司产品官方账号的实践帖（zenn.dev / container_cms，株式会社コアゲート），也不是 XServer 或 Anthropic 官方的官文简报。手册里「计费操作不能经连接器使用」不能代替这次未做的变更试验。",
+    ],
+    prompts: [
+      {
+        title: "连接器权限须先按同一次试验报写入与解除",
+        body: `你是资深 Agent 连接器权限验收教练。只根据用户边界写门禁，不要编造写入已经被挡住。
+
+现在是不是约同一次 2026-11-05 的试验要把读取清单与备忘那一行没有确认就通过分开记：{{whether_about_memo_write_without_confirm}}
+是不是约其他 39 种变更都没有试：{{whether_about_untested_change_tools}}
+是不是约在 Claude 一侧删除后 XServer 侧仍在：{{whether_about_revoke_side}}
+
+输出 Markdown：
+1. 为什么「官方说计费操作不能经连接器使用」或「已经在对话里删掉连接器」不能写成写入已被挡住
+2. 应怎样同时检查读到了什么、哪一条写入没有确认就通过，以及在哪一侧解除才真正断开
+3. 只有这一次备忘写入的账本时，应怎样单独记账，而不是写成其他变更也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到备忘被写入或读到 19 条 Cron 就等于其他 39 种变更也会同样不经确认通过，或在 Claude 一侧删除就等于已经断开」。`,
+      },
+      {
+        title: "一行备忘与两侧解除复盘",
+        body: `报告上可以写 2026-11-05 读到了 500GB 里约 16GB、Cron 19 条、有效 SSL 14 张，以及合同备忘写入一行没有确认就通过；但这是指定一台服务器、只试了备忘 1 次的记录，其他 39 种变更没有试。请写复盘提纲。
+
+现象：{{one_line_memo_without_confirm}}
+
+输出：
+1. 更像写入已经被门禁，还是只是备忘这一条没有确认就通过、其余还没试
+2. 最小复验顺序（先核对权限与对象范围→再看备忘写入与清空→再看 Claude 侧删除后 XServer 侧是否仍在→再决定能不能对外说已断开）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「对话里删掉连接器就等于已经断开」，或把未试过的变更写成同样通过或已被拦住。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/container_cms/articles/xserver-claude-connector-full-permission",
+      label: "zenn.dev · XServer の Claude コネクタを全権限でつないだら、契約メモへの書き込みは確認なしで通った",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
   }
 ];
 
