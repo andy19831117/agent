@@ -70752,6 +70752,59 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "999",
+    slug: "fixu-5rev-scope",
+    title: "fixu：把一次限定范围的缺陷修复交给 AI 代理后，它按另一套 AI 代码审查（GitHub Copilot code review 等）的意见连着改了 5 个来回，任务范围被一点点做大。第 1 个来回 4 条里实核后改了 2 条、另 2 条经验证后弃用；第 2 个来回 2 条、第 3 个来回 2 条都实核后采纳；第 4 个来回 3 条里采纳 1 条、另 2 条因超出本次改动范围弃用；第 5 个来回 2 条还在核的时候，作者作为监视的人叫停，并把最近 4 个来回的提交整段 git revert 回去。一条条意见看起来都技术上说得通，叠在一起却变成没被要求的加戏。这些是作者自己这次限定范围修复上的用法，不可外推到别人的审查循环或别的仓库。",
+    summary: "fixu 把一次限定范围的修复交给 AI 代理后，它按另一套 AI 审查意见连着改了 5 个来回，范围被做大。作者叫停后，把最近 4 个来回的提交整段 revert。这些是作者自己这次修复上的用法，不可外推。",
+    description: "面向已经让 AI 代理按另一套 AI 审查意见逐条改的人：把 5 个来回和「最近 4 个来回整段 revert」写成门禁，区别于只建议「审查意见都要改」、却没有写出一条条看起来对、叠起来会跑出范围的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/fixu/articles/copilot-review-scope-creep-revert",
+    sourceLabel: "zenn.dev·fixu 实践帖",
+    upvotes: 890,
+    trending: false,
+    tags: [
+      "claude-code",
+      "copilot",
+      "code-review",
+      "scope-creep",
+      "revert",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/fixu/articles/copilot-review-scope-creep-revert",
+      label: "zenn.dev·fixu《Copilotの指摘に5往復従わせたらAIのスコープが逸脱した話 — 個別に正しい指摘とスコープ整合性は別軸》",
+      date: "2026-07-04",
+      dateLabel: "发布",
+    },
+    approach: "作者把一次已经限定范围的缺陷修复交给 AI 代理，自己在外面看着。代理按另一套 AI 代码审查的意见一条条改，改着改着就离开了当初的任务范围。作者在第 5 个来回还没核完时叫停，并决定怎么收场。",
+    outcomes: [
+      "源披露：一次限定范围的缺陷修复里，AI 代理按另一套 AI 代码审查的意见连着改了 5 个来回，当初的任务范围被一点点做大。第 1 个来回 4 条里，代理实核后改了 2 条，另 2 条（改测试用邮件域名）经验证后发现按建议改也跑不起来，因而弃用；第 2 个来回 2 条、第 3 个来回 2 条都是实核后采纳；第 4 个来回 3 条里采纳 1 条（作者写明 Copilot 的技术主张本身并不对，但建议方向无害），另 2 条因是本次改动范围外、原本就有的问题而弃用；第 5 个来回 2 条还在核的时候，作者叫停。这些是作者自己这次限定范围修复上的用法，不可外推到别人的审查循环或别的仓库。",
+      "作者作为监视的人叫停后，把最近 4 个来回的提交整段 git revert，回到出发时的状态。不要把「5 个来回」写成「5 条意见」，也不要把整段 revert 的 4 个来回写成 5 个来回全部撤掉。第 1 个来回里弃用的 2 条，和第 4 个来回里因超出范围弃用的 2 条，不是同一组意见。",
+      "作者的判断是：一条条意见的「技术上说得通」和「跟这次任务范围合不合」是两根轴。只让代理盯着前一根轴机械地改，就会出现一条条都对、整体却跑出范围的情况。不要把这次收场写成「审查意见都是错的」。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-07-04T12:45:44.106+09:00，早于发布、同日，仍取 published → 2026-07-04。正文无配图、无 YouTube 嵌入。Windows／Git 不填进 platforms。不要因为正文写的是 Copilot 审查和 git revert，就把 github 填进 platforms。",
+      "同作者相关篇，不列入产品导流：https://zenn.dev/fixu/articles/parallel-repo-copilot-review-signal GET 200；https://zenn.dev/fixu/articles/ai-symptomatic-treatment-trap GET 200；https://zenn.dev/fixu/articles/ai-bidirectional-discomfort-sensor GET 200；https://zenn.dev/fixu/articles/ai-design-premise-verify-chain GET 200。无作者产品导流可列。primary GET 200。正文只在导语里用「AIエージェント（Claude Code 等）」举例，五个来回的实践只写未具名的エージェント；话题标签 claude 不能代替这次事件里的实际使用，platforms=[]，不要硬凑 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 个来回和整段 revert 的是最近 4 个来回，再谈「审查意见都要改」",
+        body: "请按实测算一算：这次限定范围的修复里，代理按另一套 AI 审查意见连着改了几个来回；第 1 到第 5 个来回各是几条，哪些实核后改、哪些弃用；叫停之后，整段 revert 的是几个来回的提交。不要把 5 个来回写成 5 条意见，也不要把最近 4 个来回的 revert 写成 5 个来回全部撤掉。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "AI 代理负责改代码，另一套 AI 审查再给意见，代理再按意见改。人如果只在外面看「这条意见对不对」，范围会在来回里慢慢涨。",
+      "作者把每个来回的条数、实核还是弃用都记下来。第 5 个来回还没核完时叫停，说明不是等全部改完再看。",
+      "收场时把最近 4 个来回的提交整段 revert，而不是再让代理做局部修补。这样不必再人工划「哪里算跑出范围」。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-07-04T12:51:07.017+09:00 → UTC 2026-07-04T03:51:07Z、Asia/Shanghai 2026-07-04 11:51:07；bodyUpdatedAt 2026-07-04T12:45:44.106+09:00，早于发布、同日，仍取 published → 2026-07-04；GET 200（UA MiraBot/1.0））：fixu 在《Copilotの指摘に5往復従わせたらAIのスコープが逸脱した話 — 個別に正しい指摘とスコープ整合性は別軸》记下这次收场。不要因 bodyUpdatedAt 写成更早的时刻。",
+      "5 个来回是往返次数，最近 4 个来回才是整段 revert 的范围，不要混用。第 1 个来回 4 条里弃用的 2 条，不要和第 4 个来回因超出范围弃用的 2 条混用。",
+    ],
+  },
+  {
     id: "1000",
     slug: "tage-lcp-274",
     title: "tage：把自己做的 Markdown 查看器 Hirake（WPF + WebView2）交给 Chrome DevTools MCP，让 Claude Code 测绘制性能。测试稿是标题 200 条、代码块 50 个、mermaid 图 10 张。把 4 个 vendor 脚本加上 defer 后，LCP 从 605ms 降到 274ms；强制回流从 44ms 变成 46ms，DOM 仍是 6,131，10 张图仍全部在初次画出。随后加上的 mermaid 延迟绘制，第一次完全没生效（回流和 DOM 相对 defer 几乎没动，10 张图仍全画出）；修好后 LCP 是 286ms，强制回流 18ms，DOM 5,395，初次只画出 10 张里的 2 张。延迟绘制并不降低 LCP。这些是作者自己这个查看器、这篇测试稿上的实测，不可外推到别人的应用或别的文档。",
