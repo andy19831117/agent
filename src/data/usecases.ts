@@ -78389,6 +78389,532 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "有 JSON-LD；datePublished 2026-10-31T08:18:48.000+09:00，与 API created_at 2026-10-31T08:18:48+09:00 一致 → UTC 2026-10-30T23:18:48Z、Asia/Shanghai 2026-10-31 07:18:48；updated_at 2026-11-05T14:15:28+09:00，晚于发布，仍取 published → 2026-10-31；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-31，不要因更新写成 2026-11-05。",
       "标题 7 円是估计大概会落到的平均值，不是先写的 5 円，也不是 5–10 円范围的精确中点换算；发布日是 2026-10-31。",
     ],
+  },
+  {
+    id: "1138",
+    slug: "cosa-845-226",
+    title: "cosara／こさら：在自己的 Windows 环境里，从 Claude Code 的 JSONL 集计使用量时踩到两个方向相反的陷阱——只扫一层会漏掉 3,225 个文件（84.5%），而最大的一份 211.4MB 会话里 4,176 条带 requestId 的行只有 1,845 个不重复 ID，素朴合计会放大到 2.26 倍。这两笔会部分抵消，让合计看起来「还算对」。不要把 84.5% 和 2.26 倍、或 591 和 3,816、或 4,176 和 1,845 混用。发布日必须写成 2026-07-13。platforms 记 claude。这些是作者自己这一天、这一套环境上的实测，不可外推。",
+    summary: "cosara 在 2026-07-13 自己的 Windows 环境里数出：只扫一层是 591 个文件，递归是 3,816 个，漏掉 3,225 个（84.5%）；最大会话 211.4MB 里 4,176 条 requestId 行只有 1,845 个不重复 ID，放大 2.26 倍。不要把这两笔混用。发布日必须写成 2026-07-13。platforms 记 claude。这些是作者自己这一次上的实测，不可外推。",
+    description: "面向已经打算用一份本地 JSONL 合计去对使用量、却还把漏扫的 84.5% 和重复计数的 2.26 倍当成同一笔、或把 591 和 3,816 写成同一侧的人：把 2026-07-13 这一天、这一套环境上的两笔陷阱分开写，并记住它们会部分抵消。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/cosara/articles/972f5a5f199cde",
+    sourceLabel: "zenn.dev·cosara《Claude Codeの使用量、実は正しく数えられていなかった話——レートリミット管理アプリで踏んだ2つの罠》",
+    upvotes: 1029,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "JSONL",
+      "使用量",
+      "Windows",
+      "个人开发",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/cosara/articles/972f5a5f199cde",
+      label: "zenn.dev·cosara《Claude Codeの使用量、実は正しく数えられていなかった話——レートリミット管理アプリで踏んだ2つの罠》",
+      date: "2026-07-13",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Windows 11 Home 上用 Claude Code 的 Pro/Max 跑 3 个账户，想做一款把本地 JSONL 合计和服务器侧 5 小时框、周框利用率对上的 Windows 桌面应用 QuotaDeck。写集计时踩到两个方向相反的陷阱。陷阱 1：只扫项目目录直下一层，会漏掉 subagents/workflows 深层次文件。2026-07-13 在作者自己环境上的实测是：直下一层 591 个文件，递归全层次 3,816 个，漏掉 3,225 个（84.5%）。陷阱 2：把深层次也纳入后，同一请求会被数多次。手头最大的一份会话文件 211.4MB 里，带 requestId 的行是 4,176，不重复的 requestId 是 1,845，素朴合计会放大到 2.26 倍。这两个陷阱一个偏少、一个偏多，部分抵消后合计看起来「还算对」，所以不容易发现集计是坏的。作者把 QuotaDeck 以 MIT 在 GitHub 公开，并写明它是非官方工具、与 Anthropic 无关。数字都是 2026-07-13 这一天、作者自己环境上的值，不可外推。",
+    outcomes: [
+      "源披露：2026-07-13 在作者自己的 Windows 环境上，只扫一层是 591 个文件，递归是 3,816 个，漏掉 3,225 个（84.5%）；最大一份会话 211.4MB 里，带 requestId 的行是 4,176，不重复 ID 是 1,845，素朴合计放大 2.26 倍。不要把 84.5% 和 2.26 倍写成同一笔，也不要把 591 和 3,816、或 4,176 和 1,845 混用。这两笔会部分抵消，让合计看起来「还算对」。这些是作者自己这一天、这一套环境上的实测，不可外推到别人的目录结构或别的集计工具。",
+      "platforms 记 claude。发布日必须写成 2026-07-13。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-07-13T22:29:42.265+09:00 → UTC 2026-07-13T13:29:42Z、Asia/Shanghai 2026-07-13 21:29:42；bodyUpdatedAt 与发布相同，取 published → 2026-07-13；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-13。导流：正文作者应用仓 https://github.com/cosara22/quotadeck 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。配图 6 张原址交付时均 GET 200，可列可达，挂在本条：https://static.zenn.studio/user-upload/7538dd6f618e-20260713.png ；https://static.zenn.studio/user-upload/bfb400f7c02f-20260713.png ；https://static.zenn.studio/user-upload/c7b1de575d78-20260713.png ；https://static.zenn.studio/user-upload/4f3970b8cecd-20260713.png ；https://static.zenn.studio/user-upload/4ec5ce9e7bdd-20260713.png ；https://static.zenn.studio/user-upload/f8bcc36407d6-20260713.png 。一次资料 https://github.com/ccusage/ccusage 交付时 GET 200，可列可达，不当本条主源。文内 https://x.com/cosara22 交付时 GET 200（标题 こさら (@cosara22) / X），可列可达，不当作者独立产品导流。作者资料 website_url（https://cosara.dev/ja）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 84.5% 和 2.26 倍不是同一笔，再谈合计看起来还算对",
+        body: "请按原文核算：是不是 2026-07-13 在作者自己的 Windows 环境上，只扫一层是 591 个文件、递归是 3,816 个、漏掉 3,225 个（84.5%）。最大一份会话是不是 211.4MB，带 requestId 的行是不是 4,176、不重复 ID 是不是 1,845，素朴合计是不是放大到 2.26 倍。这两笔是不是方向相反、会部分抵消，让合计看起来还算对。不要把 84.5% 和 2.26 倍、或 591 和 3,816、或 4,176 和 1,845 混用。发布日是不是 2026-07-13。这些是不是作者自己这一天、这一套环境上的实测，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 84.5%（漏扫）和 2.26 倍（重复计数），不要合成一笔「集计误差」。",
+      "记下 591 对 3,816、4,176 对 1,845，不要写错边。",
+      "发布日取 2026-07-13。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-07-13T22:29:42.265+09:00 → UTC 2026-07-13T13:29:42Z、Asia/Shanghai 2026-07-13 21:29:42；bodyUpdatedAt 与发布相同，取 published → 2026-07-13；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-13。",
+      "84.5% 不是 2.26 倍；591 不是 3,816。发布日是 2026-07-13。",
+    ],
+  },
+  {
+    id: "1139",
+    slug: "arao-120-227",
+    title: "araom：用自己 25 天（2026-09-29〜10-23）的会话记录数出，1 个工作区里主会话 225 个、响应 9,835 回；隔开 1 小时以上再回来的首次响应有 120 回，写入 2,843 万 token、227 USD（每回 1.90 USD），次数大约只占 1%，却占了写入金额的一半以上。作业中 1 回写入大约 0.013 USD，重开大约是它的 150 倍。同一笔 2,843 万若在 1 小时内用读取做完，大约是 6 USD。不要把 120 回和「隔开 1 小时以上的 133 回里只有 2 回还读得到对话部分」混用，也不要把两次 steering 示例的 2.21→0.32 USD、1.30→0.75 USD，或把「227 USD 换成大约 60 USD」的计算当成改完后再测的结果。发布日必须写成 2026-10-25，不要因更新写成 2026-10-26。platforms 记 claude。这些是作者自己这一段记录上的数字，不可外推。",
+    summary: "araom 用 25 天、225 个主会话、9,835 回响应的记录数出：隔开 1 小时以上再回来的首次响应 120 回，写入 2,843 万 token、227 USD，次数约 1%，金额却占写入的一半以上。不要把 120 回和 133 回混用，也不要把 227→约 60 USD 的计算当成改完后的实测。发布日必须写成 2026-10-25。platforms 记 claude。这些是作者自己这一段记录上的数字，不可外推。",
+    description: "面向已经打算在午饭后再点「继续做」却还把 120 回和 133 回、或把 227 USD 和「换成大约 60 USD」的计算写成同一笔实测的人：把 1 小时缓存寿命、120 回重开的 227 USD，以及必须写成 2026-10-25 的发布日写成门禁。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/araom/items/3d026f2df58c7328aa74",
+    sourceLabel: "qiita.com·araom《ランチ明けの「続きやって」が一番高い。Claude Code のキャッシュは 1 時間で切れる》",
+    upvotes: 1030,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "prompt cache",
+      "使用量",
+      "Opus 5.5",
+      "个人效率",
+    ],
+    primarySource: {
+      url: "https://qiita.com/araom/items/3d026f2df58c7328aa74",
+      label: "qiita.com·araom《ランチ明けの「続きやって」が一番高い。Claude Code のキャッシュは 1 時間で切れる》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Claude Code（桌面应用和 CLI，Pro 计划，模型主要是 Opus 5.5）一个工作区里 2026-09-29 到 10-23 共 25 天的会话记录拿来数：主会话 225 个、响应 9,835 回。按官方说明，定額计划主对话的提示缓存寿命是 1 小时，用 API 密钥则是 5 分钟；作者这边主对话的写入全部落在 1 小时框。隔开 1 小时以上再回来的首次响应有 120 回，写入 2,843 万 token、227 USD（每回 1.90 USD）。这 120 回次数大约只占 1%，却占了写入金额的一半以上。作业中 1 回写入大约 0.013 USD，重开大约是它的 150 倍。同一笔 2,843 万若在 1 小时内用读取做完，大约是 6 USD。另有一句：隔开 1 小时以上的 133 回里，对话部分还能读到的只有 2 回，不要和 120 回混用。作者后来改用 steering 技能，把作业情况写到会话外的文件、新开会话再读：两则示例是 2.21→0.32 USD 和 1.30→0.75 USD。文中把重开写入的中位数约 19 万 token（1.5 USD）换成 steering 两次平均约 6.4 万 token（0.5 USD）后，写出 227 USD 会变成大约 60 USD，这是计算，不是改完后再测一周的结果。源文多次称为 Claude Code，platforms 记 claude。",
+    outcomes: [
+      "源披露：25 天（2026-09-29〜10-23）、主会话 225 个、响应 9,835 回里，隔开 1 小时以上再回来的首次响应是 120 回，写入 2,843 万 token、227 USD（每回 1.90 USD）；次数大约 1%，金额却占写入的一半以上。作业中 1 回大约 0.013 USD，重开大约是它的 150 倍。同一笔 2,843 万若在 1 小时内用读取做完，大约是 6 USD。不要把 120 回和「隔开 1 小时以上的 133 回里只有 2 回还读得到对话部分」混用，也不要把两次 steering 示例的 2.21→0.32 USD、1.30→0.75 USD 互相调换，或把「227 USD 换成大约 60 USD」的计算当成改完后再测的结果。这些是作者自己这一段记录上的数字，不可外推到别人的计划和用法。",
+      "platforms 记 claude。发布日必须写成 2026-10-25，不要因更新写成 2026-10-26。",
+    ],
+    caveats: [
+      "有 JSON-LD；datePublished 2026-10-25T23:25:46.000+09:00，与 API created_at 2026-10-25T23:25:46+09:00 一致 → UTC 2026-10-25T14:25:46Z、Asia/Shanghai 2026-10-25 22:25:46；updated_at 2026-10-26T08:28:42+09:00，晚于发布，仍取 published → 2026-10-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-25，不要因更新写成 2026-10-26。导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 2 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4276026/8c0e16d7-44aa-42ca-9579-2c69563a025c.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4276026/26da0672-311e-45e7-920d-26c982e4f0a5.png 。一次资料 https://code.claude.com/docs/en/prompt-caching （标题 How Claude Code uses prompt caching - Claude Code Docs）、https://code.claude.com/docs/en/costs （标题 Manage costs effectively - Claude Code Docs）、https://gihyo.jp/book/2026/978-4-297-15354-0 （标题 実践Claude Code入門 | 技術評論社）、https://github.com/GenerativeAgents/claude-code-book-chapter8/tree/main/.claude/skills/steering 交付时均 GET 200，可列可达，不当本条主源。https://platform.claude.com/docs/en/build-with-claude/prompt-caching 交付时 HTTP 200，但跟随至 https://claude.com/app-unavailable-in-region ，按区域不可用披露，不列入可达，须写出完整 URL。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 120 回、227 USD 不是 133 回，再谈 227→约 60 是计算",
+        body: "请按原文核算：是不是 2026-09-29 到 10-23 共 25 天、主会话 225 个、响应 9,835 回。隔开 1 小时以上再回来的首次响应是不是 120 回，写入是不是 2,843 万 token、227 USD，每回 1.90 USD，次数大约 1%、金额却占写入的一半以上。作业中 1 回是不是大约 0.013 USD，重开是不是大约 150 倍。同一笔 2,843 万若在 1 小时内用读取做完，是不是大约 6 USD。不要把 120 回和隔开 1 小时以上的 133 回里只有 2 回还读得到对话部分混用。两次 steering 示例是不是 2.21→0.32 USD 和 1.30→0.75 USD。「227 USD 换成大约 60 USD」是不是计算，不是改完后再测的结果。发布日是不是 2026-10-25，不要写成 2026-10-26。这些是不是作者自己这一段记录上的数字，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先数清 120 回、2,843 万、227 USD，不要写成 133 回。",
+      "记下 227→约 60 USD 是计算，两次 steering 示例不要对调。",
+      "发布日取 2026-10-25，不要写成更新日 2026-10-26。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-25T23:25:46.000+09:00，与 API created_at 2026-10-25T23:25:46+09:00 一致 → UTC 2026-10-25T14:25:46Z、Asia/Shanghai 2026-10-25 22:25:46；updated_at 2026-10-26T08:28:42+09:00，晚于发布，仍取 published → 2026-10-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-25，不要因更新写成 2026-10-26。",
+      "120 回不是 133 回；227→约 60 USD 是计算。发布日是 2026-10-25，不是 2026-10-26。",
+    ],
+  },
+  {
+    id: "1140",
+    slug: "kota-476-115",
+    title: "kotaro_ai_lab／コータロー：在 Unity 游戏开发里把长会话改成 handoff → /clear → pickup，1 回响应的文脉平均值从 476k 降到 115k，中位数从 455k 降到 107k。不要把平均值和中位数混用，也不要把导入前单次最大 966k 写成 476k 或 115k。发布日必须写成 2026-10-18。platforms 记 claude。这些是作者自己这一次导入前后的集计，不可外推。",
+    summary: "kotaro_ai_lab 把长会话改成区切再交接后，1 回响应的文脉平均值 476k→115k，中位数 455k→107k。不要把平均值和中位数、或导入前最大 966k 混用。发布日必须写成 2026-10-18。platforms 记 claude。这些是作者自己这一次上的集计，不可外推。",
+    description: "面向已经打算靠拉长 Opus 会话来省事、却还把 476k→115k 的平均值和 455k→107k 的中位数写成同一笔、或把导入前最大 966k 当成平均值的人：把这两行集计和必须写成 2026-10-18 的发布日写成门禁。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/kotaro_ai_lab/items/7d8a1264b227f2ccef29",
+    sourceLabel: "qiita.com·kotaro_ai_lab《Claude Code の1応答あたりの文脈を476kから115kへ ― handoff → /clear → pickup と「判断役に読ませない」の実測》",
+    upvotes: 1031,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "上下文",
+      "Unity",
+      "handoff",
+      "token",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kotaro_ai_lab/items/7d8a1264b227f2ccef29",
+      label: "qiita.com·kotaro_ai_lab《Claude Code の1応答あたりの文脈を476kから115kへ ― handoff → /clear → pickup と「判断役に読ませない」の実測》",
+      date: "2026-10-18",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Unity 游戏开发里一直把一个会话用得很长，觉得利用限制到得比平时早。作业用的是 Opus。利用限制内部怎么算并未公开，作者只根据官方「长会话会让一行提问也带上整段对话的用量」这一说明，做了把对话区切、用备忘录交接的机制，并集计了导入前后的会话记录。文中把「1 回响应的文脉」定义为这一回读入的输入 token（input_tokens + cache_creation_input_tokens + cache_read_input_tokens）。导入后 1 回响应的文脉平均值从 476k 降到 115k，中位数从 455k 降到 107k。导入前的会话里，1 回响应的文脉最大到过 966k，差不多顶在自动压缩启动线附近。做法是 handoff → /clear → pickup，并强调不要把调查作业交给做判断的角色去读。源文未称为 ChatGPT，platforms 记 claude。",
+    outcomes: [
+      "源披露：导入后，1 回响应的文脉平均值是 476k→115k，中位数是 455k→107k。不要把平均值和中位数混用，也不要把导入前单次最大 966k 写成 476k 或 115k。「1 回响应的文脉」是这一回读入的输入 token（input + cache_creation + cache_read）。这些是作者自己这一次、这一套 Unity 开发会话上的集计，不可外推到别人的项目或别的模型。",
+      "源文未称为 ChatGPT，platforms 记 claude。发布日必须写成 2026-10-18。",
+    ],
+    caveats: [
+      "有 JSON-LD；datePublished 2026-10-18T15:59:24.000+09:00，与 API created_at 2026-10-18T15:59:24+09:00 一致 → UTC 2026-10-18T06:59:24Z、Asia/Shanghai 2026-10-18 14:59:24；updated_at 与发布相同，取 published → 2026-10-18；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-18。导流：正文作者公司站点 https://goodlab.co.jp/ 交付时 GET 200（标题 株式会社Good Lab），按作者站点导流披露，可列可达，不另作本条主源。正文未配图。一次资料 https://code.claude.com/docs/en/hooks （标题 Hooks reference - Claude Code Docs）、https://code.claude.com/docs/en/skills （标题 Extend Claude with skills - Claude Code Docs）、https://code.claude.com/docs/en/sub-agents （标题 Create custom subagents - Claude Code Docs）、https://code.claude.com/docs/en/model-config （标题 Model configuration - Claude Code Docs）、https://code.claude.com/docs/en/env-vars （标题 Environment variables - Claude Code Docs）、https://code.claude.com/docs/en/commands （标题 Commands - Claude Code Docs）、https://code.claude.com/docs/en/costs （标题 Manage costs effectively - Claude Code Docs）交付时均 GET 200，可列可达，不当本条主源。https://platform.claude.com/docs/en/about-claude/pricing 交付时 HTTP 200，但跟随至 https://claude.com/app-unavailable-in-region （标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不列入可达，须写出完整 URL。相关篇 https://qiita.com/kotaro_ai_lab/items/3d076100ddd8b746d947 、https://qiita.com/kotaro_ai_lab/items/b72629b7268f4e8f3bb6 交付时均 GET 200，不另作本条主源，可列可达。文内 https://x.com/kotaro_ai_lab 交付时 GET 200（标题 Kotaro@エンジニア (@kotaro_ai_lab) / X），可列可达，不当作者独立产品导流。作者资料 website_url 为空，不补写。本条不是 hook 教程，只把正文里的官方 hooks 文档锚点按文内硬链披露。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 476k→115k 是平均值，455k→107k 是中位数",
+        body: "请按原文核算：导入后 1 回响应的文脉平均值是不是 476k→115k，中位数是不是 455k→107k。导入前单次最大是不是 966k，不要把它写成 476k 或 115k。「1 回响应的文脉」是不是 input + cache_creation + cache_read。发布日是不是 2026-10-18。源文是不是未称为 ChatGPT。这些是不是作者自己这一次上的集计，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写平均值 476k→115k 和中位数 455k→107k。",
+      "记下导入前最大 966k 不是平均值。",
+      "发布日取 2026-10-18。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-18T15:59:24.000+09:00，与 API created_at 2026-10-18T15:59:24+09:00 一致 → UTC 2026-10-18T06:59:24Z、Asia/Shanghai 2026-10-18 14:59:24；updated_at 与发布相同，取 published → 2026-10-18；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-18。",
+      "476k→115k 是平均值，不是中位数 455k→107k。发布日是 2026-10-18。",
+    ],
+  },
+  {
+    id: "1141",
+    slug: "mama-981-579",
+    title: "mamagotolab／ママゴトラボ：把自家 Claude Code 作业日志按模型集计，Opus 5.5 在 2026-09-23〜27 的 4 个会话、579 回响应里，token 的 98.1% 是缓存读取（cache_read_input_tokens），输出是 0.3%。不要把标题写的 98% 写成 98.1%，也不要把 98.1% 和「同一套 token 数套单价后 Opus 5.5 大约是 Opus 5 的 53%」这份试算、或 Opus 5 那 56 个会话、4,995 回混用。发布日必须写成 2026-09-27。platforms 记 claude。这些是作者自己这一段日志上的集计，不可外推。",
+    summary: "mamagotolab 在 2026-09-27 集计自家日志：Opus 5.5 的 4 个会话、579 回响应里，98.1% 是缓存读取，输出 0.3%。不要把标题 98% 写成 98.1%，也不要把 98.1% 和大约 53% 的试算混用。发布日必须写成 2026-09-27。platforms 记 claude。这些是作者自己这一段日志上的集计，不可外推。",
+    description: "面向已经打算用「差不多九成是缓存」对外说话、却还把标题 98% 和文内 98.1%、或把 53% 的试算当成同一笔实测占比的人：把 4 个会话、579 回上的 98.1%，以及必须写成 2026-09-27 的发布日写成门禁。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/mamagotolab/items/37d3bdd0bafdd81ba392",
+    sourceLabel: "qiita.com·mamagotolab《【実測】Claude Codeのトークンは98%がキャッシュ読み込みだった──作業ログを集計してOpus 5.5の料金を試算する》",
+    upvotes: 1032,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "缓存读取",
+      "Opus 5.5",
+      "JSONL",
+      "费用试算",
+    ],
+    primarySource: {
+      url: "https://qiita.com/mamagotolab/items/37d3bdd0bafdd81ba392",
+      label: "qiita.com·mamagotolab《【実測】Claude Codeのトークンは98%がキャッシュ読み込みだった──作業ログを集計してOpus 5.5の料金を試算する》",
+      date: "2026-09-27",
+      dateLabel: "发布",
+    },
+    approach: "作者想弄清 Opus 5.5 出来后 Claude Code 使用量变慢的原因，于 2026-09-27 把订阅计划下的作业日志（~/.claude/projects/*/*.jsonl）按模型集计。Opus 5.5 的范围是 2026-09-23〜27、4 个会话、579 回响应；用来对照的 Opus 5 是 2026-08-07〜09-23、56 个会话、4,995 回响应。结论是：在这 4 个 Opus 5.5 会话里，token 的 98.1% 是缓存读取，输出是 0.3%。标题写成 98%，正文是 98.1%，不要写成同一精度。作者还写了单价变化（缓存读取 $0.50→$0.20，输入和输出九折），并把同一套 token 数套上单价，试算出 Opus 5.5 大约是 Opus 5 的 53%。这 53% 是试算，不是另一笔实测占比，也不要和 98.1% 混用。集计时要注意一条响应会记成多行，不去重会膨胀到大约两倍。源文未称为 ChatGPT，platforms 记 claude。",
+    outcomes: [
+      "源披露：在 2026-09-23〜27 的 4 个 Opus 5.5 会话、579 回响应里，token 的 98.1% 是缓存读取，输出是 0.3%。标题写的是 98%，不要把 98% 写成 98.1%。不要把 98.1% 和「同一套 token 数套单价后大约是 Opus 5 的 53%」这份试算混用，也不要把这 4 个会话、579 回和对照用的 Opus 5 那 56 个会话、4,995 回写成同一笔。这些是作者自己这一段日志上的集计，不可外推到别人的用法或别的模型。",
+      "源文未称为 ChatGPT，platforms 记 claude。发布日必须写成 2026-09-27。",
+    ],
+    caveats: [
+      "有 JSON-LD；datePublished 2026-09-27T15:02:02.000+09:00，与 API created_at 2026-09-27T15:02:02+09:00 一致 → UTC 2026-09-27T06:02:02Z、Asia/Shanghai 2026-09-27 14:02:02；updated_at 与发布相同，取 published → 2026-09-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-27。导流：正文作者站点 https://mamagotolab.com/blog/opus55-codex-astra/ （交付时 GET 200，标题 Claude Opus 5.5とGPT-6 Astra（Codex）の料金比較──Claude Codeの実ログで試算し）、https://mamagotolab.com/blog/opus55-codex-astra/eyecatch.png （交付时 GET 200）、https://mamagotolab.com/blog/claudecode-agents-md/ （交付时 GET 200，标题 Claude CodeがAGENTS.mdに対応──CLAUDE.mdとの違いと、Codexと指示ファイルを共有する方法）、https://mamagotolab.com/blog/ai-session-kengen/ （交付时 GET 200，标题 【実測】Claude Codeのセッション同士が会話できる──業務で繋ぐ前に決めた「権限」と「正本」の線引き | ママゴ）、以及 https://crowdworks.jp/public/employees/6942778 （交付时 GET 200，标题 ママゴトラボさん(ITエンジニア)に依頼・外注する | 簡単ネット発注なら【クラウドワークス】），按作者站点／介绍页导流披露，可列可达，不另作本条主源。配图 1 张原址即上述 eyecatch，交付时 GET 200，挂在本条。https://platform.claude.com/docs/en/about-claude/pricing 交付时 HTTP 200，但跟随至 https://claude.com/app-unavailable-in-region （标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不列入可达，须写出完整 URL。https://developers.openai.com/api/docs/models/gpt-6-astra 交付时 HTTP 403，不列入可达，须写出完整 URL 并披露状态。作者资料 website_url 为空，不补写。源文写 GPT-6 Astra（Codex）只是对照单价，未称为 ChatGPT，不得写入 chatgpt。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 98.1% 不是标题 98%，53% 只是试算",
+        body: "请按原文核算：是不是 2026-09-23〜27 的 4 个 Opus 5.5 会话、579 回响应，token 的 98.1% 是不是缓存读取，输出是不是 0.3%。标题是不是写成 98%，不要把 98% 写成 98.1%。大约 53% 是不是同一套 token 数套单价后的试算，不要和 98.1% 混用。对照用的 Opus 5 是不是 56 个会话、4,995 回，不要和这 4 个会话写成同一笔。发布日是不是 2026-09-27。源文是不是未称为 ChatGPT。这些是不是作者自己这一段日志上的集计，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写 98.1%，不要用标题 98% 代替。",
+      "记下 53% 是试算，4 个会话不要写成 56 个。",
+      "发布日取 2026-09-27。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-27T15:02:02.000+09:00，与 API created_at 2026-09-27T15:02:02+09:00 一致 → UTC 2026-09-27T06:02:02Z、Asia/Shanghai 2026-09-27 14:02:02；updated_at 与发布相同，取 published → 2026-09-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-27。",
+      "98.1% 不是标题的 98%，也不是 53% 的试算。发布日是 2026-09-27。",
+    ],
+  },
+  {
+    id: "1142",
+    slug: "dada-5-37",
+    title: "dadachi：在个人应用 FieldPic Checklist 里，用同一组现场照片比较终端内模型、Private Cloud Compute 和 Claude。终端内 1 个项目大约 5 秒，但会写出照片里没有的伤，改提示 4 回后阳台「栏杆上的小伤」每次还在；PCC 对照表上是 25〜37 秒，应用里按项目处理的实測是 18〜30 秒。不要把 5 秒和 25〜37 秒、或把对照表的 25〜37 秒和应用实測的 18〜30 秒写成同一笔。项目可以有 22 张照片、19 个项目，但一次请求只送最多 6 张。改成 greedy 后，同一张照片两次的回答一字不差。发布日必须写成 2026-10-20。platforms 记 claude（这次用 Claude 做了第三者对照）。这些是作者自己这一次实机上的记录，不可外推。",
+    summary: "dadachi 用同一组照片比较终端内模型和 PCC：终端内约 5 秒但会写没有的伤；PCC 对照表是 25〜37 秒，应用实測是 18〜30 秒。不要把这三笔时间混用。发布日必须写成 2026-10-20。platforms 记 claude。这些是作者自己这一次实机上的记录，不可外推。",
+    description: "面向已经打算把现场照片一次性丢给设备侧模型、却还把 5 秒、25〜37 秒和 18〜30 秒写成同一笔的人：把这三笔时间分开，并记住必须写成 2026-10-20 的发布日。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/dadachi/articles/fieldpic-private-cloud-compute-photos",
+    sourceLabel: "zenn.dev·dadachi《iOS 27 の Private Cloud Compute に現場写真を読ませる：オンデバイスとの比較と、効いたプロンプトの直し方》",
+    upvotes: 1033,
+    trending: false,
+    tags: [
+      "iOS",
+      "Private Cloud Compute",
+      "Claude",
+      "现场照片",
+      "个人开发",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dadachi/articles/fieldpic-private-cloud-compute-photos",
+      label: "zenn.dev·dadachi《iOS 27 の Private Cloud Compute に現場写真を読ませる：オンデバイスとの比較と、効いたプロンプトの直し方》",
+      date: "2026-10-20",
+      dateLabel: "发布",
+    },
+    approach: "作者在个人应用 FieldPic Checklist 里给每个检查项拍照，并让 AI 写「状态／破损／需确认」等所见。环境是 Xcode 27 / iOS 27.0.x、iPhone 实机。他把「玄关门」「阳台和栏杆」各拍 2 张，把同一组照片交给终端内模型、Private Cloud Compute（PCC）和 Claude 三者来读。对照表上：终端内 1 个项目大约 5 秒，但会写出另外两者都否定的伤，改提示 4 回后，阳台「栏杆表面的小伤」每次还在；PCC 是 25〜37 秒。应用里因为要一边显示进度一边按项目处理，PCC 的实測是 18〜30 秒，不要和对照表的 25〜37 秒混用。整个项目可以有 22 张照片、19 个项目，但设计上一次请求只送 1 个项目、最多 6 张照片。默认采样时，同一处白点有时写成「污迹」、有时写成「缺角」；改成 greedy 后，同一张照片两次的回答一字不差。终端内模型和 PCC 不在 18 值里，不硬凑；这次确实把同一组照片交给 Claude 对照，platforms 记 claude。源文未称为 ChatGPT。",
+    outcomes: [
+      "源披露：终端内 1 个项目大约 5 秒，但会写出照片里没有的伤，改提示 4 回后阳台「栏杆上的小伤」每次还在；PCC 对照表上是 25〜37 秒，应用里按项目处理的实測是 18〜30 秒。不要把 5 秒和 25〜37 秒混用，也不要把对照表的 25〜37 秒和应用实測的 18〜30 秒写成同一笔。一次请求最多 6 张，不要把 22 张、19 个项目当成一次送入。改成 greedy 后，同一张照片两次的回答一字不差。这些是作者自己这一次、这一台实机上的记录，不可外推到别的系统版本或别的现场。",
+      "这次用 Claude 做了第三者对照，platforms 记 claude。源文未称为 ChatGPT。发布日必须写成 2026-10-20。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-20T08:00:06.427+09:00 → UTC 2026-10-19T23:00:06Z、Asia/Shanghai 2026-10-20 07:00:06；bodyUpdatedAt 2026-10-06T20:24:53.517+09:00，略早于发布，仍取 published → 2026-10-20；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-20（源时区 08:00，UTC 已是 10-19，上海日历日仍是 10-20）。导流：正文作者应用站点 https://fieldpic.app/ja 交付时 GET 200（标题 FieldPic Checklist - チェックリストを撮影して、表に書き出す），按作者产品导流披露，可列可达，不另作本条主源。https://apps.apple.com/app/fieldpic-checklist/id6810993936 交付时 HTTP 200，但跟随至 https://apps.apple.com/cn/iphone/today （标题 iPhone 版“Today” - App Store），按区域不可用披露，不因 200 算可达，须写出完整 URL。https://developer.apple.com/contact/request/private-cloud-compute/ 交付时 HTTP 200，但跟随至 https://idmsa.apple.com/IDMSWebAuth/signin.html?path=%2Fcontact%2Frequest%2Fprivate-cloud-compute%2F （标题 Sign In - Apple），落到登录页，不列入可达，须写出完整 URL 并披露状态。相关篇 https://zenn.dev/dadachi/articles/fieldpic-foundation-models-checklist 交付时 GET 200，不另作本条主源，可列可达。正文未配图。作者资料 website_url（LinkedIn）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 秒、25〜37 秒和 18〜30 秒不是同一笔",
+        body: "请按原文核算：终端内 1 个项目是不是大约 5 秒，而且会写出没有的伤，改提示 4 回后阳台栏杆的小伤是不是每次还在。PCC 对照表是不是 25〜37 秒，应用里按项目处理的实測是不是 18〜30 秒，不要把这三笔混用。一次请求是不是最多 6 张，不要把 22 张、19 个项目当成一次送入。改成 greedy 后，同一张照片两次是不是一字不差。这次是不是用 Claude 做了第三者对照。发布日是不是 2026-10-20，不要因 UTC 写成 2026-10-19。这些是不是作者自己这一次实机上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 5 秒、对照表 25〜37 秒，和应用实測 18〜30 秒。",
+      "记下一次最多 6 张，不要写成 22 张一次送入。",
+      "发布日取 2026-10-20，不要写成 UTC 的 10-19。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-10-20T08:00:06.427+09:00 → UTC 2026-10-19T23:00:06Z、Asia/Shanghai 2026-10-20 07:00:06；bodyUpdatedAt 2026-10-06T20:24:53.517+09:00，略早于发布，仍取 published → 2026-10-20；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-20（源时区 08:00，UTC 已是 10-19，上海日历日仍是 10-20）。",
+      "5 秒不是 25〜37 秒，也不是 18〜30 秒。发布日是 2026-10-20，不是 2026-10-19。",
+    ],
+  },
+  {
+    id: "1143",
+    slug: "king-97-50",
+    title: "kingyosun／KingYoSun：用「人只做决策」的方式个人开发 P2P SNS kukuri，完整 9 周（8/31〜11/1）合计 976 次提交，去掉合并后 875 次、公开发布 26 次；文中的週平均 97 次提交是 875÷9，不是标题写的週 100 次，也不是 976÷9。不要把「大概 50〜150 的幅度」写成这 9 周表的最小最大值（表里有 35 和 258），也不要把 11/2〜11/6 尚未结束的 21 次算进这 9 周合计。发布日必须写成 2026-11-07。源文未点名 18 值里的平台，platforms 为 []。这些是作者自己这一段提交记录，不可外推。",
+    summary: "kingyosun 在 8/31〜11/1 这完整 9 周里共 976 次提交，去掉合并后 875 次、发布 26 次；週平均 97 是 875÷9，不是标题的週 100。不要把「大概 50〜150」写成表的最小最大，也不要把未结束的一周算进去。发布日必须写成 2026-11-07。platforms 为 []。这些是作者自己这一段记录，不可外推。",
+    description: "面向已经打算用「週 100 次提交」对外说话、却还把 976 和 875、或把「大概 50〜150」写成表里最小最大的人：把 875÷9 得到的 97，以及必须写成 2026-11-07 的发布日写成门禁。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kingyosun/articles/kukuri-ai-dev",
+    sourceLabel: "zenn.dev·kingyosun《意思決定だけで週100コミット積むAI開発手法》",
+    upvotes: 1034,
+    trending: false,
+    tags: [
+      "个人开发",
+      "P2P",
+      "提交记录",
+      "AI编码",
+      "kukuri",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kingyosun/articles/kukuri-ai-dev",
+      label: "zenn.dev·kingyosun《意思決定だけで週100コミット積むAI開発手法》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者在本职之外一个人开发 P2P SNS kukuri，自称日常只做提需求、回答会影响兼容性和体验的问题、维护原则、不定期手测和发发布指示，几乎不读代码、也很少读 Issue／PR。文中写週平均 97 次提交，大概在 50〜150 的幅度里。完整 9 周（8/31〜11/1）的表是：每周全部提交 44、68、124、258、149、128、110、35、60，合计 976；去掉合并后 43、64、124、185、138、123、103、35、60，合计 875；公开发布 26 次。週平均 97 是 875÷9，不是标题写的週 100，也不是 976÷9。表里既有 35 也有 258，所以不要把「大概 50〜150」写成这 9 周的最小最大值。11/2〜11/6 尚未结束的一周是 21 次，不在这 9 周合计里。源文只称「AI」，没有点名 18 值里的平台，platforms 为 []。",
+    outcomes: [
+      "源披露：完整 9 周（8/31〜11/1）合计 976 次提交，去掉合并后 875 次、公开发布 26 次；文中的週平均 97 次是 875÷9，不是标题写的週 100 次，也不是 976÷9。不要把「大概 50〜150 的幅度」写成这 9 周表的最小最大值（表里有 35 和 258），也不要把 11/2〜11/6 尚未结束的 21 次算进这 9 周合计。这些是作者自己这一段提交记录，不可外推到别人的仓库或团队节奏。",
+      "源文未点名 18 值里的平台，platforms 为 []。发布日必须写成 2026-11-07（源时区 02:26，UTC 已是 11-06，上海日历日仍是 11-07）。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-11-07T02:26:04.139+09:00 → UTC 2026-11-06T17:26:04Z、Asia/Shanghai 2026-11-07 01:26:04；bodyUpdatedAt 2026-11-07T03:26:40.212+09:00，晚于发布、同日，仍取 published → 2026-11-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07，不要因 UTC 写成 2026-11-06。导流：正文作者产品与仓 https://kukuri.app/ （交付时 GET 200，标题 kukuri — 話題でつながる。運営は選べる。）、https://app.kukuri.app/ （交付时 GET 200，标题 kukuri web）、https://note.com/kingyosun/n/n9cb7fbe41ff9 （交付时 GET 200，标题 BlueskyでもNostrでも足りないと思ったので、SNSを作った｜KingYoSun），以及 GitHub 比较页、blob、PR、发布页交付时均 GET 200，可列可达，按作者项目导流／一次资料披露，不另作本条主源：https://github.com/kukuri-app/kukuri/compare/v0.2.8-preview.2...v0.3.0-preview.2 ；https://github.com/kukuri-app/kukuri/compare/v0.3.3-preview.1...v0.4.0-preview.1 ；https://github.com/kukuri-app/kukuri/compare/v0.4.3-preview.1...v0.4.4-preview.1 ；https://github.com/kukuri-app/kukuri/compare/v0.4.4-preview.1...v0.4.5-preview.2 ；https://github.com/kukuri-app/kukuri/compare/v0.4.5-preview.2...v0.4.6-preview.1 ；https://github.com/kukuri-app/kukuri/compare/v0.5.1-preview.1...v0.5.2-preview.1 ；https://github.com/kukuri-app/kukuri/blob/e38c7b679c1b1fb7a371b3bbacb2a40559553bbb/docs/01_project/progressReports/2025-08-13_v2_commands_migration.md ；https://github.com/kukuri-app/kukuri/pull/283 ；https://github.com/kukuri-app/kukuri/blob/main/docs/progress/2026-09-27-1221-r5i-legacy-store-retirement.md ；https://github.com/kukuri-app/kukuri/blob/6fbfae46cc2bf411a3386f9437acfc7611e57749/docs/01_project/progressReports/2025-08-13_phase5_architecture_refactoring.md ；https://github.com/kukuri-app/kukuri/blob/350801797678569bd49aba77e549ee73f78d7d83/docs/01_project/progressReports/2026-03-10_community_node_profile_propagation_gap.md ；https://github.com/kukuri-app/kukuri/blob/806e746ca87d459d997afbeb12bd81bfc9012dac/next/docs/adr/0001-linux-first-mvp.md ；https://github.com/kukuri-app/kukuri/blob/main/AGENTS.md ；https://github.com/kukuri-app/kukuri/blob/071097fe3941bcb55c122bdd78ff0bcf86d96464/docs/progress/2026-04-16-mvp-builder-preview-plan.md ；https://github.com/kukuri-app/kukuri/pull/891 ；https://github.com/kukuri-app/kukuri/releases/tag/v0.3.0-preview.2 ；https://github.com/kukuri-app/kukuri/blob/05139d616d9ccd7c49d52960497c9008b9855823/AGENTS.md 。正文提交页 https://github.com/kukuri-app/kukuri/commit/f0b698759c403146f75884bba5c54ee27a662105 、https://github.com/kukuri-app/kukuri/commit/806e746ca87d459d997afbeb12bd81bfc9012dac 、https://github.com/kukuri-app/kukuri/commit/564bc91aa4b63a6ab72a8903901c47996da74f8f 、https://github.com/kukuri-app/kukuri/commit/23a351255bd9fb63ad33254fa987aa8b85a3358f 首次 GET 为 HTTP 429，间隔重试后交付时最后一次仍是 HTTP 429（标题 Too many requests · GitHub），不列入可达，须写出完整 URL 并披露状态。相关篇 https://zenn.dev/kingyosun/articles/kukuri-spec-and-architecture 交付时 GET 200，不另作本条主源，可列可达。配图 10 张原址交付时均 GET 200，可列可达，挂在本条：https://static.zenn.studio/user-upload/deployed-images/717521bc915845e4fc149911.png?sha=85405cf2f693f72d252545accbb0d9da9a5db924 ；https://static.zenn.studio/user-upload/deployed-images/3d4e3d225f5edf7caf132ffd.png?sha=1e6a90c68e85cedccfbf49c3543ecc76e2178bd6 ；https://static.zenn.studio/user-upload/deployed-images/07be1d8c61866187aeae538b.png?sha=f60994aee7886f2960eb1473141e4731655b5873 ；https://static.zenn.studio/user-upload/deployed-images/e10a0b2647241af36eb87df9.png?sha=83e27bce5c42c754d755f17896107dd9cad8cf36 ；https://static.zenn.studio/user-upload/deployed-images/191cb9b0a3fc40f417c0ac1b.png?sha=98051d81c4b84cdc21d19ae5cf667c0c5d23792a ；https://static.zenn.studio/user-upload/deployed-images/0f72462111a4c49c7d00d1e4.png?sha=f2fec33076273d77e833c9c0ef31af4cccea1097 ；https://static.zenn.studio/user-upload/deployed-images/428267170e46bf3f45577b9f.png?sha=6250f366300bfd96f60c31ef7fd9b870a7bb997c ；https://static.zenn.studio/user-upload/deployed-images/d71410699032c8381df411f0.png?sha=b5d38ccc0c3adef56357853f26f0d6bbe87052eb ；https://static.zenn.studio/user-upload/deployed-images/59626207463a92d6eee29cd8.png?sha=6080fa55bf59252406db73f1d770c5ab53efcc73 ；https://static.zenn.studio/user-upload/deployed-images/c9e48d20eefeaa97de83089f.png?sha=963f08bd22d92459e76be453eaff627eee10aaf4 。文内 https://x.com/knotted221 交付时 GET 200（标题 KingYoSun (@knotted221) / X），可列可达，不当作者独立产品导流。作者资料 website_url 与正文同一产品站，按正文披露，不另补资料站。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清週平均 97 是 875÷9，不是标题的週 100",
+        body: "请按原文核算：完整 9 周是不是 8/31〜11/1，合计是不是 976 次提交、去掉合并后 875 次、公开发布 26 次。週平均 97 是不是 875÷9，不是标题写的週 100，也不是 976÷9。不要把「大概 50〜150」写成这 9 周表的最小最大值，表里是不是既有 35 也有 258。11/2〜11/6 尚未结束的 21 次是不是不在这 9 周合计里。源文是不是未点名 18 值里的平台。发布日是不是 2026-11-07，不要因 UTC 写成 2026-11-06。这些是不是作者自己这一段提交记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先算清 875÷9=97，不要用标题的週 100 或 976÷9。",
+      "记下表里有 35 和 258，不要把「大概 50〜150」写成最小最大。",
+      "发布日取 2026-11-07，不要写成 UTC 的 11-06。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-11-07T02:26:04.139+09:00 → UTC 2026-11-06T17:26:04Z、Asia/Shanghai 2026-11-07 01:26:04；bodyUpdatedAt 2026-11-07T03:26:40.212+09:00，晚于发布、同日，仍取 published → 2026-11-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07，不要因 UTC 写成 2026-11-06。",
+      "週平均 97 是 875÷9，不是标题的週 100。发布日是 2026-11-07，不是 2026-11-06。",
+    ],
+  },
+  {
+    id: "1144",
+    slug: "bant-11of11",
+    title: "bantoai／盤とAI：只把 I/O 表和规格说明交给 Claude Opus 5.5（claude.ai 网页，2026-10-27 当天实施），写完一台罐体设备的梯形图，导入 CODESYS 软 PLC 后，用控制设计者的 11 项试验全部得 ○。不要把 11 项全部通过和模拟设备上一周期大约 27 秒给水、10 秒搅拌、大约 26 秒排水，或 18 点输入、5 点输出写成同一笔。作者写明：规格里没写的，AI 也不会补上。发布日必须写成 2026-10-27，不要因当天更新写成别的日子。platforms 记 claude。这些是作者自己这一次、这一套样本设备上的结果，不可外推。",
+    summary: "bantoai 用 Claude Opus 5.5 写出罐体设备梯形图，在 CODESYS 上按设计者的 11 项试验全部得 ○。不要把 11 项和一周期大约 27／10／26 秒，或 18 点输入、5 点输出混用。发布日必须写成 2026-10-27。platforms 记 claude。这些是作者自己这一次上的结果，不可外推。",
+    description: "面向已经打算把「AI 会写梯形图」说成现场可直接交货、却还把 11 项全部通过和一周期秒数写成同一笔的人：把 11/11，以及必须写成 2026-10-27 的发布日写成门禁。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/bantoai/articles/ai-ladder-generation-codesys",
+    sourceLabel: "zenn.dev·bantoai《生成AIにラダー回路を書かせてみた：タンク設備、試験11項目が全部通った（CODESYSで動作確認）》",
+    upvotes: 1035,
+    trending: false,
+    tags: [
+      "Claude",
+      "梯形图",
+      "CODESYS",
+      "PLC",
+      "个人实践",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/bantoai/articles/ai-ladder-generation-codesys",
+      label: "zenn.dev·bantoai《生成AIにラダー回路を書かせてみた：タンク設備、試験11項目が全部通った（CODESYSで動作確認）》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者想亲自确认「生成式 AI 能不能把梯形图写到真正能在设备上用」：不用 ST，而用 CODESYS 能导入的 PLCopen XML 出梯形图，再用控制设计者出货前会做的试验项目判 ○／×。生成式 AI 是 Claude Opus 5.5，在 claude.ai 网页上于 2026-10-27 当天实施。PLC 是 CODESYS Development System V3.5.22.40 加 Control Win 演示模式（无许可，2 小时会停）。模拟设备是作者自作、未公开。题目是给水、搅拌、排水的罐体，输入 18 点、输出 5 点，全部是自作样本，和现实设备无关。规格里写了连续／个别模式、停止、异常和复位。模拟设定下，一周期大约给水 27 秒、搅拌 10 秒、排水大约 26 秒，不要和 11 项试验混用。导入并接到模拟设备后，11 项试验全部得 ○。作者同时写明：能写的只是规格里写过的内容，规格漏洞和给维护者看的可读性，交给 AI 也补不上。源文称为 Claude Opus 5.5，platforms 记 claude。",
+    outcomes: [
+      "源披露：在 CODESYS 软 PLC 和自作模拟设备上，按控制设计者的试验项目判，11 项全部得 ○。不要把 11 项全部通过和一周期大约 27 秒给水、10 秒搅拌、大约 26 秒排水写成同一笔，也不要把 18 点输入、5 点输出和 11 项混用。作者写明：规格里没写的，AI 也不会补上；这不能当成「现场可直接交货」。这些是作者自己这一次、这一套样本设备上的结果，不可外推到别的 PLC、别的规格或真实出货设备。",
+      "platforms 记 claude。发布日必须写成 2026-10-27，不要因当天稍后的更新写成别的日子。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-27T15:54:03.915+09:00 → UTC 2026-10-27T06:54:03Z、Asia/Shanghai 2026-10-27 14:54:03；bodyUpdatedAt 2026-10-27T21:20:36.224+09:00，晚于发布、同日，仍取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。导流：正文作者样本仓与文件页 https://github.com/bantoai/samples/blob/main/guides/codesys-quickstart.md 、https://github.com/bantoai/samples/blob/ai-ladder-generation-codesys-v1/articles/ai-ladder-generation-codesys/xml/sample_selfhold.xml 、https://github.com/bantoai/samples/blob/ai-ladder-generation-codesys-v1/articles/ai-ladder-generation-codesys/prompt.txt 、https://github.com/bantoai/samples/tree/ai-ladder-generation-codesys-v1/articles/ai-ladder-generation-codesys 交付时均 GET 200，按作者项目导流披露，可列可达，不另作本条主源。配图 8 张原址交付时均 GET 200，可列可达，挂在本条：https://static.zenn.studio/user-upload/deployed-images/1edc70628b0cf127ff2c2e14.png?sha=c4d68f08e9281493e9867ad8b39538060ef460f3 ；https://static.zenn.studio/user-upload/deployed-images/fdd8c086d44d03bf11177331.png?sha=f6534f07cabf850ba02afefa9b110a48c756fd5a ；https://static.zenn.studio/user-upload/deployed-images/7962edd5b4f4a69d4f683ff6.png?sha=4d0a9447cd09e329605966093558644e82879085 ；https://static.zenn.studio/user-upload/deployed-images/76f670e5be440ba58a197c1f.png?sha=2422e4bbc9ac77ddc74a35dbacfecd1737d28e67 ；https://static.zenn.studio/user-upload/deployed-images/8e3ef9fe3f0bbdddbf009ece.png?sha=96717be76320873a72b28936e65575a26fb02528 ；https://static.zenn.studio/user-upload/deployed-images/0861d217580b5b41fcdef4a6.png?sha=244eadc30c66c3ded165b8355a1682f21f568a34 ；https://static.zenn.studio/user-upload/deployed-images/101f2bedfd8fb51a7fe2cce1.png?sha=f09906f3c45453a58581ac430ade201c46adc2e6 ；https://static.zenn.studio/user-upload/deployed-images/ed65b0cf724d96b3c0489838.png?sha=df4475e9b288e5ccd66c5fe66238bd77139bf37a 。一次资料 https://arxiv.org/abs/2410.15200v1 、https://fis.tu-dresden.de/portal/en/publications/generation-of-plc-code-using-large-language-models-a-comparative-study(73161f03-7513-46b1-a4b1-94ca2d14d188).html 、https://www.plcopen.org/standards/xml-echange/ ，以及相关篇 https://qiita.com/takeshi1234/items/5812e311557c83353547 、https://qiita.com/fa_yoshinobu/items/3190c4ae3253e2d175f2 交付时均 GET 200，可列可达，不当本条主源。模拟设备未公开。作者资料 website_url 为空，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 11 项全部得 ○，不要和一周期秒数混用",
+        body: "请按原文核算：是不是 Claude Opus 5.5 在 claude.ai 网页、2026-10-27 当天实施，写出罐体设备梯形图后，11 项试验全部得 ○。不要把 11 项和一周期大约 27 秒给水、10 秒搅拌、大约 26 秒排水，或 18 点输入、5 点输出混用。作者是不是写明规格里没写的也不会补上。发布日是不是 2026-10-27。这些是不是作者自己这一次、这一套样本设备上的结果，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写 11 项全部得 ○，不要和一周期秒数混用。",
+      "记下这是样本设备，规格里没写的不会被补上。",
+      "发布日取 2026-10-27。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-10-27T15:54:03.915+09:00 → UTC 2026-10-27T06:54:03Z、Asia/Shanghai 2026-10-27 14:54:03；bodyUpdatedAt 2026-10-27T21:20:36.224+09:00，晚于发布、同日，仍取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。",
+      "11 项全部得 ○ 不是一周期大约 27／10／26 秒。发布日是 2026-10-27。",
+    ],
+  },
+  {
+    id: "1145",
+    slug: "kaga-240-25",
+    title: "kagaage／karaage：用自己生成的日语虚构数据，测量把生成式 AI 粘贴前用正则掩盖隐私能盖住多少。阳性 10 种×30 件＝300 件，最小 5 条规则仍有 240/300 没盖住；加严后是 25/300（姓名 15、公司名 10）。误替换对照 100 件上是 17/100 对 21/100；未知书式 48 件两种规则都是 48/48 原样穿过。不要把 240/300 和 25/300、或 17/100 和 21/100 混用，也不要把 25/300 说成已经可靠——作者写明这是「知道书式后写规则、再用同一生成器来测」的偏甜数字。测量日是 2026-10-07，发布日必须写成 2026-10-15。源文未点名 18 值里的平台，platforms 为 []。这些是作者自己这一次虚构数据上的测量，不可外推。",
+    summary: "kagaage 用 300 件日语虚构阳性数据测量粘贴前正则掩盖：最小 5 条是 240/300 没盖住，加严后 25/300；未知书式 48 件两种都是 48/48 穿过。不要把 240/300 和 25/300 混用，也不要把 25/300 说成已经可靠。发布日必须写成 2026-10-15，不是测量日 2026-10-07。platforms 为 []。这些是作者自己这一次上的测量，不可外推。",
+    description: "面向已经打算只靠几条正则再往生成式 AI 里粘贴、却还把 240/300 和 25/300 当成同一笔、或把 25/300 说成已经可靠的人：把这两行结果和必须写成 2026-10-15 的发布日写成门禁。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kagaage/articles/9534e4e8407417",
+    sourceLabel: "zenn.dev·kagaage《生成AIに貼る前の正規表現マスク、日本語の架空データ300件で測った漏れと誤検知》",
+    upvotes: 1036,
+    trending: false,
+    tags: [
+      "正则",
+      "脱敏",
+      "生成式AI",
+      "日语",
+      "测量",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kagaage/articles/9534e4e8407417",
+      label: "zenn.dev·kagaage《生成AIに貼る前の正規表現マスク、日本語の架空データ300件で測った漏れと誤検知》",
+      date: "2026-10-15",
+      dateLabel: "发布",
+    },
+    approach: "作者想弄清：往生成式 AI 里粘贴之前，用正则先盖掉邮箱、电话等，到底能依靠多少。他用自己生成的日语虚构数据来测，不用真实个人信息。阳性是 10 种×30 件＝300 件；另有 100 件「长得像秘密但不是秘密」的误替换对照，以及 12 种×4 件＝48 件规则没设想过的未知书式。2026-10-07 用固定随机种子、在空文件夹里跑了两遍，结果文件一致。最小 5 条规则下，秘密仍留在文中的是 240/300，误替换 17/100，未知书式 48/48 全部穿过。加严版（正规化、允许分隔抖动、卡号和 12 位做校验、再补住所、公司名、姓名等规则）后，残留是 25/300（姓名 15、公司名 10），误替换升到 21/100，未知书式仍是 48/48 全部穿过。作者写明 25/300 是偏甜的数字，因为规则是看着这些书式写的、又用同一生成器来测。这次测量本身没有调用 18 值里的平台，platforms 为 []。",
+    outcomes: [
+      "源披露：阳性 300 件上，最小 5 条规则是 240/300 没盖住，加严后是 25/300（姓名 15、公司名 10）；误替换对照 100 件上是 17/100 对 21/100；未知书式 48 件两种规则都是 48/48 原样穿过。不要把 240/300 和 25/300、或 17/100 和 21/100 混用，也不要把 25/300 说成已经可靠——作者写明这是知道书式后写规则、再用同一生成器来测的偏甜数字。测量在 2026-10-07 跑了两遍并对上，发布日必须写成 2026-10-15，不要写成测量日。这些是作者自己这一次虚构短文上的测量，不可外推到真实会议记录、邮件或某家 DLP 产品的精度。",
+      "源文未点名 18 值里的平台，platforms 为 []。发布日必须写成 2026-10-15，不要因 UTC 写成 2026-10-14，或因测量日写成 2026-10-07。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-15T01:15:32.429+09:00 → UTC 2026-10-14T16:15:32Z、Asia/Shanghai 2026-10-15 00:15:32；bodyUpdatedAt 与发布相同，取 published → 2026-10-15；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-15（源时区 01:15，UTC 已是 10-14，上海日历日仍是 10-15），不要因测量日写成 2026-10-07。导流：正文作者详细稿 https://note.com/robakara/n/n67c05a40569e 交付时 GET 200（标题 生成AIに貼る前の「マスク」、正規表現でどこまで消せる？ 日本語の合成データ300件で測った漏れと誤検知｜からあげ），按作者站点导流披露，可列可达，不另作本条主源。正文未配图。作者资料 website_url 是同一 note.com 账号，正文已有该站硬链，按正文披露，不另补资料站。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 240/300 和 25/300 不是同一笔，25/300 还是偏甜的数字",
+        body: "请按原文核算：阳性是不是 10 种×30 件＝300 件，最小 5 条规则是不是 240/300 没盖住，加严后是不是 25/300（姓名 15、公司名 10）。误替换对照 100 件是不是 17/100 对 21/100，未知书式 48 件是不是两种都是 48/48 穿过。不要把 240/300 和 25/300 混用，也不要把 25/300 说成已经可靠。测量日是不是 2026-10-07，发布日是不是 2026-10-15，不要写成 2026-10-14 或 2026-10-07。源文是不是未点名 18 值里的平台。这些是不是作者自己这一次虚构数据上的测量，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 240/300 和 25/300，以及 17/100 和 21/100。",
+      "记下 25/300 是偏甜数字，未知书式仍是 48/48 穿过。",
+      "发布日取 2026-10-15，不要写成测量日 2026-10-07。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-10-15T01:15:32.429+09:00 → UTC 2026-10-14T16:15:32Z、Asia/Shanghai 2026-10-15 00:15:32；bodyUpdatedAt 与发布相同，取 published → 2026-10-15；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-15，不要因 UTC 写成 2026-10-14，或因测量日写成 2026-10-07。",
+      "240/300 不是 25/300；发布日是 2026-10-15，不是 2026-10-07。",
+    ],
+  },
+  {
+    id: "1146",
+    slug: "sumi-600k-31",
+    title: "sumitsuke：用自己 1 周的 Claude Code 记录，把「文脉超过 T 就自动摘要」这条线重新套回去。材料是 9 月 29 日之后、Opus 响应 30 回以上的 32 本会话、响应 16,449 回；既定线大约 96.7 万。把线放到 60 万时，读取合计比既定线大约少 31%，摘要是每周 66 回——这是计算，不是改线后再跑一周测出来的。作者已在 10-06 把 autoCompactWindow 写成 600000，但改完后的一周当时还没测到。不要把大约 31%、每周 66 回当成改完后的实测，也不要把约 2.37 万的摘要后上加和 60 万或 96.7 万混用。发布日必须写成 2026-10-22。platforms 记 claude。这些是作者自己这一次套算，不可外推。",
+    summary: "sumitsuke 用 32 本会话、16,449 回响应把自动摘要线重新套算：线放到 60 万时，读取合计比既定大约 96.7 万大约少 31%，摘要每周 66 回。这是计算，不是改线后的实测。发布日必须写成 2026-10-22。platforms 记 claude。这些是作者自己这一次套算，不可外推。",
+    description: "面向已经打算把自动摘要线改到 60 万并对外宣称「读取少了三成」、却还把这次套算当成改完后再测一周的人：把「这是计算」和必须写成 2026-10-22 的发布日写成门禁。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/sumitsuke/items/4cd2d30fc76ba55ae50c",
+    sourceLabel: "qiita.com·sumitsuke《Claude Code の自動の要約は何万で掛けるか——1 週間の記録に線を当てはめ直したら、60 万で読みが約 3 割減る計算になった》",
+    upvotes: 1037,
+    trending: false,
+    tags: [
+      "Claude Code",
+      "auto compact",
+      "上下文",
+      "Opus 5.5",
+      "套算",
+    ],
+    primarySource: {
+      url: "https://qiita.com/sumitsuke/items/4cd2d30fc76ba55ae50c",
+      label: "qiita.com·sumitsuke《Claude Code の自動の要約は何万で掛けるか——1 週間の記録に線を当てはめ直したら、60 万で読みが約 3 割減る計算になった》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
+    approach: "作者的窗口是 100 万 token，觉得公开文章里「大约 95% 自动摘要、一次摘要 10〜20 万」多半还是 200K 窗口时期的说法，于是不用一般论，而把自己 1 周的记录拿来，把「文脉超过 T 就自动摘要」重新套回去。材料是 9 月 29 日之后更新、Opus 响应 30 回以上的 32 本会话（不含作业员记录），响应 16,449 回，环境是 Claude Code 桌面、Opus 5.5、窗 100 万。既定线大约 967K（大约 96.7 万）。把线放到 60 万时，读取合计比既定线大约少 31%，摘要是每周 66 回。作者写明：这是计算，不是改线后再跑一周测出来的；改完后的一周当时还没测到。10-06 已在设定文件里加上 autoCompactWindow: 600000。文中还有摘要后上加大约 2.37 万、以及文脉大小没有改变输出速度等观察，不要和 31%、66 回或 60 万混成一笔「已经省下的实测」。源文称为 Claude Code，platforms 记 claude。",
+    outcomes: [
+      "源披露：材料是 32 本会话、响应 16,449 回；既定线大约 96.7 万。把线放到 60 万时，读取合计比既定线大约少 31%，摘要是每周 66 回。这是把已有记录重新套算的结果，不是改线后再跑一周测出来的。不要把大约 31%、每周 66 回当成改完后的实测，也不要把大约 2.37 万的摘要后上加和 60 万或 96.7 万混用。这些是作者自己这一次、这一套用法上的套算，不可外推到别人的窗口或用法。",
+      "platforms 记 claude。发布日必须写成 2026-10-22。不要把 10-06 写入设定的日子或 10-07 重读文档的日子写成发布日。",
+    ],
+    caveats: [
+      "有 JSON-LD；datePublished 2026-10-22T10:20:06.000+09:00，与 API created_at 2026-10-22T10:20:06+09:00 一致 → UTC 2026-10-22T01:20:06Z、Asia/Shanghai 2026-10-22 09:20:06；updated_at 与发布相同，取 published → 2026-10-22；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-22。导流：正文作者实验室与仓 https://sumitsuke.jp/via/qiita/lab/auto-compact-line-recompute/ （交付时 GET 200，标题 Claude Code の自動の要約は何万で掛けるか——60 万で −31%（計算）｜Sumitsuke Lab）、https://github.com/sumitsuke/claude-code-session-ledger （交付时 GET 200），按作者站点／项目导流披露，可列可达，不另作本条主源。配图 3 张原址交付时均 GET 200，可列可达，挂在本条：https://raw.githubusercontent.com/sumitsuke/zenn-content/main/images/claude-code-auto-compact-line/fig1_line_vs_reading.png ；https://raw.githubusercontent.com/sumitsuke/zenn-content/main/images/claude-code-auto-compact-line/photo_settings.png ；https://raw.githubusercontent.com/sumitsuke/zenn-content/main/images/claude-code-auto-compact-line/fig2_context_vs_speed.png 。相关篇 https://zenn.dev/tauridev/articles/claude-code-auto-compact-line 交付时 GET 200，不另作本条主源，可列可达。作者资料 website_url 与正文同一站点，按正文披露，不另补资料站。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清大约 31% 和每周 66 回是计算，不是改线后的实测",
+        body: "请按原文核算：材料是不是 32 本会话、16,449 回响应，既定线是不是大约 96.7 万。把线放到 60 万时，读取合计是不是比既定线大约少 31%，摘要是不是每周 66 回。这是不是计算，不是改线后再跑一周测出来的。不要把大约 2.37 万的摘要后上加和 60 万或 96.7 万混用。发布日是不是 2026-10-22，不要写成 10-06 或 10-07。这些是不是作者自己这一次套算，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写明大约 31%、每周 66 回是套算，不是改线后的实测。",
+      "记下 32 本、16,449 回和既定大约 96.7 万，不要和大约 2.37 万混用。",
+      "发布日取 2026-10-22。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-22T10:20:06.000+09:00，与 API created_at 2026-10-22T10:20:06+09:00 一致 → UTC 2026-10-22T01:20:06Z、Asia/Shanghai 2026-10-22 09:20:06；updated_at 与发布相同，取 published → 2026-10-22；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-22。",
+      "大约 31% 和每周 66 回是计算，不是改线后的实测。发布日是 2026-10-22。",
+    ],
+  },
+  {
+    id: "1147",
+    slug: "blck-278-51",
+    title: "blackcats-lab：把自己仓库里几乎相同的 AGENTS.md 和 CLAUDE.md 从各 278 行缩短到 AGENTS.md 51 行、CLAUDE.md 9 行，步骤放到 skills/，规格和设计判断放到 docs/。整理前两份的差别只有把「Claude」和「Codex」称呼对调的 10 行。不要把 51 行和 9 行、或把 278 行和这 10 行混用。发布日必须写成 2026-10-27。正文用到了 Claude Code，platforms 记 claude；learn.chatgpt.com 只是 AGENTS.md 文档链，源文未把这次实践称为 ChatGPT，不得写入 chatgpt。这些是作者自己这一份仓库上的行数，不可外推。",
+    summary: "blackcats-lab 把 AGENTS.md 和 CLAUDE.md 从各 278 行缩到 51 行和 9 行。不要把 51 和 9、或 278 和对调的 10 行混用。发布日必须写成 2026-10-27。platforms 记 claude，不得因文档链写入 chatgpt。这些是作者自己这一份仓库上的行数，不可外推。",
+    description: "面向已经打算把代理说明书越写越长、却还把 AGENTS.md 的 51 行和 CLAUDE.md 的 9 行写成同一笔的人：把这两行缩短结果和必须写成 2026-10-27 的发布日写成门禁。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/blackcats-lab/items/069d2640e1e7cf8ce21d",
+    sourceLabel: "qiita.com·blackcats-lab《AGENTS.mdを278行から51行にした：AIエージェントに「必要な分だけ読ませる」ドキュメント設計》",
+    upvotes: 1038,
+    trending: false,
+    tags: [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "Claude Code",
+      "文档设计",
+      "Skills",
+    ],
+    primarySource: {
+      url: "https://qiita.com/blackcats-lab/items/069d2640e1e7cf8ce21d",
+      label: "qiita.com·blackcats-lab《AGENTS.mdを278行から51行にした：AIエージェントに「必要な分だけ読ませる」ドキュメント設計》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者在同一仓库里并用 Codex 和 Claude Code，发现 AGENTS.md 和 CLAUDE.md 都涨到 278 行，而且内容几乎相同：整理前是把 CLAUDE.md（278 行）复制成 AGENTS.md（278 行），差别只有把「Claude」和「Codex」称呼对调的 10 行。媒体规则还同时写在这两份和各媒体 README 里，改一处要改三处。作者把常读的说明书缩到 AGENTS.md 51 行、CLAUDE.md 9 行，作业步骤放到 skills/，规格和设计判断放到 docs/。这是行数和放置上的整理，不是 hook 教程。Codex 不在 18 值里，不硬凑；这次实践里确实用了 Claude Code，platforms 记 claude。文中出现的 https://learn.chatgpt.com/docs/agent-configuration/agents-md 是 AGENTS.md 文档链，不能当成这次事件里使用了 ChatGPT。",
+    outcomes: [
+      "源披露：整理前 AGENTS.md 和 CLAUDE.md 各 278 行，差别只有称呼对调的 10 行；整理后是 AGENTS.md 51 行、CLAUDE.md 9 行。不要把 51 行和 9 行写成同一笔，也不要把 278 行和这 10 行混用。这些是作者自己这一份仓库上的行数，不可外推到别人的仓库或当成 token 用量的实测。",
+      "platforms 记 claude。learn.chatgpt.com 只是文档链，源文未把这次实践称为 ChatGPT，不得写入 chatgpt。发布日必须写成 2026-10-27。",
+    ],
+    caveats: [
+      "有 JSON-LD；datePublished 2026-10-27T15:40:06.000+09:00，与 API created_at 2026-10-27T15:40:06+09:00 一致 → UTC 2026-10-27T06:40:06Z、Asia/Shanghai 2026-10-27 14:40:06；updated_at 与发布相同，取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。一次资料 https://agents.md/ （交付时 GET 200，标题 AGENTS.md）、https://code.claude.com/docs/en/memory （交付时 GET 200，标题 How Claude remembers your project - Claude Code Docs）、https://code.claude.com/docs/en/skills （交付时 GET 200，标题 Extend Claude with skills - Claude Code Docs）、https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions （交付时 GET 200，标题 Documenting Architecture Decisions），可列可达，不当本条主源。https://learn.chatgpt.com/docs/agent-configuration/agents-md 交付时 HTTP 403，不列入可达，须写出完整 URL 并披露状态；这是文档链，不得据此把 chatgpt 写入 platforms。本条不是 hook 教程。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 51 行是 AGENTS.md，9 行是 CLAUDE.md",
+        body: "请按原文核算：整理前是不是 AGENTS.md 和 CLAUDE.md 各 278 行，差别只有称呼对调的 10 行。整理后是不是 AGENTS.md 51 行、CLAUDE.md 9 行，不要把 51 和 9 混用。发布日是不是 2026-10-27。源文是不是未把这次实践称为 ChatGPT，不得因 learn.chatgpt.com 文档链写入 chatgpt。这些是不是作者自己这一份仓库上的行数，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 AGENTS.md 51 行和 CLAUDE.md 9 行。",
+      "记下整理前各 278 行，差别是对调的 10 行，不要和 51 或 9 混用。",
+      "发布日取 2026-10-27。不得因文档链写入 chatgpt。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-27T15:40:06.000+09:00，与 API created_at 2026-10-27T15:40:06+09:00 一致 → UTC 2026-10-27T06:40:06Z、Asia/Shanghai 2026-10-27 14:40:06；updated_at 与发布相同，取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。",
+      "51 行不是 9 行；不得因文档链写入 chatgpt。发布日是 2026-10-27。",
+    ],
   }
 ];
 
