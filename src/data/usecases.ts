@@ -70695,6 +70695,501 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-10-02T14:02:44.759+09:00 → UTC 2026-10-02T05:02:44Z、Asia/Shanghai 2026-10-02 13:02:44；bodyUpdatedAt 2026-10-02T14:12:04.855+09:00，晚于发布、同日，仍取 published → 2026-10-02；GET 200（UA MiraBot/1.0））：shune 在《Claude Code を9体並べてチーム開発させた。テスト1,310件は全部緑で、アプリは通しで動かなかった》记下这一晩。",
       "1,310 件全绿不是应用已通。581 次提交和 98 次合并不要当成质量指标。8 件里倒 6 件是共用 target/ 时的一组测试。不要和 #966 的 slug shun-12pair-4 混淆。",
     ],
+  },
+  {
+    id: "998",
+    slug: "yuay-57wf-17h",
+    title: "yuay1778：中小建设公司的 ERP 由作者一人开发、运营。用 Zapier 自动化 57 条工作流要每月超过 1 万日元，Make.com 也差不多。改到月租约 4,000 日元的 VPS（Xserver VPS 4GB）上自建 n8n 后，57 条工作流跑了 3 个月没有宕机，每月 17 小时的手工作业消失，作者估算一年大约能少花 50 万日元。同期从邮件进 ERP 的时滞从 1 天改到了 10 分钟；Vercel Hobby 当时一天只能跑 1 次 Cron、超时 10 秒，10 分钟一回的 Gmail 同步和 15 分钟一回的 LINE 缓冲都做不到。这些是作者自己这套 57 条工作流、这台 VPS 上的用法，不可外推到别人的流程数、月租或可用性。",
+    summary: "yuay1778 把 57 条工作流从 Zapier／Make 改到月租约 4,000 日元的 VPS 上自建 n8n，3 个月没有宕机，每月 17 小时手工作业消失，作者估算一年大约少花 50 万日元。这些是作者自己这 57 条工作流上的用法，不可外推。",
+    description: "面向已经在用 Zapier 或 Make 跑几十条工作流、却被月租和执行次数卡住的人：把 57 条、月租约 4,000 日元、3 个月没有宕机，以及每月 17 小时写成门禁，区别于只建议「改用 n8n 就便宜」、却没有写出自己这台 VPS 上实际跑了多久的实践。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "n8n",
+    ],
+    sourceUrl: "https://zenn.dev/yuay1778/articles/n8n-57-workflows-vps",
+    sourceLabel: "zenn.dev·yuay1778 实践帖",
+    upvotes: 889,
+    trending: false,
+    tags: [
+      "n8n",
+      "vps",
+      "workflow",
+      "self-host",
+      "erp",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuay1778/articles/n8n-57-workflows-vps",
+      label: "zenn.dev·yuay1778《月4,000円のVPSでn8n 57ワークフロー動かしたら手作業が月17時間消えた》",
+      date: "2026-03-26",
+      dateLabel: "发布",
+    },
+    approach: "作者一个人开发和运营中小建设公司的 ERP。服务越接越多，手工作业和「再接一条」的工作也一起涨。先算了 Zapier、Make 按 57 条工作流来要多少钱，再改到自己的 VPS 上跑 n8n，看能不能用固定的月租把这 57 条撑住。",
+    outcomes: [
+      "源披露：用 Zapier 自动化 57 条工作流要每月超过 1 万日元，Make.com 也差不多。改到月租约 4,000 日元的 VPS（Xserver VPS 4GB，文中规格写的是 4vCPU／6GB RAM／150GB NVMe）上自建 n8n 后，57 条工作流跑了 3 个月没有宕机，每月 17 小时的手工作业消失，作者估算一年大约能少花 50 万日元。这些是作者自己这套 57 条工作流、这台 VPS 上的用法，不可外推到别人的流程数、月租或可用性。",
+      "文中对照表把 Zapier 写成每月 12,000 日元起、Make 写成每月 8,000 日元起，n8n 只记 VPS 的约 4,000 日元。不要把「超过 1 万日元」和表里的 12,000 日元起混成同一个报价，也不要把一年大约 50 万日元写成已经入账的实省。机器上同时跑 n8n、Uptime Kuma、Caddy 三个容器，内存占用大约 40%。",
+      "改过来之前，Vercel Hobby 的 Cron 一天只能跑 1 次，超时只有 10 秒，10 分钟一回的 Gmail 同步和 15 分钟一回的 LINE 缓冲都做不到。迁到 n8n 后，同步间隔收到 10 分钟，邮件进 ERP 的时滞从 1 天变成 10 分钟。不要把「1 天 → 10 分钟」写成 Vercel 本身的限额，也不要把 57 条和文中举的 4 个例子（LINE 连投缓冲、Gmail 同步、进出账核对、配送跟踪）混成只有 4 条。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-03-26T08:17:17.506+09:00 → UTC 2026-03-25T23:17:17Z、Asia/Shanghai 2026-03-26 07:17:17；bodyUpdatedAt 与发布相同，取 published → 2026-03-26。UTC 日期是 03-25，上海仍是 2026-03-26，不要写成 2026-03-25。正文无配图、无 YouTube 嵌入。文内示例地址 http://your-ip:5678 是占位，未当作可达链去核。",
+      "一次资料：https://docs.n8n.io/2-0-breaking-changes/ GET 200（跟随至 https://docs.n8n.io/changelog/v20-breaking-changes ，标题 v2.0 Breaking changes | Changelog | n8n Docs，落地为文档正文，按可达）；安装源 https://get.docker.com GET 200（落地为安装脚本正文）。同作者相关篇，不列入产品导流：https://zenn.dev/yuay1778/articles/claude-code-one-man-erp GET 200；https://zenn.dev/yuay1778/articles/line-ai-task-extraction GET 200；https://zenn.dev/yuay1778/articles/supabase-free-tier-production GET 403（交付时两次均为 403，不列入可达）；https://zenn.dev/yuay1778/articles/gmail-erp-auto-sync GET 403（交付时两次均为 403，不列入可达）。文内 https://x.com/Nenjunemuidesu GET 200（标题 年中眠い (@Nenjunemuidesu) / X），按作者页披露，不列入产品导流。Zenn 卡片链 embed.zenn.studio 不当作者产品导流。primary GET 200。platforms 记 n8n。",
+    ],
+    prompts: [
+      {
+        title: "先问清 57 条、约 4,000 日元和 3 个月没有宕机是不是同一套自建，再谈「改用 n8n 就便宜」",
+        body: "请按实测算一算：作者原来用 Zapier 跑 57 条工作流大概要多少钱，改到哪一档 VPS、月租大约多少；这 57 条跑了几个月、有没有宕机；每月省下多少小时手工作业，一年大约少花多少，这是估算还是已经入账。不要把表里的 Zapier 12,000 日元起和「超过 1 万日元」混用，也不要把 57 条写成文中只举的 4 个例子。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "按 57 条工作流去估 Zapier、Make 的月租和执行次数时，费用会跟着条数和调用量一起涨。自建 n8n 则主要付 VPS 的固定月租。",
+      "作者把 n8n、Uptime Kuma、Caddy 放在同一台约 4,000 日元的 VPS 上，用 Docker Compose 跑。文中写这 57 条跑了 3 个月没有宕机。",
+      "迁过去之后，原来在 Vercel Hobby 上做不到的 10 分钟同步也能跑了。邮件进 ERP 的时滞从 1 天变成 10 分钟，和「3 个月没有宕机」不是同一件事。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-03-26T08:17:17.506+09:00 → UTC 2026-03-25T23:17:17Z、Asia/Shanghai 2026-03-26 07:17:17；bodyUpdatedAt 与发布相同，取 published → 2026-03-26；GET 200（UA MiraBot/1.0））：yuay1778 在《月4,000円のVPSでn8n 57ワークフロー動かしたら手作業が月17時間消えた》记下这次迁移。UTC 日期是 03-25，不要写成 2026-03-25。",
+      "57 条、约 4,000 日元、3 个月没有宕机、每月 17 小时和一年大约 50 万日元不要混用。1 天 → 10 分钟是迁到 n8n 之后的同步时滞，不是 Vercel 的限额本身。",
+    ],
+  },
+  {
+    id: "1000",
+    slug: "tage-lcp-274",
+    title: "tage：把自己做的 Markdown 查看器 Hirake（WPF + WebView2）交给 Chrome DevTools MCP，让 Claude Code 测绘制性能。测试稿是标题 200 条、代码块 50 个、mermaid 图 10 张。把 4 个 vendor 脚本加上 defer 后，LCP 从 605ms 降到 274ms；强制回流从 44ms 变成 46ms，DOM 仍是 6,131，10 张图仍全部在初次画出。随后加上的 mermaid 延迟绘制，第一次完全没生效（回流和 DOM 相对 defer 几乎没动，10 张图仍全画出）；修好后 LCP 是 286ms，强制回流 18ms，DOM 5,395，初次只画出 10 张里的 2 张。延迟绘制并不降低 LCP。这些是作者自己这个查看器、这篇测试稿上的实测，不可外推到别人的应用或别的文档。",
+    summary: "tage 用 Chrome DevTools MCP 让 Claude Code 测 Hirake：4 个脚本加 defer 后 LCP 从 605ms 降到 274ms。随后的 mermaid 延迟绘制第一次没生效，修好后 LCP 是 286ms，初次只画出 10 张里的 2 张。延迟绘制并不降低 LCP。这些是作者自己这个查看器上的实测，不可外推。",
+    description: "面向已经把 Chrome DevTools MCP 接到桌面 WebView 应用上的人：把 605ms → 274ms 写成 defer 的效果，并把「延迟绘制第一次没生效、修好后 LCP 反而是 286ms」写成门禁，区别于只建议「加上延迟加载就会更快」、却没有用数字否定「以为已经生效」的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tage/articles/chrome-devtools-mcp-webview2-lcp",
+    sourceLabel: "zenn.dev·tage 实践帖",
+    upvotes: 891,
+    trending: false,
+    tags: [
+      "claude-code",
+      "chrome-devtools-mcp",
+      "webview2",
+      "lcp",
+      "web-performance",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tage/articles/chrome-devtools-mcp-webview2-lcp",
+      label: "zenn.dev·tage《Chrome DevTools MCP で WebView2 アプリの LCP を 605ms から 274ms にした話》",
+      date: "2026-09-06",
+      dateLabel: "发布",
+    },
+    approach: "作者觉得大文档打开时第一屏慢，mermaid 一多更慢，但一直没测过慢在哪里。他没有改应用代码，只加了远程调试端口，把 Chrome DevTools MCP 接到 WebView2 上，让 Claude Code 按 Core Web Vitals 分阶段测。",
+    outcomes: [
+      "源披露：测试稿是标题 200 条、代码块 50 个、mermaid 图 10 张。改之前 LCP 605ms、CLS 0.01、强制回流 44ms、DOM 6,131、10 张图全部在初次画出。把 4 个 vendor 脚本加上 defer 后，LCP 274ms、CLS 0.01、强制回流 46ms、DOM 仍是 6,131、10 张图仍全部初次画出。这些是作者自己这个查看器、这篇测试稿上的实测，不可外推到别人的应用或别的文档。",
+      "随后加上 mermaid 延迟绘制时，第一次没生效：相对 defer，DOM 和强制回流几乎 1ms 都没动，用脚本去数 .mermaid svg 仍是 10／10。原因是 Markdig 输出的是 <pre class=\"mermaid\">，作者的转换只在找 <pre><code class=\"language-mermaid\">，mermaid.initialize({ startOnLoad: false }) 没有按预期走，图仍被默认画完。不要把这轮「10 张全画出」写成修好之后的结果。",
+      "修好后再测，LCP 是 286ms、CLS 0.04、强制回流 18ms、DOM 5,395，初次只画出 10 张里的 2 张。延迟绘制对 LCP 没有帮助（LCP 元素是开头的文字），起作用的是强制回流和 DOM。不要把标题里的 605ms → 274ms 安到延迟绘制头上，也不要把文末大约「45 → 18ms」写成表里的 44ms 或 46ms 本身。另有一个坑是：改了 src/ 却不见效，因为运行中的可执行文件读的是 publish/。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与发布相同，取 published → 2026-09-06。正文无配图、无 YouTube 嵌入。Windows／WPF／WebView2／PowerShell 不填进 platforms。不要因为仓库在 GitHub 上，就把 github 填进 platforms。文内 http://127.0.0.1:9222 以及 https://assets.hirake/vendor/highlight.min.js 、https://assets.hirake/vendor/mermaid.min.js 、https://assets.hirake/vendor/katex.min.js 、https://assets.hirake/vendor/contrib/auto-render.min.js 是本机或应用内示例路径，未当作公网可达链去核。",
+      "导流：https://github.com/soramaru777/hirake-markdown GET 200（标题 GitHub - soramaru777/hirake-markdown · GitHub）；https://github.com/soramaru777/ai-experiments/tree/main/chrome-devtools-mcp GET 200。一次资料：https://github.com/ChromeDevTools/chrome-devtools-mcp GET 200；https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/advanced-usage.md GET 200；https://learn.microsoft.com/microsoft-edge/webview2/concepts/webview-features-flags GET 200（跟随至 en-us 文档路径，标题 WebView2 browser flags - Microsoft Edge Developer documentation | Microsoft Learn，落地为文档正文，按可达）；https://github.com/xoofx/markdig/blob/master/src/Markdig/Extensions/Diagrams/DiagramExtension.cs GET 200（跟随至 main 分支同一文件）；https://mermaid.js.org/config/usage.html GET 200。同作者 ponytail 钩子插件篇已留 pool，本条硬窗不是 hook 教程。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 605ms → 274ms 是 defer 的效果，再谈「加上延迟绘制就会更快」",
+        body: "请按实测算一算：测试稿是多少标题、多少代码块、多少张 mermaid；改之前、加上 4 个 defer 之后、修好延迟绘制之后，LCP、强制回流、DOM 和初次画出的图各是多少；延迟绘制第一次有没有生效。不要把 605ms → 274ms 写成延迟绘制的效果，也不要把修好后的 286ms、2／10 和第一次仍是 10／10 混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "WebView2 是 Chromium，打开远程调试端口后，可以把 Chrome DevTools MCP 接到已经在跑的应用上，让 Claude Code 去取 LCP、回流和 DOM。",
+      "4 个 vendor 脚本加 defer，是让它们晚一点再跑。作者这次测到 LCP 从 605ms 降到 274ms，图仍是第一次就全部画出。",
+      "延迟绘制要先真的少画图，才会动回流和 DOM。第一次选择器找错，10 张图仍全画出，数字几乎不动；修好后初次只画出 2 张，LCP 并没有再降。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-06T12:43:25.156+09:00 → UTC 2026-09-06T03:43:25Z、Asia/Shanghai 2026-09-06 11:43:25；bodyUpdatedAt 与发布相同，取 published → 2026-09-06；GET 200（UA MiraBot/1.0））：tage 在《Chrome DevTools MCP で WebView2 アプリの LCP を 605ms から 274ms にした話》记下这次实测。",
+      "605ms → 274ms 是 4 个脚本加 defer 的结果，不要写成延迟绘制。修好后 LCP 是 286ms，初次只画出 2 张。第一次 10／10 仍全画出，说明改动还没生效。",
+    ],
+  },
+  {
+    id: "1001",
+    slug: "mo09-4mis-1frm",
+    title: "mo0980：自己做的浏览器射击游戏 NEON VOID 有 5 面，BGM 全在浏览器里合成。玩的时候从第 3 面开始音乐发虚，第 5 面会停。作者先当是声音出了问题，按推测改了 4 次。这 4 次里，他用来让 AI 测的环境其实 1 帧画面都没画：按每秒 60 帧算，3 秒里 requestAnimationFrame 该被叫大约 180 次，实测 3 秒里只有 1 次，日志上的帧率是 0。真正的原因是绘制。这些是作者自己这款游戏、这次测量环境上的记录，不可外推到别人的游戏或别的浏览器标签页。",
+    summary: "mo0980 的 NEON VOID 从第 3 面开始 BGM 发虚，第 5 面会停。他按推测改了 4 次，才发现让 AI 测的环境 1 帧都没画：3 秒里 requestAnimationFrame 只跑了 1 次，不是大约 180 次。原因是绘制。这些是作者自己这款游戏上的记录，不可外推。",
+    description: "面向已经把卡顿或掉音频交给 AI 去测的人：把「推测改了 4 次」和「3 秒里只有 1 次回调、1 帧都没画」写成门禁，区别于只看 AI 回报「没有异常」、却没有先确认测量环境里游戏循环是否真的在跑的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/mo0980/articles/browser-perf-measurement-trap",
+    sourceLabel: "zenn.dev·mo0980 实践帖",
+    upvotes: 892,
+    trending: false,
+    tags: [
+      "claude-code",
+      "browser-performance",
+      "requestAnimationFrame",
+      "game",
+      "measurement",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mo0980/articles/browser-perf-measurement-trap",
+      label: "zenn.dev·mo0980《AIに測らせたら「異常なし」しか出ず、4回誤診した話》",
+      date: "2026-09-06",
+      dateLabel: "发布",
+    },
+    approach: "作者自己玩的时候发现第 3 面附近 BGM 开始断，第 5 面会停，先按常理去查声音。他把测量交给 AI，却很长一段时间没发现：自己用来复现的环境里，画面其实没有在画。",
+    outcomes: [
+      "源披露：NEON VOID 有 5 面，BGM 全在浏览器里合成，不用音源文件。从第 3 面附近开始音乐发虚，第 5 面会停。作者先当是声音的问题，按推测改了 4 次；这 4 次里，让 AI 测的环境其实 1 帧画面都没画。这些是作者自己这款游戏、这次测量环境上的记录，不可外推到别人的游戏或别的浏览器标签页。",
+      "requestAnimationFrame 在每秒 60 帧时，3 秒里大约该被叫 180 次。实测是 3 秒里只有 1 次，日志上的帧率是 0，setInterval 也被压到 1 秒不到 1 次。也就是说游戏循环 1 帧都没跑，主线程看起来很闲，声音却在近乎理想的条件下响。不要把「大约 180 次」写成实测，也不要把「3 秒里 1 次」写成已经在跑 1 帧游戏逻辑。",
+      "各面节奏不一样：第 1 面 148、第 2 面 88、第 5 面 176 BPM。节奏越快，1 秒里要发的音越多，症状也随面加重。最后定位到的是绘制，不是发声本身。同题还有一篇不放代码的 note 说明，本条以这篇带判定代码的 Zenn 为准。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-06T09:46:46.400+09:00，早于发布、同日，仍取 published → 2026-09-06。正文无配图、无 YouTube 嵌入。不要因 bodyUpdatedAt 写成更早的时刻。",
+      "导流：https://masa0980-sudo.github.io/neon-void/ GET 200（标题 NEON VOID — ネオン・シューティング）。相关说明页，不列入产品导流：https://note.com/mo0980/n/n5511a483eb13 GET 200（标题 ブラウザゲームのBGM途切れを追ったら、犯人は音声ではなかった話｜mo）。不要因为游戏页在 GitHub Pages 上，就把 github 填进 platforms。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3 秒里是 1 次回调还是大约 180 次，再谈「AI 说没有异常」",
+        body: "请按实测算一算：这款游戏有几面，从哪一面开始 BGM 发虚、哪一面会停；作者按推测改了几次；用来让 AI 测的环境里，3 秒内 requestAnimationFrame 实际被叫几次，按 60 帧该是大约几次；真正的原因是绘制还是声音。不要把大约 180 次写成实测，也不要把 4 次误诊写成已经改对了声音。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "浏览器后台标签或没在画的页面里，requestAnimationFrame 和部分定时器会被压慢。表面上主线程很闲，声音仍可能继续跑。",
+      "作者把测量交给 AI 之前，没有先核对「这一秒里到底画了几帧」。测到的是一个几乎不画画的环境，回报就容易变成「没有异常」。",
+      "按推测改声音，改了 4 次也对不上玩家真实碰到的卡顿。先确认循环在跑，再谈哪一段代码有问题。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-06T16:27:39.801+09:00 → UTC 2026-09-06T07:27:39Z、Asia/Shanghai 2026-09-06 15:27:39；bodyUpdatedAt 2026-09-06T09:46:46.400+09:00，早于发布、同日，仍取 published → 2026-09-06；GET 200（UA MiraBot/1.0））：mo0980 在《AIに測らせたら「異常なし」しか出ず、4回誤診した話》记下这次误诊。不要因 bodyUpdatedAt 写成更早的时刻。",
+      "4 次是按推测改错的次数，3 秒里 1 次是实测回调，大约 180 次是按 60 帧估的应有次数，不要混用。原因是绘制，不是发声本身。",
+    ],
+  },
+  {
+    id: "1002",
+    slug: "ta4-cmt-1671",
+    title: "ta4：用 Claude Code 写代码时，注释变得又长又空，读起来反而慢。作者加了一套「只写代码里读不出来的信息」的注释风格，并让实现和审查技能去对照同一份说明，把已有注释全部过了一遍。结果是：注释加 docstring 从 1,671 行收到 1,176 行，幅度是 −29.6%；代码行仍是 1,379 行，没有增减。标题里的「30%」是对这次约数的说法，表里的精确值是 −29.6%。这些是作者自己这份私有仓库上的清点，不可外推到别人的仓库或别的注释风格。",
+    summary: "ta4 给 Claude Code 加了一套注释风格，并把已有注释过了一遍：注释加 docstring 从 1,671 行收到 1,176 行（−29.6%），代码行仍是 1,379 行。标题里的 30% 是约数。这些是作者自己这份仓库上的清点，不可外推。",
+    description: "面向已经觉得 AI 注释又长又空的人：把 1,671 → 1,176 行（−29.6%）和代码行仍是 1,379 行写成门禁，区别于只建议「少写注释」、却没有写出代码行并未减少、标题 30% 和表里 −29.6% 不是同一个精度的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ta4/articles/remove_ai_comments",
+    sourceLabel: "zenn.dev·ta4 实践帖",
+    upvotes: 893,
+    trending: false,
+    tags: [
+      "claude-code",
+      "code-review",
+      "comments",
+      "docstring",
+      "readability",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ta4/articles/remove_ai_comments",
+      label: "zenn.dev·ta4《AIが書いたコメントを30%削減し、コードの可読性を上げた》",
+      date: "2026-09-19",
+      dateLabel: "发布",
+    },
+    approach: "作者先写下一套注释风格：只保留删掉就会让读者少掉信息的内容，再让实现和审查去对照同一份说明，把仓库里已有的注释全部过一遍，并记下行数前后变化。",
+    outcomes: [
+      "源披露：过完一遍之后，注释加 docstring 从 1,671 行收到 1,176 行，幅度是 −29.6%；代码行仍是 1,379 行，增减是 0.0%。标题写成「30%」，表里的精确值是 −29.6%。这些是作者自己这份私有仓库上的清点，不可外推到别人的仓库或别的注释风格。",
+      "不要把 30% 和 −29.6% 当成两个不同的结果，也不要把 1,671 行写成代码行。代码行前后都是 1,379，减少的是注释和 docstring，不是可执行代码被删掉。仓库是私有的，文中的删除例做了模糊处理，作者也写明带有个人偏好。",
+      "风格本身还规定了「1 条注释只谈一件事」、常量旁不要写会死的字面量（例如 LINGER_MS 旁不要写「30 秒」）以及「注释尽量不超过 3 行，更长的块按每 500 行代码大约 1 处来收」等。这些是写法约定，不要和 1,671 → 1,176 这次清点的行数混用。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-09-19T08:59:39.663+09:00 → UTC 2026-09-18T23:59:39Z、Asia/Shanghai 2026-09-19 07:59:39；bodyUpdatedAt 与发布相同，取 published → 2026-09-19。UTC 日期是 09-18，上海仍是 2026-09-19，不要写成 2026-09-18。正文无配图、无 YouTube 嵌入。",
+      "文内引用，不列入产品导流：https://zenn.dev/uzu_tech/articles/86a2ef05a7d649 GET 200（标题 Claude が書く長いコメントは、Claude 自身の役に立っていなかった）；https://note.com/hacklog_stealth/n/ne9c620cd0432 GET 200。无作者产品导流可列。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1,671 → 1,176 是注释行、代码行仍是 1,379，再谈「注释少了 30%」",
+        body: "请按实测算一算：过完一遍之后，注释加 docstring 从多少行收到多少行，表里的幅度是百分之几；代码行有没有变；标题里的 30% 和表里的精确值是不是同一个数。不要把 1,671 行写成代码行，也不要把代码行仍是 1,379 写成什么都没改。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "AI 写代码时，常常把能从代码读出来的话再写一遍，注释就会胀起来。作者先规定「删掉这条，读者会少掉什么」，没有可失的就删。",
+      "实现和审查对照同一份说明，避免一边写、一边审时各用各的标准。",
+      "清点时把注释加 docstring 和代码行分开记。这次少掉的是注释行，代码行没有变。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-19T08:59:39.663+09:00 → UTC 2026-09-18T23:59:39Z、Asia/Shanghai 2026-09-19 07:59:39；bodyUpdatedAt 与发布相同，取 published → 2026-09-19；GET 200（UA MiraBot/1.0））：ta4 在《AIが書いたコメントを30%削減し、コードの可読性を上げた》记下这次清点。UTC 日期是 09-18，不要写成 2026-09-18。",
+      "标题 30% 是约数，表里是 −29.6%（1,671 → 1,176）。代码行仍是 1,379，不要混用。",
+    ],
+  },
+  {
+    id: "1003",
+    slug: "ryom-20k-22w",
+    title: "ryomiyake：用 curl 直接打 Datadog MCP Server，数的是服务器送出来的工具说明书有多长。只连接时大约 2 万 token；toolsets 设成 all 是 16 万；再打开写入后大约 22 万，已经塞不进 200k 的上下文窗。这是服务器侧的量，不是 Claude Code 当时实际读入的量：同一套 core,ddsql 连接，服务器送来 23,415 token 的说明书，Claude Code 端只多了 1,097 token，不到 5%。打开写入的那一行测得更晚，期间服务器侧定义大约短了 12%。这些是作者 2026 年 9 月在 AP1、自己环境上的实測，不可外推到别的站点、计划或客户端。",
+    summary: "ryomiyake 测 Datadog MCP：只连接大约 2 万 token，all 是 16 万，打开写入后大约 22 万。这是服务器送来的量。同一连接上 Claude Code 实际只多读 1,097 token，不到送来的 5%。这些是作者自己环境上的实測，不可外推。",
+    description: "面向已经把 Datadog MCP 接进 Claude Code、却只看到「接上就要好几万 token」标题的人：把大约 2 万／16 万／22 万写成服务器送来的说明书，并把 Claude Code 端只多 1,097 token 写成另一组数，区别于把两组数字安到同一侧的写法。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ryomiyake/articles/datadog-mcp-server-field-test",
+    sourceLabel: "zenn.dev·ryomiyake 实践帖",
+    upvotes: 894,
+    trending: false,
+    tags: [
+      "claude-code",
+      "datadog",
+      "mcp",
+      "tokens",
+      "measurement",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ryomiyake/articles/datadog-mcp-server-field-test",
+      label: "zenn.dev·ryomiyake《Datadog MCP Serverのトークン消費を実測した ― 繋いだだけで2万、全部入りで22万》",
+      date: "2026-09-21",
+      dateLabel: "发布",
+    },
+    approach: "作者先写过如何连上 Datadog MCP，连上之后想知道这会吃掉多少 token。他不用客户端转手，先用 curl 直接打服务器，再在同一连接上数 Claude Code、GitHub Copilot 实际读了多少，把「服务器送来的量」和「模型实际读到的量」分开记。",
+    outcomes: [
+      "源披露：服务器送来的工具说明书，只连接时大约 2 万 token；toolsets 设成 all 是 16 万；再打开写入后大约 22 万，已经塞不进 200k 的上下文窗。core 和 all 大约差 8 倍。这些是作者 2026 年 9 月在 AP1、自己环境上的实測，不可外推到别的站点、计划或客户端。文中写明本篇是非官方记录，与 Datadog, Inc. 无关。",
+      "同一套 core,ddsql 连接里，服务器送来 23,415 token 的说明书（36 个工具），Claude Code 端相对「未接 MCP」的 30,443，只变成 31,540，多了 1,097 token，不到送来量的 5%。作者写明：Claude Code 先只给工具名和一行说明，细节等到真的要用那个工具再读。不要把大约 2 万／16 万／22 万安到「Claude Code 一接上就读完」这一侧，也不要把 +1,097 写成 all 或打开写入后的数。打开写入的那一行测得更晚，期间服务器侧定义大约短了 12%，不要和更早的 all＝16 万直接当同一天的表。",
+      "组织里打开写入开关时，core 从 27 个工具变成 32 个，all 从 254 个变成 370 个。一次「把日志汇总」若按服务器文本往上叠，core,ddsql 说明书 23,415 + SQL 指南 5,780 + 汇总结果 162，大约 29,400；「做一张看板」则是打开写入后的 core 说明书 21,326 + 部件说明书 13,778，大约 35,100。对同一句「列出监视器」，Claude Code 6 次调用合计输入 251,532、输出 1,232、约 0.41 美元；GitHub Copilot 是 8 次调用合计输入 209,430。不要把 251,532 和「只连接大约 2 万」混用，也不要把 Copilot 少 3 个工具（隐藏了内部 do-not-call 工具）写成服务器少送了 16 万。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-21T10:05:53.143+09:00，早于发布、同日，仍取 published → 2026-09-21。不要因 bodyUpdatedAt 写成更早的时刻。正文配图 1 张，完整 URL 已挂在本条：https://static.zenn.studio/user-upload/deployed-images/6c0612597465dfdc664ca2f4.png?sha=fe19c84e80b93601f2b26faec1da1fc53d50ddb8 GET 200。无 YouTube 嵌入。不要因为对照了 GitHub Copilot，就把 github 填进 platforms。大约 2 万／16 万／22 万是服务器送来的量，+1,097 是 Claude Code 实际多读的量，不要写成同一侧，也不要和 #985 的 cache read 0.025／输入权重 1、#989 的问候 7% 混用。",
+      "同作者相关篇，不列入产品导流：https://zenn.dev/ryomiyake/articles/datadog-mcp-getting-started GET 200。一次资料：https://docs.datadoghq.com/mcp_server/ 、https://docs.datadoghq.com/mcp_server/setup/ 、https://docs.datadoghq.com/mcp_server/tools/ 均 GET 200，最终仍在文档路径，按可达；https://modelcontextprotocol.io/specification/2025-06-18/basic/transports 、https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle 均 GET 200。API 端点 https://mcp.ap1.datadoghq.com/v1/mcp 与 https://mcp.ap1.datadoghq.com/v1/mcp?toolsets=core 均 GET 401，不列入可达。文内示例 https://ap1.datadoghq.com/logs?from_ts=...&query=service%3Asample-api& GET 200，但跟随至登录页（标题 Datadog: Log In），按登录页披露，不列入可达。Zenn mermaid 嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清大约 2 万／16 万／22 万是服务器送来的量，再谈「一接上就要读 22 万」",
+        body: "请按实测算一算：只连接、toolsets=all、再打开写入时，服务器送来的说明书大约各是多少 token；同一套连接上，Claude Code 实际多读了多少，是不是不到送来量的 5%；「列出监视器」那次 6 次调用合计输入是多少，不要和只连接的大约 2 万混用。打开写入的那一行是否测得更晚。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "MCP 一连接，服务器就会把工具说明书送来。说明书有多长，和客户端当时到底塞给模型多少，不是同一回事。",
+      "作者用 curl 直接打服务器，得到「最多会来这么多」；再到 Claude Code 上看「这次实际多读了多少」。",
+      "Claude Code 先只给工具名和一行说明，细节等到真用才读，所以服务器送来大约 2 万时，客户端可能只多读大约 1 千。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-21T21:52:40.033+09:00 → UTC 2026-09-21T12:52:40Z、Asia/Shanghai 2026-09-21 20:52:40；bodyUpdatedAt 2026-09-21T10:05:53.143+09:00，早于发布、同日，仍取 published → 2026-09-21；GET 200（UA MiraBot/1.0））：ryomiyake 在《Datadog MCP Serverのトークン消費を実測した ― 繋いだだけで2万、全部入りで22万》记下这次实測。不要因 bodyUpdatedAt 写成更早的时刻。",
+      "大约 2 万／16 万／22 万是服务器送来的量，+1,097 是 Claude Code 实际多读的量，251,532 是后来 6 次调用的合计输入，不要混用。不要和 #985、#989 混用。",
+    ],
+  },
+  {
+    id: "1004",
+    slug: "hull-6rtn-34t",
+    title: "hullspark：为了在自己不在电脑前时也能推进开发，在云上做了 6 条定时跑的 Claude Code routine：每天早上巡逻 1 条、按开发车道每周跑 1 次的实现 4 条、月末汇总 1 条。第一条负责 Windows 应用的代理，先把 .NET、核心库、34 件单测和 CI 在大约 5 分钟里做完，接着要在 .claude/revenue-loop/STATE.md 里写进度时停下——不是报错退出，而是等着人批准改这个被保护的文件。当时已经到了 push 前。作者没有去绕开保护，只把进度文件挪出 .claude/。再跑一次时不再等待批准，37 件单测通过，并成功 push，GitHub Actions 的 Windows 环境也构建成功。这些是作者自己这 6 条 routine 上的用法，不可外推到别人的无人值守设置。",
+    summary: "hullspark 做了 6 条无人值守的 Claude Code routine。第一条大约 5 分钟跑完 34 件单测，却在向 .claude/ 下的 STATE.md 写进度时停成批准等待。挪走文件后再跑，37 件单测通过并完成 push。这些是作者自己这 6 条 routine 上的用法，不可外推。",
+    description: "面向已经把 Claude Code 定时任务做成无人值守的人：把「34 件单测已经跑完却停在批准等待」和后来的 37 件全通过写成门禁，区别于只看到前面一段全绿、却没有写出最后一行写进度把整趟卡住的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/hullspark/articles/570e42ead0c0c1",
+    sourceLabel: "zenn.dev·hullspark 实践帖",
+    upvotes: 895,
+    trending: false,
+    tags: [
+      "claude-code",
+      "routines",
+      "unattended",
+      "permissions",
+      "ci",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hullspark/articles/570e42ead0c0c1",
+      label: "zenn.dev·hullspark《AIエージェントを無人で働かせたら、最後の1行で全部止まった話》",
+      date: "2026-09-30",
+      dateLabel: "发布",
+    },
+    approach: "作者自己只决定做什么、以及经手钱和身份的手续，实现和运维交给 Claude Code。为了在不在电脑前时也能往前走，他在云上排了 6 条定时 routine，先看第一条能不能从拉仓库一路走到 push。",
+    outcomes: [
+      "源披露：6 条 routine 的分工是每天早上巡逻 1 条、按开发车道每周跑 1 次的实现 4 条、月末汇总 1 条。第一条负责 Windows 应用的代理，把 .NET 引入、核心库实现、34 件单测和 CI 在大约 5 分钟里做完，随后要编辑 /home/user/windows-utilities/.claude/revenue-loop/STATE.md 时变成批准等待，没有以报错结束。这些是作者自己这 6 条 routine 上的用法，不可外推到别人的无人值守设置。",
+      "作者曾想改提示词，让进度写到别的路径。第一条加上了，第二条却被 Claude Code 的安全判定拒绝，理由是「正在指示如何绕过保护」。他后来接受这个判定，只把进度文件挪出 .claude/，并不去解开保护。不要把「34 件、大约 5 分钟」写成已经成功交付的一趟，那趟停在 push 前。",
+      "设计改完再跑：不再等待批准，核心库被实现，37 件单测通过，变更被 push，GitHub Actions 的 Windows 环境也构建成功。不要把后来的 37 件和第一次的 34 件混成同一次。作者还写：等到工作 100% 结束才第一次保存，是脆弱的；即使到了 99%，最后一行停下就等于 0%。不要和 #983 的绿色成功却停住、#995 的 CI 约 14 分钟变绿却继续定期检查、#997 的 1,310 件全绿却弹出 PTY 1 混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-18T21:02:22.124+09:00，晚于发布且跨到 10-18，仍取 published → 2026-09-30。不要因 bodyUpdatedAt 写成 2026-10-18。正文配图 2 张，完整 URL 已挂在本条：https://static.zenn.studio/user-upload/f8b28b5c8120-20261018.png 、https://static.zenn.studio/user-upload/3401ed7fb6b3-20261018.png ，均 GET 200。无 YouTube 嵌入。Windows／.NET 不填进 platforms。不要因为正文写到 GitHub 和 GitHub Actions，就把 github 填进 platforms。",
+      "导流：https://hullspark.com/ GET 200（标题 Hullspark — small apps for Wix stores, Confluence, Jira and Windows）。作者写明文中 routine 在开发的小软件一览放在这个站点。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 34 件单测已经跑完却停在批准等待，再谈「前面一段已经全绿」",
+        body: "请按实测算一算：一共做了几条 routine，分工是什么；第一条大约几分钟里跑了多少件单测，后来停在哪个文件的批准等待；挪走进度文件后再跑，单测是多少件，有没有完成 push。不要把第一次的 34 件和后来的 37 件混用，也不要把停在 push 前写成已经交付成功。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      ".claude/ 下面放的是 Claude Code 自己的设置、权限和子代理定义。改这里的文件，通常要人点头。对话使用时按一下即可，无人值守时没有人按，任务就会一直停在批准等待，而且还不一定会报错。",
+      "作者没有去绕开保护，只把进度文件挪到不受这层保护的位置，再改成有意义的段落就 commit、push。",
+      "前面 34 件单测跑完，只说明那一段已经做完；最后一行写进度写不成，这一趟仍不能算交付成功。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-30T20:07:21.047+09:00 → UTC 2026-09-30T11:07:21Z、Asia/Shanghai 2026-09-30 19:07:21；bodyUpdatedAt 2026-10-18T21:02:22.124+09:00，晚于发布且跨到 10-18，仍取 published → 2026-09-30；GET 200（UA MiraBot/1.0））：hullspark 在《AIエージェントを無人で働かせたら、最後の1行で全部止まった話》记下这次卡住。不要因 bodyUpdatedAt 写成 2026-10-18。",
+      "34 件、大约 5 分钟是第一次停下前的进度，37 件是挪走文件后再跑通过的单测，不要混用。不要和 #983、#995、#997 混用。",
+    ],
+  },
+  {
+    id: "1005",
+    slug: "saki-10api-2",
+    title: "sakidori：做一款给日本询盘表单打草稿的 Chrome 扩展（人必须自己点发送）时，先接了 Claude 的浏览器使用工具（browser_toolset_20260801，内含点击、输入、读页面等 31 个工具，模型是自己程序里调用的 claude-sonnet-5）。填完一张表大约要 10 次前后的 API 调用，每次大约 5 到 8 日元。后来不用这套工具，改成把表单字段一次列成文本交给模型、用 JSON 一次性取回要填的值：同一张表变成 2 次 API 调用，耗时 15 秒，大约 1 到 2 日元。作者写明不是浏览器使用工具不好，而是「填表」这个用途不需要这么多来回。这些是作者自己这张表单、这次改法上的用法，不可外推到页面结构完全未知、必须靠工具摸索的场合。",
+    summary: "sakidori 先用 Claude 浏览器使用工具填表，大约 10 次 API 调用、每次 5 到 8 日元；改成一次列出字段、JSON 返回后，同一张表变成 2 次调用、15 秒、大约 1 到 2 日元。这些是作者自己这张表单上的用法，不可外推。",
+    description: "面向已经在用 Claude 浏览器使用工具填 Web 表单、却觉得来回又贵又慢的人：把大约 10 次、每次 5 到 8 日元和后来的 2 次、15 秒、1 到 2 日元写成门禁，区别于只建议「换个模型就便宜」、却没有写出来回次数本身在花钱的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/sakidori/articles/20260924-browser-toolset-batch-vs-loop",
+    sourceLabel: "zenn.dev·sakidori 实践帖",
+    upvotes: 896,
+    trending: false,
+    tags: [
+      "claude",
+      "browser-tool",
+      "chrome-extension",
+      "api-cost",
+      "forms",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sakidori/articles/20260924-browser-toolset-batch-vs-loop",
+      label: "zenn.dev·sakidori《Claude のブラウザ使用ツールをやめて減った API 呼び出し：10回前後から2回》",
+      date: "2026-10-06",
+      dateLabel: "发布",
+    },
+    approach: "作者想把终端里存好的个人信息交给 AI，给难填的日本询盘表单打草稿，发送仍由人来按。浏览器使用工具 2026 年 8 月 19 日一般提供后，他先按这个用途接上，再拿同一张表对比后来「一次列出字段、一次返回 JSON」的写法。",
+    outcomes: [
+      "源披露：先接浏览器使用工具时，填完一张表大约要 10 次前后的 API 调用，每次大约 5 到 8 日元。改成把表单字段一次列成文本、用 JSON 一次取回要填的值后，同一张表是 2 次 API 调用，耗时 15 秒，大约 1 到 2 日元。这些是作者自己这张表单、这次改法上的用法，不可外推到页面结构完全未知、必须靠工具摸索的场合。作者在文首就写明：那种场合会得出相反的结论。",
+      "浏览器使用工具里有点击、输入、读页面等 31 个工具，实际操作在自己这边的浏览器里完成，Anthropic 侧并不代为执行。模型是程序里调用的 claude-sonnet-5。不要把 31 个工具数写成 10 次调用，也不要把「每次 5 到 8 日元」和后来整张表「1 到 2 日元」混成同一口径。2 次调用是后来整张表的次数，15 秒是后来的耗时，不要写成原来 10 次调用的耗时。",
+      "作者写明这是周末一个一个做的实验里的第一件，不打算当成产品卖。扩展和验证脚本放在公开仓库里，也带不打 API 的演练和只验证一次 API 响应的预检查。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-08T15:20:00.394+09:00，晚于发布且跨到 10-08，仍取 published → 2026-10-06。不要因 bodyUpdatedAt 写成 2026-10-08。正文无配图、无 YouTube 嵌入。作者卡 website 为 https://sakidori.app，文内未链，未列入导流。",
+      "导流：https://github.com/ShuntaroShimada-a11y/sakidori-lab GET 200（标题 GitHub - ShuntaroShimada-a11y/sakidori-lab · GitHub）。不要因为仓库在 GitHub 上，就把 github 填进 platforms。一次资料：https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool 、https://platform.claude.com/docs/en/about-claude/pricing 均 GET 200，但跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 列入可达；https://developer.chrome.com/blog/extension-news-june-2025 GET 200，落地为博客正文，按可达。Zenn mermaid／卡片嵌入不当作者产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清大约 10 次、每次 5 到 8 日元和后来的 2 次、15 秒是不是同一张表，再谈「换模型就便宜」",
+        body: "请按实测算一算：先接浏览器使用工具时，填完一张表大约要几次 API 调用、每次大约多少日元；改成一次列字段、一次返回 JSON 后，同一张表是几次调用、耗时多少、大约多少日元。不要把 31 个工具数写成调用次数，也不要把每次 5 到 8 日元和后来整张表 1 到 2 日元混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "浏览器使用工具让模型一次次决定点哪里、填哪一格，所以填完一张表会叠成大约 10 次 API 调用。",
+      "如果表单结构事先能列成字段清单，就可以一次交给模型，让它一次用 JSON 返回要填的值，来回次数会掉下来。",
+      "页面结构完全未知、必须先摸索的场合，作者认为不能套这次的结论。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-06T23:24:23.198+09:00 → UTC 2026-10-06T14:24:23Z、Asia/Shanghai 2026-10-06 22:24:23；bodyUpdatedAt 2026-10-08T15:20:00.394+09:00，晚于发布且跨到 10-08，仍取 published → 2026-10-06；GET 200（UA MiraBot/1.0））：sakidori 在《Claude のブラウザ使用ツールをやめて減った API 呼び出し：10回前後から2回》记下这次对比。不要因 bodyUpdatedAt 写成 2026-10-08。",
+      "大约 10 次、每次 5 到 8 日元是改之前；2 次、15 秒、1 到 2 日元是同一张表改之后。31 是工具个数，不要混用。",
+    ],
+  },
+  {
+    id: "1006",
+    slug: "eai-43pct-34s",
+    title: "eai：在自己做的 iOS Mastodon 客户端里，一直用 Claude Code 桌面应用的 iOS 模拟器工具，每实现一处就让它看屏幕。后来把过去 99 个会话的日志做了汇总，并改成用文字读界面，不再主要靠截图。同一组 4 项作业，新旧两种做法各跑 3 次，取中位数再相加：读到的图从 27 张变成 1 张（−96%），图的 token 从大约 66,000 变成大约 50（−99.9%），操作带来的上下文从大约 107,000 token 变成大约 61,000 token（−43%），操作用时从 119 秒变成 159 秒（+34%）。4 项里有 3 项新做法更慢，只有滚动更快。这些是作者自己这组作业、这 99 个日志上的实测，不可外推到别人的应用或别的版本。",
+    summary: "eai 把 iOS 模拟器从「看截图」改成「读文字」后，操作带来的上下文从大约 107,000 token 降到大约 61,000（−43%），用时却从 119 秒升到 159 秒（+34%）。图从 27 张变成 1 张。这些是作者自己这组作业上的实测，不可外推。",
+    description: "面向已经让 Claude 看 iOS 模拟器截图的人：把上下文 −43% 和用时 +34% 写成两件同时发生的事，区别于只宣传「少看图就能又省又快」、却没有写出 4 项里有 3 项反而更慢的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/eai/articles/dont-let-agents-see-the-ios-sim-screen",
+    sourceLabel: "zenn.dev·eai 实践帖",
+    upvotes: 897,
+    trending: false,
+    tags: [
+      "claude-code",
+      "ios-simulator",
+      "screenshots",
+      "context",
+      "tokens",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/eai/articles/dont-let-agents-see-the-ios-sim-screen",
+      label: "zenn.dev·eai《ClaudeにiOSシミュレーターのスクリーンショットを読ませるのをやめて、操作で増えるコンテキストを43%削減した》",
+      date: "2026-10-18",
+      dateLabel: "发布",
+    },
+    approach: "作者觉得上下文里大半都是模拟器截图，于是先汇总过去 99 个会话的日志，找出费事的操作，再补上用文字读界面的工具，用同一组 4 项作业把旧方法和新方法各跑 3 次做对比。调查、实现和测量都是交给 Claude Code（Opus 5.5）做的。",
+    outcomes: [
+      "源披露：同一组 4 项作业，新旧做法各跑 3 次，表里是中位数再相加。读到的图从 27 张变成 1 张（−96%），图的 token 从大约 66,000 变成大约 50（−99.9%），操作带来的上下文从大约 107,000 token 变成大约 61,000 token（−43%），操作用时从 119 秒变成 159 秒（+34%）。4 项里有 3 项新做法更慢，只有滚动更快。这些是作者自己这组作业、这 99 个日志上的实测，不可外推到别人的应用或别的版本。",
+      "99 个会话日志里，进到上下文的模拟器图像合计 2,125 张；其中工具截图 1,594 张，用 Read 去读录像帧一类的 532 张。作者给出的合计是 2,125，不要自行把 1,594 和 532 加总后改写这个合计。截图会被缩到 920×2000，一张大约 2,500 token。最重的一次会话里图像有 176 张，上下文最大大约 77 万 token，一半以上是图。不要把 77 万和对比表里的大约 107,000 混成同一次测量。",
+      "日志里还有三类费事操作：点完之后，光是 sleep 1 到 sleep 5 的 Bash 就有 900 次以上；滑动或拖拽 892 次里有 165 次（18%）没等就拍，拍到的是动画中途的画面。不要把 −43% 的上下文、+34% 的用时、−96%／−99.9% 的图，和这组 900 次、165 次混成同一个对比表。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-18T11:56:18.517+09:00，略早于发布、同日，仍取 published → 2026-10-18。正文无配图、无文内硬链、无 YouTube 嵌入。无作者产品导流可列。primary GET 200。platforms 记 claude。不要把 −43% 和 +34% 写成同一方向，也不要和 #989 的问候 7%、#996 的一次评审约 3,660 万 token 混用。",
+      "对比表是 4 项作业中位数的和，不是某一个作业单独的数。99 个日志里的 2,125 张是另一段汇总，不要和对比表里的 27 张 → 1 张混用。",
+    ],
+    prompts: [
+      {
+        title: "先问清上下文 −43% 和用时 +34% 是不是同一次对比，再谈「少看图就又省又快」",
+        body: "请按实测算一算：同一组 4 项作业各跑了几次，表里是不是中位数再相加；图、图的 token、操作带来的上下文和用时前后各是多少；4 项里有几项其实更慢。不要把 −43% 和 +34% 写成同一方向，也不要把 99 个日志里的 2,125 张和对比表里的 27 张混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "模拟器截图会被缩图后送进上下文，一张就可以到大约 2,500 token。作业一长，图会把窗口占满。",
+      "改成用文字描述界面，图会少很多，操作带来的上下文也会降。但模型要靠文字判断下一步，有的作业会更慢。",
+      "作者把「上下文少了多少」和「时间长了多少」分成两行写，没有把变慢藏掉。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-18T11:56:18.525+09:00 → UTC 2026-10-18T02:56:18Z、Asia/Shanghai 2026-10-18 10:56:18；bodyUpdatedAt 2026-10-18T11:56:18.517+09:00，略早于发布、同日，仍取 published → 2026-10-18；GET 200（UA MiraBot/1.0））：eai 在《ClaudeにiOSシミュレーターのスクリーンショットを読ませるのをやめて、操作で増えるコンテキストを43%削減した》记下这次对比。",
+      "−43% 是操作带来的上下文，+34% 是用时，−96%／−99.9% 是图的张数和 token，不要混用。2,125 张是 99 个日志的合计，不要和对比表里的 27 张 → 1 张混用。",
+    ],
+  },
+  {
+    id: "1007",
+    slug: "yosi-39968-737",
+    title: "yosiki：用 LaunchAgent 定期跑 claude -p \"ok\"，只想确认调用能不能成功、登录有没有断。测下来一次输入是 39,968 token，因为个人用的 CLAUDE.md（约 2.8 万字）、SessionStart 钩子注入的备忘、MCP 和全部工具定义每次都被读进来。按条件各测 1 次（Claude Code 2.1.295，macOS，haiku，2026-10-21）：只加 --settings '{}' 仍是 39,968（0%）；加 --safe-mode 是 16,798（−58%）；再加 --tools \"\" 是 2,931（−93%）；再加上只允许回复 OK 的 --system-prompt 是 737（−98%），大约是原来的 1/54。若一天跑 4 次，按这个算法一周大约 112 万 token 会变成大约 2 万。这些是作者自己这套设置上各条件 1 次的实測，不可外推到别人的 CLAUDE.md 或别的版本。",
+    summary: "yosiki 定期跑 claude -p \"ok\"，一次却要 39,968 token。加上 --safe-mode、--tools \"\" 和限定回复的系统提示后，同样回 OK 只需 737 token（−98%）。这些是作者自己这套设置上各条件 1 次的实測，不可外推。",
+    description: "面向已经用 cron 或 LaunchAgent 定期跑 claude -p、却只想听一声 OK 的人：把 39,968 和 737（−98%）写成同一声 OK 的前后对比，区别于只建议「提示词写短一点」、却没有写出每次被读进来的是设置和工具定义的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yosiki/articles/claude-p-cron-token-diet",
+    sourceLabel: "zenn.dev·yosiki 实践帖",
+    upvotes: 898,
+    trending: false,
+    tags: [
+      "claude-code",
+      "cli",
+      "cron",
+      "tokens",
+      "safe-mode",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yosiki/articles/claude-p-cron-token-diet",
+      label: "zenn.dev·yosiki《cronのclaude -pが\"ok\"だけで4万トークン——--safe-modeと--tools \"\"で98%削減》",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+    approach: "作者并不需要「ok」这两个字本身，只想知道定时调用有没有成功。他看到每次回复开头都在自动读入自己日常对话用的备忘，于是按调用方式逐项改，并用返回 JSON 里的 usage 数输入 token。",
+    outcomes: [
+      "源披露：素的 claude -p \"ok\" 一次输入是 39,968 token。环境是 Claude Code 2.1.295、macOS、haiku（claude-haiku-5-5）、2026-10-21，各条件 1 次。作者写明数字里包含自己大约 2.8 万字的 CLAUDE.md、注入备忘的钩子和 MCP 设置，别人的环境会是另一个数。这些是作者自己这套设置上各条件 1 次的实測，不可外推到别人的配置或别的版本。",
+      "对照表：加 --settings '{}' 仍是 39,968（0%），空 JSON 不会把文件里没写到的键清掉；加 --safe-mode 是 16,798（−58%）；再加 --tools \"\" 是 2,931（−93%）；再加上只允许回复 OK 的 --system-prompt 是 737（−98%），大约是 A 的 1/54。旧的隔离配置写法是 9,256（−77%），不要把它写成最终在用的 737。作者还写：再加 --effort low，输出侧的思考 token 也会消失。若一天跑 4 次，按这个算法一周大约 112 万 token 会变成大约 2 万——这是推算，不要写成已经按周账单核过的数。",
+      "差分大约是：CLAUDE.md、钩子注入、技能、插件和 MCP 约 23,000，在 A→C 被 --safe-mode 拿掉；内置工具定义约 13,900，在 C→D 被 --tools \"\" 拿掉；默认系统提示约 2,200，在 D→E 被 --system-prompt 换掉。提示词本身只有「ok」两个字。作者按 input_tokens、cache_creation_input_tokens 和 cache_read_input_tokens 的总和来比；并写明 B 读过紧挨着的 A 的缓存，但定期任务若间隔超过缓存寿命，每次仍会重做。不要把这次 39,968 写成 #989 里问候大约 3 个 token 或数万 token 基线，也不要和 #985 的权重系数混用。硬窗不是 hook 教程，钩子只是被读进来的那批设置里的一种。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与发布相同，取 published → 2026-10-21。正文无配图、无 YouTube 嵌入。无作者产品导流可列。一次资料：https://code.claude.com/docs/en/cli-reference GET 200（标题 CLI reference - Claude Code Docs，落地为文档正文，按可达，未跟随至区域不可用页）。primary GET 200。platforms 记 claude。不要因为用了 LaunchAgent／cron，就把未在 18 值枚举里的项填进 platforms。各条件只测了 1 次。",
+      "标题里的「4 万 token」是对 39,968 的约写，表里的精确值是 39,968 和 737。不要和 #989 的问候 7%、#985 的 cache read 0.025 混用。",
+    ],
+    prompts: [
+      {
+        title: "先问清 39,968 和 737 是不是同一声 OK，再谈「把提示词写短就行」",
+        body: "请按实测算一算：素的 claude -p \"ok\" 一次输入是多少 token；加上 --safe-mode、--tools \"\" 和限定回复的系统提示后是多少，降了百分之几；--settings '{}' 有没有用；各条件测了几次。不要把标题里的 4 万和表里的 39,968 当成两次不同测量，也不要把一周大约 112 万变成 2 万写成已经按账单核过的数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "claude -p 即使用户只输入「ok」，也会把个人 CLAUDE.md、钩子注入的备忘、MCP 和工具定义一起读进来。",
+      "--safe-mode 会拿掉很大一块个人上下文，--tools \"\" 会拿掉内置工具定义，再换掉默认系统提示，同样回 OK 所需的输入会掉到原来的大约 1/54。",
+      "空的 --settings '{}' 不会清掉文件里原有的键，所以这次一次 token 都没少。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-21T18:22:14.778+09:00 → UTC 2026-10-21T09:22:14Z、Asia/Shanghai 2026-10-21 17:22:14；bodyUpdatedAt 与发布相同，取 published → 2026-10-21；GET 200（UA MiraBot/1.0））：yosiki 在《cronのclaude -pが\"ok\"だけで4万トークン——--safe-modeと--tools \"\"で98%削減》记下这次实測。",
+      "39,968 是素调用，737 是最终写法，−98% 是这两者的对比。各条件只测了 1 次。一周大约 112 万变成 2 万是按一天 4 次的推算。不要和 #989、#985 混用。",
+    ],
   }
 ];
 
