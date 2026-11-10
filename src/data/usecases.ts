@@ -70422,6 +70422,61 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "993",
+    slug: "neri-4813-bash",
+    title: "neriame_code：在 Windows 11、Claude Code VS Code 扩展 2.1.266、claude-opus-5 上，统计自己 Unity 游戏仓库 2026-07 至 2026-09 的会话记录，一共 4,813 次工具调用。其中 opus-5 是 4,747 次（Bash 2,281、Read 660、Edit 573、Write 220）。同一模型下，7 月是 Edit 223 次对 Bash 152 次，9 月变成 Edit 10 次对 Bash 417 次。按 is_error 统计，Bash 失败率 3.7%、PowerShell 12.3%，Edit 1.2%、Write 0.5%；PowerShell 中央值 4.62 秒，Bash 2.33 秒。作者写明 sed 即使没有匹配也返回退出码 0，这种「以为改了其实没改」这次统计抓不到，实际失败率应高于 3.7%。第一次统计还漏掉了 is_error，曾得出「失败零次」。这些是作者自己这套 Unity 仓库、这段日子里的记录，不可外推到别的项目或版本。",
+    summary: "neriame_code 统计了 4,813 次工具调用。opus-5 占 4,747 次。7 月是 Edit 223 对 Bash 152，9 月变成 Edit 10 对 Bash 417。Bash 失败率 3.7%，Edit 是 1.2%。sed 没有匹配也返回 0，实际失败率应更高。这些是作者自己这套仓库上的记录，不可外推。",
+    description: "面向已经觉得 Claude Code「好像改用 Bash 改文件了」的人：把 4,813 次调用、7 月和 9 月的 Edit／Bash 对调，以及 Bash 3.7% 对 Edit 1.2% 写成门禁，区别于只谈体感变慢、却没有把自己的会话记录按月数过的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/neriame_code/articles/2ecc89e1a29000",
+    sourceLabel: "zenn.dev·neriame_code 实践帖",
+    upvotes: 884,
+    trending: false,
+    tags: [
+      "claude-code",
+      "bash",
+      "edit-tool",
+      "failure-rate",
+      "unity",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/neriame_code/articles/2ecc89e1a29000",
+      label: "zenn.dev·neriame_code《Claude CodeがBashでファイルを書き換えるようになった気がする》",
+      date: "2026-09-11",
+      dateLabel: "发布",
+    },
+    approach: "作者先是觉得 Edit 不好用、Bash 的 sed 又看不清改了哪一行，于是把自己仓库 7 月到 9 月的会话记录按模型和月份拆开，再补上失败率和耗时，看是不是模型换了，还是同一模型下 Bash 的占比自己在变。",
+    outcomes: [
+      "源披露：调查日 2026-09-10，环境是 Windows 11 Home、Claude Code VS Code 扩展 2.1.266、claude-opus-5。对象是 Unity 游戏仓库 2026-07 至 2026-09 的会话记录，一共 4,813 次工具调用。opus-5 是 4,747 次（Bash 2,281、Read 660、Edit 573、Write 220），sonnet-5 61 次、haiku-4-5 5 次。这些是作者自己这套仓库、这段日子里的记录，不可外推到别的项目或版本。",
+      "按月看：7 月总计 925 次（Bash 152、PowerShell 224、Read 152、Edit 223、Write 45）；8 月 3,398 次（Bash 1,730、PowerShell 335、Read 526、Edit 340、Write 154）；9 月 490 次（Bash 417、PowerShell 10、Read 19、Edit 10、Write 21）。同一模型下，7 月是 Edit 223 对 Bash 152，9 月变成 Edit 10 对 Bash 417。不要把 4,813 和 4,747 混用，也不要把某一个月的数字当成三个月合计。",
+      "失败率：Bash 3.7%、PowerShell 12.3%，Edit 1.2%、Write 0.5%。耗时：PowerShell 中央值 4.62 秒，Bash 2.33 秒（源表栏目是 p25／中央値／p75，这两个数写在中央値列；Bash 同行还有 p25 0.41 秒、p75 3.50 秒，不要写成平均数）；单文件单处改写，走 shell 要慢 2.8 倍以上。第一次统计漏掉 is_error，曾得出「失败零次」；command 只在 Bash 时读，PowerShell 569 次的内译一开始也不清。sed 没有匹配也返回退出码 0，这种空改这次抓不到，作者认为实际失败率高于 3.7%，但高多少不知道。Windows 不填进 platforms。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-10T17:38:10.031+09:00，早于发布，仍取 published → 2026-09-11。正文无配图、无 YouTube 嵌入，也无文内产品硬链。作者卡 GitHub／X／website 均为空。不要因 bodyUpdatedAt 写成 2026-09-10。 2.33 秒和 4.62 秒写在源表的中央値列，不是平均数。",
+      "无作者产品导流可列。primary GET 200。platforms 记 claude。Windows／Unity／PowerShell 不填进 platforms。作者后文还在二进制里搜到 auto／bypassPermissions 下才会出现的 Bash 倾向文案，并写明那是阅读二进制的结论，不要把它写成官方已公布的默认策略。",
+    ],
+    prompts: [
+      {
+        title: "先问清 7 月和 9 月的 Edit／Bash 是不是同一模型，再谈「最近改用 Bash 了」",
+        body: "请按实测算一算：会话记录覆盖哪几个月，一共多少次工具调用，opus-5 占多少；7 月和 9 月的 Edit、Bash 各是多少次；Bash、PowerShell、Edit、Write 的失败率各是多少；第一次统计为什么会得出失败零次；sed 没有匹配时退出码是什么，这次统计抓不抓得到。不要把 4,813 和 4,747 混用，也不要把某一个月的数字写成三个月合计。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "先按模型拆调用次数，确认是不是换模型导致的；作者这边三个月里仍以 opus-5 为主。",
+      "再按月份看 Bash、PowerShell、Edit、Write 的件数。同一模型下，7 月还是 Edit 多于 Bash，9 月已经反过来。",
+      "失败率要连 is_error 一起数。只看退出码会漏掉「sed 没匹配也返回 0」这类空改，所以 Bash 的 3.7% 只能当下限。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-11T18:38:05.102+09:00 → UTC 2026-09-11T09:38:05Z、Asia/Shanghai 2026-09-11 17:38:05；bodyUpdatedAt 2026-09-10T17:38:10.031+09:00，早于发布，仍取 published → 2026-09-11；GET 200（UA MiraBot/1.0））：neriame_code 在《Claude CodeがBashでファイルを書き換えるようになった気がする》记下这 4,813 次调用。不要因 bodyUpdatedAt 写成 2026-09-10。",
+      "7 月是 Edit 223 对 Bash 152，9 月是 Edit 10 对 Bash 417。Bash 3.7% 是下限，因为 sed 空改抓不到。Windows 不填 platforms。 2.33 秒和 4.62 秒是中央值，不要写成平均。",
+    ],
+  },
+  {
     id: "994",
     slug: "maro-81pct-stay",
     title: "maronsan：觉得 Claude Code 账单里最大的一项 cache_read 占了总消耗的 60%–80%，日表却看不出「到底在反复读什么」。于是写了只读本地 JSONL、哪里都不上传的工具 nenpi。第一次跑出来：Bash 的滞留成本是 1669M，占 81.4%（5586 次，投入 2.4M token）；Read 是 231M，占 11.3%；Chrome MCP 的 computer 是 43M，占 2.1%；Write 是 17M，占 0.8%。Bash 输出正文只有 2.4M token，但会在之后的每一轮里被当成上下文反复计费，所以滞留成本远大于正文。作者强调：工具输出不是「收一次费」，第 5 轮吐出的整段日志和第 299 轮吐出，完全是两笔不同的账。这些是作者自己用 nenpi 在本地日志上跑出来的数，不可外推到别的会话或套餐。",
