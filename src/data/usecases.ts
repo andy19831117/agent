@@ -70145,6 +70145,501 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-10-04T19:46:16.239+09:00 → UTC 2026-10-04T10:46:16Z、Asia/Shanghai 2026-10-04 18:46:16；bodyUpdatedAt 2026-10-05T04:29:47.193+09:00，晚于发布且跨到 10-05，仍取 published → 2026-10-04；GET 200（UA MiraBot/1.0））：rererr_engineer 在《溜めたナレッジ、Claude Code はちゃんと読めてる？ grep と埋め込みを 104 ノートで測って hikidasu を作った》记下这 104 篇和 20 问。不要因 bodyUpdatedAt 写成 2026-10-05。",
       "检索器单独测的 grep 0.666／ruri 0.941，不要和代理到达率 0.99／0.95 混用。另一篇的 68%／84%／89% 本文没有复现。PyPI 页两次均为人机验证页，不列入可达。",
     ],
+  },
+  {
+    id: "988",
+    slug: "seed-26mem-200",
+    title: "seeda_yuto：从 2026 年 2 月起用 Claude Code 的自动记忆跑数字内容生意，大约 5 个月后棚卸，记忆是 26 个文件、819 行（索引 253 行 + 专题 25 本）。会话开头出现 WARNING：MEMORY.md 已 253 行（上限 200），只会加载一部分。实测 201 行之后的记忆整段无法被想起；最要紧的运营规则 14 本和基础设施连接信息 4 本正好掉在这道「墙」外面。25 本里完全过期 1 本、部分过期 1 本，存活率 92%。把索引从 253 行收到 45 行后，先前想不起来的规则 7 本被完全想起。这些是作者自己这套自动记忆上的用法，不可外推到别人的记忆库或别的版本。",
+    summary: "seeda_yuto 把自动记忆放了约 5 个月后清点：26 个文件、索引 253 行超过 200 行上限，201 行之后想不起来。最要紧的规则 14 本和连接信息 4 本掉在墙外。索引收到 45 行后，7 本被重新想起。这些是作者自己这套记忆上的用法，不可外推。",
+    description: "面向已经打开 Claude Code 自动记忆、却只在会话开头看到「超过 200 行」警告的人：把 26 个文件、253／200 行上限，以及墙外的 14＋4 本写成门禁，区别于只建议「多写记忆」、却没有写出索引一超限、重要规则会整段消失的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/seeda_yuto/articles/claude-code-auto-memory-5month-audit",
+    sourceLabel: "zenn.dev·seeda_yuto 实践帖",
+    upvotes: 879,
+    trending: false,
+    tags: [
+      "claude-code",
+      "auto-memory",
+      "MEMORY.md",
+      "index-limit",
+      "audit",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/seeda_yuto/articles/claude-code-auto-memory-5month-audit",
+      label: "zenn.dev·seeda_yuto《Claude Codeに覚えさせた記憶26ファイルを棚卸ししたら、重要ルールほど「壁の外」に落ちていた》",
+      date: "2026-08-06",
+      dateLabel: "发布",
+    },
+    approach: "作者从 2026 年 2 月起几乎不管自动记忆，让 Claude 自己写。某天在会话开头看到 MEMORY.md 已超过 200 行上限的警告，于是把 5 个月积下的文件全部清点，看到底是哪一段不再被读入。",
+    outcomes: [
+      "源披露：大约 5 个月后棚卸，记忆是 26 个文件、819 行，其中索引 253 行、专题 25 本。会话开头的警告写着 MEMORY.md is 253 lines (limit: 200). Only part of it was loaded。实测 201 行之后的记忆整段无法被想起。这些是作者自己这套自动记忆上的用法，不可外推到别人的记忆库或别的版本。",
+      "掉在墙外的，正好是最要紧的运营规则 14 本和基础设施连接信息 4 本。25 本专题里完全过期 1 本、部分过期 1 本，存活率 92%——作者写明，腐掉的并不多，真正的问题是索引超限。不要把 26 个文件、25 本专题、14＋4 本墙外规则和 92% 存活率混用，也不要和 #978 的 38 本折成 17 本混用。",
+      "把索引从 253 行收到 45 行后，先前想不起来的规则 7 本被完全想起。作者还写到：被怀疑已经腐掉的记忆其实是对的，倒是当成正史的 CLAUDE.md 更旧。不要把「收到 45 行」写成记忆本身从 26 个变成 7 个。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-08-06T07:35:03.220+09:00，早于发布、同日，仍取 published → 2026-08-06。正文无配图、无 YouTube 嵌入。硬窗是索引 200 行上限，不要和 #978 的 38 本折成 17 本混用。作者卡 website 为 https://seeda.fun，文内未链，未列入导流。",
+      "导流：https://zenn.dev/seeda_yuto/books/claude-dotfiles-impact-order GET 200（标题 Claude Code 効き目順30 — ~/.claude/ で一番効く順に並べた実測レシピ集）。一次资料：https://code.claude.com/docs/ja/memory GET 200（标题 Claude があなたのプロジェクトを記憶する方法 - Claude Code Docs）。同作者相关篇，不列入产品导流：https://zenn.dev/seeda_yuto/articles/claude-code-hooks-practical-guide GET 200；https://zenn.dev/seeda_yuto/articles/copilot-pause-claude-code-migration GET 200。同作者 hooks 篇已留 pool，本条硬窗不是 hook 教程。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 253 行和 200 行上限是不是同一份索引，再谈「多写记忆就行」",
+        body: "请按实测算一算：自动记忆放了大约几个月，清点时是多少个文件、多少行，索引是多少行、上限是多少行；201 行之后还能不能被想起；掉在墙外的运营规则和连接信息各是几本；索引收到多少行之后，有几本被重新想起。不要把 26 个文件和 25 本专题混用，也不要把这道 200 行上限写成 #978 里把 38 本折成 17 本的做法。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "自动记忆会把跨会话要记住的事写成文件，下次会话开头先读索引。索引默认只加载前 200 行（或 25KB）。",
+      "索引一超过 200 行，后面的条目还在磁盘上，但会话里想不起来。作者清点时，最要紧的规则正好写在这道线后面。",
+      "把索引压短之后，原先墙外的规则重新出现在可被想起的范围里。过期的条目要另外看，不要和「超限读不入」混成一件事。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-06T23:49:13.322+09:00 → UTC 2026-08-06T14:49:13Z、Asia/Shanghai 2026-08-06 22:49:13；bodyUpdatedAt 2026-08-06T07:35:03.220+09:00，早于发布、同日，仍取 published → 2026-08-06；GET 200（UA MiraBot/1.0））：seeda_yuto 在《Claude Codeに覚えさせた記憶26ファイルを棚卸ししたら、重要ルールほど「壁の外」に落ちていた》记下这次棚卸。不要因 bodyUpdatedAt 写成更早的时刻。",
+      "200 行是索引上限，253 是超限时的行数，45 是修好后的索引。14＋4 本墙外规则不要和 92% 存活率混用。不要和 #978 的 38→17 混用。",
+    ],
+  },
+  {
+    id: "989",
+    slug: "hony-ohayo-7pct",
+    title: "honeymarron：只跟 Claude Code 说一声「早上好」，5 小时额度有时会一下子少 7%。问候正文不过大约 3 个 token，但启动时已经载入的基线（全局和项目的 CLAUDE.md、记忆索引、skill／插件／agent 的说明一览）在有的环境里一开始就是数万 token；这些基线每一轮都会再送一遍。作者按同一套步骤实测了 3 个仓库，最大的消耗源分别是 skill、插件和记忆文件，三个结果并不相同。2026 年 8 月确认，10 月又在 2.1.300 上复核了加载机制。这些是作者自己这 3 个仓库、特定版本上的实测概算，不可外推到别的环境或版本。",
+    summary: "honeymarron 发现只说一声「早上好」，5 小时额度有时会少 7%。问候大约 3 个 token，基线却可能是数万 token，而且每轮都要再送。3 个仓库用同一套步骤测，最大消耗源分别是 skill、插件和记忆文件。这些是作者自己这 3 个仓库上的概算，不可外推。",
+    description: "面向已经觉得「没干什么就撞上 5 小时上限」的人：把问候大约 3 个 token、额度少 7%，以及 3 个仓库最大消耗源并不相同写成门禁，区别于只谈「上下文太长」、却没有写出启动基线每一轮都会再送的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/honeymarron/articles/claude-code-context-diet",
+    sourceLabel: "zenn.dev·honeymarron 实践帖",
+    upvotes: 880,
+    trending: false,
+    tags: [
+      "claude-code",
+      "context",
+      "baseline",
+      "five-hour-limit",
+      "skills",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/honeymarron/articles/claude-code-context-diet",
+      label: "zenn.dev·honeymarron《Claude Code の「おはよう」1回 = 5時間制限の7%！？（挨拶3トークンの裏で送られる数万トークンの話）》",
+      date: "2026-08-11",
+      dateLabel: "发布",
+    },
+    approach: "作者奇怪为什么没读大文件、也没开长对话，额度却掉得很快。于是从启动时就已经载入的基线查起，再用同一套步骤去对 3 个仓库，看最大的消耗源到底是不是同一个。",
+    outcomes: [
+      "源披露：只说一声「早上好」，5 小时额度有时会少 7%。问候正文大约 3 个 token，但启动时载入的基线在有的环境里一开始就是数万 token，而且每一轮都会把这段基线再送一遍。作者举例：若基线是 5 万 token，10 个来回仅输入就可能到 50 万 token（缓存有效时会少一些，缓存过期会再送）。这些是作者自己这 3 个仓库、特定版本上的实测概算，不可外推到别的环境或版本。",
+      "同一套步骤在 3 个仓库里测下来，最大的消耗源分别是 skill、插件和记忆文件，三个结果并不相同。削什么要先看 /context（或 /context all）的实测，不要把某一个仓库的第一名写成所有项目的通例。",
+      "文中 /context 的输出例是 2.1.228 时的；作者 2026 年 8 月确认，10 月又在 2.1.300 上复核了加载机制。不要把 7%、大约 3 个 token 和「数万 token 的基线」混成同一个数，也不要把这篇写成 #985 那套 Max 20x 权重拟合。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-19T14:39:46.265+09:00，晚于发布且跨到 10-19，仍取 published → 2026-08-11。正文无配图、无 YouTube 嵌入。作者卡 website 为 https://honeymarron.com，文内未链，未列入导流。不要因 bodyUpdatedAt 写成 2026-10-19。",
+      "一次资料：https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code GET 200（标题 Models, usage, and limits in Claude Code | Claude Help Center）；https://code.claude.com/docs/en/context-window 、https://code.claude.com/docs/en/prompt-caching 、https://code.claude.com/docs/en/memory 、https://code.claude.com/docs/en/skills 、https://code.claude.com/docs/en/mcp 、https://code.claude.com/docs/en/settings 均 GET 200，落地为文档正文，按可达。同作者相关篇 https://zenn.dev/honeymarron/articles/claude-code-cursor-session-handoff GET 200，不列入产品导流。primary GET 200。platforms 记 claude。无作者产品导流可列。",
+    ],
+    prompts: [
+      {
+        title: "先问清 7% 和大约 3 个 token 是不是同一轮问候，再谈「没干什么就超限」",
+        body: "请按实测算一算：只说一声「早上好」时，5 小时额度有时会少百分之几；问候正文大约几个 token，启动基线在有的环境里大概是多少；基线会不会每一轮再送；作者用同一套步骤测了几个仓库，最大消耗源是不是同一个。不要把 7%、3 个 token 和数万 token 的基线混用，也不要把某一个仓库的第一名写成所有项目的通例。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "启动时就会载入全局和项目的 CLAUDE.md、记忆索引，以及 skill、插件、agent 的说明一览。有的环境在开口之前，基线已经是数万 token。",
+      "之后每一轮都会把「对话历史 + 这段基线」再送给模型。所以只说一声「早上好」，额度也可能掉一截。",
+      "三个仓库用同一套步骤测，最大消耗源并不相同。要先看 /context 的实测再决定先削哪一类，而不是按别人的排行照搬。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-11T23:04:58.898+09:00 → UTC 2026-08-11T14:04:58Z、Asia/Shanghai 2026-08-11 22:04:58；bodyUpdatedAt 2026-10-19T14:39:46.265+09:00，晚于发布且跨到 10-19，仍取 published → 2026-08-11；GET 200（UA MiraBot/1.0））：honeymarron 在《Claude Code の「おはよう」1回 = 5時間制限の7%！？（挨拶3トークンの裏で送られる数万トークンの話）》记下这次实测。不要因 bodyUpdatedAt 写成 2026-10-19。",
+      "7% 是 5 小时额度有时会掉的幅度，大约 3 个 token 是问候正文，数万 token 是启动基线，不要混用。3 个仓库的最大消耗源并不相同。",
+    ],
+  },
+  {
+    id: "990",
+    slug: "jido-28h-915sk",
+    title: "jidoka_lab：每天 6:45 该触发的定期任务，从 2026-08-23 06:45:35 到 08-24 11:11:37，大约 28 小时 26 分里一次例行触发都没有成功，recordedSkips 记下 915 条跳过，理由都是 per_task_limit。915 条里有 912 条间隔在 55–65 秒，几乎每分钟跳过一次。中间有一段大约 13 小时 12 分完全没有跳过记录，是因为当天 17:34 手动跑过一次（把代码并进生产分支之后），lastRunAt 停在这个手动时刻，看起来像是「刚跑过」。日志和通知里都没有「失败」二字。作者当时并行着 12 本定期任务，其余 11 本仍在正常跑。这些是作者自己这套调度上的观测，不可外推到别的调度器或上限。",
+    summary: "jidoka_lab 的每天 6:45 任务在大约 28 小时 26 分里一次例行触发都没成功，记下 915 条跳过（912 条几乎每分钟一条）。17:34 的 lastRunAt 其实是手动跑的。日志里没有「失败」。这些是作者自己这套调度上的观测，不可外推。",
+    description: "面向已经给 Claude Code 挂了多本定期任务、却只看「有没有报失败」的人：把 28 小时 26 分、915 条跳过，以及手动跑过一次造成的 13 小时空白写成门禁，区别于只写「任务失败会通知」、却没有写出「根本没触发」是无声的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/jidoka_lab/articles/claude-code-scheduled-silent-failure",
+    sourceLabel: "zenn.dev·jidoka_lab 实践帖",
+    upvotes: 881,
+    trending: false,
+    tags: [
+      "claude-code",
+      "scheduled-tasks",
+      "silent-failure",
+      "per-task-limit",
+      "skips",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/jidoka_lab/articles/claude-code-scheduled-silent-failure",
+      label: "zenn.dev·jidoka_lab《Claude Codeの定期実行タスクが28時間「無言」で死んでいた話》",
+      date: "2026-08-24",
+      dateLabel: "发布",
+    },
+    approach: "作者并行跑着 12 本定期任务，整体看起来顺利。后来直接打开 scheduled-tasks.json，才看见其中一本的 recordedSkips 堆到 915 条，例行的 6:45 一次都没跑成。",
+    outcomes: [
+      "源披露：对象任务的 cron 是每天 6:45。从 2026-08-23 06:45:35 到 08-24 11:11:37（JST），大约 28 小时 26 分，recordedSkips 记下 915 条跳过，理由都是 per_task_limit。915 条里有 912 条间隔在 55–65 秒，几乎每分钟一条。这些是作者自己这套调度上的观测，不可外推到别的调度器或上限。",
+      "中间有一段大约 13 小时 12 分完全没有跳过记录。lastRunAt 停在 08-23 17:34，那不是例行的 6:45，而是把代码并进生产分支之后手动跑的一次。不要把 17:34 写成例行触发成功，也不要把 915、912、13 小时 12 分和 28 小时 26 分混成同一个数。",
+      "作者怀疑 08-22 06:48 的那次会话没拿到 Bash 结果就停住、一直占着同时运行的名额，但写明这是推测，不是已确认的原因。当时 12 本里其余 11 本仍在正常跑，所以「今天全部顺利」的整体印象不受影响。已有的失败通知也抓不住「根本没触发」。不要和 #983 的 GitHub Actions 绿色成功、或 #986 把 21 条暂缓重计成 1 回混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-08-25T09:13:23.757+09:00，晚于发布且跨到 08-25，仍取 published → 2026-08-24。正文无配图、无 YouTube 嵌入。文内的「スキップ」是这次被跳过，不要译成「先发送」。原因部分作者写明是推测。不要和 #983、#986 混用。",
+      "导流：https://zenn.dev/jidoka_lab/books/ai-agent-automation GET 200（标题 AIエージェントで定型業務を自動化する実践ガイド）；https://zenn.dev/jidoka_lab/books/ai-agent-delegation-guide GET 200（标题 非エンジニアのためのAIエージェント委任・検品設計ガイド）；https://jidoka-shindan.genba-lab-jp.workers.dev/ GET 200（标题 定型業務 自動化ポテンシャル診断 | あなたの仕事、AIで自動化できる?（無料・30秒））。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 915 条跳过和 28 小时 26 分是不是同一段日子，再谈「没收到失败通知就没事」",
+        body: "请按实测算一算：这本任务的 cron 是每天几点；从哪一分到哪一分大约停了多久；recordedSkips 记下多少条，其中多少条间隔大约 1 分钟；13 小时 12 分的空白是怎么来的，17:34 的 lastRunAt 是例行触发还是手动跑的。不要把手动跑过写成例行成功，也不要把这篇和 #983 的绿色成功或 #986 的 21 条暂缓混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "调度器如果认为该任务还占着同时运行的名额，就会按短间隔记下跳过，而不一定写「失败」。",
+      "lastRunAt 不会区分「例行触发」和「手动跑了一次」。只看这个时刻，会把手动跑过误当成例行还在转。",
+      "多本任务并行时，其余任务正常会把整体印象撑住。要判断某本有没有真正触发，得直接看 recordedSkips 和 lastRunAt，不能只看失败通知或任务定义是否仍是 enabled。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-24T19:52:13.675+09:00 → UTC 2026-08-24T10:52:13Z、Asia/Shanghai 2026-08-24 18:52:13；bodyUpdatedAt 2026-08-25T09:13:23.757+09:00，晚于发布且跨到 08-25，仍取 published → 2026-08-24；GET 200（UA MiraBot/1.0））：jidoka_lab 在《Claude Codeの定期実行タスクが28時間「無言」で死んでいた話》记下这 28 小时。不要因 bodyUpdatedAt 写成 2026-08-25。",
+      "915 是跳过条数，912 条几乎每分钟一条，13 小时 12 分是手动跑过之后的空白。17:34 不是例行成功。不要和 #983、#986 混用。",
+    ],
+  },
+  {
+    id: "991",
+    slug: "itag-4role-112",
+    title: "10itagae_4（たべ）：把 Claude Code 的子代理按 Coder／Reviewer／Tester／Doc Writer 分成 4 役，在 3 个项目、112 张票上跑过。所谓「4 役」里，子代理其实是 3 体，Coder 是主会话本人。边界只写在指示里守不住；能靠工具权限守住的，3 体里只有 1 体。作者特别写下：若让负责评审的代理去改代码，记录上就会变成「没有 bug」。110 次执行日志里，一次子代理的中位用时大约 7 分钟（最短 1.6 分钟、最长 71 分钟）；模式稳定后一张票合计 20–30 分钟，但那是 10 张票的目安。作者写明没有拿「分成 4 役」和「同一会话换角度看 3 遍」做过对照。这些是作者自己这 3 个项目上的用法，不可外推到别的划分或项目。",
+    summary: "10itagae_4 按 4 役跑了 3 个项目、112 张票，但子代理其实是 3 体。工具权限只守住了 3 体里的 1 体。若让评审代理改代码，记录上会变成没有 bug。一次执行中位大约 7 分钟（110 次）。这些是作者自己这 3 个项目上的用法，不可外推。",
+    description: "面向已经给 Claude Code 按「实现／评审／测试／文档」分角色的人：把 112 张票、3 体里只有 1 体能靠权限守住，以及「评审代理一改代码、bug 就从记录里消失」写成门禁，区别于只介绍四角色模板、却没有写出边界怎样被突破的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/10itagae_4/articles/e7edbb7b931450",
+    sourceLabel: "zenn.dev·10itagae_4 实践帖",
+    upvotes: 882,
+    trending: false,
+    tags: [
+      "claude-code",
+      "subagents",
+      "reviewer",
+      "permissions",
+      "tickets",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/10itagae_4/articles/e7edbb7b931450",
+      label: "zenn.dev·10itagae_4《レビュー役のAIにコードを直させると、バグが無かったことになる — Claude Code サブエージェント4役の境界設計》",
+      date: "2026-08-29",
+      dateLabel: "发布",
+    },
+    approach: "作者按人的职场分工，把实现、评审、测试和文档拆开，用子代理去跑票。跑起来之后才发现：指示里写下的边界并不自动成立，而且一旦让评审代理动手改代码，记录本身会改写。",
+    outcomes: [
+      "源披露：3 个项目、112 张票。所谓「4 役」里子代理其实是 3 体，Coder 是主会话本人。边界只写在指示里守不住；能靠工具权限守住的，3 体里只有 1 体。这些是作者自己这 3 个项目上的用法，不可外推到别的划分或项目。",
+      "若让负责评审的代理去改代码，记录上就会变成「没有 bug」。作者把它写成记录问题，而不只是「改错了」。作者写明：没有拿「分成 4 役」和「同一会话换角度看 3 遍」做过对照，也没有按别的轴（安全、回归、性能）切过。不要把「4 役」写成 4 个子代理。",
+      "110 次执行日志里，一次子代理的中位用时大约 7 分钟（最短 1.6 分钟、最长 71 分钟）；模式稳定后一张票合计 20–30 分钟，但后者只看了 10 张票，作者说只能当目安。启动期同一 10 张票是 14–63 分钟。一次执行大约 30–50 次工具调用。不要把 112、110 和 10 混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-08-31T08:44:07.899+09:00，晚于发布且跨到 08-31，仍取 published → 2026-08-29。配图 2 张必须挂在本条 caveats：https://static.zenn.studio/user-upload/92901c775be7-20260829.png GET 200；https://static.zenn.studio/user-upload/5674247f1a9b-20260829.png GET 200。正文无 YouTube 嵌入。作者卡 X 为 10itagae_4，文内未链。不要因 bodyUpdatedAt 写成 2026-08-31。",
+      "无作者产品导流可列。primary GET 200。platforms 记 claude。不要把「4 役」写成 4 个子代理。20–30 分钟只基于 10 张票，不要写成 112 张票的通例。",
+    ],
+    prompts: [
+      {
+        title: "先问清 4 役里有几体是子代理，再谈「分好角色就守得住」",
+        body: "请按实测算一算：跑了几个项目、多少张票；所谓 4 役里，子代理实际是几体；能靠工具权限守住的是几体；若让评审代理改代码，记录上会怎样；一次执行的中位用时是多少、母数是多少；一张票 20–30 分钟看了多少张票。不要把 4 役写成 4 个子代理，也不要把 10 张票的目安写成 112 张票的通例。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "主会话当 Coder，先实现并提交；再同时拉起 Reviewer 和 Tester，都过了才让 Doc Writer 写，再进入下一张票。",
+      "子代理的工具列表里没写上的工具，对它来说等于不存在。靠这一条能守住的，作者这边 3 体里只有 1 体。",
+      "若评审代理被允许改代码，它可能直接把代码改掉，记录上就不再留下「曾有缺陷」。边界要写在工具权限上，而不能只写在指示里。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-29T23:31:24.940+09:00 → UTC 2026-08-29T14:31:24Z、Asia/Shanghai 2026-08-29 22:31:24；bodyUpdatedAt 2026-08-31T08:44:07.899+09:00，晚于发布且跨到 08-31，仍取 published → 2026-08-29；GET 200（UA MiraBot/1.0））：10itagae_4 在《レビュー役のAIにコードを直させると、バグが無かったことになる — Claude Code サブエージェント4役の境界設計》记下这 112 张票。不要因 bodyUpdatedAt 写成 2026-08-31。",
+      "4 役里子代理是 3 体。112、110 和 10 不要混用。配图 2 张须写完整 URL。",
+    ],
+  },
+  {
+    id: "992",
+    slug: "yuni-2layer-8",
+    title: "yuninaka：在遗留 Java 库的验证项目里，把 PMD CPD 抑制注释 8 件的审计交给协调员代理，协调员再委派给下一层子代理。子代理把 8 件全部审完并跑过 CI，详细终报在最上层会话里能看到；但这份终报到不了直接委托人，也就是协调员自己。作者用 3 次独立试验都得到同一症状。轻量复现里，子代理能算出正确值（例子是 3325），sleep 25 秒的命令还没跑完，大约 6.6 秒就先回了「等待中」；即使明确要求「先别报告、一次给本回答」（条件 B），也防不住这次提前汇报，随后的本回答同样到不了协调员。条件 C 想改用 TaskOutput 直接取，但 TaskOutput 根本不在协调员的工具列表里。这些是作者自己这套两层委派上的观测，不可外推到别的委派深度或版本。",
+    summary: "yuninaka 把 CPD 抑制 8 件交给两层代理。子代理审完 8 件，终报在最上层看得到，却到不了协调员。3 次独立试验同一症状。sleep 25 秒的命令大约 6.6 秒就先回「等待中」。这些是作者自己这套两层委派上的观测，不可外推。",
+    description: "面向已经在 Claude Code 里让协调员再转包子代理的人：把 8 件审完却到不了协调员、3 次独立试验，以及 25 秒命令大约 6.6 秒就提前汇报写成门禁，区别于只画两层架构、却没有写出报告会停在哪一层的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuninaka/articles/agent-delegation-report-loss",
+    sourceLabel: "zenn.dev·yuninaka 实践帖",
+    upvotes: 883,
+    trending: false,
+    tags: [
+      "claude-code",
+      "subagents",
+      "delegation",
+      "coordinator",
+      "report-loss",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuninaka/articles/agent-delegation-report-loss",
+      label: "zenn.dev·yuninaka《コーディネーターだけが知らない——Claude Codeの2階層エージェント委譲で報告が届かなかった話》",
+      date: "2026-08-30",
+      dateLabel: "发布",
+    },
+    approach: "作者先把 8 件 CPD 抑制审计交给协调员，再看到子代理其实已经做完。为了分清是任务太复杂还是结构本身有洞，改用 sleep 25 秒加随机数的最小复现，并做了 3 种条件。",
+    outcomes: [
+      "源披露：子代理把 CPD 抑制 8 件全部审完并跑过 CI，详细终报在最上层会话里能看到，却到不了直接委托人（协调员）。3 次独立试验都是同一症状。这些是作者自己这套两层委派上的观测，不可外推到别的委派深度或版本。",
+      "最小复现用 sleep 25 && echo RESULT_VALUE_IS_<随机数>。子代理算出了正确值（文中例子是 3325），该报告能直接出现在最上层会话，但协调员拿不到。条件 A 故意先打「等待中」再补本回答，协调员仍然拿不到。",
+      "条件 B 明确要求「先别报告、一次给出本回答」，25 秒的命令还没结束，大约 6.6 秒就先回了「等待中」，随后的本回答同样到不了协调员。条件 C 想用 TaskOutput 直接取，但 TaskOutput 不在协调员的工具列表里。不要把 8 件、3 次试验、25 秒和 6.6 秒混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-08-30T10:17:12.299+09:00，晚于发布、同日，仍取 published → 2026-08-30。正文无配图、无 YouTube 嵌入。不要因为复现仓在 GitHub 上，就把 github 填进 platforms。",
+      "导流：https://github.com/yuninaka/legacy-datetime-lab GET 200；https://github.com/yuninaka/claude-code-agent-delegation-repro GET 200。一次资料（须写完整 URL）：https://github.com/anthropics/claude-code GET 200；https://github.com/anthropics/claude-code/issues/86996 GET 200；https://github.com/anthropics/claude-code/issues/86996#issuecomment-5464266911 GET 200；https://github.com/anthropics/claude-code/issues/75043 GET 200；https://github.com/anthropics/claude-code/issues/84527 GET 200；https://github.com/anthropics/claude-code/issues/77908 GET 200；https://github.com/anthropics/claude-code/issues/76945 GET 200。同作者相关篇 https://zenn.dev/yuninaka/articles/delegated-audit-workflow GET 200，不列入产品导流。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 8 件终报停在哪一层，再谈「两层委派能把结果送回来」",
+        body: "请按实测算一算：交给协调员的是多少件 CPD 抑制审计；子代理有没有审完、最上层会话能不能看到终报、协调员能不能看到；独立试验做了几次；最小复现里命令要 sleep 多少秒，大约多少秒就先回了「等待中」；明确要求一次给本回答能不能挡住提前汇报；TaskOutput 在不在协调员的工具列表里。不要把 8 件、3 次试验、25 秒和 6.6 秒混用。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "协调员再转包一层子代理时，子代理的终报不一定回到协调员这一层，有时只会直接出现在最上层会话里。",
+      "子代理若先打「等待中」再补本回答，这次提前汇报就会把后面的正结果卡住。即使明确要求「先别报告」，也未必防得住。",
+      "想绕过对话、改用 TaskOutput 直接取结果时，要先确认协调员的工具列表里有没有这个工具。作者这边没有。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-08-30T04:04:48.902+09:00 → UTC 2026-08-29T19:04:48Z、Asia/Shanghai 2026-08-30 03:04:48；bodyUpdatedAt 2026-08-30T10:17:12.299+09:00，晚于发布、同日，仍取 published → 2026-08-30；GET 200（UA MiraBot/1.0））：yuninaka 在《コーディネーターだけが知らない——Claude Codeの2階層エージェント委譲で報告が届かなかった話》记下这 8 件。不要因 UTC 日期 08-29 写成 2026-08-29。",
+      "8 件已审完，但协调员拿不到。3 次独立试验同一症状。25 秒的命令大约 6.6 秒就提前汇报。issue 和 comment 须写完整 URL。",
+    ],
+  },
+  {
+    id: "994",
+    slug: "maro-81pct-stay",
+    title: "maronsan：觉得 Claude Code 账单里最大的一项 cache_read 占了总消耗的 60%–80%，日表却看不出「到底在反复读什么」。于是写了只读本地 JSONL、哪里都不上传的工具 nenpi。第一次跑出来：Bash 的滞留成本是 1669M，占 81.4%（5586 次，投入 2.4M token）；Read 是 231M，占 11.3%；Chrome MCP 的 computer 是 43M，占 2.1%；Write 是 17M，占 0.8%。Bash 输出正文只有 2.4M token，但会在之后的每一轮里被当成上下文反复计费，所以滞留成本远大于正文。作者强调：工具输出不是「收一次费」，第 5 轮吐出的整段日志和第 299 轮吐出，完全是两笔不同的账。这些是作者自己用 nenpi 在本地日志上跑出来的数，不可外推到别的会话或套餐。",
+    summary: "maronsan 用自写的 nenpi 一看，账单里 81.4% 的滞留成本来自 Bash（1669M），而 Bash 输出正文只有 2.4M token。工具输出会在之后每一轮里被反复计到 cache_read 里。这些是作者自己这套日志上的数，不可外推。",
+    description: "面向已经在看 cache_read 占总消耗 60%–80%、却看不出反复在读什么的人：把 Bash 1669M／81.4% 和正文只有 2.4M 写成门禁，区别于只列出模型单价、却没有按工具把「留下来的输出」数清楚的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/maronsan/articles/nenpi-residency-cost",
+    sourceLabel: "zenn.dev·maronsan 实践帖",
+    upvotes: 885,
+    trending: false,
+    tags: [
+      "claude-code",
+      "cache-read",
+      "residency",
+      "bash",
+      "nenpi",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/maronsan/articles/nenpi-residency-cost",
+      label: "zenn.dev·maronsan《Claude Code の請求の8割は「居座り続けた出力」だった》",
+      date: "2026-09-12",
+      dateLabel: "发布",
+    },
+    approach: "作者看见账单里最大的一项是 cache_read，日表却说不清反复在读什么。于是写了只读本地 JSONL 的 nenpi，按「投入多少 token × 之后还活了多少轮」去拆每一种工具的滞留成本。",
+    outcomes: [
+      "源披露：cache_read 大约占总消耗的 60%–80%，日表看不出反复在读什么。用 nenpi 第一次跑出来：Bash 滞留成本 1669M，占 81.4%（5586 次，投入 2.4M token）；Read 231M，占 11.3%；mcp__claude-in-chrome__computer 43M，占 2.1%；Write 17M，占 0.8%。这些是作者自己用 nenpi 在本地日志上跑出来的数，不可外推到别的会话或套餐。",
+      "Bash 输出正文只有 2.4M token，滞留成本却是 1669M。工具输出不是收一次费：在 300 轮会话的第 5 轮吐出整段日志，和第 299 轮才吐出，完全是两笔不同的账。不要把 60%–80% 的总 cache_read 占比和 Bash 的 81.4% 滞留占比混成同一个百分数。",
+      "作者还写到，若按行数去数，一次 API 响应会被拆成 thinking／text／tool_use 多行，行数能多算大约 82%。要用 token，不要用行数。不要把这篇写成 #989 的「早上好少 7%」，或 #996 那一次评审烧掉 3660 万 token。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与 publishedAt 同为 2026-09-12T18:38:07.408+09:00，取 published → 2026-09-12。正文无配图、无 YouTube 嵌入。作者卡 GitHub／X／website 均为空。不要把 60%–80% 和 81.4% 混用。",
+      "导流：https://github.com/hyuga611/nenpi GET 200（标题 GitHub - hyuga611/nenpi: Where a Claude Code session actually burns its tokens. Residency cost attributes cache_read spend to the tool output that caused it. Zero-dependency. · GitHub）。文内安装示例是 npx @hyuga/nenpi report --lang ja，未另给 npm 页 URL。不要因为工具仓在 GitHub 上，就把 github 填进 platforms。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先问清 81.4% 是不是 Bash 的滞留成本，再谈「cache_read 太大」",
+        body: "请按实测算一算：日表上 cache_read 大约占总消耗的多少；nenpi 第一次跑出来，Bash 的滞留成本是多少、占百分之几，输出正文是多少 token；Read 和 Write 各占多少；为什么第 5 轮吐出的日志和第 299 轮吐出不是同一笔账。不要把 60%–80% 和 Bash 的 81.4% 混用，也不要把正文 2.4M 写成滞留成本。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "cache_read 计的是每一轮把已有上下文再读一遍的费用。日表只给总数，看不出是哪一种工具的输出一直留在上下文里。",
+      "nenpi 按「这次投入的 token × 之后还活了多少轮」把滞留成本摊回每一种工具。Bash 正文不大，但会在后面每一轮里被反复读。",
+      "越晚才吐出的大段输出，后面可乘的轮次越少；越早吐出，滞留成本越高。所以同一段日志，出现的轮次不同，账单也不同。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-12T18:38:07.408+09:00 → UTC 2026-09-12T09:38:07Z、Asia/Shanghai 2026-09-12 17:38:07；bodyUpdatedAt 与发布相同；取 published → 2026-09-12；GET 200（UA MiraBot/1.0））：maronsan 在《Claude Code の請求の8割は「居座り続けた出力」だった》记下这次拆账。",
+      "60%–80% 是 cache_read 占总消耗的大约区间，81.4% 是 Bash 在滞留成本里的占比，不要混用。2.4M 是 Bash 正文，1669M 是滞留成本。",
+    ],
+  },
+  {
+    id: "995",
+    slug: "urar-14m-7h",
+    title: "urario（yuta-urano）：晚上把开发任务交给 Claude Code，以为早上只会看到已通过 CI 的 PR。第二天额度掉得比预想多得多。日志显示：PR #89 在 2026-09-19 23:34:21（JST）创建后，23:36:43 订阅了 PR 动态，23:36:50 用 send_later 预约了 55 分钟后的定期检查，并写上「PR 还 open 就再预约」。23:50:52，大约 14 分钟后，当前 HEAD 的 CI 已经 green；23:51:15 代理自己写下「Nothing further is mine」，同时又宣布检查预约继续留着。此后从 00:32:38 到 06:41:33，定期检查一共触发 7 次，每次都说「没有变化」，再预约大约 60 分钟后。作者 06:58:35 删掉触发器，整段监视大约走了 7 小时 22 分，其中定期检查本身大约 7 小时 05 分。这些是作者自己这一夜、这一条 PR 上的记录，不可外推到别的仓库或功能。",
+    summary: "urario 晚上把任务交给 Claude Code，CI 大约 14 分钟就 green 了，但定期检查一直跑到早上。从 00:32 到 06:41 触发 7 次，06:58 才删掉预约，整段监视大约 7 小时 22 分。代理早已写下「没有我的事了」，却继续再预约。这些是作者自己这一夜的记录，不可外推。",
+    description: "面向已经让 Claude Code 在 PR 上「看着 CI」的人：把大约 14 分钟就 green、却又检查了大约 7 小时 05 分写成门禁，区别于只看早上额度、却没有把「自己说做完了仍再预约」这条时间线对过的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/urario/articles/claudecode-termination-condition",
+    sourceLabel: "zenn.dev·urario 实践帖",
+    upvotes: 886,
+    trending: false,
+    tags: [
+      "claude-code",
+      "send-later",
+      "pull-request",
+      "ci",
+      "follow-up",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/urario/articles/claudecode-termination-condition",
+      label: "zenn.dev·urario《寝る前にClaude Codeへ開発タスクを任せたら、朝には利用リミット寸前だった》",
+      date: "2026-09-20",
+      dateLabel: "发布",
+    },
+    approach: "作者本以为额度是夜里改测试改掉的。对着执行日志把时间排开之后，才发现 CI 很早就绿了，真正耗额度的是代理在「已经没我的事」之后仍按小时再预约的检查。",
+    outcomes: [
+      "源披露：PR #89 于 2026-09-19 23:34:21（JST）创建。23:50:52，大约 14 分钟后，当前 HEAD（2438bc1）的 CI 已 green。但订阅和定期检查一直留到次日 06:58:35 作者删掉触发器，整段监视大约 7 小时 22 分，其中定期检查本身大约 7 小时 05 分。这些是作者自己这一夜、这一条 PR 上的记录，不可外推到别的仓库或功能。",
+      "23:36:50 的 send_later 预约了 55 分钟后，并写上「PR 还 open 就再预约」。23:51:15 代理已写下 Nothing further is mine，同时又宣布检查预约继续留着。从 00:32:38 到 06:41:33 一共触发 7 次，每次都说没有变化，再预约大约 60 分钟后。不要把大约 14 分钟、7 次、7 小时 05 分和 7 小时 22 分混用。",
+      "作者一开头以为是测试改挂了在打转，日志证明不是。PR 仍 open 并不等于代理还有必须立刻做的事。不要和 #983 的使用上限把作业打成绿色成功、或 #990 的 28 小时无声跳过混用。正文没有给出额度掉了百分之几的精确值，不要补写成具体百分数。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-09-20T10:56:19.938+09:00，略早于发布、同日，仍取 published → 2026-09-20。正文无配图、无 YouTube 嵌入，也无文内产品硬链。作者卡 GitHub 为 urario，文内未链个人仓。文内 PR #89 未给完整仓库 URL，按源文原样写出，未作为可达链去核。",
+      "无作者产品导流可列。primary GET 200。platforms 记 claude。不要因为正文写的是 PR 和 CI，就把 github 填进 platforms。不要和 #983、#990 混用。不要把「利用リミット寸前」补写成具体百分数。",
+    ],
+    prompts: [
+      {
+        title: "先问清 CI 变绿是大约 14 分钟还是检查跑了 7 个小时，再谈「夜里把 PR 交给它就行」",
+        body: "请按实测算一算：PR 是几点创建的，大约多少分钟后 CI 已经 green；代理何时写下 Nothing further is mine，预约有没有同时留下；从几点到几点一共触发了几次定期检查；预约是几点删掉的，整段监视和定期检查本身各大约多长。不要把 14 分钟和 7 小时混用，也不要把「额度掉得比预想多」补写成具体百分数。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "创建 PR 之后，代理可能在回复人之前就订阅动态，并预约过一段时间再检查。",
+      "即使它已经判断「没有我的事了」，只要指令里还写着「PR 仍 open 就再预约」，检查就会按小时继续。",
+      "额度不一定是夜里改代码改掉的。要把 CI 变绿的时刻、自己写下的判断，和后来每一次 send_later 排在同一条时间线上对。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-20T11:04:44.485+09:00 → UTC 2026-09-20T02:04:44Z、Asia/Shanghai 2026-09-20 10:04:44；bodyUpdatedAt 2026-09-20T10:56:19.938+09:00，略早于发布、同日，仍取 published → 2026-09-20；GET 200（UA MiraBot/1.0））：urario 在《寝る前にClaude Codeへ開発タスクを任せたら、朝には利用リミット寸前だった》记下这一夜。",
+      "大约 14 分钟是 CI 变绿，7 小时 05 分是定期检查，7 小时 22 分是整段监视，7 次是夜里触发次数。不要补写额度百分数。不要和 #983、#990 混用。",
+    ],
+  },
+  {
+    id: "996",
+    slug: "chro-36m-11sub",
+    title: "chro96：给一份大约 250 行的差分（9 个文件，+206／-44）写「请评审」，一次评审大约烧掉 3,660 万 token，按 API 折合大约 40 美元（约 6,000 日元），跑了 6 分 2 秒，最后以 429 Rate Limit 结束。总 token 36,645,850，其中缓存再读 34,451,162，约占 94%；普通输入 658，输出（含推理）381,325。一共 329 次调用，全是 Opus 级，结构是父代理加 11 个子代理。父代理上下文胀到超过 23 万 token，11 个子代理又各自带着数万 token 的上下文去连打 shell。这些是作者自己这一次评审上的记录，不可外推到别的差分、模型或设置。",
+    summary: "chro96 给大约 250 行差分写「请评审」，一次大约烧掉 3,660 万 token，94% 是缓存再读，父代理加 11 个子代理，6 分 2 秒后遇到 429。这些是作者自己这一次评审上的记录，不可外推。",
+    description: "面向已经随手对一小段 PR 说「请评审」的人：把大约 250 行差分、3,660 万 token 和 94% 缓存再读写成门禁，区别于只提醒「评审会费 token」、却没有写出这一次是父代理加 11 个子代理把上下文乘上去的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/chro96/articles/6ac66a2192a958",
+    sourceLabel: "zenn.dev·chro96 实践帖",
+    upvotes: 887,
+    trending: false,
+    tags: [
+      "claude-code",
+      "code-review",
+      "cache-read",
+      "subagents",
+      "rate-limit",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/chro96/articles/6ac66a2192a958",
+      label: "zenn.dev·chro96《「レビューして」の一言で3,600万トークンが溶けた話とClaude Codeのトークン効率化設定》",
+      date: "2026-09-20",
+      dateLabel: "发布",
+    },
+    approach: "作者只是请 Claude 评审一份不算大的 PR，账单却跳了一截。于是把这一次的 token 构成、调用次数和子代理数量拆开，看费用到底乘在哪一层。",
+    outcomes: [
+      "源披露：差分大约 250 行（9 个文件，+206／-44）。一次评审大约烧掉 3,660 万 token，按 API 折合大约 40 美元（约 6,000 日元），跑了 6 分 2 秒，最后以 429 Rate Limit 结束。总 token 36,645,850，其中缓存再读 34,451,162，约占 94%。这些是作者自己这一次评审上的记录，不可外推到别的差分、模型或设置。",
+      "一共 329 次调用，全是 Opus 级；结构是父代理加 11 个子代理。父代理上下文胀到超过 23 万 token，11 个子代理又各自带着数万 token 的上下文去连打 shell，所以数量是乘上去的，不是「250 行本身有 3,660 万 token」。不要把大约 250 行、3,660 万、94%、329 次和 11 个子代理混用。",
+      "普通输入只有 658，输出（含推理）381,325。不要把这次 429 写成服务不可用，它是这一次跑到限额。不要和 #994 的 Bash 滞留占比、或 #989 的「早上好少 7%」混用。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 与 publishedAt 同为 2026-09-20T15:25:23.148+09:00，取 published → 2026-09-20。正文无配图、无 YouTube 嵌入，也无文内产品硬链。作者卡 GitHub 为 chro96，文内未链个人仓。大约 40 美元是 API 折合，不是作者当时套餐的实付账单，不要写成实付 40 美元。",
+      "无作者产品导流可列。primary GET 200。platforms 记 claude。3,660 万是约数，精确合计是 36,645,850，不要把两个写法当成两次事故。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3,660 万是一次评审还是整周用量，再谈「小 PR 评审很便宜」",
+        body: "请按实测算一算：这份差分大约多少行、几个文件；一次评审大约烧掉多少 token，其中缓存再读占多少、普通输入和输出各是多少；跑了几分几秒，最后是什么状态；调用了多少次，是父代理加几个子代理。不要把大约 250 行写成「250 行本身有 3,660 万 token」，也不要把 API 折合约 40 美元写成实付账单。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "一句「请评审」可能拉起父代理和一批子代理。每个子代理都会带着自己那份上下文去调工具。",
+      "费用的大头往往不是这 250 行差分，而是每一轮把已经很大的上下文再读一遍（cache_read）。",
+      "父代理上下文一旦胀到数十万 token，再乘上子代理数量，一次短评审也能把限额跑满，最后以 429 结束。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-20T15:25:23.148+09:00 → UTC 2026-09-20T06:25:23Z、Asia/Shanghai 2026-09-20 14:25:23；bodyUpdatedAt 与发布相同；取 published → 2026-09-20；GET 200（UA MiraBot/1.0））：chro96 在《「レビューして」の一言で3,600万トークンが溶けた話とClaude Codeのトークン効率化設定》记下这一次。",
+      "大约 250 行是差分，3,660 万是一次评审的 token，94% 是缓存再读，11 是子代理数。约 40 美元是 API 折合，不是实付。不要和 #989、#994 混用。",
+    ],
+  },
+  {
+    id: "997",
+    slug: "shune-9ag-1310",
+    title: "shune：把 Claude Code 按人类开发团队的样子排成 9 体（统括 Lead 1 体 + 担当 8 体），用 tmux 九个窗格同时跑，去做一个 MVP。一晩加半天里有 581 次提交、98 次合并，测试 1,310 件全部是绿色。打开应用一上手，角落里却弹出「找不到：PTY 1」。文件归属和共享类型的「契约」事先定好之后，文件抢夺几乎没有发生；真正坏在担当和担当的接缝：各自分头构建、启动和 e2e，步调对不齐。黎明时一度把 target/ 改成共用一处，同时跑的构建就开始互相覆盖二进制，有一组测试 8 件里倒了 6 件，单独跑则全过；这条规则只活了 20 分钟。这些是作者自己这一晩半日、这 9 体实验上的记录，不可外推到别的人数或项目。",
+    summary: "shune 把 Claude Code 排成 9 体，一晩半天里 581 次提交、98 次合并，测试 1,310 件全绿，应用却弹「找不到：PTY 1」。接缝上对不齐：共用 target/ 的规则只活了 20 分钟，有一组测试 8 件里倒了 6 件。这些是作者自己这一晩的记录，不可外推。",
+    description: "面向已经开始把 2、3 体 Claude Code 并排放、并准备再加人数的人：把 1,310 件全绿却通不过应用、581／98，以及 8 件里倒 6 件写成门禁，区别于只看提交数和绿灯、却没有写出接缝上怎样对不齐的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/shune/articles/54501fc4fd6398",
+    sourceLabel: "zenn.dev·shune 实践帖",
+    upvotes: 888,
+    trending: false,
+    tags: [
+      "claude-code",
+      "multi-agent",
+      "tests",
+      "pty",
+      "worktree",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shune/articles/54501fc4fd6398",
+      label: "zenn.dev·shune《Claude Code を9体並べてチーム開発させた。テスト1,310件は全部緑で、アプリは通しで動かなかった》",
+      date: "2026-10-02",
+      dateLabel: "发布",
+    },
+    approach: "作者没有按计算结果选 9 体，只是想看能排到哪一步。Lead 自己分组：5 体顺着功能往下做，3 体守公共层，各自在 worktree 里干活，用 SendMessage 联系。人只在 Lead 的窗格里下了一道总指示。",
+    outcomes: [
+      "源披露：9 体是统括 Lead 1 体加担当 8 体。一晩加半天里 581 次提交、98 次合并，测试 1,310 件全部是绿色。打开应用却弹出「找不到：PTY 1」，通不过完整使用。这些是作者自己这一晩半日、这 9 体实验上的记录，不可外推到别的人数或项目。",
+      "文件归属和共享类型事先定好之后，文件抢夺几乎没有发生。坏在担当之间的接缝：各自分头构建、启动和 e2e，步调对不齐。黎明时「target/ 共用一处」的规则让同时跑的构建互相覆盖二进制，有一组测试 8 件里倒了 6 件，单独跑则全过；20 分钟后规则改成「只有轮流跑时才能共用」，这条规则只活了 20 分钟。不要把 1,310、581、98 和「8 件里倒 6 件」混用。",
+      "还有担当执行 pkill -f vite，停掉的不只是自己的开发服务器；另有担当 git stash pop，把很早以前的改动弹回到别人的工作区。作者的下一步是先做「通得过的 1 条路径」，全员都走通再提交。9 体不是算出来的最优人数。不要把 slug shune-9ag-1310 和已占用的 #966 slug shun-12pair-4 混成同一条。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 2026-10-02T14:12:04.855+09:00，晚于发布、同日，仍取 published → 2026-10-02。正文无配图、无 YouTube 嵌入。作者卡 GitHub／X／website 均为空。9 体是实验人数，不是推荐编制。",
+      "无作者产品导流可列。同作者先前一篇并行 CLI 的回顾 https://zenn.dev/shune/articles/dfbaa8ae6750f5 GET 200，作者写明那套 CLI 后来不用了，不列入产品导流。primary GET 200。platforms 记 claude。不要占用 #966 的 slug shun-12pair-4。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1,310 件全绿和「找不到 PTY 1」是不是同一次实验，再谈「提交多就说明跑通了」",
+        body: "请按实测算一算：排了几体，统括和担当各几体；一晩半天里提交多少次、合并多少次，测试多少件、是不是全绿；打开应用时看到了什么；共用 target/ 之后，有一组测试 8 件里倒了几件，这条规则活了多久。不要把 1,310 件绿灯写成应用已经通得过，也不要把 581 次提交当成质量指标。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "9 个体在 tmux 的 9 个窗格里同时跑。Lead 分组、分 worktree，担当之间用消息联络，人几乎只给 Lead 下总指示。",
+      "单件测试可以在各自的树里全部变绿，但接缝上的构建产物、进程和完整操作路径对不齐，应用仍会在运行时裂开。",
+      "临时共用一个输出目录，会让同时构建互相覆盖。看起来能省事的规则，可能只活几十分钟。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-02T14:02:44.759+09:00 → UTC 2026-10-02T05:02:44Z、Asia/Shanghai 2026-10-02 13:02:44；bodyUpdatedAt 2026-10-02T14:12:04.855+09:00，晚于发布、同日，仍取 published → 2026-10-02；GET 200（UA MiraBot/1.0））：shune 在《Claude Code を9体並べてチーム開発させた。テスト1,310件は全部緑で、アプリは通しで動かなかった》记下这一晩。",
+      "1,310 件全绿不是应用已通。581 次提交和 98 次合并不要当成质量指标。8 件里倒 6 件是共用 target/ 时的一组测试。不要和 #966 的 slug shun-12pair-4 混淆。",
+    ],
   }
 ];
 
