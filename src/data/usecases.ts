@@ -62852,6 +62852,314 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
       date: "2026-10-14",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "858",
+    slug: "saito-705-26x-157s",
+    title: "saito／tsutomusaito：用自己机器上 2026-08-18 的 Claude Code 会话日志，统计 2,932 个会话文件、47,217 次助手回合里、含压缩的 148 个会话、705 次 compaction。压缩刚结束那一回合的缓存写入中位数 43,844 token，是不含压缩的通常回合中位数 1,712 token 的约 26 倍（是除法）。按相对成本简易式约 10.1 回合回本，按累计实测是 12 回合；会话最后一次压缩里 47/148（31.8%）没到 12 回合。摘要耗时中位数 157 秒，705 次合计 30.7 小时。702/705（99.6%）是自动触发。批次（sdk）2,681 个会话里只有 9 次（0.3%），对话（cli）244 个里有 139 次（57.0%）；17 回合以下的 2,628 个批次会话是 0 次",
+    summary: "个人（saito／tsutomusaito）；披露自己把 ~/.claude/projects 里的会话记录按 message.id 去重后点数（初出时没做去重，回合数会胀到约 1.94 倍、token 量会胀到 1.9–2.9 倍，正文已全部改成去重后的数）。统计时点是 2026-08-18 的快照，子代理（isSidechain）另算上下文，未计入。压缩刚结束的缓存写入中位数 43,844 token，对通常回合 1,712 token 为约 26 倍（是除法）；若去掉会话开头 5 回合，通常回合降到 1,143 token，倍率变成约 38 倍，作者取的是不过滤开头、较保守的 26 倍。压缩前一回合的缓存读取中位数 164,690 token。把第 3 回合的 78,084 token 当作压缩后的稳态，用官方倍率（1 小时缓存写入 2 倍、读取 0.1 倍）做相对成本，简易式 87,688÷8,661≒10.1 回合，按累计实测是 12 回合。会话最后一次压缩后，不到 12 回合就结束的是 47/148（31.8%），中位数 18 回合；若把 705 次都算到下一次压缩为止，12 回合以上是 88.5%（624/705）。摘要耗时中位数 157 秒、p90 198 秒、最大 319 秒，705 次合计 30.7 小时；每会话压缩次数中位数 2、最大 53，148 个里 79 个压过至少 2 次。自动触发 702 次（99.6%），手打 /compact 只有 3 次（0.4%）。批次与对话的差主要是会话长短：批次中位数 2 回合、对话 61 回合；第一次触发时的 preTokens 是 183,128 对 169,700，作者认为阈值差不多。17 回合以下的 2,628 个批次会话 0 次；17 回合以上是 9/53，作者写明母数小、比率不可靠。批次里触发会话丢掉的 token 中位数 170,418。入口标记不全的旧日志和不足 4KB 的小日志被排除，所以 2,681+244=2,925，到不了 2,932。摘要请求本身的 usage 没有留在日志里，12 回合回本仍偏乐观。相对成本按官方倍率估算，不是账单。",
+    description: "面向已经把「压缩之后用量会跳，所以要不要常开自动压缩」写成可以上线的人：把「约 26 倍是中位数相除，不是另一次实测；会话最后一次压缩有约三成到不了 12 回合；批次 0.3% 是因为会话短，不是因为批次更安全；摘要请求的费用还没计入，12 回合仍偏乐观」写成门禁，区别于只看倍率、却不核是不是同一份去重后的日志、是不是把最后一次压缩和 705 次混成同一次计数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tsutomusaito/articles/claude-code-compact-cost",
+    sourceLabel: "zenn.dev·tsutomusaito 实践帖",
+    upvotes: 749,
+    trending: false,
+    tags: [
+      "claude",
+      "compact",
+      "cache",
+      "cost",
+      "logs",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「压缩之后要不要常开自动压缩，或把批次作业也交给同样的自动压缩」写成上线根据之前，要先核的边界（是不是约 2026-08-18 这份快照、是不是约 2,932 个文件／47,217 次回合里 148 个会话、705 次，是不是约刚结束那一回合写入 43,844 token、对通常回合 1,712 token 为约 26 倍，是不是约简易式 10.1 回合、累计实测 12 回合，是不是约最后一次压缩里 47/148 没到 12 回合，是不是约中位数 157 秒、705 次合计 30.7 小时，是不是约自动触发 702/705，是不是约批次 9/2,681、对话 139/244，是不是约 17 回合以下 0/2,628）以及「绝不可把约 26 倍／约 10.1 回合写成另一次实测，也不可把批次 0.3% 写成批次模式本身更安全」纪律",
+      "按源帖核对：数字是否已经按 message.id 去重，子代理是否另计，2,681+244 为何到不了 2,932，摘要请求的 usage 是否计入，相对成本用的是不是官方倍率而不是账单。",
+      "把「最后一次压缩的 31.8%」和「705 次里到下一次压缩为止的 88.5%」分开记，把「简易式 10.1 回合」和「15/148 也是 10.1%」分开记，再决定自己的作业要不要在间歇处手打 /compact，或把批次切短、关掉自动压缩。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-06T12:17:51.848+09:00 → 2026-09-06，同时刻为 UTC 2026-09-06T03:17:51Z、Asia/Shanghai 2026-09-06 11:17:51；bodyUpdatedAt 2026-08-27T01:45:26.658+09:00，早于发布，按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：saito／tsutomusaito 在《/compact のコストを実ログ705回分で測った — 対話なら回収できる、バッチなら避けるべき》写自己日志里 705 次压缩的相对成本与耗时。可达导流：https://github.com/ben-saito GET 200（作者卡 GitHub）；https://x.com/tsutomu_eng GET 200（作者卡 X）；https://zenn.dev/tsutomusaito/books/ai-context-design-guide GET 200（正文 2,000 日元的《AIコンテキスト設計ガイド》，第 3 章可免费读）。作者卡 website 为空。无配图。连载前篇已核、不列入导流：https://zenn.dev/tsutomusaito/articles/ai-agent-context-design 、https://zenn.dev/tsutomusaito/articles/agents-md-claude-code-resolution ，均 GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/prompt-caching GET 200。正文末附了 2 个测量脚本，不是另开的产品仓。primary GET 200。",
+      "约 26 倍是 43,844÷1,712，约 38 倍是改用 1,143 做分母，约 10.1 回合是 87,688÷8,661，20 倍是官方写入 2 倍对读取 0.1 倍，都不是另一次实测。不要把 15/148 的 10.1% 和回本的 10.1 回合写成同一个数。不要把 30.7 小时写成 705×157 秒的另一次实测（源文把中位数和合计分开写）。「100 件作业里若有一半触发、就会再多出 2 小时多」是假设，不是实测。2,681+244 到不了 2,932，不要补成同一次计数。",
+    ],
+    approach: `作者在自己长期使用 Claude Code 的那台机器上，读取 ~/.claude/projects 里按会话保存的 jsonl。每条助手回复里带有 API 返回的 usage（缓存写入、缓存读取、输入、输出）；压缩发生时会插入带 compactMetadata 的记录，里面有 trigger、压缩前后 token、丢掉的累计 token，以及 durationMs。
+
+统计范围是 2026-08-18 当时的快照：2,932 个会话文件、47,217 次助手回合，其中含压缩的是 148 个会话、705 次。子代理（isSidechain）与父会话不是同一段上下文，未计入。作者写明自己还在继续用，隔天再跑件数就会变，写这篇的过程中就又多过 1 次。
+
+初出时的汇总没有处理「一条 API 响应被拆成多条 assistant 记录、每条都带着同一份 usage」的情况。作者事后核到 46,834/46,838＝100% 是这种重复。按记录直接加总，回合数会胀到约 1.94 倍，token 量会胀到 1.9–2.9 倍。正文、表和脚本都已改成按 message.id 去重后的数。
+
+对话部分看压缩刚结束那一回合相对通常回合多写了多少、压缩前每回合读了多少、按官方倍率要多少回合才能回本、会话最后一次压缩之后还续了多少回合，以及摘要本身花了多少墙钟时间。批次部分则按日志里的 entrypoint（sdk-cli／sdk-py 对 cli）分开数发生率和第一次触发时的 preTokens。不足 4KB 的小日志和没有入口标记的旧日志在分模式时被排除，所以两边相加是 2,925，不是 2,932。
+
+文末放了 2 个测量脚本，让读者在自己的环境上跑。相关说明之后，作者链到此前两篇谈上下文和 AGENTS.md／CLAUDE.md 的文章，以及 2,000 日元的《AIコンテキスト設計ガイド》（第 3 章可免费读）。`,
+    outcomes: [
+      "源披露作者用 2026-08-18 自己机器上的 Claude Code 会话日志，在按 message.id 去重之后点数：2,932 个文件、47,217 次回合里，148 个会话发生过压缩、共 705 次；刚结束那一回合缓存写入中位数 43,844 token，对通常回合 1,712 token 为约 26 倍（是除法）；简易式约 10.1 回合、累计实测 12 回合回本，但会话最后一次压缩里 47/148（31.8%）没到 12 回合；摘要耗时中位数 157 秒，705 次合计 30.7 小时；702/705 是自动触发。批次 2,681 个会话里只有 9 次（0.3%），17 回合以下 0/2,628。这是这一台机器、这一天快照、这一种去重方法上的记录，不可外推成别人的用法、别的模型搭配或把批次 0.3% 写成批次模式本身更安全，也不能把约 26 倍写成另一次实测，更不能把 12 回合写成已经计入摘要请求费用后的账单回本点。",
+      "官方文档说压缩后那一回合「不是慢的那一段」，比较对象是更重的摘要请求；本篇约 26 倍比的是通常回合，两边可以同时成立。",
+      "相对成本按官方倍率（读 0.1 倍、1 小时写 2 倍）估算，不是账单；摘要请求的 usage 没有留在日志里，12 回合回本仍偏乐观。",
+    ],
+    caveats: [
+      "2,932 个文件、47,217 次回合、148 个会话、705 次、43,844／1,712／约 26 倍、1,143／约 38 倍、164,690、78,084、87,688÷8,661≒10.1、累计 12 回合、15／36／47／78 除以 148、31.8%、中位数 18 回合、624/705＝88.5%、157／198／319 秒、30.7 小时、中位数 2 次／最大 53 次、79/148、702/705＝99.6%、3 次手打、批次 2,681／9／0.3%、对话 244／139／57.0%、中位数 2 对 61 回合、第一次触发 20 对 39 回合、preTokens 183,128 对 169,700、17 回合以下 0/2,628、17 回合以上 9/53、丢掉的中位数 170,418、2,681+244=2,925、46,834/46,838、约 1.94 倍与 1.9–2.9 倍，以及「摘要请求的 usage 没有留下」「相对成本不是账单」，均为作者自述。约 26 倍、约 38 倍、约 10.1 回合、20 倍的读写差，都是除法或官方倍率，不是另一次实测。15/148 的 10.1% 不要和回本的 10.1 回合混写。30.7 小时不要写成 705×157 秒的另一次实测。「100 件里若一半触发会再多出 2 小时多」是假设。初出时的未去重数字不要和正文混写。示例记录里的 durationMs 122511 是单条样例，不是 157 秒这条中位数。不要把「长文会增加 token、变慢」误接成本条。",
+      "可达导流：https://github.com/ben-saito GET 200（作者卡 GitHub）；https://x.com/tsutomu_eng GET 200（作者卡 X）；https://zenn.dev/tsutomusaito/books/ai-context-design-guide GET 200（正文 2,000 日元的书，第 3 章可免费读）。作者卡 website 为空。无配图。连载前篇已核、不列入导流：https://zenn.dev/tsutomusaito/articles/ai-agent-context-design 、https://zenn.dev/tsutomusaito/articles/agents-md-claude-code-resolution ，均 GET 200。一次资料已核、不列入导流：https://code.claude.com/docs/en/prompt-caching GET 200。正文末附了 2 个测量脚本，不是另开的产品仓。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核是哪一份去重后的日志，再谈自动压缩要不要开",
+        body: "请先核：统计是不是约某一天的本地会话快照，是不是已经按 message.id 去掉「一条响应拆成多条、usage 相同」的重复，子代理是不是另计。再核压缩刚结束那一回合的写入，是对「通常回合」相除，还是对「压缩前一回合」相除；回本用的是简易式还是累计实测；谈回收时，是只看会话最后一次压缩，还是把中途那几次也算进去。批次作业请单独看会话是否足够短、第一次触发时的上下文有多大，不要把「发生率低」写成「这种模式更安全」。摘要请求本身的费用如果没有记在日志里，不要把回本回合写成账单结论。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tsutomusaito/articles/claude-code-compact-cost",
+      label: "zenn.dev·tsutomusaito《/compact のコストを実ログ705回分で測った — 対話なら回収できる、バッチなら避けるべき》",
+      date: "2026-09-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "859",
+    slug: "nnakapa-240-60of60-95",
+    title: "Nori／nnakapa：在 Raspberry Pi 5（内存 4GB、Ubuntu 26.04 LTS arm64）上把 Claude Code 固定为 v2.1.258，于 2026-09-02 用 Fable 5.1 与 Opus 5、各 4 档 effort，对同一套 3 个小型 Python 任务各跑 10 次，共 240 次，全部跑完。质量门全过且费用几乎相同的组合里，Fable 5.1×low 三任务合计中位数是 95 秒、$1.10，Opus 5×high 是 247 秒、$1.10（差 $0.004、0.3%），约 2.6 倍（是除法）。Fable 5.1×low 的 T2 又加测 50 次，50/50 通过；与原先 10 次合计 60/60。这次 Opus 5 只在 T2 上掉了 3 次（low 2、medium 1）。作者环境里 Fable 5.1 的默认 effort 是 high，同一批任务上 low 比 high 约 1.7 倍快（158 秒→95 秒，是除法），约便宜 26%（$1.49→$1.10，是除法）",
+    summary: "个人（Nori／nnakapa）；「オトナの自由研究」第 37 回。任务是沿用第 22 回的 3 个PostgreSQL／psycopg2 小题：T1 原子转账、T2 参数化查询（说明里故意不写「请做注入防护」）、T3 乐观锁库存。函数起初只有一行 raise NotImplementedError，由 Claude Code 按说明书实现。8 种组合各 30 次，模型和档位打乱后在同一测量窗口一次跑完，并用以往的 OTel 接收端收集遥测。费用是 CLI 报告的 token 量乘标价，240 次都与 CLI 记下来的金额核对过。还核了 240 次的模型 ID 都对得上、Fable 5.1 安全分类器拒绝 0 次、日志里的 CLI 版本都是 2.1.258、effort 标签都按预期写入。第 36 回曾发现模型先读了隐藏测试再实现，这次测量期间用文件权限把隐藏测试、参考实现和评分定义封起来，评分前再打开；封闭期间试图去读的痕迹是 0 次。240 次全部跑完，超时和异常结束 0 次。质量门没过的只有 Opus 5 的 3 次，都在 T2。T1、T3 八种组合都是 10/10。Fable 5.1 四档都全过；Opus 5 只在 high、xhigh 全过，low 是 8/10，medium 是 9/10（文内表写作 80%、90%）。加测的 50 次不计入总览表的 N=10。N=10 全过只能说到失败率低于 26%；50/50 的 Clopper-Pearson 单侧 95% 上限是 5.8%，合计 60/60 是 4.9%。Fable 5 在第 29 回（2026 年 7 月、CLI 2.1.220）的 T2 是 low 0/10、medium 7/10，版本和日期不同，只比门是否通过，不比绝对值。medium／high 上 Fable 5.1 的思考次数停在 4 次，Opus 5 会随档位从 3 加到 7；xhigh 上 Fable 5.1 单次思考 32.2 秒，对 Opus 5 的 14.3 秒约 2.3 倍（是除法）。输出 token 从 low 到 xhigh，Fable 5.1 约 8.5 倍、Opus 5 约 5.5 倍。官方指南写 xhigh 输出约 2 倍，方向一致，但不是同一组实测。low 对 low 的费用仍是 Opus 5 的 2.00 倍，并没有变便宜。作者写明这是个人非官方实验，不能代表两款模型的一般优劣。",
+    description: "面向已经把「Fable 5.1 应该默认用 low，而且比 Opus 5 又快又稳」写成可以上线的人：把「约 2.6 倍是 247 秒÷95 秒，不是另一次实测；加测的 50 次不要和总览表的 N=10 混写；Fable 5 的 0/10 来自另一版 CLI、另一段日期；N=10 全过只能说到失败率低于 26%」写成门禁，区别于只看总览里的全过和倍率、却不核隐藏测试是否被封、费用是不是 token 乘标价的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/nnakapa/articles/lab-37-fable51-opus5-qcd",
+    sourceLabel: "zenn.dev·nnakapa 实践帖",
+    upvotes: 750,
+    trending: false,
+    tags: [
+      "claude",
+      "fable",
+      "opus",
+      "qcd",
+      "effort",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「Fable 5.1 默认用 low，并且可以按约 2.6 倍更快去换掉 Opus 5×high」写成上线根据之前，要先核的边界（是不是约 Raspberry Pi 5、Claude Code v2.1.258、2026-09-02、3 个任务×8 种组合各 10 次共 240 次全部跑完，是不是约 Fable 5.1×low 95 秒、$1.10 对 Opus 5×high 247 秒、$1.10，是不是约 T2 加测 50/50、合计 60/60，是不是约这次 Opus 5 只掉了 3 次，是不是约默认 high 上 158 秒、$1.49 对 low 的 95 秒、$1.10）以及「绝不可把约 2.6 倍／约 1.7 倍／约 26% 写成另一次实测，也不可把第 29 回 Fable 5 的 0/10 写成同一测量窗口」纪律",
+      "按源帖核对：模型 ID、CLI 版本、effort 标签和费用（token×标价对 CLI 金额）是否 240 次都对上，隐藏测试在测量期间是否被文件权限封住，加测的 50 次有没有写进 N=10 的总览表。",
+      "把思考次数（请求次数的中位数）和单次长度（响应区间÷次数）分开看：medium／high 的快慢差主要在次数，xhigh 上 Fable 5.1 变慢是单次变长，不要合成一个「越高档越快」的结论。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-03T14:57:39.365+09:00 → 2026-09-03，同时刻为 UTC 2026-09-03T05:57:39Z、Asia/Shanghai 2026-09-03 13:57:39；bodyUpdatedAt 2026-09-03T16:46:10.226+09:00，晚于发布，仍取 published；GET 200（UA MiraBot/1.0））：Nori／nnakapa 在《Fable 5.1 は low で使う——Opus 5 と 240 試行の QCD で比較した（オトナの自由研究 #37）》写 240 次加 T2 加测 50 次的对照。可达导流：https://x.com/nnakapa GET 200（作者卡 X）。作者卡 GitHub／website 为空。配图 2 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/6f4d2dda0cdeb4bd0447a894.png?sha=332e57bcbc584102ce75f8fb8670a1d4d59b974a 、https://static.zenn.studio/user-upload/deployed-images/944ef9cc435c207746962e63.png?sha=97b0e9a4701b3f55023508bd311b9f44204c618a 。连载前后篇已核、不列入导流：https://zenn.dev/nnakapa/articles/lab-16-rpi4-qcd 、https://zenn.dev/nnakapa/articles/lab-17-rpi5-ubuntu26 、https://zenn.dev/nnakapa/articles/lab-18-rpi5-cli-benchmark 、https://zenn.dev/nnakapa/articles/lab-22-github-copilot-ai-credits 、https://zenn.dev/nnakapa/articles/lab-24-fable5-opus48-qcd 、https://zenn.dev/nnakapa/articles/lab-29-opus5-fable5-qcd 、https://zenn.dev/nnakapa/articles/lab-31-otel-rpi4-rpi5 、https://zenn.dev/nnakapa/articles/lab-32-otel-trace-sonnet5 、https://zenn.dev/nnakapa/articles/lab-33-otel-trace-opus5-sonnet5 、https://zenn.dev/nnakapa/articles/lab-34-opus5-sonnet5-qcd 、https://zenn.dev/nnakapa/articles/lab-36-copilot-gemini37-sonnet5-qcd ，均 GET 200。一次资料未列入可达：https://platform.claude.com/docs/en/models/fable-5-1/migration-guide 、https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1 均 GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用，不因 200 算可达）。页内卡片嵌入不当作者产品导流。primary GET 200。",
+      "约 2.6 倍是 247÷95，约 1.7 倍是 158÷95，约 26% 是（1.49−1.10）÷1.49，约 2.3 倍是 32.2÷14.3，0.3% 是 0.004÷1.10，都是除法，不是另一次实测。50 次加测不要写进 N=10 总览。Fable 5 的 0/10、7/10 来自第 29 回、CLI 2.1.220，不要和本次 2.1.258 混成同一窗口。N=10 全过只支持「失败率低于 26%」，不是测到的失败率。官方指南的「xhigh 输出约 2 倍」不要和本文 low→xhigh 的 8.5 倍／5.5 倍写成同一组数。",
+    ],
+    approach: `作者在自己此前第 17 回搭好的 Raspberry Pi 5（内存 4GB、Ubuntu 26.04 LTS arm64）上，把 Claude Code 固定为 v2.1.258（关掉自动更新），模型只用 claude-opus-5 和 claude-fable-5-1，effort 为 low／medium／high／xhigh。评分侧用 uv tool 装了 pytest、bandit、ruff。测量日是 2026-09-02。
+
+三个任务沿用第 22 回：都是很小的 Python 模块，函数先只留一行未实现，由 Claude Code 读说明书来写。T2 的说明书故意不写「请做注入防护」，要看模型会不会自己守住。质量看的是带隐藏测试的门（pass_gate）；任务全文和陷阱在第 29 回，评分方法在第 16 回。
+
+2 个模型×4 档共 8 种，每种 3 个任务×10 次＝30 次，合计 240 次。为了不让时段和网络偏差集中在某一侧，全部打乱后在同一窗口一次跑完，并用第 31 回的 OTel 接收端收遥测。费用是 CLI 报告的 token 量乘当时标价（输入／输出 Fable 5.1 正好是 Opus 5 的 2 倍，缓存读取是一半），240 次都和 CLI 记下来的金额核对过。
+
+作者还核了四件事：API 返回的模型 ID 与指定一致（240/240），Fable 5.1 安全分类器拒绝 0 次；日志里的 CLI 版本只有 2.1.258；effort 标签都按预期出现在遥测里；测量期间用文件权限封住隐藏测试、参考实现和评分定义，评分前再打开，封闭期间试图去读的痕迹 0 次。这是因为第 36 回曾经发现模型先读了隐藏测试再实现。
+
+总览表里的时间和费用，是各任务中位数再按组合加总。Fable 5.1×low 的 T2 另加 50 次，不写进这张 N=10 的表。思考次数定义为每试一次的 LLM 请求次数中位数，单次长度是响应区间除以次数，口径与第 32、33 回相同。文末写明这是个人在这台树莓派上的非官方实验，不是所属组织的官方意见。`,
+    outcomes: [
+      "源披露作者在 Raspberry Pi 5、Claude Code v2.1.258、2026-09-02，用 Fable 5.1 与 Opus 5 对同一套 3 个任务做 8 种组合、各 10 次共 240 次，全部跑完；质量门全过且费用几乎相同的组合里，Fable 5.1×low 是 95 秒、$1.10，Opus 5×high 是 247 秒、$1.10，约 2.6 倍（是除法）。T2 加测 50 次为 50/50，与原先 10 次合计 60/60；这次 Opus 5 只在 T2 掉了 3 次。这是这一台树莓派、这一个 CLI 版本、这一套任务和这一天测量窗口上的记录，不可外推成别的任务、别的版本或一般的模型优劣，也不能把约 2.6 倍写成另一次实测，更不能把第 29 回 Fable 5 的 0/10 写成同一次对照。",
+      "N=10 全过只能说到失败率低于 26%；50/50 的 95% 上限是 5.8%，60/60 是 4.9%，都不是另一次失败率实测。",
+      "费用是 token 量乘标价，240 次虽与 CLI 金额核对过，仍不是账单。low 对 low 仍是 Opus 5 的 2.00 倍，Fable 5.1 并没有变便宜，只是和 Opus 5×high 处在几乎同一价位。",
+    ],
+    caveats: [
+      "240 次、50 次加测、60/60、95 秒／$1.10 对 247 秒／$1.10、差 $0.004／0.3%、约 2.6 倍、Opus 5 掉 3 次（low 2、medium 1）、T1／T3 的 10/10、8/10 与 9/10、158 秒／$1.49 对 95 秒／$1.10、约 1.7 倍、约 26%、思考次数与 7.1–32.2 秒、约 2.3 倍、输出 8.5 倍／5.5 倍、Fable 5 第 29 回的 0/10 与 7/10、拒绝 0 次、读隐藏测试痕迹 0 次、超时 0 次，以及「费用是 token 乘标价」「不能代表一般优劣」，均为作者自述。约 2.6 倍、约 1.7 倍、约 26%、约 2.3 倍、0.3% 都是除法，不是另一次实测。加测 50 次不要和 N=10 总览混写。Fable 5 的数字来自另一版 CLI、另一段日期。官方指南的「xhigh 输出约 2 倍」不要和 8.5 倍／5.5 倍混成同一组。不要把「长文会增加 token、变慢」误接成本条。",
+      "可达导流：https://x.com/nnakapa GET 200（作者卡 X）。作者卡 GitHub／website 为空。配图 2 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/6f4d2dda0cdeb4bd0447a894.png?sha=332e57bcbc584102ce75f8fb8670a1d4d59b974a 、https://static.zenn.studio/user-upload/deployed-images/944ef9cc435c207746962e63.png?sha=97b0e9a4701b3f55023508bd311b9f44204c618a 。连载前后篇已核、不列入导流：https://zenn.dev/nnakapa/articles/lab-16-rpi4-qcd 、https://zenn.dev/nnakapa/articles/lab-17-rpi5-ubuntu26 、https://zenn.dev/nnakapa/articles/lab-18-rpi5-cli-benchmark 、https://zenn.dev/nnakapa/articles/lab-22-github-copilot-ai-credits 、https://zenn.dev/nnakapa/articles/lab-24-fable5-opus48-qcd 、https://zenn.dev/nnakapa/articles/lab-29-opus5-fable5-qcd 、https://zenn.dev/nnakapa/articles/lab-31-otel-rpi4-rpi5 、https://zenn.dev/nnakapa/articles/lab-32-otel-trace-sonnet5 、https://zenn.dev/nnakapa/articles/lab-33-otel-trace-opus5-sonnet5 、https://zenn.dev/nnakapa/articles/lab-34-opus5-sonnet5-qcd 、https://zenn.dev/nnakapa/articles/lab-36-copilot-gemini37-sonnet5-qcd ，均 GET 200。一次资料未列入可达：https://platform.claude.com/docs/en/models/fable-5-1/migration-guide 、https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1 均 GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用，不因 200 算可达）。页内卡片嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核是同一窗口的 240 次，再谈 Fable 5.1 该不该默认 low",
+        body: "请先核：是不是同一台机器、同一个 CLI 版本、同一天把模型和 effort 打乱后一次跑完；质量门全过的组合里，拿来比快慢的那一对费用是不是几乎相同；约几倍是不是用中位数相除，而不是另一次实测。T2 若另有加测，不要写进原来的 N=10 总览。若拿上一代 Fable 的通过数来对照，先核 CLI 版本和测量日期是不是同一窗口。N=10 全过只能支持一个失败率上限，不要写成已经测到的失败率。隐藏测试在测量期间有没有被封住，也要单独核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nnakapa/articles/lab-37-fable51-opus5-qcd",
+      label: "zenn.dev·nnakapa《Fable 5.1 は low で使う——Opus 5 と 240 試行の QCD で比較した（オトナの自由研究 #37）》",
+      date: "2026-09-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "860",
+    slug: "suisei-16d-12pt-75",
+    title: "Suisei498：用 Claude Code 和子代理做国家资格／技术检定的问题集，从 2026-09-29 起 16 天做出 6 个书名，电子书和纸书合计 12 点，都通过了 KDP 审核。一册多为 150–200 问（少的约 60 问）。校阅时「一册大约要改约 75 件」；文内表只列出资格 A 的书 76 件、应用 41 件，资格 B 的书 75 件、应用 38 件。机械检查里，有一套书 180 问加应用 180 问，相似度 0.6 以上的组合有 5 组（最大 0.752）。子代理曾 13 路同时跑，碰到 429，作业全部停下。作者账号新建标题有每周上限（电子 2、纸 2），周日早晨 9 点（日本时间）恢复；8 点 59 分保存被挡，过了 9 点再做才通过",
+    summary: "个人（Suisei498）；同一内容也发在 Zenn 和 note。流程是：用 e-Gov 法令 API 取现行条文，写好出题规则，再按作业拆开并行出题——每个作业写 40–50 问，各用 git worktree 和分支隔开。机械检查会核对题量和形式，并用 difflib 找出相似度 0.6 以上的组合。校阅由书和应用分开的作业来做，改正写成 JSON，也出给人读的 Markdown。排版用 Python 做 A5 的 PDF、EPUB 和封面。登记 KDP 时用 Claude in Chrome 填表。应用题是为了 KDP 选择项目（电子书内容不能在别处发放）而按同样数量另做的，不是把书里的题直接搬过去。文内表只展示了两个资格的校阅件数；「一册约 75 件」是作者对书这一侧的概括，不要把 76 与 75 写成六册每一册都点过的同一张全表，也不要把应用侧的 41、38 和书侧混成同一个「约 75」。常见错误是：还在用修订前的数值、依据只有一份资料、书和应用的正确论点重叠、题干过于相近、漏写法令名称。13 路同时跑碰到 429 后，作者改为控制同时数量。KDP 上还遇到：纸书上传要重新登录亚马逊 1 次；纸书类目不会从电子书带过来；审核方面，电子书里快的从提交到开卖只要数十分钟（官方说明最长 72 小时），12 点都过了。AI 申报为「是、作品整体（最少编辑）、工具名 Claude（Anthropic），图像和翻译没有」；商品说明写明不是考试实施机构的官方教材或真题转载，而是自己出的题。作者写明不谈销售额。",
+    description: "面向已经把「用 Claude Code 并行出题，16 天就能做出 6 套资格问题集」写成可以复制的人：把「校阅约 75 件是书这一侧的概括，文内表只列出两个资格；12 点过审不能写成出题已经不用改；13 路并行会撞上 429；周上限才是出书速度的上限」写成门禁，区别于只看 16 天和 12 点、却不核改正件数和出书侧限制的实践。",
+    categories: [
+      "education",
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/Suisei498/items/ada1d851a16bb014c774",
+    sourceLabel: "qiita.com·Suisei498 实践帖",
+    upvotes: 751,
+    trending: false,
+    tags: [
+      "claude",
+      "kdp",
+      "exam",
+      "subagent",
+      "review",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「用 Claude Code 并行出题，16 天就可以做出 6 套资格问题集并上架」写成可复制流程之前，要先核的边界（是不是约 2026-09-29 起 16 天、6 个书名、电子和纸合计 12 点都过审，是不是约一册多为 150–200 问，是不是约书侧校阅约 75 件、而表里只列出资格 A 的 76／41 与资格 B 的 75／38，是不是约某一套 180+180 问里相似度 0.6 以上有 5 组，是不是约 13 路同时跑碰到 429，是不是约该账号每周电子 2、纸 2 的上限）以及「绝不可把约 75 件写成六册每一册都点过的同一张全表，也不可把 16 天写成已经不用校阅」纪律",
+      "按源帖核对：应用题是不是按同样数量另做的，法令是不是用现行 API 而不是模型训练时的记忆，KDP 的 AI 申报和「不是真题转载」有没有写上。",
+      "把「出题可以并行」和「出书受每周新建上限限制」分开看：8 点 59 分被挡、过了 9 点才通过，说明再快也要等这个窗口。",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-03T16:53:50.000+09:00 → 2026-11-03，同时刻为 UTC 2026-11-03T07:53:50Z、Asia/Shanghai 2026-11-03 15:53:50；dateModified 与发布相同；Qiita API created_at 同值；取 published；GET 200（UA MiraBot/1.0））：Suisei498 在《Claude Code で資格試験の問題集を16日で6冊（電子と紙で12点）作った — 校閲で直したのは1冊あたり約75件だった》写 16 天做出 12 点和校阅件数。可达导流：https://zenn.dev/suisei498/articles/1f0c28d3136c4f GET 200（正文写明的同文 Zenn 转载）；https://note.com/suisei498/n/n6074ede6f0d5 GET 200（正文写明的同文 note 转载）。作者卡 website／GitHub／X 为空。配图 5 张 GET 200（不列入产品导流）：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/eb9e7bb8-6749-4020-b823-8bd5f968c5bc.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/7d5bfb68-d998-4311-9b2f-57853add94f2.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/5490ba92-60dd-4392-abad-6979b91b47a4.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/053647c4-0a14-423c-b88f-d75a4fe72a23.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/9685ac2e-d799-44f9-ad3a-6590c04c0f99.png 。Qiita imgix 包装不当作者产品导流。连载相关篇已核、不列入导流：https://qiita.com/Suisei498/items/95febb15c92aeb35308d 、https://qiita.com/Suisei498/items/d7465257fe7da4293b23 ，均 GET 200。primary GET 200。",
+      "文内表只列出两个资格的校阅件数，不要把 76／75 写成六册全表，也不要把应用侧的 41、38 并进「约 75」。180+180 问的 5 组是其中一套的例子。电子书「数十分钟就开卖」是「快的那些」，官方说明最长 72 小时，不要写成 12 点都是数十分钟。「约 60 问」是较少那几册，不要和 150–200 问混成同一规格。Claude in Chrome 不在枚举里，不硬凑。",
+    ],
+    approach: `作者用 Claude Code 和子代理做出国家资格、技术检定类的问题集，并从 2026 年 9 月 29 日起送到 Amazon KDP。资格名称在文中隐去。同一篇也发在 Zenn 和 note。
+
+先查一次资料：法令用 e-Gov 的法令 API 取现行条文，再写成出题规则和指示。出题按作业并行，每个作业写 40–50 问，各占一个 git worktree 和分支。机械检查除了题量和形式，还用 difflib 抓相似度 0.6 以上的组合；文中举的例子是某一资格的书 180 问加应用 180 问，这样的组合有 5 组，最大 0.752，再送去校阅、改写只是换了说法的题。
+
+校阅时书和应用分开，由不同作业看。改正写成 JSON，同时出给人读的 Markdown。排版用 Python 做 A5 的 PDF、EPUB 和封面。KDP 登记用 Claude in Chrome 填表。同一资格还做了练习用的 Web 应用，题量另做一份，以免电子书进不了 KDP 选择项目。
+
+文内用一张表列出两个资格的校阅件数：资格 A 的书 76 件、应用 41 件，资格 B 的书 75 件、应用 38 件。作者概括为「一册 150–200 问左右，书这一侧大约要改约 75 件」；应用侧较少，是因为先校完书，再把发现的错误类型写回应用的出题指示。常见错误包括还在用修订前的数值、依据只有一份、书和应用的正确论点重叠、题干过于相近、漏写法令名称。电类题目里还遇到避雷设备所依据的标准已随告示修订，解说却仍用旧标准断定，校阅改成新旧标准都能说得通的写法。
+
+出书时，作者账号每周可新建的标题有上限：电子 2、纸 2，周日早晨 9 点（日本时间）恢复。8 点 59 分保存会因「已达创建上限」被挡，过了 9 点再做才通过。另外还遇到纸书上传要重新登录亚马逊 1 次，以及纸书类目不会从电子书带过来。审核上，电子书里快的从提交到开卖只要数十分钟（官方说明最长 72 小时），12 点都过了。KDP 的 AI 申报填写为「是、作品整体（最少编辑）、Claude（Anthropic），图像和翻译没有」。商品说明写明不是考试实施机构的官方教材或真题转载。子代理曾 13 路同时跑，碰到 429，作业全部停下，后来改为控制同时数量。作者写明不谈销售额。`,
+    outcomes: [
+      "源披露作者用 Claude Code 和子代理，从 2026-09-29 起 16 天做出 6 个书名、电子和纸合计 12 点，都通过了 KDP 审核；一册多为 150–200 问，书侧校阅概括为约 75 件，文内表列出的是资格 A 的 76／41 与资格 B 的 75／38。某一套 180+180 问里，相似度 0.6 以上有 5 组（最大 0.752）。13 路同时跑碰到 429，作业全部停下。这是这一段 16 天、这一个 KDP 账号和这一套出题—校阅流程上的记录，不可外推成别的科目、别的账号或以后再出也会是同样的 16 天和约 75 件，也不能把 12 点过审写成题目已经不用改，更不能把表里两个资格的件数写成六册全表。",
+      "该账号每周新建上限是电子 2、纸 2，周日 9 点（日本时间）恢复；8 点 59 分被挡、过了 9 点才通过，出书速度受这个窗口限制。",
+      "电子书「数十分钟就开卖」只是「快的那些」，官方说明最长 72 小时，不要写成 12 点都是数十分钟。",
+    ],
+    caveats: [
+      "16 天、6 个书名、12 点、150–200 问、约 60 问、约 75 件、76／41 与 75／38、40–50 问、180+180 问的 5 组／最大 0.752、13 路与 429、每周电子 2／纸 2、周日 9 点、8 点 59 分被挡、重新登录 1 次、「数十分钟」与官方最长 72 小时、12 点都过审，以及 AI 申报的填法，均为作者自述。约 75 件是书侧概括，不要和两个资格的表、也不要和应用侧的 41、38 混成同一张全表。5 组相似是其中一套的例子。不要把「长文会增加 token、变慢」误接成本条。Claude in Chrome 不在枚举里，不硬凑；正文实测用了 Claude Code，platforms 记 claude。",
+      "可达导流：https://zenn.dev/suisei498/articles/1f0c28d3136c4f GET 200（正文写明的同文 Zenn 转载）；https://note.com/suisei498/n/n6074ede6f0d5 GET 200（正文写明的同文 note 转载）。作者卡 website／GitHub／X 为空。配图 5 张 GET 200（不列入产品导流）：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/eb9e7bb8-6749-4020-b823-8bd5f968c5bc.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/7d5bfb68-d998-4311-9b2f-57853add94f2.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/5490ba92-60dd-4392-abad-6979b91b47a4.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/053647c4-0a14-423c-b88f-d75a4fe72a23.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4508019/9685ac2e-d799-44f9-ad3a-6590c04c0f99.png 。Qiita imgix 包装不当作者产品导流。连载相关篇已核、不列入导流：https://qiita.com/Suisei498/items/95febb15c92aeb35308d 、https://qiita.com/Suisei498/items/d7465257fe7da4293b23 ，均 GET 200。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核校阅件和出书上限，再谈 16 天出 6 套",
+        body: "请先核：16 天里实际上架的是几个书名、电子和纸各多少点、审核是否都过。一册题量是一个区间还是同一规格。校阅件数如果只有部分书名的表，不要把「大约每册若干件」写成全部书名都点过的全表，也不要把应用侧和书侧的件数加总成同一个数。并行出题时，有没有碰到过额度限制导致全部停下。出书账号若有每周新建上限，要把这个窗口写成整体速度的限制，而不是只看生成稿的速度。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/Suisei498/items/ada1d851a16bb014c774",
+      label: "qiita.com·Suisei498《Claude Code で資格試験の問題集を16日で6冊（電子と紙で12点）作った — 校閲で直したのは1冊あたり約75件だった》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "861",
+    slug: "shunta-0fill-0yen-2w",
+    title: "Shunta Furukawa／shunta_furukawa：2026 年 9 月上旬到中旬，用 Grok Bot 按角色搭了一个交易团队，在 bitbank 上用少额资金做加密资产的半自动运转。约 2 周后，于 2026-09-18 停掉例行并解散。结果是成交 0 笔、实现盈亏 ¥0，账户现金仍是初次入金时的 ¥100,000。目标是约 1 个月纯实现 +¥5,000，未达到就结束。日线开盘涨跌超过 ±8% 的当天，Satellite 不再新开仓。急涨急跌的提醒来过多次，但「禁止追第一波」和 Satellite 休眠之下，一次也没有进到下单预览",
+    summary: "个人（Shunta Furukawa／shunta_furukawa）；团队按角色分工，执行前要走 preview→confirm，人确认后才下单。没有自做交易所连接器，选了接近官方的 bitbank-lab-mcp（曾考虑过给 GMO 硬币自做 MCP，因实验期短而放弃）。正文写到的角色包括司令塔兼执行、看门的 Satellite、平日 7:00 的事实摘要，以及 9:00 的账簿对账（差额为 0 则不通知）。核心策略是 Mode A（突破后再等待回踩），Satellite 在当日从开盘算起超过 ±8% 时不再新开；FOMC 当周要收紧仓位，还有每周配额，只保留高信号。约 2 周里账户始终是现金 ¥100,000，成交 0、实现盈亏 ¥0，KPI 进度 0/5,000。作者认为「安全地什么都不做」做到了，但「条件满足时会不会动」这一侧完全没有验证材料。文中的「見送り」是先搁下、不入场，不是「先发送」。作者把失败归为：突破加回踩的窗口几乎没打开、当天大涨大跌反而不能新开、每周配额又削掉细的机会、默认是条件未满足就不开新仓；约 1 个月的小额盈利目标和「条件来了再动」的等待设计放在同一块看板上会打架。正文没有给出该 MCP 的仓库 URL。",
+    description: "面向已经把「用 Grok Bot 按角色做交易团队，加上预览确认就能半自动运转」写成可以上线的人：把「这次约 2 周是成交 0 笔、实现盈亏 ¥0，账户仍是入金时的 10 万日元；KPI 约 1 个月 +¥5,000 没有拿来验证；一次也没有进到下单预览，所以不能写成策略已经被市场检验」写成门禁，区别于只看分工和安全闸门、却不核有没有真实成交的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "grok",
+    ],
+    sourceUrl: "https://zenn.dev/shunta_furukawa/articles/4451bd396caf59",
+    sourceLabel: "zenn.dev·shunta_furukawa 实践帖",
+    upvotes: 752,
+    trending: false,
+    tags: [
+      "grok",
+      "trading",
+      "mcp",
+      "agent-team",
+      "postmortem",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「用 Grok Bot 按角色做交易团队，加上预览确认就可以半自动运转」写成上线根据之前，要先核的边界（是不是约 2026 年 9 月上旬到 9 月 18 日这两周，是不是约成交 0 笔、实现盈亏 ¥0、现金仍是入金时的 ¥100,000，是不是约 KPI 为约 1 个月 +¥5,000 且未达就结束，是不是约 ±8% 当天不再新开 Satellite，是不是约一次也没有进到下单预览）以及「绝不可把成交 0 写成策略已经在市场上验证过，也不可把「見送り」写成先发送」纪律",
+      "按源帖核对：执行是不是必须经过 preview→confirm，连接器是不是选用现成的 bitbank-lab-mcp 而不是自做，账簿和 KPI 是不是在入金时就开始计，而不是从第一笔成交起算。",
+      "把「安全地什么都不做」和「条件满足时会不会动」分成两件事：前者这次做到了，后者因为没有成交，材料是空的。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-18T10:15:14.179+09:00 → 2026-09-18，同时刻为 UTC 2026-09-18T01:15:14Z、Asia/Shanghai 2026-09-18 09:15:14；bodyUpdatedAt 2026-09-18T10:16:15.181+09:00，与发布几乎相同；取 published；GET 200（UA MiraBot/1.0））：Shunta Furukawa／shunta_furukawa 在《Grok Botでチームを組んで暗号取引の自動化に取り組んだが失敗した》写约 2 周成交 0 笔、实现盈亏 ¥0。可达导流：https://github.com/shunta-furukawa GET 200（作者卡 GitHub）；https://x.com/shunta_furukawa GET 200（作者卡 X）；https://shunta-furukawa.info/ GET 200（作者卡个人站点）。配图 1 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/6cb9ec325248-20260918.png 。页内 mermaid 嵌入不当作者产品导流。正文提到 bitbank-lab-mcp，但没有给出仓库 URL。primary GET 200。",
+      "「見送り」按「先搁下／不入场」理解，不要译成「先发送」。约 2 周、约 1 个月、±8%／±12% 是原文写明的期间和阈值，不是另一次秒表或另一次回测。不要把现金 ¥100,000 和 KPI +¥5,000 写成已经实现的收益。正文没有给出该 MCP 的 URL，不要补链。",
+    ],
+    approach: `作者在 2026 年 9 月上旬到中旬，用 Grok Bot 按角色搭了一个「交易团队」，在 bitbank 上用少额资金做加密资产的半自动运转。目标是大约 1 个月纯实现盈亏 +¥5,000，用来覆盖机器人运转成本的想象；同时把「账户不能坏掉」放在「没赚到」前面。大约 2 周后，于 2026-09-18 停掉例行并解散团队。
+
+执行链是：条件文章化 → 下单预览 → 由人确认。没有自做交易所连接器，选了接近官方的 bitbank-lab-mcp；曾考虑过给 GMO 硬币自做 MCP，因实验期短而放弃。角色包括司令塔兼执行（看余额和历史，对提醒按 Mode A 一律先搁下、不入场）、按日线和更短周期看门的 Satellite，以及平日 7:00 的事实摘要（要把传闻和已确定的分开，并写出来源）和 9:00 的账簿对账（差额为 0 则不通知）。
+
+规则上，Mode A 要等突破后再回踩，不追第一波；Satellite 在当日从日线开盘算起超过 ±8% 时不再新开，±12% 一类的提醒也多按「通过、别碰」处理；FOMC 当周收紧仓位，每周配额只保留高信号。约 2 周里，账户始终是现金 ¥100,000，急涨急跌的提醒来过多次，但一次也没有进到下单预览。结果是成交 0 笔、实现盈亏 ¥0，KPI 进度 0/5,000。
+
+作者认为做到的是角色分开、预览确认，以及追涨闸门在实际急涨提醒里起作用；没做到的是「条件满足时会不会动」这一侧——因为突破加回踩的窗口几乎没打开，当天大动反而不能新开，配额又削掉细的机会，默认又是条件未满足就不开新仓。作者还写：把「大约 1 个月小额盈利」和「条件来了再动」放在同一块看板上会打架；下次起算点应对齐到第一笔成交或明确的开工日，而不是入金日。文中的「見送り」是先搁下、不入场。`,
+    outcomes: [
+      "源披露作者在 2026 年 9 月上旬到 9 月 18 日约 2 周里，用 Grok Bot 按角色搭交易团队，经 bitbank-lab-mcp 和 preview→confirm 做半自动运转：成交 0 笔、实现盈亏 ¥0，账户现金仍是初次入金时的 ¥100,000；目标约 1 个月纯实现 +¥5,000 未达到就结束。急涨急跌的提醒来过多次，一次也没有进到下单预览。这是这一段约 2 周、这一个账户和这一套「等待回踩、当天大涨大跌不新开」的规则上的记录，不可外推成别的市场、别的规则或更长周期也会是成交为零，也不能把成交 0 写成策略已经在市场上验证过，更不能把「見送り」写成先发送。",
+      "「安全地什么都不做」这次做到了；「条件满足时会不会动」因为没有成交，没有验证材料。",
+      "约 1 个月的 KPI 和「条件来了再动」的等待设计，被作者写成本次互相打架的原因，不是另一次回测结论。",
+    ],
+    caveats: [
+      "约 2 周、2026-09-18 解散、成交 0、实现盈亏 ¥0、现金 ¥100,000、KPI 约 1 个月 +¥5,000、进度 0/5,000、±8%／±12%、平日 7:00／9:00，以及「一次也没有进到预览」，均为作者自述。约 2 周、约 1 个月不是另一次秒表。「見送り」是先搁下、不入场，不要译成「先发送」。不要把 ¥100,000 或 +¥5,000 写成已经实现的收益。正文提到 bitbank-lab-mcp，但没有给出仓库 URL，不要补链。不要把「长文会增加 token、变慢」误接成本条。",
+      "可达导流：https://github.com/shunta-furukawa GET 200（作者卡 GitHub）；https://x.com/shunta_furukawa GET 200（作者卡 X）；https://shunta-furukawa.info/ GET 200（作者卡个人站点）。配图 1 张 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/6cb9ec325248-20260918.png 。页内 mermaid 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核有没有成交，再谈交易团队能不能半自动运转",
+        body: "请先核：实验跑了多久、账户现金是否仍是入金时的数目、成交笔数和实现盈亏是多少、目标 KPI 的期限和金额是什么。若一次也没有进到下单预览，只能写「安全地什么都不做」是否成立，不能写「条件满足时会不会按规则动」已经被市场检验。闸门阈值（例如当日从开盘算起超过多少就不再新开）要按原文写，不要改成另一次回测。日文「見送り」按先搁下、不入场理解，不要写成先发送。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shunta_furukawa/articles/4451bd396caf59",
+      label: "zenn.dev·shunta_furukawa《Grok Botでチームを組んで暗号取引の自動化に取り組んだが失敗した》",
+      date: "2026-09-18",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "862",
+    slug: "mike-14ci-10d-3fm",
+    title: "ミケ／joemike：负责发文的 agent（night-writer）把 3 篇给 Qiita 的稿子写出了有问题的 frontmatter：2 篇的 updated_at 缺少引号，1 篇把已有文章的 id 写成了 null（已有文章必须是 UUID）。qiita-cli 的 publish --all 用 Promise.all 并行 POST，其中 1 篇碰到 QiitaInternalServerError（500）后整体中断，但并行里其他 POST 仍可能跑完，于是出现「CI 日志看起来全部失败，Qiita 上却已有部分发上去」。反复修改再推送，10 天里连续 14 次 CI 失败。同一类问题在 2026-04-27 也发生过。作者后来加上 frontmatter 校验、把校验放进发布步骤之前，并把速率限制／500 降成 warning、对已发布稿固定 ignorePublish: true，再用 Qiita API 按 id 对账",
+    summary: "个人（ミケ／joemike）；结论是：只把正确模板写进 skill（指示书）并不能保证 agent 会遵守，尤其是 frontmatter 这种定型结构、上下文里没有上次事故记录、以及「下次再改」这种模型并不会记住的写法。3 篇问题稿发生在 2026 年 5 月。作者给出的机械防护包括：用脚本检查 updated_at 是否缺少引号、id 是否为 null、以及是否误写了不是 Qiita 字段的 published_at；在发布步骤前先跑校验；若输出里出现 QiitaRateLimitError 或 QiitaInternalServerError，就降成 warning 并以退出码 0 结束；已发布稿固定 ignorePublish: true；再用带占位符的 Qiita API 地址 https://qiita.com/api/v2/items/{id} 做对账。文末把更细的实现和「怎么赚钱」指向作者站点 masatoman.net 上的同题文章。源文没有写加上防护之后，连续失败是不是降到了 0，也没有把标签里的 Claude Code／GitHub Actions 写进正文当实测平台名。",
+    description: "面向已经把「把正确模板写进 skill，发文 agent 就不会再把 frontmatter 写坏」写成可以上线的人：把「这次是 3 篇问题稿引发 10 天连续 14 次 CI 失败；同类问题在 2026-04-27 也发生过；源文没有给出加防护之后的失败次数」写成门禁，区别于只看脚本清单、却不核事故有没有被后续数字证明已经止住的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/joemike/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026",
+    sourceLabel: "zenn.dev·joemike 实践帖",
+    upvotes: 753,
+    trending: false,
+    tags: [
+      "ci",
+      "frontmatter",
+      "qiita",
+      "skill",
+      "agent",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「只要把正确模板写进 skill，发文 agent 就不会再把 frontmatter 写坏」写成上线根据之前，要先核的边界（是不是约 2026 年 5 月这 3 篇稿，是不是约 2 篇 updated_at 缺少引号、1 篇 id 为 null，是不是约 10 天连续 14 次 CI 失败，是不是约并行 POST 会在整体中断时仍有部分发上去，是不是约 2026-04-27 也发生过同类问题）以及「绝不可把加上校验脚本写成后续失败已经降到 0，也不可只靠 skill 里的『下次再改』当成已经守住」纪律",
+      "按源帖核对：发布工具是不是 qiita-cli 的 --all 加 Promise.all，500 之后整体中断但并行请求仍可能完成，因而 CI 日志和站点上的已发状态会不一致。",
+      "把「校验要挡在发布之前」和「把 500／速率限制降成 warning、退出码 0」分开看：后者会让流水线变绿，不要当成事故已经消失的证明。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T17:39:35.344+09:00 → 2026-10-25，同时刻为 UTC 2026-10-25T08:39:35Z、Asia/Shanghai 2026-10-25 16:39:35；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：ミケ／joemike 在《AI agent が skill 規範を守らなかった実録 — Qiita CI 14 回連続失敗と機械ガード設計》写 3 篇 frontmatter 问题稿和 10 天 14 次 CI 失败。可达导流：https://masatoman.net/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026 GET 200，跟随至 https://www.masatoman.net/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026（仍为 200，正文更细实现和「怎么赚钱」的作者站点同题文）；https://github.com/masatoman GET 200（作者卡 GitHub）；https://x.com/jg5_ii GET 200（作者卡 X）。作者卡 website 为空。无配图。源文代码里的 https://qiita.com/api/v2/items/{id} 按原文写出，属带占位符的 API 示例，未作为可达链去核。页内卡片嵌入不当作者产品导流。正文未写枚举内平台（标签里有 Claude Code／GitHub Actions，不硬凑），platforms=[]。primary GET 200。",
+      "源文没有给出加防护之后的连续失败次数，不要补写成 0。把 500／速率限制降成 warning 并以退出码 0 结束，可能让流水线变绿，不要当成事故已经消失。https://qiita.com/api/v2/items/{id} 是占位示例，不要当成可点的真实条目去核。",
+    ],
+    approach: `作者的发文 agent（night-writer）在 2026 年 5 月写出了 3 篇给 Qiita 的稿子，frontmatter 有问题：2 篇的 updated_at 缺少引号，1 篇把已有文章必须是 UUID 的 id 写成了 null。用 qiita-cli 的 publish --all 发布时，内部以 Promise.all 并行 POST；其中 1 篇碰到 QiitaInternalServerError（500）后整体中断，但并行里其他 POST 仍可能跑完，于是出现「CI 日志看起来全部失败，Qiita 上却已有部分发上去」。反复修改再推送，10 天里连续 14 次 CI 失败。同一类问题在 2026-04-27 也发生过；作者据此认为，只在 skill 里写「下次再改」并不能阻止再发。
+
+作者把 skill 看成「写下期待的地方」，而不是「保证执行的地方」，尤其是 frontmatter 这种定型结构（写正文时容易把末尾写坏）、上下文里没有上次事故记录、以及模型并不会记住「下次」。对策是多层机械防护：脚本检查 updated_at 是否缺少引号、id 是否为 null、是否误写了不是 Qiita 字段的 published_at；在发布步骤前先跑这段校验；若输出里出现速率限制或 500，就降成 warning、以退出码 0 结束；已发布稿固定 ignorePublish: true；再用 Qiita API 按条目 id 对账。源文里的对账地址写成 https://qiita.com/api/v2/items/{id}，是带占位符的示例。
+
+文末写：更细的实现和「怎么赚钱」的视角，发在 masatoman.net 的同题文章里。源文没有报告加上这些步骤之后，连续失败有没有降到 0。正文称的是「AI agent」和 night-writer，没有把标签里的 Claude Code、GitHub Actions 写成实测平台名。`,
+    outcomes: [
+      "源披露作者的发文 agent（night-writer）在 2026 年 5 月写出 3 篇有问题的 Qiita frontmatter（2 篇 updated_at 缺少引号，1 篇 id 为 null），qiita-cli 的 --all 并行发布遇到 500 后，出现「CI 看起来全失败、站点上却已有部分发上去」，反复推送导致 10 天连续 14 次 CI 失败；同类问题在 2026-04-27 也发生过。这是这一次发文 agent、这一套 qiita-cli 并行发布和这一段 10 天上的记录，不可外推成别的发文流水线或加上校验脚本之后失败就会变成 0，也不能把只写在 skill 里的模板当成已经守住。",
+      "源文给出了校验脚本、把 500／速率限制降成 warning、以及 ignorePublish 和对账步骤，但没有给出加防护之后的连续失败次数。",
+      "对账用的 https://qiita.com/api/v2/items/{id} 是源文里的占位示例，不是某一条已发表文章的地址。",
+    ],
+    caveats: [
+      "3 篇问题稿、2 篇缺引号、1 篇 id 为 null、10 天 14 次连续失败、2026 年 5 月、2026-04-27 也发生过，以及后来写上的校验和降级步骤，均为作者自述。源文没有给出加防护之后的失败次数，不要补写成 0。把 500／速率限制降成 warning 并以退出码 0 结束，可能让流水线变绿，不要当成事故已经消失。https://qiita.com/api/v2/items/{id} 按原文写出，属带占位符的 API 示例，未作为可达链去核。不要把「长文会增加 token、变慢」误接成本条。正文未写枚举内平台（标签里有 Claude Code／GitHub Actions，不硬凑），platforms=[]。",
+      "可达导流：https://masatoman.net/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026 GET 200，跟随至 https://www.masatoman.net/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026（仍为 200，正文更细实现和「怎么赚钱」的作者站点同题文）；https://github.com/masatoman GET 200（作者卡 GitHub）；https://x.com/jg5_ii GET 200（作者卡 X）。作者卡 website 为空。无配图。页内卡片嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先核事故件和加防护之后有没有数，再谈 skill 能不能保证 frontmatter",
+        body: "请先核：出问题的稿件是几篇、各是哪一种字段错误、连续失败是多少天多少次、以前有没有发生过同类问题。并行发布若在其中一次 500 后整体中断，要核站点上是否已经有部分发上去，不能只看 CI 日志。若对策是在发布前加校验，还要看源文有没有给出加防护之后的失败次数；没有的话，不要写成已经降到 0。把 500 或速率限制改成 warning、退出码 0，可能让流水线变绿，不要当成事故消失的证明。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/joemike/articles/qiita-ci-14-failures-ai-agent-machine-guard-2026",
+      label: "zenn.dev·joemike《AI agent が skill 規範を守らなかった実録 — Qiita CI 14 回連続失敗と機械ガード設計》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
   }
 ];
 
