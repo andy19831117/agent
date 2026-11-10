@@ -77312,6 +77312,552 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "源帖（无 JSON-LD；页内 publishedAt 2026-08-31T20:11:01.709+09:00 → UTC 2026-08-31T11:11:01Z、Asia/Shanghai 2026-08-31 19:11:01；bodyUpdatedAt 与 publishedAt 相同，取 published → 2026-08-31；GET 200，UA MiraBot/1.0）。写入 primarySource.date 与本表 → 2026-08-31。",
       "不要把 0.9880 和 0.9937／0.0057 混用，也不要把分离度第一的 001 写成已采用模型。platforms 为 []。作者仓库按导流披露。正文未配图。",
     ],
+  },
+  {
+    id: "1118",
+    slug: "emat-868m-904",
+    title: "masato_emata／emabou：用 RTK 拦 Claude Code 的命令输出，约 40 天、8,587 条命令的执行历史上，输入 96.0M token、输出 9.3M，削减 86.8M，削减率 90.4%。标题写的是 8,600 命令，表里是 8,587，不要把标题的约数写成精确件数。削减的 79.2%（68.7M）来自同一类操作只 7 次：把合计输入 68.9M 的 Rails development.log 压到合计输出 144K（加权削减率 99.8%）。不要把这 7 次合计的 68.9M→144K，和其中一次代表例 9.61M→71.8K 写成同一笔，也不要把 90.4% 总削减率和这 7 次的 99.8%、或 git diff 433 次的 89.7% 混用。总执行时间 348.4 分（平均 2.4 秒／命令），回退 2,501 件（29.1%）。发布日必须写成 2026-06-29，不要因 bodyUpdatedAt 写成 2026-07-01。platforms 记 claude。这些是作者自己这一次、这一段历史上的记录，不可外推。",
+    summary: "masato_emata 在约 40 天、8,587 条命令上用 RTK 把 96.0M 输入压到 9.3M 输出，削减 86.8M（90.4%）；其中 79.2% 来自只 7 次开发日志再读（68.9M→144K）。不要把标题的 8,600 和表里的 8,587，或 7 次合计和单次 9.61M→71.8K 混用。日期必须写成 2026-06-29。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算靠压缩 Claude Code 命令输出省 token、却还把约 8,600 和 8,587，或总削减率 90.4% 和 7 次日志再读的 79.2%／99.8%，或 7 次合计 68.9M→144K 和单次代表例 9.61M→71.8K 写成同一笔的人：把 8,587 条、86.8M（90.4%）和 7 次 68.7M（79.2%）写成门禁，区别于把发布日写成 2026-07-01，或把 40 天测定窗写成发布日。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/masato_emata/articles/46b2c2be412ca1",
+    sourceLabel: "zenn.dev·masato_emata 实践帖",
+    upvotes: 1009,
+    trending: false,
+    tags: [
+      "claude-code",
+      "rtk",
+      "token",
+      "log",
+      "measurement",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/masato_emata/articles/46b2c2be412ca1",
+      label: "zenn.dev·masato_emata／emabou《【rtk】Claude Codeの履歴8,600コマンドから探るトークン削減率90%の実態》",
+      date: "2026-06-29",
+      dateLabel: "发布",
+    },
+    approach: "作者把约 40 天里自己用 RTK（Rust Token Killer）拦 Claude Code 命令输出的执行历史数据库拿出来汇总。环境是 Claude Code 配合 RTK；文中对照了观测时的 v0.40.0 和后来的 v0.42.x。表上总命令 8,587 件（标题写成 8,600），输入 96.0M、输出 9.3M、削减 86.8M，削减率 90.4%，总执行时间 348.4 分（平均 2.4 秒／命令），回退 2,501 件（29.1%）。按操作分类后，削减量的 79.2%（68.7M）来自只 7 次阅读 Rails development.log：这 7 次合计输入 68.9M、合计输出 144K，加权削减率 99.8%；其中一次代表例是 9.61M→71.8K，且 7 次里有 3 次在 68 秒内连发。作者还按周（19–25 周）列出巨大日志块出现的周削减量更高，并记录了 v0.40.0 上 git commit／diff／status 等压缩失真，以及对应的 GitHub issue／PR。",
+    outcomes: [
+      "源披露：约 40 天、8,587 条命令上，输入 96.0M token、输出 9.3M，削减 86.8M，削减率 90.4%。标题写的是 8,600 命令，不要把这个约数写成表里的精确件数。削减的 79.2%（68.7M）来自同一类操作只 7 次，把合计输入 68.9M 的开发日志压到合计输出 144K（加权 99.8%）。不要把这 7 次合计的 68.9M→144K，和其中一次代表例 9.61M→71.8K 写成同一笔，也不要把总削减率 90.4% 和这 7 次的 99.8%、或 git diff 433 次 4.6M（89.7%）混用。总执行时间 348.4 分（平均 2.4 秒／命令），回退 2,501 件（29.1%）。这些是作者自己这一次、这一段历史上的记录，不可外推到别的仓库、别的 RTK 版本，或没有巨型开发日志的工作周。",
+      "按周看，带巨大日志块的 20 周（4 件／38.0M，周计削减 45.6M、周率 90%）、21 周（1 件／10.2M，11.2M、95%）、24 周（8 件／24.7M，25.4M、98%）削减绝对量高；22 周几乎没有巨大块，周计只有 0.3M、周率 13%。不要把某一周的 90%／98% 和 40 天合计的 90.4% 写成同一笔。",
+      "发布日必须写成 2026-06-29，不要因 bodyUpdatedAt 写成 2026-07-01，也不要把约 40 天的测定窗写成这条的发布日。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-06-29T18:59:22.941+09:00 → UTC 2026-06-29T09:59:22Z、Asia/Shanghai 2026-06-29 17:59:22；bodyUpdatedAt 2026-07-01T03:00:01.014+09:00，晚于发布，仍取 published → 2026-06-29；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-06-29，不要因更新写成 2026-07-01。不要把标题的 8,600 和表里的 8,587，或 90.4% 和 7 次 79.2%／99.8%，或 68.9M→144K 和 9.61M→71.8K 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。文内一次资料 https://github.com/rtk-ai/rtk 交付时 GET 200（标题 GitHub - rtk-ai/rtk: CLI proxy that reduces LLM token consumption by 6），可列可达，不当作者产品导流，也不另作本条主源。正文提到的 RTK issue／PR 完整 URL 交付时均 GET 200，可列可达，须写出完整 URL，不得只写 # 号：https://github.com/rtk-ai/rtk/pull/1266 （标题 fix(git): fix panic on multibyte chars in commit output by shalk · Pull Request #1266）、https://github.com/rtk-ai/rtk/issues/2305 （标题 git log silently drops merge commits — breaks merge/HEAD verification）、https://github.com/rtk-ai/rtk/issues/2446 （标题 rtk diff exits 0 when files differ, breaking diff conditionals）、https://github.com/rtk-ai/rtk/issues/2320 （交付时标题 rtk dotnet build/test/restore hangs forever when a long-lived child da；正文把它写在 git status 一栏，以源文位置和该页标题分别披露，不把标题改写成源文那一栏的症状）、https://github.com/rtk-ai/rtk/issues/2494 、https://github.com/rtk-ai/rtk/pull/2496 、https://github.com/rtk-ai/rtk/pull/2450 、https://github.com/rtk-ai/rtk/pull/2473 、https://github.com/rtk-ai/rtk/issues/781 、https://github.com/rtk-ai/rtk/pull/792 、https://github.com/rtk-ai/rtk/pull/1144 、https://github.com/rtk-ai/rtk/issues/1581 、https://github.com/rtk-ai/rtk/pull/1588 、https://github.com/rtk-ai/rtk/pull/2560 、https://github.com/rtk-ai/rtk/issues/2497 、https://github.com/rtk-ai/rtk/pull/2498 、https://github.com/rtk-ai/rtk/pull/2499 、https://github.com/rtk-ai/rtk/pull/2500 、https://github.com/rtk-ai/rtk/issues/2203 、https://github.com/rtk-ai/rtk/pull/2221 。作者资料里的 Twitter／Qiita（masatoemata／MasatoEmata）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这些硬链，不算导流，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 8,587 和 90.4% 是 40 天总账，再谈 7 次日志再读的 79.2% 不是同一笔",
+        body: "请按原文核算：表里总命令是不是 8,587 件，是不是不要写成标题里的 8,600。输入／输出／削减是不是 96.0M／9.3M／86.8M，削减率是不是 90.4%。7 次阅读 development.log 是不是占总削减的 79.2%（68.7M），合计输入是不是 68.9M、合计输出是不是 144K，加权削减率是不是 99.8%。其中一次代表例是不是 9.61M→71.8K，是不是不要和 7 次合计写成同一笔。总执行时间是不是 348.4 分、平均 2.4 秒／命令，回退是不是 2,501 件（29.1%）。发布日是不是 2026-06-29，不要写成 2026-07-01。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先按执行历史数据库汇总约 40 天的命令数、输入／输出 token 和削减率，而不是按标题的 8,600 约数下结论。",
+      "再按操作类型拆开削减量，单独核 7 次开发日志再读是不是占总削减的 79.2%，以及 7 次合计和单次代表例是不是两笔账。",
+      "最后按周看巨大日志块出现时削减绝对量是否更高，并把 v0.40.0 上的压缩失真和对应 issue／PR 与总削减率分开记。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-06-29T18:59:22.941+09:00 → UTC 2026-06-29T09:59:22Z、Asia/Shanghai 2026-06-29 17:59:22；bodyUpdatedAt 2026-07-01T03:00:01.014+09:00，晚于发布，仍取 published → 2026-06-29；GET 200（UA MiraBot/1.0）。必须写成 2026-06-29。",
+      "标题的 8,600 不是表里的 8,587；90.4% 不是 7 次日志的 99.8%；68.9M→144K 不是单次 9.61M→71.8K。",
+    ],
+  },
+  {
+    id: "1119",
+    slug: "cti-1762-105",
+    title: "cti1650／cti1650：在 Claude Code v2.1.7、claude-opus-4-5 上，用 claude -p 「1+1=」量会话开始时的 token（input_tokens、cache_creation_input_tokens、cache_read_input_tokens 三项合计）。项目里 rules 7 个、agents 18 个、skills 7 个，基准一共 43,295 token。rules 去掉 paths 后变成 55,627（+12,332，+28.5%），平均 1 个文件 +1,762 token，因为规则正文被整份加载；这不是 agents 或 skills 的前端说明。agents 的 description 18 个共 1,889 token（约 −105／文件），skills 的 description 7 个共 723 token（约 −103／文件）。有 paths 的 7 个 rules 在开始时约等于 0。不要把 +1,762 和 +105／+103，或 +12,332 写成同一笔。发布日必须写成 2026-04-04，不要因更新写成 2026-04-05。platforms 记 claude。这些是作者自己这一次、这一套文件上的记录，不可外推。",
+    summary: "cti1650 实測会话开始 43,295 token；rules 去掉 paths 后 +12,332（每文件约 +1,762），agents description 约 +105／文件，skills 约 +103／文件。不要把 +1,762 和 +105／+103 混用。日期必须写成 2026-04-04。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算靠删掉 agents／skills 前端说明来省启动 token、却还把 rules 去掉 paths 后每文件 +1,762，和 description 的约 +105／+103 写成同一笔的人：把 43,295、+12,332 和 +1,762 写成门禁，区别于把发布日写成 2026-04-05，或把有 paths 的 rules 也算进启动成本。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/cti1650/articles/claude-code-frontmatter-token-measurement",
+    sourceLabel: "zenn.dev·cti1650 实践帖",
+    upvotes: 1010,
+    trending: false,
+    tags: [
+      "claude-code",
+      "frontmatter",
+      "token",
+      "rules",
+      "skills",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/cti1650/articles/claude-code-frontmatter-token-measurement",
+      label: "zenn.dev·cti1650／cti1650《Claude Codeのフロントマター、トークンにどれだけ影響するのか実測してみた》",
+      date: "2026-04-04",
+      dateLabel: "发布",
+    },
+    approach: "作者在 macOS Sequoia 15.5、Claude Code v2.1.7、模型 claude-opus-4-5 上，用 claude -p \"1+1=\" --output-format json 比较会话开始时的 token。统计的是 input_tokens、cache_creation_input_tokens、cache_read_input_tokens 三项合计。对象项目有 rules 7 个、agents 18 个、skills 7 个，现状基准 43,295 token。随后分别删掉 description、删掉 paths、删掉全部前端说明、或整目录删除，看差值。结论是：rules 一旦没有 paths，正文会整份加载，7 个文件合计 +12,332（每文件约 +1,762），约等于 agents／skills description 的 17 倍；agents 有无 description 差 1,889（约 −105／文件），skills 差 723（约 −103／文件）；有 paths 的 rules 在开始时约等于 0，rules 的 description 几乎不影响。作者把基准拆成底座（CLAUDE.md + 系统提示等）40,796（94.2%）、agents description 1,889（4.4%）、skills description 723（1.7%）、带 paths 的 rules 约 0。",
+    outcomes: [
+      "源披露：会话开始基准是 43,295 token。rules 去掉 paths 后变成 55,627，+12,332（+28.5%），平均 1 个文件 +1,762 token，因为规则正文被整份加载。agents 18 个 description 共 1,889 token，删掉后 41,406，约 −105／文件；skills 7 个 description 共 723 token，删掉后 42,572，约 −103／文件。有 paths 的 7 个 rules 在开始时约等于 0。不要把每文件 +1,762 和 +105／+103 写成同一笔，也不要把 +12,332 说成某一个 description 的效果。这些是作者自己这一次、在 v2.1.7、这一套 7／18／7 个文件上的记录，不可外推到别的版本或别的正文长度。",
+      "基准 43,295 里，底座（CLAUDE.md + 系统提示等）40,796（94.2%），agents description 占 4.4%，skills description 占 1.7%。不要把 40,796 和 43,295 写成同一笔，也不要把「约 17 倍」理解成 skills 正文也会在启动时加载。",
+      "发布日必须写成 2026-04-04，不要因 bodyUpdatedAt 写成 2026-04-05。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-04-04T15:14:23.331+09:00 → UTC 2026-04-04T06:14:23Z、Asia/Shanghai 2026-04-04 14:14:23；bodyUpdatedAt 2026-04-05T11:21:39.020+09:00，晚于发布，仍取 published → 2026-04-04；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-04-04，不要因更新写成 2026-04-05。不要把 rules 去掉 paths 的 +1,762／+12,332，和 agents／skills description 的约 +105／+103 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。一次资料 https://code.claude.com/docs/en/skills 交付时 GET 200（标题 Extend Claude with skills - Claude Code Docs），可列可达；https://code.claude.com/docs/en/sub-agents 交付时 GET 200（标题 Create custom subagents - Claude Code Docs），可列可达；https://code.claude.com/docs/en/memory 交付时 GET 200（标题 How Claude remembers your project - Claude Code Docs），可列可达。三者不当本条主源。作者资料 website_url（https://cti1650-portfolio-site.vercel.app/from/zenn）和 GitHub（cti1650）只出现在作者资料／侧栏，源页 HTML／正文／简介没有这些硬链，不算导流，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 +1,762 是 rules 去掉 paths 后正文被加载，再谈 description 的约 +105／+103 不是同一笔",
+        body: "请按原文核算：基准是不是 43,295 token，是不是 input、cache_creation、cache_read 三项合计。rules 7 个去掉 paths 后是不是 55,627，是不是 +12,332、每文件约 +1,762。agents 18 个 description 是不是共 1,889、约 −105／文件，skills 7 个是不是共 723、约 −103／文件。有 paths 的 rules 在开始时是不是约等于 0。不要把 +1,762 和 +105／+103 写成同一笔。发布日是不是 2026-04-04，不要写成 2026-04-05。这些是不是作者自己这一次、v2.1.7 上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先用同一条最小 claude -p 调用固定会话开始时的三项 token 合计，再改前端说明或 paths 做对照。",
+      "把 rules 去掉 paths 后的正文加载（每文件约 +1,762）和 agents／skills 只加载 description（约 +105／+103）分成两笔账。",
+      "最后核对基准 43,295 的内部构成，不要把底座 40,796 和总量写成同一笔。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-04-04T15:14:23.331+09:00 → UTC 2026-04-04T06:14:23Z、Asia/Shanghai 2026-04-04 14:14:23；bodyUpdatedAt 2026-04-05T11:21:39.020+09:00，晚于发布，仍取 published → 2026-04-04；GET 200（UA MiraBot/1.0）。必须写成 2026-04-04。",
+      "+1,762 只属于去掉 paths 的 rules 正文，不是 agents／skills 的 description。",
+    ],
+  },
+  {
+    id: "1120",
+    slug: "peng-637k-68",
+    title: "penguingymlinux／JIRO SAKAMOTO：把原来超过 400 行的一份 CLAUDE.md 拆开后，本体看起来只剩 237 行（作者说收进了 200 行台），但加上 @ 导入一共 4,979 行，接近 5,000 行，每次启动都会读进来；其中 ARTICLE_GUIDE.md 就有 1,269 行。只说一声「こんにちは」，statusline 显示通常 Sonnet 4.6 的 Context 68% used；／context 是 135.6K／200K（68%），其中 Memory files 63.7K、Messages 45.8K、Skills 6.8K。另一次在 1M 上下文模式、启动后什么都没说，就已经超过 10 万 token，Memory files 单独超过 70K。后来整段降到 3 万 token 台，Memory files 降到 6.4K。不要把 68%／135.6K／63.7K 和另一次启动超过 10 万／Memory 超过 70K，或后来的 3 万台／6.4K 写成同一笔，也不要和 152 的 Memory files 23.7k→5.5k 混用。也不要把 237 行和 4,979 行写成同一笔。发布日必须写成 2026-05-11。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    summary: "penguingymlinux 把 CLAUDE.md 拆开后本体只剩 237 行，但 @ 导入一共 4,979 行。只说「こんにちは」就用掉 Sonnet 4.6 上下文 68%（135.6K／200K），Memory files 63.7K；另一次 1M 模式启动就超过 10 万 token。不要和后来的 3 万台／6.4K，或 152 的 23.7k→5.5k 混用。日期必须写成 2026-05-11。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经以为把 CLAUDE.md 拆成 200 行台就能减少启动读取、却还把 237 行和 4,979 行，或「こんにちは」时的 68%／63.7K 和另一次启动超过 10 万写成同一笔的人：把 4,979 行、135.6K／200K（68%）和 Memory files 63.7K 写成门禁，区别于把后来的 3 万台／6.4K 或 5 小时额度更快用完的感觉写成同一笔测定。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/penguingymlinux/articles/5335e74359b3d9",
+    sourceLabel: "zenn.dev·penguingymlinux 实践帖",
+    upvotes: 1011,
+    trending: false,
+    tags: [
+      "claude-code",
+      "claude-md",
+      "context",
+      "memory-files",
+      "import",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/penguingymlinux/articles/5335e74359b3d9",
+      label: "zenn.dev·penguingymlinux／JIRO SAKAMOTO《CLAUDE.mdを整理したら、めちゃくちゃトークン消費が増えていた話【Claude Code開発の失敗録】》",
+      date: "2026-05-11",
+      dateLabel: "发布",
+    },
+    approach: "作者原先把编码规范、安全规则、部署步骤和文章指南等塞在一份超过 400 行的 CLAUDE.md 里，后来拆成本体加 @ 导入。本体看起来收进了 200 行台（实数 237 行），但把导入文件一行行数下来，合计是 4,979 行（约 5,000 行），其中 ARTICLE_GUIDE.md 1,269 行。整理之后反而觉得 compacting 更早、5 小时使用限制也更快碰到。于是打开 statusline：只说一声「こんにちは」，通常 Sonnet 4.6 显示 Context 68% used；再用 ／context 看内译，是 135.6K／200K（68%），Memory files 63.7K、Messages 45.8K、Skills 6.8K。另一次换到 1M 上下文模式，启动后什么都没说，就已经超过 10 万 token，Memory files 单独超过 70K。对应之后，整段降到 3 万 token 台，Memory files 降到 6.4K。官方说明是被导入的文件会在启动时和 CLAUDE.md 一起展开读入。",
+    outcomes: [
+      "源披露：只说一声「こんにちは」，statusline 是通常 Sonnet 4.6 的 Context 68% used；／context 为 135.6K／200K（68%），其中 Memory files 63.7K、Messages 45.8K、Skills 6.8K。另一次在 1M 上下文模式、启动后什么都没说，就已经超过 10 万 token，Memory files 单独超过 70K。后来整段降到 3 万 token 台，Memory files 降到 6.4K。不要把 68%／135.6K／63.7K 和另一次启动超过 10 万／Memory 超过 70K，或后来的 3 万台／6.4K 写成同一笔，也不要和 152 的 Memory files 23.7k→5.5k（78%）混用。这些是作者自己这一次、这两套环境上的记录，不可外推。",
+      "CLAUDE.md 本体是 237 行，加上 8 个 @ 导入一共 4,979 行（约 5,000 行），其中 ARTICLE_GUIDE.md 1,269 行。不要把「收进 200 行台」和每次启动实际读入的约 5,000 行写成同一笔。拆开之前那份超过 400 行，也不是 4,979 本身。",
+      "68% 是这一次 200K 窗口里的上下文占用（135.6K／200K），不是 5 小时额度的使用率。作者另外写到限制也更快碰到，那是感觉，不要和 68% 写成同一笔测定。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-05-11T15:07:06.355+09:00 → UTC 2026-05-11T06:07:06Z、Asia/Shanghai 2026-05-11 14:07:06；bodyUpdatedAt 2026-05-11T15:19:14.902+09:00，同日略晚于发布，仍取 published → 2026-05-11；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-05-11。不要把 68%／63.7K 和另一次启动超过 10 万，或后来的 3 万台／6.4K，或 152 的 23.7k→5.5k 混用。配图 6 张见本批 md。",
+      "导流：无作者独立产品导流可列。相关篇 https://zenn.dev/penguingymlinux/articles/3d1523ee6ad416 交付时 GET 200（标题 CLAUDE.mdは「AIの脳」になった【Claude Code開発の失敗録 #4】），不另作本条主源，可列可达。作者资料 website_url（https://penguin-gym-linux.com/）只出现在作者资料／侧栏与 bio，源页 HTML／正文／简介没有该硬链，不算导流，不补写。配图 6 张原址交付时均 GET 200，可列可达，挂在本条：https://static.zenn.studio/user-upload/8d8b4f394f7d-20260511.png ；https://static.zenn.studio/user-upload/02bb1a021aa8-20260511.png （当时 CLAUDE.md 的文档构成，表内列出多个 @ 导入）；https://static.zenn.studio/user-upload/05b3eb0198f9-20260511.png （statusline 显示 Sonnet 4.6 | Context: 68% used）；https://static.zenn.studio/user-upload/add34f6d66f9-20260511.png （／context：135.6K／200K（68%），Memory files 63.7K、Messages 45.8K、Skills 6.8K）；https://static.zenn.studio/user-upload/5ced529ff865-20260511.png （1M 模式启动后超过 10 万 token，Memory files 单独超过 70K）；https://static.zenn.studio/user-upload/6fb4713a500e-20260511.png （对应后降到 3 万 token 台，Memory files 6.4K）。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 68% 是 135.6K／200K，再谈 63.7K 不是另一次启动超过 10 万",
+        body: "请按原文核算：只说「こんにちは」时 statusline 是不是通常 Sonnet 4.6 的 Context 68% used，／context 是不是 135.6K／200K（68%），Memory files 是不是 63.7K、Messages 是不是 45.8K、Skills 是不是 6.8K。另一次 1M 模式、启动后什么都没说，是不是就已经超过 10 万 token，Memory files 是不是单独超过 70K。后来是不是降到 3 万 token 台、Memory files 6.4K。不要把这两次环境和后来的结果写成同一笔，也不要和 23.7k→5.5k 混用。CLAUDE.md 本体是不是 237 行，加上 @ 导入是不是一共 4,979 行，ARTICLE_GUIDE.md 是不是 1,269 行。发布日是不是 2026-05-11。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先数清 CLAUDE.md 本体行数和全部 @ 导入的合计行数，不要只看本体是不是已经收到 200 行台。",
+      "再用 statusline 和 ／context 把「こんにちは」那一次的 68%／135.6K／63.7K，和 1M 模式下启动即超过 10 万的另一次测定分开记。",
+      "对应之后的 3 万 token 台／Memory 6.4K 只作为后来结果，不和整理刚完成时的 63.7K 写成同一笔。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-05-11T15:07:06.355+09:00 → UTC 2026-05-11T06:07:06Z、Asia/Shanghai 2026-05-11 14:07:06；bodyUpdatedAt 2026-05-11T15:19:14.902+09:00，同日略晚于发布，仍取 published → 2026-05-11；GET 200（UA MiraBot/1.0）。必须写成 2026-05-11。",
+      "68% 是 135.6K／200K 的上下文占用，不是 5 小时额度；63.7K 也不是另一次启动超过 10 万，更不是后来的 6.4K。",
+    ],
+  },
+  {
+    id: "1121",
+    slug: "shai-14pt-78",
+    title: "ai_shain_log／ai_shain_log：在 Claude Code 的 Max（20x）上，让秘书役把使用量画面上的周上限使用率记下来。2026-10-04 12:17 到 10-05 11:02 约 23 小时里，涨得最多的是 10-04 18:00 到大约 21:20 这约 3 小时 20 分：全模型使用率 6%→20%（+14 个点），期间结束的子代理是 78 次，比任何时段都多；Fable 也在这期间第一次从 0% 动到 18%。再往前 12:17–18:00，子代理也结束了 56 次，全模型却只从 0% 到 6%，Fable 仍是 0%。同一段记录里，同样是 17 次结束，有一次全模型 6%→6%（0 个点），另一次 25%→31%（6 个点）。约 23 小时用掉周上限的 31%。10-11 11:31（重置前约 30 分）画面上全模型 100%、Fable 32%，但使用率只显示整数，作者写明不能据此断言已经顶格。不要把 6%→20% 的 +14 个点和 151 的 6to20 tok/s 混用，也不要把 78 次和 56 次、或同样 17 次的 0 个点与 6 个点写成同一笔。发布日必须写成 2026-10-07，不要因补记日写成 2026-10-11，或因 bodyUpdatedAt 写成 2026-10-13，或因记录起始写成 2026-10-04。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    summary: "ai_shain_log 在 Max（20x）上记下：约 3 小时 20 分里全模型 6%→20%（+14 个点）时子代理结束 78 次，但更早 56 次却只涨了 6 个点；同样 17 次结束，一次 0 个点、一次 6 个点。约 23 小时用掉 31%。不要和 151 的 6to20 tok/s 混用。日期必须写成 2026-10-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经以为 Max（20x）周上限使用率和子代理结束次数成正比、却还把 6%→20% 的 +14 个点与 78 次，和更早 56 次只涨 6 个点，或同样 17 次的 0 个点与 6 个点写成同一笔的人：把「次数定不了涨幅」写成门禁，区别于把发布日写成 2026-10-11、2026-10-13 或 2026-10-04，或把 151 的 6to20 tok/s 写进来。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ai_shain_log/articles/9c0cbbb1826d1a",
+    sourceLabel: "zenn.dev·ai_shain_log 实践帖",
+    upvotes: 1012,
+    trending: false,
+    tags: [
+      "claude-code",
+      "max-plan",
+      "subagent",
+      "usage-limit",
+      "fable",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ai_shain_log/articles/9c0cbbb1826d1a",
+      label: "zenn.dev·ai_shain_log／ai_shain_log《Claude の有料プラン Max（20x）で、週の上限の使用率の増え方は、サブエージェントが終えた回数と比例しなかった（私の場合）》",
+      date: "2026-10-07",
+      dateLabel: "发布",
+    },
+    approach: "作者使用 Claude Code 的 Max（20x），周上限每周日 12:00 重置。从 2026-10-04（日）12:17 到 10-05（一）11:02 约 23 小时，让秘书役在每一段工作前后读取应用使用量画面上的两个周上限使用率：全模型和 Fable（文中写明两者对着不同上限，不能把全模型减去 Fable 当成「Fable 以外」）。涨得最多的是 10-04 18:00 到大约 21:20 这约 3 小时 20 分：全模型 6%→20%（+14 个点），子代理结束 78 次；Fable 从 0% 第一次动到 18%。这期间作者开了夜间会议，三次讨论里用 Fable 共调用 13 次，其中前两次 9 次落在 18:00–21:20 左右，第三次 4 次落在 18% 到次日 07:27 的 24% 之间，21:20 只是大约时刻。再往前 12:17–18:00 子代理结束 56 次，全模型只从 0% 到 6%。同一张表里，同样 17 次结束，一次全模型 6%→6%（0 个点），一次 25%→31%（6 个点）。约 23 小时用掉周上限的 31%。10-11 11:31、重置前约 30 分，画面上全模型 100%、Fable 32%，但只显示整数，作者写明不能据此断言已经顶格。10-05 下午到 10-09 作者试着把调查类工作改给 Sonnet，那是后来的尝试，不能单独用来证明改法有效。",
+    outcomes: [
+      "源披露：约 3 小时 20 分里全模型使用率 6%→20%（+14 个点），期间结束的子代理是 78 次；更早 12:17–18:00 结束了 56 次，全模型却只从 0% 到 6%。同一段约 23 小时的记录里，同样是 17 次结束，有一次 6%→6%（0 个点），另一次 25%→31%（6 个点）。约 23 小时用掉周上限的 31%。不要把 6%→20% 的 +14 个点和 151 的 6to20 tok/s 混用，也不要把 78 次和 56 次、或同样 17 次的 0 个点与 6 个点写成同一笔。这些是作者自己这一次、在 Max（20x）上按画面整数百分比记下的记录，不可外推到别的套餐或别的一周。",
+      "Fable 在 18:00–约 21:20 从 0% 到 18%，这期间确定计入的 Fable 调用是前两次讨论的 9 次；第三次 4 次落在 18% 到次日 07:27 的 24% 之间。不要把 13 次全部算进 0%→18%，也不要把全模型和 Fable 的百分比直接相减。",
+      "发布日必须写成 2026-10-07。不要因 10-11 的补记写成 2026-10-11，不要因 bodyUpdatedAt 写成 2026-10-13，也不要把记录起始日 2026-10-04 写成发布日。10-11 11:31 画面上全模型 100%、Fable 32%，作者写明整数显示不能用来断言已经顶格。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-07T11:22:47.757+09:00 → UTC 2026-10-07T02:22:47Z、Asia/Shanghai 2026-10-07 10:22:47；bodyUpdatedAt 2026-10-13T09:39:59.120+09:00，晚于发布，仍取 published → 2026-10-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-07，不要因补记日写成 2026-10-11，或因更新写成 2026-10-13，或因记录起始写成 2026-10-04。不要把 6%→20% 和 151 的 6to20 tok/s 混用。正文未配图。",
+      "导流：正文作者 Booth 商品 https://ai-shain-log.booth.pm/items/8952259 交付时 GET 200（标题 AI に毎回書き足す注意を、ひとまとめに｜AI への指示書・依頼文のひな形・投稿の下書きの点検・手引き - AI社員の記録 - BOOTH），按作者商品导流披露，可列可达，不另作本条主源。一次资料 https://support.claude.com/en/articles/9797557-usage-limit-best-practices 交付时 GET 200（标题 Usage limit best practices | Claude Help Center），可列可达，不当本条主源。作者资料 website_url、Twitter、GitHub 均为空，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 6%→20% 的 +14 个点对应 78 次，再谈同样 17 次也可以是 0 个点",
+        body: "请按原文核算：10-04 18:00 到大约 21:20 约 3 小时 20 分，全模型是不是 6%→20%（+14 个点），子代理是不是结束 78 次，Fable 是不是从 0% 到 18%。再往前 12:17–18:00 是不是结束了 56 次，全模型却只从 0% 到 6%。同样 17 次结束，是不是一次 6%→6%（0 个点）、一次 25%→31%（6 个点）。约 23 小时是不是用掉周上限的 31%。不要和 6to20 tok/s 混用。发布日是不是 2026-10-07，不要写成 2026-10-11、2026-10-13 或 2026-10-04。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "在每一段工作前后记下全模型和 Fable 两个周上限使用率，以及这段里结束的子代理次数。",
+      "把涨幅最大的时段（78 次、+14 个点）和次数也不少但涨幅很小的时段（56 次、+6 个点）对照，再看同样 17 次出现 0 个点和 6 个点的两行。",
+      "发布日只取源帖 publishedAt 对应的上海日历日，不把补记日、更新日或记录起始日写成发布日。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-10-07T11:22:47.757+09:00 → UTC 2026-10-07T02:22:47Z、Asia/Shanghai 2026-10-07 10:22:47；bodyUpdatedAt 2026-10-13T09:39:59.120+09:00，晚于发布，仍取 published → 2026-10-07；GET 200（UA MiraBot/1.0）。必须写成 2026-10-07。",
+      "6%→20% 的 +14 个点不是 151 的 6to20 tok/s；78 次也不是同样 17 次时的 0 个点或 6 个点。",
+    ],
+  },
+  {
+    id: "1122",
+    slug: "yoko-34k-154",
+    title: "yokkomystery／YOKKO：用 Claude Code（Opus 4.6，200K 窗口）的 JSONL 日志实測。所有会话第一轮的 cache_read_input_tokens 都是 20,281，作者把它估成系统提示和内置工具的固定成本；本例另有 cache_creation_input_tokens 16,263 和 input_tokens 3，合计约 36,500 在第一轮已经用掉，不要把 20,281 说成约 36,500，或说成文首「约 20%」，更不要和常驻层随 MCP／技能变化的 34K〜56K 混用。某次 160 轮、没有压缩的会话是 34K→55K→96K→115K→154K（相对开始 +353%，约 4.5 倍）。95 次压缩事件里，压缩前中位数 165,470、平均数 148,951，70／95 次（73.7%）落在 165K〜170K，压缩后大约剩 50K（保持 28〜34%）；小节标题写「83.5%」，用区间中点 167.5K／200K 算出的是约 83.8%，官方约 95% 应对 190K，不要把这三笔写成同一笔。51K→8.5K 是引用的 Medium 报道，不是这次 JSONL 实測。发布日必须写成 2026-03-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    summary: "yokkomystery 从 JSONL 实測：固定 cache_read 20,281，本例第一轮合计约 36,500；160 轮从 34K 长到 154K（约 4.5 倍）；95 次压缩里 70 次落在 165K〜170K。不要把 20,281 和约 36,500、或引用的 51K→8.5K，或标题 83.5% 和算出的 83.8% 混用。日期必须写成 2026-03-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经在看 200K 窗口却还把固定 20,281、第一轮约 36,500、160 轮的 34K→154K，或引用篇的 51K→8.5K 写成同一笔的人：把 20,281、34K→154K 和 70／95 次落在 165K〜170K 写成门禁，区别于把小节标题 83.5% 和 167.5K／200K 的约 83.8%、或官方约 95%（190K）写成同一笔。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yokkomystery/articles/90080fc7183905",
+    sourceLabel: "zenn.dev·yokkomystery 实践帖",
+    upvotes: 1013,
+    trending: false,
+    tags: [
+      "claude-code",
+      "context",
+      "jsonl",
+      "compaction",
+      "cache",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yokkomystery/articles/90080fc7183905",
+      label: "zenn.dev·yokkomystery／YOKKO《Claude Code コンテキストガイド — JSONLログ実測から見る200Kトークンの内訳》",
+      date: "2026-03-07",
+      dateLabel: "发布",
+    },
+    approach: "作者分析自己的 Claude Code（Opus 4.6、200K 窗口）会话 JSONL。发现所有会话第一轮的 cache_read_input_tokens 都是 20,281，据此估计这是系统提示和内置工具、用户改不了的固定成本；本例另有 cache_creation_input_tokens 16,263 和 input_tokens 3，合计约 36,500 在第一轮已经用掉。常驻层还会随 MCP／技能变化，文中给出 34K〜56K 的范围，作者自己环境大约 37K，按 170K 天花板估算可工作区域约 133K。对一次 160 轮、没有压缩的会话，总上下文从开始 34K 经 10 轮 55K、50 轮 96K、100 轮 115K，到 160 轮 154K（+353%，约 4.5 倍）。又对 95 次压缩事件统计：压缩前中位数 165,470、平均数 148,951，70／95 次（73.7%）落在 165K〜170K，压缩后大约剩 50K（保持 28〜34%）。最长一次会话 2,676 轮、约 99 小时、压缩 16 次。缓存方面直接输入 1.8M、写入 298M、读取 4.4B，效率 93.7%，读写比 14.9 倍。文中 51K→8.5K 明确写的是 Tool Search 的外部报道（Medium），不是这次 JSONL 实測。",
+    outcomes: [
+      "源披露：所有会话第一轮的 cache_read_input_tokens 都是 20,281；本例另有 cache_creation 16,263 和 input 3，合计约 36,500 在第一轮已经用掉。某次 160 轮、没有压缩的会话从 34K 长到 154K（+353%，约 4.5 倍）。95 次压缩事件里，中位数 165,470、平均数 148,951，70／95 次（73.7%）落在 165K〜170K，压缩后大约剩 50K（28〜34%）。不要把 20,281 说成约 36,500 或文首「约 20%」，也不要和常驻层 34K〜56K、或作者环境约 37K 混用。小节标题写「83.5%」，用 167.5K／200K 算出的是约 83.8%，官方约 95% 应对 190K，三笔不要写成一笔。51K→8.5K 是引用报道，不是这次实測。这些是作者自己这一次、在 Opus 4.6 的 200K 窗口上的记录，不可外推到别的模型或窗口。",
+      "不要把 160 轮这条会话的 34K→154K，和 95 次压缩的中位数 165,470、或最长会话 2,676 轮／约 99 小时／16 次压缩写成同一笔。缓存效率 93.7%（1.8M／298M／4.4B，读写比 14.9 倍）也是另一笔账。",
+      "不要和 152 的 Memory files 23.7k→5.5k、整段 52k／200k，或 55,000 以上→大约 150、或「20 万的 1/4」混用。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-03-07T15:07:20.851+09:00 → UTC 2026-03-07T06:07:20Z、Asia/Shanghai 2026-03-07 14:07:20；bodyUpdatedAt 与发布相同，取 published → 2026-03-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-03-07。不要把 20,281 和约 36,500、34K〜56K、51K→8.5K，或 83.5% 和 83.8% 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。作者资料 website_url（https://yokko.me）和 GitHub（yokkomystery）只出现在作者资料／侧栏，源页 HTML／正文／简介没有这些硬链，不算导流，不补写。一次资料与相关篇：https://code.claude.com/docs/en/memory 、https://code.claude.com/docs/en/skills 、https://code.claude.com/docs/en/sub-agents 、https://code.claude.com/docs/en/costs 交付时均 GET 200，可列可达；https://claudefa.st/blog/guide/mechanics/context-buffer-management 交付时 GET 200（标题 Claude Code Context Buffer: The 33K-45K Token Problem），可列可达；https://zenn.dev/sora_biz/articles/claude-code-context-management 交付时 GET 200，可列可达。https://zenn.dev/async_inc/articles/20d343b2b0dd00 交付时 HTTP 403（无标题；01:21:42 再取一次仍为 403），不列入可达，完整 URL 须写出。https://tech.dentsusoken.com/entry/2026/03/04/ 交付时 HTTP 404（标题 Not Found - [はてなCMS] 電通総研 テックブログ；再取一次仍为 404），不列入可达，完整 URL 须写出。https://medium.com/@joe.njenga/claude-code-just-cut-mcp-context-bloat-by-46-9-51k-tokens-down-to-8-5k-with-new-tool-search-ddf9e905f734 交付时 HTTP 403（标题 Just a moment...，人机验证页；再取一次仍为 403 且标题仍是 Just a moment...），不列入可达，完整 URL 须写出；这正是文中 51K→8.5K 的引用源，不能当作这次 JSONL 实測，也不能因验证页列入可达。以上均不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 20,281 只是全会话一致的 cache_read，再谈 34K→154K 和引用的 51K→8.5K 都不是同一笔",
+        body: "请按原文核算：是不是所有会话第一轮 cache_read_input_tokens 都是 20,281。本例是不是还要加上 cache_creation 16,263 和 input 3，合计约 36,500，不要把 20,281 写成约 36,500 或「约 20%」。160 轮、没有压缩的会话是不是 34K→55K→96K→115K→154K，约 4.5 倍。95 次压缩是不是中位数 165,470、平均数 148,951，70／95 次（73.7%）落在 165K〜170K。小节标题 83.5% 和 167.5K／200K 的约 83.8%、官方约 95%（190K）是不是三笔。51K→8.5K 是不是引用报道，不是这次实測。发布日是不是 2026-03-07。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先从 JSONL 第一轮 usage 里把全会话一致的 20,281 cache_read，和本例第一轮合计约 36,500 分开。",
+      "再单独看那次 160 轮、没有压缩的会话增长曲线，不要和 95 次压缩统计或最长 2,676 轮会话混在一起。",
+      "引用的 51K→8.5K 只作为外部报道披露，并写明该 Medium 页本次 GET 落到人机验证，不列入可达，也不算这次实測。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-03-07T15:07:20.851+09:00 → UTC 2026-03-07T06:07:20Z、Asia/Shanghai 2026-03-07 14:07:20；bodyUpdatedAt 与发布相同，取 published → 2026-03-07；GET 200（UA MiraBot/1.0）。必须写成 2026-03-07。",
+      "20,281 不是约 36,500，也不是 51K→8.5K；83.5% 不是 83.8%，更不是官方约 95%。",
+    ],
+  },
+  {
+    id: "1123",
+    slug: "suid-976-73",
+    title: "sui_dev／sui：在 Vertex AI 上给自己的 LLM 应用加显式 Context Caching。模型是 gemini-2.0-flash-001，区域 us-central1。缓存前平均输入 2282.80 token、输出 104.05、命中率 0%、平均响应 1949.95ms；缓存后平均输入同样是 2282.80、输出 100.85、平均缓存 2227.00、命中率 97.6%、平均响应 1733.15ms（−11.1%）。按 1,000 次请求估算，通常计费输入从 2,282,800 降到 55,800，缓存 token 2,227,000，费用 $0.171→$0.046，约 73% 减。不要把 97.6% 命中率、约 73% 费用减和 −11.1% 响应时间写成同一笔，也不要把约 2300 的说明性数字和实測平均 2282.80、或第三次实验的平均 2196.70ms 和 1733.15ms 混用。月请求 1 万／10 万／100 万的金额是外推，不是这次实測。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2025-11-28。这些是作者自己这一次上的记录，不可外推。",
+    summary: "sui_dev 在 Vertex AI 上把缓存命中率做到 97.6%，按 1,000 次请求估算费用 $0.171→$0.046（约 73% 减），响应 1949ms→1733ms（−11.1%）。不要把这三笔，或 2282.80 和约 2300 混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2025-11-28。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算靠上下文缓存省 Gemini 调用费、却还把 97.6% 命中率、约 73% 费用减和 −11.1% 响应时间写成同一笔的人：把 97.6%、$0.171→$0.046 和 1949.95ms→1733.15ms 写成门禁，区别于把约 2300 的说明性数字或按月请求外推的金额当成这次实測。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/sui_dev/articles/vertex-ai-context-caching",
+    sourceLabel: "zenn.dev·sui_dev 实践帖",
+    upvotes: 1014,
+    trending: false,
+    tags: [
+      "vertex-ai",
+      "gemini",
+      "context-caching",
+      "cost",
+      "latency",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sui_dev/articles/vertex-ai-context-caching",
+      label: "zenn.dev·sui_dev／sui《Vertex AI Context Cachingで LLMアプリのコストを73%削減した話》",
+      date: "2025-11-28",
+      dateLabel: "发布",
+    },
+    approach: "作者为自己的 Next.js（App Router）应用接入 Vertex AI 显式 Context Caching，模型 gemini-2.0-flash-001，区域 us-central1，部署在 Vercel，认证用 Workload Identity Federation。系统提示大约 2300 token（后文实測平均输入 2282.80），对话历史最多 8 条大约 50 token。先在无缓存条件下测 Before，再实现缓存。初期版本命中率已经到 97.6%，但首次创建缓存时遇到 60 秒超时；后来加上 2 秒超时并在后台创建缓存、第二次以后再应用。费用对照按 1,000 次请求把平均输入 2282.80 放大到 2,282,800，缓存后通常计费输入 55,800、缓存 token 2,227,000，费用从 $0.171 降到 $0.046，约 73% 减。文中另有按 1 万／10 万／100 万请求外推的月费用表，以及第三次实验成功率 10／10、平均响应 2196.70ms 的一行，不能和第二次对照里的 1733.15ms 混用。源文讨论的是 Gemini／Vertex，没有把这次调用称为 ChatGPT。",
+    outcomes: [
+      "源披露：缓存前平均输入 2282.80 token、输出 104.05、命中率 0%、平均响应 1949.95ms；缓存后平均输入同样 2282.80、输出 100.85、平均缓存 2227.00、命中率 97.6%、平均响应 1733.15ms（−11.1%）。按 1,000 次请求估算，通常计费输入 2,282,800→55,800，费用 $0.171→$0.046，约 73% 减。不要把 97.6% 命中率、约 73% 费用减和 −11.1% 响应时间写成同一笔，也不要把说明性的约 2300 和实測平均 2282.80，或第三次实验的 2196.70ms 和 1733.15ms 混用。月请求 1 万／10 万／100 万的金额是外推，不是这次实測。这些是作者自己这一次、在 gemini-2.0-flash-001 上的记录，不可外推到别的模型和区域。",
+      "显式缓存的折扣在文中写的是 75–90%，作者这次约 73% 的费用减是 $0.171→$0.046 算出来的，不要和表里「隐式缓存 90% 折扣」写成同一笔。",
+      "源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2025-11-28。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2025-11-28T12:17:34.530+09:00 → UTC 2025-11-28T03:17:34Z、Asia/Shanghai 2025-11-28 11:17:34；bodyUpdatedAt 2025-11-28T12:40:56.199+09:00，同日略晚于发布，仍取 published → 2025-11-28；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2025-11-28。不要把 97.6%、约 73% 和 −11.1% 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。作者资料 website_url、Twitter、GitHub 均为空，不补写。一次资料 https://cloud.google.com/vertex-ai/generative-ai/docs/context-cache/context-cache-overview 交付时 HTTP 200，跟随至 https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-overview（标题 Context caching overview | Gemini Enterprise Agent Platform | Google C），可列可达并披露跟随；https://cloud.google.com/vertex-ai/generative-ai/pricing 交付时 HTTP 200，跟随至 https://cloud.google.com/model-garden/pricing（标题 Agent Platform Pricing | Google Cloud），可列可达并披露跟随；https://cloud.google.com/nodejs/docs/reference/vertexai/latest/overview 交付时 HTTP 200，跟随至 https://docs.cloud.google.com/nodejs/docs/reference/vertexai/latest/overview（标题 Package @google-cloud/vertexai (1.10.0) | Node.js client libraries），可列可达并披露跟随。三者不当本条主源。源文未称为 ChatGPT，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 97.6% 是命中率，$0.171→$0.046 才是约 73% 费用减，再谈 −11.1% 不是同一笔",
+        body: "请按原文核算：缓存前平均输入是不是 2282.80、输出 104.05、命中率 0%、响应 1949.95ms。缓存后是不是输入同样 2282.80、输出 100.85、平均缓存 2227.00、命中率 97.6%、响应 1733.15ms（−11.1%）。按 1,000 次请求估算是不是 $0.171→$0.046、约 73% 减。不要把 97.6%、约 73% 和 −11.1% 写成同一笔，也不要把约 2300 和 2282.80，或 2196.70ms 和 1733.15ms 混用。源文是不是未称为 ChatGPT。发布日是不是 2025-11-28。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先固定同一模型、同一平均输入，分别记下无缓存和有缓存的命中率与响应时间。",
+      "费用按 1,000 次请求把 2282.80 放大后算 $0.171→$0.046，不要把这条约 73% 和 97.6% 命中率写成同一笔。",
+      "第三次实验的 10／10 与 2196.70ms，以及按月请求外推的表，都单独记，不当成 Before／After 主对照。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2025-11-28T12:17:34.530+09:00 → UTC 2025-11-28T03:17:34Z、Asia/Shanghai 2025-11-28 11:17:34；bodyUpdatedAt 2025-11-28T12:40:56.199+09:00，同日略晚于发布，仍取 published → 2025-11-28；GET 200（UA MiraBot/1.0）。必须写成 2025-11-28。",
+      "97.6% 是命中率，约 73% 是 $0.171→$0.046 的费用减，−11.1% 是 1949.95ms→1733.15ms。",
+    ],
+  },
+  {
+    id: "1124",
+    slug: "tasa-096-039",
+    title: "tasazuma／としあき：为个人项目 ex-day 做话题分割 PoC。人写的 3 段对话（76 件）上，把全文一次交给 GPT-5.6 Sol，有回复关系时 B-cubed 的「まとまりの F」是 0.96、没有回复关系时是 0.92；同一条件交给 Claude Sonnet 是 0.87／0.84。规则加向量、不用 AI 时，有回复关系是 0.60、没有是 0.39。按 10 件一段往下传，GPT 变成 0.80／0.79，Claude 变成 0.78／0.70；每 20 件再重分一次，GPT 回到 0.84／0.80，Claude 反而有的条件降到 0.71／0.76。Claude Sonnet 按段传时话题数从 10 个增到 14 个（正确答案是 12 个）。「已有话题里哪一个更近」的排序有 72% 正确，但用远近找切分点的 AUC 低于 0.5。Claude Haiku 随条件在 0.75〜0.90 之间晃。不要把 0.96／0.92 和 0.39，或按段传的结果写成同一笔。源文写的是 GPT-5.6 Sol，未称为 ChatGPT，不得写入 chatgpt，platforms 只记 claude。发布日必须写成 2026-10-08。这些是作者自己这一次、自己标注的记录，不可外推。",
+    summary: "tasazuma 在人写的 3 段、76 件对话上，全文一次交给 GPT-5.6 Sol 得到 F 0.96／0.92，Claude Sonnet 是 0.87／0.84；规则加向量不用 AI 时没有回复关系只有 0.39。按 10 件一段往下传会下降。源文未称为 ChatGPT，platforms 只记 claude。日期必须写成 2026-10-08。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算靠规则和向量少叫 LLM 来切话题、却还把全文一次的 0.96／0.84 和不用 AI 时的 0.39，或按 10 件一段往下传的下降写成同一笔的人：把人写 76 件上的 0.96／0.92、0.87／0.84 和 0.39 写成门禁，区别于把 GPT-5.6 Sol 写成 ChatGPT，或把 7 本 209 件的早期子集和这 3 本 76 件混用。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tasazuma/articles/exday-topic-split-poc",
+    sourceLabel: "zenn.dev·tasazuma 实践帖",
+    upvotes: 1015,
+    trending: false,
+    tags: [
+      "topic-segmentation",
+      "embedding",
+      "claude",
+      "ruri",
+      "poc",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tasazuma/articles/exday-topic-split-poc",
+      label: "zenn.dev·tasazuma／としあき《会話のトピック分割を、埋め込み（Ruri v3）とLLM（GPT・Claude）で比べたPoC ― 全文を渡すか、順に渡すか》",
+      date: "2026-10-08",
+      dateLabel: "发布",
+    },
+    approach: "作者为个人服务 ex-day 验证：把对话切成话题并各写一行摘要，能否改善相关「发现」的向量检索。对照材料包括 Claude 写的 6 段、202 件，以及作者自己写的 3 段、76 件（含文中 7 件的表）。早期还有 7 段、209 件的中间结果，当时人写的对话只有 1 段，不要和后来的 3 段、76 件混用。方法上先试规则加 Ruri v3 向量、把拿不准的交给 AI；再试把全文一次交给 GPT-5.6 Sol 或 Claude Sonnet（也试过 Haiku）；最后试按 10 件一段往下传，以及每 20 件再重分一次。主要指标是 B-cubed 的「まとまりの F」。作者写明正确答案是自己一个人标的，换人可能标法不同。源文把模型写作 GPT-5.6 Sol 和 Claude Sonnet／Haiku，没有把这次调用称为 ChatGPT。",
+    outcomes: [
+      "源披露：人写的 3 段对话（76 件）上，全文一次交给 GPT-5.6 Sol，有回复关系时 F 是 0.96、没有时是 0.92；同一条件 Claude Sonnet 是 0.87／0.84。规则加向量、不用 AI 时，有回复关系是 0.60、没有是 0.39。按 10 件一段往下传，GPT 变成 0.80／0.79，Claude 变成 0.78／0.70；每 20 件再重分一次，GPT 回到 0.84／0.80，Claude 有的条件降到 0.71／0.76。Claude Sonnet 按段传时话题数从 10 个增到 14 个（正确答案是 12 个）。不要把 0.96／0.92 和 0.39，或按段传的数字写成同一笔。源文写的是 GPT-5.6 Sol，未称为 ChatGPT，不得写入 chatgpt。这些是作者自己这一次、自己标注的记录，不可外推到别的标注者或线上逐条到达的完整服务。",
+      "「已有话题里哪一个更近」的排序有 72% 正确，但用远近找切分点的 AUC 低于 0.5。Claude Haiku 随条件在 0.75〜0.90 之间晃，不要把 Haiku 的区间和 Sonnet 的 0.87／0.84 写成同一笔。早期 7 段、209 件（当时人写的只有 1 段）也不是后来的 3 段、76 件。",
+      "发布日必须写成 2026-10-08。bodyUpdatedAt 略早于发布、同日，仍取 published。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-10-08T12:33:47.989+09:00 → UTC 2026-10-08T03:33:47Z、Asia/Shanghai 2026-10-08 11:33:47；bodyUpdatedAt 2026-10-08T12:33:06.472+09:00，略早于发布、同日，仍取 published → 2026-10-08；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-08。源文写的是 GPT-5.6 Sol，未称为 ChatGPT，platforms 只记 claude。不要把 0.96／0.92 和 0.39 混用。正文未配图。",
+      "导流：正文作者试作仓与议题 https://github.com/ex-day/poc/tree/main/context 交付时 GET 200（标题 poc/context at main · ex-day/poc · GitHub），https://github.com/ex-day/poc/issues/8 交付时 GET 200（标题 [PoC] 文脈抽出：返信先＋ベクトル＋「保留」の1次解析で、会話の投稿を話題に振り分ける · Issue #8 · ex-day/poc），https://github.com/ex-day/poc/issues/14 交付时 GET 200（标题 [PoC] 文脈抽出：AI の一括振り分けを、人が書いた会話と、投稿が順に届く条件で確かめる · Issue #14 · ex-day/poc），https://github.com/ex-day/platform#join-the-project 交付时 GET 200（标题 GitHub - ex-day/platform · GitHub），按作者项目导流披露，可列可达，须写完整 URL，不得只写 #8／#14。相关篇 https://zenn.dev/tasazuma/articles/exday-topic-vector-poc 交付时 GET 200，不另作本条主源，可列可达。作者资料 website_url 为空；GitHub（tasazuma）只出现在作者资料／侧栏，源页正文已有仓链则按正文披露，不另补资料站。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清人写 76 件上全文一次的 0.96／0.87，再谈不用 AI 时的 0.39 不是同一笔",
+        body: "请按原文核算：人写的是不是 3 段、76 件。全文一次交给 GPT-5.6 Sol 是不是 0.96／0.92，Claude Sonnet 是不是 0.87／0.84。规则加向量、不用 AI 时是不是 0.60／0.39。按 10 件一段往下传是不是 GPT 0.80／0.79、Claude 0.78／0.70；每 20 件再重分一次是不是 GPT 0.84／0.80，Claude 有的条件降到 0.71／0.76。Claude Sonnet 话题数是不是从 10 个增到 14 个，正确答案是不是 12 个。源文是不是写 GPT-5.6 Sol，未称为 ChatGPT，不得写入 chatgpt。发布日是不是 2026-10-08。这些是不是作者自己这一次、自己标注的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先固定人写的 3 段、76 件和自己标注的正确答案，再比较规则加向量与把全文一次交给模型。",
+      "把有回复关系和没有回复关系两列分开记，不要只用其中一个 F。",
+      "按 10 件一段往下传、每 20 件再重分的结果单独成表，并写明 GPT-5.6 Sol 不是 ChatGPT。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-10-08T12:33:47.989+09:00 → UTC 2026-10-08T03:33:47Z、Asia/Shanghai 2026-10-08 11:33:47；bodyUpdatedAt 2026-10-08T12:33:06.472+09:00，略早于发布、同日，仍取 published → 2026-10-08；GET 200（UA MiraBot/1.0）。必须写成 2026-10-08。",
+      "0.96／0.92 不是 0.39，也不是按段传之后的 0.80／0.70；GPT-5.6 Sol 不能写成 ChatGPT。",
+    ],
+  },
+  {
+    id: "1125",
+    slug: "taik-31to0",
+    title: "taikikei／待機圭：把自己托管的摘要 agent 在 2026-08-13 停掉，改成完全不用 LLM 的脚本，运行成本从每月 $31 降到 $0。作者后来数过，10 道工序里真正需要判断的只有 1 道，其余是按顺序调用脚本；那唯一的判断（安全新闻分成 3 类）其实写在资讯源的 <category> 里。停掉之前，剩下「按顺序调用」这一步，仍要每天早上花 2〜3 分钟、一次大约 100 日元。资讯源一次只载 20 条、大约 1.4 天，改成每天（含周末）收 3 次后，「周一要回溯到周五」这条分支也没了。作者为了发现那些事故（自己写解析器、回放旧的完成报告、输出被截断后成果为零）实损付过 $22.40，不要把这笔和每月 $31→$0，或每次大约 100 日元写成同一笔。发布日必须写成 2026-08-18，不要因停用日写成 2026-08-13，或因 bodyUpdatedAt 写成 2026-08-22。正文写到这次是 Bedrock 上的 Claude 开销对比订阅，platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    summary: "taikikei 在 2026-08-13 停掉自托管摘要 agent，改成不用 LLM 的脚本，每月运行成本 $31→$0。10 道工序里需要判断的只有 1 道，且写在资讯源的 <category> 里。不要把实损 $22.40 和 $31→$0 混用。发布日必须写成 2026-08-18。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算继续用 agent 做每日摘要、却还把每月 $31→$0、实损 $22.40 和每次大约 100 日元写成同一笔的人：把 $31→$0 和「10 道工序里只有 1 道需要判断」写成门禁，区别于把停用日 2026-08-13 或更新日 2026-08-22 写成发布日。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/taikikei/articles/951e0d3f735531",
+    sourceLabel: "zenn.dev·taikikei 实践帖",
+    upvotes: 1016,
+    trending: false,
+    tags: [
+      "agent",
+      "cost",
+      "automation",
+      "bedrock",
+      "script",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/taikikei/articles/951e0d3f735531",
+      label: "zenn.dev·taikikei／待機圭《LLMにやらせていた処理のコスト削減を進めたら、判断要素は１つだった》",
+      date: "2026-08-18",
+      dateLabel: "发布",
+    },
+    approach: "作者一直用自托管 AI agent 做技术博客和安全新闻摘要。2026-08-13 把这个 agent 停掉，改成完全不用 LLM 的脚本，运行成本从每月 $31 降到 $0。替换前他以为还需要模型做的，其实只剩「按顺序调用」；这一步每天早上仍要 2〜3 分钟、一次大约 100 日元，而顺序本身已经写在说明书里。安全新闻分成 3 类，后来发现资讯源的 <category> 几乎一一对应。资讯源一次只载 20 条、大约 1.4 天，周末过后周一早上会丢掉周五的条目；改成每天含周末收 3 次后，不再需要「周一回溯到周五」的分支。作者写明，是 agent 先在预想不到的地方自己找次优方案、把 token 用高，他才逐项改成脚本，最后得到 14 个文件。文中把「在 Bedrock 上用 Claude，不如 Claude 订阅便宜」写成自己已经发生的开销，也提到实损付过 $22.40 才换来这些事故经验，这笔不要和每月 $31→$0 混用。",
+    outcomes: [
+      "源披露：2026-08-13 停掉自托管摘要 agent，改成完全不用 LLM 的脚本后，运行成本从每月 $31 降到 $0。10 道工序里真正需要判断的只有 1 道，其余是按顺序调用脚本；那唯一的 3 分类写在资讯源的 <category> 里。停掉之前，剩下「按顺序调用」仍要每天早上 2〜3 分钟、一次大约 100 日元。资讯源一次 20 条、大约 1.4 天，改成每天收 3 次后，「周一回溯到周五」这条分支也没了。不要把每月 $31→$0、实损 $22.40 和每次大约 100 日元写成同一笔。这些是作者自己这一次、这一套摘要任务上的记录，不可外推到判断仍然分散、或输入形状每次都变的任务。",
+      "作者把 $22.40 写成换来「自己写解析器、回放旧的完成报告、输出被截断后成果为零」这些事故经验的实损，不要把它说成每月运行成本，也不要把它和官方计划 $20 写在一起当成同一笔账单。",
+      "发布日必须写成 2026-08-18。不要因停用日写成 2026-08-13，或因 bodyUpdatedAt 写成 2026-08-22。正文写到这次是 Bedrock 上的 Claude 开销，platforms 记 claude。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-08-18T22:58:00.893+09:00 → UTC 2026-08-18T13:58:00Z、Asia/Shanghai 2026-08-18 21:58:00；bodyUpdatedAt 2026-08-22T19:25:35.661+09:00，晚于发布，仍取 published → 2026-08-18；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-18，不要因停用日写成 2026-08-13，或因更新写成 2026-08-22。不要把 $31→$0 和实损 $22.40 混用。正文未配图。",
+      "导流：无作者独立产品导流可列。文内 https://github.com/HKUDS/nanobot 交付时 GET 200（标题 GitHub - HKUDS/nanobot: Your lightweight open-source personal agent.），可列可达，不当作者产品导流，也不另作本条主源。相关篇 https://zenn.dev/taikikei/articles/a13fbadcc80abb 、https://zenn.dev/taikikei/articles/ebe25bd581fb83 、https://zenn.dev/taikikei/articles/e0070d4eec7a06 、https://zenn.dev/taikikei/articles/13c6ff8cf418cf 、https://zenn.dev/taikikei/articles/412dec52461cb2 交付时均 GET 200，不另作本条主源，可列可达。作者资料里的 Twitter（taiki_kei）只出现在作者资料／侧栏，源页 HTML／正文／简介没有该硬链，不算导流，不补写。website_url 为空。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清每月 $31→$0 是停掉 agent 之后的运行成本，再谈实损 $22.40 不是同一笔",
+        body: "请按原文核算：是不是 2026-08-13 停掉自托管摘要 agent，改成完全不用 LLM 的脚本，运行成本是不是每月 $31→$0。10 道工序里需要判断的是不是只有 1 道，那 1 道 3 分类是不是写在资讯源的 <category> 里。剩下「按顺序调用」是不是每天早上 2〜3 分钟、一次大约 100 日元。资讯源是不是一次 20 条、大约 1.4 天，后来是不是改成每天收 3 次。实损 $22.40 是不是另一笔，不要和 $31→$0 写成同一笔。发布日是不是 2026-08-18，不要写成 2026-08-13 或 2026-08-22。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先数清 agent 一次执行里到底有几步真正需要判断，而不是默认整段都要模型。",
+      "对那唯一的 3 分类，先看资讯源本身有没有现成字段，再决定要不要继续付钱给模型。",
+      "把每月运行成本 $31→$0、每次大约 100 日元，和为了发现事故实损付出的 $22.40 分成三笔账。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-08-18T22:58:00.893+09:00 → UTC 2026-08-18T13:58:00Z、Asia/Shanghai 2026-08-18 21:58:00；bodyUpdatedAt 2026-08-22T19:25:35.661+09:00，晚于发布，仍取 published → 2026-08-18；GET 200（UA MiraBot/1.0）。必须写成 2026-08-18。",
+      "每月 $31→$0 不是实损 $22.40，也不是每次大约 100 日元；停用日 2026-08-13 不是发布日。",
+    ],
+  },
+  {
+    id: "1126",
+    slug: "daid-6x-1",
+    title: "diced／だい：在照护现场语音系统里，当初用户说一次「次」（下一段）就会再跑完整条管线：Whisper STT → 命令判断 → 再让 LLM（文中表格写的是 Claude）生成 → TTS。一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍，「次」的响应是 4–6 秒。后来改成第一次就把全文生成完，用 chunk_answer() 按句号每 3 句切一段缓存起来，「次」只从缓存取一段做 TTS，成本变成 1 倍+TTS，响应降到 1 秒以下；「再来一次」改在 Android 播放缓冲里完成，不再往返服务器。作者在标题和结尾写成 API 成本 90% 减，但对照表写的是 5 次连续导航下 6 倍→1 倍+TTS，不要把 90% 当成这张表的精确换算。发布日必须写成 2026-03-12。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    summary: "diced 发现一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍，响应 4–6 秒；改成首次生成并按 3 句缓存后，变成 1 倍+TTS，响应 1 秒以下。不要把作者说的 90% 减和表里的 6 倍→1 倍+TTS 当成同一笔精确换算。日期必须写成 2026-03-12。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算继续对「次」整段重跑 LLM、却还把作者说的 90% 减和表里 6 倍→1 倍+TTS、或 4–6 秒→1 秒以下写成同一笔精确换算的人：把「次」5 次对应 6 倍成本和 4–6 秒写成门禁，区别于把 90% 直接当成 6 倍换成 1 倍+TTS 的精确百分比。",
+    categories: [
+      "enterprise",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/diced/articles/answer-chunking-api-cost-reduction",
+    sourceLabel: "zenn.dev·diced 实践帖",
+    upvotes: 1017,
+    trending: false,
+    tags: [
+      "claude",
+      "stt",
+      "tts",
+      "chunking",
+      "cost",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/diced/articles/answer-chunking-api-cost-reduction",
+      label: "zenn.dev·diced／だい《「次」のたびにLLMを呼ぶのをやめたら APIコストが90%減った — chunk_answer()の設計と実装》",
+      date: "2026-03-12",
+      dateLabel: "发布",
+    },
+    approach: "作者在照护现场用的语音系统里，当初把「次」也走普通语音识别流程：麦克风 → Whisper API（STT）→ 命令判断 → LLM 再生成 → TTS，一次要 4–6 秒。一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍。后来改成第一次就把全文生成完，用 chunk_answer() 按句号每 3 句切一段，按会话缓存；「次」不再调用 STT／检索／LLM，只从缓存取下一段做 TTS，对照表写成 1 倍+TTS，响应降到 1 秒以下。「再来一次」改在 Android 播放缓冲里即时重放，不再往返服务器。标题和结尾写成 API 成本 90% 减，但表里的硬对照是 6 倍→1 倍+TTS，不能把 90% 当成这张表的精确换算。文中处理流程表把 LLM 一行写作 Claude，platforms 记 claude。",
+    outcomes: [
+      "源披露：一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍；改成首次生成并按 3 句缓存后，对照表是 1 倍+TTS。「次」的响应从 4–6 秒降到 1 秒以下，「再来一次」不再往返服务器。作者在标题和结尾写成 API 成本 90% 减，但表里写的是 6 倍→1 倍+TTS，不要把 90% 当成这张表的精确换算，也不要把 90% 和 4–6 秒→1 秒以下写成同一笔。这些是作者自己这一次、这一套照护现场语音流程上的记录，不可外推到别的切分长度或别的会话轮次。",
+      "默认切分是句号后每 3 句一段；1 句就单独成段，4 句会切成 3 句+1 句。切太短会让「次」更频繁，反而增加现场负担。不要把 3 句这段实现细节和 6 倍成本写成同一笔测定。",
+      "发布日必须写成 2026-03-12。文中表格把这次 LLM 写作 Claude，platforms 记 claude。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-03-12T15:02:38.762+09:00 → UTC 2026-03-12T06:02:38Z、Asia/Shanghai 2026-03-12 14:02:38；bodyUpdatedAt 与发布相同，取 published → 2026-03-12；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-03-12。不要把作者说的 90% 减和表里的 6 倍→1 倍+TTS 当成同一笔精确换算。正文未配图。",
+      "导流：正文相关 note https://note.com/yamashita_aidev/n/n7654a6de99cf 交付时 GET 200（标题 「次」のAPI呼び出しをチャンキングで90%削減した話｜山下大輔），按作者 note 导流披露，可列可达，不另作本条主源。作者资料 website_url 也是 note.com/yamashita_aidev，因正文已有该篇硬链，按正文披露，不另补资料站。作者资料里的 Twitter（yamashita_aidev）只出现在作者资料／侧栏，源页 HTML／正文／简介没有该硬链，不算导流，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清「次」5 次是提问 1 次的 6 倍成本，再谈作者说的 90% 不是这张表的精确换算",
+        body: "请按原文核算：当初「次」是不是会再跑 Whisper STT、再让 LLM 生成再 TTS。一次会话里「次」说 5 次，API 成本是不是涨到提问 1 次的 6 倍，响应是不是 4–6 秒。改成首次生成、按句号每 3 句缓存后，表里是不是 1 倍+TTS，响应是不是 1 秒以下。「再来一次」是不是不再往返服务器。标题和结尾的 90% 减是不是不能当成 6 倍→1 倍+TTS 的精确换算。文中表格是不是把这次 LLM 写作 Claude。发布日是不是 2026-03-12。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先按一次会话里「次」说 5 次来算成本倍数：原来是提问 1 次的 6 倍，而不是先用 90% 反推动。",
+      "再看改法是不是第一次生成全文、按 3 句缓存，「次」只做 TTS。",
+      "把响应 4–6 秒→1 秒以下，和作者说的 90% 减分开写，并注明表里是 6 倍→1 倍+TTS。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-03-12T15:02:38.762+09:00 → UTC 2026-03-12T06:02:38Z、Asia/Shanghai 2026-03-12 14:02:38；bodyUpdatedAt 与发布相同，取 published → 2026-03-12；GET 200（UA MiraBot/1.0）。必须写成 2026-03-12。",
+      "表里的硬对照是 6 倍→1 倍+TTS 和 4–6 秒→1 秒以下，不是把 90% 当成这张表的精确换算。",
+    ],
+  },
+  {
+    id: "1127",
+    slug: "znet-91-11",
+    title: "znet／Shiros：在 Mac mini M4 Pro（64GB）上，用同一段约 91 分钟的日语实会录音，比较本地模型后采用 Gemma 4 26B-A4B。这条管线是先转写约 5.5 分、再说话人分离约 3.5 分、再生成会议纪要约 2.5 分（表里生成是 146.9 秒、2,357 字），合计约 11 分钟。不要把这条约 11 分钟，和 dense 的 Gemma 4 31B 只算「生成会议纪要」的约 11 分钟（表里 652.7 秒、2,709 字）、整条管线超过 20 分钟（统一内存上大约 5 tok/s）写成同一笔。对照表里 IBM Granite 4.0 H-Small 是 200.8 秒、1,246 字，输出大约只有别人一半，同一段日文大约要 1.8 倍 token；Qwen3.6-35B-A3B 最快（97.2 秒、3,830 字、要确认 0 条）但会自信地编造，作者没用它做纪要。不要把 1.8 倍和 152 的日文 token 比，或把大约 5 tok/s 和 151 的 6to20 tok/s 混用。源时区 2026-06-15T00:26:21.276+09:00 换到 Asia/Shanghai 已是 2026-06-14 23:26:21，发布日必须写成 2026-06-14，不要写成 2026-06-15。源文未称为 ChatGPT，platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
+    summary: "znet 用约 91 分钟日语实会录音，Gemma 4 26B-A4B 整条管线约 11 分钟（5.5+3.5+2.5 分，生成 146.9 秒）。不要把这条约 11 分钟和 31B 只算生成的约 11 分钟、整条超过 20 分钟混用。发布日必须写成 2026-06-14，不要因 JST 已是 06-15 改写。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
+    description: "面向已经打算在本地做会议纪要、却还把 26B-A4B 整条管线约 11 分钟，和 31B 只算生成的约 11 分钟或整条超过 20 分钟写成同一笔的人：把 91 分钟音频、5.5+3.5+2.5 分和 146.9 秒写成门禁，区别于把源时区 06-15 凌晨写成上海日历日，或把 Granite 的 1.8 倍 token、31B 的大约 5 tok/s 和近批数字混用。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/znet/articles/2026-local-meeting-minutes-moe-comparison",
+    sourceLabel: "zenn.dev·znet 实践帖",
+    upvotes: 1018,
+    trending: false,
+    tags: [
+      "local-llm",
+      "meeting-minutes",
+      "gemma",
+      "moe",
+      "mac-mini",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/znet/articles/2026-local-meeting-minutes-moe-comparison",
+      label: "zenn.dev·znet／Shiros《AI秘書で高品位議事録を自動化 — Mac mini で複数LLMを比較》",
+      date: "2026-06-14",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Mac mini M4 Pro（64GB）上把「转写 → 说话人分离 → 生成会议纪要」整条管线放在本机、不外传，并用同一段约 91 分钟的日语实会录音比较模型。采用的是 Gemma 4 26B-A4B：转写约 5.5 分、说话人分离约 3.5 分、生成会议纪要约 2.5 分（表里生成 146.9 秒、2,357 字，若干处标了「要确认」），合计约 11 分钟。原先打算用质量更好的 dense Gemma 4 31B，但生成会议纪要约 11 分钟（表里 652.7 秒、2,709 字），整条管线超过 20 分钟，统一内存上大约 5 tok/s。对照还带了 IBM Granite 4.0 H-Small（200.8 秒、1,246 字，输出大约只有别人一半，同一段日文大约 1.8 倍 token，有重复和空泛）和 Qwen3.6-35B-A3B（97.2 秒、3,830 字、要确认 0 条，最快也最流畅，但会自信地编造，作者判定不能做纪要）。作者写明 26B 并不是在裸模型性能上超过 31B，而是把前置处理做好后，用更小更快的模型接近 31B 的纪要质量。源文没有把这次调用称为 ChatGPT，也没有点名 18 值里的平台。",
+    outcomes: [
+      "源披露：约 91 分钟日语实会录音上，Gemma 4 26B-A4B 整条管线是转写约 5.5 分、说话人分离约 3.5 分、生成约 2.5 分（146.9 秒、2,357 字），合计约 11 分钟。Gemma 4 31B 只算生成会议纪要约 11 分钟（652.7 秒、2,709 字），整条管线超过 20 分钟，统一内存上大约 5 tok/s。不要把 26B 的整条约 11 分钟和 31B 只算生成的约 11 分钟写成同一笔。Granite 是 200.8 秒、1,246 字，同一段日文大约 1.8 倍 token；Qwen3.6 是 97.2 秒、3,830 字、要确认 0 条，但会自信地编造。不要把 1.8 倍和 152 的日文 token 比混用，也不要把大约 5 tok/s 和 151 的 6to20 tok/s 混用。这些是作者自己这一次、这一段录音和这台 Mac mini 上的记录，不可外推。",
+      "26B 和 31B 都会给崩掉的固有名词加上「要确认」，并且不写原文没有的内容；这和 Qwen3.6 要确认 0 条但会编造，不是同一笔观察。",
+      "发布日必须写成 2026-06-14。源时区 publishedAt 是 2026-06-15T00:26:21.276+09:00，换到 UTC 是 2026-06-14T15:26:21Z，Asia/Shanghai 是 2026-06-14 23:26:21，不要因 JST 日历已经是 06-15 改写。源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    caveats: [
+      "无 JSON-LD；页内 publishedAt 2026-06-15T00:26:21.276+09:00 → UTC 2026-06-14T15:26:21Z、Asia/Shanghai 2026-06-14 23:26:21；bodyUpdatedAt 与发布相同，取 published 后的上海日历日 → 2026-06-14；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-06-14，不要因源时区日历已是 06-15 改写。不要把 26B 整条管线约 11 分钟和 31B 只算生成的约 11 分钟混用。正文未配图。",
+      "导流：无作者独立产品导流可列。作者资料 website_url、Twitter 为空，不补写。相关篇 https://zenn.dev/znet/articles/2026-best-mac-247-local-llm 交付时 GET 200（标题 24/365稼働の自分用ローカルLLMに最適なMacは? — 帯域でなくprefill(GPUコア)で選ぶ），不另作本条主源，可列可达。文内出典 https://note.com/catap_art3d/n/n2dbdfbf975ce 交付时 GET 200（标题 【ローカルLLM】Granite4.0-H-32Bを試した話【IBM】 ｜Catapp-Art3D），可列可达，是引用出典，不当作者产品导流，也不另作本条主源。源文未称为 ChatGPT，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 26B-A4B 整条管线约 11 分钟是 5.5+3.5+2.5 分，再谈 31B 只算生成的约 11 分钟不是同一笔",
+        body: "请按原文核算：音频是不是约 91 分钟日语实会录音。Gemma 4 26B-A4B 是不是转写约 5.5 分、说话人分离约 3.5 分、生成约 2.5 分（146.9 秒、2,357 字），合计约 11 分钟。Gemma 4 31B 只算生成是不是约 11 分钟（652.7 秒、2,709 字），整条管线是不是超过 20 分钟，大约 5 tok/s。Granite 是不是 200.8 秒、1,246 字，同一段日文大约 1.8 倍 token。Qwen3.6 是不是 97.2 秒、3,830 字、要确认 0 条，但会自信地编造。发布日是不是 2026-06-14，不要写成 2026-06-15。源文是不是未称为 ChatGPT。这些是不是作者自己这一次上的记录，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先固定同一段约 91 分钟录音和同一套「转写 → 说话人分离 → 生成」管线，再比较模型。",
+      "把 26B-A4B 的整条约 11 分钟（5.5+3.5+2.5 分）和 31B 只算生成的约 11 分钟、整条超过 20 分钟分成两笔。",
+      "发布日按源时区换到 UTC 再换到 Asia/Shanghai 的日历日，JST 06-15 00:26 在上海已经是 06-14。",
+    ],
+    tips: [
+      "无 JSON-LD；页内 publishedAt 2026-06-15T00:26:21.276+09:00 → UTC 2026-06-14T15:26:21Z、Asia/Shanghai 2026-06-14 23:26:21；bodyUpdatedAt 与发布相同，取 published 后的上海日历日 → 2026-06-14；GET 200（UA MiraBot/1.0）。必须写成 2026-06-14，不要因 JST 已是 06-15 改写。",
+      "26B 整条管线约 11 分钟不是 31B 只算生成的约 11 分钟；大约 5 tok/s 也不是 151 的 6to20 tok/s。",
+    ],
   }
 ];
 
