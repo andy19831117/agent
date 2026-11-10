@@ -64066,6 +64066,586 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
       date: "2026-09-21",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "878",
+    slug: "kurigaki-20plus-17mb",
+    title: "kurigaki／栗垣健二：自己几乎不会用 Blender，把英单词学习应用 Word Spell Master 里的动物学员，从每人 1 张原画做成会动的 3D。用同一套合格条件过关的有 20 匹以上，动手写脚本的是 Claude Code。重做前的长颈鹿是 34 个零件、约 0.6MB；Tripo 导出约 55MB、约 190 万面；整理后约 3.8MB，压缩后约 1.7MB。约 3.8MB 是约 0.6MB 的 6〜7 倍，不要写成恰好 7 倍。GPU 显存「约四分之一」是按规格做的除法，作者写明实机还没测。Claude 数分钟对 Codex 约 32 分钟的对照条件不齐，不能用来排模型名次",
+    summary: "个人（kurigaki／栗垣健二）；披露这是作者几乎不会用 Blender、把合格条件交给 Claude Code 去写脚本的一次量产记录，不是「按这个流程就能做出 20 匹」的保证。标题和正文写的是「20 匹以上」，不要写成恰好 20 匹。开头动图里的 6 匹只是同角度对照，不要和 20 匹以上混成同一个计数。34 个零件是重做前用球和圆柱拼出来的长颈鹿，不要写成现在这套模型的零件数。约 55MB／约 190 万面是 Tripo 导出，约 3.8MB 是整理后、约 1.7MB 是压缩后，都带「约」。约 3.8MB 对约 0.6MB 是文中的 6〜7 倍，不要写成恰好 7 倍。一年级纹理在 GPU 显存里「计算上约四分之一」是除法结果，作者写明实机还没测。骨绑定对照是长颈鹿 1 匹：Claude 数分钟、Codex 约 32 分钟，条件不齐（Claude 已有步骤书，Codex 从零开始，约 32 分钟里还含减面和凹坑修正），不能用来排模型名次。Codex 不在枚举里，不硬凑。Codex 不在平台枚举，platforms 只记 claude。",
+    description: "面向已经把「让 AI 从一张图生成 3D 角色」写成可以上线的人：把「20 匹以上不是恰好 20；34 个零件属于重做前；约 3.8MB 对约 0.6MB 是 6〜7 倍不是恰好 7 倍；显存约四分之一是除法、实机未测；数分钟对约 32 分钟条件不齐、不能排模型名次」写成门禁，区别于只看「已经做出 20 多匹」却不核分母和对照条件的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kurigaki/articles/f6b7cfbbdd2377",
+    sourceLabel: "zenn.dev·kurigaki 实践帖",
+    upvotes: 769,
+    trending: false,
+    tags: [
+      "claude",
+      "blender",
+      "3d",
+      "tripo",
+      "gamedev",
+    ],
+    howItWorks: [
+      "作者几乎不会用 Blender。每个学员先有 1 张为本应用生成的原画，再做成设定资料和 T 姿态 4 个方向的图，交给 Tripo 只出形状和颜色；22 根共用的骨头、动作和收尾在 Blender 4.5 里由 Claude Code 用 blender -b 跑 Python 来做。先拿长颈鹿走通并写成步骤书，再一匹一匹铺开。",
+      "原画阶段每次测量：四边留白是否在 3% 以上、有没有混进别的方向、颜色是否相对正本偏移。形状按 HD 模型 + H3.1，形 30 学分、上色 20 学分；免费重做（作者的套餐是 3 次）后在 4 个方案里选，若在免费次数内定下来，1 体是 50 学分。重画后再从形状重做的学员会更多。导出是约 55MB、约 190 万面的 GLB。走路时后摆脚趾没入地面的深度，按身高是 2〜12%，要量了才发现。",
+      "整理后长颈鹿约 3.8MB，再做成 KTX2（UASTC）加 meshopt，约 1.7MB。一年级纹理在 GPU 显存里的用量，作者按规格算成约四分之一，并写明要终端支持压缩纹理，实机还没测。量产时电脑内存是 8GB，Blender 和另一件重活同时跑过整机死机，于是规定重活必须一本一本跑。骨绑定只在长颈鹿上对过 Claude 和 Codex，条件不齐，作者认为差距主要来自有没有步骤书。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T16:49:32.232+09:00 → 2026-11-10，同时刻为 UTC 2026-11-10T07:49:32Z、Asia/Shanghai 2026-11-10 15:49:32；bodyUpdatedAt 2026-11-09T16:04:13.899+09:00，早于发布，换算到上海为 2026-11-09 15:04:13（更新日早一天，发布未跨日），按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：kurigaki／栗垣健二在《Blender を使えない私が Claude Code に頼んで、画像1枚から動く3Dキャラを20匹以上そろえた手順》记录用 Claude Code 量产 3D 学员。可达导流：https://wordspellmaster.com/lp GET 200（正文介绍页；作者卡 website https://word-spell-master.vercel.app/lp 跟随至此，仍为 200）；https://x.com/wordspellmaster GET 200（作者卡／正文 X）；https://github.com/kurigaki GET 200（作者卡 GitHub）；https://www.youtube-nocookie.com/embed/UOUIQ4fGzRU GET 200（正文 60 秒介绍视频，拍的是重做前的学员）。未列入可达：https://apps.apple.com/jp/app/word-spell-master/id6798952743 本次跟随为 302 /cn → 301 https://apps.apple.com/cn/iphone/today，最后 HTTP 200，但落到的是中国区 Today，不是该应用页，按地区不可用披露，不因 200 算可达。相关篇已核、不列入导流：https://zenn.dev/kurigaki/articles/e3aba0881b85ad GET 200。一次资料已核、不列入导流：https://www.tripo3d.ai/pricing GET 200（2026-11-09 作者核过的价目，免费档写明 Public Models · Non-Commercial Use）。配图 14 张（含 GIF）均 GET 200，不列入产品导流。页内 link-card 嵌入不当作者产品导流。primary GET 200。",
+      "把「20 匹以上」和动图里的 6 匹分开写。34 个零件只属于重做前的长颈鹿。文件大小都带「约」，6〜7 倍不要写成恰好 7 倍。显存约四分之一若是按规格除出来的，不要写成实机测过。数分钟对约 32 分钟条件不齐，不能用来排模型名次。",
+    ],
+    approach: `SaaS 公司做过 QA 和开发的栗垣健二，个人在做英单词学习应用 Word Spell Master。学员是学院（3D 迷宫）里的动物：轮到自己时会举手要「再教一教」，学会了会点头，满意了就下学。作者几乎不会用 Blender，重做前的学员也是 3D，但那是 Claude Code 经 Blender MCP 用球体和圆柱按数字拼出来的：长颈鹿有 34 个零件，没有纹理也没有骨头，动作是直接挪零件。这次改成从每人 1 张原画做出会动的模型。
+
+流程是：由原画做成设定资料和 T 姿态 4 向图（指示由 Claude Code 写，图由 Codex 画），Tripo 只出形状和颜色，再在 Blender 里做减面、修凹坑、绑上 22 根共用骨头、加动作、做眼皮和年级换色，最后按应用约定导出并压缩。先拿长颈鹿走通并写成步骤书，再一匹一匹铺开。作者的工作是定要求和合格条件，并看图、看视频做判断；脚本是应用的一部分，文中没有贴出。60 秒介绍视频拍的是重做前的学员。作业期间是 2026 年 10 到 11 月；商用是在加入 Tripo 有偿套餐之后做的。
+
+原画每次要量：四边留白是否在 3% 以上、有没有混进别的方向、颜色是否相对正本偏移。形状按 HD 模型加 H3.1，形 30 学分、上色 20 学分；作者那一档免费重做是 3 次，若在免费次数里定下来，1 体是 50 学分。有的学员重画后再从形状重做，学分会更多。Tripo 导出是约 55MB、约 190 万面的 GLB；走路时后摆脚趾没入地面的深度，按身高是 2〜12%，要量了才发现。整理后长颈鹿约 3.8MB，再做成 KTX2（UASTC）加 meshopt，约 1.7MB，相对重做前约 0.6MB 是 6〜7 倍，不是恰好 7 倍。一年级纹理在 GPU 显存里的用量，作者按规格算成约四分之一，并写明要终端支持压缩纹理，实机还没测。量产时电脑内存是 8GB，Blender 和另一件重活同时跑过整机死机，于是规定重活必须一本一本跑。骨绑定只在长颈鹿 1 匹上对照过 Claude 和 Codex，条件不齐，作者认为差距主要来自有没有步骤书，不能用来排模型名次。以前把重做前的零件模型一次性给全员绑骨，失败过 2 次。Codex 不在平台枚举里，不硬凑；platforms 只记这次写脚本的 claude。`,
+    outcomes: [
+      "源披露作者几乎不会用 Blender，把同一套合格条件交给 Claude Code 去写脚本，过关的学员有 20 匹以上。这是这一次、这一套流程上的记录，不可外推成别的角色或别的工具组合，也不能把「20 匹以上」写成恰好 20 匹，更不能把约 3.8MB 对约 0.6MB 的 6〜7 倍写成恰好 7 倍，或把「计算上约四分之一」写成实机测过的显存。",
+      "Tripo 导出是约 55MB、约 190 万面；整理后约 3.8MB，KTX2 加 meshopt 后约 1.7MB。这些「约」不要丢掉。ETC1S 因为眼缘发花没用。",
+      "骨绑定只在长颈鹿 1 匹上对照过：Claude 数分钟、Codex 约 32 分钟，条件不齐，作者认为差距主要来自有没有步骤书。不要用来排模型名次。以前把重做前的零件模型一次性给全员绑骨，失败过 2 次。",
+    ],
+    caveats: [
+      "「20 匹以上」不是恰好 20。开头 6 匹是同角度对照，不要和总数混写。34 个零件属于重做前。脚趾没入地面是身高的 2〜12%。显存约四分之一是除法，实机未测。对照不能排模型名次。10 秒仍在转圈就提示，来自以前另一个模型的事故，不是这次 20 匹以上的计数。Tripo「上传最多 10」是按张出多个模型，4 张会扣 4 体学分。",
+      "导流：https://wordspellmaster.com/lp GET 200（正文介绍页；作者卡 https://word-spell-master.vercel.app/lp 跟随至此，仍为 200）；https://x.com/wordspellmaster GET 200；https://github.com/kurigaki GET 200；https://www.youtube-nocookie.com/embed/UOUIQ4fGzRU GET 200（60 秒介绍视频）。https://apps.apple.com/jp/app/word-spell-master/id6798952743 本次跟随至 https://apps.apple.com/cn/iphone/today，最后 HTTP 200，但不是该应用页，按地区不可用披露，不列入可达。相关篇 https://zenn.dev/kurigaki/articles/e3aba0881b85ad GET 200，不列入产品导流。配图 14 张（源页更新后有 2 张更换，已按当前源页列出）均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/7b0072132ba2-20261109.gif 、https://static.zenn.studio/user-upload/b86970ff02b8-20261109.png 、https://static.zenn.studio/user-upload/e6604fa73244-20261109.png 、https://static.zenn.studio/user-upload/8f336db7fc80-20261109.png 、https://static.zenn.studio/user-upload/8f58e669d09a-20261109.png 、https://static.zenn.studio/user-upload/8e770bac47ce-20261109.png 、https://static.zenn.studio/user-upload/71d334ca5cdf-20261109.png 、https://static.zenn.studio/user-upload/2c45d8344f7d-20261110.png 、https://static.zenn.studio/user-upload/344c9a034482-20261109.gif 、https://static.zenn.studio/user-upload/92e08da92516-20261109.gif 、https://static.zenn.studio/user-upload/de0fc3fe2cab-20261110.png 、https://static.zenn.studio/user-upload/4aa5692cb92c-20261109.png 、https://static.zenn.studio/user-upload/844ed25528ab-20261109.png 、https://static.zenn.studio/user-upload/2c7befeafae0-20261109.png 。页内 link-card 嵌入不当作者产品导流。一次资料 https://www.tripo3d.ai/pricing GET 200，不列入产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先写清「20 匹以上」和文件大小的分母，再谈「已经用 AI 做出 3D 角色」",
+        body: "请把「20 匹以上」和示例图里的 6 匹分开写，不要写成恰好 20。重做前的零件数（如长颈鹿 34 个）不要算进现在这套模型。Tripo 导出、整理后、压缩后的体积都要带原文的「约」；若原文写的是 6〜7 倍，不要改成恰好 7 倍。按规格除出来的显存比例，若作者写明实机未测，不要写成已经测过。不同 AI 的耗时如果条件不齐（有没有步骤书、包不包括减面），不能用来排模型名次。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kurigaki/articles/f6b7cfbbdd2377",
+      label: "zenn.dev·kurigaki《Blender を使えない私が Claude Code に頼んで、画像1枚から動く3Dキャラを20匹以上そろえた手順》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "879",
+    slug: "sheep-43s-10s",
+    title: "sheep6box／山樱ぱぱ：用 Muse 和 M5Stack StopWatch 做了可随身带的ずんだもん钟。第一次出声的 10 月 30 日那 1 个来回是 43 秒（思考 23.4 秒、做声约 18 秒、送出约 1〜2 秒）；11 月 3 日那 1 个来回是 9.95 秒，但回话更长（171 字对 127 字）。不要把 43 秒和 9.95 秒写成同一问的对照，也不要把缩掉的 33 秒里思考少了 18.0 秒全部算成工夫的效果。11 月 5 日同一问各 5 次的中位数：全文形 7.1 秒，旧的按句切 3.2 秒，现在的切法 4.3 秒",
+    summary: "个人（sheep6box／山樱ぱぱ）；披露这是作者用自己的一只钟和一台 Muse 虚拟机、按日志对出来的记录，不是「这样改就能从 43 秒到约 10 秒」的保证。43 秒是 10 月 30 日第一次出声的那 1 个来回，9.95 秒是 11 月 3 日另一问的 1 个来回（513 字节／171 字，对那天的 357 字节／127 字，作者写回话大约长了四成）。缩掉的 33 秒里，思考 18.0 秒、做声约 14 秒、其余约 1 秒，但这是不同日、不同问各 1 次的差，作者写明不能把 18 秒全部算成工夫的效果。按日统计的思考时间中位数从 10 月 30 日 37 个来回的 10.3 秒，降到 11 月 3 日 9 个来回的 2.9 秒，件数少，分不出哪条工夫占多少。11 月 1 日最多 149.3 秒，和摘要处理叠在一起，钟等不及超时。11 月 5 日同一问各 5 次的中位数，比的是「文字齐了到第一声」，不是按钮松开到第一声的 43 秒。测错过 3 次：同文反复测把 2.10 秒看成 0.13 秒，其实是缓存；要试的功能其实 404；切断缓存后钟仍在读上一回的同名文件。时钟固件是 Claude Code 写的，桥是 Muse 写的。Muse 不在平台枚举，platforms 只记 claude。",
+    description: "面向已经把「语音 Agent 从 43 秒改到约 10 秒」写成可以推广的人：把「43 秒和 9.95 秒不是同一问；缩掉的 18.0 秒不能全算工夫；5 次中位数比的是文字齐了之后，不是松开按钮之后；日中位数件数少；测错过缓存和 404；论文里的平均 7 毫秒不是这次实测」写成门禁，区别于只看标题秒数却不核对照分母的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/sheep6box/items/e3e0c443272e3568c86c",
+    sourceLabel: "qiita.com·sheep6box 实践帖",
+    upvotes: 770,
+    trending: false,
+    tags: [
+      "claude",
+      "muse",
+      "voice",
+      "latency",
+      "hardware",
+    ],
+    howItWorks: [
+      "钟是 M5Stack StopWatch。松开按钮后把语音备忘交给 Muse，Muse 的回复先以文字回来；虚拟机上的桥用 VOICEVOX 做成ずんだもん的 MP3，钟再按回复正文算出的文件名去取。官方 SDK 只给文字。人负责实机确认。文中数字是作者、Claude 和 Muse 对照钟日志与虚拟机日志算出来的。",
+      "先把 10 月 30 日第一次出声的那 1 个来回拆开：送到服务器约 1〜2 秒，思考 23.4 秒，做声约 18 秒，合计 43 秒。做声侧后来改成按句切、做好就先说；常用 19 句先做成声，缓存取出约 0.01 秒，实机上招呼在文字到达后 1.1〜1.3 秒出声。思考侧改为先回结论一行、套话不另外想、重活不在跟钟的对话里做。等待时 5 秒、12 秒、25 秒起会有「えっと」一类的附和（先试过 3 秒，作者觉得体感太早就改成 5 秒）。",
+      "11 月 5 日用同一问各测 5 次取中位数（文字齐了到第一声）：全文形 7.1 秒；旧切法（第一块 15〜20 字）3.2 秒，5 次里 2 次有 0.4 秒和 1.5 秒的静音；现在的切法（第一块 24〜28 字）4.3 秒，5 次里 1 次有 0.7 秒静音。当时做声大约 7 字／秒，说话大约 5 字／秒，第一块太短时出现过 2.6 秒和 1.7 秒的空档。测错过 3 次后，才规定要用新文章、先看功能是不是 200、先删上一回的同名文件再测。",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-06T07:51:47.000+09:00 → UTC 2026-11-05T22:51:47Z、Asia/Shanghai 2026-11-06 06:51:47（未跨日）；dateModified 与发布相同；Qiita API created_at 与 datePublished 同值；取 published；GET 200（UA MiraBot/1.0））：sheep6box／山樱ぱぱ在《AIの返事を43秒から10秒にした工夫》记录把第一声从 43 秒改到约 10 秒的测量。可达导流：https://x.com/sakura_beers/status/2116520919078232086 GET 200、https://x.com/sakura_beers/status/2117298953121399032 GET 200（正文里作者展示这只钟、并引出本文的两条推文）。作者卡 website／GitHub／X 为空。一次资料已核、不列入导流：https://github.com/facebookincubator/muse-gadget-sdk 、https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/ 、https://mercado.com.ar/tecnologia/meta-presento-muse-un-agente-de-ia-personal-que-opera-en-computadora-virtual 、https://docs.m5stack.com/en/core/StopWatch 、https://github.com/VOICEVOX/voicevox_engine 、https://elevenlabs.io/zh/blog/voice-agent-latency-optimization 、https://davidmaister.com/articles/5/52/index.html（跟随至 https://davidmaister.com/articles/5/52/ ，仍为 200）均 GET 200。一次资料未列入可达：https://doi.org/10.1073/pnas.0903616106 跟随至 https://pnas.org/doi/full/10.1073/pnas.0903616106 ，本次 GET 为 HTTP 403、size 5463，正文为 Cloudflare「Just a moment...」，不列入可达。配图 2 张 GET 200，不列入产品导流：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/48943/9ef22b4e-31f0-4ad5-aa15-13b8105c8313.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/48943/271de693-1e33-4453-9fb7-80b65bb1cef6.gif 。Qiita imgix 包装、mermaid 嵌入、tweet 嵌入不当作者产品导流。primary GET 200。",
+      "把松开按钮到第一声、和文字齐了到第一声，写成两种分母。不同日各 1 次的 43 秒与 9.95 秒不能当成同一问的对照。日中位数件数少，分不出哪条工夫占多少。测速时要排除缓存、404 和上一回的同名文件。",
+    ],
+    approach: `工程师山樱ぱぱ用 Muse 和 M5Stack StopWatch 做了一只手掌大的钟：按下说话，松开后 Muse 的回复会用ずんだもん的声音回来。有人在 X 上问怎样加快，这篇文章就是按实机和虚拟机日志写的回答。Muse 是 Meta 在 2026 年 9 月推出的个人 Agent，自带一台虚拟机；10 月公开了可自制配件的 SDK，StopWatch 也在支持之列。官方 SDK 只给文字，所以声音是在虚拟机里做好，再让钟去取。
+
+时钟固件由 Claude Code 写，桥由 Muse 写，人做实机确认。数字也是两边对照日志算出来的。作者先把 10 月 30 日第一次出声的那 1 个来回拆成送出、思考、做声三段，再分别改。做声改成按句切、套话先做成声、并去掉轮询和多余探测；思考改成先回结论、套话即答、重活不在这路对话里做。测快了没有，作者承认栽过 3 回：同文反复测其实是缓存，功能其实 404，以及切断缓存后钟还在读上一回的文件。标题里的「约 10 秒」对应 11 月 3 日那次 9.95 秒，不是 5 次中位数里的 7.1 秒或 4.3 秒。
+
+11 月 5 日用同一问各测 5 次，取的是文字齐了到第一声的中位数：全文形 7.1 秒，旧切法（第一块 15〜20 字）3.2 秒（5 次里 2 次有 0.4 秒和 1.5 秒的静音），现在的切法（第一块 24〜28 字）4.3 秒（5 次里 1 次有 0.7 秒静音）。作者写明 1 秒以内的差可能是碰巧。当时做声大约 7 字／秒、说话大约 5 字／秒，第一块太短时出现过 2.6 秒和 1.7 秒的空档。不要把这组中位数和 43 秒那个「松开按钮到第一声」的分母混写，也不要把标题里的约 10 秒写成 7.1 秒或 4.3 秒。按日统计的思考中位数从 10.3 秒（37 个来回）降到 2.9 秒（9 个来回），但 11 月 2 日只有 3 个来回、11 月 3 日只有 9 个，分不出哪条工夫占多少；11 月 1 日最多 149.3 秒，时钟超时。把全文形从 11 月 3 日 11.6 秒和 11 月 5 日 7.1 秒当成引擎更新的效果是错的，作者后来按中位 115 字对 62 字说明是长度不同、每字耗时没变。文中「日语应答间隔平均 7 毫秒」来自论文，不是这次实测；那条 DOI 本次未能作为可达链核到。Muse 不在平台枚举里，不硬凑；platforms 只记写固件的 claude。`,
+    outcomes: [
+      "源披露作者用一只钟和一台 Muse 虚拟机，把 10 月 30 日第一次出声的那 1 个来回测成 43 秒，11 月 3 日另一问的 1 个来回测成 9.95 秒。这是这一只设备、这一段日子里的记录，不可外推成别的虚拟机或别的模型，也不能把 43 秒和 9.95 秒写成同一问的对照，更不能把缩掉的 33 秒里思考少了 18.0 秒全部写成工夫的效果。",
+      "11 月 5 日同一问各 5 次的中位数，比的是文字齐了到第一声：全文 7.1 秒、旧切法 3.2 秒、现在的切法 4.3 秒。作者写明 1 秒以内的差可能是碰巧。不要和 43 秒那个「松开按钮到第一声」的分母混写。",
+      "按日统计的思考中位数从 10.3 秒降到 2.9 秒，但 11 月 2 日只有 3 个来回、11 月 3 日只有 9 个，分不出哪条工夫占多少。11 月 1 日最多 149.3 秒时钟超时。测错过缓存、404 和同名文件，不要把那几次当成已经加快。",
+    ],
+    caveats: [
+      "43 秒与 9.95 秒是不同日、不同问各 1 次。回话从 127 字到 171 字，作者写大约长了四成，这是约数。同一问 5 次中位数比的是文字齐了之后。把全文形从 11 月 3 日 11.6 秒和 11 月 5 日 7.1 秒当成引擎更新的效果是错的，作者后来按中位 115 字对 62 字说明是长度不同、每字耗时没变。文中引用的「日语应答间隔平均 7 毫秒」来自论文，不是这次实测。声音接力靠的是读 Muse 会话记录，不是公开规格。",
+      "导流：https://x.com/sakura_beers/status/2116520919078232086 GET 200、https://x.com/sakura_beers/status/2117298953121399032 GET 200。作者卡 website／GitHub／X 为空。一次资料除 DOI 外均 GET 200，不列入产品导流。https://doi.org/10.1073/pnas.0903616106 跟随至 https://pnas.org/doi/full/10.1073/pnas.0903616106 ，本次 HTTP 403、size 5463，不列入可达，完整 URL 与最后一次状态已写出。配图 2 张 GET 200，不列入产品导流。Qiita imgix 包装、mermaid 嵌入、tweet 嵌入不当作者产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先写清秒数的分母和是不是同一问，再谈「已经从 43 秒改到 10 秒」",
+        body: "请把「松开按钮到第一声」和「文字齐了到第一声」分开写。不同日、不同问各 1 次的秒数，不能当成同一问的对照；缩掉的思考时间如果作者写明不能全算工夫，就不要写成已经验证的效果。同一问的对照要写清测了几次、取的是中位数还是单次，以及 1 秒以内的差是否可能是碰巧。测速时要排除缓存、接口其实是 404、以及上一回留下的同名文件。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/sheep6box/items/e3e0c443272e3568c86c",
+      label: "qiita.com·sheep6box《AIの返事を43秒から10秒にした工夫》",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "880",
+    slug: "akkyey-3inc-167",
+    title: "akkyey／あっきぃ：clasp 本体有了 MCP 模式后，在正在跑的 GAS 项目上重测自作的 gas-manager-mcp，碰到 3 件事。云端的 Webhook.js 几乎要被 clasp push 整份替换掉，只因当时提示 already up to date 才没发出去，作者写明挡住是偶然；自作检查当时只回「未定义调用: 1 件」这样的件数，没有文件名和行号；参数个数碰到 setProperty(f(a, b)) 会把 1 个参数数成 2 个。后来带检查的 gas_push 与 clasp push 各测 3 次平均是 4.55 秒对 2.88 秒，差 +1.67 秒，文中约 1.7 秒是这个差的约数",
+    summary: "个人（akkyey／あっきぃ）；披露这是作者在正在跑的「每日把 Qiita 统计写入表格」的 GAS 项目上，重测自作 MCP 时记下的 3 件事和后来的耗时，不是「加上检查就一定不会删文件」的保证。云端当时有 3 个文件，本地 .claspignore 把 Webhook.js 排除在 push 对象之外；clasp push 会用本地对象整份替换云端，这次只因提示 Script is already up to date 才没发送，作者写明挡住是偶然。第 3 回曾写出模拟器返回 api.gs:12 这样的位置，重读实现后发现当时回给 AI 的只是「未定义调用: 1 件」这类件数。括号里再套函数调用时，按逗号数参数会数错。耗时是实环境各 3 次的平均：clasp push 2.88 秒，gas_push 4.55 秒，差 +1.67 秒；文中约 1.7 秒是这个差的约数，不要写成另一次实测。正文写明这次的 AI 是 Antigravity，不在平台枚举；文中写到的 Claude Code 只是另一种客户端上可以用 permissions.deny 挡住 clasp 本体 push／pull 的配置说明，不是这次的实测平台，platforms=[]。",
+    description: "面向已经把「给 Agent 接上 clasp MCP 就可以放心 push」写成可以上线的人：把「Webhook.js 没被删掉是偶然；检查一度只回件数；+1.67 秒是 3 次平均，约 1.7 秒是约数；Antigravity 不在枚举、不要硬凑 Claude」写成门禁，区别于只看「已经有 MCP」却不核这次有没有真的挡住删除的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/akkyey/items/75776a904d1a8a04b0cf",
+    sourceLabel: "qiita.com·akkyey 实践帖",
+    upvotes: 771,
+    trending: false,
+    tags: [
+      "mcp",
+      "clasp",
+      "gas",
+      "antigravity",
+      "guardrail",
+    ],
+    howItWorks: [
+      "作者一直把 clasp 包成自作 MCP（gas-manager-mcp），好让 Agent 操作 Google Apps Script。clasp 3.3.0 后来自带实验性的 MCP 模式，有 push_files、pull_files、create_project、clone_project、list_projects 五个工具。在考虑收成一条之前，先在正在跑的项目上重测自作工具，记下 3 件事。",
+      "云端有 appsscript.json、qiita_stats_v2.js 和每小时监视表格变动并通知 Discord 的 Webhook.js。本地 .claspignore 只放行后两个里的前两个，Webhook.js 不在 push 对象里。若那次真的发送，云端 HEAD 里的 Webhook.js 会没有；这次 clasp 判断 already up to date 才没发送。自作检查当时只回件数；参数计数会把参数里的函数调用拆开。后来 push 前会用 Apps Script API 的 projects.getContent 列出云端文件，和 clasp status --json 的 filesToPush 对照，只在云端有的文件会拦住。模拟器里的函数调用改为 vm.runInContext，并在 5000ms 截止，以免以前那种死循环把模拟器和 MCP 客户端一起卡死。",
+      "耗时是实环境各 3 次的平均：clasp push 单独 2.88 秒，带检查的 gas_push 4.55 秒，差 +1.67 秒。文中约 1.7 秒就是这个差的约数。作者把创建、复制、列表留给 clasp 本体，把带检查的 push／pull、本地模拟器和 run／logs／deploy 留给自作。若两个 MCP 同时登记，Agent 选 clasp 本体的 push_files 就会绕过检查。这次实际用的是 Antigravity；文中另写了 Claude Code 可用 permissions.deny 挡住 mcp__clasp__push_files 和 mcp__clasp__pull_files，但作者写明 Antigravity 这类客户端只能整段关掉 clasp 本体的 MCP。",
+    ],
+    tips: [
+      "源帖（有 JSON-LD；datePublished 2026-11-05T18:46:58.000+09:00 → UTC 2026-11-05T09:46:58Z、Asia/Shanghai 2026-11-05 17:46:58；dateModified 2026-11-05T19:02:33.000+09:00，晚于发布、仍取 published；Qiita API created_at 与 datePublished 同值；取 published；GET 200（UA MiraBot/1.0））：akkyey／あっきぃ在《clasp に MCP モードが入った今、GAS の自作 MCP に何を残すか ― 本体との棲み分けと、push の前に止める仕組み》记录 3 件事和 3 次平均耗时。可达导流：https://akkyey.dev GET 200（作者卡 website）；https://x.com/akkyey GET 200（作者卡 X）。作者卡 GitHub 为空。正文未另给自作仓 URL，不要补链。相关篇已核、不列入导流（第 1〜3 回及另两篇）：https://qiita.com/akkyey/items/ed9e06b70c4518779ac1 、https://qiita.com/akkyey/items/098a217d65c776dbb612 、https://qiita.com/akkyey/items/1541c5f0220e925a03b4 、https://qiita.com/akkyey/items/5b690c6e6eafe88f0e75 、https://qiita.com/akkyey/items/ccc008519baca7ea8b85 均 GET 200。一次资料已核、不列入导流：https://github.com/google/clasp 、https://developers.google.com/apps-script 、https://developers.google.com/apps-script/api/reference/rest/v1/projects/getContent 、https://modelcontextprotocol.io/（跟随至 https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro ，仍为 200）均 GET 200。未见正文配图。primary GET 200。",
+      "没被删除如果只是因为 already up to date，要写成偶然，不要写成检查已经生效。3 次平均的 +1.67 秒和文中约 1.7 秒是同一笔差，不要写成两次实测。正文若只实测了枚举外的 Agent，platforms 留空，不要把配置说明里的 Claude Code 硬凑进去。",
+    ],
+    approach: `还历工程师あっきぃ一直在用自作的 gas-manager-mcp，让 Agent 操作 Google Apps Script。这是连载第 4 回。clasp 本体后来带了实验性 MCP 模式（文中写的是 2026 年 11 月、clasp 3.3.0），看起来好像只要 clasp 的工具就够了。收成一条之前，他先在正在跑的、每日把 Qiita 统计写入表格的项目上把自作工具重跑一遍。
+
+重跑时记下 3 件事：Webhook.js 几乎被整份替换掉，只因 already up to date 才没发出去；检查只回了件数；参数计数会把参数里的函数调用拆开。之后把「push 前先对云端文件清单、把警告改成错误才能挡住 Agent、模拟器里的调用加 5000ms 截止」写成自作这边留下的机制，创建和复制仍留给 clasp 本体。正文写明这次的 AI 是 Antigravity。文中也写了 Claude Code 可用 permissions.deny 挡住 clasp 本体的 push／pull，以及在不能按工具关掉的客户端上不要登记 clasp 本体 MCP。有 shell 权限的 Agent 仍可能直接打 clasp push，作者把这条也写进了界限。clasp 的 README 写明它不是 Google 正式支持的产品，文中只称「clasp 本体」。
+
+3 件事要分开写。第一件：本地 .claspignore 只放行 appsscript.json 和 qiita_stats_v2.js，Webhook.js 不在 push 对象里；若那次真的发送，云端 HEAD 里的 Webhook.js 会没有。挡住它的不是自作检查，而是 clasp 判断 Script is already up to date 才没发出去，作者写明这是偶然。第二件：自作检查当时只回「未定义调用: 1件」这类件数，没有文件名和行号；不要把第 3 回展示过的 api.gs:12 和第 4 回重读后的实现混成已经一直在回位置。第三件：setProperty(f(a, b)) 这类写法，参数里的函数调用会被拆开，1 个参数会被数成 2 个。后来留下的机制是：push 前用 Apps Script API 的 projects.getContent 列出云端文件，和 clasp status --json 的 filesToPush 对照，只在云端有的文件会拦住；警告要改成错误才能挡住 Agent；模拟器里的调用改为 vm.runInContext，并加 5000ms 截止，以免以前那种死循环把模拟器和 MCP 客户端一起卡死。5000ms 是模拟器截止，不要和实环境 3 次平均的 clasp push 2.88 秒、gas_push 4.55 秒、差 +1.67 秒混写；文中约 1.7 秒就是这个差的约数。若两个 MCP 同时登记，Agent 选 clasp 本体的 push_files 就会绕过检查。有 shell 权限的 Agent 仍可能直接打 clasp push。Antigravity 不在枚举，文中的 Claude Code 只是另一种客户端的配置说明，不硬凑，platforms=[]。`,
+    outcomes: [
+      "源披露作者在正在跑的 GAS 项目上重测自作 MCP，记下 3 件事，并在实环境把 clasp push 和带检查的 gas_push 各测 3 次，平均是 2.88 秒对 4.55 秒，差 +1.67 秒。这是这一次、这一个项目上的记录，不可外推成别的项目或以后的 clasp 版本，也不能把没删掉 Webhook.js 写成检查已经生效，更不能把约 1.7 秒写成另一次实测。",
+      "Webhook.js 没被删除，是因为当时 clasp 判断 already up to date 才没发送。作者写明挡住是偶然。不要写成「重测时已经拦住了删除」。",
+      "第 3 回展示过 api.gs:12 这类位置，重读实现后发现当时回给 AI 的只是件数。不要把第 3 回的展示和第 4 回重读后的实现混成已经一直在回行号。",
+    ],
+    caveats: [
+      "3 件事不要合成「已经安全」。+1.67 秒是 3 次平均，约 1.7 秒是约数。5000ms 是模拟器里调用的截止，不要和 push 的 2.88／4.55 秒混写。两个 MCP 同时登记时，选 clasp 本体就会绕过检查。这次实测平台是 Antigravity，不在枚举；文中的 Claude Code 是另一种客户端的配置说明，不硬凑，platforms=[]。",
+      "导流：https://akkyey.dev GET 200；https://x.com/akkyey GET 200。作者卡 GitHub 为空。正文未另给自作仓 URL，不要补链。相关篇 5 条均 GET 200，不列入产品导流。一次资料 clasp 仓、Apps Script 文档、projects.getContent、MCP 站点均 GET 200，不列入产品导流。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清「没删掉是不是偶然」，再谈「已经给 Agent 接上 clasp MCP」",
+        body: "请把云端文件没被删除的原因写清楚：若只是 clasp 判断 already up to date 才没发送，要标明是偶然，不要写成检查已经生效。自作检查如果只回件数、没有文件名和行号，不要根据往期展示补写成已经在回位置。耗时若是若干次平均，约数和平均值要写明是同一笔差。正文只实测了枚举外的 Agent 时，不要把配置说明里提到的枚举平台硬凑进 platforms。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/akkyey/items/75776a904d1a8a04b0cf",
+      label: "qiita.com·akkyey《clasp に MCP モードが入った今、GAS の自作 MCP に何を残すか ― 本体との棲み分けと、push の前に止める仕組み》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "881",
+    slug: "ichikawa-1853-95-0",
+    title: "ichikawa_y／ichikawa：CLAUDE.md 里写了「请用日语写」，回话仍会回到英语。作者用过去的对话记录 1,853 个回合对 Stop hook 的判定，不是用装上 hook 之后当场改写的结果。带「请用日语写」的 20 个回合从第一版起就是 20/20；最后可见文以英语为主的 277 个回合，现在的版是 95.3%（导语写成 95%）；完全没有英语句子的 1,150 个回合，各版误报都是 0。20+277+1,150=1,447，不等于 1,853。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠改阈值",
+    summary: "个人（ichikawa_y／ichikawa）；披露这是作者用自己过去的对话记录来对判定、而不是用装上 hook 之后当场改写结果的一次记录，不是「这样就能保证日语回话」的保证。1,853 是排除之后的回合总数。带「请用日语写」的 20 个回合从第一版起就是 20/20，不要和 277 个「最后可见文以英语为主」的回合混成同一个计数；后者三版是 72.9%、88.8%、95.3%，导语里的 95% 对应表里的 95.3%，写表时用 95.3%。完全没有英语句子的 1,150 个回合，各版误报都是 0。20+277+1,150=1,447，不等于 1,853，不能把这三类加总当成对 1,853 的分割。某处出现过英语句子的回合是 703 个。现在的版里仍会漏掉英字不到 30 的短句；「最后可见文是日语却被挡住」的 16 个，是因为中途英语多到触发了整回合判定，改写要求接近空转。正解侧还有 3 件把日语提问里的「（Discord / Twitter(X) / …）」算成了英语。阈值 30／0.25 在这批记录上是 95.3%／0；把下限改到 20 会少漏、但也会挡住短的英语一句，作者仍留 30。在这个范围内改 0.25，只会动几个百分点。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠重调这两个数字。改进和评价用的是同一批记录。路径里的 C:/Users/<ユーザー名>/… 按源文占位写出，未作为可达链去核。",
+    description: "面向已经把「在 CLAUDE.md 里写了请用日语、再加一个 hook，就可以保证日语回话」写成可以上线的人：把「1,853 不是拿装上 hook 之后的改写结果来数的；20、277、1,150 不能加总还原 1,853；95% 对应表里的 95.3%；22 个点不是调阈值调出来的；改进和评价是同一批记录」写成门禁，区别于只看「已经 95%」却不核分母和评价方式的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/ichikawa_y/articles/claude-code-hook-japanese-reply",
+    sourceLabel: "zenn.dev·ichikawa_y 实践帖",
+    upvotes: 772,
+    trending: false,
+    tags: [
+      "claude",
+      "hooks",
+      "i18n",
+      "evaluation",
+      "guardrail",
+    ],
+    howItWorks: [
+      "作者在 Claude Code 桌面应用里工作（Windows 11，2026-10-31 当时的版本，hook 由 Git Bash 执行）。CLAUDE.md 里已经写了请用日语，回话仍会回到英语。于是加了 PreToolUse 的 Stop hook：在模型把要给用户看的回复交出去之前，先用脚本看最后可见的文是不是英语，是就挡住并要求改写。阈值是经验值：拉丁字母满 30、且日文字数小于拉丁字母的 0.25 倍，才判成英语。作者写明这不是保证日语回话的机制，只是减少以英语结束的辅助。",
+      "判定对的是作者过去的对话记录，共 1,853 个回合（排除之后），不是装上 hook 之后当场改写的结果。机械分成三类来看：带「请用日语写」的 20 个回合，从第一版起就是 20/20；最后的 text 或最后的 wrap_up 里，英语句子占一半以上的 277 个回合，三版依次是 72.9%、88.8%、95.3%；完全没有英语句子的 1,150 个回合，各版误报都是 0。这三类相加是 1,447，不等于 1,853，不能当成对总数的分割。某处出现过英语句子的回合是 703 个。",
+      "「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠改 30 和 0.25。在这批记录上，改 0.25 只会动几个百分点；把下限改到 20 会少漏，但也会把短的英语一句拦住重写，作者仍留 30。现在的版里，漏掉的多半是英字不到 30 的短句。另有 16 个「最后可见文是日语却被挡住」，是中途英语多到触发了整回合判定，改写要求接近空转。正解侧还有 3 件把日语提问里的 Discord／Twitter(X) 算成了英语。改进和评价用的是同一批记录。日志写不出时，hook 也不会停，判定会继续。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T17:35:48.401+09:00 → UTC 2026-10-31T08:35:48Z、Asia/Shanghai 2026-10-31 16:35:48；bodyUpdatedAt 2026-10-31T17:35:27.679+09:00，略早于发布、仍取 published；取 published；GET 200（UA MiraBot/1.0））：ichikawa_y／ichikawa 在《CLAUDE.mdに「日本語で」と書いても英語に戻る──Claude Codeのhookで英語の返事を書き直させる》记录用过去 1,853 个回合对判定。作者卡 GitHub／X／website 为空。正文没有另给产品仓或站点，不要补链。未见作者产品硬导流。相关篇已核、不列入导流：https://zenn.dev/ichikawa_y/articles/knowledge-layer-audit GET 200。未见正文配图。路径占位 C:/Users/<ユーザー名>/.claude/hooks/japanese-reply-check.js 按源文原样写出，未作为可达链去核。macOS／Linux 则写成 /Users/... 或 /home/...，同为占位。primary GET 200。",
+      "把 1,853、20、277、1,150、703 分开写，不要把 20+277+1,150 加总还原成 1,853。导语里的 95% 对应表里的 95.3%。16 件是最后可见文已是日语仍被挡住，不要算进误报的 0。22 个点不是调阈值调出来的。改进和评价若是同一批记录，要写明，不能当成在新对话上已经验证过。",
+    ],
+    approach: `作者 ichikawa 在 Claude Code 桌面应用里写东西（Windows 11，文中写明是 2026-10-31 当时的版本；hook 由 Git Bash 执行）。CLAUDE.md 里已经写了请用日语，回话仍会回到英语。他加了一个 PreToolUse 的 Stop hook：在模型把要给用户看的回复交出去之前，先跑脚本看最后可见的文是不是英语，是就挡住并要求改写。阈值是经验值：拉丁字母满 30、且日文字数小于拉丁字母的 0.25 倍，才判成英语。短句如「OK, done.」故意不拦；普通日语里夹杂 React、useEffect 这类词，按这个比也先不拦。作者写明，这不是保证日语回话的机制，只是减少以英语结束的辅助。
+
+判定对的不是装上 hook 之后当场改写的结果，而是过去的对话记录，排除之后共 1,853 个回合。机械分成几类来看：带「请用日语写」的 20 个回合，从第一版起就是 20/20；最后的 text 或最后的 wrap_up 里英语句子占一半以上的 277 个回合，作者写明这是按机械规则标的正解，只是目安，三版依次是 72.9%、88.8%、95.3%，导语写成 95%，写表时用 95.3%；完全没有英语句子的 1,150 个回合，用来看误报，各版都是 0。这三类相加是 1,447，不等于 1,853，不能当成对总数的分割。某处出现过英语句子的回合是 703 个。
+
+现在的版里仍会漏掉英字不到 30 的短句（如 "Now writing the ADR."）。另有 16 个「最后可见文是日语却被挡住」，是中途英语多到触发了整回合判定，改写要求接近空转，不要把这 16 个算进误报的 0。正解侧还有 3 件，把日语提问里的「（Discord / Twitter(X) / …）」算成了英语。阈值 30／0.25 在这批记录上是 95.3%／0；把下限改到 20 会少漏，但也会把短的英语一句拦住重写，作者仍留 30。在这个范围内改 0.25，只会动几个百分点。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠重调这两个数字。改进和评价用的是同一批记录，不能当成已经在新的对话上验证过。配置里的脚本路径是绝对路径，源文写成 C:/Users/<ユーザー名>/.claude/hooks/japanese-reply-check.js，按占位写出，未作为可达链去核。`,
+    outcomes: [
+      "源披露作者用自己过去的对话记录 1,853 个回合来对 hook 的判定，而不是用装上 hook 之后当场改写的结果：最后可见文以英语为主的 277 个回合，现在的版是 95.3%，完全没有英语句子的 1,150 个回合误报是 0。这是这一批记录、这一套阈值上的计数，不可外推成别的项目或以后的模型版本，也不能把 20+277+1,150 加总还原成 1,853，更不能把导语里的 95% 和表里的 95.3% 写成两个不同的实测。",
+      "带「请用日语写」的 20 个回合从第一版起就是 20/20，不要和 277 那个检出率混成同一个计数。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠改 30 和 0.25。",
+      "16 个是最后可见文已是日语仍被挡住，不要算进误报的 0。正解侧还有 3 件标注错误。改进和评价用的是同一批记录，不能当成已经在新对话上验证过。",
+    ],
+    caveats: [
+      "1,853 是排除之后的回合总数，不是装上 hook 之后当场改写的结果。20、277、1,150 不能加总还原 1,853。导语 95% 对应表里的 95.3%。16 件不是误报计数里的 0。3 件是正解侧把 Discord／Twitter(X) 算成了英语。22 个点不是调阈值调出来的。改进和评价是同一批记录。阈值是经验值，作者写明这不是保证日语回话的机制。",
+      "未见作者产品硬导流。作者卡 GitHub／X／website 为空。相关篇 https://zenn.dev/ichikawa_y/articles/knowledge-layer-audit GET 200，不列入产品导流。路径占位 C:/Users/<ユーザー名>/.claude/hooks/japanese-reply-check.js 按源文原样写出，未作为可达链去核。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清 1,853 是对过去记录对判定，再谈「已经 95%」",
+        body: "请写明检出率是拿过去的对话记录来对判定，还是拿装上 hook 之后当场改写的结果来数。20、277、1,150 若不能加总还原总数，就不要写成对总数的分割。导语里的约数和表里的百分数要对上，不要写成两次实测。「提高了多少个点」若来自补上单独判定、而不是改阈值，要写清楚。改进和评价若用同一批记录，不能当成已经在新对话上验证过。路径里的用户名占位按原文写出，不要当成可访问的文件路径去核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ichikawa_y/articles/claude-code-hook-japanese-reply",
+      label: "zenn.dev·ichikawa_y《CLAUDE.mdに「日本語で」と書いても英語に戻る──Claude Codeのhookで英語の返事を書き直させる》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "882",
+    slug: "tamao-7hook-exit2",
+    title: "tamao825／tamao：在 Windows 上给 hook 指定 powershell 时，node 即使以 exit 2 结束，Claude Code 2.1.303 也不会挡住，因为 PowerShell 5.1 的 -Command 会把 2 改成 1。作者在 2026-10-23 用 7 种写法实測：A–E 在 2.1.303 和 2.1.309 上都测了，F 和 G 只在 2.1.303 上测过。各 1 次，只有 A 在 2.1.303 上试了 2 次、两次都放行。E（后面再跟 Write-Output）在 2.1.309 上仍放行；B（补上 exit $LASTEXITCODE）两个版本都会挡住。作者并未测到 Claude Code 实际收到的结束码；未装 Git for Windows 时的 fail-open 也未测",
+    summary: "个人（tamao825／tamao）；披露这是作者在 Windows 11、Windows PowerShell 5.1.26100.9711（没有 pwsh）、Git Bash 5.2.37、Claude Code 2.1.303（本机已装的本体）和 2.1.309（临时文件夹里用 npm 另装的执行文件）上，于 2026-10-23 做的一次实測，不是「升到 2.1.309 就一定能挡住」的保证。Matcher 是 Write，让 Claude 用 Write 建 1 个文件，有文件算放行、没有算挡住。7 种写法里，A–E 两个版本都测了，F、G 只在 2.1.303 上测过，不要把未測写成已经测过。次数是各 1 次，只有 A 在 2.1.303 上是 2 次且两次都放行。A 在 2.1.309 上会挡住；E 在两个版本上都放行。B、C、D 在两个版本上都会挡住。作者没有测 Claude Code 实际收到的结束码，只是根据 PowerShell 单测（node 单独经 powershell -Command 得到 1，补上 exit $LASTEXITCODE 得到 2，后面再跟 Write-Output 得到 0，PowerShell 自己的 exit 2 仍是 2）以及 F 在 2.1.303 上显示「failed; blocking because onFailure is block」来推测。CHANGELOG 里还有「未装 Git for Windows 时，带 shell powershell 的 PreToolUse／PermissionRequest 会 fail-open」这一条，作者本机有 Git Bash，这一条未测。路径 C:/.../exit2.js 是源文脱敏，按占位写出，未作为可达链去核。实测日是 2026-10-23，发布日是 2026-10-26，不要混写。",
+    description: "面向已经把「Windows 上的 PowerShell hook 写了 exit 2，就可以挡住危险操作」写成可以上线的人：把「2.1.303 上 A 放行、E 在 2.1.309 上仍放行、F／G 在 2.1.309 上未測、作者并未测到 Claude Code 收到的结束码、未装 Git 的 fail-open 未测」写成门禁，区别于只看「已经 upgrade 到 2.1.309」却不核写法的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tamao825/articles/claude-code-hooks-powershell-exit2-not-blocking",
+    sourceLabel: "zenn.dev·tamao825 实践帖",
+    upvotes: 773,
+    trending: false,
+    tags: [
+      "claude",
+      "hooks",
+      "powershell",
+      "windows",
+      "exit-code",
+    ],
+    howItWorks: [
+      "在 PreToolUse（matcher 为 Write）上放一个以 exit 2 结束的 hook，让 Claude 用 Write 建 1 个文件：有文件算放行，没有算挡住。作者在 2026-10-23 于 Windows 11、Windows PowerShell 5.1.26100.9711（没有 pwsh）、Git Bash 5.2.37 上，对同一套 hook 试了 7 种写法。2.1.303 是这台电脑已装的本体，2.1.309 是临时文件夹里用 npm install @anthropic-ai/claude-code@2.1.309 另装的执行文件。",
+      "A（\"shell\": \"powershell\"，只调用 node C:/.../exit2.js）：2.1.303 上放行（2 次都是），当时 Claude 的回复里没有任何 hook 显示；2.1.309 上挡住。B 是在 A 后面补 ; exit $LASTEXITCODE，两个版本都挡住。C 是 PowerShell 自己写错误并 exit 2，两个版本都挡住。D 是不指定 shell、走 Git Bash 调 node，两个版本都挡住。E 是在 A 后面再跟 ; Write-Output checked，两个版本都放行。F 是给 A 加上 \"onFailure\": \"block\"，只在 2.1.303 上测过，挡住了，显示先是 failed; blocking because onFailure is block，下一行才是 blocked by exit2.js。G 是 exec form（command 为 node，args 为脚本路径），只在 2.1.303 上测过，挡住了。除了 A 在 2.1.303 上 2 次，其余都是各 1 次。",
+      "作者没有测 Claude Code 实际收到的结束码。PowerShell 单测（从 Git Bash 打、再用 echo rc=$? 看）里：bash 调 node 得 2；powershell -Command 只调 node 得 1；补上 exit $LASTEXITCODE 得 2；后面再跟 Write-Output 得 0 且会打出 after；PowerShell 自己的 exit 2 和 [Environment]::Exit(2) 仍是 2。用 -File 跑只有一行 node 的 .ps1 时，node 失败（结束码 1）仍可能返回 0，最后写上 exit $LASTEXITCODE 才会带回 node 的结束码。CHANGELOG（作者于 2026-10-23 核过原文）写明 2.1.309 修了「PowerShell hook 在程序以 2 结束时不挡」，以及「未装 Git for Windows 时带 shell powershell 的 PreToolUse／PermissionRequest 会 fail-open」；后一条作者未测。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-26T19:00:05.642+09:00 → UTC 2026-10-26T10:00:05Z、Asia/Shanghai 2026-10-26 18:00:05；bodyUpdatedAt 2026-10-26T13:48:51.184+09:00，早于发布、同日，按预定发布理解；取 published；GET 200（UA MiraBot/1.0））：tamao825／tamao 在《Claude Code 2.1.303 の PowerShell hook が node の exit 2 で止まらない：7通りの実測表》记录 7 种写法的实測。可达导流：https://kurashi-seido.pages.dev/ GET 200（作者卡 website）。作者卡 GitHub／X 为空。相关篇已核、不列入导流：https://zenn.dev/tamao825/articles/claude-code-hooks-windows-git-bash-powershell 、https://zenn.dev/tamao825/articles/claude-code-hooks-onfailure-block-exit-code-json 、https://zenn.dev/tamao825/articles/claude-code-write-crlf-lf-git-diff 均 GET 200。文内硬链已核、不列入产品导流：https://code.claude.com/docs/en/hooks.md GET 200；https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md GET 200；https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1 GET 200；https://github.com/kenn-io/kit/pull/158 GET 200；https://github.com/anthropics/claude-code/issues/90077 GET 200。路径 C:/.../exit2.js 是源文脱敏，按占位写出，未作为可达链去核。未见正文配图。实测日是 2026-10-23，不要写成发布日。primary GET 200。",
+      "把 A–E 与只在 2.1.303 上测过的 F、G 分开写，不要把未測写成已经测过。E 在 2.1.309 上仍放行，不能把「已经升到 2.1.309」写成这种写法也会挡。作者并未测到 Claude Code 收到的结束码，单测只能当目安。未装 Git for Windows 的 fail-open 若未测，不要写成已经验证。issue／PR 必须写完整 URL，不要只写 #90077 或 #158。",
+    ],
+    approach: `作者 tamao 在 Windows 11 上写 Claude Code 的 hook。指定 "shell": "powershell" 时，被调用的 node 即使以 exit 2 结束，2.1.303 也不会挡住操作。作者在 2026-10-23 实测：Windows PowerShell 5.1.26100.9711（没有 pwsh）、Git Bash 5.2.37；2.1.303 是这台电脑已装的本体，2.1.309 是临时文件夹里用 npm 另装的执行文件。官方文档把 exit 2 写成 Blocking error，其余结束码是 Non-blocking error，操作会继续。Microsoft 的 about_PowerShell_exe 写明：最后一条若是外部程序、结束码既不是 0 也不是 1 时，进程结束码会被改成 1；要保留结束码就补 exit $LASTEXITCODE。
+
+他在 PreToolUse（matcher 为 Write）上放一个以 exit 2 结束的 hook，让 Claude 用 Write 建 1 个文件，有文件算放行、没有算挡住，同一套 hook 试了 7 种写法。A（只经 PowerShell 调 node）：2.1.303 上放行，2 次都是，当时回复里没有任何 hook 显示；2.1.309 上挡住。B 在 A 后面补 ; exit $LASTEXITCODE，两个版本都挡住。C 是 PowerShell 自己写错误并 exit 2，两个版本都挡住。D 不指定 shell、走 Git Bash，两个版本都挡住。E 在 A 后面再跟 Write-Output checked，两个版本都放行。F 给 A 加上 onFailure: block，只在 2.1.303 上测过，挡住了，但显示是「hook 失败、因为 onFailure 是 block 才停」，不是「因为 exit 2 才停」。G 是 exec form，只在 2.1.303 上测过，挡住了。除了 A 在 2.1.303 上 2 次，其余都是各 1 次。F、G 在 2.1.309 上未測，不要写成已经测过。
+
+作者没有测 Claude Code 实际收到的结束码，只是根据 PowerShell 单测和 F 的显示来推测。单测里，powershell -Command 只调 node 得 1，补上 exit $LASTEXITCODE 得 2，后面再跟 Write-Output 得 0。因此 E 即使升到 2.1.309 也不会挡，版本身解决不了「后面还跟着别的命令」这件事。CHANGELOG 在 2026-10-23 核过原文，写明 2.1.309 修了 PowerShell hook 以 2 结束时不挡，以及未装 Git for Windows 时带 shell powershell 的 PreToolUse／PermissionRequest 会 fail-open；后一条作者本机有 Git Bash，未测。文中还提到 2.1.247 在 Windows 11 上 shell: powershell 会去起 pwsh、没装 pwsh 时 hook 不跑的报告（https://github.com/anthropics/claude-code/issues/90077），以及 kenn-io/kit 的 PR（https://github.com/kenn-io/kit/pull/158）因同样原因把 hook 改成了 exec form；这两条是一次资料，不是作者这次的实測。路径 C:/.../exit2.js 是源文脱敏，按占位写出。发布日是 2026-10-26，不要和实测日 2026-10-23 混写。`,
+    outcomes: [
+      "源披露作者在 Windows 11、PowerShell 5.1 上用 7 种写法实測：指定 powershell 时，node 以 exit 2 结束，Claude Code 2.1.303 仍会放行；2.1.309 能挡住 A，但 E（后面再跟 Write-Output）仍然放行。这是这一台电脑、这两个版本、这一天的记录，不可外推成别的 Windows 或以后的版本，也不能把 F、G 在 2.1.309 上的未測写成已经测过，更不能把作者并未测到的「Claude Code 收到的结束码」写成已经量过。",
+      "各写法基本上是 1 次，只有 A 在 2.1.303 上试了 2 次、两次都放行。B 在两个版本上都会挡住。不要把 1 次结果写成已经反复验证。",
+      "CHANGELOG 里「未装 Git for Windows 时 fail-open」这一条，作者本机有 Git Bash，未测。issue #90077 和 kenn-io/kit PR #158 必须写成完整 URL，它们不是这次 7 种写法的实測。",
+    ],
+    caveats: [
+      "7 种写法里 F、G 只在 2.1.303 上测过，2.1.309 未測。E 在 2.1.309 上仍放行，不能把升级写成这种写法也会挡。作者并未测到 Claude Code 收到的结束码。未装 Git 的 fail-open 未测。各次基本上是 1 次。实测日 2026-10-23，发布日 2026-10-26。路径 C:/.../exit2.js 是脱敏占位，未作为可达链去核。",
+      "导流：https://kurashi-seido.pages.dev/ GET 200。相关篇 3 条均 GET 200，不列入产品导流。文内硬链 https://code.claude.com/docs/en/hooks.md 、https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md 、https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1 、https://github.com/kenn-io/kit/pull/158 、https://github.com/anthropics/claude-code/issues/90077 均 GET 200，不列入产品导流。作者卡 GitHub／X 为空。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清 7 种写法各在哪个版本上测过，再谈「PowerShell hook 已经能挡住 exit 2」",
+        body: "请把只测过一个版本的写法和两个版本都测过的写法分开。后面还跟着别的命令的写法，如果在较新版本上仍放行，不能把升级写成已经修好。作者如果没有测到宿主实际收到的结束码，就不要写成已经量过。官方还写了未安装某组件时会 fail-open 的路径，若作者未测，不要写成已经验证。引用 issue 和 PR 时必须写完整 URL，不要只写编号。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tamao825/articles/claude-code-hooks-powershell-exit2-not-blocking",
+      label: "zenn.dev·tamao825《Claude Code 2.1.303 の PowerShell hook が node の exit 2 で止まらない：7通りの実測表》",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "883",
+    slug: "hiro-2out-3read",
+    title: "hironakamura_ai：当天试用 SDK 自带的 mcp.server.fastmcp（mcp==1.27.1，不是另发的 fastmcp）里的 FileResource，在 macOS、CPython 3.12.13 上用临时目录跑了 3 个路径、没有走网络。公开目录外的 2 件（../private.txt 和符号链接）也能读到；这两件在 resolve 之前做 is_relative_to()，结果都是 True。作者用 resolve(strict=True) 再判断，这两件会被拒绝。作者写明这不是在证明 SDK 的漏洞；本次不管检查与读取之间的竞争，也不足以隔离谁都能写的共享目录",
+    summary: "个人（hironakamura_ai）；披露这是作者用 SDK 自带的 FileResource 在临时目录里读 3 个路径的一次记录，不是「SDK 有漏洞」的结论，也不是共享目录的隔离方案。环境是 macOS、CPython 3.12.13、mcp==1.27.1，对象是 mcp.server.fastmcp，另发的 fastmcp 不在范围内。3 个名字是 ok.txt、../private.txt、link.txt（符号链接指向目录外的 private.txt）。resolve 之前的 is_relative_to() 对这 3 个都是 True；FileResource.read() 对后两件读到了 dummy secret。作者自己的 checked_path() 先 resolve(strict=True) 再判断，后两件是 DENY，ok.txt 是 ALLOW。is_relative_to() 比的是路径组成部分，public/../private.txt 在字面上仍把 public 当作父级，也不会去看链接目标，作者核过这与 pathlib 文档一致。传给 FileResource 的必须是检查后的返回值，用原来的输入再拼一次，检查对象会错位。本次没有通信，文件都是临时的、内容是「public」和「dummy secret」。TOCTOU 和谁都能写的共享目录不在这次范围内。",
+    description: "面向已经把「用了 FileResource，公开目录外的文件就不会被读到」写成可以上线的人：把「resolve 之前 is_relative_to 对两件外侧路径都是 True；作者写明这不是 SDK 漏洞；本次不管 TOCTOU 和可写共享目录」写成门禁，区别于只看「已经用了官方资源类」却不核是在解决后的路径上做检查的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/hironakamura_ai/items/563f3bf6f5936cc55633",
+    sourceLabel: "qiita.com·hironakamura_ai 实践帖",
+    upvotes: 774,
+    trending: false,
+    tags: [
+      "mcp",
+      "fastmcp",
+      "path",
+      "python",
+      "security",
+    ],
+    howItWorks: [
+      "作者把复现写在 repro.py 里，用 python repro.py 跑，不走网络，文件都在 TemporaryDirectory 里。公开根目录下放 ok.txt（内容 public），外侧放 private.txt（内容 dummy secret），再在公开目录里放符号链接 link.txt 指向那份外侧文件。然后依次用 FileResource 去读 ok.txt、../private.txt、link.txt，并同时跑自己的 checked_path()。",
+      "打印出来的第一列 True，是在 resolve 之前对路径做 is_relative_to(root) 的结果，3 件都是 True。ok.txt 读到 public，后两件读到 dummy secret。checked_path() 先 (root / name).resolve(strict=True)，再对 root.resolve(strict=True) 做 is_relative_to，后两件会抛 PermissionError，标成 DENY，ok.txt 是 ALLOW。",
+      "作者写明：SDK 的 FileResource 会检查是不是绝对路径，然后用 Path.read_text() 一类方法去读，公开范围要由服务器侧收紧，这次不是在证明 SDK 的漏洞。必须把 checked_path() 的返回值传给 FileResource，用原来的输入再拼一次，检查对象会错位。本次是在不会被改写的临时目录里确认的；检查和读取之间若替换链接，竞争条件仍在，也不足以隔离谁都能写的共享目录。",
+    ],
+    tips: [
+      "源帖（JSON-LD 仅有 BreadcrumbList，无 datePublished；Qiita API created_at 2026-11-10T11:26:51+09:00，updated_at 同值 → UTC 2026-11-10T02:26:51Z、Asia/Shanghai 2026-11-10 10:26:51；取 published／created_at；GET 200（UA MiraBot/1.0））：hironakamura_ai 在《FastMCPのファイル公開、相対パス判定はresolve後に》记录 3 个路径的试跑。可达导流：https://zenn.dev/hironakamura_ai GET 200（作者卡 website）。作者卡 GitHub／X 为空。文内硬链已核、不列入产品导流：https://docs.python.org/3.12/library/pathlib.html#pathlib.PurePath.is_relative_to GET 200；https://github.com/modelcontextprotocol/python-sdk/blob/v1.27.1/src/mcp/server/fastmcp/resources/types.py GET 200。未见正文配图。正文没有另给产品仓，不要补链。主场是 MCP Python SDK 的 FileResource，不在平台枚举，正文也未写枚举内平台，platforms=[]。primary GET 200。",
+      "把 resolve 之前的 True 和 resolve 之后的 DENY 分开写。能读到外侧 2 件，不要写成「SDK 有漏洞」——作者明确否定了这一点。临时目录里的一次确认，不能外推到可写共享目录，也不能当成已经处理了检查与读取之间的竞争。",
+    ],
+    approach: `作者 hironakamura_ai 当天试用了 MCP Python SDK 自带的 mcp.server.fastmcp 里的 FileResource。环境写明是 macOS、CPython 3.12.13、mcp==1.27.1。对象是 SDK 同捆的包，另发的 fastmcp 不在范围内。复现放在 repro.py，用 python repro.py 跑，不走网络，全部是临时文件。
+
+他在临时根下建了 public，写入 ok.txt（内容 public），在外侧写入 private.txt（内容 dummy secret），再在 public 里放符号链接 link.txt 指向那份外侧文件。然后对 ["ok.txt", "../private.txt", "link.txt"] 逐个构造 FileResource（uri 固定写成 file:///demo），打印 name、resolve 之前的 path.is_relative_to(root)、以及 await resource.read() 的结果，并同时跑自己的 checked_path()。结果是：ok.txt True public，guard ALLOW；../private.txt True dummy secret，guard DENY；link.txt True dummy secret，guard DENY。也就是说，公开目录外的 2 件，FileResource 直接读到了；resolve 之前的 is_relative_to() 对这 2 件也是 True。
+
+原因是 is_relative_to() 比的是路径组成部分。public/../private.txt 在字面上仍把 public 当作父级，也不会去看链接目标。作者核过手头实现是 other == self or other in self.parents，与 Python 3.12 的 pathlib 文档一致。SDK 的 FileResource 实现会检查是不是绝对路径，然后用 Path.read_text() 一类方法去读，公开范围要由服务器侧收紧。作者写明，这不是在证明 SDK 的漏洞。自己的补法是先 resolve(strict=True) 再判断，并把返回值传给 FileResource；用原来的输入再拼一次，检查对象会错位。本次是在不会被改写的临时目录里确认的。检查和读取之间若有人替换链接，竞争条件仍在；固定的公开用副本可以这么看，谁都能写的共享目录的隔离，这次不够。权限或布局改过之后，作者建议仍用「正常的 1 件加指向外侧的 2 件」把允许和拒绝都跑一遍。正文没有出现枚举内平台，platforms=[]。`,
+    outcomes: [
+      "源披露作者用 SDK 自带的 FileResource 在临时目录里读了 3 个路径：公开目录外的 2 件（../private.txt 和符号链接）也能读到，而且 resolve 之前的 is_relative_to() 对这两件都是 True。这是这一次、这一版 mcp==1.27.1 上的记录，不可外推成别的运行时或共享目录里的部署，也不能把这次读到外侧文件写成 SDK 漏洞，更不能把未覆盖的 TOCTOU 写成已经处理。",
+      "作者自己的 checked_path() 先 resolve(strict=True) 再判断，后两件是 DENY，ok.txt 是 ALLOW。传给 FileResource 的必须是检查后的返回值。",
+      "另发的 fastmcp 不在范围内。本次没有通信，内容只是 public 和 dummy secret。谁都能写的共享目录，作者写明这次不够。",
+    ],
+    caveats: [
+      "3 件都是临时目录里的一次试跑，不要写成已经覆盖生产部署。is_relative_to 在 resolve 之前对 2 件外侧路径为 True，与 pathlib 文档一致，作者明确说这不是 SDK 漏洞。TOCTOU 和可写共享目录不在这次范围内。对象是 SDK 自带的 mcp.server.fastmcp（mcp==1.27.1），不要写成另发的 fastmcp。正文未写枚举内平台，platforms=[]。",
+      "导流：https://zenn.dev/hironakamura_ai GET 200。文内硬链 https://docs.python.org/3.12/library/pathlib.html#pathlib.PurePath.is_relative_to 、https://github.com/modelcontextprotocol/python-sdk/blob/v1.27.1/src/mcp/server/fastmcp/resources/types.py 均 GET 200，不列入产品导流。作者卡 GitHub／X 为空。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清是在 resolve 之后做范围检查，再谈「已经用了 FileResource」",
+        body: "请写明 is_relative_to 是在 resolve 之前还是之后调用的。若 resolve 之前对带 .. 或符号链接的路径仍为 True，不要把它写成已经挡住了目录外读取。作者若写明这不是 SDK 漏洞，就不要改写成漏洞报告。检查和读取之间的竞争、以及谁都能写的共享目录，若作者宣布不在范围内，不要写成已经处理。把 SDK 自带的包和另发的同名包分开写。",
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/hironakamura_ai/items/563f3bf6f5936cc55633",
+      label: "qiita.com·hironakamura_ai《FastMCPのファイル公開、相対パス判定はresolve後に》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "884",
+    slug: "amu-16gb-19-167",
+    title: "amu_lab：在 MacBook Air M5 16GB 上实测 Antigravity SDK 本地 Agent（2026-09-25，Ollama 0.34.3，gemma4:12b，google-antigravity 0.1.18）。Ollama 路线可跑：启动 1.9 秒，列目录 32.3 秒，创建 hello.txt 16.7 秒（作者打开过文件），一行日语 9.3 秒；运行时内存 8.1GB，100% GPU，空闲内存 10%。LiteRT 的 26B 在可否表里是建议 24GB 以上、下载 14.7GiB，末段 Connection reset 失败；导语里的「下载 16.8GB」不要和这条混写。「16〜32 秒是云 API 的 10 倍以上」是体感。95 个 token、97.2%、3,322 个 token 来自官方发布，不是作者这次量的",
+    summary: "个人（amu_lab）；披露这是作者在一台 MacBook Air M5 16GB、macOS 上，于 2026-09-25 按文中版本跑 Antigravity SDK 本地路线的一次记录，不是「16GB 机器都可以上 26B」的保证。Ollama 拉 gemma4:12b 写明下载 7.6GB。启动 1.9 秒、列目录 32.3 秒、创建 hello.txt 16.7 秒、一行日语 9.3 秒，都是这一次可否表里的实测；16.7 秒那条，作者打开过生成的文件。运行时 gemma4:12b 占 8.1GB 内存，100% GPU 且当时没有交换，空闲内存 10%；作者写明这是「跑起来了但已经顶满」，再开别的应用会立刻感到掉进交换。LiteRT 26B 路线，导语／导入写的是下载 16.8GB、建议 24GB 以上；可否表里作者实测到的是下载 14.7GiB，并且在末段 Connection reset 失败。不要把 16.8GB 和 14.7GiB 写成同一个数，也不要把导入说明写成已经下载成功。官方发布里的「云端只送出 95 个 token、整体 97.2%（3,322 个 token）在本地执行」不是作者这次量的。把 16〜32 秒说成云 API 的 10 倍以上，是体感，文中没有给出对应的云端实测。本地端点 http://localhost:11434/v1 与 http://localhost:1234/v1 按源文写出，未作为可达链去核。Antigravity 和 Ollama 不在平台枚举，正文也未写枚举内平台，platforms=[]。",
+    description: "面向已经把「16GB Mac 也能跑本地 Agent」写成可以推广的人：把「26B 的 16.8GB 与可否表里失败的 14.7GiB 不要混写；16〜32 秒的 10 倍是体感；95／97.2%／3,322 是官方数字；本地端口未作为可达链去核」写成门禁，区别于只看「已经跑通 16.7 秒」却不核分母和失败路线的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/amu_lab/articles/antigravity-sdk-local-agent-16gb-mac",
+    sourceLabel: "zenn.dev·amu_lab 实践帖",
+    upvotes: 775,
+    trending: false,
+    tags: [
+      "antigravity",
+      "ollama",
+      "local-llm",
+      "mac",
+      "sdk",
+    ],
+    howItWorks: [
+      "作者在 MacBook Air M5 16GB／macOS 上安装 Antigravity SDK，对照两条本地路线：LiteRTAgentConfig 加 Gemma 4 26B，以及 LocalOpenAIAgentConfig 加 Ollama 的 gemma4:12b。文中版本是 Ollama 0.34.3、google-antigravity 0.1.18，记录日期 2026-09-25。官方在 2026-09-23 宣布 SDK 支持本地模型；26B 建议 24GB 以上内存，16GB 机器看起来不在官方推荐里。",
+      "Ollama 路线在可否表里记为可以跑：Agent 启动 1.9 秒；列目录 32.3 秒，生成了正确的文件列表；「创建 hello.txt 并回复 DONE」16.7 秒，作者打开过文件确认；日语一行生成 9.3 秒。运行时 gemma4:12b 占 8.1GB，处理器 100% GPU（当时无交换），上下文长度 32768，空闲内存 10%。拉这个 12B 模型时写明下载 7.6GB。",
+      "LiteRT 26B 在可否表里记为不可：建议 24GB 以上，下载 14.7GiB，作者这台机器在下载末段遇到 Connection reset，失败了；作者写明即便下载成功，把建议 24GB 的模型放到 16GB 上也是按交换来设计的。导语和导入说明里另有「下载 16.8GB」，不要和可否表这条 14.7GiB 的失败实测混写。混合路线（云端做计划、本地做执行）作者标成执行侧可以放进本构成，但云端侧本身就不在闭域里。本地 OpenAI 兼容端点按源文写成 localhost:11434/v1 与 :1234/v1，未作为可达链去核。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-09-25T22:37:13.369+09:00 → UTC 2026-09-25T13:37:13Z、Asia/Shanghai 2026-09-25 21:37:13；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：amu_lab 在《Antigravity SDKのローカル実行を整理する — 16GB MacでGemma 4エージェントはどこまで回るか》记录 16GB Mac 上的可否表。可达导流：https://github.com/hrtaym1114-github GET 200（作者卡 GitHub）；https://x.com/amu_lab__ GET 200（作者卡 X）；https://bhrtaym-blog.com/ GET 200（作者卡 website）。一次资料已核、不列入导流：https://developers.googleblog.com/introducing-support-for-local-ai-models-in-the-antigravity-sdk/ GET 200；https://antigravity.google/docs/sdk/local-models/ GET 200；https://huggingface.co/litert-community/gemma-4-26B-A4B-it-litert-lm GET 200。本地端点 http://localhost:11434/v1 、http://localhost:1234/v1 按源文原样写出，未作为可达链去核。未见正文配图。Antigravity／Ollama／Gemma 不在平台枚举，正文也未写枚举内平台，platforms=[]。primary GET 200。",
+      "把导语／导入里的下载 16.8GB，和可否表里失败的 14.7GiB 分开写。16.7 秒是作者打开过文件的那一次创建任务，不要和启动 1.9 秒、列目录 32.3 秒、一行 9.3 秒混成同一个数。95／97.2%／3,322 若来自官方发布，不要写成作者实测。把 16〜32 秒说成云 API 的 10 倍以上，若文中没有云端对照，就要标明是体感。",
+    ],
+    approach: `作者 amu_lab 在 MacBook Air M5 16GB 上把 Antigravity SDK 的本地 Agent 跑了一遍。记录日期是 2026-09-25，版本是 Ollama 0.34.3、gemma4:12b、google-antigravity 0.1.18。官方在 2026-09-23 宣布 SDK 支持本地模型，并写明 Gemma 4 26B 建议 24GB 以上内存，16GB 机器看起来不在这条推荐里。作者对照了两条路：LiteRT 加 26B，以及 OpenAI 兼容端点加 Ollama 的 12B。
+
+Ollama 路线在可否表里记为可以跑。拉 gemma4:12b 时写明下载 7.6GB。Agent 启动 1.9 秒；列目录 32.3 秒，生成了正确的文件列表；「创建 hello.txt 并回复 DONE」16.7 秒，作者打开过文件确认里面有内容；日语一行生成 9.3 秒。运行时这个 12B 模型占 8.1GB 内存，处理器 100% GPU，当时没有交换，上下文长度 32768，空闲内存 10%。作者写明 10% 的意思是「跑起来了但已经顶满」，再开别的应用会立刻感到掉进交换，所以要用时先把重的应用关掉。
+
+LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语和导入说明写的是下载 16.8GB、建议 24GB 以上；可否表里作者实测到的是下载 14.7GiB，并且在末段 Connection reset，失败了。不要把 16.8GB 写成已经下载成功，也不要把两个体积混成同一个数。作者还写，即便下载能通过，把建议 24GB 的模型放到 16GB 上也是按交换来设计的，16GB 机器应按 12B 以下来组。文中说「1 个任务 16〜32 秒，按云 API 的感觉是 10 倍以上」，这是体感，文中没有给出对应的云端实测时间，不能写成已经对照过。官方发布里「云端只送出 95 个 token，整体 97.2%（3,322 个 token）在本地执行」也不是作者这次量的。本地端点按源文写成 http://localhost:11434/v1 与 http://localhost:1234/v1，未作为可达链去核。Antigravity 和 Ollama 不在平台枚举，不硬凑，platforms=[]。`,
+    outcomes: [
+      "源披露作者在 MacBook Air M5 16GB 上实测：Ollama 加 gemma4:12b 可以跑，创建 hello.txt 用了 16.7 秒（作者打开过文件）；LiteRT 的 26B 路线在可否表里是下载 14.7GiB 并于末段 Connection reset 失败。这是这一台 16GB 机器、这一天的记录，不可外推成别的机型或以后的版本，也不能把导语里的下载 16.8GB 和可否表里的 14.7GiB 混成同一个数，更不能把官方发布里的 95 个 token、97.2%、3,322 个 token 写成作者实测。",
+      "启动 1.9 秒、列目录 32.3 秒、创建文件 16.7 秒、一行日语 9.3 秒要分开写。运行时内存 8.1GB、100% GPU、空闲 10%，空闲 10% 是「已经顶满」，不是还有余量的意思。",
+      "「16〜32 秒是云 API 的 10 倍以上」是体感，文中没有云端对照时间。本地 localhost 端点未作为可达链去核。platforms=[]。",
+    ],
+    caveats: [
+      "导语／导入的下载 16.8GB 与可否表实测失败的 14.7GiB 不要混写。官方 95／97.2%／3,322 不是作者实测。16〜32 秒的 10 倍是体感。空闲内存 10% 表示已经顶满。本地端点 http://localhost:11434/v1 、http://localhost:1234/v1 按源文写出，未作为可达链去核。Antigravity／Ollama 不在枚举，platforms=[]。",
+      "导流：https://github.com/hrtaym1114-github GET 200；https://x.com/amu_lab__ GET 200；https://bhrtaym-blog.com/ GET 200。一次资料 https://developers.googleblog.com/introducing-support-for-local-ai-models-in-the-antigravity-sdk/ 、https://antigravity.google/docs/sdk/local-models/ 、https://huggingface.co/litert-community/gemma-4-26B-A4B-it-litert-lm 均 GET 200，不列入产品导流。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先把 16.8GB 和失败的 14.7GiB 分开，再谈「16GB Mac 已经跑通本地 Agent」",
+        body: "请把导语或导入说明里的模型体积，和可否表里实际下载失败的体积分开写，不要混成同一个数。启动、列目录、创建文件、一行生成的秒数要各写各的。若作者打开过生成文件，把「已确认生成物」和秒数写在一起。官方发布里的 token 比例，不要写成作者实测。把某段耗时说成云端的多少倍，若没有云端对照，就要标明是体感。本地回环地址不要当成已核可达的导流。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/amu_lab/articles/antigravity-sdk-local-agent-16gb-mac",
+      label: "zenn.dev·amu_lab《Antigravity SDKのローカル実行を整理する — 16GB MacでGemma 4エージェントはどこまで回るか》",
+      date: "2026-09-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "885",
+    slug: "miya-bg-2sig",
+    title: "miyakona：给 AI Agent 自审用的 CLI（会停掉正在跑的测试、收拾工作区和 Git 注册）做中断清理时发现，用 shell 的 & 在后台启动时，送 SIGINT 也不会停，会把正在等的处理跑完；在前景启动时可以停。加上显式处理器之后再测，清理过程中或清理刚结束又来第二发信号时，仍会留下工作区或注册。公开的最小示例没有子进程和 git，不能和当时那件工具上的观测混写。示例里 50 毫秒的节拍和清理前 200 毫秒的延迟是复现用的值，不是生产阈值；5 秒上限是相对示例约 1 秒的工作故意留的余量；10 次只是起步，不是已经足够的验证次数。启动路径对照表是当时那件工具的观测，不是公开示例的测量。Windows 不在范围内。正文只称「AIエージェント」，platforms 为空",
+    summary: "个人（miyakona）；披露这是作者为自己那件带 git worktree 的自审 CLI 查中断清理的一次记录，不是「加上信号处理就一定能收拾干净」的保证。背景用 & 启动时会继承 SIGINT 忽略（Bash 在没有作业控制时，异步命令忽略 SIGINT／SIGQUIT，而且这个忽略会越过 exec 留下来）；前景则是 Python 的 default_int_handler。作者因此在入口为 SIGINT 和 SIGTERM 都加了自己的处理器。第一发之后会先把这两个信号改成 SIG_IGN 再进入清理，以免第二发把清理打断。公开示例是用标准库就能跑的最小例子，没有子进程和 git，不要和当时工具上的启动路径表混写。那张表里：前景、新会话、Python subprocess、以及「AI Agent 的后台执行功能」在旧版对 SIGINT 已是「中断」；非交互的 bash／sh／zsh 的 & 和 nohup … & 在旧版对 SIGINT 是「继续」、对 SIGTERM 是「中断」；修正版对两条信号都是「中断」。这是当时工具的观测，「中断」指收拾完以 130 结束，「继续」指忽略 SIGINT 并把处理跑完。示例里的 50 毫秒、200 毫秒是复现用值；5 秒上限是相对约 1 秒工作的余量；10 次是起步。显示的是尝试发送第二发的次数，不是处理器实际跑了几次。这次的契约把中断和 SIGTERM 都收成 130、无法继续的失败为 2，不是所有 CLI 的通例。Windows 不在范围内。正文没有点名枚举内平台，platforms=[]。",
+    description: "面向已经把「CLI 接到 SIGINT 就会收拾干净再退出」写成可以上线的人：把「后台 & 会继承忽略；第二发仍可能留下工作区；公开示例不是那件生产工具；50 毫秒／10 次／5 秒都不是已经足够的验证；启动路径表不是示例的测量；Windows 不在范围内」写成门禁，区别于只看「已经加了处理器」却不核启动路径和第二发时机的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/miyakona/articles/cli-interrupt-cleanup-second-signal",
+    sourceLabel: "zenn.dev·miyakona 实践帖",
+    upvotes: 776,
+    trending: false,
+    tags: [
+      "cli",
+      "signal",
+      "SIGINT",
+      "cleanup",
+      "python",
+    ],
+    howItWorks: [
+      "这件 CLI 的约定是：中断时停掉正在跑的测试、收拾工作区和 Git 注册再结束。作者先比启动方式：前景里 Python 显示 default_int_handler，同样的命令用 bash -c '… & wait' 启动时显示 1，也就是 SIG_IGN。Bash 文档写，没有作业控制时，异步命令会忽略 SIGINT 和 SIGQUIT，而且这个忽略会越过 exec 留下来；Python 若从父进程继承到忽略，就不会装上通常的 KeyboardInterrupt 处理器。作者因此在入口为 SIGINT 和 SIGTERM 都加了自己的处理器。这次检查是把 SIGINT 直接送到目标 PID，和终端 Ctrl-C 只打前景进程组不是同一件事。",
+      "处理器能接住之后，第二发若再抛同样的异常，会把清理打断。作者改成：第一发先把 SIGINT 和 SIGTERM 都改成 SIG_IGN，再抛出中断异常，让清理跑完。正常结束后的清理过程中第一次接到 SIGINT，也是另一条要看的路径。这件工具把中断收成退出码 130、无法继续的失败收成 2；把 SIGTERM 也收成 130 是这件工具的契约，不是通例。当时试过从 subprocess 看到 -2 或 -15，那是信号结束的值，要和 shell 显示的 128+信号编号分开写。",
+      "公开的最小示例用 Python 3.14 标准库就能跑，没有子进程和 git，50 毫秒节拍和清理前 200 毫秒延迟是复现用的值，不是生产阈值。5 秒上限是相对示例约 1 秒工作故意留的余量；10 次只是起步。时间间隔检查只能看出倾向，作者写明并不保证所有时机。启动路径对照表是当时那件工具的观测，不是公开示例的测量。Windows 控制台不在范围内。强制停止用 SIGKILL，那种情况不承诺清理；作者也写明，这不是「除了 SIGKILL 以外绝对停不了」的保证。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T16:48:33.425+09:00 → UTC 2026-11-10T07:48:33Z、Asia/Shanghai 2026-11-10 15:48:33；bodyUpdatedAt 2026-11-04T11:29:27.594+09:00，早于发布，换算到上海为 2026-11-04 10:29:27，按先写后发理解；取 published；不要把发布日写成 2026-11-04；GET 200（UA MiraBot/1.0））：miyakona 在《中断したら片付けるCLIは、Ctrl-Cの2発目まで考える》记录后台启动与第二发信号的洞。可达导流：https://github.com/miyakona GET 200（作者卡 GitHub）；https://x.com/_miyakona_ GET 200（作者卡 X）；https://miyakona.github.io/resume/ GET 200（作者卡 website）。一次资料已核、不列入导流：https://docs.python.org/3.14/library/signal.html#general-rules GET 200；https://pubs.opengroup.org/onlinepubs/9799919799/functions/exec.html GET 200。一次资料未列入可达：https://www.gnu.org/s/bash/manual/html_node/Signals.html 本次两次 GET 均为 CURL 35（TLS unexpected eof），短链跟随至 https://www.gnu.org/software/bash/manual/html_node/Signals.html 后同样 TLS 失败、size 0，不列入可达，完整 URL 与最后一次状态已写出。未见正文配图。正文只称「AIエージェント」，未点名枚举内平台，platforms=[]。primary GET 200。",
+      "把公开示例和当时那件带 git worktree 的工具分开写。50 毫秒、200 毫秒、5 秒、10 次都不是已经足够的验证依据。启动路径表不是示例的测量。显示的是尝试发送第二发的次数，不是处理器跑了几次。发布日是 2026-11-10，不要写成 2026-11-04。",
+    ],
+    approach: `作者 miyakona 在维护一件给 AI Agent 自审用的 CLI：中断时要停掉正在跑的测试，收拾工作区和 Git 注册再结束。用 shell 的 & 在后台启动时，送 SIGINT 也不会停，会把正在等的处理跑完；在前景启动时可以停。看起来像是「加一个 SIGINT 处理器就好」，加上之后再测，清理过程中或清理刚结束又来第二发时，仍会留下工作区或注册。Windows 不在范围内。
+
+作者先比启动方式。前景里 Python 显示 default_int_handler；同样的命令用 bash -c '… & wait' 启动时显示 1，也就是 SIG_IGN。Bash 的规则是，没有作业控制时，异步命令会忽略 SIGINT 和 SIGQUIT，而且这个忽略会越过 exec 留下来。Python 若继承到忽略，就不会装上通常的 KeyboardInterrupt 处理器。这次检查是把 SIGINT 直接送到目标 PID，和终端 Ctrl-C 只打前景进程组不是同一件事。作者在这件工具的入口为 SIGINT 和 SIGTERM 都加了自己的处理器，优先保证「启动方式变了，显式的中断要求仍能收拾完再结束」。第一发之后先把这两个信号改成 SIG_IGN，再进入清理，以免第二发把清理打断。正常结束后的清理过程中第一次接到信号，也是单独一条路径。这件工具把中断收成 130、无法继续的失败收成 2；把 SIGTERM 也收成 130 是这件工具的契约，不是通例。
+
+公开的最小示例用 Python 3.14 标准库就能跑，没有子进程和 git，不能和当时工具上的观测混写。示例里 50 毫秒的节拍和清理前 200 毫秒的延迟是复现用的值，不是生产阈值；5 秒上限是相对示例约 1 秒的工作故意留的余量；10 次只是起步，不是已经足够的验证次数。时间间隔检查只能看出倾向，作者写明并不保证所有时机。显示的是尝试发送第二发的次数，不是处理器实际跑了几次。启动路径对照表是当时那件工具的观测：非交互 shell 的 & 和 nohup … & 在旧版对 SIGINT 会「继续」，修正版对 SIGINT／SIGTERM 都会「中断」。强制停止用 SIGKILL，那种情况不承诺清理。bodyUpdatedAt 是 2026-11-04，发布日按 publishedAt 取 2026-11-10，不要把发布日写成 11 月 4 日。正文只称「AIエージェント」，不在枚举里硬凑平台，platforms=[]。`,
+    outcomes: [
+      "源披露作者在自己那件带 git worktree 的自审 CLI 上测到：用 & 在后台启动时 SIGINT 停不住；补上处理器之后，清理中或清理刚结束的第二发仍可能留下工作区或注册。这是这一件工具、这一次检查上的记录，不可外推成别的 CLI 或 Windows 环境，也不能把公开示例（没有子进程和 git）的行为写成当时那件工具的测量，更不能把 50 毫秒、200 毫秒、5 秒和 10 次写成已经足够的验证。",
+      "启动路径对照表是当时工具的观测，不是公开示例的测量。「中断」指收拾完以 130 结束，「继续」指忽略 SIGINT 并把处理跑完。这件工具把 SIGTERM 也收成 130，不是通例。",
+      "GNU Bash Signals 文档本次两次 GET 均为 TLS 失败（CURL 35），不列入可达。发布日是 2026-11-10，不要写成 2026-11-04。platforms=[]。",
+    ],
+    caveats: [
+      "公开示例不是那件生产工具，不要混写测量。50 毫秒／200 毫秒是复现用值，5 秒是余量，10 次是起步，时间检查不保证所有时机。启动路径表是当时工具的观测。显示的是尝试发送次数。Windows 不在范围内。发布取 2026-11-10，不要写成 2026-11-04。正文未点名枚举内平台，platforms=[]。",
+      "导流：https://github.com/miyakona GET 200；https://x.com/_miyakona_ GET 200；https://miyakona.github.io/resume/ GET 200。一次资料 https://docs.python.org/3.14/library/signal.html#general-rules 、https://pubs.opengroup.org/onlinepubs/9799919799/functions/exec.html 均 GET 200，不列入产品导流。一次资料未列入可达：https://www.gnu.org/s/bash/manual/html_node/Signals.html 本次两次 GET 均为 CURL 35（TLS unexpected eof），短链跟随至 https://www.gnu.org/software/bash/manual/html_node/Signals.html 后同样失败、size 0。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清是后台继承忽略还是第二发打断了清理，再谈「已经加了 SIGINT 处理器」",
+        body: "请把前景启动和后台 & 启动分开写，并写明忽略是否从父进程或 shell 继承而来。处理器加上之后，仍要单独看清理过程中和清理刚结束的第二发。公开的最小示例如果没有子进程或版本管理，不要和原工具上的对照表混成同一个测量。复现用的等待时间和试跑次数，若作者写明只是起步或余量，不要写成已经足够的验证。源文若先写后发，发布日要取 published，不要写成更早的正文更新日期。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/miyakona/articles/cli-interrupt-cleanup-second-signal",
+      label: "zenn.dev·miyakona《中断したら片付けるCLIは、Ctrl-Cの2発目まで考える》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "886",
+    slug: "naiki-66s-07s",
+    title: "naiki9982／ないき：已提交的个人黑客松作品上，look.py 用 API 钥匙在 6.6 秒内跑通 Gemini 4 Argon（不带「约」），classify.mjs 在 Vertex 上约 4 秒，不要混写。agy 1.3.4 的名单随登录整表改变：Cloud Shell（Agent Platform）有 Argon；未付费 Mac OAuth 名单完全不同；容器只能用 API 钥匙，没有 Argon。同一把钥匙，agy 在 0.7 秒内回报 unknown model，请求还没发出去。官方写明 Antigravity 里的 Argon 只给 AI Ultra 和 Enterprise；API 钥匙这条 agy 路径不在表里。Agent 本体仍留在 gemini-3.8-flash。thinking 写成 MINIMAL 会返回 400",
+    summary: "个人（naiki9982／ないき）；披露这是作者把已提交的黑客松作品往 Gemini 4 Argon 升时碰到的一次分叉，不是「API 能用就等于 CLI 能用」的保证。look.py 6.6 秒和 classify.mjs 约 4 秒是两条直接 API 调用，不要混成同一次、也不要把约 4 秒写成恰好 4 秒。agy 在容器、Cloud Shell、手头 Mac 上都是 1.3.4，安装日志也写 Latest available version: 1.3.4，作者写明不是版本问题。容器这条只能用 API 钥匙（服务账号／ADC 会停在登录等待，1.2.16 核过，1.3.4 仍一样）；Cloud Shell（Agent Platform 登录）的 agy models 里会出现 gemini-4-argon-high／medium／low 三行；手头 Mac 未付费 OAuth 的名单和这两列都对不上。作者推测 Cloud Shell 能列出 Argon，是因为 Agent Platform 登录被当成了 Enterprise，这是对照官方表的推测，文中写明官方没有直接这么写。官方博客（2026-10-13）和模型页写明，Antigravity 里的 Argon 只给 AI Ultra 订户以及符合条件的 Gemini Enterprise，AI Pro 也不行。API 钥匙这条 agy 路径不在官方表里，作者写明既不能说成「就是这样设计的」，也不能说成「只是还没来」。Reddit 讨论帖本次两次 GET 均为超时，不列入可达。作品站 https://gendan.app/ 是产品导流。Antigravity／Gemini 不在平台枚举，Mac 未付费名单里出现的 Claude 不是这次实测平台，不硬凑，platforms=[]。发布取 2026-10-14，正文更新日期是 2026-10-15，不要混写。",
+    description: "面向已经把「API 上的新模型，换个名字就能在 Agent CLI 里用」写成可以上线的人：把「6.6 秒和约 4 秒不是同一次；agy 1.3.4 的名单随登录方式整表改变；0.7 秒的 unknown model 发生在发请求之前；官方表不含 API 钥匙这条路径」写成门禁，区别于只看「API 已经跑通」却不核 CLI 登录目的地的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/naiki9982/articles/b052546f27f7c3",
+    sourceLabel: "zenn.dev·naiki9982 实践帖",
+    upvotes: 777,
+    trending: false,
+    tags: [
+      "antigravity",
+      "gemini",
+      "cli",
+      "api-key",
+      "hackathon",
+    ],
+    howItWorks: [
+      "作者个人提交了 GenWear3D。2026-10-13 Argon GA 后，先把直接调用的看图和分拣升上去：look.py 用 API 钥匙在 6.6 秒内跑通（文中不带「约」），classify.mjs 在 Vertex 上跑通约 4 秒。thinking 只接受 LOW／MEDIUM（默认）／HIGH，写成 MINIMAL 或带 thinking_budget 会返回 400。",
+      "再把容器里跑制作的 agy 加上 --model。三个环境都是 agy 1.3.4。容器只能用 API 钥匙；同一把在 look.py 里可用的钥匙，agy 在 0.7 秒内回报 not recognized as a known model or custom model in settings，错误出在发请求之前，没有打到任何区域。Cloud Shell 用 Agent Platform 登录时，agy models 里会出现 gemini-4-argon-high／medium／low。手头 Mac 已 OAuth 但未付费时，名单完全不同，没有 Argon，反而出现 Claude 和 GPT-OSS。",
+      "对照 Antigravity 模型页：Argon 只给 AI Ultra 和 Enterprise，AI Pro 也不行。API 钥匙这条 agy 路径不在那张表里。作者推测 Cloud Shell 能列出 Argon，是因为 Agent Platform 登录被当成了 Enterprise，并写明这是对照表的推测、官方没有直接这么写。结论是：直接 API 可以靠改模型名用上 Argon；人手在 Cloud Shell 里也可以用 Argon 来跑；容器里的 agy 目前没有办法，Agent 本体仍留在 gemini-3.8-flash。作者在 selftest 里加了 agy models，以便下次重建镜像时能发现变化。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-14T19:19:36.208+09:00 → UTC 2026-10-14T10:19:36Z、Asia/Shanghai 2026-10-14 18:19:36；bodyUpdatedAt 2026-10-15T09:29:52.471+09:00，晚于发布、跨到次日，仍取 published；不要把发布日写成 2026-10-15；GET 200（UA MiraBot/1.0））：naiki9982／ないき 在《Gemini 4 Argon がAPIで動いたので、Antigravity CLI でも使えると思ったらハマった話》记录 API 能用、agy 名单却随登录而变的一次分叉。可达导流：https://gendan.app/ GET 200（作者卡 website／作品站）；https://github.com/tsukumonasu GET 200（作者卡 GitHub）。作者卡 X 为空。相关篇已核、不列入导流：https://zenn.dev/naiki9982/articles/4203cc99999c09 、https://zenn.dev/naiki9982/articles/42508ee5ffad42 均 GET 200。一次资料已核、不列入导流：https://antigravity.google/docs/models/ GET 200；https://antigravity.google/blog/gemini-4-argon-in-google-antigravity/ GET 200；https://ai.google.dev/gemini-api/docs/models/gemini-4-argon 跟随至 https://aistudio.google.com/docs/models/gemini-4-argon ，仍为 200。一次资料未列入可达：https://www.reddit.com/r/google_antigravity/comments/1x569wk/gemini_4_argon_will_not_be_available_in/ 本次两次 GET 均为 CURL 28（连接超时），不列入可达，完整 URL 与最后一次状态已写出。配图 1 张 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/528c2e2d4758-20261014.png 。Antigravity／Gemini 不在枚举，Mac 名单里出现的 Claude 不是这次实测平台，不硬凑，platforms=[]。primary GET 200。",
+      "把 look.py 的 6.6 秒和 classify.mjs 的约 4 秒分开写。0.7 秒的 unknown model 发生在发请求之前，不要写成区域或钥匙无效。三种登录下的名单不要合成「agy 已经支持 Argon」。Cloud Shell 被当成 Enterprise 是作者的推测。发布日是 2026-10-14，不要写成 2026-10-15。",
+    ],
+    approach: `作者ないき个人提交了 GenWear3D，参加第 5 回 Agentic AI Hackathon with Google Cloud，作品当时已经交上去了。2026-10-13 Gemini 4 Argon GA 之后，他想把看图、分拣和 Agent 本体一起升上去。直接打 API 的两条路是通的：look.py 用 API 钥匙在 6.6 秒内跑通，文中不带「约」；classify.mjs 在 Vertex 上跑通约 4 秒。这两个秒数不要混成同一次。Argon 的 thinking 只有 LOW／MEDIUM（默认）／HIGH 三档，写成 MINIMAL 或带 thinking_budget 会返回 400。
+
+接下来把容器里跑制作的 agy 加上 --model，就卡住了。容器、Cloud Shell、手头 Mac 都是 agy 1.3.4，安装日志也写 Latest available version: 1.3.4，作者写明不是版本问题。容器里的 agy 只能用 API 钥匙；服务账号／ADC 会停在登录等待，这一点 1.2.16 核过，1.3.4 仍一样。同一把在 look.py 里可用的钥匙，agy --model gemini-4-argon-high 在 0.7 秒内回报 unknown model，错误出在 agy 自己的名单检查，请求还没发出去，也没有区域可改。Cloud Shell 用 Agent Platform 登录时，agy models 里会出现 gemini-4-argon-high／medium／low 三行，其余和容器名单相近。手头 Mac 已 OAuth 但未付费时，名单完全不同：没有 Argon，连 3.7／3.6／3.1 Pro 也没有，反而出现 Claude 和 GPT-OSS。
+
+对照官方模型页，Antigravity 里的 Argon 只给 AI Ultra 和 Enterprise，AI Pro 也不行。API 钥匙这条 agy 路径不在那张表里，作者写明既不能说成「就是这样设计的」，也不能说成「只是还没来」。Cloud Shell 能列出 Argon，作者对照表推测是 Agent Platform 登录被当成了 Enterprise，并写明官方没有直接这么写。结论是：直接 API 改模型名就能用 Argon；人手在 Cloud Shell 里也可以用；容器里的 agy 目前没有办法，Agent 本体仍留在 gemini-3.8-flash。文中提到 Reddit 上有人讨论 Pro 不能用 Argon，该帖本次两次 GET 均超时，不列入可达。作品站和作者 GitHub 是产品导流。Antigravity／Gemini 不在平台枚举，Mac 名单里出现的 Claude 不是这次实测平台，不硬凑，platforms=[]。发布取 publishedAt 的 2026-10-14，正文更新日期是 2026-10-15，不要混写。`,
+    outcomes: [
+      "源披露作者在已提交的黑客松作品上实测：同一把 API 钥匙，look.py 6.6 秒跑通 Argon，agy 1.3.4 却在 0.7 秒内回报 unknown model，错误出在发请求之前。这是这一次、这三个登录环境上的记录，不可外推成以后的 agy 版本或别的套餐，也不能把 6.6 秒和 classify.mjs 的约 4 秒混成同一次，更不能把官方表里没有的 API 钥匙路径写成已经支持或已经排除。",
+      "agy 1.3.4 在 Cloud Shell（Agent Platform 登录）、未付费 Mac OAuth、容器 API 钥匙下的名单整表不同。Cloud Shell 被当成 Enterprise 是作者的推测，不是官方原文。",
+      "thinking 写成 MINIMAL 会返回 400。Agent 本体仍留在 gemini-3.8-flash。Reddit 帖本次两次超时，不列入可达。platforms=[]。",
+    ],
+    caveats: [
+      "6.6 秒不带「约」，约 4 秒要保留「约」，不要混成同一次。0.7 秒的 unknown model 发生在发请求之前。三种登录的名单不要合成已经支持。Cloud Shell＝Enterprise 是推测。发布取 2026-10-14，不要写成 2026-10-15。Antigravity／Gemini 不在枚举，不把 Mac 名单里的 Claude 硬凑进 platforms，platforms=[]。",
+      "导流：https://gendan.app/ GET 200；https://github.com/tsukumonasu GET 200。相关篇 2 条均 GET 200，不列入产品导流。一次资料 https://antigravity.google/docs/models/ 、https://antigravity.google/blog/gemini-4-argon-in-google-antigravity/ 均 GET 200；https://ai.google.dev/gemini-api/docs/models/gemini-4-argon 跟随至 https://aistudio.google.com/docs/models/gemini-4-argon ，仍为 200，不列入产品导流。一次资料未列入可达：https://www.reddit.com/r/google_antigravity/comments/1x569wk/gemini_4_argon_will_not_be_available_in/ 本次两次 GET 均为 CURL 28（连接超时）。配图 1 张 https://static.zenn.studio/user-upload/528c2e2d4758-20261014.png GET 200，不列入产品导流。",
+    ],
+    prompts: [
+      {
+        title: "先写清「API 能用」和「CLI 名单里有没有」是两件事，再谈「已经升到新模型」",
+        body: "请把直接打 API 的耗时和 CLI 报 unknown model 的耗时分开写，并标明后者是否发生在发请求之前。同一版本的 CLI，若名单随登录方式整表改变，要把每一种登录单独列出，不要合成「已经支持」。对照官方套餐表时，表里没有的路径不要写成已经支持或已经排除。作者若写明某条对应关系是推测，就不要改写成官方结论。发布日取 published，不要写成更晚的正文更新日期。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/naiki9982/articles/b052546f27f7c3",
+      label: "zenn.dev·naiki9982《Gemini 4 Argon がAPIで動いたので、Antigravity CLI でも使えると思ったらハマった話》",
+      date: "2026-10-14",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "887",
+    slug: "husenn-typo-127",
+    title: "husenn／Oskra：在 Claude Code 2.1.307、Node 22.22.2、WSL2（Linux 6.6）上实测，把 guard.mjs 写成 gaurd.mjs（只错 1 个字母）时，hook 一次都不会跑，启动也不提示。同一条 rm secrets/fake.p8 各请 1 次：路径正确时伪钥匙还在，是 hook 挡住的；写错时文件被删，hook 以状态 127 结束，claude 以 0 结束；保持错路径并加上 onFailure: block（2.1.295 起可用）时，文件还在，是 Claude Code 挡住的。代价是路径改对之前 Bash 全部不可用。约 30 行检查脚本能点名写错的路径，但只看文件在不在。本次只试了 -p",
+    summary: "个人（husenn／Oskra）；披露这是作者在 Claude Code 2.1.307、WSL2 Linux 6.6、Node 22.22.2 上，用同一条 rm secrets/fake.p8 命令、只改 settings.json 里的路径，各请 1 次的对照，不是「加上 onFailure 就一定安全」的保证。三种设置是：路径正确；只把 guard.mjs 写成 gaurd.mjs；保持错路径并加上 onFailure: block。正确时伪钥匙还在，hook 挡住了；写错时伪钥匙被删掉，调试日志是 PreToolUse:Bash 以状态 127 结束，shell 报 not found，claude 返回 0；加上 onFailure 后伪钥匙还在，是 Claude Code 挡住的。作者写明，错路径的 hook 在这次实验里启动时不会提示，若继续用，只会留下「已经有人在守」的安心。onFailure: block 从 2.1.295 起可用；代价是路径改对之前，matcher 为 Bash 时，Bash 会全部停住。约 30 行的检查脚本能把写错的路径点名出来，但只看文件在不在；脚本中途失败、挡住条件写错，仍要用伪钥匙实跑。检查范围不包括带空格的路径、非 .mjs／.js／.sh／.py，以及只用了 shell 别名的写法。本次只试了 -p，对话界面里的显示没有拍。相关篇《密钥守卫 hook》仍留在池里，不列入本条产品导流。路径里的「作业文件夹」是源文脱敏，按占位写出，未作为可达链去核。",
+    description: "面向已经把「写了守卫 hook，钥匙文件就不会被删」写成可以上线的人：把「1 个字母写错时 hook 不会跑、启动也不提示、状态 127 会放行；onFailure 能挡住但会让 Bash 全部停住；检查脚本只看文件在不在；各设置只请了 1 次」写成门禁，区别于只看「已经挂了 hook」却不核路径有没有写错的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/husenn/articles/claude-code-hook-path-typo",
+    sourceLabel: "zenn.dev·husenn 实践帖",
+    upvotes: 778,
+    trending: false,
+    tags: [
+      "claude",
+      "hooks",
+      "fail-open",
+      "onFailure",
+      "secrets",
+    ],
+    howItWorks: [
+      "作者准备了伪钥匙 secrets/fake.p8（内容只有「FAKE KEY」）和守卫 hook hooks/guard.mjs：从标准输入读 Claude Code 传来的 JSON，若 tool_input.command 里包含 secrets/，就向标准错误写出原因并以 2 结束，否则以 0 结束。实验时只改 settings.json 里登记的路径，用同一条命令请 Claude Code 执行一次：claude -p 只跑 rm secrets/fake.p8，--setting-sources project 以免混入平时的 hook，--allowedTools 'Bash(rm *)' 让 hook 成为唯一的挡住手段。",
+      "三种设置各请 1 次。路径写成 hooks/guard.mjs 时，伪钥匙还在，是 hook 挡住的。写成 hooks/gaurd.mjs 时，伪钥匙被删掉；--debug-file 里可以看到 hook 以状态 127 结束，shell 报 not found；claude 本身以 0 结束，并返回「已执行，没有输出」。保持这个错路径，再按官方「hook 失败就挡住」加上 onFailure: block（2.1.295 起可用）时，伪钥匙还在，是 Claude Code 挡住的。作者写明，这次实验里，路径写错时启动不会提示。",
+      "代价是，路径改对之前，Bash 会全部停住，包括 ls。所以作者只建议给守卫 hook 加上这一行，并在改完 settings.json 之后马上跑一次约 30 行的检查脚本，让它把写错的路径点名出来。检查只看文件在不在；脚本中途失败或挡住条件写错，仍要用伪钥匙实跑。带空格的路径、非 .mjs／.js／.sh／.py，以及只用了 shell 别名的写法，不在检查范围内。本次只试了 -p，对话界面里 hook error 的样子没有拍下来。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-22T11:01:04.390+09:00 → UTC 2026-10-22T02:01:04Z、Asia/Shanghai 2026-10-22 10:01:04；bodyUpdatedAt 2026-10-22T10:59:27.626+09:00，略早于发布、仍取 published；取 published；GET 200（UA MiraBot/1.0））：husenn／Oskra 在《Claude Code の hook はパスの打ち間違いで素通しになる — onFailure で止める》记录 1 个字母写错时的放行。可达导流：https://x.com/husenn_dooraku GET 200（作者卡 X）。作者卡 GitHub／website 为空。相关篇已核、不列入导流：https://zenn.dev/husenn/articles/claude-code-secret-guard-hook GET 200。文内硬链已核、不列入产品导流：https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails 、https://code.claude.com/docs/en/hooks#other-exit-codes 、https://code.claude.com/docs/en/hooks#exit-code-output 、https://code.claude.com/docs/en/hooks#debug-hooks 均 GET 200。路径里的「作业文件夹」是源文脱敏，按占位写出，未作为可达链去核。未见正文配图。primary GET 200。",
+      "三种设置都是各请 1 次，不要写成反复验证。状态 127 是「找不到文件」，按官方属于不挡住的失败，不能和 exit 2 的挡住混写。onFailure: block 会在路径改对之前让 Bash 全部停住。检查脚本只看文件在不在。相关篇不要算进本条产品导流。",
+    ],
+    approach: `作者 Oskra（husenn）上一篇写过用 hook 挡住 Claude Code 删除 .env 和钥匙文件。这篇问的是另一个问题：登记的路径如果写错了，实际上会发生什么？官方文档写，settings.json 里的路径写错时，这个 hook 一次都不会跑；路径写错的守卫 hook 会把所有操作放行。作者在 Claude Code 2.1.307、Node 22.22.2、WSL2（Linux 6.6）上把这件事跑给自己看。
+
+他准备了伪钥匙 secrets/fake.p8（内容只有「FAKE KEY」）和 hooks/guard.mjs：从标准输入读 JSON，若命令字符串里包含 secrets/，就以 2 结束，否则以 0 结束。实验时只改 settings.json 里的路径，用同一条 claude -p 命令各请 1 次执行 rm secrets/fake.p8，并加上 --setting-sources project 和 --allowedTools 'Bash(rm *)'，好让 hook 成为唯一的挡住手段。三种设置的结果是：路径正确时，伪钥匙还在，是 hook 挡住的；把 guard.mjs 写成 gaurd.mjs 时，伪钥匙被删掉，调试日志里 hook 以状态 127 结束，shell 报 not found，claude 本身以 0 结束，并返回「已执行，没有输出」；保持这个错路径并加上 onFailure: block（2.1.295 起可用）时，伪钥匙还在，是 Claude Code 挡住的。作者写明，这次实验里，路径写错时启动不会提示，若继续用，只会留下「已经有人在守」的安心。
+
+代价很清楚：加上 onFailure: block 之后，路径改对之前，matcher 为 Bash 时，Bash 会全部停住，包括 ls 这类无害命令。所以作者只建议给守卫 hook 加上这一行，并在改完 settings.json 之后马上跑一次约 30 行的检查脚本，让它把写错的路径点名出来。检查只看文件在不在；脚本中途失败或挡住条件写错，仍要用伪钥匙实跑。带空格的路径、非 .mjs／.js／.sh／.py，以及只用了 shell 别名的写法，不在检查范围内。本次只试了 -p，对话界面里 hook error 的样子没有拍下来。相关篇仍留在池里，不列入本条产品导流。路径里的「作业文件夹」是源文脱敏，按占位写出，未作为可达链去核。`,
+    outcomes: [
+      "源披露作者在 Claude Code 2.1.307、WSL2 上用同一条删除伪钥匙的命令、只改路径，各请 1 次：写成 gaurd.mjs 时 hook 以状态 127 结束，伪钥匙被删掉；加上 onFailure: block 后伪钥匙还在，是 Claude Code 挡住的。这是这一次、这一个环境上的记录，不可外推成别的版本或对话界面里的显示，也不能把各 1 次写成已经反复验证，更不能把 onFailure 写成没有代价——路径改对之前，Bash 会全部停住。",
+      "路径写错时，这次实验里启动不会提示。检查脚本约 30 行，能把写错的路径点名出来，但只看文件在不在。",
+      "相关篇是密钥守卫 hook 的做法，已核但不列入本条产品导流。占位路径未作为可达链去核。",
+    ],
+    caveats: [
+      "三种设置都是各请 1 次。状态 127 按官方是不挡住的失败。onFailure: block 从 2.1.295 起可用，代价是 Bash 全部停住。检查只看文件在不在；带空格的路径、非指定后缀、shell 别名不在范围内。只试了 -p，对话界面未拍。作业文件夹是脱敏占位，未作为可达链去核。本条与 #881、#882 同属 hook，但窗口是路径写错后的 fail-open，不是语言判定，也不是 PowerShell 结束码。",
+      "导流：https://x.com/husenn_dooraku GET 200。相关篇 https://zenn.dev/husenn/articles/claude-code-secret-guard-hook GET 200，不列入产品导流。文内硬链 https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails 、https://code.claude.com/docs/en/hooks#other-exit-codes 、https://code.claude.com/docs/en/hooks#exit-code-output 、https://code.claude.com/docs/en/hooks#debug-hooks 均 GET 200，不列入产品导流。作者卡 GitHub／website 为空。未见正文配图。",
+    ],
+    prompts: [
+      {
+        title: "先写清路径写错时 hook 会不会跑，再谈「已经挂了守卫 hook」",
+        body: "请把路径正确、路径写错、以及写错后加上失败即挡，分成三次对照来写，并标明各试了几次。若写错时启动没有提示、结束码是「找不到文件」这类不挡住的失败，不要写成 hook 已经在守。失败即挡若会让某一类工具全部不可用，要把代价写出来。检查脚本如果只看文件在不在，不要写成已经检查了挡住条件本身。只在非对话方式下试过的结果，不要写成对话界面里也看过。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/husenn/articles/claude-code-hook-path-typo",
+      label: "zenn.dev·husenn《Claude Code の hook はパスの打ち間違いで素通しになる — onFailure で止める》",
+      date: "2026-10-22",
+      dateLabel: "发布",
+    },
   }
 ];
 
