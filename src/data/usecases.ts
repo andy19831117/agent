@@ -59927,6 +59927,440 @@ Claude 自己做了自动游玩机器人（不是作者先提出的），各跑 
       date: "2026-11-07",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "818",
+    slug: "kaikou-24341ms-5f19s",
+    title: "kai_kou：在 Claude Code v2.1.300、--model haiku 下，对同一份带 bug 的差分做两次无头 /code-review——第 1 次 24,341ms、5 件、JSON 数组，费用 0.008475925 美元；第 2 次 19 秒、4 件、编号列表；两次末尾都没有「要我修吗」；新目录里 --bg 因未做信任确认而未能复现",
+    summary: "个人（kai_kou／甲斐 甲）；披露在 Claude Cloud 的 Linux 容器上，用 Claude Code v2.1.300（2026-10-15 JST 以 claude --version 确认）、--model haiku，对同一份带 bug 的差分做两次无头 claude -p \"/code-review\"。第 1 次 --output-format json：duration_ms 24,341，费用 0.008475925 美元，result 为含 5 件指摘的 JSON 数组。第 2 次用 stream-json 追事件：所要时间 19 秒，指摘 4 件，编号列表；task_started 里 description 为 /code-review、subagent_type 为 general-purpose，is_backgrounded 为 False，未指定效果等级时按 high 跑，用的是 v2.1.274 起的内联方式。两次末尾都是审查范围说明和 CLAUDE.md 有无，没有出现旧记录里的「Would you like me to fix these issues?」。同一容器里对新目录做 --bg 时，因未先在对话里做信任确认而停下，背景会话这条路径这次没有复现。不代你同样看到 24,341ms、5 件或没有「要我修吗」，就等于下一版已经把门禁住，或背景会话也不会再问要不要修，或 19 秒已经可以当成比旧记录更快。",
+    description: "面向已经把「换了 /code-review 版本」或「结果是 JSON」当成审查输出已门禁、却还没按同一份差分分开记无头跑的时间与件数、输出是数组还是列表，以及 --bg 在未做信任确认的目录里能不能复现的人：把「无头 /code-review 须同时报时间、件数、输出格式，以及背景会话是否真的跑成了」写成门禁，区别于只谈变更说明或只看一次摘要的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/kai_kou/items/460bc72fdf72345767bf",
+    sourceLabel: "qiita.com · /code-reviewの背景実行はv2.1.300でどう変わったか、変遷と実測",
+    upvotes: 709,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "code-review",
+      "eval",
+      "changelog",
+      "headless",
+    ],
+    howItWorks: [
+      "粘贴 Agent 无头审查的对照边界（是不是约同一份带 bug 的差分要记下 24,341ms 对 19 秒、5 件对 4 件、JSON 数组对编号列表、是不是约 --bg 在未做信任确认的新目录里有没有复现到）以及「绝不可把换了版本或没有出现要我修吗写成审查已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下第 1 次 duration_ms 24,341、5 件、费用 0.008475925 美元，第 2 次 19 秒、4 件、is_backgrounded 为 False，以及旧记录是 2026-07-24、v2.1.218、--bg、--model claude-haiku-4-5 上约 34 秒、3 件，执行方式与模型旗标字符串都不同",
+      "人工保留两次无头结果、费用只写在第 1 次、以及 --bg 未能复现来自哪一次自述；Agent 不代你保证「同样看到 24,341ms、5 件或没有要我修吗就等于下一版已经门禁，或背景会话也不会再问要不要修，或 19 秒已经可以当成比旧记录更快」",
+    ],
+    tips: [
+      "源帖（JSON-LD Article datePublished 2026-11-08T09:09:19.000+09:00 → 2026-11-08，同时刻为 UTC 2026-11-08T00:09:19Z、Asia/Shanghai 2026-11-08 08:09:19；dateModified 与发布相同；Qiita API created_at 2026-11-08T09:09:19+09:00、updated_at 相同；取 published；GET 200（UA MiraBot/1.0））：kai_kou（甲斐 甲）在《/code-reviewの背景実行はv2.1.300でどう変わったか、変遷と実測》写同一份差分上两次无头跑的对照。https://x.com/k_aik_ou GET 200（可达社交主页导流，源页作者卡 website 为 https://twitter.com/k_aik_ou ，跟随至 https://x.com/k_aik_ou 亦 GET 200；与 twitter_screen_name 相同）。https://github.com/kai-kou GET 200（可达作者 GitHub 导流，源页作者卡 github_login_name）。厂商一次资料已核、不列入可达导流：https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md GET 200。正文无配图。",
+      "与近批 --restricted／--safe-mode／--bare、计划评审方法文不同：本条不是把旗标是否加载项目 deny 或评审流程设计当主线，而是同一份带 bug 的差分在 v2.1.300 无头 /code-review 上，时间、件数与输出格式怎么记，以及 --bg 在未做信任确认的新目录里能不能复现的门禁。同作者 Codex CLI 0.146.1／0.147.0 --full-auto 篇本批不选。",
+    ],
+    approach: `kai_kou（甲斐 甲）在《/code-reviewの背景実行はv2.1.300でどう変わったか、変遷と実測》（JSON-LD 2026-11-08，与发布时刻相同）写明：要确认 v2.1.218 时背景审查末尾会问「要我修吗」、并停在等人应答的问题，在现行 v2.1.300 上是否还在。执行环境是 Claude Cloud 的 Linux 容器，版本于 2026-10-15 JST 用 claude --version 确认为 v2.1.300，模型旗标是 --model haiku。对照用的旧记录是 2026-07-24、v2.1.218、claude --bg --model claude-haiku-4-5 "/code-review"：约 34 秒里 status 从 busy 到 idle、state 从 working 到 blocked，指摘 3 件（会变成字符串拼接的加法、除以零、导出格式的破坏性变更），末尾是「Would you like me to fix these issues?」。
+
+同一容器里对新目录做 --bg 时，行为符合 v2.1.281「未通过信任确认的目录，非对话就会退出」；这次容器不能做对话式确认，背景会话这条路径到此停止。随后用无头 claude -p "/code-review" 对同一份带 bug 的差分跑了两次。第 1 次 --output-format json：日志为 subtype success、is_error False、duration_ms 24,341、total_cost_usd 0.008475925，result 是含 5 件指摘的 JSON 数组；旧记录的 3 件都在，并多了类型检查缺失和只用注释带过。第 2 次加 stream-json 追事件：所要时间 19 秒，指摘 4 件，编号列表；task_started 里 description 为 /code-review、subagent_type 为 general-purpose、task_type 为 local_agent，is_backgrounded 为 False；未指定效果等级时按 high 跑，用的是 v2.1.274 起、不把多个观点分给多个子代理的内联方式。两次末尾都是审查范围说明（HEAD 是唯一提交、没有 upstream，因此对着未提交的工作树差分）和 CLAUDE.md 有无，没有「要我修吗」。作者还跑了 claude agents --json：当时容器里进行中的对话会话有 status busy，输出里没有 state 字段。
+
+本场景据此输出「无头 /code-review 须同时记下时间、件数、输出格式，以及 --bg 是否真的跑成了，不能只报换了版本或没有出现要我修吗」提纲。禁止把 24,341ms、5 件或 19 秒写成任意版本同分布，或把无头两次都没有提问写成背景会话已经门禁。第 1 次的费用只记在这一次 json 输出上，不写到第 2 次。旧记录与这次的执行方式、模型旗标字符串都不同，不能把时间差归因于版本。`,
+    outcomes: [
+      "源披露作者在 Claude Cloud 的 Linux 容器上，用 Claude Code v2.1.300、--model haiku，对同一份带 bug 的差分做两次无头 /code-review：第 1 次 --output-format json 为 duration_ms 24,341、5 件、JSON 数组，费用 0.008475925 美元；第 2 次 stream-json 为 19 秒、4 件、编号列表，is_backgrounded 为 False。两次末尾都没有「Would you like me to fix these issues?」。同一容器里对新目录做 --bg 时，因未先做信任确认而停下，背景会话这条路径这次没有复现。属作者这一次在该版本、该模型旗标、该差分与该无头命令上的记录（各 1 次；费用只出现在第 1 次日志），不可外推为你同样看到 24,341ms、5 件或没有「要我修吗」就等于下一版已经门禁，或背景会话也不会再问要不要修，或 19 秒已经可以当成比 2026-07-24、v2.1.218、--bg、--model claude-haiku-4-5 上约 34 秒／3 件更快。",
+      "能把「可写成同时检查时间、件数、输出格式，以及 --bg 是否真的跑成了」与「必须人完成的题目与导流链」拆开。",
+      "为把「换了版本」或「结果是 JSON」当成审查输出已门禁，以及用旧记录里的 state 字段做监视条件提供提问清单。",
+    ],
+    caveats: [
+      "24,341ms、0.008475925 美元、5 件与 19 秒、4 件，均为作者自述；测的是这一份差分上各 1 次无头生成，不是多次平均。费用只写在第 1 次 json 输出上。第 2 次未给出同等的美元字段，不编造。旧记录约 34 秒／3 件是另一次、另一种启动方式与另一条模型旗标字符串上的记录，不能把时间差归因于版本。无头两次都没有「要我修吗」，不能写成背景会话已经同样不会提问。",
+      "https://x.com/k_aik_ou GET 200（可达社交主页导流；作者卡 website https://twitter.com/k_aik_ou 跟随至同一地址亦 GET 200）；https://github.com/kai-kou GET 200（可达作者 GitHub 导流）。https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md GET 200，已核、不列入可达导流。正文无配图。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（qiita.com / kai_kou），也不是 Anthropic 或 Claude Code 官方的官文简报。CHANGELOG 条目是作者转述，版本行为以这次实测为准。",
+    ],
+    prompts: [
+      {
+        title: "无头审查须先按同一份差分报时间与格式",
+        body: `你是资深 Agent 审查验收教练。只根据用户边界写门禁，不要编造审查已门禁。
+
+现在是不是约同一份带 bug 的差分要记下无头跑的时间、件数与输出格式：{{whether_about_headless_time_count_format}}
+是不是约 --bg 在未做信任确认的新目录里有没有复现到：{{whether_about_bg_trust_gate}}
+是不是约旧记录的时间与件数不能直接拿来比快慢：{{whether_about_old_record_incomparable}}
+
+输出 Markdown：
+1. 为什么「换了 /code-review 版本」或「结果是 JSON」不能写成审查已发现已门禁
+2. 应怎样同时检查时间、件数、输出是数组还是列表，以及背景会话是否真的跑成了
+3. 只有一次 24,341ms、5 件和一次 19 秒、4 件的账本时，应怎样单独记账，而不是写成下一版也必然同分布
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 24,341ms、5 件或没有要我修吗就等于下一版已经门禁，或背景会话也不会再问要不要修，或 19 秒已经可以当成比旧记录更快」。`,
+      },
+      {
+        title: "两万四毫秒与十九秒复盘",
+        body: `报告上可以写同一份差分下第 1 次 24,341ms、5 件、JSON 数组，第 2 次 19 秒、4 件、编号列表，以及两次都没有「要我修吗」；但这是这一份差分与该无头命令上各 1 次的记录。请写复盘提纲。
+
+现象：{{twenty_four_seconds_five_findings_vs_nineteen_seconds_four}}
+
+输出：
+1. 更像审查结果已经稳定，还是只是同一次差分上输出格式在抖，或背景会话根本还没跑成
+2. 最小复验顺序（先核对版本与模型旗标→再看无头两次的时间、件数与格式→再看 --bg 是否因信任确认停下→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「换到 v2.1.300 就等于已经更快」，或「没有要我修吗就等于背景会话已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://qiita.com/kai_kou/items/460bc72fdf72345767bf",
+      label: "qiita.com · /code-reviewの背景実行はv2.1.300でどう変わったか、変遷と実測",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "819",
+    slug: "bpr-12rls-6open-1anon",
+    title: "bpr_prot：用两种说法让 Claude Code 2.1.317 与 Codex gpt-5.6-sol 各做 3 次、共 12 次备忘录应用——12 次都有 RLS、浏览器都没用秘密钥；未指定谁能读的 6 次都做成全员可读，其中 Codex 有 1 次登录前也能读；指定本人可见的 6 次都是本人可读",
+    summary: "个人（bpr_prot）；披露用练习用静态备忘录应用（index.html、app.js，备忘录先放在 localStorage；.env.example 里的值是假的，当时还没有表和存储）当起点，让 Claude Code 随附版 2.1.317 的既定模型和 Codex gpt-5.6-sol，按两种说法各做 3 次、共 12 次，做成带登录、能写备忘录并附一张图的 Supabase 应用。判定是读生成的 SQL 与代码，没有对着真库从外读取。12 次都有 enable row level security，浏览器代码都只用公开钥、没用秘密钥，12 次都没有做视图。说法 A 不指定谁能读：6 次都做成全员可见；其中 Claude Code 3 次都是登录后全员可读、图片桶 3 次都非公开；Codex 3 次都向全员打开，其中 1 次 SQL 为 using (true) 且没有 TO，按作者对 PostgreSQL 默认的说明是登录前也能读正文与显示名，图片桶 2 次公开。说法 B 添上「登录的人只能看自己的备忘录和图片」：6 次都是本人可读、图片桶都非公开。说法 A 里 Claude Code 3 次都在回复里说明了读范围，Codex 3 次只写设置了 RLS、没写谁能读；作者写明各条件只有 3 次，不是 AI 优劣。不代你同样看到 12 次都有 RLS 或说法 B 6 次都是本人可读，就等于下一份迁移已经读范围正确，或只看 RLS 开关就已经能当安全门禁，或把 1 次 using (true) 写成 Codex 必然会在登录前可读。",
+    description: "面向已经把「RLS 已经打开」或「浏览器没有秘密钥」当成表和图片桶已门禁、却还没按同一种说法分开记谁能读、图片桶是否公开，以及判定是不是只读了 SQL、没有对着真库看的人：把「Agent 生成的库表须同时报 RLS 开关、读范围策略和存储桶是否公开，以及有没有对着真库核过」写成门禁，区别于只谈官方步骤或只看开关的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/bpr_prot/articles/9d3e3631820c5d",
+    sourceLabel: "zenn.dev · Claude CodeとCodexにSupabaseのメモアプリを12回作らせたら、RLSは毎回かかっていた。分かれたのは『だれが読めるか』",
+    upvotes: 710,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "Supabase",
+      "RLS",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 生成库表的对照边界（是不是约两种说法下要记下 12 次是否都有 RLS、是不是约未指定谁能读的 6 次是否都做成全员可读、是不是约判定只读了 SQL 没有对着真库看）以及「绝不可把 RLS 已打开或浏览器没有秘密钥写成读范围已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 12 次都有 RLS、都没用秘密钥，说法 A 的 6 次都是全员可读且 Codex 有 1 次 using (true)、图片桶 2 次公开，说法 B 的 6 次都是本人可读，以及各条件只有 3 次、不是 AI 优劣",
+      "人工保留 12 次对照、using (true) 那 1 次和图片桶 2 次公开来自哪一次自述；Agent 不代你保证「同样看到 12 次都有 RLS 或说法 B 6 次都是本人可读就等于下一份迁移已经读范围正确，或只看 RLS 开关就已经能当安全门禁，或把 1 次 using (true) 写成 Codex 必然会在登录前可读」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T14:19:43.739+09:00 → 2026-11-04，同时刻为 UTC 2026-11-04T05:19:43Z、Asia/Shanghai 2026-11-04 13:19:43；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：bpr_prot 在《Claude CodeとCodexにSupabaseのメモアプリを12回作らせたら、RLSは毎回かかっていた。分かれたのは『だれが読めるか』》写两种说法下各 3 次、共 12 次的对照。可达导流：https://bpr-prot.com/ GET 200（作者站点）；https://bpr-prot.com/?utm_source=zenn&utm_medium=article&utm_campaign=zenn_supabase_rls GET 200（文内带 UTM 的同一站点）；https://x.com/BPR_Prot GET 200（社交主页）；https://www.youtube.com/@BPRProt GET 200（频道）；https://www.youtube.com/watch?v=LDm9G19yI3M GET 200（同主题视频）。文内硬链：https://qiita.com/bpr_prot/items/6b6802ba6343c6921a5b GET 200（同作者 5 处点检篇，与产品导流一并列示，不单独当成另一条实践源）。厂商与一次资料已核、不列入可达导流：https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps 、https://supabase.com/docs/guides/storage/buckets/fundamentals 、https://www.postgresql.org/docs/current/sql-createpolicy.html 均 GET 200。正文无配图。作者卡 website 为 bpr-prot.com，twitter 为 BPR_Prot，GitHub 为空。",
+      "与近批安全扫描对照、Juice Shop 学习会转述不同：本条不是把扫描得分或会后转述当主线，而是两种说法下「谁能读」和图片桶是否公开怎么记，以及只看 RLS 开关够不够的门禁。各条件只 3 次，作者写明不是 AI 优劣。判定没有对着真库从外读取，不能写成已经测过外网可读。",
+    ],
+    approach: `bpr_prot 在《Claude CodeとCodexにSupabaseのメモアプリを12回作らせたら、RLSは毎回かかっていた。分かれたのは『だれが読めるか』》（页内 publishedAt 2026-11-04，与发布时刻相同）写明：看到 UpGuard 在 2026-10-14 公布的调查——16,326 个使用 Supabase 的数据库里表可以从外读取——之后，想确认让 AI 建表时 RLS 会不会加上。练习用起点是写备忘录并一览的静态网页（index.html 与 app.js，备忘录先放在 localStorage）；.env.example 里有 Supabase 的 URL、公开钥和秘密钥栏目，值是假的；当时还没有表和存储。
+
+说法 A 不指定谁能读，只要求做成用 Supabase 的备忘录应用：登录的人能写并保存，备忘录可附一张图，一览要出作者显示名，建表和存储的 SQL 放到 supabase/migrations/，做完后提交。说法 B 在同一段后面添上「登录的人只能看自己的备忘录和图片」。Claude Code 用随附版 2.1.317 的既定模型，Codex 用 gpt-5.6-sol，每种说法各 3 次，共 12 次。判定是读生成的 SQL 与代码，没有对着真库从外读取；比的是「做成了能被读的样子」，不是已经从外读到的结果。
+
+12 次都建了显示名表和备忘录表，都有把 RLS 打开的 SQL，都没有做视图；浏览器代码都只用公开钥，没有用秘密钥。差别出在策略里「谁的行能读」和图片存放处。说法 A 的 6 次都做成全员可见：Claude Code 3 次都是登录后全员可读、图片桶 3 次都非公开；Codex 3 次都向全员打开，其中 1 次策略名为 memos are readable by everyone，using (true) 且没有 TO，按作者对 PostgreSQL 默认的说明，登录前也能读正文与显示名；说法 A 的 6 次里有 2 次图片桶公开，这两次都在 Codex 的说法 A。剩余 5 次是登录后可读全员备忘录。作者写明：从「一览要出显示名」理解成共享列表并不奇怪，这是说法里没定公开范围、由 AI 自己定的结果，不是拿来排 AI 对错。说法 B 的 6 次都是本人可读、图片桶都非公开。说法 A 里 Claude Code 3 次都在回复里说明了读范围，并提到若只要自己的份可以改规则；Codex 3 次只写设置了 RLS 策略，没写谁能读。作者写明各条件只有 3 次，不是 AI 优劣。
+
+本场景据此输出「Agent 生成的库表须同时记下 RLS 开关、读范围策略和存储桶是否公开，以及判定有没有对着真库核过，不能只报 RLS 已打开或浏览器没有秘密钥」提纲。禁止把 12 次都有 RLS 或说法 B 6 次都是本人可读写成任意迁移同分布，或把 1 次 using (true) 写成 Codex 必然会在登录前可读。`,
+    outcomes: [
+      "源披露作者用两种说法让 Claude Code 随附版 2.1.317 的既定模型和 Codex gpt-5.6-sol 各做 3 次、共 12 次备忘录应用：12 次都有 RLS，浏览器都没用秘密钥，都没有做视图。说法 A 的 6 次都做成全员可读，其中 Codex 有 1 次 using (true) 且没有 TO、按作者说明登录前也能读，图片桶 2 次公开（都在 Codex 的说法 A）。说法 B 的 6 次都是本人可读、图片桶都非公开。属作者这一次在该起点应用、该两种说法与上述模型和版本上的记录（各条件 3 次；判定是读 SQL 与代码，没有对着真库从外读取；作者写明不是 AI 优劣），不可外推为你同样看到 12 次都有 RLS 或说法 B 6 次都是本人可读就等于下一份迁移已经读范围正确，或只看 RLS 开关就已经能当安全门禁，或把 1 次 using (true) 写成 Codex 必然会在登录前可读。",
+      "能把「可写成同时检查 RLS 开关、读范围策略和存储桶是否公开，以及有没有对着真库核过」与「必须人完成的题目与导流链」拆开。",
+      "为把「RLS 已经打开」或「浏览器没有秘密钥」当成读范围已门禁，以及用 3 次对照给 AI 排名提供提问清单。",
+    ],
+    caveats: [
+      "12 次都有 RLS、都没用秘密钥、说法 A 6 次全员可读、Codex 有 1 次 using (true)、图片桶 2 次公开、说法 B 6 次本人可读，均为作者自述；各条件只有 3 次，不是多次平均，作者写明不是 AI 优劣。判定没有对着真库从外读取，不能写成已经测过外网可读。using (true) 登录前也能读，是作者按 PostgreSQL 默认对那一条 SQL 的说明，不是从外读到的结果。",
+      "https://bpr-prot.com/ GET 200（可达作者站点导流）；https://bpr-prot.com/?utm_source=zenn&utm_medium=article&utm_campaign=zenn_supabase_rls GET 200（可达文内带 UTM 的同一站点导流）；https://x.com/BPR_Prot GET 200（可达社交主页导流）；https://www.youtube.com/@BPRProt GET 200（可达频道导流）；https://www.youtube.com/watch?v=LDm9G19yI3M GET 200（可达同主题视频导流）。https://qiita.com/bpr_prot/items/6b6802ba6343c6921a5b GET 200（同作者 5 处点检篇硬链，与产品导流一并列示）。UpGuard、Supabase 与 PostgreSQL 文档已核、不列入可达导流。正文无配图。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / bpr_prot），文内有 BPR Prot. 发布前确认服务的产品导流（作者写明该工具不是专门诊断 Supabase RLS 设置）。也不是 Anthropic、OpenAI 或 Supabase 官方的官文简报。",
+    ],
+    prompts: [
+      {
+        title: "生成库表须先按同一种说法报读范围",
+        body: `你是资深 Agent 库表验收教练。只根据用户边界写门禁，不要编造读范围已门禁。
+
+现在是不是约两种说法下要记下 12 次是否都有 RLS：{{whether_about_rls_on_all_twelve}}
+是不是约未指定谁能读的 6 次是否都做成全员可读、其中有没有 using (true)：{{whether_about_world_readable_and_using_true}}
+是不是约判定只读了 SQL、没有对着真库看：{{whether_about_sql_review_not_live_db}}
+
+输出 Markdown：
+1. 为什么「RLS 已经打开」或「浏览器没有秘密钥」不能写成读范围已发现已门禁
+2. 应怎样同时检查 RLS 开关、读范围策略和存储桶是否公开，以及有没有对着真库核过
+3. 只有各条件 3 次、其中 1 次 using (true)、图片桶 2 次公开的账本时，应怎样单独记账，而不是写成下一份迁移也必然同分布，或据此给模型排名
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 12 次都有 RLS 或说法 B 6 次都是本人可读就等于下一份迁移已经读范围正确，或只看 RLS 开关就已经能当安全门禁，或把 1 次 using (true) 写成 Codex 必然会在登录前可读」。`,
+      },
+      {
+        title: "十二次都有 RLS 与一次 using true 复盘",
+        body: `报告上可以写 12 次都有 RLS、浏览器都没用秘密钥，说法 A 的 6 次都是全员可读且其中 1 次 using (true)、图片桶 2 次公开，说法 B 的 6 次都是本人可读；但这是该起点应用与各条件 3 次、而且只读了 SQL 的记录。请写复盘提纲。
+
+现象：{{twelve_rls_and_one_using_true}}
+
+输出：
+1. 更像读范围已经按说法收住，还是只是 SQL 看起来像、还没对着真库看，或 3 次不够用来给模型排名
+2. 最小复验顺序（先核对 RLS 开关与秘密钥→再看 using 条件和 TO、以及存储桶是否公开→再决定要不要对着真库从外读一次→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「只要打开 RLS 就等于已经门禁」，或「指定本人可见就等于下一份迁移必然本人可读」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/bpr_prot/articles/9d3e3631820c5d",
+      label: "zenn.dev · Claude CodeとCodexにSupabaseのメモアプリを12回作らせたら、RLSは毎回かかっていた。分かれたのは『だれが読めるか』",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "820",
+    slug: "otar-1355pr-3455c-543",
+    title: "otar：2026-09-05 到 11-07 让 Agent 持续改自己的开发环境 Switchboard——提交 3,455、合并 PR 1,355；PBI 关闭中位从 144 小时降到 38 小时；GitHub 写入队列 16,598 件里 587 件超过 5 分钟才送达；/tmp 固定名 hook 从 10-05 起拦了 543 次",
+    summary: "个人（otar）；披露 2026-09-05 到 11-07 在自己的开发环境 Switchboard 上，代码几乎由 Agent 来写，并用 Switchboard 开发 Switchboard；可替换的运行器当时用的是 Claude Code 和 Codex。数字只来自开发用仓库、GitHub 的 Issue／PR，以及 Switchboard 自己的 Task 与守护进程记录（SQLite）；公开侧只有非公开仓 main 的树，没有 git 历史、Issue、PR 和大部分设计经过。按周一为周起点（11-02 那一周计到 7 日），自己开的 Task／Task 合计／已合并 PR：9/5 为 5／5／18，9/7 为 13／13／17，9/14 为 26／26／19，9/21 为 48／54／93，9/28 为 43／351／137，10/5 为 25／195／79，10/12 为 52／338／240，10/19 为 61／304／189，10/26 为 55／428／288，11/2 为 39／360／275。合计提交 3,455、合并 PR 1,355。PBI 从建立到关闭的中位数，从 9/21 那一周的 144 小时降到 10/26 那一周的 38 小时。缺陷类 PBI 占比：9 月 12%（127 件里 15 件）、10 月 19%（373 件里 72 件）、11 月 1–7 日 33%（117 件里 39 件）；10 月 72 件里 36 件是自己用时发现、15 件是 Agent 或定期检查发现，其余没有来源记录。10 月中旬 7 天里，Agent 停下等作者回答 142 件。GitHub 写入队列 10-09 到 11-07：送到 16,598 件，其中 587 件从保存起超过 5 分钟、213 件超过 1 小时才送达，与 GitHub 侧对不上而暂扣 3 件。自动续跑（计的是续跑那一回合有没有正常结束，不是 Task 整体完成）：守护进程停止后送出 677、该回合正常结束 499（74%）；用量上限 143／70（49%）；GitHub 上限 73／67（92%）。10-12 以后用量上限停止 35 件里 26 件是 Codex 的上限，且多半是 Task 里叫来做审查的，不在自动续跑对象里。内存（AWS t4g.medium，2 vCPU／4GB）：10/19 那一周内存不足停止 10 次、中断 Task 33，版本切换停止 47 次、中断 16；10/26 为 32／148 与 73／90；11/2–7 为 3／23 与 39／25。11-01 到 7 日内存超过上限九成的时段平均：Claude Code 进程 45%（平均同时 3.8 个，每个约 200MB 这一档）、无头 Chrome 28%、守护进程等 15%、测试 6%。同一窗口版本切换 40 次，跳过（未改换）与自动回退都是 0 次；回退在生产上还没跑过，只在测试和 E2E 里确认过。10-01 起秘密写入约拦 15 次（AWS 账户 ID 9、设备认证码 4、AWS 配置名 2）。/tmp 固定名 hook 从 10-05 起拦了 543 次，11 月仍每周 50 次以上。9-23 曾有两个会话在同一主机上互相覆盖 /tmp/post_review.sh，差一点把审查发到别的 PR。旅行应用是另一仓（合并 PR 443，实旅行用过 2 次），不计入上述合计。作者用 Claude Ultra，自 9/28 那一周起，周上限几乎用尽或接近用尽。新增行里应用本体代码占比，第一周 60%，10 月以后约 20%。不代你同样看到 1,355 条 PR 或中位 38 小时，就等于下一套环境已经跑通，或队列 16,598 已经说明 GitHub 不再是瓶颈，或把这些数字写成框架已经比标准功能更快。",
+    description: "面向已经把「让 Agent 持续改自己的开发环境」或「合并 PR 很多」当成编排已门禁、却还没按同一段窗口分开记 GitHub 写入是否延误、内存和用量上限打断了多少次，以及数字是不是只来自这一仓的人：把「自研开发环境须同时报合并量、队列延误、中断与续跑，以及 hook 拦住次数」写成门禁，区别于只谈标准功能清单或只看 PR 总数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+      "github",
+    ],
+    sourceUrl: "https://zenn.dev/otar/articles/switchboard-own-dev-environment",
+    sourceLabel: "zenn.dev · AIエージェントに自分の開発環境を作らせ続けた2か月",
+    upvotes: 711,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "GitHub",
+      "orchestration",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 自研开发环境的对照边界（是不是约 2026-09-05 到 11-07 要记下提交 3,455、合并 PR 1,355，是不是约写入队列 16,598 件里有 587 件超过 5 分钟才送达，是不是约 /tmp 固定名 hook 从 10-05 起拦了 543 次）以及「绝不可把合并很多或换了自研环境写成编排已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下每周 Task 与合并数、PBI 关闭中位 144 小时到 38 小时、队列延误、自动续跑 677／143／73 与该回合结束比例，以及内存不足与版本切换的中断次数，并且主数字只来自 Switchboard 仓",
+      "人工保留 3,455 与 1,355、16,598 与 543、旅行应用 443 条 PR 不混写来自哪一次自述；Agent 不代你保证「同样看到 1,355 条 PR 或中位 38 小时就等于下一套环境已经跑通，或队列已经说明 GitHub 不再是瓶颈，或这些数字已经可以当成框架比标准功能更快」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-09T06:41:08.207+09:00 → 2026-11-09，同时刻为 UTC 2026-11-08T21:41:08Z、Asia/Shanghai 2026-11-09 05:41:08；bodyUpdatedAt 2026-11-09T06:48:05.628+09:00（晚于发布）→ 同时刻为 UTC 2026-11-08T21:48:05Z、Asia/Shanghai 2026-11-09 05:48:05；取 published；GET 200（UA MiraBot/1.0））：otar 在《AIエージェントに自分の開発環境を作らせ続けた2か月》写两个月的台账。可达导流：https://github.com/iunct-lab/switchboard GET 200（产品仓）。文内一次资料已核：https://github.com/iunct-lab/switchboard/blob/main/docs/design/releases-and-rescue.md 、https://github.com/iunct-lab/switchboard/blob/main/ops-kit/src/gh-guard.ts 、https://github.com/iunct-lab/switchboard/blob/main/ops-kit/src/heavy.ts 、https://github.com/iunct-lab/switchboard/blob/main/ops-kit/src/shared-tmp.ts 、https://github.com/iunct-lab/switchboard/blob/main/scripts/merge-gate.ts 均 GET 200。失败码须点名、不列入可达：https://github.com/iunct-lab/switchboard/blob/main/docs/design/public-repo.md GET 404。连载前作 https://zenn.dev/otar/articles/capsule-host-personal-app GET 200。配图 5 张已核、不列入产品导流：https://static.zenn.studio/user-upload/deployed-images/6ff834774020473964f009da.png?sha=1d4dd50d54a192e2325d1692098327bdef6a1c0c 、https://static.zenn.studio/user-upload/deployed-images/4279c31d935c65c357f9102a.png?sha=741918ced04ee807d9cca36c77714afc4d719775 、https://static.zenn.studio/user-upload/deployed-images/594462de340590f9ddf398b2.png?sha=037b1d37cfc4c723fa44b84af829c32dbc4c7d16 、https://static.zenn.studio/user-upload/deployed-images/8e0013e37e2624b3169f34c1.png?sha=aa220c9296e42c8db473cecafd517c28c45f3e08 、https://static.zenn.studio/user-upload/deployed-images/1dc5e78a7d4dc34bfe9686c1.png?sha=f29ba732cf503037902efe81fa03c25b3d807226 均 GET 200。厂商文档已核、不列入可达导流：https://code.claude.com/docs/en/agent-teams 、https://code.claude.com/docs/en/agent-view 、https://code.claude.com/docs/en/code-review-local 、https://code.claude.com/docs/en/interactive-mode#wait-for-a-usage-limit-to-reset 、https://code.claude.com/docs/en/permission-modes 、https://code.claude.com/docs/en/remote-control 、https://code.claude.com/docs/en/routines 、https://code.claude.com/docs/en/sandboxing 、https://code.claude.com/docs/en/worktrees 、https://community.openai.com/t/feature-request-auto-resume-after-usage-limit/1397124 、https://docs.github.com/en/graphql/overview/rate-limits-and-query-limits-for-the-graphql-api 均 GET 200。失败码须点名、不列入可达（亦非导流）：https://developers.openai.com/codex/concepts/sandboxing/auto-review GET 403。第三方已核、不列入导流：https://awesome.ecosyste.ms/projects/github.com%2Flcsmas%2Forchestra GET 200；https://kanbots.dev/learn/run-claude-code-in-parallel 跟随至 https://www.kanbots.dev/learn/run-claude-code-in-parallel GET 200。作者卡 website／GitHub／X 为空。",
+      "与近批多 PR／token 边界、worktree 守卫、Remote Control／过夜编排不同：本条不是把 token 或过夜值守当主线，而是两个月里 GitHub 上限、内存、写入队列和 hook 拦住次数怎么记，以及作者写明 LLM 用量之前先在 GitHub 与内存上堵住的门禁。旅行应用 443 条 PR 是另一仓，不混入 Switchboard 合计。文内 public-repo.md GET 404、OpenAI auto-review 文档 GET 403，已披露、不列入可达。",
+    ],
+    approach: `otar 在《AIエージェントに自分の開発環境を作らせ続けた2か月》（页内 publishedAt 2026-11-09；bodyUpdatedAt 晚于发布，取 published）写明：与其持续换工具，不如自己做开发环境并边用边改。2026 年 9 月起做 Switchboard，代码几乎由 Agent 来写，并用它开发自己；可替换的运行器当时用的是 Claude Code 和 Codex。期间是 2026-09-05 到 11-07。数字来自开发用仓库、GitHub 的 Issue／PR，以及 Switchboard 自己的 Task 与守护进程记录（SQLite）。公开仓 https://github.com/iunct-lab/switchboard 只有非公开仓 main 的树，没有 git 历史、Issue、PR 和大部分设计经过。
+
+按周一为周起点（11-02 那一周计到 7 日），自己开的 Task／Task 合计／已合并 PR：9/5（开始做的那一周）5／5／18，9/7 为 13／13／17，9/14 为 26／26／19，9/21 为 48／54／93，9/28 为 43／351／137，10/5 为 25／195／79，10/12 为 52／338／240，10/19 为 61／304／189，10/26 为 55／428／288，11/2 为 39／360／275。作者写明：自己开的是从界面亲手委托的；其余是把需求拆成 PBI／Task 的处理和定期执行自动开的。9 月下旬自动推进机制做成后，自己开的数量几乎不变，Task 合计变成数倍。两个月合计提交 3,455、合并 PR 1,355。PBI 从建立到关闭的中位数，从 9/21 那一周的 144 小时降到 10/26 那一周的 38 小时。缺陷类 PBI 占比：9 月 12%（127 件里 15 件）、10 月 19%（373 件里 72 件）、11 月 1–7 日 33%（117 件里 39 件）；10 月 72 件里 36 件是自己用时发现、15 件是 Agent 或定期检查发现，其余没有来源记录；9 月的缺陷 PBI 记录上没有检查发现的。10 月中旬 7 天里，Agent 停下等作者回答 142 件。新增行里应用本体代码（不含测试、文档和开发用工具）占比，第一周 60%，10 月以后约 20%。旅行计划分享应用是另一仓，合并 PR 443，实旅行用过 2 次，不计入上述合计。作者用 Claude Ultra，自 9/28 那一周起，周上限几乎用尽或接近用尽。
+
+GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保存起超过 5 分钟、213 件超过 1 小时才送达；作者写明没有队列时这些会当场失败。与 GitHub 侧对不上而暂扣 3 件。自动续跑计的是「续跑送出到运行器答完」这一回合是否正常结束，不是 Task 整体是否完成：守护进程停止后送出 677、该回合正常结束 499（74%）；用量上限 143／70（49%）；GitHub 上限 73／67（92%）。用量上限后的续跑从 10-12 那一周起明显变少；上限停止本身没有变少，10-12 以后 35 件里 26 件是 Codex 的上限，且多半是 Task 里叫来做审查的，Task 自己的运行器没停，因而不在自动续跑对象里。Codex 用那条文案做判定，作者写明还没有上限停住的实物记录，没有确认。内存用的是 AWS t4g.medium（2 vCPU／4GB）。10/19 那一周内存不足停止 10 次、中断 Task 33，版本切换停止 47 次、中断 16；10/26 为 32／148 与 73／90；11/2–7 为 3／23 与 39／25。11-01 起才有「内存被谁用掉」的记录；11-01 到 7 日内存超过上限九成的时段平均：Claude Code 进程 45%（平均同时 3.8 个，每个约 200MB 这一档）、做画面确认的无头 Chrome 28%、守护进程等 15%、测试 6%。11-01 到 7 日版本切换 40 次，跳过（未改换）与自动回退都是 0 次；回退在生产上还没跑过，只在测试和 E2E 里确认过，判定也只看启动和能否连上，功能坏了的版本仍会切过去。10-01 起用 PATH 最前的同名脚本拦 gh 写入，约 15 次（AWS 账户 ID 9、设备认证码 4、AWS 配置名 2）。9-23 曾有两个会话在同一主机上互相覆盖 /tmp/post_review.sh，差一点把审查发到别的 PR；/tmp 固定名 hook 从 10-05 起拦了 543 次，11 月仍每周 50 次以上。作者写明拦住次数不是已经防住的事故数，只靠技能里写 mktemp 不够。
+
+本场景据此输出「自研开发环境须同时记下合并量、队列延误、中断与续跑，以及 hook 拦住次数，不能只报合并很多或换了自研环境」提纲。禁止把 1,355 条 PR 或中位 38 小时写成任意环境同分布，或把这些数字归因于某框架已经比标准功能更快。主数字只记在 Switchboard 仓上，不与旅行应用 443 条 PR 混写。`,
+    outcomes: [
+      "源披露作者在 2026-09-05 到 11-07 让 Agent 持续改自己的开发环境 Switchboard：提交 3,455、合并 PR 1,355；PBI 关闭中位从 9/21 那一周的 144 小时降到 10/26 那一周的 38 小时。GitHub 写入队列 10-09 到 11-07 送到 16,598 件，其中 587 件超过 5 分钟、213 件超过 1 小时才送达，对不上而暂扣 3 件。自动续跑（计该回合是否正常结束）：守护进程停止 677／499（74%），用量上限 143／70（49%），GitHub 上限 73／67（92%）。/tmp 固定名 hook 从 10-05 起拦了 543 次。属作者这一次在该仓、该窗口与 Claude Code、Codex 运行器上的记录（公开侧没有 git 历史和 Issue／PR；旅行应用 443 条 PR 是另一仓，不计入合计；作者写明 LLM 用量之前先在 GitHub 与内存上堵住），不可外推为你同样看到 1,355 条 PR 或中位 38 小时就等于下一套环境已经跑通，或队列已经说明 GitHub 不再是瓶颈，或这些数字已经可以当成框架比标准功能更快。",
+      "能把「可写成同时检查合并量、队列延误、中断与续跑，以及 hook 拦住次数」与「必须人完成的题目与导流链」拆开。",
+      "为把「合并 PR 很多」或「换了自研环境」当成编排已门禁，以及把旅行应用的 PR 数混进同一合计提供提问清单。",
+    ],
+    caveats: [
+      "3,455、1,355、144 小时到 38 小时、16,598／587／213、543、自动续跑比例和内存中断次数，均为作者自述，出自开发用仓库、Issue／PR 与本地 SQLite，公开仓没有同等历史。旅行应用 443 条 PR 是另一仓，不混写。PBI 关闭中位是 9/21 那一周对 10/26 那一周，不能写成整个两个月已经稳定在 38 小时。自动续跑计的是该回合是否结束，不是 Task 整体完成。拦住 543 次不是已经防住的事故数。不能把这些数字归因于某框架已经比标准功能更快。",
+      "https://github.com/iunct-lab/switchboard GET 200（可达产品仓导流）。文内 public-repo.md https://github.com/iunct-lab/switchboard/blob/main/docs/design/public-repo.md GET 404，已披露、不列入可达。OpenAI 文档 https://developers.openai.com/codex/concepts/sandboxing/auto-review GET 403，已披露、不列入可达，亦非导流。releases-and-rescue.md、gh-guard.ts、heavy.ts、shared-tmp.ts、merge-gate.ts 均 GET 200。连载前作 https://zenn.dev/otar/articles/capsule-host-personal-app GET 200。配图 5 张完整 URL 已核：https://static.zenn.studio/user-upload/deployed-images/6ff834774020473964f009da.png?sha=1d4dd50d54a192e2325d1692098327bdef6a1c0c 、https://static.zenn.studio/user-upload/deployed-images/4279c31d935c65c357f9102a.png?sha=741918ced04ee807d9cca36c77714afc4d719775 、https://static.zenn.studio/user-upload/deployed-images/594462de340590f9ddf398b2.png?sha=037b1d37cfc4c723fa44b84af829c32dbc4c7d16 、https://static.zenn.studio/user-upload/deployed-images/8e0013e37e2624b3169f34c1.png?sha=aa220c9296e42c8db473cecafd517c28c45f3e08 、https://static.zenn.studio/user-upload/deployed-images/1dc5e78a7d4dc34bfe9686c1.png?sha=f29ba732cf503037902efe81fa03c25b3d807226 均 GET 200，不列入产品导流。primary GET 200（UA MiraBot/1.0）。作者卡 website／GitHub／X 为空。",
+      "上面写的是个人实践帖（zenn.dev / otar），也不是 Anthropic、OpenAI 或 GitHub 官方的官文简报。作者写明这不是「自研一定比现有工具好，或必须全部自做才能把开发交给 Agent」。",
+    ],
+    prompts: [
+      {
+        title: "自研开发环境须先按同一仓报队列与中断",
+        body: `你是资深 Agent 编排验收教练。只根据用户边界写门禁，不要编造编排已门禁。
+
+现在是不是约同一段窗口要记下提交与合并数、PBI 关闭中位：{{whether_about_commit_pr_pbi_median}}
+是不是约 GitHub 写入队列延误和自动续跑该回合是否结束：{{whether_about_queue_delay_and_autoresume}}
+是不是约 /tmp 固定名 hook 拦住次数，以及另一仓的 PR 数不能混写：{{whether_about_tmp_hook_and_repo_scope}}
+
+输出 Markdown：
+1. 为什么「合并 PR 很多」或「换了自研环境」不能写成编排已发现已门禁
+2. 应怎样同时检查合并量、队列延误、中断与续跑，以及 hook 拦住次数，并且写清数字来自哪一仓
+3. 只有这一仓、这一窗口的 3,455／1,355 和 16,598／543 的账本时，应怎样单独记账，而不是写成下一套环境也必然同分布，或归因于某框架已经更快
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 1,355 条 PR 或中位 38 小时就等于下一套环境已经跑通，或队列已经说明 GitHub 不再是瓶颈，或这些数字已经可以当成框架比标准功能更快」。`,
+      },
+      {
+        title: "一千三百五十五条 PR 与五百四十三次拦住复盘",
+        body: `报告上可以写两个月提交 3,455、合并 PR 1,355，写入队列 16,598 件里 587 件超过 5 分钟才送达，以及 /tmp 固定名 hook 拦了 543 次；但这是 Switchboard 这一仓、2026-09-05 到 11-07 的记录。请写复盘提纲。
+
+现象：{{thirteen_fifty_five_prs_and_five_forty_three_blocks}}
+
+输出：
+1. 更像编排已经跑通，还是只是合并量上去了、队列和内存仍在打断，或另一仓的数字被混进来了
+2. 最小复验顺序（先核对仓范围与每周表→再看队列延误和自动续跑口径→再看内存与 hook 拦住次数→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「自研环境就等于已经比标准功能更快」，或「拦住 543 次就等于事故已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/otar/articles/switchboard-own-dev-environment",
+      label: "zenn.dev · AIエージェントに自分の開発環境を作らせ続けた2か月",
+      date: "2026-11-09",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "821",
+    slug: "tomso-280-pyok-gitc",
+    title: "tomsolog：在 macOS、Claude Code v2.1.280 上用假数据和假仓库测权限规则——Read 工具与 cat .env 被拦住，python3 打开和未点名文件的 grep -r 能读到；把 git push 写成 ask 的用意下改用 deny 核对命中——cd && git push 与 timeout 包一层被拦住，git -C 则通过",
+    summary: "个人（tomsolog／トムソー）；披露在 macOS、Claude Code v2.1.280 上，用写了非秘密假值的文件，以及不通外网的本地假仓库，测 permissions 规则能拦住什么、会漏过什么。规则按绝对路径来写；文中表格命令是简化写法，实际跑的是绝对路径。.env 的 deny：Claude 自带的读取工具停住，cat .env 停住；python3 -c \"print(open('.env').read())\" 能读到；未点名文件的 grep -r KEY . 能读到。作者还写明，用文中的 ./.env 形式时，在终端 claude -p、Manual 模式下，读取工具与 cat .env 会停住，没设规则时能读到。git push 一例：用意是写成 ask，在 push 前确认；因确认画面不能自动复现，实际把 Bash(git push *) 写成 deny 来核对能不能命中，作者写明 ask 与 deny 的命中判定相同。结果：cd work && git push origin main 停住，cd work && timeout 10 git push origin main 停住，git -C work push origin main 通过（命令不是以 git push 开头，没打中 git push *）。漏过去的命令会不会直接执行，还要看其余规则和当时模式：Manual 下漏过去的命令仍会走平时的确认；Auto 下由分类器判断是否可执行。测的是假数据和假仓库，不能写成已经挡住真密钥或真的远程 push。不代你同样看到 Read 与 cat 被拦住或 git -C 通过，就等于下一套规则已经把门禁住，或 ask 已经能挡住所有 push 写法，或 python3 能读到就等于真密钥已经外泄。",
+    description: "面向已经把「加了 deny 或 ask」或「.env 写进规则」当成读取和推送已门禁、却还没按同一套规则分开记哪种命令写法会被拦住、哪种会漏过去，以及漏过去之后还要看当时是 Manual 还是 Auto 的人：把「权限规则须同时报命中与漏过的写法，以及漏过之后还要看模式」写成门禁，区别于只谈设置步骤或只看规则已经写上的实践。",
+    categories: [
+      "security",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tomsolog/articles/20261010-claude-code-permissions-guide",
+    sourceLabel: "zenn.dev · Claude Codeの操作をルールで止める仕組みと限界",
+    upvotes: 712,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "permissions",
+      "deny",
+      "ask",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 权限规则的对照边界（是不是约同一套 deny 要记下 Read 与 cat 会停住、python3 打开和未点名文件的 grep -r 能读到，是不是约 git push 写成 ask 的用意下用 deny 核对命中时 git -C 会不会漏过，是不是约漏过之后还要看当时是 Manual 还是 Auto）以及「绝不可把规则已经写上写成读取和推送已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 macOS、v2.1.280、假数据与假仓库上的命中与漏过，以及 git push 一例实际用 deny 核对、ask 与 deny 的命中判定按作者说明相同",
+      "人工保留四格读取对照和三格 git 对照来自哪一次自述；Agent 不代你保证「同样看到 Read 与 cat 被拦住或 git -C 通过就等于下一套规则已经门禁，或 ask 已经能挡住所有 push 写法，或 python3 能读到就等于真密钥已经外泄」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-07T23:06:31.930+09:00 → 2026-11-07，同时刻为 UTC 2026-11-07T14:06:31Z、Asia/Shanghai 2026-11-07 22:06:31；bodyUpdatedAt 2026-11-07T22:50:32.915+09:00（早于发布）；取 published；GET 200（UA MiraBot/1.0））：tomsolog（トムソー）在《Claude Codeの操作をルールで止める仕組みと限界》写同一套规则下的命中与漏过。作者卡 website／GitHub／X 为空，无作者产品导流。连载硬链已核：https://zenn.dev/tomsolog/articles/20261104-claude-code-permissions-quickstart GET 200（简易版）；https://zenn.dev/tomsolog/articles/20261003-claude-code-hooks-automation GET 200（hooks 前作）。配图 1 张已核、不列入产品导流：https://static.zenn.studio/user-upload/deployed-images/9d0bf5f9286d2343b3d46e35.png?sha=5a47a6a2dbf084c12f03beac538dee79a499652c GET 200。厂商文档已核、不列入可达导流：https://code.claude.com/docs/en/permissions 、https://code.claude.com/docs/en/permission-modes 、https://code.claude.com/docs/en/vs-code 、https://code.claude.com/docs/en/desktop 、https://code.claude.com/docs/en/settings 、https://code.claude.com/docs/en/sandboxing 均 GET 200。",
+      "与近批 --restricted／--safe-mode／--bare 是否加载项目 deny、hitsuji 的 settings 写法、tasukina 的无人 Bash 允许列表不同：本条不是把旗标或允许列表当主线，而是同一套 deny／ask 规则下，哪种命令写法会被拦住、哪种会漏过去，以及漏过去之后还要看模式的门禁。同作者简易版本批不另选。官方文档另举的 git -c 与 git 'push' 未在这次实测表里，不写成作者测过。",
+    ],
+    approach: `tomsolog（トムソー）在《Claude Codeの操作をルールで止める仕組みと限界》（页内 publishedAt 2026-11-07；bodyUpdatedAt 早于发布，取 published）写明：不想让 Claude Code 做的操作，不能只写在 CLAUDE.md 里拜托，而要用 permissions 规则来拦；但不是所有写法都会停住。文章以 VS Code 扩展为主，桌面应用和终端只补不同处；Web 版云会话没有 Manual、文件编辑一开始就被允许，不在范围内。权限模式里，本篇只谈 Manual（设置值 default）和 Auto；当时默认是 Auto。
+
+实测环境是 macOS、Claude Code v2.1.280。读取一例用写了非秘密假值的文件，让 Claude 去读，不是读者自己打的命令；表格命令是简化写法，实际按绝对路径执行；表中结果是把规则写成绝对路径形式 Read(//.../dummy.env) 后核对的。结果：Claude 自带的读取工具停住，cat .env 停住；python3 -c "print(open('.env').read())" 能读到；未点名文件的 grep -r KEY . 能读到。作者还写明，用文中的 ./.env 形式时，在终端 claude -p、Manual 模式下，读取工具与 cat .env 会停住，没设规则时能读到。作者写明：deny 拦的是 Claude 按常见方式去读的时候；若还要拦脚本打开文件，需要另加沙箱，沙箱默认是关的。
+
+推送一例用意是写成 ask，在 push 前确认。因确认画面不能自动复现，实际把 Bash(git push *) 写成 deny，在不通外网的本地假仓库上让 Claude 执行来核对能不能命中；作者写明 ask 与 deny 的命中判定相同，确认画面会不会真的出现则依据官方文档说明。结果：cd work && git push origin main 停住，cd work && timeout 10 git push origin main 停住，git -C work push origin main 通过——-C 是指定在该文件夹执行，命令不是以 git push 开头，没打中 git push *。官方文档另举 git -c push.default=current push origin main 和 git 'push' origin main 也是「不停住的例子」，这是文档里的例子，不是作者这次测过的行。漏过去的命令会不会直接执行，还要看其余规则和当时模式：Manual 下漏过去的命令仍会走平时的确认；Auto 下由分类器判断是否可执行。
+
+本场景据此输出「权限规则须同时记下命中与漏过的写法，以及漏过之后还要看模式，不能只报规则已经写上」提纲。禁止把 Read 与 cat 被拦住或 git -C 通过写成任意版本同分布，或把 ask 已经写上写成所有 push 写法都会确认。测的是假数据和假仓库，不能写成已经挡住真密钥或真的远程 push。`,
+    outcomes: [
+      "源披露作者在 macOS、Claude Code v2.1.280 上，用假数据和不通外网的假仓库测权限规则：Read 工具与 cat .env 被拦住，python3 打开和未点名文件的 grep -r 能读到。把 git push 写成 ask 的用意下，因确认画面不能自动复现，改用 deny 核对命中：cd && git push 与 timeout 包一层被拦住，git -C 则通过。属作者这一次在该版本、该绝对路径规则与假数据／假仓库上的记录（表格命令是简化写法；ask 与 deny 的命中判定按作者说明相同，确认画面是否出现依据官方文档；官方文档另举的 git -c 与 git 'push' 不是这次实测行），不可外推为你同样看到 Read 与 cat 被拦住或 git -C 通过就等于下一套规则已经门禁，或 ask 已经能挡住所有 push 写法，或 python3 能读到就等于真密钥已经外泄。",
+      "能把「可写成同时检查命中与漏过的写法，以及漏过之后还要看模式」与「必须人完成的题目与导流链」拆开。",
+      "为把「规则已经写上」或「.env 写进了 deny」当成读取和推送已门禁，以及把官方文档里的不停住例子写成自己测过提供提问清单。",
+    ],
+    caveats: [
+      "Read 与 cat 被拦住、python3 与未点名文件的 grep -r 能读到、cd && git push 与 timeout 包一层被拦住、git -C 通过，均为作者自述；测的是假数据与不通外网的假仓库，不能写成已经挡住真密钥或真的远程 push。git push 一例实际用 deny 核对命中，不是直接复现了 ask 确认画面。官方文档另举的 git -c 与 git 'push' 不是这次实测行。漏过去会不会执行，还要看当时是 Manual 还是 Auto。",
+      "作者卡 website／GitHub／X 为空，无作者产品导流。连载硬链 https://zenn.dev/tomsolog/articles/20261104-claude-code-permissions-quickstart 、https://zenn.dev/tomsolog/articles/20261003-claude-code-hooks-automation 均 GET 200。配图 https://static.zenn.studio/user-upload/deployed-images/9d0bf5f9286d2343b3d46e35.png?sha=5a47a6a2dbf084c12f03beac538dee79a499652c GET 200，不列入产品导流。permissions、permission-modes、VS Code、desktop、settings、sandboxing 文档均 GET 200，不列入可达导流。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / tomsolog），也不是 Anthropic 或 Claude Code 官方的官文简报。Web 版云会话不在作者实测范围内。",
+    ],
+    prompts: [
+      {
+        title: "权限规则须先按同一套写法报命中与漏过",
+        body: `你是资深 Agent 权限验收教练。只根据用户边界写门禁，不要编造读取和推送已门禁。
+
+现在是不是约同一套 deny 要记下 Read 与 cat 会停住、python3 打开和未点名文件的 grep -r 能读到：{{whether_about_read_deny_bypass}}
+是不是约 git push 写成 ask 的用意下用 deny 核对命中时 git -C 会不会漏过：{{whether_about_git_c_bypass}}
+是不是约漏过之后还要看当时是 Manual 还是 Auto：{{whether_about_mode_after_bypass}}
+
+输出 Markdown：
+1. 为什么「规则已经写上」或「.env 写进了 deny」不能写成读取和推送已发现已门禁
+2. 应怎样同时检查命中与漏过的写法，以及漏过之后还要看模式
+3. 只有假数据与假仓库上这一次对照的账本时，应怎样单独记账，而不是写成下一套规则也必然同分布，或把官方文档里的例子写成自己测过
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 Read 与 cat 被拦住或 git -C 通过就等于下一套规则已经门禁，或 ask 已经能挡住所有 push 写法，或 python3 能读到就等于真密钥已经外泄」。`,
+      },
+      {
+        title: "python3 能读到与 git -C 通过复盘",
+        body: `报告上可以写 Read 工具与 cat .env 被拦住，python3 打开和未点名文件的 grep -r 能读到，以及 git -C 没有打中 git push *；但这是 macOS、v2.1.280、假数据与假仓库上的记录。请写复盘提纲。
+
+现象：{{python3_read_and_git_c_passed}}
+
+输出：
+1. 更像规则已经把门住，还是只是常见写法被拦住、换一种写法就漏过，或漏过之后还取决于当时模式
+2. 最小复验顺序（先按绝对路径核对 Read／cat／python3／grep→再按 deny 核对 cd && git push、timeout 与 git -C→再看漏过之后是 Manual 还是 Auto→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「写了 deny 就等于已经挡住脚本读取」，或「写了 ask 就等于所有 push 写法都会确认」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tomsolog/articles/20261010-claude-code-permissions-guide",
+      label: "zenn.dev · Claude Codeの操作をルールで止める仕組みと限界",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "822",
+    slug: "shinai-408-08m-6run",
+    title: "shinai：做了把 Claude Code、Codex、Antigravity 周额度里「要剩下来」的部分自动用掉的脚本——按平均速度预测会出现 408%→19%→148%；给 12 分钟仍 0.8 分就停；改成按件数并提前结束就重启后，20 分钟窗口里转了 6 次、每次 3 个成果",
+    summary: "个人（shinai／シン@AI自動化）；披露用 Windows 任务计划程序加一条 PowerShell 脚本，每小时启动，把 Claude Code、Codex、Antigravity 的 Gemini 档和 Antigravity 的 Claude・GPT 档这 4 个周额度里「要剩下来」的部分自动找出来，让 AI 无人开工（4 档可并行）。使用率都按不耗 token 的方式读：Claude Code 用 claude -p /usage --output-format json 的字符串（文中例子是 Current week (all models): 40% used）；Codex 从 ~/.codex/sessions/**/*.jsonl 里的 rate_limits 取（primary 为 5 小时档，secondary 为周档）；Antigravity 用 agy -p /usage --output-format json 的 groups[].buckets[]（window 为 weekly／5h 与 remaining_fraction）。失败 1：按「目前平均速度用到重置会到百分之几」预测，同一档在几分钟里出现 408%→19%→148%；原因包括自己试跑会把平均速度一下子抬高，以及 Antigravity 的周档从第一次使用起算 7 天，刚开始用时距离重置几乎总是 168 小时，经过时间近 0，预测会变成使用率的 8 倍这类数。后来改成跟「按周经过时间比例画的目标线」比，低于线就跑、高于线就等。失败 2：给了 1 次 25 分钟的窗口，日志里哪个 AI 都是 1〜3 分就结束，因为启动指示是「执行 1 次份」，做完 1 个成果就停。把「窗口 12 分钟、截止是几点」告诉 claude -p 也不管用，因为 -p 看不见时钟（0.8 分就结束，回复里还写着「12 分钟的窗口里……停下了」）。改成按件数指示（至少做出 3 个成果才结束），并在提前结束时只要窗口还在就从进度文件的「下一步」重启后：20 分钟窗口里转了 6 次，每次 3 个成果；随后每次又变成约 1 分钟，成果变薄。于是加上「数不如质，调查要读到官方页面正文，薄的成果不计件」，并让落后目标线 30 个点以上的档改用更强模型。acceptEdits 会把工作文件夹里的 mkdir 和 rm -rf 自动放行，是实测后才发现的；作者建议用假文件先试通不通过。Windows 上的 Claude Code 没有沙箱，作者不把 node／python 这类能跑任意代码的命令交给它，代码执行留给有沙箱的 Codex。不代你同样看到 408% 抖动或 20 分钟转 6 次，就等于下一周额度已经按线用完，或按件数指示就已经能保证质量，或 acceptEdits 已经把危险命令门禁住。",
+    description: "面向已经把「自动把周额度用完」或「给了 25 分钟窗口」当成无人执行已门禁、却还没按同一套读法分开记预测会不会晃、窗口里实际跑了几分钟、以及权限是不是用假文件试过的人：把「额度自动消耗须同时报使用率怎么读、预测或目标线怎么定，以及窗口里实际转了几次、权限测过没有」写成门禁，区别于只谈计划任务设置或只看额度百分比的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/shinai/articles/ai-weekly-quota-autorun",
+    sourceLabel: "zenn.dev · Claude Code・Codex・Antigravityの週の利用枠を、余らせずに自動で使い切る仕組み",
+    upvotes: 713,
+    trending: false,
+    tags: [
+      "Claude-Code",
+      "Codex",
+      "quota",
+      "Task-Scheduler",
+      "eval",
+    ],
+    howItWorks: [
+      "粘贴 Agent 周额度自动消耗的对照边界（是不是约按平均速度预测会出现 408%→19%→148%，是不是约告诉 claude -p 跑 12 分钟仍 0.8 分就停，是不是约改成按件数并提前结束就重启后 20 分钟窗口里转了 6 次、每次 3 个成果）以及「绝不可把已经给了时间窗口或额度百分比写成无人执行已门禁」纪律",
+      "Agent 按实践帖输出：应怎样同时记下 4 档使用率都不耗 token 的读法、预测抖动与改成目标线、0.8 分结束与后来 20 分钟转 6 次，以及 acceptEdits 实测会放行 rm -rf",
+      "人工保留 408% 抖动、0.8 分和 6 次／3 个成果来自哪一次自述；Agent 不代你保证「同样看到 408% 抖动或 20 分钟转 6 次就等于下一周额度已经按线用完，或按件数指示就已经能保证质量，或 acceptEdits 已经把危险命令门禁住」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T00:54:24.619+09:00 → 同时刻为 UTC 2026-11-07T15:54:24Z、Asia/Shanghai 2026-11-07 23:54:24，日历日为 2026-11-07；bodyUpdatedAt 2026-11-08T04:08:59.092+09:00（晚于发布）→ 同时刻为 UTC 2026-11-07T19:08:59Z、Asia/Shanghai 2026-11-08 03:08:59；取 published（上海日历 2026-11-07）；GET 200（UA MiraBot/1.0））：shinai（シン@AI自動化）在《Claude Code・Codex・Antigravityの週の利用枠を、余らせずに自動で使い切る仕組み》写预测抖动与窗口内实际次数的对照。可达导流：https://zenn.dev/shinai/books/university-ai-assignment-prompts GET 200（作者《大学生课题提示词》书；文中写前两章可免费读）。作者卡 website／GitHub／X 为空。正文无配图。Antigravity 与 Gemini 不在平台枚举里，本条 platforms 只填实践用到且枚举里有的 claude、chatgpt（Codex），不硬凑。同作者 batch106 #764 slug shinai-45k-61to33-200ln 为省 token 七个习惯，主线不同，非 114–116 近批，本批仍选并在此披露。",
+      "与近批云额度 $100、费用／Effort、tasukina 无人 Bash 允许列表不同：本条不是把经营额度或允许列表当主线，而是周额度剩余怎么读、按平均速度预测会不会晃，以及按时间喊停是否真的会跑满窗口的门禁。Windows 上 Claude Code 没有沙箱是作者自述，不写成官方已门禁。",
+    ],
+    approach: `shinai（シン@AI自動化）在《Claude Code・Codex・Antigravityの週の利用枠を、余らせずに自動で使い切る仕組み》（页内 publishedAt 为 2026-11-08T00:54:24.619+09:00，同时刻 Asia/Shanghai 为 2026-11-07 23:54:24，取 published 的上海日历 2026-11-07；bodyUpdatedAt 晚于发布）写明：自己有过 Claude 使用限制还没用完就重置的周，觉得可惜，于是做了把「要剩下来」的额度自动找出来、让 AI 去做自己的工作的机制。实现是 Windows 任务计划程序加一条 PowerShell 脚本。每小时启动后，读 4 档使用率：Claude Code、Codex、Antigravity 的 Gemini 档、Antigravity 的 Claude・GPT 档，都不耗 token；只对看来会剩下的档做无人启动，4 档可并行。急着不耗完就会作废的档，会切到更强模型（文中举 Opus、思考量 high 等）。
+
+使用率读法：Claude Code 用 claude -p /usage --output-format json 的结果字符串，文中例子是 Current week (all models): 40% used；Codex 从会话 jsonl 里用正则取 rate_limits（primary 为 5 小时档，secondary 为周档）；Antigravity 用 agy -p /usage --output-format json 的 groups[].buckets[]（window 为 weekly／5h 与 remaining_fraction）。
+
+失败 1：最初按「目前平均速度用到重置会到百分之几」预测，低于 100% 就执行。日志里同一档的预测在几分钟里出现 408%→19%→148%。作者写了两个原因：自己试跑会把平均速度一下子抬高；Antigravity 的周档从第一次使用起算 7 天，刚开始用时距离重置几乎总是 168 小时，经过时间近 0，预测会变成使用率的 8 倍这类数。后来改成跟「按周经过时间比例画的目标线」比（经过时间取 0 到 168 小时，目标使用率按 100×经过／168 再加一点超前），低于线就跑、高于线就等。另有「截止临近才用更强模型」的判定，用 5 小时档一次约占周使用率多少来估还需要的时间；「5 小时档一次占周使用率多少」按 5 小时档与周使用率增加的比自动学。失败 2：给了 1 次 25 分钟的窗口，日志里哪个 AI 都是 1〜3 分就结束，因为启动指示是「执行 1 次份」，做完 1 个成果就停。把「窗口 12 分钟、截止是几点」告诉 claude -p 也不管用，因为 -p 看不见时钟（0.8 分就结束，回复里还写着「12 分钟的窗口里……停下了」）。改成按件数指示（至少做出 3 个成果才结束），并在提前结束时只要窗口还在就从进度文件的「下一步」重启后：20 分钟窗口里转了 6 次，每次 3 个成果。随后每次又变成约 1 分钟，成果变薄（调查停在搜索结果摘要）。于是加上「数不如质，调查要读到官方页面正文，薄的成果不计件」，并让落后目标线 30 个点以上的档改用更强模型。同时要求每做出 1 个成果就记下来，以免被打断后丢掉。
+
+无人执行的最低安全：不交浏览器操作和电脑操作（Codex 用 --disable computer_use 等关掉）；不让读认证（Claude Code 用 --disallowedTools 排除若干 Read 路径）；拒绝删除类命令——--permission-mode acceptEdits 会把工作文件夹里的 mkdir 和 rm -rf 自动放行，这是实测后才发现的，因此再显式拒绝 Bash(rm:*) 等；每天先备份再跑。Windows 上的 Claude Code 没有沙箱，作者不把 node／python 这类能跑任意代码的命令交给它，代码执行留给有沙箱的 Codex。作者建议用假文件先试通不通过，再定无人权限。
+
+本场景据此输出「额度自动消耗须同时记下使用率怎么读、预测或目标线怎么定，以及窗口里实际转了几次、权限测过没有，不能只报已经给了时间窗口或额度百分比」提纲。禁止把 408% 抖动或 20 分钟转 6 次写成任意周同分布，或把按件数指示写成质量已经门禁。Antigravity 与 Gemini 不在平台枚举里，不硬凑进 platforms。`,
+    outcomes: [
+      "源披露作者用 Windows 任务计划程序加一条 PowerShell 脚本，按不耗 token 的方式读 Claude Code、Codex、Antigravity 的 4 档周额度：按平均速度预测会出现 408%→19%→148%；给 1 次 25 分钟窗口时 1〜3 分就结束，告诉 claude -p 跑 12 分钟仍 0.8 分就停；改成按件数并提前结束就重启后，20 分钟窗口里转了 6 次、每次 3 个成果，随后每次又变成约 1 分钟、成果变薄。acceptEdits 实测会放行 rm -rf。属作者这一次在该脚本、该读法与上述工具上的记录（40% used 是读法例子，不是全程使用率；6 次／3 个成果是改指示之后的一次窗口；Antigravity／Gemini 不在平台枚举里，未写入 platforms），不可外推为你同样看到 408% 抖动或 20 分钟转 6 次就等于下一周额度已经按线用完，或按件数指示就已经能保证质量，或 acceptEdits 已经把危险命令门禁住。",
+      "能把「可写成同时检查使用率怎么读、预测或目标线怎么定，以及窗口里实际转了几次、权限测过没有」与「必须人完成的题目与导流链」拆开。",
+      "为把「已经给了时间窗口」或「额度百分比看起来还剩」当成无人执行已门禁，以及不经假文件测试就打开 acceptEdits 提供提问清单。",
+    ],
+    caveats: [
+      "408%→19%→148%、25 分钟窗口里 1〜3 分结束、0.8 分结束、20 分钟窗口转 6 次、每次 3 个成果，随后每次约 1 分钟、成果变薄，以及 acceptEdits 会放行 rm -rf，均为作者自述。40% used 是 Claude Code 读法例子，不是这套脚本跑下来的全程使用率。6 次／3 个成果是改指示之后的一次窗口，不是长期平均，不能写成质量已经门禁。Antigravity 周档从第一次使用起算 7 天，是作者说明预测会晃的原因之一，不能写成所有产品的周档都这样切。",
+      "https://zenn.dev/shinai/books/university-ai-assignment-prompts GET 200（可达作者书导流；文中写前两章可免费读）。作者卡 website／GitHub／X 为空。正文无配图。primary GET 200（UA MiraBot/1.0）。",
+      "上面写的是个人实践帖（zenn.dev / shinai），也不是 Anthropic、OpenAI 或 Antigravity 官方的官文简报。platforms 只填了 claude 与 chatgpt（Codex）；Antigravity 与 Gemini 枚举里没有对应值，不硬凑。同作者库内已有 batch106 #764（省 token 习惯），主线不同，本条仍是另一篇实践，不与那条混写。",
+    ],
+    prompts: [
+      {
+        title: "额度自动消耗须先按同一读法报预测与窗口次数",
+        body: `你是资深 Agent 额度验收教练。只根据用户边界写门禁，不要编造无人执行已门禁。
+
+现在是不是约按平均速度预测会出现大幅度抖动：{{whether_about_pace_forecast_swing}}
+是不是约告诉无头命令跑满窗口却在 1 分钟内结束：{{whether_about_timebox_ignored}}
+是不是约改成按件数并提前结束就重启后实际转了几次：{{whether_about_count_and_restart}}
+
+输出 Markdown：
+1. 为什么「已经给了时间窗口」或「额度百分比看起来还剩」不能写成无人执行已发现已门禁
+2. 应怎样同时检查使用率怎么读、预测或目标线怎么定，以及窗口里实际转了几次、权限是否用假文件测过
+3. 只有一次 408% 抖动和一次 20 分钟转 6 次的账本时，应怎样单独记账，而不是写成下一周也必然同分布，或按件数就等于质量已门禁
+4. 人必须完成的清单（题目与导流链）
+禁止声称「同样看到 408% 抖动或 20 分钟转 6 次就等于下一周额度已经按线用完，或按件数指示就已经能保证质量，或 acceptEdits 已经把危险命令门禁住」。`,
+      },
+      {
+        title: "百分之四百零八抖动与二十分钟六次复盘",
+        body: `报告上可以写按平均速度预测会出现 408%→19%→148%，告诉 claude -p 跑 12 分钟仍 0.8 分就停，以及改指示后 20 分钟窗口里转了 6 次、每次 3 个成果；但这是该脚本与这一次窗口上的记录。请写复盘提纲。
+
+现象：{{four_oh_eight_swing_and_six_runs}}
+
+输出：
+1. 更像额度已经按线用完，还是只是预测在晃、窗口被提前结束，或后来次数上去了但成果变薄
+2. 最小复验顺序（先核对 4 档使用率怎么读→再看预测或目标线→再看窗口里实际分钟数与次数→再用假文件测权限→再决定能不能对外说已门禁）
+3. 下次验收标准
+4. 人工确认清单
+不要伪造「给了 25 分钟就等于会跑满窗口」，或「acceptEdits 就等于危险命令已经门禁」。`,
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shinai/articles/ai-weekly-quota-autorun",
+      label: "zenn.dev · Claude Code・Codex・Antigravityの週の利用枠を、余らせずに自動で使い切る仕組み",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
   }
 ];
 
