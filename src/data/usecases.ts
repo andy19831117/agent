@@ -62237,6 +62237,305 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
       date: "2026-11-05",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "848",
+    slug: "wait-0test-91781-0333",
+    title: "WaitLab：Claude Code 的子代理要把 UI 测试只跑 1 本，却把 -only-testing: 写成中途为止的 test01（真名是 test01EmptyState）。xcodebuild 在 1 本都没跑的情况下写出 ** TEST SUCCEEDED ** 和结束码 0（Executed 0 tests）。子代理在 03:24 一度要把 03:12 已经做出的「按钮已按不到」判断改掉；随即数到 Test Case 行是 0，把名字写全再跑，1 本跑了并失败（91.781／91.837 秒）。03:33 才提交修好的改动。后来在 Xcode 27.0 上用故意失败的单测复现：写到中途或写不存在的类都是结束码 0、0 本、TEST SUCCEEDED；写全名或写到类是结束码 65、1 本、TEST FAILED",
+    summary: "个人（WaitLab）；披露自己用几体 Claude Code 子代理做 iPhone 应用时，2026 年 9 月 8 日凌晨，汇总用的子代理先根据零件位置判断空画面按钮已经按不到（03:12），接着只跑那 1 本 UI 测试（03:13），却把 -only-testing: 写成 AppUITests/Probe/test01，真名是 test01EmptyState。命令约 5 分钟结束（含构建和模拟器启动），日志里是 Executed 0 tests 与 ** TEST SUCCEEDED **。子代理在 03:24 看到末尾的 TEST SUCCEEDED，一度要改掉刚才的判断；随即用 grep -c 'Test Case' 数到 0，也没有测试该拍的画面，判定筛选空了。把名字写全再跑，1 本跑了并失败：Executed 1 test, with 1 failure，91.781（91.837）秒，** TEST FAILED **，失败文案正是「按钮不在可按位置」。栏位改到按钮下方后再跑通过，03:33 提交。作者后来在手头 Mac 的 Xcode 27.0 上，用故意 XCTFail 的 macOS 单测靶 DemoTests 复现：写到中途或写不存在的类，都是结束码 0、0 本、TEST SUCCEEDED；写全名或写到类，都是结束码 65、1 本、TEST FAILED。当时日志所在的版本是构建号 17F113、iOS 模拟器 SDK 26.5，比这次复现的 Xcode 27.0 更早，但当时日志里已经是同样的 Executed 0 tests 与 TEST SUCCEEDED。作者写明：TEST SUCCEEDED 和结束码 0 只表示「没有失败」，并不表示「测试已经跑过」。Swift Testing 未测；并行跑测试时的行形也未核。同日另有一篇管道截断测试输出的姐妹篇。文末导向作者的 MCP 服务器「わだち」（目录名 Imashime）。",
+    description: "面向已经把「看到 ** TEST SUCCEEDED ** 或结束码 0，就当成指定的那本测试已经跑过并且通过」写成可以上线的人：把「0 本跑过的成功，不能当成合否；筛名必须和文件里的名字写到最后，合否之前先数跑了几本」写成门禁，区别于只看末尾成功标记、却不核 Executed 行或 Test Case 行的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/waitlab/articles/claude-code-only-testing-zero-tests-succeeded",
+    sourceLabel: "zenn.dev·waitlab 实践帖",
+    upvotes: 739,
+    trending: false,
+    tags: [
+      "claude-code",
+      "xcodebuild",
+      "only-testing",
+      "ui-test",
+      "subagent",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把测试「已通过」当作根据之前，要先核的边界（是不是约 2026-09-08 03:12 已根据零件位置判断按钮按不到，是不是约 03:13 把 -only-testing: 写成中途为止的 test01，是不是约日志为 Executed 0 tests 与 ** TEST SUCCEEDED **，是不是约写全名后再跑为 1 本失败／91.781（91.837）秒，是不是约 Xcode 27.0 复现里写到中途或写不存在的类为结束码 0、0 本，写全名或写到类为结束码 65、1 本）以及「绝不可把 TEST SUCCEEDED 或结束码 0 写成测试已经跑过」纪律",
+      "Agent 按实践帖输出：应怎样同时记下筛名是否与文件里的名字写到最后、Executed／Test Case 行数、结束码属于哪一条命令，以及复现用的 Xcode 版本；没有测过的 Swift Testing、并行跑测试时的行形，要标明未核",
+      "人工保留 9 月 8 日这条时间线和后来那张 4 行对照表；Agent 不代你保证「同一条 -only-testing: 在其他 Xcode 版本或 Swift Testing 上也会给出相同的结束码，或 TEST SUCCEEDED 在别的测试工具里也表示 0 本」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T07:21:14.994+09:00 → 2026-11-04，同时刻为 UTC 2026-11-03T22:21:14Z、Asia/Shanghai 2026-11-04 06:21:14；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：WaitLab 在《Claude Code がテストの名前を途中までしか書かず、1 本も走らないまま TEST SUCCEEDED が出た》写 0 本跑过也会出现 TEST SUCCEEDED。文内产品链未列入可达导流：https://claude.ai/directory/imashime GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用）；https://imashime.waitlab.workers.dev/mcp GET 405（Allow: POST）。同日姐妹篇 https://zenn.dev/waitlab/articles/claude-code-pipe-tail-exit-code GET 200（不列入导流）。作者卡 website／GitHub／X 为空。无配图。",
+      "与同日那篇「用 | tail 截断测试输出、把失败读成成功」不同：本条不是在测管道的结束码，而是测 -only-testing: 写到中途时，0 本也会打出 TEST SUCCEEDED。不要把约 5 分钟、约 10 分钟、约 30 秒写成另一次秒表实测。Swift Testing 与并行跑测试的行形作者写明未核，不能补写成已经复现。",
+    ],
+    approach: `WaitLab 在《Claude Code がテストの名前を途中までしか書かず、1 本も走らないまま TEST SUCCEEDED が出た》（页内 publishedAt 2026-11-04，bodyUpdatedAt 与发布相同，取 published）披露：自己用几体 Claude Code 子代理做 iPhone 应用，其中一体负责把各体结果汇总。材料来自作者记录 AI 失误的笔记、当时的测试日志，以及会话记录。
+
+2026 年 9 月 8 日凌晨 3 点前后，汇总用的子代理在核当晚把一个栏位移到画面上方的改动。这个应用在尚未注册时的空画面只有 1 个按钮，以前出现过按钮离开可按位置的情况，所以有 1 本 UI 测试专门看它是否还在可按位置。子代理先读了零件位置的导出：按钮上端落在底部标签栏的带里，下端已经出了画面，于是在 03:12 的作业备忘里写了「因为这次重排，按钮已经按不到」。接着在 03:13 只跑那 1 本，命令是 xcodebuild test -scheme Probe ... -only-testing:AppUITests/Probe/test01。测试方法的真名是 test01EmptyState；同一轮调用里子代理也 grep 过测试文件，输出里已经有完整名字。命令约 5 分钟结束（含构建和模拟器启动）。Executed 行按测试组会出现 3 行，其中一行是 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds，末尾是 ** TEST SUCCEEDED **。
+
+子代理预先放了两处等待「每本测试合否行」的机制，因为 1 本都没跑，这些行没有出现：一处在 03:18 什么也没接到就结束，另一处等了约 10 分钟仍未结束，改成 Claude Code 在后台继续跑。大约从开跑起 10 分钟后去看日志，在 03:24 根据末尾的 TEST SUCCEEDED 写道：自己的判断被机器否定了，要把两边对上再改备忘。随即在日志里找 Test Case 行，一行也没有，grep -c 'Test Case' 得到 0，测试该拍的画面也没有。子代理于是写明 -only-testing: 空了、不能当作合否，并把名字写全再跑。「要改写」到再跑之间大约 30 秒，这段时间备忘还没有改掉。再跑之后，1 本跑了并失败：Executed 1 test, with 1 failure (0 unexpected) in 91.781 (91.837) seconds，** TEST FAILED **，失败文案正是测试里写的「按钮不在可按位置」。子代理把栏位移到按钮下方，再跑通过，并用测试拍到的图确认按钮能看见，然后在 03:33 提交。作者写明：如果当时把第一次的 TEST SUCCEEDED 当成通过，就会用 1 本都没跑的结果，把已经做对的判断打消。
+
+作者后来在手头 Mac 的 Xcode 27.0 上，单独做了一个故意 XCTFail 的 macOS 单测靶 DemoTests（不用模拟器）来复现。-only-testing: 写成 DemoTests/ProbeTests/test01（中途为止）或 DemoTests/NoSuchClass（不存在的类）时，结束码都是 0、跑了 0 本、** TEST SUCCEEDED **；写成 test01EmptyState 或只写到类名时，结束码都是 65、跑了 1 本、** TEST FAILED **。写到中途或写不存在的类时，除了 Executed 0 tests，没有别的行来提示「什么也没选中」。当时日志所在的版本是构建号 17F113、iOS 模拟器 SDK 26.5，比这次复现更早，但当时日志里已经是同样的 Executed 0 tests 与 TEST SUCCEEDED。作者还在手头试过：pytest 用 -k 一个都选不中时结束码是 5；Jest 用 -t 一个都选不中时会把全部跳过并结束码 0。Swift Testing（@Test）写明未测；并行跑测试时的行形也未核。`,
+    outcomes: [
+      "源披露作者在 2026-09-08 用 Claude Code 子代理跑 1 本 UI 测试时，把 -only-testing: 写成中途为止的 test01，得到 Executed 0 tests 与 ** TEST SUCCEEDED **；写全名后再跑，1 本失败，用时 91.781（91.837）秒。后来在 Xcode 27.0 上用故意失败的单测复现：写到中途或写不存在的类为结束码 0、0 本、TEST SUCCEEDED，写全名或写到类为结束码 65、1 本、TEST FAILED。这是这一次会话、以及后来这一份 DemoTests 对照上的记录，不可外推成其他 Xcode 版本、Swift Testing 或其他测试工具也会打出相同的结束码，也不能把 TEST SUCCEEDED 或结束码 0 写成「指定的那本测试已经跑过」。",
+      "能把「可写成 0 本也会出现成功标记，筛名必须和文件里的名字写到最后」与「必须人完成的题目与导流链」拆开。",
+      "为把「看到 TEST SUCCEEDED 或结束码 0 就当成测试已通过」写成可以上线的门禁，提供提问清单。",
+    ],
+    caveats: [
+      "03:12／03:13／03:18／03:24／03:33、约 5 分钟、约 10 分钟、约 30 秒、Executed 0 tests、91.781（91.837）秒、结束码 0 与 65、Xcode 27.0、构建号 17F113、iOS 模拟器 SDK 26.5，以及「1 本都没跑也会出现 TEST SUCCEEDED」，均为作者自述。约 5 分钟、约 10 分钟、约 30 秒是原文的「ほど」，不是另一次秒表实测。Xcode 27.0 的 4 行对照只接在这份故意失败的 macOS 单测上，不要和 9 月 8 日那次 iOS 模拟器日志混成同一次测量。pytest 结束码 5、Jest 结束码 0 只接在作者手头各试的那一次。Swift Testing 与并行跑测试的行形写明未核。不要把「长文会增加 token、变慢」误接成本条，源文没有写输入上限。",
+      "文内产品链未列入可达导流：https://claude.ai/directory/imashime GET 200，但跟随至 https://claude.com/app-unavailable-in-region（区域不可用，不因 200 算可达）；https://imashime.waitlab.workers.dev/mcp GET 405（Allow: POST），不列入可达。同日姐妹篇 https://zenn.dev/waitlab/articles/claude-code-pipe-tail-exit-code GET 200（管道截断测试输出，不列入导流）。作者卡 website／GitHub／X 为空。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先数跑了几本，再谈通过",
+        body: "请对照这篇实践，不要把「** TEST SUCCEEDED ** 或结束码 0」写成「指定的那本测试已经跑过并且通过」。请分别写清：（1）-only-testing: 里的名字是否与测试文件里的方法名写到最后；（2）Executed 行或 Test Case 行显示跑了几本；（3）结束码属于哪一条命令，复现用的是哪个 Xcode 版本。0 本的时候，请标明未核合否，不要补写成已经通过。Swift Testing、并行跑测试，以及其他测试工具上没有测过的行为，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/waitlab/articles/claude-code-only-testing-zero-tests-succeeded",
+      label: "zenn.dev·waitlab《Claude Code がテストの名前を途中までしか書かず、1 本も走らないまま TEST SUCCEEDED が出た》",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "849",
+    slug: "kuu-10668-32g-208",
+    title: "くぅ／kuu_dqx：把 3 个仓库的 Claude Code 会话并排跑来对数字。某一周品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2%，两边完全一致，却被当成「防护两边都生效」的根据。把防护补到公式全部 3 项之后，同一周只有交易总额动了 32 G（138,615,381 对 138,615,413；约 0.00002%，是除法）。文章侧还曾把对方「1,343 件里 808 件经平均值」未经对算就用来撑场，对方后来自己改正的有效幅度是 1,343 件减到 1,135 件、共 208 件",
+    summary: "个人（くぅ／kuu_dqx）；披露自己按仓库并排跑 3 个 Claude Code 会话，分别做游戏内交易所价格的收集、分析站点的周次／月次报表，以及据此写文章。某一天，2～3 个会话分别算出的数字连「含小数的行数（81 行）」都对上了，文章侧的记忆里就写下「独立计算后一致，本身就是强证据」；6 天后同一份记忆被补上「别的实现完全一致，已经不能再当根据」。某一周两边对上的是品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2%。分析站点的公式是 COALESCE(bulk99_unit, top10_avg, top10_min)，文章侧只有 bulk99_unit，防护只挂在第一项，平均或最低价的回退路径没被检查。补到 3 项之后，同一周只有交易总额变成 138,615,413 G，差 32 G，约 0.00002%（用差额除以原额，不是另一次实测）；其余 3 项不动。防护是文章侧设计、并由文章侧的 PR 送进分析站点的，执行虽然分开，设计并不是两条独立的路。文章侧还把对方「1,343 件里 808 件经平均值」未经对算就用来撑场；808 其实是没有 99 个打包单价的观测数，没有区分平均还是最低价，对方后来改正的有效幅度是 1,343 件减到 1,135 件、共 208 件。另有 47.5% 对 68.8% 是「素材」口径不同，以及把已刊 7 篇文章跟重做后的数据去比、其实引用的是未随数据更新的文章。作者写明：故意把洞放进去看数字会不会动，这一步还没做。文末导向作者的两本 Zenn 书（前 3 章可免费读）。",
+    description: "面向已经把「两个会话的数字完全一致，就可以当成防护或口径已经两边生效」写成可以上线的人：把「一致只说明拿来比的那些数字相同；只有一边才有的路径，一致也检查不到」写成门禁，区别于只看完全一致、却不核问的是不是同一题、是不是同一母体、设计是不是同一套的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/kuu_dqx/articles/matching-session-is-not-proof",
+    sourceLabel: "zenn.dev·kuu_dqx 实践帖",
+    upvotes: 740,
+    trending: false,
+    tags: [
+      "claude-code",
+      "cross-check",
+      "independent-verification",
+      "data-guard",
+      "session-memory",
+    ],
+    howItWorks: [
+      "粘贴 Agent 把「两边数字一致」当作根据之前，要先核的边界（是不是约某一周品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2% 完全一致，是不是约补洞后只有总额变成 138,615,413 G、差 32 G，是不是约 32 G／约 0.00002% 为除法，是不是约 1,343 件减到 1,135 件为后来改正的 208 件，是不是约 81 行是更早那天含小数的行数、不要和品目数 81 混成同一场）以及「绝不可把完全一致写成防护已经两边生效，或把除法得到的 32 G／约 0.00002% 写成另一次实测」纪律",
+      "Agent 按实践帖输出：应怎样同时记下比的是哪 4 项、公式两边是否同形、防护挂在第几项、对方数字数的是什么；没有做过的「故意放洞看数字会不会动」，要标明未核",
+      "人工保留这一周的 4 项对照、208 件的改正，以及 81 行与品目数 81 不是同一场；Agent 不代你保证「换一周、换一套公式，完全一致就能够证明防护已经生效」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-04T12:14:59.021+09:00 → 2026-11-04，同时刻为 UTC 2026-11-04T03:14:59Z、Asia/Shanghai 2026-11-04 11:14:59；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：くぅ（kuu_dqx）在《別のセッションの実測と一致しても、正しい証拠にならない — Claude Code を並走させて検算した話》写两边完全一致也不能当成防护已经生效。可达导流：https://zenn.dev/kuu_dqx/books/written-is-not-handed-over GET 200（《Claude Code の記憶と引継ぎ — 書き残したことは、次のセッションに届いた証拠にならない》，正文相关书，前 3 章可免费读）；https://zenn.dev/kuu_dqx/books/difference-is-not-effect GET 200（《Claude Code にやらせた分析と効果判定 — 差が出たことは、効いた証拠にならない》，正文相关书，前 3 章可免费读）；https://x.com/kuubzr GET 200（作者卡 X）。连载前篇 https://zenn.dev/kuu_dqx/articles/your-branch-is-not-yours GET 200（不列入导流）。作者卡 website／GitHub 为空。无配图。",
+      "与近批并排会话或 git 冲突不同：本条不是在测分支被写坏，而是测「数字完全一致」究竟检查了什么。81 行是更早那天「含小数的行数」，不要和某一周表里的品目数 81 混写成同一场。32 G 与约 0.00002% 是用差额除以原额，不是另一次实测。故意把洞放进去看数字会不会动，作者写明还没做，不能补写成已经完成。",
+    ],
+    approach: `くぅ（kuu_dqx）在《別のセッションの実測と一致しても、正しい証拠にならない — Claude Code を並走させて検算した話》（页内 publishedAt 2026-11-04，bodyUpdatedAt 与发布相同，取 published）披露：按仓库并排跑 3 个 Claude Code 会话，分别做游戏内交易所价格的收集、分析站点的周次／月次报表，以及据此写文章，同一组数字会由不同代码来算，所以会话之间常常互相做检算。前一篇写过这种并排会把 git 弄坏；本篇改谈数字。某一天，2～3 个会话分别算出的数字连「含小数的行数（81 行）」都对上了，文章侧的记忆里就写下「独立计算后一致，本身就是强证据」。6 天后，同一份记忆被补上「别的实现完全一致，已经不能再当根据」。这篇写的是这两次记录之间发生了什么。
+
+交易所价格里会混进坏值。只有「没有真实出售意愿的上限价」这 1 件 99 个打包时，打包单价按 99,999,999 ÷ 99 ＝ 1,010,101 G（这是除法，不是另一次实测），平时约 1,000 G 的素材会在那个时刻被当成约 100 万 G 进入汇总。文章侧为此写了两段防护：超过同一时刻实势（最便宜 10 件的中位数）的 10 倍，或超过该品期间中位数的 50 倍，就丢掉这条观测。文章侧把它写进自己的汇总，又用同一份防护给分析站点的报表提了 PR。分析站点侧的会话把补丁生成的 SQL 直接打到生产库来核，并拿某一周的结果跟文章侧对。那一周品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2%，4 项完全一致，当时被当成「防护两边都生效」的根据。
+
+分析站点的公式其实是 COALESCE(bulk99_unit, top10_avg, top10_min)，文章侧只有 bulk99_unit。防护只挂在第一项，走平均或最低价回退的观测会直接穿过。补到 3 项之后，同一周只有交易总额变成 138,615,413 G，差 32 G，约 0.00002%（用 32 除以 138,615,381，不是另一次实测）；品目数、出品数和上周比都不动。相比的 4 个数字里，有 3 个即使洞还在也不会变。防护是文章侧设计、并由文章侧的 PR 送进另一边的，执行虽然分开，设计并不是两条独立的路。只有一边才有的路径，一致也检查不到。
+
+此外还有三类走偏。文章侧曾问「染色是 1 次用 10 朵花，对不对」，对方回了 ✅，依据其实是他们自己站点上的表述；次日改成「1 个部位」而不是「1 次」，而含有旧表述的内容当时已经刊出（后来有改）。同一周，文章侧还差点根据「10 个单价只在这一页显示」的说明去写，实际上后来别的页面也有这一列，只是说明没跟上。两个会话把「素材里最低价是打包出售的比例」分别算成 47.5% 和 68.8%，两边计算都对，不同的是「素材」这个词的范围，按类目重新计数后，对方的 4 个数字都能复现。分析站点重做报表后，文章侧曾报告「已刊的 7 篇汇总跟站点现在的值对不上」；引用的是报表里的文章，拿去比的却是仓库里重做后的数据，生产站点上的文章其实没变，分析站点侧回的是「旧的 7 篇现在与生产上的文章是一致的」。查防护那个洞时，分析站点侧曾说「穿过实势 10～50 倍带的 1,343 件里，808 件是经平均值」；808 其实是没有 99 个打包单价的观测数，没有区分平均还是最低价，文章侧未经对算就用它来撑「防护要挂到 3 项」的方案。对方后来改正的有效幅度是 1,343 件减到 1,135 件、共 208 件。再稍早，对方说「行数会增加 12.0%」也被原样写入记忆，核过之后，那处只取最新一天的值，行数增加也不会让输出多出 1 条。作者把这些写成会话记忆里的约定，并写明：本来应该先故意把洞放进去，看拿来比的数字会不会动；这一步还没做。`,
+    outcomes: [
+      "源披露作者把 3 个仓库的 Claude Code 会话并排跑来对数字：某一周品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2% 完全一致，却不能当成防护两边都已生效；补到公式全部 3 项之后，同一周只有总额变成 138,615,413 G，差 32 G，约 0.00002%（除法）。对方后来改正的有效幅度是 1,343 件减到 1,135 件、共 208 件。这是这一周、这一套公式和这一组对照上的记录，不可外推成换一周或换一套实现后、完全一致就能够证明防护已经生效，也不能把 32 G／约 0.00002% 或 99,999,999 ÷ 99 写成另一次实测。",
+      "能把「可写成一致只说明拿来比的那些数字相同，只有一边才有的路径检查不到」与「必须人完成的题目与导流链」拆开。",
+      "为把「两个会话的数字完全一致就可以上线」写成可以上线的检算门禁，提供提问清单。",
+    ],
+    caveats: [
+      "品目数 81、出品数 10,668、交易总额 138,615,381 G 对 138,615,413 G、上周比 -5.2%、32 G、约 0.00002%、1,343 件、808 件、1,135 件、208 件、47.5% 对 68.8%、已刊 7 篇，以及更早那天「含小数的行数（81 行）」，均为作者自述。81 行不要和某一周表里的品目数 81 混成同一场。32 G 与约 0.00002% 是用差额除以原额；99,999,999 ÷ 99 ＝ 1,010,101 G 也是除法，都不是另一次实测。808 不能写成已经按平均／最低价分过路径。故意把洞放进去看数字会不会动，作者写明还没做。不要把「长文会增加 token、变慢」误接成本条，源文没有写输入上限。",
+      "可达导流：https://zenn.dev/kuu_dqx/books/written-is-not-handed-over GET 200（正文相关书，前 3 章可免费读）；https://zenn.dev/kuu_dqx/books/difference-is-not-effect GET 200（正文相关书，前 3 章可免费读）；https://x.com/kuubzr GET 200（作者卡 X）。连载前篇 https://zenn.dev/kuu_dqx/articles/your-branch-is-not-yours GET 200（不列入导流）。作者卡 website／GitHub 为空。无配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问一致检查了哪一条路径",
+        body: "请对照这篇实践，不要把「两个会话的数字完全一致」写成「防护或口径已经两边生效」。请分别写清：（1）比的是哪几项、补洞之后哪几项会动；（2）两边的公式是否同形，防护挂在第几项，只有一边才有的回退有没有被检查；（3）对方给出的件数数的是什么，有没有未经对算就写入记忆。32 G、约 0.00002%、99,999,999 ÷ 99 这类除法，请标明是除法结果、不是另一次实测。故意把洞放进去看数字会不会动，如果还没做，请标明未核，不要补写成已经完成。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kuu_dqx/articles/matching-session-is-not-proof",
+      label: "zenn.dev·kuu_dqx《別のセッションの実測と一致しても、正しい証拠にならない — Claude Code を並走させて検算した話》",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "850",
+    slug: "kazu-1000-100p-306s",
+    title: "kazu_aiengineer：在 macOS、Python 3.13 上，把 Microsoft Agent Framework 的 agent-framework-core 1.25.0（对照 1.24.0）接到本地 MCP，核工具清单的上限。1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页的服务器，会在第 100 页停下。应答要 10 秒的服务器能通过，要 40 秒的在 30.6 秒超时（MCPError(-32001)）；同一台 40 秒服务器在 1.24.0 上还能取到",
+    summary: "个人（カズ／kazu_aiengineer）；披露自己在 2026-11-08，于 macOS、Python 3.13、agent-framework-core 1.25.0（对照用 1.24.0）、mcp 2.3.0 上，用 MCPStdioTool 接本地 MCP 服务器，只核工具清单的获取。远程 MCP，以及载上 LLM 的代理执行，写明未试。发行说明（PR #10042）写了三处变化，作者实测的是前两处：每个目录最多 100 页、1,000 件；框架创建的客户端请求超时默认为 30 秒。1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页的服务器，会在第 100 页停下。把上限调高后，1,200 件和 150 页也能取到；max_discovery_items=None 会去掉件数上限。应答要 10 秒的服务器能通过，要 40 秒的在 30.6 秒出现 MCPError(-32001)；同一台 40 秒服务器在 1.24.0 上还能取到。作者写明：这次超时测的是被故意拖慢应答的服务器，不是手头已有的、工具数超过 1,000 的真实服务器。Microsoft Learn 的 Local MCP tools 页没有写默认秒数，30 秒与发行说明一致。枚举里没有 Agent Framework／MCP 运行时，正文也未写实测用了枚举内平台，platforms 留空。",
+    description: "面向已经把「更新到 agent-framework-core 1.25.0 之后，工具清单仍会按旧版那样取完」当成可以上线的人：把「1,000 件和 100 页是硬上限，默认等待是 30 秒；40 秒才会在约 30.6 秒超时」写成门禁，区别于只读发行说明、却没有用本地服务器核过件数和等待的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kazu_aiengineer/articles/agent-framework-mcp-discovery-limits",
+    sourceLabel: "zenn.dev·kazu_aiengineer 实践帖",
+    upvotes: 741,
+    trending: false,
+    tags: [
+      "agent-framework",
+      "mcp",
+      "discovery-limit",
+      "timeout",
+      "breaking-change",
+    ],
+    howItWorks: [
+      "粘贴 Agent 在更新 MCP 客户端框架之前要先核的边界（是不是约 1,000 件正好能取到、1,001 件就例外，是不是约每页 1 件的 150 页会在第 100 页停下，是不是约应答 10 秒能通过、应答 40 秒在 30.6 秒超时，是不是约同一台 40 秒服务器在 1.24.0 上还能取到）以及「绝不可把发行说明上的 30 秒写成已经在真实远程 MCP 或载上 LLM 的代理执行里复现，或把被故意拖慢的服务器写成手头已有的生产服务器」纪律",
+      "Agent 按实践帖输出：应怎样同时记下框架版本、是本地还是远程、件数／页数／等待秒数，以及超时是 MCPError(-32001) 还是别的错误；没有测过的远程 MCP 和载上 LLM 的执行，要标明未核",
+      "人工保留 1.25.0 对 1.24.0 的这组本地对照；Agent 不代你保证「把上限调成 None 之后仍然安全，或真实服务器的 tools/list 也会超过 30 秒」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-08T04:35:10.445+09:00 → 2026-11-08，同时刻为 UTC 2026-11-07T19:35:10Z、Asia/Shanghai 2026-11-08 03:35:10；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：カズ（kazu_aiengineer）在《AIエージェントのMCP接続が30秒で切れるように。更新で変わった既定値》写 1.25.0 的清单上限与 30 秒默认等待。可达导流：https://note.com/generativeai_new GET 200（作者卡 website）。配图 2 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/57d0965324954a2e0a412e91.png?sha=65b6f80fb7dfcca88cefa9b4d3177bedb254a0d9 、https://static.zenn.studio/user-upload/deployed-images/ee89bf6a5dad2cf02ed80a92.png?sha=541049b8b3761003680d0b389d93656ecb729b72 。一次资料已核、不列入导流：https://github.com/microsoft/agent-framework/releases/tag/python-1.25.0 、https://github.com/microsoft/agent-framework/pull/10042 、https://learn.microsoft.com/en-us/agent-framework/agents/tools/local-mcp-tools 均 GET 200。作者卡 GitHub／X 为空。",
+      "Microsoft Agent Framework 不在平台枚举里，正文也未写实测用了 Claude／ChatGPT 等枚举内平台，platforms 留空，不硬凑。远程 MCP 和载上 LLM 的代理执行作者写明未试，不能补写成已经复现。30.6 秒只接在被故意拖慢到 40 秒的那台服务器上。",
+    ],
+    approach: `カズ（kazu_aiengineer）在《AIエージェントのMCP接続が30秒で切れるように。更新で変わった既定値》（页内 publishedAt 2026-11-08，bodyUpdatedAt 与发布相同，取 published）披露：Microsoft Agent Framework（用 Python 做 AI 代理的库）在 11 月 7 日发布了 python-1.25.0，发行说明的 BREAKING 栏写了两处：工具清单的获取有了上限，以及等待的默认变成 30 秒。作者在 2026-11-08，于 macOS、Python 3.13、agent-framework-core 1.25.0（对照用 1.24.0）、mcp 2.3.0 上核了用 MCPStdioTool 接本地 MCP 服务器时的工具清单获取。远程 MCP，以及载上 LLM 的代理执行，写明未试。
+
+发行说明（PR #10042）里的变化有 3 点，作者实测的是前 2 点：每个目录最多 100 页、1,000 件；框架创建的客户端请求超时默认为 30 秒。1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页的服务器，会在第 100 页停下。错误信息里会给出可上调的设置名。把上限调高后，1,200 件和 150 页也能取到；max_discovery_items=None 会去掉件数上限。作者写明：自己手头并没有工具数超过 1,000 的服务器，只是认为把多个 API 汇总公开的 MCP 服务器有可能接近这个数。
+
+等待这一侧，作者准备了工具清单应答要 10 秒和要 40 秒的服务器。10 秒能通过，40 秒在 30.6 秒出现 MCPError(-32001)。传入 request_timeout=None 后，40 秒也能取到。1.24.0 上，同一台要 40 秒的服务器还能取到。作者写明：这次超时测的是被故意拖慢应答的服务器；如果手头 MCP 的 tools/list 已经接近或超过 30 秒，更新之后就可能突然连不上。Microsoft Learn 的 Local MCP tools 页没有写默认秒数，实测的 30 秒与发行说明一致。None 会去掉等待上限，应答一直不回来就会一直停住，作者建议只用于自己管理的服务器。同一版还去掉了对 Python 3.10 的支持，文中有提及，但不是这次对照的对象。`,
+    outcomes: [
+      "源披露作者在 macOS、Python 3.13 上，用 agent-framework-core 1.25.0（对照 1.24.0）接本地 MCP 核工具清单：1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页会在第 100 页停下；应答 10 秒能通过，应答 40 秒在 30.6 秒超时（MCPError(-32001)），同一台 40 秒服务器在 1.24.0 上还能取到。这是这一版本、这一组本地服务器上的记录，不可外推成远程 MCP 或载上 LLM 的代理执行也会在同样秒数超时，也不能把被故意拖慢的 40 秒服务器写成手头已经在用的生产服务器。",
+      "能把「可写成 1,000 件／100 页和默认 30 秒是这一版的硬界，发行说明里没写默认秒数不等于没有默认」与「必须人完成的题目与导流链」拆开。",
+      "为把「更新到 1.25.0 之后清单仍会按旧版取完」写成可以上线的更新检查，提供提问清单。",
+    ],
+    caveats: [
+      "1,000 件、1,001 件、100 页、150 页、1,200 件、10 秒、40 秒、30.6 秒、MCPError(-32001)、agent-framework-core 1.25.0 对 1.24.0、Python 3.13、mcp 2.3.0，均为作者自述。30.6 秒只接在被故意拖慢到 40 秒的那台服务器上；1,200 件和 150 页只接在把上限调高之后。远程 MCP 和载上 LLM 的代理执行写明未试。max_discovery_items=None 或 request_timeout=None 去掉上限后会不会一直停住，作者只做了提醒，不是另一次实测。不要把「长文会增加 token、变慢」误接成本条，源文没有写输入上限。",
+      "可达导流：https://note.com/generativeai_new GET 200（作者卡 website）。配图 2 张均 GET 200（不列入产品导流）：https://static.zenn.studio/user-upload/deployed-images/57d0965324954a2e0a412e91.png?sha=65b6f80fb7dfcca88cefa9b4d3177bedb254a0d9 、https://static.zenn.studio/user-upload/deployed-images/ee89bf6a5dad2cf02ed80a92.png?sha=541049b8b3761003680d0b389d93656ecb729b72 。一次资料已核、不列入导流：https://github.com/microsoft/agent-framework/releases/tag/python-1.25.0 、https://github.com/microsoft/agent-framework/pull/10042 、https://learn.microsoft.com/en-us/agent-framework/agents/tools/local-mcp-tools 均 GET 200。作者卡 GitHub／X 为空。primary GET 200。Agent Framework 不在枚举，platforms 留空。",
+    ],
+    prompts: [
+      {
+        title: "先核件数、页数和等待，再更新客户端",
+        body: "请对照这篇实践，不要把「更新到 agent-framework-core 1.25.0 之后，工具清单仍会按旧版取完」写成已经核实。请分别写清：（1）1,000 件正好、1,001 件例外，以及每页 1 件时是否在第 100 页停下；（2）应答 10 秒是否能通过，应答 40 秒是否约在 30.6 秒超时，1.24.0 上同一台服务器是否还能取到；（3）测的是本地故意拖慢的服务器，还是远程／载上 LLM 的执行。没有测过的路径，请标明未核，不要补写成已经复现。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kazu_aiengineer/articles/agent-framework-mcp-discovery-limits",
+      label: "zenn.dev·kazu_aiengineer《AIエージェントのMCP接続が30秒で切れるように。更新で変わった既定値》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "851",
+    slug: "kazh-90ans-6470-2244",
+    title: "kaz_hira：2026-10-22 用 ChatGPT Plus 登录的 Codex CLI，让 Luna／Sol／Astra 三个模型在 low～max 五档 effort 上各解同一组 6 题、共 90 次回答。Luna·xhigh 与 Sol·low 都是 6/6，输出 token 合计分别是 6,470 和 2,244。Sol·max 是 9,022，约为 Sol·low 的 4 倍（除法），正答数相同。补跑里 Sol·low 与 Astra·low 是 12/12，Luna·xhigh 是 11/12（第 2 次正则实现落了）；次数没有对齐，是因为中途碰到了利用上限",
+    summary: "个人（Kaz_Hira／kaz_hira）；披露自己在 2026-10-22，用 ChatGPT Plus 登录的 Codex CLI 调用 gpt-6-luna、gpt-6.1-sol、gpt-6-astra（文中简称 Luna、Sol、Astra），effort 分 low、medium、high、xhigh、max 五档，用英语出同一组 6 题并要求不用工具作答：CSV 12 行排序并转表、时间转秒（20 个用例）、整式计算（28 个用例）、6 人座位谜题、8 人座位谜题、以及不用 re 实现正则的一部分（与 Python 的 re 对照 275 个用例）。先按每个条件各 1 次，3 模型×5 档×6 题共 90 次回答来比。输出 token 是 JSONL 里 turn.completed 的 usage.output_tokens 合计，没有另加 reasoning_output_tokens。Luna·low 4/6（1,699）、medium 4/6（2,664）、high 5/6（3,854）、xhigh 6/6（6,470）、max 5/6（5,210）；Sol 从 low 到 max 都是 6/6，token 为 2,244、2,789、3,564、7,704、9,022；Astra 从 low 到 max 也是 6/6，token 为 2,203、2,631、3,480、5,581、8,858。Sol·max 的输出 token 约为 Sol·low 的 4 倍（除法），这 6 题的正答数相同。Luna·low 两道座位谜题都落了，xhigh 都正答；Sol·low 的输出 token 约为 Luna·xhigh 的三分之一（除法）。补跑里，Luna·low 为 8/12、平均 266；Luna·xhigh 为 11/12、平均 978（第 2 次正则实现落了）；Sol·low、Sol·xhigh、Astra·low 为 12/12，平均分别是 372、1,174、374。12/12 是同一组 6 题各跑完 2 次，不是 12 种题；因利用上限而未完成的轮次已从正答分母里排除，次数没有对齐。作者写明：日常开发若选一个会推荐 Sol·medium，那是给没测过的长作业留余量的运用判断，不是这 6 题已经证实的优势；输出 token 的差别不能直接换算成 Plus 额度或金额。测量时的 CLI 版本没有记下。Codex 不在平台枚举里，正文写明用了 ChatGPT Plus 登录，platforms 只记 chatgpt。",
+    description: "面向已经把「effort 越高越好，或 Luna·xhigh 一定比 Sol·low 更省、更准」写成可以上线的人：把「这 6 题上 Sol·low 已是 6/6，更高 effort 会多耗输出 token；约 4 倍、约三分之一都是除法，不是另一次实测」写成门禁，区别于只看推荐档位、却没有记下正答数和 output_tokens 的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/kaz_hira/articles/codex-model-effort-measured",
+    sourceLabel: "zenn.dev·kaz_hira 实践帖",
+    upvotes: 742,
+    trending: false,
+    tags: [
+      "codex-cli",
+      "effort",
+      "token-usage",
+      "model-comparison",
+      "chatgpt-plus",
+    ],
+    howItWorks: [
+      "粘贴 Agent 在挑选模型与 effort 之前要先核的边界（是不是约 2026-10-22 用 ChatGPT Plus 登录的 Codex CLI 做了 3 模型×5 档×6 题共 90 次回答，是不是约 Luna·xhigh 为 6/6、6,470，Sol·low 为 6/6、2,244，是不是约 Sol·max 9,022 为 Sol·low 的约 4 倍（除法），是不是约补跑里 Sol·low／Astra·low 为 12/12、Luna·xhigh 为 11/12，是不是约 12/12 只是同一组 6 题各 2 次）以及「绝不可把约 4 倍或约三分之一写成另一次实测，或把日常推荐的 Sol·medium 写成这 6 题已经证实的优势」纪律",
+      "Agent 按实践帖输出：应怎样同时记下模型、effort、正答数、output_tokens 合计，以及分母有没有排除未完成或碰到上限的轮次；没有记下的 CLI 版本、没有测过的长作业，要标明未核",
+      "人工保留这 90 次和后来那组次数不齐的补跑；Agent 不代你保证「Sol·low 在自己的课题上也会全对，或输出 token 更少就等于 Plus 额度更省」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T07:57:05.377+09:00 → 2026-10-25，同时刻为 UTC 2026-10-24T22:57:05Z、Asia/Shanghai 2026-10-25 06:57:05；bodyUpdatedAt 与发布相同；取 published；GET 200（UA MiraBot/1.0））：Kaz_Hira（kaz_hira）在《Codex のモデルと effort を6課題で比較。正答数とトークン数を測った》写 90 次回答的正答数与输出 token。可达导流：https://github.com/kaz-hira GET 200（作者卡 GitHub；https://github.com/Kaz-Hira 亦 GET 200，同一账号）；https://github.com/Kaz-Hira/obsidian-claude-kit GET 200（作者卡 website／产品仓）。一次资料未列入可达：https://learn.chatgpt.com/docs/config-file/config-reference 、https://learn.chatgpt.com/docs/models 、https://learn.chatgpt.com/docs/non-interactive-mode 均 GET 403（Vercel deny，正文官方文档）。作者卡 X 为空。无配图。",
+      "Codex 不在平台枚举里，不硬凑；正文写明用 ChatGPT Plus 登录 Codex CLI，platforms 只记 chatgpt。约 4 倍、约三分之一是除法，不是另一次实测。12/12 不是 12 种题。日常推荐的 Sol·medium 作者写明不是这 6 题已经证实的优势。输出 token 未加 reasoning_output_tokens，也不能直接换算成额度或金额。",
+    ],
+    approach: `Kaz_Hira（kaz_hira）在《Codex のモデルと effort を6課題で比較。正答数とトークン数を測った》（页内 publishedAt 2026-10-25，bodyUpdatedAt 与发布相同，取 published）披露：2026 年 10 月 22 日，用 ChatGPT Plus 登录的 Codex CLI 调用 gpt-6-luna、gpt-6.1-sol、gpt-6-astra（文中简称 Luna、Sol、Astra），effort 分 low、medium、high、xhigh、max 五档，用英语出同一组 6 题，并要求不用工具作答。6 题分别是：CSV 12 行排序并转表（按 12 行是否一致评分）、时间转秒的函数（20 个用例）、整式计算的函数（28 个用例）、6 人座位谜题、8 人座位谜题，以及不用 re 实现正则的一部分（与 Python 的 re 对照 275 个用例）。课题内测试全部通过才算正答。先按每个条件各 1 次，3 模型×5 档×6 题共 90 次回答来比。输出 token 是 JSONL 里 turn.completed 的 usage.output_tokens 合计，没有另加 reasoning_output_tokens。
+
+第一次对照里，Luna 为 low 4/6（1,699）、medium 4/6（2,664）、high 5/6（3,854）、xhigh 6/6（6,470）、max 5/6（5,210）。Sol 从 low 到 max 都是 6/6，token 合计为 2,244、2,789、3,564、7,704、9,022。Astra 从 low 到 max 也是 6/6，token 合计为 2,203、2,631、3,480、5,581、8,858。Sol 与 Astra 从 low 起就全对。Sol·max 的输出 token 约为 Sol·low 的 4 倍（9,022÷2,244，是除法，不是另一次实测），这 6 题的正答数相同。Luna·low 两道座位谜题都落了，xhigh 都正答，提高 effort 有效果；但 Sol·low 也是全对，输出 token 约为 Luna·xhigh 的三分之一（2,244÷6,470，同样是除法）。
+
+补跑里，下列组合把 6 题各跑完了 2 次：Luna·low 为 8/12、平均每答 266；Luna·xhigh 为 11/12、平均 978（第 2 次正则实现落了）；Sol·low、Sol·xhigh、Astra·low 为 12/12，平均分别是 372、1,174、374。作者写明：这是同一组 6 题的重复，不是 12 种题；中途因利用上限而未完成的轮次已从正答分母里排除，所以次数没有对齐。日常若只选一个，作者会推荐 Sol·medium，短问题和单次代码生成则用 Sol·low；文中那张运用分档（Luna·low 做整理、Sol·low 做短问题、Sol·medium 做日常实现、Astra·medium 或更高做难处）被写明是给没测过的长作业留余量的判断，不是这 6 题已经证实的优势。平时实现是否该降到 Sol·low，写明仍要另核。输出 token 的差别不能直接换算成 Plus 额度或金额，因为各模型的权重和缓存写法没有核过，不能写成「便宜几倍」。测量时的 CLI 版本没有记下，严格追试还缺这一项。文中给出了自己课题上可复用的 codex exec 命令，并链到官方设置参考、模型一览和非交互模式说明。`,
+    outcomes: [
+      "源披露作者在 2026-10-22 用 ChatGPT Plus 登录的 Codex CLI，让 Luna／Sol／Astra 在五档 effort 上各解同一组 6 题、共 90 次回答：Luna·xhigh 与 Sol·low 都是 6/6，输出 token 合计分别是 6,470 和 2,244；Sol·max 为 9,022，约为 Sol·low 的 4 倍（除法），正答数相同。补跑里 Sol·low 与 Astra·low 是 12/12，Luna·xhigh 是 11/12。这是这一天、这一组 6 题和这一次登录上的记录，不可外推成自己的长作业也会在 Sol·low 上全对，也不能把约 4 倍、约三分之一或日常推荐的 Sol·medium 写成另一次实测或已经证实的优势。",
+      "能把「可写成这 6 题上更高 effort 会多耗输出 token，而正答数不一定更高」与「必须人完成的题目与导流链」拆开。",
+      "为把「effort 越高越好，或输出 token 更少就等于额度更省」写成可以上线的选型根据，提供提问清单。",
+    ],
+    caveats: [
+      "90 次回答、各档正答数与输出 token（含 Luna·xhigh 6,470、Sol·low 2,244、Sol·max 9,022）、补跑的 8/12、11/12、12/12 与平均 token，均为作者自述。约 4 倍、约三分之一是除法，不是另一次实测。12/12 是同一组 6 题各 2 次，不是 12 种题；未完成或碰到上限的轮次已从分母排除，次数没有对齐。输出 token 未加 reasoning_output_tokens，也不能直接换算成 Plus 额度或金额。日常推荐的 Sol·medium 不是这 6 题已经证实的优势。CLI 版本没有记下。不要把「长文会增加 token、变慢」误接成本条去写成已经撞上输入上限；源文测的是输出 token 合计。",
+      "可达导流：https://github.com/kaz-hira GET 200（作者卡 GitHub；https://github.com/Kaz-Hira 亦 GET 200，同一账号）；https://github.com/Kaz-Hira/obsidian-claude-kit GET 200（作者卡 website／产品仓）。一次资料未列入可达：https://learn.chatgpt.com/docs/config-file/config-reference 、https://learn.chatgpt.com/docs/models 、https://learn.chatgpt.com/docs/non-interactive-mode 均 GET 403（Vercel deny，正文官方文档，已写出完整 URL）。作者卡 X 为空。无配图。primary GET 200。Codex 不在枚举，platforms 只记 chatgpt。",
+    ],
+    prompts: [
+      {
+        title: "先记下正答数和 output_tokens，再谈档位",
+        body: "请对照这篇实践，不要把「effort 越高越好」或「输出 token 更少就等于额度更省」写成已经核实。请分别写清：（1）3 模型×5 档×6 题共 90 次回答里，各档的正答数和 output_tokens 合计；（2）约 4 倍、约三分之一是否标明为除法，而不是另一次实测；（3）补跑的 12/12 是同一组 6 题各 2 次，还是 12 种题，分母有没有排除未完成或碰到上限的轮次。日常推荐如果不是这组课题已经证实的优势，请标明是运用判断。没有记下的 CLI 版本，请标明未核。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kaz_hira/articles/codex-model-effort-measured",
+      label: "zenn.dev·kaz_hira《Codex のモデルと effort を6課題で比較。正答数とトークン数を測った》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "852",
+    slug: "yuu-90ok-40to15-20",
+    title: "y.sato／yuuyass：把告警处理 Skill 从「全部用 Sonnet、证据始终读取」改成按「要不要推测」拆开：定型用 Haiku、推理用 Sonnet，重的 Excel／证据图像只作为最后手段。繁忙期 90 件告警上，Claude Pro 5 小时额度消耗从约 40% 降到 15–20%（作者写「大致减半」，这是额度消耗率，不是另一次 token 实测）。同一 90 件新旧实现对照，没有检出遗漏、也没有判定差异。平时 8% 左右是预估，处理时间缩短 40–50% 是体感",
+    summary: "个人（y.sato／yuuyass）；披露自己把业务里已经在用的告警处理 Skill（検知→调查→原因推测→报告）从全部用 Sonnet 改了结构。判断轴是「这一步要不要推测」。定型（从 Redmine 工单取検知内容）改用 Haiku，日志与任务 md 的对照以及原因判断仍用 Sonnet；main 与子代理只按这条线来拆，把 Skill 前提的读取关在子代理一侧，避免拆得过细导致前提被反复读入；文件服务器上的 Excel 和证据图像，从始终执行改成「日志加 md 仍判断不了时才用的最后手段」。用同一批 90 件告警跑旧实现（全部 Sonnet、证据始终读取）和新实现（Haiku／Sonnet 分工、证据作为最后手段），全件对照検知结果，没有检出遗漏、也没有判定差异。繁忙期这 90 件上，Claude Pro 每 5 小时额度的消耗从约 40% 降到 15–20%，作者写成「大致减半」；文中注明百分数指的是额度消耗率，不是另一次 token 实测。平时検知量下约 8% 被标成预估；处理时间缩短 40–50% 被标成体感。作者写明：之后运用里会不会出现没考虑到的遗漏，还要继续看。标题虽写「把 token 减半」，正文把实測、预估和体感分成了三行，实測的那一行是额度消耗率。文中没有产品链。作者卡 website／GitHub／X 为空。",
+    description: "面向已经把「标题里的减半当成 token 实测，或把 90 件没有差异写成以后也不会遗漏」写成可以上线的人：把「实測的是繁忙期 90 件上的额度消耗率约 40%→15–20%，8% 是预估，时间缩短是体感；90 件对照不能外推到以后所有告警」写成门禁，区别于只看标题「token 减半」、却不区分实測／预估／体感的实践。",
+    categories: [
+      "devtools",
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/yuuyass/articles/dc2b0c641f9206",
+    sourceLabel: "zenn.dev·yuuyass 实践帖",
+    upvotes: 743,
+    trending: false,
+    tags: [
+      "claude-code",
+      "skill",
+      "haiku-sonnet",
+      "quota",
+      "alert-workflow",
+    ],
+    howItWorks: [
+      "粘贴 Agent 在改 Skill 的模型分工之前要先核的边界（是不是约同一批 90 件新旧实现对照为没有检出遗漏、也没有判定差异，是不是约繁忙期这 90 件上额度消耗从约 40% 降到 15–20%，是不是约这行被标成实測、且百分数是 5 小时额度消耗率而不是 token 实测，是不是约 8% 为预估、时间缩短 40–50% 为体感）以及「绝不可把标题里的 token 减半写成另一次 token 实测，或把 90 件没有差异写成以后也不会遗漏」纪律",
+      "Agent 按实践帖输出：应怎样同时记下旧实现与新实现各做了什么、90 件对照的结论，以及实測／预估／体感分别对应哪一行；没有继续观察到的后续遗漏，要标明未核",
+      "人工保留这 90 件对照和作者自己分开标注的三行数字；Agent 不代你保证「换一批告警或换一个 Skill，额度消耗也会大致减半，或定型交给 Haiku 永远不会出现判定差异」",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-26T22:09:08.825+09:00 → 2026-10-26，同时刻为 UTC 2026-10-26T13:09:08Z、Asia/Shanghai 2026-10-26 21:09:08；bodyUpdatedAt 2026-10-26T22:07:46.652+09:00，早于发布，按预定发布或先写后发理解；取 published；GET 200（UA MiraBot/1.0））：y.sato（yuuyass）在《全部Sonnetをやめた日 ―「推測が要るか」でSkillを分解してトークンを半減させた話》写 90 件对照与额度消耗率。作者卡 website／GitHub／X 为空。无配图。正文无产品导流链。",
+      "标题虽写「把 token 减半」，正文注明百分数是 Claude Pro 5 小时额度的消耗率，并把实測、预估、体感分成三行。不要把约 40%→15–20% 写成 token 实测，也不要把 8% 或 40–50% 时间写成实測。90 件没有差异不能外推到以后所有告警；作者写明还要继续看。",
+    ],
+    approach: `y.sato（yuuyass）在《全部Sonnetをやめた日 ―「推測が要るか」でSkillを分解してトークンを半減させた話》（页内 publishedAt 2026-10-26，bodyUpdatedAt 早于发布，取 published）披露：业务里已经有一套用 Skill 自动处理告警的流程，步骤是検知、调查、原因推测、报告。一开始全部用 Sonnet，Claude Pro 每 5 小时额度消耗很大，日常用起来吃力。作者重新设计时的判断轴是「这一步要不要推测」。文中注明：后文里的百分数指的都是这档 5 小时额度的消耗率。
+
+流程上，検知内容从 Redmine 工单按既定步骤取出，这一步改用 Haiku；把 AWS 环境里的日志和另行整理的任务 md 对照、以及原因判断，仍用 Sonnet。main 与子代理只按这条「要不要推测」的线来拆，把 Skill 前提的读取关在子代理一侧，main 只汇总各子代理的推测再做最终判断。作者写明：拆得过细会让每个子代理都重新读前提，token 反而增加，所以只拆到这条线为止。原先在「看起来像测试影响」时就会去读文件服务器上的 Excel 和证据图像，这一步又重又慢；实际运用里，很多时候只靠日志和任务 md 就能完成推测，于是改成「不是开发影响、或日志加 md 仍判断不了时才用的最后手段」。
+
+验证不是只靠体感。作者用同一批 90 件告警，分别跑旧实现（全部 Sonnet、证据始终读取）和新实现（Haiku／Sonnet 分工、证据作为最后手段），全件对照検知结果，没有检出遗漏、也没有判定差异。定型交给 Haiku，以及推理路径省略证据读取，在这 90 件上都走到了与旧实现相同的结论。作者写明：之后运用里会不会出现没考虑到的遗漏，还要继续看。结果表把数字分成了三行：繁忙期这 90 件上的额度消耗，约 40%→15–20%（大致减半），标成实測；平时検知量下约 8%、日常可以用，标成预估；处理时间缩短 40–50%，标成体感。标题虽写「把 token 减半」，实測的那一行是额度消耗率，文中没有另给一套 token 合计来对应「减半」。`,
+    outcomes: [
+      "源披露作者把告警处理 Skill 按「要不要推测」拆开后，用同一批 90 件新旧实现对照，没有检出遗漏、也没有判定差异；繁忙期这 90 件上，Claude Pro 5 小时额度消耗从约 40% 降到 15–20%（作者写「大致减半」，这是额度消耗率，不是另一次 token 实测）。这是这一批 90 件、这一套旧／新实现上的记录，不可外推成以后所有告警都不会出现遗漏，也不能把标题里的 token 减半、平时约 8% 或时间缩短 40–50% 写成另一次实測。",
+      "能把「可写成 90 件对照没有差异，但百分数要按作者自己标的实測／预估／体感来读」与「必须人完成的题目与导流链」拆开。",
+      "为把「标题里的减半已经等于 token 实测，或 90 件没有差异就可以长期免检」写成可以上线的改法，提供提问清单。",
+    ],
+    caveats: [
+      "90 件全件对照没有检出遗漏、也没有判定差异，以及繁忙期额度消耗约 40%→15–20%，均为作者自述，并且被标成实測。约 40% 和 15–20% 是范围，不是单一测点；「大致减半」是作者对这两行消耗率的概括，不是另一次 token 实测。平时约 8% 被标成预估，处理时间缩短 40–50% 被标成体感，不能改写成实測。之后会不会出现遗漏，作者写明还要继续看。不要把标题里的「トークンを半減」写成已经单独测过 token 合计。不要把「长文会增加 token、变慢」误接成本条去写成已经撞上输入上限。",
+      "作者卡 website／GitHub／X 为空。无配图。正文无产品导流链。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先分开实測、预估和体感，再谈减半",
+        body: "请对照这篇实践，不要把标题里的「把 token 减半」写成另一次 token 实测。请分别写清：（1）同一批 90 件新旧实现对照的结论，有没有检出遗漏或判定差异；（2）繁忙期额度消耗约 40%→15–20% 是否被标成实測，百分数是不是 5 小时额度消耗率；（3）平时约 8%、时间缩短 40–50% 分别是预估还是体感。之后会不会出现遗漏如果还要继续看，请标明未核，不要补写成已经长期免检。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yuuyass/articles/dc2b0c641f9206",
+      label: "zenn.dev·yuuyass《全部Sonnetをやめた日 ―「推測が要るか」でSkillを分解してトークンを半減させた話》",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
   }
 ];
 
