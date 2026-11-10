@@ -68935,6 +68935,62 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     ],
   },
   {
+    id: "966",
+    slug: "shun-12pair-4",
+    title: "shun_adachi：用 Claude Code 重做了自己的主页，实现推进得很快，但句子一直达不到自己想要的说法。公开稿最终是把写好的句子全部交给 ChatGPT 修改，再从修改案里自己挑选采用。作者把同一位置的句子做成 12 组对照，差别归成 4 类：行业用语、惯用说法／措辞、句子结构（先写场合），以及对委托人的关照（留下确认与合意这类手续用语）。Zenn 这篇是摘要，全文放在自己的站点上。",
+    summary: "shun_adachi 用 Claude Code 重做主页，实现很快，句子却一直不合适。公开稿是经 ChatGPT 修改后再由作者挑选的。12 组对照的差别归成 4 类：行业用语、惯用说法／措辞、句子结构（先写场合），以及对委托人的关照（留下确认与合意这类手续用语）。这些是这一组对照上的分法，不可外推到别的页面或模型组合。",
+    description: "面向已经把整站交给 Claude Code 起草、却还没有把「同一位置的句子改了几处、差在哪几类」对照下来的人：把 12 组和 4 类写成门禁，区别于只说「文章还是要自己看」、却没有对照表的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+      "chatgpt",
+    ],
+    sourceUrl: "https://zenn.dev/shun_adachi/articles/ai-site-writing-review",
+    sourceLabel: "zenn.dev·shun_adachi 实践帖",
+    upvotes: 857,
+    trending: false,
+    tags: [
+      "claude-code",
+      "copywriting",
+      "chatgpt",
+      "homepage",
+      "review",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/shun_adachi/articles/ai-site-writing-review",
+      label: "zenn.dev·shun_adachi《Claude Codeでホームページを作り直して、文章だけは任せきれなかった話》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Claude Code 重做个人主页。实现可以交给它，但公开句子达不到自己的说法，于是把草稿交给 ChatGPT 修改，再由自己挑选，并把同一位置的句子做成对照。",
+    outcomes: [
+      "源披露：实现推进得很快，句子却一直达不到想要的说法。公开稿是把写好的句子全部交给 ChatGPT 修改，再从修改案里自己挑选。作者把同一位置做成 12 组对照，差别归成 4 类：行业用语、惯用说法／措辞、句子结构（先写场合），以及对委托人的关照（留下确认与合意这类手续用语）。这些是这一组对照上的分法，不可外推到别的页面或模型组合。",
+      "12 是对照的组数，4 是归类数，不要把 4 写成改了 4 句，也不要把 12 写成 4 类里每一类的条数。Zenn 这篇是摘要，完整对照在作者站点。",
+      "正文点名了 Claude Code 和 ChatGPT，platforms 记 claude 与 chatgpt。不要把对照结论写成「某一个模型不能写句子」。",
+    ],
+    caveats: [
+      "bodyUpdatedAt 略早于发布、同日，仍取 published 11-05。正文无配图。作者卡 X 为空。",
+      "导流：https://fusionfield.jp/ GET 200（作者卡网站）；https://fusionfield.jp/notes/ai-site-decisions/ GET 200（全文，标题 AIでホームページを作り直して分かった、文章だけは任せきれなかった理由|FusionField）；https://github.com/shun-adachi GET 200。primary GET 200。platforms 记 claude、chatgpt。",
+    ],
+    prompts: [
+      {
+        title: "先数清对照了几组、差别归成几类，再谈「实现能交给它，句子也差不多」",
+        body: "请按实测算一算：公开稿的句子是直接采用起草结果，还是经过另一套修改再由人挑选；同一位置对照了几组，差别归成几类。不要把组数和类数写成同一个量。没查过的就写未确认，不要用推测填上。",
+      },
+    ],
+    howItWorks: [
+      "作者用 Claude Code 重做主页，实现很快，句子却一直达不到想要的说法。",
+      "公开稿把写好的句子全部交给 ChatGPT 修改，再由作者挑选采用。",
+      "同一位置做成 12 组对照，差别归成行业用语、惯用说法／措辞、句子结构（先写场合）、对委托人的关照（留下确认与合意这类手续用语）4 类。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T17:29:11.003+09:00 → UTC 2026-11-05T08:29:11Z、Asia/Shanghai 2026-11-05 16:29:11；bodyUpdatedAt 2026-11-05T17:26:18.311+09:00，略早于发布、同日；取 published → 2026-11-05；GET 200（UA MiraBot/1.0））：shun_adachi 在《Claude Codeでホームページを作り直して、文章だけは任せきれなかった話》记下 12 组和 4 类。",
+      "12 组和 4 类不要混用。Zenn 是摘要，全文在作者站点。platforms 含 chatgpt，是因为对照里用了它改句子。",
+    ],
+  },
+  {
     id: "967",
     slug: "men-3stum-296",
     title: "menmen_ailab：自己平时不写代码，在空文件夹里试着给 Claude Code 只加了 1 个 Mod：给输入框 Markdown 上色的 md-prompt。先是 2.1.295，Mods 所需的 2.1.287 已经满足，但官方文档里写到的内置 cc-plugin-diff 当时既不在「已安装」里，搜索也找不到；出现更新提示并重启后变成 2.1.296，这个 Mod 才出现。参考文写去 ~/.claude/plugins/ 看内容，作者的环境里这个文件夹根本没有，后来改成按官方文档把仓库取下来再 validate。第一次对仓库根目录做 validate，虽然显示通过，却没有 hooks 和 calls 两行——当时验证的是市场说明目录，不是插件本身那一层。",
