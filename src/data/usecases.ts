@@ -65193,6 +65193,503 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       date: "2026-10-15",
       dateLabel: "发布",
     },
+  },
+  {
+    id: "898",
+    slug: "crista-10boot-38perm",
+    title: "c_rista：Windows 11 上 Claude Desktop（调查时 2.9939.2.0，再确认工作目录时 2.31226.0.0，2026-10-09）里自作的 MCP 中继服务器，查了 10 次启动全部是连接要 35〜43 秒、连上后 3〜5 秒断开。子服务器用相对路径开日志，Desktop 拉起的进程工作目录是 C:\\WINDOWS\\system32；以前能跑是因为用管理员启动，System32 里留下了 29,891 字节、67 天的日志（创建 2026-06-16，最后写入 2026-09-10 11:20）。服务器日志 100 次启动记录里 38 次有 PermissionError，100 次不是 Desktop 启动次数（两条启动会写进同一份日志）。正文把子服务器名和路径写成占位",
+    summary: "c_rista 在 Windows 11、Claude Desktop（MSIX）上看到，自作 MCP 中继服务器每次启动都是连接 35〜43 秒、连上 3〜5 秒后断开，查了 10 次都一样。子服务器在第 37 行用相对路径打开日志，工作目录却是 system32，非管理员写不进去。以前用「管理员身份运行」时，同一错误被盖住，日志写进了 System32（29,891 字节、67 天）。把子进程的 cwd 写成绝对路径后，单独复测：中继不再于 41.6 秒以代码 1 退出，tools/list 从 37.64 秒、28 个工具变成 5.44 秒、35 个工具；实机重开 Desktop 后连接约 14 秒、35 个工具，不再断开。路径与服务器名在正文里是占位。",
+    description: "面向已经在 Windows 上把本地 MCP 服务器登记进 Claude Desktop、却在取消管理员启动后开始连不上的人：把「10 次启动都是 35〜43 秒后连上再 3〜5 秒断开；100 次日志里的 38 次 PermissionError 不是 Desktop 启动次数；以前能跑不是配置对了，而是管理员把日志写进了 System32」写成门禁，区别于只看「MCP 超时」却不核工作目录和相对路径的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/c_rista/articles/1191ba6723058e",
+    sourceLabel: "zenn.dev·c_rista 实践帖",
+    upvotes: 789,
+    trending: false,
+    tags: [
+      "mcp",
+      "claude-desktop",
+      "windows",
+      "relative-path",
+      "system32",
+    ],
+    howItWorks: [
+      "作者在 Windows 11 上把 10 个本地 stdio MCP 服务器登记进 Claude Desktop（MSIX）。出问题的是自作的 Node.js 中继：它再拉起若干 Python 子服务器，把工具汇总给 Desktop。Desktop 日志里，只有这一台每次连接要 35〜43 秒，连上后 3〜5 秒断开。作者查了 10 次启动，全部一样。从发现「连上 4 秒后断开」到动手大约放了 2 周，因为别的服务器还在跑。",
+      "中继日志转到了子服务器的标准错误：logging.FileHandler 用相对路径 '<子サーバー>.log'，落到 C:\\\\WINDOWS\\\\system32\\\\<子サーバー>.log，PermissionError: [Errno 13]。随后是 initialize 超时、未处理的 Promise 拒绝，中继退出。服务器日志里 100 次启动记录中 38 次有这条 PermissionError；作者写明两条启动会写进同一份日志，100 次不能当成 Desktop 启动次数。Desktop 没有工作目录设置，中继的 cwd 是 C:\\\\WINDOWS\\\\system32，再按 cwd: cwd || process.cwd() 把同样的目录传给子进程。配置里写了 max_retries: 3，代码却从没读过，子进程失败后 5 秒就再拉，停不下来；已发出的 initialize 也不取消，30 秒后超时。第一次超时还能接住，再启动那边的超时没有处理，process.on('unhandledRejection') 里的 process.exit(1) 把中继整台关掉。tools/list 要等全部子进程初始化完才回答，所以连接会晚大约 30 秒，连上数秒后再退出。",
+      "同一套设置以前能跑。作者在 C:\\\\Windows\\\\System32 里找到了那份子服务器日志：29,891 字节，创建于 2026-06-16，最后写入 2026-09-10 11:20，里面是 67 天的记录，并且和启动记录一对一对应。管理员身份的 64 位进程才能往 System32 里写（也没有落到 VirtualStore）。作者后来不再用管理员启动，调查当时用 net session 也失败。修理只改了配置的 1 行，给这个子进程写上 cwd: \"D:/<子サーバーのフォルダ>\"，代码没改。先写下 4 条预测，再把中继单独拉起、工作目录对成 System32 对照：修理前 41.6 秒以代码 1 退出，tools/list 37.64 秒、28 个工具，PermissionError 与子进程重启各 6 次，41.29 秒出现 1 次未处理拒绝；修理后观察 100 秒没有退出，tools/list 5.44 秒、35 个工具（子进程的 7 个工具加了进来），上述错误都是 0 次。实机重开 Desktop 后连接约 14 秒、35 个工具，不再断开。2026-10-09 用 psutil（无管理员）看当时的 Desktop 2.31226.0.0：本体工作目录就是 system32，登记的 10 个服务器全是它的直接子进程、工作目录也全是 system32，而且每个都被拉起 2 次。Claude Code 2.1.197 上，作者用只记录工作目录和权限的临时 MCP 对照：从 D: 的工作夹启动则写进同一文件夹，从 C:\\\\Windows\\\\System32 启动则同样 PermissionError。管理员终端里启动 claude 会不会把日志写进 System32，作者写明没有做试验，只是推测。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-16T13:43:08.332+09:00 → UTC 2026-10-16T04:43:08Z、Asia/Shanghai 2026-10-16 12:43:08；bodyUpdatedAt 2026-10-16T13:35:39.761+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-10-16；GET 200（UA MiraBot/1.0））：c_rista 在《相対パスでログを開いた MCP サーバーが、管理者をやめた日から毎回落ちていた》记录 Desktop 工作目录与相对路径日志。可达导流：https://bsky.app/profile/c-rista.bsky.social GET 200；https://x.com/c_rista_x GET 200。作者卡 GitHub 为空，不要补链。占位按源文原样写出，未作为可达链去核。",
+      "不要把日志里的 100 次启动当成 10 次 Desktop 启动，也不要把「以前能跑」写成配置本来是对的。管理员期间日志已经写进了 System32。修理验证的 41.6 秒／37.64 秒和实机重开后的约 14 秒不要混写成同一笔。",
+    ],
+    approach: "作者给 Windows 11 上的 Claude Desktop 登记了 10 个本地 stdio MCP 服务器。出问题的是自作中继：Node.js 再拉起若干 Python 子服务器。Desktop 日志里，只有这一台每次连接要 35〜43 秒，连上 3〜5 秒后断开；10 次启动全部一样。中继把子进程的标准错误转了出来：第 37 行用相对路径打开 '<子サーバー>.log'，落到 C:\\\\WINDOWS\\\\system32\\\\<子サーバー>.log，权限不足。配置里的 max_retries: 3 没有被代码读到，失败后 5 秒再拉且不等待；initialize 超时后，再启动那一路的未处理拒绝会执行 process.exit(1)，把整台中继带下去。同一套设置以前能跑，是因为作者一度用管理员启动 Desktop，日志被写进了 System32（29,891 字节、67 天，最后写入 2026-09-10 11:20）。作者只在子进程配置里写上绝对路径的 cwd，代码没改，先写下 4 条预测再对照修理前后，然后在实机上重开 Desktop 核实。2026-10-09 还用 psutil 看了当时全部 10 个服务器的工作目录和「每个被拉起 2 次」；2026-10-16 又在 Claude Code 2.1.197 上用临时 MCP 对照了从工作夹启动和从 System32 启动的差异。正文里的服务器名、日志名和子文件夹路径是占位，不要补成真实路径，也不要拿去探测。",
+    outcomes: [
+      "源披露查了 10 次 Desktop 启动，全部是连接 35〜43 秒、连上后 3〜5 秒断开；服务器日志 100 次启动记录里 38 次有写向 system32 的 PermissionError。这是这一次、这一组 Desktop／中继／子服务器设置上的记录，不可外推成「所有 MCP 在 Windows 上都会断」，也不能把 100 次日志写成 10 次 Desktop 启动，更不能把正文里的路径占位补成可达链。",
+      "以前能跑不是配置对了：管理员期间，同一相对路径把 67 天、29,891 字节的日志写进了 System32。权限降下来之后，原来的错误才露出来。",
+      "只给子进程加上绝对路径 cwd 后，单独复测中继不再于 41.6 秒以代码 1 退出，tools/list 从 37.64 秒、28 个工具变成 5.44 秒、35 个工具，PermissionError、子进程重启和未处理拒绝都是 0 次；实机重开 Desktop 后连接约 14 秒、35 个工具，不再断开。这 4 条是修理前写下的预测，对照时全部对上。",
+    ],
+    caveats: [
+      "100 次启动记录不是 Desktop 启动次数，两条启动会写进同一份日志。观察到「每个服务器被拉起 2 次」是另一次用 psutil 做的测量，不要和 10 次断线、38/100 次 PermissionError 加总。作者一度怀疑是 Desktop 的 10 秒超时，但当时另有 4 个服务器在 10 秒时也还没连上，不能把超时算到这一台头上。第二个后端退出是端口冲突只是推测；管理员终端里启动 claude 会不会把日志写进 System32，作者写明没有做试验。另一次（Desktop 1.46388.4.0）从设置里删掉不用的服务器后，仍有 9 个无父进程在跑，日志涨到 7,261,820 字节、393,680 行，不要和这次 10 次断线混写。",
+      "导流：作者卡 website https://bsky.app/profile/c-rista.bsky.social GET 200；作者卡 X https://x.com/c_rista_x GET 200（标题 Ricky (@c_rista_x) / X；UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:52）。作者卡 GitHub 为空，不要补链。占位、未作为可达链去核：'<子サーバー>.py'、'<子サーバー>.log'、C:\\\\WINDOWS\\\\system32\\\\<子サーバー>.log、%USERPROFILE%\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\Lib\\\\logging\\\\__init__.py（错误栈里的标准库路径，不是作者产品）、[<中継サーバー>]、cwd 示例 \"D:/<子サーバーのフォルダ>\"。页内 mermaid 嵌入不当作者产品导流。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清工作目录和相对路径，再谈「Desktop 上的 MCP 连不上」",
+        body: "请写明客户端是 Claude Desktop 还是 Claude Code、版本、是否以管理员启动，以及 MCP 进程的实际工作目录。如果日志或数据文件是用相对路径打开的，要写清它最终落到了哪个目录、有没有 PermissionError，以及「以前能跑」的期间是不是其实把文件写进了 System32。不要把同一份日志里两条启动混成 Desktop 的启动次数。修理前后的秒数、工具个数和退出码要分开写；路径若原文是占位，不要补全，也不要拿去探测。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/c_rista/articles/1191ba6723058e",
+      label: "zenn.dev·c_rista《相対パスでログを開いた MCP サーバーが、管理者をやめた日から毎回落ちていた》",
+      date: "2026-10-16",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "899",
+    slug: "persim-fast-226x",
+    title: "persimmoq：同一条约 150 词的说明文，用 Claude Opus 5.5、既定 effort medium、max_tokens=400、不流式、从东京发出，speed 有无各 5 次交替。平均是 standard 4.73 秒、75.7 tok/s，fast 2.10 秒、171.0 tok/s，为 2.26 倍。官方说法是最多 2.5 倍速、费用 2 倍。tok/s 是输出（含思考）除以从发出到收齐的墙上时间，含 TTFT，会比官方「输出 token 每秒」偏低。这 10 次里思考量会在约 19 和约 250 之间分开，思考约 250 且上限 400 的回合正文会被截断。不要把「1 小时变不到 30 分钟」写成这次测到的",
+    summary: "persimmoq 在 2026-10-15 Fast mode 改为不必再加测试头之后，用同一条约 150 词的说明文，对 claude-opus-5-5 做了 speed 有无各 5 次。平均 75.7 tok/s 对 171.0 tok/s，为 2.26 倍；费用按价目是 2 倍，作者估算这组大约每次 $0.008 对 $0.016。计速方式含等待首包，数字会比官方「输出 token 每秒」低一些。同一提示下思考量仍会在约 19 和约 250 之间分开；max_tokens=400 时，思考约 250 的回合正文会写到一半被截断。第四次 fast 是 150.7 tok/s，比最快的一轮慢约两成。文中「1 小时的任务若能不到 30 分钟」是举例，不是这次 5+5 次测到的。",
+    description: "面向已经把 Fast mode 的「最多 2.5 倍速、费用 2 倍」直接当成自己账单的人：把「这次从东京、不流式、含 TTFT 的 5+5 次是 2.26 倍；思考量会抖，上限 400 会截断正文；快档第四次比最快轮慢约两成；1 小时变 30 分钟不是实测」写成门禁，区别于只看官方倍数却不核计速方式和样本的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/persimmoq/articles/claude-opus-5-5-fast-mode-benchmark",
+    sourceLabel: "zenn.dev·persimmoq 实践帖",
+    upvotes: 790,
+    trending: false,
+    tags: [
+      "claude",
+      "opus-5-5",
+      "fast-mode",
+      "latency",
+      "pricing",
+    ],
+    howItWorks: [
+      "作者写明：2026-10-15 起，Claude Opus 5.5 的 Fast mode 不再需要 fast-mode-2026-02-01 测试头，也不用申请；请求里加上 speed: \"fast\"，用 usage.speed 确认实际用的是 fast 还是 standard。官方说明是同一模型输出最多 2.5 倍速、费用 2 倍。Start／Build／Scale 档带有 Fast mode 的默认速率限制，Evaluation 档不在其列。对应面是 Claude API（含 Managed Agents）和 Azure 上的 Microsoft Foundry；作者写明 Bedrock／Vertex／Claude Platform on AWS 不支持。这次实测走的是 Anthropic Messages API，不是 Foundry 或 Bedrock。",
+      "测量是同一条「用大约 150 词说明为何提示缓存能降低多轮费用」的提示，speed 有无交替各 5 次。模型 claude-opus-5-5，effort 用既定 medium，max_tokens=400，不流式，从东京发出。五次 standard 是 5.29／5.07／3.94／5.12／4.25 秒，平均 4.73 秒、75.7 tok/s；五次 fast 是 2.26／1.82／2.23／2.02／2.18 秒，平均 2.10 秒、171.0 tok/s，相除为 2.26 倍。tok/s 是输出 token（含思考）除以从发出到收齐的墙上时间，里面有 TTFT 和往返，所以会比官方说的「输出 token 每秒」偏低。作者仍写：官方「最多 2.5 倍」并不是夸大，若改用流式可能会再靠近一些。这是推测，不是这次流式对照。",
+      "同一提示下，思考 token 会在约 19 和约 250 之间分开（standard 和 fast 都会）。Opus 5.5 不能关掉思考，所以 max_tokens=400 且思考约 250 的回合，正文会写到一半被截断；作者写明这不影响速度比较，但短上限时要给思考留余量。第四次 fast 是 150.7 tok/s，比最快一轮慢约两成，而且比 standard 的 69.6〜78.9 波动更宽。价目上 Opus 5.5 的 fast 是输入／输出都 2 倍（standard 每百万 token $4／$20，fast $8／$40）。作者估算这组每次大约 $0.008 对 $0.016，整次 N=5 大约 $0.04＋$0.08。文中「1 小时的任务若能不到 30 分钟」出现在「可能划算的场景」里，不是这 5+5 次的实测。fast 与 standard 不共用缓存前缀；切换档会 miss 缓存。Batch API 不支持 Fast mode。测量脚本里的端点是 https://api.anthropic.com/v1/messages。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-17T21:17:43.031+09:00 → UTC 2026-10-17T12:17:43Z、Asia/Shanghai 2026-10-17 20:17:43；bodyUpdatedAt 与发布相同；取 published → 2026-10-17；GET 200（UA MiraBot/1.0））：persimmoq 在《Claude Opus 5.5 の Fast mode を実測した ― 料金 2 倍で 2.3 倍速、効く場面と効かない場面》记录 5+5 次对照。可达导流：https://volvox-ltd.com 、https://zenn.dev/persimmoq/books/claude-5-migration-guide 均 GET 200。",
+      "2.26 倍是这 5+5 次、不流式、含 TTFT 的平均值相除，不要写成官方的 2.5 倍，也不要把「1 小时变不到 30 分钟」写进结果。思考约 250、上限 400 时正文会截断，与速度倍数要分开写。",
+    ],
+    approach: "作者在 Fast mode 于 2026-10-15 改为不必再加测试头之后，用同一条约 150 词的说明文，对 claude-opus-5-5 做了 speed 有无交替各 5 次。effort 用既定的 medium，max_tokens=400，不流式，从东京发给 Anthropic 的 Messages API。他把输出 token（含思考）除以从发出到收齐的墙上时间，得到平均 75.7 tok/s 对 171.0 tok/s，相除为 2.26 倍，并写明这种算法含 TTFT，会比官方「输出 token 每秒」偏低。他同时记下思考量会在约 19 和约 250 之间分开，以及第四次 fast 只有 150.7 tok/s。费用按公开价目是 2 倍，这组样本的估算是大约 $0.008 对 $0.016。文中关于人在等、夜间批处理和缓存不共享的讨论，是在这 10 次之外的用法说明，不要当成另外测过的任务时长。",
+    outcomes: [
+      "源披露同一条约 150 词的说明文、Opus 5.5、不流式、从东京发出，speed 有无各 5 次，平均 75.7 tok/s 对 171.0 tok/s，为 2.26 倍。这是这一次、这一组设置上的记录，不可外推成官方「最多 2.5 倍」已经在自己账上出现，也不能把「1 小时变不到 30 分钟」写成这次测到的，更不能把 platform.claude.com 文档因跟随至区域不可用页而算成可达。",
+      "计速含从发到收到的墙上时间，所以会比官方输出速率偏低。第四次 fast 是 150.7 tok/s，比最快一轮慢约两成。思考 token 约 19 与约 250 会分开；上限 400 且思考约 250 时正文被截断，作者写明不影响这组速度比较。",
+      "价目上 fast 全上下文长度都是 2 倍。作者估算这组每次大约 $0.008 对 $0.016。fast 与 standard 不共用缓存前缀。Batch API 不支持 Fast mode，文中也不是这次对照的一部分。",
+    ],
+    caveats: [
+      "不要把文中「1 小时的任务若能不到 30 分钟」写进结果，那是场景举例。N=5 不是长时间代理任务。Foundry／Bedrock 只出现在「支不支持」的说明里，这次没有在那些平台上测，不在枚举，不硬凑，platforms 只记 claude。测量脚本里的 API 钥匙是现场读入、不写进文件的，不要补钥匙。",
+      "导流：作者卡 website https://volvox-ltd.com GET 200；作者书 https://zenn.dev/persimmoq/books/claude-5-migration-guide GET 200（第 1–2 章可免费阅读）。作者卡 GitHub／X 为空，不要补链。一次资料：https://code.claude.com/docs/en/costs 等未在本篇作为主要引用；正文给出的 https://platform.claude.com/docs/en/build-with-claude/fast-mode 与 https://platform.claude.com/docs/en/about-claude/pricing 本次 GET HTTP 200、size 306849，跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 算可达。测量脚本中的端点 https://api.anthropic.com/v1/messages 本次 GET 403（{\"error\":{\"type\":\"forbidden\",\"message\":\"Request not allowed\"}}），不列入可达，写出完整 URL 并披露状态。页内 link-card 嵌入不当作者产品导流。未见正文配图。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先写清样本、计速方式和是不是流式，再谈 Fast mode 的倍数",
+        body: "请写明模型、effort、max_tokens、是否流式、从哪里发出、同一提示重复了几次，以及 tok/s 是输出除以墙上时间还是官方那种输出速率。有无 Fast mode 的平均值要分开写，不要把这次的 2.26 倍写成官方的 2.5 倍。如果思考量会抖、短上限会截断正文，要单独写，不要算进速度结论。文中若只是举例「人等着的长任务可能划算」，不要写成已经测过那样的任务时长。官方文档若跟随至区域不可用页，不要因 HTTP 200 算可达。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/persimmoq/articles/claude-opus-5-5-fast-mode-benchmark",
+      label: "zenn.dev·persimmoq《Claude Opus 5.5 の Fast mode を実測した ― 料金 2 倍で 2.3 倍速、効く場面と効かない場面》",
+      date: "2026-10-17",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "900",
+    slug: "masaki-19952-62deny",
+    title: "masaki_mori72：在 Windows、Claude Code 2.1.296 上，用对话日志统计约 1 个月里 auto mode 分类器拦住的工具调用。19,952 次调用里被拦住 62 件（约 0.3%）。分类是 Production Deploy 21、理由不附带 9、Irreversible Local Destruction 6、Secret-Store Writes 5、Self-Modification 3、Permission Grant 3，其余 11 种共 15 件，合计 62。理由不附带的 9 件里，部署或权限脚本 6 件、往工作目录外 Write 3 件。不要把全文搜索同一句拒绝文案的次数当成 62。正文把日志路径写成 ~/.claude/projects/<プロジェクト>/<セッションID>.jsonl",
+    summary: "masaki_mori72 写了只看 tool_result 的脚本，在 Windows、Claude Code 2.1.296 上统计自己约 1 个月的对话日志：19,952 次工具调用里，被 auto mode 分类器拦住的是 62 件（约 0.3%）。最多的是 Production Deploy 21 件；有 9 件理由不附带，打开看是部署或权限脚本 6 件、往工作目录外写文件 3 件。Self-Modification 的 3 件是改 .claude/settings.local.json 或 ~/.claude.json。脚本只认 tool_result 里的拒绝句，避免把讨论或写脚本时出现的同一句话算进去。约 300 个文件、数百 MB，跑了大约 10 秒。日志默认大约 30 天会清掉。路径在正文里带占位。",
+    description: "面向已经觉得 auto mode「老是拦住」却没有回数的人：把「约 1 个月是 19,952 次里 62 件、约 0.3%；不要用全文搜索同一句话来计数；理由不附带的 9 件要拆开看；日志大约 30 天会清掉」写成门禁，区别于只凭印象谈拦截率的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/masaki_mori72/articles/0b191e77715037",
+    sourceLabel: "zenn.dev·masaki_mori72 实践帖",
+    upvotes: 791,
+    trending: false,
+    tags: [
+      "claude-code",
+      "auto-mode",
+      "classifier",
+      "denial",
+      "logs",
+    ],
+    howItWorks: [
+      "作者要回答的是：Claude Code 的 auto mode 不用每步点允许，改由另一套分类器看每一步操作，真正拦住的次数在屏幕上是看不到的。环境是 Windows、Claude Code 2.1.296。对话日志在 ~/.claude/projects/<プロジェクト>/<セッションID>.jsonl，子代理在其下的 subagents 目录。被拦住的调用会留下 is_error: true 的 tool_result，正文以 Permission for this action was denied by the Claude Code auto mode classifier 开头，方括号里是类别；也有不附带类别、只写 judged this action dangerous 或 Blocked by classifier 的。",
+      "脚本只用标准库。它遍历这些 jsonl，记下 tool_use，再只在 tool_result 且 is_error 且含上述拒绝句时计数，避免用全文搜索——讨论里复述这句、或写这支脚本时留下的同一句话，都会把次数撑大。约 300 个文件、数百 MB，大约 10 秒跑完。可选的 -v 会打出被拦的命令或路径，作者提醒里面可能有钥匙和路径，给人看时要遮掉。",
+      "约 1 个月的结果是：工具调用 19,952 次，拒绝 62 件（约 0.3%）。类别为 Production Deploy 21、理由不附带 9、Irreversible Local Destruction 6、Secret-Store Writes 5、Self-Modification 3、Permission Grant 3，其余 11 种共 15 件，合计 62。理由不附带的 9 件用 -v 看过：部署或权限脚本 6 件，往工作目录外 Write 3 件（例如往临时目录写 shell 脚本）。Self-Modification 的 3 件是编辑 .claude/settings.local.json 或 ~/.claude.json；作者写明这类路径即使在 permissions.allow 里有规则，仍会交给分类器，让 Claude 自己改许可列表也会被拦住，更稳妥的是人用 /permissions 加。日志默认大约 30 天会清掉，所以能统计的大致就是最近 1 个月。更细的分类（例如只读的 grep 被拦）写在作者博客里，不要和这 62 件的表混成另一套计数。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-25T02:24:04.388+09:00 → UTC 2026-10-24T17:24:04Z、Asia/Shanghai 2026-10-25 01:24:04（未跨日）；bodyUpdatedAt 2026-10-25T19:42:19.332+09:00，晚于发布、同日，仍取 published → 2026-10-25；GET 200（UA MiraBot/1.0））：masaki_mori72 在《Claude Code の auto mode に止められた操作を、会話ログから数える》记录 19,952 次里的 62 件拒绝。可达导流：https://morilab-garage.com/ 与 https://morilab-garage.com/articles/claude-code-auto-mode-denials/ 、https://github.com/m-masaki72 、https://x.com/mementomori72 均 GET 200。路径 ~/.claude/projects/<プロジェクト>/<セッションID>.jsonl 按占位写出，未作为可达链去核。",
+      "发布时刻是 JST 2026-10-25 02:24，换算到上海仍是 2026-10-25，不要写成 2026-10-24。约 0.3% 是 62/19,952 的除法。不要用全文搜索拒绝文案来复现这个 62。",
+    ],
+    approach: "作者在 Windows、Claude Code 2.1.296 上，用标准库写了一支只读脚本，遍历 ~/.claude/projects 下的 jsonl。它先记下 tool_use，再只统计 tool_result 里带 auto mode 分类器拒绝句的错误结果，避免把聊天里复述的同一句话算进去。约 300 个文件、数百 MB，大约 10 秒。统计范围是日志里还能看到的大约 1 个月（日志默认大约 30 天会清掉）。输出按类别计数；需要时再用 -v 看命令和路径，给人看时要遮掉钥匙。他对「理由不附带」的 9 件和 Self-Modification 的 3 件单独翻过内容，并写明宽的 Bash(*) 一类允许规则在 auto mode 下会失效。",
+    outcomes: [
+      "源披露约 1 个月的日志里，19,952 次工具调用中被 auto mode 分类器拦住 62 件（约 0.3%）。这是这一次、这一台 Windows、Claude Code 2.1.296 上的记录，不可外推成所有人的拦截率，也不能用全文搜索同一句拒绝文案来复现这个 62，更不能把路径占位补成可达链。",
+      "62 件的分类是 Production Deploy 21、理由不附带 9、Irreversible Local Destruction 6、Secret-Store Writes 5、Self-Modification 3、Permission Grant 3，其余 11 种共 15 件。理由不附带的 9 件里，部署或权限脚本 6 件、往工作目录外 Write 3 件。Self-Modification 的 3 件是改 .claude 配置。",
+      "脚本大约 10 秒跑完约 300 个文件。日志大约 30 天会清掉，所以没有更长区间的回数。博客里更细的例子不要和这张 62 件表混成另一套计数。",
+    ],
+    caveats: [
+      "约 0.3% 是 62 除以 19,952，不要改成别的分母。发布日换算到上海是 2026-10-25，不要因 JST 02:24 写成 2026-10-24。这与 #881／#882／#887／#889 同属 Claude Code 侧的拦截或钩子，但硬窗是 auto mode 分类器在日志里的拒绝回数和类别，不是插件三层会不会拦住写入，也不是 hook 路径写错或 PowerShell 退出码。",
+      "导流：作者卡 website 文章 https://morilab-garage.com/articles/claude-code-auto-mode-denials/ GET 200，站点 https://morilab-garage.com/ GET 200；https://github.com/m-masaki72 GET 200；https://x.com/mementomori72 GET 200（标题 もりりん (@mementomori72) / X；后两条作者卡补核时间为 Asia/Shanghai 2026-11-10 16:52）。占位、未作为可达链去核：~/.claude/projects/<プロジェクト>/<セッションID>.jsonl 。页内 link-card 嵌入不当作者产品导流。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清样本和计数方法，再谈 auto mode「拦了多少」",
+        body: "请写明环境、Claude Code 版本、日志覆盖了大约多久，以及工具调用总数和被分类器拦住的件数。计数必须只看 tool_result 里的拒绝句，不要用全文搜索同一句话。类别要按原文表列出；「理由不附带」若另外翻过内容，要分开写。日志若会过期，不要把这一段当成可以无限回溯的台账。路径里的项目名或会话 ID 若是占位，不要补全。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/masaki_mori72/articles/0b191e77715037",
+      label: "zenn.dev·masaki_mori72《Claude Code の auto mode に止められた操作を、会話ログから数える》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "901",
+    slug: "utsumi-315t-h4-399",
+    title: "utsumi：用 Flowgen 在 Claude Code 上，从一行说明生成 WordPress WXR 转静态站的命令行工具。10:12 开始，10:16 设计（7 条隐藏需求、10 个模块、3 次网上查找），10:32 实现：315 项测试全绿，覆盖率 98.85%，Docker 能构建。设计和批准是代理在答，不是人逐条过的。随后用 6 个 Sonnet 攻击代理去做 XSS、私密数据、XML、SSRF、文件系统和资源耗尽。315 项测试仍全绿时，又找出 HIGH 4、MEDIUM 20、LOW 8，作者写都修了（CRITICAL 0）。TOCTOU 3,000 次竞态里漏出 399 个文件到目录外，修好后 0/3000。不要把「修了」理解成每一项都经过指挥官前后对照；DOS 的 10 项里有 5 项只靠攻击代理的回归测试计数。256MB 导出大约 4 分钟是外推，不是实测",
+    summary: "utsumi 用自己的 Flowgen，在 Claude Code 上把一行说明做成 WXR 转静态站的命令行工具：约 20 分钟后 315 项测试全绿、覆盖率 98.85%。设计和批准是代理代答的，不是人逐条过的。他再派 6 个 Sonnet 攻击代理，在测试仍全绿时找出 HIGH 4、MEDIUM 20、LOW 8，并写都修了。其中 TOCTOU 3,000 次竞态漏出 399 个文件，修好后是 0/3000；空白密码会被当成公开，--include-drafts 也会带出私密篇。攻击代理合计 789,351 token、222 次工具调用，资源耗尽那一路墙上时间 3,749 秒。作者写明仍有未修项，也没有做 pip-audit，Windows 和非 Docker 的 Linux 没测。",
+    description: "面向已经把「测试全绿、覆盖率很高」当成可以上线的人：把「315 项全绿时攻击代理仍找出 4 个 HIGH；TOCTOU 3,000 次里漏出 399 个文件；设计和批准是代理代答的；有 5 项 DOS 只靠代理回归计数；256MB 大约 4 分钟是外推」写成门禁，区别于只看测试通过率的实践。",
+    categories: [
+      "security",
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/utsumi/articles/079faa1ab9e564",
+    sourceLabel: "zenn.dev·utsumi 实践帖",
+    upvotes: 792,
+    trending: false,
+    tags: [
+      "claude-code",
+      "flowgen",
+      "security-review",
+      "toctou",
+      "wxr",
+    ],
+    howItWorks: [
+      "作者用 Flowgen，在 Claude Code 里从一个句子生成工具：把 WordPress 的 WXR 备份转成静态站。时间线是 10:12 开始，10:16 设计（列出 7 条隐藏需求、10 个模块，做了 3 次网上查找），10:32 实现完成：315 项测试全绿，覆盖率 98.85%，Docker 能构建。设计和人要批准的节点，是代理在答，不是作者逐条过的。作者把这一点写在了文里。",
+      "随后派出 6 个 Sonnet 攻击代理，分别做 XSS、私密数据、XML、SSRF、文件系统和资源耗尽。作者的「修了」标准是：指挥官先复现、再修、再复现对照，并且全量测试、ruff、mypy 都要通过；但 DOS 的 10 项里，DOS-3、4、7、8、10 这 5 项只按攻击代理自己的回归测试计数，没有走指挥官前后对照。在 315 项测试仍然全绿时，统计是 CRITICAL 0/0/0，HIGH 4/4/0，MEDIUM 20/20/0，LOW 8/8/0（发现／已修／留下）。",
+      "HIGH 里有：只含空白的密码会被当成公开；--include-drafts 也会把私密篇带出来；TOCTOU 3,000 次竞态漏出 399 个文件到输出目录外，修好后 0/3000；硬链接也会把目录外的文件带出来。MEDIUM 里有：SVG 被当成 image/*；40MB 的 XML 会把内存顶到 856MB；49MB、约 490 万个属性时，内存 1,006MB 仍在 500 万个元素的上限内，修好后 1.38 秒、369MB 就拒绝。有一版修法用了 elem.attrib，变成 12 秒、1,341MB，后来改成 elem.keys()。SSRF 的诱饵只有 urllib 对照组命中过一次。6 路攻击代理合计 789,351 token、222 次工具调用，墙上时间被最慢的一路拖住，资源耗尽是 3,749 秒。作者写明未修的有：--uploads-dir 仍会复制 .html／.svg；没有 DNS 超时；拒绝硬链接也会挡住正当用法；输出目录被当成可信；没在 Windows 和非 Docker 的 Linux 上测；256MB 导出大约 4 分钟是外推，不是实测；也没有做 pip-audit。这与 #891 相邻，但硬窗是「测试和覆盖率都绿了，攻击代理仍找出 HIGH」，不是评审提示词的检出率。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-27T22:39:19.706+09:00 → UTC 2026-10-27T13:39:19Z、Asia/Shanghai 2026-10-27 21:39:19；bodyUpdatedAt 2026-10-27T22:31:05.271+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-10-27；GET 200（UA MiraBot/1.0））：utsumi 在《テスト315本・カバレッジ98.85%のCLIに、AIの攻撃役が見つけたHIGH 4件》记录 315 项全绿后的攻击代理结果。可达导流：https://studio.meltlight.art/ 、https://github.com/YusukeUtsumi/Flowgen-Free 、https://github.com/YusukeUtsumi（作者卡为 yusukeutsumi，同一账号、大小写不同，https://github.com/yusukeutsumi 亦 GET 200）、https://zenn.dev/utsumi/books/7930747b0fa88e 、https://meltlight.gumroad.com/l/kvgkrc 均 GET 200。",
+      "不要把 10:12–10:32 的实现和后来的攻击代理混成同一段墙上时间。256MB 大约 4 分钟是外推。DOS 的 5 项没有指挥官前后对照，不要和另外 27 项「已修」写成同一套验证。",
+    ],
+    approach: "作者用自己做的 Flowgen，在 Claude Code 上从一行说明生成 WXR 转静态站的命令行工具。10:12 开始，10:16 给出设计（7 条隐藏需求、10 个模块、3 次网上查找），10:32 实现完成，315 项测试全绿、覆盖率 98.85%，Docker 能构建。设计和批准是代理代答的。随后他派出 6 个 Sonnet 攻击代理，分别做 XSS、私密数据、XML、SSRF、文件系统和资源耗尽，并规定「修了」要指挥官前后对照加全量测试和静态检查；DOS 10 项里有 5 项只按代理回归计数。他按 CRITICAL／HIGH／MEDIUM／LOW 统计发现、已修和留下的件数，并单独写下 TOCTOU 3,000 次、399 个外泄文件，以及 XML 体积与内存的对照。文末列出仍未修的项、未做的平台和 pip-audit，以及 256MB 导出时长是外推。",
+    outcomes: [
+      "源披露 315 项测试全绿、覆盖率 98.85% 时，6 个攻击代理仍找出 HIGH 4、MEDIUM 20、LOW 8（CRITICAL 0），作者写都修了。这是这一次、这一份 WXR 工具和这一组攻击代理上的记录，不可外推成「测试全绿就可以上线」，也不能把 256MB 大约 4 分钟写成实测，更不能把代为批准的设计写成作者逐条过的。",
+      "TOCTOU 3,000 次竞态漏出 399 个文件到目录外，修好后 0/3000。空白密码会被当成公开，--include-drafts 会带出私密篇，硬链接也能越出目录，这些都记为 HIGH。",
+      "攻击代理合计 789,351 token、222 次工具调用；资源耗尽那一路墙上时间 3,749 秒。40MB XML 会到 856MB 内存；49MB、约 490 万属性时 1,006MB，修好后 1.38 秒、369MB 拒绝。",
+    ],
+    caveats: [
+      "设计和人要批准的节点是代理在答，不是作者逐条过的。DOS-3、4、7、8、10 只靠攻击代理回归测试计数，不要和其余「指挥官前后对照」的已修项写成同一套证据。作者写明仍有未修项，也没有在 Windows、非 Docker Linux 上测，也没有做 pip-audit。这与 #891 不是同一扇窗。",
+      "导流：https://studio.meltlight.art/ GET 200；https://github.com/YusukeUtsumi/Flowgen-Free GET 200；https://github.com/YusukeUtsumi GET 200（作者卡用户名为 yusukeutsumi，https://github.com/yusukeutsumi 亦 GET 200，同一账号）；https://zenn.dev/utsumi/books/7930747b0fa88e GET 200；https://meltlight.gumroad.com/l/kvgkrc GET 200（文中有优惠码 ZENN20）。作者卡 X 为空，不要补链。页内 link-card 嵌入不当作者产品导流。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清测试全绿之后还找出了什么，再谈「可以上线」",
+        body: "请写明测试项数、覆盖率，以及这些测试仍为绿时，攻击或审查又找出了哪些等级、几件、修了几件。若设计和批准是代理代答的，要写出来，不要写成作者逐条过的。「修了」若不是每一项都经过指挥官前后对照，要把只靠代理回归计数的项单列。竞态或外泄若有回数（例如 3,000 次里漏出 399 个文件），不要改成分母。外推的时长不要写成实测。未测的平台和未做的依赖扫描也要写上。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/utsumi/articles/079faa1ab9e564",
+      label: "zenn.dev·utsumi《テスト315本・カバレッジ98.85%のCLIに、AIの攻撃役が見つけたHIGH 4件》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "902",
+    slug: "cross-14k-opus58",
+    title: "crossclub_lab：在 Windows 11、Node v22.17.0、Claude Code 2.1.304–2.1.308 上，从对话记录统计用量。第一周 2026-10-09–15 大约 14,000 次请求、约 32 亿 cache_read、约 210 万输出，Opus 5.5 占 58%，Sonnet 占 41%，一次对话占 97%，子代理约占 68%。修好后，2026-10-23 脚本给出的最近 7 天是请求 18,288、输出 178 万、cache_read 34.50 亿，Sonnet 81%、Opus 18%、Fable 5.1 占 1%、Haiku 0%，主对话 21%、子代理 79%；7 天大约 27 秒。没有达到「Opus 降到 10% 以下」的目标。不要把这两段数字加总。正文把路径写成 C:\\Users\\<あなた>\\.claude\\projects\\",
+    summary: "crossclub_lab 写了从 Claude Code 对话 jsonl 统计用量的脚本。第一周大约 14,000 次请求、约 32 亿 cache_read，Opus 5.5 占 58%，一次对话占 97%，子代理约占 68%。原因有三条：订阅默认模型是 Opus（2026-10-15 和 10-28 都核对过文档）；抽查 13 次子代理调用都没传模型，沿用了默认；同一对话开了 7 天，每次平均约 40 万 cache_read。改成 --model sonnet、给子代理显式传模型、加上 --no-session-persistence 后，2026-10-23 最近 7 天变成 Sonnet 81%、Opus 18%，仍没到 10% 以下。无头且关闭会话持久化的运行不会进这些记录。10 月 14 日那一周约 32 亿是周上限的 94%，由此估算上限约 34 亿，这是估算。",
+    description: "面向已经按仪表盘印象在调默认模型的人：把「第一周约 14,000 次、Opus 58%；修好后最近 7 天是 18,288 次、Opus 18%，两段不要加总；子代理没传模型就会沿用默认；无头且关闭会话持久化的运行不在记录里」写成门禁，区别于只看官方用量页的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/crossclub_lab/articles/claude-code-usage-from-transcripts",
+    sourceLabel: "zenn.dev·crossclub_lab 实践帖",
+    upvotes: 793,
+    trending: false,
+    tags: [
+      "claude-code",
+      "usage",
+      "cache-read",
+      "subagent",
+      "opus",
+    ],
+    howItWorks: [
+      "作者在 Windows 11、Node v22.17.0、Claude Code 2.1.304–2.1.308 上，从对话记录统计自己的用量。第一周 2026-10-09–15：大约 14,000 次请求、约 32 亿 cache_read、约 210 万输出，Opus 5.5 占 58%，Sonnet 占 41%，一次对话占 97%，子代理约占 68%。他要回答的是：为什么订阅会这么快用到 Opus。",
+      "三条原因。一，订阅的默认模型是 Opus；作者在 2026-10-15 查过文档，10-28 再查仍是如此。二，抽查 13 次子代理调用，全部没有传模型，于是沿用默认。三，同一对话开了 7 天，每次平均约 40 万 cache_read。对应的改法是启动时加 --model sonnet，给子代理显式传模型，以及 --no-session-persistence。作者写明：无头且关闭会话持久化的运行不会出现在这些对话记录里，所以脚本看不到那一部分。",
+      "修好后不要和第一周加总。2026-10-23 脚本给出的最近 7 天是：请求 18,288，输出 178 万，cache_read 34.50 亿，Sonnet 81%，Opus 18%，Fable 5.1 占 1%，Haiku 0%，主对话 21%，子代理 79%；跑 7 天大约 27 秒。Opus 没有降到 10% 以下。去重按 message.id 加 requestId。jsonl 格式官方没有保证。周限额是周四 22:00 重置，和滚动 7 天不是同一扇窗。10 月 14 日那一周约 32 亿是当时周上限的 94%，作者由此估算上限约 34 亿，并写明这是估算。路径写成 C:\\\\Users\\\\<あなた>\\\\.claude\\\\projects\\\\，按占位写出，不要补用户名，也不要拿去探测。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-28T23:15:11.755+09:00 → UTC 2026-10-28T14:15:11Z、Asia/Shanghai 2026-10-28 22:15:11（未跨日）；bodyUpdatedAt 2026-10-29T11:41:09.226+09:00，晚于发布且跨到次日，仍取 published → 2026-10-28；GET 200（UA MiraBot/1.0））：crossclub_lab 在《Claude Code の消費を会話ログから集計する》记录第一周与修好后 7 天的用量。可达导流：https://zenn.dev/crossclub_lab/books/claude-code-daily-ops GET 200。作者卡 GitHub／X／website 为空，不要补链。该作者另有 41 天／约 1 日元篇，不是本条，仍留 pool。",
+      "发布时刻是 JST 2026-10-28 23:15，换算到上海仍是 2026-10-28，不要因 bodyUpdatedAt 在 10-29 写成 2026-10-29。第一周的约 14,000／约 32 亿和 10-23 的 18,288／34.50 亿不要加总，也不要混用约数和脚本给出的精确值。",
+    ],
+    approach: "作者在 Windows 11、Claude Code 2.1.304–2.1.308 上写了从对话 jsonl 统计请求次数、输出、cache_read 和模型占比的脚本，去重按 message.id 加 requestId。他先给出 2026-10-09–15 这一周的约数，再对照文档和抽查的 13 次子代理调用，说明默认模型、子代理没传模型和长对话缓存这三条原因，并改成 --model sonnet、显式传模型和 --no-session-persistence。修好后另取 2026-10-23 脚本对最近 7 天的输出，不再和第一周加总。他同时写明无头且关闭会话持久化的运行不在这些记录里，周限额重置点和滚动 7 天不是同一扇窗，以及约 34 亿的上限是从 94% 反推的估算。路径里的用户名是占位。",
+    outcomes: [
+      "源披露第一周大约 14,000 次请求、约 32 亿 cache_read，Opus 5.5 占 58%，一次对话占 97%，子代理约占 68%。这是这一次、这一台 Windows、Claude Code 2.1.304–2.1.308 上的记录，不可外推成所有订阅的模型占比，也不能把修好后 7 天的 18,288 次和第一周加总，更不能把路径占位补成可达链。",
+      "修好后，2026-10-23 脚本给出的最近 7 天是请求 18,288、cache_read 34.50 亿，Sonnet 81%、Opus 18%，主对话 21%、子代理 79%，没有达到 Opus 10% 以下的目标。7 天大约 27 秒跑完。",
+      "三条原因是：订阅默认模型为 Opus（10-15 与 10-28 都核对过文档）；13 次子代理调用都没传模型；同一对话开了 7 天，每次平均约 40 万 cache_read。约 34 亿的周上限是估算。",
+    ],
+    caveats: [
+      "无头且关闭会话持久化的运行不会进对话记录，脚本看不到那一部分。jsonl 格式官方没有保证。周四 22:00 的周限额重置和滚动 7 天不要当成同一扇窗。10 月 14 日那一周约 32 亿是当时上限的 94%，由此得出的约 34 亿是估算，不要写成官方公布的限额。该作者另有 41 天／约 1 日元篇，不是本条。",
+      "导流：https://zenn.dev/crossclub_lab/books/claude-code-daily-ops GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:48–16:49）。作者卡 GitHub／X／website 为空，不要补链。配图 1 张 https://static.zenn.studio/user-upload/deployed-images/7abf69a7c800437f8167a8eb.png?sha=35861d1a2f802f351237bb65c7732c2cb73c40c6 GET 200，不列入产品导流。页内 mermaid、link-card 嵌入不当作者产品导流。占位、未作为可达链去核：C:\\\\Users\\\\<あなた>\\\\.claude\\\\projects\\\\ 。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先把两段统计窗口分开，再谈 Opus 占比为什么降不下来",
+        body: "请写明环境、Claude Code 版本，以及「改之前那一周」和「改之后脚本给出的最近 7 天」各自的请求次数、cache_read、模型占比和主／子代理占比，两段不要加总。若默认模型、子代理有没有传模型、同一对话开了多久是分开核过的，要单列，并写清抽查了几次。无头且关闭会话持久化的运行若不会进这些记录，不要把脚本结果当成全部用量。限额若是从占比反推的，要标明是估算。路径里的用户名若是占位，不要补全。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/crossclub_lab/articles/claude-code-usage-from-transcripts",
+      label: "zenn.dev·crossclub_lab《Claude Code の使用量を自分の会話記録から集計する — 最初の 1 週間で Opus が 58% を使っていた理由》",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "903",
+    slug: "tyuya-41th-8th-cache",
+    title: "tyuya：官方 LINE 问询走 Cloudflare Worker，2026-10-22 从 Haiku 4.5 换成 5.5。作者不写代码，实现由 Claude Code 完成。31 条测试里 26 条会调 Claude，5 条预先分流到人工（贴纸 1、过长 1、过敏 3）。价目是约 1/10，但用测试日志按一条消息估算约 1/41（只看开头两行系统提示约 1/34）。原因是缓存下限从 4,096 降到 512，4.5 上约 2,900 token 的系统提示从未命中（cache_read=0）。中间值是 4.5 的 $0.00312 对 5.5 命中时的 $0.0000765，约 1/41。若问询间隔≥5 分钟，写入按输入的 1.25 倍计，约 $0.000409，是 4.5 的约 1/7.6；不用缓存约 $0.000337，约 1/9.2。稀疏流量下不用缓存大约再便宜两成。生产账单没有核对。不要把价目的 1/10 写成这次测到的倍数",
+    summary: "tyuya 把官方 LINE 问询从 Haiku 4.5 换成 5.5 后，用 26 条会调模型的测试日志估算单条费用：4.5 约 $0.00312，5.5 命中缓存时约 $0.0000765，大约 1/41；价目上的约 1/10 对不上，是因为 4.5 的缓存下限是 4,096，约 2,900 token 的系统提示从未写入缓存。若问询间隔大于等于 5 分钟，5.5 的写入要按输入的 1.25 倍计，大约变成 4.5 的 1/7.6；这时不用缓存大约是 1/9.2，比开缓存再便宜约两成。盈亏平衡是「下一条在 5 分钟内到来」的比例大约超过 22%。生产账单没有核对，日志里也没有 cache_creation_input_tokens。速度上 5.5 的最大时延有一次到 6.0 秒。第 7 条测试曾因正则把正确的否定判错；改完后完整 31 条连过两次。",
+    description: "面向已经按价目把 Haiku 5.5 当成「费用 1/10」的人：把「这次按测试日志估算是约 1/41；4.5 的系统提示从未命中缓存；问询一稀，写入加成会把倍数拉到约 1/7.6，不用缓存反而更便宜；生产账单没有核对」写成门禁，区别于只看官方价目倍数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tyuya/articles/haiku55-line-bot-cache-cost",
+    sourceLabel: "zenn.dev·tyuya 实践帖",
+    upvotes: 794,
+    trending: false,
+    tags: [
+      "claude",
+      "haiku-5-5",
+      "prompt-cache",
+      "line",
+      "pricing",
+    ],
+    howItWorks: [
+      "作者运营一条官方 LINE 问询，经过 Cloudflare Worker。2026-10-22 把模型从 Haiku 4.5 换成 5.5。作者写明自己不写代码，实现由 Claude Code 完成。测试有 31 条，其中 26 条会调 Claude，5 条预先分流到人工（贴纸 1、过长 1、过敏 3）。",
+      "价目上 5.5 大约是 4.5 的 1/10，但作者用测试日志按一条消息估算，大约是 1/41；若只看开头两行系统提示，大约 1/34。原因是缓存下限从 4,096 降到 512：4.5 上约 2,900 token 的系统提示从未进入缓存（cache_read=0）。中间值是 4.5 的 $0.00312，对 5.5 命中时的 $0.0000765，相除约 1/41。26 条连续测试按写入 1 次、读取 25 次估算，大约 1/35。若问询间隔大于等于 5 分钟，写入按输入的 1.25 倍计，约 $0.000409，是 4.5 的约 1/7.6；完全不用缓存约 $0.000337，约 1/9.2。稀疏流量下，不用缓存大约再便宜两成。盈亏平衡是：下一条在 5 分钟内到来的比例大约超过 22%（k>0.28，p≈0.22）。生产账单没有核对；日志里没有记录 cache_creation_input_tokens。",
+      "速度：4.5 跑了 1 轮，平均 1.8 秒、中位 1.9、最大 2.4；5.5 跑了 5 轮，平均 1.5–1.9 秒、中位 1.5–1.7、最大 2.6–6.0。6.0 秒出现在一条退款问询，下一轮最大是 2.7 秒。第 5 条「周六早上配送」：5.5 有 2/3 交给了人工；补了一行系统说明后，5/5 的 handoff 都是 none。第 7 条测试的正则曾把 5.5 正确的否定判成失败；改完后，完整 31 条连过两次。Codex（不在枚举，不硬凑）后来又找出两处仍可能误判的正则，表现和预期一致。第 7 条的 token 只多了 2.7%，不是官方所说大约 30%，且 n=1。请求里同时改了模型、去掉了 temperature（没有单独对照）、effort 设为 low（没有和省略时比过）。Cloudflare Workers 和 LINE 不在枚举，platforms 只记 claude。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-10-31T10:28:37.022+09:00 → UTC 2026-10-31T01:28:37Z、Asia/Shanghai 2026-10-31 09:28:37；bodyUpdatedAt 与发布相同；取 published → 2026-10-31；GET 200（UA MiraBot/1.0））：tyuya 在《Haiku 4.5→5.5で費用は1/41。ただし問い合わせがまばらなら1/8——差はキャッシュの書き込み代》记录测试日志上的费用估算。可达导流：https://zenn.dev/tyuya/books/umiyui-unei-jitsuroku GET 200。作者卡 GitHub／X／website 为空，不要补链。",
+      "不要把价目的约 1/10 写成这次测到的倍数。1/41、1/35、1/7.6、1/9.2 对应不同假设，不要混用。生产账单没有核对。+2.7% 只是第 7 条、n=1，不是官方大约 30%。",
+    ],
+    approach: "作者把官方 LINE 问询在 2026-10-22 从 Haiku 4.5 换成 5.5，实现由 Claude Code 完成。他用 31 条测试（26 条会调模型）的日志，按一条消息估算费用，并对照价目上的约 1/10。他把 4.5 从未命中的系统提示、5.5 命中时的中间值、连续 26 条「写 1 读 25」、以及间隔大于等于 5 分钟时的写入加成，分别算成 1/41、1/35、1/7.6 和不用缓存时的 1/9.2，并给出大约 22% 的盈亏平衡。速度上 4.5 只跑了 1 轮，5.5 跑了 5 轮，最大时延单独写。第 5 条和第 7 条的行为差异、以及改正则后完整 31 条连过两次，也和费用分开写。生产账单没有核对，日志里也没有 cache_creation 字段。",
+    outcomes: [
+      "源披露按测试日志估算，一条消息在 4.5 约 $0.00312、5.5 命中缓存时约 $0.0000765，大约 1/41；价目上的约 1/10 对不上。这是这一次、这一组 26 条测试日志上的估算，不可外推成生产账单，也不能把 1/10 写成这次测到的倍数，更不能把 platform.claude.com 文档因跟随至区域不可用页而算成可达。",
+      "4.5 的缓存下限是 4,096，约 2,900 token 的系统提示 cache_read=0。若问询间隔大于等于 5 分钟，5.5 写入按输入 1.25 倍计，约 $0.000409（约 1/7.6）；不用缓存约 $0.000337（约 1/9.2），稀疏时不用缓存大约再便宜两成。盈亏平衡大约是 5 分钟内再来一条的比例超过 22%。",
+      "4.5 一轮平均 1.8 秒、最大 2.4；5.5 五轮平均 1.5–1.9 秒，最大曾到 6.0 秒。第 5 条曾 2/3 交给人工，补了一行说明后 5/5 不再交。第 7 条正则误判修好后，完整 31 条连过两次。",
+    ],
+    caveats: [
+      "生产账单没有核对；cache_creation_input_tokens 没有记在日志里，写入次数是按测试序列估算的。temperature 被去掉、effort 设为 low，都没有单独对照。+2.7% 只是第 7 条、n=1，不要写成官方大约 30%。Codex 只出现在后来找出的两处正则漏洞说明里，不在枚举，不硬凑。Cloudflare Workers 和 LINE 同样不在枚举，platforms 只记 claude。",
+      "导流：https://zenn.dev/tyuya/books/umiyui-unei-jitsuroku GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:48–16:49）。作者卡 GitHub／X／website 为空，不要补链。相关篇已核、不列入导流：https://zenn.dev/tyuya/articles/kv-free-quota-rate-limit-fail-open GET 200。配图 1 张 https://static.zenn.studio/user-upload/deployed-images/b7488ea4d184dccb73a5b3d5.png?sha=7ed0cf083df912c6c6237d6a989ed99af9d2f0f6 GET 200，不列入产品导流。一次资料：https://platform.claude.com/docs/en/models/haiku-5-5/migration-guide 、https://platform.claude.com/docs/en/about-claude/pricing 、https://platform.claude.com/docs/en/build-with-claude/prompt-caching 本次 GET 均 HTTP 200、size 306849，跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 算可达。页内 link-card 嵌入不当作者产品导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先把价目倍数和日志估算分开，再谈换 Haiku 5.5 能省多少",
+        body: "请写明旧模型和新模型、缓存下限有没有变，以及系统提示大约多少 token、在旧模型上 cache_read 是不是 0。费用若来自测试日志而不是生产账单，要标明是估算，并分开写「命中缓存」「连续多条写 1 读 N」「间隔大于等于 5 分钟要付写入加成」这几种假设下的倍数，不要把价目的 1/10 写成这次测到的。速度的样本次数和最大时延要单列。测试若曾因正则误判，不要把误判算进模型错误。未单独对照过的请求参数不要写成已经测过的效果。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tyuya/articles/haiku55-line-bot-cache-cost",
+      label: "zenn.dev·tyuya《Haiku 4.5→5.5で費用は1/41。ただし問い合わせがまばらなら1/8——差はキャッシュの書き込み代》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "904",
+    slug: "tomoki-1hcache-5pct",
+    title: "tomoki33：用个人订阅的 Claude Code 日志看缓存命中与间隔的关系，没有公布用量绝对值，因为个人用量不等于工作用量。按间隔分档的命中率中位数是：不到 5 分钟 99%，5 分钟到 1 小时 100%，1–2 小时 5%，大于等于 2 小时 8%，用来确认订阅是 1 小时 TTL（API 钥匙则是 5 分钟，写入按 1.25 倍计）。「/compact 要大约 13 轮才回本」是试算，不是测过 13 轮的实验：compact 大约 $0.31（读 $0.03、摘要输出 $0.20、写 $0.08），之后大约每轮 $0.006 对大约 $0.03，每轮约省 $0.024，按 Opus 5.5、1 小时缓存价目除出来是 13 轮。不要写成已经跑过 13 轮",
+    summary: "tomoki33 没有公布个人订阅的用量绝对值，只按对话间隔看了缓存命中率的中位数：不到 5 分钟 99%，5 分钟到 1 小时 100%，过了 1 小时就掉到 5% 和 8%。这用来确认订阅侧是 1 小时 TTL，和 API 钥匙的 5 分钟不是同一套。关于 /compact「大约 13 轮回本」是按 Opus 5.5、1 小时缓存价目做的试算（compact 大约 $0.31，之后每轮大约省 $0.024），不是测过 13 轮的实验。换模型后下一轮会按新模型重写历史；1 小时内回来仍然便宜，作者写日志里也看到了这一行为，但没有给出量。",
+    description: "面向已经按 API 的 5 分钟 TTL 在规划订阅缓存的人：把「个人日志里 1 小时内中位数是 99–100%，过了 1 小时掉到 5–8%；13 轮回本是试算不是实验；没有公布用量绝对值」写成门禁，区别于只看官方 TTL 说明的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/tomoki33/articles/ad689d92383d52",
+    sourceLabel: "zenn.dev·tomoki33 实践帖",
+    upvotes: 795,
+    trending: false,
+    tags: [
+      "claude-code",
+      "prompt-cache",
+      "ttl",
+      "compact",
+      "subscription",
+    ],
+    howItWorks: [
+      "作者整理了 Claude Code 上省 token 的做法，依据是个人订阅的日志。他明确写了不公布用量绝对值，因为个人用量不等于工作用量。能写进结果的，是按对话间隔分档的缓存命中率中位数：不到 5 分钟 99%，5 分钟到 1 小时 100%，1–2 小时 5%，大于等于 2 小时 8%。这与「订阅是 1 小时 TTL」相符；若用 API 钥匙，则是 5 分钟 TTL，写入按 1.25 倍计，不要混用。",
+      "关于要不要 /compact，文中给出的「大约 13 轮才回本」是试算：一次 compact 大约 $0.31（读缓存约 $0.03、摘要输出约 $0.20、再写入约 $0.08）；之后大约每轮 $0.006，对上大约 $0.03，每轮约省 $0.024；按 Opus 5.5、1 小时缓存的价目除出来是 13 轮。这不是作者跑了 13 轮得到的实测。",
+      "换模型时，下一轮会按新模型把历史再写一遍；若在 1 小时内回到原来的模型，这一笔仍然便宜。作者写「日志里也确认了这一点」，指的是行为，没有给出量。路径按源文写作 ~/.claude/projects/。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-03T10:44:50.041+09:00 → UTC 2026-11-03T01:44:50Z、Asia/Shanghai 2026-11-03 09:44:50；bodyUpdatedAt 2026-11-03T10:42:31.350+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-11-03；GET 200（UA MiraBot/1.0））：tomoki33 在《トークンの節約法について整理してみた》记录订阅缓存的 1 小时 TTL。可达导流：https://portfolio-site-psi-black.vercel.app 首次 CURL 28／HTTP 000，最后一次 GET 200、size 44075（跟随至带尾斜线的同一地址），按最后一次列入可达，须披露首次超时，不列入失败码；https://github.com/tomoki33 GET 200。",
+      "不要把「大约 13 轮回本」写成已经跑过的实验。不要把订阅的 1 小时 TTL 写成 API 钥匙的 5 分钟。作者没有公布用量绝对值，不要补造。",
+    ],
+    approach: "作者用个人订阅的 Claude Code 日志，按对话间隔分档看缓存命中率的中位数，用来确认订阅侧是 1 小时 TTL。他故意不公布用量绝对值。关于 /compact 是否划算，他按 Opus 5.5、1 小时缓存价目做了一次试算，得出大约 13 轮回本，并写明这是计算，不是实验。换模型会重写历史、1 小时内回来仍然便宜，他只确认了行为，没有给出量。文中也提到用 ccusage 看用量，那是第三方工具，不是作者产品。",
+    outcomes: [
+      "源披露按间隔分档的命中率中位数是：不到 5 分钟 99%，5 分钟到 1 小时 100%，1–2 小时 5%，大于等于 2 小时 8%，与订阅 1 小时 TTL 相符。这是这一次、这一份个人订阅日志上的记录，不可外推成工作用量或 API 钥匙的 5 分钟 TTL，也不能把「大约 13 轮回本」写成已经跑过的实验，更不能因作品集站点首次超时而把最后一次 200 写成失败码。",
+      "「13 轮回本」是试算：compact 大约 $0.31，之后每轮大约省 $0.024，按 Opus 5.5、1 小时缓存价目除得。作者没有公布用量绝对值。",
+      "换模型后下一轮会按新模型重写历史；1 小时内回到原模型仍然便宜。日志确认的是这一行为，没有给出量。",
+    ],
+    caveats: [
+      "作者写明个人用量不等于工作用量，所以没有公布绝对值，不要补造，也不要把这 4 档中位数写成「省了多少钱」。13 轮是试算。ccusage 是第三方：https://github.com/ryoppippi/ccusage GET 200，跟随至 https://github.com/ccusage/ccusage，不列入作者产品导流。路径 ~/.claude/projects/ 按源文写出。",
+      "导流：https://portfolio-site-psi-black.vercel.app 首次 CURL 28／HTTP 000（约 25 秒超时），最后一次 GET 200、size 44075，跟随至 https://portfolio-site-psi-black.vercel.app/ ；按最后一次列入可达，须披露首次超时，不列入失败码。https://github.com/tomoki33 GET 200。作者卡 X 为空，不要补链。一次资料已核、不列入导流：https://code.claude.com/docs/en/prompt-caching 、https://code.claude.com/docs/en/costs 、https://code.claude.com/docs/en/sub-agents 均 GET 200。https://platform.claude.com/docs/en/build-with-claude/prompt-caching 与 https://platform.claude.com/docs/en/about-claude/pricing 本次 GET HTTP 200、size 306849，跟随至 https://claude.com/app-unavailable-in-region（标题 App unavailable in region | Claude by Anthropic），按区域不可用披露，不因 200 算可达。页内 mermaid 嵌入不当作者产品导流。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清是订阅还是 API 钥匙、数字是中位数还是试算，再谈缓存能省多少",
+        body: "请写明这是个人订阅还是 API 钥匙，以及有没有公布用量绝对值。缓存命中若按间隔分档，要写出各档的中位数，不要把 1 小时 TTL 和 5 分钟 TTL 混用。/compact 的回本轮次若是按价目除出来的试算，不要写成已经跑过那么多轮。换模型会不会重写历史，若只确认了行为、没有量，不要补造用量。第三方用量工具不要当成作者产品。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/tomoki33/articles/ad689d92383d52",
+      label: "zenn.dev·tomoki33《トークンの節約法について整理してみた》",
+      date: "2026-11-03",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "906",
+    slug: "motimo-27of33-3x",
+    title: "motimotinotch：站点更新说明测验 76 问，其中选择题 33 道。没有 skill 时，3 轮都选同一个答案的是 27/33。另一项目 53 问的测验里，每次与作者一致的大约 35 问（「35 问前后」是约数，「三分之二」是同一句判断）。用错过的题做 skill；先写原则没有用。最终 skill 仍有 2/3 把开头按钮改回「改」，是用作者自己的「小改」反过来打的。留出的 25 道选择题（不含已用作材料的题）：无 skill 是 13–17，有 skill 是 16–21，各 3 轮，给的是区间。自由作答分不出来。评分用同一模型 Opus 5.5，版本对外隐藏，但是同一模型在打分，要打折扣。两周后 skill 被调用 14 次；7 次明确建议里，作者接受 4 次、推翻 3 次，skill 从未自动更新。原文「直すか見送るか」应作「改还是先搁下」，不要写成「先发送」",
+    summary: "motimotinotch 想把「改还是先搁下」交给 skill，先用自己站点更新说明的 33 道选择题做基线：没有 skill 时，3 轮都选同一答案的是 27/33。先写原则没有用，最终 skill 仍有 2/3 把开头按钮改回「改」。留出的 25 道题，无 skill 是 13–17，有 skill 是 16–21，各 3 轮，给的是区间，不是单点。自由作答分不出来。评分用同一模型 Opus 5.5，版本对外隐藏，但同一模型在打分，要打折扣。两周后 skill 被调用 14 次，7 次明确建议里接受 4、推翻 3，skill 从未自动更新。作者写「7 次还很少」。AI 事后写的理由是事后解释，不是已经证明的原因。",
+    description: "面向已经想把「改还是先搁下」整段交给 skill 的人：把「无 skill 时 33 道里 27 道三轮相同；留出的 25 道只给了区间；两周里 7 次明确建议接受 4、推翻 3，skill 从未自动更新；「見送る」应作「先搁下」」写成门禁，区别于只看 skill 调用次数的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/motimotinotch/articles/39b96699e3efba",
+    sourceLabel: "zenn.dev·motimotinotch 实践帖",
+    upvotes: 797,
+    trending: false,
+    tags: [
+      "skill",
+      "judgment",
+      "evaluation",
+      "double-loop",
+      "quiz",
+    ],
+    howItWorks: [
+      "作者想把站点更新说明里「改还是先搁下」的判断交给 skill。测验共 76 问，其中选择题 33 道。没有 skill 时，3 轮都选同一个答案的是 27/33。另一项目 53 问的测验里，每次与作者一致的大约 35 问；「35 问前后」是约数，「三分之二」是同一句判断，不要写成精确的 35/53。原文「直すか見送るか」应译成「改还是先搁下」，不要写成「先发送」。",
+      "skill 是用错过的题做出来的。先写原则没有用。最终 skill 仍有 2/3 把开头按钮改回「改」，是用作者自己的「小改」原则反过来打的。加上「我偏离时」这类来自作者的条件后，情况有改善。留出的 25 道选择题（不含已用作材料的题）：无 skill 是 13–17，有 skill 是 16–21，各 3 轮，作者给的是区间。自由作答分不出来。评分由同一模型 Opus 5.5 做，版本对外隐藏，但打分和作答是同一类模型，要打折扣。",
+      "两周后，skill 被调用 14 次；其中 7 次是明确建议，作者接受 4 次、推翻 3 次；skill 从未自动更新，双环没有转起来。作者写「7 次还很少」。文中引用的 Fast-and-frugal、Take-the-best、透镜模型和 Argyris 双环，是用来解释做法的一次资料，不是这次测验的结果。AI 事后写下的理由是事后解释，不是已经证明的原因。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-05T19:05:46.266+09:00 → UTC 2026-11-05T10:05:46Z、Asia/Shanghai 2026-11-05 18:05:46；bodyUpdatedAt 2026-11-05T19:05:21.088+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-11-05；GET 200（UA MiraBot/1.0））：motimotinotch 在《自分の判断をAIに任せようとしたら、最後まで僕が要った》记录 27/33 与留出 25 题的区间。可达导流：https://motimotinotch.com GET 200。作者卡 GitHub／X 为空，不要补链。原文「見送る」译作「先搁下」，不要写成「先发送」。",
+      "27/33 是「三轮答案相同」，不是与作者一致的正确率。留出的 25 题只给了区间，不要写成单点。53 问里的「约 35 问」「三分之二」是约数。14 次调用和 7 次明确建议不要混成同一分母。",
+    ],
+    approach: "作者先用站点更新说明测验做基线：76 问里的 33 道选择题，无 skill 时看 3 轮是否选同一答案。skill 用错过的题来做，先试原则、后加来自作者的条件。评估时把已用作材料的题拿掉，留出 25 道选择题，有无 skill 各跑 3 轮，只报告区间；自由作答另看。评分用同一模型 Opus 5.5，版本对外隐藏。上线两周后，再数 skill 被调用几次、其中几次是明确建议、作者接受和推翻各几次，以及 skill 有没有自动更新。文中的判断模型和双环文献是解释用语，不是测验结果。",
+    outcomes: [
+      "源披露没有 skill 时，33 道选择题里 3 轮都选同一答案的是 27/33；留出的 25 道无 skill 是 13–17，有 skill 是 16–21，各 3 轮，给的是区间。这是这一次、这一组测验和这一份 skill 上的记录，不可外推成「判断已经可以交给 skill」，也不能把 27/33 写成与作者一致的正确率，更不能把「見送る」写成「先发送」。",
+      "先写原则没有用。最终 skill 仍有 2/3 把开头按钮改回「改」。自由作答分不出来。评分是同一模型 Opus 5.5，要打折扣。另一项目 53 问里「约 35 问、三分之二」是约数。",
+      "两周后 skill 被调用 14 次；7 次明确建议里接受 4、推翻 3，skill 从未自动更新。作者写「7 次还很少」。AI 事后写的理由是事后解释，不是已经证明的原因。",
+    ],
+    caveats: [
+      "27/33 不是正确率。13–17 与 16–21 是区间，两头都不要改成单点。53 问那一组不要写成精确的 35/53。双环没有转起来，不要把 14 次调用写成 skill 已经会自己改。Wikipedia 页资产里虽出现 captcha 字样，正文标题是 Take-the-best heuristic，GET 200、size 155460，按可达一次资料计，不当成验证页。",
+      "导流：https://motimotinotch.com GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:48–16:49）。作者卡 GitHub／X 为空，不要补链。相关篇已核、不列入导流：https://zenn.dev/motimotinotch/articles/569ed5ab2743c1 GET 200。一次资料：https://www.dangoldstein.com/papers/FastFrugalPsychReview.pdf GET 200；https://en.wikipedia.org/wiki/Take-the-best_heuristic GET 200、size 155460（标题 Take-the-best heuristic - Wikipedia，按可达计）；https://sk.sagepub.com/ency/edvol/embed/organizationalpsychology/chpt/lens-model GET 200；https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4915695/ GET 200，跟随至 https://pmc.ncbi.nlm.nih.gov:443/articles/PMC4915695/ ；https://arxiv.org/pdf/cs/0504071 GET 200。https://infed.org/dir/chris-argyris-theories-of-action-double-loop-learning-and-organizational-learning/ GET 404（标题 Page not found - exploring south ronaldsay），不列入可达，写出完整 URL 并披露状态。未见正文配图。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先写清基线是「三轮相同」还是「与作者一致」，再谈 skill 能不能代做判断",
+        body: "请写明测验题数、其中选择题几道，以及没有 skill 时「三轮都选同一答案」的回数，不要把它写成正确率。留出的题若给的是区间，不要改成单点。若 skill 仍会把某一类判断改回去，要写出次数或比例。上线后的调用次数、明确建议次数、作者接受和推翻的次数、skill 有没有自动更新，要分开写。原文若是「見送る」，译成「先搁下」或「暂不采用」，不要写成「先发送」。AI 事后写的理由不要当成已经证明的原因。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/motimotinotch/articles/39b96699e3efba",
+      label: "zenn.dev·motimotinotch《自分の判断をAIに任せようとしたら、最後まで僕が要った》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+  },
+  {
+    id: "907",
+    slug: "k2exter-146k-2084t",
+    title: "k2exter：给初学者用的电路 CAD circuitCad。文稿由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。表上 10/14 对 11/10：含测试的 Rust 约 4.9 万行变为约 14.6 万行（标题「约 15 万行」是行文，表是约 14.6 万，不要混用），测试 718 变为 2,084，提交 199 变为 987，样例电路 40 变为 120。几乎全部代码由 AI 写（Sonnet 5.5，11/08 起改用 Opus 5.5）；作者没有编程经验。196 个元件的板从 57ms/帧降到 8ms。测试通过时界面仍可能是错的。DRC 和制板检查是 0 错，但极性与标注的目视问题还在，不要把 DRC 0 写成「没有问题」。11/09 下了第一块评估板。不要把约 15 万行写成表上的精确值",
+    summary: "k2exter 用 Claude Code 做给初学者用的电路 CAD。文稿由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。从表上的 10/14 到 11/10，含测试的 Rust 约 4.9 万行变为约 14.6 万行，测试 718 变为 2,084，提交 199 变为 987，样例 40 变为 120。标题写「约 15 万行」是行文，不要和表上的约 14.6 万混用。几乎全部代码由 AI 写，作者没有编程经验。196 个元件的板从 57ms/帧降到 8ms。测试通过时，连字符 1e-6 仍可能看起来像 1e 6，符号会重叠，焊盘会超出外形。DRC 和制板检查是 0 错，但目视的极性和标注问题还在。自动布局相关提交约 45 次；10/28 有一段约 1.5 小时、10:13–11:53、失败 3 次后画出能用的图。11/09 下了第一块评估板。",
+    description: "面向已经把「测试全绿、DRC 0 错、代码约 15 万行」直接当成可以制板的人：把「表上是约 14.6 万行不是 15 万；测试通过时界面仍可能错；DRC 0 不等于没有问题；文稿由 AI 起草、数字来自仓库；作者没有编程经验」写成门禁，区别于只看行数和检查项的实践。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/k2exter/articles/2ef043000d0031",
+    sourceLabel: "zenn.dev·k2exter 实践帖",
+    upvotes: 798,
+    trending: false,
+    tags: [
+      "claude-code",
+      "circuit-cad",
+      "tests",
+      "drc",
+      "auto-place",
+    ],
+    howItWorks: [
+      "作者在做给初学者用的电路 CAD circuitCad。这篇是一个月的记录：文稿由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。表上对照 10/14 与 11/10：含测试的 Rust 约 4.9 万行变为约 14.6 万行，测试 718 变为 2,084，提交 199 变为 987，样例电路 40 变为 120。标题写「约 15 万行」是行文，不要和表上的约 14.6 万混用。几乎全部代码由 AI 写（Sonnet 5.5，11/08 起改用 Opus 5.5）；作者写明自己没有编程经验。循环是：想法 → AI 实现 → 测试加目视 → 下一轮想法。",
+      "196 个元件的板从 57ms/帧降到 8ms。candidates.md 现在有 54 行。CLAUDE.md 当地图，细节放在 docs/code-notes。工作中只跑改过的测试，数秒级；提交前再跑全套，2–3 分钟。CI 里的 ngspice 是 38 项直流加 32 项瞬态。测试通过时界面仍可能是错的：连字符 1e-6 看起来像 1e 6，符号重叠，焊盘超出外形；11/10 晶体管和二极管上多出了线，下一提交才修。DRC 和制板检查是 0 错，但极性与标注的目视问题还在，不要把 DRC 0 写成「没有问题」。",
+      "自动布局实验：间距从 1.6mm 改到 2.4mm；未布线从 8 降到 2；面积大约增加 37%，默认关掉；「磁铁」试过两次，两次都丢掉了；相关提交约 45 次，跨 10/09–11/09。10/28 有一段大约 1.5 小时的循环，10:13–11:53，失败 3 次后画出能用的图。作者自己的微欧计板未布线从 7 降到 4；67 个样例没有变差；一直开着的出口短线让 2 个样例变长 17–24%。同一块板的未布线数曾在 7 到 34 之间波动。11/09 下了第一块评估板，当时还没有回流结果。",
+    ],
+    tips: [
+      "源帖（无 JSON-LD；页内 publishedAt 2026-11-10T17:41:03.559+09:00 → UTC 2026-11-10T08:41:03Z、Asia/Shanghai 2026-11-10 16:41:03；bodyUpdatedAt 2026-11-10T17:37:31.742+09:00，略早于发布、同日，按预定发布理解；取 published → 2026-11-10；GET 200（UA MiraBot/1.0））：k2exter 在《Claude Codeで1か月・約15万行: 回路CADを「試す→見る→捨てる」で育てた記録》记录约 14.6 万行与 2,084 项测试。可达导流：https://github.com/k2exter 、https://github.com/K2EXTER/circuitCad 均 GET 200。作者卡 X／website 为空，不要补链。",
+      "标题「约 15 万行」是行文，表上是约 4.9 万变为约 14.6 万，不要写成精确的 15 万行。文稿由 AI 起草、作者审过，数字以仓库和记录为准。DRC 0 错不等于没有目视问题。",
+    ],
+    approach: "作者用 Claude Code 做 circuitCad，循环是想法、实现、测试加目视、再收下或丢掉。这篇一个月的记录由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。他用一张表对照 10/14 与 11/10 的行数、测试、提交和样例，并分开写帧时间、candidates.md、测试策略和 ngspice CI。自动布局给出了间距、未布线、面积和「磁铁」两次都丢掉的结果，以及 10/28 那一段约 1.5 小时的循环。他特别写了测试通过时界面仍可能错，以及 DRC 0 错时目视问题还在。11/09 下了第一块评估板。",
+    outcomes: [
+      "源披露表上 10/14 对 11/10，含测试的 Rust 约 4.9 万行变为约 14.6 万行，测试 718 变为 2,084，提交 199 变为 987，样例 40 变为 120。这是这一次、这一份仓库记录上的数字，不可外推成所有「没有编程经验也能做 15 万行」的通例，也不能把标题里的「约 15 万行」写成表上的精确值，更不能把 DRC 0 错写成没有问题。",
+      "196 个元件的板从 57ms/帧降到 8ms。工作中只跑改过的测试（数秒），提交前全套 2–3 分钟；ngspice CI 是 38 项直流加 32 项瞬态。测试通过时，连字符、重叠符号和焊盘仍可能看起来是错的。",
+      "自动布局把未布线从 8 降到 2，面积大约增加 37%，默认关掉；「磁铁」试过两次都丢掉了。10/28 一段约 1.5 小时、失败 3 次后画出能用的图。11/09 下了第一块评估板，当时还没有回流结果。",
+    ],
+    caveats: [
+      "文稿由 AI 起草、作者审过，不要把行文里的「约 15 万行」和表上的约 14.6 万混用。作者没有编程经验，几乎全部代码由 AI 写，不要写成作者手写了这些行。同一块板未布线数曾在 7 到 34 之间波动；一直开着的出口短线让 2 个样例变长 17–24%，不要把「67 个样例没有变差」写成全部变好。评估板当时还没有回流结果。",
+      "导流：https://github.com/k2exter GET 200；https://github.com/K2EXTER/circuitCad GET 200（UA MiraBot/1.0，Asia/Shanghai 2026-11-10 16:48–16:49）。作者卡 X／website 为空，不要补链。相关篇已核、不列入导流：https://zenn.dev/k2exter/articles/d54c59e62156c3 GET 200。配图 5 张均 GET 200，不列入产品导流：https://static.zenn.studio/user-upload/838066e8e5a5-20261110.png 、https://static.zenn.studio/user-upload/d41dc2f6dd8c-20261110.png 、https://static.zenn.studio/user-upload/61139c9ea4a3-20261110.png 、https://static.zenn.studio/user-upload/8a74796db38e-20261110.png 、https://static.zenn.studio/user-upload/66576f8bdf64-20261110.png 。未见需要探测的占位链。primary GET 200。platforms 记 claude。",
+    ],
+    prompts: [
+      {
+        title: "先把表上的行数和标题里的约数分开，再谈「测试全绿、DRC 0 错」能不能制板",
+        body: "请写明对照的两个日期，以及表上的代码行数、测试数、提交数和样例数。标题若写「约 15 万行」而表是约 14.6 万，不要混用。若文稿由 AI 根据 git 历史起草、作者审过，要写出来。测试策略（改过的测试、提交前全套、仿真 CI）和「测试通过但界面仍可能错」的例子要分开写。DRC 或制板检查为 0 错时，若目视仍有极性或标注问题，不要写成没有问题。自动布局的未布线、面积和丢掉的想法不要和行数加总。评估板若还没有回流结果，不要提前写结论。",
+      },
+    ],
+    primarySource: {
+      url: "https://zenn.dev/k2exter/articles/2ef043000d0031",
+      label: "zenn.dev·k2exter《Claude Codeで1か月・約15万行: 回路CADを「試す→見る→捨てる」で育てた記録》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
   }
 ];
 
