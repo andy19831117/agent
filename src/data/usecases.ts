@@ -86443,6 +86443,488 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "有 JSON-LD；datePublished 2026-08-30T18:54:46.000+09:00，与 Qiita API created_at 2026-08-30T18:54:46+09:00 一致 → UTC 2026-08-30T09:54:46Z、Asia/Shanghai 2026-08-30 17:54:46，取上海日历日 → 2026-08-30；JSON-LD dateModified／API updated_at 已跨到 2026-09-01T20:18:59+09:00，仍取首次发布，不要改用 09-01；文内第一次核验在 08-30，Qwen3.8 的补测写在 09-01 的更新里，不要把补测日写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-30。与更早同日条目（如 #1187、#992）主题不同。",
     ],
+  },
+  {
+    id: "1298",
+    slug: "khrn-299-344",
+    title: "有线程二至八轮请求二百九十九至三百四十四字节",
+    summary: "khronov 把约 3.7 万 token 的资料放进 system，用 claude-haiku-5-5（effort low）跑同一套 8 周转对话，有无 Message threads 各 2 回。主硬窗是有线程时第 2–8 轮请求 299–344 字节，对无线程的 109,466–117,625 字节；按轮中位相比约 1/325–1/378，标题「约 1/300」只是约数。第 1 轮仍是 108,983 对 109,010 字节，8 轮合计约 89 万对约 11 万字节（约 1/8）。TTFT 和全程在这次 2 回里没有清楚差别，计费 token 除先跑的 A 写入 37,305 外也几乎相同，都不要写成这条主窗。不可外推到更长的对话或别的模型。",
+    description: "这是一篇个人用 Claude Messages API 对照 Message threads 的实测。主硬窗是有线程时第 2–8 轮请求 299–344 字节，对无线程 109,466–117,625 字节。不要把标题「约 1/300」或 TTFT 写成这条主窗，也不可外推。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/khronov/items/cf147246d92f2a781320",
+    sourceLabel: "qiita.com·khronov《Claude API の Message threads で、2 ターン目からの送信量が約 1/300 になった【8ターン×2回】》",
+    upvotes: 1189,
+    trending: false,
+    tags: [
+      "Claude API",
+      "Message threads",
+      "请求体积",
+      "prompt cache",
+    ],
+    primarySource: {
+      url: "https://qiita.com/khronov/items/cf147246d92f2a781320",
+      label: "qiita.com·khronov《Claude API の Message threads で、2 ターン目からの送信量が約 1/300 になった【8ターン×2回】》",
+      date: "2026-11-05",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Python 标准库 4 个模块的 pydoc（约 10 万字、105,597 字符）放进 system，用同一套 8 个问题对照：A 每轮都送全文，B 第 1 轮 create、第 2 轮起只送新问题和 continue。A→B→A→B 各 2 回，SDK 自动重试关掉（max_retries=0），模型是 claude-haiku-5-5、effort low。主结论落在第 2–8 轮请求体积；TTFT、全程、计费 token 和 400／404 错误另记，不和这条主窗写混。",
+    outcomes: [
+      "源披露：在作者这台 macOS 27.2（Apple M3 / 24GB）、Python 3.12.15、anthropic 2.5.0、claude-haiku-5-5（effort low）上，把约 3.7 万 token 的资料放进 system，跑同一套 8 周转对话，有无 Message threads 各 2 回。主硬窗是有线程时第 2–8 轮请求 299–344 字节，对无线程的 109,466–117,625 字节；按轮中位相比约 1/325–1/378。不要把标题「约 1/300」写成精确比。第 1 轮仍是 108,983 对 109,010 字节，不要写成已经变小。8 轮合计约 89 万对约 11 万字节（约 1/8，表上 892,514 对 111,281 字节/对话）是另一窗，几乎都来自第 1 轮送出的 system 资料。TTFT 和全程在这次各 2 回里没有清楚差别（例如第 5 轮中位 1.62 秒对 0.55 秒，第 4 轮却是 0.61 对 0.94；同一条件也有 1.01–2.22 秒这样的起伏），不要写成已经更快。计费侧 2 次对话合计 A 的 cache_read 567,089、cache_write 39,951，B 为 603,342／2,332，B 每轮仍有约 3.7–3.8 万 cache_read；差几乎都来自先跑的 A 第 1 轮写入 37,305，不要写成线程会少计费。同一 id 再 continue 是 HTTP 400 thread_already_continued，隔 330 秒是 HTTP 404 thread_not_found，不要写成主窗。4 次对话费用约 0.02 美元是按 usage 估算，不含错误确认和事先试跑。再跑一次时第 2–8 轮仍是 299–344 字节，TTFT 中位仍会互换快慢。n=2。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。官方文档 https://platform.claude.com/docs/en/release-notes/overview 、https://platform.claude.com/docs/en/build-with-claude/message-threads 、https://platform.claude.com/docs/en/build-with-claude/prompt-caching 、https://platform.claude.com/docs/en/about-claude/pricing 交付时均跟随至 https://claude.com/app-unavailable-in-region ，HTTP 200，落地页标题为 App unavailable in region | Claude by Anthropic，属区域不可用页，不计入可达，须写出完整 URL 并披露最后一次状态与落地页。https://github.com/anthropics/anthropic-sdk-python/blob/main/CHANGELOG.md 交付时 GET 200，可列可达，是官方 SDK 变更记录不是作者产品。这次确是作者自己用 claude-haiku-5-5 Messages API 做的 8 周转对照，platforms 为 [\"claude\"]。源文无 ChatGPT 字面，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-11-05，不要改用 beta 公开日 11-02 或执行时刻 09:39。与 #966、#1012、#1018 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 299–344 字节是有线程时第 2–8 轮的请求体积，不要把标题「约 1/300」或 TTFT 写成同一主窗",
+        body: "请按原文核算：有 Message threads 时第 2–8 轮请求是不是 299–344 字节，无线程是不是 109,466–117,625 字节，按轮中位相比是不是约 1/325–1/378。不要把标题「约 1/300」写成精确比，也不要把第 1 轮仍约 10.9 万字节、8 轮合计约 89 万对约 11 万字节、TTFT 没有清楚差别，或计费 token 几乎相同写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下有线程时第 2–8 轮请求 299–344 字节，对无线程 109,466–117,625 字节；按轮中位相比约 1/325–1/378，标题「约 1/300」只是约数。",
+      "再单独记下第 1 轮仍是 108,983 对 109,010 字节，8 轮合计约 89 万对约 11 万字节，几乎都来自第 1 轮的 system 资料。",
+      "TTFT、全程、计费 token（含先跑的 A 写入 37,305）和 400／404 都另起一行，不和 299–344 字节写在同一句结论里。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-05T11:26:43.000+09:00，与 Qiita API created_at 2026-11-05T11:26:43+09:00 一致 → UTC 2026-11-05T02:26:43Z、Asia/Shanghai 2026-11-05 10:26:43，取上海日历日 → 2026-11-05；dateModified／updated_at 同日 2026-11-05T11:28:01+09:00（API 为 11:28:02），仍取首次发布，不要改用 beta 公开日 11-02 或执行时刻 09:39；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-05。与更早同日条目（如 #966、#1012、#1018）主题不同。",
+    ],
+  },
+  {
+    id: "1299",
+    slug: "kuro-113-7315",
+    title: "三千文件中位一百一十三点二对七千三百一十五毫秒",
+    summary: "kurosaki_ren 在 Windows 11（build 10.0.26200）、AMD Ryzen 9 PRO 8945HS、Node.js 26.8.2 上，用同一份 3,000 个 TypeScript 文件（216,000 行）、同一 7 条规则对照 oxlint 1.85.0 和 ESLint 10.11.0（typescript-eslint 8.70.1）。预热 1 次后再跑 5 次取中位：oxlint 113.2ms，ESLint 7,315.0ms，约 64.6 倍。1 个、50 个、300 个文件的倍率、默认探测规则数、ESLint --cache 的 1,451.7ms，以及 oxlint --threads=1 的 330.0ms 都是另窗，不要写成这条主窗。测量日 2026-09-24 不是发布日。不可外推到别的规则集或机器。",
+    description: "这是一篇个人对照 oxlint 与 ESLint 的实测。主硬窗是 3,000 个文件、同一 7 条规则下 oxlint 中位 113.2ms，对 ESLint 的 7,315.0ms（约 64.6 倍）。不要把更小规模或 --cache 写成这条主窗，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kurosaki_ren/articles/oxlint-eslint-3000-files-benchmark",
+    sourceLabel: "zenn.dev·kurosaki_ren《oxlint 1.85とESLint 10を3,000ファイルで実測比較した結果》",
+    upvotes: 1190,
+    trending: false,
+    tags: [
+      "oxlint",
+      "ESLint",
+      "lint 速度",
+      "TypeScript",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kurosaki_ren/articles/oxlint-eslint-3000-files-benchmark",
+      label: "zenn.dev·kurosaki_ren《oxlint 1.85とESLint 10を3,000ファイルで実測比較した結果》",
+      date: "2026-11-04",
+      dateLabel: "发布",
+    },
+    approach: "作者用模板生成 3,000 个掺了问题的 TypeScript 文件（216,000 行），在 oxlint 和 ESLint 上启用同一 7 条规则，先预热 1 次再连续测 5 次取中位。主结论落在 3,000 文件、规则对齐后的这一档；更小规模、默认探测规则数、--cache、--threads=1，以及迁出配置、CI 退出码另记，不和这条主窗写混。",
+    outcomes: [
+      "源披露：在作者这台 Windows 11（build 10.0.26200）、AMD Ryzen 9 PRO 8945HS w/ Radeon 780M Graphics、Node.js 26.8.2 上，用同一份 3,000 个 TypeScript 文件（216,000 行）和同一 7 条规则对照 oxlint 1.85.0 与 ESLint 10.11.0（@eslint/js 10.0.1、typescript-eslint 8.70.1、TypeScript 6.0.2）。预热 1 次后再跑 5 次取中位：oxlint 113.2ms，ESLint 7,315.0ms，约 64.6 倍。不要把 1 个文件的 515.9ms 对 51.9ms（约 9.9 倍）、50 个文件的 743.4ms 对 47.6ms（约 15.6 倍），或 300 个文件的 1,348.9ms 对 48.1ms（约 28.0 倍）写成这条主窗。默认探测时 ESLint 是 24,000 条／7 条规则，oxlint 既定是 15,000 条／4 条规则（no-console、prefer-const、no-var 既定为 0）；对齐规则后 oxlint 也是 24,000 条／7 条规则，两边没有只属于一方的检出，这是探测窗不是这条速度主窗。ESLint --cache 仍要 1,451.7ms，对 oxlint 的 113.2ms 约 12.8 倍；oxlint --threads=1 是 330.0ms，对默认约 2.9 倍，都不要写成 113.2ms 这一窗。@oxlint/migrate 生成含 85 条规则的配置并跳过 4 条、correctness 既定 warning／exit=0，以及会读到父目录 .oxlintrc.json，都是另窗。测量日 2026-09-24 不是发布日。作者写明别的机器或规则构成会使倍率和检出件数改变。n=5（中位）。不可外推。",
+    ],
+    caveats: [
+      "导流：作者在文末给出详细版 https://engineer-notes.blog/oxlint-vs-eslint-10-benchmark/?utm_source=zenn&utm_medium=referral&utm_campaign=zenn_trial_2026q4 ，交付时 GET 200，按作者站点导流披露。https://oxc.rs/docs/guide/usage/linter.html 、https://oxc.rs/docs/guide/usage/linter/config.html 、https://oxc.rs/docs/guide/usage/linter/migrate-from-eslint.html 、https://eslint.org/blog/2026/09/eslint-v10.11.0-released/ 交付时均 GET 200，可列可达，是官方文档／发布说明不是作者产品。正文未配图。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-11-04，不要改用测量日 2026-09-24，也不要改用更早的 body_updated_at，更不要因 UTC 已是 11-03 改写。与 #947、#1019、#1060、#1199 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 113.2ms 对 7,315.0ms 是 3,000 文件、同一 7 条规则的中位，不要把更小规模或 --cache 写成同一主窗",
+        body: "请按原文核算：3,000 个文件、同一 7 条规则、预热 1 次后再跑 5 次取中位，oxlint 1.85.0 是不是 113.2ms，ESLint 10.11.0 是不是 7,315.0ms，约 64.6 倍。不要把 1／50／300 个文件的倍率、默认探测时 ESLint 24,000／7 对 oxlint 既定 15,000／4、ESLint --cache 的 1,451.7ms，或 oxlint --threads=1 的 330.0ms 写成这条主窗。测量环境是 Windows 11、Ryzen 9 PRO 8945HS、Node.js 26.8.2，不要改写成别的机器。",
+      },
+    ],
+    howItWorks: [
+      "先写下 3,000 个文件、同一 7 条规则、预热 1 次后再跑 5 次取中位：oxlint 113.2ms，ESLint 7,315.0ms，约 64.6 倍。",
+      "再单独记下 1／50／300 个文件的倍率，以及默认探测时 ESLint 24,000／7、oxlint 既定 15,000／4、对齐后两边都是 24,000／7。",
+      "ESLint --cache 的 1,451.7ms 和 oxlint --threads=1 的 330.0ms 另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-11-04T07:54:52.498+09:00 → UTC 2026-11-03T22:54:52.498Z、Asia/Shanghai 2026-11-04 06:54:52，取上海日历日 → 2026-11-04；body_updated_at 2026-11-04T07:51:54.428+09:00 早于 published_at（定时发布），不要改用测量日 2026-09-24，也不要把 UTC 前一日 11-03 写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-04。与更早同日条目（如 #947、#1019、#1060、#1199）主题不同。",
+    ],
+  },
+  {
+    id: "1300",
+    slug: "ultr-3430-135",
+    title: "四千条校验三千四百三十对一百三十四点六二毫秒",
+    summary: "ultrasupara 在自己维护的 SIGIL 里，用 debug 配置、Linux x86-64、Rust 1.93.0，对 4,000 条二进制输入做校验：改完共享索引和分配路径后从 3,430ms 降到 134.62ms，约 25.5 倍（PR #117）。标题写「25 倍」只是约数，不要写成表上的精确比。输入从 2,000 条增到 4,000 条时增速从约 4.06 倍降到约 2.16 倍、分配从 43.20ms 降到 16.51ms，以及 12,605 条兼容、1,374 项测试、Viewer 5,771 篇、wasm gzip 262,446 对 512,000 上限，都是另窗，不要写成这条主窗。不可外推到 release 配置或别的输入。",
+    description: "这是一篇个人在 SIGIL 里改校验路径的实测。主硬窗是 4,000 条二进制输入、debug Linux x86-64 下从 3,430ms 降到 134.62ms（约 25.5 倍）。不要把标题「25 倍」或增速、分配耗时写成这条主窗，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/ultrasupara/articles/6fbbc88e8a7ed9",
+    sourceLabel: "zenn.dev·ultrasupara《Rustのセッション検証がO(N²)だったので、エラーの順序を変えずに25倍高速化した話》",
+    upvotes: 1191,
+    trending: false,
+    tags: [
+      "SIGIL",
+      "Rust",
+      "校验成本",
+      "二进制输入",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ultrasupara/articles/6fbbc88e8a7ed9",
+      label: "zenn.dev·ultrasupara《Rustのセッション検証がO(N²)だったので、エラーの順序を変えずに25倍高速化した話》",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己维护的 SIGIL 里，先测输入从 500、1,000、2,000 增到 4,000 条时校验怎么涨，再引入共享索引并削减分配（PR #117）。主硬窗落在 debug、Linux x86-64、Rust 1.93.0 下 4,000 条二进制输入的校验耗时；中间实现的 215.92ms、增速目标、分配、兼容集、测试数、Viewer 文档数和 wasm 体积另记，不和这条主窗写混。",
+    outcomes: [
+      "源披露：在作者这台 debug 配置、Linux x86-64、Rust 1.93.0 上，对 SIGIL 的 4,000 条二进制输入做校验，改完共享索引和分配后从 3,430ms 降到 134.62ms，约 25.5 倍（PR #117）。不要把标题「25 倍」写成表上的精确比，也不要把中间实现的 215.92ms 写成最终值。不要把输入从 2,000 条增到 4,000 条时增速从约 4.06 倍降到约 2.16 倍（目标是 3 倍以内）写成这条主窗。Valgrind 测的分配在 4,000 条时从 43.20ms 降到 16.51ms，16,000 条时从 212.51ms 降到 113.32ms，是另一窗。兼容集 12,605 条（3,709 合法、4,854 非法、4,042 反序列化失败）、cargo test 1,374 项、Viewer 5,771 篇文档、wasm gzip 262,446 字节对先前轻量化引入的 512,000 上限，都不要写成 3,430ms→134.62ms 这一窗。改动对应 https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/crates/sigil-model/src/index.rs 与 https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/crates/sigil-model/src/validate.rs ，说明写在 https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/docs/session-model.md#validation-cost 。图里的文件名 20261027 不是发布日。作者写明约 25.5 倍是 debug 下特定基准，不是所有环境。不可外推。",
+    ],
+    caveats: [
+      "导流：作者仓 https://github.com/ultra-supara/SIGIL 、PR https://github.com/ultra-supara/SIGIL/pull/117 、https://github.com/ultra-supara/SIGIL/pull/106 、issue https://github.com/ultra-supara/SIGIL/issues/109 、blobs https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/crates/sigil-model/src/index.rs 、https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/crates/sigil-model/src/validate.rs 、docs https://github.com/ultra-supara/SIGIL/blob/4265798205d8a008dc023d337576adc12c840436/docs/session-model.md#validation-cost 交付时均 GET 200，按作者仓导流披露。配图 https://static.zenn.studio/user-upload/f9506c242f68-20261027.png 交付时 GET 200，可列可达，文件名 20261027 不是发布日，不当导流。文内 Zenn embed 卡片不当作者产品导流。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-10-28，不要改用图文件名 10-27。与 #935、#1278 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3,430ms→134.62ms 是 4,000 条输入、debug Linux x86-64 的校验耗时，不要把标题「25 倍」或增速写成同一主窗",
+        body: "请按原文核算：debug、Linux x86-64、Rust 1.93.0 下，4,000 条二进制输入的校验是不是从 3,430ms 降到 134.62ms，约 25.5 倍。不要把标题「25 倍」写成精确比，也不要把中间实现的 215.92ms、2,000→4,000 的增长比、分配 43.20→16.51ms，或兼容集 12,605、测试 1,374、Viewer 5,771、wasm gzip 262,446 写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 4,000 条二进制输入、debug Linux x86-64：校验从 3,430ms 降到 134.62ms，约 25.5 倍（PR #117）；标题「25 倍」只是约数。",
+      "再单独记下中间实现的 215.92ms，以及输入从 2,000 增到 4,000 时增速从约 4.06 倍降到约 2.16 倍，分配 43.20→16.51ms。",
+      "兼容集、测试数、Viewer 文档数和 wasm 体积另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-10-28T15:19:35.195+09:00 → UTC 2026-10-28T06:19:35.195Z、Asia/Shanghai 2026-10-28 14:19:35，取上海日历日 → 2026-10-28；不要改用配图文件名 20261027；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-28。与更早同日条目（如 #935、#1278）主题不同。",
+    ],
+  },
+  {
+    id: "1301",
+    slug: "tori-36-38",
+    title: "IQ1_S纯CPU三点六至三点八tok每秒零崩溃",
+    summary: "toripy 在内存 36GB 的 MacBook Pro（M5 Max）上，用 llama.cpp 把 Qwen3-235B-A22B（abliterated / IQ1_S，44.7GB）以 -ngl 0 纯 CPU 跑起来，生成 3.6–3.8 t/s，崩溃为零。不要把同机 27B Q4_K_M 的 17.7–20 t/s，或 DeepSeek-R1-Distill-Llama-70B IQ2_M 在 GPU 76 层加 q8 KV 的 8.2 t/s 写成这条主窗。下载从 2.7MB/s 升到 34MB/s（约 12 倍）、44.7GB 用 23 分钟落下，以及 prompt eval 约 1,118 ms/token，都是另窗。DeepSeek-R1-Distill 是模型名，不得写入 deepseek 平台。不可外推到别的机器或量化。",
+    description: "这是一篇个人在 36GB M5 Max 上跑 235B MoE 的实测。主硬窗是 IQ1_S 44.7GB、纯 CPU 下 3.6–3.8 t/s、崩溃为零。不要把 27B 或 70B GPU 窗写成这条主窗，也不可外推。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/toripy/articles/mac-36gb-235b-moe-llm-cpu-streaming",
+    sourceLabel: "zenn.dev·toripy《メモリ36GBのMacに235BのMoEモデルをねじ伏せて載せた記録 — llama.cppでIQ1_S＋純CPUストリーミング》",
+    upvotes: 1192,
+    trending: false,
+    tags: [
+      "llama.cpp",
+      "Qwen3-235B",
+      "本地 LLM",
+      "纯 CPU",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/toripy/articles/mac-36gb-235b-moe-llm-cpu-streaming",
+      label: "zenn.dev·toripy《メモリ36GBのMacに235BのMoEモデルをねじ伏せて載せた記録 — llama.cppでIQ1_S＋純CPUストリーミング》",
+      date: "2026-09-30",
+      dateLabel: "发布",
+    },
+    approach: "作者在 36GB 统一内存的 MacBook Pro（M5 Max）上用 llama.cpp 对照几档模型，最终把 44.7GB 的 Qwen3-235B-A22B abliterated IQ1_S 改成 -ngl 0 纯 CPU，才稳定生成。主结论落在 235B 这一档的 3.6–3.8 t/s 和崩溃为零；同机 27B／70B、下载加速、prompt eval，以及别处 DGX Spark 的预估，另记不和这条主窗写混。",
+    outcomes: [
+      "源披露：在作者这台统一内存 36GB 的 MacBook Pro（M5 Max）上，用 llama.cpp 加载 Qwen3-235B-A22B（abliterated / IQ1_S，44.7GB），-ngl 0 纯 CPU、-c 4096、-b 256、-ctk/-ctv q8_0、--reasoning off，生成 3.6–3.8 t/s，崩溃为零。作者写明 -ngl 99 --cpu-moe 和 -ngl 30 --cpu-moe 都会在 decode 时出错，只有纯 CPU 稳定。不要把同机 Qwen3.8 27B 系 Q4_K_M（17.8GB）的 17.7–20 t/s，或 DeepSeek-R1-Distill-Llama-70B（无检阅）IQ2_M（22.5GB）在 GPU 76 层加 q8 KV 的 8.2 t/s（62 层 4.1 t/s、72 层 6.5 t/s、99 层会 OOM）写成这条主窗。Hugging Face 单次 curl 实测 2.7MB/s，自写 12 路 Range 后到 34MB/s（约 12 倍），44.7GB 用 23 分钟落下（22.5GB 用 7 分钟），是下载窗不是生成主窗。prompt eval 约 1,118 ms/token（约 0.9 t/s）、eval 约 261 ms/token（3.8 t/s），以及常驻 swap 约 18GB、OS＋常驻实测 8–12GB，都不要写成 3.6–3.8 t/s 这一窗。文中把同一 235B 放到 DGX Spark（GB10、128GB，带宽约 273GB/s）上预估能到 10–20 t/s，是对别的机器的展望，不是这台 36GB Mac 的实测。DeepSeek-R1-Distill-Llama-70B 是模型名，不得写入 deepseek。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。正文没有完整硬链。作者资料栏站点正文没有硬链，不算导流，不补写。正文未配图。DeepSeek-R1-Distill-Llama-70B 是对照用的模型名，不是这次主窗，也不得写入 deepseek；源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-09-30。与 #1004、#1101、#1104、#1261 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3.6–3.8 t/s 是 44.7GB 的 235B IQ1_S 在 -ngl 0 纯 CPU 下的生成速度，不要把 27B 或 70B 写成同一主窗",
+        body: "请按原文核算：36GB M5 Max 上，Qwen3-235B-A22B abliterated IQ1_S（44.7GB）以 -ngl 0 纯 CPU 跑时，是不是 3.6–3.8 t/s、崩溃为零。不要把 27B 的 17.7–20 t/s、70B GPU 76 层的 8.2 t/s、下载 2.7→34MB/s，或对 DGX Spark 的 10–20 t/s 预估写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 36GB M5 Max 上 44.7GB 的 Qwen3-235B-A22B IQ1_S，-ngl 0 纯 CPU：3.6–3.8 t/s，崩溃为零。",
+      "再单独记下同机 27B 的 17.7–20 t/s 和 70B 在 GPU 76 层加 q8 KV 的 8.2 t/s。",
+      "下载 2.7→34MB/s、44.7GB 用 23 分钟，以及 prompt eval 和别处机器的预估另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-09-30T20:38:13.062+09:00 → UTC 2026-09-30T11:38:13.062Z、Asia/Shanghai 2026-09-30 19:38:13，取上海日历日 → 2026-09-30；body_updated_at 同值，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-30。与更早同日条目（如 #1004、#1101、#1104、#1261）主题不同。",
+    ],
+  },
+  {
+    id: "1302",
+    slug: "sapo-684-317",
+    title: "千条Full-FT六点八四对LoRA三点一七GB",
+    summary: "sapolas 用 rinna/japanese-gpt2-medium（约 3.36 亿参数），在同一 1,000 条 MAGPIE 数据、同一 10% 验证划分和 patience=3 的 Early Stopping 下对照 Full-FT 与 LoRA。主硬窗是峰值 GPU 内存 Full-FT 6.84GB、LoRA 3.17GB。不要把采用时 eval_loss 1.021 对 1.112，或训练时间 67.3 秒对 240.4 秒（LoRA 更慢，主要因为跑满约 15 个 epoch）写成这条主窗。LoRA 产物约 8.7MB、Full-FT 在 epoch 2 早停、LoRA 到 epoch 14，都是另窗。不可外推到更大底模或更多数据。",
+    description: "这是一篇个人对照 Full-FT 与 LoRA 峰值 GPU 内存的实测。主硬窗是 6.84GB 对 3.17GB。不要把 eval_loss 或训练时间写成这条主窗，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/sapolas/articles/0175b65f1e5b8c",
+    sourceLabel: "zenn.dev·sapolas《通常のファインチューニングとLoRAでGPUメモリ消費を比較検証》",
+    upvotes: 1193,
+    trending: false,
+    tags: [
+      "LoRA",
+      "Full-FT",
+      "GPU 内存",
+      "微调",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/sapolas/articles/0175b65f1e5b8c",
+      label: "zenn.dev·sapolas《通常のファインチューニングとLoRAでGPUメモリ消費を比較検証》",
+      date: "2026-09-05",
+      dateLabel: "发布",
+    },
+    approach: "作者用同一份 1,000 条 MAGPIE 指令数据、同一提示模板、10% 验证划分和 patience=3 的 Early Stopping，对照 Full-FT（学习率 5e-5）与 LoRA（r=8、alpha=16、dropout=0.05，学习率 1e-4，作用在 c_attn／c_proj）。主结论落在峰值 GPU 内存；损失、训练时间和产物体积另记，不和这条主窗写混。",
+    outcomes: [
+      "源披露：作者用 rinna/japanese-gpt2-medium（GPT-2 架构，约 3.36 亿参数；表上可训练参数 Full-FT 336,128,000，LoRA 2,162,688／全参数 338,290,688，约 0.64%），在 Python 3.10、PyTorch（CUDA）、transformers／datasets／accelerate／peft 上，用 Qwen/Qwen2.5-7B-Instruct 以 MAGPIE 生成并过滤后的 1,000 条日语休闲→正式转换数据，10% 验证、最多 15 个 epoch、patience=3。主硬窗是峰值 GPU 内存 Full-FT 6.84GB、LoRA 3.17GB（约一半弱）。不要把采用时 eval_loss Full-FT 1.021 对 LoRA 1.112，最终 train_loss 0.678 对 1.259，或训练时间 67.3 秒对 240.4 秒写成这条主窗；LoRA 更慢，主要是因为 Full-FT 在 epoch 2 达到最小 eval_loss 后于 epoch 5 早停，LoRA 几乎跑满 15 个 epoch、采用点在 epoch 14。按 epoch 换算约 13.5 秒对约 16 秒，是另一窗。LoRA 产物约 8.7MB、Full-FT 在 epoch 3–5 eval_loss 1.060→1.097→1.172 单调变差，都不要写成 6.84GB／3.17GB 这一窗。文中提到曾因 Llama 3 许可改用 Qwen 重新生成数据，不是这条内存主窗。Qwen2.5 只用于造数据，不得写入 chatgpt。文内未写具体 GPU 型号，不补写。不可外推。",
+    ],
+    caveats: [
+      "导流：作者仓 https://github.com/ohban730/Finetuning-trial-002 交付时 GET 200，按作者仓导流披露。配图 https://static.zenn.studio/user-upload/deployed-images/7a21ec31d9ff11cca8606a00.png?sha=a83690f6061d195287af53ea06b0132ba6e8e739 交付时 GET 200，可列可达，不当导流。源文提到 GPT-2 架构和 Qwen/Qwen2.5-7B-Instruct 造数据，不得因此写入 chatgpt，platforms 为 []。不是 hook 教程。发布日必须写成 2026-09-05，不要改用同日 19:26 的更新。与 #1093 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 6.84GB 对 3.17GB 是峰值 GPU 内存，不要把 eval_loss 或 67.3 秒对 240.4 秒写成同一主窗",
+        body: "请按原文核算：同一 1,000 条数据、同一 Early Stopping 下，Full-FT 峰值 GPU 内存是不是 6.84GB，LoRA 是不是 3.17GB。不要把采用时 eval_loss 1.021 对 1.112，或训练时间 67.3 秒对 240.4 秒写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下同一 1,000 条 MAGPIE 数据上，峰值 GPU 内存 Full-FT 6.84GB、LoRA 3.17GB。",
+      "再单独记下采用时 eval_loss 1.021 对 1.112，以及 Full-FT 在 epoch 2 早停、LoRA 到 epoch 14。",
+      "训练时间 67.3 秒对 240.4 秒和产物约 8.7MB 另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-09-05T10:26:55.551+09:00 → UTC 2026-09-05T01:26:55.551Z、Asia/Shanghai 2026-09-05 09:26:55，取上海日历日 → 2026-09-05；body_updated_at 同日 2026-09-05T19:26:40.607+09:00，仍取首次发布，不要改用更新时刻；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-05。与更早同日条目（如 #1093）主题不同。",
+    ],
+  },
+  {
+    id: "1303",
+    slug: "matu-985-642",
+    title: "对象十万三千一百零六对四十九万六千三百三十三",
+    summary: "matsuura_eng 在自己的作品集 Rails 6.1.7 应用里，用 bin/rails runner 对照 includes 有无，处理 200 篇帖及其图片。主硬窗是生成对象 103,106 对 496,333（约 4.8 倍），处理中分配内存 9.852MB 对 64.196MB（约 6.5 倍）；结束时 retained 约 555.6KB 对约 555.9KB，几乎相同；GC 0 次对 1 次，Major GC 都是 0 次。不要把 retained 几乎相同写成内存泄漏，也不要把这 1 次 GC 写成已经证明负载必然上升。作者写明只测了 200 件、1 次执行。不可外推。",
+    description: "这是一篇个人在作品集应用里对照 N+1 的内存实测。主硬窗是 200 篇帖下对象约 4.8 倍、分配内存约 6.5 倍。不要把 retained 几乎相同写成泄漏，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/matsuura_eng/items/30d20811b8cc61f1c78e",
+    sourceLabel: "qiita.com·matsuura_eng《【検証】RailsのN+1問題によって、メモリ使用量・GCにどんな影響が出るのかを実際に計測してみた》",
+    upvotes: 1194,
+    trending: false,
+    tags: [
+      "Rails",
+      "N+1",
+      "内存",
+      "GC",
+    ],
+    primarySource: {
+      url: "https://qiita.com/matsuura_eng/items/30d20811b8cc61f1c78e",
+      label: "qiita.com·matsuura_eng《【検証】RailsのN+1問題によって、メモリ使用量・GCにどんな影響が出るのかを実際に計測してみた》",
+      date: "2026-09-02",
+      dateLabel: "发布",
+    },
+    approach: "作者在作品集应用里用 bin/rails runner（不用控制台打印）对照 Post.includes(...) 与不 includes，各处理 200 篇帖及其图片，用 Benchmark.memory 记对象和分配，再用 GC.stat 记次数。主结论落在对象数和分配量；retained 和 GC 次数另记，不把 retained 写成泄漏。",
+    outcomes: [
+      "源披露：作者在 Rails 6.1.7 的作品集应用上，用 bin/rails runner 处理 200 篇帖及其关联图片（post_images、art_style、image_attachment／blob），对照 includes 有无。主硬窗是生成对象 103,106 个对 496,333 个（约 4.8 倍），处理中分配内存 9.852MB 对 64.196MB（约 6.5 倍）。结束时 retained 约 555.6KB 对约 555.9KB，几乎相同，作者据此认为是途中临时对象变多，而不是处理结束后仍大量占用。GC 0 次对 1 次，Major GC 都是 0 次；作者写明这次只测了 200 件、1 次执行，不能据此断定 N+1 必然加重 GC 负载，也没有测 GC Time。文内未写机器型号，不补写。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料栏 github 与 website 正文没有硬链，不算导流，不补写。正文未配图。https://docs.ruby-lang.org/ja/latest/class/GC.html 、https://docs.ruby-lang.org/en/master/GC.html 、https://github.com/rails/rails-perftest 、https://railsatscale.com/2024-10-23-next-generation-oob-gc/ 交付时均 GET 200，可列可达，是官方文档／资料不是作者产品。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-09-02，不要因 UTC 已是 09-01 改写。114–170 各批 pick 中未见同一天条目。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 103,106 对 496,333、9.852MB 对 64.196MB 是 200 篇帖的对象和分配量，不要把 retained 几乎相同写成泄漏",
+        body: "请按原文核算：Rails 6.1.7 处理 200 篇帖时，includes 有无下对象是不是 103,106 对 496,333（约 4.8 倍），分配内存是不是 9.852MB 对 64.196MB（约 6.5 倍）。不要把 retained 约 555.6KB 对约 555.9KB 写成内存泄漏，也不要把 GC 0 次对 1 次写成已经证明负载必然上升。",
+      },
+    ],
+    howItWorks: [
+      "先写下 200 篇帖：对象 103,106 对 496,333（约 4.8 倍），分配内存 9.852MB 对 64.196MB（约 6.5 倍）。",
+      "再单独记下结束时 retained 约 555.6KB 对约 555.9KB，几乎相同，不是泄漏。",
+      "GC 0 次对 1 次、Major GC 都是 0，以及只测了 1 次、没有 GC Time，另起一行。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-02T02:20:59.000+09:00，与 Qiita API created_at 2026-09-02T02:20:59+09:00 一致 → UTC 2026-09-01T17:20:59Z、Asia/Shanghai 2026-09-02 01:20:59，取上海日历日 → 2026-09-02；dateModified／updated_at 同值，仍取首次发布，不要因 UTC 已是 09-01 改写；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-02。114–170 各批 pick 中未见同一天条目。",
+    ],
+  },
+  {
+    id: "1304",
+    slug: "tera-404-731",
+    title: "kache首次仍四分十四秒无改动七点三一秒",
+    summary: "terasakisatoshi 在 Intel Mac 2019 上对 tensor4all/tenferro-rs 做 release 构建：首次约 4m 04s；接上 kache 1.2.2 后首次仍约 4m 14s；源码无改动再在别处克隆构建是 7.31s。用 cargo fmt -- --style-edition=2024 改了 413 个文件后，再构建是 2m 05s。不要把首次构建写成已经变成 7.31s。kache、tenferro-rs 和 poi2 的介绍文都不是作者产品。不可外推到别的机器或 v2 rc。",
+    description: "这是一篇个人在 Intel Mac 2019 上给 tenferro-rs 接 kache 的构建实测。主硬窗是首次仍约 4 分钟，无改动的第二次克隆 7.31s。不要把首次构建写成已经变成 7.31s，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/terasakisatoshi/articles/f056ea759b176c",
+    sourceLabel: "zenn.dev·terasakisatoshi《`tensor4all/tenferro-rs` のビルドに `kache` を採用しビルドを高速化できる話》",
+    upvotes: 1195,
+    trending: false,
+    tags: [
+      "kache",
+      "Rust",
+      "构建缓存",
+      "tenferro-rs",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/terasakisatoshi/articles/f056ea759b176c",
+      label: "zenn.dev·terasakisatoshi《`tensor4all/tenferro-rs` のビルドに `kache` を採用しビルドを高速化できる話》",
+      date: "2026-11-01",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己帮忙维护周边的 tenferro-rs 仓库里，先在 Intel Mac 2019 上记一次普通 release 构建，再接上 kache 1.2.2，对照首次缓存、无源码改动的第二次克隆，以及 cargo fmt 改 413 个文件之后的构建。主结论落在首次仍约 4 分钟、无改动第二次是 7.31s；不要把首次写成已经变成 7.31s。",
+    outcomes: [
+      "源披露：在作者这台 Intel Mac 2019 上，对 https://github.com/tensor4all/tenferro-rs 做 release 构建，首次 Finished 在 4m 04s。接上 kache 1.2.2 后，首次仍要给缓存热身，Finished 在 4m 14s，作者写明「4 分程度かかるのは変わらない」。源码无改动时，再在别处克隆构建，Finished 在 7.31s。不要把首次构建写成已经变成 7.31s。随后用 cargo fmt -- --style-edition=2024 一次改了 413 个文件，再构建 Finished 在 2m 05s，这是改源码后的另一窗，不要和 7.31s 写混。作者提到 kache v2 已有 rc，这次测的是 1.2.2，不要写成已经迁到 v2。也提到 worktree 稍不留意会占掉数百 GB，那是背景不是这条计时主窗。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。https://github.com/tensor4all/tenferro-rs 、https://github.com/tensor4all/tenferro-benchmark 、https://github.com/kunobi-ninja/kache 交付时均 GET 200，可列可达，是作者帮忙维护或介绍的他人仓，不是作者产品，不按导流写。相关前篇 https://zenn.dev/terasakisatoshi/articles/9725e1c93fc05c 交付时 GET 200，可列可达，是同作者相关篇不是本条源，本批不再把它当下腕源。https://zenn.dev/poi2/articles/local-rust-dev-in-the-ai-era-use-kache 交付时 GET 200，可列可达，是他人介绍文不是作者产品。文内 Zenn embed 卡片不当作者产品导流。作者资料栏站点正文没有硬链，不算导流，不补写。正文未配图。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-11-01。与 #945、#946、#1017、#1128、#1221、#1237、#1279 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 4m 04s／4m 14s 是首次构建，7.31s 只属于无源码改动的第二次克隆，不要把首次写成已经变成 7.31s",
+        body: "请按原文核算：Intel Mac 2019 上 tenferro-rs release 首次是不是 4m 04s，接上 kache 后首次是不是仍 4m 14s，无源码改动的第二次克隆是不是 7.31s。不要把首次构建写成已经变成 7.31s，也不要把改了 413 个文件后的 2m 05s 写成同一窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 Intel Mac 2019 上 release：首次 4m 04s，kache 首次仍 4m 14s。",
+      "再写下源码无改动的第二次克隆是 7.31s，不要把首次写成已经变成 7.31s。",
+      "cargo fmt 改 413 个文件后的 2m 05s 另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-11-01T12:52:15.707+09:00 → UTC 2026-11-01T03:52:15.707Z、Asia/Shanghai 2026-11-01 11:52:15，取上海日历日 → 2026-11-01；body_updated_at 同值，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-01。与更早同日条目（如 #945、#946、#1017、#1128、#1221、#1237、#1279）主题不同。",
+    ],
+  },
+  {
+    id: "1305",
+    slug: "e38-26256-16976",
+    title: "未排序二万六千二百五十六对一万六千九百七十六KB",
+    summary: "engineer38 在本地对 Go 1.27 标准 uuid 做 20 万条 INSERT 对照：未排序 v4 插入 29.0833374s（6,877 rows/s）、数据 26,256KB；把 v4 排好再插入是 22.3918544s（8,932 rows/s）、16,976KB；v7 按生成序插入是 22.2761805s（8,978 rows/s）、16,976KB。差在插入顺序，不在 v4 对 v7 的种类。不要把 google/uuid 的 bench_g_v4 24.1292826s／27,280KB 写成这条主窗。作者写明数字随本地环境和构成变化很大，只作趋势参考。不可外推。",
+    description: "这是一篇个人对 Go 1.27 标准 uuid 插入顺序的实测。主硬窗是 20 万条下未排序 v4 的 29.0833374s／26,256KB，对排序 v4 和 v7 的约 22s／16,976KB。不要把种类差或 google/uuid 写成这条主窗，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/engineer38/articles/37480484552386",
+    sourceLabel: "zenn.dev·engineer38《【Go 1.27】標準uuid と google/uuidの検証》",
+    upvotes: 1196,
+    trending: false,
+    tags: [
+      "Go 1.27",
+      "uuid",
+      "INSERT",
+      "v4 v7",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/engineer38/articles/37480484552386",
+      label: "zenn.dev·engineer38《【Go 1.27】標準uuid と google/uuidの検証》",
+      date: "2026-11-10",
+      dateLabel: "发布",
+    },
+    approach: "作者在本地用 Go 1.27 标准 uuid，对同一套 20 万条 INSERT 对照三种写法：v4 直接插入、v4 排好再插入、v7 按生成序插入，以切开是种类还是顺序在起作用。主结论落在标准库这一组；google/uuid 的对照表是另一窗，不和这条主窗写混。",
+    outcomes: [
+      "源披露：作者在本地环境对 Go 1.27 标准 uuid 做 20 万条 INSERT。主硬窗是 bench_std_v4 插入 29.0833374s（6,877 rows/s）、data=26,256KB；bench_std_v4_sorted 插入 22.3918544s（8,932 rows/s）、data=16,976KB；bench_std_v7 插入 22.2761805s（8,978 rows/s）、data=16,976KB。排序后的 v4 与 v7 在大小上完全一致，速度 8,932 与 8,978 也接近，作者据此认为差在插入顺序，不在 v4 对 v7 的种类。不要把生成时间约 24–25ms 写成插入主窗。也不要把 google/uuid 的 bench_g_v4 24.1292826s（8,289 rows/s）／27,280KB、sorted 26.4937863s／16,976KB、v7 22.7935951s／16,976KB 写成这条标准库主窗。文内用 bench_g_v4 那一行示范过读表格式，那不是验证 1 的标准库结果。作者写明数字随本地环境和构成变化很大，只作趋势参考；文内未写具体机器或数据库产品名（只在解说里提到「MySQL 等」的 B-tree），不补写。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料栏站点正文没有硬链，不算导流，不补写。正文未配图。https://www.rfc-editor.org/rfc/rfc9562#section-5.7 与 https://www.rfc-editor.org/rfc/rfc9562 交付时均跟随至 https://www.rfc-editor.org/info/rfc9562/ ，HTTP 200，可列可达，须披露跟随后的落地地址；二者是 RFC 不是作者产品。https://speakerdeck.com/convto/go-127-uuid-decision 与 https://github.com/golang/go/issues/62026 交付时均 GET 200，可列可达，是他人演讲和 Go issue，不是作者产品。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-11-10，不要因 UTC 已是 11-09 改写，也不要改用同日 13:18:41 的更新。与 #1231、#1200、#1202 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 29.0833374s／26,256KB 对 22.3918544s／16,976KB 是标准库 20 万条 INSERT，差在顺序不是种类",
+        body: "请按原文核算：Go 1.27 标准 uuid 20 万条 INSERT，未排序 v4 是不是 29.0833374s／26,256KB，排序 v4 是不是 22.3918544s／16,976KB，v7 是不是 22.2761805s／16,976KB。不要把差写成 v4 对 v7 的种类，也不要把 google/uuid 的 24.1292826s／27,280KB 写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下标准库 20 万条 INSERT：未排序 v4 29.0833374s／26,256KB，排序 v4 22.3918544s／16,976KB，v7 22.2761805s／16,976KB。",
+      "再写明排序后的 v4 与 v7 大小一致、速度接近，差在插入顺序。",
+      "google/uuid 那一组和约 24–25ms 的生成时间另起一行。",
+    ],
+    tips: [
+      "无 JSON-LD 可用；Zenn API published_at 2026-11-10T02:21:22.546+09:00 → UTC 2026-11-09T17:21:22.546Z、Asia/Shanghai 2026-11-10 01:21:22，取上海日历日 → 2026-11-10；body_updated_at 同日 2026-11-10T13:18:41.079+09:00，仍取首次发布，不要因 UTC 已是 11-09 改写，也不要改用更新时刻；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-10。与更早同日条目（如 #1231、#1200、#1202）主题不同。",
+    ],
+  },
+  {
+    id: "1306",
+    slug: "feed-24to8-0",
+    title: "六周新试用开始二十四对八结束三对零",
+    summary: "feedminus47（北林）在自己做的 iPhone 应用 minulo 里清点 PostHog：17 条 HogQL 用的测试用户队列始终是 0 人，近 30 天测试设备 25 台／6,061 件事都进了统计。trial_started 32 件里 23 件是测试，trial_ended 3 件全是测试。修好后，6 周合计新试用开始 24→8，试用结束 3→0。不要把 75 张已存图全是 HTTP 200（其中 1 张全 0）、人数合计 1606→1553／Pro 51→49、周活跃 101→158→280→612 或告警符号写反、版本 8→17／漏斗 125→1321，或美国 6→109（作者称这是最吓人的一处，仍是另一窗）写成这条主窗。发布日必须 2026-10-25，不要改用 10-30 的修改日。不可外推。",
+    description: "这是一篇个人清点 PostHog 测试设备排除的实测。主硬窗是修好后 6 周新试用开始 24→8、试用结束 3→0。不要把 75 张图或美国 6→109 写成这条主窗，也不可外推。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/feedminus47/items/23bb2e69da221f6d14e3",
+    sourceLabel: "qiita.com·feedminus47《PostHog の計測を棚卸ししたら数字がずれていた：個人開発で使える点検チェックリスト9つ》",
+    upvotes: 1197,
+    trending: false,
+    tags: [
+      "PostHog",
+      "测试设备",
+      "试用事件",
+      "个人开发",
+    ],
+    primarySource: {
+      url: "https://qiita.com/feedminus47/items/23bb2e69da221f6d14e3",
+      label: "qiita.com·feedminus47《PostHog の計測を棚卸ししたら数字がずれていた：個人開発で使える点検チェックリスト9つ》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己做的 minulo 里，于 10/25 把 PostHog 里已存图、队列、动作、告警、实验和注释全部清点一遍。影响最大的是测试设备排除：人像档案关闭后，Internal／Test users 队列始终是 0 人。主结论落在修好后试用开始 24→8、试用结束 3→0；其余 8 条检查清单上的数字另记，不和这条主窗写混。",
+    outcomes: [
+      "源披露：作者（北林）在自己做的 iPhone 应用 minulo 里用 PostHog 做统计，10/25 清点了已存图 75 张、仪表盘 5 个，以及队列、动作、告警、实验和注释。主硬窗是测试设备排除失效：17 条 HogQL 只用 person_id not in cohort 568663（PostHog 的 Internal／Test users），但项目把全部事件设为 $process_person_profile=false，这个队列始终是 0 人，排除等于没排除。近 30 天带 $internal_or_test_user=true 的设备 25 台、6,061 件事都进了统计；trial_started 32 件里 23 件是测试设备，trial_ended 3 件全部是测试设备。修好后，钱相关表上 6 周合计新开始 7 天试用的人 24→8，「7 天→是否付费」表上试用结束 3→0，表被清空，说明还没有真实用户结束试用。不要把 75 张图全部 HTTP 200、错误 0、其中 1 张值全是 0 写成这条主窗。{filters} 与 filterTestAccounts 只写了一半的图，修好后人数合计 1606→1553，另有 IP 排除使 Pro 开始 51→49，是另一窗。告警把「北极星周活跃比上周少 20%」做成了增加也会响：9/27 当周 101→10/4 158→10/11 280→10/18 612，10/15 的值是 −0.564（其实是增加 0.564），不要写成试用主窗。版本只看 1.0.12 字符串时，1.0.12 及以后打开的人（按日合计）8→17，另一漏斗因名字写 1.0.8–1.0.11、各段却固定 1.0.8，修好后第 1 段 125→1321，都不要和 24→8／3→0 写混。国别图因 GeoIP 关闭、近 7 日 4,010 件 app_open 里 $geoip_country_code 为 0，改用设备地区后 21 日英语圈 416→195、近 4 周美国 6→109（作者称这是最吓人的一处），仍是另一窗。layout_broken／trial_converted 从未到达、sleep_toggled 在 9/23 停更，以及 1.0.12／1.0.13 其实尚未公开，都不要写成这条主窗。不可外推。",
+    ],
+    caveats: [
+      "导流：作者产品 https://minulo.app/?ref=qiita-ja-posthog-1025k 交付时 GET 200，落地页标题为「minulo — インスタのリール・ショートを非表示にするアプリ」，按作者产品导流披露。作者资料 website_url 为空，不补写。正文未配图。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-10-25，不要改用 JSON-LD dateModified／API updated_at 的 2026-10-30。与 #1025、#1139、#1215、#1225、#1230、#1262 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 24→8 和 3→0 是测试设备排除修好后的试用人数，不要把 75 张图或美国 6→109 写成同一主窗",
+        body: "请按原文核算：测试用户队列始终是 0 人、近 30 天测试设备 25 台／6,061 件事进入统计之后，修好 6 周新试用开始是不是 24→8，试用结束是不是 3→0。不要把 75 张图全是 HTTP 200、人数合计 1606→1553、版本 8→17、漏斗 125→1321，或美国 6→109 写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 17 条 HogQL 的测试队列始终是 0 人，近 30 天测试设备 25 台／6,061 件事都进了统计。",
+      "再写下修好后 6 周新试用开始 24→8，试用结束 3→0。",
+      "75 张图的 HTTP 200、1606→1553、告警符号、版本 8→17、漏斗 125→1321 和美国 6→109 另起一行。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-25T17:35:16.000+09:00，与 Qiita API created_at 2026-10-25T17:35:16+09:00 一致 → UTC 2026-10-25T08:35:16Z、Asia/Shanghai 2026-10-25 16:35:16，取上海日历日 → 2026-10-25；JSON-LD dateModified／API updated_at 已跨到 2026-10-30T16:51:45+09:00，仍取首次发布，不要改用 10-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-25。与更早同日条目（如 #1025、#1139、#1215、#1225、#1230、#1262）主题不同。",
+    ],
+  },
+  {
+    id: "1307",
+    slug: "auto-b4-c9",
+    title: "九值A放过五B放过四非字符串仅C全挡",
+    summary: "AUTOMOS 在自己这台电脑的 Node v24.18.1 上，用 9 个值重数日期守卫。A（只看 /^\\d{4}-\\d{2}-\\d{2}$/）放过 5 个，含 1 元数组、嵌套数组、带 toString 的对象、new String，以及不存在日的数组；B（先 String() 再 Date.parse，并和 toISOString 前 10 个字符比较）放过其中 4 个非字符串；只有 C（在 B 之前看 typeof x === \"string\"）把全部非字符串挡住。通过之后，数组和 String 对象在 ===、Set.has 上是 false，在对象键和 < 上是 true。不要把「只删 typeof 那一行、=== s 仍能挡住数组」，或仍是 B 形的 DAY_RE.test 包装（17 处里 10 处仍先 String()）写成这条 9 值主窗。n=1。不可外推。",
+    description: "这是一篇个人用 9 个值重数日期守卫的实测。主硬窗是 A 放过 5 个、B 放过 4 个非字符串，只有 C 全部挡下。不要把删掉 typeof 一行仍能挡住数组写成这条主窗，也不可外推。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/AUTOMOS/items/f12d49bee013a32cd9cd",
+    sourceLabel: "qiita.com·AUTOMOS《日付の文字列を確かめる守りに [\"2026-11-10\"](要素1つの配列)を渡すと、正規表現の .test() も、String() してから書き戻して比べる形も通した。通ったあと === と Set.has は false、オブジェクトの鍵と大小比較は true だった》",
+    upvotes: 1198,
+    trending: false,
+    tags: [
+      "日期守卫",
+      "typeof",
+      "String()",
+      "Node",
+    ],
+    primarySource: {
+      url: "https://qiita.com/AUTOMOS/items/f12d49bee013a32cd9cd",
+      label: "qiita.com·AUTOMOS《日付の文字列を確かめる守りに [\"2026-11-10\"](要素1つの配列)を渡すと、正規表現の .test() も、String() してから書き戻して比べる形も通した。通ったあと === と Set.has は false、オブジェクトの鍵と大小比較は true だった》",
+      date: "2026-11-11",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己的库里先把日期守卫改成「读完再写回、必须和原字符串一致」，再故意把 typeof 那一行换成 String()，发现当时的测试 1 件也没红。随后用类型不同的 9 个值，在这台电脑的 Node v24.18.1 上对 A／B／C 三种守卫重数。主结论落在这 9 个值的放行情况；通过之后的 ===／Set.has／对象键／大小比较，以及库里仍保留的 B 形入口，另记不和这条主窗写混。",
+    outcomes: [
+      "源披露：作者在自己这台电脑的 Node v24.18.1 上，对 9 个值对照三种守卫（n=1）。A 是 /^\\d{4}-\\d{2}-\\d{2}$/.test(x)；B 是先 String(x) 再 Date.parse，并和 toISOString() 的前 10 个字符比较；C 是在 B 之前看 typeof x === \"string\"。结果：字符串 \"2026-11-10\" 三种都过；1 元数组 [\"2026-11-10\"]、数组的数组、带 toString 的对象、new String(\"2026-11-10\") 被 A 和 B 放过、被 C 挡住；二元数组和数字 20261110 三种都挡；不存在的日字符串 \"2026-11-31\" 被 A 放过、被 B 和 C 挡住；不存在日的数组 [\"2026-11-31\"] 被 A 放过、被 B 和 C 挡住。也就是 B 放过 4 个非字符串，A 在这 4 个之外再放过不存在日的数组，共 5 个；把全部非字符串都挡住的只有 C。通过之后再当日期用：数组、嵌套数组、带 toString 的对象和 String 对象在 === 与 Set.has 上是 false，在用对象键取值和 x < \"2026-11-11\" 上是 true；JSON.stringify 时数组仍是数组，带 toString 的对象变成 {}。不要把「只删 typeof 那一行、最后的 === s 仍能挡住数组（实測）」写成这条 9 值主窗。也不要把库里仍保留的 DAY_RE.test 包装（typeof 不是 string 就 String() 再交给 isRealDay，17 处调用里 10 处仍先 String() 再把原值当日期用，DAY_RE.test([\"2026-11-10\"]) 为 true）写成已经修完。前篇讲的是正则会放过 \"2026-11-31\"，不要和这篇的 9 值表写混。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。前篇 https://qiita.com/AUTOMOS/items/725deda52943fd5c8cf4 交付时 GET 200，可列可达，是同作者相关篇不是本条源，本批不再把它当下腕源。文内硬链 https://h26005.tailf680df.ts.net:10000/free.html 交付时 GET 000（约 0.012s，无响应头），不计入可达，须写出完整 URL 并披露最后一次状态。源文无 ChatGPT 字面，platforms 为 []，不得写入 chatgpt。不是 hook 教程。发布日必须写成 2026-11-11，不要因 UTC 已是 11-10 改写。与 #1164、#1258 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 9 个值里 A 放过 5 个、B 放过 4 个非字符串、只有 C 全部挡下，不要把删掉 typeof 一行仍能挡住数组写成同一主窗",
+        body: "请按原文核算：在 Node v24.18.1、n=1 下，A 是不是放过 5 个值（含 1 元数组、嵌套数组、带 toString 的对象、new String，以及不存在日的数组），B 是不是放过其中 4 个非字符串，只有 C 把全部非字符串挡住。不要把只删 typeof 一行后 === s 仍能挡住数组，或 DAY_RE.test 包装仍放过数组，写成这条 9 值主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 9 个值、Node v24.18.1、n=1：A 放过 5 个，B 放过 4 个非字符串，只有 C 全部挡下。",
+      "再写下通过之后 === 与 Set.has 为 false，对象键和 < 为 true。",
+      "只删 typeof 一行仍能挡住数组，以及仍是 B 形的 DAY_RE.test 包装，另起一行。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-11T07:13:49.000+09:00，与 Qiita API created_at 2026-11-11T07:13:49+09:00 一致 → UTC 2026-11-10T22:13:49Z、Asia/Shanghai 2026-11-11 06:13:49，取上海日历日 → 2026-11-11；dateModified／updated_at 同值，仍取首次发布，不要因 UTC 已是 11-10 改写；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-11。与更早同日条目（如 #1164、#1258）主题不同。",
+    ],
   }
 ];
 
