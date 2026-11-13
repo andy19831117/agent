@@ -84973,6 +84973,500 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "无 JSON-LD；Zenn API published_at 2026-11-08T13:08:46.442+09:00 → UTC 2026-11-08T04:08:46.442Z、Asia/Shanghai 2026-11-08 12:08:46，取上海日历日 → 2026-11-08；body_updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-08。",
     ],
+  },
+  {
+    id: "1268",
+    slug: "ken-77-63",
+    title: "OFFSET的p95七十七对一点五至六点三",
+    summary: "Ken00000000 把「1000 万行订单表上，按 paid、新到旧取 20 件」做成个人课题，环境是 PostgreSQL 16 和 Rails 8.1。OFFSET 版与 Keyset 版在散落位置上各打 200 次：OFFSET 的 p50 约 40ms、p95 约 77ms、p99 约 100ms，单发最大 6,527ms；Keyset 的 p50 是 1–5ms、p95 是 1.5–6.3ms、p99 是 7–10ms，最大约 16ms。p95 约 77ms 在关闭查询缓存后连续 5 次都是 74–79ms，不是偶尔一次。标题写成「77ms→6ms」是约数，主窗要写成 1.5–6.3ms。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人把 OFFSET 深翻页和 Keyset 分页按 p95 对比的记录。主硬窗是 200 次分布里 OFFSET 的 p95 约 77ms、Keyset 的 p95 是 1.5–6.3ms。不要把单发 6,527ms、无索引的 314ms 或行值比较 0.2ms 对 OR 手写 4,637ms 写成这条 p95 主窗。发布日必须写成 2026-10-11。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/Ken00000000/items/d022c06e504aeb412447",
+    sourceLabel: "qiita.com·Ken00000000《OFFSETページネーションをやめてp95を77ms→6msにした話（1000万行で実測）》",
+    upvotes: 1159,
+    trending: false,
+    tags: [
+      "postgresql",
+      "pagination",
+      "rails",
+      "performance",
+      "sql",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/Ken00000000/items/d022c06e504aeb412447",
+      label: "qiita.com·Ken00000000《OFFSETページネーションをやめてp95を77ms→6msにした話（1000万行で実測）》",
+      date: "2026-10-11",
+      dateLabel: "发布",
+    },
+    approach: "作者给自己出了一道个人课题：在 1000 万行的 orders 表上，按 status=paid（约占 60%）、created_at 倒序，做带过滤和翻页的 API，目标是 p95 小于 100ms。环境是 PostgreSQL 16 和 Rails 8.1，其他状态分布是 shipped 20%、pending 13%、cancelled 6%、refunded 1%。先用 OFFSET 实现，再用 EXPLAIN 看缓冲区和排序方式，比较三种索引列序，最后改成 Keyset 分页，并用行值比较 (created_at, id) < (?, ?) 来写游标。主表是 OFFSET 版和 Keyset 版在散落位置上各打 200 次的 p50／p95／p99／max。还另测了无索引、少数类 refunded 上的过滤空转，以及把行值比较改成 OR 手写后的缓冲区。",
+    outcomes: [
+      "源披露：在作者这套 PostgreSQL 16／Rails 8.1、1000 万行 orders 上实测。OFFSET 与 Keyset 在散落位置上各打 200 次：OFFSET 的 p50 约 40ms、p95 约 77ms、p99 约 100ms，单发最大 6,527ms；Keyset 的 p50 是 1–5ms、p95 是 1.5–6.3ms、p99 是 7–10ms，最大约 16ms。作者写平均或 p50 大约只差 9 倍，但 p95 已经是量级差。单发 6,527ms 被作者明确当成冷启动一类的离群值，不要当主指标，也不要把标题里的「6ms」写成 Keyset p95 的精确值。p95 约 77ms 不是一次偶然：深 OFFSET 在查询缓存关闭后连测 5 次，全部是 74–79ms，EXPLAIN 里缓冲区已是 hit，作者判断是 CPU 在扫约 20 万行，不是磁盘 I/O。另窗不要写混：无索引时 OFFSET 0／100,000／1,000,000 的执行时间是 314ms／583ms／662ms，缓冲区 hit=73,602，约等于每次读整表约 574MB；三种索引在 paid、第一页上都能把 314ms 降到 0.015ms，但在 refunded（1%）上，只按 created_at 的索引会 Filter 丢掉 2,498 行、缓冲区 2,527，正确列序只要 24。行值比较是 0.2ms、缓冲区 27，OR 手写是 4,637ms、缓冲区 100,518，约 3,700 倍，这不是 200 次 p95 主窗。COUNT(*) 在 warm 时仍约 200ms，近似 Plan Rows 是 0.27ms、误差 0.01%，不要写进 p95 主窗。这些数字只属于这次 1000 万行和这次查询，不可外推。不要和近批其他 77ms 或 6ms 窗口写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图，正文没有外部硬链。源文未点名 18 值平台，PostgreSQL／Rails 不在 18 值，不硬凑，platforms 为 []。MySQL 5.7／8.0 的行值比较差异是作者写明的传闻、未在手头验证。iso8601(6) 改成 to_s 后，测试里 200 件变成了 1000 件，属于游标精度另窗。与 #1198 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 77ms 是 OFFSET 的 p95，Keyset 是 1.5–6.3ms",
+        body: "请按原文核算：200 次分布里，OFFSET 的 p95 是不是约 77ms，Keyset 的 p95 是不是 1.5–6.3ms，不要把标题里的「6ms」写成精确值。单发 6,527ms 是不是离群值，深 OFFSET 关闭缓存后 5 次是不是都在 74–79ms。不要把无索引的 314ms、行值比较 0.2ms 对 OR 手写 4,637ms，或 COUNT 的约 200ms 写成这条 p95 主窗。发布日是不是上海日历日 2026-10-11。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 200 次分布里 OFFSET 的 p95 约 77ms，Keyset 的 p95 是 1.5–6.3ms，标题里的 6ms 只是约数。",
+      "再写明单发 6,527ms 不当主指标，77ms 在关闭缓存后连续 5 次仍是 74–79ms。",
+      "最后把无索引的 314ms 和行值比较对 OR 手写的约 3,700 倍留在另窗，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-11T10:28:45.000+09:00，与 Qiita API created_at 2026-10-11T10:28:45+09:00 一致 → UTC 2026-10-11T01:28:45Z、Asia/Shanghai 2026-10-11 09:28:45，取上海日历日 → 2026-10-11；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-11。与 #1198 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1269",
+    slug: "mats-227-1363",
+    title: "mimalloc小块并行的二十二点七倍",
+    summary: "matsu_r11 在 Unity 6000.6.0f1、Windows 11、i7-8750H（6 核 12 线程）／16GB 上，用 Release 独立包（Mono＋Burst）、11 个 job worker 加主线程，把 mimalloc 的 ON／OFF 按场景各做 3 次预热后再测 10 次，取中位。主硬窗是 Churn_Small_Parallel：OFF 31.008ms，ON 1.363ms，约 22.7 倍。同内容的主线程只是 16.735ms 对 6.701ms，约 2.5 倍；中块并行是 38.890ms 对 2.408ms，约 16.2 倍，不要写混。OFF 时把同样的量分到 12 线程，大约只有单线程的 0.54 倍（约慢 2 倍）；ON 时大约快 5–6 倍，接近这台机器的 6 个物理核。Android 未测。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人把 Unity 6.6 默认打开的 mimalloc 按 ON／OFF 和线程模型测完的记录。主硬窗是小块并行的 31.008ms 对 1.363ms，约 22.7 倍。不要把主线程的 2.5 倍或中块并行的 16.2 倍写成这条主窗。发布日必须写成 2026-11-08。正文 3 张图都 GET 200。Unity Discussions 最后 GET 403、allocator-reference 最后 GET 404，要按不可达披露。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/matsu_r11/items/0e259e2074e7266119bb",
+    sourceLabel: "qiita.com·matsu_r11《Unity 6.6でデフォルトになったmimallocとは？ 仕組みを理解してON/OFFを計測してみた》",
+    upvotes: 1160,
+    trending: false,
+    tags: [
+      "unity",
+      "mimalloc",
+      "allocator",
+      "burst",
+      "benchmark",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/matsu_r11/items/0e259e2074e7266119bb",
+      label: "qiita.com·matsu_r11《Unity 6.6でデフォルトになったmimallocとは？ 仕組みを理解してON/OFFを計測してみた》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+    approach: "作者要弄清 Unity 6.6 把原生内存的主分配器默认切到 mimalloc 之后，ON 和 OFF 在不同线程模型上差多少。环境是 Unity 6000.6.0f1、Windows 11、Intel Core i7-8750H（6 核 12 线程）、内存 16GB，Windows 独立 Release 包（Mono、Burst 开启），作业系统设成 11 个 worker 加上主线程。测试在 Burst 编译的 job 里大量调用 UnsafeUtility.Malloc／Free（Allocator.Persistent）。每个场景先预热 3 次，再测 10 次，取中位。小块是 16–256 字节，中块是 1–16KB；并行是把同样的量分到 12 个线程同时做。作者还对照了跨线程分配／释放。Android 实机未测。正文 3 张图只用来呈现这次时间结果，图里的 allocated／reserved 是 Profiler API 值，不是物理内存，作者写明不作比较对象。",
+    outcomes: [
+      "源披露：在作者这台 i7-8750H（6 核 12 线程）／16GB、Unity 6000.6.0f1、Windows 独立 Release（Mono＋Burst）上实测。主硬窗是 Churn_Small_Parallel：mimalloc OFF 中位 31.008ms，ON 是 1.363ms，约 22.7 倍。不要把主线程同内容的约 2.5 倍（16.735ms 对 6.701ms）、中块并行的约 16.2 倍（38.890ms 对 2.408ms）、中块主线程的约 1.5 倍（21.381ms 对 14.026ms），或交叉窗约 11.4 倍（11.381ms 对 0.999ms）、约 2.2 倍（5.705ms 对 2.631ms）、约 2.3 倍（6.975ms 对 3.006ms）、约 7.1 倍（5.971ms 对 0.839ms）写成这条 22.7 倍主窗。OFF 时把同样的量分到 12 线程，大约只有单线程的 0.54 倍，作者写约慢 2 倍；ON 时大约快 5–6 倍，接近这台机器的 6 个物理核。这些数字只属于这次编辑器、这次 Release 包和这次线程模型，Android 未测，也未确认升级现有项目后该设置会不会自动打开，不可外推。不要和近批其他分配器或毫秒窗写混。",
+    ],
+    caveats: [
+      "导流：作者把比较脚本写成完整地址 https://gist.github.com/Matsuta211/1b3a001453531ef9fc83fbc337f23fce（交付时 GET 200），按作者作品披露。正文 3 张图均可下载：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/637404/c17a26aa-0a29-4243-8fc7-82d38eefcdfe.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/637404/81ca5682-8469-485d-adbb-56cc0b6a370b.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/637404/023188eb-04c8-4cb8-a5c8-e9d365759b2e.png ，交付时均 GET 200，可列可达，不当导流。不可达：https://discussions.unity.com/t/faster-leaner-memory-allocation-with-mimalloc-in-unity-6-6/1741187 交付时 GET 403，不计入可达、不当主证，也不是作者产品。https://docs.unity.com/en-us/engine/6000.6/manual/analysis/performance-memory/native-memory/allocator-reference 交付时 GET 404，不计入可达。https://docs.unity.com/en-us/engine/6000.6/manual/analysis/performance-memory/native-memory/allocators 交付时 GET 200，可列可达，是官方文档，不是作者产品。https://github.com/microsoft/mimalloc 交付时 GET 200，可列可达，是微软开源库，不是作者产品。作者资料 website_url 为空，不补写。源文未点名 18 值平台，Unity 不在 18 值，不硬凑，platforms 为 []。图里的内存值不要拿来比较。与 #1267 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 22.7 倍只属于小块并行",
+        body: "请按原文核算：Churn_Small_Parallel 的中位是不是 OFF 31.008ms、ON 1.363ms，约 22.7 倍。不要把主线程的 16.735ms 对 6.701ms（约 2.5 倍）、中块并行的 38.890ms 对 2.408ms（约 16.2 倍）或其他交叉窗写成这条主窗。OFF 时把同样的量分到 12 线程，是不是大约只有单线程的 0.54 倍；ON 时是不是大约快 5–6 倍。Android 是否未测。发布日是不是上海日历日 2026-11-08。https://discussions.unity.com/t/faster-leaner-memory-allocation-with-mimalloc-in-unity-6-6/1741187 最后是不是 GET 403，allocator-reference 是不是 404。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下小块并行的中位：OFF 31.008ms，ON 1.363ms，约 22.7 倍。",
+      "再把主线程约 2.5 倍、中块并行约 16.2 倍和其他交叉窗留在另窗，不要写进这条主窗。",
+      "最后写明 OFF 时 12 线程大约更慢、ON 后接近 6 核，Android 未测，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-08T18:32:47.000+09:00，与 Qiita API created_at 2026-11-08T18:32:47+09:00 一致 → UTC 2026-11-08T09:32:47Z、Asia/Shanghai 2026-11-08 17:32:47，取上海日历日 → 2026-11-08；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-08。与 #1267 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1270",
+    slug: "hais-522-16921",
+    title: "7DTD安装的五百二十二点五秒",
+    summary: "haisaba 在 AWS 东京区域的 r6i.large 上，空桌、0 人时实测 6 款游戏专用服务器的安装、待机 RAM 和备份。主硬窗里，7 Days to Die 安装 522.5 秒、16,921MB；Minecraft 是数秒、不到 100MB。待机 RAM 从 Terraria 的 469MB 到 7DTD 的 2,029MB，全部约在 2GB 以下。备份 tar.gz 最长 1.5 秒。测量日是 2026-10-22，发布日必须写成 2026-10-23。空桌这张表没有 Fabric 的安装时间，不要补写。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人在东京区域 EC2 上把多款游戏专用服务器按安装、待机和备份测完的记录。主硬窗是 7DTD 的 522.5 秒／16,921MB，以及待机 RAM 都在约 2GB 以下。不要把测量日 2026-10-22 写成发布日，也不要给空桌表补上 Fabric 的安装时间。发布日必须写成 2026-10-23。正文 3 张图和作者站点均 GET 200。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/haisaba/items/33b565da332b63ac3229",
+    sourceLabel: "qiita.com·haisaba《AWS東京リージョンで7種類のゲーム専用サーバーを立てて、導入時間・RAM・CPU・バックアップ時間を実測した》",
+    upvotes: 1161,
+    trending: false,
+    tags: [
+      "aws",
+      "ec2",
+      "minecraft",
+      "gameserver",
+      "benchmark",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/haisaba/items/33b565da332b63ac3229",
+      label: "qiita.com·haisaba《AWS東京リージョンで7種類のゲーム専用サーバーを立てて、導入時間・RAM・CPU・バックアップ時間を実測した》",
+      date: "2026-10-23",
+      dateLabel: "发布",
+    },
+    approach: "作者想弄清在云上自建游戏专用服务器时，安装、待机内存、机型和备份各要花多少。主测量在 AWS 东京区域的 r6i.large 上，对象是 Palworld、Minecraft vanilla、Paper、Valheim、Terraria（TShock 6.2.1）和 7 Days to Die，都是新建世界、0 人待机。时间用 date +%s.%N 的差，RAM 用启动 60 秒后目标进程 VmRSS 合计，CPU 用 pidstat 的 30 秒平均（1 核=100%）。空桌对照表是这 6 列；Fabric 只出现在 Minecraft 半径 500 块预生成的对照里，不要把 Fabric 写进安装时间表。作者后来又用 Paper 做了 r7g.large／m7i.large／t3.large 的机型对照，以及 t3.micro／t4g.small 的小机型试跑。Palworld 官方服务器只有 x86，Arm 上没跑起来，box64 未验证。",
+    outcomes: [
+      "源披露：在作者这台东京区域 r6i.large、0 人、新建世界上实测。空桌 6 列表里，7DTD 安装 522.5 秒、16,921MB，Minecraft vanilla 是 0.2 秒／60MB、Paper 是 2.7 秒／53MB、Terraria 是 0.9 秒／98MB，作者总结为 Minecraft 数秒、不到 100MB。待机 RAM 是 Terraria 469MB、vanilla 670MB、Palworld 983MB、Paper 1,115MB、Valheim 1,417MB、7DTD 2,029MB，全部约在 2GB 以下。Terraria 初次启动 186.2 秒，包含中型世界生成；还原后第二次启动是 7.1 秒。备份 tar.gz 最长是 Terraria 的 1.5 秒／8MB，作者写最大 1.5 秒，玩过的大世界未测。另窗不要写混：Minecraft 半径 500 块预生成，Paper 111.0 秒，Fabric 171.5 秒（约 32 块/秒），作者写 Paper 约快 35%；forceload 256 块后，vanilla 平均 tick 5.6ms／RAM 822MB，Paper 1.6ms／RAM 1,515MB。Paper 半径 300 块预生成，r7g.large 45.3 秒／tick 0.9ms，m7i.large 45.4 秒／1.3ms，t3.large 在 CPU 积分限制下 146.7 秒／2.8ms，约慢 3 倍。t3.micro 上 Terraria 启动约 20 分钟、待机 402MB；Paper 在 1GB 且无 swap 时 OOM，加 2GB swap 后启动 49.0 秒。t4g.small 上 Paper 无 swap 可跑，tick 2.3ms。r7g 标价 0.1292 美元、m7i 是 0.1302 美元，是价目不是账单。测量日是 2026-10-22，不要写成发布日。这些数字只属于这次机型、这次版本和 0 人新建世界，不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者站点 https://haisaba.com/game-server-memory-comparison/ ，交付时 GET 200，可列可达，按作者站点导流披露。作者资料 website_url 为空，不把资料栏补写成导流来源。正文 3 张图：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4521188/8b7cbd9d-41a5-4c8b-b200-519e05621eef.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4521188/1887dfb0-e500-490f-ab1b-7f7ff47f3ea5.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4521188/2f9831a6-ced2-4e64-b8c1-185f19fdea3e.png ，交付时均 GET 200，可列可达，不当导流。源文未点名 18 值平台，AWS／EC2／Minecraft 不在 18 值，不硬凑，platforms 为 []。发布日必须写成 2026-10-23，不要改用测量日 2026-10-22。与更早同日条目（如 #974）主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 522.5 秒和 16,921MB 只属于 7DTD 安装",
+        body: "请按原文核算：空桌 6 列表里，7DTD 安装是不是 522.5 秒、16,921MB，待机 RAM 是不是 469–2,029MB、全部约在 2GB 以下。不要给这张表补上 Fabric 的安装时间。半径 500 块预生成的 111.0 秒对 171.5 秒是不是另窗，约 32 块/秒是不是 Fabric 的生成速度而不是快 32%。测量日是不是 2026-10-22，发布日是不是上海日历日 2026-10-23。r7g 的 0.1292 美元是不是价目不是账单。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下空桌 6 列表里 7DTD 安装 522.5 秒、16,921MB，以及待机 RAM 都在约 2GB 以下。",
+      "再把 Fabric 只留在半径 500 块预生成的另窗，不要补写安装时间。",
+      "最后写明测量日是 2026-10-22，发布日必须写成 2026-10-23，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-23T10:07:28.000+09:00，与 Qiita API created_at 2026-10-23T10:07:28+09:00 一致 → UTC 2026-10-23T01:07:28Z、Asia/Shanghai 2026-10-23 09:07:28，取上海日历日 → 2026-10-23；dateModified／updated_at 同日 2026-10-23T12:03:28+09:00，仍取首次发布，不要改用测量日 2026-10-22；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-23。与更早同日条目（如 #974）主题不同。",
+    ],
+  },
+  {
+    id: "1271",
+    slug: "rasc-88-278",
+    title: "设计差二点三至八点八倍与四点一至二十七点八倍",
+    summary: "rascal2108 在 2 vCPU 虚拟机上，把 EBCDIC 固定长 1,000 万件做成天真实现和模式适用两版，再放到 JVM 系与 GraalVM Native Image 上各跑 5 次、打乱顺序，SHA-256 一致。主硬窗是设计差：JVM 系 2.3–8.8 倍，Native Image 4.1–27.8 倍（27.8 倍是集计 Native 8.05 秒对 0.29 秒）。模式适用版之间的运行时差只有 1.1–1.7 倍。天真实现换成 Native Image 后，反而比 JVM 慢 1.8–2.5 倍。启动另窗：1,000 件小作业、n=30，JVM 中位 96–235ms，Native 6.5–10.2ms（导语写成 6–10ms）。这不是 z/OS 上 IBM COBOL 的对比。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人把通用机风格批处理按设计和运行时分开测完的记录。主硬窗是设计差在 JVM 上 2.3–8.8 倍、在 Native Image 上 4.1–27.8 倍；天真实现换成 Native 反而慢 1.8–2.5 倍。不要把启动的 6.5–10.2ms 或结果 2 的 2.97→2.74 秒写成这条主窗。发布日必须写成 2026-10-17。Oracle 博客和 3 条 JEP 最后 GET 403，要按不可达披露。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/rascal2108/items/ae340ab0070c4bcc9e6c",
+    sourceLabel: "qiita.com·rascal2108《「高速版Java」で汎用機バッチは速くなるのか？ GraalVM Native Image・JDK 25 AOTキャッシュ・GnuCOBOLを1,000万件で実測した》",
+    upvotes: 1162,
+    trending: false,
+    tags: [
+      "java",
+      "graalvm",
+      "cobol",
+      "batch",
+      "native-image",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/rascal2108/items/ae340ab0070c4bcc9e6c",
+      label: "qiita.com·rascal2108《「高速版Java」で汎用機バッチは速くなるのか？ GraalVM Native Image・JDK 25 AOTキャッシュ・GnuCOBOLを1,000万件で実測した》",
+      date: "2026-10-17",
+      dateLabel: "发布",
+    },
+    approach: "作者要验证「Java 慢就换成 GraalVM Native Image 或商用高速 JVM」在通用机风格批处理上是否成立。环境是 KVM 虚拟机里的容器，Intel Xeon 2.10GHz 的 2 个 vCPU、内存 7GiB，Ubuntu 24.04.5。输入是 EBCDIC（Cp930）固定长 1,000 万件（600MB），处理分集计、固定长转固定长和 CSV 输出。实现分两版：天真实现按记录分配 byte[] 并转成 String／BigDecimal；模式适用版按约 64KB 块读取、用数组加偏移处理。运行时包括 GnuCOBOL 3.1.2、JDK21、JDK21+ParallelGC、JDK25、JDK25+AOT、Graal JIT 和 Native Image（Community Edition、PGO 无、默认 -O2）。大量批处理各条件 5 次、启动时间各 30 次，执行顺序用固定种子打乱。输出用 SHA-256 核对一致。作者写明这不是 z/OS 上 IBM Enterprise COBOL 的对比，GnuCOBOL 只是参考。Azul Platform Prime 这次没有测。",
+    outcomes: [
+      "源披露：在作者这台 2 vCPU／7GiB 虚拟机、输入已在页缓存上实测。主硬窗是设计差：天真实现相对模式适用，JVM 系 5 个环境是 2.3–8.8 倍，Native Image 是 4.1–27.8 倍。27.8 倍来自集计：Native 天真实现中位 8.05 秒（7.93–8.24）对模式适用 0.29 秒（0.28–0.29）；JVM 上最大的 8.8 倍是 JDK21 集计 4.35 秒对 0.49 秒，最小的 2.3 倍是 JDK25 的 CSV 输出 6.53 秒对 2.83 秒。模式适用版之间，集计 1.7 倍（0.29–0.49 秒）、固定长 1.1 倍（1.44–1.60 秒）、CSV 1.3 倍（2.60–3.34 秒），导语写成 1.1–1.7 倍。天真实现换成 Native Image 后，反而比 JVM 系慢：集计 1.9–2.5 倍、固定长 2.0–2.2 倍、CSV 1.8–2.1 倍，导语写成 1.8–2.5 倍。某次 PrintGCSummary 是 Run time 7.928 秒、GC 0.180 秒，不要写成主表中位 8.05 秒的 GC；分配量约是 JVM 的 1.4–1.7 倍。启动是另窗：1,000 件小作业、n=30，JVM 中位 96–235ms，Native 6.5–10.2ms，导语写成 6–10ms。结果 2 里修掉残留分配后，JDK21 的 CSV 从 2.97 秒到 2.74 秒、RSS 从 393MiB 到 61MiB，不要写成这条设计差主窗。这些数字只属于这次 2 vCPU、这次 1,000 万件和这次 Community Edition，不可外推到 z/OS 的 IBM COBOL，也不要和近批其他 8 倍或 6ms 窗写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。同作者前篇 https://qiita.com/rascal2108/items/8cab37ce03d3a23f6b6d 与相关篇 https://qiita.com/rascal2108/items/d0f14d0f16a3ec471bc7 交付时均 GET 200，可列可达，是前篇／相关不是本条源，本批不再把它们当下腕源。不可达：https://blogs.oracle.com/java/post/detaching-graalvm-from-the-java-ecosystem-train 、https://openjdk.org/jeps/483 、https://openjdk.org/jeps/514 、https://openjdk.org/jeps/515 交付时均 GET 403，不计入可达、不当主证。https://docs.oracle.com/en/graalvm/jdk/21/docs/reference-manual/native-image/guides/optimize-native-executable-with-pgo 、https://www.azul.com/products/prime/faq/ 、https://www.rfc-editor.org/rfc/rfc4180 、https://gnucobol.sourceforge.io/ 交付时均 GET 200，可列可达，不是作者产品。Azul 这次没有测。源文未点名 18 值平台，Java／GraalVM／GnuCOBOL 不在 18 值，不硬凑，platforms 为 []。与 #1255 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 2.3–8.8 倍和 4.1–27.8 倍是设计差",
+        body: "请按原文核算：设计差在 JVM 系是不是 2.3–8.8 倍，在 Native Image 是不是 4.1–27.8 倍，27.8 倍是不是集计 Native 8.05 秒对 0.29 秒。天真实现换成 Native 是不是反而慢 1.8–2.5 倍。不要把启动的 6.5–10.2ms、某次 GC 7.928 秒里的 0.180 秒，或结果 2 的 2.97→2.74 秒写成这条主窗。这是不是不是 z/OS IBM COBOL 的对比。发布日是不是上海日历日 2026-10-17。Oracle 博客和 openjdk.org/jeps/483、514、515 最后是不是 GET 403。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下设计差：JVM 系 2.3–8.8 倍，Native Image 4.1–27.8 倍，27.8 倍来自集计 8.05 秒对 0.29 秒。",
+      "再写明天真实现换成 Native 反而慢 1.8–2.5 倍，模式适用版之间只有 1.1–1.7 倍。",
+      "最后把启动的 6.5–10.2ms 和结果 2 的修补留在另窗，也不是 z/OS COBOL 对比，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-17T10:52:07.000+09:00，与 Qiita API created_at 2026-10-17T10:52:07+09:00 一致 → UTC 2026-10-17T01:52:07Z、Asia/Shanghai 2026-10-17 09:52:07，取上海日历日 → 2026-10-17；dateModified／updated_at 同日 2026-10-17T10:56:30+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-17。与 #1255 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1272",
+    slug: "tkmt-164-300",
+    title: "整帧十六点四对三十点零帧每秒",
+    summary: "tkmtmnt 在 Jetson Orin Nano 加 RealSense D435i 上，给 YOLO 人物检测补了 --profile，再亲手做 TensorRT 导出，后来用 SSH 让 Claude Code 继续测和改。表里的主硬窗是：改善前 61.1ms／16.4 FPS；TensorRT 后整帧 36.3ms／27.3 FPS，其中 YOLO 的 GPU 段 30.9ms 降到 3.7ms，约 1/8；再把跟踪改成 ByteTrack 后整帧 24.3ms／30.0 FPS，CPU 跟踪 13.2ms 降到 3.2ms。导语「约 61ms／16FPS」和小结「61→24ms，16→30」是约数，主窗要写表。作者亲手导出引擎，并站在镜头前确认人物和距离显示。platforms 为 [\"claude\"]。不可外推。",
+    description: "这是一篇个人在 Jetson 上把 YOLO 一帧时间按表测完、再用 TensorRT 和 ByteTrack 改完的记录。主硬窗是整帧 61.1ms／16.4 FPS 降到 24.3ms／30.0 FPS。不要把导语里的约 61ms，或只把 GPU 段的 3.7ms 当成整帧。发布日必须写成 2026-10-04。正文有作者仓导流，配图 1 张 GET 200。这次用了 Claude Code，platforms 为 [\"claude\"]。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/tkmtmnt/items/320f8e6ee7b3d09273da",
+    sourceLabel: "qiita.com·tkmtmnt《Claude Code で Jetson Orin Nano 上の YOLO を計測・高速化してみた(16 FPS → 30 FPS)》",
+    upvotes: 1163,
+    trending: false,
+    tags: [
+      "claude-code",
+      "jetson",
+      "yolo",
+      "tensorrt",
+      "realsense",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/tkmtmnt/items/320f8e6ee7b3d09273da",
+      label: "qiita.com·tkmtmnt《Claude Code で Jetson Orin Nano 上の YOLO を計測・高速化してみた(16 FPS → 30 FPS)》",
+      date: "2026-10-04",
+      dateLabel: "发布",
+    },
+    approach: "作者在前篇已经把 Jetson Orin Nano、RealSense D435i 和 YOLO 接到能显示人物距离，但一测发现大约 61ms、大约 16 FPS，跟不上相机的 30 FPS。这次先让 Claude Code 在主机上加 --profile，把一帧拆成相机、YOLO 推理、跟踪、距离和绘制，并在 YOLO 段末尾用 torch.cuda.synchronize() 等到 GPU 做完。初测里 YOLO 推理大约 31ms，约占整帧一半，距离计算大约 2ms，几乎不影响。接着作者在 Jetson 上亲手把 yolo26n-seg.pt 导出成 TensorRT 引擎（half=True，imgsz=480,640）；不写 imgsz 时引擎会固定 640×640，人物掩膜会纵向错位且不报错。改善项目变多后，改成主机经 SSH 公钥登录操作 Jetson，由 Claude Code 部署、实测和汇总，作者站在镜头前确认人物检测和距离显示仍然正确。跟踪后来从 BoT-SORT 改成 ByteTrack，因为相机是固定的，不再每帧算整幅运动。",
+    outcomes: [
+      "源披露：在作者这台 Jetson Orin Nano 加 RealSense D435i 上实测。表里的主硬窗是：改善前 PyTorch 整帧 61.1ms、16.4 FPS；改善①做完 TensorRT 后整帧 36.3ms、27.3 FPS，其中 YOLO 的 GPU 段从 30.9ms 降到 3.7ms，约 1/8；改善②把跟踪改成 ByteTrack 后整帧 24.3ms、30.0 FPS，YOLO 的 CPU 跟踪段从 13.2ms 降到 3.2ms。导语写成约 61ms、16 FPS，小结写成 61ms→24ms、16 FPS→30 FPS，都是约数，主窗要写表，也不要把 3.7ms 单独当成整帧。相机本身是 30 FPS。第一次在 Jetson 上测时，YOLO 推理大约 31ms，距离计算大约 2ms。这些数字只属于这次板子、这次模型和这次固定相机，不可外推。不要和近批其他 16 FPS 或 30 FPS 窗写混。",
+    ],
+    caveats: [
+      "导流：正文硬链作者仓 https://github.com/Takamoto-M/jetson-realsense-yolo ，交付时 GET 200，可列可达，按作者仓导流披露。前篇 https://qiita.com/tkmtmnt/items/edf50345684921c85823 交付时 GET 200，可列可达，是前篇不是本条源，本批不再把它当下腕源。正文配图 1 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4509096/8f863b35-9943-49f0-b486-9d9b10e06ada.png ，交付时 GET 200，可列可达，不当导流。作者资料 website_url 为空，不补写。这次在主机和 SSH 流程里使用了 Claude Code，platforms 为 [\"claude\"]。Jetson／YOLO／TensorRT／RealSense 不在 18 值，不另硬凑。与 #987 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清整帧是 61.1ms 到 24.3ms，3.7ms 只是 GPU 段",
+        body: "请按原文核算：表里改善前是不是 61.1ms／16.4 FPS，TensorRT 后整帧是不是 36.3ms／27.3 FPS，最后是不是 24.3ms／30.0 FPS。YOLO 的 GPU 段是不是 30.9ms 降到 3.7ms，不要把 3.7ms 当成整帧。导语的约 61ms 和小结的 61→24ms 是不是约数。TensorRT 导出是不是作者亲手做的。发布日是不是上海日历日 2026-10-04。这次是否用了 Claude Code，platforms 是否为 [\"claude\"]。",
+      },
+    ],
+    howItWorks: [
+      "先写下表里的整帧：61.1ms／16.4 FPS 降到 24.3ms／30.0 FPS，导语和小结里的整数是约数。",
+      "再写明 TensorRT 把 GPU 段从 30.9ms 降到 3.7ms，ByteTrack 把 CPU 跟踪从 13.2ms 降到 3.2ms，不要把 3.7ms 当成整帧。",
+      "最后写明导出是作者亲手做的，并站在镜头前确认输出，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-04T20:19:33.000+09:00，与 Qiita API created_at 2026-10-04T20:19:33+09:00 一致 → UTC 2026-10-04T11:19:33Z、Asia/Shanghai 2026-10-04 19:19:33，取上海日历日 → 2026-10-04；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-04。与 #987 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1273",
+    slug: "m49-231k-632",
+    title: "每回合二十三万一千五百零五token",
+    summary: "manabu49-ai 用 Claude Code 实际跑了 3 天多智能体。原文主硬窗是一次 17 小时会话、469 个回合，cache_read 108,575,962，平均每回合 231,505 token。2026-09-04 的追记改用 25,574 个回合重算：量上 cache_read 96.3%、写入 3.4%、输出 0.3%，费用上却是 63.2%、27.7%、9.2%；读出量是输出的 344 倍，费用只是 6.88 倍。不要把「23 万 token」直接当成费用。专业智能体 A、B 每次操作 3,372 和 3,063 token，大约是本体每回合的 1/69；按缓存读出单价 1/10 估算，作者写「丢出去反而便宜约 7 倍」。发布日必须写成 2026-09-01，不要改用追记日 09-04。platforms 为 [\"claude\"]。不可外推。",
+    description: "这是一篇个人把 Claude Code 会话的 token 量和后来补上的费用结构分开写清的记录。主硬窗是 17 小时、469 回合、每回合 231,505 token；追记里 25,574 回合的量占比 96.3%，费用占比 63.2%。不要把 23 万当成费用，也不要把发布日改成 09-04。正文写了 note 转载但没有完整 URL，不要补写、也不要去 GET。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/manabu49-ai/items/2598a30d5140e4445ab6",
+    sourceLabel: "qiita.com·manabu49-ai《Claude Code のトークン使用量を実測したら1ターン23万 ― 節約に効いたのは「セッションを切る」だった》",
+    upvotes: 1164,
+    trending: false,
+    tags: [
+      "claude-code",
+      "tokens",
+      "cache",
+      "agents",
+      "cost",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/manabu49-ai/items/2598a30d5140e4445ab6",
+      label: "qiita.com·manabu49-ai《Claude Code のトークン使用量を実測したら1ターン23万 ― 節約に効いたのは「セッションを切る」だった》",
+      date: "2026-09-01",
+      dateLabel: "发布",
+    },
+    approach: "作者自己把数据收集、分析和验证分给多个智能体，连续跑了 3 天、按 24 小时转。原文先按一次长会话记账：17 小时、469 个回合、cache_read 108,575,962 token，再除掉回合数得到每回合 231,505。2026-09-04 作者承认原文只超量、没有把量和金额分开，于是用自己的日志 25,574 个回合重算量和费用占比，并强调缓存读出的单价是输入的 1/10、输出的 1/50，不能把 23 万 token 直接当成费用。同一时期还对比了把专业工作丢给智能体 A、B 时每次操作的 token，以及第 3 天 455 分钟里本该丢出去的比例。文中另外写了盯梢被先停掉后作业异常退出 57 分钟才被发现，以及 6,480 个文件全被标成异常、其中只有 1 件是真异常，这些都不是这条 token 主窗。",
+    outcomes: [
+      "源披露：在作者这次 3 天、用 Claude Code 实际跑智能体的日志上实测。原文主硬窗是一次 17 小时会话、469 个回合，cache_read 108,575,962 token，平均每回合 231,505 token。2026-09-04 追记改用 25,574 个回合重算：量上 cache_read 96.3%、写入 3.4%、输出 0.3%；费用上是 63.2%、27.7%、9.2%。读出量是输出的 344 倍，费用比是 6.88 倍。作者写结论方向没变（读出在费用里仍是最大项），但不要把「23 万 token」直接当成费用大小。同一时期，智能体 A 是 158,481 token／47 次操作＝每次 3,372，B 是 226,688／74 次＝每次 3,063，对照本体每回合 231,505，大约是 1/69；按缓存读出单价 1/10 估算，作者写「丢出去反而便宜约 7 倍」。第 3 天的作业 455 分钟里，85% 本来应该丢出去。另窗不要写混：作业 13:25 异常退出，14:21 才被问到，空转 57 分钟；6,480 个文件全被标成异常，判定式偏了 1 个字节，真异常只有 1 件，假阳性 6,479 件。这些数字只属于这次会话和这次单价估算，不可外推，也不要和池中另一篇 57.1% 费用占比的缓存账写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。同系列后篇／番外 https://qiita.com/manabu49-ai/items/5c7506c94b5be58c040e 、https://qiita.com/manabu49-ai/items/397a018948e1ab7ef29e 、https://qiita.com/manabu49-ai/items/9b947604d3dc4958fa36 、https://qiita.com/manabu49-ai/items/bc2a7be2a6ee4ceb6185 交付时均 GET 200，可列可达，是后篇／番外不是本条源，本批不再把它们当下腕源。正文两处写「この記事は note にも同じ内容で公開しています」，没有完整 note URL，未作为字面地址去 GET，不要补写、也不要去 GET，须披露。这次实测的是 Claude Code 的 token 账，platforms 为 [\"claude\"]。发布日必须写成 2026-09-01，不要改用追记日 2026-09-04。与 #1216、#1254 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 231,505 是每回合读回量，不要当成费用",
+        body: "请按原文核算：17 小时、469 回合的 cache_read 是不是 108,575,962，每回合是不是 231,505 token。追记 25,574 回合里，量占比是不是 96.3%／3.4%／0.3%，费用占比是不是 63.2%／27.7%／9.2%，344 倍和 6.88 倍是不是分属量和费用。不要把 23 万当成费用。发布日是不是上海日历日 2026-09-01，不要改用追记日 09-04。note 转载有没有完整 URL。platforms 是否为 [\"claude\"]。",
+      },
+    ],
+    howItWorks: [
+      "先写下原文主窗：17 小时、469 回合、每回合读回 231,505 token。",
+      "再写明 09-04 追记把量和费用分开，读出量 96.3% 但费用是 63.2%，不要把 23 万当成费用。",
+      "最后把 57 分钟空转和 6,479 件假阳性留在另窗，发布日仍是 2026-09-01，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-01T18:17:43.000+09:00，与 Qiita API created_at 2026-09-01T18:17:43+09:00 一致 → UTC 2026-09-01T09:17:43Z、Asia/Shanghai 2026-09-01 17:17:43，取上海日历日 → 2026-09-01；dateModified／updated_at 2026-09-04T20:36:28+09:00 已跨日，仍取首次发布，不要改用追记日 2026-09-04；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-01。与 #1216、#1254 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1274",
+    slug: "rayr-18of64",
+    title: "十六语六十四张里十八张全对",
+    summary: "rayray 在本机 ComfyUI 0.25.0、DGX Spark 上用 Qwen-Image 20B fp8，按字种和字数选了 16 个日语词，每个固定 seed 出 4 张，共 64 张，只看主标题是否一字不差。主硬窗是合计 18/64，大约三成弱。片假名 5 个字以上 0/16；3–4 个字 11/16，其中「ミルク」「クッキー」4/4，「ブレンド」只有 1/4。只含汉字 2/12，只含平假名 2/8，汉字假名混写 3/12。「北海道産」的「産」在 8 张里有 7 张画成简体「产」，剩下 1 张是别的错。对 4 个词补了「不要简体、按这个顺序」的明示提示再画，16/16 仍然全错。以前只出 1 张就下的结论是错的。每词 4 张大约 4 分钟。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人把日语包装字用 Qwen-Image 按 16 语×4 枚数完的记录。主硬窗是 18/64；5 字以上片假名 0/16。不要根据以前只出 1 张的结论写成「汉字、平假名就能对」。发布日必须写成 2026-10-20。正文 3 张图均 GET 200。无 JSON-LD，日期取 Zenn API published_at。",
+    categories: [
+      "content",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/rayray/articles/1941eb67b58f69",
+    sourceLabel: "zenn.dev·rayray《画像生成 AI で日本語の文字はどこまで正しく出るか（Qwen-Image で 16語×4枚を実測）》",
+    upvotes: 1165,
+    trending: false,
+    tags: [
+      "qwen-image",
+      "comfyui",
+      "typography",
+      "japanese",
+      "image-gen",
+    ],
+    primarySource:     {
+      url: "https://zenn.dev/rayray/articles/1941eb67b58f69",
+      label: "zenn.dev·rayray《画像生成 AI で日本語の文字はどこまで正しく出るか（Qwen-Image で 16語×4枚を実測）》",
+      date: "2026-10-20",
+      dateLabel: "发布",
+    },
+    approach: "作者想看商品包装风的日语字，在图像生成里能不能不改字地画出来。环境是本机 ComfyUI 0.25.0、一台 NVIDIA DGX Spark，模型是 Qwen-Image 20B 的 fp8（qwen_image_fp8_e4m3fn.safetensors），文本编码器 Qwen2.5-VL 7B。生成固定 steps=20、cfg=2.5、sampler euler／scheduler simple、1024×1024，每词 4 张（batch_size=4，seed 按词固定），一语 4 张大约 4 分钟。提示词只替换字符串，其余共用；负面提示里写了 distorted letters 等。判定是目视看主标题是否一字不差，空白处多出来的小记号（例如「ミルク°」的 °）不计入对错。字表按片假名、汉字、平假名和混写来选。对错得多的 4 个词，又补了一句「这是日语汉字、不要简体、按这个顺序」的英文提示，用同一 seed 再画一遍。",
+    outcomes: [
+      "源披露：在作者这台 DGX Spark、ComfyUI 0.25.0、Qwen-Image 20B fp8 上实测。主硬窗是 16 语×4 枚共 64 张，主标题一字不差的是 18/64，大约三成弱。片假名 5 个字以上 16 张全错（0/16）；3–4 个字是 11/16，其中「ミルク」「クッキー」4/4，「ブレンド」只有 1/4，错的 3 张都画成「ブレッド」。只含汉字 2/12，只含平假名 2/8，混写 3/12。「北海道産」相关的 8 张里，有 7 张把「産」画成简体「产」，剩下 1 张是别的错字。对「北海道産」「スペシャル」「チョコレート」「ふんわりおもち」补了明示提示再画，16 张仍然全错；「北海道産」4 张仍是「产」，「スペシャル」还把分隔用的「/」画进了标志。以前只用 1 张就认为「汉字、平假名中心即使 9 个字也准确、字数不是主因」，这次 4 张一组后证明那条结论是错的，例如「玄米茶」和「まろやか」都是 2/4，只看 1 张会对也会错，而「北海道产バター」看起来还像对的。这些数字只属于这次模型、这次提示和这次目视标准，不可外推，也不要写成「汉字就能对」。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文 3 张图：https://static.zenn.studio/user-upload/ca2247a93d0a-20261020.png 、https://static.zenn.studio/user-upload/80fbb331c3f9-20261020.png 、https://static.zenn.studio/user-upload/1b056280f852-20261020.png ，交付时均 GET 200，可列可达，不当导流。正文没有外部作品硬链。源文未点名 18 值平台，ComfyUI／Qwen-Image／DGX Spark 不在 18 值，不硬凑，platforms 为 []。无 JSON-LD，日期取 Zenn API published_at。与 #1233 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 18/64，不要写成汉字就能对",
+        body: "请按原文核算：16 语×4 枚是不是共 64 张，主标题全对是不是 18/64。5 字以上片假名是不是 0/16，3–4 字是不是 11/16。只含汉字是不是 2/12，平假名 2/8，混写 3/12。「産」变成「产」是不是 8 张里 7 张。明示提示再画是不是 16/16 仍错。以前只出 1 张的结论是不是错的。发布日是不是上海日历日 2026-10-20，是否取 published_at 而不是更早的 body_updated_at。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 16 语×4 枚共 64 张，主标题全对 18/64，大约三成弱。",
+      "再写明 5 字以上片假名 0/16，不要根据以前 1 张的结论写成汉字或平假名就能对。",
+      "最后写明补了明示提示仍是 16/16 全错，「産」在 8 张里有 7 张变成「产」，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-10-20T23:24:26.134+09:00 → UTC 2026-10-20T14:24:26.134Z、Asia/Shanghai 2026-10-20 22:24:26，取上海日历日 → 2026-10-20；body_updated_at 2026-10-20T14:00:50.788+09:00 同日且更早（预约发布），仍取首次发布，不要改用更新时间；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-20。与 #1233 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1275",
+    slug: "trip-2266-14",
+    title: "六十四路合计二千二百六十六点八tok每秒",
+    summary: "tri-ponte 在 RunPod 上单独拉起一台 RTX 3090，用 SGLang 跑 Qwen2.5-7B-Instruct，并从 1 路测到 64 路。主硬窗是并发 64：合计 2,266.8 tok/s，每路 35.4 tok/s，墙钟 14.29 秒，失败 0。标题写成「14 秒」是约数。不要把短回复的 10.7 tok/s（43 token／4.01 秒）当成实力；长回复是 45.9 和 43.1 tok/s（512／11.15 秒、440／10.21 秒），也就是 43–46 这一档；1 路就是 45.9 tok/s／11.15 秒。64 倍工作量，墙钟只从 11 秒到 14 秒；每路从 46 降到 35，还留着 77%。若按 1 路顺序跑 64 次，大约要 11 分钟。OpenAI 兼容接口不等于 chatgpt，platforms 为 []。不可外推。",
+    description: "这是一篇个人在 RunPod 的 RTX 3090 上把 SGLang 并发吞吐测完、并核对能否和已有图像生成环境同居的记录。主硬窗是 64 路 2,266.8 tok/s、14.29 秒、失败 0。不要把短回复的 10.7 tok/s 写成实力。发布日必须写成 2026-08-06。正文有作者仓导流。占位 URL 未作为完整地址去 GET。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/tri-ponte/items/100a086d64e5b951b1a5",
+    sourceLabel: "qiita.com·tri-ponte《「VRAM不足」は思い込みだった——RunPod+SGLangで分かった本当の壁はCUDAの世代差【RTX3090検証】》",
+    upvotes: 1166,
+    trending: false,
+    tags: [
+      "sglang",
+      "runpod",
+      "throughput",
+      "qwen",
+      "gpu",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/tri-ponte/items/100a086d64e5b951b1a5",
+      label: "qiita.com·tri-ponte《「VRAM不足」は思い込みだった——RunPod+SGLangで分かった本当の壁はCUDAの世代差【RTX3090検証】》",
+      date: "2026-08-06",
+      dateLabel: "发布",
+    },
+    approach: "作者已经在 RunPod 上跑 Stable Diffusion WebUI Forge，想再在同一块 GPU 上放一个 LLM，把日语指示转成图像用的英语提示。先因 VRAM、依赖库和 CUDA 代数的担心，改成单独拉起一台专用 Pod，镜像是 lmsysorg/sglang:latest。第一次创建时没给容器常驻命令，容器马上退出；后来加上 dockerArgs 的 sleep infinity，再 SSH 进去用 sglang.launch_server 加载 Qwen2.5-7B-Instruct，并加上 --host 0.0.0.0。启动日志里，权重加载 78.41 秒（14.30GB），KV 缓存约 5GB（94,637 token），CUDA graph 26.05 秒；从创建 Pod 到待命大约 3 分钟，其中包含大约 15GB 的模型下载。先用短回复测速度，再改成长回复，最后把并发从 1 路加到 64 路，每次都是同样长度的生成。作者还核对了启动后的显存占用，以及 SGLang 镜像的 CUDA 代数和已有图像环境的 12.1 是否兼容。128 路以上、数千 token 的长输入和流式响应这次没测。",
+    outcomes: [
+      "源披露：在作者这台 RunPod RTX 3090、SGLang、Qwen2.5-7B-Instruct 上实测。主硬窗是并发 64：合计 2,266.8 tok/s，每路 35.4 tok/s，墙钟 14.29 秒，失败 0。标题写成「14 秒」是约数。不要把短回复的 10.7 tok/s（43 token／4.01 秒）写成实力；长回复①是 512 token／11.15 秒／45.9 tok/s，长回复②是 440 token／10.21 秒／43.1 tok/s，作者把单路实力读成 43–46 tok/s。并发表里 1 路就是 45.9 tok/s／11.15 秒；64 倍工作量，墙钟只从 11 秒到 14 秒，每路从 46 降到 35，还留着 77%。若按 1 路顺序跑 64 次，作者估算大约 11 分钟。启动后显存是 21,310／24,576 MiB，占 87%。镜像是 sglang 0.5.16、torch 2.11.0+cu130，也就是 CUDA 13.0，已有图像环境是 CUDA 12.1；作者后来认为 VRAM 可以用更小模型和 --mem-fraction-static 调，真正和同居相关的墙是依赖库与 CUDA 代数，缩小模型也消不掉。这些数字只属于这次 7B、这次 3090 和这次短输入并发，128 路、长输入和流式未测，不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者仓 https://github.com/wakana19811111-source/sglang-on-runpod ，交付时 GET 200，可列可达，按作者仓导流披露。作者资料 website_url 为空，不补写。正文未配图。源文把对外地址写成 https://<POD_ID>-30000.proxy.runpod.net ，以及 https://<POD_ID>-30000.proxy.runpod.net/v1/models 和 https://<POD_ID>-30000.proxy.runpod.net/v1/chat/completions ，POD_ID 是占位，属不完整字面，未作为字面地址去 GET，须披露。源文里的 --host 0.0.0.0 不是完整 URL，未作为字面地址去 GET。OpenAI 兼容接口不等于这次调用了 ChatGPT，不得写入 chatgpt，platforms 为 []。SGLang／RunPod／Qwen 不在 18 值，不硬凑。与 #988 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 2,266.8 tok/s 是 64 路合计，不要写 10.7",
+        body: "请按原文核算：并发 64 是不是合计 2,266.8 tok/s、每路 35.4、墙钟 14.29 秒、失败 0。不要把短回复的 10.7 tok/s 写成实力。长回复是不是 45.9 和 43.1，1 路是不是 45.9／11.15 秒。每路从 46 降到 35 是不是还留着 77%。发布日是不是上海日历日 2026-08-06。占位 https://<POD_ID>-30000.proxy.runpod.net 是否未作为完整地址去 GET。OpenAI 兼容接口是否不等于 chatgpt，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 64 路合计 2,266.8 tok/s、14.29 秒、失败 0，标题里的 14 秒是约数。",
+      "再写明短回复的 10.7 tok/s 不是实力，长回复和 1 路落在 43–46 tok/s。",
+      "最后把 VRAM 87% 和 CUDA 13.0 对 12.1 留在同居判断里，128 路未测，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-06T20:26:22.000+09:00，与 Qiita API created_at 2026-08-06T20:26:22+09:00 一致 → UTC 2026-08-06T11:26:22Z、Asia/Shanghai 2026-08-06 19:26:22，取上海日历日 → 2026-08-06；dateModified／updated_at 同日 2026-08-06T20:29:19+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-06。与 #988 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1276",
+    slug: "dblc-8615-768",
+    title: "桌面VMAF八十六点一五对七十六点八八",
+    summary: "DoubleChecker 用 ffmpeg 9.0.1-full，在桌面机（Ryzen 7 9800X3D、RTX 5060 Ti 16GB）和笔记本（i7-1280P iGPU）上，把 60p 素材先打成 30i，再按 SSIM／PSNR／VMAF 和速度比较去隔行滤波器。主硬窗是桌面三素材平均排行：第 1 是 bwdif_vulkan，平均 VMAF 86.15、SSIM 0.984016、SRC2 604 fps；第 2 是 CPU 的 bwdif，VMAF 76.88；第 3 是 bwdif_cuda，VMAF 85.22、602 fps。不要按 VMAF 把 85.22 改排成第 2，也不要把 d3d12va 的 72.19 写成第 1。笔记本 SRC1 上 deinterlace_qsv 的 SSIM 是 0.998978，但 VMAF 只有 61.96，对照 bwdif 的 VMAF 73.31。笔记本 27 个点上 SSIM 与 VMAF 的总体 r=0.017。范围只覆盖 60i→60p，不是 24p 的逆电视电影。源文未点名 18 值平台，platforms 为 []。不可外推。",
+    description: "这是一篇个人把 FFmpeg 去隔行滤波器按 VMAF／SSIM／速度测完的记录。主硬窗是桌面三素材平均里 bwdif_vulkan 的 VMAF 86.15 排第 1，CPU 的 bwdif 是 76.88。不要把 QSV 的 SSIM 0.998978 或 d3d12va 的 72.19 写成 VMAF 第一。发布日必须写成 2026-09-19，不要改用修订日 09-28。正文 8 张图均 GET 200。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/DoubleChecker/items/f28bf61cc63624800e6c",
+    sourceLabel: "qiita.com·DoubleChecker《FFmpeg によるインターレース解除の比較 - 全フィルタをVMAF/SSIM/PSNRで実測》",
+    upvotes: 1167,
+    trending: false,
+    tags: [
+      "ffmpeg",
+      "deinterlace",
+      "vmaf",
+      "ssim",
+      "bwdif",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/DoubleChecker/items/f28bf61cc63624800e6c",
+      label: "qiita.com·DoubleChecker《FFmpeg によるインターレース解除の比較 - 全フィルタをVMAF/SSIM/PSNRで実測》",
+      date: "2026-09-19",
+      dateLabel: "发布",
+    },
+    approach: "作者想回答在 1080i 或 480i 的电视录像回到 60p 时，到底该用哪一个 FFmpeg 去隔行滤波器。范围写明只覆盖纯粹的 60i（30i）→60p，24p／23.98p 的动画或电影要用逆电视电影，不在这次评价里。环境是两台 Windows 11 26200：桌面是 Ryzen 7 9800X3D、RTX 5060 Ti 16GB、64GB 内存；笔记本是 Core i7-1280P（Iris Xe）、32GB 内存。FFmpeg 是 9.0.1-full_build（gyan.dev），VMAF 用 vmaf_v0.6.1。三份 60p y4m 先打成 30i：SRC1 是自写脚本生成的 1280×720 黄／蓝三角快移，SRC2 是把 Big Buck Bunny 做成 1080p60，SRC3 是把 Sintel 预告做成 1080p60。作者按 SSIM、PSNR、VMAF 和 fps 给桌面做了三素材平均排行，并单独写出笔记本上 QSV 的 SSIM 陷阱，以及 SSIM 与 VMAF 的相关。",
+    outcomes: [
+      "源披露：在作者这两台机器、ffmpeg 9.0.1-full 上实测。主硬窗是桌面三素材平均排行：第 1 是 bwdif_vulkan，平均 SSIM 0.984016、VMAF 86.15、SRC2 604 fps；第 2 是 CPU 的 bwdif，SSIM 0.983989、VMAF 76.88、562 fps；第 3 是 bwdif_cuda，SSIM 0.983680、VMAF 85.22、602 fps。这张表按作者的综合排序写出，不要因为 85.22 高于 76.88 就把第 2、第 3 对调，也不要把第 9 的 deinterlace_d3d12va（VMAF 72.19、607 fps）写成第 1。另窗不要写混：笔记本 SRC1 上 deinterlace_qsv 和 vpp_qsv 的 SSIM 都是 0.998978，但 VMAF 只有 61.96，对照同表 bwdif 的 SSIM 0.993529、VMAF 73.31。笔记本 27 个点上 SSIM 与 VMAF 的总体 Pearson r=0.017，几乎不相关；桌面总体是 r=-0.356，不要把 0.017 说成两台机器合成的唯一系数。这些数字只属于这次 60i→60p 素材和这次 full build，不能套到 24p 的电视电影材料，不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链 https://gist.github.com/firoshi/f4ada9888f0076e89a7efa24e07f489b ，复检时 GET 200，可列可达，按作者作品导流披露。Qiita 资料栏 github_login_name 为 firoshi，与该 gist 所有者一致；源文将其写为生成 SRC1 的 gen_movie.py。作者资料 website_url 为空，不把资料栏补写成导流来源。正文硬链 https://github.com/GyanD/codexffmpeg/releases 、https://github.com/GyanD/codexffmpeg 、https://media.xiph.org/ 、https://ffmpeg.org/ffmpeg-filters.html#bwdif 、https://ffmpeg.org/ffmpeg-filters.html#yadif 、https://ffmpeg.org/ffmpeg-filters.html 、https://github.com/dubhater/vapoursynth-nnedi3 、https://github.com/Netflix/vmaf 、https://peach.blender.org/ 、https://durian.blender.org/ 交付时均 GET 200，可列可达，不是作者产品。正文 8 张图：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/c0b87027-be67-4b27-9f92-d2d3ff7c9ecf.gif 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/bb4dad5a-fe9e-4de4-ae4d-c29a14fbd43b.gif 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/82bec9ef-3214-471c-8b16-7cfe92b92e63.gif 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/835bcb9f-e90f-4f0d-bcce-93bc3d42f000.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/5c0de774-d778-48db-88d8-5a07eaaaa2e8.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/4cb6a909-1683-40cc-9086-ce97d6a607ea.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/86de90a9-769f-43e6-8e26-97bd6c2119ea.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4236024/ddb5b0ce-b85a-4030-b123-de86e43b53f3.png ，交付时均 GET 200，可列可达，不当导流。源文未点名 18 值平台，FFmpeg 不在 18 值，不硬凑，platforms 为 []。发布日必须写成 2026-09-19，不要改用修订日 2026-09-28。与 #1160 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清 86.15 是桌面平均第 1，不要写 QSV 的 SSIM",
+        body: "请按原文核算：桌面三素材平均排行第 1 是不是 bwdif_vulkan，VMAF 是不是 86.15、SSIM 是不是 0.984016。CPU 的 bwdif 是不是第 2、VMAF 76.88；bwdif_cuda 是不是第 3、VMAF 85.22。不要按 VMAF 把 85.22 改排成第 2，也不要把 d3d12va 的 72.19 写成第 1。笔记本 SRC1 上 deinterlace_qsv 的 SSIM 0.998978 对应的 VMAF 是不是 61.96。r=0.017 是不是笔记本 27 个点的总体相关。范围是不是只覆盖 60i→60p。发布日是不是上海日历日 2026-09-19，不要改用 09-28。源文是否未点名 18 值平台，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下桌面三素材平均排行：bwdif_vulkan 的 VMAF 86.15 是第 1，CPU 的 bwdif 是 76.88。",
+      "再写明不要按 VMAF 把 85.22 改排成第 2，也不要把 QSV 的高 SSIM 或 d3d12va 的 72.19 写成 VMAF 第一。",
+      "最后写明范围只覆盖 60i→60p，发布日是 2026-09-19，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-19T15:11:43.000+09:00，与 Qiita API created_at 2026-09-19T15:11:43+09:00 一致 → UTC 2026-09-19T06:11:43Z、Asia/Shanghai 2026-09-19 14:11:43，取上海日历日 → 2026-09-19；dateModified／updated_at 2026-09-28T11:51:54+09:00 已跨日，仍取首次发布，不要改用 2026-09-28；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-19。与 #1160 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1277",
+    slug: "hors-679-477",
+    title: "Qwen四组平均的六十七点九零",
+    summary: "horshohei 在一块 NVIDIA RTX PRO 6000 96GB 上，用 vLLM 跑 LLM-jp-4／4.1 和 Qwen3.8-27B，评 J-ClinicalBench 的公开任务，每条件 1 次、seed 42。主硬窗是 Qwen3.8-27B 在四组平均里都最高：推理 67.90、生成 40.12、文书分类 85.91、改订 NER／RE 47.70。不要把 Time RE 的 33.48 写成最高（这次 6 个模型里 4.1 33B 是 38.87），也不要把公开的 GPT-5 或 LLM-jp-3 参考值写成这次跑出来的数。生成组平均用的是与论文相同的 19 例 HS_PN；Qwen 在 19 例是 34.17，全 94 例是 30.96，两窗不要写混。墙钟合计：Qwen 7.48 小时（非抽取 6.91＋NER／RE 0.57），最快的是 4.1 32B-A3B 的 1.42 小时。各模型 2,389 个请求（1,673＋716）。GPT-5 只是公开参考，不得写入 chatgpt，platforms 为 []。不可外推。",
+    description: "这是一篇个人把本地 LLM 在临床文书基准上按四组平均跑完的记录。主硬窗是 Qwen3.8-27B 的 67.90／40.12／85.91／47.70。不要把 Time RE 的 33.48、19 例的 34.17 或公开 GPT-5 写成这次全量主窗。发布日必须写成 2026-09-16，不要改用修订日 09-30。论文页 GET 200，不是作者产品。",
+    categories: [
+      "education",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/horshohei/items/8c06cd665ab2a9aac5c9",
+    sourceLabel: "qiita.com·horshohei《臨床文書ベンチマークJ-ClinicalBenchでのローカルLLM（LLM-jp-4／4.1とQwen3.8）の比較》",
+    upvotes: 1168,
+    trending: false,
+    tags: [
+      "llm",
+      "clinical",
+      "benchmark",
+      "llm-jp",
+      "qwen",
+    ],
+    primarySource:     {
+      url: "https://qiita.com/horshohei/items/8c06cd665ab2a9aac5c9",
+      label: "qiita.com·horshohei《臨床文書ベンチマークJ-ClinicalBenchでのローカルLLM（LLM-jp-4／4.1とQwen3.8）の比較》",
+      date: "2026-09-16",
+      dateLabel: "发布",
+    },
+    approach: "作者在 J-ClinicalBench 的公开任务上比较 LLM-jp-4 的 2 个模型、LLM-jp-4.1 的 3 个模型和 Qwen3.8-27B。GPU 是一块 NVIDIA RTX PRO 6000 Blackwell Max-Q 96GB，每模型 1 卡，backend 是 vLLM（旧 3 个模型用 0.26.1rc1 系列，4.1 系用 0.30.1rc1 系列），权重和 KV 都是 BF16，上下文上限 32,768，tensor parallel 1，同时 sequence 数 1，prefix cache 打开，seed 42，每条件只跑 1 次。LLM-jp-3 和 GPT-5 用的是仓库公开的 one-shot 结果，当作参考，不是这次跑出来的。HS_PN 的组平均沿用论文的 19 例；作者另外给出了加上公开版新增 75 例后的全 94 例。NER／RE 把同一批 4,004 个评价单位合成 716 个请求，和非抽取 9 个任务的 1,673 件加在一起，每个模型 2,389 个请求。时间是请求墙钟合计，不含服务器启动。作者写文前声明约九成正文由 GPT-5.6-sol（Codex）写成，数值是从保存的推理结果用脚本再汇总的；这不是这次评测调用了 ChatGPT，不得写入 chatgpt。",
+    outcomes: [
+      "源披露：在作者这块 RTX PRO 6000 96GB、vLLM、n=1／seed 42 上实测。主硬窗是 Qwen3.8-27B 在四组平均里都最高：Reasoning 67.90、Generation 40.12、文书分类 85.91、改订 NER／RE 47.70。这些是组内主指标的简单平均，改订 NER／RE 的定义与公开值不同。不要把 Time RE 的 macro F1 33.48 写成最高，这次 6 个模型里最高的是 4.1 33B 的 38.87；也不要把公开参考里的 GPT-5（62.41／33.54／74.12）或 LLM-jp-3 写成这次跑出来的数。生成组平均用的 HS_PN 是论文的 19 例，Qwen 是 34.17；加上新增 75 例后全 94 例是 30.96，两窗不要写混。墙钟合计：Qwen 7.48 小时（非抽取 6.91＋NER／RE 0.57），最快的是 4.1 32B-A3B 的 1.42 小时。4.1 的 3 个模型请求全部拿到，通信和执行错误是 0 件，但 8B 的 Disease NER 有 1 件因输出上限停止，仍纳入计分。作者写明旧模型和 4.1 的 vLLM 版本、执行时期不同，速度差不要只当成模型结构的效果；这也不是论文设定的严格复现。这些数字只属于这次 1 次采样和这次机器，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。正文硬链论文页 https://aclanthology.org/2026.lrec-1.28/ ，交付时 GET 200，可列可达，不是作者产品。GPT-5 和 LLM-jp-3 是仓库公开的参考结果，不是这次跑出来的，源文也没有把这次评测写成调用 ChatGPT，不得写入 chatgpt，platforms 为 []。约九成正文由 GPT-5.6-sol（Codex）写成，属于执笔说明，同样不得写入 chatgpt。LLM-jp／Qwen／vLLM 不在 18 值，不硬凑。发布日必须写成 2026-09-16，不要改用修订日 2026-09-30。与 #1071 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+            {
+        title: "先问清四组平均 67.90／40.12／85.91／47.70 属于这次 Qwen",
+        body: "请按原文核算：Qwen3.8-27B 的四组平均是不是 67.90／40.12／85.91／47.70。不要把 Time RE 的 33.48 写成最高，也不要把公开的 GPT-5 或 LLM-jp-3 写成这次跑出来的数。HS_PN 19 例的 34.17 和全 94 例的 30.96 是不是两窗。墙钟是不是 Qwen 7.48 小时、最快 4.1 32B-A3B 的 1.42 小时。发布日是不是上海日历日 2026-09-16，不要改用 09-30。GPT-5 是否只是公开参考，platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 Qwen3.8-27B 四组平均都最高：67.90／40.12／85.91／47.70。",
+      "再把公开的 GPT-5、Time RE 的 33.48 和 HS_PN 19 例的 34.17 留在另窗，不要写成这次全量主窗。",
+      "最后写明 n=1、墙钟不含启动，发布日是 2026-09-16，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-16T18:38:17.000+09:00，与 Qiita API created_at 2026-09-16T18:38:17+09:00 一致 → UTC 2026-09-16T09:38:17Z、Asia/Shanghai 2026-09-16 17:38:17，取上海日历日 → 2026-09-16；dateModified／updated_at 2026-09-30T16:40:08+09:00 已跨日，仍取首次发布，不要改用 2026-09-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-16。与 #1071 同一天但主题不同。",
+    ],
   }
 ];
 
