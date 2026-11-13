@@ -80978,6 +80978,518 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "有 JSON-LD；datePublished 2026-08-30T17:57:22.000+09:00，与 API created_at 2026-08-30T17:57:22+09:00 一致 → UTC 2026-08-30T08:57:22Z、Asia/Shanghai 2026-08-30 16:57:22；updated_at 与发布相同，取 published → 2026-08-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-30。Ahrefs 排行是 2026 年 6 月版，不是这次 8 月 30 日的 81 URL 实測。",
       "不要把 Qiita 9／11.1% 写成 Zenn 7／8.6% 或 note 5／6.2%，也不要把 81 个 URL 写成三个平台合计 21，或把 Ahrefs 6 月版、GEO 论文 +30〜40% 写成作者这张表。不要和 158、157、156 及更早批次的硬窗数字混用。",
     ],
+  },
+  {
+    id: "1188",
+    slug: "yamaz-392-568",
+    title: "yamazaking：用公开数据集 OR-ShARC、同一份 test 250 件，对比了什么都不做的 Base、RAG、SFT，以及 SFT＋RAG。正式评测把回答外层的 Markdown 代码围栏判为形式违规，Base 2.4%（6/250）、RAG 0.4%（1/250）；去掉这一组围栏后的诊断评测是 Base 39.2%（98）、RAG 41.6%（104），SFT 正式和诊断都是 56.8%（142）。SFT＋RAG 最好的一档是「学习时就让模型看见检索文档」的 59.6%（149），只比单 SFT 多 7 条，作者写明不能据此说有意义上的差距。修好推理时强制在 JSON 开头塞入 `{`、导致学习与推理 token 列错位的 bug 后，检索文档版 SFT＋RAG 从 21.6% 回到 57.2%；学习侧再修只再抬 2.4 个百分点（6 件）到 59.6%。McNemar p≈0.307 是检索文档学习这一档旧 143 件对新 149 件的检验，不要写成 59.6% 对 56.8% 的检验。不要把正式评测的 2.4%／0.4% 写成诊断的 39.2%／41.6%，也不要把 59.6% 写成明显优于 56.8%。发布日必须写成 2026-10-12。Qwen 不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 OR-ShARC 抽样、这一轮 Qwen／QLoRA 实測，不可外推。",
+    summary: "同一份 OR-ShARC test 250 件上，正式评测 Base 2.4%（6）、RAG 0.4%（1），诊断评测 Base 39.2%（98）、RAG 41.6%（104），SFT 56.8%（142）；最好的 SFT＋RAG 59.6%（149）只比 SFT 多 7 条。强制 `{` 修好后 21.6%→57.2%，学习侧再 +2.4 点到 59.6%。McNemar p≈0.307 是 143→149，不是 59.6 对 56.8。不要把正式 2.4%／0.4% 写成诊断 39.2%／41.6%。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算比较 RAG 和 SFT、却还把正式评测的 2.4%／0.4% 写成去掉围栏后的 39.2%／41.6%，或把 59.6% 写成明显优于 56.8%，或把 McNemar p≈0.307 写成 59.6 对 56.8 的检验的人：把正式评测、诊断评测和检验对象分开写，并记住发布日是 2026-10-12。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/yamazaking/articles/rag-vs-sft-orsharc-qwen",
+    sourceLabel: "zenn.dev·yamazaking《RAGとSFTはどう違うのか、どう結果が変わるのかを実験してみた（QwenモデルにQLoRAのSFT）》",
+    upvotes: 1079,
+    trending: false,
+    tags: [
+      "llm",
+      "qlora",
+      "rag",
+      "qwen",
+      "sft",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/yamazaking/articles/rag-vs-sft-orsharc-qwen",
+      label: "zenn.dev·yamazaking《RAGとSFTはどう違うのか、どう結果が変わるのかを実験してみた（QwenモデルにQLoRAのSFT）》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者从官方 OR-ShARC 用 seed 42 抽出 train 600／validation 150／test 250 件，在 Qwen 上做 QLoRA SFT，并对同一份 test 比较 Base、RAG、SFT 和几种 SFT＋RAG。正式评分把回答外层 Markdown 代码围栏判为形式违规：Base 250 件里 229 件、RAG 235 件因此不合格，正式正确率只剩 2.4%（6）和 0.4%（1）。文中图表用的是只去掉这一组围栏、不改 JSON 正文的诊断值：Base 39.2%（98）、RAG 41.6%（104），相对 Base 只多 2.4 点（6 件）；SFT 正式和诊断都是 56.8%（142），比 Base 高 17.6 点。SFT＋RAG 各做法落在 57.6〜59.6%，最高是学习时就看见检索文档的 59.6%（149），比单 SFT 只多 7 件，作者写明不能说这是有意义的差距。检索文档版第一次评到 21.6%、形式合格 38.8%，主因是推理时强制在 JSON 开头塞入 `{`，修好后回到 57.2%；学习侧再修只再加 2.4 点（6 件）到 59.6%。McNemar p≈0.307 检验的是这一档旧 143 件对新 149 件，不是 59.6 对 56.8。这些是作者这一份抽样、这一轮实測，不可外推。",
+    outcomes: [
+      "源披露：OR-ShARC test 250 件。正式评测 Base 2.4%（6/250）、RAG 0.4%（1/250）；诊断评测 Base 39.2%（98）、RAG 41.6%（104），SFT 正式和诊断都是 56.8%（142）。最好的 SFT＋RAG 59.6%（149），只比 SFT 多 7 条。强制 `{` 修好后 21.6%→57.2%，学习侧再 +2.4 点（6 件）到 59.6%。McNemar p≈0.307 是旧 143 件对新 149 件，不是 59.6 对 56.8。不要把正式 2.4%／0.4% 写成诊断 39.2%／41.6%，也不要把 59.6% 写成明显优于 56.8%。这些是作者这一份 OR-ShARC 抽样、这一轮 Qwen／QLoRA 实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-10-12。Qwen 不在 18 值，不得写入平台。源文未称为 ChatGPT，不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 3 张：https://static.zenn.studio/user-upload/deployed-images/e087268eb23bdaae5bf0ac6a.png?sha=97a7b6c5931b0a090959a129076f0ac48e50475f（标题 无标题） 交付时 GET 200、https://static.zenn.studio/user-upload/deployed-images/72a415442791eb9eb66fb796.png?sha=31ccac15369643ef500ad1ff700d95900f9689af（标题 无标题） 交付时 GET 200、https://static.zenn.studio/user-upload/deployed-images/86659b6c9289b0b21416a4d6.png?sha=7fa0f5a587c0d2c4ab896a382584d29d9639e2bb（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档 https://github.com/Yifan-Gao/open_retrieval_conversational_machine_reading（标题 GitHub - Yifan-Gao/open_retrieval_conversational_machine_reading: Open-Retrieval Conversational Machine Reading: A new setting & OR-ShARC dataset · GitHub） 交付时 GET 200、https://arxiv.org/abs/2102.08633（标题 [2102.08633] Open-Retrieval Conversational Machine Reading） 交付时 GET 200、https://arxiv.org/abs/2503.07329（标题 [2503.07329] Assessing the Macro and Micro Effects of Random Seeds on Fine-Tuning Large Language Models） 交付时 GET 200，可列可达，不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清正式 2.4%／0.4% 不是诊断 39.2%／41.6%，再谈 59.6 对 56.8 和 p≈0.307",
+        body: "请按原文核算：是不是同一份 OR-ShARC test 250 件。正式评测是不是把外层 Markdown 代码围栏判为形式违规，Base 2.4%（6/250）、RAG 0.4%（1/250），Base 是不是有 229 件、RAG 有 235 件因此不合格。去掉这一组围栏后的诊断是不是 Base 39.2%（98）、RAG 41.6%（104），SFT 正式和诊断是不是都是 56.8%（142）。最好的 SFT＋RAG 是不是学习时看见检索文档的 59.6%（149），只比 SFT 多 7 条，作者是不是写明不能说有意义上的差距。强制在 JSON 开头塞入 `{` 修好后，是不是从 21.6% 回到 57.2%，学习侧再修是不是只再加 2.4 点（6 件）到 59.6%。McNemar p≈0.307 是不是旧 143 件对新 149 件，不是 59.6 对 56.8。发布日是不是 2026-10-12。Qwen 是不是不在 18 值，源文是不是未称为 ChatGPT，platforms 应为 []。这些是不是作者这一份抽样、这一轮实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写正式评测 Base 2.4%／RAG 0.4%，和去掉围栏后的诊断 Base 39.2%／RAG 41.6%；SFT 两档都是 56.8%。",
+      "59.6%（149）只比 SFT 多 7 条；McNemar p≈0.307 是检索文档学习旧 143 对新 149，不要写成 59.6 对 56.8。21.6%→57.2% 是推理侧修好强制 `{`，学习侧只再加 2.4 点。",
+      "发布日取 2026-10-12。Qwen 不在 18 值，源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-10-12T12:11:29.068+09:00 → UTC 2026-10-12T03:11:29Z、Asia/Shanghai 2026-10-12 11:11:29；body_updated_at 2026-10-12T12:09:31.531+09:00，早于发布，取 published → 2026-10-12；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-12。",
+      "不要把正式评测的 2.4%／0.4% 写成诊断的 39.2%／41.6%，也不要把 59.6% 写成明显优于 56.8%，或把 McNemar p≈0.307 写成 59.6 对 56.8 的检验。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1189",
+    slug: "ousi-19to3",
+    title: "ousiass：用 Go 库 nibble v0.10.0，在青空文库《吾辈是猫》（neko.txt 321,139 个 rune、7,486 个「。」、2,337 行）和《罗生门》上查日语切块。200 字预算下，库内调用与 CLI 都显示 mid_cuts 从既定规则的 19 降到日语规则的 3，块数仍是 2,085，rejoin=True。jpcheck 里同一分割的「无符号文中」是既定 16 对日语规则 2，判定条件和 cuts 不同，不要把 16→2 写成 19→3。全文每 token 字符数：bigram 1.83、cl100k_base 0.88、o200k_base 1.19；《罗生门》是 1.74／0.89／1.19。tiktoken 只是分词器名，不得写入 chatgpt。nibble 是 bluesky585/nibble，不是作者产品。发布日必须写成 2026-10-19。源文未称为 ChatGPT，platforms 为 []。这些是作者这一份青空文库文本、这一版 nibble 上的实測，不可外推。",
+    summary: "《吾辈是猫》全文 321,139 rune，200 字预算下 mid_cuts 19→3，块数仍是 2,085，rejoin=True。jpcheck 的「无符号文中」16→2 和 cuts 的 19→3 不是同一指标。每 token 字符数 bigram 1.83、cl100k 0.88、o200k 1.19（《罗生门》1.74／0.89／1.19）。tiktoken 不得写入 chatgpt。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算按日语规则改 RAG 切块、却还把 mid_cuts 19→3 写成 jpcheck 的 16→2，或把块数 2,085 写成被切少了，或把 tiktoken／cl100k、o200k 写成 chatgpt 的人：把 cuts 和 jpcheck、分词器名分开写，并记住发布日是 2026-10-19。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/ousiass/articles/cde25ed34e5320",
+    sourceLabel: "zenn.dev·ousiass《RAG のチャンクは「今|日」で切れていた：Go 製 nibble の日本語分割を青空文庫で確かめる》",
+    upvotes: 1080,
+    trending: false,
+    tags: [
+      "go",
+      "自然言語処理",
+      "llm",
+      "tiktoken",
+      "rag",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/ousiass/articles/cde25ed34e5320",
+      label: "zenn.dev·ousiass《RAG のチャンクは「今|日」で切れていた：Go 製 nibble の日本語分割を青空文庫で確かめる》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+    approach: "作者用 nibble v0.10.0，在青空文库已过保护期的《吾辈是猫》《罗生门》以及自写 Markdown、Go 源码上做切块检验。neko.txt 是 321,139 个 rune、7,486 个「。」、2,337 行。全文每 token 字符数：bigram 1.83、tiktoken cl100k_base 0.88、o200k_base 1.19；《罗生门》是 bigram 1.74、cl100k_base 0.89、o200k_base 1.19。作者写了 jpcheck：在这次无重叠的检查范围内，第一章、全文和《罗生门》都是 rejoin=true、offsets=true。cuts 和 jpcheck 的「无符号文中」判定不同：同一分割在既定规则下是 16 对 19，日语规则下是 2 对 3。库内调用在 200 字预算的全文上，mid_cuts 从 19 降到 3，chunks 仍是 2,085，rejoin=True；日语规则改的是长句里的切断位置，不是块数。tiktoken 在文中是分词器，不是 ChatGPT。nibble 是 bluesky585 的库，不是作者产品。这些是作者这一份文本、这一版库上的实測，不可外推。",
+    outcomes: [
+      "源披露：neko.txt 321,139 rune、7,486 个「。」、2,337 行。200 字预算下 mid_cuts 19→3，chunks 仍是 2,085，rejoin=True。jpcheck 同一分割的「无符号文中」是 16→2，不要写成 19→3。每 token 字符数：bigram 1.83、cl100k_base 0.88、o200k_base 1.19；《罗生门》1.74／0.89／1.19。不要把 19→3 写成 16→2，也不要把 tiktoken 写成 chatgpt。这些是作者这一份青空文库文本、nibble v0.10.0 上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-10-19。tiktoken／cl100k_base／o200k_base 不得写入 chatgpt。源文未称为 ChatGPT。nibble 不是作者产品。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。nibble 是 bluesky585/nibble，不是作者产品。作者资料 website_url（https://nonentropy.jp）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。正文未配图。一次资料／文内文档 https://github.com/bluesky585/nibble/tree/v0.10.0（标题 GitHub - bluesky585/nibble at v0.10.0 · GitHub） 交付时 GET 200、https://github.com/bluesky585/nibble/releases（标题 Releases · bluesky585/nibble · GitHub） 交付时 GET 200、https://www.aozora.gr.jp/cards/000148/card789.html（标题 図書カード：吾輩は猫である） 交付时 GET 200、https://www.aozora.gr.jp/cards/000879/card127.html（标题 図書カード：羅生門） 交付时 GET 200、https://www.unicode.org/reports/tr24/（标题 UAX #24: Unicode Script Property） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/recursive（标题 recursive package - github.com/bluesky585/nibble/pkg/recursive - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/tokenizer/tiktoken（标题 tiktoken package - github.com/bluesky585/nibble/pkg/tokenizer/tiktoken - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/tokenizer（标题 tokenizer package - github.com/bluesky585/nibble/pkg/tokenizer - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/sentencechunker（标题 sentencechunker package - github.com/bluesky585/nibble/pkg/sentencechunker - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/semantic（标题 semantic package - github.com/bluesky585/nibble/pkg/semantic - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/fastchunker（标题 fastchunker package - github.com/bluesky585/nibble/pkg/fastchunker - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/embed（标题 embed package - github.com/bluesky585/nibble/pkg/embed - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/markdownchunker（标题 markdownchunker package - github.com/bluesky585/nibble/pkg/markdownchunker - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/bluesky585/nibble@v0.10.0/pkg/codechunker（标题 codechunker package - github.com/bluesky585/nibble/pkg/codechunker - Go Packages） 交付时 GET 200、https://pkg.go.dev/github.com/tmc/langchaingo@v0.1.15/textsplitter（标题 textsplitter package - github.com/tmc/langchaingo/textsplitter - Go Packages） 交付时 GET 200，可列可达，不当本条主源。源文写出的本机端点 http://127.0.0.1:18585 按原文保留，不列入可达，也未计入须核公网 URL。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 mid_cuts 19→3 不是 jpcheck 的 16→2，再谈 2,085 和每 token 字符数",
+        body: "请按原文核算：neko.txt 是不是 321,139 个 rune、7,486 个「。」、2,337 行。200 字预算下，库内调用是不是 mid_cuts 从既定规则 19 降到日语规则 3，chunks 是不是仍为 2,085，rejoin 是不是 True。jpcheck 的「无符号文中」是不是既定 16、日语规则 2，判定条件是不是和 cuts 不同，不得写成 19→3。全文每 token 字符数是不是 bigram 1.83、cl100k_base 0.88、o200k_base 1.19；《罗生门》是不是 1.74／0.89／1.19。这次无重叠检查范围内，联结和偏移是不是都为 true。tiktoken 是不是只是分词器，不得写入 chatgpt。nibble 是不是 bluesky585/nibble，不是作者产品。发布日是不是 2026-10-19。源文是不是未称为 ChatGPT，platforms 应为 []。这些是不是作者这一份文本、这一版库上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 mid_cuts 19→3 和块数仍是 2,085、rejoin=True；不要把 jpcheck 的 16→2 写成同一笔。",
+      "每 token 字符数是《吾辈是猫》全文的 1.83／0.88／1.19，不要写成《罗生门》的 1.74／0.89／1.19。",
+      "发布日取 2026-10-19。tiktoken 不是 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-10-19T10:14:15.977+09:00 → UTC 2026-10-19T01:14:15Z、Asia/Shanghai 2026-10-19 09:14:15；body_updated_at 2026-10-19T10:13:04.798+09:00，早于发布，取 published → 2026-10-19；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-19。",
+      "不要把 mid_cuts 19→3 写成 jpcheck 的 16→2，也不要把块数 2,085 写成被切少了，或把 tiktoken／cl100k、o200k 写成 chatgpt。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1190",
+    slug: "bell-51to88",
+    title: "bellx2／べるべる：在一台 DGX Spark 上跑 DeepSeek V4 Flash。空闲约 3.8GB；ds4-serve 约 127GB；本机 ds4 约 96GB（相对空闲的差额）。thinking 打开时 prefill 51.43 t/s、generation 23.00 t/s；改用 /nothink 后 prefill 87.93 t/s、generation 22.63 t/s，生成几乎持平，prefill 明显升高。不要把 prefill 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，也不要把 51.43 写成 23.00，或把约 127GB 写成约 96GB。发布日必须写成 2026-08-18，不要因正文翌日更新写成 2026-08-19。这次确是 DeepSeek V4 Flash 实測，platforms 记 deepseek。源文未称为 ChatGPT。这些是作者这一台 Spark、这一次启动上的实測，不可外推。",
+    summary: "空闲约 3.8GB，ds4-serve 约 127GB，本机 ds4 约 96GB。thinking 开：prefill 51.43 t/s、generation 23.00 t/s；/nothink：prefill 87.93 t/s、generation 22.63 t/s。不要把 87.93 t/s 写成 #1179 的 87.93 秒，也不要把 51.43 写成 23.00。发布日必须写成 2026-08-18，不要因更新写成 2026-08-19。platforms 记 deepseek。这些是作者这一次实測，不可外推。",
+    description: "面向已经打算在一台 Spark 上跑 DeepSeek V4 Flash、却还把 prefill 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，或把 51.43 t/s 写成 generation 23.00 t/s，或把约 127GB 写成约 96GB，或把发布日写成 2026-08-19 的人：把 prefill、生成和两档占用分开写，并记住发布日是 2026-08-18。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/bellx2/articles/a75ba3ba716763",
+    sourceLabel: "zenn.dev·bellx2《DeepSeek V4 Flash を DGX Spark x1 台で動かしてみたメモ》",
+    upvotes: 1081,
+    trending: false,
+    tags: [
+      "cuda",
+      "llm",
+      "gguf",
+      "deepseek",
+      "dgxspark",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/bellx2/articles/a75ba3ba716763",
+      label: "zenn.dev·bellx2《DeepSeek V4 Flash を DGX Spark x1 台で動かしてみたメモ》",
+      date: "2026-08-18",
+      dateLabel: "发布",
+    },
+    approach: "作者在一台 DGX Spark 上启动 DeepSeek V4 Flash，记下内存和吞吐。什么都没开时约 3.8GB；拉起 ds4-serve 后按差额推算约 127GB；本机 ds4 进程本身约 96GB（同样相对 3.8GB 的差额），比 serve 少一截。thinking 打开时日志是 prefill 51.43 t/s、generation 23.00 t/s；遇到 TOPK-BOUND-VIOL 后改用 /nothink，症状不再出现，日志变为 prefill 87.93 t/s、generation 22.63 t/s。作者的观感是 prefill 从 51.43 升到 87.93，生成几乎横盘，关掉 thinking 后等待更短。这些数是这一次启动的日志，不要四舍五入成文末摘要里的 51／88／23／22.6，也不要和 #1179 那次请求的 TTFT 87.93 秒混用。源文未称为 ChatGPT。相关笔记是别人写的 note.com 文，不是作者产品。这些是作者这一台机器、这一次启动上的实測，不可外推。",
+    outcomes: [
+      "源披露：空闲约 3.8GB；ds4-serve 约 127GB；本机 ds4 约 96GB（相对空闲的差额）。thinking 开：prefill 51.43 t/s、generation 23.00 t/s；/nothink：prefill 87.93 t/s、generation 22.63 t/s。不要把 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，也不要把 51.43 写成 23.00，或把约 127GB 写成约 96GB。这些是作者这一台 DGX Spark、这一次启动上的实測，不可外推。",
+      "platforms 记 deepseek。发布日必须写成 2026-08-18，不要因 body_updated_at 跨日写成 2026-08-19。源文未称为 ChatGPT，不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url（https://qiita.com/bellx2）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。正文未配图。https://raw.githubusercontent.com/entrpi/ds4-on-spark/main/install.sh（无标题） 交付时 GET 200，是安装脚本，可列可达，不当配图、不当作者产品导流。相关篇 https://note.com/gb10_tsurumitsu/n/n8d69a9b3cafb（标题 DeepSeek-V4-Flash-0731をDGX Spark（GB10）1台で動かす―GGUF・ds4-server手順 備忘録｜tsuru_mitsu） 交付时 GET 200，可列可达，是别人的相关笔记，不当作者产品导流、不另作本条主源。Zenn card 嵌入 https://embed.zenn.studio/card#zenn-embedded__6bb72236687d5 按页铬跳过，不列入须核、不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 87.93 t/s 不是 #1179 的 87.93 秒，再谈 51.43 对 23.00、127GB 对 96GB",
+        body: "请按原文核算：空闲是不是约 3.8GB；ds4-serve 是不是约 127GB；本机 ds4 是不是约 96GB，且这是相对空闲的差额。thinking 打开时是不是 prefill 51.43 t/s、generation 23.00 t/s；/nothink 之后是不是 prefill 87.93 t/s、generation 22.63 t/s。87.93 是不是吞吐 t/s，不得写成 #1179 的 TTFT 87.93 秒。发布日是不是 2026-08-18，body_updated_at 虽是 2026-08-19，是不是仍应取 published。这次是不是 DeepSeek V4 Flash 实測，platforms 应记 deepseek。源文是不是未称为 ChatGPT。这些是不是作者这一台 Spark、这一次启动上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写空闲 3.8GB、ds4-serve 约 127GB，和本机 ds4 约 96GB。",
+      "thinking 开是 prefill 51.43 t/s、generation 23.00 t/s；/nothink 是 prefill 87.93 t/s、generation 22.63 t/s。不要把 87.93 t/s 写成 #1179 的 87.93 秒。",
+      "发布日取 2026-08-18，不要写成 2026-08-19。这次跑的是 DeepSeek V4 Flash，platforms 记 deepseek。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-08-18T16:08:13.683+09:00 → UTC 2026-08-18T07:08:13Z、Asia/Shanghai 2026-08-18 15:08:13；body_updated_at 2026-08-19T15:15:26.333+09:00，晚于发布且跨日，取 published → 2026-08-18；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-18，不要因更新写成 2026-08-19。",
+      "不要把 prefill 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，也不要把 51.43 写成 23.00，或把约 127GB 写成约 96GB，或把发布日写成 2026-08-19。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1191",
+    slug: "harr-0to100",
+    title: "harryforge／Harry Nguyen：给本地混合检索加上拒答后，越南语 holdout 正确拒绝从 0% 升到 100%（10/10），英语拒绝 75%，Recall@6 仍是 95.8%，额外延迟 p50 0.23–0.37 秒。对照模型 gte-multilingual-reranker-base 的 Recall@6 掉到 31.8%、p95 13.9 秒，因此弃用。和 qwen2.5:7b 串起来的端到端：越南语 holdout 无答案问题 10/10 拒绝（引入前在 5/6〜6/6 间晃），有答案的 24 问全部给出带 [n] 引用的回答。开发集上约 10% 有答案的问题会被误拒。不要把拒绝 0%→100% 写成 Recall@6 也变了，也不要把 10/10 写成 24/24，或把弃用模型的 31.8%、13.9 秒写成采用配置的成绩。运行时是本地 Ollama 上的 qwen2.5:7b；Claude／Gemini／OpenAI 只是可选供应商，qwen 与 Ollama 都不在 18 值。发布日必须写成 2026-10-09。源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 holdout、这一轮本地 RAG 实測，不可外推。",
+    summary: "拒答引入后，越南语 holdout 正确拒绝 0%→100%（10/10），英语 75%，Recall@6 仍是 95.8%，p50 0.23–0.37 秒。对照模型 Recall@6 31.8%、p95 13.9 秒被弃用。端到端 10/10 拒绝无答案，24/24 有引用；开发集约 10% 误拒。不要把 0%→100% 写成 Recall@6 变了。platforms 为 []。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算给本地 RAG 加拒答、却还把拒绝 0%→100% 写成 Recall@6 也从 95.8% 变了，或把 10/10 写成 24/24，或把弃用模型的 Recall@6 31.8%、p95 13.9 秒写成采用配置的人：把拒绝率、召回和对照模型分开写，并记住发布日是 2026-10-09。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/harryforge/items/15329fedf866d54fedac",
+    sourceLabel: "qiita.com·harryforge《手元の PC だけで動く「ローカル版 NotebookLM」を作った — Electron + Ollama + ハイブリッド RAG + ローカル再ランキング》",
+    upvotes: 1082,
+    trending: false,
+    tags: [
+      "Electron",
+      "rag",
+      "ollama",
+      "TypeScript",
+      "LLM",
+    ],
+    primarySource: {
+      url: "https://qiita.com/harryforge/items/15329fedf866d54fedac",
+      label: "qiita.com·harryforge《手元の PC だけで動く「ローカル版 NotebookLM」を作った — Electron + Ollama + ハイブリッド RAG + ローカル再ランキング》",
+      date: "2026-10-09",
+      dateLabel: "发布",
+    },
+    approach: "作者做了一个只在本机跑的桌面知识助手，默认聊天模型是本地 Ollama。先只用检索分数阈值做拒答时，对 hard negative 的正确拒绝是 0%。加上本地再排序／拒答后，越南语 holdout 正确拒绝 100%（10/10），英语 75%，Recall@6 仍是 95.8%，额外延迟 p50 0.23–0.37 秒。对照的 gte-multilingual-reranker-base（q8，341 MB）拒绝率相当，但英语 Recall@6 掉到 31.8%、p95 13.9 秒，因此不用。和 qwen2.5:7b 串起来：无答案的越南语 holdout 10/10 拒绝（引入前 5/6〜6/6），有答案的 24 问全部给出带 [n] 引用的回答。开发集上约 10% 有答案的问题会被说成找不到。运行时不是 Claude／Gemini／OpenAI，这三家只是可选的自备密钥供应商；qwen 与 Ollama 都不在 18 值。源文未称为 ChatGPT。正文指向的 GitHub 仓现已改名为 source-craft，源文仍称 InsightVault，须按这次 GET 标题披露。作者所属 Techvify Software，本稿按个人 OSS 实測来写。这些是作者这一份 holdout、这一轮实測，不可外推。",
+    outcomes: [
+      "源披露：越南语 holdout 正确拒绝 0%→100%（10/10），英语 75%，Recall@6 仍是 95.8%，p50 0.23–0.37 秒。对照模型 Recall@6 31.8%、p95 13.9 秒，弃用。端到端：无答案 10/10 拒绝，有答案 24/24 带引用；开发集约 10% 误拒。不要把 0%→100% 写成 Recall@6 也变了，也不要把 10/10 写成 24/24，或把 31.8%、13.9 秒写成采用配置。这些是作者这一份 holdout、这一轮本地 RAG 实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-10-09。运行时是 Ollama 上的 qwen2.5:7b，qwen 与 Ollama 不在 18 值。Claude／Gemini／OpenAI 只是可选供应商，不得写入平台。源文未称为 ChatGPT，不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：正文作者项目 https://github.com/hoanghainh1188/insight-vault（标题 GitHub - hoanghainh1188/source-craft: Local-first desktop knowledge assistant (NotebookLM-style, offline): ask questions about your documents, audio, video and images with verifiable citations. Local AI (Ollama) or optional online AI with your own key. Electron + React + TypeScript. · GitHub） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/releases/latest（标题 Release SourceCraft v1.0.1 · hoanghainh1188/source-craft · GitHub） 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。当前仓名／标题已改为 SourceCraft，源文仍称 InsightVault，须按这次 GET 标题披露。作者资料 website_url（https://substack.com/@hoanghainh）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。配图 7 张：https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/01-notebooks.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/02-workspace-answer.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/03-source-viewer.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/04-not-found.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/05-studio-summary.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/06-settings-ai-online.png?raw=true（标题 无标题） 交付时 GET 200、https://github.com/hoanghainh1188/insight-vault/blob/main/docs/blog/qiita-ja/images/06-settings-language.png?raw=true（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档 https://ollama.com（标题 Ollama · Run AI models locally and in the cloud） 交付时 GET 200、https://en.wikipedia.org/wiki/Pho（标题 Pho - Wikipedia） 交付时 GET 200、https://en.wikipedia.org/wiki/Hoan_Kiem_Lake（标题 Hoàn Kiếm Lake - Wikipedia） 交付时 GET 200、https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay（标题 Hạ Long Bay - Wikipedia） 交付时 GET 200、https://creativecommons.org/licenses/by-sa/4.0/（标题 Deed - Attribution-ShareAlike 4.0 International - Creative Commons） 交付时 GET 200，可列可达，不当本条主源。Qiita mermaid 嵌入 https://qiita.com/embed-contents/mermaid#qiita-embed-content__9095c722d9dd917187c0de618de21e92、https://qiita.com/embed-contents/mermaid#qiita-embed-content__0d1c8222c281cd34351c713dc09794fd 按页铬跳过，不列入须核、不当导流。作者所属 Techvify Software，本稿按个人 OSS 实測写，不按团队条。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清拒绝 0%→100% 不是 Recall@6 变了，再谈 10/10、24/24 和 31.8%",
+        body: "请按原文核算：引入拒答前，正确拒绝是不是 0%。引入后越南语 holdout 是不是 100%（10/10），英语是不是 75%，Recall@6 是不是仍为 95.8%，额外延迟 p50 是不是 0.23–0.37 秒。gte-multilingual-reranker-base 是不是 Recall@6 31.8%、p95 13.9 秒因而弃用。和 qwen2.5:7b 串起来，无答案越南语 holdout 是不是 10/10 拒绝（引入前 5/6〜6/6），有答案是不是 24/24 带 [n] 引用。开发集是不是约 10% 误拒。运行时是不是本地 Ollama 上的 qwen2.5:7b，Claude／Gemini／OpenAI 是不是只是可选供应商，qwen 与 Ollama 是不是都不在 18 值。发布日是不是 2026-10-09。源文是不是未称为 ChatGPT，platforms 应为 []。这些是不是作者这一份 holdout、这一轮实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写拒绝 0%→100%（10/10）、英语 75%，和 Recall@6 仍是 95.8%；额外延迟是 p50 0.23–0.37 秒。",
+      "31.8%、p95 13.9 秒是被弃用的对照模型；端到端 10/10 是无答案拒绝，24/24 是有答案且带引用，不要写混。",
+      "发布日取 2026-10-09。运行时不在 18 值，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-09T23:49:44.000+09:00，与 API created_at 2026-10-09T23:49:44+09:00 一致 → UTC 2026-10-09T14:49:44Z、Asia/Shanghai 2026-10-09 22:49:44；updated_at 与发布相同，取 published → 2026-10-09；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-09。",
+      "不要把拒绝 0%→100% 写成 Recall@6 也变了，也不要把 10/10 写成 24/24，或把弃用模型的 31.8%、13.9 秒写成采用配置。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1192",
+    slug: "dhq-39-29",
+    title: "dhq_boiler：在 RTX 4090 上用 DeepSeek-V2-Lite 查 QUBO 预取能不能比 LRU 更好。素朴设定 γ=0.1 会输给 LRU；γ=10、capacity=16 时命中率比 LRU 高 3.9 点，传输次数是 LRU 的 0.9 倍。γ=3.0、capacity=16 时 26 层全部胜过 LRU。学习型预测器相对共激活，top-6 overlap 从 0.32 升到 0.61（Δ +29.0 点），走到 Oracle 路程的 42%；不要把这 +29.0 点写成相对 LRU 的命中率 +3.9 点。Oracle 若仍用共激活那档的 γ=10，命中率反而可能输给 LRU；改低 γ 后 Oracle 绝对命中率 0.998–0.999。QUBO 约 20ms／层，26 层约 520ms／token；文中没有测 tokens/sec。ChatGPT 只出现在「大语言模型是什么」的定义里，不是这次调用。Claude Code 实际参与了定式、实现、解读、日记和草稿，不只是协助起草。发布日必须写成 2026-04-25。platforms 记 deepseek、claude。这些是作者这一份 DeepSeek-V2-Lite、这一轮 19 次实验上的实測，不可外推。",
+    summary: "素朴 QUBO 会输给 LRU；γ=10、cap=16 时命中率 +3.9 点，传输 0.9 倍。γ=3.0、cap=16 时 26 层全胜。学习型相对共激活，top-6 overlap 0.32→0.61（+29.0 点），不要写成相对 LRU 的 +3.9 点。Oracle 用错 γ 会输，改低 γ 后命中 0.998–0.999。约 20ms／层、520ms／token，没有测 tokens/sec。platforms 记 deepseek、claude。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算用 QUBO 给 MoE 做预取、却还把相对 LRU 的 +3.9 点写成学习型 top-6 overlap 的 +29.0 点，或把 20ms／层、520ms／token 写成 tokens/sec，或把用错 γ 时输掉的 Oracle 写成已经 0.998 的人：把命中率差和 overlap 分开写，并记住发布日是 2026-04-25。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "deepseek",
+      "claude",
+    ],
+    sourceUrl: "https://zenn.dev/dhq_boiler/articles/38d3b71d2e5cea",
+    sourceLabel: "zenn.dev·dhq_boiler《疑似量子コンピュータ(QUBO)で LLM を速くできるか？ RTX 4090 で DeepSeek-V2-Lite を使って 調べてみた》",
+    upvotes: 1083,
+    trending: false,
+    tags: [
+      "機械学習",
+      "量子コンピュータ",
+      "llm",
+      "moe",
+      "deepseek",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/dhq_boiler/articles/38d3b71d2e5cea",
+      label: "zenn.dev·dhq_boiler《疑似量子コンピュータ(QUBO)で LLM を速くできるか？ RTX 4090 で DeepSeek-V2-Lite を使って 調べてみた》",
+      date: "2026-04-25",
+      dateLabel: "发布",
+    },
+    approach: "作者在 RTX 4090 上用 DeepSeek-V2-Lite 做 MoE 专家预取，把选择写成 QUBO，用 OpenJij 模拟退火求解，一次约 20ms／层，26 层约 520ms／token；文中没有测 tokens/sec。素朴 EWMA、γ=0.1、capacity=16 时 QUBO 会输给 LRU。γ 与 capacity 扫了 5×4=20 档：最大胜利是 γ=10、capacity=16，命中率比 LRU 高 3.9 点，传输次数是 0.9 倍；γ=3.0、capacity=16 时 26 层全部为正。把「未来全知」的 Oracle 仍配上共激活那档最优的 γ=10 时，容量一大，Oracle 反而可能输给 LRU；改到低 γ 后绝对命中率是 0.998–0.999。学习型 MLP 相对共激活预测器，top-6 overlap 从 0.32 升到 0.61（表里最强一档 Δ +29.0 点），走到 Oracle 路程的 42%；Transformer 是 +19 点，不要把 +29.0 写成相对 LRU 的命中率。周末两天做了 19 次实验、25 次提交、约 6,500 行。Claude Code 参与了定式、实现、解读、日记和草稿。源文里的 ChatGPT 只在定义举例，不是这次调用。这些是作者这一份模型、这一轮实验上的实測，不可外推。",
+    outcomes: [
+      "源披露：素朴 γ=0.1 会输给 LRU；γ=10、capacity=16 时命中率 +3.9 点，传输 0.9 倍；γ=3.0、capacity=16 时 26 层全胜。学习型相对共激活，top-6 overlap 0.32→0.61（Δ +29.0 点），走到 Oracle 路程的 42%。Oracle 用错 γ=10 可能输给 LRU，改低 γ 后绝对命中 0.998–0.999。QUBO 约 20ms／层、26 层约 520ms／token，没有测 tokens/sec。不要把 +29.0 点写成相对 LRU 的 +3.9 点，也不要把 520ms／token 写成 tokens/sec。这些是作者这一份 DeepSeek-V2-Lite、19 次实验上的实測，不可外推。",
+      "platforms 记 deepseek、claude。发布日必须写成 2026-04-25。源文里的 ChatGPT 只在定义举例，不得写入 chatgpt。Claude Code 不只是协助起草，应记 claude。",
+    ],
+    caveats: [
+      "导流：正文作者项目 https://github.com/dhq-boiler/qubo-moe-prefetch（标题 GitHub - dhq-boiler/qubo-moe-prefetch · GitHub） 交付时 GET 200、https://github.com/dhq-boiler/qubo-moe-prefetch/issues（标题 Issues · dhq-boiler/qubo-moe-prefetch · GitHub） 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。issues 列表须写出完整 URL。作者资料 website_url（https://dhq-boiler.github.io/）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。配图 3 张：https://static.zenn.studio/user-upload/cf2d85a983b5-20260425.png（标题 无标题） 交付时 GET 200、https://static.zenn.studio/user-upload/c92047ca9809-20260425.png（标题 无标题） 交付时 GET 200、https://static.zenn.studio/user-upload/d5bee550c52b-20260425.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档 https://arxiv.org/abs/2308.12066（标题 [2308.12066] Pre-gated MoE: An Algorithm-System Co-Design for Fast and Scalable Mixture-of-Expert Inference） 交付时 GET 200、https://arxiv.org/abs/2401.14361（标题 [2401.14361] MoE-Infinity: Efficient MoE Inference on Personal Machines with Sparsity-Aware Expert Cache） 交付时 GET 200、https://arxiv.org/abs/2410.22134（标题 [2410.22134] ProMoE: Fast MoE-based LLM Serving using Proactive Caching） 交付时 GET 200、https://arxiv.org/abs/2509.02408（标题 [2509.02408] Cache Management for Mixture-of-Experts LLMs -- extended version） 交付时 GET 200、https://arxiv.org/abs/2405.04434（标题 [2405.04434] DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model） 交付时 GET 200、https://arxiv.org/abs/2401.14109（标题 [2401.14109] CompactifAI: Extreme Compression of Large Language Models using Quantum-Inspired Tensor Networks） 交付时 GET 200、https://arxiv.org/abs/2511.00746（标题 [2511.00746] Correspondence Between Ising Machines and Neural Networks） 交付时 GET 200、https://arxiv.org/html/2510.12357（标题 MoBiLE: Efficient Mixture-of-Experts Inference on Consumer GPU with Mixture of Big Little Experts） 交付时 GET 200、https://arxiv.org/html/2509.00099v1（标题 LLM-QUBO: An End-to-End Framework for Automated QUBO Transformation from Natural Language Problem Descriptions） 交付时 GET 200、https://arxiv.org/html/2407.14417v2（标题 Mixture of Experts with Mixture of Precisions for Tuning Quality of Service） 交付时 GET 200、https://utns.cs.utexas.edu/assets/papers/neurips24-readme.pdf（标题 无标题） 交付时 GET 200、https://github.com/huggingface/transformers（标题 GitHub - huggingface/transformers: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. · GitHub） 交付时 GET 200、https://github.com/OpenJij/OpenJij（标题 GitHub - Jij-Inc/OpenJij: OpenJij : Framework for the Ising model and QUBO. · GitHub） 交付时 GET 200、https://github.com/recruit-communications/pyqubo（标题 GitHub - recruit-communications/pyqubo: Python DSL for constructing QUBOs from mathematical expressions. · GitHub） 交付时 GET 200、https://github.com/tensorly/tensorly（标题 GitHub - tensorly/tensorly: TensorLy: Tensor Learning in Python. · GitHub） 交付时 GET 200、https://www.anthropic.com/claude-code（标题 Claude Code by Anthropic | AI coding agent and assistant） 交付时 GET 200，可列可达，不当本条主源。https://news.yahoo.co.jp/articles/be3ba55cac32339430393ade2b60ce34f263494e 交付时 HTTP 404（标题 Yahoo!ニュース），不列入可达，须写出完整 URL 并披露状态。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 +3.9 点不是 +29.0 点，再谈 0.998、20ms／层和 platforms",
+        body: "请按原文核算：素朴 γ=0.1 是不是会输给 LRU。γ=10、capacity=16 是不是命中率比 LRU 高 3.9 点，传输是不是 0.9 倍。γ=3.0、capacity=16 是不是 26 层全部为正。学习型相对共激活，top-6 overlap 是不是 0.32→0.61，最强一档是不是 Δ +29.0 点，是不是走到 Oracle 路程的 42%，不得写成相对 LRU 的 +3.9 点。Oracle 若仍用 γ=10 是不是可能输给 LRU，改低 γ 后绝对命中率是不是 0.998–0.999。QUBO 是不是约 20ms／层、26 层约 520ms／token，文中是不是没有测 tokens/sec。是不是 19 次实验、25 次提交、约 6,500 行。发布日是不是 2026-04-25。这次是不是跑了 DeepSeek-V2-Lite，并且 Claude Code 参与了定式、实现、解读、日记和草稿，platforms 应记 deepseek、claude。源文里的 ChatGPT 是不是只在定义举例，不得写入 chatgpt。这些是不是作者这一轮实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写相对 LRU 的命中率 +3.9 点（γ=10、cap=16），和学习型相对共激活的 top-6 overlap 0.32→0.61（+29.0 点）。",
+      "Oracle 用错 γ=10 可能输给 LRU；改低 γ 后才是 0.998–0.999。约 20ms／层、520ms／token 不是 tokens/sec。",
+      "发布日取 2026-04-25。这次跑了 DeepSeek-V2-Lite，并用了 Claude Code，platforms 记 deepseek、claude；定义里的 ChatGPT 不得写入平台。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-04-25T09:26:24.294+09:00 → UTC 2026-04-25T00:26:24Z、Asia/Shanghai 2026-04-25 08:26:24；body_updated_at 2026-04-25T09:28:05.530+09:00，晚于发布但仍是同一日历日，取 published → 2026-04-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-04-25。",
+      "不要把相对 LRU 的命中率 +3.9 点写成学习型 top-6 overlap 的 +29.0 点，也不要把 20ms／层、520ms／token 写成 tokens/sec，或把用错 γ 时输掉的 Oracle 写成已经 0.998。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1193",
+    slug: "abe-055-187",
+    title: "abe_masanori／Masanori ABE：从自己的 X 档案 28,642 件里取出 2025 年非转发的 1,774 条，在 Snowflake 上比较 Jev 和 AI_FILTER。成本：Jev 约 0.055 美元（API 0.049＋仓库 0.006），AI_FILTER 约 1.87 美元（明细 1.865），大约 1/34。耗时相反：Jev 23.0 秒（受 80 请求/秒限速，查询 22.16 秒，响应中位数 53ms），AI_FILTER 7.1 秒，Jev 更慢，大约 3 倍。AI_FILTER 为 TRUE、Jev 分数 <0.2 的 70 件里，作者判断 Jev 对 54、AI_FILTER 对 5、11 件两可；这是作者判断，不是金标准。AUC 0.9685（文中也写作 0.97），成对 96.5%。AI_FILTER TRUE 324 件（18.3%）。Jev 分数中位数 0.02，77% 小于 0.1。不要把约 0.055 美元写成更快，也不要把 23.0 秒写成 7.1 秒，或把这 70 件上的 54 对 5 写成整份 1,774 件的准确率。不要和 #1164、#1194 的 Jev 实測写混。发布日必须写成 2026-10-24。Claude Code 只出现在被分类的一条推文里，源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 1,774 条、这一轮 Snowflake 调用上的实測，不可外推。",
+    summary: "1,774 条上，Jev 约 0.055 美元（API 0.049＋仓库 0.006）对 AI_FILTER 约 1.87 美元（约 1/34）；耗时却是 23.0 秒对 7.1 秒，Jev 更慢。70 件分歧里作者判断 Jev 54、AI_FILTER 5、11 件两可。AUC 0.9685／0.97，成对 96.5%。不要把更便宜写成更快，也不要把 54 对 5 写成整份准确率。platforms 为 []。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算用 Jev 换掉 Snowflake AI_FILTER、却还把约 0.055 美元对约 1.87 美元写成 Jev 也更快，或把 23.0 秒写成 7.1 秒，或把 70 件分歧上的 54 对 5 写成整份 1,774 件准确率的人：把成本和耗时、判断样本分开写，并记住发布日是 2026-10-24。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/abe_masanori/items/1904c42dedb1ef4c1012",
+    sourceLabel: "qiita.com·abe_masanori《Snowflake の Yes/No 判定は Jev ならコスト 1/34：AI_FILTER とコスト・精度・処理時間を 1,774 件で比較》",
+    upvotes: 1084,
+    trending: false,
+    tags: [
+      "Snowflake",
+      "Jev",
+      "生成AI",
+      "LLM",
+      "SQL",
+    ],
+    primarySource: {
+      url: "https://qiita.com/abe_masanori/items/1904c42dedb1ef4c1012",
+      label: "qiita.com·abe_masanori《Snowflake の Yes/No 判定は Jev ならコスト 1/34：AI_FILTER とコスト・精度・処理時間を 1,774 件で比較》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+    approach: "作者从自己的 X 档案 28,642 件里取出 2025 年非转发的 1,774 条（正文长度 2–204 字，平均 92.1 字），在 Snowflake 里用同一套是否提问比较 Jev 和 AI_FILTER。Jev 总成本约 0.055 美元（API 0.049＋仓库 0.006），AI_FILTER 约 1.87 美元（表内明细 1.865），大约 1/34；文中 100 万件的 31 对 1,050 美元只是按这次单价外推，不是已经跑过的账单。整份耗时 Jev 23.0 秒、AI_FILTER 7.1 秒，Jev 更慢：查询 22.16 秒正好顶在 80 请求/秒，没有 429 或重试，单请求中位数 53ms。Jev 分数中位数 0.02，77% 小于 0.1；AI_FILTER TRUE 324 件（18.3%）、FALSE 1,450 件。以 AI_FILTER 为基准，AUC 0.9685（正文也写作 0.97），约 46.98 万对里 96.5% 是 Jev 给 TRUE 侧更高分。Jev <0.2 且 AI_FILTER 为 TRUE 的 70 件，作者自己读完后判断 Jev 对 54、AI_FILTER 对 5、11 件两可，这不是金标准，也只覆盖了这 70 件。源文未称为 ChatGPT；「Claude Code」只出现在一条被分类的推文例句里。不要和 #1164 或 #1194 的 Jev 数字混用。这些是作者这一份推文、这一轮调用上的实測，不可外推。",
+    outcomes: [
+      "源披露：1,774 条（从 28,642 件档案中取 2025 年非转发）。Jev 约 0.055 美元（API 0.049＋仓库 0.006）对 AI_FILTER 约 1.87 美元（明细 1.865），大约 1/34；耗时 23.0 秒对 7.1 秒，Jev 更慢（限速 80 请求/秒，查询 22.16 秒，中位数 53ms）。70 件分歧里作者判断 Jev 54、AI_FILTER 5、11 件两可。AUC 0.9685／0.97，成对 96.5%。AI_FILTER TRUE 324（18.3%）；Jev 中位数 0.02，77% <0.1。不要把更便宜写成更快，也不要把 54 对 5 写成整份准确率。这些是作者这一份 1,774 条上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-10-24。源文未称为 ChatGPT，不得写入 chatgpt。Claude Code 只出现在被分类的推文里，不得写入 claude。不要和 #1164、#1194 的 Jev 实測写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url（http://atudc.blogspot.com）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。正文未配图（仅有 Qiita mermaid 嵌入，按页铬跳过，不列入须核、不当导流）。一次资料／文内文档 https://typesafe.ai/blog/introducing-system-one-models-and-jev（标题 Introducing System One Models & Jev - TypeSafe AI Blog） 交付时 GET 200、https://www.snowflake.com/en/pricing-options/（标题 Snowflake Pricing | Choose the Right Edition for Your Data Needs） 交付时 GET 200、https://www.snowflake.com/legal-files/CreditConsumptionTable.pdf（标题 无标题） 交付时 GET 200、https://docs.typesafe.ai/models（标题 Models - TypeSafe） 交付时 GET 200，可列可达，不当本条主源。源文写出的 API 端点 https://api.typesafe.ai/v1/systemone 交付时 HTTP 451（标题 Typesafe is not available in your region.，属区域不可用），不列入可达，须写出完整 URL 并披露状态。https://console.typesafe.ai/rate-limits 交付时 HTTP 451（标题 Typesafe is not available in your region.，属区域不可用），不列入可达，须写出完整 URL 并披露状态。Qiita mermaid 嵌入 9 个（https://qiita.com/embed-contents/mermaid#qiita-embed-content__f2e46f4b6f9991d3e09474fc3253a471 等）按页铬跳过，不列入须核、不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清约 0.055 美元不是更快，再谈 23.0 秒对 7.1 秒、70 件上的 54 对 5",
+        body: "请按原文核算：是不是从 28,642 件档案里取出 2025 年非转发的 1,774 条。Jev 成本是不是约 0.055 美元（API 0.049＋仓库 0.006），AI_FILTER 是不是约 1.87 美元（明细 1.865），大约 1/34。耗时是不是 Jev 23.0 秒、AI_FILTER 7.1 秒，Jev 是不是更慢；查询是不是 22.16 秒、约 80 请求/秒，中位数是不是 53ms，429 是不是 0。70 件（Jev <0.2 对 AI_FILTER TRUE）上，作者判断是不是 Jev 54、AI_FILTER 5、11 件两可，是不是作者判断而不是金标准。AUC 是不是 0.9685（也写作 0.97），成对是不是 96.5%。AI_FILTER TRUE 是不是 324（18.3%），Jev 中位数是不是 0.02，77% 是不是 <0.1。发布日是不是 2026-10-24。源文是不是未称为 ChatGPT，Claude Code 是不是只出现在被分类的推文里，platforms 应为 []。不要和 #1164、#1194 写混。这些是不是作者这一轮实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写成本约 0.055 美元对约 1.87 美元（约 1/34），和耗时 23.0 秒对 7.1 秒：Jev 更便宜，但更慢。",
+      "54 对 5 只是 70 件分歧上的作者判断，不是金标准，也不是整份 1,774 件的准确率。AUC 0.9685 不要只写成 0.97 就当另一笔。",
+      "发布日取 2026-10-24。源文未把这次实践称为 ChatGPT 或 Claude，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-24T20:19:42.000+09:00，与 API created_at 2026-10-24T20:19:42+09:00 一致 → UTC 2026-10-24T11:19:42Z、Asia/Shanghai 2026-10-24 19:19:42；updated_at 与发布相同，取 published → 2026-10-24；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-24。",
+      "不要把约 0.055 美元写成 Jev 也更快，也不要把 23.0 秒写成 7.1 秒，或把 70 件上的 54 对 5 写成整份 1,774 件准确率，或和 #1164、#1194 的 Jev 数字混用。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1194",
+    slug: "asah-217-1",
+    title: "asahide：在两副本的 ClickHouse Cloud 上，给调用 Jev 的 UDF 加上 deterministic，用查询缓存重跑同一条 100 行查询。同一查询约 1 秒间隔连跑 10 次：副本 A 未命中 217ms，副本 B 未命中 210ms，随后 8 次命中约 1ms；UDF 只被调用 2 次，Jev 请求 4 次（每次 UDF 调用送 2 个请求）。不要把官方博客里的 “0 ms” 写成这次实測（这次命中约 1ms）。缓存过期后 6 次：2 次未命中（各副本第一次）＋4 次命中。只改空白换行：6/6 命中。改 WHERE、结果仍是这 100 行：4 次都在 B，1 次未命中＋3 次命中。A、B 第一次的值有 19 行不同，最大差 0.03，1 行在 0.49／0.50 翻转。过期后再跑，与过期前差 18–20 行。写入表后读出 0 次 UDF、3–4ms，两副本值相同。now() 会报错 704，默认不能指定缓存。发布日必须写成 2026-10-12，不要因測量夜写成 2026-10-09。源文未称为 ChatGPT，platforms 为 []。不要和 #1164、#1193 的 Jev 成本或条数写混。这些是作者这一份 100 行、这一夜測量上的实測，不可外推。",
+    summary: "同一查询连跑 10 次：A 未命中 217ms、B 未命中 210ms，随后 8 次命中约 1ms；UDF 2 次、Jev 请求 4 次。不要写成官方的 0 ms。过期后 6 次里 2 未命中＋4 命中；只改空白 6/6 命中。A、B 首值 19 行不同。发布日必须写成 2026-10-12，不要因測量夜写成 2026-10-09。platforms 为 []。这些是作者这一轮实測，不可外推。",
+    description: "面向已经打算给 ClickHouse 里的 LLM UDF 开查询缓存、却还把这次命中约 1ms 写成官方博客的 0 ms，或把 A 未命中 217ms 写成 8 次命中，或把发布日写成測量夜 2026-10-09 的人：把未命中、命中和官方宣传分开写，并记住发布日是 2026-10-12。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/asahide/items/11736b21a0047430c323",
+    sourceLabel: "qiita.com·asahide《ClickHouse Cloud で LLM を呼ぶ UDF の結果をキャッシュしてみた》",
+    upvotes: 1085,
+    trending: false,
+    tags: [
+      "ClickHouse",
+      "Jev",
+    ],
+    primarySource: {
+      url: "https://qiita.com/asahide/items/11736b21a0047430c323",
+      label: "qiita.com·asahide《ClickHouse Cloud で LLM を呼ぶ UDF の結果をキャッシュしてみた》",
+      date: "2026-10-12",
+      dateLabel: "发布",
+    },
+    approach: "作者在两副本的 ClickHouse Cloud 上，把调用 Jev 的 Executable UDF 设为 deterministic，对 100 行 Amazon 评论（50 行/请求）跑查询缓存。官方博客写第二次从缓存 0 ms、0 次 UDF 返回；作者自己的命中是约 1ms，不要写成 0 ms。不加 deterministic 时，默认指定 use_query_cache 会在开始前报错 704，UDF 0 次。同一查询约 1 秒间隔跑 10 次：23:04:15 副本 A 未命中 217ms，23:04:17 副本 B 未命中 210ms，之后 8 次命中、UDF 0 次、约 1ms；UDF 共 2 次，Jev 请求 4 次。过期后（条目写明 2026-10-09 14:05 UTC）6 次里，各副本第一次未命中，其余 4 次命中。只改空白换行的 6 次全部命中。把 WHERE 改成结果仍是这 100 行的条件后，4 次都落在 B，1 未命中＋3 命中，A 上没试到。A、B 第一次的 100 行有 19 行不同，最大差 0.03，1 行是 0.49 对 0.50；过期后再跑与过期前差 18–20 行。写入表之后 3 次读取 UDF 都是 0、3–4ms，两副本值相同。带 now() 的查询同样会 704。測量在 2026-10-09 夜，发布日是 2026-10-12。源文未称为 ChatGPT。不要和 #1164、#1193 写混。这些是作者这一份 100 行、这一夜測量上的实測，不可外推。",
+    outcomes: [
+      "源披露：同一查询约 1 秒间隔 10 次，A 未命中 217ms、B 未命中 210ms，随后 8 次命中约 1ms；UDF 2 次，Jev 请求 4 次。不要写成官方的 0 ms。过期后 6 次：2 未命中＋4 命中。只改空白 6/6 命中。改 WHERE、仍是 100 行：4 次都在 B，1 未命中＋3 命中。A、B 首值 19 行不同，最大差 0.03，1 行 0.49／0.50 翻转；过期后再跑差 18–20 行。写入表后读取 0 次 UDF、3–4ms。now() 报错 704。这些是作者这一份 100 行、这一夜測量上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-10-12，不要因測量夜或缓存过期时间写成 2026-10-09。源文未称为 ChatGPT，不得写入 chatgpt。不要和 #1164、#1193 的 Jev 实測写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 2 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2313926/876dd35d-de5d-45a5-ac4a-2834030cc751.png（标题 无标题） 交付时 GET 200、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2313926/c0a0f49a-8b30-4b6f-9c61-a380bfbdd461.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。相关篇 https://qiita.com/asahide/items/72fd1e1cb2a5570b4a20（标题 ClickHouse の SQL から Jev を呼んで、レビュー 1,000 行をまとめて判定してみた #Jev - Qiita） 交付时 GET 200，可列可达，不另作本条主源。一次资料／文内文档 https://clickhouse.com/blog/executable-udfs-generally-available-on-clickhouse-cloud（标题 Executable UDFs are now generally available on ClickHouse Cloud | ClickHouse） 交付时 GET 200、https://docs.typesafe.ai/introduction/quickstart（标题 Quick start - TypeSafe） 交付时 GET 200、https://clickhouse.com/docs/products/cloud/features/sql-console-features/user-defined-functions（标题 User-defined functions in Cloud - ClickHouse Documentation） 交付时 GET 200、https://clickhouse.com/docs/jp/operations/query-cache（标题 クエリキャッシュ - ClickHouse Documentation） 交付时 GET 200、https://clickhouse.com/docs/products/cloud/features/infrastructure/replica-aware-routing（标题 Replica-aware routing - ClickHouse Documentation） 交付时 GET 200、https://clickhouse.com（标题 ClickHouse | Built for Data-Intensive Workloads） 交付时 GET 200，可列可达，不当本条主源。提取时得到的 https://clickhouse.com%EF%BC%89%E3%80%82 是中日文标点截断造成的伪 URL，不列入须核、不按可达披露。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清这次命中约 1ms 不是官方 0 ms，再谈 217ms、UDF 2 次和发布日 2026-10-12",
+        body: "请按原文核算：同一查询约 1 秒间隔 10 次，是不是副本 A 未命中 217ms、副本 B 未命中 210ms，随后 8 次命中约 1ms。UDF 是不是只调用 2 次，Jev 请求是不是 4 次。官方博客的 0 ms 是不是不得写成这次实測。过期后 6 次是不是 2 未命中＋4 命中；只改空白是不是 6/6 命中；改 WHERE、结果仍是 100 行，是不是 4 次都在 B、1 未命中＋3 命中。A、B 第一次是不是 19 行不同，最大差 0.03，1 行是不是 0.49／0.50；过期后再跑是不是差 18–20 行。写入表后读取是不是 0 次 UDF、3–4ms。now() 是不是报错 704。測量是不是 2026-10-09 夜，发布日是不是必须写成 2026-10-12。源文是不是未称为 ChatGPT，platforms 应为 []。不要和 #1164、#1193 写混。这些是不是作者这一份 100 行上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写未命中 217ms／210ms，和随后命中约 1ms；不要把官方博客的 0 ms 写成这次实測。",
+      "UDF 2 次对应 Jev 请求 4 次。过期后、改空白、改 WHERE 是三组不同的次数，不要写混。",
+      "发布日取 2026-10-12，測量夜 2026-10-09 不是发布日。源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-12T09:14:18.000+09:00，与 API created_at 2026-10-12T09:14:18+09:00 一致 → UTC 2026-10-12T00:14:18Z、Asia/Shanghai 2026-10-12 08:14:18；updated_at 与发布相同，取 published → 2026-10-12；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-12。文内缓存期限是 2026-10-09（計測夜，条目过期 14:05 UTC＝23:05 JST），那是測量日，不是发布日。",
+      "不要把这次命中约 1ms 写成官方博客的 0 ms，也不要把 217ms 写成命中，或把发布日写成測量夜 2026-10-09，或和 #1164、#1193 的 Jev 数字混用。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1195",
+    slug: "ndho-16-431",
+    title: "ndholovu：用 llama.cpp RPC 把一块 NVIDIA 和一块 Radeon（各 16GB）组成异种集群。qwen2.5-coder 32B Q4：生成 16.0–16.2 tok/s，prefill 431 tok/s（输入 3,441 token，约 8 秒）。iperf3 实測 2.37 Gbps。Qwen3.6 35B-A3B：生成 29.1 tok/s，10,284 token 一次跑完没有降速；同一模型在单机 Ollama（部分层溢到 CPU）上是 46 tok/s，集群更慢但更稳。gemma4 修好 sm_120 等之后，带视觉 18.7 tok/s（纯文本曾到 20.2）。Mistral Small 3.2 是 5.7 tok/s。不要把 16.0–16.2 写成 29.1、46 或 18.7，也不要把 prefill 431 写成生成速度。发布日必须写成 2026-07-31。qwen、gemma、Ollama 都不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一套 16GB×2 集群上的实測，不可外推。",
+    summary: "qwen2.5-coder 32B Q4：生成 16.0–16.2 tok/s，prefill 431 tok/s（输入 3,441）。iperf3 2.37 Gbps。Qwen3.6 35B-A3B 集群 29.1 tok/s，单机 Ollama（CPU 溢出）46 tok/s。gemma4 带视觉 18.7（纯文本曾 20.2），Mistral 5.7。不要把 16.0 写成 29.1 或 46，也不要把 431 写成生成。platforms 为 []。这些是作者这一套集群上的实測，不可外推。",
+    description: "面向已经打算用 llama.cpp RPC 把两张不同厂的 16GB 卡拼起来、却还把 qwen2.5-coder 的 16.0–16.2 tok/s 写成 Qwen3.6 的 29.1 或单机 46，或把 prefill 431 tok/s 写成生成速度的人：把各模型和生成／prefill 分开写，并记住发布日是 2026-07-31。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/ndholovu/items/91d1278feedb33bb51ae",
+    sourceLabel: "qiita.com·ndholovu《VRAM 16GB×2台(NVIDIA + Radeon)で32BクラスのLLMを動かす — llama.cpp RPCで自宅に異種GPUクラスタを組んだ記録》",
+    upvotes: 1086,
+    trending: false,
+    tags: [
+      "GPU",
+      "NVIDIA",
+      "AMD",
+      "混",
+    ],
+    primarySource: {
+      url: "https://qiita.com/ndholovu/items/91d1278feedb33bb51ae",
+      label: "qiita.com·ndholovu《VRAM 16GB×2台(NVIDIA + Radeon)で32BクラスのLLMを動かす — llama.cpp RPCで自宅に異種GPUクラスタを組んだ記録》",
+      date: "2026-07-31",
+      dateLabel: "发布",
+    },
+    approach: "作者在家里用 llama.cpp RPC，把一块 NVIDIA 和一块 Radeon（各 16GB 显存）做成层分割集群。网卡 iperf3 送收都是 2.37 Gbps。主表上，qwen2.5-coder 32B Q4_K_M（19GB）生成 16.0–16.2 tok/s（文中也写作 16 tok/s），prefill 431 tok/s，是用 3,441 输入 token 测的。Qwen3.6 35B-A3B 换用 llama.cpp 向 GGUF 后，生成 29.1 tok/s，10,284 token 一次跑完没有降速；同一模型在单机 Ollama 上（部分层溢到 CPU）是 46 tok/s，集群更慢，作者认为价值在大上下文和长生成更稳。gemma4 26B-A4B 先在纯文本跑到 20.2 tok/s，加上 sm_120 等修复后，带视觉稳定在 18.7 tok/s。Mistral Small 3.2 24B Q6_K 是 5.7 tok/s。不要把 16.0–16.2、29.1、46、18.7、5.7 写在同一笔里，也不要把 431 的 prefill 当成生成。源文未称为 ChatGPT。与 #1181 同一天发布，主题不同，不要把樱花装箱数字写进来。这些是作者这一套机器上的实測，不可外推。",
+    outcomes: [
+      "源披露：qwen2.5-coder 32B Q4 生成 16.0–16.2 tok/s，prefill 431 tok/s（输入 3,441）。iperf3 2.37 Gbps。Qwen3.6 35B-A3B 集群 29.1 tok/s、10,284 token 无降速；单机 Ollama（CPU 溢出）46 tok/s。gemma4 带视觉 18.7 tok/s（纯文本曾 20.2）。Mistral 5.7 tok/s。不要把 16.0–16.2 写成 29.1、46 或 18.7，也不要把 prefill 431 写成生成。这些是作者这一套 16GB×2 异种集群上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-07-31，虽与 #1181 同一日历日，不要把 740／96／192 写进本条。qwen、gemma、Ollama、Mistral 都不在 18 值。源文未称为 ChatGPT，不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。一次资料／文内文档 https://github.com/ggml-org/llama.cpp（标题 GitHub - ggml-org/llama.cpp: LLM inference in C/C++ · GitHub） 交付时 GET 200，可列可达，不当本条主源。正文几乎没有其他公网硬链。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 16.0–16.2 不是 29.1 或 46，再谈 prefill 431 和 18.7",
+        body: "请按原文核算：qwen2.5-coder 32B Q4 生成是不是 16.0–16.2 tok/s，prefill 是不是 431 tok/s，是不是用 3,441 输入 token 測的。iperf3 是不是 2.37 Gbps。Qwen3.6 35B-A3B 集群是不是 29.1 tok/s，10,284 token 是不是一次跑完没有降速；单机 Ollama 是不是 46 tok/s，而且是部分层溢到 CPU 的状态。gemma4 纯文本是不是曾到 20.2，修好 sm_120 等之后带视觉是不是 18.7 tok/s。Mistral 是不是 5.7 tok/s。发布日是不是 2026-07-31，不得写成 #1181 的装箱数字。qwen、gemma、Ollama 是不是都不在 18 值。源文是不是未称为 ChatGPT，platforms 应为 []。这些是不是作者这一套 16GB×2 集群上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 qwen2.5-coder 生成 16.0–16.2 tok/s，和 prefill 431 tok/s（输入 3,441）；不要把 431 写成生成。",
+      "29.1 是集群上的 Qwen3.6，46 是单机 Ollama 且有 CPU 溢出；18.7 是修好后带视觉的 gemma4，不要和 16.0 写混。",
+      "发布日取 2026-07-31。运行时不在 18 值，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-07-31T10:03:41.000+09:00，与 API created_at 2026-07-31T10:03:41+09:00 一致 → UTC 2026-07-31T01:03:41Z、Asia/Shanghai 2026-07-31 09:03:41；updated_at 与发布相同，取 published → 2026-07-31；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-31。与 #1181 同一日历日，但作者和主题都不同，不要把 740／96／192 写进本条。",
+      "不要把 16.0–16.2 tok/s 写成 29.1、46 或 18.7，也不要把 prefill 431 写成生成速度，或把 #1181 的 740／96／192 写进本条。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1196",
+    slug: "matu-25-23",
+    title: "matujjsmatu：把 Kimi 当作不自然日语的评审，而不是只当生成器。第一轮 12 处修正、12 条正则全部能登记，并且全部打中原来的对抗句；「ではなく」仍有 4/5 留下。第二轮换了主题，13 处修正，「ではなく」6/6 都去掉了。两轮合计 25 条候选，25 条正则全部能登记，其中 23 条打中原来的对抗句。不要把第一轮 12 条全中写成两轮 23/25，也不要把第一轮还留下的 4/5「ではなく」写成第二轮已经 6/6 去掉。Hooks 只是既有的投递机制和文档链，不是本条的主实践，也不是 hook 教程。发布日必须写成 2026-08-26。这次确是 Kimi 实践，platforms 记 kimi。源文未称为 ChatGPT。这些是作者这两轮对抗句、这一份特征列表上的实測，不可外推。",
+    summary: "第一轮 12 处修正、12 条正则全登记且全中，但「ではなく」仍 4/5 留下。第二轮 13 处，「ではなく」6/6 去掉。两轮 25 条候选、25 条正则登记、23 条打中原文。不要把 12 条全中写成 23/25。Hooks 不是本条主实践。platforms 记 kimi。这些是作者这两轮上的实測，不可外推。",
+    description: "面向已经打算用 Kimi 清不自然日语、却还把第一轮 12 条全中写成两轮 23/25，或把第一轮仍留下的 4/5「ではなく」写成第二轮已经 6/6 去掉，或把这篇写成 hook 教程的人：把两轮次数分开写，并记住发布日是 2026-08-26。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "kimi",
+    ],
+    sourceUrl: "https://qiita.com/matujjsmatu/items/7e37eff8930ab688ff60",
+    sourceLabel: "qiita.com·matujjsmatu《Kimiを用いた不自然な日本語の撲滅——Kimiの日本語はなぜ自然に感じるのか》",
+    upvotes: 1087,
+    trending: false,
+    tags: [
+      "Kimi-K3",
+      "Kimi",
+      "AI",
+      "AIエージェント",
+    ],
+    primarySource: {
+      url: "https://qiita.com/matujjsmatu/items/7e37eff8930ab688ff60",
+      label: "qiita.com·matujjsmatu《Kimiを用いた不自然な日本語の撲滅——Kimiの日本語はなぜ自然に感じるのか》",
+      date: "2026-08-26",
+      dateLabel: "发布",
+    },
+    approach: "作者觉得 Kimi 的日语读起来自然，就反过来让它当评审：先生成带癖的对抗句，再让另一会话按同一组特征改写，并把返回的正则登记进既有 Hooks 去重复检测。第一轮 12 处修正都附了理由，带回的 12 条正则全部能直接登记，且全部打中原来的对抗句；「効く」「刺さる」等已经从改后正文里消失，但「ではなく」5 件里仍有 4 件留下。第二轮换了主题，13 处修正，「ではなく」6 件全部去掉，第一轮没清掉的癖在这一轮清掉了。两轮合计 25 条候选，25 条正则全部能登记，23 条打中原来的对抗句。作者自己说明：Kimi 每次判断会变，所以才把规则写成列表，用 Hook 去固定；Hooks 文档只是投递机制，本条主实践是这次评审，不是 hook 教程。源文未称为 ChatGPT。这些是作者这两轮对抗句上的实測，不可外推。",
+    outcomes: [
+      "源披露：第一轮 12 处修正、12 条正则全部能登记且全部打中原文，「ではなく」仍 4/5 留下。第二轮 13 处修正，「ではなく」6/6 去掉。两轮合计 25 条候选、25 条正则登记、23 条打中原文。不要把 12 条全中写成 23/25，也不要把 4/5 留下写成 6/6 已去掉。这些是作者这两轮对抗句、这一份特征列表上的实測，不可外推。",
+      "platforms 记 kimi。发布日必须写成 2026-08-26。源文未称为 ChatGPT，不得写入 chatgpt。Hooks 只是投递机制，本条不是 hook 教程。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文作者推文 https://x.com/yugen_matuni/status/2088251220452679951?s=20（标题 まつにぃ on X: \"AIの変な日本語、Hooksで撲滅しているお話\" / X） 交付时 GET 200，按文内作者账号硬链披露，可列可达，不另作本条主源，不当作者产品导流。配图 4 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4480650/ca8f9af0-4b3d-408d-9f86-c61473cc8132.png（标题 无标题） 交付时 GET 200、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4480650/2bd44ab2-6084-4358-9379-9b8adfd38ce0.png（标题 无标题） 交付时 GET 200、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4480650/d914c478-8af7-4963-8fea-e7be3c0a0d9d.png（标题 无标题） 交付时 GET 200、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4480650/a830e13b-483c-43ca-b4cb-8c91322f68f6.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档 https://arxiv.org/pdf/2607.24653（标题 无标题） 交付时 GET 200、https://www.kimi.com/en/blog/kimi-k3（标题 Kimi K3 Tech Blog: Open Frontier Intelligence） 交付时 GET 200、https://www.kimi.com/code/docs/en/（标题 Kimi Code Overview | Kimi Code Docs） 交付时 GET 200、https://www.kimi.com/code/docs/en/kimi-code-cli/customization/hooks.html（标题 Hooks | Kimi Code Docs） 交付时 GET 200，可列可达，不当本条主源；hooks.html 是官方文档，不是作者产品。Qiita tweet 嵌入 https://qiita.com/embed-contents/tweet#qiita-embed-content__eae3d3ac9b97232cb8cb2dfb6fd836f4 按页铬跳过，不列入须核、不当导流；已改核完整的 x.com 状态链接。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 12 条全中不是两轮 23/25，再谈 4/5 和 6/6",
+        body: "请按原文核算：第一轮是不是 12 处修正、12 条正则全部能登记并且全部打中原来的对抗句，「ではなく」是不是仍有 4/5 留下。第二轮是不是 13 处修正，「ではなく」是不是 6/6 都去掉。两轮合计是不是 25 条候选、25 条正则全部能登记、23 条打中原文。不得把 12 条全中写成 23/25，也不得把 4/5 留下写成已经 6/6 去掉。Hooks 是不是只作为既有投递机制出现，本条是不是 Kimi 当评审的实践，不是 hook 教程。发布日是不是 2026-08-26。这次是不是确有 Kimi 实践，platforms 应记 kimi。源文是不是未称为 ChatGPT。这些是不是作者这两轮对抗句上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写第一轮 12 条全中、但「ではなく」仍 4/5 留下；第二轮 13 处、「ではなく」6/6 去掉。",
+      "两轮合计是 25 条候选、25 条正则、23 条打中原文，不要把第一轮 12 条全中写成 23/25。",
+      "发布日取 2026-08-26。这次用的是 Kimi，platforms 记 kimi。Hooks 不是本条主实践。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-26T20:42:12.000+09:00，与 API created_at 2026-08-26T20:42:12+09:00 一致 → UTC 2026-08-26T11:42:12Z、Asia/Shanghai 2026-08-26 19:42:12；dateModified 2026-08-26T22:25:34.000+09:00，API updated_at 2026-08-26T22:25:35+09:00，晚于发布但仍是同一日历日，取 published → 2026-08-26；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-26。",
+      "不要把第一轮 12 条全中写成两轮 23/25，也不要把第一轮仍留下的 4/5「ではなく」写成第二轮已经 6/6 去掉，或把本条写成 hook 教程。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
+  },
+  {
+    id: "1197",
+    slug: "kote-474-247",
+    title: "kotetsu_yama／Kotetsu Yamamoto：在 Ryzen AI MAX+ 395 上做本地语音对话。WhisperX large-v3→turbo，对 2.56 秒样例 steady 中位数 474→247ms（−48%），冷启动第一次 664→440ms，加载 6.51→4.83 秒。同一份 Q8_0 gguf、同一提示、142 token：dense 27B 开 MTP 后生成 7.71→10.15 tok/s（+31.7%），142 token 18.42→13.99 秒，TTFT 0.46 对 0.48 秒几乎不变，draft 接受 24.7%（60/243）；MTP 不缩短 TTFT。另一张表是 dense 27B 对 MoE 35B-A3B：TTFT 约 360→约 88ms，生成约 5.0→约 19.8 tok/s，大约都是 4 倍；表头写的是 dense 27B，不要写成 dense+MTP 对 MoE，也不要把 7.71／10.15 或 0.46／0.48 秒写进这张表。不要把 474→247ms 写成 7.71→10.15，或把 MTP 写成改善了 TTFT。DeepSeek 只作为 MTP 的来源被提到，不是这次跑的模型。发布日必须写成 2026-05-23，不要因 6 月更新写成 2026-06-12。qwen、WhisperX 不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一台机器、这几轮基准上的实測，不可外推。",
+    summary: "WhisperX large-v3→turbo：steady 中位数 474→247ms，冷启动第一次 664→440，加载 6.51→4.83 秒。dense 27B 开 MTP：7.71→10.15 tok/s，142 token 18.42→13.99 秒，TTFT 0.46 对 0.48 不变。dense 27B 对 MoE：TTFT 约 360→约 88ms，生成约 5.0→约 19.8 tok/s。不要把 474→247 写成 MTP，也不要把 360／88 那张表写成 dense+MTP。发布日必须写成 2026-05-23。platforms 为 []。这些是作者这几轮基准上的实測，不可外推。",
+    description: "面向已经打算在本机做语音对话、却还把 WhisperX 474→247ms 写成 MTP 的 7.71→10.15 tok/s，或把 MTP 写成缩短了 TTFT，或把 dense 27B 对 MoE 的约 360→约 88ms 写成 dense+MTP 对照，或把发布日写成 2026-06-12 的人：把转写、MTP 和 MoE 三张表分开写，并记住发布日是 2026-05-23。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/kotetsu_yama/items/5a3e7afe5b44a779df2e",
+    sourceLabel: "qiita.com·kotetsu_yama《AMD Ryzen AI MAX+ 395 (gfx1151) でローカル完結の音声対話AIを作る — VRMアバターが MoE LLM で返事するまで》",
+    upvotes: 1088,
+    trending: false,
+    tags: [
+      "VRM",
+      "ROCm",
+      "VOICEVOX",
+      "whisperx",
+      "LlamaCpp",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kotetsu_yama/items/5a3e7afe5b44a779df2e",
+      label: "qiita.com·kotetsu_yama《AMD Ryzen AI MAX+ 395 (gfx1151) でローカル完結の音声対話AIを作る — VRMアバターが MoE LLM で返事するまで》",
+      date: "2026-05-23",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Ryzen AI MAX+ 395（gfx1151）上做本地语音对话，后期改成默认 MoE，并留下切换前的基准。WhisperX 对 2.56 秒合成样例跑 5 次：large-v3→turbo 的 steady 中位数 474→247ms（−48%），冷启动第一次 664→440ms，加载 6.51→4.83 秒；启动脚本会先 warmup，所以用户第一句已经走稳态，缩短量是 227ms。MTP 表用同一份 Qwen3.6-27B-MTP-Q8_0、同一提示、142 token、温度 0.7、seed 42：关掉 7.71 tok/s、18.42 秒、TTFT 0.46 秒；打开 10.15 tok/s（+31.7%）、13.99 秒，TTFT 0.48 秒几乎不变，draft 接受 24.7%（60/243）。作者写明 MTP 不缩短 TTFT。另一张表表头是 dense 27B 对 MoE 35B-A3B：TTFT 约 360ms 对约 88ms，生成约 5.0 对约 19.8 tok/s，大约都是 4 倍；后文说 MoE 也超过 dense+MTP，但这两行数字不要写成 dense+MTP 对照，更不要和 7.71／10.15、0.46／0.48 秒混用。DeepSeek 只出现在 MTP 来源说明里。源文未称为 ChatGPT。6 月 12 日有更新，发布日仍是 2026-05-23。这些是作者这一台机器上的实測，不可外推。",
+    outcomes: [
+      "源披露：WhisperX large-v3→turbo，2.56 秒样例 5 次，steady 中位数 474→247ms（−48%），冷启动第一次 664→440ms，加载 6.51→4.83 秒。同一 gguf、142 token：MTP 关/开生成 7.71→10.15 tok/s，18.42→13.99 秒，TTFT 0.46 对 0.48 秒几乎不变，draft 接受 24.7%（60/243）；MTP 不缩短 TTFT。dense 27B 对 MoE：TTFT 约 360→约 88ms，生成约 5.0→约 19.8 tok/s；表头不是 dense+MTP。不要把 474→247ms 写成 7.71→10.15，也不要把 360／88 写成 MTP 表。这些是作者这一台 Ryzen AI MAX+ 395 上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-05-23，不要因 dateModified 写成 2026-06-12。qwen、WhisperX、VOICEVOX 不在 18 值。DeepSeek 只作为 MTP 来源出现，不得写入 deepseek。源文未称为 ChatGPT，不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：正文作者项目 https://github.com/kotetsuy/AIassistant（标题 GitHub - kotetsuy/AIassistant: AI assistant template · GitHub） 交付时 GET 200、https://github.com/kotetsuy/AIassistant.git（标题 GitHub - kotetsuy/AIassistant: AI assistant template · GitHub） 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。两式 URL 均须写出。作者资料 website_url（https://bsky.app/profile/kotetsuyama.bsky.social）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。正文未配图（仅有 twemoji 表情图 https://cdn.qiita.com/emoji/twemoji/unicode/1f4a1.png、https://cdn.qiita.com/emoji/twemoji/unicode/1f4dd.png，按页铬跳过，不列入须核、不当配图、不当导流）。文内嵌入 https://www.youtube.com/embed/dtnZ5lHuo80?si=09eel1pHxn86kAv_（标题 YouTube） 交付时 GET 200，须写出完整嵌入 URL，可列可达，不另作本条主源。一次资料／文内文档 https://github.com/ggml-org/llama.cpp.git（标题 GitHub - ggml-org/llama.cpp: LLM inference in C/C++ · GitHub） 交付时 GET 200、https://github.com/ggml-org/llama.cpp/pull/22673（标题 llama + spec: MTP Support by am17an · Pull Request #22673 · ggml-org/llama.cpp · GitHub） 交付时 GET 200、https://zunko.jp/con_ongen_kiyaku.html（标题 音源利用ガイドライン） 交付时 GET 200，可列可达，不当本条主源。源文写出的本机地址 http://localhost:8000/vrm/koteko.vrm、http://localhost:8000/zundamon.html 按原文保留，不列入可达，也未计入须核公网 URL。文中 https://github.com/<your_whisperx_rocm_fork>/whisperX-rocm.git、https://github.com/<your_ctranslate2_rocm_fork>/ctranslate2-rocm.git 是占位示例，不是完整端址，不列入须核。提取时得到的裸 https://github.com/ 是截断毛刺，不列入须核、不按可达披露。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 474→247ms 不是 MTP 的 7.71→10.15，再谈 TTFT 和 360／88 那张表",
+        body: "请按原文核算：WhisperX large-v3→turbo，2.56 秒样例 5 次，steady 中位数是不是 474→247ms（−48%），冷启动第一次是不是 664→440ms，加载是不是 6.51→4.83 秒。同一份 Q8_0 gguf、同一提示、142 token，MTP 关/开是不是 7.71→10.15 tok/s（+31.7%），18.42→13.99 秒，TTFT 是不是 0.46 对 0.48 秒几乎不变，draft 接受是不是 24.7%（60/243）。MTP 是不是不缩短 TTFT。另一张表表头是不是 dense 27B 对 MoE 35B-A3B，TTFT 是不是约 360→约 88ms，生成是不是约 5.0→约 19.8 tok/s，不得写成 dense+MTP 对照，也不得和 7.71／10.15、0.46／0.48 秒写混。DeepSeek 是不是只作为 MTP 来源出现，不是这次跑的模型。发布日是不是 2026-05-23，不得因更新写成 2026-06-12。源文是不是未称为 ChatGPT，platforms 应为 []。这些是不是作者这一台机器上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 WhisperX 474→247ms（冷启动 664→440、加载 6.51→4.83 秒），和 MTP 的 7.71→10.15 tok/s；MTP 的 TTFT 是 0.46 对 0.48，没有缩短。",
+      "约 360→约 88ms、约 5.0→约 19.8 tok/s 是 dense 27B 对 MoE 的表，不要写成 dense+MTP 对照，也不要和 0.46／0.48 秒写混。",
+      "发布日取 2026-05-23，不要写成 2026-06-12。运行时不在 18 值，DeepSeek 不是这次跑的模型，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-05-23T15:20:03.000+09:00，与 API created_at 2026-05-23T15:20:03+09:00 一致 → UTC 2026-05-23T06:20:03Z、Asia/Shanghai 2026-05-23 14:20:03；dateModified／updated_at 2026-06-12T20:13:54+09:00，晚于发布且跨月，取 published → 2026-05-23；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-05-23，不要因更新写成 2026-06-12。",
+      "不要把 WhisperX 474→247ms 写成 MTP 的 7.71→10.15 tok/s，也不要把 MTP 写成改善了 TTFT，或把 dense 27B 对 MoE 的约 360→约 88ms 写成 dense+MTP 对照，或把发布日写成 2026-06-12。不要和 159 的 98.3% 对词目级 59%／行级 48.2%、2,216 对 93、220 行对 165 条音频、约 111,762 输入对输出约 3,603、TTFT 87.93 秒对全程 136.53 秒、生成 18.02 t/s 对 prefill 194.19 t/s、740 次请求和标题 28.8 万件外推、96 件 100%、67 秒→8 秒、46 秒对 93 秒、3/12 对 7/12、232 行／0 次调用、实測安静 80% 对目标 90%、Qiita 9／11.1% 对三个平台合计 21，或 158、157、156 及更早批次的硬窗数字混用。也不要把本批其他条的正式评测 2.4%／0.4% 对诊断 39.2%／41.6%、mid_cuts 19→3 对 jpcheck 的 16→2、prefill 87.93 t/s 对 #1179 的 TTFT 87.93 秒、拒绝 0%→100% 对 Recall@6 95.8%、γ=10 的 +3.9 点对学习型 top-6 overlap 的 +29.0 点、Jev 约 0.055 美元对 23.0 秒、缓存未命中 217ms 对命中约 1ms、生成 16.0–16.2 tok/s 对 prefill 431 tok/s、25 条正则对 23 条命中、WhisperX 474→247ms 对 MTP 7.71→10.15 tok/s 写混。",
+    ],
   }
 ];
 
