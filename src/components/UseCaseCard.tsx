@@ -64,7 +64,7 @@ export function UseCaseCard({ usecase }: { usecase: UseCaseListItem }) {
               </span>
             ))}
           </div>
-          <h3 className="text-base font-semibold leading-snug text-slate-50">
+          <h3 className="line-clamp-2 min-w-0 break-words text-base font-semibold leading-snug text-slate-50">
             <Link
               href={`/usecase/${usecase.slug}`}
               className="transition hover:text-indigo-300"

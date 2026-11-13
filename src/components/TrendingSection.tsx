@@ -32,7 +32,7 @@ export function TrendingSection() {
             <Link
               key={u.id}
               href={`/usecase/${u.slug}`}
-              className="surface-card surface-card-hover group rounded-2xl p-4"
+              className="surface-card surface-card-hover group min-w-0 rounded-2xl p-4"
             >
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-indigo-500/20 font-bold text-indigo-200">
@@ -40,7 +40,7 @@ export function TrendingSection() {
                 </span>
                 <span className="text-slate-500">▲ {u.upvotes}</span>
               </div>
-              <h3 className="mt-2.5 text-sm font-semibold text-slate-100 transition group-hover:text-indigo-200">
+              <h3 className="mt-2.5 line-clamp-2 min-w-0 break-words text-sm font-semibold text-slate-100 transition group-hover:text-indigo-200">
                 {u.title}
               </h3>
               <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-400">
