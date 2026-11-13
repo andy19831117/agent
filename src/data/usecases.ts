@@ -85467,6 +85467,497 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "有 JSON-LD；datePublished 2026-09-16T18:38:17.000+09:00，与 Qiita API created_at 2026-09-16T18:38:17+09:00 一致 → UTC 2026-09-16T09:38:17Z、Asia/Shanghai 2026-09-16 17:38:17，取上海日历日 → 2026-09-16；dateModified／updated_at 2026-09-30T16:40:08+09:00 已跨日，仍取首次发布，不要改用 2026-09-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-16。与 #1071 同一天但主题不同。",
     ],
+  },
+  {
+    id: "1278",
+    slug: "npnt-444-39",
+    title: "二十张枚均四十四点四对三点九毫秒",
+    summary: "nPonta 在个人开发的自托管漫画／媒体服务器 Tanuyomi 里，用 FFmpeg libwebp 把 1200×1700px 的 JPEG 20 张缩成宽 240px 的 WebP 缩略图。一图一进程共启动 20 次，合计 888ms、枚均 44.4ms；改成一次启动、多输入多输出后，合计 78ms、枚均 3.9ms，表上速度比是 11.4x。作者写明 44.4ms 里约 40ms（九成以上）是进程创建和 FFmpeg 初始化，编解码本身大约 4ms 弱。不要把标题里的「11倍」写成表上的精确比，也不要把约 4ms 的编码段写成整段 44.4ms 主窗。后半 Ubuntu 24.04 上 FFmpeg 6.1.1 管道 WebP 尾部多 4 字节是另一窗。发布日必须写成 2026-10-28。",
+    description: "这是一篇个人把 FFmpeg 缩略图从一图一进程改成一次启动批量转换的实测。主硬窗是 20 张合计 888ms／枚均 44.4ms，对 78ms／枚均 3.9ms，表上 11.4x。不要把标题「11倍」或编码本身约 4ms 写成这条主窗。发布日必须写成 2026-10-28。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/nPonta/items/7c2d80c66c87172185d2",
+    sourceLabel: "qiita.com·nPonta《【FFmpeg×C#】画像変換を11倍高速化した一括処理と、Ubuntu 24（FFmpeg 6.1）のパイプ出力でWebPが壊れるバグを直した話》",
+    upvotes: 1169,
+    trending: false,
+    tags: [
+      ".NET",
+      "C#",
+      "Blazor",
+      "ffmpeg",
+    ],
+    primarySource: {
+      url: "https://qiita.com/nPonta/items/7c2d80c66c87172185d2",
+      label: "qiita.com·nPonta《【FFmpeg×C#】画像変換を11倍高速化した一括処理と、Ubuntu 24（FFmpeg 6.1）のパイプ出力でWebPが壊れるバグを直した話》",
+      date: "2026-10-28",
+      dateLabel: "发布",
+    },
+    approach: "作者在个人开发的自托管漫画／媒体服务器 Tanuyomi 里，用 FFmpeg 的 libwebp 给书库做缩略图和轻量页面。最初是每张图启动一次 ffmpeg 进程：把 1200×1700px 的 JPEG 20 张缩成宽 240px 的 WebP，合计 888ms，枚均 44.4ms。作者拆开后发现，这 44.4ms 里约 40ms（九成以上）是操作系统创建进程和 FFmpeg 初始化，解码、缩放和编码本身大约 4ms 弱。于是改成一次启动、用 -map 把 20 路输入分别写到 20 个输出，合计变成 78ms，枚均 3.9ms，表上速度比是 11.4x。命令里加了 -threads 1 -filter_threads 1，并限制 WebP 最大边 16,383px。后半是另一件事：Windows 上同样的标准输出管道在 Ubuntu 24.04 LTS（apt 的 FFmpeg 6.1.1）里会把超过 32KB 的 WebP 写坏，作者查到 webp 复用器在管道末尾多写了 4 字节，并写了对策。这些是作者这套书库和这组 20 张图上的实测，不能外推到别的分辨率、编码器或机器。",
+    outcomes: [
+      "源披露：在作者这套个人书库转换流程上，用 1200×1700px JPEG 20 张生成宽 240px WebP。一图一进程启动 20 次合计 888ms、枚均 44.4ms；一次启动批量转换合计 78ms、枚均 3.9ms，表上速度比 11.4x。作者写明 44.4ms 里约 40ms 是进程和初始化，编码本身大约 4ms 弱。不要把标题里的「11倍」写成表上的精确比，也不要把约 4ms 写成整段 44.4ms 主窗。后半 Ubuntu 24.04／FFmpeg 6.1.1 管道 WebP 在超过 32KB 时尾部多 4 字节是另一窗，不要和这条 11.4x 主窗写混。不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者站点 https://nullponta.github.io/tanuyomi-website/ ，复检时 GET 200（页标题 Tanuyomi（たぬヨミ）- 軽快でかんたんに使えるメディアサーバー＆ビューワー），可列可达，按作者站点导流披露。作者资料 website_url 为空，不把资料栏补写成导流来源。https://github.com/BtbN/FFmpeg-Builds/releases 交付时跟随至 https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases ，GET 200，可列可达，是第三方 FFmpeg 构建发布页，不是作者产品。正文未配图。源文未点名 18 值平台，FFmpeg／C#／.NET／Blazor 不在 18 值，不硬凑，platforms 为 []。发布日必须写成 2026-10-28。与更早同日条目（如 #935、#893、#902）主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 44.4ms 对 3.9ms 是 20 张表上的枚均，11.4x 不要写成标题里的「11倍」",
+        body: "请按原文核算：1200×1700px JPEG 20 张做成宽 240px WebP 时，一图一进程是不是合计 888ms、枚均 44.4ms，一次启动批量是不是 78ms、枚均 3.9ms，表上速度比是不是 11.4x。44.4ms 里约 40ms 是不是进程和初始化，编码本身是不是大约 4ms 弱。不要把标题「11倍」写成精确比，也不要把约 4ms 或后半 32KB／4 字节管道问题写成这条主窗。",
+      },
+    ],
+    howItWorks: [
+      "先写下 20 张表：一图一进程 888ms／枚均 44.4ms，一次启动批量 78ms／枚均 3.9ms，表上是 11.4x，标题「11倍」只是约数。",
+      "再写明 44.4ms 里约 40ms 是进程和初始化，编码本身大约 4ms 弱，不要把约 4ms 当成整段主窗。",
+      "后半 Ubuntu 24.04 上 FFmpeg 6.1.1 管道 WebP 超过 32KB 时尾部多 4 字节是另一窗，不要和 11.4x 写混。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-28T12:07:06.000+09:00，与 Qiita API created_at 2026-10-28T12:07:06+09:00 一致 → UTC 2026-10-28T03:07:06Z、Asia/Shanghai 2026-10-28 11:07:06，取上海日历日 → 2026-10-28；dateModified／updated_at 同日 2026-10-28T14:45:42+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-28。与更早同日条目（如 #935、#893、#902）主题不同。",
+    ],
+  },
+  {
+    id: "1279",
+    slug: "ytfk-396-045",
+    title: "一点七B的三点九六秒四点六倍",
+    summary: "yuta0709dev 在 Windows 11、RTX 4060 Ti（VRAM 8GB）上跑 Qwen3-TTS。模型加载之后只计生成，各 3 次平均：官方 qwen-tts 包里 1.7B-CustomVoice 17.8 秒、RTF 2.09、显存峰值 4.3GiB；0.6B-CustomVoice 反而是 26.6 秒、RTF 2.51。换 faster-qwen3-tts 后，1.7B-CustomVoice 3.96 秒、RTF 0.45，约 4.6 倍速；0.6B 是 3.29 秒、RTF 0.37，约 6.8 倍速；VoiceDesign 2.98 秒、RTF 0.46，约 4.6 倍速。流式时第一块音频约 0.3–0.4 秒是另窗。不要把官方包的 17.8 秒写成加速后的成绩，也不要把 6.8 倍安到 1.7B 上。发布日必须写成 2026-11-01，不要改用 API 更新 11-02。",
+    description: "这是一篇个人在 RTX 4060 Ti 8GB 上测 Qwen3-TTS 的记录。主硬窗是换 faster-qwen3-tts 后 1.7B-CustomVoice 3.96 秒、RTF 0.45，约 4.6 倍速。不要和官方包 17.8 秒／RTF 2.09，或 0.6B 的 3.29 秒／6.8 倍写混。发布日必须写成 2026-11-01。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/yuta0709dev/items/249273e16c06fb14a54c",
+    sourceLabel: "qiita.com·yuta0709dev《オープンなTTS「Qwen3-TTS」を手元のGPUで動かして日本語をしゃべらせてみた》",
+    upvotes: 1170,
+    trending: false,
+    tags: [
+      "Python",
+      "TTS",
+      "音声合成",
+      "Qwen",
+      "生成AI",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yuta0709dev/items/249273e16c06fb14a54c",
+      label: "qiita.com·yuta0709dev《オープンなTTS「Qwen3-TTS」を手元のGPUで動かして日本語をしゃべらせてみた》",
+      date: "2026-11-01",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己的 Windows 11 机器上试用 Qwen3-TTS：CPU 是 i7-14700KF，内存 96GB，显卡是 RTX 4060 Ti（VRAM 8GB），环境是 Python 3.12、PyTorch 2.11.0+cu128，官方包 qwen-tts 0.1.1，bfloat16，没用 flash-attn。先用预置日语说话人 Ono_Anna 跑 1.7B 和 0.6B 的 CustomVoice，再用三段不同语气的 instruct 跑 1.7B-VoiceDesign。计时都是模型加载之后只算生成，各 3 次平均；RTF＝生成时间÷音频长度。官方包里 1.7B-CustomVoice 17.8 秒、RTF 2.09，0.6B 反而是 26.6 秒、RTF 2.51，作者写明换小模型并没有更快，生成大约都要两倍音频时长。随后在单独的虚拟环境里装社区的 faster-qwen3-tts，并把 transformers 钉在 5.15.1，同一句话再测：1.7B-CustomVoice 3.96 秒、RTF 0.45，约 4.6 倍速；0.6B 3.29 秒、RTF 0.37，约 6.8 倍速；VoiceDesign 2.98 秒、RTF 0.46，约 4.6 倍速。流式接口里第一块音频出来大约 0.3–0.4 秒。这些是这台 8GB 卡、这句日语文本上的实测，不能外推到别的卡或别的文本长度。",
+    outcomes: [
+      "源披露：在作者这台 Windows 11／RTX 4060 Ti 8GB 上，模型加载后各 3 次平均。官方 qwen-tts 包 1.7B-CustomVoice 17.8 秒、RTF 2.09、峰值 4.3GiB；0.6B 26.6 秒、RTF 2.51。faster-qwen3-tts 后 1.7B-CustomVoice 3.96 秒、RTF 0.45，约 4.6 倍速；0.6B 3.29 秒、RTF 0.37，约 6.8 倍速；VoiceDesign 2.98 秒、RTF 0.46，约 4.6 倍速。不要把 17.8 秒写成加速后的成绩，也不要把 6.8 倍安到 1.7B 上。流式第一块约 0.3–0.4 秒是另窗。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。正文演示嵌入 5 条 Google Drive preview（交付时均 GET 200，可列可达，不是作者产品）：https://drive.google.com/file/d/1Ai94x_80W9D43KaFJCA4BEuKLojCMRj4/preview 、https://drive.google.com/file/d/1uvu_3Hhu03YBj_Cq-wnyIBk5wLQhiacy/preview 、https://drive.google.com/file/d/1Ow0blr40CTC8EJSeCTq3-BVoJTGiz_SP/preview 、https://drive.google.com/file/d/17LZnlZVSpz_oLWBPZ_Pa_bnDt58miQSX/preview 、https://drive.google.com/file/d/1SI7znqNiejgsEtEry2_l-LX-MwiCJ82l/preview 。https://github.com/QwenLM/Qwen3-TTS 、https://huggingface.co/collections/Qwen/qwen3-tts 、https://github.com/andimarafioti/faster-qwen3-tts 、https://download.pytorch.org/whl/cu128 交付时均 GET 200，可列可达，不是作者产品。源文未称为 ChatGPT，Qwen3-TTS／PyTorch 不在 18 值，不硬凑，platforms 为 []。JSON-LD 的 dateModified 与 datePublished 同日同时刻，但 API updated_at 已跨到 2026-11-02T13:27:28+09:00，仍取首次发布 2026-11-01，不要改用 11-02。与 #1221、#1237 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 3.96 秒／RTF 0.45 是 faster-qwen3-tts 后的 1.7B-CustomVoice，不要写成官方包的 17.8 秒",
+        body: "请按原文核算：官方包 1.7B-CustomVoice 是不是 17.8 秒、RTF 2.09，0.6B 是不是反而 26.6 秒。faster-qwen3-tts 后 1.7B-CustomVoice 是不是 3.96 秒、RTF 0.45、约 4.6 倍速，0.6B 是不是 3.29 秒、RTF 0.37、约 6.8 倍速，VoiceDesign 是不是 2.98 秒、RTF 0.46。各 3 次平均、只计加载后的生成。不要把 6.8 倍安到 1.7B 上，也不要把流式约 0.3–0.4 秒写成这条主窗。发布日是不是 2026-11-01，不要改用 API 更新 11-02。",
+      },
+    ],
+    howItWorks: [
+      "先写下 faster-qwen3-tts 后 1.7B-CustomVoice 3.96 秒、RTF 0.45，约 4.6 倍速，这是相对官方包 17.8 秒／RTF 2.09 的比。",
+      "再分开写 0.6B 的 3.29 秒／RTF 0.37／约 6.8 倍，以及 VoiceDesign 的 2.98 秒／RTF 0.46，不要把 6.8 倍安到 1.7B 上。",
+      "流式第一块音频约 0.3–0.4 秒是另窗；官方包里 0.6B 26.6 秒并不更快，也不要和加速后主窗写混。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-01T22:14:22.000+09:00，与 Qiita API created_at 2026-11-01T22:14:22+09:00 一致 → UTC 2026-11-01T13:14:22Z、Asia/Shanghai 2026-11-01 21:14:22，取上海日历日 → 2026-11-01；JSON-LD dateModified 同日同时刻，但 API updated_at 2026-11-02T13:27:28+09:00 已跨日，仍取首次发布，不要改用 11-02；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-01。与 #1221、#1237 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1280",
+    slug: "morp-1334-270",
+    title: "三新建一千三百三十四对二百七十行",
+    summary: "morphox_ai 用 Claude Code 的子代理对比了要不要把 Ponytail 的 SKILL.md（约 3.5KB）交给子代理。五个自编小任务里，三个是只说「做个某某」的新建，两个是已有小仓库上的修 bug／加功能；Opus 5.5 跑完全部五题，Sonnet 5.5 只跑其中三题，各条件 1 次。Opus 三个新建的加行（含测试）合计从 1,334 行降到 270 行；五题总时从 399 秒降到 179 秒，约短 55%。五题 token 合计 363,376 对 339,624，大约只少 6.5%，而且这是子代理完成通知里的数，不是 README 说的输出 token。Sonnet 三题总时 123 秒对 105 秒、token 几乎相同，是另窗。作者自己写明不要和 README v5 在 39 题、各 5 次中位数上的 47%／59%／74% 直接对比。发布日必须写成 2026-10-27。",
+    description: "这是一篇个人用 Claude Code 子代理对比 Ponytail 的记录。主硬窗是 Opus 5.5 三个新建合计 1,334 行到 270 行，五题总时 399 秒到 179 秒。各条件只有 1 次。不要和 Sonnet 的 123／105 秒或 README 的 47%／59% 写混。发布日必须写成 2026-10-27。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/morphox_ai/items/5856dceca60f8a7c7270",
+    sourceLabel: "qiita.com·morphox_ai《Claude Codeの書きすぎはPonytailで抑えられるのか Sonnet 5.5とOpus 5.5で比べた》",
+    upvotes: 1171,
+    trending: false,
+    tags: [
+      "ClaudeCode",
+      "AI",
+      "LLM",
+      "プロンプトエンジニアリング",
+      "AIエージェント",
+    ],
+    primarySource: {
+      url: "https://qiita.com/morphox_ai/items/5856dceca60f8a7c7270",
+      label: "qiita.com·morphox_ai《Claude Codeの書きすぎはPonytailで抑えられるのか Sonnet 5.5とOpus 5.5で比べた》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者平时在 Claude Code 里用 Ponytail，这次把技能文件 skills/ponytail/SKILL.md（约 3.5KB）交给子代理（B）和不交（A）对照。五个任务都是自己出的小题：三个只写「做个备忘录／家计簿／日志整理工具」，另外指定 Python 3 和只用标准库；两个是预先准备好、测试已通过的小店铺代码和 todo.py，分别让模型修账单负数和加截止日期。Opus 5.5 跑完全部五题，Sonnet 5.5 只跑备忘录、修 bug 和加功能这三题，各条件 1 次。看的是含测试的加行、测试是否通过，以及子代理完成通知里的 token 和耗时。Opus 三个新建合计从 1,334 行降到 270 行；五题总时 399 秒到 179 秒，大约短 55%；token 363,376 对 339,624，大约只少 6.5%。作者写明这次测的不是 README 所说的输出 token，也明确各条件只有 1 次、题目是自己出的小题，不能拿去和 README v5 那 39 题、各 5 次中位数上的行数 47%、耗时 59%、费用 74% 写成同一笔。这次验证没有跑 hooks。",
+    outcomes: [
+      "源披露：在作者这五个自编小题、Claude Code 子代理上，各条件 1 次。Opus 5.5 三个新建的加行（含测试）合计 1,334 行对 270 行；五题总时 399 秒对 179 秒，约短 55%；五题 token 363,376 对 339,624，约少 6.5%，且是完成通知里的数，不是 README 的输出 token。不要把 Sonnet 三题 123 秒对 105 秒，或 README v5 的 47%／59%／74% 写成这条主窗。作者写明行数差也含「多写了没要的功能」。不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者站点文章 https://aimanavo.com/c/morphox_ai/a/73UM4sZAhnscvw （入门篇／相关篇，交付时 GET 200，可列可达），按作者站点导流披露。作者资料 website_url 为 https://aimanavo.com/c/morphox_ai ，只出现在资料栏，不算导流，不补写。https://github.com/DietrichGebert/ponytail 交付时 GET 200，可列可达，是 DietrichGebert 的开源技能，不是作者产品。正文未配图。这次确是 Claude Code 子代理实践，platforms 为 [\"claude\"]。源文无 ChatGPT 字样，不得写入 chatgpt。作者写明这次验证没有跑 hooks，也不是 hook 教程。各条件 1 次。与 #1212 及本批 #1282 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1,334 对 270 是 Opus 三个新建的加行合计，399 对 179 秒是五题总时",
+        body: "请按原文核算：Opus 5.5 三个新建是不是 375／569／390 行对 115／114／41 行，合计 1,334 对 270。五题总时是不是 399 秒对 179 秒，token 是不是 363,376 对 339,624（约 6.5%），而且这是完成通知里的数。不要把 Sonnet 的 123／105 秒或 README v5 的 47%／59%／74% 写成这条主窗。各条件是不是只有 1 次。发布日是不是 2026-10-27。",
+      },
+    ],
+    howItWorks: [
+      "先写下 Opus 5.5 三个新建合计 1,334 行到 270 行，五题总时 399 秒到 179 秒，各条件只有 1 次。",
+      "再写明五题 token 大约只少 6.5%，而且是子代理完成通知里的数，不是 README 说的输出 token。",
+      "Sonnet 三题 123 秒对 105 秒、README v5 的 47%／59%／74% 都是另窗，不要和这条主窗写混。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-27T14:49:45.000+09:00，与 Qiita API created_at 2026-10-27T14:49:45+09:00 一致 → UTC 2026-10-27T05:49:45Z、Asia/Shanghai 2026-10-27 13:49:45，取上海日历日 → 2026-10-27；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。与 #1212 及本批 #1282 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1281",
+    slug: "hisn-326-1817",
+    title: "门户确认三十二分六对十八分十七秒",
+    summary: "hisnakad 在自己的 Azure Windows Server 2022 域控（DC02、DC01）上，把 Microsoft Defender for Identity 传感器从 v2 原地迁到 v3（3.0.10.445）。门户里第一次确认 v3 在跑：DC02 是 11:39:37 执行、12:11:44 确认，32 分 6 秒；DC01 是 13:05:40 执行、13:23:57 确认，18 分 17 秒。官方写「通常最大 20 分」，这次 DC01 在 20 分以内，DC02 确认到已经是 32 分后。作者写明这是门户确认时刻，不是保护空白，也不是实际切换时刻。不要把同一天先装 KB5126655 的 42 分 48 秒（DC02）和 56 分 26 秒（DC01）写成这条迁移确认主窗。发布日必须写成 2026-10-26，测量日也是 10-26，不要和官方 20 分写混。",
+    description: "这是一篇个人在两台 Azure 域控上把 MDI 传感器从 v2 迁到 v3 的实测。主硬窗是门户第一次确认 v3：DC02 32 分 6 秒、DC01 18 分 17 秒。不要把 KB5126655 安装的 42 分 48 秒／56 分 26 秒写成这条主窗。发布日必须写成 2026-10-26。",
+    categories: [
+      "enterprise",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/hisnakad/items/7be9fee209336832e684",
+    sourceLabel: "qiita.com·hisnakad《Microsoft Defender for Identity センサーを v2 から v3 へ移行してみた ― 2 台の DC で実測した所要時間・注意点・メリット》",
+    upvotes: 1172,
+    trending: false,
+    tags: [
+      "MicrosoftDefender",
+      "MDI",
+      "ActiveDirectory",
+      "Security",
+      "Azure",
+    ],
+    primarySource: {
+      url: "https://qiita.com/hisnakad/items/7be9fee209336832e684",
+      label: "qiita.com·hisnakad《Microsoft Defender for Identity センサーを v2 から v3 へ移行してみた ― 2 台の DC で実測した所要時間・注意点・メリット》",
+      date: "2026-10-26",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己的 Azure 环境里有两台 Windows Server 2022 Datacenter Azure Edition 域控（vmWinADDC01／vmWinADDC02），把 MDI 传感器从 v2 原地迁到 v3。验证日是 2026-10-26，和发布日同一天；文内「实測」是这次环境里自己看到的事实，「公式」是 Microsoft Learn 的写法，作者把两者分开写。两台没有同时动手：先只装 2026 年 10 月累计更新 KB5126655 并重启（DC02 再 DC01），安装墙钟是 DC02 09:58:47 到 10:41:35（42 分 48 秒）、DC01 11:17:47 到 12:14:13（56 分 26 秒），这是更新安装窗，不是后面的迁移确认。然后在 Defender 门户里一台一台点「移行」。门户第一次确认 v3 已在跑：DC02 11:39:37 执行、12:11:44 确认，32 分 6 秒；DC01 13:05:40 执行、13:23:57 确认，18 分 17 秒。官方写通常最大 20 分、准备好之前 v2 继续工作；这次 DC01 在 20 分以内，DC02 确认到是 32 分后。作者写明这是门户上看到完成的时刻，因为确认间隔空着，属于偏上限的观测，不是保护空白，也不是实际切换时刻。两台最后都是 3.0.10.445、运行中、正常。这些是这两台实验室域控上的一次迁移，不能外推到别的规模或网络。",
+    outcomes: [
+      "源披露：在作者这两台 Azure Windows Server 2022 域控上，门户第一次确认 v3 在跑：DC02 32 分 6 秒（11:39:37 到 12:11:44），DC01 18 分 17 秒（13:05:40 到 13:23:57）。官方「通常最大 20 分」，这次 DC01 在 20 分以内，DC02 确认到是 32 分后；这是门户确认时刻，不是保护空白或实际切换。不要把同一天 KB5126655 安装的 DC02 42 分 48 秒、DC01 56 分 26 秒写成这条迁移确认主窗，也不要把表里约写的 32 分／18 分和 32 分 6 秒／18 分 17 秒当成两笔不同的主窗。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文 11 张配图均为 Qiita S3 原图，交付时均 GET 200，可列可达，不当导流：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/8895b3b8-39b9-46e4-84ae-3cd242710d0d.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/be242b8c-2b27-4f08-b362-26eea5053f78.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/fbba93ba-2991-4a87-8608-b283e82974e0.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/eade22bc-947d-4acf-8621-c821a5e35afe.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/6ceb5454-6e14-4f05-9f43-6b8e2e47e2ba.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/c1412287-d312-4b95-81ed-5d1aa73b2779.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/51598bb7-5b1a-44c4-8f0f-0e78d45b1015.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/880a71a0-6946-41bf-933f-b3acedcb14dc.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/7bc9182e-53bc-43a1-87ad-289042e7def0.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/bc2e2614-2cee-4d7d-b374-92940156ca71.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/653790/1525ddd3-df29-46cf-bbfc-bc0e1294dba9.png 。官方文档与微软仓交付时均 GET 200，可列可达，不是作者产品：https://github.com/microsoft/Microsoft-Defender-for-Identity/tree/main/Test-MdiReadiness 、https://learn.microsoft.com/ja-jp/defender-for-identity/deploy/migrate-to-sensor-v3 、https://learn.microsoft.com/ja-jp/defender-for-identity/deploy/deploy-sensor-v3 、https://learn.microsoft.com/en-us/defender-for-identity/deploy/configure-windows-event-collection 、https://learn.microsoft.com/en-us/defender-for-identity/deploy/manage-action-accounts 、https://learn.microsoft.com/en-us/defender-for-identity/deploy/test-sensor 、https://learn.microsoft.com/en-us/defender-for-identity/entity-tags 、https://learn.microsoft.com/en-us/defender-for-identity/uninstall-sensor 、https://learn.microsoft.com/en-us/defender-for-identity/whats-new ；源文另有无区域前缀的 https://learn.microsoft.com/defender-for-identity/alerts-mdi-classic#credential-access-alerts 、https://learn.microsoft.com/defender-for-identity/entity-tags ，交付时分别跟随至 https://learn.microsoft.com/en-us/defender-for-identity/alerts-mdi-classic 、https://learn.microsoft.com/en-us/defender-for-identity/entity-tags ，均 GET 200。源文未点名 18 值平台，Microsoft Defender／Azure／Active Directory 不在 18 值，不硬凑，platforms 为 []。发布日必须写成 2026-10-26，测量日也是 10-26，不要改用官方「通常最大 20 分」。与 #1224 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 32 分 6 秒／18 分 17 秒是门户第一次确认 v3，不要写成 KB 安装的 42 分 48 秒／56 分 26 秒",
+        body: "请按原文核算：门户第一次确认 v3，DC02 是不是 11:39:37 到 12:11:44、32 分 6 秒，DC01 是不是 13:05:40 到 13:23:57、18 分 17 秒。官方「通常最大 20 分」时，是不是 DC01 在 20 分以内、DC02 确认到已是 32 分后，而且这是门户确认时刻不是保护空白。KB5126655 安装的 42 分 48 秒／56 分 26 秒是不是另一窗，不要写成这条迁移确认主窗。发布日是不是 2026-10-26。",
+      },
+    ],
+    howItWorks: [
+      "先写下门户第一次确认 v3：DC02 32 分 6 秒，DC01 18 分 17 秒，这是确认时刻，不是保护空白或实际切换。",
+      "再对照官方「通常最大 20 分」：这次 DC01 在 20 分以内，DC02 确认到是 32 分后，不要把约写的 32 分／18 分当成另一笔精确主窗。",
+      "同一天 KB5126655 安装的 42 分 48 秒／56 分 26 秒是更新安装窗，不要写成这条迁移确认主窗。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-26T15:50:52.000+09:00，与 Qiita API created_at 2026-10-26T15:50:52+09:00 一致 → UTC 2026-10-26T06:50:52Z、Asia/Shanghai 2026-10-26 14:50:52，取上海日历日 → 2026-10-26；dateModified／updated_at 同日 2026-10-26T18:41:25+09:00，仍取首次发布；正文写明验证日也是 2026-10-26，不要改用官方「通常最大 20 分」；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-26。与 #1224 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1282",
+    slug: "stsh-2768-26",
+    title: "二千七百九十四写出二千七百六十八件",
+    summary: "satoshi_061 把家里用了 6 年、大约 2,800 件的 TimeTree 日历迁到 Google 日历。用非官方的 timetree-exporter 1.0.0 导出时，日志写 Found 2,794 events，真正写进 ics 的是 2,768／2,794，剩下 26 件没写出，日志没给原因。约 860KB 的整文件导入 Google 日历时，没有报错，但也 0 件进去；64 件的小文件可以完整导入，最后按每份 300 件（约 100KB）切开才全部进去。作者没查 300 件这个边界是不是上限。密码等认证自己在终端里输入，其余步骤交给 Claude Code 桌面应用和 Claude in Chrome。发布日必须写成 2026-10-27。",
+    description: "这是一篇个人把 TimeTree 约 2,800 件迁到 Google 日历的记录。主硬窗是 2,794 件里写出 2,768 件，整文件导入 0 件，改成每份 300 件后才全部进去。不要把约 2,800 写成精确导出数。发布日必须写成 2026-10-27。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/satoshi_061/items/1de5d23ed0d043c74409",
+    sourceLabel: "qiita.com·satoshi_061《TimeTreeからGoogleカレンダーへ約2,800件を移行した手順と、ハマった4つのポイント（timetree-exporter × Claude Code）》",
+    upvotes: 1173,
+    trending: false,
+    tags: [
+      "Python",
+      "GoogleCalendar",
+      "TimeTree",
+      "ClaudeCode",
+      "Claude",
+    ],
+    primarySource: {
+      url: "https://qiita.com/satoshi_061/items/1de5d23ed0d043c74409",
+      label: "qiita.com·satoshi_061《TimeTreeからGoogleカレンダーへ約2,800件を移行した手順と、ハマった4つのポイント（timetree-exporter × Claude Code）》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者和家人共用的 TimeTree 日历有 6 年、大约 2,800 件，官方看不到批量导出，于是在 macOS、Python 3.14 上用社区工具 timetree-exporter 1.0.0 写成 ics，再在电脑浏览器里导入 Google 日历。工具安装和命令启动交给 Claude Code 桌面应用，密码在 Claude Code 打开的终端里自己输入，后面的导入和分文件也有 Claude in Chrome 参与。导出日志写 Found 2,794 events、10 个标签，真正加进日历文件的是 2,768／2,794，剩下 26 件没写出，原因日志里没有。把大约 860KB 的整份 timetree.ics 一次导入时，界面没有报错，日历里却 0 件；先拿 64 件的小文件试，64／64 都能进去，后来按每份 300 件、大约 100KB 切开，才全部导入成功。作者没有去测 300 件是不是上限。标签颜色不会带到 Google 日历，作者改成按标签拆日历并指定色值；同一条日程再导入一次是复制不是移动。这些是这一次家庭日历迁移上的结果，不能外推到别的账号或 Google 日历限额。",
+    outcomes: [
+      "源披露：在作者这次家庭 TimeTree 迁移上，导出日志是 2,794 件里写出 2,768 件，26 件没写出且没有原因。约 860KB 的整文件导入 Google 日历是 0 件、也没有报错；64 件的小文件是 64／64，后来按每份 300 件（约 100KB）切开才全部进去。不要把导语里的「约 2,800 件」写成精确导出数 2,794 或写出数 2,768，也不要把 300 件写成作者测过的硬上限。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。https://github.com/eoleedi/TimeTree-Exporter 交付时 GET 200，可列可达，是社区工具不是作者产品。Google 日历帮助 https://support.google.com/calendar/answer/37118 、https://support.google.com/calendar/answer/37082 与页面链上带 ?hl=ja 的 https://support.google.com/calendar/answer/37118?hl=ja 、https://support.google.com/calendar/answer/37082?hl=ja 交付时均 GET 200，可列可达，是官方文档不是作者产品。这次确有 Claude Code 桌面应用和 Claude in Chrome 实践，platforms 为 [\"claude\"]。密码由作者自己输入，不要写成把认证交给了模型。与 #1212 及本批 #1280 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清写出的是 2,768／2,794，整文件导入是 0 件，300 件只是后来切开的做法",
+        body: "请按原文核算：日志是不是 Found 2,794 events，写出 2,768／2,794，26 件没写出。整份约 860KB 导入是不是 0 件且没有报错，64 件小文件是不是 64／64，后来是不是按每份 300 件才全部进去。不要把约 2,800 写成精确导出数，也不要把 300 件写成测过的上限。发布日是不是 2026-10-27。",
+      },
+    ],
+    howItWorks: [
+      "先写下导出是 2,794 件里写出 2,768 件，26 件没写出；导语「约 2,800 件」只是约数。",
+      "再写下整文件导入 0 件且没有报错，64 件小文件可以完整导入，后来按每份 300 件切开才全部进去。",
+      "300 件不是作者测过的硬上限；密码由作者自己输入，其余才交给 Claude Code。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-27T21:47:49.000+09:00，与 Qiita API created_at 2026-10-27T21:47:49+09:00 一致 → UTC 2026-10-27T12:47:49Z、Asia/Shanghai 2026-10-27 20:47:49，取上海日历日 → 2026-10-27；dateModified／updated_at 同日 2026-10-27T22:13:10+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。与 #1212 及本批 #1280 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1283",
+    slug: "ttmy-119-134",
+    title: "一口气输出十一点九对十三点四毫秒",
+    summary: "tttmmmyyyy 把自己的编程语言 Fix 在 yukicoder 上的几道题，用同一解法改写成 C++，再比较速度。每个格子第一行是把评测机最慢那个测试用例拿到作者电脑上跑 30 次取中位数（i5-11400）；第二行括号里是 yukicoder 评测机只跑一次的数。No.1170 默认输出时，电脑中位 Fix 16.0ms，C++ scanf／printf 30.2ms（1.89），C++ 快 IO 13.4ms（0.84），这时 Fix 比快 IO 慢；把输出攒在一起后，Fix 变成 11.9ms，对快 IO 13.4ms 的比是 1.13。字符串拼接版 No.1955 上 Fix 71.1ms，仍慢于 C++ 的 67.6／65.4ms。不要把评测机单次（例如 14ms）写成电脑 30 次中位，也不要写成「Fix 全面比 C++ 快」。发布日必须写成 2026-10-31。",
+    description: "这是语言作者把 Fix 和 C++ 在同一批 yukicoder 题上对比的记录。主硬窗是作者电脑 30 次中位：No.1170 一口气输出后 Fix 11.9ms，对 C++ 快 IO 13.4ms（1.13）。不要把默认输出的 16.0ms（比快 IO 慢）或评测机单次写成同一主窗。发布日必须写成 2026-10-31。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/tttmmmyyyy/items/6c3ca62c1c9c2b419e7c",
+    sourceLabel: "qiita.com·tttmmmyyyy《C++とも競えるプログラミング言語 Fix が yukicoder で使えるようになりました（性能比較あり）》",
+    upvotes: 1174,
+    trending: false,
+    tags: [
+      "FixLang",
+      "C++",
+      "関数型プログラミング",
+      "競技プログラミング",
+      "yukicoder",
+    ],
+    primarySource: {
+      url: "https://qiita.com/tttmmmyyyy/items/6c3ca62c1c9c2b419e7c",
+      label: "qiita.com·tttmmmyyyy《C++とも競えるプログラミング言語 Fix が yukicoder で使えるようになりました（性能比較あり）》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+    approach: "作者在给自己的纯函数语言 Fix 写介绍：AtCoder 上还是 1.1.0，这次 yukicoder 进的是已经做了性能改进的 1.6.0，两边成绩不能混用。他把自己用 Fix 解过的几道 yukicoder 题，按同一解法改写成 C++，C++ 分 scanf／printf 和 getchar_unlocked／putchar_unlocked 两种；Fix 译成 C++ 是让 AI 做的，两边库也不一样（Fix 用 cp-library，C++ 用 ACL）。每个格子第一行是把评测机最慢的测试用例拿到自己的 Intel Core i5-11400（最高 3.8GHz）上跑 30 次取中位数，C++ 是 g++ 13.3.0 的 -O2 -std=c++23；第二行是 yukicoder 评测机只跑一次的数。No.1170 默认输出时，电脑中位 Fix 16.0ms，对 C++ 快 IO 13.4ms 的比是 0.84；把输出攒在一起之后，Fix 11.9ms，对快 IO 13.4ms 是 1.13。No.1955 字符串拼接版 Fix 71.1ms，仍慢于 C++；改成数值拼接后 Fix 33.4ms，才略快于 C++ 的 36.2／34.2ms。编译时间是另一窗，例如 No.1170 上 Fix 1.15 秒对 C++ 0.40 秒。这些是作者这台电脑和这几道题上的对照，不能外推到 AtCoder 上的旧版本，也不能写成 Fix 全面更快。",
+    outcomes: [
+      "源披露：格子第一行是作者电脑上 30 次中位，第二行是 yukicoder 评测机单次，不要混用。No.1170 默认输出时电脑中位 Fix 16.0ms，对 C++ 快 IO 13.4ms 的比是 0.84（Fix 更慢）；一口气输出后 Fix 11.9ms，对快 IO 13.4ms 是 1.13。不要把 16.0ms 或评测机单次 14ms／17ms 写成这条 11.9ms 主窗，也不要把字符串拼接版 71.1ms 对 67.6／65.4ms，或编译 1.15 秒对 0.40 秒写成主窗。不可外推到 AtCoder 上的 Fix 1.1.0。",
+    ],
+    caveats: [
+      "导流：正文硬链作者仓 https://github.com/tttmmmyyyy/fixlang 、安装说明锚点 https://github.com/tttmmmyyyy/fixlang#installation ，以及作者仓 issue https://github.com/tttmmmyyyy/fixlang/issues/962 ，交付时均 GET 200，可列可达，按作者仓／issue 导流披露。yukicoder 站点、题目页和各次提交页交付时均 GET 200，可列可达，不是作者产品：https://yukicoder.me/ 、https://yukicoder.me/problems/no/1170 、https://yukicoder.me/submissions/1195911 、https://yukicoder.me/submissions/1196179 、https://yukicoder.me/submissions/1196183 、https://yukicoder.me/submissions/1196229 、https://yukicoder.me/problems/no/1955 、https://yukicoder.me/submissions/1196226 、https://yukicoder.me/submissions/1196215 、https://yukicoder.me/submissions/1196216 、https://yukicoder.me/submissions/1195634 、https://yukicoder.me/submissions/1196184 、https://yukicoder.me/submissions/1196214 、https://yukicoder.me/problems/no/1054 、https://yukicoder.me/submissions/1195899 、https://yukicoder.me/submissions/1196217 、https://yukicoder.me/submissions/1196218 、https://yukicoder.me/problems/no/877 、https://yukicoder.me/submissions/1195977 、https://yukicoder.me/submissions/1196219 、https://yukicoder.me/submissions/1196220 、https://yukicoder.me/problems/no/567 、https://yukicoder.me/submissions/1195982 、https://yukicoder.me/submissions/1196221 、https://yukicoder.me/submissions/1196223 、https://yukicoder.me/submissions/1196225 。正文未配图。源文写「Fix から C++ への翻訳はAIに行わせました」，未称为 ChatGPT，不得写入 chatgpt，platforms 为 []。与 #1219、#1220 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 11.9ms 对 13.4ms 是电脑 30 次中位、一口气输出后的 Fix 对 C++ 快 IO",
+        body: "请按原文核算：每个格子第一行是不是作者电脑 30 次中位，第二行是不是评测机单次。No.1170 默认输出是不是 Fix 16.0ms 对快 IO 13.4ms（0.84，Fix 更慢），一口气输出后是不是 11.9ms 对 13.4ms（1.13）。不要把评测机单次 14ms 或编译 1.15 秒对 0.40 秒写成这条主窗，也不要写成 Fix 全面更快。发布日是不是 2026-10-31。",
+      },
+    ],
+    howItWorks: [
+      "先分清格子第一行是作者电脑 30 次中位，第二行是评测机单次，不要混用。",
+      "再写下 No.1170 一口气输出后 Fix 11.9ms 对 C++ 快 IO 13.4ms（1.13）；默认输出的 16.0ms 对比快 IO 其实更慢（0.84）。",
+      "字符串拼接版 71.1ms、编译时间 1.15 秒对 0.40 秒都是另窗，也不能外推到 AtCoder 上的 Fix 1.1.0。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-31T09:42:37.000+09:00，与 Qiita API created_at 2026-10-31T09:42:37+09:00 一致 → UTC 2026-10-31T00:42:37Z、Asia/Shanghai 2026-10-31 08:42:37，取上海日历日 → 2026-10-31；dateModified／updated_at 同日 2026-10-31T09:50:30+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-31。与 #1219、#1220 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1284",
+    slug: "wata-108k-27",
+    title: "当场修正中位约十万八千token",
+    summary: "wataru86 以前在 Claude Code 的工作会话里当场改 CLAUDE.md 和技能。后来让模型在另一次会话里估过，这样改一次，那个会话的上下文中位大约增加 10.8 万 token；忙的时候，一天里纠正 Claude 行为的发言有 54 条。改成「工作会话只记录，另开会话再改」之后，9 天里记录了 28 条，其中 27 条已经改完并写回。中间还试过周末再改、记录文件涨到 229 行仍赶不上，以及事后从日志里捞意见时 4 条里 1 条会看错，这些都是另窗。文章把 hook 只写成四段修理里的最后一段备选，这次写的不是 hook 教程。发布日必须写成 2026-10-30。",
+    description: "这是一篇个人调整 Claude Code 设置修改方式的记录。主硬窗是当场改一次中位大约加 10.8 万 token；改成分开会话后 9 天 28 条里 27 条已写回。不要把忙日 54 条或 229 行写成这条主窗。发布日必须写成 2026-10-30。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/wataru86/items/7613c1cd9509fea7d6fe",
+    sourceLabel: "qiita.com·wataru86《Claude Code の設定を作業中に直すのをやめて、別のセッションで直す仕組みを作った話》",
+    upvotes: 1175,
+    trending: false,
+    tags: [
+      "ClaudeCode",
+    ],
+    primarySource: {
+      url: "https://qiita.com/wataru86/items/7613c1cd9509fea7d6fe",
+      label: "qiita.com·wataru86《Claude Code の設定を作業中に直すのをやめて、別のセッションで直す仕組みを作った話》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+    approach: "作者以前在 Claude Code 的工作会话里，一觉得行为不对就当场让模型改 CLAUDE.md 或技能，改完再回到原任务。这样改很重：后来单独开一次会话让 Claude 估过，改一次，那个会话的上下文中位大约增加 10.8 万 token；忙的一天里，纠正行为的发言有 54 条。于是改成工作会话里只用自写技能 /claude-code-feedback 记下原话，不让模型当场分析原因，再另开会话去改，并且先做分流、只上四段修理里的第一段（脚本化、减干扰、改文案、最后才考虑用 hook 拦住）。小而唯一的修改现在仍当场做。改成这个形式之后，9 天里记录了 28 条，其中 27 条已经改完并写回。中间大约两周里还试过周末再改、把当场修改收紧后记录文件涨到 229 行仍赶不上，以及事后从日志里捞意见时 4 条里 1 条会看错，这些都不是这条 9 天 27／28 的主窗。官方 Best practices 和 Anthropic 讲 context rot 的文章只是引用，不是这次对照的数据来源。",
+    outcomes: [
+      "源披露：在作者自己的 Claude Code 环境里，后来另开会话估过，当场改一次设置，那个会话的上下文中位大约增加 10.8 万 token；忙日纠正发言有 54 条。改成工作会话只记录、另开会话再改之后，9 天里记录 28 条，其中 27 条已经写回。不要把 54 条、记录文件 229 行，或事后捞日志时 4 条里 1 条看错写成这条 27／28 主窗。hook 只是四段修理里的最后备选，这次不是 hook 教程。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。文末作者 Qiita 收藏页 https://qiita.com/wataru86/stocks/02c52e45a07b245b095a 交付时 GET 200，可列可达，是作者相关页不是独立产品导流。官方文档 https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents 交付时跟随至 https://www.anthropic.com/research/effective-context-engineering-for-ai-agents ，GET 200；https://code.claude.com/docs/en/best-practices 交付时 GET 200，未跟随至区域不可用页，可列可达，都不是作者产品。这次确是 Claude Code 实践，platforms 为 [\"claude\"]。源文无 ChatGPT 字样，不得写入 chatgpt。hook 只作为四段修理的最后备选出现，作者写的不是 hook 教程。与 #1174 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 10.8 万 token 是当场改一次的中位增量，27／28 是改成分开会话后 9 天的记录",
+        body: "请按原文核算：另开会话估过，当场改一次是不是中位大约给上下文加上 10.8 万 token。改成分开会话后 9 天是不是 28 条记录里 27 条已经写回。不要把忙日 54 条、记录文件 229 行，或事后捞日志 4 条里 1 条看错写成这条主窗。发布日是不是 2026-10-30。这是不是 hook 教程。",
+      },
+    ],
+    howItWorks: [
+      "先写下当场改一次设置，后来另开会话估过，上下文中位大约增加 10.8 万 token。",
+      "再写下改成工作会话只记录、另开会话再改之后，9 天 28 条里 27 条已经写回。",
+      "忙日 54 条、记录文件 229 行、事后捞日志 4 条里 1 条看错都是另窗；hook 只是最后备选，不是这篇教程主题。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-30T12:04:59.000+09:00，与 Qiita API created_at 2026-10-30T12:04:59+09:00 一致 → UTC 2026-10-30T03:04:59Z、Asia/Shanghai 2026-10-30 11:04:59，取上海日历日 → 2026-10-30；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-30。与 #1174 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1285",
+    slug: "nujp-152-091",
+    title: "qbeta十五点二对零点九一微秒",
+    summary: "numero-uno-jpn 给自己的 JavaScript 统计库 rStats.js 做 double-double 运算，再在 Apple M1 的 Mac mini、Node.js 24 上和同一台机器的 R 4.5.2（arm64）比速度。最早测 qbeta 大约是 R 的 300 倍。后来不传数组、改用脚本展开后，qbeta 从一件 276µs 降到 99.8µs，19 个函数 × 4,000 件核对过 1 比特都不差；对数大约快 2.6 倍，分位点迭代让 qbeta／qt／qf 再快 2.8–3.7 倍，这些都是中间窗。到 0.11.0（2026-10-26 测）时，qbeta 一件 15.2µs，是同机 R 0.91µs 的约 17 倍；分布函数整体是 R 的 4–30 倍。不要把 300 倍或 276µs 写成现在的成绩。发布日必须写成 2026-11-07。",
+    description: "这是一篇个人把 rStats.js 的分位点函数从大约慢 300 倍调到现在的记录。主硬窗是 v0.11.0 在 M1 Mac mini 上 qbeta 一件 15.2µs，对同机 R 0.91µs 约 17 倍。不要把最早的约 300 倍或 276µs 到 99.8µs 写成这条主窗。发布日必须写成 2026-11-07。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/numero-uno-jpn/items/8b01272dbbe855104b17",
+    sourceLabel: "qiita.com·numero-uno-jpn《JavaScript で R 以上の精度を出す: double-double 演算の基礎と rStats.js での使い方》",
+    upvotes: 1176,
+    trending: false,
+    tags: [
+      "JavaScript",
+      "アルゴリズム",
+      "R",
+      "数値計算",
+      "浮動小数点",
+    ],
+    primarySource: {
+      url: "https://qiita.com/numero-uno-jpn/items/8b01272dbbe855104b17",
+      label: "qiita.com·numero-uno-jpn《JavaScript で R 以上の精度を出す: double-double 演算の基礎と rStats.js での使い方》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者在给自己的 JavaScript 统计库 rStats.js 补精度时用了 double-double 运算，因为 JavaScript 没有 FMA，对齐的是 x86_64 版 R 的数值，而不是会做积和融合的 arm64 R。速度上，最早测分位点函数 qbeta 大约是 R 的 300 倍。后来常走的路径不再传递 [hi, lo] 数组，改由 scripts/ddgen.py 展开成局部变量，19 个函数 × 4,000 件核对过 1 比特都不差，qbeta 从一件 276µs 降到 99.8µs；double-double 对数换了 128 点表和 5 次多项式，12 种方法里选出大约快 2.6 倍的那一种；分位点迭代改成一次同时算分布函数及其对数，并用 Halley 法和更好的初值，qbeta／qt／qf 再快 2.8–3.7 倍。WebAssembly 也试过，ddLog 只快 1.2 倍，没有采用。到 0.11.0，在 Apple M1 的 Mac mini、Node.js 24 上测，qbeta 一件 15.2µs，同一台机器上的 R 4.5.2（arm64）是 0.91µs，大约 17 倍；分布函数整体是 R 的 4–30 倍。作者写明绝对时间会随机器变，倍率是同机对比。问 AI 才想到用 double-double，源文没有点名 18 值平台。这些是这台 M1 Mac mini 上的测量，不能外推到别的机器，也不能把中间窗当成现在的主窗。",
+    outcomes: [
+      "源披露：在作者这台 Apple M1 Mac mini、Node.js 24 上，与同机 R 4.5.2（arm64）对比。v0.11.0（2026-10-26 测）时 qbeta 一件 15.2µs，是 R 0.91µs 的约 17 倍；分布函数整体是 R 的 4–30 倍。不要把最早的约 300 倍，或中间把 qbeta 从 276µs 降到 99.8µs、对数约 2.6 倍、分位点 2.8–3.7 倍写成这条现在的主窗。不可外推到别的机器。",
+    ],
+    caveats: [
+      "导流：正文硬链作者仓与文档、演示，交付时均 GET 200，可列可达，按作者作品导流披露：https://github.com/numero-uno-jpn/rStats.js 、https://numero-uno-jpn.github.io/rStats.js/demo/ 、https://github.com/numero-uno-jpn/rStats.js/blob/main/docs/ja/differences-from-r.md 、https://github.com/numero-uno-jpn/rStats.js/blob/main/src/special/dd.ts 、https://github.com/numero-uno-jpn/rStats.js/blob/main/scripts/ddgen.py 、https://github.com/numero-uno-jpn/rStats.js/blob/main/docs/ja/accuracy.md 、https://github.com/numero-uno-jpn/rStats.js/blob/main/docs/ja/performance.md 。前篇 https://qiita.com/nume/items/2e2fc73e457eccb44260 交付时跟随至 https://qiita.com/numero-uno-jpn/items/2e2fc73e457eccb44260 ，GET 200，可列可达，是同作者旧路径前篇，不是本条源，本批不再把它当下腕源。https://github.com/r-wasm/webr 交付时 GET 200，可列可达，不是作者产品。文内 npm 包名 @numero-uno-jpn/rstats 不是完整 URL，未作为字面地址去 GET。作者资料 website_url 为 https://github.com/numero-uno-jpn ，只出现在资料栏，不算导流，不补写。正文未配图。源文只写向 AI 问过 double-double，未点名 18 值平台，不得补 chatgpt 或 claude，platforms 为 []。与 #1211、#1214、#1232、#1264 等同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清现在的主窗是 15.2µs 对 0.91µs（约 17 倍），不要写成最早的约 300 倍",
+        body: "请按原文核算：v0.11.0 在 M1 Mac mini、Node.js 24 上，qbeta 是不是一件 15.2µs，同机 R 4.5.2 是不是 0.91µs，大约 17 倍；分布函数整体是不是 R 的 4–30 倍。276µs 到 99.8µs、最早约 300 倍、对数约 2.6 倍是不是中间窗。发布日是不是 2026-11-07，不要和测量日 10-26 写混。",
+      },
+    ],
+    howItWorks: [
+      "先写下 v0.11.0 在 M1 Mac mini 上 qbeta 一件 15.2µs，是同机 R 0.91µs 的约 17 倍。",
+      "再分开写最早大约慢 300 倍，以及后来 276µs 到 99.8µs、对数约 2.6 倍这些中间窗，不要当成现在的主窗。",
+      "分布函数整体 4–30 倍是另一组范围；绝对时间会随机器变，倍率是同机对比。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-07T17:43:36.000+09:00，与 Qiita API created_at 2026-11-07T17:43:36+09:00 一致 → UTC 2026-11-07T08:43:36Z、Asia/Shanghai 2026-11-07 16:43:36，取上海日历日 → 2026-11-07；dateModified／updated_at 同日同时刻，仍取首次发布；文内 v0.11.0 的测量日是 2026-10-26，不要写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07。与 #1211、#1214、#1232、#1264 等同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1286",
+    slug: "haru-029-5of20",
+    title: "对齐后百分之零点二九与五条撞墙",
+    summary: "haruhiro1020 在自己的路径规划基准里，差点把「自写 RRT 路径 9.692m、教科书实现 9.836m，短 1.5%」写成结论。把采样范围对齐之后，变成 9.692 对 9.720，只有 0.29%，差的 95% 区间是 [−1.46%, +0.88%]，已经跨过 0。同一天另一次基准里，规划器报告成功的 20 条路径中有 5 条实际撞墙，最深 1.84mm，换条件后是 2.14mm，成功率却仍显示 20/20。自写版计算时间在 300 次里平均 21.67ms、中位 20.20ms、最大 107.7ms。不要把开头的 1.5% 写成已经成立的主结论。无 JSON-LD，取 Zenn API published_at，发布日必须写成 2026-08-31，不要改用更早的 body_updated_at 或配图文件名里的 20260830。",
+    description: "这是一篇个人把路径规划基准从「短 1.5%」纠回来的记录。主硬窗是对齐采样范围后只差 0.29%，区间跨过 0；另一次 20 条「成功」路径里有 5 条撞墙。不要把开头的 1.5% 写成结论。发布日必须写成 2026-08-31，不要改用 08-30。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/haruhiro1020/articles/c81be8bcaab85c",
+    sourceLabel: "zenn.dev·haruhiro1020《「Aのほうが速い」と書く前に：経路計画ベンチマークを信頼区間で報告する》",
+    upvotes: 1177,
+    trending: false,
+    tags: [
+      "python",
+      "統計",
+      "ロボット",
+      "経路生成",
+      "rrt",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/haruhiro1020/articles/c81be8bcaab85c",
+      label: "zenn.dev·haruhiro1020《「Aのほうが速い」と書く前に：経路計画ベンチマークを信頼区間で報告する》",
+      date: "2026-08-31",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己的路径规划基准上比较自写的 RRT 和按教科书伪代码实现的朴素版。一开始自写版路径 9.692m，朴素版 9.836m，看起来短 1.5%，差点写成「自写版更好」。把采样范围对齐到朴素版之后，变成 9.692 对 9.720，只有 0.29%，差的 95% 区间是 [−1.46%, +0.88%]，已经跨过 0。作者因此把这次差写成设置差异，而不是算法差异。同一天另一次基准里，规划器报告成功的 20 条路径中有 5 条实际撞进了墙，最深 1.84mm，换条件后是 2.14mm，成功率却仍显示 20/20。文里还给出自写版计算时间在 300 次里的平均 21.67ms、中位 20.20ms、最大 107.7ms，这是时间另窗，不要和 0.29%、5／20 写成同一笔。作者说自己在乱选算法的比较上把结论弄反过 3 次，这篇是在写以后怎样才不会把「更快／更短」写错。这些是他这套基准和这两次跑法上的结果，不能外推成对 RRT 家族的一般结论。",
+    outcomes: [
+      "源披露：在作者自己的路径规划基准上，对齐采样范围后路径长短是 9.692m 对 9.720m，只有 0.29%，差的 95% 区间 [−1.46%, +0.88%] 已跨过 0。不要把对齐前的 9.692 对 9.836、短 1.5% 写成已经成立的主结论。同一天另一次基准里，报告成功的 20 条路径中有 5 条撞墙，最深 1.84mm，换条件后 2.14mm，成功率仍显示 20/20。自写版 300 次计算时间平均 21.67ms、中位 20.20ms、最大 107.7ms 是另窗。不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文 5 张配图为 Zenn static 原图，交付时均 GET 200，可列可达，不当导流；文件名里的 20260830 不是发布日：https://static.zenn.studio/user-upload/8ed86b0eaef0-20260830.png 、https://static.zenn.studio/user-upload/dd03843b72df-20260830.png 、https://static.zenn.studio/user-upload/957d9dd08297-20260830.png 、https://static.zenn.studio/user-upload/5d7fa76a51d1-20260830.png 、https://static.zenn.studio/user-upload/808348c4cc31-20260830.png 。同作者相关篇／书交付时均 GET 200，可列可达，是相关不是本条源，本批不再把它们当下腕源：https://zenn.dev/haruhiro1020/articles/0b499fa2fff28b 、https://qiita.com/haruhiro1020/items/000b3287fce082ae4283 、https://qiita.com/haruhiro1020/items/b32facc84513991cce70 、https://zenn.dev/haruhiro1020/articles/d87720c14c7b72 、https://zenn.dev/haruhiro1020/articles/0bb6eade8aaeae 、https://zenn.dev/haruhiro1020/books/ca29c718b96645 。https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats._result_classes.BinomTestResult.proportion_ci.html 、https://ompl.kavrakilab.org/benchmark.html 交付时均 GET 200，可列可达，不是作者产品。源文未点名 18 值平台，Python／RRT 不在 18 值，不硬凑，platforms 为 []。无 JSON-LD，取 Zenn API published_at 2026-08-31T20:00:05.223+09:00；body_updated_at 2026-08-30T14:49:55.080+09:00 更早，属预约发布，仍取 published，不要改用 08-30。与 #1034、#1117 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清对齐范围后只差 0.29% 且区间跨过 0，不要把开头的 1.5% 写成结论",
+        body: "请按原文核算：对齐采样范围后是不是 9.692 对 9.720、只有 0.29%，95% 区间是不是 [−1.46%, +0.88%] 已跨过 0。开头 9.692 对 9.836、短 1.5% 是不是对齐前的数。另一次 20 条「成功」路径里是不是有 5 条撞墙。21.67ms／20.20ms／107.7ms 是不是 300 次时间另窗。发布日是不是 2026-08-31，不要改用 08-30。",
+      },
+    ],
+    howItWorks: [
+      "先写下对齐采样范围后只差 0.29%，95% 区间已跨过 0，不要把对齐前的 1.5% 写成结论。",
+      "再写下同一天另一次基准里，20 条报告成功的路径中有 5 条实际撞墙，成功率仍显示 20/20。",
+      "自写版 300 次计算时间平均 21.67ms、中位 20.20ms、最大 107.7ms 是另窗；配图文件名和 body_updated_at 的 08-30 不是发布日。",
+    ],
+    tips: [
+      "无 JSON-LD；取 Zenn API published_at 2026-08-31T20:00:05.223+09:00 → UTC 2026-08-31T11:00:05.223Z、Asia/Shanghai 2026-08-31 19:00:05，取上海日历日 → 2026-08-31；body_updated_at 2026-08-30T14:49:55.080+09:00 更早，属预约发布，仍取首次发布，不要改用 08-30，也不要改用配图文件名里的 20260830；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-31。与 #1034、#1117 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1287",
+    slug: "nixo-919-619",
+    title: "独立二百六十题九十一点九对六十一点九",
+    summary: "nixo 给日语同形异音做了自作读取估计模型 JRM，分三套题来报准确率，标题里的 1268 题是 66+260+942，不是某一套的准确率分母。难读 66 题上，130M 的 JRM 是 100.0%（95% CI [94.5, 100]），现成最强引擎 60.6%（[48.5, 71.5]）；作者写明 100% 只表示这 66 题没有漏，区间下沿是 94.5，不能说已经完美。学习里没用过的独立 260 题上，130M 是 91.9%（[88.0, 94.7]），现成最强 61.9%（[55.9, 67.6]），+30 点，McNemar p=1.0e-20。加难的 942 题整体是 77.0% 对 61.9%（+15.1 点），助数词和固有名词仍然偏弱，不要把 91.9% 或 100% 写到这 942 题上。学习没用商用 API 输出，gpt-oss-120b 只是合成教师，不得写入 chatgpt。无 JSON-LD，取 published_at，发布日必须写成 2026-06-12，不要因 UTC 已是 06-11 改写。",
+    description: "这是一篇个人做日语读取估计模型并分套出分的记录。主硬窗是独立 260 题上 91.9% 对 61.9%（+30 点）。不要把难读 66 题的 100%，或标题 1268 题写成同一准确率。发布日必须写成 2026-06-12，不要写成 UTC 的 06-11。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/nixo/articles/3139042d4034f2",
+    sourceLabel: "zenn.dev·nixo《【国内最強(俺調べ)】「辛いラーメン」を「つらいラーメン」と読むTTSにキレて、日本語読み推定モデルを自作した【1268問ベンチマーク】》",
+    upvotes: 1178,
+    trending: false,
+    tags: [
+      "機械学習",
+      "自然言語処理",
+      "tts",
+      "日本語",
+      "llm",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/nixo/articles/3139042d4034f2",
+      label: "zenn.dev·nixo《【国内最強(俺調べ)】「辛いラーメン」を「つらいラーメン」と読むTTSにキレて、日本語読み推定モデルを自作した【1268問ベンチマーク】》",
+      date: "2026-06-12",
+      dateLabel: "发布",
+    },
+    approach: "作者做语音代理时，讨厌 TTS 把「辛いラーメン」读成「つらいラーメン」之类，于是自作了候选读法格加上上下文 reranker 的模型 JRM，不让模型自由生成读法。标题里的 1268 题是三套加总：难读 66 题、独立 260 题、加难 942 题，不是某一套的分母。难读 66 题上，130M 的 JRM 是 100.0%，95% 区间 [94.5, 100]，现成最强引擎 60.6%（[48.5, 71.5]），轻量 30M 是 98.5%；作者写明 100% 只表示这 66 题没有漏，不能说已经完美。学习里没用过、新出的独立 260 题上，130M 是 91.9%（[88.0, 94.7]），现成最强 61.9%（[55.9, 67.6]），+30 点，McNemar p=1.0e-20，30M 是 88.5%。再做的 942 题里，整体 77.0% 对 61.9%（+15.1 点，p=1.2e-26），同形异音 502 题是 81.9% 对 57.6%，数词日期 160 题 63.1% 对 56.9%，固有名词 120 题两边都是 61.7%。学习数据只用公开语料和开放权重教师，商用 GPT／Claude／Gemini 的输出明确没用；gpt-oss-120b、qwen3.5、zai-glm-4.7 只出现在合成数据的生成／验证／仲裁里，不能当成这次调用了 ChatGPT 或 Claude。这些是作者这三套自编测试上的分数，不能外推到别的读法任务。",
+    outcomes: [
+      "源披露：标题 1268 题是 66+260+942，不是某一套准确率的分母。独立 260 题上，130M 的 JRM 91.9%（[88.0, 94.7]）对现成最强引擎 61.9%（[55.9, 67.6]），+30 点，McNemar p=1.0e-20。不要把难读 66 题的 100.0%（区间 [94.5, 100]，作者写明不是「已经完美」），或加难 942 题整体 77.0% 对 61.9% 写成这条 91.9% 主窗，更不要把 91.9% 或 100% 写到 942 题上。不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者演示站 https://jrm-demo.2-38.com/ ，交付时 GET 200，可列可达，按作者站点导流披露。正文里的 API 示例地址 https://ja.2-38.com/v1/readings 交付时 GET 530，不计入可达，须写出完整 URL 并披露最后一次状态，仍按作者接口导流披露。作者资料 website_url 为 https://www.kan.run/ ，只出现在资料栏，正文没有这条硬链，不算导流，不补写。正文未配图。源文明确没用商用 LLM API（文内写了 GPT／Claude／Gemini）的输出做训练；gpt-oss-120b 只是合成教师，不得写入 chatgpt，也不得因这段名单补 claude，platforms 为 []。无 JSON-LD，取 Zenn API published_at 2026-06-12T01:13:54.784+09:00 → UTC 已是 06-11，上海日历日仍是 06-12，不要改写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 91.9% 对 61.9% 是独立 260 题，不要把 66 题的 100% 或标题 1268 题写成同一准确率",
+        body: "请按原文核算：标题 1268 是不是 66+260+942 的加总。独立 260 题是不是 91.9% 对 61.9%，+30 点，p=1.0e-20。难读 66 题的 100.0% 是不是只在这 66 题上、区间下沿 94.5。942 题整体是不是 77.0% 对 61.9%，不要把 91.9% 或 100% 写过去。发布日是不是 2026-06-12，不要因 UTC 已是 06-11 改写。不得因 gpt-oss-120b 或文内 GPT／Claude 名单写入 chatgpt／claude。",
+      },
+    ],
+    howItWorks: [
+      "先写下独立 260 题上 91.9% 对 61.9%（+30 点，p=1.0e-20），这是主窗。",
+      "再写明标题 1268 题是 66+260+942 的加总，不是某一套的分母；难读 66 题 100% 的区间下沿是 94.5，作者不把它说成已经完美。",
+      "加难 942 题整体 77.0% 对 61.9% 是另窗；gpt-oss-120b 只是合成教师，不得写入 chatgpt。",
+    ],
+    tips: [
+      "无 JSON-LD；取 Zenn API published_at 2026-06-12T01:13:54.784+09:00 → UTC 2026-06-11T16:13:54.784Z、Asia/Shanghai 2026-06-12 00:13:54，取上海日历日 → 2026-06-12，不要因 UTC 已是 06-11 改写；body_updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-06-12。",
+    ],
   }
 ];
 
