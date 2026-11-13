@@ -83513,6 +83513,492 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "有 JSON-LD；datePublished 2026-11-01T12:02:37.000+09:00，与 API created_at 2026-11-01T12:02:37+09:00 一致 → UTC 2026-11-01T03:02:37Z、Asia/Shanghai 2026-11-01 11:02:37，取上海日历日 → 2026-11-01；created=updated，无修订日陷阱；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-01。不要和 #1164／#1193／#1194／#1204／#1210／#1226 的 Jev 窗口写混；这次运行时是 Clef-Flash，不是 Jev。",
     ],
+  },
+  {
+    id: "1238",
+    slug: "yuki-21-107",
+    title: "实现交给本地后的费用对照",
+    summary: "yukio3239 在 MacBook Pro（Apple M5 Pro，18 核，内存 64GB）上，用 claude -p 计量 Sonnet，本地用 mlx-community/Qwen3.8-27B-4bit（omlx + Hermes）。测试 1 把实现交给 Qwen 时，Claude 费用 1.07 美元（准备 0.83 + 收尾 0.24）对直接实现 0.50 美元，约 2.1 倍；输出 27,015 对 12,067 token。测试 2 只留约 1,300 字规格，8 次全满分，但表上技能有 46 分 / 19–89 分，技能无 33 分 / 29–40 分。导语写的 30–90 分不是表上范围。不可外推。",
+    description: "这是一篇个人把「设计在云、实现在本地」拆开后实测费用与时间的记录。主硬窗是测试 1 的约 2.1 倍（1.07 对 0.50 美元）。测试 2 的 8 次满分与墙钟不要和测试 1 的费用写混，两套题材不能直接比价。这次确有 Claude 实践，platforms 记 claude。发布日必须写成 2026-10-19。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/yukio3239/items/e02c811664e444686fe5",
+    sourceLabel: "qiita.com·yukio3239《ローカルAIに実装を任せればClaudeのトークンは減る？ 実測したら逆だった（と、そこから分かったこと）》",
+    upvotes: 1129,
+    trending: false,
+    tags: [
+      "claude-code",
+      "local-llm",
+      "qwen",
+      "cost",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yukio3239/items/e02c811664e444686fe5",
+      label: "qiita.com·yukio3239《ローカルAIに実装を任せればClaudeのトークンは減る？ 実測したら逆だった（と、そこから分かったこと）》",
+      date: "2026-10-19",
+      dateLabel: "发布",
+    },
+    approach: "作者在自己的命令保存工具（Tauri v2）上做了两套不同题材的试验。Claude 用 Sonnet，消费以 claude -p --output-format json 计量。本地模型是 mlx-community/Qwen3.8-27B-4bit，经本机 omlx 服务器、由 Hermes 当执行架。测试 1 做跨文件的快捷搜索窗：方式 A 由 Claude 写准备与收尾评审、Qwen 实现；方式 B 由 Claude 直接实现。测试 2 只让 Claude 写约 1,300 字的一页规格，测试、骨架和实现都交给 Qwen，并用作者另写的 12 道隐藏测试和 20 个故意写坏的参考实现来评分（Qwen 看不见这些）。技能（superpowers）有无各 4 次、共 8 次。Hermes 不在 18 值里，不硬凑。",
+    outcomes: [
+      "源披露：在 MacBook Pro（Apple M5 Pro，18 核，内存 64GB）上实测。测试 1（快捷搜索窗）方式 A 的 Claude 费用是 1.07 美元（准备 0.83 + 收尾评审 0.24），方式 B 直接实现是 0.50 美元，约 2.1 倍；输出 token 27,015 对 12,067，手番 33 对 16；A 的 Qwen 约 275 万 token、约 53 分钟，两边验收都通过。准备阶段输出 24,469 token，已超过 B 的整次实现 12,067。这些费用不含指挥试验的对话。本地 Qwen 输出速度是同一台机器上 20 次执行记录（输出 31.7 万 token、合计 3 小时 10 分）按输出 token÷墙钟得到的平均约 28 token/秒（范围 19–39），含工具等待和读入，不是纯生成速度。测试 2（纯函数 merge_commands）8 次全部 12/12 且 20/20，实现尝试都是 1 次；表上技能有（n=4）平均 46 分、范围 19–89 分，技能无（n=4）平均 33 分、范围 29–40 分。导语写的「1 回あたり 30〜90 分」不是这张表的范围，不要把 30–90 写成表上数字。强化阶段一次都没触发。测试 2 的评审费用作者只按测试 1 的 0.24 美元估算，不是测试 2 实测，不能当成已测到的 0.24。测试 1 与测试 2 题材不同，不能直接比价。这些数字只属于这次机器、模型和这两套题，不可外推。不要和近批其他 token 费用或约 28 tok/s 的窗口写混。与 #1235 同一天但主题不同。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。这次实践确用 Claude Sonnet 与 claude -p，platforms 记 claude。Hermes / omlx / Qwen 不在 18 值，不硬凑。源文无 ChatGPT／chatgpt 字样，不得写入 chatgpt。前 4 次还发现过闸门漏洞（Qwen 用 #[expect(...)] 压掉冻结测试的 lint，4 次中 2 次），作者已修好后再计这 8 次。n=4 各、题材偏小，作者也写了天花板效应。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 2.1 倍是测试 1 的 1.07 对 0.50 美元，30–90 分不是表上范围",
+        body: "请按原文核算：测试 1 是不是把实现交给 Qwen 后 Claude 费用 1.07 美元（0.83+0.24）对直接实现 0.50 美元，约 2.1 倍，输出 27,015 对 12,067。测试 2 是不是 8 次全满分，表上技能有 46 分 / 19–89 分、技能无 33 分 / 29–40 分，不要把导语的 30–90 分写成表上范围，也不要把测试 1 的 0.24 美元当成测试 2 实测。约 28 token/秒是不是含工具等待的 20 次墙钟算法，不是纯生成。发布日是不是上海日历日 2026-10-19。platforms 是否只记 claude，不得写入 chatgpt。",
+      },
+    ],
+    howItWorks: [
+      "先写下测试 1 把实现交给本地 Qwen 后，Claude 费用约 2.1 倍（1.07 对 0.50 美元），再说明准备输出已超过直接实现。",
+      "再写下测试 2 只留一页规格时 8 次全满分，但表上是 46 分 / 19–89 分对 33 分 / 29–40 分，导语 30–90 分不是表上范围。",
+      "最后写明两套题材不能直接比价，约 28 token/秒含等待，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-19T11:14:42.000+09:00，与 Qiita API created_at 2026-10-19T11:14:42+09:00 一致 → UTC 2026-10-19T02:14:42Z、Asia/Shanghai 2026-10-19 10:14:42，取上海日历日 → 2026-10-19；dateModified／updated_at 同日，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-19。与 #1235 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1239",
+    slug: "pent-882-662",
+    title: "两张V100上的长上下文测速",
+    summary: "pentaCoxian 用 Tesla V100-SXM2 32GB ×2（NVLink）、Xeon Platinum 8260 ×2、内存 314GB、CUDA 12.9.1，在 llama.cpp v0.5.0 上跑 Qwen3.8-Flash-Next。2026-09-24 测到的「现在」值：短提示 decode 88.2 tok/s，KV 填到 64K 为 88.0、填到 250K 为 79.6；13.7K 输入 prefill 662 tok/s，空到 250K 为 606。不要把后来 v2 补丁在有 NVLink 时的平均 120 tok/s 写成这张主表，也不要把出发值 30.2／227 写成现在的成绩。发布日必须写成 2026-09-25，不是测量日 09-24，也不是修订 09-26。",
+    description: "这是一篇个人在两张 Volta V100 上给 llama.cpp 打补丁、把 256K 上下文的 MoE 模型跑到约 88 tok/s 的实測记录。主硬窗是 88.2／88.0／79.6 与 prefill 662／606。platforms 为空。发布日必须写成 2026-09-25。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/pentaCoxian/items/d09c4e84f5b87a59f7e7",
+    sourceLabel: "qiita.com·pentaCoxian《2×V100 で Qwen3.8-Flash-Next を 256K コンテキスト・約 88 tok/s で動かす：llama.cpp v0.5.0 に加えた最適化》",
+    upvotes: 1130,
+    trending: false,
+    tags: [
+      "local-llm",
+      "llama-cpp",
+      "qwen",
+      "v100",
+    ],
+    primarySource: {
+      url: "https://qiita.com/pentaCoxian/items/d09c4e84f5b87a59f7e7",
+      label: "qiita.com·pentaCoxian《2×V100 で Qwen3.8-Flash-Next を 256K コンテキスト・約 88 tok/s で動かす：llama.cpp v0.5.0 に加えた最適化》",
+      date: "2026-09-25",
+      dateLabel: "发布",
+    },
+    approach: "作者在两张 NVLink 相连的 V100 32GB 上，把专家做成 UD-IQ3_XXS、稠密张量做成 Q8_0、再补上 MTP 头，拼出约 80GB 的 GGUF，并给 llama.cpp v0.5.0 打了 V100 向补丁。文中「现在」栏的数字全部是 2026-09-24 测的。后来公开的 v2 补丁在有 NVLink 时平均 120 tok/s，不是这张主表。源文未点名 18 值平台，platforms 为 []。",
+    outcomes: [
+      "源披露：硬件是 Tesla V100-SXM2 32GB ×2（sm_70，NVLink NV2）、Xeon Platinum 8260 ×2（48 核 / 96 线程）、内存 314GB、CUDA 12.9.1（CUDA 13 已不支持 Volta）。模型是 Qwen3.8-Flash-Next（架构名 qwen4exp）。主表「现在」全是 2026-09-24 所测：短提示 decode 从出发 30.2 tok/s（UD-IQ4_XS、64K ctx、tg128）到 88.2 tok/s；KV 填到 64K 从 35 tok/s 到 88.0；KV 填到 250K 从「低到测不了」到 79.6；13.7K 输入 prefill 从 227 到 662 tok/s；空到 250K 的 prefill 从「64K 之后约 150」到 606 tok/s。专家全部放进 64GB VRAM 后，tg128 曾从 30.2 升到 42.3 tok/s，那是组装模型文件时的中间结果，不是主表「现在」。后来的 v2 补丁写明有 NVLink 时平均 120 tok/s，不要写进本条主窗。这些数字只属于这两张 V100、这次补丁和这次量化拼接，不可外推。不要和 #1240 的 88.5、#1241 的 64、#1242 的 143.4 或 #1228 的约 45 tok/s 写混。发布日必须写成 2026-09-25，不是测量日 09-24，也不是修订 09-26。",
+    ],
+    caveats: [
+      "导流：正文硬链作者模型页 https://huggingface.co/pentacoxian-dev/Qwen3.8-Flash-Next-IQ3E-Q8D-MTP-GGUF，交付时 GET 200，可列可达，按导流披露。作者资料 website_url 为 https://x.com/pentacoxian_dev，只出现在资料栏，正文没有这条硬链，不算导流，不补写。配图 7 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/0620e670-151e-4cfe-a751-68b71e742576.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/1ff3db27-b9dc-4156-bd6f-9ff9660f367f.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/216aa9c9-9fb8-48fb-81e5-e4afbdc40d9d.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/5f94cfbc-dc22-4760-bcab-4e137aed3240.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/e43f3f93-2ccf-4b82-985d-b7dfa30aa841.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/f54cda68-fc4d-445b-afa3-1fc5e32203e8.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/954353/fe7fa55c-3fab-4c2e-a37b-f26d977cf7b3.png，交付时均 GET 200，可列可达，不当导流。源文未点名 18 值平台，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 88.2／662 是 09-24 主表，120 是后来的 v2 补丁",
+        body: "请按原文核算：是不是 2 张 V100 32GB、2026-09-24 测到短提示 decode 88.2 tok/s、64K KV 为 88.0、250K KV 为 79.6，13.7K prefill 662、空到 250K 为 606。不要把出发值 30.2／227 或中间的 42.3、或后来 v2 补丁平均 120 tok/s 写成这张主表。发布日是不是上海日历日 2026-09-25，不要写成测量日 09-24 或修订 09-26。不要和 #1240 的 88.5 写混。",
+      },
+    ],
+    howItWorks: [
+      "先写下 256K 上下文下现在的 decode 约 88 tok/s（88.2／88.0／79.6）和 prefill 662／606，并标明这些是 2026-09-24 的主表。",
+      "再写清 30.2／227 是出发值，42.3 是专家全部上车后的中间结果，120 tok/s 是后来的 v2 补丁，都不能当主窗。",
+      "最后写明发布日是上海 09-25，不是测量日或修订日，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-25T06:45:06.000+09:00，与 Qiita API created_at 2026-09-25T06:45:06+09:00 一致 → UTC 2026-09-24T21:45:06Z、Asia/Shanghai 2026-09-25 05:45:06，取上海日历日 → 2026-09-25；dateModified／updated_at 2026-09-26T21:08:25+09:00 已跨日，仍取首次发布，不要改用修订日 09-26，也不要把文内测量日 09-24 写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-25。",
+    ],
+  },
+  {
+    id: "1240",
+    slug: "chik-64-885",
+    title: "模型溢出显存的速度对照",
+    summary: "chiaki_ai_lab 在个人家用 RTX 5060 Ti 16GB（16311 MiB）、i5-14600KF、内存 64GB、Windows 11、Ollama 0.33.2 宿主上，用 Docker 里的 Node 经 host.docker.internal:11434 测。主窗是 2026-09-04 的日语新闻摘要：gemma3:27b 权重量 16.2 GiB，溢出约 0.3 GiB 后生成 6.4 tok/s；gpt-oss:20b 权重量 12.85 GiB 全在 GPU，88.5 tok/s，约 13.8 倍吞吐、墙钟约 4.4 倍。不要和 09-09 的 6.6／13.4 倍写混。gpt-oss 不是 18 值里的 chatgpt，platforms 为空。发布日必须写成 2026-10-01，不是测量日 09-04 或 09-09。",
+    description: "这是一篇个人在 16GB 卡上把「权重量刚好比显存大一点」和「还能全进 GPU」对照实测的记录。主硬窗是 6.4 tok/s 对 88.5 tok/s、约 13.8 倍。platforms 为空。发布日必须写成 2026-10-01。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/chiaki_ai_lab/articles/ollama-vram-16gb-nodejs-pitfalls",
+    sourceLabel: "zenn.dev·chiaki_ai_lab《VRAMに載らないと13.8倍遅い ─ Ollamaを Docker + Node.js から叩いて踏んだ3つの落とし穴》",
+    upvotes: 1131,
+    trending: false,
+    tags: [
+      "ollama",
+      "local-llm",
+      "vram",
+      "nodejs",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/chiaki_ai_lab/articles/ollama-vram-16gb-nodejs-pitfalls",
+      label: "zenn.dev·chiaki_ai_lab《VRAMに載らないと13.8倍遅い ─ Ollamaを Docker + Node.js から叩いて踏んだ3つの落とし穴》",
+      date: "2026-10-01",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Ollama 0.33.2 跑在 Windows 宿主，Node 应用放进 Docker，用 host.docker.internal:11434 连本机 API。主窗是 2026-09-04、Ollama 0.33.2、日语新闻摘要提示；随后 09-09、Ollama 0.33.3 换成另一条提示再测，两组数字不能混。文内 gpt-oss 是本地模型名，不是 18 值里的 ChatGPT。作者在正文链到自己的 note 主页。",
+    outcomes: [
+      "源披露：机器是 RTX 5060 Ti 16GB（nvidia-smi 读到 16311 MiB）、i5-14600KF、内存 64GB、Windows 11。主窗是 2026-09-04、Ollama 0.33.2、日语新闻摘要：gemma3:27b 权重量 16.2 GiB，对 16,311 MiB 溢出约 0.3 GiB 后生成 6.4 tok/s；gpt-oss:20b 权重量 12.85 GiB 全在 GPU，88.5 tok/s。作者写 token 速度约 13.8 倍、同一处理墙钟约 4.4 倍，并写 4 类加汇总共 5 次、176 秒跑完；不要把 176 秒写到溢到 CPU 的 6.4 tok/s 那一侧，除非原文把两侧墙钟都列出来。09-09 换成另一条提示、Ollama 0.33.3 后是 6.6 tok/s 对 88.5 tok/s、约 13.4 倍，不要和 13.8／6.4 写混。作者也写了启动后立刻 /api/ps 会把「还在从磁盘读权重」误判成显存不足。这些数字只属于这张 16GB 卡、这次 Ollama 版本和这两套提示，不可外推。不要和 #1239 的 88.2、#1241 的 64 或 #1228 的约 45 tok/s 写混。发布日必须写成 2026-10-01，不是测量日 09-04 或 09-09。",
+    ],
+    caveats: [
+      "导流：正文硬链作者 note 主页 https://note.com/lush_kudu2534 ，交付时 GET 200，可列可达，按导流披露。作者资料 bio 写的是个人家用实验室。正文未配图。正文出现的本机端点 http://localhost:11434/api/ps、http://localhost:11434/api/tags 交付时 GET 000（curl rc 7，连不上），http://host.docker.internal:11434 交付时 GET 500，均不可达，须写全 URL，不要只写主机名。源文未点名 18 值里的 ChatGPT；gpt-oss 是本地模型名，不得写入 chatgpt，platforms 为 []。无 JSON-LD；body_updated_at 2026-10-01T10:09:21.813+09:00 早于 published_at，按预约发布仍取首次发布，不要改用更新时间。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 13.8 倍是 09-04 的 6.4 对 88.5，不要和 09-09 的 13.4／6.6 写混",
+        body: "请按原文核算：主窗是不是 2026-09-04、gemma3:27b 16.2 GiB 溢出后 6.4 tok/s，对 gpt-oss:20b 12.85 GiB 全在 GPU 的 88.5 tok/s，约 13.8 倍吞吐、墙钟约 4.4 倍。09-09 另一条提示是不是 6.6 对 88.5、约 13.4 倍，不要写进主窗。gpt-oss 是不是本地模型名，不得写入 chatgpt。发布日是不是上海日历日 2026-10-01，不要写成测量日 09-04 或 09-09。本机 11434 端点这次是否连不上。",
+      },
+    ],
+    howItWorks: [
+      "先写下 16.2 GiB 刚好比 16,311 MiB 大 0.3 GiB 时生成掉到 6.4 tok/s，12.85 GiB 全在 GPU 时是 88.5 tok/s，约 13.8 倍。",
+      "再写清 09-09 是另一条提示的 6.6／13.4 倍，不能和主窗混用，176 秒也不要随便写到慢的那一侧。",
+      "最后写明发布日是上海 10-01，gpt-oss 不是 ChatGPT，本机 11434 这次不可达，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-10-01T11:29:42.776+09:00 → UTC 2026-10-01T02:29:42.776Z、Asia/Shanghai 2026-10-01 10:29:42，取上海日历日 → 2026-10-01；body_updated_at 2026-10-01T10:09:21.813+09:00 同日且更早（预约发布），仍取首次发布，不要改用更新时间，也不要把文内测量日 09-04 或 09-09 写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-01。",
+    ],
+  },
+  {
+    id: "1241",
+    slug: "masa-64-96",
+    title: "十GB显卡上的二十七B测速",
+    summary: "masa-555 在 RTX 3080 10GB 直通、Ubuntu 虚拟机（内存 80GB）上，用 PrismML 的 llama.cpp 跑 Ternary-Bonsai-2-27B。PQ2_0 权重量 7.21GB、显存约 9.6GB，decode 64–65 tok/s、prefill 830–1,250 tok/s；更紧的 PTQ1_0 是 5.95GB／约 8.4GB 显存，decode 53–54 tok/s、prefill 430–660 tok/s。上下文 65536、KV q8_0、层全在 GPU。文内 98.2% 质量是厂商说法，不是作者实测。发布日必须写成 2026-09-24。",
+    description: "这是一篇个人在 10GB 消费级卡上把 ternary 27B 装进显存并测 decode／prefill 的记录。主硬窗是 PQ2_0 的 64–65 tok/s。platforms 为空。发布日必须写成 2026-09-24。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/masa-555/items/21d90d09df2940d37296",
+    sourceLabel: "qiita.com·masa-555《Qwen3.8-27B 相当が VRAM 10GB の RTX 3080 で 64 tok/s — 普通は載らない 27B を ternary 量子化 Bonsai 2 で動かした》",
+    upvotes: 1132,
+    trending: false,
+    tags: [
+      "local-llm",
+      "llama-cpp",
+      "rtx3080",
+      "ternary",
+    ],
+    primarySource: {
+      url: "https://qiita.com/masa-555/items/21d90d09df2940d37296",
+      label: "qiita.com·masa-555《Qwen3.8-27B 相当が VRAM 10GB の RTX 3080 で 64 tok/s — 普通は載らない 27B を ternary 量子化 Bonsai 2 で動かした》",
+      date: "2026-09-24",
+      dateLabel: "发布",
+    },
+    approach: "作者在 10GB 的 RTX 3080 直通虚拟机上，按官方脚本拉 PrismML 的 llama.cpp（含 bitnet.cpp 后端），下载 PQ2_0 与 PTQ1_0 两种 GGUF，用 -c 65536、-ngl 99、--kv-cache-type q8_0 把层全放进 GPU。对照写了同尺寸普通量化：3bit 最小的 UD-IQ3_XXS 已是 10.9GB，3bit 以上都装不进这张 10GB 卡。文内链到作者自己更早一篇 35B MoE 的记录，那不是本条源。源文未点名 18 值平台。",
+    outcomes: [
+      "源披露：硬件是 RTX 3080 10GB 直通、Ubuntu 虚拟机、内存 80GB。PQ2_0 权重量 7.21GB、运行时显存约 9.6GB，decode 64–65 tok/s、prefill 830–1,250 tok/s；PTQ1_0 权重量 5.95GB、显存约 8.4GB，decode 53–54 tok/s、prefill 430–660 tok/s。都用 -c 65536、KV q8_0、层全在 GPU。作者写同尺寸普通量化 3bit 最小已是 10.9GB（UD-IQ3_XXS），3bit 以上都装不进这张 10GB 卡。文内 98.2% 质量是厂商说法，不是作者在这台机器上测到的分数，不要写成作者实测。作者另有一篇 35B MoE、85.9 tok/s 的 Qiita（https://qiita.com/masa-555/items/eb73133a75f94f9f954a），那不是本条源，不要把 85.9 写进本条主窗。这些数字只属于这张 10GB 卡、这次 PrismML 构建和这两种量化，不可外推。不要和 #1239 的 88.2、#1240 的 88.5、#1243 的 31.1 或近批其他 64 tok/s 窗口写混。发布日必须写成 2026-09-24。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。配图 1 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4281571/aaf292dc-78ef-4554-ab97-40e8f9624f90.png，交付时 GET 200，可列可达，不当导流。正文本机端点 http://localhost:8080/v1/chat/completions 交付时 GET 000（curl rc 7，连不上），不可达，须写全 URL。https://github.com/PrismML-Eng/llama.cpp 交付时 GET 200，可列可达，不是作者仓。文内不完整脚本路径 https://github.com/PrismML-Eng/llama.cpp/archive/refs/tags/ 交付时 GET 404；文内发行包 https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10687-5d80cff/llama-prism-b10687-5d80cff-bin-linux-cuda-12.8-x64.tar.gz 交付时 GET 404，均不可达，须披露。正文里还有带 $TAG 占位的脚本路径，属不完整 URL，未作为字面地址去 GET。正文还有占位端址 http://<サーバのIP>:8080/v1，属不完整字面，未作为字面地址去 GET，不列入可达。模型页 https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf 交付时 GET 200，不是作者产品，可列可达。权重量文件 https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf/resolve/main/Ternary-Bonsai-2-27B-PQ2_0.gguf 复检时完整 GET 已开始返回 200，约 12 秒后超时（curl rc 28，已收到 550,255,095／7,206,168,928 字节），文件头为 GGUF；末次在 2026-11-11 07:36:47–07:36:48 +0800（Asia/Shanghai）用 Range 0-1024 再取，HTTP 206，落盘 1025 字节且文件头为 GGUF。按可达列出并披露这次超时与末次 Range 取样。尺寸对照用的 https://huggingface.co/unsloth/Qwen3.8-27B-GGUF 交付时 GET 200，不是作者产品。同作者另一篇 https://qiita.com/masa-555/items/eb73133a75f94f9f954a 交付时 GET 200，不是本条源。源文未点名 18 值平台，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 64–65 tok/s 是 PQ2_0，98.2% 不是作者实测，85.9 是另一篇",
+        body: "请按原文核算：是不是 RTX 3080 10GB 上 PQ2_0 权重量 7.21GB、显存约 9.6GB、decode 64–65 tok/s、prefill 830–1,250；PTQ1_0 是 5.95GB／约 8.4GB／53–54／430–660。98.2% 是不是厂商说法而不是作者实测。不要把同作者另一篇的 85.9 tok/s 写进来。发布日是不是上海日历日 2026-09-24。PrismML-Eng 的发行包和 refs/tags/ 根路径这次是否 404，权重量文件首次完整 GET 是否超时、随后 Range 取样是否成功。",
+      },
+    ],
+    howItWorks: [
+      "先写下 PQ2_0 在 10GB 卡上 decode 64–65 tok/s、显存约 9.6GB，并对照更紧的 PTQ1_0 是 53–54 tok/s。",
+      "再写清 98.2% 是厂商说法，同作者 35B MoE 的 85.9 tok/s 是另一篇，不能写进本条。",
+      "最后写明本机 8080 这次连不上，发行包 404，权重量文件首次超时、末次 206，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-24T08:36:47.000+09:00，与 Qiita API created_at 2026-09-24T08:36:47+09:00 一致 → UTC 2026-09-23T23:36:47Z、Asia/Shanghai 2026-09-24 07:36:47，取上海日历日 → 2026-09-24；dateModified／updated_at 同日 2026-09-24T12:03:56+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-24。",
+    ],
+  },
+  {
+    id: "1242",
+    slug: "iato-401-143",
+    title: "官方MTP的英语代码速度峰值",
+    summary: "iatosh 在 RTX 6000 Ada 48GB、vLLM 上测 Gemma4-31B AWQ 加官方 MTP。生成 512 token，4 条提示各 3 次取中位数。N=0 时日英散文和代码都约 40 tok/s；峰值是日语散文 77.6（N=4）、英语散文 98.1（N=5）、日语代码 138.6（N=6）、英语代码 143.4（N=7）。总结窗：代码 40.1→143.4（约 3.6 倍，N=7；N=6 为 139.6，相近），日语散文 40.0→77.6（约 1.9 倍，N=4），英语散文 40.0→98.1（约 2.5 倍，N=5）。不要把按 960GB/s 带宽推的理论 48 tok/s 写成实测，也不要和 #1197 的 MTP 7.71→10.15 写混。发布日必须写成 2026-08-25。",
+    description: "这是一篇个人在 48GB 专业卡上把官方 MTP 深度从 0 扫到 7、按日英散文和代码分开报中位数的记录。主硬窗是英语代码 40.1→143.4 tok/s。platforms 为空。发布日必须写成 2026-08-25。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/iatosh/articles/461765d77f1e56",
+    sourceLabel: "zenn.dev·iatosh《ローカルLLM爆速推論：Gemma4+公式MTPで40tok/s→143tok/s》",
+    upvotes: 1133,
+    trending: false,
+    tags: [
+      "vllm",
+      "gemma",
+      "mtp",
+      "inference",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/iatosh/articles/461765d77f1e56",
+      label: "zenn.dev·iatosh《ローカルLLM爆速推論：Gemma4+公式MTPで40tok/s→143tok/s》",
+      date: "2026-08-25",
+      dateLabel: "发布",
+    },
+    approach: "作者在单张 RTX 6000 Ada 48GB 上用 vLLM 加载 Gemma4-31B AWQ 和官方 MTP，固定生成 512 token，日语散文、英语散文、日语代码、英语代码各 3 次取中位数，把 MTP 深度 N 从 0 扫到 7。整篇是 bs=1。作者另外试了 EAGLE3 和 DSpark，那是对照，不是主窗。源文未点名 18 值平台。",
+    outcomes: [
+      "源披露：硬件是 RTX 6000 Ada 48GB，引擎是 vLLM，模型是 Gemma4-31B AWQ 加官方 MTP，生成 512 token，4 条提示各 3 次取中位数，bs=1。N=0 基线：日语散文／英语散文／日语代码／英语代码为 40.0／40.0／40.0／40.1 tok/s。峰值：日语散文 77.6 tok/s（N=4）、英语散文 98.1 tok/s（N=5）、日语代码 138.6 tok/s（N=6）、英语代码 143.4 tok/s（N=7）。作者总结是代码 40.1→143.4（约 3.6 倍，N=7；N=6 为 139.6，相近），日语散文 40.0→77.6（约 1.9 倍，N=4），英语散文 40.0→98.1（约 2.5 倍，N=5）。按 960GB/s 带宽推出来的理论 48 tok/s 不是实测，不要写成测到的数。prefill 约 1,480 tok/s 是作者写的 FlashAttention 天花板说明，不是 MTP 主表。EAGLE3 在日语上比基线 40 更慢，英语 88.7 tok/s；DSpark 在 262K 上下文 OOM。这些数字只属于这张 48GB 卡、这次 vLLM 和官方 MTP，不可外推。不要和 #1197 的 MTP 7.71→10.15、#1239 的 88.2 或 #1240 的 88.5 写混。发布日必须写成 2026-08-25。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。配图 2 张：https://static.zenn.studio/user-upload/34fc8fd6ef50-20260825.png、https://static.zenn.studio/user-upload/528c986572e6-20260825.png，交付时均 GET 200，可列可达，不当导流。正文模型页 https://huggingface.co/cyankiwi/gemma-4-31B-it-AWQ-4bit 、https://huggingface.co/google/gemma-4-31B-it-assistant 交付时均 GET 200，可列可达，是第三方量化和官方模型卡，不是作者产品。源文未点名 18 值平台，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 143.4 是英语代码 N=7，48 tok/s 只是带宽推算",
+        body: "请按原文核算：是不是 N=0 时约 40 tok/s，英语代码峰值 143.4 tok/s（N=7，约 3.6 倍），日语散文 77.6（N=4），英语散文 98.1（N=5）。不要把理论 48 tok/s 或 prefill 约 1,480 写成 MTP 主表，也不要和 #1197 的 7.71→10.15 写混。发布日是不是上海日历日 2026-08-25。",
+      },
+    ],
+    howItWorks: [
+      "先写下官方 MTP 把英语代码从 40.1 推到 143.4 tok/s（N=7），并分别写出日英语散文的峰值和对应深度。",
+      "再写清 48 tok/s 是带宽推算、1,480 是 prefill 天花板，EAGLE3／DSpark 只是对照。",
+      "最后写明 bs=1、这张 48GB 卡，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-08-25T17:24:39.901+09:00 → UTC 2026-08-25T08:24:39.901Z、Asia/Shanghai 2026-08-25 16:24:39，取上海日历日 → 2026-08-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-25。",
+    ],
+  },
+  {
+    id: "1243",
+    slug: "macm-13of16",
+    title: "十六次中十三次的停下记录",
+    summary: "mac-ai-lab（整体院院长）在实验用 Mac mini（Apple M4，内存 24GB）、Ollama 0.33.0 上，数字全部是 2026-09-23 测的。9B 约 17 tok/s；qwen3.5:9b 文脉 2048→32768 为 17.46→17.37 tok/s，增大约 1.0–1.2GB，仍全在 GPU。既定文脉下 qwen3.5:9b 是 17.42 tok/s（范围 17.33–17.57），不要和 17.46 写成同一个数。qwen3:30b 文脉 2048 时中位 31.1 tok/s（3 次），约 1.8 倍于 9B，载入约 19GB，Mac 空闲内存降到 7%。既定或 4096、以及 8192：16 次中 13 次因 GPU 内存不足停下；加上 use_mmap:false 后，4096 和 8192 各 6 次都跑完。qwen3-coder:30b 已停测、没有数据，不要编造。发布日必须写成 2026-09-28，不是测量日 09-23，也不是修订 10-15。",
+    description: "这是一篇个人在 24GB Mac mini 上把 9B 和 30B 对照实测、并把「16 次中 13 次停下」写进记录的文章。主硬窗是 30B 文脉 2048 的 31.1 tok/s，以及 16 次中 13 次停下。platforms 为空。发布日必须写成 2026-09-28。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/mac_ai_lab_jp/articles/d64e9b417f49e1",
+    sourceLabel: "zenn.dev·mac-ai-lab《Mac mini M4 24GBでOllamaを実測 ── 30Bは9Bの約1.8倍速い。ただし文脈4096以上で止まった》",
+    upvotes: 1134,
+    trending: false,
+    tags: [
+      "ollama",
+      "local-llm",
+      "apple-silicon",
+      "qwen",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/mac_ai_lab_jp/articles/d64e9b417f49e1",
+      label: "zenn.dev·mac-ai-lab《Mac mini M4 24GBでOllamaを実測 ── 30Bは9Bの約1.8倍速い。ただし文脈4096以上で止まった》",
+      date: "2026-09-28",
+      dateLabel: "发布",
+    },
+    approach: "作者本业是整体院院长，另备一台实验用 Mac mini（Apple M4，内存 24GB），用 Ollama 0.33.0、同一套日语题，对照 9B（qwen3.5:9b／ornith:9b，含加长文脉）和 30B（qwen3:30b）。文内写明数字全部是 2026-09-23 测的，测量脚本和下稿有 AI 协助，数字和正文由作者核对。qwen3-coder:30b 写明已停测、数据没有。正文链到作者在 Booth 上的两件诊断工具。源文未点名 18 值平台。",
+    outcomes: [
+      "源披露：机器是 Mac mini（Apple M4，内存 24GB），Ollama 0.33.0，数字全部是 2026-09-23 测的。9B（qwen3.5:9b／ornith:9b）各条件下约 17 tok/s，载入后 5.4–6.9GB，全在 GPU。qwen3.5:9b 文脉 2048→32768 为 17.46→17.37 tok/s，增大约 1.0–1.2GB。既定文脉下 qwen3.5:9b 是 17.42 tok/s（范围 17.33–17.57），ornith:9b 是 17.15 tok/s，不要把 17.42 和 17.46 写成同一个数。qwen3:30b 文脉 2048 时 31.1 tok/s（3 次中位数），token 数上约是 9B 的 1.8 倍；载入约 19GB，一部分放到 CPU，运行时 Mac 空闲内存降到 7%。什么都不指定时，文脉 4096 和 8192 合计 16 次中 13 次因 GPU 内存不足停下（2048 则 8 次都正常）；停下的那些次都是 Ollama 用 mmap 把模型整份放到 GPU 侧。询问里加上 use_mmap: false 后，4096 和 8192 各 6 次都跑完。作者写明自己还没搞清「什么都不指定时」会走哪一种载入。qwen3-coder:30b 已停测，文内写数据没有，不要编造它的速度。这些数字只属于这台 24GB Mac mini、这次 Ollama 版本和这次日语题，不可外推。不要和 #1239 的 88.2、#1240 的 88.5、#1241 的 64–65 或近批其他 30B／约 17 tok/s 窗口写混。发布日必须写成 2026-09-28，不是测量日 09-23，也不是修订 10-15。",
+    ],
+    caveats: [
+      "导流：正文硬链作者诊断工具 https://booth.pm/ja/items/8758795 、https://booth.pm/ja/items/8988793 ，交付时均 GET 200，可列可达，按导流披露。作者显示名 mac-ai-lab，账号 mac_ai_lab_jp，本业是整体院院长，不是出版物组织，本条按个人。配图 4 张：https://static.zenn.studio/user-upload/698991e5798b-20260928.png、https://static.zenn.studio/user-upload/aad71d805043-20260928.png、https://static.zenn.studio/user-upload/ba374e215551-20260928.png、https://static.zenn.studio/user-upload/fcdc01d9a3ce-20260928.png，交付时均 GET 200，可列可达，不当导流。正文本机端点 http://127.0.0.1:11434/api/chat 交付时 GET 000（curl rc 7，连不上），不可达，须写全 URL。源文未点名 18 值平台，platforms 为 []。无 JSON-LD；body_updated_at 已到 2026-10-15，仍取首次发布 09-28，不要改用修订日或测量日。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 31.1 是文脉 2048 的中位数，16 次中 13 次停下，17.42 不是 17.46",
+        body: "请按原文核算：是不是 Mac mini M4 24GB 上 qwen3:30b 文脉 2048 时 31.1 tok/s（3 次中位数），约 1.8 倍于 9B；什么都不指定时文脉 4096 和 8192 合计 16 次中 13 次停下，加上 use_mmap:false 后各 6 次都跑完。qwen3.5:9b 2048→32768 是不是 17.46→17.37，既定文脉是 17.42，不要写成同一个数。qwen3-coder:30b 是不是已停测、没有数据。发布日是不是上海日历日 2026-09-28，不要写成测量日 09-23 或修订 10-15。本机 11434 这次是否连不上。",
+      },
+    ],
+    howItWorks: [
+      "先写下 30B 在文脉 2048 时中位 31.1 tok/s、约 1.8 倍于约 17 tok/s 的 9B，并写明载入约 19GB、空闲内存降到 7%。",
+      "再写清既定或加长文脉时 16 次中 13 次停下，use_mmap:false 后 6/6 跑完；17.42 不要写成 17.46，coder 没有数据。",
+      "最后写明发布日是上海 09-28，不是测量日或修订日，本机 11434 这次不可达，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-09-28T14:53:48.676+09:00 → UTC 2026-09-28T05:53:48.676Z、Asia/Shanghai 2026-09-28 13:53:48，取上海日历日 → 2026-09-28；body_updated_at 2026-10-15T14:56:07.668+09:00 已跨日，仍取首次发布，不要改用修订日 10-15，也不要把文内测量日 09-23 写成发布日；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-28。",
+    ],
+  },
+  {
+    id: "1244",
+    slug: "haty-1349-630",
+    title: "子代理对单循环的时延对照",
+    summary: "hatyibei（八兵卫）用 claude-sonnet-5-5 跑、haiku-5-5 打分，在等待为零的模拟电商客服上做 12 项×3 次×A/B，共 72 回，四路并行。主表（v2 严格量表）A 34/36（94.4%）对 B 35/36（97.2%），确定性检查两边都是 36/36；时延均值／中位／p90 为 13.49／13.60／18.06 秒对 6.30／7.03／8.49 秒；任务费用（开缓存、不含打分）0.0241 美元对 0.0093 美元；缓存读取占比 70.1% 对 87.4%。不要和 #1203 的 agent-cache 70.1% 写混。v1 是 31/36 对 33/36，正文用的是 v2。串行再测 12×1 是 12.74／13.15 对 6.52／7.04，费用 0.0264 对 0.0134 美元，不要和 13.49／6.30 写混。ChatGPT（和 Gemini）只审过草稿，不得写入 chatgpt，platforms 只记 claude。发布日必须写成 2026-10-24。",
+    description: "这是一篇个人把 Anthropic 官方「何时把子代理折进主循环」的主张，拿到模拟电商客服上实测的记录。主硬窗是 12 项全更快，均时 13.49 秒对 6.30 秒，费用 0.0241 对 0.0093 美元。platforms 只记 claude。发布日必须写成 2026-10-24。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/hatyibei/items/b3b6aa8874aab70717ff",
+    sourceLabel: "qiita.com·hatyibei《サブエージェントはメインループに「畳む」べきか？Anthropicの記事をモックECサポートで実測してみた》",
+    upvotes: 1135,
+    trending: false,
+    tags: [
+      "claude",
+      "agents",
+      "benchmark",
+      "cost",
+    ],
+    primarySource: {
+      url: "https://qiita.com/hatyibei/items/b3b6aa8874aab70717ff",
+      label: "qiita.com·hatyibei《サブエージェントはメインループに「畳む」べきか？Anthropicの記事をモックECサポートで実測してみた》",
+      date: "2026-10-24",
+      dateLabel: "发布",
+    },
+    approach: "作者按官方文章的主张，在工具等待为零的模拟电商客服上对比编排器+子代理（A）和单循环+技能（B）。运行时是 claude-sonnet-5-5，打分是 haiku-5-5。12 项各 3 次、A/B 共 72 回，四路并行。正文用的是 v2 量表；另有 A'（把配送工具交给退货担当）、A''（部分折进主循环）和串行再测。初稿曾请 Claude、ChatGPT 和 Gemini 审过，那只是草稿审阅，不是这 72 回的运行时。源文与实验仓在 GitHub。",
+    outcomes: [
+      "源披露：运行时 claude-sonnet-5-5，打分 haiku-5-5，12 项×3 次×A/B 共 72 回，四路并行，工具等待为零。主表是 v2 严格量表：A 34/36（94.4%）对 B 35/36（97.2%），确定性检查两边都是 36/36。时延均值／中位／p90 为 13.49／13.60／18.06 秒对 6.30／7.03／8.49 秒；任务费用（开缓存、不含打分器）0.0241 美元对 0.0093 美元；缓存读取占比 70.1% 对 87.4%。不要把 70.1% 写成 #1203 的 agent-cache 70.1%。B 在全部 12 项上都更快，中位倍率 2.16，范围 1.78–2.83。v1 量表是 31/36 对 33/36，正文用的是 v2，不要把 v1 写成主表。人再数一遍是 35/36 对 36/36，不是主表。串行再测 12×1：12.74／13.15 秒对 6.52／7.04 秒，费用 0.0264 对 0.0134 美元，不要和并行主表的 13.49／6.30 写混。A 的漏答是「没问到拥有数据的担当」；A' 3/3 修好了 T04；A'' 28 回没有出现官方例里的那种失败。合计约 5.1 美元是用量×标价的估算，不是账单；丢掉的约 1.58 美元没进合计。作者认为题偏容易、有天花板效应，质量看不出清楚差距。这些数字只属于这次模拟题、这次模型和这次并行设定，不可外推。与 #1226、#1193 同一天但主题不同。不要和 #1203 的 70.1% 写混。发布日必须写成 2026-10-24。",
+    ],
+    caveats: [
+      "导流：正文硬链作者实验仓 https://github.com/hatyibei/zenn-articles/tree/main/bench/subagent-fold ，交付时 GET 200，可列可达，按导流披露；配图 https://raw.githubusercontent.com/hatyibei/zenn-articles/main/images/subagent-bench/comparison.png 交付时 GET 200，可列可达，按导流披露（同仓配图）。官方文章 https://claude.com/ja/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop 交付时 GET 200，可列可达，是引用不是作者产品。https://platform.claude.com/docs/en/about-claude/pricing 跟随至 https://claude.com/app-unavailable-in-region ，HTTP 虽为 200，但是区域不可用页，不列入可达，须披露。正文 mermaid 嵌入不是导流。ChatGPT（和 Gemini）只审过文章草稿，不是这 72 回运行时，不得写入 chatgpt。这次运行时确是 Claude，platforms 只记 claude。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 13.49 对 6.30 是并行 v2 主表，70.1% 不要写成 #1203，ChatGPT 不得入平台",
+        body: "请按原文核算：主表是不是 v2、A 34/36 对 B 35/36，时延均值 13.49 秒对 6.30 秒，费用 0.0241 对 0.0093 美元，缓存读取 70.1% 对 87.4%。不要和串行再测的 12.74／6.52 或 v1 的 31/36 对 33/36 写混，也不要把 70.1% 写成 #1203。约 5.1 美元是不是用量×标价的估算而不是账单。ChatGPT 是不是只审草稿，不得写入 chatgpt，platforms 是否只记 claude。发布日是不是上海日历日 2026-10-24。定价页这次是否落到区域不可用。",
+      },
+    ],
+    howItWorks: [
+      "先写下并行 72 回的 v2 主表：12 项全更快，均时 13.49 秒对 6.30 秒，费用 0.0241 对 0.0093 美元，质量 34/36 对 35/36。",
+      "再写清 v1、人再数和串行再测都不是这张主表，70.1% 不要写成 #1203，5.1 美元只是估算。",
+      "最后写明 ChatGPT 只审草稿、不得写入 platforms，定价页这次区域不可用，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-24T21:06:54.000+09:00，与 Qiita API created_at 2026-10-24T21:06:54+09:00 一致 → UTC 2026-10-24T12:06:54Z、Asia/Shanghai 2026-10-24 20:06:54，取上海日历日 → 2026-10-24；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-24。与 #1226、#1193 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1245",
+    slug: "udon-1000-146",
+    title: "日英语输入计数的倍数对照",
+    summary: "udonAir 在考虑把聊天机器人从 Sonnet 4.6 切到 5 之前，先用 API 测了输入和输出 token。日语输入是 1.000 倍（完全一致）；英语 1.28–1.46 倍，Python 1.28 倍；4.5 与 4.6 的输入完全相同。日英对照里的日语「惩罚」从 1.92 倍缩到 1.32–1.46 倍，是因为英语变差了，不是日语变好。不要用带开销的 raw input_tokens 去算短文，否则会假造出约 1.2 倍。方法是把 T、TT、TTT 递增后再比增量，增量对得上。输出上，4.5→4.6 全部 7 项都增加，最大 1.62 倍；4.6→5 的方向随任务而变；有一次输出短了约 30%，token 只少 2%。日语聊天费用约 −7% 到 +12%。三个模型标价同为 3／15 美元每 MTok。thinking 关闭，输出 n=8。正文和 HTML 从未出现 Claude／Anthropic／ChatGPT 字样，不得因标签补 claude，platforms 为空。发布日必须写成 2026-08-01。",
+    description: "这是一篇个人在切换 Sonnet 版本前，先用 API 把输入计数和输出长度分开实测的记录。主硬窗是日语输入 1.000 倍、英语 1.28–1.46 倍。platforms 为空。发布日必须写成 2026-08-01。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/udonAir/items/3779c72e02e37d88b273",
+    sourceLabel: "qiita.com·udonAir《「Sonnet 5 にしたらトークン数が増える」は本当か、実測してみた》",
+    upvotes: 1136,
+    trending: false,
+    tags: [
+      "tokenizer",
+      "sonnet",
+      "cost",
+      "benchmark",
+    ],
+    primarySource: {
+      url: "https://qiita.com/udonAir/items/3779c72e02e37d88b273",
+      label: "qiita.com·udonAir《「Sonnet 5 にしたらトークン数が増える」は本当か、実測してみた》",
+      date: "2026-08-01",
+      dateLabel: "发布",
+    },
+    approach: "作者当时在考虑把聊天机器人从 Sonnet 4.6 切到 5（文内写的是曾考虑走 Bedrock），但这组测量是经 API、不是经 Bedrock。输入侧用同一段文字比三个模型数到的 token；为避免请求开销（文内写 128／157／172）把短文算成假的约 1.2 倍，改用 T、TT、TTT 递增后比对增量。输出侧看模型实际写多长。thinking 关闭。源文正文和 HTML 没有 Claude、Anthropic 或 ChatGPT 字样，话题标签不能用来补平台。",
+    outcomes: [
+      "源披露：输入侧，日语（散文、片假名偏多、汉字偏多）都是 1.000 倍，一个 token 都不差；英语 1.28–1.46 倍，Python 代码 1.28 倍；Sonnet 4.5 与 4.6 在试过的全部文本上输入完全相同。日英对译里看到的日语 token「惩罚」从 1.92 倍缩到 1.32–1.46 倍，作者写明是英语变差了，不是日语变好。不要用带开销的 raw input_tokens 直接去除以字数，短文会假造出约 1.2 倍；作者用 T／TT／TTT 递增，增量对得上。输出侧，4.5→4.6 全部 7 项都增加，最大 1.62 倍；4.6→5 的增减方向随任务而变（推理会变短，说明会变长）；有一次输出短了约 30%，token 只少 2%。三个模型标价同为输入 3、输出 15 美元每 MTok，token 增减会直接变成费用增减。日语聊天的结论是 4.6→5 大约 −7% 到 +12%，不像 4.5→4.6 那样出现 1.4–1.6 倍的跳变。thinking 关闭；输出比较的 n=8。这些数字只属于这次文本、这次 API 调用和关闭 thinking 的设定，不可外推。源文未点名 Claude／Anthropic／ChatGPT，不得写入 claude 或 chatgpt。发布日必须写成 2026-08-01。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。文内虽写曾考虑经 Bedrock 切换聊天机器人，这组测量是经 API、不是经 Bedrock。正文、HTML 均未出现 Claude、Anthropic 或 ChatGPT 字样，话题标签不能用来补 claude，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清日语输入是 1.000 倍，1.92→1.32–1.46 是英语变差，不得补 claude",
+        body: "请按原文核算：日语输入是不是 1.000 倍，英语 1.28–1.46 倍，Python 1.28 倍，4.5 与 4.6 输入完全相同。日语惩罚从 1.92 倍缩到 1.32–1.46 倍，是不是因为英语变差而不是日语变好。不要用 raw input_tokens 的开销去算短文。输出上 4.5→4.6 是不是 7 项全增、最大 1.62 倍；有一次输出短约 30%、token 只少 2%。正文是否从未出现 Claude／Anthropic／ChatGPT，不得因标签写入 claude。发布日是不是上海日历日 2026-08-01。",
+      },
+    ],
+    howItWorks: [
+      "先写下日语输入 1.000 倍、英语 1.28–1.46 倍，并说明要用 T／TT／TTT 的增量，不能直接用带开销的 raw input_tokens。",
+      "再写清 1.92→1.32–1.46 是英语变差，4.5→4.6 输出全增，4.6→5 方向随任务而变，日语聊天约 −7% 到 +12%。",
+      "最后写明这组测量走的是 API 不是 Bedrock，源文未点名 Claude，platforms 为空，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-01T20:22:15.000+09:00，与 Qiita API created_at 2026-08-01T20:22:15+09:00 一致 → UTC 2026-08-01T11:22:15Z、Asia/Shanghai 2026-08-01 19:22:15，取上海日历日 → 2026-08-01；dateModified／updated_at 同日 2026-08-01T20:33:44+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-01。",
+    ],
+  },
+  {
+    id: "1246",
+    slug: "jinn-1361-2596",
+    title: "测量会话一笔的额度对账",
+    summary: "jinno_ai 用 Devin CLI 的 session DB，把各次 assistant 节点的 num_tokens_preceding 加总，再和自做的周额度指针对到分。两个窗口都能对上：08-30 至 09-06 共 25 次会话 25.96 美元＝25.96 美元；09-06 起 24 次会话 6.81 美元＝6.81 美元。上一窗口 Astra 这 25.96 美元占合计 42.19 美元，指针显示额度 32.60 美元。最大一笔是测量用会话「Reply with exactly: t1」，13.61 美元（57 轮、1,361,453 token、23 秒，每轮约 26.7k 固定上下文）。测量 3 次会话 19.14 美元（约 80%），X 草稿 4.11 美元（约 20%），本文 1.43 美元。当前窗口 6.81 美元里，X 17 条占 4.61 美元（约 70%）。Luna 对照是价目换算：测量 19.14→0.38 美元（约 1/50），X 一条 0.28→0.006 美元（约 1/47），不是这次改在 Luna 上重跑。前一篇 18 轮缓存 4.77→0.95 美元不是本条主窗。GPT-6 Astra／Luna／Devin 都不在 18 值，不得写入 chatgpt，platforms 为空。发布日必须写成 2026-09-09，不要写成源时区的 09-10。",
+    description: "这是一篇个人把 Devin CLI 本地 session DB 加总后，和周额度指针对到分、找出额度溶在哪的记录。主硬窗是「Reply with exactly: t1」这一笔 13.61 美元，以及两个窗口都能对到分。platforms 为空。发布日必须写成 2026-09-09。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/jinno_ai/items/0d9124d826ff190d4369",
+    sourceLabel: "qiita.com·jinno_ai《「Reply with exactly: t1」が$13.61だった — GPT-6 Astraの週枠が溶ける場所の実測》",
+    upvotes: 1137,
+    trending: false,
+    tags: [
+      "cost",
+      "devin",
+      "quota",
+      "tokens",
+    ],
+    primarySource: {
+      url: "https://qiita.com/jinno_ai/items/0d9124d826ff190d4369",
+      label: "qiita.com·jinno_ai《「Reply with exactly: t1」が$13.61だった — GPT-6 Astraの週枠が溶ける場所の実測》",
+      date: "2026-09-09",
+      dateLabel: "发布",
+    },
+    approach: "作者日常用 Devin CLI 跑 gpt-6-astra-medium，从本地 session DB 读取每次 assistant 响应时的 num_tokens_preceding（API 返回的实数），按会话内全部节点加总，再乘 rate card 标价，和先前写过的周额度指针（整数百分比翻转间隔标定）对账。文内强调必须用加总，不能用最大值或终值，否则多轮会话会低一个数量级。Luna 数字是「同一行为若走另一档」的标价换算，不是这次改在 Luna 上重跑。正文有咨询站点导流。GPT-6 Astra、Luna、Devin 都不在 18 值。",
+    outcomes: [
+      "源披露：两个窗口的 session DB 加总与指针能对到分：08-30 至 09-06 共 25 次会话 25.96 美元＝25.96 美元；09-06 起 24 次会话 6.81 美元＝6.81 美元。上一窗口 Astra 这 25.96 美元落在合计 42.19 美元里，指针显示的额度是 32.60 美元。最大一笔是测量用会话「Reply with exactly: t1」，13.61 美元（57 轮、1,361,453 token、23 秒，每轮约 26.7k 固定上下文）。上一窗口的构成是：测量 3 次会话 19.14 美元（约 80%），X 草稿 4.11 美元（约 20%），本文起草 1.43 美元。当前窗口 6.81 美元里，X 17 条占 4.61 美元（约 70%）。Luna 对照是同一行为按另一档标价换算：测量 19.14→0.38 美元（约 1/50），X 一条 0.28→0.006 美元（约 1/47），不是这次实际改在 Luna 上重跑，不要写成已测到的 Luna 费用。前一篇 18 轮缓存从标价 4.77 美元降到 0.95 美元，是上一篇文章的窗口，不是本条主窗，不要写进来。这些数字只属于这次 Devin CLI 记录、这次 Astra 标价和这两个窗口，不可外推。GPT-6 Astra、gpt-5-6-luna-medium、Devin 都不在 18 值，不得写入 chatgpt，platforms 为 []。发布日必须写成 2026-09-09：JSON-LD／API 虽是源时区 2026-09-10T00:57:45+09:00，换到 UTC 后是 09-09 15:57:45Z，上海日历日是 2026-09-09 23:57:45，不要写成 09-10。",
+    ],
+    caveats: [
+      "导流：正文硬链 https://wakuflo.com/?utm_source=qiita&utm_medium=organic&utm_campaign=astra-quota-burn-001 ，交付时 GET 200，可列可达，按导流披露；站点根 https://wakuflo.com/ 交付时同样 GET 200，可列可达，文内是咨询向呼告。同作者相关篇 https://qiita.com/jinno_ai/items/0d46c7cb0f36343943cf、https://qiita.com/jinno_ai/items/8110c5e1b94010b5bc84、https://qiita.com/jinno_ai/items/d9eea3a72922ff77f699 交付时均 GET 200，可列可达，不是本条主源；不要把前一篇的缓存 4.77→0.95 美元写进本条主窗。正文未配图。GPT-6 Astra／Luna／Devin 都不在 18 值，源文未称为 ChatGPT，不得写入 chatgpt，platforms 为 []。发布日必须写成上海日历日 2026-09-09，不要写成源时区的 09-10。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清发布日是上海 09-09 不是源时区 09-10，13.61 是测量会话，Luna 只是换算",
+        body: "请按原文核算：JSON-LD／API 的 2026-09-10T00:57:45+09:00 换到上海后是不是 2026-09-09 23:57:45，必须写成 2026-09-09，不要写成 09-10。两个窗口是不是都能对到分（25.96＝25.96，6.81＝6.81）。最大一笔是不是「Reply with exactly: t1」的 13.61 美元。Luna 的 19.14→0.38 和 0.28→0.006 是不是标价换算，不是这次重跑。不要把前一篇的 4.77→0.95 写进来。GPT-6 Astra／Luna／Devin 是否不得写入 chatgpt。",
+      },
+    ],
+    howItWorks: [
+      "先写下必须按上海日历日写成 2026-09-09，不要用源时区的 09-10，并写两个窗口都能对到分。",
+      "再写下最大一笔是测量会话 13.61 美元，上一窗口约 80% 花在测量、约 20% 花在 X 草稿。",
+      "最后写明 Luna 数字只是标价换算，前一篇缓存不是本条主窗，Astra／Luna／Devin 不得写入 chatgpt，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-10T00:57:45.000+09:00，与 Qiita API created_at 2026-09-10T00:57:45+09:00 一致 → UTC 2026-09-09T15:57:45Z、Asia/Shanghai 2026-09-09 23:57:45，取上海日历日 → 2026-09-09，不要写成源时区的 09-10；dateModified／updated_at 2026-09-10T00:57:53+09:00，换到上海仍是 09-09 23:57:53，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-09。",
+    ],
+  },
+  {
+    id: "1247",
+    slug: "soge-850-441",
+    title: "约八百五十个文件的索引用时",
+    summary: "壮玄 浅野（sogenasano）把自己 Obsidian 库里约 850 个文件做成 6,187 块，在 M4 Pro 上嵌入加索引用了 4 分 41 秒，索引文件 ~/.cache/qmd/index.sqlite 约 54MB。经 MCP 搜索大约 10–20 秒，重排占了大部分时间。文内「5 分弱」不是精确的 4 分 41 秒，不要写成同一个数。qmd 是 Shopify CEO Tobi 的个人 OSS，不是作者产品。这次确有 Claude Code MCP 和无头演示，platforms 记 claude。Dify 只出现在「以前介绍过类似 RAG」里，不得写入 dify。发布日必须写成 2026-07-05，不要改用修订日 07-23。",
+    description: "这是一篇个人把本地 qmd 接到 Obsidian 和 Claude Code MCP、并记下索引用时的实践。主硬窗是约 850 个文件、6,187 块、M4 Pro 上 4 分 41 秒。platforms 只记 claude。发布日必须写成 2026-07-05。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/sogenasano/items/eedbe896cc0ecb7021e1",
+    sourceLabel: "qiita.com·壮玄 浅野《うろ覚えの一文でメモが一発ヒット。Shopify CEOが個人開発したローカルRAG「qmd」×Obsidian×Claude Codeをやってみた結果》",
+    upvotes: 1138,
+    trending: false,
+    tags: [
+      "claude-code",
+      "mcp",
+      "rag",
+      "obsidian",
+    ],
+    primarySource: {
+      url: "https://qiita.com/sogenasano/items/eedbe896cc0ecb7021e1",
+      label: "qiita.com·壮玄 浅野《うろ覚えの一文でメモが一発ヒット。Shopify CEOが個人開発したローカルRAG「qmd」×Obsidian×Claude Codeをやってみた結果》",
+      date: "2026-07-05",
+      dateLabel: "发布",
+    },
+    approach: "作者把 Tobi Lütke 的开源 Markdown 搜索引擎 qmd 装到自己的 Obsidian 库，做本地嵌入和索引，再经 MCP 接到 Claude Code，并用无头模式做了演示。嵌入流水线没有自写。文内提到自己以前介绍过类似的 RAG（Dify），那只是前情，不是这次实践。",
+    outcomes: [
+      "源披露：约 850 个文件做成 6,187 块，在 M4 Pro 上嵌入加索引用了 4 分 41 秒，索引落在 ~/.cache/qmd/index.sqlite，约 54MB。经 MCP 搜索大约 10–20 秒，作者写明重排占了大部分时间。文内「5 分弱」是概数，不是精确的 4 分 41 秒，不要把 5 分弱写成计时结果。qmd 是 Shopify CEO Tobi Lütke 的个人 OSS，不是作者产品。这些数字只属于这条约 850 个文件的库、这台 M4 Pro 和这次 qmd 版本，不可外推。这次确有 Claude Code MCP 和无头演示，platforms 记 claude。Dify 只在「以前介绍过类似 RAG」里出现，不得写入 dify。发布日必须写成 2026-07-05，不要改用修订日 07-23。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。qmd 上游 https://github.com/tobi/qmd 交付时 GET 200，可列可达，是 Tobi／Shopify CEO 的 OSS，不是作者产品。正文安装示例里出现尾随反引号的字面（github.com/tobi/qmd`），未作为不完整地址去 GET；完整 URL 已按上面取出。https://www.npmjs.com/package/qmd 交付时 GET 403（标题 Just a moment...），是挑战页，不列入可达，须披露；作者也提醒过这不是同一软件。参考篇 https://blog.tumf.dev/posts/diary/2026/2/10/qmd-obsidian-claude-code-mcp/ 交付时 GET 200，可列可达，不是本条主源。https://bun.sh/install 交付时 GET 200。https://modelcontextprotocol.io/ 跟随至 https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro ，最终 GET 200，可列可达，是文档站不是作者产品。配图 3 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/590211/3f733a57-8bf1-42ab-9ddd-792dc9be919a.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/590211/9a7049cc-0f72-4a94-a1c3-ae0b10ac26fa.png、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/590211/b6b12f3d-3ff0-4a75-b972-ec7667df9a03.png，交付时均 GET 200，可列可达，不当导流。正文 mermaid 嵌入不是导流。这次确有 Claude Code MCP 实践，platforms 记 claude。Dify 只是前情，不得写入 dify。发布日必须写成 2026-07-05，不要改用修订日 07-23。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 4 分 41 秒不是「5 分弱」，Dify 不得入平台，发布日是 07-05",
+        body: "请按原文核算：是不是约 850 个文件做成 6,187 块，M4 Pro 上索引 4 分 41 秒，索引约 54MB，MCP 搜索大约 10–20 秒。不要把文内「5 分弱」写成精确计时。qmd 是不是 Tobi 的 OSS 而不是作者产品。npm 上的 qmd 包这次是否 403 挑战、不列入可达。Dify 是不是只在前情里出现，不得写入 dify。platforms 是否只记 claude。发布日是不是上海日历日 2026-07-05，不要写成修订日 07-23。",
+      },
+    ],
+    howItWorks: [
+      "先写下约 850 个文件做成 6,187 块，M4 Pro 上索引精确计时是 4 分 41 秒，不要写成「5 分弱」。",
+      "再写下 MCP 搜索大约 10–20 秒、重排占大部分时间，qmd 不是作者产品。",
+      "最后写明这次确有 Claude Code MCP，Dify 只是前情，发布日是上海 07-05 不是 07-23，npm 包这次不可达，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-07-05T21:08:00.000+09:00，与 Qiita API created_at 2026-07-05T21:08:00+09:00 一致 → UTC 2026-07-05T12:08:00Z、Asia/Shanghai 2026-07-05 20:08:00，取上海日历日 → 2026-07-05；dateModified／updated_at 2026-07-23T08:21:20+09:00 已跨日，仍取首次发布，不要改用修订日 07-23；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-05。",
+    ],
   }
 ];
 
