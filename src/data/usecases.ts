@@ -79948,6 +79948,519 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
       "有 JSON-LD；datePublished 2026-07-29T20:00:08.000+09:00，与 API created_at 2026-07-29T20:00:08+09:00 一致 → UTC 2026-07-29T11:00:08Z、Asia/Shanghai 2026-07-29 19:00:08；updated_at 与发布相同，取 published → 2026-07-29；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-29。",
       "约 180〜260 日元／9〜13 日元是实測，约 1,185／约 3,150 是价目。「每月 20 次」是想定。不要和 #1155 的约 3,150 对 0 日元或「不到 100 日元」的计算混用。发布日是 2026-07-29。",
     ],
+  },
+  {
+    id: "1168",
+    slug: "main-33-35",
+    title: "Mainya：用自己朗诵的日语约 56 秒、英语约 59 秒各 1 本，在 GPU 全无的笔记本上对照本地 Whisper small 和 Zoom Scribe API Fast。日语合计 33.0 秒（读入 2.7＋转写 30.2）对 API 3.5 秒；英语合计 17.3 秒（读入 1.9＋转写 15.4）对 API 3.0 秒。内存峰值约 1.6GB 对约 43MB（约 1/38）。不要把 33.0 对 3.5 和 17.3 对 3.0 混用，也不要把约 10 倍速度写成英语对照，或把约 32 日元/小时的价目和这次不到 1 日元的验证、或 1.6GB 对 43MB 写错边。发布日必须写成 2026-07-10。platforms 为 []。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+    summary: "Mainya 用自己朗诵的日语约 56 秒、英语约 59 秒各 1 本，对照本地 Whisper small 和 Zoom Scribe API Fast。日语 33.0 秒对 3.5 秒，英语 17.3 秒对 3.0 秒；内存峰值约 1.6GB 对约 43MB（约 1/38）。不要把两档耗时混用，也不要把约 10 倍写成英语对照，或把约 32 日元/小时的价目和这次不到 1 日元的验证写错边。发布日必须写成 2026-07-10。platforms 为 []。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+    description: "面向已经打算用 Whisper 或 Zoom Scribe 做转写、却还把日语 33.0 秒对 3.5 秒写成英语 17.3 秒对 3.0 秒，或把约 10 倍速度和约 1/38 内存、或约 32 日元/小时的价目和这次不到 1 日元的验证写错边的人：把两档耗时、内存和价目分开写，并记住发布日是 2026-07-10。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/Mainya/items/2b253472e169457ac316",
+    sourceLabel: "qiita.com·Mainya《定番のWhisperと新登場のZoom Scribe APIで日本語・英語の文字起こしを比べてみた》",
+    upvotes: 1059,
+    trending: false,
+    tags: [
+      "Python",
+      "whisper",
+      "Zoom",
+      "文字起こし",
+    ],
+    primarySource: {
+      url: "https://qiita.com/Mainya/items/2b253472e169457ac316",
+      label: "qiita.com·Mainya《定番のWhisperと新登場のZoom Scribe APIで日本語・英語の文字起こしを比べてみた》",
+      date: "2026-07-10",
+      dateLabel: "发布",
+    },
+    approach: "作者自己朗诵并录音，日语约 1 分、290 字（实测音频 56 秒），英语约 1 分、约 120 词（实测音频 59 秒），故意塞进同音异义词、数字日期、片假名术语和绕口令。环境是 Windows 11 Pro、Ryzen 7 5825U、16GB 内存、Python 3.14.3、没有 GPU。本地 Whisper 用 small 模型；Zoom Scribe 走 Fast。日语合计 33.0 秒（模型读入 2.7 秒＋转写 30.2 秒），API 响应 3.5 秒；英语合计 17.3 秒（读入 1.9 秒＋转写 15.4 秒），API 响应 3.0 秒。内存峰值约 1.6GB 对约 43MB，约 1/38。作者把日语 33.0 对 3.5 说成约 10 倍，不要写成英语对照（17.3 对 3.0 大约 5.8 倍）。价目上 Fast 每小时 0.20 美元、Batch 每小时 0.15 美元，按 1 美元＝160 日元算约 32 日元/小时；免费试用 20 美元分（Fast 约 100 小时）是价目和换算，不是这次账单。这次验证写明在免费额度内、不到 1 日元。large 模型「近 10GB」是「据说」，不是本次实測。源文未称为 ChatGPT，Whisper 不能代替写入 chatgpt，platforms 为 []。发布日必须写成 2026-07-10。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+    outcomes: [
+      "源披露：日语约 56 秒合计 33.0 秒（读入 2.7＋转写 30.2）对 API 3.5 秒；英语约 59 秒合计 17.3 秒（读入 1.9＋转写 15.4）对 API 3.0 秒。内存峰值约 1.6GB 对约 43MB（约 1/38）。不要把 33.0 对 3.5 写成 17.3 对 3.0，也不要把约 10 倍速度写成英语对照，或把约 32 日元/小时的价目和这次不到 1 日元的验证写错边。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-07-10。源文未称为 ChatGPT，不得因 Whisper 写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：正文作者项目 https://github.com/UtsumiYoji/realtime-english-transcriber（标题 GitHub - UtsumiYoji/realtime-english-transcriber · GitHub） 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。正文未配图（仅有 Qiita mermaid 嵌入，按页铬跳过，不列入须核、不当导流）。一次资料／文内文档与仓 https://zoom.us/pricing/developer（标题 Error - Zoom）、https://marketplace.zoom.us/（标题 App Marketplace）、https://www.zoom.com/en/products/ai-services/（标题 AI Services Developer Portal）、https://www.zoom.com/en/products/ai-services/scribe-api/（标题 Zoom Scribe: Speech-To-Text API | Zoom）、https://developers.zoom.us/docs/ai-services/scribe/（标题 Scribe API - AI Services - Zoom Developer Docs）、https://github.com/openai/whisper（标题 GitHub - openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision · GitHub） 交付时均 GET 200，可列可达，不当本条主源。其中 https://zoom.us/pricing/developer 交付时 GET 200（标题 Error - Zoom），仍按 200 可列可达并披露标题。源文写出的 API 端点 https://api.zoom.us/v2/aiservices/scribe/transcribe 交付时 HTTP 404，不列入可达，须写出完整 URL 并披露状态。提取时带尾部反引号的串不计入须核，已改核清洗后的完整 URL。作者资料 website_url 为空，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 33.0 对 3.5 不是 17.3 对 3.0，再谈约 10 倍和 1/38",
+        body: "请按原文核算：是不是日语约 56 秒的合计 33.0 秒（读入 2.7 秒＋转写 30.2 秒）对 Zoom Scribe API 3.5 秒，英语约 59 秒的合计 17.3 秒（读入 1.9 秒＋转写 15.4 秒）对 API 3.0 秒。约 10 倍是不是按日语 33.0 对 3.5 说的，不要写成英语对照。内存峰值是不是约 1.6GB 对约 43MB（约 1/38），不要和耗时写错边。约 32 日元/小时是不是按 Fast 0.20 美元、1 美元＝160 日元的价目换算，这次验证是不是写明不到 1 日元。large 近 10GB 是不是「据说」，不是本次实測。发布日是不是 2026-07-10。源文是不是未称为 ChatGPT。这些是不是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写日语 33.0 秒对 3.5 秒和英语 17.3 秒对 3.0 秒，不要合成一笔。",
+      "约 10 倍只对日语那一档；约 1/38 是内存；约 32 日元/小时是价目，不到 1 日元是这次验证。",
+      "发布日取 2026-07-10。源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-07-10T22:26:22.000+09:00，与 API created_at 2026-07-10T22:26:22+09:00 一致 → UTC 2026-07-10T13:26:22Z、Asia/Shanghai 2026-07-10 21:26:22；updated_at 2026-07-10T23:35:29+09:00，晚于发布但仍是同一日历日，取 published → 2026-07-10；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-10。",
+      "33.0 对 3.5 不是 17.3 对 3.0；约 10 倍不是英语对照；约 1.6GB 对约 43MB 不是耗时。不要把约 32 日元/小时的价目和这次不到 1 日元混用，也不要和 156 #1155 的 Whisper 0.006 美元/分或 157 #1167 的自作 180〜260 日元混用。",
+    ],
+  },
+  {
+    id: "1169",
+    slug: "tori-100-31",
+    title: "Toriumi-desu／Ruma Toriumi：看到 Anthropic「系统提示删掉 80% 以上、编码评测没有可测下降」之后，把个人 Claude Code 环境重做一遍。CLAUDE.md 从 100 行、6,889 字节收到 31 行、2,474 字节，禁止形 16 件收到 4 件；agents 从 10 体收到 5 体，description 正文写 17,248B→1,017B（94% 削减），文首摘要是合计 17,258B，有 10 字节之差。claude doctor 上预估会少 5.4k，实測少 2.2k（9.9k→7.7k、164 件→74 件），预估偏了 2.5 倍。不要把官方 80% 写成作者的 94%，也不要把 100→31 和 17,248B→1,017B，或 5.4k 预估和 2.2k 实測混用。发布日必须写成 2026-07-27，不要因 UTC 写成 2026-07-26。platforms 记 claude。这些是作者自己这一份环境上的实測，不可外推。",
+    summary: "Toriumi-desu 把个人 Claude Code 环境重做一遍：CLAUDE.md 100 行→31 行，agents 10 体→5 体，description 正文 17,248B→1,017B（94%）。doctor 上预估少 5.4k，实測少 2.2k（9.9k→7.7k、164→74），偏了 2.5 倍。不要把官方 80% 写成 94%，也不要把 100→31 和 17,248B→1,017B，或 5.4k 和 2.2k 混用。发布日必须写成 2026-07-27，不要因 UTC 写成 2026-07-26。platforms 记 claude。这些是作者自己这一份环境上的实測，不可外推。",
+    description: "面向已经打算按「删掉 80%」去瘦身 Claude Code、却还把官方 80% 写成作者的 94%，或把 100 行→31 行写成 17,248B→1,017B，或把预估 5.4k 写成实測 2.2k 的人：把官方口径、行数、字节和 doctor 实測分开写，并记住发布日是 2026-07-27。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/Toriumi-desu/items/19cc2dd59f3dc03d4602",
+    sourceLabel: "qiita.com·Toriumi-desu《初学者が Opus5君出現により、Claude Codeの環境1日で全部やり直した話》",
+    upvotes: 1060,
+    trending: false,
+    tags: [
+      "ClaudeCode",
+      "ContextEngineering",
+      "Git",
+      "permission",
+      "ポエム",
+    ],
+    primarySource: {
+      url: "https://qiita.com/Toriumi-desu/items/19cc2dd59f3dc03d4602",
+      label: "qiita.com·Toriumi-desu《初学者が Opus5君出現により、Claude Codeの環境1日で全部やり直した話》",
+      date: "2026-07-27",
+      dateLabel: "发布",
+    },
+    approach: "作者看到 Anthropic 说面向 Opus 5／Fable 5，把 Claude Code 系统提示删掉 80% 以上、编码评测没有可测下降，对照自己当时的 ~/.claude：CLAUDE.md 100 行、agents description 文首写合计 17,258B、skills 164 个，决定重做。CLAUDE.md 从 100 行、6,889 字节收到 31 行、2,474 字节，禁止形 16 件收到 4 件，留下的 4 件都是安全系。agents 从 10 体收到 5 体（删掉未使用 4 体和重复 1 体），description 正文写 17,248 字节→1,017 字节（94% 削减）；文首摘要是合计 17,258B，和 17,248 有 10 字节之差，94% 按 17,248 起点写。削完做了 3 本验证，effort 保持 medium 全部通过。后来才知道 claude doctor：生涯 438 次启动、最近 50 个会话。Skills 实測 9.9k→7.7k、164 件→74 件（删掉 90 件），预估会少 5.4k，实測少 2.2k，按件数预估偏了 2.5 倍。不要把官方 80% 写成作者的 94%，也不要把 100→31 和 17,248B→1,017B，或 16→4、10→5，或 5.4k 预估和 2.2k 实測、9.9k→7.7k 和 164→74 混用。也不要和 155 #1147 的 AGENTS.md 278→51、CLAUDE.md 278→9 混用。发布日必须写成 2026-07-27（源时区 03:19 → UTC 07-26 18:19 → 上海 07-27 02:19），不要因 UTC 已是 07-26 改日。platforms 记 claude。这些是作者自己这一份环境上的实測，不可外推。",
+    outcomes: [
+      "源披露：CLAUDE.md 从 100 行、6,889 字节收到 31 行、2,474 字节；agents 从 10 体收到 5 体，description 正文 17,248B→1,017B（94%），文首摘要是合计 17,258B。doctor 上预估少 5.4k，实測少 2.2k（9.9k→7.7k、164 件→74 件）。不要把官方 80% 写成 94%，也不要把 100→31 和 17,248B→1,017B，或 5.4k 和 2.2k 混用。这些是作者自己这一份环境上的实測，不可外推。",
+      "platforms 记 claude。发布日必须写成 2026-07-27，不要因 UTC 写成 2026-07-26。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图（仅有 Qiita link-card 嵌入，按页铬跳过，不列入须核、不当导流）。相关篇 https://qiita.com/Toriumi-desu/items/9fab89c283aba44670a1（标题 初学者が スキル139個を棚卸しした1ヶ月後、自分の解決策をAnthropicに全否定された話 #Security - Qiita） 交付时 GET 200，不另作本条主源，可列可达。一次资料／文内文档 https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models（标题 The new rules of context engineering for Claude 5 generation models / claude.dev Blog）、https://code.claude.com/docs/en/skills（标题 Extend Claude with skills - Claude Code Docs） 交付时均 GET 200，可列可达，不当本条主源。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清官方 80% 不是作者的 94%，再谈 100→31 和 5.4k 对 2.2k",
+        body: "请按原文核算：Anthropic 的 80% 以上是不是官方系统提示口径，不是作者自己的 94%。CLAUDE.md 是不是 100 行、6,889 字节收到 31 行、2,474 字节，禁止形 16 件收到 4 件。agents 是不是 10 体收到 5 体，description 正文是不是 17,248B→1,017B（94%），文首摘要是不是合计 17,258B，有 10 字节之差。3 本验证是不是 medium 全部通过。doctor 上预估是不是少 5.4k，实測是不是少 2.2k（9.9k→7.7k、164 件→74 件），偏了 2.5 倍。发布日是不是 2026-07-27，不要写成 2026-07-26。这些是不是作者自己这一份环境上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写官方 80% 和作者 description 的 94%，不要合成一笔。",
+      "100 行→31 行不是 17,248B→1,017B；5.4k 是预估，2.2k 是实測（9.9k→7.7k）。",
+      "发布日取 2026-07-27，不要因 UTC 写成 2026-07-26。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-07-27T03:19:02.000+09:00，与 API created_at 2026-07-27T03:19:02+09:00 一致 → UTC 2026-07-26T18:19:02Z、Asia/Shanghai 2026-07-27 02:19:02；updated_at 与发布相同，取 published → 2026-07-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-07-27。不要因 UTC 写成 2026-07-26。",
+      "官方 80% 不是作者的 94%；100→31 不是 17,248B→1,017B；5.4k 不是 2.2k。文首 17,258B 和正文 17,248B 不要 silently 合成一笔。不要和 155 #1147 的 278→51／278→9 混用。",
+    ],
+  },
+  {
+    id: "1170",
+    slug: "civi-1gb-889",
+    title: "civicshigeomi：官方建议内存 4GB 以上的 Open WebUI 0.11.0，在樱花 VPS 1GB 套餐上试。swap 不加时启动到一半内存不够、容器反复重启；加上 2GB swap 后能够启动。本地 Embedding 首次确认会下载约 889MB 模型，后来改送到樱花 AI Engine。最终在 1 用户验证里，能从 Open WebUI 聊天连上 AI Engine。不要把官方 4GB 建议写成作者推荐 1GB，也不要把约 889MB 的下载和「已经能量多用户」混用。源文里的 ChatGPT 只是「ChatGPT 那样的界面」，不是这次实际使用。发布日必须写成 2026-08-25。platforms 为 []。这些是作者这一次 1GB 环境上的验证，不可外推。",
+    summary: "civicshigeomi 在樱花 VPS 1GB 上跑 Open WebUI 0.11.0：不加 swap 就启动失败、反复重启；加上 2GB swap 后能够启动。本地 Embedding 首次会下载约 889MB，后来改送到樱花 AI Engine。1 用户验证里聊天能够连上。不要把官方 4GB 建议写成 1GB 推荐，也不要把约 889MB 说成已经能量多用户。源文未把这次实践称为 ChatGPT。发布日必须写成 2026-08-25。platforms 为 []。这些是作者这一次 1GB 环境上的验证，不可外推。",
+    description: "面向已经打算把 Open WebUI 塞进 1GB VPS、却还把官方 4GB 建议写成「1GB 就够」，或把约 889MB 的本地 Embedding 下载和「已经能量多用户」写错边的人：把启动失败、2GB swap 和 889MB 分开写，并记住发布日是 2026-08-25。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/civicshigeomi/items/1abd8d1c3a984e7158fb",
+    sourceLabel: "qiita.com·civicshigeomi《公式4GB推奨のOpen WebUIは1GB VPSで動く？ さくらのAI Engineへ処理を逃がして検証した》",
+    upvotes: 1061,
+    trending: false,
+    tags: [
+      "さくらのAI",
+      "さくらのVPS",
+      "OpenWebUI",
+    ],
+    primarySource: {
+      url: "https://qiita.com/civicshigeomi/items/1abd8d1c3a984e7158fb",
+      label: "qiita.com·civicshigeomi《公式4GB推奨のOpen WebUIは1GB VPSで動く？ さくらのAI Engineへ処理を逃がして検証した》",
+      date: "2026-08-25",
+      dateLabel: "发布",
+    },
+    approach: "作者想在便宜的樱花 VPS 1G（虚拟 2 核／内存 1GB／SSD 50GB、Ubuntu 24.04、Docker 29.1.3、Open WebUI 0.11.0 main-slim）上，把 LLM、Embedding 和语音识别尽量送到樱花 AI Engine，只把 Open WebUI 当窗口。官方和樱花知识文都建议稳定使用要 4GB 以上。不加 swap 时，启动到一半内存不够，容器反复重启；加上 2GB swap 后能够启动。这不是「凡是 1GB 都必须 2GB swap」，只是这次环境上的实測。本地 Embedding 首次确认会下载约 889MB 模型，后来改成 OpenAI 兼容接口去调用 multilingual-e5-large。STT 也指向 whisper-large-v3-turbo。SQLite 按官方低内存示例限制了 pool／cache／mmap。最终在 1 用户验证里，能从 Open WebUI 聊天连上 AI Engine。作者写明做了简单的多用户负荷试验，但达不到公开给很多人用的规模；也还没有实测 Chat／Embedding／STT 会吃掉多少请求。3000 请求是活动名，不是这次已经用尽的账单。源文两处「ChatGPT」都是「那样的界面／ChatGPT 风」，不是这次实际使用，OpenAI 兼容也不能代替写入 chatgpt，platforms 为 []。不要把官方 4GB 建议写成作者推荐 1GB，也不要把约 889MB 和「已经能量多用户」混用。发布日必须写成 2026-08-25。这些是作者这一次 1GB 环境上的验证，不可外推。",
+    outcomes: [
+      "源披露：1GB 不加 swap 时启动失败、容器反复重启；加上 2GB swap 后能够启动。本地 Embedding 首次会下载约 889MB，后来改送到樱花 AI Engine。1 用户验证里聊天能够连上。不要把官方 4GB 建议写成 1GB 推荐，也不要把约 889MB 说成已经能量多用户。这些是作者这一次 1GB 环境上的验证，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-08-25。源文未把这次实践称为 ChatGPT。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图（仅有 Qiita link-card 嵌入，按页铬跳过，不列入须核、不当导流）。一次资料／文内文档与安装源 https://qiita.com/official-events/bd14d28b53326d318fec（标题 OpenAI・Anthropic互換APIを無料で使おう！「さくらのAI Engine」3,000リクエスト使い切りチャレンジ - Qiita）、https://knowledge.sakura.ad.jp/48579/（标题 さくらのVPSでつくるプライベートAI環境：Open WebUIを構築して検索機能を有効化してみた | さくらのナレッジ）、https://manual.sakura.ad.jp/api/cloud/ai-engine/inference.html（标题 さくらのクラウド API ポータル）、https://manual.sakura.ad.jp/cloud/ai-engine/03-operation-guide.html（标题 操作ガイド | さくらのクラウド マニュアル）、https://manual.sakura.ad.jp/vps/startupscript/setup-update.html（标题 Setup and update — さくらの VPS マニュアル）、https://docs.openwebui.com/reference/env-configuration/（标题 Environment Variable Configuration / Open WebUI）、https://docs.openwebui.com/troubleshooting/performance/（标题 Performance & RAM / Open WebUI）、https://docs.openwebui.com/features/chat-conversations/audio/speech-to-text/openai-stt-integration/（标题 OpenAI STT Integration / Open WebUI）、https://docs.docker.com/engine/network/packet-filtering-firewalls/（标题 Packet filtering and firewalls | Docker Docs）、https://caddyserver.com/docs/running（标题 Keep Caddy Running — Caddy Documentation）、https://manual.sakura.ad.jp/api/cloud/portal/?api=ai-engine-inference-api（标题 さくらのクラウド API ポータル）、https://dl.cloudsmith.io/public/caddy/stable/gpg.key、https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt 交付时均 GET 200，可列可达，不当本条主源。https://www.sakura.ad.jp/ai-engine/ 交付时 HTTP 404（标题 ページが見つかりません | さくらインターネット），不列入可达，须写出完整 URL 并披露状态。源文写出的 API 端点 https://api.ai.sakura.ad.jp/v1 交付时 HTTP 404，不列入可达，须写出完整 URL 并披露状态。https://qiita.com/official-events/bd14d28b53326d318fec 是活动页，不是作者产品，不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 1GB 不加 swap 是失败，再谈 2GB swap 和约 889MB",
+        body: "请按原文核算：官方建议是不是 4GB 以上，不是作者推荐改用 1GB。不加 swap 时是不是启动到一半内存不够、容器反复重启；加上 2GB swap 后是不是能够启动。本地 Embedding 首次是不是确认会下载约 889MB。1 用户验证里是不是能聊天连上 AI Engine，多用户是不是只做了简单试验、作者写明还不够公开规模。3000 请求是不是活动名，不是这次用尽的账单。源文的 ChatGPT 是不是只指界面，不是这次实际使用。发布日是不是 2026-08-25。这些是不是作者这一次 1GB 环境上的验证，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写清不加 swap 就启动失败，2GB swap 之后才能够启动，不要写成「1GB 天然够用」。",
+      "约 889MB 是本地 Embedding 首次下载，不要和「已经能量多用户」混用。",
+      "发布日取 2026-08-25。源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-25T23:58:51.000+09:00，与 API created_at 2026-08-25T23:58:51+09:00 一致 → UTC 2026-08-25T14:58:51Z、Asia/Shanghai 2026-08-25 22:58:51；updated_at 与发布相同，取 published → 2026-08-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-25。",
+      "官方 4GB 不是作者推荐 1GB；2GB swap 是这次能够启动的条件；约 889MB 不是多用户容量。OpenAI 兼容和「ChatGPT 风」都不得写入 chatgpt。",
+    ],
+  },
+  {
+    id: "1171",
+    slug: "thre-2of10",
+    title: "threebottoles：给自己做了不公开仓库的幻灯工具 deck-weave。从 2026-09-15 起约 6 周、114 次提交，代码不含测试约 4.2 万行，测试文件 81 本。用 Claude Code 的 claude -p 生成时，「请做封面」有时会把登录账号邮箱写进「作者」，10 回里有 2 回。这篇配图的 11 张幻灯：方案约 1 分钟出来，返工 0 回，收尾约 6 分钟，向工具里的 AI 助手求助 0 回。不要把 114 次提交、约 4.2 万行和 81 本测试，写成 10 回里 2 回邮箱，或写成这 11 张的约 1 分钟／0 回／约 6 分钟。发布日必须写成 2026-10-31。platforms 记 claude。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+    summary: "threebottoles 给自己做了不公开的幻灯工具 deck-weave：约 6 周、114 次提交，不含测试约 4.2 万行，测试文件 81 本。claude -p 生成时，10 回里有 2 回把登录邮箱写进「作者」。这篇 11 张幻灯方案约 1 分钟、返工 0 回、收尾约 6 分钟。不要把 114 次提交和 10 回里 2 回，或这 11 张的约 6 分钟混用。发布日必须写成 2026-10-31。platforms 记 claude。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+    description: "面向已经打算用 Claude Code 直接出幻灯、却还把 114 次提交和约 4.2 万行写成 10 回里 2 回邮箱泄露，或把这 11 张的约 1 分钟／约 6 分钟写错边的人：把工程体量和这一组 11 张的实測分开写，并记住发布日是 2026-10-31。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/threebottoles/items/7c36319bec262083ebac",
+    sourceLabel: "qiita.com·threebottoles《AI支援スライド作成ツールを作ってみた》",
+    upvotes: 1062,
+    trending: false,
+    tags: [
+      "ClaudeCode",
+      "個人開発",
+    ],
+    primarySource: {
+      url: "https://qiita.com/threebottoles/items/7c36319bec262083ebac",
+      label: "qiita.com·threebottoles《AI支援スライド作成ツールを作ってみた》",
+      date: "2026-10-31",
+      dateLabel: "发布",
+    },
+    approach: "作者给自己做了只给自己用的幻灯工具 deck-weave，没有分发、没有公开仓库。从 2026-09-15 起细细做了约 6 周，114 次提交；代码不含测试约 4.2 万行，测试文件 81 本。设计文档 5 本，部件 21 种。用 Claude Code、Opus 5.5 和 claude -p。生成时遇到：有时成功却没有 structured_output；订阅用不了 --bare；--json-schema 不收 draft-2020-12。只说「请做封面」时，登录中账号的邮箱会作为「作者」写进去，10 回里有 2 回；换了系统提示也一样，作者判断用户信息走了另一条路径。这篇配图的 11 张幻灯：方案约 1 分钟出来，返工 0 回，人手收尾约 6 分钟，这次是 Claude Code 用 computer-use 操作 GUI 收尾，向 deck-weave 里的 AI 助手求助 0 回，标题末字掉行出现在 2 张上。不要把 114 次提交、约 6 周、约 4.2 万行、81 本测试和 5 本设计文档，写成 10 回里 2 回邮箱，或写成这 11 张的约 1 分钟／0 回／约 6 分钟／2 张掉行。发布日必须写成 2026-10-31。platforms 记 claude。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+    outcomes: [
+      "源披露：约 6 周、114 次提交，不含测试约 4.2 万行，测试文件 81 本。claude -p 生成时，10 回里有 2 回把登录邮箱写进「作者」。这篇 11 张幻灯方案约 1 分钟、返工 0 回、收尾约 6 分钟，向工具里的 AI 助手求助 0 回。不要把 114 次提交写成 10 回里 2 回，也不要把约 6 分钟收尾写成工程周期。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+      "platforms 记 claude。发布日必须写成 2026-10-31。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者写明仓库未公开、没有分发，不补写产品链接。作者资料 website_url 为空，不补写。配图 16 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/c88b581b-4b50-40cc-8f3b-0d31db153ec0.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/cd2bf2d2-9c0a-49b2-b833-cb9b554456ae.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/42f13dbf-5b92-4970-878b-acaa9fa132af.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/721f443f-f907-4a37-9734-05ee69633c15.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/9151665a-a5c1-4445-bf1c-0b05173c57da.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/dc3e1287-0227-4d9e-9795-18ed81f179cd.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/da87817d-5040-49b1-8a37-0b8acb3651cb.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/4df913af-540b-46e1-bf9d-96f69d2accb9.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/d93da35c-bf2f-4532-a4b1-f8f58933503b.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/76e2494f-a7ea-4950-b4c0-5267b2a8b1bb.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/6ca065ec-64c5-4852-94d7-a8a295597428.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/b19a658f-1fd6-431a-b5c7-932426cb7f00.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/989a755d-f389-4080-80f9-dfced6ac33a5.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/6b78759d-5569-41f6-91b9-1478975173a5.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/6b4ac5df-df16-41f5-a83a-d42cb3aea99d.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1054140/4d51abc8-539a-4fe6-bb48-7fe8d94f4b42.png。正文几乎只有配图硬链，没有作者独立产品站点。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 10 回里 2 回不是 114 次提交，再谈这 11 张的约 6 分钟",
+        body: "请按原文核算：是不是从 2026-09-15 起约 6 周、114 次提交，代码不含测试约 4.2 万行，测试文件 81 本。只说「请做封面」时，是不是 10 回里有 2 回把登录邮箱写进「作者」。这篇 11 张幻灯是不是方案约 1 分钟、返工 0 回、收尾约 6 分钟，向工具里的 AI 助手求助 0 回。不要把这些和 114 次提交混用。仓库是不是未公开。发布日是不是 2026-10-31。这些是不是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 114 次提交／约 4.2 万行／81 本测试，和 10 回里 2 回邮箱泄露。",
+      "这 11 张的约 1 分钟、返工 0 回、收尾约 6 分钟不要写成工程周期。",
+      "发布日取 2026-10-31。platforms 记 claude。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-31T14:01:17.000+09:00，与 API created_at 2026-10-31T14:01:17+09:00 一致 → UTC 2026-10-31T05:01:17Z、Asia/Shanghai 2026-10-31 13:01:17；updated_at 与发布相同，取 published → 2026-10-31；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-31。",
+      "114 次提交不是 10 回里 2 回；约 6 分钟是这 11 张的收尾，不是约 6 周的开发。仓库未公开，不要补造产品链接。",
+    ],
+  },
+  {
+    id: "1172",
+    slug: "suba-28-6",
+    title: "Subara3：先用 Claude Code 试过把 Discord 报告转进表格，写得出来只要「0 秒」，做完大约 30 分钟，人不在场就一行也走不动。后来做成樱花 AI Engine（gpt-oss-120b）加 GitHub Actions 的转记 Bot。实測平均 2.7 件/请求；10 件捆成一次是输入 1,191、输出 2,448 token，10 件要 7.5〜10.6 秒。朋友游戏的 75 件报告走了 28 次请求，按单价换算大约 6 日元。定时写成 */30，实測间隔是 30 分钟到 2 小时 43 分。不要把 2.7 件和约 270 件/日的换算、或 28 次大约 6 日元和 7.5〜10.6 秒、或 */30 和 2 小时 43 分混用。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-09。platforms 记 claude。这些是作者自己这一套 Bot 上的实測，不可外推。",
+    summary: "Subara3 先用 Claude Code 试转记，做完大约 30 分钟、人不在就停。后来用樱花 AI Engine 和 GitHub Actions 做成 Bot。实測平均 2.7 件/请求；10 件捆一次要 7.5〜10.6 秒。75 件报告走了 28 次请求，按单价换算大约 6 日元。定时 */30，实測间隔 30 分钟到 2 小时 43 分。不要把 2.7 件和约 270 件/日，或大约 6 日元和 7.5〜10.6 秒混用。gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-09。platforms 记 claude。这些是作者自己这一套 Bot 上的实測，不可外推。",
+    description: "面向已经打算用免费 3000 次请求做转记、却还把平均 2.7 件/请求写成约 270 件/日的实測账单，或把 28 次大约 6 日元的单价换算写成发票，或把 */30 写成准时半小时的人：把实測、换算和定时漂移分开写，并记住发布日是 2026-08-09。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/Subara3/items/d4c2432a9f99e5cd211a",
+    sourceLabel: "qiita.com·Subara3《【さくらのAI】基本無料（※月3,000回）の「Discord→スプレッドシート自動転記Bot」を作ってみたよ》",
+    upvotes: 1063,
+    trending: false,
+    tags: [
+      "さくらのAI",
+      "discord",
+      "GAS",
+    ],
+    primarySource: {
+      url: "https://qiita.com/Subara3/items/d4c2432a9f99e5cd211a",
+      label: "qiita.com·Subara3《【さくらのAI】基本無料（※月3,000回）の「Discord→スプレッドシート自動転記Bot」を作ってみたよ》",
+      date: "2026-08-09",
+      dateLabel: "发布",
+    },
+    approach: "作者先用 Claude Code 试把 Discord 报告转进表格：写得出来只要「0 秒」，做完大约 30 分钟（人来做大概只要几分钟），而且要一直看着，人不在场就一行也走不动。后来改成樱花 AI Engine 的 gpt-oss-120b，用 GitHub Actions 跑，最多 10 件捆成一次请求。实測平均 2.7 件/请求，按一天的额度换算大约 270 件报告；若每次都装满 10 件，作者估算最多大约 1000 件/日，这后两笔是换算不是另一套日账单。10 件捆一次时输入 1,191、输出 2,448 token；10 件实測 7.5〜10.6 秒，没有把序号或内容弄混。朋友游戏的 75 件报告走了 28 次请求，按单价换算大约 6 日元，作者写明不是一定等于实收发票。定时写成 */30，实測间隔是 30 分钟到 2 小时 43 分。max_tokens 写成 400＋件数×300 时，2 件也会顶到上限，还剩 27 token；后来改成 2000＋件数×700。早先想只用 GAS，白写了 1,400 行。Kimi 和各家单价对照是价目，不是这次实践，不得写入 kimi。gpt-oss-120b 和 OpenAI 兼容都不得写入 chatgpt。这次开头确有 Claude Code 实践，platforms 记 claude。不要把 2.7 件和约 270 件/日、或 28 次大约 6 日元和 7.5〜10.6 秒、或 */30 和 2 小时 43 分、或 1,191／2,448 和 1,400 行混用。发布日必须写成 2026-08-09。这些是作者自己这一套 Bot 上的实測，不可外推。",
+    outcomes: [
+      "源披露：实測平均 2.7 件/请求；10 件捆一次要 7.5〜10.6 秒，输入 1,191、输出 2,448 token。75 件报告走了 28 次请求，按单价换算大约 6 日元。定时写成 */30，实測间隔 30 分钟到 2 小时 43 分。不要把 2.7 件和约 270 件/日的换算，或大约 6 日元和发票混用。这些是作者自己这一套 Bot 上的实測，不可外推。",
+      "platforms 记 claude。发布日必须写成 2026-08-09。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：正文作者项目与站点 https://github.com/Subara3/no-tenki（标题 GitHub - Subara3/no-tenki: Discordの投稿をさくらのAI Engineで項目に分解してスプレッドシートへ · GitHub）、https://github.com/Subara3/no-tenki.git（标题 GitHub - Subara3/no-tenki: Discordの投稿をさくらのAI Engineで項目に分解してスプレッドシートへ · GitHub）、https://subara3.com/article/salmon_game（标题 サーモンデータベース（ゲーム版） - 栖王ヴァルハラ３丁目）、https://subara3.com/negai-9cqsrlly/（标题 世界創造Q） 交付时均 GET 200，按作者项目／站点导流披露，可列可达，不另作本条主源。作者资料 website_url（http://subara3.gonna.jp/）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。配图 15 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/2d773fd6-6236-4a97-90b3-433b32607875.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/12975b2d-a933-469e-90a9-7df16273afe2.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/75839825-3f62-4cca-9a12-c710f6f478dc.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/5ccf12ee-ef8e-4e26-81e4-807260b79a07.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/4658e64d-3a8a-4275-9910-124fcebfdb58.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/1839abdb-1e4e-4a89-94fb-52762f46b22e.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/7d6d236d-dca3-45b4-a949-303c6387e43c.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/a167b131-29a1-474d-a0b6-572b1ec714cc.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/6332e465-94a0-43f9-9d3f-2093e2067708.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/b5d83951-7598-425a-acc7-7e3aad752123.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/359a4056-2a4d-45ea-832c-c273c88c0761.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/5f34ec8c-0f23-470e-8e0d-4522a36e2894.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/13ceffaf-067d-4ff4-8347-a821612e40be.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/a900e242-d2a9-4862-9742-f870cc4cda4d.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/663038/a322ffb4-a83c-4f3d-9f72-e4a8d44c6c42.png。一次资料／文内文档、issue 与价目 https://discord.com/developers/applications（标题 Discord Developer Portal）、https://ai.sakura.ad.jp/sakura-ai/ai-engine/（标题 さくらのAI Engine | さくらのAI | 生成AI・GPUクラウドサービス）、https://github.com/discord/discord-api-docs/issues/6473（标题 Misleading API response for Cloudflare blocked requests · Issue #6473 · discord/discord-api-docs · GitHub）、https://groveatlantic.com/book/all-the-trouble-in-the-world/（标题 All the Trouble in the World | Grove Atlantic）、https://cloud.sakura.ad.jp/news/2026/03/17/ai-engine-kimi-k2-5/（标题 さくらのAI Engineにてマルチモーダルモデル「Kimi-K2.5」のパブリックプレビューを開始しました | さくらのクラウドニュース）、https://artificialanalysis.ai/models/gpt-oss-120b/providers（标题 gpt-oss-120b (high): API Provider Performance Benchmarking & Price Analysis | Artificial Analysis）、https://openrouter.ai/openai/gpt-oss-120b（标题 gpt-oss-120b - API Pricing & Benchmarks | OpenRouter）、https://infrabase.ai/blog/cheapest-inference-providers（标题 Cheapest AI Inference Providers (September 2026)）、https://www.aipricing.guru/groq-pricing/（标题 Groq API Pricing: Token Rates & Quotes | AI Pricing Guru）、https://www.aipricing.guru/together-pricing/（标题 Together AI Pricing: Rates & Deployment | AI Pricing Guru）、https://www.cloudzero.com/blog/groq-pricing/（标题 Groq Pricing In 2026: Every Model, Tier, And Cost Compared）、https://benchlm.ai/moonshot/api-pricing（标题 Kimi API Pricing (November 2026): Kimi K3.1 Pro at $2/$10 | BenchLM.ai）、https://www.nikkei.com/marketdata/quote/USDJPY/（标题 ドル円相場(USDJPY)リアルタイムチャート・為替レート推移 - 日本経済新聞）、https://qiita.com/official-events/bd14d28b53326d318fec（标题 OpenAI・Anthropic互換APIを無料で使おう！「さくらのAI Engine」3,000リクエスト使い切りチャレンジ - Qiita） 交付时均 GET 200，可列可达，不当本条主源。https://www.secondtalent.com/resources/every-kimi-ai-model-explained-compared/ 交付时 HTTP 429（标题 Vercel Security Checkpoint），不列入可达，须写出完整 URL 并披露状态。源文写出的 API 端点 https://api.ai.sakura.ad.jp/v1/chat/completions 交付时 HTTP 405，不列入可达，须写出完整 URL 并披露状态。Qiita mermaid／link-card 按页铬跳过，不列入须核、不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 2.7 件/请求不是约 270 件/日的账单，再谈 28 次大约 6 日元",
+        body: "请按原文核算：平均是不是实測 2.7 件/请求，约 270 件/日和最多约 1000 件/日是不是换算。10 件捆一次是不是输入 1,191、输出 2,448 token，耗时 7.5〜10.6 秒。75 件报告是不是 28 次请求，大约 6 日元是不是单价换算、作者写明不一定等于发票。定时是不是写成 */30，实測间隔是不是 30 分钟到 2 小时 43 分。开头用 Claude Code 做完是不是大约 30 分钟。白写的 GAS 是不是 1,400 行。发布日是不是 2026-08-09。gpt-oss 是不是不得写入 chatgpt。这些是不是作者自己这一套 Bot 上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写下实測平均 2.7 件/请求，约 270 件/日只是换算，不要当成另一套日账单。",
+      "28 次大约 6 日元是单价换算；7.5〜10.6 秒是 10 件捆一次的耗时；*/30 不是准时半小时。",
+      "发布日取 2026-08-09。gpt-oss 不得写入 chatgpt，platforms 记 claude。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-09T16:23:59.000+09:00，与 API created_at 2026-08-09T16:23:59+09:00 一致 → UTC 2026-08-09T07:23:59Z、Asia/Shanghai 2026-08-09 15:23:59；updated_at 2026-08-09T16:38:41+09:00，晚于发布但仍是同一日历日，取 published → 2026-08-09；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-09。",
+      "2.7 件/请求不是约 270 件/日的账单；大约 6 日元不是发票；*/30 不是 30 分钟准时。Kimi 只在价目对照里，不得写入 kimi。不要和 156 #1155 的约 3,150 对 0 日元混用。",
+    ],
+  },
+  {
+    id: "1173",
+    slug: "nwen-37-65",
+    title: "news_it_enj／荒木 ARK：用 Jev 给上一篇做的 40 道 AWS AI Business Strategist 自编题把关，再用 Claude Code 的 claude -p 改不正确选项，最多 3 轮。第一轮把看似度低于 0.50 的题重写，对象平均从 0.37 升到 0.65，全部门都过关。有一道题看似度 0.53，人看却几乎是送分，门槛改到 0.60 后再跑，这道题从 0.53 升到 0.75。改善后的 40 题走 1 圈（80 次请求）：平均约 0.2 秒（最大约 0.36 秒），费用（只算 Jev）不到 0.01 美元。不要把 0.37→0.65 写成 0.53→0.75，也不要把约 0.2 秒和约 0.36 秒、或 80 次和不到 0.01 美元混用。源文「不像 ChatGPT 那样写文章」只是对比，不得写入 chatgpt。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者自己这 40 道题上的实測，不可外推。",
+    summary: "news_it_enj 用 Jev 给 40 道自编题把关，再用 claude -p 改不正确选项。第一轮把低于 0.50 的题重写，对象平均 0.37→0.65，全过关。一道 0.53 的送分题把门槛改到 0.60 后，升到 0.75。改善后 40 题走 1 圈（80 次请求）平均约 0.2 秒，Jev 费用不到 0.01 美元。不要把 0.37→0.65 写成 0.53→0.75。源文未把这次实践称为 ChatGPT。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者自己这 40 道题上的实測，不可外推。",
+    description: "面向已经打算用 Jev 给考题把关、却还把对象平均 0.37→0.65 写成那道送分题的 0.53→0.75，或把约 0.2 秒写成最大约 0.36 秒的人：把两轮门槛和耗时、费用分开写，并记住发布日是 2026-10-21。",
+    categories: [
+      "education",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/news_it_enj/items/35737c4d6947770e9f62",
+    sourceLabel: "qiita.com·news_it_enj《JevでAWS AI Business Strategistの自作問題の質を上げてみた》",
+    upvotes: 1064,
+    trending: false,
+    tags: [
+      "Jev",
+      "AWS",
+      "AIB",
+      "ClaudeCode",
+    ],
+    primarySource: {
+      url: "https://qiita.com/news_it_enj/items/35737c4d6947770e9f62",
+      label: "qiita.com·news_it_enj《JevでAWS AI Business Strategistの自作問題の質を上げてみた》",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Jev 给上一篇做好的 40 道模拟题把关：每题问 2 次，一次不看正解，一次看正解和讲解。过不了门就用 claude -p 只改不正确选项和讲解，最多 3 轮，题干和正解不动。第一轮把看似度低于 0.50 的题重写，对象平均从 0.37 升到 0.65，全部门都过关。之后仍有一道题人看几乎是送分，Jev 却给了 0.53，进不了 0.50 的重写名单；把对象和合格线都改到 0.60 后再跑，全过关，这道题从 0.53 升到 0.75。第二轮之后复盘：正解最长的题几乎没了，正解最短的却从 5 道变成 17 道，只是偏差换了边。于是又加上「正解字数要落在不正确选项平均值的 0.8〜1.25 倍」。改善后的 40 题走 1 圈共 80 次请求：平均约 0.2 秒（最大约 0.36 秒）；输入 token 平均约 700（不看正解）／约 1,300（看正解和讲解），一圈合计约 8 万；只算 Jev 不到 0.01 美元。源文写 Jev「不像 ChatGPT 或 Claude 那样写文章」，这是对比，不得写入 chatgpt。这次确有 claude -p 实践，platforms 记 claude。不要把 0.37→0.65 写成 0.53→0.75，也不要把 0.50 和 0.60、5 道和 17 道、约 0.2 秒和约 0.36 秒、约 700 和约 1,300、或 80 次和不到 0.01 美元混用。也不要和 157 #1164／#1166 的 Jev 数字混用。发布日必须写成 2026-10-21。这些是作者自己这 40 道题上的实測，不可外推。",
+    outcomes: [
+      "源披露：第一轮低于 0.50 的对象平均 0.37→0.65，全过关。一道 0.53 的送分题把门槛改到 0.60 后，升到 0.75。改善后 40 题走 1 圈（80 次请求）平均约 0.2 秒（最大约 0.36 秒），Jev 费用不到 0.01 美元。不要把 0.37→0.65 写成 0.53→0.75。这些是作者自己这 40 道题上的实測，不可外推。",
+      "platforms 记 claude。发布日必须写成 2026-10-21。源文未把这次实践称为 ChatGPT。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 4 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4108343/b3781b25-88d8-4554-8949-095eed93152c.jpeg ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4108343/c3d7236e-c477-4e0e-8ef4-ef8aaeaefa37.jpeg ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4108343/4ca9e8dd-565c-4f7b-806d-ed6e326e7ddd.jpeg ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4108343/6c6f37f3-72e1-4123-a26b-60aab7df032c.jpeg。相关篇 https://qiita.com/news_it_enj/items/78c8cccf8b11bde5c845（标题 AI-DLC Workflow v1 と v2 でAWSの新認定試験「AI Business Strategist」の模擬試験サイトを作ってみた #ClaudeCode - Qiita） 交付时 GET 200，不另作本条主源，可列可达。一次资料／文内文档 https://gihyo.jp/book/2026/978-4-297-15939-9（标题 ［みのるん式］ビジネスパーソンのためのClaude Code仕事術 | 技術評論社） 交付时 GET 200，可列可达，不当本条主源。源文写出的 API 端点 https://api.typesafe.ai/v1/systemone 交付时 HTTP 451（标题 Typesafe is not available in your region.），按区域不可用披露，不列入可达，须写出完整 URL 并披露状态。https://gihyo.jp/book/2026/978-4-297-15939-9 是一次资料，不是作者产品，不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0.37→0.65 不是 0.53→0.75，再谈 80 次和不到 0.01 美元",
+        body: "请按原文核算：是不是给 40 道自编题把关，每题问 Jev 2 次。第一轮是不是把看似度低于 0.50 的题重写，对象平均 0.37→0.65，全过关。那道送分题是不是 0.53，门槛改到 0.60 后升到 0.75。正解最短是不是从 5 道变成 17 道。改善后 40 题走 1 圈是不是 80 次请求，平均约 0.2 秒、最大约 0.36 秒，Jev 费用不到 0.01 美元。源文的 ChatGPT 是不是只在对比里。发布日是不是 2026-10-21。这些是不是作者自己这 40 道题上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 0.37→0.65 和 0.53→0.75，不要把两轮门槛合成一笔。",
+      "约 0.2 秒是平均，约 0.36 秒是最大；不到 0.01 美元只算 Jev。",
+      "发布日取 2026-10-21。源文未称为 ChatGPT，platforms 记 claude。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-21T09:16:15.000+09:00，与 API created_at 2026-10-21T09:16:15+09:00 一致 → UTC 2026-10-21T00:16:15Z、Asia/Shanghai 2026-10-21 08:16:15；updated_at 与发布相同，取 published → 2026-10-21；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-21。",
+      "0.37→0.65 不是 0.53→0.75；0.50 不是 0.60。不要和 157 #1164 的 5,574／5,171 或 #1166 的 0.620／0.630 混用。源文「不像 ChatGPT 那样写文章」不得写入 chatgpt。",
+    ],
+  },
+  {
+    id: "1174",
+    slug: "acsd-400-11",
+    title: "acs-developer：把 YouTube 评论分类迁到 Anthropic Message Batches 时，外部评论 ID 里的「.」不能当 custom_id。在 anthropic Python SDK 2.3.0 上实測，5 种非法 ID 全部返回 HTTP 400，每次 0.3〜0.4 秒。把 2 个正常 ID 和 2 个带点的 ID 混在一起，整批都建不出来，报错只露出第一件。迁过去后用近 2 周评论做 dry-run：旧路径的 11 件全部能用连号键对回原文；状态一致 11 件里 10 件，提示种类 11 件里 9 件，注意事项 1 件里 1 件。不要把 5 件全 400 写成 11 件对回，也不要把 10／9／1 和 0.3〜0.4 秒混用。发布日必须写成 2026-10-30。platforms 记 claude。这些是作者自己这一条分类管线上的实測，不可外推。",
+    summary: "acs-developer 把 YouTube 评论分类迁到 Message Batches 时，发现外部 ID 里的「.」不能当 custom_id。5 种非法 ID 全部 HTTP 400，每次 0.3〜0.4 秒；混进 1 件非法 ID，整批都建不出来。迁过后 dry-run：旧路径 11 件全部能对回，状态一致 11 件里 10 件，提示种类 11 件里 9 件。不要把 5 件全 400 写成 11 件对回。发布日必须写成 2026-10-30。platforms 记 claude。这些是作者自己这一条分类管线上的实測，不可外推。",
+    description: "面向已经打算把外部 ID 直接塞进 Message Batches 的 custom_id、却还把 5 件全 400 写成迁后 11 件对回，或把 11 件里 10 件状态一致写成 11 件里 9 件提示种类的人：把非法 ID 实測和迁后对照分开写，并记住发布日是 2026-10-30。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/acs-developer/items/48e252d2d17d5a132426",
+    sourceLabel: "qiita.com·acs-developer《Message Batchesのcustom_idに外部IDを入れると400 — 「.」1つでバッチ全体が弾かれる》",
+    upvotes: 1065,
+    trending: false,
+    tags: [
+      "Claude",
+      "Anthropic",
+      "Python",
+      "LLM",
+      "YouTube",
+    ],
+    primarySource: {
+      url: "https://qiita.com/acs-developer/items/48e252d2d17d5a132426",
+      label: "qiita.com·acs-developer《Message Batchesのcustom_idに外部IDを入れると400 — 「.」1つでバッチ全体が弾かれる》",
+      date: "2026-10-30",
+      dateLabel: "发布",
+    },
+    approach: "作者把 YouTube 评论分类迁到 Anthropic Message Batches API，想把原始评论 ID 直接当作 custom_id。回复评论的 ID 会用「.」把父线程和回复接起来，而 custom_id 只允许英数字、下划线和短横线，长度 1〜64，同一批里还不能重复。在 anthropic Python SDK 2.3.0 上，用 max_tokens: 1 的 1〜4 件小批次改 custom_id 实測：5 种非法 ID 全部是 invalid_request_error（HTTP 400），每次 0.3〜0.4 秒（2026-10-30）。再把 2 个正常 ID 和 2 个带点的 ID 混在一起：整批都建不出来，随后 list 也不会增加；报错只露出第一件（requests.2），requests.3 同样非法却不会出现在消息里。创建阶段被拒就不会计费，但定时任务会整回停掉，而且只有混进回复的日子才会炸。作者改成批内连号键，对应表留在本地；结果不按返回顺序、只用键去对。迁过后用近 2 周真实评论做 dry-run（不写台账），旧路径留下的 11 件全部能对回原文；状态一致是 11 件里 10 件（差的 1 件是新版故意排除的短句），提示种类是 11 件里 9 件，注意事项是 1 件里 1 件。件数少时不用 Batch，少于 8 件走同步调用；「最多可能要 24 小时」是接口说明，不是这次等到的实测。源文未称为 ChatGPT，platforms 记 claude。不要把 5 件全 400 和 0.3〜0.4 秒，写成 11 件对回或 10／9／1，也不要把少于 8 件的同步门槛混进去。发布日必须写成 2026-10-30。这些是作者自己这一条分类管线上的实測，不可外推。",
+    outcomes: [
+      "源披露：5 种非法 ID 全部 HTTP 400，每次 0.3〜0.4 秒；混进 1 件非法 ID，整批都建不出来，报错只露出第一件。迁后 dry-run：旧路径 11 件全部能对回，状态一致 11 件里 10 件，提示种类 11 件里 9 件。不要把 5 件全 400 写成 11 件对回。这些是作者自己这一条分类管线上的实測，不可外推。",
+      "platforms 记 claude。发布日必须写成 2026-10-30。",
+    ],
+    caveats: [
+      "导流：正文作者站点与转载原文 https://acs-developer.com/?utm_source=zenn&utm_medium=referral（标题 AI検索・LLMO対策を無料診断｜ACS Developer）、https://zenn.dev/acs_developer/articles/anthropic-batch-custom-id-pattern-400（标题 Message Batchesのcustom_idに外部IDを入れると400 — 「.」1つでバッチ全体が弾かれる） 交付时均 GET 200，按作者站点／转载页导流披露，可列可达，不另作本条主源。正文写明本篇是 Zenn 的再刊，Zenn 页按转载原文披露，不另作本条主源。正文未配图。作者资料 website_url 为空，不另补资料站；正文已有同一作者站点，按正文披露。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5 件全 400 不是 11 件对回，再谈 10／9／1",
+        body: "请按原文核算：5 种非法 ID 是不是全部 HTTP 400，每次 0.3〜0.4 秒。把 2 个正常 ID 和 2 个带点的 ID 混在一起，是不是整批都建不出来，报错只露出第一件。迁后 dry-run 是不是旧路径 11 件全部能对回，状态一致 11 件里 10 件，提示种类 11 件里 9 件，注意事项 1 件里 1 件。少于 8 件走同步是不是另一条规则。发布日是不是 2026-10-30。这些是不是作者自己这一条分类管线上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写下 5 件全 400 和整批建不出来，不要和迁后 11 件对回合成一笔。",
+      "11 件里 10 件是状态，11 件里 9 件是提示种类，不要混用。",
+      "发布日取 2026-10-30。platforms 记 claude。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-30T13:09:17.000+09:00，与 API created_at 2026-10-30T13:09:17+09:00 一致 → UTC 2026-10-30T04:09:17Z、Asia/Shanghai 2026-10-30 12:09:17；updated_at 与发布相同，取 published → 2026-10-30；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-30。",
+      "5 件全 400 不是 11 件对回；10／11 不是 9／11。最多 24 小时是接口说明，不是这次等到的实测。",
+    ],
+  },
+  {
+    id: "1175",
+    slug: "mire-197-387",
+    title: "mirevo_ai：用 Muse 内部库的生 token 记录，测图像生成、图像解析和视频的边际成本。图像生成 24 张（每轮 4 张、共 6 轮）平均每张 19,715（范围 19,674〜19,747）。单独解析 1 张边际约 ＋38,740，4 张一起读每张 12,413。视频 1 条边际 ＋77,458。固定费平均 34,869。不要把 19,715 写成单独解析的约 38,740，或写成 4 张一起的 12,413，也不要把库内换算的约 0.05% 写成 2026-11-08 补正后的仪表约 5.5%。发布日必须写成 2026-11-06，不要因 UTC 写成 2026-11-05，也不要因更新写成 2026-11-08。platforms 为 []。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
+    summary: "mirevo_ai 用 Muse 内部库测边际成本：图像生成平均每张 19,715（24 张，范围 19,674〜19,747）；单独解析约 ＋38,740，4 张一起每张 12,413；视频 1 条 ＋77,458。固定费平均 34,869。不要把这三档单价混用，也不要把库内约 0.05% 写成补正后仪表约 5.5%。发布日必须写成 2026-11-06，不要因 UTC 写成 2026-11-05，或因更新写成 2026-11-08。platforms 为 []。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
+    description: "面向已经觉得「出图很贵」或「解析更重」、却还把每张 19,715 写成单独解析的约 38,740，或把库内换算约 0.05% 写成 11-08 补正后的仪表约 5.5% 的人：把生成、解析和视频的边际成本分开写，并记住发布日是 2026-11-06。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/mirevo_ai/items/bc84e50b9c842327939a",
+    sourceLabel: "qiita.com·mirevo_ai《画像生成は1枚いくら？ 内部DBで測ったAIエージェントのメディア単価 ― Muse トークン消費実験 2nd》",
+    upvotes: 1066,
+    trending: false,
+    tags: [
+      "Muse",
+      "AIエージェント",
+      "LLM",
+      "トークン",
+      "データ分析",
+    ],
+    primarySource: {
+      url: "https://qiita.com/mirevo_ai/items/bc84e50b9c842327939a",
+      label: "qiita.com·mirevo_ai《画像生成は1枚いくら？ 内部DBで測ったAIエージェントのメディア単価 ― Muse トークン消費実験 2nd》",
+      date: "2026-11-06",
+      dateLabel: "发布",
+    },
+    approach: "作者用 Muse 内部库 agent_message_token_usage 的生 token，按「新建 1 个 worker＝库里 1 行」、再减去对照单元的固定费，来算边际成本。固定费平均 34,869（波动 74）。图像生成 4 张一轮做了 6 轮共 24 张，边际平均每张 19,715（范围 19,674〜19,747）；导语约 19,700 是这档的约数，不要和 19,715 当成另一笔。含固定费则每张 28,432。图像解析：1 张在上下文里约占 3,600 token（反算 3,533〜3,718）；单独短说明的边际平均 ＋38,740，4 张分开合计 294,434；4 张一次读完总 84,519，每张 12,413，比分开少 71.3%。详细约 1,000 字和短说明只差 ＋863（＋1.2%）。视频 1 条总 112,327，边际 ＋77,458，和一轮 4 张图的边际 ＋78,859 几乎同额，成片约 10.7MB。前一篇 note 上「16 张图仪表 ＋2%」不是这次库内单价。24 张按前篇「生 ÷ 约 9.5」换算约 0.05%，是库内会计；文末 2026-11-08 补正说生成费也会打到仪表上，24 张按仪表大约 5.5%，图像大约 23 万仪表 token（约 0.23%）、视频大约 271 万，不要和库内约 0.05% 混用。第 4〜6 章写明只是「本表能量到的范围」。源文未称为 ChatGPT，Muse 不在 18 值里，platforms 为 []。发布日必须写成 2026-11-06（源时区 05:05 → UTC 11-05 20:05 → 上海 11-06 04:05），不要因 UTC 写成 2026-11-05，也不要因更新写成 2026-11-08。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
+    outcomes: [
+      "源披露：图像生成 24 张平均每张 19,715（范围 19,674〜19,747）；单独解析边际约 ＋38,740，4 张一起每张 12,413；视频 1 条边际 ＋77,458。固定费平均 34,869。不要把这三档单价混用，也不要把库内换算约 0.05% 写成 2026-11-08 补正后的仪表约 5.5%。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-11-06，不要因 UTC 写成 2026-11-05，也不要因更新写成 2026-11-08。",
+    ],
+    caveats: [
+      "导流：正文作者站点 https://note.com/mirevo_ai/n/n398047c49bf1（标题 Museの「週1億トークン」って実際どれくらい使えるのか、全部測ってみた話｜mirevo_ai）、https://note.com/mirevo_ai/n/ndd51fd007fc0（标题 Museトークン消費実験の成果物置き場｜mirevo_ai） 交付时均 GET 200，按作者站点导流披露，可列可达，不另作本条主源。作者资料 website_url（https://note.com/mirevo_ai）与正文同一站点，按正文披露，不另补资料站。配图 4 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4527038/56adbed3-807d-4254-b0b6-972aa4f4c88b.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4527038/d2494165-f904-4f52-b665-627726958a76.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4527038/0d69a727-3f4c-4ecc-86a2-73047f329143.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4527038/30d7eed6-b1d8-4d01-9893-dcf2f40c872c.gif。相关篇／一次资料 https://qiita.com/mirevo_ai/items/a9fac46f1ed4c07c9a2c（标题 「週1億トークン」の表示は1%刻みで粗すぎるので、内部DBから1トークン単位で測った話 — Meta Muse 使用量の精密測定 #LLM - Qiita）、https://qiita.com/satouyoshiaki/items/4b0b174a9e370f1ead53（标题 AIアシスタントに5日で9.5億トークン使っていた話 ― 無料枠100%から始めたトークン棚卸しとメモリ圧縮 #LLM - Qiita） 交付时均 GET 200，可列可达，不当本条主源。https://qiita.com/satouyoshiaki/items/4b0b174a9e370f1ead53 是引用的先行事例，不是作者产品，不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 19,715 不是 ＋38,740，再谈库内约 0.05% 和仪表约 5.5%",
+        body: "请按原文核算：图像生成 24 张的边际平均是不是每张 19,715（范围 19,674〜19,747）。单独解析是不是边际约 ＋38,740，4 张一起是不是每张 12,413。视频 1 条是不是边际 ＋77,458。固定费平均是不是 34,869。库内换算约 0.05% 是不是按生 ÷ 约 9.5，2026-11-08 补正后的仪表大约 5.5% 是不是另一笔，不要混用。发布日是不是 2026-11-06，不要写成 2026-11-05 或 2026-11-08。这些是不是作者自己这一套 Muse 记账上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写 19,715、＋38,740 和 12,413、以及视频 ＋77,458，不要合成一笔。",
+      "库内换算约 0.05% 不是 11-08 补正后的仪表约 5.5%。",
+      "发布日取 2026-11-06，不要因 UTC 写成 2026-11-05，也不要因更新写成 2026-11-08。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-06T05:05:20.000+09:00，与 API created_at 2026-11-06T05:05:20+09:00 一致 → UTC 2026-11-05T20:05:20Z、Asia/Shanghai 2026-11-06 04:05:20；updated_at 2026-11-08T08:53:46+09:00，晚于发布，仍取 published → 2026-11-06；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-06。不要因 UTC 写成 2026-11-05。不要因更新写成 2026-11-08。",
+      "19,715 不是 ＋38,740，也不是 12,413。约 0.05% 是库内换算，约 5.5% 是 11-08 补正后的仪表口径。前篇 16 张 ＋2% 不是这次库内单价。Muse 不在 18 值里，platforms 为 []。",
+    ],
+  },
+  {
+    id: "1176",
+    slug: "snow-592-2of5",
+    title: "snowcode_jp／雪符 しき：把现成的 Anthropic SDK 代码改 3 处接到樱花 AI Engine，用 preview/Kimi-K2.6 在免费额度里实打 5 次：平均延迟 5.92 秒，范围 4.44〜8.06 秒，输入合计 117、输出合计 2,378 token。max_tokens=512 时，5 次里有 2 次输出顶到 512、正文是空的。另一次用同一组 3 类提示去比 5 个模型时，Kimi-K2.6 平均 4.44 秒、输出约 1,200，gpt-oss-120b 是 0.6〜1.2 秒。不要把第一次 5 次的平均 5.92 秒和范围下限 4.44 秒，写成模型对照里 Kimi 的平均 4.44 秒，也不要把 2,378 写成约 1,200。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-11。platforms 记 kimi。这些是作者自己这一次免费额度调用上的实測，不可外推。",
+    summary: "snowcode_jp 把 Anthropic SDK 代码改 3 处接到樱花 AI Engine，用 Kimi-K2.6 实打 5 次：平均 5.92 秒，范围 4.44〜8.06 秒，输出合计 2,378 token；max_tokens=512 时 5 次里有 2 次正文是空的。模型对照里 Kimi-K2.6 平均 4.44 秒、输出约 1,200，不要和第一次 5 次的 5.92 秒或范围下限 4.44 秒混用。gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-11。platforms 记 kimi。这些是作者自己这一次免费额度调用上的实測，不可外推。",
+    description: "面向已经打算把 Claude 代码改接到樱花、却还把 5 次平均 5.92 秒写成范围下限 4.44 秒，或把这次 4.44〜8.06 的下限写成模型对照里 Kimi 平均 4.44 秒的人：把两次实測分开写，并记住发布日是 2026-08-11。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "kimi",
+    ],
+    sourceUrl: "https://qiita.com/snowcode_jp/items/f07c9f6159fa6558fbfe",
+    sourceLabel: "qiita.com·snowcode_jp《既存のClaude向けコードを“数行”変えるだけでさくらのAI Engineに載せ替え、OpenTelemetryでトークン・レイテンシ・コストを可観測にする》",
+    upvotes: 1067,
+    trending: false,
+    tags: [
+      "さくらのAI",
+      "生成AI",
+      "opentelemetry",
+      "LLM",
+      "Python",
+    ],
+    primarySource: {
+      url: "https://qiita.com/snowcode_jp/items/f07c9f6159fa6558fbfe",
+      label: "qiita.com·snowcode_jp《既存のClaude向けコードを“数行”変えるだけでさくらのAI Engineに載せ替え、OpenTelemetryでトークン・レイテンシ・コストを可観測にする》",
+      date: "2026-08-11",
+      dateLabel: "发布",
+    },
+    approach: "作者把现成的 Anthropic SDK 代码改 3 处（连接、认证、模型名）接到樱花 AI Engine 的 Anthropic 兼容接口，主测模型是 preview/Kimi-K2.6，并在免费额度里实打了 5 次。踩到的坑包括：要用 auth_token= 而不是 api_key=，否则 401；响应开头是 ThinkingBlock，content[0].text 会报错；max_tokens=512 时，5 次里有 2 次输出 token 顶到 512，正文是空的。这 5 次平均延迟 5.92 秒，范围 4.44〜8.06 秒，输入合计 117、输出合计 2,378 token。作者后来说的「4〜8 秒」就是这一档，不要写成平均 4.44。另一次用同一组 3 类提示（代码／推理／日语）去比 5 个模型：gpt-oss-120b 最速 0.6〜1.2 秒且答对了圆周率；Kimi-K2.6 最慢 3.6〜5.6 秒，日语提示会把 max_tokens 用完、正文变空；Grafana 上 Kimi-K2.6 平均 4.44 秒、输出最多约 1,200。这个 4.44 秒是模型对照的平均，不是第一次 5 次的范围下限。llm-jp 日语流利但把 π 答错。源文写明海外大厂模型这次没打，不能拿来比快慢。现成代码原先面向 Claude，这次实測运行时是樱花上的 Kimi 等模型，不得因此补 claude。gpt-oss 不得写入 chatgpt。这次确有 Kimi-K2.6／K2.7-Code 实践，platforms 记 kimi。发布日必须写成 2026-08-11。这些是作者自己这一次免费额度调用上的实測，不可外推。",
+    outcomes: [
+      "源披露：Kimi-K2.6 实打 5 次，平均 5.92 秒，范围 4.44〜8.06 秒，输出合计 2,378 token；max_tokens=512 时 5 次里有 2 次正文是空的。模型对照里 Kimi-K2.6 平均 4.44 秒、输出约 1,200，gpt-oss-120b 是 0.6〜1.2 秒。不要把 5.92 秒和对照平均 4.44 秒，或两次都出现的 4.44 混用。这些是作者自己这一次免费额度调用上的实測，不可外推。",
+      "platforms 记 kimi。发布日必须写成 2026-08-11。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。",
+    ],
+    caveats: [
+      "导流：正文作者站点与社交 https://snowcode.jp/work/（标题 お仕事のご依頼 - サービス・実績・料金 | 雪符しき (SNOW CODE)）、https://snowcode.jp/blog/（标题 Blog | 雪符しき (SNOW CODE)）、https://x.com/SNOWCODE_JP（标题 雪符 しき ❄️💻🎧 Vtuber準備中 (@SNOWCODE_JP) / X） 交付时均 GET 200，按作者站点／社交导流披露，可列可达，不另作本条主源。作者资料 website_url（https://snowcode.jp/）与正文同一站点，按正文披露，不另补资料站。配图 3 张原址交付时均 GET 200，可列可达，挂在本条：https://snowcode.jp/media/vtuber/qiita/sakura-jaeger-list.png ；https://snowcode.jp/media/vtuber/qiita/sakura-jaeger-trace.png ；https://snowcode.jp/media/vtuber/qiita/grafana-model-compare.png（配图也在作者站点 snowcode.jp 上，按正文配图披露，并计入作者站点导流）。一次资料 https://qiita.com/official-events（标题 Qiita Official | Events & Article Posting Campaigns for Engineers - Qiita） 交付时 GET 200，可列可达，不当本条主源。源文写出的 API 端点 https://api.ai.sakura.ad.jp 、https://api.ai.sakura.ad.jp/v1 交付时均 HTTP 404，不列入可达，须写出完整 URL 并披露状态。提取时带尾部反引号的串不计入须核，已改核清洗后的完整 URL。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 5.92 秒不是对照里的平均 4.44 秒，再谈 5 次里 2 次正文为空",
+        body: "请按原文核算：Kimi-K2.6 实打 5 次是不是平均 5.92 秒、范围 4.44〜8.06 秒，输入合计 117、输出合计 2,378 token。max_tokens=512 时是不是 5 次里有 2 次正文为空。模型对照里 Kimi-K2.6 平均 4.44 秒、输出约 1,200，是不是另一次实測，不要和第一次 5 次的范围下限 4.44 秒混用。gpt-oss-120b 是不是 0.6〜1.2 秒，不得写入 chatgpt。发布日是不是 2026-08-11。这些是不是作者自己这一次免费额度调用上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先写下 5 次平均 5.92 秒和范围 4.44〜8.06 秒，不要把下限 4.44 当成平均。",
+      "模型对照里的平均 4.44 秒和输出约 1,200 是另一笔，不要和 5.92 秒、2,378 混用。",
+      "发布日取 2026-08-11。gpt-oss 不得写入 chatgpt，platforms 记 kimi。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-11T13:54:01.000+09:00，与 API created_at 2026-08-11T13:54:01+09:00 一致 → UTC 2026-08-11T04:54:01Z、Asia/Shanghai 2026-08-11 12:54:01；updated_at 2026-08-11T13:58:58+09:00，晚于发布但仍是同一日历日，取 published → 2026-08-11；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-11。",
+      "5.92 秒不是对照平均 4.44 秒；第一次范围下限也是 4.44，不要和对照平均写成同一笔。2,378 不是约 1,200。gpt-oss 不得写入 chatgpt。现成代码面向 Claude，不得因此补 claude。",
+    ],
+  },
+  {
+    id: "1177",
+    slug: "yuic-60-45",
+    title: "yuichi0625：用 13 个模型的分词器和 8 种语言，在 FLORES+ 与圣经对译上比较 token 数。同样内容相对英语的字符数，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%；法语、德语、越南语大致接近英语。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，分词更不效率，但字符更少，把 token 总数又拉回到和英语差不多。Command A+ 的词表里字母超过 7 成。不要把约 60%／45%／30% 的字符数比，写成 25%〜70% 的每 token 字符数，也不要把「字母超过 7 成」写成 token 总数。源文写的是 GPT-5 分词器，未称为 ChatGPT，不得写入 chatgpt。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。platforms 为 []。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
+    summary: "yuichi0625 用 13 个分词器和 8 种语言比较：相对英语的字符数，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，但字符更少，token 总数又能和英语差不多。不要把约 60%／45%／30% 写成 25%〜70%。源文未称为 ChatGPT。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。platforms 为 []。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
+    description: "面向已经拿分词效率谈多语言成本、却还把相对英语的字符数约 60%／45%／30% 写成每 token 字符数的 25%〜70%，或把 Command A+ 字母超过 7 成写成 token 总数的人：把两套比例分开写，并记住发布日是 2026-08-24。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/yuichi0625/items/59d223d370d3a8903411",
+    sourceLabel: "qiita.com·yuichi0625《LLM の tokenizer は言語によってどれくらい違う？13モデル・8言語で比較してみた》",
+    upvotes: 1068,
+    trending: false,
+    tags: [
+      "LLM",
+      "tokenizer",
+      "NLP",
+      "言語モデル",
+      "多言語",
+    ],
+    primarySource: {
+      url: "https://qiita.com/yuichi0625/items/59d223d370d3a8903411",
+      label: "qiita.com·yuichi0625《LLM の tokenizer は言語によってどれくらい違う？13モデル・8言語で比較してみた》",
+      date: "2026-08-24",
+      dateLabel: "发布",
+    },
+    approach: "作者用 13 个模型的分词器（含 GPT-5、Gemini 3.5、Nemotron 3、Llama 4、Qwen3.8、DeepSeek-V4、GLM-5.2、Kimi K3、PLaMo 3、LLM-jp-4、Mistral Medium 3.5、Command A+、K-EXAONE 2.0）和 8 种语言（阿、德、英、法、日、韩、越、汉），在 FLORES+ 与圣经对译上数 token，并用 GlotScript 看词表文字体系。FLORES+ 和圣经看到的趋势相近。同样内容相对英语的字符数：法语、德语、越南语大致接近英语，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，分词更不效率，但字符更少，把 token 总数又拉回到和英语差不多。Command A+ 的词表里字母超过 7 成。中国模型词表里汉字偏多，日本模型还有平假名和片假名，韩国模型有谚文；PLaMo、LLM-jp 对日语省 token，对其他语言往往更费；Kimi K3 对汉语特别省、对其他语言偏费。词表规模（如 GPT-5 的 200,019）是各模型词表大小，不是这次数出来的 token 成绩。源文写的是 GPT-5 分词器，未称为 ChatGPT；分析 Kimi K3 或 DeepSeek-V4 的分词器也不能代替写入 kimi 或 deepseek，platforms 为 []。不要把约 60%／45%／30% 的字符数比，写成 25%〜70% 的每 token 字符数，也不要把「字母超过 7 成」写成语料 token 总数。也不要和 152 #1113 的 cl100k 0.97／o200k 0.71 混用。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
+    outcomes: [
+      "源披露：相对英语的字符数，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，但字符更少，token 总数又能和英语差不多。Command A+ 词表里字母超过 7 成。不要把约 60%／45%／30% 写成 25%〜70%。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
+      "platforms 为 []。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。源文未称为 ChatGPT。",
+    ],
+    caveats: [
+      "导流：正文作者项目 https://github.com/yuichi0625/llm-tokenizer-analysis（标题 GitHub - yuichi0625/llm-tokenizer-analysis · GitHub） 交付时 GET 200，按作者项目导流披露，可列可达，不另作本条主源。配图 8 张原址交付时均 GET 200，可列可达，挂在本条：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/c66a2592-3496-49b6-be6c-cd0629a3683c.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/9d5219a2-eb16-4f61-84df-eaaa7e3dbe80.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/843887d9-37c3-4d50-b216-c4ca58851365.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/8cc7785a-2641-4e9b-9bc0-c39a5dd2d0c7.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/e0f08322-cb2a-4cde-bb72-d99186b22a05.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/26a9d29f-d899-41db-9333-f27c67bfb9a9.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/61c1eefb-377f-4ebf-9098-5e400bb7ae70.png ；https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1432808/326b17c3-8296-49ea-9787-9ad4c1b557a1.png。一次资料／文内文档与仓 https://arxiv.org/abs/2305.15425（标题 [2305.15425] Language Model Tokenizers Introduce Unfairness Between Languages）、https://arxiv.org/abs/2309.13320（标题 [2309.13320] GlotScript: A Resource and Tool for Low Resource Writing System Identification）、https://github.com/cisnlp/GlotScript（标题 GitHub - cisnlp/GlotScript: [LREC 2024] 🖋 Resource and Tool for Writing System Identification · GitHub）、https://huggingface.co/collections/nvidia/nvidia-nemotron-v3（标题 NVIDIA Nemotron v3 - a nvidia Collection）、https://huggingface.co/collections/unsloth/llama-4（标题 Llama 4 - a unsloth Collection）、https://huggingface.co/collections/Qwen/qwen38（标题 Qwen3.8 - a Qwen Collection）、https://huggingface.co/collections/deepseek-ai/deepseek-v4（标题 DeepSeek-V4 - a deepseek-ai Collection）、https://huggingface.co/collections/zai-org/glm-52（标题 GLM-5.2 - a zai-org Collection）、https://huggingface.co/collections/moonshotai/kimi-k3（标题 Kimi K3 - a moonshotai Collection）、https://huggingface.co/collections/pfnet/plamo-3（标题 PLaMo 3 - a pfnet Collection）、https://huggingface.co/collections/llm-jp/llm-jp-4-models（标题 LLM-jp-4 Models - a llm-jp Collection）、https://huggingface.co/collections/mistralai/mistral-medium-35（标题 Mistral Medium 3.5 - a mistralai Collection）、https://huggingface.co/collections/CohereLabs/command-a-plus（标题 Command A Plus - a CohereLabs Collection）、https://huggingface.co/collections/LGAI-EXAONE/k-exaone-20（标题 K-EXAONE-2.0 - a LGAI-EXAONE Collection）、https://huggingface.co/datasets/openlanguagedata/flores_plus（标题 openlanguagedata/flores_plus · Datasets at Hugging Face）、https://www.biblesupersearch.com/bible-downloads/（标题 Bible Downloads - Bible SuperSearch）、https://github.com/cisnlp/GlotScript/blob/v2.0/GlotScript/GlotScript.py#L215（标题 GlotScript/GlotScript/GlotScript.py at v2.0 · cisnlp/GlotScript · GitHub） 交付时均 GET 200，可列可达，不当本条主源。作者资料 website_url 为空，不补写。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清约 60%／45%／30% 不是 25%〜70%，再谈字母超过 7 成",
+        body: "请按原文核算：是不是 13 个分词器、8 种语言，语料是 FLORES+ 和圣经。相对英语的字符数，是不是阿拉伯语约 60%、日语／韩语约 45%、汉语约 30%，法语、德语、越南语大致接近英语。阿拉伯语每个 token 的字符数是不是只有英语的 25%〜70%。Command A+ 词表里字母是不是超过 7 成，不要写成语料 token 总数。源文写的是不是 GPT-5 分词器，未称为 ChatGPT。发布日是不是 2026-08-24，不要写成 2026-08-31。这些是不是作者自己这一次 13×8 比较上的实測，不可外推。",
+      },
+    ],
+    howItWorks: [
+      "先分开写约 60%／45%／30% 的字符数比，和 25%〜70% 的每 token 字符数。",
+      "字母超过 7 成是 Command A+ 的词表构成，不是语料 token 总数。",
+      "发布日取 2026-08-24，不要因更新写成 2026-08-31。源文未称为 ChatGPT，platforms 为 []。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-08-24T11:23:05.000+09:00，与 API created_at 2026-08-24T11:23:05+09:00 一致 → UTC 2026-08-24T02:23:05Z、Asia/Shanghai 2026-08-24 10:23:05；updated_at 2026-08-31T17:13:20+09:00，晚于发布，仍取 published → 2026-08-24；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-08-24。不要因更新写成 2026-08-31。",
+      "约 60%／45%／30% 不是 25%〜70%。不要和 152 的 cl100k 0.97／o200k 0.71 混用。GPT-5 分词器不得写入 chatgpt，Kimi K3 分词器也不得写入 kimi。",
+    ],
   }
 ];
 
