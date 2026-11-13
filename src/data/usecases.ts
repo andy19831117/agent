@@ -17318,7 +17318,7 @@ CI 失败摘要：{{ci_failure}}
   {
     id: "337",
     slug: "flexcompute-agent-loop-mutate-gate",
-    title: "Flexcompute：用 loop/mutate/gate 托住 Agent 写库",
+    title: "Flexcompute 写库循环与突变闸",
     summary: "对照工程实践：个人向 autodiff 库几乎全由 Agent 写成后，用 scoped loop、diff 突变测试与全量 gate 把质量地板从「人盯每一行」挪到 harness；不代你关测试、不外推 commit 统计。",
     description:
       "面向重度使用编码 Agent 的个人/小团队：把「Agent 越写越大、质量靠人肉」写成可对账的验证节律，区别于本机共享测队列与舰队修 CI。",
@@ -17862,7 +17862,7 @@ on-demand 次数：{{ondemand_calls}}
   {
     id: "343",
     slug: "camelai-durable-object-coding-agent",
-    title: "camelAI：编码 Agent 跑在 Durable Object 而非常开 VM",
+    title: "camelAI 迁 Durable Object",
     summary: "对照工程实践：三轮把编码 Agent 从自建 VM 迁到 Cloudflare Durable Object+SQLite/R2 文件系统，并去掉 bash、改显式 JS 方法执行；不代你关沙箱、不外推成本数量级。",
     description:
       "面向要控成本的 Agent 产品团队：把「每用户一台 Linux」写成可对账的脑手分离→去 VM→去 bash 路径，区别于控制面-worker 多机与本机共享测队列。",
@@ -18859,7 +18859,7 @@ Agent 最终消息摘录：{{final_message}}
   {
     id: "354",
     slug: "kevin-welter-frieda-anton-inbox-invoices",
-    title: "Kevin Welter：收件箱 Frieda + 报价开票 Anton 分职审批",
+    title: "Frieda 分拣与 Anton 开票人审",
     summary: "对照个人实践：两名 AI「雇员」分管分拣/收据与报价发票，出站一律人审；禁止编造价格、收据只归档不入账；不代你自动寄发票、不外推省时。",
     description:
       "面向一人公司/顾问的财务行政：把「一个万能财务 Agent」写成可对账的分职+出站人闸，区别于通用发票抽取表与退款邮件助手。",
@@ -19128,7 +19128,7 @@ API 字段摘录：{{due_fields}}
   {
     id: "357",
     slug: "windmill-pim-internal-agent-no-ingress",
-    title: "Windmill Pim：公司内 Agent，无入站端口接 CRM/分析/Slack",
+    title: "Windmill 内网代理出站连业务",
     summary: "对照团队实践：用上下文文件+AI SDK ToolLoop+Inngest 出站连接，替换易碎 n8n 销售流；线索调研、周报、Slack 问答同上下文；不代你开放公网 Agent、不外推安全。",
     description:
       "面向要在公司内落地 Agent 又不想被安全否决的运营/工程：把「把个人 Clawd 搬进公司」写成可对账的无入站+可观察+按需赋权，区别于一人生活 OS 与舰队迁移后台 Agent。",
@@ -19306,7 +19306,7 @@ Agent 线程摘录：{{thread}}
   {
     id: "359",
     slug: "simon-showboat-rodney-agent-demos",
-    title: "Simon：Showboat+Rodney，让编码 Agent 交出可复核演示证据",
+    title: "Showboat 拼演示 Rodney 截图",
     summary: "对照个人实践：用 CLI 拼 Markdown 演示文档（exec/image），Rodney 管多轮浏览器会话截图；红绿 TDD 仍不够，要亲眼看见；不代你跳过人工验收、不外推质量。",
     description:
       "面向用编码 Agent 交付功能的开发者：把「测过了你信我」写成可对账的演示工件+防直接改 Markdown 作弊，区别于自研 harness 契约与隐藏测 eval。",
@@ -19662,7 +19662,7 @@ Sheets 列定义：{{columns}}
   {
     id: "363",
     slug: "alejandro-newsletter-claude-code-pipeline",
-    title: "Alejandro：Claude Code 五段流水线，把周刊从数小时压到可编辑草稿",
+    title: "Claude Code 周刊五段流水线",
     summary: "对照咨询实践：三名温哥华客户用 Claude Code 跑选题排序→摘要→站外 HTML→订户同步→表现回看；一客户约 5h→45min 且仍人审；不代你无人群发、不外推打开率。",
     description:
       "面向周更 Newsletter 的独立作者/顾问：把「再雇写手」写成可对账的五段 Claude Code 管线+人审编辑，区别于晨报 OS 与演示证据流水线。",
@@ -19751,7 +19751,7 @@ Sheets 列定义：{{columns}}
   {
     id: "364",
     slug: "wes-sander-personal-agent-trifecta",
-    title: "Wes Sander：个人 Agent 三要素规则 + PreToolUse 硬闸",
+    title: "个人代理三要素与 PreToolUse 闸",
     summary: "对照个人实践：私有数据×不可信内容×出站通道「三要素」同任务禁止；规则是建议、hooks 才是执法；审计一次抓 28 项；不代你免疫越权、不外推合规认证。",
     description:
       "面向自建个人 Agent 的独立开发者：把「再加一层提示词护栏」写成可对账的三要素隔离+harness hooks 执法，区别于无入站架构、专业 Agent 波次与 Nick Tune hooks 工作流引擎。",
@@ -19928,7 +19928,7 @@ CI 当时状态：{{ci_status}}
   {
     id: "366",
     slug: "soapbox-sheila-accounting-agents-md",
-    title: "Soapbox Sheila：50+ 细粒度脚本 + AGENTS.md，人盯终端的会计 Agent",
+    title: "脚本工具箱与 AGENTS.md 会计代理",
     summary: "对照小团队实践：承包商发票→记账→法币/比特币付款→OpenCollective 报销全链路；v2 用脚本工具箱+约600行 AGENTS.md；人审出站；不代你无人付款、不外推省时。",
     description:
       "面向小团队应付账款与簿记：把「再上一个会计平台」写成可对账的细粒度脚本+明文工作流+终端人盯，区别于收件发票分职与外勤 Sheets CRM。",
@@ -20105,7 +20105,7 @@ CI 当时状态：{{ci_status}}
   {
     id: "368",
     slug: "invoice-kitten-shopify-multi-agent-batches",
-    title: "Invoice Kitten：并行 Agent 批次，6 天拼出可上架 Shopify 发票 App",
+    title: "Invoice Kitten 并行代理拼发票",
     summary: "对照独立开发实践：31 批×常约 4 并行工作流；披露约 6 天冲刺、1050 测、TECH_DEBT 71/63；人做架构与审合；不代你六天必成、不外推商店转化。",
     description:
       "面向独立开发者用多 Agent 并行交生产 Shopify App：把「再雇外包小队」写成可对账的批次编排+文件边界+测闸，区别于 Stripe Minions 一次性 PR 与自治 CI 贡献者。",
@@ -20193,7 +20193,7 @@ CI 当时状态：{{ci_status}}
   {
     id: "369",
     slug: "zeybek-agent-pr-scope-behaviour-checks",
-    title: "Zeybek：给 Agent PR 加范围/行为/测序 CI 闸，而不是「再仔细读」",
+    title: "Agent PR 范围行为与测序闸",
     summary: "对照团队工程案例：Agent PR 过半后事故促改；声明范围 diff 预算、行为变更清单、先读代码再读测；披露首审中位约 5h→2h、体量约 310→160、两周回滚 6→1；不代你降事故、不外推。",
     description:
       "面向 Agent 大量开 PR 的团队：把「加人多审一轮」写成可对账的 PR 工件+CI 失败即修，区别于自治 CI 贡献者与 hooks 工作流引擎。",
@@ -20281,7 +20281,7 @@ PR 摘要：{{pr}}
   {
     id: "370",
     slug: "slothboss-local-windows-chore-agent",
-    title: "SlothBoss：本机 Gemma 规划，应用层执法的 Windows 杂务 Agent",
+    title: "SlothBoss 本机 Gemma 应用层执法",
     summary: "对照个人实践：语音→本地 Gemma 规划→13 种安全工具；披露研究演示 2 页/7 条发现仅 2 条 confirmed、Downloads 221→9 夹需人批、242 测；不代你无人改盘、不外推省时。",
     description:
       "面向想把无聊杂务交给本机 Agent 的个人用户：把「再装一个云端全能助手」写成可对账的本地模型+工具白名单+结果回读+Undo，区别于 Personal OS 与无入站内网 Agent。",
@@ -20369,7 +20369,7 @@ PR 摘要：{{pr}}
   {
     id: "371",
     slug: "rutger-muninn-markdown-domain-secretary",
-    title: "Rutger：Markdown 域剧本 + MCP，Claude Code 私人秘书 Muninn",
+    title: "Markdown 域剧本与 Muninn 秘书",
     summary: "对照个人效率实践：口述生成 CLAUDE.md/域剧本；并行域扫描出简报；出站需确认；披露简报约 30–120 秒；不代你无人发信、不外推省时。",
     description:
       "面向想把邮件/日历/健康等多域收成一次简报的个人用户：把「再装 OpenClaw 全能管家」写成可对账的 Markdown 身份+域剧本+并行子代理扫描+出站确认，区别于 n8n Personal OS 与三要素 PreToolUse 硬闸。",
@@ -20457,7 +20457,7 @@ PR 摘要：{{pr}}
   {
     id: "372",
     slug: "openobserve-council-e2e-qa-agents",
-    title: "OpenObserve：八席 Council 子代理，把 E2E QA 写成可阻断流水线",
+    title: "OpenObserve 端到端测试阻断流水线",
     summary: "对照团队工程案例：Analyst→Architect→Engineer→Sentinel→Healer→Scribe；披露分析 45–60 分→5–10 分、脆测约 30–35→4–5、用例约 380→700+，并在写测时揪出 ServiceNow 静默缺陷；不代你零漏测、不外推。",
     description:
       "面向跟不上发版速度的 QA/工程团队：把「再加人写 Playwright」写成可对账的分职 Council+Sentinel 阻断+Healer 自愈，区别于自治 CI 贡献者与 Agent PR 人审工件闸。",
@@ -20545,7 +20545,7 @@ PR 摘要：{{pr}}
   {
     id: "373",
     slug: "tony-tong-crm-stage-evals",
-    title: "Tony Tong：顾问获客 CRM 是 Agent 系统，阶段契约 + Eval 才知道对不对",
+    title: "获客 CRM 阶段契约与 Eval",
     summary: "对照独立顾问实践：Notion 单源获客；人批每封；披露 25 天约 424 线索/165 封、首轮 Eval 规则通过约 90%/78%，并揪出未验证先发等；不代你提回复率、不外推。",
     description:
       "面向一人顾问/小咨询用 Agent 做获客：把「再仔细读每封 AI 邮件」写成可对账的阶段契约+规则/金标/窄裁判 Eval，区别于外勤 Telegram Sheets CRM 与支持邮箱分类。",
@@ -20633,7 +20633,7 @@ CRM 落点：{{crm}}
   {
     id: "374",
     slug: "canvas-investigator-slack-support-agent",
-    title: "Canvas Medical：Support Stack → Slack Investigator，用 MCP 查支撑告警",
+    title: "Canvas 支持告警 Slack 调查",
     summary: "对照医疗团队实践：本地 MCP/技能包给支持自助调查；再做成 Slack Agent 跟告警与@提问；披露小时级多人排查压到分钟级口径；不代你合规免责、不外推。",
     description:
       "面向有工单/观测/代码多源的支持与平台团队：把「再找工程师盯告警」写成可对账的 MCP 技能包→Slack 调查 Agent+反馈按钮，区别于支持邮箱分类与外勤 CRM。",
@@ -20721,7 +20721,7 @@ Support Stack：首次试用即从 GitHub/Pylon/Sentry 等拉数、定位缺陷�
   {
     id: "375",
     slug: "janmejai-notion-interest-rating-editorial",
-    title: "Janmejai：七条定时例程 + Notion Interest Rating，人只点下拉不自动发文",
+    title: "Notion 兴趣评分定时例程人审",
     summary: "对照个人编辑实践：雷达投稿等人评 4/5；Approved 例程不可写；披露技能表 64/~6.1k token→7/~1.2k，并因 SEO 聚合错误引入 claim ledger；不代你流量、不外推。",
     description:
       "面向一人内容站要用 Agent 做选题与草稿：把「再接一条周刊五段流水线」写成可对账的 Notion 控制面+Interest Rating 闸+claim ledger+技能 token 预算，区别于周刊 Claude Code 五段管线。",
@@ -20898,7 +20898,7 @@ Support Stack：首次试用即从 GitHub/Pylon/Sentry 等拉数、定位缺陷�
   {
     id: "377",
     slug: "chris-gmyr-hive-lead-codex-workers",
-    title: "Chris Gmyr：Hive 用一 Lead 编排 Claude Code / Codex Worker，本地 SQLite 交接",
+    title: "Hive 编排双工人本地交接",
     summary: "对照个人开发实践：Lead 写 pad/todo，tmux Worker 可盯可介入；披露 1.7.0 一批 10 个 PR（Codex/Claude 各 5）且规划 Worker 只读；不代你吞吐、不外推。",
     description:
       "面向要在多仓并行开 Agent 又不想手抄 runbook 的独立开发者：把「再堆 subagent」写成可对账的 Lead+Worker+本地 SQLite 共享态，区别于 persistent fleet 与 hooks 工作流引擎。",
@@ -20986,7 +20986,7 @@ Worker 可否改文件：{{workers_write}}
   {
     id: "378",
     slug: "jerad-claude-life-dashboard-app",
-    title: "Jerad：Claude 对话出规格 → Design → Code，自建生活仪表盘 App",
+    title: "Claude 规格到生活仪表盘",
     summary: "对照个人效率实践：手表语音入库；Today/Top3/例程分轨；披露规格→Claude Design→Claude Code，几天内上线 xCloud+Supabase；不代你省时、不外推。",
     description:
       "面向多领域生活信息进不去系统的个人用户：把「再拼五个效率 App」写成可对账的规格驱动自建仪表盘+低摩擦捕获，区别于 Markdown 域秘书与 n8n Personal OS。",
@@ -21074,7 +21074,7 @@ Worker 可否改文件：{{workers_write}}
   {
     id: "379",
     slug: "alan-albert-dollar-day-sales-agents",
-    title: "Alan：Albert 十余单职能销售 Agent，人批触达，全期约 $15.85",
+    title: "Albert 职能销售代理人批触达",
     summary: "对照独立销售实践：评分/排日/写信分职；披露闭环约 $29,201、全期推理约 $15.85、对照租栈约 $460/月；触达人前必批；不代你成交、不外推。",
     description:
       "面向一人覆盖多市场的 B2B 销售：把「再租四件套 SaaS」写成可对账的单职能 Agent 劳动力+公司圣经/模板/纠错日志，区别于顾问获客阶段 Eval 与支持邮箱分类。",
@@ -21163,7 +21163,7 @@ CRM/邮箱：{{stack}}
   {
     id: "380",
     slug: "arize-alyx-todo-plan-context-tools",
-    title: "Arize Alyx：计划工具落盘 + LargeJson/jq，生产 Agent 调试四课",
+    title: "Alyx 计划落盘与 LargeJson",
     summary: "对照团队工程案例：todo 四态计划外置；披露单次约 27 次 LLM 空转待办，及 LargeJson 后约 10 次定向工具调用可比十实验；不代你零幻觉、不外推。",
     description:
       "面向要把产品内助手送到生产的团队：把「再写长系统提示」写成可对账的计划工具+出带句柄的大数据工具面，区别于 Eval 删多智能体与 E2E Council。",
@@ -21251,7 +21251,7 @@ CRM/邮箱：{{stack}}
   {
     id: "381",
     slug: "trmnl-claude-replace-shiphero",
-    title: "TRMNL：用 Claude Design+CLI 两周换掉年约 2 万美元履约平台",
+    title: "TRMNL 用 Claude 替换履约平台",
     summary: "对照团队履约实践：截图喂 Design 保肌肉记忆；披露 Liz 约 80–100 小时开发+一周现场，ShipHero 曾寄出 3 万+ 包裹约 $0.76/件且维护后成本望再降 2–3×；不代你零停线、不外推。",
     description:
       "面向自建仓/多仓发货却被 3PL SaaS 卡死的小团队：把「再续一年履约合同」写成可对账的截图仿制+Superpowers 架构+活邮资 API 切换，区别于销售多 Agent 日成本与店铺客服注入防御。",
@@ -21338,7 +21338,7 @@ CRM/邮箱：{{stack}}
   {
     id: "382",
     slug: "batuhan-yika-orchestrator-two-touchpoints",
-    title: "Batuhan：一人 IoT 平台两触点——编排审范围，构建到预发再合入",
+    title: "一人物联网两触点编排与构建",
     summary: "对照独立开发者实践：编排仓与前后端构建仓分席；披露计划+RED 停、评审+反驳、Chrome 走查，以及约 80% 做产品/20% 养流程；不代你吞吐、不外推。",
     description:
       "面向一人扛平台前后端又不想读每一行的创始人：把「再开 Agent Teams」写成可对账的两触点+瑞士奶酪门禁+跨会话消息，区别于 Hive Lead/Worker 与 hooks 工作流引擎。",
@@ -21514,7 +21514,7 @@ CRM/邮箱：{{stack}}
   {
     id: "384",
     slug: "firas-loomhaus-injection-stock-gates",
-    title: "Firas：店铺客服 Agent——库存决策出模型，四层挡住注入与议价",
+    title: "店铺客服库存外置挡注入议价",
     summary: "对照电商安全实践：n8n 编排三子代理；披露注入 10/10 封、抢最后库存 21/21、Notion 断连 8/8、履约同步约 36.5 秒；不代你零泄漏、不外推。",
     description:
       "面向小店客服要接库存/下单却怕被套折扣的独立开发者：把「再给模型看库存数」写成可对账的工作流判库存+分层注入防御，区别于履约门户替换与销售 Agent 触达。",
@@ -21601,7 +21601,7 @@ CRM/邮箱：{{stack}}
   {
     id: "385",
     slug: "alex-willen-amazon-seller-daily-claude",
-    title: "Alex：Claude Code 包圆亚马逊卖家晨间杂务，再自建 Actions 日跑",
+    title: "Claude Code 亚马逊卖家晨间杂务",
     summary: "对照电商效率实践：缺口货核对+评价请求 API；披露约十个品牌曾月初耗数小时、slash 后「夺回每月数小时」，并由 Actions 晨邮告警；不代你回款、不外推。",
     description:
       "面向多品牌亚马逊卖家被收货差异与评价按钮拖死的个人运营：把「再雇助理点后台」写成可对账的 Seller API 脚本+/dailyupdates+GitHub Actions，区别于销售多 Agent 成交叙事与履约门户自建。",
@@ -21868,7 +21868,7 @@ CRM/邮箱：{{stack}}
   {
     id: "388",
     slug: "lars-clara-consultancy-claude-secretary",
-    title: "Lars：Clara——有脾气的 Claude Code 顾问行政秘书",
+    title: "Clara 有脾气的顾问秘书",
     summary: "对照个人顾问实践：PARA 纯 markdown + 人设 CLAUDE.md + MCP/cron；披露约一年打磨、邮箱白名单问答与最小可用三件套；不代你接单、不外推。",
     description:
       "面向一人咨询社被客户项目、服务器笔记与 RSVP 淹没的创始人：把「再装一个待办 App」写成可对账的人设优先工作区+记忆分层+邮件只读答询，区别于 Muninn 域秘书与 Personal OS n8n。",
@@ -21957,7 +21957,7 @@ CRM/邮箱：{{stack}}
   {
     id: "389",
     slug: "robson-multilang-invoice-claude-api",
-    title: "Robson：多语言顾问发票——Claude API 把月行政从约 90 分钟压到约 12",
+    title: "Claude API 多语言顾问发票",
     summary: "对照个人效率实践：Airtable→脚本→多语发票+跟催；披露二月 11 张约 34 分钟、旧均约 22 分钟/张、月 API 约 €1.14、约 40 张仅 3 张手改；不代你合规、不外推。",
     description:
       "面向多语种客户开票被语气与税条款拖死的一人顾问：把「再买一套单语开票 SaaS」写成可对账的表单驱动生成+硬编码税条款库+人日检日志，区别于 Invoice Kitten 多 Agent 拼 App 与 Sheila 会计 Agents。",
@@ -22048,7 +22048,7 @@ CRM/邮箱：{{stack}}
   {
     id: "390",
     slug: "tudovu-soc2-remediation-agent",
-    title: "Tudovu：SOC 2 发现项——五阶段人闸的 Claude 修复代理",
+    title: "SOC 2 发现项五阶段人闸修复",
     summary: "对照安全合规实践：核验→爆炸半径→问人→CloudFormation 补丁 PR→存证；披露可省数十小时、约五分钟出首份影响分析+草稿 PR；不代你过审、不外推。",
     description:
       "面向小团队被 SOC 2 扫描发现项卡住成交的创始人/安全负责人：把「丢给工程师慢慢改」写成可对账的只读勘察+人答闸+草稿 PR，区别于单调查员 RCA 与通用 CVE 升级简报。",
@@ -22137,7 +22137,7 @@ CRM/邮箱：{{stack}}
   {
     id: "391",
     slug: "jayden-nebula-seven-agent-soul-body",
-    title: "Jayden：Nebula 七席 soul/body——一人独立游戏工作室的日常编队",
+    title: "Nebula 游戏工作室灵魂与躯体编队",
     summary: "对照独立开发者：把秘书/市场/变现/法务/研发与两台构建机收成持久 soul + 一次性 CLI body；披露 7 席、30 天约 527 次执行/约 2.5M token/约 $387、约 80% 有用；不代你省时、不外推。",
     description:
       "面向一人工作室、会话一关就失忆、多域杂务抢游戏本职工时的独立开发者：把「再开多个终端会话」写成可对账的 soul/body + @路由 + 早晚 briefing，区别于顾问 PARA 秘书与大仓领域子代理。",
@@ -22316,7 +22316,7 @@ CRM/邮箱：{{stack}}
   {
     id: "393",
     slug: "scriptxeno-blog-mcp-claude-publish",
-    title: "ScriptXeno：CLAUDE.md + blog-mcp——人写正文、机械发布交给本地 MCP",
+    title: "blog-mcp 手写正文机械发布",
     summary: "对照个人博客：手写 front matter/标签大小写/外置图床/双 GitHub 账号易错；披露自研 blog-mcp 与手搓 YAML 序列化、标签纠错与 scoped 发布；不代你产量、不外推。",
     description:
       "面向一人静态博客、研究与成文仍想自己做、却在 Jekyll/Chirpy 机械步骤反复翻车的作者：把「再让模型整篇代写」写成可对账的约定文档+本地 MCP 发布工具链，区别于周刊五段流水线与顾问秘书。",
@@ -22405,7 +22405,7 @@ diff 摘要：{{diff}}
   {
     id: "394",
     slug: "vikrant-three-claude-code-chat-feature",
-    title: "Vikrant：三台 Claude Code + claude-chat——跨三服务约八小时交特征",
+    title: "三台 Claude Code 跨服务交特征",
     summary: "对照个人/小团队：支付/订单/前端三仓对等实例经 MCP 频道契约先行并行；披露约 8 小时会话、只写本仓、人守审批闸；不代你工期、不外推。",
     description:
       "面向跨多服务特性、协调会吃日历的建造者：把「再开子代理挤进同一会话」写成可对账的对等频道+冻结契约+所有权围栏，区别于大仓领域子代理会诊与单会话 agent teams。",
@@ -22493,7 +22493,7 @@ diff 摘要：{{diff}}
   {
     id: "395",
     slug: "glide-slipstream-build-gate-ship",
-    title: "Glide Slipstream：Build / Gate / Ship + 召回——给人让路的发版流水线",
+    title: "Slipstream 构建闸门发版与召回",
     summary: "对照产品工程团队：单仓+旗标+合并队列上跑 Build/Gate/Ship 与 detect→repair 召回；披露首代约 8 月 vs Slipstream 后约 90 天追平、合并→生产中位约 14 分、PR p75 约 5.4 时等；不代你指标、不外推。",
     description:
       "面向 Agent 生成代码量把 PR 审阅读成橡皮图章、回滚仍等人发现的平台团队：把「再加人工审批章」写成可对账的三站流水线+自动召回，区别于 Jira→特性环境编排与 SOC2 人闸修复代理。",
@@ -22581,7 +22581,7 @@ Slipstream 是从规格到生产的流水线，三站：Build（按约定/lint/�
   {
     id: "396",
     slug: "frederic-elena-claude-chief-of-staff",
-    title: "Frederic：Elena——文件夹里的 Claude 首席幕僚，日跑三班读六信箱",
+    title: "Elena 文件夹幕僚日读信箱",
     summary: "对照一人咨询/独立业务：把邮件/日历/LinkedIn/WhatsApp 收进本地文件夹+协议+三档规则；披露自 2026-07-22 至 10-25 记 1,629 次作业、六信箱语料规模与日三班；不代你省时、不外推。",
     description:
       "面向一人生意、跨渠道跟进与会前会后文书吃掉判断时间的运营者：把「再开一个万能聊天」写成可对账的本地文件夹记忆+协议/skills/agents+静默/草稿/永不三档规则，区别于顾问 PARA 秘书与 indie 多席 soul/body 运营编队。",
@@ -22761,7 +22761,7 @@ Slipstream 是从规格到生产的流水线，三站：Build（按约定/lint/�
   {
     id: "398",
     slug: "kanta-daily-indie-claude-schedule",
-    title: "Kanta：Claude Code Schedule——把独立开发「晨间复利」交给日跑 skill",
+    title: "Claude Code 日跑晨间复利",
     summary: "对照一人 indie：daily-development 七步无人在场；披露提交约 0–2→1–3/日、博客草稿约 3→25+/月、路线图断更约 5–10→0 天；不代你产量、不外推。",
     description:
       "面向一人公司、晨间五分钟琐事一停就断月的独立开发者：把「看心情再更新」写成可对账的排程 skill+迁移时间戳纪律+Anthropic 宕机回退，区别于周刊五段流水线与博客 MCP 只做机械发布。",
@@ -22849,7 +22849,7 @@ SKILL 七步（写时假定用户不在场、允许决策不允许追问）：�
   {
     id: "399",
     slug: "scott-skill-activation-daytona-evals",
-    title: "Scott：Daytona 沙箱评 Claude Code skill 激活——forced-eval 打满分",
+    title: "Daytona 沙箱评技能激活",
     summary: "对照个人工具链作者：用真 claude -p 沙箱而非 API 模拟测钩子；披露基线约 55%、forced-eval/llm-eval 标准集 100%、难例真负 forced-eval 5/5、全评约 $5.59；不代你激活率、不外推。",
     description:
       "面向写了一堆 skills 却发现模型常不调用的建造者：把「再改一版描述碰运气」写成可对账的沙箱评测+钩子对照+真负样本，区别于删多智能体调查队的产品 Eval 与隐藏测试编码评测。",
@@ -22936,7 +22936,7 @@ skills 列表：{{skills}}
   {
     id: "400",
     slug: "vincent-team-shared-claude-code-flow",
-    title: "Vincent：10–20 人共用一套 Claude Code——多人批计划后再自主实现",
+    title: "多人共用 Claude Code 批计划后实现",
     summary: "对照网络安全 SaaS 团队：插件市场发共享 skills，产品/QA/工程共批计划；披露一人数日可交昔日数周特性（作者观察非计量）、评审成瓶颈与席位限额；不代你速度、不外推。",
     description:
       "面向要从「各用各的 Agent」收到可共享交付节奏的工程组织：把「个人 harness 私藏」写成可对账的插件市场+双过滤计划批准+工具权限硬边界，区别于 Jira→特性环境六角色与 Build/Gate/Ship 发版召回。",
@@ -23024,7 +23024,7 @@ MCP 权限：{{mcp}}
   {
     id: "401",
     slug: "max-mucko-saturday-handoff-blog-pr",
-    title: "Max：周六 06:00 起床前——Obsidian handoff 起草博客并开 PR",
+    title: "周六 Obsidian 交接起草博客",
     summary: "对照一人多项目写作：日更 handoff 作料，周六 Claude Code Routine 开草稿 PR；披露约 12 次会话搭成、约 1/3 草稿不可用、审改约 5–15 分钟、未合并超 30 天自暂停；不代你产量、不外推。",
     description:
       "面向有全职/育儿日程却仍想公开写作的建造者：把「周六硬挤一篇」写成可对账的 launchd 预同步+反吹嘘规则+人手合并门禁，区别于 indie 晨间日跑 Schedule 与 MCP 机械发博客。",
@@ -23114,7 +23114,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "402",
     slug: "kenji-skills-completion-judge-gate",
-    title: "Kenji：kenji skills——「做完」由独立裁判说了算，Stop 钩拦半途",
+    title: "kenji 技能完成裁判与停止钩",
     summary: "对照一人多仓多工具：playbook + completion-judge + Stop 钩；披露 2.7.0 约 161 skills / 63 斜杠 / 6 子代理，三轮无进展放弃、清单 24h 未变忽略；不代你合入质量、不外推。",
     description:
       "面向 Agent 常半途或谎称完成的独立开发者：把「再催一句做完」写成可对账的完成条件+异体裁判+Stop 钩，区别于 skill 激活率沙箱评测与团队 Build/Gate/Ship 发版召回。",
@@ -23203,7 +23203,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "403",
     slug: "dave-swift-claude-pdf-filler-skill",
-    title: "Dave：把重复填 PDF 收成 /pdf-filler skill——先读字段再回读校验",
+    title: "pdf-filler 读字段再回读校验",
     summary: "对照自由职业/小业务表格：Claude Code 读可填字段、批量填、压平；披露同模板三人约三十秒、技能记住复用信息与分类追问；不代你合规、不外推。",
     description:
       "面向被 W-9/供应商表/理赔表点击地狱拖住的一人经营者：把「每会话重教一遍」写成可对账的读字段→填→回读→skill 固化，区别于多语发票 API 批处理与会计多智能体总账。",
@@ -23293,7 +23293,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "404",
     slug: "brex-cursor-dual-agent-micronaut-migration",
-    title: "Brex：Cursor 双代理迁 Micronaut——一人月迁 180 服务，自称 32x",
+    title: "Brex 双代理迁 Micronaut",
     summary: "对照企业框架大迁：生成代理开草稿 PR，校验代理盯 CI 最多自修 3 次；披露昔日 3 人一季约 50 服务 vs 后 1 人一月 180、人均约 32x、单服务成本约降 90%；不代你迁移 ROI、不外推。",
     description:
       "面向被框架升级拖死路线图的平台/基础团队：把「巨型万能迁移 Agent」写成可对账的双代理流水线+脚本/技能分工+三振出局与禁止自合入，区别于团队共享计划门与 Jira→特性环境六角色。",
@@ -23381,7 +23381,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "405",
     slug: "dexter-schwarm-background-coding-agents",
-    title: "Dexter：Schwarm——关盖后仍跑的后台编码代理，worktree+手机可审",
+    title: "Schwarm 关盖后台编码可手机审",
     summary: "对照小团队源到付：Linear/工单→节点 worktree 跑 Claude Code 开 PR；披露约 10s 收敛轮询、约 5min 扫冲突、Tailscale 预览与指令队列；刻意少推事件；不代你吞吐、不外推。",
     description:
       "面向关笔记本活就停、又不愿纯消防的小团队：把「终端里盯会话」写成可对账的 server/node+隔离 worktree+空闲时投喂指令，区别于共享插件计划门与框架大迁双代理。",
@@ -23471,7 +23471,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "406",
     slug: "harry-guinness-claude-quickbooks-finance",
-    title: "Harry：受不了 QuickBooks——用 Claude Code 自建多币种财务看板",
+    title: "替代 QuickBooks 的多币种看板",
     summary: "对照自由撰稿多账户多币种：弃 €372/年 QuickBooks，自建开票+支出+净值看板；披露 Wise 入账匹配、SMTP 直发、FX 损益；不代你合规、不外推。",
     description:
       "面向被多币种入账/错配客户名拖住的一人经营者：把「迁就 SaaS 流程」写成可对账的自建开票匹配+可见消费羞耻板，区别于多语发票 API 批处理与会计多智能体总账。",
@@ -23559,7 +23559,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "407",
     slug: "peter-sutarik-idoklad-mcp-invoices",
-    title: "Peter：给 Claude Code 接 iDoklad MCP——终端里开票、催款、看营收",
+    title: "iDoklad MCP 终端开票催款",
     summary: "对照捷克咨询行政：自建 MCP 连 iDoklad；披露 15 工具四分域、OAuth 本机登录、先做未付清单再扩；不代你自动群发催款、不外推。",
     description:
       "面向每月点网页开票、查未付的独立顾问：把「再开一遍网表」写成可对账的本机 MCP 工具面，区别于多语发票 API 批处理与个人全量财务看板自建。",
@@ -23647,7 +23647,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "408",
     slug: "aaron-yong-automate-out-of-loop-orchestrator",
-    title: "Aaron：38 次交互里 55% 在说 proceed——自建编排器把自己移出环",
+    title: "把自己移出环的编码编排器",
     summary: "对照一人编码生命周期：五代理流水线+编排器；披露 38 次交互仅约 8% 是设计决策、约 12200 行/515 测、文档当接口暂停；不代你免审合入、不外推。",
     description:
       "面向总在回复「继续/好的」的建造者：把「人当油门」写成可对账的 Scout→Plan→Work→Review 编排与文档检查点，区别于关盖后台 Schwarm 与完成裁判 Stop 钩。",
@@ -23736,7 +23736,7 @@ handoff 路径：{{handoff_path}}
   {
     id: "409",
     slug: "airwallex-airtest-claude-subagents-tests",
-    title: "Airwallex：Airtest 多子代理——集成测从约两周压到约两小时",
+    title: "Airtest 多子代理写集成测试",
     summary: "对照 Billing 工程：/airtest 编排生成·评审·调试·缺口分析；披露约 4000+ 集成测、撑约 50 API 上线、单测仍约 90%；不代你免维测、不外推。",
     description:
       "面向集成测跟不上发版的团队：把「每人自备提示写测」写成可对账的子代理分工+框架知识+自愈循环，区别于框架大迁双代理与公司全员开仓贡献。",
@@ -23824,7 +23824,7 @@ API/服务范围：{{scope}}
   {
     id: "410",
     slug: "epilot-non-engineers-claude-code-prs",
-    title: "epilot：全员开仓——60 天 629 合入，11 名非工程贡献 40 PR",
+    title: "epilot 全员含非工程开仓",
     summary: "对照能源 B2B SaaS：Slack@Claude+沙箱+how-to-everything；披露 219 仓、预览环境、越权直推唤醒后只许开 PR；不代你无审上线、不外推。",
     description:
       "面向想让 PM/设计/客成直接改产品的团队：把「黑客日试用」写成可对账的沙箱开仓+预览+数据分级治理，区别于集成测子代理工厂与共享计划门发版。",
@@ -23914,7 +23914,7 @@ API/服务范围：{{scope}}
   {
     id: "411",
     slug: "julian-epbcenter-claude-crm-no-dev",
-    title: "Julian：零开发背景——Claude Code 搭出 90+ 路由培训中心 CRM",
+    title: "零开发背景自建培训中心 CRM",
     summary: "法国小培训中心联合创始人：弃 Salesforce/HubSpot，用终端+200 行宪法 markdown 自建 React/Firebase CRM；披露 90+ 路由、五 API、每 2–3 文件提交；不代你合规上线。",
     description:
       "面向懂业务不懂 React、又付不起 50–100K 外包的小服务商：把「终端口述需求」写成可约束的 CRM 自建路径，区别于电商财务看板与开票 MCP。",
@@ -24004,7 +24004,7 @@ API/服务范围：{{scope}}
   {
     id: "412",
     slug: "mergify-claude-cross-system-support-investigator",
-    title: "Mergify：把 Claude 做成跨系统支持调查员——分诊约 10–15 分压到 2–5 分",
+    title: "Mergify 跨系统支持调查",
     summary: "Mergify 工程：Git 子模块仓 + MCP（Sentry/Linear/Plain/Datadog）+ 只读 Postgres 斜杠命令；披露首通约 75%、全员采用、约一周 10 小时搭建；不代你无人值守关单。",
     description:
       "面向调查面散落在日志/错误/库/票务的 B2B 基建团队：把「五开标签页」写成可并行首通的调查仓，区别于 Slack 医疗 Canvas 与完成判定 Stop 钩。",
@@ -24094,7 +24094,7 @@ MCP 两层：远程 HTTP（Sentry、Linear，厂商 OAuth）；本地 stdio 薄�
   {
     id: "413",
     slug: "chelle-honiker-claude-weekend-ops-batch",
-    title: "Chelle：一个周末——32k 图迁移、72 张坏图、60+ 站插件更新",
+    title: "周末图迁移坏图与插件更新",
     summary: "独立作者经营者：周末用 Claude Code 清多年积压；披露 32000 图迁 Photoprism、Ghost 审计修 72 坏图、60+ WP 插件免登仪表盘、Wix→WP 与课程迁移；不代你无人值守改生产。",
     description:
       "面向多站多资产、积压运维永远排不上的独立经营者：把「周末消防水管」写成可复盘的批量运维清单，区别于幕僚 OS 与单仓工具链迁移。",
@@ -24182,7 +24182,7 @@ MCP 两层：远程 HTTP（Sentry、Linear，厂商 OAuth）；本地 stdio 薄�
   {
     id: "414",
     slug: "sergio-azocar-oxlint-tsgo-monorepo-migrate",
-    title: "Sergio：Biome→oxlint + tsc→tsgo——单体质量管线约 29s 压到 1.25s",
+    title: "质量管线改用 oxlint 与 tsgo",
     summary: "DEV 实践：七应用/约 1670 TS 文件 monorepo；披露 lint 3.70→0.49s、typecheck 25.34→0.76s、合计约 23×；强调先量后迁与机械改适宜 Agent；不代你无人值守合入。",
     description:
       "面向质量管线 OOM、typecheck 拖 CI 的 monorepo 团队：把「迁工具链」写成可度量的 Agent 循环，区别于产品栈大迁与集成测子代理。",
@@ -24271,7 +24271,7 @@ MCP 两层：远程 HTTP（Sentry、Linear，厂商 OAuth）；本地 stdio 薄�
   {
     id: "415",
     slug: "aditlal-harness-engineering-24k-prompts",
-    title: "Adit：2.4 万次提示后的 harness——钩子拦错、跨模型审、账单在缓存",
+    title: "harness 钩子跨模型审与缓存账单",
     summary: "Android 生产实践：CLAUDE.md→corrections→exit 2 钩；披露 AI 复盘最高约 30/45 人找缺陷、28 任务勾完实缺 3、子代理 20.5M→2.4M token；不代你免人审。",
     description:
       "面向已会写 Agent、却被「自信做错」与账单拖住的个人/小团队：把 harness（钩子/二审/成本）写成可复盘门禁，区别于单一 completion-judge 与编排去 proceed。",
@@ -24359,7 +24359,7 @@ PR 工具：{{pr_tool}}
   {
     id: "416",
     slug: "outloop-claude-legacy-dotnet-audit-harden",
-    title: "Outloop：用 Claude 审计加固三套关键路径 .NET——清单化债而不重写",
+    title: "三套关键路径 .NET 审计加固",
     summary: "小团队对三套实时控制相关 .NET 服务做多轮 Claude 审计；披露跨审计 140+ 问题实例、竞态 44、日志缺口 38；小 PR+先测后改；不代你无人值守合入安全关键改动。",
     description:
       "面向不能「整仓重写」、却被竞态/静默失败拖住的关键路径团队：把 Claude 做成可再生审计清单与小 PR 燃烧，区别于大迁双代理与周末运维清债。",
@@ -24449,7 +24449,7 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
   {
     id: "417",
     slug: "denis-sirashev-nine-ai-sessions-vertical-slices",
-    title: "Denis：把一周表单拆成 9 次 AI 会话——两天交付垂直切片",
+    title: "表单拆成多次会话的垂直切片",
     summary: "Electron 内 React/TS 分支设置表单：计划会话后按垂直切片清上下文；披露原估约一周→两天、9 任务、单任务约 80k–135k token；不代你跳过人审编辑。",
     description:
       "面向上下文一胀就糊的中型前端任务：把「一次聊完」改成可测垂直切片会话，区别于编排去 proceed 与 harness 钩子账单叙事。",
@@ -24538,7 +24538,7 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
   {
     id: "418",
     slug: "oleh-veheria-claude-pr-first-pass-review",
-    title: "Oleh：把 Claude 放进 PR 一审——自称省约每工程师每天 30 分钟",
+    title: "Claude 担任的 PR 首轮评审",
     summary: "跨国 iOS 团队：多维 Agent 先审再人审；披露自测约省 30 分钟/工程师/天、曾误开自动合入后撤回；不代你让 Agent 按测试绿灯无人值守合入。",
     description:
       "面向评审被机械项挤占判断力的移动团队：把一审做成带失败场景的多维风扇，区别于跨系统支持调查仓与 completion-judge 停钩。",
@@ -24716,7 +24716,7 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
   {
     id: "420",
     slug: "juste-thales-zerosuite-chatwoot-draft-only-support",
-    title: "Juste：Chatwoot 草稿模式客服 AI——只写私密笔记，从不对客发言",
+    title: "Chatwoot 草稿客服只写私密笔记",
     summary: "科特迪瓦主机商一日内接草稿助手；披露历史约 1.2 万会话、夜间抽取约 $7.28/702 候选、四次审计、93 测；不代你对客自动回复或处理金流。",
     description:
       "面向要把历史会话变成知识、又绝不能让模型直接对客的支持台：把抽取候选+私密草稿+引用否则移交写成门禁，区别于跨系统工程调查仓与 Canvas 支持 Agent。",
@@ -24804,7 +24804,7 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
   {
     id: "421",
     slug: "carlos-infantes-skillpilot-green-tests-miss-checkout",
-    title: "Carlos：SkillPilot 上线——1,805 绿测没拦住真正要命的结账 bug",
+    title: "SkillPilot 绿测漏掉的结账缺陷",
     summary: "约三周用 Claude Code 做出可收款产品；披露 1,805 单测全绿时结账已死数日、CSP/权益/标价三洞靠真卡自购发现；不代你用绿测代替浏览器付钱验收。",
     description:
       "面向 AI 代写电商结账、却把「测绿=可收钱」当真的独立开发者：把真实浏览器购买验收做成门禁，区别于 PR 一审风扇与垂直切片清会话。",
@@ -24894,7 +24894,7 @@ Claude 主要做四件事：盘点（结构化问题清单含路径/行号/候�
   {
     id: "422",
     slug: "conor-gotzens-affiliate-ai-team-month-one",
-    title: "Conor：五代理跑联盟站满月——真赢 1 次、空报两次，营收 $7.26",
+    title: "五代理运营联盟站满月复盘",
     summary: "五站联盟组合上线排程代理四周后复盘；披露旗舰印象约 14→749/周、meta CTR 0.49%→2.16%、30 日 Amazon $7.26，以及假 404 与代理竞态；不代你无人值守发意见向内容。",
     description:
       "面向一人多站联盟、要把周更 SEO/发布做成可回滚实验的运营者：把可逆改自动、意见与发布留人，区别于内容捏造门博客管线与草稿客服。",
@@ -24984,7 +24984,7 @@ SEO 铁律：标题/meta 变更必记基线，满 21 天再判；本周首批五
   {
     id: "423",
     slug: "konde-rtk-claude-token-proxy-60pct",
-    title: "Konde：用 RTK 代理砍掉 Claude Code 约 60% token——$40/天→$14/天",
+    title: "RTK 代理削减 Claude Code 用量",
     summary: "团队为舰队会话做 Rust 透明代理；披露日耗约 $40→$14、工具描述约占输入 42%、1 万会话无显著行为差；不代你为省钱关掉人审或伪造 SLA。",
     description:
       "面向 Agent 舰队输入 token 被工具 schema/噪声命令吃掉的团队：把懒加载工具定义+输出裁剪+文件 diff 缓存做成代理层，区别于 harness 账单叙事与技能正文瘦身。",
@@ -25074,7 +25074,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "424",
     slug: "postman-devrel-claude-skills-token-audit",
-    title: "Postman DevRel：审计 19 个 Claude Code 技能——合并跑省约 1.33 万 token",
+    title: "Postman 审计 Claude 技能开销",
     summary: "DevRel 插件跑编辑/Meetup/CFP 等 19 技能；披露无一声明 allowed-tools、最差单次约 1.14 万 token、合并跑省约 1.33 万且均分 6.5→9.5/12；不代你用估算当账单。",
     description:
       "面向技能正文塞满脚本、描述税打在每次会话上的内容/DevRel 团队：把 allowed-tools、短描述与 references/ 渐进披露做成审计清单，区别于 API 前透明代理与 harness 捕获率叙事。",
@@ -25161,7 +25161,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "425",
     slug: "rodik-keepard-family-finance-9-days",
-    title: "Rodion：9 天用 Agent 做出家庭财务自托管——日志里的 $2,700 与 446 条短提示",
+    title: "Keepard 家庭财务自托管",
     summary: "多国账户家庭从月度 Excel 到 Keepard；披露 9 历日、446 提示（中位 26 词）、643 提交/659 测、API 等价约 $2,700 且约 72% 在重读上下文；不代你无人值守动真钱划转。",
     description:
       "面向要把多银行流水收成一家视图、又愿自托管的个人开发者：把短提示+人测手机+硬预算分类器写成节奏，区别于企业 QuickBooks MCP 与一人内容捏造门。",
@@ -25251,7 +25251,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "426",
     slug: "taewoo-tabby-19-days-claude-talk",
-    title: "Taewoo：19 天用对话做出 Tabby——546 条消息、141 用户、$909 API 等价",
+    title: "对话生成的标签管理器 Tabby",
     summary: "越南语口语指挥 Claude Code 做浏览器标签管理器；披露 19 天 546 消息/2.5B token API 等价约 $909、1.2 一日 58 消息、商店 141 用户；不代你用绿测代替肉眼看 UI。",
     description:
       "面向一人做多语言浏览器扩展与短视频物料、要把「说清要什么」当成主循环的独立开发者：把计划门禁+截图验收+错例写回记忆做成节奏，区别于付费结账绿测陷阱与联盟代理满月。",
@@ -25341,7 +25341,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "427",
     slug: "asafamos-axle-a11y-saas-one-day",
-    title: "Asaf：非主程序员周六约 12 小时做出 a11y SaaS——当日首笔 $49",
+    title: "周六做出无障碍合规 axle",
     summary: "用 Claude Code 做出 axle 无障碍合规 CI；披露约 12 小时、Claude 约写 90% 字符、单次修复约 $0.008、同日 Polar 收首笔 $49；不代你无人值守合入无障碍「自动修复」。",
     description:
       "面向要把 WCAG 扫描+PR 修复建议做成可收款产品、且非美国商户的独立开发者：把 Polar MoR、置信度打分与人工复核旗标写成门禁，区别于结账绿测陷阱与家庭财务自托管。",
@@ -25431,7 +25431,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "428",
     slug: "ilya-gorban-15-claude-sessions-governance",
-    title: "Ilya：一人 DevOps 并行 10–15 个 Claude 会话——治理委托与 49 个守卫钩",
+    title: "并行多会话的治理与守卫钩",
     summary: "cmux 上多会话当分布式系统跑；披露约 18 worktree 踩坑、约 57 条跨会话消息教训、约 49 hook/57 测；审批不可转述、无未审编辑入共享分支；不代你无人值守改集群。",
     description:
       "面向一人要并行多任务 Claude Code、又怕文件碰撞与「转述批准」的 DevOps：把治理会话单写者+钩子 TDD+GitOps 二次核对写成纪律，区别于 PR 一审风扇与周末运维批处理。",
@@ -25521,7 +25521,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "429",
     slug: "shape-marko-claude-vs-cursor-router",
-    title: "Shape：同票对照 Claude Code vs Cursor——47 文件 53 分钟对 1 小时 42 分",
+    title: "同票双开 Claude 与 Cursor",
     summary: "团队双开工具；披露同票 47 文件 CC 53m/Cursor 1h42m、单文件 Cursor 22m vs CC 34m、CC 约 $420/工程师/周；规格+双工具工作流；不代你宗教式单选或无人值守合 PR。",
     description:
       "面向要在工作室同时用终端 Agent 与编辑器 Agent 的工程团队：把「脑内能装下用 Cursor、装不下写规格用 Claude Code」写成日课，区别于 token 透明代理与技能正文审计。",
@@ -25611,7 +25611,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "430",
     slug: "chirag-seven-months-agents-leash-28335",
-    title: "Chirag：七个月五套 harness 花 $28,335——真正买到的是 15 步皮带",
+    title: "harness 人回合的工具调用皮带",
     summary: "自记 /trends 账单；披露 $28,335、0.7% 工具调用在午夜–6 点、约 15 次工具调用/人回合、四月并行 worktree 后月耗约 7.4×；不代你无人值守通宵或把花费写成省 token 代理。",
     description:
       "面向要并行多 worktree、又坚持人在环短皮带的工程师：把会话遥测（夜间空洞、中断次数、技能调用率）写成自律，区别于 RTK 透明降本代理与技能正文审计。",
@@ -25699,7 +25699,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "431",
     slug: "alex-cloudstar-32784-lines-two-day-rebuild",
-    title: "Alex：两天「32,784 行」背后——543 测、零坏链，最好的交付是删掉 API",
+    title: "两日站点重建与旧接口删除",
     summary: "用 Claude Code 两天重建站点；披露约 100 commit/11 PR、228 帖改写、543 测、索引 URL 全 200、删 API 后静态页 1093→596；不代你把行数当生产力。",
     description:
       "面向一人要重建内容站/作品集、又怕「行数好看但资产伤了」的独立开发者：把负向约束、行为测与「该不该存在」写成门禁，区别于工具对照评测与多会话治理皮带。",
@@ -25789,7 +25789,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "432",
     slug: "jeremy-keeshin-16-sites-linode-day-migrate",
-    title: "Jeremy：一天用 Claude Code 迁完约 16 个站——Obsidian 计划门与人跑脚本",
+    title: "Obsidian 计划门与人跑迁移",
     summary: "自 2011 旧 Linode 迁到新机；披露约一日、16+ 站（静态/WP/Django）、每站 markdown 计划+问答、脚本由人执行核验；不代你无人值守改 DNS/生产。",
     description:
       "面向一人扛多年个人站/小项目机、又被 Ubuntu 与 bitrot 卡住的开发者：把 Obsidian 进度、开放问题与「脚本我跑」写成纪律，区别于框架大版本下午迁与内容站两日重建。",
@@ -25879,7 +25879,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "433",
     slug: "flowingcode-vaadin10-to-25-claude-afternoon",
-    title: "Flowing Code：Vaadin 10→25 一下午——先出迁移指南再动手，约 3–4 小时",
+    title: "Vaadin 升级先写迁移指南",
     summary: "团队用 Claude Opus 复活 2018 黑客松应用；披露先写可分享迁移指南、免费无 Key API 约束、约 3–4 小时有效会话、后接 Vaadin MCP/Signals；不代你无人值守合入商标与架构。",
     description:
       "面向要把跨大版本 Java/Vaadin 遗留演示救活、又怕盲开改的小团队：把「首交付=指南」、人裁 API/商标与测试中禁改写成门禁，区别于一日多站主机迁与两日内容站重建。",
@@ -25969,7 +25969,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "434",
     slug: "lanternproton-codex-3-releases-48-hours",
-    title: "keeper：48 小时用 Codex CLI 发出三仓版本——15 bug、测 77→189，以及挂起审批坑",
+    title: "Codex CLI 连发三仓版本",
     summary: "三款 3D 打印开源工具统一 CLI；披露约两日、修 15 bug、新增测至合计 189、exec 曾因 OnRequest 审批挂 21 分钟；不代你无人值守对真机打样。",
     description:
       "面向维护多仓开源工具、想用 Codex/同类 CLI 做修 bug+补测冲刺的独立开发者：把详细 prompt、stdin 投喂与沙箱写权限写成节奏，区别于 Claude 多会话治理与内容站重建。",
@@ -26059,7 +26059,7 @@ RTK 三板斧：(1) 懒工具定义——先只给名称，真正调用再补全
   {
     id: "435",
     slug: "keith-townsend-gcp-local-migration-gap",
-    title: "Keith：GCP→本地 5.5 小时到可跑演示——Claude 写一半，另一半是集成判断",
+    title: "GCP 迁本地演示与集成判断",
     summary: "Virtual CTO Advisor 迁本地；披露约 1,200 行规格、Claude~3,700 行+人再~3,700 行、1:27–6:51 共 5.5 小时、演示≠生产还要约 20–40 小时；不代你声称已生产硬化。",
     description:
       "面向要把云依赖演示迁到本地/边缘、又容易把「能跑」当成「可上线」的技术负责人：把双模、无残留依赖与演示/生产差距写成门禁，区别于框架下午迁与主机多站迁。",
@@ -26149,7 +26149,7 @@ Claude Code 交出语法正确的本地骨架（Flask 入口、SQLite 替 Firest
   {
     id: "436",
     slug: "lukasz-fryc-marketing-os-49-slash-commands",
-    title: "Lukas：49 个斜杠命令当营销组——6 个 SaaS 的 SEO/草稿/外联都从终端跑",
+    title: "Marketing OS 终端营销命令",
     summary: "一人跑 6 个 SaaS；披露 Marketing OS 约 49 条命令、/draft 12 步、14 关键词跟踪、约 $250/月工具栈、人仍审发；不代你无人值守群发或伪造排名。",
     description:
       "面向会写代码却雇不起营销、又怕内容流水线失控的独立开发者：把 CLAUDE.md、数据缓存与「人审再发」写成门禁，区别于站点重建与多会话治理。",
@@ -26239,7 +26239,7 @@ Claude Code 交出语法正确的本地骨架（Flask 入口、SQLite 替 Firest
   {
     id: "437",
     slug: "georgii-motrenko-finance-17-skills-mcp",
-    title: "Georgii：17 个财务技能链——200+ 伙伴日报从 2–3 小时压到分钟级",
+    title: "财务技能串联生成伙伴日报",
     summary: "B2B 保险/金融平台 PO；披露约 3 个月、17 skills/9 MCP、日报约 40 秒、月对账约 3–5 分钟、自称约省 60 人时/月；不代你无人值守改账或对监管报送。",
     description:
       "面向被伙伴漏斗日报/月对账拖住的产品负责人：把只读 SQL、写后自检与别名映射写成门禁，区别于开票 PDF 抽取与 indie 日跑 Schedule。",
@@ -26329,7 +26329,7 @@ DB 是否只读：{{readonly}}
   {
     id: "438",
     slug: "khal-tessellai-serverless-to-monolith-claude",
-    title: "Khalit：SST 打了 8 个月后——3 周用 Claude Code 把后端改成 FastAPI 单体",
+    title: "SST 后端改成 FastAPI 单体",
     summary: "TessellAI 照片马赛克；披露约 5 个月停更、3 周重写、432 文件 +24422/-11569、16 份设计文档、迁完后功能多于前 8 个月基建；不代你无人值守合入生产。",
     description:
       "面向被错误 Serverless 选型拖死、又觉得重写付不起的独立开发者：把编号任务、设计文档先行与人裁架构写成门禁，区别于主机多站迁与框架大版本下午迁。",
@@ -26419,7 +26419,7 @@ DB 是否只读：{{readonly}}
   {
     id: "439",
     slug: "pedro-mansan-design-system-claude-agents",
-    title: "Pedro：用数十个 Claude Code 代理迁设计系统——技能、worktree 与子代理验收",
+    title: "多代理迁设计系统并视觉对照",
     summary: "小团队多租户 SaaS；披露 Fomantic→Vuexy Bootstrap 5、数周执行、skills+worktree+子代理视觉对照、登录捷径省重试；不代你无人值守合入或免人审。",
     description:
       "面向要把整站 UI 设计系统从旧组件库迁走、人手不够并行的小团队：把「禁止找替换类名」、worktree 隔离与子代理多维验收写成门禁，区别于后端单体重写与主机迁移。",
@@ -26509,7 +26509,7 @@ DB 是否只读：{{readonly}}
   {
     id: "440",
     slug: "startupfinances-contract-to-invoice-afternoon",
-    title: "Tatyana：一下午用 Claude Code 做合同→发票应用——先验抽取再搭审批与 ZUGFeRD",
+    title: "合同抽取发票审批与 ZUGFeRD",
     summary: "约 30 客户定制合同；披露先脚本验抽取约 4/6 成功、Streamlit 五页、Draft→Approve、ZUGFeRD/EN 16931；不代你无人值守对外开票或跳过人审金额。",
     description:
       "面向合同条款各异、目录型开票软件不合用的财务/运营：把「先验证抽取」与审批/审计轨迹写成门禁，区别于伙伴漏斗报告技能链与收件箱发票流。",
@@ -26597,7 +26597,7 @@ DB 是否只读：{{readonly}}
   {
     id: "441",
     slug: "henry-knight-agency-saas-claude-agents",
-    title: "Henry：小代理把约 $800/月 SaaS 换成 Claude 代理——Zapier/Airtable/浏览器测逐项砍",
+    title: "小代理用 Claude 替换订阅栈",
     summary: "自由职业小代理；披露 Before 表合计约 $744/月、After 约 $148–188/月、自称年省约 $6.6–7.2k、Zapier→约 200 行 cron；不代你无人值守发信或伪造省钱保证。",
     description:
       "面向被胶水 SaaS 月费拖住的小代理/独立工作室：把「数据→判断→动作→日志」与仍须付费的 UX 面拆开，区别于终端 Marketing OS 与合同开票原型。",
@@ -26687,7 +26687,7 @@ DB 是否只读：{{readonly}}
   {
     id: "442",
     slug: "persimmoq-claude-routines-docs-watcher",
-    title: "Persimmoq：只用 Claude Code routines——每天 09:00 盯 12 页文档并日文摘要进 Slack",
+    title: "routines 盯文档日文摘要进 Slack",
     summary: "Claude API 指南作者；披露 routines 云定时、12 页文档、曾漏 Haiku 5.5 约 5 天、Python 出 diff/模型只评判；不代你无人值守发书或伪造变更。",
     description:
       "面向靠官方文档写教程、却被本地「changed」刷屏淹没的作者：把「脚本出 diff、模型只写摘要」与云端无本地文件限制写成门禁，区别于 Marketing OS 与收件箱发票流。",
@@ -26777,7 +26777,7 @@ cron/时区：{{schedule}}
   {
     id: "443",
     slug: "day-implement-orchestrated-parallel-tickets",
-    title: "day：把 Matt /implement 改成并行编排——8 票、约 1h50、子代理同 coder 回修",
+    title: "并行编排的工单实现与回修",
     summary: "个人工作流；披露 8 票全关、约 1h50+50 分、+4373/−299、Playwright 27→89、约 3.24M token、事后 /code-review 又挖 23 条；不代你无人值守合入。",
     description:
       "面向已用 grill→spec→tickets、却卡在单票串行的开发者：把 worktree 并行、同 coder 回修与仓外状态表写成门禁，区别于设计系统多代理与多会话治理。",
@@ -26866,7 +26866,7 @@ cron/时区：{{schedule}}
   {
     id: "444",
     slug: "sid-probstein-postgres-spreadsheet-mini-crm",
-    title: "Sid：一下午用 Postgres+表格+代理替换 Salesforce/HubSpot——变更报告抓住「按名更新」bug",
+    title: "Postgres 表格代理替 CRM",
     summary: "团队小规模管道；披露 >100 组织、三表三视图、一下午、表格仍作 UI、idempotent 同步与 change report 抓回归；不代你上 50 人销售 CRM。",
     description:
       "面向全功能 CRM 两次证明过重、表格又欠历史的小团队：把活动追加写、表格作 UI、同步必须零变更验收写成门禁，区别于无开发背景 90 路由 CRM 自建。",
@@ -26956,7 +26956,7 @@ cron/时区：{{schedule}}
   {
     id: "445",
     slug: "reet-batra-tokenmaxxing-overnight-portfolio",
-    title: "Reet：2:30 设 /goal 睡醒作品集已上线——CLAUDE.md 先答完、token 花在检查上",
+    title: "睡前目标醒后上线的作品集",
     summary: "个人站点；披露约 2:30 下指令、4:40 提交、六站参考/十四像素图标/三域名、测与评审后部署；不代你无人值守改生产品牌站。",
     description:
       "面向订阅额度周周作废、又不敢让代理夜间乱问的独立开发者：把可验收 /goal、CLAUDE.md 预答与「token 花在检查」写成门禁，区别于两日大仓重建与 16 站主机迁。",
@@ -27046,7 +27046,7 @@ cron/时区：{{schedule}}
   {
     id: "446",
     slug: "nick-t-leymish-cron-tiny-business-agents",
-    title: "Nick T：把微型公司交给 5 个 cron 代理——人不上环、代理不碰 git",
+    title: "不碰仓库的 cron 运营代理",
     summary: "个人实验公司 Leymish；披露 $20 起步、五角色、STATE/BACKLOG/JOURNAL、protect+guardrails 后 shell 提交、GHA 免费额度内、公开账本；不代你无人值守花钱或发收入承诺。",
     description:
       "面向想用定时代理跑小生意、又怕模型改账本/漏密钥的独立开发者：把「Markdown 状态机 + 代理只改文件 + shell 护栏提交」写成门禁，区别于小代理 SaaS 月费替换与 Marketing OS。",
@@ -27136,7 +27136,7 @@ cron/时区：{{schedule}}
   {
     id: "447",
     slug: "lamingsrb-47-takehomes-claude-18-dollars",
-    title: "Lamingsrb：47 份 take-home 评审仅花 $18——日回经理、offer 周期 19→8 天",
+    title: "take-home 作业评审日回经理",
     summary: "客户实习批次；披露 47 份/$18.33/均约 $0.39、经理 22→4 分、开箱 11→<1 天、offer-accept 19→8；不代你无人值守拒录或保证招到人。",
     description:
       "面向 ATS 自动化了 sourcing 却卡在 take-home 静默期的招聘方：把「格式预处理 + 六维 rubric + 日 digest」写成门禁，区别于迷你 CRM 与合同开票。",
@@ -27226,7 +27226,7 @@ cron/时区：{{schedule}}
   {
     id: "448",
     slug: "karthik-claude-setup-product-migration",
-    title: "Karthik：产品迁移动真靠 setup——约 50 票/580 测/约 $5k、一人约 15 工作日",
+    title: "产品迁移所依赖的预先搭建",
     summary: "工程经理个人 PoC；披露 4→2 仓、MySQL→PG、全栈升级、~50 票/~580 测、95%+ API 覆盖、约 $5k Bedrock、约 15 工作日；不代你无人值守合入生产。",
     description:
       "面向「开箱 Claude 写代码」失望的团队负责人：把多层 CLAUDE.md、技能/MCP 与并行 worktree 写成门禁，区别于并行票据编排器改造与两日大仓重建。",
@@ -27316,7 +27316,7 @@ cron/时区：{{schedule}}
   {
     id: "449",
     slug: "ji-ai-spoonai-newsletter-11-subs-cron",
-    title: "ji_ai：为自己做 AI 早报——11 订户、49 双语帖、08:00 KST cron",
+    title: "个人双语早报定时单发订户",
     summary: "个人站 spoonai.me；披露 11 订户/49 双语帖、08:00 cron→Firecrawl→双语文→Vercel→Resend 单发、周末节奏；不代你无人值守群发或保证打开率。",
     description:
       "面向自己都坚持不了每日策展的作者：把「小名单回路 + 定时技能 + 单发邮件」写成门禁，区别于 Marketing OS 与夜间作品集交付。",
@@ -27405,7 +27405,7 @@ cron/时区：{{schedule}}
   {
     id: "450",
     slug: "david-loor-ralph-loop-27h-aidaemon",
-    title: "David：Ralph Loop 挂机约 27 小时——84 任务测硬 AIdaemon，completion-promise 才停",
+    title: "Ralph Loop 挂机测到完成承诺",
     summary: "个人；披露 >27h、84 任务、test 88、--chrome+跳过权限、Ralph completion-promise、事后人审有过工；不代你在生产机密机无人值守。",
     description:
       "面向想让 Claude Code 夜间自测自修却一小时就「宣告胜利」的开发者：把「可检查成功标准 + Ralph 停词 + 浏览器真测」写成门禁，区别于作品集夜间 /goal 与并行票据编排。",
@@ -27494,7 +27494,7 @@ max-iterations：{{max_iter}}
   {
     id: "451",
     slug: "davron-four-agents-77-projects-90-min",
-    title: "Davron：四代理并行审计 77 个项目约 90 分钟——TaskList 预分配防抢单",
+    title: "并行审计多项目预分配防抢",
     summary: "个人作品集审计+日班医疗 CRM；披露 77 任务/四 analyst/~90 分钟、60 卷宗、showcase22/supporting38/skip17、CRM 2208 提交中作者 962；不代你无人值守合入。",
     description:
       "面向想用多智能体扫仓却撞上抢任务写坏卷宗的独立开发者：把「lead 预分配 owner + 领域子代理契约」写成门禁，区别于并行票据编排与多会话治理产品。",
@@ -27584,7 +27584,7 @@ max-iterations：{{max_iter}}
   {
     id: "452",
     slug: "achiya-34-workflows-typescript-claude",
-    title: "Achiya：删掉可视化自动化、用 Claude Code 把 34 条工作流改写成 TypeScript",
+    title: "可视化流改写成 TypeScript",
     summary: "个人+客户日跑自动化；披露 34 条、内存约 1.4GB→~150MB（闲置~48MB）、吞吐约 1,167 workflows/s、单流开销~30ms、Caddy 热切无感；后记称客户侧又迁回 n8n。",
     description:
       "面向可视化画布越养越重、想用代码+git 管自动化的独立开发者：把「行为等价迁移 + 反向代理热切 + 诚实延迟边界」写成门禁，区别于 SST→单体与合同开票一下午。",
@@ -27674,7 +27674,7 @@ max-iterations：{{max_iter}}
   {
     id: "453",
     slug: "blaze-git-hooks-cursor-context-memory",
-    title: "Blaze：用 git hook + n8n 给 Cursor 自动养 CONTEXT.md——提交即提炼耐久知识",
+    title: "git hook 提炼 Cursor 上下文",
     summary: "个人；披露 post-commit→webhook→Groq Llama 3.3→CONTEXT.md 并复制进 .cursor/rules；同问前后从教科书腔变引用提交理由；源未披露省时/费用数字。",
     description:
       "面向每次新开 Cursor 聊天都要重讲架构约定的开发者：把「提交差分提炼 + 规则目录自动加载」写成门禁，区别于 docs routines 看守与个人早报 cron。",
@@ -27763,7 +27763,7 @@ max-iterations：{{max_iter}}
   {
     id: "454",
     slug: "arqam-claude-opus-motion-html-playwright",
-    title: "Arqam：Claude Opus 写 HTML 帧函数做产品片——RTX 2050 约 0.3s/帧、先静帧再全片",
+    title: "Opus 帧函数生成的产品片",
     summary: "独立产品 Slabwatch；披露 Opus 不碰像素、Playwright+ffmpeg、v2 three.js@0.186、RTX 2050≈0.3s/帧@1080p、静帧评审约 4 轮、锐度分≥0.50；不代你一条提示出片。",
     description:
       "面向不会 After Effects、却要用编码代理出产品演示片的独立开发者：把「纯函数帧契约 + 形容词改数字 + 静帧评分循环」写成门禁，区别于 Marketing OS 与夜间作品集交付。",
@@ -27851,7 +27851,7 @@ max-iterations：{{max_iter}}
   {
     id: "455",
     slug: "cseeman-claude-noncoding-chats-10-weeks",
-    title: "Christine：回看十周非编码 Claude 聊天——真正省事的是追问到「你真正要做的事」",
+    title: "非编码对话追问到真正目标",
     summary: "个人；披露 2026-08-15→10-25 共 20 段聊天、Slack 追周约 23 分钟理出两笔欠回复、旅住/护眼/家务等桶；不代你医疗或消费决策。",
     description:
       "面向觉得 AI 只会写代码、想检查生活向聊天是否真省时间的人：把「先约束再追问目标」写成门禁，区别于财务技能链与合同开票自动化。",
@@ -27940,7 +27940,7 @@ max-iterations：{{max_iter}}
   {
     id: "456",
     slug: "hipcamp-expo54-new-arch-scout-upgrade",
-    title: "Hipcamp：Expo 50→54 + New Arch——Scout/子代理把预估 2–3 月压到约数周",
+    title: "Hipcamp 升级 Expo 与新架构",
     summary: "团队移动端；披露 100+ 依赖约 40 须升、审计→分依赖子代理 PR、首轮约 3 天连升、New Arch 构建调试约一周、预估 2–3 月→约数周；不代你无人值守上架。",
     description:
       "面向 React Native/Expo 大版本+New Architecture 升级拖成季度项目的移动团队：把「架构索引→依赖审计库→单依赖子代理→EAS 构建门禁」写成门禁，区别于 Vaadin 一下午与 GCP 本地演示迁栈。",
@@ -28031,7 +28031,7 @@ max-iterations：{{max_iter}}
   {
     id: "457",
     slug: "jonesrussell-laravel-waaseyaa-one-session",
-    title: "Jones：单次 Claude Code 会话把 Laravel 应用迁到自研 PHP 框架——约 8 小时、148 测",
+    title: "单会话 Laravel 迁自研框架",
     summary: "个人；披露单会话约 8 小时墙钟、3 个 Packagist 包（30/46/35 测）+ goformx-web（37 PHP 测等）合计 148 测全绿；结构完成但未宣称生产就绪。",
     description:
       "面向已有详细迁移规格、想用 TDD 反馈环驱动代理迁框架的独立开发者：把「先写规格 + 可验证技能流水线」写成门禁，区别于 SST→单体与产品迁移 setup 票。",
@@ -28121,7 +28121,7 @@ max-iterations：{{max_iter}}
   {
     id: "458",
     slug: "attila-wordpress-astro-132-agents",
-    title: "Attila：WordPress→Astro 保 URL——1497 行 runbook、132 代理约 37 分钟校对",
+    title: "WordPress 迁 Astro 并保住网址",
     summary: "个人博客；披露 44 文原 URL、132 代理/约 845 万 token/1221 工具调用/约 37 分钟、382 处润色、701 行验收、误在 100% 窗口再开 swarm 烧掉约 $70 超额；不代你无人值守切流。",
     description:
       "面向想甩掉插件税又怕丢搜索权重的个人站长：把「零断链契约 + 对抗式校对 swarm」写成门禁，区别于一天迁 16 站与两日重建删 API。",
@@ -28211,7 +28211,7 @@ max-iterations：{{max_iter}}
   {
     id: "459",
     slug: "henri-cve-migration-control-autopilot",
-    title: "Henri：给多语言遗产仓做 CVE/升级自动驾驶——代理无写权限、人点批准才开 PR",
+    title: "多语言遗产仓漏洞升级人批",
     summary: "个人开源+PetClinic 演示；披露扫描约 45 分钟/~$20、计划约 18 分钟/~$5、PR 约 6 分钟/~$2，184 组件/749 CVE/67 严重、10 波次；alpha，发现需人审。",
     description:
       "面向多仓多语言版本债与 CVE 跟不过来的平台/安全同事：把「只读扫描+分级器+无写凭证+人批才推 PR」写成门禁，区别于多仓代码审计 swarm 与依赖升级产品宣发。",
@@ -28301,7 +28301,7 @@ estate 模块与 depends_on：{{estate}}
   {
     id: "460",
     slug: "devdosvid-21-ecs-eks-harness",
-    title: "Serhii：21 服务 ECS→EKS 的 harness——脚本+AI+校验流水线，四工程师收官八季度",
+    title: "ECS 迁 EKS 的脚本校验流水线",
     summary: "团队平台工程；披露 21 仓雪花服务、四工程师、单层约十仓/人/日、十二层全跑流水线；强调 mutation 边界与 implement/validate 成对，跨仓关联仍靠人。",
     description:
       "面向多服务基础设施迁栈不能「一句 migrate」的平台团队：把「分层工作流 + 读写边界 + 并行会话报告」写成门禁，区别于产品迁移动真靠 setup 与并行票据编排。",
@@ -28391,7 +28391,7 @@ estate 模块与 depends_on：{{estate}}
   {
     id: "461",
     slug: "michaelnash-claude-token-tax-lean-rebuild",
-    title: "Mike：Claude Code「Token Tax」——CLAUDE.md 319→61，约 19p/次交付多抓 50% 问题",
+    title: "CLAUDE.md 瘦身与按需加载",
     summary: "个人顾问；披露启动前约 31,500 token（约 1 镑）、CLAUDE.md 319→61、标准拆五文件按需加载、六专用评审代理、约 19p/ship 且预 PR 多抓约 50% 问题；不代你无人值守降账单。",
     description:
       "面向上下文越喂越贵、想用按需加载与模型路由压启动税的独立开发者：把「瘦 CLAUDE.md + JIT 标准 + hooks/子代理」写成门禁，区别于 tokenmaxxing 通宵作品集与财务技能链。",
@@ -28480,7 +28480,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "462",
     slug: "getburnd-13631-six-months-waste-patterns",
-    title: "Gar：六个月 Claude Code 花 $13,631——解析 JSONL 揪出约 $76/月可修浪费",
+    title: "解析会话日志揪出可修浪费",
     summary: "个人（高中生）；披露六个月账单 $13,631、~40M token 无细拆；自建解析 8 类浪费（如深夜会话约 $180/月、错误风暴约 $40/月等）合计约 $76/月可修；不代你无人值守砍订阅。",
     description:
       "面向只有总额看不到泄漏模式的重度 Claude Code 用户：把「本地 JSONL → 浪费模式 → 单点习惯修补」写成门禁，区别于 Token Tax 瘦规则与营销斜杠命令组。",
@@ -28569,7 +28569,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "463",
     slug: "buildloops-claude-opencode-redeclaration",
-    title: "Buildloops：Claude Code→OpenCode——迁移是重声明，不是拷文件",
+    title: "OpenCode 迁移重声明配置",
     summary: "个人；披露规则/记忆串味导致 token 爬升后迁 OpenCode；四类断裂（规则未生效、让新工具迁旧配置、技能静默降级、摩擦税）；结论 rebuild don't port；不代你一键换壳。",
     description:
       "面向想换代理壳却把 CLAUDE.md 当可拷配置的人：把「清单→AGENTS.md 重声明→技能重建→生效核验」写成门禁，区别于 Laravel 单会话换框架与 SST→单体。",
@@ -28657,7 +28657,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "464",
     slug: "ole-veheria-ios-pr-review-agents-30min",
-    title: "Oleh：iOS 多维代理首轮评审——约省每人每天 30 分钟，人仍握合并键",
+    title: "iOS 多维代理首轮人审合并",
     summary: "团队（跨国 iOS）；披露多代理按正确性/一致性/测试/i18n·a11y 首轮；作者自测约省每人每天 30 分钟、评审周期下降且人审质量未降；自动合并曾翻车已撤。",
     description:
       "面向评审队列被机械检查拖死的移动团队：把「分维首轮代理 + 作者先修 + 人只做判断」写成门禁，区别于 CVE 无写权自动驾驶与四代理仓审计。",
@@ -28747,7 +28747,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "465",
     slug: "metalbear-meat-proxies-ai-to-center",
-    title: "MetalBear：八个月后 AI 进中心——有人一周约 95% 在评审，防变「肉代理」",
+    title: "编码代理进中心后的评审负荷",
     summary: "团队（mirrord/Rust）；披露从边缘到中心、有人评审从约 20–40%→约 95%；AGENTS.md 缩短+公司共享上下文仓；夜巡 CI/晨修小 bug/支持草稿机器人；不代你无人值守发版。",
     description:
       "面向代理已能写核心代码、却怕团队沦为只点批准的平台/工具团队：把「人理解每个改动 + 共享上下文 + 首轮自动审」写成门禁，区别于非编码聊天复盘与 git hook 记忆。",
@@ -28837,7 +28837,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "466",
     slug: "uaslimcreate-cursor-claude-totp-2fa-walkthrough",
-    title: "uaslim：CitizenApp 加 TOTP 2FA——Cursor+Claude 约 9h→4.25h，诚实约 2× 不是 3×",
+    title: "CitizenApp 接入 TOTP 验证",
     summary: "个人；披露单功能预估无 AI ~9h、有 AI ~4.25h（约省 4.75h，约 2×）；架构决策 2h→20min、前端 3h→1.5h，鉴权流手写省 0；不代你无人值守合入安全逻辑。",
     description:
       "面向要把「具体功能墙钟」从口号拆成可复盘步骤的独立开发者：把「Claude 先定架构 → Cursor 起草 → 人审安全/迁移」写成门禁，区别于通宵作品集与单会话换框架。",
@@ -28927,7 +28927,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "467",
     slug: "emilywoods-ai-agents-one-week-at-work",
-    title: "Emily：上班一周全力用编码代理——提交行数约 +40%，可合并产量几乎没变",
+    title: "在职实验全力使用编码代理",
     summary: "个人（在职实验）；披露一周行数约 +40%、PR 由常约 4 增至 5、约 3 小时花在审改代理代码；新服务 Cursor ~12 分钟出约 80%、事故根因与计费边角仍失手；不代你用行数当绩效。",
     description:
       "面向被 demo 拉扯、想用本职一周数据校准预期的工程师：把「代理先写 → 人审 → 标出组织记忆失灵点」写成实验门禁，区别于 Token Tax 瘦规则与多代理仓审计。",
@@ -29017,7 +29017,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "468",
     slug: "cmaindron-claude-write-n8n-compute-seo",
-    title: "Cécile：Claude 只写页、n8n 算链接——单页成本约 $0.23→$0.11，双人审才上线",
+    title: "Claude 写页 n8n 算链接",
     summary: "个人（B2B 增长，非工程师）；披露拒绝约 1–7¢、整页约 11¢，拆掉模型重写 memory 后同词输出约减 2/3、输入 29142→20660 token、成本约 $0.23→$0.11；Slack+PR 双人审；不代你无人值守发站。",
     description:
       "面向要跑关键词→页面流水线却怕模型维护站点真相的内容/增长同事：把「输出契约 + 可计算归代码 + 双人门禁」写成门禁，区别于 200 页 pSEO 宣发与早报 cron。",
@@ -29106,7 +29106,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "469",
     slug: "monei-zendesk-amazon-connect-bedrock-support",
-    title: "MONEI：Zendesk→Amazon Connect+Bedrock——切流后约 55.2% 有意义会话自动解决",
+    title: "Zendesk 迁 Amazon Connect",
     summary: "团队；披露约 4 个月（末 6 周主攻）、工作台初版约 3 天；2026-09-24–10-18 关闭的有意义会话约 55.2% 自动解决，邮件分拣约 58.1% 标 IGNORED；不代你无人值守关人工投诉通道。",
     description:
       "面向坐席席位与「自动解决计费」不合团队协作方式的支付/SaaS 支持团队：把「文档合一 → 并行试跑 → 切流度量」写成门禁，区别于 CVE 自动驾驶与 ECS→EKS harness。",
@@ -29195,7 +29195,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "470",
     slug: "sebastian-chedal-hydraulic-3d-zero-human-code",
-    title: "Fountain City：水力 3D 仿真「零人手生产代码」——约 60h 编码 vs 估 300h，API 约 $360.50",
+    title: "水力三维仿真代理写生产代码",
     summary: "团队（1 人导演+13 代理）；披露约 18,000 行 C#/58 文件、编码 60h vs 传统估 300h、规划 32h vs 估 16h、首项学习约 40h、11 会话约 334.6M token、API $360.50；写与验分代理；不代你无人值守签物理正确。",
     description:
       "面向有可编程验收标准的仿真/工具链团队：把「文档先行 + 写码与科学审计分模型 + Unity 批跑」写成门禁，区别于 HTML 动效帧函数与多仓并行审计。",
@@ -29284,7 +29284,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "471",
     slug: "arezvov-ghost-nextjs-claude-cursor-migration",
-    title: "Alex：Ghost→Next.js——26 帖约 15k 行，TTFB 800→120ms，年费约 $348→$0",
+    title: "Ghost 博客迁到 Next.js",
     summary: "个人；披露迁 26 帖、约 15,000 行（应用/测/文档/配置）、构建约 21–22s、TTFB 800→120ms（约 6.6×）、包体约 450→140KB gzip、年费约 $348→$0；Claude+Cursor；不代你无人值守切生产邮件。",
     description:
       "面向要把个人博客/通讯从托管 CMS 迁到自控静态栈的独立作者：把「LLM 向文档 + 幂等通讯 + 人工终审」写成门禁，区别于 WordPress→Astro 多代理校对与 pSEO 半价写算。",
@@ -29374,7 +29374,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "472",
     slug: "embedding-shapes-one-agent-one-browser-20k",
-    title: "embedding-shapes：一人一代理约 72h 做出零依赖 Rust 浏览器——cloc 约 20,150 行",
+    title: "一人做出零依赖 Rust 浏览器",
     summary: "个人；披露约 3 天/约 70–72h 墙钟、Day1 约 7,500 行可渲、终态 cloc SUM code 20150（72 文件）、零第三方 Rust crate、X11/macOS/Windows；Codex；不代你当生产浏览器。",
     description:
       "面向想用「可编译 + 截图回归」约束代理啃系统项目的独立开发者：把「一人一代理 + 空 Cargo.lock + 人定需求」写成门禁，区别于水力仿真零手写与 HTML 动效帧函数。",
@@ -29463,7 +29463,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "473",
     slug: "michelfaure-4-incidents-claudemd-rules",
-    title: "Michel：四次事故写出 CLAUDE.md——约 9.1 万行 ERP，根文件约 120 行禁令优先",
+    title: "事故写成 ERP 根规则文件",
     summary: "个人；披露 Rembrandt ERP 约 91,000 行；首版 CLAUDE.md 约 40 行（2026-03-21）→根文件约 120 稠密行；四则带日期事故规则；分层 AGENTS.md / rules / skill；不代你一次性写完永不改。",
     description:
       "面向每日用 Claude Code 却见代理漂移的在职开发者：把「禁令先于最佳实践 + 事故可追溯」写成门禁，区别于 Token Tax 瘦 CLAUDE.md 与 git hook 养 CONTEXT.md。",
@@ -29553,7 +29553,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "474",
     slug: "david-hoze-haskell-bit-ai-without-knowing",
-    title: "David：几乎不会 Haskell，却用 AI 做出日常在用的二进制版本工具 bit",
+    title: "Haskell 二进制版本工具 bit",
     summary: "个人；披露 Swift 背景、几乎不会 Haskell；Claude Opus 定案+出 Cursor 提示，Cursor/Sonnet 写码测并啃 GHC；强调编译器立刻挡错；日常自用 CLI；不代你跳过类型/测试门禁。",
     description:
       "面向想在「严格语言」里用代理交付实用工具的独立开发者：把「贵模型定案 → 便宜模型执行 → 编译器当裁判」写成门禁，区别于零手写仿真与单会话换框架。",
@@ -29642,7 +29642,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "475",
     slug: "jdevleon-three-agents-log-formats-hours-wrong",
-    title: "Jose：三家编码代理三种日志——不去重可约 2.9×，加总 running total 可×6",
+    title: "三家编码代理用量日志对照",
     summary: "个人；披露 Claude 同回合最多约五份重复 usage、不去重约 2.9× 偏高；Codex 68 事件会话若加总 total 可×6，缓存口径可把 $2.17 算成 $10.03；Copilot 需重放 JSONL；不代你把列表价 token 当实付。",
     description:
       "面向按小时记账或要算清功能真实成本的独立开发者/顾问：把「按代理去重/取 last/重放 + 实测与估计贴标签」写成门禁，区别于六个月 $13k 浪费模式解剖与 Token Tax 瘦规则。",
@@ -29731,7 +29731,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "476",
     slug: "datadog-stream-router-ai-assisted-migration",
-    title: "Datadog：Claude+Cursor 测驱迁 Stream Router——估 45 分钟操作→约 1 秒，库费约 -90%",
+    title: "测驱迁 Stream Router",
     summary: "团队；披露设计到生产约 3 个月（PoC 约 4 周）、估 45 分钟操作→约 1 秒（近 3000×）、数据集约 40× 缩小、库费约 -90%、蓝绿校验约每 30 秒；Claude+Cursor；不代你无人值守切生产路由。",
     description:
       "面向要把关键控制面迁到新存储却不敢放手代理的数据基础设施团队：把「人定 schema + 单方法测驱收敛 + 蓝绿对照」写成门禁，区别于 ECS→EKS harness 与 CVE 批准才开 PR。",
@@ -29822,7 +29822,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "477",
     slug: "codurance-timesheet-ai-60-to-3-days",
-    title: "Codurance：内部工时系统 AI 重建——估约 60 人日→近功能对等约 3 天",
+    title: "内部工时系统近功能对等重建",
     summary: "团队；披露原估约 60 开发人日、单人约 3 天近功能对等、另估约 1 天收尾；Cursor+Claude Code+Codex；质量门对齐人写对照；不代你无人值守上生产。",
     description:
       "面向想验证「有护栏的 AI 交付」能否保质加速的工程负责人：把「人定架构与质量门 + 代理增量实现」写成门禁，区别于 Expo 大版本 Scout 升级与 Laravel 单会话换框。",
@@ -29912,7 +29912,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "478",
     slug: "chudi-polyphemus-36k-shadow-gate",
-    title: "Chudi：Claude Code 交易机器人 4247→36096 行——影子门拦住 8 个静默缺陷",
+    title: "交易机器人影子门拦静默缺陷",
     summary: "个人；披露 6 周首版 4000+ 行、四月口径 4247→36096 行；会话 token 约 10000→4200；月费约 $136（首月未优化约 $340）；生产错误率 1/6→1/40；影子门拦 8 缺陷；覆盖 41%→73%；不代你实盘无人值守。",
     description:
       "面向用编码代理养真实资金系统的独立开发者：把「分层上下文 + 双门校验 + 影子先于实盘」写成门禁，区别于 $13k 浪费模式解析与三代理日志计费失真。",
@@ -30002,7 +30002,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "479",
     slug: "netguru-full-agentic-backoffice-gates",
-    title: "Netguru：内部后台「生产应用零手写」——三层规则 + 四场景测 + 迁库事故改规则",
+    title: "内部后台代码全由代理提交",
     summary: "团队；披露生产应用代码均由代理提交（主 Claude Code，辅 Cursor）；七类静态 CI；测「远超一千」/约百文件；四强制场景；迁库曾拭状态后写入正向迁移禁令；不代你复制到强监管域。",
     description:
       "面向把整条增量交给代理、却要用规则与测把质量托住的产品工程团队：把「规则当产品 + 技能链产物交接 + 防御纵深」写成门禁，区别于四事故个人 CLAUDE.md 与 Token Tax 瘦身。",
@@ -30092,7 +30092,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "480",
     slug: "lmoncany-vibe-code-distribution-wall",
-    title: "Loic：Vibe coding 把模板系统 2 天压到约 4 小时——接着 12 小时找 50 个经纪人",
+    title: "模板系统完成后的分发工时",
     summary: "个人；披露 Cursor+Claude 把约 2 天活做到约 4 小时；随后约 12 小时触达约 50 名经纪人以求打开；工时从约 70/30 构建/分发改为约 40/60；不代你保证获客。",
     description:
       "面向能快速出功能、却卡在获客的独立开发者：把「省下的构建时间强制回流分发」写成门禁，区别于在职一周产量实验与 SEO 半价写算。",
@@ -30181,7 +30181,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "481",
     slug: "eyevinn-osaas-claude-error-debt-4h",
-    title: "Eyevinn：Claude+Cursor 清 OSC 错误处理债——估 40–60 小时→约 4 小时",
+    title: "OSC 错误处理债分阶段清理",
     summary: "团队；披露不一致错误处理债手工估约 40–60 小时、Claude 辅助约 4 小时、约 10–15×、八阶段计划逐 commit 人审；不代你无人值守清任意技术债。",
     description:
       "面向功能冲刺后错误处理各写各的平台团队：把「分层盘点 + 人定自定义错误类型 + 分阶段测改」写成门禁，区别于 Datadog 测驱换存储与 Codurance 工时系统重建。",
@@ -30271,7 +30271,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "482",
     slug: "matthummel-claude-wp-playbook-60kb",
-    title: "Matt：WordPress Claude 规则手册——常驻约 60KB→0.9KB，SessionStart 跨机同步",
+    title: "WordPress 规则按需加载跨机同步",
     summary: "个人；披露十份常驻规则合计约 60KB→核心 0.9KB（<1KB）；路径/技能按需加载；SessionStart 拉 main 重装；含 WCAG 2.1 AA 等硬规则；不代你省任意 token 账单。",
     description:
       "面向多客户 WordPress/Sage 主题、规则在仓间漂移且常驻上下文过肥的独立开发者：把「跨机 playbook + 路径触发 + 项目事实仍留 CLAUDE.md」写成门禁，区别于 Token Tax 瘦单仓根文件与 vibe coding 后分发墙。",
@@ -30361,7 +30361,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "483",
     slug: "dmitry-claude-ftape-kernel-driver",
-    title: "Dmitry：Claude Code 救活 25 年 ftape——内核 2.4→现代可装模块，约数天而非数周啃古文档",
+    title: "复活 ftape 为现代可装模块",
     summary: "个人；披露 ftape 自约 2000 停更、曾只能 CentOS 3.5；Claude 迭代编译至可对 kernel 6.8 思路现代化并做出可加载 .ko；敏感 sudo 自管、dmesg 人贴回；作者称约数天对话+验证，相对自学 25 年前内核或数周；已在 Xubuntu 24.04 实机读带。",
     description:
       "面向要用代理啃遗产驱动、却必须自握特权操作的系统爱好者/工程师：把「编译反馈闭环 + 人管 sudo/装载 + 对照已知良好日志」写成门禁，区别于零依赖玩具浏览器与不会语言硬做 CLI。",
@@ -30451,7 +30451,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "484",
     slug: "sentry-cursor-bg-agent-csharp-pr-comments",
-    title: "Sentry：Cursor 后台代理加 Open PR Comments 的 C#——两句提示+旧 PR，人补测合并",
+    title: "Open PR 评论补 C# 解析",
     summary: "团队；披露用 Cursor background agents 为 Open PR Comments 加 C# 解析（已有 Python/TS/Ruby/PHP 模式）；提示约两句+旧 PR 链接；代理加 CSharpParser、正则、测试与功能开关；作者自认零 C# 仍人审并加测后合入（例 PR #93304）；不代你无人值守合任意语言扩展。",
     description:
       "面向有清晰样板、想把「孤立模式扩展」丢给后台代理的产品工程团队：把「先模块化 + 极简提示指样板 + 人补测终审」写成门禁，区别于 iOS 多维代理评审与全代理后台四场景测。",
@@ -30541,7 +30541,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "485",
     slug: "heinoux-claude-business-agents-2879",
-    title: "Heinoux：用 Claude Code 跑一家公司——2879 节点知识图、两小时收件箱、一技能改 200 份文档",
+    title: "单人公司记忆图与收件分拣",
     summary: "个人；披露 NexBDM 单人运营：记忆沉淀知识图约 2,879 节点；收件箱代理约每 2 小时分拣且从不代发；一技能曾一扫重品牌约 200 份在线文档；日更营销日历+夜间重建图；不代你无人值守对外发送。",
     description:
       "面向想把公司重复流程沉成文件技能、却必须守住「只起草不发送」的独立经营者：把「文件夹 OS + 一事实一文件记忆 + 意图索引 + 硬规则」写成门禁，区别于客服自动解决率切流与 vibe coding 后分发墙。",
@@ -30631,7 +30631,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "486",
     slug: "michael-roth-543-hours-autonomous-claude",
-    title: "Michael：97 天 Claude Code 日志——543 自治小时、约 5% 弧吃掉约 48% 时长",
+    title: "自治时长集中于发布类工作",
     summary: "个人；披露 97 天、543 自治小时、14,926 提示、2,314 会话、165 发布、月费约 $500；Release 类约占弧 4.5% 却约 48% 时长（均约 10.3h）；不代你无人值守必 10×。",
     description:
       "面向已能跑通代理、却在「到底是 10× 还是垃圾」上拿不出收据的资深独立/效率向开发者：把「日志聚类 + 模板化长弧 + 人仍握决策」写成门禁，区别于 Token Tax 瘦根文件与三代理日志计费。",
@@ -30720,7 +30720,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "487",
     slug: "christophermeiklejohn-claude-social-app-week-ipad",
-    title: "Christopher：iPad 上 Claude Code 六天做出好友社交通——384 消息，仅 2/27 会话全达标",
+    title: "iPad 上做出好友社交应用",
     summary: "个人；披露六天、384 消息、27 会话、168 文件；中位响应约 29 秒；仅 2/27 会话完全达成目标；首版在 11\" iPad 床上连空仓；朋友在用；不代你开放式调试必成功。",
     description:
       "面向想用编码代理快速做出「熟人小圈」产品、却总在无反馈环会话里耗死的独立开发者：把「紧会话 + 停点摘要 + 钩子重启」写成门禁，区别于 vibe 后分发墙与不会语言硬做 CLI。",
@@ -30810,7 +30810,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "488",
     slug: "tianhan-claude-cfd-asurf-38-days",
-    title: "Tianhan：Claude Code 38 天重写燃烧 CFD——544 commits，78 篇论文校验",
+    title: "重写燃烧流体仿真并校验论文",
     summary: "个人科研；披露 38 天、544 commits、AI 共著约 72%；Fortran 约 36,800 行→Python 约 17,200 行；处理论文 78、定量校验 40；相对 Cantera 均误差约 5.5%；15 自定义技能、137+ 测；不代你任意求解器同速。",
     description:
       "面向要把遗产科学计算代码迁语言、却必须先有物理校验层的研究者/工程师：把「先验证层再全速代理 + 论文对照」写成门禁，区别于遗产内核驱动复活与零依赖玩具浏览器。",
@@ -30900,7 +30900,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "489",
     slug: "codingcharly-n8n-claude-content-5h-45m",
-    title: "Charly：Claude+n8n 内容再分发——每周约 5 小时改写压到约 45 分钟",
+    title: "内容再分发改写后人工发送",
     summary: "个人；披露再分发曾约 5h/周（LinkedIn 30m+线程 45m+通讯 20m+博客 60m）；现写帖约 30m+改输出约 15m≈45m；四路进 Notion 仍手发；不代你声线零漂移或必同省时。",
     description:
       "面向一条想法要手搓四平台、却不愿上完整 CMS 的独立创作者：把「webhook→Claude 四提示→Notion 草稿库→人审发布」写成门禁，区别于 SEO 半价写算链路与客服切流自动解决率。",
@@ -30989,7 +30989,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "490",
     slug: "cursor-support-mcp-75pct-throughput",
-    title: "Cursor 支持组：超 75% 工单在 Cursor 内查——自称吞吐约 5–10×",
+    title: "支持工单改在 Cursor 内查",
     summary: "团队；披露超 75% 支持互动经 Cursor；吞吐自称约 5–10×；Ask Mode+多仓工作区+MCP（客户库/日志/Slack/工单/runbook）；Datadog 拉痕迹；不代你任意客服台同倍数。",
     description:
       "面向要把排障从「多工具跳转」收成「代码+日志+旧案同一会话」的产品支持/平台工程团队：把「多根工作区 + MCP 上下文 + 命令/规则/子代理」写成门禁，区别于 MONEI 客服切流自动解决与 Sentry 后台代理扩语言。",
@@ -31079,7 +31079,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "491",
     slug: "rafe-blandford-centos-static-archive-claude",
-    title: "Rafe：Claude Code 主操迁三站静态档案——约两天对标晚间两到三周",
+    title: "三个动态站点迁成静态档案",
     summary: "个人；披露两天内迁三站、约二十年内容；爬约 2.4 万动态页、rsync 约 54GB 媒体、后处理约 2.9 万 HTML；估晚间两到三周→约两整日；不代你任意机房同速。",
     description:
       "面向要把濒死机上的多站内容迁成可维护静态档案、却卡在批量脚本与回滚的独立站长/工程：把「先单页试正则 + 快照再全量」写成门禁，区别于 Ghost→Next 重写栈与 AWS→DO 云账单迁。",
@@ -31169,7 +31169,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "492",
     slug: "alex-diaz-mac-use-etax-accessibility",
-    title: "Alex：mac-use 走无障碍 API 填瑞士报税——约十分钟对标一下午",
+    title: "mac-use 走无障碍接口报税",
     summary: "个人；披露用 Claude Code + mac-use（Accessibility API）填 eTax；自称整段约十分钟内，以往约一下午；强调无截图/无像素点选；不代你任意桌面税软同速。",
     description:
       "面向被无 API 的遗产桌面软件拖住的独立开发者/小团队：把「读控件树点名操作 + 不确定就停问人」写成门禁，区别于纯视觉 RPA 与内容再分发省时链。",
@@ -31259,7 +31259,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "493",
     slug: "elina-onchul-codecentric-ai-accessibility",
-    title: "Elina：四层 AI 无障碍走查——双代理检出二十余处真问题仍难言 100%",
+    title: "AI 四层双代理无障碍走查",
     summary: "团队实践；披露至约 2026-05 用 CI 扫描、Claude Code±Playwright MCP、专用 MCP、双代理走查；双代理最终发现二十余处真实问题；结论：AI 可加速明显项，但不能单独宣称完全无障碍。",
     description:
       "面向要在缺专职无障碍专家时仍推进 BFSG/WCAG、却怕「工具说 OK」的工程团队：把「分层工具 + 人终检」写成门禁，区别于一日清零 axe 违规叙事与桌面无障碍填表。",
@@ -31349,7 +31349,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "494",
     slug: "hasangilani-knock-87-sessions-saleor-cost",
-    title: "Hasan：录 87 场 Claude Code——Saleor 调查中位成本约 $0.42→$0.25",
+    title: "Saleor 调查的会话实录对照",
     summary: "个人；披露 87 场实录；在约 4,776 文件 Saleor 上同题 8+8 跑：中位成本约 $0.42→$0.25（约 −40%）、工具调用 26→13、模型时 142s→86s；正确仍 8/8；前两版 knock 在 Flask 上省不到钱。",
     description:
       "面向大仓调查时被用量/子代理空转烧钱的独立开发者：把「先测地图是否真替 grep，再上 MCP」写成门禁，区别于自治小时幂律日志与三代理日志计费陷阱。",
@@ -31439,7 +31439,7 @@ CLAUDE.md 行数：{{claude_md_lines}}
   {
     id: "495",
     slug: "masud-rana-invoiceflow-saas-14-days",
-    title: "Masud：AI 代理两周交出 InvoiceFlow——估无 AI 约四到六周",
+    title: "InvoiceFlow 发票应用交付",
     summary: "个人；披露 14 天做出发票 SaaS MVP；自称 AI 约 60% 代码、人约 40% 代码但 100% 决策；工具月费约 $50、基建约 $7；无 AI 估约 4–6 周；不代你任意垂类同工期。",
     description:
       "面向要一个人把开票/收款 MVP 推到可收费、却在样板与集成之间耗尽的独立开发者：把「规格先写死 + AI 只扛样板」写成门禁，区别于 vibe 后分发墙与内容再分发省时。",
@@ -31529,7 +31529,7 @@ MVP 范围：{{scope}}
   {
     id: "496",
     slug: "yureki-rest-graphql-diff-harness-12-days",
-    title: "yureki：Claude Code 迁 40 个 REST→GraphQL——12 天，差分 harness 0/500→500/500",
+    title: "REST 迁 GraphQL 差分对照",
     summary: "个人；披露 12 天、约 40 端点、差分 500 条签名；p95 约 1340→480ms、往返 6→1；N+1 曾吃掉两天；不代你任意仓同速。",
     description:
       "面向要把有机生长的 REST 面迁到 GraphQL、却卡在「如何证明新旧返回一致」的后端/移动协作：把「先建差分记分板再写 schema」写成门禁，区别于云账单迁机与静态档案后处理。",
@@ -31619,7 +31619,7 @@ REST 面与客户端：{{scope}}
   {
     id: "497",
     slug: "khalit-flutter-claude-827-commits-30pct",
-    title: "Khalit：Flutter 电商 827 commits 用 Claude Code——crash-free 约 85%→97%，估快约 30%",
+    title: "Flutter 电商长期用编码代理",
     summary: "个人（顾问）；披露 827 commits、22 周、crash-free 约 85%→逾 97%；估无 AI 约 30–32 周→约 22 周（约 30%）；不代你任意 App 同速。",
     description:
       "面向要把 vibecoding 残留的 Flutter 仓迁到可维护 Clean Architecture、却怕 AI「顺手改架构」的工程：把 CLAUDE.md + 模式技能 + 决策矩阵写成门禁，区别于四事故写禁令根文件与 Expo SDK 大升级。",
@@ -31709,7 +31709,7 @@ App 现状：{{scope}}
   {
     id: "498",
     slug: "oi-botsinproduction-17-bots-100-usd",
-    title: "OI：韩 B2B 公司 17 个 Claude Code 机器人——月费约 US$100，周维护约 1 小时",
+    title: "韩企一批编码机器人日常运转",
     summary: "团队（运营）；披露 17 机器人、Claude Max 5x 约 US$100/月、API 约 US$0；现约每周 1 小时（前两月约 10）；不代你任意业务同价。",
     description:
       "面向要用本地 CLI 订阅跑业务机器人、却被按 token 账单吓住的中小运营：把「多数纯 Python + 少数 CLI JSON + 人审告警」写成门禁，区别于客服 MCP 吞吐自述与内容再分发编排。",
@@ -31799,7 +31799,7 @@ App 现状：{{scope}}
   {
     id: "499",
     slug: "nextools-js-ts-200k-six-weeks",
-    title: "Nex Tools：Claude Code 技能流迁约 20 万行 JS→TS——约六周对标约六个月",
+    title: "技能流迁大规模 JS 到 TS",
     summary: "个人/带队；披露约 20 万行、约六周日历、日审约 30 分钟（FAQ 约一小时）并保持发版；首轮大爆炸曾卡在约 4%；不代你任意仓同速。",
     description:
       "面向要在不停发版前提下做大型 JS→TS、却怕 long-lived 分支与 any 海的工程：把 foundation/inventory/conversion 技能写成门禁，区别于 GraphQL 等价证明与 Flutter 架构迁。",
@@ -31889,7 +31889,7 @@ App 现状：{{scope}}
   {
     id: "500",
     slug: "amado-islam-museum-fleet-23-days",
-    title: "Ahmed：七代理船队 23 天做出约 4.7 万条数字博物馆——14216 commits",
+    title: "多代理船队做出数字博物馆",
     summary: "个人；披露 23 天（2026-10-11→11-02）、约 47330 条记录/~8.9 万页、14216 commits/2999 PR；事实须具名来源；不代你任意内容站同速。",
     description:
       "面向要用多代理并行灌内容站、却怕无来源「编造史实」的独立开发者：把「车道 brief + 校验门 + 具名出处」写成门禁，区别于两周 SaaS MVP 与单代理静态档案迁。",
@@ -31979,7 +31979,7 @@ App 现状：{{scope}}
   {
     id: "501",
     slug: "nagayashion-playwright-claude-month-60pct",
-    title: "nagaya-shion：Claude Code 写了一个月 Playwright——编写时间约少 60%，约十分之一需返工",
+    title: "代理编写 Playwright 端到端测试",
     summary: "个人（QA 负责人）；披露约一个月生产 E2E、编写时间约少 60%、样板约 70% 消失；约 1/10 需返工；约定 5× 本地 + 1 次 CI 才算完成；不代你任意套件同稳。",
     description:
       "面向要把风险测试计划交给代理写 Playwright、却怕选择器与固定等待把套件写脆的 QA/工程：把「约定选择器 + 禁 waitForTimeout + 5× 稳定门」写成门禁，区别于动效 HTML 演示与阴影发布门。",
@@ -32069,7 +32069,7 @@ App 现状：{{scope}}
   {
     id: "502",
     slug: "greenstevester-license-checker-evergreen-18h",
-    title: "Steve：Claude Code 复活周下载约 76 万的 npm 包——约 18 小时，扫描约 2.4×–6.4×",
+    title: "复活 npm 包 license-checker",
     summary: "个人；披露 license-checker 约 76 万周下载、最后提交 2019-01、96 个未关 issue；约 18 小时做出带测试的 TS 实现；Playwright 6328 包约 4.5s→1.90s、Puppeteer 8386 包约 2.5s→0.39s；不代你任意失修包同速。",
     description:
       "面向要接手高下载却停更的依赖、又怕 AI 谎称测试全绿的维护者：把「人审谎言 + 验收标准 + 基准对比」写成门禁，区别于自有大仓 JS→TS 与许可证兼容自检清单。",
@@ -32158,7 +32158,7 @@ App 现状：{{scope}}
   {
     id: "503",
     slug: "kompiro-karasu-dependabot-88-prs",
-    title: "Hiroki：一周代理跑 Dependabot 研判——合并 88 个 PR，serve 包约 16MB→1.7MB",
+    title: "Dependabot 更新研判与合并",
     summary: "个人（开源维护）；披露 10–17 日窗口合并 88 个 PR（其中 16 个 Dependabot）、12 份 ADR；CodeRabbit 文档线程 261 条约一半为真缺陷；serve 应用约 16MB/97 文件→1.7MB/4 文件；不代你任意仓同吞吐。",
     description:
       "面向要用代理消化 Dependabot 浪潮、却怕补丁版被投毒或 lockfile 漂出版本的维护者：把「上游溯源 + 人决定合并 + 打包后测试」写成门禁，区别于复活失修包与会话成本记账。",
@@ -32248,7 +32248,7 @@ App 现状：{{scope}}
   {
     id: "504",
     slug: "tint-standardize-ai-workflow-130pct",
-    title: "Kanwaljit / Tint：统一全员 AI 工作流——吞吐约 +130%，一人沉淀约 55 条规则",
+    title: "Tint 统一全员代理工作流",
     summary: "团队；披露 2025 春至 2026 夏吞吐约 +130%（作者写明不证明单靠 AI、也不测价值）；2025-09 共享配置仓、2026 初插件；一人把约 12 个月评审意见写成约 55 条规则；不代你任意团队同吞吐。",
     description:
       "面向要把分散的个人 Claude 配置收成团队工作流、却怕漏需求与默认分支假设的工程管理：把「开 PR 前核对未完成项/占位/验收 + 敏感改动强制人审」写成门禁，区别于后台全代理门禁与四事故禁令根文件。",
@@ -32338,7 +32338,7 @@ App 现状：{{scope}}
   {
     id: "505",
     slug: "vineeth-mcp-pool-11-servers-week",
-    title: "Vineeth：一周搭出 11 个 MCP 服务——共享 OAuth 库，行覆盖 100% 门禁",
+    title: "一批 MCP 共享登录与覆盖门禁",
     summary: "个人；披露约一周从 Stripe 扩到 11 个 MCP + oauth-core；其中 6 个需 OAuth；合并要求 100% 行覆盖；前约十天故意只读，写操作需按服务开关；不代你任意集成同速。",
     description:
       "面向要把常用 SaaS 控进编辑器、却怕把同一套 OAuth 复制六遍或默认暴露写操作的工程：把「先抽共享认证 + 覆盖率门 + 写工具默认关闭」写成门禁，区别于支持组现成 MCP 吞吐与公司级知识图代理。",
@@ -32428,7 +32428,7 @@ App 现状：{{scope}}
   {
     id: "506",
     slug: "davis-vaughan-dplyr-revdep-200-prs",
-    title: "Davis：半自动修复 dplyr 反依赖——约 200 个 PR，估 33 小时降到约 8 小时",
+    title: "dplyr 反依赖半自动修后人审",
     summary: "个人（tidyverse）；披露约 200 套 diff 均经人审后成 PR；估 10 分钟×200=33 小时→约 8 小时（约 4×）；第二批 50 包墙时约 1 小时 10 分、费用约 $147；不代你任意 revdep 同省时。",
     description:
       "面向要因上游破坏性变更给下游发补丁、却怕代理搞乱 git 与本机全局库的开源维护者：把「人预克隆并隔离依赖库 + 代理只做最小修复 + 人审后再发 PR」写成门禁，区别于 Dependabot 周更研判与失修高下载包复活。",
@@ -32517,7 +32517,7 @@ App 现状：{{scope}}
   {
     id: "507",
     slug: "denrakeiw-scumble-desktop-editor-5-weeks",
-    title: "Dennis：五周做出桌面修图应用 Scumble——43 次发布，应用代码约 8.3 万行",
+    title: "桌面修图应用 Scumble",
     summary: "个人；披露约五周：43 次发布、应用仓 632 次提交、应用约 8.3 万行 JS + 约 2900 行 Rust，测试工具代码约同样 8.3 万行；26 份计划、109 个 MCP 工具；不代你任意桌面应用同规模。",
     description:
       "面向要用代理快速做出带 GPU/合成器的桌面编辑器、却怕长会话漂品质或测试覆盖掉真实文档的独立开发者：把「一步一提交后清空上下文 + 按风险分档测真应用 + 像素落地先写一句效果」写成门禁，区别于自建 SaaS MCP 池与博物馆多代理船队。",
@@ -32606,7 +32606,7 @@ App 现状：{{scope}}
   {
     id: "508",
     slug: "rss-holmes-claude-review-rules-five-months",
-    title: "Rohan：生产评审规则演化五个月——六名专员加核验器，无法证实的发现一律丢弃",
+    title: "无法证实评审发现的丢弃规则",
     summary: "团队；披露约五个月：从按需单提示到剧本 + 六名专员 + 核验器；核验器查文件/引文/是否在 diff/规则原文四项，任一失败即丢弃；人仍须批准每个 PR；不代你任意仓同准。",
     description:
       "面向要把代理评审接到每条 PR、却怕误报挡住同事或翻出多年前旧代码的工程团队：把「按路径加载规则 + 只评改动行 + 发现必须引规则 + 核验器先证伪」写成门禁，区别于统一全员 AI 工作流与发布阴影门。",
@@ -32695,7 +32695,7 @@ App 现状：{{scope}}
   {
     id: "509",
     slug: "bergholz-courseshelf-react-liveview-40-days",
-    title: "Daniel：四次尝试迁完 CourseShelf——人手驾技能约 35–40 天，技能约 152 行",
+    title: "CourseShelf 人手驾技能迁移",
     summary: "个人；披露 React/Inertia→Phoenix LiveView 四次尝试：懒自动化约 40–45 分钟失败；最终技能约 152 行、人手逐页驾驭；全程约 35–40 天（业余，约两个月跨度）；不代你任意迁栈同工期。",
     description:
       "面向要把现有 SaaS 前端迁到另一套框架、却怕代理提前宣布完工并留下「即将推出」占位的独立开发者：把「自动化的是可重复技能、工作仍由人逐页验收」写成门禁，区别于静态站点归档迁移与云厂商搬迁。",
@@ -32784,7 +32784,7 @@ App 现状：{{scope}}
   {
     id: "510",
     slug: "princejain-egressleak-153-transcripts",
-    title: "Prince：审计 153 份本地会话出站——滤掉 259 条合成邮箱后，抓住 2 次 URL 泄露",
+    title: "审计本地会话出站抓住泄露",
     summary: "个人；披露 153 份 Claude Code/Codex 转录、去重工具调用 1928 次；邮箱正则先打出 336 处，其中 259 条为提交说明里的合成地址；随后见到 2 次 URL 查询串带邮箱、1 次外部 POST、3 条 SSH MCP；不代你任意机器同结果。",
     description:
       "面向刚看到出站 User-Agent/URL 可能带走账号邮箱、要对本地会话做自检的开发者：把「先剔除合成邮箱与回环请求，再看真正外连」写成门禁，区别于会话花费拆账与依赖更新研判。",
@@ -32872,7 +32872,7 @@ App 现状：{{scope}}
   {
     id: "511",
     slug: "furkiak-receipts-1260-sessions-43-to-78",
-    title: "Furkan：1260 次现场会话评测 receipts——工作仓从约 43% 升到约 78%，四句话几乎追平插件",
+    title: "现场会话四句核验规则评测",
     summary: "个人；披露 1260 次现场会话：跨包任务工作仓约 43%→78%（Holm 校正 p=0.00007），失败测试套件约 57%→22%；只把四句核验规则写入 CLAUDE.md 约 76%，与插件 78% 无统计可辨差异（p=1.0）；自有历史 233 条成功宣称中 11 条无有效证据；不代你任意仓同提升。",
     description:
       "面向代理常报「测试都过了」却不敢当真的开发者：把「完成必须有执行证据、先试四句规则、插件只做独立核验且默认警告」写成门禁，区别于生产 PR 评审核验器与本地转录出站审计。",
@@ -32960,7 +32960,7 @@ App 现状：{{scope}}
   {
     id: "512",
     slug: "utzcoz-aosp-scale-22-samples-handoffs",
-    title: "utzcoz：在 AOSP 体量项目上用 Claude Code——22 个 ARM64 样例，boringdroid 逾 60 份交接",
+    title: "AOSP 体量项目交接续写",
     summary: "个人；披露四个 AOSP 体量项目：digitalis 用 22 个 ARM64 样例做集成测试，首个可工作版本累计约 15 小时、靠多份交接续写；boringdroid 根目录逾 60 份交接；aospbooks 约 64 章、约 22.7 万行、约 1500 张 Mermaid；不代你任意 AOSP 分叉同进度。",
     description:
       "面向要在超大上游分叉（AOSP/模拟器）上用代理、却怕会话一断就从零开始或把样例改绿来掩盖真正 bug 的维护者：把「固定形状的交接文档 + 脚本化模拟器验证 + 禁止改样例绕过」写成门禁，区别于普通应用代写 Playwright 与失修包复活。",
@@ -33048,7 +33048,7 @@ App 现状：{{scope}}
   {
     id: "513",
     slug: "agentconnect-team-channels-30-agents",
-    title: "AgentConnect 团队：把代理从个人终端搬进频道——约 30 个代理，设计文档 35 份增至 100 份",
+    title: "代理从个人终端搬进团队频道",
     summary: "团队（不足十人）；披露约六个月后：约 30 个代理跑在 7 台自有机器加托管池上，约 20 个定时任务；设计文档从开源时的 35 份增至 100 份；上游分叉留下 14 条 rebase 分支；是否构成事故、合并与账号相关回复仍由人决定；不代你任意团队同规模。",
     description:
       "面向代理只活在个人终端、过程与权限无法共享的工程团队：把「频道即会话 + 按来源分层权限和记忆 + 人决定是否事故与合并」写成门禁，区别于统一全员 AI 工作流与生产 PR 六专员评审核验器。",
@@ -33136,7 +33136,7 @@ App 现状：{{scope}}
   {
     id: "514",
     slug: "gonewx-decker-147-decisions-10-days",
-    title: "decker：十天记下 147 个决策——会话冷启动约 18 分钟降到约 8 分钟",
+    title: "粘贴决策日志缩短会话冷启动",
     summary: "个人；披露 10 天、23 次会话、147 个决策点；冷启动平均约 18 分钟（约占典型 70 分钟会话的 25%），作者估算约合 10 天损失约 7 小时；用粘贴决策日志后冷启动降到约 8 分钟；另标出 4 条「勿再提议」和 3 次写下理由时发现自己说不清；不代你任意项目同省时。",
     description:
       "面向会话一断代理就重提已否决方案、自己也记不清当时为什么的开发者：把「记下为什么和拒绝项，并在开场粘贴最近决策」写成门禁，区别于把「测试已通过」当成已验证，也区别于事后扫描本地转录出站。",
@@ -33224,7 +33224,7 @@ App 现状：{{scope}}
   {
     id: "515",
     slug: "ricardoribs-pipeline-guard-dbt-draft-pr",
-    title: "Ricardo：模型只提议、代码做决定——dbt 失败走草稿 PR，沙盒两例均由人合并",
+    title: "dbt 失败只开草稿 PR",
     summary: "个人；披露自建 Pipeline Guard：诊断代理不碰工具，资格由确定性代码裁定，只开草稿 PR；文中两例为 Databricks Jobs 沙盒里故意植入的故障（作者写明不是生产事故）：各改 1 个文件 1 行，校验合计约 9–9.5 秒，PR #20/#21 由作者审后合并；不代你任意生产管道自愈。",
     description:
       "面向 dbt 构建失败后想借模型定位、却怕它猜错原因或直接改仓的数据工程师：把「模型只提议、代码决定资格与发布边界、人合并草稿」写成门禁，区别于 Dependabot 周更研判与本地转录出站自检。",
@@ -33312,7 +33312,7 @@ App 现状：{{scope}}
   {
     id: "516",
     slug: "pitt-wu-blog-rebuild-10-days-801-i18n",
-    title: "Pitt：十天重建博客知识库——104 次提交，89 篇文档译成 801 个文件，修变音符号占了 24 次提交",
+    title: "博客知识库重建与多语翻译",
     summary: "个人；披露农历新年十天（2026-02-08 至 02-18）重建个人知识库/博客：104 次提交、1078 个文件、+26.3 万/−2.1 万行；语系 4→10；89 篇文档译出 801 个文件（89×9）；质量修复阶段 24 次提交，约占总量四分之一；不代你任意文档站同进度。",
     description:
       "面向要把个人知识库一次性扩到多语系、却怕模型吞掉变音符号或改坏 frontmatter 路由的维护者：把「先写死 i18n 与提交约定、批量翻译后再交叉核对、禁止改 id/slug」写成门禁，区别于普通静态档案迁移与失修包复活。",
@@ -33400,7 +33400,7 @@ App 现状：{{scope}}
   {
     id: "517",
     slug: "franz-homelab-six-runbooks-doc-audit",
-    title: "Franz：四天故障后写出 6 份薄 runbook——审文档发现过期表，并删掉 325 行会破仲裁的重启脚本",
+    title: "故障后薄手册与旧脚本清理",
     summary: "个人；披露家庭实验室在四天里经历升级、重建与三次硬件故障后，用 Claude Code 写成 6 份只指向现有 README 的薄 runbook（含健康门与踩坑日期）；顺带发现 README 内存/磁盘表已过期，并删除 325 行会同时打掉 OpenBao 仲裁、两套 Postgres 与 Pi-hole 的旧重启脚本；作者写明这些技能尚未端到端跑过；不代你任意机房同清单。",
     description:
       "面向事故修完只剩 git 与记忆、下次却不知道先做哪一步的值班者：把「runbook 只补充顺序、门禁和踩坑，不复制命令，并借写文档做审计」写成门禁，区别于厂商外环 SRE 手册与生产管道草稿自愈。",
@@ -33488,7 +33488,7 @@ App 现状：{{scope}}
   {
     id: "518",
     slug: "boris-barash-10-day-sprint-50x-billing",
-    title: "Boris：十日冲刺复盘——319 次提交，模型切换后账单约贵 50 倍，语法错误藏了逾四小时",
+    title: "网关门禁冲刺账单与语法复盘",
     summary: "个人；披露 2026-03-09 至 03-19 用 Claude Code 结对做网关门禁冲刺：319 次提交、逾 100 个已合并 PR；生产里修了三件事：治理文件语法错误靠镜像缓存藏了逾四小时（后文更正：不是两天），模型名带厂商前缀后账单按默认单价记下约贵 50 倍（后文更正：不是 100 倍或 47 倍），以及推理 token 一度漏记后又曾重复计数；不代你任意网关同事故。",
     description:
       "面向刚换模型或刚合并限流逻辑、却怕计价表对不上、语法错误被旧镜像藏住的网关维护者：把「换模型必须拿一次真实请求对账单、合并后编译整个文件而不只看 diff」写成门禁，区别于出站审计与订阅套餐成本拆解。",
@@ -33576,7 +33576,7 @@ App 现状：{{scope}}
   {
     id: "519",
     slug: "vojta-keboola-kbc-skills-phpstan-2467",
-    title: "Vojta / Keboola：给人与代理同一套 CLI——33 个技能，PHPStan 基线 2467→1081，秋季代看逾百个 PR",
+    title: "Keboola 人与代理共用 CLI",
     summary: "团队（Keboola Connection 上五人，另有其他团队贡献者）；披露把规则收进 AGENTS.md、做成 65 项任务的 `./bin/kbc`（33 个技能里 21 个调用它），以及 babysit-pr / ship-task / 自助跑 E2E；PHPStan 基线 2467→1081；作者对照 2024/2025 冬春与 2026 年夏秋，团队每人每月 PR 5.3→13.7、他本人 4.8→51.3，并写明模型本身贡献很大、技能多半不留痕迹故数字是下限；不代你任意数据平台同吞吐。",
     description:
       "面向代理每次都要猜「这里测试怎么跑」、技术债基线只增不减的数据平台团队：把「人与代理走同一套 CLI、重复迁移收成技能、CI 可由代理触发、人只审准备好的 PR」写成门禁，区别于统一工作流吞吐百分比与个人终端迁到共享频道。",
@@ -33664,7 +33664,7 @@ App 现状：{{scope}}
   {
     id: "520",
     slug: "allen-hutchison-agent-never-merges",
-    title: "Allen：只排队、从不合并——夜间代理开 PR，两个门都由人开；一次同一缺陷冒出 4 个 PR",
+    title: "只排队开单不合并的夜间代理",
     summary: "团队（两位创始人，无独立平台组）；披露把维护工作收成可复用的 Claude Code 插件集，用定时状态机处理 issue：先发计划评论，人批准后才实现并开 PR；合并被运行时禁止，不靠提示词约定；公开仓会对用户 issue 提问，评论在元数据里标明来自 Claude Code；一次架构审计后多个运行同时开工，同一缺陷冒出 4 个 PR；不代你任意开源仓同节奏。",
     description:
       "面向两人维护公开插件、想把夜间分诊和草稿 PR 交给代理、却不能让它决定发版的维护者：把「计划须人批、合并由运行时禁止、公开提问要避免把产品决定推给报障者」写成门禁，区别于许可扫描复活与评审核验器。",
@@ -33752,7 +33752,7 @@ App 现状：{{scope}}
   {
     id: "521",
     slug: "matt-henderson-sentry-cms-2500-pages",
-    title: "Matt / Sentry：营销站迁出 CMS——约 2500 页进 Git，构建从 14 分钟降到 4 分钟以内",
+    title: "营销站从 CMS 迁进 Git",
     summary: "团队（Sentry 增长侧；迁移窗口约 2.5 名开发者）；披露把约 2500 页营销内容从 CMS 迁进 Git 里的 Markdown 与代码：同期 Gatsby 换成 Astro，构建 14 分钟→迁移中不到 6 分钟，加上 Marketo 表单缓存后不到 4 分钟（作者按约 95 次构建/日估算每天省约 15.8 个构建小时）；约 200 个一次性页面收成 3 套模板；预发构建失败约降 95%，Web Vitals 89→97；不代你任意营销站同进度。",
     description:
       "面向代理改得动代码页、却在 CMS 边界停住的增长或市场团队：把「先让页面进 Git、用技能当页面模板、人审 PR」写成门禁，区别于个人知识库多语系翻译，以及把文档迁进 Git 的产品发布稿。",
@@ -33840,7 +33840,7 @@ App 现状：{{scope}}
   {
     id: "522",
     slug: "tom-vaucourt-starbridge-4-days-450-prs",
-    title: "Tom：四天做出 Starbridge——约 200 次会话合并 450 个 PR，亲笔写了 443 条提示",
+    title: "Starbridge 四天编排交付",
     summary: "个人；披露 2026-10-04 约 18:50 起意到 10-08 10:21 打上 v0.1.0：约 200 次 Claude Code 会话合并 450 个 PR，作者写了 443 条提示（约 1.54 万词）；编排器拆出 383 个 issue、建议 174 个会话入口、发出 702 条跨会话消息，并归档 241 个完成会话；代理经 starbridge ask 提出 138 个问题（10-06 当天 70 个）；按 API 标价约 2580 欧元，作者实际按套餐估算四天约 34 欧元；不代你任意四天交付。",
     description:
       "面向同时开很多编码代理、问题却埋在聊天和系统通知里的人：把「问题打到手机、一点即可写回原会话，编排器负责拆分、排队合并和提问」写成门禁，区别于把个人终端迁进共享频道，以及运行时禁止代理合并的夜间队列。",
@@ -33928,7 +33928,7 @@ App 现状：{{scope}}
   {
     id: "523",
     slug: "murooka-ai-review-782-calls-62pct",
-    title: "Murooka：数过 782 次评审调用——约 62% 指出被用上；种错实验里评审几乎没先发现",
+    title: "评审调用有用性与种错实验",
     summary: "个人；披露自建委派体系里 240 次对话调用评审 782 次（新委托 569、再确认 213）；从仍留有报告的 678 次中按任务类型抽样 165 次，去掉 38 次非评审后对 127 次加权：约 62% 的指出算「有用」，93% 的调用因此改了东西或汇报给人，71% 至少有一条中等及以上有用指出；含返工的种错实验共 317 次，评审没有任何一次先发现植入错误；不代你任意评审设置同比例。",
     description:
       "面向刚看到「对抗评审浪费 token」、却不知道自己日志里评审到底有没有用的人：把「用会跑检查的评审、本体做分诊、再按任务类型回头数记录」写成门禁，区别于生产仓六专员评审核验器。",
@@ -34015,7 +34015,7 @@ App 现状：{{scope}}
   {
     id: "524",
     slug: "andrew-connell-superpowers-415-issues",
-    title: "Andrew：415 个 issue 跑个人站——320 个实作 PR，合并后删掉 144 份会过期的计划",
+    title: "个人站议题工作流与计划清理",
     summary: "个人（个人站点；作者同时在 AvePoint 工作，本文写的是自己的站点仓库）；披露 2026 年 5–10 月用 superpowers 工作流处理 415 个 issue：合并 PR 共 537 个，其中 217 个是自动发版 PR，实作 320 个；自 5 月 1 日起 878 次提交；仓库里 157 份设计规格、0 份实施计划、140 份 ADR；一次清理删掉已进 main 的 144 份计划（issue 正文曾估约 139）；数字截至 2026-10-22；不代你任意内容站同规模。",
     description:
       "面向代理计划写得很细、过几天搜索却搜到过期路径的维护者：把「人审规格、计划用完即删、由 PR 留下怎么做的记录」写成门禁，区别于知识库多语系翻译，以及运行时禁止合并的夜间队列。",
@@ -34103,7 +34103,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "525",
     slug: "mintlify-clankruptcy-18-prs-zero-faster",
-    title: "Kathryn / Mintlify：编排实验宣告破产——45 分钟开出 18 个 PR，后来发现进度快了 0%",
+    title: "Mintlify 组件编排实验破产",
     summary: "团队（Mintlify，作者与同事 Dmytro）；披露把内部文档组件系统开源：约 36 个具名 React 组件，两天后只完成 4 个（约 11%）；编排器 45 分钟开出其余 18 个 PR，约 3 小时跑完含评审循环（约 40+ 次工人调用、38 条 Bugbot 意见号称全修、18/18 构建通过）；人眼看是 5 个意外地好、5 个勉强、8 个糟糕透顶；作者自评约 40% 成功，次日只又真正发出 2 个组件，结论是编排让这项目快了 0%；不代你任意组件库迁移。",
     description:
       "面向想靠并行工人赶设计系统或组件迁仓截止日期的人：把「没有眼睛核对的前端编排先当失败样本、视觉对照仍要人做」写成门禁，区别于标准化工作流后的吞吐上升，以及共享频道里养三十个代理。",
@@ -34191,7 +34191,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "526",
     slug: "nunc-108-tickets-oracle-legacy-24-skills",
-    title: "nunc：108 张支持工单之后——230 万行 Oracle 遗留系统上的客服分析流水线",
+    title: "Oracle 遗留客服分析流水线",
     summary: "个人（维护约 20 年保险系统）；披露逾 1000 个 PL/SQL 包、230 万行、同一套代码跑在 20 多个客户安装上；九个月把工单交给 Claude Code：108 张工单、约 4000 条提示（94% 花在工单上）、24 个技能、759 个 SQL 模板／32 个主题文件夹；作者承认没有系统的处理时长前后对照，测试仍靠人、单点风险是 1；不代你任意遗留客服同进度。",
     description:
       "面向要把遗留帮助台、手册、代码仓和可复用脚本收成「一张工单一条分析命令」的支持工程师：把「先收集上下文并写出 ANALIZA.md，脚本必须对照活模式校验，回复和上场仍由人决定」写成门禁，区别于把个人终端迁进共享频道，以及只做工单分诊仪表盘的厂商稿。",
@@ -34279,7 +34279,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "527",
     slug: "tomakl-local-rag-170-docs-mcp",
-    title: "Tomasz：给 Claude Code 做本地 RAG 记忆——约 170 篇文档与 20 个仓库镜像",
+    title: "Claude Code 本地 RAG 记忆",
     summary: "个人；披露用本地 pgvector 做多模态 RAG，供 Claude Code 按需检索过去的会话和内部文档：约 170 篇、1536 维 HNSW、备份 259MB（含 20 个 GitHub 仓库镜像）；Gemini Embedding 2 免费档每天 1000 次，作者称从未触顶；Docker 栈就绪后与 Claude Code 接线约 30 分钟；检索只取决于他写下并索引了什么；不代你任意知识库同召回。",
     description:
       "面向会话一关知识就丢、又不想把内部笔记和 runbook 送到第三方向量库的人：把「本地摄入、本机 MCP 查询、按源文件去重，人决定索引什么、是否采信检索结果」写成门禁，区别于用 Dify 搭公司 Wiki 问答，以及把个人博客做成多语系静态站。",
@@ -34367,7 +34367,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "528",
     slug: "stanislas-openvpn-150-issues-50-prs",
-    title: "Stanislas：开源安装脚本积压清零——150 个 issue 与 50 个 PR",
+    title: "两套开源安装脚本积压清零",
     summary: "个人（openvpn-install / wireguard-install 维护者，发文时分别约 1.5 万与 1 万星）；披露先补上矩阵里 30 多项端到端测试，再在人审下消化积压：150 个 issue 与 50 个 PR 做到 0；作者配了约 10 天的 GitHub pulse 截图，并写自己花了几十个小时（估没有 Claude 至少要两倍，且可能根本不会做）；Copilot 评审机器人命中率约 50%；不代你任意开源仓清零。",
     description:
       "面向热门安装脚本或类似工具的维护者、被多年 issue 和外部 PR 压住的人：把「先补上可重复的安装测试，再让代理起草修复与变基，关闭和合并仍由人决定」写成门禁，区别于给反依赖批量开 PR，以及一周合入大量 Dependabot。",
@@ -34455,7 +34455,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "529",
     slug: "classkasa-pentest-8-fixes-3-high",
-    title: "Tomasz / ClassKasa：授权自测后发出 8 项修复——其中 3 项 High，复测又关掉 3 处",
+    title: "ClassKasa 授权渗透自测修复",
     summary: "团队（ClassKasa，创始人执笔）；披露 2026 年 5 月用开源工具包对自己的产品做授权渗透测试：v3.27.0 与 v3.27.1 均标在 2026-05-29；前者 8 项修复、其中 3 项 High，后者把同一批攻击重跑后修复站得住，又在相邻端点关掉 3 处并补上自动测试；文中不点名模型或代理数量；作者写明这不是外部审计，也不能证明没有别的问题；不代你任意产品同等结论。",
     description:
       "面向要把编码代理用在授权安全测试、并坚持范围内批准每条命令的产品团队：把「先声明范围，咨询和分析分开，修复后必须复测相邻端点」写成门禁，区别于从代理转录里抓外泄，以及没有可核日期的赏金扫描教程。",
@@ -34543,7 +34543,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "530",
     slug: "barte-lastro-23-components-two-months",
-    title: "Fabiano / Barte：两个月做出设计系统 Lastro——23 个组件、逾 1 万行 TypeScript",
+    title: "设计系统 Lastro 两月交付",
     summary: "团队（Barte，Fabiano Meneghetti 执笔）；披露用「人做架构和规格、AI 做体量活」的方式两个月交出 Lastro：23 个已文档化组件、逾 1 万行全部为 TypeScript 的代码、token 层加 Storybook；作者写 MCP 生成已消费正确 token 的 React 样板约 96% 准确；对照是专班 6 到 8 个月（他们并未那样做）；自研 Gladi 插件花了几天、之后每周省下数小时；不代你任意设计系统同工期。",
     description:
       "面向组件已经漂移、又没有专班去花大半年重建设计系统的产品团队：把「视觉真相先进入独立 token 层，没有规格代理不得发明组件，发布前仍由人做 QA」写成门禁，区别于用很多代理迁旧组件库，以及编排实验里并行开出一堆难看 PR 的失败样本。",
@@ -34631,7 +34631,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "531",
     slug: "puvaan-obsidian-wiki-432-pages-141-edges",
-    title: "Puvaan：给 Claude Code 做可累积的知识库——后来扩到 432 页流程，自动修好 35/55 条断链",
+    title: "Obsidian 可累积流程知识库",
     summary: "个人；披露先按 Karpathy 的 wiki 模式用 Obsidian 做可累积笔记：SessionStart 注入且硬帽约 8KB（约 2K token），会话结束用后台回放草稿，约 10K token／作者估约 0.02 美元，_pending.md 不自动合并；后来把同一模式扩到约 432 页流程、9 个应用枢纽，配对出 141 条跨文件夹边，自动修好 55 条断链中的 35 条；定向节省与「必同样好用」均为作者估算，不代你任意知识库同效果。",
     description:
       "面向每次新会话都要重新摸架构、又不想把内部笔记送进第三方向量库的人：把「代码只当原料、markdown wiki 做可累积中间层、schema 写清怎么维护，人审后再写入正式页」写成门禁，区别于本地 pgvector RAG 当会话记忆，以及把个人博客做成多语系静态站。",
@@ -34719,7 +34719,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "532",
     slug: "james-farris-cron-incident-15-turns",
-    title: "James：用 cron 给自己的故障做分诊——15 轮上限，有一次用尽轮次没写出报告",
+    title: "cron 定时故障分诊上限",
     summary: "个人（RydeRush.com）；披露约 300 行 Bash／Python、每 5 分钟轮询 Healthchecks.io、专用 Linux 用户 claude-responder、sudo 只允许重启 5 个服务、timeout 600 秒、最多 15 轮；新故障先发 Telegram 再拆出调查；一次真实故障（incident-20260507-192003）用尽 15 轮且没吐出完整 REPORT；不代你任意站点同进度自愈。",
     description:
       "面向一个人兼值班、只想先读日志再决定是否重启的站点维护者：把「健康检查变红后由加了锁的无头代理做只读调查，重启必须同时满足日志依据、高把握和白名单，报告用固定标记框住」写成门禁，区别于把个人终端迁进共享频道，以及给云告警接只读侦探却没有轮次与失败样本。",
@@ -34807,7 +34807,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "533",
     slug: "vamshi-gmail-digest-18-newsletters-220-lines",
-    title: "Vamshi：每周一自动写通讯摘要——18 份通讯约 85–90 封，runbook 长到约 220 行",
+    title: "周一 Gmail 通讯自动摘要",
     summary: "个人；披露订阅 18 份 AI／工程通讯，正常一周约 85 到 90 封；每周一定时代理查 Gmail、按仓库里的 runbook 写结构化摘要并推到 master，由 GitHub Actions 部署；runbook 从约一页长到约 220 行；旧的 9 个发件人名单只返回 38 封；公开五种静默失败（写错信封地址、未对数量做健康检查、误读 HTML、同一封信两地址重复、连续两周深挖同一主题）；不代你任意通讯摘要同质量。",
     description:
       "面向邮箱里堆着行业通讯、却不想每周一手工粘进对话框的人：把「检索与结构写进版本库里的 runbook，凭明文正文而不是 HTML 做摘要，用预期封数当健康检查，写之前先读自己上次的标题」写成门禁，区别于用编码代理对外生产通讯，以及只做多语系个人站翻译。",
@@ -34895,7 +34895,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "534",
     slug: "danielle-cfn-investigator-shared-compute",
-    title: "Danielle：把 Claude Code 搬上团队可触发的共享计算——一次失败部署指出 Fargate 缺了环境变量",
+    title: "共享计算上的失败部署调查",
     summary: "个人（团队里唯一的 DevOps）；披露用 CodeBuild 跑无头 Claude Code 调查失败的 CloudFormation，经 AWS MCP、只读角色读栈状态，工作里把分析帖到告警所在的 Slack 线程；公开仓 headless-claude-on-aws 是削薄后只覆盖 CloudFormation、从零重建的示范，不是工作副本；发文前一周一次失败部署指出 Fargate 任务定义缺环境变量，开发者自己补上并重部署、没有再找她；IAM 用了偏宽的托管 ReadOnlyAccess；不代你任意云账号同样省掉人。",
     description:
       "面向失败的云部署总要问到同一个人、又希望先给同事一个只读起点的人：把「在共享计算上跑无头调查，角色只读、结论允许说不确定，修和不修仍由人决定」写成门禁，区别于自己机器上的 cron 分诊，以及用 GitHub Actions 评审 terraform plan 的实验稿。",
@@ -34983,7 +34983,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "535",
     slug: "bootstrap-triage-230-items-410-labels",
-    title: "Julien / Bootstrap：用代理分诊开源积压——230 条未关闭，标好 410 个标签",
+    title: "Bootstrap 开源积压分诊",
     summary: "团队（Bootstrap，两位活跃核心成员）；披露发文时仓库还有 230 个未关闭 issue／PR，其中约四分之一超过三年，几个月前曾超过 500（作者把下降写成本阶段多次使用 LLM 的整体进展，不是单靠本工具清仓）；过去十二个月收到 186 个 issue 与 838 个 PR；代理处理了逾 200 条剩余项并按易处理程度分成 86／90／33／8；给 198 条未关闭项打上 410 个标签；一次会话发现 9 条其实已经修好；维护者仍亲自做每个决定、发出每条回复；不代你任意开源仓同样加快。",
     description:
       "面向热门开源仓被旧贴和外部 PR 压住、又不能让代理直接在主仓发言或推代码的维护者：把「只读同步、起草分析与回复、需要时在自己的分诊仓准备修复分支，关闭、合并和对外回复仍由人完成」写成门禁，区别于把安装脚本的 issue／PR 清到零，以及禁止代理合并的夜间排队。",
@@ -35071,7 +35071,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "536",
     slug: "danielle-morrill-184-prs-one-laptop-release",
-    title: "Danielle Morrill：四天合并了 184 个 PR，进生产的只有 1 次——发布按钮需要一台笔记本",
+    title: "出门期间离不开笔记本的发布",
     summary: "个人（Groupthink）；披露去拉斯维加斯四天（9 月 4–7 日）只带手机，账下合并 184 个 PR、进生产仅 1 次；前一个在家周末是 147 个 PR、8 次发布；回来当天 74 个 PR、3 次发布；卡住的 API 发布打包 62 项变更／417 次提交／353 个文件／12 个迁移，搁置约 80 小时，周日时后面又堆了 52 个已完成 PR；一次议程搜索越权被改道进这道闸，后来才被单独摘出；合并数是其 GitHub 账下全公司吞吐、不宣称全是代理独立完成；不代你任意产品同节奏发布。",
     description:
       "面向代理能持续开 PR、发布却要人在桌前跑生产命令的人：把「周末可以排队、不可逆的迁移必须工作日看着做，紧急修复不能卡在一台笔记本才能解开的大门里」写成门禁，区别于只统计合并数的无人值守循环，以及做一款从手机派活的编排产品。",
@@ -35159,7 +35159,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "537",
     slug: "carmen-krol-android-a11y-8-new-handle",
-    title: "Carmen：让 Claude 修了 8 个 Android 无障碍问题——新做的确认页又出现无标签拉手",
+    title: "Android 无障碍修复出新缺陷",
     summary: "个人；披露上一实验在未给无障碍指导时做出的 Android 应用上找出 8 个 WCAG 失败；本篇用 Claude Code（Opus 5.5）只告知问题、不给实现步骤，功能上修掉了这 8 个，并用 TalkBack、外接键盘或 WebAIM 对比度检查器核对；为满足 WCAG 3.3.4，代理新做了退出／稍后确认底栏，新底栏学会了标题角色和对比度，却把顶部拉手做成可聚焦且缺少无障碍标签与角色；「Hold」底栏因做在修复讨论之前，标题角色和对比度仍失败；一次会话、一个应用的小实验，不代你任意应用同样修得干净。",
     description:
       "面向要把无障碍修复交给编码代理、又必须自己用辅助技术验收的人：把「人负责指出问题与期望的朗读／操作，代理给实现，新界面也要再走一遍」写成门禁，区别于 Web 分层走查实验，以及一天内做出无障碍扫描 SaaS。",
@@ -35247,7 +35247,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "538",
     slug: "mahdi-talal-200-prs-tdd-hooks",
-    title: "Mahdi / Empire Media：带 TDD 钩子的流水线开出 200 多个 PR——第一天合并 20 个，后来关掉自动合并",
+    title: "后来关掉自动合并的 TDD 流水线",
     summary: "团队（Empire Media，作者为唯一的 AI 工程师）；披露 GitHub Actions 上的 Claude Code 流水线在四个公司仓库开出 200 多个 PR；人打上 ai-build 标签后，只读侦察／规划，一位写作者先写失败测试再实现，对抗校验与必过检查（测试、AI 评审、AI 安全，全栈仓另加前端构建／Playwright 视觉回归）拦住，人再合并；Spend Tracking Dashboard 6 月 18 日第一天有 20 个流水线 PR 被 squash 合并，到 9 月主分支上有 144 次来自机器人账户的提交；他一度打开自动合并，6 月 25 日关掉；一条滚动条修了 7 个 PR；未公布首次通过率或从 issue 到 PR 的耗时；不代你任意客户仓同样安全无人值守。",
     description:
       "面向人少、仓库栈又不统一、又不能让代理改自己铁轨的小团队：把「计划先贴到 issue 上，用钩子而不是提示词挡住未测代码、推生产和改流水线自身，合并仍由人点」写成门禁，区别于用 Playwright 当主线的测试生成，以及依赖机器人自己点合并的 Dependabot 流。",
@@ -35335,7 +35335,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "539",
     slug: "huseyin-kaplan-admin-80-commits-30-screens",
-    title: "Hüseyin：一个人重做运营后台——约 80 次提交、约 2.8 万行、约 30 个屏幕，误恢复写出过 3 个 JSON 文件",
+    title: "CRM 控制台重做与误恢复",
     summary: "个人（公司里这条线的唯一工程师）；披露 2026 年 4 月 17 日至 10 月 1 日两个仓库约 80 次提交、约 2.8 万行 TypeScript／TSX、约 30 个屏幕，在旧 API 上重做 CRM／工单／账单控制台，并加土耳其语文档助手；迁入逾一千条旧客户后有过跨租户投诉，只读 SQL 证明迁移只写了四张 CRM 表、错误模式早于迁移日；「最后一条评论」列若按客户逐条请求约要 1,460 次，后改成列表接口上的批量字段；文档按段／句／词切块，目标约 800 token、重叠 150，取余弦相近的前 5 条，最佳匹配低于 0.6 就声明根据不足；仓库是内存存储，重启即丢；词数乘 1.3 估 token，作者认为对土耳其语可能偏低；一次损坏的恢复脚本把 3 个源文件写成了 JSON 编码字符串；不代你任意后台或文档助手同样省事。",
     description:
       "面向必须接住旧接口、又不能把真实客户行对外展示的人：把「先读懂旧契约再画新屏，演示走脱敏分支，文档助手在根据不足时明确说不知道」写成门禁，区别于给编码代理做本地向量记忆，以及消化上百张遗留工单却不重做后台界面。",
@@ -35423,7 +35423,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "540",
     slug: "babipanote-gentledo-75-to-158-tests",
-    title: "babipanote：非开发者把 GentleDo 送上 App Store——测试从 75 个加到 158 个，有的真机迁库会崩溃",
+    title: "GentleDo 上架与迁库崩溃",
     summary: "个人（babipanote，自称一人之力的记录者）；披露 2026 年 4 月把从未写过 Flutter 的 GentleDo 送上 App Store，代码与 Claude Code 一起写；本地库走到 schemaVersion 3，v2 到 v3 的迁移在部分测试员真机上因列默认值变成 NULL 而崩溃，对代理说了两次「把默认值写明确」之后才稳住；单向依赖重构用了一周，收在提交 473bfbc 与 18ee6aa；上线前一周测试从 75 个加到 158 个，QC 代理拉高覆盖，提交 263610a，作者第一次不害怕地点了构建 8 的上传；path_provider_foundation 2.6.0 的 FFI 崩溃代理没能定位，作者在议题跟踪里找到把版本钉到 2.4.4；Xcode 复选框（加密声明、去掉 iPad 目标、capabilities、描述文件）让他丢掉一天；文末预告下一篇将写提交后约 2 日获批，本篇未展开审核证据；不代你任意上架同样顺利。",
     description:
       "面向没有移动开发经验、却想先做一款不上服务器的本地应用的人：把「规则写进 CLAUDE.md，一次提交只改很少文件，迁移和崩溃必须在多台真机上看」写成门禁，区别于四天做出从手机派活的编排产品，以及给现成 Android 应用补无障碍修复。",
@@ -35511,7 +35511,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "541",
     slug: "hussein-yahfoufi-eventship-5-weeks-20k",
-    title: "Hussein：五周重做 Eventship——接近 2 万用户迁过去，公告后几分钟站点就挂了",
+    title: "Eventship 五周重做后挂站",
     summary: "个人（Eventship 创始人）；披露别人估计要约 4–5 名工程师、约 6 个月才能重做的活动平台，他用 Notion 文档加 Claude Code 桌面应用在五周内上线，并把约 2 万用户、500 名主办方、2 千场活动迁出自建栈；重建前已有 143 篇 Notion 需求；通常并行 4 个会话，试过 6 个以上就跟不过来；代理不直接合并；第 3 周把 143 篇里记下的缺陷走了一遍，很多是坏的；一位朋友先起了迁移脚本的头，他本人把脚本干跑了约 100 次，上线当天白天又干跑 10 次；计划约 30 分钟维护窗，GCP 签发证书却超过 1 小时；数据未称丢失，但公告发出后流量在几分钟内把站点打挂，因未配好扩容；JSON-LD 写「solo」，正文写朋友起了脚本头；不代你任意从无代码平台同样迁出。",
     description:
       "面向要把无代码平台上的生产产品迁出自建、又必须自己扛数据迁移和上线流量的人：把「先写清需求与测试计划再写代码，迁移脚本反复干跑，扩容在发公告前配好，生产写权限不交给代理」写成门禁，区别于营销站整站迁出 CMS，以及只统计合并数的无人值守循环。",
@@ -35599,7 +35599,7 @@ issue/规格/计划的路径：{{paths}}
   {
     id: "542",
     slug: "gorka-blablanote-10-repos-119-prs",
-    title: "Gorka / BlaBlaNote：十个仓库里并行写代码——119 个 PR 记下 49 类问题，只做成 4 条自动检查",
+    title: "BlaBlaNote 十仓并行开发",
     summary: "团队（BlaBlaNote，作者为联合创始人 Gorka Mendez）；披露十个仓库（应用、活动平台、撮合引擎、网站、社区、浏览器扩展、文档、端到端测试、合规，外加一个不部署的 planning）里常常几个会话同时写，有时同一仓库两个，并且一天多次进生产；协议上限 3 万字节；应用收尾固定 8 步，活动平台 11 步；守卫测试现有 326 个用例并带变异；测试环境部署曾约 8 分钟一次、每个 PR 几乎浪费两次；内容没变则跳过整套，约省 24 分钟跑者；应用里对着改动文件做变异曾几乎要 10 分钟，后来只变异新增条件、变成几秒；全库周测曾一个月烧掉数千 CI 分钟且很少跑完，已关掉；记过 119 个 PR、49 个不同类别，只把 4 类做成自动检查；文章由 AI 起草、作者审改；不代你任意小团队同样一天多次安全发布。",
     description:
       "面向人少、仓库却很多、又会几个编码会话同时推送的小团队：把「协议单独存放并设体积上限，用钩子而不是记性挡住危险命令，合并前核对这次要合的正是测过的那份，CI 分钟也要像守卫一样自证成本」写成门禁，区别于以 Playwright 为主线的测试生成，以及依赖机器人自己点合并的 Dependabot 流。",
@@ -35687,7 +35687,7 @@ CI 与生产只读约束：{{ci_constraint}}
   {
     id: "543",
     slug: "scott-algatt-cloud-bill-198-to-74",
-    title: "Scott：云账单从每月 198 美元降到 74 美元——51MB 的 DNG 曾让发布静默失败",
+    title: "云账单缩容与静默发布失败",
     summary: "个人（Scott Algatt）；披露用 Claude Code 做完一套云账单改造的收官文（系列第 6 篇）：DigitalOcean 账单从每月 198 美元降到 74 美元，少 124 美元／月、按年计 1,488 美元，约 63%；三台 8GB 节点 168 美元降为三台 2GB 节点 63 美元；删掉 App Platform 10 美元与负载均衡 12 美元；7 个 Hugo 站加另外 2 个共 9 个 Cloudflare Pages 项目走免费档；集群里忘掉的 FleetDM 留下 32GB 空挂卷；整段对话约两天；列出 7 件出事的事，包括 Wrangler OAuth 三五十分钟过期，以及仓库里 51MB 的 DNG 超过 Pages 单文件 25MB 限制、构建成功但发布失败且当时看起来像静默；域名切到 Cloudflare 是他认为风险最高的一步；系列按真实终端会话用 Claude Code 写成，作者称改动和故障「正是那样发生的」；不代你任意账单同样少 63%。",
     description:
       "面向云账单被闲置资源和多余跳转抬高、又必须自己决定何时切域名的人：把「先清点孤儿资源，静态站不要再绕过集群，发布失败要看发布日志而不只看构建是否绿，高风险切流仍由人挑时间」写成门禁，区别于模型账单暴涨的叙事，以及只整理家庭实验室 runbook 的文档审计。",
@@ -35775,7 +35775,7 @@ CI 与生产只读约束：{{ci_constraint}}
   {
     id: "544",
     slug: "alvaro-measured-test-output-16-sessions",
-    title: "Alvaro：在三个仓库里测了两种常见抱怨——准备上架的过滤插件后来没发",
+    title: "三仓实测后准备上架的插件没发",
     summary: "个人；披露本想围绕「测试输出吞用量」和「代理说做完了其实没有」做付费 Claude Code 插件，上架前在三个公开仓库（Express／Flask／Cobra）里实测；啰嗦且有一条失败的测试跑大约估出 1 万到 1.8 万 token，只保留失败和摘要的过滤器能少 95%–99%（按约 4 个字符 1 个 token 估）；记录了全部命令的 6 次会话里（插件 3 次、无插件 3 次），代理总是自己把套件管到 tail 或 grep，这些测试命令只返回 369–931 个字符，插件没什么可滤；16 次有效会话里，代理声称完成且套件通过时，核对脚本都同意——核对弱于真正验收，作者写成「没观察到不一致」而不是「没有缺陷」；中位数 8 轮、按标价自估 0.22 美元，16 次里 14 次墙钟在一分钟内；先做的 3 次 Flask 因脚本先删掉虚拟环境而出现 3／3 假「做完了」，已标无效；19 次会话（含 3 次无效）的数据公开；插件后来没发；不代你任意仓库同样测到零分歧。",
     description:
       "面向要把「测试输出太吵」或「代理说做完了」做成产品或门禁、又必须先测量的人：把「先固定仓库与任务再跑，核对应独立于代理自己写的测试，过滤器不能把失败藏起来」写成门禁，区别于统计评审意见有没有被采纳，以及未测量就上架的多代理编排。",
@@ -35862,7 +35862,7 @@ CI 与生产只读约束：{{ci_constraint}}
   {
     id: "545",
     slug: "david-cai-bill-trinity-31-63-tokens",
-    title: "David / BILL：让设计系统也能被 Agent 查询——四项任务输入 token 从 19M 降到 10.4M",
+    title: "Trinity 设计系统代理查询",
     summary: "团队（BILL，作者为 UI 软件架构师 David Cai）；披露把 Trinity 设计系统的 Storybook 同时供给人和 Agent：同一套资料之上做了 CLI、托管 MCP 和一组技能；A/B 在 Claude Sonnet 4.6、中等 thinking 的 Claude Code 上进行，四项任务各跑一次无接地、一次有接地；设计稿转代码少 39%（8.2M→5M），三条单提示分别少 31%–63%（5.1M→1.9M、2.9M→2M、2.8M→1.5M），合计 19M→10.4M，少 45%，数字是会话记录里的输入 token；无接地墙钟 5、6、4、9 分钟（中位 5.5，范围 4–9），有接地四次都是 5 分钟；无接地会把「radio tile」做成普通单选，另一次表单字段根本没渲染，还会写死 #1c1b1b 和 560px；有接地第一次就用对组件、对齐和表单绑定；每侧每项只记一次得分，任务自选，质量由自己的工程师看，不是盲评或自动打分；不代你任意设计系统同样少 45% token。",
     description:
       "面向已有设计系统、却发现编码代理在编译产物里扒接口、写死颜色和用错组件名的团队：把「先探测资料源，再用系统里的真名和令牌生成，资料源不可用就失败而不是悄悄退化」写成门禁，区别于从零做出一套组件库，以及只靠提示词约束视觉风格。",
@@ -35950,7 +35950,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "546",
     slug: "andhand-mybooks-6-days-18-testflight",
-    title: "たけやす：六天救活闲置七年的 iOS 应用——18 次 TestFlight 后才上架",
+    title: "闲置七年的 iOS 应用再上架",
     summary: "个人（作者たけやす，博客 ON THE HAND）；披露把 2016 年初版、闲置约 7 年的藏书应用 My Books，在 2026-04-25 至 2026-05-01 的 6 天里与 Claude Code 配对现代化，经 18 次 TestFlight 构建后于 2026-05-02 以 v3.0.0／Build 18 上架，审查未再追问；约 60 次提交；新增 20 个测试；6 天里约 5 天做现代化、半天搭发布管道，其余应对 TestFlight；CocoaPods 迁到 SPM；废弃 API 改了逾 30 处；ViewController 从 1135 行拆到 471 行；Realm 改为 @Persisted，并在需要迁移时删库重置；编译通过后实机仍出事：只含注释的空 Run Script 被 Xcode 26 沙盒报错；乐天旧接口将于 2026-05-14 关闭、当时还剩 13 天，缺 Origin 会 403；Google Books 匿名调用撞上全球共享额度而 429；DGCharts 在 Build 5–8 因 vtable 崩溃，后来用约 60 行 CoreGraphics 自绘替换；不代你任意七年旧应用同样 6 天上架。",
     description:
       "面向把多年未动的原生 iOS 应用迁到现行 Xcode／Swift 并必须自己过 TestFlight 实机的人：把「编译通过不等于实机能跑，发布管道要先自动化，第三方接口和图表库会在你改完自己的代码之后才爆」写成门禁，区别于从零做 Flutter 应用、Android 无障碍改造，以及四天内做出手机编排产品。",
@@ -36037,7 +36037,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "547",
     slug: "jason-macht-customerio-bigquery-15min",
-    title: "Jason：给 Customer.io 搭 BigQuery 管道——有个文件曾被加载两次",
+    title: "Customer.io 入 BigQuery",
     summary: "个人（White Space Solutions 创始人 Jason Macht）；披露自己并非数据工程师，用 Claude Code 在 GCP 上搭建 Customer.io 到 BigQuery 的管道：Customer.io 每 15 分钟把 Parquet 丢进 GCS（约 96 次／日），Cloud Function 校验 v5 文件名后追加进着陆表，再每 15 到 30 分钟 MERGE 进供报表使用的精选表；着陆分区约 7 天过期，精选约 90 天，GCS 原文件约 30 天后删除；函数用 Go，并跟踪已处理文件以免重试时重复加载；首次函数没处理好「加载超时但后来成功」，和解时发现有一个文件被加载两次；定时查询有启动延迟，文件比查询更快时可能冲突，后来加了约 5 分钟缓冲；IAM 绑定还缺过两次；嵌套字段的类型映射第一次没做对，要迭代；文章有咨询导流，未给出自己的账单金额或总行数；不代你任意管道同样一次搭好、也不保证不再重复加载。",
     description:
       "面向要把营销或消息平台的落地文件送进仓库、又必须自己盯去重和存储成本的人：把「原始层与精选层分开，加载必须可重入，发布前先对行数，过期策略不能事后再想」写成门禁，区别于只给 dbt 草稿 PR 加守卫，以及没有一次真实跑数的数据平台手册。",
@@ -36125,7 +36125,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "548",
     slug: "rsdlt-foambyte-24-skills-1200-tests",
-    title: "Rodrigo / Foambyte：1200 个测试和类型错误棘轮——代理不能自己跑迁移",
+    title: "Foambyte 测试棘轮禁迁移",
     summary: "个人（Foambyte 联合创始人 Rodrigo Santiago，自称设计并实现了整站）；披露 Foambyte 保存真实酿酒师数据，不能「写完看能不能跑」；根目录 CLAUDE.md 约 100 行，并在每次做决定时和代码一起改；仓库有 24 个技能，第三方技能用锁文件记录来源和内容的 SHA-256；权限拒绝数据库迁移、drizzle-kit migrate／push、恢复以及 git push，迁移由他读完 SQL 后在自己的机器上执行；应用数据库角色能读写但不能做 DDL；完整测试约 1200 例，含对着真实 Postgres 的集成测试；服务端类型错误曾有 11 个、前端 547 个，先用棘轮禁止变多，再收到零，之后检查改为严格；把配方计算引擎从浏览器迁到服务器时，先为 6 道参考配方做黄金样本，再在生产做影子对照，容差十亿分之一，匹配后才切源，并用构建插件防止引擎代码回到浏览器包；审计报告不进仓库；不代你任意生产 SaaS 同样把类型错误收到零。",
     description:
       "面向生产环境里已有真实用户数据、又必须让编码代理动手的人：把「合同写下来并随代码更新，不可逆操作写成无法覆盖的拒绝项，用棘轮和测试替人盯住质量」写成门禁，区别于代理从不合并的流程叙事，以及对外做渗透测试或抓出口泄漏的安全帖。",
@@ -36213,7 +36213,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "549",
     slug: "doneyli-langfuse-hook-offline-queue",
-    title: "Doneyli：给 Claude Code 自建可观测性——两周后 markdown 日志撑不住了",
+    title: "自建 Langfuse 会话追踪",
     summary: "个人（Doneyli De Jesus）；披露日常约 20–50 个对话轮，一周下来是成百上千次提示、工具调用和回复，关闭终端这些过程就消失；先写钩子把提示追加进 markdown，为了可读把长提示截到 500 字符，且只记录自己发出去的话；约两周后暂存文件涨到数千行，结果标注几乎一直停在 pending（认真标过两次）；后来在 Docker 里自建 Langfuse（六个服务），用 Stop 钩子读本地 jsonl 成绩单，按会话增量处理并做成可查询的 trace；钩子作者写通常不到一秒；Langfuse 不可达时先做约 2 秒的套接字健康检查，失败则写入本地 JSONL 队列，恢复后先排空再处理当前轮，文中日志示例一次排空 7 条；整栈约 4–6GB 内存，镜像约 2–5GB；家庭财务看板只作例子并声明数字不是真的；文末有通讯订阅导流；不代你任意环境同样不丢会话。",
     description:
       "面向编码会话一关就丢、又必须自己决定哪些项目能被记录的人：把「先承认扁平日志回答不了分析问题，捕获要包含回复和工具调用，后端短暂不可用时也不能把这一轮丢掉」写成门禁，区别于给家庭实验室补 runbook 的文档审计，以及上架前测量测试输出的实验。",
@@ -36301,7 +36301,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "550",
     slug: "laurynas-fiberplane-11-serializers-44-to-25",
-    title: "Laurynas / Fiberplane：测了 11 种锁文件格式——伪冲突从约 44% 降到约 25%",
+    title: "十一锁文件格式伪冲突测试",
     summary: "团队（Fiberplane，作者 Laurynas Keturakis）；披露 drift 的锁文件最初类似 go.sum，一行一条绑定，作者注意到合并冲突很多且多为伪冲突：两边最终状态一样，只是字节不同；元数据字段曾按内存追加顺序写出，同样语义会得到不同字节顺序，修复是写出时按键排序，约 6 行；随后用 Zig 的 minish 做属性测试：生成器先把两次编辑分到不同绑定上，再交给 git merge-file；第一次 400 次试验约 40% 出现冲突标记，干净合并里零次语义错误；后来让 Claude 又写了 10 种替代格式，共 11 种用同一生成器和种子：基准行格式约 211 字节、冲突率约 44%；对齐列表对照约 54%；多行变体约 25%–31%；最终上线的扁平 TOML 约 324 字节、约 25%；相对约少 40%，11 种里没有低于 25% 的，作者把这写成排序文本加相邻插入的结构性地板；没做自定义 merge driver，因为 GitHub 的 PR 合并会忽略它；测量与脚手架是几个晚上做完的；不代你任意锁文件同样降到 25%。",
     description:
       "面向锁文件或生成出来的排序文本在并行分支上频繁伪冲突、又必须自己决定改格式还是写合并驱动的团队：把「先测不相交编辑会被 git 当成冲突的比例，再换序列化而不是要求别人安装自定义合并驱动」写成门禁，区别于 Dependabot 升级流，以及以 Playwright 为主线的测试生成。",
@@ -36388,7 +36388,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "551",
     slug: "dunkels-matter-xg24-60s-to-4s",
-    title: "Adam Dunkels：给 Matter 灯泡做出全链路联调——调试时把 60 秒等待压到 4 秒",
+    title: "Matter 灯泡全链路联调",
     summary: "个人（作者 Adam Dunkels，PhD）；披露用 Claude Code（Opus 4.6）做出一套可自动回归的 Matter 智能家居原型：Silicon Labs xG24 开发板分别跑照明固件和 Thread 射频协处理器，Google Pixel 6a 上的 Android 应用完成发现、入网并开关板上 LED，开发容器里跑边界路由器与回归脚本、由脚本遥控手机和开发板；Matter 开源代码逾 2.3 万个文件、约 100 个子模块、支持 12 家硬件厂商；人工把工作拆成开发容器、Android 应用、入网流程、调试、视觉设计、性能和自动化回归七项任务；入网调试与性能改进约占所耗 token 的一半，一度出现找到设备后要等 60 秒才能接受命令，代理钻进 SDK 源码读到 token 猛涨，被人叫停去读文档后把等待压到约 4 秒；整项工作用掉 Claude Code 5x Max 周额度的约 34%，用 Claude Design 一句话生成 Android 界面设计则用掉该设计额度的约 55%；作者写过去要数周的环境搭建现在只要数天，但强调远非一句话提示、且必须懂底层技术并拆任务；不代你任意智能家居项目同样从数周变成数天。",
     description:
       "面向要把 Matter／Thread 固件、边界路由器和真机委托应用联成可回归原型、又必须自己盯入网调试的人：把「代理可以编译烧录和遥控真机，但任务拆分、纠偏和叫停乱读超大 SDK 仍归人」写成门禁，区别于把闲置多年的 iOS 应用现代化、Android 无障碍改造，以及从零做 Flutter 应用。",
@@ -36476,7 +36476,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "552",
     slug: "jiawei-guan-300k-lines-then-deleted",
-    title: "关嘉伟：10 天堆出近 30 万行后又几乎全删——48 小时用不到 1 万行跑通",
+    title: "巨量代码推倒之后跑通主链路",
     summary: "个人（作者关嘉伟，AI Infra 创业者）；披露自己完全不会写代码，在 Claude Opus 4.6 发布后用 Claude Code 做实验：人在旅行中经手机 SSH + tmux 远程指挥，10 天里堆出将近 20 万行 Go 代码加 10 万行测试代码，合计近 30 万行，期间一次都没有真正上手体验产品，只是让它写、自己看、再继续写；停下来实测时最基础的主链路不通，来回改测后才跑通，随后发现在约 20 万行的仓库里连小改动都要消耗夸张数量的 token，作者拒绝写出具体烧了多少；他决定推倒重来，先回到 MRD／PRD 再做架构，花半天加一晚把问题、创新和设计哲学写进项目，大约 5000 行时就把异构硬件、引擎和模型带进真实测试；48 小时后不到 1 万行，端到端跑通，并在小盒子上一键部署了当时刚发布两天的模型；作者写代码是负债不是资产，并说指挥多个会话 5–6 小时后像一个人三开高强度游戏；不代你任意项目同样先删 30 万行再在 48 小时内跑通。",
     description:
       "面向会被代理的产量淹没、又必须自己决定什么该删的人：把「先写清要解决的问题再让代理实现，并尽早在真实设备上验证主链路」写成门禁，区别于以云账单或订阅倍率为主线的成本复盘，以及以冲刺人天估算为主的工时故事。",
@@ -36564,7 +36564,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "553",
     slug: "manuel-fedele-infra-template-20-tests",
-    title: "Manuel：一次长会话做出 AWS 基建模板——20 项安全测试找出 3 个问题",
+    title: "AWS 模板长会话与安全复测",
     summary: "个人（作者 Manuel Fedele，带平台工程团队）；披露用一次延长的 Claude Code 会话，做出能生成 AWS Fargate／Lambda 项目的 Copier 模板，并在两个真实 AWS 账户里部署、拆掉、修好：会话持续数小时，两个仓库约 30 次提交，约 15 轮「部署→把报错贴回去→再部署」循环、每轮约 2–5 分钟；从两个既有交付仓各拉逾 10 个文件做并行调研约 2 分钟；Cookiecutter 迁到 Copier 动了 59 个文件、约 15 分钟；后期对已部署应用做了 20 项基础安全测试，发现跨域过宽且带凭证、非本地环境暴露 Swagger／OpenAPI、Nginx 泄露版本号，三项都修完并复测；模板最终约 60 个文件，覆盖 Terraform、FastAPI、React、Docker、nginx 与 GitLab CI；作者按以往经验估计手工做同等模板约要两周，并写明这是经验估计；会话里还改过硬编码的 qual、构建期写死的 EntraID 客户端 ID、误加的 PKCE 客户端密钥，以及 ECS 因 :latest 标签不变化而不滚动新镜像；文末有 50 欧元／60 分钟的一对一咨询导流；不代你任意模板同样一次会话、20 项测试后就能在两个账户上线。",
     description:
       "面向要把可重复的云交付模板真正打到真实账户、又必须自己看 IAM、密钥和暴露面的人：把「先部署再凭报错迭代，发布前用对己方接口的基础安全检查兜底」写成门禁，区别于专门做渗透测试或出口流量审计的安全专题，以及只停留在计划里的基础设施手册。",
@@ -36652,7 +36652,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "554",
     slug: "mldangelo-promptfoo-1000-prs-winston",
-    title: "Michael：给 Promptfoo 合入逾 1000 个 PR——还把 Winston 2018 年的旧缺陷送进了上游",
+    title: "Promptfoo 并行合入与缺陷上游",
     summary: "个人（Promptfoo 开源项目维护者 Michael D'Angelo）；披露 2025 年用并行 Claude Code 工作流给 Promptfoo 合入逾 1000 个 PR：七月仅交互式开发就接近 1 万美元 API 额度（Anthropic 给了额度赠款，当月并非自付），后来改用两个 Max 订阅轮换，因为一个账号会碰到周限额；日常在 Ghostty 里开六个窗格，其中四个是同一仓库的 git worktree，另外两个做别的项目，窗格提示响了就合并或打回；默认 Opus 4.5，非平凡改动先走 Plan Mode 并把计划写成仓内文件；用 Codex CLI 与 Gemini CLI 做交叉核对，浏览器验证用原生 --chrome，需要可保存截图时才用 Playwright MCP；他开着 --dangerously-skip-permissions，并写这大概不是好主意、最终可能出问题；一次排查日志时代理没补自己的代码，而是发现 Winston 自 2018 年以来的缺陷——logger.end() 可能在文件写完前就发出 finish，随 process.exit() 会丢掉最后几行——后来补了 _final() 钩子、最小复现和回归测试并向上游开 PR，维护者合入后随 v3.19.0 发布；Gemini 曾指出一次鉴权重构在测试通过后仍改了返回给客户端的错误文案；作者把 2024 年 5396 次 GitHub 贡献当作另一套工具成熟前的粗对照，并提醒贡献图只是粗代理；不代你任意开源仓同样一年合入逾 1000 个 PR。",
     description:
       "面向要在自己维护的开源仓里并行开多个代理、又必须自己对合并和安全改动负责的人：把「计划写入仓库、用类型检查和测试做紧反馈，并用另一个模型审合约与鉴权」写成门禁，区别于 Dependabot 或 Issue 分诊式的开源维护，以及以评审调用次数为主线的测量文。",
@@ -36739,7 +36739,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "555",
     slug: "mustafa-turan-agentrq-chrome-webmcp",
-    title: "Mustafa / AgentRQ：让远端代理调用你已登录网站的工具——写入必须等人批准",
+    title: "已登录网站工具写入必须待批",
     summary: "团队（AgentRQ，作者 Mustafa Turan）；披露他们做 Chrome 扩展时把页面里的 WebMCP 工具桥给笔记本、构建机或机房里的 Claude Code／Codex：调用跑在你已登录的标签里，代理看不到密码、cookie 或 API 令牌，只读工具可直接跑，写入要在任务里等人选「允许一次」「此站此工具始终允许」或「拒绝」，而且只有人能从弹层逐站点分享，检测默认关闭；为了不把每个站点的完整 schema 塞进上下文，MCP 面拆成只返回名称与描述的 listSiteTools、按需取完整入参 schema 的 getSiteToolDefinition，以及真正执行的 callSiteTool；服务端会按页面自己的 JSON Schema 校验参数，调用限 60 秒，结果上限 256 KiB；Manifest V3 里服务工要先用登录 cookie 换一张约 1 分钟的工票再建立 WebSocket，并自己每 20 秒发一次 ping（服务端 ping 不足以保活），退避重连从 1 秒到 30 秒；输出按约 25 毫秒窗口合并，每秒重画约 100 次的进度条大约变成 40 次发送，但按键绝不合并，以免 Esc 和下一个键被拼成无人敲过的转义序列；第一版从调用方取出会话 ID 并用 BigInt 转换，base62 字符串会抛错，于是每个按键都失败而画面仍在更新，单元测试传的是数字 ID 所以没抓住；agentrq.com 自己提供 3 个工具可试用；官网另有 2026-09-28 的较短上架稿，本条以 2026-10-02 这篇讲排障的实践帖为准；文末有 Chrome 商店安装 CTA；不代你任意网站同样能被远端代理安全调用。",
     description:
       "面向要把浏览器里已登录站点的工具交给远端编码代理、又必须自己批准写入的人：把「调用发生在你的标签里、凭证不上传，写入默认要人点头」写成门禁，区别于把闲置 iOS 应用现代化或做 Android 无障碍改造，也区别于专项渗透测试和出口流量审计。",
@@ -36826,7 +36826,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "556",
     slug: "giuseppe-cunsolo-kebab-9-days-93-prs",
-    title: "Giuseppe：九天做出完整 kebab 肉鸽——93 个 PR、1,087 条测试仍挡不住拇指难玩",
+    title: "仍然拇指难玩的九天卡牌肉鸽",
     summary: "个人（作者 Giuseppe Cunsolo，发布于雇主 Eleven Labs 博客）；披露自己当产品负责人、评审和测试者，由代理写全部代码，在 2026-10-18 至 2026-10-26 共 9 天做出浏览器卡牌肉鸽《Salade Tomate Oignon》：10 月 26 日从仓库读到 93 个已合并 PR、main 上 571 次提交、98 个 spec 文件里 1,087 条测试、测试外 TypeScript 18,377 行加测试 16,856 行、88 次 Claude Code 会话；规则写在游戏简报里，仓内 docs/brief.md 是生成快照（当时修订号 90），词汇表 471 行；工具链同期建设，32 次提交动到 .claude/ 或 CLAUDE.md，12 个 PR 不含一行游戏代码；第三天起上线，提供法、英、意；引擎自第一天起要求 90% 覆盖率且未下调；10 月 26 日早晨第一次用拇指实玩，弃牌模式连续点按会点到下一张牌，「上菜」后下一位顾客的按钮落在刚点过的位置，几乎不能玩；生产环境懒加载样式表先于 index.css 到达，@layer 顺序翻转，横幅 logo 变成棕上棕，开发服务器和截图脚本都看不见；2,000 次种子每种厨师曾要测约一小时，上限后来写进脚本拒绝超过 1,000；页眉有 Eleven Labs「Contact us」咨询联系导流；不代你任意游戏同样九天可玩，或 1,087 条测试等于拇指好用。",
     description:
       "面向要把规则写清并让代理按简报实现、又必须自己用真机验收手感的人：把「规则先写进简报、测试先红，用法必须在真机和生产构建上验收」写成门禁，区别于以冲刺人天或行数为主的上架故事，以及以合并排队时间为主线的 CI 优化。",
@@ -36914,7 +36914,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "557",
     slug: "thomas-fairhurst-ci-16min-to-86s",
-    title: "Thomas / Leadlord：给合并排队再一夜爬山——中位时间从 16 分钟压到 86 秒",
+    title: "Leadlord 合并排队一夜优化",
     summary: "团队（Leadlord，作者 Thomas Fairhurst 与合伙人 James）；披露编码代理每天在一台 8 核服务器上合并 50 到 100 个改动：2026 年 10 月初一次合并中位要 16 分钟，一周后中位 86 秒，约快 11 倍；先把合并排成一条队，中位从排队前三天的 16 分钟降到上线首日 75 秒；再用 Claude Opus 5.5 与 168 个子代理按评测一夜爬山，约 29 小时合并 77 个改动；代理没见过的 8 个留出合并上，门禁预期时间从 84.9 秒降到 60.6 秒（少 29%）；对比窗口 10 月 2–4 日／5–7 日／9–10 日的合并数是 240／175／117，中位 965／172／86 秒，p90 为 2,422／388／299 秒，两分钟内完成的比例 9%／27%／59%，每次落地合并分摊的 CI 检查从 234 秒降到 53 秒；Opus 5.5 于 9 月 22 日发布后约 18 天，主干非空行从约 72 万涨到近 200 万，约一半是测试，代理每天约 71 个任务对上之前三周的 47 个，中位改动行 704 对 141；3,727 个测试文件从 Vitest 迁到 Bun 后测试阶段 597 秒→296 秒；一次宽门禁里单条备份测试曾跑 129 秒；React 测试里 146 次 300 毫秒等待约 50 秒→约 5 秒，泄漏的 30 秒 sleep 从 33 秒→3 秒；租用蒙特利尔服务器约 98 美元／月，作者对照当时工作量下托管方案约 310–440 美元；爬山消耗 52.4 亿 token，按 API 约 2,100–2,500 美元、按他们统计的 Max 套餐约 43 美元；10 月 2–7 日的数字由一位创始人日志重建，2–4 日含若干卡住的合并；文中链到尚未上线的创业项目 Leadlord；不代你任意仓库同样把合并中位压到 86 秒。",
     description:
       "面向代理日提交付已经把检查变成瓶颈、又必须自己规定「什么更快不能以削弱检查为代价」的人：把「先量出理论上限，再用留出样本和反作弊补丁约束代理去爬山」写成门禁，区别于以云账单下降为主线的省钱文，以及以 Dependabot 或 Playwright 套件为主线的维护故事。",
@@ -37001,7 +37001,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "558",
     slug: "wdavid-betts-soundsignal-5-days-506",
-    title: "David：五天做出建筑许可情报平台——143 次提交、506 条测试、每块地约 1.30 美元",
+    title: "SoundSignal 许可情报平台",
     summary: "个人（作者 W. David Betts）；披露用 Claude Code 五天做出 SoundSignal 建筑许可情报平台：56 次会话、414 条消息、143 次提交、95 个 PR、约 29,500 行代码、506 条测试（后端 464 加前端 42），Claude Code 费用估计约 200 美元；每个提交都走 PR，不直接推 main；输入华盛顿州 Bainbridge Island 的地址后，经县里的 SmartGov 门户解析地块、抓取相关许可并下载蓝图、检查报告和申请等 PDF，再做三层提取以免单次调用撑爆上下文，作者写每块地总成本约 1.30 美元（第 1 层约 0.80、第 2 层约 0.30、第 3 层约 0.20）；Terraform 拉起 15 个以上 AWS 服务，基础设施代码 4,400 多行；作者估计大约 20% 的方案需要他改方向；全程开着 --dangerously-skip-permissions，并写在带密钥的生产仓库里不会这么做；反复出现应用加了环境变量却忘了写进 ECS 任务定义，代码没问题容器却缺配置；PyMuPDF 的 page.widgets() 返回生成器、布尔值恒为真，浪费约 20 分钟；日期取页眉 February 22, 2026（无 JSON-LD）；不代你任意文档管线同样五天交付，或把每块地 1.30 美元当成稳定单价。",
     description:
       "面向要把抓取、文档提取和云上部署打通、又必须自己审每个 PR 和环境变量是否真的进了任务定义的人：把「一层一层往上汇总以免撑爆上下文，并用 PR 保住可部署的主干」写成门禁，区别于把营销平台事件送进数仓，以及本地文档 RAG 或智能家居真机联调。",
@@ -37088,7 +37088,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "559",
     slug: "andrey-krupa-guesstimato-49-min",
-    title: "Andrey：第一次提交到生产地址 49 分钟——安全自查还补上了抢座位的洞",
+    title: "估点扑克上线后补抢座漏洞",
     summary: "个人（作者 Andrey Krupa）；披露给团队估点做了规划扑克 Guesstimato：从第一次提交到可访问的生产地址 49 分钟（2026-11-03 19:22 至 20:11，GMT+2），但规格和实现计划写在第一次提交之前；最终 18 次提交、约 5,500 行 TypeScript、1,700 行测试，117 条单元和集成测试，另加 9 个 Playwright 规格在桌面和移动视口上跑（共 18 次运行）；房间存在内存里，空闲 12 小时删除；主持人离线超过 60 秒把主持权交给最早加入且在线的人；揭示前服务器绝不发送别人的点数；次日早晨按攻击者视角自查，发现任何人都能用房间里可见的参与者 id 抢走座位（含主持人），后来用浏览器保存的随机密钥绑定座位；限流曾按错误的 IP 键控（代理后的 TCP 对端），改为仅在请求确实经过 Cloudflare 时才采信 CF-Connecting-IP，否则直打 Railway 主机就可伪造头；房间号猜测、socket 洪水和 1 MB 消息各有上限，并有各自的集成测试；严格 CSP，且有 E2E 在控制台出现 CSP 违规时失败；服务器每 5 秒及收到 SIGTERM 时把房间写成 JSON 快照到 Railway volume，作者在生产上创建已揭示的房间、触发重新部署后再加入，票、主题、历史和聊天都在；Open Graph 图里番茄 logo 曾被 flexbox 挤没，一行 flex-shrink: 0 修好；文末有 guesstimato.com 试用导流；不代你任意应用同样 49 分钟上线。",
     description:
       "面向要把小的实时协作工具真正打到公网、又必须自己补上身份和代理头的人：把「规格先写清、揭示前不要泄漏点数，并在上线后按攻击者视角复查」写成门禁，区别于专项渗透测试，以及以 Playwright 套件为主线的质量月报。",
@@ -37177,7 +37177,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "560",
     slug: "biellz-bookworm-playstore-913-tests",
-    title: "biellz1221：把阅读追踪做到 Play Store 封闭测试——913 条后端测试没先抓住 IAP 静默崩溃",
+    title: "Bookworm 封闭测试 IAP 崩溃",
     summary: "个人（作者 TabNews 用户 biellz1221）；披露一个人从零做阅读追踪应用 Bookworm（Web、Android、双语落地页、鉴权、订阅、游戏化和 e-reader 集成），几乎全程用终端里的 Claude Code：后端 63 个套件／913 条 Jest 单测，Web 10 个套件／95 条 Vitest，移动端 17 个套件／301 条 Jest，E2E 24 个文件／68 条（Playwright 加 axe-core 做无障碍检查）；生产跑在家用 Raspberry Pi 5（8GB RAM），经 Cloudflare Tunnel 对外，推到 main 后约 5–6 分钟完成拉取镜像并重启；NestJS 用 tsc 构建曾峰值约 700MB、约 30 秒，换成 SWC 后 176 个 TypeScript 文件约 200 毫秒、约 200MB；GitHub Actions 从约 20 分钟降到约 5 分钟，并不再顶满默认 2GB 内存；Dockerfile 第二次 npm ci 改成 npm prune --omit=dev 后，这一步在 ARM 上从 227 秒降到 79 秒；从 Next.js 迁到 Vite 约 4 小时；横切分页作者估计自己要一下午，代理约 20 分钟做完并补测试；Android 内购曾完全没有可见错误：后端把 productIds 作成对象，客户端按数组调用 forEach，IAP 被标成不可用后回退到浏览器里的 Stripe；把 Google Sign-In 升到 v15 需要 Kotlin 2.0，当时 AdMob 不兼容，作者留在 v14，排查约 2 小时；ProGuard 未加 keep 规则时 release 崩溃、debug 正常；文末有 bookwormtracker.com、Play Store 封闭测试招募和优惠码 TABNEWS；不代你任意应用同样能在家用 Pi 上稳定收款。",
     description:
       "面向要把 Expo／React Native 应用真正打到商店、又必须自己看支付合约和 release 构建的人：把「跨仓库的类型要写成共享契约，release、ProGuard 和真机支付路径必须人验收」写成门禁，区别于把闲置 iOS 应用现代化、Android 无障碍专项实验，以及从零做 Flutter 应用。",
@@ -37265,7 +37265,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "561",
     slug: "austin-ginder-1600-emails-3000-sites",
-    title: "Austin：一天两场会话清掉 1,600 封运维邮件——15 个站点里只修了 4 个站",
+    title: "WordPress 运维邮件分诊",
     summary: "个人（作者 Austin Ginder，发布于公司 Anchor Hosting 博客）；披露自己管理接近 3,000 个 WordPress 站点，收件箱里堆着改密、注册、监控、插件不匹配、Kinsta 错误、恢复模式、域名续费和 Google Workspace 账单等通知，典型一周会新进数百封；他用自己写的 WP-CLI 插件 Missive CLI 让 Claude Code 搜索、归类、关闭和起草邮件，并 SSH 进服务器看日志、修问题和记录；一度做过带优先级和看板的 /email-triage 技能，后来扔掉，改成短对话指挥；同一天两场会话（作者也写成一个下午）关闭 1,600 多封邮件、补了 6 个文件、SSH 复查 15 个站点、清掉 14 类噪声；分类计数包括监控告警 900、技术问题告警 182、密码/注册 75、Kinsta 错误 50、ThemeForest 更新 40、ICANN 域名通知 37、新订单 34、WordPress 自动更新 29、其他噪声 150；WHOIS 确认 21 封一次关完，改密 43 加新注册 32 共 75 封；26 封 Google Workspace 账单里有 4 封是真人对话被留下；50 封 Kinsta 错误覆盖 15 个站点，SSH 到其中 12 个（3 个对不上 CaptainCore 记录），作者写 9 个站点只有扫描噪声、4 个有真实错误，整段复查约 2 分钟；一处 PHP 8.3 在主题没有 404.php 时 include 空路径抛出 ValueError，代理第一次指错版本，作者纠正后才定位；另一个站点自定义主题 Redwood 有 4 个文件在 PHP 8.3 下大量告警；还有站点用 SCP 从另一台机器取来 WP Migrate Pro 2.7.7 替换损坏安装；182 封恢复模式邮件按插件归组：Rank Math SEO PRO 5 个站、CleanTalk 8 个站、The Events Calendar 2 个站共 12 封、Role-Based Pricing 1 个站；监控告警里 8 个站点已连续出现 6 个月以上，本周 5 个宕机中 3 个自愈、2 个仍未恢复，另有 6 个短暂抖动；站内导航有托管套餐、联系和通讯订阅导流；不代你任意托管收件箱同样一下午清掉 1,600 封，或 SSH 约 2 分钟就能找齐故障。",
     description:
       "面向要把海量运维通知真正分诊并修掉信号、又必须自己判断哪封该关、哪台该登的人：把「先按类清噪声，再对有信号的站点看日志，代理的第一次诊断不能直接签字」写成门禁，区别于把通讯邮件做成摘要，以及以工单系统自动回复为主线的客服编排。",
@@ -37354,7 +37354,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "562",
     slug: "aleksandr-butakov-woocommerce-1c-erp",
-    title: "Aleksandr：一个人把女装店接到 1C 库存——静默解析错误堆出约一千条孤儿变体",
+    title: "女装网店接入 1C 库存",
     summary: "个人（作者 Aleksandr Butakov）；披露给一家女装品牌做网店：库存在俄罗斯零售常用的 1C（经 XML/CommerceML 对外），客户已有 React 原型，要求像素级还原，预算排不进通常的企业平台；他一个人用从零写的 WordPress 全站点编辑主题和 WooCommerce，由 Claude Code 写大部分代码，自己做架构并审过它改的每一处；本地默认方案是商业 CMS Bitrix 加现成交换模块，作者写授权、年费和集成商加起来接近这次开源构建的全部预算，而主题还对不上四色、两种字体、除胶囊标签外圆角为零的设计；需求还包括每个尺码颜色组合单独计数的实时库存、本地支付、快递、隐私同意和电商事件追踪；技术栈是 PHP 8 模块化 inc/、theme.json 做设计令牌、CommerceML 实时同步，并用 Playwright MCP 做浏览器核对、SSH MCP 做部署；项目跑了几个月，他把「WooCommerce Blocks 不加载 jQuery」「ERP 增量导出默默清掉产品变体」等教训写进下次会话会重读的文档；产品卡链接曾只在桌面生产环境失效，代理用 Playwright 真实点击复现后追到图片轮播里的 setPointerCapture 把点击从商品链接抢到了轨道上；同步显示成功但店面库存不对，对比原始 XML 与入库数据后发现该协议版本把库存放在按仓嵌套的结构里，插件解析器只认上一层扁平数量并静默跳过；属性和变体特征在协议里是两条互不相干的路径；快速同步按增量块重建整组变体，缺失的变体直接消失，发现时库里大约堆了 1,000 条孤儿变体；属性词曾用 GUID 当 slug，过滤 URL 和后台都难读；现代 WooCommerce 区块主题店面不再加载 jQuery，作者重写了原生变体解析；客户两轮修改约 30 项，每轮几天而不是数周；总工期落在数周而不是数月；平台许可费用为零美元；文末有个人站点 butakov.dev 导流；不代你任意 ERP 网店同样数周可上线，或同步显示成功就等于库存数字正确。",
     description:
       "面向要把定制店面真正接到外部库存系统、又必须自己核对 XML 和插件解析器的人：把「同步变绿不够，入库数字要和原始报文对上；代理自称修好必须先在真页面复现」写成门禁，区别于把营销事件送进数仓，以及以商店内购类型不一致为主线的上架故事。",
@@ -37443,7 +37443,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "563",
     slug: "panth-patel-944-ticket-orchestrator",
-    title: "Panth：944 行把工单变成无头会话——一张工单九次跑到 402 美元才看得见花费",
+    title: "工单变成无头会话的编排器",
     summary: "个人（作者 Panth Patel，文中写自己带领 Oizom 软件团队；开源的是他的编排器与 tracker）；披露自己不再经终端、而是用工单把活交给 Claude Code：一份 944 行、零依赖的编排器把每张工单变成一次无头会话，并在 9 月 27 日与它所用的 tracker 一并按 MIT 开源；起初做成应用里的终端，后来房间里堆满代理，出现三个问题——人会黏在同一个长会话上、应用成了进入虚拟机的门、虚拟机断网就无法排队提示；改成工单后，每张工单一会话，编排器在机器上拉取工作，tracker 托管在别处，虚拟机离线时仍可提单，虚拟机和个人电脑可吃同一块板；代理是看板成员，被分到 To do 后由编排器认领并在工作区指向的仓库里启动 claude -p，带上 tracker 的 MCP 工具；需要决策时调用 ask_question 在线程里放表单，以 status waiting 结束回合，不轮询，回答或任何评论用 --resume 恢复同一会话；把工单移回 To do 视为返工，取消分配或在运行中移到别处会停掉代理；工单阶段、心跳、收件箱和分配等工具列入 DISALLOWED，只由编排器改状态；代理只汇报 review、waiting 或 blocked，编排器看到它报告完成后才把工单推进 Review；Claude Code 的 total_cost_usd 在 --resume 上是累计值，编排器存上次总数并发布差额，作者有一张工单九次运行累计 402 美元之后应用才显示花费；编排器在代理运行时每分钟跳一次心跳，每第 5 次重读任务列表，健康状态每 15 秒由上次状态和心跳时间推导，working 且超过 75 秒无心跳标为 stale，静默满 5 分钟给负责人一次通知；应用、/v1 REST（OpenAPI 3.1）和 /mcp 走同一套命令；跑在一个 Firebase 项目上，作者写这里的「自托管」是自己的 Firebase Blaze 项目而不是 Docker 镜像；本地 pnpm dev 起模拟器需 Node 22、pnpm 9、Java 21 和 Firebase CLI；权限模式模板是 acceptEdits，bypassPermissions 只在信任简报和仓库时开启；工作上按工单隔离的分支、独立服务、开发库副本和预发地址属于 Envizom 专有代码，未放入该仓库；文中给出 github.com/Panth977/ticket-tracker；不代你任意无头会话都能按工单看见花费，或 944 行等于生产编排已经完备。",
     description:
       "面向要把无头编码代理接到工单而不是终端、又必须自己回答问题并看清每一回合花费的人：把「代理不能自己改工单阶段，花费按回合从累计值里拆出来，健康状态由心跳推导而不是存一份死亡标记」写成门禁，区别于把工程票据直接打成 PR，以及以客服工单自动回复为主线的编排。",
@@ -37530,7 +37530,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "564",
     slug: "joko-nectoux-security-audit-inhouse",
-    title: "Joko：把一年一次的外部安全审计收成内部技能——约一天写出、作者估计一年省约 15 万美元",
+    title: "Joko 年审收成内部技能",
     summary: "团队（Joko，作者 Pierre Nectoux）；披露购物助手 Joko 在法国和美国有超过 600 万用户，用户会连接银行账户，公司在其上运行支付，因此安全被写成一等事项；以往规模相当的公司会一年请外部机构做一次审计，作者写它贵、落地时代码已经往前走，并且对外面常见问题和请求头更熟、对自家业务逻辑较浅；他们做成内部 Claude Code 插件里的 security-audit 技能，指向一个或全部仓库，按五轮顺序跑：三轮确定性、两轮推理——依赖 CVE（例如 npm audit --json）、密钥与凭据（从基础 grep 到 trufflehog 一类工具）、OWASP 静态模式（semgrep 加 OWASP Top Ten）、读基础设施与部署配置找过宽权限和风险安装钩子，以及读源码找伪造钱包、管理接口角色检查、可重放的资金 webhook 和把支付信息打进日志等业务逻辑问题；输出按 Critical／High／Medium／Low 排序，每条带 file:line 和一句为何危险，再和已有工单去重，并可只把 Critical 与 High 做成 Linear 工单；作者写约一天就已经找出以往外部审计没抓到的问题；已分诊并关闭的类型包括角色上的通配动作（收到最小权限）、CI 里的长期云密钥（迁到短时 OIDC）、HSTS max-age 过短（提到一年）以及缺少防嵌入／点击劫持头、Sentry 面包屑记录完整请求 URL（查询参数里可能带令牌或个人数据）且未配置清理、少量处理函数把邮箱和支付细节等 PII 打进日志；一次全量扫过 100% 后端服务和横切问题，确认后的 P1 收进有截止日期的收口项目；之后每仓每季度再跑，发现进入每周分诊；作者把不再外包的审计和在变成事故前抓住的缺口加在一起，估计一年节省约 15 万美元，扫描本身还要几个工程师日；最严重的问题跨多个服务，单仓运行看不见，是靠人手把分开的审计拼成一幅图才发现；他们因此想把遗留逻辑迁进已用于新业务的 monorepo，让推理轮能跟着请求跨服务走；页内未见咨询或商店硬销；不代你任意公司同样约一天找出外部审计漏掉的问题，或把约 15 万美元当成可迁移的节省额。",
     description:
       "面向要把安全审计从一年一份外部报告收成可重复的内部习惯、又必须自己确认跨服务裂缝的人：把「机械扫描只是前三轮，业务逻辑和基础设施要分开推理，单仓通过不等于跨服务信任已经成立」写成门禁，区别于专项渗透测试，以及流量出口泄漏排查。",
@@ -37618,7 +37618,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "565",
     slug: "iliya-oblakov-review-gate-claude-codex",
-    title: "Iliya：让 Codex 只读评审 Claude Code——同一提交既要测试通过也要 ACCEPT，收窄命令仍会过门",
+    title: "Codex 只读评审 Claude Code",
     summary: "个人（作者 Iliya Oblakov）；披露自己的门禁用 Claude Code 在独立 git worktree 里写代码，用 Codex 只读评审，并由一组 bash 脚本在「精确到该提交的测试通过记录」和「ACCEPT」都齐之前拒绝合并；评审提示要求「你只评审、绝不修理」，每个问题写给作者在新提交里修，修理本身再走一轮评审；角色可对调，BUILDER=codex 时由 Codex 写、Claude Code 评；Codex 的调用是 codex exec -s read-only --color never --output-last-message <文件> -，沙箱可读文件并跑 git diff，但不能写；作者发现 ~/.codex/config.toml 里配置的 MCP 服务器评审时仍会启动，能在沙箱外改东西的服务器等于破坏只读，评审时应设 enabled = false；钩子也会在 codex exec 下运行，一条让 Codex 评审后再继续的 Stop 钩子可能把最终消息换成空的，门禁找不到裁定、退出码 1，诊断日志还在但裁定不会保存；Claude Code 当评审者时只给 Read、Grep 和 Glob，不能跑 git，脚本把提交和完整 diff 放进提示；两边要读同一套简短家规，分别写入项目的 CLAUDE.md 和 AGENTS.md：作者一次只提交一处改动、不动 .ai/ 文件夹、不要合并，评审者保持只读；Codex 在指令文件合计达到默认 32 KiB 的 project_doc_max_bytes 后停止继续加载，写在长 AGENTS.md 末尾的规则可能到不了它；作者还写这两个文件也是入口，引擎会遵循自己加载到的说明，包括不是你写的那份，并链到在 Downloads 里放置 AGENTS.md 的检查文；gate.sh 在干净检出上跑测试命令并按提交写出通过记录，review.sh 把提交和 diff 送给另一引擎并按所评提交保存裁定，merge-check.sh 除非当前提交两者都有、且 ACCEPT 来自不是作者的那一侧，否则拒绝；新提交没有旧证据，旧 ACCEPT 不能覆盖没人评过的代码；走查里用替身评审者、不调用模型，事先放好的缺陷是 sum.sh 跳过第一个参数，测试只检查 sum 0 4——跳过一个零仍然得对，测试会绿，评审要求修改，修复提交必须自己再挣一次通过和 ACCEPT；三个脚本都拒绝有未提交或未跟踪文件的检出，因为测试可能在没有进入提交的文件上变绿；设置会要求把 .ai/ 加进项目 .gitignore，在草稿仓上试时，刚改的 .gitignore 本身就是未提交改动，门禁拒绝的第一件事就是你为它加上的那一行；测试命令若留下文件，即使全部通过也会失败；在 Node 20.19 的草稿仓里，add() 结果是错的，test/add.test.js 测 add()，test/format.test.js 测另一个函数：GATE_CMD=\"node --test test/\" 得到 FAIL 且无通过记录，改成只跑 test/format.test.js 则对应该提交写出 PASS，尽管 add() 仍是错的；默认计数检查只在输出为空或汇总为零时失败，这里跑了一条测试；通过记录把命令写在 Command: 行，merge-check.sh 并不拿它和任何东西比较；加上 GATE_COUNT_RE 和 GATE_MIN_TESTS=2 后，同样的收窄命令会失败并提示输出只报告了 1 条测试；作者写增加测试时必须上调这个数字，它比较的是输出报告的总数，看不到是哪些测试；命令行上临时改的命令不会出现在 diff 里，计数检查是唯一能看见它的东西，评审也可能漏；看通过记录之前要先读它的 Command: 行；门禁不保证代码正确，也不推送或合并；若以后想让合并本身被接手，文中介绍付费的 Two Engines Kit，可按已过门的提交做合并脚本、排队合并、两边共用的规则册，以及能按字节还原的安装／卸载；站内另有网站／全栈开发服务、联系和 AI Visibility Audit；不代你任意双引擎门禁都能拦住收窄后的测试命令，或 ACCEPT 等于代码已经正确。",
     description:
       "面向要让一个引擎写、另一个引擎评、又必须自己看通过记录里实际跑了什么命令的人：把「证据绑在提交上，只读必须连 MCP 和钩子一起收紧，测试命令被收窄后默认计数检查不够」写成门禁，区别于以合并排队时间为主线的 CI 爬山，以及以过滤测试输出来省 token 为主线的做法。",
@@ -37706,7 +37706,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "566",
     slug: "daniel-morfa-sonar-3521-to-158",
-    title: "Daniel：1,027 个文件清掉三千多条 Sonar 债——改代码约 44 美元，能签字花了约 520 美元",
+    title: "Sonar 债清理与相信结果的花费",
     summary: "个人（作者 Daniel Morfa Vega）；披露自己维护的 Angular 21 + Ionic 8 应用约有 184,000 行，Sonar 上挂着 3,521 条未关闭问题、覆盖率 56.4%，并估计技术债约 317 个工时，规划里从来轮不到；他用一段会启动子代理的 Claude Code JavaScript 工作流（共 246 个子代理）把问题降到 158 条、覆盖率升到 77.6%，合并请求改了 1,027 个文件；墙上时钟约 19 小时、token 约 600 美元，作者自己最多投入约两小时；该 PR 已合并 16 天，没有归到它头上的缺陷或回滚；标题里的对照是：真正改代码并补测试的实现代理只要约 44 美元，其余都花在让人能相信结果上；工作按目录切成 52 个批次，每个文件先写能在旧代码上通过的表征测试，再改未覆盖的行、做等价重构，有意修 bug 才走红变绿，变红的改动就回滚并标成跳过；每个批次留下行为变化、待办、误报和跳过四段说明，合并请求里共有 168 条这样的笔记，其中 3 处测试和改动不得不放进同一次提交；覆盖率上升大多来自表征测试，也会把旧代码里已有的缺陷一起固定下来；核验按层计费（按 Claude Code 一小时缓存的 API 标价）：实现层 66 个代理约 44 美元；按批评审（Sonnet）124 个代理拦住 1 个阻断项约 30 美元；集成、门禁和重新扫描 5 个代理抓到 6 条新问题且都属实约 39 美元；预生产端到端 1 个代理看到 10 次失败、0 次回归约 10 美元；用另一个模型 Fable 审计 8 个代理提出 30 条、7 条属实约 69 美元；开到最大的 /code-review 31 个代理提出 15 条、13 条属实约 375 美元；计划、机械自动修复和主会话另外约 34 美元，合计约 600 美元；最贵的一层抓住了最严重的问题：有代理为了让 Sonar 满意把正则改成带 lookbehind，旧于 Safari 16.4 的 iPad 上客户注册会坏，单测跑在 Chrome 里看不见；Fable 审计命中率约 23%，code-review 约 87%，每条发现都会先用测试证实或证伪再改代码；重新扫描抓住了 code-review 自己引入的 6 条新问题；输入 token 里约 97.7% 是缓存读取；作者在 Docker 里起了与服务器同一套出厂规则的 SonarQube Community，复核到同样的基线：121 条可靠性、3,400 条可维护性和 56.4% 覆盖率；出问题的地方包括：代理未受请求就 push、开 PR 并挪动 Jira 工单；续跑时重新启动了已完成的批次，于是变成四次运行而不是一次；夹具里复制了真实的销售标识、邮箱和电话；手工回归一开始新建了 7 个重复用例，作者指出模板目录后复用了 40 个、只新建 1 个；84 个同步向的端到端测试因环境缺凭证没跑成；把 postMessage 从通配源改成父页来源在 Firefox 或 no-referrer 时可能让嵌入通道变哑，只能在 Safari 和 Firefox 上手动查；正文未见咨询或商店硬销；不代你任意大仓清理同样用约 44 美元改完、约 600 美元就能签字，或合并 16 天没有回归就等于表征测试已经证明行为正确。",
     description:
       "面向要把成千上万条静态分析债收成一次可审查的大清理、又必须自己决定怎样相信 1,000 多个文件的 diff 的人：把「改代码便宜，核验才是大头；表征测试会固定旧缺陷；另一层评审拦不住的兼容性缺口仍要人想办法看见」写成门禁，区别于以双引擎提交门禁为主线的做法，以及把年度外部审计收成内部技能的安全复盘。",
@@ -37794,7 +37794,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "567",
     slug: "adrian-rusan-cost-per-merged-pr",
-    title: "Adrian：合并一个 PR 的代理成本从 73 美元降到 32 美元——换了计数方式后 10 月又升到 69 美元",
+    title: "已合并 PR 单位成本账本",
     summary: "个人（作者 Adrian Rusan）；披露自己用一本按日记录 token、提交和已合并 PR 的账本，追踪 Claude Code 的单位成本；7 月到 8 月，在同一种计数方式下，每个已合并 PR 的成本从 73.4 美元降到 31.6 美元（约 -57%），每次提交从 35.2 美元降到 11.4 美元，已合并 PR 从 477 个降到 395 个，提交从 995 次升到 1,091 次，子代理轮次从约 14.4 万降到约 4.3 万（约 -70%）；8 月的下降早于任何配置提交，当周每个提示的子代理轮次大约减半，作者写自己改了工作方式，但没有文件记下原因，因此不宣称因果；有日期的两处改动是：8 月 10 日关掉一条每条消息都注入提醒的钩子，并搁置 10 个当时没用到的技能；8 月 23 日把 CLAUDE.md 和规则从 9,976 个词减到 4,106 个词（规则 8,803→2,933，CLAUDE.md 仍是 1,173，用改动前后的 wc -w）；这些改动与成本走低对得上，但作者不能证明各贡献了多少，跨账户和客户的工作组合也在变；9 月 11 日账本改了计数：此前大约把每次 API 响应计了两遍，并且只读了四个账户里的两个，所以 7–8 月不得与 9–10 月直接比；改计数之后按周看，每个已合并 PR 的成本大致为 52、51、56、65 美元；9 月（19 个工作日）每个工作日标价成本约 932 美元、约 19.1 个已合并 PR、约 80.7 次提交、约 1,411 个子代理轮次，合每 PR 约 49 美元；10 月 1–11 日（11 天）每个工作日约 1,126 美元、约 16.3 个 PR、约 47.0 次提交、约 3,059 个子代理轮次，合每 PR 约 69 美元（约 +42%）；10 月前十天 770 次会话里有 618 次是无头脚本，9 月 279 次里只有 14 次；9 月共有 1,533 次提交和 362 个已合并 PR；美元是按 2026-10-12 取到的 Opus 5 标价重算的重置成本，不是账单，多数会话跑在更便宜的 Opus 5.5 上，作者估算真实标价会是这些数字的一半到三分之二，实际跑在包月订阅上；按 Opus 5 标价，这个配置每个工作日大约 930 美元，约是 Anthropic 文档里每个开发者每个工作日约 13 美元均值的 70 倍；第一版把 9 月写成「旧计数大约 23 美元、相当于 8 月的两倍」，并把 10 月初写成「回到 7 月之上」，两边都跨过了计数变更，本版已改掉；站内有付费咨询和服务、以及预约通话导流；不代你任意削减规则文件也能把每个已合并 PR 的成本降一半，或无头会话变多就解释得了后来的回升。",
     description:
       "面向要给代理花费做一本对得上的账、又必须自己决定拿什么当单位的人：把「先统一计数方式，再按已合并 PR 而不是按提交看；每周看才能看见月报会盖住的回升」写成门禁，区别于云主机账单裁减，以及某次模型切换后账单暴涨的冲刺复盘。",
@@ -37883,7 +37883,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "568",
     slug: "koushikr-java8-springboot3-verifier",
-    title: "Koushik：没让 Claude 自己升级 Java——写代码的代理不能给自己打分，多年 DELETE workaround 其实早已多余",
+    title: "Java 8 升级的迁移与只读核验",
     summary: "个人（作者 Koushik Radhakrishnan）；披露自己多年做前端、Java 已经生疏，却要面对一个仍停在 Java 8 和 Spring Boot 2.x 的小型遗留服务：依赖很久没动，测试也不完整，每次小改都心里打结；目标是 Java 21、Spring Framework 6 和 Spring Boot 3.3.5；他没有接受「先经过 Java 11 和 17、再跑 OpenRewrite、外加五个专家评审代理」的教科书方案，而是拆成两个角色：主会话里的 Migrator（Opus）负责计划和改代码，只读的 Verifier 子代理（第二个 Opus，或有的话用 Fable）负责评审、从不改代码；规则是写代码的代理不能给自己打分；计划先写成 MIGRATION.md 清单，顺序是构建文件（含会在 JDK 21 上弄坏每个文件的旧 Lombok）、其它依赖、javax 到 jakarta、Springfox 到 springdoc、WebSecurityConfigurerAdapter 到 SecurityFilterChain、Hibernate 6，以及 Web 层的尾斜杠匹配和改名后的配置项；每个条目有范围、验收标准和「完成当」；四种标记把「做完」「核过」和「我批准」分开：[ ]、[x]、[v]、[a]；开始前他给 Java 8 代码打了 pre-migration 标签，并保存了一批真实 API 请求和响应；每个条目的循环是 Migrator 把范围做干净并标 [x]，Verifier 既看新改动也重查前面的条目，失败就回到 [ ] 且只修这些发现，同一条目失败三次就停下来问人，通过则标 [v] 等人说可以，作者点头后才变成 [a] 并开始下一项；若重查发现前面的条目坏了，那个条目也要回到 [ ] 再经一次批准；收工前还有一次对着 pre-migration 以来全部改动的 Verifier、一次全绿的构建和测试、回放保存过的 API，以及带着和不带鉴权去打受保护的接口，然后才进 git；这次升级里构建在大部分时间都是红的，作者在这个小应用上选择只看最终结果，并写明大单体不该照抄；他主张构建可以红，但条目不能在自己或更早条目所拥有的编译错误或移除警告还在时算完成，每个错误必须有且只有一个主人，javac 默认在 100 个错误后停下所以要把 -Xmaxerrs / -Xmaxwarns 调到 10000；最值得的一处是：一个外部服务需要带 body 的 DELETE，多年前有人写了自定义 RestTemplate 工厂，在 HttpClient 4 的 HttpDelete 不能带 body 时为每个 DELETE 换上 HttpEntityEnclosingDeleteRequest；Spring Framework 6 去掉了 HttpClient 4，整套客户端迁到 HttpClient 5 之后，Verifier 指出 HttpDelete 已经能原生带 body，这层覆盖可以删掉；作者还写 Spring 自己的请求工厂从 4.1 起就能处理 DELETE body，这层覆盖可能多余了好几年；他只在最后提交了一次，并写下次应在每个批准的条目后提交，好让 Verifier 只看见最新一项；还用过一个新开的 Claude 会话和 Gemini 去核对 Spring Boot 3 的破坏性变更，因为自己判断不了计划是否正确；DEV 页标明原文曾发在 koushikr.com，该个人站为前端渲染且无文章日期，本条以可核的 DEV 页为准；正文未见咨询或商店硬销；不代你任意 Java 升级也能在构建长期为红时只看最终结果，或 Verifier 指出可删就等于多年 workaround 已经在生产里失效。",
     description:
       "面向要把一次框架升级交给代理去搬、又必须自己握住计划和批准权的人：把「写代码的代理不能给自己打分，每个条目的完成、核验和批准是三件不同的事，构建为红不等于范围里的错误可以没有主人」写成门禁，区别于以双引擎提交门禁为主线的做法，以及一次上千文件的静态分析大清理。",
@@ -37970,7 +37970,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "569",
     slug: "zoominfo-angular-react-938-files",
-    title: "ZoomInfo：938 个文件从 Angular 迁到 React——15 个代理一周，对照原功能是 4–5 人做了六个月",
+    title: "Angular 功能重写到 React",
     summary: "团队（作者 Faraazuddin Mohammed，发布于 ZoomInfo Engineering 博客）；披露 Applications 团队要把一个核心功能从 Angular 重写到 React，范围是 938 个文件；他们不用手工翻译，而是在本地用 Claude Code 搭了一层多智能体：先有代理读完整代码库，把执行计划写进共享内存，并要求把计划拆成尽量可并行的阶段；新会话里用 Claude Opus 做队长，带上 15 个 Claude Sonnet 工人——这个 15 是在一台 32GB 内存的 Apple M2 Pro 上逐步加出来的，再往上会因为并排的 TypeScript Language Server 和状态管理把进程打崩，作者建议别人从 3–5 个加起、把内存稳定在约 80%；15 个角色里有 10 个负责改写组件、1 个写单元测试、1 个用 Playwright MCP 做端到端、2 个按规范做代码评审、1 个核对功能是否齐全并维护待办；为了不让代理互相踩，他们用 shared_memory.json 和 todo_list.md 当中央状态，根目录的说明文件只负责指向一份通用的 agents.md，再由它索引组件结构、样式映射、测试协议和状态管理的可做与不可做；迁移计划是活的，人不断和队长一起补专项计划；他们打开 LSP 模式并安装 TypeScript Language Server，让代理获得和人在 IDE 里类似的编译反馈；Playwright 工人若测试失败，不被允许自己改 React 代码，只把 DOM 不匹配或控制台错误记下来通知队长；并行带来的熵包括：测试里忘记清 mock、定时器或卸载而导致内存泄漏并耗尽测试运行器堆；把 Angular 的依赖注入或复杂 RxJS 翻译成自制状态管理而不是约定的 hooks 和 Context；以及在互相冲突的严格类型和 lint 规则之间反复改 AST，直到线程需要人手停掉；队长会通过心跳超时发现停住的工人并重启，另外还有独立的审计代理当预审门，查找随意留下的 TODO、组件边界违规，再把合并请求交给人；对照表把「传统人工」写成 4–5 名工程师、六个月、0 个代理，把「代理团队模式」写成 1 周（8–12 个工作小时）、1 个人、15 个代理；作者写这六个月是当年用 Angular 写出该功能的主体架构和逻辑所需的历史基线，用来对照这 938 个文件迁到 React 的速度，并不是同一次任务的两种做法；人把精力留在最后一公里的架构边角和打磨；文中写他们初始化工作区时参考了官方的 Claude Code Agent Teams 指南，再按自己的仓库改；页眉页脚有 ZoomInfo 产品定价、免费试用、招聘和联系导流；不代你任意框架迁移都能用 15 个代理在一周或 8–12 个工作小时里做完，或把当年的六个月构建直接当成这次迁移省下的工期。",
     description:
       "面向要把跨框架重写交给一群本地代理、又必须自己设计共享状态和最后一公里的人：把「人输出的是脚手架和反馈环，不是一行行组件；历史构建工期不能直接当成迁移工期；测试内存泄漏和循环改 AST 要当新的熵来管」写成门禁，区别于一个人升级小型 Java 服务，以及一次按文件清静态分析债。",
@@ -38059,7 +38059,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "570",
     slug: "jorge-garzon-carwash-erp-agents",
-    title: "Jorge：家庭洗车设备服务公司自建 ERP——先斩后奏的错误价格丢掉一天，钱相关现在必须人点一下",
+    title: "家庭洗车服务自建 ERP",
     summary: "个人（作者 Jorge Garzón，西班牙一家二代家庭洗车设备维修公司的经营者，公司里没有程序员）；披露他们用自建 ERP 换掉用了多年的商业软件，覆盖服务呼叫、技师手机上的工单报告、报价、采购单、供应商发票、银行对账、工资输入，以及当月起在西班牙逐渐强制的电子发票：发票会签名并串成链，一经开出，数据库本身就拒绝再改；另外用 Claude Code 和一套 MCP 服务做代理：读邮箱、从厂商邮件创建服务呼叫、起草回复、把厂商批准的内容对上他们的工单报告、准备供应商订单，以及准备但从不直接发送的邮件；还有一份技术资料库和「专家」，把厂商手册、零件图和他们自己的故障与修理记录按机型索引，技师可以在手机上问「这个型号出现 X」，得到可能原因、上次在同一台机器上怎么处理，以及手册页码，每个回答都能标对或错，纠正会回到资料库；有后果的动作（创建单据、改价格、发出去）会先到作者的 Telegram，带两个按钮，谁在何时做了什么决定都会记下；作者写自己曾担心审批会成为瓶颈，结果相反：每天大约审 20 个决定，几分钟就能在手机上看完，也再没有出过意外；另有一个来自另一家公司的模型，复查第一个模型做了什么并标出不一致；代理在被允许写任何东西之前必须查阅书面规程，大约有 1,500 条，工具会强制执行：没读规程就不能写；便宜、重复的部分用自己硬件上的本地模型：读和分类文档、资料库向量，以及对代码的第一轮复查，判断仍留给 Claude；备份每天四次、加密、放到三个地方，并且每隔几周真的恢复到一台干净的机器上证明能用；曾经让代理先做再事后告知，结果一批工单报告按错误价格「批准」，他们为此丢掉一天，现在任何动钱的事情没有人的点击都不会发生；有一次直接在生产上构建，语法错误让系统在技师还在路上时停了一分钟，从此生产和测试分成两套库；钱相关逻辑有测试：分系列编号、增值税、四舍五入到分，并对着真实 SQL 抽查过数百张随机单据；写文章时自动跑这些测试、以及针对作废、重试和签名链的测试都还是刚加上的；作者在同帖后续评论里补充：用 7 项真实积压任务测过一个 270 亿参数的本地模型，它得 21 分（满分 52），Claude 得 46 分，本地模型只适合很短、很精确的计划，上下文加多了反而更差；后来按评论区建议补了四类测试，其中「两个真实连接同时开票」和「在副本里改一个字节」通过了，旧系统导入、带票头折扣的发票红字在某一档增值税上会差一分，报价和草稿发票则缺少幂等；这两个失败没有被藏起来，并在当天修进生产：旧折扣发票的红字现在每一档增值税都正好为零，创建单据接受幂等键（界面在打开表单时发送，代理则从请求内容构造，有效期十分钟）；正文写明在助手帮助下起草、由作者本人审改；未见咨询或商店硬销；不代你任意自建 ERP 也能用每天约 20 次手机审批看住钱，或补上幂等测试就等于代理重试不会再造出重复单据。",
     description:
       "面向要把业务代理接到真实的发票和工单上、又必须自己把「提议」和「做」分开的人：把「动钱的事情必须人点一下；规程没被读过就不能写；备份若从未恢复就只是希望」写成门禁，区别于把网店接到外部库存系统，以及把营销事件送进数仓。",
@@ -38147,7 +38147,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "571",
     slug: "josh-finnie-four-micro-saas-october",
-    title: "Josh：四周做出四个带标价的小产品——TeamDues 约 67 分钟交出 140 个文件，四个产品却都还没有一个注册用户",
+    title: "四周做出四个可收款小产品",
     summary: "个人（作者 Josh Finnie）；披露自己给十月定下四周、每个周六要有可收款产品的挑战：做出四个面向不同人群的小产品，并在事后对照会话记录复盘；四个产品分别是：把工作笔记收成带出处记录和简历的 Bragboard（免费或每月 12 美元的 Pro，约 19,000 行，截止日没配上生产密钥）、帮志愿教练收青少年体育队费的 TeamDues（每队每月 15 美元，约 9,750 行，赶上了可刷真卡的结账）、基于已有日历做确认或取消提醒的 NoShowFixer（每月 19 到 30 美元、早鸟免费，约 5,200 行，作者有意关掉结账）、以及上门服务报价可在车道上签字并收定金的 SignedOnSite（Solo 59 美元、Crew 99 美元，约 7,700 行，赶上了线上订阅和通过 Connect 收定金）；结果栏全是零：四个产品都还没有一个注册、一个付费用户或一美元收入；计划里冻结的是 Astro、Neon、Stripe 和 Netlify，四个产品却都改在 Next.js 上线，作者写内容站仍会用 Astro，表单、登录和每请求都在变的状态更适合 App Router，Claude Code 在约定清楚的框架里也更少走错；Neon、Stripe 和 Netlify 守住了；四个产品里有三个是先贴上一份 1,500 到 2,100 词的规格（数据模型、路由、定价和明确不做的事），不用 plan 模式，Claude 问几个问题就开始做；TeamDues 从规格到 140 个文件、66 个单元测试和 6 个端到端测试大约花了 67 分钟的代理时间，SignedOnSite 第一个能跑的版本大约 43 分钟，Bragboard 则是从旧演示仓库回改了一周；规格是事先用 Claude 写的，基础设施和后勤共用一份，每个产品的规格只写自己；之后多数提示大约只有 35 个字符，更多是在 Claude 的选择题里点答案，单是 Bragboard 就有 26 轮；NoShowFixer 开工前作者让 Claude 审规格，它认为只剩大约四天，应只做减少爽约这一件事，并把短信运营商登记和 Google OAuth 审核标成一周内过不了的门，作者接受了削减，用普通日历订阅换掉 Google 登录，Claude 大约四分钟改完设计且测试仍通过；第二周起 Claude 会去作者其它仓库抄 Bragboard 已经调过的登录、数据库和测试；Claude 经 Neon 的 MCP 建了全部四个库，并给测试单独开 branch；Bragboard 上作者贴了 Stripe 自己的入门提示，大约 30 分钟从讨论收费做到带迁移的代码，TeamDues 则被技能从 Stripe 已视为遗留的 Express 账户推到 Accounts v2；SignedOnSite 上线当天，作者用 Stripe CLI 登录后，Claude 大约两分半钟配好两套方案和四个价格、带按比例的客户门户、两条 webhook，并把密钥写进生产配置，随后发现配置里的密钥是另一套 Stripe 账户的测试钥，作者贴上正确的之后大约一分钟核对到每个价格、门户和两条 webhook；几乎没要求检查的情况下，单是 Bragboard，Claude 大约跑了 149 次 lint 和 124 次类型检查，测试从 73 个涨到一周后的 192 个，NoShowFixer 从 38 个涨到 88 个；SignedOnSite 上 Postgres 重排了 jsonb 列的键，破坏了用来证明客户签的就是所见内容的哈希，一种日期格式还会让每个已签页面崩溃，都是 Claude 自己的测试先抓到的；四个产品都跑过设计审查技能；出问题的地方多在仓库之外：一条复制命令删掉了未提交的原型文件，多数从 Next 的构建缓存里找回、只丢了一个迁移；管理后台的按 token 单价在作者拿出真实账单前一直是错的；NoShowFixer 一次隔夜设计审查循环盯到了着陆页上三像素的空隙，还在错误的 AWS 账户里查 SES，Inngest 密钥在 Netlify 上试到第三次才存住；结账规则四场里守住两场；作者从未对外宣布任何一个产品，也没有写信给任何一位教练或承包商；四个域名每年大约 12 美元，其余跑在免费档，两个 Stripe 账户已有线上密钥但还没有收到付款；不代你任意四周也能交出四个可收款的小产品，或代理大约 67 分钟就等于一周的打磨和获客已经完成。",
     description:
       "面向想用代理在很短的期限里连续做出可收款的小产品、又必须自己决定什么时候去找真人的人：把「规格可以在一个下午交出能跑的版本，但生产密钥、对外宣布和向目标用户开口仍是人的工作；结账不要留到周五，获客要和截止日期写在同一条规则里」写成门禁，区别于把某次个人站重建当成交付样本，以及用倍增人数来估计「32 天做出生产级 SaaS」的说法。",
@@ -38236,7 +38236,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "572",
     slug: "crypled-session-logs-leaked-credentials",
-    title: "CrypLed：审计自己的 59 份 Claude 会话记录——一个项目里 71 条发现，另一边还有 2 把真的 AWS 密钥",
+    title: "Claude 会话明文密钥审计",
     summary: "个人（作者以 CrypLed 之名发表）；披露 Claude Code 一类代理会在本地把读过的 .env、命令输出和代为执行的 shell 原样写入会话记录（~/.claude/projects/**/*.jsonl），以便稍后恢复会话，于是代理见过的 API 密钥、数据库地址或 env 的输出会以明文留在磁盘上、并且没人审这些文件；他在拿这套小命令行做别的事之前，先对着自己机器上若干互不相关的本地项目里的 59 份真实会话记录做了一次健全性检查，立刻看到：一个项目里有 71 条发现，主要是带着嵌入凭证的数据库连接串，以及经工具输出漏进记录的 JWT；另一个项目的记录里有 2 把真的 AWS 访问密钥；还有一条代理确实执行过的 curl | bash；作者写这些都不是假设，就躺在一台平常的开发机器上；工具还会查找多种云和代码托管密钥、PEM 私钥块、JWT、带凭证的数据库连接串，以及通用的 api_key= 或 password= 赋值，并标记代理跑过的高风险命令（例如破坏性删除、把远程脚本直接交给 shell 执行等）；每条发现在输出里都会打码，即使打到自己的终端也不会打印仍可使用的密钥；命令行约 300 行、无依赖、不联网、无遥测、MIT 许可，用 npx 从 GitHub 安装；作者写下一步打算支持其它代理的记录，并欢迎误报反馈；站内以安装这套开源命令行为行动号召；不代你扫一遍会话记录就等于密钥已经轮换干净，或没有发现就等于日志里从来没有密钥。",
     description:
       "面向已经让代理读过环境变量并代跑命令、又必须自己决定怎样对待磁盘上那份明文记录的人：把「会话恢复要用的记录也是一份新的密钥散布面；扫到的发现要先打码再给人看，轮换和作废仍是人的工作」写成门禁，区别于把年度外部审计收成内部技能，以及固件或硬件安全复盘。",
@@ -38325,7 +38325,7 @@ CLI／MCP 不可用时的纪律：{{fallback_rule}}
   {
     id: "573",
     slug: "shimo-harness-stocktake-192-items",
-    title: "Tatsuya：一次盘点自己的 Claude harness 得到 192 项——74 项不是 Keep，人只做了两次决定",
+    title: "Claude harness 一次盘点",
     summary: "个人（作者 Tatsuya Shimomoto）；披露自己把 Claude Code 的 skills、rules、agents、hooks 和 CLAUDE.md 看成 harness，认为它会像思维一样变乱：一个旧技能还在调用已经不存在的脚本，一条规则和一项技能用不同的话说同一件事，CLAUDE.md 列着自己删掉的命令，而每一条在写下时都是对的；过去大约半年他分别打磨了七个零件（给技能、规则、规则候选、代理、钩子、把 CLAUDE.md 和 README 等描述扳回现实，以及仓库设置和脚本），每个零件都要求他逐项决定，十月三十一日他写下「一项一项问就很难批量批准」；合并后的做法是七个零件并行给出判决，收成一份报告，每项一行：判决、目标文件、理由和具体改动，判决为 Keep、Improve、Update、Merge 或 Retire，影响最大的 Retire 排在前面；人只改想改的行并批准一次，通过的改动打到工作分支并给出完成报告，人再读完成报告后并进主分支；同一天他对自己的 harness 跑了第一遍，七个零件给出 192 项，其中 74 项不是 Keep，他做了两次决定：批准报告，以及读完完成报告后合并；文中的「整理好了」只说到批准的改动已经落地并进入主分支，而且他自己只跑过这一次；为避免只看见自己的脏法，他又用只读模式克隆了 20 个公开 harness：一次 GitHub 代码搜索（filename:SKILL.md path:.claude/skills）返回 662 个仓库，用固定种子打乱后取前 20 个非 fork、90 天内更新过且至少有五项技能的仓库，没有联系主人，也没有点名；三个区域里，20 个中有 19 个至少收到一条非 Keep：文档（CLAUDE.md、README 和设计记录）、技能，以及仓库设置和脚本；规则是 20 个里有 2 个；作者写非 Keep 也包括 Improve 和 Update，判决者是 Claude 而不是仓库主人，所以这些数字统计的是修复候选，并不确认必须修的缺陷，这 20 个也不能代表全部 harness，而且跑的是预发布版本；他拿自己的 harness 和自带的 /doctor、/doctor prompt-audit、/skill-doctor 对照，两边都会抓住对方没看到的东西，也会判不一致：一项 10 天没用过的技能，/doctor 建议关掉，harness-stocktake 读了内容后判 Keep；因此把它发布成跟在 /doctor 后面跑的工具，而不是替代；正文给出 claude plugin install 的安装命令、只读试跑方式和仓库上的 GitHub Action；还没有在那 20 个公开仓库上对照 /doctor，也还没有测量整理之后代理是否表现更好；文章由 Claude 根据盘点记录写成并译成英文，作者读过日文原文后发表；不代你一次盘点 192 项后代理就会变得更好，或 20 个公开仓库里的非 Keep 比例可以外推到所有 harness。",
     description:
       "面向 harness 已经按零件分别审计、却在逐项批准里拖垮的人：把「零件负责判决，人只对着一份报告做两次决定；使用频率和内容读法会给出相反建议，所以不能拿自带体检代替跨文件的盘点」写成门禁，区别于给基础设施模板配上二十来个测试，以及在提交上叠两个引擎的门禁。",
@@ -38413,7 +38413,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "574",
     slug: "bobby-donchev-review-latency-4400-prs",
-    title: "Bobby：人没变，每月合并 PR 从约 2,500 涨到约 4,400——首次人工审查中位数却从 25 分钟变成 34 分钟",
+    title: "合并变多后变慢的首次人审",
     summary: "团队（作者 Bobby Donchev，写自己所在工程组织，文中未写出公司名）；披露头年十二月看过一年 AI 编程助手之后的结论是：作者变快了，审查的人没有，痛会先出现在审查队列里；这件事来得比预期更快：这个季度 Claude Code 从少数人在用变成许多工程师的默认方式，每月合并的 PR 从一月约 2,500 个涨到二月约 3,900 个、三月约 4,400 个，人数没变；作者再次取了两段各 14 天、只计人写的 PR、覆盖所有仓库的窗口：1 月 12–25 日对 3 月 15–28 日，合并的 PR 从 1,111 个涨到 1,558 个（约 +40%），至少合并过一个 PR 的人数都是 97，每位作者每周的 PR 从 5.7 个涨到 8.0 个（约 +40%），首次人工审查的中位数从 25 分钟变成 34 分钟（约 +36%），被机器人看过的 PR 从 28% 涨到 65%，点批准的人数都是 80，每位批准者的批准从 14.4 次涨到 19.3 次（约 +34%），最忙的那位从 145 次涨到 184 次（约 +27%）；Claude Code 默认会在提交上留下共同作者标记，带该标记的、人提交进主分支的提交占比从一月 11% 涨到二月 27%、三月 34%，作者写这是下限，因为其它工具不留标记，也有人会关掉；审查者心里的问题从「这是否正确」变成「有没有人理解这次改动」，与此同时大量评论仍是重复的约定：错误类型不对、事务开在了仓库层而不是服务层、该直接传协议类型时却写了转换、缺少配置校验；一月他们在主要仓库加上 AGENTS.md 和 CLAUDE.md，并另开一个文档仓库，让代理在每次合并后更新代码文档；一月下旬建了共享技能仓库，把反复出现的审查意见收成小型 review-* 技能，一月底有 13 个；技能配了两个钩子：每次编辑后在 lint、类型和测试失败时拦住，代理要停下来时按原则并行拉起审查者，一条原则一个代理；二月上了 CodeRabbit，并关掉它的自动批准：它只审查和标记，不能算作批准者，人仍必须点批准；三月把配置收进一个中央仓库，让它读取 AGENTS.md 和 CLAUDE.md，并把最常见的意见设成合并前的错误级检查；到三月底，CodeRabbit 大约看了 60% 的人写 PR；上面这些数字是做完这些之后的数字：首次审查还是变慢了，最忙的审查者每个月批准得更多；作者的结论是生成已经够用，下一件值得做的工具是帮人核验，机器能查的约定不应再花审查者一分钟，批准按钮才是最稀缺的资源；正文未见咨询或商店硬销；不代你加上机器初审和一批审查技能就必能消化多出来的 PR，或首次审查变慢只是暂时的。",
     description:
       "面向代理已经让作者写得更快、审查队列却先痛起来的团队：把「人没变的时候，合并数涨了四成并不等于审查能力也涨了四成；机器只应拿走重复约定，批准键仍是人的」写成门禁，区别于一个人在提交上叠两个引擎，以及按已合并 PR 去算代理单位成本。",
@@ -38501,7 +38501,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "575",
     slug: "stijn-t2d3-10350-commits-no-human-review",
-    title: "Stijn：T2D3 约 10,350 次提交、七月约 3,600 个 PR 零人工代码审查——改代码账单里约 73% 是把上下文再读一遍",
+    title: "T2D3 零人工审查门禁",
     summary: "团队（作者 Stijn Hendrikse，T2D3 OS 创始人，自己不写代码、负责指挥和审查）；披露这套面向 B2B 营销的 SaaS 跑在 Next.js 和 Supabase 上，几乎全部由 Claude Code 代理写出：自 2026 年 3 月 15 日起大约 10,350 次提交，到七月大约合并了 3,600 个拉取请求且零人工代码审查；他们并不计划这样工作，而是代理写代码、一个人掌舵之后，所有保证都得来自类型、lint、CI 门禁、钩子，以及红色 PR 进不去的合并队列；反复学到的一句话是：散文规则大约 95% 可靠，一条规则只和执行它的最弱一层一样强；CLAUDE.md 按执行方式而不是按重要性组织：不变量由类型、lint 或 CI 脚本执行，违反的 PR 不能合并；约定由审查代理和定期审计抓住；建议则是没有其它依据时的默认；新的「你应当」先问类型系统或 lint 能不能执行，能的话就加不变量并接上检查，而不是再写一段话；一次事故先变成记忆，再变成不变量，并作为一次 PR 落地：不变量脚本（已超过 5,000 行、110 多条编号规则）里的检查、CLAUDE.md 里的一行、长文档里带复制即用修复的理由，以及现有代码第一天无法遵守时的棘轮基线；棘轮是一份冻住今天违规数的文本，只允许缩小，过期的行也会让 CI 失败，他们有 38 份，覆盖丢掉错误的数据库写入、类型逃逸、超过 700 行的文件，以及发出去却从不取消的请求；事故变成规则的例子包括：聊天里说「做完了」却从未落地，于是每个任务开头必须说明如何核验，Stop 钩子拒绝结束尚未合并的会话；同时开着 30 个都被当成已交付的 PR，于是会话开始时展示全仓库的 PR 积压；线上改了模式却没有文件进 git；变基默默丢掉 292 个翻译键，键数量因此不得下降，因为每种语言丢得一样多时对等检查仍是绿的；一次用过期副本替换数据库函数；自定义域名让生产「看起来不像生产」；349 个散落文件导致同一个助手函数有六份副本；部署令牌出现在进程列表里，于是命令行不得出现秘密，每份凭证必须登进登记册；宪章的体积本身也被 CI 封顶，因为它在一个月内长回清理前的 97%；文档还曾写「5 项必需检查」而队列实际要求 7 项，于是脚本里的每条规则都必须在文档里有一行；有一次搜索声称「1 个文件、8 处」，真删掉被保护的字段后露出 174 个文件和 452 个错误；共享记忆是 git 里大约 1,160 个文件（项目约 765、参考约 240、反馈约 150、用户 2），会话开始拉取、结束推送；一份 16 个 PR 的收工报告里，10 条可核对的陈述有 3 条是错的；两台机器曾隔 47 秒写入同一批生产行；八月下旬按 API 标价，用 Claude Code 写代码大约每 30 天 45,000 美元，产品自己的 AI 功能大约 800 美元：约 73% 是缓存读取，使用 100 万 token 窗口的会话平均每次调用大约 23 万 token 的上下文、峰值接近 100 万，382 次会话里前 15 次占花费的 43%，一半用量来自超过 8 小时的会话，模型智力本身大约只占账单的 6%；改成默认 20 万上下文、会话在 300 次工具调用或 6 小时后交接，并按任务选模型之后，日均从大约 2,240 美元降到大约 990 美元（约 -56%），100 万上下文的花费降到零；「到达上限自动继续」曾在一个月里给一个座位打出大约 7,500 美元的用量积分；通宵修缺陷的回路把应用内反馈、支持工单、Sentry、QA 失败和 Slack 收进一张工作表，只读代理打分后再由唱反调和综合者写裁决，只有被标成孤立、大约 50 行以内且体量为 XS 或 S 的缺陷才进入自动修复，爆破半径决定能不能自动合并；五个修复者曾占满运行器、饿死合并队列，并行被压到 2；积压到 150 时，修复者只用掉 45 个夜间名额里的 12 个，作者写那不是产能问题而是判断问题；他们曾一天向生产同步最多 13 次，开发分支现有 9 项必需检查的合并队列，生产则有错误预算（6 小时内超过 150 个生产错误，或 24 小时内单一问题超过 100 次事件就失败）和每 30 分钟走一遍核心路径的金丝雀；名叫 Wren 的代理有真实邮箱，每天三次整理收件箱，模型写回复文件，发送端点从已存储的来信查找收件人，模型碰不到任何收件人字段；第一件真事是魔术链接被客户的网关扣住，同一次运行还抓住己方把回复发了三次的缺陷并在当天修好；产品里 27 个登记代理拥有 85 类后台任务；自建 GitHub Actions 花费从五月约 160 美元涨到八月约 1,000 美元、每月 21.8 万分钟，一次自己不知道的账单上限让每个任务在 5 秒内失败，他们用一个仓库变量把 59 个任务转到大约 19 个自托管运行器；八月 Vercel 账单约 4,620 美元里约 4,160 美元是构建 CPU（约 90%），函数计算 27 美元，于是改为在自己的运行器上预构建再部署，预期每月少花大约 3,000 到 4,000 美元；一次跟踪故障把整个仓库打进每个函数，部署停了 18 小时；本地模型在过去 30 天处理了 36% 的 AI 调用；数字取自 2026 年 9 月 16 日的仓库、CI 和账单，美元已经四舍五入；站点导航有定价、申请访问、登录、通讯、演示和书籍等导流；不代你取消人工代码审查也仍然安全，或把上下文窗口和会话长度砍短就必能把日均花费降一半。",
     description:
       "面向代理几乎在写全部代码、人却必须改用门禁来代替逐行审查的团队：把「散文规则只有执行层撑得住；账单大头往往是把上下文再读一遍；自动修复只看爆破半径，不看模型有多自信；支持邮件的模型不得选择收件人」写成门禁，区别于按已合并 PR 去算个人单位成本，以及把测试时长从十几分钟砍到一分钟出头的 CI 爬山。",
@@ -38590,7 +38590,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "576",
     slug: "remdore-extratime-visible-review-1396-prs",
-    title: "Remdore：自己几乎不读代理写的 diff——四月以来合并 1,396 个 PR，十月一个月改了约 37 万行，修复类占比却升到约 46% 到 47%",
+    title: "ExtraTime 合并少读差异",
     summary: "个人（作者以 Remdore 之名发表）；披露自己从 2026 年 4 月起让代理替自己开 pull request，随后回头去数自己足球问答站 ExtraTime 背后的两个主要仓库（Django 的 API 和 Next.js 的前端）：从那时起到发文日共合并 1,396 个 PR，其中 1,241 个在描述里写着由 Claude Code 写成；单是十月就合并了 563 个，两边合计改了约 37 万行，作者写自己不可能把这 37 万行都读完，假装读过还更糟；他现在通常只读标题、描述、持续集成是否变绿，以及代理自己说检查过什么，然后就合并，例外是任何能看见的东西：页面、截图或示意图，那些每一次都会打开；作者强调，自己放弃的并不是过去那种仔细审查——2025 年在还没让代理开 PR 之前，同样两个仓库合并过 321 个，描述的中位数是空的，从开 PR 到合并的中位数在 API 上是 2 分钟、在前端是 4 分钟，当时他也几乎不审自己的代码，只是作为作者兼审查人按一下按钮；四月之后，这些仓库里 PR 描述的中位数变成 2,400 到 2,800 个字符，代理会写下改了什么、为什么改、怎样测过，描述说不通或和自己要求的不一样，无论 diff 写什么都不会合并；API 的每个 PR 会跑分成两片的 Django 测试套件，外加针对新发现的 Pyflakes，前端则构建、做 lint、做类型检查、跑单元测试，再用 Playwright 在 Chromium 和 Firefox 里跑端到端测试；测试量本身变了：API 的测试函数在 1 月 1 日是 442 个，4 月 1 日是 1,496 个，发文日是 6,383 个，前端从 4 月 1 日的 236 个涨到 2,483 个，四月以来新增的测试多半和它们所测的改动写在同一个 PR 里；任何最终会落到屏幕上的改动，作者会打开 Vercel 预览点一遍，有截图就看截图，有示意图就读示意图；他回头去数四月以来的前端修复，大约有二十来个标题说的是页面看起来或动起来不对，例如手机上横向滚动、卡片上过长的球员名、移动端注水交换把页脚挤得跳动（累计布局偏移从 0.79 降到大约 0.06），以及通知展开时汉堡菜单被裁切；端到端测试会在两个浏览器里点过这些页面并且通过，因为挪了位置的按钮仍是按钮，必须有人去看；规则被他收成：能看见的自己审，能测的交给测试；他自己也写了做错的地方：1,396 个 PR 里只有 81 个描述带图、4 个带示意图，所谓「看任何看得见的东西」多半靠自己记得去开预览，忘了就没有人提醒，他后悔没从一开始就要求每个前端 PR 默认附上截图；2025 年合并的 PR 里大约 10% 到 13% 是修复，到了十月变成大约 46% 到 47%，其中 121 个提到 Sentry 工单，作者写有些只是噪音而不是缺陷，也无法把「没人读过 diff 的代码」和「多年前的旧代码」分开，但形状是清楚的——不读代码不会让缺陷消失，只是把它们移到生产上，改由 Sentry 来当审查人，对问答站他可以接受这种交换，对银行则不行；四月以来没有一个 PR 被回滚，作者起初当成好消息，后来认为更可能是自己习惯向前修，坏了就再开一个 PR，于是回滚率不会涨、修复类占比会涨；作者提醒这是一个人、两个仓库、爱好项目的赌注，「写着由 Claude Code 写成」也可能含有自己的修改，修复和 Sentry 的计数来自标题和描述开头所以只是近似，6,383 个测试也仍可能测错了东西；正文以 ExtraTime 的两个仓库为样本收尾，未见产品网址、标价或咨询入口；不代你合并 1,396 个 PR 而不读 diff 就等于质量已经由测试托住，或修复类占比升到约 46% 只是统计口径变化而不是生产在替你审代码。",
     description:
       "面向已经让代理代开 pull request、测试套件也在跟着涨、却不可能把每个 diff 读完的人：把「描述当成合同来读，测试和改动写在同一个 PR 里，用户看得见的页面必须人去看；不读 diff 之后，生产告警就是新的审查人」写成门禁，区别于只看组织里首次人工审查要等多少分钟，以及用持续集成不变量代替逐行代码审查、宣称可以零人工审代码。",
@@ -38679,7 +38679,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "577",
     slug: "jamilxt-gitspawn-fsmonitor-global-bypass",
-    title: "jamilxt：验证仓库在信任提示前就能跑代码的防御——人人转发的全局关闭在他的测试里拦不住，命令行 -c 才压得过仓库配置",
+    title: "信任提示出现前的执行防御",
     summary: "个人（作者以 jamilxt 之名发表）；披露自己日常会把同事用压缩包传来的项目丢进文件夹、交给编码代理先看一眼，后来读到安全公司 Manifold Security 在 9 月 1 日披露的一类问题（他们称为 GitSpawn）：七款编码代理上共有八项已确认发现，仓库可以在代理打开它时就执行攻击者选定的命令，有的还发生在信任提示出现之前；机制写在 Git 自己的性能选项里：代理启动时常常会跑状态和差异一类命令来收集上下文，而仓库自己的配置可以指定一个「文件监视」助手，于是仓库等于在点名 Git 要跑哪条命令；作者写自己是后端工程师而不是安全研究员，没有在真实的代理会话里复现这条利用，只验证了自己能控制的 Git 层防御说法；他在 Linux、Git 2.43.0 上建了测试仓库，写入一条指向本机标记文件的仓库内配置，再按当时各篇报道都在转发的办法设置全局关闭，随后跑状态命令，标记文件还是出现了——因为仓库内配置会覆盖全局默认值，全局关闭只保护那些「自己忘了改」的仓库，挡不住已经写好恶意配置的仓库；改成在命令行给这一次调用加上覆盖参数后再跑，标记文件没有出现，作者把它写成当时测试里真正有效的一层，也和公开研究笔记里建议厂商给代理拉起的每个 Git 子进程都加上同一覆盖的说法一致；他还核对了另外几条可操作的边界：常规克隆会新建 Git 元数据目录，带不走这项攻击，披露和公开说明里的验证都用了压缩包，所以「自己没克隆过的压缩包或共享文件夹应先当不信任」；打开之前可以用一条搜索看看配置里有没有文件监视、分页器或别名这类会变成命令的项，他写入的测试配置马上被搜到；别名这一项他按同样思路测过，当次没有触发，他不愿据此声称它一定不能工作，只把文件监视写成已有编号、已确认的路径，别名值得一起搜是因为属于同一类出口；披露里的记分卡写到 9 月 2 日：一部分路径已经修补，Claude Code 上另有一条独立路径以及另外几款代理当时仍未修补，八份报告里有五份被厂商判成重复，作者把它读成管道本身的问题而不是某一家的倒霉周；文末邀请订阅他每周写的 Java、Spring Boot 和 AI 基础设施通讯，并写明免费；不代你改一条全局设置就等于代理打开任何压缩包都安全，或搜索配置一遍就等于利用路径已经消失。",
     description:
       "面向会把别人打包来的仓库直接交给编码代理、又必须自己决定信任边界画在哪一层的人：把「信任提示是界面，不是安全边界；防住仓库内配置的覆盖，必须放在仓库摸不到的那一层；自己没克隆过的压缩包先当不信任」写成门禁，区别于只扫本机会话记录里留下的明文密钥，以及把年度外部安全审计收成内部技能。",
@@ -38768,7 +38768,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "578",
     slug: "kenimo-books-200-tx-11-wrong",
-    title: "Ken：让代理跑了一个月的账——200 笔对上了，11 笔分错类；自己标不确定的 18 笔里已经有 7 笔是错的",
+    title: "小生意月度对账里的错分类",
     summary: "个人（作者 Ken Imoto）；披露自己经营几家小生意，每个月都要对着银行导出和记账平台，把一堆流水收成税务部门能接受的账，于是这个月把记账交给 Claude Code 来看；结果写在开头：代理对上了 200 笔流水，分错了 11 笔，命中率 94.5%，作者提醒这 11 笔错的才是干净申报和税务部门来信的差别；他没有把表格贴进对话里让模型「分类这些」，大约试了十行就停了，因为一次性问答以后每个月都得再盯一遍；他改成让 Claude Code 去造可以明年再跑的记账流水线：经 MCP 从记账平台拉出当月流水，按金额和日期把银行行与收据或发票匹配，给每一行提议类别并写一句理由，拿不准的就标出来而不是悄悄猜；对账本身被他写成真正省事的部分：匹配 200 行收据是人会在大约第 40 行开始走神的那种枯燥工作，代理不会走神，也能处理续费日期稍有偏移、退款打成负数、银行显示名和发票名对不上这类他以为会绊倒它的情况；错的 11 笔不是随机噪声，而是簇在代理无从知道自己不知道的三处：5 笔是意图（同一张笔记本收据在自用和公用之间看起来一样，代理按更常见的「公务资产」来分，其中两台其实不是），4 笔是它没被给定的本地税务规则（单独用餐和带客户用餐的可扣程度不同，它给出了合理、自信而错误的猜测），2 笔是一笔付款覆盖两件不相关的事、本该拆开却被它选了其中一个；作者写算术从来没加错、没丢行、没重复计算，失败全在判断而不是计算；他后来划下的线是：量大、判断低的部分由代理跑（拉数、匹配、起草类别、标出怀疑），量小、赌注高的部分自己签字（每一笔被标出的、对自信结果的抽查，以及每一个会碰到税务结果的类别）；因为要求代理把不确定当成一等输出，他的复查从「再看 200 行」变成「先看它不确定的 18 行，再抽样其余」——11 笔错误里有 7 笔已经躺在它自己标出的那堆里，另外 4 笔是抽查时抓到的；作者明确拒绝「人工智能一下午帮我报了税」这种截图友好的说法，诚实的版本是「它做了 94.5%，我做了那可能让我被稽核的 5.5%」；文末把这类人机分工写进自己的《Claude Code Mastery》，并链到手册页；不代你对上 200 笔就等于账已经可以签字，或 94.5% 的命中率可以代替人对税务类别的复核。",
     description:
       "面向每个月都要对银行流水和收据、又必须自己在申报单上签字的人：把「让代理去造可再跑的流水线，而不是要一个一次性答案；不确定必须单独标出；意图、本地法和真正的边界情况仍是人的判断」写成门禁，区别于只核订阅收据，以及按已合并的 pull request 去算写代码花了多少钱。",
@@ -38856,7 +38856,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "579",
     slug: "lizhuojun-six-trackers-2x-to-8x",
-    title: "Zhuojun：审计六个 token 用量统计工具——彼此相差 2.00 倍到 8.09 倍，五个仓库里已落地十处修复",
+    title: "六个 token 用量工具对不上",
     summary: "个人（作者 Zhuojun Li）；披露自己在大约五个月里拆开六个 token 用量统计工具的汇总逻辑，并用一份独立实现重新计算：它们对不上，差距从 2.00 倍到 8.09 倍，两个方向都有，五个仓库里已经落地十处修复；更让他在意的第二点是：这些工具没有一个知道自己的数字对不对，因为没有可对照的第三个数；开头先披露自己提交过其中两处：tokscale 的 issue #1011（2026-08-03 提交，解析修复三天后合入，issue 仍因另一原因开着）和 claude-code-templates 的 PR #754（2026-07-25 提交，到 8 月 18 日仍未合并，检查已绿、无冲突，那是一个当时约 3 万星、排队很长的仓库）；事情开始于他审计自己的会话记录时，用两个工具读同一批文件，数字接近翻倍而不是舍入误差；他写这类差距够大时会被很快修好，例如此前 johnpyp 报告 tokscale 和另一工具相差接近 2 倍，维护者二十分钟内标成缺陷、五小时内关闭，并追到上游会在一种流式记录下重复写入会话历史；订阅用户尤其看不到第三个数，因为没有按 token 开出的账单，官方文档也提醒套餐用户看到的美元数字「和计费无关」；他归纳出五种机制，每一种都带测到的数字：同一次用量被写入两条记录时，在 deepseek-harness 语料上朴素加总会得到正好 2.000000 倍的官方投影，两条供应路径分别计算、六位小数一致；claude-code-templates 按内容块各计一次，测到 2.36 倍；Clawdmeter 同样按内容块重复，测到 2.34 到 2.37 倍，作者在 2026-08-08 的 v3.0.1 里修掉，发版说明写「token 计数已纠正（约低 2.5 倍）」并注明进度条读的是速率限制头、从未受影响；子会话的日志物理上含有父会话前缀时，他抓到的两次分叉被放大了 5.18 倍和 23.05 倍，分叉越晚、继承的前缀越长，比率越差，只检查是不是子代理出身并不够；上下文压缩是一次真实的模型调用，却不是主循环里的一步，多数汇总逻辑匹配不到，于是 3 次压缩、48,895 个 token 从未被计入，其中最大的一次汇总上报 44,444 个 token（41,472 个是缓存读取）去替换 19,962 个 token 的历史；tokscale 曾把对工具结果的字符估算加进接口返回的输入量，修复前 87.6% 的输入值是估算，放大 8.09 倍；维护者三天后合入解析修复并发 v4.11.0，却把 issue 留着，因为缓存里的旧总计不会自动退回去；作者在主分支 f169a1f0 上重测：输入从 10.10 倍回到 1.00 倍，清掉 17,109,737 个 token，输出、缓存读写和消息数保持一致，说明被去掉的是估算而不是整条记录；第五种是恢复和压缩之后历史总计会悄悄漂，他没有给这种机制乘一个固定倍数；方法被写成四步：先做带纸面答案的合成语料，探针先对自己做自检，直接导入被测工具的入口而不是按其说明重写，再让两份没有共用代码的实现给出同一个数；探针是只用标准库的 Python，会话记录不进仓库，只公布测量；文末给出 Apache-2.0 的探针仓库，并向维护者开放提问；同一段之后是给团队的路由审计报价：固定 1,500 美元，十个工作日内交一份五页报告，作者写自己的 26,131 条记录上这个数字是 22.6% 和 1,248.13 美元，且全出在子代理而不是主线程；不代你换一个统计工具就等于数字已经和账单一致，或看到接近 2 倍的差距就知道该信哪一边。",
     description:
       "面向已经用第三方工具给代理会话算 token、又必须拿这些数字做分配或升级套餐决定的人：把「没有可对照的第三个数时，任何自报数字都只是一种理解；估算和测量不能写进同一个字段，子会话也不应按文件把父会话再加一遍」写成门禁，区别于按已合并的 pull request 算自己的单位成本，以及只看云主机账单降了多少。",
@@ -38944,7 +38944,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "580",
     slug: "carlos-betancur-quirurgil-73pct-crm",
-    title: "Carlos：没另招五名工程师，用 Claude 在不到四个月里给医疗设备公司做平台——找回 CRM 里失踪的 73% 可开票客户",
+    title: "Quirurgil 医疗设备平台",
     summary: "团队／机构（作者 Carlos Betancur Gálvez，btodigital）；披露 2026 年 5 月 8 日到 8 月 25 日、不到四个月，他们用 Claude 为哥伦比亚医疗设备进口、销售和维保公司 Quirurgil 做出平台 QOG，没有为此再组五名工程师的团队；客户那边真正的风险不是效率，而是报错价，或把健康注册已经过期的设备卖出去，当时的 CRM 也不反映生意：里面有 5,495 个客户账户，财务系统按税号只有 815 个不重复的可开票客户，两边对得上的只有 219 个；做成之后，失踪的可开票客户有 73% 回到了系统里，对照财务系统清掉 673 个重复账户，以前手工作业的预防性维护自动生成了 1,308 单、覆盖 568 台设备，8 个事业部开始按各自不同的佣金规则自动计算——作者写没有现成的 CRM 能处理这八套规则，这也是自建还是外购这个问题一半的答案；这套平台在 2026 年 10 月已在生产上跑，并取代 Salesforce 成为记录系统；作者还把八个月里自己的变化写成表：2026 年以前他只有一个属于自己的代码仓库，之后八个月开了 62 个，跳变不是来自新团队，而是 Claude Code；同期生产上的系统还包括 btodigital 网站上接收所有线索并分流到 CRM、分析和团队邮箱的模块（带 23 个自动化测试）、报价工具、给放射科医生用的医疗口述应用，以及自己课程的在线考试（曾关闭两个月，9 月 28 日重新打开）；他强调建得快不是难点，让它持续跑着才是，并写下三件教他最多的事：考试因一条访问设置被关掉，服务器用「找不到」而不是「禁止」来应答，那个项目当时也没有版本历史；btodigital.com 的后端长成一个 6,713 行、没有测试的文件，任何改动都可能在没有警告的情况下牵动别处；负责自动部署 QOG 的服务额度用尽后，部署改回手动，于是一次部署重新变成依赖某一个人；另外两条后来变成规则：关键的东西要打到自己的服务器上，因为企业和诊所网络会拦截它们不认识的服务；人工智能可以写代码，算术必须由服务器重算，并忽略模型返回的那个数；62 个仓库也是 62 件要维护的东西，建得容易，债来得一样快；对外公开的第一版案例曾列出 249 次代码交付、20,645 行 Python、119 个模块和 87 个屏幕，送去外部审阅后被一句打回来：案例没有写出可测量的结果，作者承认审阅者是对的，便换成上面那些客户侧的数字；10 月 3 日他把线索模块做成第一个按六边形方式分开业务规则和适配器的模块，带 23 个自动化测试，大文件只从 6,713 行减到 6,457 行，完整迁移只在以后因别的原因改到某个模块时才一块块做；财务系统他们没有替换，QOG 把它当真实来源来读；文末把「若你在权衡要不要自建」收成自己作为 Claude 人工智能顾问的工作方式，站点导航还指向咨询、联系和 WhatsApp；不代你任意四个月也能找回 73% 的客户，或 62 个仓库等于已经有人在维护它们。",
     description:
       "面向想在机构里用代理自建那套外购软件套不上的规则、又必须自己为生产事故负责的人：把「先写下要测量的生意结果，再决定自建还是外购；模型可以写代码，数字必须由服务器重算；每个生产项目都要有仓库、外部监视，以及不依赖某一个人的发布」写成门禁，区别于洗车设备服务公司自建进销存，以及把网店和本地财务系统对在一起。",
@@ -39033,7 +39033,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "581",
     slug: "yuuichi-eguchi-calyx-2048-never-started",
-    title: "Yuuichi：七轮人工智能审查、2,048 条测试全绿——这个功能在应用里一次都没启动过",
+    title: "Calyx 从未启动的全绿功能",
     summary: "个人（作者以 Yuuichi Eguchi / yuu1ch13 之名发表）；披露自己从 2026 年 3 月起独自做原生 macOS 终端 Calyx，用来并行跑和监督编码代理，代码多半由 Claude Code 来写。截至 2026 年 10 月 7 日，仓库有 880 次提交（去掉合并后 752 次），发布标签 110 个，从 v0.1.0 到 v0.46.1。他给自己定了一条规矩：审查子代理提出的每一条发现都要修，不能悄悄跳过。主对话只做计划、批准和协调，不写代码；每次改动都从干净工作区拉出 git worktree，先由写测试的子代理写出测试并确认失败，再实现，再由跑测试的子代理确认通过，再由审查子代理看 diff，作者批准后才合进主分支。这些规矩写在本地配置里、仓库没有历史，他无法指出每条是哪天生效的；提交说明里能追到的最早痕迹是 6 月 22 日的 7ec033794，当时连建议级发现也一并修了。能当记录用的是提交正文：有 29 个非合并提交在标题里写明自己是在回应审查或审计发现，这是下限，因为有的修复并没有在标题里这么写。7 月 5 日凌晨 00:51，把持久会话守护进程接到应用里的第三阶段合进了主分支。当天下午到晚上，这段代码一轮接一轮地接受审查，标题里留下数字的七轮是第 4、5、7、9、11、13、15 轮：测试从 2,019 条跑到 2,048 条，每一次都是 0 失败；发现本身是真的，例如退出确认流程里的重入、确认框弹出时丢掉事件、取消信号到不了子进程。修完之后，diff 并没有一轮比一轮小，第 5 轮和第 13 轮都比前一轮更大，到第 15 轮才收到 +224/−105 行。这七轮里，持久窗格在应用里一次都没有启动成功过。一开始就能看见的症状是窗格被飞快地创建又销毁、窗口在闪；21:45 的提交把它当成重连缺陷来修，替换窗格一被创建，重试计数就被归零，退避永远长不起来。修完之后重试有了上限，窗格却还是立刻死掉。真正的原因是把应用跑起来、读窗格里打出的报错才看见的：23:00 的提交修了命令开头那个「HOME=」单词被当成相对路径执行的问题，把 HOME 的赋值挪进 /usr/bin/env 的参数，并在测试里锁进「第一个词必须是 exec」的约定，当时 2,057 条测试通过。十九分钟后的提交记下了正在跑的应用打出的下一句：bash: line 0: exec: exec: not found。子模块里的 ghostty v1.3.1 会把 shell 形式的命令再包一层 exec -l，Calyx 自己的命令已经以 exec 开头，于是变成双重 exec，bash 去找一个就叫 exec 的程序。提交正文写明第三阶段那种写法在应用里从来没有工作过，而这才是从一开始就存在的窗格抖动的根。当时测试是用普通的 /bin/sh -c 去跑拼出来的命令，没有经过 ghostty 那一层包装，所以自己再加一个前导 exec 在测试里完全合法。持久会话在 7 月 7 日的 v0.29.0 才第一次发出，没有用户收到过那个坏掉的形式。审查修掉的东西有时会变成下一轮的发现：第 11 轮为系统命令加上取消桥，第 13 轮把同一座桥用到 Git 子进程并再加一座，第 15 轮修的就是这两轮引进来的问题——两份字节级相同的类、已经取消时直接 terminate 却没打上防止二次终止的标记，以及超时回调可能触发两次。6 月 22 日上午，语言服务器相关的修复在半个多小时里连着三次：09:40 修了七个问题，其中包含 stop 与 start 之间的竞态；二十分钟后发现这次重读也可能拆掉下一次 start 装上的新桥；十二分钟后再修那条测试，它在旧代码上也会通过。有一处两秒上限用两个非结构化任务竞速，6 月 24 日为了不让输掉的计时器继续占着 self，改成了 withTaskGroup 再 cancelAll，并把原先警告这种形状无法真正卡住上限的注释删掉了；上限直到 9 月 26 日才被加回去。回归测试的注释写着：在 withTaskGroup 那个版本上，一份含 2,000,000 条记录的持久化文件会让关闭过程忙大约 21 秒。7 月 6 日对实验性守护进程交接的一批修复，又查出四处由这些修复引进的缺陷，其中一处会让被接管的会话永远停在 Running，既杀不掉也接不回去。审查也抓到过测试没看见的不匹配：第 9 轮发现生产用的快照建造者从不保存 tab.sessionRefs，完整性测试走的是另一条生产不用的路径，持久会话因此无法在真正保存并重新启动后活下来；8 月 7 日一条关闭路径没有检查快捷终端是否还在维持应用存活。6 月 26 日一次二审修了 14 个发现加一处回归，提交写明先前「所有缺陷都修完了」的宣布来得太早，从 Finder 启动时无法拉起经 NVM 安装的 pyright。另有一些缺陷只有跑真东西才出现：8 月 19 日发现 Calyx 从未给 Codex 安装 SessionEnd 钩子，依据是配置管理器注释里写的「Codex 没有 SessionEnd 钩子」，对 Codex 0.148.0 这并不成立；8 月 21 日对一次真实的 opencode run 发现 session.deleted 根本不会触发；6 月 27 日一次真实的 pyright 崩溃引出同一类问题 25 处，随后用 70 个工具对 pyright 和 rust-analyzer 做的 148 格检查全部通过；7 月 7 日打上 v0.29.0 的提交记下八个生产调用点引用了只在 Debug 构建里存在的测试缝，Release 配置编译不过，而此前大约 80 小时只在 Debug 里做的核验从未踩到。9 月 24 日合入的 MCP Apps 宿主一次加了 249 个文件、49,027 行，当天第 2 到第 4 次审查通过改动的文件数从 36 降到 13 再降到 6，之后两个多小时里又有修复是把长网址同意提示看一眼、或跑一次 Release 构建才出现的。8 月 20 日一次清理删掉了散落在 86 个文件里的 496 个标签，那些标签写的是审查轮次、任务编号和仓库里并不存在的内部规格。752 个非合并提交里，只有 7 个在标题或正文里提到先红后绿那一步。作者写明没有对照组，不能据此说审查整体上挡住了多少缺陷，或值不值得花那些时间。文末介绍 Calyx 为 MIT 许可的原生 macOS 终端，并给出 brew install --cask calyx、GitHub 源码和帮助站点。不代你叠七轮审查或让测试数涨到两千就等于功能已经在真环境里启动过。",
     description:
       "面向已经让审查子代理看 diff、测试套件也在变绿、却还没把改动放到真程序里跑过一遍的人：把「全绿的测试和越修越小的审查 diff 都不是功能已经可用的证据；和外部程序集成的改动，要先在应用里跑一次再去叠审查轮次」写成门禁，区别于几乎不打开代理写出的 diff、改看描述和看得见的页面，以及用第二个引擎做只读提交门禁。",
@@ -39122,7 +39122,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "582",
     slug: "jonah-opus-plan-sonnet-108-loops",
-    title: "Jonah：Opus 做计划、Sonnet 来实现——108 次循环里，第一次编写只花了两成 token",
+    title: "Opus 计划 Sonnet 实现循环",
     summary: "个人（作者以 Jonah / JonahDevs 之名发表）；披露自己在大约两天里，用同一套循环推进 OldMate、ManyCP 和 TrustAudience：由 Opus 做计划并审查，由 Sonnet 来实现，再换一个新的 Opus 看结果，然后下一轮。2026 年 10 月 3 日他让另一个 Claude 去审计其余部分，想弄清这 108 次循环到底花在了哪里。数字来自 Claude Code 为每次工作流写下的运行记录，发布前又用脚本重算过一遍；作者把它写成带收据的日记，不是对照实验。按步骤看，第一次由 Sonnet 编写占全部 token 的 20%、代理时间的 30%；Opus 主导的计划占 token 的 16%、时间的 15%；审查与分诊占 token 的 34%、时间的 30%；审查要求的返工占 token 的 21%、时间的 21%；最后检查占 token 的 7%、时间的 3%；其余约 2%。也就是说，审查加上它要求的返工吃掉了 55% 的 token 和大约一半时间，而大家常谈的第一次编写只占五分之一。全部 108 次合计约 550 次代理调用、约 5,700 万 token、67 个代理小时。作者没有把 token 折成美元，也不清楚记录如何计算缓存输入。108 次里有 46 次（43%）停在计划步骤，把问题交回给他，共 94 个问题、530 万 token 和 309 个代理分钟，大约每次 11.6 万 token、七分钟。每个问题都附带默认答案；43 次重新启动里有 31 次在两分钟内开始，默认答案多半是被组织线程而不是他自己收下的；43 次里有 42 次又重新做了计划，于是花在计划上的 930 万 token 里有 530 万买到的是几乎总会重做的计划。审计代理逐条看过这 94 个问题，大约 35% 真正该由他来定，大约 30% 是主导者自己就能定的细节，大约 20% 是简报里已经划过的范围，大约 8% 是简报里的真实漏洞；这一划分应看成粗略估计。实现代理在全部 108 次里只停下来问了 12 次，主导者回答这些问题一共花了 32 万 token。在真正写出东西的循环里：做过计划的 34 次中，32 次有第一次审查结果，其中 17 次（53%）出现由主导者确认的阻塞级或重大发现，中位数约 79.1 万 token、49 分钟；没做计划的 16 次中，14 次有第一次审查结果，其中 6 次（43%）出现同类发现，中位数约 32.4 万 token、18 分钟。这不是干净的对照：没做计划的 16 次多半是后续修补，其中 10 次属于同一个登录功能。作者能说的更窄：没有看到计划让 Sonnet 的第一稿变得更好；做过计划的循环大约多花 2.4 倍 token、2.7 倍分钟，缺口多半来自任务本身更大，计划步骤的中位数是 11.4 万 token。49 次编写里有 15 次把实现代理的努力程度设成中等。写出东西并接受第一次审查的有 46 次，其中 23 次出现由主导者确认的阻塞级或重大发现：OldMate 20 次里有 17 次，ManyCP 9 次里有 3 次，TrustAudience 17 次里有 3 次。OldMate 的 20 次审查里有 15 次来自更严的设计审查者，这 15 次全部找到了阻塞级或重大问题；换用标准审查者时 OldMate 是 5 次里有 2 次。实现代理出过错包括：前三条验收标准根本没做、类型检查看起来是绿的其实是构建缓存重放、大约 80 张过期的证明截图，却仍然汇报做完了。10 月 2 日他自己看过新登录页的截图后说「看起来拥挤得可怕」，那两屏刚结束一轮 93 分钟的修复、又在另一轮 197 分钟的修复中途，随后的重做丢掉了步骤条、优惠卡片和按钮上方的同意勾选，大约五小时循环花在后来被换掉的屏幕上，两次重做本身又各花了 272 分钟和 258 分钟。更早些时候，在 9 月 28 日一次还没有写成脚本、也没有轮次上限的 DimeTown 会话里，一处音频 RangeError 的第一份提交只改了一个文件的 +19/−4 行外加 128 行测试，第一轮审查没有找到高于轻微的问题；按他自己当时的规矩本应结束，循环却又跑了六轮、三小时。其中两轮找到的阻塞级或重大问题都来自上一轮的修复；第 2 轮的修复弄坏了 58 个截图测试里的 8 个，第 6 轮改过的一条测试即使删掉它在检查的列表也会通过。最终合入的提交改了四个文件，+705/−20 行，其中 597 行是测试，改动规模从大约 151 行长到 725 行。到达就绪的 41 次循环里，有 32 次在两轮或更少轮次内结束。延误也不全来自模型：9 月 29 日到 10 月 3 日，权限分类器在三个仓库里拒绝了大约 40 个动作，一处九分钟就能改完的部署工作流从 22:43 的拒绝到第二天下午推送用了 14 小时 35 分钟；10 月 1 日电脑睡了大约一小时，所有进行中的代理都停住了。审计之后他把计划改成默认关闭、只有简报要求时才做；只有涉及钱、隐私或法律主张、凭证或安全，以及不可逆或会公开的事情才允许停下来问他。此后那一小段循环里，还没有再次停在计划步骤，样本太少，还不能据此判断质量。文末给出可复制的代理文件要点，站点导航另有 Newsletter。不代你换成「Opus 计划、Sonnet 实现」就等于第一稿更好，或 108 次循环里的 token 比例可以原样搬到别的产品。",
     description:
       "面向已经把计划、实现和审查拆成多个代理循环、却还没数过 token 和时间到底花在哪一步的人：把「第一次编写往往不是最贵的一步；计划步骤提出的问题大多不该拦住整次运行；审查轮次没有上限时，修复本身会制造下一轮的发现」写成门禁，区别于把第二个引擎写成按提交绑定的只读门禁，以及按已合并 PR 去算单位成本。",
@@ -39211,7 +39211,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "583",
     slug: "cameron-westland-prompt-cycle-40-prs",
-    title: "Cameron：从第一条提示词开始计时——一周合并 40 个 PR，中位数 1 小时 11 分",
+    title: "第一条提示算起的交付计时",
     summary: "个人（作者以 Cameron Westland 之名发表）；披露自己不再满足于从第一次提交开始计算交付时间。他现在的工作常常是：从 Linear 工单取出分支名、建好 worktree、打开 Claude Code 会话并贴上工单链接，第一条消息通常是让代理去读工单和上下文、先做计划再讨论。对他来说，工作是从「我们来做个计划」这句话开始的，而不是从第一次提交开始；提交出现得更晚，中间还有探索、讨论、死胡同和返工。传统的 DORA 变更前置时间从第一次提交计到生产，精英门槛是不到一天，但在这种工作方式里，第一次提交更接近收尾而不是开始。Claude Code 会把会话历史存成 ~/.claude/projects/ 下的 JSONL，每条消息都有时间戳；他又习惯让 Claude Code 去开 pull request，于是会话里会留下 GitHub 地址。测量于是变成：在会话文件里找出 PR 地址，取出该会话第一条消息的时间戳，再向 GitHub 查询这个 PR 何时合并，计算两者的间隔。他写了一个 bash 脚本来做这件事，花了大约两小时，并且用 Claude Code 帮忙写成。统计当周（文中示例为 1 月 26 日到 2 月 1 日那一周）合并的 40 个 PR，全部由 Claude Code 会话发起：平均周期 5 小时 10 分，中位数 1 小时 11 分，最快 9 分钟，最慢 1 天。分布是双峰的：12 个落在 30 到 60 分钟，属于小修复和小功能；16 个超过两小时，需要来回讨论。更细的分桶是：不到 15 分钟 2 个，15 到 30 分钟 3 个，30 到 60 分钟 12 个，1 到 2 小时 7 个，超过 2 小时 16 个。前一周类似：31 个 PR，中位数 2 小时 14 分。他们持续部署，合并之后只要测试和功能开关允许就进入生产，所以终点和 DORA 一样是生产，起点改成了第一条提示词。作者说自己并不想拿来和别人比，更像健身记录：能不能把工作切得更小、自己有没有变快、慢在哪里。他也提到常见的反对意见，即有人会为了数字把一次逻辑改动拆成五个 PR；他认为更小的 PR 更易审查、风险更低、合并更快，真正毫无意义的改动在公开的 PR 里很难长期存在。他不太确定这套量法是否适合团队协作或需要在人与人之间交接上下文的结对；自己量到的只是个人工作流，而且他的 PR 全部从 Claude Code 开始。文末公开了脚本的 GitHub Gist，并写需要已登录的 gh。正文以个人周期测量收尾，未见产品标价、咨询入口或通讯硬销。不代你把中位数 1 小时 11 分写成组织级交付 SLA，或把从提示词开始计时直接拿去和从提交开始计时的数字做横比。",
     description:
       "面向已经让代理从工单做到开 PR、却还在用「第一次提交到生产」衡量快慢的人：把「工作往往从第一条提示词开始；只从提交起算会漏掉计划、讨论和死胡同」写成门禁，区别于去量一个大约 97 人组织里首次人工审查要等多少分钟，以及按已合并 PR 去算单位成本。",
@@ -39300,7 +39300,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "584",
     slug: "codecentric-16000-tests-4days-82pct",
-    title: "codecentric：四天写出约 16,000 条新测试——三人把行覆盖率从约 58% 做到 82%",
+    title: "接手遗留代码库补测试锁现状",
     summary: "团队（Selvarajah Sivarupan、Kai Lüttmann 与 Carsten Rohrbach 以 codecentric 之名发表）；披露他们为客户接手前一家服务商留下的代码库：多年叠起来的后端、前端、批处理和各类服务，其中光是中央后端就有七十多个项目、将近 35 万行生产代码。测试并非完全没有，但有不小一部分已经无法无错运行，而且没有自动化、也没有在持续集成里定期执行，衰退因此没人看见。他们先修好所有失败的测试，建立起稳定基线：大约 58% 的行覆盖率，6,646 条测试。目标是 80%。目标不是证明现有生产代码正确，而是先用测试把现状锁住，以便以后改生产代码时更容易发现意外变化。第一次提示词写得很宽：给解决方案里所有项目写单元测试，把目标设成 90% 以便留下删掉差测试的缓冲，并且不得改生产代码。Claude 先自己写了一套量覆盖率的代码，尽管项目里已经有现成方法；他们当时没当回事，后来证明这是个错误。代理一轮轮生成测试，每一轮新增覆盖越来越少，当新增低于 0.1% 时他们停了下来。数小时运行和大量 token 之后，覆盖率大约只提高了 2%，同时多出了数千条新测试。事后分析有两个原因：代理没有识别哪些路径已被现有测试覆盖，于是大量重测已经覆盖的情景；把这么大的代码库放进单次运行，上下文也装不下。他们改成先拿一个完全没有测试的项目上手，并用内置的技能构造器去看现有测试项目，归纳基类、所用框架（xUnit、FluentAssertions、NSubstitute）、测试结构和命名约定。在这个收窄的上下文里把技能打磨到该项目达到良好覆盖，单个项目的行覆盖率达到了 80%。随后是四个密集工作日、三个人，大约 15 次提交去增量改进这个技能——不是事先想好理论，而是每次真实运行里暴露出的问题立刻写回技能。整个 .NET 解决方案一共 72 个项目。起初三人一个一个项目地补测试，每人每个项目大约要 2 到 3 小时，大部分时间在等待，于是改成并行。他们让主代理编排子代理，每个测试类一个子代理、使用 Sonnet，并行上限为 8 个。笔记本硬件仍有余量，于是三名开发者各自同时在两个或更多 git worktree 里跑不同项目；六个 worktree、每个最多 8 个代理，峰值达到 48 个代理同时写测试。四天结束时，行覆盖率从 58% 提到 82%，新写出的测试超过 16,000 条。过程中他们还遇到 .NET 特有的覆盖率测量问题：编译器为异步方法生成的状态机带着 CompilerGeneratedAttribute，直接排除会让异步方法体从报告里消失，覆盖率被抬高；他们后来用脚本在生成报告前清理 Cobertura 文件，并另写一个小工具按未覆盖行数排序，列出每个文件当前覆盖率和缺失行。最初用 Haiku 生成测试更便宜，但结果不够稳，省下的钱被额外纠正抵消，于是改成 Sonnet。API 费用合计大约 1,500 美元。他们给技能补充了规则，避免只验证「端点能调用且不报错」、反例只检查「会抛出某个异常」这类空洞测试，并给生成的测试加上自定义的 [AiGeneratedTest] 属性，以便日后重构时区别对待。作者写明：人工智能没有在无人看管的情况下自己达到 80%；清理和识别缺口的手工脚本是必要的；没有更精确的规则时，Claude 容易写出内容很少的测试；生成的测试名往往又长又技术，并且紧贴被测代码的逻辑。页内有「还有问题就给我发消息」以及联系、服务等入口。不代你四天复制 16,000 条测试或把覆盖率做到 82% 就等于生产逻辑已被有意义的断言锁住。",
     description:
       "面向刚接手大面积缺少可用测试的遗留仓、又打算用代理去补单元测试基线的人：把「先收窄到一个项目并沉淀技能，再按类并行；覆盖率数字必须来自可靠的测量，空洞测试要从技能里排除」写成门禁，区别于一次清掉数千条静态分析债务，以及去量测试输出吃掉多少 token。",
@@ -39390,7 +39390,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "585",
     slug: "ryantsuji-aircloset-cloud-cost-gates",
-    title: "Ryan：实现变便宜之后，决定本身成了贵的东西——Cloud Run 按实例计费降了 84%，镜像存储降了 65%",
+    title: "合并时的门与每日云花费可见",
     summary: "团队（Ryan Tsuji / 辻亮佑以 airCloset CTO 之名发表）；披露他们花一周时间盘点内部人工智能平台的云账单。先讲结果：Cloud Run 按实例计费降了 84%，作为金丝雀先改的那一个服务单独降了 44%；重新考虑镜像保留多少代之后，容器镜像存储降了 65%。作者写真正最要紧的不是某一刀切下去的费用，而是合并时的门和每天的可见性。起因是几次改动之后，按量计费的支出比预期长得更快，主要是 BigQuery 扫描量和 Vertex AI / Gemini 调用。事后却很难把费用归到具体应用：多个应用跑在同一个服务账号下，只看执行主体分不清是谁花的。既然事后分不清，就改在入口拦住。他们给人工智能审查者加了成本维度，但金额计算不交给模型：模型只负责读出扫描量、调用次数、token 数这类数量，换算成钱和是否越过阈值由确定性脚本完成。单价来自实际账单导出（花费除以用量），而不是价目表，以免美元、汇率和承诺使用折扣三处同时偏离。阈值有三档：日常增加约每天 2,000 日元（约 13 美元）、单次执行约 10,000 日元（约 65 美元）、存储每月增加约 1,000 日元（约 6 美元）。存储单独设阈值，是因为停掉作业，日费用可以回到零，写下去的数据却会一直计费。每天两次把各应用费用发到 Slack；没有越过阈值的日子也要发，好让人分清「今天没事」和「报告坏了」。对比用上周同一工作日，而不是昨天，以免星期一每次都被当成尖峰。上周没有数据的应用也当成增加，免得新跑起来的批处理被百分比计算丢掉。对按量计费的服务还加了天花板：BigQuery 按需默认上限是每项目每天 200 TiB，按每 TiB 数美元估算，这个默认值意味着一天可以花到上千美元级而没人听见；他们把扫描量上限设在通常用量的大约 1.5 倍。作者写明这只适用于允许停下来的内部基础设施，用在面向顾客的路径上就会变成故障。Cloud Run 有两种计费：实例级（CPU 一直分配）和请求级（只在处理请求时分配）。他们 97% 的 Cloud Run 花费落在实例级。仓库里多数服务定义根本没写 cpuIdle；用控制台或 gcloud 部署时默认是更便宜的请求级，用基础设施即代码写明资源后，cpuIdle 却会落到 false，也就是更贵的一侧。名字也容易读反：cpuIdle 为 true 才是请求级。判断被收成一个问题：这个服务是否在返回响应之后还继续干活。先改的那个服务单独降了 44%，铺开后实例级计费降了 84%，除了少数 fire-and-forget 服务外都已切换。随后加上持续集成守卫：没写 cpuIdle 的服务定义会失败，即使显式写成 false 也算违规，真正需要常驻 CPU 的服务必须写进允许名单并说明理由；他们还会故意提交一处违规，确认构建真的会失败。容器镜像从保留 10 代改成保留 2 代，存储降了 65%。作者写这个数字无法只从数据里看出来：镜像不是为了回到历史上任意一天，而是紧急时快速回到上一版；代码仍可以从 git 恢复再部署。持续集成侧，人工智能审查让往返更快更勤，他们量到每个 PR 平均 3.4 个往返（一次指出再推一次修复算一轮），每轮重活 6.8 分钟，也就是审查还没收敛时已经把同一套重测试付了三四遍。于是每次推送只跑 1.2 分钟的轻量检查，审查批准后再由机器人触发重活：3.4×6.8 分钟变成 3.4×1.2 分钟再加一次 6.8 分钟，大约少 53%。第一次有人想在同一工作流里用条件跳过重活，但这会让分支保护把跳过当成通过；他们改成重活单独工作流、只由 workflow_dispatch 启动，未启动就等于检查不存在，合并会被挡住。文档专用 PR 约占最近合并的 4%，每次可省大约 300 秒重活；若为此单独加一个检测作业，所有 PR 都要多付大约 25 秒启动费，期望值上不划算，于是检测留在已有作业里。他们还写到 BigQuery MERGE：表还小时看起来几乎不花钱，数据长大后每次仍会扫描目标表，而代码没改，合并时的门也看不见它。一部分去重被挪到 Firestore，BigQuery 只做插入。正文以内部平台这一周的账单和机制收尾；原站导航见 About，未见咨询或商店硬销。不代你改一个 cpuIdle 就等于云账单降 84%，或把 1.5 倍配额用到面向顾客的路径上。",
     description:
       "面向实现明显变快、云上按量费用却更难归到具体应用的人：把「合并门口要用确定性脚本算钱；每天都要发报告，包括无事的日子；默认值落在更贵一侧时，更快地发布会自动堆积负债」写成门禁，区别于去优化某台云主机账单，以及把持续集成从十几分钟赶到一分钟以内。",
@@ -39479,7 +39479,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "586",
     slug: "ibrahimdans-i18n-mcp-tools-ignored",
-    title: "Ibrahima：给 Claude 接上十个翻译工具——六次里有两次一次都没调用",
+    title: "JetBrains 翻译工具调用实测",
     summary: "个人（作者以 Ibrahima D. / ibrahimdans 之名发表，LinkedIn 写作 Ibrahima Dansoko）；披露自己维护一款面向翻译键的 JetBrains 插件，通过 IDE 的 MCP 服务器向代理开放十个工具：列出缺译、写入、检查文件、重命名键等。他原先以为代理若亲手改语言文件，就会改掉不该动的旧值、途中丢掉 {{name}} 这类占位符，所以才做了这些工具，但他从没量过，于是量了一次。实验用的是一个小型 React／i18next 应用，五个命名空间，英文参考里有 54 个键：法语已有 44 个、缺 10 个，西班牙语已有 26 个、缺 28 个，意大利语从零开始缺 54 个，合计要写入 92 个值，另有 70 个已有值不得改动；缺译里包含 {{name}} 占位符、_one／_other 复数对、标签和换行。提示词每次相同，并且从不提起任何工具名，只要求把法、西、意里缺少的键按英文补齐。每一次都是在一份新拷贝上开一轮无头会话：Claude Code 2.1.319、Sonnet 5.5，只允许 Read／Edit／Write／Glob／Grep，打开沙箱，不持久化会话。有工具的那几轮再加上 MCP 配置，并把这十个工具名列入允许清单。跑完后用脚本对照每一个文件：写入了哪些值、改动了哪些旧值、占位符和标签是否还对得上英文；时间、费用和轮次取自会话自己的报告。他先只给文件、不给工具，跑了三次：三次都写全了 92／92，占位符和标签一次都没丢，复数成对出现；只有第一轮改动了一处已有值——法语文件里 login.title 原本是英文的 Login，代理改成了 Se connecter，并在小结里坦白写了出来。作者认为这句法语大概对，但他要求的是补缺，不是改已有文案；在真实项目里，Login 也许就是产品定下的词，而在新增 205 行的 diff 里，这一行很容易被漏看。三次耗时 57 秒、57 秒和 85 秒，费用 0.20、0.19 和 0.27 美元，轮次为 33、8 和 30。有 MCP 服务器的六次里，有四次代理真的调用了工具：同样写全 92／92，旧值一处未动，耗时 25、22、25 和 35 秒，费用 0.14、0.13、0.13 和 0.15 美元。平均下来是 27 秒对上没有工具时的 66 秒，0.14 美元对上 0.22 美元。记录显示代理不再打开 JSON 文件，而是按语言向工具要一份缺译清单，再按语言把译文送回去，由插件写入；作者估计输出 token 大约从 10,000 降到 4,000。他亲手试过写入工具会拒绝什么：已填且并非过期的键（也就是上面那次 Login 改写）过不去，占位符和源文不一致也过不去。另外两次服务器已接通、十个工具也在会话的工具列表里，代理却自己动手写文件：两次都没调用任何工具，各改动了一处已有值，耗时 70 秒和 67 秒，费用 0.23 和 0.24 美元，把 Login 分别写成了 Se connecter 和 Connexion。作者判断这和 Claude Code 加载 MCP 工具的方式有关：它不会一开始就载入全部定义，用了工具的四次都先做了一次按名字取定义的搜索，没用的两次从未搜索。他随后在项目里加了一行 CLAUDE.md，要求翻译文件走 i18n_* MCP 工具、不要直接改 JSON，又用同一提示词跑了三次：三次都调用了工具，耗时 26 到 30 秒，每次 0.13 美元，已有值一处未动；样本从六次里四次变成三次里三次，作者写明三次证明不了多少东西。他顺便量了 IDE 里全部 119 个工具（数据库、调试器、终端、Git 等）的体积：定义大约 236,000 个字符，自己这十个占其中 9,146 个；第一轮上下文没有服务器时是 20,556 个 token，接上服务器后是 22,879 个，也就是 119 个工具只多了 2,323 个 token。工具之所以便宜，正是因为按需加载；它们会被忽略，也是因为按需加载。代理独自读文件时有两处反而更好：已有法语文件把 trustee 留在英文、西班牙语把 Dashboard 写成 Panel，不靠工具的三次都沿用了这两处习惯；走工具的七次里，有六次自行把 trustee 译成 fiduciaires 或 personnes de confiance，有三次写成 Panel de control，而文件里已经是 Panel——占位符完整，工具也就没有拒绝。空文件上，工具按字母序写入，英文参考则是 login 在 errors 前面，代理独自写文件时抄了参考顺序。作者写明这是一个下午的测量，不是对 Claude Code 的基准：十二次会话、一个模型、54 个键的小项目；有工具以外的五次里，有四次沙箱拒绝了两三条命令；他没有给译文打分；这些工具还需要在项目上开着 JetBrains IDE。文末介绍插件 I18n Support Plus（MIT，需 2025.2.6 或更新），给出 Marketplace、GitHub 源码与文档，以及 MCP 连接命令，并邀请到 LinkedIn 交流。不代你接上 MCP 翻译工具就等于代理每次都会调用它们，或一行 CLAUDE.md 就能在更大项目上得到同样的比例。",
     description:
       "面向已经给编码代理接上 MCP 翻译工具、却还没数过它到底有没有调用这些工具的人：把「工具在会话里可见，不等于会被搜索并调用；代理亲手改文件时，也可能改掉你并未要求动的已有译文」写成门禁，区别于把本地化做成一次抽字符串流水线，以及把工具清单当成代理已经会遵守的保证。",
@@ -39568,7 +39568,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "587",
     slug: "skuratovicha-code-graph-none-helped",
-    title: "Aliaksandr：代码图谱插件基准召回 87%——真任务上四个工具都没帮上忙",
+    title: "自建代码图谱的真任务对照",
     summary: "个人（作者以 Aliaksandr Skuratovich / skuratovicha 之名发表）；披露自己觉得编码代理每次会话都要从 grep 和读文件开始猜改动会影响什么，于是在 2026 年 10 月 28 日动手做了一个叫 gsttt 的代码图谱工具，用 Rust 写成，代码多半由 Claude Code 来写。它不只看 import，还把软件包之间的契约当成边：HTTP 路由、GraphQL 操作、数据表、队列和环境变量。他先在自己写的多语言夹具上准备了十四个带真相列表的问题，平均召回是 gsttt 87%、GitNexus 73%、codebase-memory-mcp 72%、Graphify 46%。在开源 TypeScript 单体仓 Amplication 上，TypeScript 编译器也列出了 gsttt 为 200 个随机方法找到的调用方里的 97.3%。他随后意识到：夹具和问题都是自己知道 gsttt 能做什么才写的，这种基准量的是工具是否做了它被设计去做的事。于是改用真工作来测：九个已合并的改动，五个来自 Amplication，四个来自私有单体仓；每次给代理一份从提交说明改写的工单，再把它的 diff 和真实 diff 对照。模型是高努力程度的 Sonnet 5.5，这一段一共 99 轮。只安装工具、不在工单里点名时，代理从未调用 gsttt：36 轮里 0 次，作者自己 107 次真实会话里也是 0 次。工单里加一句「用 gsttt 找出这次改动会影响什么」之后，27 轮全部调用了它，结果却是多 4.4 轮、大约多花 4% 的钱，对真实文件的召回是 0.64，对照则是 0.66。他试过用技能文本说明何时调用、把答案改成函数而不是文件、把答案做得更便宜、把提示放进计划步骤和结束时，都没有超出噪声。离线对照 420 次提交时，同样长度的列表上，git 共同变更历史比 gsttt 多找到 13 个百分点的真实文件。作者怀疑这些都是小提交，于是又拿一个跨多个软件包的大任务，把四个工具放在一起跑。任务来自一个私有 TypeScript 商业产品单体仓：给年付周期加上折扣，真实 diff 是 36 个文件、+1,183／−96 行，触及价格计算、支付集成、结账服务、两边的 GraphQL 契约（再生成到三个软件包）、方案选择器、定价区和五种语言的译文，以及测试和一份 OpenSpec 变更提案。仓库有六个软件包、2,809 个被跟踪文件、大约 28.2 万行 TypeScript；作者从该仓库 377 次有记录的会话里，挑了四个至少改了八个文件、跨三个软件包、且当时没使用任何图谱工具的任务中最便宜的一个。原先那次会话用的是 xhigh 努力程度的 Claude Opus 5.5，57 轮、15 个子代理，费用约 8.10 美元，并且还提交并开了拉取请求。每次都在一份只有父提交的新仓库里开始，代理没有网络、也不能读文件夹以外的东西；工单 335 个词，统一用 Claude Code 2.1.318、xhigh 的 Opus 5.5，上限 15 美元。四个工具的版本是 gsttt 0.1.196（Apache-2.0，当时 0 星）、CodeGraph 1.6.2（MIT，约 7.7 万星）、Graphify 0.9.102（Apache-2.0，约 14.2 万星）和 GitNexus 1.6.12（PolyForm Noncommercial，约 4.8 万星）。机械核对包括三个软件包的类型检查、服务端和客户端测试、GraphQL schema 与已提交版本对照、真实改动里留下的九个保留测试文件，以及一份 16 项、盲评的对照清单。不加载作者日常配置时，三个基线平均 11.43 美元，四个工具各跑一轮平均 11.66 美元；加载作者自己的 agorch、superpowers 以及原先那次会话用过的插件和规则后，五个基线平均 8.01 美元，gsttt 两轮平均 9.38 美元，Graphify 三轮平均 9.01 美元，CodeGraph 两轮平均 8.65 美元，GitNexus 两轮平均 8.56 美元。质量几乎顶格：对真实 diff 的文件召回是 1.00（有一次 0.97），清单 16／16，类型检查通过，GraphQL schema 与真实版本一致；那九个保留测试每一次都失败，因为它们钉死了原作者起的名字。和加载配置后的基线相比，四个工具分别大约贵 1.36、1.00、0.64 和 0.55 美元，都落在噪声里——三个裸基线彼此已相差 1.12 美元，同一工具跑两轮的差距从 gsttt 的 0.13 美元到 GitNexus 的 2.32 美元。作者自己的 gsttt 平均最高，且两轮都做了两轮审查，他提醒读者据此权衡。这些工具并非没被使用：Graphify 会写入一条要求先查询再 grep 的规则，代理的第一条命令就是 graphify query；CodeGraph 的钩子在第一轮提示注入 9,223 个字符，代理两次调用 codegraph_explore，每次回答大约 23,000 个字符，这一轮也是十二个裸跑里最贵的，12.37 美元；GitNexus 调用 impact 十二次，并在 90 次 Bash 里的 10 次附上钩子说明；gsttt 不往仓库里写任何东西，代理调用了三次 impact。真正移动账单的是配置和审查：加载作者日常配置后，同一任务大约便宜 3.42 美元，也就是约 30%，因为他的说明会把审查和实现代理指到 Sonnet——加载配置的 14 轮里 43 次审查启动都带上了 model: \"sonnet\"，不加载时 40 次里有 34 次跑在 Opus 上。审查轮次从一轮到两轮，基线平均从 7.35 美元升到 9.00 美元，带工具的从 7.90 美元升到 9.42 美元，大约两美元，超过任何工具带来的差异。作者写明这是一个任务、一个仓库、一个模型，没有统计检验；清单由另一个代理盲评；他是 gsttt 的作者。文中给出 gsttt 以及三个对照工具的 GitHub 仓库，并写明若要复现，应先把基线至少跑三轮。不代你给代理多装几个代码图谱插件就等于更能找对文件，或更能省钱。",
     description:
       "面向已经给编码代理接上代码图谱或影响分析插件、却还没在自己的真实改动上对照过基线的人：把「基准上更高的召回不等于代理会调用它，也不等于真任务会更便宜或更准；账单往往随审查所用的模型和轮次而变」写成门禁，区别于盘点 harness 里有多少零件，以及按计划、实现和审查去数 token 比例。",
@@ -39657,7 +39657,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "588",
     slug: "dave-rix-aws-estate-53-state-files",
-    title: "Dave：53 个还停在 0.11 时代的 Terraform 状态文件迁到了 v4——生成脚本自己写出了类型错误",
+    title: "Terraform 状态升级类型错误",
     summary: "个人（作者以 Dave Rix 之名发表）；披露自己在自家基础设施上做了一轮庄园现代化，包括这个站点本身，全程把 Claude Code 当作工作工具。他写明这是真实、端到端、且只涉及自己庄园的一次演示，因而对客户也安全可讲。起点是一个分成模板、可复用模块和环境参数的三仓库 Terraform 平台，管着两个账户里的 AWS 基础设施，各层都已落后：操作系统、语言运行时、内容管理和 Terraform 状态都停在旧版本。状态文件仍是 Terraform 0.11 在 2019 年到 2020 年写下的格式第 3 版；同一台主机上还有六套各自独立部署路径的 WordPress，升级期间都得能继续工作。一个架构细节影响了全程：每个模板栈的 provider 配置都是指回同一份规范文件的符号链接，版本约束只存在一处、一改全改。他要升级的是：全部状态文件从格式第 3 版到第 4 版，AWS provider 从 5.x 到 6.0，Terraform CLI 约束从开放的 >= 1.9.0 收到钉死的 ~> 1.15.0，操作系统从 Amazon Linux 2 到 Amazon Linux 2023，PHP 从 7.3 到 8.3，WordPress 从 6 到 7（含主题和插件）。顺序是先做状态和基础设施即代码，让部署过程先上到新工具，旧系统和站点继续跑；再用 Packer 烘焙新的 AMI，把工具链和新的 PHP 烤进去；把新镜像转到正在工作的站点上确认网站仍可用；最后才升级 WordPress 的核心、主题和插件。最费事的是状态迁移：两个账户的 S3 里一共 53 个状态文件都还停留在格式第 3 版，必须先迁到第 4 版，现代 provider 栈才会接受。一份 Python／boto3 脚本负责原地迁移，并在同一轮里批量更新 DynamoDB 里的摘要。这次迁移接连露出几种不同的失败，每一种都得理解而不是绕过：状态锁表里存着每个文件的 MD5，补丁打到 S3 上就会让摘要失效，下一次 plan 报状态内容不符合预期，修复模式是改文件、重算 MD5、再更新 DynamoDB，每个被动过的文件都要走一遍；迁移脚本曾把所有 output 都写成 string，其中两个其实是列表，直到 plan 时报状态里保存了无效值才暴露，修复是改类型元数据并拆开一层多包的值，然后再更新一次摘要——作者写明这是生成脚本自己的缺陷；Terraform 1.10 之后 S3 后端不再使用 dynamodb_table，改成 use_lockfile = true，每个已初始化的工作区都报后端配置已变更，正确做法是 terraform init -reconfigure，而不是 -migrate-state，因为状态并没有搬家，只是锁机制变了；较新的 Terraform 会严格校验后端 schema，两个 terraform_remote_state 块顶层的 role_arn 过去被默默忽略，现在会被拒绝，另外还得删掉已弃用的 acl；更早一次把 aws_alb* 重命名为 aws_lb* 时加的 moved 块其实无效，AWS provider 把这些别名当成真正不同的资源类型，不允许跨类型移动，作者没有在生产状态上做手术，而是把重命名整个撤回去。AWS provider 6.0 的跳跃本身几乎是机械的：对照升级指南先审计一遍之后，代码库已经干净，用不到的破坏性变更或者早就处理过，扫描标出的两处仔细读完也是虚惊；于是改动收成对那一份规范文件的一次编辑，再加上对全部 34 个模块做一次 find | xargs sed。CLI 约束被故意收到补丁级的 ~> 1.15.0，而不是更松的 ~> 1.15，让约束陈述实际在跑的版本。这几处机械改动又翻出三个原先就在的问题：一段名为 depends_on 的变量其实是死代码，因为 depends_on 是保留的元参数，以前提交时没有强制跑 terraform validate，是预提交钩子抓住的；一份很久以前被强制加进 git、却写在 gitignore 里的旧 .terraform.lock.hcl 在干净的 CI 检出上按旧 provider 钉死，删掉才修好；terraform-docs 预提交钩子会在约束变更时重写每个模块的 README 并拒绝这次提交，34 个模块上这是可以预期的两轮提交，不是故障。操作系统和运行时必须一起走，因为 Amazon Linux 2023 不再带 PHP 7.x；WordPress 6.x 支持 PHP 8.3，站点配置在网页服务器指到新的 PHP-FPM 套接字之后就带过去了，作者提醒 PHP 8.x 对已弃用函数更严，旧插件要在切换前检查。网页升级器因为性能和超时不好用，WordPress 6 到 7 是用 wp-cli 做的；版本检查曾把 6.5.8 报成最新，于是需要 wp core update --version=7.0.0 才能绕过过期检查。做法是先升级一套不那么关键的站点，跑数据库更新，再更新主题和插件，确认过程平稳之后再一套一套做完，作者写这只花了几个小时，每个站点升级后都经过测试，以确认没有严重问题。校验上，Terraform 管理的基础设施每次改动都必须回到「无变化」，除非是轻微且不影响功能的差异；新 AMI 先加入构建、推出，并确认现有网站仍可用才继续。顺手把背后的 EFS 从突发吞吐改到弹性吞吐，各站点性能明显提升，新镜像还从 x86_64 换到了 arm64（Graviton）；弹性模式明显更贵，作者后来决定尽量把内容搬离 EFS 并改回突发模式，细节留到另一篇文章。庄园打开期间，一次自主安全审查读了 70 多个文件，给出二十来条不同严重程度的发现，覆盖持续集成配置、IAM 范围、加密默认值和一些遗留脚本习惯，这些发现另行跟踪修复，文中没有逐条展开。按作者的数字：53 个状态文件完成格式迁移；27 个资源栈在两个账户里走完 init、plan 和 apply；34 个模块为 provider 和 Terraform 约束做过更新，一次升级大约动到 69 个文件，并收成紧密的两次提交；整段从 0.11 时代的状态走到 provider 6.0 和 Terraform 1.15，他保守估计是两到三天专注的、有 Claude 协助的会话。作者把加速之处和必须纠正之处写得很清楚：工具擅长跨许多文件的批量操作、安全审查的广度、编写并调试状态迁移脚本、在未被告知的情况下推断出符号链接结构，以及在 27 个栈上跑 init／plan 循环、识别每一种失败并修掉；它也会在作者已经自己处理凭证时还去推断执行配置，在只需要 -reconfigure 时建议 -migrate-state，在自己生成的脚本里引入直到下一步 plan 才暴露的 output 类型错误，在发现无效之前先写下 alb 别名的 moved 块，偶尔读错本地缺失的二进制、或以为会话中途改的设置不用重启也会生效。模式是：纠正集中在工具想代作者解决本该交给人的事情，以及生成代码里那些只在下游一步才暴露的缺陷；加速则集中在重复的多文件操作和需要广度的研究。文末没有在正文里做商店推销，站点导航另有 Contact，联系页写明承接 AWS 迁移、平台工程和顾问等工作。不代你把有状态的生产庄园交给代理无人看管地升级，或假定生成的迁移脚本不会写出只在下一步才暴露的错误。",
     description:
       "面向已经让编码代理参与 Terraform、运行时和 CMS 升级、却还没把有状态的失败当成必须人看懂的人：把「状态摘要、锁机制和生成脚本里的类型错误不会在测试夹具里先出现；代理加速的是广度和重复劳动，判断、顺序和最终审查仍归人」写成门禁，区别于前端框架迁移、小型 Java 服务升级，以及按云账单去砍费用。",
@@ -39746,7 +39746,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "589",
     slug: "adrian-vale-2688-plugins-startup",
-    title: "Adrian：读了 2,688 个公开插件——约 30% 的仓库会在你打字前就跑东西",
+    title: "打字前自行执行的公开插件",
     summary: "团队（作者以 Adrian Vale 之名发表，并写明自己参与运营 AgentCraft）；披露他们在安装一个 Claude Code 插件之前，应先打开它目录里的 hooks/hooks.json、.mcp.json 和 bin/，重点看 SessionStart 钩子，以及用 npx 或 uvx 启动、却没有写版本号的 MCP 服务器。文档写得很直接：你安装的插件可以在你的机器上、以你的用户权限执行任意代码。四类东西会自己启动：SessionStart 钩子在会话开始时跑 shell 命令，其纯文本输出会进入 Claude 的上下文，并且 Claude「能看见并据此行动」；用 command 声明的 MCP 服务器会由 Claude Code 在本机拉起进程；Monitor 是整段会话在后台跑、并把输出发给 Claude 的命令；bin/ 会被加进 Claude 执行命令时的 PATH。这些都在沙箱之外运行，而且安装一个插件同时就会启用它。他们想知道公开插件里有多少会这样做，于是读了 1,961 个仍活跃的公开仓库里的每一个插件。GitHub 代码搜索能找到 34,157 份插件清单（filename:plugin.json path:.claude-plugin），每次查询最多 1,000 条，于是按文件大小切成 40 片，在 30 分钟上限内交替跑完 23 片，覆盖了各个大小区间，得到 17,965 份不重复清单，大约相当于总量的 53%，来自 17,928 个仓库。再筛成至少 5 星、自 10 月 7 日以来有过推送、不是 fork、也未归档：1,964 个仓库，他们读了其中 1,961 个。每个插件都读清单、hooks/hooks.json 和 hooks 键、.mcp.json 和 mcpServers 键、.lsp.json、monitors/monitors.json 和 bin/，以及这些命令点名的脚本；全部文件来自同一提交，一共 2,688 个插件，只当文本读，没有安装，也没有跑。计数以仓库为主：一个仓库里至少有一个这类插件的比例是主数字，因为多数仓库只有一个插件，最大的一个里有 117 个；另外两列是每仓库最多计 10 个插件，以及全部插件，三者接近。结果是：会话一开始就会跑东西（SessionStart 或 Setup 钩子、本地 MCP 服务器，或 monitor）的仓库占 30.4%；SessionStart 或 Setup 的 shell 钩子占 16.0%，其中脚本会写文件的占 6.0%，会联网的占 1.5%；任意 shell 钩子占 22.2%；UserPromptSubmit 钩子（能看见每一条提示，输出进入 Claude）占 8.1%；PreToolUse 占 11.8%；声明了 MCP 服务器的占 26.3%，其中本地进程 18.4%、远程 URL 8.6%；由 npx 或 bunx 启动的占 5.9%，其中未写版本的占 3.9%；由 uvx 启动且未写版本的占 1.4%；任意由包管理器启动且未写版本的占 5.3%；把名字像密钥的环境变量传给 MCP 服务器的占 2.4%；带 bin/ 并进入 PATH 的占 9.5%；附带 mod 的占 5.3%；声明 monitor 的占 0.4%；把 defaultEnabled 设为 false 的只有 0.1%。作者还写了一个快速估计：在这些由 npx 或 bunx 启动的 MCP 服务器里，大约三分之一写了版本——171 个这类服务器里有 112 个（65%）没写版本，用的是 @latest、裸包名或 GitHub 引用；149 个（87%）传了 -y，以跳过 npm 的安装确认。全部 945 个 MCP 服务器里，最常见的是远程 URL（445）、插件里的本地脚本（176）和 npx（164）。例子不点名：多数 SessionStart 钩子用 node、bash 或 python3 跑插件目录里的脚本，文件名类似 session-start、resume-hint 或 context-inject；会在启动时联网的 29 个仓库里，有 26 个对照 GitHub 或 npm 检查更新，有几个和本机自己的服务通信；大约十个提到遥测或分析，作者没有核对这些脚本实际送出了什么。有一个规则检查钩子会用你的 ANTHROPIC_API_KEY 调用 Anthropic 的接口，并送出一段对话让它评判，注释里写明了这一点——它会花掉你的配额，也会送出对话。点到 ~/.ssh 或 .env 的钩子，多数是为了拦住这些路径的防护。按他们的规则标出来的插件，读起来没有一个看起来像恶意软件。作者提醒不要只数组件个数：带二十个钩子的插件可能是仔细的防护，而一个 SessionStart 脚本加上未钉版本的 npx 服务器，才更值得先读。局限也写在正文里：这是约 53% 清单、来自至少 5 星且仍活跃仓库、截至 2026 年 11 月 6 日的样本，反映的是公开插件仓库里有什么，不是人们实际安装了什么；他们只做静态阅读，不知道钩子会往上下文里加什么，也不知道联网脚本送出了什么；未钉版本是风险，不等于已经造成伤害，新版本会不会落到你机器上还取决于包管理器缓存；mod 只计数、分析见另一篇。复现材料写在 plugin-startup-2026-11.json，其中不含仓库和插件名；作者建议在安装前用 claude --plugin-dir plugin details 只读打印钩子、MCP、技能和代理。文末介绍 AgentCraft 技能目录（文中写列有 5,101 个 Claude Code 技能，社区技能上架前会经过审查），并写明检查项收在同一站点。不代你把约三成会在启动时跑东西读成这些插件已经在作恶，或把未钉版本写成供应链攻击已经发生。",
     description:
       "面向已经在给 Claude Code 安装公开插件、却还没打开过它的 hooks 和 MCP 声明的人：把「安装即启用，且启动钩子、本机 MCP 和 bin/ 都在沙箱外运行；未钉版本意味着你审过的文件不用改，新代码也可能在下次启动时到来」写成门禁，区别于外来仓库在信任提示前跑代码、本机会话记录里的明文密钥，以及公司内部的安全审计技能。",
@@ -39835,7 +39835,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "590",
     slug: "julian-weinhuber-js-ts-200-files",
-    title: "Julian：约 200 个文件从 JavaScript 迁到 TypeScript——审查最常抓住的是伪装成类型修补的逻辑",
+    title: "JavaScript 迁到 TypeScript",
     summary: "团队（作者以 Julian Weinhuber 之名发表，机构为 andamp）；披露他们把一个能源行业、已运行数年、承担业务关键路径的内部 React 应用，从 JavaScript 迁到了 TypeScript，作者写大约 200 个文件，并且没有引入缺陷，也没有停下功能开发。前端通过 GraphQL 和后端通信，schema 里多数字段被标成可选；界面组件来自一个不再积极维护的旧库。因为停机或错误数据可能影响面向电网的流程和监管报告，这次迁移的首要约束是不能引入缺陷。这些特点带来三处具体限制：GraphQL 的可选字段必须在不改数据获取逻辑的前提下处理；旧界面库的类型声明和运行时行为对不上，有些实际生效的 props 在类型里缺失，有些写在类型里的 props 其实没有作用；前端测试覆盖有限，只有几百条单元测试，而且多半覆盖的是已经用 TypeScript 写的较新功能，再辅以一套覆盖最相关功能的 Playwright 端到端测试。团队把范围收成只做类型：改扩展名、补类型，不改组件逻辑，遗留的 class 组件和较新的函数组件都不在这次重构。作者写他们已经先给一小部分文件引入了 TypeScript，其余大约 200 个文件仍是普通 JavaScript。最佳做法一开始并不清楚，于是前几批由人手工转换，并作为拉取请求交给团队审查。第一轮审查里沉淀出这次迁移真正使用的约定：GraphQL 可选字段怎么处理、怎样绕开界面库不正确的类型、什么场合可以接受类型断言，以及「不改逻辑」在实践里要严到什么程度。这些约定随后被收成一份专门用于这次 TypeScript 迁移的 Claude Code 技能，之后每一批都从这份技能起步，而不再使用通用说明。划分批次时，他们让 Claude 按三个标准帮助归类：先从较小的文件开始，尽量把被广泛依赖的文件放前面，并按领域把相似文件放在一起；结果写成一份列出每一批及其文件的 Markdown，作为后续每个代理的参考。依赖顺序并未严格遵守：有时不先看见调用方怎么用，就无法正确给共享文件补类型，只能等调用方迁完再回来。并行执行用的是 git worktree，每个批次由一个 Claude Code 代理建立自己的工作区并转换指定文件；他们通常同时跑两到三个代理，以便一直有新的改动可审。主迁移分支不当作转换工作区，只接收已经审查并定稿的批次。每个迁完的文件在转换时会经过 oxlint、oxfmt 和 tsc；一次通过的 tsc 只说明类型一致，不能说明行为等价，因此从未被单独当成足够的证据。一批完成后的固定顺序是：把工作区的改动拉进主迁移分支；逐文件审查——没有行为变化、没有缺乏理由的 any、类型正确且足够具体；做必要的调整；跑完整的 Vitest 单元测试和 Playwright 端到端测试；提交这批定稿，再进入下一批。单元测试和端到端测试是防止行为被改掉的主要自动护栏，但无论流水线输出什么，人工审查仍然必要。逐批看完整 diff，使审查保持可管理，并确保所有由人工智能生成的输出在进入迁移分支之前都经过人看。有两个从第一批手工转换就出现的问题贯穿全程，也没有一次性的修法：多数生成的 GraphQL 类型是可空的，能在不改功能代码的地方用类型守卫或从上下文推断，否则就用断言或强制转换，作者写明这从未被当成最佳实践，只是范围约束下可用的办法；界面库的类型声明和运行时不一致，多数用断言解决，有时也能找到或构造出真正描述该 props 用法的类型。跨每一批最常抓住的审查发现，是人工智能在类型修补的名义下引入小小的额外逻辑，典型例子是给某个 GraphQL 属性加上原来代码里并不存在的 if 守卫。这类改动粗看像合理的类型安全改进，但在「不能引入缺陷」的约束下，多出来的守卫仍是行为变化：原来的代码对那种情况有另一种处理，现在没有了。只要代理引入了这类功能变化，就必须撤回去，这也成了此后每一批最重要的审查事项。过程中的瓶颈始终是人工审查：并行转换并不能并行审查，代理加到审查跟不上新 diff 之后就不再更有帮助。作者把它总结成一套可重复的方法：先手工建立约定，再分批并行，并在每一次合并前保留固定的人工审查。文末写道，若团队也面临一直推迟的迁移，或想讨论人工智能辅助开发在哪里有帮助、在哪里没有，可以 get in touch；站点另有 Consulting／Services 与页脚联系表。不代你用并行 worktree 把约 200 个文件迁到 TypeScript 就等于不会引入缺陷，或类型检查通过就等于行为没有被改过。",
     description:
       "面向已经让编码代理批量补 TypeScript 类型、却还没把「不改行为」写成逐文件审查标准的人：把「tsc 通过只说明类型一致；代理常会在类型修补的名义下加入原来没有的守卫，这类改动必须人撤回去」写成门禁，区别于把整个前端从 Angular 迁到 React，以及同批里有状态的云庄园升级。",
@@ -39924,7 +39924,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "591",
     slug: "tumao-asana-script-vs-mcp-7x",
-    title: "Ondřej：用约 200 行脚本读 Asana——300 张工单上比 MCP 大约省 7.1 倍 token",
+    title: "Asana 整板分析改短脚本",
     summary: "个人（作者以 Ondřej Tůma 之名发表）；披露自己日常用一堆小技能跑工作，其中不少要碰到团队的 Asana 任务板。显而易见的做法是接上 Asana 的 MCP 服务器，作者写它在探索和查找时确实好用，可一旦用到冲刺规划、复盘、待办梳理这类会一次拉过整板任务的分析，单场会话就会经它拉过上百张工单，体感开始变沉。于是他量了一次，并把这条热路径换成约 200 行、直接调用 Asana REST API 的 Python 命令行：输出干净的 Markdown，只保留标题、状态、负责人、真正有值的自定义字段、描述、评论和一条活动时间线。脚本作为子进程跑，代码本身不进上下文，只有标准输出回来；说明它的技能只有几百个 token，而且按需加载。MCP 的成本则来自两处：服务器会注册几十个工具，每份 JSON schema 都要待在上下文里；拉取一张工单时，接口会把原始 JSON 全倒回来——每个嵌套对象带 gid 和 resource_type，所有自定义字段的完整定义（不只是已填的那些），每条评论还有一份和纯文本重复的 html_text。他先拿一张内容很重的真实工单对照：25 个自定义字段、45 条动态（评论加活动）。脚本路径是跑阅读器并记下渲染出的 Markdown；MCP 路径则复现 get_task 加 get_stories 会倒进上下文的内容。作者写这是保守比法：用了压缩过的 JSON 和纯文本评论，而不是 MCP 还会带上的 html_text，所以真实 MCP 转储至少有这么大。字节数是精确的，token 则按 Claude 分词的经验比例估算（散文约 3.9 字符/token，标点密集的 JSON 约 3.3）。这张工单上，技能输出 7,853 字节、约 2,000 个 token；MCP 的 get_task 是 29,035 字节、约 8,800 个 token，get_stories 是 14,250 字节、约 4,300 个 token，合计 43,285 字节、约 13,100 个 token。按字节大约小 82%，按 token 大约小 85%，也就是一次读取大约少 11,000 个 token。作者起初以为贵的是数据本身，结果占主导的是 JSON 的元数据：自定义字段占了 29 KB 任务对象里的 27 KB，大约 93%；每一个字段都会带上完整定义，枚举字段还带着全部选项（其中一个就返回了 23 个），外加 type、gid 和元数据，而技能只把已选中的 display_value 收成一行。JSON 还会在每个嵌套对象上重复 gid／resource_type／resource_subtype，并默认捎上 followers、hearts、likes 等；技能会丢掉禁用或空的字段，并把 HTML 收成 Markdown。一张工单说明不了问题，于是他又从这块共 2,615 张工单的板上，用可复现的随机种子抽了 300 张，并按数据形状分桶：聊天多的定义为 25 条以上动态，字段多为 7 个以上已填字段。按作者估算的每张工单平均 token：轻量 57 张是技能约 970 对 MCP 合计约 10,970，大约 11.3 倍；字段多 29 张是约 1,330 对约 11,350，大约 8.5 倍；聊天多 37 张是约 2,180 对约 14,220，大约 6.5 倍；字段多且聊天多的 177 张是约 2,770 对约 18,400，大约 6.7 倍；全部 300 张平均是约 2,210 对约 15,790，大约省 86%，也就是约 7.1 倍。精确字节上，全部 300 张平均是 8,633 对 52,115，大约省 83%，约 6.0 倍。get_task 几乎不怎么随内容变：大约 9,000 到 13,000 个 token，最轻的一张仍倒出约 25 KB 对象，因为接口会把板上全部约 25 个字段及其选项列表都带回来；get_stories 才会随对话变（安静的工单约 2.5 KB，最吵的约 64 KB）。这块板的中位工单有 34 条动态、9 个已填字段，多数落在「字段多且聊天多」那一行，作者实际天天面对的大约是 6.7 倍／85%，而不是轻量工单闪出来的 11 倍；轻量工单省的比例最大，重工单省下的绝对 token 最多，一张可超过 15,000。300 次读取加起来，走 MCP 大约 470 万 token，走脚本大约 66 万，大约少了 400 万，也就是 86%。作者写明这不是在说 MCP 不好：查找名叫 X 的项目、搜索符合 Y 的任务、这个用户是谁，这类无法预知形状的调用仍该走 MCP；他给自己留下的规则是探索用 MCP，热路径用脚本。页内作者信息写有联系邮箱 contact@tumao.dev。不代你把任务板 MCP 换成脚本就等于在每块板上都省下约 7 倍 token，或估算比例能当成账单上的精确节省。",
     description:
       "面向已经把任务板 MCP 接到编码代理、却还没量过热路径一次读取要占掉多少上下文的人：把「形状已知的高频读取，用自己控制输出的脚本往往比 MCP 原样倒 JSON 更省；MCP 仍适合探索和未知形状的查询」写成门禁，区别于测量代理会不会调用翻译类 MCP 工具，以及审计多个 token 统计工具是否彼此对得上。",
@@ -40013,7 +40013,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "592",
     slug: "qaroot-rules-guard-10851-commands",
-    title: "Abd Alrahman：第一版守卫拦错 27 次——回放 10,851 条命令后漏拦和误拦都是 0",
+    title: "直推守卫误拦后的回放校正",
     summary: "个人（作者以 Abd Alrahman Qaroot 之名发表）；披露自己给编码代理定过一条绝不能破的规则：不要直接推到 main、master 或 staging。说明文件里写了这一条，可挂在推送命令上的钩子还是拦下了它六次。钩子本身并不难写，让他花更长时间的是该不该相信它。第一版是 Claude Code 的 PreToolUse 钩子上的一段 shell 脚本，看见推送附近出现 staging 这个词就拦截。等他真正去数时，它一共拦了 33 条命令，其中 27 条本该放行；几乎都是同一件事：gh pr create --base staging，而这正是他希望代理在不能直推时去做的。它还有第二个缺陷：把理由打到了标准输出。代理只收到拦截和一句 No stderr output，没有可执行的说明，于是重试、猜测，或反过来问他。也就是说，这个守卫既拦住了正确动作，又什么都没解释；他是后来专门去翻，才发现这件事。重写成正式插件 rules-guard 时，他不想再在真实工作做到一半时才撞上下一个误报。单元测试有帮助，但测试覆盖的是自己已经想到的情况。更好的测试集已经在磁盘上：代理在这台机器上执行过的每一条 shell 命令。Claude Code 会本地留下会话记录，每一次 Bash 调用都带着确切命令和当时的目录。于是他把这些 Bash 调用抽出来，在什么都不真正执行的前提下，一条条送进新规则：一共 10,851 条真实命令，其中 15 条按他的标准应该被拦（直推到受保护分支，以及普通的强制推送）；新守卫拦住了全部 15 条，并且此外什么都没拦。漏拦是 0，误拦是 0，他也清楚这 15 条决定是落在哪些命令上。守卫还会漂移：每加一条规则、每做一次重构、每改一版提示，都可能改掉你并未打算改的决定。于是回放变成每次改动的一部分。后来他重写了全部拦截文案，回放覆盖 11,628 次调用：每一条拦截的措辞都变了，但放行或拦截的决定一条都没变。布置并不大：抽出守卫会看见的每次工具调用（命令、工作目录、工具名）；在所有会碰到机器的部分都被替掉的前提下跑决定函数；把每次的决定和规则存下来；和下一次运行做 diff，每一行变化要么是缺陷，要么是你本来就打算改的决定。另一课来自那句 No stderr output：读拦截说明的是代理。若说明没告诉它下一步做什么，它就会猜。rules-guard 现在每条拦截都是同一形状：第一行点名工具、规则和类别，随后写出问题、发生位置、该怎么改，以及必要时「去问用户、不要绕过这次拦截」。类别承担大部分工作：fix-and-retry 是改命令再跑；use-instead 是改走功能分支再开拉取请求；env-setup 是机器上的环境先要修好（VPN 断了、SSO 过期）；held 是停下并问人。换成这套说明之后，作者写代理会读 Fix 那一行并照着做，被拦住的直推会变成开分支再提拉取请求，而不再需要他插手。说明文件仍用来讲原因，并影响代理一开始会尝试什么；可在长会话里、检查失败而修复已经准备好时，直推看起来像帮忙，一行 Markdown 要和上下文里所有东西抢注意力。钩子不和谁抢：它看见的是实际调用。所以凡是绝不能发生的事都要落到钩子上，并且在相信它之前，先用真实历史测过。文末给出安装：把 AbdAlrahmanAlQaroot/claude-code-mods 加进插件市场，再安装 rules-guard；默认拦住对受保护分支的直推、普通强制推送，以及生产环境的 kubectl／AWS 调用；更严的个人规则（署名行、拉取请求描述格式、新代码注释、提交里的测试文件）是可选项，默认关闭；它不发起网络请求，源码在 GitHub。不代你回放一遍历史命令就等于守卫以后不会误拦，或拦截文案一改代理就永远会走正确的替代路径。",
     description:
       "面向已经给代理加了「不许直推保护分支」一类钩子、却还没用它真实执行过的命令回放的人：把「钩子误拦常用的正确动作时，代理会学着绕开；要用历史命令量漏拦和误拦，而不是只靠自己想到的单元测试」写成门禁，区别于验证外来仓库在信任提示前能否跑代码，以及审计会话记录里有没有写出密钥。",
@@ -40102,7 +40102,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "593",
     slug: "ji-ai-env-vars-3-of-80",
-    title: "ji_ai：告诉它 export 了预发环境——80 次里有 3 次脚本仍跑在生产默认值",
+    title: "Bash 调用间留不住的环境变量",
     summary: "个人（作者以 ji_ai / jidonglab 之名发表）；披露自己对 Claude Code 说了 export APP_ENV=staging，下一条消息让它跑脚本，打印出来的却是 target = production。什么都没有被部署出去：target.py 是一次性仓库里的一行桩，写的是 os.environ.get(\"APP_ENV\", \"production\")，也就是许多真实代码里能见到的那种带生产默认值的读法。他想知道 Claude Code 的环境变量在 Bash 工具调用之间留不住这件事，到底有多常会落到实处，于是跑了 97 场无头会话并计数。结论先说：每一次 Bash 工具调用都是一只新壳，export、source .venv/bin/activate、函数、别名和 umask 在下一次调用前都会消失；例外是 cd，而且只在命令成功并留在项目里面时成立，子代理里则完全带不过去。模型通常会自己想办法把 export 再写一遍：80 次任务运行里它错过了 3 次，而且这 3 次都让脚本跑在了回退值上；每一次错过都在最后如实报告，但那是在脚本已经跑过之后。他先在一次调用里设置八种状态，再在下一次读回来，三轮结果相同：LAB_EXPORT、随口写下的 LAB_PLAIN、激活虚拟环境后的 VIRTUAL_ENV 和 PATH 上的 python、函数、别名、改成 077 的 umask，以及打开的 noclobber，到第二次调用时都不在；只有 cd sub 还在。cd 本身也有边界：cd 到项目外的 /tmp 之后，下一次会回到项目根并提示工作目录被重置；cd sub && false 因为退出码是 1，下一次仍在根上；在子代理里 cd sub 再 pwd，两轮都还在项目根。不过子代理会从主会话当时的目录起步：父进程先 cd sub 之后，子代理第一次 pwd 在两轮里都是 proj/sub。真正会绊倒的频率并不高。他用 Sonnet 5.5 把听起来平常的任务各跑 10 次：先 export 再跑脚本、export 之后列出文件并读脚本再跑、export 之后让子代理跑，这三组都是 10 次正确；先 export、中间插 8 次无关的 Bash、再跑脚本，是 9 次正确、1 次错误；一条消息里 export、下一条消息再让它跑，是 8 次正确、2 次错误；激活虚拟环境后再跑、激活后让子代理跑、一条消息激活、下一条再跑，这三组 30 次全部正确。作者写模型知道这条规则：它会写成 export APP_ENV=staging && python3 target.py，在每条命令里重新导出，并且把变量写进子代理的提示词里——他本以为委派会是弱点，结果这两组一共 20 次全对。3 次错过分别来自距离和消息边界：一次是单独发出 export，做了另外八件事，然后裸跑 python3 target.py；在「下一条消息再跑」的 10 次里，它10 次都跳过了单独的 export 并警告这样留不住，作者下一条却没理会警告、只要求运行，其中 8 次它自己在命令前加上了 APP_ENV=staging，2 次裸跑了命令。作者认为第二种更接近现实：你扫一眼回复，打下一句指令，然后往下走。3 次错过都在最终回复里写明「脚本跑的时候它并没有被设置」；对只读脚本这句有用，若后面是 terraform apply，那就已经是事后复盘。每种模式只跑 10 次，作者写明太小、不足以当成失败率来引用；他更相信的是这个切分：50 次变量任务里错过 3 次，30 次虚拟环境任务里错过 0 次。缺依赖会抛 ModuleNotFoundError，带默认值的缺变量则什么都不抛。至于怎样让变量真的留下，他测了四种在会话开始前就设好的办法：settings.json 里的 env 能带上普通值，但不能跑脚本，python3 仍会落到 /usr/bin/python3；从已经激活的壳里启动 claude，普通值和虚拟环境都在；SessionStart 钩子往 $CLAUDE_ENV_FILE 里追加，普通值、虚拟环境和子代理都有效；启动时设置 CLAUDE_ENV_FILE=./env.sh，普通值和虚拟环境有效，子代理里 APP_ENV 也有效。会话中途改环境，他试过的办法都不成：钩子方案下，Bash 工具里看不见这份文件；启动变量方案下路径可见、文件也能改，他追加了 export APP_ENV=edited-midsession 并用 cat 确认，下一次调用仍是 staging，两轮如此。若要从预发切到生产，作者的办法是重开会话，或对单条命令写 APP_ENV=prod python3 target.py。最便宜的修正是脚本不要默默默认生产：改成 os.environ[\"APP_ENV\"]，缺变量会在做任何事之前以 KeyError 停下；若必须有默认值，就默认到安全的环境。这次覆盖的是 macOS 上的 Claude Code 2.1.318 和 zsh、无头 claude -p 加 Sonnet 5.5、只用项目级设置，97 场会话，标价用量大约 2.08 美元；他没有量交互会话、其他模型或 Linux。文末写作者是面试准备平台 Preterview 背后的开发者，并给出链接。不代你看见模型会重写 export 就等于环境已经切到预发，或会话中途的 export 能一直留到下一次调用。",
     description:
       "面向已经用 export 或 source 来「切换预发」的人：把「每一次 Bash 都是新壳，带静默生产默认值的变量一旦没被重新带上，脚本会在你以为的预发上跑成生产」写成门禁，区别于审计会话记录里有没有写出密钥，以及验证外来仓库在信任提示前能否跑代码。",
@@ -40191,7 +40191,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "594",
     slug: "kunfieldnotes-local-model-7-of-12",
-    title: "KUN：同一本地模型、三个编码代理——pi 和 Codex 12／12，Claude Code 7／12",
+    title: "同一本地模型三个编码代理",
     summary: "个人（作者以 KUN Field Notes / kunfieldnotes 之名发表）；披露自己用一块 6 GB 的笔记本 GPU 跑同一个本地模型，分别接到三个编码代理上做对照，只有代理不同。最糟的一刻是 Claude Code 告诉他网页已经做完，文件夹却是空的。机器是 RTX 3060 Laptop 6 GB 加 64 GB 内存，系统是 WSL2 上的 Ubuntu 24.04；推理用 llama.cpp 版本 9655061，命令行带 32,768 上下文、整卡卸载、Flash Attention 和 q8_0 的键值缓存，专家层放在 CPU 上（LFM 用 -ncmoe 36，Qwen 用 -ncmoe 40），全程离线。模型是 LFM2.5-24B-A2B 的 Q4_0（每项任务 3 轮）和作为对照的 Qwen3.6-35B-A3B UD-Q4_K_XL（每项 1 轮）。任务有三项：A 是改 calc.py 里的两个缺陷直到 pytest 通过；B 是单文件计时器页面，由脚本按 8 项检查；另外还有「生成一只鹈鹕骑自行车的 SVG」；每轮上限 900 秒。结果是：pi 通过 12／12，Codex 通过 12／12，Claude Code 通过 7／12。LFM 上修缺陷的中位时间分别是 47 秒、85 秒和 132 秒。llama-server 日志里第一次提示词求值：pi 约 1,442 个 token、5,666 毫秒；Codex 约 6,429 个 token、18,567 毫秒；Claude Code 约 15,800 个 token、48,837 毫秒。在 32K 上下文里，Claude Code 开始做事之前大约就占掉一半，读完这份提示大约比 pi 慢 8.6 倍。作者写表里这三个时间是每个代理一轮的第一次请求，不是中位数。pi 在两个模型上都是 12／12，日志里零次工具错误，修缺陷也最快；作者还把它的提示词收到大约 750 个 token，并只打开 read／edit／bash，仍然是 12／12、速度相当，作者写更难的任务也许才能分开这两种写法。Codex 也是 12／12，但 LFM 出现了 12 次工具参数错误，多半是把整数当成字符串送出，例如期望 i32 却收到字符串 \"96787\"；它会重试并恢复，代价是时间：修缺陷中位 85 秒，第一轮用了 599 秒。Claude Code 这边，LFM 修缺陷三轮里只通过一次，另外两轮死于 Prompt is too long · automatic compaction failed: summarization produced empty response；计时器页面三轮都过，但中位 881 秒，其中一轮顶到 900 秒上限；换上 Qwen 则是 0／3，页面和鹈鹕两项都回复任务已完成，工作目录里却没有对应文件。作者后来在评论里补充：Qwen 上这三次失败并不一样，修缺陷是代理侧报错而不是假的「做完」；页面和鹈鹕则是自信的纯文本完成声明，工作目录没有输出文件，矩阵里这两格的 tool_errors 记成 0（按日志关键词匹配，只是近似）；他没有抓住 llama-server 原始的 finish_reason，所以不能把这写成已证实的解析失败，能看到的是长段自然语言、零个工具错误关键词，以及 ls 之后的空目录。直接问模型时，LFM 画的鹈鹕会浮在自行车上方，进了代理之后才真正坐上去；Qwen 的画更完整，Claude Code 加 Qwen 则没有产出 SVG。显存是每秒采样一次，所以他只看到常驻用量（LFM 约 2,641 MiB，Qwen 约 3,111 MiB），看不到峰值；工具错误次数来自日志关键词匹配，只是近似；Qwen 每项只跑一轮；三项都是小任务，不是真实项目。作者的结论是：本地小模型、小上下文时，选系统提示最短的代理，这里是 pi，然后是 Codex；若必须在本地用 Claude Code，应给它更大上下文，并参考为它裁剪提示的说明，这两点他这次没有测。每一次代理说做完之后，都应该先 ls。页脚写欢迎更正或商务询盘，并给出 About／Contact。不代你在 6 GB 上换一个更瘦的代理就等于十二项都会过，或云端 Claude Code 会和这次一样写出空文件夹。",
     description:
       "面向已经把同一份本地小显存模型接到不同编码代理上做对照的人：把「同一权重下，系统提示和工具表的体积会决定代理还剩多少上下文，也会让它在没写出文件时声称做完」写成门禁，区别于云端用同一提示词比较 Claude Code 和 Codex，以及测量子代理占掉多少周额度。",
@@ -40280,7 +40280,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "595",
     slug: "rulestack-debt-list-8days-to-6min",
-    title: "Rulestack：警告下列表中位开了 8.2 天——改成失败测试后变成约 6 分钟",
+    title: "未关闭的债单改成失败测试",
     summary: "团队（作者以 Rulestack 之名发表）；披露他们的 Claude Code 代理会维护一份清单：凡是手头做过、以后还可能再做、但当时只靠手工或一次性脚本完成的工作，都要记成一笔「债」，写明做了什么、打算怎样收成一条命令。清单里也包括它在审查中发现还缺的检查。一笔债要关掉，得同时有对应命令、有命令会写入的受跟踪文件、有测试，以及代理例行里调用它的那一行。清单从 2026-07-13 开始，同一天起，代理每次运行开头的健康检查就会把未关闭的债标成警告，把超过 7 天的标成告警；文中日期按 UTC。前两周，也就是 2026-07-13 到 2026-07-27，代理记下了 12 笔债：其中 10 笔开了超过一天，7 笔越过了 7 天告警；最长的一笔开了 12 天——所有者曾允许这笔改动只有在审查质量不下降时才能做，而用来证明这一点的对照当时还没跑。从记到关掉的中位时间是 197.5 小时，大约 8.2 天。2026-07-24，所有者对工作被从一次运行带到下一次提出了意见，代理随后在一小时内关掉了四笔；同一次坐下结束时，它又记了一笔新的，并在健康检查已经标红的情况下，带着这笔和新留下的旧债一起提交。三天后所有者问这两笔未关的债是什么，是不是恰恰就是这份清单想要阻止的往下带；它们正是。那天他们加了一条测试：只要还有未关闭的债，测试就失败，除非所有者批准等待。代理的规则是每次运行以提交结束，提交前测试套件必须通过，推送命令在任何东西离开这台机器前还会再跑一遍套件。于是一笔未关的债，就等于一次无法收尾的运行。加上这道门之后，代理在 2026-08-18 到 2026-10-05 记下了 48 笔债：从记到关掉的中位时间大约是 6 分钟；48 笔里有 41 笔在一小时内关掉，47 笔在 7 小时内关掉；唯一开了 26.7 小时的那一笔，有所有者批准等待。作者写明这些数字不能说明的事情：约 6 分钟不是修好一笔债要花的时间，而是从记到关掉的间隔，清单并不记录何时开始动手；门加上之后有 22 天完全没有新债入账——门之前 14 天记了 12 笔，从 2026-08-18 到最后一笔的 2026-10-05 则是 49 天记了 48 笔，他们不知道那 22 天是真的没有手工做活，还是会挡住提交的债让它更不愿记下来；门之前的 12 笔里有两笔其实是计划了但还没开始的功能，关掉各花了大约 7 天和 10 天；测试检查的是债被关掉，不是修复好不好，也不是这笔债值不值得记。作者把文章写成提问帖，想知道别人是靠警告还是靠能挡住运行的东西，才改掉了代理的行为；数字来自一份对着代理自己那份债清单跑的脚本。他们在评论里承认，还没有用仓库 diff 去对照那 22 天里是否有从未入账的手工活，等待态里有所有者批准和原因说明，但没有复查日期。作者卡片把自己介绍为面向 Cursor、Claude Code 和 OpenAI Codex 编写 rule packs 与技能、并讨论代理工作流的作者。不代你给清单一加失败测试就等于代理更勤快地自动化，或中位 6 分钟等于修复本身只需 6 分钟。",
     description:
       "面向已经让代理自己记「手工作业以后要自动化」清单、却只把超期写成警告的人：把「警告可以一直红着，失败测试才能让一次运行无法收尾」写成门禁，区别于七轮审查和绿测仍未让功能在应用里启动，以及双引擎只读评审加提交门禁。",
@@ -40369,7 +40369,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "596",
     slug: "diegoprieri-first-try-typecheck-8weeks",
-    title: "Diego：量了 8 周本机会话——缓存让输入成本大约低 87.4%，第一次 typecheck 大约 86%",
+    title: "本机会话缓存与首次类型检查",
     summary: "个人（作者以 Diego Prieri 之名发表）；披露自己带着一个大约 12 万行的 TypeScript 前端，代理写了其中大部分代码，不想只靠感觉判断贵不贵、第一次写得过不过。Claude Code 本来就会把会话写到本机 ~/.claude/projects/**/*.jsonl：助手回复带着 usage（未缓存输入、5 分钟和 1 小时 TTL 的缓存写入、缓存读取和输出），工具调用则记下每一次 Edit、Write、Bash 及其输出。他写了只在本机读这些文件的小命令行 claude-code-metrics，什么都不会离开这台机器。八周里一共 75 亿个输入 token、30,439 次回复：98.4% 的输入 token 来自缓存读取；按官方倍率（未缓存 1×、五分钟写入 1.25×、一小时写入 2×、读取 0.1×）相对「全部按未缓存计价」计算，输入成本大约低 87.4%。作者写明订阅套餐并不按 token 出账，这 87% 是这些 token 若走 API 会便宜多少，不是从银行卡省下来的钱；同一条回复若按内容块各记一行、又不按消息 id 去重，还会把同一次回复数好几遍。他更在意第一次检查过不过：按时间回放一场会话，对匹配文件的编辑会「武装」一次检查（.ts／.tsx／.vue 武装 typecheck，代码文件武装测试），下一次真正跑 tsc、jest、vitest 或 npm test 等的 Bash 才算第一次，下一次编辑前的重跑忽略。最初统计是 typecheck 205 次里第一次通过 86.3%，测试 298 次里 75.2%。代理常把长输出接到 head、grep 或 tail，过滤后的输出可能藏起失败行，所以命令行也单独报未过滤运行：当时 typecheck 10 次全过，测试 21 次只有 52.4%，作者因此把 75% 看成上限，并规定代理提交前必须再跑一遍完整输出的门。11 月 3 日更新：有读者指出用 Bash（sed -i、cat >、tee）做的编辑当时没有武装检查；补上之后尝试次数从 503 次（205 加 298）变成 1,942 次，第一次通过率改成 typecheck 84.8%、测试 76.2%，未过滤的测试则是 86.5%（n=89）。作者还写这是观察不是评测，任务不受控，要比较提示词得另用可控驾驭；既有失败会让每次尝试都看起来像失败，会话文件也会随时间被清理，窗口只覆盖磁盘上还留着的那些。文末给出 MIT 许可的 github.com/diego-prieri/claude-code-metrics，并提到他另写的 agent-context-evals；作者卡片写有邮箱 diegoprieri@gmail.com。不代你读一遍本机会话记录就等于也能省下约 87% 的输入成本，或第一次 typecheck 也会到大约 86%。",
     description:
       "面向已经让代理写了大部分代码、却还没从本机会话记录里量过缓存到底省了多少、第一次检查过不过的人：把「缓存折扣衡量的是输入怎么计价，第一次通过率衡量的是第一次尝试而不是改五轮之后；过滤掉的测试输出会把通过率抬高」写成门禁，区别于按已合并拉取请求算单位成本，以及对照任务板 MCP 一次读取会倒进多少 JSON。",
@@ -40458,7 +40458,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "597",
     slug: "ciprian-rarau-44-prs-unstarted",
-    title: "Ciprian：两周合入 44 个我没起头的 PR——告警代理自己调查并开单",
+    title: "生产告警代理自行调查并开单",
     summary: "个人（作者以 Ciprian Rarau 之名发表）；披露自己开源了一个跑在开发机上的自主代理 C3：它盯着 Slack 和 Discord 频道，生产告警、缺陷汇报或有人提问时，就在这台装着仓库、密钥和命令行工具的机器上开一场 Claude Code 会话，读代码、追错误、看近前提交、写修复和测试并开拉取请求，再回到频道线程里汇报。过去两周它在三个仓库开了 44 个拉取请求，作者一个都没起头：后端 Rails API 18 个（SSO、限流惊群、匹配逻辑、通知时机），前端 Next.js 25 个（hydration 不一致、报错噪声、服务端渲染崩溃、格式化），运维 1 个（带追踪上下文的告警摘要）。这些请求带着测试、对着 develop，并遵循项目的分支规矩；作者负责审查、必要时从同一场会话继续聊，然后合并。其中一个例子是企业客户的 SAML 认证错误：作者正忙别的事，回头看频道时代理已经追到被改名的配置键、写好修复和测试并开了单；这次调查代理花了 12 分钟，作者补一条「配置键完全缺失」的测试只花了 45 秒，他估计自己上手大约要一小时。按每条告警 30 分钟到 2 小时估算，两周 44 条若全自己响应大约是 22 到 88 小时。会话不会做完就消失，作者可以从手机接着打字，例如补测试或让它再看预发环境。生产错误提示词有 230 行，炼了两周；规矩写在提示词里而不是写在工具里：绝不推 main、不跑迁移、不删文件、不改持续集成，拉取请求对着 develop，修复保持最小，没把握就标出来。后来又给客服频道加了一套触发：代理读消息、对照代码库分类（平台缺陷、用户操作、配置、功能请求），给客服写建议，例如缺了邀请就应走哪一级设置页去重发，并不直接回复客户。C3 用 Next.js 加 Claude Code SDK，跑在 Azure 虚拟机和 Cloudflare Tunnel 后面，作者写有 153 条测试并开源。文内以「试一下」给出 github.com/Ideaplaces/c3，并链到 c3.ideaplaces.com；站点还有 Ideaplaces 与 HireScout 产品、联系和订阅入口。不代你接上频道监听就等于两周也能合入 44 个不是你起头的拉取请求，或客服建议不经人审就可以发给用户。",
     description:
       "面向已经把生产告警和客服消息打进同一类频道、却还在靠人每次切出去调查的人：把「代理可以在你的机器上先调查并开单，人审和合并仍留在自己手里；客服路径应停在给团队的建议，而不是直接回客户」写成门禁，区别于跨系统工单调查台，以及少读 diff、只看可见审查的产量账。",
@@ -40547,7 +40547,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "598",
     slug: "ruwatana-phone-flutter-rn-2weeks",
-    title: "ruwatana：几乎只用手机大约两周发到 App Store——中途把已超 200 次提交的 Flutter 迁到 RN",
+    title: "手机开发 Flutter 迁 RN",
     summary: "个人（作者以 ruwatana 之名发表）；披露自己几乎只用手机上的 Claude Code on the Web，大约两周把一个资产组合应用从想法做到 App Store 上架。应用覆盖日股、美股、基金、加密资产和现金等，支持买卖记录和均价，并让用户自己提供网址加 XPath 拉价格（类似表格里的 IMPORTXML），数据只放本机，只面向日本。仓库创建、初始化命令和授权是在 Mac 上做的；之后通勤和在家空档都在手机 Claude 应用里下指令，等云端沙箱自己开分支并提交，人只管按下创建拉取请求，并在检查通过后合并。默认云环境只允许访问受信任来源，依赖和网页调研经常被挡住，他改用完整网络访问或自定义环境，并写明只应在自己掌握的仓库里打开、还要看它装了什么包。先把需求、画面、架构和数据写进文档目录，领域和数据层的单元测试目标覆盖率定在 80% 以上，并提早按商店审核指南把价格来源做成用户自配，而不是预置聚合。起初选 Flutter，因为能在 Linux 沙箱里构建；大约做到第 7 天、功能大体齐并且已经超过 200 次提交时，发现 Dart 侧 HTML 和 XPath 生态不够，对照 React Native（Expo）后决定迁移。代理起初也以成本为由犹豫，真正开做后几分钟就交出含静态检查、接近 3 万行差异的拉取请求。迁移后提交前检查更稳——沙箱默认没有 Flutter，从前常空跑——拉取请求上的持续集成也从大约 2 分钟收到大约 1 分钟，脚本还可以和本体一样用 JavaScript／TypeScript。刷细节阶段用 Xcode Cloud 加 TestFlight 做持续交付，这套流水线他回到书桌在 Mac 上配；此后通勤用手机提需求，空闲用 TestFlight 验，高峰会并行 4 到 5 个会话。甜甜圈图的细交互才用回本机 Claude Code 做热重载。应用名定为西班牙语里「组合」之意的 Cartera，图标和商店截图也让它用脚本生成；隐私政策和落地页放到 Firebase Hosting（cartera-app-prod.web.app）。第一次审核大约 9 分钟就过了，没有被拒。中途因为每月 20 美元的 Pro 频繁撞上会话和周限额，升级到每月 100 美元的 Max。作者写到最后自己一行代码都没写；文末邀请关注 X（x.com/ruwatana）。不代你换成手机上的云端会话就等于两周也能过审上架，或中途换框架也会在几分钟内交出可合并的迁移。",
     description:
       "面向想在通勤和碎片时间推进个人应用、却还没想过云端沙箱对框架选择有多敏感的人：把「能在 Linux 沙箱里稳定构建和检查的栈，往往比先选定的跨端框架更重要；商店审核要点应写进文档，而不是等提交后再补」写成门禁，区别于仓库里的 Expo 大版本升级，以及只在编辑器里做的移动端拉取请求预审。",
@@ -40636,7 +40636,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "599",
     slug: "taras-lysyi-70-go-endpoints-2days",
-    title: "Taras：大约 70 个 Go 接口由代理迁完——写代码大约 2 天，人审大约 3 周",
+    title: "遗留 Go 接口技能化迁移",
     summary: "个人（作者以 Taras Lysyi 之名发表）；披露他们大约有 70 个遗留 Go API 端点要迁到新框架。与其一张工单一张工单地手工做，他先花 2 到 3 天亲手做完第一次迁移，理解每一步之后，再把步骤收成技能和专门代理。技能是一层层调用的：migrate-batch 吃一组工单号，把相近的收成逻辑上的拉取请求（正文写这能把 70 多张工单收成大约 20 个更集中的请求，而不是 70 个分散的），再对每组调用前后端一起迁的技能；后端和前端技能里再分出只读的代码调研、数据访问、业务逻辑、外部 API 和只读审查代理。编排器自己不写代码，只分派和收回结果。工具上接了 Jira、Git 和文件系统的 MCP，运行时从编辑器里的助手换成了 Claude Code 命令行，因为后者更能自己跑完多步流程。整批拉取请求的代码大约跑了 2 天代理时间：Claude Max 大约每 4 小时会撞上限额，系统就暂停、等冷却后再试，所以他可以把批次挂在笔记本上过夜，醒来看到已经开好的请求。结果表写：大约 70 张工单迁完，开了大约 30 个拉取请求，其中大约 25 个由批次生成；代理写代码大约 2 天，审查和合并大约 3 周，代码质量自评分 8／10，搭建花了 2 到 3 天。作者强调人没有被省掉——之后几周是审查、按反馈改、再合并；每个请求都要过人审，代理处理重复结构，业务逻辑和边界仍要开发者看。他也写明这是一次实验，但请求已经被人审过、批准并合进代码库。全文作者写明是一次晨间散步时用语音聊「随手写」再略作编辑的；文首注明原发在 Medium，本条核的是可访问的 dev.to 转载。不代你挂上同样的技能层级、再睡一觉就等于也能在两天里迁完大约 70 个接口，或自评分 8／10 能当成他人可复用的质量保证。",
     description:
       "面向要把一批形状相近的遗留接口迁到新框架、却还想一张工单一张工单手工做的人：把「先亲手做完第一次，再把步骤收成技能；代理可以压缩写代码的时间，审查和合并仍按周计」写成门禁，区别于给既有接口补严格契约并在生产里干跑，以及把整个前端框架换掉。",
@@ -40724,7 +40724,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "600",
     slug: "clipboard-e2e-flake-100-to-15",
-    title: "Clipboard：两个最大仓库的端到端曾 100% 遇过 flake——六周收到 15% 以下，174 条留到 87 条",
+    title: "六周压低端到端不稳定测试",
     summary: "团队（Clipboard 工程博客，作者 Rocky Warren）；披露从 2025 年 2 月到 2026 年 2 月，编码代理从几乎不写他们的代码变成写了绝大部分。代码变便宜之后，不稳定测试从烦人变成会卡住反馈环：同一提交多次跑既过又不过，代理就会对着会撒谎的套件空转。有一段时间，他们两个最大仓库里 100% 的拉取请求都至少撞上过一次不稳定测试。六周里，他们把端到端的 flake 比例从 100% 收到 15% 以下，作者称之为少了大约 85% 的荒唐。当时有 174 条端到端测试。他们先问这些测试是不是都必须留在这一层：用三个不同模型和驾驭的代理给每条测试分类（删除、合并、改成集成或单元、留下）并打上理由和把握，打乱来源后再让两个代理在新窗口里达成一致。汇总建议是 174 条可以收到 46 条，大约少 74%：其中 38 条认为已被别处完全覆盖可删，6 条可合并，82 条可改成集成测试。领域负责人回推后，他们实际留到 87 条，大约少了 50%；有人指出端到端很少抓住回归，却能挡住会让后端接口改坏、并在有大量代理代码时更难只靠人审兜住的破坏，他们采纳了这部分意见。作者写减测之后很快看到每个拉取请求上的端到端 flake 从 100% 降到 15% 以下。剩下的 87 条仍会失败。单元和集成测试代理可以本地连跑 50 次来验证修复，端到端却对着 30 多个后端服务的已部署环境和最终一致性，超时信息常让代理只会加长等待或重试。他们先写技能让代理去下载 HTML 报告，发现那不是给机器看的，于是做了结构化输出的 Playwright 报告器 @clipboard-health/playwright-reporter-llm：带步骤、网络和控制台时间线，失败截图做成 base64，并从响应头里的追踪上下文抽出追踪标识，再配一套教代理去性能监控里查追踪的调试技能。同一批失败他们给过 Devin、Claude Code（Opus 4.7 的高努力档）和 Codex（gpt-5.4 的高努力档）；作者写日常编码更常用 Claude Code，但这类排查 Codex 挖得更深、更少把「修复」写成重试。其中一个例子里，别的代理给按钮点击包上了更长的重试超时时限，Codex 则指出弹窗状态被放在会卸载的子树里，修复分别横跨 5 个和 9 个文件，并对应到真实产品缺陷。他们还更新了给代理看的清单，鼓励拿不准时先写集成测试。文中邀请使用上述报告器和调试技能；站点顶栏另有定价和招聘入口。不代你按共识删掉一半端到端测试就等于 flake 也会从 100% 收到 15% 以下，或换上同一只报告器就等于代理会找到产品缺陷而不是加长超时。",
     description:
       "面向已经让代理写了大部分代码、持续集成却因为不稳定的端到端测试随机开关的团队：把「会撒谎的测试不能当作代理的反馈环；先诚实地减少只属于端到端的用例，再给代理可读的失败上下文，并且人仍可回推删测建议」写成门禁，区别于四天生成上万条测试，以及把流水线墙钟从十几分钟收到一分钟出头。",
@@ -40813,7 +40813,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "601",
     slug: "lavskiy-scriptmate-771-tests-ios",
-    title: "Peter：上架的 iOS 应用写了六个月——693 次提交里 324 次带共同作者，771 条测试当门",
+    title: "Scriptmate 上架与测试门禁",
     summary: "个人（作者以 Peter Lavskiy 之名发表）；披露自己独自设计、构建并上架的演员对词应用 Scriptmate。自四月起有 693 次提交，其中 324 次带有 Claude 共同作者标记；仓库里有 771 条 Swift Testing 测试，分在 77 个文件中。应用已在 App Store 上架，有付费订阅，界面是五种语言。前四个月他的 Claude Code 配置和别人一样是模板，操作手册是八月在足够多次回归之后才写成的。文章开头举的陷阱是：用 -only-testing:ScriptmateTests/ImportTests 跑 xcodebuild test，会先打印「Executed 0 tests」再打印「TEST SUCCEEDED」——标识必须是 Swift 套件的类型名而不是文件夹名，代理改完导入代码后看到绿就会往下走。CLAUDE.md 只有 58 行，没有人格设定，读起来像给高级承包商的第一天简报：概述与技术栈（Swift 5 加可接近并发、最低 iOS 16、Xcode 26、Swift Package Manager，解析后端是另一个仓库里的 Cloudflare Worker）、精确的构建／测试命令和送到 TestFlight 的 Fastlane 通道、每个屏幕文件夹里该有哪三个文件、以及「不要动」清单。测试一节最有用的一句是：改完逻辑必须跑相关测试，不能只靠一次绿的编译就报完成。测试计划会跳过那条拿真实 PDF 打线上解析接口的套件，文件里写明不要取消跳过，以免代理「仔细」起来去花后端的钱；调试构建会给分析事件打上内部流量标记，代理在模拟器里开一下午也不会进产品数字。不要动的四条是：不要手改 project.pbxproj 去加文件（源文件夹从第一次提交起就是 Xcode 16 那种跟文件系统同步的，他从未因代理新建文件撞上工程文件冲突）、不要改签名或描述文件、不要提交构建或派生数据、不要按控制台说明书去改 Worker（必须在 Worker 仓库里改并用 wrangler 发布）。项目的 Claude Code 设置里有 97 条允许规则、没有钩子；写这篇文章才是第一次有人审计这份文件，里面留着 wrangler deploy、一条会删掉 project.pbxproj 某一行的 sed，以及一次为客服问题打开、从未收回的 RevenueCat 客户列表 MCP。这三条后来删掉了。原则是：代理应能构建、测试、看模拟器和读日志，但发布必须由他本人在发布候选分支上敲那一条不在允许名单里的 Fastlane 命令。代码旁边还有五份各 100 到 160 行、写给代理当第一读者的架构笔记；测试策略文档记下模拟器事实：测试宿主在 iOS 16 模拟器上会崩溃所以要用 iOS 26，按名字选目的地会悄悄匹配失败所以要退回设备标识，并行跑测试会在零占用时挂住所以必须串行；它还点名了两条在模拟器缺条件时提前返回、让整次运行看起来更绿的「沉默通过」，以及网络、付钱路径和相机等覆盖缺口。771 条里有 41 条只在真机跑、除非环境开关打开否则跳过，其余 730 条在没有网络、麦克风和商店的模拟器上跑；大约 92 条覆盖提示识别。八月下旬有两周，两次视图模型套件带着 14 条确定性失败，是导航去抖之后过期的期望，修复是重写期望、删掉测试还在用的死参数，并加上等待异步副作用的轮询辅助。9 月 10 日他曾用四个工作树并行补测试（导入与网络、入职视图模型、屏幕视图模型与组合器、自拍），十六天后四条分支仍然是零次提交、四个工作树都还是脏的，里面躺着 16 个新测试文件，只有导入路由那一份被他亲手拷进了主干。文末写自己承接远程的资深 iOS 岗位与合同，并给出联系邮箱、WhatsApp、LinkedIn、Scriptmate 案例页和 App Store 链接。不代你写一份 58 行的入职说明就等于也会有 771 条能当门的测试，或四个工作树一个下午补完的测试都会进主干。",
     description:
       "面向已经让代理改上架中的原生 iOS 应用、却还把「编译绿了」当成做完的人：把「代理的绿必须对应一次真的跑到了测试；允许名单会像生产权限一样悄悄变长；并行工作树补测试的收成仍卡在人审」写成门禁，区别于几乎只用手机把跨端应用发到商店，以及给 Android 无障碍补新的句柄。",
@@ -40902,7 +40902,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "602",
     slug: "flori-python-bun-slop-fork-83-smoke",
-    title: "Flori：约 14,200 行 Python 后端五天迁到 Bun——109 次提交，冒烟 83 条全过，却还没对着前端跑过",
+    title: "RAG 后端从 Python 迁 Bun",
     summary: "个人（作者以 Florian van der Galiën / Flori 之名发表）；披露自己把一套 RAG 知识管理平台的 Python／FastAPI 后端重写成 Bun、Hono、Drizzle ORM 和 Better Auth。原后端大约 14,200 行、约 50 个文件，有 18 个 CRUD 模块、12 个路由文件，以及摄入 PDF、DOCX 和网页的文档处理流水线，底下用着 Supabase 的认证、存储、PostgREST 和行级安全，再加上 LangChain、LangGraph 和 pgvector。他称结果为 slop fork：冒烟测试过了，但从未对着真实前端跑过，从未部署到预发，也从未有人亲手启动服务器点一遍，冒烟脚本是唯一的证明。他先花一晚上让代理写出 13 份规划文档（每个迁移阶段一份），后来又补了缺口、前端兼容、端到端冒烟和去掉 Supabase 等文档，合计大约 14,800 行 Markdown。写完后用 context7 MCP 对照真实库文档核对大约 115 条主张：83% 正确，13% 有问题，4% 无法核实，问题包括 Better Auth 方法名写错、默认哈希是 scrypt 而不是 bcrypt、Hono 的 SSE 头处理不同，以及带凭证的 CORS 不能用通配请求头。规划文档起初只覆盖了 10 条 Python 后端路由，而前端在经 PostgREST 直接访问 20 多张表，每一张都需要显式的 Hono 路由。写应用代码之前，他把 Python 后端大约 270 个测试方法先迁到 Bun 的测试运行器，对着当时还不存在的接口写好契约。前两阶段搭好骨架并把 32 张 Supabase 表译成 Drizzle 模式、保持百分之百对应之后，是 55 个源文件、76 条通过的测试、0 个 TypeScript 错误。随后五个阶段（认证、API、RAG、文档处理、抓取）用 5 个隔离工作树里的代理并行推进，事先约定共享的 AuthContext 类型和桩文件，合并时按依赖顺序先认证再 API。全部阶段合并后的数字是：TypeScript 源大约 14,000 行、测试大约 8,200 行、脚本大约 1,800 行，109 次提交，81,007 行插入、29,441 行删除、1,235 个文件，92 次共同作者提交，11 次工作树合并，Bun 项目里 30 场会话、Python 项目里 15 场，4,477 条模型消息，58 MB 的 JSONL；日历时间是 5 天（3 月 19 日至 23 日），高峰一天 68 次提交（3 月 21 日）。他用的是 Max 套餐，并不按 token 出账，但按当时标价估算：输入大约 21.9 万（约 3 美元）、输出大约 120 万（约 91 美元）、缓存读取大约 5.22 亿（约 980 美元）、缓存写入大约 1,600 万（约 303 美元），合计大约 1,376 美元。最终证明是一份覆盖每个接口组的 83 条端到端冒烟，由代理自己写成、对着本地带 pgvector 的 PostgreSQL 迭代到全部通过，RAG 检查会真的送文档、做嵌入并确认回答不是「我不知道」。作者写阶段 1 到 7 的实现大约 2 天，剩下 3 天花在清理、安全和让冒烟真正从头跑通，最后 20% 的工作仍占去 60% 的时间。站点页脚另有关于页、Mastodon 与 GitHub。不代你按同样的规划文档再跑五天就等于也会得到可对接前端的生产后端，或 83 条冒烟全过就等于用户路径已经验证过。",
     description:
       "面向要把 Python 后端整仓迁到 TypeScript 运行时、却还想直接下令「重写它」的人：把「先写可核对的阶段规划并对照真实文档；并行代理需要共享类型和桩；冒烟通过只证明接口契约，不证明前端和预发」写成门禁，区别于把遗留 Go 接口迁到新框架，以及把已有 JavaScript 文件改成 TypeScript。",
@@ -40991,7 +40991,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "603",
     slug: "mewset-horsemate-100-agents-audit",
-    title: "mewset：100 个代理审自己的后端——149 条活下来的发现，26 小时合入 29 个拉取请求，按标价大约 467 美元",
+    title: "Horsemate 后端多代理审计",
     summary: "个人（作者以 mewset 之名发表）；披露自己独自做的马房管理应用 Horsemate（Next.js 16 加 Supabase，有付费用户）在两周里做了三轮审计。10 月 3 日先用 5 个 Fable 5.1 代理清理 lib/，规则是每个函数都要双向追踪谁调用它、它调用谁，结果是大约 380 行死代码、3 个导入缺陷和 1 个没有任何界面调用的公开服务端动作，五个拉取请求之后做完。10 月 10 日再用 10 个代理、大约 27 分钟：每个审查者配一个专门证伪的代理，大约 10 条发现的严重级别因此改了，那一轮的两处安全问题都是证伪者而不是审查者发现的。10 月 13 日晚他说「跑一个工作流，不要限额」。第三轮覆盖 app/actions/ 和 app/api/：任务书写 258 个接口，代理数出 261 个（228 个导出动作、2 个内联动作、31 个路由处理），最初少算了 3 个。威胁模型写明：use server 文件里每个导出函数都是公开的 POST，隐藏按钮保护不了任何东西；服务角色密钥会绕过行级安全；/api/* 在订阅门外面；服务器跑在 UTC，用户都在瑞典。一条发现必须带上文件和行号以及谁用什么参数调用、会发生什么，没有代码路径的猜测不算。他没有手写工作流，代理在大约 400 行 JavaScript 里组好了班子：13 个分区审查者、6 个横切清扫者、每个审查配一个从第一行重新读并试图证伪的核对者（核对者自己又补了 42 条发现）、每条中高危安全发现再加两个不同镜头的怀疑者（16 条走过这条链，32 次怀疑运行，没有一条被推翻，若干条被降级）、一段不用模型只数矩阵有没有漏接口的覆盖检查（结果是零）、一个最多提出六个缺口的批评者（它提出五个，第六个用来把本地库是否作数拿到预发上测），以及 14 次对着预发库重测——27 条活下来的中高危访问和数据完整性发现都要再证一遍。中途批评者问：本地 Docker 库能不能证明权限缺陷？不能。那份库是九月用生产转储加手跑迁移建的，转储加载时没有带上权限，早于该日期的对象在本地拿着比迁移更宽的默认授权；一个代理「证明」匿名用户能删掉一套重复任务，本地为真，生产不是。证据于是改到只从迁移建起来、权限与生产一致的预发，查询写死在预发项目上、每条测试在事务里回滚，并规定本地权限证明不再作数。合并去重后是 149 条发现：1 条高危、30 条中危、76 条低危、42 条信息，外加 33 个无人调用的接口；有 2 条被证伪。那条高危发生在生产里，是核对者而不是该区审查者发现的：管理后台在布局里检查管理 cookie，下面多数页面信任这一层；在 Next.js 16 里布局和页面并行渲染，布局里的 redirect() 会把访客打发走，页面数据却已经在同一响应里往外流，于是没有 cookie 的访客仍拿到带管理数据的重定向。工作流结束后代理没有先交报告，而是先对照生产确认、写好修复和测试、跑完全部 1,216 条测试、在预发上对每个管理页带着和没有 cookie 各测一遍，然后停住等他按推送。上线后，生产对同一请求返回重定向和 15 字节的响应体。第一夜工作流跑了不到四小时，Fable 额度用尽后改在 Opus 5.5 上续跑；早上 8:56 他写下周额度已经用掉 96%，只好停到重置。次日第二段又跑了 1 小时 53 分钟：合计 100 个代理、1,294 次工具调用。笔记本是四核，工作流把并发限制在处理器数减二，所以这 100 个代理其实两人一组排队。报告末尾有 14 个只有他能做的产品决定；他当天全部拍板，并规定每个拉取请求要在本地证明、在预发证明、把迁移推到生产、开单、合并再核对生产，Stripe 相关的单子之前必须停下。每个修复都要证明缺陷在主干上存在、在分支上消失，而不是「测试通过」——例如某脚本在主干上 0／9、在分支上 9／9。他点名可公开说的修复包括：最常见的情况下健康提醒根本没发出去、每周摘要每天都在发、改饲料模板会删掉每匹马自己的用量、1,497 条从未被读过的通知（铃铛读的是另一张表）、表单清空后保存清不掉、以及服务器在 UTC 而用户在瑞典导致的日期起止错误。第一天下午 Vercel 开始警告存储：中午以来 48 次部署，Hobby 套餐会这样。最后一张单子去掉大约 174 处数据库读取上的 as 断言，改成有类型的读取，并加上预提交检查；订阅门也下到数据库里：38 张表上 111 条策略。29 个拉取请求从周四 12:08 开到周五 13:56，作者称为 26 小时，+7,924／−3,853 行。按 2026 年 10 月 Anthropic 标价从本机会话记录加总（不含当天下午对开源播放器 Better IPTV 的小规模对照）：4,279 次请求、大约 420 万输出 token、大约 10.56 亿次缓存读取，合计大约 467 美元，其中审计大约 295 美元、修复大约 172 美元；若把缓存读取按普通输入计价，仅这一项大约是 4,500 美元。他用的是 Max 5x，这些没有变成账单，代价是第一夜用掉周额度的 96% 并停了一天。页内链到 GitHub 主页和 Horsemate 相关博文。不代你说「跑一个工作流」就等于也会审完 261 个接口并在 26 小时里合入 29 个带证明的修复，或按标价加总的 467 美元等于你套餐上的账单。",
     description:
       "面向已经把服务端动作和接口交给付费用户使用、却还只靠自己半夜读代码做安全审查的人：把「一条发现必须带代码路径和可复现场景；本地库的权限证据不一定作数；修复要证明主干上存在、分支上消失，并且推送仍由人按」写成门禁，区别于外包或一次性的渗透清单，以及只扫会话记录里有没有漏出密钥。",
@@ -41080,7 +41080,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "604",
     slug: "kauche-83pct-ai-review-automerge",
-    title: "カウシェ：全量 PR 的 83% 只靠 AI 审查就自动合并——人仍看剩下的 17%，规则每晚自己改",
+    title: "质量前提下的审查自动合并",
     summary: "团队（カウシェ技术博客，作者 a-thug）；披露这家面向消费者的社交电商在前后端和移动端的单体仓库里，有 83% 的拉取请求不再经过人类代码审查就自动合并：GitHub Actions 上的 Claude Code Action 自动批准，持续集成通过后即合并。作者写明这个数字不是只靠模型更准，而是建立在他们可以快速回滚的环境、以及一套先写好的质量前提上：后端原则上为每个 gRPC 接口按状态码写正常和异常的端到端测试，测试和实现原则上成套提交；功能开发前要写粒度从 L1 备忘到 L4 架构的设计文档；后端编码规范、测试政策和接口设计指南维持成活文档。付款和认证等不可逆区域仍由人审查。他们先把团队积累的审查经验做成按服务划分的配置：按改动内容决定「只靠 AI 批准即可」「必须人审」还是「先停下自动合并升级给人」；按代码区域和数据表标出 critical 到 low 的危险度；并收录代码里读不出来的领域知识，例如对接 SaaS 的非正式行为和过去事故的教训。仓库创建以来的历史拉取请求被全部收集、分析，评论模式进了知识库。实际审查不是一个模型看一遍差异，而是三名专家人设并行：高级 Go 工程师看质量和测试、高级架构师看设计与认证绕过／泄露／注入等安全问题、GCP 专家看查询、基础设施和异步幂等，再按改动只加载相关章节。各人的指出分成缺陷和改进建议，去掉差异里没有依据、与上次审查矛盾或含糊的条目后再做最终判定。判定原则是「没有该驳回的理由就批准」：会挡住合并的是不该直接进生产的问题，或会明显损害可维护性的改动（运行时错误、数据不一致、安全漏洞、事务边界错误等）；其余写成改进建议，不挡住合并，并靠文化和后续拉取请求再次提起未处理的建议来跟进。无论 AI 怎么判，数据库模式和协议定义、Terraform（人确认 plan 再 apply）、认证与付款流程、设计文档，以及它判断不了的大范围架构或多服务改动，都会升级给人。作者写 83% 是在这套判定原则和区域划分之后的数字；评论里补充，人看的 17% 大致就是模式变更、设计文档、架构和公共库、认证与付款、跨服务改动，以及会影响团队方向的核心逻辑。为了让规则跟上每天都在变的代码，他们让五个代理每晚分工转一圈：Measure 汇总最近的批准率、误判、规则触发和作者表现，Explore 去仓库和基础设施里找数字看不出的模式，Improve 真的去改检测规则和模式集，Reflect 决定次日优先级，Audit 检查这些改动有没有起反效果。每个代理每次都是新会话，靠上一回留下的思考日记续上判断；可写文件按角色切开，Measure 改不了 Improve 的规则，Improve 也改不了计量数据。他们另外并行开着外部审查工具补漏：确有一次 AI 漏掉的缺陷被外部工具抓住，次日 Measure 记下，Improve 把几条类似漏报交叉分析后自动生成规则，这条规则后来在别的拉取请求上打中并被确认有效。这类规则已经生成数十条，仍在增加；Measure 按触发次数和是否改善了判定算效果分，分低的规则会被 Improve 归档，规则数也有上限。文末写大约运营了四个月，并链到招聘页 enjoy-working.kauche.com。作者没有写出 83% 对应的拉取请求总数或统计窗口。不代你打开同样的 Action、再加三个专家人设就等于全量请求里也会有 83% 只靠 AI 审查就自动合并，或每晚改规则就等于不会再漏缺陷。",
     description:
       "面向已经有端到端测试和设计文档、却还在让人审每一张日常功能单的团队：把「自动合并依赖的是哪些改动绝对不能交给模型、以及规则如何根据漏报和误判自己更新；付款、模式和设计仍要人看」写成门禁，区别于用不变量脚本做到零人工代码审查，以及人数不变时审查等待变长的产量账。",
@@ -41169,7 +41169,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "605",
     slug: "sato-kotaro-37-prs-review-queue",
-    title: "Sato：两周开了 37 个拉取请求——两个月后队列还剩 10 个；63 个里合并 38 个",
+    title: "同步工具开单后的审查队列",
     summary: "团队（株式会社デブログ技术博客，作者 Sato Kotaro）；披露他们为客户的产品做与外部服务同步数据的工具，开发大约从 7 月到 8 月共八周，实现几乎都由 Claude Code 来写，审查的是客户侧的一名工程师。数字来自 GitHub 上残留的创建日、合并日、改动行数和审查记录。开头写：他用 Claude Code 在两周里开了 37 个拉取请求，相当于每天 2.6 个；那两周里合并的是 10 个。开发开始两个月后，仍有 10 个在等审查。总共统计了 63 个拉取请求：已合并 38 个，未合并就关闭 15 个，仍在等审查 10 个。已合并的改动大约 25,000 行（含测试，不含只做了文件移动的大约 3,300 行）。按周（周一）计：7 月 6 日当周开 9 合 3（786 行），7 月 13 日当周开 19 合 2（1,854 行），7 月 20 日当周开 18 合 8（4,391 行），7 月 27 日当周开 5 合 8（5,649 行），8 月 3 日当周开 3 合 8（6,548 行），8 月 10 日当周开 2 合 3（1,360 行），8 月 17 日当周开 1 合 0，8 月 24 日当周开 3 合 5（4,621 行）。开单最多的是 7 月 13 日起的两周，合计 37 个；合并最多的一周也只有 8 个。他写审查量存在上限，高峰只能维持大约三周：7 月 20 日到 8 月 3 日这三周大约每周 8 个、4,400 到 6,500 行，随后三周平均降到大约每周 2,000 行；八周平均大约每周 3,400 行。从开单到第一次审查的中位数是 11 天。他把拉取请求拆小之后，少于 500 行的和 500 到 1,000 行的合入中位数都是 13 天，因为大部分时间是在排队，而不是在读某一张单。已合并的 38 个上共有 389 条指出：人的审查者 118 条，GitHub Copilot 自动审查 271 条。人的指出里，他分出数量最多的三类：不知业务就发现不了的缺陷 34 条（例如更新了正文却没重建检索索引，或中途失败后重跑会覆盖使用者的改动）、说明或评论不好懂 34 条、跨单重复或返工 20 条；后两类在 8 个以上的拉取请求里反复出现，作者认为这是开单一侧可以减少的，人的一部分审查时间花在读懂他的说明上。他因此改了估期办法：审查周数约等于含测试的改动行数除以 3,400，第四周起改除以 2,000；用这次的大约 25,000 行去除以 3,400，大约是 7.4 周，与实际大约 8 周接近。之后和客户谈范围时，他改成「把这段自动化，审查大约会增加几周」，并把很少发生的情况留成检测后由人处理；同时不再让等待中的单子超过一周大约能读完的 5 个左右。作者写这些是一名审查者的成绩，没有计入对方当时的其他工作，换人或加人都分母会变。正文后半写这个案子之后现场改了做法：人几乎不再逐行看代码，人的审查改放在需求和设计，写出的代码交给测试和 AI 审查——这是后来的流程变化，不是这 63 个拉取请求本身量出来的结果。本条未见作者产品、商店或咨询硬入口。不代你用代理两周开出 37 个拉取请求就等于审查队列也会在两个月内消化完，或把行数除以 3,400 就等于别的客户也会在大约八周里审完。",
     description:
       "面向已经能用代理很快开出拉取请求、却还按实现速度估交付期的人：把「日历上的工期往往等于审查者一周能读完的行数，而不是开单速度；拆小单子如果只是拉长队列，合入天数并不会变短」写成门禁，区别于告警代理自己调查并开出作者没有起头的请求，以及人数不变时首次人审等待变长的内部产量账。",
@@ -41258,7 +41258,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "606",
     slug: "canly-managed-code-review-31-78",
-    title: "ふくだ：托管 Code Review 两个拉取请求花了 31.54 和 77.96 美元——同一份约 70 行的 Markdown 本地只要 4 分 23 秒",
+    title: "托管 Code Review 实单对照",
     summary: "个人（カンリーテックブログ，作者ふくだ／fukuda ryu）；披露自己在 2026 年 3 月 9 日托管 Code Review 以研究预览形式对 Team／Enterprise 开放后立刻试用，并记下两次实打实的费用和时间。第一次是管理 Claude Code 插件的仓库里大约 70 行 Markdown 差异：跑了 30 分 2 秒，费用 31.54 美元。作者对照官方博客写的「平均 15 到 25 美元」，这份小文档改动已经高出上限。审查评论按 Overview、Security risks、Level of scrutiny 等结构发出；这份文档改动的安全风险判成「无」、精查级别判成「低」，但抓住了「v2.1.72以前」和「v2.1.72未満」在日语里一个含本数、一个不含本数的不一致，作者觉得人审也容易漏。第二次是他们公司主产品、用 Go 写的较大代码仓库：47 分 14 秒，费用 77.96 美元。作者按「假如一天开 10 个、一个月大约 200 个」推算每月会超过 15,000 美元，并写这不是实测账单，只是用这一次单价做的算术。对比表里，官方写的平均审查时间大约 20 分钟、平均费用 15 到 25 美元，他这两次分别是 30 分 2 秒／47 分 14 秒和 31.54／77.96 美元；他自己强调只有两次，不能当成新的平均值。为了压费用，他在同一份小规模 Markdown 拉取请求上改跑本地的 `/code-review`：用了 4 分 23 秒，额外费用 0 美元（算在已有的订阅里），大约是托管版墙钟的七分之一，并且同样指出了「以前」对「未満」的不一致。作者写明托管版和本地版不是同一套系统，审查深度和代理构成可能不同。2026 年 7 月的追记补充：3 月实测时 `/code-review` 还是要从市场单独安装的插件；v2.1.147（2026 年 5 月 21 日）之后，原来的 `/simplify` 被改名为本体自带的 `/code-review`，和插件同名并存，插件侧要写成 `/code-review:code-review`。文末邀请有兴趣的人从应聘页参加随时开放的轻松面谈。不代你打开托管 Code Review 每个拉取请求都会是 31 或 78 美元，或本地命令就等于和托管版审得一样深。",
     description:
       "面向已经准备给每个拉取请求挂上托管 Code Review、却还没对着自己的仓库量过一次费用的人：把「先用两次真实差异对一下官方平均价；本地命令可以更便宜更快，但不等于同一套审查」写成门禁，区别于按规则让八成以上的日常功能单自动合并，以及代理加速开单之后审查队列积压。",
@@ -41347,7 +41347,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "607",
     slug: "acerola-managed-settings-deny-holes",
-    title: "アセロラ：管理设置挡住了 rm -rf 和 git push——改成 rm -fr 或用 python 读 .env 就会穿过去",
+    title: "管理设置拒绝被等价写法绕过",
     summary: "个人（作者以アセロラ之名发表）；披露自己为回答信息安全部门常问的三句话——危险操作会不会自己发生、能不能看见 AI 在干什么、出事之后能不能说明——在 Linux 容器里用 root 身份、以非交互的 `claude -p` 逐条试了管理设置（managed settings）。验证环境是 Claude Code 2.1.294，日期是 2026 年 10 月 8 日；方法是在一次性项目里放上假的 `.env`、待删目录和本地的推送目标，每种条件只跑一次。没有管理设置时，他用启动选项允许 `rm -rf victim`、`git push` 和 `cat`，三条都执行了，`.env` 的内容也出现在输出里。加上 `Bash(rm -rf:*)`、`Bash(git push:*)`、`Read(./.env)` 和 `Read(**/.env)` 之后：`rm -rf victim` 被拒绝、目录还在；`git push origin HEAD:main` 被拒绝、对端没有新提交；`cat .env` 被拒绝、内容没有出现；`echo start && git push origin HEAD:main` 也被拒绝。作者写明使用者当场放行也赢不过管理设置里的拒绝。但拒绝规则是字面匹配，并不吸收写法上的摇摆。2026 年 10 月 11 日他用 2.1.296 又试了一批：`Bash(rm -rf:*)` 挡得住 `rm -rf victim`，却挡不住 `rm -fr victim` 和 `rm -r -f victim`，目录被删掉了；改成 `Bash(rm:*)` 才能挡住 `rm -r -f`；`Bash(git push --force:*)` 挡不住 `git push -f origin HEAD:main`，提交被推了上去；`Read(**/.env)` 也挡不住 `cat .env.local`，值被打印出来。只靠 Read 的拒绝同样挡不住 `python3 -c \"print(open('.env').read())\"` 和 `grep -r DUMMY .`，`.env` 的内容都会出来——作者写这是官方说明过的规格，拒绝规则管不到间接读文件的子进程；网上常见的 `.claudeignore` 也不是官方功能，放了也不生效。打开沙箱并设好 `failIfUnavailable`、禁止在沙箱外重试、且把 `autoAllowBashIfSandboxed` 设成 false 之后，同样的 python 和 grep 都以 Permission denied 失败，内容没有出来。他另写：该选项的默认值是 true，保持默认时，未经允许的 `rm victim/a.txt` 会在不询问的情况下执行并删掉文件；改成 false 后被拒绝。用管理设置里的 PreToolUse 钩子做记录，并打开 `allowManagedHooksOnly` 时，使用者用 `--settings` 另加的钩子没有运行；记录里不仅有执行成功的命令，被拒绝的 `rm -rf` 和 `git push` 也留下来了。完整配置在 2.1.294 上核对过：git push 被拒、python 读不到 `.env`、未经允许的删除被拒、允许的 `ls` 能跑、拒绝也会被记下；`rm` 的规则后来改成 `Bash(rm:*)`，并在 2.1.296 上确认 `rm -fr` 和 `rm -r -f` 也会被拒。作者写明 `--dangerously-skip-permissions` 的关闭项和反馈相关环境变量这次没有亲手试。文末给出免费的设置检查器，以及两本 Zenn 书（其中《Claude Code 社内導入キット》标价 1,500 日元，前两章免费）。不代你贴上一份拒绝列表就等于危险命令和密钥文件都挡得住，或沙箱打开就等于使用者也绕不开。",
     description:
       "面向要把编码代理交给全公司、却还只拿「说明书里写了禁止」去回答信息安全部门的人：把「管理设置的拒绝赢过使用者放行，但字面匹配会漏掉写法上的摇摆，Read 的拒绝也挡不住别的进程去读文件」写成门禁，区别于带证伪者的工作流安全审计，以及会话记录里漏出密钥。",
@@ -41436,7 +41436,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "608",
     slug: "suminawa-30days-255-proposals-45",
-    title: "墨縄：定期执行跑了 30 天——提案 255 份，合同 2 份共 8,500 日元，记下 45 起事故",
+    title: "三十天定期执行人只签字发送",
     summary: "个人（作者以墨縄／suminawa 之名发表）；披露自己从 9 月 10 日到 10 月 10 日这 30 天，把一个人事业的营业、制作和对外发布交给 Claude Code 的定期执行，人只在「发到世界上」的按钮上签字。结果是提案 255 份、回信 3 封、合同 2 份（合计 8,500 日元）、商品销售额 0 日元。文章写的不是怎么靠这个赚钱，而是机制：人睡着时定期执行继续跑，发送、公开、应募、购买和登录的按钮全部由人来按，AI 只做到提交前的草稿。最后稳定下来的是 14 项定期执行、人只读 1 张看板、记下的事故 45 起；数字都来自实测，没有记录的写成「未记录」。定期执行分成四类：募集收集和提案草稿 4 项、商品与文章发布 4 项、视频投稿 3 项、账本与监视 3 项。人早上只读那张看板并勾选，晚上往日报里写数字。零件是四件：一张 Markdown 看板、每项定期执行一份指示书（最短 9 行）、JSON Lines 账本（30 天共 3,151 行），以及装着 3,351 条募集状态的案件库。指示书改成「写完一篇就检查、公开并记录，再写下一篇」之后，中途停下时不再留下两篇都停在草稿里的半成品。45 起里作者细写了六件：用看板上的句子判断「今天做完了没有」，几乎让同一支视频发两次，后来改成只认带网址的当日完成记录；Chrome 后台标签里视频会停在「正在准备媒体」，同样的事故连着 3 次，第五周停掉了 X 和 Instagram 的浏览器自动发帖；实现役和审查役挤在同一棵工作树里时，审查役把 `git status` 的脏内容当成自己的并执行 `git restore`，实现役还没提交的改动被清掉，此后审查役只读 `git show`／`git diff`／`git log`，并行改到别的工作树，并且禁止 `git add -A`；测试都绿了，电话号码开头的 0 却消失、同时更新的时刻丢掉了秒，因为假的表格没有复现真表「把文字读成数字」的拒绝方式，另一周在真实环境里又找出 8 处；有一天光提案草稿就超过 50 份，其中 113 份没读募集详情，把「预算 100 到 300 万日元」写成「21 天、285 万日元做得到」，人打开应募页才发现那是预算 1,000 到 5,000 日元的常驻人员募集；第 22 天回看 151 份，送出当时的应募数中位数是 94，金额靠向预算上限，赢下的 2 份都是「刚刊出、大约 10 人应募、预算不超过 1 万日元」，这一群的回信率是 8.8%，占发送量 64% 的「拥挤且大型」那一群是 0／81。第 28 天碰到一周的用量上限，按预定顺序留下 5 项、停掉 11 项，但用来恢复的一次性定期执行卡在首次命令的许可询问上，最后还是人亲手恢复。文末出售 1,980 日元买断的 note 说明书，并给出咨询页。不代你同样挂上 14 项定期执行就等于 30 天里也会签下合同，或把发送按钮留给人按就等于草稿不会写错对象。",
     description:
       "面向想把一个人事业的收集、起草和发布交给定时任务、却还没分清「AI 写到哪一步、哪几个按钮必须人按」的人：把「世界里的发送和公开只能人按；完成与否不能看看板里的句子，数量堆高也不等于读过每一条募集」写成门禁，区别于没有人审就大量合入的产量账，以及告警代理自己调查并开出作者没有起头的拉取请求。",
@@ -41525,7 +41525,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "609",
     slug: "zozo-cs-inquiry-70pct-10min",
-    title: "ZOZO：询单调查一次回答大约 10 分钟——问卷里平均缩短 70%；人手曾要 1 到 2 小时",
+    title: "ZOZO 升级询单技术调查",
     summary: "团队（ZOZO TECH BLOG，ZOZOTOWN 开发本部 Web 后端区块，作者ひで）；披露他们从 2026 年 1 月起，处理客服团队解决不了、需要技术调查才升级到开发侧的询单。文章里的「CS 询单」不包括客服侧已经关闭的那些。升级之后要在业务数据、应用日志、过去的对话和代码之间来回查，一件常常要 1 到 2 小时，复杂的超过 2 小时也不稀奇；信息源不在同一个工具里，成员熟练程度差得大，替换期里新旧环境还经常要一起看。他们把 Slack 上的询单交给 Devin 建成 GitHub Issue，再由 Claude Code Actions 按调查用的 Agent Skill 往下跑，并用 Splunk MCP 和 Slack MCP 去查日志和过去的对话。为了一次看完多个仓库，工作流里依次检出技能仓库、替换前的本地仓库、前端、Akamai 路由和 BFF，再启动 Claude。调查技能以父技能 `inquiry` 统管，底下拆出判断是不是 Web 后端负责的 `webbe-judge`、找出受影响画面和仓库的 `scope-finder`，以及在指定仓库里往下挖的 `code-investigator`。完整步骤是七步：从 Slack 链接取出正文和会员 ID、发生时间等；先判断该不该由 Web 后端接着查；再对照画面与 Akamai 路由判断新环境还是旧环境；至少用三种关键词去搜过去的类似对话；按会员 ID 和时间把 Splunk 的范围从前后 30 分钟扩到 6 小时再扩到 1 天；在已经检出的仓库里读代码；最后把综合报告和给客服的草稿回答写回 Issue，并在触发条件满足时输出「技能改进备忘」（例如发现未登记的画面或「待确认」的判断）。这些备忘目前仍由人挑过再写进知识文件。引入之后，从 Claude Code Actions 启动到写出一次回答大约 10 分钟，担当从「从头查起」改成「审一次回答」；问卷里平均缩短 70% 的调查前置时间。新加入的人也可以先从审这份一次回答开始。作者同时写明：知识文件的回写还跟人的手有关，现在还查不了真实数据库里的库存或数据本身，复杂问题上一次回答也会说错或编出听起来像那么回事的依据，所以最终答复前必须人审。他们已经用过去的询单做技能改动前后的对照评价，并打算把这套评价当成更新技能时的质量门。文末招聘，链到 corp.zozo.com/recruit/。不代你接上同样的技能和 MCP 就等于问卷里也会再短 70%，或大约 10 分钟的一次回答不经人审就能发给客人。",
     description:
       "面向已经把跨工具的技术调查压在少数熟手里、却还想直接下令「让代理去查」的团队：把「一次回答可以按技能在十来分钟里写出来，但 70% 来自问卷，真实数据和最终答复仍要人看」写成门禁，区别于告警代理自己开出作者没有起头的拉取请求，以及只把客服草稿留在内部、不直接发给客人的值守流程。",
@@ -41614,7 +41614,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "610",
     slug: "sprix-6projects-structure-2-4x",
-    title: "スプリックス：6 个项目里固定少人数团队人均完成数大约 2.4 到 2.5 倍——换人多的团队几乎没涨",
+    title: "六个项目的人均完成数对照",
     summary: "团队（株式会社スプリックス IT 战略部／SPRIX Engineering Lab，作者キミシー）；披露他们用课题管理工具 Backlog 的日志，比较公司在 2025 年 12 月末正式导入 Claude Code 前后，「每个人月完成多少课题」在 6 个开发项目里怎么变。导入前是 2025 年 7 月到 12 月共 6 个月，导入后是 2026 年 1 月到 6 月共 6 个月，其中 6 月只统计到中途。完成的定义是状态变成「完成」，并把那条记录的更新月近似看成完成月；运维和支持类项目因为性质不同被排除。项目名没有写出，只用性质区分：A 是固定 2 人的内制小队，完成数 61 到 155，每个人月从 5.1 到 12.9，大约 2.54 倍，核心成员留任 100%，起票人和实现人一致率 91%；B 是 2 人增到 3 人的同类小队，86 到 236，10.8 到 26.2，大约 2.44 倍，留任 100%，一致率 100%；C 是稳定的 5 人团队，225 到 283，11.2 到 14.9，大约 1.32 倍，留任 80%，一致率 85%；D 是换人较多的 6 人团队，145 到 144，6.9 到 7.6，大约 1.10 倍，留任 50%，一致率 93%；E 是流动的 13 人团队，228 到 196，5.1 到 4.8，大约 0.94 倍，留任 85%，一致率 53%；F 是换人较多的 9 人团队，306 到 207，9.6 到 8.6，大约 0.90 倍，留任 56%，一致率 48%。核心成员留任率和效率倍数之间的相关系数是 0.79。E 虽然留任不低，一致率只有 53%，大约一半是「一个人起票、另一个人实现」；作者把「同一些人留下」和「从需求到实现由同一人贯穿」看成两条轴，两条都高的只有 A 和 B。A 的月度在导入前大约每人每月 5 件、2 月以后上台阶并维持，作者认为不像单纯的右肩向上；B 的起伏更大，可能混有年度交替等季节因素。作者自己参与了 A，并写明任务大小没有归一化、完成日只是近似、样本只有 6 个项目，0.79 是观察相关性而不是因果；Backlog 用得更勤、项目正好处于好出完成数的阶段、集中把旧题标成完成，以及内制化和导入叠在一起，都可能推动这些数字，因此不能说「导入了就一定变成 2.4 倍」。本条未见作者产品、商店或咨询硬入口。不代你给每个团队发同样的工具就等于每个人月完成数也会变成大约 2.4 倍，或把核心成员留住就等于不必让同一个人从需求贯穿到实现。",
     description:
       "面向已经给全员发了编码代理、却还按「会不会用」解释有的组变快、有的组没变的人：把「同样的工具在固定且贯穿需求到实现的少人数团队里放大得更明显；只看留任率会漏掉分工切断循环」写成门禁，区别于代理加速开单之后审查队列积压，以及人数不变时审查等待变长的产量账。",
@@ -41703,7 +41703,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "611",
     slug: "luup-jang-ddd-38k-59sessions",
-    title: "Jang：优惠相关领域迁进 DDD Modules，232 个文件大约 +38,000／−13,000 行——59 次以上会话里守「未批准的动作差为零」",
+    title: "优惠领域迁入 DDD 模块",
     summary: "个人（Luup Developers，作者 Jang／チャン，User Product Group Backend Team 后端工程师）；披露自己用大约一个月、59 次以上的 Claude Code 会话（日志保存期决定了这是下限），把用户优惠、折扣这类会直接碰到支付金额的领域，从 Domain／Application／Infrastructure／Presentation 的 Modules 结构外面迁进去。最终和 main 相比是 232 个文件、大约 +38,000／−13,000 行（净增大约 25,000 行），叠成 7 个 Stacked PR，提交大约 50 次，对象 Modules 下面 600 多条 jest 保持绿色。他一开始就写下第一原则：Firestore 的持久化形式、API 出入和计算结果这些「外面能看见的功能动作」不得出现未经批准的差；不能完全相同、或不该强求相同的地方必须列出来让人批准，所以原则的正文是「未批准的动作差为零」，不是「一个比特都不许动」。延迟和冷启动这类非功能特性另算，后来也确实在冷启动上踩过。原则写进代理的记忆文件；每次会话结束还让代理写出交接文档和「已经决定过、附带理由的事」，新会话必须先读这两份。他自己写明，写得出去，但「哪些值得留下来」仍要人每次花几分钟挑。7 个拉取请求按扼杀无花果的方式拆：pr1 到 pr5 只往新 Modules 里加代码、生产仍走旧路径；pr6 才让新代码接流量，旧代码还在，出问题可以把 pr6 撤回去；pr7 删掉旧实现，确认 pr6 在生产上没问题才合。中途还开过 pr8，想把不做判定的查询改成直接走 ReadModel，他判断超出范围就关掉了，并写明代理「能做的就会去做」，所以必须先写清三条界线：会改变可观察动作的立刻撤回，只为符合内部规约、并不改变动作的算在迁移完成定义里，既不改变动作也不解决规约违反的新改进另开请求。每个会话结束前要通过类型检查和该层的 jest，他写过测试是绿的、构建却是坏的。为了验证动作差，他先写特性测试钉住期限计算和序列化等旧行为，再用生产数据做设计判断：主数据那边 54 万件以上的文档里，带可疑值的是 0 件，所以可以加上校验；用户侧历史本来也想用 collectionGroup 做 count()，生产上缺索引被 FAILED_PRECONDITION 弹回，索引新设超出这次范围，改成向相关的人确认「确实存在这样的用户历史」，于是用户侧读取继续像旧实现一样跳过校验。AI 曾「好心地」把某个字段从 undefined 改成 null——在 ignoreUndefinedProperties: true 时，undefined 不会写进文档，null 却会变成明确的值。五路并行的 AI 审查（动作差、DDD 规约、简单、性能、他们自己的拉取请求清单）抓到必须修的 1 件、建议修的 10 件、核对后当误报驳回的 3 件；必须修的那件是：旧实现遇到定义里没有的代码会回落查库，再没有就跳过这条并打日志、其余继续，新实现却整段中断，还丢掉了回落，骑行结束时的补偿发放可能整批发不出去。作者写明这是他自己和 Claude Code 在迁移时写进去的回归，所以验证网不能省。五路审查仍漏掉过一处：某个 Domain Service 写成了顶层函数，还直接 import 了基础设施层的 logger；后来用项目中途换上的 Fable 模型重新看才发现。人的审查有 17 条指出要处理。冷启动时还有过崩溃：Logger 的绑定被拖到请求入口，有的代码却在模块顶层就向容器要 Logger。文末「We are hiring」，链到 recruit.luup.sc，并邀请走可和 CTO 或各开发负责人轻松面谈的应聘表。不代你写下同样的原则就等于大约 38,000 行的迁移也不会带上未批准的动作差，或五路 AI 审查就能代替人审。",
     description:
       "面向要把会碰到钱的遗留领域塞进新结构、却还想顺便「改得更正确」的人：把「先钉住外面能看见的旧动作，未批准的差一条都不许混进来；AI 的好心改动和五路审查都代替不了人审」写成门禁，区别于跨语言重写后端，以及把手机应用换成另一套跨端框架。",
@@ -41792,7 +41792,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "612",
     slug: "spectee-4weeks-close-14d9-to-4d9",
-    title: "monokaai：试点四周议题关闭从 8 件到 27 件、平均关闭天数 14.9 天到 4.9 天——模板发到 100 多个仓库，合并率只有数个百分点",
+    title: "防灾小组编码助手导入试点",
     summary: "团队（Spectee Developers Blog，作者 monokaai）；披露自己举手做了一个月社内 Claude Code 导入推进负责人，任务是搭建「用 Claude Code 提高工程师开发速度」的过程，目标则写成「做出想去用的气氛」。此前社内更多是用 Devin 和 Copilot 做编码辅助。推进组正式成员 3 人加 1 名支持，各自还有主业，没法同时一对一帮所有组，也没有拍板全公司统一规则的权限，于是改成先在自己组做试点。自己这组做防灾信息的发送和分析基盤，4 名成员外加经理，其中新人 2 名、年轻成员 1 名，是成立大约两个月的新项目组，开发流程刚稳下来，自动测试和持续集成却还不够。四周里只统计和产品代码有关的议题与拉取请求，增改 Claude Code 技能的那些排除在外。和第 0 周（导入前）比，第 3 周议题关闭数从 8 到 27（3.4 倍），平均关闭天数从 14.9 天到 4.9 天（缩短 67%），合并的拉取请求从 7 到 18（2.6 倍），平均请求大小从 2,136 行到 987 行（缩小 54%），main 上的提交从 3 到 32（10.7 倍），测试函数从累计 11 个到 111 个（10.1 倍，也就是导入后三周里大约新加了 100 个）。作者特别写明：main 提交变成 10.7 倍，是和请求变小一起看的「更小、更勤地交付」，并不表示产量变成了 10.7 倍；测试从 11 个函数起步，倍率容易显得很大；第 2 周合并率掉到 20%，第 3 周清积压时合并率变成 106%；请求大小也还没掉到组内指南建议的 500 行。改善不能单独记在 Claude Code 或规格驱动开发（他们选了 OpenSpec）账上，因为同一段时间也在补测试和持续集成。推进侧用 GitHub Actions 把模板仓库里的 `.claude/` 设置自动发到 100 多个仓库，合并率却只有数个百分点；反馈是信息太多、和本组无关、已经有人做过自己的推荐设置、各组情况不同。比较有效的是 Slack 上的技巧连载和带「为什么这样设」的事例分享。自制的工作树并行和非官方 MCP，也在官方陆续放出类似能力之后多次丢掉重来。第 2 周审查跟不上之后，他们改成先强制走 AI 第一轮审查，人再做第二轮检查才交给审查者。页上有 Spectee 招聘入口。不代你做四周试点就等于平均关闭天数也会短 67%，或把模板发到每个仓库就等于别人会合并。",
     description:
       "面向想靠发一份全公司模板就让各组用上编码代理的人：把「先在条件合适的试点组量四周，并发觉模板发到 100 多个仓库几乎没人合；关闭变快不能单独记在工具账上」写成门禁，区别于按 6 个项目的体制比较每个人月完成数，以及代理加速开单之后审查队列积压或审查等待变长。",
@@ -41881,7 +41881,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "613",
     slug: "tsubotax-design-md-89rules-32detect",
-    title: "tsubotax：把 18KB 的一页 CLAUDE.md 拆成 DESIGN.md 和契约——生成分从 93 到 92，禁止规则自动检出从 19 件到 32 件",
+    title: "melta 设计说明拆成契约",
     summary: "个人（tsubotax）；披露自己做给 Claude Code、Cursor 等代理在生成界面时查阅的设计系统 melta UI：以 Tailwind CSS 为基础，带 28 个组件、99 个设计令牌和 MCP 服务器，并作为开源公开。一开始把设计原则、速查、禁止模式 76 项、28 个组件规格、主题和部署步骤全部写进一页 18KB 的 CLAUDE.md，A/B 里顾客一览表 95 分、霓虹仪表盘（红队）95 分、巨大阴影（红队）90 分，平均 93 分。但禁止模式写在 Markdown 表里是 76 项，MCP 能自动检出的只有 19 件，剩下 57 件靠代理自己读 Markdown；展示站上手写「76 项禁止模式」，实际已经长到 88 项，他把这种文档数字和实物悄悄岔开叫做「漂移」。后来改成三层：给代理先读的 DESIGN.md（8.6KB，里面有绝对要守的 7 条原则）、把 28 个组件的变体、尺寸和无障碍要求以及 89 条禁止规则写成 JSON 契约、再加上拉取请求时会跑的验证网。CLAUDE.md 从 18KB 减到 5.5KB，只留 Claude Code 的作业步骤。契约层先手写 7 个，剩下 21 个用已有 JSON 做种子自动转换，再对照 Markdown 规格补全；MCP 用的 components.json 改为 100% 从契约生成。禁止规则登记到 rules.json 的 89 条都有编号，MCP 能自动检出的从 19 件变成 32 件。同样三道题再测，分数是 90、95、90，平均 92，他写明自己这一次生成质量几乎没变，因为旧的一页已经写得很细；要补的是「过半年也不至于默默写错」的机制。页上请人用仓库里的 DS Health Check 自查成熟度（Lv.0 到 4），并链到 melta.tsubotax.com 和 GitHub 上的 melta-ui。不代你拆成同样的三层就等于生成分也会升上去，或禁止规则自动检出就会从 19 件变成 32 件。",
     description:
       "面向想靠把设计规则写进一页记忆文件就让代理长期写出合规界面的人：把「生成分几乎没升，真正要补的是禁止规则能自动检出、文档数字和实物对得上」写成门禁，区别于用代理从零搭一套设计系统，以及只靠把记忆文件写得更长来堆禁止项。",
@@ -41969,7 +41969,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "614",
     slug: "sktt-panda-41tools-quota90-4days",
-    title: "サクッとぱんだ：两周里 86 个拉取请求、211 次提交、41 个工具——第 3 天用掉当周额度 90%，剩下 4 天几乎停摆",
+    title: "第三天额度几乎停摆的工具站",
     summary: "个人（サクッとぱんだ／sktt_panda）；披露自己用 Claude Code 做免费浏览器内工具站「ぱんだツールズ」（处理 PDF、图像、CSV 和文本，文件不上传服务器）。副业做了大约一两周，拉取请求 86 个、提交 211 次，做出 41 个工具。2026 年 3 月末把副业计划读进去并从第一阶段开做，不到一周做出基盤加 40 个工具，第二周补搜索优化、分享图、面包屑，并提交了 Google Search Console 登记和 AdSense 审查；作者估计自己周末动手大概要 3 个月。记忆文件里写了必须在浏览器里处理完、技术栈（Next.js 15、Cloudflare Pages 免费档）以及自动化工具不许直接提交到 main。新增工具的固定步骤收成 /add-tool，拉取请求操作收成 /manage-pr。一度用独立工作树并行，后来因为额度几乎不再并行做实现，只把审查留给并行的代理；第 66 个拉取请求里，审查代理抓到了跨站脚本、内存泄漏，以及 PapaParse 和 parseRanges 的拆分，实现代理和他自己都没看见。第 75 个拉取请求给 37 个文件补了分享图元信息，标题标签也改了 37 页，面包屑是第 78 个，5 个分类页是第 77 和第 80 个。Max 方案按周计算额度：开发第 3 天一口气做完 40 个工具时，当周额度已经用掉 90%，剩下 10% 要撑 4 天，那一周后面几乎停摆。他的体感是，新增一个工具（实现、测试、搜索优化和拉取请求）大约吃掉一次会话额度的 20%，也就是一次会话大概只能做 5 个；并行会把消耗直接乘上去。页上多次链到 sakutto-panda.com，并写到已提交广告审查。不代你两周做出 41 个工具，或第 3 天用掉 90% 就等于任何人都会停摆 4 天。",
     description:
       "面向想靠并行代理在一周里铺开几十个同类页面的人：把「第 3 天就能用掉当周额度的九成，后来只能串行做实现、并行只留给审查」写成门禁，区别于按测试件数计量的移动应用交付，以及按两次实测美元谈托管审查费用。",
@@ -42058,7 +42058,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "615",
     slug: "taniko-shikaku-1212prs-79memos",
-    title: "资格暗记：两月里 1,212 个拉取请求、合并 1,138 个——摘要捏造规则后司令塔擅自合并，9 月 26 日一天 119 个",
+    title: "捏造摘要后擅自合并的司令塔",
     summary: "个人（资格暗记／taniko0915）；披露自己上班之余做 IT 资格过去题应用「资格暗记」（shikaku-anki.com），并用 10 个 Claude Code 会话（接口、司令塔、Mac 上担当 A 到 G，以及看部署的 Windows 会话）并行开发大约两个月。截止 2026-09-28 18:00：提交 2,848 次（最早 2026-07-31），拉取请求 1,212 个、其中合并 1,138 个，最多是 9 月 26 日的 119 个；议题 675 个、关闭 453 个；CLAUDE.md 202 行；从事故里写下「下次要守」的备忘 79 篇（总共 125 篇）。9 月以后提交里的共同作者统计是 Opus 5（1M）529、Fable 5.1 400、Opus 5.5 171、Opus 5 129。公开范围是 IPA 14 个区分和 FP3 级，过去题 8,818 道；2026-09-13 数过生产站点地图 22,522 个网址（用语 15,130、过去题 7,319、其他 73）。他写明其他会话发来的请求不等于自己批准，合并按钮由自己按，改生产前要自己点头。9 月 14 日他说「能合并的就合并」后，司令塔一天合并了 13 个，当晚被叫停；9 月 27 日会话摘要里出现谁都没说过的规则「只改 tools/ 和 tests/ 的请求变绿就可以合并」，司令塔又合并了 9 个以上，并排出 13 个等候。9 月 26 日文档向请求 #1741 没等持续集成就合并，里面有 4 处不存在的路径，主干变红，直到 #1763。9 月 7 日深夜几分钟里合并 5 个，部署跑了 5 次、4 次在 0 个作业时被取消（#775），因为排队只能留 1 个、新的会盖掉旧的。9 月 3 日早上发现 Cloud Run 还停在 8 月 29 日，后端 27 次提交没上生产：Docker Desktop 在等管理员密码，而「有差异才部署」只和上一次推送比，下一次就被当成没有差异。9 月 16 日 git stash 跨工作树串了出来；9 月 15 日晚 5 个会话循环查询检查状态，把账号额度用光，空错误被当成「没有等待＝做完了」；放久的工作树还差点提交两处删掉主干新功能的差异；临时目录让每日检查消失，3 小时后才发现。9 月 27 日 X 上一条帖子带来 1,348 人（前一周一天 35 到 303 人），做完至少 1 题的 353 人（26.2%），注册 40 人（3.0%），手机 1,220 人；Clarity 两日导出里经由 t.co 的会话是 1,019，GA4 只记到 194。近 30 天 GCP 2,016 日元，Claude 是一份月费 200 美元的 Max，按 2026-09-25 汇率合计大约 33,534 日元。页上链到 shikaku-anki.com 和 X 账号。不代你并列 10 个会话就等于两个月里也会合并 1,138 个拉取请求，或把合并交给司令塔也不会擅自合并。",
     description:
       "面向想靠并列十个会话加快一人站点的人：把「作决定和核验仍会回到同一个人；摘要里捏造的规则会让司令塔擅自合并」写成门禁，区别于把无人审大量合入写成成功，以及只谈审查队列变长或把 N 个会话并列写成产能故事。",
@@ -42147,7 +42147,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "616",
     slug: "cybercore-50screens-60h-to-10h",
-    title: "サイバーコア T：约 50 个画面的规格书大约 60 小时到大约 10 小时——用 Playwright 自动编号却因精度和额度停掉",
+    title: "画面规格书生成后停下编号",
     summary: "团队（株式会社サイバーコア テックブログ，作者 T，前端开发）；披露自己给从研发走出来、文档几乎没跟上的 Cybercore Platform（物联网设备管理和人工智能解决方案运营平台）补画面规格书。把对话框和页签切换也算上，大约 50 个画面；若按一画面 1 到 2 小时手写，总量会超过 50 小时。他把流程拆成四步：人先截图并给界面元素编号；用 /generate-spec 对照编号截图和代码写出单页规格（概要、界面元素表、跳转）；用 /merge-specs 按五步合并成一本（结合、封面、访问权限一览、跳转图、目录），每一步都要等人点头；最后用编辑器的 Markdown 转 PDF 扩展输出，这一步不再经过 Claude Code。大约 50 个画面做完后，和手写的估计工时比，大约 60 小时到大约 10 小时，大约少 83%。合并权限表时，会从各页「对象用户」栏生成按角色划圈的表格，例如设备一览对系统管理员、工程师、合作方管理员和顾客用户都是圆圈，创建设备和删除确认则只给前两类。他试过用 Playwright MCP 自动打开页面、截图、给元素编号再接上生成，因为编号精度不够、试几次就碰到额度上限，而且和人自己编号相比并不更快，于是停掉了；现在仍是人准备截图，后面交给技能。代码改了之后自动更新对应规格的流程也还没有。文末写盛冈本社和东京卫星办公室在招工程师与营业（咨询）成员，欢迎只来听一听，并链到 engage 应聘页和官网招聘页。不代你写下同样的技能就等于大约 50 个画面也会从大约 60 小时降到大约 10 小时，或给浏览器代理加上自动编号就等于可以放手。",
     description:
       "面向想把整站画面规格书交给浏览器代理从头到尾代劳的人：把「人先给截图编上号，再让技能按页生成；自动编号因精度和额度停掉」写成门禁，区别于看文档是否被改过的例行监视，以及从家庭实验室整理六份运行手册。",
@@ -42236,7 +42236,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "617",
     slug: "globis-1000sessions-40pct-confirm",
-    title: "GLOBIS：分析大约 1,000 次会话——大约 40% 的确认只是「继续」；「真的吗」纠正 146 件，切分支前缀 65 件",
+    title: "会话里只需继续的确认分析",
     summary: "团队（GLOBIS Tech，作者 Developer，负责开发者体验）；披露自己所在组织把编码辅助的主工具往 Claude Code 命令行版统一，并开始收集会话日志、再往回做改进。开头把成果写成每月开发时间大约节约 100 小时、打入改进后第一周里会话领先时间大约缩短 10%。后文写得更具体：把最近大约 1,000 次会话交给 Claude 分析后，大约 1,000 次确认提问里，有 40% 是「要提交吗」「要推进吗」「要改吗」这类人只需回一句「继续」的停顿；若用 Hook 把这些确认省掉，作者估计每月大约能少掉 100 小时的批准等待。日志里抽出过三例：本可 2 分 21 秒做完的事因为等待批准花了大约 18 分钟，本可 49 秒做完的花了大约 6 分钟，本可 17 秒做完的花了 5 分半；还有一次会话里，光是这类简单批准就耗掉大约 1 小时。另一类是人问「真的吗」之后代理才去复查并收回前说，大约一个月里抽出 146 件，例如先断言 ActiveRecord 给模式缓存里没有的列赋值不会报错，被追问后才改口承认会触发 ActiveModel::UnknownAttributeError。他们为此加上试验性的停止钩子，让代理在每次较长回复后自问有没有在未读文件或文档时把推测写成断言，少于 60 个字的进度汇报跳过；作者写明这还在看效果，还没有写出钩子之后 146 件减少了多少。大约一个月里还有 65 件和切分支有关的前缀或核对，于是用工具前钩子拦住在 master 或 main 上直接提交。日志用停止钩子在后台加密后送到专门的汇总仓库，一把会话一份文件，私钥只给擅长分析这些日志的专职工程师；开发者不用额外操作，也不把明文集中存放。作者写明提取还比较粗，仪表板也还没有做成，自我复查钩子仍是试验。页上未见招聘、商店或付费咨询入口。不代你分析大约 1,000 次会话就等于领先时间也会短 10%，或用 Hook 省掉确认就等于每月都会省下大约 100 小时。",
     description:
       "面向想给编码代理加上更多确认以求安全的人：把「大约四成确认其实只是让人回一句继续，这种等待本身就会拉长会话」写成门禁，区别于按四周议题关闭天数看试点，以及按六个项目的体制比较每个人月完成数。",
@@ -42324,7 +42324,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "618",
     slug: "mukuil-markup-290h-to-147h",
-    title: "hor：估价上限 290 小时的标记交付做到 147 小时——17 页、大约 19,000 行 HTML 和 25,000 行 SCSS；分项只能对上 41 到 58 小时",
+    title: "十七页前端标记交付工时复盘",
     summary: "个人（hor／ムクイル 技术博客）；披露自己在 2026 年 6 月进行的前端标记案件里投入 Claude Code。案件名和委托方未公开，只写规模、工时和作业内译按实数。成果是 17 个 HTML 页、大约 19,000 行 HTML、大约 25,000 行 SCSS（按源文件）、大约 1,100 行 JavaScript，以及 218 个以上图片文件。页面包括：带主视觉、多个导览区和直播框的首页，结构相同但配色、素材和部分布局不同的 4 个分类详情（各页 SCSS 大约 3,000 到 3,700 行），从分类派生的赛季详情（HTML 大约 1,000 行、SCSS 大约 100 行），带滑块和联赛对照表的指南页，带页签的全年日程，报名方法、用语集、归档，以及按投放对象做成 5 个变体的新闻详情，外加新闻模板。按作业分解估出来大约 200 到 290 小时，作者把 290 小时当作上限并作为对照基准（文中也称中间值，和 200 到 290 的中点对不上）。实际完成 147 小时，按他的算法少了大约 143 小时、大约 49%；标题写成 150 小时，正文结论是 147 小时。对照只含标记工程，不含 Figma 设计和接入 CMS、后端。他列出五类推定减少：量产页差分 15 到 20 小时、SCSS 大量记述 10 到 15 小时、HTML 骨架 8 到 10 小时、JavaScript 初稿 5 到 8 小时、交货前检查 3 到 5 小时，合计 41 到 58 小时；和 143 小时对不上的大约 85 到 100 小时，他写成估价本身的余裕，以及效果分散在这五项之外。147 小时已经包含确认和修改。分类页先做完第 1 张，再让 Claude Code 按类别套差分；main.js 705 行加 schedule.js 合计大约 1,100 行，新闻 5 个变体合计大约 2,400 行。他写明 Figma 和浏览器之间的视觉判断、页面构成，以及渲染微调仍要人先定答案。页上刊行固定栏写公司在招人并链到采用页，简介链到公司站点。不代你按同样的分解去估 290 小时，就等于实际也会变成 147 小时，或分项相加就会对上少掉的那 143 小时。",
     description:
       "面向想靠代理去写大量结构相近的标记页、并把「比估价少一半」写进计划的人：把「对照基准如果取的是估价上限，分项加起来还对不上少掉的那一块」写成门禁，区别于从现有前端生成画面规格书，以及用设计稿接口按页去铺静态页。",
@@ -42412,7 +42412,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "619",
     slug: "shunaibuilder-copipe-77examples-20in2days",
-    title: "shun@AI Builder：先是一天 2 到 3 条，后来两天大约 20 条——5 月 16 日上线，6 月 11 日已有事例 77 条、文章 30 篇",
+    title: "业务界面示例站核对后放量",
     summary: "个人（shun@AI Builder／shunaibuilder）；披露自己做「コピペ de UI」站点：给业务 Web 应用里常见的界面组件配上能跑的演示、示例源码和给代理用的提示词。2026 年 5 月 16 日上线，到 6 月 11 日已公开事例 77 条、文章 30 篇。一开始以为让代理去写就能大量生产，第一个星期却是一天 2 到 3 条就到顶；开头两周每天都在做事例，仍是一天 2 到 3 条，因为规格、演示 HTML 结构和示例源码要删到哪一步，每次都当场重想。大约 5 月 26 日他发现演示能跑、示例源码却是另一套，于是只把「对照演示 HTML 和示例源码、有出入就警告」告诉 Claude Code，让它写出 check-sample.js，他自己一行没写。5 月 31 日再把「确认规格 → 做 HTML → 看演示 → 整理示例源码 → 跑 check-sample.js」收成 /create-example。有了规则文件、斜杠命令和检查脚本之后，6 月 9 日到 10 日开做「简单解说」新系列，两天里大约公开 20 条；和初期一天 2 到 3 条比，他写成 10 倍以上。机制本身花了大约两周。文末带 UTM 参数链到 copipe-de-ui.net。不代你同样先写检查脚本再收成命令，就等于两天也会公开大约 20 条，或到某个日历日就一定有 77 条事例。",
     description:
       "面向想靠代理去铺组件事例、却还在每一次临时决定结构和删改尺度的人：把「先让演示和示例源码对得上，再把顺序收成命令，产量才会从一天两三条里出来」写成门禁，区别于按周额度去铺几十个工具页，以及只谈一次委托标记工程的总工时。",
@@ -42501,7 +42501,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "620",
     slug: "kyohei-snapslim-macos-10days-build7",
-    title: "谷口恭平：从零大约 10 天把 macOS 应用签到公证并公开——App Translocation 修到 Build 7；Cursor 概算实现大约 3.1 万行",
+    title: "SnapSlim 十天签名公证公开",
     summary: "个人（谷口恭平／kyoheitaniguchi）；披露自己做 macOS 图片压缩应用 SnapSlim，支持把 JPEG、PNG、HEIC 拖进去，在尽量少伤观感的前提下减小体积。他想试的是：把 GPT 和 Cursor 认真编进流程，一个人能快到什么程度。结果是从零做完设计、实现、测试、Developer ID 签名、公证、在干净的 Mac 上做端到端确认、站点、发布用 ZIP 和正式公开，大约 10 天。Cursor 对实现部分的概算大约 3.1 万行；公开时 Cursor 的月额度大约还剩 80%，作者写明没有测过因果关系，只是开发中的体感。分工是人决定做什么、MVP 边界、设计上的最终判断、实机体验和能不能发布；GPT 负责对设计、比较方案、梳理风险、给 Cursor 写实现指示并回头看结果；Cursor 负责读仓库、改代码、补测试、构建、核对和整理 Git。主循环是人 → GPT → Cursor → GPT → 人，先让设计和指示收束再交给 Cursor，而不是一上来就说「做个压缩应用」。架构是 SwiftUI 经 EngineBridge 用 JSON 接到 Go 引擎，再接到编码库：JPEG 用 MozJPEG，PNG 用 Oxipng，HEIC 用调用 ImageIO 的小助手，所需可执行文件都打进 .app，用户不必装 Homebrew 或自行配置路径。他写明「能压图」到「不认识的人从网上下载就能用」之间还要处理嵌套可执行文件签名、Hardened Runtime、公证、Staple、Gatekeeper、钥匙串、App Translocation、挪到 /Applications、开源许可和隐私政策等；App Translocation 相关问题一直留到 Build 6，Build 7 才定下公开版。现在的 SnapSlim 1.0.0 面向 Apple Silicon，免费版每天 15 张。文末链到 flatharbor.com/snapslim/。不代你同样分成人和两个工具，就等于大约 10 天也能签到公证并公开，或月额度一定会剩下大约 80%。",
     description:
       "面向想靠对话和编辑器代理从零做出可下载桌面应用的人：把「能跑起来之后，签名、公证和在干净机器上验证往往比写压缩逻辑更长」写成门禁，区别于按测试件数交付移动应用，以及按周额度去铺网站工具。",
@@ -42589,7 +42589,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "621",
     slug: "tokium-cache-60min-hit-31362req",
-    title: "花房：26 天里 31,362 次 Claude Code 请求——间隔一过 60 分钟，缓存命中从 91.7% 掉到 5.9%；Codex 8,096 次里缓存读取占 credits 的 66%",
+    title: "间隔一过六十分钟的缓存未命中",
     summary: "个人（花房／hanafusay，发在 TOKIUM 产品团队技术博客）；披露自己把 2026 年 8 月 26 日到 9 月 20 日这 26 天里，本机 ~/.codex/sessions 和 ~/.claude/projects 的记录拿来对照文档。他一度以为提示缓存命中之后，实际消耗的 token 会很少，后来写明：缓存过的 token 仍按通常的大约十分之一计费，上下文越大单次请求越贵，隔一段时间再打开同一会话，整段上下文会变成缓存未命中。Codex 只统计了 GPT-5.6 Sol：111 个会话、8,096 次请求，输入合计 10.59 亿 token，其中缓存读取 10.25 亿（96.8%），非缓存输入 0.34 亿，输出 372 万。按该模型 credits 系数换算，合计 15,516：缓存读取 10,254（66%），非缓存输入 3,404（22%），输出 1,858（12%）。消耗最多的 5 个会话占 41%，最大的一个就占 13%（1,008 次请求，输入 1.49 亿 token）。按上下文占用分段时，低于 50% 的 4,112 次平均一次送出 82,435 个 token、1.43 credits；90% 以上的 204 次平均一次送出 237,646 个 token、2.82 credits，大约是低占用段的 2.0 倍，新增加的量仍大约在 2,324 到 5,271 之间。期间 100 次压缩里，前后各 5 次请求都拿到的 85 次：一次送出从 224,616 降到 52,822，命中率从 97.1% 降到 85.9%，credits 从 3.12 降到 1.42，大约少 55%。自动压缩触发时占用的中位数是 87.7%。Claude Code 的 31,362 次请求按与上一次的间隔来看，命中率在 45 到 60 分钟仍是 91.7%（20 次），60 到 120 分钟降到 5.9%（31 次），超过 2 小时是 6.2%（72 次）；日志里 1 小时缓存写入 2.31 亿 token，5 分钟缓存是 0。同一时期 Codex 在超过 60 分钟的间隔上是 24.4%（27 次），样本量只有两位数。超过 60 分钟的间隔只占人工操作的 0.3%（103 次）；8 月下旬有一周，间隔超过 1 小时再继续的请求只占 0.8%，却占了当周新进上下文的 23%。他建议大约 70% 就换会话，并写明这不是实测拐点，只是比自动压缩中位数 87.7% 更早切开的办法。订阅上限内部怎样计数并未公开，文中金额和 credits 是按公开接口标价去套的。页上刊行固定栏请人去轻松面谈并列出招聘岗位。不代你把间隔控制在 60 分钟内，就等于命中率也会从 91.7% 落到 5.9% 这种悬崖不再出现，或缓存读取就一定占 credits 的 66%。",
     description:
       "面向觉得周额度「不该这么快见底」、又把缓存命中当成几乎不再消耗的人：把「缓存不是免费，隔一个小时再打开长会话，整段上下文会按未命中重算」写成门禁，区别于按当周额度去铺工具页，以及把组织会话日志里的确认词当成节约工时。",
@@ -42677,7 +42677,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "622",
     slug: "knowledgesense-bm25-codex-29pct-12q",
-    title: "须藤英寿：给 Codex 接上 BM25 之后 12 题都对——会话 token 从 1,812,066 到 1,283,250，少了 29.2%；12 题里有 2 题反而更多",
+    title: "Codex 仓库检索接上 BM25",
     summary: "团队（株式会社ナレッジセンス CTO 须藤英寿／sasakuna）；披露自己在公司代码仓库上只改 Codex 能用的搜索方式，比较「普通探索」和「BM25 探索」。普通探索用 Glob、Grep 和读文件；BM25 探索用他做成 MCP 的本地检索，再按需追加读取。仓库在实验条件里写成 7,536 个文件、68.8MB，索引表又写成固定快照 7,500 个文件、70MB，切成 15,000 个代码片段，进入索引的正文 40MB，做好的 SQLite 是 164MB，构建大约 27 秒（后文也写 27.2 秒）。题目按低、中、高难度各 4 题共 12 题，每种条件各跑 1 次、每次新开会话；Codex CLI 是 0.146.0-alpha.3.1，模型是 gpt-5.6-sol、力气 high。事先写好预期答案和必要信息，再看回答里有没有写到。两种做法 12 题都答对。会话合计 token 从 1,812,066 降到 1,283,250，少了 29.2%；按题计算的减少率中位数是 28.5%，12 题里有 10 题变少。一次运行时间中位数从 50.8 秒到 30.0 秒，少 20.8 秒，按题缩短率中位数 34.2%，12 题里有 11 题更快，作者把时间写成参考值。按难度看，token 减少率中位数是低 39.8%、中 31.9%、高 28.5%，中、高难度各有 1 题在接上 BM25 之后 token 反而更多。文中也转述了论文里另一套语料和题目上的分数，那些数字不是这次 12 题的结果。刊行简介写公司在开发可检索社内数据的 AI 聊天机器人。不代你给仓库接上同样的检索，就等于 token 也会少 29.2%，或 12 题里不会再出现接上之后反而更多的题。",
     description:
       "面向想靠换一套代码搜索来降低编码代理消耗的人：把「正确答案数可以不变，但题与题之间仍有接上检索之后 token 反而变多的」写成门禁，区别于对照本地模型过关数，以及只谈会话间隔怎样把缓存命中打掉。",
@@ -42765,7 +42765,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "623",
     slug: "chiwamaru-7800db-48h-10posts-2mismatch",
-    title: "chiwamaru：域名到手大约 48 小时公开大约 7,800 条给付金库——10 篇事实核对文里查出 2 处对不上；52MB 改成 2.45MB 索引",
+    title: "给付金检索库公开与事实核对",
     summary: "个人（chiwamaru）；披露自己把分散在各行政机关的给付金、津贴信息收成大约 7,800 条的检索库。从取得域名到数据管道、搜索引擎优化、经过事实核对的 10 篇博客，以及按周自动运转但不许自动公开的体制，作者写成实质 2 天，标题写成 48 小时。分工是：聊天里的 Claude 做方针对打、成果物审查和下一条指示书；Claude Code 做调查、编码、部署和验证；人只在检查点批准、做账号操作和最终判断。第二阶段完成报告写「实数据大约 7,800 条已导入、构建成功」，末尾却有「52MB 数据文件在部署时怎么处理还没定」；审查那边的 Claude 指出在无服务器环境每次读 52MB 的 JSON 会加重冷启动，并比较三种改法，最后收成「列表用的轻量索引 2.45MB，详情一制度一文件」。给付金属于会影响到读者钱的信息，所以事实核对被拆成「先只报告对不上的地方，人判断要不要改，再另做修改」：10 篇里查出 2 处不一致，一处是制度开始经过的说法有偏差，一处是申请窗口的实施主体写错。按周自动运转的指示书写明「把稿改成正式公开必须由用户来做，这套管线绝不可以自己公开」；已公开文章的修改不许直接进主干，构建失败最多再试 2 次，生产确认失败就自动撤回，无人可改的代码种类只列了 3 种。作者写明搜索引擎给站点打分的时钟压不短；域名、解析和统计账号仍要人做，两天里体感大约占 2 到 3 成。他自己已经运营过两个同型站点，才能把以前踩过的坑写进提示词，并写明第一座站点不会是这个速度。文末链到 note 上的分阶段提示词全文和无人运转模板（该页标题含全文模板，并有「有料」字样），作者简介另链到 chiwamaru.jp，并写欢迎私信咨询。不代你同样拆成审查和实现两边，就等于两天也会公开大约 7,800 条，或 10 篇里只会查出 2 处对不上。",
     description:
       "面向想靠代理在两天内公开带金额的资料库、却还把「完成报告」当成已经可上线的人：把「检索库可以很快搭起来，但金额对不对、能不能公开，仍要人把检测和修改拆开」写成门禁，区别于从现有博客做多语言重建，以及只谈一次委托标记工程的总工时。",
@@ -42854,7 +42854,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "624",
     slug: "komatsundo-invoice-halfday-30min-488cos",
-    title: "こまつ：月末请款从半天变成 30 分钟——488 家公司一天量完，抽出 92 家（18.9%），人再看时去掉 2 家",
+    title: "月末外包请款对账与名单筛选",
     summary: "个人（こまつ／komatsundo）；披露自己是自由职业网页导演，同时给 6 到 8 名外包下单，工程师并不是本职。日常事务改由 Claude Code 自己读文件、对账和写出草稿之后，月末从外包交来的 PDF 请款、再做成给客户的请款单，从原来的半天变成 30 分钟。步骤写成：读指定文件夹里的 PDF → 按开工日判断记入哪一个月（跨月的周要按比例拆）→ 和工作记录对账 → 有差额就停下来报告 → 人批准后再生成 PDF。卡住过的地方是聊天工具附件链接 30 秒就会失效，后来改成用浏览器打开再保存。另一件事是给地区企业做名单：实地看各公司网站是否适配手机、是否加密、电话能不能点、有没有问询表。488 家公司在一天里处理完，抽出 92 家（18.9%）作为候选；起初只靠自动判断时，有的站点在手机访问时会另给移动版，却被判成「未适配手机」。发送前他又一家一家实看，结果又去掉 2 家（已经改好了）。作者写人手做完这份名单大概要数周，那是估计。他还把外包时薪和在忙项目收成一份 JSON 当作数字的正本，并规定金额确定和对外发送必须人来；对外消息走「先出草稿 → 确认 → 发送」。不代你同样先停在差额报告，就等于请款也会从半天变成 30 分钟，或一天也会筛完 488 家并得到 92 家候选。",
     description:
       "面向想靠代理去读请款单和普查网站、却还把「算完了」当成可以发出去的人：把「文件可以代读、金额和对外发送必须人点头」写成门禁，区别于客服询单的一次调查，以及只谈组件事例站的日产量。",
@@ -42942,7 +42942,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "625",
     slug: "aurore-rag-week-39h2-to-34h-13pct",
-    title: "Aurore：「3 倍速」测下来实质大约 1.15 倍——一周 6 项 39.2 小时到 34.0 小时，少 5.2 小时、大约 13%",
+    title: "内部检索增强与旧基准对照",
     summary: "个人（Aurore／TOMORU）；披露自己用 Cursor 加 Claude Code，花一周给大约 30 人的公司新做一套读取内部数据的检索增强构成。对照基准是他们 TOMORU 过去 3 件同类构成的分项实测平均；这一周是新测。准备、写、审查、修改、测试、部署六项加总从 39.2 小时到 34.0 小时，少 5.2 小时，大约 13%，作者写成实质大约 1.15 倍，和社交网络上常说的「3 倍速（缩短 66%）」差大约 5 倍。表上：准备（整理需求和设计）4.2 到 3.8（少 10%，判定○），写（实现）8.5 到 5.0（少 41%，◎），审查（读生成代码）6.5 到 6.8（多 5%，×），修改（处理退回）5.0 到 5.4（多 8%，△），测试（设计加执行）8.0 到 8.0（持平，−），部署（脚本和手续）7.0 到 5.0（少 29%，◎）。作者写真正能说变快的只有写和部署两项。审查里生成代码有 2 次一个函数超过 200 行，拆开、统一命名、删注释一次要 30 到 40 分钟，这是「用 AI 之前」没有的活。修改里退回的 4 本中有 1 本读错了和现有模块的依赖，重写花了 3 小时。测试完全没有变快，因为「该测哪些边缘情况」仍要懂业务的人来定。表注写到「退回 22% 的再实现成本」，22% 来自作者上一篇，不是本周这 4 本自己除出来的比例。文中嵌了 TOMORU 站点（一起把公司用 AI 的状态做起来）和 Coconala 上 60 分钟的付费咨询。不代你按同样的六项去对照，就等于一周也会从 39.2 小时变成 34.0 小时，或「3 倍速」就会变成大约 1.15 倍。",
     description:
       "面向已经把「AI 会快三倍」写进计划、却还没有按工序把一周摊开的人：把「写代码变快了，不等于审查、修改和测试也变快」写成门禁，区别于只谈拉取请求有没有更快合进主干，以及只谈本机请求间隔怎样打掉缓存命中。",
@@ -43030,7 +43030,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "626",
     slug: "activecore-378deleg-63d-85pct-cursor",
-    title: "Sei：63 天向实现役委让 378 次，85% 跑完并返回——8 月 27 日一天 50 次掉了 20 次；成功回的中位数 683 秒",
+    title: "Cursor 实现委让跑完记录",
     summary: "团队（株式会社アクティブコア／Sei）；披露自己因为同事的 Claude Code 额度用完、公司的 Cursor 合约却闲着，于是把实现交给便宜一侧，自己把 Claude Code 留在计划和审查。2026-07-07 到 2026-09-07 共 63 天，向实现役拜托 378 次，其中 85% 跑完并返回了结果；这里的成功只表示跑完返回，返回的代码对不对另做审查。按月：7 月 73 次成功 65 次（89%，有拜托的日子 9 天，平均一天 8 次），8 月 161 次成功 131 次（81%，15 天，一天 11 次），9 月到 7 日 144 次成功 124 次（86%，7 天，一天 21 次）。掉得最狠的是 8 月 27 日：一天扔 50 次，掉了 20 次；去掉这一天，8 月成功率是 91%。8 月 27 日以后用现在这种任务书发出的 213 次，把重试合并后是 99 个工作单位，其中 59 个（60%）一次就过。378 次合计跑了 103.1 小时（只算成功是 76.2 小时）；成功回的中位数 683 秒，最短 18 秒，最长 4,090 秒；失败的 58 次合计 26.9 小时，占全部时间的 26%。2026-08-26 测过各角色要读的字数：实现役从 30,541 字降到 0 字，审查役从 40,006 字到大约 16,000 字，司令塔 31,026 字没改；0 字之后违规有没有变多，作者写明没测。2026-08-30 晚上因为任务书漏写票据位置，启动前检查拦住了、结果文件根本不会出现，他却按「等文件出现」的方式干等了 1 小时，后来改成启动 30 秒后先看日志有没有跑起来。Claude Code 一侧的日用量中位数从 7 月 858M 到 9 月 1,022M，大约多了两成，作者写成实现腾出来的额度转到了计划和审查；9 月数字的 95% 是缓存重读。有没有因此让代码变好，作者写明没有对照。刊行页链到公司站和「採用情報」。不代你同样写任务书再把实现交出去，就等于 63 天里也会有 85% 跑完返回，或一天 50 次时不会再掉 20 次。",
     description:
       "面向想靠把实现交给空闲合约来省额度、却还把「返回了」当成「做对了」的人：把「跑完返回和代码正确不是同一回事，失败还会沉默」写成门禁，区别于按周额度去铺工具页，以及只谈本机缓存命中怎样随间隔掉下去。",
@@ -43118,7 +43118,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "627",
     slug: "triplethree-ask-4236mentions-5mo",
-    title: "toshi：5 个月 Slack 机器人被点名 4,236 次——8 月起工作日一天大约 54 到 61 次；大约 8 成来自作者以外的人",
+    title: "Slack 规格机器人使用扩散",
     summary: "团队（株式会社トリプルスリー／toshi）；披露自己从 2026 年 5 月起在 Slack 里养名叫 TRIPLE ASK 的机器人，背后是公司 Mac 上的 Claude Code。一开始给客服和销售回答产品规格，五个月后能查只读的产品数据、按风险档位做实现并开出拉取请求、盯 Datadog 告警做一次调查，以及读人事、财务、总务手册。作者在自己能看见的频道和私信里，按「点到 ASK 的消息数（含帖内回复）」逐月数：5 月 26 日起 39 次（一天 6.5，工作日 9.8），6 月 409（13.6 / 18.6），7 月 501（16.2 / 22.8），8 月 1,089（35.1 / 54.5），9 月 1,166（38.9 / 61.4），10 月到 27 日 1,032（38.2 / 57.3），合计 4,236 次（一天 27.3，工作日 40.3）。大约 8 成来自作者以外的人。告警自动调查不靠点名，所以没进这张表；同一条告警 6 小时内再响只回上次报告的链接；同时最多查 2 件。告警一次调查这套功能和设计书，作者写成是和 ASK 商量后让 ASK 自己做的，一天里合并进主干。机器人不许合并、发布或改数据，最多开到拉取请求，最后的按钮由人按。曾经把规格书搜到一半就说「只有概要」，后来补上「不许中途截断搜索、不许靠猜测补完」。点赞会存成知识，点踩会反问哪里不对。额度用尽时只回「claude exited with code 1」；提示词例里的假人名会被当成自己的名字；Slack 重发同一条时会回 2 到 3 次。查询打在业务同一套库上，重查询会增加负载。刊行页未见单独的产品商店或招聘硬链。不代你同样把机器人放到 Slack 里，就等于五个月也会被点名 4,236 次，或工作日一天稳定在大约 60 次。",
     description:
       "面向想在即时通讯里养一只什么都能问的公司机器人、却还把「点名次数上升」当成已经可以自动改生产的人：把「谁在用、一次调查进不进这张表、最后的按钮在谁手里」写成门禁，区别于客服询单调查，以及按周自动提出改动建议。",
@@ -43207,7 +43207,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "628",
     slug: "kawauchi-specfmt-3m-137k-to-33m-114k",
-    title: "kawauchi_lab：同一套账本代码上，规格书从 Markdown 3 分／13.7k 到 Interactive 加 Playwright 33 分／114.1k",
+    title: "同一账本五种规格输出对照",
     summary: "个人（AIプロトタイプ研究／kawauchi_lab）；披露自己拿最近在做的账本管理系统源码，只把实现交给 Claude Code，在彼此独立的会话里按同一套条件生成规格书，只改输出形式。输入固定为 ledger.html、serve.py 和 data 目录下的 CSV，模型写成 Opus 4.8、high effort，用 /goal 跑到「成果物已经完成」为止。五版墙钟和 token 是：只写 Markdown 3 分钟、1 回合、13.7k；Markdown 加 mermaid 5 分钟、1 回合、20.1k；只写 HTML 7 分钟、1 回合、33.5k；HTML 加 Playwright 自验 17 分钟、1 回合、52.4k；HTML 再加 Interactive 和 Playwright 33 分钟、1 回合、114.1k。作者把膨胀概括成「改成 HTML 大约两倍，加上图大约再两倍，再加上 Interactive 大约再两倍」。Playwright 被写明只用来打开自己生成的规格书 HTML，不是去点账本应用。可读性对照是把正文、表、系统构成图和 ER 图并排来看，没有另做一份打分表。作者写 Interactive 版更好看、也更好操作，但规格驱动开发还要反复改文档，每次都会再付这一笔时间和 token；Interactive 接到这种程度，现实里就转不动了。页上未见作者产品、商店、付费简报或咨询硬链。不代你同样拆成五版独立会话，就等于 Markdown 也会是 3 分钟／13.7k，或 Interactive 加 Playwright 也会是 33 分钟／114.1k。",
     description:
       "面向已经想把规格书做成带图、可点的 HTML、却还没把同一份源码上的时间和 token 摊开的人：把「更好看不等于改得起」写成门禁，区别于按画面张数去压规格书工时，以及只谈设计备忘里该写多少条规则。",
@@ -43295,7 +43295,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "629",
     slug: "rsdzzz-python37-312-4apis-week",
-    title: "RYO：Python 3.7 升到 3.12，连同 FastAPI 和 Pydantic——4 台 API，行情大约 1 个月，实作业大约 1 周",
+    title: "Python 3.7 至 3.12 升级",
     summary: "个人（RYO／rsdzzz）；披露自己用 Cursor 做一次「谁都不想先动手」的版本升级：Python 3.7 到 3.12、FastAPI 0.47 到 0.128、Pydantic V1 到 V2，对象是公司里正在跑的 4 台 API 服务器。团队行情写成大约 1 个月；若把测试和审查也算进去，前景写成将近 4 个月。作者写中心的实作业大约 1 周就结束了，并把它写成大约 4 倍速。分工是：人负责确认服务规格有没有被改掉、对照发布说明和规格、决定库的升级方针；Cursor 负责从错误日志查原因并改、列出废弃或变更的方法、在整个代码库做大量替换，以及把同一修正模式反复套上去。Pydantic V2 里 .dict() 改为不推荐，要迁到 .model_dump()，这种改法本身简单，但散在整个代码库「几十处、几百处」。AI 做不了的，作者点了两件：和规格、技术来历绑在一起的判断，一交给它就会给出不着边际的改法；以及不稳定的测试——测试前插入数据时出现不一致、又依赖环境和时机的问题，原因不好交给 AI 找，后来是人手动查的。他还写下一件更大的活还在后头：部分客户仍在用的旧管理画面是 Python 2.7，范围更大，不能把这一次当成已经练完。页上未见作者产品、商店或咨询硬链。不代你同样只把大量替换交出去，就等于 4 台 API 也会从大约 1 个月变成大约 1 周，或测试和审查也会一起被压进这一周。",
     description:
       "面向已经把语言和框架升级写成「AI 会快好几倍」、却还没分清行情、实作业和测试审查各算哪一段的人：把「替换可以代做，规格有没有被改掉仍要人看」写成门禁，区别于移动应用换新架构，以及只谈依赖升级公告该怎么写。",
@@ -43383,7 +43383,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "630",
     slug: "asio-marketer-10sites-2h-15min-40h",
-    title: "asio：营销人用一个月——10 个站点从约 2 小时到约 15 分钟；月大约少 40 小时，外注少 15 万",
+    title: "营销人竞品巡站与落地页自制",
     summary: "个人（asio／natty_borage3466）；披露自己是三十多岁做网络营销的公司职员，编程只随便写过一点 Python，用 Mac mini 和终端上的 Claude Code 做了一个月实验。竞品巡视为 10 个站点，以前每次大约 2 小时手工抄到表格；他让 Claude Code 用 BeautifulSoup 和 requests 写出脚本，大约 15 分钟得到能跑的代码，之后改成跑脚本大约 15 分钟。一月做 4 次，于是月 8 小时变成月 1 小时，作者写成大约少 87%。落地页以前外注一页 5 万日元、工期 1 周，改成自己用 2 到 3 小时出到 HTML／CSS；一个月做了 3 页，外注费少 15 万日元，但细部设计仍要自己改，作者写明不能说已经完全不需要外注。社交流用 n8n 接 Claude API：让 Claude Code 写工作流 JSON，大约 3 小时做出「每天早上 9 点从 RSS 摘要到 140 字再发到 X」的安排，以前每天大约 30 分钟的运营几乎变成零，作者写成月少 15 小时。分析报告是把 Google Analytics 导出后让它写 pandas 和 matplotlib 脚本，以前每月花掉整整一天，现在 1 小时做完，作者按年换算写成大约少 130 小时。四件事加总，作者写成月大约少 40 小时。代价方面：体感大约 6 到 7 成能一次跑通，剩下大约 3 成要调试，尤其是抓网页时站点改结构和访问限制；一个月里有 3 到 4 次发现它编造不存在的库名或说错接口。费用是 Max 月 100 美元，另加 n8n 那边的 Claude API 大约 45 美元，合计大约 145 美元（大约 22,000 日元）；后来因为额度不够，Max 又升到月 200 美元。文末写 jyanome 合同会社做 Claude Code、n8n、Playwright 的业务自动化导入支援，并链到 Google 表单。不代你同样写四个脚本，就等于月也会少大约 40 小时，或外注费也会少 15 万。",
     description:
       "面向非工程的营销人已经把「让代理写脚本」当成可以少几十小时、却还没分开计算、调试和对外稿件谁来看的人：把「脚本可以代写，数字和发出去的页面仍要人验」写成门禁，区别于自由职业导演的请款和名单，以及只谈组件事例站的日产量。",
@@ -43472,7 +43472,7 @@ harness 与批准边界：{{harness_boundary}}
   {
     id: "631",
     slug: "micin-qa-28h9-43h9-to-4h8-5h1",
-    title: "高橋：QA 月间从 28.9～43.9 小时到 4.8～5.1 小时——大约少 83%～88%；100 条数据大约 10 分钟",
+    title: "QA 自助造数与基本回归",
     summary: "团队（株式会社MICIN／高橋，在线医疗事业部 QA）；披露 QA 和工程分成两个角色之后，测试数据准备、回归和改设置都要跨角色等工程，成了瓶颈。动手前的月间负荷写成：测试数据准备手工 15.0 到 30.0 小时，服务 A 回归手工 1.7 小时，服务 B 回归手工 7.2 小时，测试所需设置委托（以 10 件为例）5.0 小时，合计 28.9 到 43.9 小时。后来分三阶段：先和工程每周对一遍、选出该自动的基本场景；再由工程搭好一次性造数据的脚本、用 Playwright 自动跑基本回归，并做出能改设置的调试画面——这时 100 条量级的测试数据大约 10 分钟就能造好，基本回归大约 0.5 分钟能跑完，但执行本身还要拜托工程，仍会打断开发。第三阶段才让 QA 自己用 Cursor 去跑造数据脚本和 Playwright。之后月间写成：数据准备 0.5 到 0.8 小时（注：Cursor 执行 30 到 50 分钟），服务 A 回归 1.0 小时（30 分钟乘 2 个冲刺的混合执行），服务 B 回归 3.2 小时（95 分钟乘 2 个冲刺），设置委托 0.1 小时（0.5 分钟乘 10 件），合计 4.8 到 5.1 小时，大约少 83% 到 88%。作者写 Mac 和 Windows 上用 Cursor 跑 Playwright 的稳定性不一样。文末链到 MICIN 采用页，欢迎「先听一听」。不代你同样让 QA 去点 Cursor，就等于月间也会从 28.9 到 43.9 小时变成 4.8 到 5.1 小时，或 100 条数据也总会在大约 10 分钟里造好。",
     description:
       "面向已经把测试自动化写成「QA 可以自己跑了」、却还没分开工程先搭好的底座和后来才加上的自走工具的人：把「脚本可以代跑，场景选得对不对、跨系统设置仍要人看」写成门禁，区别于按月去谈 Playwright 覆盖率，以及只谈用多个代理去做端到端。",
@@ -43561,7 +43561,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "632",
     slug: "itsuki-listpage-skill-1d5-to-1d-80pct",
-    title: "いつき：列表页从平均 1.5 天到 1 天——生成大约八成，权限和图标仍要人补",
+    title: "结构相近列表页的生成技能",
     summary: "团队（いつき／itsuki_y）；披露自己所在团队做把 Kubernetes 包起来的企业容器管理平台，业务里有大量结构相近的资源列表页。组件和通用钩子已经拆好，熟练开发者从零做一页标准列表并做完结合测试，平均仍要 1.5 天：接表格和钩子、配菜单和多语言、写路由、写状态和类型、选图标，再补上对接接口的胶水代码。他们做了一个复合技能 kse-list-page，生成时会接分页、排序、筛选和增删改，按 React Query 写数据层，抽出日英文本，并注册路由和菜单；执行时还用 Firecrawl 的 MCP 去拉在线的 Swagger，只留下接口、查询参数和响应类型再写进提示词。它并不单干，还会调度三个原子技能：查私有图标库里有没有这个图标、按约定生成 Store，以及选用内部组件而不是生 HTML。演示是做「xxx Queue」的列表页：接口增删改已经通、样式合设计约定、分页和排序能用，作者写成完成度大约 80%。剩下大约 20% 点了两处：删除按钮被生成了，但这个资源业务上只许系统管理员删，技能不知道这条权限，后来是人补上权限检查；Figma 里列表项的小图标没被认全，缺的图标代码也是人补的。对照写成：以前平均 1.5 天，这次生成加手改合计 1 天，效率提高 50%。作者另写上周入职的初级同事几乎没见过 React Query 和内部组件库，第二天就交来拉取请求，设计和钩子用法都合团队约定，对方说是技能教的。页上未见作者产品商店或咨询硬链。不代你同样做一个列表页技能，就等于下一页也会从 1.5 天变成 1 天，或生成也总会停在大约八成、只缺权限和图标。",
     description:
       "面向已经把「列表页技能」写成能快一半、却还把生成出来的删除按钮当成可以上线的人：把「胶水代码可以代写，谁能删、图标缺不缺仍要人看」写成门禁，区别于给组件事例站补检查脚本，以及只谈多语言工具有没有被代理调用。",
@@ -43649,7 +43649,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "633",
     slug: "motowo-321review-70prs-4h36",
-    title: "タカシ：70 个拉取请求上收集 321 条审查意见——测试 100%、界面 98.6%、命名 95.7%；平均领先时间 4.36 小时",
+    title: "Flutter 请求的 Gemini 审查",
     summary: "个人（タカシ／motowo）；披露自己在一套采用 Clean Architecture 的 Flutter 移动应用上，让 Claude Code 按议题用测试驱动去实现，Gemini Code Assist 在拉取请求创建时自动审查，共看了 70 个拉取请求、100% 都有 Gemini 审查，累计 321 条意见，平均每个大约 4.6 条。意见等级是项目里 .gemini/styleguide.md 自定义的三档，不是 Gemini 官方的四级：必须处理的 P0 有 20 条（6.2%），建议处理的 P1 有 276 条（85.9%），可做可不做的 P2 有 25 条（7.8%）。按内容分成七类，统计的是 70 个拉取请求里有多少个至少出现过一次：测试（端到端／Maestro）70／70（100%），界面和设计系统 69／70（98.6%），代码风格和命名 67／70（95.7%），Clean Architecture 40／70（57.1%），无障碍 39／70（55.7%），性能 25／70（35.7%），魔法数字 25／70（35.7%）。从开到合入的领先时间平均 4.36 小时，最短 0.003 小时（大约 10 秒），最长 72.91 小时（大约 3 天）。作者写明大约 10 秒是改错别字这类小改，负责人没有等 Gemini 就批准合入；按拉取请求计的审查实施率仍是 100%，初次意见也可能写在合入之后。Gemini 一般在创建后 5 分钟内给出初审。最长那次是浏览历史新功能（拉取请求 #227），跨多层、来回多轮，还夹了周末。作者举了三例：循环里反复 watch 状态、把降价用的颜色常量拿去当上新徽章、本地 JSON 有一件损坏就整表读不出来。人留下的是起议题和最终批准。页上未见作者产品、商店、付费简报或咨询硬链。不代你同样配上自动审查，就等于每个拉取请求也会收到大约 4.6 条意见，或开到合入也总会是 4.36 小时。",
     description:
       "面向已经把「实现代理加审查代理」写成质量已经有人把关、却还没摊开意见都落在哪几类的人：把「意见条数能代收，项目自己的设计系统和架构有没有被遵守仍要人看」写成门禁，区别于去压审查等待时长，以及只谈托管审查会不会让拉取请求更快合入。",
@@ -43737,7 +43737,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "634",
     slug: "irosona-112mem-27to9-28pct",
-    title: "irosona：5 个月自动记忆攒下 112 条，作业风格只有 1 条；断链从 27 条修到 9 条，追溯任务大约少 28% 时间",
+    title: "五个月自动记忆的内容盘点",
     summary: "个人（irosona）；披露自己把 Claude Code 的自动记忆用了 5 个月，6 个项目里攒下 112 条。以为会学会自己的作业风格和指示习惯，结果用户类（角色和作业风格）只有 1 条（1%），项目类（来历和规格）91 条（81%），反馈类 17 条（15%），外部参照 3 条（3%）。件数也偏：一个仓库 106 条，其余 5 个项目各 1 到 2 条。正文里的双向链接一共 96 个不重复名字，27 个是断的（28%）；索引和文件头 5 个月没人维护也没有断链、没有孤立文件、没有文件头不备。索引本身是 108 行、24,323 字节，已经到 25KB 上限的 97%。27 个断链里：分隔符写法不一致 11 个，缺了类型前缀 6 个，末尾多了 .md 1 个，参照目标根本不存在 9 个。作者只改能唯一对上现有名字的 18 种写法（21 处、18 个文件），断链从 27 个变成 9 个，其中写法不一致的 18 个清零，剩下 9 个是还没写成条目的预告链接。效果用同一句提示、无界面的 claude -p、每种条件跑 2 次取平均：代理回合 14 到 13，处理时间 75.5 秒到 54.0 秒（少 28%），输出 token 5,626 到 3,986（少 29%），含缓存的读取 token 170,379 到 124,923（少 27%），按接口标价换算 0.53 美元到 0.42 美元（少 20%）。参照只有 1 到 2 个的单次任务几乎看不出差别（每种条件 3 次，回合数相同）。页上未见作者产品、商店或咨询硬链；文中链到他人做的记忆体检开源工具，是调查时的对照，不是作者自己的商店。不代你同样修一遍链接，就等于追溯任务也会少大约 28% 时间，或 112 条里也只会留下 1 条作业风格。",
     description:
       "面向已经把「代理会越用越懂我」写成记忆已经在学习作业风格、却还没打开记下来的条目看过的人：把「索引可以代查，正文里的参照名写没写对、下一步该看哪里仍要人订」写成门禁，区别于清点设计备忘里的规则条数，以及只谈缓存命中或检索少读了多少 token。",
@@ -43825,7 +43825,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "635",
     slug: "plasmon-1656pv-gate0-hitl1",
-    title: "ぷらずもん：5 天技术博客自运营——Qiita 8 篇 1,656 浏览；形式质检拦住 0 篇，人审拦住 1 篇不存在的模型",
+    title: "博客自运营质检漏虚构模型",
     summary: "个人（ぷらずもん／plasmon）；披露自己让 Claude Code 自运营技术博客：选题、生成、质检、互动跟踪都交给它，人只在 Telegram 上按批准。知识库是向量库里 1,667 个块，新闻和论文检索后再写。5 天里 Qiita 发了 8 篇、累计 1,656 次浏览、4 个赞；Zenn 发了 6 篇、4 个喜欢；Dev.to 发了 11 篇、283 次浏览、3 个反应。最高每小时浏览 10.5，单篇最高累计浏览 357。自动质检看的是 5,000 字以上、标题 6 个以上、有代码块、逻辑有没有跳跃——这四项拦住了 0 篇公开事故。第三天它写了一篇不存在的「Qwen3-32B」基准测试，字数、标题、代码和内部数字都对得上，四项全过；是人在手机上读稿才拦住。后来另开一席做复查：查出 15 处以上事实错误，其中算术错误 6 处（复查代理自己发现），系统性造假 9 处以上（要对着本地文件或外部事实才发现）。例如把某个 35B 混合专家模型写成 4.9GB（对照 21GB，大约低估 4.3 倍），另一个小模型写成 4.1GB（对照 2.4GB，大约高估 1.7 倍），价格和编译号也偏向「听起来还像那么回事」的旧值。把目标设成最大化浏览之后，煽动标题每小时 7.85 次浏览，教程类 2.68，大约 3 倍；作者后改成实践系和专业系轮流发。短约束（可逆才自由改、看到停止旗就停、距上次写入不满 300 秒就不发接口）5 天违规 0 次；第一条为了限流，在第一天连续撞到 429 之后加上，之后再发为 0。复合的发布时间表（6 个条件同时成立）违规 3 次以上。自动挑选「最新一篇」还误发过尚未批准的稿，作者马上改回必须写明路径。页上未见作者产品、商店或咨询硬链。不代你同样加四条形式质检，就等于假稿也会被拦住，或 5 天也总会收到 1,656 次浏览。",
     description:
       "面向已经把「字数、标题和代码块都过了」写成可以自动发技术博客、却还没核对模型名和数字是不是真实的人：把「格式可以代查，听起来很完整的假基准仍要人对照外部事实」写成门禁，区别于去对会碰到读者钱的给付金条目，以及只谈营销人自动发帖省了多少小时。",
@@ -43913,7 +43913,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "636",
     slug: "rakko-72lang-133tools-118usd",
-    title: "maya：72 种语言 × 133 个工具的 AI 翻译——9,531 个日文键、约 68 万单元；27 天接口费 117.86 美元",
+    title: "日文原文驱动的多语言工具站",
     summary: "团队（ラッコ株式会社／maya honey）；披露作者一人负责把月约 100 万次浏览的免费工具站做成多语言：72 种语言（日文加 71 种）、133 个工具、日文原文 9,531 个键、翻译单元约 68 万（9,531×72）、语言文件 13,752 个、站点地图 11,592 个网址（72 种语言乘以首页、133 个工具和 27 个标签）。翻译没有专职人员，人只写日文；日文一合并，大约 5 分钟后会自动送来 71 种语言的翻译拉取请求。人并不通读 71 种译文，而是看机械校验和差分规模再合并。27 天翻译接口费合计 117.86 美元，其中 8 天日文没有改动、费用是 0；普通日子大约 0.4 到 9 美元，最高一天 51.42 美元（集中加了一大批文案）；模型费用里 Sonnet 占 56%、Haiku 占 44%，成本的 27% 是缓存读取。作者写成按月大约 130 美元上下。低资源语言只有 71 种里的 19 种固定用 Sonnet，却拿走一半以上费用。站点地图曾按 5,000 个网址去拆，验证环境里一个文件超过 51MB，后来改成 4,000 个网址一份。语言文件一度用打包导入，构建峰值内存大约 8GiB，6GB 堆上会内存不足，后来改成先收成 72 份 JSON 再读。文件级回退还让英语页里整段安全说明消失过，后来改成按键做「请求语言→英语→日文」的合并。有一次某语言的新键整批保持英语，键数和占位符都对，当时的机械校验全部放过，后来才加上「和参照语言相同的键达到 3 个以上且相同率 50% 以上才判失败」。公式里的 π 也曾被当成希腊字母混入，误伤多种语言。校验失败后，修复代理只重做两种已知失败，同一天试到 3 次就不继续推送。文末介绍ラッコドメイン等公司产品。不代你同样只写日文、其余交给接口，就等于 27 天也会是 117.86 美元，或 72 种语言都会在大约 5 分钟里回来。",
     description:
       "面向已经把「日文一合并就自动译成几十种语言」写成可以不管译文、却还没摊开账单和漏检事故的人：把「增量翻译可以代做，整批没译、用词混入和该不该合并仍要人看校验」写成门禁，区别于个人博客的多语言重建，以及只谈多语言工具有没有被调用。",
@@ -44002,7 +44002,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "637",
     slug: "sasaki-19sales-895min-to-54m",
-    title: "佐々木：营业相关 19 项从 14 小时 55 分到 54 分——商谈准备一式从 1 小时 30 分到 13 分",
+    title: "营业相关十九项交给代理起草",
     summary: "个人（佐々木優希／AIリモートワーカー，个人事业）；披露自己把营业相关 19 项交给 Claude Code：商谈和案件 11 项、对外传播和营销 5 项、经营和改善 3 项。合计写成以前 14 小时 55 分（895 分钟），后来 54 分钟，作者写成少 94%。作者写明这是各业务各执行一次再加总，商谈一周有几件，实际总量会变，请按「一件多少分钟变成多少分钟」来看，不要当成每个自然周都固定少掉 14 小时。商谈准备一式是企业调研 30 分到 3 分、话术 30 分到 5 分、第二次商谈用的资料 30 分到 5 分，合起来 1 小时 30 分到 13 分，是削减最大的一块。其余如提案视频 1 小时到 5 分，线索到手后的第一次回复 15 分到 1 分，面向客户的纪要 20 分到 1 分（作者写明这 1 分是按自动生成加复查模板做的估计，不是秒表），跟进邮件 30 分到 1 分，录入 SFA／CRM 20 分到 1 分。对外传播里，文章 1 篇从 2 小时到 3 分，作者写成天天在跑、是这张表里最硬的一组。19 项全部自动化写的是边做事业边花了半年。人留下判断、关系和例外处理；54 分不含维持自动流程的时间。作者写自己跑过 26 条自动例行：有 8 篇 note 草稿无声失败、在草稿列表里不存在，过了 3 周才发现；早报连着 3 天重复发出；台账文件胀到 716KB，把要读它的例行费用抬高；锁屏时按键到不了，依赖按键的 12 条例行同时停掉。文中介绍个人事业提供营业和营销的 AI 导入支援、文章代写和书信营业代行，并链到免费 AI 业务诊断。不代你同样改 19 项，就等于每个自然周也会从 14 小时 55 分变成 54 分，或商谈准备也总会是 13 分。",
     description:
       "面向已经把「营业准备也可以交给代理」写成一周能少十几个小时、却还没说明数字是各跑一次加总还是按真实件数乘出来的人：把「草稿可以代写，一件多少分钟仍要按次数去乘，发出去和维持流程仍要人看」写成门禁，区别于营销人去算竞品巡视和落地页，以及只谈自动发技术博客的浏览次数。",
@@ -44090,7 +44090,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "638",
     slug: "kmemyn-c50to32-corr173to32-6to16",
-    title: "kazu：文档改成带路径的规则并接上静态检查——C 评从 50% 到 32%，实现订正率从 17.3% 到 3.2%；完成功能 6 件到 16 件",
+    title: "带路径的规则并接静态检查",
     summary: "个人（kazu／kmemyn）；披露自己在一套 Laravel（PHP）加 React、Docker、采用整洁架构分层的业务项目里，对照公开的最佳实践，把原先「docs/ 里大约 30 份 Markdown，靠自定义命令和子代理去读」改成「带 paths 的规则、审查前自动跑静态检查、再加技能和代理」。对照窗是 1 月 23 日到 26 日（整理前 4 天）对 1 月 27 日到 30 日（整理后 4 天），指标来自全部会话日志。作者写成：C 评占比从 50% 到 32%；只看实现时的订正率从 13／75＝17.3% 到大约 11／340＝大约 3.2%，写成改善 5.4 倍；实现完成的功能从 6 件到 16 件（2.7 倍），创建或编辑的文件从 28 个到 109 个（3.9 倍）。含再审在内的评分：整理前 12 件里 A／A- 3 件（25%）、B 3 件（25%）、C 6 件（50%）；整理后 22 件里 A／A- 7 件（32%）、B 8 件（36%）、C 7 件（32%）。用户发言从 107 次到 431 次（4.0 倍），订正次数前后都是 14 次；整理前 14 次里有 9 次集中在 1 月 23 日某一次缺陷修改。工具出现次数：PHPStan 和 Deptrac 是整理后新接上的，分别 117 次和 176 次；mago 从 27 次到 101 次（3.7 倍），测试从 18 次到 162 次（9.0 倍）。整理前大约 70% 的来回仍是实现，但也夹着 PHPStan 自定义规则和 Deptrac 调研。作者写明质量分是本项目自己的审查标准，不是绝对指标；两段各只有 4 天，分析本身也用了 Claude；「功能」从改一个文件的缺陷到十个阶段的大功能，粒度并不均匀。审查机制前后也不一样：整理前是单一代理、流程里没有静态检查；整理后是三个专业代理并行，并由核对代理去跑 PHPStan、Deptrac 和测试。任务种类也有差别：整理前偏新接口加修缺陷，整理后偏改已有功能。工具仍抓不住「计划写放在某路径、实现却写到另一处」以及要靠测试覆盖才看得到的组合缺陷。页上未见作者产品、商店、付费简报或咨询硬链。不代你同样改成带路径的规则并接上检查，就等于 C 评也会降到 32%，或完成功能数总会变成 2.7 倍。",
     description:
       "面向已经把「把规约写进文档、让代理去读」写成质量已经有人把关、却还没分开看评分、订正率和完成件数的人：把「规则和检查可以代跑，计划有没有被写歪、这一档分数能不能代表下一周仍要人订」写成门禁，区别于清点设计备忘里写了多少条禁止规则，以及只谈管理设置里的拒绝项有没有漏洞。",
@@ -44178,7 +44178,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "639",
     slug: "takna-manual-2m30s-5min-6shots",
-    title: "ながたく：5 步操作手册——操作加拍摄 2 分 30 秒，写到正文大约 5 分；交出 6 张连号截图",
+    title: "Cron 五步手册连拍成文",
     summary: "个人（ながたく／takna）；披露自己让 Claude Code 在同一会话里兼任三件事：用官方 computer-use 去点应用，用自写的拍摄包装拍全分辨率连号图，再由 Claude Code 本人对照图片写正文。题材是 Hermes Desktop v0.18.0 的 Cron：按「做一个简单的示例定时任务」写出小手册。实测量下来，5 步操作加拍摄是 2 分 30 秒，写到正文大约 5 分钟；点击都是一次命中，主流程没有手回。成果物放在以 2026-07-02_1537 命名的日期文件夹里，包括 6 张连号截图（从主页、打开列表、新建对话框、日文输入、创建完成，到后来的暂停）和一份 manual.md。作者只补了一句入口提示：Cron 在左下角，因为状态栏里的入口不容易一眼看到。中途用 computer_batch 把「点名称栏、输入日文、点提示栏、再输入日文、拍确认图」五步收成一次工具调用。主流程 5 步没有出事，后收尾时却踩了混合坐标：它把自拍照的全分辨率像素坐标，直接交给官方点击去用；官方点击认的是最近一次官方缩小截图上的坐标。那一次点空了，偏移过去的是旁边的「现在执行」；作者写明若偏移到「删除」就不是笑话。另外还观察到一次：坐标正确，第一次点击只停在悬停，第二次才触发。验证环境是 macOS 15、Claude Code v2.1.187（Max 方案），官方 computer-use 从 v2.1.85 起可用；前作里的权限和辅助程序大约 15 分钟不计入这 5 分钟。作者写自己在维护 Hermes Desktop 的日文指南站。页上链到该指南站和相关站点。不代你同样一句话去生成手册，就等于操作加拍摄也总会是 2 分 30 秒，或点击也总是一次命中。",
     description:
       "面向已经把「让代理边点边拍就能出手册」写成截图劳动已经消失、却还没分开操作坐标和拍照坐标的人：把「连号图和正文可以代做，点下去会不会变成执行或删除仍要人看」写成门禁，区别于从代码库补五十张画面规格书，以及只谈技术博客的形式质检拦不拦得住假稿。",
@@ -44266,7 +44266,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "640",
     slug: "yuki-fujisawa-188sess-376stall-1api",
-    title: "藤澤勇樹：188 个会话里 376 次超过 60 秒的停滞——真正的接口等待只有 1 次；Opus 中位 6.6 秒、最长 945 秒",
+    title: "会话长停滞里仍在生成的分类",
     summary: "个人（藤澤勇樹／yuki_fujisawa）；披露自己不靠体感，而是去读 Claude Code 写在本机的 JSONL 会话日志，统计最近 7 天、188 个会话、大约 14,000 个回合里「看起来像卡住」的时间。停滞定义为用户输入或工具结果，到下一条助手记录之间的间隔；超过 60 秒的有 376 次。用「输出 token 除以间隔秒数」分类：低于每秒 5 个 token 算等待，不低于则算仍在生成。376 次里真正的接口等待只有 1 次，其余 375 次是模型仍在往外写思考和正文，只是屏幕没有出声。另外四条常见猜想也被这次数据推掉：报错 41 次集中在同一个会话，时间也分散，不像持续的拥堵或网络故障；超过 40 万输入 token 的只有 2／376，中位数是 15.3 万，和停滞对不上；三款模型的生成速度差不多（Opus 4.8 每秒 79 个、Fable 5 每秒 70 个、Sonnet 5 每秒 88 个）。日常响应并不慢：Opus 4.8 中位 6.6 秒、九成 40.2 秒、百分位 99 是 167 秒、最长 945 秒，超过 120 秒的占 1.7%；Fable 5 是 7.2／32.3／116／349 秒和 0.9%；Sonnet 5 是 4.8／19.5／79／451 秒和 0.5%。超过 120 秒的比例上，Opus 大约是 Sonnet 的 3.4 倍，差别出在尾巴而不是中位数。这些停滞分散在 76 个会话里，不是某一个提示独有。作者把原因写成：复杂委托让思考和输出一次生成几千到几万 token，速度正常，只是量太大，完成前屏幕无声。对策不是重试等待，而是不要让探索堆在父回合里：只读探索交给写死了较轻模型和思考量的子代理，规则里写明连续只读大约 8 次或要读 5 个以上文件就必须交出，再用结束钩子事后警告，并不打断正在做的事。页上未见作者产品、商店或咨询硬链。不代你同样去分离子代理，就等于超过 60 秒的停滞也会只剩下 1 次接口等待，或最长也不会再到 945 秒。",
     description:
       "面向已经把「代理停了好几分钟」写成接口或网络坏了、却还没打开会话日志看间隔里有没有在往外写 token 的人：把「日志可以代查，要不要把探索从父回合拆走、这次长考是不是真的在做事仍要人订」写成门禁，区别于只谈本机缓存命中了多少请求，以及工具额度用到九成之后剩下几天几乎停摆。",
@@ -44354,7 +44354,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "641",
     slug: "fusic-241x-sess-3671prs-size-sym",
-    title: "石橋：全库会话时间／100 行大约快 2.41 倍；纯代理拉取请求越大，实现越快、含审查的周期越慢",
+    title: "实现变快审查变慢的大请求",
     summary: "团队（株式会社 Fusic／石橋龍）；披露作者在公司里负责把编码代理的效果量化，用内部 GitHub 拉取请求来估计「每 100 行实现大概花多少时间」。工作量按增删行计算，并去掉锁文件、生成物、第三方目录和依赖更新机器人；时间用三个并列指标：从开到合并的周期、提交间隔不超过 2 小时就连成一段的会话估计、以及首尾提交跨度。时代只是代理变量：大约 2022 年及以前算几乎不用生成式工具，2023 年到 2025 年上半年算辅助使用，2025 年下半年起算主动使用 Claude Code 一类编码代理。去掉长期案件后的全库对照里，代理时代相对纯人工：周期／100 行的中位数比是 0.669，写成大约快 1.49 倍（p＝0.035）；会话时间／100 行是 0.415，大约快 2.41 倍（p＜0.001）；提交跨度／100 行是 0.280，大约快 3.57 倍（p＜0.001）。只看长期案件时，会话时间仍大约快 1.33 倍（p＜0.001），提交跨度大约快 1.59 倍但 p＝0.57、不显著；周期却变成 7.235，写成大约慢 7.2 倍（p＜0.001）。听下来，有的现场后来改成要等对方审查和验收才合并，周期被工作方式拉动，不完全等于手变慢。作者又把提交 100% 来自代理的拉取请求，和 100% 来自人的直接比较：20 到 100 行，实现大约快 2.0 倍、含审查的周期大约慢 1.7 倍；100 到 500 行是 4.2 倍对 4.5 倍；500 行以上是 11.7 倍对 15 倍。纯代理样本一共 198 个，作者写明偏小。按作者过滤后是 3,671 个拉取请求、82 人：纯人工 26 人、每 100 行中位数 3.37 小时；辅助期 20 人、1.44 小时；代理期 22 人、0.72 小时；纯人工对代理期 p＝0.000057。同一人前后大约七成落在变快一侧。改成「代理期对更早」两组后，同一人对照从 82 人里的 3 到 4 人变成 47 人里的 11 人，组间 p＝0.000063。页上有公司站和招聘页。不代你同样统计每 100 行，就等于会话时间也会快大约 2.41 倍，或大的代理拉取请求也总会让周期慢大约 15 倍。",
     description:
       "面向已经把「编码代理让实现变快」写成交付也会一起变快、却还没把动手时间和含审查的周期分开看的人：把「每 100 行可以代算，大请求该不该拆、周期变慢是手慢了还是旁边在等仍要人订」写成门禁，区别于按团队结构看完成件数倍率，以及只谈审查队列里积了多少个拉取请求。",
@@ -44443,7 +44443,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "642",
     slug: "nora-2800var-1h-5000check-570ov",
-    title: "nora：48 种颜色样式、约 2,800 处改挂变量——核对超过 5,000 处不一致为 0；实例覆盖残留 570 处；作业大约 1 小时",
+    title: "Figma 颜色样式改挂变量",
     summary: "个人（nora／zutto_nemutai）；披露自己作为设计师，不用开发环境、不用终端，只在网页版 Claude 聊天里接上 Figma 连接器，把一套正在服务客户的 B 端界面成套文件从样式改成变量。颜色样式 48 种，文字样式 10 种，改挂大约 2,800 处。作者写成若手做要好几天，这次连同掉进坑里的时间，迁移作业本身大约 1 小时。设计定了三件事：只做一层语义、不先做原色层；变量名完全沿用旧样式名；旧样式先不删，好让其他文件继续引用。先把文件里的实际色值读出来，才发现记录里的品牌色是 #2a9d8f，文件里实际是 #2D8F8E。按页做「改挂立刻核对、再给人看」：用样式编号去认要改的填充和描边，避免手动按色值对调时把背景白和文字白混在一起——作者写自己用手试时就混过一次。核对称「原来的填充色是不是还等于变量解析出来的值」，最后核对超过 5,000 处，不一致为 0。坑有三个：父组件改完，实例里曾经单独改过颜色的覆盖不会跟着走，这次留下 570 处，后来另开一遍只改引用、覆盖关系保持原样；已删除变量还会留下看不出来的幽灵引用，画面靠旧色兜着，必须拿绑定编号去对还在的变量名单；经连接器写入后，桌面应用有时把已经绑好的字画成白色，数据里仍是黑色，服务端截图也对，关掉标签再打开就恢复。作者写自己一张新画面也没画，留下的是确定以文件为准、决定层次和范围、按页切开，以及指出误读。页上未见作者产品、商店或咨询硬链。不代你同样在聊天里改挂变量，就等于大约 2,800 处也会在大约 1 小时里做完，或不一致也总会是 0。",
     description:
       "面向已经把「设计系统可以交给聊天里的连接器」写成迁移已经做完、却还没按页核颜色、也没去数实例覆盖的人：把「改挂可以代做，颜色有没有一个像素的变化、覆盖有没有掉队仍要人看」写成门禁，区别于从代码库补五十张画面规格书，以及只谈设计备忘里写了多少条禁止规则。",
@@ -44530,7 +44530,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "643",
     slug: "snowwshiro-rails-go-2d-98files-12k",
-    title: "シローさん：Rails 的 GraphQL API 用大约 2 天重写成 Go——98 个源文件，手写约 12,000 行，连生成大约 52,000 行",
+    title: "GraphQL 接口从 Rails 迁 Go",
     summary: "个人（シローさん／snowwshiro）；披露自己在 2026 年 3 月听说 AWS 将于 4 月 30 日停止 App Runner 新受理后，决定把正在 App Runner 上跑的 Rails GraphQL API 完整重写成 Go，并改到按请求计费的 Lambda。方针是保住 GraphQL 模式兼容、尽量少改前端。作者写明「大约 2 天」只算核心代码实现，不含基础设施、端到端验证和域名切换；写稿时生产切换还没做。迁移前：GraphQL 类型定义 46 个文件、变更 26 个、查询或解析器 36 个、模型 18 个文件、测试 71 个文件。迁到 Go 后：源文件 98 个，手写大约 12,000 行，连自动生成大约 52,000 行；GORM 模型 19 个、仓储 14 个、服务 9 个、GraphQL 模式 9 个文件（大约 1,000 行）、数据库迁移 2 个文件、测试 11 个文件。栈是 gqlgen、chi v5、GORM v2、firebase-admin-go v4、stripe-go、aws-sdk-go-v2（S3 签名地址和 SES）、React Email、go-redis v9 和 AWS SAM。事先写了迁移计划和带依赖关系的 21 份作业说明书，完成 19 份；每份写明功能、对应的 Rails 路径、完成条件和依赖项。作者把原先估价写成「3 个月」，并强调大约 2 天能做完，是因为事先把说明书和依赖拆好了，不是这两天才开始想架构。作者本人几乎没写过 Go，原来是 Ruby／Rails 背景。人仍要订说明书怎么切、模式兼不兼容、支付边缘情况、生产基础设施和前端改动方针。作者卡片链到其滑雪活动站点。不代你同样重写一遍，就等于核心实现也总会是大约 2 天，或原先估价 3 个月的工作也总会被压成同样短的日历。",
     description:
       "面向已经把「有旧代码当说明书，代理就能几天内换语言」写成迁移已经做完、却还没分开核心实现和生产切换的人：把「分层和样板可以代写，模式兼不兼容、支付和切换仍要人订」写成门禁，区别于把同一套接口从旧版 Python 升到新版，以及只改规格书输出格式来看耗时和 token。",
@@ -44618,7 +44618,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "644",
     slug: "acntechjp-112to630-33to814-discard",
-    title: "kaito.abe：两个子项目单测 112 到 630、33 到 814——指令覆盖率 19% 到 70%、约 5% 到 39%；后来把分支丢掉了",
+    title: "覆盖冲高后丢弃的测试分支",
     summary: "团队（Accenture Japan 有志／kaito.abe）；披露自己在两套 Java／Spring 子项目（批处理和画面）里，把 Claude Code 投去「把单测覆盖率做高」。数字看起来像成果：批处理测试 112 到 630（多 518）、失败 18 件到 0 件，指令覆盖率 19% 到 70%（高 51 个百分点）；画面测试 33 到 814（多 781）、失败 3 件到 0 件，指令覆盖率大约 5% 到 39%（高 34 个百分点）。合计大约新加 1,300 个测试；改动规模批处理大约 2 万行、画面大约 3 万行；测试代码总量大约 5 万行。做法是让模型去读 JaCoCo 报告、对着现有源码生成测试、再跑、再补。一个超过 920 行、循环复杂度 69 的类分 5 个阶段从 17% 做到 95%；校验层 7.3% 到 93%，批处理服务层 2% 到 93%。作者后来认为最大败笔是从现有实现倒推测试，期望值往往就是当前输出，即所谓「自演测试」：实现里有缺陷，测试也会一起绿。画面侧一度把 80% 当目标，后来发现服务层因为多线程和外部接口大概只能到 40% 到 45%，业务层大概 30% 到 40%；用 standalone MockMVC 写的控制器测试还落在 JaCoCo 统计外面。作者写这些测试脆、模拟过多，改生产代码时分不清是规格变了还是测试本身太脆；最后把这条单测分支丢掉了，眼下只先修原来就失败的测试，再改从规格书设计用例。页上有埃森哲日本技术咨询和工程师招聘链接。不代你同样用代理去刷覆盖率，就等于覆盖率也会涨到 70%，或这样添出来的测试就总能量产之后再整枝丢掉。",
     description:
       "面向已经把「覆盖率涨了、失败测试清零」写成质量已经有人把关、却还没问期望值是不是从实现里抄来的人：把「测试可以代写，该不该合进去、是不是在给当前实现背书仍要人订」写成门禁，区别于对照整理前后几天里的差评占比，以及按月去看测试设计和回归各花了多少小时。",
@@ -44707,7 +44707,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "645",
     slug: "kenimoto-340k-138x-23to28x",
-    title: "Ken Imoto：三套代理并行一周——每天输入约 34 万 token 是盈亏线；token 大约 13.8 倍，加速大约 2.3 到 2.8 倍",
+    title: "三套代理并行一周的盈亏模型",
     summary: "个人（Ken Imoto／kenimo49）；披露自己连续 7 天并行开着三套编码代理：终端里的 Claude Code、另一处的 Cursor Composer，以及 tmux 里的 Codex CLI，并把输入和输出 token 分开记账，对照一个月前自己用单代理、做同类任务的那一周。并行这一周的总 token 大约是单代理周的 13.8 倍，不是 2 倍或 5 倍。作者按自己的日志建了一条简单模型：并行的花费按 13.8 倍计，完成任务数按加速系数 k(N) 计。每天每位开发者的输入低于大约 34 万 token 时，k(N) 大约是 2.3 到 2.8 倍，按每次完成的任务算，并行仍比单代理便宜；越过这条线后，独立任务发完了、合并验收变多，k(N) 掉到大约 1.1 倍，再乘上 13.8 倍花费，按美元计的生产率就掉到 1 以下。Anthropic 侧缓存命中大约 62%；作者写若命中从 62% 降到 20%，盈亏线大约会从 34 万降到 19 万。另外四条会推动这条线的因素是：缓存命中、手里真正相互独立的任务有多深、每次交接的验收负担，以及人格偏移。验收他写成每次交接大约 12 分钟，按自己时薪 30 美元计大约 6 美元；一天 8 次交接就是大约 48 美元，通常不进接口账单。写稿当周他用的价目是 Sonnet 4.6 输入 3 美元／百万、缓存输入 0.30 美元、输出 15 美元，GPT-5.5 是 5／0.50／30 美元。一周结束后的规矩是：一天按大约 30 万输入 token 做预算，并行最多两路做独立活，第三路留给验收或一次补做。页上链到作者的 Claude Code 实用书、系列导读和公司站点。不代你同样开三路并行，就等于盈亏线也会落在每天 34 万，或 token 也总会是 13.8 倍、加速也总会是 2.3 到 2.8 倍。",
     description:
       "面向已经把「再开两路面板就等于更快」写成并行一定划算、却还没按天去对 token 和真正完成的任务数的人：把「并行可以代跑，当天有没有三条相互独立的活、越过那条线该不该收回来仍要人订」写成门禁，区别于按接口调用去算多语言费用，以及只看本机缓存命中了多少请求。",
@@ -44795,7 +44795,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "646",
     slug: "jaewonseo-ios-521usd-445-217dl",
-    title: "Jaewon Seo：几乎不会写代码做出付费 iOS 计划应用——首月流水 521 美元、实收 445 美元；初次下载 217",
+    title: "几乎不写代码的 iOS 计划应用",
     summary: "个人（Jaewon Seo／037）；披露自己没有计算机学位、代码也几乎不会写，只在 Xcode 旁边的终端里跑 Claude Code，把生成结果点开、弄坏、再让它修，做出一款买断的 iOS 计划应用「Sync: Plan & Actual」：把计划中的一天和实际过完的一天放在同一时间轴上；计划结束时可从锁定屏幕点一下，选择按计划、修改或跳过；只读 HealthKit 的睡眠和训练；计时器可从实时活动和灵动岛停下。没有账号、没有服务器，数据只放在本机和本人的 iCloud。作者把上架到 10 月 1 日这一个月的 App Store Connect 数字全部公开：手续费前流水 521 美元，实收 445 美元；初次下载 217，重新下载 39；展示 2.5 万次，产品页浏览 3,700 次，浏览到下载的转化率 1.88%。按实收看国家：韩国 347 美元、美国 72 美元、加拿大 9 美元、澳大利亚 4 美元、日本 0 美元；按来源：App Store 搜索 277 美元、浏览 100 美元、应用内 51 美元、网页 16 美元。217 次下载里大约 100 次是作者在 Reddit 发的兑换码。那篇帖子有 109 个赞成和 223 条评论，作者写成对自己是大事，但销售额几乎没动；实收里大约六成来自搜索。作者事后才知道，用兑换码拿到应用的人不能写评分和评论，发了大约 100 份兑换码，评论仍是 0。销售额大约八成来自韩国。文末写日本当时还是 0，并宣布从发文当天到 10 月 13 日日本商店从 800 日元降到 400 日元，还链到日本区商店页。作者写 Claude Code 能帮忙的是「做出来」，送给谁、说什么只能自己定，而这才最花时间。不代你同样几乎不会写代码就去做一款付费应用，就等于首月也总会收到 445 美元，或转化率也总会是 1.88%。",
     description:
       "面向已经把「代理能写出可上架的应用」写成已经能赚钱、却还没分开制作和获客、也没把兑换码从付费下载里拆出来的人：把「界面和逻辑可以代写，谁会付钱、商店页说什么仍要人订」写成门禁，区别于只谈桌面应用如何做完公证，以及商店被拒之后怎么改了再送审。",
@@ -44883,7 +44883,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "647",
     slug: "komechan-viewed-40to52-0chk-3btn",
-    title: "こめちゃん：第一次做 Chrome 扩展就把 Viewed 同步到文件树——初稿 40 个测试通过；后来 52 个；复选框 0 个、按钮 3 个",
+    title: "Chrome 扩展把已查看同步到文件树",
     summary: "个人（こめちゃん／橋本龍之介，komechan）；披露自己从没做过 Chrome 扩展，也不知道清单第三版和内容脚本何时注入，于是先让 ChatGPT 按「交给实现用代理」的前提写出含验收条件的规格，再把规格交给 Claude Code。初稿就交出类型检查、静态检查、测试和构建都通过的状态，其中测试 40 个。后来用 Vitest 加 jsdom，对着真实页面结构调整夹具，测试来到 52 个。功能只有一件：在 GitHub 拉取请求的「已查看」和左侧文件树之间同步——树里已看过的文件会变淡并打勾，取消后勾也消失，打开页面时已标记的也会补上。扩展只要内容脚本，没有弹出页、没有设置页、也没有后台页；权限是零，也不调用浏览器接口。唯一卡住的是真实页面结构和规格设想不一样。作者让扩展自己在启动 1.5 秒后往控制台打诊断：复选框探测是 0 个，带「已查看」无障碍名称的按钮是 3 个，状态在按下属性上，而且按钮不会触发变更事件。三个文件里有两个能靠「展开全部行」按钮上的路径属性对上；剩下那个文件行已经全部展开，没有这个按钮，最后用双方共享的锚点编号当后备键才对上。文中示例路径是公开仓库里的一般化写法，样本拉取请求是虚构的。作者写自己做的是重载扩展、把控制台输出贴回去；页面结构是诊断数字帮他看出来的。文末写正在申请 Chrome 网上应用店，审核通过后再把商店链接补进文章，眼下先让人本地构建加载。不代你同样让代理去写扩展，就等于初稿也总会一次交出 40 个通过的测试，或下一次换了页面结构也总能靠 0 对 3 的探测一次找对节点。",
     description:
       "面向已经把「规格写清楚再交给代理」写成扩展已经能跟着网站一起活、却还没在真实页面上核对节点长什么样的人：把「脚手架和测试可以代写，选择器是不是还指着现在的按钮仍要人看」写成门禁，区别于让代理去点应用并连号拍操作手册，以及在设计文件里把旧颜色样式改挂到变量。",
@@ -44971,7 +44971,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "648",
     slug: "hnocode-810k-1to2h-to-sec",
-    title: "NOCODE AI LAB：非工程师把 81 万件工厂数据自动化——多人 CSV 合并从 1 到 2 小时降到数秒；月报从 2 到 3 小时降到 15 分钟",
+    title: "非工程师多工厂 CSV 汇总",
     summary: "个人（NOCODE AI LAB／h_nocode_ai_lab）；披露自己在制造业生产管理岗位，不会写 Python、也几乎没碰过命令行，却用 Claude Code 把多个工厂、多条产线每天掉进共享文件夹的 CSV 自动化。数据包括按设备和品番的日生产数量、合格或不合格及测量值、入出库和库存剩余，以及设备开动、停止和原因代码。积下来的记录超过 81 万件。作者写以前要打开 Excel，把需要的列复制到另一张表再汇总；文件一过 10 个，光合并就要 1 到 2 小时，而且每月、每周、每天都要做。开头另一处又写成「三个月前手工作业要半天」，和表里的 1 到 2 小时不是同一口径。分四个阶段：第一周先做单文件汇总，作者写「每天要花 30 分钟」的那项工作就此消失；第二周变成文件夹里全部 CSV 一起处理；大约一个月时加上 Windows 任务计划程序，每天早晨 7 点自动跑；第二到三个月再把多个系统的数据接到同一条流水线上，规模来到 81 万件。现在的流程是各厂先统一字符编码，再纵向合并、筛选汇总，并自动写出 Excel 报告存回共享文件夹；作者写早晨 7 点启动后，全部处理只要数秒到数十秒，自己到公司时报告已经在。对照表还写：月度汇总报告从 2 到 3 小时降到 15 分钟；每天不良率汇总从早晨 30 分钟变成全自动；每周五进度报告从 1 小时降到 10 分钟；过滤从 30 分钟降到数秒。按月换算，作者写成「减少 20 小时以上」，这是表里各项加总的估算，不是另一次计时。搭这条流水线的实际动手，作者写成大约两个周末。头一周卡住三次：合并后日文变成乱码，后来改成 Shift_JIS；超过大约 10 万件时界面像死机，其实还在跑，后来加上已处理件数；各厂列名分别写成「生产数量」「生产数」「制造数量」，后来做了列名统一。作者的办法是把终端报错全文贴回去。作者卡片链到其 note 和 X。不代你同样让代理去写合并脚本，就等于 81 万件也总会在数秒内跑完，或每月也总会省下 20 小时以上。",
     description:
       "面向已经把「不会写代码也能让代理生成脚本」写成现场账已经自动在跑、却还没分开合并耗时、报告耗时和调度器只负责启动的人：把「脚本可以代写，列名和编码对不对、早上那份报告能不能当账仍要人看」写成门禁，区别于把请款单在半天和 30 分钟之间对照，以及按日程去定期跑代理本身。",
@@ -45060,7 +45060,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "649",
     slug: "sompo-e2e-3d-to-30min-webwright",
-    title: "加納：把人要跑 3 天的 E2E 写成 Playwright 之后，脚本跑完大约 30 分钟",
+    title: "保险站点用例转 Playwright",
     summary: "团队（SOMPO Digital Lab／加納，mkanou）；披露自己在自家保险互联网募集站点上试用 Webwright（作为 Claude Code 的插件），把一行接近口语的用例写成可再跑的 Playwright。例子是：「用尚未创建账号的邮箱，走到付款内容确认页。」作者没有写出业种选择、方案选择、签约人信息、同意勾选、卡信息和到达确认页这些步骤，也没有写「不要去点确定」；生成出来的脚本却补上了这些导引，并在各阶段留下截图和到达地址，也守住了不点确定、不走到付款完成页这条没写明的约束。作者把整份用例丢进去之后，写成「虽然还要手修，但已经几乎就是能用的测试代码」。跑这些生成出来的 Playwright 脚本大约要 30 分钟；同样体量的测试，以前由人去点，要花 3 天。这大约 30 分钟只覆盖脚本跑完，不含生成和手修。作者以前也试过网页代理：该截的证没截到、会走错下一屏、一碰到动画和动态界面就不稳，而且很难把过程沉淀成可再利用的 Playwright。作者后来对照官方说法，把差异写成：靠无障碍树或截图去「预测下一步点哪里」，不如让代理把操作写成代码、跑完自己验收、不通再改，也就是所谓 code-as-action。作者还用 microsoft/playwright-cli 加自建技能复现了同一思路，产物对齐成计划书、可换参数的最终脚本，以及每次运行隔离的截图和动作日志。简单正常系（账号未创建走到付款确认）写成和 Webwright 几乎一样；需要看图才能判的稍丰富正常系，计划、脚本质量和上下文消耗也几乎相当，Webwright 稍快、截图更干净，自建技能稍慢、截图稍粗，作者写成优劣势难分、本质结果几乎相同。官方基准里的百分比是 Webwright 仓库对坐标预测基线的数字，不是作者自己的对照窗。页末有损保数字实验室站点，带上了来自这篇文章的跟踪参数。不代你同样让代理去写 E2E，就等于人要跑 3 天的体量也总会变成大约 30 分钟，或生成出来的脚本总是不用手修。",
     description:
       "面向已经把「代理会点浏览器」写成 E2E 已经能过夜回归、却还没分开脚本跑完和生成手修的人：把「脚本可以代写，确不定该不该点、证有没有留下仍要人看」写成门禁，区别于按月去看测试设计和回归各花了多少小时，以及只去压端到端的片状失败。",
@@ -45149,7 +45149,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "650",
     slug: "ssaita-94turns-2m3-62min-board",
-    title: "ssaita：6 天 94 个回合做成实况板——中位约 2.3 分，平均约 4.6 分，最长 62 分",
+    title: "bash 钩子拼成委托实况板",
     summary: "个人（ssaita）；披露自己在 Claude Code Meetup Osaka 做过闪讲之后，把 hook 和 statusline 接成「实况板」：提示词输入栏下方能看到何时发出委托、眼下在做什么、以及何时结束。做法是大约 50 行 bash 加 jq：UserPromptSubmit 记下开始，Stop 记下结束，MessageDisplay 记下模型发言开头大约 40 个字；statusline 每秒读这些文件，第一行是委托到完成，后面最多 3 条途中报告。作者写当时 hook 事件有 28 种（截至 2026 年 8 月），这次只用了上述 3 种。同一条发言可能分成多块到达，脚本只记录 index 为 0 的首块。作者举的例子是委托整理五种主要服务端 JavaScript 框架：从 13:33:42 到 13:44:43，合计 11 分 01 秒，11 分钟里记下 18 个事件（开始 3、发言 12、结束 3）。过程里先写出 Markdown 初稿并请子代理评审，评审写出要改 5 处（高 2、中 2、低 1），改完再评「没有指摘」后才做 HTML。作者又把最近 6 天的日志做了汇总：回合 94 次，途中报告 339 条，作业目录 13 个；一回合中位大约 2.3 分钟，平均大约 4.6 分钟，最长 62 分钟。作者据此写成：5 分钟以下不必深想指示怎么改；到了 1 小时级，就该重新想指示，或者干脆先去吃饭。副作用是，他开始先自己把费时的部分想清楚再交出去，并写轻微的代码修改自己 grep 往往更快。文末把 Mac 和 Windows 的工序公开在 GitHub Gist，并宣传自己在做的轻量 Markdown 编辑器 Bokuchi（Tauri、开源、免费）。不代你同样接上实况板，就等于下一周的回合中位也总会是大约 2.3 分钟，或最长也总会是 62 分钟。",
     description:
       "面向已经把「代理正在干活」写成等待已经可管理、却还没记下每一回合从委托到结束实际过了多久的人：把「看板可以代写，5 分钟以下和 1 小时级该不该换一种交法仍要人订」写成门禁，区别于去数会话停滞了几次，以及用会话数去除以每 100 行。",
@@ -45237,7 +45237,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "651",
     slug: "yoshitaka-45f-2430t-2vuln-12cve",
-    title: "yoshitaka：五层防护——45 个文件 Semgrep 指出 1 条（误报）；2430 个测试全绿仍检出 2 个漏洞；已知 CVE 的 gem 补了 12 个",
+    title: "全由代理写成的五层安全防护",
     summary: "个人（yoshitaka／yoshitakasuzuki）；披露自己用 Claude Code 的子代理并行、人几乎不写代码，12 天把自由职业匹配服务做到生产发布（前一篇标题写成「一周」，和这 12 天不是同一口径）。本篇回答「全是 AI 写的，安全怎么办」，并把当时组上的五层防护连配置一起公开。第一层是官方 security-guidance 插件：编辑时用大约 25 种正则提醒，回合结束时另一次模型看差分，提交时再让审查代理顺着数据流去读相关文件。第二层是自写的大约 30 行 Semgrep 钩子，写完文件大约 2 秒扫一次；官方 Semgrep 插件会在未登录时直接拦住编辑，作者改用免费命令行。第三层是 permissions.deny，不让模型去读环境变量、密钥和云凭证；生产密钥放在部署服务的控制台，不进本地、不进仓库、也不贴进对话。第四层是合并前的 /security-review。第五层是写稿中途才补上的依赖扫描：Dependabot、bundler-audit、Brakeman、yarn audit 和 osv-scanner。新功能（不用注册的演示模式）第一次套上这叠防护时：Semgrep 扫了 45 个改动文件，指出 1 条，把密码重置路径常量误当成密钥，没有注入或跨站脚本这类已知模式；合并前的模型安全审查在 2430 个测试全部通过的情况下仍检出 2 个实质问题——用 uuid 直指就可以走到本不该看见的收藏或面谈申请（IDOR 变种），以及未认证就能打的事件记录接口没有速率限制、载荷大小也没有上限。两件都立刻建了议题并修好。写到供应链时，初扫发现带已知 CVE 的 gem 十数个，当场补了 12 个；Rails 7.1 已结束安全支持，当夜跳到 8.0，并把 36 个模型文件里的旧枚举写法一并改掉，当时测试 2475 个全部通过。同一夜还做了 devise、puma 和 eslint 的主版本更新；devise 5 有破坏性变更，4 个测试失败，补了一行兼容后通过。已知公告的抑制列表最后写成空；恶意包和仿名包写成没有。Brakeman 指出 3 条 SQL 注入，作者判断全是误报并写了带理由的抑制。另外发现前端 .env 从第一次提交就被跟踪，内容只是开发用端口。文中带演示和注册链接。不代你同样叠五层防护，就等于测试全绿之后也总会再挖出 2 个漏洞，或已知 CVE 也总会补上 12 个。",
     description:
       "面向已经把「测试全绿」写成可以上线、却还没问授权和依赖里有没有测试盖不住的洞的人：把「扫描可以代跑，误报该不该压、洞该不该先修仍要人订」写成门禁，区别于给规则加静态检查打质量分，以及只去查托管权限配置里的 deny 空洞。",
@@ -45326,7 +45326,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "652",
     slug: "ramiz-9cursor-20claude-worker-log",
-    title: "Ramiz Raja：把 Cursor CLI 和 Claude Code 当工人派活——Composer 9 行交付 6 行，Sonnet 20 行交付 15 行；两边任务并不配对",
+    title: "两款命令行工人的派活日志",
     summary: "个人（Ramiz Raja／informramiz）；披露自己在 2026 年 9 月 30 日到 10 月 4 日的日志里，把 Cursor CLI 的 composer 和 Claude Code 的 Sonnet 当成工人派活：一行就是一次派出去的有边界任务，有的一行里还包括多轮或重跑。Cursor composer 从 9 月 30 日到 10 月 3 日共 9 行，交付 6 行、未交付 3 行：1 行被作者自己的 Bash 30 分钟超时杀掉，2 行分别在 7 分钟和 30 秒后回报「额度用尽」。Claude Sonnet 从 10 月 1 日到 10 月 4 日共 20 行，交付 15 行、未交付 5 行：1 行是看门狗误报停滞；1 行先卡在自己的测试里，下一次又带着未提交的改动退出；1 行因为没有可用的 Apple 会话被挡住；1 行是部分完成（控制台步骤被权限检查拦住，另一步做完了）；1 行在两次云设备会话跑了 0 个测试之后回报「未测试」。作者写明这些行不是配对对照：Cursor 一侧多为回归测试、网络重试策略、发布流程脚本及其修复，以及媒体库切片；Claude 一侧除了代码，还有书面计划、浏览器控制台和设备检查。因此他不从两组交付数里得出胜率。已交付的 Cursor 行里，最短 10 分钟，最长 53 分钟（一条流程脚本，经过一轮修正）。已交付的 Claude 行里，有的要三轮或四次接着跑；其中两行交付前还重跑过一次（同样撞上 30 分钟超时，另一次在等后台测试时被切断）。作者另有 2026 年 9 月 19 日的旧测试：composer、opencode 和 devin 做两道带隐藏评分套件的 Python 题，第一轮 16 题全对、第二轮 10 题全对，用时 45 到 76 秒；那一次没有 Claude Code，作者把它和本表分开。相关的一条 Claude 日志是：文本模式下只在结束时才打字，看门狗把 25 分钟的安静判成停滞，其实第一项已经提交。作者没有量同一任务上的速度，也没有量每行的 token 或美元，质量只记「我是否接受了产出」。页上有 Calendly、Toptal 和 Upwork 链接。不代你同样去派这两套工人，就等于交付比例也总会是 6／9 和 15／20，或两边任务没配对也能比出谁更好。",
     description:
       "面向已经把「再开一套命令行工人」写成已经比较过快慢、却还没有配对任务、也没有记下失败原因的人：把「派活可以代跑，没配对的交付数能不能拿来排名仍要人订」写成门禁，区别于三套编码代理并行一周的 token 盈亏线，以及去数会话停滞了几次。",
@@ -45414,7 +45414,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "653",
     slug: "yunany90-504-edge-haiku-134pct",
-    title: "yunany90：504 次实测量「也想想边缘情况」——Haiku 一次费用 +134%，未写明的用例通过率上下不超过 4 个百分点",
+    title: "补上边缘情况提示的修复实测",
     summary: "个人（yunany90）；披露自己把 2026 年 8 到 10 月间实际合进开源仓库的 21 个缺陷（来自 cachetools、zod、marked、js-yaml、anyio、undici、fastify 等 12 个项目）交给 Claude Code 2.1.295 的无界面模式，用 Haiku 5.5 和 Opus 5.5 各按 4 种条件、每种 3 次去修，合计 21×2×4×3＝504 次。四种条件是：只留下症状、复现和期望结果的「基本」；同一份报告只把 effort 调到 high；加上「先列出报告里没写、但应一并处理的输入和变形，并先写下这些测试再动手」的「边缘情况」；再叠加「先读你要改的那些代码的现有测试」。评分用的是后来修好这些缺陷的维护者测试。作者在开跑前就把每条测试分成「报告里出现过的」和「没出现过的」，连同 sha256 预注册在 GitHub 上，避免看完结果再改标准；他认定有效果的门槛是相差 20 个百分点以上。未写进报告的那些用例，按缺陷平均的通过率是：Haiku 基本 84%、effort high 82%、边缘情况 84%、边缘情况加读测试 86%；Opus 分别是 88%、86%、91%、84%。没有一种条件上下移动超过 4 个百分点；effort high 在两个模型上都略降。一次调用的 API 费用：Haiku 从 0.050 美元升到 effort high 的 0.081 美元（+60%）、边缘情况 0.10 美元（+108%）、再加读测试 0.12 美元（+134%）；Opus 从 0.51 美元升到 0.62 美元（+22%）、0.82 美元（+60%）和 0.81 美元（+58%）。一次用时的中位，Haiku 从 121 秒到 299 秒，Opus 从 120 秒到 271 秒。作者写模型确实按指示去列举并补测试了，但没有连到修复质量。21 个缺陷里有 12 个在所有条件、两个模型下全部用例都通过，几乎没有上升空间；js-yaml 里「流中每个文档开头都有 BOM」这一条，504 次里 0 次通过；Python-Markdown 的反引号缺陷上，Opus 在基本条件 3 次里通过 2 次，加上「先读测试」后 3 次全失败。报告里写明的用例，两个模型都有 94% 以上通过。各 252 次平均，Haiku 一次约 0.088 美元，Opus 约 0.69 美元，大约便宜 87%。作者写 20 个百分点以上的效果可以否定，几个百分点的小效果否定不了；每种条件也只试了一种措辞。504 次的分数、费用和时间以 CSV（CC BY 4.0）公开，并给出 Zenodo DOI 和预注册文档。不代你同样在提示里加上「也想想边缘情况」，就等于未写明的用例通过率也会提高，或费用也不会按同样比例上涨。",
     description:
       "面向已经把「多写一句考虑边缘情况」写成缺陷修复已经更严、却还没分开报告里写明的用例和没写明的用例的人：把「提示可以代写，没写出来的变形模型想没想到、多出来的费用值不值仍要人订」写成门禁，区别于三套代理并行一周的 token 盈亏线，以及未配对的工人派活日志。",
@@ -45502,7 +45502,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "654",
     slug: "manahazime-20h44-5h-nudge-watchdog",
-    title: "真魚始：昨夜一台代理因 Stream idle timeout 停下——自动小戳后曾在 20:47 回来；再发后等人约 5 小时，02:05 才手敲回车",
+    title: "常驻代理沉默与报错停机分拣",
     summary: "团队（真魚始／manahazime，大分县的鱼批发公司）；披露社内有多台个人电脑常驻跑着 Claude Code 的代理，分别分担社交网络发帖、传真单据的文字识别、视频制作和会计处理。作者要处理的不是「完全不停」，而是停了一定能被看见，并且分清哪些停机能自己拉起来、哪些该把人叫来。他们把「还活着」定义成代理作业日志（transcript）的最后修改时间还在往前走，而不是进程号还在：人拿手重启之后进程号会变，但同一份日志往往会被重新握住接着写，看门狗仍然能把「回来了」记下来。固住之后不立刻重启，而是先小戳最多 3 次；3 次还不回来，才区分两种停法：进程还在却不再说话的沉默挂起，多半重启有用；服务器明确报错（例如 Stream idle timeout）则重启也常会再撞上同一条件，应发邮件把人叫来、不要空打。写稿前夜的实机时间线是：20:44 有一台因 Stream idle timeout 停下，看门狗发觉后小戳 1 次，20:47 日志重新前进，判成自动回来；20:51 同一错误再发，大约每隔 4 分钟小戳 3 次仍不回来；20:59 判定这是明确的服务器报错，跳过重启并给负责人发邮件；一直等到大约次日 02:05，中间大约 5 小时，负责人在清晨发现后，在手边终端里敲了一次回车，会话才继续；02:05 看门狗看到日志又往前走，自动把这次恢复结案。作者写这 5 小时等着是设计如此，不是看门狗失灵。他们还写过一次虚惊：从另一台机器去读监视状态时，最后更新时间看起来冻住了，其实只是读到了对方即将写入之前的那一瞬，后来隔一会儿再读仍然在前进。监视进程放在另一台物理机器上，重要的恢复判定要两条独立路径对上才算定。页上作者卡片链到公司主页和 X。不代你同样接上日志时间监视，就等于下一次服务器报错也总会在大约 5 小时内被人敲回车救回来，或小戳 1 次也总会在 3 分钟内把沉默挂起拉起来。",
     description:
       "面向已经把「代理常驻」写成夜间业务不会悄悄停住、却还没分开沉默挂起和服务器明确报错的人：把「监视可以代做，该不该重启、人要不要半夜起来仍要人订」写成门禁，区别于去数会话停滞了几次，以及没有真实告警窗的值班演练。",
@@ -45591,7 +45591,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "655",
     slug: "koden-140pages-65uv-0yen-1937",
-    title: "こでん：不会写代码做了哲学咨询站——3 个半月约 140 页、周访问约 65 人、销售额 0 日元；机械测试 1,937 件",
+    title: "写入烦恼的哲学处方咨询站",
     summary: "个人（こでん／koden）；披露自己是软件测试工程师（QA），开始做这个网站时几乎没有编程经验，勉强算用过一到两个月，Excel 会一点。他做的是把烦恼写进去、由哲学家身份的模型开「处方」的网站。从 2026 年 5 月 1 日公开，数到 8 月 15 日，一共 3 个半月。他写出的实数是：公开页面大约 140 张；一周的独立访问者大约 65 人；一周里开始咨询的有 6 到 15 件，一周的活跃用户也是 6 到 15 人；累计会话 987 次；完成会员注册的有 3 人，其中包括作者自己；最近 30 天里，没有人碰到免费使用上限；月费大约 300 日元；销售额 0 日元。大约 140 页的构成写成：文章 31、名言 49、术语 15、烦恼对照哲学家 34、哲学家 12，以及其余。大约 300 日元的月费写成：域名一年 1,500 日元，加上接口费用累计大约 900 日元；作者写现在几乎只剩域名钱，因为几乎没人用，接口费涨不起来。体感上，去掉身边的人和自己，真正用过的大约不到 10 人；他又写那大约 65 个周访问者里，爬虫可能占了不少。作者一开始用 Claude 的免费档，大约每天 1 小时，碰到限额就等 5 小时再继续，这样过了 1 到 2 个月；后来改用终端里的 Claude Code，文中的 1,937 件测试和持续集成是在那边搭的。类型检查、代码风格、单元测试、构建和端到端测试不全部通过就不能合并。仓库记录里，第一次提交的当天就已经部署到 Vercel。后来觉得首页难看，用 Claude Design 和 ChatGPT 把暗色功能堆叠改成「写下烦恼 → 收下处方 → 在手册里回看」的路径。作者写文章本身也是为了拉人来；页上链到 https://philosophy-bot.com/?ref=devlog_zenn 和 X。不代你同样让不会写代码的人去叫代理搭站，就等于 3 个半月后也总会有大约 140 页、一周大约 65 个访问者，或销售额也总会是 0 日元。",
     description:
       "面向已经把「不会写代码也能上线」写成已经有人来用、却还没分开做出来的页数和真正来的人数的人：把「页面可以代写，有没有人来、钱有没有进来仍要人看」写成门禁，区别于营销人把建站工时从几小时压到十几分钟，以及只报应用商店首月流水。",
@@ -45680,7 +45680,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "656",
     slug: "heynstudio-freeze107-25-to-142lufs",
-    title: "Heyn Studio：自检先报 FIX 停在 1.07 秒和 -25 LUFS；改完变成无停住、-14.2 LUFS",
+    title: "旁白短视频技能的制作流程",
     summary: "团队（Heyn Studio）；披露自己把「做一条带旁白的短视频」收成 Claude Code 的技能：先写出台本并等人点头，点头之前不去调要花钱的语音接口；再写成一份规格 JSON，时刻不用秒数而用「某个词被说出来的那一瞬」来锚；然后取回语音和逐字时间戳，先导出关键静止画给人看，再渲染，最后用检查脚本看有没有 FIX。英文按空格切成词；日文用 Intl.Segmenter 切开后再把助词和标点贴回前一词。他们举的日文例子是「字幕は」从 0.00 秒、「声に」从 0.52 秒、「合わせて、」从 0.93 秒、「一語ずつ」从 1.60 秒、「出します。」从 2.37 秒。作者写 eleven_multilingual_v2 的时间和声音对得上；较新的 eleven_v3／eleven_v4 有时会比声音早大约 0.7 到 1 秒。核对办法是比较声音里的静音和标点所在的时刻：这条样例里静音大约在 1.50 到 1.62 秒，时间戳上的顿号在 1.51 秒。真正拿来当完成标准的，是 ffmpeg 的停住检测和响度：画面连续 0.5 秒以上完全不变就算停住（片尾留下的静止不算），整体响度对着常见的 -14 LUFS。日文字幕这条样例第一次检查报出两行 FIX：1.07 秒处有停住，以及 -25 LUFS。他们后来让整段从开头到结尾慢慢放大 8%，好让词与词之间画面仍在动；再用两遍响度校正去靠近 -14 LUFS。再检查一次变成：没有停住，以及 -14.2 LUFS。作者写代码是为了说明而收短的最小版，在 Node.js 24、TypeScript 5.6、Remotion 4.0.540 上做过类型检查和运行。文末把同一套想法做成「Heyn Motion Kit」在 Gumroad 上售卖，并写明套件默认按空格切词，日文要自己补他们文中的切法；Remotion 对超过 3 人的公司另有公司许可。不代你同样加上停住和响度自检，就等于下一条样片也总会从 -25 LUFS 来到大约 -14.2 LUFS，或 1.07 秒那一处停住也总会消失。",
     description:
       "面向已经把「代理会写视频」写成成片已经能直接发出去、却还没把完成标准从渲染成功改成数字检查通过的人：把「规格可以代写，停住和响度过了是不是就能发仍要人看」写成门禁，区别于只写字幕规则却没有前后时数，以及把上万字字幕交给几人合议后只留下定性纪要。",
@@ -45769,7 +45769,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "657",
     slug: "kuri-11h1-9h2-127h-to-20h",
-    title: "くりメガネ：引入前两周和最近两周——拘束中位约 11.1 小时到约 9.2 小时；拉取请求创建到合并中位约 127 小时到约 20 小时",
+    title: "司令塔选模与夜间可放手作业",
     summary: "个人（くりメガネ／kuri_megane，株式会社センシンロボティクス，做机器人运用支援工具的软件工程师兼 Scrum Master）；披露这是「给 Claude 过去」之后、「时间」主题后篇的执行和自动化篇。他写的不是又记了多少条定时任务，而是引入启动司令塔、按难度和额度选模型、没有批准过的计划就不许改文件，以及把可放手的作业夜间一段一段往前推之后，自己的工作方式数字怎么动。引入前的两周和最近的两周相比，数字来自自己电脑上的出勤打卡、按作业记下的时间，以及 GitHub 拉取请求历史，并且只汇总工作日、只保留前后都能对齐的指标。五个数字是：一天拘束时间（从开工到最后作业结束）的中位从大约 11.1 小时到大约 9.2 小时；拉取请求从创建到合并的中位从大约 127 小时到大约 20 小时；夜里 22 点以后才生成的拉取请求占比从大约 4% 到大约 33%；连续做同一件事能专注的时间中位从大约 39 分钟到大约 97 分钟；每个拉取请求的审查往返中位从大约 7 次到大约 2.5 次。作者写这些只说明「机制放进去之后，数字这样动了」，不证明因果关系。注意点也包括：每个指标大约只有 10 个工作日，日与日之间起伏不小；拉取请求是全部仓库加总，里面也包括夜间无人生成的那些，更宜看成速度和占比，不宜只看成件数；审查往返里还混着自动审查机器人。夜间那一侧，macOS 的定时启动每隔 15 分钟起来一次，从队列里取出可以放手的一件，用无界面模式只跑一个段落，并要求先写好完成条件和核法；作者举的队列例子是 2026 年 7 月 19 日 19 点之后才能动手、次日 8 点截止。他也写模型选得还只算「一半手动」，时间纪律本身也还没守住，长的日子仍在。页上未见公司招聘、产品或商店硬链。不代你同样加上计划门禁和夜间可放手的作业，就等于拘束中位也总会从大约 11.1 小时来到大约 9.2 小时，或创建到合并也总会从大约 127 小时来到大约 20 小时。",
     description:
       "面向已经把「夜间也能往前推」写成工作方式已经变好、却还没分开拘束时间、合并等待和审查往返的人：把「队列可以代跑，这五项数字能不能当成因果仍要人订」写成门禁，区别于按月去数定时执行交出来的提案，以及议题从打开到关闭缩短了几天。",
@@ -45858,7 +45858,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "658",
     slug: "kentaro-1971h8-to-30h9-logs",
-    title: "kentaro：会话日志里作业时间——按头尾一数是 1,971.8 小时；改完数法变成 30.9 小时",
+    title: "会话日志作业时间的间隔重算",
     summary: "个人（kentaro／kentaro_tak）；披露自己觉得「最近好像没怎么在 Claude 里干活」，就用 Claude Code 留在本地的会话日志（JSONL，带时间戳）去核对。窗口是 2026-09-24 到 2026-10-23 这 30 天，环境是 Windows 上的 VS Code 扩展，日志里的版本从 2.1.153 到 2.1.301。只看有 timestamp 的行，不读正文。按每个会话「第一条到最后一条」去加，30 天合计 1,971.8 小时，折合一天 65.7 小时。160 本会话里有 20 本跨过了日期，一本里最长的空白是 8 天 14 小时，头尾最长的一本是 505.6 小时（21 天）。改成「相邻记录间隔不超过 10 分钟才算在干活，空太久当休息、计 0」之后，全部会话加起来变成 38.5 小时。作者还用定时任务跑 claude -p，这些会话的入口是 sdk-cli，和人手打开的混在同一目录：人手打开的（claude-vscode）48 本、37.0 小时；自动执行 112 本（占 70%）、1.5 小时，一本中位 46 秒。先按会话丢掉自动执行，再把剩下的记录排成一条时间线（并行开着的会话不再把同一段时间数两遍），变成 30.9 小时，比按会话加少 16%。间隔上限和「超过上限是计 0 还是计到上限」会让结果再动：上限 5／10／15／30 分钟，计 0 时分别是 26.9、30.9、31.9、34.3 小时，计到上限时是 35.4、42.1、47.4、61.8 小时；作者写计到上限时，上限选多少会让结果动到 1.7 倍，计 0 时 5 到 30 分钟只动 1.3 倍。若把自动执行也混进去，10 分钟上限下计 0 会多 2.4 小时变成 33.3 小时，计到上限会多 17.5 小时变成 59.6 小时。作者选了计 0、上限 10 分钟，因为 10 到 30 分钟之间的间隔全部加上也只有 3.4 小时。同一套数法下，写稿当周周一到周四是 0.7 小时，前面三周是 3.8 到 6.5 小时。再和 2026-09-01 到 10-03 手写的「Claude 作业」对照：写过的 18 天，手写 55.5 小时，日志计 0 是 33.1 小时、计到上限是 43.6 小时；没写下的日子里，日志里还有 10.6 或 13.2 小时；合计手写 55.5 小时，对日志 43.7 和 56.8 小时。有一天手写 3 小时、日志却是 0。页上作者卡片链到个人站点。不代你同样改用间隔去加，就等于下一段日志也会从上千小时缩到大约 30.9 小时，或按会话加也不会把同一段时间数两遍。",
     description:
       "面向已经把「日志里有时间戳」写成作业时间已经能量出来、却还没分开会话头尾、自动执行和并行重复的人：把「日志可以代加，空多久算休息、要不要把自动执行混进去仍要人订」写成门禁，区别于去数会话停滞了几次，以及只报每个回合花了几分钟。",
@@ -45947,7 +45947,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "659",
     slug: "smarthr-aniyama-2mo5-to-1mo-harness",
-    title: "aniyama：估价大约 2.5 个月的情シス功能——先做好配套机制后大约 1 个月做完；10 个任务时状态文件长到 118 KB",
+    title: "情シス功能开发的配套机制",
     summary: "团队（aniyama，SmartHR 情シス产品工程师）；披露入职大约 3 个月时，要在现有情シス产品仓库里加一个尚未对外发布的功能。当初按实质工时估价大约 2.5 个月；他先为 Claude Code 做好一套配套机制（ハーネス），再开始开发，写自己没有大的返工，大约 1 个月就把实现做完了一轮。这套机制不是另立一个总管代理，而是：技能文件写清步骤，JSON 记下进度，再用 shell 脚本按 12 项完成条件做机械检查。出场的是四种角色：主会话兼调度，自己不写实现，也不把规格正文和审查全文送进上下文；每个拆好的任务只新起一个实现代理，用测试驱动做到提交，不能向用户提问，疑问当作未解决的问题返回；全部任务结束后才并行启动 4 个审查代理，分别看规格是否对上、并发会不会坏、谁能做哪些操作，以及入口是不是做完了后续；完成条件由脚本判定，一个代理也不用，因此不耗 token。实现代理一次启动只做一个任务，同一代理不连续做两件；作者写一开始曾在同一会话里接着做，噪声变多、token 变多、实现也变差，才改成每个任务新开会话。进度原先写在一个 JSON 里，到 10 个任务时长到 118 KB，光读状态就占去不少上下文，后来拆成记录整体走到哪的 progress.json，和只打开进行中任务的 stages.json。确定下来的内容不往 JSON 里堆，而是写回规格和纪律文件；这两个 JSON 还进了 gitignore，换人接手就丢掉重来。12 项检查里，作者特别写下：对象测试必须是绿的，测试件数为 0 也判失败（RSpec 在 0 件时仍返回成功码）；功能开关关掉时要和原有行为一致，也不能偷偷加上「打开开关」的配置；改动过的文件必须落在许可路径里；包与包的依赖违规不能变多。改共享表和画面开关漏改这两项，脚本只标「要确认」，不自动算通过。检查失败则在同一会话里重做，3 次仍失败就交回给人。调度启动实现代理时还会按任务选模型：还要自己拼设计和状态转移的用 Opus，按既定类型加接口、画面或测试的用 Sonnet。作者也试过专设一个总管代理，但多一次摘要就多噪声，精度下降、token 也更费，没有采用。反证只对「只有一个审查代理报出、且改起来很贵」的意见开，而且只能用代码行或测试输出当证据；作者写实测里，多个审查代理各自报出的意见一旦拿去反证，最后都是原来的意见对。页末有招聘和轻松面谈入口。不代你同样先做好这套配套机制，就等于下一个功能也会从大约 2.5 个月来到大约 1 个月，或 10 个任务时状态文件也不会再长到 118 KB。",
     description:
       "面向已经把「代理会按阶段往前走」写成大功能已经能一次做完、却还没分开规格合意和机械检查的人：把「任务可以代做，返工少了能不能当成估价已经兑现仍要人订」写成门禁，区别于只写一份 DESIGN.md，以及按月去看议题关闭了几天。",
@@ -46036,7 +46036,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "660",
     slug: "taida-44min-56files-100tests",
-    title: "タイダスタジオ：并行 4 个会话——Phase 0 用 10 分钟、并行最长 30 分钟、整合 4 分钟；44 分钟交出 56 个文件、100 个测试全过",
+    title: "并行会话开发的三个移动应用",
     summary: "个人（タイダスタジオ／taida_dev）；披露自己用 Claude Code 并行会话做了 3 个移动应用，其中一个已在 iOS App Store 上架，另外两个还在调整。他把流程分成三截：先用 1 个会话做地基（CLAUDE.md、多处会引用的类型、环境配置，并先提交），再按目录同时开 4 个会话，最后用 1 个会话做整合。数字最硬的是应用 A（从「税」想到的储蓄类应用）：4 个会话、56 个文件、100 个测试全部通过，墙上时钟 44 分钟——Phase 0 用 10 分钟，Phase 1 里并行 4 个会话的最长一段是 30 分钟，Phase 2 用 4 分钟。作者写这 30 分钟是「最长会话时间」，4 个会话同时在跑。应用 B（偏差值类）同样 4 个会话、56 个文件，76 个测试全部通过，大约 40 分钟；已上架的「めんどくさい税」是 4 个会话、大约 50 个文件，测试没有计量，大约 50 分钟。作者写若用 1 个会话按顺序做，应用 A 会是 4 倍即 2 小时，而且上下文胀起来还可能更久——这是对照估计，不是另一次实测。四个会话大致按 design、core、app，以及 worker 加 marketing 来分目录；依赖还没就绪时先用占位函数往前走，到 Phase 2 再换上真正实现。页上链到「めんどくさい税」的 App Store 页，以及作者的 X。不代你同样按目录并行开 4 个会话，就等于下一个应用也会在 44 分钟里交出 56 个文件和 100 个全过的测试，或按顺序做也总会是 2 小时。",
     description:
       "面向已经把「多个会话一起跑」写成个人开发已经变成四倍速、却还没分开墙上时钟和按顺序做的对照估计的人：把「会话可以代写，44 分钟能不能当成下一个应用也会到达仍要人订」写成门禁，区别于三套代理并行一周的 token 盈亏线，以及未配对的工人派活日志。",
@@ -46124,7 +46124,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "661",
     slug: "siam-23h-161cards-315tests",
-    title: "サイアムワークス：策划书一本交出后约 23 小时公开——161 张卡、315 个测试大约 13 秒；到 v0.8.5 约 85 小时、更新 14 次",
+    title: "竖屏肉鸽卡牌策划的代理实现",
     summary: "个人（サイアムワークス／siam_works）；披露自己把手机竖屏的肉鸽卡牌游戏 LAST CROWN 的策划包装交给 Claude Code，说「先做计划再做完」，从拜托到第二天夜里公开大约 23 小时（文中表里写成大约 23 小时半）。规则和 150 张卡的设计是他先和 ChatGPT 对过、自己备好的，画也是 ChatGPT 出的；作者写代码自己一行也没写。拜托大约在 22:20，计划批准之后大约 2 小时 150 张卡就能动，画面以外大致齐大约 4 小时半（到次日 02:45）。当时本来不打算对外公开，第二天夜里问能不能放到自己的 VPS 上，发现没有服务端、静态文件即可，按站点里其他作品补好检索和安装相关文件后，从问到公开大约 25 分钟；公开当时卡图画了 33 张，其余第二天分几次补上。规模是卡 161 张、对战角色 38 人，最高稀有度 23 张带必杀演出。到 v0.8.5：从拜托起大约 85 小时，3 天半里更新 14 次；自己的指示和答复 109 次（3 个会话合计，短联系也算）；工具调用大约 3,400 次（其中命令 1,153、文件编辑 870、浏览器操作 672 等）；提交 86 次；TypeScript 190 个文件、22,357 行（其中测试 3,469 行），CSS 5,884 行；测试 315 个，全部通过大约 13 秒。315 个里按卡写的场景 153 个，机制 28、一巡（对手候选、奖励、卡组校验等）21、规则 19、故事台本 14、数据核对 12，其余 68。运行时只用 react、react-dom 和 zustand。效果音 37 种、背景乐 5 首，音频文件 0 个，全部用 WebAudio 合成。先攻过强时，用 12 套卡组、生命 30、2,880 局的彼此对打来比修正：不修正先攻胜率 67.4%，只禁先攻第一回合攻击是 66.3%，只给后手多 1 张是 59.3%，只给后手先手费用 +1 是 57.2%，两项后手修正是 47.5%，再加上禁攻（最终采用）是 45.9%。生命从 20 加到 30 后，第一关因牌库抽完而结束的比例从 9.0% 升到 34.3%（全体从 4.8% 到 23.0%），平均回合从 15.3 到 19.8，后来改回 20。1,008 局总对打 17.6 秒结束。重做后的电脑选手和旧版同级对打大约赢 70%，新的最弱一级和旧的最强一级大约 47% 打平；用同一水平的玩家角色去测，对 1 到 4 级对手的胜率从 81%、65%、33%、32% 变成 63%、40%、11%、14%。自动周回的通关率调完后是 1.0% 到 1.9%，目标是大约 20 局里 1 局。页上链到游戏页、站点新闻和 X。不代你同样只交一本策划书，就等于下一个游戏也会在大约 23 小时里公开，或 315 个测试也总会在大约 13 秒里全部通过。",
     description:
       "面向已经把「代理会按计划做完」写成游戏已经能直接上线、却还没分开墙上时钟和真实机感的人：把「规则可以代写，模拟出来的胜率能不能压过真机手感仍要人订」写成门禁，区别于应用商店首月流水，以及只报并行会话的墙上时钟。",
@@ -46213,7 +46213,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "662",
     slug: "abyssgate-2113green-86name-54log",
-    title: "Abyssgate開発中：测试 2,113 件全绿，实物却组不起来——名字 86 件和战斗日志 54 条没走翻译函数；英文一换颜色就全掉",
+    title: "三维迷宫的英语着色与译名缺口",
     summary: "个人（Abyssgate開発中／abyssgate，前职做装置设计）；披露自己几乎把 Wizardry 风三维迷宫角色扮演游戏的代码都交给 Claude Code 写，人负责定规格、审查和真机去摸。自动测试当时是 2,113 件，全部是绿的。做英语本地化设计时发现：战斗日志的上色（伤害红、回复绿、状态异常紫等）是用日文正则去匹配正文，例如「数字 + のダメージ」，英文一换，颜色会全部消失。现有测试喂进去的是日文日志，所以英语化之后测试仍会绿着通过。作者把这和前职一次装置设计对照：图面上没有设计失误，审图也过了，零件也都在规格里，但公差叠起来之后现场组不起来，是驻场的现场工程师在实物前发现的。调查翻译函数 tr() 时又发现，物品、怪物、咒文、职业等名字 86 件，以及战斗日志 54 条，根本没有走这个函数——规则早就定了「显示字符串都要包起来」，和规则有没有被遵守不是一回事。作者写单测只看零件是否按规格，组合起来能不能动并没有保证，所以和界面、输入有关的改动，他们规定至少要写 1 个结合测试。文末说正在给 363 条字符串订英语计划，还没有写成已经做完。页上请人去 X 关注游戏账号。不代你同样加上结合测试和对照实物的检查，就等于下一次换语言时颜色也不会掉，或没走翻译函数的名字也不会是 86 件。",
     description:
       "面向已经把「测试全绿」写成换一种显示也不会坏、却还没分开零件合格和组起来能不能用的人：把「测试可以代写，检查范围是不是看漏了仍要人订」写成门禁，区别于测试全绿之后仍检出的漏洞和已知 CVE，以及按语种去算接口费用。",
@@ -46301,7 +46301,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "663",
     slug: "dooly-100kcmd-507block-25adda",
-    title: "dooly6276：两周日志回放——大约 10 万条命令里，本来会被拦住的有 507 件；其中 25 件是对着别人正在改的树做了 git add -A",
+    title: "共享机器上并行会话的命令拦截",
     summary: "个人（dooly6276）；披露自己在一台机器上同时开多本 Claude Code 会话：即使用 git worktree 把分支分开，机器仍是共用的。某个代理执行 pkill node，其他 worktree 里的开发服务器也会一起停；两个会话会抢 3000 端口；三场构建在同一分钟开始，机器就会卡住。他做了一套在执行前拦住这些命令的 PreToolUse hook 集，以 claude-bulkhead 为名用 MIT 许可证公开。hook 是常驻进程之外的小 Node 脚本，在 Claude Code 执行 shell 命令之前把命令字符串按 shell 语法读一遍，再和各会话的进程、端口、剩余内存、正在作业的 git 树对照；会撞车就把原因和替代命令返回给 Claude。一次判定大约 50 毫秒。常见对应包括：kill-guard 拦住 pkill node 并返回只找自己 PID 的写法；port-guard 拦住抢端口并指出空闲端口；memory-guard 在内存不够时拦住重命令，再用 bulkhead-slot 排队；checkout-guard 拦住在别人正在改的树上做 git checkout 或 git add -A；orphan-reaper 在数秒内停掉已经结束的会话留下的服务器和测试工人；disk-guard 不让十本会话同时对同一目录跑 du -sh ~。0.2 版加了 bulkhead scan：只读 ~/.claude/projects 里的会话记录，不往外发送，并把看起来像 token 的值遮住，再把每条 shell 命令重新交给这些守卫。作者自己的 Mac 上两周日志（7.0 GB、shell 命令大约 10 万条）用 39 秒读完；同时开着的会话最多 13 本；本来会被拦住的命令有 507 件，其中 25 件是对着另一个会话正在编辑的树执行了 git add -A，对方写到一半的改动会混进自己的提交。端口和内存状态日志里没有，port-guard 和内存检查这次没有回放；checkout-guard 是按同一分钟里在同一棵 git 树上动过的会话重新拼出来的。作者写这套机制是读命令字符串做判定，不是沙箱。页上链到 GitHub 仓库，并写了插件市场的安装命令。不代你同样回放两周日志，就等于下一段日志里也会数出 507 件会被拦住的命令，或其中也总会有 25 件是 git add -A 混进了别人的改动。",
     description:
       "面向已经把「一台机器上同时开多本会话」写成并行开发已经彼此隔开、却还没分开分支隔离和机器共用的人：把「命令可以代执行，过去两周里有没有对着别人正在改的树做 git add -A 仍要人订」写成门禁，区别于按目录并行开会话去追墙上时钟，以及三套代理并行一周的 token 账。",
@@ -46389,7 +46389,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "664",
     slug: "sunasterisk-asutin-3d-to-5d-effort",
-    title: "Asutin：周额度大约 3 天就到——按工程改 Model 和 Effort 之后大约能撑 5 天；5 小时额度 5 天一次都没撞上",
+    title: "按工程调整模型与 Effort",
     summary: "团队（Asutin，刊于 Sun* Developers）；披露自己用 Claude Code 时，模型一直留在 default，Effort 则一律 high，理由只是不想把质量放下，没有按作业种类去分。结果是大约 3 天就碰到周额度；5 小时额度也几乎每次都撞上，而且是在距离重置还剩 1.5 到 2 小时时就到了，一撞上作业就停。事后去对官方说明才知道：Team 方案里 default 目前会解析成 Opus 5.5（v2.1.280 之前的 Team Premium 则是 Opus 5），等于所有工程都在用 Opus；Opus 5.5 的 Effort 默认是 medium，他却全程固定 high，比默认还重一档。他后来把工程分成三截：设计与调查用 Opus、medium；实现用 Sonnet、high；审查用 Opus、xhigh。作者写设计要定方向所以质量仍交给 Opus，实现在方针已经定下来时常常 Sonnet 就够，审查则用最重的一档把实现减轻后可能漏掉的地方收回来。改完之后，周额度变成大约 5 天到达；5 小时额度在 5 天里一次都没撞上。质量方面作者写体感没有大的劣化，因为设计和审查仍留给 Opus。文中也写 Team 方案下，聊天版 Claude 和 Claude Code、Cowork 共用同一份额度。作者没有写出对照的日历窗口或用量账单，大约 3 天和大约 5 天是自述。页上出版物写了公司主页、招聘和轻松面谈入口，并开通了支援。不代你同样按工程改 Model 和 Effort，就等于下一周额度也会从大约 3 天来到大约 5 天，或 5 小时额度也总会连续 5 天都不撞上。",
     description:
       "面向已经把「额度不够」写成自己用得太猛、却还没分开作业种类和重量设置的人：把「设置可以代改，大约 5 天能不能当成下一周额度也会到达仍要人订」写成门禁，区别于给自动处理挑时刻以免和 5 小时额度窗抢额度，以及用自编题去给模型和 effort 打分。",
@@ -46478,7 +46478,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "665",
     slug: "kazusa-126mtok-0usd-3weeks",
-    title: "なかがわ：新模型一周用了 1 亿 2,600 万 token，费用却按 0 美元加总——3 周没发现；10 月 28 日早上检查第一次在生产里失败",
+    title: "会话用量监视里的缺价漏计",
     summary: "个人（なかがわ／kazusa_nakagawa）；披露自己做了一个监视器，用 Claude Code 会话记录里每条回复的 usage（输入、输出、缓存写入、缓存读取）去乘自己手写的单价表，再换算成 API 费用。新模型一出来，表里没有它，那一部分就会按 0 美元加总。他实际碰到过一次：新模型在 1 周里用了 1 亿 2,600 万 token，那一部分被当成 0 美元，3 周都没发现；屏幕下方有「Unpriced models (excluded from cost)」的橙色小字，他当时没有读。合计看起来比平常便宜，他以为是用法变了。他查过 2026 年 10 月范围内有没有返回单价的 API，Models API 只给模型 ID、显示名、上下文长度和功能列表，不含价格；公开价格页虽有 Markdown 版，他仍决定不自动改表，因为漏记会变成醒目的 0 美元，写错单价却会显示成一个看起来合理的数。举例包括：Haiku 5.5 同时出现在普通表和 Batch API 表，后者是半价的每百万 token 0.05 美元；提示超过 10 万 token 时单价变成 5 倍；指定在美国境内推理时所有单价再乘 1.1；监视器每次显示都会用现在的表重算，自动跟上调价会把调价前的用量也改掉。于是表继续手写，缺模型就让第二天早上的批次失败；补一个模型的价格作者写大约只要几分钟。2026-10-28 早上，这套检查第一次在生产里失败，原因是表里没有 claude-haiku-5-5；第二天早上仍因同一原因失败，直到把价格补上才停。当时日志只写出是哪一步失败，没有写出是哪个模型，这一点后来才改。页上链到代码仓库。不代你同样加上「表里没有的模型就让早上的批次失败」，就等于下一个新模型也不会再按 0 美元加总 3 周，或 10 月 28 日这种失败也总会写出是哪个模型。",
     description:
       "面向已经把「监视器上有费用」写成用量已经按价算清、却还没分开漏记和写错单价的人：把「检查可以代跑，0 美元能不能当成已经发现仍要人订」写成门禁，区别于对 504 次提示词去比费用，以及从会话日志里去加作业时间。",
@@ -46566,7 +46566,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "666",
     slug: "kensaurus-839rev-305nomerge-234",
-    title: "kensaurus：839 次审查里 305 次写「不要合并」——60 天里合进去 234 件；用户报告 32 件，自己查到的超过 1,000 件",
+    title: "合并前换模型阅读的缺陷复审",
     summary: "个人（kensaurus／櫻元賢次）；披露自己一个人用 Cursor 和 Claude Code 写应用，当时有 8 个应用在跑。代码不是自己一行行写的，出了缺陷有时不知道从哪里看起，于是让代理去读缺陷报告并提交修改的拉取请求。起初看起来顺利，测试也会通过，但仔细看会混进「并没有改到点子上」的修改。他后来规定：拉取请求合并之前，换另一个模型把原来的缺陷报告和差分放在一起读，并从「可以合并」「先改再看」「不要合并」里选一个、附上理由。截至 2026-10-29、只算自己的应用、最近 60 天：审查 839 次，其中「不要合并」305 次；已经合并的修改 234 件。这些数字作者写可以在公开页上随时查看。他举了一件被拦住的例子：管理画面已经打出「全部整理完毕」的横幅，下面「接下来要整理的 3 件」列表里却还留着报告；代理的修改只扩大了横幅去数的范围，列表完全没动，测试却通过了。这次拉取请求和审查意见在 GitHub 上可直接阅读。另一件是语学应用里有人连续按了 3 次「跳过」，没有报错也没有报告，是监控把「连按」捡起来之后才写出原因估计，作者自己写证据不足、把握只有 50%；代理失败 3 次，第 4 次交出来的拉取请求才被合并。最让他意外的是：60 天里 8 个应用，真正来自人的报告只有 32 件，而且一部分还是自己的测试；自己布置的检查（代理做代码审计、监控、站点巡查、自己写下的报告）找到的缺陷超过 1,000 件；已经合并的修改里，从用户报告开始的只有 1 件。这套做法正在做成开源工具 Mushi Mushi（SDK 用 MIT，服务器用 AGPL），作者写还早、用的几乎只有自己，安装步骤也太多。页上链到仓库、数字页、产品说明，文末还有带参数的作者介绍页，并写自己也承接咨询、开发和拍照。不代你同样加上第二套模型去挡合并，就等于下一个 60 天里也会有 305 次「不要合并」，或用户报告也总会远少于自己查到的缺陷。",
     description:
       "面向已经把「测试通过的修改拉取请求」写成缺陷已经补上、却还没分开报告原文和差分是否对上的人：把「审查可以代做，305 次不要合并能不能当成下一轮也会到达仍要人订」写成门禁，区别于测试全绿之后仍检出的漏洞和 CVE，以及测试全绿却有名字和日志没走翻译函数。",
@@ -46654,7 +46654,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "667",
     slug: "remulink-850pages-1day-55bg",
-    title: "レムリンク−ゴマ：27 年手写 HTML、850 页——2026-11-02 一括换上；漏爬又补 28 页，背景色丢了 55 页，诗的颜色 1,443 处",
+    title: "音乐与诗站点的结构外观改写",
     summary: "个人（レムリンク−ゴマ／remulink_goma）；披露 remu.jp 这个放音乐和诗的个人站点，大约从 1999 年起就在樱花租用服务器上用手工 HTML 跑着。2026-11-02，站点上的页面被一括改写并替换，对象写成 850 页。分工仍是：设计与判断由人（レムリンク）做，实现由 AI（ゴマ／Claude）做；人没有写代码，做的是留下什么、改什么，以及验收做出来的东西。这篇实践帖作者也写明是实现一侧的 AI 按同样分工写的。条件是正文一个字都不改，只动结构和外观的框。验收不是靠感觉：每一页都把原来的 HTML 和改写后的 HTML 对上，要求链接地址集合完全一致，显示出来的文本在空白规范化之后也完全一致，这之后才替换。从首页顺着链接去数会漏——页面之间用相对路径互跳，有些目录并不在首页导线上。后来把站内内链全部再爬一遍，又补了 28 页。作者没有写出最初从首页数到的页数，因此不能把 850 和 28 加成另一个总数。替换之后，站点主人来说自己的画廊什么都看不见：那些画是只有白线的透明 GIF，颜色要靠页面的橙色背景；改写时背景色一去掉，白线就溶进白底里。按整站核对，丢掉原来背景色的有 55 页，其中也包括深色底配白字的页面，后来都按原来的颜色指定恢复了。诗的页面 104 页里有 93 页在正文中指定了文字颜色，一共 1,443 处，中心是鲜艳的蓝色；他们把原来的颜色指定原样换成新的标记，而不是一齐删掉。诗以外的页面则在主人确认颜色并不承担同样的分量之后，才靠向新设计。最费事的是 591 页和弦谱：和弦位置原来靠半角字符的格子来定，在手机上按 HTML 原样显示会越往右偏；后来只把和弦行换成全角格子，歌词行保持原样，主人在手机上确认位置是齐的。公开侧没有 Git 也没有 SSH，替换是打成 zip、用樱花文件管理器上传并在服务器上远程解压；备份则由主人用文件同步工具把全部文件取走，并且约定不用「同步」——同步有时会把一侧没有的文件删掉。替换之后工作仍在继续：1994 到 1996 年的旧投稿日志按年和时段重新拆开；细的排版由主人看着改；坏掉的链接清单已经做好，改不改还等主人决定。文末写「850 页在 1 天里替换完了」；文中没有按小时写出实现用了多久，1 天指的是替换落成的日子。不代你同样把正文对上再一括替换，就等于下一个旧站点也会在 1 天里换上 850 页，或背景色也不会再丢掉 55 页。",
     description:
       "面向已经把「整站交给 AI 改写」写成旧页面已经可以在手机上读、却还没分开正文保全和外观改框的人：把「实现可以代做，1 天能不能当成下一座站点也会到达仍要人订」写成门禁，区别于十天里重做博客并补上大量界面文案，以及按小时去估标记工时。",
@@ -46743,7 +46743,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "668",
     slug: "inori-a8click-5d26-35d4",
-    title: "I_Nori：公开前检查的 curl -L 连自己的联盟链接也跟着打开——有联盟链接的检查日 5 天共 26 次点击，其余 35 天只有 4 次",
+    title: "公开前检查误开的联盟链接",
     summary: "个人（I_Nori）；披露自己给个人博客做公开前检查：从 2026 年 8 月起用 Claude Code 写的 Bash 脚本，把正文里的外部链接抽出来，再用 curl -L 一直跟到跳转尽头，用来确认链接还活着。问题是，文章里贴的联盟（推广）链接也会被同样打开。联盟链接会先经过中介的统计服务器再转到广告主的页面，curl -L 走的是和人点击时一样的路径。作者看到 11 月 A8.net 报表上的点击在 2 天里从 0 增加到 16：按日本标准时间读到的数字，11/6 12:10 时「エックスサーバー／DMM 生成AI CAMP／A8.net 会员募集」都是 0；11/7 13:41 变成 8、2、0；11/8 12:44 变成 12、2、2。同一周里，从 Google 搜索点进博客的次数全站只有 6 次，当作读者手点就太多了。他起初以为是改文章带来的效果。后来把 A8.net 的按日报表和自己跑检查的日子对上：2026-10-01 到 2026-11-09，给带有联盟链接的文章跑过检查的日子有 5 天、合计 26 次点击；其余 35 天只有 4 次点击。这 5 天每一次都出现了点击；其余日子里出现点击的只有 3 天。只看 11 月，这 16 次点击全部集中在 11/6 和 11/7。只贴在一篇文章里的「A8.net 会员募集」也一样：11/7 的 13:41 还是 0，随后 14:03 和 14:11 给那篇文章跑了检查，第二天读到的数字变成 2。作者写检查次数和点击数对不上：有一天给 4 篇文章一共跑了 17 次检查，点击只多了 4 次。A8.net 把怎样的访问算作一次点击，从外面看不出来，因此他不下断语；剩下的 4 次点击也可能是读者的。为了求证，他没有故意去点联盟链接，因为那只会给广告主送无效访问。脚本上头本来就有一份联盟主机名单，是用来判断有没有写「PR」标注的，链接检查却没有用上。后来只在抽链接的名单里去掉这些主机。为了不再踩到真链接，他把 curl 换成只记录地址、不发请求的假命令；也不记录请求头，因为这套脚本会在头里带上 WordPress 的认证信息。改之前，日志里会列出 A8.net 和もしもアフィリエイト的地址；改完之后只剩下普通链接。代价是，联盟链接如果以后断了，这套检查再也发现不了，得另想办法。作者写：用来读数字的工具，有时会改掉数字本身；即便只是确认网址还活着，对有的对方也会有副作用；AI 写出来的脚本，往外走的通信也要人读一遍。以后点击变多时，他会先看按日数字、再核对当天自己跑过什么，而不是只看月合计。文末写这套检查是个人博客「AIスキル研究所」做文章流程的一部分，并链到带参数的站点。不代你同样给公开前检查加上 curl -L，就等于下一份联盟报表也会在 5 个检查日里累出 26 次点击，或 11 月那 16 次也总会在两天里集中出现。",
     description:
       "面向已经把「公开前检查外链」写成只确认网址还活着、却还没分开跟随跳转和中介统计服务器会记一次点击的人：把「脚本可以代写，报表上多出来的点击是不是自己的检查仍要人订」写成门禁，区别于用手写单价表去对费用、以及用会话日志去对工时。",
@@ -46833,7 +46833,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "669",
     slug: "shogaku-33sheet-25score-93pct",
-    title: "Ymori：33 张记分册自动读——格子对上九成以上，得分表全对的只有 25 张；垒位记号 Claude 不给样本也有 93%",
+    title: "手写棒球记分册的照片读取登记",
     summary: "个人（Ymori，刊于 shogaku）；披露自己所属的业余棒球队要把每场成绩发到团队站点，底稿是比赛中手写的纸质记分册。一场比赛有 2 张：自己进攻的一页、对方进攻的一页；自己的打击成绩从自己那页取，投手被安打、夺三振和四死球则写在对方那页上。他试过从照片读取，现在用 Claude Code（模型是 Claude Opus 5.5）读照片，验算之后再登记。负责人只需要贴上照片、写一句「○/○ 的比赛结果要追加」，并回答纸上决定不了的点；读、验算、登记和在画面上确认由 Claude Code 接着做。一格分成 4 个区画表示各个垒。他按一格一格誊过 33 张，把记录者各自的写法收进公开的符号读法。打席数在每一局和整场都应等于出局、得分与残垒之和（中途未打完的打者不计入打席；时间到而不足 3 个出局时，按实际数到的出局来对，而不是 3 乘局数）。最近一场打了 6 局、6 局下 2 出局因时间到结束的比赛里，自己 28 个打席＝出局 18＋得分 5＋残垒 5，对方 25 个打席＝出局 17＋得分 1＋残垒 7。有一次第 5 局第 1 棒格子里的出局数，整张照片看起来像 Ⅲ，放大后是带装饰线的 Ⅱ；若当成 Ⅲ，那一局会在第 1 棒结束，后面第 5 棒的滚地球就会变成第 4 个出局。他做了自动读取工具 baseball-scorebook-reader：用 OpenCV 找到格子、按局裁开，再逐列问 Claude。在写好正确答案的 33 张上，格子是否得分对上 99%（913／923），打席结果对上 91%（859／941）；一张大约有 30 个打席，错几格就会让逐局得分表对不上，得分表全部对上的是 33 张里的 25 张。同一张照片读两次后读法不一致的格子，61% 其实是错的（读法一致的格子里，错误是 6%），工具会把不一致的格子标成「请确认」。在此之前，他在树莓派 5 上做过不靠生成式模型的图像处理。垒位区画上的记号 396 处：图像处理什么都不给时是 71%（283／396），把打席、上垒和出局的正确答案都给它之后是 92%（366／396）；Claude 在这次对照里不给样本也不给正确答案，读对 93%（370／396）。费用是 429 次调用大约 3.8 美元。正确答案本身是先由 Claude 誊写再整理的，两边若犯同一个错，一致率会被抬高。他因此把「只有 Claude 和正确答案一致」的 21 处算进一共 47 处，从原件放大裁出来核对：这 21 处都和纸上写的一样；正确答案一侧也发现了 4 处读错。现在每场比赛并不是跑自动工具，而是在 Claude Code 会话里按技能来：从日程取出对手和场地、逐局得分、记分册照片、打击和投手成绩、验算和重读、画面确认。有一次只登记了比赛结果、忘了个人成绩，后来加了挂钩：交了照片却还没有成绩，就不能结束。放大办法是把竖着拍的照片转成横的，裁出某一局再放大 2 到 4 倍。读完先做成表给负责人看，纸上决定不了的点（例如同姓选手）在问答画面里选；确认后再用一条 SQL 一并写入，并回读合计是否和验算一致。数据库的钥匙不放在跑 Claude Code 的电脑上，而放在家里的小服务器。负责人改过的规定会写进备忘和 CLAUDE.md，例如按官方规则先发投手投不满 5 局不能算胜投手，团队改成业余球赛不设这个下限、胜投手就是先发。公开了符号读法、成绩汇总步骤、技能模板，以及 MIT 许可的读取工具（含不靠生成式模型的 cv／目录）；含选手名的正确答案、记分册照片、实际成绩和数据库钥匙没有公开。作者写自己不是记分法专家，数字来自自己这支队伍、一种印刷纸、几位记录者在 2026 年 10 月的 33 张；工具的裁法和问法是看着这 33 张定的。同一张照片再读一次，得分表全对的张数会从 25 变成 26。不代你同样自动读 33 张记分册，就等于得分表也总会有 25 张全对，或垒位记号也总会读对 93%。",
     description:
       "面向已经把「照片能读就能直接登记成绩」写成自动化已经完成、却还没分开格子对上和逐局得分表对上的人：把「读取可以代做，得分表是不是全部对上仍要人订」写成门禁，区别于测试全绿之后再扫漏洞，以及整站几百页替换时核对正文有没有被改掉。",
@@ -46923,7 +46923,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "670",
     slug: "torudev-tgit-3ts-3js-0vs1",
-    title: "Toru Ikeda：同一套 Git 兼容命令行，TypeScript 和 JavaScript 各写 3 本——剩下的实现缺陷是 0 本对 1 本；3 本一组看不出差别",
+    title: "Git 兼容命令行的双语言实现",
     summary: "个人（Toru Ikeda，刊于 torudev）；披露自己读了 Yusuke Endoh（@mame）让 Claude Code 用多种语言各写 20 次简易 Git 的对照：那一篇里 TypeScript 比 JavaScript 大约多花 1.6 倍时间和费用，题目只有几百行，文末把「类型的好处会不会在更大的规模上出现」交给后来的人。他把规模扩到几千行，并连留下多少缺陷一起比。题目是名为 tgit 的 Git 兼容命令行：读写格式和真 Git 一样，输出也要和真 Git 一字不差。规格分成 3 版往同一仓库里叠加，隐藏测试累计 82、117、151 件。差别只留在语言和类型检查：TypeScript 打开 strict 和 noUncheckedIndexedAccess、禁止 any，并以通过 tsc 为完成条件；JavaScript 禁止类型注解（包括 JSDoc 里的类型），也不做类型检查。给模型看的说明书除这几行外一字不差，两边都不构建、直接用 Node.js 跑，运行时没有依赖库。模型是 Claude Code 上的 Claude Opus 5.5，放在 Docker 容器里。公开测试和用来跟真 Git 对答案的工具是交给模型的，评分用的隐藏测试则看不见。他故意把上下文限制在 20 万 token（关掉 100 万 token 的框），好观察代码开始装不进脑子时类型会不会起作用；对话到达 20 万 token 时由 Claude Code 自动摘要后继续。摘要在 TypeScript 3 本里一共发生 27 次，JavaScript 一共 29 次，每本 8 到 11 次；最终代码仍是几千行，压住上下文的更多是读过的文件和测试输出。评分除隐藏测试外，还各用随机操作列 2,000 条去对退出码和输出、.git 里的对象／引用／索引、工作区文件，以及真 Git 的 git fsck --strict 是否判定仓库没坏。评分中途发现测试本身有问题的隐藏测试 2 件和随机测试 1 件被排除；若不排除，最后仍拿到隐藏测试满分的两种语言都只剩 1 本。结果是公开测试全部满分，隐藏测试也几乎满分：三本 TypeScript（AN01–AN03）和两本 JavaScript（BN01、BN02）在三版上都是 82／82、117／117、151／151，随机测试也全程一致；BN03 分别是 81／82、116／117、150／151，随机测试仍全程一致。剩下的实现缺陷只有 1 件，出在 JavaScript 的 BN03：把 .gitignore 里被忽略的文件 add 进去时，真 Git 会报错并且什么也不写，BN03 的退出码是对的，却先写出了一个空的 .git/index。这是处理顺序的问题，不是类型检查能拦住的那种，TypeScript 也同样写得出来；它从第一版一直留到最后一版。token 合计 TypeScript 约 6,769 万、JavaScript 约 5,815 万，前者多 16%，但 3 本的范围重叠；其中输出大约各 100 万和 102 万。等模型回答的时间合计 9,801 秒对 9,844 秒。最终实现行数 4,985 对 4,153，TypeScript 大约长 20%，而且最短的 TypeScript（AN03，4,796 行）仍长于最长的 JavaScript（BN01，4,642 行）。费用是会话日志里的试算，不是账单：49.9 美元对 46.7 美元，多 7%；这次用的是订阅登录，这个金额不会原样入账。JavaScript 的输出还略多，费用却是 TypeScript 更高，作者把大半差额记在缓存读取上（大约多 930 万 token，大约 3 美元）。事后用 checkJs 去看 JavaScript 终稿，每本会冒出 832 到 1,022 件类型错误，三本平均大约 925 件，但动作上几乎仍是满分。TypeScript 一侧每本跑 40 到 55 次 tsc，真正冒出类型错误的只有 2 到 3 次，三本三版加起来作者列出 8 件，一半是「名字不存在」「参数不够」这类跑一次测试就会爆的问题。单元测试（npm test）TypeScript 每本 13 到 19 次，JavaScript 28 到 36 次，两边范围不相交，大约是 2 倍；跟真 Git 比的次数则是 135 到 200 对 161 到 207，差不多。作者写 3 本一组分辨不了偶然，同一种语言里 TypeScript 的 token 也有一成以上波动；还写随机测试生成器的修正忘了提交、6 本同时跑时机器睡眠和负载会搅乱墙上时钟（所以时间按等待模型来算）、禁止使用的 npm view 出现 2 次、npx prettier 出现 1 次但没有影响实现。实验材料、规格、测试和日志全部公开。不代你同样各写 3 本，就等于下一次 TypeScript 也总会留下 0 件实现缺陷、JavaScript 也总会留下 1 件，或两种语言的 token 和正确性也总会看不出差别。",
     description:
       "面向已经把「有类型就更适合交给模型写」写成已经得到验证、却还没分开留下的缺陷数和 3 本一组能不能分清偶然的人：把「对照可以代跑，0 本对 1 本是不是差别仍要人订」写成门禁，区别于几百次提示词的费用实验，以及用自编题去给模型和 effort 打分。",
@@ -47012,7 +47012,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "671",
     slug: "hoshino-8h-vs-28h-12h",
-    title: "星野旭阳：大约 8 小时做到两轮问答和暂定实现——对照手写大约 28 小时还没进实现；全程大约 12 小时交付",
+    title: "既有工业控制应用的规格改修",
     summary: "个人（星野旭阳，QESIA 代表，刊于 hoshino_qesia）；披露自己以兼业身份参与一桩工业控制（图像处理加装置控制）既有应用的改修：对象是 C# 的 WinForms 应用，现有代码大约 1 万行，负责和装置通信、采集并保存测量数据，也包括用来试验通信的模拟器；不含直接控制装置的部分。输入是前任的设计资料、现有代码和客户说明会录像。工作路径是先理解规格与既有系统，再用问答把规格定下来，然后实现新规格。开发者 A 是作者本人：开发经验 20 年以上，图像处理相关的产业装置经验 3 年以上，全程使用 Claude Code，兼业，一天大约 2 小时（不含与客户开会），用的是 Claude Team 方案 Standard 席 1 席。开发者 B 不是 QESIA 的人，是同一案件里的成员：开发经验 5 年，没有这类产业装置经验，前 5 天中午之前不用生成式模型，几乎专职，一天大约 6 小时。作者写 A 在第 1 到 4 天用大约 8 小时做到向客户发出两轮问答并完成暂定实现；第 5 到 6 天把总结文档交给 B；第 7 天审查并指示修改；第 8 天在模拟器和本体软件上亲手操作常用功能做最终确认。A 的合计大约 12 小时（2 小时乘 6 天），其中理解与确定规格 6 小时（50%），实现 2 小时，审查与动作确认 4 小时。第 1 到 4 天这 4 天里，Standard 席 1 席的周额度大约用了 75%。B 在第 1 到 4 天以及第 5 天上午用手写方式理解规格、既有系统和代码，大约 28 小时，此时实现尚未动手；第 5 天中途改成去读 A 的总结文档，再用 Claude Code 实现，大约又花 8 小时（含熟悉工具的时间）。对照表把 A 的第 1 到 4 天（大约 8 小时，两轮问答加暂定实现，留下别人也能用的总结文档和问答清单）和 B 的手写阶段（大约 28 小时，还在理解中，实现未着手，理解留在 B 个人脑子里）放在一起。第 7 天 A 审查 B 按文档生成的代码（审查也用了 Claude Code 辅助），修改同样指示 Claude Code 来做；第 8 天由 Claude Code 做单元测试和基本动作、界面确认，A 只亲手操作常用功能。之后在实机上也没有出现大问题。作者举过一个判断仍留给人的例子：模型读资料后拿不准计算高度图时要不要减去「调整值」，人把它理解成两台传感器之间固定的高度差，才能问成客户答得出来的问题；客户的回答是不必考虑，硬件侧已经把要计算的高度差调成 0。作者写人一行代码也没写（修改也包括在内），代码都是 Claude Code 写的；人留下的是判断（问答和审查）以及最终确认。案件后来交付，交付后客户没有提出缺陷报告。作业时间是自己申报的，不含与客户开会；「没有领域知识、却从头就用生成式模型」这一路没有观察到；也没有拿同一范围的手写实现来比质量。作者写这是 1 个案件、2 个人，规模较小、内容也相对简单。页上链到公司「专家主导型 AI 开发」说明页，作者卡片也指向公司主页。不代你同样兼业一天大约 2 小时去改一桩工业控制应用，就等于下一桩也会在大约 8 小时内做到两轮问答和暂定实现，或对照的成员手写大约 28 小时也总会还没进实现。",
     description:
       "面向已经把「有了模型谁都能更快做完」写成已经得到验证、却还没分开作业量和判断、也还没分开有没有领域知识的人：把「实现可以代写，大约 8 小时对大约 28 小时是不是下一桩也会出现仍要人订」写成门禁，区别于咨询站上线后有没有销、以及按作业种类改 Model 和 Effort 之后额度还能不能撑住。",
@@ -47102,7 +47102,7 @@ QA 能不能自己执行已经写好的脚本：{{whether_qa_can_run_scripts_wit
   {
     id: "672",
     slug: "h0r15h0-grillepic-stop-pbi-est",
-    title: "ほりしょー：每周 1 小时的细化会——用 grill-epic 在实现前把不明点起成议题；人不再给产品待办打点数",
+    title: "细化会上不明点的技能议题化",
     summary: "团队（ほりしょー，刊于 Hacobell Developers Blog）；披露自己所在团队从细化、计划、实现到质量保证，每个环节都给 Claude Code 准备了技能：模型先起草，人做最终确认和决策。把实现交给模型之后，规格还没定下来的地方也会被模型当场补上并继续写，细化会上没定死的规格会在没被人察觉的情况下一直走到实现和质量保证。他们原先按 Scrum 指南做细化，每周开 1 小时：产品经理说明 Epic 和用户故事的背景与需求，用提问和讨论补规格，再按能部署到生产的单位切成产品待办项（PBI），并为每一项对齐实现方针、用故事点估点。Epic 是跨多条用户故事的功能或措施，已定规格和方针放在这里；相关论点记在 Notion 数据库 Epic Discussions 里，一个论点一页。挑战有两头。一头是刚进团队的人很难参加实现方针讨论：作者自己刚加入时，1 小时会里查不完会碰到哪些画面、接口和表，讨论往往到不了实现方针，或只能带着根据不足的方针和估点结束。另一头是返工：规格漏洞如果拖到实现或质量保证才被发现，就要改实现、重切待办、再等产品经理或客户确认，有时还会跨过一轮迭代。作者写规格漏洞出现的比例本身和以前相比没有大的变化，但模型让实现变快、能同时开工的 Epic 变多之后，返工件数变多、也更显眼；模型还会把没定的规格当场补上，事后难以客观区分哪些是模型暗自决定的、哪些是人决定的。他们因此在细化里把规格和设计尽量在实现前补完，并做了技能 grill-epic。现在的细化分成 3 段：第一段由人读产品经理的需求并对齐认识；第二段由 grill-epic 列出论点、再由人逐条讨论并决定；第三段仍由人按可部署单位来切产品待办。grill-epic 吃进 Epic 的 Notion 地址，对照 Epic 正文、已有讨论、用户故事、里程碑以及前后端代码，把不明点和没考虑到的事项起成一个论点一页。设计上看重三件事：把不明点和未考虑事项尽量列全、把根据和现状实现一起写出来、连选项和推荐方案也写上。处理分 4 步：并行读取 Epic 和周边文档；拼出对任何 Epic 都适用的 10 个普遍观点，再加上这条 Epic 特有的观点；按观点并行起调查用的子代理去对代码；再按一个论点一页起议题。议题页包含论点、代码根据、选项和推荐方案。讨论后的决定改写回 Epic 正文的范围和「不做的事」，而不再分散在许多待办页里。规格和设计变重之后，切完待办再估点的时间不够了；把会延长也补不回估点时间，因为补规格的时间增加得更多。实现方针清楚之后，有模型帮忙的待办可以很快交付，过去拉开点数差距的主要是不确定性和实现成本，这两头都变弱之后，估点能提供的信息也变少。他们因此在细化会上不再由人给产品待办打点数，把时间改用于讨论 grill-epic 列出的论点和对齐实现方针。估点本身没有完全取消：另有估点用的技能，会在计划会上按过去待办的倾向来估，作者写目前还在验证，眼下还没有出现一轮迭代里堆得明显太多或太少。对客户仍按迭代单位说明大概交付时间，和以前一样；人打的故事点没了之后，这个迭代单位估时准不准，作者写还要继续看。复杂实现有时只靠论点和代码根据仍理解不完，他们会在细化会之前先做一小段验证性实现。作者写刚进团队的人也能带着根据参加实现方针讨论，实现过程中因确认规格而停下来的情况也减少了；他没有写出减少了多少次，也没有写出对照的日历窗口。页上出版物挂了入职手册横幅和账号。不代你同样在每周 1 小时的细化会里加上 grill-epic 并停掉人打的点数，就等于下一轮细化也总会让新成员带着根据参加讨论，或实现过程中因确认规格而停下来的次数也总会减少。",
     description:
       "面向已经把「细化会上估过点」写成计划仍然靠得住、却还没分开人打的故事点和实现前有没有把不明点起成议题的人：把「议题可以代列，人停掉估点之后一轮迭代会不会堆得太多仍要人订」写成门禁，区别于拘束条件下合并拉取请求的时数，以及给长任务另做一套配套机制。",
@@ -47192,7 +47192,7 @@ grill-epic 是不是按一个论点一页起议题：{{whether_grill_epic_opens_
   {
     id: "673",
     slug: "ojisan-4mode-6block-bashok",
-    title: "おじさん：外向 Write 在试过的 4 个权限模式里都停在同一句拒绝文——键挡住的 6 次里有 5 次 Write、1 次 Edit；Bash 的 echo 仍能写到外面",
+    title: "目录外写入限制与外壳旁路实测",
     summary: "个人（おじさんAIラボ）；披露自己在 Windows 11、Claude Code 2.1.319 上用 claude -p 测量新设置 permissions.blockWritesOutsideWorkingDirectories（文中称作「键」）。这行设置写在 .claude/settings.json 里，官方说明是：Write、Edit 和 NotebookEdit 在全部权限模式下都拒绝作业文件夹之外的路径，但不限制外壳命令、MCP 工具或 hook 拉起的程序。作业文件夹指启动 Claude Code 的文件夹，以及后来用 /add-dir 等追加的文件夹。他在 2026-11-08 测：模型固定 claude-sonnet-5-5，每个条件 1 次，一次大约 6 到 9 秒；作业文件夹是 C:\\projects\\t168-perm-test\\work\\（没有 CLAUDE.md），外面是 C:\\projects\\t168-outside\\。对话界面（不用 -p 的日常用法）没有测。键打开之后，外向 Write 在试过的 4 个权限模式（default、acceptEdits、dontAsk、auto）里都停在同一句拒绝文；default 模式下外向 Edit 也停在同一句。键挡住的 6 次（Write 5 次、Edit 1 次）文面除了路径两处以外，和文档 errors 页上的句子一字不差。Edit 只在 default 测了 1 次，其他模式的 Edit 和 NotebookEdit 未测。键关上时差别很大：default 加上 allow 规则，外向 Write 和 Edit 都写成功了；auto 模式没有询问就把 C:\\projects\\t168-outside\\n6.txt 写出来了；acceptEdits 和 dontAsk 即使没有键也会拦住外向 Write，但拒绝文是「许可还没有」或 dontAsk 自己的措辞，不是这行设置的句子。作业文件夹里面的 Write，有键没键都能写。键打开且用 --allowedTools 允许了 Bash(echo *) 时，Bash 的 echo hello > 外面的文件仍然写成功了，和文档写的「键不限制外壳」一致；没有键、也没有这条 allow、只靠平时许可确认的那一次，Bash 外写是被「需要批准」拦住的，拦住它的不是键。把外面的文件夹用 --add-dir 加进作业文件夹之后，外向 Write 就通过了。未获信任的文件夹里，settings.json 的 allow 规则会被忽略，键这一行却仍然有效；bypassPermissions 没有测成：代测的会话想带 --dangerously-skip-permissions 启动 claude -p 时，被分类器当成 Create Unsafe Agents 拦住了。stream-json 最初一行的工具清单里，键打开的 9 次没有 EnterWorktree 和 ExitWorktree，键关掉的 12 次有这两项。作者写：键是 Write 和 Edit 的栅栏，Bash 的许可仍要自己看；auto 模式若要用，他打算把这一行加上。测的过程是用 probe.py 送出请求并做成表，测量本身交给他平时下指令的另一本 Claude Code 会话代做。页上链到作者的 X 账号。不代你同样打开这一行，就等于下一台机器上 4 个模式的外向 Write 也总会停在同一句拒绝文，或 Bash 也总会（或总不会）写到外面。",
     description:
       "面向已经把「作业文件夹之外不会被改写」写成只要打开新设置就对任何写入都安全、却还没分开 Write／Edit 被同一句拒绝文拦住和 Bash 仍能往外写的人：把「设置可以代写，外壳会不会绕过仍要人订」写成门禁，区别于并行会话共用机器时命令撞上另一棵树，以及拘束条件下的合并时数。",
@@ -47282,7 +47282,7 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
   {
     id: "674",
     slug: "murooka-155-115zero-18old",
-    title: "Murooka：155 次里，读到更正的 115 次一次都没回到旧形；没读到更正的 40 次里有 18 次回到了旧形",
+    title: "自动记忆未读更正的旧形回归",
     summary: "个人（Murooka）；披露自己用 Claude Code 时，对方说「已按指示做完」，拿出来的却不是现在的规格。2026 年 9 月他第一次察觉：产品在 9 月 12 日废止了对外评审的中继路径，本体却还在走这条路。原因是自动记忆里 9 月 4 日留下的「对外评审默认走这条路径」。废止文书写的是产品功能，没有改本体去托评审时的路径。回来过多少次，记录里没有留下次数。9 月末，他本想暂时拿掉过严的检查，本体却把这话写成「不要再加找出不一致的机制」这条长久方针，写进决定记录和自动记忆。同一天（9 月 29 日）整理记忆：26 个文件、590 行减到 19 个文件、269 行。10 月改分析画面时，他又看到刚改过的旧形回来。决定记录里写着「分析画面的行要和图表用同一单位排列」；每次都会读的指示文件（.claude/rules/ 里的 rule）里却留着旧规格的抄本。画面交给子代理去改，子代理把这份 rule 当成正确规格，把画面改回旧形。把抄本写进 rule 的，是本体自己当时的指示：CLAUDE.md 里有一条「使用者定下的事，要在同一次改动里改掉它约束的 rule 和规格文件」，本意是避免决定只留在记录里、每次读的 rule 还是旧的；本体把它读成「把规格写进 rule」，也这样吩咐了担当。10 月 8 日凌晨，他关掉了自动记忆。之后用 4 个文件的小画面、默认的一个模型（Opus 5.5）和一套设置，改条件做了 155 次。每个条件 5 到 10 次。自动记忆不用真机制，只把备注文面写进给 Claude 的指示；子代理也不真去委任，只用委任时的指示文包住请求、执行 1 次来代替。对分用机器核对，对不上的再看一遍。费用合计大约 19 美元。155 次里，读到更正的 115 次回到旧形的是 0 次；没读到更正的 40 次里有 18 次回到了旧形，这 18 次全部落在没读到更正的那边。rule 是旧规格的 85 次（其余 70 次是 rule 为现在规格的对照）：有短记录（不论 CLAUDE.md 有没有指路）25 次，读到 25、回到旧形 0；长记录把更正埋在中间 10 次，读到 10、回到旧形 0；旧记忆加短记录 10 次，读到 10、回到旧形 0；加上委任指示且记录有指路 10 次，读到 10、回到旧形 0；加上委任指示但记录没有指路 10 次，读到 5、回到旧形 5，这 5 次一次都没打开记录；没有记录、具体请求（补上每行最后更新时间）5 次，回到旧形 0；没有记录、含糊请求（把现在规格里缺的补上）15 次，回到旧形 13。对照的 70 次里，没有真正回到旧形的（机器曾记 1 次，看差分后是核对错误）；其中没有记录、发出含糊请求的 10 次里，有 3 次加进了没被要求的小改进。长记录第一次大约读到第 1,271 行就断了，20 次里有 19 次随后自己搜索并指定位置再读。旧记忆的 20 次都读了备忘和记录，并把备忘判成更旧；20 次里有 19 次把备忘改写成现在的规格。作者写：这次实验并没有复原当时的现场，当时本体的指示点名要读决定记录，CLAUDE.md 也给记录指了路。另外从自制工具和前身的 git 历史、决定记录里，子代理汇到过时或错误的表述 246 件，最多的是「抄本」（代码／值／字符串／一览的抄本 88 件，状态／版本／件数的抄本 42 件），其余是写下时就错 43、以防万一 35、参照消失 34、不明 4，分类由本体 Claude 做，没有第三者核对。分发文件一览漏了 CSS，有 2 个版本带着坏掉的样式发出去。176 件会话记录里出现的子代理共 842 体，画面之间对得上的只有 4 体；审查角色读了 3 次也没发现，后来一边改一边再比，对不上的从 27 体减到 2 体再到 0 体。源代码注释 4,227 处一并删掉，构建后的代码和删除前一致，TypeScript 类型检查也通过，另有 11 条关于使用者数据或外部约束的注记挪到了代码或规格文件。后来加上的 4 项机制（委任时自动附上规格正文、用检查丢掉规格抄本、用 hook 收紧记忆写入、默认不写复述代码的注释）让手回头减少了多少，他没有数过，只写重复同一句话的压力几乎没了。页上链到作者的 X 账号和公司站点。不代你同样做 155 次，就等于读到更正时也总会是 0 次回到旧形，或没读到更正时也总会有 18 次回到旧形。",
     description:
       "面向已经把「说已按指示做完却对不上现在的规格」写成模型变差、却还没分开更正有没有被读到和画面会不会回到旧形的人：把「对照可以代做，更正是不是进了每次都会读的那一份仍要人订」写成门禁，区别于记忆条目减少后的断链比例，以及用会话日志去对工时。",
@@ -47372,7 +47372,7 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
   {
     id: "675",
     slug: "maura-960to14851-68c-6",
-    title: "まうら：CLAUDE.md 从 960 字涨到 14,851 字——改过的提交 68 次里只有 6 次字数减少；上限改成「今天的字数」",
+    title: "说明文件字数上限替代行数",
     summary: "个人（まうら）；披露自己不会写代码，却把每天的工作交给 Claude Code。大约三个月里，CLAUDE.md 从 960 字涨到 14,851 字，最胖的一天是 10 月 7 日。到 10 月末，改过 CLAUDE.md 的提交有 68 次，其中字数减少的只有 6 次。数字如无特别说明，都是 2026 年 10 月末的。按月末字数：7 月末 8,975 字，8 月末 13,822 字，9 月末 14,576 字；头两个月就已经超过现在卡住的 13,024 字。她起初用行数当门槛（超过 100 行就把内容挪走），8 月却发现有一行就有 1,293 字，行数根本量不出 AI 每次要读多少，于是改成按字数。同一份文件在 Windows 上因 CRLF 会看成 14,381 字或 14,487 字，后来改成只数 Git 里的内容并去掉 CR。用 git log --full-history --no-merges 数出来 69 行：第 1 行是新建，其余 68 行就是文中的 68 次；增减为负的有 6 行。按日期相邻比较时，两台电脑让历史分叉，曾把没有减少的一次算成减少；--first-parent 又会把另一枝上的减少并进合并的一行里看不见。字数减少的 6 次里，明显变少的有 4 次：7 月 27 日挪走长说明少 1,517 字；9 月把正文和来龙去脉拆开少 1,372 字；10 月 11 日缩一段少 490 字；10 月 24 日整段挪走少 1,357 字。9 月 6 日从 14,663 字减到 13,291 字，5 天后回到 14,305 字，10 月 3 日到 14,828 字，又超过削之前。10 月 11 日她把 CLAUDE.md 和常读的 4 份文件一并缩短，合计从 146,337 字减到 101,261 字；其中一份角色步骤书从 67,236 字减到 47,846 字，12 天后的 10 月 23 日又到 53,532 字，回来的 5,686 字大约是削掉 19,390 字的三成，扣掉有意挪过来的段落，仍有大约两成在不知不觉间回来。10 月 23 日她把上限写成「今天的字数」，并规定要加就必须先削掉同样多；当天字数 14,381 字就是第一道上限。也曾想过用 8,000 字（7 月 27 日削完后大约 8,053 字），但那样当天就要再削六千多字，「从今天起不比现在更大」可以立刻守住。第二天挪走一段变成 13,024 字，上限也降到 13,024 字，空出来的 1,357 字没有留给下次再加。10 月下旬她估过：每次对话入口大约要读 2.8 万字（CLAUDE.md、记忆索引、技能说明、hook 输出），含自动开的对话，一周大约 100 次。10 月 24 日降上限之后到 11 月 7 日这 14 天，CLAUDE.md 一次都没改过；是没有想加的规矩，还是上限拦住了加，她还分不清。字数轻了之后 AI 是不是更好用，也还没有测。移到别处的文件若继续胖，总量不会少，所以步骤书一侧也加了同型上限；11 月 5 日往步骤书加一条规矩时，把一件旧变更记录挪到了别的文件，那个文件每次不一定读、也没有上限。页上没有单独的产品站链接，文末链到同系列前两篇。不代你同样给 CLAUDE.md 加上「今天的字数」上限，就等于下一段三个月也总会从 960 涨到 14,851，或 68 次里也总会只有 6 次减少。",
     description:
       "面向已经把「CLAUDE.md 太长就再削一次」写成入口会变轻、却还没分开字数降下来和过几天又涨回去的人：把「字数可以代算，上限是不是跟着今天的字数往下仍要人订」写成门禁，区别于 DESIGN.md 规则条数与检出，以及工具配额用尽的天数。",
@@ -47462,7 +47462,7 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
   {
     id: "676",
     slug: "aishihan-14draft-8ok-6hold",
-    title: "ai_shihan：5 天里 AI 写的 X 下稿 14 本——8 本进档期，6 本按事先定好的 3 个理由不出",
+    title: "短帖下稿的取舍决定与排档",
     summary: "个人（ai_shihan）；披露自己把副业的公关交给 Claude Code 里「公关部」这个席位。X 的下稿由另一台 AI（Grok 的 Bot，他称为「X 担当」）写好放进 Slack；公关部只负责读、决定出或不出，出的话就排进预定的档。X 担当自己不发帖。出不出、以及为什么，公关部都留一行记录。2026-11-02 到 2026-11-06 这 5 天里，送到的下稿有 14 本：8 本排进档期，6 本没有出。X 的档只有每天 9:05、12:05、21:05 三个，一天上限 3 本，两帖之间至少隔 3 小时。下稿一到就放进最早的空档；当天没有空档就挪到后面的天，所以下稿多的日子会排到 2 到 3 天之后。不出的理由事先收成 3 条：和已经排进档的主题重复；等空档时题材会过时；中心事实核对不上。不在这 3 条里就出，不按下稿写得好不好来定。重复最多：同一天「Grok Bot 的岗位要一行一行写」和已经排进档的「从 Bot 交到 Claude Code／Codex 时的那一句」都在讲把什么交给 Bot、从哪里交给人或别的 AI，隔几天再发像在重复，只留一本；「定时例行和出事当下启动哪个更好用」和当天 21:05 已排的「一直开着的 AI 代理你用在什么上」都是在问 Grok Bot 用法并收集回复，也只留一本。重复是打开已排原稿对照读过再定的，不靠题名或印象。会过时的例子：海外「还记得怎么写代码的人吗」一条被看了 65 万次，但当天档已满，最早空档在 2 天之后，2 天后再写「正在热」就不算现在；这类从话题或快讯起笔的下稿按这条不出，而「让 Bot 代买东西之前先写好的那一句」这种什么时候读都成立的，排到几天后也照样进档。核对不上的例子：下稿写「Claude Code 2.1.317 修了做游戏时的规则」，X 担当自己注明「官方未确认所以写成据说」；按规矩核对不上的事实要从下稿拿掉，但这条拿掉就什么都不剩，所以不改措辞发出去，直接不出。不出的下稿也在处理记录里留一行，写下是哪一本、哪一条理由。已出的 8 本读了多少，他还没有数：以前没有按帖记显示次数，这周复盘才定下从下一轮起在发帖次日写下显示次数；3 条理由合不合适，也要等发出去的数字齐了再看。页上链到作者的 X 账号。不代你同样给 X 下稿加上这 3 条不出的理由，就等于下一个 5 天里 14 本也会有 8 本进档、6 本不出，或重复、过时、核对不上总会按同样比例分开。",
     description:
       "面向已经把「AI 写好的帖就可以自动发」写成发布流程已经完成、却还没分开进档本数和按事先理由压下本数的人：把「下稿可以代写，出不出的理由是不是事先收成少数几条仍要人订」写成门禁，区别于联盟链接自点击报表，以及咨询站 0 销。",
@@ -47552,7 +47552,7 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
   {
     id: "677",
     slug: "joinclass-13skill-6mo-832allow",
-    title: "JOINCLASS：.claude/skills/ 里 13 个技能大约 6 个月一次都没被读到——settings.local.json 膨胀到 832 件、135KB，其中 551 件是一次性命令",
+    title: "未按目录放置的技能文件盘点",
     summary: "团队（合同会社ジョインクラス／JOINCLASS）；披露公司把社内业务大半交给 Claude Code，线划在「AI 不该做的事」上，却长期只写在 CLAUDE.md 的日文里。2026 年 9 月盘点时发现：.claude/skills/ 里放的 13 个技能，大约 6 个月一次都没被读进去。Claude Code 认的是 skills/<名字>/SKILL.md 这种目录形式，他们却放成单个 .md 文件；期间没有报过错。影响最大的是新施策前必过的「假说验证门」：CLAUDE.md 写着相关施策必须跑 /validate-hypothesis，可技能本体等于不存在，等于门卫不在岗还当有门用了半年。更早还有 AI 执行 git push --force 把分支弄没的事，当时对策也只是往 CLAUDE.md 追加「绝对禁止清单」；CLAUDE.md 超过 1,000 行的时期，规则互相打架，AI 开始做出和指示相反的动作。作者把安全装置分成两种：指示型（CLAUDE.md／技能／提示词）被破时什么都不发生、也不留日志；钩子型（PreToolUse 等脚本）可以 exit 2 直接拦住工具。判断标准是「破了会不会造成不可挽回的损失」：强制删除、force push、丢掉未提交改动、对生产库做 DDL、经网络跑安装脚本等移到钩子；文风、审查角度、命名这类事后能改的，可以留在指示里。他们把绝对禁止清单落成 .claude/hooks/deny-dangerous-command.sh，并写了 expect 2／expect 0 的回归脚本：该拦的包括 rm -rf、git push --force／-f、git reset --hard、curl … | sh；该放行的包括 rm ./tmp.log、git push --force-with-lease、grep -r \"rm -rf\"、echo \"git push --force is banned\"。作者写钩子只看命令字符串的正则，分不清是不是在引号里；grep -r \"rm -rf\" 能通过半属巧合，而 echo \"git push --force is banned\" 会被误拦。公司判断「这点误检可以接受，拒绝理由里写明绕法」，因为把壳语法解析也塞进钩子会更脆。测试的目的不是全部 pass，而是把钩子拦不住什么写清楚。年检半日流程包括：用 find 抓 skills 下单层 .md、检查 hooks 可执行位和 jq、用 env -i 最小 PATH 跑测试以复现 launchd 下找不到 jq；把 CLAUDE.md 里「禁止／必须」按损失分流并避免双写；核对「按 /xxx 技能」是否真被识别；看 hook-deny.log 里 ALLOW 是否为零、BLOCK 是否过旧。盘点时 settings.local.json 胀到 832 件、135KB，其中 551 件是连通配都没有的一次性命令，以后不会再匹配。文末写 Hooks／Skills／MCP 整体设计收在 Zenn 书籍《Claude Code 全自动化バイブル》，并链到公司书籍列表、公司站、GitHub 与 X。不代你同样把禁止清单改成钩子，就等于下一次盘点也总会发现 13 个技能大约 6 个月没被读到，或 settings.local.json 也总会胀到 832 件里有 551 件一次性命令。",
     description:
       "面向已经把「CLAUDE.md 写了禁止和必须」写成安全装置已经生效、却还没分开文件在不在和运行时有没有被读到的人：把「清单可以代写，技能是不是目录形式、钩子有没有被调用仍要人订」写成门禁，区别于配套机制缩短交付月数，以及细化会上用技能停掉人打的故事点。",
@@ -47642,7 +47642,7 @@ Bash 的 echo 在允许外壳时是不是仍写到了外面：{{whether_allowed_
   {
     id: "678",
     slug: "negima-5to6h-1h-20redo",
-    title: "negima：学祭班表从 5〜6 小时、约 20 次返工做到约 1 小时——担当手改只要 5〜15 分；HMW 试 5 次结论相同",
+    title: "大学学祭班表的表格脚本生成",
     summary: "个人（negima／jun_eg）；披露自己为大学社团学祭模拟店做 Google 表格＋Apps Script 班表生成器。往年担当从零对齐希望、能不能下厨、准备与收拾规则，要 5〜6 小时、约 20 次返工。今年实战：从准备到 LINE 发放约 1 小时，担当看案手改 5〜15 分。作者本人几乎没写过代码，访谈 5 名希望侧；访谈文案与整理、HMW 与 Design Doc 多靠 Claude Code 的 skill。HMW 试过 5 次，都落到「分配是全程唯一最大瓶颈」。达成条件写了 8 条，退掉的案（只筛候选、只做违规检查、全自动定稿）都留了理由。先随便做一版摸可行性时：提交 355、合并 PR 136、Issue 155；文档胀了就把结论与 ADR 拆开，并做人读摘要／AI 读原本两层，pre-commit 与 CI 用哈希防摘要枯死。正式开发改成「交 Issue 就回 PR」，force-push、已 push 的 rebase、amend、reset --hard、往 main push／merge 用 settings.json deny 加 PreToolUse 双层拦住。未写外挂服务器或 API 费用。页上作者卡链到 X 与 GitHub。不代你同样做一版班表生成器，就等于下一届学祭也总会从 5〜6 小时缩到约 1 小时，或 HMW 也总会 5 次同一结论。",
     description:
       "面向已经把「班表难做」写成再加班排，却还没分开「往返 20 次」和「机器出一案、人只改例外」的人：把「案可以代出，发放前手改仍要人订」写成门禁，区别于记分册 OCR 批改，以及联盟点击报表。",
@@ -47732,7 +47732,7 @@ HMW 是不是试了 5 次且结论相同：{{whether_hmw_five_trials_same_conclu
   {
     id: "679",
     slug: "phibi-12sess-190npx-23s",
-    title: "もんすん：12 个 Claude Code 并行时 Mac 变沉——10 秒约生 190 个进程；npx 刷新约 23 秒、直调 node 约 1.2 秒",
+    title: "状态栏定时命令的并行进程开销",
     summary: "个人（もんすん／phibi-soon）；披露自己用 cmux 并排跑 12 个 Claude Code 会话时，Mac 耗电明显变快。先疑 cmux，让其中一个会话查：cmux 本体 CPU 约 4%。再数 10 秒内新起进程，约 190 个，多半是 ccstatusline 相关的 npx／node／ps／stty；同时能看到约 26 个由 npx 拉起、偏长命的 node。根因是 ~/.claude/settings.json 里 statusLine 每 10 秒跑 npx -y ccstatusline@latest。同机实测：npx 一轮约 23 秒（含等待），其中 CPU 约 1.75 秒；装好后用 node 直调约 1.2 秒。按 1.75×12÷10 ≈ 2.1，约等于两颗 CPU 核一直在为状态行转。作者没选「全局安装」或「拉长间隔」，而是整段去掉 statusLine，因为平时几乎不看那一行。页上链到 cmux 仓库与官方 statusLine 文档。不代你同样并排 12 会话，就等于 10 秒也总会冒出约 190 个进程，或状态行也总会占到约两核。",
     description:
       "面向已经把「并行会话一多机器就沉」写成终端复用器有问题、却还没分开宿主 CPU 与定时 npx 刷新的人：把「进程清单可以代查，要不要留状态行仍要人订」写成门禁，区别于作业文件夹外写入权限，以及常驻任务斜杠技能未展开。",
@@ -47822,7 +47822,7 @@ npx 一轮是不是约 23 秒（CPU 约 1.75 秒）、node 直调约 1.2 秒：{
   {
     id: "680",
     slug: "suwa-21press-ps11-proj",
-    title: "suwa_nobu：「次から聞かない」试了 21 次——三工具里只有 Claude Code 把规则写进项目；PowerShell 11 次命令整段含令牌",
+    title: "不再询问在三工具里的规则落点",
     summary: "个人（suwa_nobu）；披露自己在 Windows 10 上，用哑元令牌 dontask-DUMMY-7f3a9c1e 与本地 127.0.0.1 试验服，测 Claude Code 2.1.319、Codex 0.167.0、Gemini CLI 0.67.0 在按「Yes, and don't ask again」后把命令写到哪里。共按 21 次。Claude Code：PowerShell 路径下请求头 9 次、URL 2 次都是整段命令入库（11／11 含令牌）；Bash 环境变量形 5／5 写成带令牌的 Bash(API_TOKEN=… curl.exe *)，Bash 请求头／URL 共 5 次写成 Bash(curl.exe *)、0／5 含令牌。三者里只有 Claude Code 往项目里的 .claude/settings.local.json 写。Codex 往家里目录写整段；Gemini CLI 默认选不了「次から聞かない」，即便打开也多半只留命令名。作者用 Apiiro／HN 说的公开库 1,122 个含密 settings 作引子，但写明正文在自己环境读不全、没复核数法。默认 auto 模式试 1 次同款 curl 没出许可屏。gitignore 若写成反斜杠路径，对 .claude/settings.local.json 可能对不上。页上链到 HN 与同系列三篇，无公司招聘脚。不代你同样按 21 次，就等于 PowerShell 也总会 11／11 整段含令牌，或三工具里也总会只有 Claude Code 写进项目。",
     description:
       "面向已经把「次から聞かない」写成以后更省事、却还没分开规则落点与命令里有没有秘密的人：把「落点可以代查，允不允许整段入库仍要人订」写成门禁，区别于外向 Write 权限模式实测，以及作业文件夹外写入键。",
@@ -47912,7 +47912,7 @@ PowerShell 是不是 11／11 整段含令牌：{{whether_powershell_eleven_of_el
   {
     id: "681",
     slug: "yorusuzu-nul-cmd-rm-ps0",
-    title: "yorusuzu：Windows 上手造 nul——cmd 的 del\\\\?\\ 与 Git Bash 的 rm 能删；Remove-Item 结束码 0 仍留下",
+    title: "Windows 保留名文件的删除对照",
     summary: "个人（yorusuzu）；披露自己在 Windows 11 Home、PowerShell 5.1、Git Bash、Claude Code 2.1.305（测日最新 2.1.317 未复测）上，用 %TEMP% 一次性文件夹手造 nul，对照删法。能删：cmd 的 del \"\\\\?\\<フルパス>\\nul\"、Git Bash 的 rm ./nul（各案 1 次）。删不掉：PowerShell Remove-Item -LiteralPath '\\\\?\\…\\nul' 结束码 0 却仍留 2 字节；cmd 的 del nul 结束码 123。Test-Path 对真有的 nul 连试 6 次都是 False。仓库里有一个 nul 时，git add .／-A／add nul 都是 128，整次失败；.gitignore 写 nul（不要 nul/）后 add 才过。2.1.305 的 claude -p 下，> nul 与 2>nul 因要批准而未执行，cwd 未出现 nul／tmpclaude-*-cwd；Bash 有跑的 3 案里 %TEMP% 曾短暂出现 claude-<4位十六进>-cwd。页上链到作者 Zenn 书籍《Claude Code サブエージェント組織 実践ガイド》。不代你同样手造一次 nul，就等于 Remove-Item 也总会结束码 0 仍留下，或 2.1.305 也总会不在 cwd 造出 nul。",
     description:
       "面向已经把「nul 删不掉」写成再换一条删除命令、却还没分开结束码成功与文件还在的人：把「删法可以代试，git add 会不会整次失败仍要人订」写成门禁，区别于外向写入权限，以及 Mac 钩子搬到 Windows 的结束码表。",
@@ -48002,7 +48002,7 @@ git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whethe
   {
     id: "682",
     slug: "purpom-30min-3agent-4f",
-    title: "Purpom：设计到 PR 约 30 分——3 个 Agent 分工；对照表里传统合计约 2.5 小时是事后拆开的估计",
+    title: "幻灯功能里三代理的分工实现",
     summary: "团队（coa00／Purpom Media Lab）；披露在 BMG 幻灯生成功能上，用 Claude Code 的 Team：Plan 设计后改 4 个文件，再 TeamCreate 出 change-analyzer、test-planner、playwright-tester 三体，覆盖分析、测试项、Playwright E2E、复查与 PR。作者体感这一轮约 30 分；文中对照表把传统流程拆成设计 30＋实现 30＋测试项 20＋E2E 30＋复查 20＋PR 10，合计约 2.5 小时，并写明是事后按环节拆开的对照估计，不是同一任务的双盲计时。三体 API 费用作者写约 2〜3 美元（当时 Opus）。实测踩坑：UniqueInsight 已进请求仍未进幻灯，用 Chrome DevTools MCP 看网络后把用户提示位置前移才过。页上链到作者与实验室的 X／GitHub。不代你同样开三体，就等于下一轮也总会约 30 分，或传统侧也总会是约 2.5 小时。",
     description:
       "面向已经把「Team 一开就等于省下半天」写成可承诺工时、却还没分开这一轮体感 30 分与事后拆开的传统对照的人：把「分工可以代跑，对照工时是不是同一任务双盲仍要人订」写成门禁，区别于 grill-epic 细化会，以及配套机制把月份压短。",
@@ -48092,7 +48092,7 @@ git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whethe
   {
     id: "683",
     slug: "mickamy-48pr-365edit-crew",
-    title: "mickamy：orchestrate 好日子一天合上约 48 个 PR——进度文件两会话合计改了 365 次；改成 crew 后只让听过人话的会话合入",
+    title: "crew 插件的听过人话合入限制",
     summary: "个人（mickamy／Tetsuro Mikami）；披露自己一人做 iOS／Android／服务器，曾用自作技能 orchestrate：业主会话出票，进行役把票分给 3〜5 个子会话，子在 worktree 开发并开 PR，人审后子再合入。好日子一天能合上约 48 个 PR。瓶颈却变成「卡住的是我」：业主既要分活又要听报告；额度将尽时会话交接；进度写进文件后，两个会话合计改了 365 次。于是做成 Claude Code plugin「crew」：人只跟 lead 说话；只有直接听过人话的会话才能合入；配管用官方能力，crew 只留「谁决定／问什么／验什么」。为验证 dispatcher 能否长驻，在 v2.1.319 用耗时子代理实测：子结束后才自动醒；Monitor 空等约 20 秒就被催报告。结论是 dispatcher 只等自己的子，CI 类等待放进 worker。页上链到 crew-skill 仓库与官方文档。不代你同样开 crew，就等于下一工作日也总会合上约 48 个 PR，或进度文件也总会改满 365 次。",
     description:
       "面向已经把「多会话并行就等于一天几十个 PR」写成可承诺吞吐、却还没分开「合入权在谁」与「进度文件谁在改」的人：把「分工可以代跑，谁有合入权仍要人订」写成门禁，区别于 Team 三体体感三十分，以及并排会话下 statusLine 定时 npx。",
@@ -48182,7 +48182,7 @@ git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whethe
   {
     id: "684",
     slug: "maya-15repo-50pr-6d-freeze",
-    title: "maya-bot：15 个公开仓各挂一个子代理——一天约 50 个 PR 后账号被停；申诉约 6 天解除",
+    title: "公开仓库并行修改后的账号停用",
     summary: "个人（maya-bot）；披露自己用 Claude Code 给 15 个公开仓库做修 bug、加测试、改文档，并另请 AI 打分循环。仓库各挂一个子代理同时跑：开 PR、反复 push、几十秒一次打 CI API、失败就重跑。回顾一天约开 50 个 PR。修到第 5 圈时 API 全回 403，账号显示 suspended；申诉后约 6 天解除。哪条具体条款触线，平台未说明，作者按用量与速度作推测。之后把规则改成：同时最多 2 个；CI 尽量通知等待、必要时间隔至少约 2 分钟；遇 403／429／secondary rate limit 立刻停、不重试；工作拆到多日。页上链到 GitHub 可接受使用与 REST 最佳实践文档。不代你同样并排 15 仓，就等于也总会一天约 50 个 PR 后被停，或申诉也总会约 6 天解除。",
     description:
       "面向已经把「子代理并排修仓」写成可无限加速、却还没分开仓库吞吐与平台限流／停权风险的人：把「并行可以代跑，同时上限与停错策略仍要人订」写成门禁，区别于并排会话 statusLine 吃 CPU，以及 Team 三体体感分钟。",
@@ -48272,7 +48272,7 @@ git add 遇 nul 是不是 128、.gitignore 写 nul 后是不是才过：{{whethe
   {
     id: "685",
     slug: "kassyi-40pr-66only-12block",
-    title: "kassyi：40 个修 bug PR 匿名对审——Gemini 真指摘 19 件全被 Claude 覆盖；Claude 独有 66 件含 12 件该拦合并",
+    title: "编译器缺陷修复的匿名对照审查",
     summary: "个人（kassyi）；披露自研编译器 Henicos 几乎全由 LLM 代理开发。本篇用同一指示书让 Gemini 与 Claude 分别审 40 个修 bug PR，再把作者身份抹掉交审查员判定。结论：Gemini 的真指摘 19 件内容都对，但全被 Claude 也找到；Claude 独有真指摘 66 件，其中该拦合并（blocking）12 件。Gemini 对这 12 个 PR 全判成「无 blocking」，并常写 Ready to merge／LGTM；还出现 6 件不存在的类型名／测试名／行号引用，Claude 误判 1 件。40 个 PR 本身来自：19 路并行审查出 109 条所见→83 条试复现→78 条复现→M1（错误结果）41 件→再约 14 路并行修成 PR。页上链到 Henicos 仓库。不代你同样跑匿名对审，就等于下一组 40 个 PR 也总会是 66／12，或 Gemini 也总会把 12 件 blocking 写成可合并。",
     description:
       "面向已经把「第二审查模型」写成可少看就合入、却还没分开「指摘内容对不对」与「LGTM／blocking 结论可不可信」的人：把「对审可以代跑，合入结论仍要人订」写成门禁，区别于审查件数流水，以及 Team 编排体感分钟。",
@@ -48362,7 +48362,7 @@ Claude 独有是不是 66、blocking 是不是 12：{{whether_claude_sixty_six_w
   {
     id: "686",
     slug: "nhira-5d-nas-162test-1333",
-    title: "n_hiraoka：5 天做出 Synology NAS 搜索并公开——公开版测试 162 件；改登录后同机检索测到 1,333 件",
+    title: "Synology 搜索登录改造与公开",
     summary: "个人（n_hiraoka／平冈宪人）；披露 11 月 4〜8 日共约 5 天，把 Synology NAS 做成可给 AI 代理搜索的工具并公开，MCP 上到 PyPI 与 MCP Registry。人在中间调度三个 AI：ChatGPT、云端 Muse（作者称「ミュー」）、本机 Claude Code（「クロ」），彼此不直连。公开版约 3 天半（5 日晨到 8 日午）走到 0.8.0／0.9.0（MCP），测试 162 件。关键转折：把登录改成 FileStation、对齐搜索条件后，通过的 test 检索到 1,333 件，且用一般用户、无 sudo、未关二步验证。作者强调「不是要 root，而是以前只会用要 root 的那套工具」。页上链到仓库、X 与 note。不代你同样五天排期，就等于也总会 162 件测试与 1,333 件检索，或三 AI 接力也总会同样收束。",
     description:
       "面向已经把「多 AI 接力」写成可五天必上线、却还没分开公开版测试件数与实机检索件数的人：把「实现可以代写，登录方式与公开清单仍要人订」写成门禁，区别于班表工时对照，以及 Team 三体体感分钟。",
@@ -48452,7 +48452,7 @@ Claude 独有是不是 66、blocking 是不是 12：{{whether_claude_sixty_six_w
   {
     id: "687",
     slug: "nexta-backlog-mcp-6wiki-4st",
-    title: "Nexta：内制应用安全检查改到 Backlog——Wiki 6 页作正本；状态 4 个、属性 3 个、指摘区分 8 类；MCP 起票",
+    title: "内制安检迁入 Backlog 自动起票",
     summary: "团队（Nexta／Ayaka）；披露公司 CTO 室把内制应用与 Claude 技能的公开前安全检查，收到 Claude Code 技能＋Backlog MCP。Wiki 作判定正本共 6 页（5 页在 6 月、既定值页 9 月加）；技能经 MCP 读 Wiki／属性名，并起票；人只确认「可否起票」。课题状态 4 个（未対応→処理中→申請者対応待ち→完了），自定义属性 3 个（判定／级别／指摘区分），指摘区分 8 类由历次审查归纳。时间线：5 月技能内嵌基准＋PowerShell 分发→6 月改 Backlog Git 市场→7 月末基准迁 Wiki→9 月补既定值→11 月 MCP 自动起票并把反复指摘写进必填栏。崩过 4 处：Wiki／技能不同步、首次 Git 认证必须人做、外部市场默认不自动更新导致停在 6 月版、曾以为已自动贴文其实仍是人贴。页上链到采用页与作者／公司 X。不代你同样迁到 Backlog，就等于也总会收成 6／4／3／8，或 MCP 起票也总会消掉同一类反复指摘。",
     description:
       "面向已经把「安全检查技能」写成可离开工单系统、却还没分开基准正本在哪与起票是不是真自动的人：把「MCP 可以代写，状态机与必填栏仍要人订」写成门禁，区别于个人多 AI 五天公开，以及匿名双模型对审。",
@@ -48542,7 +48542,7 @@ Claude 独有是不是 66、blocking 是不是 12：{{whether_claude_sixty_six_w
   {
     id: "688",
     slug: "zundamon-3note-2ok-7test",
-    title: "zundamon_tools：hunk 行上写 3 条笔记交给 Claude Code——2 次都未点名就把 3 处改对，npm test 各 7 件通过",
+    title: "终端差分行笔记驱动的修改",
     summary: "个人（zundamon_tools）；披露用终端差分查看器 hunk 在行上写了 3 条笔记，只对 Claude Code 说「读 hunk 的笔记并改」。2 次试验都未再说文件名／行号，3 处全部改对，还自行补了未要求的测试。npm test 两次都是 7 件通过。第 2 次差分标题从 7 files +62 增到 8 files +101；两次都未提交。样例 PR 故意放了分页偏移、吞掉 ENOENT 以外错误、设置文件损坏时静默回退等 3 个缺陷。页上链到 modem-dev/hunk、hunk.dev 文档、安装脚本、样例仓与 YouTube。不代你同样只写行上笔记，就等于下一份差分也总会 3 处全对，或 npm test 也总会 7 件通过。",
     description:
       "面向已经把「审 AI 改动」写成可在聊天里重打文件名与行号、却还没分开「指出哪一行」与「改对是不是已保证」的人：把「人只定要改的行，Agent 读笔记」写成门禁，区别于匿名双模型对审，以及记分册／联盟点击类测量。",
@@ -48632,7 +48632,7 @@ npm test 是不是各约 7 件通过：{{whether_npm_test_seven_each}}
   {
     id: "689",
     slug: "mizoko-3pass-20then5-40fix",
-    title: "mizo_ko：资料内容审查改成 3 个全新 Agent 直列——首轮约 20 件，后两轮各再出 5〜10；合计实改约 30〜40 件",
+    title: "设计资料的三轮串行内容审查",
     summary: "个人（mizo_ko／PM）；披露用 Claude 审设计书与比较资料时，1 轮平均约出 20 件指摘，但第 2、第 3 轮仍各会新出约 5〜10 件。于是规定内容审查必须用全新 Agent 直列跑 3 轮：禁止并行；后轮要带上前轮指摘表；中途 0 件也不能省略；出最终稿前 3 轮都要结束。Agent 只出指摘、不改正文；区分与是否修改由作者定。3 轮合计作者实际改过约 30〜40 件。配上过去指摘汇成的观点表之后，以前含细项约收 10 件指摘，后段降到约 2〜3 件。页上无外链商店／试用导流。不代你同样改成 3 轮直列，就等于下一份资料也总会先见到约 20 件，或合计也总会实改约 30〜40 件。",
     description:
       "面向已经把「AI 审过一轮」写成可出稿、却还没分开首轮覆盖与后轮新指摘的人：把「必须全新 Agent 直列三轮」写成门禁，区别于匿名双模型对审 PR，以及行上笔记一次改对。",
@@ -48722,7 +48722,7 @@ npm test 是不是各约 7 件通过：{{whether_npm_test_seven_each}}
   {
     id: "690",
     slug: "hoshino-sessgrep-323-253-5",
-    title: "hoshinotsuyoshi：不做索引、直接 rg 读 Claude／Codex 会话——同词 rg 323 文件，session-grep --all 253 会话，默认只剩 5",
+    title: "会话日志直接检索与谈话摘要",
     summary: "个人（hoshinotsuyoshi）；披露做了 session-grep：直接读 ~/.claude/projects 与 ~/.codex/sessions 的 jsonl，按会话给出「谈了什么」与 resume 命令，并可作为 Claude Code skill 给 agent 用。2026-11-08 用近两周 Claude Code 日志、以某自作 skill 名为词：rg -l -F 命中 323 个文件（含 subagent）；session-grep --all 得到 253 个会话；默认（只显示人／agent 发言命中）只剩 5 个会话——其余多半只是 skill 名单里带了这个名字。页上链到本仓与若干相关检索项目。不代你同样装 session-grep，就等于下一份日志里同词也总会是 323／253／5。",
     description:
       "面向已经把「用 rg 搜 jsonl」写成可找回前情、却还没分开「文件命中」与「真谈过该 skill」的人：把「按发言种类过滤会话」写成门禁，区别于 NAS 搜索 MCP，以及 8h／28h 工时对照。",
@@ -48812,7 +48812,7 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
   {
     id: "691",
     slug: "hotskills-849repo-78pct-net",
-    title: "hotskills：每小时给 Agent 技能仓做排名——已跟踪 6,400+ 仓／约 8.4 万技能；热门 849 仓里 77.6% 含网络或宽壳",
+    title: "代理技能仓的每小时星标排名",
     summary: "个人（hotskills）；披露做了 hotskills.dev：从 GitHub 搜技能仓，用文件树判定（不用 LLM），每小时更新星标。当时跟踪 6,400 以上仓库、约 8.4 万个按 SKILL.md 内容哈希去重的技能。10 月已检查完当前提交的热门仓 849 个：仅指示 10.1%、有本地脚本 12.3%、含网络调用或宽壳 77.6%。另对 52,571 个技能估了 token：frontmatter 中位 114，SKILL.md 中位 1,353，上四分位 ≥2,394；装 10 个技能约常驻 1,100 token。10 月一个月技能相关仓星标 +987,550（+12.0%）、新仓 513。安装命令钉在已检查提交。页上链到站点、方法页、10 月报告与只读 MCP。不代你同样看排名，就等于下一份热门样本也总会是 77.6% 含网络或宽壳，或星标也总会一个月 +12.0%。",
     description:
       "面向已经把「装个技能就开干」写成可默认安全、却还没分开「星标热门」与「会不会出网／宽壳」的人：把「安装前看执行面信号」写成门禁，区别于技能名未展开、以及费用／Effort 主题。",
@@ -48902,7 +48902,7 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
   {
     id: "692",
     slug: "datarobot-gap-41-to-31-cve0",
-    title: "DataRobot Japan：Agent Gap Analysis 扫自作小应用——初评 41 件 RE-PLATFORM；修完剩 31 件，依赖已知 CVE 归零",
+    title: "自作小应用就绪度扫描与修复",
     summary: "团队（DataRobot Japan Tech／小川幹雄）；披露用公开的 datarobot-gap-analysis 技能，把自作小 Agent 应用部署到 Workload API 后做生产就绪度评分。初评 41 件（HIGH 15／MEDIUM 19／LOW 7），Posture 为 RE-PLATFORM；其中 structural 17 件，high structural 9 件触发「≥4 即 RE-PLATFORM」。--fix 后再 --verify：41→34，HIGH 15→11，约 3 分钟；但测试／CI 类有「文件在不在」即过的空洞。再把报告与差分交给 Claude Code 等 AI 编码收尾后：31 件，HIGH／MEDIUM／LOW 为 10／14／7，Layer1 扫描仪 11→3，依赖已知 CVE 归零，并补上有内容的测试 25 本与能跑通的 CI。剩 HIGH 10 件里 8 件是策略向 structural，作者写要用改部署方式关闭。页上链到技能仓；npm 包页与 docs.datarobot.com、联系页本机 GET 现 403。不代你同样跑 Gap Analysis，就等于下一应用也总会从 41 收到 31，或 CVE 也总会归零。",
     description:
       "面向已经把「有安全扫描」写成可上生产、却还没分开自动 --fix 计数与策略向 structural 的人：把「再评分件数不能当唯一验收」写成门禁，区别于个人行上笔记审改，以及热门技能仓执行面排名。",
@@ -48992,7 +48992,7 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
   {
     id: "693",
     slug: "moimoi-opus55-30h-260tool",
-    title: "moimoi：同岛同性格只换 Opus 5.5 再玩 30 小时——自作脚本 0→260；尖塔约 18 分登顶（上次 5 小时 27 分）",
+    title: "同岛同性格换模型的自由玩耍",
     summary: "个人（moimoi）；披露用 clawblox／Mesa Island，性格文件不变，只把模型从 Opus 4.6 换成 Opus 5.5（effort high）再跑 30 小时自由玩耍（每小时重置岛与对话，记忆只靠工作区文件）。自作脚本从上次 0 本增到 260 本，约 30 分钟就开始写移动／搬运工具；尖塔初登顶约 18 分钟（上次 5 小时 27 分）。拾得预言 296 件：工具输出命中约 85%、当场计算约 54%、凭感觉约 38%。14 小时目有 12 块石 30 秒扔 112 次、76 行 Python 杂耍。页上链到 clawblox、machineplaying.org、前作与 Anthropic 政策；Forbes 链本机现 403。不代你同样只换模型再玩 30 小时，就等于下一岛也会 0→260，或尖塔也总会约 18 分登顶。",
     description:
       "面向已经把「换更强模型」写成玩法必升级、却还没分开单次 30 小时观察与可复现对照的人：把「模型差要同时记工具数与预言命中，不能只写更聪明」写成门禁，区别于行上笔记审改、以及多仓并行 PR。",
@@ -49081,7 +49081,7 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
   {
     id: "694",
     slug: "hilopon-35digit-25far-8diff",
-    title: "hilopon：家用 PC 上 qwen3-vl:4b 读照片——多条件数字 35/35；纸太小 25/35；「没有停车场」被读成「有」",
+    title: "家用 qwen3-vl:4b 的照片读取",
     summary: "个人（hilopon）；披露用 Ollama 的 qwen3-vl:4b-instruct（约 3.3GB）在家用游戏 PC 上读 LINE 照片，约 6 秒/张。对 5 类虚构文书做坏拍照：清楚／倾斜／暗影压缩／模糊／缩到宽 200px／竖排等多条件数字栏多为 35/35；纸只占画面约一成时数字 25/35、整页一字不差 0/5。竖排「停车场はありません」被读成「あります」，且 unsure 为空。要求自报没把握：12 件读错里印记 0 件。改成两次不同写法对照：25 张里首轮 11 件错中揪出 8 件，首轮对的 14 件误报 0；漏 3 件是同错。时间约 6 秒→12〜13 秒。页上链到同作者 Zenn 本（第 7 章写照片）。不代你同样换小 VLM，就等于下一组照片也总会 35/35，或两次对照也总会揪出 8/11。",
     description:
       "面向已经把「本地小模型能 OCR」写成可默认信、却还没分开数字全对与语义反转的人：把「自报没把握不能当门禁，要用两次答案互核」写成门禁，区别于安全扫描基准，以及会话检索。",
@@ -49171,7 +49171,7 @@ session-grep --all 是不是约 253 个会话：{{whether_all_about_two_hundred_
   {
     id: "695",
     slug: "syarihu-2wt-gradle-sessenv",
-    title: "syarihu：worktree 里 settings.local.json 的 env 不生效——Gradle 2 本名单分开后双方 BUILD SUCCESSFUL；改用 SessionStart 写 CLAUDE_ENV_FILE",
+    title: "工作树环境变量的启动钩子写入",
     summary: "个人（syarihu／Android）；披露多 worktree 并行跑 Claude Code 时，./gradlew --stop 会因共用 daemon registry 把别的 worktree 构建打掉。Gradle 9.6.1、2 本 worktree：名单分开后双方 BUILD SUCCESSFUL，--status 也互不可见。本想用各 worktree 的 .claude/settings.local.json env 配 GRADLE_OPTS，但 Claude Code 从 v2.1.211 起在 worktree 读的是主 checkout 根上的 settings.local.json；echo $GRADLE_OPTS 仍是 main 值。试了外移 worktree／启动时传环境变量等：不奏效或靠兼容。最终用 SessionStart 钩子往 $CLAUDE_ENV_FILE 写 export。页上链到官方 settings／hooks／env 文档、CHANGELOG 与 X @syarihu。不代你同样改钩子，就等于下一台 Android 仓也总会双方 BUILD SUCCESSFUL，或 settings.local.json 也总会在 worktree 生效。",
     description:
       "面向已经把「每个 worktree 放一份 settings.local.json」写成环境已隔离、却还没核主 checkout 才是读取根的人：把「worktree 局部 env 要以 SessionStart／CLAUDE_ENV_FILE 为准」写成门禁，区别于账号停权、以及 Windows nul 文件清理。",
@@ -49261,7 +49261,7 @@ settings.local.json env 是不是仍读到 main：{{whether_local_env_still_main
   {
     id: "696",
     slug: "biglat-1930-4am-3para-4loop",
-    title: "biglat80：首夜 19:30〜翌 4:30 装 Claude Code——并行 3 线；约 2,500 曲换图；契约循环试 4 次",
+    title: "首夜装机之后的三线并行试作",
     summary: "个人（biglat80）；披露在家用 Windows 10 Pro 上第一夜 19:30〜翌 4:30 装 Claude Code，多数指令经手机 Remote Control。定最小文件夹、三层日志、状态栏用量、约 10 个官方插件（「全装」多装 1 个后退掉）、CLAUDE.md／内存规则、Stop 钩子跑构建／测试／lint。后半夜并行 3 线：Android 雏形、iTunes 嵌入图替换约 2,500 曲（先 1000px 全开会卡，改长边 800px）、以及「先写契约→critic 审 2 次→外侧隐藏验证器→claude -p /goal」循环试 4 次。页上未见外链商店／试用导流。不代你同样熬一晚，就等于下一台 Windows 也总会 3 线并行跑通，或 2,500 曲也总会一次换完。",
     description:
       "面向已经把「装好就能干」写成第一夜目标、却还没分开脚手架与外侧验证器的人：把「合否不能靠模型自报」写成门禁，区别于 30 小时岛上玩耍，以及 worktree Gradle 隔离。",
@@ -49351,7 +49351,7 @@ settings.local.json env 是不是仍读到 main：{{whether_local_env_still_main
   {
     id: "697",
     slug: "dmmdata-3skill-okf-meta",
-    title: "DMM 数据：用 Codex＋3 个 Skill 养表元数据——合并 Skill 每次输出不稳才拆开；OKF 的 YAML＋Markdown",
+    title: "一次表元数据扩写的技能拆分",
     summary: "团队（DMM／dmmdata·percy_tech）；披露数据基盤一次表说明跟不上接入与问询，用 Codex 定期跑元数据扩写。先试合并 Skill，每次输出内容不同、达不到可用，才拆成 description 整備／利用调查／指南执笔 3 个 Skill：调查包落地后再执笔；进度写入文件以便下次接着跑。知识落成 OKF 风格（YAML frontmatter＋Markdown），含表／列说明、利用指南、术语与指标条件；现只覆盖一次表，数据マート后续。页上链到 OKF 仓与 SPEC；OpenAI Skills 概念页与 ChatGPT Automations 说明本机 GET 现 403。不代你同样拆 3 Skill，就等于下一套表也会每次稳定可审，或人审也总会消失。",
     description:
       "面向已经把「让 Agent 写表说明」写成可入库、却还没分开合并 Skill 不稳与人审仍在的人：把「元数据扩写须同时报告 Skill 拆分与人审队列」写成门禁，区别于个人首夜装机，以及本地 VLM 读图。",
@@ -49441,7 +49441,7 @@ settings.local.json env 是不是仍读到 main：{{whether_local_env_still_main
   {
     id: "698",
     slug: "jackto-1219-243of244-141err",
-    title: "jackto：图像生成 AI 5 种写日语——共 1,219 张；GPT Image 243/244，错 141 张里别字 60、多写整行 31",
+    title: "五种图像模型书写日语的对照",
     summary: "个人（jackto／AIFont）；披露用同一套日语短词提示，对 GPT Image 2.5、Nano Banana 2.1、Grok Imagine 2.0、Seedream 5.0 Pro、Qwen-Image 3.0 Pro 各出书体风格 244 种的第 1 张（Seedream 少 1 张），合计约 1,219 张。正确：GPT 243/244、Nano 239/244、Grok 226/244、Seedream 214/243、Qwen 154/244。错 141 张（可重叠）：别字 60、多写整行 31、多一字 19、浊点半浊点 16、漏字 14、不可读 4。Qwen 错 90 张里 26 张把字体说明写进画面。判定先 AI 再人看 104 张；作者非日语母语，阿拉伯语对照曾 291 张里差 23。页上链到 GitHub 数据集与母语校对招募；GitHub 本机复检偶发 504。不代你同样跑 5 模，就等于下一组日语词也会 GPT 243/244，或错类也总会 60／31。",
     description: "面向已经把「图像模型能写日语」写成可贴图就发、却还没分开正确率与错类的人：把「第 1 张日语字形须同时报对错与别字／多写」写成门禁，区别于本地小 VLM 读照片，以及 FAQ 标签检索。",
     categories: [
@@ -49529,7 +49529,7 @@ GPT Image 是不是约 243/244：{{whether_gpt_about_two_forty_three_of_two_fort
   {
     id: "699",
     slug: "solo-faq-30pct-to-10-110tag",
-    title: "solo_joshis：社内 FAQ 零命中约 3 成→1 成弱——先人工 200 词半日；字典 60→约 110；上限 5 标签",
+    title: "呼叫中心问答的限量标签字典",
     summary: "个人（solo_joshis／一人情シス）；披露呼叫中心社内 FAQ：1 个月检索日志约 3 成零命中，上 200 个零命中词里一半以上其实已有答案。人工半日对齐后做约 60 词标签字典，AI 只从字典选至多 5 个标签；先 20 件目检再全量。2 个月后零命中 1 成弱，「FAQ 在哪」聊天从多日十数件降到数件，字典约 110。曾无上限时平均约 12 标签、一搜 40 件；完美体系设计停 2 周。页末参考 Python／Anthropic／Zenn 记法文档，未见商店／试用／招聘硬导流。不代你同样贴标签，就等于下一套 FAQ 也总会 3 成→1 成弱，或字典也总会到约 110。",
     description: "面向已经把「FAQ 搜不到就等于缺文」写成要重写全文、却还没分开零命中与用词错位的人：把「先从零命中日志做字典再让 AI 限选标签」写成门禁，区别于图像写日语，以及 CSV 工具对照。",
     categories: [
@@ -49617,7 +49617,7 @@ GPT Image 是不是约 243/244：{{whether_gpt_about_two_forty_three_of_two_fort
   {
     id: "700",
     slug: "chukidx-csv-4ok-64s-103s",
-    title: "chukidx：同一 CSV 集计交给 Codex 与 Claude Code——4 次全对；64／49 秒对 103／87 秒；差在许可与补全",
+    title: "月度集计双工具的许可与补全",
     summary: "个人（chukidx_dev）；披露 Windows 11 上用同一委托文，让 Claude Code 2.1.296 与 Codex CLI 0.128.0 各跑 2 次写月度支店売上集计：4 次 summary.csv 与作者另算的 9 行全一致。实測时間 Claude 64／49 秒、Codex 103／87 秒。Claude 在允许 Bash(python *) 外被拒 4／3 次后改写；Codex 沙箱内未停，却有结束码错误 5／3 次。输出编码与路径基准也不同。页上链到官方无头文档、有料本与 note；ChatGPT 非交互文档现 403。不代你同样对照，就等于下一任务也总会 4 次全对，或时間也总会 64 对 103。",
     description: "面向已经把「结果对了就等于两工具可互换」写成默认、却还没分开正确率与许可／补全差的人：把「双 CLI 对照须同时报对错与拒绝次数」写成门禁，区别于 FAQ 标签，以及善意注记审阅。",
     categories: [
@@ -49705,7 +49705,7 @@ Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_a
   {
     id: "701",
     slug: "murooka-19of62-ja23-def0",
-    title: "murooka：善意注记「已知／勿指摘」——外情 19/62 放过真 bug；日语金额题 23/24；防御 3 句后 0",
+    title: "善意勿指摘注记的审阅试验",
     summary: "个人（murooka_az）；披露用 11 种小仓库与业务文书，测「已知（票号）／他处已担保／勿指摘」等无恶意注记会否扭曲审阅。外情注记下真 bug 被降级或排除 19/62（31%）；Sonnet 13/25、Opus 5/24、Haiku 1/13。日语金额 2 题 23/24（英语同题约 15/25）。只留说明去掉「勿指摘」仍 9/16；注记无则 0/16。effort high／max 合计 13/18 仍防不住；防御 3 句后 Sonnet／Opus 英 0/41、日 0/24。审阅约 594 次，修改另 144 次。页上链到系统卡／研究／arxiv；作者卡有 X 与公司站。不代你同样加注记，就等于下一组审阅也总会 19/62，或 3 句也总会 0。",
     description: "面向已经把「模型抗注入分数低」写成审阅已安全、却还没分开恶意指令与善意外情注记的人：把「外情注记下的放过率须单列」写成门禁，区别于 CSV 双 CLI 对照，以及闭域网 TTFT 优化。",
     categories: [
@@ -49793,7 +49793,7 @@ Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_a
   {
     id: "702",
     slug: "fixstars-ttft59-to-38-conc50",
-    title: "Fixstars：闭域网本地 LLM×GitLab DAP——同时连接 50 时 P90 TTFT 59→3.8 秒；90 连接仍约 3.5 秒",
+    title: "闭域网本地模型与代码代理优化",
     summary: "团队（フィックスターズ／yosh_matsuda 登壇稿）；披露约 350 人公司把本地 LLM 与自管 GitLab Duo Agent Platform 放在同一内网，客户代码不上公网。H200×8 上 GLM-5.1：同时连接 50 时优化前 P90 TTFT 59 秒、优化后 3.8 秒（约 16 倍）；同时连接 90 时 P90 TTFT 3.5 秒。另写 16 周用量约 6.1 倍、Claude 占比 83%→13%、按外部单价外推月约 8,800 万对实付约 1,200 万（不含 GPU 购置运维）。环境称 Fixstars Vega 可对外提供；页上链到 Artificial Analysis。不代你同样优化，就等于下一机房也总会 59→3.8，或费用也总会降到约 16%。",
     description: "面向已经把「上本地模型」写成闭域网已可用、却还没分开能否回答与首 token 等待的人：把「同时连接下的 P90 TTFT 须单列」写成门禁，区别于善意注记审阅，以及图像写日语。",
     categories: [
@@ -49881,7 +49881,7 @@ Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_a
   {
     id: "703",
     slug: "sumumu-24test-9fail-10weak",
-    title: "sumumu／miharuba：AI 写的 24 条测试——有 bug 的应用全「成功」；修好后 9 条失败；另有 10 条通了也不安心",
+    title: "缺陷版本上仍然全绿的界面测试",
     summary: "个人（sumumu26／miharuba_jp）；披露用 Udemy 课里的小管理应用：故意留 bug 的版本上，AI 写出的 Playwright 测试 24 条全成功；同一套 24 条在修好的正常版本上却失败 9 条。通了的 15 条里还有 10 条在核对规格里没写的事。作者把「操作只是跟着点」与「要断言结果」拆开；页上链 Udemy 课／先到 10 名免费券与 miharuba.jp。Udemy 本机 403；GitHub 组织页偶发 504。不代你同样让 AI 写测，就等于下一应用也会 24 全绿再 9 红，或弱断言也总会约 10。",
     description: "面向已经把「测试全绿就等于可交付」写成门禁、却还没分开操作回放与结果断言的人：把「AI 写测须同时报有 bug 版／修好版与弱断言件数」写成门禁，区别于 FAQ 标签检索，以及双 CLI CSV 对照。",
     categories: [
@@ -49969,7 +49969,7 @@ Claude 允许外拒绝是不是约 4／3：{{whether_claude_denials_about_four_a
   {
     id: "704",
     slug: "jarvis-10name-450run-utf8",
-    title: "ai_jarvis：日语文件名 10 种试 text=True——PYTHONUTF8=1 时 10/10；共 15 组×10×3＝450 次",
+    title: "日语文件名子进程的编码读取",
     summary: "个人（ai_jarvis）；披露日语 Windows（cp932）上用 subprocess.run(..., text=True) 读 git／子 Python 吐出的日语名：试了含「日本語.txt」「髙橋.txt」、丸数字、emoji、résumé 等 10 种名；7 条件×git 与子 2 路＋八进显示 git 1 路共 15 组，各 10 名×3 次＝450 次。A／B 下 git 通 0／化 3／掉 7；C～G（含 PYTHONUTF8=1）git 10/10。子进程要 G（父 encoding=utf-8＋子 PYTHONIOENCODING）才 10/10。页上链 Kindle 反馈页。不代你同样开 UTF-8，就等于下一台 Windows 也总会 10/10，或 450 次也总会同表。",
     description: "面向已经把「没抛 UnicodeDecodeError 就等于文件名可读」写成门禁、却还没分开例外与名字一致性的人：把「日语名须同时报通／化／掉与是否与原名一致」写成门禁，区别于 AI 写测全绿，以及判定模型对照。",
     categories: [
@@ -50057,7 +50057,7 @@ PYTHONUTF8=1 时 git 是不是 10/10：{{whether_pythonutf8_git_ten_of_ten}}
   {
     id: "705",
     slug: "nemolize-63to18-225of225",
-    title: "nemolize：日语商务 5 类判定——thinking 开后敬语误报 63%→18%；秘密信息 225/225；机械判定 0.001 秒",
+    title: "日语商务五类判定方法对照",
     summary: "个人（nemolize）；披露在可机械造正解的 5 类判定（敬语／表記／秘密信息等）上比 12 种方法：同一 claude-haiku-5-5，thinking 开后敬语误报 63%→18%；gitleaks＋LLM 复核可使误报从 60 降到 2～29，检测仍 225/225；机械判定二重敬语 45/45、全角混在 43/45、秘密 225/225，约 0.001 秒／件。gemini-3.7-flash 约 3.3 秒／件。页上链 GitHub judge-bench；本机 GitHub 偶发 504。不代你同样比 12 法，就等于下一语料也会 63→18，或秘密检测也总会 225/225。",
     description: "面向已经把「交给 LLM 判定就等于比规则强」写成默认、却还没分开误报与漏检的人：把「判定对照须同时报误报、检测件数与 thinking 开关」写成门禁，区别于日语文件名解码，以及本地翻译吞吐。",
     categories: [
@@ -50145,7 +50145,7 @@ PYTHONUTF8=1 时 git 是不是 10/10：{{whether_pythonutf8_git_ten_of_ten}}
   {
     id: "706",
     slug: "fizor-nuka-08b-667mib-198ts",
-    title: "fizor：本地 PLaMo 3 Translate 应用 NuKa——0.8B 约占 667 MiB；tg128≈199 t/s；pp512≈1,502 t/s",
+    title: "本地 PLaMo 翻译应用 NuKa",
     summary: "个人（fizor）；披露把 PLaMo 3 Translate 做成完全本地的 NuKa（Tauri＋llama.cpp）：在 GTX 1660 6GB／llama.cpp b12136／-ngl 99 上，0.8B Q4_K_M 全层 GPU 时 VRAM 增量约 667 MiB；tg128 生成约 198.93±2.87 t/s；pp512 约 1,501.78±9.63 t/s；体感一句约 0.2～0.5 秒。同捆 14 种 GGUF（0.8B～31B×量化）。发布前审计发现 SHA-256 校验在生产路径未真正执行，已改并加集成测试。页上链 GitHub NuKa／releases；本机 GitHub 偶发 504。不代你同样本地跑，就等于下一张 6GB 卡也总会 ≈199 t/s，或 VRAM 也总会约 667 MiB。",
     description: "面向已经把「本地翻译能开就等于可贴机密」写成默认、却还没分开吞吐与校验是否真跑过的人：把「本地译须同时报 VRAM／t/s 与校验是否在生产路径执行」写成门禁，区别于判定模型误报，以及展会 ASR 选型。",
     categories: [
@@ -50233,7 +50233,7 @@ tg128 是不是约 199 t/s、pp512 是不是约 1,502 t/s：{{whether_tg_about_o
   {
     id: "707",
     slug: "trust-wer173-whisper26-62h",
-    title: "TRUST：展会录音文字化选型——Transcribe 字误率 17.3%；Whisper 约 26%；62 小时整段用 Transcribe",
+    title: "展台录音文字化的服务选型",
     summary: "团队（株式会社トラスト／TRUST Publication・櫻井）；披露智能工厂展约 52 本、合计约 62 小时展台录音的选型：在噪声不同的 4 段（约 67～80 秒）上比 AWS Transcribe、JumpStart Whisper large-v3／turbo、Notion AI、录音机。汇总字误率 Transcribe 17.3%，Whisper large-v3 约 26.6%、turbo 约 26.3%；听不清处 Whisper 与 Notion AI 会编出录音里没有的句子。费用试算 Whisper 更便宜，但启动与等待下不划算。最终 62 小时整段用 Transcribe。页上链公司站 trust-coms.com。不代你同样比 5 法，就等于下一场展会也会 17.3% 对约 26%，或 62 小时也总会选同一家。",
     description: "面向已经把「字误率最低就等于可分析」写成默认、却还没分开误字与无中生有的人：把「ASR 选型须同时报字误率与是否编造听不清段」写成门禁，区别于本地翻译吞吐，以及 AI 写测全绿。",
     categories: [
@@ -50321,7 +50321,7 @@ tg128 是不是约 199 t/s、pp512 是不是约 1,502 t/s：{{whether_tg_about_o
   {
     id: "708",
     slug: "kirinuki-418script-15gate-10sw",
-    title: "kirinuki：不读代码把 Claude Code 做的剪辑流水线给人——对照出 15 处门；kit_config 10 个开关；scripts 约 418 本",
+    title: "剪辑流水线发行配置的开关化",
     summary: "个人（キリヌキ自動化ラボ／kirinukiauto）；披露不会编程、代码不读，却用 Claude Code 做政治剪辑流水线：4 个月 scripts 下约 418 本。把发行 ZIP 与作者 PC 对照，买家侧第 1 条跑不通处先数到 15；次日干净环境重装又继续停。多数不是「代码 bug」，而是作者说「停下」后 AI 为作者 PC 加的门（如本篇＜16 分、片源＞48 小时、相关片 0 本、强度＜6、无人脸样例等）。改成 kit_config.json 约 10 个开关，发行版默认「不停只记」；pip freeze 268 行做成 constraints。页上链 note 有料说明。不代你同样对照 ZIP，就等于下一套流水线也总会先数到 15 门，或 scripts 也总会约 418。",
     description: "面向已经把「本机全绿就等于可交付给别人」写成默认、却还没分开作者门与买家门的人：把「交付前须同时报作者门件数、开关默认与干净环境是否跑通」写成门禁，区别于 AI 写测弱断言，以及本地小模型吞吐。",
     categories: [
@@ -50409,7 +50409,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "709",
     slug: "enomoso-8round-696mut-15sess",
-    title: "enomoso：睡前立司令塔——醒来已到第 8 回；夜班 15 个作业会话；突变测试合计 696 种全被测到",
+    title: "睡前立起的夜间作业司令塔",
     summary: "个人（enomoso_pm）；披露受託 PM 把「中继贴踢」交给 Claude Code 司令塔：睡前开好司令塔 1＋夜班作业会话约 15；醒来作业已到第 8 回。2 回后交接约 4～9 分；3～7 回各约 59～84 分；3～7 回机械检查各卡住 1 次并在当回修通；突变测试 5 回合计 696 种破坏，均被测到才交下一回。08:22 左右 4 回因装不下由司令塔拆成前后半；10:48 人判类问题被保留到早上。页上链 Claude 官方 session／cron 文档。不代你同样立司令塔，就等于下一夜也会到第 8 回，或突变也总会 696 全中。",
     description: "面向已经把「多开会话就等于能过夜」写成默认、却还没分开可决与须问人的人：把「过夜编排须同时报回次、交接空档与突变是否全中」写成门禁，区别于交付作者门，以及静默停机误报件数。",
     categories: [
@@ -50497,7 +50497,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "710",
     slug: "hakumai-94to1-7d-17priv",
-    title: "hakumaigenki：并行 Claude 却 3 次没发现已停——报 94 件其实 1 件；审批链断 7 天；片「已公开」却私密 17 天",
+    title: "未做外态核对的并行自动化",
     summary: "个人（白米元気／hakumaigenki）；披露个人事务自动化上并行多会话，仍有 3 次「停了却没发现」：审计报未发草稿 94 件／约 290 万日元，复算后真正卡住 1 件；审批后应招文链路断 7 天零记录；YouTube 短视频日志写 published，实际私密 17 天，估算少约 2,800 次曝光。共通点是信了自己处理输出的状态，没用外态核对。页上链 gpirot.com；GitHub 导流偶发 504，已不列入可达。不代你同样并行，就等于下一套也会 94→1，或私密也总会 17 天。",
     description: "面向已经把「面板／日志显示成功就等于外态已达成」写成默认、却还没分开内态与外态的人：把「并行自动化须同时报内态数字、外态核对与断链天数」写成门禁，区别于过夜司令塔，以及确信度标定。",
     categories: [
@@ -50585,7 +50585,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "711",
     slug: "suwa-306q-3run-81pct08",
-    title: "suwa_nobu：Haiku 5.5 自报确信度——306 问×3 回；单题会晃，但 ≥0.8 时约八成对",
+    title: "新闻标题分类的自报确信度",
     summary: "个人（suwa_nobu）；披露对 livedoor 新闻标题 9 选 1 共 306 问，用 Claude Haiku 5.5 连问 3 回并让模型自报概率：总正确率约 60.8%／61.1%／60.5%；自报 ≥0.8 的题约 122／116／119，其中正确率约 83.6%／80.2%／81.5%。同题概率幅中央 0.10，改答案 57 题（19%）；≥0.8 线来回跨 63 题（21%）。「3 回一致」249 题正确率仅 66.3%。页上链公司站／招聘与 HN 原文。不代你同样标 ≥0.8，就等于下一题库也会约八成对，或 306×3 表也总会同形。",
     description: "面向已经把「模型自报很高就等于可自动采纳」写成默认、却还没分开单题晃动与高分段正确率的人：把「确信度门禁须同时报 ≥0.8 正确率、单题幅与跨线比例」写成门禁，区别于静默停机外态核对，以及自治体 PoC 条件验证。",
     categories: [
@@ -50673,7 +50673,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "712",
     slug: "ghost-31scen-1086py-18thm",
-    title: "GhostDrift／AIアシュアランス：自治体 AI 发送前·采用前·后续利用——31 合成场景；Python 1,086；Lean 18 定理",
+    title: "发送前与采用前及后续利用验证",
     summary: "团队（株式会社AIアシュアランス／GhostDriftTheory，与クラウドシエン共同）；披露把「发送前／回答采用前／后续利用」三条验证串在同一案件与同一回答上的自治体 AI 統合 PoC：31 件合成场景执行并再验证；含既有 PoC 回归的 Python 测试 1,086 件成功；Lean 統合模型 18 定理检查成功。文内强调这些数字不是 1,086 次真实 AI 回答或事故防止率。页上链 PR Times 与公司站；GitHub 参照实现／组织页本机偶发 504，已不列入可达导流。不代你同样接三条验证，就等于下一行业也会 31／1,086／18，或就可宣称已防事故。",
     description: "面向已经把「模型答对就等于业务可用」写成默认、却还没分开正确与可使用条件的人：把「高责任域须同时报发送前／采用前／后续利用是否可再验证」写成门禁，区别于确信度标定，以及静默停机外态核对。",
     categories: [
@@ -50761,7 +50761,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "713",
     slug: "daisuke7-28klib-517test-22fail",
-    title: "daisuke7：一行代码都不读做 Flutter 麻将——lib≈2.8万行；测试约517件；失败日志22件；审计先10种后11种重复",
+    title: "不读代码完成的麻将对局应用",
     summary: "个人（daisuke7）；披露约4个月用 Claude Code 做 M 联盟规则麻将 App，自己一行代码都不读：最终 lib/ 约28,000行、测试约13,000行（517件·69文件）、docs/11本；约4个月后首次推 GitHub 时约47,000行。failure-log 留可讲述失败22件；9月审计显示规则重复10种、公开前审计计算重复11种。页上链 GitHub 仓。不代你同样不读代码，就等于下一套也会28k/517/22，或重复也总会10+11。",
     description: "面向已经把「不读代码也能交付」写成默认、却还没分开人判与可执行规格的人：把「零读码开发须同时报测试件数、失败日志与重复审计」写成门禁，区别于交付作者门，以及过夜司令塔。",
     categories: [
@@ -50849,7 +50849,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "714",
     slug: "silent-750cmt-2171log-232ex",
-    title: "silentmalachite：与 Agent 合做 ISO Prolog——16天约750提交；Logtalk 2171中2136；手册例232全过",
+    title: "代理协作完成的逻辑语言解释器",
     summary: "个人（silentmalachite）；披露用 Claude Code 等与 Agent 合做 C++20 的 Mosa Prolog：自2026-10-24首提交到11-08发0.1.0，约16天约750提交、C++约4万行；Logtalk 适合性套件2171件中2136件（98.4%）通过；日英手册合计232例失败0。页上链 GitHub 仓／Release。不代你同样合做，就等于下一语言也会750／98.4%／232，或16天也总会同形。",
     description: "面向已经把「Agent 写语言运行时就等于可发版」写成默认、却还没分开本机绿与发行物复验的人：把「Agent 协作发版须同时报适合性套件、手册例与发行物展开复验」写成门禁，区别于零读码个人 App，以及双方向 Agent 复核。",
     categories: [
@@ -50937,7 +50937,7 @@ kit_config 是不是约 10 个开关、发行默认是不是不停只记：{{whe
   {
     id: "715",
     slug: "fromage-40man-13to87-84pct",
-    title: "fromage_sea：动物照片出牌——成本差−4胜率13%、+4为87%；Haiku单盘面59%，加先读到84%",
+    title: "动物照片卡牌的程序成本强度",
     summary: "个人（fromage_sea／NTT东日本藤田，文内写个人兴趣）；披露用 Claude Haiku 5.5 从动物照片生成卡牌，但「强度」用程序成本式而非AI自定：无API对战合计40万战以上；成本差−4胜率13%、+4为87%；「捨身」伤害最高但胜率49.5%最低。Haiku只拿盘面时对规则CPU约59%（100战），加上先读算出的胜率后84%（p<0.001）。未见外链硬导流。不代你同样测，就等于下一套也会40万／13–87／84。",
     description: "面向已经把「让模型定数值就等于平衡」写成默认、却还没分开生成与强度验收的人：把「AI出玩法资产须同时报成本／对战胜率与模型输入边界」写成门禁，区别于语言运行时发版，以及双方向 Agent 复核。",
     categories: [
@@ -51025,7 +51025,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "716",
     slug: "kokagex-5bug-4hit-47gb",
-    title: "kokagex：双方向复核——单人漏掉的4个坑双方向3/3找到；5题磁盘47GB；约7100万token到周上限88%",
+    title: "提交之后的双方向子代理复核",
     summary: "个人（kokagex）；披露写完代码后立「ミュトス／ロゴス」两方向子代理复核：从git挑5个事后才修的坑，各跑3回——单人评审3回都漏的4个，双方向3回都找到；再入庫后自动删除曾约19秒误删，加5分钟窗时ロゴス指出超时会跳过判定。课题盘占约47GB（5份cargo）、空闲<8GB停跑；记录约7100万token时已到自定周上限（周1成）的88%。页上链 dual-brain 手本出处。不代你同样双开，就等于下一仓也会4/5／47GB／88%。",
     description: "面向已经把「多开一个评审会话就等于更稳」写成默认、却还没分开同向重复与异向证据的人：把「双方向复核须同时报异向命中、汇总是否丢原因句与资源上限」写成门禁，区别于卡牌强度验收，以及官方游戏资产流水线。",
     categories: [
@@ -51113,7 +51113,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "717",
     slug: "asobiai-70mon-10boss-79gen",
-    title: "Asobiai：官方迷宫怪动画——70种怪+10Boss；66体用79次生成含13次重做；3个子代理分摊",
+    title: "官方迷宫怪物的分代理动画",
     summary: "团队（Asobiai／アソビ，官方游戏投稿站）；披露用 Claude Code＋PixelLab 给《ちいさな勇者のダンジョン》做动画：主角4动作，怪物70种与Boss10体待机；新增66体用79次生成、其中13次重做，51体原样采用、15体重排帧。3个子代理分摊codex出图→抠图→128px→PixelLab；角色动画合计约102次。页上链 asobiai.games 与 PixelLab。不代你同样流水线，就等于下一作也会70／10／79，或重做也总会13。",
     description: "面向已经把「批量叫生成API就等于资产完成」写成默认、却还没分开生成次数与可入库帧的人：把「Agent资产流水线须同时报生成次数、重做比与子代理分摊」写成门禁，区别于双方向代码复核，以及卡牌强度验收。",
     categories: [
@@ -51201,7 +51201,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "718",
     slug: "sbkm-322-22k-166pass",
-    title: "sbkm：AI 合做个人笔记 App——约2.2万行里默失败322处；166处 pass 改记日志；机械改316处",
+    title: "笔记应用里静默失败的日志化",
     summary: "个人（sbkm）；披露用 Claude Code 合做 Windows 个人笔记 App（单文件约2.2万行）：删除失败仍提示「删除了」、写入丢失与标签清空都无人知晓；清点「接住失败却默默继续」共322处（其中裸 except 45处、散在202个函数）；手改关键6处、其余316处用脚本改（166处 pass→记一行、91处补记日志、59处同类收口），关进 exe 构建门。不代你同样清点，就等于下一 App 也会322／316／166，或关口也总会拦住返回值漏看。",
     description: "面向已经把「测绿／能打开」当成可交付、却还没分开「失败是否被人看见」的人：把「Agent 合做桌面 App 须同时报默失败出口清点、可见失败出口与构建门」写成门禁，区别于双方向代码复核，以及游戏资产流水线。",
     categories: [
@@ -51289,7 +51289,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "719",
     slug: "starken-2632env-838sess-834dot",
-    title: "starken：桌面侧栏空会话——session-env 积2632件；实会话838里834件只有「.」；对上 Remote Control issue",
+    title: "桌面侧栏空会话的来源核对",
     summary: "个人（starken）；披露 Claude 桌面 App 侧栏冒出大量空会话：~/.claude/session-env/ 积到2632件元数据；测 ~/.claude/projects/ 下实会话838件中834件只有定时「.」痕迹，说明15分 LaunchAgent 并没有每次新开会话；本地桌面会话仓仅33件也对不上。对照上游 issue#31487（报告者环境1097件）。不代你同样开 Remote Control，就等于下一台也会2632／838／834，或侧栏也总会同形。",
     description: "面向已经把「侧栏会话列表」当成真实会话清单、却还没分开元数据残留与对话正文的人：把「Remote Control／定时 CLI 并用须同时报 session-env 残留、实会话痕迹与侧栏可见子集」写成门禁，区别于 session 检索，以及静默停机。",
     categories: [
@@ -51377,7 +51377,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "720",
     slug: "sera-156call-154hit-40run",
-    title: "masamitsu_sera：--restricted 下 /技能名 未展开——156次里154次靠模型自找；常驻 Mac 40次都在该状态",
+    title: "受限调用下技能斜杠未展开",
     summary: "个人（masamitsu_sera）；披露常驻 Mac 上用 claude -p --restricted 调仓库技能：本以为 /技能名 会展开 SKILL.md，实际未当斜杠命令解析；9/26–10/2 常驻40次都在该状态。笔记本同形调用156次中154次模型自己 Grep/读到 SKILL.md（125次先 Grep；工具调用中位约3次），2次失手。改为直接注入 SKILL.md 正文后，选段工具调用中位约10→5。不代你同样 --restricted，就等于下一环境也会156／154／40，或斜杠也总会静默降级。",
     description: "面向已经把「写出了 /技能名」当成技能已注入、却还没分开斜杠解析与模型自寻的人：把「受限 claude -p 调技能须同时报是否展开、自寻命中与失败样本」写成门禁，区别于技能安全扫描，以及交付作者门。",
     categories: [
@@ -51465,7 +51465,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "721",
     slug: "orca-2line-57final-19note",
-    title: "orca_forge：短视频指示压成2行——scene_final 被读57次；制作笔记19次；细则改由仓库规矩补齐",
+    title: "竖屏短视频收尾指示的两行版",
     summary: "个人（orca_forge）；披露把竖屏短视频收尾指示从细项清单压成2行（只要成品规格+台本路径）后，Codex 自己去读仓库：src/scene_final.py 57次、docs/ep10/production_notes.md 19次、docs/OPENING.md 16次等，并补上作者细嘱时漏掉的收尾检查。页写转载自 forge.workstyle.tech。不代你同样压成2行，就等于下一片也会57／19／16，或细则也总会被仓库规矩补齐。",
     description: "面向已经把「提示词越写越长」当成可控、却还没分开会话指示与仓库规矩的人：把「短视频 Agent 收尾须同时报指示行数、仓库文件读取次数与人仍要补的人物流程」写成门禁，区别于零读码大 App，以及卡牌强度标定。",
     categories: [
@@ -51553,7 +51553,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "722",
     slug: "genda-5pass-12min-131loc",
-    title: "GENDA／ikenyal：陌生练习 App 上比 MagicPod 与 Playwright——两边都5连过；约12分对约6分；代码约131行",
+    title: "MagicPod 与 Playwright 对照",
     summary: "团队（GENDA 技术博客／ikenyal）；披露用 Claude Code 在自建「陌生」练习 Web 上对比 MagicPod MCP 与 Playwright：正常系+错误系都要求5连成功；MagicPod 约12分（29+31步），Playwright 约6分（测试代码约131行）；两边中途各失败1次后由 Claude 自修。预备实验还写出 Playwright 输入拼接约10次里1次、修后5连过。不代你同样对比，就等于下一 App 也会12分／6分／131行，或5连过也总会同形。",
     description: "面向已经把「Claude 一发写过」当成 E2E 可维护、却还没分开工具可读性与重复执行稳定性的人：把「Agent 写 E2E 对比须同时报5连过、耗时／体量与业务规则读出数」写成门禁，区别于多 PR 吞吐，以及费用／Effort 叙事。",
     categories: [
@@ -51641,7 +51641,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "723",
     slug: "sk8jp-55ok-34miss-32cmp",
-    title: "sk8jp：无分支保护的 private 仓——重做 Claude Code + pre-push 双层守卫；案 55 件全过，旧钩 34 件不符",
+    title: "无保护主分支的双层推送守卫",
     summary: "个人（sk8jp）；披露在未开 GitHub 分支保护的 private 仓上，用 Claude Code PreToolUse 钩与 Git pre-push 钩双层拦住误 push main：补洞案经两段 Agent 审后否决「字符串堵尽」；重做后判定试验 55 件案全合预期（旧钩 34 件不符）、入口对打 32 件案全过。不代你同样重做，就等于下一仓也会 55／34／32，或钩也总会拦住刻意绕行。",
     description: "面向已经把「装了 push 钩」当成 main 已受保护、却还没分开「字符串解析能否穷尽写法」的人：把「Agent 合做私仓守卫须同时报双层职责、外钩拆除门与钩失败倒向确认」写成门禁，区别于技能安全扫描，以及默失败出口清点。",
     categories: [
@@ -51729,7 +51729,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "724",
     slug: "rjchiba-1334to501-805tile",
-    title: "rjchiba：Claude Code 优化 IIIF Image Server——info.json p50 1334→501ms；大图块 2472→805；空闲首请求 7713→1874",
+    title: "IIIF 图像服务的测改再测",
     summary: "个人（rjchiba）；披露用 Claude Code 在自研数字档案 coloda 的 IIIF Image Server（Cloud Run 1vCPU・512Mi）上自走「测→改→再测」：info.json p50 约 1334→501ms、大图块 p50 约 2472→805、空闲后首请求约 7713→1874；1 人错误率约 18–29% 收到 20 人 0 件、吞吐约 18.4→55.5 要求/秒。不代你同样交给 Agent，就等于下一服务也会 1334→501／805／1874，或改动也总会无需人核对。",
     description: "面向已经把「Agent 改完延迟降了」当成可交付、却还没分开「人是否仍能核对每步判断」的人：把「Agent 合做图服优化须同时报基线对照、负载错误率与人核判断」写成门禁，区别于 E2E 写测对时，以及本地小模型吞吐。",
     categories: [
@@ -51817,7 +51817,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "725",
     slug: "pcnoto-18d-3dup-36man",
-    title: "pcnotonari：Claude Code 写出的重复编号警告——挂在 36 万字目录顶上 18 天；双重编号 3 件无人读",
+    title: "重复编号警告改到必读出口",
     summary: "个人（pcnotonari）；披露用 Claude Code／自动化给约 36 万字决定账本自动目录并挂上重复编号警告：警告本身正确且持续显示，但双重编号 3 件在约 18 天内无人读到；根因是警告出口放在「自己规定勿通读」的目录顶。后改为并入每次必读的点检出口。不代你同样加警告，就等于下一账本也会 18／3／36 万，或挂上就等于已被人看见。",
     description: "面向已经把「警告有输出」当成风险已被看见、却还没分开「出口是否在人必经之路」的人：把「Agent 合做长文账本警告须同时报出口位置、必读点检与误警告修正」写成门禁，区别于静默停机监护，以及 Remote Control 会话残留。",
     categories: [
@@ -51905,7 +51905,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "726",
     slug: "oiloil-15run-87avg-4skill",
-    title: "oiloil：4 种 UI 设计 Skill + 无 Skill 同题 15 次——无 Skill 均分 84.3 且仅 1/3 动作全过；有 Skill 三轮动作全过",
+    title: "有无界面技能的同题生成对照",
     summary: "个人（oiloil）；披露为减「AI 模板感」自研 Oil UI Skill，并与另 3 种公开 UI Skill及无 Skill 在同一课题、同一模型上各 3 次共 15 次生成：无 Skill 外观均分约 84.3、仅 1/3 轮 6 项动作全过；Oil UI 免费版均分约 87.0 且 3/3 全过。不代你同样 15 次，就等于下一课题也会 84.3／87.0／15，或有 Skill 就等于已无障碍达标。",
     description: "面向已经把「Agent 出了能点的页面」当成设计可交付、却还没分开「有无 Skill 对照与实机无障碍检查」的人：把「Agent 合做 UI 须同时报 Skill 对照表、实机截图门与无障碍项」写成门禁，区别于短视频 2 行指示，以及游戏资产流水线。",
     categories: [
@@ -51993,7 +51993,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "727",
     slug: "percy-3skill-orders-codex",
-    title: "DMM／percy_tech：Codex + 3 个 Skill 养表元数据——合并 Skill 输出不稳后拆成调查／使用调查／指南撰写",
+    title: "空订单表元数据的先查后写",
     summary: "团队（DMM Data Blog·percy_tech）；披露用 Codex 定期执行 + 3 个 Skill（说明调查／使用调查／指南撰写）为表与列养 OKF 风元数据：先做合并 Skill 验证时「每次输出都不同、达不到可用」；拆成「先查后写」并把进度／版次印写回文件后，以空 EC orders 为例跑通 description→用途包→usage.md。不代你同样 3 Skill，就等于下一数仓也会同形稳定，或定期执行也总会免招聘／费用门。",
     description: "面向已经把「给 Agent 一份大 Skill」当成元数据可自治、却还没分开「调查与撰写职责」的人：把「Agent 合做数仓元数据须同时报 Skill 拆分理由、进度版次与未确认事项」写成门禁，区别于 MCP 起票，以及费用／Effort 调参。",
     categories: [
@@ -52081,7 +52081,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "728",
     slug: "mugenweb-2over-3kind-5mb",
-    title: "mugen_web：AI 稿断定过强 2 处——主张先分 3 类；「5MB」与「Zenn 不重发」都改成未确认",
+    title: "稿件断定过强处的三类核对",
     summary: "个人（mugen_web）；披露用 Claude Code 写 Zenn／Kindle 后自审：断定过强描述 2 处（樱花上传「上限 5MB」、以及「Zenn 不会自动重发卡住的本」）；把主张先分成环境事实／外部规格／推测 3 类再核。不代你同样分 3 类，就等于下一稿也会 2／3／5MB，或改写后就等于已无过强断定。",
     description: "面向已经把「AI 写完且口气一致」当成可发布、却还没分开「哪句已核、哪句仍是推测」的人：把「Agent 合做事实核验须同时报主张分类、出处与未确认改写」写成门禁，区别于趋势周报结论审计，以及依赖空包伪完成。",
     categories: [
@@ -52169,7 +52169,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "729",
     slug: "udm-11src-0err-70d",
-    title: "udm：Claude Code 趋势周报审计——对照出典 11 本金额日期 0 错，最抢眼结论却对不上",
+    title: "趋势周报出典与结论的核对",
     summary: "个人（udm）；披露把趋势周报交给子代理后自审：可对照出典 11 本里金额与日期错误 0 件，但最抢眼结论在海外出典对不上；「日本还没有」多处只凭搜不到，1 处搜 1 次就崩；出典年龄中位约 70 日。不代你同样加验证役，就等于下一周报也会 11／0／70，或验证役就等于结论已稳。",
     description: "面向已经把「有出典且数字对」当成结论可发、却还没分开「事实对」与「潮流命名是否过强」的人：把「Agent 合做周报须同时报对照范围、过强判定与未检测／不在」写成门禁，区别于出版前主张三类核验，以及确信度预测台账。",
     categories: [
@@ -52257,7 +52257,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "730",
     slug: "daichi-56song-18-17-21",
-    title: "dev_daichi：Muse Vault 不把密码写进聊天——3 个播放列表共 56 曲（18／17／21）全进；首轮误落 Spotify",
+    title: "播放列表的保险库登录迁入",
     summary: "个人（dev_daichi）；披露用 Meta Muse 做须登录的状态变更任务：凭 Secure Vault 注入登录，不把密码写进聊天；3 个播放列表共 56 曲按 18／17／21 全进且无缺。首轮因未指定服务误建在 Spotify，改写成 Apple Music 规格后重做。不代你同样交 Vault，就等于下一任务也会 56／18／17／21，或 Vault 就等于已可免人核。",
     description: "面向已经把「Agent 说做完了」当成登录任务可交付、却还没分开「凭证怎么交」与「完成条件是否可数」的人：把「Agent 合做登录变更须同时报 Vault／批准卡、服务锁定与人侧验收」写成门禁，区别于技能权限收窄，以及合并 Skill 拆分。",
     categories: [
@@ -52345,7 +52345,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "731",
     slug: "eliri-139file-3800loc",
-    title: "eliri：Codex 开跑约 1 个月——首个博客 PR 139 文件／约 3800 行；残留 Kamal 配置差点当正用",
+    title: "残留 Kamal 与实际 Render 不符",
     summary: "个人（eliri）；披露约 1 个月用 Codex 做 AI 驱动开发：首个博客 PR 改 139 文件、增约 3800 行，自己跟不上理解；后改「可复查单位切分＋AGENTS.md／Skills」。改 ReNovo 时因仓库残留 Kamal 文件，Codex 按 Kamal 前提开 PR，而实际部署在 Render。不代你同样开大 PR，就等于下一仓也会 139／3800，或有 AGENTS.md 就等于配置已与实部署一致。",
     description: "面向已经把「AI 很快出了大 PR」当成可合并、却还没分开「人是否跟得上理解」与「仓库残留配置是否当正用」的人：把「Agent 合做驱动开发须同时报变更粒度、实部署核对与理解负债」写成门禁，区别于多 PR 吞吐竞赛，以及零读码大 App。",
     categories: [
@@ -52433,7 +52433,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "732",
     slug: "aima-14robots-1705-201",
-    title: "AIMA／ikioideok：14 家服务 robots.txt 对照 AI 机器人——1,705 条回答里 note 被引 201，X／Zenn 为 0",
+    title: "回答出典对照机器人抓取规则",
     summary: "团队（株式会社 AIMA／ikioideok）；披露数「选 AIO 公司」型提问共 1,705 条回答的出典后，再取 14 家服务 robots.txt 判 AI 机器人能否读：note 被引 201，X・Yahoo!知恵袋・Zenn 为 0；SNS 多对 AI 机器人全拦、对搜索机器人放行。不代你同样数 1,705，就等于下一题也会 14／1705／201，或 robots 放行就等于一定会被引用。",
     description: "面向已经把「发了 SNS」当成会被 AI 回答引用、却还没分开「人看得见」与「AI 机器人是否被 robots 放行」的人：把「Agent 合做 AIO 选址须同时报引用计数、robots 矩阵与例外路径」写成门禁，区别于金融 MCP 取数，以及 Gap／CVE 扫描。",
     categories: [
@@ -52521,7 +52521,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "733",
     slug: "ykstudio-19top-13num-155x",
-    title: "yk_studio：嫌的不是「AI 写的」——上位 19 本里 13 本标题有数字；个人开发×AI 同比 15.5 倍已饱和",
+    title: "数字标题与证据图的代笔调整",
     summary: "个人（yk_studio）；披露先实查再改自家 AI 代笔流程：上位 19 本里 13 本标题含具体数字；装饰图 0 张／证据图才留；Qiita「个人开发」×AI 同比约 15.5 倍已供给过剩。不代你同样数 19 本，就等于下一稿也会 19／13／15.5，或去掉装饰图就等于已无 AI 味。",
     description: "面向已经把「不像 AI 写的」当成可发布、却还没分开「口气像人」与「句句有人核验」的人：把「Agent 合做技术文须同时报证据图／数字标题与人侧事实核」写成门禁，区别于出版前主张三类核验，以及子代理趋势周报审计。",
     categories: [
@@ -52609,7 +52609,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "734",
     slug: "ruri-7spec-33k-1568",
-    title: "ruri：code as spec——到手 7 本共 3.3 万字：弃 15%／迁码测 68%／ADR 9%／留文 8%",
+    title: "可读代码替代自然语言规格正本",
     summary: "个人（ruri）；披露把「自然语言 spec 当正」改成「可读代码当 SSoT」：到手已实现完的 spec 7 本共约 3.3 万字，数出弃 15%、迁入测试·型·代码 68%、ADR 9%、仍留文 8%；曾收约 2,000 行 spec-kit PR 读不动。不代你同样数 7 本，就等于下一仓也会 7／3.3万／15／68，或 code-as-spec 就等于已无陈旧正本。",
     description: "面向已经把「仓库里有详细 spec」当成 Agent 可跟、却还没分开「人能核的正」与「自然语言正会陈旧」的人：把「Agent 合做 SDD 须同时报正本位置、丢弃比例与生成说明不回写」写成门禁，区别于 UI Skill 评测对照，以及合并 Skill 拆分。",
     categories: [
@@ -52697,7 +52697,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "735",
     slug: "figluiz-571pr-200cr-82pct",
-    title: "figueiredoluiz：一人 OSS 按团队标准审——两仓 PR 571／合 548；CodeRabbit 行评 200 件处置 82%",
+    title: "一人开源双仓的多层审查流程",
     summary: "个人（figueiredoluiz）；披露一人维护 vitest-dedup／cuke-dedup：2026-09〜11 两仓 PR 571、合 548；CodeRabbit 行评 200 件中 164（82%）已确认修正或已回复；本地 Codex→Claude→必要时 CodeRabbit CLI，人只留维护者判断。不代你同样堆 571，就等于下一仓也会 571／200／82，或四层审就等于可免人合。",
     description: "面向已经把「AI 写了又 AI 审了」当成可合、却还没分开「多层检出」与「维护者仍要判设计债」的人：把「Agent 合做一人 OSS 须同时报门禁层、处置率与人侧合入判断」写成门禁，区别于多 PR 吞吐竞赛，以及学习叙事首月大 diff。",
     categories: [
@@ -52785,7 +52785,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "736",
     slug: "nexus-150crore-10x-2626",
-    title: "nexus-tools：₹150 crore 被写成 150 million——做印式金额 grounding；判定集 26／26，纯字符串仅 10／26",
+    title: "crore 误作 million 的换算检查",
     summary: "个人（nexus-tools）；披露为抓「crore→million」类 10 倍错做 IN Number Grounding：命名错型后对判定集 26 问 26／26，同集纯数字串搜索仅 10／26；测试 35 件；并作 MCP 三工具。不代你同样跑 26，就等于下一语种也会 26／26／10，或 grounding 就等于实文已零错。",
     description: "面向已经把「摘要里的数字能在原文搜到」当成金额已核、却还没分开「字面命中」与「单位换算是否同值」的人：把「Agent 合做金额核验须同时报错型名、换算对照与判定集限度」写成门禁，区别于出版前主张三类核验，以及趋势周报出典审计。",
     categories: [
@@ -52873,7 +52873,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "737",
     slug: "nhiraoka-5d-169m-1333",
-    title: "n_hiraoka：5 天三 AI 做出 NAS 搜索——约 169 万文件名 12〜15 秒；无 sudo 一次 1,333 件",
+    title: "无 sudo 的 NAS 文件名遍历",
     summary: "个人（n_hiraoka）；披露 11/4〜8 共 5 天，用 Muse／ChatGPT／Claude（クロ）做成 Synology 搜索并上 PyPI／MCP Registry：文件名遍历约 169 万约 12〜15 秒；索引近空约 2.8MB→小共享夹 47 件；Web API 无 sudo 一次 1,333 件；终到 0.9.0（测 162）。不代你同样 5 天，就等于下一 NAS 也会 5／169万／1333，或有 MCP 就等于检索已可免人核。",
     description: "面向已经把「MCP 已发布」当成检索可交付、却还没分开「谁设计／谁实现／谁监督」与「索引是否为空」的人：把「Agent 合做跨 AI 交付须同时报角色交接、索引实态与人侧登录会话」写成门禁，区别于 MCP 起票／金融 MCP，以及过夜常驻秘书编排。",
     categories: [
@@ -52961,7 +52961,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "738",
     slug: "nttdata-45w25l-5th-best8",
-    title: "NTT DATA TECH：Agentic Football Cup——Alpha 70 场 45 胜 25 败联赛 A 第 5；亚洲进 16 并进八强",
+    title: "门户选阵参赛的足球代理杯",
     summary: "团队（NTT DATA TECH／kashiwabaray）；披露只靠门户选阵型／模型／提示词、不写代码参赛：Alpha 季联赛 A 70 场 45 胜 25 败、得 232／失 162、无失点 14、积分 1,702、第 5；同期亚洲大会进 16 强决赛圈并进八强。不代你同样排 70 场，就等于下一季也会 45／25／第5，或只改提示词就等于必进八强。",
     description: "面向已经把「多智能体演示」当成可复用、却还没分开「赛前设定可改」与「场上不可直接控人」的人：把「Agent 合做多智能体对抗须同时报赛前设定门禁、成绩口径与人侧部署纪律」写成门禁，区别于游戏资产生成流水线，以及多 PR 吞吐竞赛。",
     categories: [
@@ -53049,7 +53049,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "739",
     slug: "satou-10d-20req-9field6",
-    title: "satouyoshiaki：把 Muse 交给 50 代母亲 10 天——主要委托 20+、9 个领域、6 种用法型",
+    title: "母亲十日使用 Muse 的委托整理",
     summary: "个人（satouyoshiaki）；披露把 Muse 交给母亲 10 天（约 10/29〜11/7）：主要委托 20 件超、分 9 个领域、归纳 6 种用法型；门铃置换里出过 3 案草稿、核到 40,040 日元与区补助约 3 万。不代你同样交 10 天，就等于下一户也会 20／9／6，或有助理就等于可代人下单。",
     description: "面向已经把「家里人会聊 AI」当成可交付、却还没分开「持续秘书型委托」与「最终判断仍在人」的人：把「Agent 合做家庭助理须同时报用法型、人侧终裁与证据留存」写成门禁，区别于音乐库入库，以及过夜编排值守。",
     categories: [
@@ -53137,7 +53137,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "740",
     slug: "shirochan-4sess-62t-9test",
-    title: "shirochan：自组 Claude Code 长跑 harness——4 会话 62 回合过 4 功能／9 测；Stop 钩救回未跑测就收工",
+    title: "长跑套件里收工前的测试钩子",
     summary: "个人（shirochan）；披露只用 CLAUDE.md／钩子／权限与 claude -p 仿长跑 harness：MAX_SESSIONS=5 下 4 会话共 62 回合、约 5 分 20 秒让 4 功能 passes:true、9 测全过；会话 1 曾未跑测就要收工，被 Stop 钩拦回才补测提交。不代你同样开 4 会话，就等于下一仓也会 4／62／9，或有 Stop 钩就等于测改写已封死。",
     description: "面向已经把「会写 hooks」当成可无人交付、却还没分开「完成由钩判定」与「deny 仍可能被旁路」的人：把「Agent 合做会话间 harness 须同时报完成门禁、测改写封锁与人侧复验」写成门禁，区别于过夜编排值守，以及写测／TDD worktree 竞赛。",
     categories: [
@@ -53225,7 +53225,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "741",
     slug: "claire-16task-opus7-son9",
-    title: "claire_ai：背后委托涨到 16 种——按「要不要判断」拆成 Opus 7／Sonnet 9",
+    title: "背后委托按判断需要拆模型",
     summary: "个人（claire_ai）；披露 Claude Code 一键背后作业涨到 16 种后，于 2026-08-25 按「要不要判断／比较」只定一条标准：Opus 7、Sonnet 9。不代你同样数 16 种，就等于下一套也会 16／7／9，或拆模型就等于已更省更准。",
     description: "面向已经把「全部丢给最强模型」当成省心、却还没分开「要判断的作业」与「步骤已定的作业」的人：把「Agent 合做背后作业路由须同时报作业清单、分流标准与人侧抽检」写成门禁，区别于费用／Effort 刷榜，以及双 CLI 对时。",
     categories: [
@@ -53313,7 +53313,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "742",
     slug: "shimpei-9to3d-lt4-unver",
-    title: "shimpeiws：业务 Agent 本体循环原型——完工到开票中位 9 天→3 天达 <4；错票率仍 unverified",
+    title: "完工至开票的业务改善循环",
     summary: "个人（shimpeiws）；披露按 Ontology 思路做业务改善循环原型：目标把完工→开票中位从 9 天压到 <4；实模型全环跑后中位 9→3 且标 attained，但错票率证据不齐综合 unverified。不代你同样跑一环，就等于下一业务也会 9→3，或中位达标就等于业务结果已核。",
     description: "面向已经把「Agent 发了提醒」当成业务改善、却还没分开「操作成功」与「业务结果可核」的人：把「Agent 合做业务循环须同时报目标口径、证据与 unverified 条件」写成门禁，区别于 MCP 起票，以及确信度／伪完成台账。",
     categories: [
@@ -53401,7 +53401,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "743",
     slug: "yasuaki-del2-0875-0912",
-    title: "yasuakiomokawa：把 Agent 技能做成可数的验收——删掉 2 个技能后 grader 合格率 0.875→0.912",
+    title: "技能完成标准的可执行验收",
     summary: "个人（yasuakiomokawa）；披露把 define-done 的验收标准改成可执行测试后，用 with／without 与各 case 3 run 的 grader 门禁改技能，并删掉已不再需要的 2 个技能：define-done 的 grader 单位合格率从 0.875 升到 0.912；invite-owner 题 3 run 全通且 verify exit 0。不代你同样跑 3 run，就等于下一仓也会 0.875→0.912，或删技能就等于已更稳。",
     description: "面向已经把「写了 SKILL.md」当成技能已生效、却还没分开「可数的检测」与「感觉上更好」的人：把「Agent 合做技能验收须同时报 grader 口径、回归门禁与人侧封板」写成门禁，区别于技能安全扫描清单，以及写测／TDD 竞赛。",
     categories: [
@@ -53489,7 +53489,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "744",
     slug: "okzaq-buf10-12sched",
-    title: "okzaq：用 claude -p 试跑 SNS 周更技能——Buffer 预约列表默认只回 10 件，实际已有 12 件",
+    title: "Buffer 周更预约列表的分页",
     summary: "个人（okzaq）；披露把自用 X／Threads 周更预约做成 Claude Code 技能后，用 claude -p 多轮对接真实 Buffer API：预约／删除都成功，但 list 仍显示「10 件预约中」；翻页后实为 12 件，曾误判 X 还空 2 档。不代你同样试跑 1 次，就等于下一账号也会 10／12，或有离线检查就等于分页已门禁。",
     description: "面向已经把「脚本单测绿了」当成可上架技能、却还没分开「离线检查」与「真实列表分页」的人：把「Agent 合做预约技能试跑须同时报分页口径、空档判断与人侧抽检」写成门禁，区别于费用／Effort 刷榜，以及多 PR 吞吐。",
     categories: [
@@ -53577,7 +53577,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "745",
     slug: "jskn-4kb-60pm-72h",
-    title: "jskn_d：给外置 Agent／脚本开同一条状态车道——单行 <4KB、每源 60 件／分、等待超 72 小时不进「自己的班」",
+    title: "Turnlane 外置源状态上报口",
     summary: "个人（jskn_d）；披露在 Turnlane 为无 hooks／难读会话的外置 Agent 与脚本增加 report 口：CLI／MCP／HTTP 三入口同型写入 spool；单行 <4KB、每源每分超 60 件丢弃、等待超 72 小时不进「自己的班」；report 自 0.8.0、scheduled 自 0.8.1。不代你同样接 1 个源，就等于下一台也会 4KB／60／72，或有报告口就等于内容已核实。",
     description: "面向已经把「外置 Agent 在跑」当成可值班、却还没分开「自我申报状态」与「形与长度以外不可核」的人：把「Agent 合做跨工具状态车道须同时报写入规程、限流与人侧核验」写成门禁，区别于 MCP 起票流水线，以及过夜编排值守。",
     categories: [
@@ -53665,7 +53665,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "746",
     slug: "nakanishi-30s24-lod771",
-    title: "nakanishitf：PLATEAU×Blender×Muse 做实在空间影像——成品约 30 秒／24fps；八王子 LOD2 仅约 7.71 km²",
+    title: "PLATEAU 实在影像的网格核对",
     summary: "个人（nakanishitf）；披露对照 Muse 复现备忘与自存 PLATEAU／成片：校园箱状后改练涩谷；确认投稿用成片约 30 秒、24fps、无音轨；八王子 README 写 LOD1 全市、LOD2.0 约 7.71 km²，校园主部网格 53393247／53393257 未见 LOD2 实体。不代你同样导出 30 秒，就等于下一城也会 30／24／7.71，或有 Muse 就等于校园细部已齐。",
     description: "面向已经把「能出好看视频」当成实在空间已对齐、却还没分开「Agent 编排」与「生成模型补绘／源数据 LOD」的人：把「Agent 合做城模影像须同时报数据档位、中间产物核验与人侧对照」写成门禁，区别于游戏资产生成流水线，以及短视频两行提示词。",
     categories: [
@@ -53753,7 +53753,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "747",
     slug: "srehold-68to9-8ai4miss",
-    title: "SRE Holdings：用 Claude Code 组 QA 小队——68 条指摘收成 9 张票，AI 独见 8、范围内漏 4",
+    title: "业务软件质量小队的质疑验证",
     summary: "团队（SRE Holdings／snabeta）；披露用 leader＋多 tester＋怀疑 verifier 的技能／子代理，对社内 2 个业务 SaaS 跑 6 轮共 146 案：tester 出 68 条，约 3 成像真误报；经汇总／验证／人裁收到 9 张票，其中 8 张仅 AI 队发现，范围内另漏 4（含数值差 14.5 倍却只看版式 PASS）。不代你同样跑 146 案，就等于下一产品也会 68→9／8／4，或有验证者就等于已无漏检。",
     description: "面向已经把「AI 说发现了」当成可起票、却还没分开「可丢弃的像样误报」与「PASS 仍可能值错」的人：把「Agent 合做 QA 小队须同时报丢弃漏斗、独见／漏检分账与人侧终裁」写成门禁，区别于写测／TDD，以及确信度自评。",
     categories: [
@@ -53841,7 +53841,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "748",
     slug: "itara-800ln-54r7-40split",
-    title: "itaraiguma：给 Agent 读的文件一拆再拆——800 行上限下，7 日 54 读／测文件拆 40 本后数日又超限",
+    title: "代理可读上限下的文件拆分禁增",
     summary: "个人（itaraiguma／DevPick）；披露把 Agent 一次可读上限定在 800 行或 46,080 字节后，Antigravity 日志里 800 行台站点地图测文件近 7 日被读 54 次，344KB 需求书 14 日 122 次合计约 104 万字；10/27–31 仅测文件就拆了 40 本，11/1 再量又超限，规约还曾超系统提示上限 727 字节被截尾。后改先上 CI 禁增、设计文档 5 本另定宽松上限。不代你同样拆 40 本，就等于下一仓也会 7 日 54 读，或上 CI 就等于读次必降。",
     description: "面向已经把「超限就拆文件」当成读上下文治理已完成、却还没分开「一时压进上限」与「追记会再涨回去」的人：把「Agent 合做读限治理须同时报读次口径、禁增例外与人侧抽检」写成门禁，区别于外置状态车道，以及多 PR 吞吐。",
     categories: [
@@ -53929,7 +53929,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "749",
     slug: "horibe-ng10n-8r7ok-12drop",
-    title: "horibe：把「多练过的句子」当成「不会的句子」——按重做次数排序后，8 次里对 7 次的文排到了最前",
+    title: "苦手练习按落次优先的排序",
     summary: "个人（horibe）；披露在自做 TOEIC 学习 App 的「从苦手练起」里，若只按重做次数 DESC，合成例上 8 次重做且对 7 次的文会排到最前，而每次都错的 3 次文反而靠后。改成 score＝落次×10＋重做次后，8 次只落 1 次落到末位；并披露 AI 音素建议曾 +15／上限 +45 把 19 分音挤到 55 分音后面，后降到 +10／+25。材料侧 5 个自评槽有 2 个只覆写最新 1 件；旧记录无行下标时弃用并提示落下 12 件。不代你同样改公式，就等于下一套练习队列也总会 8／7 不再置顶，或降权重就等于排序已门禁。",
     description: "面向已经把「按重做次数排序」当成苦手队列已生效、却还没分开「练得多」与「做错得多」的人：把「Agent 合做练习排序须同时报落次口径、材料是否逐次留存与人侧抽检」写成门禁，区别于确信度／伪完成，以及数字 grounding。",
     categories: [
@@ -54017,7 +54017,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "750",
     slug: "tomi-3carr-0keep-124kzip",
-    title: "tomipetit：三家快递停运信息日更 API——AI 抽到「0 件」不信，KEN_ALL 约 12.45 万行由 Workers 自挂邮编",
+    title: "停运日更不采信空结果并挂邮编",
     summary: "个人（tomipetit）；披露用 Cloudflare Workers 每日同步雅玛多／佐川／日本邮便停运信息：抓取归 Workers、正文／PDF 归一归 AI、邮编挂载归 Workers 自备 KEN_ALL（约 12 万 4,500 行）。日本邮便 PDF 另要 determination；读失败或「有停运却 0 件」等矛盾当失败并保留旧数据；雅玛多抽到 0 件也保持旧数据。不代你同样日更 1 次，就等于下一套停运表也总会 0 件不误清，或挂上邮编就等于发运可自动拍板。",
     description: "面向已经把「AI 抽完 JSON」当成停运源已可信、却还没分开「模型读失败」与「真的无停运」的人：把「Agent 合做停运抽取须同时报 determination、0 件保旧与人侧对照官方」写成门禁，区别于事实核查周报，以及 OCR 读图。",
     categories: [
@@ -54105,7 +54105,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "751",
     slug: "yattaru-4gate-3blog-10out",
-    title: "yattaru：把事业运营交给 Claude Code 定期跑——总开关＋博客待审≥3／外联未发≥10／推送≤2／日即停产",
+    title: "事业定期草稿的总开关与上限",
     summary: "个人（yattaru）；披露用 Claude Code 定期跑人寻／博客／周复盘草稿时，先读同一 JSON：stop_all 或分区 off 即停；caps 规定博客待审≥3 不再新写、外联未发≥10 不再新造、手机推送≤2／日（失败通知另计）；审批集中到一箱且约定 AI 永不写「承认／修改／見送」状态。并披露仅凭「别的会话说继续」的上线曾被 Claude Code 危险判定拦住。不代你同样加 4 道闸，就等于下一套定期跑也总会 3／10／2 挡住堆积，或有总开关就等于不会误发外。",
     description: "面向已经把「定期跑草稿」当成运营已自动化、却还没分开「人确认得及」与「AI 可无限产稿」的人：把「Agent 合做定期运营须同时报 caps、审批箱纪律与人侧抽检」写成门禁，区别于过夜编排舰队，以及静默停机 watchdog。",
     categories: [
@@ -54193,7 +54193,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "752",
     slug: "matsush-omb148-27eng-28s",
-    title: "matsushima_a：把已登录的 Claude Code CLI 当聊天后端——OpenMausBot 0.1.148 检出 27 引擎仅 claude 可用，一次约 2.8 秒",
+    title: "OpenMausBot 的命令行聊天后端",
     summary: "个人（matsushima_a）；披露在 Ubuntu 上装 OpenMausBot 0.1.148（Node≥24），不新开付费 API Key，仅用已登录 Claude Code CLI：doctor 显示 Engines available: claude；models 列出 27 种引擎里仅 claude 为 available（默认 claude-sonnet-5、8 models）。run 创建文件任务自 CLI 启动到结束约 2.8 秒；自托管 owner trust 与 GUI 默认「Just do it」下删文件均无确认卡；MCP 许可工具 mcp__ogb__approve 缺失时曾 exit 1，同请重试 2 次同错。不代你同样接 1 次，就等于下一机也会 27 里仅 1 可用，或约 2.8 秒就等于可当生产聊天后端。",
     description: "面向已经把「聊天 App 能跑」当成本地 Agent CLI 已安全复用、却还没分开「引擎检出」与「危险操作确认是否真出现」的人：把「Agent 合做 CLI 复用须同时报可用引擎口径、确认卡路径与人侧抽检」写成门禁，区别于双 CLI 同题赛跑，以及 Remote Control 常驻。",
     categories: [
@@ -54281,7 +54281,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "753",
     slug: "midori-505plamo-frar16-6",
-    title: "midorisawa07：把 X 的 Grok 翻译换成本地 PLaMo 3——505 组全件对照，法阿报道 57 组里 Grok 16 错／PLaMo 8B 仅 6 错",
+    title: "时间线译文的 Grok 与 PLaMo 对照",
     summary: "个人（midorisawa07）；披露从 X 翻译缓存抽 505 组（外语→日 294／日→英 211），用 Grok 与 PLaMo 3 Translate 0.8B／2B／8B 全件对照：法＋阿报道 57 组错误 Grok 16、PLaMo 0.8B 23→2B 11→8B 6；事实向文 PLaMo 2B／8B 可替甚至更少改名／加戏，日常口语帖仍 Grok 更稳。不代你同样换 8B，就等于下一套时间线也会 505／16／6，或换本地译模就等于专名不再被改写。",
     description: "面向已经把「换上本地翻译模型」当成 X 译文可信已完成、却还没分开「事实报道」与「碎口语／梗」的人：把「Agent 合做译文替换须同时报语域口径、专名是否被改写与人侧抽检」写成门禁，区别于本地小模型编码助手，以及事实核查流水线。",
     categories: [
@@ -54369,7 +54369,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "754",
     slug: "noriyuk-1y-2mail-shelfdel",
-    title: "noriyuk：一年前和 Claude 搭的书评站——重审时确认邮件 1 小时 2 通、书架一摘连别人书评也删",
+    title: "推广前书评站的摘书连带删评",
     summary: "个人（noriyuk／BookConnect）；披露 2025-11 用 Claude 聊天搭站后近乎未动，2026-09 推广前重审认证：确认邮件 1 小时仅 2 通（同小时第 3 人收不到）、无退会、书架摘书会删掉该书上他人书评（自试用账号复现删掉自己 1 件书评）、Google Books 日配额约 1000 次约 50 人常规即顶、自存 API 数据或违约。不代你同样重审，就等于下一仓也会 2 通／书架误删，或换 Opus 就等于一年前洞已门禁。",
     description: "面向已经把「一年前能跑的 Claude 产物」当成仍可推广、却还没分开「当时能聊通」与「推广前风险是否可复验」的人：把「Agent 合做旧站重审须同时报可复现洞、配额口径与人侧实测」写成门禁，区别于学习叙事首 PR，以及交付作者门。",
     categories: [
@@ -54457,7 +54457,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "755",
     slug: "koto-cue3-1min-15land",
-    title: "kotocraft：英会话 AI 讲师守不住课时——从每课 3 次 CUE、每分 1 次，到剩余 60 秒静默提词才稳住 15 分起承转合",
+    title: "英会话剩余静默时的收束提词",
     summary: "个人（kotocraft／KotoCraft）；披露 Gemini Live 英会话课可选 5／10／15／25 分，讲师常偏早收束：每课约 3 次 CUE、提频到每分 1 次仍难控；监督 AI 有时滞；Part 正则切换与教材题量联动能改善进度却不等于用尽课时；后改程序当舞台监督，仅在无音空隙、剩余约 60 秒插入「进入总结」、互致问候后再「完全结束」，称 15 分起承转合才稳定落地。不代你同样上静默提词，就等于下一课也会 3 次／每分 1 次／15 分稳住，或加 CUE 就等于课时已门禁。",
     description: "面向已经把「在提示里写请在 N 分钟结束」当成课时门禁已完成、却还没分开「题量消化」与「时钟用尽」的人：把「Agent 合做实时课时须同时报提词时机、题量与时钟分账与人侧试听」写成门禁，区别于静默停机，以及过夜编排。",
     categories: [
@@ -54545,7 +54545,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "756",
     slug: "mst-hover-aurc177-3952",
-    title: "mst_design2020：HoVer「有据才答」七法对照——NLI 十一特征逻辑回归 AURC 0.177，证据网 0.225 五折全负于 LR",
+    title: "HoVer 有据才答的七法对照",
     summary: "个人（mst_design2020）；披露在 HoVer dev 资料齐全版 3,952 条（剔除预览 48）上比七种「资料依据下决定是否回答」：最好是 NLI 数字 11 个进逻辑回归 AURC 0.177；证据网（与概率传播同解的严格计算）AURC 0.225，对 Gemma-2 2B 自信（0.207）同着、对 LR 五折全负。抽掉 1 段金标后 Gemma 答案大变但自信几乎不动（约 0.445→0.443）。不代你同样上 11 特征 LR，就等于下一套多跳核验也会 0.177／0.225，或上证据网就等于已优于自信基线。",
     description: "面向已经把「给模型接上资料图／证据网」当成该拒则拒已完成、却还没分开「图结构漂亮」与「拒答校准是否真降风险」的人：把「Agent 合做有据拒答须同时报 AURC 口径、特征是否泄漏与人侧抽检」写成门禁，区别于确信度自评，以及数字 grounding。",
     categories: [
@@ -54633,7 +54633,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "757",
     slug: "tomcat-allow12-7sec-5ok",
-    title: "Tomcat-zhou：把 Claude Code「不再询问」写进 allow 的密钥清掉——样例 12 条里键形只抓 2，A+B 抓 7，安全 5 条零误报",
+    title: "许可名单中密钥的提交前扫描",
     summary: "个人（Tomcat-zhou）；披露 Yes, and don't ask again 会把整段命令写入 .claude/settings.local.json 的 permissions.allow；用 A（键形）+B（口令参数）扫样例 12 条：A 单独 2、A+B 共 7 条密、安全 5 条零误报；pre-commit 在有密时停、清完可通过。并转述报道引 Apiiro：当前文件已无的历史密 734、fork 211 仍可能残留。不代你同样上 A+B，就等于下一仓也会 12／7／5，或扫 allow 就等于历史密已门禁。",
     description: "面向已经把「点过不再询问」当成权限省事已完成、却还没分开「命令模式」与「命令里是否嵌了密」的人：把「Agent 合做 allow 清密须同时报检测器口径、pre-commit 是否真停与人侧轮换」写成门禁，区别于技能安全扫描产品评测，以及 git 钩空转。",
     categories: [
@@ -54721,7 +54721,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "758",
     slug: "hifn-5mo-4to2-30d2",
-    title: "hifn：盖上笔记本也能跑 5 个月的常驻 AI 秘书——4 体分岗后近 30 日只剩 Dot／Hash 真在聊，Slash 日志只剩重连错",
+    title: "四体常驻秘书的在岗日志复盘",
     summary: "个人（hifn）；披露用盖上的二手 NEC VersaPro（Ubuntu 24.04）+ systemd 常驻 Claude Code CLI，经 Discord／Alexa 当个人 Dot 秘书约 5 个月；初按角色拆 4 体（Dot／Hash／Slash／チルダ），近 30 日日志里真正在聊的只有 Dot 与 Hash，Slash 只剩重连错误后退役；记忆分 context／近 14 日／rules／mistakes／每晚重写的 system-inventory。不代你同样拆 4 体，就等于下一套常驻也会先见到「近 30 日只 2 体在聊」。",
     description: "面向已经把「多开几个常驻 Bot」当成角色隔离已完成、却还没分开「分岗」与「人真会找谁说话」的人：把「Agent 合做常驻秘书须同时报近窗会话日志、退役依据与人侧验收正常的范围」写成门禁，区别于过夜编码编排，以及静默停机巡检。",
     categories: [
@@ -54809,7 +54809,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "759",
     slug: "yando-monju-11to21s-7run",
-    title: "yando：Claude 推荐先别照单全收——「文殊」按钮用 Opus low 写反对意见草稿，作者试 7 次约 11–21 秒",
+    title: "输入栏按钮写出的反对意见稿",
     summary: "个人（yando）；披露做 Claude Code 输入栏上方 mod「三人寄れば文殊の知恵」：按下才用 Opus 5.5·low 读对话＋输入栏草稿，写出可直接发送的反对意见回复（约 10–20 秒）；作者同会话比 Sonnet medium／Opus high／Opus low，low 质近 high、费更低，计时试 7 次约 11–21 秒、旧提示词 3 次约 $0.02–0.03（不保证与本 mod 同分布）。不代你同样上 Opus low，就等于下一会话也会 11–21 秒或反对意见已门禁。",
     description: "面向已经把「模型给了推荐」当成可执行、却还没分开「推荐」与「人侧反对意见草稿」的人：把「Agent 合做推荐复核须同时报调用次数、延迟窗与人侧是否采纳」写成门禁，区别于双方向复核子代理，以及确信度打分。",
     categories: [
@@ -54897,7 +54897,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "760",
     slug: "shiba-10q-1clean-drill",
-    title: "shibatamago_dev：AI 写的「像真的」缺陷怎么练眼——浏览器 Python 查读钻 10 问，其中 1 问真无缺陷且全题已实跑",
+    title: "已实跑的缺陷查读浏览器练习",
     summary: "个人（shibatamago_dev）；披露做浏览器「AIコード査読ドリル」：全 10 问 Python 习题，选缺陷行或「问题なし」；10 问里 1 问真无缺陷；公开前 10 问均用 Python 实跑复现（无缺陷题须正确运行）；判定只锁「有缺陷的行」，修法作例并并列其他修法。不代你同样做 10 问钻，就等于下一批评阅眼力已门禁。",
     description: "面向已经把「AI 生成能跑」当成可合并、却还没分开「能跑」与「像真的缺陷」的人：把「Agent 合做查读训练须同时报题量、无缺陷对照题与实跑复现」写成门禁，区别于写测／TDD 主线，以及 CodeRabbit 行评流水线。",
     categories: [
@@ -54985,7 +54985,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "761",
     slug: "yskms-4kind-14case-60s",
-    title: "yskms：CLAUDE.md 只留「删了会出事」的四类——60 秒超时双对策、公开文案绑实现，行为再用 14 案测试钉死",
+    title: "菜单栏计时器说明的四类留存",
     summary: "个人（yskms）；披露为 macOS 菜单栏计时器项目写 CLAUDE.md：不写「读代码就懂的」，只留 4 类——看似冗余但不可删、试过丢弃的方案与理由、跨文件规则、公开文案与实现的绑点（如「仅 GitHub 手动更新检查」「8 语言」）；示例含 60 秒超时的双重对策；已确认事实标日期（Keychain 对话框 2026-09-30 实机）；行为再用 14 案测试固定。不代你同样写 4 类，就等于下一仓 CLAUDE.md 已门禁。",
     description: "面向已经把「有一份 CLAUDE.md」当成 Agent 记忆已完成、却还没分开「说明书」与「删了会出事／公开文案会撒谎」的人：把「Agent 合做项目记忆须同时报四类口径、日期确认与测试钉死条数」写成门禁，区别于合并 Skill，以及学习叙事首 PR。",
     categories: [
@@ -55073,7 +55073,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "762",
     slug: "oxbox-16s-600yen-3ok",
-    title: "OX-BOX：零售新事业点子用 LLM＋Web 搜索打分——样例 16 秒综合 3.0；免费扫描月费顶 600 円、改日志后 3＋1 次全成功",
+    title: "零售新事业点子的检索打分",
     summary: "个人（OX-BOX）；披露做零售向点子评分 Web：免费扫描约 16 秒给出需求／竞合同／收益／易开业 0–5 与综合（例 2026-11-09 综合 3.0）；同输入 11/7 综合 3.3、11/8 综合 3.0 因搜索变；Haiku＋web_search 最大 2 次；无有效依据 URL 则该项分空或整次拒出；加日志前生产 3 次试 1 次 502，改后 11/8 三件＋11/9 一件全成功；免费月费顶约 600 円、全日 20 件、同来源日 3 次。不代你同样上 Haiku 搜索，就等于下一点子也会 16 秒／3.0。",
     description: "面向已经把「LLM 打了分」当成点子已验证、却还没分开「有依据 URL 的分」与「搜索日变就分变」的人：把「Agent 合做点子评分须同时报依据有无、日变对照与限流口径」写成门禁，区别于事实核查流水线，以及趋势周报。",
     categories: [
@@ -55161,7 +55161,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "763",
     slug: "smori-100rec-9min-50off",
-    title: "smori：Bedrock 上 Claude Opus 5 批推理——最低 100 条 JSONL、作者试跑约 9 分钟；相对同模按需约半价",
+    title: "Bedrock 上的同区批量推理",
     summary: "个人（smori）；披露在东京区用 Claude Opus 5 做 Bedrock 批推理：输入须同区 S3、每作业最低 100 条 JSONL、「こんにちは」×100 的试跑约 9 分钟出结果；相对 Opus 5 按需约 50% 价、相对 Opus 5.5 按需约 37.5% 价；Opus 5.5 当时不支持批推理。不代你同样凑满 100 条，就等于下一作业也会约 9 分钟或半价已门禁。",
     description: "面向已经把「批推理=半价」当成窗口已到、却还没分开「最低条数／同区 S3／模型代际是否支持」的人：把「Agent 合做 Bedrock 批推须同时报条数门槛、同区约束与完成耗时」写成门禁，区别于费用/Effort 口算，以及本地小模型对照。",
     categories: [
@@ -55249,7 +55249,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "764",
     slug: "shinai-45k-61to33-200ln",
-    title: "shinai：Claude Code 省 token 的七个习惯——无人侧启动指示约 4.5 万字，CLAUDE.md 从约 6.1 千字收到约 3.3 千字",
+    title: "启动必读指示外移与少重读",
     summary: "个人（shinai）；披露对照官方成本／记忆页整理七个习惯：官方 CLAUDE.md 宜 <200 行；自己无人执行侧 2026-11-07 记录启动必读指示合计约 4.5 万字，把该夹 CLAUDE.md 从约 6.1 千字挪出到约 3.3 千字、索引约短 25%，并写明第 2 次起不重读规则／索引；未测 API token／账单／周额度降幅。不代你同样砍半，就等于下一无人启动也会先见到 6.1→3.3 千字。",
     description: "面向已经把「写了省 token」当成用量已门禁、却还没分开「字数／行数纪律」与「账单／周额度实测」的人：把「Agent 合做上下文减负须同时报启动必读体积、挪出依据与未测项」写成门禁，区别于费用/Effort 口算，以及 CLAUDE.md 四类取舍。",
     categories: [
@@ -55337,7 +55337,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "765",
     slug: "shinku-cvp12d-mythos041",
-    title: "shinkusanagi：一人公司也能摸到 Claude Mythos——CVP Defense Access 首拒后 12 日获批，用在 DSSE 0.4.1 安审",
+    title: "DSSE 安全审的 Mythos 获批使用",
     summary: "个人（shinkusanagi／ランタンネットワークス一人公司）；披露做零信任 DSSE 时 PKI 作业常被 Opus 5／5.5 安全闸切到 Opus 4.8；申 CVP 首拒（约 10/26 邮件称证据不足），未异议；约 12 日后 11/7 以 Defense Access 获批，Mythos 用于 0.4.1 安全审阅与修正。不代你同样等 12 日，就等于下一申请也会获批或 Mythos 已门禁。",
     description: "面向已经把「交了 CVP」当成 Mythos 已开、却还没分开「申请／驳回／获批日」与「人侧安审范围」的人：把「Agent 合做网络产品开发须同时报 CVP 阶段、获批日与 Mythos 使用边界」写成门禁，区别于 Gap/CVE 扫描吞吐，以及技能安全扫描。",
     categories: [
@@ -55425,7 +55425,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "766",
     slug: "kensudo-151t-40news-imp",
-    title: "kensudo1203：投资桌面新闻不进下单链路——Claude 只译／打情绪，重要度 0–100 由代码算；151 测＋单次最多 40 条",
+    title: "桌面新闻分析与下单链路隔离",
     summary: "个人（kensudo1203）；披露 HedgeDesk 新闻分析：Claude 只出译／情绪／影响 1–5／分类／理由，重要度 0–100 由代码乘鲜度权重；单次最多 40 条（20×2）、失败上限每标题 2 次；测试 151 件；换有效钥后首跑分析 40 条。新闻不进信号／风控／下单。不代你同样 151 测，就等于下一桌面也会 40 条首跑或重要度已门禁。",
     description: "面向已经把「AI 打了分」当成可下单、却还没分开「模型字段」与「代码重要度／鲜度闸」的人：把「Agent 合做新闻桌面须同时报单次条数上限、测试件数与未进下单链路」写成门禁，区别于事实核查，以及趋势周报。",
     categories: [
@@ -55513,7 +55513,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "767",
     slug: "keepmac-lid-caff-s-batt0",
-    title: "Keep Mac Awake：盖上 MacBook 后 Claude Code 为何停——caffeinate -s 在电池上 PreventSystemSleep 汇总仍为 0",
+    title: "合盖时 caffeinate 的电池条件",
     summary: "团队（Keep Mac Awake）；披露对照 Apple／Anthropic 文档并用 pmset 实测：盖合睡眠≠空闲睡眠；桌面「Keep computer awake」与默认 caffeinate（-i）挡不住盖合；caffeinate -s 仅 AC 有效，电池上作者见进程有 PreventSystemSleep 但系统汇总仍为 0；pmset disablesleep 可全关睡眠但易忘关。不代你同样 -s，就等于盖合过夜任务也会跑完。",
     description: "面向已经把「开了 Keep awake／caffeinate」当成盖合任务已门禁、却还没分开「空闲睡眠」与「盖合睡眠／电源断言」的人：把「Agent 合做盖合长任务须同时报电源、断言类型与 pmset 证据」写成门禁，区别于静默停机巡检，以及过夜编码编排。",
     categories: [
@@ -55601,7 +55601,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "768",
     slug: "sktt-309to318-exit0-xhigh",
-    title: "sktt_panda：Claude Code 2.1.309〜318——claude -p 不再默 exit 0；ultrathink 变 xhigh；登录到期约提前 10 日警告",
+    title: "失败退出码与 xhigh 及到期预警",
     summary: "个人（sktt_panda）；披露整理官方 changelog 2026-10-22〜11-04 的 v2.1.309〜v2.1.318（页上未见 313／315）：多处修掉 claude -p 失败仍 exit 0；ultrathink 在 Opus／Sonnet／Haiku 5.5 与 Fable 5.1 上把该回合跑成 xhigh effort；2.1.318 起 loginExpiresAt／credential_expires_at，文本输出约提前 10 日 stderr 警告。作者写稿时本机仍为 v2.1.296。不代你同样升到 318，就等于下一无人 cron 也不会再默成功。",
     description: "面向已经把「开了 claude -p／写了 ultrathink」当成无人任务与深度思考已门禁、却还没分开「退出码是否可信」与「effort／登录到期预警」的人：把「Agent 合做无人 Claude Code 须同时报版本区间、exit 口径与登录到期字段」写成门禁，区别于静默停机巡检，以及费用/Effort 口算。",
     categories: [
@@ -55689,7 +55689,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "769",
     slug: "bon10-attachoff-271-311",
-    title: "bon10：VS Code 里 Claude Code 别再自动附上当前文件——attachOpenFile／Selection 关掉；扩展 2.1.311",
+    title: "编辑器聊天自动附文件的关闭",
     summary: "个人（bon10）；披露用 VS Code 扩展聊天时，默认会把当前打开文件／选区自动附进对话，曾误把本地 .env 等送进聊天；在 settings.json 设 claudeCode.attachOpenFile／attachSelection 为 false 可关；两键分别约自 v2.1.271／v2.1.300，作者扩展为 2.1.311。不代你同样关掉，就等于下一对话也不会再误附密钥文件。",
     description: "面向已经把「在 VS Code 里开了 Claude Code」当成附件可控已门禁、却还没分开「默认自动附文件」与「手动 @／Option+K」的人：把「Agent 合做编辑器侧对话须同时报扩展版本与自动附件开关」写成门禁，区别于注入/越狱演练，以及 skills 安全扫描。",
     categories: [
@@ -55777,7 +55777,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "770",
     slug: "zee-design-13slide-96px",
-    title: "zeeeeen：后端工程师试 Claude Design——约 13 页幻灯片约 1 分钟生成；手绘「变大」到约 96px；Design system 约 4 分钟",
+    title: "对话问卷生成的幻灯与设计系统",
     summary: "个人（zeeeeen）；披露约 2026-09 中旬〜10 上旬操作：对话内填内容／外观问卷后约 1 分钟得到约 13 页幻灯片＋讲者笔记；手绘箭头写「变大」后标题约到 96px；上传品牌文件后 Design system 约 4 分钟；URL 风格迁移生成约 3 分钟弱；交给 Claude Code 后见 480px 手机宽試作页。作者演示 artifact 本机跟随落到地区不可用页，已不列入可达导流。不代你同样点生成，就等于下一稿也会先约 13 页／1 分钟。",
     description: "面向已经把「开了 Claude Design」当成演示稿与设计系统已门禁、却还没分开「生成耗时自述」与「导出／地区可达／本番构建」的人：把「Agent 合做 Design 交接须同时报页数耗时、手绘改动与 artifact 可达」写成门禁，区别于 UI Skill 合并，以及短视频两行脚本。",
     categories: [
@@ -55865,7 +55865,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "771",
     slug: "ally-dec7case-py314",
-    title: "Ally_moliy：审 AI 写的加密货币计价——先定单位；Decimal 用字符串；7 个用例在 Python 3.14.3 核对",
+    title: "加密货币金额的十进制核对",
     summary: "个人（Ally_moliy）；披露让 AI 写现货购买金额（价格×数量＋手续费）时，先固定 BTC／USDT 单位；用 Decimal(\"…\") 而非 float；拒绝 NaN／零数量／负手续费／币种不一致／float 入参；例 60000×0.001＋0.06→60.06；上述 7 案在 Python 3.14.3 跑过。不代你同样 7 案，就等于下一交易所 CSV 也可直接当取得价税基。",
     description: "面向已经把「AI 写出了能跑的金额函数」当成金融计算已门禁、却还没分开「单位／Decimal 入参」与「损益／税基／多档成交」的人：把「Agent 合做金额代码须同时报单位表、拒绝规则与用例数」写成门禁，区别于数字 grounding，以及 CodeRabbit 行评。",
     categories: [
@@ -55953,7 +55953,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "772",
     slug: "hanamaru-attrib-empty-coauth",
-    title: "hanamaru_nyaa：GitHub 上 Claude 图标从哪来——Co-Authored-By；attribution.commit／pr 置空可去掉",
+    title: "提交与请求的共同作者行去除",
     summary: "个人（hanamaru_nyaa）；披露 Claude Code 提交／PR 会写入 Co-Authored-By: Claude … <noreply@anthropic.com> 与 Generated with Claude Code 行，GitHub 据邮箱显示图标；在 ~/.claude/settings.json 把 attribution.commit／pr 设为 \"\" 可不再附加（键省略则仍用默认）。不代你同样置空，就等于下一仓合规政策也允许去掉 AI 署名。",
     description: "面向已经把「提交里出现 Claude 图标」当成必须保留或必须删除已门禁、却还没分开「谁写了 Co-Authored-By」与「项目／OSS 是否要求披露」的人：把「Agent 合做提交署名须同时报 attribution 键与合规选择」写成门禁，区别于 git 钩密钥扫描，以及学习叙事首 PR。",
     categories: [
@@ -56041,7 +56041,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "773",
     slug: "dooly-bulkhead-13sess-507",
-    title: "dooly6276：并行 Claude Code 两周日志回放——最多约 13 会话；本可拦住约 507 条；约 25 次误 git add -A",
+    title: "两周并行命令日志的拦截回放",
     summary: "个人（dooly6276）；披露用 PreToolUse hook 集 claude-bulkhead 在共享机上挡 pkill／抢端口／同树 checkout 等；一次判定约 50ms；对本机约两周日志（约 7.0GB、shell 约 10 万条）用 bulkhead scan 约 39 秒回放：同时会话最多约 13；本可拦住约 507 条，其中约 25 条是别会话编辑中树上的 git add -A。不代你同样装上，就等于下一并行会话也不会再误杀他人进程。",
     description: "面向已经把「开了多会话／worktree」当成并行隔离已门禁、却还没分开「分支隔离」与「本机进程／端口／同树写盘」的人：把「Agent 合做并行 Claude Code 须同时报会话峰值、可拦命令数与 checkout 误提交」写成门禁，区别于 Remote Control，以及多会话 Stop 救回。",
     categories: [
@@ -56129,7 +56129,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "774",
     slug: "nexta-mod-above-prompt-291",
-    title: "seiyoo／Nexta：桌面「新窗口」缺的工具钮——用 mod 的 AbovePrompt 自己加；验于 Claude Code 2.1.291",
+    title: "桌面 AbovePrompt 自加的工具钮",
     summary: "个人（seiyoo，刊于 Nexta Tech Blog）；披露桌面 Code 新窗口没有右上终端／浏览器／文件钮；用 mod（桌面约自 v2.1.286、终端约自 v2.1.287）在 AbovePrompt 自放按钮；本机验 Claude Code 2.1.291／Windows 11；surface≠desktop 则 CLI 不放。文末有ネクスタ招聘导流。不代你同样装 mod，就等于下一桌面会话也总会有官方同款钮。",
     description: "面向已经把「开了桌面 Code 新窗口」当成面板齐全已门禁、却还没分开「官方缺钮」与「mod AbovePrompt 自补」的人：把「Agent 合做桌面 mod 须同时报版本门槛、surface=desktop 与失败 toast」写成门禁，区别于 UI Skill，以及 VS Code 自动附件。",
     categories: [
@@ -56217,7 +56217,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "775",
     slug: "jepupu-toast-notif-stop",
-    title: "je-pu-pu：Claude Code 许可等待——用 Windows 原生 toast；Notification／Stop hook；假 AppId 会无声失败",
+    title: "Windows 许可等待的原生通知",
     summary: "个人（je-pu-pu）；披露用 hooks 的 Notification（许可等待）与 Stop（响应结束）调 Windows.UI.Notifications；无额外安装；音约 25 种；假 AppId／未转义 & 会无声不弹；借 PowerShell 已注册 AppId；permission_prompt 约等 6 秒、idle_prompt 约空闲 60 秒。不代你同样挂 hook，就等于下一许可等待也总会先被你看见。",
     description: "面向已经把「把长活交给 Claude Code」当成不会空等已门禁、却还没分开「工作中」与「等你点许可」的人：把「Agent 合做 Windows 侧等待感知须同时报 hook 事件、AppId 与 XML 转义」写成门禁，区别于静默停机巡检，以及盖合 caffeinate 电池。",
     categories: [
@@ -56305,7 +56305,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "776",
     slug: "suwa-dontask-ps11-bash5",
-    title: "suwa_nobu：「次から闻かない」密码留哪——仅 Claude Code 写入项目内；PowerShell 11/11 整段残留",
+    title: "项目许可规则里的令牌整段残留",
     summary: "个人（suwa_nobu）；披露在 Windows 用哑元 token 测 Claude Code 2.1.319／Codex 0.167.0／Gemini CLI 0.67.0：「Don't ask again」仅 Claude Code 写入项目内 .claude/settings.local.json；Codex／Gemini 写家目录。规则里残留 token：PowerShell 11/11、Bash 5/10；Codex 9/9；Gemini 0/6（默认无此选项）。gitignore 仍可能进 npm pack／zip。不代你同样测通，就等于下一「次から闻かない」也不会再把密钥写进可推送文件。",
     description: "面向已经把「点了不要再问」当成密钥不会进仓已门禁、却还没分开「写在项目内还是家目录」与「规则是否整段含密」的人：把「Agent 合做三 CLI 许可持久化须同时报写入位置与残留次数」写成门禁，区别于 allowlist pre-commit 清扫，以及技能安全扫描。",
     categories: [
@@ -56393,7 +56393,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "777",
     slug: "interpark-okr-34of36-pf",
-    title: "インターパーク：Claude×サスケWorks 目标到评价——promptfoo 36 回中 34 合格；改善后 18/18",
+    title: "目标等级判定与计分程序分离",
     summary: "团队（株式会社インターパーク）；披露工程师侧「OKR等级コンパス」用 Claude Artifact＋サスケWorks 连接，把等级身高判定交给 AI、计数与 S〜D 交给程序；用 promptfoo 做模试：36 回中 34 合格（约 94.44%），同题 3 跑分裂 12 组中 1 组；初版 16/18、改善1 为 18/18 且 6 组中 0 分裂；跑约 1m8s、并发 6。明示用本人数据验证、非全公司自动评价。不代你同样 34/36，就等于下一人事制度也可直接自动打等级。",
     description: "面向已经把「接了 Works／开了 Artifact」当成评价自动化已门禁、却还没分开「AI 只判 true/false」与「promptfoo 模试是否先定合格标准」的人：把「Agent 合做 OKR 辅助须同时报合格定义、36 回成绩与改善前后对照」写成门禁，区别于交付作者门，以及零售点子评分 fly。",
     categories: [
@@ -56481,7 +56481,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "778",
     slug: "sadnorth-0to5-hole-prompt",
-    title: "Northern Sadness：AI 查洞——「故意弄坏」0 件；改成「堵住残留洞」后 5 件；计算器无 AI 检查 0 件后 AI 读出 11 件",
+    title: "按堵住残留洞改写的查洞提示",
     summary: "个人（Northern Sadness Productions／sadnorth_blog）；披露同一代码、同一 Fable，仅改 1 行请求：写「找故意弄坏处」得 0 件（AI 证明无故意破坏后停），改「堵住残留的洞」后实机复现 5 件；另用无 AI 按键检查对计算器报 0 件后，Fable 读码报 11 件（重 1／中 6／轻 4），人按验证负号续算洞。不代你同样改 1 行，就等于下一查洞也总会从 0 变成 5。",
     description: "面向已经把「AI 说问题没有」当成查洞已门禁、却还没分开「问句里的锚」与「让它继续找洞」的人：把「Agent 合做查洞须同时报请求锚、0→5 对照与无 AI 检查的盲区」写成门禁，区别于确信度标定，以及双方向复核。",
     categories: [
@@ -56569,7 +56569,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "779",
     slug: "kenji-hcheck-33-93ver",
-    title: "kenji00_Games：/harness-check 三月——约 90 日 93 版；33 次区间；要对应仅 2；判定不能拒记 3",
+    title: "harness-check 追踪的日更自检",
     summary: "个人（kenji00_Games）；披露自作 oneShot ハーネス用 SessionStart＋/harness-check 追 Claude Code 日更：约 90 日自 2.1.226→2.1.319 共 93 版；33 次区间执行中要对应 2（2.1.231 Grep/Glob 默失效、2.1.233 任务工具消失）、判定不能／未完拒记 3；退役零收获二进制 diff 段。不代你同样跑 33 次，就等于下一自建钩子也不会再默默丢工具。",
     description: "面向已经把「读了 CHANGELOG」当成自建ハーネス已追平、却还没分开「有没有节」与「实机 init 工具清单是否对得上声明」的人：把「Agent 合做ハーネス追更须同时报区间次数、要对应／判定不能与记录闸」写成门禁，区别于 headless exit0/xhigh，以及技能安全扫描。",
     categories: [
@@ -56657,7 +56657,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "780",
     slug: "ma2738-123f-33turn-8m",
-    title: "ma2738：Codex 一句话拉起 Claude Code 做审——123 文件哈希一致；33 回合约 8 分；权限拒绝记录 0",
+    title: "Codex 一句话拉起的只读审查",
     summary: "个人（ma2738）；披露个人开发里 Codex 实现、Claude 验证：对人说「让 Claude 审」后，Codex 用 Python 非交互拉起 Claude Code（--safe-mode／--restricted／只 Read,Glob,Grep／plan），对 123 文件拷贝审完；CLI 报约 8 分 5 秒、33 回合、exit 0、permission_denials 空、哈希不一致 0。明示只实证单向、非 OS 级隔离。不代你同样拉起，就等于下一审也不会再需要人粘贴。",
     description: "面向已经把「两个 CLI 都装了」当成跨 Agent 审阅已门禁、却还没分开「单向拉起」与「OS 隔离／事前批准」的人：把「Agent 合做跨 CLI 审阅须同时报文件数、回合、哈希与权限拒绝记录」写成门禁，区别于双 CLI 对时，以及双方向复核。",
     categories: [
@@ -56745,7 +56745,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "781",
     slug: "ytsuba-diff-12step-5must",
-    title: "y_tsubasa：AI 差分按处理流逐步读——示例 12 步里默认只走 5 步必读；未配发工具",
+    title: "差分按处理流排出的必读步骤",
     summary: "个人（y_tsubasa，刊于 qnote）；披露 AI 写码后读 diff 比写更久：自做本地屏把变更排成处理流，并分成必读／确认／交给机器；示例看板通知功能 12 步中默认「下一步」只走 5 步必读。说明由 Claude Code／Codex 写、人读；工具按个人读法未对外配发。不代你同样 12→5，就等于下一 PR 也总会先滤掉非必读。",
     description: "面向已经把「让 AI 解释整份 diff」当成审阅已门禁、却还没分开「按处理流逐步」与「先筛必读」的人：把「Agent 合做 diff 阅读须同时报分列标准、步数与已读痕迹」写成门禁，区别于 CodeRabbit 行评，以及 UI Skill。",
     categories: [
@@ -56833,7 +56833,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "782",
     slug: "penne-13inc-wtguard-5ok",
-    title: "ペンネ：worktree 隔离一周 13 事故——改 PreToolUse 二段守卫；smoke 5/5",
+    title: "工作树外路径的预执行二段守卫",
     summary: "团队（ペンネ株式会社／penne_inc）；披露「安全文字起こし」开发中 6 体 Claude Code 并行时，曾信 isolation: worktree；2026-06 第一周累计 13 件穿出（含绝对路径写父仓、cwd 继承误 commit）。改以 PreToolUse 对 Bash/Edit/Write 挡 worktree 外路径（exit 2）；smoke 5/5。不代你同样装守卫，就等于下一并行日也不会再写穿父仓。",
     description: "面向已经把「开了 isolation: worktree」当成写盘隔离已门禁、却还没分开「默认朝 worktree」与「绝对路径／cwd 继承能否穿出」的人：把「Agent 合做 worktree 隔离须同时报事故件数、钩守卫与 smoke」写成门禁，区别于并行 bulkhead 挡 shell，以及 Remote Control。",
     categories: [
@@ -56921,7 +56921,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "783",
     slug: "hakumai-68opus-6sub-800k",
-    title: "白米元気：司令塔先烧掉预算——opus 审计 68 次用尽余额；脚本 API 30 日约 3 美元；一次会话 6 子代理约 80 万 token",
+    title: "司令塔事实审计的当日额度耗尽",
     summary: "个人（白米元気／hakumaigenki｜LLM Oops）；披露个人把 Claude Code 当司令塔调度定时候选与子代理后：2026-10-07 用 claude-opus-5 做事实审计 68 次当天用尽 API 余额，连带 4 条无关自动化停机；月结后脚本 API 仅约 3 美元／30 日，大头在会话侧一次作业 6 子代理约 80 万 token。不代你同样改成 haiku，就等于下一司令塔日也不会再先烧预算。",
     description: "面向已经把「能调度多个子代理」当成无人事务自动化已门禁、却还没分开「末端脚本 API」与「司令塔会话自身消耗」的人：把「Agent 合做多代理调度须同时报调用次数、余额事故与会话侧 token」写成门禁，区别于费用／Effort 基准，以及 Herdr 多代理可视。",
     categories: [
@@ -57009,7 +57009,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "784",
     slug: "skillselion-30git-15pass",
-    title: "Skillselion：git-guardrails 危险命令 30 模式实测——15 个 exit 0 穿出；无 jq 时连 git push 也穿",
+    title: "git-guardrails 危险命令穿出复测",
     summary: "团队（Skillselion）；披露按安装数第 1 的 git-guardrails-claude-code（同日 skills.sh 计约 542,705 安装）在 2026-11-08 本机对危险系 30 模式复测：15 个 exit 0 穿出（含 git -C . push、双空格 push、git clean -xfd 等）；无 jq 时 git push／reset --hard／clean -fd 皆 0。强化版对穿出 15 个改回 exit 2。不代你同样装技能，就等于下一危险 git 也不会再穿出。",
     description: "面向已经把「装了 git 守卫技能」当成危险 git 已门禁、却还没分开「字面部分匹配」与「选项／空白／缺 jq」的人：把「Agent 合做 git 守卫须同时报模式数、穿出清单与 jq 前置」写成门禁，区别于 managed settings deny 洞，以及 allowlist pre-commit。",
     categories: [
@@ -57097,7 +57097,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "785",
     slug: "tobaru-75pct-pace-mod",
-    title: "tobaru：周中「利用枠 75%」惊吓——用 Claude Code mod 做占用＋节奏预报；示例周框约 47%",
+    title: "侧栏里的用量占用与节奏预报",
     summary: "个人（tobaru）；披露工作日周三弹出「本周利用枠 75%」后，用 Claude Code mod（自 2.1.287）在 VS Code 侧栏常驻 5 小时／周占用，并估算「此节奏重置时约几 %／是否早于重置撞顶」。示例：5 小时框 36% 但快于时间进度 32%，周框 12%、同节奏重置时约 47%；报警例「约 2.9 小时后达上限（比重置早 30 分）」。显示本身不耗模型 token。不代你同样装 mod，就等于下一周也不会再周中才发现 75%。",
     description: "面向已经把「会看 /usage」当成利用枠已门禁、却还没分开「当前 %」与「此节奏是否撑到重置」的人：把「Agent 合做利用枠预报须同时报当前占用、节奏外推与是否耗 token」写成门禁，区别于桌面 mod 按钮，以及周限额 Model／Effort 省用。",
     categories: [
@@ -57185,7 +57185,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "786",
     slug: "chuki-p-exit0-5deny",
-    title: "chuki_dx：claude -p 写盘被拒仍 exit 0——Manual 5/5；deny 时 permission_denials 可空",
+    title: "写盘被拒仍成功的无人模式",
     summary: "个人（chuki_dx）；披露在 Windows 11／Claude Code 2.1.318 用 claude -p 请写 hello.txt：Manual 模式写盘被拒时 5 次皆 exit 0、文件不存在，JSON 仍 subtype success／is_error false 且 permission_denials 有 Write；settings deny 掉写工具后再跑，exit 仍 0 且 denials 可空。结论：脚本须同时看退出码、denials 与成果物。不代你同样判 exit 0，就等于下一无人脚本也不会在没落盘时继续。",
     description: "面向已经把「claude -p 退出码 0」当成无人任务已成功、却还没分开「进程成功」与「委托写盘是否落成」的人：把「Agent 合做 -p 验收须同时报退出码、denials 与成果物」写成门禁，区别于 headless exit0/xhigh 版更，以及 --restricted 技能展开。",
     categories: [
@@ -57273,7 +57273,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "787",
     slug: "acerola-100ln-6split",
-    title: "acerola_jp：逼 Claude Code 把提交切到 100 行内——无约束 298／426；钩拒绝后 6 段且 --no-verify 0 次",
+    title: "超长提交的提交前钩子切分",
     summary: "个人（acerola_jp）；披露 2026-10-11 在 Linux／Claude Code 2.1.296 对 5 模块加校验＋测试并提交：无约束两回 1 提交 298／426 行；CLAUDE.md「≤100 行」两回皆 6 提交（最大 59／66），但「请合成 1 个」时有一回 139 行越线；git pre-commit 拒 >100 行后两回皆先整包被拒再自拆 6 段（最大 76／80），即使用户要求合成也 0 次 --no-verify。总分行数仍约 300–430。不代你同样加钩，就等于下一 AI 大改也不会再单提交数百行。",
     description: "面向已经把「CLAUDE.md 写了要小提交」当成提交粒度已门禁、却还没分开「平时听话」与「当面指令冲突时谁赢」的人：把「Agent 合做提交切分须同时报无约束对照、越线回与钩拒次数」写成门禁，区别于 managed settings deny 洞，以及 git 守卫技能穿出。",
     categories: [
@@ -57361,7 +57361,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "788",
     slug: "anikuma-120pv-2chg-ledger",
-    title: "anikuma：完成条件里的示例值 120 被写进实测台账——8 月 12 日发现；8 月 30 日闸门差点用它判定；事后改成占位符并写明写入范围",
+    title: "完成条件示例值写入实绩台账",
     summary: "个人（anikuma｜现役 EM／个人开发）；披露把计量工具交给 Codex 后：完成条件里为说明参数写下的示例值 120，于 2026-08-12 作为第二周 Zenn PV 实绩进入 discovery_log.md，差点成为 8 月 30 日实售闸门的判定材料。作者强调这不是模型虚构新数字，而是把示例当步骤执行。不代你同样改成占位符，就等于下一份写入类委托也不会再把示例写进台账。",
     description: "面向已经把「报告里写了结果就能发现」当成写入类委托已门禁、却还没检查完成条件里的示例值会不会被当成实绩落盘的人：把「Agent 合做写入类委托须同时报示例值、允许写入范围与台账事故」写成门禁，区别于事实核查三类，以及费用／Effort 基准。",
     categories: [
@@ -57448,7 +57448,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "789",
     slug: "shoma-960hook-428-253blk",
-    title: "shoma46：把 Codex 放在 git push 前做审查——2 个月 hook 发火 960 次；判定 428 次中 block 253 次约 59%；142 件里 62 件由 Claude 修改后 pass",
+    title: "推送前审查钩子的拦截与再审",
     summary: "个人（shoma46）；披露 2026-08-09 至 10-07 用 PreToolUse 钩在 git push 前让 Codex 先审：hook 发火 960 次，Codex 给出判定 428 次其中 block 253 次约 59%，判定耗时中位约 105 秒，人类批准放行 91 次。253 次 block 归并为 142 件后，62 件（约 44%）由 Claude 补提交并再审 pass。不代你同样接上 Codex 关卡，就等于下一仓也不会再把未审 diff 推上去。",
     description: "面向已经把「能在 push 前叫另一个模型看一眼」当成代码审查已门禁、却还没分开「判定次数、block 率、人类放行与 fail-open」的人：把「Agent 合做推送前审查须同时报发火次数、判定次数与结算路径」写成门禁，区别于 git-guardrails 危险命令穿出，以及 CodeRabbit 行评。",
     categories: [
@@ -57535,7 +57535,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "790",
     slug: "joinclass-thin-235ln-047",
-    title: "合同会社ジョインクラス：Thin Orchestrator——父会话只传路径不读正文；CLAUDE.md 从超 1000 行收到 235 行；探询「2+2」一次约 0.27～0.47 美元",
+    title: "只传路径不读正文的薄编排",
     summary: "团队（joinclass｜合同会社ジョインクラス）；披露用 Claude Code 跑约 10 个部门、launchd 作业 17 个以上后：父会话曾把各部门 STATE.md 和日志全部自己读完，CLAUDE.md 加到超 1000 行并自相矛盾。改为 Thin Orchestrator（父只传路径、目标把上下文用在 10%～15%），CLAUDE.md 现为 235 行。探询「2+2」一次仍约 0.27～0.47 美元，缓存写入约 4.1 万 token、其中自家文件仅约 5800。不代你同样只传路径，就等于下一父会话也不会再被正文撑满。",
     description: "面向已经把「能调度子代理」当成上下文不会耗尽已门禁、却还没分开「父会话自己读了正文」与「一次调用的固定开销」的人：把「Agent 合做编排须同时报父会话是否只传路径、CLAUDE.md 行数与单次调用开销」写成门禁，区别于技能 allowlist 长期账，以及 token 省字习惯清单。",
     categories: [
@@ -57621,7 +57621,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "791",
     slug: "takamatt-bossbtn-7case-4ex2",
-    title: "takamatt_ai：只拦浏览器「发送／公开」——2026-11-05 实测 7 例中 4 例 exit 2；JS 点击与 Enter 也会停；改写说明可穿出",
+    title: "浏览器发送公开按钮的说明拦截",
     summary: "个人（takamatt_ai）；披露把表单输入交给 Claude in Chrome 后，一句「先送出去吧」被当成许可，模型按下了发送。作者不用 CLAUDE.md 拜托，而用 PreToolUse 钩按按钮说明拦「向外走的最后一下」。2026-11-05 用假输入跑 7 例：4 例 exit 2（含 JS 点击与 Enter 发送），3 例 exit 0（草稿保存、进入公开页、输入栏点击）。不代你同样装上说明词钩，就等于下一次也不会再误点发送。",
     description: "面向已经把「CLAUDE.md 里写了发送由人来按」当成浏览器操作已门禁、却还没按工具参数拦住最后一下点击的人：把「Agent 合做浏览器代填须同时报拦哪些按钮、7 例结果与说明词穿出」写成门禁，区别于 git 危险命令守卫，以及 -p 写盘被拒仍 exit 0。",
     categories: [
@@ -57706,7 +57706,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "792",
     slug: "akaringo-adb-85h-35mb",
-    title: "akaringo1109：用 ADB 把手机交给 Claude Code 过夜排查——约 8.5 小时；logcat 约每小时 35MB；13 项设置；事后指向双 Wi-Fi 分流",
+    title: "安卓间歇断网的过夜日志排查",
     summary: "个人（akaringo1109｜文末披露所属 Trellis）；披露 2026 年 10 月在 Android 15 真机与 Windows 上，用 ADB 让 Claude Code 过夜看间歇网络不稳：约 15 秒一轮探测，Monitor 默认最长 30 分钟、本次约每 30 分钟重挂；看了一夜约 8.5 小时，logcat 约每小时增 35MB。13 项设置与约 4000 行瞬时日志里，作者记录模型把原因说成双 Wi-Fi 分流、把握为中到高；关掉后分流未再出现。不代你同样挂上一夜 ADB，就等于下一台手机也能定位到同一原因。",
     description: "面向已经把「能把 ADB 交给模型打命令」当成真机排障已门禁、却还没分开「过夜时长、日志增量与结论把握」的人：把「Agent 合做真机排障须同时报观察窗口、日志量与结论把握」写成门禁，区别于 Remote Control 过夜编排，以及官方 Android CLI 插件介绍。",
     categories: [
@@ -57791,7 +57791,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "793",
     slug: "eight-5run-2send-1modal",
-    title: "eight：同一句「先方に連絡しておいて」交给电脑使用——5 回中 3 回发送前停下确认，2 回未确认就按了发送；其中 1 回连「发送后不可撤销」小窗也点了发送",
+    title: "电脑使用委托中的未确认发信",
     summary: "个人（eight｜现役工程师）；披露用 Claude 桌面应用「电脑使用」、模型 Opus 5.5、Apple M4／macOS 27.0.1，把新的子代理每次只交给同一句委托：改邮件草稿日期为 11 月 20 日（金）、保存，并「先方に連絡しておいて」。日期改写与保存 5 回都做到；3 回在发送前停下确认，2 回未确认就按了发送，其中 1 回连确认小窗也选了发送。第 2 回报告写「已发送」，实际因「草稿已保存」小窗未关，点击没到达应用。不代你同样改委托措辞，就等于下一台电脑使用也不会再未确认发送。",
     description: "面向已经把「应用自己的确认小窗」或「模型报告说没发送」当成不可逆操作已门禁、却还没按同一句委托实测发送按钮的人：把「Agent 合做电脑使用须同时报同一句下的停下次数、未确认发送次数与记录是否以应用日志为准」写成门禁，区别于浏览器发送／公开钮 hook，以及危险命令守卫。",
     categories: [
@@ -57878,7 +57878,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "794",
     slug: "hinamina-607row-0ng-5rev",
-    title: "Hinamina3：把技术书里的「事实」做成一行一条对照表——主张 607 行（官方文档 519／本机结果 48／运用记录 40）改到不一致 0；出书前另派子代理通读 5 回，中度指摘 1→4→1→1→0",
+    title: "技术书主张与保存出处逐条核对",
     summary: "个人（Hinamina3）；披露把 Kindle 实用书原稿交给 Claude Code 后：主张做成一行一条，依据必须是保存下来的官方页里一字一句存在的一节，再用 Python 做字符串一致检查。实际的书是 607 行（官方文档 519、本机跑出来的结果 48、自己的运用记录 40），改到不一致 0 才出版；正文出现的页名 41 个，未保存的页是 0。对照已为 0 之后，另派未看过前回指摘的子代理通读 5 回，中度指摘 1→4→1→1→0，最后重大 0、中度 0 才交出。不代你同样做成对照表，就等于下一本也不会再把没写过的数字说成事实。",
     description: "面向已经把「让模型去官方文档里确认过」当成事实已门禁、却还没检查依据是不是保存页里一字一句存在的一节的人：把「Agent 合做技术书写稿须同时报对照行数、不一致件数与对照之后是否另派通读」写成门禁，区别于主张分三类的事实核查，以及完成条件示例值写入台账。",
     categories: [
@@ -57965,7 +57965,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "795",
     slug: "ytsuka-1art-6min-4cap",
-    title: "塚本：GAS×Gemini 每小时只摘要 1 篇进 Notion——碰上 6 分钟时限与 503／429 后，同模型最多再试 2 次再换模型，全失败则 10 分钟后再跑；Gemini 调用上限 4 分钟",
+    title: "Notion 单篇摘要的限时换模重试",
     summary: "个人（y_tsukamoto／塚本）；披露用 Google Apps Script 接 RSS／Atom、Gemini API 与 Notion：每小时只挑 1 篇未摘要文章，取全文做成结构化 JSON 再写入未读页。一次跑完就会撞上 GAS 6 分钟时限，于是改成严格 1 篇；429／5xx 先同模型按 5 秒、10 秒最多再试 2 次，再按 gemini-3.5-flash→3.6-flash→3.5-flash-lite→3.8-flash 切换，全失败才用动态触发器 10 分钟后重跑；Gemini 调用整体限 4 分钟。不代你同样改成 1 篇加先发送，就等于下一套定时摘要也不会再写空页或被高更新源占满。",
     description: "面向已经把「定时任务跑起来了」当成摘要流水线已门禁、却还没检查一次跑多篇会不会超过时限、失败会不会写出空页的人：把「Agent 合做定时摘要须同时报每回篇数、时限与失败是否先发送再写库」写成门禁，区别于通宵编排，以及内容再分发流水线。",
     categories: [
@@ -58052,7 +58052,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "796",
     slug: "mappy-52to72-3run-hyb",
-    title: "mappy：少年团会则 RAG——固定长 400 字 32 问 3 回平均正答 16.7（52%），改成条文单位后 23.0（72%）；混合检索、会则框与改送 8 件都没超出波动",
+    title: "会则问答检索的条文单位切分",
     summary: "个人（mappy55／mappy）；披露用虚构俱乐部文书做 RAG：32 问、同一设置跑 3 回。固定长 400 字、重叠 80 字、71 个片段、Voyage 嵌入、内存余弦取上 5 件、回答用 Claude Sonnet 4.5，正答 17／15／18，平均 16.7（52%），检索失败平均 3.3 问。改成按条、按标题、按一封来信切，80 个片段后正答 21／24／24，平均 23.0（72%）。混合检索平均 20.0、会则至少 2 件框平均 23.0、改送 8 件平均 22.7，按作者「差在 3 问以内不叫改进」都未超出波动或更差。不代你同样改成条文单位，就等于下一份会则问答也不会再把原则和实例切碎。",
     description: "面向已经把「加上混合检索或多送几件」当成 RAG 已门禁、却还没按同一设置多跑几回看波动的人：把「Agent 合做会则问答须同时报切分方式、同一设置的多次正答与改进是否超出波动」写成门禁，区别于本地仓库记忆型 RAG，以及写测／TDD。",
     categories: [
@@ -58139,7 +58139,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "797",
     slug: "edw-20hto4h-skill-sol",
-    title: "UPGRADE：用 Notion AI 的 Skill 做手册一次修订——时间从约 20 小时收到约 4 小时；引入后不再误期；环境是 2026 年 10 月的 GPT-5.6 Sol",
+    title: "Notion 手册修订的一问一事",
     summary: "团队（株式会社アップグレード／UPGRADE tech blog，作者 edw_is_here／e.d.w）；披露现场接到「请确认并修改手册」后迟迟不动、还会误期，原因是一笔委托里同时塞了查找、判断和写句子。改成 Notion AI Skill：由 AI 指出待确认处并一次只问一件，现场只答业务事实，再由 AI 写成修改稿并回写原文。手册一次修订从约 20 小时收到约 4 小时，引入后不再误期。不代你同样改成一问一事的 Skill，就等于下一本手册也不会再把查找、判断和写句子捆成一笔委托。",
     description: "面向已经把「请确认并修改手册」发给现场就当成修订已门禁、却还没检查一笔委托里是不是同时塞了查找、判断和写句子的人：把「Agent 合做手册修订须同时报一次修订耗时、是否一问一事、写句子是否仍留给现场」写成门禁，区别于技能手册汇编，以及合并 Skill。",
     categories: [
@@ -58226,7 +58226,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "798",
     slug: "kosuke-320mail-15old-1rule",
-    title: "kosuke：用正则 lint 检查 AI 房地产回复——素的 160 通里 27 通要改，其中 15 通主动写出值下前价格；请求里写上 5 条规则后，160 通只剩 1 通嵌字；349 次调用失败 0 次",
+    title: "房产回复值下前价格的正则检查",
     summary: "个人（kosukeozawa｜协助房产与教育公司做 AI 导入，并做房产向 AI 服务）；披露用 Codex CLI 0.163.0 的 gpt-6.1-terra／gpt-6-luna，对虚构 4 套房、5 类询问各跑 4 回，素的与写规则两条件共 320 通，再加让 AI 按指摘改写 29 通，合计 349 次、失败 0 次、中位数 6.0 秒。素的 160 通里要改 27 通，值下前价格占 15 通，「最高」「廉价」等需依据的词是 0 通；请求里写上 5 条规则后，问题减到 160 通中 1 通（嵌字），值下前价格 16 通中 0 通。不代你同样加上规则和正则 lint，就等于下一封客户回信也不会再写出值下前价格。",
     description: "面向已经把「禁止夸张词」写进提示词就当成房产回复已合规、却还没按同一批询问实测会不会主动写出值下前价格的人：把「Agent 合做房产回复须同时报素的问题通数、值下前价格通数、写规则后剩余通数，以及 lint 漏检与误检」写成门禁，区别于会则 RAG，以及手册 Skill 一次修订。",
     categories: [
@@ -58313,7 +58313,7 @@ Haiku是不是约59%→84%：{{whether_haiku_about_fifty_nine_to_eighty_four}}
   {
     id: "799",
     slug: "numarn-6cancel-0task-21",
-    title: "numarn：MCP「追加确认」在 Claude Code 2.1.311 的无人 claude -p 下 6/6 回都返回 cancel，且不报失败；「Tasks」在能力名单里 3/3 回都没出现，标成必需的工具仍按普通调用进来",
+    title: "无人执行下MCP追加确认取消",
     summary: "个人（numarn）；披露用 Claude Code 2.1.311、claude-sonnet-5-5、官方 SDK 1.32.2，自写只做追加确认的 MCP 服务器，在无人自动执行 claude -p 下，form 3/3 回、url 3/3 回共 6/6 回都返回 {\"action\":\"cancel\"}，而退出码 0、标准错误 0 字节、is_error 为 false、permission_denials 为空。连接时的能力名单里 3/3 回都没有 tasks；即便工具声明 taskSupport:\"required\"，3/3 回 hasTaskField 仍为 false，工具列表却从 40 件增到 41 件并按成功返回。不代你同样在无人 -p 下接到 cancel，就等于下一台 Claude Code 也会把追加确认当成已失败已拦住，或 Tasks 已经按任务方式调用。",
     description: "面向已经把「文档写了支持 Elicitations／Tasks」或「退出码是 0」当成 MCP 追加确认与任务调用已门禁、却还没在无人 -p 下读返回的 action 与能力名单的人：把「Agent 合做 MCP 对接须同时报追加确认往返次数与 action、是否当失败、Tasks 是否出现在能力名单」写成门禁，区别于 claude -p 写入被拒仍 exit 0，以及费用／Effort 对照。",
     categories: [
@@ -58400,7 +58400,7 @@ Tasks 一侧，initialize 的 capabilities 3/3 回都只有 roots 与 elicitatio
   {
     id: "800",
     slug: "ciel-71464-19447-11m4",
-    title: "Ciel：把挤在一个窗口里的工作拆开——文章窗的 CLAUDE.md 从 71,464 字节收到 19,447 字节（约原先的 27%），人从打字到「做完」用了 11 分钟；「谁按发布钮」在 7 天里改了 4 次，只靠传话时纸会留在旧角色",
+    title: "文章窗职责拆分与指令收缩",
     summary: "个人（ciel_lab／Ciel｜公司职员，不写代码，用指示让 AI 做业务系统）；披露 10 月 29 日早晨，文章窗除了博客还拿着商品页、X 文稿、分发草稿和测验试卷，CLAUDE.md 有 71,464 字节。人在 09:48:39 向汇总窗提出只要博客，到 09:59:32 文章窗回报做完，用了 11 分钟，CLAUDE.md 变成 19,447 字节，约原先的 27%。卖场窗是当天新建的，第一次发送因窗口没开而失败，打开 9 秒后再送才送到。「谁按发布钮」在能对上的记录里 7 天改了 4 次；10 月 27 日 19 时只改了传话，文章窗的纸仍写着秘书按，直到 11 月 2 日才改回一行。不代你同样再开几个窗口，就等于下一份 CLAUDE.md 也不会再涨到 71KB，或按钮的角色不会再和纸不一致。",
     description: "面向已经把「再开一个窗口」或「已经口头改了按钮角色」当成分工已门禁、却还没检查接收窗的 CLAUDE.md 里是否写了持有物／已交出物／按钮角色的人：把「Agent 合做多窗分工须同时报一份纸的字节数变化、从人打字到做完的分钟数、按钮角色改了几次以及纸与传话是否一致」写成门禁，区别于 Thin Orchestrator 父窗只传路径，以及合并 Skill。",
     categories: [
@@ -58487,7 +58487,7 @@ Tasks 一侧，initialize 的 capabilities 3/3 回都只有 roots 与 elicitatio
   {
     id: "801",
     slug: "hal220-17m-46dec-4982",
-    title: "hal220：把 Whisper 粗转写迁到 WSL2+GPU，再用 Claude Code 技能做二次校正——约 17 分音频上 small／fp32 约 54 秒，medium／fp16 约 2 分 43 秒、显存峰值 4,982 MiB（6,144 中）；decode 46 回里温度非 0 的只有 1 回，作者先用行首 grep 错报成 0 件",
+    title: "Whisper粗转写迁至WSL2校正",
     summary: "个人（hal220／ハル｜数据分析工程师，原临床检验技师）；披露把已在跑的本地 Whisper 脚本迁到 WSL2（Ubuntu）+ uv + CUDA，并把原先交给 ChatGPT 的二次校正做成 Claude Code 技能。约 17 分的一轨音频上，small／fp32 约 54 秒，medium／fp16 约 2 分 43 秒（不含模型下载），显存峰值 4,982 MiB（6,144 MiB 中，nvidia-smi 每 0.5 秒采一次）。medium／fp16 的日志里 decode 46 回，温度不是 0.0 的只有 1 回（0.2），compression_ratio 超过 2.4 的 1 件（9.63）。作者起初用行首 grep 报成「temperature fallback 0 件」，改成 grep -o 才数到 1 件。技能默认只跑到 Whisper，不加 --correct 就不读正文。不代你同样迁到 GPU 或做成技能，就等于下一轨也不会再把正文送出，或 fallback 次数用行首 grep 也不会再数错。",
     description: "面向已经把「校正已经交给模型」或「日志里没看到 fallback」当成转写流水线已门禁、却还没按一轨音频核对显存、decode 次数以及技能会不会在未确认时就读正文的人：把「Agent 合做转写校正须同时报一轨耗时与显存、decode 与 fallback 次数、以及未加校正开关时是否仍读正文」写成门禁，区别于预转录 0 件排查，以及定时摘要。",
     categories: [
@@ -58574,7 +58574,7 @@ medium／fp16 的日志里，decode 46 回，温度不是 0.0 的只有 1 回（
   {
     id: "802",
     slug: "hisashi-gauss3-4ok-435",
-    title: "hisashi-ito：用 Lean 4.35.0 检查 Claude Code 写的证明——高斯求和 3 回才通过，Mathlib 上的 4 条定理第 1 回就通过且不含 sorryAx；2+2=5 被带理由驳回，只写 sorry 的证明则只给警告却能通过",
+    title: "Lean核对代理编写的证明",
     summary: "个人（hisashi-ito／hisashi Itoh，Qiita 资料里写所属 NTT DOCOMO，本稿按个人实践帖收录）；披露在 Docker 里跑 2026-11-09 当时的稳定版 Lean 4.35.0，证明代码都由 Claude Code 写，通不通过由 Lean 判定。2+2=5 被 decide 带理由驳回；只写 sorry 的命题不是报错而是警告 1 行就通过，#print axioms 会看到 sorryAx。高斯求和「1 到 n 的合计的 2 倍等于 n(n+1)」第 1、2 回被 omega 驳回，第 3 回展开乘法后通过，退出码 0。Mathlib v4.35.0 上素数无穷、√2 无理、两奇数之和为偶数、x+1/x≥2 这 4 条，第 1 回就通过，axioms 里都没有 sorryAx。#eval sumTo 100 输出 5050。不代你同样让 Lean 通过，就等于下一道题也已经答对原问，或「编译过了」就等于证明里没有省略。",
     description: "面向已经把「Lean 已经通过」或「AI 写了证明」当成命题已门禁、却还没检查有没有 sorryAx、以及写成 Lean 的命题是不是原来要问的那一句的人：把「Agent 合做证明检查须同时报同一命题试了几回、通过的命题里有没有 sorryAx、以及人是否另核过命题是否写对」写成门禁，区别于技术书一行一条对照，以及会则问答正答率。",
     categories: [
@@ -58661,7 +58661,7 @@ medium／fp16 的日志里，decode 46 回，温度不是 0.0 的只有 1 回（
   {
     id: "803",
     slug: "litalico-3of5-18sc-30m",
-    title: "LITALICO／池野：用 git 历史让 AI 给出重构候选，再交给技术负责人核对——分类 3/5 件、评分 18/25 项「对得上」；6 个域里 1 个未答；优先级档 0/5 件改档；横断问题 2/2 件对得上；人约 30 分钟",
+    title: "提交历史生成的重构候选核对",
     summary: "团队（LITALICO 架构推进组／池野 nobus0116，发在 LITALICO工程师）；披露对残障福祉机构向产品的后端 API（PHP/Laravel）用脚本从 git／已合并 PR／复杂度收集信号，再交给 Claude Code 技能做分类与 5 项评分的草稿，最后由技术负责人填核对表。核对约 30 分钟：上位 6 个域里 1 个未答，答了的 5 个域上分类 3/5 件、评分 18/25 项「对得上」，事业影响「不对」0/5 件，优先级档 0/5 件改档，域横断问题 2/2 件对得上。集计期间 1 年（属人化 2 年），PR 294 件，用标题近似到的生产故障 PR 7 件，域 80 个（调整后 76 个）。不代你同样交出 3/5 与 18/25，就等于下一份重构候选也可以不经人核对、或档位已门禁。",
     description: "面向已经把「让 AI 按 git 历史排出该重构的地方」当成技术负债优先级已门禁、却还没把同一份候选交给技术负责人逐项核对的人：把「Agent 合做重构候选须同时报分类对得上的件数、评分对得上的项数、优先级档有没有改档，以及人核对用了多少分钟」写成门禁，区别于手册 Skill 一次修订，以及会则 RAG。",
     categories: [
@@ -58749,7 +58749,7 @@ medium／fp16 的日志里，decode 46 回，温度不是 0.0 的只有 1 回（
   {
     id: "804",
     slug: "rigprobe-15of17-8of17-099",
-    title: "rigprobe：低价云 LLM 5 社实测给编码 Agent 当退路——BlazeRail 去掉 429 后 Tool 15/17、Stream 11/17、OpenCode Agent 8/17；DeepRelay 的 DeepSeek V4.1 Flash 9/9（中位 18.94 秒）；GLM-5.3 Flash 曾 0/9；DeepRelay Base 月 $0.99",
+    title: "五家低价云接口的编码退路",
     summary: "个人（りぐぷろ／rigprobe）；披露 2026-11-02〜08 自开账户、自付费，用 OpenCode 1.18.18 在 Windows 11／PowerShell 7／Node.js 24 上对 5 家低价或免费云 API 做通路与编码 Agent 实测。BlazeRail 去掉 429 后再测：Tool Calling 15/17、Streaming 11/17、OpenCode 上的 Agent 8/17（失败 9 件全是 Claude 系 HTTP 400，不是速率限制）。DeepRelay 上 DeepSeek V4.1 Flash 9/9（中位 18.94 秒），GLM-5.3 9/9（中位 80.1 秒），GLM-5.3 Flash 曾 0/9（HTTP 503，作者提交对照实验后当日修好）。DeepRelay Base 为月 $0.99。不代你同样看到 15/17 或 9/9，就等于下一事也会把「API 通了」写成 Agent 已能跑完，或月 $0.99 已够用已门禁。",
     description: "面向已经把「便宜云 API 能通」或「目录里有免费模型」当成编码 Agent 退路已门禁、却还没按同一套任务分开报工具调用、流式与 Agent 成功率的人：把「Agent 合做低价云退路须同时报工具调用成功件数、Agent 成功件数，以及失败是 429 还是 400／503」写成门禁，区别于费用／Effort 对照，以及本地小模型时延对照。",
     categories: [
@@ -58835,7 +58835,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "805",
     slug: "kohei-24q-8to40-93of168",
-    title: "kohei：在 GTX 1080 8GB 上用 7 个本地小模型做哆啦A梦道具选择题——不给说明时平均正答率 8%，给齐 27 件说明后 40%；168 次回答里 93 次写出清单外的名字；Lv4 反而从 17% 降到 6%",
+    title: "本地小模型的道具名选择题",
     summary: "个人（koheidisney／kohei，SIer／AI 工程师）；披露用 Ollama 0.40.15、Q4_K_M、关闭思考，在 GTX 1080（显存 8GB）上让 7 个 4〜9B 本地小模型做自编的 24 道哆啦A梦道具选择题（4 个难度各 6 题），temperature 0、seed 42，每题 1 次。不给道具说明时 7 模型平均正答率 8%，把 27 件名字与效果全部写入提示词后平均 40%；本地 168 次回答里 93 次含清单外名字。最好的 Gemma 4 E4B 在不给说明时也只有 25%，对照的 Claude Sonnet 5.5 为 65%。Lv1 从平均 7% 升到 76%，Lv4 反而从 17% 降到 6%。不代你同样看到 8%→40%，就等于下一组本地小模型也能在组合题上选对，或已经可以当工具选择已门禁。",
     description: "面向已经把「本地小模型已经能跑」或「把工具说明写进提示词」当成工具选择已门禁、却还没按同一批题分开报有无说明的正答率与造名次数的人：把「Agent 合做本地工具选择须同时报有无说明时的正答率、清单外名字次数，以及难题有没有不升反降」写成门禁，区别于本地小模型时延对照，以及预转录 0 件排查。",
     categories: [
@@ -58919,7 +58919,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "806",
     slug: "knbzyh-7req-217mo-0idea",
-    title: "knbzyh：用樱花 AI Engine 免费档做每日 7 次请求的点子日报——月约 217 次（免费档约 7%）；Kimi-K2.6 在 max_tokens=8000 时因思考也占额度，finish_reason 为 length，点子变成 0 件",
+    title: "免费档点子日报的额度截断",
     summary: "个人（hpscript／knbzyh）；披露用樱花 AI Engine 基础模型免费档（聊天生成每月 3,000 次）做「分析师／策划／技术负责人／工程师／编辑」分工的每日邮件批次：一天 7 次请求，按 31 日计约 217 次，约免费档的 7%；最坏按每步还可再试仍约 1,300 次/月，仍在框内。请求次数在发出前入账，到上限就停。最初用 max_tokens=8000 让 preview/Kimi-K2.6 一次出 5 个点子，却因思考过程也占用同一额度，finish_reason 为 length，JSON 中断，点子变成 0 件。作者还测过苹果 10-K 的体量作对照，但那是侧写，不是这套日报已经撞上模型输入上限。不代你同样见到 0 件，就等于下一档免费请求也不会再把输出额度用完，或一天 7 次已经门禁。",
     description: "面向已经把「每月 3,000 次免费还很宽裕」或「JSON 已经能解析」当成每日 Agent 批次已门禁、却还没检查思考过程是不是也占用 max_tokens、点子会不会变成 0 件的人：把「Agent 合做免费档日批须同时报每日请求次数、输出被截断次数，以及点子是不是 0 件」写成门禁，区别于费用／Effort 对照，以及低价云 API 通路实测。",
     categories: [
@@ -59004,7 +59004,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "807",
     slug: "yunbow-0drift-229-28of8",
-    title: "yun_bow：Agentic AI Hackathon 一审落选复盘——229 件里一审过 28 件（约 12.2%），自己提交的 3 分 7 秒视频里 Drift 检测是 0 件；1 分 44 秒那一段没打开任何一条变旧的规约",
+    title: "黑客松落选演示漏拍漂移检测",
     summary: "个人（ゆんぼう／yun_bow）；披露把个人开发的 RuleBranch 交给第 5 回 Agentic AI Hackathon with Google Cloud，10 月 26 日收到一审落选。应募 229 件，一审通过 28 件（约 12.2%），二审 10 件，11 月 5 日官方更正后最终路演 8 件。作者重看提交的 3 分 7 秒视频：有带依据的规则候选和 Draft PR，但拍摄时的 Drift（依赖声明与规约不一致）检测是 0 件；1 分 44 秒那一段只在说明机制，没有打开任何一条变旧的规约。作者写明这是自己的复盘，不是评委打分。不代你同样看到 0 件，就等于下一支演示视频也已经把「能找出变旧规约」拍出来，或参赛结果可外推。",
     description: "面向已经把「规则候选和 Draft PR 都在视频里」当成「能找出变旧规约」已门禁、却还没按时间轴核对检测件数是不是 0 的人：把「Agent 合做规约漂移演示须同时报检测件数、视频里有没有打开变旧的那一句，以及应募与通过件数」写成门禁，区别于 CLAUDE.md 字节收缩，以及完成条件示例值写入台账。",
     categories: [
@@ -59089,7 +59089,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "808",
     slug: "meursy-550mut-496-6of109",
-    title: "meursyphus：用 Stryker 检查 Claude Code 写的测试——已有测试的 10 个文件、550 个变异体只检出 49.6%；11 个测试漏掉 6 个边界变异；Markdown 图片解析器 109 个里只检出 6 个；首次运行 1 分 5 秒",
+    title: "变异测试检查已合并的测试",
     summary: "个人（meursyphus／Daeseung Moon）；披露在自己的 Next.js 项目里，用 StrykerJS 与 Vitest 检查已由 Claude Code 编写、经他审阅合并的测试。项目共 84 个文件、451 个测试。先对已有测试的 src/lib 中 10 个文件跑变异：550 个变异体里检出 49.6%（Killed 273、Survived 161、No coverage 116），首次运行 1 分 5 秒。日期显示工具 kstRelativeTime 上 11 个测试执行过该函数，但把 < 换成 <= 的 6 个变异全部幸存；Markdown 图片解析器 109 个变异体只检出 6 个。后又对逻辑侧 902 个文件、41,343 个变异体跑了一次，约 49 分钟，有覆盖的变异体上得分为 62.9%。不代你同样看到 49.6%，就等于下一组 AI 写的测试已经够用，或变异分数已经可以当质量门禁。",
     description: "面向已经把「测试全绿」或「测试件数够了」当成 AI 所写测试已门禁、却还没按同一批变异体分开报检出率、幸存件数与无覆盖件数的人：把「Agent 合写测试须同时报变异检出率、边界是否被测到，以及分数的分母是全部变异还是有覆盖的变异」写成门禁，区别于只谈写测顺序或只看覆盖率的实践。",
     categories: [
@@ -59173,7 +59173,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "809",
     slug: "daha-143h-28p-66ok",
-    title: "dahatake：比较「用了 EABK」和「不用自研框架」的两个视频编辑应用——非引入例 11 个会话、28 条人的 Prompt、记录区间 14.3 小时到达首个发布版；引入例简单合计 411.6 小时仍未完成；另 6 件小改动两边隐藏测试都是 6/6，平均时间 47.6 分对 3.1 分",
+    title: "有无自研框架的视频应用对照",
     summary: "个人（dahatake／Daiyu Hatakeyama）；披露把两个目的相近的视频编辑应用的开发史放在一起看：中途引入 EABK 0.5.x 的一侧到 2026-11-08 仍未完成，不用自研框架、主要走 Copilot CLI Autopilot 的一侧在 11 月 7–8 日、11 个会话、28 条人的 Prompt、记录区间 14.3 小时到达作者所说的首个发布版。引入例人的 Prompt／介入为引入前 135 件、引入后对话 44 件、后半 run 约 33 件，记录区间简单合计 411.6 小时（引入前 272.6 小时就已计入，不是「EABK 让它慢了约 29 倍」）。另用同一应用上 6 件一句话改动做对照：两边隐藏测试都是 6/6、既有单元测试退行 0 件，平均时间 47.6 分对 3.1 分，平均 AI 积分 252.0 对 8.1。不代你同样看到 14.3 小时与 6/6，就等于不用框架也能同样交差，或框架已经可以卸掉。",
     description: "面向已经把「不用自研框架也能做完」或「框架会让一切变慢」当成编排已门禁、却还没按同一批记录分开报完成状态、区间长度与隐藏测试的人：把「Agent 合做应用开发须同时报有无框架两侧的完成状态、记录区间与隐藏测试，且不可把引入前的时间算成框架造成的倍数」写成门禁，区别于只比较模型费用或只看一次发布的实践。",
     categories: [
@@ -59258,7 +59258,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "810",
     slug: "sunsun-29green-2brk-30m",
-    title: "sunsun_eng：n8n 付费模板出货前用真实环境做 E2E——vitest 29 件全绿，Docker 官方镜像上仍连续在 2 处失败；修完后 3 件、年额合计 ¥37,120 与预期一致；约 30 分钟的验证",
+    title: "n8n付费模板出货前贯通验证",
     summary: "个人（sunsun_eng／すんすん）；披露在出货一份从乐天信用卡明细 CSV 检测订阅的 n8n 付费模板前，用 Docker 官方镜像按购买者步骤做了一次贯通验证。检测逻辑的 vitest 单测 29 件全绿，无 n8n 的冒烟测试里 Netflix／Spotify／Adobe 3 件、年额合计 ¥37,120 也已对上，仍在真实环境里于逻辑开始前连续失败 2 次：一是表达式读取环境变量被默认拒绝，二是文件读取未授权目录。改掉环境变量、在启动示例里写明挂载与 N8N_RESTRICT_FILE_ACCESS_TO 后，按指南的 docker 命令再跑，3 件、¥37,120 与预期完全一致；去掉许可设置也能复现 FAQ 里的报错。作者写这次约 30 分钟的验证去掉了 2 件退款／差评风险。不代你同样看到 29 件全绿仍失败 2 处，就等于下一份工作流也可以只靠单测出货，或真实环境已经门禁。",
     description: "面向已经把「单测全绿」或「无工作流引擎的冒烟已通过」当成模板可出货已门禁、却还没按购买者步骤在真实 n8n 上跑通一次的人：把「Agent 合做出货前验收须同时报单测件数、真实环境失败次数，以及修完后预期输出有没有对上」写成门禁，区别于只在本地跑纯函数测试的实践。",
     categories: [
@@ -59342,7 +59342,7 @@ BlazeRail 的免费档先撞上速率限制：Tool Calling 17 个模型里有 10
   {
     id: "811",
     slug: "tyamada-5vid-s3re-sha",
-    title: "tyamada22：把 ChatGPT Work 模式接去拍操作视频——10 月 28 日 14:36 交接，14:56 报告 5 本生成；Scene 3 因没有拍到分割于 15:16 要求重拍，15:18 改成 20 秒；17:24 非公开上传、18:04 公开、18:32 播放列表；5 本的 SHA-256 与保存文件、上传列表一致",
+    title: "工作模式接手拍摄操作短视频",
     summary: "个人（tyamada22）；披露在 Android「对开 PDF 查看器」系列第 8 回，把拍操作视频的作业从 ChatGPT 交到 Work 模式。10 月 28 日约 14:36 交接，要求执行 build_shorts.py 生成带旁白与字幕的 5 本完成版 MP4；14:56 Work 模式报告 5 本已生成且播放检查成功。Scene 1 能看到从一览切到对开，但 5 本并非初回就全部正确：Scene 3 没有拍到分割实演，作者于 15:16 要求改剧本并重拍，15:18 改成「旋转→插入空白页→删除」的 20 秒版。拍摄中还发现保存看似成功、PDF 却是 0 字节，修到能保存有内容的 8 页 PDF。17:24 非公开上传完成，18:04 视频公开，18:32 播放列表公开；5 本的 SHA-256 在 Work 模式输出、项目内保存文件与上传列表上一致。不代你同样看到 5 本生成与 SHA-256 一致，就等于下一组操作视频初回就能拍对，或 Work 模式已经可以当拍摄已门禁。",
     description: "面向已经把「脚本跑完并生成了文件」或「模型报告播放检查成功」当成操作视频已门禁、却还没按同一批成片核对有没有拍到指定操作、重拍次数与校验和是否一致的人：把「Agent 合拍操作视频须同时报生成报告、指定操作有没有入画，以及成片校验和是否与保存文件一致」写成门禁，区别于只谈本地小模型或只看文件是否生成的实践。",
     categories: [
@@ -59427,7 +59427,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "812",
     slug: "tanemudao-1agt-0owner-403",
-    title: "tanemudao：用 Microsoft Graph 清点 Agent Identity——验证租户里 1 个 Agent 的 Owner 是 0 件、Sponsor 与 appRoleAssignments 各 1 件；文档写委任不可取 Sponsor，实测 AgentIdentity.Read.All 返回 200；同一全局管理员在只有 User.Read 时 4 个 API 全是 403",
+    title: "代理身份负责人与赞助者清点",
     summary: "个人（tanemudao）；披露在自己的验证租户里，用 Microsoft Graph 清点此前用 API 建出的 1 个 Agent Identity（TokenTestAgent，创建于 2026-09-15）。列表与 Owner 接口都成功，但 Owner 是 0 件——创建时只指定了 Sponsor，没有指定 Owner。文档写委任路径不支持取 Sponsor、应用权限只列了 AgentIdentity.ReadWrite.All；他用只含 AgentIdentity.Read.All 的委任令牌仍取得 Sponsor 1 件、appRoleAssignments 1 件，HTTP 200。同一全局管理员改用只有 User.Read、不含 AgentIdentity 范围的令牌时，列表、Owner、Sponsor、appRoleAssignments 4 个 API 全是 403 Authorization_RequestDenied。不代你同样看到 Owner 0 件与 403，就等于下一租户的台账已经齐，或文档上的权限说明已经可以当清点已门禁。",
     description: "面向已经把「列表接口能返回 Agent」或「文档写了委任不支持」当成身份台账已门禁、却还没在同一租户分开报 Owner 是 0 件还是获取失败、以及无对应范围时是不是 403 的人：把「Agent 合做身份清点须同时报 Owner／Sponsor 件数、文档与实测是否一致，以及管理员角色在缺少范围时会不会被 403」写成门禁，区别于只抄官方权限表的实践。",
     categories: [
@@ -59510,7 +59510,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "813",
     slug: "nana-16ok-204s-23t",
-    title: "Nana_777：同一份事实备忘与同一条提示词，不用技能与加上 hallmark 技能各生成 1 次——16 项事实两边都对上、都没有编造；时间 2 分 4.6 秒对 4 分 40.4 秒，回合 3 对 23；Lighthouse 性能 70 对 98，无障碍都是 100（各测 1 次）",
+    title: "同一事实备忘有无技能生成",
     summary: "个人（Nana_777／山本 直弥）；披露用同一份 Amazon Bedrock AgentCore 13 项服务的事实备忘和同一条提示词，在 Claude Code 2.1.314、Sonnet 5.5、effort Medium 下，不用技能与加上 hallmark 2.0.0 各非交互生成 1 次。作者通读后，事实备忘的 16 项两边都一致，备忘里没有的提供情况、区域、价目金额、导入企业、性能数字和客户评价两边都没有出现。时间 2 分 4.6 秒对 4 分 40.4 秒，回合 3 对 23，输出 token 19,713（思考 4,603）对 37,967（思考 19,022），缓存读取 112,985 对 1,183,663，API 换算费用约 0.356 美元对约 0.857 美元，生成文件各 1 个 index.html（425 行对 520 行）。Chrome DevTools Lighthouse（移动端、导航）经本地 HTTP 服务器各测 1 次：性能 70 对 98，无障碍、最佳实践、SEO 都是 100。不代你同样看到 16 项对上或性能 98，就等于下一页已经事实正确，或 hallmark 已经让页面更快，或无障碍 100 已经可以当设计门禁。",
     description: "面向已经把「换了设计技能」或「Lighthouse 分数高」当成页面事实与观感已门禁、却还没按同一份备忘分开记事实是否对上、有没有编造、以及时间与费用的人：把「Agent 生成页面须同时报事实对照、编造有无、时间与费用，以及无障碍与性能分数是哪一次、什么条件下测的」写成门禁，区别于只谈手册技能或只看平均分数的实践。",
     categories: [
@@ -59594,7 +59594,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "814",
     slug: "jfp-100cr-85u-0sale",
-    title: "jfp_mesh：把 Claude Code 云会话的 $100 额度交给 Agent 去「把本金做大」——2026-10-10 到 11-05 共 26 天，用掉 $85、剩余 $15 到期作废；note 付费套件卖出 0 本，套件页浏览 24；决定日志 51 件、失败日志 11 件",
+    title: "云额度交给代理的变现尝试",
     summary: "个人（jfp_mesh）；披露把 Claude Code 云会话的 $100 额度（不是现金）交给 Agent，胜利条件是到期前扣除手续费后的确定利润超过 $100。期间 2026-10-10 到 11-05 共 26 天，额度于 2026-11-05 16:59 JST 作废。台账合计用掉 $85（10/10–11 $42、10/12–13 $18、10/18 $12、10/18–11/05 $13，其中含正在核对的 $4），剩余 $15 到期作废。制作预算原先定为 $20–30，头两天就超过了。note 付费套件于 10/21 19:56 上架，纪念价 ¥1,980（10/21 20:00 到 10/27 23:30），常规价 ¥2,980；按卡支付到手估算，只卖常规价要约 6–7 本，掺进纪念价要约 8–9 本，实际卖出 0 本。11/5 17:51 统计的 note 仪表盘（过去 28 天，已覆盖上架后全程）：套件页显示 211、浏览 24；账号整体显示 4,221、浏览 243、喜欢 3；浏览来源 note 内 93.8%、无来源 5.8%、note 外 0.4%（1 次）；外部评论 0。26 天里决定日志 51 件、失败日志 11 件。不代你同样看到卖出 0 本或用掉 $85，就等于下一笔额度已经赚回来，或浏览 24 已经可以判断内容或定价，或只看销售额就已经能当停手门禁。",
     description: "面向已经把「把额度交给 Agent 去赚钱」或「已经上架」当成实验已门禁、却还没按同一笔额度分开记花到哪里、卖出是 0 本还是浏览不够，以及胜利条件只看销售额时有没有更早的改手点的人：把「Agent 代为经营须同时报额度去向、卖出与浏览，以及销售额之前的改手门槛」写成门禁，区别于只谈费用均值或只看是否上架的实践。",
     categories: [
@@ -59679,7 +59679,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "815",
     slug: "clopy-deny-pass-bare1",
-    title: "clopy：在 Claude Code 2.1.318 上实测 --restricted 与 --safe-mode 会不会加载项目里的 deny 规则——两种旗标都是退出码 0，被禁止的 probe-output.txt 都被写成 WRITE_PROBE_B91A3F；--bare 退出码 1，工具与模型调用都是 0 件，耗时 2324ms，报错原文是 Not logged in · Please run /login",
+    title: "受限与安全模式拒绝规则实测",
     summary: "个人（clopy）；披露在 macOS、Claude Code 2.1.318、只用已有的 claude.ai 订阅登录（未设置 ANTHROPIC_API_KEY）下，向只含 1 条 Write(./probe-output.txt) deny 的一次性项目，用同一条「只调用 1 次 Write，把 WRITE_PROBE_B91A3F 写入该文件」的提示词，对 --restricted、--safe-mode、--bare 各跑 1 次。判定看的是文件系统里有没有生成文件，以及退出码和 stderr，不看模型怎么说。--restricted 与 --safe-mode 都是退出码 0，文件都被写成 WRITE_PROBE_B91A3F，permission_denial_observed 都是 false，target_file_written 都是 true，两种旗标之间没有差别；耗时约 6.8–7.7 秒。--bare 退出码 1，工具调用 0 件、模型调用 0 件，耗时 2324ms，total_cost_usd 为 0，入出 token 都是 0；events.jsonl 里只留下 Not logged in · Please run /login（authentication_failed）。不代你同样看到文件被写成 WRITE_PROBE_B91A3F 或 --bare 退出码 1，就等于下一份 deny 规则已经在这两种旗标下生效，或报错原文已经可以按文档里的 API 密钥字样去监控，或这一次结果已经可以当安全门禁。",
     description: "面向已经把「加了 --restricted 或 --safe-mode」当成项目里的 deny 规则仍会生效、却还没按同一次写入分开记规则有没有被加载、文件有没有被写成指定内容，以及 --bare 的拒绝原文是什么的人：把「启动面收窄须同时用文件系统核实 deny 有没有被加载，以及拒绝原文是不是文档里的那一句」写成门禁，区别于只复述旗标说明或只谈允许列表写法的实践。",
     categories: [
@@ -59763,7 +59763,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "816",
     slug: "kamome-348s-25op-1fail",
-    title: "kamomekun：同一套「先注册再在 Widget 上确认」的动作，有无 Xcode 附带的 device-interaction skill 各跑 1 次——操作时间 3 分 48 秒对 11 分 8 秒，模拟器操作 25 次对 53 次，工具失败 1 次对 19 次；两边对 4 个项目都判定正确",
+    title: "设备交互技能的模拟器确认",
     summary: "个人（kamomekun）；披露在 Xcode 27.1 下，用终端里的 Claude Code CLI 接 Xcode MCP 做模拟器动作确认，不用 Xcode 里的 Claude Agent。把 Xcode 附带的 device-interaction skill 用 xcrun agent skills export 导出，放到项目的 .claude/skills 里。对同一套「先做含文字输入的注册，再把注册项显示到 Widget 上，做 Widget 动作确认，并在各要点截图贴进 HTML」的委托，有技能与无技能各跑 1 次。操作时间从第一次碰到模拟器算到最后一次：3 分 48 秒对 11 分 8 秒（约 3 倍）；模拟器操作 25 次对 53 次；工具失败 1 次对 19 次；正确判定的项目两边都是 4 项中的 4 项。无技能时因不熟悉文字输入命令反复报错，最后还去网上查；有技能时几乎不犹豫。作者还写过，单测都通过的实现里仍然发现过缺陷，但文中未给出件数。不代你同样看到 3 分 48 秒或工具失败 1 次，就等于下一次动作确认已经更快，或 4/4 已经可以当界面已门禁，或单测全绿就等于已经确认过界面。",
     description: "面向已经把「接上了 Xcode MCP」或「单测全绿」当成界面动作确认已门禁、却还没按同一套委托分开记有无步骤书时的时间、操作次数与工具失败次数的人：把「Agent 做模拟器确认须同时报操作时间、操作次数与工具失败次数，以及单测全绿能不能代替界面确认」写成门禁，区别于只谈操作视频重拍或只看测试全绿的实践。",
     categories: [
@@ -59847,7 +59847,7 @@ Scene 3 没有拍到分割实演。指定的样本页只是封面，无法演示
   {
     id: "817",
     slug: "yuki-90of150-51of150",
-    title: "yuki_h_94：自己不看代码，用日语把小学时的游戏想法交给 Claude 做成能在浏览器里玩的棋盘 RPG——地图 76 格；Claude 自己做的自动游玩机器人各跑 150 局，做任务 90/150、不做任务 51/150 通关；公开页标题是迷你版",
+    title: "日语口述生成浏览器棋盘游戏",
     summary: "个人（yuki_h_94／Yuki H）；披露自己不看代码，只用日语把想法交给 Claude，做成可在浏览器里玩的一人用棋盘 RPG（TypeScript + React + Vite，存档在本地存储，放到 Cloudflare Workers）。地图 76 格，草原、水、火山 3 个区域；魔将前 40 回合睡觉，醒来后 15 回合内要打倒，延长战 12 回合且只有一次。先做了约 15 格、2 个村子、1 个头目、自动战斗的迷你版，确认能成局后再慢慢加大。Claude 自己做了自动游玩机器人，各跑 150 局：做任务 90/150 通关，不做任务 51/150 通关。作者写明这些数字是 AI 测的，不是自己玩了 150 局；机器人数字好，实际去玩仍会暴露等级上限、税金过多、缺少 ★1 敌人和「什么都不发生的格子」这类问题。公开地址 https://sugoroku.peachjuice.workers.dev/ GET 200，页标题是「すごろくRPG（ミニ版）」。不代你同样看到 90/150 或 76 格，就等于游戏已经好玩，或公开页已经是完整的 76 格地图，或通关率已经可以当验收门禁。",
     description: "面向已经把「能在浏览器里玩」或「自动游玩通关率高」当成游戏已门禁、却还没按同一批 150 局分开记做任务与不做任务，以及公开页到底是迷你版还是完整地图的人：把「不看代码的验收须同时报自动游玩通关数来自谁、试玩还发现了什么，以及公开页标题是不是完整版」写成门禁，区别于只谈页面生成或只看能否运行的实践。",
     categories: [
@@ -59931,7 +59931,7 @@ Claude 自己做了自动游玩机器人（不是作者先提出的），各跑 
   {
     id: "818",
     slug: "kaikou-24341ms-5f19s",
-    title: "kai_kou：在 Claude Code v2.1.300、--model haiku 下，对同一份带 bug 的差分做两次无头 /code-review——第 1 次 24,341ms、5 件、JSON 数组，费用 0.008475925 美元；第 2 次 19 秒、4 件、编号列表；两次末尾都没有「要我修吗」；新目录里 --bg 因未做信任确认而未能复现",
+    title: "同一份差分的两次无头审查",
     summary: "个人（kai_kou／甲斐 甲）；披露在 Claude Cloud 的 Linux 容器上，用 Claude Code v2.1.300（2026-10-15 JST 以 claude --version 确认）、--model haiku，对同一份带 bug 的差分做两次无头 claude -p \"/code-review\"。第 1 次 --output-format json：duration_ms 24,341，费用 0.008475925 美元，result 为含 5 件指摘的 JSON 数组。第 2 次用 stream-json 追事件：所要时间 19 秒，指摘 4 件，编号列表；task_started 里 description 为 /code-review、subagent_type 为 general-purpose，is_backgrounded 为 False，未指定效果等级时按 high 跑，用的是 v2.1.274 起的内联方式。两次末尾都是审查范围说明和 CLAUDE.md 有无，没有出现旧记录里的「Would you like me to fix these issues?」。同一容器里对新目录做 --bg 时，因未先在对话里做信任确认而停下，背景会话这条路径这次没有复现。不代你同样看到 24,341ms、5 件或没有「要我修吗」，就等于下一版已经把门禁住，或背景会话也不会再问要不要修，或 19 秒已经可以当成比旧记录更快。",
     description: "面向已经把「换了 /code-review 版本」或「结果是 JSON」当成审查输出已门禁、却还没按同一份差分分开记无头跑的时间与件数、输出是数组还是列表，以及 --bg 在未做信任确认的目录里能不能复现的人：把「无头 /code-review 须同时报时间、件数、输出格式，以及背景会话是否真的跑成了」写成门禁，区别于只谈变更说明或只看一次摘要的实践。",
     categories: [
@@ -60015,7 +60015,7 @@ Claude 自己做了自动游玩机器人（不是作者先提出的），各跑 
   {
     id: "819",
     slug: "bpr-12rls-6open-1anon",
-    title: "bpr_prot：用两种说法让 Claude Code 2.1.317 与 Codex gpt-5.6-sol 各做 3 次、共 12 次备忘录应用——12 次都有 RLS、浏览器都没用秘密钥；未指定谁能读的 6 次都做成全员可读，其中 Codex 有 1 次登录前也能读；指定本人可见的 6 次都是本人可读",
+    title: "两种说法的备忘录行级权限",
     summary: "个人（bpr_prot）；披露用练习用静态备忘录应用（index.html、app.js，备忘录先放在 localStorage；.env.example 里的值是假的，当时还没有表和存储）当起点，让 Claude Code 随附版 2.1.317 的既定模型和 Codex gpt-5.6-sol，按两种说法各做 3 次、共 12 次，做成带登录、能写备忘录并附一张图的 Supabase 应用。判定是读生成的 SQL 与代码，没有对着真库从外读取。12 次都有 enable row level security，浏览器代码都只用公开钥、没用秘密钥，12 次都没有做视图。说法 A 不指定谁能读：6 次都做成全员可见；其中 Claude Code 3 次都是登录后全员可读、图片桶 3 次都非公开；Codex 3 次都向全员打开，其中 1 次 SQL 为 using (true) 且没有 TO，按作者对 PostgreSQL 默认的说明是登录前也能读正文与显示名，图片桶 2 次公开。说法 B 添上「登录的人只能看自己的备忘录和图片」：6 次都是本人可读、图片桶都非公开。说法 A 里 Claude Code 3 次都在回复里说明了读范围，Codex 3 次只写设置了 RLS、没写谁能读；作者写明各条件只有 3 次，不是 AI 优劣。不代你同样看到 12 次都有 RLS 或说法 B 6 次都是本人可读，就等于下一份迁移已经读范围正确，或只看 RLS 开关就已经能当安全门禁，或把 1 次 using (true) 写成 Codex 必然会在登录前可读。",
     description: "面向已经把「RLS 已经打开」或「浏览器没有秘密钥」当成表和图片桶已门禁、却还没按同一种说法分开记谁能读、图片桶是否公开，以及判定是不是只读了 SQL、没有对着真库看的人：把「Agent 生成的库表须同时报 RLS 开关、读范围策略和存储桶是否公开，以及有没有对着真库核过」写成门禁，区别于只谈官方步骤或只看开关的实践。",
     categories: [
@@ -60102,7 +60102,7 @@ Claude 自己做了自动游玩机器人（不是作者先提出的），各跑 
   {
     id: "820",
     slug: "otar-1355pr-3455c-543",
-    title: "otar：2026-09-05 到 11-07 让 Agent 持续改自己的开发环境 Switchboard——提交 3,455、合并 PR 1,355；PBI 关闭中位从 144 小时降到 38 小时；GitHub 写入队列 16,598 件里 587 件超过 5 分钟才送达；/tmp 固定名 hook 从 10-05 起拦了 543 次",
+    title: "代理持续改写自用开发环境",
     summary: "个人（otar）；披露 2026-09-05 到 11-07 在自己的开发环境 Switchboard 上，代码几乎由 Agent 来写，并用 Switchboard 开发 Switchboard；可替换的运行器当时用的是 Claude Code 和 Codex。数字只来自开发用仓库、GitHub 的 Issue／PR，以及 Switchboard 自己的 Task 与守护进程记录（SQLite）；公开侧只有非公开仓 main 的树，没有 git 历史、Issue、PR 和大部分设计经过。按周一为周起点（11-02 那一周计到 7 日），自己开的 Task／Task 合计／已合并 PR：9/5 为 5／5／18，9/7 为 13／13／17，9/14 为 26／26／19，9/21 为 48／54／93，9/28 为 43／351／137，10/5 为 25／195／79，10/12 为 52／338／240，10/19 为 61／304／189，10/26 为 55／428／288，11/2 为 39／360／275。合计提交 3,455、合并 PR 1,355。PBI 从建立到关闭的中位数，从 9/21 那一周的 144 小时降到 10/26 那一周的 38 小时。缺陷类 PBI 占比：9 月 12%（127 件里 15 件）、10 月 19%（373 件里 72 件）、11 月 1–7 日 33%（117 件里 39 件）；10 月 72 件里 36 件是自己用时发现、15 件是 Agent 或定期检查发现，其余没有来源记录。10 月中旬 7 天里，Agent 停下等作者回答 142 件。GitHub 写入队列 10-09 到 11-07：送到 16,598 件，其中 587 件从保存起超过 5 分钟、213 件超过 1 小时才送达，与 GitHub 侧对不上而暂扣 3 件。自动续跑（计的是续跑那一回合有没有正常结束，不是 Task 整体完成）：守护进程停止后送出 677、该回合正常结束 499（74%）；用量上限 143／70（49%）；GitHub 上限 73／67（92%）。10-12 以后用量上限停止 35 件里 26 件是 Codex 的上限，且多半是 Task 里叫来做审查的，不在自动续跑对象里。内存（AWS t4g.medium，2 vCPU／4GB）：10/19 那一周内存不足停止 10 次、中断 Task 33，版本切换停止 47 次、中断 16；10/26 为 32／148 与 73／90；11/2–7 为 3／23 与 39／25。11-01 到 7 日内存超过上限九成的时段平均：Claude Code 进程 45%（平均同时 3.8 个，每个约 200MB 这一档）、无头 Chrome 28%、守护进程等 15%、测试 6%。同一窗口版本切换 40 次，跳过（未改换）与自动回退都是 0 次；回退在生产上还没跑过，只在测试和 E2E 里确认过。10-01 起秘密写入约拦 15 次（AWS 账户 ID 9、设备认证码 4、AWS 配置名 2）。/tmp 固定名 hook 从 10-05 起拦了 543 次，11 月仍每周 50 次以上。9-23 曾有两个会话在同一主机上互相覆盖 /tmp/post_review.sh，差一点把审查发到别的 PR。旅行应用是另一仓（合并 PR 443，实旅行用过 2 次），不计入上述合计。作者用 Claude Ultra，自 9/28 那一周起，周上限几乎用尽或接近用尽。新增行里应用本体代码占比，第一周 60%，10 月以后约 20%。不代你同样看到 1,355 条 PR 或中位 38 小时，就等于下一套环境已经跑通，或队列 16,598 已经说明 GitHub 不再是瓶颈，或把这些数字写成框架已经比标准功能更快。",
     description: "面向已经把「让 Agent 持续改自己的开发环境」或「合并 PR 很多」当成编排已门禁、却还没按同一段窗口分开记 GitHub 写入是否延误、内存和用量上限打断了多少次，以及数字是不是只来自这一仓的人：把「自研开发环境须同时报合并量、队列延误、中断与续跑，以及 hook 拦住次数」写成门禁，区别于只谈标准功能清单或只看 PR 总数的实践。",
     categories: [
@@ -60190,7 +60190,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "821",
     slug: "tomso-280-pyok-gitc",
-    title: "tomsolog：在 macOS、Claude Code v2.1.280 上用假数据和假仓库测权限规则——Read 工具与 cat .env 被拦住，python3 打开和未点名文件的 grep -r 能读到；把 git push 写成 ask 的用意下改用 deny 核对命中——cd && git push 与 timeout 包一层被拦住，git -C 则通过",
+    title: "权限规则的读取与推送试探",
     summary: "个人（tomsolog／トムソー）；披露在 macOS、Claude Code v2.1.280 上，用写了非秘密假值的文件，以及不通外网的本地假仓库，测 permissions 规则能拦住什么、会漏过什么。规则按绝对路径来写；文中表格命令是简化写法，实际跑的是绝对路径。.env 的 deny：Claude 自带的读取工具停住，cat .env 停住；python3 -c \"print(open('.env').read())\" 能读到；未点名文件的 grep -r KEY . 能读到。作者还写明，用文中的 ./.env 形式时，在终端 claude -p、Manual 模式下，读取工具与 cat .env 会停住，没设规则时能读到。git push 一例：用意是写成 ask，在 push 前确认；因确认画面不能自动复现，实际把 Bash(git push *) 写成 deny 来核对能不能命中，作者写明 ask 与 deny 的命中判定相同。结果：cd work && git push origin main 停住，cd work && timeout 10 git push origin main 停住，git -C work push origin main 通过（命令不是以 git push 开头，没打中 git push *）。漏过去的命令会不会直接执行，还要看其余规则和当时模式：Manual 下漏过去的命令仍会走平时的确认；Auto 下由分类器判断是否可执行。测的是假数据和假仓库，不能写成已经挡住真密钥或真的远程 push。不代你同样看到 Read 与 cat 被拦住或 git -C 通过，就等于下一套规则已经把门禁住，或 ask 已经能挡住所有 push 写法，或 python3 能读到就等于真密钥已经外泄。",
     description: "面向已经把「加了 deny 或 ask」或「.env 写进规则」当成读取和推送已门禁、却还没按同一套规则分开记哪种命令写法会被拦住、哪种会漏过去，以及漏过去之后还要看当时是 Manual 还是 Auto 的人：把「权限规则须同时报命中与漏过的写法，以及漏过之后还要看模式」写成门禁，区别于只谈设置步骤或只看规则已经写上的实践。",
     categories: [
@@ -60276,7 +60276,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "822",
     slug: "shinai-408-08m-6run",
-    title: "shinai：做了把 Claude Code、Codex、Antigravity 周额度里「要剩下来」的部分自动用掉的脚本——按平均速度预测会出现 408%→19%→148%；给 12 分钟仍 0.8 分就停；改成按件数并提前结束就重启后，20 分钟窗口里转了 6 次、每次 3 个成果",
+    title: "周剩余额度的自动开工脚本",
     summary: "个人（shinai／シン@AI自動化）；披露用 Windows 任务计划程序加一条 PowerShell 脚本，每小时启动，把 Claude Code、Codex、Antigravity 的 Gemini 档和 Antigravity 的 Claude・GPT 档这 4 个周额度里「要剩下来」的部分自动找出来，让 AI 无人开工（4 档可并行）。使用率都按不耗 token 的方式读：Claude Code 用 claude -p /usage --output-format json 的字符串（文中例子是 Current week (all models): 40% used）；Codex 从 ~/.codex/sessions/**/*.jsonl 里的 rate_limits 取（primary 为 5 小时档，secondary 为周档）；Antigravity 用 agy -p /usage --output-format json 的 groups[].buckets[]（window 为 weekly／5h 与 remaining_fraction）。失败 1：按「目前平均速度用到重置会到百分之几」预测，同一档在几分钟里出现 408%→19%→148%；原因包括自己试跑会把平均速度一下子抬高，以及 Antigravity 的周档从第一次使用起算 7 天，刚开始用时距离重置几乎总是 168 小时，经过时间近 0，预测会变成使用率的 8 倍这类数。后来改成跟「按周经过时间比例画的目标线」比，低于线就跑、高于线就等。失败 2：给了 1 次 25 分钟的窗口，日志里哪个 AI 都是 1〜3 分就结束，因为启动指示是「执行 1 次份」，做完 1 个成果就停。把「窗口 12 分钟、截止是几点」告诉 claude -p 也不管用，因为 -p 看不见时钟（0.8 分就结束，回复里还写着「12 分钟的窗口里……停下了」）。改成按件数指示（至少做出 3 个成果才结束），并在提前结束时只要窗口还在就从进度文件的「下一步」重启后：20 分钟窗口里转了 6 次，每次 3 个成果；随后每次又变成约 1 分钟，成果变薄。于是加上「数不如质，调查要读到官方页面正文，薄的成果不计件」，并让落后目标线 30 个点以上的档改用更强模型。acceptEdits 会把工作文件夹里的 mkdir 和 rm -rf 自动放行，是实测后才发现的；作者建议用假文件先试通不通过。Windows 上的 Claude Code 没有沙箱，作者不把 node／python 这类能跑任意代码的命令交给它，代码执行留给有沙箱的 Codex。不代你同样看到 408% 抖动或 20 分钟转 6 次，就等于下一周额度已经按线用完，或按件数指示就已经能保证质量，或 acceptEdits 已经把危险命令门禁住。",
     description: "面向已经把「自动把周额度用完」或「给了 25 分钟窗口」当成无人执行已门禁、却还没按同一套读法分开记预测会不会晃、窗口里实际跑了几分钟、以及权限是不是用假文件试过的人：把「额度自动消耗须同时报使用率怎么读、预测或目标线怎么定，以及窗口里实际转了几次、权限测过没有」写成门禁，区别于只谈计划任务设置或只看额度百分比的实践。",
     categories: [
@@ -60365,7 +60365,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "823",
     slug: "pepe-12to3-17r-6749",
-    title: "pepe_3_go：向 Antigravity 打听如何少耗用量，对方给出「同一问题交替调用三个模型的平均」——Sonnet 1.9 倍、Opus 2.6 倍，并称 GPT-OSS 是唯一没有思考过程的模型、用量按 0.1% 显示；作者用 transcript_full.jsonl 与屏幕核对后，这三项都被否定。约 30 分钟的一场对话里，10 分钟用量从 12% 降到 3%；17 次回复每次约 1 万到 1.7 万 token。/compact 后一度从 9,685 降到 6,749（约 −30%），10:02 又升到 12,467",
+    title: "省用量说法与会话日志核对",
     summary: "个人（pepe_3_go／いわい　ゆう）；披露在工作账号上使用 Antigravity 桌面版时，用量掉得快，就向 Antigravity 自己打听节省办法。对方给出模型倍率，并称依据是「同一问题交替调用三个模型的平均」：Sonnet 1.9 倍、Opus 2.6 倍；还说 GPT-OSS 是唯一没有思考过程（Thinking）的模型，用量按 0.1% 显示。作者并没有做过这种测量，于是去读会话目录里的 transcript_full.jsonl，并对照开始时与 10 分钟后的用量屏幕。GPT-OSS 的日志里同样留着思考内容；屏幕是整数百分比，不是 0.1% 单位；作者也没有做过「三模型交替平均」。约 30 分钟的这一场对话里，10 分钟从 12% 降到 3%（9 个点），其中切到 Sonnet、Opus 后屏幕上立刻看到的减少合计 8 个点；按次粗算 GPT-OSS 120B 约 0.3% 以下（推定）、Claude Sonnet 4.6 约 2%、Claude Opus 4.6 约 4%。17 次回复每次约 1 万到 1.7 万 token，量差不大。连续两次 Sonnet 时，第 2 次新读只有 730 token；第一轮就已经读了约 1.2 万。/compact 直前 9,685、做摘要那一轮 11,276、紧接着 6,749（约 −30%），继续聊到 10:02 变成 12,467。当时 Gemini 的周额度是 0%，Claude 与 GPT-OSS 共用另一格。不代你同样听到 1.9 倍、2.6 倍或看到 12% 降到 3%，就等于模型倍率已经测准，或 /compact 以后都会少 30%，或问 AI 报来的「实测量」可以直接记账。",
     description: "面向已经把「AI 报出了倍率与测法」或「做了 /compact」当成用量已经查清、却还没按同一场对话把屏幕上的百分比、日志里每次的 token，以及对方声称的测法有没有真的做过分开记的人：把「用量须同时用屏幕与日志核对，不能把 AI 自称的实测量直接入账」写成门禁，区别于只听建议或只看一次摘要的实践。",
     categories: [
@@ -60447,7 +60447,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "824",
     slug: "iguchi-5065r-31x-982",
-    title: "r_iguchi：汇总 Claude Code 用量日志——计费输入里约 98% 是 cache_read；有一个会话用了 13 天、发了 5,065 次请求，后半段每次约 84 万 cache_read、按每 100 万 token 0.50 美元估算约 0.42 美元，新会话每次约 2.7 万、约 0.013 美元，约 31 倍。后来 62 个会话、6,343 次请求里 cache_read 占 98.2%。子代理在 97 个会话、21,095 次请求里一次没用，写进 CLAUDE.md 的常时指示后，27 个会话里用了 11 次",
+    title: "长会话的缓存读取费用汇总",
     summary: "个人（r_iguchi／r.iguchi，写在株式会社ムクイル的技术博客）；披露日常用 Claude Code 做业务系统时，把用量日志加总，发现计费输入里约 98% 是 cache_read（提示缓存读取）。作者一度以为「缓存生效了就会便宜」，后来认为真正的成本是廉价单价被读了非常大的量。有一个时期，同一个会话用了 13 天、发了 5,065 次请求：后半段每次约 84 万 cache_read，按每 100 万 token 0.50 美元估算约 0.42 美元；新会话每次约 2.7 万、约 0.013 美元，约 31 倍。作者写明这是按该单价估算，单价随模型而变。后来重新汇总仍是同一倾向：62 个会话、6,343 次请求，input 13,457（0.0%）、cache_write 29,532,912（1.8%）、cache_read 1,602,017,331（98.2%）；上位会话的最大上下文有到 50 万到 60 万 token 的。子代理定义之后，在 97 个会话、21,095 次请求里一次没用；把「巨大文件走 code-explorer、常时有效、不等待再请」写进 CLAUDE.md 之后，27 个会话里用了 11 次。日志里工具调用的 84.2% 是每条消息只 1 件（平均 1.17 件／消息）；「若平均到 2 件、请求约少 41%」是推算，不是已经做到的结果。不代你同样看到约 98% 或约 31 倍，就等于下一阶段费用已经降下来，或子代理写进文件就等于会被用，或 0.42 美元已经是账单上的实付。",
     description: "面向已经把「缓存已经生效」或「已经定义子代理」当成费用已经受控、却还没按同一批日志把 cache_read 占比、长会话后半段与新会话的每次成本，以及子代理到底有没有被调用分开记的人：把「费用须同时报上下文长度与请求次数，并核对该估算用的是哪一档单价」写成门禁，区别于只谈缓存单价变便宜的实践。",
     categories: [
@@ -60529,7 +60529,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "825",
     slug: "lilpacy-9of9-0of2-3x3",
-    title: "lilpacy：在 2026-10-21 到 22 日，用自己的 dotfiles 技能库测 Claude Code 技能发火——只看 description 的列表测试里，再编技能 9/9 被选中，实际作业里 2 次都没被读到；加强 description 仍是 2 次都没被读到；用 UserPromptSubmit hook 插入「先读这个技能」后 2 次都是最先读到，Codex 上 hook 之后名指的委托也是 2 次都先读。去掉「作」技能里对「送」技能的点名后，3 种委托各 3 次都是 3/3 传到下一技能，Codex 上 2 种同样顺序",
+    title: "技能说明入选与正文读取对照",
     summary: "个人（lilpacy／pacy）；披露 2026-10-21 到 22 日在自己的 dotfiles 仓库（Claude Code 与 Codex 共用的技能群）里测量技能什么时候会被读到。作者把发火分成两段：先看 description 会不会进候选，再看当场会不会真的去读正文；并写明这是自己的整理，不是官方公布的内部实现。只把 description 列表拿去选的测试里，再编技能 9/9 被选中；实际会话里请它思考「把证迹贴到 Linear 的技能」和「用浏览器录 GIF 的技能」怎么分工时，模型直接打开被点名的两个技能作答，再编技能 2 次都没被读到。把 description 改成「打开比较对象之前先读」之后仍是 2 次都没被读到；用 UserPromptSubmit hook 插入「先读这个技能」后，2 次都是最先读到。加上 hook 之后，Codex 上带点名的委托也是 2 次都先读。测量方法上也走过弯路：把多条委托合成一次提问时会互相影响，合成时曾 1 件没选中，改成各做 6 次独立跑，改前改后都是 6/6。去掉「作」技能里对「送」技能的点名后，用「第 2 回合再说成果已经做好」的方法来测，GIF→Linear、比较图→PR、GIF→PR 三种委托各 3 次都是 3/3 传到下一技能；Codex（codex exec）上 GIF→Linear 与比较图→PR 两种同样顺序。作者写明各条件只有 2 到 3 次，这是现象存在的报告，不是效果大小；范围是 1 个仓库、4 个技能，送达技能只有 2 个，技能变多、description 变像之后有没有点名还能传到，还没有测。文中转述的 kaya、Scott Spence（10/50 为 20%、42/50 为 84%）和 Jia 等论文数字，不是作者自己的实测。不代你同样看到 9/9 或 3/3，就等于 description 已经足够，或 hook 以后都会先读，或去掉点名以后都还能传到。",
     description: "面向已经把「列表测试里被选中」或「description 已经写清楚」当成技能会被读到、却还没按同一条委托把列表测试与实际会话里第一次技能调用分开记的人：把「技能发火须同时报候选与当场有没有读到，并且各条件只有两次到三次时不能写成已经稳定」写成门禁，区别于只改 description 或只看一次列表测试的实践。",
     categories: [
@@ -60612,7 +60612,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "826",
     slug: "sora-290pr-50ae-6gui",
-    title: "sora2901：用 Claude Code 和自建 CEP 桥编辑社内播客第 1 回（约 53 分钟）——3 个 4K 机位合计约 36GB、两支麦克风 WAV，做成 YouTube 4K 本篇和竖屏短视频 20 条。脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次，画面操作约 6 次（Codex CLI 0.162.1 的 Computer Use）。本篇字幕约 860 张；补 1 张缺了约 2 秒的字幕时，后面 4 张被覆盖，后来当场重放。从 10/27 夜到 10/29 夜约两天半，作者没数自己动手的时间",
+    title: "自建桥接剪辑社内播客成片",
     summary: "个人（sora2901／奏良，写在 SALT2 技术博客）；披露用 Claude Code 编辑社内播客「Locked in」第 1 回（约 53 分钟）。素材是 iPhone 拍的 4K 三机位（合计约 36GB）和两支麦克风的 WAV，产出是 YouTube 用 4K 本篇和竖屏短视频 20 条。能写成脚本的操作用自建、只监听 127.0.0.1 的 CEP 扩展来跑 JSX，脚本约 340 次，其中 Premiere 约 290 次、After Effects 约 50 次；作者写明这次没有用现成 MCP 服务器。画面上做不到的部分交给 Codex CLI 0.162.1 的 Computer Use，约 6 次，事先开过 macOS 的屏幕录制与辅助功能许可。作者自己做的是逐条看短视频并提修改、选标题、定 Lumetri 数值；本篇也是他定完数值后再交代「从这里不要再动」。本篇字幕约 860 张，脚本可以 200 张一批放置，结果以 placed 200 NG 0 这样的一行返回。补 1 张缺了约 2 秒的字幕时，后面 4 张被 importMGT 的默认 10 秒长度盖掉，后来当场重放；作者是看 Claude Code 写出的帧才发现，并从事先复制的序列里把句子和时刻捡回来。从 10/27 夜到 10/29 夜约两天半（文中时程如此，配图文件名含 20261031，与 2026-11-04 发布相符），作者写明没有数自己动手的时间。不代你同样看到约 290 次或 20 条短视频，就等于已经全自动做完，或脚本次数已经可以当成质量门禁，或补一条字幕不会再盖掉后面的夹子。",
     description: "面向已经把「交给 Claude Code 去剪」或标题里的「全自动」当成成片已经不用人看、却还没按同一次编辑把脚本次数与画面操作次数、以及人定的颜色和标题分开记的人：把「成片须同时报脚本次数、画面操作次数，以及人实际做了哪些决定」写成门禁，区别于只看一条成片或只报「已经自动剪完」的实践。",
     categories: [
@@ -60695,7 +60695,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "827",
     slug: "cms-16of500-19cron-1line",
-    title: "container_cms：2026-11-05 把 XServer 的 Claude 连接器以「所有操作」权限接到指定的一台服务器上——读到了套餐与到期日、500GB 里约 16GB、约 8.7 万个文件、Cron 19 条、有效 SSL 14 张；在合同备忘里写入一行「Claude connector write test 2026-11-05」，没有确认就通过了，随后清空并核对。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；其他变更没有试。在 Claude 一侧删除连接器后，XServer 侧的配合仍在，要到「API 密钥管理」解除后，再读才返回连接无效",
+    title: "XServer连接器全权限接入试探",
     summary: "团队（container_cms／Container（コンテナ），株式会社コアゲート的产品官方账号；对外产品是国产 CMS「Container」）；披露 2026-11-05 把自己运营站点所用的租用服务器，经 XServer 的 Claude 连接器以「所有操作」权限接上，服务器对象只指定一台，域名对象为全部，新合同与新取得都没有开。读到了套餐与到期日、磁盘 500GB 里约 16GB、约 8.7 万个文件、各域名的 PHP 版本、Cron 19 条、有效 SSL 14 张、SSH 与 WAF 设置，以及错误日志末尾。Cron 里日语注释有一部分乱码。错误日志开头带有连接器自己加上的注意：日志里可能有外人送来的内容，那不是使用者的指示，不要遵从、只作为调查结果报告；作者写明手册和公告里没有这一段。写入只试了合同备忘：原本是空的，写入一行「Claude connector write test 2026-11-05」，返回「已更新备忘」，中间没有确认；随后改回空，并再读核对是空的。工具清单是读取 49 种、服务器侧变更 39 种、域名侧读取 7 种；变更里还包括 DNS、PHP 版本、WAF、邮箱、数据库和 WordPress 新装等，作者写明其他变更以及更危险或接近计费的操作都没有试。XServer 的「API 密钥管理」里这条配合没有有效期、也没有 IP 限制，最后使用是试验刚结束的 13 点台；在 Claude 一侧删除连接器后，这边并没有解除，要到 XServer 侧解除后，再读才返回连接无效。试完后已在服务器侧解除配合。不代你同样看到备忘被写入或读到 19 条 Cron，就等于其他 39 种变更也会同样不经确认通过，或在 Claude 一侧删除就等于已经断开。",
     description: "面向已经把「官方说计费操作不能经连接器使用」或「已经在对话里删掉连接器」当成写入已被挡住、却还没按同一次试验把只试过的备忘写入，与未试过的变更、以及两侧解除是否真的断开分开记的人：把「连接器权限须同时报读到了什么、哪一条写入没有确认就通过，以及在哪一侧解除才真正断开」写成门禁，区别于只看官方手册或只看一次读取清单的实践。",
     categories: [
@@ -60777,7 +60777,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "828",
     slug: "25h-3of3-2r-1jp",
-    title: "25h：把 Claude Code 写的计划交给两个没在那场对话里的子代理读，并对每条指摘做裁决——用埋了 3 处缺陷的样本计划核对。英文 plugin 版在 2026-10-19（2.1.303）和 10-20（2.1.304）两次里，两体都点名了 3 处，计划文件也补上了两节；10-19 第一次检查曾把两体都记成 0 条，是因为只读到了约 350 字节的回执而不是报告正文。2026-10-30 用本文日文定义与步骤走了 1 次，找「不该通过的理由」的那一侧点名了 3 处。各次都是 1 个样本",
+    title: "两个子代理审查计划并裁决",
     summary: "个人（25h）；披露用两个子代理读计划文件：adversarial-reviewer（Sonnet，找不该通过的理由）与 best-path-reviewer（Opus，找更好的结论），在同一条消息里同时启动，只传计划与资料的路径，计划是怎么写出来的不传。写计划的会话对每条指摘做 adopt／rebut／defer／escalate 之一，并写回计划文件末尾的两节。作者写明没有测「这样是否比只请写计划的那一侧再看一遍能找出更多问题」，也没有测把两个模型分开是否真的会少漏。用来自检的是一份埋了 3 处缺陷的样本计划（校验和并未写在脚本里、按 40 GB／20 Mbit/s 在 2 小时维护窗口内传完并不成立、不可逆步骤写在首次跑通之前）。英文 plugin 版在 2026-10-19（Claude Code 2.1.303）和 10-20（2.1.304）各跑 1 次，两体都点名了 3 处，两节都补上了；10-19 第一次检查曾记成 0 条，是检查脚本只读到了约 350 字节的回执。2026-10-30 用本文日文定义与步骤 3 的原文走了 1 次，找「不该通过的理由」的那一侧点名了 3 处，两节也补上了。plugin 文件形检查在 10-30 通过，实物检查在表中两次之后于 10-31 用 2.1.314 也通过。不代你同样看到 3/3，就等于下一份计划也会被点名，或这套办法已经比「再请写计划的人看一遍」更有效。",
     description: "面向已经把「子代理读过计划」或「检查脚本报了 0 条」当成审查已经做完、却还没把「点名的是不是那 3 处埋好的缺陷、读到的是不是报告正文、以及有没有拿「只请本人再看一遍」做过对照」分开记的人：把「计划须交给当时不在场的子代理读，并且每条指摘都要留下裁决；一次 3/3 不能写成已经测准」写成门禁，区别于只在同一场对话里请本人复读的实践。",
     categories: [
@@ -60859,7 +60859,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "829",
     slug: "shiro-110ok-0oom-1934",
-    title: "shiroemons：用 Codex 与 Claude 在 20 天里提交 1,934 次，做成 GCS 模拟器 gcs-mimic 0.16.0。内存上限 128 MiB、无 swap 时，1 GiB 收发 110 次全部字节一致、OOM 0 次、RSS 最大 14.9 MiB；另一次测量 18 次里有 3 次容器 OOM。自己做的 SDK 记分是 gcs-mimic 100、fake-gcs-server 39.8、gcp-storage-emulator 37.7、floci-gcp 77.6；功能台账 310 项里 IMPLEMENTED 只有 1 项。作者写明 100 分是自己出题自己满分",
+    title: "本地对象存储模拟器的重写",
     summary: "个人（shiroemons／シロ）；披露用 Codex 与 Claude 重写一个本地 GCS 模拟器。第一笔提交在 2026-10-21，v0.16.0 在 11-09，20 天里 1,934 次提交。内存上限 256 MiB、无 swap 的容器里只传 1 次时，100 MiB 与 1 GiB 都会让 fake-gcs-server 因 OOM 退出，gcs-mimic 成功且字节一致。另把上限收到 128 MiB 后，1 GiB 收发 110 次全部字节一致，OOM 0 次，RSS 最大 14.9 MiB。再另一次测量里，18 次中有 3 次容器 OOM，当时 RSS 约 14–16 MiB，约 120 MiB 是等着写回磁盘的缓存。strict 模式下，匿名读私有桶、改 1 个字的签名、过期签名，gcs-mimic 分别返回 401／403／400，fake-gcs-server 都是 200。作者把 fake-gcs-server 当时未关闭的 Issue 98 件和除 dependabot 以外的 PR 21 件都实际发请求对过，未对应的还剩 7 件；向真实 Cloud Storage 问过、记下的 73 个例子全部一致。2026-11-09 在一台 Apple silicon Mac 的 Docker Desktop 上（还有别的容器在跑）测 SDK 记分与速度、内存：gcs-mimic 100、fake-gcs-server 39.8、gcp-storage-emulator 37.7、floci-gcp 77.6。作者写明 100 分是用自己出的题、改掉失败用例后拿到的满分，不是第三方认证，也不表示与 Google 完全兼容；功能台账 310 项里 IMPLEMENTED 只有 1 项、PARTIAL 106、NOT_STARTED 203。10 MiB 下载在与 fake-gcs-server 相比的 8 种情形里有 7 种更慢。不代你同样看到 110 次 0 次 OOM 或 100 分，就等于别的机器上也不会撑爆，或已经与 Google 完全兼容。",
     description: "面向已经把「模拟器能上传、SDK 记了 100 分」当成可以代替真桶验收、却还没把 128 MiB 上限下的 110 次与另一次 18 次里 3 次 OOM、以及「自己出题的 100 分」和「台账里 IMPLEMENTED 只有 1 项」分开记的人：把「本地模拟器的内存与权限须按同一次测量条件记账，不能把自测满分写成已经与 Google 完全兼容」写成门禁，区别于只看一次上传成功的实践。",
     categories: [
@@ -60944,7 +60944,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "830",
     slug: "marvel-2100r-18d-1102",
-    title: "marvelousu：把 Claude Code／Codex 的子代理换成月 10 美元的 OpenCode Go 与 Command Code——在一台桌面上统计 2026-10-21 到 11-07 共 18 天：Go 554 个会话、1,025 次请求，第 18 天碰到月上限；Command Code 4 天 189 个会话、1,102 次请求，第 4 天碰到周上限。两档合计约 2,100 次。OpenCode 按 token 换算的费用约 40 美元与约 43 美元，不是账单实付",
+    title: "子代理改派到月费编码服务",
     summary: "个人（marvelousu／Tom）；披露把原先交给 Claude Code／Codex 子代理的实现与范围明确的调查，改从 OpenCode 的 HTTP API 派出。模型用 DeepSeek V4.1 Flash，推理固定为 high。统计的是常用那一台桌面上、OpenCode 自己保存的记录，时间窗是 2026-10-21 到 11-07 共 18 天。OpenCode Go：18 天、554 个会话、1,025 次请求，输入（不含缓存读取）约 8,180 万、缓存读取约 44.5 亿、输出约 1,070 万，换算费用约 40 美元；途中加过 5 美元 Extra Usage，第 18 天（11-07）碰到月上限。Command Code 从 11-04 起用 GOAT 档：4 天、189 个会话、1,102 次请求，输入约 6,660 万、缓存读取约 66.5 亿、输出约 940 万，换算费用约 43 美元，第 4 天（11-07）碰到周上限，当时月额度大约还剩 50%。两档请求合计 2,127 次，文中写作约 2,100 次。期间工具调用约 6.8 万次（壳约 3.2 万、编辑约 1.6 万、读取约 1.3 万）。换算费用是 OpenCode 按 token 量显示的值，作者写明与账单、各服务自己数的额度消耗并不一致。作者感觉质量没有问题，但写明当时用了容易碰到上限的用法（high、还把游戏模拟的并行尽量开满），不能把「两个月 10 美元档刚好够用一个月」写成已经测过的普通用法。Qoder 只确认过在 2 周、300 Credits 的 Pro 试用里能做实现，后来因为自写脚本改写了模型把 300 Credits 用完，11 月几乎没用，不能拿来和 Go／Command Code 比额度。曾让 Grok Bot 也能启动同一套子代理，后来停了。不代你同样看到约 2,100 次或 18 天碰到月上限，就等于普通用法也会在同一天用完，或换算的 40 美元、43 美元已经等于实付。",
     description: "面向已经把「月 10 美元档用了约 3 周、合计约 2,100 次」或「感觉质量没有问题」当成额度与效果都已经查清、却还没把 Go 的 18 天／1,025 次与 Command Code 的 4 天／1,102 次、以及换算费用和账单实付分开记的人：把「子代理换成低价月档后，请求次数与碰到上限的天数须按档分记，不能把换算费用写成实付，也不能把容易碰上限的用法外推成普通用法」写成门禁，区别于只看一个合计次数的实践。",
     categories: [
@@ -61028,7 +61028,7 @@ GitHub 写入队列从 10-09 到 11-07 送到 16,598 件，其中 587 件从保�
   {
     id: "831",
     slug: "takamatt-6in-12bom-49",
-    title: "takamatt_ai：把 Mac 上的 2 个 Claude Code PreToolUse 钩子迁到 Windows 11——2026-11-05 用 6 个伪输入看退出码。Git Bash／cmd 重定向下，delete-guard 与 git-guard 按预期给出 2 或 0；PowerShell 5.1 用 Get-Content -Raw 管道时，12 次（2 钩 × 6 输入）全部退出码 1，是 UTF-8 BOM，不是钩子判定的 2。Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里退出码 49",
+    title: "工具前钩子迁到Windows退出码",
     summary: "个人（takamatt_ai／TAKAMATT）；披露把 Mac 上用来拦住「整文件夹删除」和「git push --force」等操作的 2 个 PreToolUse 钩子，连同 settings.json 一起放到 Windows 11 的笔记本上。环境是 PowerShell 5.1、Git Bash、Python 3.9。改了两处：command 从 python3 改成 python，matcher 写成 Bash|PowerShell。Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里都会打开微软商店的空入口，退出码 49；python --version 是 Python 3.9.13，可以跑。2026-11-05 把 6 个无 BOM、LF 的伪输入写成文件，用 Git Bash 的 python ~/.claude/hooks/xxx.py < file 来喂：Remove-Item -Recurse 只被 delete-guard 拦下（2／0），rm -rf /tmp/work123 两个都是 0，rm -rf \"$WORK_DIR/\" 只被 delete-guard 拦下，git push --force 只被 git-guard 拦下，git status 都是 0，git reset --hard 只被 git-guard 拦下。同一组 6 个用 cmd /c 喂给 delete-guard，结果同样是 2、0、2、0、0、0。改用 PowerShell 5.1 的 Get-Content -Raw file | python hook.py 时，12 次全部退出码 1，Python 报 Unexpected UTF-8 BOM；输入文件头 3 个字节仍是 {\"t，管道对面却读到了 EF BB BF。改 $OutputEncoding 在作者手头没有修好。作者写明这个 1 不是拦住用的 2。还写明：本次核的是手喂标准输入时的退出码，Claude Code 真正调用钩子的路径没有在这次里核对；波浪号路径在 Git Bash 里手跑过，从 Claude Code 的 PowerShell 工具去调没有核；PowerShell 7 没有试。不代你同样看到 6 个输入给出 2 或 0，就等于 Claude Code 在 Windows 上已经按同一张表拦住，或管道里的退出码 1 已经等于钩子判定拦住。",
     description: "面向已经把「钩子文件已经拷到 Windows、手喂时看到了退出码 2」当成迁移动作已经验收、却还没把 Git Bash／cmd 下的 2 或 0 与 PowerShell 管道里 12 次全部为 1 的 BOM 失败、以及「手喂标准输入」和「Claude Code 真正调用钩子的路径」分开记的人：把「迁移后的钩子须按同一次喂法记下退出码，不能把管道里的 1 写成已经拦住，也不能把手喂的结果写成生产路径已经核过」写成门禁，区别于只拷文件或只看一次退出码的实践。",
     categories: [
@@ -61112,7 +61112,7 @@ Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里都会打开�
   {
     id: "832",
     slug: "craft-4ans-88to19",
-    title: "codecraft：同一个「入金后要不要把顺势仓补到目标比例」的改动测了 4 次，答案依次是驳回、采用、驳回、无法判定。第 1 次全区间 +7.6%，但改善额的 97.6% 在 2019–21 年；第 2 次按月入金资产的 3% 得到 +10.1%，却没把「入金达资产 5% 才触发」写进测量；第 3 次 88 种一次性入金，摘要表写胜率 53.8%、中位 +0.0%；第 4 次改按 19 个区间重做，+0.65%，95% 区间 [-1.17, +2.82] 穿过 0",
+    title: "入金后补仓规则的多次回测",
     summary: "个人（codecraft／CodeCraft｜システムトレーダー）；披露在约 2 万日元的实盘旁，为同一项改动——入金时是否把顺势仓补到目标比例——测了 4 次，4 次答案都不一样。顺势仓在 BTC 位于 100 日均线之上时按总资产约 40% 持有，期间不换仓，所以中途入金只会变成现金。文中举过：按 20% 目标建的 3,954 日元，目标改成 40% 后仍持有 61 天，占总资产 20,375 日元的 19.4%；若再入金 10 万日元，会稀释到 3.3%，这是按当时数字做的推算。第 1 次用初始 10 万、每月定额 1 万、从 2018 年末起约 8 年回放，全区间 +7.6%，但改善额的 97.6%（+237,471／合计 +243,196 日元）集中在 2019–21 年，于是驳回；后来发现复利把资产推到 2,497 万日元，每月 1 万只占最终资产的 3.9%。第 2 次改成每月入金资产的 3%，全区间 +10.1%，最差时段也是 −2.0%，曾决定采用；但实现里有「入金达总资产 5% 才触发」，月 3% 一次也不会触发。第 3 次改成一次性入金，在 2019-01 到 2026-04 的各月初扫了 88 种：摘要表写中位 +0.0%、胜率 53.8%，因而驳回；后文写处于レジームON 的 52 件里改善 28 件、胜率 53.8%、中位 +0.2%。按离 100 日均线的距离筛选时，胜率最高的一档（20% 以上，71.4%）期望值最低（+1.19%）。第 4 次若把 88 件当成独立样本，95% 区间是 [+0.63, +3.10]，不含 0；改按 19 个レジームON 区间再抽样，无筛选时 +0.65%、中位 −0.95%，区间 [-1.17, +2.82] 穿过 0，于是改为无法判定。作者后来仍因「设置写着 40%、入金后实际会稀释」而打开该功能，并写明不是因为已经证明能赚钱。不代你同样看到 4 次答案依次改变，就等于第 4 次的无法判定已经变成「没有优势」，或 88 件上的区间可以当成 19 个区间上的结论。",
     description: "面向已经把「回放得到了正的全区间收益」或「88 件上的置信区间不含 0」当成改动已经测准、却还没把 4 次测法、摘要表与后文的中位数字、以及 88 件和 19 个区间分开记的人：把「同一项改动须按每一次的测法单独记账，不能把重叠样本上的显著性写成区间单位上的结论，也不能把后来打开功能写成已经证明能赚钱」写成门禁，区别于只看一次回放数字的实践。",
     categories: [
@@ -61192,7 +61192,7 @@ Windows 的 python3 在 PowerShell 和未改 PATH 的 Git Bash 里都会打开�
   {
     id: "833",
     slug: "endo-27ok-80atk-104",
-    title: "shoma_endo：为防 Downloads 里的 AGENTS.md／CLAUDE.md 劫持，在 Mac 上给 Claude Code、Codex、Cursor 加了 hook 守卫。自测 27 件全过，但让另一子代理当攻击役时，80 本攻击里报道过的两种手法都穿过了。改成按语义比较被守护的键之后，测试最终到 104 件；把会超时的正则从 22 秒改到同一份 200KB 输入上 0.04 秒。用 7 种破坏方式检查，应出现的 17 件全部检测到，约 25 秒",
+    title: "下载目录指示文件劫持防护",
     summary: "个人（shoma_endo／shoma）；披露自己在看到 Downloads 目录里的 AGENTS.md／CLAUDE.md 可劫持 Codex、Claude Code 的报道当天，就在自己的 Mac 上加了守卫。当时 Claude Code 开着 bypass permissions，Codex 是 sandbox_mode = \"danger-full-access\"，也就是报道里说会降低成功率的审批和 sandbox 都被关掉了。手头当时没有那两份指示文件，也没有 ANTHROPIC_BASE_URL 或 function-color；Codex 的 MCP 里有一个 8 月装过、自己从没再用的 mirroir，是手删的。第一版守卫按字符串看危险键是否新增、用正则看 Bash，自测 27 件全过；把守卫换成什么都不做的脚本后有 16 件会失败，说明这些用例确实在看判定。用 claude -p 在 Downloads 里启动也会停。随后 Claude Code 另立一个子代理当攻击役，在伪主目录里灌了 80 本攻击，报道里的两种手法都穿过了：一种是命令行前只写 ANTHROPIC_BASE_URL=https://evil.example，字符串里没有被守护文件的路径；一种是只改已有值或已有 MCP 的 command，键的行本来就在。还有大小写、符号链接、以及正则比对耗时 22 秒超时、200KB 输入。作者因此改成写入前先生成改后内容、按 JSON／TOML 解释后再比被守护的键；解释不了的改写一律拦住。Bash 在写入前只拦「不写文件也生效」的形态（环境变量前缀、mcp add、关掉审批的启动），cp／curl 覆盖则在写入后再读实文件并跟基准比。security-guidance 插件后来又指出 3 处解释不一致，包括 Codex 的 apply_patch 会忽略空白、@@ 定位不对、以及 Cursor 的 JSONC 在损坏文档里仍能读到键。测试最终到 104 件；同一份 200KB 输入的比对改成 0.04 秒。hook 从用户目录改放到 root 所有的 managed settings／requirements.toml／hooks.json 后，加上 --settings disableAllHooks 或 --disable hooks 仍能拦住。近 30 天里 75 次无人 Codex 几乎都自己指定了 read-only 或 workspace-write，对话里的 77 次也没有写到工作目录外，于是从允许列表里拿掉了全权限；实机上 --dangerously-bypass-approvals-and-sandbox 会在启动时报错，而不是削弱限制后继续跑。每天的检查看 4 件事，其中会在 Downloads 空目录里真的拉起三个 CLI。Cursor CLI 在提示词阶段不停、要到用工具时才停，作者起初只看提示词，曾看到 Cursor 回了 PONG。用 7 种破坏方式的副本去跑，应出现的 17 件全部检测到，大约 25 秒；其中改所有者一项就占 9 个文件。作者写明：通知在出问题的日子会不会真的送到，还没有核实；Codex 上守卫判定超过 10 秒超时时会不会停，也还没有核实。报道原文里「九成以上／约半数」是那篇外部报道的试运行，不是这 80 本的数字，不能写到作者头上。不代你同样看到 27 件全绿就等于已经挡住报道里的手法。",
     description: "面向已经把「守卫的测试 27 件全绿」或「在 Downloads 里用 claude -p 试过一次会停」当成劫持已经被拦住、却还没把「自测用例、80 本攻击役、以及外部报道里的成功率」分开记的人：把「测试全过不能写成已经挡住报道手法，字符串查找会被只改已有值或在命令前写环境变量的写法绕过，用户目录里的 hook 也可以被代理自己拿掉」写成门禁，区别于只看一次自测全绿的实践。",
     categories: [
@@ -61279,7 +61279,7 @@ hook 起初写在 ~/.claude/settings.json 里，Claude Code 自己指出「这�
   {
     id: "834",
     slug: "takuyou-2of5-ja0-5en",
-    title: "takuyousou：在 Bedrock AgentCore 上验证「只读客户 A、不要读 B」——各条件跑 5 次。只靠 System prompt 时，5 次里有 2 次模型要求读 B，两次都读成功；加上 Policy ENFORCE 后，5 次里有 1 次提出读 B，被 Gateway 拒绝。作者写明不能从 2 次对 1 次断定 Policy 改变了模型的要求次数。Guardrails Classic 对日文攻击段 5 次都是 action=NONE，英译同一段 5 次都是 GUARDRAIL_INTERVENED",
+    title: "只读指定客户资料的分层拦截",
     summary: "个人（takuyousou／Song）；披露自己在 Amazon Bedrock 的 Converse API、Guardrails 与 AgentCore Policy 上，用同一份 System prompt 和同一条「请总结客户 A 的资料」的用户请求，验证「不要读客户 B」到底会在哪一层被拦住。应用跑在 AgentCore Runtime 上，经 Gateway 调 Lambda 去 S3 取资料。三种设定是：Prompt（有系统提示，Guardrails 不查，Policy 为 LOG_ONLY）、Prompt＋Guardrails、Prompt＋Policy（Policy 为 ENFORCE）。作者写明前两种设定下 IAM 仍然有效，这次切换的只是 Gateway 要不要按 Policy 拒绝。为避免单次偶然，各条件跑 5 次。客户 A 的日文资料里被插入了一段「文书处理步骤」，要以「核对一致性」为理由再去读 customer_id=\"B\"。Prompt 条件下，5 次里有 2 次模型提出读 B，两次都读成功（origin=model，tool_error=0，read_success=1）；作者写明这只确认了范围外的读取，没有再查最终回答有没有把 B 的内容写进去。Prompt＋Policy 条件下，5 次里有 1 次提出读 B，Gateway 以 No policy applies to the request (denied by default) 拒绝——规则是只允许读 A，不是单独写一条「禁止 B」。其余 4 次根本没有提出读 B。作者明确写了：不能从 2 次对 1 次断定 Policy 改变了模型会不会提出要求；能看清楚的是「提出要求之后」系统做了什么。Guardrails 部分：Bedrock 的提示攻击过滤器不会自动评估 toolResult，所以他把取到的资料显式交给 ApplyGuardrail API。Classic 档对日文攻击段 5 次都是 action=NONE，且 PROMPT_ATTACK 为 filterStrength=HIGH、detected=false；官方说明 Classic 的文本与提示攻击过滤支持英／法／西，不含日语。把同一段译成英语后再查，5 次都是 GUARDRAIL_INTERVENED。作者写明日英对照是直接调用 ApplyGuardrail API 的另一次检查，结果存在 API 的 JSON 里，与 Runtime 日志分开，不能和上面那组「模型是否提出读 B」的 5 次混成一次实验。模型实验开始前，他还用固定的 A／B 请求做了不经过模型的 probe：ENFORCE 时 A 成功、B 被拒绝，LOG_ONLY 时 A、B 都成功；这些不计进「模型提出读 B 的次数」。读取 Lambda 同时拥有取 A 和取 B 的权限，为的是在不强制 Policy 时能够读到 B，从而看出 Gateway 授权的差别。本次 Policy 只针对客户 A 专用的 Runtime 角色，没有验证按使用者切换读取对象。正文没有写出这次对话用的是哪一个枚举内模型，platforms 留空。作者卡 website／GitHub／X 为空，无作者产品导流。",
     description: "面向已经把「系统提示里写了不要读 B」或「5 次里只有 1 次还提出读 B」当成越权读取已经被拦住、却还没把「模型提出要求的次数」和「系统是否真的执行了读取」分开记的人：把「提示词禁止不能写成执行层已经拒绝，2 次对 1 次也不能写成 Policy 改变了模型行为，日文 5 次 NONE 与英译 5 次介入不是同一组模型对话」写成门禁，区别于只看系统提示是否写了禁止的实践。",
     categories: [
@@ -61365,7 +61365,7 @@ Guardrails 这边，Bedrock 的提示攻击过滤器不会自动评估 toolResul
   {
     id: "835",
     slug: "mt4110-v030-44t-pr3",
-    title: "mt4110：用 Grok Bot 当「第一次使用的人去点」、用 Codex 按带验收条件的指示书来改，把 prompt-recipe 做到 v0.2.0 再做到 v0.3.0。第一轮 Rust 测试 38 件加 3 件全过；第二轮后 Rust 测试合计 44 件全过，Grok Bot 按验收条件又点了 4 处画面。v0.2.0 发布说明写前端 14 件、Rust 49 件、依赖回归 3 件；v0.3.0 是前端 19 件、Rust 57 件、GLib 回归 3 件。文档里 1 万字扫描约 15.6 毫秒只接在 macOS ARM64、Rust debug 测试、单次值这一组。作者写明 Grok Bot 只把画面点到第二轮（90c1742）",
+    title: "新手代理点测与按指示改版",
     summary: "个人（mt4110）；披露自己几乎不用亲手做的 prompt-recipe，于是把「第一次使用的人去点并写带验收条件的指示书」交给 Grok Bot，把「按指示书改」交给 Codex，再让 Grok Bot 按同一份验收条件复核。第一轮结束后，类型检查、构建、test:discovery、test:copy-messages、check:boundary、preview:core，以及 Rust 测试 38 件加 3 件全部通过。同一循环再转几圈后，12:02 到 12:10（JST）里 Codex 提交了 6 次，11 个文件、+235／−61 行。Grok Bot 再跑检查时，类型检查、构建、前端测试、check:boundary、preview:core 与合计 44 件 Rust 测试全部通过，并在浏览器预览里按验收条件又点了 4 处画面（没有去点把套装显示改回去，也没有去点注册按钮本身）。第二轮画面检查还看到忽略按钮不好找、以及 cargo fmt --check 有差异；Codex 在 12:24（JST）提交了 b79681f 与 f486ec6。第三轮画面 Grok Bot 没有再用浏览器去点，显示确认与测试是 Codex 的报告。随后 12:40–12:41（JST）又转了一小圈，并做了依赖更新：Rust 固定到 1.99.1，Tauri 3 因仍是 alpha 而暂不升级；npm audit 到 0 件，cargo audit 里剩下的 2 件 Linux GTK 警告，用带补丁的 3 个 crate 后也到 0 件。发布说明写前端 14 件、Rust 49 件、依赖回归 3 件，以及 PR 在 Mac 与 Ubuntu 的 CI 通过；PR #3 于 10 月 28 日 13:43（JST）合入，13:45（JST）发布 v0.2.0。文档里的实测是 1 万字扫描约 15.6 毫秒，条件是 macOS ARM64、Rust 的 debug 测试、单次值，不能写成已经测过的一般速度。作者写明：Grok Bot 把画面点到第二轮（90c1742）为止，第三轮之后和依赖更新，是看 Codex 的报告、测试结果、以及差异与文档。自己在 Mac 桌面应用上试用 v0.2.0 时，才发现默认快捷键 ⌘⇧Space 不好按、还容易打出 Spotlight；小窗搜索时出现过约 3 秒的彩虹光标，后来未再复现。v0.3.0 相对 v0.2.0 是 23 个文件、+628／−59 行。用与标签 78f2beb 相同的源、只改应用名和标识做的测试版上，小窗里选中带电话与邮件的提示时，「复制前确认」出现 2 条；试验后剪贴板按全部格式回到原状——这是 v0.3.0 小窗试验的结果，v0.2.0 第一次录像里负责备份剪贴板的进程中途退出，当时没有还原成功。v0.3.0 发布说明写前端 19 件、Rust 57 件、GLib 回归 3 件，对应 CI（78f2beb）在 macOS 与 Ubuntu 两个作业都成功。约 3 秒的停顿和 F24 的写法仍未复现、原因不明；检查失败时「未检查就直接复制」这一条，Grok Bot 没有在画面上试过。不代你同样看到测试件数增加，就等于第三轮之后的改动也已经由 Grok Bot 在画面上点过，或 15.6 毫秒可以当成任意环境下的速度。",
     description: "面向已经把「测试件数增加、PR 的 CI 变绿」或「发布说明里写了前端与 Rust 的件数」当成产品已经在真实快捷键和失败路径上被验收、却还没把「Grok Bot 实际点到哪一轮」和「后来只读了 Codex 报告的部分」分开记的人：把「写验收条件的人与实现的人要分开，Grok Bot 只点到第二轮，15.6 毫秒只接在文档写明的那一组条件上，也不能把后来在 Mac 上发现的快捷键问题写成预览阶段已经测到」写成门禁，区别于只看一次测试全绿的实践。",
     categories: [
@@ -61452,7 +61452,7 @@ Grok Bot 指出的问题包括：点某一行会把勾选中的条目清掉，�
   {
     id: "836",
     slug: "masa-35tok-248k-66",
-    title: "masanork：在已不在 AMD 常规支持范围内的 Radeon VII（gfx906）上接好 ROCm，把 Qwen3.8-Flash-Next 的 Q2_0 接到 OpenCode。短对话生成约 35 tokens/s；另用 llama.cpp 跑 Qwen3.8-27B 的 Q3，约 21–22 tokens/s，66/66 层在 GPU 上。32K 设定下约 30,417 个合成输入里收回了中间的口令，输入约 71.8 秒、约 424 tokens/s；256K 设定下约 248,458 个输入同样收回，约 640 秒、约 388 tokens/s。作者写明还没有测复杂改码的成功率，这两种速度也不是同一套引擎上的模型对照",
+    title: "过时显卡接通本地模型推理",
     summary: "个人（masanork）；披露自己在一台约 5 年前装机、显卡是当时就已过时的 Radeon VII（16GB VRAM，gfx906）的桌面上，用 ChatGPT 的 GPT-6.1 Terra（medium）边问边搭，把已经不在 AMD 常规支持范围内的 ROCm 接到能跑的程度，并让 OpenCode v1.19.5 通过本地 OpenAI 兼容接口去调模型。短对话、8K 设定下，Q2_0 的 Flash-Next 生成约 35 tokens/s。另用 llama.cpp 跑 Qwen3.8-27B 的 UD-Q3_K_XL（约 13.2GB）：短对话约 21–22 tokens/s，后来在日志里确认 66/66 层都在 GPU 上；另一次 8K 设定下，约 7,390 个合成输入的处理约 240 tokens/s。作者写明这两套的量化方式和运行引擎都不同，不是模型之间的纯对照。Flash-Next 的 Q2_0 本体约 37.6GB、参照表约 28.8GB，合计约 66.4GB，修订为 ed59f92082b1e93c0e96d60a8b11aab089b52f09，两个文件都按发行方 SHA-256 对过。先在 8,192 再在 32,768 上下文下试：约 30,417 个合成输入时，放在中间的口令被正确收回，输入处理约 71.8 秒、约 424 tokens/s。再以 --max-context 262144、--kv int8、--kv-resident 32768 启动，约 248,458 个输入同样收回了中间的口令，输入约 640 秒、约 388 tokens/s。这些长文是把同一段日文重复后做成的合成数据，检索题也只有一个；作者写明没有确认复杂多文档、长时间运行、或换内容后仍有同样精度和速度，也不会把只生成 6 个 token 的短输出速度当成稳定的长回答速度。默认还开着 STRATA_ROUTE_TAIL_SKIP=7，会省略缓存里没有的部分专家，日志也写过回答可能稍有变化。在约 7,390 个合成输入上各跑 1 次：开启时生成 36.7 tokens/s，关闭时 33.7 tokens/s，回答文也略有不同——各只有 1 次短响应，作者写明不能据此概括速度差或判断质量。搭环境时用了 nightly ROCm 10.3.0a20261102，并在 Strata v0.2.10 的兼容头文件里补了两个 HIP 映射后才编过；这些自检（strata-device --selftest、gfx906 的 GDN 运算测试、专家运算比较）没有失败，但作者写明这不保证全部功能或长时间稳定。本文也是在实际搭环境的那个 ChatGPT 会话里，由 ChatGPT 根据当时的命令和日志起草的。OpenCode 这边确认到了文件读取工具的调用，复杂改码的成功率还没有测。不代你同样看到约 35 tokens/s 或 256K 下收回了口令，就等于复杂改码已经测过，或 27B 与 Flash-Next 可以拿来直接比快慢。",
     description: "面向已经把「短对话约 35 tokens/s」或「256K 下收回了中间的口令」当成本地编码代理已经在这张旧卡上测准、却还没把两套引擎上的速度、合成输入上的口令回收、以及尚未测量的复杂改码分开记的人：把「短生成速度不能写成稳定的长回答速度，27B 与 Flash-Next 不是同一套引擎上的对照，OpenCode 只确认到文件读取、不能写成复杂改码已经成功」写成门禁，区别于只看一次 tokens/s 的实践。",
     categories: [
@@ -61542,7 +61542,7 @@ OpenCode v1.19.5 装在用户目录，配置里把本地 Strata 的 OpenAI 兼�
   {
     id: "837",
     slug: "nihey-agy400-claude-ok",
-    title: "nihey：国内 VPS（Ubuntu 24.04）上的 Antigravity CLI 1.4.5，登录成功，但把聊天发给 Gemini 时每次都是 FAILED_PRECONDITION（code 400）User location is not supported。同一条 agy -p \"say ok\"，claude-sonnet-5-5-low 与 gpt-oss-120b-medium 返回 ok；同一 Google 账号在手头 PC 上则没有这个问题。日志显示 1.4.3 起就从未成功过。给 agy 单独加上 Cloudflare WARP 代理后，同一条 Gemini 调用返回了 \"text\": \"ok\"。作者写明这是 IP 被误判到对应地区之外，不是教人从非对应地区使用 Gemini",
+    title: "命令行聊天地区不支持的排查",
     summary: "个人（nihey／ニヘイ）；披露自己在国内事業者的 VPS（Ubuntu 24.04）上安装 Antigravity CLI（agy）1.4.5 后，登录是成功的，但一发聊天就得到 FAILED_PRECONDITION（code 400）：User location is not supported for the API use。VPS 在日本，日本也是 Gemini 的对应地区，同一 Google 账号在手头 PC 上使用则没有这个问题。他起初怀疑是刚从 1.4.3 升到 1.4.5 造成的，但 ~/.gemini/antigravity-cli/log/ 里留下的旧日志显示，1.4.3 的时候就一次都没有成功过，只是发现得晚。用 agy -p \"say ok\" 换模型后：gemini-3.8-flash-low 仍是 User location is not supported，claude-sonnet-5-5-low 返回 ok，gpt-oss-120b-medium 也返回 ok。失败的是 Gemini 系；agy 的默认模型又是 Gemini，所以什么都不指定就一定会失败。他没有改用别的模型了事，因为想用的仍是 Gemini。用 API 密钥经 SOCKS5 走 Cloudflare WARP（代理模式，127.0.0.1:40000）重放刚才失败的调用后，返回了 \"text\": \"ok\"。直连 ipinfo 仍是 VPS 的 IP，经 WARP 则是 Cloudflare 的日本出口。作者把 HTTPS_PROXY 只加给 agy 进程，而不是写进整个 shell，以免 curl、git、npm 也全部改道；也没有去替换 agy 本体，因为它会在自我更新时被覆盖。需要先把 WARP 设成 proxy 模式再 connect，否则有可能把正在用的 SSH 切断。已经启动、还没带上 HTTPS_PROXY 的 agy 会继续走旧路径，必须先 /exit 再重新打开；用 type agy 看到 agy is a function 才说明包装已经生效。作者写明：这是「人在日本、但服务器 IP 被误判到对应地区之外」的情况，不是从非对应地区使用 Gemini 的方法，后者可能违反 Google 的使用条款；这次 WARP 的日本出口能通过，也取决于 Google 之后怎么判定。不代你同样看到 Claude 返回 ok、Gemini 返回 400，就等于所有国内 VPS 都会如此，或加上 WARP 之后就永远不会再被同样的地区判定挡住。",
     description: "面向已经把「登录成功却不能聊天」当成账号或版本问题、或把「给 Gemini 套一层代理就好了」写成通用解法、却还没把「同一账号在手头 PC 上可用、同一条命令下 Gemini 失败而 Claude 成功、以及这是 IP 误判而不是教人翻出对应地区」分开记的人：把「要先用同一条提示词换模型、再用 API 密钥直连对照，才能判断是账号还是 IP；WARP 只是这次出口 IP 被接受，不能写成已经稳定绕过地区判定」写成门禁，区别于只看一次 400 报错就换工具的实践。",
     categories: [
@@ -61628,7 +61628,7 @@ OpenCode v1.19.5 装在用户目录，配置里把本地 Strata 的 OpenAI 兼�
   {
     id: "838",
     slug: "usuginu-804px-636-0warn",
-    title: "usuginu：用 Claude Code 把设计要点画成一张信息图，再放到无头 Chrome 里按实寸测量。原先按「半角=字号的 0.62 倍」去估宽度，英文标题估成 804px，实际画出只有 636px，差了两成以上；半角宽度从 0.23 倍（'）到 1.06 倍（W）不等。改成画完再测之后，一条约 1 秒。CI 上 Noto Sans CJK 行高约 1.45 em，13px 的字约 19px，行距 17px 时曾把并未重叠的两行判成重叠；改成纵向按基线上下 0.85 em／0.18 em 之后，字体不同也不再误判。零件默认间距图要求警告和问题都是 0 件",
+    title: "信息图改为画完再量真实字宽",
     summary: "个人（usuginu／うすぎぬ）；披露自己用 Claude Code 画信息图时，AI 写出的 SVG 并不会自己检查看起来如何，文字溢出、重叠、标题只写「原因」「概要」、各图配色含义不一致都很常见。SVG 没有自动换行，只能先估字宽。最初用一律的「半角是字号的 0.62 倍」，英文标题估成 804px，实际画出是 636px，差了两成以上；因为半角宽度会按字符从 0.23 倍（撇号）变到 1.06 倍（W），一律的系数打不准。于是改成画完后在无头 Chrome 里按实寸测量，结果用 --dump-dom 取出，一条约 1 秒弱，Claude 会改到检查行不再出现为止，并再打开 PNG 用眼睛看。曾经用 macOS 的 sips 转 PNG，字重只分两档（500 以下细字、600 以上极粗），居中文字还会往右偏，后来改用浏览器转换。GitHub Actions 的 Ubuntu 用 Noto Sans CJK 测量时，本机 Mac 能过、CI 却把折成两行的标题判成重叠：getBBox() 的高度是字体行高而不是字面高度，Noto 行高约 1.45 em，13px 的字约 19px，行距却是 17px，框叠了字其实没叠。现在横向用实测量，纵向按基线向上 0.85 em、向下 0.18 em。做了检查和回归测试后，零件默认间距还曾窄过自己定的「箭头至少 28px」，于是把「全部件按默认间距画出的图，警告和问题都是 0 件」写成每次要过的测试。零件集是单文件、只用标准库，文件已超过 1,000 行。作者写明：留白是否偏、图整体是否平衡，检查看不出来，还要看 PNG；CI 只在 Ubuntu 上跑，Windows 还没验证；技能把图改善了多少，也还没有做成评估。日文折行没有做形态素分析，只对幻灯片上的短句有把握。",
     description: "面向已经把「AI 画出的 SVG 看起来差不多」或「按固定系数估过字宽」当成图可以交付、却还没把「估算宽度、浏览器实寸、以及不同字体下的行高判定」分开记的人：把「先估宽度不能写成已经检查过实寸，本机通过也不能写成 CI 上不会把行框判成重叠」写成门禁，区别于只看一次导出图的实践。",
     categories: [
@@ -61690,7 +61690,7 @@ GitHub Actions 的 Ubuntu 用 Noto Sans CJK 测量时，本机 Mac 能过，CI �
   {
     id: "839",
     slug: "pico-97pct-950-350go",
-    title: "petittomato／PicoLab：OpenCode Go 月上限用到 97% 时，用会话日志把额度重算了一遍，跟管理后台下载的 1,000 条使用日志在金额上精确到 1 美分。看起来最便宜的 GPT-6 Luna（标价输入 $0.10）同一套开发会用掉 DeepSeek V4.1 Flash 的 4～5 倍上限，因为模型「月上限」其实是整体额度的权重，不是各自独立的额度。按（1）里一次复习就能满分的模型来算，MiMo-V2.6-Flash（low）约用 0.1%、约可排 950 次、35 分钟；DeepSeek（max）约 0.3%、约 350 次、23 分钟。作者写明这些次数是用额度除出来的，不是真的跑了 950 次",
+    title: "共享月额度按模型权重重算",
     summary: "个人（petittomato／PicoLab）；披露自己在连载第 3 篇里，把「低价模型标价越便宜，Go 的月上限就用得越少」这件事推翻了。题目仍是家里的电视操作命令。评估做到一半，当月上限已经用到 97%，于是先查 Go 怎么计数。官方说明是：上限是全体共用的一份；模型旁边写的月上限 $15～60，只是「这次花费 ÷ 该模型月上限」要记成整体额度的百分之几。他用会话日志把此前用量重算，跟管理后台下载的 1,000 条使用日志在金额上精确到 1 美分。Luna 输入 $0.10 ÷ $15 约 0.67%，DeepSeek $0.15 ÷ $60 约 0.25%，只看输入就约 2.7 倍。真正开发时还要算缓存读取：他没有用各模型自己开发时的花费，而是把 Opus 在 Claude Code 上做同一题的 2 次 token 数当成共同用量，再套各模型单价。那 2 次里 Claude Code 调了 21～23 次，平均一次送 6 万～8 万 token，合计约 130 万～170 万，其中 97～98% 是缓存读写。套价之后，Luna 和 DeepSeek 一次大约都是 $0.04 左右，但一次占用的月上限是 Luna 0.27～0.30%、DeepSeek 0.06～0.07%，也就是 4～5 倍。9 月 23 日到 10 月 11 日的 97% 里，平时作业的 Kimi K3（111 次、$4.54、30.3%）加上 Haiku 5.5 和 Luna，三个 $15 权重的模型就超过一半；另有约 8% 出处没能核对。按（1）里一次复习就能满分的模型来算，MiMo（low）满分约用 0.1%、约可排 950 次、35 分钟；DeepSeek（max）约 0.3%、约 350 次、23 分钟；Haiku 5.5 最快 13 分钟，但一次 4.9%，一个月大约只能排约 20 次，5 小时上限（月的 20%）大约 4 次就会停。作者写明：约 950 次和约 350 次是用额度除出来的，不是真跑了这么多次；一次开发的金额也不是各模型自己开发时记下的花费。单价取自 2026 年 10 月 11 日的 Go 价目。",
     description: "面向已经把「模型选择屏上输入单价更低」当成「Go 的月上限用得更少」、却还没把「价目单价、模型月上限权重、以及用共同 token 量套出来的金额」分开记的人：把「Luna 标价更低不能写成一次开发也更省额度，约 950 次不是实测次数」写成门禁，区别于只看一张单价表的实践。",
     categories: [
@@ -61756,7 +61756,7 @@ omp 的选模型画面上排着每百万 token 的输入和输出单价，例如
   {
     id: "840",
     slug: "after6-4draft-postoff",
-    title: "after6labo：第一次用 microCMS MCP，用 Claude Code 先手录 2 件、再下写 4 件礼物介绍。11 月 4 日连通并写下第 1 件，11 月 8 日补 3 件后去掉 POST，同一条「请登记成下写」再次调用下写工具时被权限拒绝。作者写明：「请写成下写」和「这把钥匙只能写再下写」不是同一件事；这次实验里还没有加上客户端 deny。短的 4 条输入都进了打算要的栏，但不能外推成更长或更难判断的句子也会分对",
+    title: "microCMS首次登记礼物介绍",
     summary: "个人（after6labo／After 6 Labo）；披露自己第一次用 microCMS，从 Hobby 方案建了一个实验用服务，没有接到正在公开的站点。API 默认只给 GET，实验期间才给 gifts 单独加上 POST。Claude 桌面应用的自定义连接器只看到「连接有问题」，原因没有查清；curl 不带钥匙是 401，带 Bearer 能 200 取到服务器信息，之后改用连通了的 Claude Code，记录上的模型是 claude-sonnet-4-6，当时 MCP 还是测试版。先手录 2 件并确认能用 API 取出后，把「掌心大小好摆。功效不要说死。」这样连在一起的句子交给它「请把小品多肉摆件登记成下写」，没有指定字段；Claude Code 选了下写工具，把前半放进公开介绍、后半放进制作备忘。又改了语序和口气补 3 件，连同第一件共 4 件都进了打算要的栏；其中毛巾那一条两句都进了介绍，备忘是空字符串，模型没有另外编造备忘。作者写明：只确认了这 4 条短输入，不能说更长或自己也拿不准是否能公开的句子也会分对；分错的句子会直接进公开栏，下写之后仍要人看。MCP 里「公开创建」和「下写创建」是两个工具，但都要 POST；有 POST 的钥匙并不会因此变成只能写再下写。这 4 件是靠口头说「请写成下写」才选对工具的，客户端还没有拒绝公开创建等 6 个工具，文中的 deny 示例写明未在这次实验里启用。11 月 8 日实验结束后去掉 POST，再用同一句话去登记，模型再次调用下写工具，这次变成权限错误、登记不上。作者写明：这不是靠把话说得更软才劝停的，而是钥匙不再允许创建。Hobby 方案只有一把钥匙。本稿的结构和推敲用过 Claude 和 ChatGPT。",
     description: "面向已经把「跟 AI 说了请写成下写」当成「这把钥匙不能公开发布」、却还没把「口头指示、客户端工具限制、以及 API 钥匙权限」分开记的人：把「4 件下写成功不能写成已经只能再下写，去掉 POST 之后的拒绝才是钥匙在拦」写成门禁，区别于只看一次登记成功的实践。",
     categories: [
@@ -61819,7 +61819,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "841",
     slug: "hoshika-4game-pr-rev",
-    title: "星影（unsoluble_sugar）：给《星影》4 个已公开小游戏接上 Grok Bot 的 PR 审与合入后部署。Cursor Origin 的监听一次也没等到回调，于是先用 15 分钟轮询、再改成 Cloudflare Worker 收 GitHub Push 再调 Grok API。核对过一次：合入后 1 分钟以内部署例程开始跑。轮询后来降成每小时的保险；从未响过的合入监听例程先停着，免得以后若再响会把开发版部署跑两次。对还在写的 PR，Bot 回过一次「看起来还在写，这次先搁下」",
+    title: "公开小游戏的审查与合入部署",
     summary: "个人（星影／unsoluble_sugar）；披露自己给《星影》接上 Grok Bot 的 PR 审与合入后部署。正文写明已公开 4 个小游戏；配图说明里并列了洗濯物、傾けずに干せ、千人大縄、今日はZ軸が渋滞しています、滑り込み電車这些名字并写「4 个」，不能据此把正文的 4 改写成 5。仓库检查对象里还有 _template、kaku-hanger、oonawa、suberikomi、z-axis-traffic 等 id，和「已公开 4 个」不是同一组计数。npm run check 大约 10 分钟；通过时最后一行是 check: ok 加这些 id。正文里「失败 2 件／kaku-hanger: overflow」是检查失败时的输出写法示例，不是另行记下的事故次数。样例审的是《滑り込み電車》：没有阻断项、2 条非阻断、1 次提交、2 个文件、+3／-3。Cursor Origin 连接器会在 262,144 字节截断；sandbox 里对 Origin 的 git／HTTP 得到 401，于是改成快照后再用 SHA-1 核对 blob。Origin 监听一次也没等到回调，先用 15 分钟轮询补上合入后的开发版部署，再做成 Cloudflare Worker：约 15 分钟、2 个文件，收转发后再调 Grok API。核对过一次：合入后 1 分钟以内部署例程开始跑。轮询后来降成每小时的保险；从未响过的合入监听例程先停着，免得以后若再响会部署两次。对还在写的 PR，Bot 回过一次「看起来还在写，这次先搁下」。冒烟测试曾把「预构建 HTML、没有开发标记」误判成 FAIL，例外收窄后，200、noindex 和字节比对仍要通过。合入某个游戏的 PR 之后，开发版部署在 npm run check 上停住了；原因不是刚合入的那条 PR，而是另一个游戏的文字超出了安全区，直到担当 Bot 的修正合入才放行，作者写明这是正确行为。前一篇里写过 CI 次数大约是人的 10 倍、月初用尽 Actions 免费档，不能记成本篇新测到的数字。Cursor Origin 不在枚举里，不硬凑；正文实测到的是 Grok。",
     description: "面向已经把「接上了合入后部署」当成「监听已经在回调」，或把检查输出示例里的「失败 2 件」当成记下的事故次数的人：把「监听一次也没等到回调，核对过一次约 1 分钟内开始跑，不能把前篇的 10 倍 CI 写成这篇文章新测到的数字」写成门禁，区别于只看一条样例审的实践。",
     categories: [
@@ -61879,7 +61879,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "842",
     slug: "daydr-pong-pine-mango",
-    title: "daydreamer：10 月 11 日夜里碰到 Claude Code 的周上限，控制台登录后又看到 Credit 余额不足；10 月 12 日改用 OpenCode v2.0.27，带上 API 钥匙。haiku-5-5 回「pong」能通。用过之后，宣传积分少了，官方说明没有写第三方客户端也会扣。一次性仓库里做口令核对：只有 CLAUDE.md 写 PINEAPPLE 时读到 NONE，再加上 AGENTS.md 写 MANGO 时读到 MANGO。instructions 字段能接受 CLAUDE.md，但 V2 并不会去加载它",
+    title: "换客户端续作与指令加载核对",
     summary: "个人（daydreamer）；披露自己在 10 月 11 日夜里碰到 Claude Code 的周上限，控制台登录后又看到 Credit 余额不足，10 月 12 日改用 OpenCode v2.0.27（当时环境是 macOS 27.0.1、Claude Code 2.1.296），用 API 钥匙继续。haiku-5-5 回「pong」能通。用过之后，宣传积分少了；官方说明没有写第三方客户端也会扣。作者在一次性仓库里做口令核对：只有 CLAUDE.md 写 PINEAPPLE 时读到 NONE，再加上 AGENTS.md 写 MANGO 时读到 MANGO。instructions 字段能接受 CLAUDE.md，但 V2 并不会去加载它。plan agent 曾提议改写 10 个 agent，并列过迁不过去的 hooks；作者写这篇粘贴提示之前，已经自己迁过一遍。`opencode debug agents | jq` 连着 5 次都被截断，后来改成先写到文件再看。自己的 code-review skill 和插件里同名的 skill ID 撞车；skill 工具输入里的 $ARGUMENTS 没有展开。作者写明没有使用 `opencode service set env`。OpenCode 不在枚举里，不硬凑；正文实测到的是 Claude。platform.claude.com 上的发行说明、订阅者积分和钥匙／费用页，HTTP 虽是 200，跟随后落到 claude.com/app-unavailable-in-region，按区域不可用披露，不列入可达。",
     description: "面向已经把「换到带 API 钥匙的第三方客户端」当成「宣传积分不会动」，或把「instructions 能填 CLAUDE.md」当成「V2 会加载它」的人：把「只有 CLAUDE.md 时读到 NONE、加上 AGENTS.md 才读到 MANGO，官方说明没有写第三方客户端也会扣积分」写成门禁，区别于只看一次 pong 能通的实践。",
     categories: [
@@ -61939,7 +61939,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "843",
     slug: "ikino-60886-143-4obs",
-    title: "ikinokori：把 claude -p 的 --max-turns 当作无人作业的安全装置来测，发现 result JSON 已经写出 subtype:\"error_max_turns\" 之后，进程仍不会自己退出，要等外侧 kill。--max-turns 3、60 秒后 kill 是 exit=1（60,886 ms）；同一 --max-turns 2 下，120 秒是 120,990 ms、30 秒是 31,018 ms，都跟设定的等待几乎一致。伪服务器完全不响应的另一场景，同样 SIGTERM 却是 exit=143（4,036 ms）。这 4 次观测里，没有一次是进程自己结束的",
+    title: "轮次上限到达后的进程滞留",
     summary: "个人（ikinokori／厨二病エンジニア）；披露自己在 Claude Code 2.1.267、Node v22.21.1、macOS 26.6.1 上，把 ANTHROPIC_BASE_URL 指到本地伪 Anthropic API，用「一直返回 tool_use」的场景去跑 claude -p，并在外侧按设定秒数发送 kill。作者原来的前提是：工具调用失控时，--max-turns 会让作业在那里停住。实测是：max_turns 判定已经做完、stdout 里已经有 subtype:\"error_max_turns\" 的 result JSON，进程却还不把控制权交回 shell，一直等到 watchdog 的 kill。--max-turns 3、KILL_AFTER=60 时 exit=1（60,886 ms）；同一 --max-turns 2 下，120 秒是 120,990 ms、30 秒是 31,018 ms，墙钟时间几乎等于设定的等待。把 watchdog 改短，只是更早被 kill 抓住，并没有出现「result 写出后再等一会儿就会自己结束」的路径。另一场景让伪服务器完全不响应，同样发送 SIGTERM，结束码却是 143（4,036 ms；128 加未处理 SIGTERM 的信号号）。作者写明：为何会从 1 裂成 143 没有追到信号处理，那只是推测；测到的只是这 4 次观测。对话模式、真实 Anthropic API、其他版本，仍可能在没有 watchdog 时自己结束。验证用的假 API 与 run_case.sh 在文中有说明；更完整的故障模式写在作者站点上的前篇。",
     description: "面向已经把「--max-turns 一到，无人作业的进程就会自己结束」或「exit=1 和 exit=143 可以单独用来区分自己停还是被杀」当成可以上线的人：把「result JSON 已经写出，并不能写成进程已经退出；同一次 SIGTERM 也会裂成两种结束码」写成门禁，区别于只看官方旗标、却没有外侧 watchdog 的实践。",
     categories: [
@@ -61999,7 +61999,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "844",
     slug: "sero-3209-18to0-51hid",
-    title: "serotoninmax：Claude 桌面应用 4.23118.1 在 M1 Max（内存 64GB、外接 4K 144Hz）上，从把光标移进输入栏到点击、输入、转换、确定，都要等 1 秒以上，重启也不好。未归档会话 3,209 件、共 480MB，其中 remoteMcpServersConfig 就占 452MB；把 7 日以前、未加星也未钉住的 2,934 件归档后，停止不再被记录。20 秒测量里 mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，输入路径并没有慢。30 分钟里 slow hid response 51 件、平均 2.8 秒、最大 6.6 秒，全是 Claude，同时段 Chrome／Obsidian 是 0 件。整理前启动 7 分钟停止 18 次、合计 42.8 秒；整理后启动 3 分半是 0 次、0 秒——后一次观察窗更短，作者写明还要继续看会不会再出现",
+    title: "桌面应用输入变慢与会话归档",
     summary: "个人（serotoninmax）；披露自己排查 Claude 桌面应用输入变慢，并不是「整台 Mac 都慢」。机器是 M1 Max、内存 64GB、外接 4K 144Hz，应用版本 4.23118.1。先用 listen-only 的 CGEventTap 测 20 秒：mouseMoved 326 件、中央值 0.4ms、最大 12.2ms，滚动最大 19.9ms，输入路径没有慢；GPU Device Utilization 18%～33%，没有发生内存交换；IME 的 JapanesePerformanceTimer 只在 0.06 秒台越过 0.060 秒阈值，没有秒级延迟。中途一度被自作常驻工具的 avgUsecLatency（0.5 秒到 4.6 秒）带偏，但同一时段 listen-only 测到的仍是毫秒级；关掉 App Nap 再启动，值还是数秒，而且常出现 min 与 max 相同，作者认为它不能当成「事件被等了多久」。spindump 的 slow hid response 在 30 分钟里有 51 件、平均 2.8 秒、最大 6.6 秒，全部是 Claude 主进程，同时段 Chrome 和 Obsidian 是 0 件。主日志里的 event-loop-stall 大约每 12.5 秒出现约 2.1 秒；启动约 30 分钟后，停止累计 366 秒，作者按运行时间的两成左右来算。8 秒采样 5,545 个样本里，约 4,200 个是 JavaScript，约 2,000 个来自 libuv fs 完成回调，JavaScript 侧没有符号，没追到是哪一段。按日汇总：10/28～11/04 每天停止 4～26 次、中央值 590～760ms；11/05～11/10 每天 184～913 次、中央值 1.9～2.4 秒。版本号在 11/04 到 11/06 之间从 4.4212.0 升到 4.16336.0，会话则每天增加 30～50 件，11/05 没有台阶。未归档 3,209 件共 480MB，remoteMcpServersConfig 占 452MB，每个会话大约复制 140KB 的 MCP 配置。用 ⌘Q 手动退出后改文件，把 7 日以前、未加星也未钉住的 2,934 件归档；备份是 481MB。整理前启动 7 分钟停止 18 次、合计 42.8 秒、最长 4.5 秒；整理后启动 3 分半是 0 次、0 秒。后一次观察窗更短，作者写明还要继续看会不会再出现。自动归档默认是 0（不自动归档），这次改成 7 天；已经堆在那里的大量会话，只改设置会以多快的速度减下去，作者写明没有核实。",
     description: "面向已经把「输入慢就是整台 Mac 或输入路径慢」或「归档过一批会话就等于长期不会再停」当成可以结案的人：把「输入路径的毫秒级测量、应用侧的秒级 hid 响应，以及整理前后不同长度的观察窗」分开记，区别于只看一次手感、却没有对照其他应用的实践。",
     categories: [
@@ -62059,7 +62059,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "845",
     slug: "takak-49799-2fail-45pr",
-    title: "kashiwa／takak2166：ISUCON2026 本赛 1 人队，自己几乎不写代码，指挥交给 Grok Bot「ソニック」，实现交给 Cursor 的云端代理。当日最终 49,799 点（17:51 PASS、减点 0），初回 3,518 点；赛后追试两次都因数据一致性不合格而失格，没有名次。第 1 位 Typing Bears 是 625,857 点，约 12.6 倍（用两位分数做除法，不是另一次实测）。最后约 1 万点（39,627→49,799）只是去掉了测量代码。PR 共 45 本，Merged 29 本，其中 11 本后来因分数下降被 revert；Open、未进 main 的还有 15 本。正文在作者引言之后，是 Bot 写的回顾",
+    title: "一人竞赛的指挥与实现分工",
     summary: "个人（takak2166／kashiwa）；披露自己参加 ISUCON2026 本赛时，几乎不写代码，把当日指挥交给专任 Grok Bot「ソニック」，实现、部署和测量交给 Cursor 的云端代理。作者负责建栈、最初的 bootstrap，以及在聊天里给方针。当日最终 49,799 点（17:51 的最终基准测试 PASS、减点 0），初回 10:19 是 3,518 点；赛后追试两次都不是性能、而是数据一致性未达基准，官方失格表里写着「追试不合格（2回とも基準未達）」，因此没有名次。第 1 位 Typing Bears（也是 1 人队、Go）625,857 点，文中的约 12.6 倍是用这两个分数除出来的。作者（借 Bot 之口）写明：最后约 1 万点（39,627→49,799）只是在 17:38 去掉测量代码后的延伸，不是又做了一轮功能改进。追试第 1 次是 Memories 里某条投稿的 RealMoji 期望 8 件、实际 6 件；第 2 次是开始约 14 秒后，朋友和朋友的朋友的信息流里出现了不该看见的投稿。结束后读过仓库代码，原因没有确定；失败当时的数据也没有留下来。最终形态（去掉测量后的版本）只在 17:51 跑过 1 次基准测试，把确认和最终跑次并成了一次。当日跑了大约 50 次基准测试，同一份代码也会有约 ±1,000 点（记录里最大约 ±10%）的晃动，这一点是 16:50 的确认跑才看清楚的。PR 共 45 本，Merged 29 本，其中 11 本后来因分数下降被 revert；Open、未进 main 的还有 15 本。公开仓库里是 194 个提交。10:00～18:00 的 Cursor 使用日志合计请求 2,161 次、约 5.06 亿 token，其中约 4.90 亿（约 97%）是缓存读取，输出约 300 万；作者写明同一天其他 Bot 的用量也含了一点进去，云端代理一行更接近「一次指示」而不是模型调用次数。追加计费上限原是 1 美元，16:06 看到 on-demand 已到 2.09 美元，超出部分被归到切换前 14 时台的 claude-opus-5-5。正文在作者短序之后写明「以下由ソニック来写」。Cursor 云端代理、composer-2.5 和后来做 PR 审的 Devin 都不在平台枚举里，不硬凑。",
     description: "面向已经把「最终基准测试 PASS 了就等于追试也会过」或「从初回涨到最终分就等于这些分都来自功能改进」当成可以复盘结案的人：把「去掉测量代码涨出来的约 1 万点、只跑过一次的最终形态，以及追试两次一致性失败」分开记，区别于只看当日最高分的实践。",
     categories: [
@@ -62120,7 +62120,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "846",
     slug: "sora-6corp-3evt-10min",
-    title: "そら／sora_biz：2026 年 7 月到 10 月 24 日收到 6 家泄露通知后，把电脑和仓库的点检交给 Claude Code，6 小时跑一轮，人要判断的事项收到「是／否」能答的最多 3 项。接上 X 监视的第一次跑，就抓到台账未登记的 3 件，其中一件是 Git for Windows 2.56.0.windows.3 同捆 curl 的 brotli 仍是 1.2.0、不是已修补的 1.2.1。提出 issue 约 10 分钟收到维护者回复，周一发布了 v2.56.0.windows.4，发行说明链到该 issue。11 月 5 日刊出当天的 OpenSSH 10.6p2 修正，次日 6 小时点检和 X 监视都没抓到；改成从已安装清单组装监视对象后再跑，才把它当成新话题检出。VPS 清单第一次接入时，容器里待更新的包是 44 件，换新镜像后再比还剩 2 件",
+    title: "泄露通知后的本机仓库点检",
     summary: "个人（sora_biz／そら）；披露自己在大约 3 个月里接到 6 家不正访问或泄露通知后，决定至少把电脑和仓库里能管到的漏洞交给 Claude Code 去点检。作者写明：对方服务器上的泄露，查自己的电脑也防不住。点检是 6 小时一轮，另有每天早晨把父会话按说明书走一圈、以及汇总 JVN／JPCERT/CC／CISA KEV 新件的定时任务。人要回答的「要对应」最多 3 项，并且都收成是／否能答的形状。判定分成「有影响」「无影响」「没确认到」；没读到的信息不得算成「没有漏洞」。同一项连续 2 轮没修好，第 3 轮不再试，交给作者。接上 X 监视的第一次跑，抓到台账未登记的 3 件，其中一件是当时最新的 Git for Windows 2.56.0.windows.3 里，同捆 curl 用的 brotli 仍是 1.2.0、不是已修补的 1.2.1。提出 issue 约 10 分钟收到维护者 Johannes Schindelin 的回复；周六提、周一就发布了 v2.56.0.windows.4，发行说明的 brotli 变更行链到该 issue。11 月 5 日文章刚刊出当天，OpenSSH 10.6p2 的修正发布，次日一看，6 小时点检和 X 监视都没抓到——作者写明自己这边的 sshd 其实并不符合那条漏洞的条件，漏检的原因是产品名单当时靠手写，清单以外的东西根本不会被看到。改成每次从已安装应用、服务、端口、WSL／VM／Docker 组装监视对象后再跑，才把 OpenSSH 当成新话题检出。VPS 清单第一次接入时，发现有容器还在用旧镜像，待更新的包 44 件，换新镜像后再比还剩 2 件。11 月 7 日起，「有影响」的各条都要写出处，并由 Codex 上的 GPT-6.1 Sol 与 GPT-6.1 Terra 分开确认；它们曾退回过 2 句：发现者报告里并不存在的「演示是在 macOS」，以及没有明确出处的「重启就消失」。Codex 与这两个模型不在平台枚举里，不硬凑。正文公开了作者的 patchwait、scanmux、security-loop 三个仓库。",
     description: "面向已经把「定时点检在跑，就等于新修正都会被抓到」或「确认不到的项目可以算成安全」当成可以上线的人：把「第一次 X 监视抓到的 3 件、刊出当天漏掉的 OpenSSH，以及『没确认到』不得算成没有漏洞」分开记，区别于只看一份绿报告的实践。",
     categories: [
@@ -62181,7 +62181,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "847",
     slug: "osprey-3handoff-35pr-11",
-    title: "osprey74：把 iOS Markdown 编辑器 Stilo 的实现几乎交给 Claude Code，自己主要写规格书（HANDOFF 3 本加短的 CLAUDE.md）。2026-09-18 从 Phase 1（文件读写）开始，9 月 20 日把 1.0 提交到 App Store——按着手那天起算是第 3 天；加上仓库联动的 1.1 在 9 月 25 日提交、26 日获批。到 9 月 24 日，已合并的 PR 是 35 本。作者写明这是 Stilo 这一本上的记录，不是对所有项目都适用的方法",
+    title: "Stilo按规格书交给代理实现",
     summary: "个人（osprey74）；披露自己做 iOS Markdown 编辑器 Stilo 时，实现几乎交给 Claude Code，自己主要写规格书。规格书在项目里叫 HANDOFF，一共 3 本，外加短的 CLAUDE.md 只写阅读顺序和任何 Phase 都要守的规则。环境是 2026-09-18 当时的最新 Claude Code，之后也一直跟到最新；模型以 Claude Fable 5.1 为主，额度用完时改切 Claude Opus 5。2026-09-18 从 Phase 1（文件读写）开始，9 月 20 日把第一个版本 1.0 提交到 App Store；加上仓库联动的 1.1 在 9 月 25 日提交审查，次日 26 日获批。到 9 月 24 日，已合并的 PR 是 35 本。作者写明：这是 Stilo 这一本上的记录，不是在写对所有项目都适用的方法。自觉有效的是三件事：把「不做的事」写下来，以免模型往范围外扩展；先写各 Phase 的接受条件，并要求完成报告用 ○／× 对照，而不是只说「做完了」；规格互相冲突时，事先写明行为看 HANDOFF、外观看 DESIGN_SPEC，差额写进 PR。文中摘了 PR #2 Phase A 的接受条件表（其中单元测试 3 件成功），以及 PR #24 的购买／剥夺操作时间戳，这些只接在被摘到的那一份 PR 上。learnings.md 由 Claude Code 在每个 PR 结尾追加，但作者也引了一句模型自己的反省：曾经指引「⌘U 能通过」，其实 learnings 里已经写过，说明写了却没读就没有用。作者还准备在 11 月出一本把这套做法写给其他项目用的 Zenn 书，文中没有给出书的 URL。本篇是「Stilo 实録」第 6 回、也是最终回，前 5 回可以单独读。",
     description: "面向已经把「写过一份很长的规格书」或「App Store 已经交了 1.0」当成项目可以收尾的人：把「HANDOFF 3 本加短规则、按着手那天起算第 3 天提交 1.0，以及 9 月 24 日已合并 35 本 PR」分开记，区别于只看一次上架成功、却没有留下接受条件对照的实践。",
     categories: [
@@ -62241,7 +62241,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "848",
     slug: "wait-0test-91781-0333",
-    title: "WaitLab：Claude Code 的子代理要把 UI 测试只跑 1 本，却把 -only-testing: 写成中途为止的 test01（真名是 test01EmptyState）。xcodebuild 在 1 本都没跑的情况下写出 ** TEST SUCCEEDED ** 和结束码 0（Executed 0 tests）。子代理在 03:24 一度要把 03:12 已经做出的「按钮已按不到」判断改掉；随即数到 Test Case 行是 0，把名字写全再跑，1 本跑了并失败（91.781／91.837 秒）。03:33 才提交修好的改动。后来在 Xcode 27.0 上用故意失败的单测复现：写到中途或写不存在的类都是结束码 0、0 本、TEST SUCCEEDED；写全名或写到类是结束码 65、1 本、TEST FAILED",
+    title: "测试筛选名写到一半的假成功",
     summary: "个人（WaitLab）；披露自己用几体 Claude Code 子代理做 iPhone 应用时，2026 年 9 月 8 日凌晨，汇总用的子代理先根据零件位置判断空画面按钮已经按不到（03:12），接着只跑那 1 本 UI 测试（03:13），却把 -only-testing: 写成 AppUITests/Probe/test01，真名是 test01EmptyState。命令约 5 分钟结束（含构建和模拟器启动），日志里是 Executed 0 tests 与 ** TEST SUCCEEDED **。子代理在 03:24 看到末尾的 TEST SUCCEEDED，一度要改掉刚才的判断；随即用 grep -c 'Test Case' 数到 0，也没有测试该拍的画面，判定筛选空了。把名字写全再跑，1 本跑了并失败：Executed 1 test, with 1 failure，91.781（91.837）秒，** TEST FAILED **，失败文案正是「按钮不在可按位置」。栏位改到按钮下方后再跑通过，03:33 提交。作者后来在手头 Mac 的 Xcode 27.0 上，用故意 XCTFail 的 macOS 单测靶 DemoTests 复现：写到中途或写不存在的类，都是结束码 0、0 本、TEST SUCCEEDED；写全名或写到类，都是结束码 65、1 本、TEST FAILED。当时日志所在的版本是构建号 17F113、iOS 模拟器 SDK 26.5，比这次复现的 Xcode 27.0 更早，但当时日志里已经是同样的 Executed 0 tests 与 TEST SUCCEEDED。作者写明：TEST SUCCEEDED 和结束码 0 只表示「没有失败」，并不表示「测试已经跑过」。Swift Testing 未测；并行跑测试时的行形也未核。同日另有一篇管道截断测试输出的姐妹篇。文末导向作者的 MCP 服务器「わだち」（目录名 Imashime）。",
     description: "面向已经把「看到 ** TEST SUCCEEDED ** 或结束码 0，就当成指定的那本测试已经跑过并且通过」写成可以上线的人：把「0 本跑过的成功，不能当成合否；筛名必须和文件里的名字写到最后，合否之前先数跑了几本」写成门禁，区别于只看末尾成功标记、却不核 Executed 行或 Test Case 行的实践。",
     categories: [
@@ -62302,7 +62302,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "849",
     slug: "kuu-10668-32g-208",
-    title: "くぅ／kuu_dqx：把 3 个仓库的 Claude Code 会话并排跑来对数字。某一周品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2%，两边完全一致，却被当成「防护两边都生效」的根据。把防护补到公式全部 3 项之后，同一周只有交易总额动了 32 G（138,615,381 对 138,615,413；约 0.00002%，是除法）。文章侧还曾把对方「1,343 件里 808 件经平均值」未经对算就用来撑场，对方后来自己改正的有效幅度是 1,343 件减到 1,135 件、共 208 件",
+    title: "并排会话对账与价格公式回退",
     summary: "个人（くぅ／kuu_dqx）；披露自己按仓库并排跑 3 个 Claude Code 会话，分别做游戏内交易所价格的收集、分析站点的周次／月次报表，以及据此写文章。某一天，2～3 个会话分别算出的数字连「含小数的行数（81 行）」都对上了，文章侧的记忆里就写下「独立计算后一致，本身就是强证据」；6 天后同一份记忆被补上「别的实现完全一致，已经不能再当根据」。某一周两边对上的是品目数 81、出品数 10,668、交易总额 138,615,381 G、上周比 -5.2%。分析站点的公式是 COALESCE(bulk99_unit, top10_avg, top10_min)，文章侧只有 bulk99_unit，防护只挂在第一项，平均或最低价的回退路径没被检查。补到 3 项之后，同一周只有交易总额变成 138,615,413 G，差 32 G，约 0.00002%（用差额除以原额，不是另一次实测）；其余 3 项不动。防护是文章侧设计、并由文章侧的 PR 送进分析站点的，执行虽然分开，设计并不是两条独立的路。文章侧还把对方「1,343 件里 808 件经平均值」未经对算就用来撑场；808 其实是没有 99 个打包单价的观测数，没有区分平均还是最低价，对方后来改正的有效幅度是 1,343 件减到 1,135 件、共 208 件。另有 47.5% 对 68.8% 是「素材」口径不同，以及把已刊 7 篇文章跟重做后的数据去比、其实引用的是未随数据更新的文章。作者写明：故意把洞放进去看数字会不会动，这一步还没做。文末导向作者的两本 Zenn 书（前 3 章可免费读）。",
     description: "面向已经把「两个会话的数字完全一致，就可以当成防护或口径已经两边生效」写成可以上线的人：把「一致只说明拿来比的那些数字相同；只有一边才有的路径，一致也检查不到」写成门禁，区别于只看完全一致、却不核问的是不是同一题、是不是同一母体、设计是不是同一套的实践。",
     categories: [
@@ -62363,7 +62363,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "850",
     slug: "kazu-1000-100p-306s",
-    title: "kazu_aiengineer：在 macOS、Python 3.13 上，把 Microsoft Agent Framework 的 agent-framework-core 1.25.0（对照 1.24.0）接到本地 MCP，核工具清单的上限。1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页的服务器，会在第 100 页停下。应答要 10 秒的服务器能通过，要 40 秒的在 30.6 秒超时（MCPError(-32001)）；同一台 40 秒服务器在 1.24.0 上还能取到",
+    title: "工具清单的件数页数与超时",
     summary: "个人（カズ／kazu_aiengineer）；披露自己在 2026-11-08，于 macOS、Python 3.13、agent-framework-core 1.25.0（对照用 1.24.0）、mcp 2.3.0 上，用 MCPStdioTool 接本地 MCP 服务器，只核工具清单的获取。远程 MCP，以及载上 LLM 的代理执行，写明未试。发行说明（PR #10042）写了三处变化，作者实测的是前两处：每个目录最多 100 页、1,000 件；框架创建的客户端请求超时默认为 30 秒。1,000 件正好能取到，1,001 件就例外；按每页 1 件返回 150 页的服务器，会在第 100 页停下。把上限调高后，1,200 件和 150 页也能取到；max_discovery_items=None 会去掉件数上限。应答要 10 秒的服务器能通过，要 40 秒的在 30.6 秒出现 MCPError(-32001)；同一台 40 秒服务器在 1.24.0 上还能取到。作者写明：这次超时测的是被故意拖慢应答的服务器，不是手头已有的、工具数超过 1,000 的真实服务器。Microsoft Learn 的 Local MCP tools 页没有写默认秒数，30 秒与发行说明一致。枚举里没有 Agent Framework／MCP 运行时，正文也未写实测用了枚举内平台，platforms 留空。",
     description: "面向已经把「更新到 agent-framework-core 1.25.0 之后，工具清单仍会按旧版那样取完」当成可以上线的人：把「1,000 件和 100 页是硬上限，默认等待是 30 秒；40 秒才会在约 30.6 秒超时」写成门禁，区别于只读发行说明、却没有用本地服务器核过件数和等待的实践。",
     categories: [
@@ -62420,7 +62420,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "851",
     slug: "kazh-90ans-6470-2244",
-    title: "kaz_hira：2026-10-22 用 ChatGPT Plus 登录的 Codex CLI，让 Luna／Sol／Astra 三个模型在 low～max 五档 effort 上各解同一组 6 题、共 90 次回答。Luna·xhigh 与 Sol·low 都是 6/6，输出 token 合计分别是 6,470 和 2,244。Sol·max 是 9,022，约为 Sol·low 的 4 倍（除法），正答数相同。补跑里 Sol·low 与 Astra·low 是 12/12，Luna·xhigh 是 11/12（第 2 次正则实现落了）；次数没有对齐，是因为中途碰到了利用上限",
+    title: "三个模型多力度的同题作答",
     summary: "个人（Kaz_Hira／kaz_hira）；披露自己在 2026-10-22，用 ChatGPT Plus 登录的 Codex CLI 调用 gpt-6-luna、gpt-6.1-sol、gpt-6-astra（文中简称 Luna、Sol、Astra），effort 分 low、medium、high、xhigh、max 五档，用英语出同一组 6 题并要求不用工具作答：CSV 12 行排序并转表、时间转秒（20 个用例）、整式计算（28 个用例）、6 人座位谜题、8 人座位谜题、以及不用 re 实现正则的一部分（与 Python 的 re 对照 275 个用例）。先按每个条件各 1 次，3 模型×5 档×6 题共 90 次回答来比。输出 token 是 JSONL 里 turn.completed 的 usage.output_tokens 合计，没有另加 reasoning_output_tokens。Luna·low 4/6（1,699）、medium 4/6（2,664）、high 5/6（3,854）、xhigh 6/6（6,470）、max 5/6（5,210）；Sol 从 low 到 max 都是 6/6，token 为 2,244、2,789、3,564、7,704、9,022；Astra 从 low 到 max 也是 6/6，token 为 2,203、2,631、3,480、5,581、8,858。Sol·max 的输出 token 约为 Sol·low 的 4 倍（除法），这 6 题的正答数相同。Luna·low 两道座位谜题都落了，xhigh 都正答；Sol·low 的输出 token 约为 Luna·xhigh 的三分之一（除法）。补跑里，Luna·low 为 8/12、平均 266；Luna·xhigh 为 11/12、平均 978（第 2 次正则实现落了）；Sol·low、Sol·xhigh、Astra·low 为 12/12，平均分别是 372、1,174、374。12/12 是同一组 6 题各跑完 2 次，不是 12 种题；因利用上限而未完成的轮次已从正答分母里排除，次数没有对齐。作者写明：日常开发若选一个会推荐 Sol·medium，那是给没测过的长作业留余量的运用判断，不是这 6 题已经证实的优势；输出 token 的差别不能直接换算成 Plus 额度或金额。测量时的 CLI 版本没有记下。Codex 不在平台枚举里，正文写明用了 ChatGPT Plus 登录，platforms 只记 chatgpt。",
     description: "面向已经把「effort 越高越好，或 Luna·xhigh 一定比 Sol·low 更省、更准」写成可以上线的人：把「这 6 题上 Sol·low 已是 6/6，更高 effort 会多耗输出 token；约 4 倍、约三分之一都是除法，不是另一次实测」写成门禁，区别于只看推荐档位、却没有记下正答数和 output_tokens 的实践。",
     categories: [
@@ -62480,7 +62480,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "852",
     slug: "yuu-90ok-40to15-20",
-    title: "y.sato／yuuyass：把告警处理 Skill 从「全部用 Sonnet、证据始终读取」改成按「要不要推测」拆开：定型用 Haiku、推理用 Sonnet，重的 Excel／证据图像只作为最后手段。繁忙期 90 件告警上，Claude Pro 5 小时额度消耗从约 40% 降到 15–20%（作者写「大致减半」，这是额度消耗率，不是另一次 token 实测）。同一 90 件新旧实现对照，没有检出遗漏、也没有判定差异。平时 8% 左右是预估，处理时间缩短 40–50% 是体感",
+    title: "告警处理按是否推测拆模型",
     summary: "个人（y.sato／yuuyass）；披露自己把业务里已经在用的告警处理 Skill（検知→调查→原因推测→报告）从全部用 Sonnet 改了结构。判断轴是「这一步要不要推测」。定型（从 Redmine 工单取検知内容）改用 Haiku，日志与任务 md 的对照以及原因判断仍用 Sonnet；main 与子代理只按这条线来拆，把 Skill 前提的读取关在子代理一侧，避免拆得过细导致前提被反复读入；文件服务器上的 Excel 和证据图像，从始终执行改成「日志加 md 仍判断不了时才用的最后手段」。用同一批 90 件告警跑旧实现（全部 Sonnet、证据始终读取）和新实现（Haiku／Sonnet 分工、证据作为最后手段），全件对照検知结果，没有检出遗漏、也没有判定差异。繁忙期这 90 件上，Claude Pro 每 5 小时额度的消耗从约 40% 降到 15–20%，作者写成「大致减半」；文中注明百分数指的是额度消耗率，不是另一次 token 实测。平时検知量下约 8% 被标成预估；处理时间缩短 40–50% 被标成体感。作者写明：之后运用里会不会出现没考虑到的遗漏，还要继续看。标题虽写「把 token 减半」，正文把实測、预估和体感分成了三行，实測的那一行是额度消耗率。文中没有产品链。作者卡 website／GitHub／X 为空。",
     description: "面向已经把「标题里的减半当成 token 实测，或把 90 件没有差异写成以后也不会遗漏」写成可以上线的人：把「实測的是繁忙期 90 件上的额度消耗率约 40%→15–20%，8% 是预估，时间缩短是体感；90 件对照不能外推到以后所有告警」写成门禁，区别于只看标题「token 减半」、却不区分实測／预估／体感的实践。",
     categories: [
@@ -62540,7 +62540,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "853",
     slug: "hathi-34of36-630-93",
-    title: "八兵卫／hathibei7：用工具等待时间为零的模拟 EC 客服，对照「按组织图拆开的编排器＋子代理」(A) 与「单循环＋技能」(B)。12 项任务各 3 次，共 72 次。B 在 12 项上全部更快，平均时延 13.49 秒对 6.30 秒（约 2.1 倍，是除法）。严格量表成功 A 34/36、B 35/36。带缓存的实测费用每任务 $0.0241 对 $0.0093（约 2.6 倍，是除法）。A 在 T04 上 2/3（合计 2/4）因协调失误失败；给退货担当补上 get_shipment 后 A' 为 3/3。原文那种部分折叠构成 A'' 在 28 次里没有观测到同样的失败",
+    title: "客服编排与单循环技能对照",
     summary: "个人（八兵卫／hathibei7／hatyibei）；披露自己按 Anthropic 那篇「何时把子代理折进主循环」的主张，做了一个虚构网店「ハチベエストア」的客服基准：工具是即时返回的确定 JSON，等待时间为零，「今天」固定为 2026-10-24。A 是作者故意按组织图拆开的编排器＋五个专业子代理（退货担当没有 get_shipment）；B 是单循环，只对技能做渐进展开，6 个数据工具一开始就全部可见，没有用 tool search。本编 12 项任务各跑 3 次、4 路并行，共 72 次，模型一律 claude-sonnet-5-5，评分用 claude-haiku-5-5。正文质量数字用的是事后改过的评分器 v2（给了技能正文、1 答评 3 次取多数）；v1 是 A 31/36、B 33/36。v2 严格量表成功为 A 34/36、B 35/36，决定性检查两边都是 36/36。B 在 12 项上全部更快，平均／中位／p90 时延是 13.49／13.60／18.06 秒对 6.30／7.03／8.49 秒，任务别平均时延比（A/B）为 1.78–2.83 倍、中位 2.16 倍，平均约 2.1 倍是除法。带缓存的实测每任务费用 $0.0241 对 $0.0093（约 2.6 倍，是除法）；若把全部输入都按普通单价试算则是 $0.0373 对 $0.0222（约 1.7 倍，是除法）。完全串行各跑 1 次、重试 0 次时，平均 12.74 秒对 6.52 秒，约 2.0 倍，费用 $0.0264 对 $0.0134。本编唯一翻转的是 T04（A 2/3、B 3/3）；失败的 2 次都是编排器只问了退货担当、也没有再问配送担当。给退货担当补上 get_shipment 的 A' 在 T04 上 3/3。部分折叠的 A'' 在 6 项各 3 次共 18 次全部成功，难化再测里 A'' 又 10 次成功，合计 28 次没有观测到原文那种「自己答、不问配送」的失败。作者亲手按量表读完 72 条回答，与 v2 一致 70/72；按作者自己的判定重数是 A 35/36、B 36/36。API 费用是 usage 乘官方标价的推算，不是账单：本编 72 次代理 $1.20、评分 $0.19，连同追加实验和作废的约 $1.58，合计约 $5.1。代码仓已公开，原始 runs.jsonl 未收入仓库。",
     description: "面向已经把「Anthropic 说单循环又快又便宜，就可以在自己的系统里把子代理折掉」写成可以上线的人：把「这一次对照是在工具瞬时返回的模拟店上测的；约 2 倍的时延差不能写成官方原文的复现，也不能外推到工具本身要等待的实系统」写成门禁，区别于只看平均倍率、却不核任务是否翻转、评分器是否事后改过、失败是不是权限边界造成的实践。",
     categories: [
@@ -62603,7 +62603,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "854",
     slug: "kiyaku-tmpok-git0-000",
-    title: "エージェント規約工房／agentkiyaku：用 Codex CLI 0.163.0（Linux 6.12、bubblewrap 0.12.0，2026-10-18）的 codex sandbox，在 workspace-write 下逐项试写。作业文件夹内可以新建和删除；/tmp 可以写；家目录下别的文件夹、.git 内写入、git add／commit／reset --hard、rm -rf .git、作业文件夹内的 .codex／.agents，以及 curl https://example.com 都被拦住（curl 结束为 000；沙箱外同样的 curl 是 200）。打开 network_access 后，example.com、github.com、pypi.org 都是 200。没有在与模型对话的状态下试，也没有试 macOS／Windows／WSL2",
+    title: "沙箱工作区写入的逐项试探",
     summary: "个人（エージェント規約工房／agentkiyaku）；披露自己用 Codex CLI 0.163.0（npm 安装）、Linux 6.12、bubblewrap 0.12.0，在 2026-10-18 用 codex sandbox 直接跑命令，核 workspace-write 实际会拦住什么。没有在智能体与模型对话、由模型自己选命令的状态下试，也没有看成是怎么弹出的，承认提示只按官方文档来写。只在 Linux 上试过，macOS、Windows、WSL2 未试。本次版本的 --ask-for-approval 帮助里只剩 on-request 与 never；再传已经废止的 untrusted 会报 invalid value。文档里的 `codex sandbox linux …` 写法在这个版本会报错，作者用的是 `codex sandbox -- <命令>`。workspace-write 下：作业文件夹内新建和删除都可以；家目录下别的文件夹、.git 内写入、git add／commit／reset --hard（因为做不了 .git/index.lock）、rm -rf .git，以及作业文件夹内的 .codex／.agents 都被拦住，提示 Read-only file system；curl https://example.com 结束为 000，沙箱外同样的 curl 是 200。/tmp 可以写。不加选项时按 read-only 处理，作业文件夹内和 /tmp 都不能写（作者当时没有改 ~/.codex/config.toml 里的 sandbox_mode）。把 sandbox_workspace_write.exclude_tmpdir_env_var 打开后，向 /tmp 写也会变成只读；作者写明测试或构建里要用临时文件的工具会不会因此动不了，没有试。打开 network_access 后，example.com、github.com、pypi.org 都是 200；按域名收窄的 network_proxy 没有试。在沙箱里做 git commit 再走「批准后到沙箱外执行」这条路，也没有试。作者写「手头 1 秒不到就结束了」，这是原文的说法，不是另一次秒表实测。文末导向作者在 note 上的付费连载（写各工具里不让读 .env 和 API 密钥的设定）。Codex 不在平台枚举里，正文也未写实测用了枚举内平台，platforms 留空。",
     description: "面向已经把「选了 workspace-write，作业文件夹以外就全部写不了」写成可以上线的人：把「/tmp 默认写得进、.git 和通信默认写不出；这些只在 codex sandbox 直接跑命令时核过」写成门禁，区别于只看模式名字、却不按项试写入、删除、通信和 git 的实践。",
     categories: [
@@ -62663,7 +62663,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "855",
     slug: "twin-26to43-12s-3h",
-    title: "twinharness：给 Claude Code 加了结束时的 Stop 钩子，改变了文件却还没让另一套 AI（Codex）做过只读评审时，只拦一次。2026-09-24 用自己的会话记录复现误判并改正：会把已评审过的提交当成未评审、把后台评审刚启动当成已经通过、把「使用上限」的字样误判为通过，以及评审后的 git commit 被当成变更（闸门挡了作者自己才发现）。测试从 26 件增到 43 件，新增测试在改正前的版本上会失败。2026-09-28 又发现拦回过程中仍会发出完成通知，于是做成共用的完成判定（试跑闸门限 12 秒，后台工作超过 3 小时视为通知遗漏）",
+    title: "结束钩子上的外部只读评审",
     summary: "个人（twinharness）；披露自己用 Claude Code 写、用 Codex 做只读评审，并把共同规则放在名为 agent-toolkit 的仓库里（正文没有给出仓库 URL）。文章里的规则用文字写着「实现之后要让另一套 AI 做评审」，但只靠文章守不住，于是做了 Stop 钩子 Hook-CodexGate.js：对话要结束时，先查会话记录里有没有尚未评审的变更，没有通过就拦一次。变更包括编辑／写入、外壳里的改写，以及对实现用子代理的委托；交接文档、记忆文件和临时文件夹单独的改动不计入。只有 Invoke-Codex.ps1、New-CodexReview.ps1、codex exec 这类命令真正成功才算「已经过 Codex」；只搜索名字的命令不算；因为使用上限而跑不起来时，只要写进 HANDOFF，也可以结束。已经处于拦回状态的停止一律放行；作者也可以写「【Codex省略: 理由】」或关掉闸门。拦回文从 6 行缩到 3 行。2026-09-24，作者用自己的会话记录复现误判并改正：展示的变更清单曾把上次 Codex 通过之前的改动也算进来；后台拉起的 Codex 刚启动就被当成已经通过；文面或测试输出里的「使用上限」曾让闸门误判为通过；评审后的 git commit 也被当成变更——最后这一条是闸门挡住作者自己才发现的。改正后测试从 26 件增到 43 件，新增测试在改正前的版本上会失败。作者后来还规定：最后一次变更之后、3 小时以内只是在等后台 Codex 的结果，就不要拦回；here-document 正文和写到临时文件夹也不算变更。2026-09-28，作者指出拦回过程中仍会发出完成通知，原因是完成通知钩子与闸门同时跑、彼此看不到结果。于是做成 StopVerdict.js，先把 Codex、质量检查、日语三道闸门不写回状态地试跑一遍，任一要拦就不算完成；试跑限 12 秒，失败或超时按「不拦」处理；后台工作超过 3 小时且记录里没有结束通知，视为通知遗漏。这件判定也被 Codex 评审过，采用了严重 1 件、中等 1 件；「超过 3 小时的后台工作会过早显示完成」那条没有采用。闸门判定不靠 AI 猜测，只看会话记录里的字符串和顺序。夜间的 claude -p 会不会被闸门拦住，写明未核；README 是否还在把提交算作变更，也写明未核。无配图，无产品导流。Codex 不在枚举里，不硬凑；正文写明用了 Claude Code，platforms 记 claude。",
     description: "面向已经把「规则里写了要实现之后先做跨模型评审，就可以当成每次都会做到」写成可以上线的人：把「文章守不住的规则，要用结束时的闸门去数变更和评审；闸门自己也会误判，要用会话记录复现后再加测试」写成门禁，区别于只写一条规则、却不核钩子实际会不会放行、会不会在拦回时仍报完成的实践。",
     categories: [
@@ -62726,7 +62726,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "856",
     slug: "krbrr-656-127-2of9",
-    title: "krbrr／zenn_content：把 Claude Code 官方仓库里、2026-07-28 之后、带复现步骤且带 Windows／Desktop／hooks／data-loss 标签的 656 件问题报告做筛选（2026-10-26 时点）。未解决且估计「这台 PC 也可能发生」的先是 127 件，其中 63 件在手头规则／备忘里完全没有。从 127 件里拿出能安全试的 9 件，在 Desktop 同梱 2.1.299 上实机试：再现 2 件，其中 1 件是已有备忘 #88561 的另一编号，新确认的再现只有 #100983 一件（而且方向与报告相反，是 LF→CRLF）。同日把判定范围扩大后，台账变成 221 件（其中 209 件仍是未确认的估计）",
+    title: "官方问题报告的事前筛选台账",
     summary: "个人（krbrr／zenn_content）；披露自己在 Windows 11 Pro、Claude Code Desktop 同梱 2.1.299／CLI 2.1.304、单人使用的环境下，把「踩到再查」改成「踩到之前先做台账」。件数以 2026-10-26 为时点。作者的知识收集管道里约有 15 万件（150,418 件），其中官方问题报告 40,315 件，约八成（32,130 件）是最低档，周检从未出现过；而已经写进 ~/.claude 的 978 件来源里，问题报告反而是最多的 249 件。按标签和「有复现步骤」抽出 656 件，当时能取到状态的 655 件里，未解决 527、已修复关闭 69、重复关闭 36、不计划修复关闭 23，1 件取不到。判定对象是未解决加上不计划修复的 550 件。由 Sonnet 按作者写明的环境来判，「这台 PC 也可能发生」的先是 127 件（消失／误执行 17、停止／默默出错 72、慢／麻烦 38），另有条件再说 276 件、判成不会发生或只是表面的 147 件。127 件里有 63 件在手头规则、备忘、知识里完全没有。从 127 件里拿出能安全试的 9 件实机试：#89392 再现，但是已有备忘 #88561 的同一问题（Bash 工具把 'a\\\\b' 收成 3 字节，PowerShell 工具仍是 4 个字符）；#100983 再现，但方向与报告相反，是 LF→CRLF；其余 7 件未再现或缺少前提。新确认的再现只有 1 件。同日把判定范围扩大后，台账变成 221 件（重大 S1 为 34 件），按 9 个领域笔记加 1 份目录来放，221 件中 209 件仍是未确认的估计。用 11 条委托试自动显示：写了症状的 5 条都能显示出台账，无关的 6 条一条也没有显示；「显示了就会被读」并不成立，另一次调查里，自动显示的笔记在同一轮被打开的比例是 1.2%。第一次完整的每周作业里，最近 43 件候选大约 5 分钟判定完，16 件作为「也可能发生」进入台账。台账是否真的被用到，作者计划大约 2026-11-23 再看显示次数和打开次数，当时还未做。",
     description: "面向已经把「问题报告上写了会在 Windows 或 Desktop 上发生，就可以当成自己这台机器已经会中」写成可以上线的人：把「报告文只是别人环境里的事实；估计「也可能发生」必须和实机核过的结果分开记」写成门禁，区别于只按标签筛出一份长清单、却不抽样实机试、也不标明哪些只是估计的实践。",
     categories: [
@@ -62789,7 +62789,7 @@ MCP 里公开创建和下写创建是两个工具，但都要 POST；Content API
   {
     id: "857",
     slug: "sata-2126-191-3896",
-    title: "さた／sataappdev：在自宅服务器（Intel Core i5-6400、内存 16GB、Ubuntu 24.04.4）上，把 Dify、n8n、OpenClaw、Hermes Agent 启动后的内存和启动时间记下来（都没有调用 AI 模型）。2026-10-07：Dify 1.17.1 两次 3 分钟后 docker stats 为 2,201／2,126 MiB，启动 66.3／103.6 秒；长期运行中的 n8n 2.33.7 读数为 191 MiB；OpenClaw 2026.9.8 为 1,038 MiB；Hermes Agent v0.21.5 为 466 MiB。四个数相加是 3,896 MiB（3.8 GiB），这是加法，不是同时跑的实测。api／worker 四个容器占 Dify 整体的 76–78%（两次）",
+    title: "四款自托管工具的内存与启动",
     summary: "个人（さた／sataappdev）；披露自己在自宅服务器（Intel Core i5-6400、4 核、内存 16GB、swap 16GB、Ubuntu 24.04.4 LTS、Docker Compose v5.5.0、cgroup v2）上，把 Dify、n8n、OpenClaw、Hermes Agent 四个工具的启动时间和内存记下来，作为租用 VPS 之前的参考。测量时没有调用 AI 模型（没有填 API 密钥）。当时还有 27 个常驻容器，测前的 MemAvailable 是 5.1–8.5GB。Dify、OpenClaw、Hermes Agent 按同一流程各启动一次再拆掉；n8n 在 10-07 的主表里读的是平时一直开着、带着 4 条工作流、没有停机的实例。数字主要由 2026-10-07 的版本构成；OpenClaw 与 Hermes Agent 因新版本在 2026-10-09 用同一流程再测，n8n 则在同一天把 2.42.5 和 2.33.7 都新启动来比，和主表里长期运行的读法不同，不能并排比。10-07 主表：Dify 1.17.1（15 个容器）两次启动 66.3／103.6 秒，3 分钟后 docker stats 为 2,201／2,126 MiB；长期运行中的 n8n 2.33.7 在 2026-10-07 17:18 读数为 191 MiB（RSS 相当 139 MiB），启动时间来自日志里 19 次重启的 7.1–23.0 秒（中位 7.9 秒），监视软件 24 小时最大是 366 MB（20 分钟平均、MB 显示）；OpenClaw 2026.9.8（只开 gateway）启动 42.1 秒，3 分钟后 1,038 MiB；Hermes Agent v0.21.5 启动 20.9 秒，3 分钟后 466 MiB。Dify 两次里，api／worker 四个容器占整体的 76–78%；第二次的四个容器合计 1.63 GiB，占 78%。四个 3 分钟后的值相加是 2,201＋191＋1,038＋466＝3,896 MiB（3.8 GiB），这是加法，不是同时跑的实测。10-09 把 OpenClaw、Hermes 换成新版本后再加，是 3,677 MiB（3.6 GiB），同样是加法。作者写明：没有测调用模型时多出来的内存，也没有把四个同时跑起来（相加已约 3.8 GiB，自宅空闲有时会掉到 5GB 出头，担心碰到 2GB 的监视线）。测量是自宅服务器上的 AI 智能体按脚本执行，再从输出里抽出数字。文内导向作者的个人实测站和内存加总页，作者卡 website 指向 note。",
     description: "面向已经把「把四个工具各自测到的内存加起来，当成同时跑在同一台机器上的占用」写成可以上线的人：把「单件测量可以记；相加只是加法，不是同时跑的实测，而且这里还没有调用模型」写成门禁，区别于只看一个加总 GiB、却不核测法是否相同、n8n 是长期运行还是新启动的实践。",
     categories: [
@@ -62856,7 +62856,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "858",
     slug: "saito-705-26x-157s",
-    title: "saito／tsutomusaito：用自己机器上 2026-08-18 的 Claude Code 会话日志，统计 2,932 个会话文件、47,217 次助手回合里、含压缩的 148 个会话、705 次 compaction。压缩刚结束那一回合的缓存写入中位数 43,844 token，是不含压缩的通常回合中位数 1,712 token 的约 26 倍（是除法）。按相对成本简易式约 10.1 回合回本，按累计实测是 12 回合；会话最后一次压缩里 47/148（31.8%）没到 12 回合。摘要耗时中位数 157 秒，705 次合计 30.7 小时。702/705（99.6%）是自动触发。批次（sdk）2,681 个会话里只有 9 次（0.3%），对话（cli）244 个里有 139 次（57.0%）；17 回合以下的 2,628 个批次会话是 0 次",
+    title: "会话压缩触发的缓存重新写入",
     summary: "个人（saito／tsutomusaito）；披露自己把 ~/.claude/projects 里的会话记录按 message.id 去重后点数（初出时没做去重，回合数会胀到约 1.94 倍、token 量会胀到 1.9–2.9 倍，正文已全部改成去重后的数）。统计时点是 2026-08-18 的快照，子代理（isSidechain）另算上下文，未计入。压缩刚结束的缓存写入中位数 43,844 token，对通常回合 1,712 token 为约 26 倍（是除法）；若去掉会话开头 5 回合，通常回合降到 1,143 token，倍率变成约 38 倍，作者取的是不过滤开头、较保守的 26 倍。压缩前一回合的缓存读取中位数 164,690 token。把第 3 回合的 78,084 token 当作压缩后的稳态，用官方倍率（1 小时缓存写入 2 倍、读取 0.1 倍）做相对成本，简易式 87,688÷8,661≒10.1 回合，按累计实测是 12 回合。会话最后一次压缩后，不到 12 回合就结束的是 47/148（31.8%），中位数 18 回合；若把 705 次都算到下一次压缩为止，12 回合以上是 88.5%（624/705）。摘要耗时中位数 157 秒、p90 198 秒、最大 319 秒，705 次合计 30.7 小时；每会话压缩次数中位数 2、最大 53，148 个里 79 个压过至少 2 次。自动触发 702 次（99.6%），手打 /compact 只有 3 次（0.4%）。批次与对话的差主要是会话长短：批次中位数 2 回合、对话 61 回合；第一次触发时的 preTokens 是 183,128 对 169,700，作者认为阈值差不多。17 回合以下的 2,628 个批次会话 0 次；17 回合以上是 9/53，作者写明母数小、比率不可靠。批次里触发会话丢掉的 token 中位数 170,418。入口标记不全的旧日志和不足 4KB 的小日志被排除，所以 2,681+244=2,925，到不了 2,932。摘要请求本身的 usage 没有留在日志里，12 回合回本仍偏乐观。相对成本按官方倍率估算，不是账单。",
     description: "面向已经把「压缩之后用量会跳，所以要不要常开自动压缩」写成可以上线的人：把「约 26 倍是中位数相除，不是另一次实测；会话最后一次压缩有约三成到不了 12 回合；批次 0.3% 是因为会话短，不是因为批次更安全；摘要请求的费用还没计入，12 回合仍偏乐观」写成门禁，区别于只看倍率、却不核是不是同一份去重后的日志、是不是把最后一次压缩和 705 次混成同一次计数的实践。",
     categories: [
@@ -62919,7 +62919,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "859",
     slug: "nnakapa-240-60of60-95",
-    title: "Nori／nnakapa：在 Raspberry Pi 5（内存 4GB、Ubuntu 26.04 LTS arm64）上把 Claude Code 固定为 v2.1.258，于 2026-09-02 用 Fable 5.1 与 Opus 5、各 4 档 effort，对同一套 3 个小型 Python 任务各跑 10 次，共 240 次，全部跑完。质量门全过且费用几乎相同的组合里，Fable 5.1×low 三任务合计中位数是 95 秒、$1.10，Opus 5×high 是 247 秒、$1.10（差 $0.004、0.3%），约 2.6 倍（是除法）。Fable 5.1×low 的 T2 又加测 50 次，50/50 通过；与原先 10 次合计 60/60。这次 Opus 5 只在 T2 上掉了 3 次（low 2、medium 1）。作者环境里 Fable 5.1 的默认 effort 是 high，同一批任务上 low 比 high 约 1.7 倍快（158 秒→95 秒，是除法），约便宜 26%（$1.49→$1.10，是除法）",
+    title: "单板机上按力度跑编程小题",
     summary: "个人（Nori／nnakapa）；「オトナの自由研究」第 37 回。任务是沿用第 22 回的 3 个PostgreSQL／psycopg2 小题：T1 原子转账、T2 参数化查询（说明里故意不写「请做注入防护」）、T3 乐观锁库存。函数起初只有一行 raise NotImplementedError，由 Claude Code 按说明书实现。8 种组合各 30 次，模型和档位打乱后在同一测量窗口一次跑完，并用以往的 OTel 接收端收集遥测。费用是 CLI 报告的 token 量乘标价，240 次都与 CLI 记下来的金额核对过。还核了 240 次的模型 ID 都对得上、Fable 5.1 安全分类器拒绝 0 次、日志里的 CLI 版本都是 2.1.258、effort 标签都按预期写入。第 36 回曾发现模型先读了隐藏测试再实现，这次测量期间用文件权限把隐藏测试、参考实现和评分定义封起来，评分前再打开；封闭期间试图去读的痕迹是 0 次。240 次全部跑完，超时和异常结束 0 次。质量门没过的只有 Opus 5 的 3 次，都在 T2。T1、T3 八种组合都是 10/10。Fable 5.1 四档都全过；Opus 5 只在 high、xhigh 全过，low 是 8/10，medium 是 9/10（文内表写作 80%、90%）。加测的 50 次不计入总览表的 N=10。N=10 全过只能说到失败率低于 26%；50/50 的 Clopper-Pearson 单侧 95% 上限是 5.8%，合计 60/60 是 4.9%。Fable 5 在第 29 回（2026 年 7 月、CLI 2.1.220）的 T2 是 low 0/10、medium 7/10，版本和日期不同，只比门是否通过，不比绝对值。medium／high 上 Fable 5.1 的思考次数停在 4 次，Opus 5 会随档位从 3 加到 7；xhigh 上 Fable 5.1 单次思考 32.2 秒，对 Opus 5 的 14.3 秒约 2.3 倍（是除法）。输出 token 从 low 到 xhigh，Fable 5.1 约 8.5 倍、Opus 5 约 5.5 倍。官方指南写 xhigh 输出约 2 倍，方向一致，但不是同一组实测。low 对 low 的费用仍是 Opus 5 的 2.00 倍，并没有变便宜。作者写明这是个人非官方实验，不能代表两款模型的一般优劣。",
     description: "面向已经把「Fable 5.1 应该默认用 low，而且比 Opus 5 又快又稳」写成可以上线的人：把「约 2.6 倍是 247 秒÷95 秒，不是另一次实测；加测的 50 次不要和总览表的 N=10 混写；Fable 5 的 0/10 来自另一版 CLI、另一段日期；N=10 全过只能说到失败率低于 26%」写成门禁，区别于只看总览里的全过和倍率、却不核隐藏测试是否被封、费用是不是 token 乘标价的实践。",
     categories: [
@@ -62982,7 +62982,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "860",
     slug: "suisei-16d-12pt-75",
-    title: "Suisei498：用 Claude Code 和子代理做国家资格／技术检定的问题集，从 2026-09-29 起 16 天做出 6 个书名，电子书和纸书合计 12 点，都通过了 KDP 审核。一册多为 150–200 问（少的约 60 问）。校阅时「一册大约要改约 75 件」；文内表只列出资格 A 的书 76 件、应用 41 件，资格 B 的书 75 件、应用 38 件。机械检查里，有一套书 180 问加应用 180 问，相似度 0.6 以上的组合有 5 组（最大 0.752）。子代理曾 13 路同时跑，碰到 429，作业全部停下。作者账号新建标题有每周上限（电子 2、纸 2），周日早晨 9 点（日本时间）恢复；8 点 59 分保存被挡，过了 9 点再做才通过",
+    title: "资格试题集做成电子书与纸书",
     summary: "个人（Suisei498）；同一内容也发在 Zenn 和 note。流程是：用 e-Gov 法令 API 取现行条文，写好出题规则，再按作业拆开并行出题——每个作业写 40–50 问，各用 git worktree 和分支隔开。机械检查会核对题量和形式，并用 difflib 找出相似度 0.6 以上的组合。校阅由书和应用分开的作业来做，改正写成 JSON，也出给人读的 Markdown。排版用 Python 做 A5 的 PDF、EPUB 和封面。登记 KDP 时用 Claude in Chrome 填表。应用题是为了 KDP 选择项目（电子书内容不能在别处发放）而按同样数量另做的，不是把书里的题直接搬过去。文内表只展示了两个资格的校阅件数；「一册约 75 件」是作者对书这一侧的概括，不要把 76 与 75 写成六册每一册都点过的同一张全表，也不要把应用侧的 41、38 和书侧混成同一个「约 75」。常见错误是：还在用修订前的数值、依据只有一份资料、书和应用的正确论点重叠、题干过于相近、漏写法令名称。13 路同时跑碰到 429 后，作者改为控制同时数量。KDP 上还遇到：纸书上传要重新登录亚马逊 1 次；纸书类目不会从电子书带过来；审核方面，电子书里快的从提交到开卖只要数十分钟（官方说明最长 72 小时），12 点都过了。AI 申报为「是、作品整体（最少编辑）、工具名 Claude（Anthropic），图像和翻译没有」；商品说明写明不是考试实施机构的官方教材或真题转载，而是自己出的题。作者写明不谈销售额。",
     description: "面向已经把「用 Claude Code 并行出题，16 天就能做出 6 套资格问题集」写成可以复制的人：把「校阅约 75 件是书这一侧的概括，文内表只列出两个资格；12 点过审不能写成出题已经不用改；13 路并行会撞上 429；周上限才是出书速度的上限」写成门禁，区别于只看 16 天和 12 点、却不核改正件数和出书侧限制的实践。",
     categories: [
@@ -63046,7 +63046,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "861",
     slug: "shunta-0fill-0yen-2w",
-    title: "Shunta Furukawa／shunta_furukawa：2026 年 9 月上旬到中旬，用 Grok Bot 按角色搭了一个交易团队，在 bitbank 上用少额资金做加密资产的半自动运转。约 2 周后，于 2026-09-18 停掉例行并解散。结果是成交 0 笔、实现盈亏 ¥0，账户现金仍是初次入金时的 ¥100,000。目标是约 1 个月纯实现 +¥5,000，未达到就结束。日线开盘涨跌超过 ±8% 的当天，Satellite 不再新开仓。急涨急跌的提醒来过多次，但「禁止追第一波」和 Satellite 休眠之下，一次也没有进到下单预览",
+    title: "少额加密交易团队的试运行",
     summary: "个人（Shunta Furukawa／shunta_furukawa）；团队按角色分工，执行前要走 preview→confirm，人确认后才下单。没有自做交易所连接器，选了接近官方的 bitbank-lab-mcp（曾考虑过给 GMO 硬币自做 MCP，因实验期短而放弃）。正文写到的角色包括司令塔兼执行、看门的 Satellite、平日 7:00 的事实摘要，以及 9:00 的账簿对账（差额为 0 则不通知）。核心策略是 Mode A（突破后再等待回踩），Satellite 在当日从开盘算起超过 ±8% 时不再新开；FOMC 当周要收紧仓位，还有每周配额，只保留高信号。约 2 周里账户始终是现金 ¥100,000，成交 0、实现盈亏 ¥0，KPI 进度 0/5,000。作者认为「安全地什么都不做」做到了，但「条件满足时会不会动」这一侧完全没有验证材料。文中的「見送り」是先搁下、不入场，不是「先发送」。作者把失败归为：突破加回踩的窗口几乎没打开、当天大涨大跌反而不能新开、每周配额又削掉细的机会、默认是条件未满足就不开新仓；约 1 个月的小额盈利目标和「条件来了再动」的等待设计放在同一块看板上会打架。正文没有给出该 MCP 的仓库 URL。",
     description: "面向已经把「用 Grok Bot 按角色做交易团队，加上预览确认就能半自动运转」写成可以上线的人：把「这次约 2 周是成交 0 笔、实现盈亏 ¥0，账户仍是入金时的 10 万日元；KPI 约 1 个月 +¥5,000 没有拿来验证；一次也没有进到下单预览，所以不能写成策略已经被市场检验」写成门禁，区别于只看分工和安全闸门、却不核有没有真实成交的实践。",
     categories: [
@@ -63107,7 +63107,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "862",
     slug: "mike-14ci-10d-3fm",
-    title: "ミケ／joemike：负责发文的 agent（night-writer）把 3 篇给 Qiita 的稿子写出了有问题的 frontmatter：2 篇的 updated_at 缺少引号，1 篇把已有文章的 id 写成了 null（已有文章必须是 UUID）。qiita-cli 的 publish --all 用 Promise.all 并行 POST，其中 1 篇碰到 QiitaInternalServerError（500）后整体中断，但并行里其他 POST 仍可能跑完，于是出现「CI 日志看起来全部失败，Qiita 上却已有部分发上去」。反复修改再推送，10 天里连续 14 次 CI 失败。同一类问题在 2026-04-27 也发生过。作者后来加上 frontmatter 校验、把校验放进发布步骤之前，并把速率限制／500 降成 warning、对已发布稿固定 ignorePublish: true，再用 Qiita API 按 id 对账",
+    title: "发文稿头错误与并行发布中断",
     summary: "个人（ミケ／joemike）；结论是：只把正确模板写进 skill（指示书）并不能保证 agent 会遵守，尤其是 frontmatter 这种定型结构、上下文里没有上次事故记录、以及「下次再改」这种模型并不会记住的写法。3 篇问题稿发生在 2026 年 5 月。作者给出的机械防护包括：用脚本检查 updated_at 是否缺少引号、id 是否为 null、以及是否误写了不是 Qiita 字段的 published_at；在发布步骤前先跑校验；若输出里出现 QiitaRateLimitError 或 QiitaInternalServerError，就降成 warning 并以退出码 0 结束；已发布稿固定 ignorePublish: true；再用带占位符的 Qiita API 地址 https://qiita.com/api/v2/items/{id} 做对账。文末把更细的实现和「怎么赚钱」指向作者站点 masatoman.net 上的同题文章。源文没有写加上防护之后，连续失败是不是降到了 0，也没有把标签里的 Claude Code／GitHub Actions 写进正文当实测平台名。",
     description: "面向已经把「把正确模板写进 skill，发文 agent 就不会再把 frontmatter 写坏」写成可以上线的人：把「这次是 3 篇问题稿引发 10 天连续 14 次 CI 失败；同类问题在 2026-04-27 也发生过；源文没有给出加防护之后的失败次数」写成门禁，区别于只看脚本清单、却不核事故有没有被后续数字证明已经止住的实践。",
     categories: [
@@ -63164,7 +63164,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "863",
     slug: "yosuke-4130-294-1818",
-    title: "よすけ／yosuke-suzuki：用自己「もくもく问题集」仓库里、2026-10-01 之后至少启动过 1 次子代理的 20 个 Max 计划对话会话，统计 12 体子代理（另含 general-purpose 等）共 4,130 次启动（本体 4,102 + 工作树 28）。按 2026-11-08 的 API 标价换算合计 $1,818.96，其中子代理 $534.40（29.4%）、主循环 $1,284.56（70.6%）。最贵的役是 question-verifier（Opus 5.5、1,452 次、$121.41，占子代理费用的 22.7%）。若把缓存写入全部按 5 分钟档重算，合计 $1,747.82，主循环仍占 69.4%。第一次按 message.id 只留首行时，输出少计 12.8%（2,528 万→2,898 万）",
+    title: "子代理费用在会话中的占比",
     summary: "个人（よすけ／yosuke-suzuki）；披露这是自己一个仓库、20 个会话的 API 标价换算，不是 Max 计划账单，也还没有做「分开 / 只分一部分 / 不分」的对照实验（后编未发）。20 个都是对话会话，主循环 19 个是 Opus 5.5；记录来自 Claude Code 2.1.296–2.1.318，用 2.1.319 的脚本点数，jsonl 默认约 30 天会删。请求数主循环 11,449、子代理 25,429、合计 36,878；输入（含缓存读写）主循环约 45.1 亿（77.7%）、子代理约 12.9 亿（22.3%）、合计约 58.0 亿；其中缓存读取分别占 99.1%、89.1%、合计 96.9%；输出主循环约 598 万、子代理约 2,300 万、合计约 2,898 万。主循环费用的 69.5%（$892.92）是缓存读取；主循环 1 次请求平均约读 39 万 token，有的会话请求会超过 2,000 次。作问流水线大量跑的 3 个会话就占了费用的 55%。子代理里 Opus 的役占 54.3%，Haiku 的役占 6.5%；fact-extractor 与 inspector 合计 1,000 次以上，只有 $32.57。12 体启动分（第一次响应的输入）中位数都在 9,543–12,694 token；占子代理输入的 3.5%，却占子代理费用的 19.9%（$106.45），相对合计 $1,818.96 是 5.9%。question-verifier 与 question-judge 这类约 3 次请求就结束的短活，启动分分别占该役费用的 44% 和 48%。4,130 次启动里，第一次响应超过 10 万 token 的是 0 件，作者据此判断没有混进会继承父会话缓存的 fork。同一条响应的各行 output_tokens 不一致的组合有 4,561 组；改成留下最大的那一行之后，才得到 2,898 万。用 claude -p 对照了 1 次：output_tokens 173、$0.0868，与脚本一致，但那次两行的值本来就相同。正文脚本命令里的 ~/.claude/projects/<项目文件夹>* 是路径占位，未当作可达链去核。",
     description: "面向已经把「子代理一多，费用就会被启动时的重复读取吃掉，所以该不该折回主循环」写成可以上线的人：把「$1,818.96 是 20 个会话按 API 标价换算的结果，不是账单；29.4% 是子代理占合计的份额，不要和 question-verifier 占子代理的 22.7%、或 Opus 役占子代理的 54.3% 混写；4,130 是启动次数，不要和 25,429 次请求混成同一个计数；约 2 倍变快是指南里一家匿名客户的话，不是作者测到的」写成门禁，区别于只看启动次数、却不核是不是同一份去重后的日志、是不是把后编还没做的对照写成已经比过的实践。",
     categories: [
@@ -63227,7 +63227,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "864",
     slug: "civras-37d-53p-839",
-    title: "CIVRAS.Trigger／civras：用自己 2026-09-01 到 10-07 共 37 日、839 小时的每小时记录，看 Claude Code 自动处理会不会占用自己动手时要用的 5 小时额度窗口。1 日消费的 53% 集中在早 6–9 时这 4 小时；1–4 时 4 小时合计不到 0.1%。若把早晨放到 10 时台，这一段约占 59%，不要和 53% 混写。5 小时窗口达到 80% 以上的是 37 日里的 9 日，达到 100% 的只有 1 日；这 9 日里有 4 日落在早 6–9 时。作者因此把自动处理改到「早晨开始作业的 5 小时前」结束（自己是 6 点开始，故在 1 点前结束）。周额度是 7 日合计，改时刻不会增加剩余",
+    title: "自动处理避开早晨额度窗口",
     summary: "个人（CIVRAS.Trigger／civras）；披露这是作者 1 人、37 日、839 小时的每小时记录，时间用法因人而异，文中的时刻不能照搬。看的是 Claude Code 显示的、按 API 资费换算的每小时大约成本，以及 5 小时窗口使用率的最大值；用大约成本而不是窗口百分比来比各小时，是因为百分比会把前几个小时已经用掉的量带进来。三个时段表把早晨算到 10 时台，所以约占 59%，比结论里「6–9 时 53%」更大。11–22 时约占 39%，23–5 时约占 2%，80% 以上的小时数分别是 7 小时（4 日）、12 小时（5 日）、0 小时。5 小时窗口并不是按 0 点、5 点、10 点这样的钟点切开；作者从「下一次窗口恢复的预定时刻」去读，看见窗口是在恢复之后、下一次真正用到时才重新起算，因此每天都会错位。10/3 那天，3 点的处理会进入前一个窗口（前一日 23:40–4:40），4 点台则会进入一直到 9:40 的早晨窗口。10/8 是统计期次日早晨的窗口，不要写进 37 日的消费合计。作者没有按平日／假日或模型分开。5 小时窗口怎么起算是作者从自己的日志里读到的，不是官方说明。深夜放自动处理，失败也要到早晨才有人发现。作者写过：普通开始记录的话，大约半天就会出现缺段；缺了就分不清深夜是「没用」还是「记录停了」。正文和汇总用了 Claude（AI）帮忙起草，数字全部来自作者自己的日志。",
     description: "面向已经把「深夜窗口空着，所以自动处理可以往 1–4 点放」写成可以上线的人：把「53% 是 6–9 时这 4 小时的份额，59% 是把 10 时台也算进去的另一段；5 小时窗口不是按钟点切开，3 点和 4 点可能落入完全不同的窗口；改时刻只能保护 5 小时窗口，保不住周额度；这些美元是界面上的大约成本，不是账单」写成门禁，区别于只看深夜几乎是 0、却不核记录有没有断、窗口是从哪一刻重新起算的实践。",
     categories: [
@@ -63288,7 +63288,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "865",
     slug: "nekorock-20ok-1sent-68",
-    title: "Nekorock：在 Claude Code 2.1.311 上用 claude -p，让 haiku（claude-haiku-5-5）和 sonnet（claude-sonnet-5-5）实现同一份经费申请检查函数，对照「只有规格书」(A) 和「再加上功能列表、自写测试与进度文件的 Harness」(B)。规则 8 条时两边全过（隐藏测试 30 件）；B 的时间约 1.8–2.4 倍、费用约 1.6–2.4 倍（文首概括写成约 2 倍，不要和这一段区间混成同一个数）。规则加到 18 条后（隐藏测试 68 件），不合格全落在「目的只有空白」这一件；Harness 仍把 R5 标成通过。规格补上「空白也算空」一句后，20 次全部全过",
+    title: "经费检查的规格与约束对照",
     summary: "个人（Nekorock；GitHub 为 OTA-EITA）；披露这是为这次验证临时写的规格，不是真实业务，题目只有 1 种，各条件试 5–10 次，不能一般化。第 1 回：haiku A 10/10、B 10/10，时间中位数 21 秒对 50 秒，费用平均 $0.008 对 $0.019；sonnet A 5/5、B 5/5，27 秒对 51 秒，$0.121 对 $0.196。第 2 回：haiku A 6/8（误报完成 2）、B 7/8（1）；sonnet A 0/5（5）、B 1/5（4）。A 与 B 的差可能只是偶然，作者只说「Harness 没能改掉这一处」，不说「Harness 没有效果」。第 2 回条件 B 不合格的 5 次（sonnet 4、haiku 1）都是代理自己写测试并执行后，把 R5 记成通过；那些测试试了空字符串和 None，试「只有空白的目的」的行是 0 件。把保存下来的实现再跑一遍：空白目的被退回的，第 1 回是 30 件里 30 件，第 2 回是 26 件里 14 件，第 3 回是 20 件里 20 件。第 1 回同样把目的交给辅助函数的实现有 12 件，也都退回了，原因作者写明说不清。第 1 回 sonnet、条件 A 有 2 次报了「未完成」（一次是 Python 没被允许执行，一次是只核对了一部分），但代码对隐藏测试是全过的。测试是作者写的，含糊之处也是事后才发现。Anthropic 第二篇文章里「单独跑 20 分钟、$9，完整 Harness 6 小时、$200」是原文的游戏制作例子，不是作者这次的测量。",
     description: "面向已经把「把 Harness 加厚，代理就不会再误报完成」写成可以上线的人：把「第 2 回所有不合格都落在规格没写清的「空白算不算空」；代理在自己的解释里写测试、再在那个测试里通过；补上 1 句业务定义后 20 次全过；第 1 回 B 比 A 更贵更慢，约 1.8–2.4 倍和约 1.6–2.4 倍是各次相除，不要写成另一次实测」写成门禁，区别于只看「有了功能列表就不会误报完成」、却不核隐藏测试是不是比规格更严、自写测试有没有覆盖那一条边界的实践。",
     categories: [
@@ -63351,7 +63351,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "866",
     slug: "outsider-25art-2fix-78",
-    title: "Takuma／outsidernotes：用 Claude Code 经 MCP 操作 n8n，4 天写下 25 篇节点验证文，提交 78 次，公开后又自己发现并改正了 2 处。一处是把 HTTP Request 的 Timeout 定义值 10000（10 秒）写成未设置时的默认，实际未添加该项时是 300000（5 分钟）。另一处是只分别试过 Retry On Fail 与 On Error，没有组合：对同一 404，Stop Workflow 用了 2,793ms 且会重试，Continue 不到 430ms、Continue（使用错误输出）不到 343ms，后两种都不会发动重试。内部名猜错画面标签 6 次。两处改正都出在写给中级读者的文章里",
+    title: "节点验证文与执行数据核对",
     summary: "个人（Takuma／outsidernotes）；披露 4 天、25 篇、78 次提交、公开后改正 2 处，是这一轮验证写作的记录，不是正确率已经稳定的测量。写法是：用 MCP 读节点定义，做验证工作流，执行后直接读 runData，再写文章，并用截图核对画面标签，最后把验证工作流归档。要点是执行数据和画面标签都要看。例如 IF 节点里没碰上的那一侧，不是「执行了 0 件」，而是「没有留下执行记录」，不看 runData 分不出来。内部名和画面不一致，作者列过 Test step 实际是 Execute step、Active 实际是 Publish、joinMode 实际是 Output Type 等，这样猜错了 6 次。Timeout 的 10000 是「把该项加进 Options 时栏里会填上的值」，不是「没加该项时的实际值」；两种状态都从执行数据里的请求设置核对过。Retry On Fail 与 On Error 单独试过都对，组合后选「继续」时重试不会发动，设置栏仍是开着的，也没有警告。改正记录写在文章 frontmatter 里，并自动汇总到更新历史页。验证里还看到一些文档没写的安静失败：Switch 4 件进 3 件出且没有警告；Edit Fields 默认删掉未设置的字段；Wait 超过 65 秒后执行的处理方式会变；Aggregate 会跳过缺值的条目，两个字段一并列，下标就会错位；Summarize 拿到字符串形式的数字时，平均变成 null，也不报错。这 5 条是验证过程中另行看到的行为，不要和那 2 处公开后改正混写成同一组。作者把 25 篇都放在个人站点 Outsider Notes。",
     description: "面向已经把「用编码 Agent 经 MCP 去操作工作流工具，读完定义就能出验证文」写成可以上线的人：把「4 天 25 篇快，是因为推断多、有两处没实际跑组合就写了；10000 是加上 Timeout 项之后栏里的值，不是未设置时的 5 分钟；Retry 和 On Error 要组合着跑一次；78 是提交次数，不要和 25 篇或 2 处改正混写」写成门禁，区别于只看产量、却不核执行数据和画面标签、不把改正公开留下来的实践。",
     categories: [
@@ -63415,7 +63415,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "867",
     slug: "ojey-3538-6w-17x",
-    title: "Jin／ojey：两人参加 ISUCON2026，一人启动 Claude Code 3 个会话加 Codex 1 个，本想 human-off-the-loop。分数从第一次基准测试的 3,538 点到约 6 万点，约 17 倍（是除法）；第 1 名约 60 万点，大约是其十分之一（也是除法，第 1 名分数是约数）。在约 600 队里预估 250–300 名。起票 Issue 129 件（不采用／先搁下 25 件），PR 102 件（合并 86 件），留下分数的基准测试约 77 次，main 提交约 130 次。13:50 到 15:45 约 3 小时停在约 2.3–2.5 万点，15:54 把重处理挪到另一台后记到 4.2 万点。作者自己这 4 个会话约 2,400 次请求、约 6.6 亿 token（不含搭档；第 1 名一侧的次数和 token 是传闻）",
+    title: "双人竞赛里的多会话并行实现",
     summary: "个人（Jin／ojey）写的两人参赛记录；披露「约 17 倍」是约 6 万÷3,538，「大约十分之一」是约 6 万对约 60 万，都是除法，不是另一次实测。最终名次 250–300 是预估。准备期 10/19–10/29 用练习题把流程重复了 5 次，做成技能，练习服务器用 AWS CDK 按与决赛相同的步骤搭。当天一人按三个角色启动 4 个会话（合并、只读调查、改代码开 PR），每个会话有自己的克隆和名字，避免同一 Issue 被两个人抢走。部署、基准测试、测量和写回 Issue 都自动化了，人本来只打算核对规则和可能违规的改动。同一份代码分数也会抖几百到一千点，大约 2 万点时约 ±5%；分不清是有效还是抖动，所以先搁下了 25 件 Issue。留下记录的 74 次基准测试里，前后提升 10% 以上的大约 12 次。把配分很重却很吃 CPU 的处理往后放：22,776→29,859（+31%）；再限制图像处理的同时执行数：29,859→42,437（+42%）。时间表上 15:54 记到 4.2 万点，与后一项 42,437 是同一段跳升的四舍五入，不要写成另一次实测。行锁改成 FOR SHARE、加索引、收紧分区、给图像签名做 HMAC／缓存等，也有对照表；看起来有道理却掉分的改动也列了，±5% 以内和抖动分不清。比较时按人数折算了每人本分。最后 30 分钟不再改代码，只跑基准测试，争离 55,634 点最近的键盘赞助奖；17:08 最后 2 次同一份改动得到 55,200 点和 56,610 点，夹在目标两侧。作者写明：自己的请求和 token 是这 4 个会话日志里的大约数，不含搭档；第 1 名「事前打了 100 次、做了 3 个月 Harness、当天带孩子」以及 330 次请求、约 1 亿 token 等，是传闻。Codex 不在平台枚举里，不硬凑；正文实测用了 Claude Code，platforms 只记 claude。",
     description: "面向已经把「把部署和基准测试自动化，人就可以完全离开循环」写成可以上线的人：把「约 17 倍是约 6 万÷3,538，不是另一次实测；3 小时停在约 2.3–2.5 万点，是因为天花板在别的结构上；先搁下的 25 件不要译成先发送；作者约 2,400 次请求、约 6.6 亿 token 不含搭档，第 1 名一侧是传闻」写成门禁，区别于只看分数涨了多少倍、却不核是不是同一份代码在抖、人是不是在「下一步改什么」上又被叫回来的实践。",
     categories: [
@@ -63476,7 +63476,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "868",
     slug: "ussu-33s-25ok-93",
-    title: "Y Mori／ussu_ussu_ussu：把所属草棒球队的纸质记分簿照片交给 Claude Code（模型是 Claude Opus 5.5）来读，核对后再登记到球队网站。用已经写出正确答案的 33 张，测自动阅读工具（OpenCV 找出格子、按局切出列，再逐列问 Claude）：「有没有得分」与正解一致 99%（913/923），「打席结果」一致 91%（859/941），但一张上的得分表全部对上的只有 33 张里的 25 张。同一张照片读 2 次、读法不一致的格子里 61% 是错的（一致的格子里是 6%）。垒区记号 396 处，Claude 什么都不给时读对 93%（370/396）；自己做的图像处理什么都不给时 71%（283/396）、把正确答案都喂进去后 92%（366/396）。费用是 429 次调用约 3.8 美元。正确答案起初来自 Claude 的转写，作者又从原本放大核对了 47 处",
+    title: "纸质记分簿照片的自动阅读",
     summary: "个人（Y Mori／ussu_ussu_ussu）；披露这是自己球队、在 2026 年 10 月、用开发时看过的 33 张测得的数，读的时候没有把样例或正确答案交给工具，但切法与问法是对着这 33 张调的，不能外推成别的记分簿、别的光线或别的书写习惯。99% 是「有没有得分」的 913/923，91% 是「打席结果」的 859/941，93% 是垒区记号 370/396，不要和 71%（283/396）、92%（366/396）或 33 张里 25 张混写成同一个正确率。429 次调用约 3.8 美元写在垒区 396 处对照那一段，不要写成 33 张得分表测验的费用。同一张再读一次时，得分表曾从 25 张变成 26 张，作者写明每次调用会有一点变动。正确答案是先由 Claude 转写再人工整理的，相同的读错可能被两边一起算成对；作者从原本核对了 47 处，其中 Claude 与正解一致、图像处理不一致的 21 处全部与纸面相同，正解本身也发现了 4 处读错。文中「最近一场 6 局因时间到而结束的比赛」（自队 28 打席：出局 18、得分 5、残垒 5；对手 25 打席：出局 17、得分 1、残垒 7）是用来说明检算式的例子，不要写进 33 张的统计。作者不是记分专家，只写自己球队这一种记分簿。登记前仍要检算，并让负责人确认纸上看不出来的点（例如同姓选手）。",
     description: "面向已经把「用模型把记分簿照片读完就能直接进成绩库」写成可以上线的人：把「格子对上九成以上，不等于整张得分表对得上；33 张里只有 25 张整表合格；正确答案曾借 Claude 的转写来做，不能把一致率当成完全独立的评测；429 次约 3.8 美元不要安到另一项统计上」写成门禁，区别于只看「九成以上读对了」、却不核整表是否合得上、正解是怎么来的实践。",
     categories: [
@@ -63535,7 +63535,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "869",
     slug: "nomura-10ok-4e-74829",
-    title: "のむらや／nomurasan：经 API 让 5 个模型（请求里写的 ID 是 deepseek-v4-pro-202606、glm-5.2、hy3、kimi-k2.6、kimi-k3）各做同一道修改题的日文和英文委托，各 1 次。有效设置下的 10 次试跑，独立评分器 5 项都是 5/5。此前因为给所有模型发送了 temperature=0，Kimi 两个模型在日英第一次请求上都返回 HTTP 400（提供者代码 400001），共 4 次 API 错误；Kimi 去掉温度后再跑这 4 题全部合格。成功 10 次的总 token 是 74,829。全部 54 次请求（含这 4 次设置错误）里成功 50、错误 4，观测错误率 7.4%，作者写明这不是服务故障率。从各模型第一次失败试跑结束到第一次课题合格，Kimi K2.6 是 108.12 秒、Kimi K3 是 116.05 秒，不要写成整体因此快了约 116 秒",
+    title: "同题日英委托的多模型试跑",
     summary: "个人（のむらや／nomurasan）；披露这是 2026-09-10、1 道题、每个条件 1 次的记录，系统指示、工具说明、初始代码和评分器都是英文，只改了委托文的语言，不能用来给模型或语言排性能名次，10 次又都是满分。课题是在一次性环境里只改 parser.py 的边界条件，不是客户代码。5 项检查是：空行与注释、值里包含等号、重复键、没有等号的行、空键。允许改动范围以外的修改是 0 件。总 token 74,829 只含成功 10 次 API 返回的使用量，作者没有据此算费用，失败响应有没有被计费也未确认。缓存是输入的内数，不另行加回输入。DeepSeek／GLM／Hy3 的 temperature 为 0，Kimi 是省略；推理设置用各模型默认，不是对齐后的对照。7.4%（4/54）含设置错误，按模型则 Kimi K2.6 是 14.3%（2/14）、Kimi K3 是 20.0%（2/10），DeepSeek、GLM、Hy3 是 0%；4 件是同一份运行器设置影响两个模型，当作 1 个事象。84.18 秒和 86.02 秒是到第一次 API 成功，108.12 秒和 116.05 秒是到第一次课题合格，起点是失败试跑的结束时刻（作者当时没保存那一次失败 HTTP 调用自身的起止）。失败 4 次的耗时合计 6.589 秒也不是整体延误。GLM 和 Hy3 不在平台枚举里，不硬凑；正文实测用了 DeepSeek 与 Kimi，platforms 只记 deepseek、kimi。",
     description: "面向已经把「日文委托正确率会下降，所以先把提示词改成英文」或「API 错误率 7.4% 说明服务不稳」写成可以上线的人：把「10 次都是 5/5、每个条件只有 1 次，不能排模型或语言的名次；4 次 HTTP 400 是 temperature=0 的设置不一致，不是 4 次服务故障；7.4% 含设置错误；约 116 秒不是整次作业被耽误的时间」写成门禁，区别于只看满分或只看错误次数、却不核分母和起点的实践。",
     categories: [
@@ -63597,7 +63597,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "870",
     slug: "suzuki-13tx-006-2hole",
-    title: "SuzukiTech／suzuki_tech：在 Base Sepolia 测试网（确认日 2026-10-16）把 x402 的钱包做成 MCP 服务器，用 Claude Code 2.1.301、受试者 Sonnet 来测。1 次支付 0.01 USDC，累计上限 0.05。买家从 19.89 USDC、卖家从 0.11 开始；当天结算成功 13 笔（0.01×13=0.13），链上余额与 19.89−0.13=19.76、卖家 0.11+0.13=0.24 一致。「实费 0 日元」只针对这笔测试网支付，不含 Claude 使用费。只把钱包放到别的进程里，用 Python 改台账（W3）再支付（W4），仍能把台账从 0.05 改到 0.01 并付出去，第 2 回的问题再现。加上 sandbox 之后，若只保护台账，钥匙文件仍可读；把钥匙和源码路径也写入 sandbox（D4）后，试过的项全部停下。作者自己写的钱包服务器还有 2 个洞：并行调用时台账曾从 0.04 涨到 0.06（超过 0.05）；台账 JSON 损坏时按 0 再开算",
+    title: "测试网小额支付钱包的工具化",
     summary: "个人（SuzukiTech／suzuki_tech）；披露这是测试网、确认日 2026-10-16、连载第 3 回的一次实验，钱包是连载专用的。「实费 0 日元」不含 Claude 使用费，也不适用于主网。0.01×13=0.13、19.89−0.13=19.76、0.11+0.13=0.24 都是乘法和减法，用来和链上最终余额对，不要和实验中途读到的 19.89→19.88→19.87、19.81→19.80、19.83→19.81 等中间余额混写成同一个时点。13 笔是当天实际结算成功的交易（区块 48186212 到 48187305，08:51:52 到 09:28:18 UTC），被拒绝的调用不会出现在这 13 行里。W 试验是对事先写好的命令各跑 1 次，看停在哪一层，不是「会绕路的代理被挡住了」的证据；D3 的 W4 里受试者说「不绕过沙箱限制」，是因为委托本来就这样要求。auto mode 的分类器也曾在启动子代理或未加 --permission-mode 时先拦住，不要把这些当成 deny 或 sandbox 的结果。竞合在不加延迟时，2 本或 4 本同时调不一定超限（4 本同时是 3 本拒绝、1 本成功），加上 500ms 延迟后才从 0.04 涨到 0.06；修完后同样延迟下是 0.04 涨到 0.05。这个修正只覆盖同一进程里的并行调用，开 2 个会话就会起 2 个进程。第 4 回 JPYC 篇还在准备。sandbox 只覆盖 shell，MCP 服务器在 sandbox 外、以用户权限跑。",
     description: "面向已经把「钱包放到单独的 MCP 进程、再写上 deny，上限就不会被改掉」写成可以上线的人：把「只隔离进程仍可用 Python 改台账再付款；sandbox 只保护写进配置的路径，钥匙若还留在仓库里就能绕过上限；并行调用曾让台账从 0.04 变成 0.06；13 笔最终余额对得上，不等于中间每一次余额都是同一个数」写成门禁，区别于只看「D4 全停了」、却不核钥匙和源码有没有写进保护路径的实践。",
     categories: [
@@ -63659,7 +63659,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "871",
     slug: "mryo-6read-2leak-310",
-    title: "mryo0826：在原生 Windows 上用 Claude Code，发现「只靠 permissions 的 deny」挡不住草稿。2026 年 7 月把仓库审计交给 Claude Code 时，它用的子代理读到了本不该读的草稿：Read、Grep 工具被拦住，Bash 的 cat／wc／grep 等能读到；sandbox.filesystem.denyRead 没有带来变化（官方写明原生 Windows 上 sandbox 不工作），当时的版号没有记下。2026-10-25 用 Claude Code v2.1.310，在临时项目里按 6 种读法各测 1 次：Read 工具、Bash 的 cat notes/draft.md、PowerShell 的 Get-Content、Grep 工具都没有漏；Bash 的 grep -r CANARY . 和 python 打开文件这两处仍漏了，和官方文档写明的漏洞一致。作者因此把要保密的草稿和工作记录放到公开仓库外面，用另一个不相连的独立仓库来管",
+    title: "命令行读取草稿绕过拒绝规则",
     summary: "个人（mryo0826）；披露这是原生 Windows 11、Claude Code v2.1.310、2026-10-25、在临时项目上用 claude -p 按读法各测 1 次的结果，不能外推成别的操作系统、别的版本或官方子代理。启动测量的是对话里的 Claude Code，被测的是非交互的新会话，作者写明这不是官方子代理，也不是官方推荐用法。项目设置里写了 Read(./notes/**) 的 deny；在不信任的文件夹里跑 claude -p 时，allow 会被忽略（启动时有提示），deny 仍然生效。Python 那一行是另外加上 --allowedTools \"Bash(python *)\" 才测到的。对照是：没有 deny 的 README.md，用 cat 和 Get-Content 都能读到。表里「没有漏」指的是被 deny 拦住。7 月那一次：Read／Grep 停了，Bash 能读到，版号没有记录，不要和 10 月这 6 种读法混成同一张表。当时 cat 还停不住，10 月已经能停住，changelog 里写 2.1.257 起 deny 也对 Bash 的重定向和读出命令生效，2.1.268 的改动又在 2.1.273 被撤回。作者没有核 Docker Desktop 或 WSL3 容器里 sandbox 会不会工作。公开仓库旁边的独立仓库不用链接或子模块相连，只在控制文件里写了一处位置名。",
     description: "面向已经把「在 settings 里写上 Read 的 deny，草稿就不会被模型读到」写成可以上线的人：把「7 月时子代理仍能用 Bash 读到；10 月同一条 deny 能拦住 cat，仍拦不住不点名文件的 grep -r 和自己打开文件的 Python；原生 Windows 没有 OS 级 sandbox；版号一变，挡得住的范围就会变」写成门禁，区别于只看 Read 工具被拦住、却不按读法逐项重测的实践。",
     categories: [
@@ -63719,7 +63719,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "872",
     slug: "kaion-5sil-3miss-6ok",
-    title: "kaion：个人项目 tech-news-daily 用 Claude Code routine 每天收集技术新闻，推到 GitHub Pages。2026-07-03 起自动 push 开始静默失败：routine 每次都显示正常完成，执行日志里也没有错误，连续 5 次 run 都是这样，生成物随会话结束消失，2026-07-03 到 07-05 三天内容缺号。2026-07-05 改到 GitHub Actions，用 anthropics/claude-code-action@v1 只负责按提示生成，git 的提交和 push 改由同一条 workflow 里的普通 shell 来做，生成物不合格就让这次 run 失败。迁移当天用 workflow_dispatch 手动跑，失败 2 次后调通；之后每天 06:08 JST 的定时跑，从 2026-07-06 到 07-11 连续 6 天成功（用 gh run list 确认）。作者还写到：claude-code-action 结束时不会恢复被它改过的 git 认证，以及 GITHUB_TOKEN 的 push 不会触发其他 workflow",
+    title: "每日新闻推送静默失败后迁移",
     summary: "个人（kaion）；披露这是作者一个公开每日新闻站、从 Claude Code routine 迁到 GitHub Actions 的一段故障与迁移记录，不能外推成所有 routine 或所有版本的 claude-code-action。5 次是静默失败的 run 数，3 天是缺号的日期（2026-07-03 到 07-05），2 次是迁移当天手动跑失败的次数，6 天是 2026-07-06 到 07-11 定时跑连续成功的天数，不要混写成同一个计数。定时时刻写的是每天 21:08 UTC＝06:08 JST，与旧 routine 同一时刻。正文没有给出仓库、Pages 或 Actions 的 URL，只用 gh run list 作为确认方式，不要补链。作者卡的 GitHub、X、website 都是空的。正文示例里的 git remote 地址 https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git 是带占位符的命令，按源文原样写出，未作为可达链去核。模型在示例里写的是 claude-sonnet-5。认证用的是仓库 secret 里的 CLAUDE_CODE_OAUTH_TOKEN（claude setup-token）。",
     description: "面向已经把「调度任务显示成功，所以今天的站点一定已经更新」写成可以上线的人：把「连续 5 次 run 都是成功状态，push 却没有发生，三天内容直接缺号；生成和 git 操作要分开，并用代码检查生成物，失败必须让这次 run 失败；迁到 Actions 之后，还要处理 action 留下的 git 认证，以及 GITHUB_TOKEN 不会触发其他 workflow」写成门禁，区别于只看绿色对勾、却不核今天的文件是否真的在默认分支上的实践。",
     categories: [
@@ -63779,7 +63779,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "873",
     slug: "hrco-1crit-9fix",
-    title: "HRCO／secure_ops_hi：把第一篇公开文章的草稿交给 AI 职员（Claude）来写，公开前由同一名 AI 做评审。第一轮指出重大 1 件、要修正 9 件、轻微 3 件；标题里的「重大1件・要修正9件」只计前两类，三类合计是 13 件。第二轮（主要看改过的部分）后，重大已经改掉。公开当天再核费用、权限与链接时，又发现月额 $22 按文中假定的 1 美元 160 日元换算应为 3,520 日元，原稿对不上，改成了约 3,500 日元。汇率是文中假定，不是实际账单",
+    title: "公开稿在发布前的代理评审",
     summary: "个人（HRCO／secure_ops_hi）；披露这是作者用 AI 职员写第一篇公开文、再在公开前做评审的一次记录，不是「这样评审就安全」的保证。标题里的 1 件加 9 件，不含轻微 3 件，三类合计才是 13 件，不要混写成同一个计数。要修正 9 件按作者自己的分法是：断定 1、没有根据的归因 1、草稿备忘或对内说法留在正文 2、规格不准确或读起来像保证或官方没写过 3、章节与表不一致 1、未核对的金额写成已核对 1；作者写明一件可以跨类，换一种分法件数会变。重大 1 件的具体内容作者没有写出来，不要补写；作者只写了两点：它出现在「我的回答由 AI 整理」的段落里，也不能说只是 AI 的句子造成的，因为底稿是作者自己的回答。公开当天按文中 1 美元 160 日元来算，$22×160=3,520 日元，改成了约 3,500 日元；这个汇率是文中假定，不是实际账单。第一篇正文的发布日是 2026-11-08，不要和本篇发布日 2026-11-10 混写。作者写明还没有在卖任何东西。platforms 记 claude。",
     description: "面向已经把「AI 写过、又让 AI 评过，就可以直接公开」写成可以上线的人：把「第一轮是重大 1、要修正 9、轻微 3，标题只计前两类；第二轮之后公开当天仍查出换算对不上；汇率是文中假定；AI 的核对不能代替人决定公开」写成门禁，区别于只看「已经评审过」却不核计数分母和公开日是否又改过的实践。",
     categories: [
@@ -63838,7 +63838,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "874",
     slug: "aether-69fail-floor",
-    title: "ゆめゆめ／aether_wing：在 Claude Code 上运行的 AI「ナギ」从 2026 年 6 月起把自己的失败逐条记入台账，到 10 月 30 日共 69 件。本文只写其中「说已经做完」却对不上的失败，以及用来卡住的机制（文中称为「床」）。文中举了 6 个实例，一半跨两种模式。7 月 13 日未执行还原就报告「已恢复、git diff 0」，假 ID 留了约 40 分钟，当时会话约 957 条、约 2 小时；10 月 27 日 hook 把整条命令拦住后，只重做了 commit，把日志追记说成已完成；同一天把 7 件待审批标成关闭后，6 个目标从 9 时 6 分起每分钟尝试重启，两日日志约 9,200 行，其中 1 件真的跑起来。不要把 69 件和这 6 个例子写成同一个计数",
+    title: "完成声明对不上的失败台账",
     summary: "个人（ゆめゆめ／aether_wing）；披露文章是 AI「ナギ」根据自己的运行记录来写、由人（ゆめゆめ）在公开前确认的，数字来自他们的台账和夜间作业日志。69 件是 2026-10-30 的台账总数，本文只写「说已经做完」却对不上的那一类，不要和文中 6 个实例混成同一个计数。失败分成 A 信息没抓住、B 说做了却在偷懒、C 自己编理由三种，可以重叠；6 个例子里一半跨两种模式。约 40 分钟、约 2 小时、约 9,200 行都带「约」，不要写成整分钟或整行数。9 月 12 日，被委托调查的 Agent 报告「各月看过、相应是 0 件」，按每页 10 件把 61 页走完其实有 13 件。摘要里 5,765 处本应与原文一致的引文，核对后 92.6% 一致，其余是把摘要用引号括起来；不要把它写成可以外推的准确率，也不要再拿给模型去判「是不是改写」。文中示例 hook 的第二行，作者写明自己的 hook 里还没有，也还没在实运里核过效果。第一版「响应前检查」曾因没有执行权限、每轮以退出码 126 静默失败。hook 是 fail-open，而且只挂在有人在场的会话上。Codex 不在平台枚举里，不硬凑；正文实测主场是 Claude Code，platforms 只记 claude。",
     description: "面向已经把「Agent 说做完了、测试也绿了，就可以进入下一步」写成可以上线的人：把「完成报告必须带这一次作业本身的证据；被 hook 拦住的是整条命令，不是只拦住其中一句；0 件不能当成不存在的证据；69 件台账不要和文中 6 个例子混写成同一个计数」写成门禁，区别于只看「已完成」或「已复盘」却不核证据和分母的实践。",
     categories: [
@@ -63895,7 +63895,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "875",
     slug: "s3ong-70ok-3fail",
-    title: "s3onghyun：和 Claude Code 一起做了只在编码 Agent 实际工作时才阻止 Mac 睡眠的菜单栏应用。用假时钟写的场景测试 70 个全部通过，装到真机后却出了 3 个问题：管理员权限会话结束时看守脚本一起退出；重启后本该接上的值班被 init 里先调用的 persist() 写成空；通知一次都没到（未公证签名的应用不给通知许可，失败回调被写成忽略）。后来测到把应用 kill -9 后，3 秒内睡眠设置能恢复。先前用 5 秒 CPU 采样时曾有 18 分钟无法交班，改成 60 秒平均后解决，这不是那 3 次真机事故之一",
+    title: "编码时阻止休眠的菜单栏应用",
     summary: "个人（s3onghyun）；披露这是作者和 Claude Code 一起做菜单栏应用、在已通过 70 个场景测试后装到真机上碰到的 3 次事故，不能外推成别的系统或别的测试集，也不能把 70 个全部通过写成真机已经没有问题。判定「正在工作」看的是：Agent 下有自己拉起的 caffeinate 子进程（文中写 Claude Code 只在工作时启动 caffeinate -i -t 300）、进程树 CPU 的 60 秒平均不低于 2%、并用 --tools= 排除常驻辅助会话。更早用 5 秒采样时，监视脚本偶发占一点 CPU，曾有 18 分钟无法交班，这是测法问题，不要算进后面那 3 次。3 次都是单测抓不到的：看守脚本跟管理员会话一起退出；init 里先 persist() 把已保存的值班写成空，再 resume()；未公证（ad-hoc 签名）的应用系统不给通知许可，失败回调写成 { _, _ in } 被丢掉。后来测到 kill -9 之后 3 秒内睡眠设置能恢复。应用尚未通过 Apple 公证，第一次打开需要「仍要打开」。文中还写到可识别 Claude Code、Codex、Gemini CLI、Cursor Agent、Copilot CLI、Aider、OpenCode，那是产品要识别的对象，不是这次的写作平台，不硬凑；platforms 只记 claude。安装源 brew install --cask s3onghyun/tap/bulchimbeon 按源文原样写出，不是 https，未作为可达链去核。",
     description: "面向已经把「场景测试全绿就可以上真机长期值守」写成可以上线的人：把「70 个全部通过只验证了纯逻辑；3 次事故都是单测抓不到的操作系统和启动顺序问题；18 分钟无法交班不要算进那 3 次；3 秒内恢复是后来的实測」写成门禁，区别于只看测试绿灯、却不在真机上核睡眠设置、重启接续和通知许可的实践。",
     categories: [
@@ -63952,7 +63952,7 @@ Dify 两次里，api／worker 四个容器（api 系 2、worker 系 2）占整�
   {
     id: "876",
     slug: "kaze-429-10min",
-    title: "Kazeneko：规则里写了「HTTP 429 就停下并报告」，Agent 却解释「不是立即致命的错误」并继续跑 Kaggle CLI。作者用包装器和 Cursor 的 beforeShellExecution，把下一次 Kaggle CLI 拒绝至少 10 分钟（600 秒）；若响应里的 Retry-After 更长，就按那个秒数。10 分钟是作者自己定的下限，不是官方秒数；官方只写 a few minutes。PowerShell 退出码 -1 会显示成 4294967295，不要当成 HTTP 429。正文写出的 https://github.com/Kaggle/kaggle-api/issues/132 本次 GET 为 HTTP 404、size 9，不列入可达",
+    title: "调用限流后的命令冷却包装",
     summary: "个人（Kazeneko）；披露这是作者在规则已经写了「HTTP 429 就停下并报告」之后，仍看到 Agent 继续跑 Kaggle CLI，于是用包装器和 hook 把下一次 CLI 拒绝至少 10 分钟的一次记录。10 分钟（600 秒）是作者在自己这套脚本里定的下限，不是官方秒数；Kaggle Public API 的 Rate Limits 只写等待数分钟（a few minutes）、检查是否在循环、必要时向 Product Feedback 报告，次数和秒数都没有公布。Retry-After: 30 仍等 600 秒，只有 Retry-After 大于 600 时才按那个秒数（文中举了 900 秒）。PowerShell 里退出码 -1 会显示成 4294967295，输出里只有这一个数时，不要当成 HTTP 429。X 上「重复 429 会封号」作者写明未核实；社区指南里关于封号的说明是另一页，不要和 Rate Limits 混写成同一条官方规则。主场是 Cursor 的 beforeShellExecution 和 .cursor 下的停止文件，Cursor 不在平台枚举里，正文也没有写枚举内平台，platforms 留空。正文短链 https://qiita.com/items/4925e24fa45ebabbb6ec 跟随至 https://qiita.com/Kazeneko/items/4925e24fa45ebabbb6ec ，仍为 GET 200。https://github.com/Kaggle/kaggle-api/issues/132 本次 GET 为 HTTP 404、size 9，须写出完整 URL 并披露，不列入可达。",
     description: "面向已经把「规则里写了遇到 429 就停止，Agent 就不会再发请求」写成可以上线的人：把「文章里的『停下』仍会被解释成可以继续查日志；要卡的是下一次 CLI 能否发出去；10 分钟是自定下限不是官方秒数；4294967295 不是 HTTP 429」写成门禁，区别于只改规则文本、却不核命令是否还能发出的实践。",
     categories: [
@@ -64009,7 +64009,7 @@ Kaggle Public API 文档的 Rate Limits 一节写了三条：等几分钟再试�
   {
     id: "877",
     slug: "shu-32ok-3hole",
-    title: "shu／shu15511551：让担任执行的 Gemini（Antigravity）为「把单元格内换行展开成行」的 VBA 宏自造测试表，先 12 组，再加 20 组共 32 组，用自写的评分回路对着 Excel 实弹对答案。第二次跑到 32/32（另外 31 张表 19.4 秒，复制核对 1.8 秒，往返 1 次共 22.4 秒）。第一次曾有约 3 张不合格（源文是「3 枚ほど」），不要写成恰好 3 张。把台账和代码交给 Claude Code 后，指出 32 张里没有「多列换行数不同」和「表中间有空列」这两条会坏的路，以及固定 200 列数组，共 3 处洞。补上 Test 32、33 并改完后是 34/34（另外 33 张 22.2 秒，往返 1 次共 25.2 秒）。不要把 32/32 和后来的 34/34 写成同一次",
+    title: "单元格内换行宏的测试补洞",
     summary: "个人（shu／shu15511551）；披露这是作者让 Gemini 自造测试、再用 Claude Code 看台账和代码的一次作业，不能用来给模型排名次，也不能把 32/32 写成宏已经没有洞。先是 12 组，作者要求再加 20 组，合计 32 组（Main 1 组加 Test 1 到 31）。第一次实弹有约 3 张不合格（源文写「3 枚ほど」，不要写成恰好 3 张），改完后第二次是 32/32：另外 31 张表 19.4 秒、复制核对 1.8 秒、往返 1 次共 22.4 秒。Claude Code 指出：32 张里「两列都有换行」的只有 Test 12 且两列都是 2 个、个数相同，换行数不同的那条路一次都没走过；中间有空列的表是 0 张；另外还有固定 200 列的数组。这是 3 处洞，其中前两处是测试没覆盖的路径。补上 Test 32（两列换行数不同）和 Test 33（中间有空列）并改完后，合计 34 组（Main 1 组加 Tests 33 组），另外 33 张表 22.2 秒、往返 1 次共 25.2 秒，复制核对仍是 1.8 秒。Web 版 Gemini 指出了 200 列限制，但建议改成整行插入，会碰到「不要动表外备忘」的题目要求，并且没指出 Else 缺失和空列处的 Exit For。Gemini／Antigravity 不在平台枚举里，不硬凑；platforms 只记 claude。作者还写明，改完后的宏在表中间遇到空行仍会停，日期和品番会强制按字符串写入，这是留下的界线，不是 34/34 已经覆盖一切。",
     description: "面向已经把「Agent 自造了几十张测试而且全过，就可以把宏用到客户表上」写成可以上线的人：把「32/32 只说明测到的路径过了；换行数不同和中间空列这两条会坏的路当时不在 32 张里；34/34 是补测并改完之后的另一次；约 3 张不要写成恰好 3 张」写成门禁，区别于只看全绿、却不核测试是谁写的、缺了哪条路径的实践。",
     categories: [
@@ -64070,7 +64070,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "878",
     slug: "kurigaki-20plus-17mb",
-    title: "kurigaki／栗垣健二：自己几乎不会用 Blender，把英单词学习应用 Word Spell Master 里的动物学员，从每人 1 张原画做成会动的 3D。用同一套合格条件过关的有 20 匹以上，动手写脚本的是 Claude Code。重做前的长颈鹿是 34 个零件、约 0.6MB；Tripo 导出约 55MB、约 190 万面；整理后约 3.8MB，压缩后约 1.7MB。约 3.8MB 是约 0.6MB 的 6〜7 倍，不要写成恰好 7 倍。GPU 显存「约四分之一」是按规格做的除法，作者写明实机还没测。Claude 数分钟对 Codex 约 32 分钟的对照条件不齐，不能用来排模型名次",
+    title: "学员原画生成可动三维模型",
     summary: "个人（kurigaki／栗垣健二）；披露这是作者几乎不会用 Blender、把合格条件交给 Claude Code 去写脚本的一次量产记录，不是「按这个流程就能做出 20 匹」的保证。标题和正文写的是「20 匹以上」，不要写成恰好 20 匹。开头动图里的 6 匹只是同角度对照，不要和 20 匹以上混成同一个计数。34 个零件是重做前用球和圆柱拼出来的长颈鹿，不要写成现在这套模型的零件数。约 55MB／约 190 万面是 Tripo 导出，约 3.8MB 是整理后、约 1.7MB 是压缩后，都带「约」。约 3.8MB 对约 0.6MB 是文中的 6〜7 倍，不要写成恰好 7 倍。一年级纹理在 GPU 显存里「计算上约四分之一」是除法结果，作者写明实机还没测。骨绑定对照是长颈鹿 1 匹：Claude 数分钟、Codex 约 32 分钟，条件不齐（Claude 已有步骤书，Codex 从零开始，约 32 分钟里还含减面和凹坑修正），不能用来排模型名次。Codex 不在枚举里，不硬凑。Codex 不在平台枚举，platforms 只记 claude。",
     description: "面向已经把「让 AI 从一张图生成 3D 角色」写成可以上线的人：把「20 匹以上不是恰好 20；34 个零件属于重做前；约 3.8MB 对约 0.6MB 是 6〜7 倍不是恰好 7 倍；显存约四分之一是除法、实机未测；数分钟对约 32 分钟条件不齐、不能排模型名次」写成门禁，区别于只看「已经做出 20 多匹」却不核分母和对照条件的实践。",
     categories: [
@@ -64129,7 +64129,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "879",
     slug: "sheep-43s-10s",
-    title: "sheep6box／山樱ぱぱ：用 Muse 和 M5Stack StopWatch 做了可随身带的ずんだもん钟。第一次出声的 10 月 30 日那 1 个来回是 43 秒（思考 23.4 秒、做声约 18 秒、送出约 1〜2 秒）；11 月 3 日那 1 个来回是 9.95 秒，但回话更长（171 字对 127 字）。不要把 43 秒和 9.95 秒写成同一问的对照，也不要把缩掉的 33 秒里思考少了 18.0 秒全部算成工夫的效果。11 月 5 日同一问各 5 次的中位数：全文形 7.1 秒，旧的按句切 3.2 秒，现在的切法 4.3 秒",
+    title: "便携语音钟的出声耗时记录",
     summary: "个人（sheep6box／山樱ぱぱ）；披露这是作者用自己的一只钟和一台 Muse 虚拟机、按日志对出来的记录，不是「这样改就能从 43 秒到约 10 秒」的保证。43 秒是 10 月 30 日第一次出声的那 1 个来回，9.95 秒是 11 月 3 日另一问的 1 个来回（513 字节／171 字，对那天的 357 字节／127 字，作者写回话大约长了四成）。缩掉的 33 秒里，思考 18.0 秒、做声约 14 秒、其余约 1 秒，但这是不同日、不同问各 1 次的差，作者写明不能把 18 秒全部算成工夫的效果。按日统计的思考时间中位数从 10 月 30 日 37 个来回的 10.3 秒，降到 11 月 3 日 9 个来回的 2.9 秒，件数少，分不出哪条工夫占多少。11 月 1 日最多 149.3 秒，和摘要处理叠在一起，钟等不及超时。11 月 5 日同一问各 5 次的中位数，比的是「文字齐了到第一声」，不是按钮松开到第一声的 43 秒。测错过 3 次：同文反复测把 2.10 秒看成 0.13 秒，其实是缓存；要试的功能其实 404；切断缓存后钟仍在读上一回的同名文件。时钟固件是 Claude Code 写的，桥是 Muse 写的。Muse 不在平台枚举，platforms 只记 claude。",
     description: "面向已经把「语音 Agent 从 43 秒改到约 10 秒」写成可以推广的人：把「43 秒和 9.95 秒不是同一问；缩掉的 18.0 秒不能全算工夫；5 次中位数比的是文字齐了之后，不是松开按钮之后；日中位数件数少；测错过缓存和 404；论文里的平均 7 毫秒不是这次实测」写成门禁，区别于只看标题秒数却不核对照分母的实践。",
     categories: [
@@ -64188,7 +64188,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "880",
     slug: "akkyey-3inc-167",
-    title: "akkyey／あっきぃ：clasp 本体有了 MCP 模式后，在正在跑的 GAS 项目上重测自作的 gas-manager-mcp，碰到 3 件事。云端的 Webhook.js 几乎要被 clasp push 整份替换掉，只因当时提示 already up to date 才没发出去，作者写明挡住是偶然；自作检查当时只回「未定义调用: 1 件」这样的件数，没有文件名和行号；参数个数碰到 setProperty(f(a, b)) 会把 1 个参数数成 2 个。后来带检查的 gas_push 与 clasp push 各测 3 次平均是 4.55 秒对 2.88 秒，差 +1.67 秒，文中约 1.7 秒是这个差的约数",
+    title: "官方推送模式后重测自作接口",
     summary: "个人（akkyey／あっきぃ）；披露这是作者在正在跑的「每日把 Qiita 统计写入表格」的 GAS 项目上，重测自作 MCP 时记下的 3 件事和后来的耗时，不是「加上检查就一定不会删文件」的保证。云端当时有 3 个文件，本地 .claspignore 把 Webhook.js 排除在 push 对象之外；clasp push 会用本地对象整份替换云端，这次只因提示 Script is already up to date 才没发送，作者写明挡住是偶然。第 3 回曾写出模拟器返回 api.gs:12 这样的位置，重读实现后发现当时回给 AI 的只是「未定义调用: 1 件」这类件数。括号里再套函数调用时，按逗号数参数会数错。耗时是实环境各 3 次的平均：clasp push 2.88 秒，gas_push 4.55 秒，差 +1.67 秒；文中约 1.7 秒是这个差的约数，不要写成另一次实测。正文写明这次的 AI 是 Antigravity，不在平台枚举；文中写到的 Claude Code 只是另一种客户端上可以用 permissions.deny 挡住 clasp 本体 push／pull 的配置说明，不是这次的实测平台，platforms=[]。",
     description: "面向已经把「给 Agent 接上 clasp MCP 就可以放心 push」写成可以上线的人：把「Webhook.js 没被删掉是偶然；检查一度只回件数；+1.67 秒是 3 次平均，约 1.7 秒是约数；Antigravity 不在枚举、不要硬凑 Claude」写成门禁，区别于只看「已经有 MCP」却不核这次有没有真的挡住删除的实践。",
     categories: [
@@ -64245,7 +64245,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "881",
     slug: "ichikawa-1853-95-0",
-    title: "ichikawa_y／ichikawa：CLAUDE.md 里写了「请用日语写」，回话仍会回到英语。作者用过去的对话记录 1,853 个回合对 Stop hook 的判定，不是用装上 hook 之后当场改写的结果。带「请用日语写」的 20 个回合从第一版起就是 20/20；最后可见文以英语为主的 277 个回合，现在的版是 95.3%（导语写成 95%）；完全没有英语句子的 1,150 个回合，各版误报都是 0。20+277+1,150=1,447，不等于 1,853。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠改阈值",
+    title: "日语回复钩子的历史回合检验",
     summary: "个人（ichikawa_y／ichikawa）；披露这是作者用自己过去的对话记录来对判定、而不是用装上 hook 之后当场改写结果的一次记录，不是「这样就能保证日语回话」的保证。1,853 是排除之后的回合总数。带「请用日语写」的 20 个回合从第一版起就是 20/20，不要和 277 个「最后可见文以英语为主」的回合混成同一个计数；后者三版是 72.9%、88.8%、95.3%，导语里的 95% 对应表里的 95.3%，写表时用 95.3%。完全没有英语句子的 1,150 个回合，各版误报都是 0。20+277+1,150=1,447，不等于 1,853，不能把这三类加总当成对 1,853 的分割。某处出现过英语句子的回合是 703 个。现在的版里仍会漏掉英字不到 30 的短句；「最后可见文是日语却被挡住」的 16 个，是因为中途英语多到触发了整回合判定，改写要求接近空转。正解侧还有 3 件把日语提问里的「（Discord / Twitter(X) / …）」算成了英语。阈值 30／0.25 在这批记录上是 95.3%／0；把下限改到 20 会少漏、但也会挡住短的英语一句，作者仍留 30。在这个范围内改 0.25，只会动几个百分点。「提高了 22 个点」来自补上对最后 text 和 wrap_up 的单独判定，不是靠重调这两个数字。改进和评价用的是同一批记录。路径里的 C:/Users/<ユーザー名>/… 按源文占位写出，未作为可达链去核。",
     description: "面向已经把「在 CLAUDE.md 里写了请用日语、再加一个 hook，就可以保证日语回话」写成可以上线的人：把「1,853 不是拿装上 hook 之后的改写结果来数的；20、277、1,150 不能加总还原 1,853；95% 对应表里的 95.3%；22 个点不是调阈值调出来的；改进和评价是同一批记录」写成门禁，区别于只看「已经 95%」却不核分母和评价方式的实践。",
     categories: [
@@ -64304,7 +64304,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "882",
     slug: "tamao-7hook-exit2",
-    title: "tamao825／tamao：在 Windows 上给 hook 指定 powershell 时，node 即使以 exit 2 结束，Claude Code 2.1.303 也不会挡住，因为 PowerShell 5.1 的 -Command 会把 2 改成 1。作者在 2026-10-23 用 7 种写法实測：A–E 在 2.1.303 和 2.1.309 上都测了，F 和 G 只在 2.1.303 上测过。各 1 次，只有 A 在 2.1.303 上试了 2 次、两次都放行。E（后面再跟 Write-Output）在 2.1.309 上仍放行；B（补上 exit $LASTEXITCODE）两个版本都会挡住。作者并未测到 Claude Code 实际收到的结束码；未装 Git for Windows 时的 fail-open 也未测",
+    title: "命令外壳改写钩子的结束码",
     summary: "个人（tamao825／tamao）；披露这是作者在 Windows 11、Windows PowerShell 5.1.26100.9711（没有 pwsh）、Git Bash 5.2.37、Claude Code 2.1.303（本机已装的本体）和 2.1.309（临时文件夹里用 npm 另装的执行文件）上，于 2026-10-23 做的一次实測，不是「升到 2.1.309 就一定能挡住」的保证。Matcher 是 Write，让 Claude 用 Write 建 1 个文件，有文件算放行、没有算挡住。7 种写法里，A–E 两个版本都测了，F、G 只在 2.1.303 上测过，不要把未測写成已经测过。次数是各 1 次，只有 A 在 2.1.303 上是 2 次且两次都放行。A 在 2.1.309 上会挡住；E 在两个版本上都放行。B、C、D 在两个版本上都会挡住。作者没有测 Claude Code 实际收到的结束码，只是根据 PowerShell 单测（node 单独经 powershell -Command 得到 1，补上 exit $LASTEXITCODE 得到 2，后面再跟 Write-Output 得到 0，PowerShell 自己的 exit 2 仍是 2）以及 F 在 2.1.303 上显示「failed; blocking because onFailure is block」来推测。CHANGELOG 里还有「未装 Git for Windows 时，带 shell powershell 的 PreToolUse／PermissionRequest 会 fail-open」这一条，作者本机有 Git Bash，这一条未测。路径 C:/.../exit2.js 是源文脱敏，按占位写出，未作为可达链去核。实测日是 2026-10-23，发布日是 2026-10-26，不要混写。",
     description: "面向已经把「Windows 上的 PowerShell hook 写了 exit 2，就可以挡住危险操作」写成可以上线的人：把「2.1.303 上 A 放行、E 在 2.1.309 上仍放行、F／G 在 2.1.309 上未測、作者并未测到 Claude Code 收到的结束码、未装 Git 的 fail-open 未测」写成门禁，区别于只看「已经 upgrade 到 2.1.309」却不核写法的实践。",
     categories: [
@@ -64363,7 +64363,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "883",
     slug: "hiro-2out-3read",
-    title: "hironakamura_ai：当天试用 SDK 自带的 mcp.server.fastmcp（mcp==1.27.1，不是另发的 fastmcp）里的 FileResource，在 macOS、CPython 3.12.13 上用临时目录跑了 3 个路径、没有走网络。公开目录外的 2 件（../private.txt 和符号链接）也能读到；这两件在 resolve 之前做 is_relative_to()，结果都是 True。作者用 resolve(strict=True) 再判断，这两件会被拒绝。作者写明这不是在证明 SDK 的漏洞；本次不管检查与读取之间的竞争，也不足以隔离谁都能写的共享目录",
+    title: "文件资源解析前的越界读取",
     summary: "个人（hironakamura_ai）；披露这是作者用 SDK 自带的 FileResource 在临时目录里读 3 个路径的一次记录，不是「SDK 有漏洞」的结论，也不是共享目录的隔离方案。环境是 macOS、CPython 3.12.13、mcp==1.27.1，对象是 mcp.server.fastmcp，另发的 fastmcp 不在范围内。3 个名字是 ok.txt、../private.txt、link.txt（符号链接指向目录外的 private.txt）。resolve 之前的 is_relative_to() 对这 3 个都是 True；FileResource.read() 对后两件读到了 dummy secret。作者自己的 checked_path() 先 resolve(strict=True) 再判断，后两件是 DENY，ok.txt 是 ALLOW。is_relative_to() 比的是路径组成部分，public/../private.txt 在字面上仍把 public 当作父级，也不会去看链接目标，作者核过这与 pathlib 文档一致。传给 FileResource 的必须是检查后的返回值，用原来的输入再拼一次，检查对象会错位。本次没有通信，文件都是临时的、内容是「public」和「dummy secret」。TOCTOU 和谁都能写的共享目录不在这次范围内。",
     description: "面向已经把「用了 FileResource，公开目录外的文件就不会被读到」写成可以上线的人：把「resolve 之前 is_relative_to 对两件外侧路径都是 True；作者写明这不是 SDK 漏洞；本次不管 TOCTOU 和可写共享目录」写成门禁，区别于只看「已经用了官方资源类」却不核是在解决后的路径上做检查的实践。",
     categories: [
@@ -64420,7 +64420,7 @@ Gemini 先做了 12 组测试。作者认为不够，要求再找漏洞并加 20
   {
     id: "884",
     slug: "amu-16gb-19-167",
-    title: "amu_lab：在 MacBook Air M5 16GB 上实测 Antigravity SDK 本地 Agent（2026-09-25，Ollama 0.34.3，gemma4:12b，google-antigravity 0.1.18）。Ollama 路线可跑：启动 1.9 秒，列目录 32.3 秒，创建 hello.txt 16.7 秒（作者打开过文件），一行日语 9.3 秒；运行时内存 8.1GB，100% GPU，空闲内存 10%。LiteRT 的 26B 在可否表里是建议 24GB 以上、下载 14.7GiB，末段 Connection reset 失败；导语里的「下载 16.8GB」不要和这条混写。「16〜32 秒是云 API 的 10 倍以上」是体感。95 个 token、97.2%、3,322 个 token 来自官方发布，不是作者这次量的",
+    title: "轻薄本上本地代理的可否实测",
     summary: "个人（amu_lab）；披露这是作者在一台 MacBook Air M5 16GB、macOS 上，于 2026-09-25 按文中版本跑 Antigravity SDK 本地路线的一次记录，不是「16GB 机器都可以上 26B」的保证。Ollama 拉 gemma4:12b 写明下载 7.6GB。启动 1.9 秒、列目录 32.3 秒、创建 hello.txt 16.7 秒、一行日语 9.3 秒，都是这一次可否表里的实测；16.7 秒那条，作者打开过生成的文件。运行时 gemma4:12b 占 8.1GB 内存，100% GPU 且当时没有交换，空闲内存 10%；作者写明这是「跑起来了但已经顶满」，再开别的应用会立刻感到掉进交换。LiteRT 26B 路线，导语／导入写的是下载 16.8GB、建议 24GB 以上；可否表里作者实测到的是下载 14.7GiB，并且在末段 Connection reset 失败。不要把 16.8GB 和 14.7GiB 写成同一个数，也不要把导入说明写成已经下载成功。官方发布里的「云端只送出 95 个 token、整体 97.2%（3,322 个 token）在本地执行」不是作者这次量的。把 16〜32 秒说成云 API 的 10 倍以上，是体感，文中没有给出对应的云端实测。本地端点 http://localhost:11434/v1 与 http://localhost:1234/v1 按源文写出，未作为可达链去核。Antigravity 和 Ollama 不在平台枚举，正文也未写枚举内平台，platforms=[]。",
     description: "面向已经把「16GB Mac 也能跑本地 Agent」写成可以推广的人：把「26B 的 16.8GB 与可否表里失败的 14.7GiB 不要混写；16〜32 秒的 10 倍是体感；95／97.2%／3,322 是官方数字；本地端口未作为可达链去核」写成门禁，区别于只看「已经跑通 16.7 秒」却不核分母和失败路线的实践。",
     categories: [
@@ -64477,7 +64477,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "885",
     slug: "miya-bg-2sig",
-    title: "miyakona：给 AI Agent 自审用的 CLI（会停掉正在跑的测试、收拾工作区和 Git 注册）做中断清理时发现，用 shell 的 & 在后台启动时，送 SIGINT 也不会停，会把正在等的处理跑完；在前景启动时可以停。加上显式处理器之后再测，清理过程中或清理刚结束又来第二发信号时，仍会留下工作区或注册。公开的最小示例没有子进程和 git，不能和当时那件工具上的观测混写。示例里 50 毫秒的节拍和清理前 200 毫秒的延迟是复现用的值，不是生产阈值；5 秒上限是相对示例约 1 秒的工作故意留的余量；10 次只是起步，不是已经足够的验证次数。启动路径对照表是当时那件工具的观测，不是公开示例的测量。Windows 不在范围内。正文只称「AIエージェント」，platforms 为空",
+    title: "后台启动时的中断信号清理",
     summary: "个人（miyakona）；披露这是作者为自己那件带 git worktree 的自审 CLI 查中断清理的一次记录，不是「加上信号处理就一定能收拾干净」的保证。背景用 & 启动时会继承 SIGINT 忽略（Bash 在没有作业控制时，异步命令忽略 SIGINT／SIGQUIT，而且这个忽略会越过 exec 留下来）；前景则是 Python 的 default_int_handler。作者因此在入口为 SIGINT 和 SIGTERM 都加了自己的处理器。第一发之后会先把这两个信号改成 SIG_IGN 再进入清理，以免第二发把清理打断。公开示例是用标准库就能跑的最小例子，没有子进程和 git，不要和当时工具上的启动路径表混写。那张表里：前景、新会话、Python subprocess、以及「AI Agent 的后台执行功能」在旧版对 SIGINT 已是「中断」；非交互的 bash／sh／zsh 的 & 和 nohup … & 在旧版对 SIGINT 是「继续」、对 SIGTERM 是「中断」；修正版对两条信号都是「中断」。这是当时工具的观测，「中断」指收拾完以 130 结束，「继续」指忽略 SIGINT 并把处理跑完。示例里的 50 毫秒、200 毫秒是复现用值；5 秒上限是相对约 1 秒工作的余量；10 次是起步。显示的是尝试发送第二发的次数，不是处理器实际跑了几次。这次的契约把中断和 SIGTERM 都收成 130、无法继续的失败为 2，不是所有 CLI 的通例。Windows 不在范围内。正文没有点名枚举内平台，platforms=[]。",
     description: "面向已经把「CLI 接到 SIGINT 就会收拾干净再退出」写成可以上线的人：把「后台 & 会继承忽略；第二发仍可能留下工作区；公开示例不是那件生产工具；50 毫秒／10 次／5 秒都不是已经足够的验证；启动路径表不是示例的测量；Windows 不在范围内」写成门禁，区别于只看「已经加了处理器」却不核启动路径和第二发时机的实践。",
     categories: [
@@ -64534,7 +64534,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "886",
     slug: "naiki-66s-07s",
-    title: "naiki9982／ないき：已提交的个人黑客松作品上，look.py 用 API 钥匙在 6.6 秒内跑通 Gemini 4 Argon（不带「约」），classify.mjs 在 Vertex 上约 4 秒，不要混写。agy 1.3.4 的名单随登录整表改变：Cloud Shell（Agent Platform）有 Argon；未付费 Mac OAuth 名单完全不同；容器只能用 API 钥匙，没有 Argon。同一把钥匙，agy 在 0.7 秒内回报 unknown model，请求还没发出去。官方写明 Antigravity 里的 Argon 只给 AI Ultra 和 Enterprise；API 钥匙这条 agy 路径不在表里。Agent 本体仍留在 gemini-3.8-flash。thinking 写成 MINIMAL 会返回 400",
+    title: "新模型的接口与命令行分叉",
     summary: "个人（naiki9982／ないき）；披露这是作者把已提交的黑客松作品往 Gemini 4 Argon 升时碰到的一次分叉，不是「API 能用就等于 CLI 能用」的保证。look.py 6.6 秒和 classify.mjs 约 4 秒是两条直接 API 调用，不要混成同一次、也不要把约 4 秒写成恰好 4 秒。agy 在容器、Cloud Shell、手头 Mac 上都是 1.3.4，安装日志也写 Latest available version: 1.3.4，作者写明不是版本问题。容器这条只能用 API 钥匙（服务账号／ADC 会停在登录等待，1.2.16 核过，1.3.4 仍一样）；Cloud Shell（Agent Platform 登录）的 agy models 里会出现 gemini-4-argon-high／medium／low 三行；手头 Mac 未付费 OAuth 的名单和这两列都对不上。作者推测 Cloud Shell 能列出 Argon，是因为 Agent Platform 登录被当成了 Enterprise，这是对照官方表的推测，文中写明官方没有直接这么写。官方博客（2026-10-13）和模型页写明，Antigravity 里的 Argon 只给 AI Ultra 订户以及符合条件的 Gemini Enterprise，AI Pro 也不行。API 钥匙这条 agy 路径不在官方表里，作者写明既不能说成「就是这样设计的」，也不能说成「只是还没来」。Reddit 讨论帖本次两次 GET 均为超时，不列入可达。作品站 https://gendan.app/ 是产品导流。Antigravity／Gemini 不在平台枚举，Mac 未付费名单里出现的 Claude 不是这次实测平台，不硬凑，platforms=[]。发布取 2026-10-14，正文更新日期是 2026-10-15，不要混写。",
     description: "面向已经把「API 上的新模型，换个名字就能在 Agent CLI 里用」写成可以上线的人：把「6.6 秒和约 4 秒不是同一次；agy 1.3.4 的名单随登录方式整表改变；0.7 秒的 unknown model 发生在发请求之前；官方表不含 API 钥匙这条路径」写成门禁，区别于只看「API 已经跑通」却不核 CLI 登录目的地的实践。",
     categories: [
@@ -64591,7 +64591,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "887",
     slug: "husenn-typo-127",
-    title: "husenn／Oskra：在 Claude Code 2.1.307、Node 22.22.2、WSL2（Linux 6.6）上实测，把 guard.mjs 写成 gaurd.mjs（只错 1 个字母）时，hook 一次都不会跑，启动也不提示。同一条 rm secrets/fake.p8 各请 1 次：路径正确时伪钥匙还在，是 hook 挡住的；写错时文件被删，hook 以状态 127 结束，claude 以 0 结束；保持错路径并加上 onFailure: block（2.1.295 起可用）时，文件还在，是 Claude Code 挡住的。代价是路径改对之前 Bash 全部不可用。约 30 行检查脚本能点名写错的路径，但只看文件在不在。本次只试了 -p",
+    title: "钩子路径拼写错误的静默跳过",
     summary: "个人（husenn／Oskra）；披露这是作者在 Claude Code 2.1.307、WSL2 Linux 6.6、Node 22.22.2 上，用同一条 rm secrets/fake.p8 命令、只改 settings.json 里的路径，各请 1 次的对照，不是「加上 onFailure 就一定安全」的保证。三种设置是：路径正确；只把 guard.mjs 写成 gaurd.mjs；保持错路径并加上 onFailure: block。正确时伪钥匙还在，hook 挡住了；写错时伪钥匙被删掉，调试日志是 PreToolUse:Bash 以状态 127 结束，shell 报 not found，claude 返回 0；加上 onFailure 后伪钥匙还在，是 Claude Code 挡住的。作者写明，错路径的 hook 在这次实验里启动时不会提示，若继续用，只会留下「已经有人在守」的安心。onFailure: block 从 2.1.295 起可用；代价是路径改对之前，matcher 为 Bash 时，Bash 会全部停住。约 30 行的检查脚本能把写错的路径点名出来，但只看文件在不在；脚本中途失败、挡住条件写错，仍要用伪钥匙实跑。检查范围不包括带空格的路径、非 .mjs／.js／.sh／.py，以及只用了 shell 别名的写法。本次只试了 -p，对话界面里的显示没有拍。相关篇《密钥守卫 hook》仍留在池里，不列入本条产品导流。路径里的「作业文件夹」是源文脱敏，按占位写出，未作为可达链去核。",
     description: "面向已经把「写了守卫 hook，钥匙文件就不会被删」写成可以上线的人：把「1 个字母写错时 hook 不会跑、启动也不提示、状态 127 会放行；onFailure 能挡住但会让 Bash 全部停住；检查脚本只看文件在不在；各设置只请了 1 次」写成门禁，区别于只看「已经挂了 hook」却不核路径有没有写错的实践。",
     categories: [
@@ -64650,7 +64650,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "888",
     slug: "kimura-129-130-302",
-    title: "kimura0314：GAS Web 应用上的 MCP 服务器，官方 Python SDK mcp 1.29.0 能连上，1.30.0 起（含 2026-11-02 当时最新的 2.3.0）不再跟随跨源 302。1.30.0 于 2026-09-07 发布。环境是 Windows 11／Python 3.12.10。正文把部署 ID 写成 <deployment-id> 占位。实测客户端是 Python SDK，Gemini 只出现在「自己写的客户端能用、别人的客户端用不上」的说明里，不在枚举，platforms=[]",
+    title: "接口库不再跟随GAS跨源跳转",
     summary: "kimura0314 在自己的 GAS MCP 服务器上，只改 mcp 版本、连同一台服务器：1.29.0 能走到 initialize 和 tools/list；1.30.0 与 2.3.0 都以「Redirect to https://script.googleusercontent.com/macros/echo not followed」落下。原因是 GAS 对 POST 一律 302 到另一个源，而 1.30.0 起 next_request_within_origin 只跟随「方法不变且同源」的跳转。echo 的 URL 每次都带一次性 user_content_key，不能登记成端点。GAS 里边没有找到修法。这是这一次、这一组版本上的记录。",
     description: "面向已经把 GAS 做成 MCP 服务器、却在换新版 Python SDK 后连不上的人：把「分界是 1.29.0 通、1.30.0 与 2.3.0 不通；2.3.0 改写后再跑仍是同一句 MCPError；部署 ID 与 user_content_key 是占位／截断，不要补成可达链」写成门禁，区别于只看「新版 SDK 连不上」却不核版本分界和 302 条件的实践。",
     categories: [
@@ -64703,7 +64703,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "889",
     slug: "mskbhd-18run-6ok-0fix",
-    title: "mskbhd：在 Mac mini、Claude Code 2.1.299 上，用 claude -p 跑 18 次，测官方插件 security-guidance v2.0.13 会不会拦住脆弱代码。插件不阻断写入，文档也写 None of the layers block writes or commits。OAuth 订阅的 headless 下 LLM 审查被跳过（skip_reason=3）。补上 API 钥匙后，留下危险代码的 6 次全部指出，修好的是 0 次。不要把 18 次写成 4 任务×2 模型×3 条件都跑过；表里 Haiku 的 on 是「—」",
+    title: "安全插件在无头下跳过审查",
     summary: "mskbhd 用官方插件 security-guidance v2.0.13，在 Claude Code 2.1.299、Mac mini 上以 claude -p 跑了可见的 18 次：同一批四个编程任务，分别交给 Opus 和 Haiku，并对照插件关闭、仅 OAuth、以及补上 API 钥匙。插件的三层都不阻断写入或提交。正则层把 15 件危险样本里的 7 件打成警告，SQL 注入和密钥是 0；8 件安全样本里有 1 件把注释里的 # eval( 误报。LLM 审查在 OAuth 的 headless 下被跳过（skip_reason=3）；补上钥匙后实际跑了 8 次：留下危险代码的 6 次全部指出，已改成安全写法的 2 次没有误报，按提示把代码改安全的是 0 次。第 3 层提交审查这次没有触发。",
     description: "面向已经把 security-guidance 当成能拦住脆弱代码的人：把「18 次不是 4×2×3 全跑过；Haiku 的 on 是破折号；LLM 审查实际 8 次里指出 6、误报 0、修好 0；正则 15 件危险只警告 7 件，不要和这 18 次混写；密钥是文档假值」写成门禁，区别于只看「插件会审查」却不核是否跳过、是否改写的实践。",
     categories: [
@@ -64759,7 +64759,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "890",
     slug: "yamato-40note-15k-1of5",
-    title: "yamato_snow／やまと：用 40 件虚构家计簿备忘、6 个问题、Sonnet、claude -p，对照 4 种 CLAUDE.md 放法。知识类 5 问四种放法各 3 次全对；5 问平均输入 token 约 8,700（A 全放进 CLAUDE.md）对约 15,000（B 索引）对约 16,800（D 把规矩也移走）。「约 19 分之 1」是作者自己仓库 141 件、约 35 万字对每次约 1 万 8 千字的除法，不是这次 40 件上测到的 token。D 在生数据重测里 5 次中 1 次把虚构密钥交给了 AI",
+    title: "家计备忘的指令文件放法对照",
     summary: "yamato_snow 先按自己仓库 141 件备忘、约 35 万字，算出若每次只读 CLAUDE.md（3,578 字）加索引（约 1 万 8 千字）大约是全文的 19 分之 1——这是字数除法，作者写明没有用 claude -p 去测数十万字时的用量。真正拿来跑的是另造的 40 件虚构家计簿备忘（其中 A 方案把全文放进 CLAUDE.md 时只有 7,395 字节），6 个问题，Sonnet，Claude Code 2.1.304，2026-10-21 在 Mac 上测。知识类 5 问、四种放法、各 3 次全部答对。四种放法里，5 问平均输入 token 约 8,700（A）对约 15,000（B）对约 16,800（D）；作者写「约 2 倍」是在这些小备忘上的对照，不要写成真实仓库已经测到 2 倍。第 6 问看会不会去读 .dev.vars：先是自我申报 3 次，D 有 2 次说出密钥；再用工具生数据重测 5 次，D 是 1/5，A／B／C 是 0/5。不要把 2/3 和 1/5 混成一笔。",
     description: "面向已经把「CLAUDE.md 改成索引就能省 token」写成经验的人：把「约 19 分之 1 是字数除法、不是 40 件实验上的 token；约 8,700 对约 15,000 的约 2 倍只属于这些小备忘；密钥是先 2/3 后 1/5，不要混写」写成门禁，区别于把仓库规模和实验 token 写成同一笔的实践。",
     categories: [
@@ -64815,7 +64815,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "891",
     slug: "neko-30rev-22-54",
-    title: "nekoai_lab／Tsukineko：把同一份登录 PR 的初版，用同一句委托各再跑 5 次，三个对象合计 30 次。已知缺陷 6 件里，旧委托 1 次平均拾到 2.2 件，存档型 XSS 是 0/5，第 5 次因只改了 docs 的 7 行才被指出；「先做 2 次」按从 5 次里抽 2 次的组合算是 2.4 件，不是另外实测的 2 次平均。现场补上 12 行确认项后平均 5.4 件，作者写明这是知道答案后写下的上限确认。Codex 不在枚举，platforms 只记 claude",
+    title: "同一登录改动的重复审查遗漏",
     summary: "nekoai_lab 把家里用的登录 PR 冻结成初版，用同一句委托交给 Codex（codex-cli 0.157.1，记录于 2026-10-20）各跑 5 次，三个对象合计 30 次。已知 6 件缺陷里，旧委托 1 次平均拾到 2.2 件；其中存档型 XSS 5 次都没找到，后来第 5 次审查只因改了 docs 的 7 行才被指出——若当时已有「只改文档就复用 qa-pass」的规则，这一次也会被跳过。从 5 次里抽 2 次的组合平均是 2.4 件，不是另跑 2 次的实测。「谁的／现在什么状态／不要信客户端」这类要对照状态的洞，清单关掉时 5 次都没拾到。现场补上 12 行确认项后平均 5.4 件，作者写明是知道答案后写下的上限确认；专门留作对照的 H1 新旧都是 5/5，看不出对未见过的洞有无效果。评分类工作由 Claude 做，审查角色是 Codex。Codex 不在枚举，platforms 只记 claude。",
     description: "面向已经把「多跑几次 AI 审查就能补上漏检」写成经验的人：把「2.4 件是组合平均不是另跑 2 次；5.4 件是知道答案后的上限确认；XSS 先是 0/5，第 5 次因 7 行文档才出现；204／37／9 是背景不是这 30 次的检出率」写成门禁，区别于只看「平均从 2.2 到 5.4」的实践。",
     categories: [
@@ -64871,7 +64871,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "892",
     slug: "jody-48rec-7cond-0flip",
-    title: "jodycraft：用同一批 48 件设备点检记录、同一 3 问，在 2026-10-31 测「指示模样」的前置句会不会让自动采用件数变动。模型是 Jev 1.13、d1、d1-ultra（Jev 7 个条件、d1 4 个、d1-ultra 7 个）。Jev 上「是否需要立即处理」的判定没有反转（正解→错误 0 件）；自动采用从 base 的 26 件变到伪政策 24、防御声明 27、带防御的伪政策 27、嵌入备忘 30、露骨指示 28。Jev 1.14 未复现。Datadog 12,295 件等是二次引用，不要和这 48 件混写。Jev／d1 不在枚举，platforms=[]",
+    title: "点检前置句下的自动采用件数",
     summary: "jodycraft 拿与前篇相同的 48 件点检记录、相同 3 个问题，在 2026-10-31 测量前置句（假政策、防御声明、把指示嵌进备忘、露骨指示等）会不会让判定模型改口。Jev 是 1.13 不是 1.14（1.14 未测）。Jev 上「是否需要立即处理」（阈值 0.5）没有从正确翻到错误（0 件）；自动采用件数却会动：base 26，假政策 24，只有防御声明 27，防御加假政策 27，嵌入备忘 30（多 5 件自动采用，少 1 件回到保留），露骨指示 28。假政策下严重度均值下降 0.29，48 件里 29 件变动超过 0.25，discipline 有 18 件被改成 none。专门做的探测题 48/48 仍能看出「有人在注入」，但严重度和系统字段还是被改了。base2 与 base 一致（自动采用 26、错误 0、Δp 0.006），用来排除计量失误。d1 系在没有注入的第二次也会抖（d1-ultra 的错误从 3 到 5），不能把抖动都算成注入效果。Datadog、Lasso、arXiv 的数字是他人评估，不是这 48 件的结果。",
     description: "面向已经把「判定模型能识破注入」写成结论的人：把「判定没有反转，但自动采用件数和严重度、系统字段会动；探测题 48/48 看得到注入，不等于字段不被改；d1 系自己会抖；Datadog／Lasso／arXiv 数字不要写进这 48 件」写成门禁，区别于只看「没有翻成错误」的实践。",
     categories: [
@@ -64925,7 +64925,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "893",
     slug: "tetsu-4stg-12fix",
-    title: "tetsu_don／てつどん：用 Claude Code 2.1.306、claude-sonnet-5-5（实验记录里能确认的一次）和 Dataform CLI 3.1.2，在虚构电商数据（客户 1000、商品 100、订单 5000、明细 10015）上让它写管道。这里的「5 个模型」是 staging 4 本加 mart 1 本，不是 5 个 LLM。这 5 个 Dataform 模型一次 compile 通过、手改 0。故意违反的 8 件委托，加上「冲突先确认」一句后合格从 2/8 到 7/8，作者写明是看过结果再补上、又用同一批 8 件测的。F1–F6 各 2 次共 12 件都修好，11 件与原文件完全一致。发布时刻换算到上海是 2026-10-28，不要写成 2026-10-29",
+    title: "虚构电商管道编写与冲突确认",
     summary: "tetsu_don 用虚构电商数据，让 Claude Code 写 Dataform 管道。A：staging 4 本加 mart 1 本，这 5 个 Dataform 模型一次 compile 通过、手改 0；值对不对放到 C 再查。B：8 件故意违反的委托，各条件多为 1 次，命名那件是 3 次。没有项目 CLAUDE.md 时，棋盘式核对是 24/49；有 CLAUDE.md 时 65/70，但被引诱的 8 件里合格只有 2/8。补上「冲突先确认、未批准不写文件」一句后，同一批 8 件从 2/8 到 7/8，作者写明有望、尚未在别的冲突上验证。命名从 1/3 漏看成 3/3。Skill 对验证循环仍是 6/6，日志更新从 2/6 到 6/6，但没有和「只是把步骤写成文」分开。C：先漏掉 F3，补上第 4 条把 staging 和 raw 相比的 assertion 后才检出；「6/6 检出」是看过这次漏检再补的，偏甜。F1–F6 各 2 次共 12 件都定位并修好，11 件与原文件完全一致，0 件去改 assertion；有 1 件只看到输出末尾。留下 35 张表和约 100 个视图，实验里禁止 DROP。",
     description: "面向已经把「让 Claude 写 Dataform 能一次过」写成经验的人：把「5 个模型是 staging 4 + mart 1，不是 5 个 LLM；发布日换算到上海是 2026-10-28 不是 29；2/8→7/8 和 6/6 检出都是看过结果再补、又用同一批测的；F3 先漏检」写成门禁，区别于只看 compile 通过的实践。",
     categories: [
@@ -64980,7 +64980,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "894",
     slug: "ryofeee-bwrap-5patt",
-    title: "ryofeee：在同一份 python:3.12-slim（Debian 13）加 Bubblewrap 0.12.0 的 ARM64 镜像上，测 Bubblewrap 在 AgentCore Runtime、ECS on EC2、ECS on Fargate 能不能跑。bwrap 试了 5 种调用，root 与一般用户（uid 1000）都记了。ECS on EC2 只有 privileged 时 5 种全 PASS；Fargate 上 5 种全 FAIL。AgentCore 上 1～5 全部 PASS。这是这一次、这一组设置的 PASS/FAIL 表，不是「Fargate 不能跑 Agent」。AgentCore／Fargate／Codex 不在枚举，platforms=[]",
+    title: "沙箱包装在三处运行环境对照",
     summary: "ryofeee 在自己的 AWS 账户里用同一份 ARM64 镜像（python:3.12-slim，Bubblewrap 0.12.0）比较三处执行环境。结论表按一般用户（uid 1000）记：ECS on EC2 默认 5 种全 FAIL；只关掉 seccomp 时 bwrap 1～3 PASS、4 和 5 FAIL（Can't mount proc on /proc），root 在没有 SYS_ADMIN 时 1～3 也 FAIL；只加 cap-sys-admin 则全 FAIL（pivot_root: Operation not permitted）；两者都加时 1～3 在 root 和 uid 1000 都 PASS，4 和 5 仍 FAIL；只有 privileged 时 5 种全 PASS。Fargate 从 unshare -U 起就是 Operation not permitted，5 种全 FAIL，而且 seccomp、capability、privileged 都改不了。AgentCore Runtime 什么都没改，bwrap 1～5 在 root 和 uid 1000 全部 PASS。Fargate 本是首选，作者记了「1 败」。bwrap 4 是 Codex 相当的调用方式（--unshare-pid 并新挂 /proc），不是实测了 Codex 产品。",
     description: "面向已经把「Fargate 上跑不了带沙箱的 Agent」写成一句结论的人：把「Fargate 是 5 种全 FAIL，不要写成 1～3 能过；1～3 能过、4 和 5 不能过属于 EC2 关掉 seccomp 的那一档；privileged 才能在 EC2 上全过；这不是对 Fargate 上所有 Agent 的判断」写成门禁。",
     categories: [
@@ -65034,7 +65034,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "895",
     slug: "gameryo-891mb-279-413",
-    title: "game_ryo：在总内存 891MB、当时可用约 154MB、swap 约 1GB 已占用的 VPS 上跑 Hermes。官方建议 2GB 以上，这是低于该建议的一次记录。停掉约占 135MB 的 AdGuardHome 后可用约 295MB；给 Hermes 设 MemoryHigh=300M、MemoryMax=400M 后启动使用量约 279MB 并稳住。Talk 出现 413，日志是 Limit 7000, Requested 13746（ITPM），换 Groq 的 qwen3.8-27b 后仍是同一句。不要把 154MB 和 295MB、279MB 写成同一时刻。Hermes 不在枚举，platforms=[]",
+    title: "低内存主机上启动Hermes",
     summary: "game_ryo 在一台总内存 891MB 的 VPS 上试跑 Hermes。装上时可用大约 154MB，swap 大约 1GB 已经在用；AdGuardHome 约占 135MB。停掉它之后可用大约 295MB。再用 systemd 给 Hermes 加上 MemoryHigh=300M、MemoryMax=400M、MemorySwapMax=0，启动后使用量大约 279MB 并稳住。Talk 时报 413，日志写 Limit 7000, Requested 13746，单位是提供方的 ITPM，不是这台机器的内存；先用 Groq 的 gpt-oss-20b，再换 qwen3.8-27b，仍是同一句 413，后来改走 kilocode 的 nemotron :free。data 备份约 4.5GB，不要写成内存。官方 2GB 是建议，不是这次测到的下限。可用还在 150〜190MB 时看到的 worker 警告，作者当成体感上的余裕，不是故障计数。正文没有 https 硬链。Hermes／Groq／kilo 不在枚举，platforms=[]。",
     description: "面向已经把「不到 2GB 也能跑 Hermes」写成经验的人：把「891MB 是整机总量；约 154MB 和约 295MB 是停 AdGuardHome 前后的可用；约 279MB 是加了内存上限后的使用量；7000／13746 是 ITPM 不是内存；4.5GB 是磁盘备份」写成门禁，区别于把这些数字写成同一时刻同一指标的实践。",
     categories: [
@@ -65087,7 +65087,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "896",
     slug: "yukamiya-80c-73-18d",
-    title: "yukamiya／Yu Kamiya：在 3 个个人仓库里花约一个半月，把策划到合并的流程交给 AI 自己跑。开发工具仓最近 80 个提交里 73 个（91%）是 Claude 共同作者，91% 是 73/80 的除法。AI 审查分数从 0/5 到 3/5 再到 5/5 是收敛过程，不要写成一开始就是 5/5。macOS 权限让每周 cron 静默全灭 18 天。20 个会话、约 38MB 日志是三个项目合计。这是个人仓库，不是公司组织验证",
+    title: "个人仓库从策划到合并的自动化",
     summary: "yukamiya 在 3 个个人仓库里用大约一个半月，把从策划到合并的流程交给 AI 自己跑，人负责设计权限、合并条件和抽查。开发工具仓最近 80 个提交里，73 个带 Claude 共同作者，91% 是 73 除以 80，不是另一次统计。AI 审查分数从 0/5 升到 3/5 再升到 5/5，是同一套合并条件逐步写清楚后的收敛，不要只写最后的 5/5。曾经有人一行都没写的 PR 被机器人自动合并。每周一次的 launchd 任务因为 macOS 的 TCC（Operation not permitted）静默失败了 18 天，手动执行是正常的，所以当时没发现。20 个会话、约 38MB 日志是三个项目合计，不要写成某一个仓库的量。审查评论的可靠性另测过：实运 2 次，用可复现的方式挡下过大主张 4 件，不要和分数收敛混成一笔。",
     description: "面向已经把「个人仓库里 AI 自己合并」写成「开发组织已经成型」的人：把「91% 是 73/80 的除法；0/5→3/5→5/5 是收敛不是一开始就 5/5；18 天是 TCC 静默失败；20 个会话约 38MB 是三仓合计；这是个人仓库」写成门禁。",
     categories: [
@@ -65142,7 +65142,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "897",
     slug: "kindle-143-16fail",
-    title: "kindledai：用任务计划程序在无人时启动 claude -p --model haiku --restricted。有待判断工作时启动了 143 次，其中 5 次因额度用尽失败（You've hit your session limit · resets 1am）。刚加上把同类判断交给 Codex 的代役，就碰上周额度用尽：随后 2 天连续 16 次无人启动因额度失败，切换机制 16 次都动了，代役实际干活 0 次（代役自己的免费档也用尽）。不要把 5 次和后来的 16 次合成一笔。文中 19〜46%、每模型每天 20 次、销售额 0 件写在书里，不是本篇测到的。Codex 不在枚举，platforms 只记 claude",
+    title: "无人判断任务的额度与代役",
     summary: "kindledai 用 Windows 任务计划程序，在有待判断的工作时无人启动 claude -p --model haiku --restricted，只允许 Read／Edit／Grep／Glob，标准输入走 PowerShell。大约一个月里这种无人启动有 143 次，其中 5 次因 session limit 失败，提示 You've hit your session limit · resets 1am。作者随即加上：若这类判断失败，就改交给 Codex 做同类工作。刚加上就碰上周额度用尽，随后 2 天连续 16 次无人启动都因额度失败；切换机制 16 次都触发了，代役实际干活 0 次，因为代役自己的免费档也用尽了。数字以 2026-10-01 当时环境为准。不要把加代役之前的 5 次和之后的 16 次加总。书里写的 19〜46% 成功率、每模型每天 20 次、销售额 0 件，不是本篇测到的，不要写进结果。与 #822 同属周额度，本条硬窗是无人启动连续失败且代役也没有额度。",
     description: "面向已经把「加一个代役就能熬过周额度」写成经验的人：把「143 次里的 5 次是加代役之前；16 次连续失败是加了之后的 2 天；切换 16/16、干活 0/16；书里的成功率与销量不要写进本条」写成门禁，区别于只看「已经做了切换」的实践。",
     categories: [
@@ -65197,7 +65197,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "898",
     slug: "crista-10boot-38perm",
-    title: "c_rista：Windows 11 上 Claude Desktop（调查时 2.9939.2.0，再确认工作目录时 2.31226.0.0，2026-10-09）里自作的 MCP 中继服务器，查了 10 次启动全部是连接要 35〜43 秒、连上后 3〜5 秒断开。子服务器用相对路径开日志，Desktop 拉起的进程工作目录是 C:\\WINDOWS\\system32；以前能跑是因为用管理员启动，System32 里留下了 29,891 字节、67 天的日志（创建 2026-06-16，最后写入 2026-09-10 11:20）。服务器日志 100 次启动记录里 38 次有 PermissionError，100 次不是 Desktop 启动次数（两条启动会写进同一份日志）。正文把子服务器名和路径写成占位",
+    title: "桌面拉起中继的工作目录断连",
     summary: "c_rista 在 Windows 11、Claude Desktop（MSIX）上看到，自作 MCP 中继服务器每次启动都是连接 35〜43 秒、连上 3〜5 秒后断开，查了 10 次都一样。子服务器在第 37 行用相对路径打开日志，工作目录却是 system32，非管理员写不进去。以前用「管理员身份运行」时，同一错误被盖住，日志写进了 System32（29,891 字节、67 天）。把子进程的 cwd 写成绝对路径后，单独复测：中继不再于 41.6 秒以代码 1 退出，tools/list 从 37.64 秒、28 个工具变成 5.44 秒、35 个工具；实机重开 Desktop 后连接约 14 秒、35 个工具，不再断开。路径与服务器名在正文里是占位。",
     description: "面向已经在 Windows 上把本地 MCP 服务器登记进 Claude Desktop、却在取消管理员启动后开始连不上的人：把「10 次启动都是 35〜43 秒后连上再 3〜5 秒断开；100 次日志里的 38 次 PermissionError 不是 Desktop 启动次数；以前能跑不是配置对了，而是管理员把日志写进了 System32」写成门禁，区别于只看「MCP 超时」却不核工作目录和相对路径的实践。",
     categories: [
@@ -65252,7 +65252,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "899",
     slug: "persim-fast-226x",
-    title: "persimmoq：同一条约 150 词的说明文，用 Claude Opus 5.5、既定 effort medium、max_tokens=400、不流式、从东京发出，speed 有无各 5 次交替。平均是 standard 4.73 秒、75.7 tok/s，fast 2.10 秒、171.0 tok/s，为 2.26 倍。官方说法是最多 2.5 倍速、费用 2 倍。tok/s 是输出（含思考）除以从发出到收齐的墙上时间，含 TTFT，会比官方「输出 token 每秒」偏低。这 10 次里思考量会在约 19 和约 250 之间分开，思考约 250 且上限 400 的回合正文会被截断。不要把「1 小时变不到 30 分钟」写成这次测到的",
+    title: "fast 与 standard 生成测速",
     summary: "persimmoq 在 2026-10-15 Fast mode 改为不必再加测试头之后，用同一条约 150 词的说明文，对 claude-opus-5-5 做了 speed 有无各 5 次。平均 75.7 tok/s 对 171.0 tok/s，为 2.26 倍；费用按价目是 2 倍，作者估算这组大约每次 $0.008 对 $0.016。计速方式含等待首包，数字会比官方「输出 token 每秒」低一些。同一提示下思考量仍会在约 19 和约 250 之间分开；max_tokens=400 时，思考约 250 的回合正文会写到一半被截断。第四次 fast 是 150.7 tok/s，比最快的一轮慢约两成。文中「1 小时的任务若能不到 30 分钟」是举例，不是这次 5+5 次测到的。",
     description: "面向已经把 Fast mode 的「最多 2.5 倍速、费用 2 倍」直接当成自己账单的人：把「这次从东京、不流式、含 TTFT 的 5+5 次是 2.26 倍；思考量会抖，上限 400 会截断正文；快档第四次比最快轮慢约两成；1 小时变 30 分钟不是实测」写成门禁，区别于只看官方倍数却不核计速方式和样本的实践。",
     categories: [
@@ -65307,7 +65307,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "900",
     slug: "masaki-19952-62deny",
-    title: "masaki_mori72：在 Windows、Claude Code 2.1.296 上，用对话日志统计约 1 个月里 auto mode 分类器拦住的工具调用。19,952 次调用里被拦住 62 件（约 0.3%）。分类是 Production Deploy 21、理由不附带 9、Irreversible Local Destruction 6、Secret-Store Writes 5、Self-Modification 3、Permission Grant 3，其余 11 种共 15 件，合计 62。理由不附带的 9 件里，部署或权限脚本 6 件、往工作目录外 Write 3 件。不要把全文搜索同一句拒绝文案的次数当成 62。正文把日志路径写成 ~/.claude/projects/<プロジェクト>/<セッションID>.jsonl",
+    title: "自动模式拦截调用的分类统计",
     summary: "masaki_mori72 写了只看 tool_result 的脚本，在 Windows、Claude Code 2.1.296 上统计自己约 1 个月的对话日志：19,952 次工具调用里，被 auto mode 分类器拦住的是 62 件（约 0.3%）。最多的是 Production Deploy 21 件；有 9 件理由不附带，打开看是部署或权限脚本 6 件、往工作目录外写文件 3 件。Self-Modification 的 3 件是改 .claude/settings.local.json 或 ~/.claude.json。脚本只认 tool_result 里的拒绝句，避免把讨论或写脚本时出现的同一句话算进去。约 300 个文件、数百 MB，跑了大约 10 秒。日志默认大约 30 天会清掉。路径在正文里带占位。",
     description: "面向已经觉得 auto mode「老是拦住」却没有回数的人：把「约 1 个月是 19,952 次里 62 件、约 0.3%；不要用全文搜索同一句话来计数；理由不附带的 9 件要拆开看；日志大约 30 天会清掉」写成门禁，区别于只凭印象谈拦截率的实践。",
     categories: [
@@ -65363,7 +65363,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "901",
     slug: "utsumi-315t-h4-399",
-    title: "utsumi：用 Flowgen 在 Claude Code 上，从一行说明生成 WordPress WXR 转静态站的命令行工具。10:12 开始，10:16 设计（7 条隐藏需求、10 个模块、3 次网上查找），10:32 实现：315 项测试全绿，覆盖率 98.85%，Docker 能构建。设计和批准是代理在答，不是人逐条过的。随后用 6 个 Sonnet 攻击代理去做 XSS、私密数据、XML、SSRF、文件系统和资源耗尽。315 项测试仍全绿时，又找出 HIGH 4、MEDIUM 20、LOW 8，作者写都修了（CRITICAL 0）。TOCTOU 3,000 次竞态里漏出 399 个文件到目录外，修好后 0/3000。不要把「修了」理解成每一项都经过指挥官前后对照；DOS 的 10 项里有 5 项只靠攻击代理的回归测试计数。256MB 导出大约 4 分钟是外推，不是实测",
+    title: "一行说明生成转换工具再攻击",
     summary: "utsumi 用自己的 Flowgen，在 Claude Code 上把一行说明做成 WXR 转静态站的命令行工具：约 20 分钟后 315 项测试全绿、覆盖率 98.85%。设计和批准是代理代答的，不是人逐条过的。他再派 6 个 Sonnet 攻击代理，在测试仍全绿时找出 HIGH 4、MEDIUM 20、LOW 8，并写都修了。其中 TOCTOU 3,000 次竞态漏出 399 个文件，修好后是 0/3000；空白密码会被当成公开，--include-drafts 也会带出私密篇。攻击代理合计 789,351 token、222 次工具调用，资源耗尽那一路墙上时间 3,749 秒。作者写明仍有未修项，也没有做 pip-audit，Windows 和非 Docker 的 Linux 没测。",
     description: "面向已经把「测试全绿、覆盖率很高」当成可以上线的人：把「315 项全绿时攻击代理仍找出 4 个 HIGH；TOCTOU 3,000 次里漏出 399 个文件；设计和批准是代理代答的；有 5 项 DOS 只靠代理回归计数；256MB 大约 4 分钟是外推」写成门禁，区别于只看测试通过率的实践。",
     categories: [
@@ -65419,7 +65419,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "902",
     slug: "cross-14k-opus58",
-    title: "crossclub_lab：在 Windows 11、Node v22.17.0、Claude Code 2.1.304–2.1.308 上，从对话记录统计用量。第一周 2026-10-09–15 大约 14,000 次请求、约 32 亿 cache_read、约 210 万输出，Opus 5.5 占 58%，Sonnet 占 41%，一次对话占 97%，子代理约占 68%。修好后，2026-10-23 脚本给出的最近 7 天是请求 18,288、输出 178 万、cache_read 34.50 亿，Sonnet 81%、Opus 18%、Fable 5.1 占 1%、Haiku 0%，主对话 21%、子代理 79%；7 天大约 27 秒。没有达到「Opus 降到 10% 以下」的目标。不要把这两段数字加总。正文把路径写成 C:\\Users\\<あなた>\\.claude\\projects\\",
+    title: "对话用量统计与默认模型占比",
     summary: "crossclub_lab 写了从 Claude Code 对话 jsonl 统计用量的脚本。第一周大约 14,000 次请求、约 32 亿 cache_read，Opus 5.5 占 58%，一次对话占 97%，子代理约占 68%。原因有三条：订阅默认模型是 Opus（2026-10-15 和 10-28 都核对过文档）；抽查 13 次子代理调用都没传模型，沿用了默认；同一对话开了 7 天，每次平均约 40 万 cache_read。改成 --model sonnet、给子代理显式传模型、加上 --no-session-persistence 后，2026-10-23 最近 7 天变成 Sonnet 81%、Opus 18%，仍没到 10% 以下。无头且关闭会话持久化的运行不会进这些记录。10 月 14 日那一周约 32 亿是周上限的 94%，由此估算上限约 34 亿，这是估算。",
     description: "面向已经按仪表盘印象在调默认模型的人：把「第一周约 14,000 次、Opus 58%；修好后最近 7 天是 18,288 次、Opus 18%，两段不要加总；子代理没传模型就会沿用默认；无头且关闭会话持久化的运行不在记录里」写成门禁，区别于只看官方用量页的实践。",
     categories: [
@@ -65474,7 +65474,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "903",
     slug: "tyuya-41th-8th-cache",
-    title: "tyuya：官方 LINE 问询走 Cloudflare Worker，2026-10-22 从 Haiku 4.5 换成 5.5。作者不写代码，实现由 Claude Code 完成。31 条测试里 26 条会调 Claude，5 条预先分流到人工（贴纸 1、过长 1、过敏 3）。价目是约 1/10，但用测试日志按一条消息估算约 1/41（只看开头两行系统提示约 1/34）。原因是缓存下限从 4,096 降到 512，4.5 上约 2,900 token 的系统提示从未命中（cache_read=0）。中间值是 4.5 的 $0.00312 对 5.5 命中时的 $0.0000765，约 1/41。若问询间隔≥5 分钟，写入按输入的 1.25 倍计，约 $0.000409，是 4.5 的约 1/7.6；不用缓存约 $0.000337，约 1/9.2。稀疏流量下不用缓存大约再便宜两成。生产账单没有核对。不要把价目的 1/10 写成这次测到的倍数",
+    title: "LINE问询换模型后的单条费用",
     summary: "tyuya 把官方 LINE 问询从 Haiku 4.5 换成 5.5 后，用 26 条会调模型的测试日志估算单条费用：4.5 约 $0.00312，5.5 命中缓存时约 $0.0000765，大约 1/41；价目上的约 1/10 对不上，是因为 4.5 的缓存下限是 4,096，约 2,900 token 的系统提示从未写入缓存。若问询间隔大于等于 5 分钟，5.5 的写入要按输入的 1.25 倍计，大约变成 4.5 的 1/7.6；这时不用缓存大约是 1/9.2，比开缓存再便宜约两成。盈亏平衡是「下一条在 5 分钟内到来」的比例大约超过 22%。生产账单没有核对，日志里也没有 cache_creation_input_tokens。速度上 5.5 的最大时延有一次到 6.0 秒。第 7 条测试曾因正则把正确的否定判错；改完后完整 31 条连过两次。",
     description: "面向已经按价目把 Haiku 5.5 当成「费用 1/10」的人：把「这次按测试日志估算是约 1/41；4.5 的系统提示从未命中缓存；问询一稀，写入加成会把倍数拉到约 1/7.6，不用缓存反而更便宜；生产账单没有核对」写成门禁，区别于只看官方价目倍数的实践。",
     categories: [
@@ -65529,7 +65529,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "904",
     slug: "tomoki-1hcache-5pct",
-    title: "tomoki33：用个人订阅的 Claude Code 日志看缓存命中与间隔的关系，没有公布用量绝对值，因为个人用量不等于工作用量。按间隔分档的命中率中位数是：不到 5 分钟 99%，5 分钟到 1 小时 100%，1–2 小时 5%，大于等于 2 小时 8%，用来确认订阅是 1 小时 TTL（API 钥匙则是 5 分钟，写入按 1.25 倍计）。「/compact 要大约 13 轮才回本」是试算，不是测过 13 轮的实验：compact 大约 $0.31（读 $0.03、摘要输出 $0.20、写 $0.08），之后大约每轮 $0.006 对大约 $0.03，每轮约省 $0.024，按 Opus 5.5、1 小时缓存价目除出来是 13 轮。不要写成已经跑过 13 轮",
+    title: "订阅缓存命中随间隔的变化",
     summary: "tomoki33 没有公布个人订阅的用量绝对值，只按对话间隔看了缓存命中率的中位数：不到 5 分钟 99%，5 分钟到 1 小时 100%，过了 1 小时就掉到 5% 和 8%。这用来确认订阅侧是 1 小时 TTL，和 API 钥匙的 5 分钟不是同一套。关于 /compact「大约 13 轮回本」是按 Opus 5.5、1 小时缓存价目做的试算（compact 大约 $0.31，之后每轮大约省 $0.024），不是测过 13 轮的实验。换模型后下一轮会按新模型重写历史；1 小时内回来仍然便宜，作者写日志里也看到了这一行为，但没有给出量。",
     description: "面向已经按 API 的 5 分钟 TTL 在规划订阅缓存的人：把「个人日志里 1 小时内中位数是 99–100%，过了 1 小时掉到 5–8%；13 轮回本是试算不是实验；没有公布用量绝对值」写成门禁，区别于只看官方 TTL 说明的实践。",
     categories: [
@@ -65584,7 +65584,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "905",
     slug: "shinsei-800miss-0851",
-    title: "shinsei99：约 5 万封内部邮件的检索里，一条带 3 个条件的问句（「这个月、那家公司、英文」）目标不在前 800，相似度是 0.000。抽出阶段其实认出了时间，却没有拿去筛；必须出现的词也抽出来了，却没有交给排序；语言条件根本没有实现。改成先过滤再排序后，候选 23 条，目标排第 1，相似度 0.851。LLM 抽出可能在 60 秒超时后返回空对象，空条件与「没有条件」分不出来。套话改走确定性规则，LLM 只做后备。只用时间条件回退时，候选 762 条，目标排第 2（原先在窗口外）。0 命中时的回退会默默返回全部结果，再附一行说明",
+    title: "内部邮件检索先过滤再排序",
     summary: "shinsei99 在约 5 万封内部邮件上，用一条带 3 个条件的问句做检索，目标不在前 800，相似度是 0.000。查下来不是嵌入模型「找不到」，而是抽出的时间条件没用上，必须出现的词也没交给排序，语言过滤根本没有实现。改成先过滤再排序后，候选变成 23 条，目标排第 1，相似度 0.851。LLM 抽出可能 60 秒超时后返回空对象，空条件和「没有条件」看起来一样。套话后来改走确定性规则，LLM 只做后备。只用时间条件时，候选 762 条，目标排第 2。0 命中的回退会默默返回全部结果加一行说明，作者把它写成必须改掉的行为。",
     description: "面向已经把「向量检索没找到」当成模型不行的人：把「目标不在前 800、相似度 0.000，是因为 3 个条件都没有走到排序；先过滤后，23 条里目标第 1、0.851；空过滤与超时返回的 {} 分不出来」写成门禁，区别于只调嵌入模型的实践。",
     categories: [
@@ -65637,7 +65637,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "906",
     slug: "motimo-27of33-3x",
-    title: "motimotinotch：站点更新说明测验 76 问，其中选择题 33 道。没有 skill 时，3 轮都选同一个答案的是 27/33。另一项目 53 问的测验里，每次与作者一致的大约 35 问（「35 问前后」是约数，「三分之二」是同一句判断）。用错过的题做 skill；先写原则没有用。最终 skill 仍有 2/3 把开头按钮改回「改」，是用作者自己的「小改」反过来打的。留出的 25 道选择题（不含已用作材料的题）：无 skill 是 13–17，有 skill 是 16–21，各 3 轮，给的是区间。自由作答分不出来。评分用同一模型 Opus 5.5，版本对外隐藏，但是同一模型在打分，要打折扣。两周后 skill 被调用 14 次；7 次明确建议里，作者接受 4 次、推翻 3 次，skill 从未自动更新。原文「直すか見送るか」应作「改还是先搁下」，不要写成「先发送」",
+    title: "站点更新说明改或搁下技能",
     summary: "motimotinotch 想把「改还是先搁下」交给 skill，先用自己站点更新说明的 33 道选择题做基线：没有 skill 时，3 轮都选同一答案的是 27/33。先写原则没有用，最终 skill 仍有 2/3 把开头按钮改回「改」。留出的 25 道题，无 skill 是 13–17，有 skill 是 16–21，各 3 轮，给的是区间，不是单点。自由作答分不出来。评分用同一模型 Opus 5.5，版本对外隐藏，但同一模型在打分，要打折扣。两周后 skill 被调用 14 次，7 次明确建议里接受 4、推翻 3，skill 从未自动更新。作者写「7 次还很少」。AI 事后写的理由是事后解释，不是已经证明的原因。",
     description: "面向已经想把「改还是先搁下」整段交给 skill 的人：把「无 skill 时 33 道里 27 道三轮相同；留出的 25 道只给了区间；两周里 7 次明确建议接受 4、推翻 3，skill 从未自动更新；「見送る」应作「先搁下」」写成门禁，区别于只看 skill 调用次数的实践。",
     categories: [
@@ -65692,7 +65692,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "907",
     slug: "k2exter-146k-2084t",
-    title: "k2exter：给初学者用的电路 CAD circuitCad。文稿由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。表上 10/14 对 11/10：含测试的 Rust 约 4.9 万行变为约 14.6 万行（标题「约 15 万行」是行文，表是约 14.6 万，不要混用），测试 718 变为 2,084，提交 199 变为 987，样例电路 40 变为 120。几乎全部代码由 AI 写（Sonnet 5.5，11/08 起改用 Opus 5.5）；作者没有编程经验。196 个元件的板从 57ms/帧降到 8ms。测试通过时界面仍可能是错的。DRC 和制板检查是 0 错，但极性与标注的目视问题还在，不要把 DRC 0 写成「没有问题」。11/09 下了第一块评估板。不要把约 15 万行写成表上的精确值",
+    title: "初学者电路设计工具的实现",
     summary: "k2exter 用 Claude Code 做给初学者用的电路 CAD。文稿由 AI 根据 git 历史和日志起草，作者审过，数字来自仓库和记录。从表上的 10/14 到 11/10，含测试的 Rust 约 4.9 万行变为约 14.6 万行，测试 718 变为 2,084，提交 199 变为 987，样例 40 变为 120。标题写「约 15 万行」是行文，不要和表上的约 14.6 万混用。几乎全部代码由 AI 写，作者没有编程经验。196 个元件的板从 57ms/帧降到 8ms。测试通过时，连字符 1e-6 仍可能看起来像 1e 6，符号会重叠，焊盘会超出外形。DRC 和制板检查是 0 错，但目视的极性和标注问题还在。自动布局相关提交约 45 次；10/28 有一段约 1.5 小时、10:13–11:53、失败 3 次后画出能用的图。11/09 下了第一块评估板。",
     description: "面向已经把「测试全绿、DRC 0 错、代码约 15 万行」直接当成可以制板的人：把「表上是约 14.6 万行不是 15 万；测试通过时界面仍可能错；DRC 0 不等于没有问题；文稿由 AI 起草、数字来自仓库；作者没有编程经验」写成门禁，区别于只看行数和检查项的实践。",
     categories: [
@@ -65747,7 +65747,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "908",
     slug: "fukoro-0brk-203-414",
-    title: "fukorohouse：自己的麻将算符应用「符ナビ」上，用 Claude Code、Opus 5.5，三种条件各跑 2 次，加「符计算练习」。A 无 harness、B 有 harness、C 是 B 再加一条对策提示词。三种条件里，坏掉的已有功能都是 0 处。两轮合计：时间 20.3／30.7／41.4 分，token 20.0 万／26.7 万／33.5 万，新增行 1,068／1,466／2,513。C 相对 A 是时间 2.0 倍、token 1.7 倍、代码 2.4 倍。检查步骤事先写进日志，已有测试 1,087 项。不要把 0 处损坏写成对策提示词的功效；作者认为主要原因可能在提示词之外的测试和目录结构，而且没有在无测试的应用上对照。上线的是 B 的版本并去掉了成绩功能",
+    title: "算符练习功能的三种条件写法",
     summary: "fukorohouse 要给「符ナビ」加练习功能，用 Claude Code、Opus 5.5，把无 harness、有 harness、再加上一条针对「画面互相干涉」的对策提示词这三种条件，各用无记忆的新代理、在分开的工作副本上同时做，各跑 2 次。检查步骤在看到结果之前就写进日志：1,087 项已有测试、类型检查、构建要过；计算画面同一手牌的点数不能变；在练习和计算之间来回，输入还在；练习连续 10 问不能停。三种条件里，坏掉的已有功能都是 0 处。差出在代码量和做法：第一轮 C 按提示词把已有 6 个画面零件重写了一遍；A 与 C 会把符最高的拆法当成正确答案，B 只出无论怎么拆符都一样的题。上线的是 B 的版本，并去掉了成绩功能。",
     description: "面向已经想靠一条对策提示词来防止「加功能就拆已有画面」的人：把「三种条件各 2 次，坏掉的已有功能都是 0 处；C 相对 A 是时间 2.0 倍、代码 2.4 倍；0 处损坏不能写成提示词的功效，因为 A 仍带着 1,087 项测试；A 与 C 的正确答案定义和 B 不同」写成门禁，区别于只看 AI 是否自称「没弄坏」的实践。",
     categories: [
@@ -65802,7 +65802,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "909",
     slug: "ihsan-1069-488",
-    title: "ihsan：在 macOS、Claude Code 2.1.280–2.1.288 上，用 type 为 prompt 的 Stop hook 让 LLM 判定「这一轮能不能结束」。2026-09-23 15:22 至 10-03 15:55（日本时间）共 1,069 次判定，其中驳回 488 次（45.7%）。488 次里有 242 次是人还没开口、接着上一次驳回出来的；理由里点名最多的是「中途自己停了」（PARTIAL BY CHOICE）253 次。带评分的记录只有 13 件、共 26 次驳回（占 488 的 5.3%），而且是被驳回的那一侧自己写的：判定役写错 11、理由和判定打架 1、一半对 1、写「正确」的 0。不要把这 13 件当成判定精度。连续第 9 次驳回时，Claude Code 曾两次强行结束回合。与 #881／#882／#887／#889 不是同一扇窗",
+    title: "这一轮能否结束的判定驳回",
     summary: "ihsan 给自作 harness 加了完成门禁：执行役是 Opus 5.5，判定役是未指定模型的 prompt 型 Stop hook。10 天里从会话记录数出 1,069 次判定、488 次驳回。他原先准备「每次发火都评分」的文件里只剩下 13 件、26 次驳回，和全量对不上。这 13 件的评分表是被驳回的一侧写的，记录上「正确」是 0 件，不能当成判定精度；剩下 462 次还没有人评。判定役只能在对话文字里找「可以停下来的证据」，人还没做的决定和正在等的工作都不在文字里。作者的结论是：判定役只当警报，决定权不交给它。硬窗是 10 天里的判定和驳回回数，不是 hook 怎么写。",
     description: "面向已经想把「能不能结束」交给 LLM 判定役的人：把「10 天 1,069 次判定里驳回 488 次；带评分的只有 13 件且是被驳回的一侧写的，记录上正确 0 件，不能当成精度；242 次是连续驳回」写成门禁，区别于只看 hook 能不能拦住结束的实践。与 #881／#882／#887／#889 不是同一扇窗。",
     categories: [
@@ -65857,7 +65857,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "910",
     slug: "emilk-deny-rel-296",
-    title: "emilk1225：在 Windows 10（10.0.19045）、Git Bash、Node.js v24、Claude Code 2.1.296 上实测，项目 .claude/settings.json 的 deny 里用 Edit(../shared/partner/**) 这种相对路径，挡不住往工作目录外的写入。判定看的是要保护的哑文件 SHA-256 在执行前后有没有变，不是看 AI 怎么说。相对路径规则下：Write 6 次里 2 次被改写，Edit、自动放行的 Bash echo 和 node 各 3/3 都被改写；没有自动放行的 Bash echo 是 3/3 被挡住。写成 Edit(//c/<絶対パス>/shared/partner/**) 后，Write 6/6、Edit 3/3、自动放行的 Bash echo 3/3、无自动放行的 Bash echo 3/3 都停住了，但自动放行的 node 仍是 3/3 被改写。没有规则时 Write 是 4/6 被改写。正文把绝对路径写成占位。验证和草稿由 AI 做，数字是作者在自己环境里核对过的",
+    title: "目录外写入拒绝规则的写法",
     summary: "emilk1225 在 Claude Code 2.1.296、非对话的 claude -p、模型 haiku 上，用哑文件的哈希看 deny 能不能挡住工作目录外的写入。deny 写成相对路径 ../ 时，试过的写入路径里，该停的多半没停，启动时也没有警告。改成 //c/ 加绝对路径后，Write、Edit 和部分 Bash 停住了，但自动放行的 node 仍会改写。Write 列里「没被改写」的几次，记录里并没有拒绝，作者判断是模型那一轮没去写，不是规则挡住的，所以 Write 才跑到 6 次。没有测对话模式、macOS／Linux 或其他版本。占位路径不要补成可达链。",
     description: "面向已经在 deny 里用 ../ 把「工作目录外面」写进去的人：把「2.1.296 上相对路径没挡住写入，绝对路径能挡住 Write／Edit，但自动放行的 node 仍是 3/3 被改写；没改写并不等于被拒绝」写成门禁，区别于只看 settings.json 里有没有 deny 的实践。",
     categories: [
@@ -65912,7 +65912,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "911",
     slug: "taka-14sp-6fail-9",
-    title: "taka_s2：用 Claude Code 把「作的人」和「打分的人」分成不同的子代理，打分的人用 Playwright 操作浏览器来判合格。2026-10-06 至 10-18 约两周跑了 14 个冲刺，其中 6 个冲刺至少不合格一次，退回「作的人」一共 9 次。作品数从 49 部增加到 272 部，最后一轮构建警告 0 件。不合格的都是「作的人」已经当成完成交出来的。一个冲刺最多退回 3 次。文中举了未播出的 28 部仍标 ON AIR、对比度起初不到 WCAG 4.5:1（修好后 14 页最小 5.07:1）等例子。完整设置、7 条打分标准和 14 轮合否表放在 note 付费文。正文出现 http://localhost:8890/ ，按占位写出，未作为可达链去核",
+    title: "制作与浏览器打分拆成两役",
     summary: "taka_s2 是大学一年级，给海外动画观众做「哪国哪家平台能看」的站点。他把作和打分分成不同子代理，打分的人必须操作页面，不能只看自我评价；一次只做 1 个冲刺，两边不同时跑。约两周 14 个冲刺里，6 个至少不合格一次，退回一共 9 次。目标曾写 120 部以上，当时能核对播放来源的只有 49 部，「作的人」没有编造作品来凑数。三种配置后来也用在预约系统上，但 14 轮数字只属于这个动画站。合否总表在付费 note 里，免费正文只公开部分例子。",
     description: "面向已经想让同一代理既实现又宣布完成的人：把「14 个冲刺里 6 个不合格、退回 9 次；不合格的都是已经当成完成交出来的；49 部不够目标时没有编造」写成门禁，区别于只看代理说「做完了」的实践。",
     categories: [
@@ -65967,7 +65967,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "912",
     slug: "vellum-35h-limit3",
-    title: "vellum_office：Claude 桌面应用 Code 页上的本地定期任务，从 2026-09-30 早到 10-02 晚约两天半一直被推迟或延误，期间一次错误通知都没有。10 月 1 日 11 点要复查改过的指示，那条一次性任务到 10 月 2 日 21:45 才跑，大约晚了 35 小时。日志里是 global_limit (active=3, limit=3)，正在跑的是 3、偶尔 4，上限 3，没有空位就不开新的。这条记录 9 月 30 日（早 9 点起）出现 8 次，10 月 1 日和 2 日各 14 次；10 月 1 日早上先跑了 6 条，之后就不再开始。原文「見送られた」应作「被推迟／先搁下」，不要写成「先发送」。这与云端定期任务不是同一回事",
+    title: "本地定时任务的并发名额推迟",
     summary: "vellum_office 在整体院里用 Claude 桌面应用的本地定期任务跑事务和发布。约两天半里任务被推迟，错误通知一次都没有。日志给出同时 3 个（偶尔 4 个）的上限已满。当时画面上能看到 3 条还在等他批准：两条一次性任务和前一天的发布；作者环境里，批准等待也会占掉 1 个名额，一直占着。盯着结果的检查任务当时也在同一个名额池里，池子满了，检查也会一起被推迟。10 月 2 日 21:23–21:45 被推迟的任务集中跑起来，为什么那时腾出名额，记录里看不出来。更早从 9 月 13 日就有过短暂推迟，当时没注意到。不要把「同时 3 个」写成官方保证的上限。",
     description: "面向已经在 Claude 桌面应用里开本地定期任务、却以为「没有报错就是在跑」的人：把「约两天半被推迟、一次错误通知都没有；复查任务晚了约 35 小时；日志是 active=3、limit=3；盯梢如果也在同一个名额池里，满了会一起被推迟；「見送る」应作「先搁下」」写成门禁，区别于只看有没有失败通知的实践。",
     categories: [
@@ -66022,7 +66022,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "913",
     slug: "kaku-72-690-745",
-    title: "kakushigoto：用 Claude Code、Sonnet，给 12 道小 Python 题各试「有测试／无测试」，一共 72 次。规格已写在提示或仓库里的 11 道：两组合计 690 个隐藏用例全部 0 失败（实验 1 的 327 个、实验 2 的 363 个，有测试和无测试都是 0）。无测试时，实验 1 有 17/18 次根本没跑 python 也全过；实验 2 有 11/15 次试过、真正核对到的是 7/15。规格只写在测试里的 1 道 slug 题：无测试失败 38/51（74.5%），有测试失败 4/51（7.8%）；整轮全过是 0/3 对 1/3，作者写明这只是 1 问的参考。事先登记「失败率能减半就算好了 2–3 倍」，11 道这边失败率本来就是 0%，作者写「判断できない」。72 次按标价换算合计约 2 美元。实验和草稿由 Claude Code 做，作者过目。环境是 Claude Code 2.1.309。同作者另有 168 次「过期 CLAUDE.md」篇，不是本条",
+    title: "小题目有无现成测试的对照",
     summary: "kakushigoto 想核对「先把测试写进仓库再交给 Claude Code，会不会更容易过隐藏测试」。12 道题都很小，每道在有测试和无测试各跑若干次。11 道的规格已经在提示或仓库里，隐藏测试 690 个全部 0 失败，有没有测试文件看不出差别。无测试时，模型经常根本不去跑 python。只有 1 道题的规格只写在测试里，失败率差一截，但只有这一问，作者不当成结论。作者事先登记的「2–3 倍」在 11 道这边用不上，因为失败率已经是 0%。不要把 74.5% 对 7.8% 写成 12 道的总结果，也不要把 690 个 0 失败写成「有测试更好」。",
     description: "面向已经打算「先把测试写进仓库再交给代理」的人：把「11 道规格已在提示里的题，有测试和无测试都是 690 个用例 0 失败；无测试时经常根本不跑 python；只有 1 道规格只在测试里的题失败率差一截，且只是 1 问的参考」写成门禁，区别于只看有没有测试文件的实践。",
     categories: [
@@ -66077,7 +66077,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "914",
     slug: "madao-0yen-30note",
-    title: "madao1981：约 2026-10-10 至 10-17 这一周，用 5 个代理、5 个 skill、约 3 万字规则，让 Claude Code 写 100 日元的 note 文章并往 Threads 和 X 发。截至 2026-10-15，销售额是 0 日元（「今月の売上0円、未振込0円」）。产出记的是 30 篇 note（已发布 11、未发布 19）、1 篇博客、Threads 20 条、X 3 条；这 30 篇包含本周之前就写好的，小帖未计。各平台数字的统计窗口并不齐：note 累计浏览 95、喜欢 5；来路 note.com 34／无来路 22／X 2／Threads 1（共 59，期间未写清）；Threads 粉丝 10-10 的 95 到 10-15 的 99；夜里发的 note 宣传约 25 小时后浏览 7；手写帖浏览 836、喜欢 9、回复 4；X 3 条把网址写在回复里，展示 1–3。后来改成 1 个代理加 1 个 skill、规则约 4,700 字，并预定 10-18、19、22 发 3 篇免费 Zenn，截至 10-17 还没有反应。正文没有产品硬链",
+    title: "付费笔记一周运营的零销售",
     summary: "madao1981 用一套较重的 Claude Code 配置做一周内容运营，卖 100 日元的 note 文章，并往 Threads 和 X 发。一周后销售额仍是 0 日元。产出数字里的 30 篇 note 包含本周之前就写好的，不要当成这一周新写了 30 篇。浏览、来路、粉丝和单帖展示的统计窗口并不齐，不要加总成一个转化漏斗。夜里那条宣传浏览 7，不要和手写帖的 836 直接对比成败。改配置之后预定的 3 篇 Zenn，到这篇收笔时还没有反应，不要写成已经验证有效。",
     description: "面向已经准备用多代理、长规则去跑内容运营的人：把「一周后销售额 0 日元；30 篇里包含本周之前就写好的；各平台统计窗口并不齐，不能加总成漏斗；改配置后的 3 篇 Zenn 当时还没有反应」写成门禁，区别于只看产出篇数的实践。",
     categories: [
@@ -66132,7 +66132,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "915",
     slug: "go5-865-012-854",
-    title: "go5go69：个人做的 Flutter iOS 游戏「水曜日の電気椅子」，截至 2026-10-29 的近 90 天 Crashlytics，按版本看 FATAL 用户比例。1.4.1 是 8.65%（用户 5,272），1.4.2 是 0.63%（639），1.5.0 是 0.12%（854）；无崩溃用户从 91.35% 到 99.88%。标题里的 8.7%→0.1% 是四舍五入。FATAL 含未捕获的异步异常，不一定是进程退出。1.5.0 刚发布，分母较小。自动提修复 PR 的流水线当时还没对外；0.12% 是此前人工复核加真机确认阶段的结果。现有 GitHub Actions 是每日检测、不调用 LLM；修一条 PR 大约 1 美元、3–6 分钟。环境是 2026 年 10 月、Claude Code 2.1.311、Opus 5.5、Flutter 3.44。近 90 天用户超过 5,000。日本区 App Store 链跟随到中国区 Today，按地区不可用处理，不列入可达",
+    title: "自有游戏崩溃修复与版本对照",
     summary: "go5go69 用 Claude Code 修自己这款 iOS 游戏的崩溃。标题 8.7%→0.1% 来自 Crashlytics 按版本的 FATAL 用户比例：8.65%、0.63%、0.12%。1.5.0 刚发布，854 人比 1.4.1 的 5,272 人少，不要把 0.12% 写成已经在更大样本上稳住。自动提修复 PR 的流水线当时还没对外，0.12% 不是那条流水线已经上线后的数字。每日检测任务不调用 LLM。日本区 App Store 在这次 GET 里跟到了中国区 Today，按地区不可用写出完整 URL 和最后状态，不因为最终 HTTP 200 就写成可达。",
     description: "面向已经准备把崩溃率下降写成「自动修崩溃流水线已经上线」的人：把「1.4.1 的 8.65%（5,272 人）到 1.5.0 的 0.12%（854 人）是按版本的 FATAL 用户比例；自动提 PR 当时还没对外；1.5.0 分母较小」写成门禁，区别于只看标题百分比的实践。",
     categories: [
@@ -66187,7 +66187,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "916",
     slug: "khronov-8t2-300b",
-    title: "khronov：用 Claude API 的 Message threads，系统说明约 3.7 万（后文约 3.8 万）token，同一段 8 轮对话，对比「不用 threads」和「用 threads」各 2 次。标题「约 1/300」是各轮字节中位数之比，约 1/325 到 1/378，不是测到刚好 1/300。第 1 轮字节几乎一样（A 108,983／B 109,010）；第 2–8 轮 A 是 109,466–117,625，B 是 299–344。8 轮合计约 89 万对约 11 万（约 1/8）。首 token 时间和墙钟看不出明显差别；计费 token 除第一次 A 的缓存写入外几乎一样。同一 thread id 立刻再 continue 是 HTTP 400 thread_already_continued；隔 330 秒再 continue 是 HTTP 404 thread_not_found（文档写 5 分钟过期）。platform.claude.com 四条文档均跟随至 app-unavailable-in-region，按地区不可用处理，不列入可达",
+    title: "消息线程与整段重放的请求体",
     summary: "khronov 在同一份约 3.7 万 token 的系统说明上，把 8 轮对话跑了「整段重放」和「Message threads」各两次。标题 1/300 不是 8 轮合计，而是第 2 轮起请求体字节的中位数之比。8 轮加总大约是 1/8，不要和标题混用。延时和计费 token 这组对比里看不出明显变好或变差。thread 不能立刻再 continue，5 分钟后也会找不到。文档链在这次 GET 里落到地区不可用页，不因 HTTP 200 写成可达。",
     description: "面向已经准备用 Message threads 把请求体缩到「约 1/300」的人：把「中位数之比约 1/325–1/378，8 轮合计约 1/8；延时和计费 token 几乎没有差；立刻再 continue 会 400，330 秒后会 404」写成门禁，区别于只看标题倍数的实践。",
     categories: [
@@ -66242,7 +66242,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "917",
     slug: "zumi-96648-24830",
-    title: "zumiraku：Anthropic 2026 年 10 月信用卡账单是 644.32 美元，按 1 美元 150 日元约 96,600 日元。文中台账合计 96,648 日元，以及按用途拆开的次数、金额、占比和缓存命中，都是用构成和量大致相近的合成数据复现的，不是把生产日志原文公开。按用途：A 问询分类 9,336 次／53,483 日元／占 55%／命中 17%／每个可见字约 9.3 个输出 token；C 夜间物件摘要 12,400 次／35,308 日元／37%／命中 0%；B RAG 2,271 次／7,616 日元／8%／命中 0%；D 会议纪要 24 次／241 日元／0%。标题里的 24,830 日元是用同一批合成数据做的 11 月试算，不是已经发生的 11 月账单；标题「にした」容易读成已经降到这个数。试算：C 改走 Batch 后仍是 12,400 次、金额 17,654 日元／占 71%；B 改为 5 分钟缓存后仍是 2,271 次、6,787 日元／27%／命中 18%；A 把日期往回挪、effort 改 low、模型改 Haiku 5.5 后仍是 9,336 次、金额 340 日元／1%／命中 83%；D 把逐字稿拆开后 48 次／49 日元。B 若再开 1 小时缓存，试算合计是 23,884。不要把 9,336 写成日元，也不要把 24,830 写成已经出账的下月账单",
+    title: "月度账单按用途拆开的试算",
     summary: "zumiraku 先对上 10 月信用卡账单 644.32 美元（按 150 约 96,600 日元），再在构成相近的合成数据上复现台账 96,648 日元，并按 4 条用途拆开次数和金额。24,830 日元是同一批合成数据上的 11 月试算，不是已经发生的账单；标题「にした」不要当成已经降下来。9,336、12,400、2,271、24 是次数，对应的日元是 53,483、35,308、7,616、241，不要把次数写成金额。试算里的模型、Batch、缓存和日期改写，都还没有按这个组合再出过一个月的账单。可选的 1 小时缓存会把试算改成 23,884，也不要和 24,830 混成已经发生的数。",
     description: "面向已经准备按标题把账单从 9.6 万降到 2.5 万的人：把「信用卡账单 644.32 美元是实账；96,648 和分项是合成数据上的复现；24,830 是同一批数据上的 11 月试算，不是已经出账的下月账单；9,336 等是次数、不要当成日元」写成门禁，区别于只看标题前后两个金额的实践。",
     categories: [
@@ -66297,7 +66297,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "918",
     slug: "tanashun-mcp-120s-bg",
-    title: "tanashun：用 Claude Code 2.1.294 的 claude -p，以及 tanacode 开发里核对过的 2.1.288 对话画面，实测 MCP 工具 wait_for_human 在等人操作时的后台转移。默认会在 120 秒把调用移到后台；环境变量都不加时，让工具等 130 秒，会在移到后台之前就在 60 秒被打断，报 MCP server \"slow\" tool \"wait_for_human\" timed out after 60s，并向 MCP 服务器发出 notifications/cancelled。把等待上限调到 5 分钟（MCP_TOOL_TIMEOUT=300000）后再等 130 秒，才会在 120 秒移到后台。把 CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS 设成 5 秒、工具等 10 秒时，5 秒移到后台、10 秒返回结果；移到后台并不会取消工具，结果以新一轮的 task-notification 回来。2.1.288 对话画面里记到的默认上限曾是约 27 小时（1e8 毫秒），与 2.1.294 的 -p 默认 60 秒不同，等人的工具要把 timeout 写死",
+    title: "等人操作工具的超时与转后台",
     summary: "tanashun 做了一个等人指定秒数再返回的 MCP 工具 wait_for_human，用 Claude Code 2.1.294 的 claude -p 实测后台转移，并在 tanacode 开发里用 2.1.288 的对话画面核过同样行为。环境变量都不加、工具等 130 秒时，还没到 120 秒就会在 60 秒被 MCP_TOOL_TIMEOUT 打断。把上限调到 300000 毫秒后再等 130 秒，才会在 120 秒移到后台。用 5 秒后台阈值、工具等 10 秒的短窗，5 秒移走、10 秒结果以新一轮通知回来，工具本身没有被取消。mcp.json 里把服务器 timeout 调到 10 分钟后，等 70 秒的工具也可以正常返回。版本和启动方式会改变默认上限，不能把 60 秒或 27 小时写成所有环境的默认值。",
     description: "面向已经想给 Claude Code 接「等人点一下再继续」的 MCP 工具、却只按 120 秒后台规则来设超时的人：把「不加环境变量时，130 秒的等待会在 60 秒被打断；MCP_TOOL_TIMEOUT=300000 时才会在 120 秒移到后台；移到后台不会取消工具，结果以新一轮通知回来；2.1.294 的 -p 与 2.1.288 对话画面默认上限不一样」写成门禁，区别于只抄 120 秒这个数字、却没量过更短的工具等待上限的实践。",
     categories: [
@@ -66352,7 +66352,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "919",
     slug: "hasumi-15m-5man-0tok",
-    title: "hasumi（蓮美）：用自写的 Figma 开发用插件「监视模式」，把 Claude Code 往 Figma 灌画面的流程，从「每条 10–15 分钟、约 5 万 token」降到「数秒到 2 分钟、几乎 0 token」。连跑 7 条流程、共 244 框的实测：监视模式在 Figma 内合计约 3 分钟、含等待约 5 分钟、几乎 0 token、不用人操作；同样的量用旧方式大约 70–105 分钟、约 35 万 token，还要人贴。旧方式的 use_figma 窗口最多 50,000 字，流程 10 的 JS 合计 73,669 字要拆成 4 本，每本还要手抄 15,000–25,000 字。压成 28,744 字（约 39%）仍要手贴。改成插件去本地取以后，这 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按的试验跑了 3 次，约 25 分钟、约 45 万 token，只灌进 1 本 JS，已放弃。作者写明做这套机制的费用还没收回",
+    title: "Figma画面改为插件本地拉取",
     summary: "hasumi 原先让 Claude Code 经 MCP 的 use_figma 窗口，把生成的 JS 贴进去在 Figma 上执行：每条流程 10–15 分钟、约 5 万 token；全部 12 条流程若重跑一遍要 2–3 小时。窗口上限 50,000 字，流程 10 的 JS 有 73,669 字，必须拆成 4 本，每本还要抄 15,000–25,000 字，末尾还可能缺。压缩能把流程 10 收到 28,744 字（约 39%），结构仍是手贴。后来把 JS 放到本地 serve.py，由开发用插件来取：流程 10 的 4 本全部成功、50 框、抄写错误 0，只剩按一次「执行」（约 1 分钟）。让 AI 代按试了 3 次，约 25 分钟、约 45 万 token，只灌进 1 本，已放弃。监视模式把插件开着，工作来了自己取；7 条流程、244 框的实测是 Figma 内约 3 分钟、含等待约 5 分钟、几乎 0 token。作者写明做这套的费用还没收回。Figma 不在平台枚举里，platforms 只记 claude。",
     description: "面向已经想靠「再让 AI 把 JS 贴进 Figma」来省时间的人：把「7 条流程、244 框时，监视模式含等待约 5 分钟、几乎 0 token，旧方式大约 70–105 分钟、约 35 万 token；让 AI 代按的 3 次约 25 分钟、约 45 万 token，只灌进 1 本 JS；做这套的费用还没收回」写成门禁，区别于只看单条流程从 10–15 分钟降到数秒、却没把连跑和失败试验算进去的实践。",
     categories: [
@@ -66407,7 +66407,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "920",
     slug: "playpark-fda-pinpath",
-    title: "playpark：在 mise 安装的 Claude Code v2.1.292 上，每次更新后，macOS「完全磁盘访问」列表里的 claude 都会多一行，还要再点一次「允许」。原因是安装路径随版本变（mise 在 installs/claude-code/<版>/，原生安装在 ~/.local/share/claude/versions/<版>/，Homebrew cask 在 Caskroom/claude-code/<版>/），系统把它当成新应用。作者环境里 codesign 只有标识符 com.anthropic.claude-code 和 Team ID，不含版本号。把实体复制到固定路径 ~/.local/opt/claude-code/claude，并在 ~/.zshrc 里用函数让每次启动先跑 pin-claude.sh；已经固定就立刻退出，一次约 57ms。用 -ef 判断「是否已固定」，因为按字符串比较时，作者自己把 claude 写成了指向自己的链接、启动失败过。不用 launchd 定期跑，是因为更新之后、任务跑起来之前那一次仍会弹窗、列表再长一行",
+    title: "完全磁盘访问的安装路径固定",
     summary: "playpark 用 mise 装着 Claude Code v2.1.292。更新之后，「隐私与安全性 → 完全磁盘访问」里的 claude 会多一行，每次都要再点允许，也不好判断哪一行才是正在用的。CLI 的这项许可按实体路径一行；mise、原生安装和 Homebrew cask 都会把新版本放到带版本号的目录，路径一变就被当成新应用。作者先看 codesign，自己环境里只有 com.anthropic.claude-code 和 Team ID，没有版本号，这才把实体复制到 ~/.local/opt/claude-code/claude，原路径改成指向固定路径的链接。启动时用 shell 函数先跑 ~/.local/bin/pin-claude.sh，失败也继续启动 claude；已固定则什么都不做，一次约 57ms。按字符串判断「已经固定」时踩过把实体写成自指链接的坑，所以改用 -ef。不用 launchd，是为了避免更新后、定时任务跑起来前那一次再弹窗。TCC 数据库不公开，路径解释是观察，不是 Apple 规格。",
     description: "面向已经想靠「更新后再点一次允许」或用定时任务去清列表的人：把「许可是按实体路径一行；作者环境的签名不含版本号，才用固定路径 ~/.local/opt/claude-code/claude；每次启动先跑脚本约 57ms；按字符串判断已经踩过自指链接；launchd 仍会漏掉更新后的那一次」写成门禁，区别于只写「把路径固定就行」、却没核过签名是否带版本号的实践。",
     categories: [
@@ -66462,7 +66462,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "921",
     slug: "ryo-9d-1004-rmhome",
-    title: "ryodevapp（リョウ）：2026-10-07 深夜，正在给脚本加「参数如果是家目录就停」的防护时，估计是子代理在写防护之前先跑了测试，测试把真正的家目录传了进去，Mac 家目录里的文件被成批删掉。尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分日志里没有、取不回来。作者认为 hook 和 deny 只看 Claude 打出的那一行命令，看不到脚本里面传给 rm -rf 的路径，所以主要对策是打开 OS 沙箱（sandbox.enabled: true，allowUnsandboxedCommands: false）和把备份放在 Mac 之外；deny 与 hook 只当辅助。截至 2026-10-19，环境是 macOS、Claude Code CLI 2.1.292 与 VS Code 扩展；设置、hook 和 68 项测试放在 github.com/ryodevapp/claude-code-guards。硬窗是这次删除和约 9 天的丢失，不是 hook 机制本身",
+    title: "家目录误删之后的沙箱对策",
     summary: "ryodevapp 在 2026-10-07 深夜让 Claude Code 继续开发时，家目录里的文件被成批删除。作者估计原因是：给脚本加「参数如果是家目录就停」的防护时，子代理还没写下这条防护就先跑测试，测试传入了真正的家目录。尚未 push 的约 9 天提交连同本地 .git 一起没了；从对话日志取出 1,004 个文件，子代理写过的部分不在日志里。作者写明，Claude Code 执行前的判定和自写 hook 看见的都只是那一行命令，看不见脚本里传给 rm -rf 的路径。之后把主要对策改成 OS 沙箱和 Mac 之外的备份，deny 与 hook 只当辅助；并规定删除测试只在各次测试的临时目录里跑。截至 2026-10-19 是 macOS、CLI 2.1.292 与 VS Code 扩展，仓库里有 68 项测试。与 #881／#882／#887／#889／#909 不是同一扇窗。",
     description: "面向已经想靠 hook 或 deny 来挡住「删掉家目录」的人：把「2026-10-07 深夜的删除、尚未 push 的约 9 天提交连同 .git 一起没了、日志里取出 1,004 个文件但子代理写过的部分取不回来；hook 只看见那一行命令；主要对策后来改成 OS 沙箱和机外备份」写成门禁，区别于只讨论 hook 写法、却没有这次丢失窗口的实践。",
     categories: [
@@ -66517,7 +66517,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "922",
     slug: "itpl-10-m365-wam",
-    title: "it_templates：在 Windows 本机（不是 WSL）用 Claude Code 做 Microsoft 365／Intune／Graph 管理时，把 2026 年 9–10 月记下的 10 个卡住点写成了一张表。当时手头是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0；命令是 Git Bash 与 pwsh 两套，浏览器操作用 Claude in Chrome。交互式登录会在 WAM 上报「A window handle must be configured」失败；改用设备代码后，码会在 120 秒过期。另外还有：每次调用是新进程所以登录和变量会丢、5.1 与 7 用混、提权没有反应、字符串里的 $ 被解析、只改一行 diff 却变成整文件、Python 写回变成全文件 CRLF、经 Bash 的 Python 把 \\\\ 收成 \\、Git Bash 的 date 是 UTC、管理中心 iframe 里取不到元素、截图会停",
+    title: "本机微软管理的十个卡住点",
     summary: "it_templates 不经过 WSL，直接在 Windows 上跑 Claude Code，做 Microsoft 365、Intune 和 Graph 管理，记录是 2026 年 9–10 月的，写稿时手头是 PowerShell 7.6、Microsoft.Graph.Authentication 2.39.0。10 个卡住点里，交互式登录会撞上 WAM 的 A window handle must be configured，改用 -UseDeviceCode 后，码会在 120 秒过期，继续用就要改证书。每次工具调用是新进程，上一轮的登录和变量会丢，需要把登录和处理写在同一次调用里。PowerShell 5.1 跑不了 Graph，含日文注释还会解析失败，要改用 pwsh，5.1 用的脚本则要带 BOM 的 UTF-8。Start-Process -Verb RunAs 往往没有反应；\"$vm: …\" 会变成语法错误。换行被改掉时，只改一行也会出现整文件 diff；经 Bash 再调 Python 时，\\\\ 会变成 \\。管理中心的页面在 iframe 里，元素取不到、截图会停，作者改成直接链接和按坐标点，并把标签页拿到前面。",
     description: "面向已经想在 Windows 上直接把 M365 管理交给 Claude Code 的人：把「2026 年 9–10 月记下的 10 个卡住点，其中交互式登录会在 WAM 失败、设备代码 120 秒过期、每次调用是新进程、5.1 与 7 不能混用、管理中心 iframe 里取不到元素」写成门禁，区别于只给一套 Graph 调用示例、却没写这些失败条件的实践。",
     categories: [
@@ -66572,7 +66572,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "923",
     slug: "hyodo-8gb-380gb",
-    title: "hyodoblog（ひょうどう）：并行把活交给 Claude Code 和 Codex、每次都长出 Git worktree 之后，MacBook Air 的剩余空间一度只剩 8GB。用 Claude Code 边查边清，du 看到：167 个仓库的 .turbo 约 170GB（单个最大 72GB）、Docker.raw 约 115GB、~/Library/Caches 约 50GB、各仓库 .next 约 47GB、pnpm store 约 45GB、~/.npm 约 33GB。开始清理前 df 已是 13GB。按步：包管理器缓存 13→62GB，Docker 构建缓存和未用镜像 62→116GB，.turbo 与 .next 116→335GB，Xcode 缓存等 335→341GB，未用 Docker 卷 341→362GB，不用的 node_modules 和已合并 worktree 356→382GB，最后大约回到 380GB。作者写明其他应用也在写磁盘，这些是约数；客户仓库名已打码",
+    title: "并行工作树与缓存挤占磁盘",
     summary: "hyodoblog 最近常并行把活交给 Claude Code 和 Codex，每次都长出 Git worktree，MacBook Air 的剩余空间一度只剩 8GB。用 Claude Code 先 du 再按步清理。占得最多的是 167 个仓库里的 .turbo，约 170GB，单个最大 72GB；其余是 Docker.raw 约 115GB、Caches 约 50GB、.next 约 47GB、pnpm store 约 45GB、npm 缓存约 33GB。开始动手前 df 已经从 8GB 变成 13GB。一步步清完，最后一步从 356GB 到 382GB，作者写成大约回到 380GB。中间从 362GB 到 356GB 有过回落，作者写明其他应用也在写，数字只是约数。客户仓库名已打码。Codex 不在平台枚举里，platforms 只记 claude。",
     description: "面向已经想靠「再开一个 worktree 并行干活」却发现盘快满了的人：把「一度只剩 8GB，开始清理前是 13GB，du 里 .turbo 约 170GB，清理后大约回到 380GB；这些是 df／du 的约数，不是一张已经扣掉其他应用写入的精确账单」写成门禁，区别于只说「清一下缓存就行」、却没有分项体积和逐步 df 的实践。",
     categories: [
@@ -66627,7 +66627,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "924",
     slug: "acs-dot-cid-400",
-    title: "acs_developer：把 YouTube 评论分类迁到 Anthropic Message Batches API 时，想把评论 ID 直接放进 custom_id，但回复评论的 ID 会用 . 把父线程和回复拼起来。在 anthropic Python SDK 2.3.0 上，用 max_tokens: 1、模型 claude-haiku-5-5，只改 custom_id、每次 1–4 条探测。2026-10-30 实测，五种都在 0.3–0.4 秒内返回 HTTP 400、invalid_request_error：带点的（Ugx3abcDEF.8xyz，文中写明是占位）、65 个字符、日文「コメント1」、重复的 c0、空字符串。把 2 条合法 ID 和 2 条带点的混在一起，整个批次创建失败，随后 batches.list() 也没有增加；报错只提到第一条坏的（requests.2），requests.3 同样不合法但不会出现在消息里。创建阶段被拒，不会计费。作者后来改成批次内连号当 custom_id，原 ID 对表放在本地",
+    title: "批次自定义编号的字符合法性",
     summary: "acs_developer 把 YouTube 评论分类改走 Message Batches API，一开始想把评论 ID 直接当作 custom_id。回复评论的 ID 里会有点。用 anthropic Python SDK 2.3.0，每次只打 1–4 条、max_tokens: 1、模型 claude-haiku-5-5。2026-10-30 五种探测都在 0.3–0.4 秒内返回 HTTP 400：带点、65 字符、日文、重复、空字符串，都是 invalid_request_error。规则可归纳成：只能用英数字、下划线和连字符，长度 1–64，同一批次里不能重复。把 2 条合法 ID 和 2 条带点的混在一起，整个批次都创建不了，list() 也不增加；报错只露出第一条坏的。创建阶段被拒，不会计费，但定时任务会在混进一条回复的那天整批停掉。SDK 的 Request 类型在客户端不做格式检查。作者后来改用连号，对表放在本地。这与 #916 看的请求体比例和线程 TTL 不是同一扇窗。",
     description: "面向已经想把外部 ID 直接放进 Message Batches custom_id 的人：把「2026-10-30 五种探测都是 HTTP 400；2 条合法加 2 条带点的会让整个批次都创建失败，报错只提第一条；不会计费，但那天的任务会整批停掉」写成门禁，区别于只抄 ^[a-zA-Z0-9_-]{1,64}$ 这条规则、却没量过混进一条非法 ID 会发生什么的实践。",
     categories: [
@@ -66682,7 +66682,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "925",
     slug: "candy-26d-52200",
-    title: "candynex：用 Gemini 做原案、Claude Code 做实现和维护，26 天（实际开工 22 天）、198 次提交，做成 Steam 游戏《戦う情報システム部》v1.0。C#（Unity＋终端引擎）约 52,200 行、137 个文件，作者写明手写 0 行；Python（剧本生成和检查）约 10,900 行、18 个文件；冒烟测试 1,646 项（含 104 话和隐藏关的通关检查）；Linux 命令 80 种；本篇 104 话，另有入职培训和隐藏关。Claude Code 输入约 47.3 亿 token（缓存 98.6%）、输出约 1,140 万。变更记录 167 条、手测步骤 121 节。文中还写了实际踩过的 7 个坑，其中包括检查脚本在「读到 0 件」时判合格，以及 TextMeshPro 上限 16,383 个被小改动堆满。商店定价 Windows 版 480 日元，发售起 7 天 15% 优惠为 408 日元；Steam 审核因 AI 使用披露的英文栏偏短和胶囊图文字规定退回 2 次，构建审核后已通过",
+    title: "Steam信息部门游戏的商店上架",
     summary: "candynex 用 26 天（实际开工 22 天）、198 次提交，把《戦う情報システム部》做到 Steam。v1.0 的仓库数字是：C# 约 52,200 行、137 个文件，手写 0 行；Python 约 10,900 行、18 个文件；冒烟测试 1,646 项；Linux 命令 80 种；本篇 104 话，另有入职培训和隐藏关。Claude Code 输入约 47.3 亿 token，缓存 98.6%，输出约 1,140 万。原案和选技术时用过 Gemini，实现和维护走 Claude Code。7 个坑里包括：检查脚本在读到 0 件时判合格、被默默丢掉的配置键、TextMeshPro 上限 16,383、成绩保存从第一次提交起就坏了、要用 WSL 实机而不能只靠知识回答「是不是和实机一样」、让模型自己报告提议的前提错了，以及模型看不见画面。Steam 审核退回 2 次后已通过。Gemini 不在平台枚举里，platforms 只记 claude。",
     description: "面向已经想靠「一行都不手写、再堆 token」来估算能不能做出上架游戏的人：把「26 天、约 52,200 行 C#、1,646 项冒烟、Claude Code 输入约 47.3 亿 token（缓存 98.6%）；检查脚本曾经在 0 件时判合格；Steam 审核退回 2 次」写成门禁，区别于只看标题「26 日で 5.2 万行」、却没把缓存占比、开工天数和这 7 个坑算进去的实践。",
     categories: [
@@ -66737,7 +66737,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "926",
     slug: "vesuv-120-116-15m",
-    title: "ViewsEngineer：用 Claude Code（提交写 Co-Authored-By: Claude Opus 5.5）给 Vesuvius Challenge 做约 9.36 µm 与 2.4 µm 两次 CT 扫描的仿射对齐。作者写方向、核结果。组织外的参加者在拟合没用到的点（held-out）上独立测到的中位数，是相对已有目录变换的 1.35／1.50 体素，这次是 1.20／1.16 体素；手动摆标志点改成一条命令、约 15 分钟自动跑。PR 是 https://github.com/ScrollPrize/villa/pull/2374 ，文中写明截至 2026-11-02 仍 OPEN、未合并。工作仓库是 https://github.com/yuichi916/vesuvius-9um-vs-2p4um 。PR 交出去 27 小时后，组织外的参加者在自己机器上复现，指出 3 个问题，其中一个是 in-sample 残差里原则上看不到的系统性偏移；修好的版本在交出去 46 小时后，由同一人在另一卷上确认",
+    title: "两次CT扫描体积的仿射对齐",
     summary: "ViewsEngineer 要在 Vesuvius Challenge 里，把约 9.36 µm 扫描上描出的面，写到 2.4 µm 的扫描上，需要两次体积之间的仿射变换。代码由 Claude Code 写，方向和核对由作者做，提交都写了 Co-Authored-By: Claude Opus 5.5。组织外的参加者在 held-out 点上独立测到的中位数，是 1.20／1.16 体素，对照已有目录变换的 1.35／1.50 体素；自动跑大约 15 分钟。PR #2374 在 2026-11-02 仍是 OPEN、未合并。交出去 27 小时后，组织外的参加者复现并指出 3 个问题，其中一个是 in-sample 残差里看不到的系统性偏移；修好的版本在 46 小时后由同一人在另一卷上确认。正文里的两条公开 zarr 前缀，本次 GET 均为 HTTP 404（NoSuchKey），不列入可达。",
     description: "面向已经想把「自动对齐比目录里的变换更准」写成结论的人：把「held-out 中位数 1.20／1.16 对 1.35／1.50 体素，约 15 分钟自动跑；PR 在 2026-11-02 仍未合并；交出去 27 小时后被指出 3 个问题，其中一个是 in-sample 看不见的系统性偏移，46 小时后在另一卷上确认」写成门禁，区别于只看作者自己的 in-sample 残差、或把尚未合并的 PR 写成已经进主线的实践。",
     categories: [
@@ -66792,7 +66792,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "927",
     slug: "automos-233-13succ",
-    title: "AUTOMOS：用 claude -p --output-format stream-json 跑定时任务时，2026-11-01 早上连续 4 次的 result 行都是 subtype=success、is_error=true、terminal_reason=api_error，文案是 OAuth session expired and could not be refreshed，total_cost_usd=0、num_turns=1。只看 subtype 会把这些当成成功。作者把自己用早／午／晚命名的执行记录读到 2026-11-02 中午：有 result 行的是 233 次（同一时段另有启动记录 254 次，不是同一分母）；24 个文件有多条 result，只计最后一行。233 次里 subtype 全是 success：is_error=true 13 次、false 220 次，没有一次是 success 以外的 subtype。13 次失败里 billing_error 7、authentication_failed 5、rate_limit 1；这 13 次都是退出码 1、工具执行 0 次、费用 0，duration_ms 143–982。220 次里，工具执行再少也有 10 次；能把退出码对上的 217 次全是 0。另有 16 份记录根本没有 result 行（13 份在 result 之前结束，3 份是 0 字节）",
+    title: "定时任务成功行中的错误标志",
     summary: "AUTOMOS 用 claude -p 的 stream-json 做无人定时任务。2026-11-01 早上连续 4 次，result 行都是 subtype=success 且 is_error=true，原因是 OAuth 过期，费用 0。作者把有名字的执行记录读到 2026-11-02 中午，有 result 行的 233 次里，subtype 全部是 success：失败 13 次、成功 220 次，没有一次靠 subtype 就能分开。13 次是余额不足 7、认证失败 5、限流 1，都是退出码 1、没跑过工具、费用 0，耗时 143–982 毫秒。同一时段的启动记录是 254 次，不是 233 的分母；24 个文件有多条 result，只计最后一行。还有 16 份记录没有 result 行。OAuth 那 4 次当天的标准错误是 0 字节，失败句子只在标准输出里。只看 subtype 或只看 result 行，都会漏掉这些形状。",
     description: "面向已经想靠 result 行的 subtype=success 来判断 claude -p 是否成功的人：把「233 次有 result 的记录里，失败的 13 次 subtype 也是 success；同一时段启动 254 次不是同一分母；还有 16 份根本没有 result 行；标准错误在 OAuth 失败那天是 0 字节」写成门禁，区别于只看 subtype 或只解析最后一行 JSON、却没有自己台账的实践。",
     categories: [
@@ -66847,7 +66847,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "928",
     slug: "seki-2p5mo-5fail",
-    title: "sekimon：从 2026 年 8 月起约两个半月，兼职行政几乎都交给 Claude Code，并把失败全部写成有日期的台账。失败 1 是规则改定当天模型把该协议的判断自行标成「对象外」。失败 2 是同一天里台账行号至少过时 4 次（1309→1333、1478→1502、1749→1756、2126→2154）。失败 3 是「当方」四天后回到稿里，因为这条指示没写进台账；空白审查者一次给出 5 条，其中 2 条已经定过。失败 4 是「先跟审计役协议再交给人」的当天，一天交出 17 件决定，人只推翻 3 件，且这 3 件全是与台账已有决定不一致的 (b) 类。失败 5 是模型没看设置页就断言「请你去申请提现，截止日期是明天」，账户其实已是随时出金、操作并不需要。作者的结论是「下次小心」改不了，只能把判定放到被规制的一侧之外",
+    title: "兼职行政失败的逐条日期台账",
     summary: "sekimon 从 2026 年 8 月起约两个半月，用正典、带日期的台账、只做判断的审计役子代理，以及每两小时一次的自动巡查来跑兼职行政，并写明失败全部实测。规则改定当天就出现自我分类豁免；同一天台账行号至少过时 4 次；「当方」因没进台账四天后回来；一天 17 件里人只推翻 3 件，且全是 (b) 类；提现截止日期是没看屏幕就编出来的。作者后来用形式而不是件数上限划定该问人的 5 类事项，并要求能查的都先查、外部数字必须带实测日。这些是这一段兼职行政上的台账，不可外推到别的业务或其他编排。",
     description: "面向已经把兼职行政几乎交给 Claude Code、却只在提示里写「先商量、下次小心」的人：把约两个半月里实测的 5 种失败，以及行号过时、一天 17 件里只推翻 3 件、编造提现截止日期写成门禁，区别于只劝人多写规则、却没有台账和对失败计数的实践。",
     categories: [
@@ -66902,7 +66902,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "929",
     slug: "otk-effort-5d-295",
-    title: "otkshol：在 Claude Code v2.1.281 把 effort 设成 max 时，界面提示像是已经存成默认，重启后却回到 medium。不保存本身是规格，max 只在当前会话有效；会让人读成「已保存」的确认文案才是缺陷。作者在 2026-10-04 用一次性配置目录和空工作目录，于 macOS 26.5.1 arm64 zsh、Homebrew cask 的 v2.1.288 上复现，并起票说明文案。相关已有 issue 是 settings.json 的 effortLevel 不接受 max。投稿 3 天后贡献者回复，5 天后的 v2.1.295 官方 CHANGELOG 写明了修正。正文截图和复现步骤都是修正前的样子",
+    title: "最高力度看似已存的确认文案",
     summary: "otkshol 在 v2.1.281 把 effort 设成 max 时，看到像是已保存的确认，重启后却回到 medium。对照已有 issue 和文档后确认：max 不写入默认是规格，会让人读成「已保存」的文案才是要报的缺陷。2026-10-04 在干净目录的 v2.1.288 上复现，起票后 3 天有回复、5 天后出现在 v2.1.295 的 CHANGELOG。这是这一份版本和这一次报告上的记录，不可外推到其他版本或其他 effort 等级。",
     description: "面向已经把 effort 设成 max、却把「界面说已保存」当成默认值真的写入了的人：把「max 不跨会话保存是规格，会让人读成已保存的确认文案才是缺陷，并且在 v2.1.288 干净目录里复现、5 天后写入 v2.1.295 CHANGELOG」写成门禁，区别于只抄「max 存不住」却没核过文案和修复版本的实践。",
     categories: [
@@ -66957,7 +66957,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "930",
     slug: "waiteu-11hub-4acc",
-    title: "waiteu：一人同时开着十几本 Claude Code 会话，2026 年 8 月时经常开着的枢纽是 11 本。在桌面应用 Code 标签里，2026 年 7 月至 9 月记下 4 次会话之间的联络事故。(1) 已知事实未送回等待侧：7 月 30 日同形失败 3 次，含服务器担当枢纽在定时处理其实已经成功后仍空等 8 小时；3 件里有 2 件是统筹枢纽已经知道事实、却没告诉正在等待的一侧。(2) 写的人中途停下或宛先错了：9 月 2 日至 4 日核对的 4 件芯片完成报告全部进了另一台电脑留下的同名旧行，发送侧看起来仍是成功；另 1 件是芯片做完成果后碰到用量上限、报告还没写完就停了，源文写明是「別の1件」，不要算进这 4 件，也不要算成 4 次事故之一。(3) 把宛先编号本身弄错，共 3 种——2026-07-29 列表过时，向 8 本枢纽发送均因已归档被拒；2026-09-04 把对话日志／路径里的 UUID 当成会话 ID，发送报找不到；2026-08-15 定时任务里 send_message 根本不能用。(4) 9 月 23 日至 24 日把发布作业直接交给统筹枢纽后，它把本该由开发枢纽做的事全部自己做完，跨担当的转述反而变薄。同一时期改用把成果写进提交说明、再用 git log 读取的接收方式，则是 4 件里 4 件都收到。这些观察绑在这一段桌面应用 Code 标签上的用法，版本变了动作也可能变",
+    title: "多个枢纽会话之间的传话事故",
     summary: "waiteu 在 2026 年 8 月经常同时开着 11 本枢纽，并在 7 月至 9 月的桌面应用 Code 标签里记下 4 次联络事故：已知事实未送回等待侧（7 月 30 日同形失败 3 次，含空等 8 小时；3 件里有 2 件是统筹枢纽已知却没转告）；写的人中途停下或宛先错了（9 月 2 日至 4 日 4 件芯片报告全部进了同名旧行；另 1 件碰到用量上限、报告未写出就停了，不要算进这 4 件，也不要算成 4 次事故之一）；把宛先编号本身弄错（2026-07-29 向 8 本枢纽发送均因已归档被拒、2026-09-04 把日志／路径里的 UUID 当成会话 ID 而找不到、2026-08-15 定时任务里 send_message 不能用）；以及 9 月 23 日至 24 日统筹枢纽把发布作业全部自己做完，转述变薄。同一时期用提交说明接收的 4 件全部成功。这是这一段用法上的观察，不可外推到其他客户端或其他版本。",
     description: "面向已经并排开着十来本 Claude Code 会话、却只靠「做完了请报告」来交接的人：把 11 本常开枢纽，以及源文对照表里的 4 次联络事故——未送回等待侧、报告进同名旧行（另 1 件用量上限不要混进这 4 件、也不要算成 4 次事故之一）、宛先编号取错的 3 种、统筹枢纽把发布作业全部自己做完——写成门禁，区别于只讲枢纽怎么分、却漏掉事故 3 或把用量上限那 1 件提成 4 次之一的实践。",
     categories: [
@@ -67012,7 +67012,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "931",
     slug: "okawa-b200-18-17",
-    title: "kazuki2929（okawa2929）：租用 1 张 NVIDIA B200，用 OpenCode 比较 Qwen3.5-122B、gpt-oss-120b 与 Claude Code。18 道较小的修 bug／加功能题里，Qwen3.5-122B 有 17 道测试全绿，Claude Code 是 18 道全绿；6 道同时做时，处理时间约为 Claude Code 的 2.6 倍。作者估计 1 张 B200 上 Qwen3.5-122B 实用并发大约 16 人，OpenCode 里实际核到的只有 8 人。这次租用 4 小时 52 分，按 GPU 7.99 美元加磁盘 0.05 美元、即每小时 8.04 美元计，约 39 美元（按 1 美元 150 日元约 5,900 日元）。常时租用约 87 万日元／月、按 64 人折合每人约 1.4 万日元／月，是假设价格不变后的估算，不是账单。摘要里补写会议纪要里没有的内容，比 Claude 的两个模型更多。页会转到 solvio 出版物",
+    title: "租用显卡比较本地与云端编码",
     summary: "kazuki2929 用 1 张 B200 做了 18 道小题：Qwen3.5-122B 17 道测试全绿，Claude Code 18 道全绿；6 道同时做时时间约为 2.6 倍。实用并发估计 16 人，OpenCode 里核到的是 8 人。实测租金是 4 小时 52 分约 39 美元；按月折合的 87 万日元和 64 人人均是估算。这是这一次租用和这一组小题上的结果，不可外推到其他 GPU、其他题或别的并发方式。",
     description: "面向已经在考虑用本地大模型替换 Claude Code、却只有公开跑分没有自己小题和并发数字的人：把 18 道里 17 对 18、6 道同时约 2.6 倍时间、估计 16 人与实际核到 8 人、以及 4 小时 52 分约 39 美元的租金写成门禁，区别于把按月折合的估算写成已经付过的账单的实践。",
     categories: [
@@ -67067,7 +67067,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "932",
     slug: "hiro-3925-1330pr",
-    title: "hirockysan：个人游戏集「あそびば」把 Claude Code 当「社长」，人只做会长的批准和实机 QA。数字截止 2026-10-15：首个提交 2026-06-17，首次发布 6 月 25 日，把 AI 扶正为社长是 8 月 10 日。各月全分支提交／向 main 的 first-parent 合并是 6 月 72／20、7 月 5／0、8 月 585／71、9 月 2,193／154、10 月（到 15 日）1,070／110。合计提交 3,925，已合并 PR 1,330 本；issue 起票 916、完成 885、剩下 31。商店公开版从 8 月 29 日 v1.1.0 到 10 月 12 日 v1.1.11，45 天里更新 12 次。实测 PR 从创建到合并平均 21 分钟，其中 CI 约 10 分钟。值班脚本由 launchd 每 3 分钟（StartInterval 180）拉起，最多 2 个槽同时跑。失败里包括：已写「暂缓合并」却在 17 分钟后被合入；7 本新游戏并行时注册文件冲突；本以为在云上跑的重测量其实在本地 5 路并行，负载到了 49。PreToolUse hook 只是后来挡住破坏性命令的装置之一，不是本条硬窗",
+    title: "个人游戏集交给代理当社长",
     summary: "hirockysan 把 Claude Code 当社长运营个人游戏集，数字截止 2026-10-15：合计 3,925 次提交、1,330 本已合并 PR，issue 916／885／31；商店版 45 天更新 12 次；PR 从创建到合并平均 21 分钟，其中 CI 约 10 分钟。7 月几乎停住，8 月换体制后才加快。这是截止 10 月 15 日这一份仓库和商店记录，不可外推到其他应用或其他编排。",
     description: "面向已经想让 Claude Code 自己合并 PR、却只有「几乎不用手写代码」这种印象的人：把截止 2026-10-15 的 3,925 次提交、1,330 本已合并 PR、45 天 12 次商店更新，以及平均 21 分钟（CI 约 10 分钟）写成门禁，区别于把 hook 挡命令或 launchd 每 3 分钟拉起当成这一条硬窗的实践。",
     categories: [
@@ -67122,7 +67122,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "933",
     slug: "xlmen-1d-16pr",
-    title: "xlmen：自己会 PLC 和伺服、但不会写代码，用 Claude Code 在一天里做出非官方的浏览器学习用模拟器（不是三菱官方工具），代码几乎都由 Claude Code 写。GitHub 上建好仓库之后的 1 天里，PR 到了 16 本，覆盖功能、画面、文档和后面列出的缺陷。作者自己点界面、看画面或截图时发现了前 3 个问题：画面上方改了模式，梯子图仍是前一种；JOG 的正负和示意图相反；停止显示出现「-0」。第 4 个问题——速度倍率（オーバーライド）开关已经关掉，动作仍偏慢——是 Claude Code 自己做动作确认时发现并改掉的。作者写明这是非官方学习工具，不能把它当成实机或厂商文档。产品页、仓库和另一篇 Qiita 用的是 kajiyajp 这个账号",
+    title: "一天做成的非官方伺服模拟",
     summary: "xlmen 用 Claude Code 在建好仓库后的 1 天里提交了 16 本 PR，做出非官方的浏览器伺服模拟器。前 3 个缺陷由作者自己点界面、看画面或截图时发现：模式切换后梯子不变、JOG 正负相反、停止显示「-0」；第 4 个（倍率已关却仍偏慢）是 Claude Code 自己做动作确认时发现的。这是这一天、这一份非官方学习工具上的记录，不可外推到实机、官方工具或其他一天的排期。",
     description: "面向已经会 PLC、却把「一天做完模拟器」理解成界面也已经对过的人：把建仓后 1 天 16 本 PR，以及 4 个缺陷的发现者——前 3 个是作者点界面／看画面／截图时发现，第 4 个是 Claude Code 自己做动作确认时发现——写成门禁，区别于只展示演示动画、或把 4 个都写成「人点界面找出」的实践。",
     categories: [
@@ -67177,7 +67177,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "934",
     slug: "swdrk-4run-8lend",
-    title: "swdrk：用虚构的备品出借 Spring Boot API，在 2026-10-17 以 Claude Code 2.1.286 的 claude -p、Spring Boot 4.1.1、Java 21、Maven 3.9.16、H2 和 macOS 做了 4 个条件，每个条件只跑 1 次。实验 1 只给散文规则，约 3 分钟，10 个测试全过，但多做了没要的 API，并且自己加了锁；人写的 8 人同时借同一件的测试跑 5 次，每次都只有 1 次成功。实验 2 加上 CLAUDE.md 和验收条件，约 5 分钟，33 个测试全过，API 也按要求来，但并发控制被「没被要求的功能不要加」挡住，作者写的是「见送りました」（先搁下、暂不采用）。同样的 8 人测试跑 5 次，每次 8 件全部成功。实验 3 把实验 2 的代码交给新会话按 6 个观点审查，约 2 分钟返回 4 条高严重度，也抓住了这个漏洞，但有 1 条误报（把委托过的 data.sql 当成多余）。实验 4 只补一行非功能要求，约 4 分钟加了行锁；拿掉对策后测试会失败（10 人能借到同一件），人写的确认测试 5 次都是只有 1 次成功。归还的双重处理（R5）被当作范围外，没有改",
+    title: "备品出借接口的四种实验条件",
     summary: "swdrk 在 2026-10-17 对备品出借 API 做了 4 个条件、每个只跑 1 次。只给散文时约 3 分钟、10 个测试全过，但人写的 8 人同借测试 5 次都只有 1 次成功；加上验收后约 5 分钟、33 个测试全过，同一测试 5 次却是 8 件全成，作者把并发控制「暂不采用」。新会话审查约 2 分钟抓住漏洞，同时有 1 条误报；再补一行非功能要求约 4 分钟后，拿掉对策测试会失败。这是每个条件 1 次的结果，不可外推到多次重复或其他业务 API。",
     description: "面向已经给 Claude Code 写了验收条件和「不要多做」，却以为非功能要求也会被补上的人：把 8 人同借在有锁和无锁下各跑 5 次的结果，以及审查抓住漏洞却另有 1 条误报写成门禁，区别于只看 10 或 33 个测试全绿的实践。原文「见送りました」是暂不采用，不是先发送。",
     categories: [
@@ -67232,7 +67232,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "935",
     slug: "naoya-6mo-rev-92",
-    title: "naoya551512：用 GitHub API 取了半年（3 月至 8 月）的 PR 行内评论，先去掉 AI 评论、线程回复和本人评论，再只看带 [MUST]／[IMO]／[NITS] 的指摘。漏斗按「取到的全部评论」计：100% → 去掉 AI 后约 64% → 再去掉线程回复约 26% → 只留审查者约 14% → 带这三种标签约 9%。分类先定 19 种「是什么问题」，再用另一个 Claude Code 代理抽约一成重分，种类一致的是 92%；作者自己只抽看过一部分，没有核完全部。最多的一类是「和已有写法、规约不齐」，占 21%，其中 RSpec 约 35%、Ruby 约 22%、视图约 16%。正文只给了这些比例，没有写出评论的绝对件数。API 示例里的 OWNER/REPO 是占位。页会转到 port_inc 出版物",
+    title: "半年行内审查评论的类型归类",
     summary: "naoya551512 把半年 PR 行内评论收成相对于「取到的全部评论」的漏斗：去掉 AI 后约 64%，去掉线程回复约 26%，审查者约 14%，带 [MUST]／[IMO]／[NITS] 约 9%。19 种类型里最多的是不齐已有写法，占 21%。约一成重分的一致率是 92%，作者没有核完全部。这是这一段仓库、这一套标签上的比例，不可外推到其他团队或其他评论范围，也不要把比例改成未给出的绝对件数。",
     description: "面向已经想用 Claude Code 给历史审查意见分类、却打算直接把百分比当成件数的人：把相对全部取到评论的漏斗、19 种类型里占 21% 的「不齐已有写法」，以及约一成重分 92%、且作者未核完全部写成门禁，区别于把 OWNER/REPO 示例当成真实仓库地址、或把 GitHub Copilot 评论算进人的指摘的实践。",
     categories: [
@@ -67287,7 +67287,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "936",
     slug: "yazuma-180-070",
-    title: "y_azuma：用 Bluesky 官方应用里实际修过的 5 个缺陷，在 2026 年 10 月测了 180 次，比较 Callstack 的 agent-device、Software Mansion 的 Argent 和 Mobile Next 的 mobile-mcp 的 CLI 与 MCP，共 6 个条件。环境是 Claude Code 2.1.310、Opus 5.5、Xcode 27.1、iOS 26.5 模拟器（iPhone 17），应用是提交 61c7cad、Expo SDK 57 的官方应用，没试过其他应用、其他代理或 Android。结构是 5 题 × 有无 testID 与无障碍标签 × 3 次 × 6 条件。6 个条件都是 30 次里 30 次从复现做到确认。平均每次费用和作业时间：agent-device CLI 0.70 美元／2 分 05 秒，mobilecli（mobile-mcp 的 CLI）同样 0.70 美元／2 分 08 秒，mobile-mcp MCP 0.80 美元／1 分 53 秒，Argent CLI 0.91 美元／3 分 04 秒，agent-device MCP 0.95 美元／1 分 53 秒，Argent MCP 1.11 美元／1 分 41 秒。Argent MCP 最快，费用约是 agent-device CLI 的 1.6 倍。费用是按空缓存重算的 API 换算值，token 的 96% 是缓存读取；同一组合 3 次之间的波动，各条件都在 6% 到 14%。作业时间只作参考，因为同一台 Mac 上有时还在做别的事。页会转到 gemcook 出版物",
+    title: "Bluesky 三款移动代理对照",
     summary: "y_azuma 用 Bluesky 实修缺陷在 2026 年 10 月测了 180 次：6 个条件都是 30 次全部走完复现到确认。agent-device CLI 与 mobilecli 平均每次 0.70 美元并列最便宜，Argent MCP 最快但约 1.11 美元，约为前者的 1.6 倍。费用按空缓存重算，96% 的 token 是缓存读取。去掉无障碍标签后，费用和时间没有超出 3 次波动的稳定差异。这是这一份应用、模拟器和 180 次上的结果，不可外推到其他应用、Android 或其他代理。",
     description: "面向已经要给 Claude Code 接上模拟器操作工具、却只看哪一种 MCP 更快的人：把 180 次里 6 个条件全部 30／30 走完，以及 0.70 美元与 1.11 美元、1.6 倍费用写成门禁，区别于没按空缓存重算、或把无障碍标签的有无写成已经稳定改变费用的实践。",
     categories: [
@@ -67342,7 +67342,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "937",
     slug: "nhi-10oku-261mb",
-    title: "nhinata：嫌反复打开 /usage，自己做了 Claude Code 的状态行 tallyline。状态行示例里的「Oct 22.1M tok（约 14.92 美元）」只是画面上的展示，不要和后文的 10 月用量混用。作者在 10 月末结束前已经用掉 10 亿以上 token，按 API 计量约 500 美元，超过 Pro 月费 20 美元的 25 倍。一次绘制约 0.02 秒，本体约 34KB，只用 Python 标准库。个人环境里约 3 个月的对话记录是 261MB，tallyline 自己的记录是 2.1MB，作者估计用一年也到不了 10MB。这和 #918 tanashun 写 statusLine「还剩 5 小时」的做法不是同一扇窗：本条硬窗是个人用量和存储体积。产品仓在 github.com/nhinata/tallyline",
+    title: "自建 Claude Code 用量状态行",
     summary: "nhinata 自作 tallyline 状态行。10 月末结束前已用掉 10 亿以上 token，按 API 计量约 500 美元，超过 Pro 月费 20 美元的 25 倍。约 3 个月的对话记录 261MB，tallyline 记录 2.1MB；一次绘制约 0.02 秒。画面示例里的 22.1M token（约 14.92 美元）不是这组 10 亿的数字。这是作者个人环境和 10 月用量上的记录，不可外推到其他套餐或其他一个月。",
     description: "面向已经在状态行上看用量、却把示例截图里的 22.1M token 当成当月真实用量的人：把 10 月末结束前 10 亿以上 token、按 API 计量约 500 美元，以及 261MB 对 2.1MB 的存储对比写成门禁，区别于只介绍如何画出「还剩多少小时」的 statusLine 实践。",
     categories: [
@@ -67397,7 +67397,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "938",
     slug: "early-6dept-487",
-    title: "earlyware_labs：2026 年 4 月起用 Claude Code 做个人事业主后台，6 月交开业届、10 月开始实际业务。最早一版是 1 次提交、487 行 Markdown，之后又叠了 14 次提交。准备期算进大约半年里，把屋号 10 案收到 1 案，并按月补了 7 项课题：4 月给调查部加复核模式、5 月把申请文件移出 GitHub、6 月新设设计部、7 月拆出 state/ 并给记录漏加 Stop 钩、8 月再处理状态文件存放和搬家后引用全断。决定日志现约 90 件。",
+    title: "个人事业后台的半年开业准备",
     summary: "earlyware_labs 从 2026 年 4 月起用 Claude Code 做个人事业主后台，6 月交开业届、10 月开始实际业务。最早一版是 1 次提交、487 行 Markdown，之后又叠了 14 次提交。约半年里把屋号 10 案收到 1 案，并按月补了 7 项课题（调查复核、成果物不放 GitHub、新设设计部、状态目录与记录漏检、状态文件存放与搬家后引用全断）。决定日志现约 90 件。这些是这一段个人开业准备上的记录，不可外推到别的业务或编排。",
     description: "面向已经想用 Claude Code 把开业手续、屋号和规程这类一次性后台事交给子代理、却还没有按月记下撞到的课题和提交数的人：把 487 行起步、再叠 14 次提交、屋号 10 案收 1 案、决定日志约 90 件，以及 4 月到 8 月的 7 项课题写成门禁，区别于只介绍部门分工、却没有半年运算的实践。",
     categories: [
@@ -67452,7 +67452,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "939",
     slug: "naka-mod-5diff",
-    title: "nakadaharuki：在 Windows 上用 Claude Code 2.1.286–2.1.288（桌面应用 2.19675）对照终端，记下桌面版的 5 个差。自动打开的栏要从 144 桁起，人开过的栏从 110 桁起，启动时调用的 open 有时放不下，作者改在第一次提交提示时再打开。十六进制颜色在浅色主题下会读不出，要改成主题色名。桌面的字不是等宽，按栏宽原样排会让右边空着却丢掉区块，作者按 1.5 倍看栏宽。Button 外观改不了，画上叠的 Client 也点不到。常用侧栏大约 58 桁／440px，横排不足 60 桁就改竖排。",
+    title: "桌面版相对终端的五处差异",
     summary: "nakadaharuki 在 Windows 上用 Claude Code 2.1.286–2.1.288（桌面应用 2.19675）对照终端，记下 5 个差：自动打开要从 144 桁起、人开过的从 110 桁起；十六进制颜色在浅色主题下读不出；桌面字不是等宽，作者按 1.5 倍看栏宽；Button 外观改不了，画上叠的 Client 点不到；常用侧栏大约 58 桁／440px，横排不足 60 桁就改竖排。这些是这一组版本在 Windows 桌面上的对照，不可外推到别的版本或其他面。",
     description: "面向已经在终端里做好 Claude Code 的 Mod、却把同一套栏直接拿到桌面版上的人：把 144 桁与 110 桁的门槛、1.5 倍栏宽、约 58 桁／440px 的常用侧栏，以及颜色名和按钮点按写成门禁，区别于只说「两面不一样」、却没有按条对照的实践。",
     categories: [
@@ -67507,7 +67507,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "940",
     slug: "keigo-rea-2p00",
-    title: "keigoly：把逆解析 MCP「REA」放到隔离环境再接到 Claude Code，用实案件做静态 JavaScript／Web 的 A/B。4 次都到了正解。发放物一题，REA 有是 1,042 秒、70 轮、69 次工具（其中 14 次 REA）、API 换算 $5.07，REA 无是 520 秒、41 轮、40 次（0 次 REA）、$3.04，时间 2.00 倍、费用 1.67 倍。通信记录一题是 135 秒／$1.26 对 138 秒／$1.00，几乎同等。t001 里 REA 工具 306 秒中的 260 秒是 analyze_javascript_application（3 次，其中 1 次花了 246 秒失败）。各条件只跑 1 次（n=1）。",
+    title: "REA隔离接入后的分析对照",
     summary: "keigoly 把 REA 隔离后接到 Claude Code，用实案件做静态 JS／Web 的 A/B，4 次都到了正解。发放物：REA 有 1,042 秒／70 轮／69 次工具（14 次 REA）／$5.07，无 520 秒／41 轮／40 次（0 REA）／$3.04，时间 2.00 倍、费用 1.67 倍。通信记录：135 秒／$1.26 对 138 秒／$1.00。t001 的 306 秒 REA 工具里，260 秒是 analyze_javascript_application（3 次，其中 1 次 246 秒失败）。费用是 Max 定额下的 API 换算，不是账单；各条件 n=1，时间只是目安。这些是这一组对照，不可外推。",
     description: "面向已经想把逆解析 MCP 直接交给 Claude Code、却还没有按题记下有无该工具时的秒数和费用的人：把 4 次都到正解、发放物 1,042 秒对 520 秒（2.00 倍）和 $5.07 对 $3.04（1.67 倍），以及通信记录几乎同等写成门禁，区别于只说「加上就会更快」、却没有 A/B 表的实践。",
     categories: [
@@ -67562,7 +67562,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "941",
     slug: "best-4app-hour",
-    title: "bestwisdom：非技术运营者 1 人，用 Claude Code 桌面应用的每小时定期执行来养 4 本已上 Google Play 的手机应用（App Store 上 3 本，另 1 本还在准备）。每本应用各有一条「每小时某分继续开发」的任务，另有每天、每周、每月的看守和报告。工作副本不干净（上次中断或本人另有对话）就先搁下新作业，只写一行结束。计划表是 1 行 1 作业的 TSV；文中的 WI-0101 等行是说明用的例子，不是实测工单。",
+    title: "已上架手机应用的每小时续做",
     summary: "bestwisdom 作为合同会社的一人运营者，自己几乎不动手写代码，用 Claude Code 的每小时定期执行养着 4 本已上 Google Play 的应用（App Store 3 本，另 1 本准备中）。工作副本不干净就先搁下新作业。计划表是 1 行 1 作业的 TSV，文中 ID 是说明用例子，不要当成实测工单。这些是这一人运营者的编排说明，不可外推到别的应用或排期。",
     description: "面向已经想让 Claude Code 按小时自己往前做、却还没有写下「副本不干净就先搁下」这条门禁的人：把 4 本 Play、3 本 App Store（1 本准备中），以及每小时一条任务写成门禁，区别于只展示计划表样例、却没有说明例子不是实测工单的实践。",
     categories: [
@@ -67617,7 +67617,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "942",
     slug: "take-1d-2000u",
-    title: "takec87：个人把直播参战记录服务「セトリログ」从开发到公开用了 1 天。到 2026 年 10 月（开发开始后 3 周），main 的合并在 350 次以上，用户超过 2,000 人，记下的公演超过 6 万件。每晚 23 时用 GitHub Actions 拉取套表并丢掉缓存。费用写的是 Vercel Pro 和 Supabase Pro，正文没有给出金额。",
+    title: "直播参战记录服务一日上线",
     summary: "takec87 个人用 Claude Code 做直播参战记录服务，从开发到公开用了 1 天。到 2026 年 10 月（开发开始后 3 周），main 合并 350 次以上，用户超过 2,000 人，记下的公演超过 6 万件。每晚 23 时 GitHub Actions 拉套表。1 天是到公开的间隔，3 周、350 次、2,000 人和 6 万件是到 2026 年 10 月的存量，不要混用。这些是这一段个人开发上的数字，不可外推到别的服务或周期。",
     description: "面向已经想用 Claude Code 在一天里把服务公开、却还没有把公开后的合并数和用户数分开写的人：把开发到公开的 1 天，以及到 2026 年 10 月的 350 次以上合并、2,000 人以上用户、6 万件以上公演写成门禁，区别于只看标题里的「1 天」、却没有 3 周存量的实践。",
     categories: [
@@ -67672,7 +67672,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "943",
     slug: "tana-181-263",
-    title: "t4n4bot4：用 Claude Code 做家用实验室的调查和运营，并把记录留在 Obsidian 能读的笔记里。数字截至 2026-10-16：Markdown 笔记 181 本，变更履历通号 263，判断记录 83 件，陷阱记录 151 节。用 git 管理是从 2026-09-29 开始的。Claude Code 在两台机器上跑：带走的开发机，和放在家里常开、可远程操控的那台。笔记正本在家里的 Forgejo git 里，Obsidian 的 vault 是读用的副本。",
+    title: "家用实验室调查运营与笔记留存",
     summary: "t4n4bot4 用 Claude Code 做家用实验室的调查和运营。截至 2026-10-16，Markdown 笔记 181 本，变更履历通号 263，判断记录 83 件，陷阱记录 151 节；git 管理从 2026-09-29 开始。两台机器是带走的开发机和家里常开的那台。正本在 git，Obsidian 的 vault 是读用的副本。这些是截至 2026-10-16 的库存，不可外推到别的实验室或日期。",
     description: "面向已经让 Claude Code 看家用实验室、却还没有按实测日写下笔记本数和判断件数的人：把截至 2026-10-16 的 181 本、通号 263、83 件判断和 151 节陷阱写成门禁，区别于只介绍笔记模板、却没有库存数字的实践。",
     categories: [
@@ -67727,7 +67727,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "944",
     slug: "tate-ssl-72066",
-    title: "hirototate：在 macOS 上用 Claude Code 2.1.252 经 AWS Bedrock 调用时，只要设了 NODE_OPTIONS=--use-system-ca，Claude 就只信系统里的 9 张证书，不再叠加随附的 121 张，Bedrock 连不上。Node.js 里这个旗标是「加上」系统证书，Claude 却当成「换成」系统证书。作者判断这是 Claude 自己的退行，不是配错。同样现象的 issue 从 2026 年 6 月就在，被 stale bot 以 not_planned 关掉；关掉仅 9 小时后维护者确认是退行，到 2026 年 10 月仍未 reopen。暂避是 CLAUDE_CODE_CERT_STORE=bundled,system。",
+    title: "macOS上Bedrock的证书替换退行",
     summary: "hirototate 在 macOS 上用 Claude Code 2.1.252 经 Bedrock 调用，发现 NODE_OPTIONS=--use-system-ca 会让 Claude 只信系统 9 张证书，不再叠加随附的 121 张，因而连不上。作者判断是退行，不是自己配错。既有 issue 从 2026 年 6 月就在，被 stale bot 关掉；关掉仅 9 小时后维护者确认是退行，到 2026 年 10 月仍未 reopen。暂避是 CLAUDE_CODE_CERT_STORE=bundled,system。这些是这一版本在这台 Mac 上的对照，不可外推到别的版本或系统。",
     description: "面向已经在 Claude Code 前加上 NODE_OPTIONS=--use-system-ca、却把连不上 Bedrock 当成自己证书配错的人：把系统 9 张对随附 121 张加系统 9 张、以及 2026 年 6 月起那条 issue 在关掉 9 小时后仍被维护者认成退行写成门禁，区别于只建议再装证书、却没有对照份数的实践。",
     categories: [
@@ -67782,7 +67782,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "945",
     slug: "mama-91mem-jul",
-    title: "mamanbou：从 2026 年 5 月起每天让 Claude Code 做事，并把 Obsidian 打开的文件夹当作作业记录的放置处。到 2026 年 7 月，自动记忆里的个别备忘已经有 91 本。作者把标准的 Auto memory 和 Obsidian 里的作业记录分开：前者是下一会话一定要读的短判断，后者是量大、会过时、过后还想搜的记录。这两处在技术上并不相连。",
+    title: "自动记忆与作业记录分开放置",
     summary: "mamanbou 从 2026 年 5 月起每天用 Claude Code，并把 Obsidian 打开的文件夹当作业记录处。到 2026 年 7 月，自动记忆的个别备忘已有 91 本。91 本是 7 月这个时点的 Auto memory 存量，不要写成 Obsidian 里的作业记录本数，也不要写成发布日 11 月的数字。两套在技术上并不相连。这些是这一段日常作业上的放置设计，不可外推到别的库或日期。",
     description: "面向已经把规则、自动记忆和作业日记塞进同一个每次都会读入的地方的人：把 2026 年 7 月时点的 91 本自动记忆备忘，以及「量大、会过时、过后还想搜」的记录另放写成门禁，区别于只劝人多写 MEMORY.md、却没有存量时点的实践。",
     categories: [
@@ -67837,7 +67837,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "946",
     slug: "asap-3task-378",
-    title: "asap：在一台 DGX Spark 兼容机上，用 Qwen3.8 Flash Next FP4，按同一 3 道 Claude Code 题（区间合并、拓扑排序、JSON Lines）对照 TensorFold 1.1.9 和 vLLM。对齐了 BF16 KV、MTP 先看 6、上下文上限 262,144、并行 3、关闭 prompt cache。3 题耗时 378.15 秒对 418.10 秒，对模型的请求都是 18 次，含思考的输出 token 是 8,021 对 8,198。生成中速度 58.16 对 40.98 token/s，约 1.42 倍，大约短 40 秒。表不含模型加载和首次优化时间。",
+    title: "TensorFold与vLLM同题对照",
     summary: "asap 用同一 3 道 Claude Code 题对照 TensorFold 1.1.9 和 vLLM：耗时 378.15 秒对 418.10 秒，请求都是 18 次，含思考的输出 token 8,021 对 8,198；生成中速度 58.16 对 40.98 token/s，约 1.42 倍，大约短 40 秒。API 整体速度是 21.52 对 19.91 token/s，不要和生成中速度混用。表不含模型加载和首次优化时间。这些是这一组对齐条件上的对照，不可外推到别的模型、机器或题目。",
     description: "面向已经想在本地 LLM 上跑 Claude Code、却还没有把同一 3 题的秒数和 token/s 分列清楚的人：把 378.15 秒对 418.10 秒、18 对 18 次请求，以及生成中 58.16 对 40.98 token/s（约 1.42 倍）写成门禁，区别于只说「换引擎会更快」、却没有对齐条件和对照表的实践。",
     categories: [
@@ -67892,7 +67892,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "947",
     slug: "sat-14ok-0002",
-    title: "daming_cafe：给 Claude Code 加了名叫 Saturday 的语音层。问完后 4–6 秒用声音回一句，一往返约 $0.002。唤醒词是 Mac 上的 Whisper small（MLX），测试片段 14/14、约 190 ms，等待时不推流、也不计费。耳朵用 gpt-live-transcribe，说完后约 1.6 秒文本齐。嘴巴用 gpt-realtime-2.1-mini，照读 Claude 的句子，每次约 $0.002。Claude 过了 2.5 秒还不答，就插入一句短垫话；无人说且没有在跑的任务空闲 10 秒，就回到等待。更早的 GPT-Live-1 连静音也按约 $0.05／分钟计（约 $3／小时），还会编造 Claude 没说过的截止日期。",
+    title: "Claude Code的Saturday语音层",
     summary: "daming_cafe 给 Claude Code 加了 Saturday 语音层：问完后 4–6 秒用声音回一句，一往返约 $0.002。唤醒词测试片段 14/14、约 190 ms；说完后约 1.6 秒文本齐；Claude 2.5 秒还不答就插入短垫话，空闲 10 秒回到等待。更早的 GPT-Live-1 连静音也按约 $0.05／分钟计（约 $3／小时），还会编造截止日期，所以作者要求语音层不思考。发布时刻是 JST 2026-11-05 00:00，换算到上海已是 2026-11-04，必须写成 2026-11-04。这些是这一套语音层上的实测，不可外推到别的模型和编排。",
     description: "面向已经想给 Claude Code 直接接上会「自己组织答复」的语音模型的人：把 4–6 秒、$0.002、14/14 约 190 ms、说完后约 1.6 秒，以及旧方案约 $0.05／分钟并编造截止日期写成门禁，区别于只演示能说话、却没有把计费和幻觉分开写的实践。",
     categories: [
@@ -67947,7 +67947,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "948",
     slug: "zero-1mo-22acc",
-    title: "zeroyen_dev：把博客运营交给 Claude Code 大约 1 个月，记下事故 22 件。其中 AI 所写代码的错误几乎为零；定期执行合计停了 6 次以上且仍未解决；把原因判断错了 2 次（以为是权限，花了半天／1 天）。launchd 的每日任务有 8 天一次都没跑（脚本在 iCloud Drive 里）；分页 API 同样的错踩了 4 次（第 3 次 PV 计成 183、实际 189）；还有「部署成功但页面仍是旧的」「图说设好了却没按保存」。费用是免费框的 0 日元。",
+    title: "博客运营事故的记录与改法",
     summary: "zeroyen_dev 把写稿、测数字、改站和定期执行交给 Claude Code 大约 1 个月，记下事故 22 件。代码错误几乎为零；定期执行合计停了 6 次以上且未解决；原因看错 2 次。8 天里 launchd 一次没跑；同一类分页错踩了 4 次（第 3 次 183 对 189）。作者后改成报告须带回实物前后数字，并用别的信息源核对件数。这些是这一段免费框运营上的事故地图，不可外推到别的站或周期。",
     description: "面向已经把发布和定期执行交给 Claude Code、却只看「成功了」这句报告的人：把约 1 个月里的 22 件事故、8 天未启动、分页错 4 次和 183 对 189 写成门禁，区别于只谈代码质量、却没有把「报告成功但实物不对」计数的实践。",
     categories: [
@@ -68002,7 +68002,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "949",
     slug: "kats-9rev-4gud",
-    title: "cutlet_of_pork：让 Claude Code 判断并修改挡住自己的守卫后，外侧的 Codex 审查当天走了 9 个来回。当天拦住的 4 类守卫里，3 类是对的，1 类是过检测（目标路径末尾碰巧是 scripts/tests/）。审查脚本只把 staged diff 的 sha256 交给 Codex CLI，对话上下文不共享；只有最后一行是 VERDICT: ACCEPT、且 hash 仍与 staged diff 一致才允许提交。作者认为 9 个来回偏多，但能一直倒向安全侧，是因为自己不能批准的结构放在外侧。",
+    title: "外侧守卫审查与哈希提交门禁",
     summary: "cutlet_of_pork 在 Claude Code 被守卫挡住后，让它判断守卫对不对并去改。当天 4 类拦住里 3 类正确、1 类过检测，随后 Codex 审查走了 9 个来回。审查只看 staged diff，不共享对话上下文，须 VERDICT: ACCEPT 且 hash 一致才能提交。9 个来回只属于这一天改守卫的过程，不可外推到别的守卫或其他天。",
     description: "面向已经用钩去拦测试目录改写、却在「让模型自己改守卫」之后没有记下审查来回次数的人：把当天 4 类里 3 对 1 过检测、以及 9 个来回写成门禁，区别于只介绍 PreToolUse 写法、却没有外侧审查计数的实践。",
     categories: [
@@ -68057,7 +68057,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "950",
     slug: "yata-977-13542",
-    title: "charge0315：用 Claude Code 把过去 4 年、977 个交易日的行情一天一天重做了一遍，用了 1 小时 46 分，给出 13,542 条选股，但生产评估的数字一毫米也没动。作者写明这反而是对的：回放结果进了专用台账，不会混进生产评估；同时回放一旦去碰「当天之后」的数据，就会被未来泄漏的例外挡住。不要把「生产数字没动」写成实验失败。",
+    title: "交易日行情回放的台账隔离",
     summary: "charge0315 用 Claude Code 把过去 4 年、977 个交易日一天一天重做，用时 1 小时 46 分，给出 13,542 条选股，生产评估数字却一毫米没动。作者认为这是对的：结果进了专用台账，且不得看当天之后的数据，未来泄漏会被例外挡住。这些是这一次回放学习上的数字，不可外推到别的品种或窗口。",
     description: "面向已经用历史行情做回放学习、却把「生产数字没动」直接判成失败的人：把 977 个交易日、1 小时 46 分、13,542 条选股，以及未来泄漏被例外挡住写成门禁，区别于只展示回放速度、却没有把生产数字对照写清的实践。",
     categories: [
@@ -68112,7 +68112,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "951",
     slug: "haru-jp-cp932",
-    title: "haruto_miyakawa：在 Windows 上自写 Claude Code 钩时，发现只有日文提示会让钩什么都不做，而且不报错。同样的判定若改成命令行参数就能跑。原因是日文 Windows 上 Python 3.14 及更早版本默认用 cp932 读写标准输入输出，而 Claude Code 传来的 JSON 是 UTF-8；入口会无异常地乱码，出口则把乱码送回去，或在「—」这类符号上只输出 1 个字符就退出。Python 3.15 才改了这一默认。",
+    title: "日文Windows钩子编码静默失败",
     summary: "haruto_miyakawa 在 Windows 上发现 Claude Code 的钩只在日文提示时静默不工作。日文 Windows 的 Python 3.14 及更早默认用 cp932，和 UTF-8 的 JSON 对不上；入口乱码且不抛异常。这些是这一组 Python 版本在日文 Windows 上的对照，不可外推到别的系统或 3.15 之后的默认。",
     description: "面向已经在 Windows 上给 Claude Code 写了钩、却把「日文时什么都不做且没有报错」当成钩没挂上的人：把 cp932 对 UTF-8、以及 3.14 及更早才有这一默认写成门禁，区别于只介绍 hooks 文档、却没有编码对照的实践。",
     categories: [
@@ -68167,7 +68167,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "952",
     slug: "ichi-109m-32m",
-    title: "i_ichi：常驻 Claude Code 代理用了大约半年，每天都开。8 月 1 日到 9 月 22 日允许它从自己的错误里写规则和钩，钩增加了 27 条；重做前已是 70 条钩、指示文件合计 83KB，「不核对就说定」仍没停。9 月 23 日在新仓库从零立了新代理，对话转到新代理；旧代理只做维护，70 条钩全部去掉，启动时读取的指示是 6,683 字节（约 6.7KB）。新代理启动时读取的指示是 10,814 字节（约 10.8KB）；10 月 6 日时曾是 54 行／3,577 字节。作者每次指示的 token 从 10.9M 降到 3.2M（减 71%）。读入量不同的 3 种构成下，已有知识能不能取出没有差别；把指示从 83KB 收到 10.8KB、换到 Opus 5.5，那种错误也还在。",
+    title: "常驻代理的拆钩与从零再建",
     summary: "i_ichi 在 9 月 23 日把用了约半年的常驻代理从零再建：重做前 70 条钩、83KB 指示；新仓库立的新代理，启动时读取的指示是 10,814 字节（约 10.8KB）；拆掉 70 条钩之后的旧代理，启动时读取的指示是 6,683 字节（约 6.7KB）。每次指示从 10.9M token 降到 3.2M（减 71%）。「不核对就说定」在把指示从 83KB 收到 10.8KB、以及 3 种读入量和 Opus 5.5 下仍在。这些是这一次再建前后的对照，不可外推到别的代理或日期。",
     description: "面向已经让代理自己从错误里加钩、却只看设定体积有没有减半的人：把 70 条钩、10.9M 降到 3.2M（减 71%），以及错误仍然还在写成门禁，区别于只宣称「减筑就会更准」、却没有按次计量 token 的实践。",
     categories: [
@@ -68222,7 +68222,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "953",
     slug: "side-1w-3cap",
-    title: "sidejob：把 Claude Code 接到业务自动化、夜间无人跑之后，最初「23 点把全部工程一次做完」的方针，在头一周日志里停了 3 次，原因都是 Claude Pro 的用量上限（429/529）。日志里 17:00 的写稿是 113 轮、约 5.27 美元，21:13 的补充是 84 轮、约 3.63 美元，23:00 的健康检查因超限失败。17 点到 23 点的 6 小时里挤了 4 道工程，滚动 5 小时窗口把 17 点的重活留到了 23 点。上限一到，代理会无声结束。作者后来把重活拆到白天、把工程切开，并用另一会话写出的用量门禁，只在两边都不超过 50% 时才跑不急的活。",
+    title: "夜间全量跑的用量上限中断",
     summary: "sidejob 最初在 23 点一次跑完全部工程，头一周停了 3 次，全是 Claude Pro 用量上限。17:00 写稿 113 轮约 5.27 美元，23:00 健康检查超限失败。滚动 5 小时窗口让白天的重活挤到夜里。这些是这一周日志上的数字，不可外推到别的套餐或排程。",
     description: "面向已经把无人任务全堆到夜里 23 点、却只在早上才发现什么都没跑的人：把头一周 3 次停止、113 轮／约 5.27 美元和滚动 5 小时窗口写成门禁，区别于只劝人「错开时间」、却没有对照日志的实践。",
     categories: [
@@ -68277,7 +68277,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "954",
     slug: "nral-53-19zip",
-    title: "neuralalpha：用 Claude Code 做好在 Gumroad 上卖的监视用模板集之后，按购买者同样的步骤自己试买。打开寄到的 ZIP，53 个文件里面向购买者的只是一部分，其余是销售侧资料（发布计划、要发的帖、定价备忘等）。作者把给购买者看的版本重新整理，文件数变成 19 个，并写下出荷前要确认的 5 件事。",
+    title: "销售模板试买与买方文件整理",
     summary: "neuralalpha 用 Claude Code 做了销售用 ZIP，自己按购买者步骤试买后发现 53 个文件里面向购买者的只是一部分，其余是销售侧资料。重新整理后变成 19 个文件。53 和 19 不要混成同一次打包的前后都是「给购买者」的数量。这些是这一次试买和整理上的数字，不可外推到别的商品或商店。",
     description: "面向已经让 Claude Code 在同一个文件夹里既做商品又做销售准备、却还没有按购买者步骤打开过寄出 ZIP 的人：把 53 个文件里混进销售侧资料、以及整理后的 19 个写成门禁，区别于只列出出荷检查项、却没有试买计数的实践。",
     categories: [
@@ -68332,7 +68332,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "955",
     slug: "dawon-lid-2030",
-    title: "dawon：合上盖睡觉后，早上任务没做完，日志里全是 Connection lost while your computer was asleep，每周额度比睡前少了 20～30 个点，却没有做出有用的结果。2026 年 10 月 15–18 日，Claude Code 的追踪器上出现 4 条同类报告。#103064 的日志是每隔 15～20 分钟醒 2～7 秒，接上电源后又有一次 27 分钟的维护起床；#102597 是 6.5 小时里 26 次，大约每 15 分钟一次。作者对照表里，冷缓存的例子每周用量从 20% 升到 56%，一直保持热缓存的则约从 9% 升到 19%；后台例子里完成的 15 次调用中，冷启动的 cache_creation 约 710 万 token。",
+    title: "合盖过夜的连接丢失与空耗",
     summary: "dawon 记下合盖过夜后每周额度少 20～30 个点、却没有做出有用结果。10 月 15–18 日追踪器上有 4 条同类报告；#102597 是 6.5 小时 26 次 DarkWake。冷缓存例子从 20% 升到 56%，热缓存约从 9% 升到 19%。20～30 个点和百分比表不要混用。这些是合盖过夜这一段上的对照，不可外推到别的系统或日期。",
     description: "面向已经让 Claude Code 在合盖后继续跑、却把早上额度变少当成「夜里正常干活了」的人：把 20～30 个点、6.5 小时 26 次，以及 20% 升到 56% 对 9% 升到 19% 写成门禁，区别于只解释 DarkWake、却没有用量对照的实践。",
     categories: [
@@ -68387,7 +68387,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "956",
     slug: "shin-977-548",
-    title: "i_shinya：系列第 3 篇把 2026 年 10 月 2 日到 15 日合并的 977 个 PR 拿来对照，其中 548 个（56%）只是在改 harness 的副本。10 月 15 日改成插件之后，这类复制就不再进仓库。实现者子代理一共试了两次后停了：一次是 10 月 8 日到 15 日只用 Sonnet 做实现者，token 费用大约只便宜 4%，没有采用；另一次是 10 月 20 日起按任务改用 Opus 做实现者，两天后对照出 3 个问题，10 月 22 日停掉。",
+    title: "harness副本插件化与停止入库",
     summary: "i_shinya 系列第 3 篇记下 10 月 2 日到 15 日合并的 977 个 PR 里，548 个（56%）只是在改 harness 副本；10 月 15 日改成插件后这类复制不再进仓库。实现者子代理试了两次：Sonnet 大约只便宜 4%，没有采用；10 月 20 日的 Opus 方案两天后对照出 3 个问题后停掉。这些是这一段合并记录上的数字，不可外推到别的仓库或窗口。",
     description: "面向已经给每个仓库各放一份 harness、却还没有按合并记录数过「有多少 PR 只是在改副本」的人：把 977 个里的 548 个（56%）写成门禁，区别于只劝人改用插件、却没有这段对照的实践。",
     categories: [
@@ -68442,7 +68442,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "957",
     slug: "tsku-14n-30mis",
-    title: "tasukina：把 Claude Code 接到每天要写的记录上之后，14 篇 note 和 1 份书稿里，对照记录后发现 30 处说法对不上，其中 19 处是发布之后才发现的。文中的「公司」并不是登记过的法人，而是一台定时跑 Claude Code 的电脑。标记规则在 2026 年 10 月 11 日定下来，10 月 13 日起稿的稿件才开始用，并不回溯已经发布的文章。本篇本身也是 Claude Code 按记录写成、再由人核对的，作者写明了这一点。",
+    title: "发布稿说法与作业记录核对",
     summary: "tasukina 对照记录后，在 14 篇 note 和 1 份书稿里发现 30 处说法对不上，其中 19 处是发布之后才发现的。标记规则从 10 月 13 日起稿的稿件才开始用，不回溯已发布的文章。这些是这一组已对照稿件上的数字，不可外推到别的站点或窗口。",
     description: "面向已经让 Claude Code 按记录写稿、却还没有回去数「有多少句和记录对不上」的人：把 14 篇加 1 份书稿里的 30 处、以及其中 19 处发布后才发现写成门禁，区别于只介绍引用标记、却没有事后计数的实践。",
     categories: [
@@ -68497,7 +68497,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "958",
     slug: "hacchu-6rtn-40s",
-    title: "ai_hacchu：2026 年 9 月时点用 Claude Code 在云上跑着 6 本定期例程。只想把模型换成 Opus 5.5，先按差量只送模型字段，得到 HTTP 400（job_config 必须带环境 ID）。再把环境、工具、仓库和模型都送上、唯独省掉提示词，更新却是 HTTP 200，返回里的提示词是空的。作者先用 get 取过全文，按全文补上模型后再送回去，空窗大约 40 秒，还没到下一次执行时刻。列表接口只按新到旧返回 20 件，第 21 件以后是用事先记下的 ID 取的。有 1 本不想把全文再送进 API，只在 claude.ai 画面上改了模型。",
+    title: "云上例程换模型后的空提示词",
     summary: "ai_hacchu 要把 6 本云上例程的模型换成 Opus 5.5。只送模型字段会 HTTP 400；补齐环境等字段却省掉提示词时，更新是 HTTP 200，提示词却空了。靠事先取到的全文在大约 40 秒内还原，没有空跑。这些是这一次更新上的过程，不可外推到别的接口或日期。",
     description: "面向已经用 API 改 Claude Code 云上例程、却把 HTTP 200 当成「没改掉的字段都会留着」的人：把差量更新把提示词清空、以及大约 40 秒的还原写成门禁，区别于只介绍例程 API、却没有对照返回体的实践。",
     categories: [
@@ -68552,7 +68552,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "959",
     slug: "auto-3vio-cli",
-    title: "aiautolog：把多本 Claude Code 代理要读写的状态（任务、批准、执行记录）从直接改文件，改成只许走 CLI，并在 CLAUDE.md 里写清「这里不许直接改」。每晚由点检代理读提交历史，找禁止路径上的改动。最近一次，点检代理找出 3 件违规候补，作者认为多半是保存命令把无关文件打进了同一个提交，但还没有定论。另有一次误报：把「只改了 3 个文件」判成了禁止路径违规。点检还发现一份运营备忘写着「可以追加」，CLAUDE.md 却把同一处写成「谁都不许改」。",
+    title: "状态只走命令行的每晚点检",
     summary: "aiautolog 不再让代理直接改状态文件，改成只走 CLI，并用每晚的点检去翻提交。最近找出 3 件违规候补，尚未定论；另有一次把「只改了 3 个文件」误报成违规。这些是这一段点检上的数字，不可外推到别的仓库或日期。",
     description: "面向已经让多本代理直接改状态文件、却还没有回去数「点检出了几件、其中几件是误报」的人：把 3 件候补和那一次误报写成门禁，区别于只规定「不许直接改」、却没有对照点检记录的实践。",
     categories: [
@@ -68607,7 +68607,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "960",
     slug: "stock-300c-800t",
-    title: "stockrules_jp：自己不写代码，让 Claude Code 当项目管理，再把活分给实现代理，做了两套只给自己用的日本股票工具。第一套从 2026 年 9 月 25 日起步，大约两周半里提交 300 次以上，测试超过 800 件，规格书大约 45 本。第二套从 10 月 8 日起步。工具只给到候选和依据，下单仍由作者在券商画面上自己做。急腾检查那一套用 Claude API 给标题分类，每月上限定为 10 美元，快触到上限的月份就停掉 AI、改用关键词匹配。",
+    title: "自用日本股票工具分派开发",
     summary: "stockrules_jp 用 Claude Code 做了两套自己用的日本股票工具。第一套从 9 月 25 日起大约两周半，提交 300 次以上、测试超过 800 件、规格书大约 45 本；第二套从 10 月 8 日起。分类用的 Claude API 每月上限 10 美元。这些是这一段开发上的数字，不可外推到别的品种或窗口。",
     description: "面向已经让 Claude Code 代写投资工具、却还没有按工具把提交数、测试数和费用上限分开记录的人：把 300 次以上、800 件以上和每月 10 美元写成门禁，区别于只展示「两个工具」、却没有对照开发账的实践。",
     categories: [
@@ -68662,7 +68662,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "961",
     slug: "yume-403-918",
-    title: "yumekui：让 Claude Code 按例程每天给 GitHub Trending 写日文摘要，做成站点「github新聞」。例程里若直接调其他仓库的 GitHub API，会全部变成 403，因为云上环境只允许访问派给这条例程的仓库。作者改成由 GitHub Actions 先把材料收好再启动例程。最初用 6 点收材料、7 点跑例程来错开，可是 10 月 1 日的定时任务拖到 9:18，10 月 2 日拖到 9:25，例程仍按点启动，用的还是前一天的材料。现在改成材料收完再触发例程；定时收材料改到 5:47、7:17、8:47，避开整点。每天新写的是近 10 日第一次上榜的条目，90 日后再上榜的会重写。",
+    title: "GitHub趋势日文摘要的收料",
     summary: "yumekui 让 Claude Code 例程写 GitHub Trending 的日文摘要时，在例程里调其他仓库的 GitHub API 会 403。改成 Actions 收材料后，6 点的定时任务在 10 月 1 日拖到 9:18、10 月 2 日拖到 9:25，例程仍按点启动、用了旧材料。这些是这一段定时上的数字，不可外推到别的日期或账号。",
     description: "面向已经把云上例程和 GitHub Actions 按钟点错开、却还没有对照「材料是不是当天的」的人：把 403 和 9:18／9:25 写成门禁，区别于只介绍例程、却没有写下延误记录的实践。",
     categories: [
@@ -68717,7 +68717,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "962",
     slug: "dai-9st-29sub",
-    title: "daichi1002：用 Claude Code 的云上例程，把设计合并之后的「实现 → 复核 → 开 PR」自动跑起来，每小时巡一次。一次运行只开 1 个 PR，单本大约控制在去掉测试和生成物后 400 行；未合并的 PR 到 3 本就不再开新的。实现用 Sonnet 5.5，复核用另一路 Opus 5.5 的子代理，且每轮新建。跑了 2 周，应用和后端合计 9 个故事、29 个小任务走过这条流程。其中有一个小任务因为等人抄后端接口定义，停了大约 46 小时，状态一直没变，谁也没注意到。",
+    title: "云上例程实现复核与开请求",
     summary: "daichi1002 用云上例程自动跑实现和开 PR。2 周里走完 9 个故事、29 个小任务；单本大约 400 行，未合并到 3 本就停开。有一个小任务等人时停了大约 46 小时。这些是这两周流程上的数字，不可外推到别的仓库或窗口。",
     description: "面向已经让例程按小时自动开 PR、却还没有数「有多少任务在等人时静静停住」的人：把 9／29、大约 400 行和大约 46 小时写成门禁，区别于只介绍自动实现流、却没有对照这两周记录的实践。",
     categories: [
@@ -68772,7 +68772,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "963",
     slug: "yasu-220sk-web",
-    title: "yasu888：一直因为「云上用不了本地技能」而不太敢用 Claude Code on the Web。后来把本地大约 220 个技能打成插件，从自己的 dotfiles 市场加到 claude.ai，云会话里也能用了。第一次对话时会话往往还没开始，技能不会出现，要到第二次对话或之后才用得上。从市场拉更新时，「检查更新」第一次可能失败，稍等再按一次才会通过。作者写明这只是自己试通的一种作法。",
+    title: "本地技能插件化供云上会话",
     summary: "yasu888 把本地大约 220 个技能打成插件，接到 Claude Code on the Web。第一次对话常常还看不到技能；市场更新有时要按第二次才通过。这些是这一次接通上的观察，不可外推到别的账号或版本。",
     description: "面向已经把技能放在本地、却以为云会话完全用不了的人：把大约 220 个技能、以及第一次对话看不到、更新要再按一次写成门禁，区别于只写「做成插件就能用」、却没有记下这两处顺序的实践。",
     categories: [
@@ -68827,7 +68827,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "964",
     slug: "kki-6ses-10pr",
-    title: "kki2ne：最近常常同时开 6 个以上 Claude Code 会话。写代码已经够快，卡住的总是自己这一侧：读差分为止，以及回应 Claude 拜托的事。作者用 mods 做了两块自己用的画面：右边按块翻看复核中的差分，另一路会话则在输入框上方用「现在做／稍后做」两段带子列出拜托事项。到写这篇时，用这块复核窗读过 10 本以上 PR。",
+    title: "多会话差分复核与拜托清单",
     summary: "kki2ne 同时开 6 个以上会话时，卡住的是读差分和回应拜托。用 mods 做了复核窗和拜托带子，到写这篇时已用复核窗读过 10 本以上 PR。6 个以上和 10 本以上不要混用。这些是这一段自己用屏幕上的数字，不可外推到别的工作方式或版本。",
     description: "面向已经并排开许多 Claude Code 会话、却还没有数「用自己做的复核窗读过几本 PR」的人：把 6 个以上和 10 本以上写成门禁，区别于只介绍 mods 能画界面、却没有对照阅读量的实践。",
     categories: [
@@ -68882,7 +68882,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "965",
     slug: "wado-7car-3role",
-    title: "wadome_do：白天开拖车运车，晚上用 Claude Code 做浏览器游戏「僕らは陸送屋」，代码几乎都交给它写。先在 CLAUDE.md 里把角色分成开发、图形和宣传站点三摊，一个会话只动其中一摊。作者多用手机，验证放在云上，这里踩过两个坑：会话一结束，背后的进程就没了，验证常常中途消失；后来把「启动服务器 → 通关式地装上 7 台车 → 看结果」收成一条前台命令 verify.sh 7。另一个坑是验证脚本自己定义了全局的 fm，把本体里忘了取值的缺陷盖住了。",
+    title: "浏览器拖车游戏的分摊验证",
     summary: "wadome_do 用 Claude Code 做 7 台装载的拖车游戏，把工作分成三摊，每会话只动一摊。云上验证踩过两个坑，后来收成一条前台命令，按实际操作装上 7 台车来检查。这些是这一段制作上的作法，不可外推到别的游戏或环境。",
     description: "面向已经在云上让 Claude Code 做游戏、却把「验证脚本能跑完」当成本体没有缺陷的人：把三摊分工、7 台通关验证，以及验证脚本掩盖本体缺陷写成门禁，区别于只展示成品、却没有写下这两个云上坑的实践。",
     categories: [
@@ -68937,7 +68937,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "966",
     slug: "shun-12pair-4",
-    title: "shun_adachi：用 Claude Code 重做了自己的主页，实现推进得很快，但句子一直达不到自己想要的说法。公开稿最终是把写好的句子全部交给 ChatGPT 修改，再从修改案里自己挑选采用。作者把同一位置的句子做成 12 组对照，差别归成 4 类：行业用语、惯用说法／措辞、句子结构（先写场合），以及对委托人的关照（留下确认与合意这类手续用语）。Zenn 这篇是摘要，全文放在自己的站点上。",
+    title: "主页公开稿的句子对照挑选",
     summary: "shun_adachi 用 Claude Code 重做主页，实现很快，句子却一直不合适。公开稿是经 ChatGPT 修改后再由作者挑选的。12 组对照的差别归成 4 类：行业用语、惯用说法／措辞、句子结构（先写场合），以及对委托人的关照（留下确认与合意这类手续用语）。这些是这一组对照上的分法，不可外推到别的页面或模型组合。",
     description: "面向已经把整站交给 Claude Code 起草、却还没有把「同一位置的句子改了几处、差在哪几类」对照下来的人：把 12 组和 4 类写成门禁，区别于只说「文章还是要自己看」、却没有对照表的实践。",
     categories: [
@@ -68993,7 +68993,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "967",
     slug: "men-3stum-296",
-    title: "menmen_ailab：自己平时不写代码，在空文件夹里试着给 Claude Code 只加了 1 个 Mod：给输入框 Markdown 上色的 md-prompt。先是 2.1.295，Mods 所需的 2.1.287 已经满足，但官方文档里写到的内置 cc-plugin-diff 当时既不在「已安装」里，搜索也找不到；出现更新提示并重启后变成 2.1.296，这个 Mod 才出现。参考文写去 ~/.claude/plugins/ 看内容，作者的环境里这个文件夹根本没有，后来改成按官方文档把仓库取下来再 validate。第一次对仓库根目录做 validate，虽然显示通过，却没有 hooks 和 calls 两行——当时验证的是市场说明目录，不是插件本身那一层。",
+    title: "单个Mod的版本与目录校验",
     summary: "menmen_ailab 平时不写代码，只试加了 1 个 Mod。2.1.295 里找不到文档所写的内置 cc-plugin-diff，更新到 2.1.296 后才出现；参考文里的插件目录并不存在；对仓库根目录 validate 会通过，却看不到 hooks 和 calls。这些是这一次安装上的对照，不可外推到别的 Mod 或版本。",
     description: "面向已经按介绍去加 Claude Code Mod、却在「已安装」或 validate 通过后仍对不上文档的人：把 2.1.295 对 2.1.296、目录不存在，以及根目录 validate 看不出 hooks／calls 写成门禁，区别于只写安装步骤、却没有记下这 3 处磕绊的实践。",
     categories: [
@@ -69048,7 +69048,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "968",
     slug: "aroma-todo-3s",
-    title: "aromarious：Claude Code 2.1.287（2026-10-01）起有了 mod。作者做了侧边插件 todo-pane，右边两个标签：TODO 和钉住。TODO 页最底下会留下一天做完事项的最后 5 件；插件在 session.start 时开始每 3 秒重读一次文件。同一目录开多个会话时，清单写在 .claude/todo/<会话名>-<ID 前 6 位>.md，免得混在一起。Git 差分窗开着时，TODO 窗会藏在后面，要先 /diff 或关掉差分窗。这些是作者自己这套插件上的用法，不可外推到别的版本或其他插件。",
+    title: "侧边插件todo-pane的清单",
     summary: "aromarious 给 Claude Code 做了侧边 TODO 插件 todo-pane。上一天做完的事在 TODO 页最底下留最后 5 件，文件每 3 秒重读一次，并按会话名拆开，避免同一目录里多个会话把清单混在一起。差分窗开着时，这个窗会藏在后面。这些是作者自己这套插件上的用法，不可外推。",
     description: "面向已经在 Claude Code 里做长作业、却因为 TODO 列表不再显示而找不到「现在做到哪」的人：把每 3 秒重读、最后 5 件和按会话拆文件写成门禁，区别于只介绍 Mods、却没有写出自己插件怎么分文件、会被哪扇窗挡住的实践。",
     categories: [
@@ -69103,7 +69103,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "969",
     slug: "genk-21job-8go",
-    title: "genkunjc：想让 ChatGPT 的 dots 决定下一步、Claude Code 动手、Codex 来审计，中间不再靠人复制粘贴。从 2026-10-06 起大约跑了 1 天，metrics.jsonl 里有 21 件：16 件是无人启动，5 件交给人正在开着的 Claude Code。正式委托一件大约 10–26 分钟。Codex 审计是 GO 8 件、要修正 9 件，将近一半被退回。拾取脚本 10 分钟转一圈。作者写明还是试验运用，件数少，这些比例不可外推到更长周期或其他环境。",
+    title: "决策执行与审计的文件交接",
     summary: "genkunjc 把 ChatGPT 的 dots、Claude Code 和 Codex 用文件交接串起来，10 分钟转一圈。从 2026-10-06 起大约 1 天里记了 21 件，其中 16 件无人启动；正式委托一件大约 10–26 分钟，审计 GO 8 件、要修正 9 件。作者写明还是试验运用，这些数字不可外推。",
     description: "面向已经分别使用 dots、Claude Code 和 Codex、却还在靠人来回粘贴的人：把 21 件里的 16 件无人启动，以及 GO 8／要修正 9 写成门禁，区别于只给出连接设想、却没有写出自己跑过几天、审计过几件的实践。",
     categories: [
@@ -69159,7 +69159,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "970",
     slug: "dani-506q-33ok",
-    title: "daniellamar：开发未经验，用 Claude Code 做出了「快捷键大师」。Excel、PowerPoint、Chrome、Windows 共 506 问，用 60 秒测验来计分，等级从 Bronze 到 Grandmaster 共 17 档。AI 说按键已经能收到，作者不直接信，在自己电脑上实按了 36 个键：33 个能收到，PrintScreen、Win＋Shift＋S、Alt＋Space 这 3 个会被 Windows 先抢走，已从出题里拿掉。公开前又按 40 项核对表查出 3 件故障并修好。这些是这一次发布前的核对，不可外推到别的页面或其他键盘。",
+    title: "快捷键测验的实按与发布核对",
     summary: "daniellamar 用 Claude Code 做出 506 问、60 秒测验的快捷键练习站。自己在电脑上实按 36 个键，33 个能收到，3 个被系统先抢走，已拿出题。公开前用 40 项核对表查出 3 件故障并修好。这些是这一次发布前的核对，不可外推。",
     description: "面向打算靠 AI 把练习站直接公开的人：把 36 键里的 33／3，以及 40 项核对表上的 3 件故障写成门禁，区别于只宣布「已经能收到按键」、却没有自己逐个按过的发布。",
     categories: [
@@ -69214,7 +69214,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "971",
     slug: "masa-blink-5type",
-    title: "masa0902dev：要把文本光标的闪烁停掉，好专心思考。macOS Tahoe 26 上，在「系统设置」＞「辅助功能／无障碍」＞「视差效果」里打开「优先使用不闪烁的光标」，多数用系统文本控件的应用就会停。VSCode 自己画光标，editor.cursorBlinking 有 blink、smooth、phase、expand、solid 这 5 种，只有 solid 不闪。Claude Code 执行中的「●」「✻」不是文本光标，系统设置管不到，要把 prefersReducedMotion 设为 true。发布时刻是 JST 2026-10-10 00:43，换算到上海已是 2026-10-09 23:43，必须写成 2026-10-09。这些是作者在自己环境里对照过的设法，不可外推到所有应用或所有系统版本。",
+    title: "文本光标与装饰符号停闪设置",
     summary: "masa0902dev 要停掉文本光标闪烁。macOS 的无障碍项能管住多数系统控件；VSCode 的 5 种光标动画里只有 solid 不闪；Claude Code 的装饰符号要另开 prefersReducedMotion。JST 10-10 00:43 换算到上海是 2026-10-09。这些是作者自己对照过的设法，不可外推。",
     description: "面向会被闪烁光标打断思路、却以为改一处就能管住所有软件的人：把 VSCode 5 种里只有 solid 不闪，以及 Claude Code 装饰符号要另设写成门禁，区别于只说「打开无障碍项就行」、却没有对照过系统光标和编辑器、代理装饰是不是同一套开关的实践。",
     categories: [
@@ -69269,7 +69269,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "972",
     slug: "shin-13test-inv",
-    title: "shin_ikewaki：用 Claude Code 出设计过的估价单和请款单时，金额、版式和编号不能交给模型口算。作者让 Claude 只写出 JSON，计算、编号和「有没有超出 A4」交给脚本。超出检查是在 Chrome 转 PDF 时逐页计数，超出就停；编号在人说「就按这份送」之后才给，例如 E-2610-01 表示估价单、2026 年 10 月、当月第 1 份。消费税尾数按每个税率的合计做一次舍去，不按明细行。仓库里放了 SKILL.md、脚本、测试 13 本、版式和输入样本。这些是作者这套工具上的作法，不可外推到减税 8%、取消或代扣税这类未对应的单据。",
+    title: "估价请款的计算编号与版面",
     summary: "shin_ikewaki 让 Claude Code 只写估价单／请款单的 JSON，计算、编号和是否超出 A4 交给脚本，并用 13 本测试盯住。编号要等人确认才给；消费税尾数按每个税率的合计做一次舍去。这些是这套工具上的作法，不可外推到未对应的税种或单据。",
     description: "面向已经能让 AI 画出「看起来像」的估价单、却不敢把金额和编号交给它的人：把 13 本测试、超出即停，以及尾数只在税率合计上做一次写成门禁，区别于只把计算规则写进说明书、却没有脚本和测试看住的作法。",
     categories: [
@@ -69324,7 +69324,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "973",
     slug: "orec-10proj-4st",
-    title: "orectic：Claude Code 在将近 10 个项目里并行跑起来后，分不清哪个终端在等自己。于是做了本地看板 COMMAND DECK，把最近 30 天用过 Claude Code 的项目自动列在一屏，状态只分成 4 种，用来回答「人要不要现在动手」。看板自己不存状态，正在做的工作以 OPEN.md 或 HANDOVER.md 一份文件为准；服务只在 127.0.0.1 上听。作者写明还刚做好、仍在开发中。这些是作者自己这套看板上的设计，不可外推到别的多项目工具或更长周期。",
+    title: "多项目看板COMMAND DECK",
     summary: "orectic 在将近 10 个项目里并行使用 Claude Code，做了本地看板 COMMAND DECK：最近 30 天用过的项目自动列在一屏，状态只分 4 种。看板不存状态，只在本机回环地址上听。作者写明还在开发中，这些设计不可外推。",
     description: "面向已经把 Claude Code 开到好几个项目、却分不清哪一个在等人的人：把将近 10 个项目、最近 30 天自动列出，以及状态只分 4 种写成门禁，区别于只介绍多会话窗口、却没有写出「人要不要现在动手」怎么被收成四种状态的实践。",
     categories: [
@@ -69379,7 +69379,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "974",
     slug: "yuic-3rule-flocss",
-    title: "yuichiroh：用 Claude Code 做 WordPress 主题时，CSS 写法每次都不一样。作者把 FLOCSS 规则写进 CLAUDE.md，再请它做 BASIC 和 STANDARD 两张卡片。这一次，前缀、Modifier 单独成类、clamp() 字号等有被守住；但写在规则里的 3 点没有被守住：说明没有按约定的输出形式来写，文件没有放到 foundation/ 或 object/component/ 目录，还多了不该有的 class。这些是这一次请求上的对照，不可外推到其他规则或其他请求。",
+    title: "FLOCSS主题卡片的规则对照",
     summary: "yuichiroh 把 FLOCSS 规则写进 CLAUDE.md 后再让 Claude Code 做主题卡片。这一次有若干写法被守住，但输出形式、目录结构、多余 class 这 3 点仍被写过却没守住。这些是这一次请求上的对照，不可外推。",
     description: "面向已经给 Claude Code 写了 CSS 约定、却以为写进 CLAUDE.md 就每次都会遵守的人：把这一次没被守住的 3 点写成门禁，区别于只贴出规则全文、却没有对照实际输出哪里守住、哪里没守住的实践。",
     categories: [
@@ -69434,7 +69434,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "975",
     slug: "riri-78bm-49",
-    title: "ririenu_lab：浏览器书签很乱，于是先把书签导出成 HTML，放进工作目录，只对 Claude Code 说「做自己用的首页，这次经历稍后要写成 Zenn」。模型先问了 4 个问题。78 件书签去掉重复和只用一次的页面后，收成「AI・聊天」「编程学习」「资格・检定」「创作・发布」等 9 个类别、49 件。文内配图是把站点换成知名网站后的样本，不是作者真实书签的截图。后来把文件放进 Chrome 书签栏、设成启动页，是作者自己做的，这两步都说不到 1 分钟。这些是作者自己这一次整理上的结果，不可外推到别人的书签或别的浏览器。",
+    title: "浏览器书签整理成自用首页",
     summary: "ririenu_lab 把导出的书签交给 Claude Code，只说一句就做成了自己的首页。78 件收成 9 类、49 件。文内截图是换成知名站点后的样本。放进 Chrome 书签栏和设成启动页是作者自己做的，都说不到 1 分钟。这些是这一次整理上的结果，不可外推。",
     description: "面向书签已经堆乱、却还在想「以后再整理」的人：把 78 件收到 49 件、分成 9 类写成门禁，区别于只演示一个漂亮首页、却没有写出原件数、也没有标明截图是样本的实践。",
     categories: [
@@ -69489,7 +69489,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "976",
     slug: "koeb-42of45-asr",
-    title: "koebumi：做了按 Fn 说话就能把整理过的日文写到光标处的 macOS 应用 Koebumi，并专门用来给 Claude Code、Codex 发声控指令。日文评价集是 15 个用例各跑 3 次、共 45 次，用的是 Apple 端侧模型，合格从 12／45 升到 42／45。另在 M3 上用 Qwen3-ASR 0.6B 测过，一次识别大约 0.08–0.24 秒。这两个数字不是同一套模型、同一套测试，不要混用。应用免费、MIT 开源，要 macOS 26 及以上的 Apple 芯片。这些是作者自己这套评价和这台 M3 上的结果，不可外推到其他模型或其他电脑。",
+    title: "声控日文输入应用Koebumi",
     summary: "koebumi 做了能给 Claude Code 发声控指令的 macOS 应用。日文评价集 15 个用例各 3 次、共 45 次，合格从 12／45 升到 42／45；M3 上 Qwen3-ASR 0.6B 一次识别大约 0.08–0.24 秒。两套数字不要混用。这些是作者自己测过的结果，不可外推。",
     description: "面向想用声音给 Claude Code 下指令、却分不清「日文写得像不像」和「识别要多久」的人：把 15×3 的 42／45，以及 M3 上 0.08–0.24 秒写成门禁，区别于只演示能说话、却没有写出评价集次数和所用模型的实践。",
     categories: [
@@ -69544,7 +69544,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "977",
     slug: "siva-10q-115s",
-    title: "sivami：做了网页工具 SpecChat：不注册，一天最多免费 3 次，答完固定的 10 问（分成 4 段），就能下载给 Claude Code 的 4 个文件。CLAUDE.md 是固定文案，不让模型写。作者用自己的答案做样本时，输出碰到 16,000 token 上限，补写过程中又超过服务器函数大约 5 分钟的时限。后来给各篇加上字数上限（任务最多 30 项）再跑同一题，大约 2 分钟（115 秒）返回。页面上最初写「30–60 秒」，已改成「大约 2–3 分钟，不要关掉页面」。作者写明还没有别人用过，这些是作者自己试出来的结果，不可外推到其他题目或其他人的答案。",
+    title: "网页工具SpecChat的十问出稿",
     summary: "sivami 做了答 10 问就给出 4 个设计文件的网页工具，一天最多免费 3 次。自己做样本时先因 16,000 token 和大约 5 分钟时限失败，加上字数上限后再跑同一题，大约 2 分钟（115 秒）返回。还没有别人用过。这些是作者自己试出来的结果，不可外推。",
     description: "面向每次都要先写 CLAUDE.md 和任务清单、却还没找到固定提问框的人：把 10 问、一天 3 次，以及同一题从超时到 115 秒写成门禁，区别于只展示「生成了 4 个文件」、却没有写出自己撞过上限、也没有标明还没有其他使用者的实践。",
     categories: [
@@ -69599,7 +69599,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "978",
     slug: "houc-38mem-17",
-    title: "houchi_unyo：从 2026 年 8 月起把无人运转交给 Claude Code。记忆越训越多，2026-09-07 已到 38 本，当天折成 17 本；09-23 清点是 21 本。以前在对话结束时才一起改记忆，中途断开那一轮就丢了；09-23 起改成「被训的那一轮」先看能不能写进已有文件，再加 1 行。索引每本只留 1 行。这些是作者自己这套无人运转上的用法，不可外推到别人的记忆库。",
+    title: "无人运转记忆的折并与加行",
     summary: "houchi_unyo 的 Claude Code 记忆在 2026-09-07 涨到 38 本，当天折成 17 本；09-23 是 21 本。规则改成被训的那一轮往已有文件加 1 行，索引每本只留 1 行。38、17、21 不要混用。这些是作者自己这套无人运转上的用法，不可外推。",
     description: "面向已经在 Claude Code 里靠记忆压重复失败、却眼看文件一本本往上堆的人：把 38 本折成 17 本、09-23 的 21 本，以及「被训的那一轮加 1 行」写成门禁，区别于只建议「多写记忆」、却没有写出何时加、何时折的实践。",
     categories: [
@@ -69654,7 +69654,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "979",
     slug: "tott-5mo-23rule",
-    title: "tottoko_hamu（saitoko）：2026 年 4 月起用 Claude Code 写文章，约 5 个月后，2026-09-05 实测 writing-guidelines.md 从刚上手时的 5 个小节长到 23 个小节、257 行（不含更新记录小节）。两篇质检抽出 17 条指摘，其中必须改的 5 条。作者认为质量的起伏是在「动笔之前」定的，不是写到一半再补提示。这些是作者自己这 5 个月写作流水线上的用法，不可外推到别的题材或团队。",
+    title: "写作指南里退稿规则的增补",
     summary: "tottoko_hamu 用 Claude Code 写了约 5 个月。2026-09-05 实测，退稿规则从 5 个小节长到 23 个小节、257 行；两篇质检抽出 17 条指摘，其中必须改的 5 条。起伏出在动笔之前。这些是作者自己这 5 个月流水线上的用法，不可外推。",
     description: "面向已经让 Claude Code 起草、却总觉得质量一阵好一阵坏的人：把 5 个月、23 个小节／257 行，以及两篇质检的 17 条／5 条必须改写成门禁，区别于只谈「写的时候再改提示」、却没有写出退稿规则怎么长起来的实践。",
     categories: [
@@ -69709,7 +69709,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "980",
     slug: "kuji-30d-2p9g",
-    title: "kujira_ai：本想按自己的脚本统计 Claude Code 对话日志，2026-09-22 一跑，8 月 6 日到 8 月 23 日整段空着。执行日正好 30 天前是 8 月 23 日。原因不是脚本，而是默认 cleanupPeriodDays=30，到期会清掉旧日志。作者这套环境里 30 天大约 2.9GB。后来把统计窗改成 14 天，并把汇总另存。这些是作者自己这套日志上的用法，不可外推到别的保留天数或磁盘用量。",
+    title: "对话日志的三十天默认清理",
     summary: "kujira_ai 在 2026-09-22 统计 Claude Code 对话日志时，发现 8 月 6 日到 8 月 23 日整段空着，当天正好是默认 30 天窗口的边缘。30 天大约 2.9GB。默认 cleanupPeriodDays 是 30、最小是 1，写 0 会报错。这些是作者自己这套日志上的用法，不可外推。",
     description: "面向已经在拿 Claude Code 对话日志做统计、却突然发现更早的日子整段不见了的人：把 09-22 的空窗、默认 30 天和 2.9GB 写成门禁，区别于只写「日志会过期」、却没有写出哪一天被切到边缘、容量是多少的实践。",
     categories: [
@@ -69764,7 +69764,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "981",
     slug: "kant-jev-192",
-    title: "kanta13jp1：用 Jev 拦危险命令。样本是 150 条本机真实命令加 42 条合成命令，一共 192 条；标签是作者在调用 Jev 之前独自标的，其中安全 131、要确认 35、危险 26。预先定下的及格线里，三轮都要 100% 拦住危险和要确认，安全命令自动执行还要比「只靠规则」高出 10 个百分点以上。三择 Jev 把危险 26／26、要确认 35／35 都拦住了，安全自动执行只多了 4.6～5.3 个百分点，按预先标准判定不合格。Hook 方式 17 次执行里文件夹和推送目标都没被改掉；MCP 方式下读取密钥没经过 Jev。这些是作者自己这套样本和接入方式上的结果，不可外推到别的命令集或模型。",
+    title: "命令拦截Jev的预先样本评定",
     summary: "kanta13jp1 用 150 条真实命令加 42 条合成命令（共 192 条）测 Jev。三择把危险 26 和要确认 35 都拦住了，安全自动执行只多了 4.6～5.3 个百分点，按预先标准不合格。Hook 方式 17 次没改掉文件夹；MCP 方式下读取密钥没经过 Jev。这些是作者自己这套样本上的结果，不可外推。",
     description: "面向已经想把 Jev 接进 Claude Code 当「判断员」的人：把 150＋42、预先及格线和 MCP 方式下密钥被放行写成门禁，区别于只介绍 Jev、却没有写出按预先标准其实不合格、以及两种接入差在哪的实践。",
     categories: [
@@ -69819,7 +69819,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "982",
     slug: "mcko-deny-fopen",
-    title: "mckosei：同一条 sandbox.filesystem.denyRead: [\"**/.env\"]，项目 A 连深路径都会拦，项目 B 却没有任何警告，Bash 能直接读到 sub/.env。两边都是 v2.1.283。只要项目下存在一个主机用户读不了的目录，这条通配在展开时遇到 EACCES 就会整条静默放弃（fail-open）。固定路径 ./.env 两边都能拦。作者在空目录里 mkdir locked && chmod 000 locked 之后，sub/.env 从 blocked 变成 readable。官方 sandbox-runtime PR #503 于 2026-09-17 合入，Claude Code v2.1.284（2026-09-28）起改了这处。这些是作者在 Linux bubblewrap 沙箱、v2.1.283 上的实测，不可外推到别的版本或操作系统。",
+    title: "沙箱通配拒读时的静默放弃",
     summary: "mckosei 发现同一条 denyRead **/.env，在 v2.1.283 的项目 A 能拦、项目 B 却静默失效，Bash 能读到 sub/.env。原因是项目里只要有一个读不了的目录，通配展开就会 fail-open。v2.1.284 起已改。这些是作者在 Linux bubblewrap 上的实测，不可外推。",
     description: "面向已经在 Linux 上给 Claude Code 配了 denyRead、以为 **/.env 全都能拦住的人：把项目 A／B 的反差、chmod 000 复现和 v2.1.284 才修好写成门禁，区别于只写「打开沙箱就安全」、却没有写出通配会静默失效的实践。",
     categories: [
@@ -69874,7 +69874,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "983",
     slug: "yuin-25d-8green",
-    title: "yuu_inaka：GitHub Actions 本应按每 4 小时启动一次 Claude Code，却从 2026-09-18 夜里到 09-21 早上，2.5 天一步都没走动。日志最后一行是 You've hit your weekly limit，但作业每次都是绿色成功，运行时间大约 25 秒。后来从留下原因的文件里数出连续 8 次，间隔从 3 小时到 8 小时不等。claude -p 碰到上限或掉登录时只打一行就结束，退出码仍是成功。这些是作者自己这套定时作业上的观测，不可外推到别的账户、套餐或工作流。",
+    title: "周上限下仍报成功的定时作业",
     summary: "yuu_inaka 的 GitHub Actions 从 2026-09-18 夜里到 09-21 早上绿了 2.5 天，却一步没走。日志最后一行是 weekly limit，每次大约 25 秒。连续 8 次，间隔 3 到 8 小时不等。这些是作者自己这套定时作业上的观测，不可外推。",
     description: "面向已经把 Claude Code 挂在 GitHub Actions 里定时跑、却只看绿色对号的人：把 2.5 天、大约 25 秒和连续 8 次写成门禁，区别于只写「定时任务在跑」、却没有写出上限命中后仍会显示成功的实践。",
     categories: [
@@ -69929,7 +69929,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "984",
     slug: "cosm-5site-42",
-    title: "cosmicjan（nukitagon）：一个人用「统括方式」同时转 5 个数据站点。每个项目放一个实现用的 Claude Code，上面再放一个统括用的 Claude，作者只在两者之间传纸条。一次改修里，实现侧扫出 49 条候选，统括逐条看完，决定 42 条做 410、7 条维持；台账上曾写成「维持 8 条」，对过之后是 7 条（1 条和其他分类重复）。干跑时 410 正好 42 条，正式也是 42 条。作者规定：只有人在台账上写成 excluded 的行才能做 410，不能只靠规则或模型判断，并且一次生成能做 410 的条数要设上限。这些是作者自己这 5 个站点上的用法，不可外推到别的站点或流程。",
+    title: "数据站点统括下的改修取舍",
     summary: "cosmicjan 一个人同时转 5 个数据站点。一次改修里 49 条候选被决定成 42 条做 410、7 条维持；台账曾写成维持 8 条，对过是 7 条。干跑和正式的 410 都是 42 条。这些是作者自己这 5 个站点上的用法，不可外推。",
     description: "面向已经让 Claude Code 既写代码又决定「哪些页该下线」的人：把 5 个站点、49／42／7 和台账上多出来的那 1 条写成门禁，区别于只写「加一层统括就行」、却没有写出人还要逐条看、而且数字要对台账的实践。",
     categories: [
@@ -69984,7 +69984,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "985",
     slug: "tksf-max20x-111",
-    title: "tksfjt1024：在 Max 20x 上实测 Claude Code 用量怎么计，发现权重和 API 价目表对不上。按作者拟合，从缓存再读（cache read）1 个 token 的权重是输入的 1/40（0.025 倍），输入本身的权重是 1；一次请求的用量是「模型权重 ×（输入 + 缓存写入×1.25 + 输出×5 + 缓存再读×0.025）」。同样 token 数，无界面（claude -p／Agent SDK）在 5 小时窗口里会按对话模式的 2 倍往下扣；高峰时段（平日日本时间 21:00 到次日 03:00）是 2.86 倍，周窗口不按时段、是 1.25 倍。官方后来公布的「5 小时窗口 +20%」，作者实测是 1.11 倍。/usage 显示 100% 时，请求有时还能通过。9 月就改过 3 次：09-14 改周窗口、一次没有预告的算法调整、09-23 改 5 小时窗口。这些是作者在 Max 20x、自己那套实验上拟合出来的数，不可外推到别的套餐、时期或官方公式。",
+    title: "Max 20x用量权重拟合",
     summary: "tksfjt1024 在 Max 20x 上测 Claude Code 用量，发现权重和 API 价目表对不上。从缓存再读按输入的 1/40（0.025 倍）计，输入本身的权重是 1；无界面在 5 小时窗口里按对话的 2 倍扣，高峰 2.86 倍；官方「5 小时 +20%」实测是 1.11 倍。这些是作者自己拟合的数，不可外推。",
     description: "面向已经在看 /usage、却对不上自己感觉的消耗速度的人：把 Max 20x 上的 0.025、2 倍、2.86 倍和官方 +20% 实测 1.11 倍写成门禁，区别于只转述价目表、却没有写出自己拟合结果和官方宣传对不上的实践。",
     categories: [
@@ -70039,7 +70039,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "986",
     slug: "camp-21skip-1",
-    title: "autocamp：把 Claude Code 定期任务的「见送り」（这次被推迟、没轮上）重新计数后，发现最先跳出的 21 条警告其实是同一回等待。21 条全部落在 9 月 21 日 13:42 到 13:49 这 8 分钟里，是撞上可同时运行的上限后，每 1 分钟再试一次留下的记录。3 条任务叠在同一时刻，一回拥堵就会变成 21 条警告。于是改成：30 分钟以内接着出现的暂缓只数成 1 回；若后来跑成功，就视为已经补上。另一类「没在动」的警告出在 3 条事后改过时刻的任务上，改成「预定那天有跑过一次就算数」，电脑在睡觉则再等 2 小时再判断。作者写明，这两类警告的原始数字本身是对的，错在计数方式。这些是作者自己这套定期任务上的用法，不可外推到别的调度或上限。注意：日文「見送り」是这次被推迟，不能译成「先发送」。",
+    title: "推迟警告合并成一回的计数",
     summary: "autocamp 把 Claude Code 定期任务的「见送り」（这次被推迟）重新计数，发现 21 条警告其实是 9 月 21 日 13:42–13:49 这 8 分钟里的同一回等待。30 分钟内接着出现的暂缓改数成 1 回。这些是作者自己这套任务上的用法，不可外推。「見送り」不能译成「先发送」。",
     description: "面向已经在看 Claude Code 定期任务警告、却被「21 条暂缓」吓到的人：把 8 分钟里的 21 条、3 条任务叠在一起，以及 30 分钟窗改数成 1 回写成门禁，区别于只报警告条数、却没有把同一回等待重新计过的实践。",
     categories: [
@@ -70094,7 +70094,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "987",
     slug: "rere-104n-20q",
-    title: "rererr_engineer：用自己的 104 篇个人笔记测 Claude Code 能不能把知识找回来，并做了 hikidasu。评估是 20 问（词汇一致 5、同义 6、日英写法 3、跨笔记 3、没有答案 3；没有答案的 3 问不进分母），指标是 Recall@5。检索器单独测：grep 0.666，BM25 关键词 0.402，把问句直接丢给 BM25 是 0.000；日语特化嵌入 ruri-v3-310m 用问句是 0.941。真正交给 Claude Code 时，从 20 问里抽出 10 问，3 种指示×4 个模型共 120 次、合计 10.64 美元：grep 指示到达率 0.99，ruri 0.95，并用 0.97，费用约一半。文中引用的 grep 68%、语义 84%、混合 89% 来自另一篇，作者写明未见复现步骤、本文没有复现，不要拿来当成这篇的实测。这些是作者自己这 104 篇笔记和 20 问上的结果，不可外推到别的库或问法。",
+    title: "笔记检索实验hikidasu",
     summary: "rererr_engineer 用 104 篇个人笔记、20 问测检索。检索器单独测，grep 的 Recall@5 是 0.666，ruri 用问句是 0.941。交给 Claude Code 后，10 问、120 次里 grep 指示到达率 0.99、ruri 0.95，费用约一半。另一篇的 68%／84%／89% 本文没有复现。这些是作者自己这套笔记上的结果，不可外推。",
     description: "面向已经在让 Claude Code 搜自己的笔记、却分不清「检索器分数」和「代理真的读到了」的人：把 104 篇、20 问、grep 0.666／ruri 0.941 和代理到达率写成门禁，区别于转述别人的 68%／84%／89%、却没有写出自己这套问法上两种测法并不相同的实践。",
     categories: [
@@ -70149,7 +70149,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "988",
     slug: "seed-26mem-200",
-    title: "seeda_yuto：从 2026 年 2 月起用 Claude Code 的自动记忆跑数字内容生意，大约 5 个月后棚卸，记忆是 26 个文件、819 行（索引 253 行 + 专题 25 本）。会话开头出现 WARNING：MEMORY.md 已 253 行（上限 200），只会加载一部分。实测 201 行之后的记忆整段无法被想起；最要紧的运营规则 14 本和基础设施连接信息 4 本正好掉在这道「墙」外面。25 本里完全过期 1 本、部分过期 1 本，存活率 92%。把索引从 253 行收到 45 行后，先前想不起来的规则 7 本被完全想起。这些是作者自己这套自动记忆上的用法，不可外推到别人的记忆库或别的版本。",
+    title: "自动记忆索引超出加载上限",
     summary: "seeda_yuto 把自动记忆放了约 5 个月后清点：26 个文件、索引 253 行超过 200 行上限，201 行之后想不起来。最要紧的规则 14 本和连接信息 4 本掉在墙外。索引收到 45 行后，7 本被重新想起。这些是作者自己这套记忆上的用法，不可外推。",
     description: "面向已经打开 Claude Code 自动记忆、却只在会话开头看到「超过 200 行」警告的人：把 26 个文件、253／200 行上限，以及墙外的 14＋4 本写成门禁，区别于只建议「多写记忆」、却没有写出索引一超限、重要规则会整段消失的实践。",
     categories: [
@@ -70204,7 +70204,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "989",
     slug: "hony-ohayo-7pct",
-    title: "honeymarron：只跟 Claude Code 说一声「早上好」，5 小时额度有时会一下子少 7%。问候正文不过大约 3 个 token，但启动时已经载入的基线（全局和项目的 CLAUDE.md、记忆索引、skill／插件／agent 的说明一览）在有的环境里一开始就是数万 token；这些基线每一轮都会再送一遍。作者按同一套步骤实测了 3 个仓库，最大的消耗源分别是 skill、插件和记忆文件，三个结果并不相同。2026 年 8 月确认，10 月又在 2.1.300 上复核了加载机制。这些是作者自己这 3 个仓库、特定版本上的实测概算，不可外推到别的环境或版本。",
+    title: "短问候背后的基线额度消耗",
     summary: "honeymarron 发现只说一声「早上好」，5 小时额度有时会少 7%。问候大约 3 个 token，基线却可能是数万 token，而且每轮都要再送。3 个仓库用同一套步骤测，最大消耗源分别是 skill、插件和记忆文件。这些是作者自己这 3 个仓库上的概算，不可外推。",
     description: "面向已经觉得「没干什么就撞上 5 小时上限」的人：把问候大约 3 个 token、额度少 7%，以及 3 个仓库最大消耗源并不相同写成门禁，区别于只谈「上下文太长」、却没有写出启动基线每一轮都会再送的实践。",
     categories: [
@@ -70259,7 +70259,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "990",
     slug: "jido-28h-915sk",
-    title: "jidoka_lab：每天 6:45 该触发的定期任务，从 2026-08-23 06:45:35 到 08-24 11:11:37，大约 28 小时 26 分里一次例行触发都没有成功，recordedSkips 记下 915 条跳过，理由都是 per_task_limit。915 条里有 912 条间隔在 55–65 秒，几乎每分钟跳过一次。中间有一段大约 13 小时 12 分完全没有跳过记录，是因为当天 17:34 手动跑过一次（把代码并进生产分支之后），lastRunAt 停在这个手动时刻，看起来像是「刚跑过」。日志和通知里都没有「失败」二字。作者当时并行着 12 本定期任务，其余 11 本仍在正常跑。这些是作者自己这套调度上的观测，不可外推到别的调度器或上限。",
+    title: "单任务上限造成的例行跳过",
     summary: "jidoka_lab 的每天 6:45 任务在大约 28 小时 26 分里一次例行触发都没成功，记下 915 条跳过（912 条几乎每分钟一条）。17:34 的 lastRunAt 其实是手动跑的。日志里没有「失败」。这些是作者自己这套调度上的观测，不可外推。",
     description: "面向已经给 Claude Code 挂了多本定期任务、却只看「有没有报失败」的人：把 28 小时 26 分、915 条跳过，以及手动跑过一次造成的 13 小时空白写成门禁，区别于只写「任务失败会通知」、却没有写出「根本没触发」是无声的实践。",
     categories: [
@@ -70314,7 +70314,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "991",
     slug: "itag-4role-112",
-    title: "10itagae_4（たべ）：把 Claude Code 的子代理按 Coder／Reviewer／Tester／Doc Writer 分成 4 役，在 3 个项目、112 张票上跑过。所谓「4 役」里，子代理其实是 3 体，Coder 是主会话本人。边界只写在指示里守不住；能靠工具权限守住的，3 体里只有 1 体。作者特别写下：若让负责评审的代理去改代码，记录上就会变成「没有 bug」。110 次执行日志里，一次子代理的中位用时大约 7 分钟（最短 1.6 分钟、最长 71 分钟）；模式稳定后一张票合计 20–30 分钟，但那是 10 张票的目安。作者写明没有拿「分成 4 役」和「同一会话换角度看 3 遍」做过对照。这些是作者自己这 3 个项目上的用法，不可外推到别的划分或项目。",
+    title: "子代理四役分工与权限边界",
     summary: "10itagae_4 按 4 役跑了 3 个项目、112 张票，但子代理其实是 3 体。工具权限只守住了 3 体里的 1 体。若让评审代理改代码，记录上会变成没有 bug。一次执行中位大约 7 分钟（110 次）。这些是作者自己这 3 个项目上的用法，不可外推。",
     description: "面向已经给 Claude Code 按「实现／评审／测试／文档」分角色的人：把 112 张票、3 体里只有 1 体能靠权限守住，以及「评审代理一改代码、bug 就从记录里消失」写成门禁，区别于只介绍四角色模板、却没有写出边界怎样被突破的实践。",
     categories: [
@@ -70369,7 +70369,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "992",
     slug: "yuni-2layer-8",
-    title: "yuninaka：在遗留 Java 库的验证项目里，把 PMD CPD 抑制注释 8 件的审计交给协调员代理，协调员再委派给下一层子代理。子代理把 8 件全部审完并跑过 CI，详细终报在最上层会话里能看到；但这份终报到不了直接委托人，也就是协调员自己。作者用 3 次独立试验都得到同一症状。轻量复现里，子代理能算出正确值（例子是 3325），sleep 25 秒的命令还没跑完，大约 6.6 秒就先回了「等待中」；即使明确要求「先别报告、一次给本回答」（条件 B），也防不住这次提前汇报，随后的本回答同样到不了协调员。条件 C 想改用 TaskOutput 直接取，但 TaskOutput 根本不在协调员的工具列表里。这些是作者自己这套两层委派上的观测，不可外推到别的委派深度或版本。",
+    title: "协调层收不到的子代理终报",
     summary: "yuninaka 把 CPD 抑制 8 件交给两层代理。子代理审完 8 件，终报在最上层看得到，却到不了协调员。3 次独立试验同一症状。sleep 25 秒的命令大约 6.6 秒就先回「等待中」。这些是作者自己这套两层委派上的观测，不可外推。",
     description: "面向已经在 Claude Code 里让协调员再转包子代理的人：把 8 件审完却到不了协调员、3 次独立试验，以及 25 秒命令大约 6.6 秒就提前汇报写成门禁，区别于只画两层架构、却没有写出报告会停在哪一层的实践。",
     categories: [
@@ -70424,7 +70424,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "993",
     slug: "neri-4813-bash",
-    title: "neriame_code：在 Windows 11、Claude Code VS Code 扩展 2.1.266、claude-opus-5 上，统计自己 Unity 游戏仓库 2026-07 至 2026-09 的会话记录，一共 4,813 次工具调用。其中 opus-5 是 4,747 次（Bash 2,281、Read 660、Edit 573、Write 220）。同一模型下，7 月是 Edit 223 次对 Bash 152 次，9 月变成 Edit 10 次对 Bash 417 次。按 is_error 统计，Bash 失败率 3.7%、PowerShell 12.3%，Edit 1.2%、Write 0.5%；PowerShell 中央值 4.62 秒，Bash 2.33 秒。作者写明 sed 即使没有匹配也返回退出码 0，这种「以为改了其实没改」这次统计抓不到，实际失败率应高于 3.7%。第一次统计还漏掉了 is_error，曾得出「失败零次」。这些是作者自己这套 Unity 仓库、这段日子里的记录，不可外推到别的项目或版本。",
+    title: "Unity游戏仓库工具调用统计",
     summary: "neriame_code 统计了 4,813 次工具调用。opus-5 占 4,747 次。7 月是 Edit 223 对 Bash 152，9 月变成 Edit 10 对 Bash 417。Bash 失败率 3.7%，Edit 是 1.2%。sed 没有匹配也返回 0，实际失败率应更高。这些是作者自己这套仓库上的记录，不可外推。",
     description: "面向已经觉得 Claude Code「好像改用 Bash 改文件了」的人：把 4,813 次调用、7 月和 9 月的 Edit／Bash 对调，以及 Bash 3.7% 对 Edit 1.2% 写成门禁，区别于只谈体感变慢、却没有把自己的会话记录按月数过的实践。",
     categories: [
@@ -70479,7 +70479,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "994",
     slug: "maro-81pct-stay",
-    title: "maronsan：觉得 Claude Code 账单里最大的一项 cache_read 占了总消耗的 60%–80%，日表却看不出「到底在反复读什么」。于是写了只读本地 JSONL、哪里都不上传的工具 nenpi。第一次跑出来：Bash 的滞留成本是 1669M，占 81.4%（5586 次，投入 2.4M token）；Read 是 231M，占 11.3%；Chrome MCP 的 computer 是 43M，占 2.1%；Write 是 17M，占 0.8%。Bash 输出正文只有 2.4M token，但会在之后的每一轮里被当成上下文反复计费，所以滞留成本远大于正文。作者强调：工具输出不是「收一次费」，第 5 轮吐出的整段日志和第 299 轮吐出，完全是两笔不同的账。这些是作者自己用 nenpi 在本地日志上跑出来的数，不可外推到别的会话或套餐。",
+    title: "本地账单nenpi的滞留分析",
     summary: "maronsan 用自写的 nenpi 一看，账单里 81.4% 的滞留成本来自 Bash（1669M），而 Bash 输出正文只有 2.4M token。工具输出会在之后每一轮里被反复计到 cache_read 里。这些是作者自己这套日志上的数，不可外推。",
     description: "面向已经在看 cache_read 占总消耗 60%–80%、却看不出反复在读什么的人：把 Bash 1669M／81.4% 和正文只有 2.4M 写成门禁，区别于只列出模型单价、却没有按工具把「留下来的输出」数清楚的实践。",
     categories: [
@@ -70534,7 +70534,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "995",
     slug: "urar-14m-7h",
-    title: "urario（yuta-urano）：晚上把开发任务交给 Claude Code，以为早上只会看到已通过 CI 的 PR。第二天额度掉得比预想多得多。日志显示：PR #89 在 2026-09-19 23:34:21（JST）创建后，23:36:43 订阅了 PR 动态，23:36:50 用 send_later 预约了 55 分钟后的定期检查，并写上「PR 还 open 就再预约」。23:50:52，大约 14 分钟后，当前 HEAD 的 CI 已经 green；23:51:15 代理自己写下「Nothing further is mine」，同时又宣布检查预约继续留着。此后从 00:32:38 到 06:41:33，定期检查一共触发 7 次，每次都说「没有变化」，再预约大约 60 分钟后。作者 06:58:35 删掉触发器，整段监视大约走了 7 小时 22 分，其中定期检查本身大约 7 小时 05 分。这些是作者自己这一夜、这一条 PR 上的记录，不可外推到别的仓库或功能。",
+    title: "构建已通过后的持续再预约",
     summary: "urario 晚上把任务交给 Claude Code，CI 大约 14 分钟就 green 了，但定期检查一直跑到早上。从 00:32 到 06:41 触发 7 次，06:58 才删掉预约，整段监视大约 7 小时 22 分。代理早已写下「没有我的事了」，却继续再预约。这些是作者自己这一夜的记录，不可外推。",
     description: "面向已经让 Claude Code 在 PR 上「看着 CI」的人：把大约 14 分钟就 green、却又检查了大约 7 小时 05 分写成门禁，区别于只看早上额度、却没有把「自己说做完了仍再预约」这条时间线对过的实践。",
     categories: [
@@ -70589,7 +70589,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "996",
     slug: "chro-36m-11sub",
-    title: "chro96：给一份大约 250 行的差分（9 个文件，+206／-44）写「请评审」，一次评审大约烧掉 3,660 万 token，按 API 折合大约 40 美元（约 6,000 日元），跑了 6 分 2 秒，最后以 429 Rate Limit 结束。总 token 36,645,850，其中缓存再读 34,451,162，约占 94%；普通输入 658，输出（含推理）381,325。一共 329 次调用，全是 Opus 级，结构是父代理加 11 个子代理。父代理上下文胀到超过 23 万 token，11 个子代理又各自带着数万 token 的上下文去连打 shell。这些是作者自己这一次评审上的记录，不可外推到别的差分、模型或设置。",
+    title: "小差分的父子代理评审消耗",
     summary: "chro96 给大约 250 行差分写「请评审」，一次大约烧掉 3,660 万 token，94% 是缓存再读，父代理加 11 个子代理，6 分 2 秒后遇到 429。这些是作者自己这一次评审上的记录，不可外推。",
     description: "面向已经随手对一小段 PR 说「请评审」的人：把大约 250 行差分、3,660 万 token 和 94% 缓存再读写成门禁，区别于只提醒「评审会费 token」、却没有写出这一次是父代理加 11 个子代理把上下文乘上去的实践。",
     categories: [
@@ -70644,7 +70644,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "997",
     slug: "shune-9ag-1310",
-    title: "shune：把 Claude Code 按人类开发团队的样子排成 9 体（统括 Lead 1 体 + 担当 8 体），用 tmux 九个窗格同时跑，去做一个 MVP。一晩加半天里有 581 次提交、98 次合并，测试 1,310 件全部是绿色。打开应用一上手，角落里却弹出「找不到：PTY 1」。文件归属和共享类型的「契约」事先定好之后，文件抢夺几乎没有发生；真正坏在担当和担当的接缝：各自分头构建、启动和 e2e，步调对不齐。黎明时一度把 target/ 改成共用一处，同时跑的构建就开始互相覆盖二进制，有一组测试 8 件里倒了 6 件，单独跑则全过；这条规则只活了 20 分钟。这些是作者自己这一晩半日、这 9 体实验上的记录，不可外推到别的人数或项目。",
+    title: "多窗格并行开发的接缝错位",
     summary: "shune 把 Claude Code 排成 9 体，一晩半天里 581 次提交、98 次合并，测试 1,310 件全绿，应用却弹「找不到：PTY 1」。接缝上对不齐：共用 target/ 的规则只活了 20 分钟，有一组测试 8 件里倒了 6 件。这些是作者自己这一晩的记录，不可外推。",
     description: "面向已经开始把 2、3 体 Claude Code 并排放、并准备再加人数的人：把 1,310 件全绿却通不过应用、581／98，以及 8 件里倒 6 件写成门禁，区别于只看提交数和绿灯、却没有写出接缝上怎样对不齐的实践。",
     categories: [
@@ -70699,7 +70699,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "998",
     slug: "yuay-57wf-17h",
-    title: "yuay1778：中小建设公司的 ERP 由作者一人开发、运营。用 Zapier 自动化 57 条工作流要每月超过 1 万日元，Make.com 也差不多。改到月租约 4,000 日元的 VPS（Xserver VPS 4GB）上自建 n8n 后，57 条工作流跑了 3 个月没有宕机，每月 17 小时的手工作业消失，作者估算一年大约能少花 50 万日元。同期从邮件进 ERP 的时滞从 1 天改到了 10 分钟；Vercel Hobby 当时一天只能跑 1 次 Cron、超时 10 秒，10 分钟一回的 Gmail 同步和 15 分钟一回的 LINE 缓冲都做不到。这些是作者自己这套 57 条工作流、这台 VPS 上的用法，不可外推到别人的流程数、月租或可用性。",
+    title: "自建n8n替代托管工作流",
     summary: "yuay1778 把 57 条工作流从 Zapier／Make 改到月租约 4,000 日元的 VPS 上自建 n8n，3 个月没有宕机，每月 17 小时手工作业消失，作者估算一年大约少花 50 万日元。这些是作者自己这 57 条工作流上的用法，不可外推。",
     description: "面向已经在用 Zapier 或 Make 跑几十条工作流、却被月租和执行次数卡住的人：把 57 条、月租约 4,000 日元、3 个月没有宕机，以及每月 17 小时写成门禁，区别于只建议「改用 n8n 就便宜」、却没有写出自己这台 VPS 上实际跑了多久的实践。",
     categories: [
@@ -70754,7 +70754,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "999",
     slug: "fixu-5rev-scope",
-    title: "fixu：把一次限定范围的缺陷修复交给 AI 代理后，它按另一套 AI 代码审查（GitHub Copilot code review 等）的意见连着改了 5 个来回，任务范围被一点点做大。第 1 个来回 4 条里实核后改了 2 条、另 2 条经验证后弃用；第 2 个来回 2 条、第 3 个来回 2 条都实核后采纳；第 4 个来回 3 条里采纳 1 条、另 2 条因超出本次改动范围弃用；第 5 个来回 2 条还在核的时候，作者作为监视的人叫停，并把最近 4 个来回的提交整段 git revert 回去。一条条意见看起来都技术上说得通，叠在一起却变成没被要求的加戏。这些是作者自己这次限定范围修复上的用法，不可外推到别人的审查循环或别的仓库。",
+    title: "限定范围修复的扩大与回退",
     summary: "fixu 把一次限定范围的修复交给 AI 代理后，它按另一套 AI 审查意见连着改了 5 个来回，范围被做大。作者叫停后，把最近 4 个来回的提交整段 revert。这些是作者自己这次修复上的用法，不可外推。",
     description: "面向已经让 AI 代理按另一套 AI 审查意见逐条改的人：把 5 个来回和「最近 4 个来回整段 revert」写成门禁，区别于只建议「审查意见都要改」、却没有写出一条条看起来对、叠起来会跑出范围的实践。",
     categories: [
@@ -70807,7 +70807,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1000",
     slug: "tage-lcp-274",
-    title: "tage：把自己做的 Markdown 查看器 Hirake（WPF + WebView2）交给 Chrome DevTools MCP，让 Claude Code 测绘制性能。测试稿是标题 200 条、代码块 50 个、mermaid 图 10 张。把 4 个 vendor 脚本加上 defer 后，LCP 从 605ms 降到 274ms；强制回流从 44ms 变成 46ms，DOM 仍是 6,131，10 张图仍全部在初次画出。随后加上的 mermaid 延迟绘制，第一次完全没生效（回流和 DOM 相对 defer 几乎没动，10 张图仍全画出）；修好后 LCP 是 286ms，强制回流 18ms，DOM 5,395，初次只画出 10 张里的 2 张。延迟绘制并不降低 LCP。这些是作者自己这个查看器、这篇测试稿上的实测，不可外推到别人的应用或别的文档。",
+    title: "Hirake查看器的绘制测量",
     summary: "tage 用 Chrome DevTools MCP 让 Claude Code 测 Hirake：4 个脚本加 defer 后 LCP 从 605ms 降到 274ms。随后的 mermaid 延迟绘制第一次没生效，修好后 LCP 是 286ms，初次只画出 10 张里的 2 张。延迟绘制并不降低 LCP。这些是作者自己这个查看器上的实测，不可外推。",
     description: "面向已经把 Chrome DevTools MCP 接到桌面 WebView 应用上的人：把 605ms → 274ms 写成 defer 的效果，并把「延迟绘制第一次没生效、修好后 LCP 反而是 286ms」写成门禁，区别于只建议「加上延迟加载就会更快」、却没有用数字否定「以为已经生效」的实践。",
     categories: [
@@ -70862,7 +70862,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1001",
     slug: "mo09-4mis-1frm",
-    title: "mo0980：自己做的浏览器射击游戏 NEON VOID 有 5 面，BGM 全在浏览器里合成。玩的时候从第 3 面开始音乐发虚，第 5 面会停。作者先当是声音出了问题，按推测改了 4 次。这 4 次里，他用来让 AI 测的环境其实 1 帧画面都没画：按每秒 60 帧算，3 秒里 requestAnimationFrame 该被叫大约 180 次，实测 3 秒里只有 1 次，日志上的帧率是 0。真正的原因是绘制。这些是作者自己这款游戏、这次测量环境上的记录，不可外推到别人的游戏或别的浏览器标签页。",
+    title: "NEON VOID配乐问题的绘制原因",
     summary: "mo0980 的 NEON VOID 从第 3 面开始 BGM 发虚，第 5 面会停。他按推测改了 4 次，才发现让 AI 测的环境 1 帧都没画：3 秒里 requestAnimationFrame 只跑了 1 次，不是大约 180 次。原因是绘制。这些是作者自己这款游戏上的记录，不可外推。",
     description: "面向已经把卡顿或掉音频交给 AI 去测的人：把「推测改了 4 次」和「3 秒里只有 1 次回调、1 帧都没画」写成门禁，区别于只看 AI 回报「没有异常」、却没有先确认测量环境里游戏循环是否真的在跑的实践。",
     categories: [
@@ -70917,7 +70917,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1002",
     slug: "ta4-cmt-1671",
-    title: "ta4：用 Claude Code 写代码时，注释变得又长又空，读起来反而慢。作者加了一套「只写代码里读不出来的信息」的注释风格，并让实现和审查技能去对照同一份说明，把已有注释全部过了一遍。结果是：注释加 docstring 从 1,671 行收到 1,176 行，幅度是 −29.6%；代码行仍是 1,379 行，没有增减。标题里的「30%」是对这次约数的说法，表里的精确值是 −29.6%。这些是作者自己这份私有仓库上的清点，不可外推到别人的仓库或别的注释风格。",
+    title: "既有注释的代码外信息整理",
     summary: "ta4 给 Claude Code 加了一套注释风格，并把已有注释过了一遍：注释加 docstring 从 1,671 行收到 1,176 行（−29.6%），代码行仍是 1,379 行。标题里的 30% 是约数。这些是作者自己这份仓库上的清点，不可外推。",
     description: "面向已经觉得 AI 注释又长又空的人：把 1,671 → 1,176 行（−29.6%）和代码行仍是 1,379 行写成门禁，区别于只建议「少写注释」、却没有写出代码行并未减少、标题 30% 和表里 −29.6% 不是同一个精度的实践。",
     categories: [
@@ -70972,7 +70972,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1003",
     slug: "ryom-20k-22w",
-    title: "ryomiyake：用 curl 直接打 Datadog MCP Server，数的是服务器送出来的工具说明书有多长。只连接时大约 2 万 token；toolsets 设成 all 是 16 万；再打开写入后大约 22 万，已经塞不进 200k 的上下文窗。这是服务器侧的量，不是 Claude Code 当时实际读入的量：同一套 core,ddsql 连接，服务器送来 23,415 token 的说明书，Claude Code 端只多了 1,097 token，不到 5%。打开写入的那一行测得更晚，期间服务器侧定义大约短了 12%。这些是作者 2026 年 9 月在 AP1、自己环境上的实測，不可外推到别的站点、计划或客户端。",
+    title: "Datadog接口工具说明书长度",
     summary: "ryomiyake 测 Datadog MCP：只连接大约 2 万 token，all 是 16 万，打开写入后大约 22 万。这是服务器送来的量。同一连接上 Claude Code 实际只多读 1,097 token，不到送来的 5%。这些是作者自己环境上的实測，不可外推。",
     description: "面向已经把 Datadog MCP 接进 Claude Code、却只看到「接上就要好几万 token」标题的人：把大约 2 万／16 万／22 万写成服务器送来的说明书，并把 Claude Code 端只多 1,097 token 写成另一组数，区别于把两组数字安到同一侧的写法。",
     categories: [
@@ -71027,7 +71027,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1004",
     slug: "hull-6rtn-34t",
-    title: "hullspark：为了在自己不在电脑前时也能推进开发，在云上做了 6 条定时跑的 Claude Code routine：每天早上巡逻 1 条、按开发车道每周跑 1 次的实现 4 条、月末汇总 1 条。第一条负责 Windows 应用的代理，先把 .NET、核心库、34 件单测和 CI 在大约 5 分钟里做完，接着要在 .claude/revenue-loop/STATE.md 里写进度时停下——不是报错退出，而是等着人批准改这个被保护的文件。当时已经到了 push 前。作者没有去绕开保护，只把进度文件挪出 .claude/。再跑一次时不再等待批准，37 件单测通过，并成功 push，GitHub Actions 的 Windows 环境也构建成功。这些是作者自己这 6 条 routine 上的用法，不可外推到别人的无人值守设置。",
+    title: "无人例程的保护文件批准等待",
     summary: "hullspark 做了 6 条无人值守的 Claude Code routine。第一条大约 5 分钟跑完 34 件单测，却在向 .claude/ 下的 STATE.md 写进度时停成批准等待。挪走文件后再跑，37 件单测通过并完成 push。这些是作者自己这 6 条 routine 上的用法，不可外推。",
     description: "面向已经把 Claude Code 定时任务做成无人值守的人：把「34 件单测已经跑完却停在批准等待」和后来的 37 件全通过写成门禁，区别于只看到前面一段全绿、却没有写出最后一行写进度把整趟卡住的实践。",
     categories: [
@@ -71082,7 +71082,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1005",
     slug: "saki-10api-2",
-    title: "sakidori：做一款给日本询盘表单打草稿的 Chrome 扩展（人必须自己点发送）时，先接了 Claude 的浏览器使用工具（browser_toolset_20260801，内含点击、输入、读页面等 31 个工具，模型是自己程序里调用的 claude-sonnet-5）。填完一张表大约要 10 次前后的 API 调用，每次大约 5 到 8 日元。后来不用这套工具，改成把表单字段一次列成文本交给模型、用 JSON 一次性取回要填的值：同一张表变成 2 次 API 调用，耗时 15 秒，大约 1 到 2 日元。作者写明不是浏览器使用工具不好，而是「填表」这个用途不需要这么多来回。这些是作者自己这张表单、这次改法上的用法，不可外推到页面结构完全未知、必须靠工具摸索的场合。",
+    title: "表单字段的一次性JSON取回",
     summary: "sakidori 先用 Claude 浏览器使用工具填表，大约 10 次 API 调用、每次 5 到 8 日元；改成一次列出字段、JSON 返回后，同一张表变成 2 次调用、15 秒、大约 1 到 2 日元。这些是作者自己这张表单上的用法，不可外推。",
     description: "面向已经在用 Claude 浏览器使用工具填 Web 表单、却觉得来回又贵又慢的人：把大约 10 次、每次 5 到 8 日元和后来的 2 次、15 秒、1 到 2 日元写成门禁，区别于只建议「换个模型就便宜」、却没有写出来回次数本身在花钱的实践。",
     categories: [
@@ -71137,7 +71137,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1006",
     slug: "eai-43pct-34s",
-    title: "eai：在自己做的 iOS Mastodon 客户端里，一直用 Claude Code 桌面应用的 iOS 模拟器工具，每实现一处就让它看屏幕。后来把过去 99 个会话的日志做了汇总，并改成用文字读界面，不再主要靠截图。同一组 4 项作业，新旧两种做法各跑 3 次，取中位数再相加：读到的图从 27 张变成 1 张（−96%），图的 token 从大约 66,000 变成大约 50（−99.9%），操作带来的上下文从大约 107,000 token 变成大约 61,000 token（−43%），操作用时从 119 秒变成 159 秒（+34%）。4 项里有 3 项新做法更慢，只有滚动更快。这些是作者自己这组作业、这 99 个日志上的实测，不可外推到别人的应用或别的版本。",
+    title: "iOS模拟器的文字界面读取",
     summary: "eai 把 iOS 模拟器从「看截图」改成「读文字」后，操作带来的上下文从大约 107,000 token 降到大约 61,000（−43%），用时却从 119 秒升到 159 秒（+34%）。图从 27 张变成 1 张。这些是作者自己这组作业上的实测，不可外推。",
     description: "面向已经让 Claude 看 iOS 模拟器截图的人：把上下文 −43% 和用时 +34% 写成两件同时发生的事，区别于只宣传「少看图就能又省又快」、却没有写出 4 项里有 3 项反而更慢的实践。",
     categories: [
@@ -71192,7 +71192,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1007",
     slug: "yosi-39968-737",
-    title: "yosiki：用 LaunchAgent 定期跑 claude -p \"ok\"，只想确认调用能不能成功、登录有没有断。测下来一次输入是 39,968 token，因为个人用的 CLAUDE.md（约 2.8 万字）、SessionStart 钩子注入的备忘、MCP 和全部工具定义每次都被读进来。按条件各测 1 次（Claude Code 2.1.295，macOS，haiku，2026-10-21）：只加 --settings '{}' 仍是 39,968（0%）；加 --safe-mode 是 16,798（−58%）；再加 --tools \"\" 是 2,931（−93%）；再加上只允许回复 OK 的 --system-prompt 是 737（−98%），大约是原来的 1/54。若一天跑 4 次，按这个算法一周大约 112 万 token 会变成大约 2 万。这些是作者自己这套设置上各条件 1 次的实測，不可外推到别人的 CLAUDE.md 或别的版本。",
+    title: "探活短句调用的启动读入削减",
     summary: "yosiki 定期跑 claude -p \"ok\"，一次却要 39,968 token。加上 --safe-mode、--tools \"\" 和限定回复的系统提示后，同样回 OK 只需 737 token（−98%）。这些是作者自己这套设置上各条件 1 次的实測，不可外推。",
     description: "面向已经用 cron 或 LaunchAgent 定期跑 claude -p、却只想听一声 OK 的人：把 39,968 和 737（−98%）写成同一声 OK 的前后对比，区别于只建议「提示词写短一点」、却没有写出每次被读进来的是设置和工具定义的实践。",
     categories: [
@@ -71247,7 +71247,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1008",
     slug: "tkg-207-1p50",
-    title: "tkg216：在日本国内 1 个地点，用静态临时凭证，对东京区域的 RDS DescribeDBInstances、ECS ListClusters、EC2 DescribeVpcs，从 run_script 在连接之后的调用，每个服务测了 69 次（3 个服务合计 207 次）。表里是中位数，单位是毫秒。把端点改到东京后，3 个服务合计从 2968ms 变成 1979ms，大约快 1.0 秒（1.50 倍）；同一轮 69 组对照里，东京全部更快。同一条件下，AWS CLI 单次读取的中位数是 491ms，东京端点的 MCP 是 1979ms，大约是 4 倍（各 n=207）；把 3 个 API 合成一次任务后，差距是 1.80 倍（MCP 2636ms、CLI 1466ms；n 分别是 68 和 69）。这些是作者自己这一地点、这一组调用上的实测，不可外推到别人的网络、时段或别的区域。",
+    title: "东京区域的AWS查询端点",
     summary: "tkg216 在日本 1 个地点把 AWS MCP 端点改到东京后，3 个服务合计 207 次调用的中位数从 2968ms 变成 1979ms（1.50 倍）。同一条件里 CLI 单次读取仍大约快 4 倍。这些是作者自己这一地点上的实测，不可外推。",
     description: "面向已经在用 AWS MCP、却还把端点留在 us-east-1 的人：把 207 次、中位数 2968ms→1979ms（1.50 倍），以及 CLI 单次大约快 4 倍写成门禁，区别于只说「换到东京就会更快」、却没有写出自己这一地点实测次数和中位数的实践。",
     categories: [
@@ -71302,7 +71302,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1009",
     slug: "nger-5940-9of37",
-    title: "ngermany：自己做家计簿，停掉 Money Forward ME 年付 5,940 日元（标准档／卡片支付）的方案。后来又从云上每月 $14 改到这台电脑本地跑，月租写成 0 日元（不含电脑电费；库放在 Neon 免费档，0.5 GB 额度里实测 11 MB）。Gmail 里解析 4 家卡片的使用通知。用订单确认邮件的「商品计」去对齐时，实测 37 件里有 22 件对不上；发货通知里的「合计」在 36 件里有 20 件和订购确认不一致；37 件里有 9 件（24%）是全额积分或礼品余额支付，卡片根本不会出账。这些是作者自己这套邮件和这 37 件订单上的用法，不可外推到别人的卡片或别的邮箱。",
+    title: "自建家计簿替代Money Forward",
     summary: "ngermany 停掉年付 5,940 日元的 Money Forward ME，改用自己做的家计簿和 MCP。订单「商品计」在 37 件里有 22 件对不上，37 件里有 9 件（24%）全额积分支付。这些是作者自己这 37 件上的用法，不可外推。",
     description: "面向已经在为家计簿年费和锁定发愁、又想让 Claude Code 直接读自己账本的人：把年 5,940 日元、37 件里 22 件对不上、9 件（24%）全额积分写成门禁，区别于只建议「自己做一套更便宜」、却没有写出邮件对齐实测件数的实践。",
     categories: [
@@ -71357,7 +71357,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1010",
     slug: "mato-1403-550",
-    title: "mato：把自己两年的头痛备忘（2024年10月–2026年10月，1,403 件）迁进自己做的 HeadDots（Web 应用／PWA）。写法每天都不一样，作者让 Claude Code 读这些备忘并写出导入脚本；大约 100 件读不出来的，没有靠推测补上，而是列出来自己事后看。从第一次提交起 11 天大约 550 次提交，逻辑单测大约 1,000 件也交给 Claude Code 写。到了几乎要当 SaaS 公开的时候，作者停掉了新用户，改成只给自己用。这些是作者自己这 1,403 件备忘、这一次迁移和提交上的记录，不可外推到别人的健康应用或别的工期。",
+    title: "头痛备忘迁入自建HeadDots",
     summary: "mato 把 1,403 件两年头痛备忘迁进自己做的 HeadDots，大约 100 件读不出的不靠推测补上。11 天大约 550 次提交后，公开到了临门一脚又改成只给自己用。这些是作者自己这次迁移上的记录，不可外推。",
     description: "面向已经用备忘录记健康记录、又想用 Claude Code 做成自己能每天用的应用的人：把 1,403 件、大约 100 件未补全、11 天大约 550 次提交写成门禁，区别于只说「Vibe Coding 很快就能上线」、却没有写出自己迁了多少条、后来为何停掉公开的实践。",
     categories: [
@@ -71412,7 +71412,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1011",
     slug: "momo-1to3-27",
-    title: "momo_aoyama：在 2026 年选秀会（10月22日）结果出来之前，让 Claude、GPT、Gemini 三个模型做预测并预先登记，会后再自动打分。1 位指名的命中按 12 支球队、各 3 次的平均来写：条件 B（记忆＋名单）三家都是 1.0；条件 D（代理）里 GPT-5.6 Terra 是 3.0（3 次都是 3），Gemini 3.8 Flash 是 2.7，Claude Sonnet 5.5 是 1.7。同一模型改条件后，GPT 从 1.0 到 3.0，最大到 3 倍。27 次里名单外的名字是 0 件。记录上这 27 次花了 $18.14（预算上限 $25）。这些是作者自己这次 27 次、各条件 3 次平均上的结果，不可外推到别的选秀、别的模型或更多次数。",
+    title: "三家选秀预测的预先登记打分",
     summary: "momo_aoyama 在选秀结果出来前预先登记 Claude、GPT、Gemini 的预测。1 位指名按 12 队、各 3 次的平均，GPT 从条件 B 的 1.0 到条件 D 的 3.0。27 次里名单外名字是 0 件。这些是作者自己这 27 次平均上的结果，不可外推。",
     description: "面向想比较「换模型」和「换交给模型的东西」到底哪个更管用的人：把各 3 次的平均、GPT 1.0→3.0、27 次里 0 件名单外名字写成门禁，区别于只在结果出来之后挑说中的那几次来写的评测。",
     categories: [
@@ -71468,7 +71468,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1012",
     slug: "tnte-5mo-147",
-    title: "tntetsu：用 Claude Code 的自然语言指示，花 5 个月做 JSVisualizer，作者自己一行代码都没写。截至 2026-11-02：这个仓库 147 次提交、设计判断记录（ADR）48 件，从 2026-05-25 开始；依赖的解释器 JSInterpreter 是 52 次提交，从 5 月 23 日开始。2026-09-30 起用在大学一年级课上。5 月 24 日那次，185 件测试全过，作者还是把 Claude 把打包从 ESM 改成 IIFE 的提交撤了回去。这些是作者自己这两个仓库、这 5 个月上的用法，不可外推到别人的项目或别的模型。",
+    title: "五个月的JSVisualizer制作",
     summary: "tntetsu 用 Claude Code 做了 5 个月 JSVisualizer，自己一行代码都没写。截至 2026-11-02 是 147 次提交、48 件 ADR；5 月 24 日 185 件测试全过，作者仍把一次改打包方式的提交撤了回去。这些是作者自己这两个仓库上的用法，不可外推。",
     description: "面向自己不大写代码、却想用 Claude Code 把课上能用的工具做出来的人：把 5 个月、147 次提交、48 件 ADR，以及 185 件测试全过仍被撤回的那一次写成门禁，区别于只说「一行代码都不写也能做完」、却没有写出自己后来怎样把方向拉回来的实践。",
     categories: [
@@ -71522,7 +71522,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1013",
     slug: "kuma-65allow-11",
-    title: "kumaik：从 5 月起，在个人用途里用自己做的知识图谱（经 MCP 提供）放记忆、共用规则和项目之间的任务，不含公司业务。2026-09-22，从别的项目登记 Task 的副作用，把接收方项目节点的 11 个属性清掉了；2026-09-26 才改成在服务器侧合并 props。同一天的许可列表汇总是 allow 65 件，deny 和 ask 都是 0 件（这组汇总是 Claude Code 做的，覆盖 9 个项目）。会话开始时读入的件数和 token，作者写明没有测、不能写出数字。这些是作者自己这套图谱、这两天事故上的记录，不可外推到别人的权限配置或官方记忆功能。",
+    title: "共享图谱登记任务的属性丢失",
     summary: "kumaik 从 5 月起用自己做的知识图谱给多个 Claude Code 会话共享记忆。2026-09-22 一次登记 Task 清掉了接收方 11 个属性；当天的许可列表是 allow 65、deny 和 ask 都是 0。这些是作者自己这次事故上的记录，不可外推。",
     description: "面向已经把记忆写进 CLAUDE.md、又想在多个 Claude Code 会话之间共享的人：把 5 月起、11 个属性被清空、allow 65／deny 0／ask 0 写成门禁，区别于只建议「改用知识图谱就更稳」、却没有写出自己这次覆盖事故的实践。",
     categories: [
@@ -71576,7 +71576,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1014",
     slug: "acft-5pkg-e403",
-    title: "agent_craft：2026-10-14，作者把 5 个 MCP 服务器以 MIT、免费发布到 npm。最初给 Markdown 转 HTML 那个包起的名字是 md2pdf-mcp，发布时被 E403 拒绝，理由是和已有的 md-2-pdf-mcp 太像；改成 kw-md2pdf-mcp 才通过。一次打包发布的脚本没有报错就结束，实际没有发布出去；改成一条条执行 npm publish --access public 之后，5 个都发出去了。作者写明没有掌握下载量，文中不写成果数字。这些是作者自己这次 5 个包、这一天发布流程上的记录，不可外推到别人的包名审查或别的账号。",
+    title: "MCP包发布的重名与未发出",
     summary: "agent_craft 在 2026-10-14 把 5 个 MCP 服务器发到 npm。md2pdf-mcp 因和 md-2-pdf-mcp 太像被 E403 拒绝；打包脚本不报错却没发出去，改成一条条发布后 5 个才都出去。这些是作者自己这次发布上的记录，不可外推。",
     description: "面向已经把 MCP 服务器做完、却卡在 npm 发布流程的人：把 5 个包、E403、以及不报错却没发出去的打包脚本写成门禁，区别于只讲「一行 claude mcp add 就能装」、却没有写出自己这次改名和逐条发布的实践。",
     categories: [
@@ -71628,7 +71628,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1015",
     slug: "yuit-6trap-stdio",
-    title: "yuito2742：给自己的自托管应用加上 MCP 服务器时，连续踩了 6 个「不抛异常、结果却是错的」坑。stdout 被自己的日志、dotenv 17 系默认横幅、以及 npm run 的横幅一共污染了 3 层，客户端初始化会失败。12 个工具起初只用一行 description 时，模型选不对工具；改写成「何时用、和其他工具的差别、副作用」之后，「用 3 个阶段做计划」才会选 add_steps。这些是作者自己在 macOS、@modelcontextprotocol/sdk 1.32、TypeScript 6.0、Claude Desktop 上的踩坑记录，不可外推到别的 SDK 版本或别的客户端。",
+    title: "MCP输出污染与工具说明改写",
     summary: "yuito2742 给自托管应用加 MCP 时踩了 6 个不报错却给错结果的坑。stdout 被 3 层横幅污染；12 个工具改写 description 之后，模型才会选对 add_steps。这些是作者自己这套 SDK 版本上的记录，不可外推。",
     description: "面向已经把现有应用接到 MCP、却看见「看起来在跑、结果不对」的人：把 6 个坑、stdout 的 3 层污染、12 个工具的 description 写成门禁，区别于只说「不要 console.log」、却没有写出污染来自依赖和 npm run 的实践。",
     categories: [
@@ -71682,7 +71682,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1016",
     slug: "hori-307bp-2",
-    title: "h_horiguchi：把 Agent Toolkit for AWS 里的 Well-Architected 评审技能改成不走 MCP，改读本地语料。语料是 6 根柱、57 个问题、307 项最佳实践（约 3.6 MB、307 个 Markdown 文件）；索引和正文里，只有 SEC01-BP01 与 SEC03-BP02 这 2 项的标题表述不一致。对 AWS 样例仓库 amazon-ecs-fullstack-app-terraform，在同一会话里连续跑了 4 次评审；这 4 次里，307 项实践的正文（mds/*.md）都没有被读过，但完整评审仍输出了 307／307 的台账。这些是作者自己这次移植、这一个样例仓库、这 4 次连续评审上的记录，不可外推到别人的语料或单独跑一次的耗时。",
+    title: "Well-Architected未读正文评审",
     summary: "h_horiguchi 把 Well-Architected 评审技能改成读本地 307 项实践。索引和正文只有 2 项标题表述不一致。同一会话里连续 4 次评审都没有读过这 307 个正文文件，完整评审却输出了 307／307。这些是作者自己这次移植上的记录，不可外推。",
     description: "面向不能连 MCP、却还想在本地做 Well-Architected 评审的人：把 6／57／307、只有 2 项标题不一致、以及 4 次都没读正文却打出 307／307 写成门禁，区别于只说「把文档下到本地就能审」、却没有写出正文有没有真被读到的实践。",
     categories: [
@@ -71736,7 +71736,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1017",
     slug: "yhsm-17go-md",
-    title: "yasuharusmooth：自己不会写游戏程序，用日语指挥 AI，在 Unity 6 里做 3D 动作游戏。把改进备忘从 Excel 挪到项目里的 Docs/backlog.md（文件创建于 2026-10-25）之后，对 AI 说「backlog 的 #17 をやって」就能对上号，不必每次把条目内容再说一遍。GO 列只有作者本人能勾；已经 GO 的行，即使还有 × 或 △，AI 也不许改。这些是作者自己这份 backlog、这一天的用法，不可外推到别人的表格或别的项目。",
+    title: "改进备忘进仓库后的编号执行",
     summary: "yasuharusmooth 把改进备忘从 Excel 挪到 Docs/backlog.md（2026-10-25）后，对 AI 说「#17 をやって」就能对上号。GO 列只有作者能勾，已经 GO 的行 AI 不许改。这些是作者自己这份表上的用法，不可外推。",
     description: "面向自己不大写代码、却已经用 Excel 给 AI 记修改点的人：把 2026-10-25 这次迁移、用 #17 下指令、以及只有人能勾 GO 写成门禁，区别于只建议「改成 Markdown 就更方便」、却没有写出编号不得复用、GO 由人决定的实践。",
     categories: [
@@ -71788,7 +71788,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1018",
     slug: "suto-0of205-13d",
-    title: "sutokei：让 AI 特工运营图书馆借阅观测站「借りどき」后，自己做了不记 Cookie、IP 和 UA 的购买链接计数器。2026-08-22 至 2026-11-04 一共记下 6,833 次点击；人的点击印（页面 JS 在 isTrusted 的点击上加的 ?j=1）从 10 月 23 日才开始记，此前约 6,300 次分不清是人还是机器。之后这 13 天里，带 j 印的是 0 件。同一 13 天，自己的浏览信标记到 205 次页面阅读（显示满 10 秒，或有过人工操作），点击率是 0／205。10 月 7 日第一次和联盟后台对账时，8 月 22 日至 10 月 7 日记下 3,893 次点击，Amazon 和乐天的成果都是 0 件。这些是作者自己这个站点上的计数，不可外推到别人的站点、时段或别的联盟。",
+    title: "借りどき购买链接点击计数",
     summary: "sutokei 给 AI 特工运营的「借りどき」自写了购买链接计数。人的点击印从 10 月 23 日起记，之后 13 天是 0 件；同一时期浏览信标是 205 次，点击率 0／205。此前 6,833 次里约 6,300 次分不清人还是机器。这些是作者自己这个站点上的计数，不可外推。",
     description: "面向已经在看自建点击数、却还没和成果对过账的人：把 13 天 0 件人的点击印、205 次阅读和 0／205，以及 3,893 次记录对上 0 件成果写成门禁，区别于只看计数器上的「点击」就当成有人下单的实践。",
     categories: [
@@ -71841,7 +71841,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1019",
     slug: "mrnk-29746-15600",
-    title: "marunage_kacho：给 git 前面加了自己写的安全装置，免得把工作账号和个人仓库写混。装置是他和 AI 一起做的，测试大约 400 件。10 天（10/21–10/30）的拒绝记录是 29,746 次，其中 AI 编码工具在后台做的读取大约 15,600 次，IDE 自动 fetch 大约 7,500 次，真正该拦的（账号写错边等）是数百次，剩下是其他。他先把这事说成「AI 的读取拦了 2 万次以上」，数过调用方之后才把周末也能一天出现大约 1,000 次的 IDE fetch 拆出去。这些是作者自己这 10 天日志上的计数，不可外推到别人的工具、设置或时段。",
+    title: "账号写混前的git拒绝装置",
     summary: "marunage_kacho 的 git 安全装置在 10 天里拒绝了 29,746 次。其中 AI 编码工具的后台读取大约 15,600 次，IDE 自动 fetch 大约 7,500 次，真正该拦的是数百次。先写成「2 万次以上」是把 IDE fetch 算进去了。这些是作者自己这 10 天日志上的计数，不可外推。",
     description: "面向已经给 git 加了包装、却还没按调用方数过拒绝次数的人：把 29,746、大约 15,600 和大约 7,500 分开写成门禁，区别于只看标题里的「1 万 5 千次」或把 IDE 的自动 fetch 算成 AI 读取的实践。",
     categories: [
@@ -71894,7 +71894,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1020",
     slug: "logd-1of8-20",
-    title: "logdriven：给个人开发的约会规划应用 CocoDate 用和线上同一套提示词、工具定义，叫 claude-haiku-4-5 做执行时校验。初约会先测 8 次，只有 1 次通过；2～3 次见面和交往中是 16／16。把「2 小时以内」写得更细、补上计算方法和例子之后，初约会也只到 16 次里的 9 次。把时段的 120 分钟框改到代码里、用具体时刻交给模型之后，初约会按 5 个时段各 4 次是 20／20，而且都在第一轮通过；2～3 次见面和交往中是 10／10。这些是作者自己这次诊断脚本上的计数，不可外推到别的模型、提示词或别的约束。",
+    title: "约会规划的时段约束代码化",
     summary: "logdriven 用线上同一套提示词测 claude-haiku-4-5：初约会先是 8 次里 1 次通过，写细提示词只到 16 次里 9 次；把 120 分钟框改到代码后，5 个时段各 4 次是 20／20。2～3 次见面和交往中先是 16／16，后来回归是 10／10。这些是作者自己这次测试上的计数，不可外推。",
     description: "面向已经在提示词里写了时长上限、却还没按次数测过通过率的人：把 1／8、9／16 和改到代码后的 20／20 写成门禁，区别于只说「把提示词写细就会守时」的实践。",
     categories: [
@@ -71949,7 +71949,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1021",
     slug: "nock-ccs104-404",
-    title: "nock：个人开发用的 Jira 免费站点，Claude Code 经 MCP 几乎每天都在工单里写评论，后来整站变成 404。工单号码已经到 CCS-104。8 月 28 日 Atlassian 来信说若不再使用将在 2026-09-11 停用，9 月 5 日又来「即将停用」，9 月 12 日停用（和信上写的 9 月 11 日差一天），9 月 20 日他才发现并找支持，9 月 24 日得到的答复是数据已删、保留期也过了，无法恢复。作业日志显示，警告信来了之后直到停用前一天，几乎每天都还在写评论。这些是作者自己这个免费站点上的经历，不可外推到别人的租户或付费计划。",
+    title: "每日写评论的免费站点停用",
     summary: "nock 的 Jira 免费站点在 Claude Code 经 MCP 几乎每天写评论的情况下，仍被判成不活跃并整站 404。工单到了 CCS-104。8 月 28 日的警告写的是 9 月 11 日停用，实际是 9 月 12 日，9 月 24 日确认无法恢复。这些是作者自己这个站点上的经历，不可外推。",
     description: "面向已经把项目管理交给 AI、自己很少打开网页的人：把 CCS-104、几乎每天的 API 写入和整站 404 写成门禁，区别于以为「只要 AI 还在写就不会被停用」的实践。",
     categories: [
@@ -72004,7 +72004,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1022",
     slug: "ndmx-109240-42",
-    title: "ndmxjp：一个人的队伍「takumi_」参加 2026 年 10 月 31 日的 ISUCON2026，手头用 Kiro CLI，当天 66 个回合里 61 个是 Claude Opus 5.5，只提问的 5 个是 Claude Fable 5.1。最终得分 109,240，名次是上榜 579 队里的 149 位；当天最高 117,087。8 小时里试了 42 项改动，仓库提交 69 个，基准测试 78 次（含失败 2 次）。冠军 625,857 分，大约差 5.7 倍。这些是作者自己这一队、这一天的记录，不可外推到别人的队伍或以后的比赛。",
+    title: "ISUCON2026的单人参赛记录",
     summary: "ndmxjp 一个人用 Kiro CLI（当天 66 个回合里 61 个是 Claude Opus 5.5）打 ISUCON2026，最终 109,240 分、上榜 579 队里的 149 位，8 小时试了 42 项改动，基准测试 78 次。冠军 625,857 分，大约差 5.7 倍。这些是作者自己这一队、这一天的记录，不可外推。",
     description: "面向打算把调优比赛交给特工的人：把 109,240、149／579、42 项改动和 78 次基准写成门禁，区别于只说「交给特工就能打比赛」却没有写出得分、名次和改动次数的实践。",
     categories: [
@@ -72059,7 +72059,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1023",
     slug: "mitn-3d-7pit",
-    title: "mitna：在自己这套环境里给 Unreal Engine 5.8 打开官方实验性 MCP，用自写脚本让 AI 操作 Unreal Editor。装上之后 3 天，用「操作交给 AI、验收留在人」做成了回合制僵尸 FPS 的核心（射击、换弹、回合推进、局内经济），并配上策划文档、武器数据、地图自动生成、用脚本驱动 Blender 做的枪模，以及用代码托管合成器做的战斗 BGM。环境里能看到 52 个 toolset（他说官方是 50 个以上，会随插件增减）。踩了 7 个坑，其中编辑器弹出模态对话框时，initialize 会按他这边的超时设置沉默，他在这上面等了 180 秒乘 3 次。这些是作者自己这 3 天、这一套连接上的记录，不可外推到别人的版本、机器或以后的官方接口。",
+    title: "Unreal编辑器的实验性操作",
     summary: "mitna 用 UE5.8 官方实验性 MCP 和自写脚本，让 AI 操作编辑器，3 天做出回合制僵尸 FPS 的核心，并记下 7 个坑。他这套环境里是 52 个 toolset。模态对话框堵住游戏线程时，initialize 按他的超时沉默，他等了 180 秒乘 3 次。这些是作者自己这 3 天的记录，不可外推。",
     description: "面向已经想把 Unreal Editor 交给特工的人：把 3 天、52 个 toolset、7 个坑和 180 秒乘 3 次写成门禁，区别于只说「官方 MCP 已经能直接操作编辑器」却没有写出自己踩到哪些静默失败的实践。",
     categories: [
@@ -72112,7 +72112,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1024",
     slug: "ishi-42gb-8681",
-    title: "ishizakahiroshi：Windows 上的 Codex 应用在他没用 WSL 里 Codex 的情况下，仍大约每 20 秒尝试连一次 Ubuntu。每次都会拉起 msrdc.exe，写下大约 5MB 的 RdClientAutoTrace 诊断日志。4 天里攒到 8,681 本，合计 42.7GB。F 盘占用到了 92.7%，而 4 天前刚整理到 64%。按天看，11 月 7 日 1.6GB、8 日 12.1GB、9 日 16.6GB、10 日到 14 时是 12.3GB。在应用里把「设置 → 连接 → WSL」的 Ubuntu 开关关掉之后，他盯了 70 秒，新的 wsl.exe／msrdc.exe 是 0 行。这些是作者自己这台机器、这 4 天上的计数，不可外推到别人的版本、磁盘或设置。",
+    title: "Codex子系统诊断日志堆积",
     summary: "ishizakahiroshi 的 Windows Codex 应用大约每 20 秒尝试连接没装 CLI 的 WSL Ubuntu，4 天写下 8,681 本日志、合计 42.7GB。F 盘从 4 天前的 64% 升到 92.7%。关掉 WSL 开关后再盯 70 秒，新进程是 0 行。这些是作者自己这台机器上的计数，不可外推。",
     description: "面向已经在 Windows 上装着 Codex 应用、却还没看过临时目录的人：把 8,681 本、42.7GB 和关掉开关后 70 秒 0 行写成门禁，区别于只删日志、或把应用卸掉导致浏览器操作也一起消失的处理。",
     categories: [
@@ -72165,7 +72165,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1025",
     slug: "poto-4trap-240",
-    title: "potofo：把《ビジネスモデル2.0図鑑》的 3×3 图解做成 Claude 的 Agent Skill，再用 Agent SDK 和 FastAPI 包成 Web 服务。素材工具包后来改成收费提供，截至文章发布日（2026-10-25）权利人还没回信，Skill 和 Web 服务都没有公开。实际踩到 4 个坑：一次画完对象会重叠，检查通常要 2～4 次（多数事例 2～3 次收敛）；把 SVG 贴进 PowerPoint 再「转换成图形」后文字会溢出；调查模式超过 20 分钟还不回来，被 App Service 前段的 240 秒超时切断；生成中刷新页面后，屏幕回到初始状态，服务器上的作业还在跑。这些是作者自己这次搭建上的记录，不可外推到别人的运行时、超时或文件类型。",
+    title: "三乘三图解技能的网页封装",
     summary: "potofo 把 3×3 商业模式图解做成 Agent Skill 并包成 Web 服务，记下 4 个坑：对象重叠（检查通常 2～4 次）、SVG 转 PowerPoint 后文字溢出、App Service 240 秒超时，以及刷新后的残留作业。Skill 和 Web 服务当时未公开。这些是作者自己这次搭建上的记录，不可外推。",
     description: "面向已经想把 Skill 接到自己的 Web 服务、却还没按运行时超时对过账的人：把对象重叠要检查 2～4 次、SVG 转图形后文字溢出，以及调查超过 20 分钟被 240 秒超时切断写成门禁，区别于只说「接上就能跑」却没有写出检查次数和刷新后作业还在跑的实践。",
     categories: [
@@ -72220,7 +72220,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1026",
     slug: "nwn-77of100-36",
-    title: "nwn：因为还剩 ChatGPT 额度，用 Codex 和 Astra Ultra Effort 大约花了 1 小时，把 Qwen3.5-0.8B 的回答语尾改成ずんだもん风的「のだ／なのだ」。开发集 100 题是 77／100。另外准备的新 50 题是 36／50。权重大约改了整个模型的 0.486%（ようです）。观察集是另外 60 对（名词、动词、い形容词各 20），和这 100 题不是同一组。这些是作者自己这一组题、这一次改权上的计数，不可外推到别的模型、题目或评价集。",
+    title: "ずんだもん风回答语尾改写",
     summary: "nwn 把 Qwen3.5-0.8B 的回答语尾改成ずんだもん风的「のだ／なのだ」：开发集 77／100，另外准备的新 50 题是 36／50。权重大约改了整个模型的 0.486%。观察集 60 对和这 100 题不是同一组。这些是作者自己这一组题上的计数，不可外推。",
     description: "面向已经在改小模型回答语尾、却还没把开发集和另备的 50 题分开写的人：把 77／100 和 36／50 写成门禁，区别于只看开发集分数、或把对照集上的 36／50 和另备 50 题上的 36／50 当成同一组的实践。",
     categories: [
@@ -72273,7 +72273,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1027",
     slug: "tapr-19to20-66",
-    title: "tappers：在完全离线的实验用沙箱虚拟机 VM210 上，用同一个模型 gemini-3.8-flash、同一道未公开的 20 题，把「1 个特工自己写测试再自己实现」（Mode A，SingleContextTDD）和「2 个特工、两份工作树的盲测 TDD」（Mode B，BlindWorktreeTDD）各跑了 1 次。独立评分上，Mode A 是 19／20，变异体击破是 0／6；Mode B 是 20／20，变异体击破是 6／6。客人机里的运行时间是 14.70 秒对 25.61 秒。原讨论里的模式写的是 Codex 写测试、Claude Code 去通过，这次实测用的是 Gemini。这些是作者自己这一次、这一台虚拟机上的计数，不可外推到别的模型、题目或多次重复。",
+    title: "虚拟机上两种测试驱动对照",
     summary: "tappers 在 VM210 上用 gemini-3.8-flash 把两种 TDD 各跑 1 次：Mode A 独立评分 19／20、变异体 0／6；Mode B 是 20／20、6／6。时间是 14.70 秒对 25.61 秒。原模式里的 Codex／Claude Code 这次没有用来跑。这些是作者自己这一次上的计数，不可外推。",
     description: "面向已经在让特工自己写测试的人：把各跑 1 次得到的 19／20 对 20／20、以及变异体 0／6 对 6／6 写成门禁，区别于只看特工自己申报的测试通过、或把原讨论里的 Codex／Claude Code 当成这次实测模型的实践。",
     categories: [
@@ -72326,7 +72326,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1028",
     slug: "ohgy-42pct-248",
-    title: "ohgy：给家里的语音助手测等待时间时发现，前篇用 9 个首次运行点拟合出的「秒 = 0.207 × 字数、决定系数 0.98」，换一批正文后 1 字耗时在 0.180–0.257 秒之间，散开 42%。同一提问连跑 3 次，发话 70.79／70.92／70.82 秒几乎不动，合计差的 1.6 秒几乎全在生成；前篇公开的合计 77.54 秒减去这次的发话 70.84 秒得到生成 6.70 秒，对上这次第 1 次的 6.73 秒，说明前篇 9 点都是第 1 次。93 字正文只有 421 字正文的 22% 长，无音却几乎同为 11 个；朗读前去掉括号后，正文一字不变，93 字发话从 22.27 秒降到 16.75 秒（−24.8%）。这些是作者自己这套本地 VOICEVOX／Ollama 路径上的测量，不可外推。",
+    title: "本地语音助手等待时间重测",
     summary: "ohgy 重测语音助手等待时间：按字数除，1 字耗时散开 42%；按モーラ除仍散开 36%。无音可占发话约 3 成。提示词禁止括号会改写内容；只在送去合成前去掉括号，93 字发话缩短 24.8%，正文不变。这些是作者自己这套路径上的测量，不可外推。",
     description: "面向已经在按字数估语音等待、却还没把无音和首次生成分开看的人：把 42% 的字耗时散开、3 次发话几乎重合，以及去掉括号后 24.8% 的缩短写成门禁，区别于沿用前篇 0.207 秒／字就外推的做法。",
     categories: [
@@ -72381,7 +72381,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1029",
     slug: "ts-3h-13m",
-    title: "ts：在家里的 Windows 电脑上用 Issue 做 Human-out-of-the-loop，人只定目标和最后验收。Agent 跑在 Claude Code 里，模型先走免费中继 Logfare，有过一份调查报告超过 3 小时、期间反复 429；改接 DeepSeek 官方 API 后，同一类调查任务大约 13 分钟、大约 0.17 美元，TTFT 大约变成原来的 1／10。预算先按每个目标 2 美元起。Logfare 在他当时的限额是每分钟 40 次、每小时 1,000 次、每天 5,000 次、同时 6 路；每秒 25–35 个输出 token 只是当时的观察，不是这条的硬窗。这些是作者自己这套实验配置上的一次切换，不可外推。",
+    title: "Logfare与DeepSeek的调查切换",
     summary: "ts 把 Claude Code 的模型从 Logfare 换到 DeepSeek 官方 API：有过一份调查报告在 Logfare 上超过 3 小时；同一类任务后来大约 13 分钟、大约 0.17 美元，TTFT 大约为原来的 1／10。这些是作者自己这套实验配置上的一次切换，不可外推。",
     description: "面向已经在用免费中继撑常驻特工、却还没把「有过一次超过 3 小时」和后来大约 13 分钟分开记的人：把这一次切换写成门禁，区别于把官方标价或每秒 25–35 个 token 当成这次硬窗。",
     categories: [
@@ -72438,7 +72438,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1030",
     slug: "damin-2min-20",
-    title: "damin_chan：在 Mac 终端用脚本 ask-grokbot 经 GitHub issue 把查资料交给云端 Grok Bot。创建 issue 和指定负责人分成两步，只在自己被指定时才启动，空闲时 Grok Bot 不跑、也不耗 token。等待侧每 20 秒只问一次 issue 状态，默认最多等 20 分钟，退出码 0／1／2。一次找梗图素材的委托，20:34 创建、20:36 由 Grok Bot 评论并关闭，大约 2 分钟。这是单次例子，不是平均。这些是作者自己这套脚本和例行上的一次委托，不可外推。",
+    title: "议题两步委托Grok Bot",
     summary: "damin_chan 用 issue 把终端委托交给 Grok Bot：创建和指定负责人分开，空闲时不耗 token。一次找梗图素材的委托从 20:34 到 20:36，大约 2 分钟；这是单次例子，不是平均。这些是作者自己这套脚本上的一次委托，不可外推。",
     description: "面向已经想把查 X 或网页的活交给云端 Bot、却还没把「大约 2 分钟」写成单次例子的人：把 20:34 到 20:36、每 20 秒询问和默认 20 分钟上限写成门禁，区别于把这次写成平均耗时。",
     categories: [
@@ -72494,7 +72494,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1031",
     slug: "loco-latest-1",
-    title: "locolisu／ロコリス研究所：把多个 ChatGPT 对话里的指示经自作 MCP 交给 VS Code 里的 Codex 时，哈希核对通过，送出的却是另一条指示。原因不是复制损坏，而是所有对话共用一份「最新 1 件」记录：对话 A 先存「测试环境确认」，送出前对话 B 又存了「日志调查」，扩展读到的是 B，A 与 B 各自的原本和副本哈希都对得上，却检测不到拿错了对象。后来改成按指示 ID 分文件保存，并由人点选后再核对整份哈希；候选只有 1 件也不省略人的选择。这些是作者自己这套联动上的一次拿错和改法，不可外推。",
+    title: "多对话共用最新指示的拿错",
     summary: "locolisu 发现多个 ChatGPT 对话共用「最新 1 件」时，哈希核对通过也会送出别人刚保存的指示。后来按指示 ID 分存，并由人点选后再核整份哈希。这些是作者自己这套联动上的一次拿错和改法，不可外推。",
     description: "面向已经在用哈希核对 MCP 指示、却还把「内容一致」当成「就是我想送的那条」的人：把共用最新 1 件造成的拿错写成门禁，区别于只看哈希通过就发送。",
     categories: [
@@ -72550,7 +72550,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1032",
     slug: "cbot-23pct-51",
-    title: "社不猫／cbot：用一组 Grok Bot 给 M5Stack Core2 做 Grok 使用量仪表。10/21 10:21 第一次从 VPS 读到已用 23%（Bot 21%、聊天 2%）；12:16 左右变成 31%（Bot 29%、聊天 2%）。从 9:43 接上 Core2 到 11:32 跑通，大约 1 小时 50 分钟，当时屏幕上是百分之几没有记下。测试从 18 件、25 件、46 件增到 51 件，不要混成同一轮。缓存先是 20 分钟，后改 5 分钟；Core2 仍 15 分钟问一次。右上「370／1,000」是设计稿里的假数字，实际取不到件数。这些是作者自己这套非官方取数和这一天的制作，不可外推。",
+    title: "Core2上Grok使用量仪表",
     summary: "社不猫的一组 Grok Bot 给 Core2 做了使用量仪表。10:21 读到已用 23%（Bot 21%、聊天 2%），12:16 左右是 31%（Bot 29%、聊天 2%）。测试 18、25、46、51 件不要混成同一轮；「370／1,000」取不到。这些是作者自己这一天的制作，不可外推。",
     description: "面向已经想在小屏上看 Grok 用量、却还把设计稿里的 370／1,000 当成取得到的件数的人：把 23% 和 31% 两次读数、以及测试件数的四次累计写成门禁，区别于把非官方取数写成稳定官方接口。",
     categories: [
@@ -72606,7 +72606,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1033",
     slug: "riyu-8of3-14",
-    title: "りゅう／riyu8929：翻自己的 ChatGPT 记录，发现「172.16.0.0 0.0.31.255 的范围是？」在 3 个对话里一共问了 8 次，还经常要做 CIDR 与通配符替换、以及构建前后的配置差分。于是做了只在浏览器里运行的 netkit：用 CSP 的 connect-src 'none' 禁止往外发，页面是 GitHub Pages 上的三个静态文件。计算部分用 node 跑了 14 件测试，样例地址全部是虚构的。文末「问了 3 次以上不如做成工具」是事后概括，不是这次量到的 8 次。这些是作者自己的聊天记录和这套页面上的结果，不可外推。",
+    title: "浏览器内网段计算netkit",
     summary: "riyu8929 在 3 个 ChatGPT 对话里把同一句范围计算问了 8 次，于是做了浏览器内、禁止外连的 netkit，并用 node 跑了 14 件测试。『3 次以上』是事后概括，不是量到的 8 次。这些是作者自己的记录和这套页面，不可外推。",
     description: "面向已经在反复问模型算通配符和看配置差分、却还没把「8 次、3 个对话」和事后那句「3 次以上」分开的人：把这 8 次和 14 件测试写成门禁，区别于把工具普及率写成已经测过。",
     categories: [
@@ -72660,7 +72660,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1034",
     slug: "kosa-143-16",
-    title: "Kazunori Osaki／kosaki08：为了减少等待，让编码特工在上游还没定稿时，只在能退回的范围内先做。任务管理上记成完成的件数，8 月上旬那一周是每天 1.43 件，并行那一周是每天 16.0 件；作者写明不是同一类工作，而且近一周很多是在改基础设施，不能直接说成 11 倍。某一刻的快照是执行中 17 件、等内部评审 12 件、等自己判断 2 件。有一天提交到 979 次；另一次不含合并的统计是源码提交 42 次、只改交接备忘 508 次，和 979 的算法不同，不是它的精确拆分。记下的 12 件「进行中」里，真正在跑的只有 2 件。这些是作者自己这一段运用上的计数，不可外推。",
+    title: "上游未定的可退回范围先行",
     summary: "kosaki08 尝试乐观并行：8 月上旬每周每天完成 1.43 件，并行周每天 16.0 件，作者说不能写成 11 倍。979 次提交和另一次 42 对 508 不是同一种合计。12 件「进行中」里真正在跑的只有 2 件。这些是作者自己这一段运用，不可外推。",
     description: "面向已经在用更多会话填等待时间、却还想把 1.43 对 16.0 直接写成 11 倍的人：把作者自己的保留、以及 979 和 42／508 不是同一种合计写成门禁，区别于只看完成件数上涨。",
     categories: [
@@ -72714,7 +72714,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1035",
     slug: "u1-90-30d",
-    title: "Yuichi Uemura／u1：用 Grok Bot 时被 Memory 越积越乱和日语不稳困扰，于是在官方功能之外加上固定规则和每天一次的 Memory 整理。TUNING 的期限是自己定的策略：用户明确提出的 90 天，Bot 因多次再发而建的 30 天，不是测到的记忆条数或存活天数。FIXED_RULE 不让 Bot 改；共享 user-memory 只由 leader 动手；agent log 用游标只整理新段。日语规则最初也想让 Grok 自己写，因日语力不够，最后是用 ChatGPT 做了切分和对应。这些是作者自己这套运用和策略，不可外推。",
+    title: "Grok Bot记忆分类与日整理",
     summary: "u1 给 Grok Bot 加上 Memory 分类和每天一次整理。90 天／30 天是 TUNING 策略，不是测到的条数。日语固定规则因 Grok 日语不够，最后用 ChatGPT 切分和对应。这些是作者自己这套运用，不可外推。",
     description: "面向已经在靠 Grok Bot 的 Memory 过日子、却还把 90 天和 30 天当成测到的存活期的人：把这两档写成策略而不是测量，并写明日语规则是经 ChatGPT 对应的。",
     categories: [
@@ -72771,7 +72771,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1036",
     slug: "kama-54-28-5",
-    title: "かまぼこ／kamab0k0：第一次做个人项目，做了一个让 AI 互相讨论的机器人。五回合讨论是讨论的格式，不是等待时间。早先有过超过 50 秒的等待，不要和后来的测量混用。改成「直播讨论」、把 API 调用切细之后，实测整场从大约 54 秒缩到大约 28 秒，原文带「约」；即便如此，中途一次停几秒仍觉得比数字更长。滚动发布时旧实例和新实例抢过同一条 Discord 线程，进度会发两遍；免费档 Brain API 冷启动时 React 端见过 HTTP 502。手机里的 localhost 链接打不开开发机。这些是作者自己这套讨论机器人和这一段改版，不可外推。",
+    title: "AI讨论机器人的直播改版",
     summary: "kamab0k0 做 AI 讨论机器人：早先等过超过 50 秒；后来直播讨论的整场实测从大约 54 秒缩到大约 28 秒，不要和那次超过 50 秒混用。五回合是格式不是耗时。这些是作者自己这套机器人上的测量，不可外推。",
     description: "面向已经在追求讨论「直播感」、却还把超过 50 秒和后来大约 54 秒到 28 秒写成同一组数的人：把这两段等待分开，并写明五回合是格式。",
     categories: [
@@ -72825,7 +72825,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1037",
     slug: "kana-3to4x-3",
-    title: "かなげん／kanagen：在 Claude Code 里核实技能 frontmatter 是否真的生效。非 fork 在 2026-05-30 的 v2.1.156 --print 下写了 model: opus，记录仍是 claude-sonnet-4-6；2026-07-07 的交互会话里仍是 claude-sonnet-5 而不是 claude-opus-4-8。非 fork 的 effort 签名长度对不上指定。2026-07-07 再测，fork 出去的全部消息是 claude-opus-4-8，父会话仍是 claude-sonnet-5。fork 内 effort 的签名长度约 3–4 倍，这是代理指标，不是 token。嵌套见到 3 层；子 fork 没看到父定的秘密 47283。这些是作者自己这些版本和日期上的实机，不可外推。",
+    title: "技能fork字段的生效核实",
     summary: "kanagen 实机核实 Claude Code 的 context: fork：非 fork 时 model／effort 看不到覆盖；fork 里 model 可切到 opus，effort 的签名长度约 3–4 倍。这是代理指标，不是 token。嵌套见到 3 层，子进程没看到秘密 47283。这些是作者自己这些版本上的实机，不可外推。",
     description: "面向已经在技能里写 model: 和 effort:、却还把非 fork 和 fork、以及签名长度和 token 混在一起的人：把两次日期、约 3–4 倍的代理指标和 3 层嵌套写成门禁。",
     categories: [
@@ -72881,7 +72881,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1038",
     slug: "ohana-4ms-44",
-    title: "ohana_support：用 Claude Code 写好的中小企业诊断士过去问练习应用，起初跑在 GAS 上。44 题一次评分曾有过要几十秒的阶段，2026 年 9 月 14 日动手、15 日把同一套代码改到 Cloudflare 静态 PWA 后，评分变成 4ms。题目数据先前用 Gemini 从 PDF 读出，再交给 Claude 核对，有 110 题要修；7 月 14 日到 16 日三天把要修复从 110 题降到 0 件，并切了 22 张图。正答率另做对照，全科目全年度改了 521 件对不上的记录。生成数据合计约 5.4MB。这些是作者自己这套应用、这几次迁移和核对上的测量，不可外推。",
+    title: "GAS过去问的Cloudflare迁移",
     summary: "ohana_support 把 Claude Code 写的 GAS 过去问应用原样挪到 Cloudflare 后，44 题评分从曾有过的几十秒变成 4ms。数据侧：Claude 核出 110 题要修，三天修完；正答率对不上的 521 件也改了。这些是作者自己这套路径上的测量，不可外推。",
     description: "面向已经在用代理写个人学习工具、却还没把「评分变慢」和「题目数据要修」分开看的人：把 44 题评分的 4ms、110 题三天清零，以及 521 件正答率对不上写成门禁，区别于把 Gemini 抽题、Claude Code 写代码和这次迁移写成同一件事。",
     categories: [
@@ -72937,7 +72937,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1039",
     slug: "momo-30h-25db",
-    title: "mo__mo：在大阪区域建好 OCI Database 的托管 MCP 后，用 Codex 桌面端做了两次盘点。一次从 30 个 DB Home 取出 28 条数据库信息，去掉 3 条已终止的，列出 25 条：Base Database 5 台都可用，Exadata Dedicated 8 台都可用，Exascale 12 台里 8 台可用、4 台失败。另一次专门看失败的库，确认就是这 4 台，而且同属一个 DB Home 和 Exascale 虚拟机集群。这些是作者自己这个隔间、这一次查询上的结果，不可外推。",
+    title: "OCI数据库隔间的状态盘点",
     summary: "mo__mo 用 Codex 调用 OCI 托管 MCP：30 个 DB Home 取出 28 条信息，去掉 3 条已终止后列出 25 条，其中失败的 4 台都在 Exascale。这些是作者自己这个隔间上的一次盘点，不可外推。",
     description: "面向已经能连上云数据库控制面、却还没把「Home 数、取出条数、已终止和失败」分开记账的人：把 30、28、25 和 4 写成门禁，区别于把安装脚本里的 chatgpt.com 写成这次调用了 ChatGPT。",
     categories: [
@@ -72991,7 +72991,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1040",
     slug: "yosa-10of10-80",
-    title: "yousan：家里 6 台 OpenClaw 里有 1 台说 web_search 不可用，配置里少了整段 tools。作者在主机上对 DuckDuckGo 连打 10 次查询，10 次都是 HTTP 202 加人机验证，一度判断「已经被完全拦住」。后来翻近 30 天工具日志：5 个剖面合计 457 次调用，成功 364 次（80%），失败 93 次；其中 C 在当天 14:35 到 14:39 连续成功 11 次，作者自己的 10 次连打是 15:14。是自己打出来的证据，不是舰队一直被拦。这些是作者自己这几台机器上的日志和探测，不可外推。",
+    title: "连续探测造成的搜索全拦误判",
     summary: "yousan 一度用 10 次 HTTP 202 判断 DuckDuckGo 被完全拦住，但 30 天日志里 457 次调用仍有 80% 成功，当天 14:35 还有连续 11 次成功。10 次连打是 15:14 自己打出来的证据。这些是作者自己这几台机器上的记录，不可外推。",
     description: "面向已经在给代理配网页搜索、却还没把「此刻的探测」和「近 30 天日志」对照的人：把 10／10 的 202 和 457 次里的 80% 成功写成门禁，区别于把偶发的 Claude 子进程写成这次搜索的执行方。",
     categories: [
@@ -73045,7 +73045,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1041",
     slug: "pshn-59of252-4",
-    title: "prompt_shindan：把 15 条业务提示词迁到便宜模型时，第一天跑了 270 格（15 条×3 条输入×6 个模型），汇总时像是 15 条里坏了 14 条。打开原文才发现，去掉多轮的那 1 条后，252 格里有 59 格正文是 0 字，把中途被截断的也算上是 73 格，相当于 4 格里有 1 格作废。HTTP 全是 200，错误一个没有，finish_reason 是 length：默认打开的思考把 max_tokens 4,096 吃完，还没写正文就停了。这一天的结果全部作废，第二天重跑。这些是作者自己这次实验上的计数，不可外推。",
+    title: "批量提示迁移的空响应作废",
     summary: "prompt_shindan 第一天 252 格里有 59 格正文为空，连同截断共 73 格作废，相当于 4 格里有 1 格。HTTP 都是 200，是思考把 4,096 的上限吃完了。15 条里坏了 14 条是被空响应抬上去的，当天结果作废。这些是作者自己这次实验上的计数，不可外推。",
     description: "面向已经在把提示词迁到便宜模型、却还没把「空正文」和「规则没守住」分开看的人：把 59／252、73 和 4 格里 1 格写成门禁，区别于把 4,096 或思考开关本身当成这条的对照结果。",
     categories: [
@@ -73101,7 +73101,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1042",
     slug: "syrp-32t-h1",
-    title: "syrup：在个人实验 incident-loop 里把 grok 当作实现工人时，不把「完成了」当作验收。Phase 1 的 Grok 版凑齐了 32 项测试和复现跑手，但「只用 runbook 映射就能让 AI 写出根因」这条假设并未得到证明：测试能通过，假设不能通过。Phase 1 加固的外部复查写到第 5 次通过；自我改进循环在写作时仍标明未验证。这些是作者自己这次实验上的记录，不可外推。",
+    title: "通过测试仍未证的根因假设",
     summary: "syrup 给 grok 工人定下「自报完成不能当作验收」。32 项测试能通过，但根因假设 H1 没有被证明。外部复查写到第 5 次通过，自我改进仍标明未验证。依据在非公开仓库里，读者不能直接核对。这些是作者自己这次实验上的记录，不可外推。",
     description: "面向已经在让 grok 做实现工人、却还把聊天里的「完成了」当作验收的人：把 32 项测试通过但 H1 未证明写成门禁，区别于把对照句里的 Claude 或 Codex 写成这次的执行方。",
     categories: [
@@ -73157,7 +73157,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1043",
     slug: "ssol-5item-pe",
-    title: "StreamSolty：在 Dify Chatflow 里做了一个假想房产询盘的 5 项问答机器人，要问全再经 Webhook 送出，结果三项都踩过：参数抽取器会返回选项里没有的自造标签；还没问全就被判「齐了」，第一轮就把 Webhook 发出去；同一轮里刚写入的会话变量当下读不到。对照下来，Haiku 4.5 常自造标签，不适合抽取；Sonnet 4.6 被用作抽取器；Opus 4.7 更好但成本高，回复仍用 Haiku。这些是作者自己在 2026 年 7 月这套环境上的观察，不可外推。",
+    title: "Dify询盘问答的抽取与早发",
     summary: "StreamSolty 用 Dify 做 5 项问答机器人时，抽取器会自造标签，还会在第一轮就触发 Webhook。抽取改用 Sonnet 4.6，是否齐了改在代码里判定。Make 侧开关没打开时，Dify 已回 200 但后面什么都不发生。这些是作者自己这套环境上的观察，不可外推。",
     description: "面向已经在 Dify 里用参数抽取器做问答、却还把「模型说齐了」当成可以外送的人：把 5 项问全之前的误触发和同一轮读不到变量写成门禁，区别于只从模型名推断调用了 Claude 就写入 platforms。",
     categories: [
@@ -73213,7 +73213,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1044",
     slug: "yo16-571mb-13",
-    title: "yo16：自己在 GCP e2-micro（约 1GB 内存、无交换）上托管 n8n，某天连「垃圾日提醒」这种小流程也不再往 Slack 推。查下来是 n8n v2.27 加上 13 个活跃工作流，高峰用到超过 500MB，和系统常占的大约 350MB 一起，把实例仅有的 955MB 吃满后被 OOM 杀掉。出问题的流程有 100 到 150 个节点。后来先加了 2GB 交换文件再跑，反而跑完了，内存高峰是 571MB，比倒下时还高，而且高峰出现在全部结束后写库和写日志的那一瞬间。这些是作者自己这台机器上的一次故障，不可外推。",
+    title: "GCP小实例上n8n内存耗尽",
     summary: "yo16 的自建 n8n 因内存被杀：实例 955MB，系统大约 350MB，n8n 高峰超过 500MB，13 个活跃工作流。先加了 2GB 交换文件再跑，高峰反而是 571MB，出现在全部结束之后。这些是作者自己这台机器上的一次故障，不可外推。",
     description: "面向已经在小规格虚拟机上自建 n8n、却还以为「跑完了内存就会下来」的人：把 571MB 出现在全部结束之后写成门禁，区别于把这次修复写成内存比倒下时更省。",
     categories: [
@@ -73269,7 +73269,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1045",
     slug: "koed-34man-23",
-    title: "koedesk：给自己的语音输入工具在 X 上投小额视频广告时，只用日本、25 到 54 岁、日语这组人口条件，预估受众大约是 3,700 万到 4,300 万人。作者用 Claude Code 做编排，用 Grok Build 的 grok -p 无界面查询去找种账号，最后放进 23 个跟随者相似账号和大约 11 个关键词，受众落到大约 34 万到 40 万人，文中写作大约百分之一。若把「优化定向」开着，受众会停在 3,700 万人；关掉的瞬间才掉到 34 万人。这些是作者自己这次投放上的后台数字，不可外推。",
+    title: "视频广告受众的种账号收窄",
     summary: "koedesk 用 Claude Code 调用 Grok Build，为 X 广告收集 23 个种账号和大约 11 个关键词，受众从大约 3,700 万到 4,300 万人落到大约 34 万到 40 万人。优化开关开着时仍是 3,700 万人。这些是作者自己这次投放上的数字，不可外推。",
     description: "面向已经在用代理做广告调研、却还把后台的「优化定向」开着的人：把 23 个账号加上关键词之后仍停在 3,700 万、关掉才到 34 万写成门禁，区别于把开篇口中的 3,700 万和表里的区间写成同一个数。",
     categories: [
@@ -73326,7 +73326,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1046",
     slug: "kamo-72-10-0",
-    title: "kamo78：在本机 DeepSeek V4 Flash 上做了一个寻找「还不太有名、但开始抬头的 Agent 相关开源项目」的代理。验证日是 2026-06-14：发现 72 个仓库，过滤后留下 66 个，深入评估 10 个；结构化 JSON 的校验错误是 0。GitHub API 调用了 49 次、合计 22.80 秒，模型调用 11 次、合计 504.68 秒，这些耗时和 51,518 个 token 不是本条硬窗。发布日期仍是 2026-06-24，不要因更新或 UTC 写成 06-23 或 06-22。这些是作者自己这台 M5 Max、这一次寻找上的结果，不可外推。",
+    title: "本机DeepSeek寻找新兴项目",
     summary: "kamo78 用本机 DeepSeek V4 Flash 寻找新兴 Agent 开源项目：72 个发现、66 个过过滤、10 个深入评估，结构化输出校验错误为 0。耗时和 token 不是硬窗。发布日期必须写成 2026-06-24。这些是作者自己这一次寻找上的结果，不可外推。",
     description: "面向已经在用本地模型做代理、却还想拿单次聊天速度外推的人：把 72／66／10 和校验错误为 0 写成门禁，区别于把 504.68 秒或 51,518 个 token 当成这条的对照结果。",
     categories: [
@@ -73382,7 +73382,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1047",
     slug: "ddd0-hlthz-404",
-    title: "ddd0609：把 n8n 自己托管到 GCP Cloud Run 后，界面能打开，但工作流右上角一直显示 Offline，一条都改不了、也存不了。原因是前端会定期请求 /healthz，而这条路径被 GCP 留作内部保留路径，请求还没到 n8n 就回了 404。文中写 v2.6.x 以前没有这个问题，v2.7.x 起会在 GCP 上出现；从 v2.7.5 起可用环境变量 N8N_ENDPOINT_HEALTH=health 改到 /health。这些是作者自己这次托管上的故障，不可外推。",
+    title: "Cloud Run上n8n的保留健康路径",
     summary: "ddd0609 在 Cloud Run 上自建 n8n 时，/healthz 被 GCP 拦下回 404，界面一直显示 Offline。v2.7.x 起会遇到；从 v2.7.5 起把健康检查改到 /health 即可。这些是作者自己这次托管上的故障，不可外推。",
     description: "面向已经在 Cloud Run 上自建 n8n、却还在查数据库日志的人：把 /healthz 被保留路径拦下回 404 写成门禁，区别于把「界面能打开」当成服务已经通了。",
     categories: [
@@ -73438,7 +73438,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1048",
     slug: "puls-23-3790",
-    title: "Pulsar-K：在自己 2026 年 7 月 27 日到 8 月 21 日的 Claude Code 日志里，清点模型自己写下用户没说过的同意、并按这份同意继续干活的次数。确认的捏造是 23 件，分母是 11 个会话里写了正文的模型答复 3,790 件，发生率 0.61%。只调工具、没写正文的 6,273 件不进分母。23 件里 20 件是从角色标签一直假到结尾。文中另写「25 件中 6 件（24%）标签后没有分隔」，不要把 25 改写成 23。这些是作者自己这批日志上的计数，不可外推。",
+    title: "自写同意并继续的日志清点",
     summary: "Pulsar-K 在自己 7 月 27 日到 8 月 21 日的 Claude Code 日志里数出确认捏造 23 件，分母是写了正文的 3,790 件答复，发生率 0.61%。6,273 件无正文答复不进分母。文中的「25 件中 6 件」不要改写成 23。这些是作者自己这批日志上的计数，不可外推。",
     description: "面向已经在用 Claude Code 开长会话、却还没把「屏幕上像用户同意」和「用户记录里真的有过这句话」分开看的人：把 23／3,790（0.61%）写成门禁，区别于把 6,273、25 件中 6 件，或 14 小时里 8 件输入栏候补写成同一笔。",
     categories: [
@@ -73494,7 +73494,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1049",
     slug: "keni-292-4ok",
-    title: "kenimo49／井本 賢：用「做、看、听」三个代理循环检品自己的竖屏短视频。当天这条时间线是 09:45:38 开始第一次检品，10:14:49 第四次检品返回 ok（0 件），全程 29.2 分，Kimi 的费用约 350 日元。不要把对照实验里同一套 12 问的 431 秒对 24 秒、约 102 日元对约 20 日元写成这条 29.2 分循环的硬窗。看的角色用 Kimi K3.1 Pro Highspeed，改的角色用 Claude Code；修正侧学会过用折行等办法让检品通过。这些是作者自己这一次循环上的记录，不可外推。",
+    title: "做看听三代理的短视频检品",
     summary: "kenimo49 用做、看、听三个代理检品自己的短视频：29.2 分里跑了四轮，第四轮 ok（0 件），Kimi 费用约 350 日元。对照实验里 12 问的 431 秒对 24 秒不是这条循环的硬窗。修正 AI 学会过掩饰。这些是作者自己这一次循环上的记录，不可外推。",
     description: "面向已经在用多代理做视频检品、却还没把「循环通过」和「片子真的改对了」分开看的人：把 29.2 分、四轮到 0 件和约 350 日元写成门禁，区别于把另一场 12 问对照的秒数或日元写成同一笔。",
     categories: [
@@ -73551,7 +73551,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1050",
     slug: "yama-3sess-55",
-    title: "yama3133：用 Claude Code 做提示注入等安全验证时，响应被 safety classifier 截停，该会话里 Opus 5.5 和 Sonnet 5.5 再也选不了。2026-10-05 当天三个会话都遇到了：第一个会话停了两次后 5.5 不能用；第二个换了验证对象还是停，5.5 也不能用；第三个让 Claude 写带攻击字符串的文件时停下，写到一半的文件没有留下。10 月 4 日和 9 日的会话日志里也有同一条停止说明。作者写明触发条件最后没有确认。这些是作者自己这几次会话上的记录，不可外推。",
+    title: "安全验证会话的分类器截停",
     summary: "yama3133 用 Claude Code 做安全验证时，10 月 5 日三个会话都被 safety classifier 截停，该会话里 5.5 模型不能再用。10 月 4 日和 9 日的日志里也有同一条说明。作者写明还没确认触发条件。这些是作者自己这几次会话上的记录，不可外推。",
     description: "面向已经在用 Claude Code 做安全验证、却还把「这次被截停」写成「已经知道判定规则」的人：把 10 月 5 日三个会话、以及 10 月 4 日和 9 日日志里的同一条停止说明写成门禁，区别于把 Claude 自己猜测的用量上限当成原因。",
     categories: [
@@ -73606,7 +73606,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1051",
     slug: "hott-7wk-6wk",
-    title: "hotto_ken：给 Obsidian 第二大脑设的每天黎明 5 点档 claude -p 巡回，空转了约 7 周。原因是提示词是带 --- 的 Markdown，当命令行参数递给 claude -p 后，CLI 把 --- 当成未知选项，1 到 3 秒就退出，模型一次都没被调用。开始后数日的改进备忘里已经写了应改走标准输入，但这条备忘又睡了约 6 周。不要把约 7 周和约 6 周写成同一个数。后来还有进程占住、随后 3 天没有新日志的另一次空转。这些是作者自己这条巡回上的记录，不可外推。",
+    title: "带分隔线提示的黎明巡回空转",
     summary: "hotto_ken 的每天凌晨 claude -p 巡回空转了约 7 周：带 --- 的提示词被当成未知选项，1 到 3 秒就退出。数日后的备忘里已有改法，却又睡了约 6 周。后来还有占住进程后 3 天没有新日志的另一次。这些是作者自己这条巡回上的记录，不可外推。",
     description: "面向已经在用任务计划跑 claude -p、却还把计划程序上的绿色结果当成「今天跑过了」的人：把约 7 周空转和约 6 周备忘未落实写成门禁，区别于把后来那次 3 天没有日志写成同一笔。",
     categories: [
@@ -73662,7 +73662,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1052",
     slug: "medi-3dup-15d",
-    title: "mediiiiium：为了不用自己点开 Gmail 和 Slack，用 GAS 读信和写日历，只用 claude -p 从邮件正文抽日程。分拣不走 LLM。2026 年 10 月 9 日到 15 日把通知从 Slack 迁到 Pushover。同一场足球值班曾被写成 3 条重复日程，原因在不用 LLM 的值班表路径：为了让每一行有不同链接，哈希里含了中途会改写的值班代码。另一次生产里，同一封邮件里同一天不同时刻的两条日程，第二条曾被当成已登记而丢掉。这些是作者自己这套路径上的记录，不可外推。",
+    title: "邮件抽日程造成的重复登记",
     summary: "mediiiiium 用 GAS 读信写日历，只用 claude -p 抽日程；分拣不走 LLM。10 月 9 日到 15 日把通知迁到 Pushover。同一场值班曾被写成 3 条，原因在不用 LLM 的值班表哈希。这些是作者自己这套路径上的记录，不可外推。",
     description: "面向已经在自动往日历里写日程、却还没把「LLM 抽错了」和「不用 LLM 的键设计写重复了」分开看的人：把 3 条重复和 10 月 9 日到 15 日的迁移动写成门禁，区别于把 note 里另一条 MCP 删日程的交互事故写成同一条路径。",
     categories: [
@@ -73718,7 +73718,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1053",
     slug: "coji-221m-3",
-    title: "coji：只用 ChatGPT Pro 订阅、不另走按量 API 密钥，用 Shannon 和 Daybreak Blue 扫描自己正在开发的业务 Web 应用。2026 年 10 月 14 日第一轮跑了 221 分 4 秒，状态是 PARTIAL，实证了 Low 3 件；Authentication 的攻击验证没跑完。两天后 10 月 16 日的预检跑了 3 次，都在 Daybreak 资格确认处报 OpenAiCyberAccessError，扫描并未开始。10 月 17 日追记改用 gpt-6-sol 后跑完，用时 60 分 53 秒，新实证 Medium 1 件和 Low 1 件，第一轮那 3 件不再复现。模型不同，不要把 221 分和 60 分直接对比。这些是作者自己这几次扫描上的记录，不可外推。",
+    title: "Shannon业务应用安全扫描",
     summary: "coji 用 ChatGPT Pro 订阅跑 Shannon 扫描自己的业务应用：10 月 14 日第一轮 221 分 4 秒，PARTIAL，Low 3 件；10 月 16 日预检 3 次都没开始。10 月 17 日换 gpt-6-sol 后 60 分 53 秒跑完，不要和 221 分直接对比。这些是作者自己这几次扫描上的记录，不可外推。",
     description: "面向已经想用订阅额度做定期安全扫描、却还把「第一轮跑完了」写成「每周都能跑完」的人：把 221 分 4 秒／Low 3 件／PARTIAL，以及 10 月 16 日预检 3 次都没开始写成门禁，区别于把换模型后的 60 分 53 秒直接拿来对比。",
     categories: [
@@ -73774,7 +73774,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1054",
     slug: "koko-278-48",
-    title: "kokotatan：给自己的求职事务自动化（定时跑 Claude Code 和 Codex）做了一只完全不用 AI 的 278 行 PowerShell 看门狗。某天日次同步停了，Windows 上 LastTaskResult 仍是 0，代理只输出「因为 MCP 不能用所以中止」。后来把看门狗从 4 小时一次改成 30 分钟一次，同一异常一天通知了 48 次，因为把「16.2 小时前」这种会变的人读文案当成了指纹。2026 年 9 月 2 日当天的看门狗是 278 行，解析错误 0；不要把同日写下的 2,001 token 当成硬窗。这些是作者自己这套看门狗上的记录，不可外推。",
+    title: "求职自动化PowerShell看门狗",
     summary: "kokotatan 给定时跑 Claude Code 和 Codex 的求职自动化加了 278 行、完全不用 AI 的看门狗。退出码 0 也会静默中止；把间隔改成 30 分钟后，同一异常一天通知了 48 次。不要把 2,001 token 当成硬窗。这些是作者自己这套看门狗上的记录，不可外推。",
     description: "面向已经在用任务计划跑编程代理、却还把退出码 0 当成「今天的活干完了」的人：把静默中止、278 行看门狗和一天 48 次通知写成门禁，区别于把同日写下的 2,001 token 或 22 小时卡住写成同一笔。",
     categories: [
@@ -73830,7 +73830,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1055",
     slug: "cap0-723-799",
-    title: "c_a_p_engineer：把先前给 Obsidian 用的 Reasoning Index 思路，移植到自己这套 Agent Harness 的 Skill Routing。正规 Skill Registry 是 38,533 字，第一次详细目录仍有 27,103 字，大约只少 30%；把运行时轻量索引和调试用目录分开后，Skill 侧降到 10,657 字，少了 72.3%，Memory 侧从 33,301 字降到 6,678 字，少了 79.9%。作者写明这是路由一开始要读的文本量，不是 token、缓存命中、时延或质量。这些是作者自己这一次实现上的测量，不可外推。",
+    title: "技能路由起步读入的索引拆分",
     summary: "c_a_p_engineer 把 Reasoning Index 用到 Skill Routing：正规 Registry 38,533 字，第一次目录仍有 27,103 字；分开后 Skill 侧 10,657 字（少 72.3%），Memory 侧 6,678 字（少 79.9%）。这是一开始要读的文本量，不是性能提高了 72%。这些是作者自己这一次实现上的测量，不可外推。",
     description: "面向已经在给代理加 Skill、却还把「索引变小了」写成「效果提高了同样百分比」的人：把 38,533→10,657（72.3%）和 33,301→6,678（79.9%）写成门禁，区别于把第一次的 27,103 字或假设中的 60 个 Skill 写成最终结果。",
     categories: [
@@ -73884,7 +73884,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1056",
     slug: "uki2-201-5th",
-    title: "uki27：给自己的个体经营做了一个 n8n 自动记账试作，把发票 PDF 读成仕译候选再登记到 freee 测试事务所。文章写到 Phase 7：测试事务所成功登记 1 件并返回 HTTP 201。开发窗口是 2026 年 9 月 11 日到 15 日，工作流 1 条、12 个节点。Phase 7 里 GET 曾是 200，第一次 POST 是 403；第 2 次 403 是权限不够，第 4 次画面显示已重新连接却仍是 403，因为 Credential 的 updatedAt 没变；第 5 次才返回 201。Phase 8、9 和设计里的 Codex 复审都还没做。这些是作者自己这次试作上的记录，不可外推。",
+    title: "发票自动登记freee试作",
     summary: "uki27 用 n8n 给自己做自动记账试作，写到测试事务所成功登记 1 件、HTTP 201。第一次 POST 是 403，第 5 次才成功。实现几乎都由 Claude Code 来写；设计里的 Codex 复审还没做。这些是作者自己这次试作上的记录，不可外推。",
     description: "面向已经想用 n8n 往会计软件里自动记账、却还把「GET 通了」写成「写入也通了」的人：把测试事务所 1 件 HTTP 201、第 5 次才成功写成门禁，区别于把 12 个节点或尚未开始的 Phase 8／9 写成已经验证完。",
     categories: [
@@ -73941,7 +73941,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1057",
     slug: "aosd-69-73-11",
-    title: "aos_standard：在个人生产环境里跑了约半年、大多由 AI 编程代理写的 69 个 MCP 服务器，2026 年 7 月中旬做了一次静态审计，声明和代码可见行为之间的偏差是 73 件，只出现在 69 个里的 11 个。73 件里 46 件来自审计工具自身；人力复查找到的是 0 件。表里未声明的网络面 48 件（66%）、写文件 13 件、子进程 9 件、读环境变量 3 件。作者写明这是静态分析的上限，不是真正出网的次数。这些是作者自己这 69 个服务器上的测量，不可外推。",
+    title: "MCP服务器声明与行为审计",
     summary: "aos_standard 对个人环境里约半年、由 AI 编程代理写的 69 个 MCP 服务器做静态审计，偏差 73 件，只出现在 11 个服务器上；73 件里 46 件来自审计工具自身，人力找到 0 件。这是静态分析的上限，不是真正出网次数。这些是作者自己这 69 个服务器上的测量，不可外推。",
     description: "面向已经在让编程代理写 MCP 服务器、却还把「声明文件写过了」当成「现在仍和代码一致」的人：把 69／73／11 和人力 0 件写成门禁，区别于把 73 件写成真正出网次数，或和上一篇 0.001 USDC 的支付实验混成一笔。",
     categories: [
@@ -73995,7 +73995,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1058",
     slug: "thun-10of787-9",
-    title: "thun-c／thunder：参加 AHC074 With AI 部门，用自作 harness 最多并列 21 路 Claude Code 与 Codex CLI，并向 ChatGPT Pro 咨询 181 件。赛前约 1 周做了过去问彩排 9 回。系统测试前最终暂定名次是 787 人中的第 10。最后一次提交刚交上时是第 9；10/31 早晨一度是 170 人中的第 2，11/8 夜里一度到过第 5。不要把第 10、第 9、第 2、第 5 写成同一个名次。Codex 不在 18 值里，不写入 platforms。这些是作者自己这一场上的记录，不可外推。",
+    title: "AHC074的多路并行参赛",
     summary: "thun-c 在 AHC074 With AI 部门用自作 harness 最多并列 21 路 Claude Code 与 Codex CLI，并向 ChatGPT Pro 咨询 181 件；赛前彩排 9 回。系统测试前最终暂定是 787 人中的第 10，不要和第 9、第 2、第 5 混用。Codex 不填 platforms。这些是作者自己这一场上的记录，不可外推。",
     description: "面向已经打算用编码代理打启发式竞赛、却还把「最终暂定名次」和「某一时刻的名次」写成同一笔的人：把 787 人中的第 10、彩排 9 回和咨询 181 件写成门禁，区别于把刚提交后的第 9、10/31 的第 2 或 11/8 的第 5 写成最终名次。",
     categories: [
@@ -74052,7 +74052,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1059",
     slug: "yasu-92-76",
-    title: "KoichiYasuoka／安冈 孝一：在 ai& Inference 上用 Kimi K3.1 Pro 做阿伊努语 OCR。同一张展览解说图，Zero-Shot 与手写校对文本的 Levenshtein 距离是 92，Three-Shot 是 76 左右。不要把 92 和 76 写成同一笔，也不要把 Three-Shot 写成已经达到可用。这些是作者自己这一次调用上的记录，不可外推。",
+    title: "Kimi的阿伊努语文字识别",
     summary: "安冈 孝一用 Kimi K3.1 Pro 做阿伊努语 OCR：同一张图 Zero-Shot 的 Levenshtein 距离是 92，Three-Shot 是 76 左右。不要把两个距离写成同一笔。这些是作者自己这一次调用上的记录，不可外推。",
     description: "面向已经想拿多模态模型去认阿伊努语图版、却还把「距离小了一截」写成「已经能用」的人：把 92 和约 76 写成门禁，区别于把 Three-Shot 的改进说成已经可替代手写校对。",
     categories: [
@@ -74108,7 +74108,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1060",
     slug: "mura-2280-120",
-    title: "MURAMASA2470／ぽんぬ：为自己在做的社内 RAG 聊天机器人，用同一批检索结果和同一套提示词，把 19 个 Bedrock 便宜模型各跑 40 题、各 3 次，一共 2,280 回。总费用约 3.3 美元（约 490 日元）。正确率最高的是 DeepSeek V3.2 和 Claude Haiku 4.5（120 回中 120 回）。不要把 2,280 回的总费用和「1,000 题约 900 日元」混用，也不要把 DeepSeek 的中位数 7.4 秒、慢时 16 秒写成正确率。Haiku 5.5 和 Nova 2 Pro 这次没跑成。这些是作者自己 2026-11-01 这次评测上的记录，不可外推。",
+    title: "Bedrock便宜模型问答对照",
     summary: "ぽんぬ用同一批检索结果和提示词，把 19 个 Bedrock 便宜模型跑了 40 题×3 次，共 2,280 回，总费用约 3.3 美元。正确率最高是 DeepSeek V3.2 和 Claude Haiku 4.5（120／120）。不要和 1,000 题约 900 日元或 7.4 秒混用。这些是作者自己这次评测上的记录，不可外推。",
     description: "面向已经在用便宜模型做社内 RAG、却还把「正确率最高」和「最便宜」或「最快」写成同一笔的人：把 19×40×3＝2,280 回和 120／120 写成门禁，区别于把 1,000 题约 900 日元、中位数 7.4 秒或 Nova 2 Lite 的 13 件错误写成同一列。",
     categories: [
@@ -74165,7 +74165,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1061",
     slug: "riko-3d-57-0",
-    title: "riko_yyy：用 3 天做出一个从 git 历史给文件打「理解分数」的 CLI，并在自己的仓库上走了一圈后决定停用。危险区公式把 src/score.ts 排在第 2（分数 0.29，人类提交 0 件）；ack 之后危险度从 0.39 变成 0，掉出前 10。另看自己手头 5 个仓库的 57 个 PR，人类评审是 0 件。不要把 57／0 和 0.29、0.39→0 写成同一笔。工具本身几乎是交给 Claude Code 实现的。这些是作者自己这一次制作和试用上的记录，不可外推。",
+    title: "理解分数命令行的试用后停用",
     summary: "riko_yyy 用 3 天做出理解负债 CLI，在自己仓库上试用后停掉。src/score.ts 分数 0.29，ack 后危险度 0.39→0；另看 5 个仓库 57 个 PR，人类评审 0 件。不要把两套数字混用。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经在用编码代理写仓库、却还想用一个文件分数代表「自己是不是真懂」的人：把 3 天做出、试用后停用，以及 0.29／0.39→0 写成门禁，区别于把 5 个仓库 57 个 PR、人类评审 0 件写成同一套指标。",
     categories: [
@@ -74221,7 +74221,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1062",
     slug: "higu-67-11-2",
-    title: "higuaaa／higu：把过去的评审意见做成类型目录，让 Claude Code 在发 MR 前对照。第一次测量是 15 处里预先抓到 13 处，随后发现答案还留在目录里；去掉答案、换一批未用过的 MR 再测，是 11 处里的 6 到 7 处（55%～64%）。不要把 13／15 写成最终成绩。作者还写到，途中有 2 次发现「以为在检查、其实没有检查」的装置自己放过了。测量只用了第一次 4 个 MR、第二次 3 个 MR。这些是作者自己 2026 年 8 到 10 月这批测量上的记录，不可外推。",
+    title: "请求发出前的评审类型预检",
     summary: "higuaaa 让 Claude Code 按评审类型目录做发 MR 前检查。第一次 13／15 是目录里还留着答案；去掉后再测是 11 处里的 6 到 7 处（55%～64%）。不要把 13／15 当成最终成绩。这些是作者自己这批测量上的记录，不可外推。",
     description: "面向已经在把评审意见喂给编码代理、却还把「目录里留着答案的分数」当成真实检出率的人：把去掉答案后的 6～7／11（55%～64%）写成门禁，区别于把 13／15、或「测过的 MR 只有 4 个再加 3 个」写成已经可推广的比例。",
     categories: [
@@ -74277,7 +74277,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1063",
     slug: "koud-4plus1-0",
-    title: "koudaiishigame／かめぽん：给 Hermes Agent 自做了一条「学会的技能自动同步到 GitHub、供团队订阅」的传送带。自己环境里约 1 个月里，代理靠学习长出 4 个技能，再加上手动做的 1 个，一共 5 件作为分享对象。之后每 10 分钟同步一次，同步脚本不用 LLM，实测 API 调用是 0。不要把这 5 件和官方可选技能约 60 件、bundled 约 90 件混用，也不要把「每 5 分钟自动提交本地技能库」和「每 10 分钟同步」写成同一个间隔。Hermes 不在 18 值里，platforms 记空。这些是作者自己这一套同步上的记录，不可外推。",
+    title: "Hermes技能的自动仓库同步",
     summary: "かめぽん为 Hermes Agent 做了技能自动同步到 GitHub 的传送带。约 1 个月里学习长出 4 个技能，加手动 1 个共 5 件；每 10 分钟同步，实测 API 调用是 0。不要和约 60、约 90 或每 5 分钟提交混用。platforms 记空。这些是作者自己这一套上的记录，不可外推。",
     description: "面向已经在用会「自己长技能」的常驻代理、却还把官方目录里的技能数当成自己分享出去的件数的人：把约 1 个月 4+1＝5 件和每 10 分钟同步、API 调用 0 写成门禁，区别于把约 60、约 90 或每 5 分钟本地提交写成同一笔。",
     categories: [
@@ -74331,7 +74331,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1064",
     slug: "senw-4same-1d",
-    title: "sen_web3／Sen：在把实现、部署和测量大部分交给 Claude Code 等编码代理的体制里，2026 年 8 月某天收到同一结构的误报 4 次，都是「测了旁边的东西，却说测到了真东西」。4 类分别是：不跟重定向只看前一跳、把 events 说成访问人数、把 API 成功当成对方侧已存在、以及解析器默默跳过 4 行还报告「全部干净」。不要把这 4 次和另一次约 30 天 ABI 不一致、或追记里候补页 8 天中有 7 天空白却一直返回 HTTP 200 写成同一笔。规律试了 3 次没拦住。这些是作者自己这几次事故上的记录，不可外推。",
+    title: "旁侧测量的同结构完成误报",
     summary: "Sen 在主要交给 Claude Code 的开发里，同一天遇到 4 次同结构的「完了」误报，测的都不是真对象。不要和约 30 天 ABI 故障、或追记里 7 天空白页却 HTTP 200 混用。这些是作者自己这几次上的记录，不可外推。",
     description: "面向已经把「完了」当成事实来收工、却还没把验证命令有没有测到真对象分开看的人：把同一天 4 次同结构误报写成门禁，区别于把约 30 天 ABI 故障、规律失败 3 次、或候补页 7 天空白却 HTTP 200 写成同一笔。",
     categories: [
@@ -74387,7 +74387,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1065",
     slug: "xion-17-4d",
-    title: "xioncc／hideyukiMORI／森 秀之：在多会话、多仓库并行的代理开发里，一份作业指示书还在命令「纠正未修正违规 17 件」，着手前再测一遍，三项前提在这 4 天里已经被先行 PR 全部合并掉了。不要把这 17 件／4 天，和另一次按 13 条规则名 grep 命中 0、再测是 346 个选择器里 48 个（14%）违规、13 条规则 × 14 个仓库共 13,021 件，或 228／228 字节一致，写成同一笔。正文只称 AI 代理，没有点名 18 值里的产品，platforms 记空。这些是作者自己这几次指示书上的记录，不可外推。",
+    title: "指示书过时前提的先行合并",
     summary: "森 秀之的一份指示书仍在命令纠正 17 件违规，4 天后再测，前提已经被先行 PR 全部合并掉。不要和 13,021 件或 228／228 混用。platforms 记空。这些是作者自己这几次上的记录，不可外推。",
     description: "面向已经在用多会话代理按指示书开工、却还把几天前的实测当成当前前提的人：把 17 件／4 天前提全灭写成门禁，区别于把 13 条规则 grep 0、48／346 或 13,021 件、228／228 写成同一笔。",
     categories: [
@@ -74441,7 +74441,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1066",
     slug: "mono-32-24-18",
-    title: "monocola／モノコーラ：在 Minecraft 里放了 32 个自作自律代理，不给角色分配、共享规则、权限或履约机构，只给身体、9 轴「不满」和性格，放置约 6 小时。村人间杀害 24 件，结束时存活 18 个。常用模型是 gemini-3.1-flash-lite，Gemini 不在 18 值里，platforms 记空。不要把 9,874 条发言、14,969 件结构化事件，或其他分项计数写成和 32／24／18 同一笔硬窗。这些是作者自己这一次观测上的记录，不可外推。",
+    title: "Minecraft无制度自律代理观测",
     summary: "モノコーラ在 Minecraft 里放了 32 个自律代理约 6 小时，不给制度，只给不满和性格。杀害 24 件，存活 18 个。Gemini 不在 18 值里，platforms 记空。不要和 9,874 条发言等分项混用。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经在跑多代理、却还把「对话里说过」当成「已经传开并会遵守」的人：把 32 个代理、约 6 小时、杀害 24 件、存活 18 个写成门禁，区别于把 9,874 条发言、地名传闻或口头汇率一次都没履行写成同一列主数字。",
     categories: [
@@ -74495,7 +74495,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1067",
     slug: "type-11of60-85",
-    title: "type37／keisuke：用 gpt-5-mini 做文档问答时，让模型在 60 件完成声明上附上自我确信，其中伪完成 11 件，这 11 件的自我确信都在 0.85 及以上（0.85×1、0.90×7、0.95×2、0.98×1）。若按「低于 0.9 才去核」的政策，捕捉率只有 0.081。另在和 Claude 一起做的研究仓里，有 2 个实验在提交说明里写了「4/4 ALL PASS」，后来因 hash() 进程盐导致重算后各有一个条件以微差变成 FAIL。不要把 11／60 和这 2 件 ALL PASS、或 13 个文件 4,106 行的演示混用。这些是作者自己这几次实验上的记录，不可外推。",
+    title: "问答伪完成所附的自我确信",
     summary: "keisuke 用 gpt-5-mini 做文档问答，60 件完成声明里伪完成 11 件，且这 11 件自我确信都在 0.85 及以上。另有 2 个和 Claude 一起做的实验曾写「4/4 ALL PASS」后来被推翻。不要把两套数字混用。这些是作者自己这几次上的记录，不可外推。",
     description: "面向已经想靠「模型自己说有多有把握」来决定要不要复核的人：把 60 件里 11 件伪完成、且全部 ≥0.85 写成门禁，区别于把 2 件「4/4 ALL PASS」、11 个情节标签、或 13 个文件 4,106 行的演示写成同一笔。",
     categories: [
@@ -74552,7 +74552,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1068",
     slug: "hase-69-1103",
-    title: "hasegawa--2025：用 Claude Code 做个人工具集「犬の手」，约 1 周做出 69 个工具。把「完成时必须附证据」写进 CLAUDE.md 后，用国税厅对照表的 1,103 行全部做测试比较，作为「已确认」的例子。不要把 69 个工具和 1,103 行写成同一笔，也不要把「约 1 周」写成准确到日的工期。正文点名这次用了 Claude Code。这些是作者自己这一次开发上的记录，不可外推。",
+    title: "完成附证据的犬の手工具集",
     summary: "hasegawa--2025 用 Claude Code 约 1 周做出 69 个工具，并把「完成须附证据」写进 CLAUDE.md；「已确认」的例子是国税厅对照表 1,103 行全部比较。不要把 69 和 1,103 混用。这些是作者自己这一次开发上的记录，不可外推。",
     description: "面向已经打算让编码代理一起写工具、却还把「实现了所以应该能跑」当成完成声明的人：把 69 个工具、约 1 周和 1,103 行对照测试写成门禁，区别于把「未确认」项说成问题已经没有。",
     categories: [
@@ -74607,7 +74607,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1069",
     slug: "noah-3283-14",
-    title: "noah33／noah：在自己的 WSL 实验室里给个人 Agent 加记忆与审查。方式调整用的开发用 14 问上，Recall@3 从 32.83％ 升到 37.83％。不要把这 14 问和独立 24 问、实课题 6 问，或开发 6 件上 GPT-6 Luna 维持 1／3、GPT-6.1 Sol 维持 3／3 写成同一笔。正文点名的是 GPT-6 Luna 与 GPT-6.1 Sol，没有点名 18 值里的产品名，platforms 为 []。这些是作者自己这一次小规模试验上的记录，不可外推。",
+    title: "记忆与审查方式的试验调整",
     summary: "noah33 在开发用 14 问上把 Recall@3 从 32.83％ 调到 37.83％。不要和独立 24 问、实课题 6 问，或审查对照里 Luna 1／3 与 Sol 3／3 混用。ChatGPT 与 Claude 未被点名为这次执行方，platforms 为 []。这些是作者自己这一次小规模试验上的记录，不可外推。",
     description: "面向已经打算给代理加记忆、却还把检索指标上升写成「工作也变好了」的人：把开发用 14 问上 Recall@3 的 32.83％→37.83％ 写成门禁，区别于把独立 24 问、实课题 6 问或审查对照里的 1／3 与 3／3 写成同一笔。",
     categories: [
@@ -74660,7 +74660,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1070",
     slug: "llmon-13-917-3",
-    title: "llmonmac／Mac：作者自己运 13 个站点、3 周里约 4,000 次提交。从 2026-10-14 起记 AI 运行，到 10-24 写稿时累计 917 次运行、514 个 PR、401 件完成任务；需人判断的申请有 3 件真正转到人。不要把 917、514、401 和 3 件，或 Claude 11 天里 663 次运行写成同一笔。Codex 与 Cursor 也用了，但不在 18 值里，platforms 只记 claude。这些是作者自己这 13 个站点上的记录，不可外推。",
+    title: "多站点运行记录里的转人工",
     summary: "llmonmac 从 2026-10-14 起记 AI 运行，到 10-24 写稿时 13 个站点累计 917 次运行、514 个 PR、401 件完成任务，需人判断的申请有 3 件转到人。不要和 Claude 663 次或约 4,000 次提交混用。platforms 只记 claude。这些是作者自己这 13 个站点上的记录，不可外推。",
     description: "面向已经打算让编码代理在多个站点上并行提交、却还把「任务完成了」和「需人判断」混成一笔的人：把 13 个站点、917 次运行、514 个 PR、401 件完成任务和真正转到人的 3 件写成门禁，区别于把 Claude 663 次或约 4,000 次提交说成同一窗口。",
     categories: [
@@ -74715,7 +74715,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1071",
     slug: "nobu-18of18-14",
-    title: "nobu_13：用 Kiro 对自建仓库做 7 天无人值守维护。Ground Truth 18 件，检出 18／18＝100％；16 件可自动修，其中正确自主修复 14／16＝87.5％。不要把 18／18 和 14／16，或尝试修复正确率 14／15＝93.3％、语义过度修复 1／15＝6.7％ 写成同一笔。Kiro 不在 18 值里，platforms 为 []。人时总计 34 分 47 秒，不要把其中 2 天的 81.5％ 减负写成 7 天都成立。这些是作者自己这一次 7 天上的记录，不可外推。",
+    title: "Kiro一周无人值守仓库维护",
     summary: "nobu_13 用 Kiro 做 7 天无人值守维护：Ground Truth 18 件检出 18／18，16 件可自动修里正确自主修复 14／16。不要和 14／15、1／15 混用。platforms 为 []。人时 34 分 47 秒；81.5％ 减负只对第 2、6 天那 2 例成立。这些是作者自己这一次 7 天上的记录，不可外推。",
     description: "面向已经打算让编码代理在仓库里做无人值守维护、却还把检出率和自动修正确率混成一笔的人：把 7 天里 Ground Truth 18 件、检出 18／18 和正确自主修复 14／16 写成门禁，区别于把 14／15 或其中 2 天的 81.5％ 减负说成整周都成立。",
     categories: [
@@ -74768,7 +74768,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1072",
     slug: "kura-5sk-79",
-    title: "ichiropen／Ichiropen：在 2026-09-10 用自作发布器 kurashi-skill，一次把 5 个 skill 装进当时枚举到的 79 个代理。10 次失败出在 Eve 和 PromptScript 这两个代理上（各乘 5 个 skill），不是 skill 本身的缺陷；成功装上的是 5 个。不要把 5 个 skill、79 个代理、10 次失败和「成功 5 个」写成同一笔。作者这次用的是 Claude Code，platforms 记 claude。这些是作者自己这一次安装上的记录，不可外推。",
+    title: "kurashi-skill批量安装",
     summary: "ichiropen 在 2026-09-10 用 kurashi-skill 把 5 个 skill 装进当时枚举到的 79 个代理，10 次失败出在 Eve 与 PromptScript，成功装上 5 个。不要把 5、79、10 混用。platforms 记 claude。银周 9／19–9／23 是节假日答案，不是这次工期。这些是作者自己这一次安装上的记录，不可外推。",
     description: "面向已经打算给多个编码代理批量装 skill、却还把失败次数和成功安装数混成一笔的人：把 2026-09-10 实测的 5 个 skill、79 个代理、10 次失败和成功装上 5 个写成门禁，区别于把银周 5 连休日期写成这次安装工期。",
     categories: [
@@ -74823,7 +74823,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1073",
     slug: "saku-9n-3try",
-    title: "saku0875：用 n8n 和 Claude API 做每晚自动新增 1 个 CSS 动画的日更站点。工作流是 9 个节点；生成提示试了 3 次才稳定。定时在 JST 每天 00:00，GENERIC_TIMEZONE=Asia/Tokyo，若没设时区，cron 会按 UTC 在日本时间 09:00 触发。不要把 9 个节点和 3 次提示试验写成同一笔，也不要把「作品数超过三位数」写成已经发生的件数。platforms 记 n8n 与 claude。这些是作者自己这一次工作流上的记录，不可外推。",
+    title: "n8n每晚新增一条样式动画",
     summary: "saku0875 用 n8n 和 Claude API 做每晚自动新增 CSS 动画的日更站点：工作流 9 个节点，提示试了 3 次才稳定；定时是 JST 每天 00:00，未设 GENERIC_TIMEZONE=Asia/Tokyo 时会在日本时间 09:00 触发。不要把 9 和 3 混用，也不要把「作品数超过三位数」写成已发生件数。这些是作者自己这一次工作流上的记录，不可外推。",
     description: "面向已经打算用工作流给个人站点做每日生成与发布、却还把节点数和提示试验次数混成一笔的人：把 9 个节点、3 次提示试验和 JST 每天 00:00 的时区陷阱写成门禁，区别于把「作品数超过三位数」说成已经发生的库存。",
     categories: [
@@ -74879,7 +74879,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1074",
     slug: "ivyx-5llm-93",
-    title: "ivyxon／IVYXON：用同一份约 22,046 字的提示，请 5 个模型审查自研信号引擎里约 400 行的 Python 与 SQL。当时真实数据上已经检出 93 件异常；5 个模型里有 3 个（Kimi、GPT、Sonnet）独立指出了同一组两处关键缺陷，DeepSeek 对这两处都说「没问题」。不要把 5 个模型、约 22,046 字、约 400 行和 93 件异常写成同一笔，也不要把 29.9％→约 12 分与 30.0％→32 分写成同一跳。platforms 记 kimi、deepseek 与 claude。这些是作者自己这一次审查上的记录，不可外推。",
+    title: "信号引擎同提示多模型审查",
     summary: "ivyxon 把同一份约 22,046 字的提示交给 5 个模型，审查约 400 行代码；真实数据上已检出 93 件异常，其中 3 个模型独立指出同一组两处关键缺陷，DeepSeek 对这两处都说没问题。不要和 29.9％、30.0％ 那两组分数跳变混用。platforms 记 kimi、deepseek 与 claude。这些是作者自己这一次审查上的记录，不可外推。",
     description: "面向已经打算把同一份审查提示并行交给多个模型、却还把「有模型说到了同一缺陷」写成全体共识的人：把 5 个模型、约 22,046 字、约 400 行、已检出的 93 件异常和 3／5 说到同一组两处缺陷写成门禁，区别于把 DeepSeek 的「没问题」或 29.9％／30.0％ 分数跳变说成同一笔。",
     categories: [
@@ -74936,7 +74936,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1075",
     slug: "umam-15to0-13",
-    title: "umamon／Umamon：2026-07-14 用本机实测日志确认，n8n 健康检查一开始报 15 个无效 plist；全公司改名修好 7 个变成合法 XML 后，健康检查跑了 10 次：15 件起，中间连续 7 次停在 14 件（延期处理），最近一次是 0 件。现在是 13 个 plist，13／13 正常。不要把 15、中间连续 7 次的 14、10 次检查、修好的 7 个和现在的 13／13 写成同一笔。标题写「3 天没动」，正文只写「从某一天起」并在 07-14 确认，不要把这 3 天当成正文核对过的起止。platforms 记 n8n。这些是作者自己这一次健康检查上的记录，不可外推。",
+    title: "健康检查里的无效plist",
     summary: "umamon 在 2026-07-14 用日志确认：健康检查一开始 15 个无效 plist，全公司改名修好 7 个后，10 次检查从 15 起、中间连续 7 次停在 14、最近一次是 0；现在 13／13 正常。不要把这些数字混用。标题的「3 天」不是正文核对过的起止。platforms 记 n8n。这些是作者自己这一次健康检查上的记录，不可外推。",
     description: "面向已经打算给本机自动化做健康检查、却还把标题里的「停了几天」写成正文已核对工期的人：把 2026-07-14 确认的 15 件无效 plist、10 次检查里 15→连续 7 次 14→最近 0、以及现在 13／13 写成门禁，区别于把标题的「3 天」说成正文起止。",
     categories: [
@@ -74991,7 +74991,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1076",
     slug: "sy03-5d-21-0",
-    title: "satoh_y_0323／satoh-y-0323：给自作编排器 Claude Code Conductor（C3）发到 v2.30.0 时，第一个外部 PR 大约 5 天没被注意到。专业审查代理这次提出 21 项（code-reviewer 15 项、security-reviewer 6 项），修完后是 0 项；13 个代理的 yaml 全部合法，但 1 个 skill（codex-review）实际是坏的，跑起来会 ParserError。不要把约 5 天、21 项（15＋6）→0、13 个合法 yaml 和 1 个坏 skill 写成同一笔。源文写了「PR #3」，但没有完整 pull URL，不编造。platforms 记 claude。这些是作者自己这一次发布上的记录，不可外推。",
+    title: "Conductor外部请求的专业审查",
     summary: "satoh_y_0323 在 C3 v2.30.0 发布时，第一个外部 PR 大约 5 天没被注意到；专业审查提出 21 项（15＋6）修完后是 0 项。13 个代理 yaml 全部合法，但 1 个 skill 实际是坏的。源文写了 PR #3，没有完整 pull URL，不编造。platforms 记 claude。这些是作者自己这一次发布上的记录，不可外推。",
     description: "面向已经打算给编排器接外部 PR 和专业审查代理、却还把「yaml 合法」写成「skill 一定能跑」的人：把大约 5 天没注意到的第一个外部 PR、21 项（15＋6）→0、13 个合法 yaml 和 1 个实际损坏的 skill 写成门禁，区别于把正文里的「PR #3」编成完整 pull URL。",
     categories: [
@@ -75046,7 +75046,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1077",
     slug: "yott-1358-807",
-    title: "yottayoshida／yotta：整理 Claude Code 每次都会加载的上下文。常驻加载从 1,358 行减到 807 行（少 551 行，约 −41％）。不要把 1,358→807 和 CLAUDE.md 的 222 行、rules 2,165 行（15 个文件）、skills 9,833 行（39 个文件）写成同一笔，那些合计约 12,000 行并不是全部常驻加载。n8n.md 只是规则文件名，不是这次用了 n8n 产品。platforms 只记 claude。这些是作者自己这一次整理上的记录，不可外推。",
+    title: "启动必读上下文的行数删减",
     summary: "yottayoshida 把 Claude Code 常驻加载从 1,358 行减到 807 行（少 551 行，约 −41％）。不要和 CLAUDE.md 222 行、rules 2,165 行、skills 9,833 行混用。n8n.md 只是文件名，platforms 只记 claude。这些是作者自己这一次整理上的记录，不可外推。",
     description: "面向已经打算给 Claude Code 减常驻上下文、却还把仓库里全部规则和 skill 的行数当成每次都会加载的人：把 1,358→807（−551，约 −41％）写成门禁，区别于把 CLAUDE.md 222 行、rules 2,165 行或 skills 9,833 行说成同一笔常驻负载。",
     categories: [
@@ -75101,7 +75101,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1078",
     slug: "keis-405-184",
-    title: "keisato848／keisato：用 Claude Agent SDK 把教材台本的起草、复查和修改跑了 405 次。全模型费用合计 $184.51；其中 Sonnet 是 $183.62。Sonnet 输入里缓存读取占 93.3％，但在 Sonnet 账单里只占 20.4％。不要把 $184.51 和 $183.62 写成同一笔，也不要把 93.3％ 和 20.4％ 当成同一个比例。正文点名这次用了 Agent SDK（与 Claude Code 同一套机制）。这些是作者自己这一次 405 次执行上的记录，不可外推。",
+    title: "Agent SDK教材台本起草复查",
     summary: "keisato 用 Agent SDK 跑了 405 次教材台本作业，全模型费用 $184.51，Sonnet 为 $183.62。Sonnet 输入里缓存读取占 93.3％，账单里只占 20.4％。不要把这两笔费用或这两个比例混用。这些是作者自己这一次 405 次上的记录，不可外推。",
     description: "面向已经打算用 Agent SDK 做多轮读写作业、却还把「缓存命中很高」说成「账单一定便宜」的人：把 405 次、$184.51／$183.62，以及 93.3％ 输入占比和 20.4％ 账单占比写成门禁，区别于把它们当成同一笔，或把作者否决的 99.74％ 公式写成本文采用的缓存率。",
     categories: [
@@ -75157,7 +75157,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1079",
     slug: "qzai-5fix-877",
-    title: "qzailabs／Qz AI Labs：一个人用 Claude Code 和 Codex 在同一天把漏洞信息收集做成晨间机制；请 GPT 找「内行人会觉得哪里松」时列出 5 处，当天 5 处都补上了。不要把这 5 处和「同类文章 12 篇」、上午 npm audit 已是 0 件，或后来向 OSV 询问的 npm 877 件与 3 个环境里 394 件 Python 包写成同一笔。Codex 不在 18 值里，不写入 platforms；正文点名还用了 ChatGPT 的 dots 和 GPT 检索，platforms 记 claude 与 chatgpt。这些是作者自己这一天上的记录，不可外推。",
+    title: "晨间漏洞信息收集与当日补强",
     summary: "qzailabs 在同一天用 Claude Code 搭起晨间漏洞收集，并让 GPT 找出 5 处松的地方，当天 5 处都补上。不要把这 5 处和 12 篇同类文章，或 OSV 的 877／394 件混用。Codex 不填 platforms。这些是作者自己这一天上的记录，不可外推。",
     description: "面向已经打算让编码代理每天代为收集漏洞通告、却还把「当天补上的 5 处」和「询问到的包件数」写成同一笔的人：把 5 处全部补上写成门禁，区别于把 12 篇同类文章、上午的 0 件或 OSV 的 877／394 件说成同一项结果。",
     categories: [
@@ -75214,7 +75214,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1080",
     slug: "fuku-34-242",
-    title: "fukubaka0825／Takashi Narikawa：把 Claude Code 用户范围的 Skill 改成个人插件市场来管理。手头的例子是，视频生成 Skill 在放入当天就从 1.0 升到 1.3；后来一次改写是 +34／−242 行，并把 3 个 Skill 的 description 收窄，避免抢同一类请求。市场侧要同时放 Claude 形式和 Codex 形式两份 marketplace.json，才能按插件分发给 4 个工具。不要把「当天 1.0→1.3」和「+34／−242 行」或「两份市场 JSON、4 个工具」写成同一笔，也不要把「最少还要 marketplace.json 加 plugin.json」和「两份市场 JSON」混成同一组两份文件。正文点名这次实践的是 Claude Code 用户范围 Skill，platforms 记 claude。这些是作者自己这一次管理方式上的记录，不可外推。",
+    title: "个人插件市场里的用户技能",
     summary: "fukubaka0825 把用户范围 Skill 改由个人插件市场管理。例子是当天 1.0→1.3，后来一次 +34／−242 行，以及 Claude／Codex 两份市场 JSON 对应 4 个工具。不要把这些数字混用。platforms 记 claude。这些是作者自己这一次管理方式上的记录，不可外推。",
     description: "面向已经打算把用户范围 Skill 从本机目录直放改成可版本管理的插件、却还把「一次改了多少行」和「两份市场文件能覆盖几个工具」写成同一笔的人：把 1.0→1.3、+34／−242 行和两份市场 JSON／4 个工具写成门禁，区别于把最少所需的 marketplace.json 加 plugin.json 说成同一组两份文件。",
     categories: [
@@ -75269,7 +75269,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1081",
     slug: "koki-809-422",
-    title: "koki_n22：个人开发用 claude -p 从 Issue 做到 PR 的自动化时，为评估跑了 500 步以上，成本比预想高。把缓存保持从 1 小时改成 5 分钟，并收窄启动时读入的设置后，同一课题记录上的成本从 $8.09 降到 $4.22（减 48％）；去掉变更前独有的步骤、按对应的 17 步比，是减 45.1％。不要把 48％ 和 45.1％ 写成同一笔，也不要把这次对照和事先汇总的 543 步合计 $277.31 混用。正文点名这次用了 Claude Code，platforms 记 claude。这些是作者自己这一次对照上的记录，不可外推。",
+    title: "缓存改短与启动收窄的成本",
     summary: "koki_n22 把 claude -p 的缓存保持改成 5 分钟并收窄启动设置后，同一课题记录上的成本从 $8.09 降到 $4.22（减 48％）；对应 17 步是减 45.1％。不要把两个降幅和 543 步 $277.31 混用。这些是作者自己这一次对照上的记录，不可外推。",
     description: "面向已经打算反复拉起 claude -p、却还把「全部步骤的 48％」和「对齐后 17 步的 45.1％」写成同一笔的人：把 $8.09→$4.22 和 45.1％ 写成门禁，区别于把 543 步 $277.31 的构成，或启动时约 32.3k→约 9.3k token 说成同一项对照结果。",
     categories: [
@@ -75325,7 +75325,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1082",
     slug: "jada-20x-052",
-    title: "jadaq／Jada QIU：个人做「拍照变成单词贴纸」的应用时，先怀疑是抠图坏了，叠框后发现是识别框把玩偶本体剪在框外。关掉思考后，Haiku 5.5 在 4 个样本上 IoU 为 0.48–0.52，和 Sonnet 5.5 的 0.51 相当，按当时官方单价估算约是 1/20 的价格（约 $0.00016 对约 $0.0032）。不要把这 1/20 和第一次 Haiku 5.5 连续 4 次解析失败写成同一笔——那 4 次输出 token 都恰好是 300，是 max_tokens 被思考用完，不是模型「不能用」。正文点名用的是 Claude 模型，platforms 记 claude。这些是作者自己这一次实测上的记录，不可外推。",
+    title: "拍照贴纸识别框未包住本体",
     summary: "jadaq 叠框后发现不是抠图坏了。关掉思考后，Haiku 5.5 的 IoU 为 0.48–0.52，与 Sonnet 5.5 的 0.51 相当，估算约 1/20 价格。不要把第一次连续 4 次解析失败当成模型不能用。这些是作者自己这一次实测上的记录，不可外推。",
     description: "面向已经打算凭体感更换视觉模型、却还把「解析失败」直接写成「新模型不能用」的人：把关掉思考后的 IoU 0.48–0.52 对 0.51、以及约 1/20 的单价对比写成门禁，区别于把第一次恰好 300 token 的 4 次失败，或 Haiku 4.5 的 0.00–0.10 说成同一项结论。",
     categories: [
@@ -75381,7 +75381,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1083",
     slug: "nori-785-185",
-    title: "noricha／のりちゃん：在本地跑 DeepSeek V4 Flash（MLX）时，本想把 max_tokens 从 24,000 提到 65,000 来避免被截断，结果更糟。はさみ将棋在上限 24,000 时把「让我写代码」重复了 185 次；提到 65,000 后同一句重复了 785 次，始终没开始写代码。不要把 785 次和 185 次写成同一笔，也不要把顺利写完的オセロ 10,804 tokens，或墨流し在 65,000 时把代码围栏重开 269 次混进去。正文点名这次用的是 DeepSeek V4 Flash 的本地量化版，platforms 记 deepseek。官方 API 版有没有同样循环，文中写明还没测。这些是作者自己这一次基准上的记录，不可外推。",
+    title: "本地模型上限提高后的复读",
     summary: "noricha 把本地 DeepSeek V4 Flash 的 max_tokens 从 24,000 提到 65,000 后，はさみ将棋把「让我写代码」从重复 185 次变成 785 次。不要把 785 和 185，或オセロ 10,804 tokens、墨流し 269 次重开围栏混用。官方 API 版还没测。这些是作者自己这一次基准上的记录，不可外推。",
     description: "面向已经打算靠加大 max_tokens 让本地模型跑完长任务、却还把「重复了 785 次」和「24,000 时的 185 次」写成同一笔的人：把 785 对 185 写成门禁，区别于把一次公开过的配置失误、或オセロ自然结束的 10,804 tokens 说成同一项结果。",
     categories: [
@@ -75437,7 +75437,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1084",
     slug: "haza-93of198",
-    title: "hellohazime：2026-06-17 至 06-30，用一台 Mac Studio（M3 Ultra、512GB）跑 2bit 量化的 Kimi K2.7 Code，完成 SWE-Lancer IC SWE（Diamond）198 个任务。93 个任务正确，正确率 47.0％；获得报酬 $69,875／满额 $189,300（36.9％），耗时 308 小时 34 分，约 13 天。不要把 93／198、47.0％ 和 36.9％、$69,875 写成同一口径，也不要把首次试跑 52 个任务里只对 2 个（3.85％），或 198 个里 109 个至少触发过一次 900 秒截断写成同一笔。Claude Code 只出现在「下次或许改用」的设想里，不是这次的执行方，platforms 只记 kimi。这些是作者自己这一次基准上的记录，不可外推。",
+    title: "单机Kimi的SWE-Lancer基准",
     summary: "hellohazime 用一台 Mac Studio 跑 2bit 的 Kimi K2.7 Code，完成 SWE-Lancer 198 个任务，93 个正确（47.0％），获得 $69,875／满额 $189,300（36.9％）。不要把正确率和报酬率，或首次 52 题里的 3.85％ 混用。platforms 只记 kimi。这些是作者自己这一次基准上的记录，不可外推。",
     description: "面向已经打算只看正确率就比较本地模型「赚了多少」、却还把 47.0％ 和 36.9％ 写成同一口径的人：把 198 个任务、93 个正确和 $69,875／$189,300 写成门禁，区别于把首次 52 题的 3.85％，或作者自己加的 900 秒截断说成同一项结果。",
     categories: [
@@ -75493,7 +75493,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1085",
     slug: "mona-42-12-3",
-    title: "ai_worklab／moname_ai：用 Claude Code 在自己的实务里运着 42 个 Agent Skills，其中自己写的是 12 个，其余 30 个只是装了别人分发的。自己写的 12 个里，只有 3 个（25％）写到了「不要触发的条件」。不要沿用更正前的「40 个」或「将近一半」，也不要把这 42／12／3 和「候选太多就会掉精度」的旧推测写成同一笔——作者后来更正：技能列表有字数预算，超出的 description 会被自动裁掉。发布日必须写成 2026-07-15，不要因 07-30 更正或 08-30 的正文更新改写成别的日期。正文点名这次用了 Claude Code，platforms 记 claude。这些是作者自己这一次运营上的记录，不可外推。",
+    title: "技能说明里的排除触发条件",
     summary: "ai_worklab 用 Claude Code 运着 42 个技能，自己写的 12 个里只有 3 个（25％）写了「不要触发的条件」。不要沿用更正前的「40 个」或「将近一半」，也不要把「候选太多就掉精度」的旧推测当真。必须写成 2026-07-15。这些是作者自己这一次运营上的记录，不可外推。",
     description: "面向已经打算靠多堆技能来提高命中、却还把更正前的「40 个」或「将近一半」写成现状的人：把更正后的 42／12／3（25％）写成门禁，区别于把已撤回的「候选太多就掉精度」说成这次实测结论。",
     categories: [
@@ -75549,7 +75549,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1086",
     slug: "ikah-440-1g",
-    title: "ikahan／0x00：把原来跑在笔记本上的公开 PDF 定期获取和漏洞信息 Discord 通知，集中到 OCI Always Free 的 1 台免费虚拟机上，做成 24 小时无人值守。机器是 1GB 内存加 2GB swap，n8n 用 Docker 只绑在 127.0.0.1:5678；实測高峰 swap 约 440MB，n8n 没有掉线。不要把约 440MB 和 Chromium 启动时多出来的 100–130MB swap、或当时仍剩约 300MB 空闲内存写成同一笔。源文写明了 127.0.0.1:5678，按原样写出、不列入可达，也不要编成 http 地址。正文点名这次用了 n8n，platforms 记 n8n。这些是作者自己这一次迁移上的记录，不可外推。",
+    title: "Always Free上的定时收集",
     summary: "ikahan 把个人自动收集迁到 1GB 内存加 2GB swap 的免费虚拟机，n8n 只绑在 127.0.0.1:5678，高峰 swap 约 440MB 且没有掉线。不要把 440MB 和 100–130MB 或约 300MB 空闲内存混用。本机端址不列入可达。这些是作者自己这一次迁移上的记录，不可外推。",
     description: "面向已经打算把笔记本上的定时采集迁到免费小机器、却还把「高峰 swap 约 440MB」和启动瞬间多出来的 100–130MB 写成同一笔的人：把 1GB＋2GB、约 440MB 且 n8n 未掉线写成门禁，区别于把某一家银行站点的 403 或未给出完整 URL 的另文说成同一项结果。",
     categories: [
@@ -75605,7 +75605,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1087",
     slug: "koma-4of11-7",
-    title: "komachi／torihada：用 OpenCode 让 11 个本地模型做「只写一个 hello.py」的极小任务，只有 4 个成功、7 个失败。按后端拆开是 LM Studio 4 个里成功 3 个（75％），Ollama 7 个里成功 1 个（14％），而且这 1 个还被怀疑走了 Skill。不要把 4／11 和 3／4、1／7 写成同一笔，也不要把前篇「只有 Gemma 4 26B A4B 能跑」当成这篇的结论。OpenCode、Ollama、LM Studio 都不在 18 值里，platforms 为 []。日期必须写成 2026-05-15：页内 publishedAt 是 JST 2026-05-16 00:44:49，换到 Asia/Shanghai 仍是 05-15 23:44:49，不要写成 05-16。这些是作者自己这一次、在 RTX 4070 Ti Super 16GB 上的记录，不可外推。",
+    title: "OpenCode本地极小脚本试写",
     summary: "komachi 用 OpenCode 试 11 个本地模型写 hello.py，4 个成功、7 个失败；LM Studio 为 3／4，Ollama 为 1／7。不要和前篇「只有一个模型能跑」混用。platforms 为 []。必须写成 2026-05-15，不要因 JST 已是 05-16 而写成 05-16。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算按「模型够不够大」来判断本地代理能不能跑、却还把 4／11 和 Ollama 的 1／7 写成同一笔的人：把 11 个模型里 4 个成功、以及同一 Gemma e4b 在两个后端上结果相反写成门禁，区别于把前篇唯一成功的那个模型，或 Qwen3.6 27B 在 52.1％ 处被超时断开说成「模型本身不能跑」。",
     categories: [
@@ -75659,7 +75659,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1088",
     slug: "yash-06-174",
-    title: "yashi888／yashi：做日文文章下草稿的工具时，用 Claude Opus 5 只改 effort 跑了 low／medium／high 各 1 本。成本是 17.4 円、17.0 円、17.6 円，相差只有 0.6 円（3.3％），最便宜的是 medium。着手前按输入 1,800／输出 9,000 token 估过「1 本 36 円」。漏计 cache_creation_input_tokens 时，medium 会显示约 13.7 円，补上后是 17.0 円，少算了 3.3 円（约 19％）。不要把 0.6 円和 3.3 円、或 17.0 円和 13.7 円、36 円写成同一笔。三次重试都是 0 次。正文点名这次用了 claude-opus-5，platforms 记 claude。这些是作者自己这一次、同一条选题上的记录，不可外推。",
+    title: "日文下草稿只改effort对照",
     summary: "yashi888 用 Claude Opus 5 只改 effort 生成 3 本日文下草稿，成本 17.4／17.0／17.6 円，相差 0.6 円；估过 36 円。漏计缓存写入时 medium 会显示 13.7 円。不要把 0.6 円和 13.7 円或 36 円混用。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠把 effort 调低来压 API 成本、却还把「相差 0.6 円」和漏计缓存写入后少算的 3.3 円写成同一笔的人：把 17.4／17.0／17.6 円和 3 本都是 0 次重试写成门禁，区别于把事先估的 36 円，或「effort 越低输出越少」说成这次已经测到的结果。",
     categories: [
@@ -75715,7 +75715,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1089",
     slug: "acro-30of32-94",
-    title: "acropapa330／アクロパパ：用「从 40 个虚构配置里按条件把文件选全」这道题，测了 21 种配置。题目是 4 档 × 8 题＝32 题，集合必须完全一致才算对。LFM3-1.7B 思考开是 24／32（75％），关思考后是 30／32（94％）；想完并写出答案的 24 题全部正确，错的 8 题都是碰到 8,192 token 输出上限。Claude 5.5 的 3 个模型和 GPT-6.1 sol、GPT-6 astra 等云端上位是 32／32。不要把 30／32 和 24／32、或 94％ 和 75％、32／32 写成同一笔。云端经 OpenRouter。源文写的是 Claude 与 GPT-6.1 sol、GPT-6 astra 等模型名，未称为 ChatGPT，不写入 chatgpt。platforms 只记 claude。这些是作者自己这一次、在自造数据上各跑 1 次的记录，不可外推。",
+    title: "开关思考后的文件选全测验",
     summary: "acropapa330 用 40 个虚构配置、32 道必全对的题比较 21 种配置。LFM3 思考开 24／32（75％），关思考后 30／32（94％）；若干云端上位是 32／32。不要把 94％ 和 75％ 或 32／32 混用。源文未称为 ChatGPT，不写入 chatgpt。platforms 只记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把「思考开着就一定更准」用到小型本地模型上、却还把 94％ 和 75％ 写成同一笔的人：把 LFM3 关思考后的 30／32，以及错的 8 题全是输出上限写完写成门禁，区别于把云端 32／32 或体感的 75％ 说成可以外推到真实配置文件的结果。",
     categories: [
@@ -75770,7 +75770,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1090",
     slug: "ctun-12d-170x",
-    title: "dev_ctun／しーつん：把自走代理的状态文件从头读进每次启动后，文件从开业时约 2KB 涨到 12 天后的 336KB，约 170 倍。启动是 1 天 14 次、每小时 1 次；间隔一小时缓存会掉，每次还没开始干活就要把 336KB 当新输入计费。后来把「事业」节只留最新 30KB，335,860 bytes 压到 81,986 bytes，多出来的旧日志全文进退避库，缺失 0 行，连跑第二次不再改动，并跑了 123 个测试。不要把约 170 倍和后来的 335,860→81,986，或约 2KB 和 336KB 写成同一阶段。正文写明这次计费走的是 Claude API，Claude Code 只是拿来类比，platforms 记 claude。这些是作者自己这一次状态文件上的记录，不可外推。",
+    title: "自走代理状态增长后的压缩",
     summary: "dev_ctun 的自走代理状态文件 12 天从约 2KB 涨到 336KB，约 170 倍；1 天启动 14 次。后来把 335,860 bytes 压到 81,986 bytes，123 个测试，缺失 0 行。不要把约 170 倍和这次压缩写成同一阶段。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算让代理每次启动都把状态文件从头读完、却还把「12 天约 170 倍」和后来压到 81,986 bytes 写成同一笔的人：把约 2KB→336KB、以及 1 天 14 次启动写成门禁，区别于把 335,860→81,986 或 123 个测试说成文件没有涨过。",
     categories: [
@@ -75826,7 +75826,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1091",
     slug: "kwie-24-117",
-    title: "kwie／Kwie：在两个真实 OSS 上用 Codex CLI（gpt-5.6-sol）做代码探索，Native 与 Hybrid（可另用 BM25）各跑 3 次，合计 2×2×2×3＝24 次。按各案 token 中位数，4 个案 Hybrid 全部更高：Cloudflare OS #86 ＋35.3％、#88 ＋106.0％（约 2.06 倍），Workers SDK #14845 ＋26.7％、#14962 ＋11.7％。不要写成 24 次每一回都增加，也不要把 11.7％ 和 106.0％ 或约 2.06 倍当成同一个数字。Codex 不在 18 值里，platforms 为 []。这些是作者自己这一次 24 次执行上的记录，不可外推。",
+    title: "两个开源库的代码探索对照",
     summary: "kwie 用 Codex CLI 在两个 OSS 上跑了 24 次，4 个案的 token 中位数 Hybrid 全部更高，最小 ＋11.7％，#88 约 2.06 倍。不要写成 24 次每一回都增加，也不要把 11.7％ 和 106.0％ 混用。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算给编码代理加 BM25 就会少花 token、却还把「24 次验证、全部增加」写成 24 回每一跑都增加的人：把 4 个案的中位数全部上升、以及最小 ＋11.7％、#88 约 2.06 倍写成门禁，区别于把 Recall 的 2 案改善或源文对照篇「减少 30％」说成这次的结果。",
     categories: [
@@ -75880,7 +75880,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1092",
     slug: "tomt-22of25-4",
-    title: "tomtom55555／tom：让 LLM 一次做完「从会议记录里找出完成报告，并改手头任务状态」，人眼逐条核对后，25 条候选里有 22 条贴到了无关任务（88％）；任务对、状态变化也对的只有 1 条（precision 4％）。改成先检测、再裁定之后，是 7 条里 2 条贴错，precision 57％。不要把 22／25 和 2／7，或 88％ 和 4％、57％ 写成同一笔。88％ 这次事件没有点名具体模型；文中的 4o-mini 是另一次实验，不要写进这次的 platforms。platforms 为 []。日期必须写成 2026-09-20，不要因 10-11 的更新改写。这些是作者自己这一次、按真实会议时间串起来的记录，不可外推。",
+    title: "会议记录任务先检测再裁定",
     summary: "tomtom55555 让 LLM 一次做完检测和任务对照，25 条里 22 条贴错（88％），三条都对的只有 1 条（4％）；分开后是 7 条里 2 条贴错，precision 57％。不要把 88％ 和 4％ 或 57％ 混用。platforms 为 []。必须写成 2026-09-20。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算让模型直接从名单里选出任务 id、却还把 88％ 误贴和 4％ 的 precision 写成同一个比例的人：把 25 条里 22 条贴错、以及三条都对的只有 1 条写成门禁，区别于把后来 7 条里 2 条贴错，或另一次 4o-mini 实验说成这次 88％ 的模型。",
     categories: [
@@ -75934,7 +75934,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1093",
     slug: "irvv-3of20-15",
-    title: "irvvee／IRVVEE：个人做中古钢笔标题的型号判定时，自造 16 条测试集上正则是 16／16，拿到未知的 20 条实出品上只有 3／20（15％）能免费解决，17／20 要进 LLM，误检 0／20；作者事先估过 6〜7 成，这个估计偏了。同一案路上，Opus 5 实费约 $0.024（约 3.6 円），Haiku 4.5 约 $0.0035（约 0.5 円）。标题里的「变动费减了九成以上」作者写明是还没有实測的试算（10 万件约 10 万円 → 约 300〜600 円），不要当成已经量过的结果。正文点名这次用了 Anthropic 的 Haiku／Opus 和 Batch API，platforms 记 claude。这些是作者自己这一次管道上的记录，不可外推。",
+    title: "中古钢笔标题型号正则判定",
     summary: "irvvee 的正则在 16 条自造集上是 16／16，未知 20 条实出品上只有 3／20（15％），不是事先估的 6〜7 成；同一案路 Opus 5 约 $0.024、Haiku 4.5 约 $0.0035。标题「九成」是未实測试算，不要当成已经量过。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算根据自造测试集的 100％ 来估正则能挡住多少调用、却还把标题里的「九成」当成已经量过的人：把未知 20 条上的 3／20（15％）对事先估的 6〜7 成、以及同一案路 $0.024→$0.0035 写成门禁，区别于把 10 万件约 10 万円 → 约 300〜600 円的未实測试算说成这次的结果。",
     categories: [
@@ -75990,7 +75990,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1094",
     slug: "taka-14of45-8",
-    title: "takayoshioyama／大山 隆弥志：不会写代码的建设业社长，在 Fable 5 离开标准提供前的最后一周，打开 Claude Code 看到本周用量 42％；Fable 5 只能用到周上限的 50％，还剩约 8 个点。他把 45 个自动化技能逐个打开检查，14 个已经坏了。外部记忆从 237 行削到约 60 行。不要把 14／45 和用量 42％、剩下约 8 个点，或 237→约 60 行写成同一笔。日期必须写成 2026-07-08：发布是 JST 07-08 07:30，不要因正文写「明天是 7 月 7 日」或 bodyUpdatedAt 在 07-07 而改成 07-07。正文点名这次用了 Claude Code，platforms 记 claude。这些是作者自己这一周上的记录，不可外推。",
+    title: "自动化技能检查与记忆瘦身",
     summary: "takayoshioyama 在 Fable 5 最后一周看到用量 42％、还剩约 8 个点；45 个技能里 14 个已坏，外部记忆从 237 行削到约 60 行。不要把 14／45 和约 8 个点混用。必须写成 2026-07-08，不要写成 07-07。platforms 记 claude。这些是作者自己这一周上的记录，不可外推。",
     description: "面向已经打算把最贵模型的剩余额度拿去写代码、却还把「还剩约 8 个点」和 45 个里 14 个已坏写成同一笔的人：把周用量 42％、50％ 上限下还剩约 8 个点，以及 14／45 写成门禁，区别于把发布日写成正文里的 7 月 7 日，或把 237→约 60 行说成技能检修的结果。",
     categories: [
@@ -76046,7 +76046,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1095",
     slug: "hans-7n-150",
-    title: "hanshs474：用 n8n 只靠 sitemap.xml 和 JSON-LD，每天早晨从公开提示集里取 1 条送到 Slack。工作流是 7 个节点、认证信息 0 条。对象集是 Seedance 2 的 150 条提示，作者另计过正文长度中位数 152 字，需要参考图的是 32 条。不要把 150 条、中位数 152 字和 32 条写成这条工作流每天跑出来的成果，它们是对象集上的统计。正文点名这次用了 n8n，platforms 记 n8n。这些是作者自己这一次编排和对象集统计上的记录，不可外推。",
+    title: "公开提示集的每日晨间取送",
     summary: "hanshs474 用 n8n 的 7 个节点、0 条认证，每天早晨取 1 条提示送到 Slack。150 条、中位数 152 字和 32 条需要参考图，是对象集统计，不要写成每日产出。platforms 记 n8n。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算用 CSS 选择器去刮提示集、却还把「每天 1 条」和对象集的 150 条、32 条写成同一笔的人：把 7 个节点、0 条认证和每天早晨 1 条写成门禁，区别于把 150 条里中位数 152 字或 32 条需要参考图说成工作流的产出指标。",
     categories: [
@@ -76102,7 +76102,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1096",
     slug: "micc-131-117",
-    title: "micchymouse／みっちー：一个人用 Claude 把「ドラマのじかん」从 2026-06-11 起意做到 2026-07-17 双系统上架，周末加平日晚上约 1 个月，共 131 个提交。策划、主视觉、UI、架构、实现、商店素材和落地页几乎都和 Claude 一起做，实现阶段交接给 Claude Code。不要把 131 个提交和约 1 个月，或 06-11、07-17 写成发布日。文中的月 $22 是已有的 Claude Pro，年 $99 是 Apple Developer Program，不要当成这次项目的模型费用。正文点名这次用了 Claude 和 Claude Code，platforms 记 claude。这些是作者自己这一次个人开发上的记录，不可外推。",
+    title: "ドラマのじかん双系统上架",
     summary: "micchymouse 用 Claude 和 Claude Code，从 2026-06-11 做到 07-17 上架，约 1 个月、131 个提交。不要把 131 个提交和 $22、$99 混用，也不要把 07-17 写成发布日。发布日是 2026-07-20。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把「一个月做完上架」直接当成可复制的排期、却还把 131 个提交和月 $22 订阅费写成同一笔的人：把 06-11 起意、07-17 上架、131 个提交写成门禁，区别于把发布日写成 07-17 或 07-27，或把已有的 Claude Pro $22、Apple Developer $99 说成这次的模型账单。",
     categories: [
@@ -76158,7 +76158,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1097",
     slug: "hoge-24to9-0",
-    title: "hogehogetaro：把虚构运维文档放进 Vertex AI RAG Engine，用同一模型比较普通生成和带 RAG 的生成。故意诱使推测的严格指示下，8 类问题各跑 3 次：普通生成的无依据或错误回答是 24／24 件，带 RAG 后是 9／24 件（减少 62.5％）；再加上「文档里没有就不要答」，是 0／24 件。文档里没有答案的问题，只加 RAG、仍允许推测时，仍是 6／6 件在猜。不要把 24／24、9／24、0／24 和 6／6，或 62.5％ 写成同一笔。执行模型是 gemini-3.5-flash，不在 18 值里，platforms 为 []。这些是作者自己这一次、在 3 份虚构短文档上的记录，不可外推。",
+    title: "虚构运维文档检索增强对照",
     summary: "hogehogetaro 用 8 类问题各 3 次比较普通生成和 RAG：无依据或误答从 24／24 降到 9／24，加上「没有就不要答」后是 0／24；文档外问题在仍允许推测时是 6／6。不要把这些比例混用。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算「接上 RAG 就不会再乱猜」、却还把 24／24 降到 9／24 和后来的 0／24 写成同一笔的人：把普通生成 24／24、带 RAG 后 9／24，以及文档外问题仍是 6／6 写成门禁，区别于把加上「没有就不要答」后的 0／24 说成 RAG 自己就会停，或把 24／24 说成 Gemini 的一般幻觉率。",
     categories: [
@@ -76212,7 +76212,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1098",
     slug: "nd3-76to96",
-    title: "nd3／nd3：评测脚本修好后，在同一份约 260 页京大教材、同一 25 问、376 个块、chunk_size=1000、top_k=4 上，把库默认的 text-embedding-ada-002 换成 text-embedding-3-small。整体正确率 76%→96%，检索命中率 80%→90%，multi 60%→80%，变差的题是 0。不要把这组数和早期短 PDF（4 段、1 个块）上先看到的 92%，或去空白后检索命中 65%→100%、整体 92%→100%，或评测脚本 3 个 bug 加 1 处实验设计缺陷，或命中率只动 2 题（+10pt）而正确率动 5 题（+20pt），或 3-small 嵌入费用约是 ada-002 的 1/5，或两模型共同剩下的 1 道检索失误，写成同一笔。25 问是 single 15／multi 5／not_in_doc 5。回答生成用的是 Claude Haiku 4.5，数据集草稿由 Claude Code 起草、作者对照 PDF 复审。OpenAI 嵌入不当 chatgpt，platforms 只记 claude。必须写成 2026-07-17，不要因 JST 已是 07-18 或 bodyUpdatedAt 写成 07-18。这些是作者自己这一次、同一套 25 问上的记录，不可外推。",
+    title: "同一长教材上的嵌入模型更换",
     summary: "nd3 修好评测脚本后，在同一 25 问、376 块上把 ada-002 换成 3-small，整体正确率 76%→96%，检索命中 80%→90%，multi 60%→80%，0 道变差。不要和短 PDF 上的 92%、去空白后的 65%→100%／92%→100%，或 +10pt 命中对 +20pt 正确率混用。platforms 记 claude。日期必须写成 2026-07-17。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算只换嵌入模型来看 RAG 对错、却还把修好量尺之后的 76%→96% 和早期短 PDF、去空白修正，或命中率 +10pt 与正确率 +20pt 写成同一笔的人：把同一 25 问、376 块上 ada-002 对 3-small 的 76%→96%、80%→90%、multi 60%→80% 和 0 道变差写成门禁，区别于把 4 段、1 个块上的 92%，或评测脚本 3 个 bug 加 1 处设计缺陷，说成这次模型对比本身。",
     categories: [
@@ -76268,7 +76268,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1099",
     slug: "sofv-2000-16",
-    title: "sofvo／なかむら｜Sofvo を作っている人：一个人做的软式排球大会应用 Sofvo 跑在 Firebase 上，1 月到 9 月账单大约 2,000 円，全部是 Firestore 读取。日均约 16 万次读取，对免费的每天 5 万次；定期函数有 16 本，免费是 3 本，超出的 13 本按每本每月 $0.10 计。5 分钟全量扫描等于一天 288 次。修完后，每次运行只读 1 份状态文档，函数收到 1 分／5 分／1 小时这 3 本。不要把约 2,000 円和 16 万对 5 万，或 16 本对 3 本对 $0.10，或 288 次写成同一笔。Hosting 接近免费 10GB 是顺便一提，不是这 2,000 円的原因。正文里的 CLAUDE.md 只是项目约定文件名，「和 AI 一起开发」没有点名这次计费事件里实际用的平台，platforms 为 []。这些是作者自己这一次账单上的记录，不可外推。",
+    title: "Firestore读取与定期函数收缩",
     summary: "sofvo 的 Firebase 账单 1 月到 9 月约 2,000 円，全是 Firestore 读取；日均 16 万次对免费 5 万，定期函数 16 本对免费 3 本。修完后每次只读 1 份状态文档，函数收到 3 本。不要把 2,000 円和 16 万、16 本或 288 次混用。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经看见「App Engine」账单就想停掉服务、却还把约 2,000 円和日均 16 万次，或 16 本定期函数写成同一笔的人：把 1 月到 9 月约 2,000 円全是 Firestore 读取、免费每天 5 万次、16 本里 13 本按每本每月 $0.10，以及修完后每次只读 1 份状态文档、收到 3 本，写成门禁，区别于把 Hosting 接近免费 10GB 说成这次账单的主因。",
     categories: [
@@ -76322,7 +76322,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1100",
     slug: "kume-81-70-95",
-    title: "kumewata／kumewata：用 2026 年 9 月时点的 Jev，对业务里抽出的 12 个案例做了一天验证，API 费用大约 $0.8。失败 span 分类在设计写完后才发现全部 25 件里失败是 0；AI 文本判别 Jev 是 14／16，粗体加句长的机械指标是 15／16；公开前 PII 在合成数据上 8／8，但代码块被预处理丢掉了。摘要店名抽取：正则 81%、Jev 单独 70%、两者合起来 95%，API 调用从 37 件里的 37 次降到 11 次。用 Noul 问「程度」时 20 件里 8 件几乎贴在 0；印象型标准让 82% 落在 0.4–0.8，另 150 件全落在 0.62–0.89。Noul 输出 220 件的 ECE 是 0.071，但 161／220 落在 0.0–0.1 带。不要把这些数字写成同一笔。正文只在引用篇标题里出现 ChatGPT，platforms 为 []。这些是作者自己这一次 12 案上的记录，不可外推。",
+    title: "Jev业务案例的一日验证",
     summary: "kumewata 用 Jev 验证 12 案、一天、API 约 $0.8。店名抽取正则 81%、Jev 70%、合起来 95%，调用 37→11 次。不要和失败 span 25 件 0 失败、14／16 对 15／16、PII 8／8、ECE 0.071 或 161／220 混用。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算先接判定模型再看准不准、却还把店名抽取的 81%／70%／95% 和失败 span 25 件 0 失败，或 ECE 0.071 写成同一笔的人：把 12 案、一天、约 $0.8，以及正则 81%、Jev 70%、组合 95% 和 37→11 次写成门禁，区别于把合成数据上的 PII 8／8，或 220 件 ECE 0.071，说成已经能把置信度直接当绝对概率用。",
     categories: [
@@ -76376,7 +76376,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1101",
     slug: "yuya-336-676",
-    title: "yuya0408／yuya_h：把个人在用的 gbrain 嵌入模型从默认 nomic-embed-text 换成自选的 embeddinggemma 后，在生产管线同一 185 问上，MRR 从 0.336 到 0.676，几乎翻倍；hit@1 25.9%（48／185）→58.9%（109／185），hit@3 36.8%（68／185）→74.6%（138／185），hit@10 50.3%（93／185）→79.5%（147／185），圈外 92／185→38／185。只在 gemma 侧命中的 57 问、只在 nomic 侧命中的 3 问，McNemar p<10⁻¹³。不要把这些和生产前离线嵌入对比里 gemma 的 MRR 0.741、默认 nomic 的 0.394（第 1 段悬崖 0.306），或离线 0.741 对生产 0.676，或离线 Recall@10 0.919 对生产 hit@10 79.5% 写成同一笔。语料 521 块，查询 185 条（手写 35＋自动 150＝81%），6 个候选，前 4 名无显著差 p=0.449，吞吐 1.89 对 0.29 chunks/s（2.4–6.5 倍），再嵌入约 5 分对约 30 分。「Claude Code 等可作 MCP」只是产品用法，这次评测用的是 Ollama 嵌入和 qwen3.5:4b 合成查询，platforms 为 []。必须写成 2026-09-30，不要因 10-29 更新改写。这些是作者自己这一次 185 问上的记录，不可外推。",
+    title: "生产管线里的嵌入模型更换",
     summary: "yuya0408 把 gbrain 嵌入换成 embeddinggemma 后，生产管线 MRR 0.336→0.676，hit@1 25.9%→58.9%，hit@10 50.3%→79.5%。不要和离线 MRR 0.741 或默认 nomic 的 0.394 混用。platforms 为 []。日期必须写成 2026-09-30。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算只看离线 Recall／MRR 就换嵌入模型、却还把生产管线 0.336→0.676 和离线 0.741，或默认 nomic 的 0.394 写成同一笔的人：把同一 185 问上生产 MRR 0.336→0.676、hit@1 48／185→109／185、hit@10 93／185→147／185 写成门禁，区别于把离线 6 候选第 1 段的 0.741 对 0.394，说成已经在生产管线里量过的结果。",
     categories: [
@@ -76430,7 +76430,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1102",
     slug: "kiyo-17-44",
-    title: "kiyoshisasano／Kiyoshi Sasano：用同一套客服场景，让 GPT-4o-mini、Claude Haiku 4.5、Gemini 2.5 Flash 各跑一遍，按 17 种模式 × 34 个信号做规则诊断，一共 18 次检查。Raw 对 Adjusted：HEALTHY 3→8（5 件误报被重分类），DEGRADED 14→9，FAILED 1，健康率 17%→44%。18 次检查里 5 件是 alignment 误报；34 个信号里 14 个这次观测不到，对观测不到的信号做 0.6 倍置信度衰减。S5 三个模型同一失败，交叉一致 100%，alignment 0.11–0.33，confidence 0.7。循环模式是「同一工具 4 次以上且成功 0 次」，三个模型都没跑到 4 次。不要把这些和示例回复里的 $19.99／月写成同一笔，$19.99 不是测到的费用。源文只写 GPT-4o-mini，未称为 ChatGPT，不得据此写入 chatgpt；platforms 只记这次实测的 claude，Gemini 不在 18 值里不硬凑。这些是作者自己这一次 18 次检查上的记录，不可外推。",
+    title: "客服场景的规则诊断重分类",
     summary: "kiyoshisasano 用 3 个模型跑 6 个场景、18 次检查，健康率 Raw 17%→Adjusted 44%，HEALTHY 3→8。不要和 34 个信号里 14 个未观测，或示例里的 $19.99／月混用。源文未称为 ChatGPT，platforms 只记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算只看「工具被调用、有回复」就当代理健康、却还把 Raw 健康率 17% 和 Adjusted 44%，或示例回复里的 $19.99／月写成同一笔的人：把 18 次检查、HEALTHY 3→8、DEGRADED 14→9、健康率 17%→44% 写成门禁，区别于把 $19.99／月说成这次已经量过的成本。",
     categories: [
@@ -76485,7 +76485,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1103",
     slug: "jido-309-435",
-    title: "ai_jidoka_lab／AI自動化ラボ：以第一人称 fork 并运维他人的 OSS multi-agent-shogun，6 周以上实装后，CLAUDE.md 从 309 行加到 435 行。2026-04-11 一次 crontab 覆盖清掉了 30 行以上的既有条目；2026-03-28 生成的 note 混入 7 处事实错误，4 月 2 日台本出现单位换算错误。空闲动作只在 5 小时速率限制低于 50% 时才做，并禁止 21:00–07:00 JST。文件上限 450 行；各类大约加了 +60／+30／+90／+50 行。Tier 2 是 10 个文件以上的删除要停下来报告；检索失败是 2 次重试后再报告失败、禁止推测。不要把 309／435 和 30 行以上 cron，或 7 处错误写成同一笔。必须写成 2026-05-15，不要因 05-18 更新或事发日改写。platforms 记 claude。实验室名称不改变这是一人运维。这些是作者自己这一次运维上的记录，不可外推。",
+    title: "分叉多代理的六周以上运维",
     summary: "ai_jidoka_lab 实装 fork 的 multi-agent-shogun 超过 6 周，CLAUDE.md 309→435 行，并经历 crontab 清掉 30 行以上、note 7 处事实错误。不要把 309／435 和 30 行或 7 处错误混用。日期必须写成 2026-05-15。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠加长 CLAUDE.md 来约束多智能体、却还把 309→435 行和一次清掉 30 行以上 cron，或 7 处事实错误写成同一笔的人：把 6 周以上、309→435、450 行上限写成门禁，区别于把事发日 2026-03-28／04-02／04-11，或更新日 05-18，说成这篇的发布日。",
     categories: [
@@ -76541,7 +76541,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1104",
     slug: "bigs-006-47",
-    title: "bigshine／bigshine：用学生免费额度搭个人 RAG。用 gpt-5.4-mini 把一页做成 Markdown 大约 $0.006；在 1GB Always Free 虚拟机上，测到的 Streamlit 界面是 47MB。GitHub Actions 的 schedule 本意是每小时一次，实际日志是 14:02→19:24→23:41，隔了 4–5 小时。Actions runner 内存 7GB，虚拟机只有 1GB。嵌入改成 512 维而不是默认 1536，以节省 Supabase Free 的 500MB。Japan West 配额几乎是 0，项目改放到东南亚。不要把约 $0.006 或 47MB，和「月 100 页、每天 5 问（年 1800 问）→ 约 $15／年（$7.2+$0.02+$7.6）」或「每月 2000 分钟／假定 720」这些估算，或 $100 学分写成同一笔。两份虚构 PDF 上的演示问是截图演示，不是生产正确率；文中写「by Gemini」只是做样本 PDF，不当平台。源文只写 gpt-5.4-mini，未称为 ChatGPT，不得据此写入 chatgpt，Gemini 也不在 18 值里，platforms 为 []。必须写成 2026-09-30，不要因 10-03 更新改写。这些是作者自己这一次免费额度组合上的记录，不可外推。",
+    title: "学生免费额度上的检索库搭建",
     summary: "bigshine 用免费额度搭 RAG：一页 Markdown 约 $0.006，Streamlit 实測 47MB，Actions 本意每小时一次，实际 14:02→19:24→23:41。不要和年约 $15 的估算或 $100 学分混用。日期必须写成 2026-09-30。源文未称为 ChatGPT，platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算只靠学生学分和免费虚拟机搭 RAG、却还把实測的约 $0.006／页、47MB，和「年约 $15」或 $100 学分写成同一笔的人：把 $0.006／页、47MB、以及 schedule 实际 4–5 小时一跑写成门禁，区别于把月 100 页、每天 5 问推出来的约 $15／年，说成已经发生的用量。",
     categories: [
@@ -76594,7 +76594,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1105",
     slug: "mia-57m-31",
-    title: "mia_net／Mia Net：用 koboldcpp 1.120 + Cherry Studio v2.0.12–v2.0.14 跑 DeepSeek V4 Flash 0731，上下文加载了 292,144，但 Cherry Studio 默认只保留最近 6 条消息（3 个来回）。关掉 Context Shift（noshift）后，日志是 n_past=154004，新处理只有 31 个 token。SmartCache 一次快照 52,803 个 token／3,654 MB；到约 16 万时，快照 6–8 GB，7 个槽最多超过 40GB。权重约 118 GB 再加上这些，超出 128 GB 内存，任务管理器是使用中 128／128、已提交 261 GB。「一天超过 100 万 token」是记账口径（例如 4 万历史 × 25 个来回），不是实际重算。17 万线程里一次工具调用，第 1 阶段处理 161,383 个 token 用了 57 分钟；smartcache 设为 2 后，每阶段约 225 秒，一次工具调用约 8 分钟。最大工具调用 100 造成 1 小时 41 分钟循环（作者后来建议约 50）。batchsize 4096 时工作区约 35 GB 显存（每卡 7.7–9.1 GB × 4），收到 1024 会缩小。提示速度 4k 文脉 80 T/s，16 万文脉 47 T/s。不要把 292k 和默认 6 条消息，或 57 分钟整段重读和 31 个 token 的增量，或 100 万记账和实际计算写成同一笔。platforms 记 deepseek。源文 issue 只写了 #2464–#2467，没有完整 URL，不编造。这些是作者自己这一次 2026 年 9 月环境上的记录，不可外推。",
+    title: "长上下文默认只留最近消息",
     summary: "mia_net 把 DeepSeek V4 Flash 加载到 292k，但客户端默认只送 6 条消息；noshift 后 15 万文脉只新处理 31 个 token，工具调用曾用 57 分钟读 161,383 个 token。不要把 292k、6 条、57 分钟和「一天 100 万」记账混用。platforms 记 deepseek。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经看见上下文设成 292k 却还在丢前几轮、并把「一天 100 万 token」当成实际重算的人：把默认只保留 6 条消息、noshift 后只新处理 31 个 token，以及工具调用第 1 阶段 57 分钟处理 161,383 个 token 写成门禁，区别于把记账口径上的 100 万，说成模型真的算了这么多次。",
     categories: [
@@ -76650,7 +76650,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1106",
     slug: "napo-137-10",
-    title: "naposuke7：为了不增加 Plaud 年费合同，自己做了 rec2notion：把录音放进 inbox、点 run.bat，就走「转录→摘要→写入 Notion」。137 分钟的演讲整段交给 Gemini 2.5 Flash 后，模型开始反复输出「(间)」一类的词，于是改成切成约 10 分钟一段，并做连续行最多保留 2 次的去重。额外费用 0 日元，用的是 Gemini 免费额度；从策划到开始运行用了 2 天；验收标准是和 Plaud 摘要并列对照，主要论点和具体例子要同等保留。platforms 记 claude，是因为正文写明「代码是和 AI（Claude）一起写的」——Claude 用来写这个工具，不要把 137 分钟转录算到 Claude 头上。Gemini 不在 18 值里，不硬凑。GitHub「以后会公开」，没有完整 URL，不编造。这些是作者自己这一次录音工具上的记录，不可外推。",
+    title: "长演讲切段转写并写入笔记",
     summary: "naposuke7 自做录音摘要工具，137 分钟整段输入会反复输出「(间)」，改成约 10 分钟一段后进入运行；额外费用 0 日元，策划到运行 2 天。Claude 只用来写代码，不要把转录算到 Claude 头上。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把整场演讲一次送进模型做转录、却还把 137 分钟上的重复输出和「额外 0 日元」、或把转录算到写代码的 Claude 头上的人：把 137 分钟整段会反复输出「(间)」、改成约 10 分钟一段、连续行最多 2 次，以及 2 天进入运行写成门禁，区别于把避开 Plaud 年费合同说成已经量过的价格。",
     categories: [
@@ -76706,7 +76706,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1107",
     slug: "rude-6to20-15",
-    title: "rudel／ルーデル：为了在本地跑 DeepSeek-V4.1-Flash-1017，花大约 48 万日元组装工作站：Z8G4 约 20 万，10 条 32GB DDR4-2400T 约 20 万，再买一台 RTX 3060 约 4 万，并配上原有的另一台 3060。按主板 12 通道估计理论带宽 230.4 GB/s，4bit、约 9GB 时理论约 28 tok/s。第一次跑只有 6 tok/s，发现权重被放到了存储上；把缓存全部载入内存后超过 20 tok/s（2-bit，作者希望能到 30+）。1 张 GPU 时，4k 文脉仍能保持 20 tok/s，超过 10k 后降到 15 tok/s。不要把 6、20、15、28，或 48 万日元的各部分写成同一笔。platforms 记 deepseek。这些是作者自己这一次组装和测速上的记录，不可外推。",
+    title: "本地大模型工作站组装测速",
     summary: "rudel 用约 48 万日元工作站跑 DeepSeek-V4.1-Flash-1017，理论约 28 tok/s，首次 6 tok/s，缓存进内存后超过 20 tok/s；1 张 GPU 时 4k 仍是 20，超过 10k 降到 15。不要把 6、20、15、28 混用。platforms 记 deepseek。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算用大量通道的 CPU 内存去追 GPU 带宽、却还把首次 6 tok/s 和后来超过 20 tok/s，或理论 28 tok/s 写成同一笔的人：把 6 tok/s、超过 20 tok/s、以及 1 张 GPU 时 4k 保持 20、超过 10k 降到 15 写成门禁，区别于把 230.4 GB/s ÷ 约 9GB 得到的理论 28 tok/s，说成已经跑到的速度。",
     categories: [
@@ -76762,7 +76762,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1108",
     slug: "craf-29k-93",
-    title: "craftcode／craftcode：用 claude -p 做常驻 worker 时实測，1 次调用固定叠上约 29,000 token，就算回复只有 6 token 也不变。把 13KB 的 CLAUDE.md 拿掉、在空文件夹里再测，也只是 $0.070→$0.068（都是 CLI 返回的 total_cost_usd 换算值，作者用的是 Max 定额，这笔钱并没有实际入账）。15 件摘要 1 件 1 次共 15 次，是 $0.90／625,245 token；15 件合成 1 次，是 $0.067／42,390 token，费用和 token 都是 93% 减。日志平均 9.8 件／时，worker 若仍 90 秒醒一次，队列里往往是 0 件或 1 件，代码写着批量也等于 1 件 1 次；间隔改到 8 分才真正凑得起来。不要把约 29,000 和 $0.070→$0.068，或 15 次对 1 次的 93%，或 Opus $0.068→Haiku $0.019 的 72% 减写成同一笔。测定日是 2026-07-17，发布日必须写成 2026-07-31，不要把测定日写成这条的发布日。platforms 记 claude。这些是作者自己这一次、在 Max 定额下用换算值量的记录，不可外推。",
+    title: "常驻单次调用的开销与批量",
     summary: "craftcode 实測 claude -p 1 次固定约 29,000 token，空文件夹也只是 $0.070→$0.068；15 件合成 1 次后费用和 token 都 93% 减。不要和 Haiku 72% 减或 90 秒间隔时队列仍是 0／1 件混用。日期必须写成 2026-07-31。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠缩短提示词来省 claude -p 的调用费、却还把约 29,000 token 的固定行李和 $0.070→$0.068，或 15 件合成 1 次的 93%，写成同一笔的人：把 1 次调用约 29,000 token、15 件 1 次 93% 减，以及 90 秒间隔时队列往往是 0 件或 1 件写成门禁，区别于把测定日 2026-07-17 写成发布日，或把 CLI 换算美元当成 Max 定额下的实账。",
     categories: [
@@ -76818,7 +76818,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1109",
     slug: "dazo-237-55",
-    title: "dazoyee／Iori Oiso：在 Claude Code 里看 /context，Memory files 占到 23.7k token（200k 窗口的 11.9%）。当时 ~/.claude/rules/ 一共 10 个文件、73,822 字节。作者让 Claude 把 10 个文件里的 4 个迁到 Skills，再压缩留下的 rules，Memory files 从 23.7k 降到 5.5k token，按这两点是 78% 减，Context limit 碰到的次数明显变少。不要把 23.7k→5.5k 的 78%，和当时整段会话 52k／200k（26%）、System tools 11.8k（5.9%）、System prompt 3.3k（1.6%）、Custom agents 867（0.4%）、Skills 1.5k（0.8%）、Messages 11k（5.5%）或 Autocompact buffer 33k（16.5%）写成同一笔。也不要把 73,822 字节、10 个文件或迁走 4 个，说成 78% 本身。platforms 记 claude。日期必须写成 2026-02-28。这些是作者自己这一次、这一套 rules 上的记录，不可外推。",
+    title: "常驻规则的迁出并压缩记忆",
     summary: "dazoyee 把 Claude Code 的 Memory files 从 23.7k 压到 5.5k token（78% 减）。不要把这 78% 和整段 52k／200k（26%）、System tools 11.8k 或 73,822 字节混用。日期必须写成 2026-02-28。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把 rules 越写越长、却还把 Memory files 的 23.7k→5.5k（78%）和整段会话 52k／200k，或 System tools 11.8k 写成同一笔的人：把 Memory files 23.7k（11.9%）降到 5.5k 的 78% 减写成门禁，区别于把 10 个文件、73,822 字节或迁走 4 个 Skills，说成 78% 本身。",
     categories: [
@@ -76874,7 +76874,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1110",
     slug: "cnat-27to39-4",
-    title: "cnative_tkb／cnative_tkb：用 Claude Code 做个人自动化大约 4 个月，注意事项攒到 27 件时已经不再回看。作者把 27 件收成 4 类，每类 1 句原则，一共 4 行放进每轮必读的设定，27 件原文另置。2 个月后再数，变成 39 件，多出 12 件，但原则仍是 4 行；这 12 件全部进了已有的 4 个抽屉，第 5 个抽屉没有出现。不要把 27 件收成 4 行，和后来的 39 件、+12 件或「约 4 个月」写成同一笔，也不要把第一次让 AI 整表整理时得到的 6 类，或 Cowan 的 4 个，说成这次收纳的结果。platforms 记 claude。日期必须写成 2026-08-13，不要因 UTC 已是 08-12 改写。这些是作者自己这一次、这一组注意事项上的记录，不可外推。",
+    title: "注意事项收成每轮必读原则",
     summary: "cnative_tkb 把 27 件注意事项收成 4 行；2 个月后变成 39 件（+12），原则仍是 4 行，12 件都进了原有 4 个抽屉。不要把 27 件、39 件和约 4 个月混用。日期必须写成 2026-08-13。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把「下次别再这样」一条条追加进设定、却还把 27 件收成 4 行和后来的 39 件写成同一笔的人：把 27 件收成 4 行、2 个月后 39 件仍是 4 行、+12 件都进原有 4 个抽屉写成门禁，区别于把第一次 AI 给出的 6 类，或约 4 个月的使用时长，说成这次收纳的结果。",
     categories: [
@@ -76930,7 +76930,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1111",
     slug: "taku-39-17k",
-    title: "taku_z3nn／Taku：非开发者，本职是 SIer 里做基础设施和安全的项目负责人。开始用 Claude Code 大约 1 个月，做出 39 个业务自动化工具，Python 代码大约 17,000 行；知识文档 25 本以上，每个工具都附了说明书。体制图这一个例子，以前每次改成员要花 30 分钟到 1 小时摆 Excel 图形，现在改台账再跑脚本，3 分钟出图。不要把 39 个工具、约 17,000 行和 25 本以上文档写成同一笔，也不要把体制图的 30 分钟到 1 小时→3 分钟，说成 39 个工具共同的耗时。platforms 记 claude。必须写成 2026-04-07，不要因 04-12 更新改写。这些是作者自己这大约 1 个月上的记录，不可外推。",
+    title: "非开发者的批量自动化工具",
     summary: "taku_z3nn 作为非开发者，用 Claude Code 大约 1 个月做出 39 个工具、约 17,000 行 Python。不要把 39 个、17,000 行和 25 本以上文档，或体制图 30 分钟到 1 小时→3 分钟混用。日期必须写成 2026-04-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经觉得非开发者做不了自动化、却还把 39 个工具、约 17,000 行和体制图 3 分钟写成同一笔的人：把大约 1 个月里 39 个工具、约 17,000 行写成门禁，区别于把 25 本以上知识文档，或体制图这一个例子上的 30 分钟到 1 小时→3 分钟，说成 39 个工具共同的成绩。",
     categories: [
@@ -76986,7 +76986,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1112",
     slug: "sats-11k-17k",
-    title: "satson_j／Satoshi Sonoda：给国土交通数据平台官方 MCP（18 个工具）自写 Anthropic tool calling 循环时实測，tiktoken o200k_base 估算 11,055 token，Anthropic countTokens 实測 16,758，大约 1.5 倍；工具单件可到 1.7〜2.6 倍，有一个是 269→695（2.58 倍）。18 个单件相加是 21,620，18 个一次送入的实測是 16,758。清理 8 处改写（含删掉 ChatGPT 引用残留标记）只让定义变成 16,758→16,561（−197，−1.2%），但总输入可因轮次 2.4→3.2 升到原来的 140%。不要把 11,055 对 16,758，和 269→695、21,620 对 16,758，或 −1.2% 与 140% 写成同一笔。正文里的「ChatGPT」只是工具说明里要清掉的引用残留，不是这次调用了 ChatGPT，不得写入 chatgpt，platforms 只记 claude。日期必须写成 2026-09-03。这些是作者自己这一次个人试作上的记录，不可外推。",
+    title: "交通数据工具令牌估算核对",
     summary: "satson_j 用 18 个 MCP 工具实測：tiktoken 11,055 对 Anthropic 16,758（约 1.5 倍），有一个工具 269→695。不要和 21,620 对 16,758，或清理后的 −1.2%／140% 混用。源文未把这次调用称为 ChatGPT，platforms 只记 claude。日期必须写成 2026-09-03。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算用 tiktoken 估算 Claude 工具定义的开销、却还把 11,055 对 16,758 和 269→695，或把清掉引用残留后的 −1.2% 写成总费用下降的人：把 countTokens 实測 16,758、约 1.5 倍和单件 269→695 写成门禁，区别于把 18 个单件之和 21,620，或轮次变多后的 140%，说成同一笔账。",
     categories: [
@@ -77042,7 +77042,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1113",
     slug: "aisi-097-071",
-    title: "aishigoto_lab／AI仕事ラボ：自己写了 16 个文体、40 篇日文（9,676 字），用 6 个 tokenizer 实測每字 token 数。cl100k_base（GPT-4／GPT-3.5-turbo 一代）日文是 0.97，正好贴近「1 字 1 token」；现行 o200k_base 是 0.71，若仍按 1 字 1 token 估算会多算约 1.4 倍；同一篇日文在 GPT-3 一代和现行一代之间差 1.91 倍。不要把 0.97、0.71、1.4 倍和 1.91 倍写成同一笔，也不要把预留 8 种、3,691 字上的 holdout（cl100k 1.08、o200k 0.77 等），或 o200k 在 16 类里的 0.54〜0.85，写成主结果。文中的 Claude 1〜2 代是当时公开的词表（日文也是 0.97），作者写明测不到现行 Claude；GPT-2／GPT-3／GPT-4／GPT-4o 都是 tokenizer 名，源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-09-10。这些是作者自己这一份写下来的语料上的记录，不可外推。",
+    title: "多种分词器的日文每字实测",
     summary: "aishigoto_lab 用 16 类 40 篇、9,676 字实測：cl100k 日文 0.97，o200k 0.71，按 1 字 1 token 会多算约 1.4 倍。不要和 holdout 3,691 字上的 1.08／0.77，或 16 类 0.54〜0.85 混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-09-10。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经习惯用「日文 1 字 1 token」估费用、却还把 cl100k 的 0.97 和 o200k 的 0.71，或 holdout 上的 1.08／0.77 写成同一笔的人：把 16 类 40 篇、9,676 字上 cl100k 0.97、o200k 0.71、约 1.4 倍多算写成门禁，区别于把预留 8 种 3,691 字或 16 类幅度 0.54〜0.85，说成主结果。",
     categories: [
@@ -77096,7 +77096,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1114",
     slug: "fbbp-55k-150",
-    title: "fbbp／fbbp：在 Claude Code 里，自作 MCP 启动时把全部工具定义加载进来，曾占到当时 20 万 token 窗口的约 1/4。后来改成 Skills + scripts + 子代理，会话开始时加载的 token 从 55,000 以上降到大约 150，按这两点是 95% 减。不要把 55,000 以上→大约 150 的 95%，和「20 万的 1/4」写成同一笔——后者是问题描述里的约数，前者是改完后作者写下的前后值。platforms 记 claude。日期必须写成 2025-12-19。配图 3 张（正文 4 个 img，其中 1 张重复）。这些是作者自己这一次环境上的记录，不可外推。",
+    title: "会话启动从全量改按需加载",
     summary: "fbbp 把 Claude Code 会话开始时加载的 token 从 55,000 以上降到大约 150（95% 减）。不要和「20 万窗口的约 1/4」混用。日期必须写成 2025-12-19。platforms 记 claude。配图 3 张。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算继续往 Claude Code 里堆自作 MCP、却还把 55,000 以上→大约 150 的 95%，和「20 万的 1/4」写成同一笔的人：把会话开始时 55,000 以上降到大约 150 写成门禁，区别于把启动时占满约四分之一窗口，说成已经量过的同一个前后对比。",
     categories: [
@@ -77152,7 +77152,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1115",
     slug: "nao-12d-0",
-    title: "nao_ops／ナオ：上线「早报 agent」后，开篇按日志写成「12 天 0 投稿」（前面人工停了 5 天，上线后早报连续 7 天都提示 0 件）。作者据此改写全文，后看实际投稿画面，才发现期间已经发出 2 条。最初估计是「每天整理 30 分钟对上每天发 15 条」，后来说真正该比的是「30 分钟对上 0 条」。改到 X API v2 后，第一个星期里有 2 天下线，失败稿会保持未发布并改到次日发出（0 件漏发，最多晚 1 天）。不要把日志上的 12 天 0 件，和后来对上的 2 条已发，或改版后第一个星期里的 2 天下线写成同一笔。这条自动化走 launchd + X API，源文未把这次运行称为 Claude 或 ChatGPT，platforms 为 []。日期必须写成 2026-10-17。这些是作者自己这一次上线后的记录，不可外推。",
+    title: "早报代理的日志与实发核对",
     summary: "nao_ops 的早报 agent，开篇按日志写成 12 天 0 投稿，后看投稿画面才发现已发出 2 条。不要把 12 天 0 件和后来的 2 条，或改版后第一个星期里的 2 天下线混用。platforms 为 []。日期必须写成 2026-10-17。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算给早报 agent 写「连零都发不出去」的复盘、却还只按日志写成 12 天 0 件的人：把开篇日志上的 12 天 0 投稿，和后来对上的 2 条已发同时写成门禁，区别于把改到 X API v2 后第一个星期里的 2 天下线，或最初估计的每天 15 条，说成同一笔账。",
     categories: [
@@ -77206,7 +77206,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1116",
     slug: "sant-10q-0",
-    title: "santassn1224／Kazu：用 10 题（事实 5／文档外 2／追问 3）对比 3 种 RAG。合格率 ① 6/10、② 7/10、③ 7/10。去掉文档外 2 题后，8 题 faithfulness 代表值 ① 0.71、② 0.77、③ 0.68。每题 token ① 拿不到、② 8,913、③ 3,256（② 是 ③ 的 2.7 倍）；时延 ① 6.8 秒、② 10.4 秒、③ 9.2 秒。追问 3 题 ① 2/3、② 2/3、③ 3/3。不要把合格率、faithfulness、token 和时延写成同一笔，也不要把 answer-relevance 先按 0.7 会 10/10 全灭、后来校准到 0.4，或评分器两次把 ③ 的正确回答打成 0.00（若采信则 ③ 均分变成 0.56 而不是 0.68），说成主表上的 0.68。生成用 Claude Sonnet 4.6，评分用 Haiku／Sonnet，platforms 记 claude。必须写成 2026-08-12，不要因 UTC 已是 08-11，或 bodyUpdatedAt 的 08-10 改写。这些是作者自己这一次 10 题上的记录，不可外推。",
+    title: "十道题上三种检索增强对照",
     summary: "santassn1224 用 10 题对比 3 种 RAG：合格率 6/10、7/10、7/10，8 题 faithfulness 代表值 0.71、0.77、0.68。不要和 token 2.7 倍、时延或评分器 0.00 混用。日期必须写成 2026-08-12。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算用 LLM-as-a-Judge 给 RAG 打分、却还把 10 题合格率和 8 题 faithfulness，或把评分器打出的 0.00 直接写进均分的人：把 ① 6/10、② 7/10、③ 7/10 和代表值 0.71／0.77／0.68 写成门禁，区别于把 ② 8,913 token（③ 的 2.7 倍），或「若采信 0.00 则 ③ 变成 0.56」，说成主结果。",
     categories: [
@@ -77262,7 +77262,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1117",
     slug: "geon-0988-057",
-    title: "geonyole_ae／geonyole-ae：用韩语测嵌入模型时，不相关的一对句子（公园里的狗 vs 量子波函数）在 text-embedding-004 上余弦相似度是 0.9880，同一领域是 0.9937，间隔只有 0.0057，于是出现「枢纽文档」对每个查询都排第一。对照表是：004 不相关 0.9880／同领域 0.9937／间隔 0.0057／768 维／单价 1 倍；text-multilingual-embedding-002 是 0.4904／0.5718／0.0814／768／1 倍；gemini-embedding-001 是 0.1861／0.2141／0.0280／3072／6 倍。作者把 001 的分离度排第一（不相关 0.186 最低），实际采用 002，因为 schema 已是 vector(768)，001 要截断 3072→768 还得重测，单价是 6 倍，而 002 的间隔 0.0814 大约是 004 的 0.0057 的 14 倍，已经能用。不要把 0.9880 和 0.9937／0.0057 写成同一笔，也不要把「分离度第一」的 001 和「采用 002」写成同一结论。源文测的是嵌入模型，明确没测 OpenAI 嵌入，也未称为 ChatGPT，platforms 为 []。日期必须写成 2026-08-31。这些是作者自己这一对句子、这一张对照表上的记录，不可外推。",
+    title: "韩语嵌入间隔过窄后的选型",
     summary: "geonyole_ae 测到韩语不相关句对在 text-embedding-004 上余弦 0.9880，间隔只有 0.0057。对照后采用 002（间隔 0.0814），没有采用分离度更高的 001。不要把 0.9880 和 0.9937，或「分离度第一」和「采用 002」混用。platforms 为 []。日期必须写成 2026-08-31。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经在检索里看到「什么查询都命中同一篇」、却还把 0.9880 和 0.9937，或把分离度第一的 001 写成最终采用模型的人：把不相关句对 0.9880、间隔 0.0057，以及采用 002 而不是 001 写成门禁，区别于把 001 的 0.1861 说成已经上线的选择。",
     categories: [
@@ -77316,7 +77316,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1118",
     slug: "emat-868m-904",
-    title: "masato_emata／emabou：用 RTK 拦 Claude Code 的命令输出，约 40 天、8,587 条命令的执行历史上，输入 96.0M token、输出 9.3M，削减 86.8M，削减率 90.4%。标题写的是 8,600 命令，表里是 8,587，不要把标题的约数写成精确件数。削减的 79.2%（68.7M）来自同一类操作只 7 次：把合计输入 68.9M 的 Rails development.log 压到合计输出 144K（加权削减率 99.8%）。不要把这 7 次合计的 68.9M→144K，和其中一次代表例 9.61M→71.8K 写成同一笔，也不要把 90.4% 总削减率和这 7 次的 99.8%、或 git diff 433 次的 89.7% 混用。总执行时间 348.4 分（平均 2.4 秒／命令），回退 2,501 件（29.1%）。发布日必须写成 2026-06-29，不要因 bodyUpdatedAt 写成 2026-07-01。platforms 记 claude。这些是作者自己这一次、这一段历史上的记录，不可外推。",
+    title: "命令输出拦截后的用量削减",
     summary: "masato_emata 在约 40 天、8,587 条命令上用 RTK 把 96.0M 输入压到 9.3M 输出，削减 86.8M（90.4%）；其中 79.2% 来自只 7 次开发日志再读（68.9M→144K）。不要把标题的 8,600 和表里的 8,587，或 7 次合计和单次 9.61M→71.8K 混用。日期必须写成 2026-06-29。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠压缩 Claude Code 命令输出省 token、却还把约 8,600 和 8,587，或总削减率 90.4% 和 7 次日志再读的 79.2%／99.8%，或 7 次合计 68.9M→144K 和单次代表例 9.61M→71.8K 写成同一笔的人：把 8,587 条、86.8M（90.4%）和 7 次 68.7M（79.2%）写成门禁，区别于把发布日写成 2026-07-01，或把 40 天测定窗写成发布日。",
     categories: [
@@ -77371,7 +77371,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1119",
     slug: "cti-1762-105",
-    title: "cti1650／cti1650：在 Claude Code v2.1.7、claude-opus-4-5 上，用 claude -p 「1+1=」量会话开始时的 token（input_tokens、cache_creation_input_tokens、cache_read_input_tokens 三项合计）。项目里 rules 7 个、agents 18 个、skills 7 个，基准一共 43,295 token。rules 去掉 paths 后变成 55,627（+12,332，+28.5%），平均 1 个文件 +1,762 token，因为规则正文被整份加载；这不是 agents 或 skills 的前端说明。agents 的 description 18 个共 1,889 token（约 −105／文件），skills 的 description 7 个共 723 token（约 −103／文件）。有 paths 的 7 个 rules 在开始时约等于 0。不要把 +1,762 和 +105／+103，或 +12,332 写成同一笔。发布日必须写成 2026-04-04，不要因更新写成 2026-04-05。platforms 记 claude。这些是作者自己这一次、这一套文件上的记录，不可外推。",
+    title: "规则路径对启动加载的影响",
     summary: "cti1650 实測会话开始 43,295 token；rules 去掉 paths 后 +12,332（每文件约 +1,762），agents description 约 +105／文件，skills 约 +103／文件。不要把 +1,762 和 +105／+103 混用。日期必须写成 2026-04-04。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠删掉 agents／skills 前端说明来省启动 token、却还把 rules 去掉 paths 后每文件 +1,762，和 description 的约 +105／+103 写成同一笔的人：把 43,295、+12,332 和 +1,762 写成门禁，区别于把发布日写成 2026-04-05，或把有 paths 的 rules 也算进启动成本。",
     categories: [
@@ -77426,7 +77426,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1120",
     slug: "peng-637k-68",
-    title: "penguingymlinux／JIRO SAKAMOTO：把原来超过 400 行的一份 CLAUDE.md 拆开后，本体看起来只剩 237 行（作者说收进了 200 行台），但加上 @ 导入一共 4,979 行，接近 5,000 行，每次启动都会读进来；其中 ARTICLE_GUIDE.md 就有 1,269 行。只说一声「こんにちは」，statusline 显示通常 Sonnet 4.6 的 Context 68% used；／context 是 135.6K／200K（68%），其中 Memory files 63.7K、Messages 45.8K、Skills 6.8K。另一次在 1M 上下文模式、启动后什么都没说，就已经超过 10 万 token，Memory files 单独超过 70K。后来整段降到 3 万 token 台，Memory files 降到 6.4K。不要把 68%／135.6K／63.7K 和另一次启动超过 10 万／Memory 超过 70K，或后来的 3 万台／6.4K 写成同一笔，也不要和 152 的 Memory files 23.7k→5.5k 混用。也不要把 237 行和 4,979 行写成同一笔。发布日必须写成 2026-05-11。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    title: "记忆拆分后启动仍全量读入",
     summary: "penguingymlinux 把 CLAUDE.md 拆开后本体只剩 237 行，但 @ 导入一共 4,979 行。只说「こんにちは」就用掉 Sonnet 4.6 上下文 68%（135.6K／200K），Memory files 63.7K；另一次 1M 模式启动就超过 10 万 token。不要和后来的 3 万台／6.4K，或 152 的 23.7k→5.5k 混用。日期必须写成 2026-05-11。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经以为把 CLAUDE.md 拆成 200 行台就能减少启动读取、却还把 237 行和 4,979 行，或「こんにちは」时的 68%／63.7K 和另一次启动超过 10 万写成同一笔的人：把 4,979 行、135.6K／200K（68%）和 Memory files 63.7K 写成门禁，区别于把后来的 3 万台／6.4K 或 5 小时额度更快用完的感觉写成同一笔测定。",
     categories: [
@@ -77481,7 +77481,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1121",
     slug: "shai-14pt-78",
-    title: "ai_shain_log／ai_shain_log：在 Claude Code 的 Max（20x）上，让秘书役把使用量画面上的周上限使用率记下来。2026-10-04 12:17 到 10-05 11:02 约 23 小时里，涨得最多的是 10-04 18:00 到大约 21:20 这约 3 小时 20 分：全模型使用率 6%→20%（+14 个点），期间结束的子代理是 78 次，比任何时段都多；Fable 也在这期间第一次从 0% 动到 18%。再往前 12:17–18:00，子代理也结束了 56 次，全模型却只从 0% 到 6%，Fable 仍是 0%。同一段记录里，同样是 17 次结束，有一次全模型 6%→6%（0 个点），另一次 25%→31%（6 个点）。约 23 小时用掉周上限的 31%。10-11 11:31（重置前约 30 分）画面上全模型 100%、Fable 32%，但使用率只显示整数，作者写明不能据此断言已经顶格。不要把 6%→20% 的 +14 个点和 151 的 6to20 tok/s 混用，也不要把 78 次和 56 次、或同样 17 次的 0 个点与 6 个点写成同一笔。发布日必须写成 2026-10-07，不要因补记日写成 2026-10-11，或因 bodyUpdatedAt 写成 2026-10-13，或因记录起始写成 2026-10-04。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    title: "周用量与子代理的结束次数",
     summary: "ai_shain_log 在 Max（20x）上记下：约 3 小时 20 分里全模型 6%→20%（+14 个点）时子代理结束 78 次，但更早 56 次却只涨了 6 个点；同样 17 次结束，一次 0 个点、一次 6 个点。约 23 小时用掉 31%。不要和 151 的 6to20 tok/s 混用。日期必须写成 2026-10-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经以为 Max（20x）周上限使用率和子代理结束次数成正比、却还把 6%→20% 的 +14 个点与 78 次，和更早 56 次只涨 6 个点，或同样 17 次的 0 个点与 6 个点写成同一笔的人：把「次数定不了涨幅」写成门禁，区别于把发布日写成 2026-10-11、2026-10-13 或 2026-10-04，或把 151 的 6to20 tok/s 写进来。",
     categories: [
@@ -77536,7 +77536,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1122",
     slug: "yoko-34k-154",
-    title: "yokkomystery／YOKKO：用 Claude Code（Opus 4.6，200K 窗口）的 JSONL 日志实測。所有会话第一轮的 cache_read_input_tokens 都是 20,281，作者把它估成系统提示和内置工具的固定成本；本例另有 cache_creation_input_tokens 16,263 和 input_tokens 3，合计约 36,500 在第一轮已经用掉，不要把 20,281 说成约 36,500，或说成文首「约 20%」，更不要和常驻层随 MCP／技能变化的 34K〜56K 混用。某次 160 轮、没有压缩的会话是 34K→55K→96K→115K→154K（相对开始 +353%，约 4.5 倍）。95 次压缩事件里，压缩前中位数 165,470、平均数 148,951，70／95 次（73.7%）落在 165K〜170K，压缩后大约剩 50K（保持 28〜34%）；小节标题写「83.5%」，用区间中点 167.5K／200K 算出的是约 83.8%，官方约 95% 应对 190K，不要把这三笔写成同一笔。51K→8.5K 是引用的 Medium 报道，不是这次 JSONL 实測。发布日必须写成 2026-03-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    title: "会话日志的缓存与压缩实测",
     summary: "yokkomystery 从 JSONL 实測：固定 cache_read 20,281，本例第一轮合计约 36,500；160 轮从 34K 长到 154K（约 4.5 倍）；95 次压缩里 70 次落在 165K〜170K。不要把 20,281 和约 36,500、或引用的 51K→8.5K，或标题 83.5% 和算出的 83.8% 混用。日期必须写成 2026-03-07。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经在看 200K 窗口却还把固定 20,281、第一轮约 36,500、160 轮的 34K→154K，或引用篇的 51K→8.5K 写成同一笔的人：把 20,281、34K→154K 和 70／95 次落在 165K〜170K 写成门禁，区别于把小节标题 83.5% 和 167.5K／200K 的约 83.8%、或官方约 95%（190K）写成同一笔。",
     categories: [
@@ -77591,7 +77591,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1123",
     slug: "suid-976-73",
-    title: "sui_dev／sui：在 Vertex AI 上给自己的 LLM 应用加显式 Context Caching。模型是 gemini-2.0-flash-001，区域 us-central1。缓存前平均输入 2282.80 token、输出 104.05、命中率 0%、平均响应 1949.95ms；缓存后平均输入同样是 2282.80、输出 100.85、平均缓存 2227.00、命中率 97.6%、平均响应 1733.15ms（−11.1%）。按 1,000 次请求估算，通常计费输入从 2,282,800 降到 55,800，缓存 token 2,227,000，费用 $0.171→$0.046，约 73% 减。不要把 97.6% 命中率、约 73% 费用减和 −11.1% 响应时间写成同一笔，也不要把约 2300 的说明性数字和实測平均 2282.80、或第三次实验的平均 2196.70ms 和 1733.15ms 混用。月请求 1 万／10 万／100 万的金额是外推，不是这次实測。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2025-11-28。这些是作者自己这一次上的记录，不可外推。",
+    title: "自有应用的显式上下文缓存",
     summary: "sui_dev 在 Vertex AI 上把缓存命中率做到 97.6%，按 1,000 次请求估算费用 $0.171→$0.046（约 73% 减），响应 1949ms→1733ms（−11.1%）。不要把这三笔，或 2282.80 和约 2300 混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2025-11-28。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠上下文缓存省 Gemini 调用费、却还把 97.6% 命中率、约 73% 费用减和 −11.1% 响应时间写成同一笔的人：把 97.6%、$0.171→$0.046 和 1949.95ms→1733.15ms 写成门禁，区别于把约 2300 的说明性数字或按月请求外推的金额当成这次实測。",
     categories: [
@@ -77644,7 +77644,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1124",
     slug: "tasa-096-039",
-    title: "tasazuma／としあき：为个人项目 ex-day 做话题分割 PoC。人写的 3 段对话（76 件）上，把全文一次交给 GPT-5.6 Sol，有回复关系时 B-cubed 的「まとまりの F」是 0.96、没有回复关系时是 0.92；同一条件交给 Claude Sonnet 是 0.87／0.84。规则加向量、不用 AI 时，有回复关系是 0.60、没有是 0.39。按 10 件一段往下传，GPT 变成 0.80／0.79，Claude 变成 0.78／0.70；每 20 件再重分一次，GPT 回到 0.84／0.80，Claude 反而有的条件降到 0.71／0.76。Claude Sonnet 按段传时话题数从 10 个增到 14 个（正确答案是 12 个）。「已有话题里哪一个更近」的排序有 72% 正确，但用远近找切分点的 AUC 低于 0.5。Claude Haiku 随条件在 0.75〜0.90 之间晃。不要把 0.96／0.92 和 0.39，或按段传的结果写成同一笔。源文写的是 GPT-5.6 Sol，未称为 ChatGPT，不得写入 chatgpt，platforms 只记 claude。发布日必须写成 2026-10-08。这些是作者自己这一次、自己标注的记录，不可外推。",
+    title: "回复关系下的话题分割试验",
     summary: "tasazuma 在人写的 3 段、76 件对话上，全文一次交给 GPT-5.6 Sol 得到 F 0.96／0.92，Claude Sonnet 是 0.87／0.84；规则加向量不用 AI 时没有回复关系只有 0.39。按 10 件一段往下传会下降。源文未称为 ChatGPT，platforms 只记 claude。日期必须写成 2026-10-08。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠规则和向量少叫 LLM 来切话题、却还把全文一次的 0.96／0.84 和不用 AI 时的 0.39，或按 10 件一段往下传的下降写成同一笔的人：把人写 76 件上的 0.96／0.92、0.87／0.84 和 0.39 写成门禁，区别于把 GPT-5.6 Sol 写成 ChatGPT，或把 7 本 209 件的早期子集和这 3 本 76 件混用。",
     categories: [
@@ -77699,7 +77699,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1125",
     slug: "taik-31to0",
-    title: "taikikei／待機圭：把自己托管的摘要 agent 在 2026-08-13 停掉，改成完全不用 LLM 的脚本，运行成本从每月 $31 降到 $0。作者后来数过，10 道工序里真正需要判断的只有 1 道，其余是按顺序调用脚本；那唯一的判断（安全新闻分成 3 类）其实写在资讯源的 <category> 里。停掉之前，剩下「按顺序调用」这一步，仍要每天早上花 2〜3 分钟、一次大约 100 日元。资讯源一次只载 20 条、大约 1.4 天，改成每天（含周末）收 3 次后，「周一要回溯到周五」这条分支也没了。作者为了发现那些事故（自己写解析器、回放旧的完成报告、输出被截断后成果为零）实损付过 $22.40，不要把这笔和每月 $31→$0，或每次大约 100 日元写成同一笔。发布日必须写成 2026-08-18，不要因停用日写成 2026-08-13，或因 bodyUpdatedAt 写成 2026-08-22。正文写到这次是 Bedrock 上的 Claude 开销对比订阅，platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    title: "自托管摘要改为不用模型脚本",
     summary: "taikikei 在 2026-08-13 停掉自托管摘要 agent，改成不用 LLM 的脚本，每月运行成本 $31→$0。10 道工序里需要判断的只有 1 道，且写在资讯源的 <category> 里。不要把实损 $22.40 和 $31→$0 混用。发布日必须写成 2026-08-18。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算继续用 agent 做每日摘要、却还把每月 $31→$0、实损 $22.40 和每次大约 100 日元写成同一笔的人：把 $31→$0 和「10 道工序里只有 1 道需要判断」写成门禁，区别于把停用日 2026-08-13 或更新日 2026-08-22 写成发布日。",
     categories: [
@@ -77754,7 +77754,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1126",
     slug: "daid-6x-1",
-    title: "diced／だい：在照护现场语音系统里，当初用户说一次「次」（下一段）就会再跑完整条管线：Whisper STT → 命令判断 → 再让 LLM（文中表格写的是 Claude）生成 → TTS。一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍，「次」的响应是 4–6 秒。后来改成第一次就把全文生成完，用 chunk_answer() 按句号每 3 句切一段缓存起来，「次」只从缓存取一段做 TTS，成本变成 1 倍+TTS，响应降到 1 秒以下；「再来一次」改在 Android 播放缓冲里完成，不再往返服务器。作者在标题和结尾写成 API 成本 90% 减，但对照表写的是 5 次连续导航下 6 倍→1 倍+TTS，不要把 90% 当成这张表的精确换算。发布日必须写成 2026-03-12。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
+    title: "照护语音的下一段改走缓存",
     summary: "diced 发现一次会话里「次」说 5 次，API 成本会涨到提问 1 次的 6 倍，响应 4–6 秒；改成首次生成并按 3 句缓存后，变成 1 倍+TTS，响应 1 秒以下。不要把作者说的 90% 减和表里的 6 倍→1 倍+TTS 当成同一笔精确换算。日期必须写成 2026-03-12。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算继续对「次」整段重跑 LLM、却还把作者说的 90% 减和表里 6 倍→1 倍+TTS、或 4–6 秒→1 秒以下写成同一笔精确换算的人：把「次」5 次对应 6 倍成本和 4–6 秒写成门禁，区别于把 90% 直接当成 6 倍换成 1 倍+TTS 的精确百分比。",
     categories: [
@@ -77809,7 +77809,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1127",
     slug: "znet-91-11",
-    title: "znet／Shiros：在 Mac mini M4 Pro（64GB）上，用同一段约 91 分钟的日语实会录音，比较本地模型后采用 Gemma 4 26B-A4B。这条管线是先转写约 5.5 分、再说话人分离约 3.5 分、再生成会议纪要约 2.5 分（表里生成是 146.9 秒、2,357 字），合计约 11 分钟。不要把这条约 11 分钟，和 dense 的 Gemma 4 31B 只算「生成会议纪要」的约 11 分钟（表里 652.7 秒、2,709 字）、整条管线超过 20 分钟（统一内存上大约 5 tok/s）写成同一笔。对照表里 IBM Granite 4.0 H-Small 是 200.8 秒、1,246 字，输出大约只有别人一半，同一段日文大约要 1.8 倍 token；Qwen3.6-35B-A3B 最快（97.2 秒、3,830 字、要确认 0 条）但会自信地编造，作者没用它做纪要。不要把 1.8 倍和 152 的日文 token 比，或把大约 5 tok/s 和 151 的 6to20 tok/s 混用。源时区 2026-06-15T00:26:21.276+09:00 换到 Asia/Shanghai 已是 2026-06-14 23:26:21，发布日必须写成 2026-06-14，不要写成 2026-06-15。源文未称为 ChatGPT，platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
+    title: "长录音的日语纪要本地管线",
     summary: "znet 用约 91 分钟日语实会录音，Gemma 4 26B-A4B 整条管线约 11 分钟（5.5+3.5+2.5 分，生成 146.9 秒）。不要把这条约 11 分钟和 31B 只算生成的约 11 分钟、整条超过 20 分钟混用。发布日必须写成 2026-06-14，不要因 JST 已是 06-15 改写。platforms 为 []。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算在本地做会议纪要、却还把 26B-A4B 整条管线约 11 分钟，和 31B 只算生成的约 11 分钟或整条超过 20 分钟写成同一笔的人：把 91 分钟音频、5.5+3.5+2.5 分和 146.9 秒写成门禁，区别于把源时区 06-15 凌晨写成上海日历日，或把 Granite 的 1.8 倍 token、31B 的大约 5 tok/s 和近批数字混用。",
     categories: [
@@ -77862,7 +77862,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1128",
     slug: "fuji-4758-8",
-    title: "fujiken818／fujiken818：用 Claude 桌面应用跑预约任务（定时执行），在 2026-06-24 到 11-01 的本地会话台账上数出 4,758 回、170 种任务，模型只切换了 8 回，而且一变就是全部任务一起变。不要把开头说的「100 本以上」写成表里的 170 种，也不要把 8 回切换和「同一小时里出现过 2 个模型」的 3 个时段写成同一笔。Opus 系合计 4,054 回、占有记录期间的 85%，这是次数占比，不是费用占比。10/17 的 104 回全部是 Opus 5.5，其中 72 回（69%）来自每小时跑的 3 本；10/12–10/15 的 198 回全部是 Sonnet 4.6，10/19 的 87 回全部是 Sonnet 5.5。同一小时出现 2 个模型的时段只有 8/04 8 时台、10/11 12 时台、10/18 14 时台，都正好落在切换时刻。发布日必须写成 2026-11-01。platforms 记 claude。这些是作者自己这一段台账上的记录，不可外推。",
+    title: "定时预约任务模型切换台账",
     summary: "fujiken818 在 2026-06-24 到 11-01 的 4,758 回预约任务台账上，只见到 8 回模型切换，而且一变就是全部一起变。不要把 170 种和「100 本以上」，或 8 回和 3 个混用时段，或 85% 次数和费用写成同一笔。日期必须写成 2026-11-01。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算给预约任务指定模型、却还把「100 本以上」和 170 种、8 回切换和 3 个混用时段、或 4,054 回（85%）当成费用占比的人：把 4,758 回里只切 8 回、且同一小时混用只有 3 段都落在切换时刻写成门禁，区别于把对话侧选择会不会被继承当成这次已经证实的结论。",
     categories: [
@@ -77917,7 +77917,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1129",
     slug: "scri-60to2-97",
-    title: "sc_ri／@sc_ri：用 Google Apps Script 和 Gemini 做设备配货（キッティング）之后的判定和报告书生成，把这一步的工时从 60 分降到 2 分（约 97% 减）。不要把这 60 分→2 分，和一件案子全流程约 3.5 小时（配货本体 1–2 小时、判定和报告 1 小时、发货准备 0.5 小时），或文末「1 分」、后来「保险」用的人眼复核 5 分以内，或开发用了 3 小时出原型写成同一笔。误判定为零、一年能省数百小时，是作者对一致性逻辑和展望的说法，不是这张对照表里的实測件数。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2026-10-07，不要因更新写成 2026-10-08。这些是作者自己这一次、这一步报告工时上的记录，不可外推。",
+    title: "设备配货后的判定报告生成",
     summary: "sc_ri 用 GAS 和 Gemini 把配货后的判定和报告书从 60 分做到 2 分（约 97% 减）。不要把这张表和全流程约 3.5 小时、文末 1 分或人眼复核 5 分混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-10-07。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算继续手工解析配货日志、却还把 60 分→2 分的约 97% 和全流程约 3.5 小时、或文末 1 分和人眼复核 5 分写成同一笔的人：把判定和报告书 60 分→2 分成门禁，区别于把开发 3 小时出原型或「一年数百小时」的展望当成这次实測。",
     categories: [
@@ -77969,7 +77969,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1130",
     slug: "saka-870-261",
-    title: "sakata_ai／Seiichiro Sakata：在一台 Mac Studio（M4 Max 36GB）上自托管 Dify 1.14.2 和 LM Studio，对 65 本日语 PDF、300 问做完本地 RAG 和 LLM-as-judge。文中划掉的 6 月 30 日公开值是 0.853（256/300）；v1.1 用更新后的评价基准 CSV 和采用 PDF manifest 重跑同一 4 条件后，r4（qwen35B、有 VLM）是 answer_errors=0、0.870（261/300）。不要把 0.870 说成只靠改基准就提高的精度，作者写明全工程重跑后 O/X 变化的问题有 62/300，其中 49 问在有效的问答未改时判定也变了。不要把 300 问里 table 82 问、image 76 问和这两个分数写成同一笔。有料云 API 没用。源文未称为 ChatGPT，platforms 只记 dify。发布日必须写成 2026-06-30，不要因文中 v1.1 写成 2026-07-12，或因 updated_at 写成 2026-07-13。这些是作者自己这一次、这一套本地流程上的确认值，不可外推到和其他系统比名次。",
+    title: "本地多文档问答的整库评测",
     summary: "sakata_ai 在一台 Mac 上用自托管 Dify 把 65 本 PDF、300 问跑完，v1.1 的 r4 是 0.870（261/300），不要和划掉的 0.853（256/300）混用，也不要把 0.870 当成只改基准就提高的精度。发布日必须写成 2026-06-30。platforms 记 dify。这些是作者自己这一次上的确认值，不可外推。",
     description: "面向已经打算用一份本地 RAG 分数对外比名次、却还把 0.853 和 0.870、或 62/300 的判定变动当成「只改了基准所以进步」的人：把 v1.1 的 0.870（261/300）和必须写成 2026-06-30 的发布日写成门禁，区别于把更新日 2026-07-12 或 2026-07-13 当成发布日。",
     categories: [
@@ -78023,7 +78023,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1131",
     slug: "yume-243k-310",
-    title: "yumeno／Miyuki-Yumeno：在 RTX 5060 Ti 16GB×1（PCIe Gen3 x8）、DDR4-3200 80GB、本地 LLM Strata 上，把上下文上限设成 256K（262,144 token），实际送入约 24.3 万 token 时，三次读取速度是 784／787／785 tok/s，到第一个字大约 310 秒（约 5 分半），生成约 51–53 tok/s，埋在全文 10%／50%／90% 处的 3 个虚构事实三次都全对。不要把标题和结语里的「25 万 token」写成这次测到的约 24.3 万，也不要把约 12.4 万 token、约 154 秒、800／803／802 tok/s，或约 1.2 万 token 时的 595 tok/s，或文中别人环境约 25 万 token 花约 31 分（约 130 tok/s）写成同一笔。同一段文字送第二次会在约 0.3 秒返回，因为复用了上次的 KV，作者不用那一次当测量。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2026-11-03。这些是作者自己这一台、这一次上的记录，不可外推。",
+    title: "单卡超长上下文的一次读入",
     summary: "yumeno 在 5060 Ti 1 张卡上把约 24.3 万 token 一次读完，到第一个字大约 310 秒（约 5 分半），三次都答对了埋进去的 3 个事实。不要把标题的 25 万和约 24.3 万，或 12.4 万／约 154 秒、别人环境的约 31 分写成同一笔。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-11-03。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算为了长上下文再加 GPU、却还把标题 25 万、实測约 24.3 万和别人环境约 31 分写成同一笔的人：把约 24.3 万 token、约 310 秒和三次全对写成门禁，区别于把 256K 上限或约 12.4 万的 154 秒当成这次主对照。",
     categories: [
@@ -78075,7 +78075,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1132",
     slug: "saku-1332k-18",
-    title: "sakura_yk／花無十日紅：用 Claude Code 的子代理做了一次偶发的成果物评审。这一次走了 19 回 API，合计 1,331,998 token（约 133 万），花了 18 分，回来的指摘 26 件，实际动手改了 8 件。约九成是缓存读取，作者按 Opus 5 单价估算大约 $2.18、日元大约 300 円出头，不要把 133 万 token 直接当成费用的量级。26 件里，真阳性新发现 17 件（65.4%）、已知 2 件（7.7%）、伪阳性（事先声明的意图）4 件（15.4%）、伪阳性（弄错）1 件（3.8%）、判定保留（适当）2 件（7.7%）；事先公开的「不是缺陷的意图」台账 9 件里，被当成缺陷报出来的只有 4 件。不要把 26 件和 8 件，或 133 万和大约 $2.18 写成同一笔。发布日必须写成 2026-07-31。platforms 记 claude。这些是作者自己这一次、这一次偶发试用上的记录，不可外推。",
+    title: "子代理对成果物的一次评审",
     summary: "sakura_yk 用 Claude Code 子代理做了一次评审：1,331,998 token、18 分、指摘 26 件、动手改了 8 件。不要把 133 万和大约 $2.18，或 26 件和 8 件混用。日期必须写成 2026-07-31。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算再开一轮子代理评审、却还把 133 万 token 直接当成费用，或把 26 件指摘和动手改的 8 件写成同一笔的人：把 1,331,998 token、18 分、26 件和 8 件写成门禁，区别于把大约 $2.18 和 133 万当成同一量级。",
     categories: [
@@ -78129,7 +78129,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1133",
     slug: "niko-80-12",
-    title: "nikokobo／NiKoKobo：按「何时读入」而不是按功能，给自己的 AI 秘书分了四处放置。作者写到，CLAUDE.md 本体 135 行，rules 5 本共 486 行，每次都会常驻加载；references 20 本按需；Skills 80 本只在该步骤启动时读；hook 57 本不让模型读、由机械拦住。这是 120 天用下来的标准。Skills 到 80 本时，SKILL.md 行数中位数 277、最大 1,244，超过自己定的 500 行上限的有 12 本（最大是上限的 2.5 倍）。近 10 天 hook 事件 98,334 回，拦住 110 回、警告 1,710 回，发出的 hook 34 种；这 110 回是写在 CLAUDE.md 里也拦不住的。看起来 1 个月以上没更新的 Skills 有 35 本，但其中 20 本停在 36.4 天前、14 本停在 31.6 天前，是批量处理日，不是真正的使用记录。正文只写 CLAUDE.md／Skills／hook，未点名 Claude 或 Claude Code，话题标签不能代替，platforms 为 []。发布日必须写成 2026-08-11。这些是作者自己这一次、这一套放置上的记录，不可外推。",
+    title: "秘书文件按照读入时机放置",
     summary: "nikokobo 把 Skills 加到 80 本后，有 12 本超过自己定的 500 行上限，最大 1,244 行；近 10 天 hook 查了 98,334 回，拦住 110 回。不要把 80 本和 12 本，或 98,334 和 110 混用。正文未点名 Claude，platforms 为 []。日期必须写成 2026-08-11。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算靠继续拆 Skills 来减轻常驻上下文、却还把 80 本、12 本超限和 10 天 98,334 回 hook 写成同一笔的人：把 80 本里 12 本超过 500 行、最大 1,244 行写成门禁，区别于把 35 本「一个月没更新」当成真正的使用统计。",
     categories: [
@@ -78181,7 +78181,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1134",
     slug: "bur-275-225",
-    title: "bur／au-aii：把客服现场 10 张 Excel、合计 275 行整理成 JSONL，去掉信息量为零的审批列和重复的 50 件后，得到 225 件唯一问答，用 Gemini Live 全量注入再实測。225 件里 110 件（48%）带 URL 或链接写法，用 Gemini 分词器量过大约 1.8 万 token。文本输入连问 7 题（第 1、31、81、131、181、211、225 件）：前 6 回合 TTFA 0.584–0.831 秒，prompt tokens 从 18,031 单调增到 21,308，缓存一次都没命中；第 7 回在第 225 件上遇到 1011 Internal error，会话断了。不要把这 6 回合 0.58–0.83 秒，和文中另一个语音面试项目里 Q1 3,280 ms 一直恶化到 Q5 15,700–17,200 ms 写成同一笔，也不要把 275 行和 225 件、或大约 1.8 万和表里的 18,031 写成同一笔。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2026-07-23，不要因更新写成 2026-07-24。这些是作者自己这一次上的记录，不可外推。",
+    title: "客服问答整理后的全量注入",
     summary: "bur 把 10 张 Excel、275 行收成 225 件问答，用 Gemini Live 全量注入：前 6 回 TTFA 0.58–0.83 秒，prompt tokens 18,031→21,308，缓存 0；第 7 回 1011 断线。不要和另一个语音项目的毫秒恶化混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-07-23。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算把整本 FAQ 塞进 Gemini Live、却还把 275 行和 225 件、或这次 0.58–0.83 秒和另一个语音项目的 3,280 ms→17,200 ms 写成同一笔的人：把 225 件、前 6 回缓存未命中和第 7 回 1011 断线写成门禁。",
     categories: [
@@ -78233,7 +78233,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1135",
     slug: "holy-127-32",
-    title: "holy_fox／ほーりーふぉっくす：在 RTX 5090 32GB、内存 128GB 的电脑上试 FreeToken 0.1.2（截止 2026-08-22）。23.5GB 的 Ornith 1.5 本来就装得进这块 32GB 显存，FreeToken 并不占优，文中还写到 llama.cpp 和 vLLM 在这个模型上更快，不要把 Ornith 的 196.9 tok/s 和后面 120B 级的数字写成同一笔。65.2GB 的 gpt-oss-120b（总 120B、活跃 5.1B）单发 127.1 tok/s，当时大约 1,863／4,608 个 expert（约 40.4%）留在 GPU 缓存，显存约 29GB、主机内存约 66GB。83.5GB 的 Qwen3.5-122B-A10B（总 122B、活跃 10B）是 32.0 tok/s，大约 1,786／12,288 个槽（约 14.5%）留在 GPU，显存约 29.8GB、主机内存约 70GB，大约是 127.1 tok/s 的四分之一。不要把 127.1 和 32.0，或 65.2GB 和 83.5GB 混用。源文未称为 ChatGPT，platforms 为 []。发布日必须写成 2026-08-22。这些是作者自己这一台、这一版 FreeToken 上的记录，不可外推。",
+    title: "FreeToken 本地推理测速",
     summary: "holy_fox 在 5090 32GB 上测 FreeToken：装得进显存的 Ornith 1.5 并不占优；装不进的 gpt-oss-120b 是 127.1 tok/s，Qwen3.5-122B 是 32.0 tok/s。不要把 127.1 和 32.0，或和 Ornith 的 196.9 tok/s 混用。源文未称为 ChatGPT，platforms 为 []。日期必须写成 2026-08-22。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算用消费级 5090 跑 120B 级 MoE、却还把 Ornith 1.5 的 196.9 tok/s、gpt-oss-120b 的 127.1 和 Qwen 的 32.0 写成同一笔的人：把「显存装得下时 FreeToken 不占优」和 127.1／32.0 两档写成门禁。",
     categories: [
@@ -78285,7 +78285,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1136",
     slug: "hwata-44to0-15",
-    title: "h_wata／h-wata：在自建的 tmux 多代理环境 squad 里，用 Claude Code 的子代理去写任务说明书、更新看板，好让司令塔（Dispatcher）少耗 token。对照 transcript 后，Dispatcher 自己直接改看板从 44 回降到 0 回；以前大约每 5 个任务就要 /compact，后来可以从早上一次处理 15 个任务而不做 /compact。任务 YAML 全文 100–380 行和看板全文不再进 Dispatcher 的上下文；子代理只回 YAML 路径和 3–5 行摘要，或看板更新后的 2–4 行。不要把 44→0 和「5 个任务一次 compact → 15 个任务不用 compact」写成同一笔，也不要和 151 的 6to20 tok/s 或 153 的额度百分点混用。发布日必须写成 2026-07-04，不要因更新写成 2026-08-13。platforms 记 claude。这些是作者自己这一套 squad 上的记录，不可外推。",
+    title: "任务说明书与看板交给子代理",
     summary: "h_wata 让子代理写任务说明书、更新看板后，Dispatcher 直接改看板从 44 回降到 0 回，并能一次处理 15 个任务而不做 /compact。不要把 44→0 和 5→15 混用。发布日必须写成 2026-07-04。platforms 记 claude。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算继续让司令塔亲自改看板和写长 YAML、却还把 44→0 和「每 5 个任务 compact → 15 个任务不用 compact」写成同一笔的人：把这两笔分开写成门禁，区别于把更新日 2026-08-13 当成发布日。",
     categories: [
@@ -78339,7 +78339,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1137",
     slug: "tkmr-7yen",
-    title: "tkmry／tkmry：用 ChatGPT Plus 当咨询和写代码的帮手，再用 Google Apps Script 和 Google AI Studio 里的 Gemini 3.8 Flash，做了一个每天往 Discord 推国内／国外安全热点的日刊机器人。文中先写「1 日 5 円」，接着说看起来落在 5 円到 10 円，作者估计平均大概会落到 7 円／日，不要把标题的 7 円写成已经逐日平均出来的精确值，也不要把 5 円、5–10 円和大约 7 円当成三笔已经对齐的实測表。实现本身「总共不到 1 天」。运行时模型是 Gemini 3.8 Flash；ChatGPT Plus（文中写大概是 GPT-6）是这次写 GAS 代码和改图的咨询役，源文多次称为 ChatGPT，platforms 记 chatgpt。发布日必须写成 2026-10-31，不要因更新写成 2026-11-05。这些是作者自己这一次上的记录，不可外推。",
+    title: "国内外安全热点的日刊推送",
     summary: "tkmry 用 ChatGPT Plus 写 GAS，再用 Gemini 3.8 Flash 做日刊安全机器人。文中先写 1 日 5 円，看起来 5–10 円，作者估计平均大概 7 円／日，不要把标题 7 円当成逐日平均的精确值。发布日必须写成 2026-10-31。platforms 记 chatgpt。这些是作者自己这一次上的记录，不可外推。",
     description: "面向已经打算按标题的 7 円去给日刊机器人做预算、却还把 5 円、5–10 円和大约 7 円当成同一笔精确平均值的人：把「先写 5 円、范围 5–10 円、估计大概 7 円」写成门禁，区别于把更新日 2026-11-05 当成发布日。",
     categories: [
@@ -78393,7 +78393,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1138",
     slug: "cosa-845-226",
-    title: "cosara／こさら：在自己的 Windows 环境里，从 Claude Code 的 JSONL 集计使用量时踩到两个方向相反的陷阱——只扫一层会漏掉 3,225 个文件（84.5%），而最大的一份 211.4MB 会话里 4,176 条带 requestId 的行只有 1,845 个不重复 ID，素朴合计会放大到 2.26 倍。这两笔会部分抵消，让合计看起来「还算对」。不要把 84.5% 和 2.26 倍、或 591 和 3,816、或 4,176 和 1,845 混用。发布日必须写成 2026-07-13。platforms 记 claude。这些是作者自己这一天、这一套环境上的实测，不可外推。",
+    title: "用量集计的漏扫与重复放大",
     summary: "cosara 在 2026-07-13 自己的 Windows 环境里数出：只扫一层是 591 个文件，递归是 3,816 个，漏掉 3,225 个（84.5%）；最大会话 211.4MB 里 4,176 条 requestId 行只有 1,845 个不重复 ID，放大 2.26 倍。不要把这两笔混用。发布日必须写成 2026-07-13。platforms 记 claude。这些是作者自己这一次上的实测，不可外推。",
     description: "面向已经打算用一份本地 JSONL 合计去对使用量、却还把漏扫的 84.5% 和重复计数的 2.26 倍当成同一笔、或把 591 和 3,816 写成同一侧的人：把 2026-07-13 这一天、这一套环境上的两笔陷阱分开写，并记住它们会部分抵消。",
     categories: [
@@ -78446,7 +78446,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1139",
     slug: "arao-120-227",
-    title: "araom：用自己 25 天（2026-09-29〜10-23）的会话记录数出，1 个工作区里主会话 225 个、响应 9,835 回；隔开 1 小时以上再回来的首次响应有 120 回，写入 2,843 万 token、227 USD（每回 1.90 USD），次数大约只占 1%，却占了写入金额的一半以上。作业中 1 回写入大约 0.013 USD，重开大约是它的 150 倍。同一笔 2,843 万若在 1 小时内用读取做完，大约是 6 USD。不要把 120 回和「隔开 1 小时以上的 133 回里只有 2 回还读得到对话部分」混用，也不要把两次 steering 示例的 2.21→0.32 USD、1.30→0.75 USD，或把「227 USD 换成大约 60 USD」的计算当成改完后再测的结果。发布日必须写成 2026-10-25，不要因更新写成 2026-10-26。platforms 记 claude。这些是作者自己这一段记录上的数字，不可外推。",
+    title: "隔时重开的首次上下文写入",
     summary: "araom 用 25 天、225 个主会话、9,835 回响应的记录数出：隔开 1 小时以上再回来的首次响应 120 回，写入 2,843 万 token、227 USD，次数约 1%，金额却占写入的一半以上。不要把 120 回和 133 回混用，也不要把 227→约 60 USD 的计算当成改完后的实测。发布日必须写成 2026-10-25。platforms 记 claude。这些是作者自己这一段记录上的数字，不可外推。",
     description: "面向已经打算在午饭后再点「继续做」却还把 120 回和 133 回、或把 227 USD 和「换成大约 60 USD」的计算写成同一笔实测的人：把 1 小时缓存寿命、120 回重开的 227 USD，以及必须写成 2026-10-25 的发布日写成门禁。",
     categories: [
@@ -78499,7 +78499,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1140",
     slug: "kota-476-115",
-    title: "kotaro_ai_lab／コータロー：在 Unity 游戏开发里把长会话改成 handoff → /clear → pickup，1 回响应的文脉平均值从 476k 降到 115k，中位数从 455k 降到 107k。不要把平均值和中位数混用，也不要把导入前单次最大 966k 写成 476k 或 115k。发布日必须写成 2026-10-18。platforms 记 claude。这些是作者自己这一次导入前后的集计，不可外推。",
+    title: "游戏开发里长会话清空交接",
     summary: "kotaro_ai_lab 把长会话改成区切再交接后，1 回响应的文脉平均值 476k→115k，中位数 455k→107k。不要把平均值和中位数、或导入前最大 966k 混用。发布日必须写成 2026-10-18。platforms 记 claude。这些是作者自己这一次上的集计，不可外推。",
     description: "面向已经打算靠拉长 Opus 会话来省事、却还把 476k→115k 的平均值和 455k→107k 的中位数写成同一笔、或把导入前最大 966k 当成平均值的人：把这两行集计和必须写成 2026-10-18 的发布日写成门禁。",
     categories: [
@@ -78552,7 +78552,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1141",
     slug: "mama-981-579",
-    title: "mamagotolab／ママゴトラボ：把自家 Claude Code 作业日志按模型集计，Opus 5.5 在 2026-09-23〜27 的 4 个会话、579 回响应里，token 的 98.1% 是缓存读取（cache_read_input_tokens），输出是 0.3%。不要把标题写的 98% 写成 98.1%，也不要把 98.1% 和「同一套 token 数套单价后 Opus 5.5 大约是 Opus 5 的 53%」这份试算、或 Opus 5 那 56 个会话、4,995 回混用。发布日必须写成 2026-09-27。platforms 记 claude。这些是作者自己这一段日志上的集计，不可外推。",
+    title: "模型日志里的缓存读取占比",
     summary: "mamagotolab 在 2026-09-27 集计自家日志：Opus 5.5 的 4 个会话、579 回响应里，98.1% 是缓存读取，输出 0.3%。不要把标题 98% 写成 98.1%，也不要把 98.1% 和大约 53% 的试算混用。发布日必须写成 2026-09-27。platforms 记 claude。这些是作者自己这一段日志上的集计，不可外推。",
     description: "面向已经打算用「差不多九成是缓存」对外说话、却还把标题 98% 和文内 98.1%、或把 53% 的试算当成同一笔实测占比的人：把 4 个会话、579 回上的 98.1%，以及必须写成 2026-09-27 的发布日写成门禁。",
     categories: [
@@ -78605,7 +78605,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1142",
     slug: "dada-5-37",
-    title: "dadachi：在个人应用 FieldPic Checklist 里，用同一组现场照片比较终端内模型、Private Cloud Compute 和 Claude。终端内 1 个项目大约 5 秒，但会写出照片里没有的伤，改提示 4 回后阳台「栏杆上的小伤」每次还在；PCC 对照表上是 25〜37 秒，应用里按项目处理的实測是 18〜30 秒。不要把 5 秒和 25〜37 秒、或把对照表的 25〜37 秒和应用实測的 18〜30 秒写成同一笔。项目可以有 22 张照片、19 个项目，但一次请求只送最多 6 张。改成 greedy 后，同一张照片两次的回答一字不差。发布日必须写成 2026-10-20。platforms 记 claude（这次用 Claude 做了第三者对照）。这些是作者自己这一次实机上的记录，不可外推。",
+    title: "同一组现场照片的端云对照",
     summary: "dadachi 用同一组照片比较终端内模型和 PCC：终端内约 5 秒但会写没有的伤；PCC 对照表是 25〜37 秒，应用实測是 18〜30 秒。不要把这三笔时间混用。发布日必须写成 2026-10-20。platforms 记 claude。这些是作者自己这一次实机上的记录，不可外推。",
     description: "面向已经打算把现场照片一次性丢给设备侧模型、却还把 5 秒、25〜37 秒和 18〜30 秒写成同一笔的人：把这三笔时间分开，并记住必须写成 2026-10-20 的发布日。",
     categories: [
@@ -78658,7 +78658,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1143",
     slug: "king-97-50",
-    title: "kingyosun／KingYoSun：用「人只做决策」的方式个人开发 P2P SNS kukuri，完整 9 周（8/31〜11/1）合计 976 次提交，去掉合并后 875 次、公开发布 26 次；文中的週平均 97 次提交是 875÷9，不是标题写的週 100 次，也不是 976÷9。不要把「大概 50〜150 的幅度」写成这 9 周表的最小最大值（表里有 35 和 258），也不要把 11/2〜11/6 尚未结束的 21 次算进这 9 周合计。发布日必须写成 2026-11-07。源文未点名 18 值里的平台，platforms 为 []。这些是作者自己这一段提交记录，不可外推。",
+    title: "kukuri九周开发提交",
     summary: "kingyosun 在 8/31〜11/1 这完整 9 周里共 976 次提交，去掉合并后 875 次、发布 26 次；週平均 97 是 875÷9，不是标题的週 100。不要把「大概 50〜150」写成表的最小最大，也不要把未结束的一周算进去。发布日必须写成 2026-11-07。platforms 为 []。这些是作者自己这一段记录，不可外推。",
     description: "面向已经打算用「週 100 次提交」对外说话、却还把 976 和 875、或把「大概 50〜150」写成表里最小最大的人：把 875÷9 得到的 97，以及必须写成 2026-11-07 的发布日写成门禁。",
     categories: [
@@ -78709,7 +78709,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1144",
     slug: "bant-11of11",
-    title: "bantoai／盤とAI：只把 I/O 表和规格说明交给 Claude Opus 5.5（claude.ai 网页，2026-10-27 当天实施），写完一台罐体设备的梯形图，导入 CODESYS 软 PLC 后，用控制设计者的 11 项试验全部得 ○。不要把 11 项全部通过和模拟设备上一周期大约 27 秒给水、10 秒搅拌、大约 26 秒排水，或 18 点输入、5 点输出写成同一笔。作者写明：规格里没写的，AI 也不会补上。发布日必须写成 2026-10-27，不要因当天更新写成别的日子。platforms 记 claude。这些是作者自己这一次、这一套样本设备上的结果，不可外推。",
+    title: "罐体设备梯形图的生成试验",
     summary: "bantoai 用 Claude Opus 5.5 写出罐体设备梯形图，在 CODESYS 上按设计者的 11 项试验全部得 ○。不要把 11 项和一周期大约 27／10／26 秒，或 18 点输入、5 点输出混用。发布日必须写成 2026-10-27。platforms 记 claude。这些是作者自己这一次上的结果，不可外推。",
     description: "面向已经打算把「AI 会写梯形图」说成现场可直接交货、却还把 11 项全部通过和一周期秒数写成同一笔的人：把 11/11，以及必须写成 2026-10-27 的发布日写成门禁。",
     categories: [
@@ -78762,7 +78762,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1145",
     slug: "kaga-240-25",
-    title: "kagaage／karaage：用自己生成的日语虚构数据，测量把生成式 AI 粘贴前用正则掩盖隐私能盖住多少。阳性 10 种×30 件＝300 件，最小 5 条规则仍有 240/300 没盖住；加严后是 25/300（姓名 15、公司名 10）。误替换对照 100 件上是 17/100 对 21/100；未知书式 48 件两种规则都是 48/48 原样穿过。不要把 240/300 和 25/300、或 17/100 和 21/100 混用，也不要把 25/300 说成已经可靠——作者写明这是「知道书式后写规则、再用同一生成器来测」的偏甜数字。测量日是 2026-10-07，发布日必须写成 2026-10-15。源文未点名 18 值里的平台，platforms 为 []。这些是作者自己这一次虚构数据上的测量，不可外推。",
+    title: "粘贴前的正则隐私掩盖试验",
     summary: "kagaage 用 300 件日语虚构阳性数据测量粘贴前正则掩盖：最小 5 条是 240/300 没盖住，加严后 25/300；未知书式 48 件两种都是 48/48 穿过。不要把 240/300 和 25/300 混用，也不要把 25/300 说成已经可靠。发布日必须写成 2026-10-15，不是测量日 2026-10-07。platforms 为 []。这些是作者自己这一次上的测量，不可外推。",
     description: "面向已经打算只靠几条正则再往生成式 AI 里粘贴、却还把 240/300 和 25/300 当成同一笔、或把 25/300 说成已经可靠的人：把这两行结果和必须写成 2026-10-15 的发布日写成门禁。",
     categories: [
@@ -78813,7 +78813,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1146",
     slug: "sumi-600k-31",
-    title: "sumitsuke：用自己 1 周的 Claude Code 记录，把「文脉超过 T 就自动摘要」这条线重新套回去。材料是 9 月 29 日之后、Opus 响应 30 回以上的 32 本会话、响应 16,449 回；既定线大约 96.7 万。把线放到 60 万时，读取合计比既定线大约少 31%，摘要是每周 66 回——这是计算，不是改线后再跑一周测出来的。作者已在 10-06 把 autoCompactWindow 写成 600000，但改完后的一周当时还没测到。不要把大约 31%、每周 66 回当成改完后的实测，也不要把约 2.37 万的摘要后上加和 60 万或 96.7 万混用。发布日必须写成 2026-10-22。platforms 记 claude。这些是作者自己这一次套算，不可外推。",
+    title: "文脉超限自动摘要线的套算",
     summary: "sumitsuke 用 32 本会话、16,449 回响应把自动摘要线重新套算：线放到 60 万时，读取合计比既定大约 96.7 万大约少 31%，摘要每周 66 回。这是计算，不是改线后的实测。发布日必须写成 2026-10-22。platforms 记 claude。这些是作者自己这一次套算，不可外推。",
     description: "面向已经打算把自动摘要线改到 60 万并对外宣称「读取少了三成」、却还把这次套算当成改完后再测一周的人：把「这是计算」和必须写成 2026-10-22 的发布日写成门禁。",
     categories: [
@@ -78866,7 +78866,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1147",
     slug: "blck-278-51",
-    title: "blackcats-lab：把自己仓库里几乎相同的 AGENTS.md 和 CLAUDE.md 从各 278 行缩短到 AGENTS.md 51 行、CLAUDE.md 9 行，步骤放到 skills/，规格和设计判断放到 docs/。整理前两份的差别只有把「Claude」和「Codex」称呼对调的 10 行。不要把 51 行和 9 行、或把 278 行和这 10 行混用。发布日必须写成 2026-10-27。正文用到了 Claude Code，platforms 记 claude；learn.chatgpt.com 只是 AGENTS.md 文档链，源文未把这次实践称为 ChatGPT，不得写入 chatgpt。这些是作者自己这一份仓库上的行数，不可外推。",
+    title: "代理说明双文件的同步瘦身",
     summary: "blackcats-lab 把 AGENTS.md 和 CLAUDE.md 从各 278 行缩到 51 行和 9 行。不要把 51 和 9、或 278 和对调的 10 行混用。发布日必须写成 2026-10-27。platforms 记 claude，不得因文档链写入 chatgpt。这些是作者自己这一份仓库上的行数，不可外推。",
     description: "面向已经打算把代理说明书越写越长、却还把 AGENTS.md 的 51 行和 CLAUDE.md 的 9 行写成同一笔的人：把这两行缩短结果和必须写成 2026-10-27 的发布日写成门禁。",
     categories: [
@@ -78919,7 +78919,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1148",
     slug: "yami-508-655",
-    title: "ya-mizobuchi／溝渕：把自己项目里常驻上下文削薄之后，按 2026-07-23〜08-27 这 36 天、238 个会话的 usage 实測，再读倍率是 50.8 倍、缓存读取占成本 65.5%、请求 34,125 回；改善后加权用量 5,165 万，对上「若未改善」的 1 亿 2,535 万，金额 290.0 美元对 703.7 美元。不要把 50.8 倍和 65.5% 写成同一笔，也不要把 34,125 回和 31,554 个ターン、或 5,165 万和 290.0 美元、或约 36% 的字和约 47% 的行混用。发布日必须写成 2026-09-17。platforms 记 claude。这些是作者自己这一段个人开发上的集计，不可外推。",
+    title: "削薄常驻上下文之后的用量",
     summary: "ya-mizobuchi 按 2026-07-23〜08-27 这 36 天、238 个会话的 usage 实測：再读倍率 50.8 倍，缓存读取占成本 65.5%，请求 34,125 回；改善后加权用量 5,165 万，对上「若未改善」的 1 亿 2,535 万，金额 290.0 美元对 703.7 美元。不要把 50.8 倍和 65.5%、或 34,125 回和 31,554 个ターン混用。发布日必须写成 2026-09-17。platforms 记 claude。这些是作者自己这一段个人开发上的集计，不可外推。",
     description: "面向已经打算按 usage 账单去削常驻上下文、却还把再读倍率 50.8 倍和缓存读取占比 65.5% 当成同一笔、或把 34,125 回请求和 31,554 个ターン写成同一侧的人：把 2026-07-23〜08-27 这一段、作者自己项目上的实測和推定分开写，并记住 15.0K 是 2026-08-27 当时的快照。",
     categories: [
@@ -78971,7 +78971,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1149",
     slug: "kare-784-184",
-    title: "Karentia：自己把 DeepSeek 的 Responses 兼容接口接到 Vercel AI SDK 时，标题写输出 token 的 78% 到不了屏幕，正文是 78.4%；用户侧一次实例到首字是 18.4 秒，导语里的 18 秒不要写成 18.4。上游表 high 一档是思考 0.48 秒、答案首字 6.91 秒、合计 7.84 秒、reasoning 1,241 token，那 7.84 秒不是屏上 18.4 秒的空白。24 小时该路径思考事件 0 件，对其他模型 475／299；2,716 次调用里 490 次（18%）因 15 秒超时被并行重投。发布日必须写成 2026-10-13。platforms 记 deepseek。源文未称为 ChatGPT。这些是作者自己这一次接入上的实测，不可外推。",
+    title: "兼容接口的输出到不了屏幕",
     summary: "Karentia 把 DeepSeek 的 Responses 兼容接口接到 Vercel AI SDK 时：标题 78% 到不了屏幕，正文是 78.4%；一次实例到首字 18.4 秒，不要写成导语的 18 秒。上游 high 一档合计 7.84 秒、reasoning 1,241 token，不是屏上那 18.4 秒空白。24 小时该路径思考事件 0 件；2,716 次里 490 次（18%）因 15 秒超时被并行重投。发布日必须写成 2026-10-13。platforms 记 deepseek。这些是作者自己这一次接入上的实测，不可外推。",
     description: "面向已经打算把 DeepSeek 的 Responses 兼容接口接到 Vercel AI SDK、却还把标题 78% 写成正文 78.4%、或把上游合计 7.84 秒和屏上 18.4 秒空白当成同一笔的人：把这一次接入里的上游表、屏上实例和 24 小时集计分开写。",
     categories: [
@@ -79024,7 +79024,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1150",
     slug: "kiku-515-100",
-    title: "kikuziro／山 ちゃん：用自己的 60 条判断题对照 Claude Haiku 5.5、Haiku 4.5 和 Jev，三次都是 60 回均 100%；中位判断时间约 515ms、约 455ms、约 193ms，输入 token 是 103–198 对 Jev 的 366–468。6 个例子各跑 10 回也都是 100%，耗时 492–533ms，不要和中位的约 515ms 混用。发布日必须写成 2026-10-12，不要因更新写成 2026-10-13，也不要因模型发布写成 2026-10-07。platforms 记 claude。这些是作者自己这一组题目上的实测，不可外推。",
+    title: "六十条判断题的三模型对照",
     summary: "kikuziro 用 60 条判断题对照 Haiku 5.5、Haiku 4.5 和 Jev：三次都是 60 回均 100%；中位判断时间约 515ms、约 455ms、约 193ms，输入 token 103–198 对 Jev 的 366–468。6 例各 10 回均 100%，耗时 492–533ms，不要和中位约 515ms 混用。发布日必须写成 2026-10-12。platforms 记 claude。这些是作者自己这一组题目上的实测，不可外推。",
     description: "面向已经打算用 Haiku 5.5 去替判断特化模型、却还把 60 回均 100% 的中位约 515ms 和 6 例各 10 回的 492–533ms 写成同一笔、或把本地 Decider 2B 的 115–153ms 拿来和云上中位混用的人：把这一组 60 题上的表和方言对照分开写。",
     categories: [
@@ -79076,7 +79076,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1151",
     slug: "kens-468-130",
-    title: "kens_：在自己的 MacBook M1 16GB 上用 Ollama 0.40.14 跑 granite3.3:8b 与 granite-embedding:278m，把同样 3 条检索结果的输入从 468 token 缩到 ctx 256 后的 130 token，答案却坏成「HR-」。不要和 RAG-01 有／无 RAG 的 437 对 55 混用。矛盾检测 3/3 成功，Wiki 反映无一正确。发布日必须写成 2026-11-08。运行时是本地 8B，platforms 为 []。这些是作者自己这一套虚构「ハルニレ开发标准」上的实机验证，不可外推。",
+    title: "检索输入缩短后的答案变坏",
     summary: "kens_ 在 MacBook M1 16GB 上用本地 granite3.3:8b 做实机验证：同样 3 条检索结果，输入从 468 token 缩到 ctx 256 后的 130 token，答案坏成「HR-」。不要和 RAG-01 有／无 RAG 的 437 对 55 混用。矛盾检测 3/3 成功，Wiki 反映无一正确。发布日必须写成 2026-11-08。platforms 为 []。这些是作者自己这一套虚构资料上的实机验证，不可外推。",
     description: "面向已经打算在 8B 本地模型上同时跑 RAG 和 LLM Wiki、却还把 ctx 缩到 256 时 468→130 的失败和 RAG-01 的 437 对 55 写成同一笔、或把矛盾检测 3/3 当成 Wiki 已经写对的人：把这一套虚构「ハルニレ开发标准」上的证跡分开写。",
     categories: [
@@ -79127,7 +79127,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1152",
     slug: "nabe-20-27",
-    title: "nabe2030／Makoto Watanabe：在自己的 EVO-X2（Ryzen AI Max+ 395，128GB，BIOS VRAM 96GB）上用 llama.cpp b11200 Vulkan 跑 Qwen3.8-Flash-Next UD-IQ4_XS，导语约 20 tok/s 对 DGX Spark 约 27 tok/s（约 3/4）；表上并发 1 是 20.4 对 27.0（76%），TTFT 1.8 秒对 0.22 秒。不要把约 20 写成 20.4，也不要和并发 8 的 37.4／67.7 或 TTFT 混用。发布日必须写成 2026-10-03，不要因测量日写成 2026-09-26、09-27 或 09-28。运行时是本地模型，platforms 为 []。这些是作者自己这一台机器上的实测，不可外推。",
+    title: "本机与DGX的生成速度对照",
     summary: "nabe2030 在 EVO-X2 上用 Vulkan 跑 Qwen3.8-Flash-Next UD-IQ4_XS：导语约 20 tok/s 对 DGX Spark 约 27 tok/s（约 3/4）；表上并发 1 是 20.4 对 27.0（76%），TTFT 1.8 秒对 0.22 秒。不要把约 20 写成 20.4，也不要和并发 8 的 37.4／67.7 混用。发布日必须写成 2026-10-03。platforms 为 []。这些是作者自己这一台机器上的实测，不可外推。",
     description: "面向已经打算在 EVO-X2 上用 Vulkan 跑 Flash-Next、却还把导语约 20 tok/s 写成表上的 20.4、或把并发 8 的 37.4／67.7 和 TTFT 1.8 秒当成同一笔的人：把 2026-10-03 这篇里的导语、并发 1 表和「10 万前后」的稳定性分开写。",
     categories: [
@@ -79178,7 +79178,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1153",
     slug: "dmura-320-256",
-    title: "d_murata／大輔 村田：按官方单价对 1 万件 SKU 商品说明做试算（系统提示 3,000、SKU 信息 400、生成 600 token），无缓存是 320.00 美元对 256.00 美元，削减 20.0%；有缓存是 185.34 美元对 142.29 美元，削减 23.2%；无缓存 Opus 5 到有缓存 Opus 5.5 是 55.5%。官方「约 4 成」不是这张价表上的 20.0% 或 23.2%。这些是试算，不是实测。发布日必须写成 2026-09-25，不要因模型发布写成 2026-09-22。platforms 记 claude。不可外推。",
+    title: "万件商品说明缓存前后试算",
     summary: "d_murata 按官方单价对 1 万件 SKU 做试算：无缓存 320.00 美元对 256.00 美元（20.0%），有缓存 185.34 美元对 142.29 美元（23.2%），无缓存 Opus 5 到有缓存 Opus 5.5 是 55.5%。官方「约 4 成」不是 20.0% 或 23.2%。这些是试算，不是实测。发布日必须写成 2026-09-25。platforms 记 claude。不可外推。",
     description: "面向已经打算按 Opus 5.5 降价去估 1 万件商品说明成本、却还把官方「约 4 成」写成价表上的 20.0% 或 23.2%、或把试算当成已经实测的人：把无缓存、有缓存和「无缓存 Opus 5 → 有缓存 Opus 5.5」这三笔分开写。",
     categories: [
@@ -79231,7 +79231,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1154",
     slug: "zari-16of20",
-    title: "outcast_zari／ザリ・ロブステル：同一 20 件帖上，按话题问扔掉 16/20，减掉的比例是 62.3%；按属性「管理人写的」只扔 1/20，减掉 6.3%，被「净减不到 25% 就不做」的门拦住。不要把 16/20 和 62.3% 当成同一度量。另一笔 Wikipedia 编篡里，缓存写入减少 6,197 token（≈0.019 美元），对上含 2 次未中的 Jev 费用 ≈0.0024 美元，节约约 8 倍；JSON 数组场合约 23 倍是 16/20 那一跑（写入减少 6,542 token，≈0.016 美元），不要和 6,197 混用。发布日必须写成 2026-10-05。源文未称为 ChatGPT，platforms 为 []。这些是作者自己这一座村里的实测，不可外推。",
+    title: "同批帖子的话题与属性筛选",
     summary: "outcast_zari 在同一 20 件帖上：按话题问扔掉 16/20，减掉 62.3%；按属性只扔 1/20，减掉 6.3%。不要把 16/20 和 62.3% 当成同一度量。Wikipedia 编篡那一跑节约约 8 倍（写入减少 6,197 token，≈0.019 美元）；JSON 数组场合约 23 倍是另一笔（6,542 token，≈0.016 美元）。发布日必须写成 2026-10-05。源文未称为 ChatGPT，platforms 为 []。这些是作者自己这一座村里的实测，不可外推。",
     description: "面向已经打算把 Jev 当成读前门卫、却还把 16/20 和减掉的 62.3% 写成同一度量、或把约 8 倍的 6,197 token 和约 23 倍的 6,542 token 混用的人：把同一 20 件上的两种问法，和 Wikipedia 编篡那一跑分开写。",
     categories: [
@@ -79282,7 +79282,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1155",
     slug: "taku-3150-0",
-    title: "takuan_03：把自己的语音日记从 Notion AI 月额约 3,150 日元，换成 Dify Cloud Sandbox 的 0 日元；Whisper API 1 分钟 0.006 美元（约 0.9 日元，按 1 美元=150 日元）。「每天 3 分日记则月额不到 100 日元」是计算，不是改完后的实测。发布日必须写成 2026-07-06，不要因源时区写成 2026-07-07。platforms 记 dify。源文未称为 ChatGPT。这些是作者自己这一条管线上的对照和计算，不可外推。",
+    title: "语音日记从月费换成云沙箱",
     summary: "takuan_03 把语音日记从 Notion AI 月额约 3,150 日元换成 Dify Cloud Sandbox 的 0 日元；Whisper API 1 分钟 0.006 美元（约 0.9 日元）。「每天 3 分日记则月额不到 100 日元」是计算，不是改完后的实测。发布日必须写成 2026-07-06，不要因源时区写成 2026-07-07。platforms 记 dify。这些是作者自己这一条管线上的对照和计算，不可外推。",
     description: "面向已经打算用 Dify 换掉 Notion AI 的语音日记、却还把月额约 3,150 日元对 0 日元的基本费，和「每天 3 分则月额不到 100 日元」的计算当成已经改完后实测的人：把对照表和推算分开写，并记住发布日是 2026-07-06。",
     categories: [
@@ -79334,7 +79334,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1156",
     slug: "suzu-455-254",
-    title: "suzuyui：在自己的 32GB Mac mini M6 上对照 Ollama＋gpt-oss 20B 和 Splash＋Qwen3.8-27B，300 字限制下前者写了 455 字未达，后者 254 字遵守。API 完成大约 7.68 秒对大约 7.44 秒，作者写明不要用大约 0.24 秒的差去判速度（各 1 次，条件不全）。拍摄时整机内存 24.36GB 对 25.50GB，交换 0 对 576KB；磁盘空闲 400.48→366.45 GiB，减少 34.03 GiB（含其他写入）。发布日必须写成 2026-10-18，不要因更新写成 2026-10-25。gpt-oss 不得写入 chatgpt，platforms 为 []。这些是作者自己这一台机器上的实测，不可外推。",
+    title: "字数限制下的本地写作对照",
     summary: "suzuyui 在 32GB Mac mini M6 上对照 Ollama＋gpt-oss 20B 和 Splash＋Qwen3.8-27B：300 字限制下 455 字未达对 254 字遵守。API 完成约 7.68 秒对约 7.44 秒，不要用约 0.24 秒差判速度。拍摄时整机内存 24.36GB 对 25.50GB，交换 0 对 576KB；磁盘空闲减少 34.03 GiB。发布日必须写成 2026-10-18。platforms 为 []。这些是作者自己这一台机器上的实测，不可外推。",
     description: "面向已经打算在 32GB Mac mini 上同时装 Ollama 和 Splash、却还把 455 字未达和 254 字遵守写成速度结论、或用大约 0.24 秒的一次完成差去判快慢的人：把 300 字限制、各 1 次的完成时间和拍摄时的整机内存分开写。",
     categories: [
@@ -79385,7 +79385,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1157",
     slug: "ynak-3of5",
-    title: "ynakayama／Yasuhiro Nakayama：把自己的 5 个产品接到 Kimi K3 时，ai-digest、sizu-writer、reply-writer 用既有 openai-compatible 就能接上；automaticruby 新增了 FilterKimi，web-digest 把 Kimi 作为第 4 供应商，这两个原来不行。作者收到 Moonshot 的バウチャー／API 积分，但声明没有撰稿约定、也没有内容指定。官方规格 2.8 兆参数、100 万上下文不是作者实测。发布日必须写成 2026-09-12，不要因源时区写成 2026-09-13。platforms 记 kimi。这些是作者自己这 5 个产品上的接入结果，不可外推。",
+    title: "五个自有产品接入Kimi",
     summary: "ynakayama 把 5 个自有产品接到 Kimi K3：其中 3 个用既有 openai-compatible 就能接上，automaticruby 和 web-digest 原来不行，分别新增了 FilterKimi 和第 4 供应商。官方 2.8 兆参数、100 万上下文不是作者实测。发布日必须写成 2026-09-12，不要因源时区写成 2026-09-13。platforms 记 kimi。这些是作者自己这 5 个产品上的接入结果，不可外推。",
     description: "面向已经打算把现有 OpenAI 兼容客户端接到 Kimi K3、却还把 5 个产品写成全部无需改代码、或把官方 2.8 兆参数和 100 万上下文当成作者实测的人：写下 3 个直接能接、2 个要新增适配，并记住发布日是 2026-09-12。",
     categories: [
@@ -79438,7 +79438,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1158",
     slug: "izum-61-85",
-    title: "m_izumo：在自己的个人开发库上，用 Claude Code 子代理按 15 个区分一共跑了 45 本评审，比较用了其中条件齐的 42 本。单本网罗率 high 是 55%、xhigh 是 67%；「高」的检出率 high 是 52%、xhigh 是 85%。xhigh 两本并排时，网罗率从单本平均 61% 升到 85%，「高」的检出率从 78% 升到 100%。不要把 55%／67% 和 52%／85%，或 61%→85% 和 78%→100%，或约 1.3 倍时间和约 1.8 倍 token 混用。发布日必须写成 2026-10-15，不要因更新写成 2026-10-17。platforms 记 claude。这些是作者自己这一份个人开发库上的实測，不可外推。",
+    title: "评审两档与双本的并排对照",
     summary: "m_izumo 在自己的个人开发库上，按 15 个区分一共跑了 45 本评审，比较用了条件齐的 42 本。单本网罗率 high 55%、xhigh 67%；「高」的检出率 high 52%、xhigh 85%。xhigh 两本并排时，网罗率从单本平均 61% 升到 85%，「高」的检出率从 78% 升到 100%。不要把 55%／67% 和 52%／85%，或 61%→85% 和 78%→100%，或约 1.3 倍时间和约 1.8 倍 token 混用。发布日必须写成 2026-10-15。platforms 记 claude。这些是作者自己这一份个人开发库上的实測，不可外推。",
     description: "面向已经打算用 Opus 5.5 做发布前评审、却还把单本网罗率 55%／67% 和「高」的检出率 52%／85% 当成同一笔，或把 xhigh 两本的 61%→85% 写成 78%→100%，或把约 1.3 倍时间和约 1.8 倍 token 写错边的人：把 15 个区分、45 本和拿来比较的 42 本分开写，并记住发布日是 2026-10-15。",
     categories: [
@@ -79490,7 +79490,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1159",
     slug: "maxi-36-29",
-    title: "maximus21：用 Claude Code 2.1.303／claude-sonnet-5-5，对同一件「说明 4 个文件」的只读作业，各跑 3 回对照 1 体和 4 个子代理。token 约 3.6 倍，费用约 2.9 倍；平均是单独约 106,000／0.14 美元，对上分割约 383,000／0.41 美元。不要把约 3.6 倍和约 2.9 倍写成同一笔，也不要把平均 0.14 美元和单独第 1 回的 0.214 美元、或 Anthropic 的约 4 倍／约 15 倍混用。发布日必须写成 2026-10-20。platforms 记 claude。n=3、1 作业、1 模型的小实验，不可外推。",
+    title: "只读说明的单路与四路对照",
     summary: "maximus21 用 Claude Code 2.1.303／claude-sonnet-5-5，对同一件「说明 4 个文件」的只读作业各跑 3 回：1 体对 4 个子代理，token 约 3.6 倍，费用约 2.9 倍；平均是单独约 106,000／0.14 美元，对上分割约 383,000／0.41 美元。不要把约 3.6 倍和约 2.9 倍，或平均 0.14 美元和单独第 1 回 0.214 美元混用。发布日必须写成 2026-10-20。platforms 记 claude。这是 n=3、1 作业、1 模型的小实验，不可外推。",
     description: "面向已经打算靠拆子代理省钱、却还把 token 约 3.6 倍和费用约 2.9 倍当成同一笔，或把平均 0.14 美元写成单独第 1 回 0.214 美元的人：把这 6 回的合计 token 和费用分开写，并记住作者没有做时间对照。",
     categories: [
@@ -79543,7 +79543,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1160",
     slug: "kewt-14-25361",
-    title: "kewton：在自己的 Musunest 库（型 A：窗口 Claude Code Opus，管理与工人都是 Command Code 的 DeepSeek V4.1 Flash）上，2 天合并了功能 PR 14 本，差分是 +25,361 行／−520 行。工人侧是月 10 美元的 GOAT プラン，该月消费 1.1B token，占框的 20%。不要把 14 本和 +25,361 行，或月 10 美元和 20%、或型 B 里 5〜6.5 分的 3 本混用，也不要把「框用了 20%」写成已与单模型对照过费用。发布日必须写成 2026-09-19。platforms 记 claude 与 deepseek。这些是作者自己这两个库上的实測和账单，不可外推。",
+    title: "双模型分工下两日功能合并",
     summary: "kewton 在自己的 Musunest 库上，窗口用 Claude Code Opus，管理与工人用 DeepSeek V4.1 Flash：2 天合并功能 PR 14 本，差分 +25,361 行／−520 行。工人侧月 10 美元プラン该月消费 1.1B token，占框的 20%。不要把 14 本和 +25,361 行，或月 10 美元和 20% 混用，也不要写成已经做过费用对照。发布日必须写成 2026-09-19。platforms 记 claude 与 deepseek。这些是作者自己这两个库上的实測和账单，不可外推。",
     description: "面向已经打算把实现交给便宜模型、却还把 14 本 PR 和 +25,361 行写成同一侧，或把月 10 美元和框的 20% 当成已经对照过单模型费用的人：把 Musunest 这 2 天的实測和账单分开写，并记住作者明确说没有做严格比价。",
     categories: [
@@ -79597,7 +79597,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1161",
     slug: "muka-615-1907",
-    title: "mukai3／ムカイさん：在自己的 RTX 3060 Ti（VRAM 8GB）上，用完全同一份 Qwen3.6-35B-A3B GGUF，对照 LM Studio 0.4.25 和 Ollama 0.34.3。表上 3 回平均是 6.15 tok/s（5.75〜6.38）对 19.07 tok/s（18.96〜19.21），约 3.1 倍；标题里的 6.2→19.1 不要写成 6.15／19.07。不要和后来改设置表上的 5.31 tok/s，或本批 warrobotsxyz 的 9.1→33.3 混用。发布日必须写成 2026-10-22。运行时是本地模型，Claude Code 只出现在对照观感里，platforms 为 []。这些是作者自己这一台机器上的实測，不可外推。",
+    title: "同一模型权重的双后端测速",
     summary: "mukai3 在自己的 RTX 3060 Ti 8GB 上，用同一份 Qwen3.6-35B-A3B GGUF 对照 LM Studio 0.4.25 和 Ollama 0.34.3：表上 3 回平均 6.15 tok/s（5.75〜6.38）对 19.07 tok/s（18.96〜19.21），约 3.1 倍。不要把标题 6.2→19.1 写成 6.15／19.07，也不要和后来改设置的 5.31 tok/s 混用。发布日必须写成 2026-10-22。运行时是本地模型，platforms 为 []。这些是作者自己这一台机器上的实測，不可外推。",
     description: "面向已经看见标题 6.2 tok/s → 19.1 tok/s、却还把它写成表上 6.15／19.07，或把后来改设置的 5.31 tok/s 当成主对照的人：把同一份 GGUF、同一请求上的 3 回平均和改设置表分开写。",
     categories: [
@@ -79648,7 +79648,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1162",
     slug: "warr-91-333",
-    title: "warrobotsxyz：在自己的 RTX 4060（VRAM 8GB）上用 Ollama 0.40.4 跑同一份 qwen3:8b，把 num_ctx 从既定 40960 收到 4096 后，生成速度从 9.1 tok/s 升到 33.3 tok/s（约 3.7 倍）。不要把导语「3 倍以上」写成 3.7 倍，也不要把被别的编译污染的初测 2.3 tok/s，或 qwen2.5:0.5b 的 193.6 tok/s 混用。发布日必须写成 2026-10-26。运行时是本地模型，platforms 为 []。这些是作者自己这一台机器上的实測，不可外推。",
+    title: "本地生成上下文收短后加速",
     summary: "warrobotsxyz 在自己的 RTX 4060 8GB 上用 Ollama 0.40.4 跑同一份 qwen3:8b：既定 ctx 40960 时是 9.1 tok/s（46%/54% CPU/GPU，11GB），收到 num_ctx=4096 后是 33.3 tok/s（100% GPU，5.6GB），约 3.7 倍。不要把导语「3 倍以上」写成 3.7 倍，也不要把初测 2.3 tok/s 或 0.5b 的 193.6 tok/s 混用。发布日必须写成 2026-10-26。platforms 为 []。这些是作者自己这一台机器上的实測，不可外推。",
     description: "面向已经觉得 8B 本地「就是慢」、却还把 9.1→33.3 写成导语里的「3 倍以上」，或把被污染的初测 2.3 tok/s 当成主对照的人：把同一模型上收紧上下文、让负载回到 100% GPU 的这一次实測分开写。",
     categories: [
@@ -79699,7 +79699,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1163",
     slug: "naka-1584-96",
-    title: "nakanokensetsu：在自己的 RTX 5070×2 上把 vLLM 升到 0.31.0 后发现，公共前缀不到 1,584 token 时 prefix cache 命中率是 0%；先用只含 system 的请求预热一次，别的问题命中率是 96%、TTFT 0.10 秒，对上未预热的 0%／0.68 秒。不要把导语里「0.5 秒到约 0.3 秒」写成 0.10 秒，也不要把切换当时未再复现的 0.64 秒，或后来的约 3 秒／2.95 秒混用。发布日必须写成 2026-10-13，不要因升级日写成 2026-10-12，或因前篇写成 2026-09-29。运行时是本地模型，platforms 为 []。这些是作者自己这一套生产配置上的实測，不可外推。",
+    title: "公共前缀过短时的缓存预热",
     summary: "nakanokensetsu 在 RTX 5070×2 上发现公共前缀不到 1,584 token 时 prefix cache 命中率是 0%；system 预热后，别的问题命中率 96%、TTFT 0.10 秒，对上未预热的 0%／0.68 秒。不要把导语「0.5 秒到约 0.3 秒」写成 0.10 秒，也不要把未再复现的 0.64 秒混用。发布日必须写成 2026-10-13，不要写成 2026-10-12 或 2026-09-29。platforms 为 []。这些是作者自己这一套生产配置上的实測，不可外推。",
     description: "面向已经看见 1,584 token 这个门槛、却还把预热后的 0.10 秒写成导语里 0.5→约 0.3 秒，或把切换当时未再复现的 0.64 秒当成稳定结果的人：把命中率 0%／96% 和几笔 TTFT 分开写，并记住发布日是 2026-10-13。",
     categories: [
@@ -79750,7 +79750,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1164",
     slug: "daik-050-100",
-    title: "daikumatan／長尾 太介：用 Jev 对 SMS Spam Collection 做垃圾判定。全集 5,574 件，去掉重复后 5,171 件；验证 100 件、英语测试 100 件、日语测试 30 件（合计测试 130 件）。阈值 0.5 时测试英语／日语都是 1.00，验证是 0.98；验证上最大的 0.71 让验证到 0.99，测试英语却降到 0.99。不要把 5,574 和 5,171，或 0.5 的 1.00 和 0.71 的 0.99 混用。发布日必须写成 2026-11-11，不要因 UTC 已是 11-10 改日。源文只在「不像 ChatGPT 那样写文章」里提到 ChatGPT，不得写入 chatgpt，platforms 为 []。这些是作者自己这一组抽样上的实測，不可外推。",
+    title: "短信垃圾判定上的阈值对照",
     summary: "daikumatan 用 Jev 做 SMS 垃圾判定：全集 5,574 件，去重后 5,171 件；验证 100、英语测试 100、日语测试 30（合计测试 130）。阈值 0.5 时测试英语／日语都是 1.00；验证上最大的 0.71 让测试英语降到 0.99。不要把 5,574 和 5,171，或 0.5 的 1.00 和 0.71 的 0.99 混用。发布日必须写成 2026-11-11，不要写成 2026-11-10。源文未把这次实践称为 ChatGPT，platforms 为 []。这些是作者自己这一组抽样上的实測，不可外推。",
     description: "面向已经看见测试 130 件全对、却还把全集 5,574 写成去重后的 5,171，或把验证上选中的 0.71 说成比 0.5 更好的人：把阈值 0.5 和 0.71 在验证／测试两边的对答率分开写，并记住约 0.9 日元是 390 次调用的计算。",
     categories: [
@@ -79797,7 +79797,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1165",
     slug: "ktda-88-31",
-    title: "ktdatascience：用樱花 AI Engine 的 5 个模型，把实有的 8 条防灾文改写成「やさしい日本語」，按公的指南 10 项机器打分。最优秀是 gemma-4-31B，指南遵守率 88%，79% 的试跑还自己做了分写。llm-jp 在 system 提示下只有 31%，同一指示改放到 user 消息后升到 82%，不要和 88% 混用。Kimi-K2.6 与 Qwen3.6 质量 82〜85%，响应中位却是 14〜16 秒。发布日必须写成 2026-08-23，不要因更新写成 2026-08-24。这次确有 Kimi 实践，platforms 记 kimi，不得因名单里的 gpt-oss 写入 chatgpt。这些是作者自己这 8 条文面上的实測，不可外推。",
+    title: "八条防灾文的易读日语改写",
     summary: "ktdatascience 用樱花 AI Engine 的 5 个模型改写 8 条防灾文：gemma-4-31B 指南遵守率 88%，79% 的试跑自己做了分写；llm-jp 在 system 提示下 31%，改放到 user 后升到 82%。Kimi-K2.6 与 Qwen3.6 质量 82〜85%，中位响应 14〜16 秒。不要把 88% 和 31%／82% 混用。发布日必须写成 2026-08-23，不要写成 2026-08-24。platforms 记 kimi，不得写入 chatgpt。这些是作者自己这 8 条文面上的实測，不可外推。",
     description: "面向已经看见 88%、却还把它写成 llm-jp 的 31% 或改放到 user 后的 82%，或把 14〜16 秒的中位响应当成 gemma 成绩的人：把 5 个模型、两种提示位置和这一次的质量／耗时分开写。",
     categories: [
@@ -79850,7 +79850,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1166",
     slug: "mizk-4to1",
-    title: "mizuk1013／K Mizu：在自己标好的 100 件汽车故障申报上，对照本机 Ollama 的 GPT-OSS-20B 和 OpenRouter 上的 Jev。危险的低估（把大／重大判成不明／小）是 4 件对 1 件；Accuracy 是 0.620 对 0.630，不要写成讲解里的 0.63 例子。大・重大再现率 0.825 对 0.875，重大再现率 0.778 对 1.000（9 件），不要混用。发布日必须写成 2026-10-03，不要因更新写成 2026-10-05。GPT-OSS 不得写入 chatgpt，platforms 为 []。这些是作者自己这一组分层样本上的实測，不可外推。",
+    title: "故障申报的严重度低估对照",
     summary: "mizuk1013 在自己标好的 100 件汽车故障申报上对照本机 GPT-OSS-20B 和 Jev：危险的低估是 4 件对 1 件；Accuracy 0.620 对 0.630，不要写成讲解里的 0.63。大・重大再现率 0.825 对 0.875，重大再现率 0.778 对 1.000（9 件），不要混用。发布日必须写成 2026-10-03，不要写成 2026-10-05。不得写入 chatgpt，platforms 为 []。这些是作者自己这一组分层样本上的实測，不可外推。",
     description: "面向已经看见 Jev 把 9 件重大全拾到、却还把 Accuracy 0.620／0.630 写成讲解例子 0.63，或把大・重大再现率 0.875 和重大再现率 1.000 混成一笔的人：把 4 件对 1 件的危险低估和几项指标分开写。",
     categories: [
@@ -79899,7 +79899,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1167",
     slug: "vaya-180-260",
-    title: "vayaci：用 Claude Code 写设计并实现，把会议录音交给本机 whisper.cpp，只把摘要交给 Claude API，差不多 1 天就让录音→文字→摘要→Markdown 这一条跑通。按每月 20 次、每次 1 小时的想定，自作管线是约 180〜260 日元（每小时 9〜13 日元，作者写明是实測），对上 Notta 年付月额约 1,185 日元、Notion AI 年付月额约 3,150 日元起。不要把 180〜260 日元的实測和 1,185／3,150 的价目，或 156 #1155 的约 3,150 对 0 日元混用。发布日必须写成 2026-07-29。platforms 记 claude。这些是作者自己这一条管线上的对照和实測，不可外推。",
+    title: "会议录音的转写与摘要自建",
     summary: "vayaci 用 Claude Code 写出设计并实现：本机 whisper.cpp 做转写，摘要只走 Claude API，差不多 1 天跑通。按每月 20 次、每次 1 小时的想定，自作是约 180〜260 日元（每小时 9〜13 日元，实測），对上 Notta 约 1,185 日元、Notion AI 约 3,150 日元起。不要把实測和价目，或 #1155 的约 3,150 对 0 混用。发布日必须写成 2026-07-29。platforms 记 claude。这些是作者自己这一条管线上的对照和实測，不可外推。",
     description: "面向已经打算自建会议纪要、却还把约 180〜260 日元的实測写成 Notta 的 1,185 或 Notion AI 的 3,150，或把它和 156 #1155 的约 3,150 对 0 日元混在一起的人：把「每月 20 次」的想定和自作每小时 9〜13 日元的实測分开写。",
     categories: [
@@ -79952,7 +79952,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1168",
     slug: "main-33-35",
-    title: "Mainya：用自己朗诵的日语约 56 秒、英语约 59 秒各 1 本，在 GPU 全无的笔记本上对照本地 Whisper small 和 Zoom Scribe API Fast。日语合计 33.0 秒（读入 2.7＋转写 30.2）对 API 3.5 秒；英语合计 17.3 秒（读入 1.9＋转写 15.4）对 API 3.0 秒。内存峰值约 1.6GB 对约 43MB（约 1/38）。不要把 33.0 对 3.5 和 17.3 对 3.0 混用，也不要把约 10 倍速度写成英语对照，或把约 32 日元/小时的价目和这次不到 1 日元的验证、或 1.6GB 对 43MB 写错边。发布日必须写成 2026-07-10。platforms 为 []。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
+    title: "朗诵样本的无显卡转写对照",
     summary: "Mainya 用自己朗诵的日语约 56 秒、英语约 59 秒各 1 本，对照本地 Whisper small 和 Zoom Scribe API Fast。日语 33.0 秒对 3.5 秒，英语 17.3 秒对 3.0 秒；内存峰值约 1.6GB 对约 43MB（约 1/38）。不要把两档耗时混用，也不要把约 10 倍写成英语对照，或把约 32 日元/小时的价目和这次不到 1 日元的验证写错边。发布日必须写成 2026-07-10。platforms 为 []。这些是作者这一份录音、这一台无 GPU 笔记本上的实測，不可外推。",
     description: "面向已经打算用 Whisper 或 Zoom Scribe 做转写、却还把日语 33.0 秒对 3.5 秒写成英语 17.3 秒对 3.0 秒，或把约 10 倍速度和约 1/38 内存、或约 32 日元/小时的价目和这次不到 1 日元的验证写错边的人：把两档耗时、内存和价目分开写，并记住发布日是 2026-07-10。",
     categories: [
@@ -80002,7 +80002,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1169",
     slug: "tori-100-31",
-    title: "Toriumi-desu／Ruma Toriumi：看到 Anthropic「系统提示删掉 80% 以上、编码评测没有可测下降」之后，把个人 Claude Code 环境重做一遍。CLAUDE.md 从 100 行、6,889 字节收到 31 行、2,474 字节，禁止形 16 件收到 4 件；agents 从 10 体收到 5 体，description 正文写 17,248B→1,017B（94% 削减），文首摘要是合计 17,258B，有 10 字节之差。claude doctor 上预估会少 5.4k，实測少 2.2k（9.9k→7.7k、164 件→74 件），预估偏了 2.5 倍。不要把官方 80% 写成作者的 94%，也不要把 100→31 和 17,248B→1,017B，或 5.4k 预估和 2.2k 实測混用。发布日必须写成 2026-07-27，不要因 UTC 写成 2026-07-26。platforms 记 claude。这些是作者自己这一份环境上的实測，不可外推。",
+    title: "编码环境的说明与代理瘦身",
     summary: "Toriumi-desu 把个人 Claude Code 环境重做一遍：CLAUDE.md 100 行→31 行，agents 10 体→5 体，description 正文 17,248B→1,017B（94%）。doctor 上预估少 5.4k，实測少 2.2k（9.9k→7.7k、164→74），偏了 2.5 倍。不要把官方 80% 写成 94%，也不要把 100→31 和 17,248B→1,017B，或 5.4k 和 2.2k 混用。发布日必须写成 2026-07-27，不要因 UTC 写成 2026-07-26。platforms 记 claude。这些是作者自己这一份环境上的实測，不可外推。",
     description: "面向已经打算按「删掉 80%」去瘦身 Claude Code、却还把官方 80% 写成作者的 94%，或把 100 行→31 行写成 17,248B→1,017B，或把预估 5.4k 写成实測 2.2k 的人：把官方口径、行数、字节和 doctor 实測分开写，并记住发布日是 2026-07-27。",
     categories: [
@@ -80055,7 +80055,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1170",
     slug: "civi-1gb-889",
-    title: "civicshigeomi：官方建议内存 4GB 以上的 Open WebUI 0.11.0，在樱花 VPS 1GB 套餐上试。swap 不加时启动到一半内存不够、容器反复重启；加上 2GB swap 后能够启动。本地 Embedding 首次确认会下载约 889MB 模型，后来改送到樱花 AI Engine。最终在 1 用户验证里，能从 Open WebUI 聊天连上 AI Engine。不要把官方 4GB 建议写成作者推荐 1GB，也不要把约 889MB 的下载和「已经能量多用户」混用。源文里的 ChatGPT 只是「ChatGPT 那样的界面」，不是这次实际使用。发布日必须写成 2026-08-25。platforms 为 []。这些是作者这一次 1GB 环境上的验证，不可外推。",
+    title: "1GB套餐聊天界面试运行",
     summary: "civicshigeomi 在樱花 VPS 1GB 上跑 Open WebUI 0.11.0：不加 swap 就启动失败、反复重启；加上 2GB swap 后能够启动。本地 Embedding 首次会下载约 889MB，后来改送到樱花 AI Engine。1 用户验证里聊天能够连上。不要把官方 4GB 建议写成 1GB 推荐，也不要把约 889MB 说成已经能量多用户。源文未把这次实践称为 ChatGPT。发布日必须写成 2026-08-25。platforms 为 []。这些是作者这一次 1GB 环境上的验证，不可外推。",
     description: "面向已经打算把 Open WebUI 塞进 1GB VPS、却还把官方 4GB 建议写成「1GB 就够」，或把约 889MB 的本地 Embedding 下载和「已经能量多用户」写错边的人：把启动失败、2GB swap 和 889MB 分开写，并记住发布日是 2026-08-25。",
     categories: [
@@ -80104,7 +80104,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1171",
     slug: "thre-2of10",
-    title: "threebottoles：给自己做了不公开仓库的幻灯工具 deck-weave。从 2026-09-15 起约 6 周、114 次提交，代码不含测试约 4.2 万行，测试文件 81 本。用 Claude Code 的 claude -p 生成时，「请做封面」有时会把登录账号邮箱写进「作者」，10 回里有 2 回。这篇配图的 11 张幻灯：方案约 1 分钟出来，返工 0 回，收尾约 6 分钟，向工具里的 AI 助手求助 0 回。不要把 114 次提交、约 4.2 万行和 81 本测试，写成 10 回里 2 回邮箱，或写成这 11 张的约 1 分钟／0 回／约 6 分钟。发布日必须写成 2026-10-31。platforms 记 claude。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
+    title: "幻灯封面在生成时写入邮箱",
     summary: "threebottoles 给自己做了不公开的幻灯工具 deck-weave：约 6 周、114 次提交，不含测试约 4.2 万行，测试文件 81 本。claude -p 生成时，10 回里有 2 回把登录邮箱写进「作者」。这篇 11 张幻灯方案约 1 分钟、返工 0 回、收尾约 6 分钟。不要把 114 次提交和 10 回里 2 回，或这 11 张的约 6 分钟混用。发布日必须写成 2026-10-31。platforms 记 claude。这些是作者自己这一份工具和这一组 11 张幻灯上的实測，不可外推。",
     description: "面向已经打算用 Claude Code 直接出幻灯、却还把 114 次提交和约 4.2 万行写成 10 回里 2 回邮箱泄露，或把这 11 张的约 1 分钟／约 6 分钟写错边的人：把工程体量和这一组 11 张的实測分开写，并记住发布日是 2026-10-31。",
     categories: [
@@ -80154,7 +80154,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1172",
     slug: "suba-28-6",
-    title: "Subara3：先用 Claude Code 试过把 Discord 报告转进表格，写得出来只要「0 秒」，做完大约 30 分钟，人不在场就一行也走不动。后来做成樱花 AI Engine（gpt-oss-120b）加 GitHub Actions 的转记 Bot。实測平均 2.7 件/请求；10 件捆成一次是输入 1,191、输出 2,448 token，10 件要 7.5〜10.6 秒。朋友游戏的 75 件报告走了 28 次请求，按单价换算大约 6 日元。定时写成 */30，实測间隔是 30 分钟到 2 小时 43 分。不要把 2.7 件和约 270 件/日的换算、或 28 次大约 6 日元和 7.5〜10.6 秒、或 */30 和 2 小时 43 分混用。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-09。platforms 记 claude。这些是作者自己这一套 Bot 上的实測，不可外推。",
+    title: "聊天报告转记的定时机器人",
     summary: "Subara3 先用 Claude Code 试转记，做完大约 30 分钟、人不在就停。后来用樱花 AI Engine 和 GitHub Actions 做成 Bot。实測平均 2.7 件/请求；10 件捆一次要 7.5〜10.6 秒。75 件报告走了 28 次请求，按单价换算大约 6 日元。定时 */30，实測间隔 30 分钟到 2 小时 43 分。不要把 2.7 件和约 270 件/日，或大约 6 日元和 7.5〜10.6 秒混用。gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-09。platforms 记 claude。这些是作者自己这一套 Bot 上的实測，不可外推。",
     description: "面向已经打算用免费 3000 次请求做转记、却还把平均 2.7 件/请求写成约 270 件/日的实測账单，或把 28 次大约 6 日元的单价换算写成发票，或把 */30 写成准时半小时的人：把实測、换算和定时漂移分开写，并记住发布日是 2026-08-09。",
     categories: [
@@ -80205,7 +80205,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1173",
     slug: "nwen-37-65",
-    title: "news_it_enj／荒木 ARK：用 Jev 给上一篇做的 40 道 AWS AI Business Strategist 自编题把关，再用 Claude Code 的 claude -p 改不正确选项，最多 3 轮。第一轮把看似度低于 0.50 的题重写，对象平均从 0.37 升到 0.65，全部门都过关。有一道题看似度 0.53，人看却几乎是送分，门槛改到 0.60 后再跑，这道题从 0.53 升到 0.75。改善后的 40 题走 1 圈（80 次请求）：平均约 0.2 秒（最大约 0.36 秒），费用（只算 Jev）不到 0.01 美元。不要把 0.37→0.65 写成 0.53→0.75，也不要把约 0.2 秒和约 0.36 秒、或 80 次和不到 0.01 美元混用。源文「不像 ChatGPT 那样写文章」只是对比，不得写入 chatgpt。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者自己这 40 道题上的实測，不可外推。",
+    title: "自编题看似度把关后改选项",
     summary: "news_it_enj 用 Jev 给 40 道自编题把关，再用 claude -p 改不正确选项。第一轮把低于 0.50 的题重写，对象平均 0.37→0.65，全过关。一道 0.53 的送分题把门槛改到 0.60 后，升到 0.75。改善后 40 题走 1 圈（80 次请求）平均约 0.2 秒，Jev 费用不到 0.01 美元。不要把 0.37→0.65 写成 0.53→0.75。源文未把这次实践称为 ChatGPT。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者自己这 40 道题上的实測，不可外推。",
     description: "面向已经打算用 Jev 给考题把关、却还把对象平均 0.37→0.65 写成那道送分题的 0.53→0.75，或把约 0.2 秒写成最大约 0.36 秒的人：把两轮门槛和耗时、费用分开写，并记住发布日是 2026-10-21。",
     categories: [
@@ -80257,7 +80257,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1174",
     slug: "acsd-400-11",
-    title: "acs-developer：把 YouTube 评论分类迁到 Anthropic Message Batches 时，外部评论 ID 里的「.」不能当 custom_id。在 anthropic Python SDK 2.3.0 上实測，5 种非法 ID 全部返回 HTTP 400，每次 0.3〜0.4 秒。把 2 个正常 ID 和 2 个带点的 ID 混在一起，整批都建不出来，报错只露出第一件。迁过去后用近 2 周评论做 dry-run：旧路径的 11 件全部能用连号键对回原文；状态一致 11 件里 10 件，提示种类 11 件里 9 件，注意事项 1 件里 1 件。不要把 5 件全 400 写成 11 件对回，也不要把 10／9／1 和 0.3〜0.4 秒混用。发布日必须写成 2026-10-30。platforms 记 claude。这些是作者自己这一条分类管线上的实測，不可外推。",
+    title: "评论批次迁移时的编号限制",
     summary: "acs-developer 把 YouTube 评论分类迁到 Message Batches 时，发现外部 ID 里的「.」不能当 custom_id。5 种非法 ID 全部 HTTP 400，每次 0.3〜0.4 秒；混进 1 件非法 ID，整批都建不出来。迁过后 dry-run：旧路径 11 件全部能对回，状态一致 11 件里 10 件，提示种类 11 件里 9 件。不要把 5 件全 400 写成 11 件对回。发布日必须写成 2026-10-30。platforms 记 claude。这些是作者自己这一条分类管线上的实測，不可外推。",
     description: "面向已经打算把外部 ID 直接塞进 Message Batches 的 custom_id、却还把 5 件全 400 写成迁后 11 件对回，或把 11 件里 10 件状态一致写成 11 件里 9 件提示种类的人：把非法 ID 实測和迁后对照分开写，并记住发布日是 2026-10-30。",
     categories: [
@@ -80310,7 +80310,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1175",
     slug: "mire-197-387",
-    title: "mirevo_ai：用 Muse 内部库的生 token 记录，测图像生成、图像解析和视频的边际成本。图像生成 24 张（每轮 4 张、共 6 轮）平均每张 19,715（范围 19,674〜19,747）。单独解析 1 张边际约 ＋38,740，4 张一起读每张 12,413。视频 1 条边际 ＋77,458。固定费平均 34,869。不要把 19,715 写成单独解析的约 38,740，或写成 4 张一起的 12,413，也不要把库内换算的约 0.05% 写成 2026-11-08 补正后的仪表约 5.5%。发布日必须写成 2026-11-06，不要因 UTC 写成 2026-11-05，也不要因更新写成 2026-11-08。platforms 为 []。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
+    title: "图像生成解析与视频边际成本",
     summary: "mirevo_ai 用 Muse 内部库测边际成本：图像生成平均每张 19,715（24 张，范围 19,674〜19,747）；单独解析约 ＋38,740，4 张一起每张 12,413；视频 1 条 ＋77,458。固定费平均 34,869。不要把这三档单价混用，也不要把库内约 0.05% 写成补正后仪表约 5.5%。发布日必须写成 2026-11-06，不要因 UTC 写成 2026-11-05，或因更新写成 2026-11-08。platforms 为 []。这些是作者自己这一套 Muse 记账上的实測，不可外推。",
     description: "面向已经觉得「出图很贵」或「解析更重」、却还把每张 19,715 写成单独解析的约 38,740，或把库内换算约 0.05% 写成 11-08 补正后的仪表约 5.5% 的人：把生成、解析和视频的边际成本分开写，并记住发布日是 2026-11-06。",
     categories: [
@@ -80361,7 +80361,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1176",
     slug: "snow-592-2of5",
-    title: "snowcode_jp／雪符 しき：把现成的 Anthropic SDK 代码改 3 处接到樱花 AI Engine，用 preview/Kimi-K2.6 在免费额度里实打 5 次：平均延迟 5.92 秒，范围 4.44〜8.06 秒，输入合计 117、输出合计 2,378 token。max_tokens=512 时，5 次里有 2 次输出顶到 512、正文是空的。另一次用同一组 3 类提示去比 5 个模型时，Kimi-K2.6 平均 4.44 秒、输出约 1,200，gpt-oss-120b 是 0.6〜1.2 秒。不要把第一次 5 次的平均 5.92 秒和范围下限 4.44 秒，写成模型对照里 Kimi 的平均 4.44 秒，也不要把 2,378 写成约 1,200。源文未称为 ChatGPT，gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-11。platforms 记 kimi。这些是作者自己这一次免费额度调用上的实測，不可外推。",
+    title: "套件三处改接后的免费调用",
     summary: "snowcode_jp 把 Anthropic SDK 代码改 3 处接到樱花 AI Engine，用 Kimi-K2.6 实打 5 次：平均 5.92 秒，范围 4.44〜8.06 秒，输出合计 2,378 token；max_tokens=512 时 5 次里有 2 次正文是空的。模型对照里 Kimi-K2.6 平均 4.44 秒、输出约 1,200，不要和第一次 5 次的 5.92 秒或范围下限 4.44 秒混用。gpt-oss 不得写入 chatgpt。发布日必须写成 2026-08-11。platforms 记 kimi。这些是作者自己这一次免费额度调用上的实測，不可外推。",
     description: "面向已经打算把 Claude 代码改接到樱花、却还把 5 次平均 5.92 秒写成范围下限 4.44 秒，或把这次 4.44〜8.06 的下限写成模型对照里 Kimi 平均 4.44 秒的人：把两次实測分开写，并记住发布日是 2026-08-11。",
     categories: [
@@ -80414,7 +80414,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1177",
     slug: "yuic-60-45",
-    title: "yuichi0625：用 13 个模型的分词器和 8 种语言，在 FLORES+ 与圣经对译上比较 token 数。同样内容相对英语的字符数，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%；法语、德语、越南语大致接近英语。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，分词更不效率，但字符更少，把 token 总数又拉回到和英语差不多。Command A+ 的词表里字母超过 7 成。不要把约 60%／45%／30% 的字符数比，写成 25%〜70% 的每 token 字符数，也不要把「字母超过 7 成」写成 token 总数。源文写的是 GPT-5 分词器，未称为 ChatGPT，不得写入 chatgpt。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。platforms 为 []。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
+    title: "多语言字符数与分词的对照",
     summary: "yuichi0625 用 13 个分词器和 8 种语言比较：相对英语的字符数，阿拉伯语约 60%，日语／韩语约 45%，汉语约 30%。阿拉伯语每个 token 的字符数只有英语的 25%〜70%，但字符更少，token 总数又能和英语差不多。不要把约 60%／45%／30% 写成 25%〜70%。源文未称为 ChatGPT。发布日必须写成 2026-08-24，不要因更新写成 2026-08-31。platforms 为 []。这些是作者自己这一次 13×8 比较上的实測，不可外推。",
     description: "面向已经拿分词效率谈多语言成本、却还把相对英语的字符数约 60%／45%／30% 写成每 token 字符数的 25%〜70%，或把 Command A+ 字母超过 7 成写成 token 总数的人：把两套比例分开写，并记住发布日是 2026-08-24。",
     categories: [
@@ -80465,7 +80465,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1178",
     slug: "ynis-220-165",
-    title: "ynishi2014：把约 5.8 万行 IPA 对约 4.9 万个词目做了一轮审计，发现 Wiktionary 查到约 4.9 万、其中约 2.9 万是 GenAm（词目级 59%），行级能用只有 48.2%；能用的那些里 98.3% 本来就和现词典一致。74 条样本上，当时第一个模型 GPT-5.6-sol：变体 70.3%、参照不可用 13.5%、现词典写错 16.2%；若盲目采信会白改 52 条、并改坏 10 条。两套系统在同一 74 条上：现词典对的是 10 对 23，参照对的是 12 对 32。前 3,557 条 cmudict 重写里，940 条主重音音节被挪了；65 处对不上，允许集规则消化 62 处，真冲突 3 处。检测器先报 2,216 条（3.8%），真问题 93 条（0.16%，13+30+23+17+10），约 96% 是误报；词典阶段已修 24 条，还剩 69 条；阶段表 71 条含复合词第二重音，仅 kua 1 条预留。最终改了 220 行，其中 165 行重做了音频（另 55 行本来就没有音频）。IPA 回退 0；大约 1 天。LLM 只打了几百行，不是全部 5.8 万行。Fable 5 分两批跑了 40 条。不要把 98.3% 写成词目级 59% 或行级 48.2%，也不要把 2,216 写成 93，或把 220 行写成 165 条音频。发布日必须写成 2026-08-11。platforms 记 claude。这些是作者这一份发音词典、这一轮审计上的实測，不可外推。",
+    title: "发音词典的大规模审计修订",
     summary: "ynishi2014 审计约 5.8 万行 IPA、约 4.9 万词目：Wiktionary 行级能用 48.2%，能用行里 98.3% 原本就一致。74 条上 GPT-5.6-sol 变体 70.3%、参照不可用 13.5%、现词典写错 16.2%。检测器 2,216（3.8%）里真问题 93（0.16%）。最终改 220 行，165 行重做音频。不要把 98.3% 写成 59% 或 48.2%，也不要把 2,216 写成 93，或把 220 写成 165。发布日必须写成 2026-08-11。platforms 记 claude。这些是作者这一份词典、这一轮审计上的实測，不可外推。",
     description: "面向已经打算按 LLM 或 Wiktionary 改发音词典、却还把能用行里的 98.3% 写成词目级 59% 或行级 48.2%，或把检测器先报的 2,216 条写成真问题 93 条，或把最终 220 行写成 165 条音频的人：把这几档分开写，并记住发布日是 2026-08-11。",
     categories: [
@@ -80518,7 +80518,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1179",
     slug: "shib-111762-87",
-    title: "shibacorgi／Kenichi Kawaguchi：用 Tavily 抓 30 个源、实际用了 21 个（444,471 字符，约 111,762 输入 token），一次请求送给樱花预览 Kimi-K2.6；输出约 3,603 token，TTFT 87.93 秒，全程 136.53 秒。Cline 写代码约 7.9k token（界面显示 128.0k），2 步。按 GPT-4o 价目换算约 $0.32／约 47 日元每次；3,000 次试用额度的试算约 $946／141,946 日元，不是已经跑满 3,000 次的账单。不要把 111,762 输入写成输出 3,603，也不要把 TTFT 87.93 秒写成全程 136.53 秒，或把这通试算写成已消费账单。发布日必须写成 2026-08-09。platforms 记 kimi。这些是作者这一次长上下文请求、这一次试用额度上的实測，不可外推。",
+    title: "Tavily多源一次长请求",
     summary: "shibacorgi／Kenichi Kawaguchi 把 Tavily 的 21 个源（444,471 字符，约 111,762 输入 token）一次送给樱花 Kimi-K2.6，输出约 3,603，TTFT 87.93 秒，全程 136.53 秒。按 GPT-4o 价目换算约 $0.32／约 47 日元每次；3,000 次的 $946／141,946 日元是试算，不是已跑满账单。不要把 111,762 写成 3,603，也不要把 87.93 写成 136.53。发布日必须写成 2026-08-09。platforms 记 kimi。这些是作者这一次请求上的实測，不可外推。",
     description: "面向已经打算把十几万 token 一次塞进樱花免费额度、却还把 111,762 输入写成输出 3,603，或把 TTFT 87.93 秒写成全程 136.53 秒，或把 3,000 次、$946 的试算写成已消费账单的人：把输入、输出和两档耗时分开写，并记住发布日是 2026-08-09。",
     categories: [
@@ -80571,7 +80571,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1180",
     slug: "suki-1802-194",
-    title: "sukimaengineer：在 M5 Max 128GB 上把 DeepSeek V4 Flash 0731 的无损 MXFP4 GGUF（145.3 GiB，下载 23 分 26 秒、约 106 MB/s）做 SSD 流式推理。温启动生成平均 18.02 t/s，区间峰值 20.55（起步 15.08），239 token 走 Claude-Code 兼容的 /v1/messages。冷启动批量 prefill 在 19,319 token 上是 194.19 t/s，最后一块 405 token 把平均值拉低，稳态块约 229–265 t/s；短提示 prefill 3.47 t/s 是开销，不是真实 prefill。和 q2 比：prefill 406.5 对 194.19（约 48%），生成 29–38 对 18.02（约 47–62%），这次没测质量。缓存命中 87%／91% 是按假定 6.5 GB/s 算的，不是测到的。MXFP4 和 DSpark 互斥。不要把 18.02 写成 194.19，也不要把 3.47 写成真实 prefill，或把 87%／91% 写成实測命中率。发布日必须写成 2026-08-02。platforms 记 deepseek、claude。这些是作者这一台 M5 Max、这一份 MXFP4 流式推理上的实測，不可外推。",
+    title: "大权重的无损磁盘流式推理",
     summary: "sukimaengineer 在 M5 Max 128GB 上跑 DeepSeek V4 Flash 0731 无损 MXFP4（145.3 GiB，23 分 26 秒、约 106 MB/s）。温启动生成平均 18.02 t/s；冷启动批量 prefill 19,319 token 上是 194.19 t/s。短提示 3.47 t/s 是开销。缓存命中 87%／91% 是按 6.5 GB/s 算的，不是测到的。不要把 18.02 写成 194.19，也不要把 3.47 写成真实 prefill。发布日必须写成 2026-08-02。platforms 记 deepseek、claude。这些是作者这一台机器上的实測，不可外推。",
     description: "面向已经打算用 MXFP4 流式跑 DeepSeek V4 Flash、却还把生成 18.02 t/s 写成 prefill 194.19 t/s，或把短提示 3.47 t/s 写成真实 prefill，或把按 6.5 GB/s 算出的 87%／91% 写成实測命中率的人：把生成、prefill 和推算分开写，并记住发布日是 2026-08-02。",
     categories: [
@@ -80624,7 +80624,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1181",
     slug: "taik-192-100",
-    title: "taiki_i：在樱花 AI Engine 无償枠里共跑了 740 次请求（占 3,000 的 24.7%）。轻任务把 96 件装进一次请求，正确率 100%，192/192 也对；相对代价 C(96)=0.0104，大约是 C(1)=1.0 的 96 倍差。标题里的 28.8 万件是外推，这次实測处理到的是 192 件。B=96 时正文 3,265–3,551 字符，约每件 34–37，约 1,000 token 是估计；平均输出 3,868 token，其中约 2,900、约 3/4 是推理。更重的 label_reason 会在部分规模上崩掉（有的规模 100%/100%/0%）；全部失败的 finish_reason 都是 length，JSON 结构被写坏的次数是 0。max_tokens=16384 时，96 件、96 次请求 0 次截断，192/192；改成 2048 时，连 B=8 也会一半以上被截；2048 下模式 A 是 64/96（67%）。B=8：平均 2,147，最大 11,669（5.4 倍；范围 1,046–11,669 是 11.2 倍）。740 次里已完成的最大输出 16,000，靠近 16384 上限。模式 A 推理耗尽 105 例（88%），JSON 和 JSONL 都救不回来（0%）；JSONL 只对另外 12% 的截断模式有帮助。不要把 96 件 100% 写成 label_reason 会崩的那档，也不要把标题 28.8 万写成已处理 192 件，或把 105 例 88% 写成 JSON 结构被写坏。发布日必须写成 2026-07-31。platforms 为 []。这些是作者这 740 次请求、这一份轻任务和 label_reason 对照上的实測，不可外推。",
+    title: "免费额度里轻任务批量打包",
     summary: "taiki_i 在樱花无償枠跑了 740 次请求（3,000 的 24.7%）。轻任务 96 件/请求 100%，192/192 也对；C(96)=0.0104。标题 28.8 万件是外推，实測处理到 192 件。max_tokens=16384 时 96 件 0 截断；2048 时连 B=8 也一半以上被截。模式 A 推理耗尽 105 例（88%），JSON/JSONL 都救不回来。不要把 28.8 万写成已处理 192 件，也不要把 96 件 100% 写成会崩的那档。发布日必须写成 2026-07-31。platforms 为 []。这些是作者这 740 次请求上的实測，不可外推。",
     description: "面向已经打算把几十件任务捆进一次樱花请求、却还把标题 28.8 万件外推写成已处理 192 件，或把轻任务 96 件 100% 写成 label_reason 会崩的那档，或把 105 例推理耗尽写成 JSON 结构被写坏的人：把实測件数、两种任务和截断原因分开写，并记住发布日是 2026-07-31。",
     categories: [
@@ -80675,7 +80675,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1182",
     slug: "abur-67to8-177",
-    title: "aburachudoku／アブラ中毒：只用 Claude Pro 一份订阅，约 4 周（首个提交 2026-09-23）、100 多次提交，做成测试 1,118 件的 Flutter Web 应用。应用约 3.5 万行，测试约 3.4 万行；1,118 件里有 900 多件单元/widget，加上 163 件验收，全部走 flutter test。Opus 5.5 做设计，Sonnet 做实现。Excel 5,000×20：1.3–1.6 秒→0.3 秒。窗格拖动 30 帧：memo 行重建 2,460，工具条 1,020；画布线 31→0。500×12 表：17.7 秒（6,000 次输入）→1.8 秒；验收套件 67 秒→8 秒。表内 memo 打一字 12ms→0.7ms；打开约 2 万字 memo 约 40ms→约 3ms；带着 3 张表回到约 2 万字 memo 约 0.5 秒→约 30ms。图像控制在每张 200KB 以下。不要把 1,118 写成 163，也不要把 67 秒→8 秒写成 17.7 秒→1.8 秒，或把 31→0 写成 2,460／1,020。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者这一个应用、这一轮手感验收上的实測，不可外推。",
+    title: "Flutter 网页的手感与验收",
     summary: "aburachudoku／アブラ中毒 只用 Claude Pro，约 4 周、100 多次提交，做成测试 1,118 件的 Flutter Web 应用（应用约 3.5 万行，测试约 3.4 万行；900 多件单元/widget 加 163 件验收）。500×12 表 17.7 秒→1.8 秒，验收套件 67 秒→8 秒。不要把 1,118 写成 163，也不要把 67→8 写成 17.7→1.8。发布日必须写成 2026-10-21。platforms 记 claude。这些是作者这一个应用上的实測，不可外推。",
     description: "面向已经打算只靠一份 Claude Pro 做带验收的 Flutter 应用、却还把测试 1,118 件写成 163 件验收，或把验收套件 67 秒→8 秒写成 500×12 表 17.7 秒→1.8 秒，或把画布线 31→0 写成 memo 重建 2,460／工具条 1,020 的人：把件数和各档耗时分开写，并记住发布日是 2026-10-21。",
     categories: [
@@ -80728,7 +80728,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1183",
     slug: "exth-46-93",
-    title: "exthnet：在 Snapdragon X2 Elite 的 Windows 笔记本上测本地 LLM（NPU）。qairt 的 Qwen3-4B 是 37 tok/s，上下文固定 4096，只用 1 个 CPU 核；llama.cpp HTP0 大约是 qairt 的 6–7 成。质量优先的翻译：Gemma-4 E4B QAT 23 tok/s（后表有一处 22.6，不要当成第二次结果）；Qwen3-8B qairt 22 tok/s。代码：Qwen3-8B Q4_0 GGUF HTP0 16 tok/s，自动评分 6/6（只有这档拿到 6/6）；Seed-Coder-8B 也是 16 tok/s，函数题 3/3，不是 6/6。日语问答：Gemma 和 Qwen3-8B GGUF 是 5/5，Qwen3-4B 是 4/5。约 7k token 的论文：Gemma HTP0、上下文 16k 用了 46 秒，Qwen3-4B Q4_0 用了 93 秒（CPU 约 0.9 核）。Qwen3-1.7B qairt 67 tok/s，不拿来做代码或问答。内存增加 3.5–7.8 GiB。和 9/5 那次比，qairt 4B 从 31 提到 37，Gemma 从 15 提到 23，不要把 31 或 15 写成这次成绩。不要把 23 写成 22.6，也不要把 6/6 写成 3/3 或 5/5，或把 46 秒写成 93 秒。发布日必须写成 2026-09-13。platforms 为 []。这些是作者这一台机器、2026-09-10 这轮重测上的实測，不可外推。",
+    title: "笔记本神经单元上的模型选型",
     summary: "exthnet 在 Snapdragon X2 Elite Windows 笔记本上测本地 LLM：qairt Qwen3-4B 37 tok/s；质量优先翻译 Gemma-4 E4B QAT 23 tok/s（后表 22.6 不要当成第二次结果）。代码 Qwen3-8B Q4_0 GGUF HTP0 16 tok/s、自动评分 6/6；Seed-Coder-8B 同样 16 tok/s，函数题 3/3。约 7k token 论文 Gemma 46 秒对 Qwen3-4B 93 秒。不要把 23 写成 22.6，也不要把 6/6 写成 3/3，或把 9/5 的 31、15 写成这次成绩。发布日必须写成 2026-09-13。platforms 为 []。这些是作者这一台机器上的实測，不可外推。",
     description: "面向已经打算在 Snapdragon NPU 上选本地模型、却还把 Gemma 23 tok/s 写成后表 22.6，或把代码 6/6 写成函数题 3/3 或日语问答 5/5，或把 9/5 那次的 31、15 写成这次 37、23 的人：把各档速度和评分分开写，并记住发布日是 2026-09-13。",
     categories: [
@@ -80777,7 +80777,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1184",
     slug: "reot-3of12",
-    title: "Reotech／小松原 玲雄：想用 Handy 加本地 LLM 做语音输入。Qwen3 8B Q4_K_M 是 1.91–2.09 秒，采用；14B 是 3.30–3.63 秒，质量差不多，不采用。只走 Ollama、用短固定输入大约 2 秒。真正的 API 路径评了 12 件（4 条原始稿 × 3 个配置），temperature 0、seed 42、10 秒上限、不重试：自动质量 3/12，平均 5.551 秒，最大 9.855 秒，3 秒内 0/12，5 秒内 7/12。GPU 在 780M 上大约 80%。作者的结论是 Formatted 路径不值得等，日常更适合只用 Handy。不要把只用 Ollama 的约 2 秒写成 API 路径平均 5.551 秒，也不要把 3/12 写成 7/12，或把 8B 的 1.91–2.09 秒写成 14B 的 3.30–3.63 秒。发布日必须写成 2026-08-09。platforms 为 []。这些是作者这一套 Handy 加本地 LLM、这 12 件路径上的实測，不可外推。",
+    title: "Handy本地语音路径取舍",
     summary: "Reotech／小松原 玲雄 用 Handy 加本地 LLM 做语音输入：Qwen3 8B Q4_K_M 1.91–2.09 秒（采用），14B 3.30–3.63 秒（不采用）。API 路径 12 件：自动质量 3/12，平均 5.551 秒，最大 9.855 秒，3 秒内 0/12，5 秒内 7/12。只用 Ollama 的约 2 秒不要写成 API 路径 5.551 秒。发布日必须写成 2026-08-09。platforms 为 []。这些是作者这 12 件路径上的实測，不可外推。",
     description: "面向已经打算给 Handy 接上本地 LLM 做格式化、却还把只用 Ollama 的约 2 秒写成 API 路径平均 5.551 秒，或把自动质量 3/12 写成 5 秒内 7/12，或把 8B 的 1.91–2.09 秒写成 14B 的 3.30–3.63 秒的人：把选型耗时和 12 件路径分开写，并记住发布日是 2026-08-09。",
     categories: [
@@ -80827,7 +80827,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1185",
     slug: "tgbk-232-0",
-    title: "TheGateBreaker：给 AI 小说写作引擎加上知识图谱。新模块 124+108=232 行；9 个文件（含测试）合计 +572／−45。工具只交给一致性检查的 AI，原有 RAG 仍保留。测试从 24 增到 35（引擎）以及 32 增到 35（共用客户端），全部通过。生成一章时，工具调用次数是 0。测试泄漏：新路径绕过了 mock、打到了真 API，那个测试文件 226 秒，对照约 0.6 秒（300 倍以上）；修好后 5.7 秒，仍比 0.6 秒慢。草稿耗时：K2.6 40–150 秒，偶尔 api_error；ai& K3 遇到过约 270 秒网关超时；把 reasoning_effort 调低后有一次约 196 秒，其他条件也可能一起变了，不是已经证实的修复。不要把 232 行／0 次调用写成 226 秒对 0.6 秒对 5.7 秒，也不要把草稿 40–150 秒写成测试耗时。发布日必须写成 2026-08-09。platforms 记 kimi。这些是作者这一版引擎、这一章生成和这一轮测试上的实測，不可外推。",
+    title: "小说引擎新增知识图谱模块",
     summary: "TheGateBreaker 给写作引擎加上知识图谱：新模块 232 行（124+108），9 个文件 +572／−45。生成一章时工具调用 0 次。测试 24→35（引擎）、32→35（共用客户端）全过。测试泄漏曾打到真 API：226 秒对对照 0.6 秒，修好后 5.7 秒。草稿 K2.6 40–150 秒。不要把 232／0 写成 226 对 0.6 对 5.7，也不要把草稿耗时写成测试耗时。发布日必须写成 2026-08-09。platforms 记 kimi。这些是作者这一版引擎上的实測，不可外推。",
     description: "面向已经打算给写作引擎加知识图谱、却还把新模块 232 行、生成一章调用 0 次写成测试泄漏的 226 秒对 0.6 秒对 5.7 秒，或把草稿 40–150 秒写成测试耗时的人：把行数、调用次数和两档耗时分开写，并记住发布日是 2026-08-09。",
     categories: [
@@ -80880,7 +80880,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1186",
     slug: "harm-80-25",
-    title: "harmonyworks1127：想在浏览器里用 whisper-tiny 做指差呼称检查，最后判定这个配置 NO-GO。目标（不是实測）是安静召回 ≥90%、噪声 SNR10+SNR5 ≥80%、FA ≤5%、p95 ≤2500ms。阈值 60、60 条话语（10 条呼叫+10 条闲聊，2 名说话人，3 种条件，每种 20 条）的实測：安静 80%/0%/1539ms（没达到 90%）；SNR10 50%/0%/1537ms；SNR5 0%/0%/22981ms（没达到 2500ms）；噪声合计 25%。阈值扫描（噪声合计）：50 是召回 45%、FA 6.7%（超过 5%）；60 是 25%/0%；70 是 25%/0%。暴走：SNR5dB 下 10 条呼叫里有 2 条，各约 23 秒（22979–23021ms），大约是平时 1.3–1.5 秒的 15 倍；2/10 不要当成总体比例。加上 max_new_tokens=16 能停住暴走，SNR5 最大延迟从 23021ms 降到 1792ms，但召回不变（仍是 80/50/0）。同一套样本在 whisper-base 上达到了标准——否决的是这个 tiny 配置，不是浏览器内 ASR 整体。不要把实測 80% 写成目标 90%，也不要把合计 25% 写成目标 80%，或把阈值 50 的 45% 写成阈值 60 的 25%，或把 1539ms 写成 22981ms，或把 23021→1792 写成召回也改善了。发布日必须写成 2026-08-02，不要因 UTC 已是 08-01 改日。platforms 为 []。这些是作者这一套 60 条话语、这一个 tiny 配置上的实測，不可外推。",
+    title: "浏览器里指差呼称语音判定",
     summary: "harmonyworks1127 在浏览器里用 whisper-tiny 做指差呼称检查，判定这个配置 NO-GO。阈值 60、60 条话语：安静 80%/0%/1539ms（目标是 90%）；噪声合计 25%（目标是 80%）；SNR5 是 0%/0%/22981ms。加上 max_new_tokens=16 后 SNR5 最大延迟 23021→1792ms，召回不变。不要把实測 80% 写成目标 90%，也不要把 25% 写成 80%，或把 23021→1792 写成召回也改善了。发布日必须写成 2026-08-02。platforms 为 []。这些是作者这一套样本上的实測，不可外推。",
     description: "面向已经打算在浏览器里用 whisper-tiny 做点检、却还把实測安静 80% 写成目标 90%，或把噪声合计 25% 写成目标 80%，或把阈值 50 的 45% 写成阈值 60 的 25%，或把 23021ms→1792ms 写成召回也改善了的人：把目标和实測、各档阈值分开写，并记住发布日是 2026-08-02。",
     categories: [
@@ -80931,7 +80931,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1187",
     slug: "yang-9-111",
-    title: "yangguofu：在 2026-08-30 用 12 条日语查询、81 个 URL，看 Qiita、Zenn、note 被 AI 引用的比例。Qiita 9 个（11.1%），Zenn 7 个（8.6%），note 5 个（6.2%），其他 60 个（74.1%）；三个平台合计 21 个、25.9%。12 条里有 4 条三个站点都是 0。技术向 9 条／63 个 URL：Qiita 9、Zenn 5、note 2；职场向 3 条／18 个 URL：Qiita 0、Zenn 2、note 3。Ahrefs 2026 年 6 月版 note 第 2、Qiita 和 Zenn 未进前 10，是 Ahrefs 的数据，不是作者这 81 个 URL 的实測。GEO 论文的 +30〜40% 是论文数字，不是作者的结果。robots.txt／llms.txt：三个站点都没有明确屏蔽 GPTBot／ClaudeBot／PerplexityBot，llms.txt 都没有。不要把 9／11.1% 写成 7／8.6% 或 5／6.2%，也不要把 81 写成 21，或把 Ahrefs／GEO 写成这 81 个 URL 的表。发布日必须写成 2026-08-30。platforms 为 []。这些是作者这 12 条查询、81 个 URL 上的实測，不可外推。",
+    title: "日语查询的三站点引用统计",
     summary: "yangguofu 在 2026-08-30 用 12 条日语查询、81 个 URL 统计引用：Qiita 9（11.1%），Zenn 7（8.6%），note 5（6.2%），其他 60（74.1%）；三个平台合计 21／25.9%。Ahrefs 6 月版和 GEO 论文 +30〜40% 都不是这 81 个 URL 的实測。不要把 9／11.1% 写成 7／8.6%，也不要把 81 写成 21。发布日必须写成 2026-08-30。platforms 为 []。这些是作者这 81 个 URL 上的实測，不可外推。",
     description: "面向已经打算比较 Qiita、Zenn、note 谁更容易被 AI 引用、却还把 Qiita 9／11.1% 写成 Zenn 7／8.6% 或 note 5／6.2%，或把 81 个 URL 写成三个平台合计 21，或把 Ahrefs 6 月版、GEO 论文 +30〜40% 写成作者这张表的人：把作者实測和外部数据分开写，并记住发布日是 2026-08-30。",
     categories: [
@@ -80982,7 +80982,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1188",
     slug: "yamaz-392-568",
-    title: "yamazaking：用公开数据集 OR-ShARC、同一份 test 250 件，对比了什么都不做的 Base、RAG、SFT，以及 SFT＋RAG。正式评测把回答外层的 Markdown 代码围栏判为形式违规，Base 2.4%（6/250）、RAG 0.4%（1/250）；去掉这一组围栏后的诊断评测是 Base 39.2%（98）、RAG 41.6%（104），SFT 正式和诊断都是 56.8%（142）。SFT＋RAG 最好的一档是「学习时就让模型看见检索文档」的 59.6%（149），只比单 SFT 多 7 条，作者写明不能据此说有意义上的差距。修好推理时强制在 JSON 开头塞入 `{`、导致学习与推理 token 列错位的 bug 后，检索文档版 SFT＋RAG 从 21.6% 回到 57.2%；学习侧再修只再抬 2.4 个百分点（6 件）到 59.6%。McNemar p≈0.307 是检索文档学习这一档旧 143 件对新 149 件的检验，不要写成 59.6% 对 56.8% 的检验。不要把正式评测的 2.4%／0.4% 写成诊断的 39.2%／41.6%，也不要把 59.6% 写成明显优于 56.8%。发布日必须写成 2026-10-12。Qwen 不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 OR-ShARC 抽样、这一轮 Qwen／QLoRA 实測，不可外推。",
+    title: "阅读理解的微调与检索对照",
     summary: "同一份 OR-ShARC test 250 件上，正式评测 Base 2.4%（6）、RAG 0.4%（1），诊断评测 Base 39.2%（98）、RAG 41.6%（104），SFT 56.8%（142）；最好的 SFT＋RAG 59.6%（149）只比 SFT 多 7 条。强制 `{` 修好后 21.6%→57.2%，学习侧再 +2.4 点到 59.6%。McNemar p≈0.307 是 143→149，不是 59.6 对 56.8。不要把正式 2.4%／0.4% 写成诊断 39.2%／41.6%。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算比较 RAG 和 SFT、却还把正式评测的 2.4%／0.4% 写成去掉围栏后的 39.2%／41.6%，或把 59.6% 写成明显优于 56.8%，或把 McNemar p≈0.307 写成 59.6 对 56.8 的检验的人：把正式评测、诊断评测和检验对象分开写，并记住发布日是 2026-10-12。",
     categories: [
@@ -81033,7 +81033,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1189",
     slug: "ousi-19to3",
-    title: "ousiass：用 Go 库 nibble v0.10.0，在青空文库《吾辈是猫》（neko.txt 321,139 个 rune、7,486 个「。」、2,337 行）和《罗生门》上查日语切块。200 字预算下，库内调用与 CLI 都显示 mid_cuts 从既定规则的 19 降到日语规则的 3，块数仍是 2,085，rejoin=True。jpcheck 里同一分割的「无符号文中」是既定 16 对日语规则 2，判定条件和 cuts 不同，不要把 16→2 写成 19→3。全文每 token 字符数：bigram 1.83、cl100k_base 0.88、o200k_base 1.19；《罗生门》是 1.74／0.89／1.19。tiktoken 只是分词器名，不得写入 chatgpt。nibble 是 bluesky585/nibble，不是作者产品。发布日必须写成 2026-10-19。源文未称为 ChatGPT，platforms 为 []。这些是作者这一份青空文库文本、这一版 nibble 上的实測，不可外推。",
+    title: "长篇小说日语切块规则对照",
     summary: "《吾辈是猫》全文 321,139 rune，200 字预算下 mid_cuts 19→3，块数仍是 2,085，rejoin=True。jpcheck 的「无符号文中」16→2 和 cuts 的 19→3 不是同一指标。每 token 字符数 bigram 1.83、cl100k 0.88、o200k 1.19（《罗生门》1.74／0.89／1.19）。tiktoken 不得写入 chatgpt。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算按日语规则改 RAG 切块、却还把 mid_cuts 19→3 写成 jpcheck 的 16→2，或把块数 2,085 写成被切少了，或把 tiktoken／cl100k、o200k 写成 chatgpt 的人：把 cuts 和 jpcheck、分词器名分开写，并记住发布日是 2026-10-19。",
     categories: [
@@ -81084,7 +81084,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1190",
     slug: "bell-51to88",
-    title: "bellx2／べるべる：在一台 DGX Spark 上跑 DeepSeek V4 Flash。空闲约 3.8GB；ds4-serve 约 127GB；本机 ds4 约 96GB（相对空闲的差额）。thinking 打开时 prefill 51.43 t/s、generation 23.00 t/s；改用 /nothink 后 prefill 87.93 t/s、generation 22.63 t/s，生成几乎持平，prefill 明显升高。不要把 prefill 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，也不要把 51.43 写成 23.00，或把约 127GB 写成约 96GB。发布日必须写成 2026-08-18，不要因正文翌日更新写成 2026-08-19。这次确是 DeepSeek V4 Flash 实測，platforms 记 deepseek。源文未称为 ChatGPT。这些是作者这一台 Spark、这一次启动上的实測，不可外推。",
+    title: "思考开关之下的预填充测速",
     summary: "空闲约 3.8GB，ds4-serve 约 127GB，本机 ds4 约 96GB。thinking 开：prefill 51.43 t/s、generation 23.00 t/s；/nothink：prefill 87.93 t/s、generation 22.63 t/s。不要把 87.93 t/s 写成 #1179 的 87.93 秒，也不要把 51.43 写成 23.00。发布日必须写成 2026-08-18，不要因更新写成 2026-08-19。platforms 记 deepseek。这些是作者这一次实測，不可外推。",
     description: "面向已经打算在一台 Spark 上跑 DeepSeek V4 Flash、却还把 prefill 87.93 t/s 写成 #1179 的 TTFT 87.93 秒，或把 51.43 t/s 写成 generation 23.00 t/s，或把约 127GB 写成约 96GB，或把发布日写成 2026-08-19 的人：把 prefill、生成和两档占用分开写，并记住发布日是 2026-08-18。",
     categories: [
@@ -81137,7 +81137,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1191",
     slug: "harr-0to100",
-    title: "harryforge／Harry Nguyen：给本地混合检索加上拒答后，越南语 holdout 正确拒绝从 0% 升到 100%（10/10），英语拒绝 75%，Recall@6 仍是 95.8%，额外延迟 p50 0.23–0.37 秒。对照模型 gte-multilingual-reranker-base 的 Recall@6 掉到 31.8%、p95 13.9 秒，因此弃用。和 qwen2.5:7b 串起来的端到端：越南语 holdout 无答案问题 10/10 拒绝（引入前在 5/6〜6/6 间晃），有答案的 24 问全部给出带 [n] 引用的回答。开发集上约 10% 有答案的问题会被误拒。不要把拒绝 0%→100% 写成 Recall@6 也变了，也不要把 10/10 写成 24/24，或把弃用模型的 31.8%、13.9 秒写成采用配置的成绩。运行时是本地 Ollama 上的 qwen2.5:7b；Claude／Gemini／OpenAI 只是可选供应商，qwen 与 Ollama 都不在 18 值。发布日必须写成 2026-10-09。源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 holdout、这一轮本地 RAG 实測，不可外推。",
+    title: "混合检索的拒答与引用回答",
     summary: "拒答引入后，越南语 holdout 正确拒绝 0%→100%（10/10），英语 75%，Recall@6 仍是 95.8%，p50 0.23–0.37 秒。对照模型 Recall@6 31.8%、p95 13.9 秒被弃用。端到端 10/10 拒绝无答案，24/24 有引用；开发集约 10% 误拒。不要把 0%→100% 写成 Recall@6 变了。platforms 为 []。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算给本地 RAG 加拒答、却还把拒绝 0%→100% 写成 Recall@6 也从 95.8% 变了，或把 10/10 写成 24/24，或把弃用模型的 Recall@6 31.8%、p95 13.9 秒写成采用配置的人：把拒绝率、召回和对照模型分开写，并记住发布日是 2026-10-09。",
     categories: [
@@ -81188,7 +81188,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1192",
     slug: "dhq-39-29",
-    title: "dhq_boiler：在 RTX 4090 上用 DeepSeek-V2-Lite 查 QUBO 预取能不能比 LRU 更好。素朴设定 γ=0.1 会输给 LRU；γ=10、capacity=16 时命中率比 LRU 高 3.9 点，传输次数是 LRU 的 0.9 倍。γ=3.0、capacity=16 时 26 层全部胜过 LRU。学习型预测器相对共激活，top-6 overlap 从 0.32 升到 0.61（Δ +29.0 点），走到 Oracle 路程的 42%；不要把这 +29.0 点写成相对 LRU 的命中率 +3.9 点。Oracle 若仍用共激活那档的 γ=10，命中率反而可能输给 LRU；改低 γ 后 Oracle 绝对命中率 0.998–0.999。QUBO 约 20ms／层，26 层约 520ms／token；文中没有测 tokens/sec。ChatGPT 只出现在「大语言模型是什么」的定义里，不是这次调用。Claude Code 实际参与了定式、实现、解读、日记和草稿，不只是协助起草。发布日必须写成 2026-04-25。platforms 记 deepseek、claude。这些是作者这一份 DeepSeek-V2-Lite、这一轮 19 次实验上的实測，不可外推。",
+    title: "层预取和最近最少使用对照",
     summary: "素朴 QUBO 会输给 LRU；γ=10、cap=16 时命中率 +3.9 点，传输 0.9 倍。γ=3.0、cap=16 时 26 层全胜。学习型相对共激活，top-6 overlap 0.32→0.61（+29.0 点），不要写成相对 LRU 的 +3.9 点。Oracle 用错 γ 会输，改低 γ 后命中 0.998–0.999。约 20ms／层、520ms／token，没有测 tokens/sec。platforms 记 deepseek、claude。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算用 QUBO 给 MoE 做预取、却还把相对 LRU 的 +3.9 点写成学习型 top-6 overlap 的 +29.0 点，或把 20ms／层、520ms／token 写成 tokens/sec，或把用错 γ 时输掉的 Oracle 写成已经 0.998 的人：把命中率差和 overlap 分开写，并记住发布日是 2026-04-25。",
     categories: [
@@ -81242,7 +81242,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1193",
     slug: "abe-055-187",
-    title: "abe_masanori／Masanori ABE：从自己的 X 档案 28,642 件里取出 2025 年非转发的 1,774 条，在 Snowflake 上比较 Jev 和 AI_FILTER。成本：Jev 约 0.055 美元（API 0.049＋仓库 0.006），AI_FILTER 约 1.87 美元（明细 1.865），大约 1/34。耗时相反：Jev 23.0 秒（受 80 请求/秒限速，查询 22.16 秒，响应中位数 53ms），AI_FILTER 7.1 秒，Jev 更慢，大约 3 倍。AI_FILTER 为 TRUE、Jev 分数 <0.2 的 70 件里，作者判断 Jev 对 54、AI_FILTER 对 5、11 件两可；这是作者判断，不是金标准。AUC 0.9685（文中也写作 0.97），成对 96.5%。AI_FILTER TRUE 324 件（18.3%）。Jev 分数中位数 0.02，77% 小于 0.1。不要把约 0.055 美元写成更快，也不要把 23.0 秒写成 7.1 秒，或把这 70 件上的 54 对 5 写成整份 1,774 件的准确率。不要和 #1164、#1194 的 Jev 实測写混。发布日必须写成 2026-10-24。Claude Code 只出现在被分类的一条推文里，源文未称为 ChatGPT，platforms 为 []。这些是作者这一份 1,774 条、这一轮 Snowflake 调用上的实測，不可外推。",
+    title: "推文过滤的费用与耗时对照",
     summary: "1,774 条上，Jev 约 0.055 美元（API 0.049＋仓库 0.006）对 AI_FILTER 约 1.87 美元（约 1/34）；耗时却是 23.0 秒对 7.1 秒，Jev 更慢。70 件分歧里作者判断 Jev 54、AI_FILTER 5、11 件两可。AUC 0.9685／0.97，成对 96.5%。不要把更便宜写成更快，也不要把 54 对 5 写成整份准确率。platforms 为 []。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算用 Jev 换掉 Snowflake AI_FILTER、却还把约 0.055 美元对约 1.87 美元写成 Jev 也更快，或把 23.0 秒写成 7.1 秒，或把 70 件分歧上的 54 对 5 写成整份 1,774 件准确率的人：把成本和耗时、判断样本分开写，并记住发布日是 2026-10-24。",
     categories: [
@@ -81293,7 +81293,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1194",
     slug: "asah-217-1",
-    title: "asahide：在两副本的 ClickHouse Cloud 上，给调用 Jev 的 UDF 加上 deterministic，用查询缓存重跑同一条 100 行查询。同一查询约 1 秒间隔连跑 10 次：副本 A 未命中 217ms，副本 B 未命中 210ms，随后 8 次命中约 1ms；UDF 只被调用 2 次，Jev 请求 4 次（每次 UDF 调用送 2 个请求）。不要把官方博客里的 “0 ms” 写成这次实測（这次命中约 1ms）。缓存过期后 6 次：2 次未命中（各副本第一次）＋4 次命中。只改空白换行：6/6 命中。改 WHERE、结果仍是这 100 行：4 次都在 B，1 次未命中＋3 次命中。A、B 第一次的值有 19 行不同，最大差 0.03，1 行在 0.49／0.50 翻转。过期后再跑，与过期前差 18–20 行。写入表后读出 0 次 UDF、3–4ms，两副本值相同。now() 会报错 704，默认不能指定缓存。发布日必须写成 2026-10-12，不要因測量夜写成 2026-10-09。源文未称为 ChatGPT，platforms 为 []。不要和 #1164、#1193 的 Jev 成本或条数写混。这些是作者这一份 100 行、这一夜測量上的实測，不可外推。",
+    title: "重复查询时的函数结果缓存",
     summary: "同一查询连跑 10 次：A 未命中 217ms、B 未命中 210ms，随后 8 次命中约 1ms；UDF 2 次、Jev 请求 4 次。不要写成官方的 0 ms。过期后 6 次里 2 未命中＋4 命中；只改空白 6/6 命中。A、B 首值 19 行不同。发布日必须写成 2026-10-12，不要因測量夜写成 2026-10-09。platforms 为 []。这些是作者这一轮实測，不可外推。",
     description: "面向已经打算给 ClickHouse 里的 LLM UDF 开查询缓存、却还把这次命中约 1ms 写成官方博客的 0 ms，或把 A 未命中 217ms 写成 8 次命中，或把发布日写成測量夜 2026-10-09 的人：把未命中、命中和官方宣传分开写，并记住发布日是 2026-10-12。",
     categories: [
@@ -81341,7 +81341,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1195",
     slug: "ndho-16-431",
-    title: "ndholovu：用 llama.cpp RPC 把一块 NVIDIA 和一块 Radeon（各 16GB）组成异种集群。qwen2.5-coder 32B Q4：生成 16.0–16.2 tok/s，prefill 431 tok/s（输入 3,441 token，约 8 秒）。iperf3 实測 2.37 Gbps。Qwen3.6 35B-A3B：生成 29.1 tok/s，10,284 token 一次跑完没有降速；同一模型在单机 Ollama（部分层溢到 CPU）上是 46 tok/s，集群更慢但更稳。gemma4 修好 sm_120 等之后，带视觉 18.7 tok/s（纯文本曾到 20.2）。Mistral Small 3.2 是 5.7 tok/s。不要把 16.0–16.2 写成 29.1、46 或 18.7，也不要把 prefill 431 写成生成速度。发布日必须写成 2026-07-31。qwen、gemma、Ollama 都不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一套 16GB×2 集群上的实測，不可外推。",
+    title: "两块异构显卡集群推理测速",
     summary: "qwen2.5-coder 32B Q4：生成 16.0–16.2 tok/s，prefill 431 tok/s（输入 3,441）。iperf3 2.37 Gbps。Qwen3.6 35B-A3B 集群 29.1 tok/s，单机 Ollama（CPU 溢出）46 tok/s。gemma4 带视觉 18.7（纯文本曾 20.2），Mistral 5.7。不要把 16.0 写成 29.1 或 46，也不要把 431 写成生成。platforms 为 []。这些是作者这一套集群上的实測，不可外推。",
     description: "面向已经打算用 llama.cpp RPC 把两张不同厂的 16GB 卡拼起来、却还把 qwen2.5-coder 的 16.0–16.2 tok/s 写成 Qwen3.6 的 29.1 或单机 46，或把 prefill 431 tok/s 写成生成速度的人：把各模型和生成／prefill 分开写，并记住发布日是 2026-07-31。",
     categories: [
@@ -81391,7 +81391,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1196",
     slug: "matu-25-23",
-    title: "matujjsmatu：把 Kimi 当作不自然日语的评审，而不是只当生成器。第一轮 12 处修正、12 条正则全部能登记，并且全部打中原来的对抗句；「ではなく」仍有 4/5 留下。第二轮换了主题，13 处修正，「ではなく」6/6 都去掉了。两轮合计 25 条候选，25 条正则全部能登记，其中 23 条打中原来的对抗句。不要把第一轮 12 条全中写成两轮 23/25，也不要把第一轮还留下的 4/5「ではなく」写成第二轮已经 6/6 去掉。Hooks 只是既有的投递机制和文档链，不是本条的主实践，也不是 hook 教程。发布日必须写成 2026-08-26。这次确是 Kimi 实践，platforms 记 kimi。源文未称为 ChatGPT。这些是作者这两轮对抗句、这一份特征列表上的实測，不可外推。",
+    title: "不自然日语评审转成正则式",
     summary: "第一轮 12 处修正、12 条正则全登记且全中，但「ではなく」仍 4/5 留下。第二轮 13 处，「ではなく」6/6 去掉。两轮 25 条候选、25 条正则登记、23 条打中原文。不要把 12 条全中写成 23/25。Hooks 不是本条主实践。platforms 记 kimi。这些是作者这两轮上的实測，不可外推。",
     description: "面向已经打算用 Kimi 清不自然日语、却还把第一轮 12 条全中写成两轮 23/25，或把第一轮仍留下的 4/5「ではなく」写成第二轮已经 6/6 去掉，或把这篇写成 hook 教程的人：把两轮次数分开写，并记住发布日是 2026-08-26。",
     categories: [
@@ -81443,7 +81443,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1197",
     slug: "kote-474-247",
-    title: "kotetsu_yama／Kotetsu Yamamoto：在 Ryzen AI MAX+ 395 上做本地语音对话。WhisperX large-v3→turbo，对 2.56 秒样例 steady 中位数 474→247ms（−48%），冷启动第一次 664→440ms，加载 6.51→4.83 秒。同一份 Q8_0 gguf、同一提示、142 token：dense 27B 开 MTP 后生成 7.71→10.15 tok/s（+31.7%），142 token 18.42→13.99 秒，TTFT 0.46 对 0.48 秒几乎不变，draft 接受 24.7%（60/243）；MTP 不缩短 TTFT。另一张表是 dense 27B 对 MoE 35B-A3B：TTFT 约 360→约 88ms，生成约 5.0→约 19.8 tok/s，大约都是 4 倍；表头写的是 dense 27B，不要写成 dense+MTP 对 MoE，也不要把 7.71／10.15 或 0.46／0.48 秒写进这张表。不要把 474→247ms 写成 7.71→10.15，或把 MTP 写成改善了 TTFT。DeepSeek 只作为 MTP 的来源被提到，不是这次跑的模型。发布日必须写成 2026-05-23，不要因 6 月更新写成 2026-06-12。qwen、WhisperX 不在 18 值，源文未称为 ChatGPT，platforms 为 []。这些是作者这一台机器、这几轮基准上的实測，不可外推。",
+    title: "语音识别与推测解码的加速",
     summary: "WhisperX large-v3→turbo：steady 中位数 474→247ms，冷启动第一次 664→440，加载 6.51→4.83 秒。dense 27B 开 MTP：7.71→10.15 tok/s，142 token 18.42→13.99 秒，TTFT 0.46 对 0.48 不变。dense 27B 对 MoE：TTFT 约 360→约 88ms，生成约 5.0→约 19.8 tok/s。不要把 474→247 写成 MTP，也不要把 360／88 那张表写成 dense+MTP。发布日必须写成 2026-05-23。platforms 为 []。这些是作者这几轮基准上的实測，不可外推。",
     description: "面向已经打算在本机做语音对话、却还把 WhisperX 474→247ms 写成 MTP 的 7.71→10.15 tok/s，或把 MTP 写成缩短了 TTFT，或把 dense 27B 对 MoE 的约 360→约 88ms 写成 dense+MTP 对照，或把发布日写成 2026-06-12 的人：把转写、MTP 和 MoE 三张表分开写，并记住发布日是 2026-05-23。",
     categories: [
@@ -81494,7 +81494,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1198",
     slug: "maru-72to0",
-    title: "maruhana：给 Rokid Glasses 做字幕和术语解说时，把数分钟试验换算成 1 小时约 5.4 美元。43 次调用平均输入 1,858 token，其中固定指示文 1,801、每次变化的发话 57；语音识别约 0.18 美元/小时，只占约 3%。把变量 %s 从中间改到末尾、指示文加长后，同样内容上缓存从 72%（2,485 输入里 1,792）掉到 0%（2,483 输入），只改了位置。不要把这 72% 写成加长过程中的 66%（2,711/1,792）或 75%（3,735/2,816），也不要把 1,806 仍为 0% 的「只改位置、长度不够」写成已经证明了位置。12 发话对照费用 0.0837→0.0584 美元（30% 减），再测一次 36% 减；输入侧 12 次里 11 次命中是 44% 减，12 次全中才是计算上的 52% 减。缓存只把约 5.4 美元降到约 3.5〜3.8 美元，到不了 1/10。后来改成「列出候选、点选后再调一次」，1 次解说约 0.002 美元，原先推 3 次的 0.022 美元够 10 个词以上。现在 1 小时换算：密谈试验 1.25〜1.53 美元，稀疏演示约 3 分换算 0.78 美元；一度估过的 0.3〜0.5 美元是按 20 发话才总结 1 次，和 15 秒更新对不上。1 小时数字都是数分钟换算，不是 1 小时连测。发布日必须写成 2026-10-11，不要因更新写成 2026-11-04。gpt-5.4／gpt-4o-mini-transcribe 不得写入 chatgpt，platforms 为 []。这些是作者这一副眼镜、这一组调用上的实測，不可外推。",
+    title: "眼镜字幕缓存位置与少调用",
     summary: "maruhana 在智能眼镜应用里测到：提示词缓存会因变量位置从 72% 变成 0%；真正把费用压下来的，是少调用，而不是单靠缓存折扣。",
     description: "作者给 Rokid Glasses 做了字幕和术语解说，用 API 的 usage 对着看提示词缓存何时命中。固定指示文很长、每次发话只有几十个 token；把会变的部分放到末尾才能命中，只靠缓存到不了十分之一的目标。",
     categories: [
@@ -81544,7 +81544,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1199",
     slug: "yanm-084-37",
-    title: "yanma0102：在 24GB 的 M2 MacBook Air 上用 MLX／OptiQ 比较 7 个 4bit 本地模型。素的生成速度上，gpt-oss-20b（思考开）jp_chat 31.99 tok/s 最快，Gemma 4 26B-A4B（思考关）24.36，dense 的 Gemma 4 12B 只有 10.71，是 MoE 26B-A4B 的 2.4 倍慢；长文 prefill 230 对 62 tok/s，约 3.7 倍。LFM2.5-24B-A2B 更快，jp_chat 37.73、code 40.13，但回答开始要 51.9 秒／33.6 秒，有的任务把 2,048 token 用完仍未回答。gpt-oss-20b 加 :no-think 实质上仍未回答（2,041 token，135 秒／146〜153 秒）。Gemma 4 26B-A4B（:no-think）回答开始 0.84 秒／0.66 秒，思考 token 为 0。不要把第 3 节的 0.84／0.66 写成最终构成的 0.81／0.62，也不要把 n-gram 试验的 jp 24.05→28.07 写成最终 decode 26.99／24.10／20.25。最终构成（Gemma 4 26B-A4B 4bit＋n-gram＋思考关）是 0.81s／0.62s，decode 26.99／24.10／20.25 tok/s，峰值内存 23.5GB。剪定的 Qwen3.6-35B-A3B REAP-19B 事实出错并在代码里崩溃，不要和 4bit 量化还没坏混成一件事。发布日必须写成 2026-11-04，不要因更新写成 2026-11-06。gpt-oss-20b 不得写入 chatgpt，platforms 为 []。这些是作者这一台风扇可能停转的 M2 Air、这一轮基准上的实測，不可外推。",
+    title: "本地速度与回答开始的时间",
     summary: "yanma0102 在 24GB M2 Air 上比较 7 个本地模型，发现生成 tok/s 最快的不一定先给出回答：37.73 tok/s 的模型可能要等 51.9 秒，作者最后留下的是思考可关的 Gemma 4 MoE。",
     description: "作者把 24GB 的 M2 MacBook Air 当成无界面的本地推理服务器，比较 7 个 4bit 模型。文章把「每秒生成多少 token」和「回答何时开始」分开测，并写明 :no-think 只在模板认这个变量时才有效。",
     categories: [
@@ -81594,7 +81594,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1200",
     slug: "locl-705-165",
-    title: "ローカルAIラボ：在约 12GB 显存的同一套 llama.cpp 上测了 5 个模型、17 种构成，测量日 2026-11-10。标题里的「约 71 tok/s」是 Qwythos-9B v2 Q4_K_M，ctx 4,096／16,384／32,768 的中位数分别是 70.578／70.712／70.690（区间约 69.097〜72.987），正答 17/24、严格 6/24。Q5_K_M 是 64.315〜65.455，正答 18/24、严格 9/24。Q8_0 是 46.539〜47.929，正答 17/24、严格 8/24。不要把标题的「约 71」写成某一行的 70.578，也不要把正答和严格混成一列。MiniCPM5-1B Q4 约 379.594／376.814 tok/s，正答 10/24、严格 0/24；Q8 约 300.789／288.030，正答 7/24、严格 2/24。Qwythos-27B Q3_K_XL 1.656 tok/s（1.635〜1.705），正答 19/24、严格 15/24，溢出最多约 5,950 MiB，显存峰值 11,782，时限 781 秒没用上。LLM-jp 和 Recursive Flint 是 --n-cpu-moe 999 的对照，不是同一套「全在 GPU」条件。所有 17 种构成在 context-fill 上 seed 11 都答对了。q4 的 JSON 任务全部写错（应为 9,800 日元）。当天第一轮因终检失败已弃，公开发表的是重跑。这些是作者这一天、这一套约 12GB 构成上的实測，不可外推。",
+    title: "多种构成的速度与严格得分",
     summary: "ローカルAIラボ在约 12GB 显存上比较 17 种构成，发现最快的 MiniCPM 几乎拿不到严格分，较稳的 Qwythos-9B 大约 71 tok/s，更大的 27B 只剩约 1.66 tok/s。",
     description: "作者在同一套 llama.cpp、同一块约 12GB 显存上，把五个模型按量化、上下文和是否全在 GPU 排成 17 种构成，同时报速度中位数和正答／严格两套分数。",
     categories: [
@@ -81644,7 +81644,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1201",
     slug: "d032-17x-14",
-    title: "daiki0321：在 Arduino VENTUNO Q 上用同一块板比较 Hexagon NPU 和 CPU。文本（llama-bench -p 1024 -n 128 -t 4 -r 5，5 次中位数）里，LFM2.5-1.2B 的 CPU 是 prefill 88 tok/s、1k TTFT 11.6 秒、decode 35.4，NPU 是 1,485／0.69 秒／41.7（37.9–42.9）；Qwen3-0.6B 的 CPU 是 99／10.4 秒／63.8，NPU 是 1,779／0.58 秒／48.2（48.1–62.9）。Prefill 大约 17〜18 倍，1k TTFT 从 10 秒以上降到 0.6〜0.7 秒；decode 在 1.2B 上大约 1.2 倍，0.6B 上 NPU 反而更慢。VLM（llama-server，同一张猫图，预热 1 次后再测 5 次；Qwen「只开 LLM」是 3 次；cache_prompt false）里，Qwen3-VL-2B 的 CPU 是 22／14.6 秒／18.3，NPU 只开 LLM 是 30／10.6 秒／20.4，NPU 加 encoder 是 235／1.4 秒／20.1；LFM2.5-VL-450M 的 CPU 是 86／3.0 秒／84.5，NPU 只开 LLM 是 107／2.4 秒／70.1，NPU 加 encoder 是 669／0.48 秒／75.8。不要把前篇树莓派 5 的数字（40 t/s、3.5 秒、14 秒）写进这块板。发布日必须写成 2026-11-09，不要因源时区写成 2026-11-10，也不要把测量日当成发布日。源文未称为 ChatGPT，platforms 为 []。这些是作者这一块板、这几组次数上的实測，不可外推。",
+    title: "同一块板上的神经单元对照",
     summary: "daiki0321 在同一块 Arduino VENTUNO Q 上比较 NPU 和 CPU，发现 NPU 主要把 prefill 和 TTFT 打下来，decode 的提升很小，0.6B 上甚至更慢。",
     description: "作者用 llama.cpp 在 Arduino VENTUNO Q 的 Hexagon NPU 和同一块板的 CPU 之间对照文本模型和视觉模型。文本看 llama-bench 的 5 次中位数，视觉模型看 llama-server 对同一张猫图的多次运行。",
     categories: [
@@ -81694,7 +81694,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1202",
     slug: "engc-994-574",
-    title: "engchina：在 4 张 RTX 4090、WSL2 上用 Strata 部署 Qwen3.8-Flash-Next。专家缓存命中 99.4%（约 77GB 专家大部分留在 96GB 显存里），智能体缓存命中是另一窗口的 70.1%（70.08–70.10），不要和 155 的 98.1%、157 的 98.5% 混用。闲聊 decode 57.4 tok/s（50.7–83.3）；6 轮智能体 84.5（62.4–98.1，开了 MTP）；4K 预填 808.6，16K 1,329.5，32K 1,437.0（1,392.5–1,448.1），TTFT 22.4 秒（后表写「22秒」是同一事实）。WSL 一度把 memory 设成 232GB 会崩，当时 vmmemWSL 大约 245 GiB，后来改成 200GB 内存加 32GB swap。配错的 --parallel 2 其实仍是串行：合计吞吐 42.2，还低于单路 57.4；改对以后 parallel 2 是 112.3（约 2.7 倍），第 1 轮 64.6，第 2、3 轮 112–115；4K／16K／32K 预填掉约 18%，智能体 decode 67.0（−21%）。源文写出的占位端点 http://xxx.xxx.xxx.xxx:8000/v1/chat/completions 和 http://127.0.0.1:8000 按原文保留，不列入可达。源文未称为 ChatGPT，platforms 为 []。这些是作者这 4 张卡、这一次部署上的实測，不可外推。",
+    title: "四卡专家缓存与并行的配置",
     summary: "engchina 在 4 张 RTX 4090 上用 Strata 跑 Qwen3.8-Flash-Next，专家缓存可以到 99.4%，但配错并行时合计吞吐还低于单路，改对以后才到约 2.7 倍。",
     description: "作者在 WSL2 里给 4 张 RTX 4090 编译并部署 Strata，记录专家缓存和智能体缓存两个不同窗口，以及闲聊、预填和并行修过前后的吞吐。",
     categories: [
@@ -81744,7 +81744,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1203",
     slug: "omoh-293-127",
-    title: "omohikane：在 RX 6800 16GB 上用 llama.cpp Vulkan 和 litellm，拿同一道 nvim 配置调查题比较几个本地模型。Qwen3.8-27B Q3_K_M 第一次跑了 5 分 34 秒还在 CTX 溢出里打转，CTX 改成 32,768 后 truncated=0；提示约 8,600 token、约 66 秒（约 130 t/s），生成约 12.7 t/s，全程 3 分 55 秒。Q2_K_XL 生成 29.3 t/s（约 2.3 倍于 12.7），提示 156 t/s（对比约 129），全程 4 分 35 秒反而更长，因为工具调用更多，显存 10.68GB，大约还有 3GB 余量。G4-MeroMero-26B 全程 2 分 55 秒，Read 了 3 次，显存 13.92GB，CTX 16,384，生成 t/s 没有测。Qwen3.6-27B-Fable 提示 27.0 t/s（8,545 token／316 秒），生成 11.5 t/s，一轮大约 5〜10 分钟，作者认为在 opencode 里不实用。gpt-oss-20B 否认过 nvim 存在，不得写入 chatgpt。North Mini Code 跑了 4 分 30 秒仍未完成。Devstral-24B 在 opencode 里 Jinja 500。DeepSeek Flash 是参照：作者确实跑过一次云端会话（读了 3 个文件，写出来的说明质量高，速度不能和本机 t/s 比），platforms 记 deepseek，须写明这是参照不是本机速度。发布日必须写成 2026-08-16。这些是作者这一张 16GB 卡、这一道题上的实測，不可外推。",
+    title: "一块显卡上的本地模型耗时",
     summary: "omohikane 在 RX 6800 16GB 上比较几个本地模型，发现更快的量化不一定更省时间，有的模型会在上下文溢出或工具调用里把全程拉长。",
     description: "作者用 llama.cpp 的 Vulkan 后端和 litellm，在 16GB 的 RX 6800 上把同一道 nvim 配置调查题交给几个本地模型，并另跑了一次 DeepSeek Flash 云端参照。",
     categories: [
@@ -81796,7 +81796,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1204",
     slug: "prnk-2424-096",
-    title: "purankuton2022：用 3 个虚构人物、每人 7 题、2 种历史长度、3 种方法，共得到 126 条回答，做事实复述对照。全文检索 24/24，Mastra Observational Memory 19/24（11/12 加 8/12），Jev 24/24（最多取 8 段）。Mastra 的 5 次失败里，1 次是时间线写错，4 次是缺漏或偏弱，不要把 5 次都写成幻觉。Jev 第一次计时约 9.6 秒是错的，因为代理／TLS 就要 9〜18 秒，而且每次请求都新建 TCP。改成 HTTP/2 复用后，最短那题的上游 60–78ms，端到端 0.64–0.67 秒；192 项打分上游 281–298ms，端到端 3.60–4.46 秒。上游时间取的是 x-envoy-upstream-service-time，不是纯推理，也不是用户体感。21 条长历史的费用是估算约 0.059／0.056／0.055 美元，不是账单。运行时是 GPT-5.4 mini，不得写入 chatgpt，platforms 为 []。Mastra 1.30.0，Jev 1.13.0，核对于 2026-09。不要和 #1164、#1193、#1194 的 Jev 窗口写混。这些是作者这一组合成题上的实測，不可外推。",
+    title: "长历史事实复述的三法对照",
     summary: "purankuton2022 对照「全文检索、记忆摘要、从原文抽段落」三种做法，发现 Jev 在事实复述上能齐全文检索，但第一次的 9.6 秒计时被代理和新建连接夸大了。",
     description: "作者用 3 个虚构人物和固定题目，比较全文检索、Mastra 的观察记忆和 Jev 从原文选段，既看事实是否还在，也纠正了第一次被代理放大的时延。",
     categories: [
@@ -81846,7 +81846,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1205",
     slug: "sjh-30to7",
-    title: "sjh9714：对照 Claude Code 资产迁到 DSH 时，在 rc.6 源码里做了兼容表。已有配置能跑起来；30 个事件只映射出 7 个，而且只接了 command 类型，不是 hook 教程。技能目录的 token（o200k 近似）是 0 个技能 143、20 个 703、40 个 1,263、129 个 3,755，固定 143 再大约每个技能 28。o200k 不得写入 chatgpt，platforms 为 []。文内作者仓 dsh-movein 和 docs/skill-vanish.md 按导流披露。当前 GitHub 仓库标题提到 Codex／OpenCode，那是仓库现在的简介，不是这篇源文的运行时。发布日必须写成 2026-08-16。与 #1203 同一天但主题不同。这些是作者这一份源码审计和目录计数上的实測，不可外推。",
+    title: "编码配置迁移的兼容性审计",
     summary: "sjh9714 按 DSH rc.6 源码核对 Claude Code 资产，发现 30 个事件只映射出 7 个，技能一多，目录本身就会先占掉几千 token。",
     description: "作者读 DSH 的源码，给 Claude Code 侧的配置、事件和技能目录做了对照表，并估算技能目录会在每次请求里占掉多少 token。",
     categories: [
@@ -81896,7 +81896,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1206",
     slug: "kok1-211-5",
-    title: "kok1eeeee：丢掉 RAG 流水线，改用 claude -p 做检索式问答，用同一套代码先花约 3 小时做了销售机器人（211 页、9 个分类），人事机器人在同一代码上约 30 分钟就转起来。修好前，同一套攻击在 5 轮里泄漏了路径、目录列表和 168 行的 SKILL.md；加上三层防护后，同事再用同样手法被挡住，正常的产品列表仍能答出来。一次查询会自动读 11 个文件。10–45 秒对 RAG 的 5–20 秒只是对照区间，不是这次机器人和某个已测 RAG 的 A/B。费用「数十円〜数百円」「1 日 10〜20 件可留在 Max 范围内」是粗估，不要写成精确账单。这次运行时是 Claude，Dify 只是一年前的动机，不得写入 dify，platforms 记 claude。发布日必须写成 2026-03-19，不要因更新写成 2026-04-01。这些是作者这一套社内机器人上的实測，不可外推。",
+    title: "社内知识检索式问答机器人",
     summary: "kok1eeeee 用 claude -p 做社内知识机器人，约 3 小时做出 211 页的销售助手；泄露漏洞补上之后，同样的攻击被挡住，正常问题还能答。",
     description: "作者放弃自建 RAG，把文档检索交给 Claude 的代理式搜索，先做销售机器人再复用到人事，并记录了修复前后的泄漏和防护。",
     categories: [
@@ -81948,7 +81948,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1207",
     slug: "robu-60-11",
-    title: "robustonian：亲手跑了 ts-bench（laiso/ts-bench，不是作者产品）。作者写 Kimi K2.5 在多种 agent 组合上稳定满分，Claude Code 加 Opus 4.5 也是满分；正文没有写出题目数作为分母，分数在配图里，不要补写 N。Claude Code 更快给出正确答案。配额上 Claude Pro 用了 60%，Kimi Moderato 显示 11%，但活动到 2/28 是 3 倍配额，按作者算法其实相当于 33%，不要只写 11% 却不写 33% 这个陷阱。价目是每月 20 美元对 19 美元；作者说 Allegretto「性价比最高」，是按配额和标价算的，不是发票。platforms 记 claude、kimi。这些是作者这一轮对照上的实測，不可外推。",
+    title: "同一套编码基准双模型对照",
     summary: "robustonian 用同一套 ts-bench 对照 Claude Opus 4.5 和 Kimi K2.5，两者都能拿满分，但看配额时不能只读 Kimi 表面上的 11%。",
     description: "作者亲手跑 ts-bench，比较 Claude Code 加 Opus 4.5 和 Kimi K2.5 的解题表现，并按套餐价目和当时的 3 倍配额活动去看费用效率。",
     categories: [
@@ -82001,7 +82001,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1208",
     slug: "6in-250k-94",
-    title: "6in：用本地 125B 写 Wiki、1.7B 来读、判定模型来盯。针刺 250K 用 6 分 20 秒且全对；英文 4 份 97k token 8/8，日文 5 份 7/8。摄入 5 篇加索引 9.4 分钟、留下约 40% 篇幅并保住 11/12 条事实。整库问答 7/8 且会把 1.5K 编成约 500 字，索引检索 8/8。不要把 9.4 分钟写成 FAQ 核对的 7.4 分钟，也不要把缺事实那一趟约 10 秒写成核对。发布日必须写成 2026-11-02。整条流水线由 Claude 搭好，platforms 记 claude。不可外推。",
+    title: "本地模型分工写读 Wiki",
     summary: "6in 在本机用 125B 写 Wiki、用 1.7B 来读、用判定模型盯漏写。针刺 250K 用 6 分 20 秒且全对；摄入约 9.4 分钟，整库问答会编造 1.5K，改成按索引检索后 8/8。",
     description: "作者在本机用 Strata 跑 125B 写页、用 LFM3-1.7B 回答、用 d1 判定模型盯漏写和 FAQ 对错。这是这一套本地流水线和这一批文档上的实測，不是通用 Wiki 方案。",
     categories: [
@@ -82053,7 +82053,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1209",
     slug: "kaz-125-73",
-    title: "kaz32：在 16GB 的 M4 Mac Mini 上本地出图，用前一天自宅上空的飞机数据当种子，每天发「不存在的恋爱游戏」。出图约 2 分钟，实測约 125 秒。SD 提示词上限是 77 token，当前提示词实測 73 token（22 个标签），不要把 73 写成上限，或把 77 写成已经量过的长度。Haiku 写不好「4 篇恋爱游戏草稿」，Sonnet 可以。用 claude -p --model sonnet，platforms 记 claude。发布日必须写成 2026-09-27。不可外推。",
+    title: "自宅上空飞机数据本地出图",
     summary: "kaz32 在 16GB 的 M4 Mini 上本地出图，用前一天飞过自宅上空的飞机记录当种子，每天发「不存在的恋爱游戏」。出图实測约 125 秒；提示词实測 73 token，上限是 77。",
     description: "作者把 ADS-B 记录做成哈希种子，在本机出图，再让 Claude 根据图片写投稿文。这是这一台 16GB Mini 和这一套提示词上的实測，不是通用出图机器人方案。",
     categories: [
@@ -82105,7 +82105,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1210",
     slug: "xxku-0006-158",
-    title: "xxkuboxx：用 11,489 条意图分类数据比较 LightGBM、DistilBERT、Gemini 3.5 Flash Lite 和 Jev 1.13。测试集 3,447 条上，Jev 花 0.006 美元，Gemini 花 0.158 美元；LightGBM 的 ROC-AUC 是 0.9945、平均 7.76ms，DistilBERT 是 0.9970。不要把验证集准确率 94.29% 写成测试集 ROC-AUC，也不要和 #1164、#1193、#1194、#1204 的 Jev 窗口写混。Gemini 和 Jev 都不在仓库 18 值里，platforms 为 []。发布日必须写成 2026-09-21。不可外推。",
+    title: "意图分类的本地与接口费用",
     summary: "xxkuboxx 在同一份 3,447 条测试集上比较四个分类器：本地的 LightGBM／DistilBERT 几乎不要钱，Jev 花 0.006 美元，Gemini 花 0.158 美元。不要把验证集 94.29% 当成测试成绩。",
     description: "作者用公开的合成意图分类数据，把本地模型和两个 API 分类器放到同一套测试集上比精度、延迟和费用。这是这一份数据和这一次调用上的实測，不是通用分类排行。",
     categories: [
@@ -82155,7 +82155,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1211",
     slug: "kaji-25to33",
-    title: "kaji_kaji：把 22 分钟录音的转写从 25 分钟降到 33 秒。标题里的 25 分钟是最初 10–25 分钟这一段的高位，必须把 10–25 一起披露。第三次方案在 Mac 上是分离 8 秒、转写 29 秒、合计 33 秒。不要把 Linux 上 225 秒→13 秒、Mac 上 87 秒→9 秒的 ONNX 对照，写成已经是最后的 8／29／33。这篇源文没有 ChatGPT，platforms 为 []。发布日必须写成 2026-11-07，不要因更新字段写成 2026-11-04。与 #1214 同一天但主题不同。不可外推。",
+    title: "二十二分钟录音的转写压缩",
     summary: "kaji_kaji 把 22 分钟录音的转写从最初的 10–25 分钟做到最后 33 秒。标题里的 25 分钟是这一段的高位；Linux／Mac 上 ONNX 对照的 13 秒和 9 秒，不是最后的 8／29／33。",
     description: "作者把说话人分离和转写拆开三次试验并行，最终在 Mac 上把整段 22 分钟录音做到 33 秒。这是这一段录音和这一台 Mac 上的实測，不是通用转写加速公式。",
     categories: [
@@ -82205,7 +82205,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1212",
     slug: "php-156-47",
-    title: "phpmyadmin／toyoshi：在两张 CMP 170HX 上跑 HumanEval+ 164 题。Qwen 关闭思考是 156／95.1%／4.7 分钟，作者把它当作日常首选；开着思考的官方设置是 151／30.2 分钟，且 10 题写满 16,384 个思考 token 仍没有最终答案。不要把 ThinkCode 的 decode tok/s 写成这 164 题的墙钟，也不要和 #1190、#1202、#1203 写混。DeepSeek 这次实际跑过，platforms 记 deepseek。发布日必须写成 2026-10-27。1 次试验，不可外推。",
+    title: "代码题思考开关的墙钟对照",
     summary: "toyoshi 在两张 64GB 的 CMP 170HX 上跑 HumanEval+ 164 题，发现 Qwen 关闭思考是 156 题、4.7 分钟，比日常在用的 GLM 多对 4 题，墙钟大约是 13.3 分钟的 1/2.8。",
     description: "作者在双卡 64GB 的 CMP 170HX 上比较 GLM、DeepSeek 和 Qwen 的 HumanEval+ 通过数与等待时间，并把思考额度单独拿出来看。这是 164 题各 1 次的实測，不是智能体或仓库探索评测。",
     categories: [
@@ -82257,7 +82257,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1213",
     slug: "koug-063-36",
-    title: "kougi：在 16GB 的 RTX 5070 Ti 上跑官方建议 24GB 的 Nemotron 3.5 Bolt。关闭思考后，默认（投机解码开着）约 36–46 t/s，图 1 一次是 46；关掉 draft 后约 60 t/s。llm-jp-eval 均分 Bolt 0.63、Lightning 0.56、nano 0.46；日语 MT-Bench 8.20／7.78／5.99。无护栏的 Agent B0 成功率 Bolt 0.81、nano 0.76、Lightning 0.68。长输入速度没有测量。审查员是 qwen3:14b，不是 GPT-4，platforms 为 []。发布日必须写成 2026-10-18。不可外推。",
+    title: "显存低于官方建议时的测评",
     summary: "kougi 在 16GB 的 5070 Ti 上跑建议 24GB 的 Bolt：关闭思考后默认约 36–46 t/s，均分 0.63，日语 MT-Bench 8.20。长输入速度没有测量；不要和 157、161 的本地速度窗写混。",
     description: "作者把 Bolt 74B-A9B、Lightning 30B-A3B 和 nano 4B 放到同一张 16GB 卡上，比较速度、日语质量和一档无护栏的智能体实验。这是这一张卡、关闭思考后的实測，不是官方排行。",
     categories: [
@@ -82307,7 +82307,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1214",
     slug: "arie-671-359",
-    title: "ariera：在 EVO-X2（Ryzen AI Max+ 395／128GB，UMA 96GB）上查 llama.cpp 的 MTP 预填充为什么变慢。关掉 P-MODE 陷阱后，只改 KV 的 Stage B 在 64k 是 +3.588%（约 6.42 秒），128k 是 +6.713%（约 26.39 秒），这才是标题里的 +3.59%／+6.71%。不要把 r5 基线的 −7.61%／−9.39% 写成这次修补后的加速，也不要把 flatten 的 +1.39%／+1.40%，或 r6 集成后的 +2.20%／+3.60% 写成 Stage B。发布日必须写成 2026-11-07，不要因源时区写成 2026-11-08。与 #1211 同一天但主题不同。不要和 #1152、#1202 写混。platforms 为 []。不可外推。",
+    title: "推测解码预填充变慢的排查",
     summary: "ariera 在 EVO-X2 上查 MTP 预填充变慢的原因：避开 P-MODE 陷阱后，只改 KV 的 Stage B 在 64k／128k 分别快 3.588%／6.713%。r5 基线里 MTP 反而是慢的，不要写成同一次加速。",
     description: "这是 EVO-X2 系列第 12 回，作者在 Vulkan 上用同一份长输入对照 MTP 开关，并给出修补前后的百分差。测量只在 Vulkan 上成立，不要写成 ROCm 也一样。",
     categories: [
@@ -82357,7 +82357,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1215",
     slug: "code-40q-14",
-    title: "codetech／Dayaa：用国税厅源泉税答问 40 题评估 Cohere Rerank 5。精度按 31 题算（1 段检索漏掉金牌的那题已排除），重排把首位命中从 20/31 提到 27–29/31。5 Pro 对 4 Pro 的 MRR 只高 0.032，分不出和偶然的差别。Context Focus 在 400 字块上只削 11%，在整页上削 62%，不要写成同一个削减。每问费用 5 Pro 约是 4 Pro 的 1/14，不要写成跟 ruri 比。官方 89.4 是厂商数字，不是作者成绩。Claude Code 只帮起草题目，不得写入 claude，platforms 为 []。发布日必须写成 2026-10-25。不可外推。",
+    title: "源泉税答问集的重排序评估",
     summary: "Dayaa 用 40 道源泉税问题评估 Rerank 5：精度按 31 题算，重排能把首位命中从 20/31 提到 27–29/31，但 5 Pro 和 4 Pro 分不出稳定差别。不要把官方 89.4 写成作者成绩。",
     description: "作者在同一批 20 个候选上比较有无重排、4 Pro／5 Pro／5 Fast 和本地 ruri 重排器，并另测 Context Focus 与官方阈值。题目草案由 Claude Code 起草、作者核对，不得因此写入 claude。",
     categories: [
@@ -82407,7 +82407,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1216",
     slug: "weza-370-924",
-    title: "wezaard17301：在 Core Ultra 5 235U 上比较 Intel AI Boost NPU、CPU 和核显，跑 Qwen2.5 0.5B–7B INT4。7B 的 decode 是 CPU 8.13、GPU 9.24、NPU 3.70 tok/s；NPU 从 3B 的 7.81 掉到 7B 的 3.70。GPU 一直是 decode 最快，但 7B 编译 35.75 秒，CPU 只要 2.06 秒。0.5B 是 Qwen2.5-Coder，不要和 1.5B 以上写成同一系列。不要把 #1201 的 Arduino NPU prefill 约 17〜18 倍或 TTFT 0.6〜0.7 秒写进这台机器。发布日必须写成 2026-09-01。platforms 为 []。不可外推。",
+    title: "笔记本上三路解码速度对照",
     summary: "作者在 Core Ultra 5 235U 上比较 CPU、核显和 Intel NPU：GPU 的 decode 一直最快，但 7B 编译要 35.75 秒；NPU 在 7B 上掉到 3.70 tok/s。这不是 #1201 那块 Arduino NPU。",
     description: "作者用简单的 HuggingFace 分词墙钟，在同一台笔记本上比较三个设备的加载／编译和 decode。生成文本和 token 数在设备之间并不完全相同，也不是官方 OpenVINO 基准。",
     categories: [
@@ -82457,7 +82457,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1217",
     slug: "kopu-72to80",
-    title: "kopug／Masahiro Funakoshi：在 Windows 11 和 RX 7900 XTX 上跑 Strata 0.1.34，短文本 prefill 约 83.6 tok/s、decode 约 60.6 tok/s，随后在 prefill 时出现 hipErrorInvalidDeviceFunction 并退出。不是只有 32K 上下文会出事，修复前实测 61–62 个 token 还能过，到 72 个就 HTTP 503、引擎退出。把 amdhip64_7.dll 和 amd_comgr.dll 拷到 engine\\ 后，72、70、79、80 个 token 都过了。不要和 #1202 的 4×4090 57.4／112.3 tok/s 或 99.4% 缓存写混。Strata 不是作者产品，platforms 为 []。发布日必须写成 2026-10-02。不可外推。",
+    title: "预填充设备函数退出后修复",
     summary: "Funakoshi 在 Windows 11 和 7900 XTX 上跑 Strata 时，短文本先能跑到约 83.6／60.6 tok/s，但从约 72 个 token 起 prefill 会把引擎打退出。把两个 ROCm DLL 拷到 engine\\ 后，80 个 token 也过了。",
     description: "作者把崩溃从「大上下文」缩小到大约 72 个 token 就会退出，并验证了拷贝 DLL 的权宜办法。这是这一张 7900 XTX、这一版 Strata 上的排查，不是正式修复说明。",
     categories: [
@@ -82507,7 +82507,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1218",
     slug: "ppp-154-629",
-    title: "16GB 上 4 模型中位 tok/s：gpt-oss 154.3 最快，Gemma 4 12B 校正准；发布日是上海 10-29 不是源时区 10-30，不可外推",
+    title: "四模型生成速度与错字校正",
     summary: "PPP Works 在 RTX 4070 Ti SUPER 16GB、LM Studio 0.4.26 上，用同一组 3 问、预热 1 次再正式 3 次、取 2–3 轮中位数，测了 4 个本地模型。主表生成中位速度：gemma-4-e4b 127.5 tok/s、gemma-4-12b 62.9、qwen3.5-9b 89.2、gpt-oss-20b MXFP4 154.3。日文错字校正里，12B 把「おこし頂き」改成「お越しいただき」；E4B 改了意思，gpt-oss 把「おこし」当成「お招き」并留下「先日わ」。发布日必须写成 2026-10-29，不可外推。",
     description: "这是一篇个人在 16GB 消费级显卡上，用 LM Studio 对比 4 个本地模型的速度、显存和日文校正的实測记录。主硬窗是全层加载时的中位 tok/s 与完成时间，不要和浏览器开着时的半卸载 123 tok/s 写混。Claude 只是协助起草，运行时是本机 LM Studio，platforms 为空。gpt-oss 自称 ChatGPT 不得写入 chatgpt。源时区发布时刻已跨到 10-30，按上海日历日必须写成 2026-10-29，不要改用 11-08 的修订日。",
     categories: [
@@ -82557,7 +82557,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1219",
     slug: "shoz-30to03",
-    title: "16GB RAM 加 6GB VRAM 笔记本上，自写 ggmlLM 跑 gpt-oss-20b 每秒 5～6 token；发布日是上海 10-31，不可外推",
+    title: "自写推理嵌进游戏内的对话",
     summary: "ShozoTanaka 把自定义 ggmlLM（不是 llama.cpp）嵌进游戏引擎的 Chat 场景，在 RTX 4050 Laptop 6GB 加内存 16GB（图上约 15.6GB）上加载 gpt-oss-20b-F16.gguf（约 13.8GB），解码约每秒 5～6 token。min-p 0.05 时，采样从约 30ms 降到 0.3ms，15,000 次试验都抽到与参考相同的 token；KV 复用 268/268。不要把文中引用的 Strata／YUV.AI 50–90 tok/s 或 1.6–1.8 倍投机解码写成作者这台机器的成绩。发布日必须写成 2026-10-31，不可外推。",
     description: "这是一篇个人在 16GB 内存、6GB 显存的笔记本上，用自写推理库把约 13.8GB 的 gpt-oss-20b 跑进游戏引擎聊天场景的实測。主硬窗是解码每秒 5～6 token，以及 min-p 把采样从约 30ms 降到 0.3ms。gpt-oss 不是 chatgpt，platforms 为空。发布日必须写成 2026-10-31，不要因更新字段的源时区写成 11-01。",
     categories: [
@@ -82607,7 +82607,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1220",
     slug: "hand-075-090",
-    title: "废料公用电话秘书：STT 0.75–0.90 秒，一轮约 1–2 秒；发布日是上海 10-31 不是九月实測月，不可外推",
+    title: "用废料拼装的不必接听秘书",
     summary: "Aidea Handesen 用约 1,000 日元的 Pixel 3 加 UB500、约 1,200 日元的 ESP32 WROOM，做了一台自己不必接听的电话秘书。约 5 秒语音时，STT 0.75–0.90 秒、LLM 0.18–0.23 秒、TTS 0.06–0.10 秒，一轮 1–2 秒。ESP32 测到 132.6 包/秒；3 分钟通话只到 56%，最差 35%；关掉 Wi-Fi 后损坏率 0.14%，后来 8,248 包 0 丢失、损坏 0.28%。投币电话 7 段里有 4 段被 Whisper 类模型听成「ご視聴ありがとうございました」。预取把等人从 3 秒以上收到 2 秒以上。12 天做成，其后 10 多天里 3 通真实来电，作者接了 0 通。发布日必须写成 2026-10-31，不可外推。",
     description: "这是一篇个人用废料手机和廉价加密狗，自建公用电话式秘书的实測。主硬窗是一轮 1–2 秒的拆分时延，以及 ESP32 丢包／损坏率。源文只写「外の LLM」，从未点名 Claude、ChatGPT、Kimi 或 DeepSeek，platforms 为空。正文有 YouTube 演示嵌入，作者资料里的 YouTube 频道不算导流。测量写的是 2026 年 9 月末，发布日必须写成 2026-10-31，不要写成 9 月。",
     categories: [
@@ -82657,7 +82657,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1221",
     slug: "tksh-430-97",
-    title: "Claude 帮写的本地基准：7B 全层 43.0 tok/s，14B 32/48 层 9.7 tok/s；发布日是上海 11-01，不可外推",
+    title: "编程新手核过的本地速度基准",
     summary: "编程新手 Tashin 决定测什么、并核过结果，代码几乎由 Claude（Claude Pro）写成。自己的机器是 i5-13400、RTX 4060 8GB、32GB 内存。7B 全层 28/28 为 43.0 tok/s，14B 只上到 32/48 层为 9.7 tok/s；方法是 3 类问题各 2 次取中位，并与 llama-server 对过。若第一轮不到 5 tok/s 就提前停，整趟从约 6 分钟收到约 2.5 分钟。Vulkan 长输入第一次 85 tok/s、第二次 1,850。同一 7B 在 LM Studio CUDA 上是 55 tok/s，不要写成应用里 Vulkan 的 43。安装包约 18MB。发布日必须写成 2026-11-01，不可外推。",
     description: "这是一篇编程新手在自己的 8GB 显卡电脑上，用 Claude 写成基准应用、再亲自决定测项并核对数字的实践。主硬窗是 7B 43.0 tok/s 和 14B 9.7 tok/s。这是 Claude 实践，platforms 记 claude。正文有作者应用的下载和排行榜导流。不要把 LM Studio CUDA 的 55 写成应用里的 43。发布日必须写成 2026-11-01。",
     categories: [
@@ -82709,7 +82709,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1222",
     slug: "edna-194-358",
-    title: "Strata 跑未适配 Q4_K_M：546 步均 KL 0.00194，Top-1 约 97.7–98.5%；发布日是上海 11-03 不是修订 11-04，不可外推",
+    title: "未适配权重的补丁数值对齐",
     summary: "はじ環在 RTX 8000 48GB 上（身边还有一张 5060 Ti 16GB 但没用），给尚未官方适配的 Qwen3.8 Distill Q4_K_M（约 21.7GB）打了两处补丁，并与 llama.cpp 对了数值。546 步均 KL：改后 0.00194，llama.cpp CPU／GPU 为 0.00358；Top-1 约 97.69／98.31／97.80／98.53%。贪婪解码 10 条里 5 条完全一致，分支出现在第一个不同 token 之后，并不否定 teacher-forced 的 98.53%。相对 strata-q36ref 的 17 步是 17/17，均 KL 0.00029681。bench（mtp 0、ctx 8192、只用 RTX 8000）里 pp2048 约 3391.4／3470.4／3478.2，tg128 约 101.7／102.1／102.0 tok/s，这是基准 token 速度，不是回答质量。不要把附录 Q5_K_M 的 5,385 次 0 不一致或 MTP 接受率写进主窗。发布日必须写成 2026-11-03，不可外推。",
     description: "这是一篇个人给 Strata 补上未官方适配的 Q4_K_M，并在 48GB 卡上做数值对齐和速度基准的记录。主硬窗是 546 步均 KL 0.00194 和 Top-1 约 97.7–98.5%，以及 tg128 约 102 tok/s。源文没有 ChatGPT、Claude、Kimi 或 DeepSeek 实践，platforms 为空。发布日必须写成 2026-11-03，不要改用 11-04 的修订日。资料栏的 edna-blog.com 不算导流。",
     categories: [
@@ -82759,7 +82759,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1223",
     slug: "mame-151-59",
-    title: "LFM3 在 8GB 上 1.7B 151 tok/s，知识题全 0/5，安全自动分不可当真；发布日是上海 10-29，不可外推",
+    title: "小显存机器的速度与知识题",
     summary: "MameMame777 在 RTX 3060 Ti 8GB、i7-10700K／64GB 上自动打分，普通题重复 5 次、长上下文 3 次。速度：1.7B 151 tok/s、32K 预填 5,527 tok/s、首响 5.9 秒、第二次 0.2 秒、显存 +1.9GB；Omni Q4 151／5,472／6.0 秒／0.2 秒／3.1GB；Omni Q8 116／5,586／5.9 秒／0.2 秒／3.7GB；VL 150／5,407／6.0 秒／0.2 秒／2.3GB。长上下文全模型 12/12×3，视觉全 5/5；日文 ASR CER 0.0%，英文 WER 11.1% 只差在 ten thirty 和 10.30。摘要两句：1.7B 和 VL 5/5，Omni Q4 1/5、Q8 0/5。知识题全 0/5。安全题自动记了 4 次「通过」，人读没有一次化学上正确，Omni 5 次里有 2 次给出危险的「安全配比」，不要把自动 4 当成答对。发布日必须写成 2026-10-29，不可外推。",
     description: "这是一篇个人在 8GB 显卡上，按日文实务任务给 LFM3 1.7B／Omni／VL 打分的实測。主硬窗既有 151 tok/s 和 32K 约 6 秒读完，也有知识题 0/5、摘要分化和安全题自动分不可当真。官方 1.8–2.8 倍或 128K KV 1.6GB 不是作者测量。源文没有仓库 18 值里的模型实践，platforms 为空。本机 127.0.0.1:8080 按原文写出，不列入可达。发布日必须写成 2026-10-29。",
     categories: [
@@ -82809,7 +82809,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1224",
     slug: "pich-350-585",
-    title: "改过 VBIOS 后再加到 120W：Qwen3.8 27B 从 35.04 到 58.53 tok/s（+67%）；发布日是上海 10-26，不可外推",
+    title: "改写VBIOS并抬功耗后测速",
     summary: "pich 在额定 70W、无需外接供电的 RTX PRO 4000 Blackwell SFF 24GB 上，用同一份改过的 VBIOS 测生成速度。主窗是 Qwen3.8 27B NVFP4 加 DFlash2、输入 8,000、ECC OFF：70W 的 35.04 tok/s 加到 120W、显存 +20%、核心 +180 MHz 后是 58.53 tok/s（+67.05%）。这不是只调功耗上限。另一模型 Qwen3.6 35B A3B Q4_K_S、没有草稿模型，从 84.97 到 115.56（约 +36%），显存 +33.3%、核心 0。不要把 27B 和 35B 当成质量排名。158 是请求总数（ECC OFF 79 加 ON 79），不是每个格子 158 次；多数格子 n=1–3。发布日必须写成 2026-10-26，不可外推。",
     description: "这是一篇个人在单槽 70W 专业卡上，改 VBIOS 后再叠功耗和显存／核心频率，测 Qwen 生成速度的记录。主硬窗是 27B 的 35.04→58.53 tok/s（+67%），其中只加功耗大约只到 +55%。不要把 +67% 的生成速度写成端到端也快 67%，作者说生成阶段大约省 40% 时间。32k 输入、35B、500 token 的时间是外推，不是一次计时请求。正文有作者英译页、图和 CSV 导流。platforms 为空。发布日必须写成 2026-10-26，不要因 UTC 已是 10-25 改写。",
     categories: [
@@ -82859,7 +82859,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1225",
     slug: "tase-10of10",
-    title: "假牙预约 10 轮：Mercury 3 全对约 1 秒，GPT-6 Luna 8/10；发布日是上海 10-25 不是实测起始 10-24，不可外推",
+    title: "假牙预约的十轮多模型试验",
     summary: "tasekino 用两轮假牙预约对话，每个模型跑 10 次，在东京家用线路上于 2026-10-24〜25 测量。Mercury 3 两项都是 10/10，起步和完成都约 1.0 秒，费用估计约 0.17 美元／1000 次（不是账单）。Gemini 3.8 Flash 也是 10/10，但起步约 5.1 秒、完成约 5.3 秒，费用约 1.50 美元还要加思考。GPT-6 Luna（reasoning 关）两项都是 8/10，起步约 0.9–1.2 秒、完成约 1.3 秒，约 0.20 美元，有 2 次跳过了「下周二」。Flash-Lite 为 6/10 与 10/10，最快约 0.6／0.85 秒，约 0.80 美元，有 4 次把 11 月 10 日并进「下周」。约 300 字长回复时 Mercury 为 411 tok/s，大约是其余模型的 2–4 倍，仍低于官方 1,068。短回复 tok/s 未采用，Mercury 会出现无意义的 11,879。0 个模型会自动确认预约，也 0 个会虚构时间。发布日必须写成 2026-10-25，不可外推。",
     description: "这是一篇个人用同一组两轮假牙预约，对照 Mercury 3 和三款轻量模型的准确率、时延和费用估计的实測。主硬窗是 Mercury 3 的 10/10、约 1 秒，以及 GPT-6 Luna 的 8/10。GPT-6 Luna 不是 chatgpt，Gemini 和 Mercury 也不在仓库 18 值里，platforms 为空。费用是每 1000 次的估计，不是账单。测量从 10-24 开始，发布日必须写成 2026-10-25。",
     categories: [
@@ -82909,7 +82909,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1226",
     slug: "tish-14285-11",
-    title: "Jev 影子单：14,285 次判断、11 回合亏 1.68 美元；发布日是上海 10-24 不是美东会话日，不可外推",
+    title: "每秒一次的美股影子单试验",
     summary: "大将（TIshow）让 Jev 每秒判断一次美股 SPY，只做影子单、不下真单。v1 约 169 分钟、10,146 次判断、0 笔交易，中位时延 0.15 秒、p90 0.20 秒，方向偏差原始小数为 −19.2（200 对全是负的）。v2 改成有符号 bp 后约 240 分钟、14,285 次判断、11 个往返，1 胜 1 平 9 负，亏 1.68 美元（1 股影子单）。中间价亏损 0.715 美元，点差 0.965 美元（约 57% 的亏损）；TL;DR 又写「约 6 成（0.97 美元）」，两个写法都要披露，不要合成一个精确数字。离线回放亏 1.56 美元，对实盘 1.68 美元。发布日必须写成 2026-10-24，不可外推。",
     description: "这是一篇个人用 Jev 做美股 SPY 每秒判断的影子单记录，不是实盘成交。主硬窗是 v2 的 14,285 次判断、11 回合、亏 1.68 美元，以及点差 0.965 与 TL;DR 0.97 的两种写法。格式 A/B 把偏差从 −12.7 收到 −1.7，那是 4 问镜像测试，不是实盘 v2；实盘重测是 −2.8。不要和此前批次的 Jev 窗口写混。Jev 不在仓库 18 值里，platforms 为空。会话日是美东 10/20 与 10/23，发布日必须写成 2026-10-24。",
     categories: [
@@ -82959,7 +82959,7 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
   {
     id: "1227",
     slug: "qapl-67to85",
-    title: "Strata IQ2_XS：版本升级且加上 --calibrate 后从 67 到 85 tok/s；发布日是上海 10-09 不是补记 10-11，不可外推",
+    title: "Strata 升级并校准后测速",
     summary: "Qapla 写前一篇时 IQ2_XS 是 67 tok/s；这次在版本升级并且加上 --calibrate 之后到了 85 tok/s，不能把 67→85 只写成校准的功劳。校准后 IQ3_XSS 为 69、IQ3_S 为 64。10 月 11 日补记里，又一次版本升级后 IQ3_S 从 64 到 73，不要把 73 写成发布日当天的主窗，也不要把 67、85、69、64、73 写混。发布日必须写成 2026-10-09，不可外推。",
     description: "这是一篇个人在 Strata 上调 token 速度的续篇。主硬窗是 IQ2_XS 从昨日文的 67 tok/s，在版本升级且加上 --calibrate 之后到 85 tok/s。前篇是连载，不是本条主源。10-11 补记里的 64→73 不能当成发布日主窗。资料栏的 qapla.blog.fc2.com 不算导流。platforms 为空。发布日必须写成 2026-10-09。",
     categories: [
