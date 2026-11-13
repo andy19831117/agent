@@ -81997,6 +81997,512 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "无 JSON-LD；API published_at 2026-02-01T15:02:13.735+09:00 → UTC 2026-02-01T06:02:13Z、Asia/Shanghai 2026-02-01 14:02:13；body_updated_at 与发布相同，取 published → 2026-02-01；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-02-01。",
     ],
+  },
+  {
+    id: "1208",
+    slug: "6in-250k-94",
+    title: "6in：用本地 125B 写 Wiki、1.7B 来读、判定模型来盯。针刺 250K 用 6 分 20 秒且全对；英文 4 份 97k token 8/8，日文 5 份 7/8。摄入 5 篇加索引 9.4 分钟、留下约 40% 篇幅并保住 11/12 条事实。整库问答 7/8 且会把 1.5K 编成约 500 字，索引检索 8/8。不要把 9.4 分钟写成 FAQ 核对的 7.4 分钟，也不要把缺事实那一趟约 10 秒写成核对。发布日必须写成 2026-11-02。整条流水线由 Claude 搭好，platforms 记 claude。不可外推。",
+    summary: "6in 在本机用 125B 写 Wiki、用 1.7B 来读、用判定模型盯漏写。针刺 250K 用 6 分 20 秒且全对；摄入约 9.4 分钟，整库问答会编造 1.5K，改成按索引检索后 8/8。",
+    description: "作者在本机用 Strata 跑 125B 写页、用 LFM3-1.7B 回答、用 d1 判定模型盯漏写和 FAQ 对错。这是这一套本地流水线和这一批文档上的实測，不是通用 Wiki 方案。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/6in/items/0987a7ff1e026abb7227",
+    sourceLabel: "qiita.com·6in《🏠 ローカル LLM だけで「LLM Wiki」をやってみた。書くのは 125B、読むのは 1.7B、見張るのは判定専用モデル》",
+    upvotes: 1099,
+    trending: false,
+    tags: [
+      "local-llm",
+      "wiki",
+      "strata",
+      "lfm3",
+      "claude",
+    ],
+    primarySource: {
+      url: "https://qiita.com/6in/items/0987a7ff1e026abb7227",
+      label: "qiita.com·6in《🏠 ローカル LLM だけで「LLM Wiki」をやってみた。書くのは 125B、読むのは 1.7B、見張るのは判定専用モデル》",
+      date: "2026-11-02",
+      dateLabel: "发布",
+    },
+    approach: "作者先让 Claude 在本机搭好流水线，写页交给本机 Strata 的 125B，回答交给 LFM3-1.7B，漏写和 FAQ 对错交给判定模型 d1。先做针刺和中等长度文档问答，再按「大约三分之一篇幅、留下事实」把手册写成 Wiki；盯漏写时比较了只靠 1.7B、机器抽事实再交给 1.7B、以及改用 d1，最后用故意改错的 FAQ 做核对。",
+    outcomes: [
+      "源披露：LFM3 内存在约 5–10GB，Strata 在 256K 时约 66GB；生成约 170–180 对 50–65 t/s，Strata prefill 约 450–550 t/s；d1 约 0.05 秒/条。针刺 30K 22 秒、60K 35 秒、120K 1.5 分钟、200K 4 分钟、250K 6 分 20 秒，全部找对；Strata 做 250K 约 10 分钟，LFM3 做完 250K 内存仍约 10GB。英文 4 份约 97k token 8/8、用 82 秒；日文 5 份约 11.4 万字／55k token 7/8（1 条接近），用 93 秒，文档里没有的事实能明确说不在文档里，摘要偏弱。第一次摄入几乎整段照抄，每篇约 5 分钟并撞上输出上限被截断；改成「大约三分之一篇幅、留下事实」后每篇约 80 秒，5 篇加索引 9.4 分钟，Wiki 约 4.6 万字（约源文 40%），12 条事实保住 11 条，只丢掉「Chrome 建议每个工具 1.5K 字」。整库问答每问约 2.2 万 token，9 问 92–142 秒，事实 7/8，那条错误是把 1.5K 编成约 500 字；按索引检索每问约 1,600–3,500 token，9 问 141 秒，8/8，并能从原文找回 1.5K。盯漏写时，LFM3 漏掉 1.5K 且思考约 1.5 万 token；机器抽出后再交给 LFM3 会撞上 16,000 上限、63 个候选仍没有答案；d1 约 10 秒给出 209 个候选，1.5K 的重要度 0.83、在 phase63 排第一。判断「是不是已经写过」时会把邻近数字搅在一起（1.5K 为 0.56，真正的「20 轮」为 0.51），作者后来停掉这种打地鼠，最后留下 38 个候选。FAQ 核对是 5 页各 10 问、用 2.5 分钟；故意改了 3 处（2 分→9 分、20 秒→27 秒、文件数 1→8），48 条同意（其中没有故意改错的），5 条不同意（3 条改错全部找出，另外 2 条是 FAQ 原文就有的问题，都不是 Wiki 写错），0 条「源文没有」；核对本身 7.4 分钟。文内「摄入 9.4 分钟、提问 1–2 分钟、检查 10 秒」里的 10 秒是 d1 盯漏写，不是 7.4 分钟的 FAQ 核对。运行时是本机 Strata／LFM3／d1，不在仓库 18 值里；搭整条流水线的是 Claude，platforms 记 claude。这些是作者这一台机器、这一批文档上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：正文作者仓 https://github.com/6in/local-llm-wiki（标题 GitHub - 6in/local-llm-wiki: local llm for llm-wiki · GitHub） 交付时 GET 200，可列可达，按作者项目导流披露，不另作本条主源。作者资料 website_url 为空，不补写。配图 7 张：https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig01-overview.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig02-needle.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig03-ingest.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig04-query.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig05-whack.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig06-roles.jpg（标题 无标题） 交付时 GET 200，可列可达、https://raw.githubusercontent.com/6in/local-llm-wiki/main/docs/images/blog-llm-wiki/fig07-faq.jpg（标题 无标题） 交付时 GET 200，可列可达，不当导流。运行时是本机 Strata／LFM3／d1，不在仓库 18 值里；搭整条流水线的是 Claude，platforms 记 claude。源文未称为 ChatGPT。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 9.4 分钟、7.4 分钟和约 10 秒分别是哪一段，再谈 11/12 和 8/8",
+        body: "请按原文核算：针刺 250K 是不是 6 分 20 秒且全对，不要写成 Strata 的约 10 分钟。英文 4 份是不是 8/8、日文 5 份是不是 7/8。第一次摄入是不是几乎照抄、每篇约 5 分钟并被截断；改成长度约束后是不是 5 篇加索引 9.4 分钟，Wiki 约 4.6 万字、12 条事实保住 11 条，丢掉的是不是 Chrome 建议的 1.5K 字。整库问答是不是 7/8，那条错误是不是把 1.5K 编成约 500 字；按索引检索是不是 8/8，并找回了 1.5K。d1 盯漏写是不是约 10 秒给出 209 个候选，1.5K 重要度是不是 0.83。FAQ 核对是不是 7.4 分钟，3 处改错是不是都找到了，另外 2 条不同意是不是 FAQ 原文就有的问题。不要把 9.4 分钟、7.4 分钟和约 10 秒写混。搭流水线的是不是 Claude，运行时是不是本机模型。",
+      },
+    ],
+    howItWorks: [
+      "先把针刺和中等长度文档问答分开写：250K 用 6 分 20 秒且全对，不要写成 Strata 的约 10 分钟；英文 8/8、日文 7/8，摘要偏弱。",
+      "再写摄入：第一次照抄、每篇约 5 分钟并被截断；改成长度约束后 5 篇加索引 9.4 分钟，保住 11/12 条事实，丢掉的是 Chrome 的 1.5K。",
+      "整库问答 7/8，会把 1.5K 编成约 500 字；改成按索引检索后 8/8，并能找回 1.5K。不要把 92–142 秒和 141 秒写混。",
+      "盯漏写约 10 秒的是 d1，FAQ 核对是 7.4 分钟；不要把文内那句「检查 10 秒」写成核对时间。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-02T09:15:02.000+09:00，与 API created_at 2026-11-02T09:15:02+09:00 一致 → UTC 2026-11-02T00:15:02Z、Asia/Shanghai 2026-11-02 08:15:02；dateModified 2026-11-02T09:18:27.000+09:00，updated_at 2026-11-02T09:18:28+09:00，晚于发布但同一天，取 published → 2026-11-02；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-02。",
+    ],
+  },
+  {
+    id: "1209",
+    slug: "kaz-125-73",
+    title: "kaz32：在 16GB 的 M4 Mac Mini 上本地出图，用前一天自宅上空的飞机数据当种子，每天发「不存在的恋爱游戏」。出图约 2 分钟，实測约 125 秒。SD 提示词上限是 77 token，当前提示词实測 73 token（22 个标签），不要把 73 写成上限，或把 77 写成已经量过的长度。Haiku 写不好「4 篇恋爱游戏草稿」，Sonnet 可以。用 claude -p --model sonnet，platforms 记 claude。发布日必须写成 2026-09-27。不可外推。",
+    summary: "kaz32 在 16GB 的 M4 Mini 上本地出图，用前一天飞过自宅上空的飞机记录当种子，每天发「不存在的恋爱游戏」。出图实測约 125 秒；提示词实測 73 token，上限是 77。",
+    description: "作者把 ADS-B 记录做成哈希种子，在本机出图，再让 Claude 根据图片写投稿文。这是这一台 16GB Mini 和这一套提示词上的实測，不是通用出图机器人方案。",
+    categories: [
+      "content",
+    ],
+    platforms: [
+      "claude",
+    ],
+    sourceUrl: "https://qiita.com/kaz32/items/e3a70c6524f95126ca7d",
+    sourceLabel: "qiita.com·kaz32《M4 Mac Mini(16GB)でローカル画像生成し、前日に自宅上空を飛んだ飛行機のデータを種にして「存在しないギャルゲー」を毎日投稿するbotを作った》",
+    upvotes: 1100,
+    trending: false,
+    tags: [
+      "image-gen",
+      "ads-b",
+      "claude",
+      "macos",
+      "bot",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kaz32/items/e3a70c6524f95126ca7d",
+      label: "qiita.com·kaz32《M4 Mac Mini(16GB)でローカル画像生成し、前日に自宅上空を飛んだ飛行機のデータを種にして「存在しないギャルゲー」を毎日投稿するbotを作った》",
+      date: "2026-09-27",
+      dateLabel: "发布",
+    },
+    approach: "作者用前一天自宅上空的 ADS-B 记录做 SHA-256 种子，在 16GB 的 M4 Mac Mini 上本地出图，再调用 claude -p --model sonnet，让模型根据图片写「不存在的恋爱游戏」投稿，而不是让模型去写画图提示词。提示词写到接近 77 token 的静默截断点时，作者量过当前实际长度，并把「先发再预约」改成「先预约」，以免重发。",
+    outcomes: [
+      "源披露：16GB 的 M4 Mini 本地出图，作者写大约 2 分钟，实測约 125 秒，动漫风和写实风差不多。ADS-B 每天约 1,400–1,600 条记录做 SHA-256 种子，组合空间约 4,400 万；每天生成 3 张，队列不到 10 时降到 2 张。Stable Diffusion 提示词上限是 77 token，超出后会静默截断；当前提示词实測 73 token（22 个标签）。有一条例子在 77 处被截掉，后面的 clear sky, sunlight 没有进模型。Haiku 对付短的单次输出还可以，但写「4 篇恋爱游戏草稿」时交了工作报告、没有正文；Sonnet 按图写 5 篇草稿可以，最多重试 2 次。文内的 X API 官方 0.015 美元、按 URL 0.20 美元是价目，不是这张账单。后来把「先发再预约」改成「先预约」，以免重发。作者写明并不是让 Claude 去写画图提示词。platforms 记 claude。这些是作者这一台 Mini、这一套种子和提示词上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。正文硬链每日投稿账号 https://bsky.app/profile/sonzaishinai-galge.bsky.social（标题 @sonzaishinai-galge.bsky.social on Bluesky） 交付时 GET 200，可列可达，按这次实践所运营的账号披露，不另作独立产品站。作者资料 website_url 为空，不补写。配图 4 张：https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7ef4f54goa5vqltjux6tntbx/bafkreigkqw47umlwbrcy7d53g4czdp47uqzo3xldtdubkolw4dorn5q66i（标题 无标题） 交付时 GET 200，可列可达、https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7ef4f54goa5vqltjux6tntbx/bafkreibkwnx67gglgvzs7ufiznff4jegguxq56c2yawcbuws2ylx6v74m4（标题 无标题） 交付时 GET 200，可列可达、https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7ef4f54goa5vqltjux6tntbx/bafkreifdgtplwved6auzepyystmib62optyowsnkaesqipjwacqeyok6oa（标题 无标题） 交付时 GET 200，可列可达、https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:7ef4f54goa5vqltjux6tntbx/bafkreibahyswkcjmd4qhec3oy633ppx7acjgks6p7xcxkzkrt6c75h4zzm（标题 无标题） 交付时 GET 200，可列可达，不当导流。用的是 claude -p --model sonnet，作者写明并不是让 Claude 去写画图提示词，platforms 记 claude。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 77 是上限、73 是实測，再谈约 125 秒",
+        body: "请按原文核算：16GB 的 M4 Mini 本地出图，作者写的大约 2 分钟，实測是不是约 125 秒。ADS-B 是不是每天约 1,400–1,600 条，组合空间是不是约 4,400 万，每天是不是先生成 3 张、队列不到 10 时降到 2 张。SD 提示词上限是不是 77 token，当前提示词是不是实測 73 token（22 个标签），不要把 73 写成上限。被截断的例子是不是把 clear sky, sunlight 丢掉了。Haiku 是不是写不好「4 篇恋爱游戏草稿」，Sonnet 是不是按图写 5 篇可以。X API 的 0.015／0.20 美元是不是价目，不是这张账单。作者是不是写明没有让 Claude 去写画图提示词。",
+      },
+    ],
+    howItWorks: [
+      "先写下出图时间：口算大约 2 分钟，实測约 125 秒，不要只写约 2 分钟。",
+      "再把 77 和 73 分开：77 是 SD 提示词上限，73 是当前 22 个标签的实測长度；被截断的例子是超过 77 的那条。",
+      "Haiku 写不好「4 篇恋爱游戏草稿」，Sonnet 按图写 5 篇可以，不要把两个模型写成一样稳。",
+      "X API 的 0.015／0.20 美元是价目不是账单；发布顺序后来改成先预约，以免重发。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-27T21:54:58.000+09:00，与 API created_at 2026-09-27T21:54:58+09:00 一致 → UTC 2026-09-27T12:54:58Z、Asia/Shanghai 2026-09-27 20:54:58；dateModified／updated_at 2026-09-27T22:50:19+09:00，晚于发布但同一天，取 published → 2026-09-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-27。",
+    ],
+  },
+  {
+    id: "1210",
+    slug: "xxku-0006-158",
+    title: "xxkuboxx：用 11,489 条意图分类数据比较 LightGBM、DistilBERT、Gemini 3.5 Flash Lite 和 Jev 1.13。测试集 3,447 条上，Jev 花 0.006 美元，Gemini 花 0.158 美元；LightGBM 的 ROC-AUC 是 0.9945、平均 7.76ms，DistilBERT 是 0.9970。不要把验证集准确率 94.29% 写成测试集 ROC-AUC，也不要和 #1164、#1193、#1194、#1204 的 Jev 窗口写混。Gemini 和 Jev 都不在仓库 18 值里，platforms 为 []。发布日必须写成 2026-09-21。不可外推。",
+    summary: "xxkuboxx 在同一份 3,447 条测试集上比较四个分类器：本地的 LightGBM／DistilBERT 几乎不要钱，Jev 花 0.006 美元，Gemini 花 0.158 美元。不要把验证集 94.29% 当成测试成绩。",
+    description: "作者用公开的合成意图分类数据，把本地模型和两个 API 分类器放到同一套测试集上比精度、延迟和费用。这是这一份数据和这一次调用上的实測，不是通用分类排行。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/xxkuboxx/articles/e232d267a76f43",
+    sourceLabel: "zenn.dev·xxkuboxx《Jev, Gemini, DistilBERT, LightGBMの分類性能を比較してみた》",
+    upvotes: 1101,
+    trending: false,
+    tags: [
+      "jev",
+      "classification",
+      "lightgbm",
+      "distilbert",
+      "eval",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/xxkuboxx/articles/e232d267a76f43",
+      label: "zenn.dev·xxkuboxx《Jev, Gemini, DistilBERT, LightGBMの分類性能を比較してみた》",
+      date: "2026-09-21",
+      dateLabel: "发布",
+    },
+    approach: "作者取 tanaos 的合成意图分类数据，按 70%／30% 划成 8,042 条训练和 3,447 条测试，一共 12 类，再在同一测试集上跑 LightGBM、微调 DistilBERT、Gemini 3.5 Flash Lite 和 Jev 1.13，记录 ROC-AUC、延迟和 API 费用，并把验证集准确率和测试集指标分开写。",
+    outcomes: [
+      "源披露：数据集共 11,489 条，训练 8,042（70%），测试 3,447（30%），12 类。测试集上 LightGBM 的 ROC-AUC 0.9945，延迟最小 3.44ms、平均 7.76ms，无 API 费用；DistilBERT 0.9970，最小 5.54ms、平均 8.03ms；Gemini 0.9751，最小 670.98ms、平均 2,104.59ms，3,447 条共 0.158 美元；Jev 1.13 为 0.9806，最小 444.34ms、平均 563.87ms，共 0.006 美元。LightGBM 训练 5.74 秒，677 个特征（max_features 10,000）。DistilBERT 训练约 4 分 53 秒、1,135 步，第 2 个 epoch 的验证损失 0.4644、准确率 94.29%，那是验证集，不是测试集 ROC-AUC。Gemini 推理 14 分 40 秒，约 3.92 条/秒，最长等待约 17 秒，10 路，退避最多 10 次／100 秒。Jev 3 分 14 秒，约 17.73 条/秒，大约是 Gemini 的 4.5 倍，最大间隔 0.51 秒，延迟超过 3 秒的只有 0.23%（8 条），同样 10 路，退避最多 5 次。文内「90% 台后半」说的是 AUC 都很高，不是第五个指标。不要和 #1164、#1193、#1194、#1204 的 Jev 窗口写混，不是那次的 0.055 美元对 1.87 美元，也不是 24/24 或 9.6 秒。Gemini 和 Jev 都不在仓库 18 值里，源文未称为 ChatGPT，platforms 为 []。这些是作者这一份数据和这一次调用上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：正文作者仓 https://github.com/xxkuboxx/jev-eval（标题 GitHub - xxkuboxx/jev-eval · GitHub） 交付时 GET 200，可列可达，按作者项目导流披露，不另作本条主源。作者资料 website_url 为空，不补写。正文未配图。embed.zenn.studio 是平台卡片，不当作者产品导流，不单列、不列入须核。Gemini 和 Jev 都不在仓库 18 值里，源文未称为 ChatGPT，platforms 为 []。不要和 #1164、#1193、#1194、#1204 的 Jev 窗口写混。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0.006 美元对 0.158 美元，再把 94.29% 从测试集成绩里拿开",
+        body: "请按原文核算：数据集是不是 11,489 条，训练 8,042、测试 3,447，12 类。测试集上 LightGBM／DistilBERT／Gemini／Jev 的 ROC-AUC 是不是 0.9945、0.9970、0.9751、0.9806。Gemini 3,447 条是不是 0.158 美元，Jev 是不是 0.006 美元。DistilBERT 的 94.29% 是不是第 2 个 epoch 的验证准确率，不是测试集 ROC-AUC。Gemini 是不是 14 分 40 秒、约 3.92 条/秒，Jev 是不是 3 分 14 秒、约 17.73 条/秒。不要写成 #1164、#1193、#1194、#1204 里的 Jev 窗口。",
+      },
+    ],
+    howItWorks: [
+      "先写测试集 3,447 条上的四行：LightGBM 0.9945／7.76ms，DistilBERT 0.9970／8.03ms，Gemini 0.9751／0.158 美元，Jev 0.9806／0.006 美元。",
+      "再把 DistilBERT 验证集准确率 94.29% 和测试集 ROC-AUC 0.9970 分开，不要写成同一个成绩。",
+      "Gemini 14 分 40 秒、Jev 3 分 14 秒，约 4.5 倍；不要把最大等待 17 秒写成 Jev 的 0.51 秒。",
+      "不要和 #1164、#1193、#1194、#1204 的 Jev 费用或 24/24 写混。platforms 为 []。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-09-21T01:14:29.923+09:00 → UTC 2026-09-20T16:14:29Z、Asia/Shanghai 2026-09-21 00:14:29；body_updated_at 2026-09-21T02:05:55.544+09:00，晚于发布但同一天，取 published → 2026-09-21；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-21。不要和 #1164、#1193、#1194、#1204 的 Jev 窗口写混。",
+    ],
+  },
+  {
+    id: "1211",
+    slug: "kaji-25to33",
+    title: "kaji_kaji：把 22 分钟录音的转写从 25 分钟降到 33 秒。标题里的 25 分钟是最初 10–25 分钟这一段的高位，必须把 10–25 一起披露。第三次方案在 Mac 上是分离 8 秒、转写 29 秒、合计 33 秒。不要把 Linux 上 225 秒→13 秒、Mac 上 87 秒→9 秒的 ONNX 对照，写成已经是最后的 8／29／33。这篇源文没有 ChatGPT，platforms 为 []。发布日必须写成 2026-11-07，不要因更新字段写成 2026-11-04。与 #1214 同一天但主题不同。不可外推。",
+    summary: "kaji_kaji 把 22 分钟录音的转写从最初的 10–25 分钟做到最后 33 秒。标题里的 25 分钟是这一段的高位；Linux／Mac 上 ONNX 对照的 13 秒和 9 秒，不是最后的 8／29／33。",
+    description: "作者把说话人分离和转写拆开三次试验并行，最终在 Mac 上把整段 22 分钟录音做到 33 秒。这是这一段录音和这一台 Mac 上的实測，不是通用转写加速公式。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/kaji_kaji/articles/speaking-log-parallel-measured-three-times",
+    sourceLabel: "zenn.dev·kaji_kaji《22 分の録音文字起こしを 25 分 → 33 秒にした》",
+    upvotes: 1102,
+    trending: false,
+    tags: [
+      "whisper",
+      "diarization",
+      "mlx",
+      "onnx",
+      "transcription",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/kaji_kaji/articles/speaking-log-parallel-measured-three-times",
+      label: "zenn.dev·kaji_kaji《22 分の録音文字起こしを 25 分 → 33 秒にした》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者先按旧路径转写一段 22 分钟的录音，发现要 10–25 分钟；换上 mlx-whisper 后大约 2.5 分钟。之后把「并行」试了三次：第一次因为 CPU 已经占满而放弃；第二次在 GPU 转写之后让分离走 CPU、转写走 GPU，并给分离留出 2 个 CPU 核；第三次把 GPU 工作再拆开，但 GPU 已经饱和，没有再缩短。分离后来改成直接跑 ONNX 分段。",
+    outcomes: [
+      "源披露：最初转写这段 22 分钟录音要 10–25 分钟，标题「25 分→33 秒」用的是这一段的高位，必须把 10–25 一起披露。换上 mlx-whisper 后大约 2.5 分钟。并行试了三次。第一次因为 CPU 已经占满，没有采用。第二次在 GPU 转写之后，让分离走 CPU、转写走 GPU：第一次两件事都在 2 分 35 秒结束（有一边在等）；给分离留出 2 个 CPU 核后，分离 1 分 26 秒、转写 36 秒，合计 1 分 28 秒。线程对进程的微基准 2–6% 对 103%，是另一次测量，不要写成这次 1 分 28 秒的原因。大约 40 秒花在后来没用上的功能上。改成直接跑 ONNX 分段后，Linux 上 225 秒→13 秒，Mac 上 87 秒→9 秒，准确率没有变（细节在另一篇）。最终 Mac 路径是分离 8 秒、转写 29 秒，合计 33 秒。第三次再拆 GPU 工作没有更快，因为 GPU 已经饱和。不要把 Linux 225→13、Mac 87→9 和最后的 8／29／33 写混。源文是 mlx-whisper 和 sherpa-onnx，这篇没有 ChatGPT；相关篇里出现的 ChatGPT 只是那篇的动机，不得写入 chatgpt，platforms 为 []。这些是作者这一段 22 分钟录音、这一台机器上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url（https://apps.apple.com/jp/app/%E3%82%AB%E3%82%AD%E3%82%B4%E3%83%BC%E3%83%A9%E3%83%BC/id6779429944）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。speaking-log 工具尚未公开，也不要把资料栏里的 Kakigora 写成这篇正文的导流。正文未配图。相关篇与一次资料 https://zenn.dev/kaji_kaji/articles/diarization-ground-truth-before-model-swap（标题 録音した会話の声の聞き分け精度を 78% → 98% にした） 交付时 GET 200，可列可达、https://zenn.dev/kaji_kaji/articles/retry-backoff-jitter-budget-measured（标题 事故ってサーバーを破壊させないためのリトライ設計） 交付时 GET 200，可列可达、https://docs.python.org/ja/3/glossary.html#term-global-interpreter-lock（标题 用語集 — Python 3.15.2 ドキュメント） 交付时 GET 200，可列可达，是作者同系列或文档，不当本条主源、不当作者独立产品导流。相关篇里的 78%→98% 不要写进本条；那篇里出现的 ChatGPT 只是那篇的动机，这篇源文没有称为 ChatGPT，不得写入 chatgpt，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 25 分钟是 10–25 的高位，再把 225→13、87→9 和 8／29／33 分开",
+        body: "请按原文核算：最初转写 22 分钟录音是不是要 10–25 分钟，标题里的 25 分钟是不是这一段的高位。mlx-whisper 之后是不是大约 2.5 分钟。第二次并行是不是先出现两边都在 2 分 35 秒结束，留出 2 个 CPU 核后才是分离 1 分 26 秒、转写 36 秒、合计 1 分 28 秒。线程对进程 2–6% 对 103% 是不是另一次测量。ONNX 分段是不是 Linux 225 秒→13 秒、Mac 87 秒→9 秒。最终 Mac 路径是不是分离 8 秒、转写 29 秒、合计 33 秒。不要把这三组时间写混。这篇源文有没有称为 ChatGPT。",
+      },
+    ],
+    howItWorks: [
+      "先写最初是 10–25 分钟，标题 25 分钟是这一段的高位，不要只写 25。换上 mlx-whisper 后大约 2.5 分钟。",
+      "第二次并行：两边都在 2 分 35 秒结束是有一边在等；留出 2 个 CPU 核后是分离 1 分 26 秒、转写 36 秒、合计 1 分 28 秒。",
+      "ONNX 分段对照是 Linux 225→13、Mac 87→9，准确率不变；不要写成已经是最后的 33 秒。",
+      "最终 Mac 路径是分离 8 秒、转写 29 秒、合计 33 秒。第三次再拆 GPU 没有更快。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-11-07T09:00:06.228+09:00 → UTC 2026-11-07T00:00:06Z、Asia/Shanghai 2026-11-07 08:00:06；body_updated_at 2026-11-04T17:32:55.172+09:00，早于 published_at（预约发布），仍取 published → 2026-11-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07，不要因更新字段写成 2026-11-04。与 #1214 同一日历日，但作者和主题都不同。",
+    ],
+  },
+  {
+    id: "1212",
+    slug: "php-156-47",
+    title: "phpmyadmin／toyoshi：在两张 CMP 170HX 上跑 HumanEval+ 164 题。Qwen 关闭思考是 156／95.1%／4.7 分钟，作者把它当作日常首选；开着思考的官方设置是 151／30.2 分钟，且 10 题写满 16,384 个思考 token 仍没有最终答案。不要把 ThinkCode 的 decode tok/s 写成这 164 题的墙钟，也不要和 #1190、#1202、#1203 写混。DeepSeek 这次实际跑过，platforms 记 deepseek。发布日必须写成 2026-10-27。1 次试验，不可外推。",
+    summary: "toyoshi 在两张 64GB 的 CMP 170HX 上跑 HumanEval+ 164 题，发现 Qwen 关闭思考是 156 题、4.7 分钟，比日常在用的 GLM 多对 4 题，墙钟大约是 13.3 分钟的 1/2.8。",
+    description: "作者在双卡 64GB 的 CMP 170HX 上比较 GLM、DeepSeek 和 Qwen 的 HumanEval+ 通过数与等待时间，并把思考额度单独拿出来看。这是 164 题各 1 次的实測，不是智能体或仓库探索评测。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [
+      "deepseek",
+    ],
+    sourceUrl: "https://zenn.dev/phpmyadmin/articles/cmp170hx-three-models-thinking-budget",
+    sourceLabel: "zenn.dev·phpmyadmin《CMP 170HX 2枚でGLM・DeepSeek・Qwenの速度と正確さを比較する》",
+    upvotes: 1103,
+    trending: false,
+    tags: [
+      "humaneval",
+      "deepseek",
+      "qwen",
+      "cmp170hx",
+      "local-llm",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/phpmyadmin/articles/cmp170hx-three-models-thinking-budget",
+      label: "zenn.dev·phpmyadmin《CMP 170HX 2枚でGLM・DeepSeek・Qwenの速度と正確さを比較する》",
+      date: "2026-10-27",
+      dateLabel: "发布",
+    },
+    approach: "作者在两张 64GB 的 CMP 170HX、128GB 内存的机器上，用 HumanEval+ 的 164 题做 1 次试验，温度 0、top_p=1、seed=42、输出上限 16,384，官方测试和额外测试都要通过才算对。时间只加总等待模型返回的时间，不含加载和评分。测量脚本、评分和草稿由模型按作者指示写出，数字仍是作者这轮测量。",
+    outcomes: [
+      "源披露：GLM ExLlamaV3 K5 High 152／92.7%／13.3 分钟／0 次写满上限；GLM TensorFold（参照）152／7.3 分钟。DeepSeek Maya-XS 153／93.3%／53.2 分钟；GSQ-RCO 2.25bpw 153／72.8 分钟；GSQ 2.00bpw 154／93.9%／49.4 分钟。Qwen 官方思考 151／92.1%／30.2 分钟，10 题写满 16,384 个思考 token、没有最终答案；思考 4K 时 155／94.5%／16.4 分钟／0 次写满；8K 时 155／22.7 分钟／1 次写满，但那 1 题仍有最终答案，和上面 10 题不同；关闭思考 156／95.1%／4.7 分钟／0 次写满。作者把关闭思考当作日常首选：比日常 GLM 多对 4 题，墙钟大约是 13.3 分钟的 1/2.8；若要开思考，更愿意用 4K 而不是 8K（同样 155 题，等待更短）。DeepSeek 比 GLM 多对 2 题，但时间大约 3.7 倍，还不够改日常首选。1–4 题的差距不要写成已经拉开档次；这是 1 次试验，也不是智能体或仓库探索评测。另有一张 ThinkCode 的 decode 表（8 次中位数、关闭思考、上限 400）：Qwen 189.2 t/s（59 token），GLM TensorFold 104.0（336），DeepSeek Maya 84.2（99），GLM ExLlama 69.5（120），GSQ 2.25 60.7（49），GSQ 2.00 54.8（98）。其中 GLM／Qwen 的 decode 是过去的测量，DeepSeek 是这次；不要把 decode tok/s 写成 164 题的墙钟。不要和 #1190 的 DGX Spark DeepSeek t/s、#1202 的 4×4090 Strata、#1203 的 RX6800 写混。Qwen 和 GLM 不在仓库 18 值里；DeepSeek-V4.1-Flash 这次实际跑过，platforms 记 deepseek。源文未称为 ChatGPT。这些是作者这两张 170HX、这一次 164 题上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 3 张：https://static.zenn.studio/user-upload/deployed-images/82a48986817b14bf7597e578.png?sha=9f38ff6bcdef1f808bd7d8276fecb55050b54acd（标题 无标题） 交付时 GET 200，可列可达、https://static.zenn.studio/user-upload/deployed-images/88cfc9df974a455e50abe792.png?sha=d581506cb376e75c37d7ee31e46df4e287145b23（标题 无标题） 交付时 GET 200，可列可达、https://static.zenn.studio/user-upload/deployed-images/fda06216ae75eb452e6ed17b.png?sha=0016fd6e258b3f21d4c8e859189e307839117ba0（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档与相关篇 https://github.com/evalplus/evalplus/tree/26d6d00bb1fd0fa37f39c99d5290da67891d1c5e（标题 GitHub - evalplus/evalplus at 26d6d00bb1fd0fa37f39c99d5290da67891d1c5e · GitHub） 交付时 GET 200，可列可达、https://huggingface.co/halt95/Qwen3.8-Flash-Next-W4A16-Merlin/tree/cec53e9f90e5995b81691604ec0b32191debf797（标题 halt95/Qwen3.8-Flash-Next-W4A16-Merlin at cec53e9） 交付时 GET 200，可列可达、https://huggingface.co/turboderp/Qwen3.8-Flash-Next-exl3（标题 turboderp/Qwen3.8-Flash-Next-exl3 · Hugging Face） 交付时 GET 200，可列可达、https://zenn.dev/phpmyadmin/articles/cmp170hx-model-selection（标题 170HX 2枚のローカルLLM選び。生成速度とコードの完了を分けて比較する） 交付时 GET 200，可列可达，不当本条主源、不当作者产品导流。相关篇是同一硬件上的选模型前文，不要把那篇的速度窗写进本条的 164 题成绩。Qwen 和 GLM 不在仓库 18 值里；DeepSeek-V4.1-Flash 这次实际跑过，platforms 记 deepseek。源文未称为 ChatGPT。不要和 #1190、#1202、#1203 写混。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清关闭思考的 156／4.7 分钟，再把 decode 表从 164 题墙钟里拿开",
+        body: "请按原文核算：HumanEval+ 是不是 164 题各 1 次，温度 0、seed=42、上限 16,384。关闭思考的 Qwen 是不是 156／95.1%／4.7 分钟，官方思考是不是 151／30.2 分钟且 10 题没有最终答案，4K／8K 是不是都是 155 题，8K 那 1 次写满是不是仍有最终答案。日常 GLM 是不是 152／13.3 分钟。DeepSeek Maya-XS 是不是 153／53.2 分钟。ThinkCode 表的 189.2／104.0／84.2 t/s 是不是 8 次中位数、关闭思考、上限 400，不要写成 164 题墙钟。这是不是 1 次试验。不要写成 #1190、#1202、#1203 的窗口。",
+      },
+    ],
+    howItWorks: [
+      "先写关闭思考的 Qwen 是 156／95.1%／4.7 分钟，这是作者的日常首选，比日常 GLM 的 152／13.3 分钟多对 4 题、墙钟大约 1/2.8。",
+      "再写官方思考是 151／30.2 分钟，且 10 题写满 16,384、没有最终答案；4K 和 8K 都是 155 题，8K 那 1 次写满仍有最终答案。",
+      "DeepSeek 153／53.2 分钟，比 GLM 多对 2 题但大约 3.7 倍时间，还不够改日常首选。1–4 题差距不要夸大，且是 1 次试验。",
+      "ThinkCode decode 表是另一组条件，不要写成 164 题墙钟；也不要和 #1190、#1202、#1203 写混。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-10-27T11:29:54.078+09:00 → UTC 2026-10-27T02:29:54Z、Asia/Shanghai 2026-10-27 10:29:54；body_updated_at 2026-10-27T20:57:28.336+09:00，晚于发布但同一天，取 published → 2026-10-27；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-27。不要把 ThinkCode 的 decode tok/s 写成 164 题的墙钟，也不要和 #1190、#1202、#1203 写混。",
+    ],
+  },
+  {
+    id: "1213",
+    slug: "koug-063-36",
+    title: "kougi：在 16GB 的 RTX 5070 Ti 上跑官方建议 24GB 的 Nemotron 3.5 Bolt。关闭思考后，默认（投机解码开着）约 36–46 t/s，图 1 一次是 46；关掉 draft 后约 60 t/s。llm-jp-eval 均分 Bolt 0.63、Lightning 0.56、nano 0.46；日语 MT-Bench 8.20／7.78／5.99。无护栏的 Agent B0 成功率 Bolt 0.81、nano 0.76、Lightning 0.68。长输入速度没有测量。审查员是 qwen3:14b，不是 GPT-4，platforms 为 []。发布日必须写成 2026-10-18。不可外推。",
+    summary: "kougi 在 16GB 的 5070 Ti 上跑建议 24GB 的 Bolt：关闭思考后默认约 36–46 t/s，均分 0.63，日语 MT-Bench 8.20。长输入速度没有测量；不要和 157、161 的本地速度窗写混。",
+    description: "作者把 Bolt 74B-A9B、Lightning 30B-A3B 和 nano 4B 放到同一张 16GB 卡上，比较速度、日语质量和一档无护栏的智能体实验。这是这一张卡、关闭思考后的实測，不是官方排行。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/kougi/items/1e7b3bfbad0545653ab5",
+    sourceLabel: "qiita.com·kougi《24GB推奨のモデルを16GBで:Nemotron 3.5 Bolt の速度・日本語品質・エージェント実験》",
+    upvotes: 1104,
+    trending: false,
+    tags: [
+      "nemotron",
+      "ollama",
+      "rtx5070ti",
+      "mt-bench",
+      "local-llm",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kougi/items/1e7b3bfbad0545653ab5",
+      label: "qiita.com·kougi《24GB推奨のモデルを16GBで:Nemotron 3.5 Bolt の速度・日本語品質・エージェント実験》",
+      date: "2026-10-18",
+      dateLabel: "发布",
+    },
+    approach: "作者在 RTX 5070 Ti 16GB、内存 64GB、Windows 11 上，用 Ollama 0.40.5 跑 Bolt、Lightning 和 nano，全部关闭思考。先用 300 token 的自由日语生成看速度，再跑 llm-jp-eval 和由 qwen3:14b 当审查员的日语 MT-Bench，最后做没有护栏的 Agent B0。B1–B3 因为审查员加上 Bolt 会超出显存，没有做。",
+    outcomes: [
+      "源披露：机器是 RTX 5070 Ti 16GB／内存 64GB／Windows 11。Bolt 74B-A9B IQ2 约 20.5GiB，官方建议 24GB，对 Lightning 30B-A3B 和 nano 4B，全部关闭思考。300 token 自由日语、num_ctx 8192 时，nano 约 220 t/s；Lightning 约 74–81；Bolt 默认（投机解码开着）约 36–46 t/s，图 1 一次是 46；draft_num_predict=0 后约 60；draft=3 时约 52–75，图 1 另一次是 68。显存峰值约 15,300 MiB；把 num_ctx 从 8,192 提到 65,536 时，显存 15,282→15,302，速度在 −2% 到 +3% 之间，但提示词仍然很短，长输入速度没有测量。llm-jp-eval 均分 Bolt 0.63、Lightning 0.56、nano 0.46；mgsm 在 Windows 上用 math-verify 全是 0.00，后来改成 exact match；先试 50 条、正式 100 条，接近的集合提到 300 条；Lightning 有一组走到 421 秒，直到把 max_tokens 设成 256。相对日语 MT-Bench（审查员 qwen3:14b，60 题）是 8.20／7.78／5.99，Bolt 对 Lightning 的差距几乎只在推理这一类。Agent B0（无护栏）成功率 Bolt 0.81、nano 0.76、Lightning 0.68；Bolt 对 nano 总共多成 4.7 个任务，其中 4 个落在「普通」区间；单任务时间大约是 nano 的 3 倍。B1–B3 没有做。这组 3 个种子的 B0，不要和作者先前 10 个种子的文章直接比。NVIDIA 官方的 PinchBench／BrowseComp 名次是厂商说法，作者没有在这里复核。审查员不是 GPT-4；文内的 gpt-3.5-turbo 只是默认请求名的毛病，不是用了 ChatGPT，openai-compatible 端点也不得写入 chatgpt，platforms 为 []。不要和 157 的本地速度窗，或 161 的 MiniCPM／Qwythos／NPU 数字写混。这些是作者这一张 16GB 卡、关闭思考后的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 5 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/188937/97771075-0422-43e2-a20d-bdb06f6d74f3.png（标题 无标题） 交付时 GET 200，可列可达、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/188937/6e0d8385-d380-49f5-9d8d-829d557359ec.png（标题 无标题） 交付时 GET 200，可列可达、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/188937/91095ae9-7b13-4a2c-9017-0bd15f6449fe.png（标题 无标题） 交付时 GET 200，可列可达、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/188937/8cd812e6-38c0-4466-ab7b-8c601e9dbbe3.png（标题 无标题） 交付时 GET 200，可列可达、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/188937/d662e437-1461-4816-9cb8-1c2d97c0bdbf.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。这些图寄存在 qiita-image-store 的 S3 上，只是图床，不是 Amazon 产品导流。相关篇、一次资料与文内文档 https://qiita.com/kougi/items/8c9544ed741f96502a3a（标题 25GBのMoEモデルを16GB VRAMで動かす — Nemotron 3.5 Lightning 実機検証 #NVIDIA - Qiita） 交付时 GET 200，可列可达、https://qiita.com/kougi/items/3660c6c137868d106597（标题 マルチエージェントを自律的に運用する -振る舞い劣化の隔離と回復- #LLM - Qiita） 交付时 GET 200，可列可达、https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/（标题 Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models | NVIDIA Blog） 交付时 GET 200，可列可达、https://arxiv.org/abs/2602.06036v1（标题 [2602.06036v1] DFlash: Block Diffusion for Flash Speculative Decoding） 交付时 GET 200，可列可达、https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-GGUF（标题 nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-GGUF · Hugging Face） 交付时 GET 200，可列可达、https://github.com/llm-jp/llm-jp-eval（标题 GitHub - llm-jp/llm-jp-eval · GitHub） 交付时 GET 200，可列可达、https://github.com/Stability-AI/FastChat/tree/jp-stable（标题 GitHub - Stability-AI/FastChat: An open platform for training, serving, and evaluating large language models. Release repo for Vicuna and Chatbot Arena. · GitHub） 交付时 GET 200，可列可达，不当本条主源、不当作者产品导流。文内对照博客 https://glukhov.org/llm-performance/benchmarks/choosing-best-llm-for-ollama-on-16gb-vram-gpu/（标题 ERROR: The request could not be satisfied） 交付时 HTTP 403（标题 ERROR: The request could not be satisfied），不列入可达，须写出完整 URL 并披露状态。官方 PinchBench／BrowseComp 名次是厂商说法，作者没有在这里复核。审查员是 qwen3:14b，不是 GPT-4；gpt-3.5-turbo 只是默认请求名的毛病，不得写入 chatgpt，platforms 为 []。不要和 157、161 的本地速度窗写混。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清默认 36–46 t/s 和关掉 draft 后的约 60，再谈 0.63 和 8.20",
+        body: "请按原文核算：Bolt 关闭思考后，默认（投机解码开着）是不是约 36–46 t/s，图 1 一次是不是 46；draft=0 后是不是约 60。nano 是不是约 220，Lightning 是不是约 74–81。把 num_ctx 提到 65,536 时速度变化不大，但长输入是不是没有测量。llm-jp-eval 均分是不是 0.63／0.56／0.46。日语 MT-Bench 是不是 8.20／7.78／5.99，审查员是不是 qwen3:14b，不是 GPT-4。Agent B0 成功率是不是 Bolt 0.81、nano 0.76、Lightning 0.68。这组是不是 3 个种子，不要和先前 10 个种子的文章比。gpt-3.5-turbo 是不是只作为默认请求名出现。",
+      },
+    ],
+    howItWorks: [
+      "先写速度：Bolt 默认约 36–46 t/s（图 1 一次是 46），关掉 draft 后约 60；nano 约 220，Lightning 约 74–81。长输入没有测量。",
+      "再写 llm-jp-eval 均分 0.63／0.56／0.46；mgsm 在 math-verify 下全是 0.00，后来改成 exact match。",
+      "日语 MT-Bench 8.20／7.78／5.99，审查员是 qwen3:14b，不是 GPT-4；Bolt 对 Lightning 的差距几乎只在推理类。",
+      "Agent B0 是 Bolt 0.81、nano 0.76、Lightning 0.68，不要和先前 10 个种子的文章比；B1–B3 因显存没做。官方名次不是作者复核。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-18T15:38:15.000+09:00，与 API created_at 2026-10-18T15:38:15+09:00 一致 → UTC 2026-10-18T06:38:15Z、Asia/Shanghai 2026-10-18 14:38:15；dateModified／updated_at 与发布相同，取 published → 2026-10-18；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-18。不要和 157 的本地速度窗，或 161 的 MiniCPM／Qwythos／NPU 数字写混。",
+    ],
+  },
+  {
+    id: "1214",
+    slug: "arie-671-359",
+    title: "ariera：在 EVO-X2（Ryzen AI Max+ 395／128GB，UMA 96GB）上查 llama.cpp 的 MTP 预填充为什么变慢。关掉 P-MODE 陷阱后，只改 KV 的 Stage B 在 64k 是 +3.588%（约 6.42 秒），128k 是 +6.713%（约 26.39 秒），这才是标题里的 +3.59%／+6.71%。不要把 r5 基线的 −7.61%／−9.39% 写成这次修补后的加速，也不要把 flatten 的 +1.39%／+1.40%，或 r6 集成后的 +2.20%／+3.60% 写成 Stage B。发布日必须写成 2026-11-07，不要因源时区写成 2026-11-08。与 #1211 同一天但主题不同。不要和 #1152、#1202 写混。platforms 为 []。不可外推。",
+    summary: "ariera 在 EVO-X2 上查 MTP 预填充变慢的原因：避开 P-MODE 陷阱后，只改 KV 的 Stage B 在 64k／128k 分别快 3.588%／6.713%。r5 基线里 MTP 反而是慢的，不要写成同一次加速。",
+    description: "这是 EVO-X2 系列第 12 回，作者在 Vulkan 上用同一份长输入对照 MTP 开关，并给出修补前后的百分差。测量只在 Vulkan 上成立，不要写成 ROCm 也一样。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/ariera/items/758af5e0c23c266e060b",
+    sourceLabel: "qiita.com·ariera《第12回 EVO-X2（Ryzen AI Max+ 395 / 128GB）+ Qwen3.8-Flash-Next用のllama.cpp改造でMTPのPP速度低下を調査した話》",
+    upvotes: 1105,
+    trending: false,
+    tags: [
+      "llamacpp",
+      "mtp",
+      "evo-x2",
+      "vulkan",
+      "qwen",
+    ],
+    primarySource: {
+      url: "https://qiita.com/ariera/items/758af5e0c23c266e060b",
+      label: "qiita.com·ariera《第12回 EVO-X2（Ryzen AI Max+ 395 / 128GB）+ Qwen3.8-Flash-Next用のllama.cpp改造でMTPのPP速度低下を調査した話》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Ryzen AI Max+ 395、128GB、UMA 96GB 的 EVO-X2 上，用 Unsloth 的 Qwen3.8-Flash-Next UD-IQ3_XXS 和 Draft Q8_0、DraftMax=2，在 Vulkan 上做 MTP 开／关对照。先记录 r5 基线里打开 MTP 后预填充变慢，再避开 P-MODE 按钮的陷阱，只改 KV 路径做 Stage B，并在 Stage B 上叠加 flatten，最后看 r6 集成后打开全部自定义开关的结果。",
+    outcomes: [
+      "源披露：PP／TG 都是 tok/s，越大越快。r5 b11560 基线：64k 时 MTP 关 361.52、开 334.00，−7.61%，多 14.08 秒；128k 时 335.46 对 303.97，−9.39%，多 38.99 秒。阶段时间 64k／128k：关是 PP 171.12 秒／382.97 秒，开是 181.31／420.91，多 10.19／37.94 秒。避开番外编 6 里的 P-MODE 陷阱后，只改 KV 的 Stage B：64k 333.495→345.460，+3.588%（约 6.42 秒）；128k 300.930→321.130，+6.713%（约 26.39 秒），这才是标题里的 +3.59%／+6.71%。在 Stage B 上再叠加 flatten，是 +1.39%／+1.40%。r6 集成后打开全部自定义开关：64k 关 350.59、开 358.29，+2.20%，TG 26.07 对 33.90；128k 311.75 对 322.98，+3.60%，TG 24.03 对 30.49；256k 只测了打开 MTP，301.30／TG 25.08，关闭那一侧没有测。r6 把开关关掉后：64k 346.05 对 319.31，128k 270.79 对 248.01，「大约慢 8%」的倾向在没有这些开关时仍然在。不要把 r5 基线的 −7.61%／−9.39%、Stage B 的 +3.59%／+6.71%、flatten 的 +1.4%、r6 的 +2.20%／+3.60%，以及关开关后大约慢 8% 写混。实际输入 token 是 61,789／126,253／255,181。测量只在 Vulkan 上成立，ROCm 是否同样加快未经确认。附录里的 DENSE／NOOP TG 和 r5 干净 PP 是另一组条件，不要写进 Stage B／r6 的主窗口；附录的 llama-cli 示例也不是 ABBA 表的条件。不要和 #1152 的 DGX Spark／Ollama granite，或 #1202 的 4×4090 Strata 写混。源文未称为 ChatGPT，platforms 为 []。这些是作者这一台 EVO-X2、这一组 Vulkan 对照上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：正文作者仓 https://github.com/ariera-j/llama.cpp-evox2-windows（标题 GitHub - ariera-j/llama.cpp-evox2-windows · GitHub） 交付时 GET 200，可列可达，按作者项目导流披露，不另作本条主源。作者资料 website_url 为空，不补写。配图 2 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/306431/9b0a1a73-7199-4303-a1bd-e47502039f80.png（标题 无标题） 交付时 GET 200，可列可达、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/306431/9a111f4b-d675-461b-ae4b-c39ab728708b.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。相关篇与一次资料 https://qiita.com/ariera/items/1b7accb7c52ba0227d99（标题 第11回 EVO-X2（Ryzen AI Max+ 395 / 128GB）+ Qwen3.8-Flash-Next用のllama.cpp改造でベースを入れ替えてMTPを調査した話 #LocalLLM - Qiita） 交付时 GET 200，可列可达、https://qiita.com/ariera/items/cd55281e75d34d904395（标题 第10回 EVO-X2（Ryzen AI Max+ 395 / 128GB）+ Qwen3.8-Flash-Next用のllama.cpp改造で長コンテキストのTGを高速化した話 #LocalLLM - Qiita） 交付时 GET 200，可列可达、https://qiita.com/ariera/items/dec991572b708ebbe2db（标题 EVO-X2 x Qwen3.8-Flash-Next 番外編6 EVO-X2のP-MODEボタンの罠 同じexeでも速度が大きく変わる #llama.cpp - Qiita） 交付时 GET 200，可列可达、https://qiita.com/ariera/items/2f9353899c2265dea7cd（标题 EVO-X2 x Qwen3.8-Flash-Next番外編4 入力文書と読み込み速度の関係(実測編) 読み込み速度が最大1.41倍違う #AI - Qiita） 交付时 GET 200，可列可达、https://qiita.com/ariera/items/40c915c47009ec0a7e16（标题 EVO-X2 x Qwen3.8-Flash-Next番外編5 入力文書と読み込み速度の関係(検証編) FlashAttentionのGPU処理時間が約4.1倍？ #AI - Qiita） 交付时 GET 200，可列可达、https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF（标题 unsloth/Qwen3.8-Flash-Next-GGUF · Hugging Face） 交付时 GET 200，可列可达、https://github.com/LaurentZuijdwijk/llama.cpp（标题 GitHub - LaurentZuijdwijk/llama.cpp: llama.cpp with adaptive speculative decoding (--spec-draft-adaptive) and a Vulkan backend tuned for AMD Strix Halo. 4.7x on structured output, 1.9x mainline prefill on MoE. · GitHub） 交付时 GET 200，可列可达，是同一系列第 11 回、第 10 回和番外编，或模型／上游仓，不当本条主源。测量只在 Vulkan 上成立，不要写成 ROCm 也一样。源文未称为 ChatGPT，platforms 为 []。不要和 #1152、#1202 写混。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 Stage B 的 +3.588%／+6.713%，再把 r5 基线的负数拿开",
+        body: "请按原文核算：r5 基线打开 MTP 后，64k 是不是 361.52→334.00（−7.61%），128k 是不是 335.46→303.97（−9.39%）。避开 P-MODE 陷阱后，Stage B 是不是 64k 333.495→345.460（+3.588%）、128k 300.930→321.130（+6.713%），这是不是标题里的 +3.59%／+6.71%。flatten 是不是再加 +1.39%／+1.40%。r6 打开全部开关后是不是 +2.20%／+3.60%，256k 是不是只测了打开的一侧。关开关后 64k／128k 是不是 346.05 对 319.31、270.79 对 248.01。实际输入 token 是不是 61,789／126,253／255,181。测量是不是只在 Vulkan 上。发布日按上海日历是不是 2026-11-07，不要写成 2026-11-08。",
+      },
+    ],
+    howItWorks: [
+      "先写 r5 基线：打开 MTP 后 64k −7.61%、128k −9.39%，这是变慢，不要写成修补后的加速。",
+      "再写避开 P-MODE 陷阱后的 Stage B：64k +3.588%、128k +6.713%，这才是标题里的 +3.59%／+6.71%。",
+      "flatten 是在 Stage B 上再加 +1.39%／+1.40%；r6 打开全部开关后是 +2.20%／+3.60%；256k 只测了打开的一侧。",
+      "关开关后大约慢 8% 的倾向还在。测量只在 Vulkan 上成立。发布日必须写成 2026-11-07，不要因源时区写成 2026-11-08。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-11-08T00:31:12.000+09:00，与 API created_at 2026-11-08T00:31:12+09:00 一致 → UTC 2026-11-07T15:31:12Z、Asia/Shanghai 2026-11-07 23:31:12；dateModified／updated_at 2026-11-08T00:36:26+09:00，晚于发布但源时区仍是 11-08，按规则取上海日历日 → 2026-11-07；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07，不要因源时区写成 2026-11-08。与 #1211 同一日历日，但作者和主题都不同。不要把 r5 基线的 −7.61%／−9.39% 写成 Stage B 的 +3.59%／+6.71%，也不要和 #1152、#1202 写混。",
+    ],
+  },
+  {
+    id: "1215",
+    slug: "code-40q-14",
+    title: "codetech／Dayaa：用国税厅源泉税答问 40 题评估 Cohere Rerank 5。精度按 31 题算（1 段检索漏掉金牌的那题已排除），重排把首位命中从 20/31 提到 27–29/31。5 Pro 对 4 Pro 的 MRR 只高 0.032，分不出和偶然的差别。Context Focus 在 400 字块上只削 11%，在整页上削 62%，不要写成同一个削减。每问费用 5 Pro 约是 4 Pro 的 1/14，不要写成跟 ruri 比。官方 89.4 是厂商数字，不是作者成绩。Claude Code 只帮起草题目，不得写入 claude，platforms 为 []。发布日必须写成 2026-10-25。不可外推。",
+    summary: "Dayaa 用 40 道源泉税问题评估 Rerank 5：精度按 31 题算，重排能把首位命中从 20/31 提到 27–29/31，但 5 Pro 和 4 Pro 分不出稳定差别。不要把官方 89.4 写成作者成绩。",
+    description: "作者在同一批 20 个候选上比较有无重排、4 Pro／5 Pro／5 Fast 和本地 ruri 重排器，并另测 Context Focus 与官方阈值。题目草案由 Claude Code 起草、作者核对，不得因此写入 claude。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/codetech/articles/cohere-rerank5-ja-rag-eval",
+    sourceLabel: "zenn.dev·codetech《Cohere Rerank 5 に乗り換える価値はあるか：日本語の業務文書40問で精度・Context Focus・較正スコアを実測した》",
+    upvotes: 1106,
+    trending: false,
+    tags: [
+      "rerank",
+      "cohere",
+      "ruri",
+      "rag",
+      "nta",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/codetech/articles/cohere-rerank5-ja-rag-eval",
+      label: "zenn.dev·codetech《Cohere Rerank 5 に乗り換える価値はあるか：日本語の業務文書40問で精度・Context Focus・較正スコアを実測した》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+    approach: "作者把国税厅「タックスアンサー」里源泉税相关的 65 页切成 345 个不超过 400 字的块（中位数 280 字），先用 ruri-v3-310m 取回前 20 个，再对 40 道题各做 3 次重排调用。精度看第 1 次的名次，延迟取 3 次的中位数。因为 1 段检索有 1 题没把金牌块找回来，精度按 31 题计算。",
+    outcomes: [
+      "源披露：语料是国税厅源泉税答问，65 页、345 块、每块不超过 400 字（中位数 280）。1 段是 ruri-v3-310m 的前 20，对所有系统都用同一顺序。40 题各 3 次调用；精度按第 1 次名次，延迟取 3 次中位数。精度按 31 题计算，因为有 1 题（软件许可费）在 1 段就没找回金牌块。官方博客里的 89.4／89.3／86.8 是厂商数字，不是作者成绩。作者这边，重排把首位命中从 31 题中的 20 题提到 27–29 题；无重排／4 Pro／5 Pro／5 Fast／ruri 重排器的首位命中率是 65%／87%／94%／90%／90%，MRR 是 0.801／0.930／0.962／0.946／0.941。5 Pro 对 4 Pro 的 MRR 高 0.032（95% 置信区间 −0.03 到 +0.10），5 Pro 更好的 3 题、更差的 1 题、相同的 27 题，这个题量分不出和偶然的差别，和「几乎一样」不冲突。免费的 ruri-v3-reranker 精度和 5 Fast 差不多，但在 4 线程 CPU 上每问约 8 秒（p50 7,789ms）。无重排时 Recall@5 已是 0.97。Context Focus（阈值 0.4）在不超过 400 字的块上，5 Pro／5 Fast 削减 11%／10%，依据还在 98%／96%；在整页（中位数 980 字）上削减 62%／66%，依据 100%／98%。阈值 0.1 时，块上只削 1.5%。削过的 5 个页（约 1,200–1,300 token）大约是削过的 5 个块（约 640 token）的 2 倍。课金 token 不因 Context Focus 改变，延迟差在 20 毫秒以内。官方阈值 Pro 0.50／Fast 0.45：8 道无答案题两边都全部低于阈值（100%）；31 道有答案题里，5 Pro 放出 30 题（漏的 1 题金牌已在第 1 位，但分数是 0.455），5 Fast 放出 31 题。无答案题的最高分，4 Pro 是 0.812，5 Pro／5 Fast 是 0.125／0.141；有答案题的最低分，4 Pro 是 0.890，5 Pro／5 Fast 是 0.455。延迟和每问费用：4 Pro 的 p50／p95 是 499／647ms，0.0025 美元；5 Pro 434／486ms，0.00018 美元（约 1/14）；5 Fast 416／468ms，0.00011 美元（约 1/23）。4 Pro 单价 2.50 美元／1000 次检索来自第三方站点，作者没有在 Cohere 定价页复核。同一批 20 个候选上，5 Pro 平均计费 3,608 token，5 Fast 是 5,350。这次 API 费用是主实验 1,080 次调用 0.40 美元，加上页级 80 次 0.026 美元。不要把官方 89.4 写成作者成绩，不要把 31 题写成 40 题，不要把块上 11% 和页上 62% 写混；1/14 和 1/23 是相对 4 Pro 的每问费用，不是相对 ruri。题目草案由 Claude Code 起草、作者核对，和 #1183 同类，不得写入 claude，platforms 为 []。这些是作者这一批 40 题、这一次调用上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：正文作者仓 https://github.com/dayaa-arch/cohere-rerank-5-rnd（标题 GitHub - dayaa-arch/cohere-rerank-5-rnd · GitHub） 交付时 GET 200，可列可达，按作者项目导流披露，不另作本条主源。作者资料 website_url 为空，不补写。配图 3 张：https://static.zenn.studio/user-upload/deployed-images/bcd6c993b7249d16b9534744.png?sha=4687866df5d91b57ee47f1191f6874a69a6fd19a（标题 无标题） 交付时 GET 200，可列可达、https://static.zenn.studio/user-upload/deployed-images/56c9dd2ee7d4b5a78145d583.png?sha=7e3d8f5d4e5fd462a43db741459e2a86e6e5b258（标题 无标题） 交付时 GET 200，可列可达、https://static.zenn.studio/user-upload/deployed-images/55d61e13f41fd56b951abe54.png?sha=bc785c0c18ea41351be96b2b72d25cbbdc9b3c74（标题 无标题） 交付时 GET 200，可列可达，不当导流。一次资料／文内文档 https://cohere.com/blog/rerank-5（标题 Cohere Rerank 5 | More Relevant Context for RAG and Agents） 交付时 GET 200，可列可达、https://docs.cohere.com/reference/rerank（标题 Rerank API (v2) | Cohere） 交付时 GET 200，可列可达、https://www.nta.go.jp/chuijiko/copy.htm（标题 利用規約・免責事項・著作権｜国税庁） 交付时 GET 200，可列可达、https://huggingface.co/cl-nagoya/ruri-v3-310m（标题 cl-nagoya/ruri-v3-310m · Hugging Face） 交付时 GET 200，可列可达、https://huggingface.co/cl-nagoya/ruri-v3-reranker-310m（标题 cl-nagoya/ruri-v3-reranker-310m · Hugging Face） 交付时 GET 200，可列可达，不当本条主源、不当作者产品导流。官方博客里的 89.4／89.3／86.8 是厂商数字，不是作者成绩。4 Pro 单价来自第三方站点，作者没有在 Cohere 定价页复核，源页也没有那条第三方硬链，不补写。题目草案由 Claude Code 起草、作者核对，不得写入 claude，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清精度按 31 题算，再把官方 89.4 和页上 62% 拿开",
+        body: "请按原文核算：40 题里精度是不是按 31 题计算，因为有 1 题在 1 段就没找回金牌。无重排是不是 20/31（65%），4 Pro／5 Pro／5 Fast／ruri 是不是 87%／94%／90%／90%。5 Pro 对 4 Pro 的 MRR 是不是 +0.032，置信区间是不是 −0.03 到 +0.10。官方 89.4／89.3／86.8 是不是厂商数字，不是作者成绩。Context Focus 在块上是不是 11%／10%，在整页上是不是 62%／66%。每问费用是不是 4 Pro 0.0025 美元、5 Pro 0.00018 美元（约 1/14）、5 Fast 0.00011 美元（约 1/23）。这次账单是不是 1,080 次 0.40 美元加 80 次 0.026 美元。Claude Code 是不是只起草了题目，不得写入 platforms。",
+      },
+    ],
+    howItWorks: [
+      "先写精度按 31 题算，不是 40 题；重排把首位命中从 20/31 提到 27–29/31。官方 89.4 不是作者成绩。",
+      "5 Pro 对 4 Pro 的 MRR 只高 0.032，置信区间穿过 0，不能写成已经明显更好。",
+      "Context Focus 在块上只削约 11%，在整页上削约 62%，不要写成同一个削减；课金 token 不变。",
+      "每问 5 Pro 约 0.00018 美元、约是 4 Pro 0.0025 美元的 1/14；1/14 和 1/23 不要写成跟 ruri 比。Claude Code 只是起草题目，不得写入 claude。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-10-25T19:39:52.492+09:00 → UTC 2026-10-25T10:39:52Z、Asia/Shanghai 2026-10-25 18:39:52；body_updated_at 2026-10-25T19:39:08.804+09:00，略早于 published_at，仍取 published → 2026-10-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-25。不要把官方 89.4 写成作者成绩，也不要把 31 问写成 40 问，或把块上 11% 的削减写成页上 62%。",
+    ],
+  },
+  {
+    id: "1216",
+    slug: "weza-370-924",
+    title: "wezaard17301：在 Core Ultra 5 235U 上比较 Intel AI Boost NPU、CPU 和核显，跑 Qwen2.5 0.5B–7B INT4。7B 的 decode 是 CPU 8.13、GPU 9.24、NPU 3.70 tok/s；NPU 从 3B 的 7.81 掉到 7B 的 3.70。GPU 一直是 decode 最快，但 7B 编译 35.75 秒，CPU 只要 2.06 秒。0.5B 是 Qwen2.5-Coder，不要和 1.5B 以上写成同一系列。不要把 #1201 的 Arduino NPU prefill 约 17〜18 倍或 TTFT 0.6〜0.7 秒写进这台机器。发布日必须写成 2026-09-01。platforms 为 []。不可外推。",
+    summary: "作者在 Core Ultra 5 235U 上比较 CPU、核显和 Intel NPU：GPU 的 decode 一直最快，但 7B 编译要 35.75 秒；NPU 在 7B 上掉到 3.70 tok/s。这不是 #1201 那块 Arduino NPU。",
+    description: "作者用简单的 HuggingFace 分词墙钟，在同一台笔记本上比较三个设备的加载／编译和 decode。生成文本和 token 数在设备之间并不完全相同，也不是官方 OpenVINO 基准。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/wezaard17301/articles/9fc7866fce3758",
+    sourceLabel: "zenn.dev·wezaard17301《Intel NPUで7B LLMは動くのか？ Core Ultra 5 235UでCPU・GPU・NPUを比較してみた》",
+    upvotes: 1107,
+    trending: false,
+    tags: [
+      "npu",
+      "openvino",
+      "core-ultra",
+      "qwen",
+      "local-llm",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/wezaard17301/articles/9fc7866fce3758",
+      label: "zenn.dev·wezaard17301《Intel NPUで7B LLMは動くのか？ Core Ultra 5 235UでCPU・GPU・NPUを比較してみた》",
+      date: "2026-09-01",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Core Ultra 5 235U 上用 OpenVINO 跑 Qwen2.5 0.5B 到 7B 的 INT4，分别走 CPU、核显和 Intel AI Boost NPU。提示词是「用日语说三个和电脑有关的短笑话」，max_new_tokens 128，先预热 8 个 token。LM Studio 起初会把加载放到 GPU 上（占用 97–98%，NPU 为 0%），作者改到自己的测量脚本里比较三个设备。",
+    outcomes: [
+      "源披露：这是 Core Ultra 5 235U 上 Intel AI Boost NPU 对 CPU、Intel GPU 的对照，模型是 Qwen2.5 0.5B–7B INT4；计时是简单的 HuggingFace 分词墙钟，不是官方 OpenVINO 基准，各设备上生成的文本和 token 数也不完全相同。不要写成 #1201 的 Arduino VENTUNO Q Hexagon NPU，也不要把那次的 prefill 约 17〜18 倍、TTFT 10 秒→0.6〜0.7 秒写进这台机器。LM Studio 起初把加载放到 GPU，占用 97–98%，NPU 为 0%。提示词是三个和电脑有关的短笑话，max_new_tokens 128，预热 8 个 token。0.5B 是 Qwen2.5-Coder，不要和 1.5B 以上写成同一系列。表（加载秒／tok/s）：0.5B 的 CPU 3.88／26.43，GPU 18.82／42.61，NPU 4.58／10.39；1.5B 是 6.42／12.47，27.81／28.38，6.94／9.66；3B 是 2.25／15.39，30.68／17.22，11.95／7.81；7B 是 2.06／8.13，35.75／9.24，18.09／3.70。GPU 的 decode 一直最快，但 7B 编译 35.75 秒，CPU 只要 2.06 秒；NPU 的 7B 3.70 明显低于 3B 的 7.81。3B 时内存占用 88–94%。7B 下载 15.2GB，int4 约 86%、int8 约 14%。0.5B 的笑话日语是坏的，7B 才说出真正的笑话。源文未称为 ChatGPT，platforms 为 []。这些是作者这一台 Core Ultra、这一组短提示词上的实測，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url（https://www.youtube.com/channel/UCNT4m5tGJtaVDpyafgW2qAg）只出现在作者资料／侧栏或 bio，源页 HTML／正文／简介没有这条硬链，不算导流，不补写。配图 1 张：https://static.zenn.studio/user-upload/482e619061cd-20260901.png（标题 无标题） 交付时 GET 200，可列可达，不当导流。不要把 #1201 的 Arduino NPU 数字写进这台 Core Ultra。源文未称为 ChatGPT，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清这是 Core Ultra 而不是 Arduino，再谈 7B 的 3.70 tok/s",
+        body: "请按原文核算：这是不是 Core Ultra 5 235U 上的 Intel AI Boost NPU，不要写成 #1201 的 Arduino 板。7B 的 decode 是不是 CPU 8.13、GPU 9.24、NPU 3.70 tok/s，NPU 是不是从 3B 的 7.81 掉下来。7B 的加载／编译是不是 CPU 2.06 秒、GPU 35.75 秒、NPU 18.09 秒。0.5B 是不是 Qwen2.5-Coder，不要和 1.5B 以上写成同一系列。计时是不是简单的 HuggingFace 分词墙钟，不是官方 OpenVINO 基准。不要写进 Arduino 那次的 prefill 约 17〜18 倍或 TTFT 0.6〜0.7 秒。",
+      },
+    ],
+    howItWorks: [
+      "先写明这是 Core Ultra 5 235U 的 Intel NPU，不要写成 #1201 的 Arduino Hexagon NPU，也不要写进那次的 17〜18 倍或 0.6 秒 TTFT。",
+      "再写 7B 的 decode：CPU 8.13、GPU 9.24、NPU 3.70；NPU 从 3B 的 7.81 掉下来。",
+      "GPU 一直是 decode 最快，但 7B 编译 35.75 秒，CPU 只要 2.06 秒，不要只写 tok/s。",
+      "0.5B 是 Qwen2.5-Coder，不要和 1.5B 以上写成同一系列；这不是官方 OpenVINO 基准。",
+    ],
+    tips: [
+      "无 JSON-LD；API published_at 2026-09-01T22:02:56.611+09:00 → UTC 2026-09-01T13:02:56Z、Asia/Shanghai 2026-09-01 21:02:56；body_updated_at 与发布相同，取 published → 2026-09-01；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-01。不要把 #1201 的 Arduino NPU prefill 约 17〜18 倍或 TTFT 10 秒→0.6〜0.7 秒写进这台 Core Ultra。",
+    ],
+  },
+  {
+    id: "1217",
+    slug: "kopu-72to80",
+    title: "kopug／Masahiro Funakoshi：在 Windows 11 和 RX 7900 XTX 上跑 Strata 0.1.34，短文本 prefill 约 83.6 tok/s、decode 约 60.6 tok/s，随后在 prefill 时出现 hipErrorInvalidDeviceFunction 并退出。不是只有 32K 上下文会出事，修复前实测 61–62 个 token 还能过，到 72 个就 HTTP 503、引擎退出。把 amdhip64_7.dll 和 amd_comgr.dll 拷到 engine\\ 后，72、70、79、80 个 token 都过了。不要和 #1202 的 4×4090 57.4／112.3 tok/s 或 99.4% 缓存写混。Strata 不是作者产品，platforms 为 []。发布日必须写成 2026-10-02。不可外推。",
+    summary: "Funakoshi 在 Windows 11 和 7900 XTX 上跑 Strata 时，短文本先能跑到约 83.6／60.6 tok/s，但从约 72 个 token 起 prefill 会把引擎打退出。把两个 ROCm DLL 拷到 engine\\ 后，80 个 token 也过了。",
+    description: "作者把崩溃从「大上下文」缩小到大约 72 个 token 就会退出，并验证了拷贝 DLL 的权宜办法。这是这一张 7900 XTX、这一版 Strata 上的排查，不是正式修复说明。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/kopug/items/d071f03de8ea6282fb70",
+    sourceLabel: "qiita.com·kopug《Windows 11 + RX 7900 XTXでStrataを動かす。prefill crashの原因切り分けと回避策》",
+    upvotes: 1108,
+    trending: false,
+    tags: [
+      "strata",
+      "rocm",
+      "rx7900xtx",
+      "windows",
+      "workaround",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kopug/items/d071f03de8ea6282fb70",
+      label: "qiita.com·kopug《Windows 11 + RX 7900 XTXでStrataを動かす。prefill crashの原因切り分けと回避策》",
+      date: "2026-10-02",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Windows 11 和 RX 7900 XTX 上安装 Strata 0.1.34，先确认加载、Web UI、短推理和设备自检都能过，再量短文本的 prefill／decode。随后在 prefill 时撞上 hipErrorInvalidDeviceFunction，作者把输入从 32K 上下文往短了缩，找到大约 72 个 token 的边界，并按 issue 里的办法把两个 DLL 拷到 engine 目录后复测。",
+    outcomes: [
+      "源披露：环境是 Windows 11 + RX 7900 XTX，Strata 0.1.34。加载、Web UI、短推理和设备自检先都能过。短文本实測 prefill 约 83.6 tok/s、decode 约 60.6 tok/s。随后在 prefill 时出现 hipErrorInvalidDeviceFunction，引擎退出。不是只有 32K 上下文会出事：修复前实测 61–62 个 token 还能过，到 72 个就 HTTP 503、引擎退出（作者写短到约 70 个 token 前后也会发生，但 70 是拷贝 DLL 之后才测过并通过的）；加上 HIP_VISIBLE_DEVICES=1 也一样。探测时还出现过不现实的 PCIe 数字（例如 9,038–19,416 GB/s），和崩溃的关系不明。作者开了 https://github.com/Niko1221/Strata/issues/461，并提到相关的 #468。权宜办法是把 engine\\rocm\\bin\\amdhip64_7.dll 和 amd_comgr.dll 拷到 engine\\，并确认是从 engine\\ 而不是 System32 加载。做完后 72、70、79、80 个 token 都过了。作者没有更新稍旧的 AMD 驱动 32.0.31041，是为了保持这次隔离。正式修复要等后续版本；和 RTX 5070 Ti 的对照还没有做。不要和 #1202 在 4×4090 WSL 上跑通的 57.4／112.3 tok/s 或 99.4% 缓存写混。Strata 是 Niko1221/Strata，不是作者产品。源文未称为 ChatGPT，platforms 为 []。这些是作者这一张 7900 XTX、这一版 Strata 上的排查，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。Strata 是 Niko1221/Strata，不是作者产品。作者资料 website_url 为空，不补写。正文未配图。一次资料／文内 issue https://github.com/Niko1221/Strata（标题 GitHub - Niko1221/Strata: Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input. · GitHub） 交付时 GET 200，可列可达、https://github.com/Niko1221/Strata/issues/461（标题 Windows AMD (RX 7900 XTX / gfx1100): prefill GEMM crashes with hipErrorInvalidDeviceFunction · Issue #461 · Niko1221/Strata · GitHub） 交付时 GET 200，可列可达、https://github.com/Niko1221/Strata/issues/468（标题 v0.1.34 Windows AMD (discrete W7900): crash 0xC0000005 on first request — engine loads the driver's System32 amdhip64_7.dll · Issue #468 · Niko1221/Strata · GitHub） 交付时 GET 200，可列可达，不当本条主源、不当作者产品导流。qiita embed／link-card 按页铬跳过，不列入须核、不当导流。不要和 #1202 的 4×4090 窗口写混。源文未称为 ChatGPT，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 72 个 token 就会退出，再谈拷贝 DLL 后 80 也能过",
+        body: "请按原文核算：短文本是不是先量到 prefill 约 83.6 tok/s、decode 约 60.6 tok/s。崩溃是不是 hipErrorInvalidDeviceFunction。修复前是不是 61–62 个 token 还能过，到 72 个就 HTTP 503、引擎退出，不是只有 32K 上下文。拷贝 amdhip64_7.dll 和 amd_comgr.dll 到 engine\\ 之后，是不是 72、70、79、80 个 token 都过了。作者是不是故意没更新驱动 32.0.31041。不要写成 #1202 的 57.4／112.3 tok/s 或 99.4% 缓存。Strata 是不是 Niko1221 的项目，不是作者产品。",
+      },
+    ],
+    howItWorks: [
+      "先写短文本曾经跑通：prefill 约 83.6 tok/s、decode 约 60.6 tok/s，不要写成一直稳定。",
+      "再写崩溃边界：不是只有 32K，修复前实测 61–62 个 token 还能过，到 72 个就 503、引擎退出。",
+      "权宜办法是把两个 DLL 拷到 engine\\，之后 72 到 80 个 token 都过了；驱动没有更新，是为了保持隔离。",
+      "不要和 #1202 的 4×4090 窗口写混。Strata 不是作者产品。正式修复还没有到。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-02T17:44:42.000+09:00，与 API created_at 2026-10-02T17:44:42+09:00 一致 → UTC 2026-10-02T08:44:42Z、Asia/Shanghai 2026-10-02 16:44:42；dateModified／updated_at 与发布相同，取 published → 2026-10-02；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-02。不要和 #1202 的 4×4090 WSL 57.4／112.3 tok/s 或 99.4% 缓存写混。",
+    ],
   }
 ];
 
