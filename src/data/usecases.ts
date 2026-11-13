@@ -84483,6 +84483,496 @@ LiteRT 26B 在可否表里记为不可。这里要分开写两个数字：导语
     tips: [
       "无 JSON-LD；Zenn API published_at 2026-09-28T19:09:32.218+09:00 → UTC 2026-09-28T10:09:32.218Z、Asia/Shanghai 2026-09-28 18:09:32，取上海日历日 → 2026-09-28；body_updated_at 2026-09-28T19:07:57.851+09:00 同日且更早（预约发布），仍取首次发布，不要改用更新时间；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-28。与 #1243 同一天但主题不同。",
     ],
+  },
+  {
+    id: "1258",
+    slug: "hosh-21to24",
+    title: "意译后正解二十一到二十四问",
+    summary: "hoshihoshi 在 M1 MacBook 16GB 上用本机 qwen3:8b 做 25 问日语 RAG 实测：v1 提示在chunk 500、k=4 时正解 21/25，加上「意译也可以答」的 v2 后升到 24/25，编造仍是 0 件；v1 加思考模式则 25/25，但响应中位从 1.4 秒升到 22.0 秒。前三个 v1 设定合计 12 件错里，11 件是依据已送到模型却回答「资料里看不出来」。题目里的 ChatGPT 只是测试问法，不得写入 chatgpt。Claude 只协助设计和起草，不记 claude。不可外推。",
+    description: "这是一篇个人把本机 RAG 的「资料里看不出来」按检索和回答拆开测的记录。主硬窗是 v2 提示把正解从 21 问升到 24 问且编造仍为 0，思考模式 25 问全对但是 1.4 秒到 22.0 秒。不要把 20/25、22/25 或 5.6 秒写成这条 21→24 的主窗。源文未把这次实践称为 ChatGPT 或 Claude 调用，platforms 为 []。发布日必须写成 2026-11-11。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/hoshihoshi/articles/5f07aa9a13f042",
+    sourceLabel: "zenn.dev·hoshihoshi《ローカルLLMのRAGが『資料からはわかりません』ばかり返す原因は、検索ではなかった（M1 Mac・25問で実測）》",
+    upvotes: 1149,
+    trending: false,
+    tags: [
+      "rag",
+      "ollama",
+      "qwen",
+      "local-llm",
+      "evaluation",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/hoshihoshi/articles/5f07aa9a13f042",
+      label: "zenn.dev·hoshihoshi《ローカルLLMのRAGが『資料からはわかりません』ばかり返す原因は、検索ではなかった（M1 Mac・25問で実測）》",
+      date: "2026-11-11",
+      dateLabel: "发布",
+    },
+    approach: "作者在本机 M1 MacBook（16GB）上用 Ollama 的 qwen3:8b（temperature=0）、e5-small 和 FAISS 搭了一个只读就业规则的日语 RAG，把 25 问里有答案的 20 问和没有答案的 5 问分开计。检索命中只看依据有没有进送给模型的块，不把模型叫进来；回答对错再另计，没有答案的题答「看不出来」算对，并由作者目视复核。先在三种切块和 k 的组合上看 v1 提示（「没有就不要推测」）的错从哪里来，再在 chunk 500、k=4 上比较 v2 提示、去掉 PDF 换行，以及打开思考模式。资料只有 3 页，k=4 在 500 字切块时几乎等于整篇送入，须写明。",
+    outcomes: [
+      "源披露：在作者本机 M1 MacBook 16GB、qwen3:8b 上实测 25 问。v1 提示、chunk 500、k=4 时正解 21/25，响应中位 1.4 秒；改成允许意译的 v2 后正解 24/25，中位 2.5 秒，没有答案的 5 问仍全答「看不出来」，编造 0 件；v2 仍错的 1 问就是把 ChatGPT 对应到「生成AI服务」的那题。v1 加思考模式是 25/25，中位 22.0 秒，约 16 倍，不要写成 v2 的耗时。另窗不要写混：v1 下 chunk 200、k=2 是 20/25、1.4 秒，chunk 200、k=4 是 22/25、5.6 秒；v1 去掉 PDF 换行是 23/25、2.2 秒，v2 再去掉换行仍是 24/25、3.2 秒。前三个 v1 设定合计 12 件错，其中 11 件是依据已经送到模型仍答「看不出来」，只有 1 件是检索没拾到。只测检索时，k=4 在几种切块上都是有答案的 20 问全中，但 500 字切块只有 3 块，k=4 等于整篇送入，不要写成检索本身已经很强。这些数字只属于这次 3 页资料和这 25 问，不可外推。不要和近批其他 RAG 正答或 1.4 秒窗口写混。",
+    ],
+    caveats: [
+      "导流：正文硬链同作者前篇 https://zenn.dev/hoshihoshi/articles/220effb81081e7 ，交付时 GET 200，可列可达，是前篇不是本条源。作者资料 website_url 为空，不补写。正文未配图。源文多次出现的 ChatGPT 只是测试题里把「生成AI服务」换成产品名的问法，以及模型回答里的复述，不是这次调用 ChatGPT，不得写入 chatgpt。文末写「实验的设计、計測、执笔由 AI（Claude）完成，我确认后公开」，属于协助起草，运行时是本机 qwen3:8b，不得写入 claude，platforms 为 []。Ollama／Qwen／LangChain 不在 18 值，不硬凑。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 21→24 是 v2 提示，25/25 的 22.0 秒是思考模式",
+        body: "请按原文核算：v1、chunk 500、k=4 时是不是 21/25、中位 1.4 秒；v2 允许意译后是不是 24/25、编造仍为 0 件，剩下那 1 问是不是 ChatGPT 对应「生成AI服务」。v1 加思考模式是不是 25/25，中位是不是从 1.4 秒到 22.0 秒，不要把 2.5 秒或 5.6 秒写成思考模式的耗时。12 件错里 11 件是不是依据已送到仍答看不出来。k=4 在 3 页、3 块资料上是不是几乎整篇送入。发布日是不是上海日历日 2026-11-11。ChatGPT 是否只在试题里，platforms 是否为 []，不得写入 chatgpt 或 claude。",
+      },
+    ],
+    howItWorks: [
+      "先写下 v1 在 chunk 500、k=4 时正解 21/25，v2 允许意译后 24/25，编造仍为 0 件。",
+      "再写下 v1 加思考模式 25/25，但中位从 1.4 秒升到 22.0 秒，不要和 2.5 秒、5.6 秒写混。",
+      "最后写明 12 件错里 11 件是提示过于谨慎，k=4 在这份 3 页资料上接近整篇送入，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-11-11T08:44:11.446+09:00 → UTC 2026-11-10T23:44:11.446Z、Asia/Shanghai 2026-11-11 07:44:11，取上海日历日 → 2026-11-11；body_updated_at 2026-11-11T08:42:14.071+09:00 同日且更早（预约发布），仍取首次发布，不要改用更新时间；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-11。与 #1164 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1259",
+    slug: "taro-927-185",
+    title: "预填充九百二十七对一百八十五",
+    summary: "taro_yamada_dewanokami 用平时在用的两套本机环境，对同一条提示跑 Gemma 4 31B：RTX 4060 Ti 16GB×2 上 llama.cpp（CUDA）的 prefill 是 927.60 tok/s，16,951 token 用了 18.27 秒；Radeon 8060S 上同一份 llama.cpp（Vulkan）是 185.43 tok/s、91.41 秒；同一张 8060S 上 LM Studio 是 158.84 tok/s、106.72 秒。Decode 却是 17.70 对 19.53 对 10.63 tok/s，8060S 的 llama.cpp 还略快。作者写明量化变体和设置并未对齐，约 5 倍只是这次 prefill 所见，不是「4060 Ti 比 8060S 快 5.00 倍」的显卡结论。不可外推。",
+    description: "这是一篇个人把手头两套平时环境拿同一条提示做对照的记录。主硬窗是 prefill 927.60 tok/s、18.27 秒对 185.43 tok/s、91.41 秒。Decode 的 19.53 对 17.70 是另一扇窗。不要把约 5 倍写成显卡本身的结论。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-09-12。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/taro_yamada_dewanokami/items/9941d912ba369568d173",
+    sourceLabel: "qiita.com·taro_yamada_dewanokami《ローカルLLMのGPU性能比較：RTX 4060Ti(16GB)x2 vs Radeon 8060S》",
+    upvotes: 1150,
+    trending: false,
+    tags: [
+      "llama.cpp",
+      "gpu",
+      "local-llm",
+      "gemma",
+      "benchmark",
+    ],
+    primarySource: {
+      url: "https://qiita.com/taro_yamada_dewanokami/items/9941d912ba369568d173",
+      label: "qiita.com·taro_yamada_dewanokami《ローカルLLMのGPU性能比較：RTX 4060Ti(16GB)x2 vs Radeon 8060S》",
+      date: "2026-09-12",
+      dateLabel: "发布",
+    },
+    approach: "作者把平时在用的自作机（RTX 4060 Ti 16GB×2、CUDA、llama.cpp）和迷你机（Ryzen AI Max+ 395 内建 Radeon 8060S、Vulkan）拿同一条提示对照，并加了一档同一张 8060S 上的 LM Studio。两边都跑 Gemma 4 31B 的 IQ3_XXS 级量化，用 llama-server 的 OpenAI 兼容接口把提示打进去，读取响应里的 prompt eval / eval。作者自己写明两边的量化文件名并不完全相同（UD-IQ3_XXS 对 IQ3_XXS），KV cache、batch、Flash Attention、MTP 也没对齐，所以这是日常环境下的所见差，不是严格的 GPU 基准。",
+    outcomes: [
+      "源披露：在作者日常使用的两套本机环境上，用同一条提示实测。RTX 4060 Ti 16GB×2 / llama.cpp（CUDA）的 prefill 是 927.60 tok/s，16,951 token 用了 18.27 秒，decode 17.70 tok/s；Radeon 8060S / llama.cpp（Vulkan）prefill 185.43 tok/s、91.41 秒，decode 19.53 tok/s；同一张 8060S 上 LM Studio（llama.cpp / Vulkan）prefill 158.84 tok/s、106.72 秒，decode 10.63 tok/s。作者写 prefill 上 4060 Ti×2 大约快 5 倍，同时又写明这不是「4060 Ti 比 8060S 快 5.00 倍」的显卡结论，因为量化和设置并未对齐。Decode 上 8060S 的 llama.cpp 还略快于 4060 Ti×2，不要把 19.53 写成 17.70，也不要把 10.63 的 LM Studio 档写成 8060S 的 llama.cpp。这些数字只属于这次提示和这两套未对齐的环境，不可外推。不要和 #1243 的 31.1、#1257 的 2604.85／2605.88，或其他近批 tok/s 窗写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 1 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/179750/d2370a9b-bd59-43c1-85da-e6f3dbc95433.png ，交付时 GET 200，可列可达，不当导流。正文启动示例只写了 --host 127.0.0.1，没有完整本机 URL，未作为字面地址去 GET。源文未点名 18 值平台，llama.cpp／LM Studio／Gemma 不在 18 值，不硬凑，platforms 为 []。作者写明这不是严格 GPU 对比。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 927.60 对 185.43 是 prefill，约 5 倍不是显卡结论",
+        body: "请按原文核算：4060 Ti×2 的 prefill 是不是 927.60 tok/s、18.27 秒，8060S 的 llama.cpp 是不是 185.43 tok/s、91.41 秒，LM Studio 是不是 158.84 tok/s、106.72 秒。Decode 是不是 17.70 对 19.53 对 10.63，不要把 8060S 写慢。约 5 倍是不是只对这次 prefill，作者是不是明确反对写成显卡本身快 5.00 倍。量化和 MTP 是否未对齐。发布日是不是上海日历日 2026-09-12。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 prefill 927.60 tok/s、18.27 秒对 185.43 tok/s、91.41 秒，LM Studio 是 158.84 tok/s、106.72 秒。",
+      "再写下 decode 是 17.70 对 19.53 对 10.63，8060S 的 llama.cpp 并不更慢。",
+      "最后写明约 5 倍只是这次未对齐环境下的 prefill 所见，不是显卡结论，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-12T18:35:40.000+09:00，与 Qiita API created_at 2026-09-12T18:35:40+09:00 一致 → UTC 2026-09-12T09:35:40Z、Asia/Shanghai 2026-09-12 17:35:40，取上海日历日 → 2026-09-12；dateModified／updated_at 同日 2026-09-12T20:18:59+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-12。",
+    ],
+  },
+  {
+    id: "1260",
+    slug: "kiar-352-74",
+    title: "mmap后三十五点二分对七点四分",
+    summary: "kiarina 在 Mac Studio M4 Max 128GB 上把 Qwen3.8-Flash-Next 的 32GB n-gram 表改成按需 mmap 后，240K token 的读取是 7.4 分，对照 Qwen3.8-27B 的 35.2 分；作者写质量没有因此下降。expert 削减版 REAP-288 读取只要 7.1 分，但日语和一般知识已经崩掉，不能当成这条省时窗。4bit 全量版在这台 128GB 上装不进去。不要把 7.4 分写成 #1208 的 FAQ 核对 7.4 分钟。与 #1241 同一天但主题不同。不可外推。",
+    description: "这是一篇个人在 128GB M4 Max 上为长上下文给 Flash-Next 做 n-gram 表 mmap 的记录。主硬窗是 240K 读取 35.2 分对 7.4 分。7.1 分属于质量已崩的 REAP-288。47.1 对 40.2 tok/s 是生成侧另窗。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-09-24，不要改用同日修订时刻。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/kiarina/items/11c9720c2145a85a5459",
+    sourceLabel: "qiita.com·kiarina《128GBのMacでQwen3.8-Flash-Nextを動かす――expert削減版の落とし穴と、n-gram表のmmapで240Kトークンまで》",
+    upvotes: 1151,
+    trending: false,
+    tags: [
+      "mlx",
+      "qwen",
+      "local-llm",
+      "mmap",
+      "mac",
+    ],
+    primarySource: {
+      url: "https://qiita.com/kiarina/items/11c9720c2145a85a5459",
+      label: "qiita.com·kiarina《128GBのMacでQwen3.8-Flash-Nextを動かす――expert削減版の落とし穴と、n-gram表のmmapで240Kトークンまで》",
+      date: "2026-09-24",
+      dateLabel: "发布",
+    },
+    approach: "作者在 Mac Studio M4 Max 128GB 上想实用地跑 Qwen3.8-Flash-Next。先试 expert 削减的 REAP-288，日语和一般知识已经崩掉；4bit 全量版则内存不够。后来把模型自带的 32GB n-gram 表改成从磁盘按需 mmap，再在日语 32 问、长上下文合言葉检索和 4 道带工具的小仓库题上对照。主硬窗看的是同一段 240K 输入的读取墙钟：mmap 后的 Flash-Next 对 Qwen3.8-27B。解码速度和 REAP 的分数是另窗。改完后把模型接到家里的推理服务 kiapi，并把 mlx-vlm 的修正提交到上游。",
+    outcomes: [
+      "源披露：在作者本机 Mac Studio M4 Max 128GB 上实测。把 32GB n-gram 表改成 mmap 后，240K token 输入的读取是 7.4 分，对照 Qwen3.8-27B 的 35.2 分；作者写质量没有因此下降，日语 32 问仍是 32/32。REAP-288 读取只要 7.1 分，但日语知识 16 问里全量是 16、27B 是 15、REAP 只有 1，不能把 7.1 分当成这条省时窗。4bit 全量版在这台 128GB 上装不进去。另窗：mmap 后日语 32 问的生成中位是 40.2 tok/s，对照未 mmap 的 47.1 tok/s，大约慢 15%，仍快过 27B 的 34.3 tok/s；不要把 40.2／47.1 写成 35.2 分对 7.4 分。长上下文的 prefill 作者写 Flash-Next 大约 530–580 tok/s 几乎不随长度掉，27B 会从 217 掉到 114 tok/s，这是预填充速度另窗。这些数字只属于这台 128GB 机器和这次实现，不可外推。不要把 7.4 分写成 #1208 的 FAQ 核对 7.4 分钟，也不要和 #1241 的 10GB 卡或近批其他 27B 窗写混。",
+    ],
+    caveats: [
+      "导流：正文硬链作者推理服务仓 https://github.com/kiarina/kiapi ，以及验证目录 https://github.com/kiarina/labs/tree/main/2026/09/24/qwen38-flash-next-reap-eval 、https://github.com/kiarina/labs/tree/main/2026/09/24/qwen38-flash-next-ple-mmap 和克隆地址 https://github.com/kiarina/labs.git ，交付时均 GET 200，可列可达，按作者仓／产品导流披露。上游提交页 https://github.com/Blaizzy/mlx-vlm/pull/2309 与仓 https://github.com/Blaizzy/mlx-vlm 交付时 GET 200，可列可达，不是作者仓。模型页 https://huggingface.co/Qwen/Qwen3.8-Flash-Next 、https://huggingface.co/mlx-community/Qwen3.8-Flash-Next-4bit 、https://huggingface.co/sh0wie/Qwen3.8-Flash-Next-REAP-288-MLX-4bit 、https://huggingface.co/mlx-community/Qwen3.8-27B-4bit 以及工具站点 https://mise.jdx.dev/ 交付时均 GET 200，可列可达，不是作者产品。配图 3 张：https://kiarina.github.io/blog-assets/2026/09/24/qwen38-flash-next-prefill-time-v2.webp 、https://kiarina.github.io/blog-assets/2026/09/24/qwen38-flash-next-quality-v2.webp 、https://kiarina.github.io/blog-assets/2026/09/24/qwen38-flash-next-memory-v2.webp ，交付时均 GET 200，可列可达，不当导流。正文本机示例写成 http://HOST:8500/v1/chat/completions ，HOST 是占位，属不完整字面，未作为字面地址去 GET，须披露。作者资料 website_url 为空，不补写。源文未点名 18 值平台，mlx／Qwen 不在 18 值，不硬凑，platforms 为 []。与 #1241 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 35.2 分对 7.4 分是 240K 读取，7.1 分是 REAP",
+        body: "请按原文核算：mmap 后 240K 读取是不是 7.4 分，对照 27B 是不是 35.2 分，作者是否写质量未掉。REAP-288 的 7.1 分是不是同一张读取图上的另一条线，知识题是不是已经崩到 1/16，不能当成这条省时窗。47.1 对 40.2 tok/s 是不是生成侧另窗。不要把 7.4 分写成 #1208 的 7.4 分钟。发布日是不是上海日历日 2026-09-24，与 #1241 同一天但主题不同。占位 http://HOST:8500/v1/chat/completions 是否未去 GET。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 mmap 后 240K 读取 7.4 分，对照 27B 的 35.2 分，作者写质量未掉。",
+      "再写下 REAP-288 的 7.1 分不能当主窗，因为它的日语知识已经崩掉；4bit 全量版装不进这台 128GB。",
+      "最后写明 47.1 对 40.2 tok/s 是生成侧另窗，不可把 7.4 分写成别条的 7.4 分钟，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-24T21:21:40.000+09:00，与 Qiita API created_at 2026-09-24T21:21:40+09:00 一致 → UTC 2026-09-24T12:21:40Z、Asia/Shanghai 2026-09-24 20:21:40，取上海日历日 → 2026-09-24；dateModified／updated_at 同日 2026-09-24T22:05:54+09:00，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-24。与 #1241 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1261",
+    slug: "eita-2246-264",
+    title: "四十二条日志的token减幅",
+    summary: "EitaroSeta 在本机 RTX 5060 Laptop 8GB 上，把 42 条评价用日志先用本机 qwen3.8 蒸馏 4B 压成短摘要，再对照云端 token：不整理约 2,246 token，整理后约 264 token，减幅 88.2%。作者同时写明这不是「费用一定省 88.2%」，因为缓存和计价不同，短日志反而可能更贵。这 42 条是评价用数据（40 条正常的 GET /health 200，加上 1 条 POST /tasks 的 500 和 1 条对应的 SQLite 唯一约束日志），不是实案件对话日志。编码题上，先前的 Qwen3.5 4B 是 9/12（75%），作者判断还不够拿去写游戏，所以把本机编码方案先搁置，原文「見送り」不是先发送。后来在 RunPod 上，Devstral Small 2 是 11/12、约 11 分钟，Qwen3-Coder 约 7 分钟，这是另窗。文中的 Qwen3.8 是 empero-ai 蒸馏，不是官方 Qwen3.8。Claude 和 Codex 只出现在云端架构讨论里，实测运行是本机 Qwen 加云端用量对照，不得写入 claude 或 chatgpt。发布日必须取首次发布 2026-09-30，不要改用 10-25 修订。不可外推。",
+    description: "这是一篇个人为云端编码助手做本机预处理的对照记录。主硬窗是 42 条评价用日志从约 2,246 token 降到约 264 token，减幅 88.2%。不要把 88.2% 写成费用一定省了这么多，也不要和 #1239 的 88.2 tok/s 写混。「見送り」是搁置。源文未把这次实践称为 18 值平台调用，platforms 为 []。发布日必须写成 2026-09-30。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/EitaroSeta/items/9a797a85a1fdada73ef2",
+    sourceLabel: "qiita.com·EitaroSeta《AI開発のトークンをローカルLLMで節約したい。コーディング担当は諦めて、前処理エージェントにした》",
+    upvotes: 1152,
+    trending: false,
+    tags: [
+      "ollama",
+      "qwen",
+      "token-saving",
+      "local-llm",
+      "coding",
+    ],
+    primarySource: {
+      url: "https://qiita.com/EitaroSeta/items/9a797a85a1fdada73ef2",
+      label: "qiita.com·EitaroSeta《AI開発のトークンをローカルLLMで節約したい。コーディング担当は諦めて、前処理エージェントにした》",
+      date: "2026-09-30",
+      dateLabel: "发布",
+    },
+    approach: "作者在本机 Windows 11、Ollama 0.34.4、RTX 5060 Laptop（显存 8,151MiB）上，用 empero-ai 蒸馏的 Qwen3.8 4B（不是官方阿里 Qwen3.8）把日志先压成短摘要，再按云端用量对照。压缩质量另外用编码题等方法打分。42 条日志是评价用数据：40 条正常的 GET /health 200，加上 1 条 POST /tasks 的 500 和 1 条对应的 SQLite 唯一约束日志，不是实案件。作者同时试过本机小型模型写代码，后来又在 RunPod 上租 RTX PRO 4500 32GB，经本机 SSH 隧道连到 http://127.0.0.1:11434 去对照 Devstral Small 2 和 Qwen3-Coder。Claude 和 Codex 只出现在云端架构说明里，不是这次实测的运行时。",
+    outcomes: [
+      "源披露：在作者本机上，把 42 条评价用日志压完再对照云端 token。不整理约 2,246 token，用 Qwen3.8 整理后约 264 token，减幅 88.2%。作者写明这不是「费用一定省 88.2%」，因为提示缓存和计价不同，短日志反而可能更贵。这 42 条不是实案件对话日志。编码题上，先前的 Qwen3.5 4B 是 9/12（75%），作者判断还不够拿去写游戏，所以把本机编码方案先搁置，原文「見送り」不要写成先发送；后来补写的表里，本机 Qwen3.8 Distill 4B Q8 也是 9/12，Q5 是 6/12，不要把 6/12 写成 9/12。另窗：在 RunPod RTX PRO 4500 32GB 上，Devstral Small 2 是 11/12、约 11 分钟，生成 19.45 tok/s；Qwen3-Coder 30B 是 9/12、约 7 分钟、49.07 tok/s。不要把 11 分钟或 7 分钟写成 2,246→264 的主窗。这些数字只属于这 42 条评价日志和这次蒸馏模型，不可外推。不要把 88.2% 写成 #1239 的 88.2 tok/s，也不要和其他近批 token 减幅窗写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为 https://github.com/EitaroSeta/ ，未出现在正文硬链，不按导流披露。正文未配图。前篇 https://qiita.com/EitaroSeta/items/b30589d3261fac14f933 交付时 GET 200，可列可达，是前篇不是本条源。模型页 https://huggingface.co/empero-ai/Qwen3.8-4B-Distill-GGUF 以及文档／论文／镜像页 https://arxiv.org/abs/2604.12301 、https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents 、https://www.runpod.io/ 、https://ollama.com/library/qwen3-coder 、https://ollama.com/library/devstral-small-2 交付时均 GET 200，可列可达，不是作者产品。正文本机地址 http://127.0.0.1:11434 与 http://127.0.0.1:11434/api/tags 交付时 GET 000（curl 退出码 7），不可达，须披露；源文是完整本机地址，正文写在代码围栏里，不要把围栏的反引号算进 URL。Claude 和 Codex 只出现在云端架构讨论，这次实测运行是本机 Qwen 加云端用量对照，不得写入 claude 或 chatgpt，platforms 为 []。文中的 Qwen3.8 是 empero-ai 蒸馏，不是官方 Qwen3.8。mermaid／link-card 不当导流。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 2,246→264 是 token 减幅 88.2%，不是费用一定省这么多",
+        body: "请按原文核算：42 条评价用日志压完后是不是从约 2,246 token 降到约 264 token，减幅是不是 88.2%。这 42 条是不是 40 条正常日志加 2 条错误日志，不是实案件对话。作者是不是明确写这不等于费用一定省 88.2%。编码题是不是 9/12，作者是不是因此搁置，原文「見送り」不要写成先发送。Devstral 约 11 分钟、Qwen3-Coder 约 7 分钟是不是后来在 RunPod 上的另窗。Qwen3.8 是不是 empero-ai 蒸馏而不是官方模型。Claude／Codex 是否只在架构讨论里，platforms 是否为 []。发布日是不是上海日历日 2026-09-30，不要改用 2026-10-25 的修订。本机 127.0.0.1:11434 是不是 GET 000。",
+      },
+    ],
+    howItWorks: [
+      "先写下 42 条评价用日志从约 2,246 token 降到约 264 token，减幅 88.2%，同时写明这不是费用一定省这么多，也不是实案件对话日志。",
+      "再写下编码 9/12 被作者判断还不够写游戏，所以方案先搁置，不要把「見送り」写成先发送。",
+      "最后写明 Devstral 约 11 分钟和 Qwen3-Coder 约 7 分钟是 RunPod 另窗，模型是蒸馏版，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-30T18:09:50.000+09:00，与 Qiita API created_at 2026-09-30T18:09:50+09:00 一致 → UTC 2026-09-30T09:09:50Z、Asia/Shanghai 2026-09-30 17:09:50，取上海日历日 → 2026-09-30；dateModified／updated_at 2026-10-25T17:59:39+09:00，仍取首次发布，不要改用 10-25；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-30。",
+    ],
+  },
+  {
+    id: "1262",
+    slug: "tama-092-018",
+    title: "指挥役死亡零点九二对零点一八",
+    summary: "tamaki_omoto 用本机 Ollama 让指挥役在 Minecraft 里每约 6–7 秒选一步，把 24 次各 30 分钟的录像按模型分开计：Qwen3.6 13 回，Nemotron 3.5 Lightning 11 回。死亡从 0.92 次/回降到 0.18 次/回，作业手成功率（不含进出家和等待）从 54% 升到 75%，空挥从 35% 降到 17%。进出与等待的占比却从 35% 升到 54%，作业手数从 88 降到 58，手的种类从 62 降到 44，判断中位 6.1 秒对 6.6 秒。有一回光进出家就往返了 86 次。后来把模型交替各跑 3 回，双方都因为没有镐头沉到地下出不来，这不是模型质量结论；「比较其 3」还没跑。不可外推。",
+    description: "这是一篇个人把本机指挥役从 Qwen3.6 换成 Nemotron 3.5 Lightning 后，按 24 次录像记账的记录。主硬窗是死亡 0.92 对 0.18 次/回，作业成功率 54% 对 75%。86 次往返和没镐头的 6 回是另窗，不要写成模型差。空链接前篇不要去 GET。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-10-25。与 #1230、#1225 同一天但主题不同。",
+    categories: [
+      "content",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/tamaki_omoto/items/4b866d9d8bbf64d7bb37",
+    sourceLabel: "qiita.com·tamaki_omoto《ローカルLLMにMinecraftを遊ばせる ― 指揮役をQwen3.6からNemotron 3.5 Lightningに替えて何が変わったか》",
+    upvotes: 1153,
+    trending: false,
+    tags: [
+      "minecraft",
+      "ollama",
+      "local-llm",
+      "evaluation",
+      "agent",
+    ],
+    primarySource: {
+      url: "https://qiita.com/tamaki_omoto/items/4b866d9d8bbf64d7bb37",
+      label: "qiita.com·tamaki_omoto《ローカルLLMにMinecraftを遊ばせる ― 指揮役をQwen3.6からNemotron 3.5 Lightningに替えて何が変わったか》",
+      date: "2026-10-25",
+      dateLabel: "发布",
+    },
+    approach: "作者在本机用 Ollama 做指挥役，让 Agent 在 Paper 1.21.11 的 Minecraft 里每约 6–7 秒从当时出现的手里选下一步，每次录像 30 分钟。24 回里，Qwen3.6 是 13 回（mf-show60–73，另一次 27b 试跑已排除），Nemotron 3.5 Lightning 是 11 回（mf-show74–84）。作业手成功率只按 progressed 计算，并且去掉进出家（go_to_base／leave_hole）和 wait。作者后来把体的代码和服务器固定住，再把两个模型交替各跑 3 回，用来把世界延续造成的状态差摊到两边。同回开头还有 qwen3.8:27b 做计划，这次比较的只是指挥役。",
+    outcomes: [
+      "源披露：在作者本机上，用 24 次各 30 分钟的录像记账。Qwen3.6 13 回的死亡是 12 次，合 0.92 次/回，作业手成功率 54%，空挥（no_op）35%，进出与等待占 35%，作业手数 88 次/回，手的种类 62，判断中位 6.1 秒；Nemotron 3.5 Lightning 11 回的死亡是 2 次，合 0.18 次/回，作业成功率 75%，空挥 17%，进出与等待占 54%，作业手数 58 次/回，手的种类 44，判断中位 6.6 秒。作业成功率不含进出家和等待，不要把 75% 写成含这些手的总成功率。作者写有一回进出家往返了 86 次，前 7 回 Nemotron 每次往返 50–86 次，作业量因此从 88 降到 58，不要把 86 次往返写成模型变聪明。后来交替各跑 3 回时，双方都因为上一回结束时没有镐头，越跑越沉到地下，6 回都出不来，Qwen 作业成功率 48%、Nemotron 只有 3%，作者写这不是模型质量结论；「比较其 3」还没跑。这些数字只属于这 24 回和当时的体代码，作者也写模型更换期间体代码改了很多，不可外推。不要和近批其他游戏或 Agent 窗写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料栏如有 YouTube 频道，只出现在资料／简介，正文没有这条硬链，不算导流，不补写。正文未配图。正文嵌入 https://www.youtube.com/embed/_TiAGlhSUm4 交付时 GET 200，可列可达，是演示嵌入不是作者产品。仓库 https://github.com/PrismarineJS/mineflayer 交付时 GET 200，可列可达，不是作者仓。正文有一处空的 Markdown 链接，锚文本是「LLMにローグライクを遊ばせて分かった、測り方の落とし穴」，源文没有完整 URL，未作为字面地址去 GET，须披露。源文未点名 18 值平台，Ollama／Qwen／Nemotron 不在 18 值，不硬凑，platforms 为 []。与 #1230、#1225 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 0.92 对 0.18、54% 对 75% 是 24 回主表，没镐头的 6 回不要写成模型差",
+        body: "请按原文核算：Qwen3.6 13 回、Nemotron 11 回，死亡是不是 0.92 对 0.18 次/回，作业成功率是不是 54% 对 75%，是否已去掉进出家和等待。空挥是不是 35% 对 17%，进出与等待是不是 35% 对 54%，作业手数是不是 88 对 58，手的种类是不是 62 对 44，判断中位是不是 6.1 秒对 6.6 秒。86 次往返是不是同一回的进出家，不要写成模型质量。交替 6 回是不是因为没有镐头才都出不来，「比较其 3」是不是还没跑。发布日是不是上海日历日 2026-10-25，与 #1230、#1225 同一天但主题不同。空链接是否未去 GET。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 24 回主表：死亡 0.92 对 0.18 次/回，作业成功率 54% 对 75%，并写明不含进出家和等待。",
+      "再写下进出与等待占比升到 54%、作业手数从 88 降到 58，以及有一回往返 86 次，不要把这些写成模型变聪明。",
+      "最后写明交替 6 回因没有镐头都出不来，不是模型质量结论，「比较其 3」还没跑，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-25T18:01:11.000+09:00，与 Qiita API created_at 2026-10-25T18:01:11+09:00 一致 → UTC 2026-10-25T09:01:11Z、Asia/Shanghai 2026-10-25 17:01:11，取上海日历日 → 2026-10-25；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-25。与 #1230、#1225 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1263",
+    slug: "righ-38to16",
+    title: "重叠三十八分对错开十六分",
+    summary: "rightcross-ae86 在自备服务器的 16GB GPU 上跑本地 LLM 做新闻摘要和嵌入，因为同一张卡还要跑另一套模型，两个模型加起来 17.2GB（phi4 9.1GB 加 gemma3 8.1GB）装不下。把 4 个预定时段错开以后，4 次全部成功，用时约 15–17 分，平均约 16 分；对照重叠时段约 29–44 分，平均约 38 分。Ollama 在变更前会在框开始的约 13 分钟里把模型赶走再装上十几回，变更后约 10 小时里是 0 件。不要把变更前另外 3 个未重叠框的约 17–22 分写成这条 38→16 的主窗。JSON-LD 是 2026-10-03T08:30:29+09:00，UTC 已是 10-02，上海日历日仍是 2026-10-03，不要写成 10-02。与 #1166 同一天但主题不同。不可外推。",
+    description: "这是一篇个人把同一张 16GB GPU 上两套本地 LLM 的预定时段错开后，核后半结果的记录。主硬窗是重叠时段平均约 38 分对错开后平均约 16 分，4 次全部成功。17–22 分是变更前未重叠框的另窗。发布日必须写成 2026-10-03，不要因 UTC 已是 10-02 改写。源文未点名 18 值平台，platforms 为 []。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/rightcross-ae86/items/cf09477cf6aab761d703",
+    sourceLabel: "qiita.com·rightcross-ae86《【日本株分析プラットフォーム】実行時刻をずらしたローカルLLM処理は、約38分から約16分に縮んだ話(後半)(2026-10-03)》",
+    upvotes: 1154,
+    trending: false,
+    tags: [
+      "ollama",
+      "gpu",
+      "scheduling",
+      "local-llm",
+      "ops",
+    ],
+    primarySource: {
+      url: "https://qiita.com/rightcross-ae86/items/cf09477cf6aab761d703",
+      label: "qiita.com·rightcross-ae86《【日本株分析プラットフォーム】実行時刻をずらしたローカルLLM処理は、約38分から約16分に縮んだ話(後半)(2026-10-03)》",
+      date: "2026-10-03",
+      dateLabel: "发布",
+    },
+    approach: "作者在自备服务器的 16GB GPU 上用本地 LLM 做新闻摘要和近义检索用的嵌入，同一张卡上还有另一套系统在跑 gemma3。两个模型同时装上是 17.2GB，超过 16GB，Ollama 就会把已装的模型赶走再装上，请求虽然仍返回 HTTP 200，但单次响应会拖到 47 秒到 1 分 23 秒。前半已经改了预定时刻，后半再核对错开之后的 4 次实际运行，并对照变更前重叠框和未重叠框的用时，以及模型赶走、HTTP 500 的日志。",
+    outcomes: [
+      "源披露：在作者自备服务器的 16GB GPU 上核对。把 4 个预定时段错开以后，2026-10-02 的 4 次全部成功，用时约 15–17 分，平均约 16 分；对照变更前与对方重叠的框约 29–44 分，平均约 38 分。不要把变更前另外 3 个未重叠框的约 17–22 分写成这条 38→16 的主窗，也不要把 4 次运行日 2026-10-02 写成条目的发布日。同一张 16GB 卡装不下 17.2GB（phi4 9.1GB 加 gemma3 8.1GB）。Ollama 在变更前会在框开始的约 13 分钟里出现十几回「预计内存不够、赶走模型」的日志（作者举 2026-09-29 的例子），变更后约 10 小时里是 0 件；同服务器上其他进程的 HTTP 500，变更后在对方运转时段的约 1,000 件里也是 0 件。作者还更正了前半的说法：变更前这边的请求并不是内存不足报错失败，而是成功但被延迟。这些数字只属于这台 16GB 服务器和这 4 次运行，不可外推。不要和近批其他排队或 GPU 共享窗写混。",
+    ],
+    caveats: [
+      "导流：正文硬链作者产品站点 https://stocks.happy-life-design.net ，交付时 GET 200，可列可达，按作者产品导流披露。前篇 https://qiita.com/rightcross-ae86/items/25999d105ae8cd05af2b 交付时 GET 200，可列可达，是前篇不是本条源，本批不再把它当下腕源。正文未配图。mermaid 嵌入不当导流。作者资料 website_url 为空，不补写。源文未点名 18 值平台，Ollama／phi4／gemma3 不在 18 值，不硬凑，platforms 为 []。与 #1166 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清约 38 分到约 16 分是重叠框对错开后的 4 次，发布日必须写成 2026-10-03",
+        body: "请按原文核算：错开后 4 次是不是全部成功，用时是不是约 15–17 分、平均约 16 分，重叠框是不是约 29–44 分、平均约 38 分。约 17–22 分是不是变更前未重叠的另 3 框，不要写进主窗。17.2GB 是不是 phi4 9.1GB 加 gemma3 8.1GB，16GB 卡是否装不下。赶走模型是不是变更前约 13 分钟里十几回，变更后约 10 小时是 0 件。发布日的 JSON-LD 是不是 2026-10-03T08:30:29+09:00，UTC 已是 10-02，上海日历日是不是仍要写成 2026-10-03，不要改用 10-02，也不要把 4 次运行日 2026-10-02 当成发布日。与 #1166 同一天但主题不同。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下错开后 4 次全部成功，约 15–17 分、平均约 16 分，对照重叠框约 29–44 分、平均约 38 分。",
+      "再写下 16GB 卡装不下 17.2GB，变更前会在约 13 分钟里赶走模型十几回，变更后约 10 小时是 0 件。",
+      "最后写明约 17–22 分是未重叠框的另窗，发布日必须写成上海 2026-10-03，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-03T08:30:29.000+09:00，与 Qiita API created_at 2026-10-03T08:30:29+09:00 一致 → UTC 2026-10-02T23:30:29Z、Asia/Shanghai 2026-10-03 07:30:29，取上海日历日 → 2026-10-03；dateModified／updated_at 同日 2026-10-03T08:35:19+09:00（API updated_at 2026-10-03T08:35:20+09:00），仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-03，不要因 UTC 已是 10-02 改写。与 #1166 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1264",
+    slug: "k7ly-371-267",
+    title: "关闭思考二点六七对三点七一秒",
+    summary: "k7ly 在 DGX Spark 128GB 上让 Qwen3.8-Flash-Next 先用英语生成，再用 PLaMo 3 Translate 0.8B 译成日语，和直接用日语生成对照。Thinking OFF、3 道短问、每行 30 次、120/120 都正常结束时，先英后译的完成平均是 2.67 秒，直接日语是 3.71 秒，短 28.08%；有效速度 31.70 tok/s 对 28.73 tok/s，翻译 0.26 秒。但日语正文开始出现的 TTFT 却从 0.23 秒升到 2.41 秒，因为要等英文全部生成完再翻译。Thinking ON 时两边完成时间都是 8.91 秒，不要把 28.08% 写到这一档。不要把 0.23 秒写成 #1250 的 whisper 0.23 秒。与 #1211、#1214、#1232 同一天，#1232 也用了 PLaMo，但那条窗是 Interlinear 精度 4.82 和 118 秒对 359 秒，不要写混。不可外推。",
+    description: "这是一篇个人在 DGX Spark 上用「先英后译」给 Qwen 加速日语回答的对照记录。主硬窗是 Thinking OFF 时完成时间 3.71 秒对 2.67 秒，短 28.08%。Thinking ON 的 8.91 秒和 TTFT 0.23 秒对 2.41 秒是另窗。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-11-07。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/k7ly/articles/dgx-spark-qwen-plamo",
+    sourceLabel: "zenn.dev·k7ly《PLaMoでQwen3.8-Flash-Nextを高速化したい》",
+    upvotes: 1155,
+    trending: false,
+    tags: [
+      "plamo",
+      "qwen",
+      "translation",
+      "local-llm",
+      "benchmark",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/k7ly/articles/dgx-spark-qwen-plamo",
+      label: "zenn.dev·k7ly《PLaMoでQwen3.8-Flash-Nextを高速化したい》",
+      date: "2026-11-07",
+      dateLabel: "发布",
+    },
+    approach: "作者在 NVIDIA DGX Spark（128GB 统一内存）上同时常驻 Qwen3.8-Flash-Next 和 PLaMo 3 Translate 0.8B（官方 GGUF Q4_K_M），用 TensorFold 1.2.3 的 CUDA 路径（作者写这次用的 CUDA 路径是 experimental）和 llama.cpp／llama-server，把 CUDA 全层卸载。对同一道日语短问，比较「Qwen 直接生成日语」和「Qwen 先生成英语、再交给 PLaMo 译成日语」。短回答用 3 问，每行 30 次请求，合计 120 次都正常结束。有效速度按 Qwen 的推理加回答 token 数除以含翻译的完成时间，再对 30 次取平均；TTFT 看的是最终日语正文第一个非空块到达的时间，不是 Qwen 第一个生成 token。两边都关掉 Qwen 的 prefix cache，翻译 API 的 60 次里有 45 次复用了 prefix cache。",
+    outcomes: [
+      "源披露：在作者的 DGX Spark 128GB 上，Thinking OFF、3 道短问、每行 30 次、120/120 正常结束时，直接日语的完成平均是 3.71 秒、有效速度 28.73 tok/s、TTFT 0.23 秒；先英后译是 2.67 秒、31.70 tok/s、翻译 0.26 秒、TTFT 2.41 秒，完成时间短 28.08%。TTFT 变长是因为要等英文全部生成完再翻译，作者写聊天里会在意这个差，不要把 0.23 秒当成先英后译更快。Thinking ON 时两边完成时间都是 8.91 秒（直接日语 TTFT 8.31 秒，先英后译翻译 0.25 秒、TTFT 8.68 秒），不要把 28.08% 写到这一档，也不要把 8.91 秒写成 3.71 或 2.67。翻译 API 60 次里 45 次复用了 prefix cache。这些数字只属于这 3 道短问和这次 experimental CUDA 路径，不可外推。不要把 0.23 秒的 TTFT 写成 #1250 的 whisper 0.23 秒。与 #1211、#1214、#1232 同一天，#1232 也出现了 PLaMo，但那条窗是 Interlinear 精度 4.82 和 118 秒对 359 秒，不要写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。正文未配图。正文硬链 https://www.preferred.jp/ja/blog/tech/plamo-3-translate-weight-release 、https://github.com/ashhart/TensorFold/blob/6ec5fa4cb233f3606acbdad5bec433f0f8758f96/docs/recipes/flash-next-cuda.md 、https://github.com/ashhart/TensorFold/releases/tag/v1.2.3 、https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local 、https://huggingface.co/pfnet/plamo-3-translate-0.8b-GGUF 、https://github.com/ggml-org/llama.cpp 交付时均 GET 200，可列可达，不是作者产品。作者写这次用的 TensorFold CUDA 路径是 experimental。源文未点名 18 值平台，PLaMo／Qwen／llama.cpp／TensorFold 不在 18 值，不硬凑，platforms 为 []。与 #1211、#1214、#1232 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 28.08% 只属于 Thinking OFF 的 3.71 秒对 2.67 秒",
+        body: "请按原文核算：Thinking OFF 时直接日语是不是 3.71 秒、28.73 tok/s、TTFT 0.23 秒，先英后译是不是 2.67 秒、31.70 tok/s、翻译 0.26 秒、TTFT 2.41 秒，短的是不是完成时间 28.08%。Thinking ON 是不是两边都是 8.91 秒，不要把 28.08% 写过去。120/120 是不是 3 问、每行 30 次。不要把 0.23 秒写成 #1250 的 whisper 0.23 秒。与 #1232 同一天也用了 PLaMo，那条窗是不是 Interlinear 4.82 和 118 秒对 359 秒。发布日是不是上海日历日 2026-11-07。CUDA 路径是不是 experimental。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 Thinking OFF 时先英后译 2.67 秒对直接日语 3.71 秒，短 28.08%，并写上 28.73 对 31.70 tok/s 和翻译 0.26 秒。",
+      "再写下 TTFT 从 0.23 秒升到 2.41 秒，是因为要等英文全部生成完，不要把 0.23 秒写成先英后译更快。",
+      "最后写明 Thinking ON 两边都是 8.91 秒，不要和 28.08% 或 #1250、#1232 写混，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-11-07T09:50:40.496+09:00 → UTC 2026-11-07T00:50:40.496Z、Asia/Shanghai 2026-11-07 08:50:40，取上海日历日 → 2026-11-07；body_updated_at 2026-11-07T09:42:18.581+09:00 同日且更早（预约发布），仍取首次发布，不要改用更新时间；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-07。与 #1211、#1214、#1232 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1265",
+    slug: "micr-3153-57",
+    title: "GT1030提示评估的三组对照",
+    summary: "microphoton 在 GeForce GT 1030 2GB、16GB 内存、Core i7-3770 上用 Ollama 跑 gemma3:1b，3 道提示各测 1 次，比较 CPU 卸载和只走 GPU。主硬窗是 prompt eval rate：GPU 更快，分别是 57.44 对 31.53、54.40 对 28.72、60.69 对 38.50 tok/s。总时长却没有拉开很大：问 1 是 35.62 秒对 33.80 秒，问 3 是 45.92 秒对 42.77 秒；问 2 反而 GPU 更慢，51.01 秒对 48.95 秒，因为生成 token 更多（1,158 对 896）。eval rate 大约 19.6 对 23 tok/s。提示都只有 13 token，作者写更长提示还没测。与 #1209 同一天但主题不同。不可外推。",
+    description: "这是一篇个人在 GT 1030 2GB 上把 CPU 卸载和只走 GPU 对照的记录。主硬窗是 prompt eval rate 的三组对照。不要把总时长写成差很多，更不要漏掉问 2 GPU 更慢。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-09-27。",
+    categories: [
+      "efficiency",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/microphoton/items/1dbff02dbf147a87fc4f",
+    sourceLabel: "qiita.com·microphoton《LLMでCPUオフロード時のパフォーマンス差を計測する》",
+    upvotes: 1156,
+    trending: false,
+    tags: [
+      "ollama",
+      "gpu",
+      "cpu-offload",
+      "gemma",
+      "benchmark",
+    ],
+    primarySource: {
+      url: "https://qiita.com/microphoton/items/1dbff02dbf147a87fc4f",
+      label: "qiita.com·microphoton《LLMでCPUオフロード時のパフォーマンス差を計測する》",
+      date: "2026-09-27",
+      dateLabel: "发布",
+    },
+    approach: "作者确认 gemma3:1b 能放进这块 GT 1030 2GB 的显存后，用 Ollama 0.32.13 的 ollama run --verbose，在 CPU 卸载和只走 GPU 两档上各跑 3 道提示（「介绍一下 AI／宇宙／法国」），每档每问 n=1，记下 total duration、prompt eval rate 和 eval rate。机器是 GeForce GT 1030 GDDR5 2GB、内存 16GB、Core i7-3770、Windows 11 Pro 24H2。",
+    outcomes: [
+      "源披露：在作者本机 GT 1030 2GB 上，用 gemma3:1b、3 道提示各 n=1 实测。prompt eval rate 上 GPU 更快：问 1 是 57.44 tok/s 对 CPU 卸载的 31.53 tok/s，问 2 是 54.40 对 28.72，问 3 是 60.69 对 38.50；提示都是 13 token。总时长不要写成差很多：问 1 是 CPU 卸载 35.6213227 秒、GPU 33.7988335 秒，问 3 是 45.9193001 秒对 42.7725076 秒；问 2 反而 GPU 更慢，51.0145176 秒对 48.9528754 秒，作者写可能是因为生成 token 更多（1,158 对 896）。eval rate 上 GPU 也更快，大约 23.02／23.18／23.05 tok/s，对照 CPU 卸载的 19.59／18.79／19.56 tok/s。这些数字只属于这 3 道短提示和这块 2GB 卡，作者写更长提示还没测，不可外推。与 #1209 同一天但主题不同，不要和近批其他 tok/s 窗写混。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为 https://www.credly.com/users/hirano-san ，只出现在资料栏，正文没有这条硬链，不算导流，不补写。正文无外部硬链、未配图。源文未点名 18 值平台，Ollama／Gemma 不在 18 值，不硬凑，platforms 为 []。各条件 n=1。与 #1209 同一天但主题不同。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清主窗是 prompt eval 的三组对照，总时长不要写成差很多",
+        body: "请按原文核算：prompt eval rate 是不是 GPU 57.44、54.40、60.69 tok/s，对照 CPU 卸载 31.53、28.72、38.50。问 1 总时长是不是 35.62 秒对 33.80 秒，问 3 是不是 45.92 秒对 42.77 秒，问 2 是不是 GPU 更慢的 51.01 秒对 48.95 秒，生成 token 是不是 1,158 对 896。eval rate 大约是不是 19.6 对 23 tok/s。各条件是不是 n=1，提示是不是都只有 13 token。发布日是不是上海日历日 2026-09-27，与 #1209 同一天但主题不同。资料栏 Credly 是否不算导流。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下 prompt eval rate：GPU 是 57.44、54.40、60.69 tok/s，对照 CPU 卸载的 31.53、28.72、38.50。",
+      "再写下总时长没有拉开很大，问 2 甚至因为生成 token 更多，GPU 是 51.01 秒、CPU 卸载是 48.95 秒。",
+      "最后写明 eval rate 大约 19.6 对 23 tok/s，提示只有 13 token，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-09-27T17:35:40.000+09:00，与 Qiita API created_at 2026-09-27T17:35:40+09:00 一致 → UTC 2026-09-27T08:35:40Z、Asia/Shanghai 2026-09-27 16:35:40，取上海日历日 → 2026-09-27；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-09-27。与 #1209 同一天但主题不同。",
+    ],
+  },
+  {
+    id: "1266",
+    slug: "ktan-9466-084",
+    title: "CIFAR官方测试的七百六十八维",
+    summary: "ktanemo 在 RTX 4070 Ti SUPER 上用 EmbeddingGemma 2 做 CIFAR-10/100 官方 test 各 10,000 张的零样本分类，P0、FP32。这次 MRL 跑出来的 768 维 Top-1／Top-5 是 94.66／99.84 和 76.08／92.92。表里的 CLIP 系各行是过去的验证结果，不要写成这次重跑。切到 256 维时向量大小减少 66.7%，Top-1 只降 0.84 和 1.10 个点；128 维在 CIFAR-100 上 Top-1 降 9.34 个点，是另一扇窗。图像推理速度大约仍是 10.2 images/s，MRL 省的是存储，不是编码器加速。不可外推。",
+    description: "这是一篇个人把 EmbeddingGemma 2 的 MRL 维度拿到 CIFAR-10/100 官方测试集上对照的记录。主硬窗是这次 768 维的 94.66／99.84 和 76.08／92.92。CLIP 系是旧结果。256 维减 66.7% 和 128 维降 9.34 个点是另窗。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-10-21。",
+    categories: [
+      "devtools",
+    ],
+    platforms: [],
+    sourceUrl: "https://qiita.com/ktanemo/items/113a9a216742d060d1bf",
+    sourceLabel: "qiita.com·ktanemo《EmbeddingGemma 2のMatryoshka表現でどれだけ精度を保てるか — CIFAR-10/100でCLIP系モデルと比較》",
+    upvotes: 1157,
+    trending: false,
+    tags: [
+      "embedding",
+      "gemma",
+      "cifar",
+      "mrl",
+      "benchmark",
+    ],
+    primarySource: {
+      url: "https://qiita.com/ktanemo/items/113a9a216742d060d1bf",
+      label: "qiita.com·ktanemo《EmbeddingGemma 2のMatryoshka表現でどれだけ精度を保てるか — CIFAR-10/100でCLIP系モデルと比較》",
+      date: "2026-10-21",
+      dateLabel: "发布",
+    },
+    approach: "作者在 NVIDIA RTX 4070 Ti SUPER 上，用 openclip-gemma 0.4.0 和 google/embeddinggemma-2，按 CLIP Benchmark 兼容的 P0（18 个模板）做 CIFAR-10/100 官方 test split 各 10,000 张的零样本分类，精度 FP32，并打开模型指定的 Classification 任务提示。768、512、256、128 维都是同一套 MRL 输出。Top-1／Top-5 按整份测试集的分类正确率计算，不比原始相似度和 logit。表里与 CLIP 系模型并排时，作者写明那些是过去的验证结果，只有 EmbeddingGemma 2 的 768 维来自这次 MRL 基准。",
+    outcomes: [
+      "源披露：在作者本机 RTX 4070 Ti SUPER 上，对 CIFAR-10/100 官方 test 各 10,000 张、P0、FP32 实测。这次 MRL 跑出来的 EmbeddingGemma 2 768 维 Top-1／Top-5 是 94.66／99.84 和 76.08／92.92。表里 OpenAI CLIP、OpenCLIP、Multilingual OpenCLIP、SigLIP 2 和 ViT-L/14 各行是过去的验证结果，不要写成这次重跑。切到 256 维时向量大小从 3,072 字节降到 1,024 字节，减少 66.7%，Top-1 比 768 维低 0.84 和 1.10 个点（93.82／99.74 和 74.98／92.33）。128 维把大小减到 512 字节、83.3%，CIFAR-100 的 Top-1 降 9.34 个点到 66.74，是另一扇窗，不要写成 256 维也掉了这么多。图像推理速度大约仍是 10.2 images/s，不随维度明显变化，作者写 MRL 主要省的是向量和索引的空间，不是编码器加速。这些数字只属于这次 P0、FP32 和官方测试集，不可外推。",
+    ],
+    caveats: [
+      "导流：正文硬链作者仓 https://github.com/kotadymo/openclip-gemma 与 https://github.com/kotadymo/vision-language-benchmarks ，交付时均 GET 200，可列可达，按作者仓导流披露。其中 openclip-gemma 跟随至 https://github.com/kotadymo/openvlclip ，末次仍是 HTTP 200，按正文所写 URL 披露。配图 2 张：https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2741438/1ab05b91-631a-49d0-a34b-016d6cfa3b58.png 、https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2741438/58f25e4d-bfb1-4284-8911-e1d188732565.png ，交付时均 GET 200，可列可达，不当导流。数据集页 https://www.cs.toronto.edu/~kriz/cifar.html 与技术报告 https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf 交付时均 GET 200（分别跟随至 cave.cs.toronto.edu 对应路径），可列可达，不是作者产品。作者资料 website_url 为空，不补写。源文未点名 18 值平台，EmbeddingGemma／OpenCLIP 不在 18 值，不硬凑，platforms 为 []。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 94.66／99.84 和 76.08／92.92 是这次 768 维，CLIP 系是旧结果",
+        body: "请按原文核算：这次 MRL 的 768 维 Top-1／Top-5 是不是 CIFAR-10 94.66／99.84、CIFAR-100 76.08／92.92。表里 CLIP 系各行是不是过去的验证结果，不要写成这次重跑。256 维是不是大小减少 66.7%，Top-1 降 0.84 和 1.10 个点。128 维在 CIFAR-100 上是不是降 9.34 个点，不要写成 256 维的主窗。图像推理是不是大约仍是 10.2 images/s。发布日是不是上海日历日 2026-10-21。作者仓是否按导流披露。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下这次 768 维的 Top-1／Top-5 是 94.66／99.84 和 76.08／92.92，并写明 CLIP 系是过去的验证结果。",
+      "再写下 256 维大小减少 66.7%，Top-1 只降 0.84 和 1.10 个点。",
+      "最后写明 128 维在 CIFAR-100 上降 9.34 个点是另窗，推理速度仍约 10.2 images/s，不可外推。",
+    ],
+    tips: [
+      "有 JSON-LD；datePublished 2026-10-21T20:56:44.000+09:00，与 Qiita API created_at 2026-10-21T20:56:44+09:00 一致 → UTC 2026-10-21T11:56:44Z、Asia/Shanghai 2026-10-21 19:56:44，取上海日历日 → 2026-10-21；dateModified／updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-10-21。",
+    ],
+  },
+  {
+    id: "1267",
+    slug: "fuji-87-437",
+    title: "Cartpole训练本身的八十七秒",
+    summary: "fujiyamaegg 第一次在 RunPod 上用 Isaac Lab 跑预设的 Cartpole。强化学习本身 87 秒就结束了，学习中平均回报 4.93、平均回合长度 300、成功率指标 1.0，作者写这不是对任意初始状态都一定成功。把环境搭建、第二天恢复、可视化和视频对比算进去，周末两天一共约 4 小时 37 分：第 1 天环境约 2 小时，第 2 天约 2 小时 37 分。结束时在 Billing explorer 看到 GPU 1.422 美元加存储 0.098 美元，合计 1.520 美元，作者写账单可能滞后，Volume disk 若继续留着还会产生存储费。用的是现成任务和奖励，没有自己改。不可外推。",
+    description: "这是一篇个人第一次用云 GPU 跑 Cartpole 强化学习的记录。主硬窗是训练本身 87 秒，对照周末合计约 4 小时 37 分。不要把 87 秒写成整个周末。费用 1.520 美元是核对当时的账单。源文未点名 18 值平台，platforms 为 []。发布日必须写成 2026-11-08。分类记 education。",
+    categories: [
+      "education",
+    ],
+    platforms: [],
+    sourceUrl: "https://zenn.dev/fujiyamaegg/articles/200d5ecbb8557c",
+    sourceLabel: "zenn.dev·fujiyamaegg《Isaac Labで初めての強化学習に挑戦。Cartpoleが87秒の学習で安定するまで》",
+    upvotes: 1158,
+    trending: false,
+    tags: [
+      "reinforcement-learning",
+      "isaac-lab",
+      "runpod",
+      "cartpole",
+      "beginner",
+    ],
+    primarySource: {
+      url: "https://zenn.dev/fujiyamaegg/articles/200d5ecbb8557c",
+      label: "zenn.dev·fujiyamaegg《Isaac Labで初めての強化学習に挑戦。Cartpoleが87秒の学習で安定するまで》",
+      date: "2026-11-08",
+      dateLabel: "发布",
+    },
+    approach: "作者家里没有高性能 GPU，就在 RunPod 上按 NVIDIA 官方镜像 nvcr.io/nvidia/isaac-lab:3.0.0 建环境，用预设任务 Isaac-Cartpole 跑强化学习，没有自己改任务或奖励。周末分成两天：第 1 天搭环境和镜像，第 2 天因为原来的 GPU 不一定还在，重新起 Pod 后再训练、存模型、用 TensorBoard 看曲线，并导出学习前后的视频对照。",
+    outcomes: [
+      "源披露：作者在 RunPod 上用官方 Isaac Lab 3.0.0 镜像跑预设 Cartpole。强化学习本身 87 秒结束，学习中平均回报 4.93、平均回合长度 300、成功率指标 1.0；作者写这里的成功率 100% 是训练中的评价指标，不是对任意初始状态都一定成功。周末两天从环境到看视频一共约 4 小时 37 分：第 1 天搭环境约 2 小时，第 2 天恢复环境、训练、可视化和视频对比约 2 小时 37 分。不要把 87 秒写成整个周末的总时长。结束时在 Billing explorer 核对到 GPU 1.422 美元加存储 0.098 美元，合计 1.520 美元；作者写账单可能滞后，这是核对当时的数字，停止后若继续留着 Volume disk，存储费还会继续。这些数字只属于这次预设 Cartpole 和当时的云 GPU 试用，不可外推。",
+    ],
+    caveats: [
+      "导流：无作者独立产品导流可列。作者资料 website_url 为空，不补写。配图 4 张：https://static.zenn.studio/user-upload/4d39a59e6eeb-20261108.png 、https://static.zenn.studio/user-upload/c55f2c1a18ba-20261108.png 、https://static.zenn.studio/user-upload/805f1236ac9a-20261108.png 、https://static.zenn.studio/user-upload/07d83b94e456-20261108.png ，交付时均 GET 200，可列可达，不当导流。正文本机地址 http://localhost:6006/ 是 TensorBoard，交付时 GET 000（curl 退出码 7），不可达，须披露。源文未点名 18 值平台，Isaac Lab／RunPod 不在 18 值，不硬凑，platforms 为 []。用的是现成任务和奖励。primary GET 200。",
+    ],
+    prompts: [
+      {
+        title: "先问清 87 秒是强化学习本身，约 4 小时 37 分才是周末合计",
+        body: "请按原文核算：强化学习本身是不是 87 秒，周末两天合计是不是约 4 小时 37 分，是不是第 1 天约 2 小时、第 2 天约 2 小时 37 分，不要把 87 秒写成整个周末。学习中平均回报是不是 4.93、回合长度 300、成功率指标 1.0，作者是不是写这不是对任意初始状态都一定成功。账单是不是 GPU 1.422 美元加存储 0.098 美元、合计 1.520 美元，是不是核对当时的数字，Volume disk 是否还可能继续计费。是不是用了预设任务和奖励。发布日是不是上海日历日 2026-11-08。本机 localhost:6006 是不是 GET 000。platforms 是否为 []。",
+      },
+    ],
+    howItWorks: [
+      "先写下强化学习本身 87 秒结束，不要把它写成整个周末的总时长。",
+      "再写下周末两天合计约 4 小时 37 分：第 1 天约 2 小时，第 2 天约 2 小时 37 分。",
+      "最后写明核对当时的账单是 1.520 美元，成功率 1.0 不是任意初始状态都成功，用的是预设任务，不可外推。",
+    ],
+    tips: [
+      "无 JSON-LD；Zenn API published_at 2026-11-08T13:08:46.442+09:00 → UTC 2026-11-08T04:08:46.442Z、Asia/Shanghai 2026-11-08 12:08:46，取上海日历日 → 2026-11-08；body_updated_at 同日同时刻，仍取首次发布；GET 200（UA MiraBot/1.0）。写入 tips[0]、primarySource.date 与本表。必须写成 2026-11-08。",
+    ],
   }
 ];
 
