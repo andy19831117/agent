@@ -1,10 +1,10 @@
 import Link from "next/link";
+import { WECOM_CONSULT_LABEL, WECOM_CONSULT_URL } from "@/lib/wecom-consult";
 
 const linkClass = "text-sm text-slate-400 hover:text-indigo-300";
 
 export function SiteFooter({
   email,
-  wechat,
 }: {
   email: string;
   wechat: string;
@@ -37,7 +37,14 @@ export function SiteFooter({
           <a href={`mailto:${email}`} className={linkClass}>
             邮箱 {email}
           </a>
-          <span className="text-sm text-slate-400">微信 {wechat}</span>
+          <a
+            href={WECOM_CONSULT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            {WECOM_CONSULT_LABEL}
+          </a>
         </nav>
       </div>
     </footer>
