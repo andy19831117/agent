@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { sisterSites } from "@/data/sister-sites";
 import { WECOM_CONSULT_LABEL, WECOM_CONSULT_URL } from "@/lib/wecom-consult";
 
 const linkClass = "text-sm text-slate-400 hover:text-indigo-300";
@@ -34,6 +35,17 @@ export function SiteFooter({
           <Link href="/disclaimer" className={linkClass}>
             免责声明
           </Link>
+          {sisterSites.map((site) => (
+            <a
+              key={site.href}
+              href={site.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              {site.name}
+            </a>
+          ))}
           <a href={`mailto:${email}`} className={linkClass}>
             邮箱 {email}
           </a>
