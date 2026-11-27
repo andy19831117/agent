@@ -1,8 +1,9 @@
 import faqCopy from "./faq.json";
+import { sisterSites } from "./sister-sites";
 
 /**
  * Authoritative FAQ copy is `faq.json`.
- * Home always renders `home` (3 items, all expanded).
+ * Home always renders `home` (4 items, all expanded).
  * Usecase pages render only the slugs listed below.
  * Visible Q&A and FAQPage JSON-LD are both built from these arrays.
  */
@@ -25,10 +26,27 @@ const EXPECTED_USECASE_COUNTS: Record<UsecaseFaqSlug, number> = {
 };
 
 function assertFaqCopy(): void {
-  if (faqCopy.home.length !== 3) {
+  if (faqCopy.home.length !== 4) {
     throw new Error(
-      `Home FAQ must list exactly 3 questions, got ${faqCopy.home.length}.`,
+      `Home FAQ must list exactly 4 questions, got ${faqCopy.home.length}.`,
     );
+  }
+
+  const sisterAnswer = faqCopy.home.find(
+    (item) => item.q === "和另外三个站有什么区别？",
+  );
+  if (!sisterAnswer) {
+    throw new Error(
+      "Home FAQ must explain how this site differs from the sister sites.",
+    );
+  }
+  for (const site of sisterSites) {
+    const mentions = sisterAnswer.a.split(site.name).length - 1;
+    if (mentions !== 1) {
+      throw new Error(
+        `Home FAQ sister-site answer must name ${site.name} exactly once, got ${mentions}.`,
+      );
+    }
   }
 
   for (const slug of USECASE_FAQ_SLUGS) {
